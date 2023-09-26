@@ -1,10 +1,10 @@
 ---
 title: What are Azure Kubernetes Service hybrid deployment options?
-description: Azure Kubernetes Service hybrid is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
+description: AKS hybrid is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS), which automates running containerized applications at scale.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/07/2022
+ms.lastreviewed: 01/05/2023
 ms.reviewer: abha
 ms.date: 10/07/2022
 
@@ -14,7 +14,7 @@ ms.date: 10/07/2022
 ---
 # What are AKS hybrid deployment options?
 
-AKS hybrid deployment options simplifies managing, deploying and maintaining a Kubernetes cluster on-premises, making it quicker to get started hosting Linux and Windows containers in your datacenter. As a hosted Kubernetes service, AKS hybrid handles critical day-to-day management, such as easy upgrades and automatic certificate rotations so you can focus on running and developing containerized workloads. AKS hybrid also natively connects to Azure Arc, so you have a single Azure control plane to manage all your AKS clusters running anywhere - on Azure and on-premises.
+AKS hybrid deployment options (AKS hybrid) simplifies managing, deploying, and maintaining a Kubernetes cluster on-premises, making it quicker to get started hosting Linux and Windows containers in your datacenter. As a hosted Kubernetes service, AKS hybrid handles critical day-to-day management, such as upgrades and automatic certificate rotations, so you can focus on running and developing containerized workloads. AKS hybrid also natively connects to Azure Arc, so you have a single Azure control plane to manage all your AKS clusters running anywhere - on Azure and on-premises.
 
 You can create an AKS cluster using:
 
@@ -30,7 +30,7 @@ For more information about Kubernetes basics, see [Kubernetes core concepts for 
 
 ## Why use AKS hybrid for containerized applications?
 
-If you've been using AKS in Azure to deploy and run your applications, you'll find it very easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kuberenetes orchestrator helps with.
+If you've been using AKS in Azure to deploy and run your applications, it's easy to get started with running AKS on-premises. While you can certainly manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which is what a Kubernetes orchestrator helps with.
 
 Kubernetes is an open-source orchestrator for automating container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes, essential add-ons, and create Kubernetes clusters to host your workloads.
 
@@ -42,7 +42,7 @@ With AKS hybrid, you can connect your AKS clusters to Azure Arc while creating t
 
 ### Create and manage AKS clusters using Azure portal and Resource Manager templates
 
-You can now use familiar tools like the Azure portal and Azure Resource Manager templates to manage your AKS hybrid clusters running on Azure Stack HCI or Windows Server. We automatically enable Azure Arc on all AKS hybrid clusters. Through Azure Arc, you can use your Azure AD identity for cluster admin authentication and have a simplified, end-to-end governance and security story for your AKS clusters through Azure Defender. We've also focused on delivering a consistent user experience for all your AKS clusters. If you’ve ever used the Azure portal or Azure CLI to create and manage AKS clusters in Azure, you’ll feel comfortable using AKS hybrid on Windows Server or Azure Stack HCI. For more information, see [AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
+You can now use familiar tools like the Azure portal and Azure Resource Manager templates to manage your AKS hybrid clusters running on Azure Stack HCI or Windows Server. We automatically enable Azure Arc on all AKS hybrid clusters. Through Azure Arc, you can use your Azure AD identity for cluster admin authentication and have a simplified, end-to-end governance and security story for your AKS clusters through Azure Defender. We've also focused on delivering a consistent user experience for all your AKS clusters. If you've used the Azure portal or Azure CLI to create and manage AKS clusters in Azure, it's easy to use AKS hybrid. For more information, see [AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
 
 ### Integrated logging and monitoring
 
@@ -62,22 +62,22 @@ AKS hybrid fully supports running both Linux-based and Windows-based containers.
 
 ### AKS hybrid supports deploying GPU-enabled nodes
 
-AKS hybrid supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs using Discrete Device Assignment (DDA) mode also known as GPU Passthrough. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU enabled VM size which gets full access to the entire GPU hence offering high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see [GPU documentation](https://github.com/Azure/aks-hybrid/blob/main/preview/GPU/gpu-preview.md).
+AKS hybrid supports deploying GPU-enabled node pools on top of NVIDIA Tesla T4 GPUs using Discrete Device Assignment (DDA) mode also known as GPU Passthrough. In this mode, one or more physical GPUs are dedicated to a single worker node with a GPU enabled VM size which gets full access to the entire GPU hence offering high level application compatibility as well as better performance. For more information about GPU-enabled node pools, see the [GPU documentation](deploy-gpu-node-pool.md).
 
 ## Azure Kubernetes Service hybrid deployment options
 
 Depending on your hardware class, compute availability and your Kubernetes adoption process, we offer multiple AKS hybrid deployment options to get started:
 
-AKS hybrid deployment option | Host OS | Minimum compute requirement | Failover clustering support | AKS cluster management tools | Azure Arc integration | 
+AKS hybrid deployment option | Host OS | Minimum compute requirement | Failover clustering support | AKS cluster management tools | Azure Arc integration |
 |-------|-------------------|-----------|----------|---------|---------|
-AKS on Windows Server | Windows Server 2019 </br> Windows Server 2022 </br>  | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node failover cluster | Local PowerShell </br> Windows Admin Center | Manual Azure Arc integration | 
-AKS on Azure Stack HCI | Azure Stack HCI 21H2 | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node Azure Stack HCI cluster | Local PowerShell  </br> Windows Admin Center | Manual Azure Arc integration | 
-AKS cluster provisioning from Azure (PREVIEW) | Windows Server 2019 </br> Windows Server 2022 </br> Azure Stack HCI 21H2 | Memory: 32GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2 node cluster | Azure Portal  </br> Azure CLI </br> Azure Resource Manager templates | Automatic Azure Arc integration | 
-AKS on Windows IOT (PREVIEW) | Windows 10/11 IoT Enterprise </br> Windows 10/11 Enterprise </br> Windows 10/11 Pro </br> Windows Server 2019/2022 | Free memory: > 2GB </br> CPU cores: 2 </br> Clock speed: 1.8 GHz </br> Free disk Space: 14 GB | No | Local PowerShell | Manual Azure Arc integration |
+AKS on Windows Server | Windows Server 2019 </br> Windows Server 2022 </br>  | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node failover cluster | Local PowerShell </br> Windows Admin Center | Manual Azure Arc integration |
+AKS on Azure Stack HCI | Azure Stack HCI 21H2 | Memory: 30GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2-8 node Azure Stack HCI cluster | Local PowerShell  </br> Windows Admin Center | Manual Azure Arc integration |
+AKS cluster provisioning from Azure (PREVIEW) | Windows Server 2019 </br> Windows Server 2022 </br> Azure Stack HCI 21H2 | Memory: 32GB per node </br> CPU cores: 16 per node </br> Disk Space: 128 GB per node | Single node OR </br> 2 node cluster | Azure portal  </br> Azure CLI </br> Azure Resource Manager templates | Automatic Azure Arc integration |
+AKS Edge Essentials | Windows 10/11 IoT Enterprise </br> Windows 10/11 Enterprise </br> Windows 10/11 Pro </br> Windows Server 2019/2022 | Free memory: > 2GB </br> CPU cores: 2 </br> Clock speed: 1.8 GHz </br> Free disk Space: 14 GB | No | Local PowerShell | Manual Azure Arc integration |
 
 ## Next steps
 
 To get started with AKS hybrid, see the following articles:
 
-- [AKS on Azure Stack HCI or Windows Server overview](overview.md)
+- [AKS on Azure Stack HCI overview](overview.md)
 - [AKS hybrid cluster provisioning from Azure overview](aks-hybrid-preview-overview.md)

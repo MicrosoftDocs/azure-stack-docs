@@ -3,7 +3,7 @@ title: Kubernetes cluster architecture for AKS hybrid
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS hybrid.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/07/2022
+ms.lastreviewed: 01/05/2023
 ms.reviewer: daschott
 ms.topic: conceptual
 ms.date: 05/16/2022
@@ -37,7 +37,7 @@ An Azure Kubernetes Service cluster has the following components:
 - *Management cluster* (also known as the AKS host) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - *Workload clusters* (also known as target clusters) are where containerized applications are deployed.
 
-![Illustrates the technical architecture of AKS on Azure Stack HCI and Windows Server](.\media\concepts\architecture.png)
+[ ![Illustrates the technical architecture of Azure Kubernetes Service on Azure Stack HCI and Windows Server](.\media\concepts\hci-architecture.png) ](.\media\concepts\hci-architecture.png#lightbox)
 
 ## Manage AKS hybrid
 

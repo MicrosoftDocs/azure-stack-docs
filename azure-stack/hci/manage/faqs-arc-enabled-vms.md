@@ -1,20 +1,20 @@
 ---
-title: Azure Arc VM management FAQs
-description: Find answers to the frequently asked questions (FAQs) about Azure Arc VM management
-author: ManikaDhiman
+title: Azure Arc VM management FAQs (preview)
+description: Find answers to the frequently asked questions (FAQs) about Azure Arc VM management (preview).
+author: alkohli
 ms.topic: reference
-ms.date: 03/23/2022
-ms.author: v-mandhiman
+ms.date: 05/24/2023
+ms.author: alkohli
 ms.reviewer: ksurjan
 ---
 
-# Azure Arc VM management FAQs
+# Azure Arc VM management FAQs (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article answers some frequently asked questions (FAQs) about Azure Arc VMs running on Azure Stack HCI clusters.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Can Azure Kubernetes Service on Azure Stack HCI and Windows Server and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
 
@@ -58,6 +58,14 @@ Re-deploying an Arc Resource Bridge won't enable Arc management of existing VMs.
 
 See the [Troubleshoot and debug](troubleshoot-arc-enabled-vms.md) article for common errors. If you're redeploying Arc Resource Bridge, make sure to clean up the previous deployment completely by following the [Uninstall procedure](uninstall-arc-resource-bridge.md).
 
+## What should I do if I unregister and re-register an Azure Stack HCI cluster after Arc VM Management is deployed?
+
+If you unregister and re-register your Azure Stack HCI cluster after deploying Arc VM Management, you need to update the Kubernetes extension by using the following command:
+
+```azurecli
+az k8s-extension update --cluster-name $resource_name --resource-group $resource_group --name hci-vmoperator --configuration-settings HCIClusterID=$hciClusterId
+```
+
 ## Next steps
 
-- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md)
+- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md).

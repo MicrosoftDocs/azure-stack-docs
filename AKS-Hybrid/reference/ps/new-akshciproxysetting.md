@@ -1,5 +1,5 @@
 ---
-title: New-AksHciProxySetting for AKS on Azure Stack HCI and Windows Server
+title: New-AksHciProxySetting for AKS hybrid
 author: sethmanheim
 description: The New-AksHciProxySetting PowerShell command creates an object for a new proxy configuration.
 ms.topic: reference
@@ -13,6 +13,7 @@ ms.reviewer: nwood
 # New-AksHciProxySetting
 
 ## Synopsis
+
 Create an object defining proxy server settings to pass into `Set-AksHciConfig`.
 
 ## Syntax
@@ -45,6 +46,8 @@ $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy
 ```powershell
 $proxySetting=New-AksHciProxySetting -name "corpProxy" -http http://contosoproxy:8080 -https https://contosoproxy:8443 -noProxy localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16 -certFile c:\Temp\proxycert.cer
 ```
+
+## Parameters
 
 ### -name
 

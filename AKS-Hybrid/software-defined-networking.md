@@ -1,9 +1,9 @@
 ---
-title: How to use AKS hybrid with SDN and virtual networking infrastructure (Public Preview)
+title: How to use AKS hybrid with SDN and virtual networking infrastructure
 description: Learn how to use AKS hybrid with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/04/2022
+ms.date: 03/21/2023
 ms.author: sethm 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
@@ -17,7 +17,7 @@ ms.reviewer: anpaul
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this article, you'll learn how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load
+This article describes how to deploy AKS infrastructure and workload VMs to an SDN Virtual Network using our SDN [Software Load
 Balancer][] (SLB) for all AKS hybrid load balancing scenarios. Azure Kubernetes Service hybrid deployment options ("AKS hybrid") offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
 
 ## Limitations
@@ -25,12 +25,12 @@ Balancer][] (SLB) for all AKS hybrid load balancing scenarios. Azure Kubernetes 
 The following features are out of scope and not supported for this GA release:
 
 - Attaching pods and containers to an SDN virtual network.
-  - Pods will use Flannel or Calico (default) as the network provider.
+  - Pods use Flannel or Calico (default) as the network provider.
 - Network policy enforcement using the SDN Network Security Groups.
-  - The SDN Network Security Groups can still be configured outside of AKS hybrid using SDN tools (REST/PowerShell/Windows Admin Center/SCVMM), but Kubernetes NetworkPolicy objects will not configure them.
+  - The SDN Network Security Groups can still be configured outside of AKS hybrid using SDN tools (REST/PowerShell/Windows Admin Center/SCVMM), but Kubernetes NetworkPolicy objects won't configure them.
 - Attaching AKS hybrid VM NICs to SDN logical networks.
 - Installation using Windows Admin Center.
-- Physical host to AKS hybrid VM connectivity: VM NICs will be joined to an SDN virtual network and thus will not be accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
+- Physical host to AKS hybrid VM connectivity: VM NICs are joined to an SDN virtual network and thus aren't accessible from the host by default. For now, you can enable this connectivity manually by attaching a public IP directly to the VM using the SDN Software Load Balancer.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ The following features are out of scope and not supported for this GA release:
 
 To deploy AKS hybrid with SDN, make sure your environment satisfies the deployment criteria of both AKS hybrid and SDN.
 
-- AKS hybrid requirements: [System requirements for AKS hybrid][]
+- [AKS hybrid requirements][]
 - SDN requirements: [Plan a Software Defined Network infrastructure][]
 
 > [!NOTE]
@@ -117,8 +117,8 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
    ```powershell
    Set-AksHciConfig 
    –imageDir "C:\ClusterStorage\Volume1\ImageStore" 
-   –workingDir "C:\ClusterStorage\Volume1\ImageStore"
-   –cloudConfigLocation "C:\ClusterStorage\Volume1\ImageStore" 
+   –workingDir "C:\ClusterStorage\Volume1\WorkDir"
+   –cloudConfigLocation "C:\ClusterStorage\Volume1\Config" 
    –vnet $vnet –useNetworkController
    –NetworkControllerFqdnOrIpAddress "nc.contoso.com" 
    –networkControllerLbSubnetRef "/logicalnetworks/PublicVIP/subnets/my_vip_subnet" 
@@ -126,7 +126,7 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
    -vipPool $vipPool
    ```
 
-   The HNVPA logical network will be used as the underlying provider for the AKS hybrid virtual network.
+   The HNVPA logical network is used as the underlying provider for the AKS hybrid virtual network.
 
    If you are using static IP address assignment for your Azure Stack HCI cluster nodes, you must also provide the CloudServiceCidr parameter. This parameter is the IP address of the MOC cloud service, and must be in the same subnet as Azure Stack HCI cluster nodes. For more information, see [Microsoft On-premises Cloud service](concepts-node-networking.md#microsoft-on-premises-cloud-service).
 
@@ -138,7 +138,7 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
       | `-vnet`                             | Name of `AksHciNetworkSetting` variable created in the previous step                                                                                                                                                                                                                                                                                                      |
       | `-useNetworkController`             | Enable integration with SDN.                                                                                                                                                                                                                                                                                                                                             |
       | `-networkControllerFqdnOrIpAddress` | Network controller FQDN. You can get the FQDN by executing `Get-NetworkController` on the Network Controller VM and using the `RestName` parameter.                                                                                                                                                                                                                         |
-      | `-networkControllerLbSubnetRef`     | Reference to the public VIP logical network subnet configured in Network Controller. You can get this subnet by executing the `Get-NetworkControllerLogicalSubnet` cmdlet. When using this cmdlet, use `PublicVIP` as the `LogicalNetworkId`. Note that the `VipPoolStart` and `vipPoolEnd` parameters in the `New-AksHciVipPoolSetting` cmdlet must be part of the subnet referenced here. |
+      | `-networkControllerLbSubnetRef`     | Reference to the public VIP logical network subnet configured in Network Controller. You can get this subnet by executing the `Get-NetworkControllerLogicalSubnet` cmdlet. When using this cmdlet, use `PublicVIP` as the `LogicalNetworkId`. The `VipPoolStart` and `vipPoolEnd` parameters in the `New-AksHciVipPoolSetting` cmdlet must be part of the subnet referenced here. |
       | `-networkControllerLnetRef`         | Normally, this would be "/logicalnetworks/HNVPA".                                                                                                                                                                                                                                                                                                                        |
       | `-vipPool`                          | VIP pool used as the front end IPs for load balancing.                                                                                                                                                                                                                                                                                                                   |
 
@@ -172,18 +172,18 @@ Get-AksHciLogsSdn
 
 ### Feedback/issues
 
-If you encounter any issues with the instructions or would simply like to provide feedback, please reach out to us at
+If you encounter any issues with the instructions or would simply like to provide feedback, reach out to us at
 <aks-hci-sdn@microsoft.com>. There are also some self-help resources that [can be found here][Troubleshooting SDN] for SDN
 [and here](known-issues.yml) for AKS-HCI.
 
 ## Next steps
 
-Next, you can create [workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS hybrid will seamlessly get attached to the
-SDN virtual network that was provided during installation. The SDN Software load balancer will also be used as the external load balancer
+Next, you can create [workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS hybrid are seamlessly attached to the
+SDN virtual network that was provided during installation. The SDN Software load balancer is also used as the external load balancer
 for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
 
 [Software Load Balancer]: /azure-stack/hci/concepts/software-load-balancer
-[Azure Kubernetes Service on Azure Stack HCI requirements]: system-requirements.md
+[AKS hybrid requirements]: system-requirements.md
 [Plan a Software Defined Network infrastructure]: /azure-stack/hci/concepts/plan-software-defined-networking-infrastructure
 [SDN Express]: /azure-stack/hci/manage/sdn-express
 [Windows Admin Center]: /azure-stack/hci/deploy/sdn-wizard
@@ -192,6 +192,6 @@ for all Kubernetes services, and acts as the load balancer for the API server on
 [how to create and attach VM's to an SDN virtual network]: /azure-stack/hci/manage/vm
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
 [Set-AksHciConfig]: reference/ps/set-akshciconfig.md
-[Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal
+[Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal
 [workload clusters]: kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster
 [Deploy your applications]: deploy-windows-application.md

@@ -4,6 +4,8 @@ description: Learn about differences and considerations when working with manage
 author: sethmanheim
 
 ms.topic: article
+ms.custom:
+  - devx-track-azurepowershell
 ms.date: 06/15/2021
 ms.author: sethm
 ms.reviewer: jiahan
@@ -11,7 +13,6 @@ ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to know the differences between managed disks for Azure and managed disks for Azure Stack so I can simplify disk management for IaaS.
 # Keyword: managed disks azure stack
-
 ---
 
 

@@ -1,12 +1,12 @@
 ---
-title: What is Azure Arc VM management?
-description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters.
-author: ksurjan
-ms.author: ksurjan
+title: What is Azure Arc VM management? (preview)
+description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters (preview).
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/17/2022
+ms.date: 08/07/2023
 ---
 
 # What is Azure Arc VM management? (preview)
@@ -19,7 +19,7 @@ To find answers to frequently asked questions about Arc VMs on Azure Stack HCI, 
 
 To troubleshoot issues with your Arc VMs or to know existing known issues and limitations, see [Troubleshoot Arc virtual machines](troubleshoot-arc-enabled-vms.md).
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Benefits of Azure Arc VM management
 
@@ -27,6 +27,7 @@ With Azure Arc VM management, you can perform various operations from the Azure 
 
 - Create a VM
 - Start, stop, and restart a VM
+- Delete a VM
 - Control access and add Azure tags
 - Add and remove virtual disks and network interfaces
 - Update memory and virtual CPUs for the VM
@@ -51,7 +52,7 @@ A **cluster extension** is the on-premises equivalent of an Azure Resource Manag
 
 To enable Azure Arc-based VM operations on your Azure Stack HCI cluster, you must:
 
-1. Install Azure Arc Resource Bridge on the Azure Stack HCI cluster and create a VM cluster extension. This can be done using Windows Admin Center or PowerShell.
+1. Install Azure Arc Resource Bridge on the Azure Stack HCI cluster and create a VM cluster extension via command line.
 1. Create a custom location for the Azure Stack HCI cluster.
 1. Create virtual network projections which will be used by VM network interfaces.
 1. Create OS gallery images for provisioning VMs.
@@ -60,7 +61,6 @@ To enable Azure Arc-based VM operations on your Azure Stack HCI cluster, you mus
 
 - Only one Arc Resource Bridge can be deployed on a cluster.
 - Each Azure Stack HCI cluster can have only one custom location.
-- Each virtual switch on the Azure Stack HCI cluster can have one virtual network.
 - Multiple OS images can be added to the gallery.
 - Additional virtual networks and images can be added any time after the initial setup.
 

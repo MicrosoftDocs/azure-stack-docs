@@ -1,5 +1,10 @@
 {
   "redirections": [
+    {
+      "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-wac.md",
+      "redirect_url":"/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
+      "redirect_document_id": false
+    },
     { 
       "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
       "redirect_url": "/azure/iot-hub/", 
@@ -818,7 +823,7 @@
     },
     { 
       "source_path": "azure-stack/hci/known-issues.md", 
-      "redirect_url": "https://support.microsoft.com/help/4595086", 
+      "redirect_url": "/azure-stack/hci/hci-known-issues", 
       "redirect_document_id": false 
     },
     { 
@@ -947,14 +952,85 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/hci/known-issues-22h2.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/manage/azure-arc-enabled-virtual-machines.md",
       "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/azure-hybrid-benefit.md",
+      "redirect_url": "/azure-stack/hci/concepts/azure-hybrid-benefit-hci",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/hci/deploy/cluster-set.md",
       "redirect_url": "/windows-server/failover-clustering/cluster-set",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deploy-manage-azure-stack-hci.md",
+      "redirect_url": "/system-center/vmm/deploy-manage-azure-stack-hci",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/legacy-collection-telemetry-extension.md",
+      "redirect_url": "/azure-stack/hci/overview",
+      "redirect_document_id": true
+    },
+    {    
+      "source_path": "azure-stack/hci/manage/extend-volumes.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-volumes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/delete-volumes.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-volumes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/azure-arc-vm-management-proxy.md",
+      "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-prerequisites",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-managed-lustre/preview-support.md",
+      "redirect_url": "/azure/azure-managed-lustre/amlfs-overview",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-rhel-8.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-hpc-alma-86.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-rhel-7.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-18.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-20.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-22.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_document_id": false
     }
   ]
+  
 }

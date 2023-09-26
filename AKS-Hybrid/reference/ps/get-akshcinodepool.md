@@ -1,5 +1,5 @@
 ---
-title: Get-AksHciNodePool for AKS on Azure Stack HCI and Windows Server
+title: Get-AksHciNodePool for AKS hybrid
 author: mkostersitz
 description: The Get-AksHciNodePool PowerShell command lists the node pools in a Kubernetes cluster.
 ms.topic: reference

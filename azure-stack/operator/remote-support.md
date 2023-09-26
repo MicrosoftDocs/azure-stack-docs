@@ -5,10 +5,10 @@ description: Learn about remote support for Azure Stack Hub
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 08/23/2022
+ms.date: 07/27/2023
 ms.author: sethm
 ms.reviewer: shisab
-ms.lastreviewed: 04/19/2022
+ms.lastreviewed: 07/27/2023
 
 # Intent: As an Azure Stack operator, I want to use remote support to enable Microsoft support to diagnose and troubleshoot Azure Stack Hub
 ---
@@ -16,7 +16,9 @@ ms.lastreviewed: 04/19/2022
 # Remote support for Azure Stack Hub
 
 > [!IMPORTANT]
-> Remote support is in public preview and only available in the following versions:
+> Remote support is only available in the following versions:
+>
+> - 2206
 > - 2108
 > - 2102 with [hotfix 1.2102.30.132](/azure-stack/operator/hotfix-1-2102-30-132) and later
 
@@ -60,7 +62,7 @@ In Azure Stack Hub, remote support can be managed using [privileged endpoint](az
 
 ### Enable remote support for diagnostics
 
-In this example, you enable remote support access for diagnostic related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
+In this example, you enable remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
@@ -186,8 +188,6 @@ The following sections list the allowed cmdlets that Microsoft support can execu
 |`Invoke-AzsSupportWmiTracing` | Enables `netsh` ETL tracing for a series of WMI providers on a specified computer name. Also supports a series of procdumps of winmgt and WmiPrvSE if specified. |
 |`Save-AzsSupportObjectToFile` | Save an object to a file in a consistent format creating a file that contains the current time as a timestamp in the file name. |
 |`Send-AzureStackDiagnosticLog` | Sends Azure Stack diagnostic logs to Microsoft. |
-|`Start-AzsSupportClusterPerfAnalysis` | Analyzes key performance data such as cluster performance history and exports performance data. |
-|`Start-AzsSupportRingManager` | Provides a simplified management experience for working with Service Fabric clusters. |
 |`Start-AzsSupportSdnDiagnostic` | Automated network diagnostics and data collection/tracing script. |
 |`Start-AzsSupportStorageDiagnostic` | Runs a series of storage specific diagnostic tests and generates a storage report. |
 

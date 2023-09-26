@@ -14,6 +14,18 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2206.2.76
+        href: hotfix-1-2206-2-76.md      
+      - name: Hotfix 1.2301.2.63
+        href: hotfix-1-2301-2-63.md
+      - name: Hotfix 1.2301.2.60
+        href: hotfix-1-2301-2-60.md
+      - name: Hotfix 1.2206.2.66
+        href: hotfix-1-2206-2-66.md
+      - name: Hotfix 1.2108.2.130
+        href: hotfix-1-2108-2-130.md            
+      - name: Hotfix 1.2102.31.153
+        href: hotfix-1-2102-31-153.md      
       - name: Hotfix 1.2206.2.52
         href: hotfix-1-2206-2-52.md      
       - name: Hotfix 1.2108.2.127
@@ -260,6 +272,8 @@
       href: azure-stack-connect-expressroute.md  
     - name: Enable CLI for users
       href: azure-stack-cli-admin.md
+    - name: VPN Fast Path
+      href: azure-stack-vpn-fast-path-operators.md
     - name: Set up management environment
       items:
       - name: Install PowerShell Az
@@ -284,6 +298,8 @@
       href: azure-stack-change-subscription-owner.md
     - name: Start and stop Azure Stack Hub
       href: azure-stack-start-and-stop.md
+    - name: Decommission an Azure Stack Hub system
+      href: azure-stack-hub-decommission.md
     - name: Azure Site Recovery tool
       href: site-recovery-failback.md
     - name: Manage capacity
@@ -430,6 +446,8 @@
           href: app-service-migrate-sql-server.md
       - name: Release notes
         items:
+        - name: 2302 release notes [February 2023]
+          href: app-service-release-notes-2302.md
         - name: 2022 H1 release notes [October 2022]
           href: app-service-release-notes-2022-h1.md
         - name: 2021 Q3 release notes [December 2021]
@@ -448,6 +466,24 @@
         href: container-registries-troubleshoot.md
     - name: Azure Kubernetes Service
       href: aks-add-on.md
+    - name: Azure Site Recovery
+      items:
+      - name: Overview
+        href: azure-site-recovery-overview.md
+      - name: Deploy
+        items:
+        - name: Deployment overview
+          href: site-recovery-deploy.md
+        - name: Deploy source environment
+          href: site-recovery-deploy-source.md
+        - name: Deploy target environment
+          href: site-recovery-deploy-target.md        
+      - name: Protect virtual machines
+        href: protect-virtual-machines.md
+      - name: Capacity planning
+        href: azure-site-recovery-capacity-planning.md
+      - name: Known issues
+        href: azure-site-recovery-known-issues.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -462,7 +498,7 @@
         items:
         - name: Apply updates
           href: resource-provider-apply-updates.md
-        - name: Backup & restore
+        - name: Back up and restore
           href: azure-stack-backup-enable-backup-console.md
         - name: Collect logs
           href: diagnostic-log-collection.md
@@ -476,6 +512,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.3.0 release notes [Jan 2023] 
+          href: event-hubs-rp-release-1-2102-30.md
         - name: 1.2102.2.0 release notes [Mar 2022] 
           href: event-hubs-rp-release-1-2102-20.md        
         - name: 1.2102.1.0 release notes [Oct 2021] 
@@ -518,6 +556,8 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
+        - name: MySQL resource provider 2.0.13.0 release notes
+          href: azure-stack-mysql-resource-provider-2-0-13.md
         - name: MySQL resource provider 2.0.00.0 release notes
           href: azure-stack-mysql-resource-provider-20000.md
         - name: MySQL resource provider 1.1.93.0 release notes
@@ -544,6 +584,8 @@
         href: azure-stack-sql-resource-provider-remove.md 
       - name: SQL resource provider release notes
         items:
+        - name: SQL resource provider 2.0.13.0 release notes
+          href: azure-stack-sql-resource-provider-2-0-13.md 
         - name: SQL resource provider 2.0.00.0 release notes
           href: azure-stack-sql-resource-provider-20000.md 
         - name: SQL resource provider 1.1.93.0 release notes

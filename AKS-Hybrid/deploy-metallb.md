@@ -83,21 +83,34 @@ With the AKS cluster deployed, configure MetalLB to handle traffic for Kubernete
    kubectl create namespace metallb-system
    ```
 
-2. Add the virtual IP address range to a `values.yaml` configuration file:
-
-   ```yaml
-   configInline:
-     address-pools:
-     - name: default
-       protocol: layer2
-       addresses:
-       - 10.193.2.150-10.193.2.169
-   ```
-
-3. Install MetalLB using Helm:
+2. Install MetalLB using Helm:
 
    ```powershell
-   helm install metallb metallb/metallb -f values.yaml --namespace metallb-system
+   helm install metallb metallb/metallb --namespace metallb-system
+   ```
+
+3. Add the virtual IP address pool and L2 advertisement custom resources:
+
+   ```bash
+   cat <<EOF | kubectl apply -f -
+   apiVersion: metallb.io/v1beta1
+   kind: IPAddressPool
+   metadata:
+     name: ippool
+     namespace: metallb-system
+   spec:
+     addresses:
+     - 10.193.2.150-10.193.2.169
+   ---
+   apiVersion: metallb.io/v1beta1
+   kind: L2Advertisement
+   metadata:
+     name: l2adv
+     namespace: metallb-system
+   spec:
+     ipAddressPools:
+     - ippool
+   EOF
    ```
 
 ## Verify the applications are reachable

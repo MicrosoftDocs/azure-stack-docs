@@ -17,10 +17,25 @@ Once you've deployed Azure Arc Resource Bridge, the infrastructure administrator
 Before you begin, make sure you meet the following requirements:
 - Have access to an Azure subscription.
 - Have installed the Azure Arc Resource Bridge, deployed the AKS hybrid extension and created a Custom Location. If you have not, visit [Deploy Azure Arc Resource Bridge](deploy-arc-resource-bridge-windows-server.md).
-- Make sure that the IP addresses you give here do not overlap with the VIP pool or k8sNodePool you created by running `New-AksHciNetworkSetting`, `New-AksHciClusterNetwork`, or `New-ArcHciAksConfigFiles`.
-- You have Azure Arc Resource Bridge's kubeconfig
 
 IP address exhaustion can lead to Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](concepts-node-networking.md#minimum-ip-address-reservations-for-an-aks-hybrid-deployment).
+
+## Install pre-requisite PowerShell modules
+Run the following commands on all nodes of your Azure Stack HCI or Windows Server cluster:
+
+```PowerShell
+Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted 
+Install-PackageProvider -Name NuGet -Force  
+Install-Module -Name PowershellGet -Force 
+Exit 
+```
+
+Open a new elevated PowerShell window and run the following command on all nodes of your Azure Stack HCI or Windows Server cluster:
+
+```PowerShell
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.29
+Exit 
+```
 
 ## Choose between Static IP [recommended] and DHCP based networks
 
@@ -39,16 +54,15 @@ You can choose between Static IP and DHCP based networks for your AKS hybrid clu
 | $vmPoolEnd | The end IP address of your VM IP pool. The address must be in range of the subnet. |
 | $vipPoolStart | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. |
 | $vipPoolEnd | The end IP address of the VIP pool |
-| $appliancekubeconfig | The location where you stored Arc Resource Bridge's kubeconfig |
 
 ```powershell
-New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd -kubeconfig $appliancekubeconfig
+New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd 
 ```
 
 #### Static IP based network with Vlan
 
 ```powershell
-New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd -kubeconfig $appliancekubeconfig -vlanID $vlanid
+New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd -vlanID $vlanid
 ```
 
 ### [DHCP](#tab/dhcp)
@@ -59,16 +73,15 @@ New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddres
 | $vswitchname | The name of your VM switch |
 | $vipPoolStart | The start IP address of the VIP pool. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. Make sure your VIP pool is in the same subnet as the DHCP server but excluded from the DHCP scope. |
 | $vipPoolEnd | The end IP address of the VIP pool. |
-| $appliancekubeconfig | The location where you stored Arc Resource Bridge's kubeconfig |
 
 ```powershell
-New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -kubeconfig $appliancekubeconfig
+New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd
 ```
 
 #### DHCP based network with Vlan
 
 ```powershell
-New-KvaVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -kubeconfig $appliancekubeconfig -vlanid $vlanid
+New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -vlanid $vlanid
 ```
 ---
 
@@ -82,6 +95,9 @@ Once you've created the on-premises network, run the following command to connec
 | $customlocationID  | ARM ID of the custom location you created on top of Azure Arc Resource Bridge. You can get the ARM ID using `az customlocation show --name <custom location name> --resource-group <azure resource group> --query "id" -o tsv`
 
 ```azurecli
+$env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+az extension remove -n hybridaks
+az extension add -n hybridaks --version 0.2.2
 az hybridaks vnet create -n <Name of your Azure connected AKS hybrid vnet> -g $resource_group --custom-location $customlocationID --moc-vnet-name $clustervnetname
 ```
 
@@ -97,18 +113,17 @@ If someone other than you will be creating the AKS hybrid clusters, use the foll
 
 ## Download the Kubernetes VHD file
 
-Run the following command to download the VHD file specific for `v1.21.9` Kubernetes version. For this preview release, you can only download the VHD file for Kubernetes version 1.21.9:
+Run the following command to download the VHD file specific for `v1.22.11` Kubernetes version. For this preview release, you can only download the VHD file for Kubernetes version 1.22.11:
 
 ### [For Linux nodes](#tab/linux-vhd)
 ```powershell
-Add-KvaGalleryImage -kubernetesVersion 1.21.9
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
 ```
 
 ### [For Windows nodes](#tab/windows-vhd)
 ```powershell
-Add-KvaGalleryImage -kubernetesVersion 1.21.9 -imageType Windows
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11 -imageType Windows
 ```
-
 ---
 
 ## Give the end user the following details

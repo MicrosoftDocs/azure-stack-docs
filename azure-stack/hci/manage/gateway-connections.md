@@ -2,15 +2,15 @@
 title: Manage Azure Stack HCI gateway connections using Windows Admin Center
 description: Learn to manage your SDN gateway connections on Azure Stack HCI using Windows Admin Center.
 ms.topic: how-to
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 06/21/2021
+ms.date: 04/17/2023
 ---
 
 # Manage Azure Stack HCI gateway connections
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this topic, learn how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN). Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
 
@@ -91,6 +91,11 @@ You can also create a gateway pool using `New-NetworkControllerGatewayPool` Powe
 1. Provide an **L3 Peer IP address**. This must belong to the L3 Logical Subnet that you provided above. This IP will serve as the next hop, once the traffic destined to the physical network from the virtual network reaches the SDN gateway.
 1. Click **Create** to configure the connection.
 1. In the **Gateway Connections** list, verify the Configuration State of the connection is **Success**.
+
+    > [!NOTE]
+    > If you plan to deploy L3 [Gateway connections](../manage/gateway-connections.md) with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
+    > - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
+    > - ebgp multihop: This specifies additional hops required since the BGP neighbor is more than one hop away.
 
 ## View all gateway connections
 

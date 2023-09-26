@@ -1,5 +1,5 @@
 ---
-title: Remove-AksHciCluster for AKS on Azure Stack HCI and Windows Server
+title: Remove-AksHciCluster for AKS hybrid
 description: The Remove-AksHciCluster PowerShell command deletes a managed Kubernetes cluster.
 author: sethmanheim
 ms.topic: reference

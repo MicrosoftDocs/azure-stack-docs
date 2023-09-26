@@ -1,5 +1,5 @@
 ---
-title: Remove-AksHciGmsaCredentialSpec for AKS on Azure Stack HCI and Windows Server
+title: Remove-AksHciGmsaCredentialSpec for AKS hybrid
 author: sethmanheim
 description: The Remove-AksHciGmsaCredentialSpec PowerShell command deletes a credentials spec for gMSA deployments on a cluster.
 ms.topic: reference

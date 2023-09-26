@@ -6,17 +6,17 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/13/2022
+ms.date: 07/20/2023
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
 
 # Azure Stack HCI solution overview
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2-21h2.md)]
 
 Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
 
-Azure Stack HCI is [available for download with a free 60-day trial](https://azure.microsoft.com/products/azure-stack/hci/hci-download/). You can either purchase integrated systems from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options. Use the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) to estimate the hardware requirements for your Azure Stack HCI solution. This sizing tool is currently in public preview and requires your personal Microsoft account (MSA) credentials (not a corporate account) to sign in.
+Azure Stack HCI is [available for download from the Azure portal with a free 60-day trial](deploy/download-azure-stack-hci-software.md). You can either purchase integrated systems from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options. Use the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) to estimate the hardware requirements for your Azure Stack HCI solution. This sizing tool is currently in public preview and requires your personal Microsoft account (MSA) credentials (not a corporate account) to sign in.
 
 Azure Stack HCI is intended as a virtualization host, so most apps and server roles must run inside of virtual machines (VMs). Exceptions include Hyper-V, Network Controller, and other components required for Software Defined Networking (SDN) or for the management and health of hosted VMs.
 
@@ -25,10 +25,6 @@ Azure Stack HCI is delivered as an Azure service and [billed to an Azure subscri
 ## Azure Stack HCI features and architecture
 
 Azure Stack HCI is a world-class, integrated virtualization stack built on proven technologies that have already been deployed at scale, including Hyper-V, Storage Spaces Direct, and Azure-inspired SDN. It's part of the [Azure Stack family](../index.yml), using the same software-defined compute, storage, and networking software as [Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/).
-
-Watch the video on the high-level features of Azure Stack HCI:
-
-> [!VIDEO https://www.youtube.com/embed/fw8RVqo9dcs]
 
 Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. All clustered servers, including single server, share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
@@ -74,6 +70,16 @@ Customers often choose Azure Stack HCI in the following scenarios.
 | Data center consolidation and modernization       | Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support.|
 | Run Azure services on-premises                    | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview).|
 
+#### Demo of using Microsoft Azure with Azure Stack HCI
+
+For an end-to-end example of using Microsoft Azure to manage apps and infrastructure at the Edge using Azure Arc, Azure Kubernetes Service, and Azure Stack HCI, see the **Retail edge transformation with Azure hybrid** demo.
+
+Using a fictional customer, inspired directly by real customers, you will see how to deploy Kubernetes, set up GitOps, deploy VMs, use Azure Monitor and drill into a hardware failure, all without leaving the Azure portal.
+
+> [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
+
+This video includes preview functionality which shows real product functionality, but in a closely controlled environment.
+
 ### Azure integration benefits
 
 Azure Stack HCI allows you to take advantage of cloud and on-premises resources working together and natively monitor, secure, and back up to the cloud.
@@ -117,7 +123,7 @@ Some Microsoft partners are developing software that extends the capabilities of
 
 ## Next steps
 
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)
 - [Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md)
 - [Use Azure Stack HCI with Windows Admin Center](get-started.md)
 - [Compare Azure Stack HCI to Windows Server](concepts/compare-windows-server.md)

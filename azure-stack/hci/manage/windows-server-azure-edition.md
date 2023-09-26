@@ -7,16 +7,20 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/12/2022
+ms.custom:
+  - devx-track-azurecli
+ms.date: 04/18/2023
 ---
 
 # Deploy Windows Server Azure Edition VMs
 
-> Applies to: Azure Stack HCI, version 21H2, Azure Stack HCI, version 22H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure Marketplace.
 
 Azure Stack HCI is the only on-premises platform to run Windows Server Azure Edition with [Azure Automanage](/azure/automanage/automanage-windows-server-services-overview). Azure Automanage brings new capabilities specifically to Windows Server Azure Edition, including [Hotpatch](/azure/automanage/automanage-hotpatch), [SMB over QUIC](/windows-server/storage/file-server/smb-over-quic), and [Extended network for Azure](/windows-server/manage/windows-admin-center/azure/azure-extended-network).
+
+To upgrade an existing VM to Windows Server Azure Edition, see [Upgrade VMs to Windows Server Azure Edition](upgrade-vm-windows-server-azure-edition.md).
 
 ## Considerations
 
@@ -24,12 +28,19 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
 - **Azure Stack HCI host version:**  Windows Server Azure Edition can be deployed only on Azure Stack HCI version 21H2 and Azure Stack HCI version 22H2.
 
-- **VM licensing:**  Windows Server Azure Edition can be licensed with a Windows Server subscription, or with Software Assurance.
+- **VM licensing:**  Windows Server Azure Edition can be licensed with either:
+
+  - **Windows Server subscription**: Turn on the subscription on your Azure Stack HCI cluster, then apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest. To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
+
+  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-bring-your-own-license-byol-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
+
+   > [!Tip]
+   > If you already have Windows Server Datacenter licenses with active Software Assurance, you can also turn on Windows Server subscription at no additional cost through [Azure Hybrid Benefit](../concepts/azure-hybrid-benefit-hci.md?tabs=azureportal). This is more convenient and allows you to save more.
 
 - **Azure Benefits:** You'll need to enable Azure Benefits on your cluster. Azure Benefits is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads like Windows Server Azure Edition. For specific information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 
 >[!NOTE]
->While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), this experience is in preview for this Azure Stack HCI release.
+> While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), using Hotpatch with Azure Edition guest VMs on Azure Stack HCI is in preview for this Azure Stack HCI release.
 
 ## Deploy the OS
 
@@ -143,12 +154,11 @@ Convert-VHD -Path "<path_to_vhd\filename.vhd>" -DestinationPath "destination_pat
 
 There are a few important differences using Hotpatch with Azure Edition guest VMs on Azure Stack HCI in this preview release as compared to using Hotpatch with Azure Edition guest VMs on Azure IaaS.
 
-These differences include the following limitations for this preview release:
+These differences include the following limitations for using Hotpatch with Azure Edition guest VMs for this Azure Stack HCI release:
 
 - Hotpatch configuration isn't available using Azure Update Manager.
 - Hotpatch can't be disabled.
 - Automatic Patching orchestration isn't available.
-- Orchestration must be performed manually, such as by using Windows Update with SConfig.
 
 ## Next steps
 

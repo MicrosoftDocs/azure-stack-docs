@@ -78,10 +78,8 @@ landingContent:
             url: manage/create-stretched-volumes.md
           - text: Protect volumes
             url: manage/volume-encryption-deduplication.md
-          - text: Expand volumes
-            url: manage/extend-volumes.md
-          - text: Delete volumes
-            url: manage/delete-volumes.md
+          - text: Manage volumes
+            url: manage/manage-volumes.md
 
  # Card
   - title: Manage the cluster

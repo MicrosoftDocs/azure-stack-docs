@@ -13,7 +13,7 @@ ms.date: 09/29/2022
 
 In this how-to guide, you'll
 
-- Create an AKS hybrid cluster using Azure CLI. The cluster will be Azure Arc-connected by default
+- Create an AKS hybrid cluster using Azure CLI. The cluster is Azure Arc-connected by default
 - While creating the cluster, you will provide an Azure AD group that contains the list of Azure AD users with Kubernetes cluster administrator access
 - Access the AKS hybrid cluster using `kubectl` and your Azure AD identity
 - Run a sample multi-container application with a web front-end and a Redis instance in the AKS hybrid cluster
@@ -28,7 +28,7 @@ In this how-to guide, you'll
 
 - You can run the following steps in a local Azure CLI. Make sure you have the latest version of [Az CLI installed](/cli/azure/install-azure-cli) on your local machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 
-- In order to connect to the AKS hybrid cluster from anywhere, you need to create an **Azure AD group** and add members to it. All the members in the Azure AD group will have cluster administrator access to the AKS hybrid cluster. **Make sure to add yourself to the Azure AD group.** If you do not add yourself, you will not be able to access the AKS hybrid cluster using `kubectl`. To learn more about creating Azure AD groups and adding users, read [create Azure AD groups using Azure Portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+- In order to connect to the AKS hybrid cluster from anywhere, you need to create an **Azure AD group** and add members to it. All the members in the Azure AD group will have cluster administrator access to the AKS hybrid cluster. **Make sure to add yourself to the Azure AD group.** If you don't add yourself, you'll not be able to access the AKS hybrid cluster using `kubectl`. To learn more about creating Azure AD groups and adding users, read [create Azure AD groups using Azure Portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 - [Download and install Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) on your local machine. The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. 
 
@@ -37,7 +37,9 @@ In this how-to guide, you'll
 Run the following command to install the AKS hybrid extension:
 
 ```azurecli
-az extension add -n hybridaks
+$env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+az extension remove -n hybridaks
+az extension add -n hybridaks --version 0.2.2
 ```
 
 ## Create an AKS hybrid cluster
@@ -45,7 +47,7 @@ az extension add -n hybridaks
 Use the `az hybridaks create` command to create an AKS hybrid cluster. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) command.
 
 ```azurecli
-az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --aad-admin-group-object-ids <comma seperated list of Azure AD group IDs> --generate-ssh-keys 
+az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --aad-admin-group-object-ids <comma seperated list of Azure AD group IDs> --generate-ssh-keys --kubernetes-version "1.24.11"
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.

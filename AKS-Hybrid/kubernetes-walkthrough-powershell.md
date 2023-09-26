@@ -3,11 +3,14 @@ title: Use PowerShell to set up Kubernetes on Azure Stack HCI and Windows Server
 description: Learn how to set up an Azure Kubernetes Service host and create AKS on Azure Stack HCI clusters using Windows PowerShell.
 author: sethmanheim
 ms.topic: quickstart
-ms.date: 07/11/2022
+ms.date: 01/19/2023
 ms.author: sethm 
 ms.lastreviewed: 05/02/2022
 ms.reviewer: jeguan
-ms.custom: mode-api, kr2b-contr-experiment
+ms.custom:
+  - mode-api
+  - kr2b-contr-experiment
+  - devx-track-azurepowershell
 
 # Intent: As an IT Pro, I want to use Windows PowerShell to create an AKS on Azure Stack HCI and Windows Server cluster.
 # Keyword: AKS setup PowerShell 
@@ -21,6 +24,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 > [!NOTE]
 > - If you have pre-staged cluster service objects and DNS records, see [Deploy an AKS host with prestaged cluster service objects and DNS records using PowerShell](prestage-cluster-service-host-create.md).
 > - If you have a proxy server, see [Set up an AKS host and deploy a workload cluster using PowerShell and a proxy server](set-proxy-settings.md).
+> - Installing AKS on Azure Stack HCI after setting up Arc VMs is not supported. Read [known issues with Arc VMs](/azure-stack/hci/manage/troubleshoot-arc-enabled-vms#limitations-and-known-issues) for more information. If you want to install AKS on Azure Stack HCI, you will have to uninstall Arc Resource Bridge and then install AKS on Azure Stack HCI. You can deploy a new Arc Resource Bridge again after cleanup and installing AKS-HCI, but it won't remember the VM entities created previously. 
 
 ## Before you begin
 
@@ -28,6 +32,7 @@ In this quickstart, you'll learn the setup for an Azure Kubernetes Service (AKS)
 - Use an Azure account to register your AKS host for billing. For more information, visit [Azure requirements](.\system-requirements.md#azure-requirements).
 
 ## Install the AksHci PowerShell module
+
 [!INCLUDE [install the AksHci PowerShell module](./includes/install-akshci-ps.md)]
 
 ## Register the resource provider to your subscription
@@ -51,6 +56,7 @@ Run the following command to register your Azure subscription to Azure Arc enabl
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
 Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+Register-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 ```
 
 To validate the registration process, run the following PowerShell command:
@@ -58,6 +64,7 @@ To validate the registration process, run the following PowerShell command:
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
 Get-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
+Get-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 ```
 
 ## Step 1: Prepare your machine(s) for deployment
@@ -122,7 +129,8 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 ```
 
 ### Option 2: Using an Azure service principal
-If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Stack HCI and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-on-azure-stack-hci-and-windows-server-using-a-service-principal).
+
+If you do not have access to a subscription on which you're an "Owner", you can register your AKS host to Azure for billing using a service principal. For more information about how to use a service principal, see [register AKS on Azure Stack HCI and Windows Server using a service principal](reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal).
 
 ## Step 5: Start a new deployment
 

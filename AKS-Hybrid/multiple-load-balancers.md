@@ -17,7 +17,7 @@ ms.topic: how-to
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to deploy one or more instances of the **HAProxy** load balancer in AKS hybrid, and how to scale up or down the load balancer configuration in the target cluster. 
+This article describes how to deploy one or more instances of the **HAProxy** load balancer in AKS hybrid, and how to scale out or in the load balancer configuration in the target cluster. 
 
 In AKS hybrid, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. This VM is used to load balance requests to the Kubernetes API server and for handling traffic to application services. 
 
@@ -39,7 +39,7 @@ To deploy multiple load balancers during the workload cluster creation, use the 
    $lbcfg = New-AksHciLoadBalancerSetting -name "haProxyLB" -loadBalancerSku HAProxy -vmSize Standard_K8S3_v1 -loadBalancerCount 3
    ```
 
-1. Deploy a workload cluster without providing the load balancer configuration using the following command:
+1. Deploy a workload cluster by providing the load balancer configuration using the following command:
 
    ```powershell
    New-AksHciCluster -name "holidays" -nodePoolName "thanksgiving" -nodeCount 2 -OSType linux -nodeVmSize Standard_A4_v2 -loadBalancerSettings $lbCfg
@@ -47,12 +47,12 @@ To deploy multiple load balancers during the workload cluster creation, use the 
 
 1. Verify that a new workload cluster is created with a load balancer deployed as a virtual machine running **HAProxy** to manage traffic for your applications.
 
-## Scale up the load balancer instances
+## Scale out the load balancer instances
 
 > [!IMPORTANT]
 > Make sure you have enough physical memory and storage in your cluster before performing this operation. If the amount of physical memory required to deploy the requested number of load balancers is insufficient, this operation will fail.
 
-To scale up (or down) your load balancer instances after deployment of a workload cluster, follow these steps:
+To scale out (or in) your load balancer instances after deployment of a workload cluster, follow these steps:
 
 1. Run `Set-AksHciLoadBalancer` with the number of instances you want to deploy in the cluster
 

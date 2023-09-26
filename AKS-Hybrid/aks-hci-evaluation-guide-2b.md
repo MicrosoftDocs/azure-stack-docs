@@ -1,13 +1,14 @@
 ---
 title: Deploy AKS infrastructure using PowerShell
-description: Evaluate AKS hybrid, Step 2a - Deploy AKS on your Windows Virtual Machine by using PowerShell for your AKS hybrid evaluation.
+description: Quickstart - Deploy AKS hybrid on an Azure Virtual Machine using PowerShell to evaluate Azure Kubernetes Service hybrid deployment options.
 author: sethmanheim
-ms.topic: conceptual
-ms.date: 11/03/2022
+ms.topic: quickstart
+ms.custom:
+  - devx-track-azurepowershell
+ms.date: 12/16/2022
 ms.author: sethm 
 ms.lastreviewed: 08/29/2022 
 ms.reviewer: oadeniji
-#Intent: As an IT Pro, I need to learn how to deploy AKS in an Azure Virtual Machine.
 #Keyword: Azure Virtual Machine deployment, Evaluate AKS hybrid in Azure
 ---
 
@@ -15,7 +16,7 @@ ms.reviewer: oadeniji
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) for your evaluation of AKS hybrid. You'll first use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host, and finally, deploy a target cluster, onto which you can test deployment of a workload.
+With your Windows Server Hyper-V host up and running, you can now deploy Azure Kubernetes Service (AKS) for your evaluation of AKS hybrid. You'll use PowerShell to deploy the AKS management cluster on your Windows Server Hyper-V host. Then you'll deploy a target cluster on which you can test deployment of a workload.
 
 > [!NOTE]
 > If you prefer to use Windows Admin Center, see [Deploy AKS infrastructure using Windows Admin Center](aks-hci-evaluation-guide-2a.md).
@@ -328,7 +329,7 @@ Get-AksHciNodePool -clusterName akshciclus001
 1. Scale your Kubernetes cluster to add a Windows Node Pool and worker node. This process triggers the download and extraction of a Windows container host image, which takes a few minutes.
 
    ```powershell
-   New-AksHciNodePool -clusterName akshciclus001 -name windowsnodepool -count 1 -osType windows
+   New-AksHciNodePool -clusterName akshciclus001 -name windowsnodepool -count 1 -osType Windows -osSku Windows2022
    ```
 
 2. Next, scale your Kubernetes cluster to have 2 Linux worker nodes:
@@ -411,4 +412,4 @@ For more information about integrating with Azure Arc, see [Connect an AKS clust
 
 In this step, you've successfully deployed the AKS management cluster, deployed and scaled a Kubernetes cluster, and integrated with Azure Arc. You can now move forward to the next stage, in which you can deploy a sample application.
 
-* [Part 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md).
+- [Part 3 - Explore the AKS hybrid environment](aks-hci-evaluation-guide-3.md).

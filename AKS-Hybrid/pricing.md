@@ -5,11 +5,11 @@ description: Detailed pricing information for AKS hybrid
 ms.topic: conceptual
 author: baziwane
 ms.author: rbaziwane 
-ms.lastreviewed: 10/28/2022
-ms.reviewer: sethm
+ms.lastreviewed: 05/31/2023
+ms.reviewer: rbaziwane
 ms.date: 10/04/2022
 
-# Intent: As a Subscription Owner, I want to understand how the AKS service is priced and what I am paying for.
+# Intent: As a subscription owner, I want to understand how the AKS hybrid service is priced and what I am paying for.
 # Keyword: pricing
 
 ---
@@ -17,7 +17,10 @@ ms.date: 10/04/2022
 
 # Azure Kubernetes Service (AKS) hybrid pricing details
 
-Azure Kubernetes Service (AKS) is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS on your existing hardware whether in your own on-premises data center or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
+Azure Kubernetes Service (AKS) hybrid is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS hybrid on your existing hardware either in your own on-premises data center, or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day will be applied.
+
+> [!IMPORTANT]
+> Starting in June 2023, we have made revisions that solidify the 60-day evaluation period as a one-time benefit per subscription, at the end of which a pay-as-you-go rate per vCPU will apply. This modification means the evaluation period no longer resets when you reinstall AKS hybrid. This change is being made to better align with our existing pricing guidelines and to ensure the continued provision of high-quality services.
 
 ## Pricing details
 
@@ -48,7 +51,7 @@ For detailed pricing information, see the [AKS hybrid pricing details](https://a
 
 - If you enable hyper-threading on the physical computer, this will reduce the measured vCPU count by 50 percent.
 
-Note: Running Windows Server containers on AKS requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, Azure Hybrid benefits may apply, hence reducing or eliminating the Windows Server license fees.
+Note: Running Windows Server containers on AKS requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid benefits](azure-hybrid-benefit.md) may apply, hence reducing or eliminating the Windows Server license fees.
 
 ## Impact of hyper-threading on pricing for AKS
 

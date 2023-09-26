@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) file drivers in AKS hybrid
 description: Learn how to use Container Storage Interface (CSI) drivers to manage files in AKS hybrid.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/04/2022
+ms.date: 01/23/2023
 ms.author: sethm 
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -54,7 +54,6 @@ If multiple nodes need concurrent access to the same storage volumes in AKS hybr
          source: \\smb-server\share
          csi.storage.k8s.io/node-stage-secret-name: "smbcreds"
          csi.storage.k8s.io/node-stage-secret-namespace: "default"
-         createSubDir: "false"  # optional: create a sub dir for new volume
       reclaimPolicy: Retain  # only Retain is supported
       volumeBindingMode: Immediate
       mountOptions:

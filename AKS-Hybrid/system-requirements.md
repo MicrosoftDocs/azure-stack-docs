@@ -4,9 +4,9 @@ description: Before you begin Azure Kubernetes Service on Azure Stack HCI and Wi
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 09/27/2022
-ms.reviewer: abha
-ms.date: 05/20/2022
+ms.lastreviewed: 04/19/2023
+ms.reviewer: mikek
+ms.date: 11/03/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS Azure Stack HCI system requirements
@@ -15,13 +15,16 @@ ms.date: 05/20/2022
 
 # System requirements for Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
 
 This article covers the requirements for setting up Azure Kubernetes Service on Azure Stack HCI or on Windows Server Datacenter and using it to create Kubernetes clusters. For an overview of AKS on Azure Stack HCI and Windows Server, see [AKS on Azure Stack HCI and Windows Server overview](overview.md).
 
 ## Active Directory requirements
 
-For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter failover cluster with 2 or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are fulfilled:
+
+>[!NOTE]
+>Active Directory is not required for single node Azure Stack HCI or Windows Server deployments. 
 
 - Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows Time Service](/windows-server/networking/windows-time-service/windows-time-service-top).
 
@@ -34,6 +37,10 @@ For AKS on Azure Stack HCI and Windows Server or Windows Server Datacenter to fu
 ## Hardware requirements
 
 Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
+
+> [!IMPORTANT]
+> The host systems for production deployments must be physical hardware. Nested virtualization is not supported outside of use through the [evaluation guide](aks-hci-evaluation-guide.md).
+> Nested virtualization is characterized as deploying Azure Stack HCI or Windows Server in a virtual machine and installing AKS hybrid in that virtual machine.
 
 ### Maximum supported hardware specifications
 
@@ -87,7 +94,7 @@ For an Azure Stack HCI or Windows Server cluster, you've two supported storage c
 - **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
 - **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe. 
 
-Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](/hci/concepts/choose-drives). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
+Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](/azure-stack/hci/concepts/choose-drives). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
 
 Kuberentes uses etcd to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information you, [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
 
@@ -98,7 +105,7 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 ## Network requirements
 
-The following requirements apply to an Azure Stack HCI or Windows Server cluster and a Windows Server Datacenter cluster:
+The following requirements apply to an Azure Stack HCI cluster and a Windows Server Datacenter cluster:
 
 - Verify that you've an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes. 
 
@@ -185,21 +192,16 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 
 ----
 
+> [!NOTE]
+> AKS on Azure Stack HCI and Windows Server stores/processes customer data. By default, customer data stays within the region the customer deploys the service instance in. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
+
+#### Additional URL requirements for Azure Arc features
+The above URL list covers the minimum required URLs for you to connect your AKS on Azure Stack HCI service to Azure for billing. You will have to allow additional URLs if you want to use cluster connect, custom locations, Azure RBAC and other Azure services like Azure Monitor, etc. on your AKS workload cluster. For a complete list of Arc URLs, visit [Azure Arc enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements).
+You should also review [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements). Since Arc for server agents are now installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
+
 #### Stretched clusters in AKS on Azure Stack HCI and AKS on Windows Server
 
 As outlined in the [Stretched clusters overview](/azure-stack/hci/concepts/stretched-clusters), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters is not supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
-
-#### Arc for Kubernetes requirements
-> [!NOTE]
-> Since the management cluster (AKS host) uses Azure Arc for billing, you must follow [these network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) for Azure Arc enabled Kubernetes clusters.
-
-#### Azure Stack HCI requirements
-> [!NOTE]
-> You should also review the [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements).
-
-#### Arc for servers requirements
-> [!NOTE]
-> Since Arc for servers are installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
 
 ## Windows Admin Center requirements
 
@@ -243,41 +245,38 @@ To check your access level, navigate to your subscription, select **Access contr
 - If you're using PowerShell to deploy an AKS Host or an AKS workload cluster, the user registering the cluster must have **at least one** of the following:
    - A user account with the built-in **Owner** role.
    - A service principal with **one of the following** access levels:
-      - The built-in [Kubernetes Cluster - Azure Arc Onboarding](/azure/role-based-access-control/built-in-roles#kubernetes-cluster---azure-arc-onboarding) role
       - The built-in [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role
       - The built-in [Owner](/azure/role-based-access-control/built-in-roles#owner) role
+
 
 If your Azure subscription is through an EA or CSP, the easiest way to deploy AKS on Azure Stack HCI and Windows Server is to ask your Azure admin to create a service principal with the right permissions. Admins can check the below section on how to create a service principal.
 
 ### Optional: Create a new service principal
 
-Run the following steps to create a new service principal with the built-in **Microsoft.Kubernetes connected cluster** role. Only subscription owners can create service principals with the right role assignment. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
+Run the following steps to create a new service principal with the built-in **Owner** role. Only subscription owners can create service principals with the right role assignment. You can check your access level by navigating to your subscription, clicking on **Access control (IAM)** on the left hand side of the Azure portal and then clicking on **View my access**.
 
-Install and import the following Azure PowerShell modules:
-
+Set the following PowerShell variables in a PowerShell admin window. Verify that the subscription and tenant are what you want to use to register your AKS host for billing.
 ```powershell
-Install-Module -Name Az.Accounts -Repository PSGallery -RequiredVersion 2.2.4
-Import-Module Az.Accounts 
-Install-Module -Name Az.Resources -Repository PSGallery -RequiredVersion 3.2.0
-Import-Module Az.Resources
-Install-Module -Name AzureAD -Repository PSGallery -RequiredVersion 2.0.2.128
-Import-Module AzureAD
+$subscriptionID = <Your Azure subscrption ID>
+$tenantID = <Your Azure tenant ID>
 ```
-**Close all PowerShell windows** and reopen a new administrative session.
+
+Install and import the AKS hybrid PowerShell module:
+```powershell
+Install-Module -Name AksHci
+```
 
 Sign in to Azure using the [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) PowerShell command: 
-
 ```powershell
-Connect-AzAccount
+Connect-AzAccount -tenant $tenantID
 ```
 
 Set the subscription you want to use to register your AKS host for billing as the default subscription by running the [Set-AzContext](/powershell/module/az.accounts/set-azcontext) command.
 ```powershell
-Set-AzContext -Subscription myAzureSubscription
+Set-AzContext -Subscription $subscriptionID
 ```
 
 Verify that your sign-in context is correct by running the [Get-AzContext](/powershell/module/az.accounts/get-azcontext) PowerShell command. Verify that the subscription, tenant and account are what you want to use to register your AKS host for billing.
-
 ```powershell
 Get-AzContext
 ```
@@ -288,13 +287,13 @@ Name                                     Account                      Subscripti
 myAzureSubscription (92391anf-...        user@contoso.com             myAzureSubscription          AzureCloud                   xxxxxx-xxxx-xxxx-xxxxxx
 ```
 
-Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the  "Microsoft. Kubernetes connected cluster" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
+Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the **Owner** role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true).
 
 ```powershell
-$sp = New-AzADServicePrincipal -role "Microsoft.Kubernetes connected cluster"
+$sp = New-AzADServicePrincipal -role "Owner" -scope /subscriptions/$subscriptionID
 ```
 
-Retrieve the password for the service principal by running the following command:
+Retrieve the password for the service principal by running the following command. Note that the below command only works for Az.Accounts 2.6.0 or lesser. We automatically download Az.Accounts 2.6.0 module when you install the AksHci PowerShell module.
 
 ```powershell
 $secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret))

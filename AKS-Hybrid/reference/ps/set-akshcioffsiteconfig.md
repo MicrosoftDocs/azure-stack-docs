@@ -1,5 +1,5 @@
 ---
-title: Set-AksHciOffsiteConfig for AKS on Azure Stack HCI
+title: Set-AksHciOffsiteConfig for AKS hybrid
 description: The Set-AksHciOffsiteConfig PowerShell command sets the offsite configuration to use offline download
 ms.topic: reference
 ms.date: 10/03/2022
@@ -12,7 +12,7 @@ ms.reviewer: jeguan
 # Set-AksHciOffsiteConfig
 
 ## Synopsis
-Sets the offsite configuration to get the AKS on HCI images with offline downloading at an offsite location.
+Sets the offsite configuration to get the AKS hybrid images with offline downloading at an offsite location.
 
 ## Syntax
 
@@ -22,7 +22,7 @@ Set-AksHciOffsiteConfig  [-version <String>]
 ```
 
 ## Description
-Sets the offsite configuration to get the AKS on HCI images with offline downloading at an offsite location.
+Sets the offsite configuration to get the AKS hybrid images with offline downloading at an offsite location.
 
 ## Examples
 
@@ -33,7 +33,7 @@ Set-AksHciOffsiteConfig -version 1.1.41 -stagingShare c:\akshciimages
 ## Parameters
 
 ### -version
-The version of AKS on HCI that you want to download. The default is the latest version.
+The version of AKS hybrid that you want to download. The default is the latest version.
 
 ```yaml
 Type: System.String
@@ -48,7 +48,7 @@ Accept wildcard characters: False
 ```
 
 ### -stagingShare
-The local path where the AKS on HCI images will be downloaded. This parameter is required.
+The local path where the AKS hybrid images will be downloaded. This parameter is required.
 
 ```yaml
 Type: System.String

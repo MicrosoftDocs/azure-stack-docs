@@ -9,23 +9,15 @@ ms.author: jgerend
 
 # Manage Network ATC
 
-> Applies to: Azure Stack HCI, version 21H2 and later
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article discusses how to manage Network ATC after it has been deployed. Network ATC simplifies the deployment and network configuration management for Azure Stack HCI clusters. You use Windows PowerShell to manage Network ATC.
-
-
-
-
-
-
-
-
 
 ## Add a server node
 
 You can add nodes to a cluster. Each node in the cluster receives the same intent, improving the reliability of the cluster. The new server node must meet all requirements as listed in the Requirements and best practices section of [Host networking with Network ATC](../deploy/network-atc.md).
 
-In this task, you will add additional nodes to the cluster and observe how a consistent networking configuration is enforced across all nodes in the cluster.
+In this task, you add additional nodes to the cluster and observe how a consistent networking configuration is enforced across all nodes in the cluster.
 
 1. Use the `Add-ClusterNode` cmdlet to add the additional (not configured) nodes to the cluster. You only need management access to the cluster at this time. Each node in the cluster should have all pNICs named the same.
 
@@ -35,9 +27,7 @@ In this task, you will add additional nodes to the cluster and observe how a con
     Get-ClusterNode
     ```
 
-
-
-2. Check the status across all cluster nodes. You need to use the `-ClusterName` parameter in version 21H2. Network ATC will auto detect cluster name from version 22H2 and later.
+1. Check the status across all cluster nodes. You need to use the `-ClusterName` parameter in version 21H2. Network ATC auto detects cluster name from version 22H2 and later.
 
     # [21H2](#tab/21H2)
     ```powershell
@@ -57,21 +47,12 @@ In this task, you will add additional nodes to the cluster and observe how a con
     > [!NOTE]
     > If one of the servers you're adding to the cluster is missing a network adapter that's present on the other servers, `Get-NetIntentStatus` reports the error `PhysicalAdapterNotFound`.
 
-
-  
-
-
-
-
-3. Check the provisioning status of all nodes using `Get-NetIntentStatus`. The cmdlet reports the configuration for both nodes. Note that this may take a similar amount of time to provision as the original node.
+1. Check the provisioning status of all nodes using `Get-NetIntentStatus`. The cmdlet reports the configuration for both nodes. This may take a similar amount of time to provision as the original node.
 
     # [21H2](#tab/21H2)
     ```powershell
     Get-NetIntentStatus -ClusterName HCI01
     ```
-    
-
-
 
     # [22H2](#tab/22H2)
     ```powershell
@@ -79,24 +60,16 @@ In this task, you will add additional nodes to the cluster and observe how a con
     ```
     ---
 
-
-
-
     You can also add several nodes to the cluster at once.
-
 
 ## Modify default VLANs for storage or management systems
 
-You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent
-
-
+You can use default VLANs specified by Network ATC or use values specific to your environment. To do this use -ManagementVLAN and -StorageVLANs parameter on Add-NetIntent.
 
    # [21H2](#tab/21H2)
    ``` powershell
    Add-NetIntent -Name MyIntent -ClusterName HCI01 -StorageVLANs 101, 102 -ManagementVLAN 10
    ```
-
-
 
    # [22H2](#tab/22H2)
    ``` powershell
@@ -106,7 +79,7 @@ You can use default VLANs specified by Network ATC or use values specific to you
 
 ## Add or remove network adapters from an intent
 
-This task will help you update the network adapters assigned to an intent. If there are changes to the physical adapters in your cluster, you can use `Update-NetIntentAdapter` to update the relevant intents. 
+This task helps you update the network adapters assigned to an intent. If there are changes to the physical adapters in your cluster, you can use `Update-NetIntentAdapter` to update the relevant intents.
 
 In this example we installed two new adapters, pNIC03 and pNIC04, and we want them to be used in our intent named 'Cluster_Compute'.
 
@@ -116,7 +89,7 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
     Get-NetAdapter -Name pNIC03, pNIC04 -CimSession (Get-ClusterNode).Name | Select Name, PSComputerName
     ```
 
-2. Run the following command to update the intent to include the old and new network adapters. 
+1. Run the following command to update the intent to include the old and new network adapters. 
 
     # [21H2](#tab/21H2)
     ```powershell
@@ -130,11 +103,7 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
 
     ---
 
-
-
-
-
-3. Check that the net adapters were successfully added to the intent.
+1. Check that the net adapters were successfully added to the intent.
 
     # [21H2](#tab/21H2)
     ```powershell
@@ -150,144 +119,136 @@ In this example we installed two new adapters, pNIC03 and pNIC04, and we want th
     ---
 
 ## Global overrides and cluster network settings
-> Applies to Azure Stack HCI, version 22H2 and later. 
 
-Global overrides and cluster network settings is a new feature Network ATC is introducing in version 22H2 (and later versions). Network ATC mainly consists of 2 kinds of global overrides: Proxy Configurations, and Cluster Network Features. 
+> Applies to Azure Stack HCI, version 22H2 and later.
 
-### Cluster network features 
+Global overrides and cluster network settings is a new feature Network ATC is introducing in version 22H2 (and later versions). Network ATC mainly consists of two kinds of global overrides: Proxy Configurations, and Cluster Network Features.
 
-In this section we go over the set of new Cluster Network Features that we are releasing with the 22H2 release. The new Cluster Network Features enable and optimize cluster network naming, managing cluster networks by controlling performance options, bandwidth limits, as well as managing live migrations. 
+### Cluster network features
 
-Below is a table of the Cluster Network Features Network ATC configures, and their default values: 
+In this section, we go over the set of new Cluster Network Features that we are releasing with the 22H2 release. The new Cluster Network Features enable and optimize cluster network naming, managing cluster networks by controlling performance options, bandwidth limits, and managing live migrations.
 
-
-
-
-
-
-
-
-
-
-
-
-###### Cluster network naming  
+###### Cluster network naming
 
 Description: By default, failover clustering always names unique subnets like this: “Cluster Network 1”, “Cluster Network 2”, and so on. This is unconnected to the actual use of the network because there is no way for clustering to know how you intended to use the networks – until now!
 
 Once you define your configuration through Network ATC, we now understand how the subnets are going to be used and can name the cluster networks more appropriately. For example, we know which subnet is used for management, storage network 1, storage network 2 (and so on, if applicable). As a result we can name the networks more contextually.
 
-In the picture below, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
+In the following screenshot, you can see the storage intent was applied to this set of adapters. There is another unknown cluster network shown which the administrator may want to investigate.
 
 :::image type="content" source="media/manage-network-atc/cluster-network-naming.png" alt-text="Screenshot of Cluster Network Selection." lightbox="media/manage-network-atc/cluster-network-naming.png":::
 
-###### Live migration network selection 
+###### Live migration network selection
+
 This value enables or disables the intent-based live migration cluster network selection logic. By default, this is enabled ($true) and results in cluster networks being selected based on the submitted intent information. If Live Migration Network Selection is disabled, the user can set a live migration network and default behavior would revert to what you would expect in the absence of Network ATC. 
 
 ###### Enable virtual machine migration: performance selection
-This value enables or disables the intent-based selection of virtual machine live migration transports. By default, this is enabled ($true) and results in the system automatically determining the best live migration transport, eg: SMB, Compression, TCP. 
 
-If disabled: 
+This value enables or disables the intent-based selection of virtual machine live migration transports. By default, this is enabled and results in the system automatically determining the best live migration transport, for example: SMB, Compression, TCP.
+
+If disabled:
+
 - Live migration transport selection uses the transport specified in VirtualMachineMigrationPerformanceOption override value.
-- If the VirtualMachineMigrationPerformanceOption override value is not specified, Network ATC will revert to behavior when Network ATC was absent.
+- If the VirtualMachineMigrationPerformanceOption override value is not specified, Network ATC reverts to behavior when Network ATC was absent.
 - If null, but VirtualMachineMigrationPerformanceOption is configured, configure this option to $false and use the option specified in the VirtualMachineMigrationPerformanceOption override
 
-
 ###### Virtual machine migration performance option
-Network ATC configures the live migration transport to TCPIP, Compression, or SMB. If null, the system will use the selection logic outlined in this spec to determine the best transport.
 
-###### Maximum concurrent virtual machine migrations 
+Network ATC configures the live migration transport to TCPIP, Compression, or SMB. If null, the system calculates the best option based on the system configuration and capabilities.
+
+###### Maximum concurrent virtual machine migrations
+
 Network ATC sets the default number of concurrent Virtual Machine migrations to one. The range of possible, allowed values for this property is one through ten. 
 
 ###### Maximum SMB migration bandwidth
-This value enforces a specific bandwidth limit (in Gbps) on SMB-transported live migration traffic to prevent consumption of the SMB traffic class. This value is only usable if the live migration transport is SMB. Default value will be calculated.
+
+This value enforces a specific bandwidth limit (in Gbps) on SMB-transported live migration traffic to prevent consumption of the SMB traffic class. This value is only usable if the live migration transport is SMB. Default value is calculated.
 
 #### Customize cluster network settings  
 
+Cluster Network Features work through their defined defaults. Since disabling cluster network features doesn't land you in an unsupported scenario, Network ATC has an option for a globaloverride. You can use the global override to adjust properties and make cluster network feature properties customized to your needs.
 
-Cluster Network Features work through their defined defaults. Since disabling cluster network features does not land you in an unsupported scenario, Network ATC has an option for a globaloverride. You can use the global override to adjust properties and make cluster network feature properties customized to your needs. To add a GlobalOverride with Network ATC,
+To add a GlobalOverride with Network ATC:
+
 ```powershell
 $clusterOverride = New-NetIntentGlobalClusterOverrides
 
 ```
-The 'clusterOverride' variable has the following properties: 
 
+The 'clusterOverride' variable has the following properties: 
 
 :::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object." lightbox="media/manage-network-atc/cluster-override.png"::: 
 
+Once you set any property for the override, you can add it as a GlobalOverride for your cluster with the following command:
 
-Once you set any property for the override, you can add it as a GlobalOverride for your cluster with the following command: 
 ```powershell
 Set-NetIntent -GlobalClusterOverrides $clusterOverride
 ```
+
  And to verify a successful deployment of your clusterOverride run: 
+
 ```powershell
 Get-NetIntentStatus -Globaloverrides
 ```
+
 To remove the GlobalClusterOverride, run the following: 
 ```powershell
 Remove-NetIntent -GlobalOverrides $clusterOverride
 ```
 
-
-### Proxy configurations 
+### Proxy configurations
 
 Proxy is unlike the existing ATC overrides because it is not tied to a specific intent. In fact, we support proxy configuration when there are no intents. We support this scenario best by implementing new global override parameters on Add/Set/Get-NetIntent, similar to Cluster Network Features.
 
-The New-NetIntentProxyOverride command will be used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
+The `New-NetIntentGlobalProxyOverrides` command is used to create an override object similar to existing QoS, RSS, and SwitchConfig overrides. The command will have two parameter sets:
 
 ###### Default parameter set
 
-ProxyServer: The ProxyServer parameter will take strings as inputs which represent the URL of the proxy server to use for https traffic. ProxyServer is a required parameter when setting up Proxy. 
+ProxyServer: The ProxyServer parameter takes strings as inputs, which represent the URL of the proxy server to use for https traffic. ProxyServer is a required parameter when setting up Proxy.
 
-ProxyBypass: The ProxyBypass parameter takes a list of sites that should be visited by bypassing the proxy. To bypass all short name hosts, use `local`  
+ProxyBypass: The ProxyBypass parameter takes a list of sites that should be visited by bypassing the proxy. To bypass all short name hosts, use `local`.  
 
-AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. 
-
-
-
-
+AutoDetect: AutoDetect is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled.
 
 ###### AutoDetect parameter set:
 AutoConfigUrl: The AutoConfigUrl parameter takes a string with the URL of the proxy server to use for http and/or https traffic as input. For both traffic classes, use a semi-colon to separate. This is a required parameter. 
 
 AutoDetect: Similar to the AutoDetect parameter above, this is a true or false parameter that dictates if Web Proxy Auto-Discovery (WPAD) should be enabled. 
 
-
-
-
 ##### Setting-up proxy
 
-
-You can set your proxy configurations in the following ways: 
+You can set your proxy configurations in the following ways:
 
 ```powershell
-$ProxyOverride = New-NetIntentProxyOverride -ProxyServer https://itg.contoso.com:3128 -ProxyBypass = *.foo.com
+$ProxyOverride = New-NetIntentGlobalProxyOverrides -ProxyServer https://itg.contoso.com:3128 -ProxyBypass = *.foo.com
 ```
 
-Using the AutoDetect switch, you can set your proxy configuration in the following way: 
+Using the `AutoConfigURL` switch, you can set your proxy configuration in the following way:
+
 ```powershell
-$ProxyOverride = New-NetIntentProxyOverride -AutoConfigUrl https://itg.contoso.com
+$ProxyOverride = New-NetIntentGlobalProxyOverrides -AutoConfigUrl https://itg.contoso.com
 ```
 
-You can add a GlobalProxyOverride for your cluster as follows: 
+You can add a GlobalProxyOverride for your cluster as follows:
+
 ```powershell
 Set-NetIntent -GlobalProxyOverride $ProxyOverride
 ```
 
 To remove a GlobalProxyOverride for your cluster as follows:
+
 ```powershell
 Remove-NetIntent -GlobalOverride $ProxyOverride
 ```
 
-Finally, to access any global override, Proxy or Cluster, you can run the following: 
+Finally, to access any global override, Proxy or Cluster, you can run the following commands:
 
 ```powershell
 $Obj1 = Get-NetIntent -GlobalOverride
 $Obj1
 ```
 
-More specifically, you can access the Proxy and Cluster global overrides respectively, by calling their respective parameters for `$Obj1` 
+More specifically, you can access the Proxy and Cluster global overrides respectively, by calling their respective parameters for `$Obj1`:
 
 ```powershell
 $Obj1.ProxyOverride
@@ -296,11 +257,10 @@ $Obj1.ClusterOverride
 
 ## Update or override network settings
 
-This task will help you override the default configuration which has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
+This task helps you override the default configuration that has already been deployed. This example modifies the default bandwidth reservation for SMB Direct.
 
 > [!IMPORTANT]
 > We recommend using the default settings, which are based on Microsoft's best practices.
-
 
 1. Get a list of possible override cmdlets. We use wildcards to see the options available:
 
@@ -358,9 +318,8 @@ Add-NetIntent -Name MyIntent -AdapterName vmNIC01, vmNIC02 -Management -Compute 
 
 ## Remove an intent
 
-
 Sometimes you might want to remove all intents and start over—for example, to test a different configuration. While you can remove intents using the Remove-NetIntent cmdlet, doing so won't clean up the virtual switches and DCB/NetQoS configurations created for the intents. Network ATC makes a point of not destroying things on your system, which is usually a good thing, but it does mean you must perform some manual steps to start over.
- 
+
 To remove all network intents and delete the virtual switches and NetQoS configurations created by Network ATC for these intents, run the following script in a PowerShell session running locally on one of the servers in the cluster (doesn't matter which).
 
 ```powershell
@@ -409,18 +368,25 @@ Get-NetQosFlowControl | Disable-NetQosFlowControl
 
 ## Post-deployment tasks
 
-There are several tasks to complete following a Network ATC deployment, including the following:
+The tasks to complete following a Network ATC deployment is depending on the Azure Stack HCI version used. For Azure Stack HCI 21H2 Clusters:
 
-- **Add DHCP or static IP addresses to storage adapters:** Use DHCP on the storage VLANs or set static IP addresses using the NetIPAdress cmdlet. You can't use the Automatic Private IP Addressing (APIPA) addresses given to adapters that can't get an address from a DHCP server.
+- **Add IP addresses to storage adapters:** Use DHCP on the storage VLANs or set static IP addresses using the NetIPAdress cmdlet. You can't use the Automatic Private IP Addressing (APIPA) addresses given to adapters that can't get an address from a DHCP server.
 
-- **Set SMB bandwidth limits:** If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration does not consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
+- **Set SMB bandwidth limits:** If live migration uses SMB Direct (RDMA), configure a bandwidth limit to ensure that live migration doesn't consume all the bandwidth used by Storage Spaces Direct and Failover Clustering.
 
-- **Stretched cluster configuration:** To add Stretch S2D to your ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after the ATC has implemented the specified intent. Additionally, the following limitations exist: 
-   - All nodes in the cluster must use the same intent.
-   - There is no automatic provisioning for storage replica.
+- **Stretched cluster configuration:** To add Stretch S2D to your Network ATC managed system you must manually add the appropriate configuration (including vNICs, etc.) after Network ATC has implemented the specified intent.
+
+Automatic IP Addressing for Storage Adapters, SMB Bandwidth Limits, and Stretch configurations can now be deployed with Network ATC in Azure Stack HCI 22H2. For more information, please see: 
+
+- **Automatic Storage IP Addressing**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md#automatic-storage-ip-addressing)
+
+- **Cluster Network Settings and SMB Configuration**: [Automatic Storage IP Addressing with Network ATC](../deploy/network-atc.md#cluster-network-settings)
+
+- **Stretch cluster configuration**: [Set-up Stretch Clustering with Network ATC](../deploy/create-cluster-powershell.md#step-54-set-up-stretch-clustering-with-network-atc)
 
 ## Validate automatic remediation
-Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this optional section, we will modify our configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
+
+Network ATC ensures that the deployed configuration stays the same across all cluster nodes. In this optional section, we modify our configuration (without an override) emulating an accidental configuration change and observe how the reliability of the system is improved by remediating the misconfigured property.
 
 1. Check the adapter's existing MTU (JumboPacket) value:
 
@@ -428,10 +394,10 @@ Network ATC ensures that the deployed configuration stays the same across all cl
     Get-NetAdapterAdvancedProperty -Name pNIC01, pNIC02, vSMB* -RegistryKeyword *JumboPacket -Cimsession (Get-ClusterNode).Name
     ```
 
-1. Modify one of the physical adapter's MTU without specifying an override. This emulates an accidental change or "configuration drift" which must be remediated.
+1. Modify one of the physical adapter's MTU without specifying an override. This emulates an accidental change or "configuration drift", which must be remediated.
 
     ```powershell
-    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryKeyword *JumboPacket -RegistryValue 4088
+    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryValue 4088
     ```
 
 1. Verify that the adapter's existing MTU (JumboPacket) value has been modified:
@@ -462,5 +428,6 @@ For more validation examples, see the [Network ATC demo](https://youtu.be/Z8UO6E
 
 ## Next steps
 
-- Learn more about [Network ATC](../concepts/network-atc-overview.md). 
+- Learn more about [Network ATC](../concepts/network-atc-overview.md).
+- Understand Network ATC in more detail by taking a look at some [Frequently Asked Questions](network-atc-faq.md)
 - Learn more about [Stretched clusters](../concepts/stretched-clusters.md).

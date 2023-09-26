@@ -1,21 +1,23 @@
 ---
-title: Create Azure Stack HCI VM from local share images via Azure CLI
-description: Learn how to create Azure Stack HCI VM images using source images from a local share on your cluster.
+title: Create Azure Stack HCI VM from local share images via Azure CLI (preview)
+description: Learn how to create Azure Stack HCI VM images using source images from a local share on your cluster (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/03/2022
+ms.custom:
+  - devx-track-azurecli
+ms.date: 07/14/2023
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from a local share on your cluster. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -91,7 +93,7 @@ PS C:\ClusterStorage\Volume1> $ImageSourcePath = "C:\ClusterStorage\Volume1\Wind
 1. Create the VM image starting with a specified image in a local share on your Azure Stack HCI cluster.
 
     ```azurecli
-    az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --image-path $galleryImageSourcePath --name $galleryImageName --os-type $osType
+    az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --image-path $ImageSourcePath --name $ImageName --os-type $osType
     ```
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in the local share and the network bandwidth available for the download.
 
@@ -165,6 +167,8 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
     1. **Local file share path.** Specify the local share path for the source image on your HCI cluster.
 
+    1. **Storage path.** Select the storage path for your VM image.
+
 1. Select **Review + Create** to create your VM image.
 
    :::image type="content" source="./media/manage-vm-resources/create-an-image-from-local-share.png" alt-text="Screenshot of the Create an image page showing the fields in the Basics tab." lightbox="./media/manage-vm-resources/create-an-image-from-local-share.png":::
@@ -217,7 +221,7 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
 # [Azure portal](#tab/azureportal)
 

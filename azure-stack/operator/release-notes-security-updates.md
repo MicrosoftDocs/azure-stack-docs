@@ -3,13 +3,10 @@ title: Azure Stack Hub release notes - security updates
 description: Learn about security updates for Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/06/2022
+ms.date: 09/14/2023
 ms.author: sethm
 ms.reviewer: carlosm
-ms.lastreviewed: 07/06/2022
-
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+ms.lastreviewed: 05/18/2023
 
 ---
 
@@ -17,6 +14,741 @@ ms.lastreviewed: 07/06/2022
 # Azure Stack Hub security updates
 
 This article lists all the security updates in the last three updates of Azure Stack Hub. This information is provided for reference purposes only.
+
+::: moniker range="azs-2306"
+## 2306 update
+
+Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update.
+
+For more information about these vulnerabilities, click on the links below.
+
+- [CVE-2023-32022](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32022)
+- [CVE-2023-32021](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32021)
+- [CVE-2023-32020](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32020)
+- [CVE-2023-32019](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32019)
+- [CVE-2023-32017](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32017)
+- [CVE-2023-32016](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32016)
+- [CVE-2023-32015](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32015)
+- [CVE-2023-32014](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32014)
+- [CVE-2023-32013](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32013)
+- [CVE-2023-32011](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32011)
+- [CVE-2023-32009](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32009)
+- [CVE-2023-32008](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32008)
+- [CVE-2023-29373](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29373)
+- [CVE-2023-29372](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29372)
+- [CVE-2023-29371](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29371)
+- [CVE-2023-29370](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29370)
+- [CVE-2023-29369](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29369)
+- [CVE-2023-29368](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29368)
+- [CVE-2023-29367](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29367)
+- [CVE-2023-29366](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29366)
+- [CVE-2023-29365](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29365)
+- [CVE-2023-29364](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29364)
+- [CVE-2023-29363](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29363)
+- [CVE-2023-29362](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29362)
+- [CVE-2023-29361](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29361)
+- [CVE-2023-29360](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29360)
+- [CVE-2023-29359](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29359)
+- [CVE-2023-29358](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29358)
+- [CVE-2023-29355](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29355)
+- [CVE-2023-29352](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29352)
+- [CVE-2023-29351](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29351)
+- [CVE-2023-29346](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29346)
+- [CVE-2023-24938](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24938)
+- [CVE-2023-24937](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24937)
+- [CVE-2023-24949](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24949)
+- [CVE-2023-24947](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24947)
+- [CVE-2023-24903](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24903)
+- [CVE-2023-29325](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29325)
+- [CVE-2023-29324](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-29324)
+- [CVE-2023-24948](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24948)
+- [CVE-2023-24946](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24946)
+- [CVE-2023-24945](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24945)
+- [CVE-2023-24944](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24944)
+- [CVE-2023-24943](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24943)
+- [CVE-2023-24942](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24942)
+- [CVE-2023-24941](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24941)
+- [CVE-2023-24901](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24901)
+- [CVE-2023-24940](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24940)
+- [CVE-2023-24900](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24900)
+- [CVE-2023-24939](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24939)
+- [CVE-2023-24899](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24899)
+- [CVE-2023-24898](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24898)
+- [CVE-2023-28283](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28283)
+- [CVE-2023-28251](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28251)
+- [CVE-2023-24932](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24932)
+- [CVE-2023-21729](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21729)
+- [CVE-2023-28308](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28308)
+- [CVE-2023-28307](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28307)
+- [CVE-2023-28306](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28306)
+- [CVE-2023-28305](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28305)
+- [CVE-2023-28302](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28302)
+- [CVE-2023-28298](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28298)
+- [CVE-2023-28297](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28297)
+- [CVE-2023-28293](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28293)
+- [CVE-2023-28256](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28256)
+- [CVE-2023-28278](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28278)
+- [CVE-2023-28255](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28255)
+- [CVE-2023-28277](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28277)
+- [CVE-2023-28275](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28275)
+- [CVE-2023-28276](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28276)
+- [CVE-2023-28254](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28254)
+- [CVE-2023-28276](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28276)
+- [CVE-2023-28253](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28253)
+- [CVE-2023-28275](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28275)
+- [CVE-2023-28252](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28252)
+- [CVE-2023-28274](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28274)
+- [CVE-2023-28252](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28252)
+- [CVE-2023-28274](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28274)
+- [CVE-2023-28273](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28273)
+- [CVE-2023-28250](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28250)
+- [CVE-2023-28249](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28249)
+- [CVE-2023-28272](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28272)
+- [CVE-2023-28271](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28271)
+- [CVE-2023-28248](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28248)
+- [CVE-2023-28247](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28247)
+- [CVE-2023-28270](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28270)
+- [CVE-2023-28246](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28246)
+- [CVE-2023-28269](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28269)
+- [CVE-2023-28268](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28268)
+- [CVE-2023-28244](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28244)
+- [CVE-2023-28266](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28266)
+- [CVE-2023-28267](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28267)
+- [CVE-2023-28243](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28243)
+- [CVE-2023-28266](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28266)
+- [CVE-2023-28241](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28241)
+- [CVE-2023-28240](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28240)
+- [CVE-2023-28238](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28238)
+- [CVE-2023-28237](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28237)
+- [CVE-2023-28236](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28236)
+- [CVE-2023-28238](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28238)
+- [CVE-2023-28234](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28234)
+- [CVE-2023-28235](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28235)
+- [CVE-2023-28233](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28233)
+- [CVE-2023-28232](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28232)
+- [CVE-2023-28231](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28231)
+- [CVE-2023-28228](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28228)
+- [CVE-2023-28229](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28229)
+- [CVE-2023-28227](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28227)
+- [CVE-2023-28225](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28225)
+- [CVE-2023-28224](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28224)
+- [CVE-2023-28223](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28223)
+- [CVE-2023-28221](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28221)
+- [CVE-2023-28220](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28220)
+- [CVE-2023-28219](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28219)
+- [CVE-2023-28218](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28218)
+- [CVE-2023-28217](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28217)
+- [CVE-2023-28216](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-28216)
+- [CVE-2023-24931](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24931)
+- [CVE-2023-24929](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24929)
+- [CVE-2023-24887](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24887)
+- [CVE-2023-24928](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24928)
+- [CVE-2023-24886](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24886)
+- [CVE-2023-24927](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24927)
+- [CVE-2023-24885](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24885)
+- [CVE-2023-24926](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24926)
+- [CVE-2023-24884](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24884)
+- [CVE-2023-24925](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24925)
+- [CVE-2023-24883](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24883)
+- [CVE-2023-24924](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24924)
+- [CVE-2023-24912](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24912)
+- [CVE-2023-21769](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21769)
+- [CVE-2023-21727](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21727)
+- [CVE-2023-21554](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21554)
+- [CVE-2023-24880](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24880)
+- [CVE-2023-24876](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24876)
+- [CVE-2023-24908](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24908)
+- [CVE-2023-24908](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24908)
+- [CVE-2023-24872](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24872)
+- [CVE-2023-1018](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-1018)
+- [CVE-2023-24871](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24871)
+- [CVE-2023-23403](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23403)
+- [CVE-2023-24909](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24909)
+- [CVE-2023-24868](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24868)
+- [CVE-2023-24870](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24870)
+- [CVE-2023-24880](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24880)
+- [CVE-2023-24911](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24911)
+- [CVE-2023-24910](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24910)
+- [CVE-2023-23392](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23392)
+- [CVE-2023-1017](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-1017)
+- [CVE-2023-24913](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24913)
+- [CVE-2023-24869](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24869)
+- [CVE-2023-24907](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24907)
+- [CVE-2023-24867](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24867)
+- [CVE-2023-24906](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24906)
+- [CVE-2023-24866](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24866)
+- [CVE-2023-24865](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24865)
+- [CVE-2023-24864](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24864)
+- [CVE-2023-24863](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24863)
+- [CVE-2023-24862](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24862)
+- [CVE-2023-24861](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24861)
+- [CVE-2023-24859](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24859)
+- [CVE-2023-24858](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24858)
+- [CVE-2023-24857](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24857)
+- [CVE-2023-24856](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-24856)
+- [CVE-2023-23423](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23423)
+- [CVE-2023-23422](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23422)
+- [CVE-2023-23421](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23421)
+- [CVE-2023-23420](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23420)
+- [CVE-2023-23417](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23417)
+- [CVE-2023-23416](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23416)
+- [CVE-2023-23415](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23415)
+- [CVE-2023-23414](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23414)
+- [CVE-2023-23413](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23413)
+- [CVE-2023-23412](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23412)
+- [CVE-2023-23411](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23411)
+- [CVE-2023-23410](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23410)
+- [CVE-2023-23409](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23409)
+- [CVE-2023-23407](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23407)
+- [CVE-2023-23406](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23406)
+- [CVE-2023-23405](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23405)
+- [CVE-2023-23404](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23404)
+- [CVE-2023-23402](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23402)
+- [CVE-2023-23401](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23401)
+- [CVE-2023-23400](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23400)
+- [CVE-2023-23394](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23394)
+- [CVE-2023-23393](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23393)
+- [CVE-2023-23388](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23388)
+- [CVE-2023-23385](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23385)
+- [CVE-2023-21708](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21708)
+- [CVE-2023-21823](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21823)
+- [CVE-2023-23376](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-23376)
+- [CVE-2023-21805](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21805)
+- [CVE-2023-21702](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21702)
+- [CVE-2023-21701](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21701)
+- [CVE-2023-21700](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21700)
+- [CVE-2023-21699](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21699)
+- [CVE-2023-21697](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21697)
+- [CVE-2023-21695](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21695)
+- [CVE-2023-21694](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21694)
+- [CVE-2023-21693](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21693)
+- [CVE-2023-21692](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21692)
+- [CVE-2023-21691](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21691)
+- [CVE-2023-21690](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21690)
+- [CVE-2023-21689](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21689)
+- [CVE-2023-21688](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21688)
+- [CVE-2023-21686](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21686)
+- [CVE-2023-21685](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21685)
+- [CVE-2023-21822](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21822)
+- [CVE-2023-21819](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21819)
+- [CVE-2023-21818](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21818)
+- [CVE-2023-21820](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21820)
+- [CVE-2023-21817](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21817)
+- [CVE-2023-21816](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21816)
+- [CVE-2023-21813](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21813)
+- [CVE-2023-21812](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21812)
+- [CVE-2023-21812](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21812)
+- [CVE-2023-21811](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21811)
+- [CVE-2023-21804](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21804)
+- [CVE-2023-21802](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21802)
+- [CVE-2023-21801](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21801)
+- [CVE-2023-21799](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21799)
+- [CVE-2023-21798](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21798)
+- [CVE-2023-21797](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21797)
+- [CVE-2023-21684](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21684)
+- [CVE-2022-43552](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-43552)
+- [CVE-2023-21712](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21712)
+- [CVE-2023-21768](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21768)
+- [CVE-2023-21749](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21749)
+- [CVE-2023-21748](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21748)
+- [CVE-2023-21747](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21747)
+- [CVE-2023-21776](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21776)
+- [CVE-2023-21750](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21750)
+- [CVE-2023-21773](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21773)
+- [CVE-2023-21767](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21767)
+- [CVE-2023-21771](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21771)
+- [CVE-2023-21757](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21757)
+- [CVE-2023-21525](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21525)
+- [CVE-2023-21773](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21773)
+- [CVE-2023-21766](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21766)
+- [CVE-2023-21524](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21524)
+- [CVE-2023-21772](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21772)
+- [CVE-2023-21759](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21759)
+- [CVE-2023-21758](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21758)
+- [CVE-2023-21774](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21774)
+- [CVE-2023-21760](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21760)
+- [CVE-2023-21754](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21754)
+- [CVE-2023-21753](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21753)
+- [CVE-2023-21750](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21750)
+- [CVE-2023-21747](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21747)
+- [CVE-2023-21767](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21767)
+- [CVE-2023-21765](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21765)
+- [CVE-2023-21748](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21748)
+- [CVE-2023-21746](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21746)
+- [CVE-2023-21733](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21733)
+- [CVE-2023-21732](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21732)
+- [CVE-2023-21730](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21730)
+- [CVE-2023-21728](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21728)
+- [CVE-2023-21726](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21726)
+- [CVE-2023-21724](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21724)
+- [CVE-2023-21683](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21683)
+- [CVE-2023-21682](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21682)
+- [CVE-2023-21681](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21681)
+- [CVE-2023-21680](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21680)
+- [CVE-2023-21679](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21679)
+- [CVE-2023-21678](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21678)
+- [CVE-2023-21677](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21677)
+- [CVE-2023-21676](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21676)
+- [CVE-2023-21675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21675)
+- [CVE-2023-21674](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21674)
+- [CVE-2023-21563](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21563)
+- [CVE-2023-21561](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21561)
+- [CVE-2023-21560](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21560)
+- [CVE-2023-21559](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21559)
+- [CVE-2023-21558](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21558)
+- [CVE-2023-21557](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21557)
+- [CVE-2023-21556](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21556)
+- [CVE-2023-21555](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21555)
+- [CVE-2023-21552](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21552)
+- [CVE-2023-21551](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21551)
+- [CVE-2023-21550](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21550)
+- [CVE-2023-21549](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21549)
+- [CVE-2023-21548](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21548)
+- [CVE-2023-21543](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21543)
+- [CVE-2023-21541](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21541)
+- [CVE-2023-21540](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21540)
+- [CVE-2023-21539](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21539)
+- [CVE-2023-21547](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21547)
+- [CVE-2023-21546](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21546)
+- [CVE-2023-21537](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21537)
+- [CVE-2023-21536](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21536)
+- [CVE-2023-21535](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21535)
+- [CVE-2023-21532](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21532)
+- [CVE-2023-21527](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21527)
+- [CVE-2022-41094](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41094)
+- [CVE-2022-41076](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41076)
+- [CVE-2022-44707](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44707)
+- [ADV220005](https://msrc.microsoft.com/update-guide/vulnerability/ADV220005)
+- [CVE-2022-44697](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44697)
+- [CVE-2022-44689](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44689)
+- [CVE-2022-44683](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44683)
+- [CVE-2022-44682](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44682)
+- [CVE-2022-44681](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44681)
+- [CVE-2022-44680](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44680)
+- [CVE-2022-44679](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44679)
+- [CVE-2022-44678](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44678)
+- [CVE-2022-44677](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44677)
+- [CVE-2022-44676](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44676)
+- [CVE-2022-44675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44675)
+- [CVE-2022-44674](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44674)
+- [CVE-2022-44671](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44671)
+- [CVE-2022-44670](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44670)
+- [CVE-2022-44669](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44669)
+- [CVE-2022-44668](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44668)
+- [CVE-2022-44667](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44667)
+- [CVE-2022-44666](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44666)
+- [CVE-2022-41121](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41121)
+- [CVE-2022-41077](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41077)
+- [CVE-2022-41074](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41074)
+- [CVE-2022-41045](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41045)
+- [CVE-2022-41045](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41045)
+- [CVE-2022-41039](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41039)
+- [CVE-2022-41109](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41109)
+- [CVE-2022-41100](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41100)
+- [CVE-2022-41098](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41098)
+- [CVE-2022-41097](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41097)
+- [CVE-2022-41096](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41096)
+- [CVE-2022-41095](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41095)
+- [CVE-2022-41093](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41093)
+- [CVE-2022-41092](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41092)
+- [CVE-2022-41090](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41090)
+- [CVE-2022-41088](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41088)
+- [CVE-2022-41086](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41086)
+- [CVE-2022-41058](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41058)
+- [CVE-2022-41057](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41057)
+- [CVE-2022-41056](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41056)
+- [CVE-2022-41055](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41055)
+- [CVE-2022-41053](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41053)
+- [CVE-2022-41052](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41052)
+- [CVE-2022-41047](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41047)
+- [CVE-2022-41048](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41048)
+- [CVE-2022-37966](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37966)
+- [CVE-2022-38023](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38023)
+- [CVE-2022-38015](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38015)
+- [CVE-2022-37992](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37992)
+- [CVE-2022-37967](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37967)
+- [CVE-2022-23824](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-23824)
+- [CVE-2022-41125](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41125)
+- [CVE-2022-41073](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41073)
+- [CVE-2022-41114](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41114)
+- [CVE-2022-41054](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41054)
+- [CVE-2022-41113](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41113)
+- [CVE-2022-41102](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41102)
+- [CVE-2022-41101](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41101)
+- [CVE-2022-41050](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41050)
+- [CVE-2022-41049](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41049)
+- [CVE-2022-41091](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41091)
+- [CVE-2022-30198](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30198)
+- [CVE-2022-37997](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37997)
+- [CVE-2022-37976](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37976)
+- [CVE-2022-22035](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22035)
+- [CVE-2022-37984](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37984)
+- [CVE-2022-33634](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33634)
+- [CVE-2022-37995](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37995)
+- [CVE-2022-38021](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38021)
+- [CVE-2022-24504](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-24504)
+- [CVE-2022-38040](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38040)
+- [CVE-2022-38026](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38026)
+- [CVE-2022-33634](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33634)
+- [CVE-2022-38046](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38046)
+- [CVE-2022-38026](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38026)
+- [CVE-2022-37986](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37986)
+- [CVE-2022-37985](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37985)
+- [CVE-2022-38046](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38046)
+- [CVE-2022-33645](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33645)
+- [CVE-2022-38043](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38043)
+- [CVE-2022-38041](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38041)
+- [CVE-2022-38041](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38041)
+- [CVE-2022-37994](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37994)
+- [CVE-2022-37985](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37985)
+- [CVE-2022-37995](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37995)
+- [CVE-2022-38021](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38021)
+- [CVE-2022-38040](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38040)
+- [CVE-2022-37994](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37994)
+- [CVE-2022-38045](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38045)
+- [CVE-2022-38045](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38045)
+- [CVE-2022-38022](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38022)
+- [CVE-2022-38028](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38028)
+- [CVE-2022-38022](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38022)
+- [CVE-2022-37987](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37987)
+- [CVE-2022-34689](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34689)
+- [CVE-2022-34689](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34689)
+- [CVE-2022-38028](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38028)
+- [CVE-2022-38043](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38043)
+- [CVE-2022-30198](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30198)
+- [CVE-2022-37975](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37975)
+- [CVE-2022-33635](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33635)
+- [CVE-2022-37984](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37984)
+- [CVE-2022-37986](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37986)
+- [CVE-2022-35770](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35770)
+- [CVE-2022-35770](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35770)
+- [CVE-2022-37975](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37975)
+- [CVE-2022-37987](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37987)
+- [CVE-2022-37965](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37965)
+- [CVE-2022-22035](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22035)
+- [CVE-2022-33645](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33645)
+- [CVE-2022-24504](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-24504)
+- [CVE-2022-33635](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33635)
+- [CVE-2022-37997](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37997)
+- [CVE-2022-38042](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38042)
+- [CVE-2022-37993](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37993)
+- [CVE-2022-37993](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37993)
+- [CVE-2022-37991](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37991)
+- [CVE-2022-37990](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37990)
+- [CVE-2022-38038](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38038)
+- [CVE-2022-37989](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37989)
+- [CVE-2022-38037](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38037)
+- [CVE-2022-37988](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37988)
+- [CVE-2022-38033](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38033)
+- [CVE-2022-38032](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38032)
+- [CVE-2022-38031](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38031)
+- [CVE-2022-37982](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37982)
+- [CVE-2022-38029](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38029)
+- [CVE-2022-37977](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37977)
+- [CVE-2022-38029](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38029)
+- [CVE-2022-38034](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38034)
+- [CVE-2022-38036](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38036)
+- [CVE-2022-37978](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37978)
+- [CVE-2022-38025](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38025)
+- [CVE-2022-37973](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37973)
+- [CVE-2022-37998](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37998)
+- [CVE-2022-37980](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37980)
+- [CVE-2022-37970](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37970)
+- [CVE-2022-37983](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37983)
+- [CVE-2022-38016](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38016)
+- [CVE-2022-38030](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38030)
+- [CVE-2022-38039](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38039)
+- [CVE-2022-37979](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37979)
+- [CVE-2022-41081](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41081)
+- [CVE-2022-41033](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41033)
+- [CVE-2022-37981](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37981)
+- [CVE-2022-38003](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38003)
+- [CVE-2022-38051](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38051)
+- [CVE-2022-38050](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38050)
+- [CVE-2022-38000](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38000)
+- [CVE-2022-37996](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37996)
+- [CVE-2022-38027](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38027)
+- [CVE-2022-38044](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38044)
+- [CVE-2022-37999](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37999)
+- [CVE-2022-38047](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38047)
+
+::: moniker-end
+
+::: moniker range="azs-2301"
+## 2301 update
+
+Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update.
+
+For more information about these vulnerabilities, click on the links below.
+
+- [CVE-2022-41094](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41094)
+- [CVE-2022-41076](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41076)
+- [CVE-2022-44707](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44707)
+- [CVE-2022-44697](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44697)
+- [CVE-2022-44689](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44689)
+- [CVE-2022-44683](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44683)
+- [CVE-2022-44682](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44682)
+- [CVE-2022-44681](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44681)
+- [CVE-2022-44680](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44680)
+- [CVE-2022-44679](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44679)
+- [CVE-2022-44678](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44678)
+- [CVE-2022-44677](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44677)
+- [CVE-2022-44676](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44676)
+- [CVE-2022-44675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44675)
+- [CVE-2022-44674](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44674)
+- [CVE-2022-44671](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44671)
+- [CVE-2022-44670](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44670)
+- [CVE-2022-44669](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44669)
+- [CVE-2022-44668](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44668)
+- [CVE-2022-44667](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44667)
+- [CVE-2022-44666](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-44666)
+- [CVE-2022-41121](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41121)
+- [CVE-2022-41077](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41077)
+- [CVE-2022-41074](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41074)
+- [CVE-2022-41045](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41045)
+- [CVE-2022-41039](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41039)
+- [CVE-2022-41109](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41109)
+- [CVE-2022-41100](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41100)
+- [CVE-2022-41098](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41098)
+- [CVE-2022-41097](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41097)
+- [CVE-2022-41096](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41096)
+- [CVE-2022-41095](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41095)
+- [CVE-2022-41093](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41093)
+- [CVE-2022-41090](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41090)
+- [CVE-2022-41088](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41088)
+- [CVE-2022-41086](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41086)
+- [CVE-2022-41058](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41058)
+- [CVE-2022-41057](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41057)
+- [CVE-2022-41056](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41056)
+- [CVE-2022-41055](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41055)
+- [CVE-2022-41053](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41053)
+- [CVE-2022-41052](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41052)
+- [CVE-2022-41047](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41047)
+- [CVE-2022-41048](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41048)
+- [CVE-2022-37966](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37966)
+- [CVE-2022-38023](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38023)
+- [CVE-2022-38015](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38015)
+- [CVE-2022-37992](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37992)
+- [CVE-2022-37967](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37967)
+- [CVE-2022-23824](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-23824)
+- [CVE-2022-41125](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41125)
+- [CVE-2022-41073](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41073)
+- [CVE-2022-41054](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41054)
+- [CVE-2022-41113](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41113)
+- [CVE-2022-41102](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41102)
+- [CVE-2022-41101](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41101)
+- [CVE-2022-41050](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41050)
+- [CVE-2022-41049](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41049)
+- [CVE-2022-41091](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41091)
+- [CVE-2022-37976](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37976)
+- [CVE-2022-37984](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37984)
+- [CVE-2022-33634](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33634)
+- [CVE-2022-37995](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37995)
+- [CVE-2022-38040](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38040)
+- [CVE-2022-38026](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38026)
+- [CVE-2022-38046](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38046)
+- [CVE-2022-37986](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37986)
+- [CVE-2022-33645](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33645)
+- [CVE-2022-38043](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38043)
+- [CVE-2022-38041](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38041)
+- [CVE-2022-37985](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37985)
+- [CVE-2022-38021](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38021)
+- [CVE-2022-37994](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37994)
+- [CVE-2022-38045](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38045)
+- [CVE-2022-38022](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38022)
+- [CVE-2022-37987](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37987)
+- [CVE-2022-34689](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34689)
+- [CVE-2022-38028](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38028)
+- [CVE-2022-30198](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30198)
+- [CVE-2022-33635](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33635)
+- [CVE-2022-35770](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35770)
+- [CVE-2022-37975](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37975)
+- [CVE-2022-37965](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37965)
+- [CVE-2022-22035](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22035)
+- [CVE-2022-24504](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-24504)
+- [CVE-2022-37997](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37997)
+- [CVE-2022-38042](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38042)
+- [CVE-2022-37993](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37993)
+- [CVE-2022-37991](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37991)
+- [CVE-2022-37990](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37990)
+- [CVE-2022-38038](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38038)
+- [CVE-2022-37989](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37989)
+- [CVE-2022-38037](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38037)
+- [CVE-2022-37988](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37988)
+- [CVE-2022-38033](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38033)
+- [CVE-2022-38032](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38032)
+- [CVE-2022-38031](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38031)
+- [CVE-2022-37982](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37982)
+- [CVE-2022-38029](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38029)
+- [CVE-2022-37977](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37977)
+- [CVE-2022-38034](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38034)
+- [CVE-2022-37978](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37978)
+- [CVE-2022-37970](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37970)
+- [CVE-2022-37983](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37983)
+- [CVE-2022-38016](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38016)
+- [CVE-2022-38030](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38030)
+- [CVE-2022-38039](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38039)
+- [CVE-2022-37979](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37979)
+- [CVE-2022-41081](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41081)
+- [CVE-2022-41033](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-41033)
+- [CVE-2022-37981](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37981)
+- [CVE-2022-38003](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38003)
+- [CVE-2022-38051](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38051)
+- [CVE-2022-38050](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38050)
+- [CVE-2022-38000](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38000)
+- [CVE-2022-37996](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37996)
+- [CVE-2022-38027](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38027)
+- [CVE-2022-38044](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38044)
+- [CVE-2022-37999](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37999)
+- [CVE-2022-38047](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38047)
+- [CVE-2022-35803](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35803)
+- [CVE-2022-37959](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37959)
+- [CVE-2022-37958](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37958)
+- [CVE-2022-38006](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38006)
+- [CVE-2022-38005](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38005)
+- [CVE-2022-37957](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37957)
+- [CVE-2022-38004](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-38004)
+- [CVE-2022-37956](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37956)
+- [CVE-2022-37955](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37955)
+- [CVE-2022-37954](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37954)
+- [CVE-2022-34734](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34734)
+- [CVE-2022-34733](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34733)
+- [CVE-2022-34732](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34732)
+- [CVE-2022-34731](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34731)
+- [CVE-2022-34730](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34730)
+- [CVE-2022-34729](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34729)
+- [CVE-2022-34728](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34728)
+- [CVE-2022-34727](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34727)
+- [CVE-2022-34726](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34726)
+- [CVE-2022-34725](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34725)
+- [CVE-2022-34724](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34724)
+- [CVE-2022-34722](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34722)
+- [CVE-2022-34721](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34721)
+- [CVE-2022-34720](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34720)
+- [CVE-2022-34719](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34719)
+- [CVE-2022-34718](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34718)
+- [CVE-2022-35841](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35841)
+- [CVE-2022-35840](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35840)
+- [CVE-2022-35837](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35837)
+- [CVE-2022-35836](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35836)
+- [CVE-2022-35835](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35835)
+- [CVE-2022-35834](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35834)
+- [CVE-2022-35833](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35833)
+- [CVE-2022-35832](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35832)
+- [CVE-2022-35831](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35831)
+- [CVE-2022-35830](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35830)
+- [CVE-2022-33679](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33679)
+- [CVE-2022-33647](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33647)
+- [CVE-2022-30200](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30200)
+- [CVE-2022-30196](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30196)
+- [CVE-2022-30170](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30170)
+- [CVE-2022-26928](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-26928)
+- [CVE-2022-37969](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-37969)
+- [CVE-2022-35822](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35822)
+- [CVE-2022-34711](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34711)
+- [CVE-2022-35771](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35771)
+- [CVE-2022-35766](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35766)
+- [CVE-2022-35764](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35764)
+- [CVE-2022-35760](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35760)
+- [CVE-2022-35754](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35754)
+- [CVE-2022-35794](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35794)
+- [CVE-2022-34703](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34703)
+- [CVE-2022-35768](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35768)
+- [CVE-2022-35765](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35765)
+- [CVE-2022-33670](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-33670)
+- [CVE-2022-35769](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35769)
+- [CVE-2022-35767](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35767)
+- [CVE-2022-35820](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35820)
+- [CVE-2022-35757](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35757)
+- [CVE-2022-35793](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35793)
+- [CVE-2022-35763](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35763)
+- [CVE-2022-35795](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35795)
+- [CVE-2022-35792](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35792)
+- [CVE-2022-35762](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35762)
+- [CVE-2022-35761](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35761)
+- [CVE-2022-35759](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35759)
+- [CVE-2022-35758](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35758)
+- [CVE-2022-35756](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35756)
+- [CVE-2022-35755](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35755)
+- [CVE-2022-35753](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35753)
+- [CVE-2022-35752](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35752)
+- [CVE-2022-35751](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35751)
+- [CVE-2022-35750](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35750)
+- [CVE-2022-35749](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35749)
+- [CVE-2022-35748](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35748)
+- [CVE-2022-35747](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35747)
+- [CVE-2022-35746](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35746)
+- [CVE-2022-35745](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35745)
+- [CVE-2022-35744](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35744)
+- [CVE-2022-35743](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-35743)
+- [CVE-2022-34714](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34714)
+- [CVE-2022-34713](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34713)
+- [CVE-2022-34710](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34710)
+- [CVE-2022-34709](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34709)
+- [CVE-2022-34708](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34708)
+- [CVE-2022-34707](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34707)
+- [CVE-2022-34706](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34706)
+- [CVE-2022-34705](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34705)
+- [CVE-2022-34704](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34704)
+- [CVE-2022-34702](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34702)
+- [CVE-2022-34701](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34701)
+- [CVE-2022-34699](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34699)
+- [CVE-2022-34696](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34696)
+- [CVE-2022-34691](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34691)
+- [CVE-2022-34690](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34690)
+- [CVE-2022-34302](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34302)
+- [CVE-2022-30194](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30194)
+- [CVE-2022-30133](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30133)
+- [CVE-2022-30197](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30197)
+- [CVE-2022-34301](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34301)
+- [CVE-2022-34303](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-34303)
+- [CVE-2022-29900](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-29900)
+- [CVE-2022-23825](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-23825)
+- [CVE-2022-22050](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22050)
+- [CVE-2022-22048](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22048)
+- [CVE-2022-27776](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-27776)
+- [CVE-2022-22049](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22049)
+- [CVE-2022-22047](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22047)
+- [CVE-2022-22045](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22045)
+- [CVE-2022-22043](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22043)
+- [CVE-2022-22042](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22042)
+- [CVE-2022-22041](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22041)
+- [CVE-2022-22040](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22040)
+- [CVE-2022-22039](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22039)
+- [CVE-2022-22038](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22038)
+- [CVE-2022-22037](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22037)
+- [CVE-2022-22036](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22036)
+- [CVE-2022-22034](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22034)
+- [CVE-2022-22031](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22031)
+- [CVE-2022-22029](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22029)
+- [CVE-2022-22028](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22028)
+- [CVE-2022-22027](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22027)
+- [CVE-2022-22026](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22026)
+- [CVE-2022-22025](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22025)
+- [CVE-2022-22024](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22024)
+- [CVE-2022-22023](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22023)
+- [CVE-2022-22022](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22022)
+- [CVE-2022-30226](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30226)
+- [CVE-2022-30225](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30225)
+- [CVE-2022-30224](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30224)
+- [CVE-2022-30223](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30223)
+- [CVE-2022-30222](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30222)
+- [CVE-2022-30220](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30220)
+- [CVE-2022-30215](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30215)
+- [CVE-2022-30214](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30214)
+- [CVE-2022-30213](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30213)
+- [CVE-2022-30212](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30212)
+- [CVE-2022-30211](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30211)
+- [CVE-2022-30209](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30209)
+- [CVE-2022-30208](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30208)
+- [CVE-2022-30206](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30206)
+- [CVE-2022-30205](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30205)
+- [CVE-2022-30203](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30203)
+- [CVE-2022-30202](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30202)
+- [CVE-2022-22711](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-22711)
+- [CVE-2022-30221](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-30221)
+- [CVE-2022-21845](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2022-21845)
+::: moniker-end
 
 ::: moniker range="azs-2206"
 ## 2206 update
@@ -458,939 +1190,6 @@ For more information about these vulnerabilities, click on the links below.
 - [CVE-2021-36954](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36954)
 - [CVE-2021-36960](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36960)
 - [CVE-2021-27293](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-27293)
-::: moniker-end
-
-::: moniker range="azs-2108"
-## 2108 update
-
-Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update.
-
-For more information about these vulnerabilities, click on the links below.
-
-- [CVE-2021-36933](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36933)
-
-- [CVE-2021-36932](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36932)
-
-- [CVE-2021-36927](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36927)
-
-- [CVE-2021-36926](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36926)
-
-- [CVE-2021-26433](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26433)
-
-- [CVE-2021-26432](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26432)
-
-- [CVE-2021-26431](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26431)
-
-- [CVE-2021-34484](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34484)
-
-- [CVE-2021-34483](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34483)
-
-- [CVE-2021-34533](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34533)
-
-- [CVE-2021-34530](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34530)
-
-- [CVE-2021-34471](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34471)
-
-- [CVE-2021-36948](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36948)
-
-- [CVE-2021-36947](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36947)
-
-- [CVE-2021-36945](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36945)
-
-- [CVE-2021-36942](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36942)
-
-- [CVE-2021-36938](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36938)
-
-- [CVE-2021-36937](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36937)
-
-- [CVE-2021-36936](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36936)
-
-- [CVE-2021-26426](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26426)
-
-- [CVE-2021-26425](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26425)
-
-- [CVE-2021-26424](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26424)
-
-- [CVE-2021-34537](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34537)
-
-- [CVE-2021-34487](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34487)
-
-- [CVE-2021-34536](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34536)
-
-- [CVE-2021-34486](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34486)
-
-- [CVE-2021-34534](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34534)
-
-- [CVE-2021-34478](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34478)
-
-- [ADV210003](https://msrc.microsoft.com/update-guide/vulnerability/ADV210003)
-
-- [CVE-2021-30586](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-30586)
-
-- [CVE-2021-30583](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-30583)
-
-- [CVE-2021-30587](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-30587)
-
-- [CVE-2021-36934](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-36934)
-
-- [CVE-2021-34481](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34481)
-
-- [CVE-2021-34525](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34525)
-
-- [CVE-2021-34522](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34522)
-
-- [CVE-2021-34466](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34466)
-
-- [CVE-2021-34516](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34516)
-
-- [CVE-2021-34464](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34464)
-
-- [CVE-2021-34514](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34514)
-
-- [CVE-2021-34513](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34513)
-
-- [CVE-2021-34462](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34462)
-
-- [CVE-2021-34512](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34512)
-
-- [CVE-2021-34461](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34461)
-
-- [CVE-2021-34511](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34511)
-
-- [CVE-2021-34510](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34510)
-
-- [CVE-2021-34460](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34460)
-
-- [CVE-2021-34509](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34509)
-
-- [CVE-2021-34459](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34459)
-
-- [CVE-2021-34508](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34508)
-
-- [CVE-2021-34458](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34458)
-
-- [CVE-2021-34507](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34507)
-
-- [CVE-2021-34457](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34457)
-
-- [CVE-2021-34456](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34456)
-
-- [CVE-2021-34455](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34455)
-
-- [CVE-2021-34504](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34504)
-
-- [CVE-2021-34454](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34454)
-
-- [CVE-2021-34503](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34503)
-
-- [CVE-2021-34490](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34490)
-
-- [CVE-2021-34488](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34488)
-
-- [CVE-2021-34439](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34439)
-
-- [CVE-2021-34438](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34438)
-
-- [CVE-2021-33788](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33788)
-
-- [CVE-2021-33786](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33786)
-
-- [CVE-2021-33785](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33785)
-
-- [CVE-2021-33784](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33784)
-
-- [CVE-2021-33783](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33783)
-
-- [CVE-2021-33782](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33782)
-
-- [CVE-2021-33781](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33781)
-
-- [CVE-2021-33779](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33779)
-
-- [CVE-2021-33778](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33778)
-
-- [CVE-2021-33777](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33777)
-
-- [CVE-2021-33776](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33776)
-
-- [CVE-2021-33775](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33775)
-
-- [CVE-2021-33772](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33772)
-
-- [CVE-2021-33764](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33764)
-
-- [CVE-2021-33756](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33756)
-
-- [CVE-2021-33754](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33754)
-
-- [CVE-2021-33752](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33752)
-
-- [CVE-2021-33751](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33751)
-
-- [CVE-2021-33750](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33750)
-
-- [CVE-2021-33749](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33749)
-
-- [CVE-2021-33746](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33746)
-
-- [CVE-2021-33745](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33745)
-
-- [CVE-2021-31979](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31979)
-
-- [CVE-2021-34521](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34521)
-
-- [CVE-2021-34500](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34500)
-
-- [CVE-2021-34450](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34450)
-
-- [CVE-2021-34499](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34499)
-
-- [CVE-2021-34449](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34449)
-
-- [CVE-2021-34498](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34498)
-
-- [CVE-2021-34497](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34497)
-
-- [CVE-2021-34447](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34447)
-
-- [CVE-2021-34496](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34496)
-
-- [CVE-2021-34446](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34446)
-
-- [CVE-2021-34445](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34445)
-
-- [CVE-2021-34494](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34494)
-
-- [CVE-2021-34444](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34444)
-
-- [CVE-2021-34493](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34493)
-
-- [CVE-2021-34492](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34492)
-
-- [CVE-2021-34491](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34491)
-
-- [CVE-2021-34442](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34442)
-
-- [CVE-2021-34441](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34441)
-
-- [CVE-2021-33780](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33780)
-
-- [CVE-2021-33774](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33774)
-
-- [CVE-2021-33773](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33773)
-
-- [CVE-2021-33771](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33771)
-
-- [CVE-2021-33765](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33765)
-
-- [CVE-2021-33763](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33763)
-
-- [CVE-2021-33761](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33761)
-
-- [CVE-2021-33760](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33760)
-
-- [CVE-2021-33759](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33759)
-
-- [CVE-2021-33757](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33757)
-
-- [CVE-2021-33758](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33758)
-
-- [CVE-2021-33755](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33755)
-
-- [CVE-2021-33744](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33744)
-
-- [CVE-2021-33743](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33743)
-
-- [CVE-2021-33740](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33740)
-
-- [CVE-2021-31961](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31961)
-
-- [CVE-2021-31947](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31947)
-
-- [CVE-2021-31183](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31183)
-
-- [CVE-2021-34527](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-34527)
-
-- [CVE-2021-31985](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31985)
-
-- [CVE-2021-31978](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31978)
-
-- [CVE-2021-31977](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31977)
-
-- [CVE-2021-31976](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31976)
-
-- [CVE-2021-31975](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31975)
-
-- [CVE-2021-31974](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31974)
-
-- [CVE-2021-31973](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31973)
-
-- [CVE-2021-31972](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31972)
-
-- [CVE-2021-31971](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31971)
-
-- [CVE-2021-31970](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31970)
-
-- [CVE-2021-31969](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31969)
-
-- [CVE-2021-31968](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31968)
-
-- [CVE-2021-31201](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31201)
-
-- [CVE-2021-31199](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31199)
-
-- [CVE-2021-33742](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-33742)
-
-- [CVE-2021-31967](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31967)
-
-- [CVE-2021-31962](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31962)
-
-- [CVE-2021-31960](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31960)
-
-- [CVE-2021-31959](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31959)
-
-- [CVE-2021-31958](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31958)
-
-- [CVE-2021-31956](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31956)
-
-- [CVE-2021-31955](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31955)
-
-- [CVE-2021-31954](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31954)
-
-- [CVE-2021-31953](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31953)
-
-- [CVE-2021-31952](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31952)
-
-- [CVE-2021-31951](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31951)
-
-- [CVE-2021-26414](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26414)
-
-- [CVE-2021-1675](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1675)
-
-- [CVE-2021-28465](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28465)
-
-- [CVE-2021-31208](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31208)
-
-- [CVE-2021-31205](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31205)
-
-- [CVE-2021-31194](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31194)
-
-- [CVE-2021-31193](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31193)
-
-- [CVE-2021-31192](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31192) 
-
-- [CVE-2021-31191](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31191)
-
-- [CVE-2021-31190](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31190)
-
-- [CVE-2021-31188](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31188)
-
-- [CVE-2021-31187](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31187)
-
-- [CVE-2021-31186](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31186)
-
-- [CVE-2021-31185](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31185)
-
-- [CVE-2021-31184](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31184)
-
-- [CVE-2021-31170](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31170)
-
-- [CVE-2021-31169](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31169)
-
-- [CVE-2021-31168](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31168)
-
-- [CVE-2021-31167](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31167)
-
-- [CVE-2021-31165](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-31165)
-
-- [CVE-2021-28479](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28479)
-
-- [CVE-2020-26144](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-26144)
-
-- [CVE-2020-24587](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-24587)
-
-- [CVE-2020-24588](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-24588)
-
-- [CVE-2021-28468](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28468)
-
-- [CVE-2021-28466](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28466)
-
-- [CVE-2021-28464](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28464)
-
-- [CVE-2021-27086](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27086)
-
-- [CVE-2021-28447](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28447)
-
-- [CVE-2021-28446](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28446)
-
-- [CVE-2021-28445](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28445)
-
-- [CVE-2021-28444](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28444)
-
-- [CVE-2021-28443](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28443)
-
-- [CVE-2021-28442](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28442)
-
-- [CVE-2021-28441](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28441)
-
-- [CVE-2021-28440](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28440)
-
-- [CVE-2021-28439](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28439)
-
-- [CVE-2021-28438](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28438)
-
-- [CVE-2021-28437](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28437)
-
-- [CVE-2021-28436](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28436)
-
-- [CVE-2021-28435](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28435)
-
-- [CVE-2021-28434](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28434)
-
-- [CVE-2021-28358](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28358)
-
-- [CVE-2021-28357](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28357)
-
-- [CVE-2021-28356](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28356)
-
-- [CVE-2021-28355](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28355)
-
-- [CVE-2021-28354](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28354)
-
-- [CVE-2021-28353](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28353)
-
-- [CVE-2021-28352](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28352)
-
-- [CVE-2021-28351](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28351)
-
-- [CVE-2021-28350](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28350)
-
-- [CVE-2021-28349](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28349)
-
-- [CVE-2021-28348](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28348)
-
-- [CVE-2021-28347](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28347)
-
-- [CVE-2021-28346](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28346)
-
-- [CVE-2021-28345](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28345)
-
-- [CVE-2021-28344](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28344)
-
-- [CVE-2021-28343](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28343)
-
-- [CVE-2021-28342](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28342)
-
-- [CVE-2021-28341](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28341)
-
-- [CVE-2021-28340](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28340)
-
-- [CVE-2021-28339](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28339)
-
-- [CVE-2021-28338](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28338)
-
-- [CVE-2021-28337](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28337)
-
-- [CVE-2021-28336](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28336)
-
-- [CVE-2021-28335](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28335)
-
-- [CVE-2021-28334](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28334)
-
-- [CVE-2021-28333](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28333)
-
-- [CVE-2021-28332](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28332)
-
-- [CVE-2021-28331](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28331)
-
-- [CVE-2021-28330](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28330)
-
-- [CVE-2021-28329](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28329)
-
-- [CVE-2021-28328](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28328)
-
-- [CVE-2021-28327](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28327)
-
-- [CVE-2021-28326](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28326)
-
-- [CVE-2021-28325](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28325)
-
-- [CVE-2021-28324](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28324)
-
-- [CVE-2021-28323](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28323)
-
-- [CVE-2021-28322](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28322)
-
-- [CVE-2021-28321](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28321)
-
-- [CVE-2021-28320](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28320)
-
-- [CVE-2021-28319](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28319)
-
-- [CVE-2021-28318](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28318)
-
-- [CVE-2021-28317](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28317)
-
-- [CVE-2021-28316](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28316)
-
-- [CVE-2021-28315](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28315)
-
-- [CVE-2021-28314](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28314)
-
-- [CVE-2021-28313](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28313)
-
-- [CVE-2021-28312](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28312)
-
-- [CVE-2021-28311](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28311)
-
-- [CVE-2021-28310](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28310)
-
-- [CVE-2021-28309](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-28309)
-
-- [CVE-2021-26417](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26417)
-
-- [CVE-2021-26416](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26416)
-
-- [CVE-2021-26415](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26415)
-
-- [CVE-2021-26413](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26413)
-
-- [CVE-2021-27095](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27095)
-
-- [CVE-2021-27094](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27094)
-
-- [CVE-2021-27093](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27093)
-
-- [CVE-2021-27091](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27091)
-
-- [CVE-2021-27090](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27090)
-
-- [CVE-2021-27088](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27088)
-
-- [CVE-2021-27079](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27079)
-
-- [CVE-2021-27072](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27072)
-
-- [CVE-2021-27066](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27066)
-
-- [CVE-2021-27063](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27063)
-
-- [CVE-2021-27062](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27062)
-
-- [CVE-2021-27061](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27061)
-
-- [CVE-2021-27051](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27051)
-
-- [CVE-2021-27050](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27050)
-
-- [CVE-2021-27049](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27049)
-
-- [CVE-2021-27048](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27048)
-
-- [CVE-2021-27047](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27047)
-
-- [CVE-2021-26902](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26902)
-
-- [CVE-2021-26901](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26901)
-
-- [CVE-2021-26900](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26900)
-
-- [CVE-2021-26899](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26899)
-
-- [CVE-2021-26898](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26898)
-
-- [CVE-2021-26897](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26897)
-
-- [CVE-2021-26896](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26896)
-
-- [CVE-2021-26895](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26895)
-
-- [CVE-2021-26894](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26894)
-
-- [CVE-2021-26893](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26893)
-
-- [CVE-2021-26892](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26892)
-
-- [CVE-2021-26891](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26891)
-
-- [CVE-2021-26889](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26889)
-
-- [CVE-2021-26887](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26887)
-
-- [CVE-2021-26886](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26886)
-
-- [CVE-2021-26885](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26885)
-
-- [CVE-2021-26884](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26884)
-
-- [CVE-2021-26882](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26882)
-
-- [CVE-2021-26881](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26881)
-
-- [CVE-2021-26880](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26880)
-
-- [CVE-2021-26879](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26879)
-
-- [CVE-2021-26878](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26878)
-
-- [CVE-2021-26877](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26877)
-
-- [CVE-2021-26875](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26875)
-
-- [CVE-2021-26874](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26874)
-
-- [CVE-2021-26873](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26873)
-
-- [CVE-2021-26872](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26872)
-
-- [CVE-2021-26871](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26871)
-
-- [CVE-2021-26870](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26870)
-
-- [CVE-2021-26869](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26869)
-
-- [CVE-2021-26868](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26868)
-
-- [CVE-2021-26867](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26867)
-
-- [CVE-2021-26866](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26866)
-
-- [CVE-2021-26865](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26865)
-
-- [CVE-2021-26864](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26864)
-
-- [CVE-2021-26862](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26862)
-
-- [CVE-2021-26863](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26863)
-
-- [CVE-2021-26861](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26861)
-
-- [CVE-2021-26860](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-26860)
-
-- [CVE-2021-24110](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-24110)
-
-- [CVE-2021-24107](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-24107)
-
-- [CVE-2021-24090](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-24090)
-
-- [CVE-2021-24089](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-24089)
-
-- [CVE-2021-27077](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27077)
-
-- [CVE-2021-27070](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-27070)
-
-- [CVE-2021-24095](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-24095)
-
-- [CVE-2021-1729](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1729)
-
-- [CVE-2021-1640](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1640)
-
-- [CVE-2021-1732](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1732)
-
-- [CVE-2021-1643](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1643)
-
-- [CVE-2021-1644](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2021-1644)
-
-- [CVE-2020-16996](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-16996)
-
-- [CVE-2020-17086](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17086)
-
-- [CVE-2020-17082](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17082)
-
-- [CVE-2020-17081](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17081)
-
-- [CVE-2020-17049](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17049)
-
-- [CVE-2020-17102](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17102)
-
-- [CVE-2020-17101](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17101)
-
-- [CVE-2020-17079](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17079)
-
-- [CVE-2020-17078](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-17078)
-
-- [ADV200011](https://msrc.microsoft.com/update-guide/vulnerability/ADV200011)
-
-- [CVE-2020-1296](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-1296)
-
-- [CVE-2020-0835](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-0835)
-
-- [CVE-2020-0765](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2020-0765)
-
-::: moniker-end
-
-::: moniker range="azs-2102"
-## 2102 update
-
-Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last update. These updates are contained in the [February 2021](https://support.microsoft.com/en-us/office/february-9-2021%e2%80%94kb4601345-os-build-17763-1757-c38b7b85-0d84-d979-1a29-e4ba97b82042) monthly update.
-This list of CVEs reflects the security payloads since the last update.
-
-For more information about these vulnerabilities, click on the links below.
-- [CVE-2021-24103](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24103)
-- [CVE-2021-24102](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24102)
-- [CVE-2021-24098](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24098)
-- [CVE-2021-24086](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24086)
-- [CVE-2021-24082](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24082)
-- [CVE-2021-24081](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24081)
-- [CVE-2021-24076](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24076)
-- [CVE-2021-1722](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1722)
-- [CVE-2020-17162](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17162)
-- [CVE-2021-24106](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24106)
-- [CVE-2021-24096](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24096)
-- [CVE-2021-24094](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24094)
-- [CVE-2021-24093](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24093)
-- [CVE-2021-24091](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24091)
-- [CVE-2021-24088](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24088)
-- [CVE-2021-25195](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-25195)
-- [CVE-2021-24084](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24084)
-- [CVE-2021-24083](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24083)
-- [CVE-2021-24080](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24080)
-- [CVE-2021-24079](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24079)
-- [CVE-2021-24078](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24078)
-- [CVE-2021-24077](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24077)
-- [CVE-2021-24074](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-24074)
-- [CVE-2021-1698](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1698)
-- [CVE-2021-1734](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1734)
-- [CVE-2021-1732](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1732)
-- [CVE-2021-1731](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1731)
-- [CVE-2021-1727](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1727)
-- [CVE-2021-1689](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1689)
-- [CVE-2021-1645](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1645)
-- [CVE-2021-1662](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1662)
-- [CVE-2021-1655](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1655)
-- [CVE-2021-1657](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1657)
-- [CVE-2021-1704](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1704)
-- [CVE-2021-1680](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1680)
-- [CVE-2021-1699](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1699)
-- [CVE-2021-1674](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1674)
-- [CVE-2021-1661](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1661)
-- [CVE-2021-1708](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1708)
-- [CVE-2021-1696](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1696)
-- [CVE-2021-1682](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1682)
-- [CVE-2021-1651](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1651)
-- [CVE-2021-1710](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1710)
-- [CVE-2021-1701](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1701)
-- [CVE-2021-1697](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1697)
-- [CVE-2021-1693](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1693)
-- [CVE-2021-1678](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1678)
-- [CVE-2021-1654](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1654)
-- [CVE-2021-1709](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1709)
-- [CVE-2021-1683](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1683)
-- [CVE-2021-1667](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1667)
-- [CVE-2021-1658](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1658)
-- [CVE-2021-1642](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1642)
-- [CVE-2021-1692](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1692)
-- [CVE-2021-1685](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1685)
-- [CVE-2021-1664](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1664)
-- [CVE-2021-1668](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1668)
-- [CVE-2021-1659](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1659)
-- [CVE-2021-1706](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1706)
-- [CVE-2021-1695](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1695)
-- [CVE-2021-1684](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1684)
-- [CVE-2021-1676](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1676)
-- [CVE-2021-1673](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1673)
-- [CVE-2021-1672](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1672)
-- [CVE-2021-1665](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1665)
-- [CVE-2021-1637](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1637)
-- [CVE-2021-1638](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1638)
-- [CVE-2021-1646](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1646)
-- [CVE-2021-1702](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1702)
-- [CVE-2021-1700](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1700)
-- [CVE-2021-1694](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1694)
-- [CVE-2021-1688](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1688)
-- [CVE-2021-1679](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1679)
-- [CVE-2021-1671](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1671)
-- [CVE-2021-1660](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1660)
-- [CVE-2021-1666](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1666)
-- [CVE-2021-1656](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1656)
-- [CVE-2021-1653](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1653)
-- [CVE-2021-1652](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1652)
-- [CVE-2021-1648](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1648)
-- [CVE-2021-1649](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1649)
-- [CVE-2021-1650](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2021-1650)
-- [ADV200013](https://portal.msrc.microsoft.com/security-guidance/advisory/ADV200013)
-- [CVE-2020-17140](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17140)
-- [CVE-2020-17099](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17099)
-- [CVE-2020-17097](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17097)
-- [CVE-2020-17096](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17096)
-- [CVE-2020-17095](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17095)
-- [CVE-2020-17094](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17094)
-- [CVE-2020-16964](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16964)
-- [CVE-2020-16962](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16962)
-- [CVE-2020-16961](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16961)
-- [CVE-2020-16960](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16960)
-- [CVE-2020-16959](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16959)
-- [CVE-2020-16958](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16958)
-- [CVE-2020-17139](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17139)
-- [CVE-2020-17136](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17136)
-- [CVE-2020-17134](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17134)
-- [CVE-2020-17103](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17103)
-- [CVE-2020-17098](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17098)
-- [CVE-2020-17092](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17092)
-- [CVE-2020-16996](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16996)
-- [CVE-2020-16963](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16963)
-- [CVE-2020-17029](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17029)
-- [CVE-2020-17087](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17087)
-- [CVE-2020-17051](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17051)
-- [CVE-2020-17040](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17040)
-- [CVE-2020-17036](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17036)
-- [CVE-2020-17090](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17090)
-- [CVE-2020-17047](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17047)
-- [CVE-2020-17025](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17025)
-- [CVE-2020-17077](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17077)
-- [CVE-2020-17057](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17057)
-- [CVE-2020-17046](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17046)
-- [CVE-2020-17041](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17041)
-- [CVE-2020-17028](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17028)
-- [CVE-2020-17088](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17088)
-- [CVE-2020-17070](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17070)
-- [CVE-2020-17055](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17055)
-- [CVE-2020-17044](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17044)
-- [CVE-2020-17038](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17038)
-- [CVE-2020-17034](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17034)
-- [CVE-2020-17027](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17027)
-- [CVE-2020-17014](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17014)
-- [CVE-2020-17004](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17004)
-- [CVE-2020-16998](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16998)
-- [CVE-2020-16997](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16997)
-- [CVE-2020-1599](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1599)
-- [CVE-2020-17075](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17075)
-- [CVE-2020-17071](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17071)
-- [CVE-2020-17069](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17069)
-- [CVE-2020-17068](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17068)
-- [CVE-2020-17056](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17056)
-- [CVE-2020-17049](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17049)
-- [CVE-2020-17045](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17045)
-- [CVE-2020-17043](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17043)
-- [CVE-2020-17042](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17042)
-- [CVE-2020-17035](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17035)
-- [CVE-2020-17033](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17033)
-- [CVE-2020-17032](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17032)
-- [CVE-2020-17031](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17031)
-- [CVE-2020-17030](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17030)
-- [CVE-2020-17026](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17026)
-- [CVE-2020-17024](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17024)
-- [CVE-2020-17013](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17013)
-- [CVE-2020-17011](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17011)
-- [CVE-2020-17007](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17007)
-- [CVE-2020-17001](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-17001)
-- [CVE-2020-16974](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16974)
-- [CVE-2020-16975](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16975)
-- [CVE-2020-16972](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16972)
-- [CVE-2020-16940](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16940)
-- [CVE-2020-16924](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16924)
-- [CVE-2020-16923](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16923)
-- [CVE-2020-16921](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16921)
-- [CVE-2020-16915](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16915)
-- [CVE-2020-16913](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16913)
-- [CVE-2020-16909](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16909)
-- [CVE-2020-16905](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16905)
-- [CVE-2020-16895](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16895)
-- [CVE-2020-16885](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16885)
-- [CVE-2020-16876](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16876)
-- [CVE-2020-1243](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1243)
-- [CVE-2020-1080](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1080)
-- [CVE-2020-0764](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0764)
-- [CVE-2020-16980](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16980)
-- [CVE-2020-16976](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16976)
-- [CVE-2020-16973](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16973)
-- [CVE-2020-16939](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16939)
-- [CVE-2020-16936](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16936)
-- [CVE-2020-16935](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16935)
-- [CVE-2020-16927](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16927)
-- [CVE-2020-16922](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16922)
-- [CVE-2020-16920](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16920)
-- [CVE-2020-16919](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16919)
-- [CVE-2020-16916](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2020-16916)
-- [CVE-2020-16914](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16914)
-- [CVE-2020-16912](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16912)
-- [CVE-2020-16911](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16911)
-- [CVE-2020-16910](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16910)
-- [CVE-2020-16907](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16907)
-- [CVE-2020-16902](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16902)
-- [CVE-2020-16900](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16900)
-- [CVE-2020-16899](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16899)
-- [CVE-2020-16898](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16898)
-- [CVE-2020-16897](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16897)
-- [CVE-2020-16896](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16896)
-- [CVE-2020-16892](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16892)
-- [CVE-2020-16891](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16891)
-- [CVE-2020-16890](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16890)
-- [CVE-2020-16889](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16889)
-- [CVE-2020-16887](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16887)
-- [CVE-2020-1047](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1047)
-- [CVE-2020-16854](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16854)
-- [CVE-2020-0875](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0875)
-- [CVE-2020-1152](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1152)
-- [CVE-2020-16879](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-16879)
-- [CVE-2020-1133](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1133)
-- [CVE-2020-1091](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1091)
-- [CVE-2020-1083](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1083)
-- [CVE-2020-1285](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1285)
-- [CVE-2020-1303](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1303)
-- [CVE-2020-1252](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1252)
-- [CVE-2020-1033](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1033)
-- [CVE-2020-1031](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1031)
-- [CVE-2020-0836](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0836)
-- [CVE-2020-1250](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1250)
-- [CVE-2020-0904](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0904)
-- [CVE-2020-0782](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0782)
-- [CVE-2020-1589](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1589)
-- [CVE-2020-1559](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1559)
-- [CVE-2020-1228](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1228)
-- [CVE-2020-1129](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1129)
-- [CVE-2020-1074](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1074)
-- [CVE-2020-0912](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0912)
-- [CVE-2020-0886](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0886)
-- [CVE-2020-1308](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1308)
-- [CVE-2020-1115](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1115)
-- [CVE-2020-1053](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1053)
-- [CVE-2020-0998](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0998)
-- [CVE-2020-0856](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0856)
-- [CVE-2020-1598](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1598)
-- [CVE-2020-1146](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1146)
-- [CVE-2020-0997](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0997)
-- [CVE-2020-1256](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1256)
-- [CVE-2020-1052](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1052)
-- [CVE-2020-0989](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0989)
-- [CVE-2020-0911](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0911)
-- [CVE-2020-0890](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0890)
-- [CVE-2020-1593](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1593)
-- [CVE-2020-1508](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1508)
-- [CVE-2020-1130](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1130)
-- [CVE-2020-1319](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1319)
-- [CVE-2020-1245](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1245)
-- [CVE-2020-1097](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1097)
-- [CVE-2020-1030](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1030)
-- [CVE-2020-0921](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0921)
-- [CVE-2020-0908](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0908)
-- [CVE-2020-0838](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0838)
-- [CVE-2020-0766](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0766)
-- [CVE-2020-0761](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0761)
-- [CVE-2020-1596](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1596)
-- [CVE-2020-1491](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1491)
-- [CVE-2020-1376](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1376)
-- [CVE-2020-1169](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1169)
-- [CVE-2020-1122](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1122)
-- [CVE-2020-1039](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1039)
-- [CVE-2020-1038](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1038)
-- [CVE-2020-1034](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1034)
-- [CVE-2020-1013](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1013)
-- [CVE-2020-0951](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0951)
-- [CVE-2020-0941](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0941)
-- [CVE-2020-0928](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0928)
-- [CVE-2020-0922](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0922)
-- [CVE-2020-0914](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0914)
-- [CVE-2020-0839](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0839)
-- [CVE-2020-0837](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0837)
-- [CVE-2020-0790](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0790)
-- [CVE-2020-0664](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0664)
-- [CVE-2020-0718](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0718)
-- [CVE-2020-0648](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-0648)
-- [CVE-2020-1592](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1592)
-- [CVE-2020-1590](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1590)
-- [CVE-2020-1507](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2020-1507)
-
 ::: moniker-end
 
 ## Next steps

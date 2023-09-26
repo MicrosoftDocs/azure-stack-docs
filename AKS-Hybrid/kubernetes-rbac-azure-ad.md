@@ -6,11 +6,12 @@ ms.author: sethm
 ms.lastreviewed: 10/21/2022
 ms.reviewer: abha
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 11/04/2022
 
 # Intent: As an IT Pro, I need to learn how to enable Kubernetes role-based access control so that I can manage access to resources.
 # Keyword: Kubernetes role-based access control 
-
 ---
 
 # Control access using Azure AD and Kubernetes RBAC in AKS hybrid
@@ -186,7 +187,7 @@ To learn more about built-in Kubernetes RBAC roles, see [Kubernetes RBAC user-fa
 
 ### Use a built-in Kubernetes RBAC role with Azure AD
 
-To use a built-in Kubernetes RBACK role with Azure AD, do the following steps:
+To use a built-in Kubernetes RBAC role with Azure AD, do the following steps:
 
 1. Apply the built-in `view` Kubernetes RBAC role to your Azure AD group:
 

@@ -6,12 +6,12 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/06/2021
+ms.date: 04/17/2023
 ---
 
 # Quickstart: Create an Azure Stack HCI cluster and register it with Azure
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 In this quickstart, you'll learn how to deploy a two-server, single-site Azure Stack HCI cluster and register it with Azure. For multisite deployments, see the [Stretched clusters overview](../concepts/stretched-clusters.md).
 

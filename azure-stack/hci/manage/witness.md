@@ -1,16 +1,16 @@
 --- 
 title: Set up a cluster witness 
 description: Learn how to set up a cluster witness 
-author: cahottle 
+author: jasongerend 
 ms.topic: how-to 
-ms.date: 05/16/2022
-ms.author: v-chottle 
+ms.date: 04/19/2023
+ms.author: jgerend 
 ms.reviewer: stevenek 
 ---
 
 # Set up a cluster witness
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to set up an Azure Stack HCI or Windows Server cluster with a cluster witness in Azure (known as a cloud witness).
 
@@ -23,10 +23,11 @@ To learn more about cluster witnesses and quorum, see [Understanding cluster and
 Before you can create a cloud witness, you must have an Azure account and subscription, and register your Azure Stack HCI cluster with Azure. See the following articles for more information:
 
 - Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allow lists you're using between the cluster and Azure Storage. For details, see [Recommended firewall URLs](../concepts/firewall-requirements.md#recommended-firewall-urls).
-- [Create an Azure account](/dotnet/azure/create-azure-account)
-- If applicable, [create an additional Azure subscription](/azure/cost-management-billing/manage/create-subscription)
-- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
-- Make sure DNS is available for the cluster
+- If your network uses a proxy server for internet access, you must [configure proxy settings for Azure Stack HCI](./configure-proxy-settings.md).
+- [Create an Azure account](/dotnet/azure/create-azure-account).
+- If applicable, [create an additional Azure subscription](/azure/cost-management-billing/manage/create-subscription).
+- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md).
+- Make sure DNS is available for the cluster.
 
 ## Create an Azure storage account
 

@@ -20,7 +20,7 @@ In this article, you'll learn about which network components are deployed for th
 
 ### Optional components
 
-The following are optional components. For more information on Software Defined Networking (SDN), see  [Plan a Software Defined Network infrastructure](/concepts/plan-software-defined-networking-infrastructure.md).
+The following are optional components. For more information on Software Defined Networking (SDN), see  [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
 
 #### SDN Network Controller VM
 
@@ -44,7 +44,7 @@ The SDN Gateway VM is used to route network traffic between a virtual network an
 
 - Create secure site-to-site IPsec connections between SDN virtual networks and external networks over the internet.
 
-- Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter is not an encrypted connection. For more information about GRE connectivity, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server.md).
+- Create Generic Routing Encapsulation (GRE) connections between SDN virtual networks and external networks. The difference between site-to-site connections and GRE connections is that the latter is not an encrypted connection. For more information about GRE connectivity, see [GRE Tunneling in Windows Server](/windows-server/remote/remote-access/ras-gateway/gre-tunneling-windows-server).
 
 - Create Layer 3 (L3) connections between SDN virtual networks and external networks. In this case, SDN Gateway simply acts as a router between your virtual network and the external network.
 

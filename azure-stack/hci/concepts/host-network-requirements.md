@@ -3,14 +3,14 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 07/08/2022
+ms.date: 04/17/2023
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
 
 # Host network requirements for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This topic discusses host networking considerations and requirements for Azure Stack HCI. For information on datacenter architectures and the physical connections between servers, see [Physical network requirements](physical-network-requirements.md).
 
@@ -148,9 +148,9 @@ Guest RDMA enables SMB workloads for VMs to gain the same benefits of using RDMA
 
 For more information, download the document from the [SDN GitHub repo](https://github.com/Microsoft/SDN/blob/master/Diagnostics/S2D%20WS2016_ConvergedNIC_Configuration.docx).
 
-### SET
+### Switch Embedded Teaming (SET)
 
-SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET requires a Compute (Standard) or Compute (Premium) adapter.
+SET is a software-based teaming technology that has been included in the Windows Server operating system since Windows Server 2016. SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic and is supported with up to eight adapters in the same team.
 
 **Applicable traffic types:** compute, storage, and management
 
@@ -262,7 +262,7 @@ The following assumptions are made for this example:
         - If the available bandwidth for Live Migration is >= 5 Gbps, and the network adapters are capable, use RDMA. Use the following cmdlet to do so:
 
             ```Powershell
-            Set-VMHost VirtualMachineMigrationPerformanceOption SMB
+            Set-VMHost -VirtualMachineMigrationPerformanceOption SMB
             ```
 
         - If the available bandwidth for Live Migration is < 5 Gbps, use compression to reduce blackout times. Use the following cmdlet to do so:
