@@ -18,7 +18,7 @@ ms.lastreviewed: 6/10/2021
 
 Use this article as a guide to help you develop a data protection and disaster recovery strategy for user-deployed IaaS virtual machines (VMs) deployed on Azure Stack Hub.
 
-To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack Hub: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
+To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy.
 
 ## Considerations for protecting IaaS VMs
 
@@ -112,19 +112,13 @@ You will need to make some changes to your VM after restoring the machine from b
     If your VM has a static IP internally set, the internal IP on the virtual network adapter can be set to match the original. You may need to consider if the VNET has a S2S VPN to an external environment where the IP address might be in use.
 - **Unneeded artifacts**  
     If the VM was backed up on a different platform, such as VMware vSphere, you will need to follow some additional steps to clean up any unneeded artifacts from the source.
+
 ## Next steps
 
-This article provided general guidelines for protecting user VMs deployed on Azure Stack Hub. For information about using Azure services to protect user VMs, refer to:
+This article provided general guidelines for protecting user VMs deployed on Azure Stack Hub. For information about using Azure services to protect user VMs, see:
 
 - [Azure Stack IaaS - part four - Protect Your Stuff](https://azure.microsoft.com/blog/azure-stack-iaas-part-four/)
-- [Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)
-
-### Azure Backup Server
- - [Use Azure Backup to back up files and apps on Azure Stack Hub](/azure/backup/backup-mabs-files-applications-azure-stack)
- - [Azure Backup Server support for Azure Stack Hub](/azure/backup/ ) 
- 
- ### Azure Site Recovery
- - [Azure Site Recovery support for Azure Stack Hub](/azure/site-recovery/)  
- 
- ### Partner products
- - [Azure Stack Hub Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)
+- [Use Azure Backup to back up files and apps on Azure Stack Hub](/azure/backup/backup-mabs-files-applications-azure-stack)
+- [Azure Backup Server support for Azure Stack Hub](/azure/backup/)
+- [Azure Site Recovery support for Azure Stack Hub](/azure/site-recovery/)  
+- [Azure Stack Hub Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)
