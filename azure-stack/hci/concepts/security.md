@@ -157,6 +157,5 @@ The following sections recommend advanced security tools and technologies to fur
 
 
 ## Next steps
-For more information on security and regulatory compliance, see also:
+For more information about security and regulatory compliance, see:
 - [Security and Assurance](/windows-server/security/security-and-assurance)
-- [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)
