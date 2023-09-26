@@ -91,8 +91,8 @@ For AKS Engine release v0.75.3, clusters with Windows nodes on Kubernetes v1.23 
 | 2008                                           | 0.55.4, 0.60.1                 |
 | 2102                                           | 0.60.1, 0.63.0, 0.67.0, 0.67.3 |
 | 2108                                           | 0.63.0, 0.67.0, 0.67.3, 0.70.0, 0.71.0, 0.73.0, 0.75.3, 0.76.0 |
-| 2206                                           | 0.70.0, 0.71.0, 0.73.0, 0.75.3, 0.76.0*, 0.77.0*, 0.78.0* |
-| 2301                                           | 0.75.3, 0.76.0*, 0.77.0*, 0.78.0* |
+| 2206                                           | 0.70.0, 0.71.0, 0.73.0, 0.75.3, 0.76.0, 0.77.0*, 0.78.0* |
+| 2301                                           | 0.75.3, 0.76.0, 0.77.0*, 0.78.0* |
 
 > [!NOTE]  
 > *Supported. See the [AKS Engine Version Support policy](../user/azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.

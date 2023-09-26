@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: quickstart
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/21/2023
+ms.date: 09/26/2023
 ms.author: sethm 
 ms.lastreviewed: 02/13/2023
 ms.reviewer: abha
@@ -38,7 +38,7 @@ After clicking the **Deploy to Azure** button, enter the details, which should l
 :::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure.":::
 
 > [!NOTE]
-> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
+> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License," you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template is validated, and if all of your entries are correct, you can select **Create**. In 30 minutes, your VM is created.
 
@@ -48,7 +48,7 @@ The custom template is validated, and if all of your entries are correct, you ca
 
 With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM using Remote Desktop.
 
-If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
+If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "akshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
 :::image type="content" source="media/aks-hci-evaluation-guide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure.":::
 
@@ -185,7 +185,7 @@ $customLocationName="azurevm-customlocation"
 Generate the Azure Arc Resource Bridge YAML files:
 
 ```PowerShell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionId -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.11" -controlPlaneIP "192.168.0.161"
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionId -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.20" -controlPlaneIP "192.168.0.161"
 ```
 
 Sample output:
@@ -200,7 +200,7 @@ Config file successfully generated in 'V:\Arc-HCI\WorkingDir'
 
 You must run the commands in this step in a PowerShell admin window inside the Azure VM.
 
-Once you've generated the YAML files, run the following command to validate the generated YAML files. Remember to log in to Azure before running these commands.
+Once you've generated the YAML files, run the following command to validate the generated YAML files. Remember to sign in to Azure before running these commands.
 
 ```PowerShell
 az account set -s $subscriptionid
