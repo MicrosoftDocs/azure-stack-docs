@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 09/27/2023
+ms.date: 09/14/2023
 ms.author: sethm
-ms.reviewer: thoroet
-ms.lastreviewed: 09/09/2020
+ms.reviewer: rtibi
+ms.lastreviewed: 09/27/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
