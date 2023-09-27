@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 09/14/2023
 ms.author: sethm
-ms.reviewer: rtibi
+ms.reviewer: rtiberiu
 ms.lastreviewed: 09/27/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
