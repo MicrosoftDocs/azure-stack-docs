@@ -18,6 +18,12 @@ ms.reviewer: abha
 
 We do not recommend or support running AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster. If you have AKS on Azure Stack HCI installed, run `Uninstall-AksHci` and start deploying your Azure Arc Resource Bridge from scratch.
 
+## My AKS hybrid vnet creation timed out
+If you're creating AKS hybrid clusters on Azure Stack HCI, ensure that the custom location you create on top of Arc Resource Bridge is in the "default" namespace. You should be running the following command, to use 1 custom location on an Azure Stack HCI cluster to manage both Arc VMs and AKS hybrid clusters -
+```
+az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace default --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location
+```
+
 ## KVA timeout error
 
 Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. When you try to deploy Azure Arc resource bridge, a "KVA timeout error" might appear if there's a networking problem that doesn't allow communication from the Arc Resource Bridge VM to the host, DNS, network, or internet. This error is typically displayed for the following reasons:
