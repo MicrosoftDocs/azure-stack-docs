@@ -19,14 +19,7 @@ ms.reviewer: abha
 We do not recommend or support running AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster. If you have AKS on Azure Stack HCI installed, run `Uninstall-AksHci` and start deploying your Azure Arc Resource Bridge from scratch.
 
 ## My AKS hybrid vnet creation timed out
-If you're creating AKS hybrid clusters on Azure Stack HCI, ensure that the custom location you create on top of Arc Resource Bridge is in the "default" namespace. 
-Step 1: Follow [Azure Stack HCI documentation](/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2) to install Moc, Arc Resource Bridge and Arc VM extension.
-Step 2: Run the following command to use 1 custom location on an Azure Stack HCI cluster to manage both Arc VMs and AKS hybrid clusters. The parameters used here are the same you configured while following the Azure Stack HCI documentation.
-```azurecli
-az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace default --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location
-```
-Step 3: Follow the AKS hybrid documentation to install AKS hybrid extension and 
-After you create the custom location, continue following the AKS hybrid documentation to [install AKS hybrid extension and patch the custom location](/deploy-aks-service-hci?tabs=powershell).
+If you're creating AKS hybrid clusters on Azure Stack HCI, ensure that the custom location you create on top of Arc Resource Bridge is in the "default" namespace. Follow the steps in [install AKS hybrid extension and patch the custom location](/deploy-aks-service-hci?tabs=powershell) to ensure that the Azure Stack HCI custom location is created in the default namespace.
 
 ## KVA timeout error
 
