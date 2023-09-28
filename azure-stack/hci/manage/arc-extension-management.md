@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: arduppal
-ms.lastreviewed: 05/01/2023
-ms.date: 05/01/2023
+ms.lastreviewed: 09/19/2023
+ms.date: 09/19/2023
 ---
 
 # Azure Arc extension management on Azure Stack HCI
@@ -97,7 +97,7 @@ Currently, automatic extension upgrades are only supported in the Windows Admin 
 > [!NOTE]
 > By default, all extensions are set up to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
 
-### Enable automatic upgrade via the Azure portal
+### Enable automatic upgrade
 
 # [Azure portal](#tab/azureportal)
 
@@ -194,13 +194,13 @@ To upgrade an extension immediately, see [Manual extension upgrade via the Azure
 
 If an extension upgrade fails, Azure performs the actions associated with [Automatic rollback and retries](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#automatic-rollback-and-retries) in an attempt to repair the extension.
 
-If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-upgrade-via-the-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-upgrade-via-the-azure-portal) again when you're ready.
+If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-upgrade-via-the-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-upgrade) again when you're ready.
 
 ### Upgrades with multiple extensions
 
 If multiple extension upgrades are available for a machine, they might be batched together. However, each extension upgrade is applied individually on the machine. For more information, see [Extension upgrades with multiple extensions](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#extension-upgrades-with-multiple-extensions).
 
-## Uninstall an extension from the Azure portal
+## Uninstall an extension
 
 # [Azure portal](#tab/azureportal)
 
@@ -243,6 +243,6 @@ az stack-hci extension delete \
 
 :::image type="content" source="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png" alt-text="Screenshot of tips to troubleshoot a failed extension." lightbox="media/arc-extension-management/arc-extension-troubleshoot-extension-2.png":::
 
-## Next steps
+## Next step
 
 Learn about [Virtual machine extension management with Azure Arc-enabled servers](/azure/azure-arc/servers/manage-vm-extensions).
