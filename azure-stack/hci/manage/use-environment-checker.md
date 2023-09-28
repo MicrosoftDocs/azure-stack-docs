@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/22/2023
+ms.date: 08/30/2023
 ---
 
 # Assess your environment for deployment readiness (preview)
@@ -40,7 +40,7 @@ You can run the Environment Checker to:
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
 - Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
-- Work with the support team more effectively in troubleshooting any advanced issues.
+- Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
 
@@ -536,12 +536,18 @@ The information displayed on each readiness check report varies depending on the
 
 For each test, the validator provides a summary of the unique issues and classifies them into: success, critical issues, warning issues, and informational issues. Critical issues are the blocking issues that you must fix before proceeding with the deployment.
 
-## Uninstall Environment Checker
-Environment Checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before running the Deployment Tool to avoid any conflicts.
+## Uninstall environment checker
+
+The environment checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before running the deployment tool, to avoid any conflicts.
+
 ```powershell
 Remove-Module AzStackHci.EnvironmentChecker -Force
 Get-Module AzStackHci.EnvironmentChecker -ListAvailable | Where-Object {$_.Path -like "*$($_.Version)*"} | Uninstall-Module -force
 ```
+
+## Troubleshoot environment validation issues
+
+For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment or pre-registration, see [Troubleshoot environment validation issues](./troubleshoot-environment-validation-issues.md).
 
 ## Next steps
 

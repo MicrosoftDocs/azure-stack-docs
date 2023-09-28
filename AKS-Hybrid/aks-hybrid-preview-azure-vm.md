@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: quickstart
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/21/2023
+ms.date: 09/26/2023
 ms.author: sethm 
 ms.lastreviewed: 02/13/2023
 ms.reviewer: abha
@@ -38,7 +38,7 @@ After clicking the **Deploy to Azure** button, enter the details, which should l
 :::image type="content" source="media/aks-hci-evaluation-guide/deploy-custom-template.png" alt-text="Screenshot of custom template deployment in Azure.":::
 
 > [!NOTE]
-> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License", you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
+> For customers with Software Assurance, Azure Hybrid Benefit for Windows Server allows you to use your on-premises Windows Server licenses and run Windows virtual machines on Azure at a reduced cost. By selecting **Yes** for the "Already have a Windows Server License," you confirm you have an eligible Windows Server license with Software Assurance or Windows Server subscription to apply this Azure Hybrid Benefit and have reviewed the [Azure hybrid benefit compliance](https://go.microsoft.com/fwlink/?LinkId=859786).
 
 The custom template is validated, and if all of your entries are correct, you can select **Create**. In 30 minutes, your VM is created.
 
@@ -48,7 +48,7 @@ The custom template is validated, and if all of your entries are correct, you ca
 
 With your Azure Virtual Machine (AKSHCIHost001) successfully deployed and configured, you're ready to connect to the VM using Remote Desktop.
 
-If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "azshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
+If you're not already signed into the [Azure portal](https://portal.azure.com), sign in with the same credentials you previously used. Once signed in, enter "akshci" in the search box on the dashboard, and in the search results select your **AKSHCIHost001** virtual machine.
 
 :::image type="content" source="media/aks-hci-evaluation-guide/azure-vm-search.png" alt-text="Screenshot of virtual machine located in Azure.":::
 
@@ -108,8 +108,15 @@ Run the following commands in a PowerShell admin window inside the Azure VM:
 $env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
 az extension add -n k8s-extension --upgrade
 az extension add -n customlocation --upgrade
-az extension add -n arcappliance --upgrade
-az extension add -n hybridaks --upgrade
+```
+
+Make sure you remove any old versions of arcappliance and hybridaks extensions, and install the following specific versions -
+```powershell
+$env:PATH += ";C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;"
+az extension remove -n arcappliance 
+az extension remove -n hybridaks
+az extension add -n arcappliance --version 0.2.33
+az extension add -n hybridaks --version 0.2.2
 ```
 
 ## Step 5: Install prerequisite PowerShell repositories
@@ -128,7 +135,7 @@ Exit
 Open a new PowerShell admin window and run the following command:
 
 ```PowerShell
-Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.24
+Install-Module -Name ArcHci -Repository PSGallery -AcceptLicense -Force -RequiredVersion 0.2.29
 Exit 
 ```
 
@@ -145,7 +152,7 @@ Exit
 Open a new PowerShell admin window and run the following command:
 ```PowerShell
 Set-MocConfig -workingDir "V:\Arc-HCI\WorkingDir" 
-Install-Moc
+Install-Moc -catalog "aks-hci-stable-catalogs-ext" -ring "stable" -version "1.0.20.10819"
 curl.exe -LO "https://dl.k8s.io/release/v1.25.0/bin/windows/amd64/kubectl.exe"
 $config = Get-MocConfig
 cp .\kubectl.exe $config.installationPackageDir
@@ -153,7 +160,7 @@ cp .\kubectl.exe $config.installationPackageDir
 
 Download the Linux VHD image by running the following command:
 ```PowerShell
-Add-ArcHciK8sGalleryImage -k8sVersion 1.22.11 -version 1.0.16.10113
+Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11
 ```
 
 
@@ -178,7 +185,7 @@ $customLocationName="azurevm-customlocation"
 Generate the Azure Arc Resource Bridge YAML files:
 
 ```PowerShell
-New-ArcHciAksConfigFiles -subscriptionID $subscriptionId -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.11" -controlPlaneIP "192.168.0.161"
+New-ArcHciAksConfigFiles -subscriptionID $subscriptionId -location $location -resourceGroup $resourceGroup -resourceName $arcAppName -workDirectory $workingDir -vnetName "appliance-vnet" -vSwitchName "InternalNAT" -gateway "192.168.0.1" -dnsservers "192.168.0.1" -ipaddressprefix "192.168.0.0/16" -k8snodeippoolstart "192.168.0.11" -k8snodeippoolend "192.168.0.20" -controlPlaneIP "192.168.0.161"
 ```
 
 Sample output:
@@ -193,7 +200,7 @@ Config file successfully generated in 'V:\Arc-HCI\WorkingDir'
 
 You must run the commands in this step in a PowerShell admin window inside the Azure VM.
 
-Once you've generated the YAML files, run the following command to validate the generated YAML files. Remember to log in to Azure before running these commands.
+Once you've generated the YAML files, run the following command to validate the generated YAML files. Remember to sign in to Azure before running these commands.
 
 ```PowerShell
 az account set -s $subscriptionid
@@ -235,7 +242,9 @@ You can run the commands in this step from an Azure portal shell.
 To install the AKS hybrid extension on the Arc Resource Bridge, run the following command:
 
 ```azurecli
-az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default"
+$release_train = "stable"
+$version = "0.1.7"
+az k8s-extension create -g $resourceGroup  -c $arcAppName --cluster-type appliances --name $arcExtnName  --extension-type Microsoft.HybridAKSOperator --config Microsoft.CustomLocation.ServiceAccount="default" --release-train $release_train --version $version --auto-upgrade-minor-version $false
 ```
 
 Once you've created the AKS hybrid extension on top of the Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first, but you can try again after 10 minutes.
@@ -306,7 +315,7 @@ To learn more about how to create an Azure AD group, visit [how to manage and cr
 Run the following command to create an AKS hybrid cluster using Azure CLI:
 
 ```azurecli
-az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "v1.22.11" --aad-admin-group-object-ids <Azure AD group object ID> --generate-ssh-keys
+az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $resourceGroup --custom-location $clid --vnet-ids $vnetId --kubernetes-version "1.24.11" --aad-admin-group-object-ids <Azure AD group object ID> --generate-ssh-keys
 ```
 
 ### Add a Linux nodepool to the AKS hybrid cluster

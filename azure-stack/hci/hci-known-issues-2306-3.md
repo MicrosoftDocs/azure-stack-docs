@@ -1,15 +1,15 @@
 ---
-title: Known issues in Azure Stack HCI 2306.2 Supplemental Package (preview)
-description: Read about the known issues in Azure Stack HCI 2306.2 Supplemental Package (preview).
-author: alkohli
+title: Known issues in Azure Stack HCI 2306.3 Supplemental Package (preview)
+description: Read about the known issues in Azure Stack HCI 2306.3 Supplemental Package (preview).
+author: ronmiab
 ms.topic: conceptual
-ms.date: 08/20/2023
-ms.author: alkohli
+ms.date: 09/19/2023
+ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI, 2306.2 Supplemental Package release (preview)
+# View known issues in Azure Stack HCI, 2306.3 Supplemental Package release (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-supplemental-package.md)]
 
@@ -17,9 +17,9 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2306.2 patch update release. This release maps to software version number **10.2306.2.6**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later.
+This article applies to Azure Stack HCI, Supplemental Package, for 2306.3 patch update release. This release maps to software version number **10.2306.3.6**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later.
 
-For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2306-1-preview.md).
+For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2306-3-preview.md).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
