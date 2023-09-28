@@ -78,14 +78,35 @@ az k8s-extension list -g $resourceGroup --cluster-name $resourceBridgeName --clu
 
 ---
 
-## Step 2: Install the AKS hybrid extension on the Azure Arc Resource Bridge
+## Step 2: Verify if the custom location is in the default namespace
 
 Run the following command to return the Arc Resource Bridge namespace where you created the custom location:
-
 ```azurecli
-$namespace = az customlocation show --name $customLocationName --resource-group $resourceGroup --query "namespace" -o tsv
+az customlocation show --name $customLocationName --resource-group $resourceGroup --query "namespace" -o tsv
 ```
 
+```Expected output
+default
+```
+
+If your custom location is not in the default namespace, you will have to re-create the custom location. Note that doing so will delete all your existing Azure VMs, gallery images, etc. Delete all the Azure resources being managed by the custom location before proceeding. 
+
+```azurecli
+az customlocation delete --name <custom location name> --resource-group <resource group name>
+```
+
+Install the custom location in the default namespace.
+```azurecli
+$hciClusterId= (Get-AzureStackHci).AzureResourceUri
+$resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
+$customloc_name= ((Get-AzureStackHci).AzureResourceName) + "-CL"
+$subscription = <Azure subscription ID>
+$resource_group = <Azure resource group>
+$location = <Azure location. Available regions include "eastus" or "westeurope">
+az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace default --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location
+```
+
+# Step 3:
 To install the AKS hybrid extension, run the following commands:
 
 ```azurecli
@@ -134,7 +155,7 @@ $AKSClusterExtensionResourceId=az k8s-extension show -g $resourceGroup --cluster
 You can then patch the custom location for your Azure Stack HCI cluster by running the following command:
 
 ```azurecli
-az customlocation patch --name $customLocationName --namespace $namespace --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $VMClusterExtensionResourceId $AKSClusterExtensionResourceId --resource-group $resourceGroup
+az customlocation patch --name $customLocationName --namespace default --host-resource-id $ArcResourceBridgeId --cluster-extension-ids $VMClusterExtensionResourceId $AKSClusterExtensionResourceId --resource-group $resourceGroup
 ```
 
 Once you've patched the custom location on top of the Azure Arc Resource Bridge, run the following command to check if the custom location has both AKS hybrid and Arc VM extensions installed:
