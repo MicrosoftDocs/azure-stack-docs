@@ -5,8 +5,8 @@ author: sethmanheim
 ms.topic: article
 ms.date: 09/14/2023
 ms.author: sethm
-ms.reviewer: thoroet
-ms.lastreviewed: 09/09/2020
+ms.reviewer: rtiberiu
+ms.lastreviewed: 09/27/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -56,7 +56,7 @@ The Azure Stack Hub 2306 update build number is **1.2306.2.47**.
 
 ### Update type
 
-The Azure Stack Hub 2306 update build type is **Full**.
+The Azure Stack Hub 2306 update build type is **Full**. This build contains only important security updates.
 
 The 2306 update has the following expected runtimes based on our internal testing:
 
@@ -69,15 +69,16 @@ Exact update durations typically depend on the capacity used on your system by t
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
-<!-- ### What's new
+### What's new
 
-- New features TBD. -->
+- This build contains only important [security updates](#security-updates). There are no other major feature additions.
 
 <!-- ### Improvements -->
 
 ### Changes
 
-- Starting with the 2301 release, [the Event Hubs resource provider](event-hubs-rp-install.md) is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
+- Starting with the 2301 release of Azure Stack Hub, [the Event Hubs resource provider](event-hubs-rp-install.md) is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
+- This build contains only important [security updates](#security-updates). There are no other major changes from the previous build.
 
 <!-- ### Fixes -->
 
