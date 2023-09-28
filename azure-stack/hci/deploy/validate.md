@@ -4,12 +4,14 @@ description: Understand cluster validation's importance, and when to run it on a
 author: jasongerend
 ms.author: jgerend
 ms.topic: article
-ms.date: 04/17/2023
+ms.date: 09/28/2023
 ---
 
 # Validate an Azure Stack HCI cluster
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019.
+
+Validate DCB is no longer the recommended tool to set up or test your host networking configuration on Azure Stack HCI. We recommend using Network ATC to configure your host networking set-up for Azure Stack HCI. Network ATC always supersedes Validate DCB on Azure Stack HCI.  
 
 Although the Create cluster wizard in Windows Admin Center performs certain validations to create a working cluster with the selected hardware, cluster validation performs additional checks to make sure the cluster will work in a production environment. This how-to article focuses on why cluster validation is important, and when to run it on an Azure Stack HCI cluster.
 

@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/30/2023
+ms.date: 09/27/2023
 ---
 
 # Add a server on your Azure Stack HCI (preview)
@@ -93,7 +93,9 @@ This section describes how to add a server using PowerShell, monitor the status 
 
 ### Add a server using PowerShell
 
-Make sure that you have reviewed and completed the [prerequisites](#prerequisites). Follow these steps to add a server using PowerShell.
+Make sure that you have reviewed and completed the [prerequisites](#prerequisites). 
+
+On the new server that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
 
@@ -108,11 +110,21 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
     Uninstall-module –Name PSWindowsUpdate –Force
     ```   
 
-1. Sign in with the Lifecycle Manager account into a server that is already a member of the cluster. Run the following command to add the new incoming server:
+On a server that already exists on your cluster, follow these steps:
+
+1. Sign in with the Lifecycle Manager account into a server that is already a member of the cluster.
+1. Before you add the server, make sure to get an updated authentication token. Run the following command:
 
     ```powershell
+    Update-AuthenticationToken 
+    ```
+   
+1. Run the following command to add the new incoming server:
+
+    ```powershell
+    $HostIpv4 = "<IPv 4 for the new server>"
     $Cred = Get-Credential 
-    Add-Server -Name "< Name of the new server>" -HostIpv4 -LocalAdminCredential $Cred 
+    Add-Server -Name "< Name of the new server>" -HostIpv4 $HostIpv4 -LocalAdminCredential $Cred 
     ```
 1. Make a note of the operation ID as output by the `Add-Server` command. You use this operation ID later to monitor the progress of the `Add-Server` operation.
 

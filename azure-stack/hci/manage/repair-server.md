@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/30/2023
+ms.date: 09/27/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
@@ -110,7 +110,9 @@ Before you repair a server, you must ensure that:
 
 This section describes how to repair a server using PowerShell, monitor the status of the `Repair-Server` operation and troubleshoot, if there are any issues.
 
-Make sure that you have reviewed the [prerequisites](#prerequisites). Follow these steps to repair a server.
+Make sure that you have reviewed the [prerequisites](#prerequisites). 
+
+Follow these steps on the sever you are trying to repair.
 
 1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
 
@@ -124,7 +126,14 @@ Make sure that you have reviewed the [prerequisites](#prerequisites). Follow the
     ```powershell
     Uninstall-Module –Name PSWindowsUpdate –Force
     ```
+Follow these steps on another sever that is a member of the same Azure Stack HCI cluster.
 
+1. Before you add the server, make sure to get an updated authentication token. Run the following command:
+
+   ```powershell
+    Update-AuthenticationToken
+   ```
+   
 1. Sign in with the Lifecycle Manager account into the server that is already a member of the cluster. Run the following command to repair the incoming server:
 
     ```powershell
