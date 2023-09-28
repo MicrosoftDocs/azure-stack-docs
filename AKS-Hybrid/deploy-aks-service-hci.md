@@ -106,7 +106,7 @@ $location = <Azure location. Available regions include "eastus" or "westeurope">
 az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace default --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location
 ```
 
-# Step 3:
+# Step 3: Install the AKS hybrid extension
 To install the AKS hybrid extension, run the following commands:
 
 ```azurecli
@@ -128,7 +128,7 @@ Expected output:
 Succeeded
 ```
 
-## Step 3: Patch your existing custom location to support AKS hybrid alongside Arc VMs
+## Step 4: Patch your existing custom location to support AKS hybrid alongside Arc VMs
 
 Run the following commands to patch your existing custom location on top of the Arc Resource Bridge. Choose this custom location when creating virtual machines and AKS hybrid clusters through Azure.
 
