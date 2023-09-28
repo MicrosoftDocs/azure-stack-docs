@@ -34,7 +34,7 @@ metadata:
       name: hello-world
       annotations:
       	nginx.ingress.kubernetes.io/rewrite-target: /
-kubernetes.io/ingress.class: “nginx”
+        kubernetes.io/ingress.class: “nginx”
   spec:  
       rules:
        - host: test.example.com
