@@ -84,18 +84,18 @@ Run the following command to return the Arc Resource Bridge namespace where you 
 ```azurecli
 az customlocation show --name $customLocationName --resource-group $resourceGroup --query "namespace" -o tsv
 ```
-
-```Expected output
+Expected output:
+```output
 default
 ```
 
-If your custom location is not in the default namespace, you will have to re-create the custom location. Note that doing so will delete all your existing Azure VMs, gallery images, etc. Delete all the Azure resources being managed by the custom location before proceeding. 
+If your custom location is not in the **default** namespace, you will have to re-create the custom location. Note that doing so will delete all your existing Azure VMs, gallery images, etc. Delete all the Azure resources being managed by the custom location before proceeding. 
 
 ```azurecli
 az customlocation delete --name <custom location name> --resource-group <resource group name>
 ```
 
-Install the custom location in the default namespace.
+Create the custom location in the default namespace.
 ```azurecli
 $hciClusterId= (Get-AzureStackHci).AzureResourceUri
 $resource_name= ((Get-AzureStackHci).AzureResourceName) + "-arcbridge"
@@ -106,7 +106,7 @@ $location = <Azure location. Available regions include "eastus" or "westeurope">
 az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace default --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location
 ```
 
-# Step 3: Install the AKS hybrid extension
+## Step 3: Install the AKS hybrid extension
 To install the AKS hybrid extension, run the following commands:
 
 ```azurecli
