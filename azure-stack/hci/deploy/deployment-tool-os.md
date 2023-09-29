@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # Install the Azure Stack HCI, version 23H2 operating system (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package-22h2.md)]
 
 The Azure Stack HCI, version 23H2 operating system is installed locally on each server in your cluster.
 
