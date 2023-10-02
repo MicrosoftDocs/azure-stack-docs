@@ -19,7 +19,7 @@ ms.reviewer: abha
 We do not recommend or support running AKS on Azure Stack HCI and Azure Arc Resource Bridge on the same Azure Stack HCI or Windows Server cluster. If you have AKS on Azure Stack HCI installed, run `Uninstall-AksHci` and start deploying your Azure Arc Resource Bridge from scratch.
 
 ## My AKS hybrid vnet creation timed out
-If you're creating AKS hybrid clusters on Azure Stack HCI, ensure that the custom location you create on top of Arc Resource Bridge is in the "default" namespace. Follow the steps in [install AKS hybrid extension and patch the custom location](/deploy-aks-service-hci.md) to ensure that the Azure Stack HCI custom location is created in the default namespace.
+If you're creating AKS hybrid clusters on Azure Stack HCI, ensure that the custom location you create on top of Arc Resource Bridge is in the "default" namespace. Follow the steps in [install AKS hybrid extension and patch the custom location](deploy-aks-service-hci.md) to ensure that the Azure Stack HCI custom location is created in the default namespace.
 
 ## KVA timeout error
 
