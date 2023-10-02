@@ -29,7 +29,7 @@ Before you begin, make sure you've done the following:
 
 The Azure Stack HCI 23H2 preview supports only the English version of the Azure Stack HCI operating system. To install the Azure Stack HCI operating system in English, follow these steps:
 
-1. [Download the Azure Stack HCI operating system from the Azure portal](../deploy/download-azure-stack-hci-software.md). Make sure to select **English** from the **Choose language** dropdown list.
+1. [Download the Azure Stack HCI operating system from the Azure portal](../deploy/download-azure-stack-hci-software.md).
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
 
@@ -69,7 +69,7 @@ The Azure Stack HCI 23H2 preview supports only the English version of the Azure 
 
 1. At the **Enter new credential** for Administrator prompt, enter a new password. Enter the password again to confirm it, and then press **Enter**.
 
-1. At the **Your password has been changed** confirmation prompt, press Enter.
+1. At the **Your password has been changed** confirmation prompt, press **Enter**.
 
     :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt.":::
 
