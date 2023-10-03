@@ -34,7 +34,6 @@ AKS hybrid data is sent in JSON format, and is stored in a secure Microsoft-oper
 
 - Billing data is sent to the respective resource of that region in which the customer has registered the device.
 - Diagnostic data (classified as "non-personal data") is stored within the US or the EU, based on what the customer has selected at the time of deployment. Telemetry data is always stored within the US.
-- Data is not sent to Microsoft until the cluster is registered with Azure.
 
 For information about how Microsoft stores diagnostic data in Azure, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
