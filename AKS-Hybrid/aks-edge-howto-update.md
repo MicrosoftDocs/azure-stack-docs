@@ -34,20 +34,20 @@ Microsoft Update in the Windows Update subsystem can now scan for an update for 
 
 Once the update is downloaded from either the cloud endpoint or a local WSUS server, it can now be staged and installed on all the nodes on a machine.
 
-## Step 2: Update the primary control node
+## Step 2: Update files on all nodes
 
-First, on **all** nodes in your cluster, run the `Start-AksEdgeUpdate` command to download the MSI.
+First, on **all** nodes in your cluster, run the `Start-AksEdgeUpdate` command to install the MSI and other related files.
 
 ```powershell
 Start-AksEdgeUpdate
 ```
 
-## Step 3: Update the primary control nodes
+## Step 3: Update the primary control node
 
 If you have more than one control nodes in your deployment, you first update the primary control node using the following command:
 
 ```powershell
-Start-AksEdgeControlPlaneUpdate -firstControlPlane true
+Start-AksEdgeControlPlaneUpdate -firstControlPlane $true
 ```
 
 ## Step 4: Update the secondary control nodes
@@ -55,7 +55,7 @@ Start-AksEdgeControlPlaneUpdate -firstControlPlane true
 You can update the other control nodes using the following command:
 
 ```powershell
-Start-AksEdgeControlPlaneUpdate -firstControlPlane false
+Start-AksEdgeControlPlaneUpdate -firstControlPlane $false
 ```
 
 ## Step 5: Update worker nodes
