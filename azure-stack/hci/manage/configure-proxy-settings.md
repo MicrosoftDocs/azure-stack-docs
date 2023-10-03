@@ -131,7 +131,7 @@ You can configure proxy settings for Microsoft Update and Cluster Cloud Witness 
 - To specify a list of host URLs that bypass proxy server, at the command prompt, type:
 
     ```cmd
-    netsh winhttp bypass-list="<URL to bypass>"
+    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list="<URL to bypass>"
     ```
 
 - To configure the Internet Explorer (IE) proxy settings at the machine level instead for the current user, import `WinInet` proxy configuration into `WinHTTP`.
