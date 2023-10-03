@@ -16,7 +16,7 @@ You can find the complete JSON schema file at `C:\Program Files\AksEdge\aksedge-
 
 | Attribute | Value type      |  Description |  Default value |   Applicable deployment types   |
 | :------------ |:-----------|:------------------|:--------|:------------|
-| `SchemaVersion` |String|Specifies the version of the schema/format of the JSON. | `1.9` |Single-machine and <br> full deployment|
+| `SchemaVersion` |String|Specifies the version of the schema/format of the JSON. | `1.9` |Single-machine and full deployment|
 | `Version` |`1.0`|Specifies the version of the JSON instance. | `1.0` |Single-machine and <br> full deployment|
 | `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. In `ScalableCluster`, you can add more machines to the cluster infrastructure. | `SingleMachineCluster` |Single-machine and <br> full deployment|
 | `Init.ServiceIPRangeStart` |IPv4 address `A.B.C.x`.|Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C.0**.| None |Single-machine and <br> full deployment|
