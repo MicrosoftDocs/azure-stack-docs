@@ -16,7 +16,7 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 
 | Attribute | Value type      |  Description |  Default value |   Applicable deployment types   |
 | :------------ |:-----------|:------------------|:--------|:------------|
-| `SchemaVersion` |String|Specifies the version of the schema/format of the json | `1.6` |Single-machine and <br> full deployment|
+| `SchemaVersion` |String|Specifies the version of the schema/format of the json | `1.9` |Single-machine and <br> full deployment|
 | `Version` |`1.0`|Specifies the version of the json instance | `1.0` |Single-machine and <br> full deployment|
 | `DeploymentType` |[`SingleMachineCluster` / `ScalableCluster`]| Specifies deployment type. Only in `ScalableCluster`, you can add more machines to the cluster infrastructure | `SingleMachineCluster` |Single-machine and <br> full deployment|
 | `Init.ServiceIPRangeStart` |IPv4 address `A.B.C.x`|Reserved IP start address for your Kubernetes services. This IP range must be free on your subnet **A.B.C.0**| None |Single-machine and <br> full deployment|
@@ -46,6 +46,8 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Network.Proxy.No` |String | No proxy config for bypassing the proxy. ||Single-machine and <br> full deployment|
 | `User.AcceptEula` | Boolean | Accept or decline the EULA | `false` |Single-machine and <br> full deployment|
 | `User.AcceptOptionalTelemetry` | Boolean | Accept or decline the `optional` telemetry. The `required` telemetry is enabled always. | `false` |Single-machine and <br> full deployment|
+| `User.VolumeLicense.EnrollmentID` | String | If Volume License is applicable, provide your Enrollment ID. | |Single-machine and <br> full deployment|
+| `User.VolumeLicense.PartNumber` | String | If Volume License is applicable, provide the Part number | |Single-machine and <br> full deployment|
 | `Machines[].ArcHybridComputeMachineId` |String | `Reserved` | `null` |Single-machine and <br> full deployment|
 | `Machines[].NetworkConnection.AdapterName` |String | NetAdapterName for VSwitch. It's mandatory for a full Kubernetes deployment. You can run the PowerShell `Get-NetAdapter -Physical` command to view the `Name` column for the adapter of your choice. ||Single-machine and <br> full deployment|
 | `Machines[].NetworkConnection.Mtu` | Number | The maximum transmission unit (MTU) for the network | `0` |Single-machine and <br> full deployment|
@@ -53,6 +55,7 @@ You can find the complete schema json file at `C:\Program Files\AksEdge\aksedge-
 | `Machines[].LinuxNode.CpuCount` | [`2-x`] | Number of CPU cores reserved for VM/VMs. | `2` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.MemoryInMB` | [`2048-2x`] | RAM in MBs reserved for VM/VMs. | `2048` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.DataSizeInGB` | Number | Size of the data partition. For large applications, we recommend increasing this number. *Only for Linux VM* | `10` |Single-machine and <br> full deployment|
+| `Machines[].LinuxNode.LogSizeInGB` | Number | Size of the log partition in GB. Maximum log partition size is capped at 10GB with minimum and default at 1GB. Available only on Linux nodes. | `1` |Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.Ip4Address` | `A.B.C.x` | Specify the IP address your VM takes. ||Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.MacAddress` |`00:00:00:00:00:00` | Specify the Mac address your VM takes. ||Single-machine and <br> full deployment|
 | `Machines[].LinuxNode.TimeoutSeconds` | Number | Timeout provided for the kubernetes cluster to complete the bootstrap process. It's recommended that you use the default value. | `300` |Single-machine and <br> full deployment|
