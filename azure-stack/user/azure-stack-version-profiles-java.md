@@ -16,6 +16,8 @@ ms.lastreviewed: 3/23/2022
 
 
 # Use API version profiles with Java in Azure Stack Hub
+>[!IMPORTANT]
+>The Java SDK has been updated from track 1 to track 2. We recommend migrating to the track 2 SDK as soon as possible. For instructions, see [this migration guide](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/resourcemanager/docs/MIGRATION_GUIDE.md).
 
 The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and Azure Key Vault. You can find the [Hybrid Java Samples repository](https://github.com/Azure-Samples/Hybrid-Java-Samples) on GitHub. This article will help you set up your environment, get the right credentials, grab the repository, and create a resource group in Azure Stack Hub.
 
@@ -33,7 +35,7 @@ of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles
 The profile is specified in the `pom.xml` file in the Maven project as a dependency. The profile loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
 ## Set up your development environment
 
-To prepare your environment for running the SDK, you can use the IDE that you prefer such as Eclipse or Visual Studio Code. But you will need to have Git, the Java SDK, and Apache Maven installed. You can find details about the prerequisites for the setting up your development environment at [Use the Azure SDK for Java](/azure/developer/java/sdk/overview)
+To prepare your environment for running the SDK, you can use an IDE such as Eclipse or Visual Studio Code, but you will need to have Git, the Java SDK, and Apache Maven installed. You can find details about the prerequisites for the setting up your development environment at [Use the Azure SDK for Java](/azure/developer/java/sdk/overview)
 
 1. Install Git. You can find the official instructions to install Git at [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
@@ -97,6 +99,8 @@ For profiles containing dates, to use a different SDK profile or version, substi
 
 | Azure Stack version | Profile |
 |---------------------|---------|
+|2301|2020_09_01|
+|2206|2020_09_01|
 |2108|2020_09_01|
 |2102|2020_09_01|
 |2008|2019_03_01|
@@ -310,7 +314,7 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 ## Samples
 
-See the [sample repository](https://github.com/Azure-Samples/Hybrid-Java-Samples) for update-to-date sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
+See [this sample repository](https://github.com/Azure-Samples/Hybrid-Java-Samples) for update-to-date (track 2) sample code. See [this sample repository](https://github.com/Azure-Samples/Hybrid-Java-Samples/releases/tag/track1) for track 1 sample code. The root `README.md` describes general requirements, and each sub-directory contains a specific sample with its own `README.md` on how to run that sample.
 
 ::: moniker range="<=azs-2008"
 
