@@ -71,11 +71,12 @@ For more information, see [Trusted launch for Arc VMs](./index.yml).
 
 ## Issues fixed
 
+<!-- need to get this list from shiproom-->
+
 |Release version|Feature|Issue|
-|-|------|------|
+|--|------|------|
 |2310|Security |In this release, when you run `Get-AsWDACPolicy` cmdlet on a two-node Azure Stack HCI cluster, the cmdlet returns `Unable to determine` as opposed to an integer (0, 1 or 2). |
-|2310|Azure Arc|After update, the Azure Stack HCI cluster servers show as not registered with Azure Arc.|To mitigate this issue, follow these steps: <br> 1. *Azcmamnet.exe* connect on each **Not registered** server <br>2. Register the servers again. Run this cmdlet on each server that isn't register <br>`Register-AzStackHCI`   |
-|2310|Arc Resource Bridge  |In this release, a custom location isn't created during Arc Resource Bridge deployment.|
+
 
 ## Next steps
 
