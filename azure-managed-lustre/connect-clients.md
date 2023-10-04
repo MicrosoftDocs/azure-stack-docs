@@ -2,9 +2,9 @@
 title: Connect clients to an Azure Managed Lustre file system
 description: Describes how to connect Linux clients with supported software versions to an Azure Managed Lustre file system.
 ms.topic: overview
-author: sethmanheim
+author: mayabishop
+ms.author: mvbishop
 ms.date: 06/28/2023
-ms.author: sethm 
 ms.lastreviewed: 03/24/2023
 ms.reviewer: dsundarraj
 

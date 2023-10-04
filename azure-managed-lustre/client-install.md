@@ -2,8 +2,8 @@
 title: Install client software for Azure Managed Lustre
 description: Tutorial that describes how to install client software for the Azure Managed Lustre File System.
 ms.topic: tutorial
-author: mvbishop
-ms.author:  mayabishop
+author: mayabishop
+ms.author: mvbishop
 ms.lastreviewed: 06/30/2023
 ms.reviewer: dsundarraj
 ms.date: 06/30/2023
