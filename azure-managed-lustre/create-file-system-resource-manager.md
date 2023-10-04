@@ -3,8 +3,8 @@ title: Create an Azure Managed Lustre file system using Azure Resource Manager t
 description: Use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
 ms.date: 06/28/2023
-author: mayabishop
-ms.author: mvbishop
+author: mvbishop
+ms.author: mayabishop
 ms.lastreviewed: 02/21/2023
 ms.reviewer: mayabishop
 

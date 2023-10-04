@@ -3,8 +3,8 @@ title: Prerequisites for Azure Managed Lustre file systems
 description: Network and storage prerequisites to complete before you create an Azure Managed Lustre file system.
 ms.topic: overview
 ms.date: 06/28/2023
-author: mayabishop
-ms.author: mvbishop
+author: mvbishop
+ms.author: mayabishop
 ms.reviewer: mayabishop
 
 # Intent: As an IT Pro, I  need to understand network and storage requirements for using an Azure Managed Lustre file system, and I need to configure what I need.
