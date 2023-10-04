@@ -27,7 +27,7 @@ Client machines running Linux can access Azure Managed Lustre. The basic client 
 - **To achieve advertised performance** -
   - Clients must reside in the same Availability Zone in which the cluster resides.
   - Be sure to [enable accelerated networking on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it's not enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
-- **Secure boot** - If you are using Generation 2 VMs, disable secure boot. Otherwise it will prevent clients from mounting Azure Managed Lustre.
+- **Security type** - When selecting the security type for the VM, choose the Standard Security Type.  Choosing Trusted Launch or Confidential types will prevent the lustre module from being properly installed on the client.
 
 The basic workflow is as follows:
 
@@ -115,6 +115,8 @@ After your clients are connected to the file system, you can use the Azure Manag
 
 > [!IMPORTANT]
 > When a client is no longer needed, it is essential that the client be unmounted prior to shutting it down. 
+> 
+> [How to unmount Azure Managed Lustre Filesystem using Scheduled Events](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/how-to-unmount-azure-managed-lustre-filesystem-using-azure/ba-p/3917814)
 
 ## Next steps
 
