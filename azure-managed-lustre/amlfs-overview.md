@@ -2,8 +2,8 @@
 title: What is Azure Managed Lustre?
 description: Use Azure Managed Lustre to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 ms.topic: overview
-author: sethmanheim
-ms.author: sethm 
+author: mvbishop
+ms.author: mayabishop
 ms.date: 06/28/2023
 ms.reviewer: mayabishop
 ms.custom: references_regions
@@ -51,8 +51,6 @@ Microsoft Azure Blob Storage is integrated with Azure Managed Lustre, which allo
 Azure Managed Lustre is customized to work seamlessly with Azure Blob Storage. You can specify an existing blob container to make its existing data accessible from your Azure Managed Lustre file system, or specify an empty container that you populate with data or use to store your output. Setup and maintenance are done for you. You just specify which blob container to use.
 
 If you integrate Azure Blob Storage when you create a Lustre file system, you can use Lustre HSM features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
-
-To learn more about how Luster HSM works, see [Lustre HSM tools now available](https://azure.microsoft.com/updates/lustre-hsm-tools-now-available-to-import-from-or-export-to-azure-storage/).
 
 ## Use Azure Managed Lustre with Kubernetes
 

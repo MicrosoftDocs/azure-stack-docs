@@ -1,6 +1,6 @@
 ---
-author: sethmanheim
-ms.author: sethm
+author: mvbishop
+ms.author: mayabishop
 ms.service: azure-stack
 ms.topic: include
 ms.date: 02/19/2023
