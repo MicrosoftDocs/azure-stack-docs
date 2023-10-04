@@ -7,9 +7,8 @@ ms.lastreviewed: 01/14/2022
 ms.reviewer: scooley
 ms.topic: conceptual
 ms.date: 11/07/2022
-# Intent: As an IT Pro, I want to learn how to use Open Liberty or WebSphere Liberty to deploy a Java application. 
 # Keyword: java jakartaee javaee microprofile open-liberty websphere-liberty aks-hci kubernetes
-ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-liberty, devx-track-javaee-liberty-aks
+ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-liberty, devx-track-javaee-liberty-aks, devx-track-azurecli
 ---
 
 # Deploy Java app with Open Liberty or WebSphere Liberty on Azure Kubernetes Service cluster in AKS hybrid
