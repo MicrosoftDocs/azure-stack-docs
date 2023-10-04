@@ -17,10 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, version 23H2 for 2310 release. This release maps to software version number **10.2310.0.XX**. This release supports the following:
-
-- Brand new software installations using a deployment tool.
-- Update of existing 2303 installations.
+This article applies to Azure Stack HCI, version 23H2 for 2310 release. This release maps to software version number **10.2310.0.XX**. This release only supports new deployments.
 
 For more information, see [What's new in 23H2](whats-new.md).
 
