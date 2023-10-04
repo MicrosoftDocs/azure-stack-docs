@@ -1,6 +1,6 @@
 --- 
-title: Prepare Active Directory for new Azure Stack HCI deployments (preview) 
-description: Learn how to prepare Active Directory before you deploy Azure Stack HCI (preview).
+title: Prepare Active Directory for new Azure Stack HCI 23H2 deployments (preview) 
+description: Learn how to prepare Active Directory before you deploy Azure Stack HCI 23H2 (preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 10/04/2023
@@ -9,11 +9,11 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prepare Active Directory for new Azure Stack HCI deployment (preview)
+# Prepare Active Directory for new Azure Stack HCI 23H2 deployment (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+This article describes how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI version 23H2. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
