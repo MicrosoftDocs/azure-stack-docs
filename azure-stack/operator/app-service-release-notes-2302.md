@@ -63,7 +63,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack Hub to 2302:
 
 ## Pre-update steps
 
- >[!NOTE]
+ > [!NOTE]
  > If you have previously deployed Azure App Service on Azure Stack Hub 2022 H1 to your Azure Stack Hub stamp, this release is a minor upgrade to 2022 H1 which addresses two issues.
 
 Azure App Service on Azure Stack Hub 2302 is a significant update that will take multiple hours to complete. The whole deployment will be updated and all roles recreated with the Windows Server 2022 Datacenter OS. Therefore, we recommend informing end customers of a planned update before applying the update.
@@ -193,7 +193,7 @@ Review the [known issues for update](#known-issues-update) and take any actions 
 
       Remove-PSSession -Session $session
 
-      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
       ```
 
   1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
@@ -259,15 +259,14 @@ Review the [known issues for update](#known-issues-update) and take any actions 
             if (-not $f.Installed) {
                 Write-Host Install feature on $env:COMPUTERNAME
                 Install-WindowsFeature -Name Web-CertProvider
-
+                
+                Read-Host -Prompt "If installing the feature, the machine will reboot. Wait until there's enough frontend availability, then press ENTER to continue"
                 Shutdown /t 5 /r /f 
             }
          }
       }
 
-      Remove-PSSession -Session $session
-
-      Read-Host -Prompt "If installing the feature, the machine will reboot, wait till there are enough frontend availability and press ENTER to continue"
+      Remove-PSSession -Session $session      
       ```
 
   1. In the Azure Stack admin portal, navigate back to the **ControllersNSG** Network Security Group.
