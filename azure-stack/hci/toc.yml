@@ -6,6 +6,10 @@
     href: overview.md
   - name: What's new in Azure Stack HCI? 
     href: whats-new.md
+  - name: Known issues for Azure Stack HCI
+    href: known-issues.md
+  - name: Release information
+    href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
@@ -16,8 +20,7 @@
     href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
-  - name: Release information
-    href: release-information.md
+
 - name: Quickstarts
   items:
   - name: Use Azure Stack HCI with Windows Admin Center
