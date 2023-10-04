@@ -3,7 +3,7 @@ title: AKS hybrid data collection
 description: Learn about the data exchanged between Kubernetes clusters and Azure.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/03/2023
+ms.date: 10/04/2023
 ms.author: sethm 
 ms.reviewer: baziwane
 
@@ -33,7 +33,7 @@ exchange between [tier 1](/azure/azure-arc/kubernetes/conceptual-data-exchange) 
 AKS hybrid data is sent in JSON format, and is stored in a secure Microsoft-operated datacenter as follows:
 
 - Billing data is sent to the respective resource of that region in which the customer has registered the device.
-- Diagnostic data (classified as "non-personal data") is stored within the US or the EU, based on what the customer has selected at the time of deployment. Telemetry data is always stored within the US.
+- Telemetry data (classified as "non-personal data") is stored within the US.
 
 For information about how Microsoft stores diagnostic data in Azure, see [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
