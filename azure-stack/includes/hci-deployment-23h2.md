@@ -12,8 +12,8 @@ ms.date: 10/04/2023
 
 Go to the Microsoft Collaborate site and download the 23H2 preview package, which contain the following files:
 
-    | 23H2 preview content|  Description |
-    |---------------------------------------------- |---------------------- |
-    |[*BootstrapCloudDeploymentTool.ps1*](https://go.microsoft.com/fwlink/?linkid=2210545) | Script to extract content and launch the deployment tool. When this script is run with the `-ExtractOnly` parameter, it will extract the zip file but not launch the deployment tool. |
-    | [*CloudDeployment.zip*](https://go.microsoft.com/fwlink/?linkid=2210546) | Lifecycle Manager. |
-    | [*Verify-CloudDeployment.ps1*](https://go.microsoft.com/fwlink/?linkid=2210608) | Hash used to validate the integrity of zip file. |
+| 23H2 preview content|  Description |
+|---------------------------------------------- |---------------------- |
+|[*BootstrapCloudDeploymentTool.ps1*](https://go.microsoft.com/fwlink/?linkid=2210545) | Script to extract content and launch the deployment tool. When this script is run with the `-ExtractOnly` parameter, it will extract the zip file but not launch the deployment tool. |
+| [*CloudDeployment.zip*](https://go.microsoft.com/fwlink/?linkid=2210546) | Lifecycle Manager. |
+| [*Verify-CloudDeployment.ps1*](https://go.microsoft.com/fwlink/?linkid=2210608) | Hash used to validate the integrity of zip file. |
