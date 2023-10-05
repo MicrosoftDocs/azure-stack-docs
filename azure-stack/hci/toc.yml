@@ -10,8 +10,8 @@
         href: whats-new.md
       - name: Version 22H2
         href: whats-new-in-hci-22h2.md
-  - name: Known issues for Azure Stack HCI
-    href: ../index.yml
+  - name: Known issues for version 23H2 (preview)
+    href: known-issues-23h2.md
   - name: Release information
     href: release-information.md
   - name: Compare to Windows Server
