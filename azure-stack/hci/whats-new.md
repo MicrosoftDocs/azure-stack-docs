@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/03/2023
+ms.date: 10/05/2023
 ---
 
 # What's new in Azure Stack HCI, version 23H2 (preview)
@@ -17,7 +17,7 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on one integrated package, cloud-based deployment, updates and capacity management, Azure consistent CLI for Arc VM management, support for VM extensions, and more.
 
-<!--You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).-->
+You can also join the Azure Stack HCI preview channel to test out features for future versions of the Azure Stack HCI operating system. For more information, see [Join the Azure Stack HCI preview channel](./manage/preview-channel.md).
 
 The following sections briefly describe the various features and enhancements in [Azure Stack HCI, version 23H2](#azure-stack-hci-version-23h2).
 
@@ -71,7 +71,7 @@ For more information, see [Trusted launch for Arc VMs](./index.yml).
 
 ## Issues fixed
 
-<!-- need to get this list from shiproom-->
+The following table lists the issues that are fixed in this release.
 
 |Release version|Feature|Issue|
 |--|------|------|
