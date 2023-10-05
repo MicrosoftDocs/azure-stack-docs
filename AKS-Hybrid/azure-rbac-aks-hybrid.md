@@ -2,6 +2,7 @@
 title: Use Azure RBAC for AKS hybrid clusters (preview)
 description: Use Azure RBAC with Azure Active Directory (Azure AD) to control access to AKS hybrid clusters.
 ms.topic: how-to
+ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sulahiri
