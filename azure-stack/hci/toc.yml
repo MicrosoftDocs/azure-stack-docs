@@ -6,6 +6,8 @@
     href: overview.md
   - name: What's new in Azure Stack HCI? 
     href: whats-new.md
+  - name: Known issues for version 23H2
+    href: known-issues-23h2.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
