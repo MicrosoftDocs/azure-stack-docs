@@ -81,23 +81,23 @@
       href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
-  - name: Azure Stack HCI version 23H2 (preview)
+  - name: Azure Stack HCI, version 23H2 (preview)
     items:
     - name: Read overview
       href: ../index.yml
-    - name: 0 - View deployment checklist
+    - name: 0. View deployment checklist
       href: ../index.yml
-    - name: 1 - Prepare Active Directory
+    - name: 1. Prepare Active Directory
       href: ../index.yml
-    - name: 2 - Download the software
+    - name: 2. Download the software
       href: ../index.yml
-    - name: 3 - Install the OS
+    - name: 3. Install the OS
       href: ../index.yml
-    - name: 4 - Set up the first server
+    - name: 4. Set up the first server
       href: ../index.yml
-    - name: 5 - Deploy via Azure portal 
+    - name: 5. Deploy via Azure portal 
       href: ../index.yml
-    - name: 6 - Validate deployment
+    - name: 6. Validate deployment
       href: ../index.yml
   - name: Azure Stack HCI, version 22H2
     items: 
