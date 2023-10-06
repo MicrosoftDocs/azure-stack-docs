@@ -73,9 +73,9 @@ If you are accessing the Azure Stack HCI, version 23H2 via a client, following r
 
 - Azure Stack HCI extension `stack-hci-vm` must be installed. Run the following command in an elevated PowerShell window on your client:
 
-        ```PowerShell
-        az extension add --name "stack-hci-vm"
-        ```
+  ```PowerShell
+  az extension add --name "stack-hci-vm"
+  ```
 
 
 # [Version 22H2](#tab/azurecli22h2)
