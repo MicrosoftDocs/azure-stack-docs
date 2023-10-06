@@ -40,7 +40,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
   | Maximum number of vCPUs assigned to virtual machines  | 16 vCPUs |
   | Maximum number of machines per cluster | 15 machines |
 
-## GA Feature support matrix
+## GA feature support matrix
 
 - **Infrastructure**: Install AKS Edge Essentials on physical host machines.
 - **Kubernetes Distribution supported**: Kubernetes (K8S) - Version: 1.24.3 and on Kubernetes (K3S) - Version: 1.24.3
@@ -48,7 +48,7 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 - **Workloads**: Only Linux worker nodes.
 - **Network plugins**: Calico on K8S and Flannel on K3S.
 
-## Experimental or Pre-release Features
+## Experimental or prerelease features
 
 - **Infrastructure**: Installing AKS Edge Essentials on a virtual machine using nested virtualization is experimental.
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
