@@ -81,42 +81,56 @@
       href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
-  - name: 0. Download the Azure Stack HCI software
-    href: deploy/download-azure-stack-hci-software.md
-  - name: 1. Deploy the Azure Stack HCI OS
-    href: deploy/operating-system.md
-  - name: 2. Create a cluster
-    href: deploy/create-cluster.md
-  - name: 3. Set up a cluster witness
-    href: manage/witness.md    
-  - name: 4. Register with Azure
-    href: deploy/register-with-azure.md
-  - name: 5. Validate the cluster
-    href: deploy/validate.md
-  - name: Migrate a cluster
+  - name: Azure Stack HCI version 23H2 (preview)
     items:
-    - name: Migrate to new hardware
-      href: deploy/migrate-cluster-new-hardware.md
-    - name: Migrate on same hardware
-      href: deploy/migrate-cluster-same-hardware.md
-  - name: Deploy with PowerShell
-    items:
-    - name: Deploy on a single server
-      href: deploy/single-server.md
-    - name: Single server scale-out
-      href: manage/single-node-scale-out.md
-    - name: Create a cluster with PowerShell
-      href: deploy/create-cluster-powershell.md
-    - name: Host networking with Network ATC
-      href: deploy/network-atc.md
-  - name: Deploy SDN
-    items:
-    - name: Deploy using Windows Admin Center
-      href: deploy/sdn-wizard.md
-    - name: Deploy using SDN Express
-      href: manage/sdn-express.md
-    - name: Deploy at cluster creation
-      href: deploy/create-cluster.md#step-5-sdn-optional  
+    - name: Read overview
+      href: ../index.yml
+    - name: 0 - View deployment checklist
+      href: ../index.yml
+    - name: 1 - Prepare Active Directory
+      href: ../index.yml
+    - name: 2 - Download the software
+      href: ../index.yml
+    - name: 3 - Install the OS
+      href: ../index.yml
+    - name: 4 - Set up the first server
+      href: ../index.yml
+    - name: 5 - Deploy via Azure portal 
+      href: ../index.yml
+    - name: 6 - Validate deployment
+      href: ../index.yml
+  - name: Azure Stack HCI, version 22H2
+    items: 
+    - name: 0. Download the Azure Stack HCI software
+      href: deploy/download-azure-stack-hci-software.md
+    - name: 1. Deploy the Azure Stack HCI OS
+      href: deploy/operating-system.md
+    - name: 2. Create a cluster
+      href: deploy/create-cluster.md
+    - name: 3. Set up a cluster witness
+      href: manage/witness.md    
+    - name: 4. Register with Azure
+      href: deploy/register-with-azure.md
+    - name: 5. Validate the cluster
+      href: deploy/validate.md
+    - name: Deploy with PowerShell
+      items:
+      - name: Deploy on a single server
+        href: deploy/single-server.md
+      - name: Single server scale-out
+        href: manage/single-node-scale-out.md
+      - name: Create a cluster with PowerShell
+        href: deploy/create-cluster-powershell.md
+      - name: Host networking with Network ATC
+        href: deploy/network-atc.md
+    - name: Deploy SDN
+      items:
+      - name: Deploy using Windows Admin Center
+        href: deploy/sdn-wizard.md
+      - name: Deploy using SDN Express
+        href: manage/sdn-express.md
+      - name: Deploy at cluster creation
+        href: deploy/create-cluster.md#step-5-sdn-optional  
   - name: Deploy workloads
     items:
     - name: Deploy Azure Benefits
