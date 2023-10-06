@@ -93,7 +93,7 @@ kubectl get nodes -o wide
 
 You should be able to see all the nodes of the cluster.
 
-:::image type="content" source="media/aks-edge/aks-edge-multi-nodes.png" alt-text=":::image type="content" source="media/aks-edge/aks-edge-multi-nodes.png" alt-text="Screenshot showing multiple nodes.":::":::
+:::image type="content" source="media/aks-edge/aks-edge-multi-nodes.png" alt-text="Screenshot showing multiple nodes." lightbox="media/aks-edge/aks-edge-multi-nodes.png":::
 
 ## Step 5: add more nodes
 
