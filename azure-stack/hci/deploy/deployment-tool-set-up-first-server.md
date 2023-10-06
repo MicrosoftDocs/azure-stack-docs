@@ -128,8 +128,9 @@ The following procedure provides a typical set of permissions to the custom role
             }
         ]
     }
-}
+    }
     ```
+
 1. Create the custom role:
 
     ```powershell
