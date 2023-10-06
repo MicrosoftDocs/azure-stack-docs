@@ -8,4 +8,4 @@ ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ---
 
-> Applies to: Azure Stack HCI, version 23H3 (preview)
+> Applies to: Azure Stack HCI, version 23H2 (preview)
