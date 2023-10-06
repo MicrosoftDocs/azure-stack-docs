@@ -1,12 +1,12 @@
 ---
 title:  Lifecycle Management for Azure Stack HCI solution updates (preview).
-description: This article describes how you can keep various pieces of your Azure Stack HCI solution up to date.
+description: This article describes how you can keep various pieces of your Azure Stack HCI, version 23H2 solution up to date.
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
 ms.reviewer: thoroet
 ms.lastreviewed: 06/14/2023
-ms.date: 06/14/2023
+ms.date: 10/06/2023
 ---
 
 # Lifecycle Manager for Azure Stack HCI, version 23H2 updates (preview)
