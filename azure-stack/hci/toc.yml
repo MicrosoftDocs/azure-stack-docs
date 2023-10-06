@@ -139,13 +139,13 @@
       - name: What's the Lifecycle Manager?
         href: update/whats-the-lifecycle-manager.md
       - name: Use Lifecycle Manager for updates
-        href: update/update-azure-stack-hci-solution.md
+        href: update/update-azure-stack-hci-solution-23h2.md
       - name: Understand update phases
         href: update/update-phases.md
       - name: Update via PowerShell
-        href: update/update-via-powershell.md
+        href: update/update-via-powershell-23h2.md
       - name: Troubleshoot updates
-        href: update/update-troubleshooting.md
+        href: update/update-troubleshooting-23h2.md
     - name: Azure Stack HCI, version 22H2
       items:
       - name: Update your cluster
