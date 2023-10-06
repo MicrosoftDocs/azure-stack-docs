@@ -145,8 +145,6 @@
       href: deploy/sql-server.md
     - name: Trusted enterprise virtualization
       href: deploy/trusted-enterprise-virtualization.md
-  - name: Deploy and manage Azure Stack HCI clusters in VMM
-    href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
 
 - name: Update
   items:
