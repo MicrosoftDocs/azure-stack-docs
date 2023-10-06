@@ -9,7 +9,7 @@ ms.lastreviewed: 06/14/2023
 ms.date: 06/14/2023
 ---
 
-# Lifecycle Manager for Azure Stack HCI solution updates (preview)
+# Lifecycle Manager for Azure Stack HCI, version 23H2 updates (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 

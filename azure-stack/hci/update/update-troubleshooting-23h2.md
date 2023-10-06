@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 10/06/2023
 ---
 
-# Troubleshoot Azure Stack HCI solution update (preview)
+# Troubleshoot Azure Stack HCI, version 23H2 update (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 

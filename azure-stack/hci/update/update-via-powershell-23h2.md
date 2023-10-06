@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 10/06/2023
 ---
 
-# Update your Azure Stack HCI solution via PowerShell (preview)
+# Update your Azure Stack HCI, version 23H2 via PowerShell (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
