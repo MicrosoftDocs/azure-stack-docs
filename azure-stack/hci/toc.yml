@@ -94,7 +94,7 @@
     - name: 3. Install the OS
       href: ../index.yml
     - name: 4. Set up the first server
-      href: ../index.yml
+      href: deploy/deployment-set-up-first-server.md
     - name: 5. Deploy via Azure portal 
       href: ../index.yml
     - name: 6. Validate deployment
