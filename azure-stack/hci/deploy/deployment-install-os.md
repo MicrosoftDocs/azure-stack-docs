@@ -1,9 +1,9 @@
 ---
 title: Install Azure Stack HCI, version 23H2 operating system (preview)
-description: Learn how to install the Azure Stack HCI version 23H2 operating system on each server of your cluster (preview).
+description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/02/2023
+ms.date: 10/08/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-The Azure Stack HCI, version 23H2 operating system is installed locally on each server in your cluster.
+This article describes the steps needed to install the Azure Stack HCI, version 23H2 operating system locally on each server in your cluster.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -21,15 +21,15 @@ The Azure Stack HCI, version 23H2 operating system is installed locally on each 
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md).
-- Complete the [deployment checklist](deployment-tool-checklist.md).
-- Prepare your [Active Directory](deployment-tool-active-directory.md) environment.
+- Satisfy the [prerequisites](./index.yml).
+- Complete the [deployment checklist](./index.yml).
+- Prepare your [Active Directory](./index.yml) environment.
 
 ## Boot and install the operating system
 
-The Azure Stack HCI 23H2 preview supports only the English version of the Azure Stack HCI operating system. To install the Azure Stack HCI operating system in English, follow these steps:
+To install the Azure Stack HCI, version 23H2 operating system, follow these steps:
 
-1. [Download the Azure Stack HCI operating system from the Azure portal](../deploy/download-azure-stack-hci-software.md).
+1. [Download the Azure Stack HCI operating system from the Azure portal](./index.yml).
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
 
@@ -125,4 +125,4 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 ## Next steps
 
-[Set up the first server in your Azure Stack HCI cluster](deployment-tool-set-up-first-server.md).
+[Set up the first server in your Azure Stack HCI cluster](./index.yml).

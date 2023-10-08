@@ -92,7 +92,7 @@
     - name: 2. Download the software
       href: ../index.yml
     - name: 3. Install the OS
-      href: ../index.yml
+      href: deploy/deployment-install-os.md
     - name: 4. Set up the first server
       href: ../index.yml
     - name: 5. Deploy via Azure portal 
