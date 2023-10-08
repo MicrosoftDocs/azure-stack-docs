@@ -86,7 +86,7 @@
     - name: Read overview
       href: ../index.yml
     - name: 0. View deployment checklist
-      href: ../index.yml
+      href: deploy/deployment-checklist.md
     - name: 1. Prepare Active Directory
       href: ../index.yml
     - name: 2. Download the software
