@@ -2,9 +2,9 @@
 title: Use Azure Blob storage with an Azure Managed Lustre file system
 description: Understand storage concepts for using Azure Blob storage with an Azure Managed Lustre file system. 
 ms.topic: overview
-author: sethmanheim
+author: mvbishop
+ms.author: mayabishop
 ms.date: 06/28/2023
-ms.author: sethm 
 ms.lastreviewed: 06/05/2023
 ms.reviewer: brianl
 

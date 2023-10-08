@@ -3,8 +3,8 @@ title: Automatically mount Lustre clients with fstab
 description: Describes how to automount lustre clients using fstab.
 ms.topic: how-to
 author: mvbishop
+ms.author: mayabishop
 ms.date: 07/26/2023
-ms.author: mayabishop 
 ms.lastreviewed: 07/26/2023
 ms.reviewer: dsundarraj
 
