@@ -21,15 +21,15 @@ This article describes the steps needed to install the Azure Stack HCI, version 
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](./index.yml).
-- Complete the [deployment checklist](./index.yml).
-- Prepare your [Active Directory](./index.yml) environment.
+- Satisfy the [prerequisites](../index.yml).
+- Complete the [deployment checklist](../index.yml).
+- Prepare your [Active Directory](../index.yml) environment.
 
 ## Boot and install the operating system
 
 To install the Azure Stack HCI, version 23H2 operating system, follow these steps:
 
-1. [Download the Azure Stack HCI operating system from the Azure portal](./index.yml).
+1. [Download the Azure Stack HCI operating system from the Azure portal](../index.yml).
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
 
@@ -125,4 +125,4 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 ## Next steps
 
-[Set up the first server in your Azure Stack HCI cluster](./index.yml).
+[Set up the first server in your Azure Stack HCI cluster](../index.yml).
