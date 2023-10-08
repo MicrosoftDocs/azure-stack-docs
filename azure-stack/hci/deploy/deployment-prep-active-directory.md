@@ -1,19 +1,19 @@
 --- 
-title: Prepare Active Directory for new Azure Stack HCI 23H2 deployments (preview) 
-description: Learn how to prepare Active Directory before you deploy Azure Stack HCI 23H2 (preview).
+title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment (preview) 
+description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/04/2023
+ms.date: 10/08/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prepare Active Directory for new Azure Stack HCI 23H2 deployment (preview)
+# Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare your Active Directory (AD) environment before you deploy Azure Stack HCI version 23H2. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -21,9 +21,10 @@ This article describes how to prepare your Active Directory (AD) environment bef
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](deployment-tool-prerequisites.md) for new deployments of Azure Stack HCI.
-- Complete the [deployment checklist](deployment-tool-checklist.md).
-- Install the PowerShell module to prepare Active Directory. [Download the module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/1.0) and run the following command:
+- Satisfy the [prerequisites](../index.yml) for new deployments of Azure Stack HCI.
+- Complete the [deployment checklist](../index.yml).
+- Install the PowerShell module to prepare Active Directory. [Download the module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2306). Make sure to use the [version 10.2306 of the AsHciADArtifactsPreCreationTool](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2306/Content/AsHciADArtifactsPreCreationTool.psd1).
+- Run the following command:
 
     ```azurepowershell
     Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery
@@ -147,4 +148,4 @@ To prepare and configure Active Directory, follow these steps:
 
 ## Next steps
 
-- [Install Azure Stack HCI version 23H2 operating system](deployment-tool-install-os.md) on each server in your cluster.
+- [Install Azure Stack HCI, version 23H2 operating system](../index.yml) on each server in your cluster.

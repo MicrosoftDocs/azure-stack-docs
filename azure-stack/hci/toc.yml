@@ -88,7 +88,7 @@
     - name: 0. View deployment checklist
       href: ../index.yml
     - name: 1. Prepare Active Directory
-      href: ../index.yml
+      href: deploy/deployment-prep-active-directory.md
     - name: 2. Download the software
       href: ../index.yml
     - name: 3. Install the OS
