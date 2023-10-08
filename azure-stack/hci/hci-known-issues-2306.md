@@ -22,7 +22,7 @@ This article applies to Azure Stack HCI, Supplemental Package, for 2306 release.
 - Brand new software installations using a deployment tool. 
 - Update of existing 2303 installations.
 
-For more information, see [What's new in 22H2](whats-new.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2303-preview.md#azure-stack-hci-2303-supplemental-package-preview).
+For more information, see [What's new in 22H2](whats-new-in-hci-22h2.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2303-preview.md#azure-stack-hci-2303-supplemental-package-preview).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
