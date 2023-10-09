@@ -3,7 +3,7 @@ title: Set up the first server for new Azure Stack HCI deployments (preview)
 description: Learn how to set up the first server before you deploy Azure Stack HCI (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/01/2023
+ms.date: 10/05/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -70,41 +70,67 @@ The following procedure provides a typical set of permissions to the custom role
 
     ```jason
     {
-	    "Name": "Azure Stack HCI registration role - Custom",
-	    "Id": null,
-	    "IsCustom": true,
-	    "Description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+	    "id": "/subscriptions/<Azure subscription ID>",
+        "properties": {
+        "roleName": "Azure Stack HCI 23H2 validator and registration role",
+        "description": "Custom Azure role to allow subscription-level access to register Azure Stack HCI",
+        "assignableScopes": [
+            "/subscriptions/<Azure subscription ID>"
+        ],
+        "permissions": [
+        {
 	    "Actions": [
 		"Microsoft.Resources/subscriptions/resourceGroups/read",
-		"Microsoft.Resources/subscriptions/resourceGroups/write",
-		"Microsoft.Resources/subscriptions/resourceGroups/delete",
-		"Microsoft.AzureStackHCI/register/action",
-		"Microsoft.AzureStackHCI/Unregister/Action",
-		"Microsoft.AzureStackHCI/clusters/*",
-		"Microsoft.Authorization/roleAssignments/write",
-		"Microsoft.Authorization/roleAssignments/read",
-		"Microsoft.HybridCompute/register/action",
-		"Microsoft.GuestConfiguration/register/action",
-		"Microsoft.HybridConnectivity/register/action",
-		"Microsoft.HybridCompute/machines/extensions/write",
-		"Microsoft.HybridCompute/machines/extensions/read",
-		"Microsoft.HybridCompute/machines/read",
-		"Microsoft.HybridCompute/machines/write",
-		"Microsoft.HybridCompute/privateLinkScopes/read",
-		"Microsoft.GuestConfiguration/guestConfigurationAssignments/read",
-		"Microsoft.ResourceConnector/register/action",
-		"Microsoft.Kubernetes/register/action",
-		"Microsoft.KubernetesConfiguration/register/action",
-		"Microsoft.ExtendedLocation/register/action",
-		"Microsoft.HybridContainerService/register/action",
-		"Microsoft.ResourceConnector/appliances/write"
+        "Microsoft.Resources/subscriptions/resourceGroups/write",
+        "Microsoft.Resources/subscriptions/resourceGroups/delete",
+        "Microsoft.AzureStackHCI/register/action",
+        "Microsoft.AzureStackHCI/Unregister/Action",
+        "Microsoft.AzureStackHCI/clusters/*",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.Authorization/roleAssignments/read",
+        "Microsoft.HybridCompute/register/action",
+        "Microsoft.GuestConfiguration/register/action",
+        "Microsoft.HybridConnectivity/register/action",
+        "Microsoft.HybridCompute/machines/extensions/write",
+        "Microsoft.HybridCompute/machines/extensions/read",
+        "Microsoft.HybridCompute/machines/extensions/delete",
+        "Microsoft.HybridCompute/machines/read",
+        "Microsoft.HybridCompute/machines/write",
+        "Microsoft.HybridCompute/machines/delete",
+        "Microsoft.HybridCompute/privateLinkScopes/read",
+        "Microsoft.GuestConfiguration/guestConfigurationAssignments/read",
+        "Microsoft.ResourceConnector/register/action",
+        "Microsoft.ResourceConnector/appliances/read",
+        "Microsoft.ResourceConnector/appliances/write",
+        "Microsoft.ResourceConnector/appliances/delete",
+        "Microsoft.ResourceConnector/locations/operationresults/read",
+        "Microsoft.ResourceConnector/locations/operationsstatus/read",
+        "Microsoft.ResourceConnector/appliances/listClusterUserCredential/action",
+        "Microsoft.ResourceConnector/operations/read",
+        "Microsoft.Kubernetes/register/action",
+        "Microsoft.KubernetesConfiguration/register/action",
+        "Microsoft.ExtendedLocation/register/action",
+        "Microsoft.HybridContainerService/register/action",
+        "Microsoft.KubernetesConfiguration/extensions/write",
+        "Microsoft.KubernetesConfiguration/extensions/read",
+        "Microsoft.KubernetesConfiguration/extensions/delete",
+        "Microsoft.KubernetesConfiguration/extensions/operations/read",
+        "Microsoft.KubernetesConfiguration/namespaces/read",
+        "Microsoft.KubernetesConfiguration/operations/read",
+        "Microsoft.ExtendedLocation/customLocations/deploy/action",
+        "Microsoft.ExtendedLocation/customLocations/read",
+        "Microsoft.ExtendedLocation/customLocations/write",
+        "Microsoft.ExtendedLocation/customLocations/delete"
 	    ],
-	    "NotActions": [],
-	    "AssignableScopes": [
-		"/subscriptions/<Azure Subscription ID>"
-	    ]
+	    "notActions": [],
+        "dataActions": [],
+        "notDataActions": []
+            }
+        ]
+    }
     }
     ```
+
 1. Create the custom role:
 
     ```powershell
@@ -115,7 +141,7 @@ The following procedure provides a typical set of permissions to the custom role
 
     ```powershell
     $user = Get-AzADUser -DisplayName <userdisplayname>
-    $role = Get-AzRoleDefinition -Name "Azure Stack HCI registration role"
+    $role = Get-AzRoleDefinition -Name "Azure Stack HCI 23H2 validator and registration role"
     New-AzRoleAssignment -ObjectId $user.Id -RoleDefinitionId $role.Id -Scope /subscriptions/<Azure Subscription ID>
     ```
 
@@ -125,10 +151,10 @@ The following procedure provides a typical set of permissions to the custom role
     |--|--|
     | "Microsoft.Resources/subscriptions/resourceGroups/read"<br>"Microsoft.Resources/subscriptions/resourceGroups/write"<br>"Microsoft.Resources/subscriptions/resourceGroups/delete"<br>"Microsoft.AzureStackHCI/register/action"<br>"Microsoft.AzureStackHCI/Unregister/Action"<br>"Microsoft.AzureStackHCI/clusters/\*"<br>"Microsoft.Authorization/roleAssignments/read" | To register and unregister the Azure Stack HCI cluster. |
     | "Microsoft.Authorization/roleAssignments/write"<br>"Microsoft.HybridCompute/register/action"<br>"Microsoft.GuestConfiguration/register/action"<br>"Microsoft.HybridConnectivity/register/action" | To register and unregister the Arc for server resources. |
-    | "Microsoft.HybridCompute/machines/extensions/write" <br> "Microsoft.HybridCompute/machines/extensions/read" | To list and enable Arc Extensions on Azure Stack HCI cluster. |
-    | "Microsoft.HybridCompute/machines/read" <br> "Microsoft.HybridCompute/machines/write" | To enable Arc for Servers on each node of your Azure Stack HCI cluster. |
+    | "Microsoft.HybridCompute/machines/extensions/write" <br> "Microsoft.HybridCompute/machines/extensions/read" <br> "Microsoft.HybridCompute/machines/extensions/delete" | To list and enable Arc Extensions on Azure Stack HCI cluster. |
+    | "Microsoft.HybridCompute/machines/read" <br> "Microsoft.HybridCompute/machines/write" <br> "Microsoft.HybridCompute/machines/delete" | To enable Arc for Servers on each node of your Azure Stack HCI cluster. |
     | "Microsoft.HybridCompute/privateLinkScopes/read" | To enable private endpoints. |
-    | "Microsoft.GuestConfiguration/guestConfigurationAssignments/read" <br> "Microsoft.ResourceConnector/register/action" <br> "Microsoft.Kubernetes/register/action" <br> "Microsoft.KubernetesConfiguration/register/action" <br> "Microsoft.ExtendedLocation/register/action" <br> "Microsoft.HybridContainerService/register/action" <br> "Microsoft.ResourceConnector/appliances/write" | For Azure Arc Resource Bridge installation. |
+    | "Microsoft.GuestConfiguration/guestConfigurationAssignments/read" <br> "Microsoft.ResourceConnector/register/action" <br> "Microsoft.ResourceConnector/appliances/read" <br> "Microsoft.ResourceConnector/appliances/write" <br>"Microsoft.ResourceConnector/appliances/delete" <br> "Microsoft.ResourceConnector/locations/operationresults/read" <br> "Microsoft.ResourceConnector/locations/operationsstatus/read" <br> "Microsoft.ResourceConnector/appliances/listClusterUserCredential/action" <br> "Microsoft.ResourceConnector/operations/read" <br> "Microsoft.Kubernetes/register/action" <br> "Microsoft.KubernetesConfiguration/register/action" <br> "Microsoft.ExtendedLocation/register/action" <br> "Microsoft.HybridContainerService/register/action" <br> "Microsoft.KubernetesConfiguration/extensions/write" <br> "Microsoft.KubernetesConfiguration/extensions/read" <br> "Microsoft.KubernetesConfiguration/extensions/delete" <br> "Microsoft.KubernetesConfiguration/extensions/operations/read" <br> "Microsoft.KubernetesConfiguration/namespaces/read" <br> "Microsoft.KubernetesConfiguration/operations/read" <br> "Microsoft.ExtendedLocation/customLocations/deploy/action" <br> "Microsoft.ExtendedLocation/customLocations/read" <br> "Microsoft.ExtendedLocation/customLocations/write" <br> "Microsoft.ExtendedLocation/customLocations/delete" | For Azure Arc Resource Bridge installation. |
 
 To set more restrictive permissions, see [How do I use a more restricted custom permissions role?](../manage/manage-cluster-registration.md#how-do-i-use-a-more-restricted-custom-permissions-role)
 

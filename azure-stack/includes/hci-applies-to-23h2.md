@@ -1,9 +1,9 @@
 ---
 author: alkohli
-ms.author: robess
+ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/02/2023
+ms.date: 10/04/2023
 ms.subservice: azure-stack-hci
 ms.reviewer: alkohli
 ms.lastreviewed: 10/08/2023
