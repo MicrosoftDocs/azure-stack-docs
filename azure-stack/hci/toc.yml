@@ -158,6 +158,8 @@
         href: update/update-phases.md
       - name: Update via PowerShell
         href: update/update-via-powershell-23h2.md
+      - name: Update via Azure portal
+        href: update/update-via-powershell-23h2.md
       - name: Troubleshoot updates
         href: update/update-troubleshooting-23h2.md
     - name: Azure Stack HCI, version 22H2
