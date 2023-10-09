@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Get the deployment checklist for Azure Stack, version HCI 23H2 (preview)
+# Get the deployment checklist for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
@@ -31,7 +31,7 @@ Active directory OU|A new organizational unit (OU) to store all the objects for 
 |Storage VLAN ID|Two unique VLAN IDs to be used for the storage networks, from your IT network administrator.<br> We recommend using the default VLANS from Network ATC for storage subnets. If you plan to have two storage subnets, Network ATC will use VLANS from 712 and 711 subnets. <br> For more information, see the **Provide storage network details** page in [Deploy interactively using a config file](../index.yml).|
 |DNS Server|A DNS Server that is used in your environment. The DNS server used must resolve the Active Directory Domain. <br> For more information, see the **Provide management network details** page in [Deploy interactively using a config file](../index.yml).|
 |Azure subscription ID|ID for the Azure subscription used to register the cluster. Make sure that you are a user access administrator and a contributor on this subscription. This will allow you to manage access to Azure resources, specifically to Arc-enable each server of an Azure Stack HCI cluster. For more information, see [Assign Azure permissions for deployment](../index.yml)|
-|Azure Storage account|For two-node clusters, a witness is required. For a cloud witness, an [Azure Storage account](/azure/storage/common/storage-account-create) is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](./deployment-tool-new-file.md#step-3-cluster).|
+|Azure Storage account|For two-node clusters, a witness is required. For a cloud witness, an [Azure Storage account](/azure/storage/common/storage-account-create) is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](../index.yml).|
 |Access key for Azure Storage account|To setup a cloud witness, the [Access key](/azure/storage/common/storage-account-get-info#get-a-connection-string-for-the-storage-account) for the Azure Storage account is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](../index.yml).|
 |Azure blob service domain|The domain name for the Azure blob service is needed if you choose to use a custom domain when setting up a cloud witness. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](../index.yml).|
 |File share path|For two-node clusters, a witness is required. For a file share witness, the file share path for the witness is needed. For more information, see **Step 3: Cluster** in [Deploy interactively using a config file](../index.yml).|
