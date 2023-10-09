@@ -42,7 +42,7 @@ Follow these steps to download the Azure Stack HCI software:
 
 1. On the **Get started** tab, under the **Download software** tile, select **Download Azure Stack HCI**.
 
-    :::image type="content" source="media/download-azure-stack-hci-23-h2-software/get-started-page-with-download-button.png" alt-text="Screenshot of the Get started page with the option to download the Azure Stack HCI OS." lightbox="media/download-azure-stack-hci-23h2-software/get-started-page-with-download-button.png":::
+    :::image type="content" source="media/download-azure-stack-hci-23h2-software/get-started-page-with-download-button.png" alt-text="Screenshot of the Get started page with the option to download the Azure Stack HCI OS." lightbox="media/download-azure-stack-hci-23h2-software/get-started-page-with-download-button.png":::
     
 1. On the **Download Azure Stack HCI** page on the right, do the following:
     1. Choose software version. By default, the latest generally available version of Azure Stack HCI is selected.
