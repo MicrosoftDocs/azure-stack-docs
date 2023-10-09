@@ -6,7 +6,7 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: sulahiri
-ms.date: 06/13/2023
+ms.date: 10/09/2023
 ms.lastreviewed: 03/23/2023
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
@@ -111,9 +111,9 @@ az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --sc
 ```
 
 > [!IMPORTANT]
-> The command output for `az ad sp` includes credentials that you must protect. Do not include these credentials in your code or check the credentials into your source control. For more information, see [Create an Azure service principal](/cli/azure/create-an-azure-service-principal-azure-cli).
+> The command output for `az ad sp` includes credentials that you must protect. Do not include these credentials in your code or check the credentials into your source control. For more information, see [Create an Azure service principal](/cli/azure/azure-cli-sp-tutorial-1).
 
-For more information about creating an SPN and assigning it a role, see [Create an Azure service principal](/cli/azure/create-an-azure-service-principal-azure-cli).
+For more information about creating an SPN and assigning it a role, see [Create an Azure service principal](/cli/azure/azure-cli-sp-tutorial-1).
 
 ## Step 2: Create the credential object  
 
@@ -135,7 +135,7 @@ You can create an Azure RBAC-enabled cluster using an SPN (Option A) or create t
 
 To create an AKS hybrid target cluster with Azure RBAC enabled using an SPN:
 
-1. If you haven't already created an SPN to use with the target cluster, [create the SPN](/cli/azure/create-an-azure-service-principal-azure-cli) now.
+1. If you haven't already created an SPN to use with the target cluster, [create the SPN](/cli/azure/azure-cli-sp-tutorial-1) now.
 1. Note the SPN created is for one time use when creating the cluster and doesn't require managing passwords
 
 1. Open a PowerShell window on the Azure HCI node or Windows server where you deploy the cluster, and run the following command:
@@ -259,4 +259,4 @@ For more information about how to convert to the **kubelogin** authentication pl
 
 ## Next steps
 
-- [Learn more about SPNs](/cli/azure/create-an-azure-service-principal-azure-cli)
+- [Learn more about SPNs](/cli/azure/azure-cli-sp-tutorial-1)
