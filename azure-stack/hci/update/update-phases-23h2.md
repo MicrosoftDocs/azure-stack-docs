@@ -43,11 +43,11 @@ The release notes include the update contents, changes, known issues, and links 
 
 After Microsoft releases the update, your Azure Stack HCI update platform will automatically detect the update. Though you don't need to scan for updates, you must go to the **Updates** page in your management surface to see the new update’s details.
 
-Depending on the hardware in your cluster and the scope of an update bundle, you might need to acquire and sideload extra content to proceed with an update. The **operating system** and **agents and services** content are provided by Microsoft, while depending on your specific solution and the OEM, the **Solution Extension** might require an extra download from the hardware OEM. If this is required, the installation flow prompts you for the content.
+Depending on the hardware in your cluster and the scope of an update bundle, you might need to acquire and sideload extra content to proceed with an update. The **operating system** and **agents and services** content are provided by Microsoft, while depending on your specific solution and the OEM, the **Solution Extension** might require an extra download from the hardware OEM. If more is required, the installation flow prompts you for the content.
 
 ## Phase 2: Readiness checks and staging
 
-Before installing a solution update, the Lifecycle Manager performs a series of prechecks. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Stack HCI cluster is safe to update and ensures updates go more smoothly.
+The Lifecycle Manager performs a series of prechecks before installing a solution update. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Stack HCI cluster is safe to update and ensures updates go more smoothly.
 
 A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content has been downloaded and *before* it begins installing.
 
@@ -55,24 +55,19 @@ Readiness checks can also result in blocking conditions or warnings.
 
 - If the readiness checks detect a blocking condition, the issues must be remediated before the update can proceed.
 
-- Readiness checks can also result in warnings that won’t block the updates but could introduce longer update times or affect the workloads. You may need to acknowledge the potential impact and bypass the warning before the update can proceed.
-
-Typically the update platform tries to remediate the issues automatically but sometimes manual intervention is required. Once you remediate the issue, you need to rerun the checks to confirm the update readiness before proceeding.
+- If the readiness checks result in warnings the updates, it could introduce longer update times or affect the workloads. You might need to acknowledge the potential impact and bypass the warning before the update can proceed.
 
 > [!NOTE]
 > In this release, you can only initiate immediate install of the updates. Scheduling of updates is not supported.
 
 ## Phase 3: Installation progress and monitoring
 
-While the update installs, you can monitor the progress via your chosen interface. Steps within the update are shown within a hierarchy. This hierarchy corresponds to the actions the Lifecycle Manager takes throughout the workflow. Steps may be dynamically generated throughout the workflow, so the list of steps may change. For more information, see examples of [Monitoring progress via PowerShell](../update/update-via-powershell.md).
+While the update installs, you can monitor the progress via your chosen interface. Steps within the update are shown within a hierarchy and correspond to the actions the Lifecycle Manager takes throughout the workflow. Steps might be dynamically generated throughout the workflow, so the list of steps could change. For more information, see examples of [Monitoring progress via PowerShell](../update/update-via-powershell.md).
 
-## Failures and diagnosis
+ The Lifecycle Manager includes retry and remediation logic. It attempts to fix update issues automatically and in a non-disruptive way, but sometimes manual intervention is required. For more information, see [Troubleshooting updates](update-troubleshooting-23h2.md).
 
-The Lifecycle Manager includes retry and remediation logic. It attempts to fix issues in a non-disruptive way, such as retrying a CAU run. If an update run can't be remediated automatically, it fails. You can retry the update or visit the Azure Support Center to evaluate the next steps.
-
-## Collecting logs
-
-If you encounter failures during the update process, collect diagnostic logs to help Microsoft identify and fix the issues. For more information, see how to [Collect diagnostic logs for Azure Stack HCI, version 23H2](../manage/collect-logs.md).
+> [!NOTE]
+> Once you remediate the issue, you need to rerun the checks to confirm the update readiness before proceeding.
 
 ## Next steps
 

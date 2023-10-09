@@ -26,9 +26,9 @@ Here's an example of a new cluster deployment using the Lifecycle Manager:
 
 :::image type="content" source="media/lifecycle-manager/update-your-solution-23h2.png" alt-text="Screenshot of ways to deploy and update your solution." lightbox="media/lifecycle-manager/update-your-solution.png":::
 
-In this solution the Azure Stack HCI OS, driver, firmware, and agents and services, are automatically updated. Some new agents and services can't be updated outside the Lifecycle Manager and availability of those updates depends on the specific feature.
+In this solution the Azure Stack HCI OS, agents and services, drivers, and firmware are automatically updated.
 
-Note, you might need to follow different processes to apply updates depending on the services you use.
+Some new agents and services can't be updated outside the Lifecycle Manager and availability of those updates depends on the specific feature. You might need to follow different processes to apply updates depending on the services you use.
 
 ## Benefits of the Lifecycle Manager
 
@@ -59,7 +59,7 @@ Microsoft might release the following types of updates for the Azure Stack HCI p
 
 ¹ Quality updates released based on packages that contain monthly updates. These updates supersede the previous month's updates and contain both security and non-security changes.
 
-² The frequency of Solution Builder Extension updates is determined by the Original Equipment Manufacturer.
+² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates.
 
 Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your cluster must stay within six months of the most recent baseline to consider it supported.
 
@@ -71,15 +71,15 @@ Solution updates managed by the Lifecycle Manager contain new versions of the Az
 
 - Operating System: These updates help you stay productive and protected. They provide users and IT administrators with the security fixes they need and protect devices so that unpatched vulnerabilities can't be exploited.
 
-- Solution Builder Extension: Hardware vendors might choose to integrate with the Lifecycle Manager to enhance the update management experience for their customers.
-
-  - If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the Lifecycle Manager orchestrates the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
-
 - Lifecycle Manager agents and services: The Lifecycle Manager updates its own agents to ensure it has the recent fixes corresponding to the update. To achieve a successful update of its agents, the Lifecycle Manager:
 
   - Prepares and updates the servicing stack
   - Installs new agents and services
   - Updates the host OS. Cluster-Aware Updating is used to orchestrate reboots.
+
+- Solution Builder Extension: Hardware vendors might choose to integrate with the Lifecycle Manager to enhance the update management experience for their customers.
+
+  - If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the Lifecycle Manager orchestrates the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
 
 - Azure Arc Extensions:
 
@@ -94,18 +94,18 @@ The Lifecycle Manager is the recommended way to update your Azure Stack HCI clus
 
 ## User interfaces for updates
 
-In addition to the Lifecycle Management method used to update your solution, here are two interfaces that can be used to apply your available updates.
+In addition to the Lifecycle Management method used to update your solution, there are two interfaces you can use to apply your available updates.
 
 - PowerShell (Command line)
-- The Azure portal or Azure Update Manager??
+- The Azure portal
 
 ### PowerShell
 
 The PowerShell procedures apply to a single server and multi-server cluster that runs with the Lifecycle Manager installed. For more information, see [Update your Azure Stack HCI solution via PowerShell](update-via-powershell-md).
 
-### The Azure portal or Azure Update Manager??
+### The Azure portal
 
-<Add content to tie in new Azure Update Manager article>
+<!--Add content to tie in new Azure Update Manager article-->
 
 ## Next steps
 
