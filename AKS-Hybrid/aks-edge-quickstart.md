@@ -118,6 +118,6 @@ You now have an Arc-connected AKS Edge Essentials K3S cluster with a Linux node.
 
 - [Understand deployment options](aks-edge-concept-clusters-nodes.md).
 - [Deploy a Linux application](aks-edge-howto-deploy-app.md).
-- [Add a Windows node](aks-edge-howto-single-node-deployment.md#4-add-a-windows-worker-node-optional).
+- [Add a Windows node](aks-edge-howto-single-node-deployment.md#step-4-add-a-windows-worker-node-optional).
 - [Overview](aks-edge-overview.md)
 - [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
