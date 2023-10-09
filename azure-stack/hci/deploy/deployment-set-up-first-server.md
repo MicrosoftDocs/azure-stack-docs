@@ -3,7 +3,7 @@ title: Set up the first server for new Azure Stack HCI, version 23H2 deployment 
 description: Learn how to set up the first server before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/08/2023
+ms.date: 10/09/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -61,7 +61,7 @@ If your Azure subscription is through an Enterprise Agreement (EA) or Cloud Solu
 - **User Access Administrator** role: Required to Arc-enable each server of an Azure Stack HCI cluster.
 - **Contributor** role: Required to register and unregister the Azure Stack HCI cluster.
 
-   :::image type="content" source="media/deployment-tool/first-server/access-control.png" alt-text="Screenshot of assign permissions screen." lightbox="media/deployment-tool/first-server/access-control.png":::
+   :::image type="content" source="media/deploy-first-server/access-control.png" alt-text="Screenshot of assign permissions screen." lightbox="media/deploy-first-server/access-control.png":::
 
 ### Assign Azure permissions using PowerShell
 
