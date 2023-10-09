@@ -44,7 +44,7 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
     > [!NOTE]
     > Upgrade installations are not supported in this release of the operating system.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard." lightbox="media/install-os/azure-stack-hci-install-language.png":::
+   :::image type="content" source="media/install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the language page of the Install Type Azure Stack HCI wizard." lightbox="media/install-os/azure-stack-hci-install-language.png":::
 
 1. On the **Where do you want to install Azure Stack HCI?** page, confirm the drive where the operating system is installed, and then select **Next**.
 
@@ -71,11 +71,11 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
 
 1. At the **Your password has been changed** confirmation prompt, press **Enter**.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/azure-stack-hci-admin-password-changed.png":::
+   :::image type="content" source="media/install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/install-os/azure-stack-hci-admin-password-changed.png":::
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use *SConfig*, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The *SConfig* tool opens automatically when you sign in to the server.
 
-:::image type="content" source="media/install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/azure-stack-hci-sconfig-screen.png":::
+:::image type="content" source="media/install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/install-os/azure-stack-hci-sconfig-screen.png":::
 
 ## Configure the operating system using SConfig
 
