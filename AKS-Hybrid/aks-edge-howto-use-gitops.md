@@ -75,7 +75,7 @@ Wait until the `config-nginx` has successfully been created and visible on your 
 | Prune | Enabled |
 | Force | Not enabled |
 
-:::image type="content" source="media/aks-edge/gitops-second-config.png" alt-text=":::image type="content" source="media/aks-edge/gitops-second-config.png" alt-text="Screenshot showing namespace-level configuration.":::":::
+:::image type="content" source="media/aks-edge/gitops-second-config.png" alt-text="Screenshot showing namespace-level configuration." lightbox="media/aks-edge/gitops-second-config.png":::
 
 Refresh your configuration table and wait for the configuration to be installed and compliant. Using `kubectl`, check that the service is running:
 

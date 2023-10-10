@@ -68,7 +68,7 @@ The previous diagram shows the different virtual machines and components of this
 
    If you created the switch correctly, you should see something similar to the following output:
 
-   ```shell
+   ```output
    Name    SwitchType NetAdapterInterfaceDescription
    ----    ---------- ------------------------------
    AKS-Int Internal
@@ -119,7 +119,7 @@ The previous diagram shows the different virtual machines and components of this
 
    You should see something similar to the following output:
 
-   ```shell
+   ```output
    PS C:\Windows\system32> ipconfig
 
    Windows IP Configuration
@@ -216,7 +216,7 @@ The previous diagram shows the different virtual machines and components of this
 
 1. Test the ping from **Windows-VM-2** to **AKS-Edge-VM-1**:
 
-   ```shell
+   ```output
    ping 172.20.1.4
    ```
 
@@ -253,7 +253,7 @@ The previous diagram shows the different virtual machines and components of this
 
    If everything was correctly set up, you should see both Linux nodes running in your cluster
 
-   ```shell
+   ```output
    PS C:\> kubectl get nodes
    NAME                     STATUS   ROLES                       AGE     VERSION
    windows-vm1-ledge        Ready    control-plane,etcd,master   3m45s   v1.24.3+k3s-
