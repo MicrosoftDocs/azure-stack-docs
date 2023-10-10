@@ -69,6 +69,6 @@ While the update installs, you can monitor the progress via your chosen interfac
 > [!NOTE]
 > Once you remediate the issue, you need to rerun the checks to confirm the update readiness before proceeding.
 
-## Next steps
+## Next step
 
 Learn more about how to [Troubleshoot updates](../update/update-troubleshooting.md).

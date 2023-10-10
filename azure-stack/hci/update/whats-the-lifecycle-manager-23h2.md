@@ -107,7 +107,7 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 <!--Add content to tie in new Azure Update Manager article-->
 
-## Next steps
+## Next step
 
 Learn to [Understand update phases](update-phases.md).
 
