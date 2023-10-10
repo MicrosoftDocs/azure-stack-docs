@@ -43,7 +43,7 @@ kubectl top pods -A
 
 :::image type="content" source="media/aks-edge/metrics-server-installed.png" alt-text="Screenshot of results showing metrics server installed." lightbox="media/aks-edge/metrics-server-installed.png":::
 
-If your metrics server fails to display, you may have run into an MTU issue in which the Linux VM's MTU doesn't match that of your network. This can happen on Azure VMs. You may need to set your MTU parameter to 1300 in your AksEdgeConfig file, as follows:
+If your metrics server fails to display, this could be a known MTU issue in which the Linux VM's MTU doesn't match that of your network. This issue can happen on Azure VMs. Set your MTU parameter to 1300 in your **AksEdgeConfig** file, as follows:
 
 ```json
 {

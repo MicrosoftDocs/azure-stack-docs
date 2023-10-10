@@ -130,10 +130,10 @@ Create a new namespace-level configuration for Windows nodes.
 1. Make a change to this YAML file by selecting **Edit**. Change the **replicaCount** to 5. Change the value to "Deploying to AKS Edge Essentials Gitops!"
 1. Commit this change.
 
-> [!NOTE]
-> Because we set the **sync interval** to **1 min** when creating the configuration, Flux pulls down changes from GitHub every minute.
+   > [!NOTE]
+   > Because we set the **sync interval** to **1 min** when creating the configuration, Flux pulls down changes from GitHub every minute.
 
-:::image type="content" source="media/aks-edge/edit-yaml.png" alt-text="Screenshot showing hello-arc yaml." lightbox="media/aks-edge/edit-yaml.png":::
+   :::image type="content" source="media/aks-edge/edit-yaml.png" alt-text="Screenshot showing hello-arc yaml." lightbox="media/aks-edge/edit-yaml.png":::
 
 1. Use `kubectl` to see the old pods terminate and new pods come online:
 
