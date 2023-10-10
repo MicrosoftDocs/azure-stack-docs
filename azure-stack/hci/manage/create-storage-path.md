@@ -143,6 +143,8 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
 
 Once the storage path creation is complete, you're ready to create virtual machine images.
 
+
+
 ### Delete a storage path
 
 If a storage path is not required, you can delete it. To delete a storage path, first remove the associated workloads and then run the following command to delete the storage path:
