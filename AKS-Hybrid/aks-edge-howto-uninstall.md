@@ -4,7 +4,7 @@ description: Learn how to uninstall AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 12/05/2022
+ms.date: 10/10/2023
 ms.custom:
   - template-how-to
   - devx-track-azurecli
@@ -12,27 +12,27 @@ ms.custom:
 
 # Uninstall an AKS Edge Essentials cluster
 
-Follow the steps in this article to uninstall AKS Edge Essentials.
+This article describes how to uninstall AKS Edge Essentials.
 
 ## Disconnect from Azure Arc
 
-If you used `Connect-AideArcKubernetes` to connect to Azure Arc, run `Disconnect-AideArcKubernetes` to disconnect your cluster from Azure Arc. For a complete clean-up, delete the service principal and resource group you created for this example.
+If you used `Connect-AideArcKubernetes` to connect to Azure Arc, run `Disconnect-AideArcKubernetes` to disconnect your cluster from Azure Arc. For a complete clean-up, delete the service principal and resource group you created for this example:
 
 ```powershell
 Disconnect-AideArcKubernetes
 ```
 
-If you used `Connect-AksEdgeArc` to connect to Arc, run `Disconnect-AksEdgeArc` to disconnect your cluster from Azure Arc.
+If you used `Connect-AksEdgeArc` to connect to Arc, run `Disconnect-AksEdgeArc` to disconnect your cluster from Azure Arc:
 
 ```powershell
 Disconnect-AksEdgeArc -JsonConfigFilePath .\aksedge-config.json
 ```
 
-You can also manually remove the cluster from Arc using the Azure portal and delete the arc pods in the cluster.
+You can also manually remove the cluster from Arc using the Azure portal and delete the Arc pods in the cluster.
 
 ## Remove your application from cluster
 
-Delete the applications that you deployed using the following command.
+Delete the applications that you deployed using the following command:
 
 ```powershell
 kubectl delete -f ./path-to-your-YAML-file/app.yaml
@@ -46,27 +46,28 @@ kubectl delete -f linux-sample.yaml
 
 ## Remove nodes on a single-machine cluster
 
-To remove the Windows node only,
+To remove the Windows node only, issue the following command:
 
 ```powershell
 Remove-AksEdgeNode -nodeType Windows
 ```
 
-To remove your single machine cluster with a `Linux` or `LinuxandWindows` workload run:
+To remove your single machine cluster with a `Linux` or `LinuxandWindows` workload, run:
 
 ```powershell
 Remove-AksEdgeDeployment
-(or)
+
+# or run
 Remove-AksEdgeDeployment -Force #to forcefully remove all.
 ```
 
-You can't remove the Linux node alone in this configuration, you must remove the deployment if you need to remove Linux node.
+You can't remove the Linux node alone in this configuration; you must remove the deployment if you need to remove Linux node.
 
 > [!NOTE]
-> If your single machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS edge network objects using `hnsdiag delete networks <ID>`.
+> If your single-machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS Edge Essentials network objects using `hnsdiag delete networks <ID>`.
 
 > [!NOTE]
-> There is a known issue in which repeatedly creating a new deployment and removing the node may result in an "error during ConnectToVirtualMachine". If this occurs, reboot your system to resolve the error.
+> There is a known issue in which repeatedly creating a new deployment and removing the node may result in an "error during ConnectToVirtualMachine." If this occurs, reboot your system to resolve the error.
 
 ## Remove nodes on a multi-machine cluster
 
@@ -84,7 +85,7 @@ To remove a **Linux** only node:
 Remove-AksEdgeNode -NodeType Linux
 ```
 
-During the removal of a **control plane node** from a cluster, it's crucial for the cluster administrator to verify that the cluster has completed reconciliation and the removed node no longer serves as the leader.
+During the removal of a **control plane node** from a cluster, it's crucial for the cluster administrator to verify that the cluster has completed reconciliation and that the removed node no longer serves as the leader.
 
 You can verify this by running `kubectl get leases -A` and checking until the removed node is no longer a lease holder in the output. This is vital for maintaining cluster stability.
 
@@ -97,14 +98,14 @@ Remove-AksEdgeDeployment
 > [!NOTE]
 > There is a known issue in which repeatedly creating a new deployment and removing the node can result in an error. If this occurs, reboot your system to resolve the error.
 
-## Uninstall AKS edge
+## Uninstall AKS Edge Essentials
 
-On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can also go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service Edge Essentials (Public Preview)**. Click **Uninstall**.
+On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can also go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service Edge Essentials (Public Preview)**. Select **Uninstall**.
 
 > [!NOTE]
-> You may want to reboot your machine right after the uninstall so that all resources are cleaned and your machine is ready for a new installation in the future.
+> You might want to reboot your machine right after the uninstall so that all resources are cleaned up, and your machine is ready for a new installation.
 
-If you encounter any issues uninstalling AKS edge, try [downloading this troubleshooting tool](https://support.microsoft.com/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d) to uninstall.
+If you encounter any issues uninstalling AKS Edge Essentials, try downloading [this troubleshooting tool](https://support.microsoft.com/topic/fix-problems-that-block-programs-from-being-installed-or-removed-cca7d1b6-65a9-3d98-426b-e9f927e1eb4d) to uninstall.
 
 ## Uninstall Azure CLI
 
