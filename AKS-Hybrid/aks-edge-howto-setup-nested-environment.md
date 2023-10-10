@@ -216,7 +216,7 @@ The previous diagram shows the different virtual machines and components of this
 
 1. Test the ping from **Windows-VM-2** to **AKS-Edge-VM-1**:
 
-   ```output
+   ```powershell
    ping 172.20.1.4
    ```
 
