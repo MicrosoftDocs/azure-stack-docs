@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 07/14/2023
+ms.date: 10/10/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -19,8 +19,8 @@ This article describes how to create virtual machine (VM) images for your Azure 
 
 For Azure CLI, you can use two different modules based on the operating system version of your Azure Stack HCI cluster. If running:
 
- - Azure Stack HCI version 23H2 (preview), use the [Az.StackHCIVM module](./index.yml)
- - Azure Stack HCI, version 22H2, use the [Az.AzureStackHCI module](https://learn.microsoft.com/en-us/cli/azure/azurestackhci?view=azure-cli-latest)
+ - Azure Stack HCI version 23H2 (preview), use the [stack-hci-vm module](../index.yml). This module is automatically installed on your Azure Stack HCI cluster during the deployment.
+ - Azure Stack HCI, version 22H2, use the [azurestackhci module](/cli/azure/azurestackhci&preserve-view=true?view=azure-cli-latest)
 
 If using Azure portal, you will always be using the latest version of the Azure Stack HCI module.
 
@@ -30,18 +30,13 @@ If using Azure portal, you will always be using the latest version of the Azure 
 
 Before you begin, make sure that the following prerequisites are completed.
 
-# [Azure CLI for version 23H2](#tab/azurecli23h2)
+# [Azure CLI for version 23H2 (preview)](#tab/azurecli23h2)
 
 Use this procedure if you have an Azure Stack HCI, version 23H2 cluster. You'll use the `stack-hci-vm` CLI module installed during deployment on your cluster to create VM images.
 
 [!INCLUDE [hci-23h2-vm-image-prerequisites-marketplace](../../includes/hci-23h2-vm-image-prerequisites-marketplace.md)]
 
-- If using a client to connect to your Azure Stack HCI cluster, make sure that your client has the appropriate prerequisites. See [Connect to Azure Stack HCI via Azure CLI client](). Your client should be:
-
-    - Running PowerShell 5.0 or later.
-    - Running the latest version of `az` CLI.
-        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
-        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
+- If using a client to connect to your Azure Stack HCI cluster, make sure that your client has the appropriate prerequisites. See [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements). 
 
 
 # [Azure portal](#tab/azureportal)
@@ -54,13 +49,7 @@ Use this procedure if you have an Azure Stack HCI, version 22H2 cluster. You'll 
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
 
-
-- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
-
-    - Running PowerShell 5.0 or later.
-    - Running the latest version of `az` CLI.
-        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
-        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
+- If using a client to connect to your Azure Stack HCI cluster, make sure that your client has the appropriate prerequisites. See [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements). 
         
 ---
 
