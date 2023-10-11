@@ -73,7 +73,7 @@ To prepare your cluster for an update using Azure Update Manager (preview), foll
    Azure Stack HCI Bundle Update – 10.2309.9.10 	Ready 	     10.2309.9.10
    ```
 
-4. Access Azure Update Manager (preview) on the Azure portal using the following link: [http://aka.ms/updatesPreview](http://aka.ms/updatesPreview).
+4. Access Azure Update Manager (preview) on the Azure portal using the following link: [https://aka.ms/updatesPreview](https://aka.ms/updatesPreview).
 
    > [!NOTE]
    > After joining the canary ring, it may take up to 24 hours for the update package to appear in Azure Update Manager (preview).
