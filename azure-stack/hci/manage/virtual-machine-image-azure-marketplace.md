@@ -31,7 +31,7 @@ Use this procedure if you have an Azure Stack HCI, version 23H2 cluster. You'll 
 
 [!INCLUDE [hci-23h2-vm-image-prerequisites-marketplace](../../includes/hci-23h2-vm-image-prerequisites-marketplace.md)]
 
-- If using a client to connect to your Azure Stack HCI cluster, make sure that your client has the appropriate prerequisites. See [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements). 
+- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements). 
 
 
 # [Azure portal](#tab/azureportal)
@@ -44,7 +44,7 @@ Use this procedure if you have an Azure Stack HCI, version 22H2 cluster. You'll 
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
 
-- If using a client to connect to your Azure Stack HCI cluster, make sure that your client has the appropriate prerequisites. See [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements). 
+- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements). 
         
 ---
 
@@ -122,7 +122,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365 | 19044.2486.230110 |
 
     ```azurecli
-    az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "<VM image name>"  --os-type $osType --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $Location --name "<VM image name>" --os-type $osType --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
     ```
 
     A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
@@ -133,7 +133,7 @@ Here's a sample output:
 PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "cl04" --query id -o tsv)
 PS C:\Users\azcli> $customLocationID
 /subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04
-PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "marketplacetest03"  --os-type $osType --offer "<Offer>" --publisher "<Publisher>" --sku "<SKU>" --version "<Version number>"
+PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $Location --name "marketplacetest03" --os-type $osType --offer "<Offer>" --publisher "<Publisher>" --sku "<SKU>" --version "<Version number>"
 {
  "extendedLocation": {
  "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
@@ -173,7 +173,7 @@ PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --
     "createdBy": "guspinto@microsoft.com",
     "createdByType": "User",
     "lastModifiedAt": "2022-08-01T22:36:12.900694+00:00",
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+    "lastModifiedBy": "<ID>",
     "lastModifiedByType": "Application"
   },
   "tags": null,

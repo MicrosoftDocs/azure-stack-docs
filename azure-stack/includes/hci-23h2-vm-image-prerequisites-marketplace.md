@@ -8,7 +8,7 @@ ms.date: 10/10/2023
 ---
 
 
-- Before you being, make sure to review and [Complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
+- Make sure to review and [Complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
 
 - You have access to an Azure Stack HCI cluster that is deployed, has an Arc Resource Bridge and a custom location.
 

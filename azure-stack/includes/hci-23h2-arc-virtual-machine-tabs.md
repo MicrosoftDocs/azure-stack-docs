@@ -13,4 +13,4 @@ For Azure CLI, you can use two different modules based on the operating system v
  - Azure Stack HCI version 23H2 (preview), use the [stack-hci-vm module](../index.yml). This module is automatically installed on your Azure Stack HCI cluster during the deployment.
  - Azure Stack HCI, version 22H2, use the [azurestackhci module](/cli/azure/azurestackhci?view=azure-cli-latest&preserve-view=true).
 
-If using Azure portal, you will always be using the latest version of the Azure Stack HCI module.
+If using Azure portal with an Azure Stack HCI, version 22H2 system, the experience is degraded and you won't be able to manage your system via the Azure CLI.
