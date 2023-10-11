@@ -36,11 +36,13 @@ Use this procedure if you have an Azure Stack HCI, version 23H2 cluster. You'll 
 
 # [Azure portal](#tab/azureportal)
 
+Use the Azure portal to manage your Azure Stack HCI, version 23H2 Arc VMs. For an Azure Stack HCI, version 22H2 system, the experience is degraded and you won't be able to manage your Arc VMs via the portal.
+
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
 
 # [Azure CLI for version 22H2](#tab/azurecli22h2)
 
-Use this procedure if you have an Azure Stack HCI, version 22H2 cluster. You'll use the stack-hci-vm CLI module to create VM images.
+Use this procedure if you have an Azure Stack HCI, version 22H2 cluster. You'll use the `azurestackhci` CLI module to create VM images.
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
 
