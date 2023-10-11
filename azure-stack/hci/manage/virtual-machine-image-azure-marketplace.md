@@ -13,7 +13,7 @@ ms.date: 10/11/2023
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes//hci-applies-to-23h2-21h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
@@ -46,7 +46,7 @@ Use this procedure if you have an Azure Stack HCI, version 22H2 cluster. You'll 
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
 
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements). 
+- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
         
 ---
 
