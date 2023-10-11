@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/10/2023
+ms.date: 10/11/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -17,12 +17,7 @@ ms.date: 10/10/2023
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
-For Azure CLI, you can use two different modules based on the operating system version of your Azure Stack HCI cluster. If running:
-
- - Azure Stack HCI version 23H2 (preview), use the [stack-hci-vm module](../index.yml). This module is automatically installed on your Azure Stack HCI cluster during the deployment.
- - Azure Stack HCI, version 22H2, use the [azurestackhci module](/cli/azure/azurestackhci?view=azure-cli-latest&preserve-view=true)
-
-If using Azure portal, you will always be using the latest version of the Azure Stack HCI module.
+[!INCLUDE [hci-23h2-arc-virtual-machine-tabs](../../includes/hci-23h2-arc-virtual-machine-tabs.md)]
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
@@ -30,7 +25,7 @@ If using Azure portal, you will always be using the latest version of the Azure 
 
 Before you begin, make sure that the following prerequisites are completed.
 
-# [Azure CLI for version 23H2 (preview)](#tab/azurecli23h2)
+# [Azure CLI for version 23H2](#tab/azurecli23h2)
 
 Use this procedure if you have an Azure Stack HCI, version 23H2 cluster. You'll use the `stack-hci-vm` CLI module installed during deployment on your cluster to create VM images.
 
@@ -374,7 +369,7 @@ You need to view the list of VM images to choose an image to manage.
 
 # [Azure CLI for version 23H2](#tab/azurecli23h2)
 
-[!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
+[!INCLUDE [hci-list-vm-image-azure-cli-23h2](../../includes/hci-list-vm-image-azure-cli-23h2.md)]
 
 
 # [Azure portal](#tab/azureportal)
@@ -394,7 +389,7 @@ You may want to view the properties of VM images before you use the image to cre
 
 # [Azure CLI for version 23H2](#tab/azurecli23h2)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli-23h2](../../includes/hci-view-vm-image-properties-azure-cli-23h2.md)]
 
 # [Azure portal](#tab/azureportal)
 
@@ -442,7 +437,7 @@ You may want to delete a VM image if the download fails for some reason or if th
 
 # [Azure CLI for version 23H2](#tab/azurecli23h2)
 
-[!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
+[!INCLUDE [hci-view-vm-image-properties-azure-cli-23h2](../../includes/hci-delete-vm-image-azure-cli-23h2.md)]
 
 # [Azure portal](#tab/azureportal)
 

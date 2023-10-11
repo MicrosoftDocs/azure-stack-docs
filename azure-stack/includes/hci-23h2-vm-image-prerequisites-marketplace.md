@@ -4,13 +4,13 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 10/06/2023
+ms.date: 10/10/2023
 ---
 
 
-- You have Azure subscription credentials (Microsoft Account or Entra ID user).
+- Before you being, make sure to review and [Complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
 
-- You have access to an Azure Stack HCI cluster that is deployed, registered, and connected to Azure Arc. During deployment, an Arc Resource Bridge and a custom location are also created on the cluster.
+- You have access to an Azure Stack HCI cluster that is deployed, has an Arc Resource Bridge and a custom location.
 
    - Go to the **Overview > Server** page in the Azure Stack HCI cluster resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
     
