@@ -6,7 +6,7 @@ ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
 ms.date: 10/10/2023
---
+---
 
 Follow these steps to use Azure CLI to view properties of an image:
 

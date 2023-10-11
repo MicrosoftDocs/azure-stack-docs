@@ -367,17 +367,17 @@ PS C:\Users\azcli>
 
 You need to view the list of VM images to choose an image to manage.
 
-# [Azure CLI for version 23H2](#tab/azurecli23h2)
+### [Azure CLI for version 23H2](#tab/azurecli23h2)
 
 [!INCLUDE [hci-list-vm-image-azure-cli-23h2](../../includes/hci-list-vm-image-azure-cli-23h2.md)]
 
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-list-vm-image-portal](../../includes/hci-list-vm-image-portal.md)]
 
 
-# [Azure CLI for version 22H2](#tab/azurecli22h2)
+### [Azure CLI for version 22H2](#tab/azurecli22h2)
 
 [!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
 
@@ -387,16 +387,16 @@ You need to view the list of VM images to choose an image to manage.
 
 You may want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
 
-# [Azure CLI for version 23H2](#tab/azurecli23h2)
+### [Azure CLI for version 23H2](#tab/azurecli23h2)
 
 [!INCLUDE [hci-view-vm-image-properties-azure-cli-23h2](../../includes/hci-view-vm-image-properties-azure-cli-23h2.md)]
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-view-vm-image-properties-portal](../../includes/hci-view-vm-image-properties-portal.md)]
 
 
-# [Azure CLI for version 22H2](#tab/azurecli22h2)
+### [Azure CLI for version 22H2](#tab/azurecli22h2)
 
 [!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
 
@@ -435,15 +435,15 @@ To update a VM image, use the following steps in Azure portal.
 
 You may want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
 
-# [Azure CLI for version 23H2](#tab/azurecli23h2)
+### [Azure CLI for version 23H2](#tab/azurecli23h2)
 
 [!INCLUDE [hci-view-vm-image-properties-azure-cli-23h2](../../includes/hci-delete-vm-image-azure-cli-23h2.md)]
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-delete-vm-image-portal](../../includes/hci-delete-vm-image-portal.md)]
 
-# [Azure CLI for version 22H2](#tab/azurecli22h2)
+### [Azure CLI for version 22H2](#tab/azurecli22h2)
 
 [!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
