@@ -1,3 +1,14 @@
+---
+title:  What's the Azure Update Manager (preview)?
+description: This article describes the Azure Update Manager, its benefits, and ways to use it in the Azure portal.
+author: ronmiab
+ms.author: robess
+ms.topic: overview
+ms.reviewer: mindydiep
+ms.lastreviewed: 10/11/2023
+ms.date: 10/11/2023
+---
+
 # Update your Azure Stack HCI clusters via Azure Update Manager (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
