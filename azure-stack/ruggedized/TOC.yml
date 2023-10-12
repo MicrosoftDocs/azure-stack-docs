@@ -9,7 +9,13 @@
     - name: Known issues in Azure Stack Hub ruggedized
       href: known-issues.md
     - name: OEM release notes
-      href: oem-release-notes-rca.md
+      items:
+      - name: Azure Stack Hub Ruggedized
+        href: oem-release-notes-rca.md
+      - name: Azure Stack Hub Preview DC
+        href: oem-release-notes-mdcv2.md
+      - name: Azure Stack Hub DC
+        href: oem-release-notes-ashdcv1.md
   - name: Quickstarts
     items:
     - name: Use the administrator portal
