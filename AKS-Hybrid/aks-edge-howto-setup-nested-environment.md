@@ -78,7 +78,7 @@ The previous diagram shows the different virtual machines and components of this
 
    ```powershell
    $ifIndex = (Get-NetAdapter -Name "vEthernet (AKS-Int)").ifIndex
-   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
+   New-NetIPAddress –IPAddress "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
    ```
 
 1. Create a NAT table for connecting the internal virtual switch and the internal network connected devices with the external/Internet network:
