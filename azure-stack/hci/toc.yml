@@ -20,8 +20,6 @@
     href: release-information.md
 - name: Quickstarts
   items:
-  - name: Use Azure Stack HCI with Windows Admin Center
-    href: get-started.md
   - name: Create an Azure Stack HCI cluster
     href: deploy/deployment-quickstart.md
 - name: Tutorial
