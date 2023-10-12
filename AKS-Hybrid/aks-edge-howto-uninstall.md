@@ -67,25 +67,25 @@ You can't remove the Linux node alone in this configuration; you must remove the
 > If your single-machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS Edge Essentials network objects using `hnsdiag delete networks <ID>`.
 
 > [!NOTE]
-> There is a known issue in which repeatedly creating a new deployment and removing the node may result in an "error during ConnectToVirtualMachine." If this occurs, reboot your system to resolve the error.
+> There is a known issue in which repeatedly creating a new deployment and removing the node might result in an "error during ConnectToVirtualMachine." If this occurs, reboot your system to resolve the error.
 
 ## Remove nodes on a multi-machine cluster
 
-Be careful when removing control plane nodes and make sure you have another working control plane node before doing so.
+Be careful when removing control plane nodes. Make sure you have another working control plane node before doing so.
 
-To remove a **Windows** only node:
+To remove a Windows-only node:
 
 ```powershell
 Remove-AksEdgeNode -NodeType Windows
 ```
 
-To remove a **Linux** only node:
+To remove a Linux-only node:
 
 ```powershell
 Remove-AksEdgeNode -NodeType Linux
 ```
 
-During the removal of a **control plane node** from a cluster, it's crucial for the cluster administrator to verify that the cluster has completed reconciliation and that the removed node no longer serves as the leader.
+During the removal of a control plane node from a cluster, it's important for the cluster administrator to verify that the cluster has completed reconciliation and that the removed node no longer serves as the leader.
 
 You can verify this by running `kubectl get leases -A` and checking until the removed node is no longer a lease holder in the output. This is vital for maintaining cluster stability.
 
