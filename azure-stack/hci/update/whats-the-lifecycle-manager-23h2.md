@@ -1,5 +1,5 @@
 ---
-title:  What's the Lifecycle Manager (preview)?
+title:  What's the Lifecycle Manager in Azure Stack HCI, version 23H2 (preview)?
 description: This article describes the Lifecycle Manager and how to keep various pieces of your Azure Stack HCI solution up to date.
 author: ronmiab
 ms.author: robess
@@ -8,7 +8,7 @@ ms.reviewer: thoroet
 ms.date: 10/09/2023
 ---
 
-# What's the Lifecycle Manager (preview)?
+# What's the Lifecycle Manager in Azure Stack HC, version 23H2 (preview)?
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
@@ -101,7 +101,7 @@ In addition to the Lifecycle Management method used to update your solution, the
 
 ### PowerShell
 
-The PowerShell procedures apply to a single server and multi-server cluster that runs with the Lifecycle Manager installed. For more information, see [Update your Azure Stack HCI solution via PowerShell](update-via-powershell-md).
+The PowerShell procedures apply to a single server and multi-server cluster that runs with the Lifecycle Manager installed. For more information, see [Update your Azure Stack HCI solution via PowerShell](update-via-powershell-23h2.md).
 
 ### The Azure portal
 
