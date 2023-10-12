@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 10/12/2023
 ms.author: sethm 
-ms.reviewer: baziwane
+ms.reviewer: rbaziwane
 
 # Intent: As an IT Pro, I want to learn about the data exchanged between Kubernetes clusters and Azure.
 # Keyword: security concepts infrastructure security
