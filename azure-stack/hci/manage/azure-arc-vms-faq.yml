@@ -7,29 +7,29 @@ sections:
   - name: ignored
     questions:
     - question: |
-        Arc-enabled VM management preview will be retired on Azure Stack HCI 22H2. What does this mean for my VMs and Workloads? 
+        For Azure Stack HCI, version 22H2, the Arc VM management preview will be retired soon. What does this mean for my VMs and workloads? 
       answer: |
-        The existing Arc VMs created on 22H2 on your cluster will continue to be accessible through Azure CLI until Feb 15th, 2024. However, you won't be able to manage or provision new Arc VMs on Azure Portal if you are on Azure Stack HCI 22H2. To continue the ARC VM preview experience and try out the new features, we recommend transitioning to Azure Stack HCI 23H2. Note that there is no automated migration support for 22H2 Arc VMs. 
+        The existing Arc VMs created on version 22H2 on your cluster will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February, 2024. However, you won't be able to manage or provision new Arc VMs on Azure portal if you are on version 22H2. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Stack HCI, version 23H2. Keep in mind that there is no automated migration support for Arc VMs running on Azure Stack HCI, version 22H2 . 
 
     - question: |
-        What major improvements and features can I expect for Arc VMs in the upcoming Azure Stack HCI version 23H2?
+        What major improvements and features can I expect for Arc VMs in the upcoming Azure Stack HCI, version 23H2?
       answer: |
-        The upcoming Arc-enabled VM Management on Azure Stack HCI version 23H2 will bring several enhancements and new features including a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, additional VM Extensions, improvements to Azure CLI, and more.
+        The upcoming Arc VM Management on Azure Stack HCI, version 23H2 has several enhancements and new features, including a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, additional VM Extensions, improvements to Azure CLI, and more.
 
     - question: |
-        When will Azure Stack HCI version 23H2 be announced, and when can I start using it?
+        When will Azure Stack HCI, version 23H2 be announced, and when can I start using it?
       answer: |
-        Details regarding Azure Stack HCI version 23H2 will be shared during Microsoft Ignite 2023 in November.
+        Details regarding Azure Stack HCI, version 23H2 will be shared during Microsoft Ignite 2023 in November.
 
     - question: |
-        Why do I need to move to Azure Stack HCI version 23H2?
+        Why do I need to move to Azure Stack HCI, version 23H2?
       answer: |
-        Moving to Azure Stack HCI version 23H2 is essential to continue using Azure Arc-enabled VM management since version 22H2 will no longer be supported after 15 February 2024. Version 23H2 comes with several new and enhanced features and will achieve General Availability (GA), ensuring users have access to a more stable, efficient, and feature-rich platform.
+        Moving to Azure Stack HCI, version 23H2 is essential to continue using Azure Arc VM management since version 22H2 will no longer be supported after 15 February, 2024. Version 23H2 has several new and enhanced features that ensure that you have access to a more stable, efficient, and feature-rich platform.
 
     - question: |
-        How can I seek assistance during the transition from Azure Stack HCI version 22H2 to 23H2?
+        How can I seek assistance during the transition from Azure Stack HCI, version 22H2 to Azure Stack HCI, version23H2?
       answer: |
-        The Azure support team is available to help you through the transition and can answer any questions you might have. Feel free to reach out for assistance via the Azure portal.
+        The Microsoft Support team is available to help you through the transition and can answer any questions you might have. Feel free to reach out for assistance via the Azure portal.
 
     - question: |
         Can Azure Kubernetes Service on Azure Stack HCI and Windows Server and Azure Arc Resource Bridge co-exist on the same Azure Stack HCI cluster?
@@ -40,10 +40,6 @@ sections:
         Can I use SDN for Azure Stack HCI VMs created from the Azure portal?
       answer: |
         SDN is currently not supported for VMs created from the Azure portal.
-
-    - question: |
-        My environment doesn't support DNS or Active Directory updates, how can I successfully deploy Arc Resource Bridge?
-      answer: |
 
     - question: |
         My environment doesn't support DNS or Active Directory updates, how can I successfully deploy Arc Resource Bridge?
