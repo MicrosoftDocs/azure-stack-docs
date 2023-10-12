@@ -8,7 +8,7 @@ ms.reviewer: thoroet
 ms.date: 10/09/2023
 ---
 
-# What's the Lifecycle Manager in Azure Stack HC, version 23H2 (preview)?
+# What's the Lifecycle Manager in Azure Stack HCI, version 23H2 (preview)?
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
