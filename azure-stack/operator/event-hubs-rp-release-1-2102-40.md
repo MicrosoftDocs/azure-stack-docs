@@ -23,8 +23,8 @@ This release includes the following updates:
 - Minimum Azure Stack Hub version is 1.2102: this release cannot be downloaded or installed on Azure Stack Hub versions less than 1.2102.
 - Upgrade path for this version of Event Hubs On Azure Stack Hub:
   - 1.2102.1.0 -> 1.2102.4.0
-  - 1.2012.2.0 -> 1.2102.4.0
-  - 1.2012.3.0 -> 1.2102.4.0
+  - 1.2102.2.0 -> 1.2102.4.0
+  - 1.2102.3.0 -> 1.2102.4.0
 
 ## Issues fixed in this release
 
