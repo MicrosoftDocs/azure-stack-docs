@@ -39,7 +39,7 @@ For information about how Microsoft stores diagnostic data in Azure, see [Data 
 
 ## Data retention
 
-After AKS hybrid collects this data, it's retained for 28 days. AKS hybrid may keep aggregated, de-identified data for a longer period in order to track reliability of the service and inform product improvements.
+After AKS hybrid collects this data, it's retained for 28 days. AKS hybrid might keep aggregated, de-identified data for a longer period in order to track reliability of the service and inform product improvements.
 
 ## What data is collected?
 
