@@ -3,7 +3,7 @@ title: AKS hybrid data collection
 description: Learn about the data exchanged between Kubernetes clusters and Azure.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/04/2023
+ms.date: 10/12/2023
 ms.author: sethm 
 ms.reviewer: baziwane
 
@@ -39,7 +39,7 @@ For information about how Microsoft stores diagnostic data in Azure, see [Data 
 
 ## Data retention
 
-After AKS hybrid collects this data, it's retained for 28 days. Aggregated, de-identified data may be kept longer.
+After AKS hybrid collects this data, it's retained for 28 days. AKS hybrid might keep aggregated, de-identified data for a longer period in order to track reliability trends and inform product improvements.
 
 ## What data is collected?
 
@@ -47,10 +47,10 @@ AKS hybrid collects the following types of data:
 
 - **Events related to the Hyper-V host operating systems**: Details such as the operating system name, version, and model. Identifiers     include event names and event dates for precise event tracking. Various flags, both integer and Boolean, denote specific conditions or statuses, device, and operating system attributes. These flags include the name, device ID, and ISO country code. The data schema for these events incorporates a range of data types, including strings, integers, datetimes, and Booleans.
 - **Events associated with Kubernetes clusters control plane**: Specific metrics include cluster creation timestamps, pods, and node counts, and resource metrics including vCore counts. This data is used for monitoring and management of the Azure Kubernetes Service (AKS) hybrid cluster. The data schema for these events includes a range of data types, including Boolean, string, integer, and double.
-- **Events pertaining to Hyper-V host operating system**: Emitted errors are captured for diagnostic and monitoring purposes. The predominant data schema used is the string format to encapsulate both the error message and the associated stack trace. Support is currently extended exclusively to Windows Server and Azure Stack HCI platforms.
-- **Events pertaining to Mariner Linux VMs**: Including r, system boot and shutdown, service status changes, kernel messages, application errors, and user authentication activities only for system namespaces.
+- **Events pertaining to Hyper-V host operating system**: Emitted errors are captured for diagnostic and monitoring purposes. The predominant data schema used is the string format to encapsulate both the error message and the associated stack trace. Support is currently extended to Windows Server and Azure Stack HCI platforms.
+- **Events pertaining to Mariner Linux VMs**: Includes system boot and shutdown, service status changes, kernel messages, application errors, and user authentication activities only for system namespaces.
 - **Billing events**: Events related to metering or billing of core usage. This set of events includes the event datetime and the quantity of cores. The data types include datetime for the event timing, and a floating-point number for the quantity.
-- **Security events**: Aggregated events related to renewal of digital certificates and the functioning of the Key Management Service (KMS) plugin. These events are crucial for tracking of certificate lifecycles, encryption key statuses, revocations, and renewals. The underlying data schema exclusively employs string data types to encapsulate this vital information.
+- **Security events**: Aggregated events related to renewal of digital certificates and the functioning of the Key Management Service (KMS) plugin. These events enable tracking of certificate lifecycles, encryption key statuses, revocations, and renewals. The underlying data schema employs string data types to encapsulate this important information.
 
   > [!NOTE]
   > All events use either the Windows Universal Telemetry Client (UTC) or the Mariner Azure Device Health Service (ADHS).
