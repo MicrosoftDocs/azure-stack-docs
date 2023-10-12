@@ -3,14 +3,14 @@ title: Azure Arc VM management FAQs (preview)
 description: Find answers to the frequently asked questions (FAQs) about Azure Arc VM management (preview).
 author: alkohli
 ms.topic: reference
-ms.date: 05/24/2023
+ms.date: 10/12/2023
 ms.author: alkohli
-ms.reviewer: ksurjan
+ms.reviewer: kylezhang
 ---
 
 # Azure Arc VM management FAQs (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2-21h2](../../includes/hci-applies-to-23h2-21h2.md)]
 
 This article answers some frequently asked questions (FAQs) about Azure Arc VMs running on Azure Stack HCI clusters.
 
