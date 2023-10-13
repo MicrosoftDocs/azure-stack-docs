@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/06/2023
+ms.date: 10/12/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -43,11 +43,7 @@ The Azure requirements include:
 
 ## Azure Command-Line Interface (CLI) requirements
 
-You can connect to Azure Stack HCI cluster directly or you can access the cluster via a client. Depending on whether you are connecting to Azure Stack HCI, version 23H2 or to Azure Stack HCI, version 22H2, the steps are different.
-
-# [Version 23H2](#tab/azurecli23h2)
-
-Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
+You can connect to Azure Stack HCI cluster directly or you can access the cluster via a client. Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
 
 ### Connect to the cluster directly
 
@@ -74,28 +70,7 @@ If you are accessing the Azure Stack HCI, version 23H2 via a client, following r
   az extension add --name "stack-hci-vm"
   ```
 
-# [Version 22H2](#tab/azurecli22h2)
 
-If you are accessing the Azure Stack HCI, version 22H2 cluster directly or via a client, the following requirements must be met:
-
-- The latest version of Azure Command-Line Interface (CLI). You must install this version on your client or on all servers in your Azure Stack HCI cluster.
-
-  - To install Azure CLI on each server in a cluster, use Remote Desktop Protocol (RDP) connection.
-  
-  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
-  
-    - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
-
-    - When you're prompted, install the Azure CLI extension on first use. For more information about extensions, see [Use extensions with the Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-    - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
-
-  - The `azurestackhci` extension for Azure CLI. To install this extension, run the following command in an elevated PowerShell window on your client:
-
-      ```PowerShell
-      az extension add --name "azurestackhci"
-      ```
----
 
 ## Networking requirements
 
