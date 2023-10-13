@@ -134,4 +134,4 @@ Here's a list of existing limitations and known issues with Azure Arc VM managem
 ## Next steps
 
 - [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md)
-- [Azure Arc VM management FAQs](faqs-arc-enabled-vms.md)
+- [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml)

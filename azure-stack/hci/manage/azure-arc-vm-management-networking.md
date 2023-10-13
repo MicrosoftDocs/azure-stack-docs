@@ -7,7 +7,7 @@ ms.author: v-dansisson
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/29/2023
+ms.date: 10/10/2023
 ---
 
 # Understanding Azure Arc VM management networking on Azure Stack HCI
@@ -47,7 +47,7 @@ Setting up Arc VM management requires an agent to run on every host of the Azure
 
 The IP address for this clustered service is assigned using `CloudServiceIP`. The IP address is required if the underlay network of the physical hosts does not provide DHCP. This IP address should be in the same network as the physical hosts of the Azure Stack HCI cluster.
 
-The clustered service also requires an AD object along with a DNS entry. For details, see [Azure Arc VM management FAQs](faqs-arc-enabled-vms.md#my-environment-doesnt-support-dns-or-active-directory-updates-how-can-i-successfully-deploy-arc-resource-bridge).
+The clustered service also requires an AD object along with a DNS entry. For details, see [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml).
 
 ### Arc Resource Bridge
 
