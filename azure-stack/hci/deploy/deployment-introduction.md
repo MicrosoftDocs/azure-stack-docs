@@ -63,7 +63,7 @@ Before starting the network configuration for your cluster, we recommend you che
 
 **Network switch for storage**. When selecting this option, your Azure HCI cluster uses network switches connected to your network interfaces for storage communication. You can deploy up to 16 nodes using this configuration.
 
-You next select the [network reference pattern](/plan/choose-network-pattern).
+You next select the [network reference pattern](/plan/choose-network-pattern.md).
 
 ## Next steps
 
