@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Review deployment prerequisites for Azure Stack HCI, version 23h2 (preview)
+# Review deployment prerequisites for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
