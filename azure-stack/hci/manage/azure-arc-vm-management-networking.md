@@ -45,7 +45,7 @@ The networking requirements for each of the preceding components are discussed i
 
 Setting up Arc VM management requires an agent to run on every host of the Azure Stack HCI cluster. This agent is installed as a Failover Cluster generic clustered service. For more information, see [Failover cluster networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005).
 
-The IP address for this clustered service is assigned using `CloudServiceIP`. The IP address is required if the underlay network of the physical hosts does not provide DHCP. This IP address should be in the same network as the physical hosts of the Azure Stack HCI cluster.
+The IP address for this clustered service is assigned using `CloudServiceIP`. The IP address is required if the underlay network of the physical hosts doesn't provide DHCP. This IP address should be in the same network as the physical hosts of the Azure Stack HCI cluster.
 
 The clustered service also requires an AD object along with a DNS entry. For details, see [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml).
 
@@ -55,7 +55,7 @@ A set of three contiguous IP addresses are required for the Azure Arc Resource B
 
 - IP address used for the Arc Resource Bridge load balancer  (*ControlPlaneIP*). This is the IP address of the Kubernetes API server hosting the VM management application that is running inside the Resource Bridge VM. The IP address needs to be in the VM network of the Azure Stack HCI cluster. The IP address must be excluded from the DHCP scope and should be reserved.
 
-- IP address for the Arc Resource Bridge VM (*VMIP_1* and *VMIP_2*). These IP addresses are used to assign to the Arc Resource Bridge VM. The IP addresses may be allocated using static or DHCP configuration and must be in the VM network of the Azure Stack HCI cluster.
+- IP address for the Arc Resource Bridge VM (*VMIP_1* and *VMIP_2*). These IP addresses are used to assign to the Arc Resource Bridge VM. The IP addresses might be allocated using static or DHCP configuration and must be in the VM network of the Azure Stack HCI cluster.
 
 > [!NOTE]
 > When an Arc Resource Bridge VM is deployed, it uses one of these IP addresses. During an update of Arc Resource Bridge, a new VM is created and assigned the unused IP address. After the update is complete, the original IP address will be released and used in a subsequent update.
@@ -83,7 +83,7 @@ At the time of creating a network interface, you assign either a dynamic or a st
 ## Current limitations
 
 - Azure Arc VMs are currently not supported with Software Defined Networking (SDN). The Azure Arc Resource Bridge can be deployed on a physical network when the Azure Stack HCI cluster is configured with SDN.
-- Using Azure Arc VMs behind a network proxy server is not supported; however, using an Arc Resource Bridge behind a network proxy is supported.
+- Using Azure Arc VMs behind a network proxy server isn't supported; however, using an Arc Resource Bridge behind a network proxy is supported.
 
 ## Next steps
 

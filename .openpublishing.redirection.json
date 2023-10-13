@@ -6,7 +6,7 @@
       "redirect_document_id": false
     },
     {
-      "source_path":"azure-stack/hci/manage/faqs-arc-enabled-vms.md.md",
+      "source_path":"azure-stack/hci/manage/faqs-arc-enabled-vms.md",
       "redirect_url":"/azure-stack/hci/manage/azure-arc-vms-faq",
       "redirect_document_id": true
     },  
