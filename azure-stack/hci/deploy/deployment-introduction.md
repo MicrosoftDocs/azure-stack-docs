@@ -3,7 +3,7 @@ title: Azure Stack HCI, version 23H2 deployment overview (preview)
 description: Learn about the deployment methods for Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 10/10/2023
+ms.date: 10/13/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -21,13 +21,13 @@ You can deploy Azure Stack HCI using a new or existing *config* file interactive
 
 ## About deployment methods
 
-You can deploy Azure Stack HCI, version 23H2 using one of the following methods:
+You can deploy Azure Stack HCI, version 23H2 using one of the following methods from Azure portal:
 
-- **Interactive**:  Deploy using a new config file interactively. The interactive flow provides a guided, step-by-step experience that helps you create a new configuration file which is then used to deploy and register the cluster. This method should be used when you deploy for the first time and is recommended for most customers.
- 
-- **Existing configuration**: Deploy using this option if you already have a configuration file from a prior deployment. This option is  recommended when deploying multiple systems.  
+- **New configuration**: Select this option if this is the first time you deploy an Azure Stack HCI cluster using Azure portal and you don’t have an existing template. Going through the deployment flow steps you define all the parameters manually.
 
-- **PowerShell**: Deploy using this option if you already have a configuration file. This option is recommended for the partners and when deploying systems at-scale.
+- **Template spec**: Select this option if you already deployed an Azure Stack HCI cluster and you stored a template in your Subscription Library. Once the template is loaded, the parameters are automatically populated with the template values. You are required to create a new Azure Storage Account to store the Cloud Witness Secrets.
+
+- **QuickStart template**: Select this option if you already deployed an Azure Stack HCI cluster and you stored a template in the QuickStart library. Once the template is loaded, the parameters are automatically populated. You are required to create a new Azure Storage Account to store the Cloud Witness Secrets.
 
 
 ## Deployment sequence
@@ -46,48 +46,24 @@ Follow this process sequence to deploy Azure Stack HCI in your environment:
 
 ## Validated network topologies
 
-> [!IMPORTANT]
-> We recommend that you use one of the validated network topologies for optimum results.
+When deploying Azure Stack HCI Cluster from Azure Portal, the network configuration options will vary depending on the number of nodes and the type of storage connectivity. Azure portal guides you through the supported options for each configuration. 
 
-The following network topologies were tested and validated for this release:
+Before starting the network configuration for your cluster, we recommend you check the following table showing the supported and available options.
 
-- A single physical server connected to a network switch. This is sometimes referred to as a single-node cluster.
+|Topology|Azure Portal 23H2<br>Public Preview|ARM/CU Template<br>23H2 Public Preview|
+|---|---|---|
+|1 node - no switch for storage|By default|Supported|
+1 node - with network switch for storage|Not applicable|Supported|
+2 nodes - no switch for storage|Supported|Supported|
+2 nodes - with network switch for storage|Supported|Supported|
+3 nodes - with network switch for storage|Supported|Supported|
+4 to 16 nodes - with network switch for storage|Supported|Supported|
 
-- Two physical servers with direct (switchless) storage network connections to an L2 switch.
+**No switch for storage**. When selecting this option, your Azure Stack HCI cluster uses crossover network cables directly connected to your network interfaces for storage communication. The current supported switchless deployments from the portal are one or two nodes. Switchless deployments with 3 or more nodes are only possible using templates and are in Private Preview.
 
-    **Configuration 1**: The following diagram shows two physical servers with a directly connected (switchless) storage network and a single TOR switch.
-    
-    :::image type="content" source="../plan/media/plan-deployment/two-node-switchless-single-switch.png" alt-text="Diagram that shows a switched storage network with single switch configuration." lightbox="../plan/media/plan-deployment/two-node-switchless-single-switch.png":::
+**Network switch for storage**. When selecting this option, your Azure HCI cluster uses network switches connected to your network interfaces for storage communication. You can deploy up to 16 nodes using this configuration.
 
-- Two physical servers with direct (switchless) storage network connections to redundant L3 switches.
-
-    **Configuration 2**: The following diagram shows two physical servers with a directly connected (switchless) storage network and redundant TOR switches.
-
-    :::image type="content" source="../plan/media/plan-deployment/two-node-switchless-two-switches.png" alt-text="Diagram that shows a switchless storage network configuration." lightbox="../plan/media/plan-deployment/two-node-switchless-two-switches.png":::
-
-- Four physical servers with storage network connections to an L2-switch.
-
-    **Configuration 3**: The following diagram shows four physical servers using a non converged network and with storage network connections to L2 switches.
-
-    :::image type="content" source="media/deployment-introduction/four-node-non-converged-redundant-l2-switches-1.png" alt-text="Diagram that shows 4 nodes deployed using a non converged network with storage network connections to L2 network switch." lightbox="media/deployment-introduction/four-node-non-converged-redundant-l2-switches-1.png":::
-
-- Four physical servers deployed using a fully-converged network for compute, storage, and management and with redundant TOR switches.
-
-    **Configuration 4**: The following diagram shows four physical servers using a fully converged network (for compute, management, and storage) and with storage network connections to redundant L3 switches.
-
-    :::image type="content" source="media/deployment-introduction/four-node-fully-converged-redundant-l3-switches-1.png" alt-text="Diagram that shows 4 nodes deployed using a fully converged network with storage network connections to redundant L3 network switches." lightbox="media/deployment-introduction/four-node-fully-converged-redundant-l3-switches-1.png":::
-
-<!---- Two physical servers deployed using a switched storage network and redundant L3 switches.
-
-- Two physical servers deployed using a fully-converged network for compute, storage, and management and with redundant L3 switches.--->
-
-<!---**Configuration 3**: The following diagram shows two physical servers with a switched storage network and redundant L3 switches.
-
-:::image type="content" source="media/deployment-tool/deployment-topology-2.png" alt-text="Diagram that shows a switched storage network configuration." lightbox="media/deployment-tool/deployment-topology-2.png":::
-
-**Configuration 4**: The following diagram shows two physical servers with a fully-converged network for compute, storage, and management and with redundant L3 switches.
-
-:::image type="content" source="media/deployment-tool/switched-converged-two-tor-switch.png" alt-text="Diagram that shows a fully-converged network configuration." lightbox="media/deployment-tool/switched-converged-two-tor-switch.png":::--->
+You next select the [network reference pattern](https://learn.microsoft.com/en-us/azure-stack/hci/plan/choose-network-pattern).
 
 ## Next steps
 
