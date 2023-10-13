@@ -39,7 +39,7 @@ The Azure requirements include:
     
   - To read, modify, and delete the Arc resource bridge, you must have the Contributor role for the resource group.
 
-  - To provision Arc VMs & entities through Azure Portal, users must have Contributor level access at the subscription level.
+  - To provision Arc VMs & entities through Azure portal, users must have Contributor level access at the subscription level.
 
 ## Azure Command-Line Interface (CLI) requirements
 

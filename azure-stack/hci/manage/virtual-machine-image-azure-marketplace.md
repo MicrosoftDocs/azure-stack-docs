@@ -238,7 +238,7 @@ You need to view the list of VM images to choose an image to manage.
 
 ## View VM image properties
 
-You may want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
+You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
 
 ### [Azure CLI](#tab/azurecli)
 
