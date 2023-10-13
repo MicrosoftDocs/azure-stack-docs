@@ -3,9 +3,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/12/2023
+ms.date: 10/13/2023
 ms.reviewer: kalkeea
-ms.lastreviewed: 10/12/2023
+ms.lastreviewed: 10/13/2023
 ---
 
 ### Data plane clusters are in an unhealthy state with all nodes in warning state

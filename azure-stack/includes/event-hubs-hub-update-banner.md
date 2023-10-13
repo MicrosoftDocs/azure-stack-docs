@@ -3,9 +3,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/12/2023
+ms.date: 10/13/2023
 ms.reviewer: kalkeea
-ms.lastreviewed: 01/05/2023
+ms.lastreviewed: 10/13/2023
 ---
 <!-- TODO - For each release: add AzS Hub build number, Event Hubs RP version number, & corresponding Event Hubs release notes text/link -->
 > [!IMPORTANT]

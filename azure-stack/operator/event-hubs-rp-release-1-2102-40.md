@@ -5,9 +5,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/12/2023
+ms.date: 10/13/2023
 ms.reviewer: kalkeea
-ms.lastreviewed: 10/12/2023
+ms.lastreviewed: 10/13/2023
 ---
 
 # Event Hubs on Azure Stack Hub 1.2102.4.0 release notes
