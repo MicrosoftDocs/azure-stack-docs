@@ -29,7 +29,7 @@ See the following network diagram for details:
 
 ## Network for Arc VM management infrastructure
 
-To set up Azure Arc VM management infrastructure on an Azure Stack HCI cluster, you are required to create and configure the following:
+To set up Azure Arc VM management infrastructure on an Azure Stack HCI cluster, you're required to create and configure the following:
 
 - A cloud agent clustered service.
 - An Arc Resource Bridge VM that orchestrates operations on the cluster.
