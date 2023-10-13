@@ -128,5 +128,5 @@ Follow these steps to unregister Windows Admin Center from Azure:
 You're now ready to:
 
 - [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
-- [Use Azure Stack HCI with Windows Admin Center](../get-started.md)
+- [Monitor Azure Stack HCI clusters from Windows Admin Center](../manage/monitor-cluster.md)
 - [Connect to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/)
