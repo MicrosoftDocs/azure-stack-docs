@@ -26,9 +26,11 @@ AKS on Hub is on public preview, no production support is offered for this featu
 
 Not all Azure AKS features, APIs, and Azure CLI commands are supported by AKS on Azure Stack Hub, see [the overview article](aks-overview.md). and the table of [supported commands](aks-commands.md). You can use the Azure documentation, but you should be mindful of the limitations on Azure Stack Hub.
 
-### Can I use Azure AD or AD FS integrated with my AKS clusters?
+<a name='can-i-use-azure-ad-or-ad-fs-integrated-with-my-aks-clusters'></a>
 
-There is no support for Azure Active Director (Azure AD) and Active Directory Federated Services (AD FS) Kubernetes authorization and RBAC integration in the public preview. 
+### Can I use Microsoft Entra ID or AD FS integrated with my AKS clusters?
+
+There is no support for Azure Active Director (Microsoft Entra ID) and Active Directory Federated Services (AD FS) Kubernetes authorization and RBAC integration in the public preview. 
 
 ### Can I use AKS cluster Autoscaler in AKS on Azure Stack Hub?
 
