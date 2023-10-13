@@ -52,7 +52,7 @@ Microsoft does not provide technical support for the following areas:
 -  Azure Stack Hub Kubernetes Marketplace item.
 -  Using the following AKS engine cluster definition options and add-ins.
     -  Not supported add-ins:  
-            -  Azure AD Pod Identity  
+            -  Microsoft Entra Pod Identity  
             -  ACI Connector  
             -  Blobfuse Flex Volume  
             -  Cluster Autoscaler  
