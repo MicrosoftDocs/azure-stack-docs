@@ -4,7 +4,7 @@
       "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-wac.md",
       "redirect_url":"/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
       "redirect_document_id": false
-    },
+    }, 
     { 
       "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
       "redirect_url": "/azure/iot-hub/", 
