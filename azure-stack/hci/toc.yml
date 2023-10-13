@@ -111,21 +111,18 @@
         href: deploy/create-cluster.md#step-5-sdn-optional
     - name: Deploy and manage in VMM
       href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
-  - name: Deploy workloads
-    items:
-    - name: Deploy Azure Benefits
-      href: ./manage/azure-benefits.md
-    - name: Branch office and edge
-      href: deploy/branch-office-edge.md
-    - name: Virtual desktop infrastructure
-      href: deploy/virtual-desktop-infrastructure.md
-    - name: SQL Server
-      href: deploy/sql-server.md
-    - name: Trusted enterprise virtualization
-      href: deploy/trusted-enterprise-virtualization.md
-
-
-
+    - name: Deploy workloads
+      items:
+      - name: Deploy Azure Benefits
+        href: ./manage/azure-benefits.md
+      - name: Branch office and edge
+        href: deploy/branch-office-edge.md
+      - name: Virtual desktop infrastructure
+        href: deploy/virtual-desktop-infrastructure.md
+      - name: SQL Server
+        href: deploy/sql-server.md
+      - name: Trusted enterprise virtualization
+        href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
