@@ -20,8 +20,6 @@
     href: release-information.md
 - name: Quickstarts
   items:
-  - name: Use Azure Stack HCI with Windows Admin Center
-    href: get-started.md
   - name: Create an Azure Stack HCI cluster
     href: deploy/deployment-quickstart.md
 - name: Tutorial
@@ -187,7 +185,7 @@
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
-      href: manage/faqs-arc-enabled-vms.md
+      href: manage/azure-arc-vms-faq.yml
   - name: Manage storage
     items:
     - name: Create volumes

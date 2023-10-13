@@ -669,7 +669,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: /powershell/azure/azure-stack/overview
+    href: /powershell/azurestackhub/overview
   - name: Azure Stack Hub privileged endpoint
     href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs

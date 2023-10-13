@@ -28,8 +28,6 @@ landingContent:
             url: whats-new.md
       - linkListType: get-started
         links:
-          - text: Use Azure Stack HCI with Windows Admin Center
-            url: get-started.md
           - text: Create an Azure Stack HCI cluster
             url: deploy/deployment-quickstart.md
 
