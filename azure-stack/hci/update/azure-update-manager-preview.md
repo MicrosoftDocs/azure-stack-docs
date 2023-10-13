@@ -146,7 +146,7 @@ To view the progress of your clusters, update installation, and completion resul
 5. On the **Check readiness** page, review the progress of the checks, and then select **Next**.
 6. On the **Install** page, review the progress of the update installation.
 
-    [![View update progress in Azure Update Manager (preview).](./media/azure-update-manager/update-install-progress.png)](update-install-progress.png#lightbox)
+    [![View update progress in Azure Update Manager (preview).](./media/azure-update-manager/update-install-progress.png)](media/azure-update-manager/update-install-progress.png#lightbox)
 
 ## Browse cluster update job history
 
