@@ -34,7 +34,7 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
     |`Azure.Location` | string | The location of your resource group. Choose the location closest to your deployment. |
     |`Azure.SubscriptionName` | string | Your subscription Name. |
     |`Azure.SubscriptionId` | GUID | Your subscription ID. In the Azure portal, click on the subscription you're using and copy/paste the subscription ID string into the JSON. |
-    |`Azure.TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
+    |`Azure.TenantId` | GUID | Your tenant ID. In the Azure portal, search Microsoft Entra ID, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
     |`Azure.ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
     |`Azure.ServicePrincipalName` | string | Azure Service Principal name. |
     |`Azure.Auth.ServicePrincipalId` | GUID | The AppID of the Azure Service Principal to use as credentials. AKS Edge uses this service principal to connect your cluster to Arc. You can use an existing service principal or if you add a new name, the system creates one for you in the next step. |

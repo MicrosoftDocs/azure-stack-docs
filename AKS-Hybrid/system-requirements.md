@@ -225,16 +225,18 @@ If you don't already have an Azure account, [create one](https://azure.microsoft
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
-### Azure AD permissions, role and access level
+<a name='azure-ad-permissions-role-and-access-level'></a>
 
-You must have sufficient permissions to register an application with your Azure AD tenant.
+### Microsoft Entra permissions, role and access level
+
+You must have sufficient permissions to register an application with your Microsoft Entra tenant.
 
 To check that you have sufficient permissions, follow the information below:
-- Go to the Azure portal and select [Roles and administrators](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) under Azure Active Directory to check your role. 
+- Go to the Azure portal and select [Roles and administrators](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) under Microsoft Entra ID to check your role. 
 - If your role is **User**, you must make sure that non-administrators can register applications.
-- To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Azure Active Directory service to check if you have permission to register an application.
+- To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Microsoft Entra service to check if you have permission to register an application.
 
-If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
+If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Microsoft Entra ID that are given to each role, see [Microsoft Entra built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
 
 If you don't have enough permissions to register an application and your admin can't give you these permissions, the easiest way to deploy AKS on Azure Stack HCI and Windows Server is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
 
