@@ -8,7 +8,7 @@
     {
       "source_path":"azure-stack/hci/manage/faqs-arc-enabled-vms.md.md",
       "redirect_url":"/azure-stack/hci/manage/azure-arc-vms-faq",
-      "redirect_document_id": false
+      "redirect_document_id": true
     },  
     { 
       "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
