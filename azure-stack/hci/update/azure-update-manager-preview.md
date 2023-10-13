@@ -121,7 +121,7 @@ To install cluster updates using Azure Update Manager (preview), follow these st
 
 8. On the **Review + install** page, verify your update deployment options, and then select **Install**.
 
-    ![Review and install cluster updates in Azure Update Manager (preview).](./media/azure-update-manager/review-plus-install-2.png#lightbox)
+    [![Review and install cluster updates in Azure Update Manager (preview).](./media/azure-update-manager/review-plus-install-2.png)](media/azure-update-manager/review-plus-install-2.png#lightbox)
 
    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
