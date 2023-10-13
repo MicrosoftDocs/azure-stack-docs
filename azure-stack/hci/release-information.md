@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/11/2023
+ms.date: 10/10/2023
 ---
 
 # Azure Stack HCI release information
@@ -37,7 +37,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 20349.1970   | 2023-09-12             | [KB 5030216](https://support.microsoft.com/topic/fdf76ccf-ae95-4e19-9842-d4b8f7359fa2)|
+| 20349.2026   | 2023-10-10            | [KB 5031364](https://support.microsoft.com/topic/b827b04b-e11e-4295-b898-042df4b5053b)  |
+| 20349.1970   | 2023-09-12            | [KB 5030216](https://support.microsoft.com/topic/fdf76ccf-ae95-4e19-9842-d4b8f7359fa2)  |
 | 20349.1906   | 2023-08-08            | [KB 5029250](https://support.microsoft.com/topic/36a2464b-f91e-499a-98cd-661ad68a3536)  |
 | 20349.1850   | 2023-07-11            | [KB 5028171](https://support.microsoft.com/topic/34557119-e00c-4678-bb87-048a36ed8585)  |
 | 20349.1787   | 2023-06-13            | [KB 5027225](https://support.microsoft.com/topic/22021b0f-6d49-490c-9aef-f7556f928ad9)  |
@@ -61,12 +62,14 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 20349.1970   | 2023-09-12             | [KB 5030216](https://support.microsoft.com/topic/a8a4f08d-33f1-49a0-afcc-40bd7d6f44f3)|
+| 20348.2026   | 2023-10-10            | [KB 5031364](https://support.microsoft.com/topic/487ea79e-9378-472f-8e69-1e9f3bd757a0)  |
+| 20349.1970   | 2023-09-12            | [KB 5030216](https://support.microsoft.com/topic/a8a4f08d-33f1-49a0-afcc-40bd7d6f44f3)  |
 | 20348.1906   | 2023-08-08            | [KB 5029250](https://support.microsoft.com/topic/c1939499-12b7-4a23-8bda-2abd3a0fe084)  |
 | 20348.1850   | 2023-07-11            | [KB 5028171](https://support.microsoft.com/topic/81aa00e1-31fb-42d7-ade1-7de0b37b3738)  |
 | 20348.1787   | 2023-06-13            | [KB 5027225](https://support.microsoft.com/topic/dfe991ea-55bd-4618-89fe-b50870952dae)  |
 | 20348.1726   | 2023-05-09            | [KB 5026370](https://support.microsoft.com/topic/214132e6-d909-4078-8161-6039c14a8322)  |
-| 20348.1668   | 2023-04-11            | [KB 5025230](https://support.microsoft.com/topic/2cea5e9c-bd27-4651-9530-1e82de52138c)  |
+| 20348.1668   | 2023-04-11            |
+ [KB 5025230](https://support.microsoft.com/topic/2cea5e9c-bd27-4651-9530-1e82de52138c)  |
 | 20348.1607   | 2023-03-14             | [KB 5023705](https://support.microsoft.com/topic/e039eca6-13cf-46c0-b2b4-ee9a27bf6b2d)  |
 | 20348.1547   | 2023-02-14             | [KB 5022842](https://support.microsoft.com/topic/c5f53080-d4aa-4c0e-ade8-62cb35acbd98)  |
 | 20348.1487   | 2023-01-10            | [KB 5022291](https://support.microsoft.com/topic/02c080d2-0dee-44a0-8796-37cef529f6d6)  |
@@ -179,7 +182,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 ## Release notes
 
-For information about what's included in each version of Azure Stack HCI, see the release notes:
+For information about what's included in each version of Azure Stack HCI, see the following release notes:
 
 - [Release Notes for Azure Stack HCI, version 22H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-22h2-fea63106-a0a9-4b6c-bb72-a07985c98a56)
 - [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173)

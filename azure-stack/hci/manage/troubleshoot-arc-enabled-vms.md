@@ -73,7 +73,7 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
 
 ### KVA timeout error
 
-Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" may appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
+Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" might appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
 
 - The Arc Resource Bridge VM ($VMIP) doesn't have DNS resolution.
 - The Arc Resource Bridge VM ($VMIP) or $controlPlaneIP don't have internet access.
@@ -83,7 +83,7 @@ To resolve this error, ensure that all IP addresses assigned to the Arc Resource
 
 ### Valid token required error
 
-The expiration of the MOC token may result in a failure to create VMs, virtual hard disks, virtual NICs, or other entities. The error in ArcHCI logs could be "Valid token required" or a variation of that. To resolve this error, run the following command on any server in your Azure Stack HCI cluster:
+The expiration of the MOC token might result in a failure to create VMs, virtual hard disks, virtual NICs, or other entities. The error in ArcHCI logs could be "Valid token required" or a variation of that. To resolve this error, run the following command on any server in your Azure Stack HCI cluster:
 ```PowerShell
         rmdir $env:USERPROFILE\.wssd\python -Recurse -Force
         Repair-MOC
@@ -134,4 +134,4 @@ Here's a list of existing limitations and known issues with Azure Arc VM managem
 ## Next steps
 
 - [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md)
-- [Azure Arc VM management FAQs](faqs-arc-enabled-vms.md)
+- [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml)

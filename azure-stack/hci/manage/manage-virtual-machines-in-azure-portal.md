@@ -488,4 +488,4 @@ Follow these steps in Azure portal of your Azure Stack HCI cluster.
 
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
 - [Troubleshoot Arc VMs](troubleshoot-arc-enabled-vms.md).
-- [Frequently Asked Questions for Arc VM management](faqs-arc-enabled-vms.md).
+- [Frequently Asked Questions for Arc VM management](./azure-arc-vms-faq.yml).

@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Hub Ruggedized OEM Release Notes
-description: OEM Release Notes for Azure Stack Hub Ruggedized. Includes firmware and driver versions for all solution hardware.
+title: Microsoft Azure Stack Hub DCv1 OEM Release Notes
+description: OEM Release Notes for Microsoft Azure Stack Hub DCv1. Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
 ms.date: 10/09/2023
@@ -10,16 +10,16 @@ ms.lastreviewed:
 
 ---
 
-# Azure Stack Hub Ruggedized 2309 OEM release notes
+# Microsoft Azure Stack Hub DCv1 2309 OEM release notes
 
-This article contains release and version information for Azure Stack Hub Ruggedized.
+This article contains release and version information for Microsoft Azure Stack Hub DCv1.
 
 ## Overview
 
-This document describes the contents of Azure Stack Hub Ruggedized first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub Ruggedized. Below are the download links:
-
-* https://aka.ms/azsruggedhwpackage
-* https://aka.ms/azsruggedhwmanifest
+This document describes the contents of Microsoft Azure Stack Hub DCv1 first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Microsoft Azure Stack Hub DCv1. Below are the download links:
+    
+* https://aka.ms/azshwpackage
+* https://aka.ms/azshwmanifest
 
 ## Baseline and document history
 
@@ -77,19 +77,6 @@ This document describes the contents of Azure Stack Hub Ruggedized first party u
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
 | 2309, 2112  | DL6R  | Initial solution version.<br/><br/>Fixes:<br/>-SMART attribute shift solution<br/>-MRR settings to mitigate BJ004 issue<br/>-Fix for drive stops responding after soft-reboot following windows install  |
-| 2309, 2112  | DL6R  | Initial solution version.<br/><br/>Fixes:<br/>-SMART attribute shift solution<br/>-MRR settings to mitigate BJ004 issue<br/>-Fix for drive stops responding after soft-reboot following windows install  |
-
-### Intel D3-S4520 boot - Azure Stack Hub
-
-| Release version | Firmware version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2309, 2112  | DL70  | Initial solution version  |
-
-### Intel S3520 boot - Azure Stack Hub
-
-| Release version | Firmware version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2309, 2112  | DL43  | Initial solution version<br/><br/>Fixes:<br/>-Numerous minor bug fixes<br/>-Fix for some M.2 drives not upgrading<br/><br/>Enhancements:<br/>-Added support for Instant Scramble Erase commands  |
 
 ### Micron 5100 M.2 480GB & 960GB - Azure Stack Hub
 
@@ -102,12 +89,6 @@ This document describes the contents of Azure Stack Hub Ruggedized first party u
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
 | 2309, 2008, 2102, 2108, 2112  | D3MS402  | Initial solution version  |
-
-### Micron 5300 boot - Azure Stack Hub
-
-| Release version | Firmware version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2309, 2112  | J004  | Initial solution version  |
 
 ### NIC - Azure Stack Hub
 
@@ -123,22 +104,21 @@ This document describes the contents of Azure Stack Hub Ruggedized first party u
 | 2112  | 2.70.24708.0  | Latest Dell recommended version for Azure Stack Hub as of October 2021.  |
 | 2008, 2102, 2108  | 2.40.22511.0  | Initial solution version  |
 
-### PowerEdge R640 BIOS - Azure Stack Hub
+### PowerEdge R840 BIOS - Azure Stack Hub
 
 | Release version | BIOS version | Changes                                |
 |-----------------|------------------|----------------------------------------|
 | 2309  | 2.18.1  | Includes multiple security fixes since previous release.  |
-| 2112  | 2.12.2  | Fixes:<br/>- Incorrect critical error pop-up message that was seen while exiting iDRAC Settings menu.<br/>- Fixed BIOS only report partial data in iDRAC/LC for system/setup password after set by SCP from iDRAC.<br/>- Fix HTTP boot failure with single DNS entry in static IPv4 address mode.<br/><br/>Enhancements:<br/>- Support for Microsoft Windows Server 2022 Operating System.<br/>- Updated the S140 Software RAID firmware to version 5.6.0-0002.<br/>- Updated the "Processor and Memory Reference Code" for the second-generation Intel Xeon Processor Scalable Family to IPU 2021.1.<br/>- Updated the Processor Microcode to version 0x3102 for the second-generation Intel Xeon Processor Scalable Family.<br/>- Updated the Processor Microcode to version 0x6B06 for the Intel Xeon Processor Scalable Family.<br/>- Updated the Purley Refresh PV Candidate Reference Code Version 612D02.<br/>- Updated the AEP Release 1.0.0.3515 files to Purley Refresh UEFI Source.<br/>- Updated SPS to SPS_E5_04.01.04.505.0 (IPU 2021.1) for Purley Refresh.<br/>- Enhancement to address the security vulnerabilities (Common Vulnerabilities and Exposures - CVE) such as CVE-2021-21555, CVE-2021-21556, CVE-2021-21557, CVE-2020-24511, CVE-2020-12358, CVE-2020-12360, CVE-2020-24486, CVE-2019-14553, CVE-2021-21571.  |
-| 2108  | 2.10.2  | Fixes:<br/>- Fixed an Intel errata reported on IPU 2020.1 and 2020.2 where the system could potentially not respond or reboot during POST when "Configuring Memory..." is displayed on the screen. This scenario may be encountered during system boot, where self-heal is attempted. The root cause is a race condition where during the self-heal process, a refresh cycle may not have completed when the CPU issues self-heal related commands to the DRAM.<br/>The Issue is described in Intel Xeon Processor Scalable Family Specification Update, SKX120 and second-generation Intel Xeon Scalable Processors Specification Update, CLX51.<br/>- Fixed an issue where an invalid location was specified for a self-heal request. This results in self-heal not being performed, which could potentially not respond or reboot the system during POST when "Configuring Memory..." is displayed on the screen. Note: The Dell PowerEdge BIOS will automatically schedule DIMM self-healing during POST, based on DIMM health monitoring of correctable and uncorrectable errors from previous system boots.<br/>- Updated Intel processor microcode to address the following issues:<br/>1. High Levels of Posted Interrupt Traffic on The PCIe Port May Result in a Machine Check with a TOR Timeout. The Issue is described in the Intel Xeon Processor Scalable Family Specification Update, SKX123 and Second-generation Intel Xeon Scalable Processors Specification Update, CLX52.<br/>2. Some Short Loops of Instructions May Cause a 3-Strike Machine Check without a TOR Timeout. The Issue is described in the Second-generation Intel Xeon Scalable Processors Specification Update, CLX53.<br/><br/>Enhancements:<br/>- Updated the Processor Microcode to version 0x3005 for the second-generation Intel Xeon Processor Scalable Family.<br/>- Updated the Processor Microcode to version 0x6A09 for the Intel Xeon Processor Scalable Family.  |
-| 2102  | 2.10.0  | - Increased the 64bit Memory Mapped I/O allocation size, used for PCIe resource management, from 64GB to 256GB per root port to support Nvidia A100 GPU and other PCIe cards that request > 64GB of 64bit PCIe memory.<br/>- Updated the "Processor and Memory Reference Code" for the second-generation Intel Xeon Processor Scalable Family to IPU 2020.2.<br/>- Removed the Logical Processor requirement for Monitor/MWait.  |
+| 2112  | 2.12.2  | - Updated the "Processor and Memory Reference Code" for the second-generation Intel Xeon Processor Scalable Family to IPU 2021.1.<br/>- Updated the Processor Microcode to version 0x3102 for the second-generation Intel Xeon Processor Scalable Family.<br/>- Updated the Processor Microcode to version 0x6B06 for the Intel Xeon Processor Scalable Family.<br/>- Updated the Purley Refresh PV Candidate Reference Code Version 612D02.<br/>- Updated the AEP Release 1.0.0.3515 files to Purley Refresh UEFI Source.<br/>- Updated SPS to SPS_E5_04.01.04.505.0 (IPU 2021.1) for Purley Refresh.<br/>- Enhancement to address the security vulnerabilities (Common Vulnerabilities and Exposures - CVE) such as CVE-2021-21555, CVE-2021-21556, CVE-2021-21557, CVE-2020-24511, CVE-2020-12358, CVE-2020-12360, CVE-2020-24486, CVE-2019-14553, CVE-2021-21571.  |
+| 2108  | 2.10.2  | Fixes:<br/>- Fixed an Intel errata reported on IPU 2020.1 and 2020.2 where the system could potentially not respond or reboot during POST when "Configuring Memory..." is displayed on the screen. This scenario may be encountered during system boot, where self-heal is attempted. The root cause is a race condition where during the self-heal process, a refresh cycle may not have completed when the CPU issues self-heal related commands to the DRAM.<br/>The Issue is described in Intel Xeon Processor Scalable Family Specification Update, SKX120 and second-generation Intel Xeon Scalable Processors Specification Update, CLX51.<br/>- Fixed an issue where an invalid location was specified for a self-heal request. This results in self-heal not being performed, which could potentially not respond or reboot the system during POST when "Configuring Memory..." is displayed on the screen.<br/>Note: The Dell PowerEdge BIOS will automatically schedule DIMM self-healing during POST, based on DIMM health monitoring of correctable and uncorrectable errors from previous system boots.<br/>- Updated Intel processor microcode to address the following issues:<br/>1. High Levels of Posted Interrupt Traffic on The PCIe Port May Result in a Machine Check with a TOR Timeout. The Issue is described in the Intel Xeon Processor Scalable Family Specification Update, SKX123 and Second-generation Intel Xeon Scalable Processors Specification Update, CLX52.<br/>2. Some Short Loops of Instructions May Cause a 3-Strike Machine Check without a TOR Timeout. The Issue is described in the Second-generation Intel Xeon Scalable Processors Specification Update, CLX53.<br/><br/>Enhancements:<br/>- Updated the Processor Microcode to version 0x3005 for the second-generation Intel Xeon Processor Scalable Family.<br/>- Updated the Processor Microcode to version 0x6A09 for the Intel Xeon Processor Scalable Family.  |
+| 2102  | 2.9.4  | - Updated the "Processor and Memory Reference Code" for the second-generation Intel Xeon Processor Scalable Family to IPU 2020.2.<br/><br/>- Removed the Logical Processor requirement for Monitor/MWait.  |
 | 2008  | 2.8.2  | Initial solution version  |
 
-### PowerEdge R640 CPLD - Azure Stack Hub
+### PowerEdge R840 CPLD - Azure Stack Hub
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2309, 2108, 2112  | 1.0.6  | Fixes:<br/>-Addresses a possibility of IDRAC not responding during PSU firmware update.  |
-| 2008, 2102  | 9.0.6  | Initial solution version  |
+| 2309, 2008, 2102, 2108, 2112  | 1.0.6  | Initial solution version  |
 
 ### Storage Backplane - Azure Stack Hub
 
@@ -272,32 +252,14 @@ This document describes the contents of Azure Stack Hub Ruggedized first party u
 
 ## Switches
 
-### DELL BMC - Dell S3048 Switch
-
-| Release version | Firmware version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2309  | 9.14.2.11  | Latest Dell recommended version for OS9 switches with Azure Stack Hub as of April 2023.  |
-| 2102, 2108, 2112  | 9.14.2.9  | - Updated to Dell recommended version<br/>- Sev 3 issue fix - avoid potential software exception at bootup<br/>- Sev 2 issue fix - PSU serial not showing in inventory.  |
-| 2008  | 9.14.2.4  | Initial solution version  |
-
-### DELL TOR - Dell S5048F Switch
-
-| Release version | Firmware version | Changes                                |
-|-----------------|------------------|----------------------------------------|
-| 2309  | 9.14.2.11  | Latest Dell recommended version for OS9 switches with Azure Stack Hub as of April 2023.  |
-| 2102, 2108, 2112  | 9.14.2.9  | - Updated to Dell recommended version<br/>- Sev 3 issue fix - avoid potential software exception at bootup<br/>- Sev 2 issue fix - PSU serial not showing in inventory.  |
-| 2008  | 9.14.2.4  | Initial solution version  |
-
 ### DELL BMC - Dell N3248TE-ON Switch
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
 | 2309  | 10.5.3.2.89  | Latest Dell recommended version for OS10 switches with Azure Stack Hub as of April 2023.  |
-| 2112  | 10.5.2.7.374  | Initial solution version  |
 
 ### DELL TOR - Dell S5248-ON Switch
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
 | 2309  | 10.5.3.2.89  | Latest Dell recommended version for OS10 switches with Azure Stack Hub as of April 2023.  |
-| 2112  | 10.5.2.7.374  | Initial solution version  |
