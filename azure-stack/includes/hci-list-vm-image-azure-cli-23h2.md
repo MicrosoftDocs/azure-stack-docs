@@ -3,10 +3,10 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/12/2023
+ms.date: 10/10/2023
 ---
+
 
 Follow these steps to list VM image using Azure CLI.
 
@@ -149,3 +149,4 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
 ]
 PS C:\Users\azcli>
 ```
+

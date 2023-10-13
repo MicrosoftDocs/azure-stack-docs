@@ -4,16 +4,13 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 09/26/2022
+ms.date: 10/12/2023
 ---
 
+- Make sure to review and [Complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
 
-- You have Azure subscription credentials (Microsoft Account or Entra ID user).
+- You have access to an Azure Stack HCI cluster that is deployed, has an Arc Resource Bridge and a custom location.
 
-- You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc.
-
-   - Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
+   - Go to the **Overview > Server** page in the Azure Stack HCI cluster resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
     
     :::image type="content" source="../hci/manage/media/manage-vm-resources/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../hci/manage/media/manage-vm-resources/azure-arc-connected.png":::
-
-- To enable Azure Arc VMs on your Azure Stack HCI, see [Deploying Azure Arc resource bridge](/azure-stack/hci/manage/azure-arc-vm-management-overview#azure-arc-resource-bridge-deployment-overview). As a part of Arc Resource Bridge deployment, you also create a custom location for your Azure Stack HCI cluster that you'll use later in the scenario. The custom location also appears in the **Overview** page for the Azure Stack HCI cluster.
