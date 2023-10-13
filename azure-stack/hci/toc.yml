@@ -83,6 +83,8 @@
     items:
     - name: Read overview
       href: ../index.yml
+    - name: Review prerequisites
+      href: deploy/deployment-prerequisites.md
     - name: 0. View deployment checklist
       href: deploy/deployment-checklist.md
     - name: 1. Prepare Active Directory
