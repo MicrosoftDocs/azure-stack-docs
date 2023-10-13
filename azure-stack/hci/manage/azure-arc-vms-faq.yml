@@ -7,10 +7,10 @@ sections:
   - name: ignored
     questions:
     - question: |
-        What is changing in Arc VM management on Azure Stack HCI, version 22H2?
+        What is changing in Azure Arc Virtual Machine (VM) management on Azure Stack HCI, version 22H2?
       answer: |
-        On 15 February 2024, the preview of Azure Arc Virtual Machine management on Azure Stack HCI, version 22H2 will encounter a breaking change. 
-        With the upcoming release of Azure Stack HCI version 23H2, we will be supporting Arc VM management exclusively on 23H2. The support for Arc-enabled VM management preview on Azure Stack HCI, version 22H2 will end.
+        On 15 February 2024, the preview of Arc VM management on Azure Stack HCI, version 22H2 will encounter a breaking change. 
+        With the upcoming release of Azure Stack HCI version 23H2, we will be supporting Arc VM management exclusively on 23H2. The support for Arc VM management preview on Azure Stack HCI, version 22H2 will end.
 
     - question: |
         What does this breaking change on Azure Stack HCI, version 22H2 mean for me and my workloads? 
