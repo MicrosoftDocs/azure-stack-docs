@@ -174,12 +174,9 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
 1. Sign into [Azure Update Manager (preview)](https://aka.ms/updatesPreview) on the Azure portal.
 2. Under Manage Azure Stack HCI, select **Azure Stack HCI**.
 3. Select the cluster name from the list.
-
-    ![One-time cluster update in Azure Update Manager (preview).](./media/azure-update-manager/cluster-resource-page.png)
-
 4. Select the update and then select **One-time update**.
 
-    ![One-time cluster update readiness checker in Azure Update Manager (preview).](./media/azure-update-manager/one-time-update.png)
+      ![One-time cluster update in Azure Update Manager (preview).](./media/azure-update-manager/cluster-resource-page.png)
 
 5. On the **Check readiness** page, review the list of readiness checks and their results.
    - You can select the links under **Affected systems** to view more details and individual cluster results.
