@@ -44,31 +44,60 @@ You can install extensions from the **Capabilities** tab for your Azure Stack HC
 When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster. If you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
 
 # [Azure CLI](#tab/azurecli)
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the following these steps:
-1. Set up parameters from your subscription, resource group, and cluster name
+1. Set up parameters from your subscription, resource group, and clusters
     ```azurecli
     subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
     resourceGroup="hcicluster-rg" # Replace with your resource group name
 
     az account set --subscription "${subscription}"
+
+    clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup =~ '${resourceGroup}' | project name" | jq -r '.data[].name'))
+    ```
+
+1. To install Windows Admin Center extension on all the clusters under the resource group, run the following command:
+    ```azurecli
+    extensionName="AdminCenter"
+    extensionType="AdminCenter"
+    extensionPublisher="Microsoft.AdminCenter"
+    settingsConfig="{'port':'6516'}"
+    connectivityProps="{enabled:true}"
+
+    for cluster in ${clusters}; do
+        echo "Enabling Connectivity for cluster $currentCluster"
+        az stack-hci arc-setting update \
+            --resource-group ${resourceGroup} \
+            --cluster-name ${cluster} \
+            --name "default" \
+            --connectivity-properties ${connectivityProps}
+        
+        echo "Installing extension: ${extensionName} on cluster: ${cluster}"
+        az stack-hci extension create \
+            --arc-setting-name "default" \
+            --cluster-name "${cluster}" \
+            --resource-group "${resourceGroup}" \
+            --name "${extensionName}" \
+            --auto-upgrade "true" \
+            --publisher "${extensionPublisher}" \
+            --type "${extensionType}" \
+            --settings "${settingsConfig}"
+    done
     ```
 
 1. To install Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
     ```azurecli
-
-    clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup == '${resourceGroup}' | project name" | jq -r '.data[].name'))
-
     extensionName="AzureMonitorWindowsAgent"
     extensionType="AzureMonitorWindowsAgent"
     extensionPublisher="Microsoft.Azure.Monitor"
 
     for cluster in ${clusters}; do
-        echo "Creating extension with name ${extensionName}"
+        echo "Installing extension: ${extensionName} on cluster: ${cluster}"
+
         az stack-hci extension create \
             --arc-setting-name "default" \
-            --cluster-name "${clusterName}" \
+            --cluster-name "${cluster}" \
             --resource-group "${resourceGroup}" \
             --name "${extensionName}" \
             --auto-upgrade "true" \
@@ -76,85 +105,142 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the
             --type "${extensionType}"
     done
     ```
-1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group, run the following command:
-    ```azurecli
 
-    clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup == '${resourceGroup}' | project name" | jq -r '.data[].name'))
+1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
+    ```azurecli
+    asrSubscription="00000000-0000-0000-0000-000000000000" # Replace with your ASR subscription ID
+    asrResourceGroup="asr-rg" # Replace with your ASR resource group
+    asrVaultName="asr-vault" # Replace with your ASR vault name
+    asrLocation="East US" # Replace with your ASR Location
+    asrSiteId="00000000-0000-0000-0000-000000000000" # Replace with your ASR Site ID
+    asrSiteName="asr-site" # Replace with your Site Name
+    asrSitePolicyId="/subscriptions/${asrSubscription}/resourceGroups/${asrResourceGroup}/providers/Microsoft.RecoveryServices/vaults/${asrVaultName}/replicationPolicies/s-cluster-policy" # Replace with your Site Policy name
 
     extensionName="ASRExtension"
     extensionType="Windows"
     extensionPublisher="Microsoft.SiteRecovery.Dra"
-    settingsConfig="{'port':'6516'}"
+    jsonFile="./tmp-asr.json" #Temp JSON file
 
+    echo "{\"SubscriptionId\": \"${asrSubscription}\", \"Environment\": \"AzureCloud\",\"ResourceGroup\": \"${asrResourceGroup}\",\"Location\": \"${asrLocation}\",\"SiteId\": \"${asrSiteId}\", \"SiteName\": \"${asrSiteName}\", \"PolicyId\": \"${asrSitePolicyId}\", \"PrivateEndpointStateForSiteRecovery\": \"None\" }" > ${jsonFile}
+    
     for cluster in ${clusters}; do
-        echo "Setting up extension: ${extensionName}"
-        az stack-hci arc-setting update \
-            --resource-group $resourceGroup \
-            --cluster-name $currentCluster \
-            --name "default" \
-            --connectivity-properties "{enabled:true}"
+        echo "Installing extension: ${extensionName} on cluster: ${cluster}"
 
         az stack-hci extension create \
             --arc-setting-name "default" \
-            --cluster-name "${clusterName}" \
+            --cluster-name "${cluster}" \
             --resource-group "${resourceGroup}" \
             --name "${extensionName}" \
             --auto-upgrade "true" \
             --publisher "${extensionPublisher}" \
             --type "${extensionType}" \
-            --settings $settingsConfig
+            --settings "${jsonFile}"
     done
     ```
-1. To install Windows Admin Center (WAC) in portal extension on all the clusters under the resource group, run the following command:
-```azurecli
-
-clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters' | where resourceGroup =~ '${resourceGroup}' | project name" | jq -r '.data[].name'))
-
-extensionName="AdminCenter"
-extensionType="AdminCenter"
-extensionPublisher="Microsoft.AdminCenter"
-settingsConfig="{'port':'6516'}"
-
-for cluster in ${clusters}; do
-    echo "Enabling connectivity for cluster: ${cluster}"
-    az stack-hci arc-setting update \
-        --resource-group $resourceGroup \
-        --cluster-name $cluster \
-        --name "default" \
-        --connectivity-properties '{enabled:true}';
-    
-    echo "Installing extension: ${extensionName} on cluster: ${cluster}";
-    az stack-hci extension create \
-        --arc-setting-name "default" \
-        --cluster-name "${cluster}" \
-        --resource-group "${resourceGroup}" \
-        --name "${extensionName}" \
-        --auto-upgrade "true" \
-        --publisher "${extensionPublisher}" \
-        --type "${extensionType}" \
-        --settings '{\"port\":\"6516\"}';
-done
-```
 
 # [Azure PowerShell](#tab/azurepowershell)
-Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perform the following these steps:
 
-1. Set up parameters from your subscription, resource group, and cluster name
+1. Set up parameters from your subscription, resource group, and clusters: 
     ```powershell
     $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
     $resourceGroup = "hcicluster-rg" # Replace with your resource group name
-    $clusterName = "HCICluster" # Replace with your cluster name
 
     Set-AzContext -Subscription "${subscription}"
+    $clusters = Get-AzResource -ResourceType "Microsoft.AzureStackHCI/clusters" -ResourceGroupName ${resourceGroup} | Select-Object -Property Name
+    ```
+1. To install Windows Admin Center extension on all the clusters under the resource group, run the following command:
+    ```powershell
+    $extensionName = "AdminCenter"
+    $extensionType = "AdminCenter"
+    $extensionPublisher = "Microsoft.AdminCenter"
+    $settingsConfig = @{"port" = 6516 }
+    
+    foreach ($cluster in $clusters) {
+        $clusterName = ${cluster}.Name
+
+        Write-Output ("Enable connectivity for cluster ${clusterName}")
+        Invoke-AzRestMethod `
+            -Method PATCH `
+            -SubscriptionId ${subscription} `
+            -ResourceGroupName ${resourceGroup} `
+            -ResourceProviderName "Microsoft.AzureStackHCI" `
+            -ResourceType ("clusters/" + ${clusterName} + "/arcSettings") `
+            -Name "default" `
+            -ApiVersion "2023-02-01" `
+            -Payload (@{"properties" = @{ "connectivityProperties" = @{ "enabled" = $true } } } | ConvertTo-Json -Depth 5)
+        
+
+        Write-Output ("Installing Extension '${extensionName}' on cluster ${clusterName}")
+
+        New-AzStackHciExtension `
+            -ClusterName "${clusterName}" `
+            -ResourceGroupName "${resourceGroup}" `
+            -ArcSettingName "default" `
+            -Name "${extensionName}" `
+            -ExtensionParameterPublisher "${extensionPublisher}" `
+            -ExtensionParameterType "${extensionType}" `
+            -ExtensionParameterSetting ${settingsConfig} `
+            -NoWait
+    }
     ```
 
-
-1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+1. To install Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
     ```powershell
-    Install-Module -Name Az.ResourceGraph
-    Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+    $extensionName = "AzureMonitorWindowsAgent"
+    $extensionType = "AzureMonitorWindowsAgent"
+    $extensionPublisher = "Microsoft.Azure.Monitor"
+    
+    foreach ($cluster in $clusters) {
+        $clusterName = ${cluster}.Name
+
+        Write-Output ("Installing Extension '${extensionType}/${extensionPublisher}' on cluster ${clusterName}")
+
+        New-AzStackHciExtension `
+            -ClusterName "${clusterName}" `
+            -ResourceGroupName "${resourceGroup}" `
+            -ArcSettingName "default" `
+            -Name "${extensionName}" `
+            -ExtensionParameterPublisher "${extensionPublisher}" `
+            -ExtensionParameterType "${extensionType}"
+    }
+    ```
+
+1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
+    ```powershell
+    $settings = @{
+        SubscriptionId = "<Replace with your Subscription Id>"
+        Environment = "<Replace with the cloud environment type. For example: AzureCloud>"
+        ResourceGroup = "<Replace with your Site Recovery Vault resource group>"
+        ResourceName = "<Replace with your Site Recovery Vault Name>"
+        Location = "<Replace with your Site Recovery Azure Region>"
+        SiteId = "<Replace with the ID of your recovery site>"
+        SiteName = "<Replace with your recovery site name>"
+        PolicyId = "<Replace with resource ID of your recovery site policy>"
+        PrivateEndpointStateForSiteRecovery = "None"
+    }
+
+    $extensionName = "ASRExtension"
+    $extensionType = "Windows"
+    $extensionPublisher = "Microsoft.SiteRecovery.Dra"
+
+    foreach ($cluster in $clusters) {
+        $clusterName = ${cluster}.Name
+
+        Write-Output ("Installing Extension '${extensionType}/${extensionPublisher}' on cluster ${clusterName}")
+
+        New-AzStackHciExtension `
+            -ClusterName "${clusterName}" `
+            -ResourceGroupName "${resourceGroup}" `
+            -ArcSettingName "default" `
+            -Name "${extensionName}" `
+            -ExtensionParameterPublisher "${extensionPublisher}" `
+            -ExtensionParameterType "${extensionType}" `
+            -ExtensionParameterSetting ${settings} `
+            -NoWait
+    }
     ```
 
 ---
