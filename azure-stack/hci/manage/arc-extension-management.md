@@ -36,14 +36,14 @@ Here are the Azure-managed extensions:
 - [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
 
 ## Install an extension via the Azure portal
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 You can install extensions from the **Capabilities** tab for your Azure Stack HCI Arc-enabled servers as shown in the screenshot. You can use the capabilities tab to install most extensions.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-overview.png" alt-text="Screenshot of the Capabilities tab and options in the Azure portal." lightbox="media/arc-extension-management/arc-extension-overview.png":::
 
 When you install an extension in the Azure portal, it's a cluster-aware operation. The extension is installed on all servers of the cluster. If you add more servers to your cluster, all the extensions installed on your cluster are automatically added to the new servers.
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the following these steps:
@@ -138,7 +138,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the
     done
     ```
 
-# [Azure PowerShell](#tab/azurepowershell)
+### [Azure PowerShell](#tab/azurepowershell)
 Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perform the following these steps:
@@ -246,25 +246,24 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perfo
 ---
 
 ## Check the extension status
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 You can check the status of an extension on each server from the **Extensions** page by viewing the **status** column of the grid.
 
 :::image type="content" source="media/arc-extension-management/arc-extension-status-view.png" alt-text="Screenshot of the different extension statuses in the Azure portal." lightbox="media/arc-extension-management/arc-extension-status-view.png":::
 
-# [Azure CLI](#tab/azurecli)
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check if the extensions are installed following these steps:
+### [Azure CLI](#tab/azurecli)
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-1. Set up your subscription
-    ```azurecli
-    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
-    az account set --subscription "${subscription}"
-    ```
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the following these steps:
 
 1. Set up parameters from your subscription, resource group, cluster name, and extension name
     ```azurecli
+    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
     resourceGroup="hcicluster-rg" # Replace with your resource group name
     clusterName="HCICluster" # Replace with your cluster name
     extensionName="AzureMonitorWindowsAgent" # Replace with the extension name
+
+    az account set --subscription "${subscription}"
     ```
 
 1. To list all the extensions on a cluster, run the following command:
@@ -286,8 +285,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
     --query "[?name=='${extensionName}'].{Name:name, ManagedBy:managedBy, ProvisionStatus:provisioningState, State:aggregateState, Type:extensionParameters.type}" \
     -o table
     ```
-# [Azure PowerShell](#tab/azurepowershell)
-Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+### [Azure PowerShell](#tab/azurepowershell)
+Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following these steps:
 
@@ -320,7 +319,7 @@ Currently, automatic extension upgrades are only supported in the Windows Admin 
 
 ### Enable automatic upgrade via the Azure portal
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 For some extensions, you can enable automatic upgrades through extension management.
 
@@ -335,31 +334,46 @@ To enable an automatic upgrade, navigate to the **Extensions** page and perform 
 
     :::image type="content" source="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png" alt-text="Screenshot of the notification to enable auto upgrade in the Azure portal." lightbox="media/arc-extension-management/arc-extension-enable-auto-upgrade-2.png":::
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
+To install and enable auto upgrade for a specific extension like `AzureMonitorWindowsAgent` run the following command:
 
-To install and enable auto upgrade for a specific extension like `AdminCenter` run the following command:
 ```azurecli
-resourceGroup="hcicluster-rg" # Replace with your resource group name
 clusterName="HCICluster" # Replace with your cluster name
-extensionName="AdminCenter"
-extensionPublisher="Microsoft.AdminCenter"
-extensionType="AdminCenter"
+resourceGroup="hcicluster-rg" # Replace with your resource group name
 
-az stack-hci arc-setting update \
---name "default" \
---cluster-name "${clusterName}" \
---resource-group "${resourceGroup}" \
---connectivity-properties '{"enabled": true}'
+extensionName="AzureMonitorWindowsAgent"
+extensionPublisher="Microsoft.Azure.Monitor"
+extensionType="AzureMonitorWindowsAgent"
 
 az stack-hci extension create \
---extension-name "${extensionName}" \
---arc-setting-name "default" \
---cluster-name "${clusterName}" \
---resource-group "${resourceGroup}" \
---publisher ${extensionPublisher} \
---type ${extensionType} \
---settings "{\"port\": \"6516\"}" \
---auto-upgrade true
+    --name "${extensionName}" \
+    --arc-setting-name "default" \
+    --cluster-name "${clusterName}" \
+    --resource-group "${resourceGroup}" \
+    --publisher ${extensionPublisher} \
+    --type ${extensionType} \
+    --auto-upgrade "true"
+```
+
+### [Azure PowerShell](#tab/azurepowershell)
+To install and enable auto upgrade for a specific extension like `AzureMonitorWindowsAgent` run the following command:
+
+```powershell
+$clusterName = "HCICluster" # Replace with your cluster name
+$resourceGroup = "hcicluster-rg" # Replace with your resource group name
+
+$extensionName = "AzureMonitorWindowsAgent"
+$extensionType = "AzureMonitorWindowsAgent"
+$extensionPublisher = "Microsoft.Azure.Monitor"
+
+New-AzStackHciExtension `
+    -ClusterName "${clusterName}" `
+    -ResourceGroupName "${resourceGroup}" `
+    -ArcSettingName "default" `
+    -Name "${extensionName}" `
+    -ExtensionParameterPublisher "${extensionPublisher}" `
+    -ExtensionParameterType "${extensionType}" `
+    -ExtensionParameterEnableAutomaticUpgrade
 ```
 ---
 
