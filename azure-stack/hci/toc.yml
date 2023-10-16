@@ -449,8 +449,8 @@
             href: manage/troubleshoot-arc-enabled-vms.md
           - name: FAQs
             href: manage/azure-arc-vms-faq.yml
-      - name: Capacity management
-        items:
+        - name: Capacity management
+          items:
           - name: Add a server
             href: ../index.yml
           - name: Repair a server
