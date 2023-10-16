@@ -186,10 +186,6 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 1. On the **Target settings** tab, complete these tasks:
 
-	1. For **Cache storage account**, select the storage account you created previously.
-
-        :::image type="content" source="./media/replicate/replicate-4-target.png" alt-text="Screenshot showing the Cache storage account popup." lightbox="./media/replicate/replicate-4-target.png":::
-
     1. Select the resource group that you want these VMs to be associated with.
 
 	1. Select the virtual network that you [created previously])(migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see any virtual networks, [create one out of band](../index.yml) and select **Reload virtual switch**.
