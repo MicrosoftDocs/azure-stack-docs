@@ -1,32 +1,34 @@
 ---
-title: Understand ReFS deduplication and compression
-description: Understanding ReFS deduplication and compression on Azure Stack HCI and Windows Server clusters.
+title: Use ReFS deduplication and compression on volumes in Azure Stack HCI and Windows Server
+description: Manage volumes in Azure Stack HCI and Windows Server using ReFS deduplication and compression.
 author: alkohli
 ms.author: alkohli
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/11/2023
 ---
 
-# What is ReFS deduplication and compression?
+# Use ReFS deduplication and compression on volumes in Azure Stack HCI or Windows Server
 
 > Applies to: Azure Stack HCI, version 23H2 (preview), Windows Server 2025
 
-This article provides an overview of the Resilient File System (ReFS) deduplication and compression solution and describes how to 
+This article provides an overview of the Resilient File System (ReFS) deduplication and compression feature and describes how to use it on volumes in Azure Stack HCI or Windows Server clusters.
+
+## What is ReFS deduplication and compression?
 
 The data deduplication and compression feature allows you to maximize your available storage and cut down on storage costs. When enabled, this feature helps remove and consolidate redundant data, resulting in substantial storage savings ranging from 80%-95% for virtual desktop infrastructure (VDI) workloads.
 
-The ReFS deduplication and compression solution is designed specifically for active workloads, such as VDI. It uses weak references to reduce rehash frequency before deduplication, and [ReFS block cloning](/windows-server/storage/refs/block-cloning) reduces data movement, enabling operations that only involve metadata. This solution introduces a new compression engine that identifies when data blocks were last used, compressing only the unused data to optimize CPU usage. Additonally, there is a user-enabled deduplication service that allows you to initiate one-time or scheduled jobs, modify job settings, and monitor file changes to optimize for job duration.
+The ReFS deduplication and compression solution is designed specifically for active workloads, such as VDI. It uses weak references to reduce rehash frequency right before deduplication and [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement, enabling operations that only involve metadata. This solution introduces a compression engine that identifies when data blocks were last used, compressing only the unused data to optimize CPU usage. Additonally, there is a user-enabled deduplication service that allows you to initiate one-time or scheduled jobs, modify job settings, and monitor file changes to optimize for job duration.
 
 ## Characteristics of ReFS deduplication and compression
 
 The ReFS deduplication and compression solution has the following characteristics:
 
-- Post-process approach
+- Utilizes a post-process approach
 - Operates at the data block level
 - Utilizes fixed block size (dependent on cluster size)
 - Compatible with both all-flash and hybrid systems
-- Supported with the various resiliency settings, including 2-way mirror, nested 2-way mirror, 3-way mirror, and mirror accelerated parity
-- Offers three modes: Deduplication only, Compression only, and Deduplication and compression (default mode)
+- Supports various resiliency settings, including two-way mirror, nested two-way mirror, three-way mirror, and mirror accelerated parity
+- Operates in three modes: deduplication only, compression only, and deduplication and compression (default mode)
 - Implements file change tracking to optimize for job duration
 
 ## Phases of ReFS deduplication and compression
@@ -34,15 +36,14 @@ The ReFS deduplication and compression solution has the following characteristic
 The optimization process comprises the following phases that occur sequentially and depend on the specified mode. If an optimization run reaches a duration limit, then the compression might not run.
 
 - **Initialization phase.** During this phase, the volume is scanned, and weak references are placed on blocks within the volume.
+
 - **Data deduplication and compression phase.** During this phase, the redundant blocks are single-instanced and tracked using ReFS block cloning. If compression is enabled, blocks are evaluated based on access frequency and compressed if they are not frequently used.
 
 ## Turn on ReFS deduplication and compression
 
-You can run ReFS deduplication and compression using `ReFSUtil` *or* Windows Admin Center and PowerShell. If you are using `ReFSUtil`, it will be a one-time manual run with no file change tracking. However, if you opt for Windows Admin Center or PowerShell, you get benefits, such as the ability to run one-time or scheduled jobs, customize job settings, and enable file change tracking for faster subsequent runs. Once you've enabled the feature via Windows Admin Center or PowerShell, you cannot then run the feature from `ReFSUtil`.
+You can turn on ReFS deduplication and compression using `ReFSUtil` *or* Windows Admin Center and PowerShell. If you are using `ReFSUtil`, it will be a one-time manual run with no file change tracking. However, if you opt for Windows Admin Center or PowerShell, you get benefits, such as the ability to run one-time or scheduled jobs, customize job settings, and enable file change tracking for faster subsequent runs. Once you enable the feature via Windows Admin Center or PowerShell, you cannot run the feature using `ReFSUtil`.
 
-The following sections describe how to turn on this feature using Windows Admin Center or PowerShell. For information about how to use ReFSUtil, see [ReFSUtil](/windows-server/administration/windows-commands/refsutil).
-
-You can initiate ReFS deduplication and compression manually or automate to run as scheduled jobs. The jobs are set at the cluster shared volume (CSV) level for each cluster and can be customized based on modes, duration, system resource usage, and more.
+The following sections describe how to turn on this feature using Windows Admin Center and PowerShell. For information about how to use `ReFSUtil`, see [ReFSUtil](/windows-server/administration/windows-commands/refsutil).
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
@@ -58,15 +59,17 @@ Follow these steps to enable ReFS deduplication and compression via Windows Admi
 
 1. Select the days of the week when ReFS deduplication and compression should run, the time for a job to start running, and maximum duration (default is unlimited), and then select **Save**.
 
-    The following screenshot shows that ReFS deduplication and compression will run on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the Start date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
+    The following screenshot shows that ReFS deduplication and compression will run on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the **Start** date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
 
    :::image type="content" source="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png" alt-text="Screenshot that displays the settings to use the ReFS deduplication and compression feature." lightbox=""media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png":::
 
-1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. The savings will be updated after a run has been completed and the performance impact can be observed in the charts.
+1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. These savings are updated after each run, and you can observe the performance impact in the charts below.
 
     :::image type="content" source="media/refs-deduplication-compression/volume-properties.png" alt-text="Screenshot of the properties section of a volume showing the savings breakdown and next scheduled run time." lightbox=""media/refs-deduplication-compression/volume-properties.png":::
 
 # [PowerShell](#tab/powershell)
+
+You can initiate ReFS deduplication and compression manually or automate to run as scheduled jobs. The jobs are set at the cluster shared volume (CSV) level for each cluster and can be customized based on modes, duration, system resource usage, and more.
 
 Follow these steps to turn on ReFS deduplication and compression via PowerShell:
 
@@ -78,14 +81,13 @@ Follow these steps to turn on ReFS deduplication and compression via PowerShell:
 
     where:
     `-Type` is a required parameter and can take one of the following values:
-    - Dedup: Enables deduplication only
+    - Dedup: Enables deduplication only.
     - DedupAndCompress: Enables both deduplication and compression. This is the default option.
     - Compress: Enables compression only.
 
     > [!NOTE]
     > - All commands to modify settings on a given volume must run on the owner node.
-    > - To change the `Type` parameter, you must disable the ReFS
-    deduplication and compression feature and then enable it again with new `Type` parameter.
+    > - To change the `Type` parameter, you must [disable the ReFS deduplication and compression](#turn-off-refs-deduplication-and-compression) feature and then enable it again with the new `Type` parameter.
 
 1. After enabling ReFS deduplication and compression, verify its status on the CSV. Run the following cmdlet and ensure the `Enabled` field in the output dsplays `True`.
 
@@ -93,7 +95,7 @@ Follow these steps to turn on ReFS deduplication and compression via PowerShell:
     Get-ReFSDedupStatus -Volume <path> | FL
     ```
 
-    Here's an example of the expected output where the `Enabled`field displays as `True`:
+    Here's a sample output of the `Get-ReFSDedupStatus` cmdlet where the `Enabled` field displays as `True`:
 
     ```output
     PS C:\Users\wolfpack> Get-ReFSDedupStatus -Volume C:\ClusterStorage\Volumel\ | FL
@@ -120,9 +122,9 @@ Follow these steps to turn on ReFS deduplication and compression via PowerShell:
     VolumeTota1Compressedelusters             : 0
     ```
 
-After enabling the feature, you can run a one-time job manually or schedule recurring jobs as needed.
+    After enabling the feature, you can run a one-time job manually or schedule recurring jobs as needed.
 
-### Option 1: Manually run ReFS deduplication and compression jobs
+### Manually run ReFS deduplication and compression jobs
 
 - To start a job immediately, run the following cmdlet:
 
@@ -134,25 +136,25 @@ After enabling the feature, you can run a one-time job manually or schedule recu
     > - The first run after enabling this feature is always a full scan and optimization of the entire volume. If the `FullRun` parameter is specified, the optimization will cover the entire volume rather than just new or unoptimized data.
     > - If you don't specify a compression format, the default algorithm is LZ4. You can change the algorithm from one run to another as needed.
     > - You can specify more parameters for more complex use cases. The above cmdlet is for the most simple use case.
-    > - The Full Run, Excluded folder, Excluded file extensions, and Minimum last modified time hours filters only apply when running deduplication, not compression.  
+    > - The Full Run, Excluded folder, Excluded file extensions, and Minimum last modified time hours filters apply only when running deduplication, and don't apply when running compression.  
 
-- To stop a running job, use the following cmdlet. Note that this cmdlet will work for in progress scheduled jobs too.
+- To stop a running job, run the following cmdlet. Note that this cmdlet will work for in-progress scheduled jobs too.
 
     ```powershell
     Stop-ReFSDedupJob -Volume <path>
     ```
 
-- To view the progress, savings, and status of a job, use the following cmdlet.
+- To view the progress, savings, and status of a job, run the following cmdlet:
 
     ```powershell
     Get-ReFSDedupStatus -Volume <path> | FL
     ```
 
-### Option 2: Set a schedule for jobs to run
+### Schedule recurring ReFS deduplication and compression jobs
 
-Set a reoccurring schedule to run storage optimizations for the volume. The schedule can then be viewed, set/modified, suspended, resumed, or cleared.
+Set a reoccurring schedule to run storage optimizations for the volume. You can then view, set or modify, suspend, resume, or clear the job schedule.
 
-- To view the job schedule
+- To view the job schedule, run the following cmdlet:
 
     ```powershell
     Get-ReFSDedupSchedule -Volume <path> | fl
@@ -184,7 +186,7 @@ Set a reoccurring schedule to run storage optimizations for the volume. The sche
     Suspended					    : False
     ```
 
-- To set or modify a schedule
+- To set or modify a schedule, run the following cmdlet:
 
     ```powershell
     Set-ReFSDedupSchedule -Volume <path> -Start <datetime> -Days <days> -Duration <timespan> -CompressionFormat <LZ4 | ZSTD> -CompressionLevel <uint16> -CompressionChunkSize <uint32> 
@@ -194,9 +196,9 @@ Set a reoccurring schedule to run storage optimizations for the volume. The sche
 
 ## Turn off ReFS deduplication and compression
 
-You can turn this feature off once enabled. Here are the options:
+After enabling ReFS deduplication and compression, you can turn it off by either suspending scheduled jobs or disabling the feature on a specific volume.
 
-### Option 1: Suspend scheduled jobs
+### Suspend scheduled jobs
 
 Suspending the schedule cancels any running jobs and stops scheduled runs in the future. This option retains ReFS deduplication and compression-related metadata and continues to track file changes for optimized future runs. You can resume the schedule at any time, with the schedule settings preserved.
 
@@ -247,9 +249,9 @@ Suspended					    : True
 
 ---
 
-### Option 2: Disable the feature on a volume
+### Disable ReFS deduplication and compression on a volume
 
-Disabling ReFS deduplication and compression on a volume stops any in-progress runs and cancels future scheduled jobs. In addition, related volume metadata isn't retained, and file change tracking is stopped. Disabling this feature doesn't undo deduplication or compression, as all the operations occur at the metadata layer. Overtime, the data returns to its original state as the volume incurs reads and writes. You can perform decompression operations using `ReFSUtil` <!--Do we need the last sentence here?-->.
+Disabling ReFS deduplication and compression on a volume stops any in-progress runs and cancels future scheduled jobs. In addition, related volume metadata isn't  retained, and file change tracking is stopped. Disabling this feature doesn't undo deduplication or compression, as all the operations occur at the metadata layer. Overtime, the data returns to its original state as the volume incurs reads and writes. You can perform decompression operations using `ReFSUtil` <!--Do we need the last sentence here?-->.
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
@@ -263,8 +265,6 @@ Follow these steps to suspend scheduled jobs using Windows Admin Center:
 
 # [PowerShell](#tab/powershell)
 
-Suspend jobs using PowerShell:
-
 Use the following cmdlet to suspend the scheduled job and check the status:
 
 ```powershell
@@ -277,12 +277,12 @@ Disable-ReFSDedup -Volume <path>
 
 This section answers frequently asked questions about ReFS deduplication and compression.
 
-## Is the ReFS deduplication and compression feature different from Windows deduplication?
+## Is the ReFS deduplication and compression feature different from Windows Data Deduplication?
 
-Yes, this feature is entirely different from the [Windows Data Deduplication](/windows-server/storage/data-deduplication/overview) feature. 
+Yes, this feature is entirely different from the [Windows Data Deduplication](/windows-server/storage/data-deduplication/overview) feature.
 
-> [IMPORTANT]
-> It is **not** supported to enable both solutions simultaneously.
+> [!IMPORTANT]
+> We don't support enabling both ReFS deduplication and compression and Windows Data Deduplication simultaneously.
 
 ReFS deduplication and compression is specifically designed for active workloads, focusing on minimizing performance impact after optimization. Unlike Windows Data Deduplication, ReFS deduplication and compression doesn't use a chunk store to store deduped data, and there is no physical data movement involved. The solution relies on ReFS block cloning to enable metadata-only operations. Windows Data Deduplication may provide better storage savings due to its use of variable block sizes, it is also suitable for a broader range of workload types, such as General-purpose file servers (GPFS), backup targets, and more.
 
@@ -302,9 +302,7 @@ The temporary workaround for this issue is to initiate a one-time job and the re
 Start-ReFSDedupJob -Volume <path>
 ```
 
-Start-ReFSDedupJob -Volume \<path\>
-
-### Compression performance impact
+**Compression performance impact**
 
 <!--waiting on data from Arjun-->
 
@@ -316,10 +314,10 @@ Start-ReFSDedupJob -Volume \<path\>
 
 Once ReFS deduplication and compression is disabled on a volume, the ETW channel for ReFS deduplication logs repeated stopped monitoring events. However, we don't anticipate significant usage impact because of this issue.
 
-### Job failed event not logged if volume is moved to another node during compression
+### Job failed event not logged if volume is moved to another node during compression.
 
 If the CSV is moved to another node while compression is in progress, the job failed event isn't logged in the ReFS deduplication channel. However, we don't anticipate significant usage impact because of this issue.
 
 ## Next steps
 
-- [Manage volume]()
+- [Manage volume](./manage-volumes.md)
