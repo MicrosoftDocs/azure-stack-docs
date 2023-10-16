@@ -297,13 +297,19 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
     $clusterName = "HCICluster" # Replace with your cluster name
 
     Set-AzContext -Subscription "${subscription}"
+    $clusters = Get-AzResource -ResourceType "Microsoft.AzureStackHCI/clusters" -ResourceGroupName ${resourceGroup} | Select-Object -Property Name
     ```
 
 
-1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+1. To list all the extensions on a cluster, run the following command:
     ```powershell
-    Install-Module -Name Az.ResourceGraph
-    Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+    foreach ($cluster in $clusters) {
+        $clusterName = ${cluster}.Name
+        Get-AzStackHciExtension `
+            -ClusterName "${clusterName}" `
+            -ResourceGroupName "${resourceGroup}" `
+            -ArcSettingName "default"|Format-Table -Property Name, ParameterType, ParameterPublisher, ParameterEnableAutomaticUpgrade, ProvisioningState
+    }
     ```
 
 ---
