@@ -58,7 +58,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup =~ '${resourceGroup}' | project name" | jq -r '.data[].name'))
     ```
 
-1. To install Windows Admin Center extension on all the clusters under the resource group, run the following command:
+1. To install the Windows Admin Center extension on all the clusters under the resource group, run the following command:
     ```azurecli
     extensionName="AdminCenter"
     extensionType="AdminCenter"
@@ -87,7 +87,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     done
     ```
 
-1. To install Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
+1. To install the Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
     ```azurecli
     extensionName="AzureMonitorWindowsAgent"
     extensionType="AzureMonitorWindowsAgent"
@@ -107,7 +107,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     done
     ```
 
-1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
+1. To install the zure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
     ```azurecli
     asrSubscription="00000000-0000-0000-0000-000000000000" # Replace with your ASR subscription ID
     asrResourceGroup="asr-rg" # Replace with your ASR resource group
@@ -152,7 +152,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to insta
     Set-AzContext -Subscription "${subscription}"
     $clusters = Get-AzResource -ResourceType "Microsoft.AzureStackHCI/clusters" -ResourceGroupName ${resourceGroup} | Select-Object -Property Name
     ```
-1. To install Windows Admin Center extension on all the clusters under the resource group, run the following command:
+1. To install the Windows Admin Center extension on all the clusters under the resource group, run the following command:
     ```powershell
     $extensionName = "AdminCenter"
     $extensionType = "AdminCenter"
@@ -188,7 +188,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to insta
     }
     ```
 
-1. To install Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
+1. To install the Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
     ```powershell
     $extensionName = "AzureMonitorWindowsAgent"
     $extensionType = "AzureMonitorWindowsAgent"
@@ -209,7 +209,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to insta
     }
     ```
 
-1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
+1. To install the Azure Site Recovery (ASR) extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
     ```powershell
     $settings = @{
         SubscriptionId = "<Replace with your Subscription Id>"
