@@ -363,6 +363,45 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
+    href: manage/arc-extension-management.md
+
+- name: Migrate
+  items: 
+    - name: Migration overview
+      href: migrate/migration-options-hci-overview.md
+    - name: Migrate using Azure Migrate
+      items:
+      - name: Overview
+        href: migrate/migration-azure-migrate-hci-overview.md
+      - name: Phase 0 - Prepare
+        items:
+        - name: Review requirements
+          href: migrate/migrate-hyperv-requirements.md
+        - name: Complete prerequisites
+          href: migrate/migrate-hyperv-prerequisites.md 
+      - name: Phase 1 - Discover
+        href: migrate/migrate-hyperv-discover.md
+      - name: Phase 2 - Replicate
+        href: migrate/migrate-hyperv-replicate.md
+      - name: Phase 3 - Migrate, verify
+        href: migrate/migrate-azure-migrate.md
+      - name: Troubleshoot
+        href: migrate/migrate-troubleshoot.md
+      - name: FAQ
+        href: migrate/migrate-faq.yml
+    - name: Migrate using SCVMM
+      items:
+      - name: For Hyper-V VMs
+        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
+      - name: For VMware VMs
+        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
+    - name: Migrate manually 
+      items:
+      - name: To same hardware
+        href: deploy/migrate-cluster-same-hardware.md
+      - name: To new hardware
+        href: deploy/migrate-cluster-new-hardware.md
+
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
