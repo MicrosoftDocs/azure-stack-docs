@@ -26,9 +26,9 @@ The following list contains the prerequisites that must be met to migrate Hyper-
 |Configure SAN policy on Windows VMs.|source|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
 |Deploy, configure and register an Azure Stack HCI cluster.|target|[Create and register an Azure Stack HCI cluster](../deploy/deployment-quickstart.md).|
 |Create a custom location on one of the nodes of the Azure HCI cluster.|target|[Azure Arc VM management prerequisites](../manage/azure-arc-vm-management-prerequisites.md).<br>[Set up Azure Arc VM management using command line](../manage/deploy-arc-resource-bridge-using-command-line.md?tabs=for-static-ip-address-1%2Cfor-static-ip-address-2).|
-|Create storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks.|target| [az azurestackhci storagepath](/cli/azure/azurestackhci/storagepath) command.|
+|Create storage path(s) for the Arc Resource Bridge for storing VM configuration and OS disks.|target| [Create storage path](../index.yml).|
 |Create virtual network(s) for the Arc Resource Bridge for VMs to use.|target|[Create a virtual network.](../index.yml)|
-|Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Steps to assign an Azure role](/azure/role-based-access-control/role-assignments-steps).|
+|Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).|
 |Create an Azure Migrate project|source, target|[Create an Azure Migrate project](#create-an-azure-migrate-project).|
 |Create an Azure storage account |source, target|[Create an Azure storage account](#create-an-azure-storage-account).|
 
