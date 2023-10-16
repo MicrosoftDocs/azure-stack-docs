@@ -68,9 +68,6 @@ To install cluster updates using Azure Update Manager (preview), follow these st
    2. Select the **Version** link to view the update components and their versions.
    3. Select the Details, **View details** link, to view the update release notes.
 
-   > [!NOTE]
-   > 2309 preview is a private preview and only test update packages are available. The **View details** link will go to a placeholder webpage, not the actual release notes for the update package.
-
 7. Select **Next**.
 
     [![Specify cluster updates in Azure Update Manager (preview).](./media/azure-update-manager/select-updates.png)](media/azure-update-manager/select-updates.png#lightbox)
@@ -140,6 +137,7 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
    1. Select **Systems to update** to view cluster updates to install or remove from the update installation.
    2. Select the **Version** link to view the update components and their versions.
    3. Select the Details, **View details** link, to view the update release notes.
+
 8. Select **Next**.
 9. On the **Review + install** page, verify your update deployment options, and select **Install**.
 
