@@ -5,7 +5,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/05/2022
+ms.date: 10/12/2023
 ---
 
 Follow these steps to list VM image using Azure CLI.
@@ -20,7 +20,7 @@ Follow these steps to list VM image using Azure CLI.
 1. List all the VM images associated with your cluster. Run the following command:
 
     ```azurecli
-    az azurestackhci image list --subscription $Subscription --resource-group $Resource_Group
+    az stack-hci-vm image list --subscription $Subscription --resource-group $Resource_Group
     ```
     
     Depending on the command used, a corresponding set of images associated with the Azure Stack HCI cluster are listed.
@@ -35,8 +35,8 @@ Follow these steps to list VM image using Azure CLI.
 Here's a sample output.
 
 ```
-PS C:\Users\azcli> az azurestackhci image list --subscription "b8d594e5-51f3-4c11-9c54-a7771b81c712" --resource-group "mkclus90-rg"
-Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "mkclus90-rg"
+Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 [
   {
     "extendedLocation": {
@@ -92,7 +92,7 @@ Command group 'azurestackhci' is experimental and under development. Reference a
       "createdBy": "guspinto@microsoft.com",
       "createdByType": "User",
       "lastModifiedAt": "2022-07-28T23:00:56.490100+00:00",
-      "lastModifiedBy": "guspinto@microsoft.com",
+      "lastModifiedBy": "<ID>",
       "lastModifiedByType": "User"
     },
     "tags": null,

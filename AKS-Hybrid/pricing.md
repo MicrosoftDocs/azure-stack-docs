@@ -24,14 +24,14 @@ Azure Kubernetes Service (AKS) hybrid is a subscription-based Kubernetes offerin
 
 ## Pricing details
 
-Azure pricing for running workloads on AKS is based on US currency list pricing with:
+Azure pricing for running workloads on AKS hybrid is based on US currency list pricing with:
 
 - Pay-as-you-go pricing
 - D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4)
 - Standard HDD
 - No uptime SLA (included in the support level)
 
-In addition, AKS pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage.
+In addition, AKS hybrid pricing is based on the US currency list pricing with no discounts applied. The monthly price estimates are based on 730 hours of usage.
 
 For detailed pricing information, see the [AKS hybrid pricing details](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/#overview) page. The list price for AKS hybrid includes the following:
 
@@ -51,7 +51,7 @@ For detailed pricing information, see the [AKS hybrid pricing details](https://a
 
 - If you enable hyper-threading on the physical computer, this will reduce the measured vCPU count by 50 percent.
 
-Note: Running Windows Server containers on AKS requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid benefits](azure-hybrid-benefit.md) may apply, hence reducing or eliminating the Windows Server license fees.
+Note: Running Windows Server containers on AKS hybrid requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid benefits](azure-hybrid-benefit.md) may apply, hence reducing or eliminating the Windows Server license fees.
 
 ## Impact of hyper-threading on pricing for AKS
 
