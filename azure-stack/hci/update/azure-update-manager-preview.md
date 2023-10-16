@@ -1,12 +1,12 @@
 ---
 title:  What's the Azure Update Manager (preview)?
-description: This article describes the Azure Update Manager, its benefits, and ways to use it in the Azure portal.
+description: This article describes the Azure Update Manager, its benefits, and ways to use it to update your Azure Stack HCI clusters in the Azure portal.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: mindydiep
-ms.lastreviewed: 10/11/2023
-ms.date: 10/11/2023
+ms.lastreviewed: 10/16/2023
+ms.date: 10/16/2023
 ---
 
 # Update your Azure Stack HCI clusters via Azure Update Manager (preview)
@@ -35,50 +35,6 @@ Here are some benefits of the Azure Update Manager (preview):
 ## Prerequisites
 
 - An Azure Stack HCI, version 23H2 (preview) cluster deployed and registered with Azure.
-
-## Prepare your cluster for an update
-
-To prepare your cluster for an update using Azure Update Manager (preview), follow these steps:
-
-1. Sign into one of your cluster nodes.
-
-2. Change the update ring from Production to Canary using the following command (this is required to detect the empty update package available in the Canary ring for testing purposes):
-
-   ```powershell
-   Set-UpdateConfiguration -UpdateRingName Canary 
-   ```
-
-   > [!NOTE]
-   > Host reboots will occur when applying the empty update package.
-
-3. Verify the update package discovered by the update service, using the following command:
-
-   ```powershell
-   Get-SolutionUpdate | ft DisplayName, State, Version
-   ```
-
-   Here’s a sample output:
-
-   ```powershell
-   PS C:\Users\testuser> Get-SolutionUpdate | ft DisplayName, State, Version
-
-   VERBOSE: Looking up shared vhd product drive letter.
-   VERBOSE: Suppressed Warning Unknown category for 'NuGet* : :'GetDynamicOptions': 'Provider'
-   VERBOSE: Get-Package returned with Success:True
-   VERBOSE: Found package Microsoft.AzureStack.LcmUpdateService.PowerShell with version 2.2309.12 at
-   C:\NugetStore\Microsoft.AzureStack.LcmUpdateService.PowerShell.2.2309.12\Microsoft.AzureStack.LcmUpdateService.PowerShe ll.nuspec.
-
-   DisplayName					                    State 	     Version
-   -----------						                -----	     -------
-   Azure Stack HCI Bundle Update – 10.2309.9.10 	Ready 	     10.2309.9.10
-   ```
-
-4. Access Azure Update Manager (preview) on the Azure portal using the following link: [https://aka.ms/updatesPreview](https://aka.ms/updatesPreview).
-
-   > [!NOTE]
-   > After joining the canary ring, it may take up to 24 hours for the update package to appear in Azure Update Manager (preview).
-   >
-   > The Azure Update Manager (preview) link includes “feature flags” that enable the Azure Stack HCI update experience. If you don’t use the proper feature flags, the Azure Stack HCI update UI won’t be visible in the Portal UI.
 
 ## Browse for cluster updates
 
@@ -184,10 +140,6 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
    1. Select **Systems to update** to view cluster updates to install or remove from the update installation.
    2. Select the **Version** link to view the update components and their versions.
    3. Select the Details, **View details** link, to view the update release notes.
-
-   > [!NOTE]
-   > 2309 preview is a private preview and only test update packages are available. The **View details** link will go to a placeholder webpage, not the actual release notes for the update package.
-
 8. Select **Next**.
 9. On the **Review + install** page, verify your update deployment options, and select **Install**.
 
