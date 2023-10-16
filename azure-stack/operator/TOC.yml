@@ -512,6 +512,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.4.0 release notes [Oct 2023] 
+          href: event-hubs-rp-release-1-2102-40.md
         - name: 1.2102.3.0 release notes [Jan 2023] 
           href: event-hubs-rp-release-1-2102-30.md
         - name: 1.2102.2.0 release notes [Mar 2022] 
@@ -663,7 +665,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: /powershell/azure/azure-stack/overview
+    href: /powershell/azurestackhub/overview
   - name: Azure Stack Hub privileged endpoint
     href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs
