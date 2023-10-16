@@ -27,7 +27,7 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMs to 
 
 - Requires no prep for your source VMs including installation of agents on them prior to migration.
 - Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
-- Keeps the data local, from on-premises Hyper-V to Azure Stack HCI.
+- Keeps the data flow local, from on-premises Hyper-V to Azure Stack HCI.
 - Results in a minimal downtime for the VMs running on your on-premises servers.
 
 
