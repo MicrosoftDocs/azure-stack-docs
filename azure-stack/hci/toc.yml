@@ -10,14 +10,10 @@
         href: whats-new.md
       - name: Version 22H2
         href: whats-new-in-hci-22h2.md
-  - name: Known issues for version 23H2 (preview)
-    href: known-issues-23h2.md
   - name: Release information
     href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
-  - name: Compare to Azure Stack Hub
-    href: concepts/compare-azure-stack-hub.md
   - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md
   - name: Evaluation guide
@@ -151,42 +147,6 @@
       href: manage/windows-server-azure-edition.md
     - name: Upgrade VMs to Windows Server Azure Edition
       href: manage/upgrade-vm-windows-server-azure-edition.md
-  - name: Manage Azure Arc VMs
-    items:
-    - name: What is Azure Arc VM management?
-      href: manage/azure-arc-vm-management-overview.md
-    - name: Azure Arc VM management networking
-      href: manage/azure-arc-vm-management-networking.md
-    - name: Set up Arc VM management
-      items:
-      - name: Review prerequisites
-        href: manage/azure-arc-vm-management-prerequisites.md
-      - name: Set up using command line
-        href: manage/deploy-arc-resource-bridge-using-command-line.md
-    - name: Manage Arc VM resources
-      items:
-      - name: Create VM images
-        items:
-        - name: Using Azure Marketplace images
-          href: manage/virtual-machine-image-azure-marketplace.md
-        - name: Using images in Azure Storage account
-          href: manage/virtual-machine-image-storage-account.md
-        - name: Using images in local share 
-          href: manage/virtual-machine-image-local-share.md
-        - name: Using sysprepped Ubuntu image
-          href: manage/virtual-machine-image-linux-sysprep.md
-      - name: Create virtual networks
-        href: manage/create-virtual-networks.md
-    - name: Deploy Arc VMs
-      href: manage/manage-virtual-machines-in-azure-portal.md
-    - name: Manage VM extensions
-      href: manage/virtual-machine-manage-extension.md
-    - name: Uninstall Azure Arc VM management
-      href: manage/uninstall-arc-resource-bridge.md
-    - name: Troubleshoot
-      href: manage/troubleshoot-arc-enabled-vms.md
-    - name: FAQs
-      href: manage/azure-arc-vms-faq.yml
   - name: Manage storage
     items:
     - name: Create volumes
@@ -415,17 +375,13 @@
       href: concepts/data-collection.md
 - name: Preview
   items:
-    - name: Join preview channel
-      href: manage/preview-channel.md    
-    - name: Install a preview version
-      href: manage/install-preview-version.md
-    - name: Post installation tasks
-      href: manage/preview-post-installation.md 
-    - name: known-issues-23h2.md
+    - name: Known issues version 23H2
       href: manage/known-issues-23h2.md
-    - name: Deploy Azure Stack HCI, version 23H2
+    - name: Deploy
       items:
       - name: Read overview
+        href: ../index.yml
+      - name: Complete prerequisites
         href: ../index.yml
       - name: 0. View deployment checklist
         href: deploy/deployment-checklist.md
@@ -441,7 +397,7 @@
         href: ../index.yml
       - name: 6. Validate deployment
         href: ../index.yml
-    - name: Update Azure Stack HCI, version 23H2 (preview)
+    - name: Update 
       items:
       - name: What's the Lifecycle Manager?
         href: update/whats-the-lifecycle-manager.md
@@ -455,6 +411,50 @@
         href: update/update-via-powershell-23h2.md
       - name: Troubleshoot updates
         href: update/update-troubleshooting-23h2.md
+    - name: Manage
+      items:
+        - name: Azure Arc VMs management
+          items:
+        - name: What is Azure Arc VM management?
+          href: manage/azure-arc-vm-management-overview.md
+        - name: Azure Arc VM management networking
+          href: manage/azure-arc-vm-management-networking.md
+        - name: Set up Arc VM management
+          items:
+          - name: Review prerequisites
+            href: manage/azure-arc-vm-management-prerequisites.md
+          - name: Set up using command line
+            href: manage/deploy-arc-resource-bridge-using-command-line.md
+        - name: Manage Arc VM resources
+          items:
+          - name: Create VM images
+            items:
+            - name: Using Azure Marketplace images
+              href: manage/virtual-machine-image-azure-marketplace.md
+            - name: Using images in Azure Storage account
+              href: manage/virtual-machine-image-storage-account.md
+            - name: Using images in local share 
+              href: manage/virtual-machine-image-local-share.md
+            - name: Using sysprepped Ubuntu image
+              href: manage/virtual-machine-image-linux-sysprep.md
+          - name: Create virtual networks
+            href: manage/create-virtual-networks.md
+        - name: Deploy Arc VMs
+          href: manage/manage-virtual-machines-in-azure-portal.md
+        - name: Manage VM extensions
+          href: manage/virtual-machine-manage-extension.md
+        - name: Uninstall Azure Arc VM management
+          href: manage/uninstall-arc-resource-bridge.md
+        - name: Troubleshoot
+          href: manage/troubleshoot-arc-enabled-vms.md
+        - name: FAQs
+          href: manage/azure-arc-vms-faq.yml
+      - name: Capacity management
+        items:
+          - name: Add a server
+            href: ../index.yml
+          - name: Repair a server
+            href: ../index.yml
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
