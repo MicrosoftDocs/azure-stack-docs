@@ -375,8 +375,8 @@
       href: concepts/data-collection.md
 - name: Preview
   items:
-    - name: Known issues version 23H2
-      href: manage/known-issues-23h2.md
+    - name: Known issues in Preview
+      href: known-issues-23h2.md
     - name: Deploy
       items:
       - name: Read overview
@@ -413,7 +413,7 @@
         href: update/update-troubleshooting-23h2.md
     - name: Manage
       items:
-        - name: Azure Arc VM management
+        - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?
             href: manage/azure-arc-vm-management-overview.md
@@ -449,7 +449,7 @@
             href: manage/troubleshoot-arc-enabled-vms.md
           - name: FAQs
             href: manage/azure-arc-vms-faq.yml
-        - name: Capacity management
+        - name: Capacity
           items:
           - name: Add a server
             href: ../index.yml
