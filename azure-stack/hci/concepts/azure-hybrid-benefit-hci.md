@@ -74,7 +74,7 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
     :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
 
 # [Azure PowerShell](#tab/azure-powershell)
-Azure PowerShell can be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following these steps:
 
@@ -101,7 +101,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
     ```
 
 # [Azure CLI](#tab/azure-cli)
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Hybrid Benefits following these steps:
 
@@ -195,7 +195,7 @@ az graph query -q "Resources | where type == 'microsoft.azurestackhci/clusters' 
 
 ## Troubleshoot Azure Hybrid Benefit for Azure Stack HCI
 
-This section describes the errors that you may get when activating Azure Hybrid Benefit for Azure Stack HCI.
+This section describes the errors that you might get when activating Azure Hybrid Benefit for Azure Stack HCI.
 
 **Error**
 
@@ -211,13 +211,13 @@ This error can occur if you have a new Software Assurance contract or if you hav
 
 ## FAQs
 
-This section answers questions you may have about Azure Hybrid Benefit for Azure Stack HCI.
+This section answers questions you might have about Azure Hybrid Benefit for Azure Stack HCI.
 
 ### How does licensing work for Azure Hybrid Benefit?
 
 For more information about licensing, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit).
 
-### Can I opt-in to Azure Hybrid Benefit for an existing cluster?
+### Can I opt in to Azure Hybrid Benefit for an existing cluster?
 
 Yes.
 
