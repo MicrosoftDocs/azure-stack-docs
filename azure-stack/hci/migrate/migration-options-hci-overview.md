@@ -3,7 +3,7 @@ title: Options for migrating virtual machines to Azure Stack HCI (preview)
 description: Learn about how to choose a migration option to migrate VM workloads to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 09/13/2023
+ms.date: 10/16/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -27,7 +27,7 @@ To migrate VM workloads and their data to your Azure Stack HCI cluster, several 
 First party migration options are provided by Microsoft. These options are built into the Azure Stack HCI platform and are available to you at no additional cost. The following first party migration options are available:
 
 - [Azure Migrate](./migration-azure-migrate-hci-overview.md)
-- Software Center for virtual machine migration (SCVMM)
+- System Center Virtual Machine Manager (SCVMM)
     - [For Hyper-V VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster)
     - [For VMware VMs](/system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm)
 
@@ -36,12 +36,10 @@ First party migration options are provided by Microsoft. These options are built
 
 Third party migration options are provided by Microsoft partners. These options are available to you at an additional cost. The following third party migration options are available:
 
-- [Carbonite](https://www.carbonite.com/)  
-- [Commvault](https://www.commvault.com/) 
-- [Cloud Assert](https://www.cloudassert.com/) 
-- [Tetrate Service Bridge](https://tetrate.io/) 
+- [Carbonite](https://www.carbonite.com/business/products/migration/)  
+- [Commvault](https://www.commvault.com/)  
 - [Veeam](https://www.veeam.com/)  
-- [Zerodown software](https://zerodownsoftware.com/)  
+ 
 
 
 ## Manual migration options
