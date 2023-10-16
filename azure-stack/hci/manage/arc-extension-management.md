@@ -404,7 +404,7 @@ To manually upgrade an extension, follow these steps:
 
 3. Choose the latest version and select **Save**.
 
-### Disable an automatic upgrade
+### Disable automatic extension upgrade
 
 You can disable automatic upgrades for certain extensions in the Azure portal. To disable automatic upgrades, navigate to the **Extensions** page and perform these steps:
 
@@ -435,7 +435,7 @@ To upgrade an extension immediately, see [Manual extension upgrade via the Azure
 
 If an extension upgrade fails, Azure performs the actions associated with [Automatic rollback and retries](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#automatic-rollback-and-retries) in an attempt to repair the extension.
 
-If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-upgrade-via-the-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-upgrade) again when you're ready.
+If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-extension-upgrade). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-extension-upgrade) again when you're ready.
 
 ### Upgrades with multiple extensions
 
