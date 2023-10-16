@@ -5,7 +5,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/05/2022
+ms.date: 10/10/2023
 ---
 
 Follow these steps to use Azure CLI to view properties of an image:
@@ -29,13 +29,13 @@ Follow these steps to use Azure CLI to view properties of an image:
 
     1.	Run the following command to view the properties.
 
-        ```az azurestackhci image show --id $mktplaceImageID```
+        ```az stack-hci-vm image show --ids $mktplaceImageID```
 
         Here's a sample output for this command:
 
         ```
-        PS C:\Users\azcli> az azurestackhci image show --id $mktplaceImageID
-        Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+        PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
+        Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
         {
           "extendedLocation": {
             "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
@@ -66,7 +66,7 @@ Follow these steps to use Azure CLI to view properties of an image:
           "tags": null,
           "type": "microsoft.azurestackhci/galleryimages"
         }
-        PS C:\Users\azcli>
+        PS C:\Users\azcli> 
         ```
 
 1.	Take the following steps when specifying name and resource group.
@@ -87,37 +87,38 @@ Follow these steps to use Azure CLI to view properties of an image:
         Here's a sample output:
 
          ```azurecli
-         PS C:\Users\azcli> az azurestackhci image show --name $mktplaceImage --resource-group $resource_group
-         Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
-         {
-            "extendedLocation": {
-            "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-            "type": "CustomLocation"
-            },
-            "id": "/subscriptions/b8d594e5-51f3-4c11-9c54-a7771b81c712/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
-            "location": "eastus2euap",
-            "name": "mktplace8",
-            "properties": {
-            "containerName": null,
-            "hyperVGeneration": null,
-            "identifier": null,
-            "imagePath": null,
-            "osType": "Windows",
-            "provisioningState": "Succeeded",
-            "status": null,
-            "version": null
-            },
-            "resourceGroup": "mkclus90-rg",
-            "systemData": {
-            "createdAt": "2022-08-05T20:52:38.579764+00:00",
-            "createdBy": "guspinto@microsoft.com",
-            "createdByType": "User",
-            "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-            "lastModifiedBy": "guspinto@microsoft.com",
-            "lastModifiedByType": "User"
-            },
-            "tags": null,
-            "type": "microsoft.azurestackhci/galleryimages"
-         }
-         PS C:\Users\azcli>        
+            PS C:\Users\azcli> az stack-hci-vm image show --ids $mktplaceImageID
+            Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+            {
+              "extendedLocation": {
+                "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+                "type": "CustomLocation"
+              },
+              "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
+              "location": "eastus2euap",
+              "name": "mktplace8",
+              "properties": {
+                "containerName": null,
+                "hyperVGeneration": null,
+                "identifier": null,
+                "imagePath": null,
+                "osType": "Windows",
+                "provisioningState": "Succeeded",
+                "status": null,
+                "version": null
+              },
+              "resourceGroup": "mkclus90-rg",
+              "systemData": {
+                "createdAt": "2022-08-05T20:52:38.579764+00:00",
+                "createdBy": "guspinto@microsoft.com",
+                "createdByType": "User",
+                "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
+                "lastModifiedBy": "guspinto@microsoft.com",
+                "lastModifiedByType": "User"
+              },
+              "tags": null,
+              "type": "microsoft.azurestackhci/galleryimages"
+            }
+            PS C:\Users\azcli>
+   
          ```
