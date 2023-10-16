@@ -294,7 +294,6 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to
     ```powershell
     $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
     $resourceGroup = "hcicluster-rg" # Replace with your resource group name
-    $clusterName = "HCICluster" # Replace with your cluster name
 
     Set-AzContext -Subscription "${subscription}"
     $clusters = Get-AzResource -ResourceType "Microsoft.AzureStackHCI/clusters" -ResourceGroupName ${resourceGroup} | Select-Object -Property Name
