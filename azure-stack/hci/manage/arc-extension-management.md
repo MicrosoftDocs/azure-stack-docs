@@ -465,21 +465,6 @@ az stack-hci extension delete \
 --resource-group "${resourceGroup}"
 ```
 
-### [Azure CLI](#tab/azurecli)
-
-To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
-```azurecli
-extensionName="AzureMonitorWindowsAgent" # Replace with the extension name
-resourceGroup="hcicluster-rg" # Replace with your resource group name
-clusterName="HCICluster" # Replace with your cluster name
-
-az stack-hci extension delete \
-    --arc-setting-name "default" \
-    --name "${extensionName}" \
-    --cluster-name "${clusterName}" \
-    --resource-group "${resourceGroup}"
-```
-
 ### [Azure PowerShell](#tab/azurepowershell)
 To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
 ```powershell
