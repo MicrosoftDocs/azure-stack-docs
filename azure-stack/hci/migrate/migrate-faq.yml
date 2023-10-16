@@ -1,0 +1,57 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Migrate FAQ
+  description: This FAQ provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Stack HCI cluster using Azure Migrate.
+  ms.topic: faq
+  author: alkohli
+  ms.author: alkohli
+  ms.service: azure-stack
+  ms.subservice: azure-stack-hci
+  ms.date: 08/16/2023
+title: Azure Migrate FAQ
+summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you may have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
+
+sections:
+  - name: Azure Migrate general FAQ
+    questions:
+      - question: I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Stack HCI cluster?
+        answer: |
+          The Windows Server 2008 R2 VM requires to have the Service Pack 1 (SP1) running as a baseline requirement, along with the following update patch installed: KB3138612. This patch allows the appliance to successfully discover Windows Server 2008 R2 SP1 VMs. You can then update all the patches to get the latest Hyper-V integration services.
+          
+          Run `winrm quickconfig` to add `winrm` access through firewall as this doesn't happen automatically.
+
+          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
+          
+          > [!NOTE]
+          > Migration is a one-way process and can't be reversed. The VM version can’t be downgraded.
+
+          To make sure that all the VMs are version 10, run the following cmdlet:
+
+          ```PowerShell
+          Get-VM * | Format-Table Name, Version
+          ```
+
+          Here's a sample output:
+
+          ```output
+          Name           Version
+          -------------  ---------     
+          migtarg01        10.0
+          ws2019-01        10.0
+          Centos9-01       10.0
+          ws2008R2         10.0
+          ```
+
+      - question: My cluster shared volume (CSV) storage is full or almost full. What should I do? 
+        answer: |
+          Expand your cluster shared volume. Follow the instructions in [Expand volumes on Azure Stack HCI and Windows Server clusters](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
+          
+      - question: How do I remove the target appliance from Azure Migrate project?
+        answer: |
+          To remove the target appliance from the project and create a new appliance, run the following command:
+
+          ```PowerShell
+          .\AzureMigrateInstaller.ps1 -RemoveAzMigrate
+          ```
+
+          After removing the appliance, follow the instructions in the deployment PowerPoint to install it again.
