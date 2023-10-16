@@ -437,8 +437,7 @@ If multiple extension upgrades are available for a machine, they might be batche
 
 ## Uninstall an extension from the Azure portal
 
-# [Azure portal](#tab/azureportal)
-
+### [Azure portal](#tab/azureportal)
 If desired, you can uninstall some extensions from your Azure Stack HCI clusters in the Azure portal. To uninstall an extension, use these steps:
 
 1. Go to the **Extensions page**.
@@ -451,7 +450,7 @@ If desired, you can uninstall some extensions from your Azure Stack HCI clusters
 
     :::image type="content" source="media/arc-extension-management/arc-extension-uninstall-extension-2.png" alt-text="Screenshot of the notification to uninstall an extension in the Azure portal." lightbox="media/arc-extension-management/arc-extension-uninstall-extension-2.png":::
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
 To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
 ```azurecli
@@ -466,6 +465,35 @@ az stack-hci extension delete \
 --resource-group "${resourceGroup}"
 ```
 
+### [Azure CLI](#tab/azurecli)
+
+To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
+```azurecli
+extensionName="AzureMonitorWindowsAgent" # Replace with the extension name
+resourceGroup="hcicluster-rg" # Replace with your resource group name
+clusterName="HCICluster" # Replace with your cluster name
+
+az stack-hci extension delete \
+    --arc-setting-name "default" \
+    --name "${extensionName}" \
+    --cluster-name "${clusterName}" \
+    --resource-group "${resourceGroup}"
+```
+
+### [Azure PowerShell](#tab/azurepowershell)
+To remove a specific extension like `AzureMonitorWindowsAgent` run the following command:
+```powershell
+$clusterName = "HCICluster" # Replace with your cluster name
+$resourceGroup = "hcicluster-rg" # Replace with your resource group name
+
+$extensionName = "AzureMonitorWindowsAgent"
+
+Remove-AzStackHciExtension `
+    -ClusterName "${clusterName}" `
+    -ResourceGroupName "${resourceGroup}" `
+    -ArcSettingName "default" `
+    -Name "${extensionName}"
+```
 ---
 
 ## Troubleshooting extension errors
