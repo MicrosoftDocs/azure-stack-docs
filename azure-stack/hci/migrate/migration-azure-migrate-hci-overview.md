@@ -27,14 +27,16 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMs to 
 
 - Requires no prep for your source VMs including installation of agents on them prior to migration.
 - Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
-- Data flow is kept local, from Hyper-V to Azure Stack HCI.
+- Keeps the data flow local, from on-premises Hyper-V to Azure Stack HCI.
 - Results in a minimal downtime for the VMs running on your on-premises servers.
+
+
 
 ## Migration components
 
-With Azure Migrate, you can choose to migrate your data from your on-premises Hyper-V to Azure or to your on-premises Azure Stack HCI cluster.
+With Azure Migrate, you can choose to migrate your data from your on-premises Hyper-V environment to Azure or to your on-premises Azure Stack HCI cluster.
 
-The following diagram shows the migration process to your on-premises Azure Stack HCI cluster:
+The following diagram shows the migration process for your on-premises Azure Stack HCI cluster:
 
 :::image type="content" source="./media/migration-azure-migrate-hci-overview/azure-migrate-workflow-1.png" alt-text="Diagram that shows a high-level workflow for migration using Azure Migrate.":::
 
@@ -55,7 +57,7 @@ Here are the key phases of the migration process:
 |#  |Phase  |Description  |
 |---------|---------|---------|
 |1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project and an Azure Storage account in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-hyperv-prerequisites.md).         |
-|2.     |**Discover**       |Create and configure an Azure Migrate source appliance. Use this appliance to discover your on-premises source Hyper-V servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-hyperv-discover.md).          |
+|2.     |**Discover**       |Create and configure an Azure Migrate source appliance. Use this appliance to discover your on-premises source Hyper-V servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-hyperv-replicate.md).          |
 |3.     |**Replicate**      |Create and configure the target appliance on your Azure Stack HCI. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate Hyper-V VMs](migrate-hyperv-replicate.md).         |
 |4.     |**Migrate, verify**|Once the replication is complete, select and migrate VMs to your Azure Stack HCI. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMs. <br><br> For more information, see [Migrate and verify Hyper-V VMs](./migrate-azure-migrate.md).         |
 

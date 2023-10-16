@@ -37,8 +37,10 @@ First party migration options are provided by Microsoft. These options are built
 Third party migration options are provided by Microsoft partners. These options are available to you at an additional cost. The following third party migration options are available:
 
 - [Carbonite](https://www.carbonite.com/business/products/migration/)  
-- [Commvault](https://www.commvault.com/) 
+- [Commvault](https://www.commvault.com/)  
 - [Veeam](https://www.veeam.com/)  
+ 
+
 
 ## Manual migration options
 
