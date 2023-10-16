@@ -3,7 +3,7 @@ title: Use Azure Migrate to move Hyper-V VMs to Azure Stack HCI (preview)
 description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 09/14/2023
+ms.date: 10/16/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -26,16 +26,15 @@ For more information on the Azure Migrate platform, see [About Azure Migrate](/a
 Here are the benefits of using Azure Migrate to migrate your on-premises VMs to Azure Stack HCI. This solution:
 
 - Requires no prep for your source VMs including installation of agents on them prior to migration.
-- Results in a minimal downtime for the VM-based applications running on your on-premises servers.
-- The data flows from on-premises Hyper-V VMs to VMs running on on-premises target Azure Stack HCI cluster.
 - Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
-
+- Data flow is kept local, from Hyper-V to Azure Stack HCI.
+- Results in a minimal downtime for the VMs running on your on-premises servers.
 
 ## Migration components
 
-With Azure Migrate, you can choose to migrate your data from your on-premises Hyper-V setup to Azure or to your on-premises Azure Stack HCI cluster.
+With Azure Migrate, you can choose to migrate your data from your on-premises Hyper-V to Azure or to your on-premises Azure Stack HCI cluster.
 
-The following diagram shows the migration process:
+The following diagram shows the migration process to your on-premises Azure Stack HCI cluster:
 
 :::image type="content" source="./media/migration-azure-migrate-hci-overview/azure-migrate-workflow-1.png" alt-text="Diagram that shows a high-level workflow for migration using Azure Migrate.":::
 
