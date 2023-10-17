@@ -61,11 +61,11 @@ Follow these steps to enable ReFS deduplication and compression via Windows Admi
 
     The following screenshot shows that ReFS deduplication and compression will run on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the **Start** date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
 
-   :::image type="content" source="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png" alt-text="Screenshot that displays the settings for the ReFS deduplication and compression feature." lightbox=""media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png":::
+    :::image type="content" source="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png" alt-text="Screenshot of the Volume settings pane displaying the ReFS deduplication and compression settings." lightbox="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png":::
 
 1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. These savings are updated after each run, and you can observe the performance impact in the charts under the **Performance** section.
 
-    :::image type="content" source="media/refs-deduplication-compression/volume-properties.png" alt-text="Screenshot of the properties section of a volume showing the savings breakdown and next scheduled run time." lightbox=""media/refs-deduplication-compression/volume-properties.png":::
+    :::image type="content" source="media/refs-deduplication-compression/volume-properties.png" alt-text="Screenshot of the properties section of a volume showing the savings breakdown and next scheduled run time." lightbox="media/refs-deduplication-compression/volume-properties.png":::
 
 # [PowerShell](#tab/powershell)
 
