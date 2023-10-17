@@ -5,7 +5,15 @@
   - name: What is Azure Stack HCI?
     href: overview.md
   - name: What's new in Azure Stack HCI? 
-    href: whats-new.md
+    items:
+      - name: Version 23H2 (preview)
+        href: whats-new.md
+      - name: Version 22H2
+        href: whats-new-in-hci-22h2.md
+  - name: Known issues for version 23H2 (preview)
+    href: known-issues-23h2.md
+  - name: Release information
+    href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Compare to Azure Stack Hub
@@ -16,8 +24,7 @@
     href: guided-quick-deploy-eval.yml    
   - name: FAQ
     href: faq.yml
-  - name: Release information
-    href: release-information.md
+
 - name: Quickstarts
   items:
   - name: Create an Azure Stack HCI cluster
@@ -72,42 +79,58 @@
       href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
-  - name: 0. Download the Azure Stack HCI software
-    href: deploy/download-azure-stack-hci-software.md
-  - name: 1. Deploy the Azure Stack HCI OS
-    href: deploy/operating-system.md
-  - name: 2. Create a cluster
-    href: deploy/create-cluster.md
-  - name: 3. Set up a cluster witness
-    href: manage/witness.md    
-  - name: 4. Register with Azure
-    href: deploy/register-with-azure.md
-  - name: 5. Validate the cluster
-    href: deploy/validate.md
-  - name: Migrate a cluster
+  - name: Azure Stack HCI, version 23H2 (preview)
     items:
-    - name: Migrate to new hardware
-      href: deploy/migrate-cluster-new-hardware.md
-    - name: Migrate on same hardware
-      href: deploy/migrate-cluster-same-hardware.md
-  - name: Deploy with PowerShell
-    items:
-    - name: Deploy on a single server
-      href: deploy/single-server.md
-    - name: Single server scale-out
-      href: manage/single-node-scale-out.md
-    - name: Create a cluster with PowerShell
-      href: deploy/create-cluster-powershell.md
-    - name: Host networking with Network ATC
-      href: deploy/network-atc.md
-  - name: Deploy SDN
-    items:
-    - name: Deploy using Windows Admin Center
-      href: deploy/sdn-wizard.md
-    - name: Deploy using SDN Express
-      href: manage/sdn-express.md
-    - name: Deploy at cluster creation
-      href: deploy/create-cluster.md#step-5-sdn-optional  
+    - name: Read overview
+      href: ../index.yml
+    - name: 0. View deployment checklist
+      href: deploy/deployment-checklist.md
+    - name: 1. Prepare Active Directory
+      href: deploy/deployment-prep-active-directory.md
+    - name: 2. Download the software
+      href: deploy/download-azure-stack-hci-23h2-software.md
+    - name: 3. Install the OS
+      href: deploy/deployment-install-os.md
+    - name: 4. Set up the first server
+      href: deploy/deployment-set-up-first-server.md
+    - name: 5. Deploy via Azure portal 
+      href: ../index.yml
+    - name: 6. Validate deployment
+      href: ../index.yml
+  - name: Azure Stack HCI, version 22H2
+    items: 
+    - name: 0. Download the Azure Stack HCI software
+      href: deploy/download-azure-stack-hci-software.md
+    - name: 1. Deploy the Azure Stack HCI OS
+      href: deploy/operating-system.md
+    - name: 2. Create a cluster
+      href: deploy/create-cluster.md
+    - name: 3. Set up a cluster witness
+      href: manage/witness.md    
+    - name: 4. Register with Azure
+      href: deploy/register-with-azure.md
+    - name: 5. Validate the cluster
+      href: deploy/validate.md
+    - name: Deploy with PowerShell
+      items:
+      - name: Deploy on a single server
+        href: deploy/single-server.md
+      - name: Single server scale-out
+        href: manage/single-node-scale-out.md
+      - name: Create a cluster with PowerShell
+        href: deploy/create-cluster-powershell.md
+      - name: Host networking with Network ATC
+        href: deploy/network-atc.md
+    - name: Deploy SDN
+      items:
+      - name: Deploy using Windows Admin Center
+        href: deploy/sdn-wizard.md
+      - name: Deploy using SDN Express
+        href: manage/sdn-express.md
+      - name: Deploy at cluster creation
+        href: deploy/create-cluster.md#step-5-sdn-optional
+    - name: Deploy and manage in VMM
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
   - name: Deploy workloads
     items:
     - name: Deploy Azure Benefits
@@ -120,8 +143,28 @@
       href: deploy/sql-server.md
     - name: Trusted enterprise virtualization
       href: deploy/trusted-enterprise-virtualization.md
-  - name: Deploy and manage Azure Stack HCI clusters in VMM
-    href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+
+- name: Update
+  items:
+    - name: Azure Stack HCI, version 23H2 (preview)
+      items: 
+      - name: What's the Lifecycle Manager?
+        href: update/whats-the-lifecycle-manager.md
+      - name: Use Lifecycle Manager for updates
+        href: update/update-azure-stack-hci-solution-23h2.md
+      - name: Understand update phases
+        href: update/update-phases.md
+      - name: Update via PowerShell
+        href: update/update-via-powershell-23h2.md
+      - name: Update via Azure portal
+        href: update/update-via-powershell-23h2.md
+      - name: Troubleshoot updates
+        href: update/update-troubleshooting-23h2.md
+    - name: Azure Stack HCI, version 22H2
+      items:
+      - name: Update your cluster
+        href: ./manage/update-cluster.md
+
 - name: Manage
   items:
   - name: Manage VMs
@@ -315,6 +358,11 @@
     - name: Use Azure Backup
       href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Manage Azure Arc extensions
+    items:
+    - name: Azure Arc extensions
+      href: manage/arc-extension-management.md
+    - name: Telemetry and diagnostics extension
+      href: concepts/telemetry-and-diagnostics-overview.md
     href: manage/arc-extension-management.md
 
 - name: Migrate
@@ -361,7 +409,7 @@
   - name: Troubleshoot CredSSP
     href: manage/troubleshoot-credssp.md
   - name: Troubleshoot live migration
-    href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#failed-to-get-the-network-address-for-the-destination-node-host2-a-cluster-network-isnt-available-for-this-operation-0x000013ab
+    href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues#failed-to-get-the-network-address-for-the-destination-node-host2-a-cluster-network-isnt-available-for-this-operation-0x000013ab
   - name: Troubleshoot Storage Spaces Direct
     href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Troubleshoot storage health
@@ -452,8 +500,6 @@
       href: manage/whats-new-2306-preview.md
     - name: 2306 updates
       items:
-      - name: 2306.3 release
-        href: manage/whats-new-2306-3-preview.md
       - name: 2306.2 release
         href: manage/whats-new-2306-2-preview.md
       - name: 2306.1 release
@@ -482,9 +528,7 @@
     items:
     - name: View known issues
       items:
-      - name: 2306.3 update release - Current
-        href: hci-known-issues-2306-3.md 
-      - name: 2306.2 update release
+      - name: 2306.2 update release - Current
         href: hci-known-issues-2306-2.md 
       - name: 2306.1 update release
         href: hci-known-issues-2306-1.md 
