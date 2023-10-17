@@ -1,6 +1,6 @@
 ---
-title: AKS Edge Essentials troubleshoot common issues 
-description: Common issues and workarounds
+title: Troubleshoot common issues in AKS Edge Essentials 
+description: Learn about common issues and workarounds in AKS Edge Essentials. 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
@@ -9,7 +9,7 @@ ms.custom: template-concept
 ms.reviewer: fcabrera
 ---
 
-# AKS Edge Essentials troubleshoot common issues
+# Troubleshoot common issues in AKS Edge Essentials
 
 This article describes how to find solutions for issues you encounter when using AKS Edge Essentials. Known issues and errors are organized by functional area. You can use the links provided in this article to find solutions and workarounds to resolve them.
 
