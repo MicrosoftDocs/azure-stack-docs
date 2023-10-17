@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/07/2023
+ms.date: 10/12/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -33,25 +33,44 @@ The Azure requirements include:
   > [!NOTE]
   > Arc VM management for Azure Stack HCI is currently supported in **East US** & **West Europe**. For Arc VM management on Azure Stack HCI, all entities must be registered, enabled or created in the same region. The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
-- The latest version of Azure Command-Line Interface (CLI). You must install this on all servers in your Azure Stack HCI cluster.
-
-  - To install Azure CLI on each server in a cluster, use Remote Desktop Protocol (RDP) connection.
-  
-  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows).
-  
-    - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
-
-    - When you're prompted, install the Azure CLI extension on first use. For more information about extensions, see [Use extensions with the Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-    - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
-
 - Required Azure permissions:
 
   - To install the Arc Resource Bridge, you must have the [Contributor](/azure/role-based-access-control/built-in-roles#contributor) role for the resource group.
     
   - To read, modify, and delete the Arc resource bridge, you must have the Contributor role for the resource group.
 
-  - To provision Arc VMs & entities through Azure Portal, users must have Contributor level access at the subscription level.
+  - To provision Arc VMs & entities through Azure portal, users must have Contributor level access at the subscription level.
+
+## Azure Command-Line Interface (CLI) requirements
+
+You can connect to Azure Stack HCI cluster directly or you can access the cluster via a client. Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
+
+### Connect to the cluster directly
+
+If you are accessing the Azure Stack HCI, version 23H2 cluster directly, no steps are needed on your part.
+
+During the cluster deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the cluster. You can connect to and manage the cluster using the Azure CLI extension.
+
+
+### Connect to the cluster via a client
+
+If you are accessing the Azure Stack HCI, version 23H2 via a client, following requirements must be met:
+ 
+- The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you are using to connect to your Azure Stack HCI cluster.
+
+  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
+  
+    - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
+
+    - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
+
+- The Azure Stack HCI extension `stack-hci-vm`. Run the following command in an elevated PowerShell window on your client:
+
+  ```PowerShell
+  az extension add --name "stack-hci-vm"
+  ```
+
+
 
 ## Networking requirements
 
