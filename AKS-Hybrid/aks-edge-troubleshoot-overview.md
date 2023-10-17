@@ -32,7 +32,7 @@ Get-ExecutionPolicy
 if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force }
 ```
 
-### Low disk space causes pre-cached container images to be deleted
+### Low disk space causes precached container images to be deleted
 
 When the node runs out of disk space, some of the preloaded images are garbage collected by the `containerd` runtime. In this case, first free up some disk space, and then run the following command to pull the cached images again:
 
@@ -40,7 +40,7 @@ When the node runs out of disk space, some of the preloaded images are garbage c
     Invoke-AksEdgeNodeCommand -NodeType Linux -command "sudo /path/to/script/reimport-ci.sh
 ```
 
-This script checks for the missing images and re-imports them as needed.
+This script checks for the missing images and reimports them as needed.
 
 ### Azure Arc connectivity
 
