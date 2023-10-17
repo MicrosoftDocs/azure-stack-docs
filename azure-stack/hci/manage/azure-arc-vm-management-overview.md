@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/07/2023
+ms.date: 10/12/2023
 ---
 
 # What is Azure Arc VM management? (preview)
@@ -15,7 +15,7 @@ ms.date: 08/07/2023
 
 Azure Arc VM management enables you to use the Azure portal to provision and manage Windows and Linux VMs hosted in an on-premises Azure Stack HCI environment. [Azure Arc](https://azure.microsoft.com/services/azure-arc/) enables IT administrators to delegate permissions and roles to app owners and DevOps teams to enable self-service VM management for their Azure Stack HCI clusters by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and ARM templates. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, you can automate VM provisioning in a secure cloud environment.
 
-To find answers to frequently asked questions about Arc VMs on Azure Stack HCI, see [FAQs](faqs-arc-enabled-vms.md).
+To find answers to frequently asked questions about Arc VMs on Azure Stack HCI, see [FAQs](./azure-arc-vms-faq.yml).
 
 To troubleshoot issues with your Arc VMs or to know existing known issues and limitations, see [Troubleshoot Arc virtual machines](troubleshoot-arc-enabled-vms.md).
 
