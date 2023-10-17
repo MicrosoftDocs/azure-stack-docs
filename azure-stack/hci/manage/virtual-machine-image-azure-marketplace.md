@@ -8,12 +8,12 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 07/14/2023
+ms.date: 10/11/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+> Applies to: Azure Stack HCI, version 23H2 
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
@@ -27,17 +27,13 @@ Before you begin, make sure that the following prerequisites are completed.
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
 
+- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
-
-    - Running PowerShell 5.0 or later.
-    - Running the latest version of `az` CLI.
-        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
-        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
 
 # [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
+   
 ---
 
 
@@ -69,20 +65,20 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Set parameters for your subscription, resource group, location, OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
     ```azurecli
-    $Subscription = "<Subscription ID>"
-    $Resource_Group = "<Resource group>"
-    $Location = "<Location for your Azure Stack HCI cluster>"
-    $OsType = "<OS of source image>"
+    $subscription = "<Subscription ID>"
+    $resource_group = "<Resource group>"
+    $location = "<Location for your Azure Stack HCI cluster>"
+    $ostype = "<OS of source image>"
     ```
     
     The parameters are described in the following table:
     
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
-    | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
+    | `resource-group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+    | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
     Here's a sample output:
     
@@ -90,7 +86,7 @@ Follow these steps to create a VM image using the Azure CLI.
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "mkclus90-rg"
     PS C:\Users\azcli> $location = "eastus2euap"
-    PS C:\Users\azcli> $osType = "Windows"
+    PS C:\Users\azcli> $ostype = "Windows"
     ```
 
 ### Create VM image from marketplace image
@@ -114,7 +110,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365 | 19044.2486.230110 |
 
     ```azurecli
-    az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "<VM image name>"  --os-type $osType --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "<VM image name>" --os-type $ostype --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
     ```
 
     A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
@@ -125,7 +121,7 @@ Here's a sample output:
 PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "cl04" --query id -o tsv)
 PS C:\Users\azcli> $customLocationID
 /subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04
-PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name "marketplacetest03"  --os-type $osType --offer "<Offer>" --publisher "<Publisher>" --sku "<SKU>" --version "<Version number>"
+PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location lLocation --name "marketplacetest03" --os-type $ostype --offer "<Offer>" --publisher "<Publisher>" --sku "<SKU>" --version "<Version number>"
 {
  "extendedLocation": {
  "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
@@ -165,7 +161,7 @@ PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --
     "createdBy": "guspinto@microsoft.com",
     "createdByType": "User",
     "lastModifiedAt": "2022-08-01T22:36:12.900694+00:00",
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+    "lastModifiedBy": "<ID>",
     "lastModifiedByType": "Application"
   },
   "tags": null,
@@ -173,6 +169,7 @@ PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --
 }
 PS C:\Users\azcli>
 ```
+
 
 # [Azure portal](#tab/azureportal)
 
@@ -228,12 +225,12 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
 You need to view the list of VM images to choose an image to manage.
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
 [!INCLUDE [hci-list-vm-image-azure-cli](../../includes/hci-list-vm-image-azure-cli.md)]
 
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-list-vm-image-portal](../../includes/hci-list-vm-image-portal.md)]
 
@@ -241,13 +238,13 @@ You need to view the list of VM images to choose an image to manage.
 
 ## View VM image properties
 
-You may want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
+You might want to view the properties of VM images before you use the image to create a VM. Follow these steps to view the image properties:
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
 [!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-view-vm-image-properties-azure-cli.md)]
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-view-vm-image-properties-portal](../../includes/hci-view-vm-image-properties-portal.md)]
 
@@ -286,14 +283,13 @@ To update a VM image, use the following steps in Azure portal.
 
 You may want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
 
-# [Azure CLI](#tab/azurecli)
+### [Azure CLI](#tab/azurecli)
 
 [!INCLUDE [hci-view-vm-image-properties-azure-cli](../../includes/hci-delete-vm-image-azure-cli.md)]
 
-# [Azure portal](#tab/azureportal)
+### [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-delete-vm-image-portal](../../includes/hci-delete-vm-image-portal.md)]
-
 ---
 
 ## Next steps

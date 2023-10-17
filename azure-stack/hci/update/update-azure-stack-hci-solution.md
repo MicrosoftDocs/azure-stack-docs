@@ -1,19 +1,19 @@
 ---
-title:  Lifecycle Management for Azure Stack HCI solution updates (preview).
-description: This article describes how you can keep various pieces of your Azure Stack HCI solution up to date.
+title:  Lifecycle Management for Azure Stack HCI, version 23H2 solution updates (preview).
+description: This article describes how you can keep various pieces of your Azure Stack HCI, version 23H2 cluster up-to-date.
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
 ms.reviewer: thoroet
 ms.lastreviewed: 06/14/2023
-ms.date: 06/14/2023
+ms.date: 10/06/2023
 ---
 
 # Lifecycle Manager for Azure Stack HCI solution updates (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
-This article describes how to keep various pieces of your Azure Stack HCI solution up to date and is applicable to version 2303 of the Supplemental Package and later.
+This article describes how to keep various pieces of your Azure Stack HCI solution up to date. This article is applicable to software release 2310 for Azure Stack HCI,version 23H2.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -59,7 +59,7 @@ The Lifecycle Manager is the recommended way to update your Azure Stack HCI clus
 In addition to the Lifecycle Management method used to update your solution, there are two interfaces that can be used to apply your available updates. Here are the interfaces:
 
 - PowerShell (Command line)
-- Windows Admin Center
+- Azure portal
 
 ### PowerShell
 
@@ -67,13 +67,11 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 ### Windows Admin Center
 
-To install feature updates using Windows Admin Center, see [Install feature updates](../manage/install-preview-version.md). Don't use Windows Admin Center to update a cluster deployed with the Lifecycle Manager, at this time. An update extension refresh that enables you to update from Windows Admin Center, is in the future plan.
-
-Alternatively, you can download and install the latest MSI package from the Microsoft Evaluation Center. For more information, see [Windows Admin Center](/windows-server/manage/windows-admin-center/overview).  
+To install feature updates using Azure portal, see [Update your cluster via the Azure Update Manager](../manage/install-preview-version.md). 
 
 ## Workload updates
 
-In addition to your cluster updates, there are workload updates that aren't integrated into the Lifecycle Manager that can be applied to your cluster. These workload updates include Azure Kubernetes Service (AKS) hybrid, Azure Arc, and Infrastructure Virtual Machines (VMs).
+In addition to your cluster updates, there are workload updates that aren't integrated into the Lifecycle Manager that can be applied to your cluster. These workload updates include Azure Kubernetes Service (AKS) hybrid, Azure Arc Virtual Machines (VMs), and Infrastructure Virtual Machines (VMs).
 
 The next sections provide information on these workloads and ways to apply updates.
 
