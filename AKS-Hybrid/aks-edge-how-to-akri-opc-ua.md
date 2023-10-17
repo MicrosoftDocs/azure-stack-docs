@@ -106,7 +106,7 @@ You've now successfully created two OPC UA PLC servers, each with one fast PLC n
 
    - Run `kubectl get crd`, and you should see the CRDs listed.
    - Run `kubectl get akric`, and you should see `akri-opcua-monitoring`.
-   - If the OPC PLC servers were discovered and pods spun up, you can see the instances by running `kubectl get akrii`, and further inspected by running `kubectl get akrii akri-opcua-monitoring-<ID> -o yaml`.
+   - If the OPC PLC servers were discovered and pods spun up, you can see the instances by running `kubectl get akrii`, and you can inspect further by running `kubectl get akrii akri-opcua-monitoring-<ID> -o yaml`.
 
 ## Deploy an anomaly detection web application as an end consumer of the brokers
 
