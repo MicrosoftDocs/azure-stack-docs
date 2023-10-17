@@ -10,14 +10,10 @@
         href: whats-new.md
       - name: Version 22H2
         href: whats-new-in-hci-22h2.md
-  - name: Known issues for version 23H2 (preview)
-    href: known-issues-23h2.md
   - name: Release information
     href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
-  - name: Compare to Azure Stack Hub
-    href: concepts/compare-azure-stack-hub.md
   - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md
   - name: Evaluation guide
@@ -131,40 +127,18 @@
         href: deploy/create-cluster.md#step-5-sdn-optional
     - name: Deploy and manage in VMM
       href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
-  - name: Deploy workloads
-    items:
-    - name: Deploy Azure Benefits
+    - name: Deploy Azure
       href: ./manage/azure-benefits.md
-    - name: Branch office and edge
-      href: deploy/branch-office-edge.md
-    - name: Virtual desktop infrastructure
-      href: deploy/virtual-desktop-infrastructure.md
-    - name: SQL Server
-      href: deploy/sql-server.md
-    - name: Trusted enterprise virtualization
-      href: deploy/trusted-enterprise-virtualization.md
-
-- name: Update
-  items:
-    - name: Azure Stack HCI, version 23H2 (preview)
+    - name: Deploy workloads
       items: 
-      - name: What's the Lifecycle Manager?
-        href: update/whats-the-lifecycle-manager.md
-      - name: Use Lifecycle Manager for updates
-        href: update/update-azure-stack-hci-solution-23h2.md
-      - name: Understand update phases
-        href: update/update-phases.md
-      - name: Update via PowerShell
-        href: update/update-via-powershell-23h2.md
-      - name: Update via Azure portal
-        href: update/update-via-powershell-23h2.md
-      - name: Troubleshoot updates
-        href: update/update-troubleshooting-23h2.md
-    - name: Azure Stack HCI, version 22H2
-      items:
-      - name: Update your cluster
-        href: ./manage/update-cluster.md
-
+      - name: Branch office and edge
+        href: deploy/branch-office-edge.md
+      - name: Virtual desktop infrastructure
+        href: deploy/virtual-desktop-infrastructure.md
+      - name: SQL Server
+        href: deploy/sql-server.md
+      - name: Trusted enterprise virtualization
+        href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -193,42 +167,6 @@
       href: manage/windows-server-azure-edition.md
     - name: Upgrade VMs to Windows Server Azure Edition
       href: manage/upgrade-vm-windows-server-azure-edition.md
-  - name: Manage Azure Arc VMs
-    items:
-    - name: What is Azure Arc VM management?
-      href: manage/azure-arc-vm-management-overview.md
-    - name: Azure Arc VM management networking
-      href: manage/azure-arc-vm-management-networking.md
-    - name: Set up Arc VM management
-      items:
-      - name: Review prerequisites
-        href: manage/azure-arc-vm-management-prerequisites.md
-      - name: Set up using command line
-        href: manage/deploy-arc-resource-bridge-using-command-line.md
-    - name: Manage Arc VM resources
-      items:
-      - name: Create VM images
-        items:
-        - name: Using Azure Marketplace images
-          href: manage/virtual-machine-image-azure-marketplace.md
-        - name: Using images in Azure Storage account
-          href: manage/virtual-machine-image-storage-account.md
-        - name: Using images in local share 
-          href: manage/virtual-machine-image-local-share.md
-        - name: Using sysprepped Ubuntu image
-          href: manage/virtual-machine-image-linux-sysprep.md
-      - name: Create virtual networks
-        href: manage/create-virtual-networks.md
-    - name: Deploy Arc VMs
-      href: manage/manage-virtual-machines-in-azure-portal.md
-    - name: Manage VM extensions
-      href: manage/virtual-machine-manage-extension.md
-    - name: Uninstall Azure Arc VM management
-      href: manage/uninstall-arc-resource-bridge.md
-    - name: Troubleshoot
-      href: manage/troubleshoot-arc-enabled-vms.md
-    - name: FAQs
-      href: manage/azure-arc-vms-faq.yml
   - name: Manage storage
     items:
     - name: Create volumes
@@ -363,6 +301,45 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
+    href: manage/arc-extension-management.md
+
+- name: Migrate
+  items: 
+    - name: Migration overview
+      href: migrate/migration-options-hci-overview.md
+    - name: Migrate using Azure Migrate
+      items:
+      - name: Overview
+        href: migrate/migration-azure-migrate-hci-overview.md
+      - name: Phase 0 - Prepare
+        items:
+        - name: Review requirements
+          href: migrate/migrate-hyperv-requirements.md
+        - name: Complete prerequisites
+          href: migrate/migrate-hyperv-prerequisites.md 
+      - name: Phase 1 - Discover
+        href: migrate/migrate-hyperv-discover.md
+      - name: Phase 2 - Replicate
+        href: migrate/migrate-hyperv-replicate.md
+      - name: Phase 3 - Migrate, verify
+        href: migrate/migrate-azure-migrate.md
+      - name: Troubleshoot
+        href: migrate/migrate-troubleshoot.md
+      - name: FAQ
+        href: migrate/migrate-faq.yml
+    - name: Migrate using SCVMM
+      items:
+      - name: For Hyper-V VMs
+        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
+      - name: For VMware VMs
+        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
+    - name: Migrate manually 
+      items:
+      - name: To same hardware
+        href: deploy/migrate-cluster-same-hardware.md
+      - name: To new hardware
+        href: deploy/migrate-cluster-new-hardware.md
+
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -457,38 +434,180 @@
       href: concepts/data-collection.md
 - name: Preview
   items:
-  - name: What's in preview?
-    items:
-    - name: 2306 release - Current
-      href: manage/whats-new-2306-preview.md
-    - name: 2306 updates
+    - name: Known issues in Preview
+      href: known-issues-23h2.md
+    - name: Deploy
       items:
-      - name: 2306.2 release
-        href: manage/whats-new-2306-2-preview.md
-      - name: 2306.1 release
-        href: manage/whats-new-2306-1-preview.md
-    - name: 2303 release 
-      href: manage/whats-new-2303-preview.md
-    - name: 2303 updates
+      - name: Read overview
+        href: ../index.yml
+      - name: Complete prerequisites
+        href: ../index.yml
+      - name: 0. View deployment checklist
+        href: deploy/deployment-checklist.md
+      - name: 1. Prepare Active Directory
+        href: deploy/deployment-prep-active-directory.md
+      - name: 2. Download the software
+        href: deploy/download-azure-stack-hci-23h2-software.md
+      - name: 3. Install the OS
+        href: deploy/deployment-install-os.md
+      - name: 4. Set up the first server
+        href: deploy/deployment-set-up-first-server.md
+      - name: 5. Deploy via Azure portal 
+        href: ../index.yml
+      - name: 6. Validate deployment
+        href: ../index.yml
+    - name: Update 
       items:
-      - name: 2303.2 release
-        href: manage/whats-new-2303-2-preview.md 
-      - name: 2303.1 release
-        href: manage/whats-new-2303-1-preview.md  
-    - name: 2301 release 
-      href: manage/whats-new-2301-preview.md
-    - name: 2210 release
-      href: manage/whats-new-preview.md
-  - name: Preview channel
+      - name: What's the Lifecycle Manager?
+        href: update/whats-the-lifecycle-manager.md
+      - name: Use Lifecycle Manager for updates
+        href: update/update-azure-stack-hci-solution-23h2.md
+      - name: Understand update phases
+        href: update/update-phases.md
+      - name: Update via PowerShell
+        href: update/update-via-powershell-23h2.md
+      - name: Update via Azure portal
+        href: update/update-via-powershell-23h2.md
+      - name: Troubleshoot updates
+        href: update/update-troubleshooting-23h2.md
+    - name: Manage
+      items:
+        - name: Azure Arc VMs
+          items:
+          - name: What is Azure Arc VM management?
+            href: manage/azure-arc-vm-management-overview.md
+          - name: Azure Arc VM management networking
+            href: manage/azure-arc-vm-management-networking.md
+          - name: Set up Arc VM management
+            items:
+            - name: Review prerequisites
+              href: manage/azure-arc-vm-management-prerequisites.md
+            - name: Set up using command line
+              href: manage/deploy-arc-resource-bridge-using-command-line.md
+          - name: Manage Arc VM resources
+            items:
+            - name: Create VM images
+              items:
+              - name: Using Azure Marketplace images
+                href: manage/virtual-machine-image-azure-marketplace.md
+              - name: Using images in Azure Storage account
+                href: manage/virtual-machine-image-storage-account.md
+              - name: Using images in local share 
+                href: manage/virtual-machine-image-local-share.md
+              - name: Using sysprepped Ubuntu image
+                href: manage/virtual-machine-image-linux-sysprep.md
+            - name: Create virtual networks
+              href: manage/create-virtual-networks.md
+          - name: Deploy Arc VMs
+            href: manage/manage-virtual-machines-in-azure-portal.md
+          - name: Manage VM extensions
+            href: manage/virtual-machine-manage-extension.md
+          - name: Uninstall Azure Arc VM management
+            href: manage/uninstall-arc-resource-bridge.md
+          - name: Troubleshoot
+            href: manage/troubleshoot-arc-enabled-vms.md
+          - name: FAQs
+            href: manage/azure-arc-vms-faq.yml
+        - name: Capacity
+          items:
+          - name: Add a server
+            href: ../index.yml
+          - name: Repair a server
+            href: ../index.yml
+- name: Reference
+  items:
+  - name: Azure registration Azure CLI commands
+    href: /cli/azure/ext/stack-hci/stack-hci
+  - name: Azure registration PowerShell commands
+    href: /powershell/module/az.stackhci
+  - name: Go package for ARM Azure Stack HCI service API
+    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+  - name: Azure Stack HCI Java service classes and interfaces
+    href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
+  - name: Azure Stack HCI management service Python package
+    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
+  - name: Azure Stack HCI JavaScript package
+    href: /javascript/api/@azure/arm-azurestackhci
+  - name: Azure Stack HCI REST API reference
+    href: /rest/api/stackhci
+  - name: .NET Namespaces for Azure Stack HCI
+    href: /dotnet/api/overview/azure/stack-hci
+  - name: Hyper-V PowerShell commands
+    href: /powershell/module/hyper-v
+  - name: Storage PowerShell commands
+    href: /powershell/module/storage
+  - name: ClusterAwareUpdating PowerShell commands
+    href: /powershell/module/clusterawareupdating
+  - name: FailoverClusters PowerShell commands
+    href: /powershell/module/failoverclusters
+  - name: StorageReplica PowerShell commands
+    href: /powershell/module/storagereplica
+  - name: NetAdapter PowerShell commands
+    href: /powershell/module/netadapter
+  - name: NetQoS PowerShell commands
+    href: /powershell/module/netqos
+  - name: DcbQoS PowerShell commands
+    href: /powershell/module/dcbqos
+- name: Related
+  items:
+  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
+    href: /azure/aks/hybrid/overview
+  - name: Azure Stack family
+    href: ../index.yml
+  - name: Azure hybrid cloud
+    href: /hybrid
+  - name: Windows Server
+    href: /windows-server/
+  - name: Windows Admin Center
+    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: System Center
+    href: /system-center/
+- name: Resources
+  items:
+  - name: Azure Stack HCI product page
+    href: https://azure.com/hci
+  - name: Pricing
+    href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
+  - name: Support
     items:
-    - name: Join preview channel
-      href: manage/preview-channel.md    
-    - name: Install a preview version
-      href: manage/install-preview-version.md
-    - name: Post installation tasks
-      href: manage/preview-post-installation.md
-  - name: Supplemental package
+    - name: Get support
+      href: manage/get-support.md
+    - name: Get remote support
+      href: manage/get-remote-support.md
+  - name: Learning paths and modules
     items:
+    - name: Azure Stack HCI foundations
+      href: /training/paths/azure-stack-hci-foundations/
+    - name: Operate and maintain Azure Stack HCI
+      href: /training/paths/operate-maintain-azure-stack-hci/
+    - name: Implement Datacenter Firewall and Software Load Balancer
+      href: /training/modules/implement-firewall-load-balancer/
+    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
+      href: /training/modules/plan-deploy-sdn-infrastructure/
+  - name: 22H2 Supplemental Package (Preview)
+    items:
+    - name: What's in preview?
+      items:
+      - name: 2306 release - Current
+        href: manage/whats-new-2306-preview.md
+      - name: 2306 updates
+        items:
+        - name: 2306.2 release
+          href: manage/whats-new-2306-2-preview.md
+        - name: 2306.1 release
+          href: manage/whats-new-2306-1-preview.md
+      - name: 2303 release 
+        href: manage/whats-new-2303-preview.md
+      - name: 2303 updates
+        items:
+        - name: 2303.2 release
+          href: manage/whats-new-2303-2-preview.md 
+        - name: 2303.1 release
+          href: manage/whats-new-2303-1-preview.md  
+      - name: 2301 release 
+        href: manage/whats-new-2301-preview.md
+      - name: 2210 release
+        href: manage/whats-new-preview.md
     - name: View known issues
       items:
       - name: 2306.2 update release - Current
@@ -575,76 +694,6 @@
         href: manage/add-server.md
       - name: Repair a server
         href: manage/repair-server.md
-- name: Reference
-  items:
-  - name: Azure registration Azure CLI commands
-    href: /cli/azure/ext/stack-hci/stack-hci
-  - name: Azure registration PowerShell commands
-    href: /powershell/module/az.stackhci
-  - name: Go package for ARM Azure Stack HCI service API
-    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-  - name: Azure Stack HCI Java service classes and interfaces
-    href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-  - name: Azure Stack HCI management service Python package
-    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-  - name: Azure Stack HCI JavaScript package
-    href: /javascript/api/@azure/arm-azurestackhci
-  - name: Azure Stack HCI REST API reference
-    href: /rest/api/stackhci
-  - name: .NET Namespaces for Azure Stack HCI
-    href: /dotnet/api/overview/azure/stack-hci
-  - name: Hyper-V PowerShell commands
-    href: /powershell/module/hyper-v
-  - name: Storage PowerShell commands
-    href: /powershell/module/storage
-  - name: ClusterAwareUpdating PowerShell commands
-    href: /powershell/module/clusterawareupdating
-  - name: FailoverClusters PowerShell commands
-    href: /powershell/module/failoverclusters
-  - name: StorageReplica PowerShell commands
-    href: /powershell/module/storagereplica
-  - name: NetAdapter PowerShell commands
-    href: /powershell/module/netadapter
-  - name: NetQoS PowerShell commands
-    href: /powershell/module/netqos
-  - name: DcbQoS PowerShell commands
-    href: /powershell/module/dcbqos
-- name: Related
-  items:
-  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: /azure/aks/hybrid/overview
-  - name: Azure Stack family
-    href: ../index.yml
-  - name: Azure hybrid cloud
-    href: /hybrid
-  - name: Windows Server
-    href: /windows-server/
-  - name: Windows Admin Center
-    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-  - name: System Center
-    href: /system-center/
-- name: Resources
-  items:
-  - name: Azure Stack HCI product page
-    href: https://azure.com/hci
-  - name: Pricing
-    href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Support
-    items:
-    - name: Get support
-      href: manage/get-support.md
-    - name: Get remote support
-      href: manage/get-remote-support.md
-  - name: Learning paths and modules
-    items:
-    - name: Azure Stack HCI foundations
-      href: /training/paths/azure-stack-hci-foundations/
-    - name: Operate and maintain Azure Stack HCI
-      href: /training/paths/operate-maintain-azure-stack-hci/
-    - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /training/modules/implement-firewall-load-balancer/
-    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /training/modules/plan-deploy-sdn-infrastructure/
   - name: Earlier versions
     items:
     - name: What's new in version 21H2
