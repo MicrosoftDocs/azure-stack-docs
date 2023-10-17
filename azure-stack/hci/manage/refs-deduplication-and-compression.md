@@ -164,25 +164,25 @@ Set a reoccurring schedule to run storage optimizations for the volume. You can 
 
     ```output
     PS C:\Users\wolfpack > Get-ReFSDedupSchedu1e -Volume C:\ClusterStorage\Volumel\ | FL
-    Volume						: C:\ClusterStorage\Volumel\
-    Enabled						: True
-    Type						: DedupAndCompress
-    CpuPercentage				: Automatic
-    ConcurrentOpenFiles			: Automatic
-    MinimumLastModifiedTimeHours: 0
-    ExcludeFileExtension		: {}
-    ExcludeFolder				: {}
-    CpuPercentage				: 0
-    CompressionFormat			: LZ4
-    CompressionLevel			: 1
-    CompressionChunkSize		: 4 KiB
-    CompressionTuning			: 70
-    RecompressionTuning			: 40
-    DecompressionTuning			: 30
-    Start						: N/A
-    Duration					: N/A
-    Days						: None
-    Suspended					: False
+    Volume                                    : C:\ClusterStorage\Volumel\
+    Enabled                                   : True
+    Type                                      : DedupAndCompress
+    CpuPercentage                             : Automatic
+    ConcurrentOpenFiles                       : Automatic
+    MinimumLastModifiedTimeHours              : 0
+    ExcludeFileExtension                      : {}
+    ExcludeFolder                             : {}
+    CpuPercentage                             : 0
+    CompressionFormat                         : LZ4
+    CompressionLevel                          : 1
+    CompressionChunkSize                      : 4 KiB
+    CompressionTuning                         : 70
+    RecompressionTuning                       : 40
+    DecompressionTuning                       : 30
+    Start                                     : N/A
+    Duration                                  : N/A
+    Days                                      : None
+    Suspended                                 : False
     ```
 
 - To set or modify a schedule, run the following cmdlet:
@@ -225,25 +225,25 @@ Here's a sample output of the cmdlet usage:
 PS C:\Users\wolfpack> Suspend-RePSDedupSchedu1e -Volume C:\ClusterStorage\Volumel\
 PS C:\Users\wolfpack> Get-ReFSDedupSchedu1e -Volume C:\ClusterStorage\Volumel\ | FL
 
-Volume						: C:\ClusterStorage\Volumel\ 
-Enabled						: True
-Type						: DedupAndCompress
-CpuPercentage				: Automatic
-ConcurrentOpenFiles			: Automatic
-MinimumLastModifiedTimeHours: 0
-ExcludeFileExtension		: {}
-ExcludeFolder				: {}
-CpuPercentage				: 0
-CompressionFormat			: LZ4
-CompressionLevel			: 1
-CompressionChunkSize		: 4 KiB 
-CompressionTuning			: 70
-RecompressionTuning			: 40
-DecompressionTuning			: 30
-Start						: N/A
-Duration					: N/A
-Days						: EveryDay
-Suspended					: True
+Volume                                    : C:\ClusterStorage\Volumel\ 
+Enabled                                   : True
+Type                                      : DedupAndCompress
+CpuPercentage                             : Automatic
+ConcurrentOpenFiles                       : Automatic
+MinimumLastModifiedTimeHours              : 0
+ExcludeFileExtension                      : {}
+ExcludeFolder                             : {}
+CpuPercentage                             : 0
+CompressionFormat                         : LZ4
+CompressionLevel                          : 1
+CompressionChunkSize                      : 4 KiB 
+CompressionTuning                         : 70
+RecompressionTuning                       : 40
+DecompressionTuning                       : 30
+Start                                     : N/A
+Duration                                  : N/A
+Days                                      : EveryDay
+Suspended                                 : True
 ```
 
 ---
