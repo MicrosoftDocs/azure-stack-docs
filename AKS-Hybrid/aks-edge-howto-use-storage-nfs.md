@@ -1,7 +1,7 @@
 ---
 title: External NFS Storage on AKS Edge Essentials
 description: Learn how to use NFS external provisioner on AKS Edge Essentials.
-author: fcabrera
+author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
 ms.date: 02/02/2023
