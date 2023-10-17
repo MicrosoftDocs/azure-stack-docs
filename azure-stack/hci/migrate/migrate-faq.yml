@@ -64,9 +64,9 @@ sections:
         answer: |
           Yes. The migration solution will discover VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022. 
 
-      - question: I am located in a geography that is not in the listed [supported geographies](migrate-hyperv-requirements.md#supported-geographies). Does this mean I can’t use this migration solution?
+      - question: I am located in a geography that is not in the listed supported geographies. Does this mean I can't use this migration solution?
         answer: |
-          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) in one of the supported geographies, but your migrated VMs can be in any geography. 
+          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) in one of the [supported geographies](migrate-hyperv-requirements.md#supported-geographies), since your migrated VMs can be in any geography. 
 
       - question: Will I be charged for this migration solution? 
         answer: |
