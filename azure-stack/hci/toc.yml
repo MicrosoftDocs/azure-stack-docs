@@ -414,7 +414,9 @@
       href: concepts/data-collection.md
 - name: Preview
   items:
-    - name: Known issues in Preview
+    - name: What's new in version 23H2?
+      href: whats-new.md
+    - name: Known issues
       href: known-issues-23h2.md
     - name: Deploy
       items:

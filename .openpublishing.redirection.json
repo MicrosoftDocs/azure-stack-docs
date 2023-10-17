@@ -1,6 +1,16 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/manage/manage/uninstall-arc-resource-bridge.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "redirect_document_id": true
+    },    
+    {
+      "source_path":"azure-stack/hci/manage/manage/deploy-arc-resource-bridge-using-command-line.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "redirect_document_id": true
+    }, 
+    {
       "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-wac.md",
       "redirect_url":"/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
       "redirect_document_id": false
