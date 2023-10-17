@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 10/16/2023
+  ms.date: 10/17/2023
 title: Azure Migrate FAQ
 summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you may have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
 
@@ -56,22 +56,24 @@ sections:
 
           After removing the appliance, follow the instructions in the deployment PowerPoint to install it again.
 
-      - question: I have Linux VMs, can I migrate them to Azure Stack HCI?  
+      - question: I have Linux VMs running on my Hyper-V server. Can I migrate these VMs to Azure Stack HCI?  
         answer: |
-          Yes, certainly. Lots of Linux distributions are supported to be migrated to Azure Stack HCI, for the full list see [Supported operating systems](migrate-hyperv-requirements.md#supported-operating-systems). 
+          Yes. There are many Linux distributions that can run on VMs that will be migrated to Azure Stack HCI. For the full list, see [Supported operating systems](migrate-hyperv-requirements.md#supported-operating-systems). 
 
-      - question: I have VM running on older Hyper-V host servers especially on Windows Server 2012 and Windows Server 2008 R2, can I migrate these VM to Azure Stack HCI?  
+      - question: I have a VM running on an older Hyper-V host server, for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Stack HCI?  
         answer: |
-          Definitely! All Windows Server hosts starting with Windows Server 2012 up to Windows Server 2022 are supported. 
+          Yes. The migration solution will discover VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022. 
 
-      - question: I am located in a geography that is not in the listed [supported geographies](migrate-hyperv-requirements.md#supported-geographies), does this mean I can't use Hyper-V migration to Azure Stack HCI with Azure Migrate?  
+      - question: I am located in a geography that is not in the listed [supported geographies](migrate-hyperv-requirements.md#supported-geographies). Does this mean I can’t use this migration solution?
         answer: |
-          Yes you can still use it, you just need to create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) in one of the supported geographies, but your migrated VMs can be in any geography.  
+          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) in one of the supported geographies, but your migrated VMs can be in any geography. 
 
-      - question: Is this migration a free service? 
+      - question: Will I be charged for this migration solution? 
         answer: |
-          There are no tool usage charges for migration for 180 days, from the time replication is started for a VM. Migration requires some services like [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) and key vault which needs to be created at customer's subscription, there will be some minimal amounts charged for those services. 
+          There are no tool usage charges for migration for 180 days. The time starts when you begin replicating the VMs in your project.
 
-      - question: I see that if I download a .zip file for the source or target appliance installation, I need a Windows Server 2022 operating system (OS) so that I can install these  appliances. Where can I get Windows Server 2022? 
+          Migration requires some services like storage account and key vault that are created in your subscription. These services will accrue some charges.
+
+      - question: To install the source or target appliance with the downloaded .zip file, I need a Windows Server 2022 operating system (OS).  How can I get the Windows Server 2022 OS?
         answer: |
-          Usually customers use their own corporate images for these appliances but you can also use an [evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022) for free for 180 days.
+          You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022) for free for up to 180 days.
