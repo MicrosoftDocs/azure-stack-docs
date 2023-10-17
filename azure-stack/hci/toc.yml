@@ -207,6 +207,8 @@
         href: manage/deploy-arc-resource-bridge-using-command-line.md
     - name: Manage Arc VM resources
       items:
+      - name: Create a storage path
+        href: manage/create-storage-path.md
       - name: Create VM images
         items:
         - name: Using Azure Marketplace images
