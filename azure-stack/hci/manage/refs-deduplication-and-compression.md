@@ -1,17 +1,17 @@
 ---
-title: Use ReFS deduplication and compression on volumes in Azure Stack HCI and Windows Server
-description: Manage volumes in Azure Stack HCI and Windows Server using ReFS deduplication and compression.
+title: Optimize storage with ReFS deduplication and compression in Azure Stack HCI and Windows Server
+description: Learn how to use ReFS deduplication and compression in Azure Stack HCI and Windows Server to optimize storage.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/11/2023
+ms.date: 10/17/2023
 ---
 
-# Use ReFS deduplication and compression on volumes in Azure Stack HCI or Windows Server
+# Optimize storage with ReFS deduplication and compression in Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, version 23H2 (preview), Windows Server 2025
 
-This article provides an overview of the Resilient File System (ReFS) deduplication and compression feature and describes how to use it on volumes in Azure Stack HCI or Windows Server clusters.
+This article describes the Resilient File System (ReFS) deduplication and compression feature and how to use it in Azure Stack HCI and Windows Server clusters to optimize storage.
 
 ## What is ReFS deduplication and compression?
 
@@ -61,9 +61,9 @@ Follow these steps to enable ReFS deduplication and compression via Windows Admi
 
     The following screenshot shows that ReFS deduplication and compression will run on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the **Start** date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
 
-   :::image type="content" source="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png" alt-text="Screenshot that displays the settings to use the ReFS deduplication and compression feature." lightbox=""media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png":::
+   :::image type="content" source="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png" alt-text="Screenshot that displays the settings for the ReFS deduplication and compression feature." lightbox=""media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png":::
 
-1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. These savings are updated after each run, and you can observe the performance impact in the charts below.
+1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. These savings are updated after each run, and you can observe the performance impact in the charts under the **Performance** section.
 
     :::image type="content" source="media/refs-deduplication-compression/volume-properties.png" alt-text="Screenshot of the properties section of a volume showing the savings breakdown and next scheduled run time." lightbox=""media/refs-deduplication-compression/volume-properties.png":::
 
@@ -81,15 +81,15 @@ Follow these steps to turn on ReFS deduplication and compression via PowerShell:
 
     where:
     `-Type` is a required parameter and can take one of the following values:
-    - Dedup: Enables deduplication only.
-    - DedupAndCompress: Enables both deduplication and compression. This is the default option.
-    - Compress: Enables compression only.
+    - **Dedup**: Enables deduplication only.
+    - **DedupAndCompress**: Enables both deduplication and compression. This is the default option.
+    - **Compress**: Enables compression only.
 
     > [!NOTE]
     > - All commands to modify settings on a given volume must run on the owner node.
     > - To change the `Type` parameter, you must [disable the ReFS deduplication and compression](#turn-off-refs-deduplication-and-compression) feature and then enable it again with the new `Type` parameter.
 
-1. After enabling ReFS deduplication and compression, verify its status on the CSV. Run the following cmdlet and ensure the `Enabled` field in the output dsplays `True`.
+1. After enabling ReFS deduplication and compression, verify its status on the CSV. Run the following cmdlet and ensure the `Enabled` field in the output dsplays as `True`.
 
     ```powershell
     Get-ReFSDedupStatus -Volume <path> | FL
@@ -277,7 +277,7 @@ Disable-ReFSDedup -Volume <path>
 
 This section answers frequently asked questions about ReFS deduplication and compression.
 
-## Is the ReFS deduplication and compression feature different from Windows Data Deduplication?
+### Is the ReFS deduplication and compression feature different from Windows Data Deduplication?
 
 Yes, this feature is entirely different from the [Windows Data Deduplication](/windows-server/storage/data-deduplication/overview) feature.
 
