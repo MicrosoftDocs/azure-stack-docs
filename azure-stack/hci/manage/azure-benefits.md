@@ -75,6 +75,9 @@ Before you begin, you'll need the following prerequisites:
 
 You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, PowerShell, Azure CLI, or Azure portal. The following sections describe each option.
 
+> [!NOTE]
+> To successfully enable Azure Benefits on Gen1 VMs, the VM must first be powered off to allow for the NIC to be added.
+
 ## Manage Azure Benefits
 
 ## [Windows Admin Center](#tab/wac)
