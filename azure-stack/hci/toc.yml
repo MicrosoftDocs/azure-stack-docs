@@ -464,8 +464,6 @@
             items:
             - name: Review prerequisites
               href: manage/azure-arc-vm-management-prerequisites.md
-            - name: Set up using command line
-              href: manage/deploy-arc-resource-bridge-using-command-line.md
           - name: Manage Arc VM resources
             items:
             - name: Create VM images
@@ -484,8 +482,6 @@
             href: manage/manage-virtual-machines-in-azure-portal.md
           - name: Manage VM extensions
             href: manage/virtual-machine-manage-extension.md
-          - name: Uninstall Azure Arc VM management
-            href: manage/uninstall-arc-resource-bridge.md
           - name: Troubleshoot
             href: manage/troubleshoot-arc-enabled-vms.md
           - name: FAQs
