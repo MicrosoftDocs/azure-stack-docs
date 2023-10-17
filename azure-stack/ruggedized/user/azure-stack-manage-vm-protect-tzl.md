@@ -46,7 +46,7 @@ The most common protection scheme for VM-based apps is to use backup software. B
 
 ### Planning your backup strategy
 
-Planning your backup strategy and defining scale requirements starts with quantifying the number of VM instances that need to be protected. Backing up all VMs in the system may not be the most effective way to protect application. With Azure Stack Hub, VMs in a scale-set or availability set should not be backed up at the VM level. These VMs are considered ephemeral since the set of VMs can be scaled-in or out. Ideally any data that needs to be persisted is in a separate repository such as a database or object store. If the applications deployed in a scale-out architecture contains data that must be persisted and protected, then that will require application level backup using native capabilities provided by the application or by relying on an agent.
+Planning your backup strategy and defining scale requirements starts with quantifying the number of VM instances that need to be protected. Backing up all VMs in the system might not be the most effective way to protect application. With Azure Stack Hub, VMs in a scale-set or availability set should not be backed up at the VM level. These VMs are considered ephemeral since the set of VMs can be scaled-in or out. Ideally any data that needs to be persisted is in a separate repository such as a database or object store. If the applications deployed in a scale-out architecture contain data that must be persisted and protected, then that will require application level backup using native capabilities provided by the application or by relying on an agent.
 
 Important considerations for backing up VMs on Azure Stack:
 
@@ -58,7 +58,7 @@ Important considerations for backing up VMs on Azure Stack:
   - Evaluate backup products that can efficiently capture and transmit backup data to minimize resource content on the solution.
   - Evaluate backup products that efficiently store backup data using incremental or differential backups to minimize the need for full backups across all VMs in the environment.
 - **Restore**
-  - Backup products can restore virtual disks, app data within an existing VM, or the entire VM resource and associated virtual disks. The restore scheme you need depends on how you plan to restore the app. For example, it may be easier to redeploy SQL server from a template and then restore the databases instead of restoring the entire VM or set of VMs.
+  - Backup products can restore virtual disks, app data within an existing VM, or the entire VM resource and associated virtual disks. The restore scheme you need depends on how you plan to restore the app. For example, it might be easier to redeploy SQL server from a template and then restore the databases instead of restoring the entire VM or set of VMs.
 
 ### Replication/manual failover
 
@@ -70,7 +70,7 @@ Applications that natively support high availability or rely on cluster software
 
 ### No protection
 
-Some applications may not have data that needs to be persisted. For example, VMs used for development and testing typically don\'t need to be recovered. Another example is a stateless application that can be re-deployed from a CI/CD pipeline in the event of a failure. It is important to identify the applications that do not require protection to avoid unnecessarily protecting VMs.
+Some applications might not have data that needs to be persisted. For example, VMs used for development and testing typically don\'t need to be recovered. Another example is a stateless application that can be re-deployed from a CI/CD pipeline in the event of a failure. It is important to identify the applications that do not require protection to avoid unnecessarily protecting VMs.
 
 <!-- ## Recommended topologies
 
