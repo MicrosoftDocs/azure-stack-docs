@@ -4,7 +4,7 @@ description: Common issues and workarounds
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 07/12/2023
+ms.date: 10/17/2023
 ms.custom: template-concept
 ms.reviewer: fcabrera
 ---
@@ -19,7 +19,7 @@ See the [Get support](/azure/aks/hybrid/help-support?tabs=aksee) article for inf
 
 ## Deployment issues
 
-1. Untrusted publisher issue:
+### Untrusted publisher issue
 
 Error: you see the message "Do you want to run software from this untrusted publisher? ....."
 
@@ -32,17 +32,17 @@ Get-ExecutionPolicy
 if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force }
 ```
 
-2. Low disk space causes precached container images to be deleted:
+### Low disk space causes pre-cached container images to be deleted
 
-When the node runs out of disk space, some of the preloaded images are garbage collected by the `containerd` runtime. In this case, you'll first have to free up some disk space and then run the following command to pull the cached images again.
+When the node runs out of disk space, some of the preloaded images are garbage collected by the `containerd` runtime. In this case, first free up some disk space, and then run the following command to pull the cached images again:
 
 ```powershell
     Invoke-AksEdgeNodeCommand -NodeType Linux -command "sudo /path/to/script/reimport-ci.sh
 ```
 
-This script checks for the missing images and reimports them as needed.
+This script checks for the missing images and re-imports them as needed.
 
-## Azure Arc connectivity
+### Azure Arc connectivity
 
 1. Issues with `Disconnect-AksEdgeArc`:
     Issue: `Disconnect-AksEdgeArc` doesn't remove the pods from the cluster.
@@ -59,4 +59,8 @@ This script checks for the missing images and reimports them as needed.
     Issue: Azure Arc connectivity doesn't work in a proxy environment.
     Workaround: You can enable system-wide proxy settings by following **Internet options > Connections > LAN Settings**.
 
-    ![Screenshot showing internet options.](./media/aks-edge/aks-edge-azure-arc-proxy.png)
+    :::image type="content" source="media/aks-edge/aks-edge-azure-arc-proxy.png" alt-text="Screenshot showing internet options." lightbox="media/aks-edge/aks-edge-azure-arc-proxy.png":::
+
+## Next steps
+
+[AKS Edge Essentials overview](aks-edge-overview.md)
