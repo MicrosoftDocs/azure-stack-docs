@@ -25,9 +25,23 @@ This article describes how to configure network security group (NSG) rules to se
 
 ## Configure network security group rules
 
-The following NSG rules are configured based on an AMLFS cluster deployment in East US region, with Blob Storage integration enabled. You might need to adjust the rules based on your deployment region and other configuration settings for the AMLFS cluster.
+To configure network security group rules for Azure Managed Lustre file system support, add the following inbound and outbound security rules to the NSG that's associated with the subnet where you deployed your AMLFS cluster.
 
-To configure network security group rules for Azure Managed Lustre file system support, add the following inbound rules to the NSG:
+> [!NOTE]
+> The security rules shown in this section are configured based on an AMLFS cluster deployment in East US region, with Blob Storage integration enabled. You might need to adjust the rules based on your deployment region and other configuration settings for the AMLFS cluster.
+
+### Create inbound security rules
+
+You can create inbound security rules in the Azure portal. The following example shows how to create and configure a new inbound security rule:
+
+1. In the Azure portal, open the NSG resource you created in the previous step.
+1. Select **Inbound security rules** under **Settings**.
+1. Select **+ Add**.
+1. In the **Add inbound security rule** pane, configure the settings for the rule. The following example shows how to configure a rule to allow inbound traffic from the AMLFS cluster subnet to the Lustre client subnet. The rule allows only source TCP ports 1020-1023 and destination port 988.
+
+    ![Inbound security rule](media/amlfs-configure-nsg-zero-trust/inbound-rule.png)
+
+Add the following inbound rules to the NSG:
 
 | Priority | Name | Port | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
