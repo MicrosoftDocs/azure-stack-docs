@@ -296,7 +296,7 @@ $sp = New-AzADServicePrincipal -role "Owner" -scope /subscriptions/$subscription
 Retrieve the password for the service principal by running the following command. Note that the below command only works for Az.Accounts 2.6.0 or lesser. We automatically download Az.Accounts 2.6.0 module when you install the AksHci PowerShell module.
 
 ```powershell
-$secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret))
+$secret = $sp.PasswordCredentials[0].SecretText
 Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```   
