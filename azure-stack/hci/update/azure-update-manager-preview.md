@@ -16,9 +16,7 @@ ms.date: 10/16/2023
 This article describes how to use Azure Update Manager (preview) to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
 
 > [!IMPORTANT]
-> Version 23H2 2309 preview is the latest preview build available for Azure Stack HCI. There are no future preview builds to upgrade to. Instead, we’ve released an empty update package to the Canary update ring which can be installed on top of 2309. This update package doesn’t include any update but will change your cluster version to a higher build number.
->
-> We recommend testing the update experience with the empty update package and appreciate any feedback. In future preview releases, we’ll release them as an update package so that you can do build-to-build updates with Azure Update Manager (preview).
+> Version 23H2 2310 doesn't include an update package that can be installed. In version 23H2 2311, you'll be able to use the update experience to update your clusters to 2310.
 
 ## About Azure Update Manager (preview)
 
