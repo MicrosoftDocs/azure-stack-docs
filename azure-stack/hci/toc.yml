@@ -147,6 +147,44 @@
       href: manage/windows-server-azure-edition.md
     - name: Upgrade VMs to Windows Server Azure Edition
       href: manage/upgrade-vm-windows-server-azure-edition.md
+  - name: Manage Azure Arc VMs
+    items:
+    - name: What is Azure Arc VM management?
+      href: manage/azure-arc-vm-management-overview.md
+    - name: Azure Arc VM management networking
+      href: manage/azure-arc-vm-management-networking.md
+    - name: Set up Arc VM management
+      items:
+      - name: Review prerequisites
+        href: manage/azure-arc-vm-management-prerequisites.md
+      - name: Set up using command line
+        href: manage/deploy-arc-resource-bridge-using-command-line.md
+    - name: Manage Arc VM resources
+      items:
+      - name: Create a storage path
+        href: manage/create-storage-path.md
+      - name: Create VM images
+        items:
+        - name: Using Azure Marketplace images
+          href: manage/virtual-machine-image-azure-marketplace.md
+        - name: Using images in Azure Storage account
+          href: manage/virtual-machine-image-storage-account.md
+        - name: Using images in local share 
+          href: manage/virtual-machine-image-local-share.md
+        - name: Using sysprepped Ubuntu image
+          href: manage/virtual-machine-image-linux-sysprep.md
+      - name: Create virtual networks
+        href: manage/create-virtual-networks.md
+    - name: Deploy Arc VMs
+      href: manage/manage-virtual-machines-in-azure-portal.md
+    - name: Manage VM extensions
+      href: manage/virtual-machine-manage-extension.md
+    - name: Uninstall Azure Arc VM management
+      href: manage/uninstall-arc-resource-bridge.md
+    - name: Troubleshoot
+      href: manage/troubleshoot-arc-enabled-vms.md
+    - name: FAQs
+      href: manage/azure-arc-vms-faq.yml
   - name: Manage storage
     items:
     - name: Create volumes
