@@ -81,12 +81,6 @@ Solution updates managed by the Lifecycle Manager contain new versions of the Az
 
   - If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the Lifecycle Manager orchestrates the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
 
-- Azure Arc Extensions:
-
-- Azure Resource Bridge:
-
-- Azure Kubernetes Infrastructure:
-
 The Lifecycle Manager is the recommended way to update your Azure Stack HCI cluster.
 
 > [!NOTE]
@@ -105,7 +99,7 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 ### The Azure portal
 
-<!--Add content to tie in new Azure Update Manager article-->
+You can install available Azure Stack HCI cluster updates via the Azure portal using the Azure Update Manager. For more information, see [What's the Azure Update Manager (preview)?](azure-update-manager-preview.md)
 
 ## Next step
 
