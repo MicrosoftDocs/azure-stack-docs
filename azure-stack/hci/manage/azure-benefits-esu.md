@@ -66,6 +66,14 @@ Update, Windows Server Update Services (WSUS), Microsoft Update Catalog, or othe
 
 ## FAQ
 
+### What ESU products does this cover?
+
+ESU covers Windows Server, Windows client, and SQL Server products under the ESU program. For more information, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates).
+
+### Does this cover ESUs for Windows Server 2012?
+
+Yes it does.
+
 ### Does my VM need to be connected to get ESUs?
 
 No, you do not need internet connectivity to install ESUs, unless you are using an update method that requires internet connectivity to download ESU packages. Only the Azure Stack HCI host needs to maintain 30-day internet connectivity for Azure Benefits to remain active.
