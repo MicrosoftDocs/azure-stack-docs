@@ -44,7 +44,7 @@ The optimization process comprises the following phases that occur sequentially 
 
 ## Turn on ReFS deduplication and compression
 
-You can turn on ReFS deduplication and compression using Windows Admin Center or PowerShell. For a one-time manual run with no file change tracking, you can also use [`ReFSUtil`](/windows-server/administration/windows-commands/refsutil). However, once activated via Windows Admin Center or PowerShell, you cannot use `ReFSUtil` for this feature.
+You can turn on ReFS deduplication and compression using Windows Admin Center or PowerShell. For a one-time manual run with no file change tracking, you can also use [`ReFSUtil`](/windows-server/administration/windows-commands/refsutil). However, once you activate this feature via Windows Admin Center or PowerShell, you cannot use `ReFSUtil`.
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
