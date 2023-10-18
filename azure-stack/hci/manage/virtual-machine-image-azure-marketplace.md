@@ -281,7 +281,7 @@ To update a VM image, use the following steps in Azure portal.
 
 ## Delete VM image
 
-You may want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
+You might want to delete a VM image if the download fails for some reason or if the image is no longer needed. Follow these steps to delete the VM images.
 
 ### [Azure CLI](#tab/azurecli)
 
