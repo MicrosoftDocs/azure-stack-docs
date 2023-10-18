@@ -31,7 +31,7 @@ The updates can be of the following types:
 
 The updates consist of several phases: discovering the update, staging the content, deploying the update, and reviewing the installation. Each phase might not require your input but distinct actions occur in each phase.
 
-You can apply these updates via PowerShell or the Azure portal. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you might need to perform during each phase of an update. It also shows what actions the Azure Stack HCI takes throughout the update operation.
+You can apply these updates via PowerShell or the Azure portal. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you might need to take during each phase and what actions Azure Stack HCI takes through the update operation.
 
 ![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](../media/updates/updates-phases-actions.png)
 
