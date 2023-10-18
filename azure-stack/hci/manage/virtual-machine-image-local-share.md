@@ -8,12 +8,12 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 07/14/2023
+ms.date: 10/18/2023
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from a local share on your cluster. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
@@ -27,12 +27,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 [!INCLUDE [hci-vm-image-prerequisites-local-share](../../includes/hci-vm-image-prerequisites-local-share.md)]
 
-- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
-
-    - Running PowerShell 5.0 or later.
-    - Running the latest version of `az` CLI.
-        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
-        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
+- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 # [Azure portal](#tab/azureportal)
 
@@ -50,38 +45,53 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Set some parameters
 
-Set your subscription, resource group, location, OS type for the image. Replace the parameters in `< >` with the appropriate values.
+1. Connect to a server on your Azure Stack HCI system. Run PowerShell as an administrator.
 
-```azurecli
-$Subscription = "<Subscription ID>"
-$Resource_Group = "<Resource group>"
-$Location = "<Location for your Azure Stack HCI cluster>"
-$ImageName = <VM image name>
-$ImageSourcePath = <path to the source image>
-$OsType = "<OS of source image>"
-```
 
-The parameters are described in the following table:
+1. Sign in. Type:
 
-| Parameter      | Description                                                                                |
-|----------------|--------------------------------------------------------------------------------------------|
-| `Subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `Resource_Group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
-| `ImageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `ImageSourcePath`| Path to the source gallery image (VHDX only) on your cluster. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
-| `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    ```azurecli
+    az login
+    ```
 
-Here's a sample output:
+1. Set your subscription.
 
-```
-PS C:\Users\azcli> $subscription = "<Subscription ID>"
-PS C:\Users\azcli> $resource_group = "mkclus90-rg"
-PS C:\Users\azcli> $location = "eastus2euap"
-PS C:\Users\azcli> $osType = "Windows"
-PS C:\ClusterStorage\Volume1> $ImageName = "winostest"
-PS C:\ClusterStorage\Volume1> $ImageSourcePath = "C:\ClusterStorage\Volume1\Windows_K8s_17763.2928.220505-1621_202205101158.vhdx"
-```
+    ```azurecli
+    az account set --subscription <Subscription ID>
+    ```
+
+1. Set your subscription, resource group, location, OS type for the image. Replace the parameters in `< >` with the appropriate values.
+
+    ```azurecli
+    $subscription = "<Subscription ID>"
+    $resource_group = "<Resource group>"
+    $location = "<Location for your Azure Stack HCI cluster>"
+    $imageName = <VM image name>
+    $imageSourcePath = <path to the source image>
+    $osType = "<OS of source image>"
+    ```
+
+    The parameters are described in the following table:
+    
+    | Parameter      | Description                                                                                |
+    |----------------|--------------------------------------------------------------------------------------------|
+    | `subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `resource_group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+    | `image-path`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
+    | `name`| Path to the source gallery image (VHDX only) on your cluster. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
+    | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
+    
+    Here's a sample output:
+    
+    ```
+    PS C:\Users\azcli> $subscription = "<Subscription ID>"
+    PS C:\Users\azcli> $resource_group = "myhci-rg"
+    PS C:\Users\azcli> $location = "eastus2euap"
+    PS C:\Users\azcli> $osType = "Windows"
+    PS C:\ClusterStorage\Volume1> $imageName = "winostest"
+    PS C:\ClusterStorage\Volume1> $imageSourcePath = "C:\ClusterStorage\Volume1\Windows_K8s_17763.2928.220505-1621_202205101158.vhdx"
+    ```
 
 ### Create VM image from image in local share
 
@@ -105,10 +115,10 @@ PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+    "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/cl04",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
   "location": "eastus2euap",
   "name": "mktplace8",
   "properties": {
@@ -121,7 +131,7 @@ Command group 'azurestackhci' is experimental and under development. Reference a
     "status": null,
     "version": null
   },
-  "resourceGroup": "mkclus90-rg",
+  "resourceGroup": "myhci-rg",
   "systemData": {
     "createdAt": "2022-08-05T20:52:38.579764+00:00",
     "createdBy": "guspinto@microsoft.com",
