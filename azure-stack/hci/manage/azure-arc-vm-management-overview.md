@@ -6,12 +6,12 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/12/2023
+ms.date: 10/18/2023
 ---
 
 # What is Azure Arc VM management? (preview)
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 Azure Arc VM management enables you to use the Azure portal to provision and manage Windows and Linux VMs hosted in an on-premises Azure Stack HCI environment. [Azure Arc](https://azure.microsoft.com/services/azure-arc/) enables IT administrators to delegate permissions and roles to app owners and DevOps teams to enable self-service VM management for their Azure Stack HCI clusters by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and ARM templates. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, you can automate VM provisioning in a secure cloud environment.
 
@@ -34,6 +34,8 @@ With Azure Arc VM management, you can perform various operations from the Azure 
 
 By using the Azure portal, you get the same consistent experience when provisioning and managing on-premises VMs or cloud VMs. You can access your VMs only, not the host fabric, enabling role-based access control and self-service.
 
+QUESTION Even if you delete this section, at a minimum, you must define what is ARB here as the key component of the underlying infra. At the end of the deployment, customers will see the ARB as well as custom location.
+
 ## What is Azure Arc Resource Bridge?
 
 A resource bridge is required to enable VM provisioning through the Azure portal on Azure Stack HCI. Azure Arc Resource Bridge is a Kubernetes-backed, lightweight VM that enables users to perform full lifecycle management of resources on Azure Stack HCI from the Azure control plane, including the Azure portal, Azure CLI, and Azure PowerShell. Azure Arc Resource Bridge also creates Azure Resource Manager entities for VM disks, VM images, VM interfaces, VM networks, custom locations, and VM cluster extensions.
@@ -50,17 +52,21 @@ A **cluster extension** is the on-premises equivalent of an Azure Resource Manag
 
 ## Azure Arc VM management deployment workflow
 
-To enable Azure Arc-based VM operations on your Azure Stack HCI cluster, you must:
+To enable Azure Arc-based VM operations on your Azure Stack HCI system, you must:
 
-1. Install Azure Arc Resource Bridge on the Azure Stack HCI cluster and create a VM cluster extension via command line.
-1. Create a custom location for the Azure Stack HCI cluster.
-1. Create virtual network projections which will be used by VM network interfaces.
-1. Create OS gallery images for provisioning VMs.
+1. Have access to an Azure Stack HCI system that is deployed and registered with Azure. During the deployment, an Arc Resource Bridge and a custom location are also created.
+1. Create VM resources such as:
+    1. Storage paths for VM disks.
+    1. VM images starting with an image in Azure Marketplace, in Azure Storage account, or in local share. These images are then used with other VM resources to create VMs.
+    1. Virtual networks.  
+    1. VM network interfaces.
+1. Use the VM resources to create VMs.
+
 
 ### Additional considerations
 
-- Only one Arc Resource Bridge can be deployed on a cluster.
-- Each Azure Stack HCI cluster can have only one custom location.
+- REMOVE? Only one Arc Resource Bridge can be deployed on a cluster.
+- REMOVE? Each Azure Stack HCI cluster can have only one custom location.
 - Multiple OS images can be added to the gallery.
 - Additional virtual networks and images can be added any time after the initial setup.
 
