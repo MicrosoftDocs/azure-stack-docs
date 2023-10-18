@@ -34,12 +34,12 @@ To configure network security group rules for Azure Managed Lustre file system s
 
 You can create inbound security rules in the Azure portal. The following example shows how to create and configure a new inbound security rule:
 
-1. In the Azure portal, open the NSG resource you created in the previous step.
+1. In the Azure portal, open the network security group resource you created in the previous step.
 1. Select **Inbound security rules** under **Settings**.
 1. Select **+ Add**.
-1. In the **Add inbound security rule** pane, configure the settings for the rule. The following example shows how to configure a rule to allow inbound traffic from the AMLFS cluster subnet to the Lustre client subnet. The rule allows only source TCP ports 1020-1023 and destination port 988.
+1. In the **Add inbound security rule** pane, configure the settings for the rule and select **Add**.
 
-    ![Inbound security rule](media/amlfs-configure-nsg-zero-trust/inbound-rule.png)
+:::image type="content" source="media/nsg-zero-trust/nsg-add-inbound-security-rule.png" alt-text="Screenshot showing how to create an inbound security rule for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-add-inbound-security-rule.png":::
 
 Add the following inbound rules to the NSG:
 
@@ -49,6 +49,21 @@ Add the following inbound rules to the NSG:
 | 111 | AllowLustre988Inbound | 988 | TCP | 10.0.3.0/24 | 10.0.2.0/24 | Allow | Permit communication between the Lustre client subnet and the AMLFS cluster subnet. Allows only source TCP ports 1020-1023 and destination port 988. |
 | 112 | AllowTagCustomAnyInbound | Any | TCP | AzureMonitor | VirtualNetwork | Allow | Permit inbound flows from the AzureMonitor service tag. Allow TCP source port 443 only. |
 | 120 | DenyAnyCustomAnyInbound | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
+
+The inbound security rules in the Azure portal should look similar to the following screenshot:
+
+:::image type="content" source="media/nsg-zero-trust/nsg-inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-inbound-security-rules.png":::
+
+### Create outbound security rules
+
+You can create outbound security rules in the Azure portal. The following example shows how to create and configure a new outbound security rule:
+
+1. In the Azure portal, open the network security group resource you created in an earlier step.
+1. Select **Outbound security rules** under **Settings**.
+1. Select **+ Add**.
+1. In the **Add outbound security rule** pane, configure the settings for the rule and select **Add**.
+
+:::image type="content" source="media/nsg-zero-trust/nsg-add-outbound-security-rule.png" alt-text="Screenshot showing how to create an outbound security rule for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-add-outbound-security-rule.png":::
 
 Add the following outbound rules to the NSG:
 
@@ -69,8 +84,8 @@ Add the following outbound rules to the NSG:
 | 1000 | DenyTagCustom8080Outbound | Any | Any | VirtualNetwork | Internet | Deny | Deny outbound flows to the internet. |
 | 1010 | DenyAnyCustomAnyOutbound | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
 
-The following screenshot shows the NSG rules in the Azure portal:
+The outbound security rules in the Azure portal should look similar to the following screenshot:
 
-
+:::image type="content" source="media/nsg-zero-trust/nsg-outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-outbound-security-rules.png":::
 
 ## Next steps
