@@ -13,7 +13,7 @@ ms.date: 10/11/2023
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
 
-> Applies to: Azure Stack HCI, version 23H2 
+[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
@@ -47,7 +47,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Set some parameters
 
-1. Run PowerShell as an administrator.
+1. Connect to a server on your Azure Stack HCI system. Run PowerShell as an administrator.
 
 
 1. Sign in. Type:
@@ -68,7 +68,7 @@ Follow these steps to create a VM image using the Azure CLI.
     $subscription = "<Subscription ID>"
     $resource_group = "<Resource group>"
     $location = "<Location for your Azure Stack HCI cluster>"
-    $ostype = "<OS of source image>"
+    $osType = "<OS of source image>"
     ```
     
     The parameters are described in the following table:
@@ -84,7 +84,7 @@ Follow these steps to create a VM image using the Azure CLI.
     
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
-    PS C:\Users\azcli> $resource_group = "mkclus90-rg"
+    PS C:\Users\azcli> $resource_group = "myhci-rg"
     PS C:\Users\azcli> $location = "eastus2euap"
     PS C:\Users\azcli> $ostype = "Windows"
     ```
@@ -120,14 +120,14 @@ Here's a sample output:
 ```
 PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "cl04" --query id -o tsv)
 PS C:\Users\azcli> $customLocationID
-/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04
+/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/cl04
 PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location lLocation --name "marketplacetest03" --os-type $ostype --offer "<Offer>" --publisher "<Publisher>" --sku "<SKU>" --version "<Version number>"
 {
  "extendedLocation": {
- "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+ "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/cl04",
  "type": "CustomLocation"
  },
- "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest03",
+ "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest03",
  "location": "eastus2euap",
  "name": "marketplacetest03",
  "properties": {
@@ -155,7 +155,7 @@ PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --r
       }
     }
   },
-  "resourceGroup": "mkclus90-rg",
+  "resourceGroup": "myhci-rg",
   "systemData": {
     "createdAt": "2022-08-01T22:29:11.074104+00:00",
     "createdBy": "guspinto@microsoft.com",
