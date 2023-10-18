@@ -99,7 +99,7 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 ### The Azure portal
 
-You can install available Azure Stack HCI cluster updates via the Azure portal using the Azure Update Manager. For more information, see [What's the Azure Update Manager (preview)?](azure-update-manager-preview.md)
+You can install available Azure Stack HCI cluster updates via the Azure portal using the Azure Update Manager. For more information, see [What's the Azure Update Manager (preview)?](azure-update-manager-placeholder.md)
 
 ## Next step
 
