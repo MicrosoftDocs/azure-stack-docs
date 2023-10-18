@@ -6,24 +6,24 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/12/2023
+ms.date: 10/18/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article lists the prerequisites for Azure Arc VM management. We recommend that you review the information carefully before you set up Azure Arc VM management. You can refer back to this information as necessary during the deployment and subsequent operation.
+This article lists the prerequisites for Azure Arc VM management. Review this information carefully as you deploy Arc VM workloads. You can refer back to this information as necessary during the deployment and subsequent operation.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Resource requirements
 
-To ensure the successful activation of Arc VM and the availability of sufficient resources for deploying Arc VMs, please make sure that:
+When you deploy your Azure Stack HCI system, infrastructure required for Arc VM management is also installed. To ensure that sufficient resources are available for you to deploy Arc VMs, make sure that there is:
 
-- A cluster shared volume with at least 1 TB of space. This is required to store configuration details and the OS image for your Arc Resource Bridge VM.
-- At least 4 vCPUs
-- At least 16 GB of memory
+- A cluster shared volume with at least 1 TB of space. This volume is required to store the configuration details and the operating system (OS) image for your Arc Resource Bridge VM.
+- At least 4 vCPUs.
+- At least 16 GB of memory.
 
 ## Azure requirements
 
@@ -43,34 +43,32 @@ The Azure requirements include:
 
 ## Azure Command-Line Interface (CLI) requirements
 
-You can connect to Azure Stack HCI cluster directly or you can access the cluster via a client. Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
+You can connect to Azure Stack HCI system directly or you can access the cluster via a client. Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
 
 ### Connect to the cluster directly
 
-If you are accessing the Azure Stack HCI, version 23H2 cluster directly, no steps are needed on your part.
+If you are accessing the Azure Stack HCI cluster directly, no steps are needed on your part.
 
 During the cluster deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the cluster. You can connect to and manage the cluster using the Azure CLI extension.
 
 
 ### Connect to the cluster via a client
 
-If you are accessing the Azure Stack HCI, version 23H2 via a client, following requirements must be met:
+If you are accessing the Azure Stack HCI system via a client, following requirements must be met:
  
 - The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you are using to connect to your Azure Stack HCI cluster.
 
-  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
+  - For installation instructions, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
   
     - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- The Azure Stack HCI extension `stack-hci-vm`. Run the following command in an elevated PowerShell window on your client:
+- The Azure Stack HCI extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command :
 
   ```PowerShell
   az extension add --name "stack-hci-vm"
   ```
-
-
 
 ## Networking requirements
 
@@ -89,6 +87,8 @@ For more information, see the [networking concepts related to Arc VM management]
 
 When you deploy Arc Resource Bridge on Azure Stack HCI, the following firewall ports are automatically opened on each server in the cluster.
 
+QUESTION Should this be added to the deployment requirements? The customer will need to ensure this before they start the deployment. Or at least link out to these additional requirements from the deployment article.
+
 | **Port** | **Service** |
 |:---------|:------------|
 | 45000    | wssdagent gRPC server |
@@ -97,6 +97,8 @@ When you deploy Arc Resource Bridge on Azure Stack HCI, the following firewall p
 | 65000    | wssdcloudagent gRPC authentication |
 
 ## Firewall URL requirements
+
+QUESTION Same question as ports.
 
 Make sure to include the following firewall URLs in your allowlist:
 
@@ -124,6 +126,9 @@ Make sure to include the following firewall URLs in your allowlist:
 | linuxgeneva-microsoft.azurecr.io | 443 | Log collection for Arc Resource Bridge | Required to push logs for Appliance managed components |
 | hybridaksstorage.z13.web.core.windows.net | 443 | Download AZ Extensions | Required to download the AZ CLI Extension azurestackhci |
 
+
+QUESTION I am assuming proxy setup will now be prior to deployment?
+<!-- delete this article, 
 ## Network proxy requirements for setting up Arc VM management
 
 When setting up Arc VM management, if your network requires the use of a proxy server to connect to the internet, this section describes how to create the configuration files with proxy settings. Running these steps alone will not set up Arc VM management. 
@@ -180,10 +185,17 @@ In a PowerShell window of the host computer, run the following command as an adm
 New-ArcHciConfigFiles -subscriptionID $subscription -location $location -resourceGroup $resource_group -resourceName $resource_name -workDirectory $csv_path\ResourceBridge -controlPlaneIP $controlPlaneIP -vipPoolStart $controlPlaneIP -vipPoolEnd $controlPlaneIP -k8snodeippoolstart $VMIP_1 -k8snodeippoolend $VMIP_2 -gateway $Gateway -dnsservers $DNSServers -ipaddressprefix $IPAddressPrefix -vswitchName $vswitchName -vLanID $vlanID -proxyServerHTTP http://proxy.corp.contoso.com:8080 -proxyServerHTTPS https://proxy.corp.contoso.com:8443 -proxyServerNoProxy "localhost,127.0.0.1,.svc,172.16.0.0/12,192.168.0.0/16,corp.contoso.com" -certificateFilePath <file_path_to_cert_file> 
 ```
 
+
 ### Continue setting up Arc VM management
 
 After proxy settings have been applied, continue with step 1.b. to [Set up Arc VM management](deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management).
 
+-->
+
 ## Next steps
 
-- [Set up Azure Arc VM management using command line](deploy-arc-resource-bridge-using-command-line.md).
+- [Create a storage path](./create-storage-path.md).
+- Create a VM image using one of the following methods:
+    - [Using the image in Azure Marketplace](./virtual-machine-image-azure-marketplace.md).
+    - [Using an image in Azure Storage account](./virtual-machine-image-storage-account.md).
+    - [Using an image in local file share](./virtual-machine-image-local-share.md).
