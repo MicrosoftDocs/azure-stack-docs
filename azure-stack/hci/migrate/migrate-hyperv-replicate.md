@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/16/2023
+ms.date: 10/18/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -90,6 +90,8 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 This step applies only if you downloaded the .VHD file. Create a VM with the following configuration using the VHD you downloaded, then start and sign into the VM.
 
+Verify that the VM is configured with the following settings:
+
 - Standalone type (non-High Availability type).
 - 16 GB memory.
 - 8 vCPU.
@@ -101,13 +103,13 @@ This step applies only if you downloaded the .VHD file. Create a VM with the fol
 
 This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the target appliance.
 
-1. Using **Hyper-V Manager**, create a `Standalone` (non-High Availability type) VM on the target Azure Stack HCI cluster with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors running Windows Server 2022.
+1. Using **Hyper-V Manager**, create a `Standalone` (non-High Availability type) VM on the target Azure Stack HCI server running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors.
 
 1. In  **Hyper-V Manager**, select the host.
 
 1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled. For more information, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
 
-1. Sign into the VM with administrative credentials.
+1. Sign into the VM as an administrator.
 
 1. Copy and paste the downloaded .zip file to the VM virtual disk that you created and extract it as needed.
 
@@ -188,8 +190,8 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     1. Select the resource group that you want these VMs to be associated with.
 
-	1. Select the virtual network that you [created previously])(migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see any virtual networks, [create one out of band](../index.yml) and select **Reload virtual switch**.
-	1. Select the storage path where these VMs will be created. If you don't see any storage path, [create one out of band](../index.yml) and select **Reload virtual switch**.
+	1. Select the virtual network that you [created previously])(migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see a virtual network in the dropdown list, [create a virtual network](../index.yml) and select **Reload virtual switch**.
+	1. Select the storage path where these VMs will be created. If you don't see a storage path in the dropdown list, [create a storage path](../index.yml) and select **Reload virtual switch**.
     1. When finished, select **Next**.
     
         :::image type="content" source="./media/replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate-4-target-2.png":::
