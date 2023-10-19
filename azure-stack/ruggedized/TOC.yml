@@ -822,7 +822,7 @@
           items:
           - name: VNet-to-vnet connectivity with FortiGate
             href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-          - name: Setup VPN to on-prem
+          - name: Setup VPN to on-premises
             href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: VNet to VNet connectivity between Azure Stack Hub instances
             href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
