@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: how-to
 ms.reviewer: kimlam
 ms.lastreviewed: 01/17/2023
-ms.date: 01/17/2023
+ms.date: 09/29/2023
 ---
 
 # Deploy Azure Stack HCI on a single server
@@ -27,31 +27,40 @@ Currently you can't use Windows Admin Center to deploy Azure Stack HCI on a sing
 
 Here are the steps to install the Azure Stack HCI OS on a single server, create the single-node cluster, register the cluster with Azure, and create volumes.
 
+1. Connect to the server by opening a PowerShell session:
+
+    ```powershell
+    Enter-PSSession -ComputerName <server-name>
+    ```
+
 1. Install the Azure Stack HCI OS on your server. For more information, see [Deploy the Azure Stack HCI OS](../deploy/operating-system.md#manual-deployment) onto your server.
-2. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
-3. Install the required roles and features using the following command, then reboot before continuing.
+1. Configure the server utilizing the [Server Configuration Tool](/windows-server/administration/server-core/server-core-sconfig) (SConfig).
+1. Install the required roles and features using the following command, then reboot before continuing.
 
    ```powershell
-   Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" -IncludeAllSubFeature -IncludeManagementTools
+   Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica", "NetworkHUD" -IncludeAllSubFeature -IncludeManagementTools
    ```
 
-4. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
+1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
 
    Here's an example of creating the cluster and then enabling Storage Spaces Direct while disabling the storage cache:
 
    ```powershell
-   New-Cluster -Name <cluster-name> -Node <node-name> -NOSTORAGE
+   $ClusterName= "<Name to use when accessing this system - 15 characters or less>"
+   $ServerName= "<Current name of the server>"
    ```
 
    ```powershell
-   Enable-ClusterStorageSpacesDirect -CacheState Disabled 
+   New-Cluster -Name $ClusterName -Node $ServerName -nostorage
+   Enable-ClusterStorageSpacesDirect -CacheState Disabled
    ```
 
-   > [!Note]
-   > The `New-Cluster` command will also require the `StaticAddress` parameter if the node is not using DHCP for its IP address assignment.  This parameter should be supplied with a new, available IP address on the node's subnet.
+   > [!NOTE]
+   > - The cluster name should not exceed 15 characters.
+   > - The `New-Cluster` command will also require the `StaticAddress` parameter if the node is not using DHCP for its IP address assignment.  This parameter should be supplied with a new, available IP address on the node's subnet.
 
-5. Use [PowerShell](../deploy/register-with-azure.md?tab=power-shell#register-a-cluster) or [Windows Admin Center](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) to register the cluster.
-6. [Create volumes](../manage/create-volumes.md).
+1. Use [PowerShell](../deploy/register-with-azure.md?tab=power-shell#register-a-cluster) or [Windows Admin Center](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) to register the cluster.
+1. [Create volumes](../manage/create-volumes.md).
 
 ## Updating single-node clusters
 
