@@ -1,20 +1,20 @@
 ---
 title: 'Quickstart: Create an Azure Lustre file system using Terraform'
 description: In this quickstart, you create an Azure Lustre file system using Terraform.
-services: lustre
-author: pauljewell
-ms.service: lustre
+services: azure-stack
+author: pauljewellmsft
+ms.service: azure-stack
 ms.topic: quickstart
 ms.custom: devx-track-terraform
 ms.date: 10/18/2023
-ms.author: pauljewellmsft
+ms.author: pauljewell
 content_well_notification: 
   - AI-contribution
 ---
 
 # Quickstart: Create an Azure Lustre file system using Terraform
 
-In this quickstart, you use Terraform to create an [Azure Lustre](/azure/azure-managed-lustre/amlfs-overview) file system.
+In this quickstart, you use Terraform to create an [Azure Lustre](amlfs-overview.md) file system.
 
 [!INCLUDE [About Terraform](~/azure-dev-docs-pr/articles/terraform/includes/abstract.md)]
 
@@ -126,4 +126,4 @@ In this article, you learn how to:
 Next, you can monitor the Azure Firewall logs.
 
 > [!div class="nextstepaction"]
-> [Tutorial: Monitor Azure Firewall logs](./firewall-diagnostics.md)
+> [Learn about Azure Lustre](amlfs-overview.md)
