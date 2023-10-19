@@ -43,11 +43,11 @@ In this article, you learn how to:
 
 1. Create a file named `providers.tf` and insert the following code:
 
-    :::code language="Terraform" source="~/terraform_samples/quickstart/101-managed-lustre-create-filesystem/providers.tf":::
+    :::code language="Terraform" source="../../terraform_samples/quickstart/101-managed-lustre-create-filesystem/providers.tf":::
 
 1. Create a file named `main.tf` and insert the following code:
 
-    :::code language="Terraform" source="~/terraform_samples/quickstart/101-managed-lustre-create-filesystem/main.tf":::
+    :::code language="Terraform" source="../terraform_samples/quickstart/101-managed-lustre-create-filesystem/main.tf":::
 
 1. Create a file named `variables.tf` and insert the following code:
 
