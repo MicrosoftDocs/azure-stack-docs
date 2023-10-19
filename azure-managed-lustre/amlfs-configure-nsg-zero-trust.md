@@ -11,9 +11,9 @@ ms.reviewer: mayabishop
 
 # Configure a network security group for Azure Managed Lustre file systems in a zero-trust environment
 
-This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system (AMLFS) cluster in a zero-trust environment. You can use a network security group to filter inbound and outbound network traffic to and from Azure resources in an Azure virtual network.
+Network security groups can be configured to filter inbound and outbound network traffic to and from Azure resources in an Azure virtual network. A network security group can contain security rules that filter network traffic by IP address, port, and protocol. When a network security group is associated with a subnet, security rules are applied to resources deployed in that subnet.
 
-Network security groups contain security rules that filter network traffic by IP address, port, and protocol. When a network security group is associated with a subnet, security rules are applied to resources deployed in that subnet.
+This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system (AMLFS) cluster in a zero-trust environment.
 
 ## Prerequisites
 
@@ -62,10 +62,10 @@ Once the network security group is created, you can associate it to the unique s
 
 ## Configure network security group rules
 
-To configure network security group rules for Azure Managed Lustre file system support, you can add inbound and outbound security rules to the NSG that's associated with the subnet where you deployed your AMLFS cluster. The following sections describe how to create and configure the inbound and outbound security rules that allow AMLFS cluster support in a zero-trust environment.
+To configure network security group rules for Azure Managed Lustre file system support, you can add inbound and outbound security rules to the network security group that's associated to the subnet where your Azure Managed Lustre file system is deployed. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support in a zero-trust environment.
 
 > [!NOTE]
-> The security rules shown in this section are configured based on an AMLFS cluster deployment in East US region, with Blob Storage integration enabled. You might need to adjust the rules based on your deployment region and other configuration settings for the AMLFS cluster.
+> The security rules shown in this section are configured based on an Azure Managed Lustre file system deployment in East US region, with Blob Storage integration enabled. You might need to adjust the rules based on your deployment region and other configuration settings for the Azure Managed Lustre file system.
 
 ### Create inbound security rules
 
@@ -126,3 +126,13 @@ The outbound security rules in the Azure portal should look similar to the follo
 :::image type="content" source="media/nsg-zero-trust/nsg-outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-outbound-security-rules.png":::
 
 ## Next steps
+
+To learn more about Azure Managed Lustre, see the following articles:
+
+- [What is Azure Managed Lustre?](amlfs-overview.md)
+- [Create an Azure Managed Lustre file system](create-file-system-portal.md)
+
+To learn more about Azure network security groups, see the following articles:
+
+- [Overview of network security groups](/azure/virtual-network/network-security-groups-overview)
+- [How network security groups filter network traffic](/azure/virtual-network/network-security-group-how-it-works)
