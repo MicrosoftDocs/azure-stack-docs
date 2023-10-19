@@ -178,7 +178,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
     :::image type="content" source="./media/replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/replicate/replicate-1-basics.png":::
     
 
-1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green check. Select **Next**.
+1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark. Select **Next**.
 
     :::image type="content" source="./media/replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/replicate/replicate-2-target.png":::
 
