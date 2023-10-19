@@ -142,7 +142,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     :::image type="content" source="./media/replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/replicate/enter-code-2.png":::
 
-1. After the appliance is registered, scroll down and select **Add cluster information**.
+1. After the appliance is registered, under **Provide Azure Stack HCI cluster information**, select **Add cluster information**.
 
     :::image type="content" source="./media/replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/replicate/add-cluster-info.png":::
 
