@@ -82,7 +82,7 @@ After Windows Admin Center is registered with Azure, you're ready to [register A
 ## Grant consent to a new Azure application ID
 
 > [!NOTE]
-> This procedure applies only if you an Azure AD admin.
+> This procedure applies only if you are an Azure AD admin.
 
 If you're an Azure AD admin, follow these steps to grant consent to a new Azure application ID:
 
