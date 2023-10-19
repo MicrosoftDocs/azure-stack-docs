@@ -1,21 +1,21 @@
 ---
 title: Configure multiple NICs for AKS Edge Essentials
-description: Configuration for attaching multiple network interfaces to AKS Edge Essentials Linux virtual machine.
-author: fcabrera
+description: Learn how to attach multiple network interfaces to an AKS Edge Essentials Linux virtual machine.
+author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 10/12/2023
 ms.custom: template-how-to
 ---
 
 # AKS Edge Essentials multiple NIC configurations
 
-By default, the AKS Edge Essentials Linux node has a single network interface card (NIC) assigned. However, you can configure the Linux node with multiple network interfaces during the deployment of your node. This functionality may be helpful in numerous scenarios where you may have a networking division or separation into different networks or zones. In order to connect the AKS Edge Essentials Linux node to the different networks, you must attach different network interface cards to the Linux node. 
+By default, the AKS Edge Essentials Linux node has a single network interface card (NIC) assigned. However, you can configure the Linux node with multiple network interfaces during the deployment of your node. This functionality can be helpful in numerous scenarios where you might have a networking division or separation into different networks or zones. In order to connect an AKS Edge Essentials Linux node to the different networks, you must attach different network interface cards to the Linux node.
 
-This article describes how to configure the AKS Edge Essentials Linux node to support multiple NICs and connect to multiple networks. This process is divided into the following steps:
+This article describes how to configure the AKS Edge Essentials Linux node to support multiple NICs and connect to multiple networks. The following steps summarize this process:
 
 1. Create an AKS Edge Essentials deployment with a secondary NIC.
-1. Verify multiple NIC network configuration. 
+1. Verify multiple NIC network configuration settings.
 1. Configure [Multus CNI plugin](https://cloud.redhat.com/blog/demystifying-multus).
 1. Configure Multus secondary network with sample pod.
 1. Verify pod attached networks.
@@ -23,11 +23,11 @@ This article describes how to configure the AKS Edge Essentials Linux node to su
 For more information about networking concepts and Multus configurations, see [AKS Edge Essentials networking](aks-edge-concept-networking.md) and [Multus - Quickstart guide](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md).
 
 > [!NOTE]
-> AKS Edge Essentials support for multiple NICs is limited to Linux nodes. If you need support for Windows nodes, please file an issue/feature request in the [AKS Edge Essentials GitHub repo](https://github.com/Azure/AKS-Edge/issues).
+> AKS Edge Essentials support for multiple NICs is limited to Linux nodes. If you need support for Windows nodes, you can file an issue/feature request in the [AKS Edge Essentials GitHub repo](https://github.com/Azure/AKS-Edge/issues).
 
 ## Create an AKS Edge Essentials deployment with a secondary NIC
 
-To deploy a Linux node with multiple NICs, you must add your secondary interface cards in your deployment JSON file. Modify your deployment JSON file, and as part of the `LinuxNode.SecondaryNetworks` section, ensure that you specify a secondary network to be added to the Linux node. You can specify an array of `VMSwitchName` with optional static IP information (`Ip4Address`,`Ip4GatewayAddress` and `Ip4PrefixLength`).
+To deploy a Linux node with multiple NICs, you must add your secondary interface cards in your deployment JSON file. Modify your deployment JSON file, and as part of the `LinuxNode.SecondaryNetworks` section, ensure that you specify a secondary network to be added to the Linux node. You can specify an array of `VMSwitchName` with optional static IP information (`Ip4Address`,`Ip4GatewayAddress` and `Ip4PrefixLength`):
 
 1. Follow the steps in [Set up your machine](aks-edge-howto-setup-machine.md).
 
@@ -37,10 +37,10 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
     | Parameter | Accepted values | Comments |
     | --------- | --------------- | -------- |
-    | VMSwitchName | Name of the virtual switch. | Name of the virtual switch assigned to the Linux node. |  
-    | Ip4Address | IPv4 address in the range of the DCHP server scope. | Static Ipv4 address of the Linux node. |
-    | Ip4GatewayAddress | IPv4 address of the subnet gateway. | Gateway Ipv4 address, only valid when static Ipv4 address is specified. |
-    | Ip4PrefixLength | IPv4 prefix length of the subnet. | Ipv4 subnet prefix length, only valid when static Ipv4 address is specified. |
+    | `VMSwitchName` | Name of the virtual switch. | Name of the virtual switch assigned to the Linux node. |  
+    | `Ip4Address`| IPv4 address in the range of the DCHP server scope. | Static Ipv4 address of the Linux node. |
+    | `Ip4GatewayAddress`| IPv4 address of the subnet gateway. | Gateway Ipv4 address, only valid when static Ipv4 address is specified. |
+    | `Ip4PrefixLength` | IPv4 prefix length of the subnet. | Ipv4 subnet prefix length, only valid when static Ipv4 address is specified. |
 
     ```json
     {
@@ -61,9 +61,9 @@ To deploy a Linux node with multiple NICs, you must add your secondary interface
 
 1. Deploy your AKS Edge Essentials node following the steps in [Create a single machine deployment](aks-edge-howto-single-node-deployment.md), or [Create a full deployment](aks-edge-howto-multi-node-deployment.md).
 
-## Verify multiple NIC network configuration
+## Verify multiple NIC network configuration settings
 
-After successfully installing and deploying the AKS Edge Essentials node, follow these steps to make sure both primary, and secondary interfaces were created and added to the Linux node.
+After successfully installing and deploying the AKS Edge Essentials node, follow these steps to make sure both primary, and secondary interfaces were created and added to the Linux node:
 
 1. Check the primary interface:
 
@@ -71,7 +71,7 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
     sudo ip addr eth0
     ```
 
-1. Check the secondary network interface. If you added more than one extra interface, it shows up as `ethX` with X being the number extra network interface.
+1. Check the secondary network interface. If you added more than one extra interface, it appears as **ethX** with **X** being the number of extra network interfaces:
 
     ```powershell
     sudo ip addr eth1
@@ -164,13 +164,13 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
 
 If everything is correctly installed, Kubernetes starts the Multus daemon set, which runs a pod on each node, and results in a Multus binary to be placed on each node in **/var/lib/rancher/k3s/data/[replace-with-your-hash]/bin**.
 
-The daemon set reads the first alphabetical configuration file in **/var/lib/rancher/k3s/agent/etc/cni/net.d**, and creates a new configuration file for Multus on each node as **/var/lib/rancher/k3s/agent/etc/cni/net.d/00-multus.conf**. This file is auto-generated and is based on the default network configuration. It also creates a **/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d** directory on each node with authentication information for Multus to access the Kubernetes API.
+The daemon set reads the first alphabetical configuration file in **/var/lib/rancher/k3s/agent/etc/cni/net.d**, and creates a new configuration file for Multus on each node as **/var/lib/rancher/k3s/agent/etc/cni/net.d/00-multus.conf**. This file is autogenerated and is based on the default network configuration. It also creates a **/var/lib/rancher/k3s/agent/etc/cni/net.d/multus.d** directory on each node with authentication information for Multus to access the Kubernetes API.
 
 ### Validate Multus installation
 
 The installation can check the following information:
 
-1. All files listed previously were generated by looking at the specified directory paths.
+1. All files listed previously were generated by looking at the specified directory paths:
 
     ```powershell
     Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ls -l /var/lib/rancher/k3s/data/<replace-with-your-hash>/bin | grep multus"
@@ -182,7 +182,7 @@ The installation can check the following information:
     kubectl get pods --all-namespaces | grep -i Multus
     ```
 
-1. Check the **00-multus.conf** file to ensure the correct CNI version is specified. Update the CNI version value to **0.3.1** if that isn't already the default value.
+1. Check the **00-multus.conf** file to ensure the correct CNI version is specified. Update the CNI version value to **0.3.1** if that isn't already the default value:
 
     ```powershell
     Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo cat /var/lib/rancher/k3s/agent/etc/cni/net.d/00-multus.conf"
@@ -190,7 +190,7 @@ The installation can check the following information:
 
 ## Configure Multus secondary network with sample pod
 
-Once the Multus plugin is installed and running, we need to create the Kubernetes network attachment definition. 
+Once the Multus plugin is installed and running, create the Kubernetes network attachment definition.
 
 1. Create a **secondarynet-conf.yaml** yaml file for the secondary network. A part of the [Multus quickstart installation](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md), creates a **CRD** (custom resource definition), which can be used to define the configuration for all extra interfaces. The following sample YAML file adds a secondary network:
 
@@ -221,7 +221,7 @@ Once the Multus plugin is installed and running, we need to create the Kubernete
 
     ```powershell
     kubectl apply -f secondarynet-conf.yaml
-    ``` 
+    ```
 
 1. Create a **samplepod.yaml** file to deploy a sample pod that attaches to the previously created secondary interface. The following YAML code is a sample for creating a new pod that uses the secondary interface:
 
@@ -247,7 +247,7 @@ Once the Multus plugin is installed and running, we need to create the Kubernete
 
 ## Verify pod attached networks
 
-The final step is to ensure that the pod is running and has the correct network interfaces attached. 
+The final step is to ensure that the pod is running and has the correct network interfaces attached.
 
 1. Check that the pod is running:
 
@@ -261,10 +261,15 @@ The final step is to ensure that the pod is running and has the correct network 
     kubectl exec -it samplepod -- ip a
     ```
 
-    There are 3 interfaces:
+    There are three interfaces:
 
-    - **lo** – a loopback interface
-    - **eth0** – the default network
-    - **net1** – the new interface created using secondarynet-conf
+    - **lo**: a loopback interface
+    - **eth0**: the default network
+    - **net1**: the new interface created using secondarynet-conf
 
-    ![Pod with multiple NICs attached.](./media/aks-edge/aks-edge-multus.png)
+    :::image type="content" source="media/aks-edge/aks-edge-multus.png" alt-text="Pod with multiple NICs attached." lightbox="media/aks-edge/aks-edge-multus.png":::
+
+## Next steps
+
+- [AKS Edge Essentials overview](aks-edge-overview.md)
+- [AKS Edge Essentials networking](aks-edge-concept-networking.md)
