@@ -88,7 +88,7 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 #### Install using a template (.VHD file)
 
-This step applies only if you downloaded the .VHD file. Create a VM with the following configuration using the VHD you downloaded, then start and sign into the VM.
+This step applies only if you downloaded the .VHD file. Create a VM using the VHD you downloaded, then start and sign into the VM.
 
 Verify that the VM is configured with the following settings:
 
@@ -154,14 +154,11 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. On the **Migration and modernization** page, select **Step 1: Replicate** tile.
+1. Under **Migration and modernization**, select **Replicate**.
 
-    :::image type="content" source="./media/replicate/step-1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/replicate/step-1-replicate.png":::
+    :::image type="content" source="./media/replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/replicate/replicate-start.png":::
 
 1. On the **Specify intent** page:
-    1. Select **Servers or virtual machines (VM)**.
-    1. Select **Azure Stack HCI**.
-    1. Select **Hyper-V**.
     1. Select the target appliance.
     1. When finished, select **Continue**.
 
@@ -190,8 +187,10 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     1. Select the resource group that you want these VMs to be associated with.
 
-	1. Select the virtual network that you [created previously])(migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see a virtual network in the dropdown list, [create a virtual network](../index.yml) and select **Reload virtual switch**.
+	1. Select the virtual network that you [created previously](migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see a virtual network in the dropdown list, [create a virtual network](./manage/create-virtual-networks) and select **Reload virtual switch**.
+
 	1. Select the storage path where these VMs will be created. If you don't see a storage path in the dropdown list, [create a storage path](../index.yml) and select **Reload virtual switch**.
+
     1. When finished, select **Next**.
     
         :::image type="content" source="./media/replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate-4-target-2.png":::
