@@ -11,7 +11,9 @@ ms.reviewer: mayabishop
 
 # Configure a network security group for Azure Managed Lustre file systems in a zero-trust environment
 
-This article describes how to configure network security group (NSG) rules to secure access to an Azure Managed Lustre file system (AMLFS) cluster in a zero-trust environment.
+This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system (AMLFS) cluster in a zero-trust environment. You can use a network security group to filter inbound and outbound network traffic to and from Azure resources in an Azure virtual network.
+
+Network security groups contain security rules that filter network traffic by IP address, port, and protocol. When a network security group is associated with a subnet, security rules are applied to resources deployed in that subnet.
 
 ## Prerequisites
 
@@ -76,14 +78,14 @@ You can create inbound security rules in the Azure portal. The following example
 
 :::image type="content" source="media/nsg-zero-trust/nsg-add-inbound-security-rule.png" alt-text="Screenshot showing how to create an inbound security rule for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-add-inbound-security-rule.png":::
 
-Add the following inbound rules to the NSG:
+Add the following inbound rules to the network security group:
 
 | Priority | Name | Port | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 110 | AllowCidrBlockCustomAnyInbound | Any | Any | 10.0.2.0/24 | 10.0.2.0/24 | Allow | Permit protocol or port flows between hosts on the AMLFS cluster subnet 10.0.2.0/24. |
-| 111 | AllowLustre988Inbound | 988 | TCP | 10.0.3.0/24 | 10.0.2.0/24 | Allow | Permit communication between the Lustre client subnet and the AMLFS cluster subnet. Allows only source TCP ports 1020-1023 and destination port 988. |
-| 112 | AllowTagCustomAnyInbound | Any | TCP | AzureMonitor | VirtualNetwork | Allow | Permit inbound flows from the AzureMonitor service tag. Allow TCP source port 443 only. |
-| 120 | DenyAnyCustomAnyInbound | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
+| 110 | <rule-name> | Any | Any | 10.0.2.0/24 | 10.0.2.0/24 | Allow | Permit protocol or port flows between hosts on the AMLFS cluster subnet 10.0.2.0/24. |
+| 111 | <rule-name> | 988 | TCP | 10.0.3.0/24 | 10.0.2.0/24 | Allow | Permit communication between the Lustre client subnet and the AMLFS cluster subnet. Allows only source TCP ports 1020-1023 and destination port 988. |
+| 112 | <rule-name> | Any | TCP | AzureMonitor | VirtualNetwork | Allow | Permit inbound flows from the AzureMonitor service tag. Allow TCP source port 443 only. |
+| 120 | <rule-name> | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
 
 The inbound security rules in the Azure portal should look similar to the following screenshot:
 
@@ -100,24 +102,24 @@ You can create outbound security rules in the Azure portal. The following exampl
 
 :::image type="content" source="media/nsg-zero-trust/nsg-add-outbound-security-rule.png" alt-text="Screenshot showing how to create an outbound security rule for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-add-outbound-security-rule.png":::
 
-Add the following outbound rules to the NSG:
+Add the following outbound rules to the network security group:
 
 | Priority | Name | Port | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 100 | AllowAnyCustomAnyOutbound | 443 | TCP | VirtualNetwork | AzureMonitor | Allow | Permit outbound flows to the AzureMonitor service tag. TCP destination port 443 only. |
-| 101 | AllowTagCustomAnyOutbound | 443 | TCP | VirtualNetwork | AzureKeyVault.EastUS | Allow | Permit outbound flows to the AzureKeyVault.EastUS service tag. TCP destination port 443 only. |
-| 102 | AllowADCustomAnyOutbound | 443 | TCP | VirtualNetwork | AzureActiveDirectory | Allow | Permit outbound flows to the AzureActiveDirectory service tag. TCP destination port 443 only. |
-| 103 | AllowTagStorageCustomAnyOutbound | 443 | TCP | VirtualNetwork | Storage.EastUS | Allow | Permit outbound flows to the Storage.EastUS service tag. TCP destination port 443 only. |
-| 104 | AllowTagGuestMgmtCustomAnyOutbound | 443 | TCP | VirtualNetwork | GuestAndHybridManagement | Allow | Permits outbound flows to the GuestAndHybridManagement service tag. TCP destination port 443 only. |
-| 105 | AllowTagApiMgmtCustomAnyOutbound | 443 | TCP | VirtualNetwork | ApiManagement.EastUS | Allow | Permit outbound flows to the ApiManagement.EastUS service tag. TCP destination port 443 only. |
-| 106 | AllowTagDataLakeCustomAnyOutbound | 443 | TCP | VirtualNetwork | AzureDataLake | Allow | Permit outbound flows to the AzureDataLake service tag. TCP destination port 443 only. |
-| 107 | AllowTagResourceMgmtCustomAnyOutbound | 443 | TCP | VirtualNetwork | AzureResourceManager | Allow | Permits outbound flows to the AzureResourceManager service tag. TCP destination port 443 only. |
-| 108 | AllowLustre1020-1023Outbound | 1020-1023 | TCP | 10.0.2.0/24 | 10.0.3.0/24 | Allow | Permit outbound flows for AMLFS cluster to Lustre client. TCP source port 988, destination ports 1020-1023 only. |
-| 109 | AllowCidrBlockCustom123Outbound | 123 | UDP | 10.0.2.0/24 | 168.61.215.74/32 | Allow | Permit outbound flows to MS NTP server (168.61.215.74). UDP destination port 123 only. |
-| 110 | AllowTelemetryOutbound | 443 | TCP | VirtualNetwork | 20.34.120.0/21 | Allow | Permit outbound flows to AMLFS Telemetry (20.45.120.0/21). TCP destination port 443 only. |
-| 111 | AllowCidrBlockCustomAnyOutbound | Any | Any | 10.0.2.0/24 | 10.0.2.0/24 | Allow | Permit protocol or port flows between hosts on the AMLFS cluster subnet 10.0.2.0/24. |
-| 1000 | DenyTagCustom8080Outbound | Any | Any | VirtualNetwork | Internet | Deny | Deny outbound flows to the internet. |
-| 1010 | DenyAnyCustomAnyOutbound | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
+| 100 | <rule-name> | 443 | TCP | VirtualNetwork | AzureMonitor | Allow | Permit outbound flows to the AzureMonitor service tag. TCP destination port 443 only. |
+| 101 | <rule-name> | 443 | TCP | VirtualNetwork | AzureKeyVault.EastUS | Allow | Permit outbound flows to the AzureKeyVault.EastUS service tag. TCP destination port 443 only. |
+| 102 | <rule-name> | 443 | TCP | VirtualNetwork | AzureActiveDirectory | Allow | Permit outbound flows to the AzureActiveDirectory service tag. TCP destination port 443 only. |
+| 103 | <rule-name> | 443 | TCP | VirtualNetwork | Storage.EastUS | Allow | Permit outbound flows to the Storage.EastUS service tag. TCP destination port 443 only. |
+| 104 | <rule-name> | 443 | TCP | VirtualNetwork | GuestAndHybridManagement | Allow | Permits outbound flows to the GuestAndHybridManagement service tag. TCP destination port 443 only. |
+| 105 | <rule-name> | 443 | TCP | VirtualNetwork | ApiManagement.EastUS | Allow | Permit outbound flows to the ApiManagement.EastUS service tag. TCP destination port 443 only. |
+| 106 | <rule-name> | 443 | TCP | VirtualNetwork | AzureDataLake | Allow | Permit outbound flows to the AzureDataLake service tag. TCP destination port 443 only. |
+| 107 | <rule-name> | 443 | TCP | VirtualNetwork | AzureResourceManager | Allow | Permits outbound flows to the AzureResourceManager service tag. TCP destination port 443 only. |
+| 108 | <rule-name> | 1020-1023 | TCP | 10.0.2.0/24 | 10.0.3.0/24 | Allow | Permit outbound flows for AMLFS cluster to Lustre client. TCP source port 988, destination ports 1020-1023 only. |
+| 109 | <rule-name> | 123 | UDP | 10.0.2.0/24 | 168.61.215.74/32 | Allow | Permit outbound flows to MS NTP server (168.61.215.74). UDP destination port 123 only. |
+| 110 | <rule-name> | 443 | TCP | VirtualNetwork | 20.34.120.0/21 | Allow | Permit outbound flows to AMLFS Telemetry (20.45.120.0/21). TCP destination port 443 only. |
+| 111 | <rule-name> | Any | Any | 10.0.2.0/24 | 10.0.2.0/24 | Allow | Permit protocol or port flows between hosts on the AMLFS cluster subnet 10.0.2.0/24. |
+| 1000 | <rule-name> | Any | Any | VirtualNetwork | Internet | Deny | Deny outbound flows to the internet. |
+| 1010 | <rule-name> | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
 
 The outbound security rules in the Azure portal should look similar to the following screenshot:
 
