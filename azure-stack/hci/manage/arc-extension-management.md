@@ -14,7 +14,7 @@ ms.date: 09/19/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article describes how to manage Azure Arc extensions on Azure Stack HCI server machines, in the Azure portal.
+This article describes how to install, upgrade, and manage Azure Arc extensions on Azure Stack HCI server machines.
 
 ## Customer-managed Azure Arc extensions on Azure Stack HCI
 
@@ -36,7 +36,7 @@ Here are the Azure-managed extensions:
 
 - [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
 
-## Install an extension via the Azure portal
+## Install an extension
 ### [Azure portal](#tab/azureportal)
 You can install extensions from the **Capabilities** tab for your Azure Stack HCI Arc-enabled servers as shown in the screenshot. You can use the capabilities tab to install most extensions.
 
@@ -47,7 +47,7 @@ When you install an extension in the Azure portal, it's a cluster-aware operatio
 ### [Azure CLI](#tab/azurecli)
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an extension following these steps:
 1. Set up parameters from your subscription, resource group, and clusters
     ```azurecli
     subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
@@ -58,7 +58,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the
     clusters=($(az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where resourceGroup =~ '${resourceGroup}' | project name" | jq -r '.data[].name'))
     ```
 
-1. To install Windows Admin Center extension on all the clusters under the resource group, run the following command:
+1. To install the Windows Admin Center extension on all the clusters under the resource group, run the following command:
     ```azurecli
     extensionName="AdminCenter"
     extensionType="AdminCenter"
@@ -87,7 +87,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the
     done
     ```
 
-1. To install Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
+1. To install the Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
     ```azurecli
     extensionName="AzureMonitorWindowsAgent"
     extensionType="AzureMonitorWindowsAgent"
@@ -107,7 +107,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the
     done
     ```
 
-1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
+1. To install the Azure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
     ```azurecli
     asrSubscription="00000000-0000-0000-0000-000000000000" # Replace with your ASR subscription ID
     asrResourceGroup="asr-rg" # Replace with your ASR resource group
@@ -142,7 +142,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the
 ### [Azure PowerShell](#tab/azurepowershell)
 Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perform the following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to install an extension following these steps:
 
 1. Set up parameters from your subscription, resource group, and clusters: 
     ```powershell
@@ -152,7 +152,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perfo
     Set-AzContext -Subscription "${subscription}"
     $clusters = Get-AzResource -ResourceType "Microsoft.AzureStackHCI/clusters" -ResourceGroupName ${resourceGroup} | Select-Object -Property Name
     ```
-1. To install Windows Admin Center extension on all the clusters under the resource group, run the following command:
+1. To install the Windows Admin Center extension on all the clusters under the resource group, run the following command:
     ```powershell
     $extensionName = "AdminCenter"
     $extensionType = "AdminCenter"
@@ -188,7 +188,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perfo
     }
     ```
 
-1. To install Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
+1. To install the Azure Monitor Agent extension on all the clusters under the resource group, run the following command:
     ```powershell
     $extensionName = "AzureMonitorWindowsAgent"
     $extensionType = "AzureMonitorWindowsAgent"
@@ -209,7 +209,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to perfo
     }
     ```
 
-1. To install Azure Site Recovery (ASR) extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
+1. To install the Azure Site Recovery (ASR) extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
     ```powershell
     $settings = @{
         SubscriptionId = "<Replace with your Subscription Id>"
@@ -255,7 +255,7 @@ You can check the status of an extension on each server from the **Extensions** 
 ### [Azure CLI](#tab/azurecli)
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to check the status of an extension following these steps:
 
 1. Set up parameters from your subscription, resource group, cluster name, and extension name
     ```azurecli
@@ -289,7 +289,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to perform the
 ### [Azure PowerShell](#tab/azurepowershell)
 Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to check the status of an extension following these steps:
 
 1. Set up parameters from your subscription, resource group, and cluster name
     ```powershell
@@ -323,7 +323,7 @@ Currently, automatic extension upgrades are only supported in the Windows Admin 
 > [!NOTE]
 > By default, all extensions are set up to enable automatic upgrades, even if an extension doesn't support the automatic extension upgrade. However, this default setting has no effect until the extension publisher chooses to support automatic extension upgrade.
 
-### Enable automatic upgrade
+### Enable automatic extension upgrade
 
 ### [Azure portal](#tab/azureportal)
 
@@ -404,7 +404,7 @@ To manually upgrade an extension, follow these steps:
 
 3. Choose the latest version and select **Save**.
 
-### Disable automatic upgrade via the Azure portal
+### Disable automatic extension upgrade
 
 You can disable automatic upgrades for certain extensions in the Azure portal. To disable automatic upgrades, navigate to the **Extensions** page and perform these steps:
 
@@ -435,7 +435,7 @@ To upgrade an extension immediately, see [Manual extension upgrade via the Azure
 
 If an extension upgrade fails, Azure performs the actions associated with [Automatic rollback and retries](/azure/azure-arc/servers/manage-automatic-vm-extension-upgrade?tabs=azure-portal#automatic-rollback-and-retries) in an attempt to repair the extension.
 
-If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-upgrade-via-the-azure-portal). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-upgrade) again when you're ready.
+If you continue to have trouble with an extension upgrade, you can [disable automatic extension upgrade](#disable-automatic-extension-upgrade). When you disable the automatic upgrade, it prevents system retries while you troubleshoot the issue. You can [enable automatic extension upgrade](#enable-automatic-extension-upgrade) again when you're ready.
 
 ### Upgrades with multiple extensions
 
