@@ -56,11 +56,11 @@ Complete the following tasks to generate the target appliance key:
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. Verify that you see a non-zero value for **Discovered servers** under **Assessment tools > Azure Migrate: Discovery and assessment**.
+1. Verify that you see a non-zero value for **Discovered servers** under **Migration tools**.
 
     :::image type="content" source="./media/replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/replicate/replicate-discovered-servers.png":::
 
-1. Under **Azure Migrate: Migration tools**, select **Replicate**.
+1. Under **Migration and modernization**, select **Replicate**.
 
 1. On the **Specify intent** page, select the following from the dropdown lists:
     - Servers or virtual machines (VM).
