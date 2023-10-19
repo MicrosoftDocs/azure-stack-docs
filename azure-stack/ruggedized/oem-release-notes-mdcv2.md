@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub DC (Preview) OEM Release Notes
+title: Azure Stack Hub DC (Preview) OEM release notes
 description: OEM Release Notes for Azure Stack Hub DC (Preview). Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
@@ -83,7 +83,7 @@ This document describes the contents of Azure Stack Hub DC (Preview) first party
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors may cause the drive to enter bus hang state.  |
+| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors might cause the drive to enter bus hang state.  |
 
 ### Micron 5300 - Azure Stack Hub
 
@@ -184,7 +184,7 @@ This document describes the contents of Azure Stack Hub DC (Preview) first party
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors may cause the drive to enter bus hang state.  |
+| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors might cause the drive to enter bus hang state.  |
 
 ### Micron 5300 boot - HLH
 
