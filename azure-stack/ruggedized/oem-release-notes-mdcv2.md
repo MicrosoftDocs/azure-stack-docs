@@ -200,7 +200,7 @@ This document describes the contents of Azure Stack Hub DC (Preview) first party
 
 | Release version | Driver version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2309  | 1.16.62.0  | Fixes:<br/>- Resolved an issue on Windows 2019 where the driver was not being listed in "Uninstall<br/>Programs". When downgrading from 20.5.0 drivers to 20.0.0 drivers, please first uninstall<br/>the 20.5.0 package via Add or Remove programs.<br/>- Resolved an issue so Intel(R) Ethernet Converged Network Adapter X710-T adapter no longer<br/>advertises the unsupported 100 Mbps speed in adapter settings.<br/>- Resolved an issue where device drivers could not be reinstalled after being uninstalled.  |
+| 2309  | 1.16.62.0  | Fixes:<br/>- Resolved an issue on Windows 2019 where the driver wasn't being listed in "Uninstall<br/>Programs". When downgrading from 20.5.0 drivers to 20.0.0 drivers, first uninstall<br/>the 20.5.0 package via Add or Remove programs.<br/>- Resolved an issue so Intel(R) Ethernet Converged Network Adapter X710-T adapter no longer<br/>advertises the unsupported 100 Mbps speed in adapter settings.<br/>- Resolved an issue where device drivers couldn't be reinstalled after being uninstalled.  |
 
 ### PowerEdge R640 BIOS - HLH
 
