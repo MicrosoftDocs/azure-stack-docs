@@ -25,17 +25,38 @@ You can use an Azure network security group to filter network traffic between Az
 
 To create a network security group in the Azure portal, follow these steps:
 
-1. In the Azure portal, select **Create a resource**.
-1. In the **New** pane, search for **Network security group** and select **Create**.
-1. In the **Create network security group** pane, configure the settings for the network security group and select **Review + create**.
-1. In the **Review + create** pane, select **Create**.
+1. In the search box at the top of the portal, enter *Network security group*. Select **Network security groups** in the search results.
 
-TODO: Add screenshot of NSG creation pane. https://learn.microsoft.com/en-us/azure/virtual-network/manage-network-security-group?tabs=network-security-group-portal#create-a-network-security-group
-:::image type="content" source="media/nsg-zero-trust/nsg-create.png" alt-text="Screenshot showing how to create a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-create.png":::
+2. Select **+ Create**.
+
+3. In the **Create network security group** page, under the **Basics** tab, enter or select the following values:
+
+    | Setting | Action |
+    | --- | --- |
+    | **Project details** | |
+    | Subscription | Select your Azure subscription. |
+    | Resource group | Select an existing resource group, or create a new one by selecting **Create new**. This example uses the **sample-rg** resource group. |
+    | **Instance details** | |
+    | Network security group name | Enter a name for the network security group you're creating. |
+    | Region | Select the region you want. |
+
+    :::image type="content" source="media/nsg-zero-trust/nsg-create-new.png" alt-text="Screenshot showing how to create a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-create-new.png":::
+
+4. Select **Review + create**.
+
+5. After you see the **Validation passed** message, select **Create**.
 
 ### Associate the network security group to a subnet
 
-TODO: https://learn.microsoft.com/en-us/azure/virtual-network/manage-network-security-group?tabs=network-security-group-portal#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet
+Once the network security group is created, you can associate it to the unique subnet in your virtual network where the Azure Managed Lustre file system exists. To associate the network security group to a subnet using the Azure portal, follow these steps:
+
+1. In the search box at the top of the portal, enter *Network security group* and select **Network security groups** in the search results.
+
+2. Select the name of your network security group, then select **Subnets**.
+
+3. To associate a network security group to the subnet, select **+ Associate**, then select your virtual network and the subnet that you want to associate the network security group to. Select **OK**.
+
+:::image type="content" source="./media/manage-network-security-group/nsg-associate-to-subnet.png" alt-text="Screenshot showing how to associate a network security group to a subnet in Azure portal." lightbox="media/nsg-zero-trust/nsg-associate-to-subnet.png":::
 
 ## Configure network security group rules
 
@@ -53,7 +74,7 @@ You can create inbound security rules in the Azure portal. The following example
 1. Select **+ Add**.
 1. In the **Add inbound security rule** pane, configure the settings for the rule and select **Add**.
 
-:::image type="content" source="media/nsg-zero-trust/nsg-add-inbound-security-rule.png" alt-text="Screenshot showing how to create an inbound security rule for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-add-inbound-security-rule.png":::
+:::image type="content" source="media/nsg-zero-trust/nsg-add-inbound-security-rule.png" alt-text="Screenshot showing how to create an inbound security rule for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-add-inbound-security-rule.png":::
 
 Add the following inbound rules to the NSG:
 
@@ -66,7 +87,7 @@ Add the following inbound rules to the NSG:
 
 The inbound security rules in the Azure portal should look similar to the following screenshot:
 
-:::image type="content" source="media/nsg-zero-trust/nsg-inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-inbound-security-rules.png":::
+:::image type="content" source="media/nsg-zero-trust/nsg-inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-inbound-security-rules.png":::
 
 ### Create outbound security rules
 
@@ -77,7 +98,7 @@ You can create outbound security rules in the Azure portal. The following exampl
 1. Select **+ Add**.
 1. In the **Add outbound security rule** pane, configure the settings for the rule and select **Add**.
 
-:::image type="content" source="media/nsg-zero-trust/nsg-add-outbound-security-rule.png" alt-text="Screenshot showing how to create an outbound security rule for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-add-outbound-security-rule.png":::
+:::image type="content" source="media/nsg-zero-trust/nsg-add-outbound-security-rule.png" alt-text="Screenshot showing how to create an outbound security rule for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-add-outbound-security-rule.png":::
 
 Add the following outbound rules to the NSG:
 
@@ -100,6 +121,6 @@ Add the following outbound rules to the NSG:
 
 The outbound security rules in the Azure portal should look similar to the following screenshot:
 
-:::image type="content" source="media/nsg-zero-trust/nsg-outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in Azure Portal." lightbox="media/nsg-zero-trust/nsg-outbound-security-rules.png":::
+:::image type="content" source="media/nsg-zero-trust/nsg-outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-outbound-security-rules.png":::
 
 ## Next steps
