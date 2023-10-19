@@ -1,6 +1,6 @@
 ---
-title: Azure Modular Data Center v2 OEM Release Notes
-description: OEM Release Notes for Azure Modular Data Center v2. Includes firmware and driver versions for all solution hardware.
+title: Azure Stack Hub DC (Preview) OEM Release Notes
+description: OEM Release Notes for Azure Stack Hub DC (Preview). Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
 ms.date: 10/09/2023
@@ -10,13 +10,13 @@ ms.lastreviewed:
 
 ---
 
-# Azure Modular Data Center v2 2309 OEM release notes
+# Azure Stack Hub DC (Preview) 2309 OEM release notes
 
-This article contains release and version information for Azure Modular Data Center v2.
+This article contains release and version information for Azure Stack Hub DC (Preview).
 
 ## Overview
 
-This document describes the contents of Azure Modular Data Center v2 first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Modular Data Center v2. Below are the download links:
+This document describes the contents of Azure Stack Hub DC (Preview) first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub DC (Preview). Below are the download links:
     
 * https://aka.ms/azshwpackage
 * https://aka.ms/azshwmanifest

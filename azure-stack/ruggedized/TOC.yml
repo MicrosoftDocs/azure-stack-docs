@@ -12,7 +12,7 @@
       items:
       - name: Azure Stack Hub Ruggedized
         href: oem-release-notes-rca.md
-      - name: Azure Stack Hub Preview DC
+      - name: Azure Stack Hub DC (Preview)
         href: oem-release-notes-mdcv2.md
       - name: Azure Stack Hub DC
         href: oem-release-notes-ashdcv1.md
