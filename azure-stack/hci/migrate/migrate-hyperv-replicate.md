@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/18/2023
+ms.date: 10/19/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -84,7 +84,7 @@ You can download the appliance using either a .VHD file or a .zip file.
 
 Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
 
-:::image type="content" source="media/replicate/download-source-appliance-2.png" alt-text="Screenshot of Download source appliance step 2." lightbox="media/replicate/download-source-appliance-2.png":::
+:::image type="content" source="media/replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/replicate/download-target-appliance.png":::
 
 #### Install using a template (.VHD file)
 
