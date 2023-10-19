@@ -107,7 +107,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     done
     ```
 
-1. To install the zure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
+1. To install the Azure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
     ```azurecli
     asrSubscription="00000000-0000-0000-0000-000000000000" # Replace with your ASR subscription ID
     asrResourceGroup="asr-rg" # Replace with your ASR resource group
