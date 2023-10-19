@@ -56,7 +56,7 @@ Once the network security group is created, you can associate it to the unique s
 
 3. To associate a network security group to the subnet, select **+ Associate**, then select your virtual network and the subnet that you want to associate the network security group to. Select **OK**.
 
-:::image type="content" source="./media/manage-network-security-group/nsg-associate-to-subnet.png" alt-text="Screenshot showing how to associate a network security group to a subnet in Azure portal." lightbox="media/nsg-zero-trust/nsg-associate-to-subnet.png":::
+:::image type="content" source="./media/nsg-zero-trust/nsg-associate-to-subnet.png" alt-text="Screenshot showing how to associate a network security group to a subnet in Azure portal." lightbox="media/nsg-zero-trust/nsg-associate-to-subnet.png":::
 
 ## Configure network security group rules
 
