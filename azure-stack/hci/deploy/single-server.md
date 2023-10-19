@@ -38,7 +38,7 @@ Here are the steps to install the Azure Stack HCI OS on a single server, create 
 1. Install the required roles and features using the following command, then reboot before continuing.
 
    ```powershell
-   Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica" "NetworkHUD" -IncludeAllSubFeature -IncludeManagementTools
+   Install-WindowsFeature -Name "BitLocker", "Data-Center-Bridging", "Failover-Clustering", "FS-FileServer", "FS-Data-Deduplication", "Hyper-V", "Hyper-V-PowerShell", "RSAT-AD-Powershell", "RSAT-Clustering-PowerShell", "NetworkATC", "Storage-Replica", "NetworkHUD" -IncludeAllSubFeature -IncludeManagementTools
    ```
 
 1. Use PowerShell to [create a cluster](../deploy/create-cluster-powershell.md), skipping creating a cluster witness.
