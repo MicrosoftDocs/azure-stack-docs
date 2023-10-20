@@ -8,8 +8,6 @@
     href: whats-new.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
-  - name: Compare to Azure Stack Hub
-    href: concepts/compare-azure-stack-hub.md
   - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md  
   - name: FAQ
