@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/19/2023
+ms.date: 10/20/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -159,10 +159,10 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
     :::image type="content" source="./media/replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/replicate/replicate-start.png":::
 
 1. On the **Specify intent** page:
-    1. Select the target appliance.
+    1. Select the target appliance from the dropdown list.
     1. When finished, select **Continue**.
 
-    :::image type="content" source="./media/replicate/replication-screen.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replication-screen.png":::
+    :::image type="content" source="./media/replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/replicate/replication-screen.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
