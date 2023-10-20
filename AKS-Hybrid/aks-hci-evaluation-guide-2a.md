@@ -74,18 +74,18 @@ In order to deploy AKS using Windows Admin Center, connect your Windows Admin Ce
 5. Select **Sign in** and when prompted for credentials, enter your Azure credentials and you should see a popup that asks for you to accept the permissions. Make sure you select **Consent on behalf of your organization**, and then select **Accept**.
 
    > [!NOTE]
-   > If you receive an error when signing in, still in **Settings**, under **User**, click on **Account** and click **Sign-in**. You should then be prompted for Azure credentials and permissions, to which you can then click **Accept**. Sometimes it just takes a few moments from Windows Admin Center creating the Azure AD application and being able to sign in. Retry the sign-in until you've successfully signed in.
+   > If you receive an error when signing in, still in **Settings**, under **User**, click on **Account** and click **Sign-in**. You should then be prompted for Azure credentials and permissions, to which you can then click **Accept**. Sometimes it just takes a few moments from Windows Admin Center creating the Microsoft Entra application and being able to sign in. Retry the sign-in until you've successfully signed in.
 
 ## Validate Azure integration
 
-In order to successfully deploy AKS with Windows Admin Center, other permissions were applied on the Windows Admin Center Azure AD application that was created when you connected Windows Admin Center to Azure. In this step, you can quickly validate those permissions.
+In order to successfully deploy AKS with Windows Admin Center, other permissions were applied on the Windows Admin Center Microsoft Entra application that was created when you connected Windows Admin Center to Azure. In this step, you can quickly validate those permissions.
 
 1. Still in Windows Admin Center, click the **Settings** gear in the top-right corner.
-2. Under **Gateway**, click **Register**. You should see your previously registered Azure AD app.
-3. Click on **View in Azure** to be taken to the Azure AD app portal, where you should see information about this app, including required permissions. If you're prompted to sign in, provide appropriate credentials.
+2. Under **Gateway**, click **Register**. You should see your previously registered Microsoft Entra app.
+3. Click on **View in Azure** to be taken to the Microsoft Entra app portal, where you should see information about this app, including required permissions. If you're prompted to sign in, provide appropriate credentials.
 4. Once signed in, under **Configured permissions**, you should see a few permissions listed with the status **Granted for...** and the name of your tenant. The **Microsoft Graph (5)** API permissions show as **Not granted**, but this status will be updated upon deployment.
 
-   :::image type="content" source="media/aks-hci-evaluation-guide/azure-ad-grant.png" alt-text="Screenshot of confirm Azure AD app permissions in Windows Admin Center.":::
+   :::image type="content" source="media/aks-hci-evaluation-guide/azure-ad-grant.png" alt-text="Screenshot of confirm Microsoft Entra app permissions in Windows Admin Center.":::
 
    If you don't see Microsoft Graph listed in the API permissions, you can either [re-register Windows Admin Center using the steps here](#configure-windows-admin-center) for the permissions to appear correctly, or manually add the **Microsoft Graph Appliation.ReadWrite.All** permission. To manually add the permission:
 
@@ -159,7 +159,7 @@ The next section walks through configuring the AKS management cluster on your si
 1. Once you've chosen your subscription, choose an existing resource group or create a new one. Your resource group should be in the East US, Southeast Asia, or West Europe region.
 1. Select **Next: Review**.
 1. Review your choices and settings, then select **Apply**.
-1. After a few minutes, you may be prompted to grant consent to the Windows Admin Center Azure AD application. Ensure you select **Consent on behalf of your organization**, then click **Accept**. The settings will be applied, and you should receive some notifications:
+1. After a few minutes, you may be prompted to grant consent to the Windows Admin Center Microsoft Entra application. Ensure you select **Consent on behalf of your organization**, then click **Accept**. The settings will be applied, and you should receive some notifications:
 1. When confirmed, you can click **Next: New cluster** to start the deployment process of the management cluster.
 
    > [!NOTE]
