@@ -162,7 +162,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
     1. Select the target appliance.
     1. When finished, select **Continue**.
 
-    :::image type="content" source="./media/replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replicate-specify-intent.png":::
+    :::image type="content" source="./media/replicate/replication-screen.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replication-screen.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
@@ -187,7 +187,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     1. Select the resource group that you want these VMs to be associated with.
 
-	1. Select the virtual network that you [created previously](migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see a virtual network in the dropdown list, [create a virtual network](./manage/create-virtual-networks) and select **Reload virtual switch**.
+	1. Select the virtual network that you [created previously](migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see a virtual network in the dropdown list, [create a virtual network](../manage/create-virtual-networks.md) and select **Reload virtual switch**.
 
 	1. Select the storage path where these VMs will be created. If you don't see a storage path in the dropdown list, [create a storage path](../index.yml) and select **Reload virtual switch**.
 
