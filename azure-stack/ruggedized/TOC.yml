@@ -12,7 +12,7 @@
       items:
       - name: Azure Stack Hub Ruggedized
         href: oem-release-notes-rca.md
-      - name: Azure Stack Hub Preview DC
+      - name: Azure Stack Hub DC (Preview)
         href: oem-release-notes-mdcv2.md
       - name: Azure Stack Hub DC
         href: oem-release-notes-ashdcv1.md
@@ -822,7 +822,7 @@
           items:
           - name: VNet-to-vnet connectivity with FortiGate
             href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-          - name: Setup VPN to on-prem
+          - name: Setup VPN to on-premises
             href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: VNet to VNet connectivity between Azure Stack Hub instances
             href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json

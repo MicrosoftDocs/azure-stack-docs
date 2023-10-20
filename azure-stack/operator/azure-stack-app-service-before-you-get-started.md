@@ -100,7 +100,7 @@ The certificate for the Publisher role secures the FTPS traffic for app owners w
 
 The certificate for the identity app enables:
 
-- Integration between the Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) directory, Azure Stack Hub, and App Service to support integration with the compute resource provider.
+- Integration between the Microsoft Entra ID or Active Directory Federation Services (AD FS) directory, Azure Stack Hub, and App Service to support integration with the compute resource provider.
 - Single sign-on scenarios for advanced developer tools within Azure App Service on Azure Stack Hub.
 
 The certificate for identity must contain a subject that matches the following format.
@@ -382,27 +382,29 @@ Azure App Service uses an Identity Application (Service Principal) to support th
 - Virtual machine scale set integration on worker tiers.
 - SSO for the Azure Functions portal and advanced developer tools (Kudu).
 
-Depending on which identity provider the Azure Stack Hub is using, Azure Active Directory (Azure AD) or Active Directory Federation Services (ADFS) you must follow the appropriate steps below to create the service principal for use by the Azure App Service on Azure Stack Hub resource provider.
+Depending on which identity provider the Azure Stack Hub is using, Microsoft Entra ID or Active Directory Federation Services (ADFS) you must follow the appropriate steps below to create the service principal for use by the Azure App Service on Azure Stack Hub resource provider.
 
 ::: zone pivot="state-connected"
-#### Create an Azure AD App
+<a name='create-an-azure-ad-app'></a>
 
-Follow these steps to create the service principal in your Azure AD tenant:
+#### Create a Microsoft Entra App
+
+Follow these steps to create the service principal in your Microsoft Entra tenant:
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
 1. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md#installer-and-helper-scripts).
 1. [Install PowerShell for Azure Stack Hub](powershell-install-az-module.md).
-1. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Azure AD tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
-1. In the **Credential** window, enter your Azure AD service admin account and password. Select **OK**.
+1. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Microsoft Entra tenant ID that you're using for your Azure Stack Hub deployment. For example, enter **myazurestack.onmicrosoft.com**.
+1. In the **Credential** window, enter your Microsoft Entra service admin account and password. Select **OK**.
 1. Enter the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
 1. Make note of the application ID that's returned in the PowerShell output. You use the ID in the following steps to provide consent for the application's permissions, and during installation. 
-1. Open a new browser window, and sign in to the [Azure portal](https://portal.azure.com) as the Azure Active Directory service admin.
-1. Open the Azure Active Directory service.
+1. Open a new browser window, and sign in to the [Azure portal](https://portal.azure.com) as the Microsoft Entra service admin.
+1. Open the Microsoft Entra service.
 1. Select **App Registrations** in the left pane.
 1. Search for the application ID you noted in step 7. 
 1. Select the App Service application registration from the list.
 1. Select **API permissions** in the left pane.
-1. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Azure AD tenant. Confirm the consent grant by selecting **Yes**.
+1. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Microsoft Entra tenant. Confirm the consent grant by selecting **Yes**.
 
 ```powershell
     Create-AADIdentityApp.ps1
@@ -410,10 +412,10 @@ Follow these steps to create the service principal in your Azure AD tenant:
 
 | Parameter | Required or optional | Default value | Description |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Required | Null | Azure AD tenant ID. Provide the GUID or string. An example is myazureaaddirectory.onmicrosoft.com. |
+| DirectoryTenantName | Required | Null | Microsoft Entra tenant ID. Provide the GUID or string. An example is myazureaaddirectory.onmicrosoft.com. |
 | AdminArmEndpoint | Required | Null | Admin Azure Resource Manager endpoint. An example is adminmanagement.local.azurestack.external. |
 | TenantARMEndpoint | Required | Null | Tenant Azure Resource Manager endpoint. An example is management.local.azurestack.external. |
-| AzureStackAdminCredential | Required | Null | Azure AD service admin credential. |
+| AzureStackAdminCredential | Required | Null | Microsoft Entra service admin credential. |
 | CertificateFilePath | Required | Null | **Full path** to the identity application certificate file generated earlier. |
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
 | Environment | Optional | AzureCloud | The name of the supported Cloud Environment in which the target Azure Active Directory Graph Service is available.  Allowed values: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
