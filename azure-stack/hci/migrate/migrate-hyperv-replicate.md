@@ -1,34 +1,66 @@
 --- 
-title: Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview) 
-description: Learn the replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
+title: Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview) 
+description: Learn the discovery and replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/14/2023
+ms.date: 10/20/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview)
+# Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the replication phase for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
+This article describes the discovery and replication phase for Hyper-V virtual machine (VM) migration to Azure Stack HCI using Azure Migrate.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
 For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
 
-## Step 1: Generate target appliance key
+## Before you begin
+
+For both the source and target appliance, make sure your hardware supports VMs that run on the server with Windows Server 2022, 16 GB RAM, 80 GB of disk storage, 8 vCPUs, and an external virtual switch.
+
+## Step 1: Create and configure the source appliance
+
+### Generate the project key
+
+In this step, you generate the key for the source appliance - see [Generate the project key](/azure/migrate/how-to-set-up-appliance-hyper-v#generate-the-project-key) for specific steps.
+
+### Create the source appliance
+
+You can install the appliance using either a template (.VHD file) or a script (.zip file) that you download to your Hyper-V server. For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
+
+#### Install using a template (.VHD file)
+
+This step applies only if you are deploying the source appliance using a .VHD file template. The source appliance is installed for you using the .VHD file. For step-by-step information, see [Download the VHD](/azure/migrate/how-to-set-up-appliance-hyper-v#download-the-vhd).
+
+#### Install using a script (.zip file)
+
+This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the source appliance. For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
+
+### Configure the appliance and discover VMs
+
+Once the source appliance is installed, you are ready to [Configure the appliance](/azure/migrate/how-to-set-up-appliance-hyper-v#configure-the-appliance).
+
+After the appliance is configured, you start the VM discovery process.
+
+Wait until you have a green checkmark indicating discovery is finished, then go to the Azure portal to review VM inventory.
+
+## Step 2: Create and configure the target appliance
+
+### Generate target appliance key
 
 Complete the following tasks to generate the target appliance key:
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. Verify that you see a non-zero value for **Discovered servers** under **Assessment tools > Azure Migrate: Discovery and assessment**.
+1. Verify that you see a non-zero value for **Discovered servers** under **Migration tools**.
 
     :::image type="content" source="./media/replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/replicate/replicate-discovered-servers.png":::
 
-1. Under **Azure Migrate: Migration tools**, select **Replicate**.
+1. Under **Migration and modernization**, select **Replicate**.
 
 1. On the **Specify intent** page, select the following from the dropdown lists:
     - Servers or virtual machines (VM).
@@ -46,92 +78,42 @@ Complete the following tasks to generate the target appliance key:
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
-## Step 2: Download and install the appliance
+### Create the target appliance
 
 You can download the appliance using either a .VHD file or a .zip file.
 
 Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download**.
 
-:::image type="content" source="media/replicate/download-source-appliance-2.png" alt-text="Screenshot of Download source appliance step 2." lightbox="media/replicate/download-source-appliance-2.png":::
+:::image type="content" source="media/replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/replicate/download-target-appliance.png":::
 
-### Step 2a: Download using the .VHD file option
+#### Install using a template (.VHD file)
 
-This step applies only if you downloaded the .VHD file. The target appliance is installed for you using the .VHD file.
+This step applies only if you downloaded the .VHD file. Create a VM using the VHD you downloaded, then start and sign into the VM.
 
-1. Install Windows Server 2022 from an ISO image on the source Hyper-V server.
+Verify that the VM is configured with the following settings:
 
-1. Using **Hyper-V Manager**, create a new VM on the Hyper-V server using the following configuration:
+- Standalone type (non-High Availability type).
+- 16 GB memory.
+- 8 vCPU.
+- 80 GB disk storage.
+- Enhanced Session Policy mode enabled.
+- External virtual switch created.
 
-    - **VM type**: `Standalone` (non-High Availability type)
-    - **Operating System**: Windows Server 2022
-    - **Disk**: 80GB (min)
-    - **Memory**: 16GB (min)
-    
-1. Stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
-
-1. In **Hyper-V Manager**, stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
-    
-    :::image type="content" source="media/replicate/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/replicate/vcpu-settings.png":::
-
-1. Create a virtual hard disk for the VM and specify a location for it.
-
-    > [!NOTE]
-    > Make sure that you create the appliance VM as a non-high availability VM.
-
-1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
-
-1. In  **Hyper-V Manager**, select the host.
-
-1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
-
-    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog box." lightbox="media/replicate/enhanced-session-mode.png":::
-
-    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
-
-
-### Step 2b: Download using the .zip file option
+#### Install using a script (.zip file)
 
 This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the target appliance.
 
-1. Install Windows Server 2022 from an ISO image on the source Hyper-V server.
-
-1. Using **Hyper-V Manager**, create a new VM on the Hyper-V server using the following configuration:
-
-    - **VM type**: `Standalone` (non-High Availability type)
-    - **Operating System**: Windows Server 2022
-    - **Disk**: 80GB (min)
-    - **Memory**: 16GB (min)
-    
-1. Stop the VM if it is running. Then on the **Settings** page, set the **Number of virtual processors** to `8`.
-    
-    :::image type="content" source="media/replicate/vcpu-settings.png" alt-text="Screenshot of vCPU Settings dialog." lightbox="media/replicate/vcpu-settings.png":::
-
-    For more information on using Hyper-V Manager to create a VM, see [Create a virtual machine](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
-
-1. Create a virtual hard disk for the VM and specify a location for it.
-
-    > [!NOTE]
-    > Make sure that you create the appliance VM as a non-high availability VM.
-
-1. Once the VM is created, sign in to it using **Virtual Machine Connection**.
-
-1. Select the OS you just downloaded (Windows Server 2022) and begin OS setup.
-
-1. Once the OS is finished installing, enter your local administrative credentials, then sign in using them.
+1. Using **Hyper-V Manager**, create a `Standalone` (non-High Availability type) VM on the target Azure Stack HCI server running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors.
 
 1. In  **Hyper-V Manager**, select the host.
 
-1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled.
+1. Under **Hyper-V settings**, select **Enhanced Session Mode Policy** and ensure **Allow enhanced session mode** is enabled. For more information, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
 
-    :::image type="content" source="media/replicate/enhanced-session-mode.png" alt-text="Screenshot of Enhanced Session Mode dialog." lightbox="media/replicate/enhanced-session-mode.png":::
-
-    For more information on Enhanced Session Mode, see [Turn on enhanced session mode on a Hyper-V host](/windows-server/virtualization/hyper-v/learn-more/use-local-resources-on-hyper-v-virtual-machine-with-vmconnect#turn-on-enhanced-session-mode-on-a-hyper-v-host).
-
-1. Open **Server Manager** on the Hyper-V server.
+1. Sign into the VM as an administrator.
 
 1. Copy and paste the downloaded .zip file to the VM virtual disk that you created and extract it as needed.
 
-1. As an administrator, run the following PowerShell script from the folder of the downloaded file to install the target appliance:
+1. As an administrator, run the following PowerShell script from the folder of the extracted files to install the target appliance:
 
     ```PowerShell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
@@ -140,9 +122,9 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 1. Restart and sign into the VM.
 
-## Step 3: Configure and register target appliance
+### Register the target appliance
 
-1. Open **Server Manager** and sign in to the target appliance VM.
+1. Sign in to the target appliance VM.
 
 1. Open **Azure Configuration Manager** from the desktop shortcut.
 
@@ -160,7 +142,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     :::image type="content" source="./media/replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/replicate/enter-code-2.png":::
 
-1. After the appliance is registered, scroll down and select **Add cluster information**.
+1. After the appliance is registered, under **Provide Azure Stack HCI cluster information**, select **Add cluster information**.
 
     :::image type="content" source="./media/replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/replicate/add-cluster-info.png":::
 
@@ -168,22 +150,19 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     :::image type="content" source="./media/replicate/add-cluster-info-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info-2.png":::
 
-## Step 4: Start replication
+## Step 3: Start replication
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. On the **Migration and modernization** page, select **Step 1: Replicate** tile.
+1. Under **Migration and modernization**, select **Replicate**.
 
-    :::image type="content" source="./media/replicate/step-1-replicate.png" alt-text="Screenshot showing the Replicate tile." lightbox="./media/replicate/step-1-replicate.png":::
+    :::image type="content" source="./media/replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/replicate/replicate-start.png":::
 
 1. On the **Specify intent** page:
-    1. Select **Servers or virtual machines (VM)**.
-    1. Select **Azure Stack HCI**.
-    1. Select **Hyper-V**.
-    1. Select the target appliance.
+    1. Select the target appliance from the dropdown list.
     1. When finished, select **Continue**.
 
-    :::image type="content" source="./media/replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replicate-specify-intent.png":::
+    :::image type="content" source="./media/replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/replicate/replication-screen.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
@@ -196,7 +175,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
     :::image type="content" source="./media/replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/replicate/replicate-1-basics.png":::
     
 
-1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green check. Select **Next**.
+1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark. Select **Next**.
 
     :::image type="content" source="./media/replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/replicate/replicate-2-target.png":::
 
@@ -206,13 +185,12 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 1. On the **Target settings** tab, complete these tasks:
 
-	1. For **Cache storage account**, select the storage account you created previously.
-
-        :::image type="content" source="./media/replicate/replicate-4-target.png" alt-text="Screenshot showing the Cache storage account popup." lightbox="./media/replicate/replicate-4-target.png":::
-
     1. Select the resource group that you want these VMs to be associated with.
-	1. Select the virtual switch these VMs are connected to. For more information, see [Create and configure a virtual switch with Hyper-V](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines?tabs=hyper-v-manager).
-	1. Select the storage path where these VMs are created.
+
+	1. Select the virtual network that you [created previously](migrate-hyperv-prerequisites.md) that these VMs will be connected to. If you don't see a virtual network in the dropdown list, [create a virtual network](../manage/create-virtual-networks.md) and select **Reload virtual switch**.
+
+	1. Select the storage path where these VMs will be created. If you don't see a storage path in the dropdown list, [create a storage path](../index.yml) and select **Reload virtual switch**.
+
     1. When finished, select **Next**.
     
         :::image type="content" source="./media/replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate-4-target-2.png":::
@@ -230,7 +208,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     :::image type="content" source="./media/replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/replicate/replicate-6-disks.png":::
 
-1. On the  **Review + Start replication** tab, stay on the page until the process is complete (this may take 5-10 minutes). Then select **Replicate**.
+1. On the  **Review + Start replication** tab, stay on the page until the process is complete (this might take 5-10 minutes). Then select **Replicate**.
 
     :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
 
@@ -244,4 +222,4 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 ## Next steps
 
-- Complete the [Hyper-V VM Migration](migrate-azure-migrate.md) phase.
+- Complete [Hyper-V VM Migration](migrate-azure-migrate.md).
