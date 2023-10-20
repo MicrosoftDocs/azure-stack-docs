@@ -17,21 +17,23 @@ ms.lastreviewed: 11/05/2019
 # Azure-connected deployment planning decisions for Azure Stack Hub integrated systems
 After you've decided [how you'll integrate Azure Stack Hub into your hybrid cloud environment](azure-stack-connection-models.md), you can finalize your Azure Stack Hub deployment decisions.
 
-Deploying Azure Stack Hub connected to Azure means that you can have either Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) for your identity store. You can also choose from either billing model: pay-as-you-use or capacity-based. A connected deployment is the default option because it allows customers to get the most value out of Azure Stack Hub, particularly for hybrid cloud scenarios that involve both Azure and Azure Stack Hub.
+Deploying Azure Stack Hub connected to Azure means that you can have either Microsoft Entra ID or Active Directory Federation Services (AD FS) for your identity store. You can also choose from either billing model: pay-as-you-use or capacity-based. A connected deployment is the default option because it allows customers to get the most value out of Azure Stack Hub, particularly for hybrid cloud scenarios that involve both Azure and Azure Stack Hub.
 
 ## Choose an identity store
-With a connected deployment, you can choose between Azure AD or AD FS for your identity store. A disconnected deployment, with no internet connectivity, can only use AD FS.
+With a connected deployment, you can choose between Microsoft Entra ID or AD FS for your identity store. A disconnected deployment, with no internet connectivity, can only use AD FS.
 
-Your identity store choice has no bearing on tenant virtual machines (VMs). Tenant VMs may choose which identity store they want to the connect to depending on how they'll be configured: Azure AD, Windows Server Active Directory domain-joined, workgroup, and so on. This is unrelated to the Azure Stack Hub identity provider decision.
+Your identity store choice has no bearing on tenant virtual machines (VMs). Tenant VMs may choose which identity store they want to the connect to depending on how they'll be configured: Microsoft Entra ID, Windows Server Active Directory domain-joined, workgroup, and so on. This is unrelated to the Azure Stack Hub identity provider decision.
 
-For example, if you deploy IaaS tenant VMs on top of Azure Stack Hub, and want them to join a Corporate Active Directory Domain and use accounts from there, you still can. You aren't required to use the Azure AD identity store you select here for those accounts.
+For example, if you deploy IaaS tenant VMs on top of Azure Stack Hub, and want them to join a Corporate Active Directory Domain and use accounts from there, you still can. You aren't required to use the Microsoft Entra identity store you select here for those accounts.
 
-### Azure AD identity store
-Using Azure AD for your identity store requires two Azure AD accounts: a global admin account and a billing account. These accounts can be the same accounts, or different accounts. While using the same user account might be simpler and useful if you have a limited number of Azure accounts, your business needs might suggest using two accounts:
+<a name='azure-ad-identity-store'></a>
 
-1. **Global admin account** (only required for connected deployments). This is an Azure account that's used to create apps and service principals for Azure Stack Hub infrastructure services in Azure AD. This account must have directory admin permissions to the directory that your Azure Stack Hub system will be deployed under. It will become the "cloud operator" Global Admin for the Azure AD user and is used for the following tasks:
+### Microsoft Entra identity store
+Using Microsoft Entra ID for your identity store requires two Microsoft Entra accounts: a global admin account and a billing account. These accounts can be the same accounts, or different accounts. While using the same user account might be simpler and useful if you have a limited number of Azure accounts, your business needs might suggest using two accounts:
 
-    - To provision and delegate apps and service principals for all Azure Stack Hub services that need to interact with Azure AD and Graph API.
+1. **Global admin account** (only required for connected deployments). This is an Azure account that's used to create apps and service principals for Azure Stack Hub infrastructure services in Microsoft Entra ID. This account must have directory admin permissions to the directory that your Azure Stack Hub system will be deployed under. It will become the "cloud operator" Global Admin for the Microsoft Entra user and is used for the following tasks:
+
+    - To provision and delegate apps and service principals for all Azure Stack Hub services that need to interact with Microsoft Entra ID and Graph API.
     - As the Service Administrator account. This account is the owner of the default provider subscription (which you can later change). You can log into the Azure Stack Hub administrator portal with this account, and can use it to create offers and plans, set quotas, and perform other administrative functions in Azure Stack Hub.
 
 > [!IMPORTANT]
@@ -57,8 +59,8 @@ If you're going to use a CSP subscription, review the table below to identify wh
 
 |Scenario|Domain and subscription options|
 |-----|-----|
-|You're a **Direct CSP Partner** or an **Indirect CSP Provider**, and you'll operate the Azure Stack Hub|Use a CSP Shared Services subscription.<br>     or<br>Create an Azure AD tenant with a descriptive name in Partner Center. For example, &lt;your organization>CSPAdmin with an Azure CSP subscription associated with it.|
-|You're an **Indirect CSP Reseller**, and you'll operate the Azure Stack Hub|Ask your indirect CSP Provider to create an Azure AD tenant for your organization with an Azure CSP subscription associated with it using Partner Center.|
+|You're a **Direct CSP Partner** or an **Indirect CSP Provider**, and you'll operate the Azure Stack Hub|Use a CSP Shared Services subscription.<br>     or<br>Create a Microsoft Entra tenant with a descriptive name in Partner Center. For example, &lt;your organization>CSPAdmin with an Azure CSP subscription associated with it.|
+|You're an **Indirect CSP Reseller**, and you'll operate the Azure Stack Hub|Ask your indirect CSP Provider to create a Microsoft Entra tenant for your organization with an Azure CSP subscription associated with it using Partner Center.|
 
 ### Capacity-based billing
 If you decide to use the capacity billing model, you must purchase an Azure Stack Hub Capacity Plan SKU based on the capacity of your system. You need to know the number of physical cores in your Azure Stack Hub to purchase the correct quantity.

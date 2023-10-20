@@ -14,7 +14,7 @@ ms.reviewer: abha
 
 # Overview of AKS hybrid cluster provisioning from Azure (preview)
 
-Currently you can manage the lifecycle of AKS on Azure Stack HCI or AKS on Windows Server clusters through PowerShell and Windows Admin Center. AKS hybrid cluster provisioning from Azure enables you to use familiar tools like the Azure portal, Azure CLI and Azure Resource Manager templates to create and manage your AKS hybrid clusters running on Azure Stack HCI and Windows Server. Azure Arc is automatically enabled on all your AKS hybrid clusters so you can use your Azure AD identity for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies. We've also simplified the end-to-end security posture for your AKS hybrid clusters through Microsoft Defender for Cloud.  
+Currently you can manage the lifecycle of AKS on Azure Stack HCI or AKS on Windows Server clusters through PowerShell and Windows Admin Center. AKS hybrid cluster provisioning from Azure enables you to use familiar tools like the Azure portal, Azure CLI and Azure Resource Manager templates to create and manage your AKS hybrid clusters running on Azure Stack HCI and Windows Server. Azure Arc is automatically enabled on all your AKS hybrid clusters so you can use your Microsoft Entra identity for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies. We've also simplified the end-to-end security posture for your AKS hybrid clusters through Microsoft Defender for Cloud.  
 
 Microsoft continues to focus on delivering a consistent user experience for all your AKS clusters. If you have created and managed AKS using Azure, you'll feel right at home managing AKS hybrid clusters on Windows Server or Azure Stack HCI with familiar Azure portal or Azure CLI management experiences.
 
@@ -24,7 +24,7 @@ At this time, you can perform the following operations through the Azure portal,
 
 - Create/list/show AKS hybrid preview clusters.
 - Give users access to Azure Resource Manager resources like AKS hybrid clusters, nodepools and vnet object through Azure RBAC.
-- Access the AKS hybrid cluster using kubectl and your Azure AD identity.
+- Access the AKS hybrid cluster using kubectl and your Microsoft Entra identity.
 - Add/list/show Linux and Windows nodepools on your AKS hybrid cluster.
 - Delete your AKS hybrid clusters and nodepools.
 
@@ -66,7 +66,7 @@ The role of the infrastructure administrator is to set up the platform component
 
 Kubernetes operators create and run applications on their on-premises AKS hybrid clusters. The operator is given scoped Azure RBAC access to the Azure subscription, Azure custom location, and AKS hybrid network by the infrastructure administrator. No access to the underlying on-premises infrastructure is necessary.
 
-Once the operator has the required access, they are free to create AKS hybrid cluster according to application needs - Windows/Linux node pools, Kubernetes versions, etc. The operator can also assign AKS cluster administrator permissions to other Azure AD users in their organization, to access the provisioned AKS hybrid clusters. Operators and Kubernetes cluster administrators can then run their containerized applications via the Azure Arc Flux v2 extension.
+Once the operator has the required access, they are free to create AKS hybrid cluster according to application needs - Windows/Linux node pools, Kubernetes versions, etc. The operator can also assign AKS cluster administrator permissions to other Microsoft Entra users in their organization, to access the provisioned AKS hybrid clusters. Operators and Kubernetes cluster administrators can then run their containerized applications via the Azure Arc Flux v2 extension.
 
 ## Next steps
 

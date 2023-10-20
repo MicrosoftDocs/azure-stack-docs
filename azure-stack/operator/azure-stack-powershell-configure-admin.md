@@ -26,9 +26,11 @@ Run the following prerequisites either from the [Azure Stack Development Kit (AS
 - Install [Azure Stack Hub-compatible Azure PowerShell modules](powershell-install-az-module.md).  
 - Download the [tools required to work with Azure Stack Hub](azure-stack-powershell-download.md).  
 
-## Connect with Azure AD
+<a name='connect-with-azure-ad'></a>
 
-To configure the Azure Stack Hub operator environment with PowerShell, run one of the scripts below. Replace the Azure Active Directory (Azure AD) tenantName and Azure Resource Manager endpoint values with your own environment configuration.
+## Connect with Microsoft Entra ID
+
+To configure the Azure Stack Hub operator environment with PowerShell, run one of the scripts below. Replace the Microsoft Entra tenantName and Azure Resource Manager endpoint values with your own environment configuration.
 
 ### [Az modules](#tab/az1)
 
@@ -74,7 +76,7 @@ To configure the Azure Stack Hub operator environment with PowerShell, run one o
 
 ## Connect with AD FS
 
-Connect to the Azure Stack Hub operator environment with PowerShell with Azure Active Directory Federated Services (Azure AD FS). For the ASDK, this Azure Resource Manager endpoint is set to `https://adminmanagement.local.azurestack.external`. To get the Azure Resource Manager endpoint for Azure Stack Hub integrated systems, contact your service provider.
+Connect to the Azure Stack Hub operator environment with PowerShell with Microsoft Entra ID Federated Services (Azure AD FS). For the ASDK, this Azure Resource Manager endpoint is set to `https://adminmanagement.local.azurestack.external`. To get the Azure Resource Manager endpoint for Azure Stack Hub integrated systems, contact your service provider.
 
 ### [Az modules](#tab/az2)
 

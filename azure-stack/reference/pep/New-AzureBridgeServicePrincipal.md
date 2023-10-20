@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # New-AzureBridgeServicePrincipal
 
 ## Synopsis
-Creates a new service principal in Azure Active Directory (Azure AD).
+Creates a new service principal in Microsoft Entra ID.
 
 ## Syntax
 

@@ -302,13 +302,15 @@ az hybridaks vnet create -n "azvnet" -g $resourceGroup --custom-location $clId -
 $vnetId = az hybridaks vnet show -n "azvnet" -g $resourceGroup --query id -o tsv
 ```
 
-## Step 12: Create an Azure AD group and add Azure AD members to it
+<a name='step-12-create-an-azure-ad-group-and-add-azure-ad-members-to-it'></a>
+
+## Step 12: Create a Microsoft Entra group and add Microsoft Entra members to it
 
 You can perform the operations in this step from the Azure portal or from Azure CLI.
 
-In order to connect to the AKS hybrid cluster from anywhere, you need to create an Azure AD group and add members to it. All the members of the Azure AD group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself to the Azure AD group. If you do not add yourself, you cannot access the AKS hybrid cluster using `kubectl`.
+In order to connect to the AKS hybrid cluster from anywhere, you need to create a Microsoft Entra group and add members to it. All the members of the Microsoft Entra group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself to the Microsoft Entra group. If you do not add yourself, you cannot access the AKS hybrid cluster using `kubectl`.
 
-To learn more about how to create an Azure AD group, visit [how to manage and create Azure AD groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You need the `objectID` of the Azure AD group to create AKS hybrid clusters. You can skip this step if you already have an Azure AD group.
+To learn more about how to create a Microsoft Entra group, visit [how to manage and create Microsoft Entra groups](/azure/active-directory/fundamentals/how-to-manage-groups#create-a-basic-group-and-add-members). You need the `objectID` of the Microsoft Entra group to create AKS hybrid clusters. You can skip this step if you already have a Microsoft Entra group.
 
 ## Step 13: Create an AKS hybrid cluster using Azure CLI
 
@@ -324,7 +326,9 @@ az hybridaks create --name <Name of your AKS hybrid cluster> --resource-group $r
 az hybridaks nodepool add -n <nodepool name> --resource-group $resourceGroup --cluster-name <aks hybrid cluster name>
 ```
 
-## Step 15: Connect to your AKS hybrid cluster using `kubectl` and Azure AD
+<a name='step-15-connect-to-your-aks-hybrid-cluster-using-kubectl-and-azure-ad'></a>
+
+## Step 15: Connect to your AKS hybrid cluster using `kubectl` and Microsoft Entra ID
 
 In order to connect to your AKS hybrid cluster using `kubectl`, run the following command:
 
