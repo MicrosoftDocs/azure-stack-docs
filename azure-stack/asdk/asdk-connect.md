@@ -45,7 +45,7 @@ A single concurrent user can manage resources in the Azure Stack administrator p
 
 You can establish a split tunnel VPN connection to an ASDK host computer to access the Azure Stack portals and locally installed tools like Visual Studio and PowerShell. Using VPN connections, multiple users can connect at the same time to Azure Stack resources hosted by the ASDK.
 
-VPN connectivity is supported for both Azure AD and Active Directory Federation Services (AD FS) deployments.
+VPN connectivity is supported for both Microsoft Entra ID and Active Directory Federation Services (AD FS) deployments.
 
 > [!NOTE]
 > A VPN connection *does not* provide connectivity to Azure Stack VMs. You won't be able to RDP into Azure Stack VMs while connected via VPN.
