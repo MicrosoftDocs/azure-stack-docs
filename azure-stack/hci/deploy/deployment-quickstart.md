@@ -24,7 +24,7 @@ Before creating a cluster, do the following:
 * Create an Active Directory domain controller on-premises, if you don't already have one.
 
    >[!IMPORTANT]
-   > On-premises Active Directory is required. Using Azure Active Directory alone will not enable you to join the cluster to Azure Active Directory Domain Services.
+   > On-premises Active Directory is required. Using Microsoft Entra alone will not enable you to join the cluster to Microsoft Entra Domain Services.
 
 * [Get an Azure subscription](https://azure.microsoft.com/), if you don't already have one.
 * [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management PC and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). Note that your management computer must be joined to the same Active Directory domain in which you'll create the cluster, or a fully trusted domain.
@@ -70,7 +70,7 @@ Setting up a witness resource is required so that if one of the servers in the c
 
 ## Register with Azure
 
-Azure Stack HCI requires a connection to Azure, and you'll need Azure Active Directory permissions to complete the registration. If you don't already have them, ask your Azure AD administrator to either grant permissions or delegate them to you. See [Connect Azure Stack HCI to Azure](register-with-azure.md) for more information. Once registered, the cluster connects automatically in the background.
+Azure Stack HCI requires a connection to Azure, and you'll need Microsoft Entra permissions to complete the registration. If you don't already have them, ask your Microsoft Entra administrator to either grant permissions or delegate them to you. See [Connect Azure Stack HCI to Azure](register-with-azure.md) for more information. Once registered, the cluster connects automatically in the background.
 
 ## Next steps
 

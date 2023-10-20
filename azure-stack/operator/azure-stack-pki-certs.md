@@ -58,7 +58,7 @@ The following list describes the general certificate issuance, security, and for
 
 ## Mandatory certificates
 
-The table in this section describes the Azure Stack Hub public endpoint PKI certificates that are required for both Azure AD and AD FS Azure Stack Hub deployments. Certificate requirements are grouped by area, and the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint.
+The table in this section describes the Azure Stack Hub public endpoint PKI certificates that are required for both Microsoft Entra ID and AD FS Azure Stack Hub deployments. Certificate requirements are grouped by area, and the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint.
 
 Certificates with the appropriate DNS names for each Azure Stack Hub public infrastructure endpoint are required. Each endpoint's DNS name is expressed in the format: *&lt;prefix>.&lt;region>.&lt;fqdn>*.
 
@@ -67,7 +67,7 @@ For your deployment, the *\<region\>* and *\<fqdn\>* values must match the regio
 For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wildcard certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture and hence development-only. Remember, both options require you to use wildcard certificates for endpoints like **acs** and Key Vault where they're required.
 
 > [!Note]  
-> During deployment, you must copy certificates to the deployment folder that matches the identity provider you're deploying against (Azure AD or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the following tables. The folder structure is pre-built in the [deployment virtual machine](deployment-networking.md#the-deployment-vm) and can be found at: C:\CloudDeployment\Setup\Certificates.
+> During deployment, you must copy certificates to the deployment folder that matches the identity provider you're deploying against (Microsoft Entra ID or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the following tables. The folder structure is pre-built in the [deployment virtual machine](deployment-networking.md#the-deployment-vm) and can be found at: C:\CloudDeployment\Setup\Certificates.
 
 | Deployment folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | Subdomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
@@ -83,7 +83,7 @@ For the production environments, we recommend individual certificates are genera
 | Admin Extension Host | *.adminhosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Admin Extension Host | adminhosting.\<region>.\<fqdn> |
 | Public Extension Host | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Public Extension Host | hosting.\<region>.\<fqdn> |
 
-If you deploy Azure Stack Hub using the Azure AD deployment mode, you only need to request the certificates listed in previous table. But, if you deploy Azure Stack Hub using the AD FS deployment mode, you must also request the certificates described in the following table:
+If you deploy Azure Stack Hub using the Microsoft Entra deployment mode, you only need to request the certificates listed in previous table. But, if you deploy Azure Stack Hub using the AD FS deployment mode, you must also request the certificates described in the following table:
 
 |Deployment folder|Required certificate subject and subject alternative names (SAN)|Scope (per region)|Subdomain namespace|
 |-----|-----|-----|-----|
