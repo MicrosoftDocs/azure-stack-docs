@@ -16,11 +16,11 @@ ms.lastreviewed: 01/14/2019
 
 # Overview of identity providers for Azure Stack Hub
 
-Azure Stack Hub requires Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS), backed by Active Directory as an identity provider. The choice of a provider is a one-time decision that you make when you first deploy Azure Stack Hub. The concepts and authorization details in this article can help you choose between identity providers.
+Azure Stack Hub requires Microsoft Entra ID or Active Directory Federation Services (AD FS), backed by Active Directory as an identity provider. The choice of a provider is a one-time decision that you make when you first deploy Azure Stack Hub. The concepts and authorization details in this article can help you choose between identity providers.
 
-Your choice of either Azure AD or AD FS is determined by the mode in which you deploy Azure Stack Hub:
+Your choice of either Microsoft Entra ID or AD FS is determined by the mode in which you deploy Azure Stack Hub:
 
-- When you deploy it in a connected mode, you can use either Azure AD or AD FS.
+- When you deploy it in a connected mode, you can use either Microsoft Entra ID or AD FS.
 - When you deploy it in a disconnected mode, without a connection to the internet, only AD FS is supported.
 
 For more information about your options, which depend on your Azure Stack Hub environment, see the following articles:
@@ -43,7 +43,7 @@ A directory is a container that holds information about *users*, *applications*,
 
 A directory tenant is an *organization*, such as Microsoft or your own company.
 
-- Azure AD supports multiple tenants, and it can support multiple organizations, each in its own directory. If you use Azure AD and have multiple tenants, you can grant apps and users from one tenant access to other tenants of that same directory.
+- Microsoft Entra ID supports multiple tenants, and it can support multiple organizations, each in its own directory. If you use Microsoft Entra ID and have multiple tenants, you can grant apps and users from one tenant access to other tenants of that same directory.
 - AD FS supports only a single tenant and, therefore, only a single organization.
 
 ### Users and groups
@@ -57,21 +57,21 @@ In Azure Stack Hub, user accounts:
 - Are created in the *username\@domain* format. Although AD FS maps user accounts to an Active Directory instance, AD FS doesn't support the use of the *\\\<domain>\\\<alias>* format.
 - Can be set up to use multi-factor authentication.
 - Are restricted to the directory where they first register, which is their organization's directory.
-- Can be imported from your on-premises directories. For more information, see  [Integrate your on-premises directories with Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
+- Can be imported from your on-premises directories. For more information, see  [Integrate your on-premises directories with Microsoft Entra ID](/azure/active-directory/connect/active-directory-aadconnect).
 
 When you sign in to your organization's user portal, you use the *https:\//portal.local.azurestack.external* URL. When signing into the Azure Stack Hub portal from domains other than the one used to register Azure Stack Hub, the domain name used to register Azure Stack Hub must be appended to the portal url. For example, if Azure Stack Hub has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the URL to use to log into the user portal would be: https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### Guest users
 
-Guest users are user accounts from other directory tenants that have been granted access to resources in your directory. To support guest users, you use Azure AD and enable support for multi-tenancy. When support is enabled, you can invite guest users to access resources in your directory tenant, which in turn enables their collaboration with outside organizations.
+Guest users are user accounts from other directory tenants that have been granted access to resources in your directory. To support guest users, you use Microsoft Entra ID and enable support for multi-tenancy. When support is enabled, you can invite guest users to access resources in your directory tenant, which in turn enables their collaboration with outside organizations.
 
-To invite guest users, cloud operators and users can use [Azure AD B2B collaboration](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Invited users get access to documents, resources, and apps from your directory, and you maintain control over your own resources and data.
+To invite guest users, cloud operators and users can use [Microsoft Entra B2B collaboration](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Invited users get access to documents, resources, and apps from your directory, and you maintain control over your own resources and data.
 
 As a guest user, you can sign in to another organization's directory tenant. To do so, you append that organization's directory name to the portal URL. For example, if you belong to the Contoso organization and want to sign in to the Fabrikam directory, you use https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### Apps
 
-You can register apps to Azure AD or AD FS, and then offer the apps to users in your organization.
+You can register apps to Microsoft Entra ID or AD FS, and then offer the apps to users in your organization.
 
 Apps include:
 
@@ -85,7 +85,7 @@ Apps can support two types of tenancy:
   > [!NOTE]
   > Because AD FS supports only a single directory, apps you create in an AD FS topology are, by design, single-tenant apps.
 
-- **Multi-tenant**: Supports use by users and services from both the directory where the app is registered and additional tenant directories. With multi-tenant apps, users of another tenant directory (another Azure AD tenant) can sign in to your app.
+- **Multi-tenant**: Supports use by users and services from both the directory where the app is registered and additional tenant directories. With multi-tenant apps, users of another tenant directory (another Microsoft Entra tenant) can sign in to your app.
 
   For more information about multi-tenancy, see [Enable multi-tenancy](enable-multitenancy.md).
 
@@ -97,7 +97,7 @@ When you register an app, you create two objects:
 
 - **Service principal object**: A credential that's created for an app in the directory where the app is first registered. A service principal is also created in the directory of each additional tenant where that app is used. This relationship can be one-to-many with the software app.
 
-To learn more about app and service principal objects, see [Application and service principal objects in Azure Active Directory](/azure/active-directory/develop/active-directory-application-objects).
+To learn more about app and service principal objects, see [Application and service principal objects in Microsoft Entra ID](/azure/active-directory/develop/active-directory-application-objects).
 
 ### Service principals
 
@@ -119,7 +119,7 @@ To learn about service principals for Azure Stack Hub, see [Create service princ
 
 Services in Azure Stack Hub that interact with the identity provider are registered as apps with the identity provider. Like apps, registration enables a service to authenticate with the identity system.
 
-All Azure services use [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protocols and [JSON Web Tokens](/azure/active-directory/develop/active-directory-token-and-claims) to establish their identity. Because Azure AD and AD FS use protocols consistently, you can use [the Microsoft Authentication Library](/azure/active-directory/develop/msal-overview) (MSAL) to obtain a security token to authenticate on-premises or to Azure (in a connected scenario). With MSAL, you can also use tools such as Azure PowerShell and Azure CLI for cross-cloud and on-premises resource management.
+All Azure services use [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protocols and [JSON Web Tokens](/azure/active-directory/develop/active-directory-token-and-claims) to establish their identity. Because Microsoft Entra ID and AD FS use protocols consistently, you can use [the Microsoft Authentication Library](/azure/active-directory/develop/msal-overview) (MSAL) to obtain a security token to authenticate on-premises or to Azure (in a connected scenario). With MSAL, you can also use tools such as Azure PowerShell and Azure CLI for cross-cloud and on-premises resource management.
 
 ### Identities and your identity system
 
@@ -127,7 +127,7 @@ Identities for Azure Stack Hub include user accounts, groups, and service princi
 
 When you install Azure Stack Hub, several built-in apps and services automatically register with your identity provider in the directory tenant. Some services that register are used for administration. Other services are available for users. The default registrations give core services identities that can interact both with each other and with identities that you add later.
 
-If you set up Azure AD with multi-tenancy, some apps propagate to the new directories.
+If you set up Microsoft Entra ID with multi-tenancy, some apps propagate to the new directories.
 
 ## Authentication and authorization
 
@@ -174,7 +174,7 @@ When all validations are complete, Azure Resource Manager uses the *object id* (
 ![Diagram of the token exchange protocol](media/azure-stack-identity-overview/token-exchange.svg)
 
 > [!NOTE]
-> After deployment, Azure Active Directory global administrator permission isn't required. However, some operations may require the global admin credentials (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily re-instate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+> After deployment, Microsoft Entra Global Administrator permission isn't required. However, some operations may require the global admin credentials (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily re-instate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
 ### Use Role-Based Access Control
 
@@ -210,7 +210,7 @@ The following section describes how this deprecation affects Azure Stack Hub.
 
 The Azure Stack Hub team is working closely with the Azure Graph team to ensure your systems continue to work beyond June 30, 2023 if necessary, to ensure a smooth transition. The most important action is to ensure you are compliant with the Azure Stack Hub servicing policy. Customers will receive an alert in the administrator portal of Azure Stack Hub and will be required to update the home directory and all onboarded guest directories.
 
-The majority of the migration itself will be done by the integrated system update experience; there will be a manual step required by customers to grant new permissions to those applications, which will require global administrator permissions in each Azure AD directory used with your Azure Stack Hub environments. After the update package with these changes finishes installing, an alert is raised in the admin portal directing you to complete this step using the multi-tenancy UI or PowerShell scripts. This is the same operation you perform when onboarding additional directories or resource providers; for more information, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md).
+The majority of the migration itself will be done by the integrated system update experience; there will be a manual step required by customers to grant new permissions to those applications, which will require global administrator permissions in each Microsoft Entra directory used with your Azure Stack Hub environments. After the update package with these changes finishes installing, an alert is raised in the admin portal directing you to complete this step using the multi-tenancy UI or PowerShell scripts. This is the same operation you perform when onboarding additional directories or resource providers; for more information, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md).
 
 If you use AD FS as your identity system with Azure Stack Hub, these Graph changes will not impact your system directly. However, the latest versions of tools such as Azure CLI, Azure PowerShell, etc., require the new Graph APIs, and they will not work. Ensure that you only use the versions of these tools which are explicitly supported with your given Azure Stack Hub build.
 

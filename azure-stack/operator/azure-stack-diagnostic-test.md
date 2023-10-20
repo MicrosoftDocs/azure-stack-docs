@@ -164,7 +164,7 @@ Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName Pri
 Test-AzureStack -ServiceAdminCredential "<Cloud administrator user name>" -Include AzsScenarios   
 ```
 
-The cloud admin user name must be typed in the UPN format: serviceadmin@contoso.onmicrosoft.com (Azure AD). When prompted, type the password to the cloud admin account.
+The cloud admin user name must be typed in the UPN format: serviceadmin@contoso.onmicrosoft.com (Microsoft Entra ID). When prompted, type the password to the cloud admin account.
 
 ### Groups
 
@@ -221,7 +221,7 @@ To test new credentials with the configured backup share, run:
 
 ### Run validation tool to test network infrastructure
 
-This test checks the connectivity of the network infrastructure bypassing the Azure Stack Hub software defined network (SDN). It demonstrates connectivity from a Public VIP to the configured DNS forwarders, NTP servers, and authentication endpoints. This includes connectivity to Azure when using Azure AD as identity provider or the federated server when using AD FS as identity provider.
+This test checks the connectivity of the network infrastructure bypassing the Azure Stack Hub software defined network (SDN). It demonstrates connectivity from a Public VIP to the configured DNS forwarders, NTP servers, and authentication endpoints. This includes connectivity to Azure when using Microsoft Entra ID as identity provider or the federated server when using AD FS as identity provider.
 
 Include the debug parameter to get a detailed output of the command:
 
