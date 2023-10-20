@@ -528,6 +528,8 @@
             href: ../index.yml
           - name: Repair a server
             href: ../index.yml
+        - name: Alerts via Azure monitor
+          href: manage/health-alerts-via-azure-monitor.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
