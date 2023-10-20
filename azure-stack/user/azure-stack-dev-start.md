@@ -67,7 +67,7 @@ Before you begin setting up your environment, you need:
 
 - Access to the Azure Stack Hub user portal. 
 - The name of your tenant. 
-- To determine whether you're using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS), as your identity manager. 
+- To determine whether you're using Microsoft Entra ID or Active Directory Federation Services (AD FS), as your identity manager. 
 
 If you have any questions about Azure Stack Hub, contact your cloud operator. 
 
