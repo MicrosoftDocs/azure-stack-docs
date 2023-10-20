@@ -187,10 +187,20 @@ Before you run, you should also factor these other considerations:
 
 ### Manually run ReFS deduplication and compression job
 
-- To start a job immediately, run the following cmdlet. Once you start a job, it may not immediately appear to be progressing as it could still be in the initialization phase.
+- To start a job immediately, run the following cmdlet. Once you start a job, its `State` may appear as `NotStarted` because it could still be in the initialization phase.
 
     ```powershell
     Start-ReFSDedupJob -Volume <path> -Duration <DurationInHours> -FullRun -CompressionFormat <LZ4 | ZSTD> 
+    ```
+
+    For example, the following cmdlet starts a job immediately for a duration of 10 hours using the LZ4 compression format:
+
+    ```powershell
+    PS C:\Users\hciuser> Start-ReFSDedupJob -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\" -FullRun -CompressionFormat LZ4 -Duration 10
+
+    Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+    --     ----            -------------   -----         -----------     --------             -------
+    12     Job12                           NotStarted    True                                 Start-Re...
     ```
 
 - To stop a running job, run the following cmdlet. Note that this cmdlet will work for in-progress scheduled jobs too.
@@ -199,10 +209,26 @@ Before you run, you should also factor these other considerations:
     Stop-ReFSDedupJob -Volume <path>
     ```
 
+    For example, the following cmdlet stops the job that you started in the previous example:
+
+    ```powershell
+    PS C:\Users\hciuser> Stop-ReFSDedupJob -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\"
+    ```
+
 - To view the progress, savings, and status of a job, run the following cmdlet:
 
     ```powershell
     Get-ReFSDedupStatus -Volume <path> | FL
+    ```
+
+    For example, the following cmdlet displays the status of a job:
+
+    ```powershell
+    PS C:\Users\hciuser> Get-ReFSDedupStatus -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\"
+
+    Volume                                            Type             Used     Deduped Compressed Format
+    ------                                            ----             ----     ------- ---------- ------
+    \\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\ DedupAndCompress 1.38 TiB 0 B     0 B        Unc...
     ```
 
 ### Schedule recurring ReFS deduplication and compression jobs
