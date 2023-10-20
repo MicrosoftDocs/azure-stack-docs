@@ -14,7 +14,7 @@ ms.reviewer: kerimha
 
 This topic describes how to migrate a Windows Server failover cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings and storage, and imports your VMs.
 
-The following diagram depicts migrating your Windows Server cluster in-place using the same server hardware. After shutting your cluster down, Azure Stack HCI is installed, storage is reattached, and your VMs are imported and made highly available (HA).
+The following diagram depicts migrating your Windows Server cluster in-place using the same server hardware. After shutting down your cluster, Azure Stack HCI is installed, storage is reattached, and your VMs are imported and made highly available (HA).
 
 :::image type="content" source="media/migrate-same-hardware/migrate-cluster-same-hardware.png" alt-text="Migrate cluster to Azure Stack HCI on the same hardware" lightbox="media/migrate-same-hardware/migrate-cluster-same-hardware.png":::
 
@@ -31,12 +31,12 @@ There are several requirements and things to consider before you begin migration
 
 - You must have domain credentials with administrator permissions for Azure Stack HCI.
 
-- Backup all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To backup to Azure, see [Use Azure Backup](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+- Back up all VMs on your source cluster. Complete a crash-consistent back up of all applications and data and an application-consistent back up of all databases.  To back up to Azure, see [Use Azure Backup](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 - Collect inventory and configuration of all cluster nodes and cluster naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
 
-- Shutdown your cluster VMs, offline CSVs, offline storage pools, and the cluster service.
-- Disable the Cluster Name Object (CNO) (it is reused later) and:
+- Shut down your cluster VMs, offline CSVs, offline storage pools, and the cluster service.
+- Disable the Cluster Name Object (CNO) (it's reused later) and:
     - Check that the CNO has Create Object rights to its own Organizational Unit (OU)
     - Check that the block inherited policy has been set on the OU
     - Set the required policy for Azure Stack HCI on this OU
@@ -87,13 +87,13 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 Migration consists of running Azure Stack HCI setup on your Windows Server deployment for a clean OS install with your VMs and storage intact. This replaces the current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](../deploy/operating-system.md). Afterwards, you create a new Azure Stack HCI cluster, reattach your storage and import the VMs over.
 
-1. Shutdown your existing cluster VMs, offline CSVs, offline storage pools, and the cluster service.
+1. Shut down your existing cluster VMs, offline CSVs, offline storage pools, and the cluster service.
 
 1. Go to the location where you downloaded the Azure Stack HCI bits, then run Azure Stack HCI setup on each Windows Server node.
 
 1. During setup, select **Custom: Install the newer version of Azure Stack HCI only (Advanced)**. Repeat for each server.
 
-1. Create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell to do this, as described below.  
+1. Create the new Azure Stack HCI cluster. You can use Windows Admin Center or Windows PowerShell for this task, as shown in the following sections.  
 
 > [!IMPORTANT]
 > Hyper-V virtual switch (`VMSwitch`) name must be the same name captured in the cluster configuration inventory. Make sure the virtual switch name used on the Azure Stack HCI cluster matches the original source virtual switch name before you import the VMs.
@@ -112,7 +112,7 @@ For detailed information on how to create the cluster, see [Create an Azure Stac
 
 1. Start the Create Cluster wizard. When you get to **Step 4: Storage**:
 
-1. Skip step **4.1 Clean drives**. Do not do this.
+1. Skip step **4.1 Clean drives**. Don't do this.
 
 1. Step away from the wizard.
 
@@ -132,7 +132,7 @@ For detailed information on how to create the cluster, see [Create an Azure Stac
 
 ### Using Windows PowerShell
 
-If using PowerShell to create the Azure Stack HCI cluster, the following roles and features must be installed on each Azure Stack HCI cluster node using the following cmdlet:
+If using PowerShell to create the Azure Stack HCI cluster, the following roles and features must be installed on each Azure Stack HCI cluster node using this cmdlet:
 
 ```powershell
 Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication, Bitlocker, Data-Center-Bridging, RSAT-AD-PowerShell -IncludeAllSubFeature -IncludeManagementTools -Verbose
@@ -143,13 +143,13 @@ For more information on how to create the cluster using PowerShell, see [Create 
 > [!NOTE]
 > Re-use the same name for the previously disabled Cluster Name Object.
 
-1. Run the following cmdlet to create the cluster:
+1. Run the cmdlet to create the cluster:
 
     ```powershell
     New-cluster –name "clustername" –node Server01,Server02 –staticaddress xx.xx.xx.xx –nostorage
     ```
 
-1. Run the following cmdlet to create the new `Storagesubsystem Object` ID, rediscover all storage enclosures, and assign SES drive numbers:
+1. Run the cmdlet to create the new `Storagesubsystem Object` ID, rediscover all storage enclosures, and assign SES drive numbers:
 
     ```powershell
     Enable-ClusterS2D -Verbose
@@ -162,9 +162,9 @@ For more information on how to create the cluster using PowerShell, see [Create 
 
 1. Using Cluster Manager, enable every CSV except the `ClusterperformanceHistory` volume, which is a ReFS volume (make sure this is not an ReFS CSV).
 
-1. If migrating from Windows Server 2019, re-run the `Enable-ClusterS2D -verbose` cmdlet. This will associate the `ClusterperformanceHistory` ReFS volume with the SDDC Cluster Resource Group.
+1. If migrating from Windows Server 2019, re-run the `Enable-ClusterS2D -verbose` cmdlet. This associates the `ClusterperformanceHistory` ReFS volume with the SDDC Cluster Resource Group.
 
-1. Determine your current storage pool name and version by running the following:
+1. Determine your current storage pool name and version by running the cmdlet:
 
     ```powershell
     Get-StoragePool | ? IsPrimordial -eq $false | ft FriendlyName,Version
@@ -178,7 +178,7 @@ For more information on how to create the cluster using PowerShell, see [Create 
 
 1. Create the quorum witness. For information on how, see [Set up a cluster witness](../manage/witness.md).
 
-1. Verify that storage repair jobs are completed using the following:
+1. Verify that storage repair jobs are completed using the cmdlet:
 
     ```powershell
     Get-StorageJob
@@ -193,7 +193,7 @@ For more information on how to create the cluster using PowerShell, see [Create 
     Get-VirtualDisk
     ```
 
-1. Determine the cluster node version, which displays `ClusterFunctionalLevel` and `ClusterUpgradeVersion`. Run the following to get this:
+1. Determine the cluster node version, which displays `ClusterFunctionalLevel` and `ClusterUpgradeVersion`. Run the cmdlet to get this:
 
     ```powershell
     Get-ClusterNodeSupportedVersion
@@ -210,9 +210,9 @@ For more information on how to create the cluster using PowerShell, see [Create 
 
 ## ReFS volumes
 
-If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are supported, but such volumes do not benefit from performance enhancements in Azure Stack HCI from using mirror-accelerated parity (MAP) volumes. This enhancement requires a new ReFS volume to be created using the PowerShell `New-Volume` cmdlet.
+If migrating from Windows Server 2016, Resilient File System (ReFS) volumes are supported, but such volumes don't benefit from performance enhancements in Azure Stack HCI from using mirror-accelerated parity (MAP) volumes. This enhancement requires a new ReFS volume to be created using the PowerShell `New-Volume` cmdlet.
 
-For Windows Server 2016 MAP volumes, ReFS compaction was not available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume in an Azure Stack HCI cluster.
+For Windows Server 2016 MAP volumes, ReFS compaction wasn't available, so re-attaching these volumes is OK but will be less performant compared to creating a new MAP volume in an Azure Stack HCI cluster.
 
 ## Import the VMs
 
@@ -220,7 +220,7 @@ A best practice is to create at least one Cluster Shared Volume (CSV) per cluste
 
 Perform the following steps on your Azure Stack HCI cluster to import the VMs, make them highly available, and start them:
 
-1. Run the following cmdlet to show all CSV owner nodes:
+1. Run the cmdlet to show all CSV owner nodes:
 
     ```powershell
     Get-ClusterSharedVolume
@@ -228,13 +228,13 @@ Perform the following steps on your Azure Stack HCI cluster to import the VMs, m
 
 1. For each server node, go to `C:\Clusterstorage\Volume` and set the path for all VMs - for example `C:\Clusterstorage\volume01`.
 
-1. Run the following cmdlet on each CSV owner node to display the path to all VM VMCX files per volume prior to VM import. Modify the path to match your environment:
+1. Run the cmdlet on each CSV owner node to display the path to all VM VMCX files per volume prior to VM import. Modify the path to match your environment:
 
     ```powershell
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse
     ```
 
-1. Run the following cmdlet for each server node to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
+1. Run the cmdlet for each server node to import and register all VMs and make them highly available on each CSV owner node. This ensures an even distribution of VMs for optimal processor and memory allocation:
 
     ```powershell
     Get-ChildItem -Path "C:\Clusterstorage\Volume01\*.vmcx" -Recurse | Import-VM -Register | Get-VM | Add-ClusterVirtualMachineRole
