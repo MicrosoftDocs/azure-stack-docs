@@ -14,7 +14,7 @@ ms.date: 10/20/2023
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 
-This article describes how to use [Azure Monitor alerts](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Stack HCI health alerts.
+This article describes how to use [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Stack HCI health alerts.
 
 ## About integration of Azure Monitor and Azure Stack HCI alerts
 
@@ -99,7 +99,7 @@ The **Overview** page of your Azure Stack HCI cluster resource page also display
 
 To disable the health alerts capability, uninstall the Azure Monitor alerts extension that you installed earlier.
 
-For instructions, see [Uninstall an extension from the Azure portal](./arc-extension-management.md/#uninstall-an-extension).
+For instructions, see [Uninstall an extension from the Azure portal](./arc-extension-management.md#uninstall-an-extension).
 
 
 ## Next steps
