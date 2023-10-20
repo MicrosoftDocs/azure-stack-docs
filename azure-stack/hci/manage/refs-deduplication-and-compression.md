@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Stack 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2023
+ms.date: 10/20/2023
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Stack HCI and Windows Server (preview)
@@ -17,7 +17,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ## What is ReFS deduplication and compression?
 
-ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as virtual desktop infrastructure (VDI). This feature helps optimize storage usage, enhancing overall performance and significantly reducing storage cost.
+ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as virtual desktop infrastructure (VDI). This feature helps optimize storage usage, enhancing overall performance, and significantly reducing storage cost.
 
 This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the cluster size. The compression engine uses heatmaps to identify when a block of data was last used and compresses only unused data, optimizing CPU usage.
 
@@ -36,7 +36,7 @@ Here are the benefits of using ReFS deduplication and compression:
 Before you begin, make sure that the following prerequisites are completed:
 
 - You have access to an Azure Stack HCI cluster that is deployed and registered.
-- You have access to a cluster shared volume (CSV) on the cluster. Make sure that the Windows Data Deduplication feature isn't enabled on the CSV already.
+- You have the cluster shared volume (CSV) created on the cluster and you have access to it. Make sure that the Windows Data Deduplication feature isn't enabled on the CSV.
 
 ## Use ReFS deduplication and compression
 
@@ -44,13 +44,13 @@ You can use ReFS deduplication and compression via Windows Admin Center or Power
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
-In Windows Admin Center, a schedule can be applied for ReFS deduplication and compression to run on an existing volume or a new volume during volume creation.
+In Windows Admin Center, you can create a schedule for ReFS deduplication and compression to run on an existing volume or a new volume during volume creation.
 
-Follow these steps to use ReFS deduplication and compression via Windows Admin Center:
+Follow these steps to enable ReFS deduplication and compression via Windows Admin Center and set a schedule when it should run:
 
 1. Connect to a cluster, and then on the **Tools** pane on the left, select **Volumes**.
 
-1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**. To turn on ReFS deduplication and compression for a new volume, select **+Create**.
+1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**. To turn on ReFS deduplication and compression for a new volume, select **+ Create**.
 
 1. On the **Volume settings** pane on the right, under **More options** dropdown, select the **Use ReFS deduplication and compression** checkbox.
 
@@ -74,13 +74,52 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
 
 1. Connect to your Azure Stack HCI cluster and run PowerShell as administrator.
 
-1. Run all the commands to modify settings on a given volume on the owner node. Run the following cmdlet to show all CSV owner nodes:
+1. You must run all the commands to modify settings on a given volume on the owner node. Run the following cmdlet to show all CSV owner nodes:
 
     ```powershell
     Get-ClusterSharedVolume
     ```
 
-1. For each server node, go to `C:\Clusterstorage\Volume` and set the path for all VMs. For example: `C:\Clusterstorage\volume1`.
+    Here's a sample output of the cmdlet uaage:
+
+    ```output
+    Name                           State  Node
+    ----                           -----  ----
+    Cluster Virtual Disk (Volume1) Online hci-server1
+    ```
+
+1. Run the following cmdlet to get the volume path:
+
+    ```powershell
+    Get-Volume |FL
+    ```
+
+    Note down the `Path` value from the output.
+
+    Here's a sample output of the cmdlet usage:
+
+    ```output
+    ObjectId             : <Object-ID>
+    PassThroughClass     :
+    PassThroughIds       :
+    PassThroughNamespace :
+    PassThroughServer    :
+    UniqueId             : <Unique-ID>
+    AllocationUnitSize   : 4096
+    DedupMode            : NotAvailable
+    DriveLetter          :
+    DriveType            : Fixed
+    FileSystem           : CSVFS
+    FileSystemLabel      : Volume1
+    FileSystemType       : CSVFS_ReFS
+    HealthStatus         : Healthy
+    OperationalStatus    : OK
+    Path                 : \\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\
+    ReFSDedupMode        : Disabled
+    Size                 : 3298467774464
+    SizeRemaining        : 1764139073536
+    PSComputerName       :
+    ```
 
 1. Run the following cmdlet to enable ReFS deduplication and compression on a specific volume:
 
@@ -96,22 +135,28 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
 
     If you want to change the `Type` parameter, you must first [disable ReFS deduplication and compression](#turn-off-refs-deduplication-and-compression) and then enable it again with the new `Type` parameter.
 
-1. After enabling ReFS deduplication and compression, verify its status on the CSV. Run the following cmdlet and ensure the `Enabled` field in the output displays as `True`.
+    For example, run the following cmdlet to enable both deduplication and compression on a volume:
+
+    ```powershell
+    PS C:\Users\hciuser> Enable-ReFSDedup -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\" -Type DedupAndCompress
+    ```
+
+1. After enabling ReFS deduplication and compression, verify its status on the CSV. Run the following cmdlet and ensure the `Enabled` field in the output displays as `True` and the `Type` field displays the specified mode.
 
     ```powershell
     Get-ReFSDedupStatus -Volume <path> | FL
     ```
 
-    Here's a sample output of the `Get-ReFSDedupStatus` cmdlet where the `Enabled` field displays as `True`:
+    Here's a sample output of the `Get-ReFSDedupStatus` cmdlet where the `Enabled` field displays as `True` and the `Type` field displays as `DedupAndCompress`:
 
     ```output
-    PS C:\Users\hciuser> Get-ReFSDedupStatus -Volume C:\ClusterStorage\Volumel\ | FL
-    Volume                                    : C:\ClusterStorage\Volumel\
+    PS C:\Users\hciuser> Get-ReFSDedupStatus -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\" | FL
+    Volume                                    : \\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\
     Enabled                                   : True
     Type                                      : DedupAndCompress
     Status                                    : --
-    Used                                      : 2.32 TiB
-    Deduped                                   :  0 B
+    Used                                      : 1.4 TiB
+    Deduped                                   : 0 B
     Compressed                                : 0 B
     ScannedOnLastRun                          : 0 B
     DedupedOnLastRun                          : 0 B
@@ -122,8 +167,8 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
     CompressionLevel                          : 0
     CompressionChunkSize                      : 0 B
     VolumeClusterSizeBytes                    : 4 KiB
-    VolumeTotale lusters                      : 1343209472
-    VolumeTotalAllocatedelusters              : 502127950
+    VolumeTotale lusters                      : 805289984
+    VolumeTotalAllocatedelusters              : 353850628
     VolumeTotalAllocatedCompressibleClusters  : 0
     VolumeTota1InUseCompressibleClusters      : 0
     VolumeTota1Compressedelusters             : 0
@@ -142,10 +187,10 @@ Before you run, you should also factor these other considerations:
 
 ### Manually run ReFS deduplication and compression job
 
-- To start a job immediately, run the following cmdlet:
+- To start a job immediately, run the following cmdlet. Once you start a job, it may not immediately appear to be progressing as it could still be in the initialization phase.
 
     ```powershell
-    Start-ReFSDedupJob -Volume <string> -Duration <timespan> -FullRun -CompressionFormat <LZ4 | ZSTD> 
+    Start-ReFSDedupJob -Volume <path> -Duration <DurationInHours> -FullRun -CompressionFormat <LZ4 | ZSTD> 
     ```
 
 - To stop a running job, run the following cmdlet. Note that this cmdlet will work for in-progress scheduled jobs too.
@@ -164,41 +209,48 @@ Before you run, you should also factor these other considerations:
 
 Set a reoccurring schedule to run storage optimizations for the volume. You can then view, set or modify, suspend, resume, or clear the job schedule.
 
+- To set or modify a schedule, run the following cmdlet:
+
+    ```powershell
+    Set-ReFSDedupSchedule -Volume <Path> -Start <DateTime> -Days <DayOfWeek[]> -Duration <DurationInHours> -CompressionFormat <LZ4 | ZSTD> -CompressionLevel <UInt16> -CompressionChunkSize <UInt32> 
+    ```
+
+    For example, to set up a recurring job scheduled to run every Thursday at 8:30 AM for a duration of 2 hours in the LZ4 format, run the following cmdlet. Use `-Days EveryDay` if you want to run the job daily.
+
+    ```powershell
+    PS C:\Users\hciuser> Set-ReFSDedupSchedule -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\" -Start "8:30" -Days "Thursday" -Duration 2 -CompressionFormat LZ4 -CompressionLevel 1 -CompressionChunkSize 4
+    ```
+
 - To view the job schedule, run the following cmdlet:
 
     ```powershell
     Get-ReFSDedupSchedule -Volume <path> | FL
     ```
 
-    Here's a sample output of the cmdlet usage:
+    Here's the output of the job scheduled in the previous example:
 
     ```output
-    PS C:\Users\hciuser> Get-ReFSDedupSchedu1e -Volume C:\ClusterStorage\Volumel\ | FL
-    Volume                                    : C:\ClusterStorage\Volumel\
-    Enabled                                   : True
-    Type                                      : DedupAndCompress
-    CpuPercentage                             : Automatic
-    ConcurrentOpenFiles                       : Automatic
-    MinimumLastModifiedTimeHours              : 0
-    ExcludeFileExtension                      : {}
-    ExcludeFolder                             : {}
-    CpuPercentage                             : 0
-    CompressionFormat                         : LZ4
-    CompressionLevel                          : 1
-    CompressionChunkSize                      : 4 KiB
-    CompressionTuning                         : 70
-    RecompressionTuning                       : 40
-    DecompressionTuning                       : 30
-    Start                                     : N/A
-    Duration                                  : N/A
-    Days                                      : None
-    Suspended                                 : False
-    ```
+    PS C:\Users\hciuser> Get-ReFSDedupSchedule -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\" | FL
 
-- To set or modify a schedule, run the following cmdlet:
-
-    ```powershell
-    Set-ReFSDedupSchedule -Volume <path> -Start <datetime> -Days <days> -Duration <timespan> -CompressionFormat <LZ4 | ZSTD> -CompressionLevel <uint16> -CompressionChunkSize <uint32> 
+    Volume                       : \\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\
+    Enabled                      : True
+    Type                         : DedupAndCompress
+    CpuPercentage                : Automatic
+    ConcurrentOpenFiles          : Automatic
+    MinimumLastModifiedTimeHours : 0
+    ExcludeFileExtension         : {}
+    ExcludeFolder                : {}
+    CpuPercentage                : 0
+    CompressionFormat            : LZ4
+    CompressionLevel             : 1
+    CompressionChunkSize         : 4 B
+    CompressionTuning            : 70
+    RecompressionTuning          : 40
+    DecompressionTuning          : 30
+    Start                        : 8:30:00 AM
+    Duration                     : 00m:00.000s
+    Days                         : Thursday
+    Suspended                    : False
     ```
 
 ---
@@ -229,31 +281,33 @@ Use the following cmdlet to suspend the scheduled job and check the status using
 Suspend-ReFSDedupSchedule -Volume <path> 
 ```
 
-Here's a sample output of the cmdlet usage:
+Here's a sample output of the cmdlet usage. Note that the `Suspeded` field displays as `True`.
 
 ```output
-PS C:\Users\hciuser> Suspend-RePSDedupSchedu1e -Volume C:\ClusterStorage\Volumel\
-PS C:\Users\hciuser> Get-ReFSDedupSchedu1e -Volume C:\ClusterStorage\Volumel\ | FL
 
-Volume                                    : C:\ClusterStorage\Volumel\ 
-Enabled                                   : True
-Type                                      : DedupAndCompress
-CpuPercentage                             : Automatic
-ConcurrentOpenFiles                       : Automatic
-MinimumLastModifiedTimeHours              : 0
-ExcludeFileExtension                      : {}
-ExcludeFolder                             : {}
-CpuPercentage                             : 0
-CompressionFormat                         : LZ4
-CompressionLevel                          : 1
-CompressionChunkSize                      : 4 KiB 
-CompressionTuning                         : 70
-RecompressionTuning                       : 40
-DecompressionTuning                       : 30
-Start                                     : N/A
-Duration                                  : N/A
-Days                                      : EveryDay
-Suspended                                 : True
+PS C:\Users\hciuser> Suspend-ReFSDedupSchedule -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\"
+PS C:\Users\user> Get-ReFSDedupSchedule -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\" | FL
+
+
+Volume                       : \\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\
+Enabled                      : True
+Type                         : DedupAndCompress
+CpuPercentage                : Automatic
+ConcurrentOpenFiles          : Automatic
+MinimumLastModifiedTimeHours : 0
+ExcludeFileExtension         : {}
+ExcludeFolder                : {}
+CpuPercentage                : 0
+CompressionFormat            : LZ4
+CompressionLevel             : 1
+CompressionChunkSize         : 4 B
+CompressionTuning            : 70
+RecompressionTuning          : 40
+DecompressionTuning          : 30
+Start                        : 8:30:00 AM
+Duration                     : 00m:00.000s
+Days                         : Thursday
+Suspended                    : True
 ```
 
 ---
@@ -283,6 +337,34 @@ Use the following cmdlet to suspend the scheduled job and check the status:
 
 ```powershell
 Disable-ReFSDedup -Volume <path>
+```
+
+Here's a sample output of the cmdlet usage. Note that the `Enabled` field displays as `False` and the `Type` field displays as blank.
+
+```output
+PS C:\Users\hciuser> Disable-ReFSDedup -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\"
+PS C:\Users\hciuser> Get-ReFSDedupSchedule -Volume "\\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\" | FL
+
+
+Volume                       : \\?\Volume{d795a2c0-8e4a-4865-9cc2-496da4d8f328}\
+Enabled                      : False
+Type                         :
+CpuPercentage                : Automatic
+ConcurrentOpenFiles          : Automatic
+MinimumLastModifiedTimeHours : 0
+ExcludeFileExtension         : {}
+ExcludeFolder                : {}
+CpuPercentage                : 0
+CompressionFormat            : LZ4
+CompressionLevel             : 0
+CompressionChunkSize         : 0 B
+CompressionTuning            : 70
+RecompressionTuning          : 40
+DecompressionTuning          : 30
+Start                        : N/A
+Duration                     : N/A
+Days                         : None
+Suspended                    : False
 ```
 
 ---
