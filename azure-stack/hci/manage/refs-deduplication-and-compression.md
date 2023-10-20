@@ -133,7 +133,7 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
     - **DedupAndCompress**: Enables both deduplication and compression. This is the default option.
     - **Compress**: Enables compression only.
 
-    If you want to change the `Type` parameter, you must first [disable ReFS deduplication and compression](#turn-off-refs-deduplication-and-compression) and then enable it again with the new `Type` parameter.
+    If you want to change the `Type` parameter, you must first [disable ReFS deduplication and compression](#disable-refs-deduplication-and-compression) and then enable it again with the new `Type` parameter.
 
     For example, run the following cmdlet to enable both deduplication and compression on a volume:
 
