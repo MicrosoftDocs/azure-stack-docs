@@ -48,7 +48,7 @@ Here are the high-level steps to configure health alerts for Azure Stack HCI:
 - **Step 1:** Turn on the health alerts capability.
 - **Step 2:** Configure alert processing rules.
 
-## Step 1: Turn on the health alerts capability
+### Step 1: Turn on the health alerts capability
 
 Make sure your Azure subscription is activated for evaluation before you turn on the health alerts capability on your Azure Stack HCI system.
 
@@ -71,7 +71,7 @@ Follow these steps to turn on health alerts via the Azure portal.
 
    ![Screenshot of the Capabilities tab, with Health alerts tile showing as Configured.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-are-configured-3.png).
 
-## Step 2: Configure alert processing rules
+### Step 2: Configure alert processing rules
 
 In this step, you configure alert processing rules, consisting of a series of configurations and actions to determine how to handle the incoming alerts. These rules enable you to add or suppress action groups, apply filters, or specify predefined schedules to apply the rule.
 
