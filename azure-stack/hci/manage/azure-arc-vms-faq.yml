@@ -24,7 +24,7 @@ sections:
     - question: |
         What does this breaking change on Azure Stack HCI, version 22H2 mean for me and my workloads? 
       answer: |
-        The existing Arc VMs created on version 22H2 on your cluster will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February 2024. However, you can't manage or provision new Arc VMs on Azure portal if you are on version 22H2 from Novemeber 2023. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Stack HCI, version 23H2. Keep in mind that there is no automated migration support for Arc VMs running on Azure Stack HCI, version 22H2. 
+        The existing Arc VMs created on version 22H2 on your cluster will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February 2024. However, you can't manage or provision new Arc VMs on Azure portal if you are on version 22H2 from November 2023. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Stack HCI, version 23H2. Keep in mind that there is no automated migration support for Arc VMs running on Azure Stack HCI, version 22H2. 
 
     - question: |
         What major improvements and features can I expect for Arc VMs in the upcoming Azure Stack HCI, version 23H2?
