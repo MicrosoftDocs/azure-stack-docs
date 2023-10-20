@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: alkohli 
 ms.topic: how-to 
-ms.date: 04/17/2023
+ms.date: 10/20/2023
 ms.author: alkohli 
 ms.reviewer: kerimha 
 ---
@@ -85,7 +85,7 @@ Get-VM –ComputerName (Get-ClusterNode) | Update-VMVersion -Force
 
 ## Updating the servers and cluster
 
-Migration consists of running Azure Stack HCI setup on your Windows Server deployment for a clean OS install with your VMs and storage intact. This replaces the current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](operating-system.md). Afterwards, you create a new Azure Stack HCI cluster, reattach your storage and import the VMs over.
+Migration consists of running Azure Stack HCI setup on your Windows Server deployment for a clean OS install with your VMs and storage intact. This replaces the current operating system with Azure Stack HCI. For detailed information, see [Deploy the Azure Stack HCI operating system](../deploy/operating-system.md). Afterwards, you create a new Azure Stack HCI cluster, reattach your storage and import the VMs over.
 
 1. Shutdown your existing cluster VMs, offline CSVs, offline storage pools, and the cluster service.
 
@@ -99,13 +99,13 @@ Migration consists of running Azure Stack HCI setup on your Windows Server deplo
 > Hyper-V virtual switch (`VMSwitch`) name must be the same name captured in the cluster configuration inventory. Make sure the virtual switch name used on the Azure Stack HCI cluster matches the original source virtual switch name before you import the VMs.
 
 > [!NOTE]
-> You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](register-with-azure.md).
+> You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](../deploy/register-with-azure.md).
 
 ### Using Windows Admin Center
 
 If using Windows Admin Center to create the Azure Stack HCI cluster, the Create Cluster wizard automatically installs all required roles and features on each server node.
 
-For detailed information on how to create the cluster, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
+For detailed information on how to create the cluster, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md).
 
 > [!IMPORTANT]
 > Skip step **4.1 Clean drives** in the Create cluster wizard. Otherwise you will delete your existing VMs and storage.
@@ -138,7 +138,7 @@ If using PowerShell to create the Azure Stack HCI cluster, the following roles a
 Install-WindowsFeature -Name Hyper-V, Failover-Clustering, FS-Data-Deduplication, Bitlocker, Data-Center-Bridging, RSAT-AD-PowerShell -IncludeAllSubFeature -IncludeManagementTools -Verbose
 ```
 
-For more information on how to create the cluster using PowerShell, see [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
+For more information on how to create the cluster using PowerShell, see [Create an Azure Stack HCI cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
 
 > [!NOTE]
 > Re-use the same name for the previously disabled Cluster Name Object.
@@ -260,5 +260,5 @@ Perform the following steps on your Azure Stack HCI cluster to import the VMs, m
 
 ## Next steps
 
-- Validate the cluster after migration. See [Validate an Azure Stack HCI cluster](validate.md).
+- Validate the cluster after migration. See [Validate an Azure Stack HCI cluster](../deploy/validate.md).
 - To migrate Windows Server VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack HCI on new hardware](migrate-cluster-new-hardware.md).
