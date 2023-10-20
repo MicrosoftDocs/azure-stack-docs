@@ -34,14 +34,14 @@ This tutorial walks you through how you can use [Azure Benefits](azure-benefits.
 
 ### Prerequisites
 
-#### Windows Server 2012/2012 R2
+#### [Windows Server 2012/2012 R2](#tab/windows-server-2012)
 
 - Review and install the installation prerequisites section for [ESUs in KB5031043: Procedure to continue receiving security updates after extended support has ended on October 10, 2023 - Microsoft Support](https://support.microsoft.com/topic/kb5031043-procedure-to-continue-receiving-security-updates-after-extended-support-has-ended-on-october-10-2023-c1a20132-e34c-402d-96ca-1e785ed51d45).
 - Install the August 8th, 2023 SSU or later:
   - Windows Server 2012 R2 (KB5029368)
   - Windows Server 2012 (KB5029369)
 
-#### Windows Server 2008/2008 R2
+#### [Windows Server 2008/2008 R2](#tab/windows-server-2008)
 
 - Review and install the installation prerequisites section for ESUs in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091).
 - Install the October 8th, 2021 SSU or later:
