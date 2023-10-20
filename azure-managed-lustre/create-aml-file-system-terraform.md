@@ -6,7 +6,7 @@ author: pauljewellmsft
 ms.service: azure-stack
 ms.topic: quickstart
 ms.custom: devx-track-terraform
-ms.date: 10/18/2023
+ms.date: 10/20/2023
 ms.author: pauljewell
 content_well_notification: 
   - AI-contribution
@@ -16,7 +16,7 @@ content_well_notification:
 
 In this quickstart, you use Terraform to create an [Azure Lustre](amlfs-overview.md) file system.
 
-[!INCLUDE [About Terraform](../../azure-dev-docs-pr/articles/terraform/includes/abstract.md)]
+[!INCLUDE [About Terraform](../azure-dev-docs-pr/articles/terraform/includes/abstract.md)]
 
 In this article, you learn how to:
 
@@ -59,10 +59,7 @@ In this article, you learn how to:
 
 ## Initialize Terraform
 
-[!INCLUDE [terraform-init.md](~/azure-dev-docs-pr/articles/terraform/includes/terraform-init.md)]
-[!INCLUDE [terraform-init.md](/azure-dev-docs-pr/articles/terraform/includes/terraform-init.md)]
 [!INCLUDE [terraform-init.md](../azure-dev-docs-pr/articles/terraform/includes/terraform-init.md)]
-[!INCLUDE [terraform-init.md](../../azure-dev-docs-pr/articles/terraform/includes/terraform-init.md)]
 
 ## Create a Terraform execution plan
 
@@ -70,7 +67,7 @@ In this article, you learn how to:
 
 ## Apply a Terraform execution plan
 
-[!INCLUDE [terraform-apply-plan.md](../../azure-dev-docs-pr/articles/terraform/includes/terraform-apply-plan.md)]
+[!INCLUDE [terraform-apply-plan.md](../azure-dev-docs-pr/articles/terraform/includes/terraform-apply-plan.md)]
 
 ## Verify the results
 
@@ -118,7 +115,7 @@ In this article, you learn how to:
 
 ## Clean up resources
 
-[!INCLUDE [terraform-plan-destroy.md](../../azure-dev-docs-pr/articles/terraform/includes/terraform-plan-destroy.md)]
+[!INCLUDE [terraform-plan-destroy.md](../azure-dev-docs-pr/articles/terraform/includes/terraform-plan-destroy.md)]
 
 ## Troubleshoot Terraform on Azure
 
