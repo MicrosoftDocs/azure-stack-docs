@@ -20,7 +20,7 @@ This article describes how to use [Azure Monitor alerts](https://learn.microsoft
 
 The integration of Azure Monitor alerts with Azure Stack HCI enhances the health alerts capability of Azure Stack HCI. With this integration, any health alerts generated within your on-premises Azure Stack HCI system are automatically forwarded to Azure Monitor alerts. You can link these alerts with your automated incident management systems, ensuring timely and efficient responses.
 
-For more information about Azure Monitor alerts, see [What are Azure Monitor alerts?](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-overview).
+For more information about Azure Monitor alerts, see [What are Azure Monitor alerts?](/azure/azure-monitor/alerts/alerts-overview).
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
@@ -30,7 +30,7 @@ The integration of Azure Monitor alerts with Azure Stack HCI offers several key 
 
 - **No additional cost.** By enabling the health alerts capability, you automatically get Azure Monitor alerts for all your Azure Stack HCI cluster health issues at no additional cost. There's no need to set up Log Analytics or manually author any alert rules.
 - **Near real-time monitoring.** With Azure Stack HCI health alerts providing near real-time monitoring, you can detect issues as they occur and take immediate action, thereby reducing downtime.
-- **Customizability.** The Azure Stack HCI health alerts experience is built on top of Azure Monitor alerts. You can configure the alert processing rules to notify the right team via your preferred [Incident management partners](https://learn.microsoft.com/azure/azure-monitor/partners), ensuring quick and effective response to the issues.
+- **Customizability.** The Azure Stack HCI health alerts experience is built on top of Azure Monitor alerts. You can configure the alert processing rules to notify the right team via your preferred [Incident management partners](/azure/azure-monitor/partners), ensuring quick and effective response to the issues.
 
 ## Prerequisites  
 
@@ -81,7 +81,7 @@ Here are some common use cases of how you can configure alert processing rules t
 - Specify that all alerts for storage-related health faults should be directed to the team responsible for addressing storage issues.
 - Configure when to apply the rule. By default, the rule is always active. You can set it to work at a specific time, or you can set up a recurring schedule.
 
-For information about alert processing rules and how to configure them, see [Alert processing rules](/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal) and [Configure an alert processing rule](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal#configure-an-alert-processing-rule).
+For information about alert processing rules and how to configure them, see [Alert processing rules](/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal) and [Configure an alert processing rule](/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal#configure-an-alert-processing-rule).
 
 ## Review alerts
 
@@ -99,7 +99,7 @@ The **Overview** page of your Azure Stack HCI cluster resource page also display
 
 To disable the health alerts capability, uninstall the Azure Monitor alerts extension that you installed earlier.
 
-For instructions, see [Uninstall an extension from the Azure portal](./arc-extension-management.md?tabs=azureportal#uninstall-an-extension-from-the-azure-portal).
+For instructions, see [Uninstall an extension from the Azure portal](./arc-extension-management.md/#uninstall-an-extension).
 
 
 ## Next steps
