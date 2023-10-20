@@ -8,7 +8,7 @@ ms.date: 09/26/2022
 ---
 
 
-- You have Azure subscription credentials (Microsoft Account or Entra ID user).
+- You have Azure subscription credentials (Microsoft Account or Microsoft Entra user).
 
 - You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc.
 
