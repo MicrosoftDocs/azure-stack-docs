@@ -24,7 +24,7 @@ This article contains details about registration operations. You can use these o
 
 ## Add tenant to registration
 
-You can use this operation when you want to add a new tenant to your registration. Tenant usage is reported under an Azure subscription connected with the Azure Active Directory (Azure AD) tenant.
+You can use this operation when you want to add a new tenant to your registration. Tenant usage is reported under an Azure subscription connected with the Microsoft Entra tenant.
 
 You can also use this operation to change the subscription associated with a tenant. Call PUT or the **New-AzResource** PowerShell cmdlet to overwrite the previous mapping. If you are using the AzureRM PowerShell module, use the **New-AzureRMResource** PowerShell cmdlet.
 

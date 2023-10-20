@@ -20,7 +20,7 @@ The benefits of using virtual network peering are as follows:
 
 - A low-latency, high-bandwidth connection between resources in different virtual networks within the same Azure Stack Hub stamp.
 - The ability of resources in one virtual network to communicate with resources in a different virtual network within the same Azure Stack Hub stamp.
-- The ability to transfer data between virtual networks across different subscriptions  within the same Azure Active Directory tenant.
+- The ability to transfer data between virtual networks across different subscriptions  within the same Microsoft Entra tenant.
 - No downtime to resources in either virtual network when creating the peering, or after the peering is created.
 
 Network traffic between peered virtual networks is private. Traffic between virtual networks is kept in the infrastructure layer. No public internet, gateways, or encryption is required in the communication between virtual networks.
@@ -76,16 +76,16 @@ You can't use remote gateways if you already have a gateway configured in your v
 
 ### Permissions
 
-Please ensure that when creating peerings with VNETs in different subscriptions within the same Azure AD tenants, the accounts have at least the **Network Contributor** role assigned.
+Please ensure that when creating peerings with VNETs in different subscriptions within the same Microsoft Entra tenants, the accounts have at least the **Network Contributor** role assigned.
 
 > [!IMPORTANT]
-> Azure Stack Hub does not support VNET peering between virtual networks on different subscriptions and on different Azure AD tenants. It does support VNET peering between VNETs on different subscriptions as long as those subscriptions belong to the same Azure AD tenant. This is different from the Azure implementation.
+> Azure Stack Hub does not support VNET peering between virtual networks on different subscriptions and on different Microsoft Entra tenants. It does support VNET peering between VNETs on different subscriptions as long as those subscriptions belong to the same Microsoft Entra tenant. This is different from the Azure implementation.
 
 ## Virtual network peering frequently asked questions (FAQ)
 
 ### What is Virtual network peering?
 
-Virtual network peering enables you to connect virtual networks. A VNet peering connection between virtual networks enables you to route traffic between them privately through IPv4 addresses. Virtual machines in the peered VNets can communicate with each other as if they are within the same network. VNet peering connections can also be created across multiple subscriptions within the same Azure AD tenant.
+Virtual network peering enables you to connect virtual networks. A VNet peering connection between virtual networks enables you to route traffic between them privately through IPv4 addresses. Virtual machines in the peered VNets can communicate with each other as if they are within the same network. VNet peering connections can also be created across multiple subscriptions within the same Microsoft Entra tenant.
 
 ### Does Azure Stack Hub support Global VNET peering?
 
@@ -103,13 +103,15 @@ No, peering between Azure and Azure Stack hub is not supported at this time.
 
 No, peering can only be created between virtual networks in one Azure Stack Hub system. For more information about how to connect two virtual networks from different stamps, see [Establish a VNET to VNET connection in Azure Stack Hub](azure-stack-network-howto-vnet-to-vnet-stacks.md).
 
-### Can I enable peering if my virtual networks belong to subscriptions within different Azure Active Directory tenants?
+<a name='can-i-enable-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants'></a>
 
-No. It is not possible to establish VNet Peering if your subscriptions belong to different Azure Active Directory tenants. This is a specific limitation for Azure Stack Hub.
+### Can I enable peering if my virtual networks belong to subscriptions within different Microsoft Entra tenants?
+
+No. It is not possible to establish VNet Peering if your subscriptions belong to different Microsoft Entra tenants. This is a specific limitation for Azure Stack Hub.
 
 ### Can I peer my virtual network with a virtual network in a different subscription?
 
-Yes. You can peer virtual networks across different subscriptions if they belong to the same Azure AD tenant.
+Yes. You can peer virtual networks across different subscriptions if they belong to the same Microsoft Entra tenant.
 
 ### Are there any bandwidth limitations for peering connections?
 

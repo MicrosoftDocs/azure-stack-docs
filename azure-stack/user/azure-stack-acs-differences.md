@@ -42,7 +42,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Page blob page size|512 bytes. |4 KB. 
 |Table partition key and row key size|1,024 characters (2,048 bytes).|400 characters (800 bytes).
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
-|Azure AD Authentication for storage|Generally available. |Not yet supported.
+|Microsoft Entra authentication for storage|Generally available. |Not yet supported.
 |Immutable Blobs|Generally available. |The API is supported when you use version 2008 or later, the portal is supported from version 2206 and later.
 |Batch API for Blob Storage|In preview. |Not yet supported.
 |Firewall and virtual network rules for storage|Generally available. |Not yet supported.|

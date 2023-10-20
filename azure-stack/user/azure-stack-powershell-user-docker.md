@@ -32,7 +32,7 @@ In this article, you can use Docker to create a container on which to run the ve
 
 ### Set up a service principal for using PowerShell
 
-To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Azure Active Directory (Azure AD) tenant. You delegate permissions with user role-based access control (RBAC). You may need to request the service principal from your cloud operator.
+To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Microsoft Entra tenant. You delegate permissions with user role-based access control (RBAC). You may need to request the service principal from your cloud operator.
 
 1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](../operator/give-app-access-to-resources.md).
 
