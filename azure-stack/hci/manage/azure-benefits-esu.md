@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 10/18/2023
+ms.date: 10/19/2023
 ms.lastreviewed: 10/18/2023
 
 ---
@@ -34,12 +34,21 @@ This tutorial walks you through how you can use [Azure Benefits](azure-benefits.
 
 ### Prerequisites
 
+#### Windows Server 2012/2012 R2
+
+- Review and install the installation prerequisites section for [ESUs in KB5031043: Procedure to continue receiving security updates after extended support has ended on October 10, 2023 - Microsoft Support](https://support.microsoft.com/topic/kb5031043-procedure-to-continue-receiving-security-updates-after-extended-support-has-ended-on-october-10-2023-c1a20132-e34c-402d-96ca-1e785ed51d45).
+- Install the August 8th, 2023 SSU or later:
+  - Windows Server 2012 R2 (KB5029368)
+  - Windows Server 2012 (KB5029369)
+
+#### Windows Server 2008/2008 R2
+
 - Review and install the installation prerequisites section for ESUs in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091).
 - Install the October 8th, 2021 SSU or later:
   - Windows 7 SP1 and Windows Server 2008 R2 SP1 (KB5006749)
   - Windows Server 2008 SP2 (KB5006750)
 
-The following screen capture shows typical output when checking for required prerequisites using PowerShell. Your actual output may look different; this is example output that shows installed prerequisites:
+The following image shows typical output when checking for required prerequisites using PowerShell. Your actual output may look different; this is example output that shows installed prerequisites:
 
 :::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites.":::
 
