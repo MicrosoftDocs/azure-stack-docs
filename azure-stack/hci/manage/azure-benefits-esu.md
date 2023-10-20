@@ -48,6 +48,8 @@ This tutorial walks you through how you can use [Azure Benefits](azure-benefits.
   - Windows 7 SP1 and Windows Server 2008 R2 SP1 (KB5006749)
   - Windows Server 2008 SP2 (KB5006750)
 
+---
+
 The following image shows typical output when checking for required prerequisites using PowerShell. Your actual output might look different; this image is example output that shows installed prerequisites:
 
 :::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites.":::
