@@ -29,7 +29,7 @@ If you use Azure Stack Hub with a Cloud Solution Provider (CSP), you might choos
 
 Add the CSP as **user** to your subscription.
 
-1. Add your CSP as a guest user with the **user** role to your tenant directory. For help with adding a user, see [Add new users to Azure Active Directory](/azure/active-directory/add-users-azure-active-directory).
+1. Add your CSP as a guest user with the **user** role to your tenant directory. For help with adding a user, see [Add new users to Microsoft Entra ID](/azure/active-directory/add-users-azure-active-directory).
 
 2. The CSP creates the local Azure Stack Hub subscription for you. You are ready to start using Azure Stack Hub.
 
@@ -39,7 +39,7 @@ Add the CSP as **user** to your subscription.
 
 Add the CSP as **owner** to your subscription.
 
-1. Add your CSP as guest user to your tenant directory. For information about adding a user, see [Add new users to Azure Active Directory](/azure/active-directory/add-users-azure-active-directory).
+1. Add your CSP as guest user to your tenant directory. For information about adding a user, see [Add new users to Microsoft Entra ID](/azure/active-directory/add-users-azure-active-directory).
 
 2. Add the **Owner** role to the CSP guest user. For information about adding a CSP user to your subscription, see [Use Role-Based Access Control to manage access to your Azure subscription resources](/azure/role-based-access-control/role-assignments-portal). The CSP creates the local Azure Stack Hub subscription for you. You are ready to start using Azure Stack Hub.
 3. Your CSP should create a resource in your subscription to verify that they can manage your resources.

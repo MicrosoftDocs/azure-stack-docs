@@ -1,6 +1,6 @@
 ---
 title: Configure multi-tenancy in Azure Stack Hub 
-description: Learn how to configure multi-tenancy for guest Azure Active Directory tenants in Azure Stack Hub.
+description: Learn how to configure multi-tenancy for guest Microsoft Entra tenants in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 11/05/2021
@@ -16,12 +16,12 @@ zone_pivot_groups: management-tool-portal-powershell
 
 # Configure multi-tenancy in Azure Stack Hub
 
-You can configure Azure Stack Hub to support sign-ins from users that reside in other Azure Active Directory (Azure AD) directories, allowing them to use services in Azure Stack Hub. These directories have a "guest" relationship with your Azure Stack Hub directory, and are considered guest Azure AD tenants.
+You can configure Azure Stack Hub to support sign-ins from users that reside in other Microsoft Entra directories, allowing them to use services in Azure Stack Hub. These directories have a "guest" relationship with your Azure Stack Hub directory, and are considered guest Microsoft Entra tenants.
 
 For example, consider this scenario:
 
-- You're the service administrator of contoso.onmicrosoft.com, the home Azure AD tenant that provides identity and access management services to Azure Stack Hub.
-- Mary is the directory administrator of adatum.onmicrosoft.com, the guest Azure AD tenant where guest users are located.
+- You're the service administrator of contoso.onmicrosoft.com, the home Microsoft Entra tenant that provides identity and access management services to Azure Stack Hub.
+- Mary is the directory administrator of adatum.onmicrosoft.com, the guest Microsoft Entra tenant where guest users are located.
 - Mary's company (Adatum) uses IaaS and PaaS services from your company. Adatum wants to allow users from the guest directory (adatum.onmicrosoft.com) to sign in and use Azure Stack Hub resources secured by contoso.onmicrosoft.com.
 
 This guide provides the steps required, in the context of this scenario, to enable or disable multi-tenancy in Azure Stack Hub for a guest directory tenant. You and Mary accomplish this process by registering or unregistering the guest directory tenant, which enables or disables Azure Stack Hub sign-ins and service consumption by Adatum users.
@@ -31,7 +31,7 @@ If you're a Cloud Solution Provider (CSP), you have other ways to [configure and
 ::: zone pivot="management-tool-powershell"
 ## Prerequisites
 
-Before you register or unregister a guest directory, you and Mary must complete administrative steps for your respective Azure AD tenants: the Azure Stack Hub home directory (Contoso), and the guest directory (Adatum):
+Before you register or unregister a guest directory, you and Mary must complete administrative steps for your respective Microsoft Entra tenants: the Azure Stack Hub home directory (Contoso), and the guest directory (Adatum):
 
 - [Install](powershell-install-az-module.md) and [configure](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack Hub.
 - [Download the Azure Stack Hub Tools](azure-stack-powershell-download.md), and then import the Connect and Identity modules:
@@ -165,7 +165,9 @@ Write-Host "Unhealthy directories: "
 $healthReport.directoryTenants | Where status -NE 'Healthy' | Select -Property tenantName,tenantId,status | ft
 ```
 
-## Update Azure AD tenant permissions
+<a name='update-azure-ad-tenant-permissions'></a>
+
+## Update Microsoft Entra tenant permissions
 
 This action clears an alert in Azure Stack Hub, indicating that a directory requires an update. Run the following command from the *Azurestack-tools-master/identity* folder:
 
@@ -181,7 +183,7 @@ Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManage
    -DirectoryTenantName $homeDirectoryTenantName -Verbose
 ```
 
-The script prompts you for administrative credentials on the Azure AD tenant, and takes several minutes to run. The alert clears after you run the cmdlet.
+The script prompts you for administrative credentials on the Microsoft Entra tenant, and takes several minutes to run. The alert clears after you run the cmdlet.
 ::: zone-end
 
 ::: moniker range="<azs-2102"
@@ -223,7 +225,7 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
 #### Configure guest directory
 
-Mary received the email with the link to register the directory. She opens the link in a browser and confirms the Azure Active Directory and the Azure Resource Manager endpoint of your Azure Stack Hub system.
+Mary received the email with the link to register the directory. She opens the link in a browser and confirms the Microsoft Entra ID and the Azure Resource Manager endpoint of your Azure Stack Hub system.
 
 1. Mary signs in by using her global admin credentials for adatum.onmicrosoft.com.
 
