@@ -71,7 +71,7 @@ This section looks at creating an API model for your cluster.
     ```
 
     > [!NOTE]  
-    > If you're using Azure AD for your identity system, you don't need to add the **identitySystem** field.
+    > If you're using Microsoft Entra ID for your identity system, you don't need to add the **identitySystem** field.
 
 6.  In `masterProfile`, set the following fields:
 
