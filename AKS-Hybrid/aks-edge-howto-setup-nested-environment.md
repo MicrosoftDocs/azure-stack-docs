@@ -1,7 +1,7 @@
 ---
 title: Nested virtualization environment for AKS Edge Essentials
 description: Learn how to prepare your nested virtualization environment for AKS Edge Essentials clusters. 
-author: fcabrera
+author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
 ms.date: 10/10/2023
@@ -78,7 +78,7 @@ The previous diagram shows the different virtual machines and components of this
 
    ```powershell
    $ifIndex = (Get-NetAdapter -Name "vEthernet (AKS-Int)").ifIndex
-   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
+   New-NetIPAddress –IPAddress "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
    ```
 
 1. Create a NAT table for connecting the internal virtual switch and the internal network connected devices with the external/Internet network:

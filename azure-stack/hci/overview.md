@@ -125,7 +125,7 @@ Some Microsoft partners are developing software that extends the capabilities of
 
 - [Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)
 - [Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md)
-- [Use Azure Stack HCI with Windows Admin Center](get-started.md)
+- [Monitor Azure Stack HCI clusters from Windows Admin Center](./manage/monitor-cluster.md)
 - [Compare Azure Stack HCI to Windows Server](concepts/compare-windows-server.md)
 - [Compare Azure Stack HCI to Azure Stack Hub](concepts/compare-azure-stack-hub.md)
 - [Azure Stack HCI foundations learning path](/training/paths/azure-stack-hci-foundations/)
