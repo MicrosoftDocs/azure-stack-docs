@@ -121,7 +121,7 @@ Each Azure Stack Hub Storage account possesses a unique DNS name derived from th
 
 Application connection strings can be modified after a disaster is declared to account for the relocation of the objects or, if a CNAME record is used in front of a load balancer front-ending the source and target storage accounts, the load balancer can be configured with a manual failover algorithm that will allow the administrator to declare the target
 
-If SAS is used by the application rather than AAD or AD FS, the above method will not work and application connection strings will need to be updated with the target storage account URL and the SAS key(s) generated for the target storage account.
+If SAS is used by the application rather than Microsoft Entra ID or AD FS, the above method will not work and application connection strings will need to be updated with the target storage account URL and the SAS key(s) generated for the target storage account.
 
 ## Next steps
 

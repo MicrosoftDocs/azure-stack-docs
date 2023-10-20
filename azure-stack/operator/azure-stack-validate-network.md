@@ -30,7 +30,7 @@ The readiness checker validates:
 * DNS integration
 * DNS forwarder
 * Time server
-* Azure AD connectivity
+* Microsoft Entra connectivity
 * AD FS and Graph connectivity
 * Duplicate IP address assignments
 
