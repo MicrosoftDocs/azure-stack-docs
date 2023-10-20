@@ -23,14 +23,14 @@ First, you should review the [What is Azure Stack Development Kit?](asdk-what-is
 Like Azure, Azure Stack innovates rapidly so we'll regularly release new builds of the ASDK. However, you can't upgrade the ASDK like you can Azure Stack integrated systems deployments. So, if you want to move to the latest build, you must completely [redeploy the ASDK](asdk-redeploy.md). You can't apply update packages. This process takes time, but the benefit is that you can try out the latest features as soon as they become available. 
 
 ## What account should I use?
-There are a few account considerations you should be aware of when managing Azure Stack. This is especially true in deployments using Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Azure Active Directory (Azure AD). The following account considerations apply to both Azure Stack integrated systems and ASDK deployments:
+There are a few account considerations you should be aware of when managing Azure Stack. This is especially true in deployments using Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Microsoft Entra ID. The following account considerations apply to both Azure Stack integrated systems and ASDK deployments:
 
-|Account|Azure AD|AD FS|
+|Account|Microsoft Entra ID|AD FS|
 |-----|-----|-----|
 |Local Admin (.\Administrator)|ASDK host admin|ASDK host admin|
 |AzureStack\AzureStackAdmin|ASDK host admin<br><br>Can be used to sign in to the Azure Stack administrator portal<br><br>Access to view and administer Service Fabric rings|ASDK host admin<br><br>No access to the Azure Stack administrator portal<br><br>Access to view and administer Service Fabric rings<br><br>No longer owner of the Default Provider Subscription (DPS)|
 |AzureStack\CloudAdmin|Can access and run permitted commands within the Privileged Endpoint|Can access and run permitted commands within the Privileged Endpoint<br><br>Can't sign in to the ASDK host<br><br>Owner of the Default Provider Subscription (DPS)|
-|Azure AD Global Administrator|Used during installation<br><br>Owner of the Default Provider Subscription (DPS)|Not applicable|
+|Microsoft Entra Global Administrator|Used during installation<br><br>Owner of the Default Provider Subscription (DPS)|Not applicable|
 |
 
 ## What tools do I use to manage?
@@ -45,7 +45,7 @@ Your users want to use services. From their perspective, your main role is to ma
 > If you want to test your plans, offers, and services, you should use the user portal `https://portal.local.azurestack.external`; not the administrator portal `https://adminportal.local.azurestack.external`.
 
 In addition to providing services, you must take care of all the regular duties of an Azure Stack Operator to keep the ASDK up and running. These duties include the following things:
-- Add user accounts for either Azure AD or AD FS deployments.
+- Add user accounts for either Microsoft Entra ID or AD FS deployments.
 - Assign role-based access control (RBAC) roles (this isn't restricted to just admins).
 - Monitor infrastructure health.
 - Manage network and storage resources.
