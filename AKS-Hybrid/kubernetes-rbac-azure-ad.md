@@ -1,6 +1,6 @@
 ---
-title: Control access using Azure Active Directory and Kubernetes RBAC in AKS hybrid
-description: Learn how to use Azure Active Directory (AD) group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS hybrid.
+title: Control access using Microsoft Entra ID and Kubernetes RBAC in AKS hybrid
+description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS hybrid.
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 10/21/2022
@@ -14,17 +14,17 @@ ms.date: 11/04/2022
 # Keyword: Kubernetes role-based access control 
 ---
 
-# Control access using Azure AD and Kubernetes RBAC in AKS hybrid
+# Control access using Microsoft Entra ID and Kubernetes RBAC in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) can be configured to use Azure Active Directory (Azure AD) for user authentication. In this configuration, you sign in to an AKS cluster using an Azure AD authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
+Azure Kubernetes Service (AKS) can be configured to use Microsoft Entra ID for user authentication. In this configuration, you sign in to an AKS cluster using a Microsoft Entra authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
 
-This article describes how to control access using Kubernetes RBAC in an AKS cluster based on Azure AD group membership in AKS hybrid. You'll create a demo group and users in Azure AD. And then you'll create roles and role bindings in the AKS cluster to grant the appropriate permissions to create and view resources.
+This article describes how to control access using Kubernetes RBAC in an AKS cluster based on Microsoft Entra group membership in AKS hybrid. You'll create a demo group and users in Microsoft Entra ID. And then you'll create roles and role bindings in the AKS cluster to grant the appropriate permissions to create and view resources.
 
 ## Prerequisites
 
-Before you set up Kubernetes RBAC using Azure AD identity, you'll need:
+Before you set up Kubernetes RBAC using Microsoft Entra identity, you'll need:
 
 - **An AKS cluster created in AKS hybrid**
 
@@ -54,13 +54,15 @@ Before you set up Kubernetes RBAC using Azure AD identity, you'll need:
 
 ## Optional first steps
 
-If you don't already have an Azure AD group that contains members, you may want to create a group and add some members, so that you can follow the instructions in this article.
+If you don't already have a Microsoft Entra group that contains members, you may want to create a group and add some members, so that you can follow the instructions in this article.
 
-To demonstrate working with Azure AD and Kubernetes RBAC, you can create an Azure AD group for application developers that can be used to show how Kubernetes RBAC and Azure AD control access to cluster resources. In production environments, you can use existing users and groups within an Azure AD tenant.
+To demonstrate working with Microsoft Entra ID and Kubernetes RBAC, you can create a Microsoft Entra group for application developers that can be used to show how Kubernetes RBAC and Microsoft Entra ID control access to cluster resources. In production environments, you can use existing users and groups within a Microsoft Entra tenant.
 
-### Create a demo group in Azure AD
+<a name='create-a-demo-group-in-azure-ad'></a>
 
-First, create the group in Azure AD in your tenant for the application developers using the [az ad group create](/cli/azure/ad/group#az_ad_group_create) command. The following example has you sign into your Azure tenant and then creates a group named **appdev**:
+### Create a demo group in Microsoft Entra ID
+
+First, create the group in Microsoft Entra ID in your tenant for the application developers using the [az ad group create](/cli/azure/ad/group#az_ad_group_create) command. The following example has you sign into your Azure tenant and then creates a group named **appdev**:
 
 ```azurecli  
 az login
@@ -69,7 +71,7 @@ az ad group create --display-name appdev --mail-nickname appdev
 
 ### Add users to your group
 
-With the example group created in Azure AD for our application developers, let's add a user to the `appdev` group. You'll use this user account to sign in to the AKS cluster and test the Kubernetes RBAC integration.
+With the example group created in Microsoft Entra ID for our application developers, let's add a user to the `appdev` group. You'll use this user account to sign in to the AKS cluster and test the Kubernetes RBAC integration.
 
 Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command. If you have quit your session, you'll need to reconnect to Azure using `az login`.
 
@@ -78,9 +80,11 @@ $AKSDEV_ID = az ad user create --display-name <name> --password <strongpassword>
 az ad group member add --group appdev --member-id $AKSDEV_ID
 ```
 
-## Create a custom Kubernetes RBAC role binding on the AKS cluster resource for the Azure AD group
+<a name='create-a-custom-kubernetes-rbac-role-binding-on-the-aks-cluster-resource-for-the-azure-ad-group'></a>
 
-Configure the AKS cluster to allow your Azure AD group to access the cluster. If you would like to add a group and users to follow the steps in this guide, see [Create demo groups in Azure AD](#create-a-demo-group-in-azure-ad).
+## Create a custom Kubernetes RBAC role binding on the AKS cluster resource for the Microsoft Entra group
+
+Configure the AKS cluster to allow your Microsoft Entra group to access the cluster. If you would like to add a group and users to follow the steps in this guide, see [Create demo groups in Microsoft Entra ID](#create-a-demo-group-in-azure-ad).
 
 1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command. 
 
@@ -185,23 +189,27 @@ To learn more about built-in Kubernetes RBAC roles, see [Kubernetes RBAC user-fa
 | edit                | None                       | Allows read/write access to most objects in a namespace. This role doesn't allow viewing or modifying roles or role bindings. However, this role allows accessing secrets and running pods as any ServiceAccount in the namespace, so it can be used to gain the API access levels of any ServiceAccount in the namespace. This role also doesn't allow write access to endpoints in clusters created using Kubernetes v1.22+. For more information, see [Write Access for Endpoints](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#write-access-for-endpoints).                |
 | view                | None                       | Allows read-only access to see most objects in a namespace. It doesn't allow viewing roles or role bindings. This role doesn't allow viewing secrets, since reading the contents of secrets enables access to ServiceAccount credentials in the namespace, which would allow API access as any ServiceAccount in the namespace (a form of privilege escalation).                                                                                                                                                         |
 
-### Use a built-in Kubernetes RBAC role with Azure AD
+<a name='use-a-built-in-kubernetes-rbac-role-with-azure-ad'></a>
 
-To use a built-in Kubernetes RBAC role with Azure AD, do the following steps:
+### Use a built-in Kubernetes RBAC role with Microsoft Entra ID
 
-1. Apply the built-in `view` Kubernetes RBAC role to your Azure AD group:
+To use a built-in Kubernetes RBAC role with Microsoft Entra ID, do the following steps:
+
+1. Apply the built-in `view` Kubernetes RBAC role to your Microsoft Entra group:
 
     ```bash
     kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --group=<Azure AD group object ID>
     ```
 
-2. Apply the built-in `view` Kubernetes RBAC role to each of your Azure AD users:
+2. Apply the built-in `view` Kubernetes RBAC role to each of your Microsoft Entra users:
 
     ```bash
     kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --user=<Azure AD user object ID>
     ```
 
-## Work with cluster resources using Azure AD identities
+<a name='work-with-cluster-resources-using-azure-ad-identities'></a>
+
+## Work with cluster resources using Microsoft Entra identities
 
 Now, test the expected permissions when you create and manage resources in an AKS cluster. In these examples, you'll schedule and view pods in the user's assigned namespace. Then, you'll try to schedule and view pods outside the assigned namespace.
 

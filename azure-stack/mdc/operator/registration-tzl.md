@@ -54,9 +54,9 @@ Before registering Azure Stack Hub with Azure, you must have:
 - The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack Hub with Azure using least-privilege administration. For more information about how to create a custom role definition that limits access to your subscription for registration, see [Create a registration role for Azure Stack Hub](../../operator/azure-stack-registration-role.md).
 - Register the Azure Stack Hub resource provider (see the following sections for details).
 
-After registration, Azure Active Directory (Azure AD) global administrator permission is not required. However, some operations might require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions, or use a separate global admin account that is an owner of the *default provider subscription*.
+After registration, Microsoft Entra Global Administrator permission is not required. However, some operations might require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions, or use a separate global admin account that is an owner of the *default provider subscription*.
 
-The user who registers Azure Stack Hub is the owner of the service principal in Azure AD. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they might see a 403 response. A 403 response indicates that the user has insufficient permissions to complete the operation.
+The user who registers Azure Stack Hub is the owner of the service principal in Microsoft Entra ID. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they might see a 403 response. A 403 response indicates that the user has insufficient permissions to complete the operation.
 
 Registering Azure Stack Hub incurs no cost on your Azure subscription.
 
@@ -93,7 +93,7 @@ To install the most recent Azure Stack Hubs tool:
 
 Your Azure Stack Hub deployment may be *connected* or *disconnected*.
 
-- **Connected**: Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You can either have Azure AD or Active Directory Federation Services (AD FS) for your identity store.
+- **Connected**: Connected means you've deployed Azure Stack Hub so that it can connect to the internet and to Azure. You can either have Microsoft Entra ID or Active Directory Federation Services (AD FS) for your identity store.
 
 - **Disconnected**: With the disconnected from Azure deployment option, you can deploy and use Azure Stack Hub without a connection to the internet. Because disconnected systems can't report PaaS usage back to Azure, they must register as the **Capacity** billing model in order to use PaaS services.
 

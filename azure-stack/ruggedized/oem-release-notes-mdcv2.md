@@ -1,6 +1,6 @@
 ---
-title: Azure Modular Data Center v2 OEM Release Notes
-description: OEM Release Notes for Azure Modular Data Center v2. Includes firmware and driver versions for all solution hardware.
+title: Azure Stack Hub DC (Preview) OEM release notes
+description: OEM Release Notes for Azure Stack Hub DC (Preview). Includes firmware and driver versions for all solution hardware.
 author: sethmanheim
 ms.topic: article
 ms.date: 10/09/2023
@@ -10,13 +10,13 @@ ms.lastreviewed:
 
 ---
 
-# Azure Modular Data Center v2 2309 OEM release notes
+# Azure Stack Hub DC (Preview) 2309 OEM release notes
 
-This article contains release and version information for Azure Modular Data Center v2.
+This article contains release and version information for Azure Stack Hub DC (Preview).
 
 ## Overview
 
-This document describes the contents of Azure Modular Data Center v2 first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Modular Data Center v2. Below are the download links:
+This document describes the contents of Azure Stack Hub DC (Preview) first party updates for firmware and drivers. This update includes improvements and fixes for the latest release of Azure Stack Hub DC (Preview). Below are the download links:
     
 * https://aka.ms/azshwpackage
 * https://aka.ms/azshwmanifest
@@ -83,7 +83,7 @@ This document describes the contents of Azure Modular Data Center v2 first party
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors may cause the drive to enter bus hang state.  |
+| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors might cause the drive to enter bus hang state.  |
 
 ### Micron 5300 - Azure Stack Hub
 
@@ -184,7 +184,7 @@ This document describes the contents of Azure Modular Data Center v2 first party
 
 | Release version | Firmware version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors may cause the drive to enter bus hang state.  |
+| 2309  | E013  | Fixes:<br/>- Remove monitoring of 12V power bus, to improve drive stability in noisy 12V power conditions.<br/>- Improve wear leveling algorithms, to recover cleanly from power cycles and manage high write workloads better.<br/>- Fix to R_ERR handling, to eliminate case where high frequency of CRC errors might cause the drive to enter bus hang state.  |
 
 ### Micron 5300 boot - HLH
 
@@ -200,7 +200,7 @@ This document describes the contents of Azure Modular Data Center v2 first party
 
 | Release version | Driver version | Changes                                |
 |-----------------|------------------|----------------------------------------|
-| 2309  | 1.16.62.0  | Fixes:<br/>- Resolved an issue on Windows 2019 where the driver was not being listed in "Uninstall<br/>Programs". When downgrading from 20.5.0 drivers to 20.0.0 drivers, please first uninstall<br/>the 20.5.0 package via Add or Remove programs.<br/>- Resolved an issue so Intel(R) Ethernet Converged Network Adapter X710-T adapter no longer<br/>advertises the unsupported 100 Mbps speed in adapter settings.<br/>- Resolved an issue where device drivers could not be reinstalled after being uninstalled.  |
+| 2309  | 1.16.62.0  | Fixes:<br/>- Resolved an issue on Windows 2019 where the driver wasn't being listed in "Uninstall<br/>Programs". When downgrading from 20.5.0 drivers to 20.0.0 drivers, first uninstall<br/>the 20.5.0 package via Add or Remove programs.<br/>- Resolved an issue so Intel(R) Ethernet Converged Network Adapter X710-T adapter no longer<br/>advertises the unsupported 100 Mbps speed in adapter settings.<br/>- Resolved an issue where device drivers couldn't be reinstalled after being uninstalled.  |
 
 ### PowerEdge R640 BIOS - HLH
 

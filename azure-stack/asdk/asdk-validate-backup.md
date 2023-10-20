@@ -92,7 +92,7 @@ New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\A
 
 Next, copy your Azure Stack backup files to the newly created share. Make sure to copy the entire MASBackup folder from the backup source share to the root of the share that the restoring ASDK is accessing. E.g., the `\\<ComputerName>\AzSBackups\` directory should contain a single MASBackup directory.
 
-Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\Certificates\AAD\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in Azure AD, or copy the decryption certificate (.pfx) to the certifcate directory: `C:\CloudDeployment\Setup\Certificates\ADFS\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in ADFS.
+Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\Certificates\AAD\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in Microsoft Entra ID, or copy the decryption certificate (.pfx) to the certifcate directory: `C:\CloudDeployment\Setup\Certificates\ADFS\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in ADFS.
 
 ## Deploy the ASDK in cloud recovery mode
 
@@ -116,7 +116,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 
     ![ASDK installer script](media/asdk-validate-backup/1.PNG) 
 
-3. Enter your Azure AD directory info (optional) and the local admin password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
+3. Enter your Microsoft Entra directory info (optional) and the local admin password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
 
     ![ASDK Identity and credentials page](media/asdk-validate-backup/2.PNG) 
 
@@ -199,4 +199,3 @@ Wait 60 minutes after calling this cmdlet to start verification of backup data o
 ## Next steps
 
 [Register Azure Stack](asdk-register.md)
-
