@@ -45,11 +45,11 @@ Contact Microsoft Support when you need a higher level of access for troubleshoo
 
 ### Choose identity provider
 
-You'll need to consider which identity provider you want to use for Azure Stack Hub deployment, either Azure AD or AD FS. You can't switch identity providers after deployment without full system redeployment. If you don't own the Azure AD account and are using an account provided to you by your Cloud Solution Provider, and if you decide to switch provider and use a different Azure AD account, you'll have to contact your solution provider to redeploy the solution for you at your cost.
+You'll need to consider which identity provider you want to use for Azure Stack Hub deployment, either Microsoft Entra ID or AD FS. You can't switch identity providers after deployment without full system redeployment. If you don't own the Microsoft Entra account and are using an account provided to you by your Cloud Solution Provider, and if you decide to switch provider and use a different Microsoft Entra account, you'll have to contact your solution provider to redeploy the solution for you at your cost.
 
 Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, or whether they can join an Active Directory domain, and so on. These things are separate.
 
-You can deploy multiple Azure Stack Hub systems with the same Azure Active Directory tenant or Active Directory.
+You can deploy multiple Azure Stack Hub systems with the same Microsoft Entra tenant or Active Directory.
 
 ### AD FS and Graph integration
 

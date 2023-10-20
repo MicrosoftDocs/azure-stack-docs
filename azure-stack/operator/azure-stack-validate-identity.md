@@ -16,14 +16,14 @@ ms.lastreviewed: 12/18/2020
 
 # Validate Azure identity
 
-Use the Azure Stack Hub Readiness Checker tool (**AzsReadinessChecker**) to validate that your Azure Active Directory (Azure AD) is ready to use with Azure Stack Hub. Validate your Azure identity solution before you begin an Azure Stack Hub deployment.  
+Use the Azure Stack Hub Readiness Checker tool (**AzsReadinessChecker**) to validate that your Microsoft Entra ID is ready to use with Azure Stack Hub. Validate your Azure identity solution before you begin an Azure Stack Hub deployment.  
 
 The readiness checker validates:
 
-- Azure AD as an identity provider for Azure Stack Hub.
-- The Azure AD account that you plan to use can sign in as a global administrator of your Azure AD.
+- Microsoft Entra ID as an identity provider for Azure Stack Hub.
+- The Microsoft Entra account that you plan to use can sign in as a global administrator of your Microsoft Entra ID.
 
-Validation ensures your environment is ready for Azure Stack Hub to store information about users, applications, groups, and service principals from Azure Stack Hub in your Azure AD.
+Validation ensures your environment is ready for Azure Stack Hub to store information about users, applications, groups, and service principals from Azure Stack Hub in your Microsoft Entra ID.
 
 ## Get the readiness checker tool
 
@@ -41,10 +41,12 @@ The following prerequisites are required:
 
 You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell Az preview module](powershell-install-az-module.md).
 
-#### Azure Active Directory (Azure AD) environment
+<a name='azure-active-directory-azure-ad-environment'></a>
 
-- Identify the Azure AD account to use for Azure Stack Hub and ensure it's an Azure AD global administrator.
-- Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure AD. For example, **contoso.onmicrosoft.com**.
+#### Microsoft Entra environment
+
+- Identify the Microsoft Entra account to use for Azure Stack Hub and ensure it's a Microsoft Entra Global Administrator.
+- Identify your Microsoft Entra tenant name. The tenant name must be the primary domain name for your Microsoft Entra ID. For example, **contoso.onmicrosoft.com**.
 
 ### Steps to validate Azure identity
 
@@ -56,13 +58,13 @@ You will need to have the Az PowerShell modules installed. For instructions, see
    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -AllowPrerelease
    ```
 
-2. From the PowerShell prompt, run the following command. Replace `contoso.onmicrosoft.com` with your Azure AD tenant name:
+2. From the PowerShell prompt, run the following command. Replace `contoso.onmicrosoft.com` with your Microsoft Entra tenant name:
 
    ```powershell
    Connect-AzAccount -tenant contoso.onmicrosoft.com
    ```
 
-3. From the PowerShell prompt, run the following command to start validation of your Azure AD. Replace `contoso.onmicrosoft.com` with your Azure AD tenant name:
+3. From the PowerShell prompt, run the following command to start validation of your Microsoft Entra ID. Replace `contoso.onmicrosoft.com` with your Microsoft Entra tenant name:
 
    ```powershell
    Invoke-AzsAzureIdentityValidation -AADDirectoryTenantName contoso.onmicrosoft.com 
@@ -104,10 +106,12 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 - [PowerShell configured for Azure Stack Hub](powershell-install-az-module.md).
 - The latest version of [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
-#### Azure AD environment
+<a name='azure-ad-environment'></a>
 
-- Identify the Azure AD account to use for Azure Stack Hub and ensure it's an Azure AD global administrator.
-- Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure AD. For example, **contoso.onmicrosoft.com**.
+#### Microsoft Entra environment
+
+- Identify the Microsoft Entra account to use for Azure Stack Hub and ensure it's a Microsoft Entra Global Administrator.
+- Identify your Microsoft Entra tenant name. The tenant name must be the primary domain name for your Microsoft Entra ID. For example, **contoso.onmicrosoft.com**.
 - Identify the Azure environment you'll use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
 
 ## Steps to validate Azure identity
@@ -118,16 +122,16 @@ You will need to have the Az PowerShell modules installed. For instructions, see
    Install-Module Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2100.1396.426
    ```
 
-2. From the PowerShell prompt, run the following command to set `$serviceAdminCredential` as the service administrator for your Azure AD tenant.  Replace `serviceadmin\@contoso.onmicrosoft.com` with your account and tenant name:
+2. From the PowerShell prompt, run the following command to set `$serviceAdminCredential` as the service administrator for your Microsoft Entra tenant.  Replace `serviceadmin\@contoso.onmicrosoft.com` with your account and tenant name:
 
    ```powershell
    $serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter credentials for service administrator of Azure Active Directory tenant"
    ```
 
-3. From the PowerShell prompt, run the following command to start validation of your Azure AD:
+3. From the PowerShell prompt, run the following command to start validation of your Microsoft Entra ID:
 
    - Specify the environment name value for **AzureEnvironment**. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
-   - Replace `contoso.onmicrosoft.com` with your Azure AD tenant name.
+   - Replace `contoso.onmicrosoft.com` with your Microsoft Entra tenant name.
 
    ```powershell
    Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com
@@ -215,7 +219,7 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsAzureIdentityValidation Completed
 ```
 
-**Cause** - The account can't sign in to the specified Azure AD (**AADDirectoryTenantName**). In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.
+**Cause** - The account can't sign in to the specified Microsoft Entra ID (**AADDirectoryTenantName**). In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.
 
 **Resolution** - Confirm that the account is valid for the specified Azure environment. In PowerShell, run the following command to verify the account is valid for a specific environment:
 
@@ -241,9 +245,9 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsAzureIdentityValidation Completed
 ```
 
-**Cause** -  Although the account can successfully sign in, the account isn't an admin of the Azure AD (**AADDirectoryTenantName**).  
+**Cause** -  Although the account can successfully sign in, the account isn't an admin of the Microsoft Entra ID (**AADDirectoryTenantName**).  
 
-**Resolution** - Sign in into the [Azure portal](https://portal.azure.com) as the account owner, go to **Azure Active Directory**, then **Users**, then **Select the User**. Then select **Directory Role** and ensure the user is a **Global administrator**. If the account is a **User**, go to **Azure Active Directory** > **Custom domain names** and confirm that the name you supplied for **AADDirectoryTenantName** is marked as the primary domain name for this directory. In this example, that's **contoso.onmicrosoft.com**.
+**Resolution** - Sign in into the [Azure portal](https://portal.azure.com) as the account owner, go to **Microsoft Entra ID**, then **Users**, then **Select the User**. Then select **Directory Role** and ensure the user is a **Global administrator**. If the account is a **User**, go to **Microsoft Entra ID** > **Custom domain names** and confirm that the name you supplied for **AADDirectoryTenantName** is marked as the primary domain name for this directory. In this example, that's **contoso.onmicrosoft.com**.
 
 Azure Stack Hub requires that the domain name is the primary domain name.
 
