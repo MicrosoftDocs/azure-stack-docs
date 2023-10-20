@@ -48,7 +48,7 @@ This tutorial walks you through how you can use [Azure Benefits](azure-benefits.
   - Windows 7 SP1 and Windows Server 2008 R2 SP1 (KB5006749)
   - Windows Server 2008 SP2 (KB5006750)
 
-The following image shows typical output when checking for required prerequisites using PowerShell. Your actual output may look different; this is example output that shows installed prerequisites:
+The following image shows typical output when checking for required prerequisites using PowerShell. Your actual output might look different; this image is example output that shows installed prerequisites:
 
 :::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites.":::
 
@@ -85,15 +85,15 @@ Yes it does.
 
 ### Does my VM need to be connected to get ESUs?
 
-No, you do not need internet connectivity to install ESUs, unless you are using an update method that requires internet connectivity to download ESU packages. Only the Azure Stack HCI host needs to maintain 30-day internet connectivity for Azure Benefits to remain active.
+No, you don't need internet connectivity to install ESUs, unless you're using an update method that requires internet connectivity to download ESU packages. Only the Azure Stack HCI host needs to maintain 30-day internet connectivity for Azure Benefits to remain active.
 
 ### Can I still use MAK keys to get ESUs for VMs on Azure Stack HCI?
 
-Yes. If you have already bought MAK keys, you can still apply them with the instructions outlined in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091). However, MAK keys are not free -- consider switching to the Azure Benefits approach so that you can automatically get free ESUs through your Azure Stack HCI cluster going forward.
+Yes. If you have already bought MAK keys, you can still apply them with the instructions outlined in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091). However, MAK keys are not free. Consider switching to the Azure Benefits approach so that you can automatically get free ESUs through your Azure Stack HCI cluster going forward.
 
 ### Can I discover ESUs if I don't have Azure Benefits?
 
-Yes. You can discover ESUs even if you don't have Azure Benefits, but for the installation, you will need to set up Azure Benefits (or MAK keys).
+Yes. You can discover ESUs even if you don't have Azure Benefits. For the installation, you must set up Azure Benefits (or MAK keys).
 
 ### Can I get ESUs through Azure Virtual Desktops (AVD) on Azure Stack HCI?
 
