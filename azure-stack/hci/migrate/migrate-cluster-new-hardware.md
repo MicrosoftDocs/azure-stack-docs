@@ -116,7 +116,7 @@ If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it fo
 
 ## Create the new cluster
 
-Before you can create the Azure Stack HCI cluster, you need to install the Azure Stack HCI OS on each new server that will be in the cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](../deploy.operating-system.md).
+Before you can create the Azure Stack HCI cluster, you need to install the Azure Stack HCI OS on each new server that will be in the cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](../deploy/operating-system.md).
 
 Use Windows Admin Center or Windows PowerShell to create the new cluster. For detailed information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
 
