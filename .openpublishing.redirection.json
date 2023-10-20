@@ -1060,6 +1060,11 @@
       "source_path": "azure-stack/hci/deploy/migrate-cluster-new-hardware.md",
       "redirect_url": "/azure-stack/hci/migrate/migrate-cluster-new-hardware",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/compare-azure-stack-hub.md",
+      "redirect_url": "/azure-stack/hci/overview",
+      "redirect_document_id": false
     }
   ]
   
