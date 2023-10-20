@@ -80,7 +80,7 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
     Get-ClusterSharedVolume
     ```
 
-    Here's a sample output of the cmdlet uaage:
+    Here's a sample output of the cmdlet uage:
 
     ```output
     Name                           State  Node
@@ -281,7 +281,7 @@ Use the following cmdlet to suspend the scheduled job and check the status using
 Suspend-ReFSDedupSchedule -Volume <path> 
 ```
 
-Here's a sample output of the cmdlet usage. Note that the `Suspeded` field displays as `True`.
+Here's a sample output of the cmdlet usage. Note that the `Suspended` field displays as `True`.
 
 ```output
 
