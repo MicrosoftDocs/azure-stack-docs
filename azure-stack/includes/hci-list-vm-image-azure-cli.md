@@ -5,7 +5,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/12/2023
+ms.date: 10/18/2023
 ---
 
 Follow these steps to list VM image using Azure CLI.
@@ -14,13 +14,13 @@ Follow these steps to list VM image using Azure CLI.
 1. Set some parameters.
 
     ```azurecli
-    $Subscription = "<Subscription ID associated with your cluster>"
-    $Resource_Group = "<Resource group name for your cluster>"
+    $subscription = "<Subscription ID associated with your cluster>"
+    $resource_group = "<Resource group name for your cluster>"
     ```
 1. List all the VM images associated with your cluster. Run the following command:
 
     ```azurecli
-    az stack-hci-vm image list --subscription $Subscription --resource-group $Resource_Group
+    az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
     ```
     
     Depending on the command used, a corresponding set of images associated with the Azure Stack HCI cluster are listed.
@@ -35,15 +35,15 @@ Follow these steps to list VM image using Azure CLI.
 Here's a sample output.
 
 ```
-PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "mkclus90-rg"
+PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 [
   {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+      "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
       "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/testvhdgen1",
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/testvhdgen1",
     "location": "eastus2euap",
     "name": "testvhdgen1",
     "properties": {
@@ -56,7 +56,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
       "status": null,
       "version": null
     },
-    "resourceGroup": "mkclus90-rg",
+    "resourceGroup": "myhci-rg",
     "systemData": {
       "createdAt": "2022-07-28T22:45:30.803142+00:00",
       "createdBy": "guspinto@microsoft.com",
@@ -70,12 +70,12 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
   },
   {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+      "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
       "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/testvhdxgen2",
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myvhdxgen2image",
     "location": "eastus2euap",
-    "name": "testvhdxgen2",
+    "name": "myvhdxgen2image",
     "properties": {
       "containerName": null,
       "hyperVGeneration": null,
@@ -86,7 +86,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
       "status": null,
       "version": null
     },
-    "resourceGroup": "mkclus90-rg",
+    "resourceGroup": "myhci-rg",
     "systemData": {
       "createdAt": "2022-07-28T23:00:56.490100+00:00",
       "createdBy": "guspinto@microsoft.com",
@@ -100,12 +100,12 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
   },
   {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+      "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
       "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest03",
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/mymktimage",
     "location": "eastus2euap",
-    "name": "marketplacetest03",
+    "name": "mymktimage",
     "properties": {
       "containerName": null,
       "hyperVGeneration": null,
@@ -117,7 +117,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
       "imagePath": null,
       "osType": "Windows",
       "provisioningState": "Succeeded",
-      "resourceName": "marketplacetest03",
+      "resourceName": "mymktimage",
       "status": {
         "downloadStatus": {},
         "provisioningStatus": {
@@ -134,7 +134,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
         }
       }
     },
-    "resourceGroup": "mkclus90-rg",
+    "resourceGroup": "myhci-rg",
     "systemData": {
       "createdAt": "2022-08-01T22:29:11.074104+00:00",
       "createdBy": "guspinto@microsoft.com",

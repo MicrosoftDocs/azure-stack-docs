@@ -19,9 +19,9 @@ ms.lastreviewed: 06/10/2019
 > [!WARNING]
 > This is not a security posture feature. Use it in scenarios where you want constraints to prevent accidental changes to the Azure Subscription. When a user is delegated rights to this custom role, the user has rights to edit permissions and elevate rights. Only assign users you trust to the custom role.
 
-During Azure Stack Hub registration, you must sign in with an Azure Active Directory (Azure AD) account. The account requires the following Azure AD permissions and Azure Subscription permissions:
+During Azure Stack Hub registration, you must sign in with a Microsoft Entra account. The account requires the following Microsoft Entra permissions and Azure Subscription permissions:
 
-* **App registration permissions in your Azure AD tenant:** Admins have app registration permissions. The permission for users is a global setting for all users in the tenant. To view or change the setting, see [create an Azure AD app and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+* **App registration permissions in your Microsoft Entra tenant:** Admins have app registration permissions. The permission for users is a global setting for all users in the tenant. To view or change the setting, see [create a Microsoft Entra app and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
     The *user can register applications* setting must be set to **Yes** for you to enable a user account to register Azure Stack Hub. If the app registrations setting is set to **No**, you can't use a user account to register Azure Stack Hub--you have to use a global admin account.
 
