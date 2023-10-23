@@ -16,7 +16,8 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 
 ## Prerequisites
 
-* Completion of [Connect servers to Arc](connect-to-arc.md)
+* Completion of Connect servers to Arc
+* <!---Completion of [Connect servers to Arc](connect-to-arc.md)--->
 * Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
@@ -25,7 +26,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Start the wizard and fill out the basics
 
 <!---1. Open the Azure portal and navigate to the Azure Stack HCI service (searching is an easy way) and then select **Deploy**.--->
-1. Open a web browser, navigate to https://aka.ms/deployFromCloudPreview and then select **Deploy**.
+1. Open a web browser, navigate to <https://aka.ms/deployFromCloudPreview> and then select **Deploy**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
@@ -70,12 +71,12 @@ Choose whether to create a new configuration for this system or to load deployme
 
    > [!TIP]
    > If you're deploying a single server that you plan to add servers to later, select the network traffic groupings you want for the eventual cluster. Then when you add servers they automatically get the appropriate settings.
-3. For each group of traffic types (known as an *intent*), select at least one unused network adapter (but probably at least two matching adapters for redundancy). 
+3. For each group of traffic types (known as an *intent*), select at least one unused network adapter (but probably at least two matching adapters for redundancy).
 
     Make sure to use high-speed adapters for the intent that includes storage traffic.
-1. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
-1. Allocate a block of static IP addresses on your management network to use for Azure Stack HCI and for services such as Azure Arc. Omit addresses already used by the servers.
-1. Select **Next**.
+4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
+5. Allocate a block of static IP addresses on your management network to use for Azure Stack HCI and for services such as Azure Arc. Omit addresses already used by the servers.
+6. Select **Next**.
 
 ## Specify management settings
 
