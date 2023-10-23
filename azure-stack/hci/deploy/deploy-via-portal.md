@@ -33,7 +33,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
 4. Select the **Region** to store this system's Azure resources—in this preview you must use either **EastUS** or **Western Europe**.
 
-   We don't transfer a lot of data so it's OK if the region isn't very close.
+   We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 6. Select the server or servers you want to deploy.
 7. Select **Validate**, and then **Next**.
