@@ -700,8 +700,6 @@
         href: update/update-via-powershell.md
       - name: Troubleshoot updates
         href: update/update-troubleshooting.md
-      - name: View update glossary
-        href: update/glossary-lifecycle-management.md
     - name: Manage capacity
       items:
       - name: Add a server
