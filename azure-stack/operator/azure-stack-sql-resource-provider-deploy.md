@@ -43,7 +43,7 @@ The SQL resource provider runs as a service on a special Add-on RP Windows Serve
    - the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
    - the [privileged endpoint](azure-stack-privileged-endpoint.md) (needed only when you're deploying SQL Server resource provider V1 or upgrading from SQL Server resource provider V1 to SQL Server resource provider V2).
    - the Azure Resource Manager admin endpoint, `https://adminmanagement.region.<fqdn>`, where `<fqdn>` is your fully qualified domain name.
-   - the Internet, if your Azure Stack Hub was deployed to use Azure Active Directory (Azure AD) as your identity provider.
+   - the Internet, if your Azure Stack Hub was deployed to use Microsoft Entra ID as your identity provider.
 
 - Download the supported version of SQL resource provider binary according to the version mapping table below. For V2 SQL resource provider, [download the marketplace item to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 
@@ -200,7 +200,7 @@ You can specify the following parameters from the command line. If you don't, or
 | **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA).| _Required_ |
 | **VMLocalCredential** | The credentials for the local admin account of the SQL resource provider VM. | _Required_ |
 | **PrivilegedEndpoint** | The IP address or DNS name of the privileged endpoint. |  _Required_ |
-| **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
+| **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Microsoft Entra deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Microsoft Entra ID, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | For integrated systems only, your certificate .pfx file must be placed in this directory. You can optionally copy one Windows Update MSU package here. | _Optional_ (_mandatory_ for integrated systems) |
 | **DefaultSSLCertificatePassword** | The password for the .pfx certificate. | _Required_ |
 | **MaxRetryCount** | The number of times you want to retry each operation if there's a failure.| 2 |
@@ -285,9 +285,11 @@ When the resource provider installation script finishes, refresh your browser to
 4. On the summary page for Resource group Overview, there should be no failed deployments.
 5. Finally, select **Virtual machines** in the administrator portal to verify that the SQL resource provider VM was successfully created and is running.
 
-## Important configuration for Azure AD
+<a name='important-configuration-for-azure-ad'></a>
 
-If your Azure Stack Hub is using Azure AD as an identity provider, make sure the VM that has installed SQL Server resource provider has outbound internet connectivity. 
+## Important configuration for Microsoft Entra ID
+
+If your Azure Stack Hub is using Microsoft Entra ID as an identity provider, make sure the VM that has installed SQL Server resource provider has outbound internet connectivity. 
 
 ::: moniker range=">=azs-2108"
 If there is a need to get the IP of the VM that has installed SQL Server resource provider (i.e. add the IP to your firewall allowlist), you need to [open a support case](azure-stack-help-and-support-overview.md) and have the support engineer make the SQL Server resource provider subscription temporarily visible. Then you can locate the VM in the subscription and get its IP.

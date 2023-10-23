@@ -77,7 +77,7 @@ Learn more [Azure Key Vault basics](/azure/key-vault/general/basic-concepts).
 
 The Azure Managed Lustre file system needs a user-assigned managed identity to access the key vault.
 
-Managed identities are standalone identity credentials that take the place of user identities when accessing Azure services through Azure Active Directory. Like other users, they can be assigned roles and permissions. [Learn more about managed identities](/azure/active-directory/managed-identities-azure-resources/).
+Managed identities are standalone identity credentials that take the place of user identities when accessing Azure services through Microsoft Entra ID. Like other users, they can be assigned roles and permissions. [Learn more about managed identities](/azure/active-directory/managed-identities-azure-resources/).
 
 Create this identity before you create the file system, and give it access to the key vault.
 

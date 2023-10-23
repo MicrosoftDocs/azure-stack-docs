@@ -33,7 +33,7 @@ With a Remote Desktop Connection, a single concurrent user can work with the por
 
 ## Connect to Azure Stack Hub with VPN
 
-You can establish a split tunnel VPN connection to an Azure Stack Development Kit. Through the VPN connection you can access the administrator portal, user portal, and locally installed tools such as Visual Studio and PowerShell to manage Azure Stack Hub resources. VPN connectivity is supported in both Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS)-based deployments. VPN connections let multiple clients connect to Azure Stack Hub at the same time. 
+You can establish a split tunnel VPN connection to an Azure Stack Development Kit. Through the VPN connection you can access the administrator portal, user portal, and locally installed tools such as Visual Studio and PowerShell to manage Azure Stack Hub resources. VPN connectivity is supported in both Microsoft Entra ID and Active Directory Federation Services (AD FS)-based deployments. VPN connections let multiple clients connect to Azure Stack Hub at the same time. 
 
 > [!NOTE] 
 > This VPN connection doesn't provide connectivity to Azure Stack Hub infrastructure VMs. 
@@ -100,6 +100,3 @@ Connect to the Azure Stack Hub instance by using either of the following two met
 To test the portal connection, open a browser and go to the user portal `https://portal.local.azurestack.external/`, sign in, and then create resources.  
 
 ## Next steps
-
-
-

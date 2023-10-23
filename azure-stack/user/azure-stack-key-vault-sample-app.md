@@ -31,7 +31,7 @@ You can install the following prerequisites from the [Azure Stack Development Ki
 To prepare for the sample application:
 
 * Create a key vault in Azure Stack Hub.
-* Register an app in Azure Active Directory (Azure AD).
+* Register an app in Microsoft Entra ID.
 
 Use the Azure portal or PowerShell to prepare for the sample app.
 
@@ -251,7 +251,7 @@ In Visual Studio:
 
 ## Run the app
 
-When you run **HelloKeyVault**, the app signs in to Azure AD and then uses the `AuthClientSecret` token to authenticate to the key vault in Azure Stack Hub.
+When you run **HelloKeyVault**, the app signs in to Microsoft Entra ID and then uses the `AuthClientSecret` token to authenticate to the key vault in Azure Stack Hub.
 
 You can use the **HelloKeyVault** sample to:
 
