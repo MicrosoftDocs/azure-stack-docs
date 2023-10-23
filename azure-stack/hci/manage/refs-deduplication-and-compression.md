@@ -136,7 +136,7 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
     - **DedupAndCompress**: Enables both deduplication and compression. This is the default option.
     - **Compress**: Enables compression only.
 
-    If you want to change the `Type` parameter, you must first [disable ReFS deduplication and compression](#disable-refs-deduplication-and-compression) and then enable it again with the new `Type` parameter.
+    If you want to change the `Type` parameter, you must first [disable ReFS deduplication and compression](#disable-refs-deduplication-and-compression-on-a-volume) and then enable it again with the new `Type` parameter.
 
     For example, run the following cmdlet to enable both deduplication and compression on a volume:
 
@@ -193,7 +193,7 @@ Before you run, you should also factor these other considerations:
 - To start a job immediately, run the following cmdlet. Once you start a job, its `State` may appear as `NotStarted` because it could still be in the initialization phase.
 
     ```powershell
-    Start-ReFSDedupJob -Volume <path> -Duration <DurationInHours> -FullRun -CompressionFormat <LZ4 | ZSTD> 
+    Start-ReFSDedupJob -Volume <path> -Duration <TimeStamp> -FullRun -CompressionFormat <LZ4 | ZSTD> 
     ```
 
     For example, the following cmdlet starts a job immediately for a duration of 10 hours using the LZ4 compression format:
