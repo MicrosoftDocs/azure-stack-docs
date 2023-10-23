@@ -40,7 +40,7 @@ In this how-to guide, you'll
         * Select an Azure **Subscription**. This Azure subscription is where your infrastructure administrator has deployed the Arc Resource Bridge, AKS hybrid extension and Custom Location.
         * Select an Azure **Resource group**, such as *myResourceGroup*.
     - **Cluster details**:
-        * Enter a **Kubernetes cluster name**, such as *myAKSHybridCluster*.
+        * Enter a **Kubernetes cluster name**, such as *myakshybridcluster*. The name of a Kubernetes cluster name must consist of lower case alphanumeric characters.
         * Select a Custom Location where you want to deploy the AKS hybrid cluster. Make sure your infrastructure administrator has given you Contributor access on a Custom Location.
     - **Primary node pool**:
         * Leave the default values selected.
