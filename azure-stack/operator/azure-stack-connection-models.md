@@ -22,16 +22,16 @@ If you decide to purchase an integrated system, your original equipment manufact
 
 ## Choose an Azure Stack Hub deployment connection model
 
-You can choose to deploy Azure Stack Hub either connected to the internet (and to Azure) or disconnected. Deploy connected to Azure to get the most benefit from Azure Stack Hub, including hybrid scenarios between Azure Stack Hub and Azure. This choice defines which options are available for your identity store (Azure Active Directory or Active Directory Federation Services) and billing model (pay as you use-based billing or capacity-based billing) as summarized in the following diagram and table:
+You can choose to deploy Azure Stack Hub either connected to the internet (and to Azure) or disconnected. Deploy connected to Azure to get the most benefit from Azure Stack Hub, including hybrid scenarios between Azure Stack Hub and Azure. This choice defines which options are available for your identity store (Microsoft Entra ID or Active Directory Federation Services) and billing model (pay as you use-based billing or capacity-based billing) as summarized in the following diagram and table:
 
 ![Azure Stack Hub deployment and billing scenarios](media/azure-stack-connection-models/azure-stack-scenarios.png)
   
 > [!IMPORTANT]
-> This is a key decision point! Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. You can't change this later without re-deploying the entire system.  
+> This is a key decision point! Choosing Active Directory Federation Services (AD FS) or Microsoft Entra ID is a one-time decision that you must make at deployment time. You can't change this later without re-deploying the entire system.  
 
 |Options|Connected to Azure|Disconnected from Azure|
 |-----|:-----:|:-----:|
-|Azure AD|![Supported](media/azure-stack-connection-models/check.png)| |
+|Microsoft Entra ID|![Supported](media/azure-stack-connection-models/check.png)| |
 |AD FS|![Supported](media/azure-stack-connection-models/check.png)|![Supported](media/azure-stack-connection-models/check.png)|
 |Consumption-based billing|![Supported](media/azure-stack-connection-models/check.png) <br /> AD FS supported| |
 |Capacity-based billing|![Supported](media/azure-stack-connection-models/check.png)|![Supported](media/azure-stack-connection-models/check.png)|

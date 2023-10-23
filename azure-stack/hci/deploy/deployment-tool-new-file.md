@@ -69,7 +69,7 @@ If you want to use an existing configuration file you have previously created, s
     
     :::image type="content" source="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png" alt-text="Screenshot of the Deployment step 1.1 Provide registration details page." lightbox="media/deployment-tool/new-file/deploy-new-step-1-registration-details.png":::
 
-    e. From the dropdown, select the **Azure Active Directory ID** or the tenant ID.
+    e. From the dropdown, select the **Microsoft Entra ID** or the tenant ID.
 
     f. Select the associated subscription. This subscription is used to create the cluster resource, register it with Azure Arc and set up billing.
 
