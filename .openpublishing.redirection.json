@@ -1051,7 +1051,7 @@
       "redirect_url": "/azure-stack/hci/update/whats-the-lifecycle-manager",
       "redirect_document_id": false
     },
-   },
+    },
       "source_path": "azure-stack/hci/migrate/migrate-hyperv-discover.md",
       "redirect_url": "/azure-stack/hci/migrate/migrate-hyperv-replicate",
       "redirect_document_id": false
