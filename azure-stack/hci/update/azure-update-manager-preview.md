@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: mindydiep
-ms.lastreviewed: 10/16/2023
-ms.date: 10/16/2023
+ms.lastreviewed: 10/24/2023
+ms.date: 10/24/2023
 ---
 
 # Update your Azure Stack HCI clusters via Azure Update Manager (preview)
