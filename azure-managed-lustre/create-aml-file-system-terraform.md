@@ -1,6 +1,6 @@
 ---
 title: 'Quickstart: Create an Azure Managed Lustre file system using Terraform'
-description: In this quickstart, you create an Azure Lustre file system using Terraform.
+description: In this quickstart, you create an Azure Managed Lustre file system using Terraform.
 services: azure-stack
 author: pauljewellmsft
 ms.service: azure-stack
