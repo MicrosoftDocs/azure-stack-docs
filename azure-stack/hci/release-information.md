@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/10/2023
+ms.date: 11/14/2023
 ---
 
 # Azure Stack HCI release information
@@ -25,9 +25,20 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **Version** | **Availability date** | **OS build**      | **Apply update by** |
 |:------------|:----------------------|:------------------|:-------------------------|
+| 23H2        | 2023-11-14            | 25398.524         | 2024-05-14 |
 | 22H2        | 2022-10-25            | 20349.1194        | 2023-04-25               |
 | 21H2        | 2021-10-19            | 20348.288         | 2022-04-19               |
 | 20H2        | 2020-12-10            | 17784.1408        | Out of support          |
+
+## Azure Stack HCI, version 23H2 (OS build 25398)
+
+The following are the available updates for Azure Stack HCI, version 23H2.
+
+All dates are listed in ISO 8601 format: *YYYY-MM-DD*
+
+| **OS build** | **Availability date** | **KB article**                                           |
+|:------------ |:----------------------|:---------------------------------------------------------|
+| 25398.524   | 2023-11-14            | [KB 5032202](https://support.microsoft.com/topic/e1ee8019-47f8-4314-be67-32d4e48ac140)  |
 
 ## Azure Stack HCI, version 22H2 (OS build 20349)
 
@@ -37,6 +48,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20349.2086   | 2023-11-14            | [KB 5032198](https://support.microsoft.com/topic/43b510ae-28a3-496a-bea5-ba061c95cd54)  |
 | 20349.2026   | 2023-10-10            | [KB 5031364](https://support.microsoft.com/topic/b827b04b-e11e-4295-b898-042df4b5053b)  |
 | 20349.1970   | 2023-09-12            | [KB 5030216](https://support.microsoft.com/topic/fdf76ccf-ae95-4e19-9842-d4b8f7359fa2)  |
 | 20349.1906   | 2023-08-08            | [KB 5029250](https://support.microsoft.com/topic/36a2464b-f91e-499a-98cd-661ad68a3536)  |
@@ -62,6 +74,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
+| 20348.2086   | 2023-11-14            | [KB 5032198](https://support.microsoft.com/topic/f116b9a5-be0d-4c89-8a91-2ba2392294fa)  |
 | 20348.2026   | 2023-10-10            | [KB 5031364](https://support.microsoft.com/topic/487ea79e-9378-472f-8e69-1e9f3bd757a0)  |
 | 20349.1970   | 2023-09-12            | [KB 5030216](https://support.microsoft.com/topic/a8a4f08d-33f1-49a0-afcc-40bd7d6f44f3)  |
 | 20348.1906   | 2023-08-08            | [KB 5029250](https://support.microsoft.com/topic/c1939499-12b7-4a23-8bda-2abd3a0fe084)  |
