@@ -82,7 +82,7 @@ In this article, you learn how to:
 1. Get the Managed Lustre file system name.
 
     ```console
-    managed_lustre_file_system_name=$(terraform output -raw managed_managed_lustre_file_system_name)
+    managed_lustre_file_system_name=$(terraform output -raw managed_lustre_file_system_name)
     ```
 
 1. Run [az amlfs show](/cli/azure/amlfs#az-amlfs-show) to display the Managed Lustre file system name.
@@ -102,7 +102,7 @@ In this article, you learn how to:
 1. Get the Managed Lustre file system name.
 
     ```console
-    $managed_lustre_file_system_name=$(terraform output -raw managed_managed_lustre_file_system_name)
+    $managed_lustre_file_system_name=$(terraform output -raw managed_lustre_file_system_name)
     ```
 
 1. Run [Get-AzStorageCacheAmlFileSystem](/powershell/module/az.storagecache/get-azstoragecacheamlfilesystem) to display the Lustre file system name.
