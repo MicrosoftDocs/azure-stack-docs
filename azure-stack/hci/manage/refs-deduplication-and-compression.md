@@ -386,7 +386,7 @@ The optimization process comprises the following phases that occur sequentially 
 
 - **Data deduplication.** In this phase, the redundant blocks are single-instanced and tracked using ReFS block cloning.
 
-- **Compression.** In this phase, heatmaps are used to identify infrequently accessed or cold data. Then the compression algorithms are applied to the selected data blocks to reduce their size. However, you can change the compression setting based on the type of data being compressed, from infrequently accessed to frequently accessed data or hot data.
+- **Compression.** In this phase, heatmaps are used to identify infrequently accessed or cold data. Then the compression algorithms are applied to the selected data blocks to reduce their size. However, you can change the compression setting based on the type of data being compressed, for example, from infrequently accessed to frequently accessed data or hot data.
 
 ### What happens when the duration limit is reached before the volume is fully optimized?
 
