@@ -88,7 +88,9 @@ In this article, you learn how to:
 1. Run [az amlfs show](/cli/azure/amlfs#az-amlfs-show) to display the Managed Lustre file system name.
 
     ```azurecli
-    az amlfs show -n $managed_lustre_file_system_name -g $resource_group_name
+    az amlfs show --resource-group $resource_group_name \
+                  --name $managed_lustre_file_system_name \
+        
     ```
 
 #### [Azure PowerShell](#tab/azure-powershell)
@@ -108,7 +110,8 @@ In this article, you learn how to:
 1. Run [Get-AzStorageCacheAmlFileSystem](/powershell/module/az.storagecache/get-azstoragecacheamlfilesystem) to display the Lustre file system name.
 
     ```azurepowershell
-    Get-AzStorageCacheAmlFileSystem -ResourceGroupName $resource_group_name -Name $managed_lustre_file_system_name
+    Get-AzStorageCacheAmlFileSystem -ResourceGroupName $resource_group_name `
+                                    -Name $managed_lustre_file_system_name
     ```
 
 ---
