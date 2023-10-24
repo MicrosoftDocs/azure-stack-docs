@@ -466,8 +466,8 @@
         href: deploy/download-azure-stack-hci-23h2-software.md
       - name: 3. Install the OS
         href: deploy/deployment-install-os.md
-      - name: 4. Set up the first server
-        href: deploy/deployment-set-up-first-server.md
+      - name: 4. Register with Arc and set up permissions
+        href: deploy/deployment-arc-register-server-permissions.md
       - name: 5. Deploy via Azure portal 
         href: ../index.yml
       - name: 6. Validate deployment

@@ -89,19 +89,19 @@ This section describes how to assign Azure permissions for deployment from the A
 
 1. In the Azure portal, go to the Resource Group where you registered the servers on the subscription. Assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
 
-   ![Assign "Key Vault Admin" permissions to the user who will create the HCI cluster in Azure portal.](./media/deployment-set-up-first-server/access-control-1.png)
+   ![Assign "Key Vault Admin" permissions to the user who will create the HCI cluster in Azure portal.](./media/deployment-arc-register-server-permissions/access-control-1.png)
 
 1. Create a custom role named `Azure Stack HCI 23H2 validator and registration role` with the necessary permissions to create and deploy Azure Stack HCI clusters from the Azure portal.
 
-   ![Create a custom role named `Azure Stack HCI 23H2 validator and registration role` with the necessary permissions to create and deploy HCI clusters from Azure portal.](./media/deployment-set-up-first-server/access-control-create-custom-role-2.png)
+   ![Create a custom role named `Azure Stack HCI 23H2 validator and registration role` with the necessary permissions to create and deploy HCI clusters from Azure portal.](./media/deployment-arc-register-server-permissions/access-control-create-custom-role-2.png)
 
 1. Specify the **JSON** option. Provide a name and description for the custom role, and then select **Start from scratch**.
 
-   ![Create a custom role. On the Basics tab, select JSON and the Start from scratch option.](./media/deployment-set-up-first-server/access-control-create-custom-role-3.png)
+   ![Create a custom role. On the Basics tab, select JSON and the Start from scratch option.](./media/deployment-arc-register-server-permissions/access-control-create-custom-role-3.png)
 
 1. To specify permissions for the custom role, use the sample JSON code.
 
-   ![Create a custom role. On the JSON tab, insert permissions from the sample script.](./media/deployment-set-up-first-server/access-control-create-custom-role-permissions-4.png)
+   ![Create a custom role. On the JSON tab, insert permissions from the sample script.](./media/deployment-arc-register-server-permissions/access-control-create-custom-role-permissions-4.png)
 
    Sample JSON code with permissions for the custom role `Azure Stack HCI 23H2 validator and registration role` to create and deploy HCI clusters on Azure portal:
 
@@ -162,7 +162,7 @@ This section describes how to assign Azure permissions for deployment from the A
 1. Create a new SPN in your tenant that will be used for the HCI Cluster deployment. This SPN is required to deploy ARB. In GA, the portal will create this SPN automatically and it won’t be needed anymore.
 1. Add a new role assignment at the subscription level for the custom role created in Step 2 above, and assign the newly created SPN.
 
-   ![Create a custom role. Verify role assignments.](./media/deployment-set-up-first-server/access-control-create-custom-role-assignments-5.png)
+   ![Create a custom role. Verify role assignments.](./media/deployment-arc-register-server-permissions/access-control-create-custom-role-assignments-5.png)
 
 1. Verify that all required permissions are in place.
 
