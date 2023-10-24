@@ -1,6 +1,16 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/manage/uninstall-arc-resource-bridge.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "redirect_document_id": false
+    }, 
+    {
       "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-wac.md",
       "redirect_url":"/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
       "redirect_document_id": false
@@ -1034,6 +1044,21 @@
     {
       "source_path": "azure-stack/hci/get-started.md",
       "redirect_url": "/azure-stack/hci/manage/monitor-cluster",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/glossary-lifecycle-management.md",
+      "redirect_url": "/azure-stack/hci/update/whats-the-lifecycle-manager",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/migrate/migrate-hyperv-discover.md",
+      "redirect_url": "/azure-stack/hci/migrate/migrate-hyperv-replicate",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/compare-azure-stack-hub.md",
+      "redirect_url": "/azure-stack/hci/overview",
       "redirect_document_id": false
     }
   ]

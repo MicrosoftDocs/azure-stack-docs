@@ -39,7 +39,9 @@ The following prerequisites are required:
 
 You will need to have the Az PowerShell modules installed. For instructions, see [Install PowerShell Az preview module](powershell-install-az-module.md).
 
-#### Azure Active Directory (AAD) environment
+<a name='azure-active-directory-aad-environment'></a>
+
+#### Microsoft Entra environment
 
 - Identify the username and password for an account that's an owner for the Azure subscription you'll use with Azure Stack Hub.  
 - Identify the subscription ID for the Azure subscription you'll use.
@@ -66,7 +68,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
    Connect-AzAccount -subscription $subscriptionID
    ```
 
-4. From the PowerShell prompt, run the following command to start validation of your subscription. Provide your Azure AD administrator and your Azure AD tenant name:
+4. From the PowerShell prompt, run the following command to start validation of your subscription. Provide your Microsoft Entra administrator and your Microsoft Entra tenant name:
 
    ```powershell
    Invoke-AzsRegistrationValidation  -RegistrationSubscriptionID $subscriptionID
@@ -103,7 +105,9 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 - [PowerShell configured for Azure Stack Hub](powershell-install-az-module.md).
 - The latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.  
 
-#### Azure Active Directory (Azure AD) environment
+<a name='azure-active-directory-azure-ad-environment'></a>
+
+#### Microsoft Entra environment
 
 - Identify the username and password for an account that's an owner for the Azure subscription you'll use with Azure Stack Hub.  
 - Identify the subscription ID for the Azure subscription you'll use.
@@ -124,7 +128,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
    ```
 
    > [!NOTE]
-   > As a CSP, when using a shared services or IUR subscription, you must provide the credentials of a user from that respective Azure AD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
+   > As a CSP, when using a shared services or IUR subscription, you must provide the credentials of a user from that respective Microsoft Entra ID. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
 
 3. From the PowerShell prompt, run the following command to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
 
@@ -135,7 +139,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 4. From the PowerShell prompt, run the following command to start validation of your subscription:
 
    - Specify the value for `AzureEnvironment` as **AzureCloud**, **AzureGermanCloud**, or **AzureChinaCloud**.  
-   - Provide your Azure AD administrator and your Azure AD tenant name.
+   - Provide your Microsoft Entra administrator and your Microsoft Entra tenant name.
       ```powershell
       Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID
       ```
@@ -227,7 +231,7 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsRegistrationValidation Completed
 ```
 
-**Cause** - The account can't sign in to the specified Azure AD environment. In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.  
+**Cause** - The account can't sign in to the specified Microsoft Entra environment. In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.  
 
 **Resolution** - Confirm that the account is valid for the specified Azure environment. In PowerShell, run the following command to verify the account is valid for a specific environment:
 
