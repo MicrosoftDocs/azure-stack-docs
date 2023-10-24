@@ -107,7 +107,7 @@ In this article, you learn how to:
 
 1. Run [Get-AzStorageCacheAmlFileSystem](/powershell/module/az.storagecache/get-azstoragecacheamlfilesystem) to display the Lustre file system name.
 
-    
+    ```azurepowershell
     Get-AzStorageCacheAmlFileSystem -ResourceGroupName $resource_group_name -Name $managed_lustre_file_system_name
     ```
 
