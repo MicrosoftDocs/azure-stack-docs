@@ -27,9 +27,9 @@ Here's the high-level workflow to troubleshoot environment validation issues:
 
 1. Save diagnostic data locally. See [Save diagnostic data locally](#save-diagnostic-data-locally).
 
-1. Send logs to Microsoft to assist with troubleshooting. See [Collect diagnostic data locally and send to Microsoft](#collect-diagnostic-data-locally-and-send-to-microsoft).
+1. Send logs to Microsoft to assist with troubleshooting. See [Send logs to Microsoft](#send-logs-to-microsoft).
 
-Alternatively, enable remote support to allow Microsoft Support to connect to your device remotely and provide assistance. See [Get remote support](#get-remote-support).
+Alternatively, you can enable remote support to allow Microsoft Support to connect to your device remotely and provide assistance. See [Get remote support](#get-remote-support).
 
 ## Save diagnostic data locally
 
@@ -41,30 +41,33 @@ Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath <Path to the SMB 
 
 ## Send logs to Microsoft
 
-Microsoft retains the diagnostic data that you send for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/). Microsoft can access that data after you file a support case. You can send logs to Microsoft using the following commands:
+You can send the logs saved to your local share to Microsoft by using the following commands:
 
 - `Send-AzStackHciDiagnosticData`
 - `Send-DiagnosticData`
 
 The following table lists the scenarios for using each type of command:
 
-| Command | When to use? |
+| Command | When to use |
 |--|--|
-| `Send-AzStackHciDiagnosticData` | - Deployment failures. <br> - Log collection when the cluster isn't registered or lacks connectivity. <br> - Log collection when the observability feature is unavailable from the cluster. |
-| `Send-DiagnosticData` | - Non-deployment failures. <br> -	Log collection when a cluster is registered and connected. <br> - Log collection when a cluster is partially registered. <br> - Log collection when the observability featue is set up. |
+| `Send-DiagnosticData` | Use this command to send logs in the following scenarios: <br> - Non-deployment failures. <br> -	When a cluster is registered and connected. <br> - When a cluster is partially registered. <br> - When the observability feature is set up for the cluster. |
+| `Send-AzStackHciDiagnosticData` | Use this command to send logs in the following scenarios: <br> - Deployment failures. <br> - When a cluster isn't registered or lacks connectivity. <br> - When the observability feature isn't set up for the cluster. |
 
-#### Send logs using `Send-AzStackHciDiagnosticData`
+Microsoft retains the diagnostic data that you send for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/). Microsoft can access the diagnostic data only after you file a support case.
 
-Use the `Send-AzStackHciDiagnosticData` cmdlet to send logs from any machine with outbound connectivity, outside of the Azure Stack HCI stamp.
+### Send logs using `Send-DiagnosticData`
+
+If the SMB share where you saved the logs has outbound connectivity, you can run the following command to send logs after log collection on all the nodes finishes:
+
+```powershell
+Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>
+```
+
+### Send logs using `Send-AzStackHciDiagnosticData`
+
+Use the `Send-AzStackHciDiagnosticData` command to send logs from any machine with outbound connectivity, outside of the Azure Stack HCI system.
 
 The input parameters used to send logs using `Send-AzStackHciDiagnosticData` are the same that are required as part of the deployment process. For description about the input parameters, see [Deploy Azure Stack HCI using PowerShell (preview)](../deploy/deployment-tool-powershell.md).
-
-You can use any of the following credentials to send logs:
-
-- $RegistrationCredential
-- $RegistrationWithDeviceCode
-- $RegistrationSPCredential
-- $RegistrationWithExistingContext
 
 You can find the parameter values in `C:\Deployment`. Run the following command to see the output:
 
@@ -74,60 +77,25 @@ $deployArgs = Import-Clixml -Path C:\Deployment\DeployArguments.xml
 
 #### Get information for the required parameters
 
-The following parameters are required to use the `Send-AzStackHciDiagnosticData` cmdlet. Consult your network administrator as needed for this information.
+The following parameters are required to use the `Send-AzStackHciDiagnosticData` command. Consult your network administrator as needed for this information.
 
-- `ResourceGroupName`: Name of the Azure resource group, which must be the same as used during the deployment process. Follow these steps to get the resource group name:
-
-   1. Establish a remote PowerShell session with one of the cluster nodes. Run PowerShell as administrator and run the following command:
-   
-      ```powershell
-      Enter-PsSession -ComputerName <NodeName> -Credential $cred
-      ```
-   
-   1. Run the following command to get the resource group name:
-   
-      ```powershell
-      Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue
-      $eceConfig = Get-EceConfiguration -ErrorAction SilentlyContinue
-      if ($eceConfig.Xml -match "<RegistrationResourceGroupName>(.*)</RegistrationResourceGroupName>")
-      {
-      $resourcegroupname =  $matches[1].Trim()
-      }
-      ```
-
-- `SubscriptionId`: Name of the Azure subscription ID, which must be the same as used during the deployment process. Use the following command to get the subscription ID:
-
-   ```powershell
-   $subscriptionId = $deployArgs.RegistrationSubscriptionId
-   ```
-
-- `TenantId`: Azure tenant ID, which must be the same as used during the deployment process. Use the following command to get the tenant ID:
-
-   ```powershell
-   $cloudName = $deployargs.RegistrationCloudName
-   Import-Module "$env:SystemDrive\CloudDeployment\Setup\Common\RegistrationHelpers.psm1"
-   $RegistrationTenantId = Get-TenantId -AzureEnvironment $CloudName -SubscriptionId $subscriptionid
-   ```
-
-- `RegistrationRegion`: Registration region, which must be the same as used during the deployment process.
-
-- `Cloud`: Azure cloud name, which must be the same as used during the deployment process.
-
-- `CacheFlushWaitTimeInSec`: Optional wait time in seconds to flush the cache folder. The default value is 600.
-
-- `RegistrationCredential`: Azure credentials to authenticate with Azure. This is mandatory in `DefaultSet` parameter set.
-
-- `DiagnosticLogPath`: Diagnostics log path where logs are stored.
-
-- `RegistrationWithDeviceCode`: The switch that allows Azure authentication with the device code.
-
-- `RegistrationWithExistingContext`: Use this switch if current PowerShell window already had `Connect-AzAccount` executed and use the existing context for Azure authentication.
-
-- `RegistrationSPCredential`: Part of the `ServicePrincipal` parameter set. Use this to send `ServicePrincipal` credential.
+| Parameter | Description |
+|--|--|
+| `ResourceGroupName` | Name of the Azure resource group, which must be the same as used during the deployment process. <br> <br> Follow these steps to get the resource group name:<br> 1. Establish a remote PowerShell session with one of the cluster nodes. Run PowerShell as administrator and run the following command: <br> `Enter-PsSession -ComputerName <NodeName> -Credential $cred` <br> <br> 2. Run the following command to get the resource group name: <br> `Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue` <br> `$eceConfig = Get-EceConfiguration -ErrorAction SilentlyContinue` <br> `if ($eceConfig.Xml -match "<RegistrationResourceGroupName>(.*)</RegistrationResourceGroupName>")` <br> `{` <br> `$resourcegroupname =  $matches[1].Trim()` <br> `}` |
+| `SubscriptionId` | Name of the Azure subscription ID, which must be the same as used during the deployment process. | Use the following command to get the subscription ID: <br> `$subscriptionId = $deployArgs.RegistrationSubscriptionId` |
+| `TenantId` | Azure tenant ID, which must be the same as used during the deployment process. Use the following command to get the tenant ID: <br> `$cloudName = $deployargs.RegistrationCloudName` <br> `Import-Module "$env:SystemDrive\CloudDeployment\Setup\Common\RegistrationHelpers.psm1"` <br> `$RegistrationTenantId = Get-TenantId -AzureEnvironment $CloudName -SubscriptionId $subscriptionid` |
+| `RegistrationRegion` | Registration region, which must be the same as used during the deployment process. |
+| `Cloud` | Azure cloud name, which must be the same as used during the deployment process. |
+| `CacheFlushWaitTimeInSec` | Optional wait time in seconds to flush the cache folder. The default value is 600. |
+| `RegistrationCredential` | Azure credentials to authenticate with Azure. This is mandatory in DefaultSet parameter set. |
+| `DiagnosticLogPath` | Diagnostics log path where logs are stored. |
+| `RegistrationWithDeviceCode` | The switch that allows Azure authentication with the device code. |
+| `RegistrationWithExistingContext` | Use this switch if current PowerShell window already had `Connect-AzAccount` executed and use the existing context for Azure authentication. |
+| `RegistrationSPCredential` | Part of the `ServicePrincipal` parameter set. Use this to send `ServicePrincipal` credential. |
 
 #### Send logs using different credentials
 
-Based on the type of credentials you have, use one of the following commands to send logs:
+With `Send-AzStackHciDiagnosticData`, you can use any of the following credentials to send logs:
 
 - **Send logs using registration credentials**
 
@@ -157,7 +125,7 @@ Based on the type of credentials you have, use one of the following commands to 
    Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> - RegistrationSPCredential <RegistrationSPCredential> -DiagnosticLogPath <LogPath> -RegistrationRegion <RegionName> -Cloud <AzureCloud>
    ```
 
-   You can use the following cmdlets to get SPN credentials:
+   You can use the following commands to get SPN credentials:
 
    ```powershell
    $SPNAppID = "<Your App ID>"  
@@ -172,16 +140,6 @@ Based on the type of credentials you have, use one of the following commands to 
    ```powershell
    Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> - RegistrationWithExistingContext -DiagnosticLogPath <LogPath> - RegistrationRegion <RegionName> -Cloud <AzureCloud>        
    ```
-
-#### Send logs using `Send-DiagnosticData`
-
-If the SMB share where you saved the logs has outbound connectivity, you can run the following command to send logs after log collection on all the nodes finishes:
-
-```powershell
-Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>
-```
-
-
 
 ## Get remote support
 
@@ -213,7 +171,7 @@ Follow these steps to enable remote support:
    >
    > `Processing data from remote server <NodeName> failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
    > 
-   > This means the Just Enough Administration (JEA) configuration has not been established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. To resolve this error, wait for a few minutes before reconnecting to the remote node and then run the `Enable-AzStackHciRemoteSupport` cmdlet again to enable remote support.
+   > This means the Just Enough Administration (JEA) configuration has not been established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. To resolve this error, wait for a few minutes before reconnecting to the remote node and then run the `Enable-AzStackHciRemoteSupport` command again to enable remote support.
    >
 
 For remote support usage scenarios, see [Remote support examples](./get-remote-support.md#remote-support-examples).
