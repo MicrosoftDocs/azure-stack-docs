@@ -77,7 +77,7 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
 
 1. Connect to your Azure Stack HCI cluster and run PowerShell as administrator.
 
-1. You must run all the commands to modify settings on a given volume on the owner node. Run the following cmdlet to show all CSV owner nodes:
+1. You must run all the commands to modify settings on a given volume on the owner node. Run the following cmdlet to show all CSV owner nodes and volume path:
 
     ```powershell
     Get-ClusterSharedVolume | FT Name, OwnerNode, SharedVolumeInfo
@@ -89,39 +89,6 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
     Name                           OwnerNode   SharedVolumeInfo
     ----                           ---------   ----------------
     Cluster Virtual Disk (Volume1) hci-server1 {C:\ClusterStorage\Volume1}
-    ```
-
-1. Run the following cmdlet to get the volume path:
-
-    ```powershell
-    Get-Volume |FL
-    ```
-
-    Note down the `Path` value from the output.
-
-    Here's a sample output of the cmdlet usage:
-
-    ```output
-    ObjectId             : <Object-ID>
-    PassThroughClass     :
-    PassThroughIds       :
-    PassThroughNamespace :
-    PassThroughServer    :
-    UniqueId             : <Unique-ID>
-    AllocationUnitSize   : 4096
-    DedupMode            : NotAvailable
-    DriveLetter          :
-    DriveType            : Fixed
-    FileSystem           : CSVFS
-    FileSystemLabel      : Volume1
-    FileSystemType       : CSVFS_ReFS
-    HealthStatus         : Healthy
-    OperationalStatus    : OK
-    Path                 : C:\ClusterStorage\Volume1
-    ReFSDedupMode        : Disabled
-    Size                 : 3298467774464
-    SizeRemaining        : 1764139073536
-    PSComputerName       :
     ```
 
 1. Run the following cmdlet to enable ReFS deduplication and compression on a specific volume:
@@ -193,7 +160,7 @@ Before you run, you should also factor these other considerations:
 - To start a job immediately, run the following cmdlet. Once you start a job, its `State` may appear as `NotStarted` because it could still be in the initialization phase.
 
     ```powershell
-    Start-ReFSDedupJob -Volume <path> -Duration <TimeStamp> -FullRun -CompressionFormat <LZ4 | ZSTD> 
+    Start-ReFSDedupJob -Volume <path> -Duration <TimeSpan> -FullRun -CompressionFormat <LZ4 | ZSTD> 
     ```
 
     For example, the following cmdlet starts a job immediately for a duration of 10 hours using the LZ4 compression format:
@@ -241,7 +208,7 @@ Set a reoccurring schedule to run storage optimizations for the volume. You can 
 - To set or modify a schedule, run the following cmdlet:
 
     ```powershell
-    Set-ReFSDedupSchedule -Volume <Path> -Start <DateTime> -Days <DayOfWeek[]> -Duration <TimeStamp> -CompressionFormat <LZ4 | ZSTD> -CompressionLevel <UInt16> -CompressionChunkSize <UInt32> 
+    Set-ReFSDedupSchedule -Volume <Path> -Start <DateTime> -Days <DayOfWeek[]> -Duration <TimeSpan> -CompressionFormat <LZ4 | ZSTD> -CompressionLevel <UInt16> -CompressionChunkSize <UInt32> 
     ```
 
     For example, to set up a recurring job scheduled to run every Thursday at 8:30 AM for a duration of 5 hours in the LZ4 format, run the following cmdlet. Use `-Days EveryDay` if you want to run the job daily.
@@ -346,7 +313,7 @@ Disabling ReFS deduplication and compression on a volume stops any runs that are
 When you disable this feature, it doesn't undo deduplication or compression, as all the operations occur at the metadata layer. Over time, the data returns to its original state as the volume incurs reads and writes.
 
 > [!NOTE]
-> You can perform decompression operations using `ReFSUtil`.
+> You can perform decompression operations using [`ReFSUtil`](/windows-server/administration/windows-commands/refsutil).
 
 # [Windows Admin Center](#tab/windowsadmincenter)
 
@@ -435,13 +402,10 @@ The temporary workaround for this issue is to initiate a one-time job and the re
 Start-ReFSDedupJob -Volume <path>
 ```
 
-**Compression performance impact**
+<!--Need to update these section--commenting out for now.
+### Compression performance impact
 
-<!--waiting on data from Arjun-->
-
-### Event log
-
-<!--Mas to help w/ current state-->
+### Event log-->
 
 ### Sending stopped monitoring Event Tracing for Windows (ETW) events after disabling ReFS deduplication and compression on a volume.
 
