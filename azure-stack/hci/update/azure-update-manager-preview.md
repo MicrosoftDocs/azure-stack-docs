@@ -39,7 +39,7 @@ Here are some benefits of the Azure Update Manager (preview):
 To browse for available cluster updates using Azure Update Manager (preview), follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **Azure Stack HCI**.
+2. Under Manage Azure Stack HCI, select **Azure Stack HCI (preview)**.
    - Filter by Subscription, Resource group, Location, Status, Update readiness, Current OS version, and/or Tags to view a list of clusters.
 3. In the cluster list, view the clusters update status, update readiness, current OS version, and the date and time of the last successful update.
 
@@ -50,7 +50,7 @@ To browse for available cluster updates using Azure Update Manager (preview), fo
 To install cluster updates using Azure Update Manager (preview), follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **Azure Stack HCI**.
+2. Under Manage Azure Stack HCI, select **Azure Stack HCI (preview)**.
 3. Select one or more clusters from the list, then select **One-time Update**.
 
     [![Install cluster updates in Azure Update Manager (preview).](./media/azure-update-manager/install-update.png)](media/azure-update-manager/install-update.png#lightbox)
@@ -88,7 +88,7 @@ When you install cluster updates via Azure Update Manager (preview), you can che
 To view the progress of your clusters, update installation, and completion results, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **History**.
+2. Under Manage Azure Stack HCI, select **History (preview)**.
 3. Select an update run from the list with a status of **In Progress**.
 
     [![View progress about cluster updates in Azure Update Manager (preview).](./media/azure-update-manager/update-in-progress.png)](media/azure-update-manager/update-in-progress.png#lightbox)
@@ -104,7 +104,7 @@ To view the progress of your clusters, update installation, and completion resul
 To browse for your clusters update history, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **History**.
+2. Under Manage Azure Stack HCI, select **History (preview)**.
 3. Select an update run with a status of “**Failed to update**” or “**Successfully updated**”.
 
     [![View update history in Azure Update Manager (preview).](./media/azure-update-manager/update-history-progress.png)](media/azure-update-manager/update-history-progress.png#lightbox)
@@ -122,7 +122,7 @@ In addition to the Azure Update Manager (preview) UI, you can also update indivi
 To install updates on a single cluster from the Azure Stack HCI cluster resource page, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **Azure Stack HCI**.
+2. Under Manage Azure Stack HCI, select **Azure Stack HCI (preview)**.
 3. Select the cluster name from the list.
 4. Select the update and then select **One-time update**.
 
