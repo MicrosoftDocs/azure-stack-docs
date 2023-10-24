@@ -6,7 +6,7 @@ author: pauljewellmsft
 ms.service: azure-stack
 ms.topic: quickstart
 ms.custom: devx-track-terraform
-ms.date: 10/20/2023
+ms.date: 10/24/2023
 ms.author: pauljewell
 content_well_notification: 
   - AI-contribution
