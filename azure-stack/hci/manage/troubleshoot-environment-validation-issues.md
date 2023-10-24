@@ -17,45 +17,41 @@ This article describes how to get support from Microsoft to troubleshoot validat
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Get support from Microsoft
+## Troubleshoot workflow
 
 Starting with Azure Stack HCI, version 23H2 (preview) and later, you can get support from Microsoft to troubleshoot any issues that may arise during the environment validation process for Azure Stack HCI.
 
-To troubleshoot environment validation issues, you can begin by filing a support ticket and then do the following:
+Here's the high-level workflow to troubleshoot environment validation issues:
 
-- Collect diagnostic data locally and submit it to Microsoft to assist with troubleshooting. See [Collect diagnostic data locally and send to Microsoft](#collect-diagnostic-data-locally-and-send-to-microsoft).
-- Enable remote support to allow Microsoft Support to connect to your device remotely and provide assistance. See [Get remote support](#get-remote-support).
+1. File a support ticket. See [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-## Collect diagnostic data locally and send to Microsoft
+1. Save diagnostic data locally. See [Save diagnostic data locally](#save-diagnostic-data-locally).
 
-If the environment validation process fails, you can save diagnostic data to a local Server Message Block (SMB) share and then transmit it to Microsoft for troubleshooting purposes. Microsoft can access that data after you file a support case.  
+1. Send logs to Microsoft to assist with troubleshooting. See [Collect diagnostic data locally and send to Microsoft](#collect-diagnostic-data-locally-and-send-to-microsoft).
 
-### Save logs on a local file share
+Alternatively, enable remote support to allow Microsoft Support to connect to your device remotely and provide assistance. See [Get remote support](#get-remote-support).
 
-You can save diagnostic logs to a local share, typically in the following scenarios:
+## Save diagnostic data locally
 
-- **Pre-deployment or pre-registration.** To troubleshoot any validation issues that may arise during the pre-deployment or pre-registration of the cluster.
-- **Post-deployment.** If you're normally connected but experiencing connectivity issues, you can save logs locally to help with troubleshooting.
-
-Run the following command on each node of the cluster to collect logs and save them locally:
+Run the following command on each node of the cluster to collect logs and save them to a local Server Message Block (SMB) share:
 
 ```powershell
 Send-DiagnosticData –ToSMBShare -BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>  
 ```
 
-### Send logs to Microsoft
+## Send logs to Microsoft
 
-Microsoft retains the diagnostic data that you send for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+Microsoft retains the diagnostic data that you send for up to 29 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/). Microsoft can access that data after you file a support case. You can send logs to Microsoft using the following commands:
 
-You can send logs to Microsoft using `Send-DiagnosticData` and `Send-AzStackHciDiagnosticData` cmdlets, as described in the following sections.
+- `Send-AzStackHciDiagnosticData`
+- `Send-DiagnosticData`
 
-#### Send logs using `Send-DiagnosticData`
+The following table lists the scenarios for using each type of command:
 
-If the SMB share where you saved the logs has outbound connectivity, you can run the following command to send logs after log collection on all the nodes finishes:
-
-```powershell
-Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>
-```
+| Command | When to use? |
+|--|--|
+| `Send-AzStackHciDiagnosticData` | - Deployment failures. <br> - Log collection when the cluster isn't registered or lacks connectivity. <br> - Log collection when the observability feature is unavailable from the cluster. |
+| `Send-DiagnosticData` | - Non-deployment failures. <br> -	Log collection when a cluster is registered and connected. <br> - Log collection when a cluster is partially registered. <br> - Log collection when the observability featue is set up. |
 
 #### Send logs using `Send-AzStackHciDiagnosticData`
 
@@ -176,6 +172,16 @@ Based on the type of credentials you have, use one of the following commands to 
    ```powershell
    Send-AzStackHciDiagnosticData -ResourceGroupName <ResourceGroupName> -SubscriptionId <SubscriptionId> -TenantId <TenantId> - RegistrationWithExistingContext -DiagnosticLogPath <LogPath> - RegistrationRegion <RegionName> -Cloud <AzureCloud>        
    ```
+
+#### Send logs using `Send-DiagnosticData`
+
+If the SMB share where you saved the logs has outbound connectivity, you can run the following command to send logs after log collection on all the nodes finishes:
+
+```powershell
+Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the SMB share> -ShareCredential <Crendentials to connect to the SharePath>
+```
+
+
 
 ## Get remote support
 
