@@ -22,6 +22,8 @@
       href: amlfs-prerequisites.md
     - name: Create file system in Azure portal
       href: create-file-system-portal.md
+    - name: Create afile system using Terraform
+      href: create-aml-file-system-terraform.md
     - name: Create file system using Azure Resource Manager
       href: create-file-system-resource-manager.md
     - name: Use Azure Lustre CSI driver for Kubernetes
