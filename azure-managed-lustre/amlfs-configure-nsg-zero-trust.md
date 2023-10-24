@@ -65,7 +65,7 @@ Once the network security group is created, you can associate it to the unique s
 To configure network security group rules for Azure Managed Lustre file system support, you can add inbound and outbound security rules to the network security group that's associated to the subnet where your Azure Managed Lustre file system is deployed. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support in a zero-trust environment.
 
 > [!NOTE]
-> The security rules shown in this section are configured based on an Azure Managed Lustre file system deployment in East US region, with Blob Storage integration enabled. You might need to adjust the rules based on your deployment region and other configuration settings for the Azure Managed Lustre file system.
+> The security rules shown in this section are configured based on an Azure Managed Lustre file system test deployment in the East US region, with Blob Storage integration enabled. You'll need to adjust the rules based on your deployment region, virtual network subnet IP addresses, and other configuration settings for the Managed Lustre file system.
 
 ### Create inbound security rules
 
