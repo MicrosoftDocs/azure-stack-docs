@@ -14,7 +14,7 @@ content_well_notification:
 
 # Quickstart: Create an Azure Lustre file system using Terraform
 
-In this quickstart, you use Terraform to create an [Azure Lustre](amlfs-overview.md) file system.
+In this quickstart, you use Terraform to create an [Azure Managed Lustre](amlfs-overview.md) file system.
 
 [!INCLUDE [About Terraform](../azure-dev-docs-pr/articles/terraform/includes/abstract.md)]
 
