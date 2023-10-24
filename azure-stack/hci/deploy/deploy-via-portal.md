@@ -10,14 +10,14 @@ ms.author: jgerend
 
 # Deploy an Azure Stack HCI, version 23H2 Preview system using the Azure portal
 
-This article helps you deploy an Azure Stack HCI, version 23H2 Preview system for testing using the Azure portal after connecting each server to Azure Arc.
+This article helps you deploy an Azure Stack HCI, version 23H2 Preview system for testing using the Azure portal.
 
 To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
 ## Prerequisites
 
 * Completion of Connect servers to Arc
-* <!---Completion of [Connect servers to Arc](connect-to-arc.md)--->
+<!---* Completion of [Connect servers to Arc](connect-to-arc.md)--->
 * Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
