@@ -126,4 +126,4 @@ In this article, you learn how to:
 Next, you can monitor the Azure Firewall logs.
 
 > [!div class="nextstepaction"]
-> [Learn about Azure Lustre](amlfs-overview.md)
+> [Learn about Azure Managed Lustre](amlfs-overview.md)
