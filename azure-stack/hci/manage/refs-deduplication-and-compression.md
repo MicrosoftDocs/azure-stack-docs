@@ -19,7 +19,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Stack HCI](../deploy/virtual-desktop-infrastructure.md). This feature helps optimize storage usage, enhancing overall performance, and significantly reducing storage cost.
 
-This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the cluster size. The compression engine uses heatmaps to identify when a block of data was last used and compresses only unused data, optimizing for CPU usage.
+This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the cluster size. The compression engine uses heatmaps to identify when a block of data was last used and compresses the infrequently used data, optimizing for CPU usage.
 
 You can run ReFS deduplication and compression as a one-time job or automate it with scheduled jobs. This feature works with both all-flash and hybrid systems and supports various resiliency settings, such as two-way mirror, nested two-way mirror, three-way mirror, and mirror accelerated parity.
 
@@ -163,11 +163,13 @@ Before you run, you should also factor these other considerations:
     Start-ReFSDedupJob -Volume <path> -Duration <TimeSpan> -FullRun -CompressionFormat <LZ4 | ZSTD> 
     ```
 
-    For example, the following cmdlet starts a job immediately for a duration of 10 hours using the LZ4 compression format:
+    For example, the following cmdlet starts a job immediately for a duration of 5 hours using the LZ4 compression format:
 
     ```powershell
-    PS C:\Users\hciuser> Start-ReFSDedupJob -Volume "C:\ClusterStorage\Volume1" -FullRun -CompressionFormat LZ4 -Duration 10
-
+    PS C:\Users\hciuser> $Start = “10/31/2023 08:30:00”
+    PS C:\Users\hciuser> $Duration = New-Timespan -Hours 5
+    PS C:\Users\hciuser> Start-ReFSDedupJob -Volume "C:\ClusterStorage\Volume1" -FullRun -Duration $Duration -CompressionFormat LZ4
+    
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
     12     Job12                           NotStarted    True                                 Start-Re...
@@ -214,7 +216,7 @@ Set a reoccurring schedule to run storage optimizations for the volume. You can 
     For example, to set up a recurring job scheduled to run every Thursday at 8:30 AM for a duration of 5 hours in the LZ4 format, run the following cmdlet. Use `-Days EveryDay` if you want to run the job daily.
 
     ```powershell
-    PS C:\Users\hciuser> $Start = “10/31/2023 12:35:30”
+    PS C:\Users\hciuser> $Start = “10/31/2023 08:30:00”
     PS C:\Users\hciuser> $Duration = New-Timespan -Hours 5
     PS C:\Users\hciuser> Set-ReFSDedupSchedule -Volume C:\ClusterStorage\Volume1 -Start $Start Days "Thursday" -Duration $Duration -CompressionFormat LZ4
     ```
@@ -384,7 +386,7 @@ The optimization process comprises the following phases that occur sequentially 
 
 - **Data deduplication.** In this phase, the redundant blocks are single-instanced and tracked using ReFS block cloning.
 
-- **Compression.** In this phase, heatmaps are used to identify when a block of data was last used and compresses only unused data.
+- **Compression.** In this phase, heatmaps are used to identify infrequently accessed or cold data. Then the compression algorithms are applied to the selected data blocks to reduce their size. However, you can change the compression setting based on the type of data being compressed, from infrequently accessed to frequently accessed data or hot data.
 
 ### What happens when the duration limit is reached before the volume is fully optimized?
 
