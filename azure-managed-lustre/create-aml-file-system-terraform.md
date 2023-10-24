@@ -85,7 +85,7 @@ In this article, you learn how to:
     managed_lustre_file_system_name=$(terraform output -raw managed_managed_lustre_file_system_name)
     ```
 
-1. Run [az amlfs show](/cli/azure/amlfs#az-amlfs-show) to display the Lustre file system name.
+1. Run [az amlfs show](/cli/azure/amlfs#az-amlfs-show) to display the Managed Lustre file system name.
 
     ```azurecli
     az amlfs show -n $managed_lustre_file_system_name -g $resource_group_name
