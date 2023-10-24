@@ -79,7 +79,7 @@ In this article, you learn how to:
     resource_group_name=$(terraform output -raw resource_group_name)
     ```
 
-1. Get the Azure Lustre file system name.
+1. Get the Managed Lustre file system name.
 
     ```console
     managed_lustre_file_system_name=$(terraform output -raw managed_managed_lustre_file_system_name)
