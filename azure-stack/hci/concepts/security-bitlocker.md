@@ -1,12 +1,12 @@
 ---
 title: BitLocker encryption on Azure Stack HCI (preview)
-description: Learn how to get BitLocker recovery keys on your Azure Stack HCI cluster (preview).
+description: Learn how to get BitLocker recovery keys and manage BitLocker encryption on your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/14/2023
+ms.date: 10/25/2023
 ---
 
 # BitLocker encryption for Azure Stack HCI (preview)
@@ -28,29 +28,57 @@ Once Azure Stack HCI is successfully deployed, you can retrieve the BitLocker re
 
 ## Manage BitLocker encryption
 
-You can enable, disable, and view BitLocker encryption settings on your Azure Stack HCI cluster. Follow these steps to modify the BitLocker encryption:
+You can view, enable, and disable BitLocker encryption settings on your Azure Stack HCI cluster.
 
-1. Connect to a server on your Azure Stack HCI system via Remote Desktop Protocol.
+### PowerShell cmdlet properties for AzureStackBitLockerAgent module
 
-2. Use option 15 in *Sconfig* to open a PowerShell session.
+The following LCM cmdlet properties are for BitLocker module: *AzureStackBitLockerAgent*.
 
-3. To enable BitLocker encryption, use the following cmdlet:
+- `Get-ASBitLocker` -Scope <Local | PerNode | AllNodes | Cluster>
+     - Local: Provides BitLocker volume details for the local node. Does not interact with LCM. Can be run in a regular remote PowerShell session.
+     - PerNode: Provides BitLocker volume details per node. Does not interact with LCM. Requires CredSSP or console (RDP).
+ - `Enable-ASBitLocker` -Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
+ - `Disable-ASBitLocker` -Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
+
+## View BitLocker encryption settings
+
+Use the following steps to view BitLocker encryption settings:
+
+1. Connect to your Azure Stack HCI node.
+
+2. Run the following PowerShell cmdlet using local administrator credentials:
 
     ```PowerShell
-    Get-command -Module AzureStackBitlockerAgent -Name Enable-ASBitlocker
+    Get-ASBitLocker
     ```
-    To disable encryption, use the following:
+
+## Modify BitLocker encryption
+
+Use the following steps to modify BitLocker encryption:
+
+1. Connect to your Azure Stack HCI node.
+
+2. Run the following PowerShell cmdlets using local administrator credentials:
+
+   **Enable BitLocker encryption:**
+
+   > [!IMPORTANT]
+   > - Enabling BitLocker on volume type BootVolume requires TPM 2.0.
+   > - While enabling BitLocker on volume type `ClusterSharedVolume` (CSV), the volume will be put in redirected mode and any workload VMs will be paused for a short time. This operation is disruptive; plan accordingly.
+
     ```PowerShell
-    Get-command -Module AzureStackBitlockerAgent -Name Disable-ASBitlocker
+    Enable-ASBitLocker
     ```
-    To view encryption settings, use the following:
+
+   **Disable BitLocker encryption:**
+
     ```PowerShell
-    Get-command -Module AzureStackBitlockerAgent -Name Get-ASBitlocker
+    Disable-ASBitLocker
     ```
 
 ## Get BitLocker recovery keys
 
-Follow these steps to get the BitLocker recovery keys for your cluster.
+Use the following steps to get the BitLocker recovery keys for your cluster.
 
 1. Run PowerShell as Administrator on your Azure Stack HCI cluster.
 1. Run the following command in PowerShell:
