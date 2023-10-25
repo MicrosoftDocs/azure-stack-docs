@@ -258,6 +258,7 @@ To create a VM with guest management enabled, you'll use the network interface t
 
 1. Set some parameters.
 
+    ```azurecli
     $vm_name="Hopev1"
     $subscriptionID =  "<Subscription ID>"
     $resourceGroupName = "HCIHW23"
@@ -268,11 +269,15 @@ To create a VM with guest management enabled, you'll use the network interface t
     $username = "<Username for the VM>"
     $password = "<Password for the VM>"
     $galleryImageName ="ws22server"
-    $VNic="MyNic"
+    $VNic="MyNic"   
+    ```
+
 
 1. Run the following command to create a VM.
 
-    az stack-hci-vm create --name $vm_name --subscription $subscriptionid --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --size="Default" --computer-name "$GuestName" --admin-username "$username" --admin-password "$password" --image $galleryImageName --nics $VNic --enable-agent true
+   ```azurecli
+    az stack-hci-vm create --name $vm_name --subscription $subscriptionid --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --size="Default" --computer-name "$GuestName" --admin-username "$username" --admin-password "$password" --image $galleryImageName --nics $VNic --enable-agent true   
+   ``` 
 
 
     
