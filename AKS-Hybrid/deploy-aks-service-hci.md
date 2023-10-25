@@ -103,7 +103,7 @@ az customlocation delete --name $customloc_name --resource-group $resource_group
 
 Create the custom location in the default namespace.
 ```azurecli
-az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace default --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location
+az customlocation create --resource-group $resource_group --name $customloc_name --cluster-extension-ids "/subscriptions/$subscriptionID/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name/providers/Microsoft.KubernetesConfiguration/extensions/hci-vmoperator" --namespace default --host-resource-id "/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ResourceConnector/appliances/$resource_name" --location $location "eastus"
 ```
 
 ## Step 3: Install the AKS hybrid extension
@@ -118,7 +118,7 @@ az k8s-extension create --resource-group $resource_group --cluster-name $resourc
 Once you have created the AKS hybrid extension on top of the Azure Arc Resource Bridge, run the following command to check if the cluster extension provisioning state says **Succeeded**. It might say something else at first. This takes time, so try again after 10 minutes:
 
 ```azurecli
-az k8s-extension show ---resource-group $resource_group --cluster-name $resource_name --cluster-type appliances --name $aksHybridExtnName --query "provisioningState" -o tsv
+az k8s-extension show --resource-group $resource_group --cluster-name $resource_name --cluster-type appliances --name $aksHybridExtnName --query "provisioningState" -o tsv
 ```
 
 Expected output:
