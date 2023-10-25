@@ -106,7 +106,7 @@ Follow these steps to create a virtual network interface on your static virtual 
     | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
     | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-    | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
+    | **custom-location** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
     | **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
     | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your virtual network interface. If this parameter isn't specified, by default the virtual network interface is created with a dynamic configuration. |
@@ -157,7 +157,7 @@ Follow these steps to create a virtual network interface on your static virtual 
       "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-07-26T23:00:26.590194+00:00",
-        "createdBy": "hciuser@contoso.com",
+        "createdBy": "guspinto@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-07-26T23:00:42.948671+00:00",
         "lastModifiedBy": "<ID>",
@@ -176,8 +176,8 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
 1. Set the required parameters. Here's a sample output:
 
     ```azurecli
-    $VNic = "testnic001"
-    $VNetName = "test-vnet-dynamic"   
+    $vNic = "myhci-vnic"
+    $vnetName = "myhci-vnet-dynamic"   
     $subscription =  "<Subscription ID>" 
     $resource_group = "myhci-rg"
     $customLocName = "myhci-cl" 
@@ -191,14 +191,14 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
     | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
     | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-    | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
+    | **custom-location** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
     | **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
 
 1. To create a virtual network interface, run the following command:
  
     ```azurecli
-    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --subnet-id $vNetName --name $netInt
+    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --subnet-id $vnetName --name $netInt
     ```
    
     Here is a sample output:
@@ -209,9 +209,9 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
         "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/testnic001",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-vnic",
       "location": "eastus",
-      "name": "testnic001",
+      "name": "myhci-vnic",
       "properties": {
         "ipConfigurations": [
           {
@@ -229,13 +229,13 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
         ],
         "macAddress": null,
         "provisioningState": "Succeeded",
-        "resourceName": "testnic001",
+        "resourceName": "myhci-vnic",
         "status": {}
       },
       "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-02-08T23:25:10.984508+00:00",
-        "createdBy": "hciuser@contoso.com",
+        "createdBy": "guspinto@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-02-08T23:26:03.262252+00:00",
         "lastModifiedBy": "<ID>",
@@ -273,7 +273,7 @@ To create a VM with guest management enabled, you'll use the network interface t
 1. Run the following command to create a VM.
 
    ```azurecli
-    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="$customLocID" --location $Location --size="Default" --computer-name "$guestName" --admin-username "$username" --admin-password "$password" --image $galleryImageName --nics $VNic --enable-agent true   
+    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location=$customLocID --location $location --size="Default" --computer-name $guestName --admin-username $username --admin-password $password --image $galleryImageName --nics $VNic --enable-agent true   
    ``` 
 
 
@@ -289,7 +289,7 @@ Follow these steps to create a Windows VM.
 
 1. Set the parameters.
 
-    $galleryImageName = "<Name of the VM image you'll use to create VM. This is Windows or Linux image based on the VM you want to create.>" 
+    $galleryImageName = "<Name of the Windows or Linux image to use to create VM.>" 
 
 1. To create a Windows VM, run the following command:
 
@@ -432,7 +432,7 @@ Follow these steps in Azure portal of your Azure Stack HCI cluster.
         > [!IMPORTANT]
         > VM names should be in lowercase letters and may use hyphens and numbers.
 
-    1. **Custom location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
+    1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
 
     1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
@@ -474,7 +474,7 @@ Follow these steps in Azure portal of your Azure Stack HCI cluster.
 
         1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
         
-            If the domain is not specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *azurestackhciuser@contoso.com* would get the default domain name *contoso.com*.
+            If the domain is not specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
         
        :::image type="content" source="./media/manage-vm-resources/create-vm-enable-guest-management.png" alt-text="Screenshot guest management enabled during Create a VM." lightbox="./media/manage-vm-resources/create-vm-enable-guest-management.png":::
 
