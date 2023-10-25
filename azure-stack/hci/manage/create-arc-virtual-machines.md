@@ -444,7 +444,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     
         **The Virtual machine kind** is automatically set to **Azure Stack HCI**.
 
-    1. **Security type**: For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on Trusted Launch virtual machines, see [Trusted Launch for Azure Arc enabled servers](/azure/azure-arc/servers/trusted-launch).
+    1. **Security type**: For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on Trusted Launch virtual machines, see [Trusted Launch for Azure Arc enabled servers](/azure/virtual-machines/trusted-launch).
     
     1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
@@ -505,7 +505,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     > [!NOTE]
     > If you enabled guest management, you must add at least one network interface.
 
-    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
+    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of virtual network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
 
     1. Provide a **Name** for the network interface. 
     1. Select the **Network** and choose static or dynamic IP addresses.
@@ -520,7 +520,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. Review all the properties of the VM.
 
-    :::image type="content" source="./media/manage-vm-resources/review-virtual-machine.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/review-virtual-machine.png":::
+    :::image type="content" source="./media/manage-vm-resources/review-virtual-machine.png" alt-text="Screenshot of review page during Create a VM." lightbox="./media/manage-vm-resources/review-virtual-machine.png":::
 
 1. Select **Create**. It should take a few minutes to provision the VM.
 
