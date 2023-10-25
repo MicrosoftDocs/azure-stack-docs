@@ -88,14 +88,14 @@ Follow these steps to create a virtual network interface on your static virtual 
 1. Set the required parameters. Here's a sample output:
 
     ```azurecli
-    $vNetName = "MyVirtualNetwork"
+    $vNetName = "myhci-vnet"
     $gateway="100.68.180.1" 
     $ipaddress="100.68.180.6" 
-    $netInt="MyNic"
-    $subscriptionID =  "<Your subscription ID>"
-    $resourceGroupName = "HCIHW23"
-    $customLocationName = "cluster-275438a821cb4d7284c7234277e8e696-mocarb-cl" 
-    $customLocationID ="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$CustomlocationName"
+    $netInt="myhci-vnic"
+    $subscription =  "<Your subscription ID>"
+    $resource_group = "myhci-rg"
+    $customLocName = "myhci-cl" 
+   $customLocID ="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$CustomlocationName"
     $location = "eastus"
     ```
     | Parameter | Description |
@@ -127,12 +127,12 @@ Follow these steps to create a virtual network interface on your static virtual 
     ```console   
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/HCIHW23/providers/Microsoft.ExtendedLocation/customLocations/cluster-name",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/cluster-name",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/HCIHW23/providers/Microsoft.AzureStackHCI/networkinterfaces/MyNic3",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-vnic",
       "location": "eastus",
-      "name": "MyNic3",
+      "name": "myhci-vnic",
       "properties": {
         "dnsSettings": {
           "dnsServers": null
@@ -146,7 +146,7 @@ Follow these steps to create a virtual network interface on your static virtual 
               "privateIpAddress": "100.68.180.8",
               "privateIpAllocationMethod": "Static",
               "subnet": {
-                "id": "MyVirtualNetwork"
+                "id": "myhci-vnet"
               }
             }
           }
@@ -156,7 +156,7 @@ Follow these steps to create a virtual network interface on your static virtual 
         "resourceName": null,
         "status": {}
       },
-      "resourceGroup": "HCIHW23",
+      "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-07-26T23:00:26.590194+00:00",
         "createdBy": "hciuser@contoso.com",
@@ -180,28 +180,27 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
     ```azurecli
     $VNic = "testnic001"
     $VNetName = "test-vnet-dynamic"   
-    $Subscription =  "hcisub" 
-    $ResourceGroupName = "hcirg"
+    $subscription =  "hcisub" 
+    $resource_group = "hcirg"
     $CustomLocName = "hci-hybridaks-cl" 
-    $Location = "eastus2euap"
+    $location = "eastus2euap"
 
 1. To create a virtual network interface, run the following command:
  
     ```azurecli
-    az azurestackhci networkinterface create --subscription $subscription --resource-group $resource_group --extended-location name="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" type="CustomLocation" --location $Location --subnet-id $VNet --name $VNic
+    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --subnet-id $vNetName --name $netInt
     ```
    
     Here is a sample output:
     
     ```azurecli
-    
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/networkinterfaces/testnic001",
-      "location": "eastus2euap",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/testnic001",
+      "location": "eastus",
       "name": "testnic001",
       "properties": {
         "ipConfigurations": [
@@ -213,7 +212,7 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
               "privateIpAddress": null,
               "privateIpAllocationMethod": null,
               "subnet": {
-                "id": "test-vnet-dynamic"
+                "id": "internalNAT"
               }
             }
           }
@@ -223,13 +222,13 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
         "resourceName": "testnic001",
         "status": {}
       },
-      "resourceGroup": "hcirg",
+      "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-02-08T23:25:10.984508+00:00",
         "createdBy": "hciuser@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-02-08T23:26:03.262252+00:00",
-        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedBy": "<ID>",
         "lastModifiedByType": "Application"
       },
       "tags": null,
@@ -248,23 +247,23 @@ To create a VM with guest management enabled, you'll use the network interface t
 
     ```azurecli
     $vm_name="Hopev1"
-    $subscriptionID =  "<Subscription ID>"
-    $resourceGroupName = "HCIHW23"
-    $customLocationName = "custom-location-name"
-    $customLocationID="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$CustomlocationName"
+    $subscription =  "<Subscription ID>"
+    $resource_group = "myhci-rg"
+    $customLocName = "myhci-cl"
+    $customLocID="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
     $location = "eastus"
-    $GuestName = "MyComputer"
+    $guestName = "MyComputer"
     $username = "<Username for the VM>"
     $password = "<Password for the VM>"
     $galleryImageName ="ws22server"
-    $VNic="MyNic"   
+    $VNic="myhci-vnic"   
     ```
 
 
 1. Run the following command to create a VM.
 
    ```azurecli
-    az stack-hci-vm create --name $vm_name --subscription $subscriptionid --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --size="Default" --computer-name "$GuestName" --admin-username "$username" --admin-password "$password" --image $galleryImageName --nics $VNic --enable-agent true   
+    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="$customLocID" --location $Location --size="Default" --computer-name "$guestName" --admin-username "$username" --admin-password "$password" --image $galleryImageName --nics $VNic --enable-agent true   
    ``` 
 
 
@@ -302,10 +301,10 @@ Follow these steps to create a Windows VM.
     ********************************************************************************
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/hybridaksresgrp-491206666/providers/Microsoft.AzureStackHCI/virtualmachines/testvm001",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/virtualmachines/testvm001",
       "identity": {
         "principalId": "9ab8c590-8f6e-4657-89f4-54af762153d4",
         "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
@@ -374,7 +373,7 @@ Follow these steps to create a Windows VM.
         },
         "vmId": "85679cec-a80a-11ed-bfb6-22ee2f11ced4"
       },
-      "resourceGroup": "hybridaksresgrp-491206666",
+      "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-02-08T23:43:59.974877+00:00",
         "createdBy": "hciuser@contoso.com",
