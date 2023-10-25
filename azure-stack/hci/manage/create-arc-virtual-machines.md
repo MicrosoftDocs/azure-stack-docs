@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/24/2023
+ms.date: 10/25/2023
 ---
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI (preview)
@@ -80,20 +80,6 @@ Follow these steps to sign in to Azure CLI and set the subscription to use. Repl
 To create a VM, you'll first need to create a virtual network interface on your virtual network. The steps can be different depending on whether your virtual network is static or DHCP.
 
 
-### Parameters used to create virtual network interface
-
-For static IP and DHCP, the *required* parameters to be specified are tabulated as follows:
-
-| Parameter | Description |
-| ----- | ----------- |
-| **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
-| **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-| **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-| **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
-| **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-| **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
- 
-
 ### Virtual network interface with static IP
 
 
@@ -112,6 +98,7 @@ Follow these steps to create a virtual network interface on your static virtual 
     $customLocID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
     $location = "eastus"
     ```
+
     Here is a description of the parameters:
 
     | Parameter | Description |
@@ -191,10 +178,11 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
     ```azurecli
     $VNic = "testnic001"
     $VNetName = "test-vnet-dynamic"   
-    $subscription =  "hcisub" 
-    $resource_group = "hcirg"
-    $CustomLocName = "hci-hybridaks-cl" 
+    $subscription =  "<Subscription ID>" 
+    $resource_group = "myhci-rg"
+    $customLocName = "myhci-cl" 
     $location = "eastus2euap"
+    ```
 
     Here is a description of the parameters:
 
@@ -218,7 +206,7 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
     ```azurecli
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
         "type": "CustomLocation"
       },
       "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/testnic001",
@@ -323,7 +311,7 @@ Follow these steps to create a Windows VM.
     ********************************************************************************
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/hci-hybridaks-cl",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
         "type": "CustomLocation"
       },
       "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/virtualmachines/testvm001",
