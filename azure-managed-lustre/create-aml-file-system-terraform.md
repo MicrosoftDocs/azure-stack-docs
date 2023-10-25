@@ -26,7 +26,10 @@ In this article, you learn how to:
 > * Create an Azure Virtual Network using [azurerm_virtual_network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network)
 > * Create an Azure subnet using [azurerm_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet)
 > * Create a random value (to be used as the Managed Lustre file system name) using [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string)
-> * Create an Managed Lustre file system using [azurerm_managed_lustre_file_system](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/managed_lustre_file_system)
+> * Create a Managed Lustre file system using [azurerm_managed_lustre_file_system](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/managed_lustre_file_system)
+
+> [!NOTE]
+> This code example uses the [random_pet](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) and [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) resources to generate unique values for the resource group name and the Managed Lustre file system name. You can replace these values with your own resource names in the `variables.tf` and `main.tf` files.
 
 ## Prerequisites
 
@@ -56,9 +59,6 @@ In this article, you learn how to:
 1. Create a file named `outputs.tf` and insert the following code:
 
     :::code language="Terraform" source="../terraform_samples/quickstart/101-managed-lustre-create-filesystem/outputs.tf":::
-
-> [!NOTE]
-> This code example uses the [random_pet](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) and [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) resources to generate random values for the resource group name and the Managed Lustre file system name. You can replace these values with your own resource names in the `variables.tf` and `main.tf` files.
 
 ## Initialize Terraform
 
