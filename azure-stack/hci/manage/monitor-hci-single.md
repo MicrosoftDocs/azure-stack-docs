@@ -1,25 +1,25 @@
 ---
-title: Monitor Azure Stack HCI with Insights
-description: Enable logging and monitoring capabilities to monitor Azure Stack HCI clusters using Insights.
+title: Monitor Azure Stack HCI with Azure Monitor Insights
+description: Enable logging and monitoring capabilities to monitor Azure Stack HCI clusters using Azure Monitor Insights.
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/12/2023
+ms.date: 10/25/2023
 # zone_pivot_groups: hci-versions
 ---
 
-# Monitor Azure Stack HCI with Insights
+# Monitor Azure Stack HCI with Azure Monitor Insights
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article explains how to monitor an Azure Stack HCI cluster using Insights. Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
+This article explains how to use Azure Monitor Insights to monitor an Azure Stack HCI cluster. Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
 
-## Benefits of Insights
+## Benefits of using Insights for Azure Stack HCI
 
-Insights offers the following benefits:
+Insights for Azure Stack HCI offers the following benefits:
 
 - **Managed by Azure.** Insights is managed by Azure and accessed through the Azure portal, ensuring it's always up to date. There's no need for database or special software setup.
 
@@ -27,22 +27,23 @@ Insights offers the following benefits:
 
 - **Customizability.** The Insight's experience is built on top of Azure Monitor workbook templates. This allows you to change the views and queries, modify or set thresholds that align with your specific limits, and then save these customizations into a workbook. You can then pin charts in the workbooks to the Azure dashboards.
 
-## Configure Insights
+## Configure Insights for Azure Stack HCI
 
 The prerequisites and settings for using Insights vary depending on the version of Azure Stack HCI you have. Select one of the following tabs for instructions on how to use Insights on your specific version of Azure Stack HCI.
 
-The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Monitor Agent](/azure/azure-monitor/agents/agents-overview) (AMA), which offers significant advantages compared to the Legacy agents used in Azure Stack HCI, version 21H2 and earlier. These advantages include improved speed, enhanced security, and superior performance. You can onboard new nodes to AMA or [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the Legacy agent to AMA.
+The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Monitor Agent](/azure/azure-monitor/agents/agents-overview) (AMA), which offers significant advantages compared to the legacy Microsoft Monitoring Agent (MMA) used in Azure Stack HCI, version 21H2 and earlier. These advantages include improved speed, enhanced security, and superior performance. You can onboard new nodes to AMA or [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the Legacy agent to AMA.
 
-> [!IMPORTANT]
-> We recommend that you upgrade your Azure Stack HCI system to version 22H2 or later to take advantage of the Insights experience with AMA.
+We recommend that you upgrade your Azure Stack HCI system to version 22H2 or later to take advantage of the Insights experience with AMA.
+
+If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use AMA, such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshooting](#troubleshooting) section.
 
 # [Azure Stack HCI, version 22H2 and later](#tab/22h2-and-later)
 
-Starting with the May 2023 cumulative update for Azure Stack HCI, version 22H2, you can monitor on-premises Azure Stack HCI systems with Insights.
+Starting with the May 2023 cumulative update for Azure Stack HCI, version 22H2, you can monitor on-premises Azure Stack HCI systems with Insights for Azure Stack HCI.
 
 ### Prerequisites
 
-Here are the prerequisites for using Insights:
+Here are the prerequisites for using Insights for Azure Stack HCI:
 
 - Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you must enable [Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration).
 
@@ -183,14 +184,99 @@ The Azure Monitor Agent and the Microsoft Monitoring Agent extension can both be
 
 You must remove the Microsoft Monitoring Agent extension yourself from any computers that are using it. Before you do this step, ensure that the computer isn't relying on any other solutions that require the Microsoft Monitoring Agent.  After you verify that **MicrosoftMonitoringAgent** isn't still connected to your Log Analytics workspace, you can remove **MicrosoftMonitoringAgent** manually by redirecting to the **Extensions** page.
 
-> [!NOTE]
-> If you install AMA for Insights and uninstall MMA, Arc for Servers or VM Insights for individual cluster nodes will no longer work. If you would like to continue using Insights, Change tracking, Inventory, or other solutions relying on MMA for cluster nodes, we recommend that you install the MMA agent from the VM Insights page.
-
 :::image type="content" source="media/monitor-hci-single/agent-migration-4.png" alt-text="Screenshot showing the Extensions list." lightbox="media/monitor-hci-single/agent-migration-4.png":::
 
 ### Troubleshooting
 
-For troubleshooting steps, see [Troubleshooting guidance for the Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-windows-arc).
+Clusters registered before November 2023 configures AMA at the cluster identity level, causing issues with log and event data collection for specific services, such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel. To rectify this, we updated the cluster registration for AMA to use the server identity instead.
+
+To address the AMA confifiguration change in clusters registered before November 2023, follow these steps:
+
+1. Repair cluster registration. See [Repair cluster registration](#repair-cluster-registration).
+1. Repair AMA. See [Repair AMA](#repair-ama-for-azure-stack-hci).
+1. Reconfigure Insights for Azure Stack HCI. See [Reconfigure Insights for Azure Stack HCI](#reconfigure-insights-for-azure-stack-hci).
+
+In the Azure portal, the Insights for Azure Stack HCI page automatically detects the change in the AMA configuration and displays a banner at the top of the page, guiding you to take necessary actions to continue using services that rely on AMA.
+
+:::image type="content" source="media/monitor-hci-single/reconfigure-insights-banner.png" alt-text="Screenshot showing the banner to reconfigure Insights." lightbox="media/monitor-hci-single/reconfigure-insights-banner.png":::
+
+#### Repair cluster registration
+
+If the cluster is already registered with Azure, rerun the registration to configure managed identity at the server level.
+
+Run the following command to repair cluster registration:
+
+```powershell
+Register-AzStackHCI -SubscriptionId "<SubscriptionID>" -ComputerName <NodeName> -RepairRegistration
+```
+
+#### Repair AMA for Azure Stack HCI
+
+Choose one of the following options to repair AMA:
+
+- **Option 1: Update AMA**
+
+   Follow these steps to update AMA:
+
+   1. In the Azure portal, go to the **Extensions** page for your Azure Stack HCI cluster.
+
+   1. Select the checkbox for **AzureMonitorWindowsAgent** and select **Enable automatic upgrade**, if not done already.
+
+      :::image type="content" source="media/monitor-hci-single/update-ama.png" alt-text="Screenshot showing AzureMonitorWindowsAgent to enable automatic upgrade." lightbox="media/monitor-hci-single/update-ama.png":::
+
+- **Option 2: Uninstall AMA**
+
+   If AMA is already updated, uninstall it. Follow these steps to uninstall AMA:
+
+   1. In the Azure portal, go to the **Extensions** page for your Azure Stack HCI cluster.
+
+   1. Select the checkbox for **AzureMonitorWindowsAgent** and select **Uninstall**.
+
+      :::image type="content" source="media/monitor-hci-single/uninstall-ama.png" alt-text="Screenshot showing AzureMonitorWindowsAgent to uninstall AMA." lightbox="media/monitor-hci-single/uninstall-ama.png":::
+
+- **Option 3: Restart AMA**
+
+   Follow these steps on all the cluster nodes to restart AMA:
+
+   1. Run the following command to disable AMA:
+
+      ```powershell
+      cd C:\Packages\Plugins\Microsoft.Azure.Monitor.AzureMonitorWindowsAgent\<agent version number>
+      AzureMonitorAgentExtension.exe disable
+      ```
+
+   1. After the executable completes and all the AMA processes stop, run the following command to restart the agent:
+
+      ```powershell
+      AzureMonitorAgentExtension.exe enable
+      ```
+
+- **Option 4: Reboot your cluster nodes**
+
+#### Reconfigure Insights for Azure Stack HCI
+
+Follow these steps to reconfigure Insights for Azure Stack HCI:
+
+1. In the Azure portal, the Insights page for your Azure Stack HCI cluster automatically detects the AMA configuration change and displays a banner at the top, as shown in the following screenshot. Review the banner and select **Configure Insights**.
+
+   :::image type="content" source="media/monitor-hci-single/configure-insights.png" alt-text="Screenshot showing the Configure Insights button." lightbox="media/monitor-hci-single/configure-insights.png":::
+
+1. Reconfigure DCR. Follow the instructions to configure Insights as provided in this article. See [Configure Insights for Azure Stack HCI](#configure-insights-for-azure-stack-hci).
+
+   :::image type="content" source="media/monitor-hci-single/new-data-collection-rule.png" alt-text="Screenshot of the New data collecition rule page." lightbox="media/monitor-hci-single/new-data-collection-rule.png":::
+
+If you see a blank screen with no data populated, as shown in the following screenshot, you need to perform some other troubleshooting steps.
+
+:::image type="content" source="media/monitor-hci-single/blank-screen.png" alt-text="Screenshot showing no data." lightbox="media/monitor-hci-single/blank-screen.png":::
+
+Perform these troubleshooting steps in order:
+
+1. If you've recently configured Insights, wait for up to one hour for AMA to gather data.
+1. If there's still no data after waiting, make sure you have completed all the steps mentioned in the section [Clusters registered before October 2023].
+1. Verify the configuration of the associated DCR. Make sure that event channels and performance counters are added as data sources to the associated DCR as described in the [Data Collection Rules](#data-collection-rules) section.
+1. If the issue persists after performing the above steps, and you still don't see any data, contact customer support for assistance.
+
+For more detailed troubleshooting guidance, see [Troubleshooting guidance for the Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-windows-arc).
 
 # [Azure Stack HCI, version 21H2 and earlier](#tab/21h2-and-earlier)
 
