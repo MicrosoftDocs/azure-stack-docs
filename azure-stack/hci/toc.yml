@@ -18,15 +18,8 @@
     href: concepts/azure-hybrid-benefit-hci.md  
   - name: FAQ
     href: faq.yml
-
-- name: Quickstarts
-  items:
-  - name: Create an Azure Stack HCI cluster
-    href: deploy/deployment-quickstart.md
-- name: Tutorial
-  items:
-  - name: Create a VM-based lab
-    href: deploy/tutorial-private-forest.md
+  - name: Release information
+    href: release-information.md
 - name: Plan
   items:
   - name: Requirements
@@ -784,3 +777,5 @@
       href: whats-new-in-hci-20h2.md
     - name: Release notes for version 20H2 Public Preview 
       href: preview-release-notes.md
+    - name: Create a VM-based lab
+      href: deploy/tutorial-private-forest.md
