@@ -388,7 +388,7 @@ Follow these steps to create a Windows VM.
       "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-02-08T23:43:59.974877+00:00",
-        "createdBy": "hciuser@contoso.com",
+        "createdBy": "guspinto@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-02-08T23:46:35.803537+00:00",
         "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
@@ -416,18 +416,24 @@ The VM is successfully created when the `provisioningState` shows as `succeeded`
 
 # [Azure portal](#tab/azureportal)
 
-Follow these steps in Azure portal of your Azure Stack HCI cluster.
+Follow these steps in Azure portal of your Azure Stack HCI system.
 
-1. Go to **Resources (Preview) > Virtual machines**.
-1. From the top command bar, select **+ Create VM**.
+1. Go to **Azure Arc > Virtual machines**.
+1. From the top command bar, select **+ Add/Create**. From the dropdown list, select **Create a machine in a connected host environment**.
 
-   :::image type="content" source="./media/manage-vm-resources/select-create-vm.png" alt-text="Screenshot of select + Create VM." lightbox="./media/manage-vm-resources/select-create-vm.png":::
+   :::image type="content" source="./media/manage-vm-resources/select-create-vm.png" alt-text="Screenshot of select + Add/Create VM." lightbox="./media/manage-vm-resources/select-create-vm.png":::
 
-1. In the **Create an Azure Arc virtual machine** wizard, on the **Basics** tab, input the following parameters:
+1. In the **Create an Azure Arc virtual machine** wizard, on the **Basics** tab, input the following parameters in the **Project details** section:
+
+   :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-project-details.png":::
 
     1. **Subscription** – The subscription is tied to the billing. Choose the subscription that you want to use to deploy this VM.
 
     1. **Resource group** – Create new or choose an existing resource group where you'll deploy all the resources associated with your VM.
+
+1. In the **Instance details** section, input the following parameters:
+
+   :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-instance-details.png" alt-text="Screenshot of Instance details on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-instance-details.png":::
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
@@ -435,63 +441,88 @@ Follow these steps in Azure portal of your Azure Stack HCI cluster.
         > VM names should be in lowercase letters and may use hyphens and numbers.
 
     1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
+    
+        **The Virtual machine kind** is automatically set to **Azure Stack HCI**.
 
+    1. **Security type**: For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on Trusted Launch virtual machines, see [Trusted Launch for Azure Arc enabled servers](/azure/azure-arc/servers/trusted-launch).
+    
     1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
         1. If you selected a Windows image, provide a username and password for the administrator account. You'll also need to confirm the password.
  
-           :::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::       
+          <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::-->       
 
         1. If you selected a Linux image, in addition to providing username and password, you'll also need SSH keys.
 
-           :::image type="content" source="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png":::
-
+           <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png":::-->
 
     1. **Virtual processor count** – Specify the number of vCPUs you would like to use to create the VM.
 
-    1. **Memory** – Specify the memory in GB for the VM you intend to create.
+    1. **Memory** – Specify the memory in MB for the VM you intend to create.
 
     1. **Memory type** – Specify the memory type as static or dynamic.
 
-       :::image type="content" source="./media/manage-vm-resources/create-arc-vm.png" alt-text="Screenshot showing how to Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm.png":::
-    
-    1. **Administrator account** – Specify the username and the password for the administrator account on the VM.
-    
-    1. **Enable guest management** – Select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
-    
-        > [!NOTE]
-        > - You can't enable guest management via Azure portal if the Arc VM is already created.
-        > - Add at least one network interface through the **Networking** tab to complete guest management setup.
-        > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Arc VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
 
-    1. If you selected a Windows VM image, you can domain join your Windows VM. Follow these steps: 
+1. In the **VM extensions** section, select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
+
+    :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png":::   
+   
+    > [!NOTE]
+    > - You can't enable guest management via Azure portal if the Arc VM is already created.
+    > - Add at least one network interface through the **Networking** tab to complete guest management setup.
+    > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Arc VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
+
+1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters: 
+
+    1. Specify the local VM administrator account username.
+    1. Specify the password and then **Confirm password**.
+
+1. If you selected a Windows VM image, you can domain join your Windows VM. In the **Domain join** section, input the following parameters: 
+   
+    1. Select **Enable domain join**.
+
+    1. Only the Active Directory domain join is supported and selected by default.  
     
-        1. Select **Enable domain join**.
+    1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
     
-        1. Only the Active Directory domain join is supported and selected by default.  
-        
-        1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
-        
-        1. Provide the domain administrator password.
+    1. Provide the domain administrator password.
 
-        1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
-        
-            If the domain is not specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
-        
-       :::image type="content" source="./media/manage-vm-resources/create-vm-enable-guest-management.png" alt-text="Screenshot guest management enabled during Create a VM." lightbox="./media/manage-vm-resources/create-vm-enable-guest-management.png":::
+    1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
+    
+        If the domain is not specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
 
-1. **(Optional)** Create new or add more disks to the VM by providing a name and size. You can also choose the disk type to be static or dynamic.
+1. **(Optional)** Create new or add more disks to the VM. 
 
-1. **(Optional)** Create or add network interface (NIC) cards for the VM by providing a name for the network interface. Then select the network and choose static or dynamic IP addresses.
+   :::image type="content" source="./media/manage-vm-resources/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/manage-vm-resources/create-new-disk.png":::
+
+    1. Select **+ Add new disk**. 
+    1. Provide a **Name** and **Size**. 
+    1. You can also choose the disk **Provisioning type** to be **Static** or **Dynamic**.
+    1. Select **Add**.
+
+1. **(Optional)** Create or add a virtual network interface for the VM.
 
     > [!NOTE]
     > If you enabled guest management, you must add at least one network interface.
 
-   :::image type="content" source="./media/manage-vm-resources/create-arc-vm-2.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-arc-vm-2.png":::
+    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
+
+    1. Provide a **Name** for the network interface. 
+    1. Select the **Network** and choose static or dynamic IP addresses.
+    1. Select IPv4 type as **Static** or **DHCP**. 
+        
+        For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
+
+    1. Select **Add**.
+
 
 1. **(Optional)** Add tags to the VM resource if necessary.
 
-1. Review all the properties, and then select **Create**. It should take a few minutes to provision the VM.
+1. Review all the properties of the VM.
+
+    :::image type="content" source="./media/manage-vm-resources/review-virtual-machine.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/review-virtual-machine.png":::
+
+1. Select **Create**. It should take a few minutes to provision the VM.
 
 ---
 
