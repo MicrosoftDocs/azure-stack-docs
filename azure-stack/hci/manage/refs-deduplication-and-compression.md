@@ -19,7 +19,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Stack HCI](../deploy/virtual-desktop-infrastructure.md). This feature helps optimize storage usage, enhancing overall performance, and significantly reducing storage cost.
 
-This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the cluster size. The compression engine uses heatmaps to identify when a block of data was last used and compresses the infrequently used data, optimizing for CPU usage.
+This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the cluster size. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
 
 You can run ReFS deduplication and compression as a one-time job or automate it with scheduled jobs. This feature works with both all-flash and hybrid systems and supports various resiliency settings, such as two-way mirror, nested two-way mirror, three-way mirror, and mirror accelerated parity.
 
@@ -386,7 +386,7 @@ The optimization process comprises the following phases that occur sequentially 
 
 - **Data deduplication.** In this phase, the redundant blocks are single-instanced and tracked using ReFS block cloning.
 
-- **Compression.** In this phase, heatmaps are used to identify infrequently accessed or cold data. Then the compression algorithms are applied to the selected data blocks to reduce their size. However, you can change the compression setting based on the type of data being compressed, for example, from infrequently accessed to frequently accessed data or hot data.
+- **Compression.** In this phase, a heatmap is generated to identify if a block should be eligible for compression. The default settings compress infrequently accessed or cold data to reduce their size. You can change the compression levels to adjust the range of blocks eligible for compression.
 
 ### What happens when the duration limit is reached before the volume is fully optimized?
 
