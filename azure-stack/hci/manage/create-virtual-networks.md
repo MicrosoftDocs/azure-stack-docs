@@ -79,11 +79,11 @@ Follow these steps to configure a DHCP virtual network:
 1. Set the parameters. Here's an example using the default external switch:
 
     ```azurecli
-    $vNetName = "test-vnet-dynamic"
+    $vNetName = "myhci-vnet-dynamic"
     $vSwitchName = '"ConvergedSwitch(compute_management)"'
-    $subscription =  "hcisub" 
-    $resourceGroupName = "hcirg"
-    $customLocationName = "altsnclus-cl" 
+    $subscription =  "<Subscription ID>" 
+    $resource_group = "myhci-rg"
+    $customLocName = "myhci-cl" 
     $location = "eastus2euap"
     ```
 
@@ -105,7 +105,7 @@ Follow these steps to configure a DHCP virtual network:
 1. Run the following cmdlet to create a DHCP virtual network:
 
     ```azurecli
-    az stack-hci-vm network vnet create --subscription $subscription --resource-group $resourceGroupName --custom-location="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --ip-allocation-method "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
+    az stack-hci-vm network vnet create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --ip-allocation-method "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
     ```
 
     Here's a sample output:
@@ -113,12 +113,12 @@ Follow these steps to configure a DHCP virtual network:
     ```output
     {
     "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.ExtendedLocation/customLocations/altsnclus-cl",
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
     "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/virtualnetworks/test-vnet-dynamic",
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/myhci-vnet-dynamic",
     "location": "eastus2euap",
-    "name": "test-vnet-dynamic",
+    "name": "myhci-vnet-dynamic",
     "properties": {
       "dhcpOptions": {
         "dnsServers": null
@@ -129,7 +129,7 @@ Follow these steps to configure a DHCP virtual network:
       "subnets": [],
       "vmSwitchName": "ConvergedSwitch(compute_management)"
     },
-    "resourceGroup": "hcirg",
+    "resourceGroup": "myhci-rg",
     "systemData": {
       "createdAt": "2023-06-06T00:10:40.562941+00:00",
       "createdBy": "johndoe@contoso.com",
@@ -156,9 +156,9 @@ Create a static virtual network when you want to create virtual machines with ne
     $vNetName = "MyVirtualNetwork"
     $vSwitchName = "ConvergedSwitch(managementcompute)"
     $subscriptionID = "<Subscription ID>"
-    $resourceGroupName = "HCI22H2RegistrationRG"
-    $customLocationName = "cluster-eecda70c5019425cab03d082a6d57e55-mocarb-cl"
-    $customLocationID="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$Customlocationname"
+    $resource_group = "HCI22H2RegistrationRG"
+    $customLocName = "cluster-eecda70c5019425cab03d082a6d57e55-mocarb-cl"
+    $customLocID="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$Customlocationname"
     $location = "eastus"
     $addressPrefix = "100.68.180.0/28"
     ```
@@ -193,7 +193,7 @@ Create a static virtual network when you want to create virtual machines with ne
 1. Create a static virtual network. Run the following cmdlet:
 
     ```azurecli
-    az stack-hci-vm network vnet create --subscription $subscriptionid --resource-group $resourceGroupName --custom-location=$customLocationID --location $location --network-type "Transparent" --name $vNetName --ip-allocation-method "Static" --address-prefixes $addressPrefix --vm-switch-name $vSwitchName     
+    az stack-hci-vm network vnet create --subscription $subscriptionid --resource-group $resource_group --custom-location=$customLocID --location $location --network-type "Transparent" --name $vNetName --ip-allocation-method "Static" --address-prefixes $addressPrefix --vm-switch-name $vSwitchName     
     ```
   
   Once the virtual network creation is complete, you're ready to create virtual machines with network interfaces on these virtual networks.
