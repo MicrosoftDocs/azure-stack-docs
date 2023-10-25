@@ -1,6 +1,6 @@
 ---
-title: Deploy Kubernetes to Azure Stack Hub using Azure Active Directory (Azure AD) 
-description: Learn how to deploy Kubernetes to Azure Stack Hub using Azure Active Directory (Azure AD).
+title: Deploy Kubernetes to Azure Stack Hub using Microsoft Entra ID 
+description: Learn how to deploy Kubernetes to Azure Stack Hub using Microsoft Entra ID.
 author: sethmanheim
 
 ms.topic: article
@@ -9,26 +9,26 @@ ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 3/12/2020
 
-# Intent: As an Azure Stack user, I want to deploy Kubernetes using Azure AD so I can use Kubernetes with the Azure AD identity management system.
-# Keyword: deploy kubernetes azure ad
+# Intent: As an Azure Stack user, I want to deploy Kubernetes using Microsoft Entra ID so I can use Kubernetes with the Microsoft Entra identity management system.
+# Keyword: deploy kubernetes Microsoft Entra ID
 
 ---
 
 
-# Deploy Kubernetes to Azure Stack Hub using Azure Active Directory
+# Deploy Kubernetes to Azure Stack Hub using Microsoft Entra ID
 
 > [!NOTE]  
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
-You can follow the steps in this article to deploy and set up the resources for Kubernetes, when using Azure Active Directory (Azure AD) as your identity management service, in a single, coordinated operation.
+You can follow the steps in this article to deploy and set up the resources for Kubernetes, when using Microsoft Entra ID as your identity management service, in a single, coordinated operation.
 
 ## Prerequisites
 
 To get started, make sure you have the right permissions and that your Azure Stack Hub is ready.
 
-1. Verify that you can create applications in your Azure Active Directory (Azure AD) tenant. You need these permissions for the Kubernetes deployment.
+1. Verify that you can create applications in your Microsoft Entra tenant. You need these permissions for the Kubernetes deployment.
 
-    For instructions on checking your permissions, see [Check Azure Active Directory permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+    For instructions on checking your permissions, see [Check Microsoft Entra permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 1. Generate an SSH public and private key pair to sign in to the Linux VM on Azure Stack Hub. You will need the public key when creating the cluster.
 
@@ -46,14 +46,14 @@ Set up a service principal in Azure. The service principal gives your applicatio
 
 1. Sign in to the global [Azure portal](https://portal.azure.com).
 
-1. Check that you signed in using the Azure AD tenant associated with the Azure Stack Hub instance. You can switch your sign-in by clicking the filter icon in the Azure toolbar.
+1. Check that you signed in using the Microsoft Entra tenant associated with the Azure Stack Hub instance. You can switch your sign-in by clicking the filter icon in the Azure toolbar.
 
     ![Select you AD tenant](media/azure-stack-solution-template-kubernetes-deploy/tenantselector.png)
 
-1. Create an Azure AD application.
+1. Create a Microsoft Entra application.
 
     a. Sign in to your Azure Account through the [Azure portal](https://portal.azure.com).  
-    b. Select **Azure Active Directory** > **App registrations** > **New registration**.  
+    b. Select **Microsoft Entra ID** > **App registrations** > **New registration**.  
     c. Provide a name and URL for the application.  
     d. Select the **Supported account types**.  
     e.  Add `http://localhost` for the URI for the application. Select **Web**  for the type of application you want to create. After setting the values, select **Register**.
@@ -129,7 +129,7 @@ Give the service principal access to your subscription so that the principal can
 
 1. Select the **VMSize of the Kubernetes node VMs**. This specifies the VM Size of Kubernetes node VMs. 
 
-1. Select **Azure AD** for the **Azure Stack Hub identity system** for your Azure Stack Hub installation.
+1. Select **Microsoft Entra ID** for the **Azure Stack Hub identity system** for your Azure Stack Hub installation.
 
 1. Enter the **Service principal clientId** This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when your Azure Stack Hub administrator created the service principal.
 

@@ -64,9 +64,9 @@ You can choose to deploy Azure Stack Hub either **connected** to the internet (a
 
 ### Identity provider 
 
-Azure Stack Hub uses either Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). Azure AD is Microsoft's cloud-based, multi-tenant identity provider. Most hybrid scenarios with internet-connected deployments use Azure AD as the identity store.
+Azure Stack Hub uses either Microsoft Entra ID or Active Directory Federation Services (AD FS). Microsoft Entra ID is Microsoft's cloud-based, multi-tenant identity provider. Most hybrid scenarios with internet-connected deployments use Microsoft Entra ID as the identity store.
 
-For disconnected deployments of Azure Stack Hub, you need to use AD FS. Azure Stack Hub resource providers and other apps work similarly with AD FS or Azure AD. Azure Stack Hub includes its own Active Directory instance and an Active Directory Graph API.
+For disconnected deployments of Azure Stack Hub, you need to use AD FS. Azure Stack Hub resource providers and other apps work similarly with AD FS or Microsoft Entra ID. Azure Stack Hub includes its own Active Directory instance and an Active Directory Graph API.
 
 
 ## How is Azure Stack Hub managed?

@@ -8,24 +8,12 @@
     href: whats-new.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
-  - name: Compare to Azure Stack Hub
-    href: concepts/compare-azure-stack-hub.md
   - name: Azure Hybrid Benefit
-    href: concepts/azure-hybrid-benefit-hci.md
-  - name: Evaluation guide
-    href: guided-quick-deploy-eval.yml    
+    href: concepts/azure-hybrid-benefit-hci.md  
   - name: FAQ
     href: faq.yml
   - name: Release information
     href: release-information.md
-- name: Quickstarts
-  items:
-  - name: Create an Azure Stack HCI cluster
-    href: deploy/deployment-quickstart.md
-- name: Tutorial
-  items:
-  - name: Create a VM-based lab
-    href: deploy/tutorial-private-forest.md
 - name: Plan
   items:
   - name: Requirements
@@ -606,6 +594,8 @@
       href: /training/modules/implement-firewall-load-balancer/
     - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
       href: /training/modules/plan-deploy-sdn-infrastructure/
+  - name: Evaluation guide
+    href: guided-quick-deploy-eval.yml 
   - name: Earlier versions
     items:
     - name: What's new in version 21H2
@@ -614,3 +604,5 @@
       href: whats-new-in-hci-20h2.md
     - name: Release notes for version 20H2 Public Preview 
       href: preview-release-notes.md
+    - name: Create a VM-based lab
+      href: deploy/tutorial-private-forest.md
