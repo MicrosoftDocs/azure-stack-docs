@@ -433,7 +433,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. In the **Instance details** section, input the following parameters:
 
-   :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-instance-details.png" alt-text="Screenshot of Instance details on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-instance-details.png":::
+    :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-instance-details.png" alt-text="Screenshot of Instance details on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-instance-details.png":::
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
