@@ -289,8 +289,10 @@ Follow these steps to create a Windows VM.
 
 1. Set the parameters.
 
-    $galleryImageName = "<Name of the Windows or Linux image to use to create VM.>" 
-
+    ```azurecli
+    $galleryImageName = "<Name of the Windows or Linux image to use to create VM.>"    
+    ```
+ 
 1. To create a Windows VM, run the following command:
 
     ```azurecli
