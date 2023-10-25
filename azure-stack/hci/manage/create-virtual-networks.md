@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/17/2023
+ms.date: 10/25/2023
 ---
 
 # Create virtual networks for Azure Stack HCI (preview)
@@ -78,58 +78,58 @@ Follow these steps to configure a DHCP virtual network:
 
 1. Set the parameters. Here's an example using the default external switch:
 
-  ```azurecli
-  $vNetName = "test-vnet-dynamic"
-  $vSwitchName = '"ConvergedSwitch(compute_management)"'
-  $subscription =  "hcisub" 
-  $resourceGroupName = "hcirg"
-  $customLocationName = "altsnclus-cl" 
-  $location = "eastus2euap"
-  ```
+    ```azurecli
+    $vNetName = "test-vnet-dynamic"
+    $vSwitchName = '"ConvergedSwitch(compute_management)"'
+    $subscription =  "hcisub" 
+    $resourceGroupName = "hcirg"
+    $customLocationName = "altsnclus-cl" 
+    $location = "eastus2euap"
+    ```
 
-  > [!NOTE]
-  > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+    > [!NOTE]
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
 
 1. Run the following cmdlet to create a DHCP virtual network:
 
-  ```azurecli
-  az stack-hci-vm network vnet create --subscription $subscription --resource-group $resourceGroupName --custom-location="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --ip-allocation-method "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
-  ```
+    ```azurecli
+    az stack-hci-vm network vnet create --subscription $subscription --resource-group $resourceGroupName --custom-location="/subscriptions/$Subscription/resourceGroups/$resourceGroupName/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --ip-allocation-method "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
+    ```
 
-  Here's a sample output:
-
-  ```output
-  {
-  "extendedLocation": {
-  "name": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.ExtendedLocation/customLocations/altsnclus-cl",
-  "type": "CustomLocation"
-  },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/virtualnetworks/test-vnet-dynamic",
-  "location": "eastus2euap",
-  "name": "test-vnet-dynamic",
-  "properties": {
-    "dhcpOptions": {
-      "dnsServers": null
+    Here's a sample output:
+    
+    ```output
+    {
+    "extendedLocation": {
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.ExtendedLocation/customLocations/altsnclus-cl",
+    "type": "CustomLocation"
     },
-    "networkType": "Transparent",
-    "provisioningState": "Succeeded",
-    "status": {},
-    "subnets": [],
-    "vmSwitchName": "ConvergedSwitch(compute_management)"
-  },
-  "resourceGroup": "hcirg",
-  "systemData": {
-    "createdAt": "2023-06-06T00:10:40.562941+00:00",
-    "createdBy": "johndoe@contoso.com",
-    "createdByType": "User",
-    "lastModifiedAt": "2023-06-06T00:11:26.659220+00:00",
-    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-    "lastModifiedByType": "Application"
-  },
-  "tags": null,
-  "type": "microsoft.azurestackhci/virtualnetworks"
-  }
-  ```
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/virtualnetworks/test-vnet-dynamic",
+    "location": "eastus2euap",
+    "name": "test-vnet-dynamic",
+    "properties": {
+      "dhcpOptions": {
+        "dnsServers": null
+      },
+      "networkType": "Transparent",
+      "provisioningState": "Succeeded",
+      "status": {},
+      "subnets": [],
+      "vmSwitchName": "ConvergedSwitch(compute_management)"
+    },
+    "resourceGroup": "hcirg",
+    "systemData": {
+      "createdAt": "2023-06-06T00:10:40.562941+00:00",
+      "createdBy": "johndoe@contoso.com",
+      "createdByType": "User",
+      "lastModifiedAt": "2023-06-06T00:11:26.659220+00:00",
+      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+      "lastModifiedByType": "Application"
+    },
+    "tags": null,
+    "type": "microsoft.azurestackhci/virtualnetworks"
+    }
+    ```
 
 ### Create a static virtual network
 
@@ -140,25 +140,25 @@ Create a static virtual network when you want to create virtual machines with ne
 
 1. Set the parameters. Here's an example:
 
-  ```azurecli
-  $vNetName = "MyVirtualNetwork"
-  $vSwitchName = "ConvergedSwitch(managementcompute)"
-  $subscriptionID = "<Subscription ID>"
-  $resourceGroupName = "HCI22H2RegistrationRG"
-  $customLocationName = "cluster-eecda70c5019425cab03d082a6d57e55-mocarb-cl"
-  $customLocationID="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$Customlocationname"
-  $location = "eastus"
-  $addressPrefix = "100.68.180.0/28"
-  ```
+    ```azurecli
+    $vNetName = "MyVirtualNetwork"
+    $vSwitchName = "ConvergedSwitch(managementcompute)"
+    $subscriptionID = "<Subscription ID>"
+    $resourceGroupName = "HCI22H2RegistrationRG"
+    $customLocationName = "cluster-eecda70c5019425cab03d082a6d57e55-mocarb-cl"
+    $customLocationID="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$Customlocationname"
+    $location = "eastus"
+    $addressPrefix = "100.68.180.0/28"
+    ```
 
-  > [!NOTE]
-  > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+    > [!NOTE]
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
 
 1. Create a static virtual network. Run the following cmdlet:
 
-  ```azurecli
-  az stack-hci-vm network vnet create --subscription $subscriptionid --resource-group $resourceGroupName --custom-location=$customLocationID --location $location --network-type "Transparent" --name $vNetName --ip-allocation-method "Static" --address-prefixes $addressPrefix --vm-switch-name $vSwitchName     
-  ```
+    ```azurecli
+    az stack-hci-vm network vnet create --subscription $subscriptionid --resource-group $resourceGroupName --custom-location=$customLocationID --location $location --network-type "Transparent" --name $vNetName --ip-allocation-method "Static" --address-prefixes $addressPrefix --vm-switch-name $vSwitchName     
+    ```
   
   Once the virtual network creation is complete, you're ready to create virtual machines with network interfaces on these virtual networks.
 

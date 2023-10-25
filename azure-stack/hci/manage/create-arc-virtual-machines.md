@@ -54,29 +54,7 @@ Follow these steps to create an Arc VM on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster.
-
-### Parameters used to create virtual network interface
-
-For a virtual network interface created on a DHCP or static virtual network, the *required* parameters to be specified are tabulated as follows:
-
-| Parameter | Description |
-| ----- | ----------- |
-| **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
-| **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-| **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-| **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
-| **Location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-| **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
- 
-
-For static IP only, additional *required* basic parameters are tabulated as follows:
-
-| Parameter | Description |
-| --------- | ----------- |
-| **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your virtual network interface. If this parameter isn't specified, by default the virtual network interface is created with a dynamic configuration. |
-| **ip-address** | An IPv4 address you want to assign to the virtual network interface that you are creating. For example: "192.168.0.10".  |
-| **Gateway** | Ipv4 address of the default gateway. |
+Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster. To create an Arc VM via the Azure CLI, you first need to create a virtual network interface with static IP address or DHCP IP address. Then you can create a VM using the virtual network interface that you created. 
 
 ## Sign in and set subscription
 
@@ -100,6 +78,97 @@ Follow these steps to sign in to Azure CLI and set the subscription to use. Repl
 ## Create virtual network interface
 
 To create a VM, you'll first need to create a virtual network interface on your virtual network. The steps can be different depending on whether your virtual network is static or DHCP.
+
+
+### Virtual network interface with static IP
+
+
+Follow these steps to create a virtual network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
+
+1. Set the required parameters. Here's a sample output:
+
+    ```azurecli
+    $vNetName = "MyVirtualNetwork"
+    $gateway="100.68.180.1" 
+    $ipaddress="100.68.180.6" 
+    $netInt="MyNic"
+    $subscriptionID =  "<Your subscription ID>"
+    $resourceGroupName = "HCIHW23"
+    $customLocationName = "cluster-275438a821cb4d7284c7234277e8e696-mocarb-cl" 
+    $customLocationID ="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$CustomlocationName"
+    $location = "eastus"
+    ```
+    | Parameter | Description |
+    | ----- | ----------- |
+    | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
+    | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
+    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
+    | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
+    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
+    | **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
+ 
+
+    For static IP only, additional *required* basic parameters are tabulated as follows:
+    
+    | Parameter | Description |
+    | --------- | ----------- |
+    | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your virtual network interface. If this parameter isn't specified, by default the virtual network interface is created with a dynamic configuration. |
+    | **ip-address** | An IPv4 address you want to assign to the virtual network interface that you are creating. For example: "192.168.0.10".  |
+    | **Gateway** | Ipv4 address of the default gateway. |
+
+1. To create a virtual network interface with static IP address, run the following command:
+
+    ```azurecli
+    az stack-hci-vm network nic create --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --name $netInt --subnet-id $vnetName --ip-address $ipaddress --gateway $gateway
+    ```
+    
+    Here's a sample output:
+    
+    ```console   
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/HCIHW23/providers/Microsoft.ExtendedLocation/customLocations/cluster-name",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/HCIHW23/providers/Microsoft.AzureStackHCI/networkinterfaces/MyNic3",
+      "location": "eastus",
+      "name": "MyNic3",
+      "properties": {
+        "dnsSettings": {
+          "dnsServers": null
+        },
+        "ipConfigurations": [
+          {
+            "name": null,
+            "properties": {
+              "gateway": "100.68.180.1",
+              "prefixLength": "28",
+              "privateIpAddress": "100.68.180.8",
+              "privateIpAllocationMethod": "Static",
+              "subnet": {
+                "id": "MyVirtualNetwork"
+              }
+            }
+          }
+        ],
+        "macAddress": null,
+        "provisioningState": "Succeeded",
+        "resourceName": null,
+        "status": {}
+      },
+      "resourceGroup": "HCIHW23",
+      "systemData": {
+        "createdAt": "2023-07-26T23:00:26.590194+00:00",
+        "createdBy": "hciuser@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-07-26T23:00:42.948671+00:00",
+        "lastModifiedBy": "<ID>",
+        "lastModifiedByType": "Application"
+      },
+      "tags": null,
+      "type": "microsoft.azurestackhci/networkinterfaces"
+    }   
+    ```
 
 ### Virtual network interface with DHCP
 
@@ -168,87 +237,6 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
     }
     PS C:\windows\system32> 
     ```
-
-### Virtual network interface with static IP
-
-
-Follow these steps to create a virtual network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
-
-1. Set the required parameters. Here's a sample output:
-
-    ```azurecli
-    $vNetName = "MyVirtualNetwork"
-    $gateway="100.68.180.1" 
-    $ipaddress="100.68.180.6" 
-    $netInt="MyNic"
-    $subscriptionID =  "<Your subscription ID>"
-    $resourceGroupName = "HCIHW23"
-    $customLocationName = "cluster-275438a821cb4d7284c7234277e8e696-mocarb-cl" 
-    $customLocationID ="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$CustomlocationName"
-    $location = "eastus"
-    ```
-    | Parameter | Description |
-    | ----- | ----------- |
-    | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
-    | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-    | **CustomLocation** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
-    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-
-1. To create a virtual network interface with static IP address, run the following command:
-
-    ```azurecli
-    az stack-hci-vm network nic create --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --name $netInt --subnet-id $vnetName --ip-address $ipaddress --gateway $gateway
-    ```
-    
-    Here's a sample output:
-    
-    ```console   
-    {
-      "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/HCIHW23/providers/Microsoft.ExtendedLocation/customLocations/cluster-name",
-        "type": "CustomLocation"
-      },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/HCIHW23/providers/Microsoft.AzureStackHCI/networkinterfaces/MyNic3",
-      "location": "eastus",
-      "name": "MyNic3",
-      "properties": {
-        "dnsSettings": {
-          "dnsServers": null
-        },
-        "ipConfigurations": [
-          {
-            "name": null,
-            "properties": {
-              "gateway": "100.68.180.1",
-              "prefixLength": "28",
-              "privateIpAddress": "100.68.180.8",
-              "privateIpAllocationMethod": "Static",
-              "subnet": {
-                "id": "MyVirtualNetwork"
-              }
-            }
-          }
-        ],
-        "macAddress": null,
-        "provisioningState": "Succeeded",
-        "resourceName": null,
-        "status": {}
-      },
-      "resourceGroup": "HCIHW23",
-      "systemData": {
-        "createdAt": "2023-07-26T23:00:26.590194+00:00",
-        "createdBy": "hciuser@contoso.com",
-        "createdByType": "User",
-        "lastModifiedAt": "2023-07-26T23:00:42.948671+00:00",
-        "lastModifiedBy": "<ID>",
-        "lastModifiedByType": "Application"
-      },
-      "tags": null,
-      "type": "microsoft.azurestackhci/networkinterfaces"
-    }   
-    ```
-
 
 ## Create VM
 
