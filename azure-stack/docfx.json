@@ -193,7 +193,6 @@
       "feedback_github_repo": "MicrosoftDocs/azure-stack-docs",
       "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
       "breadcrumb_path": "/azure-stack/breadcrumb/toc.json",
-      "extendBreadcrumb": true,
       "uhfHeaderId": "azure",
       "_op_documentIdPathDepotMapping": {
         "./": {
