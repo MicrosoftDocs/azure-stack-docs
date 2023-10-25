@@ -29,7 +29,7 @@ In this article, you learn how to:
 > * Create a Managed Lustre file system using [azurerm_managed_lustre_file_system](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/managed_lustre_file_system)
 
 > [!NOTE]
-> This code example uses the [random_pet](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) and [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) resources to generate unique values for the resource group name and the Managed Lustre file system name. You can replace these values with your own resource names in the `variables.tf` and `main.tf` files.
+> The code example in this article uses the [random_pet](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) and [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) resources to generate unique values for the resource group name and the Managed Lustre file system name. You can replace these values with your own resource names in the `variables.tf` and `main.tf` files.
 
 ## Prerequisites
 
