@@ -109,7 +109,7 @@ Choose whether to create a new configuration for this system or to load deployme
 
 ## Optionally change advanced settings and apply tags
 
-1. Choose whether to create volumes for workloads in addition to the required infrastructure volumes used by Azure Stack HCI. You can create more volumes later.
+1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
     * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly-provisioned volume per server for workloads to use. This is in addition to the required one infrastructure volume per server.
     * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server.
 2. Select **Next**.
