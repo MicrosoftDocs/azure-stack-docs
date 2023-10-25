@@ -408,7 +408,7 @@ To create a Linux VM, run the following command:
 
 
 ```azurecli
-az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" --location $Location --size="Default" --computer-name "testvm0001" --admin-username "admin" --admin-password "pass" --image $galleryImageName --nics $VNic --enable-agent true --authentication-type "password"
+az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --size="Default" --computer-name "myComputer" --admin-username "admin" --admin-password "pass" --image $galleryImageName --nics $VNic --enable-agent true --authentication-type "password"
 ```
 This command will create a Linux VM with guest management enabled. The command is similar to the one used for Windows VM creation with the exception of the inclusion of `--allow-password-auth` parameter. The gallery image used should also be a Linux image. 
 
