@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/manage/manage-virtual-machines-in-azure-portal.md",
+      "redirect_url":"/azure-stack/hci/manage/create-arc-virtual-machines",
+      "redirect_document_id": false
+    },  
+    {
       "source_path":"azure-stack/hci/manage/uninstall-arc-resource-bridge.md",
       "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
       "redirect_document_id": false
