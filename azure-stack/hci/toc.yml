@@ -451,6 +451,8 @@
             href: manage/azure-arc-vm-management-networking.md
           - name: Review prerequisites
             href: manage/azure-arc-vm-management-prerequisites.md
+          - name: Assign RBAC role
+            href: manage/assign-vm-rbac-roles.md
           - name: Manage Arc VM resources
             items:
             - name: Create a storage path
