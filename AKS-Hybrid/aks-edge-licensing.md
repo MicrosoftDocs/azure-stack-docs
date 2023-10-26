@@ -40,4 +40,4 @@ Third-party access to solutions built on the volume licensing model procured via
 ## Next steps
 
 - Read about [pricing details](./aks-edge-pricing.md)
-- Contact product team by emailing projecthaven@microsoft.com
+- Contact the [AKS Edge Essentials product](mailto:teamprojecthaven@microsoft.com)
