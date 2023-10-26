@@ -104,7 +104,7 @@ Use the [`az monitor metrics alert create`](/cli/azure/monitor/metrics/alert?vie
 
 Here's an example of the command usage:
 
-To create a metric alert rule that monitors if the average percentage CPU on a VM is greater than 90, run the following command:
+To create a metric alert rule that monitors if the average CPU usage of a VM is greater than 90, run the following command:
 
 ```azure CLI
 az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
