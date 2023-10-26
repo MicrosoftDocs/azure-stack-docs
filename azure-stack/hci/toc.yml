@@ -492,7 +492,7 @@
       - name: Update via PowerShell
         href: update/update-via-powershell-23h2.md
       - name: Update via Azure portal
-        href: update/azure-update-manager.md
+        href: update/azure-update-manager-23h2.md
       - name: Troubleshoot updates
         href: update/update-troubleshooting-23h2.md
     - name: Manage
