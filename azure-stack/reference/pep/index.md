@@ -36,7 +36,7 @@ The Azure Stack Hub privileged endpoint (PEP) is a pre-configured remote PowerSh
 | [Get-TLSPolicy](get-tlspolicy.md) | No description. |
 | [Get-VirtualDisk](get-virtualdisk.md) | No description. |
 | [Invoke-AzureStackOnDemandLog](invoke-azurestackondemandlog.md) | Generates on demand logs from AzureStack roles where applicable. |
-| [New-AzureBridgeServicePrincipal](new-azurebridgeserviceprincipal.md) | Creates a new service principal in Azure Active Directory. |
+| [New-AzureBridgeServicePrincipal](new-azurebridgeserviceprincipal.md) | Creates a new service principal in Microsoft Entra ID. |
 | [New-AzureStackActivation](new-azurestackactivation.md) | Activate Azure Stack. |
 | [New-CloudAdminUser](new-cloudadminuser.md) | No description. |
 | [New-GraphApplication](new-graphapplication.md) | New-GraphApplication is a wrapper function to call ADFS Graph cmdlets on AD FS. |
