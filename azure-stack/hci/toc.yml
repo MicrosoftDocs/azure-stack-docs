@@ -212,8 +212,6 @@
       href: manage/monitor-hci-single.md      
     - name: Monitor multiple clusters with Azure Stack HCI Insights
       href: manage/monitor-hci-multi.md
-    - name: Analyse cluster metrics with Azure Monitor Metrics
-      href: manage/analyse-cluster-metrics.md
     - name: Monitor clusters from Windows Admin Center
       href: manage/monitor-cluster.md
     - name: Monitor clusters with Health Service
