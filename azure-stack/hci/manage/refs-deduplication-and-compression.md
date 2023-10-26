@@ -4,12 +4,12 @@ description: Learn how to use ReFS deduplication and compression in Azure Stack 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/20/2023
+ms.date: 10/26/2023
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Stack HCI and Windows Server (preview)
 
-> Applies to: Azure Stack HCI, version 23H2 (preview)
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the Resilient File System (ReFS) deduplication and compression feature and how to use this feature in Azure Stack HCI to optimize storage.
 
@@ -27,7 +27,7 @@ You can run ReFS deduplication and compression as a one-time job or automate it 
 
 Here are the benefits of using ReFS deduplication and compression:
 
-- **Storage savings for active workloads.** Specifically designed for active workloads, such as VDI, ensuring efficient performance in demanding environments.
+- **Storage savings for active workloads.** Designed for active workloads, such as VDI, ensuring efficient performance in demanding environments.
 - **Multiple modes.** Operates in three modes: deduplication only, compression only, and deduplication and compression (default mode), allowing optimization based on your needs.
 - **Incremental deduplication.** Deduplicates only new or changed data as opposed to scanning the entire volume every time, optimizing job duration and reducing impact on system performance.
 
@@ -59,7 +59,7 @@ Follow these steps to enable ReFS deduplication and compression via Windows Admi
 
 1. Select the days of the week when ReFS deduplication and compression should run, the time for a job to start running, and maximum duration (default is unlimited), and then select **Save**.
 
-    The following screenshot shows that ReFS deduplication and compression will run on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the **Start** date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
+    The following screenshot shows that ReFS deduplication and compression runs on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the **Start** date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
 
     :::image type="content" source="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png" alt-text="Screenshot of the Volume settings pane displaying the ReFS deduplication and compression settings." lightbox="media/refs-deduplication-compression/select-refs-dedup-and-compression-settings.png":::
 
@@ -83,7 +83,7 @@ Follow these steps to enable ReFS deduplication and compression via PowerShell:
     Get-ClusterSharedVolume | FT Name, OwnerNode, SharedVolumeInfo
     ```
 
-    Here's a sample output of the cmdlet uage:
+    Here's a sample output of the cmdlet usage:
 
     ```output
     Name                           OwnerNode   SharedVolumeInfo
@@ -150,14 +150,14 @@ After you enable this feature, you can run a one-time job manually or schedule r
 
 Before you run, you should also factor these other considerations:
 
-- The first run after enabling this feature is always a full scan and optimization of the entire volume. If the `FullRun` parameter is specified, the optimization covers the entire volume rather than just new or unoptimized data.
+- The first run after enabling this feature is always a full scan and optimization of the entire volume. If the `FullRun` parameter is specified, the optimization covers the entire volume rather than new or unoptimized data.
 - If you don't specify a compression format, the default algorithm is LZ4. You can change the algorithm from one run to another as needed.
 - You can specify more parameters for more complex use cases. The cmdlet used in this section is for the simplest use case.
 - The Full Run, Excluded folder, Excluded file extensions, and Minimum last modified time hours filters apply only when running deduplication, and don't apply when running compression.
 
 **Manually run ReFS deduplication and compression jobs**
 
-- To start a job immediately, run the following cmdlet. Once you start a job, its `State` may appear as `NotStarted` because it could still be in the initialization phase.
+- To start a job immediately, run the following cmdlet. Once you start a job, its `State` might appear as `NotStarted` because it could still be in the initialization phase.
 
     ```powershell
     Start-ReFSDedupJob -Volume <path> -Duration <TimeSpan> -FullRun -CompressionFormat <LZ4 | ZSTD> 
@@ -175,7 +175,7 @@ Before you run, you should also factor these other considerations:
     12     Job12                           NotStarted    True                                 Start-Re...
     ```
 
-- To stop a running job, run the following cmdlet. Note that this cmdlet will work for in-progress scheduled jobs too.
+- To stop a running job, run the following cmdlet. This cmdlet works for in-progress scheduled jobs too.
 
     ```powershell
     Stop-ReFSDedupJob -Volume <path>
@@ -277,7 +277,7 @@ Use the following cmdlet to suspend the scheduled job and check the status using
 Suspend-ReFSDedupSchedule -Volume <path> 
 ```
 
-Here's a sample output of the cmdlet usage. Note that the `Suspended` field displays as `True`.
+Here's a sample output of the cmdlet usage. The `Suspended` field displays as `True`.
 
 ```output
 
@@ -335,7 +335,7 @@ Use the following cmdlet to suspend the scheduled job and check the status:
 Disable-ReFSDedup -Volume <path>
 ```
 
-Here's a sample output of the cmdlet usage. Note that the `Enabled` field displays as `False` and the `Type` field displays as blank.
+Here's a sample output of the cmdlet usage. The `Enabled` field displays as `False` and the `Type` field displays as blank.
 
 ```output
 PS C:\Users\hciuser> Disable-ReFSDedup -Volume "C:\ClusterStorage\Volume1"
@@ -376,7 +376,7 @@ Yes, this feature is entirely different from the [Windows Data Deduplication](/w
 > [!IMPORTANT]
 > We don't support enabling both ReFS deduplication and compression and Windows Data Deduplication simultaneously.
 
-ReFS deduplication and compression is specifically designed for active workloads, focusing on minimizing performance impact after optimization. Unlike Windows Data Deduplication, ReFS deduplication and compression doesn't use a chunk store to store deduped data, and there is no physical data movement involved. The feature relies on ReFS block cloning to enable metadata-only operations. Windows Data Deduplication may provide better storage savings due to its use of variable block sizes, it is also suitable for a broader range of workload types, such as General-purpose file servers (GPFS), backup targets, and more.
+ReFS deduplication and compression is designed for active workloads, focusing on minimizing performance impact after optimization. Unlike Windows Data Deduplication, ReFS deduplication and compression doesn't use a chunk store to store deduped data, and there is no physical data movement involved. The feature relies on ReFS block cloning to enable metadata-only operations. Windows Data Deduplication might provide better storage savings due to its use of variable block sizes, it is also suitable for a broader range of workload types, such as General-purpose file servers (GPFS), backup targets, and more.
 
 ### What are the phases of ReFS deduplication and compression?
 
@@ -390,15 +390,15 @@ The optimization process comprises the following phases that occur sequentially 
 
 ### What happens when the duration limit is reached before the volume is fully optimized?
 
-The duration limit is in place to prevent any performance impact on customer workloads caused by the optimization job during business hours. A deduplication service monitors the optimized parts of a volume and incoming file modifications. This data is utilized in future jobs to reduce optimization time. For example, if a volume is only 30% processed in the first run due to the duration limit, the subsequent run will address the remaining 70% as well as any new data.
+The duration limit is in place to prevent any performance impact on customer workloads caused by the optimization job during business hours. A deduplication service monitors the optimized parts of a volume and incoming file modifications. This data is utilized in future jobs to reduce optimization time. For example, if a volume is only 30% processed in the first run due to the duration limit, the subsequent run addresses the remaining 70% and any new data.
 
 ## Known issues
 
 The following section lists the known issues that currently exist with ReFS deduplication and compression.
 
-### ReFS deduplication and compression job completed (either successfully or was cancelled) and storage savings are not listed in `Get-ReFSDedupStatus` or Windows Admin Center.
+### ReFS deduplication and compression job completed (either successfully or was canceled) and storage savings aren't listed in `Get-ReFSDedupStatus` or Windows Admin Center.
 
-The temporary workaround for this issue is to initiate a one-time job and the results will update immediately.
+The temporary workaround for this issue is to initiate a one-time job and the results update immediately.
 
 ```powershell
 Start-ReFSDedupJob -Volume <path>
@@ -415,7 +415,7 @@ Once ReFS deduplication and compression is disabled on a volume, the ETW channel
 
 ### Job failed event not logged if volume is moved to another node during compression.
 
-If the CSV is moved to another node while compression is in progress, the job failed event isn't logged in the ReFS deduplication channel. However, we don't anticipate significant usage impact because of this issue.
+If the CSV is moved to another server of the cluster while compression is in progress, the job failed event isn't logged in the ReFS deduplication channel. However, we don't anticipate significant usage impact because of this issue.
 
 ## Next steps
 
