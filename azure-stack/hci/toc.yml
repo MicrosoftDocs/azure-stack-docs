@@ -68,10 +68,6 @@
   items:
   - name: Azure Stack HCI, version 23H2 (preview)
     items:
-    - name: Read overview
-      href: ../index.yml
-    - name: Review prerequisites
-      href: deploy/deployment-prerequisites.md
     - name: 0. View deployment checklist
       href: deploy/deployment-checklist.md
     - name: 1. Prepare Active Directory
@@ -470,9 +466,9 @@
     - name: Deploy
       items:
       - name: Read overview
-        href: ../index.yml
+        href: deploy/deployment-introduction.md
       - name: Complete prerequisites
-        href: ../index.yml
+        href: deploy/deployment-prerequisites.md
       - name: 0. View deployment checklist
         href: deploy/deployment-checklist.md
       - name: 1. Prepare Active Directory
