@@ -40,7 +40,7 @@ Here are the benefits of using Azure Monitor Metrics for Azure Stack HCI:
 
 Here are the prerequisites of using Azure Monitor Metrics for Azure Stack HCI:
 
-- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview    (preview)](../concepts/telemetry-and-diagnostics-overview.md).
+- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview (preview)](../concepts/telemetry-and-diagnostics-overview.md).
 
 - Your cluster must be running Azure Stack HCI, version 23H2 (preview) (Build version: 2308) or later.
 
@@ -100,7 +100,7 @@ Follow these steps to create alerts through metrics explorer:
 
 ### Create alerts through Azure CLI
 
-Use the [`az monitor metrics alert create`](/cli/azure/monitor/metrics/alert?view=azure-cli-latest#az-monitor-metrics-alert-create) command to create metrics alert rules through Azure CLI.
+Use the [`az monitor metrics alert create`](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-create) command to create metrics alert rules through Azure CLI.
 
 Here's an example of the command usage:
 
@@ -128,7 +128,7 @@ This section lists the platform metrics that are collected for the Azure Stack H
 
 ### Metrics for servers
 
-| Metric | Description | Unit | Default Aggregatin Type | Supported Aggregation Type | Dimensions |
+| Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
 |--|--|--|--|--|--|
 | Percentage CPU | Percentage of processor time that is not idle. | Percent | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName |
 | Percentage CPU Guest | Percentage of processor time used for guest (virtual machine) demand. | Percent | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName |
@@ -176,8 +176,8 @@ This section lists the platform metrics that are collected for the Azure Stack H
 | Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
 |--|--|--|--|--|--|
 | VHD Read Operations/Sec | Number of read operations per second completed by the virtual hard disk. | Count Per Second | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName, VHD |
-| VHD Write Operations/Sec | Number of write operations per second completed by the virtual hard disk. | Count Per Second | Maximum | Minimum,Maximum, Average, Sum, Count | ClusterName, HostName, VHD |
-| VHD Read and Write Operations/Sec | Total number of read or write operations per second completed by the virtual hard disk. | Count Per Second | Sum | Minimum,Maximum, Sum, Count | ClusterName, HostName, VHD |
+| VHD Write Operations/Sec | Number of write operations per second completed by the virtual hard disk. | Count Per Second | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName, VHD |
+| VHD Read and Write Operations/Sec | Total number of read or write operations per second completed by the virtual hard disk. | Count Per Second | Sum | Minimum, Maximum, Sum, Count | ClusterName, HostName, VHD |
 | VHD Read Bytes/Sec | Quantity of data read from the virtual hard disk per second. | Bytes Per Second | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName, VHD |
 | VHD Write Bytes/Sec | Quantity of data written to the virtual hard disk per second. | Bytes Per Second | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName, VHD |
 | VHD Read and Write Bytes/Sec | Total quantity of data read from or written to the virtual hard disk per second. | Bytes Per Second | Sum | Minimum, Maximum, Sum, Count | ClusterName, HostName, VHD |
