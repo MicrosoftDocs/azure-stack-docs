@@ -66,50 +66,50 @@
       href: plan/network-patterns-sdn-considerations.md
 - name: Deploy
   items:
-    - name: 0. Download the Azure Stack HCI software
-      href: deploy/download-azure-stack-hci-software.md
-    - name: 1. Deploy the Azure Stack HCI OS
-      href: deploy/operating-system.md
-    - name: 2. Create a cluster
-      href: deploy/create-cluster.md
-    - name: 3. Set up a cluster witness
-      href: manage/witness.md    
-    - name: 4. Register with Azure
-      href: deploy/register-with-azure.md
-    - name: 5. Validate the cluster
-      href: deploy/validate.md
-    - name: Deploy with PowerShell
-      items:
-      - name: Deploy on a single server
-        href: deploy/single-server.md
-      - name: Single server scale-out
-        href: manage/single-node-scale-out.md
-      - name: Create a cluster with PowerShell
-        href: deploy/create-cluster-powershell.md
-      - name: Host networking with Network ATC
-        href: deploy/network-atc.md
-    - name: Deploy SDN
-      items:
-      - name: Deploy using Windows Admin Center
-        href: deploy/sdn-wizard.md
-      - name: Deploy using SDN Express
-        href: manage/sdn-express.md
-      - name: Deploy at cluster creation
-        href: deploy/create-cluster.md#step-5-sdn-optional
-    - name: Deploy and manage in VMM
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
-    - name: Deploy Azure
-      href: ./manage/azure-benefits.md
-    - name: Deploy workloads
-      items: 
-      - name: Branch office and edge
-        href: deploy/branch-office-edge.md
-      - name: Virtual desktop infrastructure
-        href: deploy/virtual-desktop-infrastructure.md
-      - name: SQL Server
-        href: deploy/sql-server.md
-      - name: Trusted enterprise virtualization
-        href: deploy/trusted-enterprise-virtualization.md
+  - name: 0. Download the Azure Stack HCI software
+    href: deploy/download-azure-stack-hci-software.md
+  - name: 1. Deploy the Azure Stack HCI OS
+    href: deploy/operating-system.md
+  - name: 2. Create a cluster
+    href: deploy/create-cluster.md
+  - name: 3. Set up a cluster witness
+    href: manage/witness.md    
+  - name: 4. Register with Azure
+    href: deploy/register-with-azure.md
+  - name: 5. Validate the cluster
+    href: deploy/validate.md
+  - name: Deploy with PowerShell
+    items:
+    - name: Deploy on a single server
+      href: deploy/single-server.md
+    - name: Single server scale-out
+      href: manage/single-node-scale-out.md
+    - name: Create a cluster with PowerShell
+      href: deploy/create-cluster-powershell.md
+    - name: Host networking with Network ATC
+      href: deploy/network-atc.md
+  - name: Deploy SDN
+    items:
+    - name: Deploy using Windows Admin Center
+      href: deploy/sdn-wizard.md
+    - name: Deploy using SDN Express
+      href: manage/sdn-express.md
+    - name: Deploy at cluster creation
+      href: deploy/create-cluster.md#step-5-sdn-optional
+  - name: Deploy and manage in VMM
+    href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
+  - name: Deploy Azure
+    href: ./manage/azure-benefits.md
+  - name: Deploy workloads
+    items: 
+    - name: Branch office and edge
+      href: deploy/branch-office-edge.md
+    - name: Virtual desktop infrastructure
+      href: deploy/virtual-desktop-infrastructure.md
+    - name: SQL Server
+      href: deploy/sql-server.md
+    - name: Trusted enterprise virtualization
+      href: deploy/trusted-enterprise-virtualization.md
 - name: Manage
   items:
   - name: Manage VMs
@@ -410,9 +410,9 @@
     - name: Deploy
       items:
       - name: Read overview
-        href: ../index.yml
+        href: deploy/deployment-introduction.md
       - name: Complete prerequisites
-        href: ../index.yml
+        href: deploy/deployment-prerequisites.md
       - name: 0. View deployment checklist
         href: deploy/deployment-checklist.md
       - name: 1. Prepare Active Directory
@@ -421,24 +421,20 @@
         href: deploy/download-azure-stack-hci-23h2-software.md
       - name: 3. Install the OS
         href: deploy/deployment-install-os.md
-      - name: 4. Set up the first server
-        href: deploy/deployment-set-up-first-server.md
+      - name: 4. Register with Arc and set up permissions
+        href: deploy/deployment-arc-register-server-permissions.md
       - name: 5. Deploy via Azure portal 
         href: deploy/deploy-via-portal.md
-      - name: 6. Validate deployment
-        href: ../index.yml
     - name: Update 
       items:
       - name: What's the Lifecycle Manager?
-        href: update/whats-the-lifecycle-manager.md
-      - name: Use Lifecycle Manager for updates
-        href: update/update-azure-stack-hci-solution-23h2.md
+        href: update/whats-the-lifecycle-manager-23h2.md
       - name: Understand update phases
-        href: update/update-phases.md
+        href: update/update-phases-23h2.md
       - name: Update via PowerShell
         href: update/update-via-powershell-23h2.md
       - name: Update via Azure portal
-        href: update/update-via-powershell-23h2.md
+        href: update/azure-update-manager.md
       - name: Troubleshoot updates
         href: update/update-troubleshooting-23h2.md
     - name: Manage
@@ -475,6 +471,10 @@
             href: manage/troubleshoot-arc-enabled-vms.md
           - name: FAQs
             href: manage/azure-arc-vms-faq.yml
+        - name: Storage
+          items: 
+          - name: Use ReFS deduplication and compression
+            href: manage/refs-deduplication-and-compression.md
         - name: Capacity
           items:
           - name: Add a server
