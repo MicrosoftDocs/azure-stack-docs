@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/25/2023
+ms.date: 10/26/2023
 ---
 
 # BitLocker encryption for Azure Stack HCI (preview)
@@ -32,11 +32,11 @@ You can view, enable, and disable BitLocker encryption settings on your Azure St
 
 ### PowerShell cmdlet properties for AzureStackBitLockerAgent module
 
-The following LCM cmdlet properties are for BitLocker module: *AzureStackBitLockerAgent*.
+The following cmdlet properties are for BitLocker module: *AzureStackBitLockerAgent*.
 
 - `Get-ASBitLocker` -Scope <Local | PerNode | AllNodes | Cluster>
-     - Local: Provides BitLocker volume details for the local node. Does not interact with LCM. Can be run in a regular remote PowerShell session.
-     - PerNode: Provides BitLocker volume details per node. Does not interact with LCM. Requires CredSSP or console (RDP).
+     - Local: Provides BitLocker volume details for the local node. Can be run in a regular remote PowerShell session.
+     - PerNode: Provides BitLocker volume details per node. Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
  - `Enable-ASBitLocker` -Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
  - `Disable-ASBitLocker` -Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
 
