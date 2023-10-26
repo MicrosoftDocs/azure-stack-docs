@@ -182,6 +182,8 @@
       href: manage/create-volumes.md
     - name: Create stretched volumes
       href: manage/create-stretched-volumes.md
+    - name: Use ReFS deduplication and compression
+      href: manage/refs-deduplication-and-compression.md
     - name: Encrypt and deduplicate volumes
       href: manage/volume-encryption-deduplication.md
     - name: Manage volumes
