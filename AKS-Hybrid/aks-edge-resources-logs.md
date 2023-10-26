@@ -1,7 +1,7 @@
 ---
 title: Logs for AKS Edge Essentials
 description: Gather and troubleshoot AKS Edge Essentials using logs. 
-author: fcabrera
+author: fcabrera23
 ms.author: fcabrera
 ms.topic: end-user-help
 ms.date: 02/14/2023

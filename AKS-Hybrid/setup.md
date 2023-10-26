@@ -50,7 +50,7 @@ Now that you've verified the system settings, follow these steps:
    > [!WARNING]
    > Make sure you have configured at least one external virtual switch before proceeding past this step, or you will not be able to successfully set up your Azure Kubernetes Service host.
 
-3. On the **System checks** page of the wizard, take any required actions, such as [connecting your Windows Admin Center gateway to Azure](/windows-server/manage/windows-admin-center/azure/azure-integration). When connecting your Windows Admin Center gateway to Azure, be sure to create a new Azure Active Directory application. This step checks that Windows Admin Center and the system that hosts Azure Kubernetes Service have the proper configuration to continue. When you're finished taking action, select **Next**.
+3. On the **System checks** page of the wizard, take any required actions, such as [connecting your Windows Admin Center gateway to Azure](/windows-server/manage/windows-admin-center/azure/azure-integration). When connecting your Windows Admin Center gateway to Azure, be sure to create a new Microsoft Entra application. This step checks that Windows Admin Center and the system that hosts Azure Kubernetes Service have the proper configuration to continue. When you're finished taking action, select **Next**.
 
 4. Ensure system connectivity through CredSSP in the **Connectivity** step. CredSSP lets Windows Admin Center delegate the user's credentials from the gateway to a target server for remote authentication. CredSSP needs to be enabled to set up Azure Kubernetes Service. After you've enabled CredSSP, select **Next**.  
 

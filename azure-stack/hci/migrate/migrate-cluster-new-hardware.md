@@ -1,16 +1,16 @@
 --- 
 title: Migrate to Azure Stack HCI on new hardware
 description: Learn how to migrate to Azure Stack HCI on new hardware 
-author: ronmiab 
+author: alkohli 
 ms.topic: how-to 
-ms.date: 04/17/2023 
-ms.author: robess 
-ms.reviewer: kerimha 
+ms.date: 10/20/2023 
+ms.author: alkohli 
+ms.reviewer: alkohli 
 ---
 
 # Migrate to Azure Stack HCI on new hardware
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Stack HCI, versions 23H2, 22H2, and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
 This topic describes how to migrate virtual machine (VM) files on Windows Server 2012 R2, Windows Server 2016, or Windows Server 2019 to new Azure Stack HCI server hardware using Windows PowerShell and Robocopy. Robocopy is a robust method for copying files from one server to another. It resumes if disconnected and continues to work from its last known state. Robocopy also supports multi-threaded file copy over Server Message Block (SMB). For more information, see [Robocopy](/windows-server/administration/windows-commands/robocopy).
 
@@ -23,7 +23,7 @@ To migrate to Azure Stack HCI using the same hardware, see [Migrate to Azure Sta
 
 The following diagram shows a Windows Server source cluster and an Azure Stack HCI destination cluster as an example. You can also migrate VMs on stand-alone servers as well.
 
-:::image type="content" source="media/migrate/migrate-cluster.png" alt-text="Migrate cluster to Azure Stack HCI" lightbox="media/migrate/migrate-cluster.png":::
+:::image type="content" source="media/migrate-new-hardware/migrate-cluster.png" alt-text="Migrate cluster to Azure Stack HCI" lightbox="media/migrate-new-hardware/migrate-cluster.png":::
 
 In terms of expected downtime, using a single NIC with a dual 40 GB RDMA East-West network between clusters, and Robocopy configured for 32 multithreads, you can realize transfer speeds of 1.9 TB per hour.
 
@@ -116,15 +116,15 @@ If you are using Remote Direct Memory Access (RDMA), Robocopy can leverage it fo
 
 ## Create the new cluster
 
-Before you can create the Azure Stack HCI cluster, you need to install the Azure Stack HCI OS on each new server that will be in the cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](operating-system.md).
+Before you can create the Azure Stack HCI cluster, you need to install the Azure Stack HCI OS on each new server that will be in the cluster. For information on how to do this, see [Deploy the Azure Stack HCI operating system](../deploy/operating-system.md).
 
-Use Windows Admin Center or Windows PowerShell to create the new cluster. For detailed information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](create-cluster-powershell.md).
+Use Windows Admin Center or Windows PowerShell to create the new cluster. For detailed information on how to do this, see [Create an Azure Stack HCI cluster using Windows Admin Center](../deploy/create-cluster.md) and [Create an Azure Stack HCI cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
 
 > [!IMPORTANT]
 > Hyper-V virtual switch (`VMSwitch`) names between clusters must be the same. Make sure that virtual switch names created on the destination cluster match those used on the source cluster across all servers. Verify the switch names for the same before you import the VMs.
 
 > [!NOTE]
-> You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](register-with-azure.md).
+> You must register the Azure Stack HCI cluster with Azure before you can create new VMs on it. For more information, see [Register with Azure](../deploy/register-with-azure.md).
 
 ## Run the migration script
 
@@ -348,6 +348,6 @@ As an FYI, the following Windows Server guest operating systems support Generati
 
 ## Next steps
 
-- Validate the cluster after migration. See [Validate an Azure Stack HCI cluster](validate.md).
+- Validate the cluster after migration. See [Validate an Azure Stack HCI cluster](../deploy/validate.md).
 
 - To migrate to Azure Stack HCI in-place using the same hardware, see [Migrate to Azure Stack HCI on the same hardware](migrate-cluster-same-hardware.md).

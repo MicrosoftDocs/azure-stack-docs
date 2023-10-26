@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 02/14/2022
-ms.lastreviewed: 02/14/2022
+ms.date: 10/19/2023
+ms.lastreviewed: 10/18/2023
 
 ---
 
@@ -17,6 +17,9 @@ ms.lastreviewed: 02/14/2022
 The Extended Security Update (ESU) program enables you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Stack HCI comes with additional benefits and implementation steps – this article explains the specifics for Azure Stack HCI.
 
 To get general information about the ESU program, products that are covered, and support dates, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates).
+
+> [!NOTE]
+> Azure Stack HCI customers can obtain ESUs at no cost through Azure Benefits by following the instructions in this article. If you have an Arc-enabled server that is not Azure Stack HCI, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
 
 ## Benefits of getting ESU for VMs on Azure Stack HCI
 
@@ -31,14 +34,25 @@ This tutorial walks you through how you can use [Azure Benefits](azure-benefits.
 
 ### Prerequisites
 
+#### [Windows Server 2012/2012 R2](#tab/windows-server-2012)
+
+- Review and install the installation prerequisites section for [ESUs in KB5031043: Procedure to continue receiving security updates after extended support has ended on October 10, 2023 - Microsoft Support](https://support.microsoft.com/topic/kb5031043-procedure-to-continue-receiving-security-updates-after-extended-support-has-ended-on-october-10-2023-c1a20132-e34c-402d-96ca-1e785ed51d45).
+- Install the August 8th, 2023 SSU or later:
+  - Windows Server 2012 R2 (KB5029368)
+  - Windows Server 2012 (KB5029369)
+
+#### [Windows Server 2008/2008 R2](#tab/windows-server-2008)
+
 - Review and install the installation prerequisites section for ESUs in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091).
 - Install the October 8th, 2021 SSU or later:
   - Windows 7 SP1 and Windows Server 2008 R2 SP1 (KB5006749)
   - Windows Server 2008 SP2 (KB5006750)
 
-The following screen capture shows typical output when checking for required prerequisites using PowerShell. Your actual output may look different; this is example output that shows installed prerequisites:
+The following image shows typical output when checking for required prerequisites using PowerShell. Your actual output might look different; this image is example output that shows installed prerequisites:
 
 :::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites.":::
+
+---
 
 ### Step 1: Turn on Azure Benefits on the host
 
@@ -63,17 +77,25 @@ Update, Windows Server Update Services (WSUS), Microsoft Update Catalog, or othe
 
 ## FAQ
 
+### What ESU products does this cover?
+
+ESU covers Windows Server, Windows client, and SQL Server products under the ESU program. For more information, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates).
+
+### Does this cover ESUs for Windows Server 2012?
+
+Yes it does.
+
 ### Does my VM need to be connected to get ESUs?
 
-No, you do not need internet connectivity to install ESUs, unless you are using an update method that requires internet connectivity to download ESU packages. Only the Azure Stack HCI host needs to maintain 30-day internet connectivity for Azure Benefits to remain active.
+No, you don't need internet connectivity to install ESUs, unless you're using an update method that requires internet connectivity to download ESU packages. Only the Azure Stack HCI host needs to maintain 30-day internet connectivity for Azure Benefits to remain active.
 
 ### Can I still use MAK keys to get ESUs for VMs on Azure Stack HCI?
 
-Yes. If you have already bought MAK keys, you can still apply them with the instructions outlined in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091). However, MAK keys are not free -- consider switching to the Azure Benefits approach so that you can automatically get free ESUs through your Azure Stack HCI cluster going forward.
+Yes. If you have already bought MAK keys, you can still apply them with the instructions outlined in [Obtaining Extended Security Updates for eligible Windows devices](https://techcommunity.microsoft.com/t5/windows-it-pro-blog/obtaining-extended-security-updates-for-eligible-windows-devices/ba-p/1167091). However, MAK keys are not free. Consider switching to the Azure Benefits approach so that you can automatically get free ESUs through your Azure Stack HCI cluster going forward.
 
 ### Can I discover ESUs if I don't have Azure Benefits?
 
-Yes. You can discover ESUs even if you don't have Azure Benefits, but for the installation, you will need to set up Azure Benefits (or MAK keys).
+Yes. You can discover ESUs even if you don't have Azure Benefits. For the installation, you must set up Azure Benefits (or MAK keys).
 
 ### Can I get ESUs through Azure Virtual Desktops (AVD) on Azure Stack HCI?
 

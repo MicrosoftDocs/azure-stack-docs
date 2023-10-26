@@ -120,7 +120,7 @@ For each value:
 
 - **username**
 
-  For example, the Azure Stack Hub Azure AD account:
+  For example, the Azure Stack Hub Microsoft Entra account:
 
   ```bash
   azurestackadmin@fabrikam.onmicrosoft.com
@@ -128,7 +128,7 @@ For each value:
 
 - **password**
 
-  The Azure Stack Hub Azure AD admin password.
+  The Azure Stack Hub Microsoft Entra admin password.
 
 ### Example 2
 

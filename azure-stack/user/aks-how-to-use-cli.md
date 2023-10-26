@@ -110,7 +110,7 @@ Azure CLI should be 2.28.0 or above.
     > [!NOTE]  
     > If you trigger a **certificate verify failed** error, it may be that the certificate used for the Azure Resource Manager endpoint is not trusted by your client machine. If so, you need to export the certificate used in the Azure Stack Hub endpoints and trust it. You can find instructions at [Export the Azure Stack Hub CA Root Certificate](azure-stack-version-profiles-azurecli2.md).
     > 
-    > In particular, for Linux machines see: [Azure AD on Linux](azure-stack-version-profiles-azurecli2.md)
+    > In particular, for Linux machines see: [Microsoft Entra ID on Linux](azure-stack-version-profiles-azurecli2.md)
 
 6. Set the subscription in your Azure CLI session as the default with:
 
@@ -152,7 +152,7 @@ You can find the global Azure instructions at [Deploy an Azure Kubernetes Servic
 
 2.  Make sure you have a service principal ID ready with contributor permission on your subscription to create clusters in it.
 
-    1.  To create a service principal (SPN) using Azure Active Directory (Azure AD), follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-client-secret-credential).
+    1.  To create a service principal (SPN) using Microsoft Entra ID, follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-client-secret-credential).
     2.  To create an SPN using Active Directory Federated Services (AD FS), follow these [instructions](../operator/give-app-access-to-resources.md#create-an-app-registration-that-uses-a-certificate-credential).
     3.  To assign "Contributor" role to the SPN see [instructions](/azure/active-directory/develop/howto-create-service-principal-portal). Make sure to select the "Contributor" role.
 
