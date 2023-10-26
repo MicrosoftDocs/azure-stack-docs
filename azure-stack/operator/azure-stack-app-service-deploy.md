@@ -67,7 +67,7 @@ To deploy App Service resource provider, follow these steps:
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
  
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Microsoft Entra ID, enter the Microsoft Entra admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
 
         - **Service Principal**
@@ -114,7 +114,7 @@ To deploy App Service resource provider, follow these steps:
 
    e. Select **Next**.
 
-   ![Screenshot that shows the screen where you provide the details of the AAD/ADFS Identity Application, and Azure Stack Resource Manager Certificate, in the App Service Installer][6]
+   ![Screenshot that shows the screen where you provide the details of the Microsoft Entra / ADFS Identity Application, and Azure Stack Resource Manager Certificate, in the App Service Installer][6]
 
 10. For each of the three certificate file boxes, select **Browse** and navigate to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). Select **Next** after entering all the information.
 
@@ -296,7 +296,7 @@ To deploy App Service resource provider, follow these steps:
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
  
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Microsoft Entra ID, enter the Microsoft Entra admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
 
         - **Service Principal**
@@ -341,7 +341,7 @@ To deploy App Service resource provider, follow these steps:
 
    e. Select **Next**.
 
-   ![Screenshot that shows the screen where you provide the details of the AAD/ADFS Identity Application, and Azure Stack Resource Manager Certificate, in the App Service Installer][6]
+   ![Screenshot that shows the screen where you provide the details of the Microsoft Entra / ADFS Identity Application, and Azure Stack Resource Manager Certificate, in the App Service Installer][6]
 
 10. For each of the three certificate file boxes, select **Browse** and navigate to the appropriate certificate file. You must provide the password for each certificate. These certificates are the ones that you created in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). Select **Next** after entering all the information.
 
@@ -542,7 +542,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Microsoft Entra ID, enter the Microsoft Entra admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**
@@ -762,7 +762,7 @@ After you deploy and register the Azure App Service resource provider, test it t
 
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
         - **Credential**
-            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Microsoft Entra ID, enter the Microsoft Entra admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
         - **Service Principal**
             - The service principal that you use **must** have **Owner** rights on the **Default Provider Subscription**

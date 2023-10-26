@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/14/2023
+ms.date: 10/18/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -100,14 +100,12 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png":::
 
-
 ## Clean up
 
-The last step is to clean up. Cleanup requires deletion of the following resources created during migration: 
+Once you have verified that migration is complete and no more servers need to be migrated, the last step is to clean up. Cleanup requires deletion of the following resources created during migration:
 
-- Source VMs and the associated VM disks from the Hyper-V server and the Failover Cluster Manager. 
-- Azure Migrate project.
-  
+- Source VMs and the associated VM disks from the Hyper-V server and the Failover Cluster Manager.
+
 ### Clean up VMs and associated disks
 
 Clean up the source VMs. You can delete the source VMs from the Hyper-V server and the Failover Cluster Manager. When you delete a Hyper-V VM, only the VM configuration files are deleted. The virtual hard disks associated with the VM are not deleted. To clean up the VMs and the associated VM disks, follow these steps:
@@ -127,19 +125,6 @@ Clean up the source VMs. You can delete the source VMs from the Hyper-V server a
     1. In the Failover Cluster Manager, connect to the Hyper-V cluster and go to **Roles**.
     1. Select the VM that you migrated. Verify that the VM is turned off.
     1. Right-click and from the context menu, select **Remove**. When prompted for confirmation, select **Yes** to continue. This action should delete the VM from the Failover Cluster Manager.
-
-### Clean up Azure Migrate project
-
-Clean up the Azure Migrate project and the associated resources including the Azure Migrate appliance. 
-
-Follow these steps to delete the Azure Migrate project:
-
-1. In the Azure portal, open the resource group in which the project was created.
-1. In the resource group page, select **Show hidden types**.
-1. Select the project and the associated resources that you want to delete. The resource type for Azure Migrate projects is *Microsoft.Migrate/migrateprojects*.
-
-> [!NOTE]
-> If the resource group only contains the Azure Migrate project, you can delete the entire resource group.
 
 ## Next steps
 

@@ -30,7 +30,7 @@ The following roles are part of delegation:
 
 * The *Azure Stack Hub operator* manages the Azure Stack Hub infrastructure and creates an offer template. The operator delegates others to provide offers to their tenant.
 
-* The delegated Azure Stack Hub operators are users with *Owner* or *Contributor* rights in the subscriptions called *delegated providers*. They can belong to other organizations, such as other Azure Active Directory (Azure AD) tenants.
+* The delegated Azure Stack Hub operators are users with *Owner* or *Contributor* rights in the subscriptions called *delegated providers*. They can belong to other organizations, such as other Microsoft Entra tenants.
 
 * *Users* sign up for the offers and use them for managing their workloads, creating VMs, storing data, and so on.
 
@@ -58,7 +58,7 @@ The following sections describe the steps to set up a delegated provider, delega
 
 ### Set up roles
 
-To use this walkthrough, you need two Azure AD accounts in addition to your Azure Stack Hub operator account. If you don't have these two accounts, you must create them. The accounts can belong to any Azure AD user and are referred to as the *delegated provider* and the *user*.
+To use this walkthrough, you need two Microsoft Entra accounts in addition to your Azure Stack Hub operator account. If you don't have these two accounts, you must create them. The accounts can belong to any Microsoft Entra user and are referred to as the *delegated provider* and the *user*.
 
 | **Role** | **Organizational rights** |
 | --- | --- |
@@ -66,7 +66,7 @@ To use this walkthrough, you need two Azure AD accounts in addition to your Azur
 | User |User |
 
  > [!NOTE]
- > In the case of a CSP-reseller, creating this delegated provider requires that these users are in the tenant directory (the user Azure AD). The Azure Stack Hub operator must [first onboard](enable-multitenancy.md) that tenant Azure AD, and then set up usage and billing by following [these steps](azure-stack-csp-howto-register-tenants.md).
+ > In the case of a CSP-reseller, creating this delegated provider requires that these users are in the tenant directory (the user Microsoft Entra ID). The Azure Stack Hub operator must [first onboard](enable-multitenancy.md) that tenant Microsoft Entra ID, and then set up usage and billing by following [these steps](azure-stack-csp-howto-register-tenants.md).
 
 ### Identify the delegated provider
 
@@ -148,7 +148,7 @@ If needed, a subscription can be moved between new or existing delegated provide
 Moving subscriptions is useful when:
 
 * You onboard a new team member that will take on the delegated provider role and you want to assign to this team member user subscriptions that were previously created in the default provider subscription.
-* You have multiple delegated providers subscriptions in the same directory tenant (Azure AD) and need to move user subscriptions between them. This scenario could occur when a team member moves between teams and their subscription must be allocated to the new team.
+* You have multiple delegated providers subscriptions in the same directory tenant (Microsoft Entra ID) and need to move user subscriptions between them. This scenario could occur when a team member moves between teams and their subscription must be allocated to the new team.
 
 ## Next steps
 
