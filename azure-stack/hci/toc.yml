@@ -447,8 +447,6 @@
           items:
           - name: What is Azure Arc VM management?
             href: manage/azure-arc-vm-management-overview.md
-          - name: Azure Arc VM management networking
-            href: manage/azure-arc-vm-management-networking.md
           - name: Review prerequisites
             href: manage/azure-arc-vm-management-prerequisites.md
           - name: Manage Arc VM resources
