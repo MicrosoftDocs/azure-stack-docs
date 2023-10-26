@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 10/26/2023
 ---
 
-# Optimize storage with ReFS deduplication and compression in Azure Stack HCI and Windows Server (preview)
+# Optimize storage with ReFS deduplication and compression in Azure Stack HCI (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
