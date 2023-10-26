@@ -466,7 +466,7 @@
     - name: Deploy
       items:
       - name: Read overview
-        href: ../index.yml
+        href: deploy/deployment-introduction.md
       - name: Complete prerequisites
         href: ../index.yml
       - name: 0. View deployment checklist
@@ -664,7 +664,7 @@
     - name: Deploy 
       items:
       - name: Deployment overview
-        href: deploy/deployment-introduction.md
+        href: deploy/deployment-tool-introduction.md
       - name: Review prerequisites
         href: deploy/deployment-tool-prerequisites.md
       - name: 0 - View deployment checklist
