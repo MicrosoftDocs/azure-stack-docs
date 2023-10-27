@@ -13,7 +13,7 @@ ms.reviewer: mayabishop
 
 Network security groups can be configured to filter inbound and outbound network traffic to and from Azure resources in an Azure virtual network. A network security group can contain security rules that filter network traffic by IP address, port, and protocol. When a network security group is associated with a subnet, security rules are applied to resources deployed in that subnet.
 
-This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system (AMLFS) cluster in a zero-trust environment.
+This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system cluster in a zero-trust environment.
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ Once the network security group is created, you can associate it to the unique s
 To configure network security group rules for Azure Managed Lustre file system support, you can add inbound and outbound security rules to the network security group that's associated to the subnet where your Azure Managed Lustre file system is deployed. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support in a zero-trust environment.
 
 > [!NOTE]
-> The security rules shown in this section are configured based on an Azure Managed Lustre file system test deployment in the East US region, with Blob Storage integration enabled. You'll need to adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for the Managed Lustre file system.
+> The security rules shown in this section are configured based on an Azure Managed Lustre file system test deployment in the East US region, with Blob Storage integration enabled. You'll need to adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for the Azure Managed Lustre file system.
 
 ### Create inbound security rules
 
@@ -82,12 +82,12 @@ Add the following inbound rules to the network security group:
 
 | Priority | Name | Port | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 110 | *rule-name* | Any | Any | 10.0.2.0/24 | 10.0.2.0/24 | Allow | Permit protocol or port flows between hosts on the AMLFS cluster subnet 10.0.2.0/24. |
-| 111 | *rule-name* | 988 | TCP | 10.0.3.0/24 | 10.0.2.0/24 | Allow | Permit communication between the Lustre client subnet and the AMLFS cluster subnet. Allows only source TCP ports 1020-1023 and destination port 988. |
+| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit protocol or port flows between hosts on the Azure Managed Lustre file system subnet. |
+| 111 | *rule-name* | 988 | TCP | *IP address/CIDR range for Lustre client subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit communication between the Lustre client subnet and the Azure Managed Lustre file system subnet. Allows only source TCP ports 1020-1023 and destination port 988. |
 | 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Permit inbound flows from the AzureMonitor service tag. Allow TCP source port 443 only. |
 | 120 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
 
-The inbound security rules in the Azure portal should look similar to the following screenshot:
+The inbound security rules in the Azure portal should look similar to the following screenshot. You'll need to adjust the subnet IP address/CIDR range and other settings based on your  deployment:
 
 :::image type="content" source="media/nsg-zero-trust/nsg-inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-inbound-security-rules.png":::
 
@@ -114,14 +114,14 @@ Add the following outbound rules to the network security group:
 | 105 | *rule-name* | 443 | TCP | `VirtualNetwork` | `ApiManagement.EastUS` | Allow | Permit outbound flows to the `ApiManagement.EastUS` service tag. TCP destination port 443 only. |
 | 106 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureDataLake` | Allow | Permit outbound flows to the `AzureDataLake` service tag. TCP destination port 443 only. |
 | 107 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureResourceManager` | Allow | Permits outbound flows to the `AzureResourceManager` service tag. TCP destination port 443 only. |
-| 108 | *rule-name* | 1020-1023 | TCP | 10.0.2.0/24 | 10.0.3.0/24 | Allow | Permit outbound flows for AMLFS cluster to Lustre client. TCP source port 988, destination ports 1020-1023 only. |
-| 109 | *rule-name* | 123 | UDP | 10.0.2.0/24 | 168.61.215.74/32 | Allow | Permit outbound flows to MS NTP server (168.61.215.74). UDP destination port 123 only. |
-| 110 | *rule-name* | 443 | TCP | `VirtualNetwork` | 20.34.120.0/21 | Allow | Permit outbound flows to AMLFS telemetry (20.45.120.0/21). TCP destination port 443 only. |
-| 111 | *rule-name* | Any | Any | 10.0.2.0/24 | 10.0.2.0/24 | Allow | Permit protocol or port flows between hosts on the AMLFS cluster subnet 10.0.2.0/24. |
+| 108 | *rule-name* | 1020-1023 | TCP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Lustre client subnet* | Allow | Permit outbound flows for Azure Managed Lustre file system to Lustre client. TCP source port 988, destination ports 1020-1023 only. |
+| 109 | *rule-name* | 123 | UDP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | 168.61.215.74/32 | Allow | Permit outbound flows to MS NTP server (168.61.215.74). UDP destination port 123 only. |
+| 110 | *rule-name* | 443 | TCP | `VirtualNetwork` | 20.34.120.0/21 | Allow | Permit outbound flows to Azure Managed Lustre telemetry (20.45.120.0/21). TCP destination port 443 only. |
+| 111 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit protocol or port flows between hosts on the Azure Managed Lustre file system subnet. |
 | 1000 | *rule-name* | Any | Any | `VirtualNetwork` | `Internet` | Deny | Deny outbound flows to the internet. |
 | 1010 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
 
-The outbound security rules in the Azure portal should look similar to the following screenshot:
+The outbound security rules in the Azure portal should look similar to the following screenshot. You'll need to adjust the subnet IP address/CIDR range and other settings based on your  deployment:
 
 :::image type="content" source="media/nsg-zero-trust/nsg-outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-outbound-security-rules.png":::
 
