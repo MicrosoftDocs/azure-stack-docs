@@ -1,23 +1,26 @@
 ---
-title: Monitor Azure Stack HCI with Azure Monitor Insights
-description: Enable logging and monitoring capabilities to monitor Azure Stack HCI clusters using Azure Monitor Insights.
+title: Monitor Azure Stack HCI with Insights
+description: Enable logging and monitoring capabilities to monitor Azure Stack HCI clusters using Insights.
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/25/2023
+ms.date: 10/27/2023
 # zone_pivot_groups: hci-versions
 ---
 
-# Monitor Azure Stack HCI with Azure Monitor Insights
+# Monitor Azure Stack HCI with Insights
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article explains how to use Azure Monitor Insights to monitor an Azure Stack HCI cluster. Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
+This article explains how to use Insights to monitor an Azure Stack HCI cluster. Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
 
-## Benefits of using Insights for Azure Stack HCI
+> [!IMPORTANT]
+> If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use [Azure Monitor Agent (AMA)]((/azure/azure-monitor/agents/agents-overview)), such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
+
+## Benefits
 
 Insights for Azure Stack HCI offers the following benefits:
 
@@ -31,11 +34,9 @@ Insights for Azure Stack HCI offers the following benefits:
 
 The prerequisites and settings for using Insights vary depending on the version of Azure Stack HCI you have. Select one of the following tabs for instructions on how to use Insights on your specific version of Azure Stack HCI.
 
-The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Monitor Agent](/azure/azure-monitor/agents/agents-overview) (AMA), which offers significant advantages compared to the legacy Microsoft Monitoring Agent (MMA) used in Azure Stack HCI, version 21H2 and earlier. These advantages include improved speed, enhanced security, and superior performance. You can onboard new nodes to AMA or [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the Legacy agent to AMA.
+The Insights feature in Azure Stack HCI, versions 22H2 and later, uses AMA, which offers significant advantages compared to the legacy Microsoft Monitoring Agent (MMA) used in Azure Stack HCI, version 21H2 and earlier. These advantages include improved speed, enhanced security, and superior performance. You can onboard new nodes to AMA or [migrate](#migrate-from-the-microsoft-monitoring-agent) your existing nodes from the Legacy agent to AMA.
 
 We recommend that you upgrade your Azure Stack HCI system to version 22H2 or later to take advantage of the Insights experience with AMA.
-
-If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use AMA, such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
 
 # [Azure Stack HCI, version 22H2 and later](#tab/22h2-and-later)
 
@@ -186,11 +187,15 @@ You must remove the Microsoft Monitoring Agent extension yourself from any compu
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-4.png" alt-text="Screenshot showing the Extensions list." lightbox="media/monitor-hci-single/agent-migration-4.png":::
 
-### Troubleshoot clusters registered before November 2023
+### Troubleshoot
+
+This section gives guidance for resolving the issues with using Insights for Azure Stack HCI.
+
+#### Troubleshoot clusters registered before November 2023
 
 **Issue.** In clusters registered before November 2023, features that use AMA on Azure Stack HCI, such as Arc for Servers, VM Insights, Container Insights, Defender for Cloud, and Sentinel may not collect logs and event data properly.
 
-**Reason.** Before November 2023, the cluster registration configured AMA to use cluster identity, while the services that use AMA on Azure Stack HCI required the cluster node's identity for proper log collection. This mismatch resulted in improper collection of logs from these services.
+**Cause.** Before November 2023, the cluster registration configured AMA to use cluster identity, while the services that use AMA on Azure Stack HCI required the cluster node's identity for proper log collection. This mismatch resulted in improper collection of logs from these services.
 
 **Solution.** To address this issue, we have made a change in the HCI cluster registration for AMA to use the server identity instead. To implement this change, perform the following steps on clusters that are registered before November 2023:
 
@@ -202,7 +207,7 @@ In the Azure portal, the Insights for Azure Stack HCI page automatically detects
 
 :::image type="content" source="media/monitor-hci-single/reconfigure-insights-banner.png" alt-text="Screenshot showing the banner to reconfigure Insights." lightbox="media/monitor-hci-single/reconfigure-insights-banner.png":::
 
-#### Repair cluster registration
+##### Repair cluster registration
 
 Follow these steps to repair cluster registration:
 
@@ -218,7 +223,7 @@ Follow these steps to repair cluster registration:
    Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration -RepairRegistration
    ```
 
-#### Repair AMA for Azure Stack HCI
+##### Repair AMA for Azure Stack HCI
 
 Choose one of the following options to repair AMA:
 
@@ -261,7 +266,7 @@ Choose one of the following options to repair AMA:
 
 - **Option 4: Reboot your cluster nodes**
 
-#### Reconfigure Insights for Azure Stack HCI
+##### Reconfigure Insights for Azure Stack HCI
 
 Follow these steps to reconfigure Insights for Azure Stack HCI:
 
@@ -273,11 +278,15 @@ Follow these steps to reconfigure Insights for Azure Stack HCI:
 
    :::image type="content" source="media/monitor-hci-single/new-data-collection-rule.png" alt-text="Screenshot of the New data collection rule page." lightbox="media/monitor-hci-single/new-data-collection-rule.png":::
 
-If you see a blank screen with no data populated, as shown in the following screenshot, you need to perform other troubleshooting steps.
+#### Troubleshoot blank Workbooks page with no data populated
 
-:::image type="content" source="media/monitor-hci-single/blank-screen.png" alt-text="Screenshot showing no data." lightbox="media/monitor-hci-single/blank-screen.png":::
+**Issue.** You see a blank **Workbooks** page with no data populated, as shown in the following screenshot:
 
-Perform these troubleshooting steps in order:
+:::image type="content" source="media/monitor-hci-single/blank-workbooks-page.png" alt-text="Screenshot of a blank Workbooks page." lightbox="media/monitor-hci-single/blank-workbooks-page.png":::
+
+**Possible causes.** There may be several possible causes for this issue, including recent configuration of Insights, incomplete troubleshooting steps for clusters registered before November 2023, or associated DCR not being configured properly.
+
+**Solution.** To troubleshoot the issue, perform the following steps in sequence:
 
 1. If you've recently configured Insights, wait for up to one hour for AMA to gather data.
 1. If there's still no data after waiting, make sure you have completed all the steps mentioned in the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
