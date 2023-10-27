@@ -213,17 +213,19 @@ In this example, certificates should have been stored as pfx files on DVM.
   Invoke-Command @params -ScriptBlock {  
     param($ServerName, $ServerPort, $certPath, $certPassword) 
  
-    Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\My" -Password $certPassword 
+  Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\My" -Password $certPassword 
     Remove-Item -Path $certPath 
   } 
   Remove-PSSession -Session $session 
-} 
+  } 
  
-# Import self-signed root certificate 
-# Use this section only under applicable case 
-$rootCertPath = "<local file path to your client cert pfx file on DVM>" 
-foreach ($node in $nodes) 
-{ 
+Import self-signed root certificate 
+
+Use this section only under applicable case.
+
+  $rootCertPath = "local file path to your client cert pfx file on DVM" 
+  foreach ($node in $nodes) 
+  { 
   $params = @{  
       ComputerName = $nodeName  
       Credential = $domainAdminCred 
@@ -242,7 +244,7 @@ foreach ($node in $nodes)
       ArgumentList = @($serverName, $serverPort, $clientCertPathOnNode)  
   } 
   Invoke-Command @params -ScriptBlock {  
-    param($ServerName, $ServerPort, $certPath) 
+  param($ServerName, $ServerPort, $certPath) 
  
     Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\root" -Password $certPassword 
     Remove-Item -Path $certPath 
@@ -386,7 +388,7 @@ Parameter for `Enable-AzSSyslogForwarder` and `Disable-AzSSyslogForwarder` cmdle
 The syslog forwarder of the Azure Stack HCI infrastructure sends messages formatted following the BSD syslog protocol defined in RFC3164. Common Event Format (CEF) is also used to format the syslog message payload.
 
 Each syslog message is structured based on this schema: 
-<PRI> <Time> <Host> <CEF payload> 
+PRI | Time | Host | CEF payload 
 
 The PRI part contains two values: facility and severity. Both depend on the type of message, like Windows Event, etc.
 
@@ -443,7 +445,7 @@ All Windows events use the PRI facility value 10.
 |MasProviderEventSourceName |  |
 |MasProviderGuid | AEA1B4FA-97D1-45F2-A64C-4D69FFFD92C9 |
 |MasProviderName |Microsoft-Windows-GroupPolicy |
-|MasSecurityUserId |<Windows SID> |
+|MasSecurityUserId |Windows SID |
 |MasTask |0 |
 |MasTaskCategory |Process Creation |
 |MasUserData | KB4093112!!5112!!Installed!!0x0!!WindowsUpdateAgent Xpath: /Event/UserData/* |
