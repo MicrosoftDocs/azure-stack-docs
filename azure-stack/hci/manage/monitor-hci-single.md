@@ -186,11 +186,13 @@ You must remove the Microsoft Monitoring Agent extension yourself from any compu
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-4.png" alt-text="Screenshot showing the Extensions list." lightbox="media/monitor-hci-single/agent-migration-4.png":::
 
-### Troubleshooting
+### Troubleshoot clusters registered before November 2023
 
-Clusters registered before November 2023 configures AMA at the cluster identity level, causing issues with log and event data collection for specific services, such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel. To rectify this, we updated the cluster registration for AMA to use the server identity instead.
+**Issue.** In clusters registered before November 2023, features that use AMA on Azure Stack HCI, such as Arc for Servers, VM Insights, Container Insights, Defender for Cloud, and Sentinel may not collect logs and event data properly.
 
-To address the AMA confifiguration change in clusters registered before November 2023, follow these steps:
+**Reason.** Before November 2023, the cluster registration configured AMA to use cluster identity, while the services that use AMA on Azure Stack HCI required the cluster node's identity for proper log collection. This mismatch resulted in improper collection of logs from these services.
+
+**Solution.** To address this issue, we have made a change in the HCI cluster registration for AMA to use the server identity instead. To implement this change, perform the following steps on clusters that are registered before November 2023:
 
 1. Repair cluster registration. See [Repair cluster registration](#repair-cluster-registration).
 1. Repair AMA. See [Repair AMA](#repair-ama-for-azure-stack-hci).
@@ -202,29 +204,25 @@ In the Azure portal, the Insights for Azure Stack HCI page automatically detects
 
 #### Repair cluster registration
 
-If the cluster is already registered with Azure, rerun the registration to configure managed identity at the server level.
+Follow these steps to repair cluster registration:
 
-Run the following command to repair cluster registration:
+1. On one of the cluster nodes, install the install the latest `Az.StackHCI` PowerShell module. Replace `latestversion` with the latest `Az.StackHCI` version number.
 
-```powershell
-Register-AzStackHCI -SubscriptionId "<SubscriptionID>" -ComputerName <NodeName> -RepairRegistration
-```
+   ```powershell
+   Install-Module -Name Az.StackHCI -RequiredVersion {latestversion} -Scope CurrentUser -Repository PSGallery -Force 
+   ```
+
+1. Run the repair registration command to remove regkey:
+
+   ```powershell
+   Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration -RepairRegistration
+   ```
 
 #### Repair AMA for Azure Stack HCI
 
 Choose one of the following options to repair AMA:
 
-- **Option 1: Update AMA**
-
-   Follow these steps to update AMA:
-
-   1. In the Azure portal, go to the **Extensions** page for your Azure Stack HCI cluster.
-
-   1. Select the checkbox for **AzureMonitorWindowsAgent** and select **Enable automatic upgrade**, if not done already.
-
-      :::image type="content" source="media/monitor-hci-single/update-ama.png" alt-text="Screenshot showing AzureMonitorWindowsAgent to enable automatic upgrade." lightbox="media/monitor-hci-single/update-ama.png":::
-
-- **Option 2: Uninstall AMA**
+- **Option 1: Uninstall AMA**
 
    If AMA is already updated, uninstall it. Follow these steps to uninstall AMA:
 
@@ -233,6 +231,16 @@ Choose one of the following options to repair AMA:
    1. Select the checkbox for **AzureMonitorWindowsAgent** and select **Uninstall**.
 
       :::image type="content" source="media/monitor-hci-single/uninstall-ama.png" alt-text="Screenshot showing AzureMonitorWindowsAgent to uninstall AMA." lightbox="media/monitor-hci-single/uninstall-ama.png":::
+
+- **Option 2: Update AMA**
+
+   Follow these steps to update AMA:
+
+   1. In the Azure portal, go to the **Extensions** page for your Azure Stack HCI cluster.
+
+   1. Select the checkbox for **AzureMonitorWindowsAgent** and select **Enable automatic upgrade**, if not done already.
+
+      :::image type="content" source="media/monitor-hci-single/update-ama.png" alt-text="Screenshot showing AzureMonitorWindowsAgent to enable automatic upgrade." lightbox="media/monitor-hci-single/update-ama.png":::
 
 - **Option 3: Restart AMA**
 
@@ -257,22 +265,22 @@ Choose one of the following options to repair AMA:
 
 Follow these steps to reconfigure Insights for Azure Stack HCI:
 
-1. In the Azure portal, the Insights page for your Azure Stack HCI cluster automatically detects the AMA configuration change and displays a banner at the top, as shown in the following screenshot. Review the banner and select **Configure Insights**.
+1. In the Azure portal, the Insights page for your Azure Stack HCI cluster displays a banner at the top, as shown in the following screenshot, which will help you configure Insights again and associate DCR with the cluster nodes. Review the banner and select **Configure Insights**.
 
    :::image type="content" source="media/monitor-hci-single/configure-insights.png" alt-text="Screenshot showing the Configure Insights button." lightbox="media/monitor-hci-single/configure-insights.png":::
 
 1. Reconfigure DCR. Follow the instructions to configure Insights as provided in this article. See [Configure Insights for Azure Stack HCI](#configure-insights-for-azure-stack-hci).
 
-   :::image type="content" source="media/monitor-hci-single/new-data-collection-rule.png" alt-text="Screenshot of the New data collecition rule page." lightbox="media/monitor-hci-single/new-data-collection-rule.png":::
+   :::image type="content" source="media/monitor-hci-single/new-data-collection-rule.png" alt-text="Screenshot of the New data collection rule page." lightbox="media/monitor-hci-single/new-data-collection-rule.png":::
 
-If you see a blank screen with no data populated, as shown in the following screenshot, you need to perform some other troubleshooting steps.
+If you see a blank screen with no data populated, as shown in the following screenshot, you need to perform other troubleshooting steps.
 
 :::image type="content" source="media/monitor-hci-single/blank-screen.png" alt-text="Screenshot showing no data." lightbox="media/monitor-hci-single/blank-screen.png":::
 
 Perform these troubleshooting steps in order:
 
 1. If you've recently configured Insights, wait for up to one hour for AMA to gather data.
-1. If there's still no data after waiting, make sure you have completed all the steps mentioned in the section [Clusters registered before October 2023].
+1. If there's still no data after waiting, make sure you have completed all the steps mentioned in the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
 1. Verify the configuration of the associated DCR. Make sure that event channels and performance counters are added as data sources to the associated DCR as described in the [Data Collection Rules](#data-collection-rules) section.
 1. If the issue persists after performing the above steps, and you still don't see any data, contact customer support for assistance.
 
