@@ -36,6 +36,8 @@
       href: export-with-archive-jobs.md
   - name: Security
     items:
+    - name: Configure a network security group for Zero Trust cluster deployment
+      href: amlfs-configure-nsg-zero-trust.md
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
 - name: Troubleshooting

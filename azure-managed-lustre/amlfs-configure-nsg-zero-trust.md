@@ -1,19 +1,19 @@
 ---
-title: Configure network security groups for Azure Managed Lustre file systems in a zero-trust environment
-description: Configure network security group rules to allow Azure Managed Lustre file system support in a zero-trust virtual network. 
+title: Configure a network security group for Azure Managed Lustre file systems
+description: Configure network security group rules to allow Azure Managed Lustre file system support as part of a Zero Trust strategy. 
 ms.topic: how-to
-ms.date: 10/25/2023
+ms.date: 10/27/2023
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: mayabishop
 
 ---
 
-# Configure a network security group for Azure Managed Lustre file systems in a zero-trust environment
+# Configure a network security group for Azure Managed Lustre file systems
 
 Network security groups can be configured to filter inbound and outbound network traffic to and from Azure resources in an Azure virtual network. A network security group can contain security rules that filter network traffic by IP address, port, and protocol. When a network security group is associated with a subnet, security rules are applied to resources deployed in that subnet.
 
-This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system cluster in a zero-trust environment.
+This article describes how to configure network security group rules to secure access to an Azure Managed Lustre file system cluster as part of a [Zero Trust](/security/zero-trust/zero-trust-overview) strategy.
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ Once the network security group is created, you can associate it to the unique s
 
 ## Configure network security group rules
 
-To configure network security group rules for Azure Managed Lustre file system support, you can add inbound and outbound security rules to the network security group that's associated to the subnet where your Azure Managed Lustre file system is deployed. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support in a zero-trust environment.
+To configure network security group rules for Azure Managed Lustre file system support, you can add inbound and outbound security rules to the network security group that's associated to the subnet where your Azure Managed Lustre file system is deployed. The following sections describe how to create and configure the inbound and outbound security rules that allow Azure Managed Lustre file system support.
 
 > [!NOTE]
 > The security rules shown in this section are configured based on an Azure Managed Lustre file system test deployment in the East US region, with Blob Storage integration enabled. You'll need to adjust the rules based on your deployment region, virtual network subnet IP address, and other configuration settings for the Azure Managed Lustre file system.
@@ -87,7 +87,7 @@ Add the following inbound rules to the network security group:
 | 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Permit inbound flows from the AzureMonitor service tag. Allow TCP source port 443 only. |
 | 120 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
 
-The inbound security rules in the Azure portal should look similar to the following screenshot. You'll need to adjust the subnet IP address/CIDR range and other settings based on your  deployment:
+The inbound security rules in the Azure portal should look similar to the following screenshot. You should adjust the subnet IP address/CIDR range and other settings based on your deployment:
 
 :::image type="content" source="media/nsg-zero-trust/nsg-inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-inbound-security-rules.png":::
 
@@ -121,7 +121,7 @@ Add the following outbound rules to the network security group:
 | 1000 | *rule-name* | Any | Any | `VirtualNetwork` | `Internet` | Deny | Deny outbound flows to the internet. |
 | 1010 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
 
-The outbound security rules in the Azure portal should look similar to the following screenshot. You'll need to adjust the subnet IP address/CIDR range and other settings based on your  deployment:
+The outbound security rules in the Azure portal should look similar to the following screenshot. You should adjust the subnet IP address/CIDR range and other settings based on your deployment:
 
 :::image type="content" source="media/nsg-zero-trust/nsg-outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-outbound-security-rules.png":::
 
