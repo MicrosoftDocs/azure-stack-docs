@@ -42,7 +42,7 @@ To create a network security group in the Azure portal, follow these steps:
     | Network security group name | Enter a name for the network security group you're creating. |
     | Region | Select the region you want. |
 
-    :::image type="content" source="media/nsg-zero-trust/nsg-create-new.png" alt-text="Screenshot showing how to create a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-create-new.png":::
+    :::image type="content" source="media/network-security-group/create-new.png" alt-text="Screenshot showing how to create a network security group in the Azure portal." lightbox="media/network-security-group/create-new.png":::
 
 4. Select **Review + create**.
 
@@ -58,7 +58,7 @@ Once the network security group is created, you can associate it to the unique s
 
 3. To associate a network security group to the subnet, select **+ Associate**, then select your virtual network and the subnet that you want to associate the network security group to. Select **OK**.
 
-:::image type="content" source="./media/nsg-zero-trust/nsg-associate-to-subnet.png" alt-text="Screenshot showing how to associate a network security group to a subnet in Azure portal." lightbox="media/nsg-zero-trust/nsg-associate-to-subnet.png":::
+:::image type="content" source="./media/network-security-group/associate-to-subnet.png" alt-text="Screenshot showing how to associate a network security group to a subnet in Azure portal." lightbox="media/network-security-group/associate-to-subnet.png":::
 
 ## Configure network security group rules
 
@@ -76,7 +76,7 @@ You can create inbound security rules in the Azure portal. The following example
 1. Select **+ Add**.
 1. In the **Add inbound security rule** pane, configure the settings for the rule and select **Add**.
 
-:::image type="content" source="media/nsg-zero-trust/nsg-add-inbound-security-rule.png" alt-text="Screenshot showing how to create an inbound security rule for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-add-inbound-security-rule.png":::
+:::image type="content" source="media/network-security-group/add-inbound-security-rule.png" alt-text="Screenshot showing how to create an inbound security rule for a network security group in the Azure portal." lightbox="media/network-security-group/add-inbound-security-rule.png":::
 
 Add the following inbound rules to the network security group:
 
@@ -89,7 +89,7 @@ Add the following inbound rules to the network security group:
 
 The inbound security rules in the Azure portal should look similar to the following screenshot. You should adjust the subnet IP address/CIDR range and other settings based on your deployment:
 
-:::image type="content" source="media/nsg-zero-trust/nsg-inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-inbound-security-rules.png":::
+:::image type="content" source="media/network-security-group/inbound-security-rules.png" alt-text="Screenshot showing inbound security rules for a network security group in the Azure portal." lightbox="media/network-security-group/inbound-security-rules.png":::
 
 ### Create outbound security rules
 
@@ -100,7 +100,7 @@ You can create outbound security rules in the Azure portal. The following exampl
 1. Select **+ Add**.
 1. In the **Add outbound security rule** pane, configure the settings for the rule and select **Add**.
 
-:::image type="content" source="media/nsg-zero-trust/nsg-add-outbound-security-rule.png" alt-text="Screenshot showing how to create an outbound security rule for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-add-outbound-security-rule.png":::
+:::image type="content" source="media/network-security-group/add-outbound-security-rule.png" alt-text="Screenshot showing how to create an outbound security rule for a network security group in the Azure portal." lightbox="media/network-security-group/add-outbound-security-rule.png":::
 
 Add the following outbound rules to the network security group:
 
@@ -123,7 +123,7 @@ Add the following outbound rules to the network security group:
 
 The outbound security rules in the Azure portal should look similar to the following screenshot. You should adjust the subnet IP address/CIDR range and other settings based on your deployment:
 
-:::image type="content" source="media/nsg-zero-trust/nsg-outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in the Azure portal." lightbox="media/nsg-zero-trust/nsg-outbound-security-rules.png":::
+:::image type="content" source="media/network-security-group/outbound-security-rules.png" alt-text="Screenshot showing outbound security rules for a network security group in the Azure portal." lightbox="media/network-security-group/outbound-security-rules.png":::
 
 ## Next steps
 

@@ -37,7 +37,7 @@
   - name: Security
     items:
     - name: Configure a network security group
-      href: amlfs-configure-nsg-zero-trust.md
+      href: configure-network-security-group.md
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
 - name: Troubleshooting
