@@ -464,6 +464,8 @@
           href: concepts/security-windows-defender-application-control.md
         - name: Review security baseline settings
           href: concepts/secure-baseline.md
+        - name: Other security features
+          href: concepts/other-security-features.md
         - name: Understand BitLocker encryption
           href: concepts/security-bitlocker.md
       - name: Assess environment readiness
