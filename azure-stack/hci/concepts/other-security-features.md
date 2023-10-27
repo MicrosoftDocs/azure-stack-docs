@@ -246,12 +246,12 @@ Use this section only under applicable case.
   Invoke-Command @params -ScriptBlock {  
   param($ServerName, $ServerPort, $certPath) 
  
-    Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\root" -Password $certPassword 
-    Remove-Item -Path $certPath 
+  Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\root" -Password $certPassword 
+  Remove-Item -Path $certPath 
   } 
   Remove-PSSession -Session $session 
-} 
- 
+  }
+
 3. Set the syslog forwarder to use mutual authentication
 
    An action plan will be started and its id will be stored in $actionPlanInstanceId
