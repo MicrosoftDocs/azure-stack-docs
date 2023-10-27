@@ -1,20 +1,20 @@
 ---
-title: 'Quickstart: Create an Azure Managed Lustre file system using Terraform'
-description: In this quickstart, you create an Azure Managed Lustre file system using Terraform.
+title: 'Create an Azure Managed Lustre file system using Terraform'
+description: Learn how to create an Azure Managed Lustre file system using Terraform.
 services: azure-stack
 author: pauljewellmsft
 ms.service: azure-stack
-ms.topic: quickstart
+ms.topic: how-to
 ms.custom: devx-track-terraform
-ms.date: 10/24/2023
+ms.date: 10/25/2023
 ms.author: pauljewell
 content_well_notification: 
   - AI-contribution
 ---
 
-# Quickstart: Create an Azure Managed Lustre file system using Terraform
+# Create an Azure Managed Lustre file system using Terraform
 
-In this quickstart, you use Terraform to create an [Azure Managed Lustre](amlfs-overview.md) file system.
+In this article, you use Terraform to create an [Azure Managed Lustre](amlfs-overview.md) file system.
 
 [!INCLUDE [About Terraform](../azure-dev-docs-pr/articles/terraform/includes/abstract.md)]
 
@@ -26,7 +26,10 @@ In this article, you learn how to:
 > * Create an Azure Virtual Network using [azurerm_virtual_network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_network)
 > * Create an Azure subnet using [azurerm_subnet](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/subnet)
 > * Create a random value (to be used as the Managed Lustre file system name) using [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string)
-> * Create an Managed Lustre file system using [azurerm_managed_lustre_file_system](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/managed_lustre_file_system)
+> * Create a Managed Lustre file system using [azurerm_managed_lustre_file_system](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/managed_lustre_file_system)
+
+> [!NOTE]
+> The code example in this article uses the [random_pet](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) and [random_string](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) resources to generate unique values for the resource group name and the Managed Lustre file system name. You can replace these values with your own resource names in the `variables.tf` and `main.tf` files.
 
 ## Prerequisites
 
@@ -126,7 +129,7 @@ In this article, you learn how to:
 
 ## Next steps
 
-Next, you can monitor the Azure Firewall logs.
+Next, you can explore more about Azure Managed Lustre.
 
 > [!div class="nextstepaction"]
 > [Learn about Azure Managed Lustre](amlfs-overview.md)

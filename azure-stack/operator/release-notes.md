@@ -101,7 +101,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2301.2.63](hotfix-1-2301-2-63.md)
+- [Azure Stack Hub hotfix 1.2301.2.64](hotfix-1-2301-2-64.md)
 
 ### After successfully applying the 2306 update
 
@@ -171,7 +171,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfixes:
 
-- [Azure Stack Hub hotfix 1.2206.2.66](hotfix-1-2206-2-66.md)
+- [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
 
 ### After successfully applying the 2301 update
 
@@ -179,7 +179,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2301, if any hotfixes for 2301 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2301.2.63](hotfix-1-2301-2-63.md)
+- [Azure Stack Hub hotfix 1.2301.2.64](hotfix-1-2301-2-64.md)
 ::: moniker-end
 
 ::: moniker range="azs-2206"
@@ -246,7 +246,7 @@ When you update to a new major version (for example, 1.2102.x to 1.2108.x), the 
 
 After the installation of 2206, if any hotfixes for 2206 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2206.2.66](hotfix-1-2206-2-66.md)
+- [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
