@@ -35,7 +35,7 @@ Before you begin, make sure you've done the following:
 ## Register servers with Azure Arc
 
 > [!NOTE]
-> Run these steps on every server of your the cluster.
+> Run these steps on every server of your cluster.
 
 1. Download and install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller/0.1.2489.42) from PSGallery.
 
