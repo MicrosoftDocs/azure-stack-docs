@@ -49,4 +49,4 @@ Here are the known issues in version 2310 release:
 
 ## Next steps
 
-- Read the [Deployment overview](./index.yml)
+- Read the [Deployment overview](./deploy/deployment-introduction.md).
