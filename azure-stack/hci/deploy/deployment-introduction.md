@@ -49,11 +49,11 @@ Before starting the network configuration for your cluster, we recommend you che
 |Topology|Azure portal|Azure Resource Manager template|
 |---|---|---|
 |One node - no switch for storage|By default|Supported|
-One node - with network switch for storage|Not applicable|Supported|
-Two nodes - no switch for storage|Supported|Supported|
-Two nodes - with network switch for storage|Supported|Supported|
-Three nodes - with network switch for storage|Supported|Supported|
-Four to 16 nodes - with network switch for storage|Supported|Supported|
+|One node - with network switch for storage|Not applicable|Supported|
+|Two nodes - no switch for storage|Supported|Supported|
+|Two nodes - with network switch for storage|Supported|Supported|
+|Three nodes - with network switch for storage|Supported|Supported|
+|Four to 16 nodes - with network switch for storage|Supported|Supported|
 
 The two network topology options are:
 
