@@ -35,7 +35,7 @@ The Insights feature in Azure Stack HCI, versions 22H2 and later, uses [Azure Mo
 
 We recommend that you upgrade your Azure Stack HCI system to version 22H2 or later to take advantage of the Insights experience with AMA.
 
-If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use AMA, such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshooting](#troubleshooting) section.
+If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use AMA, such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
 
 # [Azure Stack HCI, version 22H2 and later](#tab/22h2-and-later)
 
