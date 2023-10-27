@@ -1,6 +1,6 @@
 ---
 title: Configure a network security group for Azure Managed Lustre file systems
-description: Configure network security group rules to allow Azure Managed Lustre file system support as part of a Zero Trust strategy. 
+description: Configure network security group rules to allow Azure Managed Lustre file system support as part of a locked down, Zero Trust networking strategy. 
 ms.topic: how-to
 ms.date: 10/27/2023
 author: pauljewellmsft
