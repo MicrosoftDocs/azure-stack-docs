@@ -274,41 +274,6 @@
       href: concepts/telemetry-and-diagnostics-overview.md
     href: manage/arc-extension-management.md
 
-- name: Migrate
-  items: 
-    - name: Migration overview
-      href: migrate/migration-options-hci-overview.md
-    - name: Migrate using Azure Migrate
-      items:
-      - name: Overview
-        href: migrate/migration-azure-migrate-hci-overview.md
-      - name: Prepare
-        items:
-        - name: Review requirements
-          href: migrate/migrate-hyperv-requirements.md
-        - name: Complete prerequisites
-          href: migrate/migrate-hyperv-prerequisites.md 
-      - name: Discover, replicate
-        href: migrate/migrate-hyperv-replicate.md
-      - name: Migrate, verify
-        href: migrate/migrate-azure-migrate.md
-      - name: Troubleshoot
-        href: migrate/migrate-troubleshoot.md
-      - name: FAQ
-        href: migrate/migrate-faq.yml
-    - name: Migrate using SCVMM
-      items:
-      - name: For Hyper-V VMs
-        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
-      - name: For VMware VMs
-        href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
-    - name: Migrate manually 
-      items:
-      - name: To same hardware
-        href: migrate/migrate-cluster-same-hardware.md
-      - name: To new hardware
-        href: migrate/migrate-cluster-new-hardware.md
-
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
@@ -401,12 +366,24 @@
       href: concepts/utility-applications.md
     - name: Data collection
       href: concepts/data-collection.md
-- name: Preview
+- name: Preview 
   items:
     - name: What's new in version 23H2?
       href: whats-new.md
     - name: Known issues
       href: known-issues-23h2.md
+    - name: Plan
+      items: 
+        - name: Review security
+          items:
+          - name: Use Windows Defender Application Control 
+            href: concepts/security-windows-defender-application-control.md
+          - name: Review security baseline settings
+            href: concepts/secure-baseline.md
+          - name: Understand BitLocker encryption
+            href: concepts/security-bitlocker.md
+        - name: Assess environment readiness
+          href: manage/use-environment-checker.md
     - name: Deploy
       items:
       - name: Read overview
@@ -478,11 +455,57 @@
         - name: Capacity
           items:
           - name: Add a server
-            href: ../index.yml
+            href: manage/add-server.md
           - name: Repair a server
-            href: ../index.yml
+            href: manage/repair-server.md
+    - name: Monitor
+      items:
         - name: Alerts via Azure monitor
           href: manage/health-alerts-via-azure-monitor-alerts.md
+        - name: Metrics via Azure portal
+          href: ../index.yml
+        - name: ReFS dedupe and compression workbooks
+          href: ../index.yml
+    - name: Migrate
+      items: 
+        - name: Migration overview
+          href: migrate/migration-options-hci-overview.md
+        - name: Migrate using Azure Migrate
+          items:
+          - name: Overview
+            href: migrate/migration-azure-migrate-hci-overview.md
+          - name: Prepare
+            items:
+            - name: Review requirements
+              href: migrate/migrate-hyperv-requirements.md
+            - name: Complete prerequisites
+              href: migrate/migrate-hyperv-prerequisites.md 
+          - name: Discover, replicate
+            href: migrate/migrate-hyperv-replicate.md
+          - name: Migrate, verify
+            href: migrate/migrate-azure-migrate.md
+          - name: Troubleshoot
+            href: migrate/migrate-troubleshoot.md
+          - name: FAQ
+            href: migrate/migrate-faq.yml
+        - name: Migrate using SCVMM
+          items:
+          - name: For Hyper-V VMs
+            href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
+          - name: For VMware VMs
+            href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
+        - name: Migrate manually 
+          items:
+          - name: To same hardware
+            href: migrate/migrate-cluster-same-hardware.md
+          - name: To new hardware
+            href: migrate/migrate-cluster-new-hardware.md
+    - name: Troubleshoot
+      items:
+      - name: Troubleshoot environment readiness
+        href: manage/troubleshoot-environment-validation-issues.md
+      - name: Troubleshoot deployment
+        href: deploy/deployment-troubleshoot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
