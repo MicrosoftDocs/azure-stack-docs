@@ -505,7 +505,7 @@
       - name: Troubleshoot environment readiness
         href: manage/troubleshoot-environment-validation-issues.md
       - name: Troubleshoot deployment
-        href: deploy/deployment-troubleshoot.md
+        href: deploy/deployment-tool-troubleshoot.md
 - name: Reference
   items:
   - name: Azure registration Azure CLI commands
