@@ -211,7 +211,7 @@ In the Azure portal, the Insights for Azure Stack HCI page automatically detects
 
 Follow these steps to repair cluster registration:
 
-1. On one of the cluster nodes, install the install the latest `Az.StackHCI` PowerShell module. Replace `latestversion` with the latest `Az.StackHCI` version number.
+1. On your cluster nodes, install the install the latest `Az.StackHCI` PowerShell module. Replace `latestversion` with the latest `Az.StackHCI` version number.
 
    ```powershell
    Install-Module -Name Az.StackHCI -RequiredVersion {latestversion} -Scope CurrentUser -Repository PSGallery -Force 
