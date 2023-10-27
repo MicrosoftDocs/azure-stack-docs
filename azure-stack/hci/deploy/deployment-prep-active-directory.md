@@ -21,8 +21,8 @@ This article describes how to prepare your Active Directory environment before y
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](../index.yml) for new deployments of Azure Stack HCI.
-- Complete the [deployment checklist](../index.yml).
+- Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
+- Complete the [deployment checklist](./deployment-checklist.md).
 - Install the PowerShell module to prepare Active Directory. [Download the module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2306). Make sure to use the [version 10.2306 of the AsHciADArtifactsPreCreationTool](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2306/Content/AsHciADArtifactsPreCreationTool.psd1).
 - Run the following command:
 
@@ -36,9 +36,7 @@ Before you begin, make sure you've done the following:
     Import-Module .\AsHciADArtifactsPreCreationTool.psm1
     ```
 - Obtain domain administrator access to the Active Directory domain server.
-<!--- (Only if you deploy Azure Stack HCI via PowerShell) Create a Service Principal with the necessary permissions for Azure Stack HCI registration. For more information, see:
-    - [Create an Azure AD app and service principal in the portal](/azure/active-directory/develop/howto-create-service-principal-portal).
-    - [Assign Azure permissions from the Azure portal](./register-with-azure.md#assign-azure-permissions-for-registration).-->
+
     
 ## Active Directory preparation module
 
