@@ -684,55 +684,7 @@
         href: manage/add-server.md
       - name: Repair a server
         href: manage/repair-server.md
-- name: Reference
-  items:
-  - name: Azure registration Azure CLI commands
-    href: /cli/azure/ext/stack-hci/stack-hci
-  - name: Azure registration PowerShell commands
-    href: /powershell/module/az.stackhci
-  - name: Go package for ARM Azure Stack HCI service API
-    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-  - name: Azure Stack HCI Java service classes and interfaces
-    href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-  - name: Azure Stack HCI management service Python package
-    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-  - name: Azure Stack HCI JavaScript package
-    href: /javascript/api/@azure/arm-azurestackhci
-  - name: Azure Stack HCI REST API reference
-    href: /rest/api/stackhci
-  - name: .NET Namespaces for Azure Stack HCI
-    href: /dotnet/api/overview/azure/stack-hci
-  - name: Hyper-V PowerShell commands
-    href: /powershell/module/hyper-v
-  - name: Storage PowerShell commands
-    href: /powershell/module/storage
-  - name: ClusterAwareUpdating PowerShell commands
-    href: /powershell/module/clusterawareupdating
-  - name: FailoverClusters PowerShell commands
-    href: /powershell/module/failoverclusters
-  - name: StorageReplica PowerShell commands
-    href: /powershell/module/storagereplica
-  - name: NetAdapter PowerShell commands
-    href: /powershell/module/netadapter
-  - name: NetQoS PowerShell commands
-    href: /powershell/module/netqos
-  - name: DcbQoS PowerShell commands
-    href: /powershell/module/dcbqos
-- name: Related
-  items:
-  - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: /azure/aks/hybrid/overview
-  - name: Azure Stack family
-    href: ../index.yml
-  - name: Azure hybrid cloud
-    href: /hybrid
-  - name: Windows Server
-    href: /windows-server/
-  - name: Windows Admin Center
-    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-  - name: System Center
-    href: /system-center/
-- name: Resources
+
   items:
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
