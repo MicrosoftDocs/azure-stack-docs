@@ -39,7 +39,7 @@ This article describes how to optionally use a highly locked-down firewall confi
 The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
 
 > [!NOTE]
-> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which might be updated into precise endpoints in the future.
 
 [!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
 
@@ -50,13 +50,13 @@ For a comprehensive list of all the firewall URLs, download the [firewall URLs s
 The following table provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
 
 > [!NOTE]
-> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which might be updated into precise endpoints in the future.
 
 [!INCLUDE [Recommended URLs table](../../includes/hci-recommended-urls-table.md)]
 
 ## Firewall requirements for additional Azure services
 
-Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
+Depending on additional Azure services you enable on HCI, you might need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
@@ -131,7 +131,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 | Allow RPC dynamic port allocation | Allow | Management system | Hyper-V server | TCP | Minimum of 100 ports<br> above port 5000 |
 
 >[!NOTE]
-> Open up a range of ports above port 5000 to allow RPC dynamic port allocation. Ports below 5000 may already be in use by other applications and could cause conflicts with DCOM applications. Previous experience shows that a minimum of 100 ports should be opened, because several system services rely on these RPC ports to communicate with each other. For more information, see [How to configure RPC dynamic port allocation to work with firewalls](/troubleshoot/windows-server/networking/configure-rpc-dynamic-port-allocation-with-firewalls).
+> Open up a range of ports above port 5000 to allow RPC dynamic port allocation. Ports below 5000 might already be in use by other applications and could cause conflicts with DCOM applications. Previous experience shows that a minimum of 100 ports should be opened, because several system services rely on these RPC ports to communicate with each other. For more information, see [How to configure RPC dynamic port allocation to work with firewalls](/troubleshoot/windows-server/networking/configure-rpc-dynamic-port-allocation-with-firewalls).
 
 ### Storage Replica (stretched cluster)
 
