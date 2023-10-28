@@ -17,7 +17,7 @@ This article describes new components in the security layer of the Azure Stack H
 
 ## Renamed local built-in users
 
-We renamed your local built-in users for the `RID 500 local administrator` and `RID 501 guest` accounts. The new names and status of those accounts are as follows:
+We renamed the local built-in users for the `RID 500 local administrator` and `RID 501 guest` accounts. The new names and status of those accounts are as follows:
 
 |Name |Enabled |Description |
 |-----|-----|-----|
@@ -25,7 +25,7 @@ We renamed your local built-in users for the `RID 500 local administrator` and `
 |ASBuiltInGuest |False |Built-in account for guest access to the computer/domain |
 
 > [!Important]
-> We recommend that you create your own local administrator account, and also that you disable the well-known `RID 500` user.
+> We recommend that you create your own local administrator account, and also that you disable the well-known `RID 500` user account.
 
 The `Guest` account is protected by the security baseline drift control mechanism. For more information, see [Security baseline settings for Azure Stack HCI (preview)](/azure-stack/hci/concepts/secure-baseline).
 
@@ -44,9 +44,9 @@ Example output from PowerShell:
 
 ```Output
 
-Name                          StartDate             EndDate               Issuer                              KeyLength KeyExchangeAlgorithm 
+Name                          StartDate             EndDate               Issuer                              KeyLength     KeyExchange    Algorithm 
 
-----                          ---------             -------               ------                              --------- -------------------- 
+----                          ---------             -------               ------                              ---------     -----------    --------- 
 
 CN=HealthService              10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
 
@@ -94,7 +94,7 @@ The following diagram illustrates integration of Azure Stack HCI with an externa
 
 :::image type="content" source="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png" alt-text="The following diagram describes the integration of Azure Stack HCI with an external SIEM." border="false" lightbox="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png":::
 
-## Syslog forwarder agent capabilities
+### Syslog forwarder agent capabilities
 
 Syslog forwarder agents are deployed on every Azure Stack HCI host. Each of the agents will forward syslog messages collected from the host they are on, to the customer configured syslog server.
 
@@ -107,8 +107,8 @@ The syslog forwarder in Azure Stack HCI supports the following configurations:
 - **Syslog over TCP with no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP.
 - **Syslog over UDP with no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP.
 
->[!IMPORTANT]
-> To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments.
+  >[!IMPORTANT]
+  > To protect against man-in-the-middle attacks and eavesdropping of messages, Microsoft strongly recommends that you use TCP with authentication and encryption in production environments.
 
 ## Configuring SYSLOG Security Events forwarder
 
@@ -124,7 +124,9 @@ Use the following cmdlet to pass the syslog server information to the forwarder 
 Set-AzSSyslogForwarder [-ServerName <String>] [-ServerPort <UInt16>] [-NoEncryption] [-SkipServerCertificateCheck | -SkipServerCNCheck] [-UseUDP] [-ClientCertificateThumbprint <String>] [-OutputSeverity {Default | Verbose}] [-Remove] 
 ```
 
-**Cmdlet parameters for `Set-AzSSyslogForwarder`:
+### Cmdlet parameters for `Set-AzSSyslogForwarder`
+
+The following parameters are for the `Set-AzSSyslogForwarder` cmdlet
 
 |Parameter |Description |Type |Required |
 |-----|-----|------|-----|
@@ -138,7 +140,7 @@ Set-AzSSyslogForwarder [-ServerName <String>] [-ServerPort <UInt16>] [-NoEncrypt
 |OutputSeverity |Level of output logging. Values are Default or Verbose. Default includes severity levels: warning, critical, or error. Verbose includes all severity levels: verbose, informational, warning, critical, or error. |String |No |
 |Remove |Remove current syslog forwarder configuration and stop syslog forwarder. |Flag |No |
 
-## Configure the syslog forwarder with TCP, mutual authentication, and TLS 1.2 encryption
+### Configure the syslog forwarder with TCP, mutual authentication, and TLS 1.2 encryption
 
 In this configuration, the syslog client in Azure Stack HCI forwards messages to the syslog server over TCP using TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
 
@@ -160,104 +162,109 @@ Configure the server and provide certificate to the client to authenticate again
 
 Here is an example to set and import certificates for mutual authentication.
 
-This example script must be run from DVM. 
+This example script must be run from DVM.
 
 In this example, certificates should have been stored as pfx files on DVM.
 
 1. Provide credentials and configurations.
 
-  ```azurepowershell
- $syslogServerName = "<FQDN or IP address of syslog server>" 
- $syslogServerPort = "<port of your syslog server>" 
+   ```azurepowershell
+   $syslogServerName = "<FQDN or IP address of syslog server>" 
+   $syslogServerPort = "<port of your syslog server>" 
  
- $domainAdmin = "<your domainAdmin account name>" 
- $domainAdminPassword = ConvertTo-SecureString -String "<your domainAdmin account password>" -AsPlainText -Force 
+   $domainAdmin = "<your domainAdmin account name>" 
+   $domainAdminPassword = ConvertTo-SecureString -String "<your domainAdmin account password>" -AsPlainText -Force 
  
- $domainAdminCred = New-Object System.Management.Automation.PSCredential ($domainAdmin, $domainAdminPassword) 
+   $domainAdminCred = New-Object System.Management.Automation.PSCredential ($domainAdmin, $domainAdminPassword) 
  
- $certPassword = ConvertTo-SecureString -String "<your client certificate password>" -AsPlainText -Force 
- $clientCertPath = "<local file path to your client cert pfx file on DVM>" 
+   $certPassword = ConvertTo-SecureString -String "<your client certificate password>" -AsPlainText -Force 
+   $clientCertPath = "<local file path to your client cert pfx file on DVM>" 
  
- Import-Module C:\CloudDeployment\ECEngine\CloudEngine.dll 
+   Import-Module C:\CloudDeployment\ECEngine\CloudEngine.dll 
 
- Import-Module C:\CloudDeployment\ECEngine\TestEceInterface.psm1 
+   Import-Module C:\CloudDeployment\ECEngine\TestEceInterface.psm1 
 
- Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 
+   Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 
 
- $Parameters = Get-EceInterfaceParameters -RolePath "BareMetal" -InterfaceName Deployment 
+   $Parameters = Get-EceInterfaceParameters -RolePath "BareMetal" -InterfaceName Deployment 
 
- $nodes = Get-ClusterNode -Cluster “s-cluster” | ForEach-Object Name
-  ```
+   $nodes = Get-ClusterNode -Cluster “s-cluster” | ForEach-Object Name
+   ```
 
 2. Import client certificate for ($node in $nodes)
 
-
-{ 
-  $params = @{  
+   ```azurepowershell
+   { 
+   $params = @{  
       ComputerName = $nodeName  
       Credential = $domainAdminCred 
-  } 
+   } 
  
-  $session = New-PSSession @params 
+   $session = New-PSSession @params 
  
-  $tempPath = Invoke-Command -Session $session -ScriptBlock { 
+   $tempPath = Invoke-Command -Session $session -ScriptBlock { 
     return $env:TEMP 
-  } 
-  $clientCertPathOnNode = "$env:Temp\client.pfx" 
-  Copy-Item -ToSession $session -Path $clientCertPath -Destination $clientCertPathOnNode 
+   } 
+   $clientCertPathOnNode = "$env:Temp\client.pfx" 
+   Copy-Item -ToSession $session -Path $clientCertPath -Destination $clientCertPathOnNode 
  
-  $params = @{  
+   $params = @{  
       Session = $session  
       ArgumentList = @($serverName, $serverPort, $clientCertPathOnNode, $certPassword)  
-  } 
-  Invoke-Command @params -ScriptBlock {  
+   } 
+   Invoke-Command @params -ScriptBlock {  
     param($ServerName, $ServerPort, $certPath, $certPassword) 
  
-  Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\My" -Password $certPassword 
+   Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\My" -Password $certPassword 
     Remove-Item -Path $certPath 
-  } 
-  Remove-PSSession -Session $session 
-  } 
+   } 
+  
+   Remove-PSSession -Session $session 
+   } 
  
-Import self-signed root certificate 
+   Import self-signed root certificate
+   ```
 
-Use this section only under applicable case.
+   Use this section only under applicable case.
 
-  $rootCertPath = "local file path to your client cert pfx file on DVM" 
-  foreach ($node in $nodes) 
-  { 
-  $params = @{  
+   ```azurepowershell
+   $rootCertPath = "local file path to your client cert pfx file on DVM" 
+   foreach ($node in $nodes) 
+   { 
+   $params = @{  
       ComputerName = $nodeName  
       Credential = $domainAdminCred 
-  } 
- 
-  $session = New-PSSession @params 
- 
-  $tempPath = Invoke-Command -Session $session -ScriptBlock { 
+   }
+
+   $session = New-PSSession @params
+
+   $tempPath = Invoke-Command -Session $session -ScriptBlock { 
     return $env:TEMP 
-  } 
-  $rootCertPathOnNode = "$env:Temp\root.pfx" 
-  Copy-Item -ToSession $session -Path $rootCertPath -Destination $rootCertPathOnNode 
- 
-  $params = @{  
+   } 
+  
+   $rootCertPathOnNode = "$env:Temp\root.pfx" 
+   Copy-Item -ToSession $session -Path $rootCertPath -Destination $rootCertPathOnNode 
+
+   $params = @{  
       Session = $session  
       ArgumentList = @($serverName, $serverPort, $clientCertPathOnNode)  
-  } 
-  Invoke-Command @params -ScriptBlock {  
-  param($ServerName, $ServerPort, $certPath) 
- 
-  Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\root" -Password $certPassword 
-  Remove-Item -Path $certPath 
-  } 
-  Remove-PSSession -Session $session 
-  }
+   } 
+  
+   Invoke-Command @params -ScriptBlock {  
+   param($ServerName, $ServerPort, $certPath) 
+
+   Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\root" -Password $certPassword 
+   Remove-Item -Path $certPath 
+   } 
+   Remove-PSSession -Session $session 
+   }
+   ```
 
 3. Set the syslog forwarder to use mutual authentication
 
-   An action plan will be started and its id will be stored in $actionPlanInstanceId
+   An action plan will be started and its ID will be stored in `$actionPlanInstanceId`. Please monitor the action plan and validate that it completes successfully.
 
-   Please monitor the action plan and validate that it completes successfully.
-
+   ```azurepowershell
    $clientCert = Get-PfxCertificate -FilePath $clientCertPath 
    $params = @{ 
     ComputerName = $nodes[0] 
@@ -269,8 +276,9 @@ Use this section only under applicable case.
    param($ServerName, $ServerPort, $ClientCertThumbprint) 
    return Set-AzSSyslogForwarder -ServerName $ServerName -ServerPort $ServerPort -ClientCertificateThumbprint $ClientCertThumbprint 
    }
+   ```
 
-## Configuring syslog forwarder with TCP, Server authentication, and TLS 1.2 encryption 
+## Configuring syslog forwarder with TCP, Server authentication, and TLS 1.2 encryption
 
 In this configuration, the syslog forwarder in Azure Stack HCI forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate.
 
@@ -284,17 +292,17 @@ In case you want to test the integration of your syslog server with the Azure St
 
 1. Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server.
 
-```azurepowershell
-Set-AzSSyslogForwarder -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on> 
--SkipServerCNCheck
-``` 
+   ```azurepowershell
+   Set-AzSSyslogForwarder -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on> 
+   -SkipServerCNCheck
+   ```
 
 1. Skip entirely the server certificate validation.
 
-```azurepowershell
-Set-AzSSyslogForwarder -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>  
--SkipServerCertificateCheck
-```
+   ```azurepowershell
+   Set-AzSSyslogForwarder -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>  
+   -SkipServerCertificateCheck
+   ```
 
 > [!IMPORTANT]
 > Microsoft recommends against the use of the `-SkipServerCertificateCheck` flag in production environments.
@@ -318,7 +326,7 @@ In this configuration, the syslog client in Azure Stack HCI forwards messages to
 Set-AzSSyslogForwarder -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on> -UseUDP
 ```
 
-While UDP with no encryption is the easiest to configure, it doesn’t provide any protection against man-in-the-middle attacks and eavesdropping of messages.
+While UDP with no encryption is the easiest to configure, it doesn’t provide any protection against man-in-the-middle attacks or eavesdropping of messages.
 
 > [!IMPORTANT]
 > Microsoft recommends against using this configuration in production environments.
@@ -351,7 +359,7 @@ You can also use the following comdlet to verify the configuration on the host y
 Get-AzSSyslogForwarder -Local
 ```
 
-***Cmdlet parameters for the `Get-AzSSyslogForwarder` cmdlet:
+Cmdlet parameters for the `Get-AzSSyslogForwarder` cmdlet:
 
 |Parameter |Description |Type |Required |
 |----|----|----|----|
@@ -363,7 +371,7 @@ Get-AzSSyslogForwarder -Local
 
 To temporarily enable or disable the syslog forwarder on Azure Stack HCI without losing the configuration, instead of removing the configuration, you can use the following cmdlets:
 
-**Enable the syslog forwarder**
+### Enable the syslog forwarder
 
 ```azurepowershell
 Enable-AzSSyslogForwarder [-Force]
@@ -371,7 +379,7 @@ Enable-AzSSyslogForwarder [-Force]
 
 Syslog forwarder will be enabled with the stored configuration provided by last successful `Set-AzSSyslogForwarder` call. The cmdlet will fail if no configuration has been provided using `Set-AzSSyslogForwarder`.
 
-**Disable the syslog forwarder**
+### Disable the syslog forwarder**
 
 ```azurepowershell
 Disable-AzSSyslogForwarder [-Force] 
@@ -387,14 +395,14 @@ Parameter for `Enable-AzSSyslogForwarder` and `Disable-AzSSyslogForwarder` cmdle
 
 The syslog forwarder of the Azure Stack HCI infrastructure sends messages formatted following the BSD syslog protocol defined in RFC3164. Common Event Format (CEF) is also used to format the syslog message payload.
 
-Each syslog message is structured based on this schema: 
-PRI | Time | Host | CEF payload 
+Each syslog message is structured based on this schema:
+PRI | Time | Host | CEF payload |
 
 The PRI part contains two values: facility and severity. Both depend on the type of message, like Windows Event, etc.
 
 ## Common Event Format payload schema
 
-The Common Event Format (CEF) payload is based on the following structure. The mapping for each field varies depending on the type of message, like Windows Event, etc.
+The CEF payload is based on the following structure. The mapping for each field varies depending on the type of message, like Windows Event, etc.
 
 CEF: |Version | Device Vendor | Device Product | Device Version | Signature ID | Name | Severity | Extensions |
 
@@ -412,7 +420,7 @@ All Windows events use the PRI facility value 10.
 - Severity: Level. For details, see the following Severity table.
 - Extension: Custom Extension Name. For details, see the following Custom Extension table.
 
-**Severity table for Windows events**
+### Severity table for Windows events
 
 |PRI severity value |CEF severity value |Windows event level |MasLevel value (in extension) |
 |----|----|----|----|
@@ -423,7 +431,7 @@ All Windows events use the PRI facility value 10.
 |6 |2 |Information |Value: 4. Indicates logs for an informational message. |
 |7 |0 |Verbose |Value: 5. Indicates logs for a verbose message. |
 
-**Custom extension table for Windows events in Azure Stack HCI**
+### Custom extension table for Windows events in Azure Stack HCI
 
 |Custom extension name |Windows event example |
 |----|----|
@@ -451,9 +459,9 @@ All Windows events use the PRI facility value 10.
 |MasUserData | KB4093112!!5112!!Installed!!0x0!!WindowsUpdateAgent Xpath: /Event/UserData/* |
 |MasVersion |0 |
 
-**Miscellaneous**
+### Miscellaneous events
 
-List of current events being forwarded. Currently, these events can't be customized.
+List of miscellaneous events being forwarded. Currently, these events can't be customized.
 
 |Event type |Event Query |
 |----|----|
