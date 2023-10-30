@@ -1,6 +1,6 @@
 ---
-title: Monitor Azure Stack HCI with Insights
-description: Enable logging and monitoring capabilities to monitor Azure Stack HCI clusters using Insights.
+title: Monitor a single Azure Stack HCI cluster with Insights
+description: Enable logging and monitoring capabilities to monitor a single Azure Stack HCI cluster using Insights.
 author: dansisson
 ms.author: v-dansisson
 ms.reviewer: saniyaislam
@@ -11,11 +11,13 @@ ms.date: 10/27/2023
 # zone_pivot_groups: hci-versions
 ---
 
-# Monitor Azure Stack HCI with Insights
+# Monitor a single Azure Stack HCI cluster with Insights
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-This article explains how to use Insights to monitor an Azure Stack HCI cluster. Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
+This article explains how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md).
+
+Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
 
 > [!IMPORTANT]
 > If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use [Azure Monitor Agent (AMA)]((/azure/azure-monitor/agents/agents-overview)), such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
@@ -290,7 +292,7 @@ Follow these steps to reconfigure Insights for Azure Stack HCI:
 
 1. If you've recently configured Insights, wait for up to one hour for AMA to gather data.
 1. If there's still no data after waiting, make sure you have completed all the steps mentioned in the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
-1. Verify the configuration of the associated DCR. Make sure that event channels and performance counters are added as data sources to the associated DCR as described in the [Data Collection Rules](#data-collection-rules) section.
+1. Verify the configuration of the associated DCR. Make sure that event channels and performance counters are added as data sources to the associated DCR, as described in the [Data Collection Rules](#data-collection-rules) section.
 1. If the issue persists after performing the above steps, and you still don't see any data, contact customer support for assistance.
 
 For more detailed troubleshooting guidance, see [Troubleshooting guidance for the Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-windows-arc).
