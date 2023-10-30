@@ -145,7 +145,8 @@ After the infrastructure preparation is complete, follow these steps to select t
 
     ![Screenshot of Enable replication in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-1.png)
 
-1. On the **Source environment** tab, specify the source location for your Hyper-V site. In this instance, you have set up the Hyper-V site on your Azure Stack HCI cluster. Select **Next**.
+1. Select **Replicate** and in the dropdown select **Hyper-V machines to Azure**. 
+2. On the **Source environment** tab, specify the source location for your Hyper-V site. In this instance, you have set up the Hyper-V site on your Azure Stack HCI cluster. Select **Next**.
 
 1. On the **Target environment** tab, complete these steps:
     1. For **Subscription**, enter or select the subscription.
