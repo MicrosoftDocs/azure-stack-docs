@@ -30,11 +30,13 @@ Before you begin, make sure you've done the following:
     Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery
     ```    
 
-    <!--You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
+<!--You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
 
-    ```azurepowershell
-    Import-Module .\AsHciADArtifactsPreCreationTool.psm1-->
-    ```
+```azurepowershell
+Import-Module .\AsHciADArtifactsPreCreationTool.psm1
+```
+-->
+
 - Obtain domain administrator access to the Active Directory domain server.
 
     

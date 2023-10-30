@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 10/26/2023
+ms.date: 10/30/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -33,7 +33,7 @@ Before you begin, make sure you've done the following:
     :::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the permissions in deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::
 
 
-- If you are registering the servers, make sure that you have the **Cloud Application Administrator** role in the tenant used for the deployment. To get the tenant ID and assign the Cloud Application Administrator role to the user, follow these steps: 
+- If you are registering the servers, make sure that you have the **Cloud Application Administrator** role in the tenant used for the deployment. To get the tenant ID and assign the Cloud Application Administrator role, follow these steps: 
     1. In the Azure portal, go to the **Microsoft Entra ID** resource. In the right pane, select **Tenant ID**.
         :::image type="content" source="media/deployment-arc-register-server-permissions/tenantid.png" alt-text="Screenshot of the tenant ID in Microsoft Entra ID in Azure portal." lightbox="./media/deployment-arc-register-server-permissions/tenantid.png":::
     1. Go to the **Users** section. Select the user and go to **Assigned roles**. 
@@ -103,7 +103,6 @@ This section describes how to assign Azure permissions for deployment from the A
 1. Assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
-
 
 
 ## Next steps
