@@ -21,7 +21,7 @@ This article describes how to get support from Microsoft to troubleshoot validat
 
 Starting with Azure Stack HCI, version 23H2 (preview) and later, you can get support from Microsoft to troubleshoot any issues that may arise during the environment validation process for Azure Stack HCI.
 
-To troubleshoot environment validation issues, begin by filing a [support ticket]((/azure/azure-portal/supportability/how-to-create-azure-support-request)) and then do one of the following:
+To troubleshoot environment validation issues, begin by filing a [support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request) and then do one of the following:
 
 - Perform standalone log collection. See [Perform standalone log collection](#perform-standalone-log-collection).
 - Get remote support. See [Get remote support](#get-remote-support).
@@ -80,8 +80,8 @@ The following parameters are required to use `Send-AzStackHciDiagnosticData`. Co
 | Parameter | Description |
 |--|--|
 | `ResourceGroupName` | Name of the Azure resource group, which must be the same as used during the deployment process. <br> <br> Follow these steps to get the resource group name:<br><br> 1. Establish a remote PowerShell session with one of the cluster nodes. Run PowerShell as administrator and run the following command: <br><br> `Enter-PsSession -ComputerName <NodeName> -Credential $cred` <br> <br> 2. Run the following command to get the resource group name: <br><br> `Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 -ErrorAction SilentlyContinue` <br> `$eceConfig = Get-EceConfiguration -ErrorAction SilentlyContinue` <br> `if ($eceConfig.Xml -match "<RegistrationResourceGroupName>(.*)</RegistrationResourceGroupName>")` <br> `{` <br> `$resourcegroupname =  $matches[1].Trim()` <br> `}` |
-| `SubscriptionId` | Name of the Azure subscription ID, which must be the same as used during the deployment process. | Use the following command to get the subscription ID: <br> `$subscriptionId = $deployArgs.RegistrationSubscriptionId` |
-| `TenantId` | Azure tenant ID, which must be the same as used during the deployment process. Use the following command to get the tenant ID: <br><br> `$cloudName = $deployargs.RegistrationCloudName` <br> `Import-Module "$env:SystemDrive\CloudDeployment\Setup\Common\RegistrationHelpers.psm1"` <br> `$RegistrationTenantId = Get-TenantId -AzureEnvironment $CloudName -SubscriptionId $subscriptionid` |
+| `SubscriptionId` | Name of the Azure subscription ID, which must be the same as used during the deployment process. <br> <br> Use the following command to get the subscription ID: <br><br> `$subscriptionId = $deployArgs.RegistrationSubscriptionId` |
+| `TenantId` | Azure tenant ID, which must be the same as used during the deployment process. <br><br> Use the following command to get the tenant ID: <br><br> `$cloudName = $deployargs.RegistrationCloudName` <br> `Import-Module "$env:SystemDrive\CloudDeployment\Setup\Common\RegistrationHelpers.psm1"` <br> `$RegistrationTenantId = Get-TenantId -AzureEnvironment $CloudName -SubscriptionId $subscriptionid` |
 | `RegistrationRegion` | Registration region, which must be the same as used during the deployment process. |
 | `Cloud` | Azure cloud name, which must be the same as used during the deployment process. |
 | `RegistrationCredential` | Azure credentials to authenticate with Azure. This is mandatory in DefaultSet parameter set. |
