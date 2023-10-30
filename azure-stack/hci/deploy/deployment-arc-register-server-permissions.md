@@ -35,7 +35,7 @@ Before you begin, make sure you've done the following:
 
 - If you are registering the servers, make sure that you have the **Cloud Application Administrator** role in the tenant used for the deployment. To get the tenant ID and assign the Cloud Application Administrator role, follow these steps: 
     1. In the Azure portal, go to the **Microsoft Entra ID** resource. In the right pane, select **Tenant ID**.
-        :::image type="content" source="media/deployment-arc-register-server-permissions/tenantid.png" alt-text="Screenshot of the tenant ID in Microsoft Entra ID in Azure portal." lightbox="./media/deployment-arc-register-server-permissions/tenantid.png":::
+        :::image type="content" source="media/deployment-arc-register-server-permissions/tenant-id.png" alt-text="Screenshot of the tenant ID in Microsoft Entra ID in Azure portal." lightbox="./media/deployment-arc-register-server-permissions/tenant-id.png":::
     1. Go to the **Users** section. Select the user and go to **Assigned roles**. 
     1. Select **+ Add assignments** and assign the **Cloud Application Administrator** role.
 
