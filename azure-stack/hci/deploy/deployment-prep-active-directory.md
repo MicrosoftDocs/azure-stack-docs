@@ -3,13 +3,13 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/26/2023
+ms.date: 10/29/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment (preview)
+# Prepare Active Directory for Azure Stack HCI, version 23H2 deployment (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
@@ -23,17 +23,17 @@ Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
 - Complete the [deployment checklist](./deployment-checklist.md).
-- Install the PowerShell module to prepare Active Directory. [Download the module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2306). Make sure to use the [version 10.2306 of the AsHciADArtifactsPreCreationTool](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2306/Content/AsHciADArtifactsPreCreationTool.psd1).
+- Install the PowerShell module to prepare Active Directory. [Download the module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/). 
 - Run the following command:
 
     ```azurepowershell
     Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery
     ```    
 
-    You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
+    <!--You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
 
     ```azurepowershell
-    Import-Module .\AsHciADArtifactsPreCreationTool.psm1
+    Import-Module .\AsHciADArtifactsPreCreationTool.psm1-->
     ```
 - Obtain domain administrator access to the Active Directory domain server.
 
