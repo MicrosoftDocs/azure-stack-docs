@@ -6,12 +6,12 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/15/2023
+ms.date: 10/27/2023
 ---
 
 # Security baseline settings for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
+>Applies to: Azure Stack HCI, versions 23H2 (preview) and 22H2 Supplemental Package
 
 This article describes the security baseline settings associated with your Azure Stack HCI cluster, the associated drift control mechanism, and baseline management.
 

@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/09/2023
+ms.date: 10/26/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -21,15 +21,15 @@ This article describes the steps needed to install the Azure Stack HCI, version 
 
 Before you begin, make sure you've done the following:
 
-- Satisfy the [prerequisites](../index.yml).
-- Complete the [deployment checklist](../index.yml).
-- Prepare your [Active Directory](../index.yml) environment.
+- Satisfy the [prerequisites](./deployment-prerequisites.md).
+- Complete the [deployment checklist](./deployment-checklist.md).
+- Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 
 ## Boot and install the operating system
 
 To install the Azure Stack HCI, version 23H2 operating system, follow these steps:
 
-1. [Download the Azure Stack HCI operating system from the Azure portal](../index.yml).
+1. [Download the Azure Stack HCI operating system from the Azure portal](./download-azure-stack-hci-23h2-software.md).
 
 1. Start the **Install Azure Stack HCI** wizard on the system drive of the server where you want to install the operating system.
 
@@ -85,7 +85,7 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 1. Use the **Network Settings** option in *SConfig* to configure a default valid gateway and a DNS server. Set DNS to the DNS of Domain you're joining.
 
-1. Rename all the servers using option 2 in *SConfig* to match what you have used when preparing Active Directory, as you won't rename the servers later. Make a note of the network adapter names in the OS so as to ensure that these names match in the *config.json* file that you create later.
+1. Rename all the servers using option 2 in *SConfig* to match what you have used when preparing Active Directory, as you won't rename the servers later. <!--Make a note of the network adapter names in the OS so as to ensure that these names match in the *config.json* file that you create later.-->
 
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each server rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
@@ -125,4 +125,4 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 ## Next steps
 
-[Set up the first server in your Azure Stack HCI cluster](../index.yml).
+[Register Azure Stack HCI servers in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).
