@@ -14,15 +14,11 @@ ms.date: 10/25/2023
 
 > Applies to: Azure Stack HCI, version 23H2 (preview)
 
-This article explains how to monitor Azure Stack HCI with Azure Monitor Metrics. It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Stack HCI.
+This article describes how to monitor your Azure Stack HCI clusters with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Stack HCI.
 
-When you have critical applications and business processes that rely on Azure resources, it's important to monitor those resources for their availability, performance, and operation. Azure Monitor is a full-stack monitoring service that provides a complete set of features to monitor your Azure resources. The Azure Monitor data platform is made up of Metrics and Logs. Each feature collects different kinds of data and enables different Azure Monitor features.
+When you have critical applications and business processes that rely on Azure resources, it's important to monitor those resources for their availability, performance, and operation. The integration of Azure Monitor Metrics with Azure Stack HCI enables you to store numeric data from your clusters in a dedicated time-series database. This database is automatically created for each Azure subscription. Use [metrics explorer](/azure/azure-monitor/essentials/tutorial-metrics) to analyze data from your Azure Stack HCI system and assess its health and utilization.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
-
-## What is Azure Monitor Metrics?
-
-[Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics) stores numeric data from monitored resources, such as Azure Stack HCI clusters into a time-series database. The metric database is automatically created for each Azure subscription. Use [metrics explorer](/azure/azure-monitor/essentials/tutorial-metrics)to analyze data from Azure Monitor Metrics.
 
 ## Benefits
 
@@ -40,7 +36,7 @@ Here are the benefits of using Metrics for Azure Stack HCI:
 
 Here are the prerequisites of using Metrics for Azure Stack HCI:
 
-- You have access to a cluster that is running Azure Stack HCI, version 23H2 (preview) (Build version: 2311) or later.
+- You must have access to a cluster that is running Azure Stack HCI, version 23H2 (preview) (Build version: 2311) or later.
 
 - The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview (preview)](../concepts/telemetry-and-diagnostics-overview.md).
 
