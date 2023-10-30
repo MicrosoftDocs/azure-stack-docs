@@ -208,8 +208,6 @@
       href: manage/monitor-cluster.md
     - name: Monitor clusters with Health Service
       href: manage/health-service-overview.md
-    - name: Analyze metrics for Azure Stack HCI
-      href: manage/analyze-cluster-metrics.md
     - name: Get cluster performance history
       href: manage/health-service-cluster-performance-history.md
     - name: View Health Service faults
