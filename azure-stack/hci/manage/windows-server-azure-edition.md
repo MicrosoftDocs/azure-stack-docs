@@ -9,7 +9,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/18/2023
+ms.date: 10/31/2023
 ---
 
 # Deploy Windows Server Azure Edition VMs
@@ -39,8 +39,6 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
 - **Azure Benefits:** You'll need to enable Azure Benefits on your cluster. Azure Benefits is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads like Windows Server Azure Edition. For specific information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
 
->[!NOTE]
-> While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), using Hotpatch with Azure Edition guest VMs on Azure Stack HCI is in preview for this Azure Stack HCI release.
 
 ## Deploy the OS
 
@@ -48,11 +46,11 @@ Windows Server Azure Edition can be deployed as a guest VM using either an HCI M
 
 ## [HCI marketplace image](#tab/hci)
 
-You can provision a Windows Server Azure Edition VM using an HCI Marketplace image in conjunction with [VM provisioning using Azure portal](azure-arc-vm-management-overview.md).
+You can provision a Windows Server Azure Edition VM using an Azure Stack HCI Marketplace image in conjunction with [VM provisioning using Azure portal](azure-arc-vm-management-overview.md).
 
 You do this by following these steps:
 
-1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#azure-arc-vm-management-deployment-workflow) on your Azure Stack HCI.
+1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#) on your Azure Stack HCI.
 
 1. Learn about how certain [Azure Marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Stack HCI.
 
@@ -152,7 +150,7 @@ Convert-VHD -Path "<path_to_vhd\filename.vhd>" -DestinationPath "destination_pat
 
 ## Using Hotpatch
 
-There are a few important differences using Hotpatch with Azure Edition guest VMs on Azure Stack HCI in this preview release as compared to using Hotpatch with Azure Edition guest VMs on Azure IaaS.
+There are a few important differences using Hotpatch with Azure Edition guest VMs on Azure Stack HCI as compared to using Hotpatch with Azure Edition guest VMs on Azure IaaS.
 
 These differences include the following limitations for using Hotpatch with Azure Edition guest VMs for this Azure Stack HCI release:
 
