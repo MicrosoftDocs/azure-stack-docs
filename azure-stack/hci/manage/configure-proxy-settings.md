@@ -9,7 +9,7 @@ ms.date: 10/31/2023
 
 # Configure proxy settings for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to configure proxy settings for Azure Stack HCI if your network uses a proxy server for internet access.
 
