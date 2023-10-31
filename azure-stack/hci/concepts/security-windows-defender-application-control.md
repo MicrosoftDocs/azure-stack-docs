@@ -424,4 +424,4 @@ Use the following steps to create a supplemental policy:
 
 ## Next steps
 
-* [Install Azure Stack HCI, version 22H2](../manage/install-preview-version.md?tabs=windows-admin-center).
+* [Install Azure Stack HCI, version 23H2](../deploy/deployment-install-os.md).
