@@ -52,7 +52,7 @@ Arc VM Management comprises of several components including the Arc Resource Bri
 By integrating these components, Azure Arc offers a unified and efficient VM management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
 
 
-## Azure Arc VM management deployment workflow
+## Azure Arc VM management workflow
 
 In this release, the Arc VM management workflow is as follows:
 
