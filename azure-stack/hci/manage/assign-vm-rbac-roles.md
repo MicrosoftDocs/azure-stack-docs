@@ -24,7 +24,7 @@ You can use the builtin RBAC roles to control access to VMs and VM resources suc
 
 To control access to VMs and VM resources on your Azure Stack HCI, you can use the following RBAC roles: 
 
-- **Azure Stack HCI Administrator** - This role grants full access to your Azure Stack HCI cluster and its resources. A Azure Stack HCI administrator can register the cluster as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users.
+- **Azure Stack HCI Administrator** - This role grants full access to your Azure Stack HCI cluster and its resources. An Azure Stack HCI administrator can register the cluster as well as assign Azure Stack HCI VM contributor and Azure Stack HCI VM reader roles to other users.
 - **Azure Stack HCI VM Contributor** - This role grants permissions to perform all VM actions such as start, stop, restart the VMs. An Azure Stack HCI VM Contributor can create and delete VMs, as well as the resources and extensions attached to VMs. An Azure Stack HCI VM Contributor can't register the cluster or assign roles to other users, nor create cluster-shared resources such as logical networks, VM images, and storage paths.
 - **Azure Stack HCI VM Reader** - This role grants permissions to only view the VMs. A VM reader can't perform any actions on the VMs or VM resources and extensions.
 
@@ -56,7 +56,7 @@ You can assign RBAC roles to user via the Azure portal. Follow these steps to as
 
 1. Go to **Access control (IAM) > Role assignments**. From the top command bar, select **+ Add** and then select **Add role assignment**.
 
-    If you don't have permissions to assign roles, the **Add role assignment** option will be disabled.
+    If you don't have permissions to assign roles, the **Add role assignment** option is disabled.
 
     :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-1.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
 
