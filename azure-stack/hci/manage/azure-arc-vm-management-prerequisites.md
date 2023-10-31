@@ -31,28 +31,28 @@ The Azure requirements include:
 
 ## Azure Command-Line Interface (CLI) requirements
 
-You can connect to Azure Stack HCI cluster directly or you can access the cluster via a client. Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
+You can connect to Azure Stack HCI system directly or you can access the cluster via a client. Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
 
 ### Connect to the cluster directly
 
-If you are accessing the Azure Stack HCI, version 23H2 cluster directly, no steps are needed on your part.
+If you are accessing the Azure Stack HCI cluster directly, no steps are needed on your part.
 
 During the cluster deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the cluster. You can connect to and manage the cluster using the Azure CLI extension.
 
 
 ### Connect to the cluster via a client
 
-If you are accessing the Azure Stack HCI, version 23H2 via a client, following requirements must be met:
+If you are accessing the Azure Stack HCI system via a client, following requirements must be met:
  
 - The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you are using to connect to your Azure Stack HCI cluster.
 
-  - For instructions on installing Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
+  - For installation instructions, see [Install Azure CLI](/cli/azure/install-azure-cli-windows). Once you have installed `az` CLI, make sure to restart the system.
   
     - If you're using a local installation, sign in to the Azure CLI by using the [az login](/cli/azure/reference-index#az-login) command. To finish the authentication process, follow the steps displayed in your terminal. For other sign-in options, see [Sign in with the Azure CLI](/cli/azure/authenticate-azure-cli).
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- The Azure Stack HCI extension `stack-hci-vm`. Run the following command in an elevated PowerShell window on your client:
+- The Azure Stack HCI extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command :
 
   ```PowerShell
   az extension add --name "stack-hci-vm"
