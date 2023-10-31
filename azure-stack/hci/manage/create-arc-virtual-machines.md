@@ -88,7 +88,7 @@ Follow these steps to create a network interface on your static logical network.
 1. Set the required parameters. Here's a sample output:
 
     ```azurecli
-    $vNetName = "myhci-vnet"
+    $vNetName = "myhci-lnet"
     $gateway="100.68.180.1" 
     $ipaddress="100.68.180.6" 
     $netInt="myhci-vnic"
@@ -108,7 +108,7 @@ Follow these steps to create a network interface on your static logical network.
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
     | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-    | **subnet-id** |Name of your logical network. For example: `test-vnet-dynamic`.  |
+    | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
     | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your network interface. If this parameter isn't specified, by default the network interface is created with a dynamic configuration. |
     | **ip-address** | An IPv4 address you want to assign to the network interface that you are creating. For example: "192.168.0.10".  |
     | **gateway** | Ipv4 address of the default gateway. |
@@ -117,7 +117,7 @@ Follow these steps to create a network interface on your static logical network.
 1. To create a network interface with static IP address, run the following command:
 
     ```azurecli
-    az stack-hci-vm network nic create --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --name $netInt --subnet-id $vnetName --ip-address $ipaddress --gateway $gateway
+    az stack-hci-vm network nic create --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --name $netInt --subnet-id $lnetName --ip-address $ipaddress --gateway $gateway
     ```
     
     Here's a sample output:
@@ -144,7 +144,7 @@ Follow these steps to create a network interface on your static logical network.
               "privateIpAddress": "100.68.180.8",
               "privateIpAllocationMethod": "Static",
               "subnet": {
-                "id": "myhci-vnet"
+                "id": "myhci-lnet"
               }
             }
           }
@@ -177,7 +177,7 @@ Follow these steps to create a network interface on your DHCP logical network. R
 
     ```azurecli
     $vNic = "myhci-vnic"
-    $vnetName = "myhci-vnet-dynamic"   
+    $lnetName = "myhci-lnet-dynamic"   
     $subscription =  "<Subscription ID>" 
     $resource_group = "myhci-rg"
     $customLocName = "myhci-cl" 
@@ -193,12 +193,12 @@ Follow these steps to create a network interface on your DHCP logical network. R
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
     | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-    | **subnet-id** |Name of your logical network. For example: `test-vnet-dynamic`.  |
+    | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
 
 1. To create a network interface, run the following command:
  
     ```azurecli
-    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --subnet-id $vnetName --name $netInt
+    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --subnet-id $lnetName --name $netInt
     ```
    
     Here is a sample output:
