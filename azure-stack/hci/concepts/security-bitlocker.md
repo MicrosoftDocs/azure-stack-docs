@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/14/2023
+ms.date: 10/31/2023
 ---
 
 # BitLocker encryption for Azure Stack HCI (preview)
@@ -74,4 +74,4 @@ Follow these steps to get the BitLocker recovery keys for your cluster.
 
 ## Next steps
 
-- [Azure Stack HCI security considerations](./security.md).
+- [Assess deployment readiness via the Environment Checker](../manage/use-environment-checker.md).
