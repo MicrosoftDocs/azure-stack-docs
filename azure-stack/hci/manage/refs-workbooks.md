@@ -126,7 +126,7 @@ Follow these steps to update a workbook:
 
 ## Monitor the ReFS deduplication and compression feature
 
-This sample workbook helps you monitor the ReFS deduplication and compression feature in Azure Stack HCI. ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It is a post-process solution and carries out block-level deduplication and compression at a fixed block size based on cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers.
+ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It is a post-process solution and carries out block-level deduplication and compression at a fixed block size based on cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers.
 
 Follow these steps to start monitoring the ReFS deduplication and compression feature:
 
@@ -145,7 +145,7 @@ Once you enable the ReFS deduplication and compression feature for monitoring, I
 | Windows event channel | Microsoft-Windows-ReFSDedupSVC <br> microsoft-windows-sddc-management/operational |
 | Performance counters  | CSVFS(\*)/sec <br> CSVFS(\*)/sec <br> CSVFS(\*)Bytes/sec <br> CSVFS(\*)Bytes/sec <br> CSVFS(\*). sec/Read <br> CSVFS(*). sec/Write  |
 
-The workbook comprises various tabs, each serving a specific functionality. Details regarding workbooks visualization and data collected are described in the following sections.
+The workbook for ReFS deduplication and compression comprises various tabs, each serving a specific functionality, as described in the following sections.
 
 ### Get started
 
