@@ -3,14 +3,14 @@ title: Troubleshoot Azure Arc VM management (preview)
 description: Learn how to troubleshoot Azure Arc VM management (preview)
 author: alkohli
 ms.topic: how-to
-ms.date: 03/24/2022
+ms.date: 10/31/2023
 ms.author: alkohli
 ms.reviewer: JasonGerend
 ---
 
 # Troubleshoot Azure Arc VM management (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
@@ -129,7 +129,7 @@ Here's a list of existing limitations and known issues with Azure Arc VM managem
 
 - Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy isn't supported.
 
-- Naming convention for Azure resources, such as virtual networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).
+- Naming convention for Azure resources, such as logical networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).
 
 ## Next steps
 

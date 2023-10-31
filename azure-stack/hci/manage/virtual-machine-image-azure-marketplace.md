@@ -294,4 +294,4 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 ## Next steps
 
-- [Create virtual networks](./create-virtual-networks.md)
+- [Create logical networks](./create-virtual-networks.md)
