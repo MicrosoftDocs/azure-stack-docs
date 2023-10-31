@@ -27,7 +27,7 @@ To find answers to frequently asked questions about Arc VM management on Azure S
 
 ## Benefits of Azure Arc VM management
 
-While Hyper-V provides capabilities to manage your on-prem VMs, Azure Arc VMs offer many benefits over traditional on-premises tools including:
+While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VMs offer many benefits over traditional on-premises tools including:
 
 - Role-based access control via builtin Azure Stack HCI roles ensures that only authorized users can perform VM management operations thereby enhancing security. For more information, see [Azure Stack HCI Arc VM management roles](./assign-vm-rbac-roles.md).
 - Arc VM management provides the ability to deploy with ARM templates, Bicep, and Terraform.
@@ -41,13 +41,13 @@ While Hyper-V provides capabilities to manage your on-prem VMs, Azure Arc VMs of
 ## Components of Azure Arc VM management
 
 
-Arc VM Management comprises of several components including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the VM operator.
+Arc VM Management comprises several components including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the VM operator.
 
 - **Arc Resource Bridge**: This lightweight Kubernetes VM connects your on-premises Azure Stack HCI cluster to the Azure Cloud. The Arc Resource Bridge is created automatically when you deploy the Azure Stack HCI cluster. During the deployment, you specify an IP pool from which 3 IP addresses are used for the Arc Resource Bridge.
 
 - **Custom Location**: Just like the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Stack HCI cluster. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, integrating your on-premises setup more closely with Azure.
 
-- **Kubernetes Extension for VM Operator**: Functioning as the on-prem counterpart of the Azure Resource Manager resource provider, this extension is an important component. It imbues your system with all the advanced capabilities of Azure Arc VM Management, ensuring you harness the full potential of Azure's features right on your local infrastructure.
+- **Kubernetes Extension for VM Operator**: Functioning as the on-premises counterpart of the Azure Resource Manager resource provider, this extension is an important component. It imbues your system with all the advanced capabilities of Azure Arc VM Management, ensuring you harness the full potential of Azure's features right on your local infrastructure.
 
 By integrating these components, Azure Arc offers a unified and efficient VM management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
 
