@@ -4,7 +4,7 @@ description: Understanding cluster and pool quorum in Storage Spaces Direct on A
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 10/18/2023
+ms.date: 10/31/2023
 ---
 
 # Understanding cluster and pool quorum
@@ -172,7 +172,7 @@ The table below gives an overview of the pool quorum outcomes per scenario:
 
 | Server nodes | Can survive one server node failure | Can survive one server node failure, then another | Can survive two simultaneous server node failures |
 |--------------|-------------------------------------|---------------------------------------------------|----------------------------------------------------|
-| 2            | Yes                                  | No                                                | No                                                 |
+| 2            | Yes                                 | No                                                | No                                                 |
 | 2 + Witness  | Yes                                 | No                                                | No                                                 |
 | 3            | Yes                                 | No                                                | No                                                 |
 | 3 + Witness  | Yes                                 | No                                                | No                                                 |
@@ -182,13 +182,14 @@ The table below gives an overview of the pool quorum outcomes per scenario:
 
 ## How pool quorum works
 
-When drives fail, or when some subset of drives loses contact with another subset, surviving drives need to verify that they constitute the *majority* of the pool to remain online. If they can't verify that, they'll go offline. The pool is the entity that goes offline or stays online based on whether it has enough disks for quorum (50% + 1). The cluster database can be the +1 as long as the cluster itself is quorate.
+When drives fail, or when some subset of drives loses contact with another subset, surviving drives hosting metadata need to verify that they constitute the *majority* of the pool to remain online. If they can't verify that, they'll go offline. The pool is the entity that goes offline or stays online based on whether it has enough disks for quorum (50% + 1). The cluster database can be the +1 as long as the cluster itself is quorate.
 
 But pool quorum works differently from cluster quorum in the following ways:
 
+- The pool selects a subset of drives per node to host metadata
 - The pool uses the cluster database to break ties
-- The pool does NOT have dynamic quorum
-- The pool does NOT implement its own version of removing a vote
+- The pool does not have dynamic quorum
+- The pool does not implement its own version of removing a vote
 
 ### Examples
 
@@ -211,16 +212,6 @@ Each of the 16 drives has one vote and node 2 also has one vote (since it's the 
 - Can survive one server failure: **Yes**.
 - Can survive one server failure, then another: **No**.
 - Can survive two server failures at once: **No**.
-
-#### Four nodes with a non-symmetrical layout
-
-Each of the 24 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **24 votes**. If nodes three and four go down, the surviving subset has 8 drives and the pool resource owner, which is 9/24 votes. So, the pool doesn't have majority and goes down.
-
-![Pool Quorum 3](media/quorum/pool-3.png)
-
-- Can survive one server failure: **Yes**.
-- Can survive one server failure, then another: **Depends** (can't survive if both nodes three and four go down, but can survive all other scenarios).
-- Can survive two server failures at once: **Depends** (can't survive if both nodes three and four go down, but can survive all other scenarios).
 
 ### Pool quorum recommendations
 
