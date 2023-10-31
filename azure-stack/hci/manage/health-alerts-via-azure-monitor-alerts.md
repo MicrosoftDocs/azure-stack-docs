@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/20/2023
+ms.date: 10/31/2023
 ---
 
 # Respond to Azure Stack HCI health alerts using Azure Monitor alerts (preview)
@@ -36,9 +36,7 @@ The integration of Azure Monitor alerts with Azure Stack HCI offers several key 
 
 Here are the prerequisites for using health alerts with Azure Stack HCI:
 
-- Sign up and get your Azure subscription approved by the Azure Stack HCI team. Complete and submit the [Signup form for – Azure Stack HCI integration with Azure Monitor Alert (office.com)](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR9Xf3c44twZKtgcilg1x1slUQkhOVzNKQ1REUTVRMVNMTjlSNTBHTDdHWC4u).
-<!--- [Register your Azure Stack HCI system with Azure](https://learn.microsoft.com/azure-stack/hci/deploy/register-with-azure?tabs=windows-admin-center) and [Arc-enable](https://learn.microsoft.com/azure-stack/hci/manage/manage-cluster-registration?tabs=windows-admin-center#enable-azure-arc-integration) it. -->
-- Have access to an Azure Stack HCI, version 23H2 system that is deployed and registered. 
+- Have access to an Azure Stack HCI, version 23H2 system that is deployed and registered. For more information, see [Deploy Azure Stack HCI via Azure portal](../deploy/deploy-via-portal.md). 
 
 
 ## Configure alerts for Azure Stack HCI
@@ -52,7 +50,7 @@ Here are the high-level steps to configure health alerts for Azure Stack HCI:
 
 Make sure your Azure subscription is activated for evaluation before you turn on the health alerts capability on your Azure Stack HCI system.
 
-When you enable alerts via the Azure portal, the Azure Monitor extension is installed in the background. To verify that this extension is installed, go to **Settings** > **Extensions** in the Azure portal. This extension shows up as **AzureMonitorAlerts** in the list of extensions.
+When you enable alerts via the Azure portal, the Azure Monitor extension is installed in the background. To verify that this extension is installed, go to **Settings** > **Extensions** in the Azure portal. This extension shows up as **AzureEdgeAlerts** in the list of extensions.
 
 Follow these steps to turn on health alerts via the Azure portal.
 
@@ -91,9 +89,9 @@ The **Alerts** blade has a high-level summary of alerts at each severity level. 
 
    ![Screenshot of a high-level summary of alerts at each severity level.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-4.png)
 
-The **Overview** page of your Azure Stack HCI cluster resource page also displays the alerts.
+<!--The **Overview** page of your Azure Stack HCI cluster resource page also displays the alerts.
 
-   ![Screenshot of the Overview page of your Azure Stack HCI cluster resource page with the alerts displayed.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-5.png)
+   ![Screenshot of the Overview page of your Azure Stack HCI cluster resource page with the alerts displayed.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-5.png)-->
 
 ## Disable health alerts
 
