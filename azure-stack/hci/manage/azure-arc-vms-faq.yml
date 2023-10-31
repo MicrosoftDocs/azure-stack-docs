@@ -75,7 +75,7 @@ sections:
     - question: |
         Can I use the same name for gallery image projections and will the existing VMs use the new image?
       answer: |
-        Two images with the same name result in errors at the time of creating them. This is true for other resources as well, such as virtual networks, virtual hard disks etc. An updated image won't change existing VMs that were using it. A copy of the VM image is created at the time VM creation.
+        Two images with the same name result in errors at the time of creating them. This is true for other resources as well, such as logical networks, virtual hard disks etc. An updated image won't change existing VMs that were using it. A copy of the VM image is created at the time VM creation.
 
     - question: | 
         How can I delete a gallery image?  
