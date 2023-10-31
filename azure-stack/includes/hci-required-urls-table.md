@@ -1,16 +1,18 @@
 ---
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: alkohli
+ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 04/27/2022
-ms.lastreviewed: 04/19/2022
+ms.date: 10/31/2023
+ms.lastreviewed: 10/31/2023
 
 ---
 
 
 |Service |  URL | Port | Notes |
 |   :---|  :---| :---| :---|
+| HCI Update Download Service | fe3.delivery.mp.microsoft.com | 443 | For updating Azure Stack HCI, version 23H2. |
+| HCI Update Download Service | tlu.dl.delivery.mp.microsoft.com | 80 | For updating Azure Stack HCI, version 23H2. |
 | Azure Stack HCI | login.microsoftonline.com  | 443  | For Active Directory Authority and used for authentication, token fetch, and validation.|
 | Azure Stack HCI  | graph.windows.net  | 443  | For Graph and used for authentication, token fetch, and validation.   |
 | Azure Stack HCI  | management.azure.com  | 443  | For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. |
