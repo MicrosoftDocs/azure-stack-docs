@@ -64,19 +64,19 @@ You can assign RBAC roles to user via the Azure portal. Follow these steps to as
     - **Azure Stack HCI VM Contributor**
     - **Azure Stack HCI VM Reader**
 
-    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-2.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
+    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-2.png" alt-text="Screenshot showing Role tab during RBAC role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
 
-1. On the Members tab, select the User, group, or service principal. Also select a member to assign the role.
+1. On the Members tab, select the **User, group, or service principal**. Also select a member to assign the role.
 
-    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-3.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
+    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-3.png" alt-text="Screenshot showing Members tab during role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
 
 1. Review the role and assign it.
 
-    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-4.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
+    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-4.png" alt-text="Screenshot showing Review + assign tab during role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-1.png":::
 
 1. Verify the role assignment. Go to **Access control (IAM) > Check access > View my access**. You should see the role assignment.
 
-    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-5.png" alt-text="Screenshot showing RBAC role assignment in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-5.png":::
+    :::image type="content" source="./media/assign-vm-rbac-roles/add-role-assignment-5.png" alt-text="Screenshot showing newly assigned role in Azure portal for your Azure Stack HCI cluster." lightbox="./media/assign-vm-rbac-roles/add-role-assignment-5.png":::
 
 For more information on role assignment, see [Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
