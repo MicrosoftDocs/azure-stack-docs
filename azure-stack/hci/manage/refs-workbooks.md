@@ -34,9 +34,9 @@ You must complete the following prerequisites before you can use Insights for mo
 
 - You must have access to an Azure Stack HCI, version 23H2 (preview) cluster deployed and registered with Azure.
 
-- Your cluster must be Arc-enabled and have Azure Monitor extension installed. For instructions, see [Install an extension via the Azure portal](https://learn.microsoft.com/en-us/azure-stack/hci/manage/arc-extension-management?tabs=azureportal#install-an-extension-via-the-azure-portal).
+- Your cluster must be Arc-enabled and have Azure Monitor extension installed. For instructions, see [Install an extension via the Azure portal](./arc-extension-management.md#install-an-extension).
 
-- You must have Insights enabled on your Azure Stack HCI cluster. For instructions, see [Enable Insights](https://learn.microsoft.com/en-us/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later#enable-insights).
+- You must have Insights enabled on your Azure Stack HCI cluster. For instructions, see [Enable Insights](./monitor-hci-single.md#enable-insights).
 
 - To monitor the ReFS deduplication and compression feature, you must have at least one volume that has this feature enabled. <!--add link to the ReFS dedup and compression doc.-->
 
@@ -52,7 +52,7 @@ Once you enable Insights on your Azure Stack HCI cluster, follow these steps to 
 
     This tab provides a list of Azure Stack HCI features available for monitoring, along with descriptions of what is monitored, and the current monitoring status.
 
-    :::image type="content" source="media/refs-workbooks/overview-tab.png" alt-text="Screenshot that shows the status of ReFS deduplication and compression as not enabled." lightbox="media/refs-workbooks/overview-tab.png":::
+    :::image type="content" source="media/refs-workbooks/overview-tab.png" alt-text="Screenshot of the Overview tab." lightbox="media/refs-workbooks/overview-tab.png":::
 
     The following table describes the different monitoring statuses:
 
@@ -212,4 +212,5 @@ This tab shows the jobs performed overtime during the deduplication process and 
 
 ## Next steps
 
-- [Monitor Azure Stack HCI with Insights](https://learn.microsoft.com/en-us/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later)
+- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md)
+- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md)
