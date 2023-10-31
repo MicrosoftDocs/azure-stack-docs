@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/26/2023
+ms.date: 10/31/2023
 ---
 
 # Azure Arc VM management prerequisites (preview)
@@ -22,7 +22,7 @@ This article lists the requirements and prerequisites for Azure Arc VM managemen
 
 The Azure requirements include:
 
-- To provision Arc VMs and VM resources such as virtual disks, virtual network, virtual network interfaces and VM images through the Azure portal, you  must have **Contributor** level access at the subscription level.
+- To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces and VM images through the Azure portal, you  must have **Contributor** level access at the subscription level.
 
 - Arc VM management infrastructure is supported only in East US and West Europe regions only. For Arc VM management on Azure Stack HCI, all entities must be registered, enabled or created in the same region.
 

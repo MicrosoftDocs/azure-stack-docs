@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/18/2023
+ms.date: 10/31/2023
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
@@ -241,4 +241,4 @@ You might want to delete a VM image if the download fails for some reason or if 
 
 ## Next steps
 
-- [Create virtual networks](./create-virtual-networks.md)
+- [Create logical networks](./create-virtual-networks.md)

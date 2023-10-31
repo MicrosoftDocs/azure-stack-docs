@@ -34,7 +34,7 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 - The Azure portal acts as a single pane of glass to manage VMs on Azure Stack HCI clusters and Azure VMs. With Azure Arc VM management, you can perform various operations from the Azure portal or Azure CLI including:
 
   - Create, manage, update, and delete VMs. For more information, see [Create Arc VMs](./create-arc-virtual-machines.md)
-  - Create, manage, and delete VM resources such as virtual disks, logical networks, virtual network interfaces, and VM images.
+  - Create, manage, and delete VM resources such as virtual disks, logical networks, etwork interfaces, and VM images.
 
 - The self-service capabilities of Arc VM management reduce the administrative overhead.
 

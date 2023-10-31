@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/25/2023
+ms.date: 10/31/2023
 ---
 
 # Use VM images to create Arc virtual machines on Azure Stack HCI (preview)
@@ -39,7 +39,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a virtual network that you have created on your Azure Stack HCI cluster. For more information, see [Create virtual network]().
+- Access to a logical network that you have created on your Azure Stack HCI cluster. For more information, see [Create logical network](./create-virtual-networks.md).
 
 
 # [Azure portal](#tab/azureportal)
@@ -54,7 +54,7 @@ Follow these steps to create an Arc VM on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster. To create an Arc VM via the Azure CLI, you first need to create a virtual network interface with static IP address or DHCP IP address. Then you can create a VM using the virtual network interface that you created. 
+Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster. To create an Arc VM via the Azure CLI, you first need to create a logical network interface with static IP address or DHCP IP address. Then you can create a VM using the logical network interface that you created. 
 
 ## Sign in and set subscription
 
@@ -75,15 +75,15 @@ Follow these steps to sign in to Azure CLI and set the subscription to use. Repl
     ```
    
 
-## Create virtual network interface
+## Create network interface
 
-To create a VM, you'll first need to create a virtual network interface on your virtual network. The steps can be different depending on whether your virtual network is static or DHCP.
+To create a VM, you'll first need to create a network interface on your logical network. The steps can be different depending on whether your logical network is static or DHCP.
 
 
 ### Virtual network interface with static IP
 
 
-Follow these steps to create a virtual network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
+Follow these steps to create a network interface on your static logical network. Replace the parameters in `< >` with the appropriate values.
 
 1. Set the required parameters. Here's a sample output:
 
@@ -103,18 +103,18 @@ Follow these steps to create a virtual network interface on your static virtual 
 
     | Parameter | Description |
     | ----- | ----------- |
-    | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
+    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
     | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-    | **custom-location** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
+    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
+    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-    | **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
-    | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your virtual network interface. If this parameter isn't specified, by default the virtual network interface is created with a dynamic configuration. |
-    | **ip-address** | An IPv4 address you want to assign to the virtual network interface that you are creating. For example: "192.168.0.10".  |
+    | **subnet-id** |Name of your logical network. For example: `test-vnet-dynamic`.  |
+    | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your network interface. If this parameter isn't specified, by default the network interface is created with a dynamic configuration. |
+    | **ip-address** | An IPv4 address you want to assign to the network interface that you are creating. For example: "192.168.0.10".  |
     | **gateway** | Ipv4 address of the default gateway. |
 
 
-1. To create a virtual network interface with static IP address, run the following command:
+1. To create a network interface with static IP address, run the following command:
 
     ```azurecli
     az stack-hci-vm network nic create --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --name $netInt --subnet-id $vnetName --ip-address $ipaddress --gateway $gateway
@@ -170,7 +170,7 @@ Follow these steps to create a virtual network interface on your static virtual 
 
 ### Virtual network interface with DHCP
 
-Follow these steps to create a virtual network interface on your DHCP virtual network. Replace the parameters in `< >` with the appropriate values.
+Follow these steps to create a network interface on your DHCP logical network. Replace the parameters in `< >` with the appropriate values.
 
 
 1. Set the required parameters. Here's a sample output:
@@ -188,14 +188,14 @@ Follow these steps to create a virtual network interface on your DHCP virtual ne
 
     | Parameter | Description |
     | ----- | ----------- |
-    | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
+    | **name** | Name for the network interface that you'll create on the logical network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a network interface after it's created. |
     | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-    | **custom-location** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
+    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
+    | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
     | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-    | **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
+    | **subnet-id** |Name of your logical network. For example: `test-vnet-dynamic`.  |
 
-1. To create a virtual network interface, run the following command:
+1. To create a network interface, run the following command:
  
     ```azurecli
     az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --subnet-id $vnetName --name $netInt
@@ -500,12 +500,12 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. You can also choose the disk **Provisioning type** to be **Static** or **Dynamic**.
     1. Select **Add**.
 
-1. **(Optional)** Create or add a virtual network interface for the VM.
+1. **(Optional)** Create or add a network interface for the VM.
 
     > [!NOTE]
     > If you enabled guest management, you must add at least one network interface.
 
-    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of virtual network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
+    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
 
     1. Provide a **Name** for the network interface. 
     1. Select the **Network** and choose static or dynamic IP addresses.
