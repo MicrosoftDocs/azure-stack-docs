@@ -4,12 +4,12 @@ description: Learn how to configure proxy settings for Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/28/2023
+ms.date: 10/31/2023
 ---
 
 # Configure proxy settings for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-21h2.md)]
 
 This article describes how to configure proxy settings for Azure Stack HCI if your network uses a proxy server for internet access.
 
@@ -90,8 +90,16 @@ To set the proxy server environment variable, run the following commands as admi
 # If a proxy server is needed, execute these commands with the proxy URL and port.
 [Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://ProxyServerFQDN:port", "Machine")
 $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
+[Environment]::SetEnvironmentVariable("HTTP_PROXY", "10.10.42.200:8080/", "Machine")
+$env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
 # For the changes to take effect, the agent services need to be restarted after the proxy environment variable is set.
 Restart-Service -Name himds, ExtensionService, GCArcService
+```
+
+Confirm that the settings were applied by running the following command:
+
+```powershell
+echo "https :" $env:https_proxy "http :" $env:http_proxy
 ```
 
 To set a no proxy environment variable, run the following commands as administrator on each server in the cluster:
@@ -105,7 +113,7 @@ To remove the proxy configuration, run the following commands as administrator o
 
 ```powershell
 [Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "Machine") 
-$env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine") 
+$env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
 # For the changes to take effect, the agent services need to be restarted after the proxy environment variable removed. 
 Restart-Service -Name himds, ExtensionService, GCArcService
 ```
