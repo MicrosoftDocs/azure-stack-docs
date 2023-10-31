@@ -1,6 +1,6 @@
 ---
 title: Use builtin RBAC roles for Arc VM management on Azure Stack HCI (preview)
-description: Learn how to use RBAC builtin roles for Arc VM management on Azure Stack HCI.(preview).
+description: Learn how to use RBAC builtin roles for Arc VM management on Azure Stack HCI.(preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -13,7 +13,9 @@ ms.date: 10/31/2023
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use the Role-based Access Control (RBAC) to control access to Arc virtual machines (VMs) running on your Azure Stack HCI cluster. You can use the builtin RBAC roles to control access to VMs and VM resources such as disks, network interfaces, logical networks, storage paths and more. You can assign these roles to users, groups, service principals and managed identities.
+This article describes how to use the Role-based Access Control (RBAC) to control access to Arc virtual machines (VMs) running on your Azure Stack HCI cluster. 
+
+You can use the builtin RBAC roles to control access to VMs and VM resources such as disks, network interfaces, logical networks, storage paths and more. You can assign these roles to users, groups, service principals and managed identities.
 
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
