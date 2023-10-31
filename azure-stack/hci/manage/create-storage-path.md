@@ -32,7 +32,8 @@ Before you begin, make sure to complete the following prerequisites:
     
     Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
 
-1. Make sure that a cluster shared volume exists on your Azure Stack HCI cluster that is accessible from all the servers in the cluster. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images.
+1. Make sure that a cluster shared volume exists on your Azure Stack HCI cluster that is accessible from all the servers in the cluster. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images. By default, cluster shared volumes are created during the deployment of Azure Stack HCI cluster. 
+
 
     You can create storage paths only within cluster shared volumes that are available in the cluster. For more information, see [Create a cluster shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
 
@@ -88,7 +89,8 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
     $path="<Path on the disk to cluster shared volume>"
     $subscription="<Subscription ID>"
     $resource_group="<Resource group name>"
-    $customloc_name="<Custom location of your Azure Stack HCI cluster>"
+    $customLocName="<Custom location of your Azure Stack HCI cluster>"
+    $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/$reource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
     $location="<Azure region where the cluster is deployed>"
     ```
 
