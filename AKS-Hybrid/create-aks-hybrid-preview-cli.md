@@ -54,9 +54,11 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 ## Connect to the AKS hybrid cluster
 
-Now that you've created the cluster, connect to your AKS hybrid cluster by running the `az hybridaks proxy` command from your local machine. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set)] command. 
+Now that you've created the cluster, connect to your AKS hybrid cluster by running the `az hybridaks proxy` command from your local machine. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) command. 
 
 This command downloads the kubeconfig of your AKS hybrid cluster to your local machine and opens a proxy connection channel to your on-premises AKS hybrid cluster. The channel is open for as long as this command is running. Let this command run for as long as you want to access your cluster. If this command times out, close the CLI window, open a fresh one and run the command again. 
+
+Note that you need `Contributor` permissions over the resource group that hosts the AKS hybrid cluster to run the below command successfully.
 
 ```azurecli
 az hybridaks proxy --name <aks-hybrid cluster name> --resource-group <Azure resource group> --file .\aks-hybrid-kube-config
