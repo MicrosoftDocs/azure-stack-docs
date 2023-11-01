@@ -9,7 +9,7 @@ ms.date: 09/29/2022
 
 # How to create AKS hybrid clusters using Az CLI
 
-> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI, version 22H2
 
 In this how-to guide, you'll
 
