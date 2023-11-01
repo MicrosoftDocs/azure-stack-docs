@@ -9,17 +9,17 @@ ms.date: 09/29/2022
 
 # How to deploy an Azure Kubernetes Service hybrid cluster using Azure portal
 
-> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI, version 22H2
 
-In this article, you'll learn the following:
+In this article, you learn the following:
 
 - How to create an AKS hybrid cluster using the Azure portal. By default, the cluster is Azure Arc-connected.
 - While creating the cluster, you provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access.
 
 ## Before you begin
 
-- Before you begin, make sure you've got the following details from your on-premises infrastructure administrator:
-    - **Azure subscription ID** - The Azure subscription ID where Azure Resource Bridge, AKS hybrid extensions, and custom location has been created.
+- Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
+    - **Azure subscription ID** - The Azure subscription ID where Azure Resource Bridge, AKS hybrid extensions, and custom location is created.
     - **Custom Location ID** - Azure Resource Manager ID of the custom location. Your infrastructure admin should give you "Contributor" access to the custom location. Custom Location is a required parameter to create AKS hybrid clusters. 
     - **AKS hybrid vnet ID** - Azure Resource Manager ID of the Azure hybridaks vnet. Your infrastructure admin should give you "Contributor" access to an AKS hybrid vnet. AKS hybrid vnet ID is a required parameter to create AKS hybrid clusters. 
 - In order to connect to the AKS hybrid cluster from anywhere, you must create a **Microsoft Entra group** and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself to the Microsoft Entra group -- if you don't add yourself, you can't access the AKS hybrid cluster using `kubectl`. For more information about creating Microsoft Entra groups and adding users, see [create Microsoft Entra groups using Azure portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
@@ -61,7 +61,7 @@ In this article, you'll learn the following:
 8. On the **Access** page, configure the following options:
 
     - The default value for Kubernetes cluster authentication is **Local accounts with Kubernetes RBAC**. This option requires that you have a direct line of sight to your on-premises infrastructure, to access the AKS hybrid cluster using `kubectl`.
-    - Select Microsoft Entra authentication with Kubernetes RBAC. This option lets you choose one or more Microsoft Entra groups. By default, all members of the specified Microsoft Entra groups have cluster administrator access to the AKS hybrid cluster. This option also enables you to connect to AKS hybrid from anywhere, without requiring a line of sight to the on-premises infrastructure. Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you cannot access the AKS hybrid cluster using kubectl.
+    - Select Microsoft Entra authentication with Kubernetes RBAC. This option lets you choose one or more Microsoft Entra groups. By default, all members of the specified Microsoft Entra groups have cluster administrator access to the AKS hybrid cluster. This option also enables you to connect to AKS hybrid from anywhere, without requiring a line of sight to the on-premises infrastructure. Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS hybrid cluster using kubectl.
     - Choose one or more Microsoft Entra groups and then at the bottom of the screen, select **Next: Networking**.
     
 9. On the **Networking** page, select an AKS hybrid vnet. The Kubernetes nodes and services in your AKS hybrid cluster get IP addresses and networking configurations from this vnet. Make sure your infrastructure administrator has given you Contributor access on an AKS hybrid vnet.
