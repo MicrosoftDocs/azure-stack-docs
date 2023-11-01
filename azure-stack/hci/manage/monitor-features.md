@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/31/2023
+ms.date: 11/01/2023
 ---
 
 # Monitor Azure Stack HCI features with Insights (preview)
@@ -165,7 +165,7 @@ The following table describes the columns under the **Savings per volume** secti
 | Deduplication | Indicates if deduplication is enabled (On) or not (Off). | On |
 | Compression | Indicates if compression is enabled or not. | Off (enable) |
 | Volume Size | The size of the volume as specified by the user. | 3 TiB |
-| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. | 3.03TiB |
+| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. | 3.83TiB |
 | Saved | The number of bytes saved on each volume. | 1.25TiB |
 | Savings(%) | The saved space divided by the dataset size. | 32.72% |
 | Size On Disk | The total amount of data stored on disk. | 2.58 TiB |
@@ -180,8 +180,8 @@ This tab provides details, such as read and write input/output operations/second
 | Column | Description | Example |
 |--|--|--|
 | Volume | Shows the different cluster shared volumes (CSV) in a cluster. | Volume1 |
-| Read IOPS (Avg) | Gives the average value of input output read operations on a volume. | 9220 |
-| Write IOPS (Avg) | Gives the average value of input output write operations on a volume. | 3945  |
+| Read IOPS (Avg) | Gives the average value of input output read operations on a volume. | 9,220 |
+| Write IOPS (Avg) | Gives the average value of input output write operations on a volume. | 3,945  |
 | Read Lat. (Avg) | Gives the average value of read latency on a volume. | 7.31 ms |
 | Write Lat. (Avg) | Gives the average value of write latency on a volume. | 3.37 ms |
 | P95 Read Lat. | Gives the 95th percentile of read latency on a volume. | 860ms |
