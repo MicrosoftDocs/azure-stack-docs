@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 11/01/2023
 ---
 
-# BitLocker encryption for Azure Stack HCI (preview)
+# BitLocker encryption for Azure Stack changes from Carols(preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
 
