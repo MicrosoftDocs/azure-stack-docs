@@ -20,23 +20,25 @@ To monitor Azure Stack HCI clusters with Insights, see [Monitor a single Azure S
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
+## About using Insights to monitor features
+
+Insights for Azure Stack HCI collects logs for different Azure Stack HCI features, which are processed using Kusto Query Language (KQL), and then visualized using the [Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview).
+
+Enabling Insights on your Azure Stack HCI cluster provides access to a set of sample workbooks that you can use as-is or as a starting point to create custom workbooks. These workbooks help visualize the collected data and gain insights into the key Azure Stack HCI features, including:
+
+- **ReFS deduplication and compression.** Monitor and analyze savings, performance impact, and jobs related to the ReFS deduplication and compression feature. See [Monitor ReFS deduplication and compression](#monitor-refs-deduplication-and-compression).
+
 ## Prerequisites
 
 You must complete the following prerequisites before you can use Insights for monitoring Azure Stack HCI features:
 
-- You must have access to an Azure Stack HCI, version 23H2 (preview) cluster deployed and registered with Azure.
+- You must have access to an Azure Stack HCI, version 23H2 (preview) cluster deployed, registered, and connected to Azure.
 
-- Your cluster must be Arc-enabled and have Azure Monitor extension installed. For instructions, see [Install an extension via the Azure portal](./arc-extension-management.md#install-an-extension).
+- Your cluster must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
 
-- You must have Insights enabled on your Azure Stack HCI cluster. For instructions, see [Enable Insights](./monitor-hci-single.md#enable-insights).
+- You must have [Insights enabled on the cluster](./monitor-hci-single.md#enable-insights).
 
 ## Monitor Azure Stack HCI features with Insights
-
-Insights for Azure Stack HCI collects logs for different Azure Stack HCI features, which are processed using Kusto Query Language (KQL), and then visualized using the [Azure workbooks](/azure/azure-monitor/visualize/workbooks-overview).
-
-By enabling Insights on your Azure Stack HCI system, you get access to a list of sample workbooks that you can use as-is or as a starting point to create custom workbooks. You can use these workbooks to visualize the collected data and gain insights into the key Azure Stack HCI features, including:
-
-- **ReFS deduplication and compression.** The workbook for this feature helps you analyze data about ReFS deduplication and compression savings, performance impact, and jobs. See [Monitor ReFS deduplication and compression](#monitor-refs-deduplication-and-compression).
 
 Follow these steps to monitor Azure Stack HCI features with Insights:
 
@@ -54,8 +56,8 @@ Follow these steps to monitor Azure Stack HCI features with Insights:
 
     | Monitoring status | Description |
     |--|--|
-    | Enabled | Indicates that monitoring is enabled for the feature to retrieve log data from Windows events and performance counters for the feature. |
-    | Not enabled | Indicates that monitoring is not enabled for the feature to collect data and surface insights. This is the default status. |
+    | Enabled | Indicates that monitoring is enabled for the feature. Insights collects log data from Windows events and performance counters related to the feature. |
+    | Not enabled | Indicates that monitoring is disabled for the feature, preventing data collection and insights. This is the default status. |
     | Needs update | Indicates that there are some configuration issues that prevent Insights from collecting data. This may happen when the required events or data sources are not correctly configured within the workbook. You must update Insights for the feature to successfully collect data. |
 
 Based on the monitoring status, you can perform one of these actions:
@@ -74,7 +76,7 @@ By default, monitoring for a feature isn't enabled and the monitoring status is 
 
 When you enable monitoring for a feature, Insights automatically adds the necessary performance counters and Windows event logs to the associated data collection rule (DCR) within the cluster. Once the DCR is configured, you receive a success message, and the feature name changes from plain text to a clickable link on the **Overview (Preview)** tab.
 
-Once you enable monitoring, it takes around 20-30 minutes for Insights to start collecting data and provide health, performnce, and usage insights.
+Once you enable monitoring, it takes around 20-30 minutes for Insights to start collecting data and provide health, performance, and usage insights.
 
 Follow these steps to enable monitoring for a feature:
 
@@ -122,7 +124,7 @@ Follow these steps to update Insights:
 
 ## Monitor ReFS deduplication and compression
 
-ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It is a post-process solution and carries out block-level deduplication and compression at a fixed block size based on cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers.
+ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It is a post-process solution and carries out block-level deduplication and compression at a fixed block size based on cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers. For more information about this feature, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](../index.yml).
 
 Follow these steps to start monitoring the ReFS deduplication and compression feature:
 
@@ -151,7 +153,7 @@ This tab gives basic information about the workbook and the prerequisites to vie
 
 ### Savings
 
-This tab provides volumes information within a cluster and shows the savings for each volume.
+This tab provides volume information within a cluster and shows the savings for each volume.
 
 :::image type="content" source="media/monitor-features/savings-tab.png" alt-text="Screenshot that shows the Savings tab." lightbox="media/monitor-features/savings-tab.png":::
 
@@ -171,7 +173,7 @@ The following table describes the columns under the **Savings per volume** secti
 
 ### Performance
 
-This tab provides details such as read and write input/output operations/second (IOPS) for all the cluster shared volumes (CSV) on a cluster.
+This tab provides details, such as read and write input/output operations/second (IOPS) for all the cluster shared volumes (CSV) on a cluster.
 
 :::image type="content" source="media/monitor-features/performance-tab.png" alt-text="Screenshot that shows the Performance tab." lightbox="media/monitor-features/performance-tab.png":::
 
@@ -185,7 +187,7 @@ This tab provides details such as read and write input/output operations/second 
 | P95 Read Lat. | Gives the 95th percentile of read latency on a volume. |  |
 | P95 Write Lat. | Gives the 95th percentile of write latency on a volume. |
 
-You can select various aggregates like Average, P1st, P5th, P50th, P90th, P95th, 99th, Min, and Max for the different metrics.
+You can select various aggregates like Average, P1st, P5th, P50th, P90th, P95th, 99th, Min, and Max for different metrics.
 
 ### Jobs
 
@@ -203,7 +205,7 @@ This tab shows the jobs performed overtime during the deduplication process and 
 | Scanned blocks | Displays the total scanned blocks. | 283.02 GiB |
 | Scanned(%) | Displays the total scanned blocks divided by the total volume size. | 27.64% |
 
-### Troubleshoot
+### Troubleshoot ReFS deduplication and compression monitoring
 
 **Issue.** No data appears on the ReFS deduplication and compression workbook.
 
@@ -217,7 +219,7 @@ This tab shows the jobs performed overtime during the deduplication process and 
 1. On the **Add data source** context pane on the right, under **Data source**, select **Custom**.
 1. Verify if the `Microsoft-Windows-ReFSDedupSVC` event channel is listed, as shown in the following screenshot:
 
-    :::image type="content" source="media/refs-workbook/refs-event-channel.png" alt-text="Screenshot that shows the ReFS event channel is listed." lightbox="media/monitor-features/refs-event-channel.png":::
+    :::image type="content" source="media/monitor-features/refs-event-channel.png" alt-text="Screenshot that shows the ReFS event channel is listed." lightbox="media/monitor-features/refs-event-channel.png":::
 
 ## Next steps
 
