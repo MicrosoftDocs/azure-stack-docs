@@ -9,7 +9,7 @@ ms.date: 09/29/2022
 
 # How to deploy an Azure Kubernetes Service hybrid cluster using Azure portal
 
-> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI, version 22H2
 
 In this article, you'll learn the following:
 
