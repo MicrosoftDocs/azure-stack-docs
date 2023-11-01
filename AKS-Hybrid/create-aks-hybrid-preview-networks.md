@@ -9,7 +9,7 @@ ms.date: 09/29/2022
 
 # How to create AKS hybrid networks for Azure
 
-> Applies to: Windows Server 2019 or 2022, Azure Stack HCI
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI, version 22H2
 
 Once you've deployed Azure Arc Resource Bridge, the infrastructure administrator also needs to create AKS hybrid networks on-premises and connect these networks to Azure. You can choose between DHCP and static IP based networking for your AKS hybrid clusters. 
 
