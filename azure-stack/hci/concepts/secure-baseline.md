@@ -76,6 +76,7 @@ When deploying your cluster via the Supplemental Package, you can modify the dri
 ### Configure security during deployment
 
 The following table describes the security settings that can be configured on your Azure Stack HCI cluster during deployment.
+
 | Feature area | Feature     |Description           | Supports drift control? |
 |--------------|-------------|----------------------|---------------------------------|
 | Governance                 | [Security baseline](secure-baseline.md)            | Maintains the security defaults on each server. Helps protect against changes.  | Yes                             |
@@ -96,9 +97,9 @@ As noted, some of these features may require a reboot to take effect. We provide
 
 The following cmdlet properties are for module *AzureStackOSConfigAgent*.
 
-- Get-AzsSecurity  -Scope: <Local | PerNode | AllNodes | Cluster>
-- Enable-AzsSecurity   -Scope <Local | Cluster>
-- Disable-AzsSecurity  -Scope <Local | Cluster>
+- `Get-AzsSecurity`  -Scope: <Local | PerNode | AllNodes | Cluster>
+- `Enable-AzsSecurity`   -Scope <Local | Cluster>
+- `Disable-AzsSecurity`  -Scope <Local | Cluster>
 
   - **Local** - Provides boolean value (true/False) on local node. Can be run on a regular remote PowerShell session.
   - **PerNode** - Provides boolean value (true/False) per node.
