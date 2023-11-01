@@ -161,15 +161,15 @@ The following table describes the columns under the **Savings per volume** secti
 
 | Column | Description | Example |
 |--|--|--|
-| Name | The name of the volumes in a cluster. | Volume A |
-| Deduplication | Indicates if deduplication is enabled or not. | On/Off |
-| Compression | Indicates if compression is enabled or not. | On/Off |
-| Volume Size | The size of the volume as specified by the user. | 1 TB |
-| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. | 1.92 GB |
-| Saved | The number of bytes saved on each volume. | 1.60TB |
-| Savings(%) | The saved space divided by the dataset size. | 77% |
-| Size On Disk | The total amount of data stored on disk. | 321 GB |
-| Usage (%) | The size on disk divided by the total volume size. | 32% |
+| Name | The name of the volumes in a cluster. | Volume1 |
+| Deduplication | Indicates if deduplication is enabled (On) or not (Off). | On |
+| Compression | Indicates if compression is enabled or not. | Off (enable) |
+| Volume Size | The size of the volume as specified by the user. | 3 TiB |
+| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. | 3.03TiB |
+| Saved | The number of bytes saved on each volume. | 1.25TiB |
+| Savings(%) | The saved space divided by the dataset size. | 32.72% |
+| Size On Disk | The total amount of data stored on disk. | 2.58 TiB |
+| Usage (%) | The size on disk divided by the total volume size. | 85.82% |
 
 ### Performance
 
@@ -179,13 +179,13 @@ This tab provides details, such as read and write input/output operations/second
 
 | Column | Description | Example |
 |--|--|--|
-| Volume | Shows the different cluster shared volumes (CSV) in a cluster. | Volume A |
-| Read IOPS (Avg) | Gives the average value of input output read operations on a volume. |  |
-| Write IOPS (Avg) | Gives the average value of input output write operations on a volume. |  |
-| Read Lat. (Avg) | Gives the average value of read latency on a volume. |  |
-| Write Lat. (Avg) | Gives the average value of write latency on a volume. |  |
-| P95 Read Lat. | Gives the 95th percentile of read latency on a volume. |  |
-| P95 Write Lat. | Gives the 95th percentile of write latency on a volume. |
+| Volume | Shows the different cluster shared volumes (CSV) in a cluster. | Volume1 |
+| Read IOPS (Avg) | Gives the average value of input output read operations on a volume. | 9220 |
+| Write IOPS (Avg) | Gives the average value of input output write operations on a volume. | 3945  |
+| Read Lat. (Avg) | Gives the average value of read latency on a volume. | 7.31 ms |
+| Write Lat. (Avg) | Gives the average value of write latency on a volume. | 3.37 ms |
+| P95 Read Lat. | Gives the 95th percentile of read latency on a volume. | 860ms |
+| P95 Write Lat. | Gives the 95th percentile of write latency on a volume. | 1.11s|
 
 You can select various aggregates like Average, P1st, P5th, P50th, P90th, P95th, 99th, Min, and Max for different metrics.
 
@@ -197,8 +197,8 @@ This tab shows the jobs performed overtime during the deduplication process and 
 
 | Column | Description | Example |
 |--|--|--|
-| Volume | Displays the different CSV in a cluster. | Volume A |
-| Status | Indicates the status of the ReFS deduplication. | Success/failed |
+| Volume | Displays the different CSV in a cluster. | Volume1 |
+| Status | Indicates the status (Success/Failed) of the ReFS deduplication. | Success |
 | Start time | Displays the time when ReFS deduplication started. | 4/26/2023, 5:10:45 AM |
 | End time | Displays the time when ReFS deduplication completed. | 4/26/2023, 6:28:19 AM |
 | Duration | Displays the total time taken for ReFS deduplication to finish. | 01 hours 17 mins 33 seconds |
