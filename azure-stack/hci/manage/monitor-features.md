@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 ms.date: 10/31/2023
 ---
 
-# Monitor Azure Stack HCI features with Insights
+# Monitor Azure Stack HCI features with Insights (preview)
 
 > Applies to: Azure Stack HCI, version 23H2 (preview)
 
@@ -38,7 +38,7 @@ You must complete the following prerequisites before you can use Insights for mo
 
 - You must have [Insights enabled on the cluster](./monitor-hci-single.md#enable-insights).
 
-## Monitor Azure Stack HCI features with Insights
+## Monitor features with Insights
 
 Follow these steps to monitor Azure Stack HCI features with Insights:
 
@@ -130,7 +130,7 @@ Follow these steps to start monitoring the ReFS deduplication and compression fe
 
 1. Make sure the [Prerequisites](#prerequisites) are met before you begin to use workbook. In addition, make sure you have at least one volume that has this feature enabled.
 
-1. Enable the workbook for the ReFS deduplication and compression feature. For instructions, see [Enable workbooks](#enable-a-workbook).
+1. Enable monitoring for ReFS deduplication and compression. For instructions, see [Enable monitoring for a feature](#enable-monitoring-for-a-feature).
 
 1. Select the feature name from the **Overview (Preview)** tab to open the workbook.
 
