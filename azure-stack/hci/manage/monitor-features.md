@@ -58,7 +58,7 @@ Follow these steps to monitor Azure Stack HCI features with Insights:
     |--|--|
     | Enabled | Indicates that monitoring is enabled for the feature. Insights collects log data from Windows events and performance counters related to the feature. |
     | Not enabled | Indicates that monitoring is disabled for the feature, preventing data collection and insights. This is the default status. |
-    | Needs update | Indicates that there are some configuration issues that prevent Insights from collecting data. This may happen when the required events or data sources are not correctly configured within the workbook. You must update Insights for the feature to successfully collect data. |
+    | Needs update | Indicates that there are some configuration issues that prevent Insights from collecting data. This may happen when the required events or data sources aren't correctly configured within the workbook. You must update Insights for the feature to successfully collect data. |
 
 Based on the monitoring status, you can perform one of these actions:
 
@@ -84,7 +84,7 @@ Follow these steps to enable monitoring for a feature:
 
     :::image type="content" source="media/monitor-features/feature-not-enabled.png" alt-text="Screenshot that shows the status of ReFS deduplication and compression as not enabled." lightbox="media/monitor-features/feature-not-enabled.png":::
 
-1. A context pane opens on the right that provides additional details, such as a sample image of the workbook. Select the **Enable** button.
+1. A context pane opens on the right that provides more details, such as a sample image of the workbook. Select the **Enable** button.
 
     :::image type="content" source="media/monitor-features/enable-feature-monitoring.png" alt-text="Screenshot that shows the Enable button to enable monitoring of the ReFS deduplication and compression feature." lightbox="media/monitor-features/enable-feature-monitoring.png":::
 
@@ -124,7 +124,7 @@ Follow these steps to update Insights:
 
 ## Monitor ReFS deduplication and compression
 
-ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It is a post-process solution and carries out block-level deduplication and compression at a fixed block size based on cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers. For more information about this feature, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](../index.yml).
+ReFS deduplication and compression is a storage capability that helps save storage space with minimal performance impact. It's a post-process solution and carries out block-level deduplication and compression at a fixed block size based on cluster size. You can enable this feature on hybrid or all flash systems. It targets cache and capacity tiers. For more information about this feature, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](../index.yml).
 
 Follow these steps to start monitoring the ReFS deduplication and compression feature:
 
@@ -165,7 +165,7 @@ The following table describes the columns under the **Savings per volume** secti
 | Deduplication | Indicates if deduplication is enabled (On) or not (Off). | On |
 | Compression | Indicates if compression is enabled or not. | Off (enable) |
 | Volume Size | The size of the volume as specified by the user. | 3 TiB |
-| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. | 3.83TiB |
+| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. | 3.83 TiB |
 | Saved | The number of bytes saved on each volume. | 1.25TiB |
 | Savings(%) | The saved space divided by the dataset size. | 32.72% |
 | Size On Disk | The total amount of data stored on disk. | 2.58 TiB |
@@ -209,7 +209,7 @@ This tab shows the jobs performed overtime during the deduplication process and 
 
 **Issue.** No data appears on the ReFS deduplication and compression workbook.
 
-**Cause.** Insights is not able to collect logs for ReFS deduplication and compression.
+**Cause.** Insights isn't able to collect logs for ReFS deduplication and compression.
 
 **Solution.** To confirm if the logs are being collected, follow these steps:
 
