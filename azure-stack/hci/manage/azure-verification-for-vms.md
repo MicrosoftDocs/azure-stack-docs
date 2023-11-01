@@ -45,7 +45,7 @@ Turning on Azure Benefits starts the service running on your Azure Stack HCI clu
 1. On every server, `HciSvc` obtains a certificate from Azure, and securely stores it within an enclave on the server.
 
    > [!NOTE]
-   > Certificates are renewed every time the Azure Stack HCI cluster syncs with Azure, and each renewal is valid for 30 days. As long as you maintain the usual 30 day connectivity requirements for Azure Stack HCI, no user action is required.
+   > Certificates are renewed every time the Azure Stack HCI cluster syncs with Azure, and each renewal is valid for 30 days. As long as you maintain the usual 30-day connectivity requirements for Azure Stack HCI, no user action is required.
 
 2. `HciSvc` exposes a private and non-routable REST endpoint, accessible only to VMs on the same server. To enable this endpoint, an internal vSwitch is configured on the Azure Stack HCI host (named *AZSHCI_HOST-IMDS_DO_NOT_MODIFY*). VMs then must have a NIC configured and attached to the same vSwitch (*AZSHCI_GUEST-IMDS_DO_NOT_MODIFY*).
 
