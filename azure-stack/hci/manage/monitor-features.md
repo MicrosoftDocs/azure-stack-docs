@@ -92,7 +92,7 @@ Follow these steps to enable monitoring for a feature:
 
 ### Disable monitoring for a feature
 
-By disabling monitoring for a feature, Insights stop collecting monitoring data associated with that feature. However, this action doesn't affect other event collection on this DCR or previously collected data.
+By disabling monitoring for a feature, Insights stops collecting monitoring data associated with that feature. However, this action doesn't affect other event collection on this DCR or previously collected data.
 
 Follow these steps to disable monitoring for a feature:
 
