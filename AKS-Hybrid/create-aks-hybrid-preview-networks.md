@@ -15,12 +15,12 @@ Once you've deployed Azure Arc Resource Bridge, the infrastructure administrator
 
 ## Before you begin
 Before you begin, make sure you meet the following requirements:
-- Have access to an Azure subscription.
-- Have installed the Azure Arc Resource Bridge, deployed the AKS hybrid extension and created a Custom Location. If you have not, visit [Deploy Azure Arc Resource Bridge](deploy-arc-resource-bridge-windows-server.md).
+- Access to an Azure subscription.
+- Installed the Azure Arc Resource Bridge, deployed the AKS hybrid extension and created a Custom Location. If you haven't, visit [Deploy Azure Arc Resource Bridge](deploy-arc-resource-bridge-windows-server.md).
 
-IP address exhaustion can lead to Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you create below contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](concepts-node-networking.md#minimum-ip-address-reservations-for-an-aks-hybrid-deployment).
+IP address exhaustion can lead to Kubernetes cluster deployment failures. As an admin, you must make sure that the network object you create contains sufficient usable IP addresses. For more information, you can [learn more about IP address planning](concepts-node-networking.md#minimum-ip-address-reservations-for-an-aks-hybrid-deployment).
 
-## Install pre-requisite PowerShell modules
+## Install prerequisite PowerShell modules
 Run the following commands on all nodes of your Azure Stack HCI or Windows Server cluster:
 
 ```PowerShell
@@ -52,7 +52,7 @@ You can choose between Static IP and DHCP based networks for your AKS hybrid clu
 | $dnsservers | The IP address value(s) of your DNS servers |
 | $vmPoolStart | The start IP address of your VM IP pool. The address must be in range of the subnet. |
 | $vmPoolEnd | The end IP address of your VM IP pool. The address must be in range of the subnet. |
-| $vipPoolStart | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. |
+| $vipPoolStart | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool is for the API Server and for Kubernetes services. |
 | $vipPoolEnd | The end IP address of the VIP pool |
 
 ```powershell
@@ -71,7 +71,7 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipadd
 | -----------| ------------ |
 | $clustervnetname | The name of your virtual network for AKS hybrid clusters |
 | $vswitchname | The name of your VM switch |
-| $vipPoolStart | The start IP address of the VIP pool. The IP addresses in the VIP pool will be used for the API Server and for Kubernetes services. Make sure your VIP pool is in the same subnet as the DHCP server but excluded from the DHCP scope. |
+| $vipPoolStart | The start IP address of the VIP pool. The IP addresses in the VIP pool is for the API Server and for Kubernetes services. Make sure your VIP pool is in the same subnet as the DHCP server but excluded from the DHCP scope. |
 | $vipPoolEnd | The end IP address of the VIP pool. |
 
 ```powershell
@@ -103,7 +103,7 @@ az hybridaks vnet create -n <Name of your Azure connected AKS hybrid vnet> -g $r
 
 ## Assign user role RBAC access to create AKS hybrid clusters
 
-If someone other than you will be creating the AKS hybrid clusters, use the following steps to assign RBAC access to other users in your organization:
+If someone other than you is creating the AKS hybrid clusters, use the following steps to assign RBAC access to other users in your organization:
 
 1. Go to the Azure portal, navigate to the subscription and then the resource group that you used to create your appliance, custom location, and connected your on-premises network.
 2. Go to IAM in the left-hand side of the portal.
@@ -128,7 +128,7 @@ Add-ArcHciK8sGalleryImage -k8sVersion 1.24.11 -imageType Windows
 
 ## Give the end user the following details
 
-If someone other than you will be creating the AKS hybrid cluster, provide the following details to the AKS hybrid cluster creator:
+If someone other than you is creating the AKS hybrid cluster, provide the following details to the AKS hybrid cluster creator:
 
 | Parameter |  Parameter details |
 | --------- | ------------------|
