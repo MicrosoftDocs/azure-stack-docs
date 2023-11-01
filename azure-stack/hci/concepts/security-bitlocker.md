@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/26/2023
+ms.date: 11/01/2023
 ---
 
 # BitLocker encryption for Azure Stack HCI (preview)
@@ -30,15 +30,15 @@ Once Azure Stack HCI is successfully deployed, you can retrieve the BitLocker re
 
 You can view, enable, and disable BitLocker encryption settings on your Azure Stack HCI cluster.
 
-### PowerShell cmdlet properties for AzureStackBitLockerAgent module
+### PowerShell cmdlet properties for `AzureStackBitLockerAgent` module
 
 The following cmdlet properties are for BitLocker module: *AzureStackBitLockerAgent*.
 
-- `Get-ASBitLocker` -Scope <Local | PerNode | AllNodes | Cluster>
-     - Local: Provides BitLocker volume details for the local node. Can be run in a regular remote PowerShell session.
-     - PerNode: Provides BitLocker volume details per node. Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
- - `Enable-ASBitLocker` -Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
- - `Disable-ASBitLocker` -Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
+- `Get-ASBitLocker` - Scope <Local | PerNode | AllNodes | Cluster>
+     - **Local** - Provides BitLocker volume details for the local node. Can be run in a regular remote PowerShell session.
+     - **PerNode** - Provides BitLocker volume details per node. Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+ - `Enable-ASBitLocker` - Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
+ - `Disable-ASBitLocker` - Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
 
 ## View BitLocker encryption settings
 
@@ -64,6 +64,7 @@ Use the following steps to modify BitLocker encryption:
 
    > [!IMPORTANT]
    > - Enabling BitLocker on volume type BootVolume requires TPM 2.0.
+   >
    > - While enabling BitLocker on volume type `ClusterSharedVolume` (CSV), the volume will be put in redirected mode and any workload VMs will be paused for a short time. This operation is disruptive; plan accordingly.
 
     ```PowerShell
