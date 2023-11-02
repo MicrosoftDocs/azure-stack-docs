@@ -58,7 +58,7 @@ Follow these steps to monitor Azure Stack HCI features with Insights:
     |--|--|
     | Enabled | Indicates that monitoring is enabled for the feature. Insights collects log data from Windows events and performance counters related to the feature. |
     | Not enabled | Indicates that monitoring is disabled for the feature, preventing data collection and insights. This is the default status. |
-    | Needs update | Indicates that there are some configuration issues that prevent Insights from collecting data. This may happen when the required events or data sources aren't correctly configured within the workbook. You must update Insights for the feature to successfully collect data. |
+    | Needs update | Indicates that there are some configuration issues that prevent Insights from collecting data. This can happen when the required events or data sources aren't correctly configured within the workbook. You must update Insights for the feature to successfully collect data. |
 
 Based on the monitoring status, you can perform one of these actions:
 
