@@ -165,11 +165,8 @@ The table below gives an overview of the pool quorum outcomes per scenario:
 
 | Server nodes | Can survive one server node failure | Can survive one server node failure, then another | Can survive two simultaneous server node failures |
 |--------------|-------------------------------------|---------------------------------------------------|----------------------------------------------------|
-| 2            | No                                  | No                                                | No                                                 |
-| 2 + Witness  | Yes                                 | No                                                | No                                                 |
-| 3            | Yes                                 | No                                                | No                                                 |
+| 2 + Witness  | Yes, [guests may be impacted](#pool-quorum-loss) | No                                                | No                                                 |
 | 3 + Witness  | Yes                                 | No                                                | No                                                 |
-| 4            | Yes                                 | No                                                | No                                                 |
 | 4 + Witness  | Yes                                 | Yes                                               | Yes                                                |
 | 5 and above  | Yes                                 | Yes                                               | Yes                                                |
 
@@ -183,10 +180,26 @@ But pool quorum works differently from cluster quorum in the following ways:
 - the pool does NOT have dynamic quorum
 - the pool does NOT implement its own version of removing a vote
 
+## Pool quorum loss
+
+When a storage pool loses quorum, the pool will enter a failed state. While in a failed state, the pool's virtual disks will be inaccessible. Virtual machines running on the pool will remain online and will queue storage I/O requests until the timeout value configured in the guest operating system is reached, at which point it will crash. For Windows and Linux, this timeout typically defaults to 60 seconds but can vary.
+
+If the Azure Stack HCI Windows Failover Cluster has or regains quorum, it will bring the pool cluster resource back online after recognizing the failure.
+
 ### Examples
 
+#### Two nodes with symmetrical layout and a Windows Failover Cluster witness
+
+Each of the 8 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **9 votes**. If node one goes down, the storage pool remains online, along with remaining guest virtual machines. If node two goes down, the Failover Cluster will move the pool cluster resource to node one, allowing the pool to regain quorum and come back online. If this happens before the guest operating system storage I/O timeout is reached, the guests on the remaining node will resume normal operation once their I/O queue clears.
+
+![Pool Quorum 0](media/quorum/pool-0.png)
+
+- Can survive one server failure: **Yes** (if pool owner fails, storage and virtual machines will be impacted).
+- Can survive one server failure, then another: **No**.
+- Can survive two server failures at once: **No**.
+
 #### Four nodes with a symmetrical layout
-Each of the 16 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **16 votes**. If nodes three and four go down, the surviving subset has 8 drives and the pool resource owner, which is 9/16 votes. So, the pool survives.
+Each of the 16 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **17 votes**. If nodes three and four go down, the surviving subset has 8 drives and the pool resource owner, which is 9/17 votes. So, the pool survives.
 
 ![Pool Quorum 1](media/quorum/pool-1.png)
 
@@ -195,7 +208,7 @@ Each of the 16 drives has one vote and node two also has one vote (since it's th
 - Can survive two server failures at once: **Yes**.
 
 #### Four nodes with a symmetrical layout and drive failure
-Each of the 16 drives has one vote and node 2 also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **16 votes**. First, drive 7 goes down. If nodes three and four go down, the surviving subset has 7 drives and the pool resource owner, which is 8/16 votes. So, the pool doesn't have majority and goes down.
+Each of the 16 drives has one vote and node 2 also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **17 votes**. First, drive 7 goes down. If nodes three and four go down, the surviving subset has 7 drives and the pool resource owner, which is 8/17 votes. So, the pool doesn't have majority and goes down.
 
 ![Pool Quorum 2](media/quorum/pool-2.png)
 
@@ -204,13 +217,13 @@ Each of the 16 drives has one vote and node 2 also has one vote (since it's the 
 - Can survive two server failures at once: **No**.
 
 #### Four nodes with a non-symmetrical layout
-Each of the 24 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **24 votes**. If nodes three and four go down, the surviving subset has 8 drives and the pool resource owner, which is 9/24 votes. So, the pool doesn't have majority and goes down.
+Each of the 24 drives has one vote and node two also has one vote (since it's the pool resource owner). The *majority* is determined out of a total of **25 votes**. If nodes three and four go down, the surviving subset has 8 drives and the pool resource owner, which is 9/25 votes. So, the pool doesn't have majority and goes down.
 
 ![Pool Quorum 3](media/quorum/pool-3.png)
 
 - Can survive one server failure: **Yes**.
-- Can survive one server failure, then another: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios.
-- Can survive two server failures at once: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios.
+- Can survive one server failure, then another: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios).
+- Can survive two server failures at once: **Depends** (cannot survive if both nodes three and four go down, but can survive all other scenarios).
 
 ### Pool quorum recommendations
 
