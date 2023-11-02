@@ -79,7 +79,11 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 ## Configure the operating system using SConfig
 
-You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 23H2 after installation as follows:
+You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 23H2 after installation.
+
+**Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.**
+
+Follow these steps to configure the operating system using *SConfig*:
 
 1. Configure networking as per your environment.
 
@@ -93,7 +97,10 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 1. Restart the servers.
 
-1. Set the local administrator credentials to be identical across all servers.
+1. Set the local administrator credentials to be identical across all servers. 
+
+    > [!NOTE]
+    > The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.
 
 1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use *SConfig* to run driver installation apps. After the install is complete, restart your servers again.
 
