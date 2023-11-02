@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/31/2023
+ms.date: 11/01/2023
 ---
 
 # Security baseline settings for Azure Stack HCI (preview)
@@ -15,7 +15,7 @@ ms.date: 10/31/2023
 
 This article describes the security baseline settings associated with your Azure Stack HCI cluster, the associated drift control mechanism, and baseline management.
 
-Azure Stack HCI is a secure-by-default product and has more than 200 security settings enabled right from the start. These settings provide a consistent security baseline and ensure that the device always starts in a known good state.
+Azure Stack HCI is a secure-by-default product and has more than 300 security settings enabled right from the start. These settings provide a consistent security baseline to ensure that the device always starts in a known good state.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -39,40 +39,35 @@ The Azure Stack HCI Supplemental Package deployment then establishes and maintai
 
 You can monitor and perform drift protection of this default enabled security baseline and secured-core settings during both deployment and runtime. You can also disable the drift protection during the deployment when you configure the security settings.
 
-With the drift protection applied, the security settings are refreshed regularly after every 90 minutes. This refresh interval is the same as that for the group policies and ensures that any changes from the desired state are remediated. This continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
-
+With drift protection applied, the security settings are refreshed regularly after every 90 minutes. This refresh interval is the same as that for the group policies and ensures that any changes from the desired state are remediated. This continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
 ## Modify drift control
 
 To adjust security hardening as per your requirements, we recommend that you keep a balanced security posture. Use the initial security baseline, stop the drift control, and modify any of the protected security settings that you defined during the deployment.
 
-To disable or enable drift control, follow these steps.
+To toggle drift control, follow these steps.
 
-1. Connect to your Azure Stack HCI node via Remote Desktop Protocol.
+1. Connect to your Azure Stack HCI node.
 
-1. Run the following PowerShell search command as Administrator:
+1. Run the following PowerShell command using local administrator credentials or LCM deployment user credentials.
+
+1. To disable drift control:
 
     ```PowerShell
-    Get-Command -Module AzureStackOSConfigAgent -Name *Security
+    Disable-AzsSecurity -FeatureName DriftControl -Scope <Local | Cluster>
     ```
 
-1. The search will return cmdlets to Enable, Disable, and Get the security features. The various security features that can be configured using the cmdlets are:
+    - **Local** - Affects local node only. Can be run on a regular remote PowerShell session.
+    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
 
-    - Credential Guard
-    - Drift Control
-    - DRTM
-    - HVCI
-    - Side Channel Mitigation
-    - SMB Encryption
-    - SMB Signing
+1. To enable drift control:
 
-1. If using a multi-node cluster, repeat this command on all the nodes of your cluster.
+    ```PowerShell
+    Enable-AzsSecurity -FeatureName DriftControl -Scope <Local | Cluster>
+    ```
 
-
-> [!IMPORTANT]
-> With the drift control enabled, the only way to modify the security baseline settings is via the [PowerShell cmdlets](#enable-and-disable-commands).
-> 
-> Do not modify the protected security settings via any other mechanism, for example, manually edit using Registry editor, SecEdit (including local policies), System Center Configuration Manager, Desired State Configuration (DSC), or a third-party tool. Any changes made through these tools will only be temporary. The change will revert when the drift protection is triggered every 90 minutes.
+    - **Local** - Affects local node only. Can be run on a regular remote PowerShell session.
+    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
 
 ## Manage security baseline
 
@@ -86,33 +81,54 @@ The following table describes the security settings that can be configured on yo
 |--------------|-------------|----------------------|---------------------------------|
 | Governance                 | [Security baseline](secure-baseline.md)            | Maintains the security defaults on each server. Helps protect against changes.  | Yes                             |
 | Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. | Yes                             |
-| Application control        | [Windows Defender Application control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)           | Controls which drivers and apps are allowed to run directly on each server.           | No                              | 
-| Data at-rest encryption    | [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each server.                                        | No                              | 
+| Application control        | [Windows Defender Application control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)           | Controls which drivers and apps are allowed to run directly on each server.           | No                              |
+| Data at-rest encryption    | [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each server.                                        | No                              |
 | Data at-rest encryption    | [BitLocker for data volumes](/windows/security/information-protection/bitlocker/bitlocker-overview)            | Encrypts cluster shared volumes (CSVs) on this cluster                               | No                              |
 | Data in-transit protection | [Signing for external SMB traffic](/troubleshoot/windows-server/networking/overview-server-message-block-signing)      | Signs SMB traffic between this system and others to help prevent relay attacks.       | Yes                             |
-| Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between servers in the cluster (on your storage network).            | No                              | 
-
+| Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between servers in the cluster (on your storage network).            | No                              |
 
 ### Modify security after deployment
 
-Once the deployment is complete, you can also toggle certain security features via while maintaining the drift control. Here is a comprehensive table of the commands used to modify these security features. As noted, some of these features may require a reboot to take effect.
+Once the deployment is complete, you can also enable security features while maintaining drift control. Here is a table of the commands used to modify these security features.
 
-#### Enable and disable commands
+As noted, some of these features might require a reboot to take effect. We provide commands to Get, Enable, and Disable security features.
 
-| Name                                           |Feature     | Supports drift control | Reboot required |
-|------------------------------------------------|------------|------------|------------------------|
-| Enable,<br>Disable|Yes     | Yes   |
-| Enable,<br>Disable|Dynamic Root of Trust for Measurement (DRTM) | Yes   |Yes |
-| Enable,<br>Disable|Hypervisor-protected Code Integrity (HVCI) | Yes   |Yes| 
-| Enable,<br>Disable|Side channel mitigation     | Yes   | Yes   |
-| Enable,<br>Disable|SMB signing  | Yes| Yes     |
-| Enable,<br>Disable|SMB cluster encryption    | No, cluster setting    | No                     |
+### PowerShell cmdlet properties for `AzureStackOSConfigAgent` module
 
+The following cmdlet properties are for module *AzureStackOSConfigAgent*.
+
+- `Get-AzsSecurity`  -Scope: <Local | PerNode | AllNodes | Cluster>
+- `Enable-AzsSecurity`   -Scope <Local | Cluster>
+- `Disable-AzsSecurity`  -Scope <Local | Cluster>
+
+  - **Local** - Provides boolean value (true/False) on local node. Can be run on a regular remote PowerShell session.
+  - **PerNode** - Provides boolean value (true/False) per node.
+  - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    Cluster  –Provides boolean value from ECE store. Interacts with LCM and acts to all the nodes in the cluster, requires LCM authorization (PREFIX-ECESG) and either Remote PowerShell session with CredSSP authentication or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+  - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
+    - Credential Guard
+    - Drift Control
+    - VBS (Virtualization Based Security)- We only support enable command.
+    - DRTM (Dynamic Root of Trust for Measurement)
+    - HVCI (Hypervidor Enforced if Code Integrity)
+    - Side Channel Mitigation 
+    - SMB Encryption
+    - SMB Signing
+
+|Name |Feature |Supports drift control |Reboot required |
+|-----|--------|-----------------------|----------------|
+|Enable <br> |VBS     |Yes   |Yes |
+|Enable <br> Disable |HVCI |Yes |Yes |
+|Enable <br> Disable |Dynamic Root of Trust for Measurement (DRTM) |Yes |Yes |
+|Enable <br> Disable |Hypervisor-protected Code Integrity (HVCI) |Yes |Yes |
+|Enable <br> Disable |Side channel mitigation |Yes |Yes |
+|Enable <br> Disable |SMB signing |Yes |Yes |
+|Enable <br> Disable |SMB cluster encryption |No, cluster setting |No |
 
 ## View the settings
 
-With the drift protection enabled, you can only modify the non-protected security settings. To modify the protected security settings that form the baseline, you need to first disable the drift protection. You can find and download the complete list of security settings at: [aka.ms/hci-securitybase](https://aka.ms/hci-securitybase).
-
+With drift protection enabled, you can only modify non-protected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. You can find and download the complete list of security settings at: [SecurityBaseline](https://aka.ms/hci-securitybase).
 
 ## Next steps
 
