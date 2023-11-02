@@ -6,11 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-<<<<<<< HEAD
-ms.date: 10/31/2023
-=======
 ms.date: 11/01/2023
->>>>>>> 4a1278f0680006d9daa174c1a727a73df5e34625
 ---
 
 # Security baseline settings for Azure Stack HCI (preview)
@@ -136,8 +132,4 @@ With drift protection enabled, you can only modify non-protected security settin
 
 ## Next steps
 
-<<<<<<< HEAD
 - [Understand BitLocker encryption](./security-bitlocker.md)
-=======
-- [Azure Stack HCI security considerations](./security.md).
->>>>>>> 4a1278f0680006d9daa174c1a727a73df5e34625
