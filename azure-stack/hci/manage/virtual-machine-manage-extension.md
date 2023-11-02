@@ -81,7 +81,7 @@ Follow these steps in Azure portal to add a VM extension.
 
 1. Select **Review + Create**.
 
-The extension may take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
+The extension might take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
 
 ## List installed extensions
 
@@ -99,7 +99,7 @@ Follow these steps in Azure portal to list the installed VM extensions.
 
 ## Delete VM extension
 
-You may want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
+You might want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
 
 
 1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
