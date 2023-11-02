@@ -58,7 +58,7 @@ To toggle drift control, follow these steps.
     ```
 
     - **Local** - Affects local node only. Can be run on a regular remote PowerShell session.
-    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group, (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
 
 1. To enable drift control:
 
@@ -67,7 +67,7 @@ To toggle drift control, follow these steps.
     ```
 
     - **Local** - Affects local node only. Can be run on a regular remote PowerShell session.
-    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group, (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
 
 ## Manage security baseline
 
@@ -91,9 +91,9 @@ The following table describes the security settings that can be configured on yo
 
 Once the deployment is complete, you can also enable security features while maintaining drift control. Here is a table of the commands used to modify these security features.
 
-As noted, some of these features may require a reboot to take effect. We provide commands to Get, Enable, and Disable security features.
+As noted, some of these features might require a reboot to take effect. We provide commands to Get, Enable, and Disable security features.
 
-### Powershell cmdlet properties for `AzureStackOSConfigAgent` module
+### PowerShell cmdlet properties for `AzureStackOSConfigAgent` module
 
 The following cmdlet properties are for module *AzureStackOSConfigAgent*.
 
@@ -105,7 +105,7 @@ The following cmdlet properties are for module *AzureStackOSConfigAgent*.
   - **PerNode** - Provides boolean value (true/False) per node.
   - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
     AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
-    Cluster  –Provides boolean value from ECE store. Interacts with LCM and acts to all the nodes in the cluster, requires LCM authorization (PREFIX-ECESG) and either Remote Powershell session with CredSSP authentication or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    Cluster  –Provides boolean value from ECE store. Interacts with LCM and acts to all the nodes in the cluster, requires LCM authorization (PREFIX-ECESG) and either Remote PowerShell session with CredSSP authentication or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
   - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
     - Credential Guard
     - Drift Control
