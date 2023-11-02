@@ -110,7 +110,7 @@ Before you begin, make sure you've done the following:
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     ```
 
-1. Connect to your Azure account and set the subscription. Get the access token and account ID for the registration.  
+1. Connect to your Azure account and set the subscription. You will need to open browser on the client that you are using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
     ```powershell
     #Connect to your Azure account and Subscription
@@ -123,7 +123,7 @@ Before you begin, make sure you've done the following:
     $id = (Get-AzContext).Account.Id   
     ``` 
 
-    Here's a sample output of the parameters and authentication:
+    Here's a sample output of the setting the subscription and authentication:
 
     ```output
     PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
@@ -138,7 +138,7 @@ Before you begin, make sure you've done the following:
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
  
-1. Finally run the Arc registration script.
+1. Finally run the Arc registration script. The script takes a few minutes to run.
 
     ```powershell
     #Invoke the registration script. For this preview release, only eastus region is supported.
@@ -148,51 +148,50 @@ Before you begin, make sure you've done the following:
     Here is a sample output of a successful registration of your servers:
     
     ```output
-    PS C:\Users\SetupUser> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
+    PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
     Installing and Running Azure Stack HCI Environment Checker
-    
-    ==================================SNIPPED=========================SNIPPED===============================
-    Installing Hyper-V Management Tools 
+    All the environment validation checks succeeded
+    Installing Hyper-V Management Tools
     Starting AzStackHci ArcIntegration Initialization
     Installing Azure Connected Machine Agent
-    Total Physical Memory:         261,800 MB  
+    Total Physical Memory:         588,419 MB
     PowerShell version: 5.1.25398.469
-    .NET Framework version: 4.8.9032 
-    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\SETUPU~1\AppData\Local\Temp\2\AzureConnectedMachineAgent.msi
+    .NET Framework version: 4.8.9032
+    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\ADMINI~1\AppData\Local\Temp\2\AzureConnectedMachineAgent.msi
     Installing agent package
     Installation of azcmagent completed successfully
-    0  
+    0
     Connecting to Azure using ARM Access Token
-    Connected to Azure successfully
-    Microsoft.HybridCompute RP already registered, skipping registration
+    Connected to Azure successfully   
+    Microsoft.HybridCompute RP already registered, skipping registration 
     Microsoft.GuestConfiguration RP already registered, skipping registration
     Microsoft.HybridConnectivity RP already registered, skipping registration
-    Microsoft.AzureStackHCI RP already registered, skipping                                                     
+    Microsoft.AzureStackHCI RP already registered, skipping registration
     INFO    Connecting machine to Azure... This might take a few minutes.
     INFO    Testing connectivity to endpoints that are needed to connect to Azure... This might take a few minutes.
-    20% [==>            ]                                                                                                   
-    30% [===>           ]                                                                                                   
-    INFO    Creating resource in Azure...                 
-    Correlation ID=6ba25d07-e1a4-4b25-bcd9-117eed925fae Resource ID=/subscriptions/bf83292c-7cb3-40e4-949a-c9c4caa79b3e/resourceGroups/myashcirg/providers/Microsoft.HybridCompute/machines/ms309host                   
-    60% [========>      ]         
-    80% [===========>   ]              
-    100% [===============]              
-    INFO    Connected machine to Azure
-    INFO    Machine overview page: https://portal.azure.com/#@72f988bf-86f1-41af-91ab-2d7cd011db47/resource/subscriptions/bf83292c-7cb3-40e4-949a-c9c4caa79b3e/resourceGroups/myashcirg/providers/Microsoft.HybridCompute/machines/ms309host/overview
+      20% [==>            ]
+      30% [===>           ]
+      INFO    Creating resource in Azure...
+    Correlation ID=e5ac2942-c348-4362-a4ce-54655f3ba3b6 Resource ID=/subscriptions/e4c958c2-aa6f-4536-951f-0226d7f3dc7c/resourceGroups/ASZCSS05-Resources/providers/Microsoft.HybridCompute/machines/ASZCSS05-S1-N02
+      60% [========>      ]
+      80% [===========>   ]
+     100% [===============]
+      INFO    Connected machine to Azure
+    INFO    Machine overview page: https://portal.azure.com/#@72f988bf-86f1-41af-91ab-2d7cd011db47/resource/subscriptions/e4c958c2-aa6f-4536-951f-0226d7f3dc7c/resourceGroups/ASZCSS05-Resources/providers/Microsoft.HybridCompute/machines/ASZCSS05-S1-N02/overview
     Connected Azure ARC agent successfully
     Successfully got the content from IMDS endpoint
-    Successfully got Object Id for Arc Installation 224366fa-xxxx-xxxx-xxxx-6495878da7af
-    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: 224366fa-xxxx-xxxx-xxxx-6495878da7af
-    Assigning Azure Stack HCI Device Management Role to Object : 224366fa-xxxx-xxxx-xxxx-6495878da7af
-    $Successfully assigned Azure Stack HCI Device Management Role to Object Id 224366fa-xxxx-xxxx-xxxx-6495878da7af
+    Successfully got Object Id for Arc Installation 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    Assigning Azure Stack HCI Device Management Role to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    $Sucessfully assigned Azure Stack HCI Device Management Role to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
     Successfully assigned permission Azure Stack HCI Device Management Service Role to create or update Edge Devices on the resource group
-    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: 224366fa-xxxx-xxxx-xxxx-6495878da7af
-    Assigning Azure Connected Machine Resource Manager to Object : 224366fa-xxxx-xxxx-xxxx-6495878da7af
-    $Successfully assigned Azure Connected Machine Resource Manager to Object Id 224366fa-xxxx-xxxx-xxxx-6495878da7af
+    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    Assigning Azure Connected Machine Resource Manager to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    $Sucessfully assigned Azure Connected Machine Resource Manager to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
     Successfully assigned the Azure Connected Machine Resource Nanager role on the resource group
-    $Checking if Reader is assigned already for SPN with Object ID: 224366fa-xxxx-xxxx-xxxx-6495878da7af
-    Assigning Reader to Object : 224366fa-xxxx-xxxx-xxxx-6495878da7af
-    $Successfully assigned Reader to Object Id 224366fa-xxxx-xxxx-xxxx-6495878da7af
+    $Checking if Reader is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    Assigning Reader to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    $Sucessfully assigned Reader to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
     Successfully assigned the reader Resource Nanager role on the resource group
     Installing  TelemetryAndDiagnostics Extension
     Successfully triggered  TelemetryAndDiagnostics Extension installation
@@ -202,15 +201,14 @@ Before you begin, make sure you've done the following:
     Successfully triggered  LCMController Extension installation
     Please verify that the extensions are successfully installed before continuing...
     
-    Log location: C:\Users\SetupUser\.AzStackHci\AzStackHciEnvironmentChecker.log
-    Report location: C:\Users\SetupUser\.AzStackHci\AzStackHciEnvironmentReport.json
-    Use -Passthru parameter to return results as a PSObject.
-    PS C:\Users\SetupUser>
+    Log location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentChecker.log
+    Report location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentReport.json
+    Use -Passthru parameter to return results as a PSObject.   
     ```
 
 1. After the script has completed successfully on all the servers, verify that your servers are registered with Arc. Go to Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.
 
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered.png" alt-text="Screenshot of the Azure Stack HCI servers in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::-->
+    :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered.png" alt-text="Screenshot of the Azure Stack HCI servers in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered.png":::
 
 ## Assign required permissions for deployment
 
