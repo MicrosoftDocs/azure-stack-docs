@@ -41,8 +41,8 @@ Before you begin, make sure you've done the following:
 
 ## Register servers with Azure Arc
 
-> [!NOTE]
-> Run these steps on every server of your cluster.
+> [!IMPORTANT]
+> Run these steps on every Azure Stack HCI server that you intend to cluster.
 
 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller/0.1.2489.42) from PSGallery.
 
@@ -50,10 +50,33 @@ Before you begin, make sure you've done the following:
     #Install Arc registration script from PSGallery
     Install-Module AzsHCI.ARCinstaller
 
-    #Install required PowerShell modules in your node for the Azure registration
+    #Install required PowerShell modules in your node for registration
     Install-Module Az.Accounts -Force
     Install-Module Az.ConnectedMachine -Force
     Install-Module Az.Resources -Force
+    ```
+    
+    Here's a sample output of the installation:
+
+    ```output
+    PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                                                                                                                                                                 
+    NuGet provider is required to continue                                                                                  
+    PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
+    'C:\Users\SetupUser\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by
+    running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install
+    and import the NuGet provider now?
+    [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
+    
+    Untrusted repository
+    You are installing the modules from an untrusted repository. If you trust this repository, change its
+    InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
+    'PSGallery'?
+    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): Y
+    PS C:\Users\SetupUser>
+    
+    PS C:\Users\SetupUser> Install-Module Az.Accounts -Force
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -Force
+    PS C:\Users\SetupUser> Install-Module Az.Resources -Force
     ```
 
 1. Set the parameters. The script takes in the following parameters:
@@ -79,6 +102,14 @@ Before you begin, make sure you've done the following:
     $Tenant = "YourTenantID"
     ```
 
+    Here's a sample output of the parameters:
+
+    ```output
+    PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
+    PS C:\Users\SetupUser> $RG = "myashcirg"
+    PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
+    ```
+
 1. Connect to your Azure account and set the subscription. Get the access token and account ID for the registration.  
 
     ```powershell
@@ -91,7 +122,22 @@ Before you begin, make sure you've done the following:
     #Get the Account ID for the registration
     $id = (Get-AzContext).Account.Id   
     ``` 
-  
+
+    Here's a sample output of the parameters and authentication:
+
+    ```output
+    PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
+    WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code A44KHK5B5
+    to authenticate.
+    
+    Account               SubscriptionName      TenantId                             Environment
+    -------               ----------------      --------                             -----------
+    guspinto@contoso.com AzureStackHCI_Content <Tenant ID> AzureCloud
+
+    PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
+    PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
+    ```
+ 
 1. Finally run the Arc registration script.
 
     ```powershell
