@@ -465,7 +465,7 @@
         - name: Metrics via Azure portal
           href: ../index.yml
         - name: ReFS dedupe and compression workbooks
-          href: ../index.yml
+          href: manage/monitor-features.md
     - name: Migrate
       items: 
         - name: Migration overview
