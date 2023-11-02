@@ -130,9 +130,9 @@ Before you begin, make sure you've done the following:
     WARNING: To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code A44KHK5B5
     to authenticate.
     
-    Account               SubscriptionName      TenantId                             Environment
-    -------               ----------------      --------                             -----------
-    guspinto@contoso.com AzureStackHCI_Content <Tenant ID> AzureCloud
+    Account               SubscriptionName      TenantId                Environment
+    -------               ----------------      --------                -----------
+    guspinto@contoso.com AzureStackHCI_Content  <Tenant ID>             AzureCloud
 
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
