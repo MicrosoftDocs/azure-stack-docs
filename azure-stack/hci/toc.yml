@@ -5,11 +5,7 @@
   - name: What is Azure Stack HCI?
     href: overview.md
   - name: What's new in Azure Stack HCI? 
-    items:
-      - name: Version 23H2 (preview)
-        href: whats-new.md
-      - name: Version 22H2
-        href: whats-new-in-hci-22h2.md
+    href: whats-new.md
   - name: Release information
     href: release-information.md
   - name: Compare to Windows Server
@@ -43,7 +39,7 @@
         href: deploy/deployment-introduction.md
       - name: Complete prerequisites
         href: deploy/deployment-prerequisites.md
-      - name: 0. View deployment checklist
+      - name: View deployment checklist
         href: deploy/deployment-checklist.md
       - name: 1. Prepare Active Directory
         href: deploy/deployment-prep-active-directory.md
@@ -55,6 +51,8 @@
         href: deploy/deployment-arc-register-server-permissions.md
       - name: 5. Deploy via Azure portal 
         href: deploy/deploy-via-portal.md
+      - name: 6. Deploy via ARM template
+        href: ../index.yml
     - name: Update 
       items:
       - name: What's the Lifecycle Manager?
@@ -578,6 +576,8 @@
     href: guided-quick-deploy-eval.yml 
   - name: Earlier versions
     items:
+    - name: What's new in version 22H2
+      href: whats-new-in-hci-22h2.md
     - name: What's new in version 21H2
       href: whats-new-in-hci-21h2.md
     - name: What's new in version 20H2
