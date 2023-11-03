@@ -105,45 +105,6 @@ Depending on the type of the network interface that you created, you can create 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
     
 
-<!--###  Create a VM for DHCP IP
-
-To create a VM with guest management enabled, you'll use the network interface that you created in the previous step. You can create a Windows VM or a Linux VM.
-
-#### Create a Windows VM
-
-Follow these steps to create a Windows VM.
-
-1. Set the parameters.
-
-    ```azurecli
-    $galleryImageName = "<Name of the Windows or Linux image to use to create VM.>"    
-    ```
- 
-1. To create a Windows VM, run the following command:
-
-    ```azurecli
-    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" --location $Location --size="Default" --computer-name "testvm0001" --admin-username "<VM administrator username>" --admin-password "<VM administrator password>" --image $galleryImageName --nics $VNic --enable-agent true --debug
-    ```
-
-    Make sure to provide the VM computer name, VM administrator username, and the VM administrator password.
-
-    In the above cmdlet, the parameter `--provision-vm-agent` when set to `true` enables guest management in the VM that is created. To disable guest management, you can omit the parameter or set it to `false`.
-
-
-
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
-
-#### Create a Linux VM
-
-To create a Linux VM, run the following command:
-
-
-```azurecli
-az stack-hci-vm create --name $vmName --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName" --location $location --size="Default" --computer-name "myComputer" --admin-username "admin" --admin-password "pass" --image $galleryImageName --nics $nicName --enable-agent true --authentication-type "password"
-```
-This command will create a Linux VM with guest management enabled. The command is similar to the one used for Windows VM creation with the exception of the inclusion of `--allow-password-auth` parameter. The gallery image used should also be a Linux image. 
-
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.-->
 
 # [Azure portal](#tab/azureportal)
 
