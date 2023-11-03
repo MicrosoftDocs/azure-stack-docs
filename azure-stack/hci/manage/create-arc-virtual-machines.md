@@ -91,8 +91,9 @@ Depending on the type of the network interface that you created, you can create 
     $userName = "myhci-user"
     $password = "<Password for the VM>"
     $imageName ="ws22server"
-    $nicName ="myhci-vnic"  
-    $storagePathId = "C:\ClusterStorage\Volume1" 
+    $nicName ="myhci-vnic" 
+    $storagePathName = "myhci-sp" 
+    $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-sp" 
     ```
 
 

@@ -83,7 +83,7 @@ Follow these steps to create a network interface on your static logical network.
     $gateway ="100.68.180.1" 
     $ipAddress ="100.68.180.6" 
     $nicName ="myhci-nic-static"
-    $subscription =  "myhci-sub"
+    $subscription =  "<Subscription ID>"
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl" 
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
@@ -115,10 +115,10 @@ Follow these steps to create a network interface on your static logical network.
     ```console   
     {
       "extendedLocation": {
-        "name": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+        "name": "/subscriptions/<subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-nic-static",
+      "id": "/subscriptions/<subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-nic-static",
       "location": "eastus",
       "name": "myhci-nic-static",
       "properties": {
@@ -134,7 +134,7 @@ Follow these steps to create a network interface on your static logical network.
               "privateIpAddress": "192.168.201.3",
               "privateIpAllocationMethod": null,
               "subnet": {
-                "id": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/myhci-lnet-static",
+                "id": "/subscriptions/<subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/myhci-lnet-static",
                 "resourceGroup": "myhci-rg"
               }
             }
@@ -169,7 +169,7 @@ Follow these steps to create a network interface on your DHCP logical network. R
     ```azurecli
     $nicName = "myhci-nic-dhcp"
     $lnetName = "myhci-lnet-dhcp"   
-    $subscription =  "myhci-sub" 
+    $subscription =  "<subscription ID>" 
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl" 
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
@@ -198,10 +198,10 @@ Follow these steps to create a network interface on your DHCP logical network. R
     ```azurecli
     {
       "extendedLocation": {
-        "name": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+        "name": "/subscriptions/<subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-vnic",
+      "id": "/subscriptions/<subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-vnic",
       "location": "eastus",
       "name": "myhci-nic-dhcp",
       "properties": {
