@@ -27,7 +27,7 @@ Kubernetes can simplify the process to configure and deploy virtual client endpo
 - Load the correct Lustre client software onto the VM instances.
 - Specify the Azure Managed Lustre mount point, and propagate that information to the client pods.
 
-The Azure Managed Lustre CSI driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas, by default, and a CSI node plugin as a daemonset. You can change the number of replicas.
+The Azure Managed Lustre CSI driver can automate the client software and mount tasks. The driver provides a CSI controller plugin as a deployment with two replicas, by default, and a CSI node plugin as a DaemonSet. You can change the number of replicas.
 
 ## Compatible Kubernetes versions
 
@@ -44,7 +44,7 @@ The following container images are compatible with Azure Managed Lustre file sys
 
 Before you deploy the Azure Managed Lustre CSI Driver for Kubernetes, complete the following prerequisite:
 
-- If you haven't already created your AKS cluster, create the cluster now. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
+- Create the AKS cluster, if you haven't already. For instructions, see [Deploy an Azure Kubernetes Service (AKS) cluster](/azure/aks/learn/quick-kubernetes-deploy-portal).
 
 ## Setup overview
 
@@ -64,17 +64,17 @@ The following sections describe each task in greater detail.
 
 Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access
 
-- [Option 1](#option-1-create-an-aks-subnet-inside-the-azure-managed-lustre-vnet): Create an AKS subnet inside the Azure Managed Lustre VNet
+- [Option 1](#option-1-create-an-aks-subnet-inside-the-azure-managed-lustre-vnet): Create an AKS subnet inside the Azure Managed Lustre virtual network
 - [Option 2](#option-2-use-azure-cni-in-aks-and-peer-the-vnets): Use Azure CNI in AKS, and peer the VNets
-- [Option 3](#option-3-use-aks-kubenet-and-peer-its-vnet-with-the-azure-managed-lustre-vnet): Use AKS `kubenet`, and peer its VNet with the Azure Managed Lustre VNet
+- [Option 3](#option-3-use-aks-kubenet-and-peer-its-vnet-with-the-azure-managed-lustre-vnet): Use AKS `kubenet`, and peer its virtual network with the Azure Managed Lustre virtual network
 
-### Option 1: Create an AKS subnet inside the Azure Managed Lustre VNet
+### Option 1: Create an AKS subnet inside the Azure Managed Lustre virtual network
 
-You can create a new subnet within your Azure Managed Lustre VNet, and use that subnet with the Azure Container Network Interface (Azure CNI) for AKS. Or you can host the AKS cluster within your Azure Managed Lustre subnet.
+You can create a new subnet within your Azure Managed Lustre virtual network, and use that subnet with the Azure Container Network Interface (Azure CNI) for AKS. Or you can host the AKS cluster within your Azure Managed Lustre subnet.
 
 ![Diagram showing Azure Managed Lustre VNet with two subnets, one for the Lustre file system and one for AKS.](media/use-csi-driver-kubernetes/subnet-access-option-1.png)
 
-- This option doesn't require VNet peering.
+- This option doesn't require virtual network peering.
 
 - If you create a new subnet, the subnet must have enough IP addresses to support your AKS cluster. For example, a 50-node AKS cluster probably needs at least 2,048 IP addresses (CIDR notation /21).
 
@@ -84,7 +84,7 @@ You can create a new subnet within your Azure Managed Lustre VNet, and use that 
 
 ### Option 2: Use Azure CNI in AKS, and peer the VNets
 
-A second option is to create a new VNet and subnet, configure the subnet with Azure CNI networking in AKS, and then peer the new AKS VNet with the VNet that contains your Lustre file system.
+A second option is to create a new virtual network and subnet, configure the subnet with Azure CNI networking in AKS, and then peer the new AKS virtual network with the virtual network that contains your Lustre file system.
 
 ![Diagram showing two VNets, one for Azure Managed Lustre and one for AKS, with a VNet peering arrow connecting them.](media/use-csi-driver-kubernetes/subnet-access-option-2.png)
 
@@ -92,15 +92,15 @@ A second option is to create a new VNet and subnet, configure the subnet with Az
 
 - To learn how to connect the two networks, see [Virtual network peering](/azure/virtual-network/virtual-network-peering-overview).
 
-### Option 3: Use AKS `kubenet`, and peer its VNet with the Azure Managed Lustre VNet
+### Option 3: Use AKS `kubenet`, and peer its virtual network with the Azure Managed Lustre virtual network
 
-A third option is to use the AKS default `kubenet`-style network for your AKS cluster. A new AKS-managed VNet and subnet are created automatically. You'll then peer the AKS VNet with the Azure Managed Lustre VNet.
+A third option is to use the AKS default `kubenet`-style network for your AKS cluster. A new AKS-managed virtual network and subnet are created automatically. You can then peer the AKS virtual network with the Azure Managed Lustre virtual network.
 
 ![Diagram showing two VNets, one for Azure Managed Lustre and one for AKS, which is managed by kubenet. A VNet peering arrow connects the two VNets.](media/use-csi-driver-kubernetes/subnet-access-option-3.png)
 
-- With this option, you don't have to create or size the VNet and subnet. `kubenet` automatically creates an appropriately sized subnet for your AKS cluster.
+- With this option, you don't have to create or size the virtual network and subnet. `kubenet` automatically creates an appropriately sized subnet for your AKS cluster.
 
-- The AKS VNet is created in a separate resource group from the AKS cluster's resource group. Look for a resource group with a name that starts with **MC_** and includes the name of your AKS cluster. This resource group contains the AKS VNet and related components.
+- The AKS virtual network is created in a separate resource group from the AKS cluster's resource group. Look for a resource group with a name that starts with **MC_** and includes the name of your AKS cluster. This resource group contains the AKS virtual network and related components.
 
   For more information, see [Kubenet (basic) networking](/azure/aks/concepts-network#kubenet-basic-networking) in [Network concepts for applications in Azure Kubernetes Service (AKS)](/azure/aks/concepts-network).
 
@@ -128,7 +128,7 @@ Connect to the Azure Kubernetes Service cluster by doing these steps:
 
    To see CLI commands populated with your AKS cluster values, select **Connect**.
 
-1. Open a PowerShell session on the system where you'll install and administer the CSI driver.
+1. Open a PowerShell session on the system where you install and administer the CSI driver.
 
 1. To connect, run the following basic connect command in Azure CLI, substituting the settings for your AKS cluster:
 
@@ -156,7 +156,7 @@ For local installation command samples, see [Install Azure Lustre CSI Driver on 
 
 To create a persistent volume for an existing Azure Managed Lustre file system, do these steps:
 
-1. Copy the following configuration files from the **/docs/examples/** folder in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples) repository. If you cloned the repository when you [installed the CSI driver](#install-the-csi-driver), you'll have local copies available already.
+1. Copy the following configuration files from the **/docs/examples/** folder in the [azurelustre-csi-driver](https://github.com/kubernetes-sigs/azurelustre-csi-driver/tree/main/docs/examples) repository. If you cloned the repository when you [installed the CSI driver](#install-the-csi-driver), you have local copies available already.
 
    - storageclass_existing_lustre.yaml
    - pvc_storageclass.yaml
@@ -176,7 +176,7 @@ To create a persistent volume for an existing Azure Managed Lustre file system, 
 
    Make these updates:
 
-   - Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. The internal name is usually `lustrefs`. The internal name is not the name that you gave the file system when you created it.
+   - Replace `EXISTING_LUSTRE_FS_NAME` with the system-assigned internal name of the Lustre cluster in your Azure Managed Lustre file system. The internal name is usually `lustrefs`. The internal name isn't the name that you gave the file system when you created it.
 
      The suggested `mount` command includes the name highlighted in the following address string.
 

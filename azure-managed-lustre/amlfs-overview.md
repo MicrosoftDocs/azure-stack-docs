@@ -8,7 +8,7 @@ ms.date: 06/28/2023
 ms.reviewer: mayabishop
 ms.custom: references_regions
 
-# Intent: As an IT Pro, I want to understand how to use an Azure Managed Lustre file system xxx.
+# Intent: As an IT Pro, I want to understand how to use an Azure Managed Lustre file system.
 # Keyword: 
 
 ---
@@ -17,7 +17,7 @@ ms.custom: references_regions
 
 The Azure Managed Lustre service gives you the capability to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 
-Lustre is an open-source parallel file system that can scale to massive storage sizes while also providing high performance throughput. It's used by the world's fastest supercomputers and in data-centric workflows for many types of industries. For more information, see [https://www.lustre.org](https://www.lustre.org).
+Lustre is an open-source parallel file system that can scale to massive storage sizes while also providing high performance throughput. Lustre is used by the world's fastest supercomputers and in data-centric workflows for many types of industries. For more information, see [https://www.lustre.org](https://www.lustre.org).
 
 Azure Managed Lustre saves you the work of provisioning, configuring, and managing your own Lustre file system. Using a **Create** command in the Azure portal, you can quickly deploy a Lustre file system in the size that you need, connect your clients, and be ready to use the system.
 
@@ -27,7 +27,7 @@ You can also use your Azure Managed Lustre file system with your Azure Kubernete
 
 ## Data security in Azure Managed Lustre
 
-All data stored in Azure is encrypted at rest using Azure managed keys by default. If you want to manage the keys used to encrypt your data when it's stored in your Azure Managed Lustre cluster, follow the instructions in [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
+All data stored in Azure is encrypted at rest using Azure managed keys by default. If you want to manage the keys used to encrypt the data stored in your Azure Managed Lustre cluster, follow the instructions in [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
 
 All information in an Azure Managed Lustre file system also is protected by VM host encryption on the managed disks that hold your data, even if you add a customer-managed key for the Lustre disks. Adding a customer-managed key gives an extra level of security for customers with high security needs. For more information, see [Server-side encryption of Azure disk storage](/azure/virtual-machines/disk-encryption).
 
@@ -42,7 +42,7 @@ All Azure Managed Lustre file systems that are created as a "durable" file syste
 
 The Azure Managed Lustre file system itself also contributes to data resilience through the object storage processes it uses to store data on these disks.
 
-If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage and use archive jobs to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-prerequisites.md#supported-storage-account-types).
+If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage. Once integrated, you can use archive jobs to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-prerequisites.md#supported-storage-account-types).
 
 ## Azure Blob Storage integration
 
@@ -62,7 +62,7 @@ Kubernetes can simplify configuring and deploying virtual client endpoints for y
 * Loading the correct Lustre client software on VM instances.
 * Specifying the Azure Managed Lustre mount point, and propagating that information to the client pods.
 
-The Azure Lustre CSI driver for Kubernetes can automate installing the client software and mounting drives. The driver provides a CSI controller plugin as a deployment with two replicas by default, and a CSI node plugin, as a daemonset. You can change the number of replicas.
+The Azure Lustre CSI driver for Kubernetes can automate installing the client software and mounting drives. The driver provides a CSI controller plugin as a deployment with two replicas by default, and a CSI node plugin, as a DaemonSet. You can change the number of replicas.
 
 To find out which driver versions to use, see [Compatible Kubernetes versions](use-csi-driver-kubernetes.md#compatible-kubernetes-versions).
 

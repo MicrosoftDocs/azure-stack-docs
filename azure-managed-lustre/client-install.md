@@ -11,7 +11,7 @@ zone_pivot_groups: select-os
 
 ---
 
-# Install pre-built client software
+# Install prebuilt client software
 
 This tutorial shows how to install an appropriate client package, in order to set up client VMs and attach them to an Azure Managed Lustre cluster. Select an OS version to see the instructions.
 
@@ -27,8 +27,8 @@ For client VMs running:
 In this tutorial you will:
 
 > [!div class="checklist"]
-> * download a pre-built client
-> * install the pre-built client
+> * Download a prebuilt client
+> * Install the prebuilt client
 
 For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
@@ -54,8 +54,8 @@ For client VMs running:
 In this tutorial you will:
 
 > [!div class="checklist"]
-> * download a pre-built client
-> * install the pre-built client
+> * Download a prebuilt client
+> * Install the prebuilt client
 
 For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
 
