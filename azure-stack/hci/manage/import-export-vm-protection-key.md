@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: overview
 ms.reviewer: alkohli
-ms.date: 11/02/2023
+ms.date: 11/03/2023
 ---
 
 # Importing and exporting a VM guest state protection key
@@ -66,7 +66,7 @@ On the source Azure Stack HCI cluster:
 
 On the target Azure Stack HCI cluster:
 
-1. Copy the <vmID> and <vmID>.wrap file from the source cluster to the target cluster.
+1. Copy the `vmID` and `vmID.wrap` file from the source cluster to the target cluster.
 
 1. Import the VM guest state protection key for the VM.
 
@@ -121,7 +121,7 @@ If the problem persists, contact Microsoft support.
 
 "Trusted launch" is available only for Azure Arc managed VMs on Azure Stack HCI. Once an Arc VM with a security type of "Trusted launch" is created, view its VM properties to verify that the security type is "Trusted launch".
 
-<insert screenshot>
+:::image type="content" source="media/import-export-vm-protection-key/verify-trusted-launch.png" alt-text="View VM properties to verify that the security type is "Trusted launch." lightbox="media/import-export-vm-protection-key/verify-trusted-launch.png":::
 
 Also, you can run the following Hyper-V command on the node where the VM is located:
 
