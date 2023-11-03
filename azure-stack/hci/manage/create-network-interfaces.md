@@ -51,6 +51,7 @@ Before you create a network interface, make sure that the following prerequisite
 
 To create a VM, you'll first need to create a network interface on your logical network. The steps can be different depending on whether your logical network is static or DHCP.
 
+# [Azure CLI](#tab/azurecli)
 
 ## Sign in and set subscription
 
@@ -244,6 +245,7 @@ You can use this network interface to create a VM. For more information, see [Cr
 # [Azure portal](#tab/azureportal)
 
 In the Azure portal, you create a network interface during the VM creation flow. For more information, see [Create Azure Stack HCI VM in Azure portal](./create-arc-virtual-machines.md).
+
 ---
 
 ## Next steps

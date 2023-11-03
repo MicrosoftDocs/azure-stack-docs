@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/31/2023
+ms.date: 11/03/2023
 ---
 
 # What is Azure Arc VM management? (preview)
@@ -62,7 +62,7 @@ In this release, the Arc VM management workflow is as follows:
     1. [Storage paths](./create-storage-path.md) for VM disks.
     1. VM images starting with an [Image in Azure Marketplace](./virtual-machine-image-azure-marketplace.md), in [Azure Storage account](./virtual-machine-image-storage-account.md), or in [Local share](./virtual-machine-image-local-share.md). These images are then used with other VM resources to create VMs.
     1. [Logical networks](./create-virtual-networks.md).  
-    1. [VM network interfaces](./create-arc-virtual-machines.md#create-network-interface).
+    1. [VM network interfaces](./create-network-interfaces.md).
 1. Use the VM resources to [Create VMs](./create-arc-virtual-machines.md).
 
 To troubleshoot issues with your Arc VMs or to learn about existing known issues and limitations, see [Troubleshoot Arc virtual machines](troubleshoot-arc-enabled-vms.md).
