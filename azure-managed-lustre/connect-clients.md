@@ -2,8 +2,8 @@
 title: Connect clients to an Azure Managed Lustre file system
 description: Describes how to connect Linux clients with supported software versions to an Azure Managed Lustre file system.
 ms.topic: overview
-author: mvbishop
-ms.author: mayabishop
+author: pauljewellmsft
+ms.author: pauljewell
 ms.date: 06/28/2023
 ms.lastreviewed: 03/24/2023
 ms.reviewer: dsundarraj
@@ -21,13 +21,13 @@ This article describes how to prepare clients and mount the Azure Managed Lustre
 
 Client machines running Linux can access Azure Managed Lustre. The basic client requirements are as follows:
 
-- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Pre-built client packages have been tested with Azure Managed Lustre. See [Install client software](#install-client-software) for instructions and package download options. Client packages are available for several commonly-used Linux OS distributions.
-- **Network access** to the file system - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use VNet peering.
+- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Prebuilt client packages have been tested with Azure Managed Lustre. See [Install client software](#install-client-software) for instructions and package download options. Client packages are available for several commonly used Linux OS distributions.
+- **Network access** to the file system - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use virtual network peering.
 - **Mount** - Clients must be able to use the POSIX `mount` command to connect to the file system.
 - **To achieve advertised performance** -
   - Clients must reside in the same Availability Zone in which the cluster resides.
-  - Be sure to [enable accelerated networking on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If it's not enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
-- **Security type** - When selecting the security type for the VM, choose the Standard Security Type.  Choosing Trusted Launch or Confidential types will prevent the lustre module from being properly installed on the client.
+  - Be sure to [enable accelerated networking on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If this option isn't enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
+- **Security type** - When selecting the security type for the VM, choose the Standard Security Type.  Choosing Trusted Launch or Confidential types prevent the Lustre module from being properly installed on the client.
 
 The basic workflow is as follows:
 
@@ -38,9 +38,9 @@ The basic workflow is as follows:
 
 Each client that connects to the Lustre file system must have a Lustre client package that is compatible with the file system's Lustre version (currently 2.15).
 
-You can download pre-built and tested client packages for Azure Managed Lustre from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software).
+You can download prebuilt and tested client packages for Azure Managed Lustre from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
-Packages and kernel modules are available for these Linux operating systems. Click the links to go to the installation instructions.
+Packages and kernel modules are available for these Linux operating systems. Select the links to go to the installation instructions.
 
 - [AlmaLinux 8](install-rhel-8.md)
 - [CentOS Linux 7](install-rhel-7.md)
@@ -60,15 +60,15 @@ If you have an older Lustre client on your Linux system, follow the instructions
 
 ## Update a Lustre client to the current version
 
-If you've used client machines with an older version of Lustre, make sure you completely uninstall the previous Lustre client's kernel modules in addition to removing the software packages.
+If you're using client machines with an older version of Lustre, make sure you completely uninstall the previous Lustre client's kernel modules in addition to removing the software packages.
 
 Follow this procedure:
 
 1. Unmount the client machine from the Lustre cluster.
-1. Run this command to remove the kernel modules: `sudo lustre_rmmod`. Run the command twice, to make sure that everything has been removed.
+1. Run this command to remove the kernel modules: `sudo lustre_rmmod`. Run the command twice, to make sure that everything is removed.
 1. Reboot the system to make sure that all kernel modules are unloaded.
 1. Uninstall the old Lustre client packages.
-1. If you are also updating your Linux kernel version, install the new kernel now.
+1. If you're also updating your Linux kernel version, install the new kernel now.
 1. Reboot the system. <!-- This step is not strictly necessary, but testing has shown that it can prevent a wide variety of problems, including some problems that are difficult to diagnose. -->
 1. Install the Azure Managed Lustre-compatible client as described in this article.
 
@@ -109,8 +109,8 @@ sudo mount -t lustre -o noatime,flock 10.0.0.4@tcp:/lustrefs /azure-lustre-mount
 
 After your clients are connected to the file system, you can use the Azure Managed Lustre file system as you would any mounted file system. For example, you might perform one of the following tasks:
 
-- Access data from your integrated blob container: send the file request directly to the mount point. The create process pre-populates the file system metadata, and the file is added to the Lustre file system when it is read.
-- Add data to the file system (if you did not add a populated blob container at create time).
+- Access data from your integrated blob container: send the file request directly to the mount point. The create process populates the file system metadata, and the file is added to the Lustre file system when it's read.
+- Add data to the file system (if you didn't add a populated blob container at create time).
 - Start a compute job.
 
 > [!IMPORTANT]
