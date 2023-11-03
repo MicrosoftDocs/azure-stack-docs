@@ -27,7 +27,7 @@ In this release, you can deploy Azure Stack HCI using one of the following metho
 
 - **Deploy from an Azure Resource Manager(ARM) template**: Select this option to deploy an Azure Stack HCI cluster using an ARM Deployment Template and the corresponding Parameters file. An ARM template is a JSON file containing customized template expressions where you can define dynamic values and logic that determine the Azure resources to deploy. 
 
-    For more information, see [Deploy via ARM temaplate](../index.yml).
+    For more information, see [Deploy via ARM template](../index.yml).
 
 
 ## Deployment sequence
