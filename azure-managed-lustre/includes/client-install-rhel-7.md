@@ -1,6 +1,6 @@
 ---
-author: mvbishop
-ms.author: mayabishop
+author: pauljewellmsft
+ms.author: pauljewell
 ms.service: azure-stack
 ms.topic: include
 ms.date: 02/19/2023
