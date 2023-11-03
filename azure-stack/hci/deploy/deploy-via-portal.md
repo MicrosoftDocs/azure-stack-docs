@@ -26,7 +26,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Start the wizard and fill out the basics
 
 <!---1. Open the Azure portal and navigate to the Azure Stack HCI service (searching is an easy way) and then select **Deploy**.--->
-1. Open a web browser, navigate to <https://aka.ms/deployFromCloudPreview> and then select **Deploy**.
+1. Open a web browser, navigate to <https://aka.ms/IgnitePortal> and then select **Deploy**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
@@ -80,10 +80,12 @@ Choose whether to create a new configuration for this system or to load deployme
 
 ## Specify management settings
 
-1. Optionally enter a **Custom location name** that helps users identify this system when creating resources such as VMs on it. If you leave it blank, we'll use the system name for the location name.
-2. Enter an existing **Storage account** or create a new account to store the cluster witness file.
+1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
+2. Create a new **Storage account** to store the cluster witness file.
+<!---2. Enter an existing **Storage account** or create a new account to store the cluster witness file.
 
     You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
+--->
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
@@ -97,7 +99,7 @@ Choose whether to create a new configuration for this system or to load deployme
     This domain user account was created when the domain was prepared for deployment.
 7. Enter the **Local administrator** credentials for the servers.
 
-    The credentials must be identical on all servers in the system.
+    The credentials must be identical on all servers in the system. If the current password doesn't meet the complexity requirements, you must change it on all servers before proceeding.
 8. Select **Next**.
 
 ## Set the security level
@@ -120,5 +122,9 @@ Choose whether to create a new configuration for this system or to load deployme
 
 ## Validate and deploy the system
 
-1. Review the validation results, resolve any issues, and then select **Next**.
-2. Review the settings that will be used for deployment and then select **Deploy** to deploy the system.
+1. Review the validation results, resolve any actionable issues, and then select **Next**.
+
+    Don't select **Try again** while validation tasks are running as doing so can provide inaccurate results in this release.
+1. Review the settings that will be used for deployment and then select **Deploy** to deploy the system.
+
+The Deployments page then appears, which you can use to monitor the deployment progress. If the progress doesn't appear, wait a minute or two and then select **Refresh**.
