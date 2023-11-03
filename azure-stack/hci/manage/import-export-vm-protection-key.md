@@ -14,7 +14,7 @@ ms.date: 11/03/2023
 
 This article describes importing and exporting a VM guest state protection key on an Azure Stack HCI cluster.
 
-A VM guest state protection key is used to protect the VM guest state, like the vTPM state, while at rest in storage. It is not possible to boot up a Trusted launch VM without the guest state protection key. The key is stored in a key vault in the Azure Stack HCI cluster where VM is located.
+A VM guest state protection key is used to protect the VM guest state, like the vTPM state, while at rest in storage. It's not possible to boot up a Trusted launch VM without the guest state protection key. The key is stored in a key vault in the Azure Stack HCI cluster where VM is located.
 
 ## Export Trusted launch VM from source cluster and import it to a target cluster
 
