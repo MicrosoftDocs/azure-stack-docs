@@ -2,8 +2,8 @@
 title: What is Azure Managed Lustre?
 description: Use Azure Managed Lustre to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
 ms.topic: overview
-author: mvbishop
-ms.author: mayabishop
+author: pauljewellmsft
+ms.author: pauljewell
 ms.date: 06/28/2023
 ms.reviewer: mayabishop
 ms.custom: references_regions
