@@ -4,12 +4,12 @@ description: Learn how to apply operating system, service, and Solution Extensio
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/06/2023
+ms.date: 10/27/2023
 ---
 
 # Update your Azure Stack HCI, version 23H2 via PowerShell (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to apply a solution update to your Azure Stack HCI cluster via PowerShell.
 

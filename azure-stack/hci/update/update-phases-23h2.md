@@ -4,7 +4,7 @@ description: Understand the various phases of solution updates applied to Azure 
 author: alkohli
 ms.author: alkohl
 ms.topic: conceptual
-ms.date: 10/09/2023
+ms.date: 10/27/2023
 ---
 
 # Phases of Azure Stack HCI, version 23H2 updates (preview)
@@ -71,4 +71,4 @@ While the update installs, you can monitor the progress via your chosen interfac
 
 ## Next step
 
-Learn more about how to [Troubleshoot updates](../update/update-troubleshooting.md).
+Learn more about how to [Troubleshoot updates](../update/update-troubleshooting-23h2.md).

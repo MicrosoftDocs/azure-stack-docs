@@ -4,12 +4,12 @@ description: Learn how to troubleshoot solution updates applied to Azure Stack H
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/06/2023
+ms.date: 10/27/2023
 ---
 
 # Troubleshoot Azure Stack HCI, version 23H2 update (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to troubleshoot solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date.
 
@@ -74,4 +74,4 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
 
 ## Next steps
 
-Learn more about how to [Run updates via PowerShell](../update/update-via-powershell.md).
+Learn more about how to [Run updates via PowerShell](../update/update-via-powershell-23h2.md).

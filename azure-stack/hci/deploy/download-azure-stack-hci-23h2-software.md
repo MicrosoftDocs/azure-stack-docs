@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/09/2023
+ms.date: 11/02/2023
 ---
 
 # Download Azure Stack HCI, version 23H2 software (preview)
@@ -15,7 +15,7 @@ ms.date: 10/09/2023
 
 This article describes how to download the Azure Stack HCI, version 23H2 software from the Azure portal.
 
-The first step in deploying Azure Stack HCI, version 23H2 is to download Azure Stack HCI software from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the Azure Stack HCI software should be pre-installed. In that case, you can skip this step and move on to [Create an Azure Stack HCI cluster](../index.yml).
+The first step in deploying Azure Stack HCI, version 23H2 is to download Azure Stack HCI software from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the Azure Stack HCI software should be pre-installed. In that case, you can skip this step and move on to [Register your servers and assign permissions for Azure Stack HCI deployment](./deployment-arc-register-server-permissions.md).
 
 ## Prerequisites
 
@@ -46,14 +46,16 @@ Follow these steps to download the Azure Stack HCI software:
     
 1. On the **Download Azure Stack HCI** page on the right, do the following:
     1. Choose software version. By default, the latest generally available version of Azure Stack HCI is selected.
-    1. Choose language from the dropdown list. For example, select **English** to download the English version of the software. To download the VHDX in English, select **English VHDX** from the dropdown list.
+    1. Choose language from the dropdown list. For example, select **English** to download the English version of the software. 
+    
+        We recommend that you use the ISO for the language you wish to install in. You should download a VHDX only if you are performing virtual deployments. To download the VHDX in English, select **English VHDX** from the dropdown list.
     1. Select the **Azure Stack HCI, version 23H2 (Preview)** option.
     1. Review service terms and privacy notice. <!--link to privacy statement-->
     1. Select the license terms and privacy notice checkbox.
-    1. Select the **Download Azure Stack HCI** button. This action begins the download. Use the downloaded file to install the software on each server that you want to cluster.
+    1. Select the **Download Azure Stack HCI** button. This action begins the download. Use the downloaded ISO file to install the software on each server that you want to cluster.
 
         :::image type="content" source="media/download-azure-stack-hci-23h2-software/download-azure-stack-hci-23h2-software.png" alt-text="Screenshot of the Download Azure Stack HCI version 23H2 page." lightbox="media/download-azure-stack-hci-23h2-software/download-azure-stack-hci-23h2-software.png":::
 
 ## Next steps
 
-- [Install the Azure Stack HCI, version 23H2 operating system](../index.yml).
+- [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md).
