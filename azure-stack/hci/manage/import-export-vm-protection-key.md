@@ -121,7 +121,7 @@ If the problem persists, contact Microsoft support.
 
 - "Trusted launch" is available only for Azure Arc managed VMs on Azure Stack HCI. Once an Arc VM with a security type of "Trusted launch" is created, view its VM properties to verify that the security type is "Trusted launch".
 
-  :::image type="content" source="media/import-export-vm-protection-key/verify-trusted-launch.png" alt-text="View VM properties to verify that the security type is "Trusted launch". lightbox="media/import-export-vm-protection-key/verify-trusted-launch.png":::
+  :::image type="content" source="media/import-export-vm-protection-key/verify-trusted-launch.png" alt-text="View VM properties to verify that the security type is Trusted launch.":::
 
 - To verify "Trusted launch" VM status, you can also run the following Hyper-V command on the node where the VM is located:
 
