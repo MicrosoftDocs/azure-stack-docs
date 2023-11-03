@@ -64,9 +64,9 @@ The following sections describe each task in greater detail.
 
 Because the Azure Managed Lustre file system operates within a private virtual network, your Kubernetes containers must have a subnet in common with the Lustre cluster. There are three ways to configure subnet access
 
-- [Option 1](#option-1-create-an-aks-subnet-inside-the-azure-managed-lustre-vnet): Create an AKS subnet inside the Azure Managed Lustre virtual network
-- [Option 2](#option-2-use-azure-cni-in-aks-and-peer-the-vnets): Use Azure CNI in AKS, and peer the VNets
-- [Option 3](#option-3-use-aks-kubenet-and-peer-its-vnet-with-the-azure-managed-lustre-vnet): Use AKS `kubenet`, and peer its virtual network with the Azure Managed Lustre virtual network
+- [Option 1](#option-1-create-an-aks-subnet-inside-the-azure-managed-lustre-virtual-network): Create an AKS subnet inside the Azure Managed Lustre virtual network
+- [Option 2](#option-2-use-azure-cni-in-aks-and-peer-the-virtual-networks): Use Azure CNI in AKS, and peer the VNets
+- [Option 3](#option-3-use-aks-kubenet-and-peer-its-virtual-network-with-the-azure-managed-lustre-virtual-network): Use AKS `kubenet`, and peer its virtual network with the Azure Managed Lustre virtual network
 
 ### Option 1: Create an AKS subnet inside the Azure Managed Lustre virtual network
 
@@ -82,7 +82,7 @@ You can create a new subnet within your Azure Managed Lustre virtual network, an
 
 - If you host the AKS cluster within your Azure Managed Lustre subnet, make sure your Lustre file system subnet has enough IP addresses to support both the Azure Managed Lustre system and the AKS cluster.
 
-### Option 2: Use Azure CNI in AKS, and peer the VNets
+### Option 2: Use Azure CNI in AKS, and peer the virtual networks
 
 A second option is to create a new virtual network and subnet, configure the subnet with Azure CNI networking in AKS, and then peer the new AKS virtual network with the virtual network that contains your Lustre file system.
 
