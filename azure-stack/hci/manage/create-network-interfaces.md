@@ -53,7 +53,7 @@ To create a VM, you'll first need to create a network interface on your logical 
 
 # [Azure CLI](#tab/azurecli)
 
-## Sign in and set subscription
+### Sign in and set subscription
 
 Follow these steps to sign in to Azure CLI and set the subscription to use. Replace the parameters in `< >` with the appropriate values.
 
