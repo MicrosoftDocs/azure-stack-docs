@@ -228,7 +228,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
 1. Go through the tabs and assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
 
-    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::
+    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::
 
 1. Verify that the user has the `Key Vault Administrator` role assigned.
 
@@ -240,5 +240,4 @@ This section describes how to assign Azure permissions for deployment from the A
 After setting up the first server in your cluster, you're ready to deploy using Azure portal:
 
 - [Deploy using Azure portal](./deploy-via-portal.md).
-
 
