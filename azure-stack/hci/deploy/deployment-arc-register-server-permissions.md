@@ -206,20 +206,31 @@ Before you begin, make sure you've done the following:
     Use -Passthru parameter to return results as a PSObject.   
     ```
 
-1. After the script has completed successfully on all the servers, verify that your servers are registered with Arc. Go to Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.
+1. After the script has completed successfully on all the servers, verify that:
 
-    :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered.png" alt-text="Screenshot of the Azure Stack HCI servers in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered.png":::
+
+    1. Your servers are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.
+
+        :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Stack HCI servers in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
+
+    1. The mandatory Azure Stack HCI extensions are installed on your servers. From the resource group, select the registered server. Go to the **Extensions**. The mandatory extensions show up in the right pane.
+
+        :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Stack HCI registered servers with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
 
 ## Assign required permissions for deployment
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
 
 
-1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select + Add and from the dropdown list, select **Add role assignment**.
+1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
+
+    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::
+
+1. Verify that the user has the `Key Vault Administrator` role assigned.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
 
