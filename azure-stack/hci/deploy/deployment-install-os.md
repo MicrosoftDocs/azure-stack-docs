@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/26/2023
+ms.date: 11/02/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -79,7 +79,11 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 ## Configure the operating system using SConfig
 
-You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 23H2 after installation as follows:
+You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 23H2 after installation.
+
+**Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains:  lowercase character, an uppercase character, a numeral, and  a special character.**
+
+Follow these steps to configure the operating system using *SConfig*:
 
 1. Configure networking as per your environment.
 
@@ -93,7 +97,10 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 1. Restart the servers.
 
-1. Set the local administrator credentials to be identical across all servers.
+1. Set the local administrator credentials to be identical across all servers. 
+
+    > [!NOTE]
+    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains:  lowercase character, an uppercase character, a numeral, and  a special character.
 
 1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use *SConfig* to run driver installation apps. After the install is complete, restart your servers again.
 

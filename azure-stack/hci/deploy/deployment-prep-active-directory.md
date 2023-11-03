@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/01/2023
+ms.date: 11/02/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -89,7 +89,7 @@ To prepare and configure Active Directory, follow these steps:
 
 1. When prompted, provide the username and password for the deployment. 
     1. Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.
-    1. Make sure that the password meets complexity and length requirements as described in [Active Directory preparation module](#active-directory-preparation-module). For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).
+    1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 12 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.** <!--For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).-->
 
 
     Here is a sample output from a successful completion of the script:
