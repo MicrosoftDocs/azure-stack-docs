@@ -157,7 +157,7 @@ Before you begin, make sure you've done the following:
     Total Physical Memory:         588,419 MB
     PowerShell version: 5.1.25398.469
     .NET Framework version: 4.8.9032
-    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\ADMINI~1\AppData\Local\Temp\2\AzureConnectedMachineAgent.msi
+    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\AzureConnectedMachineAgent.msi
     Installing agent package
     Installation of azcmagent completed successfully
     0
@@ -172,27 +172,27 @@ Before you begin, make sure you've done the following:
       20% [==>            ]
       30% [===>           ]
       INFO    Creating resource in Azure...
-    Correlation ID=e5ac2942-c348-4362-a4ce-54655f3ba3b6 Resource ID=/subscriptions/e4c958c2-aa6f-4536-951f-0226d7f3dc7c/resourceGroups/ASZCSS05-Resources/providers/Microsoft.HybridCompute/machines/ASZCSS05-S1-N02
+    Correlation ID=<Correlation ID>=/subscriptions/<Subscription ID>/resourceGroups/myashci-rg/providers/Microsoft.HybridCompute/machines/ms309
       60% [========>      ]
       80% [===========>   ]
      100% [===============]
       INFO    Connected machine to Azure
-    INFO    Machine overview page: https://portal.azure.com/#@72f988bf-86f1-41af-91ab-2d7cd011db47/resource/subscriptions/e4c958c2-aa6f-4536-951f-0226d7f3dc7c/resourceGroups/ASZCSS05-Resources/providers/Microsoft.HybridCompute/machines/ASZCSS05-S1-N02/overview
+    INFO    Machine overview page: https://portal.azure.com/
     Connected Azure ARC agent successfully
     Successfully got the content from IMDS endpoint
-    Successfully got Object Id for Arc Installation 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Assigning Azure Stack HCI Device Management Role to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Sucessfully assigned Azure Stack HCI Device Management Role to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    Successfully got Object Id for Arc Installation <Object ID>
+    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: <Object ID>
+    Assigning Azure Stack HCI Device Management Role to Object : <Object ID>
+    $Successfully assigned Azure Stack HCI Device Management Role to Object Id <Object ID>
     Successfully assigned permission Azure Stack HCI Device Management Service Role to create or update Edge Devices on the resource group
-    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Assigning Azure Connected Machine Resource Manager to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Sucessfully assigned Azure Connected Machine Resource Manager to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Successfully assigned the Azure Connected Machine Resource Nanager role on the resource group
-    $Checking if Reader is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Assigning Reader to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Sucessfully assigned Reader to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Successfully assigned the reader Resource Nanager role on the resource group
+    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: <Object ID>
+    Assigning Azure Connected Machine Resource Manager to Object : <Object ID>
+    $Successfully assigned Azure Connected Machine Resource Manager to Object Id <Object ID>
+    Successfully assigned the Azure Connected Machine Resource Manager role on the resource group
+    $Checking if Reader is assigned already for SPN with Object ID: <Object ID>
+    Assigning Reader to Object : <Object ID>
+    $Successfully assigned Reader to Object Id <Object ID>
+    Successfully assigned the reader Resource Manager role on the resource group
     Installing  TelemetryAndDiagnostics Extension
     Successfully triggered  TelemetryAndDiagnostics Extension installation
     Installing  DeviceManagement Extension
