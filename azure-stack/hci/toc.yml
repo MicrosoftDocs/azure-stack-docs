@@ -440,6 +440,8 @@
                 href: manage/virtual-machine-image-linux-sysprep.md
             - name: Create virtual networks
               href: manage/create-virtual-networks.md
+            - name: Create network interfaces
+              href: manage/create-network-interfaces.md
           - name: Create Arc VMs
             href: manage/create-arc-virtual-machines.md
           - name: Manage VM extensions
