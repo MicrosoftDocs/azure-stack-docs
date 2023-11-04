@@ -390,7 +390,7 @@
         href: deploy/deployment-introduction.md
       - name: Complete prerequisites
         href: deploy/deployment-prerequisites.md
-      - name: 0. View deployment checklist
+      - name: View deployment checklist
         href: deploy/deployment-checklist.md
       - name: 1. Prepare Active Directory
         href: deploy/deployment-prep-active-directory.md
@@ -462,8 +462,8 @@
       items:
         - name: Alerts via Azure monitor
           href: manage/health-alerts-via-azure-monitor-alerts.md
-        - name: Metrics via Azure portal
-          href: ../index.yml
+        - name: Metrics
+          href: manage/monitor-cluster-with-metrics.md
         - name: ReFS dedupe and compression workbooks
           href: manage/monitor-features.md
     - name: Migrate
