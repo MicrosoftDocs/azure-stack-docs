@@ -1,6 +1,6 @@
 ---
-title: Deploy an Azure Stack HCI system using the Azure portal
-description: Learn how to deploy an Azure Stack HCI system from the Azure portal
+title: Deploy an Azure Stack HCI system using the Azure portal (preview)
+description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
 author: JasonGerend
 ms.topic: how-to
 ms.date: 11/11/2023
@@ -8,15 +8,15 @@ ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
-# Deploy an Azure Stack HCI, version 23H2 Preview system using the Azure portal
+# Deploy an Azure Stack HCI, version 23H2 system using the Azure portal (preview)
 
-This article helps you deploy an Azure Stack HCI, version 23H2 Preview system for testing using the Azure portal.
+This article helps you deploy an Azure Stack HCI, version 23H2 system for testing using the Azure portal.
 
 To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
 ## Prerequisites
 
-* Completion of Connect servers to Arc
+* Completion of Connect servers to Arc. For more information, see [Connect servers to Arc](./deployment-arc-register-server-permissions.md).
 <!---* Completion of [Connect servers to Arc](connect-to-arc.md)--->
 * Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -26,7 +26,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Start the wizard and fill out the basics
 
 <!---1. Open the Azure portal and navigate to the Azure Stack HCI service (searching is an easy way) and then select **Deploy**.--->
-1. Open a web browser, navigate to <https://aka.ms/deployFromCloudPreview> and then select **Deploy**.
+1. Open a web browser, navigate to <https://aka.ms/IgnitePortal> and then select **Deploy cluster (preview)**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
@@ -36,6 +36,9 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 6. Select the server or servers you want to deploy.
+
+    :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
+ 
 7. Select **Validate**, and then **Next**.
 
 ## Specify the deployment settings
@@ -46,6 +49,8 @@ Choose whether to create a new configuration for this system or to load deployme
    * **New configuration** - Specify all of the settings to deploy this system.
    * **Template spec** - Load the settings to deploy this system from a template spec stored in your Azure subscription.
    * **Quickstart template**  - Load the settings to deploy your system from a template created by your hardware vendor or Microsoft.
+
+    :::image type="content" source="./media/deploy-via-portal/configuration-tab-1.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/configuration-tab-1.png":::
 2. Select **Next**.
 
 ## Specify network settings
@@ -75,7 +80,12 @@ Choose whether to create a new configuration for this system or to load deployme
 
     Make sure to use high-speed adapters for the intent that includes storage traffic.
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
+
 5. Allocate a block of static IP addresses on your management network to use for Azure Stack HCI and for services such as Azure Arc. Omit addresses already used by the servers.
+
+    :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
+
 6. Select **Next**.
 
 ## Specify management settings
@@ -98,6 +108,9 @@ Choose whether to create a new configuration for this system or to load deployme
 7. Enter the **Local administrator** credentials for the servers.
 
     The credentials must be identical on all servers in the system.
+
+    :::image type="content" source="./media/deploy-via-portal/management-tab-1.png" alt-text="Screenshot of the Management tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-1.png":::
+
 8. Select **Next**.
 
 ## Set the security level
@@ -105,6 +118,9 @@ Choose whether to create a new configuration for this system or to load deployme
 1. Select the security level for your system's infrastructure:
     * **Recommended security settings** - Sets the highest security settings.
     * **Customized security settings** - Lets you turn off security settings.
+
+    :::image type="content" source="./media/deploy-via-portal/security-tab-1.png" alt-text="Screenshot of the Security tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/security-tab-1.png":::
+
 2. Select **Next**.
 
 ## Optionally change advanced settings and apply tags
@@ -112,13 +128,23 @@ Choose whether to create a new configuration for this system or to load deployme
 1. Choose whether to create volumes for workloads in addition to the required infrastructure volumes used by Azure Stack HCI. You can create more volumes later.
     * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly-provisioned volume per server for workloads to use. This is in addition to the required one infrastructure volume per server.
     * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server.
+
+    :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
+
 2. Select **Next**.
 3. Optionally add a tag to the Azure Stack HCI resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
+
+    :::image type="content" source="./media/deploy-via-portal/tags-tab-1.png" alt-text="Screenshot of the Tags tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/tags-tab-1.png":::
+
 4. Select **Next**.
 
 ## Validate and deploy the system
 
 1. Review the validation results, resolve any issues, and then select **Next**.
-2. Review the settings that will be used for deployment and then select **Deploy** to deploy the system.
+2. Review the settings that will be used for deployment.
+ 
+    :::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::
+
+3. Select **Deploy** to deploy the system.
