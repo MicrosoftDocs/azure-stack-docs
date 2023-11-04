@@ -462,9 +462,9 @@
       items:
         - name: Alerts via Azure monitor
           href: manage/health-alerts-via-azure-monitor-alerts.md
-        - name: Metrics
+        - name: Via metrics
           href: manage/monitor-cluster-with-metrics.md
-        - name: ReFS dedupe and compression workbooks
+        - name: Via ReFS dedupe and compression workbooks
           href: manage/monitor-features.md
     - name: Migrate
       items: 
