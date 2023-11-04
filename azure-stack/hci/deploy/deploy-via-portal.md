@@ -16,9 +16,9 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 
 ## Prerequisites
 
-* Completion of Connect servers to Arc. For more information, see [Connect servers to Arc](./deployment-arc-register-server-permissions.md).
-<!---* Completion of [Connect servers to Arc](connect-to-arc.md)--->
-* Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). 
+<!---* Completion of [Connect servers to Arc](connect-to-arc.md)
+* Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).-->
 
 > [!NOTE]
 > To use this article to deploy a three-node cluster, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node clusters with storage network adapters that are directly connected to each server without a switch is accomplished via ARM templates and is currently in Private Preview.
@@ -31,7 +31,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 
    All resources in the Azure subscription are billed together.
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
-4. Select the **Region** to store this system's Azure resources—in this preview you must use either **EastUS** or **Western Europe**.
+4. Select the **Region** to store this system's Azure resources—in this preview you must use either **East US** or **West Europe**.
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
