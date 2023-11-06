@@ -39,7 +39,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Add VM image from Azure Marketplace
 
-You'll create a VM image starting from an Azure Marketplace image and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an Azure Marketplace image and then use this image to deploy VMs on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -76,7 +76,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `resource-group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `resource-group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
     | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
@@ -192,7 +192,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
     1. **Subscription.** Select a subscription to associate with your VM image.
 
-    1. **Resource group.** Create new or select an existing resource group that you'll associate with the VM image.
+    1. **Resource group.** Create new or select an existing resource group that you associate with the VM image.
 
     1. **Custom location.** Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster.
 
@@ -259,7 +259,7 @@ You might want to view the properties of VM images before you use the image to c
 
 ## Update VM image
 
-When a new updated image is available in Azure Marketplace, the VM images on your Azure Stack HCI cluster become stale and should be updated. The update operation is not an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
+When a new updated image is available in Azure Marketplace, the VM images on your Azure Stack HCI cluster become stale and should be updated. The update operation isn't an in-place update of the image. Rather you can see for which VM images an updated image is available, and select images to update. After you update, the create VM image operation uses the new updated image.
 
 To update a VM image, use the following steps in Azure portal.
 

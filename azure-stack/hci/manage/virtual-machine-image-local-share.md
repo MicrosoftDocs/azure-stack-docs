@@ -37,7 +37,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Add VM image from image in local share
 
-You'll create a VM image starting from an image in a local share of your cluster and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an image in a local share of your cluster and then use this image to deploy VMs on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -75,8 +75,8 @@ Follow these steps to create a VM image using the Azure CLI.
     
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
-    | `subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-    | `resource_group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+    | `subscription`   | Resource group for Azure Stack HCI cluster that you associate with this image.        |
+    | `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
     | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
     | `image-path`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
     | `name`| Path to the source gallery image (VHDX only) on your cluster. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
@@ -179,7 +179,7 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
     1. **Subscription.** Select a subscription to associate with your VM image.
 
-    1. **Resource group.** Create new or select an existing resource group that you'll associate with the VM image.
+    1. **Resource group.** Create new or select an existing resource group that you associate with the VM image.
 
     1. **Save image as.** Enter a name for your VM image.
 

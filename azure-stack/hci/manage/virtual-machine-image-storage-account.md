@@ -31,9 +31,9 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you'll use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current&view=doc-intel-3.1.0).
+- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current&view=doc-intel-3.1.0).
 
-- Make sure that you are using a page blob image. Only page blob images are supported for VM images via the Azure Storage account.
+- Make sure that you're using a page blob image. Only page blob images are supported for VM images via the Azure Storage account.
 
 # [Azure portal](#tab/azureportal)
 
@@ -44,7 +44,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Add VM image from Azure Storage account
 
-You'll create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -82,11 +82,11 @@ The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `resource_group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
+| `subscription`   | Resource group for Azure Stack HCI cluster that you associate with this image.        |
+| `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
 | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. If your container that has the image has anonymous read access, then you can specify the blob URL (select the blob URL and right click to view the properties and then copy blob URL).|
+| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. If your container that has the image has anonymous read access, then you can specify the blob URL (select the blob URL and right select to view the properties and then copy blob URL).|
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:
@@ -175,7 +175,7 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
 
     1. **Subscription** Select a subscription to associate with your VM image.
 
-    1. **Resource group** Create new or select an existing resource group that you'll associate with the VM image.
+    1. **Resource group** Create new or select an existing resource group that you associate with the VM image.
     
     1. **Save image as** Enter a name for your VM image.
 
