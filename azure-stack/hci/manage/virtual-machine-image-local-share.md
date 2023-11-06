@@ -136,7 +136,7 @@ Command group 'azurestackhci' is experimental and under development. Reference a
         "status": "Succeeded"
       }
     },
-    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-storagepath",
     "version": {
       "name": null,
       "properties": {
@@ -149,7 +149,7 @@ Command group 'azurestackhci' is experimental and under development. Reference a
   "resourceGroup": "myhci-rg",
   "systemData": {
     "createdAt": "2023-11-02T06:15:10.450908+00:00",
-    "createdBy": "vlakshmanan@microsoft.com",
+    "createdBy": "guspinto@contoso.com",
     "createdByType": "User",
     "lastModifiedAt": "2023-11-02T06:15:56.689323+00:00",
     "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
