@@ -460,9 +460,9 @@
             href: manage/repair-server.md
     - name: Monitor
       items:
-        - name: Alerts via Azure monitor
+        - name: Alerts via Azure Monitor
           href: manage/health-alerts-via-azure-monitor-alerts.md
-        - name: Via metrics
+        - name: Via Azure Monitor Metrics
           href: manage/monitor-cluster-with-metrics.md
         - name: Via ReFS dedupe and compression workbooks
           href: manage/monitor-features.md

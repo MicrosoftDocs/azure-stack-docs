@@ -1,16 +1,16 @@
 ---
-title: Monitor Azure Stack HCI with Metrics (preview)
-description: Monitor Azure Stack HCI with Metrics.
+title: Monitor Azure Stack HCI with Azure Monitor Metrics (preview)
+description: Monitor Azure Stack HCI with Azure Monitor Metrics.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/25/2023
+ms.date: 11/05/2023
 ---
 
-# Monitor Azure Stack HCI with Metrics (preview)
+# Monitor Azure Stack HCI with Azure Monitor Metrics (preview)
 
 > Applies to: Azure Stack HCI, version 23H2 (preview)
 
@@ -126,7 +126,7 @@ This section lists the platform metrics that are collected for the Azure Stack H
 
 | Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
 |--|--|--|--|--|--|
-| Percentage CPU | Percentage of processor time that is not idle. | Percent | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName |
+| Percentage CPU | Percentage of processor time that isn't idle. | Percent | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName |
 | Percentage CPU Guest | Percentage of processor time used for guest (virtual machine) demand. | Percent | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName |
 | Percentage CPU Host | Percentage of processor time used for host demand. | Percent | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName |
 | Cluster node Memory Total | The total physical memory of the server. | Bytes | Sum | Minimum, Maximum, Average | ClusterName, HostName |
@@ -178,19 +178,19 @@ This section lists the platform metrics that are collected for the Azure Stack H
 | VHD Write Bytes/Sec | Quantity of data written to the virtual hard disk per second. | Bytes Per Second | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName, VHD |
 | VHD Read and Write Bytes/Sec | Total quantity of data read from or written to the virtual hard disk per second. | Bytes Per Second | Sum | Minimum, Maximum, Sum, Count | ClusterName, HostName, VHD |
 | VHD Latency Average | Average latency of all operations to or from the virtual hard disk. | Seconds | Maximum | Minimum, Maximum, Average, Sum | ClusterName, HostName, VHD |
-| VHD Size Current | The current file size of the virtual hard disk, if dynamically expanding. If fixed, the series is not collected. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, Instance |
+| VHD Size Current | The current file size of the virtual hard disk, if dynamically expanding. If fixed, the series isn't collected. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, Instance |
 | VHD Size Maximum | The maximum size of the virtual hard disk, if dynamically expanding. If fixed, the is the size. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, VHD |
 
 ### Metrics for VMs
 
 | Metric | Description | Unit | Default Aggregation Type | Supported Aggregation Type | Dimensions |
 |--|--|--|--|--|--|
-| VM Percentage CPU | Percentage the virtual machine is using of its host server’s processor(s). | Percent | Maximum | Minimum, Maximum, Sum, Count | ClusterName, Hostname,VM |
+| VM Percentage CPU | Percentage the virtual machine is using of its host server’s processor(s). | Percent | Maximum | Minimum, Maximum, Sum, Count | ClusterName, Hostname, VM |
 | VM Memory Assigned | The quantity of memory assigned to the virtual machine. | Bytes | Sum | Minimum, Maximum | ClusterName, HostName, LUN, VM |
 | VM Memory Available | The quantity of memory that remains available, of the amount assigned. | Bytes | Maximum | Minimum, Maximum, Sum, Count | ClusterName, HostName, VM, LUN |
 | VM Memory Used | VM Memory Used | Bytes | Maximum | Minimum, Maximum | ClusterName, HostName, VM, LUN |
-| VM Memory Maximum | If using dynamic memory, this is the maximum quantity of memory that may be assigned to the virtual machine. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
-| VM Memory Minimum | If using dynamic memory, this is the minimum quantity of memory that may be assigned to the virtual machine. | Bytes | Minimum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
+| VM Memory Maximum | If using dynamic memory, this is the maximum quantity of memory that might be assigned to the virtual machine. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
+| VM Memory Minimum | If using dynamic memory, this is the minimum quantity of memory that migth be assigned to the virtual machine. | Bytes | Minimum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
 | VM Memory Pressure | The ratio of memory demanded by the virtual machine over memory allocated to the virtual machine. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
 | VM Memory Startup | The quantity of memory required for the virtual machine to start. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
 | VM Memory Total | Total memory. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, VM, LUN |
@@ -207,7 +207,7 @@ This section lists the platform metrics that are collected for the Azure Stack H
 | Disk Read and Write Operations/Sec | Total number of read or write operations per second completed by this volume. | Count Per Second | Sum | Minimum, Maximum, Sum, Count | ClusterName, HostName, LUN |
 | Disk Read Bytes/Sec | Quantity of data read from this volume per second. | Bytes Per Second | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName, LUN |
 | Disk Write Bytes/Sec | Quantity of data written to this volume per second. | Bytes Per Second | Maximum | Minimum, Maximum, Average, Sum, Count | ClusterName, HostName, LUN |
-| Disk Read and Write | Total quantity of data read from or written to this volume per second. | Bytes Per Second | Sum | Minimum, Maximum, Sum, Count | ClusterName,HostName, LUN |
+| Disk Read and Write | Total quantity of data read from or written to this volume per second. | Bytes Per Second | Sum | Minimum, Maximum, Sum, Count | ClusterName, HostName, LUN |
 | Volume Latency Read | Average latency of read operations from this volume. | Seconds | Maximum | Minimum, Maximum, Average, Sum | ClusterName, HostName, LUN |
 | Volume Latency Write | Average latency of write operations to this volume. | Seconds | Maximum | Minimum, Maximum, Average, Sum | ClusterName, HostName, LUN |
 | Volume Latency Average | Average latency of all operations to or from this volume. | Seconds | Maximum | Minimum, Maximum, Sum | ClusterName, HostName, LUN |
@@ -219,4 +219,4 @@ To see in-depth information about how these metrics are collected, see [Performa
 ## Next steps
 
 - [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md)
-- [Monitor multiple Azure stack HCI clusters with Insights](./monitor-hci-multi.md)
+- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md)
