@@ -190,7 +190,7 @@ This section lists the platform metrics that are collected for the Azure Stack H
 | VM Memory Available | The quantity of memory that remains available, of the amount assigned. | Bytes | Maximum | Minimum, Maximum, Sum, Count | ClusterName, HostName, VM, LUN |
 | VM Memory Used | VM Memory Used | Bytes | Maximum | Minimum, Maximum | ClusterName, HostName, VM, LUN |
 | VM Memory Maximum | If using dynamic memory, this is the maximum quantity of memory that might be assigned to the virtual machine. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
-| VM Memory Minimum | If using dynamic memory, this is the minimum quantity of memory that migth be assigned to the virtual machine. | Bytes | Minimum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
+| VM Memory Minimum | If using dynamic memory, this is the minimum quantity of memory that might be assigned to the virtual machine. | Bytes | Minimum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
 | VM Memory Pressure | The ratio of memory demanded by the virtual machine over memory allocated to the virtual machine. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
 | VM Memory Startup | The quantity of memory required for the virtual machine to start. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, LUN, VM |
 | VM Memory Total | Total memory. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, VM, LUN |
