@@ -179,7 +179,7 @@ This section lists the platform metrics that are collected for the Azure Stack H
 | VHD Read and Write Bytes/Sec | Total quantity of data read from or written to the virtual hard disk per second. | Bytes Per Second | Sum | Minimum, Maximum, Sum, Count | ClusterName, HostName, VHD |
 | VHD Latency Average | Average latency of all operations to or from the virtual hard disk. | Seconds | Maximum | Minimum, Maximum, Average, Sum | ClusterName, HostName, VHD |
 | VHD Size Current | The current file size of the virtual hard disk, if dynamically expanding. If fixed, the series isn't collected. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, Instance |
-| VHD Size Maximum | The maximum size of the virtual hard disk, if dynamically expanding. If fixed, the is the size. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, VHD |
+| VHD Size Maximum | The maximum size of the virtual hard disk, if dynamically expanding. | Bytes | Maximum | Minimum, Maximum, Average | ClusterName, HostName, VHD |
 
 ### Metrics for VMs
 
