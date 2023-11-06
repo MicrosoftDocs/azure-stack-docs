@@ -8,12 +8,12 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/11/2023
+ms.date: 11/06/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
@@ -77,7 +77,7 @@ Follow these steps to create a VM image using the Azure CLI.
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
     | `resource-group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
     Here's a sample output:
@@ -85,7 +85,7 @@ Follow these steps to create a VM image using the Azure CLI.
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "myhci-rg"
-    PS C:\Users\azcli> $location = "eastus2euap"
+    PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $ostype = "Windows"
     ```
 
@@ -110,7 +110,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365 | 19044.2486.230110 |
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "<VM image name>" --os-type $ostype --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.707.220609"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "<VM image name>" --os-type $ostype --offer "windowsserver" --publisher "<Publisher name>" --sku "<SKU>" --version "<Version number>"
     ```
 
     A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
@@ -118,55 +118,62 @@ Follow these steps to create a VM image using the Azure CLI.
 Here's a sample output:
 
 ```
-PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "cl04" --query id -o tsv)
+PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
 PS C:\Users\azcli> $customLocationID
 /subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/cl04
-PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location lLocation --name "marketplacetest03" --os-type $ostype --offer "<Offer>" --publisher "<Publisher>" --sku "<SKU>" --version "<Version number>"
+PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "myhci-marketplaceimage" --os-type $ostype --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.2031.231006" --storage-path-id $storagepathid
 {
- "extendedLocation": {
- "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/cl04",
- "type": "CustomLocation"
- },
- "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest03",
- "location": "eastus2euap",
- "name": "marketplacetest03",
- "properties": {
-    "containerName": null,
-    "identifier": {
-    "offer": "windowsserver",
-    "publisher": "microsoftwindowsserver",
-    "sku": "2022-datacenter-azure-edition-core"
-    },
-  "imagePath": null,
-  "provisioningState": "Succeeded",
-  "resourceName": "marketplacetest03",
-  "status": {
-    "downloadStatus": {},
-    "provisioningStatus": {
-    "operationId": "<Operation ID>",
-      "status": "Succeeded"
-    }
+  "extendedLocation": {
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+    "type": "CustomLocation"
   },
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/myhci-marketplaceimage",
+  "location": "eastus",
+  "name": "myhci-marketplaceimage",
+  "properties": {
+    "identifier": {
+      "offer": "windowsserver",
+      "publisher": "microsoftwindowsserver",
+      "sku": "2022-datacenter-azure-edition-core"
+    },
+    "imagePath": null,
+    "osType": "Windows",
+    "provisioningState": "Succeeded",
+    "status": {
+      "downloadStatus": {
+        "downloadSizeInMB": 6750
+      },
+      "progressPercentage": 98,
+      "provisioningStatus": {
+        "operationId": "13be90e0-a780-45bf-a84a-ae91b6e5e468*A380D53083FF6B0A3A157ED7DFD00D33F6B3D40D5559D11AEAED6AD68F7F1A4A",
+        "status": "Succeeded"
+      }
+    },
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
     "version": {
-      "name": "20348.707.220609",
+      "name": "20348.2031.231006",
+      "properties": {
         "storageProfile": {
-          "osDiskImage": {}
+          "osDiskImage": {
+            "sizeInMB": 130050
+          }
         }
       }
     }
   },
   "resourceGroup": "myhci-rg",
   "systemData": {
-    "createdAt": "2022-08-01T22:29:11.074104+00:00",
-    "createdBy": "guspinto@microsoft.com",
+    "createdAt": "2023-10-27T21:43:15.920502+00:00",
+    "createdBy": "aszregistration@microsoft.com",
     "createdByType": "User",
-    "lastModifiedAt": "2022-08-01T22:36:12.900694+00:00",
-    "lastModifiedBy": "<ID>",
+    "lastModifiedAt": "2023-10-27T22:06:15.092321+00:00",
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
     "lastModifiedByType": "Application"
   },
   "tags": null,
   "type": "microsoft.azurestackhci/marketplacegalleryimages"
 }
+
 PS C:\Users\azcli>
 ```
 
