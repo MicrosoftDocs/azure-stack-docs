@@ -157,7 +157,7 @@ Before you begin, make sure you've done the following:
     Total Physical Memory:         588,419 MB
     PowerShell version: 5.1.25398.469
     .NET Framework version: 4.8.9032
-    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\ADMINI~1\AppData\Local\Temp\2\AzureConnectedMachineAgent.msi
+    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\AzureConnectedMachineAgent.msi
     Installing agent package
     Installation of azcmagent completed successfully
     0
@@ -172,27 +172,27 @@ Before you begin, make sure you've done the following:
       20% [==>            ]
       30% [===>           ]
       INFO    Creating resource in Azure...
-    Correlation ID=e5ac2942-c348-4362-a4ce-54655f3ba3b6 Resource ID=/subscriptions/e4c958c2-aa6f-4536-951f-0226d7f3dc7c/resourceGroups/ASZCSS05-Resources/providers/Microsoft.HybridCompute/machines/ASZCSS05-S1-N02
+    Correlation ID=<Correlation ID>=/subscriptions/<Subscription ID>/resourceGroups/myashci-rg/providers/Microsoft.HybridCompute/machines/ms309
       60% [========>      ]
       80% [===========>   ]
      100% [===============]
       INFO    Connected machine to Azure
-    INFO    Machine overview page: https://portal.azure.com/#@72f988bf-86f1-41af-91ab-2d7cd011db47/resource/subscriptions/e4c958c2-aa6f-4536-951f-0226d7f3dc7c/resourceGroups/ASZCSS05-Resources/providers/Microsoft.HybridCompute/machines/ASZCSS05-S1-N02/overview
+    INFO    Machine overview page: https://portal.azure.com/
     Connected Azure ARC agent successfully
     Successfully got the content from IMDS endpoint
-    Successfully got Object Id for Arc Installation 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Assigning Azure Stack HCI Device Management Role to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Sucessfully assigned Azure Stack HCI Device Management Role to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
+    Successfully got Object Id for Arc Installation <Object ID>
+    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: <Object ID>
+    Assigning Azure Stack HCI Device Management Role to Object : <Object ID>
+    $Successfully assigned Azure Stack HCI Device Management Role to Object Id <Object ID>
     Successfully assigned permission Azure Stack HCI Device Management Service Role to create or update Edge Devices on the resource group
-    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Assigning Azure Connected Machine Resource Manager to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Sucessfully assigned Azure Connected Machine Resource Manager to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Successfully assigned the Azure Connected Machine Resource Nanager role on the resource group
-    $Checking if Reader is assigned already for SPN with Object ID: 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Assigning Reader to Object : 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    $Sucessfully assigned Reader to Object Id 3d7b175e-xxxx-xxxx-xxxx-1ad6799eabae
-    Successfully assigned the reader Resource Nanager role on the resource group
+    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: <Object ID>
+    Assigning Azure Connected Machine Resource Manager to Object : <Object ID>
+    $Successfully assigned Azure Connected Machine Resource Manager to Object Id <Object ID>
+    Successfully assigned the Azure Connected Machine Resource Manager role on the resource group
+    $Checking if Reader is assigned already for SPN with Object ID: <Object ID>
+    Assigning Reader to Object : <Object ID>
+    $Successfully assigned Reader to Object Id <Object ID>
+    Successfully assigned the reader Resource Manager role on the resource group
     Installing  TelemetryAndDiagnostics Extension
     Successfully triggered  TelemetryAndDiagnostics Extension installation
     Installing  DeviceManagement Extension
@@ -206,20 +206,31 @@ Before you begin, make sure you've done the following:
     Use -Passthru parameter to return results as a PSObject.   
     ```
 
-1. After the script has completed successfully on all the servers, verify that your servers are registered with Arc. Go to Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.
+1. After the script has completed successfully on all the servers, verify that:
 
-    :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered.png" alt-text="Screenshot of the Azure Stack HCI servers in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered.png":::
+
+    1. Your servers are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.
+
+        :::image type="content" source="media/deployment-arc-register-server-permissions/arc-servers-registered-1.png" alt-text="Screenshot of the Azure Stack HCI servers in the resource group after the successful registration." lightbox="./media/deployment-arc-register-server-permissions/arc-servers-registered-1.png":::
+
+    1. The mandatory Azure Stack HCI extensions are installed on your servers. From the resource group, select the registered server. Go to the **Extensions**. The mandatory extensions show up in the right pane.
+
+        :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Stack HCI registered servers with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
 
 ## Assign required permissions for deployment
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
 
 
-1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select + Add and from the dropdown list, select **Add role assignment**.
+1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
+
+    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::
+
+1. Verify that the user has the `Key Vault Administrator` role assigned.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
 
@@ -229,5 +240,4 @@ This section describes how to assign Azure permissions for deployment from the A
 After setting up the first server in your cluster, you're ready to deploy using Azure portal:
 
 - [Deploy using Azure portal](./deploy-via-portal.md).
-
 

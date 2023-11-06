@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/02/2023
+ms.date: 11/04/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -95,7 +95,7 @@ To prepare and configure Active Directory, follow these steps:
     Here is a sample output from a successful completion of the script:
 
     ```    
-    PS C:\temp> New-HciAdObjectsPreCreation -Deploy -AsHciDeploymentUserCredential (get-credential) -AsHciOUName "OU=oudocs,DC=ASZ1PLab,DC=nttest,DC=microsoft,DC=com" -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") -DomainFQDN "ASZ1PLab.nttest.microsoft.com" -AsHciClusterName "docspro2cluster" -AsHciDeploymentPrefix "docspro2"
+    PS C:\temp> New-HciAdObjectsPreCreation -Deploy -AsHciDeploymentUserCredential (get-credential) -AsHciOUName "OU=oudocs,DC=ASHCILab,DC=nttest,DC=microsoft,DC=com" -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") -DomainFQDN "ASHCILab.nttest.microsoft.com" -AsHciClusterName "docspro2cluster" -AsHciDeploymentPrefix "docspro2"
     
     cmdlet Get-Credential at command pipeline position 1
     Supply values for the following parameters:
@@ -107,7 +107,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : None
     AccessControlType     : Allow
-    IdentityReference     : ASZ1PLAB\docspro2cluster$
+    IdentityReference     : ASHCI\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
@@ -118,7 +118,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : ObjectAceTypePresent
     AccessControlType     : Allow
-    IdentityReference     : ASZ1PLAB\docspro2cluster$
+    IdentityReference     : ASHCILAB\docspro2cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
