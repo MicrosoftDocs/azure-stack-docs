@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/31/2023
+ms.date: 11/06/2023
 ---
 
 # Create Azure Stack HCI VM image using image in Azure Storage account (preview)
@@ -106,7 +106,7 @@ PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.n
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --extended-location name=$customLocationID type="CustomLocation" --location $location --name $imageName --os-type $osType --image-path $imageSourcePath"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
     ```
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
 
@@ -114,34 +114,42 @@ Here's a sample output:
 
 ```
 PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
-PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
+PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mysaimage",
-  "location": "eastus2euap",
-  "name": "mysaimage",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/windos",
+  "location": "eastus",
+  "name": "windos",
   "properties": {
-    "containerName": null,
-    "hyperVGeneration": null,
     "identifier": null,
     "imagePath": null,
     "osType": "Windows",
     "provisioningState": "Succeeded",
-    "status": null,
+    "status": {
+      "downloadStatus": {
+        "downloadSizeInMB": 7876
+      },
+        "progressPercentage": 100,
+      "provisioningStatus": {
+        "operationId": "cdc9c9a8-03a1-4fb6-8738-7a8550c87fd1*31CE1EA001C4B3E38EE29B78ED1FD47CCCECF78B4CEA9E9A85C0BAEA5F6D80CA",
+        "status": "Succeeded"
+      }
+    },
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myteststoragepath",
     "version": null
   },
   "resourceGroup": "myhci-rg",
   "systemData": {
-    "createdAt": "2022-08-05T20:52:38.579764+00:00",
-    "createdBy": "guspinto@microsoft.com",
+    "createdAt": "2023-11-03T20:17:10.971662+00:00",
+    "createdBy": "guspinto@contoso.com",
     "createdByType": "User",
-    "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-    "lastModifiedBy": "guspinto@microsoft.com",
-    "lastModifiedByType": "User"
+    "lastModifiedAt": "2023-11-03T21:08:01.190475+00:00",
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+    "lastModifiedByType": "Application"
   },
   "tags": null,
   "type": "microsoft.azurestackhci/galleryimages"
