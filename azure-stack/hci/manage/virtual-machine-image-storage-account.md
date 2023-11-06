@@ -31,6 +31,10 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
+- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you'll use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current&view=doc-intel-3.1.0).
+
+- Make sure that you are using a page blob image. Only page blob images are supported for VM images via the Azure Storage account.
+
 # [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-vm-image-prerequisites-storage-account](../../includes/hci-vm-image-prerequisites-storage-account.md)]
@@ -54,7 +58,7 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Sign in. Type:
 
     ```azurecli
-    az login
+    az login --use-device-code
     ```
 
 1. Set your subscription.
@@ -80,7 +84,7 @@ The parameters are described in the following table:
 |------------------|--------------------------------------------------------------------------------------------|
 | `subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
 | `resource_group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+| `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
 | `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. If your container that has the image has anonymous read access, then you can specify the blob URL (select the blob URL and right click to view the properties and then copy blob URL).|
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
@@ -90,9 +94,9 @@ Here's a sample output:
 ```
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "myhci-rg"
-PS C:\Users\azcli> $location = "eastus2euap"
+PS C:\Users\azcli> $location = "eastus"
 PS C:\Users\azcli> $osType = "Windows"
-PS C:\Users\azcli> $imageName = "mysaimage"
+PS C:\Users\azcli> $imageName = "myhci-storacctimage"
 PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r"&"st=2022-08-05T18:41:41Z"&"se=2022-08-06T02:41:41Z"&"spr=https"&"sv=2021-06-08"&"sr=b"&"sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D'
 ```
 
@@ -121,7 +125,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
     "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/windos",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-storacctimage",
   "location": "eastus",
   "name": "windos",
   "properties": {
@@ -139,7 +143,7 @@ Command group 'stack-hci-vm' is experimental and under development. Reference an
         "status": "Succeeded"
       }
     },
-    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myteststoragepath",
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-storagepath",
     "version": null
   },
   "resourceGroup": "myhci-rg",
