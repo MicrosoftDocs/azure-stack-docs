@@ -3,7 +3,7 @@ title: Azure Stack HCI observability
 description: Learn about observability in Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
-ms.date: 10/27/2023
+ms.date: 11/06/2023
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -19,31 +19,21 @@ This article describes observability in Azure Stack HCI and the data sources thr
 
 Azure Stack HCI observability refers to the ability to monitor and understand the behavior of the Azure Stack HCI system.
 
-Azure Stack HCI observability provides valuable tools for monitoring and understanding the behavior of the system, enabling faster and more efficient support and troubleshooting. Observability in Azure Stack HCI is achieved through the following data sources:
+Observability in Azure Stack HCI is important because it enables the collection of telemetry and diagnostic information from the system. This information helps Microsoft gain valuable insights into the system's behavior, which can be used to identify and fix potential problems.
 
-- **Telemetry.** This includes collection of telemetry and diagnostic information, which helps Microsoft gain valuable insights into the system's behavior. The Azure Stack HCI telemetry and diagnostics extension, enables the collection of this information.
+Observability in Azure Stack HCI is achieved through the following data sources:
 
-- **Remote support.** This allows support engineers to get read-only remote access to clusters for first-step remediation.
+- **Telemetry.** This includes collection of telemetry and diagnostic information, which helps Microsoft gain valuable insights into the system's behavior. See [Telemetry](#telemetry).
 
-- **Diagnostics.** This includes the ability to collect diagnostic logs, either manually or proactively. Manual log collection can be initiated on the device by an operator, while proactive log collection is a one-time enablement and allows the device to monitor its own health and send log collections to Microsoft proactively.
+- **Remote support.** This allows support engineers to get read-only remote access to clusters for first-step remediation. See [Remote support](#remote-support).
+
+- **Diagnostics.** This includes the ability to collect diagnostic logs. See [Diagnostics](#diagnostics).
 
 :::image type="content" source="media/observability/observability-components.png" alt-text="Diagram depicting the three data source types for Azure Stack HCI observability." lightbox="media/observability/observability-components.png":::
 
-## Why is Azure Stack HCI observability important?
-
-Observability is important for Azure Stack HCI because it allows for the collection of telemetry and diagnostic information from the system. This information helps Microsoft gain valuable insights into the system's behavior, which can be used to identify and fix potential problems.
-
 ## How is observability installed?
 
-Observability and remote support are installed as part of the Azure Stack HCI deployment process. This is done through the [Lifecycle Manager](../update/whats-the-lifecycle-manager.md), which automates many of the steps involved in the deployment process. The goal is to offer a simple setup process that takes care of all the components, including observability. This can be verified in the action plan, please make sure the following steps have been completed.
-
-- Observability volume  
-
-- Register observability
-
-- Setup observability volume
-
-- Create observability subfolders and volume pruner
+Observability and remote support are installed as part of the Azure Stack HCI deployment process. This is done through the [Lifecycle Manager](../update/whats-the-lifecycle-manager.md), which automates many of the steps involved in the deployment process. The goal is to offer a simple setup process that takes care of all the components, including observability.
 
 ## Telemetry
 
@@ -64,6 +54,8 @@ Diagnostics in Azure Stack HCI helps identify and troubleshoot issues that may a
 The following diagram illustrates various log collection methods in Azure Stack HCI.
 
 :::image type="content" source="media/observability/log-collection.png" alt-text="Diagram showing different ways to collect diagnostic logs." lightbox="media/observability/log-collection.png":::
+
+### Compare log collection methods
 
 The following table provides a detailed comparison of different methods of log collection in Azure Stack HCI:
 
