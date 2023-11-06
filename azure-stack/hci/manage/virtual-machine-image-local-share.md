@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/31/2023
+ms.date: 11/06/2023
 ---
 
 # Create Azure Stack HCI VM image using images in a local share (preview)
@@ -77,7 +77,7 @@ Follow these steps to create a VM image using the Azure CLI.
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
     | `resource_group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+    | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
     | `image-path`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
     | `name`| Path to the source gallery image (VHDX only) on your cluster. For example, *C:\OSImages\winos.vhdx*. See the prerequisites of the source image.|
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
@@ -87,9 +87,9 @@ Follow these steps to create a VM image using the Azure CLI.
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "myhci-rg"
-    PS C:\Users\azcli> $location = "eastus2euap"
+    PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $osType = "Windows"
-    PS C:\ClusterStorage\Volume1> $imageName = "winostest"
+    PS C:\ClusterStorage\Volume1> $imageName = "myhci-localimage"
     PS C:\ClusterStorage\Volume1> $imageSourcePath = "C:\ClusterStorage\Volume1\Windows_K8s_17763.2928.220505-1621_202205101158.vhdx"
     ```
 
@@ -103,46 +103,62 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Create the VM image starting with a specified image in a local share on your Azure Stack HCI cluster.
 
     ```azurecli
-    az azurestackhci galleryimage create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --image-path $ImageSourcePath --name $ImageName --os-type $osType
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --image-path $ImageSourcePath --name $ImageName --os-type $osType --storage-path-id $storagepathid
+    
     ```
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in the local share and the network bandwidth available for the download.
 
 Here's a sample output:
 
 ```
-PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "cl04" --query id -o tsv)
-PS C:\Users\azcli> az azurestackhci image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osType --image-path $mktImageSourcePath
+PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
+PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --image-path $ImageSourcePath --name $ImageName --os-type $osType --storage-path-id $storagepathid
+type="CustomLocation" --location $Location --name $mktplaceImage --os-type $osType --image-path $mktImageSourcePath
 Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mktplace8",
-  "location": "eastus2euap",
-  "name": "mktplace8",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-localimage",
+  "location": "eastus",
+  "name": "myhci-localimage",
   "properties": {
-    "containerName": null,
-    "hyperVGeneration": null,
     "identifier": null,
     "imagePath": null,
     "osType": "Windows",
     "provisioningState": "Succeeded",
-    "status": null,
-    "version": null
+    "status": {
+      "downloadStatus": {},
+      "progressPercentage": 100,
+      "provisioningStatus": {
+        "operationId": "82f58893-b252-43db-97a9-258f6f7831d9*43114797B86E6D2B28C4B52B02302C81C889DABDD9D890F993665E223A5947C3",
+        "status": "Succeeded"
+      }
+    },
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
+    "version": {
+      "name": null,
+      "properties": {
+        "storageProfile": {
+          "osDiskImage": {}
+        }
+      }
+    }
   },
   "resourceGroup": "myhci-rg",
   "systemData": {
-    "createdAt": "2022-08-05T20:52:38.579764+00:00",
-    "createdBy": "guspinto@microsoft.com",
+    "createdAt": "2023-11-02T06:15:10.450908+00:00",
+    "createdBy": "vlakshmanan@microsoft.com",
     "createdByType": "User",
-    "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-    "lastModifiedBy": "guspinto@microsoft.com",
-    "lastModifiedByType": "User"
+    "lastModifiedAt": "2023-11-02T06:15:56.689323+00:00",
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+    "lastModifiedByType": "Application"
   },
   "tags": null,
   "type": "microsoft.azurestackhci/galleryimages"
 }
+
 PS C:\Users\azcli>
 
 ```
