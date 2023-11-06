@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 10/31/2023
+ms.date: 11/06/2023
 ---
 
 # Create Azure Stack HCI VM image using image in Azure Storage account (preview)
@@ -31,6 +31,10 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
+- Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
+
+- Make sure that you're using a page blob image. Only page blob images are supported for VM images via the Azure Storage account.
+
 # [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-vm-image-prerequisites-storage-account](../../includes/hci-vm-image-prerequisites-storage-account.md)]
@@ -40,7 +44,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 ## Add VM image from Azure Storage account
 
-You'll create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Stack HCI cluster.
+You create a VM image starting from an image in Azure Storage account and then use this image to deploy VMs on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
@@ -54,7 +58,7 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Sign in. Type:
 
     ```azurecli
-    az login
+    az login --use-device-code
     ```
 
 1. Set your subscription.
@@ -78,11 +82,11 @@ The parameters are described in the following table:
 
 | Parameter        | Description                                                                                |
 |------------------|--------------------------------------------------------------------------------------------|
-| `subscription`   | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `resource_group` | Resource group for Azure Stack HCI cluster that you'll associate with this image.        |
-| `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+| `subscription`   | Resource group for Azure Stack HCI cluster that you associate with this image.        |
+| `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
+| `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. If your container that has the image has anonymous read access, then you can specify the blob URL (select the blob URL and right click to view the properties and then copy blob URL).|
+| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. If your container that has the image has anonymous read access, then you can specify the blob URL (select the blob URL and right select to view the properties and then copy blob URL).|
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:
@@ -90,9 +94,9 @@ Here's a sample output:
 ```
 PS C:\Users\azcli> $subscription = "<Subscription ID>"
 PS C:\Users\azcli> $resource_group = "myhci-rg"
-PS C:\Users\azcli> $location = "eastus2euap"
+PS C:\Users\azcli> $location = "eastus"
 PS C:\Users\azcli> $osType = "Windows"
-PS C:\Users\azcli> $imageName = "mysaimage"
+PS C:\Users\azcli> $imageName = "myhci-storacctimage"
 PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.net/vhdcontainer/Windows_InsiderPreview_ServerStandard_en-us_VHDX_25131.vhdx?sp=r"&"st=2022-08-05T18:41:41Z"&"se=2022-08-06T02:41:41Z"&"spr=https"&"sv=2021-06-08"&"sr=b"&"sig=X7A98cQm%2FmNRaHmTbs9b4OWVv%2F9Q%2FJkWDBHVPyAc8jo%3D'
 ```
 
@@ -106,7 +110,7 @@ PS C:\Users\azcli> $imageSourcePath = 'https://vmimagevhdsa1.blob.core.windows.n
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, sku and version for the marketplace image.
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --extended-location name=$customLocationID type="CustomLocation" --location $location --name $imageName --os-type $osType --image-path $imageSourcePath"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
     ```
 A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in Azure Storage account and the network bandwidth available for the download.
 
@@ -114,34 +118,42 @@ Here's a sample output:
 
 ```
 PS > $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
-PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --name $imageName --os-type $osType --image-path $imageSourcePath
+PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_Group --custom-location $customLocationID --location $location --name $imageName --os-type $osType --image-path $imageSourcePath --storage-path-id $storagepathid
 Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 {
   "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
+    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
     "type": "CustomLocation"
   },
-  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/mysaimage",
-  "location": "eastus2euap",
-  "name": "mysaimage",
+  "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/galleryimages/myhci-storacctimage",
+  "location": "eastus",
+  "name": "windos",
   "properties": {
-    "containerName": null,
-    "hyperVGeneration": null,
     "identifier": null,
     "imagePath": null,
     "osType": "Windows",
     "provisioningState": "Succeeded",
-    "status": null,
+    "status": {
+      "downloadStatus": {
+        "downloadSizeInMB": 7876
+      },
+        "progressPercentage": 100,
+      "provisioningStatus": {
+        "operationId": "cdc9c9a8-03a1-4fb6-8738-7a8550c87fd1*31CE1EA001C4B3E38EE29B78ED1FD47CCCECF78B4CEA9E9A85C0BAEA5F6D80CA",
+        "status": "Succeeded"
+      }
+    },
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-storagepath",
     "version": null
   },
   "resourceGroup": "myhci-rg",
   "systemData": {
-    "createdAt": "2022-08-05T20:52:38.579764+00:00",
-    "createdBy": "guspinto@microsoft.com",
+    "createdAt": "2023-11-03T20:17:10.971662+00:00",
+    "createdBy": "guspinto@contoso.com",
     "createdByType": "User",
-    "lastModifiedAt": "2022-08-05T20:52:38.579764+00:00",
-    "lastModifiedBy": "guspinto@microsoft.com",
-    "lastModifiedByType": "User"
+    "lastModifiedAt": "2023-11-03T21:08:01.190475+00:00",
+    "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+    "lastModifiedByType": "Application"
   },
   "tags": null,
   "type": "microsoft.azurestackhci/galleryimages"
@@ -163,7 +175,7 @@ Follow these steps to create a VM image using the Azure portal. In the [Azure pr
 
     1. **Subscription** Select a subscription to associate with your VM image.
 
-    1. **Resource group** Create new or select an existing resource group that you'll associate with the VM image.
+    1. **Resource group** Create new or select an existing resource group that you associate with the VM image.
     
     1. **Save image as** Enter a name for your VM image.
 
