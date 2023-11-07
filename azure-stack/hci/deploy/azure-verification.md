@@ -27,7 +27,7 @@ Azure verification for VM enables you to use these benefits available only on Az
 |------------------------------------------|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Extended Security Update (ESUs)          | Get security updates at *no additional cost* for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md). | [Legacy OS support](#legacy-os-support) needs to be turned on for older VMs running version Windows Server 2012/ Windows 7 or earlier.|
 | Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Stack HCI using Azure VM verification. <br/> Note: licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing) | Activated automatically for VMs running version Windows 11 multi-session with 11B update (//kb version) or later |
-| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/azure/automanage/automanage-windows-server-services-overview) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Note: licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](../manage/vm-activate?tabs=azure-portal)         | Activated automatically for VMs running version Windows Server: Azure Edition 2022 with 11B update (//kb version) or later |
+| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/azure/automanage/automanage-windows-server-services-overview) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Note: licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md?tabs=azure-portal)         | Activated automatically for VMs running version Windows Server: Azure Edition 2022 with 11B update (//kb version) or later |
 | Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.13 or later
 
 ## Architecture
@@ -118,6 +118,8 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 - Under the **VMs** tab, if one or more VMs appear as **Unknown**:
   - If you want to determine the benefits available for these VMs, you can either do so manually by checking the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci), or Windows Admin Center can display this information. To access the information through Windows Admin Center, enable [Hyper-V data exchange (KVP)](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-data-exchange-service-kvp) for your VMs by selecting the action labeled **Turn on Hyper-V data exchange**.
+
+---
 
 ## [PowerShell](#tab/azure-ps)
 
@@ -352,6 +354,6 @@ No, Azure VM verification is a feature built into the Azure Stack HCI OS, and ca
 
 ## Next steps
 
-- [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md)
+- [Extended security updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md)
 - [Azure Stack HCI overview](../overview.md)
 - [Azure Stack HCI FAQ](../faq.yml)
