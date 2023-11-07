@@ -15,7 +15,7 @@ ms.date: 10/31/2023
 
 This article describes how to use the Role-based Access Control (RBAC) to control access to Arc virtual machines (VMs) running on your Azure Stack HCI cluster. 
 
-You can use the builtin RBAC roles to control access to VMs and VM resources such as disks, network interfaces, logical networks, storage paths and more. You can assign these roles to users, groups, service principals and managed identities.
+You can use the builtin RBAC roles to control access to VMs and VM resources such as virtual disks, network interfaces, VM images, logical networks and storage paths. You can assign these roles to users, groups, service principals and managed identities.
 
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
@@ -28,7 +28,7 @@ To control access to VMs and VM resources on your Azure Stack HCI, you can use t
 - **Azure Stack HCI VM Contributor** - This role grants permissions to perform all VM actions such as start, stop, restart the VMs. An Azure Stack HCI VM Contributor can create and delete VMs, as well as the resources and extensions attached to VMs. An Azure Stack HCI VM Contributor can't register the cluster or assign roles to other users, nor create cluster-shared resources such as logical networks, VM images, and storage paths.
 - **Azure Stack HCI VM Reader** - This role grants permissions to only view the VMs. A VM reader can't perform any actions on the VMs or VM resources and extensions.
 
-Here's a table that describes the VM actions granted by each role for the VMs and the various VM resources:
+Here's a table that describes the VM actions granted by each role for the VMs and the various VM resources. The VM resources are referred to resources required to create a VM and include virtual disks, network interfaces, VM images, logical networks, and storage paths:
 
 
 |Builtin role  |VMs  |VM resources  |
