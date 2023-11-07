@@ -119,8 +119,6 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 - Under the **VMs** tab, if one or more VMs appear as **Unknown**:
   - If you want to determine the benefits available for these VMs, you can either do so manually by checking the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci), or Windows Admin Center can display this information. To access the information through Windows Admin Center, enable [Hyper-V data exchange (KVP)](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-data-exchange-service-kvp) for your VMs by selecting the action labeled **Turn on Hyper-V data exchange**.
 
----
-
 ## [PowerShell](#tab/azure-ps)
 
 ### Check server status of Azure VM verification 
@@ -187,8 +185,6 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 //*image needed*
 
----
-
 ## [Azure CLI](#tab/azurecli)
 
 Azure CLI is available to install in Windows, MacOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
@@ -214,11 +210,11 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
    -o table
    ```
 
+---
+
 ## Legacy OS support
 
 For older VMs that lack the necessary Hyper-V functionality ([Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service)) to communicate directly with the host, you must configure traditional networking components for Azure VM verification. If you have these workloads, such as Extended Security Updates (ESUs), follow the instructions in this section to set up legacy OS support.
-
----
 
 ## [Windows Admin Center](#tab/wac)
 
@@ -247,8 +243,6 @@ You must enable legacy OS networking for any new VMs that you create after the f
 > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
 
 //*image needed*
-
----
 
 ## [PowerShell](#tab/azure-ps)
 
