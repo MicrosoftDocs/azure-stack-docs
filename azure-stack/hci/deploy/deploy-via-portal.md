@@ -16,12 +16,10 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 
 ## Prerequisites
 
-* Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). 
+* Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
 <!---* Completion of [Connect servers to Arc](connect-to-arc.md)
 * Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).-->
-
-> [!NOTE]
-> To use this article to deploy a three-node cluster, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node clusters with storage network adapters that are directly connected to each server without a switch is accomplished via ARM templates and is currently in Private Preview.
+* For three-node clusters, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node clusters with storage network adapters that are directly connected to each server without a switch is accomplished via ARM templates and is currently in Private Preview.
 
 ## Start the wizard and fill out the basics
 
@@ -31,15 +29,15 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 
    All resources in the Azure subscription are billed together.
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
-4. Select the **Region** to store this system's Azure resources—in this preview you must use either **East US** or **West Europe**.
+4. Select the **Region** to store this system's Azure resources—in this preview you must use either **(US) East US** or **(Europe) West Europe**.
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
-6. Select the server or servers you want to deploy.
+6. Select the server or servers that make up this Azure Stack HCI system.
 
     :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
- 
-7. Select **Validate**, and then **Next**.
+
+7. Select **Validate**, wait for green validation checkbox to appear, and then select **Next: Configuration**.
 
 ## Specify the deployment settings
 
@@ -51,7 +49,7 @@ Choose whether to create a new configuration for this system or to load deployme
    * **Quickstart template**  - Load the settings to deploy your system from a template created by your hardware vendor or Microsoft.
 
     :::image type="content" source="./media/deploy-via-portal/configuration-tab-1.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/configuration-tab-1.png":::
-2. Select **Next**.
+2. Select **Next: Networking**.
 
 ## Specify network settings
 
@@ -86,14 +84,16 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
 
-6. Select **Next**.
+6. Select **Next: Management**.
 
 ## Specify management settings
 
-1. Optionally enter a **Custom location name** that helps users identify this system when creating resources such as VMs on it. If you leave it blank, we'll use the system name for the location name.
-2. Enter an existing **Storage account** or create a new account to store the cluster witness file.
+1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
+2. Create a new **Storage account** to store the cluster witness file.
+<!---2. Enter an existing **Storage account** or create a new account to store the cluster witness file.
 
     You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
+--->
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
@@ -107,11 +107,11 @@ Choose whether to create a new configuration for this system or to load deployme
     This domain user account was created when the domain was prepared for deployment.
 7. Enter the **Local administrator** credentials for the servers.
 
-    The credentials must be identical on all servers in the system.
+    The credentials must be identical on all servers in the system.  If the current password doesn't meet the complexity requirements, you must change it on all servers before proceeding.
 
     :::image type="content" source="./media/deploy-via-portal/management-tab-1.png" alt-text="Screenshot of the Management tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-1.png":::
 
-8. Select **Next**.
+8. Select **Next: Security**.
 
 ## Set the security level
 
@@ -121,30 +121,29 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/security-tab-1.png" alt-text="Screenshot of the Security tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/security-tab-1.png":::
 
-2. Select **Next**.
+2. Select **Next: Advanced**.
 
 ## Optionally change advanced settings and apply tags
 
-1. Choose whether to create volumes for workloads in addition to the required infrastructure volumes used by Azure Stack HCI. You can create more volumes later.
+1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
     * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly-provisioned volume per server for workloads to use. This is in addition to the required one infrastructure volume per server.
     * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
 
-2. Select **Next**.
+2. Select **Next: Tags**.
 3. Optionally add a tag to the Azure Stack HCI resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
-
-    :::image type="content" source="./media/deploy-via-portal/tags-tab-1.png" alt-text="Screenshot of the Tags tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/tags-tab-1.png":::
-
-4. Select **Next**.
+4. Select **Next: Validation**.
 
 ## Validate and deploy the system
 
-1. Review the validation results, resolve any issues, and then select **Next**.
-2. Review the settings that will be used for deployment.
- 
+1. Review the validation results, resolve any actionable issues, and then select **Next**.
+
+    Don't select **Try again** while validation tasks are running as doing so can provide inaccurate results in this release.
+1. Review the settings that will be used for deployment and then select **Deploy** to deploy the system.
+
     :::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::
 
-3. Select **Deploy** to deploy the system.
+The Deployments page then appears, which you can use to monitor the deployment progress. If the progress doesn't appear, wait a minute or two and then select **Refresh**.
