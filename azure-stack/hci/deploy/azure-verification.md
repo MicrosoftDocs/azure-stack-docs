@@ -102,7 +102,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
    - **Active benefits**: These VMs have Azure-exclusive features activated via Azure VM verification.
    - **Inactive benefits**: These VMs have Azure-exclusive features that need further action before activation.
-   - **Unknown**: We can't determine the eligible benefits for these VMs because Hyper-V data exchange is turned off. See troubleshooting below.
+   - **Unknown**: We can't determine the eligible benefits for these VMs because Hyper-V data exchange is turned off. See the following troubleshooting section.
    - **No applicable benefits**: These VMs do not have Azure-exclusive features and hence do not require Azure VM verification.
 
 3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci).
@@ -113,7 +113,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 - Under the **VMs** tab, if one or more VMs appear as **Inactive benefits**:
   - If the action suggested is to **Install updates**, you might not have the minimum OS version required for the benefit. Update the VM to meet the [version requirements for workloads](#benefits-available-on-azure-stack-hci).
-  - If the action suggested is to **Turn on Guest Service Interface**, select this and open the context pane to turn on [Hyper-V Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service). This feature is required for VMs to communicate to the host via VMbus.
+  - If the action suggested is to **Turn on Guest Service Interface**, select it and open the context pane to enable the [Hyper-V Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service). This feature is required for VMs to communicate to the host via VMbus.
   - If the action suggested is regarding **legacy OS support**, see [troubleshooting for legacy OS support](#legacy-os-support).
 
 - Under the **VMs** tab, if one or more VMs appear as **Unknown**:
@@ -226,7 +226,7 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure verifications for VMs**.
 
-2. In the section for **Legacy OS support**, select **Change status**. Select **On** in the context pane. Note: this also enables networking access for all existing VMs. You will have have to manually turn on legacy OS support for any new VMs that you create later.
+2. In the section for **Legacy OS support**, select **Change status**. Select **On** in the context pane. This setting also enables networking access for all existing VMs. You must manually turn on legacy OS support for any new VMs that you create later.
   
 3. Select **Change status** to confirm. It might take a few minutes for servers to reflect the changes.
 
@@ -241,7 +241,7 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
 
 You must enable legacy OS networking for any new VMs that you create after the first setup. To manage access for VMs:
 
-1. Navigate to the **VMs** tab. Any VM that requires legacy OS support access will appear as **Inactive**. Select the action to **Set up legacy OS networking** for the selected VM, or for all existing VMs on the cluster.
+1. Navigate to the **VMs** tab. Any VM that requires legacy OS support access appear as **Inactive**. Select the action to **Set up legacy OS networking** for the selected VM, or for all existing VMs on the cluster.
 
 > [!NOTE]
 > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
@@ -321,13 +321,13 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
 ## FAQ
 
-This section provides answers to some frequently-asked questions about using Azure Benefits.
+This section provides answers to some frequently asked questions about using Azure Benefits.
 
 ### What Azure-exclusive workloads can I enable with Azure VM verification?
 
 See the [full list here](#benefits-available-on-azure-stack-hci).
 
-### Does it cost anything to turn on Azure VM verification?
+### Does it cost anything to enable Azure VM verification?
 
 No, turning on Azure VM verification incurs no extra fees.
 
@@ -335,21 +335,21 @@ No, turning on Azure VM verification incurs no extra fees.
 
 No, Azure VM verification is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
 
-### I have just set up Azure VM verification on my cluster. How do I ensure that Azure VM verification stays active?
+### I just set up Azure VM verification on my cluster. How do I ensure that Azure VM verification stays active?
 
 - In most cases, there is no user action required. Azure Stack HCI automatically renews Azure VM verification when it syncs with Azure.
 - However, if the cluster disconnects for more than 30 days and Azure VM verification shows as **Expired**, you can manually sync using PowerShell and Windows Admin Center. For more information, see [syncing Azure Stack HCI](../faq.yml#what-happens-if-the-30-day-limit-is-exceeded).
 
 ### What happens when I deploy new VMs, or delete VMs?
 
-- When you deploy new VMs that require Azure VM verification, they are automatically activated, provided that they have the correct [prerequisites](#prerequisites).
+- When you deploy new VMs that require Azure VM verification, they are automatically activated if they have the correct [prerequisites](#prerequisites).
 
 - However, for legacy VMs using legacy OS support, you can manually add new VMs to access Azure VM verification using Windows Admin Center or PowerShell, using the [preceding instructions](#legacy-os-support).
 - You can still delete and migrate VMs as usual. The NIC **AZSHCI_GUEST-IMDS_DO_NOT_MODIFY** still exists on the VM after migration. To clean up the NIC before migration, you can remove VMs from Azure VM verification using Windows Admin Center or PowerShell using the preceding instructions for legacy OS support, or you can migrate first and manually delete NICs afterwards.
 
 ### What happens when I add or remove servers?
 
-- When you add a server, it's automatically activated provided that it has the correct [prerequisites](#prerequisites).
+- When you add a server, it's automatically activated if it has the correct [prerequisites](#prerequisites).
 - If you're using legacy OS support, you might need to manually enable these servers. Run `Enable-AzStackHCIAttestation [[-ComputerName] <String>]` in PowerShell. You can still delete servers or remove them from the cluster as usual. The vSwitch **AZSHCI_HOST-IMDS_DO_NOT_MODIFY** still exists on the server after removal from the cluster. You can leave it if you're planning to add the server back to the cluster later, or you can remove it manually.
 
 ## Next steps
