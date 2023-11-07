@@ -30,7 +30,7 @@ Here are the known issues in version 2310 release:
 |Release|Feature|Issue|Workaround/Comments|
 |-|------|------|----------|
 |2310 <br> 10.2310.0.30| Networking |Use of proxy is not supported in this release. |There's no known workaround in this release. |
-|2310 <br> 10.2310.0.30| Azure portal <!--25741164--> |In some instances, the Azure portal may take a while to update and the view may not be current.| You may need to wait for 30 minutes or more to see the updated view. |
+|2310 <br> 10.2310.0.30| Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 |2310 <br> 10.2310.0.30 <!--25661776-->| Arc VM management |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take up to 30 minutes. |There's no known workaround in this release. |
 |2310 <br> 10.2310.0.30 <!--25527606-->| Arc VM management | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state does not match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.| There's no known workaround in this release.|
 |2310 <br> 10.2310.0.30 <!--25675277-->| Arc VM management | In version 0.1.5, Azure CLI on Azure Stack HCI takes the friendly name of marketplace image and builds an incorrect ARM ID.| There's no known workaround in this release.|
