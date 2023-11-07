@@ -79,6 +79,8 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### Check server status of Azure VM verification
 
+#### Windows Admin Center or PowerShell
+
 ### [Windows Admin Center](#tab/wac)
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure verification for VMs**.
@@ -107,7 +109,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci).
 
-//*image needed*
+//*image needed*<!-- Image needed -->
 
 #### Troubleshoot VMs
 
@@ -176,6 +178,8 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ---
 
+#### Azure portal or Azure CLI
+
 ### [Azure portal](#tab/azureportal)
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
@@ -199,7 +203,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
    az account set --subscription "${subscription}"
    ```
 
-1. ///check the query/To view Azure VM verification status on a cluster, run the following command:
+1. To view Azure VM verification status on a cluster, run the following command:
+<!-- check the query -->
 
    ```azurecli    
    az stack-hci cluster list \
@@ -233,9 +238,7 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
 
 ### 2. Enable access for new VMs
 
-You must enable legacy OS networking for any new VMs that you create after the first setup. To manage access for VMs:
-
-1. Navigate to the **VMs** tab. Any VM that requires legacy OS support access appear as **Inactive**. Select the action to **Set up legacy OS networking** for the selected VM, or for all existing VMs on the cluster.
+You must enable legacy OS networking for any new VMs that you create after the first setup. To manage access for VMs, navigate to the **VMs** tab. Any VM that requires legacy OS support access appear as **Inactive**. Select the action to **Set up legacy OS networking** for the selected VM, or for all existing VMs on the cluster.
 
 > [!NOTE]
 > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
@@ -292,8 +295,8 @@ You must enable legacy OS networking for any new VMs that you create after the f
    Get-AzStackHCIVMAttestation
    ```
 
-> [!NOTE]
-> To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
+  > [!NOTE]
+  > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
 
 #### Troubleshoot VMs
 
