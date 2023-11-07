@@ -77,9 +77,9 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
 
-## [Windows Admin Center](#tab/wac)
-
 ### Check server status of Azure VM verification
+
+## [Windows Admin Center](#tab/wac)
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure verification for VMs**.
 
@@ -120,8 +120,6 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   - If you want to determine the benefits available for these VMs, you can either do so manually by checking the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci), or Windows Admin Center can display this information. To access the information through Windows Admin Center, enable [Hyper-V data exchange (KVP)](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-data-exchange-service-kvp) for your VMs by selecting the action labeled **Turn on Hyper-V data exchange**.
 
 ## [PowerShell](#tab/azure-ps)
-
-### Check server status of Azure VM verification 
 
 - When Azure VM verification setup is successful, you can view the host status. Check the cluster property **IMDS Attestation** by running the following command:
 
