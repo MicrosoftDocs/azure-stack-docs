@@ -2,8 +2,8 @@
 title: Create an Azure Managed Lustre file system in the Azure portal
 description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: overview
-author: mvbishop
-ms.author: mayabishop
+author: pauljewellmsft
+ms.author: pauljewell
 ms.date: 06/28/2023
 ms.lastreviewed: 06/06/2023
 ms.reviewer: mayabishop
@@ -21,7 +21,7 @@ This article describes how to create an Azure Managed Lustre file system in the 
 
 ## Prerequisites
 
-Before you start to create an Azure Managed Lustre file system, note that you can't change the following configurations after you create your file system:
+The following configuration options can't be changed after you create your file system:
 
 * The size of the file system.
 * The option to use an integrated Azure Blob Storage container.
@@ -35,7 +35,7 @@ Plan these items carefully, and configure them correctly when you create your Az
 
 1. Type **Azure Managed Lustre** in the search box, and press **Enter**.
 
-1. On the **Azure Managed Lustre** blade, select **+ Create**.
+1. On the **Azure Managed Lustre** page, select **+ Create**.
 
 This starts the **Create** wizard.
 
@@ -65,7 +65,7 @@ Set the name and capacity of the Azure Managed Lustre file system:
 
 3. **Storage and throughput**: Use these settings to set the size of your file system.
 
-   Your file system size is determined by two factors: the amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). You'll select one of these options. The other values are calculated based on the  **Throughput per TiB** setting for your file system type.
+   There are two factors that determine your file system size: the amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). When you select one of these options, the other values are calculated based on the  **Throughput per TiB** setting for your file system type.
 
   To set your Azure Managed Lustre file system size, do these steps:
   
@@ -84,8 +84,8 @@ Currently the following throughput configurations are available:
 |-----------|-----------|-----------|-----------|
 | 40 MB/second | 48 TB | 768 TB | 48 TB|
 | 125 MB/second | 16 TB | 128 TB | 16 TB |
-| 250 MB/second | 8 TB | 128TB | 8 TB |
-| 500 MB/second | 4 TB | 128TB | 4 TB |
+| 250 MB/second | 8 TB | 128 TB | 8 TB |
+| 500 MB/second | 4 TB | 128 TB | 4 TB |
 
 > [!NOTE]
 > If you are interested in storage values larger than the listed maximum, please [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview)
@@ -96,7 +96,7 @@ In the **Networking** section:
 
 1. Enter the virtual network and subnet that you configured earlier in [Network prerequisites](amlfs-prerequisites.md#network-prerequisites):
 
-   1. **Virtual network**: Select or create the network that will hold your Azure Managed Lustre file system.
+   1. **Virtual network**: Select or create the network for your Azure Managed Lustre file system.
 
    1. **Subnet**: Select or create the subnet to use for file system interaction.
 
@@ -106,7 +106,7 @@ In the **Networking** section:
   
    Also make sure you completed all access settings to enable the subnet to access the needed Azure services.
 
-   To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other requirements.
+   To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other configuration options.
 
    ![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
 
@@ -129,11 +129,11 @@ Integrating blob storage when you create a file system is optional, but it's the
 
 To configure blob integration:
 
-1. If you haven't configured storage access created containers for blob integration, complete the [blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional) now.
+1. To configure storage access and create containers for blob integration, complete the [blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
 
    To learn which types of accounts are compatible and what access settings need to be configured, see [Supported storage account types](amlfs-prerequisites.md#supported-storage-account-types).
 
-   The storage account does not need to be in the same subscription that you use for the Azure Managed Lustre file system.
+   The storage account doesn't need to be in the same subscription that you use for the Azure Managed Lustre file system.
 
 1. Select the **Import/export data from blob** check box.
 
@@ -163,7 +163,7 @@ To allow Azure staff to maintain your Azure Managed Lustre file system, they nee
 
 Tasks that are active during this service might fail, or might only be delayed. Testing is ongoing to determine this behavior.
 
-After the general availability (GA) release, maintenance is expected to be done less than once a month. Routine software upgrades will happen about six times a year, and approximately five other update tasks might be needed to address vulnerabilities or critical bugs over the same time.
+After the general availability (GA) release, maintenance is performed less than once a month. Routine software upgrades happen about six times a year, and approximately five other update tasks might be needed to address vulnerabilities or critical bugs over the same time.
 
 ![Screenshot showing maintenance window settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-maintenance-window.png)
 
@@ -179,7 +179,7 @@ When you finish entering **Advanced settings**:
 
 If you want to manage the encryption keys used for your Azure Managed Lustre file system storage, supply your Azure Key Vault information on the **Disk encryption keys** page. The key vault must be in the same region and in the same subscription as the cache.
 
-You can skip this section if you do not need customer-managed keys. Azure encrypts data with Microsoft-managed keys by default. For more information, see [Azure storage encryption](/azure/storage/common/storage-service-encryption).
+You can skip this section if you don't need customer-managed keys. Azure encrypts data with Microsoft-managed keys by default. For more information, see [Azure storage encryption](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > You cannot change between Microsoft-managed keys and customer-managed keys after creating the file system.
@@ -196,7 +196,7 @@ To use customer-managed encryption keys with your Azure Managed Lustre file syst
 
    ![Screenshot showing Customer Key Settings for the Create command for Azure Managed Lustre.](./media/create-file-system-portal/customer-key-settings.png)
 
-1. On the **Select a key** screen, select the **Key vault**, **key**, and **Version** of the key to use for this file system. Then click **Select**.
+1. On the **Select a key** screen, select the **Key vault**, **key**, and **Version** of the key to use for this file system. Then choose **Select**.
 
    You can create a new key vault, key, and key version from this page. The key must be a 2048-bit RSA key, and must be stored in Azure Key Vault.
 
@@ -219,7 +219,7 @@ When you finish entering customer key settings and managed identities, select **
 
 On the **Review + create** tab, when a **Validation passed** message appears, select **Create** to begin creating the file system.
 
-Your Azure Managed Lustre file system should appear in your portal **Resources** page within thirty minutes.
+Your Azure Managed Lustre file system should appear in your portal **Resources** page within 30 minutes.
 
 ## Next steps
 
