@@ -33,7 +33,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
 
-- Make sure that you're using a page blob image. Only page blob images are supported for VM images via the Azure Storage account.
+- Make sure that you're uploading your VHD or VHDX as a page blob image into the Storage account. Only page blob images are supported to create VM images via the Storage account.
 
 # [Azure portal](#tab/azureportal)
 
@@ -86,7 +86,7 @@ The parameters are described in the following table:
 | `resource_group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
 | `location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`. |
 | `imageName`      | Name of the VM image created starting with the image in your local share. <br> **Note**: Azure rejects all the names that contain the keyword Windows. |
-| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. If your container that has the image has anonymous read access, then you can specify the blob URL (select the blob URL and right select to view the properties and then copy blob URL).|
+| `imageSourcePath`| Path to the Blob SAS URL of the image in the Storage account. For more information, see instructions on how to [Get a blob SAS URL of the image in the Storage account](/azure/applied-ai-services/form-recognizer/create-sas-tokens#use-the-azure-portal). <br> **Note**: Make sure that all the Ampersands in the path are escaped with double quotes and the entire path string is wrapped within single quotes. |
 | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 Here's a sample output:

@@ -53,7 +53,7 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Sign in. Type:
 
     ```azurecli
-    az login
+    az login --use-device-code
     ```
 
 1. Set your subscription.
@@ -94,23 +94,25 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster. Get the custom location ID for your Azure Stack HCI cluster. Run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI cluster>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for Azure Stack HCI cluster>" --query id -o tsv)
     ```
 
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, SKU, and version for the marketplace image. Use the following table to find the available marketplace images and their attribute values:
 
-    | Name | Publisher | Offer | SKU | Latest version |
-    |---|---|---|---|---|
-    | Windows Server 2022 Datacenter: Azure Edition | microsoftwindowsserver | windowsserver | 2022-datacenter-azure-edition | 20348.1547.230207 |
-    | Windows Server 2022 Datacenter: Azure Edition Core | microsoftwindowsserver | windowsserver | 2022-datacenter-azure-edition-core | 20348.1487.230207 |
-    | Windows 11 Enterprise multi-session, version 21H2 | microsoftwindowsdesktop | windows-11 | win11-21h2-avd | 22000.1574.230207 |
-    | Windows 11 Enterprise multi-session, version 22H2 | microsoftwindowsdesktop | windows-11 | win11-22h2-avd | 22621.1265.230207 |
-    | Windows 10 Enterprise multi-session, version 21H2 | microsoftwindowsdesktop | windows-10 | win10-21h2-avd | 19044.2604.230207 |
-    | Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 21H2 | microsoftwindowsdesktop | office-365 | win11-21h2-avd-m365 | 22000.1455.230110 |
-    | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365 | 19044.2486.230110 |
+    | Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 21H2- Gen2            | microsoftwindowsdesktop | office-365       | win10-21h2-avd-m365-g2                 | 19044.3570.231010 |
+    |-----------------------------------------------------------------------------------------|-------------------------|------------------|----------------------------------------|-------------------|
+    | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps- Gen2            | microsoftwindowsdesktop | office-365       | win11-21h2-avd-m365                    | 22000.2538.231010 |
+    | Windows 10 Enterprise multi-session, version 21H2- Gen2                                 | microsoftwindowsdesktop | windows-10       | win10-21h2-avd-g2                      | 19044.3570.231001 |
+    | Windows 11 Enterprise multi-session, version 21H2- Gen2                                 | microsoftwindowsdesktop | windows-11       | win11-21h2-avd                         | 22000.2538.231001 |
+    | Windows 11 Enterprise multi-session, version 22H2 - Gen2                                | microsoftwindowsdesktop | windows-11       | win11-22h2-avd                         | 22621.2428.231001 |
+    | Windows 11, version 22H2 Enterprise multi-session + Microsoft 365 Apps (Preview) - Gen2 | microsoftwindowsdesktop | windows11preview | win11-22h2-avd-m365                    | 22621.382.220810  |
+    | Windows Server 2022 Datacenter: Azure Edition - Gen2                                    | microsoftwindowsserver  | windowsserver    | 2022-datacenter-azure-edition          | 20348.2031.231006 |
+    | Windows Server 2022 Datacenter: Azure Edition Core - Gen2                               | microsoftwindowsserver  | windowsserver    | 2022-datacenter-azure-edition-core     | 20348.2031.231006 |
+    | Windows Server 2022 Datacenter: Azure Edition Hotpatch - Gen2                           | microsoftwindowsserver  | windowsserver    | 2022-datacenter-azure-edition-hotpatch | 20348.2031.231006 |
+
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "<VM image name>" --os-type $ostype --offer "windowsserver" --publisher "<Publisher name>" --sku "<SKU>" --version "<Version number>"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "<VM image name>" --os-type $ostype --offer "windowsserver" --publisher "<Publisher name>" --sku "<SKU>" --version "<Version number>" --storage-path-id $storagepathid
     ```
 
     A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
@@ -120,7 +122,7 @@ Here's a sample output:
 ```
 PS C:\Users\azcli> $customLocationID=(az customlocation show --resource-group $resource_group --name "myhci-cl" --query id -o tsv)
 PS C:\Users\azcli> $customLocationID
-/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/cl04
+/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl
 PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "myhci-marketplaceimage" --os-type $ostype --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition-core" --version "20348.2031.231006" --storage-path-id $storagepathid
 {
   "extendedLocation": {
@@ -149,7 +151,7 @@ PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --r
         "status": "Succeeded"
       }
     },
-    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
+    "storagepathId": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-storagepath",
     "version": {
       "name": "20348.2031.231006",
       "properties": {
@@ -164,7 +166,7 @@ PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --r
   "resourceGroup": "myhci-rg",
   "systemData": {
     "createdAt": "2023-10-27T21:43:15.920502+00:00",
-    "createdBy": "aszregistration@microsoft.com",
+    "createdBy": "guspinto@contoso.com",
     "createdByType": "User",
     "lastModifiedAt": "2023-10-27T22:06:15.092321+00:00",
     "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
