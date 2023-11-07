@@ -79,7 +79,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### Check server status of Azure VM verification
 
-## [Windows Admin Center](#tab/wac)
+# [Windows Admin Center](#tab/wac)
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure verification for VMs**.
 
@@ -119,7 +119,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 - Under the **VMs** tab, if one or more VMs appear as **Unknown**:
   - If you want to determine the benefits available for these VMs, you can either do so manually by checking the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci), or Windows Admin Center can display this information. To access the information through Windows Admin Center, enable [Hyper-V data exchange (KVP)](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-data-exchange-service-kvp) for your VMs by selecting the action labeled **Turn on Hyper-V data exchange**.
 
-## [PowerShell](#tab/azure-ps)
+# [PowerShell](#tab/azure-ps)
 
 - When Azure VM verification setup is successful, you can view the host status. Check the cluster property **IMDS Attestation** by running the following command:
 
@@ -174,14 +174,14 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
   ```
 
-## [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azureportal)
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Azure verification for VMs**, view the host attestation status:
 
 //*image needed*
 
-## [Azure CLI](#tab/azurecli)
+# [Azure CLI](#tab/azurecli)
 
 Azure CLI is available to install in Windows, MacOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
@@ -212,7 +212,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 For older VMs that lack the necessary Hyper-V functionality ([Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service)) to communicate directly with the host, you must configure traditional networking components for Azure VM verification. If you have these workloads, such as Extended Security Updates (ESUs), follow the instructions in this section to set up legacy OS support.
 
-## [Windows Admin Center](#tab/wac)
+# [Windows Admin Center](#tab/wac)
 
 ### 1. Turn on legacy OS support on the host
 
@@ -240,7 +240,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
 //*image needed*
 
-## [PowerShell](#tab/azure-ps)
+# [PowerShell](#tab/azure-ps)
 
 ### 1. Turn on legacy OS support on the host
 
