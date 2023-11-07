@@ -10,7 +10,7 @@ ms.author: jgerend
 
 # Deploy an Azure Stack HCI, version 23H2 system using the Azure portal (preview)
 
-This article helps you deploy an Azure Stack HCI, version 23H2 Preview system for testing using the Azure portal.
+This article helps you deploy an Azure Stack HCI, version 23H2 system for testing using the Azure portal.
 
 To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
