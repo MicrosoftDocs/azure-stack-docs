@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 11/03/2023
+ms.date: 11/07/2023
 ---
 
 # Create Arc virtual machines on Azure Stack HCI (preview)
@@ -104,7 +104,10 @@ Depending on the type of the network interface that you created, you can create 
    ``` 
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
-    
+
+In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM VM image, non-OS data disk) is placed in the specified storage path.
+
+If the flag is not specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
 
 # [Azure portal](#tab/azureportal)
