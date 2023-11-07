@@ -176,8 +176,6 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
   ```
 
----
-
 ## [Azure portal](#tab/azureportal)
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
