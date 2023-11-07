@@ -239,7 +239,7 @@
   - name: Deploy workloads
     items: 
     - name: Azure verification for VMs
-      href: manage/azure-verification.md
+      href: deploy/azure-verification.md
     - name: Branch office and edge
       href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure
