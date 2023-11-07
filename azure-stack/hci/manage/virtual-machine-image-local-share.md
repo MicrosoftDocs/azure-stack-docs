@@ -106,7 +106,13 @@ Follow these steps to create a VM image using the Azure CLI.
     az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --image-path $ImageSourcePath --name $ImageName --os-type $osType --storage-path-id $storagepathid
     
     ```
-A deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in the local share and the network bandwidth available for the download.
+    A deployment job starts for the VM image. 
+
+    In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM VM image, non-OS data disk) is placed in the specified storage path.
+
+    If the flag is not specified, the workload data is automatically placed in a high availability storage path.
+
+The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the image in the local share and the network bandwidth available for the download.
 
 Here's a sample output:
 
