@@ -109,7 +109,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci).
 
-//*image needed*<!-- Image needed -->
+<!-- Image needed -->
 
 #### Troubleshoot VMs
 
@@ -185,7 +185,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Azure verification for VMs**, view the host attestation status:
 
-//*image needed*
+<!-- Image needed -->
 
 ### [Azure CLI](#tab/azurecli)
 
