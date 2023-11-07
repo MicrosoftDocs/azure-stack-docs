@@ -79,7 +79,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### Check server status of Azure VM verification
 
-### [Windows Admin Center](#tab/winac)
+### [Windows Admin Center](#tab/wac)
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure verification for VMs**.
 
@@ -212,7 +212,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 For older VMs that lack the necessary Hyper-V functionality ([Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service)) to communicate directly with the host, you must configure traditional networking components for Azure VM verification. If you have these workloads, such as Extended Security Updates (ESUs), follow the instructions in this section to set up legacy OS support.
 
-## [Windows Admin Center](#tab/winac)
+### [Windows Admin Center](#tab/wac)
 
 ### 1. Turn on legacy OS support on the host
 
@@ -240,7 +240,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
 //*image needed*
 
-## [PowerShell](#tab/azure-ps)
+### [PowerShell](#tab/azure-ps)
 
 ### 1. Turn on legacy OS support on the host
 
