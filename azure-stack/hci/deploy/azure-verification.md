@@ -238,7 +238,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
 > [!NOTE]
 > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
 
-//*image needed*
+<!-- Image needed -->
 
 ### [PowerShell](#tab/azure-ps)
 
