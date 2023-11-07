@@ -43,7 +43,7 @@ Here are the known issues in version 2310 release:
 |2310 <br> 10.2310.0.30| Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the ARM template to override this parameter and disable RDMA for the intents. |
 |2310 <br> 10.2310.0.30| Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
 |2310 <br> 10.2310.0.30| Deployment |If you select **Review + Create** and you haven't filled out all the tabs, the deployment begins and then eventually fails.|There's no known workaround in this release. |
-|2310 <br> 10.2310.0.30 <!--25628443-->| Arc VM management| A resource group with multiple clusters only shows one storage path.| Multiple clusters are not supported for a single resource group in this release.|
+|2310 <br> 10.2310.0.30 <!--25628443-->| Arc VM management| A resource group with multiple clusters only shows storage paths of one cluster.| Multiple clusters are not supported for a single resource group in this release.|
 
 
 
