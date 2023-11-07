@@ -135,9 +135,6 @@ Choose whether to create a new configuration for this system or to load deployme
 3. Optionally add a tag to the Azure Stack HCI resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
-
-    :::image type="content" source="./media/deploy-via-portal/tags-tab-1.png" alt-text="Screenshot of the Tags tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/tags-tab-1.png":::
-
 4. Select **Next: Validation**.
 
 ## Validate and deploy the system
