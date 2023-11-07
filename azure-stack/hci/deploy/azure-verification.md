@@ -1,6 +1,6 @@
 ---
 title: Azure verification for VMs
-description: Learn about the Azure Benefits feature on Azure Stack HCI.
+description: Learn about the Azure verification for VMs feature on Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
 ms.topic: overview
@@ -25,9 +25,9 @@ Azure verification for VM enables you to use these benefits available only on Az
 
 | Workload                                 | What it is                           | How to get benefits                                                                                                                                                                                                                                                                       |
 |------------------------------------------|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Extended Security Update (ESUs)          | Get security updates at *no additional cost* for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](azure-benefits-esu.md). | [Legacy OS support](#legacy-os-support) needs to be turned on for older VMs running version Windows Server 2012/ Windows 7 or earlier.|
+| Extended Security Update (ESUs)          | Get security updates at *no additional cost* for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md). | [Legacy OS support](#legacy-os-support) needs to be turned on for older VMs running version Windows Server 2012/ Windows 7 or earlier.|
 | Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Stack HCI using Azure VM verification. <br/> Note: licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing) | Activated automatically for VMs running version Windows 11 multi-session with 11B update (//kb version) or later |
-| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/azure/automanage/automanage-windows-server-services-overview) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Note: licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](/vm-activate?tabs=azure-portal)         | Activated automatically for VMs running version Windows Server: Azure Edition 2022 with 11B update (//kb version) or later |
+| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/azure/automanage/automanage-windows-server-services-overview) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Note: licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](../manage/vm-activate?tabs=azure-portal)         | Activated automatically for VMs running version Windows Server: Azure Edition 2022 with 11B update (//kb version) or later |
 | Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.13 or later
 
 ## Architecture
@@ -36,7 +36,7 @@ This section is optional reading, and explains more about how Azure VM verificat
 
 Azure VM verification relies on a built-in platform attestation service on Azure Stack HCI. This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, and returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
 
-:::image type="content" source="media/azure-benefits/cluster.png" alt-text="Architecture":::
+:::image type="content" source="media/azure-verification/cluster.png" alt-text="Image showing cluster architecture":::
 
 1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([//i.e. VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
 
@@ -176,12 +176,16 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
   ```
 
+---
+
 ## [Azure portal](#tab/azureportal)
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Azure verification for VMs**, view the host attestation status:
 
 //*image needed*
+
+---
 
 ## [Azure CLI](#tab/azurecli)
 
@@ -212,6 +216,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 For older VMs that lack the necessary Hyper-V functionality ([Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service)) to communicate directly with the host, you must configure traditional networking components for Azure VM verification. If you have these workloads, such as Extended Security Updates (ESUs), follow the instructions in this section to set up legacy OS support.
 
+---
+
 ## [Windows Admin Center](#tab/wac)
 
 ### 1. Turn on legacy OS support on the host
@@ -239,6 +245,8 @@ You must enable legacy OS networking for any new VMs that you create after the f
 > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
 
 //*image needed*
+
+---
 
 ## [PowerShell](#tab/azure-ps)
 
@@ -306,6 +314,8 @@ You must enable legacy OS networking for any new VMs that you create after the f
   ```powershell
   Remove-AzStackHCIVMAttestation -RemoveAll
   ```
+
+---
 
 ## FAQ
 
