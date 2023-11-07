@@ -87,7 +87,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
    - Cluster-level status: **Host status** appears as **On**.
    - Server-level satus: Under the **Server** tab in the dashboard, check that the status for every server shows as **Active** in the table.
 
-//*image needed*
+<!-- Image needed -->
 
 #### Troubleshoot servers
 
@@ -174,6 +174,8 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
   ```
 
+---
+
 ### [Azure portal](#tab/azureportal)
 
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
@@ -227,7 +229,7 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
    - Check that **Legacy OS support** appears as **On**.
    - Under the **Server** tab in the dashboard, check that legacy OS support for every server shows as **On** in the table.
 
-//*image needed*
+<!-- Image needed -->
 
 ### 2. Enable access for new VMs
 
