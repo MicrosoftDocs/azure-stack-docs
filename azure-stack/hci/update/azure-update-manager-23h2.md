@@ -16,7 +16,7 @@ ms.date: 10/24/2023
 This article describes how to use Azure Update Manager to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
 
 > [!IMPORTANT]
-> This release of Azure Stack HCI, version 23H2 doesn't include an update package that can be installed. An update package will be available in a future release.
+> You can view the Azure Update Manager workflow, but this release of Azure Stack HCI, version 23H2 doesn't include an update package that can be installed.
 
 <!--This release means although you don't have an update package installed you still can use the entire update workflow?-->
 
