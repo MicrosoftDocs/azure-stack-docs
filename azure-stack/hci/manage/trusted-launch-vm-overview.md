@@ -39,8 +39,8 @@ A few of the benefits of using Trusted launch include:
 
 The following capabilities are supported:
 
-- Secure boot.
-- vTPM.
+- Secure boot for protection against malware-based rootkits and boot kits.
+- vTPM for a dedicated secure vault for keys and measurements.
 - vTPM state transfer when VM migrates or fails over within a cluster.
 - Virtualization-based security (VBS), provided that the guest operating system running in the VM can enable and make use of VBS.
 
