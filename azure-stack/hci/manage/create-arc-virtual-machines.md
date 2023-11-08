@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 10/25/2023
+ms.date: 11/07/2023
 ---
 
-# Use VM images to create Arc virtual machines on Azure Stack HCI (preview)
+# Create Arc virtual machines on Azure Stack HCI (preview)
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure portal.
 
@@ -39,7 +39,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-- Access to a virtual network that you have created on your Azure Stack HCI cluster. For more information, see [Create virtual network]().
+- Access to a network interface that you have created on a logical network associated with your Azure Stack HCI cluster. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
 
 
 # [Azure portal](#tab/azureportal)
@@ -54,7 +54,7 @@ Follow these steps to create an Arc VM on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster. To create an Arc VM via the Azure CLI, you first need to create a virtual network interface with static IP address or DHCP IP address. Then you can create a VM using the virtual network interface that you created. 
+Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster. 
 
 ## Sign in and set subscription
 
@@ -73,346 +73,42 @@ Follow these steps to sign in to Azure CLI and set the subscription to use. Repl
     ```azurecli
     az account set --subscription <Subscription ID>
     ```
-   
 
-## Create virtual network interface
+### Create a VM from network interface
 
-To create a VM, you'll first need to create a virtual network interface on your virtual network. The steps can be different depending on whether your virtual network is static or DHCP.
-
-
-### Virtual network interface with static IP
-
-
-Follow these steps to create a virtual network interface on your static virtual network. Replace the parameters in `< >` with the appropriate values.
-
-1. Set the required parameters. Here's a sample output:
-
-    ```azurecli
-    $vNetName = "myhci-vnet"
-    $gateway="100.68.180.1" 
-    $ipaddress="100.68.180.6" 
-    $netInt="myhci-vnic"
-    $subscription =  "<Your subscription ID>"
-    $resource_group = "myhci-rg"
-    $customLocName = "myhci-cl" 
-    $customLocID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
-    $location = "eastus"
-    ```
-
-    Here is a description of the parameters:
-
-    | Parameter | Description |
-    | ----- | ----------- |
-    | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
-    | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-    | **custom-location** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
-    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-    | **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
-    | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your virtual network interface. If this parameter isn't specified, by default the virtual network interface is created with a dynamic configuration. |
-    | **ip-address** | An IPv4 address you want to assign to the virtual network interface that you are creating. For example: "192.168.0.10".  |
-    | **gateway** | Ipv4 address of the default gateway. |
-
-
-1. To create a virtual network interface with static IP address, run the following command:
-
-    ```azurecli
-    az stack-hci-vm network nic create --resource-group $resourcegroupname --custom-location="$customLocationID" --location $Location --name $netInt --subnet-id $vnetName --ip-address $ipaddress --gateway $gateway
-    ```
-    
-    Here's a sample output:
-    
-    ```console   
-    {
-      "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/cluster-name",
-        "type": "CustomLocation"
-      },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-vnic",
-      "location": "eastus",
-      "name": "myhci-vnic",
-      "properties": {
-        "dnsSettings": {
-          "dnsServers": null
-        },
-        "ipConfigurations": [
-          {
-            "name": null,
-            "properties": {
-              "gateway": "100.68.180.1",
-              "prefixLength": "28",
-              "privateIpAddress": "100.68.180.8",
-              "privateIpAllocationMethod": "Static",
-              "subnet": {
-                "id": "myhci-vnet"
-              }
-            }
-          }
-        ],
-        "macAddress": null,
-        "provisioningState": "Succeeded",
-        "resourceName": null,
-        "status": {}
-      },
-      "resourceGroup": "myhci-rg",
-      "systemData": {
-        "createdAt": "2023-07-26T23:00:26.590194+00:00",
-        "createdBy": "guspinto@contoso.com",
-        "createdByType": "User",
-        "lastModifiedAt": "2023-07-26T23:00:42.948671+00:00",
-        "lastModifiedBy": "<ID>",
-        "lastModifiedByType": "Application"
-      },
-      "tags": null,
-      "type": "microsoft.azurestackhci/networkinterfaces"
-    }   
-    ```
-
-### Virtual network interface with DHCP
-
-Follow these steps to create a virtual network interface on your DHCP virtual network. Replace the parameters in `< >` with the appropriate values.
-
-
-1. Set the required parameters. Here's a sample output:
-
-    ```azurecli
-    $vNic = "myhci-vnic"
-    $vnetName = "myhci-vnet-dynamic"   
-    $subscription =  "<Subscription ID>" 
-    $resource_group = "myhci-rg"
-    $customLocName = "myhci-cl" 
-    $location = "eastus2euap"
-    ```
-
-    Here is a description of the parameters:
-
-    | Parameter | Description |
-    | ----- | ----------- |
-    | **name** | Name for the virtual network interface that you'll create on the virtual network deployed on your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a virtual network interface after it's created. |
-    | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
-    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for virtual network on your Azure Stack HCI cluster. |
-    | **custom-location** |Name or ID of the custom location to use for virtual network on your Azure Stack HCI cluster. For more information, see how to create a custom location when you [Deploy an Arc Resource Bridge via the command line](../manage/deploy-arc-resource-bridge-using-command-line.md#set-up-arc-vm-management) |
-    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
-    | **subnet-id** |Name of your virtual network. For example: `test-vnet-dynamic`.  |
-
-1. To create a virtual network interface, run the following command:
- 
-    ```azurecli
-    az stack-hci-vm network nic create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --subnet-id $vnetName --name $netInt
-    ```
-   
-    Here is a sample output:
-    
-    ```azurecli
-    {
-      "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
-        "type": "CustomLocation"
-      },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/networkinterfaces/myhci-vnic",
-      "location": "eastus",
-      "name": "myhci-vnic",
-      "properties": {
-        "ipConfigurations": [
-          {
-            "name": null,
-            "properties": {
-              "gateway": null,
-              "prefixLength": null,
-              "privateIpAddress": null,
-              "privateIpAllocationMethod": null,
-              "subnet": {
-                "id": "internalNAT"
-              }
-            }
-          }
-        ],
-        "macAddress": null,
-        "provisioningState": "Succeeded",
-        "resourceName": "myhci-vnic",
-        "status": {}
-      },
-      "resourceGroup": "myhci-rg",
-      "systemData": {
-        "createdAt": "2023-02-08T23:25:10.984508+00:00",
-        "createdBy": "guspinto@contoso.com",
-        "createdByType": "User",
-        "lastModifiedAt": "2023-02-08T23:26:03.262252+00:00",
-        "lastModifiedBy": "<ID>",
-        "lastModifiedByType": "Application"
-      },
-      "tags": null,
-      "type": "microsoft.azurestackhci/networkinterfaces"
-    }
-    PS C:\windows\system32> 
-    ```
-
-## Create VM
-
-To create a VM with guest management enabled, you'll use the network interface that you created in the previous step. You can create a Windows VM or a Linux VM.
-
-### Create a VM for static IP 
+Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. Here we will create a VM that uses specific memory and processor counts on a specified storage path.
 
 1. Set some parameters.
 
     ```azurecli
-    $vm_name="Hopev1"
-    $subscription =  "<Subscription ID>"
+    $vmName ="myhci-vm"
+    $subscription =  "myhci-sub"
     $resource_group = "myhci-rg"
-    $customLocName = "myhci-cl"
-    $customLocID="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
+    $customLocationName = "myhci-cl"
+    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
-    $guestName = "MyComputer"
-    $username = "<Username for the VM>"
+    $computerName = "mycomputer"
+    $userName = "myhci-user"
     $password = "<Password for the VM>"
-    $galleryImageName ="ws22server"
-    $VNic="myhci-vnic"   
+    $imageName ="ws22server"
+    $nicName ="myhci-vnic" 
+    $storagePathName = "myhci-sp" 
+    $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-sp" 
     ```
 
 
 1. Run the following command to create a VM.
 
    ```azurecli
-    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location=$customLocID --location $location --size="Default" --computer-name $guestName --admin-username $username --admin-password $password --image $galleryImageName --nics $VNic --enable-agent true   
+    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" vm-size="Custom" --storage-path-id $storagePathId 
    ``` 
 
-
-    
-
-###  Create a VM for DHCP IP
-
-To create a VM with guest management enabled, you'll use the network interface that you created in the previous step. You can create a Windows VM or a Linux VM.
-
-#### Create a Windows VM
-
-Follow these steps to create a Windows VM.
-
-1. Set the parameters.
-
-    ```azurecli
-    $galleryImageName = "<Name of the Windows or Linux image to use to create VM.>"    
-    ```
- 
-1. To create a Windows VM, run the following command:
-
-    ```azurecli
-    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" --location $Location --size="Default" --computer-name "testvm0001" --admin-username "<VM administrator username>" --admin-password "<VM administrator password>" --image $galleryImageName --nics $VNic --enable-agent true --debug
-    ```
-
-    Make sure to provide the VM computer name, VM administrator username, and the VM administrator password.
-
-    In the above cmdlet, the parameter `--provision-vm-agent` when set to `true` enables guest management in the VM that is created. To disable guest management, you can omit the parameter or set it to `false`.
-
-
-    Here is a sample output:
-    
-    ```
-    PS C:\windows\system32> az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customloc_name" --location $Location --size="Default" --computer-name "testvm0001" --admin-username "<VM administrator username>" --admin-password "<VM administrator password>" --image $galleryImageName --nics $VNic --enable-agent true --debug
-    Guest Management for Azure Stack HCI VMs is currently in Preview. This command enables password-based authentication for the created VM. Would you like to proceed? (y/N): y
-    
-    ********************************************************************************
-    {
-      "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
-        "type": "CustomLocation"
-      },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/virtualmachines/testvm001",
-      "identity": {
-        "principalId": "9ab8c590-8f6e-4657-89f4-54af762153d4",
-        "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-        "type": "SystemAssigned"
-      },
-      "location": "eastus",
-      "name": "testvm001",
-      "properties": {
-        "guestAgentProfile": {
-          "agentVersion": "1.25.02203.713",
-          "errorDetails": [],
-          "lastStatusChange": "2023-02-08T23:46:26.6921034Z",
-          "status": "Connected",
-          "vmuuid": "31B7B385-1502-467C-BCB0-A815CAB0C5F7"
-        },
-        "hardwareProfile": {
-          "dynamicMemoryConfig": null,
-          "memoryGb": 4,
-          "processors": 4,
-          "vmSize": "Custom"
-        },
-        "networkProfile": {
-          "networkInterfaces": [
-            {
-              "id": "testnic001"
-            }
-          ]
-        },
-        "osProfile": {
-          "adminPassword": null,
-          "adminUsername": "admin",
-          "computerName": "testvm0001",
-          "linuxConfiguration": {
-            "disablePasswordAuthentication": false,
-            "provisionVmAgent": true,
-            "ssh": null
-          },
-          "osType": null,
-          "windowsConfiguration": {
-            "enableAutomaticUpdates": null,
-            "provisionVmAgent": true,
-            "ssh": null,
-            "timeZone": null
-          }
-        },
-        "provisioningState": "Succeeded",
-        "resourceName": "testvm001",
-        "securityProfile": {
-          "enableTpm": null,
-          "uefiSettings": {
-            "secureBootEnabled": true
-          }
-        },
-        "status": {
-          "powerState": "Running"
-        },
-        "storageProfile": {
-          "dataDisks": [],
-          "imageReference": {
-            "name": "windos"
-          },
-          "osDisk": {
-            "id": null
-          },
-          "storagepathId": null
-        },
-        "vmId": "85679cec-a80a-11ed-bfb6-22ee2f11ced4"
-      },
-      "resourceGroup": "myhci-rg",
-      "systemData": {
-        "createdAt": "2023-02-08T23:43:59.974877+00:00",
-        "createdBy": "guspinto@contoso.com",
-        "createdByType": "User",
-        "lastModifiedAt": "2023-02-08T23:46:35.803537+00:00",
-        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-        "lastModifiedByType": "Application"
-      },
-      "tags": null,
-      "type": "microsoft.azurestackhci/virtualmachines"
-    }
-    
-    ```
-
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
-#### Create a Linux VM
+In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
-To create a Linux VM, run the following command:
+If the flag is not specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
-
-```azurecli
-az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --size="Default" --computer-name "myComputer" --admin-username "admin" --admin-password "pass" --image $galleryImageName --nics $VNic --enable-agent true --authentication-type "password"
-```
-This command will create a Linux VM with guest management enabled. The command is similar to the one used for Windows VM creation with the exception of the inclusion of `--allow-password-auth` parameter. The gallery image used should also be a Linux image. 
-
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
 # [Azure portal](#tab/azureportal)
 
@@ -500,12 +196,12 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. You can also choose the disk **Provisioning type** to be **Static** or **Dynamic**.
     1. Select **Add**.
 
-1. **(Optional)** Create or add a virtual network interface for the VM.
+1. **(Optional)** Create or add a network interface for the VM.
 
     > [!NOTE]
     > If you enabled guest management, you must add at least one network interface.
 
-    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of virtual network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
+    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
 
     1. Provide a **Name** for the network interface. 
     1. Select the **Network** and choose static or dynamic IP addresses.

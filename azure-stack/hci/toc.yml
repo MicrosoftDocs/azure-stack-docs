@@ -89,8 +89,10 @@
                 href: manage/virtual-machine-image-local-share.md
               - name: Using sysprepped Ubuntu image
                 href: manage/virtual-machine-image-linux-sysprep.md
-            - name: Create virtual networks
-              href: manage/create-virtual-networks.md
+            - name: Create logical networks
+              href: manage/create-logical-networks.md
+            - name: Create network interfaces
+              href: manage/create-network-interfaces.md
           - name: Create Arc VMs
             href: manage/create-arc-virtual-machines.md
           - name: Manage VM extensions
@@ -113,10 +115,10 @@
       items:
         - name: Alerts via Azure monitor
           href: manage/health-alerts-via-azure-monitor-alerts.md
-        - name: Metrics via Azure portal
-          href: ../index.yml
-        - name: ReFS dedupe and compression workbooks
-          href: ../index.yml
+        - name: Via Azure Monitor Metrics
+          href: manage/monitor-cluster-with-metrics.md
+        - name: Features via workbooks
+          href: manage/monitor-features.md
     - name: Migrate
       items: 
         - name: Migration overview
