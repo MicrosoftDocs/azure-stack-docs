@@ -67,23 +67,23 @@ Create a static logical network when you want to create virtual machines with ne
     ```
 
     > [!NOTE]
-    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(managementcomputestorage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(management_compute_storage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
 
     For static IP, the *required* parameters are tabulated as follows:
 
-    | Parameters |Required/Optional | Description |
-    |------------|------------------|-------------|
-    | **name** | Required |Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
-    | **vm-switch-name** | Required |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the logical network. |
-    | **resource-group** | Required |Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
-    | **subscription** | Required |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
-    | **custom-location** | Required | Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this logical network. |
-    | **location** |Required | Azure regions as specified by `az locations`. |
-    | **vlan** | Required |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
-    | **ip-allocation-method** | Required | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
-    | **address-prefixes** | Required | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
-    | **dns-servers** | Optional | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
-    | **gateway** | Optional | Ipv4 address of the default gateway. |
+    | Parameters | Description |
+    |------------|-------------|
+    | **name**  |Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
+    | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the logical network. |
+    | **resource-group** |Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
+    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
+    | **custom-location** | Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this logical network. |
+    | **location** | Azure regions as specified by `az locations`. |
+    | **vlan** |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
+    | **ip-allocation-method** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
+    | **address-prefixes** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
+    | **dns-servers** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
+    | **gateway** | Ipv4 address of the default gateway. |
 
     > [!NOTE]
     > DNS server and gateway must be specified if you're creating a static logical network.
@@ -91,7 +91,7 @@ Create a static logical network when you want to create virtual machines with ne
 1. Create a static logical network. Run the following cmdlet:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationName --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
     ```
 
     Here's a sample output:
@@ -170,7 +170,7 @@ Follow these steps to configure a DHCP logical network:
 1. Set the parameters. Here's an example using the default external switch:
 
     ```azurecli
-    $vNetName = "myhci-lnet-dhcp"
+    $lnetName = "myhci-lnet-dhcp"
     $vSwitchName = '"ConvergedSwitch(compute_management)"'
     $subscription =  "<Subscription ID>" 
     $resource_group = "myhci-rg"
