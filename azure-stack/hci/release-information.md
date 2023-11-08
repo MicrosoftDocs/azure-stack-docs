@@ -25,19 +25,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **Version** | **Availability date** | **OS build**      | **Apply update by** |
 |:------------|:----------------------|:------------------|:-------------------------|
-| 23H2        | 2023-11-14            | 25398.524         |  |
 | 22H2        | 2022-10-25            | 20349.1194        | 2023-04-25               |
 | 21H2        | 2021-10-19            | 20348.288         | 2022-04-19               |
-
-## Azure Stack HCI, version 23H2 (OS build 25398)
-
-The following are the available updates for Azure Stack HCI, version 23H2.
-
-All dates are listed in ISO 8601 format: *YYYY-MM-DD*
-
-| **OS build** | **Availability date** | **KB article**                                           |
-|:------------ |:----------------------|:---------------------------------------------------------|
-| 25398.524   | 2023-11-14            | [KB 5032202](https://support.microsoft.com/topic/e1ee8019-47f8-4314-be67-32d4e48ac140)  |
 
 ## Azure Stack HCI, version 22H2 (OS build 20349)
 
@@ -121,8 +110,6 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 ## Release notes
 
 For information about what's included in each version of Azure Stack HCI, see the following release notes:
-
-- [Release Notes for Azure Stack HCI, version 23H2](../index.yml)
 
 - [Release Notes for Azure Stack HCI, version 22H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-22h2-fea63106-a0a9-4b6c-bb72-a07985c98a56)
 - [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173)
