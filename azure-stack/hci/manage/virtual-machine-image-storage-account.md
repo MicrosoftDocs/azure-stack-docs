@@ -27,8 +27,6 @@ Before you begin, make sure that the following prerequisites are completed.
 
 [!INCLUDE [hci-vm-image-prerequisites-storage-account](../../includes/hci-vm-image-prerequisites-storage-account.md)]
 
-- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
-
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
 - Make sure that you have **Storage Blob Data Contributor** role on the Storage account that you use for the image. For more information, see [Assign an Azure role for access to blob data](/azure/role-based-access-control/role-assignments-portal?tabs=current).
