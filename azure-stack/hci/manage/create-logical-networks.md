@@ -6,12 +6,12 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/31/2023
+ms.date: 11/07/2023
 ---
 
 # Create logical networks for Azure Stack HCI (preview)
 
-> Applies to: Azure Stack HCI, version 23H2
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create or add logical network for your Azure Stack HCI cluster.
 
@@ -57,18 +57,17 @@ Create a static logical network when you want to create virtual machines with ne
 1. Set the parameters. Here's an example:
 
     ```azurecli
-    $vNetName = "MyVirtualNetwork"
-    $vSwitchName = "ConvergedSwitch(managementcompute)"
+    $lnetName = "myhci-lnet-static"
+    $vmSwitchName = "ConvergedSwitch(management_compute_storage)"
     $subscriptionID = "<Subscription ID>"
-    $resource_group = "HCI22H2RegistrationRG"
-    $customLocName = "cluster-eecda70c5019425cab03d082a6d57e55-mocarb-cl"
-    $customLocID="/subscriptions/$SubscriptionID/resourceGroups/$ResourceGroupname/providers/Microsoft.ExtendedLocation/customLocations/$Customlocationname"
+    $resource_group = "myhci-rg"
+    $customLocationName = "myhci-cl"
     $location = "eastus"
-    $addressPrefix = "100.68.180.0/28"
+    $addressPrefixes = "100.68.180.0/28"
     ```
 
     > [!NOTE]
-    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(managementcomputestorage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
 
     For static IP, the *required* parameters are tabulated as follows:
 
@@ -92,9 +91,73 @@ Create a static logical network when you want to create virtual machines with ne
 1. Create a static logical network. Run the following cmdlet:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscriptionid --resource-group $resource_group --custom-location=$customLocID --location $location --network-type "Transparent" --name $vNetName --ip-allocation-method "Static" --address-prefixes $addressPrefix --vm-switch-name $vSwitchName     
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationName --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
     ```
-  
+
+    Here's a sample output:
+
+    ```output
+    {
+      "extendedLocation": {
+        "name": "/subscriptions/<Subscription ID>resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+        "type": "CustomLocation"
+      },
+      "id": "/subscriptions/<Subscription ID>resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/myhci-lnet-static",
+      "location": "eastus",
+      "name": "myhci-lnet-static",
+      "properties": {
+        "dhcpOptions": {
+          "dnsServers": [
+            "192.168.200.222"
+          ]
+        },
+        "provisioningState": "Succeeded",
+        "status": {},
+        "subnets": [
+          {
+            "name": "myhci-lnet-static",
+            "properties": {
+              "addressPrefix": "192.168.201.0/24",
+              "addressPrefixes": null,
+              "ipAllocationMethod": "Static",
+              "ipConfigurationReferences": null,
+              "ipPools": null,
+              "routeTable": {
+                "etag": null,
+                "name": null,
+                "properties": {
+                  "routes": [
+                    {
+                      "name": "myhci-lnet-static-default-route",
+                      "properties": {
+                        "addressPrefix": "0.0.0.0/0",
+                        "nextHopIpAddress": "192.168.200.1"
+                      }
+                    }
+                  ]
+                },
+                "type": null
+              },
+              "vlan": null
+            }
+          }
+        ],
+        "vmSwitchName": "ConvergedSwitch(managementcomputestorage)"
+      },
+      "resourceGroup": "myhci-rg",
+      "systemData": {
+        "createdAt": "2023-11-02T16:38:18.460150+00:00",
+        "createdBy": "guspinto@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-11-02T16:40:22.996281+00:00",
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedByType": "Application"
+      },
+      "tags": null,
+      "type": "microsoft.azurestackhci/logicalnetworks"
+    }
+    ```
+
   Once the logical network creation is complete, you're ready to create virtual machines with network interfaces on these logical networks.
 
 
@@ -107,12 +170,12 @@ Follow these steps to configure a DHCP logical network:
 1. Set the parameters. Here's an example using the default external switch:
 
     ```azurecli
-    $vNetName = "myhci-lnet-dynamic"
+    $vNetName = "myhci-lnet-dhcp"
     $vSwitchName = '"ConvergedSwitch(compute_management)"'
     $subscription =  "<Subscription ID>" 
     $resource_group = "myhci-rg"
     $customLocName = "myhci-cl" 
-    $location = "eastus2euap"
+    $location = "eastus"
     ```
 
     > [!NOTE]
@@ -133,41 +196,51 @@ Follow these steps to configure a DHCP logical network:
 1. Run the following cmdlet to create a DHCP logical network:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName" --location $location --ip-allocation-method "Dynamic" --network-type "Transparent" --name $vNetName --vm-switch-name $vSwitchName
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetdynamicname --vm-switch-name $vmswitchname --ip-allocation-method "Dynamic"
     ```
 
     Here's a sample output:
     
     ```output
     {
-    "extendedLocation": {
-    "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
-    "type": "CustomLocation"
-    },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/virtualnetworks/myhci-lnet-dynamic",
-    "location": "eastus2euap",
-    "name": "myhci-lnet-dynamic",
-    "properties": {
-      "dhcpOptions": {
-        "dnsServers": null
+      "extendedLocation": {
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
+        "type": "CustomLocation"
       },
-      "networkType": "Transparent",
-      "provisioningState": "Succeeded",
-      "status": {},
-      "subnets": [],
-      "vmSwitchName": "ConvergedSwitch(compute_management)"
-    },
-    "resourceGroup": "myhci-rg",
-    "systemData": {
-      "createdAt": "2023-06-06T00:10:40.562941+00:00",
-      "createdBy": "johndoe@contoso.com",
-      "createdByType": "User",
-      "lastModifiedAt": "2023-06-06T00:11:26.659220+00:00",
-      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
-      "lastModifiedByType": "Application"
-    },
-    "tags": null,
-    "type": "microsoft.azurestackhci/virtualnetworks"
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/logicalnetworks/myhci-lnet-dhcp",
+      "location": "eastus",
+      "name": "myhci-lnet-dhcp",
+      "properties": {
+        "dhcpOptions": null,
+        "provisioningState": "Succeeded",
+        "status": {},
+        "subnets": [
+          {
+            "name": "myhci-lnet-dhcp",
+            "properties": {
+              "addressPrefix": null,
+              "addressPrefixes": null,
+              "ipAllocationMethod": "Dynamic",
+              "ipConfigurationReferences": null,
+              "ipPools": null,
+              "routeTable": null,
+              "vlan": 0
+            }
+          }
+        ],
+        "vmSwitchName": "ConvergedSwitch(managementcomputestorage)"
+      },
+      "resourceGroup": "myhci-rg",
+      "systemData": {
+        "createdAt": "2023-11-02T16:32:51.531198+00:00",
+        "createdBy": "guspinto@contoso.com",
+        "createdByType": "User",
+        "lastModifiedAt": "2023-11-02T23:08:08.462686+00:00",
+        "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+        "lastModifiedByType": "Application"
+      },
+      "tags": null,
+      "type": "microsoft.azurestackhci/logicalnetworks"
     }
     ```
 
