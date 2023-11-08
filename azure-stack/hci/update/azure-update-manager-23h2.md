@@ -119,7 +119,7 @@ To browse for your clusters update history, follow these steps:
 
 ## Update a cluster via the Azure Stack HCI cluster resource page
 
-In addition to the Azure Update Manager UI, you can also update individual Azure Stack HCI clusters from the Azure Stack HCI cluster resource page.
+In addition to using Azure Update Manager, you can update individual Azure Stack HCI clusters from the Azure Stack HCI cluster resource page.
 
 To install updates on a single cluster from the Azure Stack HCI cluster resource page, follow these steps:
 
