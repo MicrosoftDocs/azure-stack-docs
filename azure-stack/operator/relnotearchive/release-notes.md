@@ -4,7 +4,7 @@ description: Archived release notes for Azure Stack Hub integrated systems, incl
 author: sethmanheim
 
 ms.topic: article
-ms.date: 05/25/2023
+ms.date: 11/08/2023
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,6 +20,73 @@ To access release notes for a different archived version, use the version select
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2206"
+## 2206 build reference
+
+The Azure Stack Hub 2206 update build number is **1.2206.1.24**.
+
+### Update type
+
+The Azure Stack Hub 2206 update build type is **Full**.
+
+The 2206 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2206 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
+
+### What's new
+
+- European Union-based customers can now choose to have all their data stored and processed inside the European Union boundary. For more information, see [EU Schrems II initiative for Azure Stack Hub](../azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub).
+- Azure Stack Hub now supports retrieving BitLocker keys for data encryption at rest. For more information, see [Retrieving BitLocker recovery keys](../azure-stack-security-bitlocker.md#retrieving-bitlocker-recovery-keys).
+
+<!-- ### Improvements -->
+
+### Changes
+
+- SQL RP V2 and MySQL RP V2 are only available to subscriptions that have been granted access. If you are still using SQL RP V1 and MySQL RP V1, it is strongly recommended that you [open a support case](../azure-stack-help-and-support-overview.md) to go through the upgrade process before you upgrade to Azure Stack Hub 2206.
+- This release provides support for Azure Stack Hub root certificate rotation. Previously, secret rotation did not rotate the root. You will be able to rotate the root certificate after installing the update. To do so, [perform internal secret rotation](../azure-stack-rotate-secrets.md#rotate-internal-secrets) on or before the next time you are notified via expiration alerts. Failure to rotate the root certificate and/or perform internal secret rotation might result in your stamp becoming unrecoverable.
+
+### Fixes
+
+- Fix to improve SLB throughput.
+- Fixed an issue that prevented access to the storage subsystem when scale unit nodes are rebooted.
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+### Hotfix prerequisites: before applying the 2206 update
+
+The 2206 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
+
+- [Azure Stack Hub hotfix 1.2108.2.130](../hotfix-1-2108-2-130.md)
+
+### After successfully applying the 2206 update
+
+When you update to a new major version (for example, 1.2102.x to 1.2108.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2206, if any hotfixes for 2206 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2206.2.77](../hotfix-1-2206-2-77.md)
+::: moniker-end
 
 ::: moniker range="azs-2102"
 ## 2102 build reference
@@ -168,7 +235,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Windows Server 2022 is now supported as a guest operating system. Windows Server 2022 VMs must be manually activated using [Automatic Virtual Machine Activation](/windows-server/get-started/automatic-vm-activation) in Windows Server on Azure Stack Hub running version 2108 or later. It cannot be activated on previous versions.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
 - Two new services, [Azure Kubernetes Service](../../user/aks-overview.md) and [Azure Container Registry](../../user/container-registry-overview.md), are available in public preview with this release.
-- [**AzureStack** module 2.2.0](/powershell/azure/azure-stack/overview?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
+- [**AzureStack** module 2.2.0](/powershell/azurestackhub/overview?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
 - With this release, telemetry data is uploaded to an Azure Storage account that's managed and controlled by Microsoft. Azure Stack Hub telemetry service connects to `https://*.blob.core.windows.net/` and `https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` for a successful telemetry data upload to Microsoft. Port 443 (HTTPS) must be opened. For more information, see [Azure Stack Hub telemetry](../azure-stack-telemetry.md).
 - This release includes a public preview of remote support, which enables a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent, while controlling the access level and duration of access. Support can only access your device after a support request has been submitted. For more information, see [Remote support for Azure Stack Hub](../remote-support.md).
 
@@ -2003,7 +2070,7 @@ This update includes the following new features and improvements for Azure Stack
    * **Azs.Storage.Admin Module**  
          Bug fix - New Storage Quota uses defaults if none provided.
 
-To review the reference for the updated modules, see [Azure Stack Module Reference](/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
+To review the reference for the updated modules, see [Azure Stack Module Reference](/powershell/azurestackhub/overview?preserve-view=true&view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
 
 ## Fixed issues
 
@@ -3985,7 +4052,7 @@ The following are now available, but don't require Azure Stack update 1804.
 
 - **New Azure Stack Admin PowerShell Version 1.3.0**.  Azure Stack PowerShell 1.3.0 is now available for installation. This version provides commands for all Admin resource providers to manage Azure Stack.  With this release, some content will be deprecated from the Azure Stack Tools GitHub [repository](https://github.com/Azure/AzureStack-Tools). 
 
-   For installation details, follow the [instructions](../azure-stack-powershell-install.md) or the [help](/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
+   For installation details, follow the [instructions](../azure-stack-powershell-install.md) or the [help](/powershell/azurestackhub/overview?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
 
 - **Initial release of Azure Stack API Rest Reference**. The [API reference for all Azure Stack Admin resource providers](/rest/api/azure-stack/) is now published. 
 
@@ -4024,7 +4091,7 @@ The following are post-installation known issues for build  **20180513.1**.
 
 <!-- 1272111 - IS --> 
 - After you install or update to this version of Azure Stack, you might not be able to view Azure Stack scale units in the Admin portal.  
-  Workaround: Use PowerShell to view information about Scale Units. For more information, see the [help](/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
+  Workaround: Use PowerShell to view information about Scale Units. For more information, see the [help](/powershell/azurestackhub/overview?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
 
 <!-- 2332636 - IS -->  
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  
