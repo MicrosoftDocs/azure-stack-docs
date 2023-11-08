@@ -66,4 +66,4 @@ The following VM guest images from Azure Marketplace are supported:
 
 ## Next steps
 
-- [Deploy Trusted launch Arc VMs](trusted-launch-arc-vm.md).
+- [Deploy Trusted launch Arc VMs](trusted-launch-vm-deploy.md).
