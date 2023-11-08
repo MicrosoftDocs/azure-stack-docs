@@ -20,7 +20,7 @@ This article describes how to deploy Trusted launch for Azure Arc virtual machin
 
 ## Prerequisites
 
-Make sure that you have access to an Azure Stack HCI, version 23H2 cluster that is deployed and registered with Azure. For more information, see [Deploy an Azure Stack HCI, version 23H2 system using the Azure portal](../deploy-via-portal.md).
+Make sure that you have access to an Azure Stack HCI, version 23H2 cluster that is deployed and registered with Azure. For more information, see [Deploy an Azure Stack HCI, version 23H2 system using the Azure portal](../../index.yml).
 
 ## Create a Trusted launch Arc VM
 
@@ -41,8 +41,6 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
 1. Once a VM is created, go to the **VM properties** page and verify the security type shown is **Trusted launch**.
  
     :::image type="content" source="media/trusted-launch/create-arc-vm-3.png" alt-text="Screenshot showing properties page." lightbox="media/trusted-launch/create-arc-vm-3.png":::
-
----
 
 # [Create using CLI](#tab/azure-cli)
 
