@@ -312,7 +312,7 @@ Once the feature updates are installed, you'll need to update the cluster functi
    Run the following cmdlet on any server in the cluster:
    
    ```PowerShell
-   Update-ClusterFunctionalLevel='true';
+   Update-ClusterFunctionalLevel
 
    
    You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
