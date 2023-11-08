@@ -227,6 +227,8 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
 
 1. Ensure a value of **TrustedLaunch** is returned.
 
+---
+
 ## Example
 
 This example shows entails a Trusted launch Arc VM running Windows 11 guest with BitLocker encryption enabled. Here the steps to exercise the scenario:
