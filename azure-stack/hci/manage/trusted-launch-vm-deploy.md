@@ -42,57 +42,7 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
  
     :::image type="content" source="media/trusted-launch/create-arc-vm-3.png" alt-text="Screenshot showing properties page." lightbox="media/trusted-launch/create-arc-vm-3.png":::
 
-## Example
-
-This example shows entails a Trusted launch Arc VM running Windows 11 guest with BitLocker encryption enabled. Here the steps to exercise the scenario:
-
-1. Create a Trusted launch Arc VM running a supported Windows 11 guest operating system.
-
-1. Enable BitLocker encryption for the OS volume on the Win 11 guest.
-
-    Log into the Windows 11 guest and enable BitLocker encryption (for the OS volume): In the search box on the task bar, type Manage BitLocker, and then select it from the list of results. Select Turn on BitLocker and then follow the instructions to encrypt the OS volume (C:\). BitLocker will use vTPM as a key protector for the OS volume. 
-
-1. Migrate the VM to another node in the cluster.  You can do this using PowerShell:
-
-    ```PowerShell
-    Move-ClusterVirtualMachineRole -Name <VM name> -Node <destination node name> -MigrationType Shutdown
-    ```
-
-1. Confirm that the owner node of the VM is the specified destination node:
-
-    ```PowerShell
-    Get-ClusterGroup <VM name>
-    ```
-
-1. After VM migration completes, verify if the VM is available and BitLocker is enabled.  
- 
-1. Verify if you can log in to the Windows 11 guest in the VM, and if BitLocker encryption for the OS volume remains enabled. If you can do this, this confirms that the vTPM state was preserved during VM migration.
-
-    If vTPM state was not preserved during VM migration, VM startup would have resulted in BitLocker recovery during guest boot up. That is, you would have been prompted for the BitLocker recovery password when you attempted to log in to the Windows 11 guest. This was because the boot measurements (stored in the vTPM) of the migrated VM on the destination node were different from that of the original VM.
-
-1. Cause the VM to failover to another node in the cluster.
-
-1. Confirm the owner node of the VM using this command:
-
-    ```PowerShell
-    Get-ClusterGroup <VM_Name>
-    ```
- 
-1. Use Failover Cluster Manager to stop the cluster service on the owner node as follows: Select the owner node as displayed in Failover Cluster Manager.  On the **Actions** right pane, select **More Actions** and then select **Stop Cluster Service**.
-
-1. Stopping the cluster service on the owner node will cause the VM to be automatically migrated to another available node in the cluster. Restart the cluster service afterwards.
-
-1. After failover completes, verify if the VM is available and BitLocker is enabled after failover.
-
-1. Confirm that the owner node of the VM is the specified destination node:
-
-    ```PowerShell
-    Get-ClusterGroup <VM name>
-
-## Next steps
-
-- [Manage Trusted launch Arc VM guest state protection key](trusted-launch-vm-import-key.md).
-
+---
 
 # [Create using CLI](#tab/azure-cli)
 
