@@ -18,8 +18,6 @@ This article describes how to use Azure Update Manager to find and install avail
 > [!IMPORTANT]
 > You can view the Azure Update Manager workflow, but this release of Azure Stack HCI, version 23H2 doesn't include an update package that can be installed.
 
-<!--This release means although you don't have an update package installed you still can use the entire update workflow?-->
-
 ## About Azure Update Manager
 
 Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Stack HCI cluster's nodes. You can view Azure Stack HCI clusters across your entire infrastructure, or in remote/branch offices and update at scale.
