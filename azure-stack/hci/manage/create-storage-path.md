@@ -6,21 +6,21 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/17/2023
+ms.date: 10/31/2023
 ---
 
 # Create storage path for Azure Stack HCI (preview)
 
 > Applies to: Azure Stack HCI, versions 23H2 (preview)
 
-This article describes how to create storage path for VM images used on your Azure Stack HCI cluster. Storage paths are an Azure resource and are used to provide a path to store VM images, working directories, and other important configuration files on your cluster. You can create a storage path using the Azure CLI.
+This article describes how to create storage path for VM images used on your Azure Stack HCI cluster. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your cluster. You can create a storage path using the Azure CLI.
 
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About storage path
 
-You may need to provide the storage path for the image store for VM images and a cloud store for configuration files. The storage paths should point to cluster shared volumes that can be accessed by all the servers on your cluster. We recommend that you create a separate cluster shared volume for storing the VM images.
+You may need to provide the storage path for the image store for VM images and a cloud store for configuration files. The storage paths should point to cluster shared volumes that can be accessed by all the servers on your cluster. We strongly recommend that you create storage path under cluster shared volumes in order to be highly available.
 
 The available space in the cluster shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\Volume01` and the `volume01` is 4 TB, then the size of the storage path is the available space (out of the 4TB) on `Volume01`.
   
@@ -32,7 +32,8 @@ Before you begin, make sure to complete the following prerequisites:
     
     Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
 
-1. Make sure that a cluster shared volume exists on your Azure Stack HCI cluster that is accessible from all the servers in the cluster. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images.
+1. Make sure that a cluster shared volume exists on your Azure Stack HCI cluster that is accessible from all the servers in the cluster. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images. By default, cluster shared volumes are created during the deployment of Azure Stack HCI cluster. 
+
 
     You can create storage paths only within cluster shared volumes that are available in the cluster. For more information, see [Create a cluster shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
 
@@ -87,15 +88,16 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
     $storagepathname="<Storage path name>"
     $path="<Path on the disk to cluster shared volume>"
     $subscription="<Subscription ID>"
-    $resourcegroup="<Resource group name>"
-    $customloc_name="<Custom location of your Azure Stack HCI cluster>"
+    $resource_group="<Resource group name>"
+    $customLocName="<Custom location of your Azure Stack HCI cluster>"
+    $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/$reource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocName"
     $location="<Azure region where the cluster is deployed>"
     ```
 
 1. Create a storage path `test-storagepath` at the following path: `C:\ClusterStorage\test-storagepath`. Run the following cmdlet:
  
     ```azurecli
-    az stack-hci-vm storagepath create --resource-group $resourcegroup --custom-location $customLocationID --name $storagepathname --path $path
+    az stack-hci-vm storagepath create --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --path $path
     ```
     For more information on this cmdlet, see [az stack-hci-vm storagepath create](../index.yml).
 
@@ -105,18 +107,18 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
     PS C:\windows\system32> $storagepathname="test-storagepath"
     PS C:\windows\system32> $path="C:\ClusterStorage\Volume01"
     PS C:\windows\system32> $subscription="<Subscription ID>"
-    PS C:\windows\system32> $resourcegroup="hcirg"
-    PS C:\windows\system32> $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.ExtendedLocation/customLocations/mytest-cl"
+    PS C:\windows\system32> $resource_group="myhci-rg"
+    PS C:\windows\system32> $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl"
 
-    PS C:\windows\system32> az stack-hci-vm storagepath create --name $storagepathname --resource-group $resourcegroup --custom-location $customLocationID --path $path
+    PS C:\windows\system32> az stack-hci-vm storagepath create --name $storagepathname --resource-group $resource_group --custom-location $customLocationID --path $path
     Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
     {
       "extendedLocation": {
-        "name": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.ExtendedLocation/customLocations/mytest-cl",
+        "name": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl",
         "type": "CustomLocation"
       },
-      "id": "/subscriptions/<Subscription ID>/resourceGroups/hcirg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
-      "location": "eastus2euap",
+      "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/test-storagepath",
+      "location": "eastus",
       "name": "test-storagepath",
       "properties": {
         "path": "C:\\ClusterStorage\\Volume01",
@@ -126,7 +128,7 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
           "containerSizeMB": 243097
         }
       },
-      "resourceGroup": "hcirg",
+      "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-10-06T04:45:30.458242+00:00",
         "createdBy": "guspinto@contoso.com",
@@ -161,7 +163,7 @@ az stack-hci-vm storagepath show --resource-group "<resource group name>" --name
 
 You'll receive a notification that the storage path doesn't exist.
 
-To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume.
+To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume. For more information, see [Delete a volume](./manage-volumes.md#delete-volumes).
 
 If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](./manage-volumes.md#expand-volumes).
 
