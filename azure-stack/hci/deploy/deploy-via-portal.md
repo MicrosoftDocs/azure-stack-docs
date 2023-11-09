@@ -33,7 +33,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
     Key Vault adds cost above the Azure Stack HCI subscription. For details, see [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault).
-1. Select the server or servers that make up this Azure Stack HCI system.
+6. Select the server or servers that make up this Azure Stack HCI system.
 
     :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
@@ -154,7 +154,7 @@ Choose whether to create a new configuration for this system or to load deployme
 
 The **Deployments** page then appears, which you can use to monitor the deployment progress. If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
 
-Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single server is around 1.5-2 hours while a two-server cluster takes about 2.5 hours to deploy.
+Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single server is around 1.5-2 hours while a two-node cluster takes about 2.5 hours to deploy.
 
 ## Next steps
 
