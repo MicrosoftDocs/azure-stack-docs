@@ -20,7 +20,7 @@ A VM guest state protection key is used to protect the VM guest state, like the 
 
 ## Export and import the VM
 
-The first task to managing a Trusted launch Arc VM guest state protection key to export a VM from the source Azure Stack HCI cluster and then import it into the target Azure Stack HCI cluster:
+The first step is to export the VM from the source Azure Stack HCI cluster and then import it into the target Azure Stack HCI cluster:
 
 1. To export the VM from the source cluster, see [Export-VM (Hyper-V)](/powershell/module/hyper-v/export-vm).
 
@@ -64,7 +64,7 @@ Run the following commands from the source Azure Stack HCI cluster:
    (Get-VM -Name <vmName>).vmid  
    ```
 
-1. Sign in to the key vault as administrator:
+1. Sign in to the key vault, then run the following as administrator:
 
    ```azurepowershell
      mocctl.exe security login --identity --loginpath (Get-MocConfig).mocLoginYAML

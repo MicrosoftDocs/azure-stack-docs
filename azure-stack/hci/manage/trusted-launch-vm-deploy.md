@@ -13,7 +13,7 @@ ms.date: 11/09/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Stack HCI, version 23H2. Trusted launch protects VMs against boot kits, rootkits, and kernel-level malware.
+This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Stack HCI, version 23H2.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -45,7 +45,7 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
 
 Follow the steps to create a Trusted launch Arc VM using Azure CLI:
 
-1. Create a VM image using a supported VM guest OS image from Azure Marketplace.
+1. Create a VM image using a supported VM guest OS image from Azure Marketplace. For more information, see [Create Azure Stack HCI VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
 
 1. Create a VM using CLI as follows:
 
@@ -61,16 +61,16 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
     $galleryImageName="<Name of VM guest image>" 
     $vNic="<Name of virtual network interface>" 
 
-    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resourceGroup --custom-location=$customLocationID --location $location --size="Default" --computer-name $guestName --admin-username $userName --admin-password $password --image $galleryImageName --nics $vNic --enable-secure-boot true --enable-vtpm true --security-type "TrustedLaunch"
+    az stack-hci-vm create --name $vmName --subscription $subscription --resource-group $resourceGroup --custom-location=$customLocationID --location $location --size="Default" --computer-name $guestName --admin-username $userName --admin-password $password --image $galleryImageName --nics $vNic --enable-secure-boot true --enable-vtpm true --security-type "TrustedLaunch"
     ```
 
     Sample output:
 
-    ```PowerShell
+    ```output
     {
       "extendedLocation": {
         "name": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/Microsoft.ExtendedLocation/customLocations/myhci-cl",
-    "    type": "CustomLocation"
+        "type": "CustomLocation"
       },
       "id": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.HybridCompute/machines/tvm1/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       "name": "default",
@@ -178,13 +178,13 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
 
 ## Example
 
-This example shows entails a Trusted launch Arc VM running Windows 11 guest with BitLocker encryption enabled. Here the steps to exercise the scenario:
+This example shows a Trusted launch Arc VM running Windows 11 guest with BitLocker encryption enabled. Here the steps to exercise the scenario:
 
 1. Create a Trusted launch Arc VM running a supported Windows 11 guest operating system.
 
 1. Enable BitLocker encryption for the OS volume on the Win 11 guest.
 
-    Log into the Windows 11 guest and enable BitLocker encryption (for the OS volume): In the search box on the task bar, type Manage BitLocker, and then select it from the list of results. Select Turn on BitLocker and then follow the instructions to encrypt the OS volume (C:\). BitLocker will use vTPM as a key protector for the OS volume. 
+    Log into the Windows 11 guest and enable BitLocker encryption (for the OS volume): In the search box on the task bar, type Manage BitLocker, and then select it from the list of results. Select Turn on BitLocker and then follow the instructions to encrypt the OS volume (C:\). BitLocker will use vTPM as a key protector for the OS volume.
 
 1. Migrate the VM to another node in the cluster.  You can do this using PowerShell:
 
@@ -204,17 +204,17 @@ This example shows entails a Trusted launch Arc VM running Windows 11 guest with
 
     If vTPM state was not preserved during VM migration, VM startup would have resulted in BitLocker recovery during guest boot up. That is, you would have been prompted for the BitLocker recovery password when you attempted to log in to the Windows 11 guest. This was because the boot measurements (stored in the vTPM) of the migrated VM on the destination node were different from that of the original VM.
 
-1. Cause the VM to failover to another node in the cluster.
+1. Force the VM to failover to another node in the cluster.
 
-1. Confirm the owner node of the VM using this command:
+    1. Confirm the owner node of the VM using this command:
 
-    ```PowerShell
-    Get-ClusterGroup <VM_Name>
-    ```
+        ```PowerShell
+        Get-ClusterGroup <VM_Name>
+        ```
  
-1. Use Failover Cluster Manager to stop the cluster service on the owner node as follows: Select the owner node as displayed in Failover Cluster Manager.  On the **Actions** right pane, select **More Actions** and then select **Stop Cluster Service**.
+    1. Use Failover Cluster Manager to stop the cluster service on the owner node as follows: Select the owner node as displayed in Failover Cluster Manager.  On the **Actions** right pane, select **More Actions** and then select **Stop Cluster Service**.
 
-1. Stopping the cluster service on the owner node will cause the VM to be automatically migrated to another available node in the cluster. Restart the cluster service afterwards.
+    1. Stopping the cluster service on the owner node will cause the VM to be automatically migrated to another available node in the cluster. Restart the cluster service afterwards.
 
 1. After failover completes, verify if the VM is available and BitLocker is enabled after failover.
 
@@ -222,6 +222,7 @@ This example shows entails a Trusted launch Arc VM running Windows 11 guest with
 
     ```PowerShell
     Get-ClusterGroup <VM name>
+    ```
 
 ## Next steps
 
