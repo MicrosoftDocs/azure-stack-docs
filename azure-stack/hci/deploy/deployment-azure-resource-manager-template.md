@@ -268,6 +268,6 @@ A screenshot of a computer
 
 ## Next steps
 
-Learn 
-    - [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
-    - About how to [Deploy Azure Arc VMs on Azure Stack HCI](../manage/create-arc-virtual-machines.md).
+Learn more:
+- [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
+- About how to [Deploy Azure Arc VMs on Azure Stack HCI](../manage/create-arc-virtual-machines.md).
