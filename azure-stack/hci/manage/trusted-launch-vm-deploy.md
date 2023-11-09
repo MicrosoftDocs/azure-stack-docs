@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/08/2023
+ms.date: 11/09/2023
 ---
 
 # Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)
@@ -15,8 +15,7 @@ ms.date: 11/08/2023
 
 This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Stack HCI, version 23H2. Trusted launch protects VMs against boot kits, rootkits, and kernel-level malware.
 
-> [!IMPORTANT]
-> This feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 

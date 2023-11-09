@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 11/08/2023
+ms.date: 11/09/2023
 ---
 
 # Manage Trusted launch Arc VM guest state protection key on Azure Stack HCI, version 23H2 (preview)
@@ -15,6 +15,8 @@ ms.date: 11/08/2023
 This article describes how to manage a Trusted launch Arc VM guest state protection key on Azure Stack HCI.
 
 A VM guest state protection key is used to protect the VM guest state, like the vTPM state, while at rest in storage. It's not possible to boot up a Trusted launch Arc VM without the guest state protection key. The key is stored in a key vault in the Azure Stack HCI cluster where the VM is located.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 > [!NOTE]
 > To export a VM from the source cluster, see [Export-VM (Hyper-V)](/powershell/module/hyper-v/export-vm). To import a VM to the target cluster, see [Import-VM (Hyper-V)](/powershell/module/hyper-v/import-vm).
