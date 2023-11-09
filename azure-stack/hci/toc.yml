@@ -101,6 +101,14 @@
             href: manage/troubleshoot-arc-enabled-vms.md
           - name: FAQs
             href: manage/azure-arc-vms-faq.yml
+        - name: Trusted launch for Arc VMs
+          items: 
+            - name: What is Trusted Launch for Arc VMs?
+              href: ../index.yml
+            - name: Deploy Trusted Launch for Arc VMs
+              href: ../index.yml
+            - name: Manage guest state protection key
+              href: ../index.yml
         - name: Storage
           items: 
           - name: Use ReFS deduplication and compression
