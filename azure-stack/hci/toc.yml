@@ -52,7 +52,7 @@
       - name: 5. Deploy via Azure portal 
         href: deploy/deploy-via-portal.md
       - name: 6. Deploy via ARM template
-        href: ../index.yml
+        href: deploy/deployment-azure-resource-manager-template.md
     - name: Update 
       items:
       - name: What's the Lifecycle Manager?
