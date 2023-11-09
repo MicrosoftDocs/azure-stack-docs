@@ -55,7 +55,7 @@ Azure VM verification relies on a built-in platform attestation service on Azure
 3. To activate benefits, consumer workloads request attestation from servers. They try to send requests via VMBus, or they can also query the REST endpoint using the networking components configured in legacy OS support. Both approaches for VM-server communication are supported and can coexist on the same cluster.
 
    > [!NOTE]
-   > When using legacy OS support, you need to manually enable access for VMs that require the activation of benefits.
+   > When using legacy OS support, you must manually enable access for VMs that require the activation of benefits.
 
     HciSvc then returns a signed response using the Azure certificate it stored. Consumers verify the response and activate associated benefits.
 
@@ -64,7 +64,7 @@ Azure VM verification relies on a built-in platform attestation service on Azure
 Azure VM verification is automatically enabled by default in Azure Stack HCI 23H2 or later. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
 
 > [!NOTE]
-> To enable Extended Security Updates (ESUs), you'll need to do additional setup and turn on [legacy OS support](#legacy-os-support).
+> To enable Extended Security Updates (ESUs), you must do additional setup and turn on [legacy OS support](#legacy-os-support).
 
 ### Prerequisites
 
@@ -72,7 +72,7 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): all servers must be online and registered to Azure.
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - Update your VMs: see [version requirements for workloads](#benefits-available-on-azure-stack-hci).
-- Turn on Hyper-V Guest Service Interface: See instructions [for WAC](#troubleshoot-vms) or [for PowerShell](#troubleshoot-vms-1)
+- Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](#troubleshoot-vms) or [for PowerShell](#troubleshoot-vms-1)
 - (optional) If you are using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
@@ -315,11 +315,11 @@ You must enable legacy OS networking for any new VMs that you create after the f
   
 #### Azure CLI
 
-Azure CLI is available to install in Windows, MacOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, MacOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification by following these steps:
 
-1. Set up parameters from your subscription, resource group, and cluster name
+1. Set up parameters from your subscription, resource group, and cluster name:
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
@@ -354,10 +354,9 @@ No, turning on Azure VM verification incurs no extra fees.
 
 No, Azure VM verification is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
 
-### If I have just upgraded to 23H2 from 22H2, and I have previously turned on the feature "Azure benefits", do I need to do anything new?
+### If I have just upgraded to 23H2 from 22H2, and I have previously turned on the Azure Benefits feature, do I need to do anything new?
 
-If you have upgraded a cluster that previously has [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you will not need to do anything when you upgrade to 23H2. When you upgrade, the feature stays on and legacy OS support is turned on as well.
-However, if you wish to leverage an improved way of doing VM-host communication through VMBus in 23H2, simply make sure that you have the right [prerequisites](#prerequisites).
+If you have upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you wish to use an improved way of doing VM-to-host communication through VMBus in 23H2, make sure that you have the required [prerequisites](#prerequisites).
 
 ### I just set up Azure VM verification on my cluster. How do I ensure that Azure VM verification stays active?
 
