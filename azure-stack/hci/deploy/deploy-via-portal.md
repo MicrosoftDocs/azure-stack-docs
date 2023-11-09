@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal (preview)
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/11/2023
+ms.date: 11/09/2023
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -146,4 +146,6 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::
 
-The Deployments page then appears, which you can use to monitor the deployment progress. If the progress doesn't appear, wait a minute or two and then select **Refresh**.
+The **Deployments** page then appears, which you can use to monitor the deployment progress. If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
+
+Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take anywhere from 45 minutes to an hour to complete. The total deployment for a single server can take 1.5 to 2 hours and for a two server about 2.5 hours to complete.
