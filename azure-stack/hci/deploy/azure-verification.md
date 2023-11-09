@@ -17,7 +17,7 @@ Microsoft Azure offers a range of differentiated workloads and capabilities that
 
 *Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Stack HCI 23H2 or later. It helps to provide guarantees for these VMs to operate in other Azure environments.
 
-For more information about a previous version of this feature on Azure Stack HCI 22H2 or earlier, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
+For more information about the previous version of this feature on Azure Stack HCI 22H2 or earlier, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
 
 ## Benefits available on Azure Stack HCI
 
@@ -36,7 +36,7 @@ This section is optional reading, and explains more about how Azure VM verificat
 
 Azure VM verification relies on a built-in platform attestation service on Azure Stack HCI. This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, and returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
 
-<!-- architecture.png -->
+:::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture.":::
 
 1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([i.e. VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
 
@@ -80,15 +80,16 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 #### Windows Admin Center or PowerShell
 
 ### [Windows Admin Center](#tab/wac)
+
 ### Check server status of Azure VM verification
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure verification for VMs**.
 
 2. To check Azure VM verification server status:
    - Cluster-level status: **Host status** appears as **On**.
-   - Server-level satus: Under the **Server** tab in the dashboard, check that the status for every server shows as **Active** in the table.
+   - Server-level status: Under the **Server** tab in the dashboard, check that the status for every server shows as **Active** in the table.
 
-<!-- WAC-server -->
+:::image type="content" source="media/azure-verification/wac-server.png" alt-text="Screenshot showing server status." lightbox="media/azure-verification/wac-server.png":::
 
 #### Troubleshoot servers
 
@@ -108,7 +109,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci).
 
-<!-- WAC-VM1 -->
+   :::image type="content" source="media/azure-verification/wac-virtual-machine-dashboard.png" alt-text="Screenshot showing virtual machine dashboard and status." lightbox="media/azure-verification/wac-virtual-machine-dashboard.png":::
 
 #### Troubleshoot VMs
 
@@ -121,6 +122,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   - If you want to determine the benefits available for these VMs, you can either do so manually by checking the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci), or Windows Admin Center can display this information. To access the information through Windows Admin Center, enable [Hyper-V data exchange (KVP)](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-data-exchange-service-kvp) for your VMs by selecting the action labeled **Turn on Hyper-V data exchange**.
 
 ### [PowerShell](#tab/azure-ps)
+
 ### Check server status of Azure VM verification
 
 - When Azure VM verification setup is successful, you can view the host status. Check the cluster property **IMDS Attestation** by running the following command:
@@ -233,7 +235,7 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
    - Check that **Legacy OS support** appears as **On**.
    - Under the **Server** tab in the dashboard, check that legacy OS support for every server shows as **On** in the table.
 
-<!-- IMDS v2 - legacy OS support.png -->
+:::image type="content" source="media/azure-verification/legacy-support.png" alt-text="Screenshow showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.png":::
 
 ### 2. Enable access for new VMs
 
@@ -308,6 +310,8 @@ You must enable legacy OS networking for any new VMs that you create after the f
   ```powershell
   Remove-AzStackHCIVMAttestation -RemoveAll
   ```
+
+---
   
 #### [Azure CLI](#tab/azurecli)
 
