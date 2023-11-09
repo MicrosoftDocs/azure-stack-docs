@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 This article describes observability in Azure Stack HCI and the data sources through which it is achieved.
 
-> Applies to: Azure Stack HCI, versions 23H2 (preview) and 22H2
+> Applies to: Azure Stack HCI, version 23H2 (preview)
 
 ## What is Azure Stack HCI observability?
 
