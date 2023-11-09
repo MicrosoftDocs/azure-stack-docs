@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Azure Stack HCI deployment issues (preview)
+title: Get support for Azure Stack HCI deployment issues (preview)
 description: Learn how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support.
 author: alkohli
 ms.author: alkohli
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 11/09/2023
 ---
 
-# Troubleshoot Azure Stack HCI deployment issues (preview)
+# Get support for Azure Stack HCI deployment issues (preview)
 
 > Applies to: Azure Stack HCI, version 23H2 (preview)
 
@@ -35,7 +35,7 @@ Here are the high-level steps for standalone log collection:
 1. As instructed by Microsoft Support, copy the requested diagnostic data from the Azure Stack HCI node to a system which has connectivity to Azure.
 1. Use `Send-AzStackHciDiagnosticData` to transmit the copied diagnostic data to Microsoft for troubleshooting purposes. Microsoft can access that data after you file a support ticket.
 
-If the observability feature is already configured, you can send diagnostic data to Microsoft using the manual log collection process. For instructions, see [Collect logs](./collect-logs.md). To explore additional log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
+If the observability feature is already configured, you can send diagnostic data to Microsoft using the on-demand log collection process. For instructions, see [Collect logs](./collect-logs.md). To explore additional log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ### Send logs to Microsoft
 

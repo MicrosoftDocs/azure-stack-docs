@@ -3,7 +3,7 @@ title: Azure Stack HCI observability
 description: Learn about observability in Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
-ms.date: 11/06/2023
+ms.date: 11/09/2023
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -33,7 +33,7 @@ Observability in Azure Stack HCI is achieved through the following data sources:
 
 ## How is observability installed?
 
-Observability and remote support are installed as part of the Azure Stack HCI deployment process. This is done through the [Lifecycle Manager](../update/whats-the-lifecycle-manager.md), which automates many of the steps involved in the deployment process. The goal is to offer a simple setup process that takes care of all the components, including observability.
+Observability and remote support are installed as part of the Azure Stack HCI deployment process. This allows the [Lifecycle Manager](../update/whats-the-lifecycle-manager.md) automate many of the steps involved in the deployment process. The goal is to offer a simple setup process that takes care of all the components, including observability.
 
 ## Telemetry
 
@@ -61,7 +61,7 @@ The following table provides a detailed comparison of different methods of log c
 
 | Log collection method | Purpose | How to collect logs | Use cases |
 |--|--|--|--|
-| Manual log collection | Manually collect and send diagnostic logs for Azure Stack HCI to Microsoft. | Use `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. <br> <br> Logs are temporarily copied locally, parsed, sent, and then deleted. <br> <br> For detailed instructions on how to collect logs manually, see [Collect logs](../manage/collect-logs.md). | - Non-registration failures. <br> - Log collection request from Microsoft Support based on an open case. <br> - Log collection when a cluster is registered and connected. <br> - Log collection when the Observability components are installed and functional. <br> - Log collection when a cluster is partially registered. |
+| On-demand log collection | Manually collect and send diagnostic logs for Azure Stack HCI to Microsoft. | Use `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. <br> <br> Logs are temporarily copied locally, parsed, sent, and then deleted. <br> <br> For detailed instructions on how to perform on-demand log collection, see [Collect logs](../manage/collect-logs.md). | - Non-registration failures. <br> - Log collection request from Microsoft Support based on an open case. <br> - Log collection when a cluster is registered and connected. <br> - Log collection when the Observability components are installed and functional. <br> - Log collection when a cluster is partially registered. |
 | Standalone log collection | Send diagnostic data to Microsoft if observability components are not deployed or if there are issues during the cluster registration process. | Save data locally and use `Send-AzStackHciDiagnosticData` command to send data to Microsoft. <br> <br> For detailed instructions on standalone log collections, see [Perform standalone log collection](../manage/troubleshoot-environment-validation-issues.md#perform-standalone-log-collection). | - Deployment failures. <br> - Registration failures. <br> - Log collection request from Microsoft Support based on an open case. <br> - Log collection when a cluster is not registered and doesn't have connectivity. <br> - Log collection when a cluster is partially registered. <br> - Log collection when the Observability components are not available. |
 | Proactive log collection | Automatically collect and deliver diagnostic logs to Microsoft before a support ticket is opened. In this method, the diagnostic data is gathered only when a system health alarm is triggered. | Automatically collects and sends log when a system health alarm is triggered. It requires Azure Stack HCI telemetry and diagnostics extension. <br> For information, see [Azure Stack HCI telemetry and diagnostics extension](./telemetry-and-diagnostics-overview.md). | Preemptive log collection for troubleshooting and issue resolution. |  
 | Autonomous log collection | Collect and store logs locally for failure analysis by customer support in case of intermittent or no connectivity to Azure. In this method, logs are not sent to Azure. | Logs are collected and stored locally for analysis and no automatic sending to Azure occurs. | For failure analysis by customer support when there is intermittent or no connectivity to Azure. |
