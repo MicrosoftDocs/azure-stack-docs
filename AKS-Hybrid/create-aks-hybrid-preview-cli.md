@@ -9,26 +9,26 @@ ms.date: 09/29/2022
 
 # How to create AKS hybrid clusters using Az CLI
 
-> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI, version 22H2
 
 In this how-to guide, you'll
 
 - Create an AKS hybrid cluster using Azure CLI. The cluster is Azure Arc-connected by default
-- While creating the cluster, you will provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access
+- While creating the cluster, you need to provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access
 - Access the AKS hybrid cluster using `kubectl` and your Microsoft Entra identity
 - Run a sample multi-container application with a web front-end and a Redis instance in the AKS hybrid cluster
 
 
 ## Before you begin
 
-- Before you begin, make sure you've got the following details from your on-premises infrastructure administrator:
+- Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
     - **Azure subscription ID** - The Azure subscription ID where Azure Resource Bridge, AKS hybrid extension and Custom Location has been created.
     - **Custom Location ID** - Azure Resource Manager ID of the custom location. Your infrastructure admin should give you the ARM ID of the custom location. This is a required parameter to create AKS hybrid clusters. You can also get the ARM ID using `az customlocation show --name <custom location name> --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group where the custom location has been created.
     - **AKS hybrid vnet ID** - Azure Resource Manager ID of the Azure hybridaks vnet. Your admin should give you the ID of the Azure vnet. This is a required parameter to create AKS clusters. You can also get the Azure Resource Manager ID using `az hybridaks vnet show --name <vnet name> --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group where the Azure vnet has been created.
 
 - You can run the following steps in a local Azure CLI. Make sure you have the latest version of [Az CLI installed](/cli/azure/install-azure-cli) on your local machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 
-- In order to connect to the AKS hybrid cluster from anywhere, you need to create a **Microsoft Entra group** and add members to it. All the members in the Microsoft Entra group will have cluster administrator access to the AKS hybrid cluster. **Make sure to add yourself to the Microsoft Entra group.** If you don't add yourself, you'll not be able to access the AKS hybrid cluster using `kubectl`. To learn more about creating Microsoft Entra groups and adding users, read [create Microsoft Entra groups using Azure Portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+- In order to connect to the AKS hybrid cluster from anywhere, you need to create a **Microsoft Entra group** and add members to it. All the members in the Microsoft Entra group will have cluster administrator access to the AKS hybrid cluster. **Make sure to add yourself to the Microsoft Entra group.** If you don't add yourself, you'll not be able to access the AKS hybrid cluster using `kubectl`. To learn more about creating Microsoft Entra groups and adding users, read [create Microsoft Entra groups using Azure portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 - [Download and install Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) on your local machine. The Kubernetes command-line tool, kubectl, allows you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs. 
 
@@ -44,7 +44,7 @@ az extension add -n hybridaks --version 0.2.2
 
 ## Create an AKS hybrid cluster
 
-Use the `az hybridaks create` command to create an AKS hybrid cluster. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set) command.
+Use the `az hybridaks create` command to create an AKS hybrid cluster. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
 ```azurecli
 az hybridaks create -n <aks-hybrid cluster name> -g <Azure resource group> --custom-location <ARM ID of the custom location> --vnet-ids <ARM ID of the Azure hybridaks vnet> --aad-admin-group-object-ids <comma seperated list of Azure AD group IDs> --generate-ssh-keys --kubernetes-version "1.24.11"
@@ -54,9 +54,11 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 ## Connect to the AKS hybrid cluster
 
-Now that you've created the cluster, connect to your AKS hybrid cluster by running the `az hybridaks proxy` command from your local machine. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account?view=azure-cli-latest#az-account-set)] command. 
+Now that you've created the cluster, connect to your AKS hybrid cluster by running the `az hybridaks proxy` command from your local machine. Make sure you login to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command. 
 
 This command downloads the kubeconfig of your AKS hybrid cluster to your local machine and opens a proxy connection channel to your on-premises AKS hybrid cluster. The channel is open for as long as this command is running. Let this command run for as long as you want to access your cluster. If this command times out, close the CLI window, open a fresh one and run the command again. 
+
+Note that you need `Contributor` permissions over the resource group that hosts the AKS hybrid cluster to run the below command successfully.
 
 ```azurecli
 az hybridaks proxy --name <aks-hybrid cluster name> --resource-group <Azure resource group> --file .\aks-hybrid-kube-config
@@ -89,7 +91,7 @@ moc-lfdr4ssdabk   Ready    <none>                 4m38s   v1.21.9
 
 A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
-You will use a manifest to create all objects needed to run the [Azure Vote application](https://github.com/Azure-Samples/azure-voting-app-redis.git). This manifest includes two [Kubernetes deployments](kubernetes-concepts.md#deployments):
+You'll use a manifest to create all objects needed to run the [Azure Vote application](https://github.com/Azure-Samples/azure-voting-app-redis.git). This manifest includes two [Kubernetes deployments](kubernetes-concepts.md#deployments):
 
 * The sample Azure Vote Python applications.
 * A Redis instance.

@@ -4,7 +4,7 @@ description: This article describes how to manage Azure Arc extensions on Azure 
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.reviewer: arduppal
 ms.lastreviewed: 09/19/2023
 ms.date: 09/19/2023
