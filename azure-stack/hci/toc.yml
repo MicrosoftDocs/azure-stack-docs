@@ -157,9 +157,12 @@
             href: migrate/migrate-cluster-new-hardware.md
     - name: Troubleshoot
       items:
-      - name: Troubleshoot environment readiness
+      - name: Get support for deployment issues
         href: manage/troubleshoot-environment-validation-issues.md
-
+    - name: Concepts
+      items: 
+      - name: Azure Stack HCI observability
+        href: ../index.yml
 - name: Plan
   items:
   - name: Requirements
