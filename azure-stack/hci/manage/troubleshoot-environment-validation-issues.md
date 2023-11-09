@@ -23,8 +23,8 @@ The following table outlines potential issues you might encounter during deploym
 
 | Issues | Recommended troubleshooting actions |
 |--|--|
-| - Active directory preparation issues. <br> - Azure Stack HCI operating system installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | Contact Support by [filing a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
-| - Environment validation issues <br> - Initialization and registration issues <br> - Deployment validation issues <br> - Deployment failure issues | 1. Contact Support by [filing a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). <br> 2. [Perform standalone log collection](#perform-standalone-log-collection). |
+| - Active directory preparation issues. <br> - Azure Stack HCI operating system installation configuration issues. <br> - Deployment experience issues through the Azure portal and template. | [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). |
+| - Environment validation issues. <br> - Initialization and registration issues. <br> - Deployment validation issues. <br> - Deployment failure issues. | 1. [File a support ticket](/azure/azure-portal/supportability/how-to-create-azure-support-request). <br> 2. [Perform standalone log collection](#perform-standalone-log-collection). |
 
 ## Perform standalone log collection
 
