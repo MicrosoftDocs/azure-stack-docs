@@ -43,6 +43,23 @@ Before you begin, make sure to complete the following prerequisites:
 
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
+## Sign in and set subscription
+
+1. Connect to a server on your Azure Stack HCI system. Run PowerShell as an administrator.
+
+
+1. Sign in. Type:
+
+    ```azurecli
+    az login --use-device-code
+    ```
+
+1. Set your subscription.
+
+    ```azurecli
+    az account set --subscription <Subscription ID>
+    ```
+
 ## Create logical network
 
 You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch for DHCP or a static configuration. The parameters used to create a DHCP and a static logical network are different.
@@ -62,6 +79,7 @@ Create a static logical network when you want to create virtual machines with ne
     $subscriptionID = "<Subscription ID>"
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl"
+    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
     ```
@@ -175,6 +193,7 @@ Follow these steps to configure a DHCP logical network:
     $subscription =  "<Subscription ID>" 
     $resource_group = "myhci-rg"
     $customLocName = "myhci-cl" 
+    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     ```
 
