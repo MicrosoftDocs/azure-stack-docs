@@ -104,11 +104,11 @@
         - name: Trusted launch for Arc VMs
           items: 
             - name: What is Trusted Launch for Arc VMs?
-              href: ../index.yml
+              href: manage/trusted-launch-vm-overview.md
             - name: Deploy Trusted Launch for Arc VMs
-              href: ../index.yml
+              href: manage/trusted-launch-vm-deploy.md
             - name: Manage guest state protection key
-              href: ../index.yml
+              href: manage/trusted-launch-vm-import-key.md
         - name: Storage
           items: 
           - name: Use ReFS deduplication and compression
