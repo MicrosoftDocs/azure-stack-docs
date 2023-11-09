@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal (preview)
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/11/2023
+ms.date: 11/09/2023
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
