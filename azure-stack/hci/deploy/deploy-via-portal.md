@@ -32,12 +32,12 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
-    Key Vault adds cost above the Azure Stack HCI subscription. For details, see [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault).
+    Key Vault adds cost in addition to the Azure Stack HCI subscription. For details, see [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault).
 6. Select the server or servers that make up this Azure Stack HCI system.
 
     :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
-7. Select **Validate**, wait for green validation checkbox to appear, and then select **Next: Configuration**.
+7. Select **Validate**, wait for the green validation checkbox to appear, and then select **Next: Configuration**.
 
     The validation process checks that each server is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
@@ -84,7 +84,7 @@ Choose whether to create a new configuration for this system or to load deployme
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
-5. Allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
+5. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
 
     These IPs are used by Azure Stack HCI and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
 
@@ -152,13 +152,13 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::
 
-The **Deployments** page then appears, which you can use to monitor the deployment progress. If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
+The **Deployments** page then appears, which you can use to monitor the deployment progress. 
+
+If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
 
 Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single server is around 1.5-2 hours while a two-node cluster takes about 2.5 hours to deploy.
 
 ## Next steps
 
-* If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume.
-
-    For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md)
+* If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md)
 * [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md)
