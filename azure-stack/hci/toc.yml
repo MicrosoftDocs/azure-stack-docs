@@ -49,10 +49,12 @@
         href: deploy/deployment-install-os.md
       - name: 4. Register with Arc and set up permissions
         href: deploy/deployment-arc-register-server-permissions.md
-      - name: 5. Deploy via Azure portal 
-        href: deploy/deploy-via-portal.md
-      - name: 6. Deploy via ARM template
-        href: deploy/deployment-azure-resource-manager-template.md
+      - name: 5. Choose a deployment method
+        items:
+        - name: 5A. Deploy via Azure portal 
+          href: deploy/deploy-via-portal.md
+        - name: 5B. Deploy via ARM template
+          href: deploy/deployment-azure-resource-manager-template.md
     - name: Update 
       items:
       - name: What's the Lifecycle Manager?
