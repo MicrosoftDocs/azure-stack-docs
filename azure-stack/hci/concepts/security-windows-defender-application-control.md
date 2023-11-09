@@ -4,14 +4,14 @@ description: This article provides guidance on Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 10/27/2023
+ms.date: 11/08/2023
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
 
 # Windows Defender Application Control for Azure Stack HCI (preview)
 
->Applies to: Azure Stack HCI, versions 23H2 (preview) and 22H2 Supplemental Package
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI.
 
