@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/08/2023
+ms.date: 11/09/2023
 ---
 
 # What's new in Azure Stack HCI, version 23H2 (preview)
@@ -30,13 +30,15 @@ Unlike the prior years, Azure Stack HCI, version 23H2 includes more than just th
 
 ### Cloud-based deployment
 
-Starting this release, you can deploy and register an Azure Stack HCI cluster via the Azure portal. For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](./index.yml).
+For servers running Azure Stack HCI, version 23H2, you can perform new deployments via the cloud. You can deploy an Azure Stack HCI cluster in one of the two ways - via the Azure portal or via an Azure Resource Manager (ARM) deployment template. 
+
+For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](./deploy/deploy-via-portal.md) and [Deploy Azure Stack HCI via the Azure Resource Manager deployment template](./deploy/deployment-azure-resource-manager-template.md).
 
 ### Cloud-based updates
 
-This new release has the infrastructure to group all the applicable updates for the OS, software agents, Azure Arc infrastructure and even OEM drivers and firmware into a single monthly update package. This update package is then discovered and updates applied from the cloud via the natively integrated Azure Update Manager tool.  
+This new release has the infrastructure to group all the applicable updates for the OS, software agents, Azure Arc infrastructure and even OEM drivers and firmware into a single monthly update package. This update package is then discovered and updates applied from the cloud via the natively integrated Azure Update Manager tool. Alternatively, you can apply the updates via the PowerShell.   
 
-For more information, see [Update your Azure Stack HCI cluster via the Azure Update Manager](./update/update-azure-stack-hci-solution.md).​
+For more information, see [Update your Azure Stack HCI cluster via the Azure Update Manager](./update/update-azure-stack-hci-solution.md) and [Update your Azure Stack HCI via the PowerShell](./update/update-via-powershell-23h2.md).​
 
 ### Cloud-based monitoring
 
@@ -81,7 +83,6 @@ This release provides:
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
 
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
-
 
 
 ### Capacity management
