@@ -19,7 +19,7 @@ This article introduces Trusted launch for Azure Arc virtual machines (VMs) on A
 
 ## Introduction
 
-Trusted launch for Azure Arc VMs supports secure boot, virtual TPM (trusted platform module), and VM guest boot integrity monitoring.
+Trusted launch for Azure Arc VMs supports secure boot, virtual [Trusted Platform Module](windows/security/hardware-security/tpm/trusted-platform-module-overview) (TPM), and VM guest boot integrity monitoring.
 
 Trusted launch is a security type that is specified when creating Arc VMs on Azure Stack HCI.
 
@@ -29,24 +29,30 @@ A few of the capabilities and benefits of using Trusted launch for Arc VMs inclu
 
 | Capability | Benefit |
 | -- | -- |
-| Secure boot. | Protection against malware-based rootkits and boot kits. Securely deploy VMs with verified boot loaders, OS kernels, and drivers. |
-| vTPM. | Dedicated secure vault for keys and measurements. |
-| vTPM. | Preserve virtual TPM (vTPM) state during VM migration or VM failover within an Azure Stack HCI cluster. This is of value to applications such as BitLocker that rely on vTPM state. |
-| Virtualization-based security (VBS). | Guest operating system running in the VM must enable and make use of VBS. |
+| Secure boot. | Helps reduce risk of malware (rootkits) during boot by verifying that boot components are signed by trusted publishers. |
+| vTPM. | Virtualized version of a hardware TPM that serves as a dedicated vault for keys, certificates, and secrets.  |
+| vTPM. | Preserves virtual TPM state when the VM migrates or fails over within a cluster. |
+| Virtualization-based security (VBS). | Guest in the VM can create isolated regions of memory using VBS support. |
 
 > [!NOTE]
 > VM guest boot integrity verification is only supported in supported Azure regions.
 
 ## Guest operating system images
 
-The following VM guest OS images from Azure Marketplace are supported:
+The following VM guest OS images from Azure Marketplace are supported. 
 
-| Name | Publisher | SKU | Version number |
-| -- | -- | -- | -- |
-| Windows 11 Enterprise multi-session, version 22H2 - Gen2 | microsoftwindowsdesktop | win11-22h2-avd | 22621.2428.231001 |
-| Windows 11 Enterprise multi-session, version 22H2 + Microsoft 365 Apps (preview) - Gen2 | microsoftwindowsdesktop | win11-22h2-avd-m365 | 22621.382.220810 |
-| Windows 11 Enterprise multi-session, version 21H2 - Gen2 | microsoftwindowsdesktop  | win11-21h2-avd | 22000.2538.231001 |
-| Windows 11 Enterprise multi-session, version 21H2 + Microsoft 365 Apps - Gen2 | microsoftwindowsdesktop | win10-21h2-avd-m365-g2 | 19044.3570.231010 |
+| Name | Publisher | Offer | SKU | Version number |
+| -- | -- | -- | -- | -- |
+| Windows 11 Enterprise multi-session, version 22H2 - Gen2 | microsoftwindowsdesktop | windows-11  | win11-22h2-avd | 22621.2428.231001 |
+| Windows 11 Enterprise multi-session, version 22H2 + Microsoft 365 Apps (preview) - Gen2 | microsoftwindowsdesktop | windows11preview | win11-22h2-avd-m365 | 22621.382.220810 |
+| Windows 11 Enterprise multi-session, version 21H2 - Gen2 | microsoftwindowsdesktop  | windows-11  | win11-21h2-avd | 22000.2538.231001 |
+| Windows 11 Enterprise multi-session, version 21H2 + Microsoft 365 Apps - Gen2 | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365-g2 | 19044.3570.231010 |
+
+Run the following example command to download a guest image:
+
+```PowerShell
+az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $Location --name "WS2022DataCenter-AE" --os-type $osType --offer "windowsserver" --publisher "microsoftwindowsserver" --sku "2022-datacenter-azure-edition" --version "20348.1970.230905"
+```
 
 > [!NOTE]
 > VM guest images obtained outside of Azure Marketplace are not supported.

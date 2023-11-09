@@ -50,18 +50,18 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
 1. Create a VM using CLI as follows:
 
     ```PowerShell
-    $vmName="<name of VM>" 
+    $vmName="<Name of the VM>" 
     $subscription="<Subscription ID associated with your cluster>" 
     $resourceGroup="<Resource group name for your cluster>" 
     $location="<Location for your Azure Stack HCI cluster>" 
     $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for HCI cluster>" --query id -o tsv) 
-    $guestName="MyComputer" 
+    $guestName="<Name of the guest>" 
     $userName="<Username for VM>" 
     $password="<Password for VM>" 
-    $galleryImageName="<name of VM guest image>" 
-    $vNic="<name of virtual network interface>" 
+    $galleryImageName="<Name of VM guest image>" 
+    $vNic="<Name of virtual network interface>" 
 
-    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resourceGroup --custom-location=$customLocationID --location $location --size="Default" --computer-name $guestName --admin-username $userName --admin-password $password --image $galleryImageName --nics $vNic --enable-agent false --enable-vtpm true --security-profile secure-boot-enabled=true --security-type "TrustedLaunch"
+    az stack-hci-vm create --name $vm_name --subscription $subscription --resource-group $resourceGroup --custom-location=$customLocationID --location $location --size="Default" --computer-name $guestName --admin-username $userName --admin-password $password --image $galleryImageName --nics $vNic --enable-secure-boot true --enable-vtpm true --security-type "TrustedLaunch"
     ```
 
     Sample output:
@@ -69,10 +69,10 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
     ```PowerShell
     {
       "extendedLocation": {
-        "name": "/subscriptions/de3c4d5e-af08-451a-a873-438d86ab6f4b/resourceGroups/EDGECI-REGISTRATION-HC1n22r1724/providers/Microsoft.ExtendedLocation/customLocations/cluster-c1495144a02440fdaa69448cef2ba363-mocarb-CL",
+        "name": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/Microsoft.ExtendedLocation/customLocations/myhci-cl",
     "    type": "CustomLocation"
       },
-      "id": "/subscriptions/de3c4d5e-af08-451a-a873-438d86ab6f4b/resourceGroups/EDGECI-REGISTRATION-HC1n22r1724/providers/Microsoft.HybridCompute/machines/tvm1/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+      "id": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.HybridCompute/machines/tvm1/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
       "name": "default",
       "properties": {
         "hardwareProfile": {
@@ -100,7 +100,7 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
         "osProfile": {
           "adminPassword": null,
           "adminUsername": "admin",
-          "computerName": "MyComputer",
+          "computerName": "myhci-tvm",
           "linuxConfiguration": {
             "disablePasswordAuthentication": null,
             "provisionVmAgent": false,
@@ -133,8 +133,8 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
         "storageProfile": {
           "dataDisks": [],
           "imageReference": {
-            "id": "/subscriptions/de3c4d5e-af08-451a-a873-438d86ab6f4b/resourceGroups/EDGECI-REGISTRATION-HC1n22r1724/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/Win11EntMulti21H2",
-            "resourceGroup": "EDGECI-REGISTRATION-HC1n22r1724"
+            "id": "/subscriptions/myhci-sub/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/Win11EntMulti21H2",
+            "resourceGroup": "myhci-rg"
           },
           "osDisk": {
             "id": null,
@@ -142,12 +142,12 @@ Follow the steps to create a Trusted launch Arc VM using Azure CLI:
           },
           "storagepathId": null
         },
-        "vmId": "956900ba-951b-44c9-be35-12c1fb4152b7"
+        "vmId": "myhci-tvm-1234567890"
       },
-      "resourceGroup": "EDGECI-REGISTRATION-HC1n22r1724",
+      "resourceGroup": "myhci-rg",
       "systemData": {
         "createdAt": "2023-10-24T19:15:47.152610+00:00",
-        "createdBy": "aszregistration@microsoft.com",
+        "createdBy": "registration@contoso.com",
         "createdByType": "User",
         "lastModifiedAt": "2023-10-24T19:41:05.196469+00:00",
         "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
