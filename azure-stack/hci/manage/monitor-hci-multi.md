@@ -1,50 +1,35 @@
 ---
-title: Monitor multiple server clusters with Azure Stack HCI Insights
-description: How to use the latest version of Azure Stack HCI Insights to monitor the health, performance, and usage of multiple Azure Stack HCI clusters.
+title: Monitor multiple Azure Stack HCI clusters with Insights
+description: How to use Insights to monitor the health, performance, and usage of multiple Azure Stack HCI clusters.
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/15/2022
+ms.date: 10/30/2023
 ---
 
-# Monitor multiple clusters with Azure Stack HCI Insights
+# Monitor multiple Azure Stack HCI clusters with Insights
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-Azure Stack HCI Insights provides health, performance, and usage insights about registered Azure Stack HCI, version 21H2 clusters that are connected to Azure and are [enrolled in monitoring](/azure-stack/hci/manage/monitor-hci-single). This article explains the benefits of this new Azure Monitor experience, as well as how to modify and adapt the experience to fit the unique needs of your organization.
+This article explains how to use Insights to monitor multiple Azure Stack HCI clusters. For a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single.md).
 
-Azure Stack HCI Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Azure Stack HCI Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
+> [!IMPORTANT]
+> If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview), such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023) section.
 
-You can view the monitoring data for a single cluster from your Azure Stack HCI resource page, or you can use Azure Monitor to see an aggregated view of multiple clusters.
+For information about the benefits, prerequisites, and how to enable Insights on each cluster, see [Benefits](./monitor-hci-single.md#benefits), [Prerequisites](./monitor-hci-single.md#prerequisites), and [Enable Insights](./monitor-hci-single.md#enable-insights).
 
 Watch the video for a quick introduction:
 
 > [!VIDEO https://www.youtube.com/embed/mcgmAsNricw]
 
-## Benefits of Azure Stack HCI Insights
-
-Azure Stack HCI Insights offers three primary benefits:
-
-- It's managed by Azure and accessed from Azure portal, so it's always up to date, and there's no database or special software setup required.
-
-- It's highly scalable, capable of loading more than 400 cluster information sets across multiple subscriptions at a time, with no boundary limitations on cluster, domain, or physical location.
-
-- It's highly customizable. The user experience is built on top of Azure Monitor workbook templates, allowing users to change the views and queries, modify or set thresholds that align with the users' limits, and save these customizations into a workbook. Charts in the workbooks can then be pinned to Azure dashboards.
-
-## Prerequisites
-
-To use Azure Stack HCI Insights, make sure you've completed the following:
-
-- Have an Azure Owner or User Access Administrator [register your cluster with Azure](../deploy/register-with-azure.md), which will automatically make sure every server in your cluster is Azure Arc-enabled. This allows Azure Monitor to fetch the details of not only the cluster, but also the nodes. If you registered your cluster prior to June 15, 2021, you'll need to re-register to Arc-enable the servers.
-
-- [Enable Insights](/azure-stack/hci/manage/monitor-hci-single#enable-insights) to allow Azure Monitor to start collecting the events that are required for monitoring.
-
 ## View health, performance, and usage insights
 
-Once the prerequisites are met, you can access Azure Stack HCI Insights from **Azure Monitor > Insights hub > Azure Stack HCI**. You will see the following tabs to toggle between views: **Add to monitoring, Cluster health, Servers, Virtual machines, Storage**.
+Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
+
+You can access Insights from **Azure Monitor > Insights hub > Azure Stack HCI**. You will see the following tabs to toggle between views: **Add to monitoring, Cluster health, Servers, Virtual machines, Storage**.
 
 ### Filtering results
 
@@ -61,11 +46,11 @@ This feature provides details of clusters that are not monitored by the user. To
 
 :::image type="content" source="media/monitor-hci-multi/add-to-monitoring.png" alt-text="Screenshot for selecting cluster for monitoring." lightbox="media/monitor-hci-multi/add-to-monitoring.png":::
 
-| Column              | Description                           | Example      |
-|-------------------------|-------------------------------------------|------------------|
-| Cluster                 | The name of the cluster.           | 27cls1           |
-| Azure connection status | The HCI resource status.           | Connected        |
-| OS version              | The operating system build on the server. | 10.0.20348.10131 |
+| Column | Description | Example |
+|--|--|--|
+| Cluster | The name of the cluster. | 27cls1 |
+| Azure connection status | The HCI resource status. | Connected |
+| OS version | The operating system build on the server. | 10.0.20348.10131 |
 
 By default, the grid view shows the first 250 rows. You can set the value by editing the grid rows as shown in the following image:
 
@@ -88,13 +73,13 @@ This view provides an overview of the health of clusters.
 
 :::image type="content" source="media/monitor-hci-multi/cluster-health.png" alt-text="Screenshot showing cluster health overview information." lightbox="media/monitor-hci-multi/cluster-health.png":::
 
-| Column        | Description                                                                                               | Example                    |
-|-------------------|---------------------------------------------------------------------------------------------------------------|--------------------------------|
-| Cluster           | The name of the cluster.                                                                               | 27cls1                         |
-| Last updated      | The timestamp of when server was last updated.                                                           | 4/9/2022, 12:15:42 PM          |
-| Status            | Provides health of server resources in the cluster. It can be healthy, warning, critical, or other. | Healthy                        |
-| Faulting resource | Description of which resource caused the fault.                                                       | Server, StoragePool, Subsystem |
-| Total servers     | The number of servers within a cluster.                                                                  | 4                              |
+| Column | Description | Example |
+|--|--|--|
+| Cluster | The name of the cluster. | 27cls1 |
+| Last updated | The timestamp of when server was last updated. | 4/9/2022, 12:15:42 PM |
+| Status | Provides health of server resources in the cluster. It can be healthy, warning, critical, or other. | Healthy |
+| Faulting resource | Description of which resource caused the fault. | Server, StoragePool, Subsystem |
+| Total servers | The number of servers within a cluster. | 4 |
 
 If your cluster is missing or showing the status **Other**, go to the **Log Analytics workspace** used for the cluster and make sure that the **Agent configuration** is capturing data from
 the **microsoft-windows-health/operational** log. Also make sure the clusters have connected recently to Azure, and check that the clusters aren't filtered out in this workbook.
@@ -111,15 +96,15 @@ This view provides the state of all the VMs in the selected cluster. The view is
 
 :::image type="content" source="media/monitor-hci-multi/virtual-machine-state.png" alt-text="Screenshot showing health of virtual machines." lightbox="media/monitor-hci-multi/virtual-machine-state.png":::
 
-| Metric        | Description                                                                                                                                    | Example           |
-|-------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------|
-| Cluster > Server | The name of the cluster. On expansion, it shows the servers within the cluster.                                                             | Sample-VM-1           |
-| Last Updated      | The datetimestamp of when the server was last updated.                                                                                   | 4/9/2022, 12:24:02 PM |
-| Total VMs         | The number of VMs in a server node within a cluster.                                                                                       | 1 of 2 running        |
-| Running           | The number of VMs running in a server node within a cluster.                                                                               | 2                     |
-| Stopped           | The number of VMs stopped in a server node within a cluster.                                                                               | 3                     |
-| Failed            | The number of VMs failed in a server node within a cluster.                                                                                | 2                     |
-| Other             | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it is considered as "Other." | 2                     |
+| Metric | Description | Example |
+|--|--|--|
+| Cluster > Server | The name of the cluster. On expansion, it shows the servers within the cluster. | Sample-VM-1 |
+| Last Updated | The datetimestamp of when the server was last updated. | 4/9/2022, 12:24:02 PM |
+| Total VMs | The number of VMs in a server node within a cluster. | 1 of 2 running |
+| Running | The number of VMs running in a server node within a cluster. | 2 |
+| Stopped | The number of VMs stopped in a server node within a cluster. | 3 |
+| Failed | The number of VMs failed in a server node within a cluster. | 2 |
+| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it is considered as "Other." | 2 |
 
 #### Storage
 
@@ -128,21 +113,20 @@ volumes. This view is built using the [volume event ID 3002](/azure-stack/hci/m
 
 :::image type="content" source="media/monitor-hci-multi/volume-health.png" alt-text="Screenshot showing health of storage volumes." lightbox="media/monitor-hci-multi/volume-health.png":::
 
-| Metric          | Description                                                                      | Example                                 |
-|---------------------|--------------------------------------------------------------------------------------|---------------------------------------------|
+| Metric | Description | Example |
+|--|--|--|
 | Cluster > Volume | The name of the cluster. On expansion, it shows the volumes within a cluster. | AltaylCluster1 > ClusterPerformanceHistory |
-| Last updated        | The datetimestamp of when the storage was last updated.                    | 4/14/2022, 2:58:55 PM                       |
-| Volume health       | The status of the volume. It can be healthy, warning, critical, or other.              | Healthy                                     |
-| Size                | The total capacity of the device in bytes during the reporting period.               | 25B                                         |
-| Usage               | The percentage of available capacity during the reporting period.              | 23.54%                                      |
-| Iops                | Input/output operations per second.                                                   | 45/s                                        |
-| Trend               | The IOPS trend.                                                              |                                             |
-| Throughput          | Number of bytes per second the Application Gateway has served.                        | 5B/s                                        |
-| Trend (B/s)         | The throughput trend.                                                        |                                             |
-| Average Latency     | Latency is the average time it takes for the I/O request to be completed.             | 334 μs
-                                      |
+| Last updated | The datetimestamp of when the storage was last updated. | 4/14/2022, 2:58:55 PM |
+| Volume health | The status of the volume. It can be healthy, warning, critical, or other. | Healthy |
+| Size | The total capacity of the device in bytes during the reporting period. | 25B |
+| Usage | The percentage of available capacity during the reporting period. | 23.54% |
+| Iops | Input/output operations per second. | 45/s |
+| Trend | The IOPS trend. |  |
+| Throughput | Number of bytes per second the Application Gateway has served. | 5B/s |
+| Trend (B/s) | The throughput trend. |  |
+| Average Latency | Latency is the average time it takes for the I/O request to be completed. | 334 μs |
 
-## Customize Azure Stack HCI Insights
+## Customize Insights
 
 Because the user experience is built on top of Azure Monitor workbook templates, users can edit the visualizations and queries and save them as a customized workbook.
 
@@ -158,11 +142,11 @@ Most queries are written using Kusto Query Language (KQL). Some queries are writ
 
 ## Support
 
-To open a support ticket for Azure Stack HCI Insights, use the service type **Insights for Azure Stack HCI** under **Monitoring &Management**.
+To open a support ticket for Insights, use the service type **Insights for Azure Stack HCI** under **Monitoring & Management**.
 
 ## Event Log Channel
 
-Azure Stack HCI Insights and monitoring views are based on Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. When monitoring is enabled, the data from this channel is saved to a Log Analytics workspace.
+Insights and monitoring views are based on Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. When monitoring is enabled, the data from this channel is saved to a Log Analytics workspace.
 
 ### Viewing and changing the dump cache interval
 
@@ -248,11 +232,11 @@ This channel includes five events. Each event has cluster name and Azure Resourc
 
 Most variables are self-explanatory from this JSON information. However, the table below lists a few variables which are a bit harder to understand.
 
-| Variable     | Description                                                                                                                                 |
-|:-----------------|:------------------------------------------------------------------------------------------------------------------------------------------------|
-| m_servers        | Array of server nodes.                                                                                                                          |
-| m_statusCategory | Health status of the server.                                                                                                                    | 
-| m_status         | State of the server. It is an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). | 
+| Variable | Description |
+|:-|:-|
+| m_servers | Array of server nodes. |
+| m_statusCategory | Health status of the server. | 
+| m_status | State of the server. It is an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
 
 Values for the **m_statusCategory** variable are as follows:
 
