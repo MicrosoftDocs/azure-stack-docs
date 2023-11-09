@@ -7,8 +7,8 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/07/2023
-ms.lastreviewed: 11/07/2023
+ms.date: 11/09/2023
+ms.lastreviewed: 11/09/2023
 ---
 
 # Azure verification for VMs
@@ -89,7 +89,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
    - Cluster-level status: **Host status** appears as **On**.
    - Server-level status: Under the **Server** tab in the dashboard, check that the status for every server shows as **Active** in the table.
 
-   :::image type="content" source="media/azure-verification/wac-server.png" alt-text="Screenshot showing server status." lightbox="media/azure-verification/wac-server.png":::
+     :::image type="content" source="media/azure-verification/wac-server.png" alt-text="Screenshot showing server status." lightbox="media/azure-verification/wac-server.png":::
 
 #### Troubleshoot servers
 
