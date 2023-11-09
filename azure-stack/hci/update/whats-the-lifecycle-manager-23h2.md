@@ -65,17 +65,13 @@ Sometimes you might see updates to the latest patch level of your current baseli
 
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 
-## Solution updates
+## What's in the update package?
 
 Solution updates managed by this feature contain new versions of the Azure Stack HCI operating system (OS), core agents and services, and the solution extension (depending on your cluster's hardware). Microsoft bundles these components into an update release and validates the combination of versions to ensure interoperability.
 
 - Operating System: These updates help you stay productive and protected. They provide users and IT administrators with the security fixes they need and protect devices so that unpatched vulnerabilities can't be exploited.
 
-- Agents and services: The orchestrator updates its own agents to ensure it has the recent fixes corresponding to the update. To achieve a successful update of its agents, the orchestrator:
-
-  - Prepares and updates the servicing stack
-  - Installs new agents and services
-  - Updates the host OS. Cluster-Aware Updating is used to manage reboots.
+- Agents and services: The orchestrator updates its own agents to ensure it has the recent fixes corresponding to the update. Azure Connected Machine agent and Arc Resource Bridge and its dependencies, get updated automatically to the latest validated version when Azure Stack HCI system is updated.
 
 - Solution Builder Extension: Hardware vendors might choose to integrate with this feature to enhance the update management experience for their customers.
 
