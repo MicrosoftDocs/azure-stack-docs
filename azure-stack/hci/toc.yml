@@ -158,11 +158,11 @@
     - name: Troubleshoot
       items:
       - name: Get support for deployment issues
-        href: manage/troubleshoot-environment-validation-issues.md
+        href: manage/get-support-for-deployment-issues.md
     - name: Concepts
       items: 
       - name: Azure Stack HCI observability
-        href: ../index.yml
+        href: concepts/observability.md
 - name: Plan
   items:
   - name: Requirements
