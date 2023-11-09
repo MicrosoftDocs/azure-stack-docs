@@ -218,7 +218,7 @@ Before you begin, make sure you've done the following:
         :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Stack HCI registered servers with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
 
     > [!IMPORTANT]
-    > In some instances, running the Arc registration script doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+    > In some instances, running the Arc registration script doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](../deploy/deploy-via-portal.md).
 
 
 ## Assign required permissions for deployment
