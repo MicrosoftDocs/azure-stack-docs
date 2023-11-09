@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/06/2023
+ms.date: 11/08/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -45,7 +45,7 @@ You create a VM image starting from an Azure Marketplace image and then use this
 
 Follow these steps to create a VM image using the Azure CLI.
 
-### Set some parameters
+### Sign in and set subscription
 
 1. Connect to a server on your Azure Stack HCI system. Run PowerShell as an administrator.
 
@@ -61,6 +61,8 @@ Follow these steps to create a VM image using the Azure CLI.
     ```azurecli
     az account set --subscription <Subscription ID>
     ```
+
+### Set some parameters
 
 1. Set parameters for your subscription, resource group, location, OS type for the image. Replace the parameters in `< >` with the appropriate values.
 
@@ -99,8 +101,9 @@ Follow these steps to create a VM image using the Azure CLI.
 
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, SKU, and version for the marketplace image. Use the following table to find the available marketplace images and their attribute values:
 
+    |    Name   |    Publisher     |    Offer   |    SKU    |    Version number    |
+    |-------------|-------------|-----------------|-----------|----------------------|
     | Windows 11 Enterprise multi-session + Microsoft 365 Apps, version 21H2- Gen2            | microsoftwindowsdesktop | office-365       | win10-21h2-avd-m365-g2                 | 19044.3570.231010 |
-    |-----------------------------------------------------------------------------------------|-------------------------|------------------|----------------------------------------|-------------------|
     | Windows 10 Enterprise multi-session, version 21H2 + Microsoft 365 Apps- Gen2            | microsoftwindowsdesktop | office-365       | win11-21h2-avd-m365                    | 22000.2538.231010 |
     | Windows 10 Enterprise multi-session, version 21H2- Gen2                                 | microsoftwindowsdesktop | windows-10       | win10-21h2-avd-g2                      | 19044.3570.231001 |
     | Windows 11 Enterprise multi-session, version 21H2- Gen2                                 | microsoftwindowsdesktop | windows-11       | win11-21h2-avd                         | 22000.2538.231001 |

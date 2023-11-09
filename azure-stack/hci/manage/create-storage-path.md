@@ -66,6 +66,8 @@ You could also use the following *optional* parameters:
 
 Follow these steps on one of the servers of your Azure Stack HCI cluster to create a storage path:
 
+### Sign in and set subscription
+
 1. Connect to one of the servers of your Azure Stack HCI cluster via Remote Desktop Protocol. 
 
 1. Run PowerShell as an administrator.
@@ -81,6 +83,8 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
     ```azurecli 
     az account set --subscription <Subscription ID>
     ```
+
+### Set parameters
 
 1. Set parameters for your subscription, resource group, location, OS type for the image. Replace the `< >` with the appropriate values.
 
