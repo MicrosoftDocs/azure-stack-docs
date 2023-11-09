@@ -132,7 +132,7 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Optionally change advanced settings and apply tags
 
 1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
-    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly-provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per server.
+    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per server.
     * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server. You'll need to later create workload volumes and storage paths.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
