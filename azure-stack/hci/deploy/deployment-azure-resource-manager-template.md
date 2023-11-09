@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article details the prerequisites and preparation required before you use an Azure Resource Manager (ARM) template in Azure portal to deploy Azure Stack HCI in your environment.
+This article details the prerequisites and preparation required before you use an Azure Resource Manager template (ARM template) in Azure portal to deploy Azure Stack HCI in your environment.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -72,7 +72,7 @@ Verify access to the resource group for your registered Azure Stack HCI servers 
 
 1. In the **Check access**, select **Managed identity**.
 
-1. Select the appropriate subscription from the drop down list.
+1. Select the appropriate subscription from the drop-down list.
 
 1. Select **All system-assigned managed identities**.
 
