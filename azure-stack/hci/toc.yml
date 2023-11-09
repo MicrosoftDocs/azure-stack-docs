@@ -103,9 +103,9 @@
             href: manage/azure-arc-vms-faq.yml
         - name: Trusted launch for Arc VMs
           items: 
-            - name: What is Trusted launch for Arc VMs?
+            - name: What is Trusted Launch for Arc VMs?
               href: ../index.yml
-            - name: Deploy Trusted launch for Arc VMs
+            - name: Deploy Trusted Launch for Arc VMs
               href: ../index.yml
             - name: Manage guest state protection key
               href: ../index.yml
