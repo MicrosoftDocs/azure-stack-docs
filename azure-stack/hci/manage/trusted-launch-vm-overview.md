@@ -19,7 +19,7 @@ This article introduces Trusted launch for Azure Arc virtual machines (VMs) on A
 
 ## Introduction
 
-Trusted launch for Azure Arc VMs supports secure boot, virtual [Trusted Platform Module](windows/security/hardware-security/tpm/trusted-platform-module-overview) (TPM), and VM guest boot integrity monitoring.
+Trusted launch for Azure Arc VMs supports secure boot, virtual Trusted Platform Module (TPM), and VM guest boot integrity monitoring.
 
 Trusted launch is a security type that is specified when creating Arc VMs on Azure Stack HCI.
 
