@@ -313,7 +313,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
 ---
   
-#### [Azure CLI](#tab/azurecli)
+#### Azure CLI
 
 Azure CLI is available to install in Windows, MacOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
@@ -337,8 +337,6 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.supportedCapabilities}" \
    -o table
    ```
-
----
 
 ## FAQ
 
