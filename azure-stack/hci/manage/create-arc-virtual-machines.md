@@ -119,6 +119,19 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 ### Add a data disk to the VM
 
+After you have created a VM, you may want to add a data disk to it. To add a data disk, you need to first create a disk and then attach the disk to the VM.
+
+To create a data disk (dynamic) on a specified storage path, run the following command:
+
+```azurecli
+az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1 --dynamic true --storage-path-id $storagePathid
+```
+
+You can then attach the disk to the VM using the following command:
+
+```azurecli
+az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
+```
 
 
 # [Azure portal](#tab/azureportal)
