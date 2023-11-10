@@ -59,7 +59,7 @@ Before you begin, make sure you've done the following:
     Here's a sample output of the installation:
 
     ```output
-    PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                                                                                                                                                                 
+    PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                           
     NuGet provider is required to continue                                                                                  
     PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
     'C:\Users\SetupUser\AppData\Local\PackageManagement\ProviderAssemblies'. You can also install the NuGet provider by
