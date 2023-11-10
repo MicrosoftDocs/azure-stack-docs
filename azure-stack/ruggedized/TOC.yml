@@ -859,7 +859,7 @@
   - name: Reference
     items:
     - name: Azure Stack PowerShell
-      href: /azure-stack/operator
+      href: /powershell/azurestackhub/overview
     - name: Alerts aka.ms link reference
       href: operator/aks-refer-table-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: REST API Browser
