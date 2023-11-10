@@ -13,21 +13,21 @@ ms.date: 10/27/2023
 
 This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date. This information is applicable to Azure Stack HCI, version 23H2 (preview).
 
-The procedure in this article applies to both a single server and a multi-server cluster that is running software versions with Lifecycle Manager installed.
+The procedure in this article applies to both a single server and a multi-server cluster that is running the latest version including the orchestrator.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About update phases
 
-The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [What is Lifecycle Manager?](whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [Update overview for Azure Stack HCI, version 23H2 (preview)?](whats-the-lifecycle-manager-23h2.md).
 
-The Lifecycle Manager automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
+The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
 The updates can be of the following types:
 
 - **Updates not requiring reboots** - The updates that can be applied to your Azure Stack HCI cluster without any server reboots in the cluster.
 
-- **Updates that require reboots** - The updates that might need a server reboot in your Azure Stack HCI cluster. The Lifecycle Manager uses Cluster-Aware Updating to reboot servers in the cluster one by one, ensuring the availability of the cluster during the update process.
+- **Updates that require reboots** - The updates that might need a server reboot in your Azure Stack HCI cluster. Cluster-Aware Updating is used to reboot servers in the cluster one by one, ensuring the availability of the cluster during the update process.
 
 The updates consist of several phases: discovering the update, staging the content, deploying the update, and reviewing the installation. Each phase might not require your input but distinct actions occur in each phase.
 
@@ -47,7 +47,7 @@ Depending on the hardware in your cluster and the scope of an update bundle, you
 
 ## Phase 2: Readiness checks and staging
 
-The Lifecycle Manager performs a series of prechecks before installing a solution update. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Stack HCI cluster is safe to update and ensures updates go more smoothly.
+There are a series of prechecks before installing a solution update. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Stack HCI cluster is safe to update and ensures updates go more smoothly.
 
 A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content has been downloaded and *before* it begins installing.
 
@@ -62,9 +62,9 @@ Readiness checks can also result in blocking conditions or warnings.
 
 ## Phase 3: Installation progress and monitoring
 
-While the update installs, you can monitor the progress via your chosen interface. Steps within the update are shown within a hierarchy and correspond to the actions the Lifecycle Manager takes throughout the workflow. Steps might be dynamically generated throughout the workflow, so the list of steps could change. For more information, see examples of [Monitoring progress via PowerShell](../update/update-via-powershell.md).
+While the update installs, you can monitor the progress via your chosen interface. Steps within the update are shown within a hierarchy and correspond to the actions taken throughout the workflow. Steps might be dynamically generated throughout the workflow, so the list of steps could change. For more information, see examples of [Monitoring progress via PowerShell](../update/update-via-powershell.md).
 
- The Lifecycle Manager includes retry and remediation logic. It attempts to fix update issues automatically and in a non-disruptive way, but sometimes manual intervention is required. For more information, see [Troubleshooting updates](update-troubleshooting-23h2.md).
+ The new update solution includes retry and remediation logic. It attempts to fix update issues automatically and in a non-disruptive way, but sometimes manual intervention is required. For more information, see [Troubleshooting updates](update-troubleshooting-23h2.md).
 
 > [!NOTE]
 > Once you remediate the issue, you need to rerun the checks to confirm the update readiness before proceeding.

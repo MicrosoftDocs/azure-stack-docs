@@ -171,6 +171,8 @@
       items: 
       - name: Azure Stack HCI observability
         href: concepts/observability.md
+      - name: Other security features
+        href: concepts/other-security-features.md
 - name: Plan
   items:
   - name: Requirements
@@ -253,6 +255,8 @@
     href: ./manage/azure-benefits.md
   - name: Deploy workloads
     items: 
+    - name: Azure verification for VMs
+      href: deploy/azure-verification.md
     - name: Branch office and edge
       href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure

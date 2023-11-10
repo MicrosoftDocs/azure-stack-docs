@@ -17,9 +17,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Prerequisites
 
 * Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).
-<!---* Completion of [Connect servers to Arc](connect-to-arc.md)
-* Azure account with an active subscription. [Create an account for free](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).-->
-* For three-node clusters, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node clusters with storage network adapters that are directly connected to each server without a switch is accomplished via ARM templates and is currently in Private Preview.
+* For three-node clusters, the network adapters that carry the in-cluster storage traffic must be connected to a network switch. Deploying three-node clusters with storage network adapters that are directly connected to each server without a switch isn't supported in this preview.
 
 ## Start the wizard and fill out the basics
 
@@ -33,20 +31,26 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
+
+    Key Vault adds cost in addition to the Azure Stack HCI subscription. For details, see [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault).
 6. Select the server or servers that make up this Azure Stack HCI system.
 
     :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
-7. Select **Validate**, wait for green validation checkbox to appear, and then select **Next: Configuration**.
+7. Select **Validate**, wait for the green validation checkbox to appear, and then select **Next: Configuration**.
+
+    The validation process checks that each server is running the same exact version of the OS, has the correct Azure extensions, and has matching (symmetrical) network adapters.
 
 ## Specify the deployment settings
 
 Choose whether to create a new configuration for this system or to load deployment settings from a template–either way you'll be able to review the settings before you deploy:
 
+<!--- **Quickstart template** - Load the settings to deploy your system from a template created by your hardware vendor or Microsoft.--->
+
 1. Choose the source of the deployment settings:
    * **New configuration** - Specify all of the settings to deploy this system.
    * **Template spec** - Load the settings to deploy this system from a template spec stored in your Azure subscription.
-   * **Quickstart template**  - Load the settings to deploy your system from a template created by your hardware vendor or Microsoft.
+   * **Quickstart template** - This setting isn't available in this release.
 
     :::image type="content" source="./media/deploy-via-portal/configuration-tab-1.png" alt-text="Screenshot of the Configuration tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/configuration-tab-1.png":::
 2. Select **Next: Networking**.
@@ -80,7 +84,9 @@ Choose whether to create a new configuration for this system or to load deployme
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
-5. Allocate a block of static IP addresses on your management network to use for Azure Stack HCI and for services such as Azure Arc. Omit addresses already used by the servers.
+5. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
+
+    These IPs are used by Azure Stack HCI and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
 
     :::image type="content" source="./media/deploy-via-portal/networking-tab-2.png" alt-text="Screenshot of the Networking tab with IP address allocation to systems and services in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-2.png":::
 
@@ -107,7 +113,7 @@ Choose whether to create a new configuration for this system or to load deployme
     This domain user account was created when the domain was prepared for deployment.
 7. Enter the **Local administrator** credentials for the servers.
 
-    The credentials must be identical on all servers in the system.  If the current password doesn't meet the complexity requirements, you must change it on all servers before proceeding.
+    The credentials must be identical on all servers in the system.  If the current password doesn't meet the complexity requirements (12+ characters long, a lowercase and uppercase character, a numeral, and a special character), you must change it on all servers before proceeding.
 
     :::image type="content" source="./media/deploy-via-portal/management-tab-1.png" alt-text="Screenshot of the Management tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-1.png":::
 
@@ -126,8 +132,11 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Optionally change advanced settings and apply tags
 
 1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
-    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly-provisioned volume per server for workloads to use. This is in addition to the required one infrastructure volume per server.
-    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server.
+    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per server.
+    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server. You'll need to later create workload volumes and storage paths.
+    * **Use existing data drives** (single servers only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
+
+        To use this option you must be using a single server and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
 
@@ -146,6 +155,31 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::
 
-The **Deployments** page then appears, which you can use to monitor the deployment progress. If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
+The **Deployments** page then appears, which you can use to monitor the deployment progress.
 
-Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take anywhere from 45 minutes to an hour to complete. The total deployment for a single server can take 1.5 to 2 hours and for a two server about 2.5 hours to complete.
+If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
+
+Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single server is around 1.5-2 hours while a two-node cluster takes about 2.5 hours to deploy.
+
+## Verify a successful deployment
+
+To confirm that the system and all of its Azure resources were successfully deployed
+1. In the Azure portal, navigate to the resource group into which you deployed the system.
+2. On the **Overview** > **Resources**, you should see the following:
+
+|Number of resources  | Resource type  |
+|---------|---------|
+| 1 per server | Machine - Azure Arc |
+| 1            | Azure Stack HCI     |
+| 1            | Resource bridge     |
+| 1            | Key vault           |
+| 1            | Custom location     |
+| 2*           | Storage account     |
+| 1 per workload volume | Azure Stack HCI storage path - Azure Arc |
+
+\* Extra storage accounts may be created by this preview release. Normally there would be one storage account created for the key vault and one for audit logs, which is a locally redundant storage (LRS) account with a lock placed on it.
+
+## Next steps
+
+* If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md)
+* [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md)
