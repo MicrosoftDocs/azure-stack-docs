@@ -19,7 +19,7 @@ This article describes how to troubleshoot solution updates that are applied to 
 
 If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services, and those for the workloads.
 
-TThe new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a CAU run. If an update run can't be remediated automatically, it fails. When an update fails, you can retry the update.
+The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a CAU run. If an update run can't be remediated automatically, it fails. When an update fails, you can retry the update.
 
 ## Collect update logs
 

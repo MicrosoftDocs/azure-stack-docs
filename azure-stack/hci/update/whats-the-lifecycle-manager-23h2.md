@@ -12,7 +12,7 @@ ms.date: 10/09/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the update feature for this release, benefits of this new feature, and how to keep various pieces of your Azure Stack HCI solution up to date.
+This article describes the new update feature for this release, benefits of the feature, and how to keep various pieces of your Azure Stack HCI solution up to date.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -20,7 +20,7 @@ This article describes the update feature for this release, benefits of this new
 
 Staying up to date with recent security fixes and feature improvements is important for all pieces of the Azure Stack HCI solution. The latest release introduces new features and components in addition to the OS, including the Lifecycle Manager.
 
-The approach in this release provides a flexible foundation to integrate and manage various aspects of the Azure Stack HCI solution in one place. The update is first installed during and enables the new deployment experience including the management of the OS, core agents and services, and the solution extension.
+The approach in this release provides a flexible foundation to integrate and manage various aspects of the Azure Stack HCI solution in one place. The orchestrator for updates is first installed during and enables the new deployment experience including the management of the OS, core agents and services, and the solution extension.
 
 Here's an example of a new cluster deployment using the updates in this release:
 
@@ -28,19 +28,19 @@ Here's an example of a new cluster deployment using the updates in this release:
 
 In this solution the Azure Stack HCI OS, agents and services, drivers, and firmware are automatically updated.
 
-Some new agents and services can't be updated outside this approach and availability of those updates depends on the specific feature. You might need to follow different processes to apply updates depending on the services you use.
+Some new agents and services can't be updated outside the orchestrator and availability of those updates depends on the specific feature. You might need to follow different processes to apply updates depending on the services you use.
 
 ## Benefits
 
-Here are the benefits of using this method to update your Azure Stack HCI solution:
+This new approach:
 
-- It simplifies update management by consolidating update workflows for various components into a single experience.
+- Simplifies update management by consolidating update workflows for various components into a single experience.
 
-- It keeps the system in a well-tested and optimal configuration.
+- Keeps the system in a well-tested and optimal configuration.
 
-- It helps avoid downtime and effects on workloads with comprehensive health checks before and during an update.
+- Helps avoid downtime and effects on workloads with comprehensive health checks before and during an update.
 
-- It improves reliability with automatic retry and the remediation of known issues.
+- Improves reliability with automatic retry and the remediation of known issues.
 
 - Whether managed locally or via the Azure portal, the common back-end drives a consistent experience.
 
@@ -84,7 +84,7 @@ This solution is the recommended way to update your Azure Stack HCI cluster.
 
 ## User interfaces for updates
 
-In addition to the new method used to update your solution, there are two interfaces you can use to apply available updates.
+There are two interfaces you can use to apply available updates.
 
 - PowerShell (Command line)
 - The Azure portal
