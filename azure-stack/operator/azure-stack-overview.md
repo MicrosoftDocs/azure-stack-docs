@@ -81,7 +81,7 @@ You can manage Azure Stack Hub with the administrator portal, user portal, or [P
 
 As an Azure Stack Hub operator, you can deliver [VMs](./tutorial-offer-services.md), [web apps](azure-stack-app-service-overview.md), highly available [SQL Server](azure-stack-tutorial-sql.md), and [MySQL Server](azure-stack-tutorial-mysql.md) databases.
 
-An operator can manage Azure Stack Hub with the [administrator portal](azure-stack-manage-portals.md) or [PowerShell](/azure-stack/operator). You can configure Azure Stack Hub to [deliver services](service-plan-offer-subscription-overview.md) to tenants using plans, quotas, offers, and subscriptions. Tenant users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services. Operators also manage capacity and respond to alerts.
+An operator can manage Azure Stack Hub with the [administrator portal](azure-stack-manage-portals.md) or [PowerShell](/powershell/azurestackhub/overview). You can configure Azure Stack Hub to [deliver services](service-plan-offer-subscription-overview.md) to tenants using plans, quotas, offers, and subscriptions. Tenant users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services. Operators also manage capacity and respond to alerts.
 
 Users consume services that the operator offers. Users can provision, monitor, and manage services that they've subscribed to, like web apps, storage, and VMs. Users can manage Azure Stack Hub with the user portal or PowerShell.
 
