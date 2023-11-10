@@ -31,7 +31,7 @@ Before you begin, make sure that the physical server and storage hardware used t
 
 |Component|Minimum|
 |--|--|
-|Number of servers| 1 to 16 servers are supported. <br> Each server must be the same model, manufacturer, and have the same number and type of storage drives.|
+|Number of servers| 1 to 16 servers are supported. <br> Each server must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
 |CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT).|
 |Memory|A minimum of 32 GB RAM per node.|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|

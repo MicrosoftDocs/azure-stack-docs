@@ -65,26 +65,27 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
 
    :::image type="content" source="media/install-os/azure-stack-hci-change-admin-password.png" alt-text="Screenshot of the change password prompt." lightbox="media/install-os/azure-stack-hci-change-admin-password.png":::
 
-    > [!NOTE]
-    > Sign into the server using the local administrator password. Follow this step for each server that you intend to deploy.
 
-1. At the **Enter new credential** for Administrator prompt, enter a new password. Enter the password again to confirm it, and then press **Enter**.
+1. At the **Enter new credential** for Administrator prompt, enter a new password. 
 
     > [!IMPORTANT]
     > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains: lowercase character, an uppercase character, a numeral, and  a special character.**
+
+    Enter the password again to confirm it, and then press **Enter**.
 
 1. At the **Your password has been changed** confirmation prompt, press **Enter**.
 
    :::image type="content" source="media/install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/install-os/azure-stack-hci-admin-password-changed.png":::
 
-Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use *SConfig*, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The *SConfig* tool opens automatically when you sign in to the server.
-
-:::image type="content" source="media/install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/install-os/azure-stack-hci-sconfig-screen.png":::
+Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. 
 
 ## Configure the operating system using SConfig
 
-You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 23H2 after installation.
+You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1)to configure Azure Stack HCI version 23H2 after installation. 
 
+To use *SConfig*, sign in to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The *SConfig* tool opens automatically when you sign in to the server.
+
+:::image type="content" source="media/install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/install-os/azure-stack-hci-sconfig-screen.png":::
 
 Follow these steps to configure the operating system using *SConfig*:
 
@@ -96,7 +97,7 @@ Follow these steps to configure the operating system using *SConfig*:
 
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each server rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
-1. Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+1. (Optional) Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
 1. Restart the servers.
 

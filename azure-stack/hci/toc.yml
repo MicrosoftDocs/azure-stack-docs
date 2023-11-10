@@ -157,9 +157,14 @@
             href: migrate/migrate-cluster-new-hardware.md
     - name: Troubleshoot
       items:
-      - name: Troubleshoot environment readiness
-        href: manage/troubleshoot-environment-validation-issues.md
-
+      - name: Get support for deployment issues
+        href: manage/get-support-for-deployment-issues.md
+    - name: Concepts
+      items: 
+      - name: Azure Stack HCI observability
+        href: concepts/observability.md
+      - name: Other security features
+        href: concepts/other-security-features.md
 - name: Plan
   items:
   - name: Requirements
@@ -242,6 +247,8 @@
     href: ./manage/azure-benefits.md
   - name: Deploy workloads
     items: 
+    - name: Azure verification for VMs
+      href: deploy/azure-verification.md
     - name: Branch office and edge
       href: deploy/branch-office-edge.md
     - name: Virtual desktop infrastructure
