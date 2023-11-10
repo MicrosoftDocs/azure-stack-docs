@@ -38,7 +38,7 @@ Azure VM verification relies on a built-in platform attestation service on Azure
 
 :::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture.":::
 
-1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([i.e. VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
+1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([i.e., VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
 
    **[Legacy OS support](#legacy-os-support)**: Workloads that cannot make Win32 API calls or directly query an integration service must enable Legacy OS support. This provides a private and non-routable REST endpoint to VMs on the same server.
 
@@ -94,7 +94,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 #### Troubleshoot servers
 
 - Under the **Server** tab, if one or more servers appear as **Expired**:
-  - If the server has not synced with Azure for more than 30 days, its status will appears as **Expired** or **Inactive**. Click on **Sync with Azure** to schedule a manual sync.
+  - If the server has not synced with Azure for more than 30 days, its status appears as **Expired** or **Inactive**. Click on **Sync with Azure** to schedule a manual sync.
 
 #### Manage benefits activated on VMs
 
@@ -191,7 +191,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### [Azure CLI](#tab/azurecli)
 
-Azure CLI is available to install in Windows, MacOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification following these steps:
 
@@ -315,7 +315,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
   
 #### Azure CLI
 
-Azure CLI is available to install in Windows, MacOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification by following these steps:
 
