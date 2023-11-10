@@ -134,6 +134,9 @@ Choose whether to create a new configuration for this system or to load deployme
 1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
     * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per server.
     * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server. You'll need to later create workload volumes and storage paths.
+    * **Use existing data drives** (single servers only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
+
+        To use this option you must be using a single server and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
 
@@ -157,6 +160,24 @@ The **Deployments** page then appears, which you can use to monitor the deployme
 If the progress doesn't appear, wait for a few minutes and then select **Refresh**. This page may show up as blank for an extended period of time owing to an issue in this release, but the deployment is still running if no errors show up.
 
 Once the deployment starts, the first step in the deployment: **Begin cloud deployment** can take 45-60 minutes to complete. The total deployment time for a single server is around 1.5-2 hours while a two-node cluster takes about 2.5 hours to deploy.
+
+## Verify a successful deployment
+
+To confirm that the system and all of its Azure resources were successfully deployed
+1. In the Azure portal, navigate to the resource group into which you deployed the system.
+2. On the **Overview** > **Resources**, you should see the following:
+
+|Number of resources  | Resource type  |
+|---------|---------|
+| 1 per server | Machine - Azure Arc |
+| 1            | Azure Stack HCI     |
+| 1            | Resource bridge     |
+| 1            | Key vault           |
+| 1            | Custom location     |
+| 2*           | Storage account     |
+| 1 per workload volume | Azure Stack HCI storage path - Azure Arc |
+
+\* Extra storage accounts may be created by this preview release. Normally there would be one storage account created for the key vault and one for audit logs, which is a locally redundant storage (LRS) account with a lock placed on it.
 
 ## Next steps
 
