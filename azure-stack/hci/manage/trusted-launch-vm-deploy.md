@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/09/2023
+ms.date: 11/13/2023
 ---
 
 # Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)

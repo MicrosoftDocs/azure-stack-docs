@@ -4,14 +4,14 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/27/2023
+ms.date: 11/13/2023
 ---
 
 # Add a server on your Azure Stack HCI (preview)
 
->Applies to: Azure Stack HCI, versions 23H2 (preview) and 22H2 Supplemental Package
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Stack HCI cluster. 
+This article describes how to manage capacity by adding a server (often called scale-out) to your Azure Stack HCI cluster.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 

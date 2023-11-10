@@ -4,12 +4,12 @@ description: Learn how to repair a server on your Azure Stack HCI (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 10/27/2023
+ms.date: 11/13/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
 
->Applies to: Azure Stack HCI, versions 23H2 (preview) and 22H2 Supplemental Package
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to repair a server on your Azure Stack HCI cluster.
 
