@@ -18,7 +18,7 @@ This article describes the new update feature for this release, benefits of the 
 
 ## About the updates
 
-Staying up to date with recent security fixes and feature improvements is important for all pieces of the Azure Stack HCI solution. The latest release introduces new features and components in addition to the OS, including the Lifecycle Manager.
+Staying up to date with recent security fixes and feature improvements is important for all pieces of the Azure Stack HCI solution. The latest release introduces new features and components in addition to the OS, including the orchestrator (Lifecycle Manager).
 
 The approach in this release provides a flexible foundation to integrate and manage various aspects of the Azure Stack HCI solution in one place. The orchestrator for updates is first installed during and enables the new deployment experience including the management of the OS, core agents and services, and the solution extension.
 

@@ -13,7 +13,7 @@ ms.date: 10/27/2023
 
 This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date. This information is applicable to Azure Stack HCI, version 23H2 (preview).
 
-The procedure in this article applies to both a single server and a multi-server cluster that is running the latest update feature.
+The procedure in this article applies to both a single server and a multi-server cluster that is running the latest version including the orchestrator (Lifecycle Manager).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
