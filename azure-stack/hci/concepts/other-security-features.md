@@ -11,9 +11,9 @@ ms.date: 11/09/2023
 
 # Other security features for Azure Stack HCI (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes components in the security layer of the Azure Stack HCI solution for security information and event management (SIEM).
+This article describes components in the security layer of the Azure Stack HCI, version 23H2 solution for security information and event management (SIEM).
 
 For additional security considerations, see:
 
@@ -22,7 +22,7 @@ For additional security considerations, see:
 
 ## About local built-in user accounts
 
-Starting with Azure Stack HCI, version 23H2, we updated the names of local built-in users associated wtih the `RID 500` and `RID 501` accounts. The following table provides details of the built-in accounts:
+In this release, the names of local built-in users associated wtih the `RID 500` and `RID 501` accounts are updated. The following table provides details of the built-in accounts:
 
 |Name |Enabled |Description |
 |-----|-----|-----|
@@ -80,7 +80,7 @@ This new component enables three major capabilities:
 
 Run the following cmdlet to manually start a certificate rotation in your Azure Stack HCI cluster:
 
-> [!Note:]
+> [!NOTE]
 > This action will take place using LCM actions and will last about 10 minutes, depending on the size of the cluster.  This action affects all nodes that use LCM, and requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote Powershell invocation or remote desktop protocol (RDP) connection.
 
 ```Powershell
@@ -515,3 +515,11 @@ List of miscellaneous events being forwarded. Currently, these events can't be c
 |Legacy PowerShell pipeline execution details (800) |query="Windows PowerShell!*[System[(EventID=800)]]" |
 |Defender stopped events |query="System!*[System[(EventID=7036)] and EventData[Data[@Name='param1']='Microsoft Defender Antivirus Network Inspection Service'] and EventData[Data[@Name='param2']='stopped']]" |
 |BitLocker Management events |query="Microsoft-Windows-BitLocker/BitLocker Management!*" |
+
+
+## Next steps
+
+Learn more about:
+- [Security baseline settings for Azure Stack HCI](./secure-baseline.md).
+- [Windows Defender Application Control for Azure Stack HCI](./security-windows-defender-application-control.md).
+- [BitLocker for Azure Stack HCI](./security-bitlocker.md).
