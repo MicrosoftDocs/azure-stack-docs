@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 11/07/2023
+ms.date: 11/09/2023
 ---
 
 # Create Arc virtual machines on Azure Stack HCI (preview)
@@ -109,6 +109,30 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag is not specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
+### Create a Linux VM from network interface
+
+To create a Linux VM, use the same command that you used to create the Windows VM. 
+
+- The gallery image specified should be a Linux image.
+- The username and password works with the `authentication-type-all` parameter. 
+- For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
+
+### Add a data disk to the VM
+
+After you have created a VM, you may want to add a data disk to it. To add a data disk, you need to first create a disk and then attach the disk to the VM.
+
+To create a data disk (dynamic) on a specified storage path, run the following command:
+
+```azurecli
+az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1 --dynamic true --storage-path-id $storagePathid
+```
+
+You can then attach the disk to the VM using the following command:
+
+```azurecli
+az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
+```
+
 
 # [Azure portal](#tab/azureportal)
 
@@ -140,7 +164,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     
         **The Virtual machine kind** is automatically set to **Azure Stack HCI**.
 
-    1. **Security type**: For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on Trusted Launch virtual machines, see [Trusted Launch for Azure Arc enabled servers](/azure/virtual-machines/trusted-launch).
+    1. **Security type**: For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on what are Trusted Launch Arc virtual machines, see [What is Trusted Launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md)
     
     1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
