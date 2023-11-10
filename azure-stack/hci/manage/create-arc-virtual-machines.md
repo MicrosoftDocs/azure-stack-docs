@@ -103,7 +103,10 @@ Depending on the type of the network interface that you created, you can create 
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" vm-size="Custom" --storage-path-id $storagePathId 
    ``` 
 
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
+The VM is successfully created when the `provisioningState` shows as `succeeded`in the output. 
+
+> [!NOTE]
+> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, there is no way to enable it after the VM creation.
 
 In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
