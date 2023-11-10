@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/31/2023
+ms.date: 11/13/2023
 ---
 
 # Create storage path for Azure Stack HCI (preview)
@@ -20,7 +20,9 @@ This article describes how to create storage path for VM images used on your Azu
 
 ## About storage path
 
-You may need to provide the storage path for the image store for VM images and a cloud store for configuration files. The storage paths should point to cluster shared volumes that can be accessed by all the servers on your cluster. We strongly recommend that you create storage path under cluster shared volumes in order to be highly available.
+When the Azure Stack HCI cluster is deployed, default storage paths are created if the Express mode (recommended) is chosen during the deployment. You may however decide to specify custom storage paths to store VM images and configuration files. 
+
+The storage paths on your Azure Stack HCI should point to cluster shared volumes that can be accessed by all the servers on your cluster. We strongly recommend that you create storage path under cluster shared volumes in order to be highly available.
 
 The available space in the cluster shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\Volume01` and the `volume01` is 4 TB, then the size of the storage path is the available space (out of the 4TB) on `Volume01`.
   
@@ -103,7 +105,7 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
     ```azurecli
     az stack-hci-vm storagepath create --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --path $path
     ```
-    For more information on this cmdlet, see [az stack-hci-vm storagepath create](../index.yml).
+    For more information on this cmdlet, see [az stack-hci-vm storagepath create](/cli/azure/stack-hci-vm/storagepath).
 
     Here's a sample output:
 

@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/08/2023
+ms.date: 11/13/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -69,6 +69,9 @@ Follow these steps to create a VM image using the Azure CLI.
     ```azurecli
     $subscription = "<Subscription ID>"
     $resource_group = "<Resource group>"
+    $customLocationName = "<Custom location name>"
+    $customLocationID
+    /subscriptions/<Subscription ID>/resourcegroups/$resource_group/providers/microsoft.extendedlocation/customlocations/$customLocationName
     $location = "<Location for your Azure Stack HCI cluster>"
     $osType = "<OS of source image>"
     ```
@@ -87,6 +90,7 @@ Follow these steps to create a VM image using the Azure CLI.
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "myhci-rg"
+    PS C:\Users\azcli> $customLocationName = "myhci-cl"
     PS C:\Users\azcli> $location = "eastus"
     PS C:\Users\azcli> $ostype = "Windows"
     ```

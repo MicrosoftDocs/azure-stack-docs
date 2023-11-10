@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/01/2023
+ms.date: 11/13/2023
 ---
 
 # Manage VM extensions on Azure Stack HCI virtual machines (preview)
