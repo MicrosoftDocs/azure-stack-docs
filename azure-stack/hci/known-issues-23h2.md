@@ -3,7 +3,7 @@ title: Release notes with known issues in Azure Stack HCI 23H2 2310 release (pre
 description: Read about the known issues in Azure Stack HCI 2310 public preview release (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/06/2023
+ms.date: 11/09/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -33,7 +33,8 @@ Here are the known issues in version 2310 release:
 |2310 <br> 10.2310.0.30| Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 |2310 <br> 10.2310.0.30 <!--25661776-->| Arc VM management |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take up to 30 minutes. |There's no known workaround in this release. |
 |2310 <br> 10.2310.0.30 <!--25527606-->| Arc VM management | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state does not match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.| There's no known workaround in this release.|
-|2310 <br> 10.2310.0.30 <!--25675277-->| Arc VM management | In version 0.1.5, Azure CLI on Azure Stack HCI takes the friendly name of marketplace image and builds an incorrect ARM ID.| There's no known workaround in this release.|
+|2310 <br> 10.2310.0.30 <!--25675277-->| Arc VM management | While creating Arc VMs via the Azure CLI on Azure Stack HCI, if you provide the friendly name of marketplace image, an incorrect ARM ID is built and the VM creation errors out.| Instead of providing the friendly name, always provide the ARM ID of the marketplace image in this release.|
+|2310 <br> 10.2310.0.30 | Arc VM management |Deleting a network interface on an Arc VM from Azure portal does not work in this release.| Use the Azure CLI to delete the network interfaces of a VM.|
 |2310 <br> 10.2310.0.30 <!--25420275-->|Security |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |The workaround is to go to each server and check the local configuration state of the Syslog component.|
 |2310 <br> 10.2310.0.30| Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |There's no known workaround in this release. |
 |2310 <br> 10.2310.0.30| Deployment |Providing the OU name in an incorrect syntax is not detected in the Azure portal. The incorrect syntax is however detected at a later step during cluster validation. |There's no known workaround in this release. |
