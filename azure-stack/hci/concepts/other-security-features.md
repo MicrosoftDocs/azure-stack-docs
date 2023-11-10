@@ -462,7 +462,7 @@ All Windows events use the PRI facility value 10.
 
 List of miscellaneous events being forwarded. Currently, these events can't be customized.
 
-|Event type |Event Query |
+|Event type |Event query |
 |----|----|
 |Wireless Lan 802.1x authentication events with Peer MAC address |query="Security!*[System[(EventID=5632)]]" |
 |New service (4697) |query="Security!*[System[(EventID=4697)]]" |
