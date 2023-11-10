@@ -1,12 +1,12 @@
 ---
 title: Other security features for Azure Stack HCI (preview)
-description: Learn about security features for Azure Stack HCI (preview) security information and event management (SIEM).
+description: Learn about security features for Azure Stack HCI security information and event management (SIEM). (preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/09/2023
+ms.date: 11/13/2023
 ---
 
 # Other security features for Azure Stack HCI (preview)
@@ -20,9 +20,11 @@ For additional security considerations, see:
 - [Security baseline settings on Azure Stack HCI (preview)](/azure-stack/hci/concepts/secure-baseline).
 - [BitLocker encryption on Azure Stack HCI (preview)](/azure-stack/hci/concepts/security-bitlocker).
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## About local built-in user accounts
 
-In this release, the names of local built-in users associated wtih the `RID 500` and `RID 501` accounts are updated. The following table provides details of the built-in accounts:
+In this release, the names of local built-in users associated with the `RID 500` and `RID 501` accounts are updated. The following table provides details of the built-in accounts:
 
 |Name |Enabled |Description |
 |-----|-----|-----|

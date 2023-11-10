@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/31/2023
+ms.date: 11/13/2023
 ---
 
 # Respond to Azure Stack HCI health alerts using Azure Monitor alerts (preview)
@@ -16,13 +16,13 @@ ms.date: 10/31/2023
 
 This article describes how to use [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Stack HCI health alerts.
 
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
 ## About integration of Azure Monitor and Azure Stack HCI alerts
 
 The integration of Azure Monitor alerts with Azure Stack HCI enhances the health alerts capability of Azure Stack HCI. With this integration, any health alerts generated within your on-premises Azure Stack HCI system are automatically forwarded to Azure Monitor alerts. You can link these alerts with your automated incident management systems, ensuring timely and efficient responses.
 
 For more information about Azure Monitor alerts, see [What are Azure Monitor alerts?](/azure/azure-monitor/alerts/alerts-overview).
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Benefits
 

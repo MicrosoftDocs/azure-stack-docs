@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 11/09/2023
+ms.date: 11/13/2023
 ---
 
 # Manage Trusted launch Arc VM guest state protection key on Azure Stack HCI, version 23H2 (preview)

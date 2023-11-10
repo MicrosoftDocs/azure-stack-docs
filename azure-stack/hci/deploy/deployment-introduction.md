@@ -3,7 +3,7 @@ title: Azure Stack HCI, version 23H2 deployment overview (preview)
 description: Learn about the deployment methods for Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 11/02/2023
+ms.date: 11/13/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
