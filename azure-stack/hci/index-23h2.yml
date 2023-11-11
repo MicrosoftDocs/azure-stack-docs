@@ -70,9 +70,8 @@ landingContent:
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Kubernetes (AKS) hybrid
             url: /azure/aks/hybrid/kubernetes-concepts
-          - text: Run Azure Arc Virtual Machine
-            url: /manage/manage-virtual-machines-in-azure-portal
-
+          - text: Run Azure Arc Virtual Machines
+            url: /azure-stack/hci/manage/create-arc-virtual-machines
   # Card
   - title: Update the cluster
     linkLists:
@@ -109,7 +108,7 @@ landingContent:
           - text: Firewall requirements
             url: concepts/firewall-requirements.md
           - text: Network reference patterns overview
-            url: /azure-stack/hci/plan/network-patterns-overview-overview
+            url: /azure-stack/hci/plan/network-patterns-overview
           - text: Plan volumes
             url: concepts/plan-volumes.md
           - text: Fault tolerance and storage efficiency
