@@ -48,9 +48,12 @@ landingContent:
         links:
           - text: Manage via Windows Admin Center
             url: /azure-stack/hci/manage/cluster
-          - text: Monitor via with Azure Stack HCI Insights
-            url: manage/monitor-hci-single.md
-      
+          - text: Manage via PowerShell
+            url: /azure-stack/hci/manage/cluster-powershell
+          - text: Monitor via Azure Stack HCI Insights
+            url: manage/monitor-hci-single
+          - text: Monitor via PowerShell
+            url: /azure-stack/hci/manage/monitor-cluster
   # Card
   - title: Try preview
     linkLists:
@@ -58,7 +61,7 @@ landingContent:
         links:
           - text: Read about Azure Stack HCI, version 23H2
             url: deploy/deployment-introduction.md
-          - text: Deploy Azure Stack HCI, version 23H2 via Azure portal
+          - text: Deploy Azure Stack HCI, version 23H2 via the Azure portal
             url: deploy/deploy-via-portal.md
 
  # Card
