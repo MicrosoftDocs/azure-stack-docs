@@ -47,7 +47,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Manage via Windows Admin Center
-            url: /manage/cluster.md
+            url: /azure-stack/hci/manage/cluster
           - text: Monitor via with Azure Stack HCI Insights
             url: manage/monitor-hci-single.md
       
@@ -67,11 +67,11 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Run Azure Virtual Desktop
-            url: /azure/virtual-desktop/azure-stack-hci-overview.md
+            url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Kubernetes (AKS) hybrid
-            url: /azure/aks/hybrid/kubernetes-concepts.md
+            url: /azure/aks/hybrid/kubernetes-concepts
           - text: Run Azure Arc Virtual Machine
-            url: /manage/manage-virtual-machines-in-azure-portal.md
+            url: /manage/manage-virtual-machines-in-azure-portal
 
   # Card
   - title: Update the cluster
@@ -109,7 +109,7 @@ landingContent:
           - text: Firewall requirements
             url: concepts/firewall-requirements.md
           - text: Network reference patterns overview
-            url: plan/network-patterns-overview
+            url: /azure-stack/hci/plan/network-patterns-overview-overview
           - text: Plan volumes
             url: concepts/plan-volumes.md
           - text: Fault tolerance and storage efficiency
@@ -121,7 +121,6 @@ landingContent:
       - linkListType: learn
         links:
           - text: Azure Stack HCI foundations
-            url: /training/paths/azure-stack-hci-foundations/
+            url: /training/paths/azure-stack-hci-foundations
           - text: Operate and maintain Azure Stack HCI
-            url: /training/paths/operate-maintain-azure-stack-hci/
-
+            url: /training/paths/operate-maintain-azure-stack-hci
