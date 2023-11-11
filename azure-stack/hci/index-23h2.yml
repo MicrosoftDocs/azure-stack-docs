@@ -8,9 +8,9 @@ metadata:
   description: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises.
 #  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
   ms.topic: landing-page
-  author: jasongerend
-  ms.author: jgerend
-  ms.date: 11/09/2023
+  author: ronmiab
+  ms.author: robess
+  ms.date: 11/13/2023
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
 
