@@ -78,10 +78,12 @@ landingContent:
   # Card
   - title: Update the cluster
     linkLists:
-      - linkListType: how-to-guide
+      - linkListType: overview
         links:
           - text: Update overview
             url: update/whats-the-lifecycle-manager-23h2.md
+      - linkListType: how-to-guide
+        links:
           - text: Update via the Portal
             url: update/azure-update-manager-23h2.md
           - text: Update via PowerShell
