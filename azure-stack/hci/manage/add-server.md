@@ -128,7 +128,11 @@ To monitor the progress of the add server operation, follow these steps:
 [!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
 
 
-The newly added server shows in the Azure portal in your Azure Stack HCI cluster list after several hours.
+The newly added server shows in the Azure portal in your Azure Stack HCI cluster list after several hours. To force the server to show up in Azure portal, run the following command:
+
+```powershell
+Sync-AzureStackHCI
+```
 
 ### Recovery scenarios
 
