@@ -89,19 +89,17 @@ landingContent:
 
   # Card
   - title: Manage volumes and more
-    linkLists: 
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Plan volumes
+            url: concepts/plan-volumes.md
       - linkListType: how-to-guide
         links:
           - text: Create volumes
             url: manage/create-volumes.md
           - text: Manage volumes
             url: manage/manage-volumes.md                      
-      - linkListType: overview
-        links:        
-          - text: Software Defined Networking (SDN) overview
-            url: concepts/software-defined-networking.md
-          - text: Network Controller overview
-            url: concepts/network-controller-overview.md
   
   # Card
   - title: Azure Stack HCI concepts
@@ -112,10 +110,8 @@ landingContent:
             url: concepts/firewall-requirements.md
           - text: Network reference patterns overview
             url: /azure-stack/hci/plan/network-patterns-overview
-          - text: Plan volumes
-            url: concepts/plan-volumes.md
-          - text: Fault tolerance and storage efficiency
-            url: concepts/fault-tolerance.md
+          - text: Software Defined Networking (SDN) overview
+            url: concepts/software-defined-networking.md
  
  # Card
   - title: Azure Stack HCI learning paths and modules
