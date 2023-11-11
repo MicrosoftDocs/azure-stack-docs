@@ -1,0 +1,127 @@
+### YamlMime:Landing
+
+title: Azure Stack HCI documentation
+summary: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises, making it easy for customers to consolidate aging infrastructure and connect to Azure for cloud services.
+
+metadata:
+  title: Azure Stack HCI documentation
+  description: Azure Stack HCI is a hyperconverged clustering solution that uses validated hardware to run virtualized workloads on-premises.
+#  ms.service: service #Required; service per approved list. service slug assigned to your service by ACOM.
+  ms.topic: landing-page
+  author: jasongerend
+  ms.author: jgerend
+  ms.date: 11/09/2023
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | sample | tutorial | video | whats-new
+
+landingContent:
+  # Card (optional)
+  - title: About Azure Stack HCI
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Stack HCI?
+            url: overview.md
+      - linkListType: whats-new
+        links:
+          - text: What's new in Azure Stack HCI, version 23H2?
+            url: whats-new.md
+
+  # Card 
+  - title: Deploy the cluster
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: 1. Deploy Azure Stack HCI OS, version 22H2
+            url: deploy/operating-system.md
+          - text: 2. Create a cluster
+            url: deploy/create-cluster.md
+          - text: 3. Register with Azure
+            url: deploy/register-with-azure.md
+          - text: 4. Validate a cluster
+            url: deploy/validate.md
+
+  # Card
+  - title: Manage and monitor the cluster
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Manage via Windows Admin Center
+            url: /manage/cluster.md
+          - text: Monitor via with Azure Stack HCI Insights
+            url: manage/monitor-hci-single.md
+      
+  # Card
+  - title: Try preview
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Read about Azure Stack HCI, version 23H2
+            url: deploy/deployment-introduction.md
+          - text: Deploy Azure Stack HCI, version 23H2 via Azure portal
+            url: deploy/deploy-via-portal.md
+
+ # Card
+  - title: Deploy workloads
+    linkLists:
+      - linkListType: deploy
+        links:
+          - text: Run Azure Virtual Desktop
+            url: /azure/virtual-desktop/azure-stack-hci-overview.md
+          - text: Run Azure Kubernetes (AKS) hybrid
+            url: /azure/aks/hybrid/kubernetes-concepts.md
+          - text: Run Azure Arc Virtual Machine
+            url: /manage/manage-virtual-machines-in-azure-portal.md
+
+  # Card
+  - title: Update the cluster
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Update overview
+            url: update/whats-the-lifecycle-manager-23h2.md
+          - text: Update via the Portal
+            url: update/azure-update-manager-23h2.md
+          - text: Update via PowerShell
+            url: update/update-via-powershell-23h2.md
+
+  # Card
+  - title: Manage volumes and more
+    linkLists: 
+      - linkListType: how-to-guide
+        links:
+          - text: Create volumes
+            url: manage/create-volumes.md
+          - text: Manage volumes
+            url: manage/manage-volumes.md                      
+      - linkListType: overview
+        links:        
+          - text: Software Defined Networking (SDN) overview
+            url: concepts/software-defined-networking.md
+          - text: Network Controller overview
+            url: concepts/network-controller-overview.md
+  
+  # Card
+  - title: Azure Stack HCI concepts
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Firewall requirements
+            url: concepts/firewall-requirements.md
+          - text: Network reference patterns overview
+            url: plan/network-patterns-overview
+          - text: Plan volumes
+            url: concepts/plan-volumes.md
+          - text: Fault tolerance and storage efficiency
+            url: concepts/fault-tolerance.md
+ 
+ # Card
+  - title: Azure Stack HCI learning paths and modules
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Azure Stack HCI foundations
+            url: /training/paths/azure-stack-hci-foundations/
+          - text: Operate and maintain Azure Stack HCI
+            url: /training/paths/operate-maintain-azure-stack-hci/
+
