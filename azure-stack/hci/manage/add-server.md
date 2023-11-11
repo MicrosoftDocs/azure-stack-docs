@@ -21,7 +21,7 @@ You can easily scale the compute and storage at the same time on your Azure Stac
 
 Each new physical server that you add to your cluster must closely match the rest of the servers in terms of CPU type, memory, number of drives, and the type and size of the drives. 
 
-You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In response to the scaling, Azure Stack HCI Lifecycle Manager adjusts the drive resiliency, network configuration including the on-premises agents such as Orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
+You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In response to the scaling, the orchestrator (also known as Lifecycle Manager) adjusts the drive resiliency, network configuration including the on-premises agents such as orchestrator agents, and Arc registration. The dynamic scaling may require the network architecture change from connected without a switch to connected via a network switch.
 
 > [!IMPORTANT]
 > - In this preview release, you can only add one server at any given time. You can however add multiple servers sequentially so that the storage pool is rebalanced only once. 
@@ -97,22 +97,15 @@ Make sure that you have reviewed and completed the [prerequisites](#prerequisite
 
 On the new server that you plan to add, follow these steps.
 
-1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
+1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
     > [!NOTE]
-    > You must also [Install required Windows Roles](../deploy/deployment-tool-install-os.md#install-required-windows-roles).
-
-1. Sign as a local administrator account, into the new server that will join the existing cluster.
-
-1. Open a new PowerShell session on this server. Run the following command:
-
-    ```powershell
-    Uninstall-module –Name PSWindowsUpdate –Force
-    ```   
+    > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
 
 On a server that already exists on your cluster, follow these steps:
 
-1. Sign in with the Lifecycle Manager account into a server that is already a member of the cluster.
+1. Sign in with the domain user credentials that you provided during the deployment of the cluster.
+
 1. Before you add the server, make sure to get an updated authentication token. Run the following command:
 
     ```powershell
@@ -135,23 +128,28 @@ To monitor the progress of the add server operation, follow these steps:
 [!INCLUDE [hci-monitor-add-repair-server](../../includes/hci-monitor-add-repair-server.md)]
 
 
+The newly added server shows in the Azure portal in your Azure Stack HCI cluster list after several hours.
+
 ### Recovery scenarios
 
 Following recovery scenarios and the recommended mitigation steps are tabulated for adding a server:
 
 | Scenario description                                                                                          | Mitigation                                                                                                | Supported?   |
 |------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|
-| Added a new server out of band without using the Lifecycle Manager (LCM).                            | Remove the added server. <br> Use the LCM process to add the server.                                              | No|
-| Added a new server with LCM and the operation failed.                                                | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`.     | Yes    |
-| Added a new server with LCM. <br>The operation succeeded partially but had to start with a fresh operating system install. | In this scenario, LCM has already updated its knowledge store with the new server. Use the repair server scenario. | Yes     |
+| Added a new server out of band without using the orchestrator.                            | Remove the added server. <br> Use the orchestrator to add the server.                                              | No|
+| Added a new server with orchestrator and the operation failed.                                                | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`.     | Yes    |
+| Added a new server with orchestrator. <br>The operation succeeded partially but had to start with a fresh operating system install. | In this scenario, orchestrator has already updated its knowledge store with the new server. Use the repair server scenario. | Yes     |
 
 
 ### Troubleshoot issues
 
-- If you experience failures or errors while adding a server, you can capture the output of the failures in a log file.
+If you experience failures or errors while adding a server, you can capture the output of the failures in a log file. On a server that already exists on your cluster, follow these steps:
+
+- Sign in with the domain user credentials that you provided during the deployment of the cluster. Capture the issue in the log files.
+ 
 
     ```powershell
-    Get-ActionPlanInstance -ActionPlanInstanceID $ID out-file log.txt
+    Get-ActionPlanInstance -ActionPlanInstanceID $ID|out-file log.txt
     ```
 
 - To rerun the failed operation, use the following cmdlet:
