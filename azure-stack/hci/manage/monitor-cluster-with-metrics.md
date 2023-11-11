@@ -1,18 +1,18 @@
 ---
 title: Monitor Azure Stack HCI with Azure Monitor Metrics (preview)
-description: Monitor Azure Stack HCI with Azure Monitor Metrics.
+description: Learn how to monitor Azure Stack HCI with Azure Monitor Metrics (preview).
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/05/2023
+ms.date: 11/13/2023
 ---
 
 # Monitor Azure Stack HCI with Azure Monitor Metrics (preview)
 
-> Applies to: Azure Stack HCI, version 23H2 (preview)
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to monitor your Azure Stack HCI clusters with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Stack HCI.
 

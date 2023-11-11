@@ -1,12 +1,12 @@
 ---
-title: What's new in Azure Stack HCI, version 23H2 preview release
-description: Find out what's new in Azure Stack HCI, version 23H2 preview release
+title: What's new in Azure Stack HCI, version 23H2 preview release (preview)
+description: Find out what's new in Azure Stack HCI, version 23H2 preview release (preview)
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/09/2023
+ms.date: 11/13/2023
 ---
 
 # What's new in Azure Stack HCI, version 23H2 (preview)

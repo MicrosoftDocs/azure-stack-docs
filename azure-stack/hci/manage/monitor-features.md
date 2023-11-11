@@ -7,12 +7,12 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/01/2023
+ms.date: 11/13/2023
 ---
 
 # Monitor Azure Stack HCI features with Insights (preview)
 
-> Applies to: Azure Stack HCI, version 23H2 (preview)
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use Insights to monitor key Azure Stack HCI features, such as Resilient File System (ReFS) deduplication and compression.
 

@@ -1,19 +1,21 @@
 ---
-title: Azure Stack HCI observability
-description: Learn about observability in Azure Stack HCI.
+title: Azure Stack HCI observability (preview)
+description: Learn about observability in Azure Stack HCI.  (preview)
 author: alkohli
 ms.author: alkohli
-ms.date: 11/09/2023
+ms.date: 11/13/2023
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
 
-# Azure Stack HCI observability
+# Azure Stack HCI observability (preview)
+
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes observability in Azure Stack HCI and the data sources through which it is achieved.
 
-> Applies to: Azure Stack HCI, version 23H2 (preview)
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## What is Azure Stack HCI observability?
 
