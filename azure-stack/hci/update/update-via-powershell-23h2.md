@@ -4,7 +4,7 @@ description: Learn how to apply operating system, service, and Solution Extensio
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/27/2023
+ms.date: 11/13/2023
 ---
 
 # Update your Azure Stack HCI, version 23H2 via PowerShell (preview)
@@ -71,7 +71,7 @@ Follow these steps on your client to connect to one of the servers of your Azure
     ```
 
     > [!NOTE]
-    > You should sign in using your Lifecycle Manager account credentials.
+    > You should sign in using your deployment user account credentials: which is the account you created when preparing [Active Directory](../deploy/deployment-prep-active-directory.md) and used during the deployment of the Azure Stack HCI system.
 
     Here's an example output:
 
@@ -89,7 +89,7 @@ Follow these steps on your client to connect to one of the servers of your Azure
 
 Before you discover the updates, make sure that the cluster was deployed using the Azure Stack HCI, version 23H2, software version 2310.  
 
-1. Make sure that you're connected to the cluster server using the Lifecycle Manager account. Run the following command:
+1. Make sure that you're connected to the cluster server using the deployment user account. Run the following command:
 
     ```powershell
     whoami
@@ -122,7 +122,7 @@ Before you discover the updates, you can manually validate the system health. Th
 > [!NOTE]
 > Any faults that have a severity of *critical* will block the updates from being applied.
 
-1. Connect to a server on your Azure Stack HCI cluster using the Lifecycle Manager account.
+1. Connect to a server on your Azure Stack HCI cluster using the deployment user account.
 2. Run the following command to validate system health via the [Environment Checker](../manage/use-environment-checker.md).
 
     ```powershell
@@ -250,7 +250,7 @@ You can discover updates in one of the following two ways:
 
 Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
 
-1. Connect to a server on your Azure Stack HCI cluster using the Lifecycle Manager account.
+1. Connect to a server on your Azure Stack HCI cluster using the deployment user account.
 2. Verify that the update package was discovered by the Update service.
 
     ```powershell
@@ -284,7 +284,7 @@ You can now proceed to [Download and install the updates](#step-4-download-check
 
 If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
 
-1. Connect to a server on your Azure Stack HCI cluster using the Lifecycle Manager account.
+1. Connect to a server on your Azure Stack HCI cluster using the deployment user account.
 2. Go to the network share and acquire the update package that you use. Verify that the update package that you sideload contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
@@ -381,7 +381,7 @@ You can download the updates, perform a set of checks to verify the update readi
         10.2303.4.1 Downloading                        InProgress
         ```
 
-    - Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
+    - Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
 
         ```console
         PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
@@ -425,7 +425,7 @@ You can download the updates, perform a set of checks to verify the update readi
         10.2303.4.1 Installing 89% complete.             Success
         ```
 
-Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases.md#phase-3-installation-progress-and-monitoring).
+Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
 
 ## Step 5: Verify the installation
 
