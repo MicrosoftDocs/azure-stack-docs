@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 111/13/2023
+ms.date: 11/13/2023
 ---
 
 # Update overview for Azure Stack HCI, version 23H2 (preview)?
