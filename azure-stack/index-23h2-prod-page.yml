@@ -36,8 +36,8 @@ productDirectory:
         text: Azure Stack HCI overview
       - url: ./hci/whats-new.md
         text: Azure Stack HCI What's New
-      - url: ./hci/manage/preview-channel.md
-        text: Join preview channel
+      - url: ./hci/deploy/deployment-introduction.md
+        text: Try preview version 23H2
       - url: https://azure.microsoft.com/products/azure-stack/hci/
         text: Product information and pricing
   - title: Azure Kubernetes Service (AKS) hybrid deployment options
