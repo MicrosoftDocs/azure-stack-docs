@@ -109,7 +109,7 @@ landingContent:
           - text: Firewall requirements
             url: concepts/firewall-requirements.md
           - text: Network reference patterns overview
-            url: /azure-stack/hci/plan/network-patterns-overview.md
+            url: /plan/network-patterns-overview.md
           - text: Software Defined Networking (SDN) overview
             url: concepts/software-defined-networking.md
  
