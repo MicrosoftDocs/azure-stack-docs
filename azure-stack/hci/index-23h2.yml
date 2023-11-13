@@ -52,7 +52,7 @@ landingContent:
             url: /azure-stack/hci/manage/cluster-powershell
           - text: Monitor via Azure Stack HCI Insights
             url: /azure-stack/hci/manage/monitor-hci-single
-          - text: Monitor via PowerShell
+          - text: Monitor via Windows Admin Center
             url: /azure-stack/hci/manage/monitor-cluster
   # Card
   - title: Try the preview
@@ -72,7 +72,7 @@ landingContent:
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
-            url: /manage/azure-arc-vm-management-overview.md
+            url: /manage/manage-virtual-machines-in-azure-portal.md
   # Card
   - title: Update the preview cluster
     linkLists:
@@ -109,7 +109,7 @@ landingContent:
           - text: Firewall requirements
             url: concepts/firewall-requirements.md
           - text: Network reference patterns overview
-            url: /azure-stack/hci/plan/network-patterns-overview
+            url: /azure-stack/hci/plan/network-patterns-overview.md
           - text: Software Defined Networking (SDN) overview
             url: concepts/software-defined-networking.md
  
