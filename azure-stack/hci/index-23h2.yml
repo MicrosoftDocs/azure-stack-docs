@@ -72,7 +72,7 @@ landingContent:
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
-            url: /manage/manage-virtual-machines-in-azure-portal.md
+            url: /azure-stack/hci/manage/manage-virtual-machines-in-azure-portal
   # Card
   - title: Update the preview cluster
     linkLists:
@@ -109,7 +109,7 @@ landingContent:
           - text: Firewall requirements
             url: concepts/firewall-requirements.md
           - text: Network reference patterns overview
-            url: /plan/network-patterns-overview.md
+            url: /azure-stack/hci/plan/network-patterns-overview
           - text: Software Defined Networking (SDN) overview
             url: concepts/software-defined-networking.md
  
