@@ -7,11 +7,13 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/09/2023
-ms.lastreviewed: 11/09/2023
+ms.date: 11/13/2023
+ms.lastreviewed: 11/13/2023
 ---
 
 # Azure verification for VMs
+
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)] and later.
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
@@ -312,8 +314,14 @@ You must enable legacy OS networking for any new VMs that you create after the f
   ```
 
 ---
+
+### [Azure portal](#tab/azureportal)
+
+You cannot view legacy OS support from the Azure portal at this time.
+
+---
   
-#### Azure CLI
+### [Azure CLI](#tab/azurecli)
 
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
@@ -337,6 +345,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.supportedCapabilities}" \
    -o table
    ```
+
+---
 
 ## FAQ
 
