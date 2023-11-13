@@ -92,18 +92,6 @@ landingContent:
             url: update/update-via-powershell-23h2.md
 
   # Card
-  - title: Azure Stack HCI concepts
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Firewall requirements
-            url: concepts/firewall-requirements.md
-          - text: Network reference patterns overview
-            url: /azure-stack/hci/plan/network-patterns-overview
-          - text: Software Defined Networking (SDN) overview
-            url: concepts/software-defined-networking.md
-
-  # Card
   - title: Manage volumes and more
     linkLists:
       - linkListType: overview
@@ -117,6 +105,18 @@ landingContent:
           - text: Manage volumes
             url: manage/manage-volumes.md                      
  
+  # Card
+  - title: Azure Stack HCI concepts
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Firewall requirements
+            url: concepts/firewall-requirements.md
+          - text: Network reference patterns overview
+            url: /azure-stack/hci/plan/network-patterns-overview
+          - text: Software Defined Networking (SDN) overview
+            url: concepts/software-defined-networking.md
+
   # Card
   - title: Azure Stack HCI learning paths and modules
     linkLists:
