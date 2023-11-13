@@ -1,13 +1,13 @@
 ---
-title: Troubleshoot Azure Stack HCI, version 23H2 solution updates (preview)
+title: Troubleshoot solution updates for Azure Stack HCI, version 23H2 (preview)
 description: Learn how to troubleshoot solution updates applied to Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 10/27/2023
+ms.date: 11/13/2023
 ---
 
-# Troubleshoot Azure Stack HCI, version 23H2 update (preview)
+# Troubleshoot solution updates for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 

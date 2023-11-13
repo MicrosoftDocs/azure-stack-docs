@@ -1,15 +1,15 @@
 ---
-title: Security baseline settings on Azure Stack HCI (preview)
-description: Learn about the default security baseline settings available for new deployments of Azure Stack HCI (preview).
+title: Security baseline settings on Azure Stack HCI, version 23H2 (preview)
+description: Learn about the default security baseline settings available for new deployments of Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/08/2023
+ms.date: 11/13/2023
 ---
 
-# Security baseline settings for Azure Stack HCI (preview)
+# Security baseline settings for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
@@ -49,7 +49,7 @@ To toggle drift control, follow these steps.
 
 1. Connect to your Azure Stack HCI node.
 
-1. Run the following PowerShell command using local administrator credentials or LCM deployment user credentials.
+1. Run the following PowerShell command using local administrator credentials or deployment user account credentials.
 
 1. To disable drift control:
 
@@ -58,7 +58,7 @@ To toggle drift control, follow these steps.
     ```
 
     - **Local** - Affects local node only. Can be run on a regular remote PowerShell session.
-    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    - **Cluster** - Affects all nodes in the cluster using the orchestrator. Requires user to belong to the deployment authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
 
 1. To enable drift control:
 
@@ -67,7 +67,7 @@ To toggle drift control, follow these steps.
     ```
 
     - **Local** - Affects local node only. Can be run on a regular remote PowerShell session.
-    - **Cluster** - Affects all nodes in the cluster using LCM. Requires user to belong to the LCM authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    - **Cluster** - Affects all nodes in the cluster using the orchestrator. Requires user to belong to the deployment authorization group (PREFIX-ECESG) and CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
 
 ## Manage security baseline
 
@@ -105,14 +105,14 @@ The following cmdlet properties are for module *AzureStackOSConfigAgent*.
   - **PerNode** - Provides boolean value (true/False) per node.
   - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
     AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
-    Cluster  –Provides boolean value from ECE store. Interacts with LCM and acts to all the nodes in the cluster, requires LCM authorization (PREFIX-ECESG) and either Remote PowerShell session with CredSSP authentication or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    Cluster  –Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either Remote PowerShell session with CredSSP authentication or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
   - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
     - Credential Guard
     - Drift Control
     - VBS (Virtualization Based Security)- We only support enable command.
     - DRTM (Dynamic Root of Trust for Measurement)
     - HVCI (Hypervidor Enforced if Code Integrity)
-    - Side Channel Mitigation 
+    - Side Channel Mitigation
     - SMB Encryption
     - SMB Signing
 

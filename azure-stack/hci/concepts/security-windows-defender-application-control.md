@@ -1,6 +1,6 @@
 ---
-title: Windows Defender Application Control for Azure Stack HCI (preview)
-description: This article provides guidance on Windows Defender Application Control for Azure Stack HCI (preview).
+title: Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)
+description: This article provides guidance on Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview).
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
@@ -9,7 +9,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
 
-# Windows Defender Application Control for Azure Stack HCI (preview)
+# Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
