@@ -1,5 +1,5 @@
 ---
-title: Use PowerShell to update clusters for Azure Stack HCI, version 23H2 (preview).
+title: Update Azure Stack HCI, version 23H2 clusters via PowerShell (preview).
 description: Learn how to use PowerShell to apply operating system, service, and Solution Extension updates to Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.author: alkohli
@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 11/13/2023
 ---
 
-# Use PowerShell to update clusters for Azure Stack HCI, version 23H2 (preview)
+# Update your Azure Stack HCI, version 23H2 via PowerShell (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
@@ -95,7 +95,7 @@ Before you discover the updates, make sure that the cluster was deployed using t
     whoami
     ```
 
-2. To ensure that the cluster was deployed using the Supplemental Package, run the following command on one of the servers of your cluster:
+2. To ensure that the cluster was deployed running Azure Stack HCI, version 23H2, run the following command on one of the servers of your cluster:
 
     ```powershell
     Get-StampInformation
