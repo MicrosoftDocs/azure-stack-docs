@@ -15,7 +15,7 @@ ms.date: 11/13/2023
 
 This article lists the various features and improvements that are available in Azure Stack HCI, version 23H2.
 
-Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on one integrated package, cloud-based deployment and updates, cloud-based monitoring and capacity management, Azure consistent CLI for Arc VM management, support for VM extensions, and more.
+Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on one integrated package, cloud-based deployment and updates, cloud-based monitoring, Azure consistent CLI for Arc VM management, support for static IPs and for VM extensions, capacity management, and more.
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
@@ -26,17 +26,17 @@ The following sections briefly describe the various features and enhancements in
 
 ### One integrated package
 
-Unlike the prior years, Azure Stack HCI, version 23H2 includes more than just the operating system (OS). There is a single package containing 23H2 operating system, the orchestrator, Arc VM management and AKS hybrid software bits. The 23H2 operating system includes the latest cumulative update corresponding to October 2023.
+Unlike the prior years, Azure Stack HCI, version 23H2 includes more than just the operating system (OS). There is a single package containing the 23H2 operating system, the orchestrator and Arc VM management software bits. The 23H2 operating system includes the latest cumulative update corresponding to October 2023.
 
 ### Cloud-based deployment
 
-For servers running Azure Stack HCI, version 23H2, you can perform new deployments via the cloud. You can deploy an Azure Stack HCI cluster in one of the two ways - via the Azure portal or via an Azure Resource Manager (ARM) deployment template. 
+For servers running Azure Stack HCI, version 23H2, you can perform new deployments via the cloud. You can deploy an Azure Stack HCI cluster in one of the two ways - via the Azure portal or via an Azure Resource Manager deployment template.
 
 For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](./deploy/deploy-via-portal.md) and [Deploy Azure Stack HCI via the Azure Resource Manager deployment template](./deploy/deployment-azure-resource-manager-template.md).
 
 ### Cloud-based updates
 
-This new release has the infrastructure to group all the applicable updates for the OS, software agents, Azure Arc infrastructure and even OEM drivers and firmware into a single monthly update package. This update package is then discovered and updates applied from the cloud via the natively integrated Azure Update Manager tool. Alternatively, you can apply the updates via the PowerShell.   
+This new release has the infrastructure to group all the applicable updates for the OS, software agents, Azure Arc infrastructure and even OEM drivers and firmware into a single monthly update package. This update package is then discovered and updates applied from the cloud via the Azure Update Manager tool. Alternatively, you can apply the updates via the PowerShell.
 
 For more information, see [Update your Azure Stack HCI cluster via the Azure Update Manager](./update/update-azure-stack-hci-solution.md) and [Update your Azure Stack HCI via the PowerShell](./update/update-via-powershell-23h2.md).​
 
@@ -48,29 +48,30 @@ This release integrates the Azure Monitor alerts with Azure Stack HCI so that an
 
 For more information, see [Respond to Azure Stack HCI health alerts using Azure Monitor alerts](./manage/health-alerts-via-azure-monitor-alerts.md).
 
+#### Monitoring metrics
+
+This release also integrates the Azure Monitor metrics with Azure Stack HCI so that you can monitor the health of your Azure Stack HCI system via the metrics collected for compute, storage, and network resources. This integration enables you to store cluster data in a dedicated time-series database that you can use to analyze data from your Azure Stack HCI system. 
+ 
+For more information, see [Monitor Azure Stack HCI with Azure Monitor metrics](./manage/monitor-cluster-with-metrics.md).
+
 #### Enhanced monitoring capabilities with Insights
  
 With Insights for Azure Stack HCI, you can now monitor and analyze performance, savings, and usage insights about key Azure Stack HCI features, such as ReFS deduplication and compression. To use these enhanced monitoring capabilities, ensure that your cluster is deployed, registered, and connected to Azure, and enrolled in monitoring. For more information, see [Monitor Azure Stack HCI features with Insights](./manage/monitor-features.md)
 
 ### Azure Arc management
 
-#### Support for Azure VM extensions on Arc VMs on Azure Stack HCI
+Beginning this release, the following Azure Arc management capabilities are available:
 
-Starting with this preview release, you can also enable and manage all Azure VM extensions supported on Azure Arc VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal.
-
-For more information, see [Manage VM extensions for Azure Stack HCI VMs](./manage/virtual-machine-manage-extension.md).
-
-#### New Azure Consistent CLI
-
-Beginning this preview release, a new consistent command line experience is available to create VM and VM resources such as VM images, storage paths, logical networks, and network interfaces is available.
-
-For more information, see [Create Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md).
+- **Simplified Arc Resource Bridge deployment**. The Arc Resource Bridge is now deployed as part of the Azure Stack HCI deployment. For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](./deploy/deploy-via-portal.md).
+- **New Azure Consistent CLI**. Beginning this preview release, a new consistent command line experience is available to create VM and VM resources such as VM images, storage paths, logical networks, and network interfaces is available. For more information, see [Create Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md).
+- **Support for static IPs**. This release has the support for static IPs. For more information, see [Create static logical networks on Azure Stack HCI](./manage/create-logical-networks.md#create-a-static-logical-network).
+- **Support for Azure VM extensions on Arc VMs on Azure Stack HCI**. Starting with this preview release, you can also enable and manage all Azure VM extensions supported on Azure Arc VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal. For more information, see [Manage VM extensions for Azure Stack HCI VMs](./manage/virtual-machine-manage-extension.md).
 
 #### Trusted launch for Azure Arc VMs
 
 Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Arc VMs on Azure Stack HCI.
 
-For more information, see [Trusted launch for Arc VMs](./index.yml).
+For more information, see [Trusted launch for Arc VMs](./manage/trusted-launch-vm-overview.md).
 
 ### Security capabilities
 
@@ -78,7 +79,7 @@ The new installations with this release of Azure Stack HCI start with a *secure-
 
 This release provides:
 
-- A tailored security baseline with over 300 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Stack HCI](../hci/concepts/secure-baseline.md).
+- A tailored security baseline with over 250 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Stack HCI](../hci/concepts/secure-baseline.md).
 
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
 
