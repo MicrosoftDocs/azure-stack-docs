@@ -55,13 +55,13 @@ landingContent:
           - text: Monitor via PowerShell
             url: /azure-stack/hci/manage/monitor-cluster
   # Card
-  - title: Try preview
+  - title: Try the preview
     linkLists:
       - linkListType: deploy
         links:
           - text: Read about Azure Stack HCI, version 23H2
             url: deploy/deployment-introduction.md
-          - text: Deploy Azure Stack HCI, version 23H2 via the Azure portal
+          - text: Deploy preview version via the Azure portal
             url: deploy/deploy-via-portal.md
 
  # Card
@@ -71,22 +71,20 @@ landingContent:
         links:
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
-          - text: Run Azure Kubernetes (AKS) hybrid
-            url: /azure/aks/hybrid/kubernetes-concepts
           - text: Run Azure Arc Virtual Machines
             url: /azure-stack/hci/manage/create-arc-virtual-machines
   # Card
-  - title: Update the cluster
+  - title: Update the preview cluster
     linkLists:
       - linkListType: overview
         links:
-          - text: Update overview
+          - text: Azure Stack HCI, version 23H2 preview updates
             url: update/whats-the-lifecycle-manager-23h2.md
       - linkListType: how-to-guide
         links:
-          - text: Update via the Portal
+          - text: Apply version 23H2 updates via the Portal
             url: update/azure-update-manager-23h2.md
-          - text: Update via PowerShell
+          - text: Apply version 23H2 updates via PowerShell
             url: update/update-via-powershell-23h2.md
 
   # Card
