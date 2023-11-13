@@ -7,11 +7,13 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/09/2023
-ms.lastreviewed: 11/09/2023
+ms.date: 11/13/2023
+ms.lastreviewed: 11/13/2023
 ---
 
 # Azure verification for VMs
+
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)] and later.
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
@@ -72,7 +74,7 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): all servers must be online and registered to Azure.
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - Update your VMs: see [version requirements for workloads](#benefits-available-on-azure-stack-hci).
-- Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](#troubleshoot-vms) or [for PowerShell](#troubleshoot-vms-1)
+- Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](#troubleshoot-vms) or for [PowerShell](#troubleshoot-vms-1).
 - (optional) If you are using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
@@ -177,8 +179,6 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   ```powershell
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
   ```
-
----
 
 ### Azure portal or Azure CLI
 
@@ -311,9 +311,11 @@ You must enable legacy OS networking for any new VMs that you create after the f
   Remove-AzStackHCIVMAttestation -RemoveAll
   ```
 
----
+### [Azure portal](#tab/azureportal)
+
+You cannot view legacy OS support from the Azure portal at this time.
   
-#### Azure CLI
+### [Azure CLI](#tab/azurecli)
 
 Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
@@ -337,6 +339,8 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.supportedCapabilities}" \
    -o table
    ```
+
+---
 
 ## FAQ
 
