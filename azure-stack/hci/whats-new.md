@@ -65,7 +65,7 @@ Beginning this release, the following Azure Arc management capabilities are avai
     For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](./deploy/deploy-via-portal.md).
 - **New RBAC roles for Arc VMs**. This release introduces new RBAC roles for Arc VMs.
     For more information, see [Manage RBAC roles for Arc VMs](./manage/assign-vm-rbac-roles.md).
-- **New Azure consistent CLI**. Beginning this preview release, a new consistent command line experience is available to create VM and VM resources such as VM images, storage paths, logical networks, and network interfaces is available. 
+- **New Azure consistent CLI**. Beginning this preview release, a new consistent command line experience is available to create VM and VM resources such as VM images, storage paths, logical networks, and network interfaces. 
     For more information, see [Create Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md).
 - **Support for static IPs**. This release has the support for static IPs. 
     For more information, see [Create static logical networks on Azure Stack HCI](./manage/create-logical-networks.md#create-a-static-logical-network).
