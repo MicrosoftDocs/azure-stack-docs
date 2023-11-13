@@ -145,7 +145,7 @@ To prepare and configure Active Directory, follow these steps:
 > - To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
 > - If you are repairing a single server, do not delete the existing OU. If the server volumes are encrypted, deleting the OU removes the BitLocker recovery keys.
 
-## Rotate credential secrets
+<!--## Rotate credential secrets
 
 We recommend that you rotate your Azure Stack HCI administrative credential secrets regularly. Specifically, you can rotate the `AzureStackLCMUserCredential` credential using the PowerShell `Set-azurestacklcmuserpassword` cmdlet.
 
@@ -160,7 +160,7 @@ The `Set-azurestacklcmuserpassword` cmdlet takes three input arguments:
 - `NewPassword`: The new password for the user.
 
 > [!NOTE]
-> The computer session used to run this command becomes unresponsive once the command completes and you'll be logged out while the credential change takes effect in Active Directory.
+> The computer session used to run this command becomes unresponsive once the command completes and you'll be logged out while the credential change takes effect in Active Directory.-->
 
 ## Next steps
 
