@@ -34,7 +34,7 @@ After you have exported and then imported the VM, use the following steps to tra
 
 Run the following commands from the target Azure Stack HCI cluster:
 
-1. Sign in to the key vault, then run the following as administrator:
+1. Sign into the key vault using administrative privileges:
 
    ```azurepowershell
    mocctl.exe security login --identity --loginpath (Get-MocConfig).mocLoginYAML
@@ -64,7 +64,7 @@ Run the following commands from the source Azure Stack HCI cluster:
    (Get-VM -Name <vmName>).vmid  
    ```
 
-1. Sign in to the key vault, then run the following as administrator:
+1. Sign into the key vault using administrative privileges:
 
    ```azurepowershell
      mocctl.exe security login --identity --loginpath (Get-MocConfig).mocLoginYAML
@@ -90,4 +90,4 @@ Run the following commands from the target Azure Stack HCI cluster:
 
 ## Next steps
 
-- [Manage Trusted launch Arc VM guest state protection key](trusted-launch-vm-import-key.md).
+- [Manage VM extensions](virtual-machine-manage-extension.md).

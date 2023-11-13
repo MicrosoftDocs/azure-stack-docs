@@ -1,6 +1,6 @@
 ---
 title: Get support for Azure Stack HCI deployment issues (preview)
-description: Learn how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support. (preview)
+description: Learn how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to

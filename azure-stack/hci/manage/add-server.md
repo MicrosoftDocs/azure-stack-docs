@@ -165,4 +165,4 @@ If you experience failures or errors while adding a server, you can capture the 
 
 ## Next steps
 
-Learn more about how to [Repair a server](./add-server.md).
+Learn more about how to [Repair a server](./repair-server.md).
