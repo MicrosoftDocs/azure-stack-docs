@@ -155,8 +155,6 @@ This tab gives basic information about the workbook and the prerequisites to vie
 
 This tab provides volume information within a cluster and shows the savings for each volume.
 
-:::image type="content" source="media/monitor-features/savings-tab.png" alt-text="Screenshot that shows the Savings tab." lightbox="media/monitor-features/savings-tab.png":::
-
 The following table describes the columns under the **Savings per volume** section:
 
 | Column | Description | Example |
