@@ -17,7 +17,7 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
 
-For earlier versions of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-22h2.md).
+For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
 [!INCLUDE [hci-preview](../includes/hci-preview.md)]
 
