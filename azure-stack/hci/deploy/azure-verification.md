@@ -89,7 +89,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
    - Cluster-level status: **Host status** appears as **On**.
    - Server-level status: Under the **Server** tab in the dashboard, check that the status for every server shows as **Active** in the table.
 
-     :::image type="content" source="media/azure-verification/wac-server.png" alt-text="Screenshot showing server status." lightbox="media/azure-verification/wac-server.png":::
+     :::image type="content" source="media/azure-verification/windows-admin-center-server.png" alt-text="Screenshot showing server status." lightbox="media/azure-verification/windows-admin-center-server.png":::
 
 ### Troubleshoot servers
 
@@ -109,7 +109,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci).
 
-   :::image type="content" source="media/azure-verification/wac-virtual-machine-dashboard.png" alt-text="Screenshot showing virtual machine dashboard and status." lightbox="media/azure-verification/wac-virtual-machine-dashboard.png":::
+   :::image type="content" source="media/azure-verification/virtual-machine-dashboard.png" alt-text="Screenshot showing virtual machine dashboard and status." lightbox="media/azure-verification/virtual-machine-dashboard.png":::
 
 ### Troubleshoot VMs
 
@@ -231,7 +231,7 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
    - Check that **Legacy OS support** appears as **On**.
    - Under the **Server** tab in the dashboard, check that legacy OS support for every server shows as **On** in the table.
 
-     :::image type="content" source="media/azure-verification/legacy-support.gif" alt-text="Screenshow showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.gif":::
+     :::image type="content" source="media/azure-verification/legacy-support.gif" alt-text="Screenshot showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.gif":::
 
 ### 2. Enable access for new VMs
 
