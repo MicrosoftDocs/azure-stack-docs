@@ -67,7 +67,7 @@ landingContent:
             url: deploy/deploy-via-portal.md
 
  # Card
-  - title: Deploy workloads
+  - title: Deploy preview workloads
     linkLists:
       - linkListType: deploy
         links:
