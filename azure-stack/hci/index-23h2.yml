@@ -57,10 +57,12 @@ landingContent:
   # Card
   - title: Try the preview
     linkLists:
-      - linkListType: deploy
+      - linkListType: overview
         links:
           - text: Read about Azure Stack HCI, version 23H2
             url: deploy/deployment-introduction.md
+      - linkListType: deploy
+        links:            
           - text: Deploy preview version via the Azure portal
             url: deploy/deploy-via-portal.md
 
