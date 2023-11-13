@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/02/2023
+ms.date: 11/13/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -142,7 +142,7 @@ Before you begin, make sure you've done the following:
 
     ```powershell
     #Invoke the registration script. For this preview release, only eastus region is supported.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force  
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
     Here is a sample output of a successful registration of your servers:
