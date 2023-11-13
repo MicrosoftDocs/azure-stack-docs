@@ -57,7 +57,7 @@
           href: deploy/deployment-azure-resource-manager-template.md
     - name: Update 
       items:
-      - name: What's the Lifecycle Manager?
+      - name: About Updates
         href: update/whats-the-lifecycle-manager-23h2.md
       - name: Understand update phases
         href: update/update-phases-23h2.md
@@ -129,40 +129,6 @@
           href: manage/monitor-cluster-with-metrics.md
         - name: Features via workbooks
           href: manage/monitor-features.md
-    - name: Migrate
-      items: 
-        - name: Migration overview
-          href: migrate/migration-options-hci-overview.md
-        - name: Migrate using Azure Migrate
-          items:
-          - name: Overview
-            href: migrate/migration-azure-migrate-hci-overview.md
-          - name: Prepare
-            items:
-            - name: Review requirements
-              href: migrate/migrate-hyperv-requirements.md
-            - name: Complete prerequisites
-              href: migrate/migrate-hyperv-prerequisites.md 
-          - name: Discover, replicate
-            href: migrate/migrate-hyperv-replicate.md
-          - name: Migrate, verify
-            href: migrate/migrate-azure-migrate.md
-          - name: Troubleshoot
-            href: migrate/migrate-troubleshoot.md
-          - name: FAQ
-            href: migrate/migrate-faq.yml
-        - name: Migrate using SCVMM
-          items:
-          - name: For Hyper-V VMs
-            href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
-          - name: For VMware VMs
-            href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
-        - name: Migrate manually 
-          items:
-          - name: To same hardware
-            href: migrate/migrate-cluster-same-hardware.md
-          - name: To new hardware
-            href: migrate/migrate-cluster-new-hardware.md
     - name: Troubleshoot
       items:
       - name: Get support for deployment issues
