@@ -54,6 +54,7 @@ landingContent:
             url: /azure-stack/hci/manage/monitor-hci-single
           - text: Monitor via Windows Admin Center
             url: /azure-stack/hci/manage/monitor-cluster
+
   # Card
   - title: Try the preview
     linkLists:
@@ -75,6 +76,7 @@ landingContent:
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
             url: /azure-stack/hci/manage/manage-virtual-machines-in-azure-portal
+            
   # Card
   - title: Update the preview cluster
     linkLists:
