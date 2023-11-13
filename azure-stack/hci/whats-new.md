@@ -1,6 +1,6 @@
 ---
 title: What's new in Azure Stack HCI, version 23H2 preview release (preview)
-description: Find out what's new in Azure Stack HCI, version 23H2 preview release (preview)
+description: Find out what's new in Azure Stack HCI, version 23H2 preview release (preview).
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
@@ -50,7 +50,7 @@ For more information, see [Respond to Azure Stack HCI health alerts using Azure 
 
 #### Enhanced monitoring capabilities with Insights
  
-With Insights for Azure Stack HCI, you can now monitor and analyze performance, savings, and usage insights about key Azure Stack HCI features, such as ReFS deduplication and compression. To use these enhanced monitoring capabilities, ensure that your cluster is deployed, registered, and connected to Azure, and enrolled in monitoring. For more information, see [Monitor Azure Stack HCI features with Insights](./manage/monitor-features.md)
+With Insights for Azure Stack HCI, you can now monitor and analyze performance, savings, and usage insights about key Azure Stack HCI features, such as ReFS deduplication and compression. To use these enhanced monitoring capabilities, ensure that your cluster is deployed, registered, and connected to Azure, and enrolled in monitoring. For more information, see [Monitor Azure Stack HCI features with Insights](./manage/monitor-features.md).
 
 ### Azure Arc management
 
@@ -70,7 +70,7 @@ For more information, see [Create Arc VMs on Azure Stack HCI](./manage/create-ar
 
 Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Arc VMs on Azure Stack HCI.
 
-For more information, see [Trusted launch for Arc VMs](./index.yml).
+For more information, see [Trusted launch for Arc VMs](./manage/trusted-launch-vm-overview.md).
 
 ### Security capabilities
 

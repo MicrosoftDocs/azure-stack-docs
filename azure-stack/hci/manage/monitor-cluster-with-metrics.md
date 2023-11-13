@@ -38,7 +38,7 @@ Here are the prerequisites of using Metrics for Azure Stack HCI:
 
 - You must have access to a cluster that is running Azure Stack HCI, version 23H2 (preview) (Build version: 2311) or later.
 
-- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview (preview)](../concepts/telemetry-and-diagnostics-overview.md).
+- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Analyze metrics
 
