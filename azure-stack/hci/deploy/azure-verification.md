@@ -231,7 +231,7 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
    - Check that **Legacy OS support** appears as **On**.
    - Under the **Server** tab in the dashboard, check that legacy OS support for every server shows as **On** in the table.
 
-   :::image type="content" source="media/azure-verification/legacy-support.gif" alt-text="Screenshow showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.gif":::
+     :::image type="content" source="media/azure-verification/legacy-support.gif" alt-text="Screenshow showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.gif":::
 
 ### 2. Enable access for new VMs
 
