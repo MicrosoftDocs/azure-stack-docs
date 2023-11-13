@@ -1,6 +1,6 @@
 ---
-title: Azure Stack HCI release information
-description: This article provides a list of the Azure Stack HCI releases, including monthly updates, and corresponding OS builds.
+title: Azure Stack HCI release information (preview)
+description: This article provides a list of the Azure Stack HCI releases, including monthly updates, and corresponding OS builds (preview).
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 11/14/2023
 ---
 
-# Azure Stack HCI release information
+# Azure Stack HCI release information (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-21h2.md)]
 
@@ -25,7 +25,6 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **Version** | **Availability date** | **OS build**      | **Apply update by** |
 |:------------|:----------------------|:------------------|:-------------------------|
-| 23H2        | 2023-11-14            | 25398.524         | TBA              |
 | 22H2        | 2022-10-25            | 20349.1194        | 2023-04-25               |
 | 21H2        | 2021-10-19            | 20348.288         | 2022-04-19               |
 
@@ -126,7 +125,3 @@ For information about what's included in each version of Azure Stack HCI, see th
 - [Release Notes for Azure Stack HCI, version 22H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-22h2-fea63106-a0a9-4b6c-bb72-a07985c98a56)
 - [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173)
 
-
-## Next steps
-
-[Azure Stack HCI Lifecycle](/lifecycle/products/azure-stack-hci)
