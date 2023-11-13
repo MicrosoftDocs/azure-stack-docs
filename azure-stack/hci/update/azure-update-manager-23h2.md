@@ -1,12 +1,12 @@
 ---
-title:  Update Azure Stack HCI, version 23H2 via Azure Update Manager (preview)
-description: This article describes the Azure Update Manager, its benefits, and ways to use it to update your Azure Stack HCI, version 23H2 system in the Azure portal (preview).
+title:  Use Azure Update Manager to update your Azure Stack HCI, version 23H2 (preview)
+description: This article describes the Azure Update Manager, its benefits, and ways to use it to update your Azure Stack HCI, version 23H2 system in the Azure portal.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: mindydiep
-ms.lastreviewed: 10/24/2023
-ms.date: 10/24/2023
+ms.lastreviewed: 11/13/2023
+ms.date: 11/13/2023
 ---
 
 # Use Azure Update Manager to update your Azure Stack HCI, version 23H2 (preview)
@@ -15,7 +15,9 @@ ms.date: 10/24/2023
 
 This article describes how to use Azure Update Manager to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
 
-> [!IMPORTANT]
+[!INCLUDE [important](../../includes/hci-preview.md)]
+
+> [!NOTE]
 > You can view the Azure Update Manager workflow, but this release of Azure Stack HCI, version 23H2 doesn't include an update package that can be installed.
 
 ## About Azure Update Manager
