@@ -4,12 +4,12 @@ description: Learn how to repair a server on your Azure Stack HCI (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 09/27/2023
+ms.date: 11/13/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
 
-[!INCLUDE [hci-applies-to-supplemental-package](../../includes/hci-applies-to-supplemental-package.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to repair a server on your Azure Stack HCI cluster.
 
@@ -114,18 +114,12 @@ Make sure that you have reviewed the [prerequisites](#prerequisites).
 
 Follow these steps on the sever you are trying to repair.
 
-1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
+1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
     > [!NOTE]
-    > You must also [Install required Windows Roles](../deploy/deployment-tool-install-os.md#install-required-windows-roles).
+    > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
 
-1. Sign in with local administrator account, into the server that will be repaired.
 
-1. Open a new PowerShell session on this server. Run the following command:
-
-    ```powershell
-    Uninstall-Module –Name PSWindowsUpdate –Force
-    ```
 Follow these steps on another sever that is a member of the same Azure Stack HCI cluster.
 
 1. Before you add the server, make sure to get an updated authentication token. Run the following command:
@@ -134,7 +128,7 @@ Follow these steps on another sever that is a member of the same Azure Stack HCI
     Update-AuthenticationToken
    ```
    
-1. Sign in with the Lifecycle Manager account into the server that is already a member of the cluster. Run the following command to repair the incoming server:
+1. Sign into the server that is already a member of the cluster, with the domain user credentials that you provided during the deployment of the cluster. Run the following command to repair the incoming server:
 
     ```powershell
     $Cred = Get-Credential 
@@ -156,12 +150,14 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
 | Scenario description                                                                                          | Mitigation                                                                                                | Supported ?   |
 |------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|
 | Repair server operation failed.                                                                      | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`.                    | Yes     |
-| Repair server operation succeeded partially but had to start with a fresh operation system install.    | In this scenario, the Lifecycle Manager has already updated its knowledge store with the new server. Use the repair server scenario. | Yes    |
+| Repair server operation succeeded partially but had to start with a fresh operation system install.    | In this scenario, the orchestrator (also known as Lifecycle Manager) has already updated its knowledge store with the new server. Use the repair server scenario. | Yes    |
 
 
 ### Troubleshooting
 
-- If you experience failures or errors while repairing a server, you can capture the output of the failures in a log file.
+If you experience failures or errors while repairing a server, you can capture the output of the failures in a log file.
+
+- Sign in with the domain user credentials that you provided during the deployment of the cluster. Capture the issue in the log files.
 
     ```powershell
     Get-ActionPlanInstance -ActionPlanInstanceID $ID |out-file log.txt
