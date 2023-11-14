@@ -54,7 +54,7 @@ productDirectory:
   - title: Azure Stack Hub 
     imageSrc: media/index/azure-stack-hub-2022.svg
     links:
-      - url: /operator/azure-stack-overview.md
+      - url: ./operator/azure-stack-overview.md
         text: Azure Stack Hub overview
       - url: ./operator/index.yml
         text: Azure Stack Hub Operator documentation
