@@ -79,11 +79,9 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
 
-### Windows Admin Center or PowerShell
-
 ### [Windows Admin Center](#tab/wac)
 
-#### Check server status of Azure VM verification
+### Check server status of Azure VM verification
 
 1. In Windows Admin Center, select **Cluster Manager** from the top drop-down menu, navigate to the cluster that you want to activate, then under **Settings**, select **Azure verification for VMs**.
 
@@ -91,14 +89,14 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
    - Cluster-level status: **Host status** appears as **On**.
    - Server-level status: Under the **Server** tab in the dashboard, check that the status for every server shows as **Active** in the table.
 
-     :::image type="content" source="media/azure-verification/wac-server.png" alt-text="Screenshot showing server status." lightbox="media/azure-verification/wac-server.png":::
+     :::image type="content" source="media/azure-verification/windows-admin-center-server.png" alt-text="Screenshot showing server status." lightbox="media/azure-verification/windows-admin-center-server.png":::
 
-#### Troubleshoot servers
+### Troubleshoot servers
 
 - Under the **Server** tab, if one or more servers appear as **Expired**:
   - If the server has not synced with Azure for more than 30 days, its status appears as **Expired** or **Inactive**. Click on **Sync with Azure** to schedule a manual sync.
 
-#### Manage benefits activated on VMs
+### Manage benefits activated on VMs
 
 1. To check what benefits are activated on VMs, navigate to the **VMs** tab.
 
@@ -111,9 +109,9 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci).
 
-   :::image type="content" source="media/azure-verification/wac-virtual-machine-dashboard.png" alt-text="Screenshot showing virtual machine dashboard and status." lightbox="media/azure-verification/wac-virtual-machine-dashboard.png":::
+   :::image type="content" source="media/azure-verification/virtual-machine-dashboard.png" alt-text="Screenshot showing virtual machine dashboard and status." lightbox="media/azure-verification/virtual-machine-dashboard.png":::
 
-#### Troubleshoot VMs
+### Troubleshoot VMs
 
 - Under the **VMs** tab, if one or more VMs appear as **Inactive benefits**:
   - If the action suggested is to **Install updates**, you might not have the minimum OS version required for the benefit. Update the VM to meet the [version requirements for workloads](#benefits-available-on-azure-stack-hci).
@@ -125,7 +123,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### [PowerShell](#tab/azure-ps)
 
-#### Check server status of Azure VM verification
+### Check server status of Azure VM verification
 
 - When Azure VM verification setup is successful, you can view the host status. Check the cluster property **IMDS Attestation** by running the following command:
 
@@ -139,7 +137,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
    Get-AzureStackHCIAttestation [[-ComputerName] <string>]
    ```
 
-#### Troubleshoot servers
+### Troubleshoot servers
 
 - If Azure VM verification for one or more servers is not yet synced and renewed with Azure, it might appear as **Expired** or **Inactive**. Schedule a manual sync:
 
@@ -147,7 +145,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Sync-AzureStackHCI
   ```
 
-#### Manage benefits activated on VMs
+### Manage benefits activated on VMs
 
 - To check access to Azure VM verification for VMs, run the following command:
 
@@ -158,7 +156,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
    > [!NOTE]
    > A VM that is supported for **v2** can communicate with the server using VMBus. Conversely, a **v1** supported VM is configured with legacy OS support and can access Azure VM verification via REST. If a VM supports both **v1** and **v2**, the **v2** method (i.e. VMBus) is primarily used, but it can fall back to **v1** if **v2** encounters an issue.
 
-#### Troubleshoot VMs
+### Troubleshoot VMs
 
 - To set up access to Azure VM verification for VMs, you can enable the [Hyper-V Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service).
 
@@ -179,8 +177,6 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   ```powershell
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
   ```
-
-### Azure portal or Azure CLI
 
 ### [Azure portal](#tab/azureportal)
 
@@ -235,11 +231,13 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
    - Check that **Legacy OS support** appears as **On**.
    - Under the **Server** tab in the dashboard, check that legacy OS support for every server shows as **On** in the table.
 
-   :::image type="content" source="media/azure-verification/legacy-support.png" alt-text="Screenshow showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.png":::
+     :::image type="content" source="media/azure-verification/legacy-support.gif" alt-text="Screenshot showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.gif":::
 
 ### 2. Enable access for new VMs
 
 You must enable legacy OS networking for any new VMs that you create after the first setup. To manage access for VMs, navigate to the **VMs** tab. Any VM that requires legacy OS support access appear as **Inactive**. Select the action to **Set up legacy OS networking** for the selected VM, or for all existing VMs on the cluster.
+
+:::image type="content" source="media/azure-verification/legacy-vm.gif" alt-text="Screenshot showing legacy VM dashboard." lightbox="media/azure-verification/legacy-vm.gif":::
 
 > [!NOTE]
 > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
