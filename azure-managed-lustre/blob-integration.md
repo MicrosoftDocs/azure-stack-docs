@@ -19,19 +19,10 @@ This article explains concepts for using the Azure blob integration with Azure M
 
 To learn the requirements and configuration needed for a compatible blob container, [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
 
-## Understand hierarchical and non-hierarchical storage schemas
-
-Since Azure Blob containers are native object storage, you can choose whether or not to impose a hierarchical file system structure on them.
-
-When the Azure Managed Lustre file system imports files from your blob container, it can read POSIX file access attributes from the original container. But the attributes are handled differently depending on whether they came from a hierarchical namespace or from a flat object storage system.
+Azure Managed Lustre supports both hierarchical and non-hierarchical namespaces for blobs with the following minor differences:
 
 - With a hierarchical namespace container, Azure Managed Lustre reads POSIX attributes from the blob header.
 - With a non-hierarchical container, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
-
-Here are some examples of Azure services that impose a file system hierarchy on blob storage:
-
-- [Azure Data Lake Storage Gen2](/azure/storage/blobs/data-lake-storage-namespace)
-- [NFS v3-mounted blob storage](/azure/storage/blobs/network-file-system-protocol-support-how-to)
 
 For more information about using Azure Managed Lustre with hierarchical or non-hierarchical blob containers, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
 
