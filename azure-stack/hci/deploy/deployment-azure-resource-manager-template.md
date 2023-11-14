@@ -33,8 +33,8 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 To authenticate your cluster, you need to create a service principal. You must also assign user access administrator and contributor roles to the service principal. Follow the steps in one of these procedures to create the service principal and assign the roles:
 
-    - [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal).
-    - [ Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+- [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal).
+- [ Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
 ### Create cloud witness storage account
 
