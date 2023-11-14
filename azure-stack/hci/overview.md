@@ -126,7 +126,3 @@ Microsoft recommends purchasing Integrated Systems built by our hardware partner
 Browse the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Stack HCI solutions from Microsoft partners such as ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
 Some Microsoft partners are developing software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Stack HCI](concepts/utility-applications.md).
-
-## Related content
-
-- [Azure Stack HCI foundations learning path](/training/paths/azure-stack-hci-foundations/)
