@@ -1,16 +1,16 @@
 ### YamlMime:Hub
 title: Azure Stack documentation 
-summary: Azure Stack is a family of products including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge. These products, along with other services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+summary: Azure Stack is a family of products including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge. These products, along with other services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
 brand: azure
 
 metadata:
   title: Azure Stack documentation 
-  description: Azure Stack is a family of products including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge. These products, along with other services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
+  description: Azure Stack is a family of products including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge. These products, along with other services such as Azure Kubernetes Service (AKS), allow you to build better solutions and extend Azure to your datacenter or to the edge, processing data closer to the source.
   ms.service: azure-stack
   ms.topic: hub-page
-  author: sethmanheim
-  ms.author: sethm
-  ms.date: 11/17/2022
+  author: ronmiab
+  ms.author: robess
+  ms.date: 11/13/2023
   ms.custom: e2e-hybrid
 
 # highlightedContent section (optional)
@@ -21,10 +21,7 @@ highlightedContent:
     # Card
     - title: Azure Stack family announcement
       itemType: overview
-      url: http://aka.ms/AzsFamAnnounce
-    - title: Azure Stack family of products
-      itemType: overview
-      url: ./operator/compare-azure-azure-stack.md
+      url: http://aka.ms/ashciignite2023
     - title: Azure Stack training
       itemType: learn
       url: https://learn.microsoft.com/training/modules/intro-to-azure-stack/
@@ -39,13 +36,9 @@ productDirectory:
         text: Azure Stack HCI overview
       - url: ./hci/whats-new.md
         text: Azure Stack HCI What's New
-      - url: https://hcicatalog.azurewebsites.net
-        text: Azure Stack HCI Hardware Catalog
-      - url: ./hci/guided-quick-deploy-eval.yml
-        text: Azure Stack HCI Evaluation Guide
-      - url: ./hci/manage/preview-channel.md
-        text: Join preview channel
-      - url: https://azure.microsoft.com/products/azure-stack/hci/
+      - url: ./hci/deploy/deployment-introduction.md
+        text: Try preview version 23H2
+      - url: https://azure.microsoft.com/en-us/pricing/details/azure-stack/hci/
         text: Product information and pricing
   - title: Azure Kubernetes Service (AKS) hybrid deployment options
     imageSrc: media/index/kubernetes-services.svg
@@ -61,14 +54,12 @@ productDirectory:
   - title: Azure Stack Hub 
     imageSrc: media/index/azure-stack-hub-2022.svg
     links:
-      - url: https://azure.microsoft.com/products/azure-stack/hub/#overview
+      - url: ./operator/azure-stack-overview.md
         text: Azure Stack Hub overview
       - url: ./operator/index.yml
         text: Azure Stack Hub Operator documentation
       - url: ./user/index.yml
         text: Azure Stack Hub User documentation
-      - url: ./asdk/index.yml
-        text: Azure Stack Development Kit 
       - url: https://azure.microsoft.com/products/azure-stack/hub/
         text: Product information and pricing            
   - title: Azure Stack Edge
@@ -84,10 +75,3 @@ productDirectory:
         text: Azure Stack Edge Mini R overview                    
       - url: https://azure.microsoft.com/products/azure-stack/edge/
         text: Product information and pricing
-  - title: Hybrid and multicloud resources
-    imageSrc: media/index/hybrid-icon-32.svg
-    links:
-      - url: /hybrid
-        text: Hybrid hub
-      - url: /hybrid/app-solutions/
-        text: Hybrid and multicloud patterns and solutions documentation 
