@@ -23,7 +23,7 @@ This export method is only available when you integrate Azure Blob Storage with 
 
 When you archive files from your Azure Managed Lustre system, not all of the files are copied into the blob container that you specified when you created the file system:
 
-* An archive job only copies new or modified files. If the file that you imported from the blob container during file system creation is unchanged, the archive job doesn't export the file.
+* Archive jobs only copy files that are new or who's contents have been modified. If the file that you imported from the blob container during file system creation is unchanged, the archive job doesn't export the file.
 * Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
 * If you delete a file in the Azure Managed Lustre file system, the archive job doesn't delete the file from the original source.
 
