@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/07/2023
+ms.date: 11/14/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -20,7 +20,7 @@ This article details the prerequisites and preparation required before you use a
 ## Prerequisites
 
 - Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-    - All the mandatory extensions have installed successfully. The mandatory extensions include: Azure Edge Lifecycle Manager, Azure Edge Device Management, Telemetry and Diagnostics, and Microsoft Monitoring Agent.
+    - All the mandatory extensions have installed successfully. The mandatory extensions include: Azure Edge Lifecycle Manager, Azure Edge Device Management, and Telemetry and Diagnostics.
     - All servers are running the same version of OS.
     - All the servers have the same network adapter configuration.
 
@@ -28,6 +28,13 @@ This article details the prerequisites and preparation required before you use a
 ## Prepare Azure resources
 
 Follow these steps to prepare the Azure resources you need for the deployment:
+
+### Create service principal
+
+To authenticate your cluster, you need to create a service principal. You must also assign user access administrator and contributor roles to the service principal. Follow the steps in one of these procedures to create the service principal and assign the roles:
+
+    - [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal).
+    - [ Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
 ### Create cloud witness storage account
 
