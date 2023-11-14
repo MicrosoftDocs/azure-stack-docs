@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/20/2023
+ms.date: 11/14/2023
 ms.custom: "e2e-hybrid, contperf-fy22q1"
 ---
 
@@ -14,33 +14,38 @@ ms.custom: "e2e-hybrid, contperf-fy22q1"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-22h2-21h2.md)]
 
-Azure Stack HCI is a hyperconverged infrastructure (HCI) cluster solution that hosts virtualized Windows and Linux workloads and their storage in a hybrid environment that combines on-premises infrastructure with Azure cloud services.
+Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts Windows and Linux VM or containerized workloads and their storage. It's a hybrid product that connects the on-premises system to Azure for cloud-based services, monitoring, and management.
 
-Azure Stack HCI is [available for download from the Azure portal with a free 60-day trial](deploy/download-azure-stack-hci-software.md). You can either purchase integrated systems from a Microsoft hardware partner with the Azure Stack HCI operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options. Use the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) to estimate the hardware requirements for your Azure Stack HCI solution. This sizing tool is currently in public preview and requires your personal Microsoft account (MSA) credentials (not a corporate account) to sign in.
+## Overview
 
-Azure Stack HCI is intended as a virtualization host, so most apps and server roles must run inside of virtual machines (VMs). Exceptions include Hyper-V, Network Controller, and other components required for Software Defined Networking (SDN) or for the management and health of hosted VMs.
+An Azure Stack HCI system consists of a server or a cluster of servers running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Stack HCI systems as well as view all of your Azure Stack HCI deployments. You can also manage with your existing tools, including Windows Admin Center and PowerShell.
 
-Azure Stack HCI is delivered as an Azure service and [billed to an Azure subscription](concepts/billing.md). Azure hybrid services enhance the cluster with capabilities such as cloud-based monitoring, Site Recovery, and VM backups, as well as a central view of all of your Azure Stack HCI deployments in the Azure portal. You can manage the cluster with your existing tools, including Windows Admin Center and PowerShell.
+Azure Stack HCI is available for download from the Azure portal with a free 60-day trial ([Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)).
+
+To acquire the servers to run Azure Stack HCI, you can purchase Azure Stack HCI integrated systems from a Microsoft hardware partner with the operating system pre-installed, or buy validated nodes and install the operating system yourself.
+
+See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the [Azure Stack HCI sizing tool](https://azurestackhci-webapplication.azurewebsites.net/#/sizer) to estimate hardware requirements.
 
 ## Azure Stack HCI features and architecture
 
-Azure Stack HCI is a world-class, integrated virtualization stack built on proven technologies that have already been deployed at scale, including Hyper-V, Storage Spaces Direct, and Azure-inspired SDN. It's part of the [Azure Stack family](../index.yml), using the same software-defined compute, storage, and networking software as [Azure Stack Hub](https://azure.microsoft.com/products/azure-stack/hub/).
+Azure Stack HCI is built on proven technologies including Hyper-V, Storage Spaces Direct, Azure Kubernetes Service (AKS), and Azure-inspired software defined networking (SDN).
 
-Each Azure Stack HCI cluster consists of between 1 and 16 physical, validated servers. All clustered servers, including single server, share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
+Each Azure Stack HCI system consists of between 1 and 16 physical servers. All servers share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
 Azure Stack HCI combines the following:
 
 - Azure Stack HCI operating system
-- Validated hardware from an OEM partner
-- Azure hybrid services
-- Windows Admin Center
+- Validated hardware from a hardware partner
+- Azure services including monitoring and management
+- Windows Admin Center for management via Azure and on-premises
 - Hyper-V-based compute resources
 - Storage Spaces Direct-based virtualized storage
 - SDN-based virtualized networking using Network Controller (optional)
+- Azure Kubernetes Service (AKS) hybrid (optional)
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The Azure Stack HCI OS runs on top of validated hardware, is managed by Windows Admin Center, and connects to Azure" border="false":::
 
-Using Azure Stack HCI and Windows Admin Center, you can create a hyperconverged cluster that's easy to manage and uses Storage Spaces Direct for superior storage price-performance. This includes the option to stretch the cluster across sites and use automatic failover. See [What's new in Azure Stack HCI, version 22H2](whats-new.md) for details on the latest functionality enhancements.
+See [What's new in Azure Stack HCI](whats-new.md) for details on the latest enhancements.
 
 ## Why Azure Stack HCI?
 
@@ -121,11 +126,6 @@ Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure
 
 Some Microsoft partners are developing software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Stack HCI](concepts/utility-applications.md).
 
-## Next steps
+## Related content
 
-- [Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)
-- [Create an Azure Stack HCI cluster and register it with Azure](deploy/deployment-quickstart.md)
-- [Monitor Azure Stack HCI clusters from Windows Admin Center](./manage/monitor-cluster.md)
-- [Compare Azure Stack HCI to Windows Server](concepts/compare-windows-server.md)
-- [Compare Azure Stack HCI to Azure Stack Hub](concepts/compare-azure-stack-hub.md)
 - [Azure Stack HCI foundations learning path](/training/paths/azure-stack-hci-foundations/)
