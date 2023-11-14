@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal (preview)
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/09/2023
+ms.date: 11/14/2023
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -178,6 +178,29 @@ To confirm that the system and all of its Azure resources were successfully depl
 | 1 per workload volume | Azure Stack HCI storage path - Azure Arc |
 
 \* Extra storage accounts may be created by this preview release. Normally there would be one storage account created for the key vault and one for audit logs, which is a locally redundant storage (LRS) account with a lock placed on it.
+
+## Post deployment tasks
+
+
+Remote Desktop Protocol(RDP) and the **Administrator** user is disabled after the deployment on Azure Stack HCI systems. You may need to connect to the system via RDP to deploy workloads.
+
+Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
+
+1. Run PowerShell as administrator on your management PC.
+1. Connect to your Azure Stack HCI system via a remote PowerShell session.
+    
+    ```powershell
+    $ip="<IP address of the Azure Stack HCI server>"
+    Enter-PSSession -ComputerName $ip -Credential get-Credential
+    ```
+
+1. Enable RDP.
+
+    ```powershell
+    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
+    Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+    ```
+
 
 ## Next steps
 
