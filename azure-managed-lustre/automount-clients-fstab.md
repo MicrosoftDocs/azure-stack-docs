@@ -63,7 +63,7 @@ Mount options can be included in the fstab line. Each value is comma-separated. 
 | flock | Mounts your file system with file locking enabled. If you don't want file locking enabled, remove this mount option. |
 | _netdev | The value tells the operating system that the file system resides on a device that requires network access. This option prevents the instance from mounting the file system until the network is enabled on the client. |
 | x-systemd.automount | Helps ensure that the auto mounter doesn't run until the network connectivity is online.  This option is used with x-systemd.requires=netowrk.service|
-| x-systemd.requires=network.service | Helps ensure that the auto mounter doesn't run until the network connectivity is online. This option is used with x-systemd.automount |
+| x-systemd.requires=network.service | Helps ensure that the auto mounter doesn't run until the network connectivity is online. This option is used with x-systemd.automount. Note: network.service may not be known to all distros, which may cause issues with other filesystems. This may be excluded from the fstab line if it is causing problems.|
 
 ## Conclusion
 
