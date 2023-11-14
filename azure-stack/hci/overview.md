@@ -82,7 +82,7 @@ For an end-to-end example of using Microsoft Azure to manage apps and infrastruc
 
 Using a fictional customer, inspired directly by real customers, you will see how to deploy Kubernetes, set up GitOps, deploy VMs, use Azure Monitor and drill into a hardware failure, all without leaving the Azure portal.
 
-> [!VIDEO https://www.youtube.com/embed/2gKx3IySlAY]
+> [!VIDEO https://www.youtube.com/embed/t81MNUjAnEQ]
 
 This video includes preview functionality which shows real product functionality, but in a closely controlled environment.
 
