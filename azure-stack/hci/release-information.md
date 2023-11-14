@@ -28,7 +28,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 22H2        | 2022-10-25            | 20349.1194        | 2023-04-25               |
 | 21H2        | 2021-10-19            | 20348.288         | 2022-04-19               |
 
-## Azure Stack HCI, version 23H2 (OS build 25398)  (preview)
+## Azure Stack HCI, version 23H2 (OS build 25398) (preview)
 
 The following are the available updates for Azure Stack HCI, version 23H2.
 
