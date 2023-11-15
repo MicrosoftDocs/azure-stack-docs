@@ -58,15 +58,15 @@ The following image shows typical output when checking for required prerequisite
 
 Follow these instructions to turn on legacy OS support for Azure VM verification:
 
-- Using Windows Admin Center: [Manage legacy OS support using Windows Admin Center](../deploy/azure-verification.md#1-turn-on-legacy-os-support-on-the-host).
-- Using PowerShell: [Manage legacy OS support using PowerShell](../deploy/azure-verification.md#1-turn-on-legacy-os-support-on-the-host-1).
+- Using Windows Admin Center: [Manage legacy OS support using Windows Admin Center](../deploy/azure-verification.md?tabs=wac#1-turn-on-legacy-os-support-on-the-host).
+- Using PowerShell: [Manage legacy OS support using PowerShell](../deploy/azure-verification.md?tabs=azure-ps#1-turn-on-legacy-os-support-on-the-host-1).
 
 ### Step 2: Enable access for new VMs
 
 You must also enable legacy OS support access for each VM that requires ESU. Follow these instructions:
 
-- Using Windows Admin Center: [Manage legacy OS support access for your VMs - Windows Admin Center](../deploy/azure-verification.md#2-enable-access-for-new-vms). Check that your ESU VMs appear as **Active** in the **VM** tab.
-- Using PowerShell: [Manage legacy OS support access for your VMs - PowerShell](../deploy/azure-verification.md#2-enable-access-for-vms).
+- Using Windows Admin Center: [Manage legacy OS support access for your VMs - Windows Admin Center](../deploy/azure-verification.md?tabs=wac#2-enable-access-for-new-vms). Check that your ESU VMs appear as **Active** in the **VM** tab.
+- Using PowerShell: [Manage legacy OS support access for your VMs - PowerShell](../deploy/azure-verification.md&tabs=azure-ps#2-enable-access-for-vms).
 
 ### Step 3: Install Extended Security Updates
 
