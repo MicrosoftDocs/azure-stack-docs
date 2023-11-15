@@ -1,6 +1,6 @@
 ---
-title: Azure Stack HCI release information (preview)
-description: This article provides a list of the Azure Stack HCI releases, including monthly updates, and corresponding OS builds (preview).
+title: Azure Stack HCI release information
+description: This article provides a list of the Azure Stack HCI releases, including monthly updates, and corresponding OS builds.
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 11/14/2023
 ---
 
-# Azure Stack HCI release information (preview)
+# Azure Stack HCI release information
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-21h2.md)]
 
