@@ -549,7 +549,7 @@
     - name: Azure Stack Hub User 
       href: ../user/index.yml
     - name: Azure Stack PowerShell
-      href: /powershell/azure/azure-stack/overview
+      href: /powershell/azurestackhub/overview
   - name: Resources
     items:
     - name: Training and certification
@@ -859,7 +859,7 @@
   - name: Reference
     items:
     - name: Azure Stack PowerShell
-      href: /powershell/azure/azure-stack/overview
+      href: /powershell/azurestackhub/overview
     - name: Alerts aka.ms link reference
       href: operator/aks-refer-table-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: REST API Browser
