@@ -395,6 +395,13 @@
       href: concepts/telemetry-and-diagnostics-overview.md
     href: manage/arc-extension-management.md
 
+- name: Migrate
+  items:
+  - name: Cluster to same hardware
+    href: migrate/migrate-cluster-same-hardware.md
+  - name: Cluster to new hardware
+    href: migrate/migrate-cluster-new-hardware.md
+    
 - name: Troubleshooting
   items:
   - name: Troubleshoot cluster registration
