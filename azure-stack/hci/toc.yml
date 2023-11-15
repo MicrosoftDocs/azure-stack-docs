@@ -123,11 +123,11 @@
             href: manage/repair-server.md
     - name: Monitor
       items:
-        - name: Alerts via Azure monitor
+        - name: Health alerts
           href: manage/health-alerts-via-azure-monitor-alerts.md
-        - name: Via Azure Monitor Metrics
+        - name: Metrics
           href: manage/monitor-cluster-with-metrics.md
-        - name: Features via workbooks
+        - name: Features
           href: manage/monitor-features.md
     - name: Troubleshoot
       items:
