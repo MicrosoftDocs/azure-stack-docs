@@ -74,7 +74,7 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): all servers must be online and registered to Azure.
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - Update your VMs: see [version requirements for workloads](#benefits-available-on-azure-stack-hci).
-- Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](#troubleshoot-vms) or for [PowerShell](#troubleshoot-vms-1).
+- Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](/azure-stack/hci/deploy/azure-verification?tabs=wac#troubleshoot-vms) or for [PowerShell](/azure-stack/hci/deploy/azure-verification?tabs=azure-ps#troubleshoot-vms).
 - (optional) If you are using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
