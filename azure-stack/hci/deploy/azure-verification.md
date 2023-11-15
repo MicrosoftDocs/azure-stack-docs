@@ -7,8 +7,8 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/13/2023
-ms.lastreviewed: 11/13/2023
+ms.date: 11/15/2023
+ms.lastreviewed: 11/15/2023
 ---
 
 # Azure verification for VMs
