@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2306.4 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2306.4 Supplemental Package (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 10/09/2023
+ms.date: 11/15/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
