@@ -1095,6 +1095,11 @@
       "source_path": "azure-stack/hci/update/update-azure-stack-hci-solution-23h2.md",
       "redirect_url": "/azure-stack/hci/update/whats-the-lifecycle-manager-23h2",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/index-23h2.yml",
+      "redirect_url": "/azure-stack/hci/index",
+      "redirect_document_id": false
     }
   ]
   
