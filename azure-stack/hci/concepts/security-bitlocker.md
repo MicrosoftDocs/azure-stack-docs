@@ -19,7 +19,10 @@ This article describes the BitLocker encryption enabled on Azure Stack HCI and t
 
 ## About BitLocker encryption
 
-On your Azure Stack HCI cluster, all the data-at-rest is encrypted via BitLocker XTS-AES 256-bit encryption. When you deploy your Azure Stack HCI cluster, you have the option to modify the associated security settings. By default, the data-at-rest encryption is enabled on your data volumes. We recommend that you accept the default setting.
+On your Azure Stack HCI cluster, all the data-at-rest is encrypted via BitLocker XTS-AES 256-bit encryption. When you deploy your Azure Stack HCI cluster, you have the option to modify the associated security settings. By default, the data-at-rest encryption is enabled on your data volumes created durign deployment. We recommend that you accept the default setting.
+
+> [!NOTE]
+> Cluster Shared Volumes created after deployment might need to be encrypted. Use the Powershell cmdlets to [Enable Bitlocker on newly created volumes](#manage-bitlocker-encryption).
 
 Once Azure Stack HCI is successfully deployed, you can retrieve the BitLocker recovery keys. We recommend that you store the BitLocker keys in a secure location outside of the system. The recovery keys help you recover the local data if a system is restored from a backup image.
 
@@ -36,7 +39,7 @@ The following cmdlet properties are for BitLocker module: *AzureStackBitLockerAg
 
 - `Get-ASBitLocker` - Scope <Local | PerNode | AllNodes | Cluster>
      - **Local** - Provides BitLocker volume details for the local node. Can be run in a regular remote PowerShell session.
-     - **PerNode** - Provides BitLocker volume details per node. Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+     - **PerNode** - Provides BitLocker volume details per node. Requires CredSSP (when using remote PowerShell) or Console session (RDP).
  - `Enable-ASBitLocker` - Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
  - `Disable-ASBitLocker` - Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
 
