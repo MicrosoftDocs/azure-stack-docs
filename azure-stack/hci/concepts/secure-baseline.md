@@ -104,8 +104,8 @@ The following cmdlet properties are for module *AzureStackOSConfigAgent*.
   - **Local** - Provides boolean value (true/False) on local node. Can be run on a regular remote PowerShell session.
   - **PerNode** - Provides boolean value (true/False) per node.
   - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
-    AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
-    Cluster  –Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either Remote PowerShell session with CredSSP authentication or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+    AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP (when using remote PowerShell) or Console session (RDP).
+    Cluster  –Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either CredSSP (when using remote PowerShell) or Console session (RDP).
   - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
     - Credential Guard
     - Drift Control
@@ -118,8 +118,7 @@ The following cmdlet properties are for module *AzureStackOSConfigAgent*.
 
 |Name |Feature |Supports drift control |Reboot required |
 |-----|--------|-----------------------|----------------|
-|Enable <br> |VBS     |Yes   |Yes |
-|Enable <br> Disable |HVCI |Yes |Yes |
+|Enable <br> |Virtualization Bsed Security (VBS) |Yes   |Yes |
 |Enable <br> Disable |Dynamic Root of Trust for Measurement (DRTM) |Yes |Yes |
 |Enable <br> Disable |Hypervisor-protected Code Integrity (HVCI) |Yes |Yes |
 |Enable <br> Disable |Side channel mitigation |Yes |Yes |
