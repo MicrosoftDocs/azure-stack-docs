@@ -37,7 +37,7 @@ For more information, see [Deploy Azure Stack HCI cluster using the Azure portal
 
 This new release has the infrastructure to consolidate all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool. Alternatively, you can apply the updates using the PowerShell.
 
-For more information, see [Update your Azure Stack HCI cluster via the Azure Update Manager](./update/update/azure-update-manager-23h2.md) and [Update your Azure Stack HCI via the PowerShell](./update/update-via-powershell-23h2.md).​
+For more information, see [Update your Azure Stack HCI cluster via the Azure Update Manager](./update/azure-update-manager-23h2.md) and [Update your Azure Stack HCI via the PowerShell](./update/update-via-powershell-23h2.md).​
 
 ## Cloud-based monitoring
 
