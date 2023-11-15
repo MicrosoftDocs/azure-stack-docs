@@ -610,7 +610,7 @@
         items:
         - name: 2306.4 update release - Current
           href: hci-known-issues-2306-2.md 
-        - name: 2306.2 update release - Current
+        - name: 2306.2 update release
           href: hci-known-issues-2306-2.md 
         - name: 2306.1 update release
           href: hci-known-issues-2306-1.md 
