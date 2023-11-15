@@ -29,7 +29,7 @@ The information in this article describes registering Azure Stack Hub integrated
 
 ::: zone pivot="state-connected"
    > [!Note]
-   > For connected registrations, an Azure Active Directory application and associated service principal is created in the Active Directory directory associated with the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by [unregistering and then re-registering](azure-stack-registration.md#renew-or-change-registration) Azure Stack Hub with Azure.
+   > For connected registrations, a Microsoft Entra application and associated service principal is created in the Active Directory directory associated with the registration. This service principal is used for Azure Stack Hub Marketplace scenarios (to view and download Azure Marketplace items), uploading usage data (if Usage Reporting is enabled), diagnostic log collection, and remote support. Removing or changing this application or service principal results in these scenarios not working and alerts being raised. If it is deleted, then it can be re-created by [unregistering and then re-registering](azure-stack-registration.md#renew-or-change-registration) Azure Stack Hub with Azure.
 ::: zone-end
 
 ::: zone pivot="state-disconnected"
@@ -70,9 +70,9 @@ Before registering Azure Stack Hub with Azure, you must have:
 
 - Registered the Azure Stack Hub resource provider (see the following Register Azure Stack Hub Resource Provider section for details).
 
-After registration, Azure Active Directory (Azure AD) global administrator permission isn't required. However, some operations may require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+After registration, Microsoft Entra Global Administrator permission isn't required. However, some operations may require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
-The user that registers Azure Stack Hub is the owner of the service principal in Azure AD. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they're a global admin, must be added to 'Default Provider Subscription' through 'Access control (IAM)'. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
+The user that registers Azure Stack Hub is the owner of the service principal in Microsoft Entra ID. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they're a global admin, must be added to 'Default Provider Subscription' through 'Access control (IAM)'. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
 
 If you don't have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack Hub incurs no cost on your Azure subscription.
 
@@ -105,7 +105,7 @@ To ensure you're using the latest version, delete any existing versions of the A
 
 ### Determine your billing model
 ::: zone pivot="state-connected"
- A connected deployment allows Azure Stack Hub to connect to the internet, and to Azure. You can also use either Azure AD or Active Directory Federation Services (AD FS) as your identity store, and choose from two billing models: pay-as-you-use or capacity-based. You specify the billing model later, while running the registration script.
+ A connected deployment allows Azure Stack Hub to connect to the internet, and to Azure. You can also use either Microsoft Entra ID or Active Directory Federation Services (AD FS) as your identity store, and choose from two billing models: pay-as-you-use or capacity-based. You specify the billing model later, while running the registration script.
 ::: zone-end
 
 ::: zone pivot="state-disconnected"

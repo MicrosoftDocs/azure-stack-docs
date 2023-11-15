@@ -46,9 +46,11 @@ Export and then import the Azure Stack Hub certificate for disconnected integrat
 
 ## Connect with Azure CLI
 
-### [Azure AD on Windows](#tab/ad-win)
+<a name='azure-ad-on-windows'></a>
 
-This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Windows machine.
+### [Microsoft Entra ID on Windows](#tab/ad-win)
+
+This section walks you through setting up CLI if you're using Microsoft Entra ID as your identity management service, and are using CLI on a Windows machine.
 
 #### Connect to Azure Stack Hub
 
@@ -247,9 +249,11 @@ If the resource group is created successfully, the previous command outputs the 
 }
 ```
 
-### [Azure AD on Linux](#tab/ad-lin)
+<a name='azure-ad-on-linux'></a>
 
-This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Linux machine.
+### [Microsoft Entra ID on Linux](#tab/ad-lin)
+
+This section walks you through setting up CLI if you're using Microsoft Entra ID as your identity management service, and are using CLI on a Linux machine.
 
 #### Connect to Azure Stack Hub
 
@@ -555,7 +559,7 @@ These are the known Microsoft Graph issues for Azure CLI 2.40.0, or greater, for
 
 The following are issues not limited to specific versions or ranges of versions of Azure CLI.
 
-- `az role assignment create` isn't currently supported by Azure CLI for Azure Stack Hub due to an old API issue. The following workaround is required for both Azure AD or ADFS.
+- `az role assignment create` isn't currently supported by Azure CLI for Azure Stack Hub due to an old API issue. The following workaround is required for both Microsoft Entra ID or ADFS.
   ```powershell
   # First, sign into account with access to the resource that is being given access or a role to another user.
   # TODO: change the principal name to name of principal you want to assign the role to.

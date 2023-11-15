@@ -96,8 +96,8 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 
 ### Portal shows "Unidentified User" instead of user email
 
-- Applicable: This issue applies to all systems with hotfix version 1.2108.2.81 that are using an Azure AD account without an email address in the account profile.
-- Remediation: Sign in to the Azure portal, and add an email address to the Azure AD account that is experiencing this issue.
+- Applicable: This issue applies to all systems with hotfix version 1.2108.2.81 that are using a Microsoft Entra account without an email address in the account profile.
+- Remediation: Sign in to the Azure portal, and add an email address to the Microsoft Entra account that is experiencing this issue.
 - Occurrence: Common
 
 ### Public IP and Load Balancer blades display a banner that recommends upgrading from Basic to Standard SKU
@@ -748,7 +748,7 @@ For known Azure Stack Hub update issues, see [Troubleshooting Updates in Azure S
 ### Upload blob option unsupported
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack Hub.
+- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **Microsoft Entra ID** or **Key Authentication**, however **Microsoft Entra ID** is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Alert for network interface disconnected

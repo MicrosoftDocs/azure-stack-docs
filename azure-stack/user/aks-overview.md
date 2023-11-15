@@ -56,7 +56,7 @@ The following table provides an overview of features of AKS in global Azure comp
 | Access Security              |                                                     |           |         |
 |                              | Kubernetes RBAC                                     | Yes       | Yes     |
 |                              | Security Center Integration                         | Yes       | Yes     |
-|                              | Azure AD Auth/RBAC                                  | Yes       | No      |
+|                              | Microsoft Entra auth/RBAC                                  | Yes       | No      |
 |                              | Calico Network Policy                               | Yes       | No      |
 | Monitoring & Logging         |                                                     |           |         |
 |                              | Integrated Azure Monitoring (Insights, Logs, Metrics, Alerts) | Yes       | No     |
@@ -111,11 +111,11 @@ In both scenarios, Azure Stack Hub is under the control of the customer. Also, c
 
 ### Connect to Azure Stack Hub using the CLI or PowerShell
 
-When you use the Azure CLI to connect to Azure, the CLI binary will default to using Azure Active Directory (Azure AD) for authentication and the global Azure Resource Manager endpoint for APIs. You can use also use Azure CLI with Azure Stack Hub. However, you will need to explicitly connect to the Azure Stack Hub Azure Resource Manager endpoint and use either Azure AD or Active Directory Federated Services (AD FS) for authentication. The reason is that Azure Stack Hub is meant to work within enterprises, and they may choose AD FS in disconnected scenarios.
+When you use the Azure CLI to connect to Azure, the CLI binary will default to using Microsoft Entra ID for authentication and the global Azure Resource Manager endpoint for APIs. You can use also use Azure CLI with Azure Stack Hub. However, you will need to explicitly connect to the Azure Stack Hub Azure Resource Manager endpoint and use either Microsoft Entra ID or Active Directory Federated Services (AD FS) for authentication. The reason is that Azure Stack Hub is meant to work within enterprises, and they may choose AD FS in disconnected scenarios.
 
-1.  For information on how to connect to Azure Stack Hub using either Azure AD or AD FS identities using PowerShell, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
+1.  For information on how to connect to Azure Stack Hub using either Microsoft Entra ID or AD FS identities using PowerShell, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
-2.  Use [this](azure-stack-version-profiles-azurecli2.md) one for connecting using Azure CLI with either Azure AD or AD FS identities.
+2.  Use [this](azure-stack-version-profiles-azurecli2.md) one for connecting using Azure CLI with either Microsoft Entra ID or AD FS identities.
 
 ### Supported platform features
 
@@ -156,11 +156,13 @@ Given the differences between the two platforms outlined above, the user should 
 | `--load-balancer-sku basic`             | Azure Stack Hub does not support standard load balancer (SLB) yet. |
 | `--location`                            | The location value is specific to the customer's chosen one. |
 
-### Service principals can be provided by Azure AD or AD FS
+<a name='service-principals-can-be-provided-by-azure-ad-or-ad-fs'></a>
 
-Service principals (SPN) are a requirement for creating and managing an AKS cluster. Since Azure Stack Hub can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to Azure Active Directory (Azure AD), therefore Active Directory Federated Services (AD FS) is used. How Azure Stack Hub tenants create SPNs is documented here:
+### Service principals can be provided by Microsoft Entra ID or AD FS
 
-- [Azure AD SPN](../operator/give-app-access-to-resources.md?tabs=az1&az2&pivots=state-connected#overview)
+Service principals (SPN) are a requirement for creating and managing an AKS cluster. Since Azure Stack Hub can be deployed in disconnected mode from the internet, it must have available an alternative Identity manager to Microsoft Entra ID, therefore Active Directory Federated Services (AD FS) is used. How Azure Stack Hub tenants create SPNs is documented here:
+
+- [Microsoft Entra SPN](../operator/give-app-access-to-resources.md?tabs=az1&az2&pivots=state-connected#overview)
 - [AD FS SPN](../operator/give-app-access-to-resources.md?tabs=az1&az2&pivots=state-disconnected#create-app-registration-client-secret-adfs)
 
 ## Next steps

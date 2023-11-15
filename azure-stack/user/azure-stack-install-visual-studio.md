@@ -30,16 +30,18 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 4. Restart the computer after the installation completes.
 
-## Connect to Azure Stack Hub with Azure AD
+<a name='connect-to-azure-stack-hub-with-azure-ad'></a>
+
+## Connect to Azure Stack Hub with Microsoft Entra ID
 
 > [!NOTE]
-> While Azure Stack Hub supports both Visual Studio 2019 and 2022, Cloud Explorer has been deprecated from Visual Studio 2022. Therefore, although both Visual Studio 2019 and 2022 work if you're using Azure AD, if you are using AD FS with Azure Stack Hub (as described in the next section), you must use Visual Studio 2019 or earlier.
+> While Azure Stack Hub supports both Visual Studio 2019 and 2022, Cloud Explorer has been deprecated from Visual Studio 2022. Therefore, although both Visual Studio 2019 and 2022 work if you're using Microsoft Entra ID, if you are using AD FS with Azure Stack Hub (as described in the next section), you must use Visual Studio 2019 or earlier.
 
 1. Launch Visual Studio.
 
 2. From the **View** menu, select **Cloud Explorer**.
 
-3. Select **Manage Accounts**, then in the new pane, sign in with your Azure Active Directory (Azure AD) credentials.  
+3. Select **Manage Accounts**, then in the new pane, sign in with your Microsoft Entra credentials.  
 
     ![Screenshot thas shows Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/sign-in-visual-studio.png)
 

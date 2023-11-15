@@ -44,7 +44,7 @@ Azure Stack Hub has the following resource hierarchy:
 
 Access that you grant at a parent scope is inherited at child scopes. For example:
 
-* You assign the **Reader** role to an Azure AD group at the subscription scope. The members of that group can view every resource group and resource in the subscription.
+* You assign the **Reader** role to a Microsoft Entra group at the subscription scope. The members of that group can view every resource group and resource in the subscription.
 * You assign the **Contributor** role to an app at the resource group scope. The app can manage resources of all types in that resource group, but not other resource groups in the subscription.
 
 ### Assigning roles

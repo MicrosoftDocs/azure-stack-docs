@@ -34,7 +34,7 @@ Running an app under its own identity is preferable to running it under the user
 
 You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. The registration process varies depending on the directory you chose for your Azure Stack Hub instance:
 
-- **Azure Active Directory (Azure AD)**: Azure AD is a multi-tenant, cloud-based, directory and identity management service. You can use Azure AD with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal for Azure AD app registration.
+- **Microsoft Entra ID**: Microsoft Entra ID is a multi-tenant, cloud-based, directory and identity management service. You can use Microsoft Entra ID with a connected Azure Stack Hub instance. The examples presented later will use the Azure portal for Microsoft Entra app registration.
 - **Active Directory Federation Services (AD FS)**: AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack Hub instances. The examples presented later will use Azure Stack Hub PowerShell for AD FS app registration.
 
 After registering the app you learn how to assign it to a role, limiting its resource access.
@@ -45,16 +45,18 @@ After registering the app you learn how to assign it to a role, limiting its res
 
 ::: zone pivot="state-connected"
 
-## Manage an Azure AD app
+<a name='manage-an-azure-ad-app'></a>
 
-If you deployed Azure Stack Hub with Azure AD as your identity management service, you create and manage identities for apps just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
+## Manage a Microsoft Entra app
+
+If you deployed Azure Stack Hub with Microsoft Entra ID as your identity management service, you create and manage identities for apps just like you do for Azure. This section shows you how to perform the steps using the Azure portal. Review [Permissions required for registering an app](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app) before beginning, to make sure you have sufficient permissions to register an app.
 
 ### Create an app registration that uses a client secret credential
 
-In this section, you register your app in your Azure AD tenant using the Azure portal. In following example, you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
+In this section, you register your app in your Microsoft Entra tenant using the Azure portal. In following example, you specify a client secret credential, but the portal also supports X509 certificate-based credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com) using your Azure account.
-2. Select **Azure Active Directory** > **App registrations** > **New registration**.
+2. Select **Microsoft Entra ID** > **App registrations** > **New registration**.
 3. Provide a **name** for the app.
 4. Select the appropriate **Supported account types**.
 5. Under **Redirect URI**, select **Web**  as the app type, and (optionally) specify a redirect URI if your app requires it.
@@ -69,11 +71,13 @@ In this section, you register your app in your Azure AD tenant using the Azure p
 
 Proceed to [Assign a role](#assign-a-role) to learn how to establish role-based access control for the app's identity. 
 
-### Additional Azure AD app management articles
+<a name='additional-azure-ad-app-management-articles'></a>
 
-See the following Azure articles for more details on managing Azure AD apps:
+### Additional Microsoft Entra app management articles
 
-- [More details on registering an Azure AD app](/azure/active-directory/develop/quickstart-register-app), including how to create an app registration that uses a certificate credential.
+See the following Azure articles for more details on managing Microsoft Entra apps:
+
+- [More details on registering a Microsoft Entra app](/azure/active-directory/develop/quickstart-register-app), including how to create an app registration that uses a certificate credential.
 - How to [Remove an app registration](/azure/active-directory/develop/howto-remove-app).
 - How to [Restore or remove a recently deleted app registration](/azure/active-directory/develop/howto-restore-app).
 
@@ -460,7 +464,7 @@ Access to Azure resources by users and apps is authorized through Role-Based Acc
 
 The type of resource you choose also establishes the *access scope* for the app. You can set the access scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an app to the "Reader" role for a resource group, means it can read the resource group and any resources it contains.
 
-1. Sign in to the appropriate portal, based on the directory you specified during Azure Stack Hub installation (the Azure portal for Azure AD, or the Azure Stack Hub user portal for AD FS, for example). In this example, we show a user signed in to the Azure Stack Hub user portal.
+1. Sign in to the appropriate portal, based on the directory you specified during Azure Stack Hub installation (the Azure portal for Microsoft Entra ID, or the Azure Stack Hub user portal for AD FS, for example). In this example, we show a user signed in to the Azure Stack Hub user portal.
 
    > [!NOTE]
    > To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) built-in roles.  
@@ -486,5 +490,5 @@ Now that you've given your app an identity and authorized it for resource access
 ## Next steps
 
 [Manage user permissions](azure-stack-manage-permissions.md)  
-[Azure Active Directory Documentation](/azure/active-directory)  
+[Microsoft Entra Documentation](/azure/active-directory)  
 [Active Directory Federation Services](/windows-server/identity/active-directory-federation-services)

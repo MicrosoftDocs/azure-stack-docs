@@ -206,7 +206,7 @@ When using the SQL and MySQL resource providers with Azure Stack Hub integrated 
 
 |Parameter|Description|Comment|
 |-----|-----|-----|
-|AzureEnvironment|The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Active Directory, **AzureChinaCloud**.|Optional|
+|AzureEnvironment|The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Microsoft Entra deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Microsoft Entra ID, **AzureChinaCloud**.|Optional|
 |AzCredential|Azure Stack Hub service admin account credential. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA).|Mandatory|
 |CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|Mandatory|
 |PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|Mandatory|

@@ -1,17 +1,17 @@
 ---
-title: Use Azure Stack HCI Environment Checker to assess deployment readiness (preview)
-description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI.
+title: Use Azure Stack HCI Environment Checker to assess deployment readiness for Azure Stack HCI, version 23H2 (preview).
+description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI, versions 23H2 (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/30/2023
+ms.date: 11/13/2023
 ---
 
-# Assess your environment for deployment readiness (preview)
+# Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2 (preview)
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-supplemental-package.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
 
@@ -163,7 +163,7 @@ Invoke-AzStackHciConnectivityValidation -Proxy http://proxy.contoso.com:8080 -Pr
 ```
 
 > [!NOTE]
-> The connectivity validator validates general proxy, it doesn’t check if your Azure Stack HCI is configured correctly to use a proxy. For information about how to configure firewalls for Azure Stack HCI, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
+> The connectivity validator validates general proxy, it doesn't check if your Azure Stack HCI is configured correctly to use a proxy. For information about how to configure firewalls for Azure Stack HCI, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
 #### Example 4: Check connectivity and create PowerShell output object
 
@@ -458,8 +458,8 @@ The Arc integration validator helps assess if the Azure Stack HCI cluster satisf
 
 You can use the Arc integration validator to verify the following:
 
-- The Arc resource group doesn’t already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard.
-- One or more nodes are not already Arc-enabled in a different subscription ID or resource group.
+- The Arc resource group doesn't already contain Arc resources with the same names as the nodes in the cluster that you are trying to onboard.
+- One or more nodes aren't already Arc-enabled in a different subscription ID or resource group.
 - The specified Azure region is valid.
 - The resource group limit in the subscription is not reached.
 - The Azure Stack HCI resource count limit in the registration resource group is not reached.

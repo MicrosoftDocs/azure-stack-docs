@@ -1,16 +1,16 @@
 ---
 title: AKS Edge Essentials update
-description: Update your AKS Edge Essentials clusters
+description: Learn how to update your AKS Edge Essentials clusters.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/03/2023
+ms.date: 10/10/2023
 ms.custom: template-how-to
 ---
 
 # Update your AKS Edge Essentials clusters
 
-As newer versions of AKS Edge Essentials are available, you can update your AKS Edge Essentials cluster for the latest features and security improvements. This article describes how to update and upgrade your AKS Edge Essentials devices when fixes and a new version are available.
+As newer versions of AKS Edge Essentials become available, you can update your AKS Edge Essentials cluster to take advantage of the latest features and security improvements. This article describes how to update and upgrade your AKS Edge Essentials devices when fixes and a new version are available.
 
 The AKS Edge Essentials cluster is comprised of two main components that need to be updated. First is the Mariner Linux VM. This virtual machine is installed as a part of the AKS Edge Essentials MSI, and has no package manager, so you can't manually update or change any of the VM components. Instead, the virtual machine is managed with Microsoft Update to keep the components up to date automatically. Second, the Kubernetes platform can be upgraded to stay in sync with the open-source version and the AKS service.  
 
@@ -18,7 +18,7 @@ Microsoft Update reliably updates the AKS Edge Essentials virtual machine. The v
 
 AKS Edge Essentials upgrades are sequential and you must upgrade to every version. To get to the latest version, you must either do a fresh installation using the latest available version, or apply all the previous servicing updates, up to the desired version.
 
-## Step 1: Configure the host machine to receive updates using Microsoft Update
+## Step 1: configure the host machine to receive updates using Microsoft Update
 
 To receive AKS Edge Essentials updates, configure the Windows host to receive updates for other Microsoft products. By default, Microsoft Update is enabled during AKS Edge Essentials installation. If custom configuration is needed after installation, you can turn this option on or off with the following steps:
 
@@ -32,33 +32,33 @@ Microsoft Update in the Windows Update subsystem can now scan for an update for 
 > [!IMPORTANT]
 > Microsoft Update must be enabled on all machines in the cluster.
 
-Once the update is downloaded from either the cloud endpoint or a local WSUS server, it can now be staged and installed on all the nodes on a machine.
+After the update is downloaded from either the cloud endpoint or a local WSUS server, it can be staged and installed on all the nodes on a machine.
 
-## Step 2: Update files on all nodes
+## Step 2: update files on all nodes
 
-First, on all nodes in your cluster, run `Start-AksEdgeUpdate` to install the MSI and other related files:
+On all nodes in your cluster, run `Start-AksEdgeUpdate` to install the MSI and other related files:
 
 ```powershell
 Start-AksEdgeUpdate
 ```
 
-## Step 3: Update the primary control node
+## Step 3: update the primary control node
 
-If you have more than one control nodes in your deployment, first update the primary control node using the following command:
+If you have more than one control node in your deployment, first update the primary control node using the following command:
 
 ```powershell
 Start-AksEdgeControlPlaneUpdate -firstControlPlane $true
 ```
 
-## Step 4: Update the secondary control nodes
+## Step 4: update the secondary control nodes
 
-You can update the other control nodes using the following command:
+You can then update the other control nodes using the following command:
 
 ```powershell
 Start-AksEdgeControlPlaneUpdate -firstControlPlane $false
 ```
 
-## Step 5: Update worker nodes
+## Step 5: update worker nodes
 
 Update the worker nodes in your cluster by running the following command on each of the worker nodes:
 
@@ -88,5 +88,5 @@ This command then triggers the version upgrade.
 
 ## Next steps
 
-* [Overview](aks-edge-overview.md)
-* [Uninstall AKS cluster](aks-edge-howto-uninstall.md)
+- [Overview](aks-edge-overview.md)
+- [Uninstall AKS cluster](aks-edge-howto-uninstall.md)

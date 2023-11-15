@@ -16,7 +16,7 @@ ms.lastreviewed: 05/10/2019
 
 # Integrate AD FS identity with your Azure Stack Hub datacenter
 
-You can deploy Azure Stack Hub using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as the identity provider. The choice must be made before you deploy Azure Stack Hub. In a connected scenario, you can choose Azure AD or AD FS. For a disconnected scenario, only AD FS is supported. This article shows how to integrate Azure Stack Hub AD FS with your datacenter AD FS.
+You can deploy Azure Stack Hub using Microsoft Entra ID or Active Directory Federation Services (AD FS) as the identity provider. The choice must be made before you deploy Azure Stack Hub. In a connected scenario, you can choose Microsoft Entra ID or AD FS. For a disconnected scenario, only AD FS is supported. This article shows how to integrate Azure Stack Hub AD FS with your datacenter AD FS.
 
 > [!IMPORTANT]
 > You can't switch the identity provider without redeploying the entire Azure Stack Hub solution.

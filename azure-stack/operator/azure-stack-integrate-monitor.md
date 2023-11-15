@@ -43,7 +43,7 @@ You can use Operations Manager for external monitoring of Azure Stack Hub. The S
 The management pack for Azure Stack Hub provides the following capabilities:
 
 - You can manage multiple Azure Stack Hub deployments.
-- There's support for Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS).
+- There's support for Microsoft Entra ID and Active Directory Federation Services (AD FS).
 - You can retrieve and close alerts.
 - There's a health and a capacity dashboard.
 - Includes Auto Maintenance Mode detection for when patch and update (P&U) is in progress.
@@ -67,7 +67,7 @@ A Nagios monitoring plugin was developed together with partner Cloudbase Solutio
 
 The plugin is written in Python and leverages the health resource provider REST API. It offers basic functionality to retrieve and close alerts in Azure Stack Hub. Like the System Center management pack, it enables you to add multiple Azure Stack Hub deployments and to send notifications.
 
-With Version 1.2 the Azure Stack Hub - Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack Hub deployments using Azure AD and AD FS as the identity system.
+With Version 1.2 the Azure Stack Hub - Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack Hub deployments using Microsoft Entra ID and AD FS as the identity system.
 
 > [!IMPORTANT]
 > AD FS only supports interactive sign-in sessions. If you require a non-interactive sign-in for an automated scenario, you must use a SPN.
@@ -78,7 +78,7 @@ The plugin works with Nagios 4x and XI. To download the plugin, see [Monitoring 
 
 1. Minimum Nagios Version is 4.x
 
-2. Microsoft Azure Active Directory Python library. This library can be installed using Python PIP.
+2. Microsoft Entra Python library. This library can be installed using Python PIP.
 
     ```bash  
     sudo pip install adal pyyaml six

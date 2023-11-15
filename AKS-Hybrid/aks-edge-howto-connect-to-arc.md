@@ -42,9 +42,9 @@ Provide details of your Azure subscription in the **aksedge-config.json** file u
 |`ClusterName` | string | Provide a name for your cluster. The default value is `hostname_cluster`. |
 |`Location` | string | The location of your resource group. Choose the location closest to your deployment. |
 |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy/paste the subscription ID string into the JSON. |
-|`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the **Default Directory** page. From here, you can copy/paste the tenant ID string into the JSON. |
+|`TenantId` | GUID | Your tenant ID. In the Azure portal, search Microsoft Entra ID, which should take you to the **Default Directory** page. From here, you can copy/paste the tenant ID string into the JSON. |
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge Essentials. You can use an existing resource group, or if you add a new name, the system creates one for you. |
-|`ClientId` | GUID | Provide the application ID of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use the **App Registrations** page in the Azure Active Directory resource page on the Azure portal, to list and manage the service principals in a tenant.|
+|`ClientId` | GUID | Provide the application ID of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use the **App Registrations** page in the Microsoft Entra resource page on the Azure portal, to list and manage the service principals in a tenant.|
 |`ClientSecret` | string | Provide the password for the service principal. |
 
 > [!NOTE]

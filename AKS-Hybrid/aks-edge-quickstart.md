@@ -20,7 +20,7 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 - Get your Azure subscription parameters: for connecting your cluster to Azure Arc, you must provide these parameters. If you skip these parameters, the Arc connection is skipped, but the cluster is still deployed.
   - Your **login credentials**: Required for interactive login into Azure using Azure CLI. Your account should have one of these roles `Owner` or `Contributor` or `Administrator`.
   - Your **Subscription ID** `<subscription-id>`: In the Azure portal, select the subscription you're using and look for the subscription ID (GUID).
-  - Your **Tenant ID** `<tenant-id>`: In the Azure portal, search Azure Active Directory, which should take you to the **Default Directory** page. Look for the tenant ID (GUID).
+  - Your **Tenant ID** `<tenant-id>`: In the Azure portal, search Microsoft Entra ID, which should take you to the **Default Directory** page. Look for the tenant ID (GUID).
   - The **Location (Azure region)** `<location>`: Where you want your resources to be created. See [Azure Arc by Region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc) for the locations supported by `Azure Arc enabled servers` and `Azure Arc enabled Kubernetes` services. Choose a region in which both are supported.
 
 ## Step 1: Download script for easy deployment

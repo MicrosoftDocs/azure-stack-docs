@@ -4,7 +4,7 @@ description: Learn how to discover and stream video from your ONVIF cameras with
 author: yujinkim-msft
 ms.author: yujinkim
 ms.topic: how-to
-ms.date: 08/23/2023
+ms.date: 10/17/2023
 ms.custom: template-how-to
 ---
 
@@ -18,80 +18,81 @@ This article describes how you can discover ONVIF cameras that are connected to 
 
 ## Prerequisites
 
-- A [single-machine deployment](aks-edge-howto-single-node-deployment.md) or [full deployment](aks-edge-howto-multi-node-deployment.md) of AKS Edge Essentials up and running (if you're using a real ONVIF IP camera you will have to create a full deployment with an external switch).
+- A [single-machine deployment](aks-edge-howto-single-node-deployment.md) or [full deployment](aks-edge-howto-multi-node-deployment.md) of AKS Edge Essentials up and running (if you're using a real ONVIF IP camera, you must create a full deployment with an external switch).
 - Akri only works on Linux: use Linux nodes for this exercise.
-- An ONVIF IP camera connected to the same network as your external switch cluster, or a mock ONVIF container running (deployment steps below).
+- An ONVIF IP camera connected to the same network as your external switch cluster, or a mock ONVIF container running (deployment steps as follows).
 
 > [!NOTE]
 > This sample ONVIF broker currently does not support connecting to cameras that require authentication. To run this demo, disable authentication on your ONVIF camera.
 
 ### Mock ONVIF container
 
-If you don't have an ONVIF IP camera, you can use our mock ONVIF container for this exercise. This works on both a single-machine or a full deployment.
+If you don't have an ONVIF IP camera, you can use our mock ONVIF container for this exercise. The mock container works on both a single-machine or a full deployment.
 
-1. (Optional) If you want to set up a custom RTSP video feed for your ONVIF container, save your `mp4` video (works best if quality is SD rather than HD), and copy the file from your host machine directory into your Linux node using the following command (make sure to replace the host machine directory and appropriate video file name):
+1. (Optional) If you want to set up a custom RTSP video feed for your ONVIF container, save your **mp4** video (works best if quality is SD rather than HD), and copy the file from your host machine directory into your Linux node using the following command (make sure to replace the host machine directory and appropriate video file name):
 
-    ```powershell
-    Copy-AksEdgeNodeFile -FromFile C:\Users\WinIotUser\Downloads\sample.mp4 -toFile /home/aksedge-user/sample.mp4 -PushFile
-    ```
+   ```powershell
+   Copy-AksEdgeNodeFile -FromFile C:\Users\WinIotUser\Downloads\sample.mp4 -toFile /home/aksedge-user/sample.mp4 -PushFile
+   ```
 
-2. Open an empty YAML file and copy/paste the following contents. Make sure to replace the value after `/mnt/` with your video file name under `MP4FILE`. Save the file as **onvif-mock.yaml**.
+2. Open an empty YAML file and copy/paste the following contents. Make sure to replace the value after `/mnt/` with your video file name under `MP4FILE`. Save the file as **onvif-mock.yaml**:
 
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: onvif-camera-mocking
-    spec:
-      replicas: 1
-      selector:
-        matchLabels:
-          app: onvif-camera-mocking
-      strategy:
-        type: RollingUpdate
-        rollingUpdate:
-          maxSurge: 1
-          maxUnavailable: 1
-      minReadySeconds: 5    
-      template:
-        metadata:
-          labels:
-            app: onvif-camera-mocking
-        spec:
-          nodeSelector:
-            "kubernetes.io/os": linux
-          containers:
-          - name: azure-vote-front
-            image: winiotsaleskit.azurecr.io/onvif-camera-mocking:latest
-            ports:
-            - containerPort: 8554
-            - containerPort: 1000
-            - containerPort: 3702
-            env:
-            - name: INTERFACE
-              value: "eth0"
-            - name: DIRECTORY
-              value: "/onvif-camera-mock"
-            - name: MP4FILE
-              value: /mnt/sample.mp4 
-            volumeMounts:
-            - name: sample-volume
-              mountPath: /mnt
-          volumes:
-          - name: sample-volume
-            hostPath:
-              path: /home/aksedge-user
-              type: Directory
-    ```
+   ```yaml
+   apiVersion: apps/v1
+   kind: Deployment
+   metadata:
+     name: onvif-camera-mocking
+   spec:
+     replicas: 1
+     selector:
+       matchLabels:
+         app: onvif-camera-mocking
+     strategy:
+       type: RollingUpdate
+       rollingUpdate:
+         maxSurge: 1
+         maxUnavailable: 1
+     minReadySeconds: 5    
+     template:
+       metadata:
+         labels:
+           app: onvif-camera-mocking
+       spec:
+         nodeSelector:
+           "kubernetes.io/os": linux
+         containers:
+         - name: azure-vote-front
+           image: winiotsaleskit.azurecr.io/onvif-camera-mocking:latest
+           ports:
+           - containerPort: 8554
+           - containerPort: 1000
+           - containerPort: 3702
+           env:
+           - name: INTERFACE
+             value: "eth0"
+           - name: DIRECTORY
+             value: "/onvif-camera-mock"
+           - name: MP4FILE
+             value: /mnt/sample.mp4 
+           volumeMounts:
+           - name: sample-volume
+             mountPath: /mnt
+         volumes:
+         - name: sample-volume
+           hostPath:
+             path: /home/aksedge-user
+             type: Directory
+   ```
 
 3. Apply the YAML and make sure that the pod is running:
 
-    ```powershell
-    kubectl apply -f onvif-mock.yaml
-    kubectl get pods
-    ```
+   ```powershell
+   kubectl apply -f onvif-mock.yaml
+   kubectl get pods
+   ```
 
 4. To enable the IP rules for this mock ONVIF camera to be discovered:
+
     - If your CNI is Flannel:
 
       ```powershell
@@ -99,6 +100,7 @@ If you don't have an ONVIF IP camera, you can use our mock ONVIF container for t
       ```
 
     - If your CNI is Calico:
+
       1. Find the IP of mock ONVIF container:
 
           ```powershell
@@ -128,17 +130,17 @@ Now you're ready to run Akri and discover the mock ONVIF camera.
 
 ## Run Akri
 
-1. Add the Akri helm charts if you've haven't already:
+1. Add the Akri Helm charts if you've haven't already:
 
-    ```powershell
-    helm repo add akri-helm-charts https://project-akri.github.io/akri/
-    ```
+   ```powershell
+   helm repo add akri-helm-charts https://project-akri.github.io/akri/
+   ```
 
-    If you have already added Akri helm chart previously, update your repo for the latest build:
+   If you have already added Akri helm chart previously, update your repo for the latest build:
 
-    ```powershell
-    helm repo update
-    ```
+   ```powershell
+   helm repo update
+   ```
 
 2. Install Akri using Helm. When installing Akri, specify that you want to deploy the ONVIF discovery handlers by setting the helm value `onvif.discovery.enabled=true`. Also, specify that you want to deploy the ONVIF video broker:  
 
@@ -159,18 +161,18 @@ In order for the AKS Edge Essentials cluster to discover your camera, open the p
 
 1. Run the following command to open `sport 3702` within the Linux node and save the IP tables:
 
-    ```powershell
-    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT"
-    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo sed -i '/-A OUTPUT -j ACCEPT/i-A INPUT -p udp -m udp --sport 3702 -j ACCEPT' /etc/systemd/scripts/ip4save"
-    ```
+   ```powershell
+   Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo iptables -A INPUT -p udp --sport 3702 -j ACCEPT"
+   Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo sed -i '/-A OUTPUT -j ACCEPT/i-A INPUT -p udp -m udp --sport 3702 -j ACCEPT' /etc/systemd/scripts/ip4save"
+   ```
 
 2. Verify that Akri can now discover your camera. You should see one Akri instance for your ONVIF camera:
 
-    ```powershell
-    kubectl get akrii
-    ```
+   ```powershell
+   kubectl get akrii
+   ```
 
-    [![Screenshot showing the Akri instance for the discovered ONVIF camera.](media/aks-edge/akri-onvif-instance-discovered.png)](media/aks-edge/akri-onvif-instance-discovered.png#lightbox)
+   [![Screenshot showing the Akri instance for the discovered ONVIF camera.](media/aks-edge/akri-onvif-instance-discovered.png)](media/aks-edge/akri-onvif-instance-discovered.png#lightbox)
 
 ## Deploy video streaming web application
 
@@ -270,25 +272,25 @@ In order for the AKS Edge Essentials cluster to discover your camera, open the p
 
     [![Screenshot showing the node address and port of the web app service.](media/aks-edge/akri-web-app-address.png)](media/aks-edge/akri-web-app-address.png#lightbox)
 
-6. Now you can view the video footage by navigating to your web application, which is `<NODE IP>:<PORT OF SERVICE>`.
+6. Now you can view the video footage by navigating to your web application, which is `<NODE IP>:<PORT OF SERVICE>`:
 
     [![Screenshot showing livestream footage from IP camera being displayed on web application.](media/aks-edge/akri-video-streaming-app.png)](media/aks-edge/akri-video-streaming-app.png#lightbox)
 
 ## Clean up
 
-1. Delete the video streaming web application.
+1. Delete the video streaming web application:
 
     ```powershell
     kubectl delete -f akri-video-streaming-app.yaml
     ```
 
-2. Uninstall Akri from your cluster.
+2. Uninstall Akri from your cluster:
 
     ```powershell
     helm delete akri
     ```
 
-3. (Optional) If you used the mock ONVIF camera, delete the deployment.
+3. (Optional) If you used the mock ONVIF camera, delete the deployment:
 
     ```powershell
     kubectl delete -f onvif-mock.yaml

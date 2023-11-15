@@ -3,9 +3,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 01/05/2023
+ms.date: 10/13/2023
 ms.reviewer: kalkeea
-ms.lastreviewed: 01/05/2023
+ms.lastreviewed: 10/13/2023
 ---
 <!-- TODO - For each release: add AzS Hub build number, Event Hubs RP version number, & corresponding Event Hubs release notes text/link -->
 > [!IMPORTANT]
@@ -13,15 +13,12 @@ ms.lastreviewed: 01/05/2023
 >
 > | Supported Azure Stack Hub version(s) | Event Hubs RP release |
 > |-----|---|
+> | 2306 and higher | 1.2102.4.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-40.md) |
 > | 2206 and higher | 1.2102.3.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-30.md) |
 > | 2206 and higher | 1.2102.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-20.md) |
 > | 2108 and higher | 1.2102.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-20.md) |
-> | 2102 and higher | 1.2102.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-20.md) |
-> | 2102 and higher | 1.2102.1.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-10.md) |
-> | 2102 and higher | 1.2102.0.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-00.md) |
 > 
 > If you've installed a preview version not listed above, upgrading to one of the versions above is also recommended.
 
 > [!WARNING]
-> Failure to rotate secrets on a regular basis can result in your [data plane clusters entering an unhealthy state](#data-plane-clusters-are-in-an-unhealthy-state-with-all-nodes-in-warning-state), and possibly redeployment of the Event Hubs on Azure Stack Hub resource provider. As such, it is *critical* that you proactively [rotate the secrets used by Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-rotate-secrets.md). **Secrets should be rotated after completing an install/update to a new release, and on a regular basis, ideally every 6 months.** 
-> Proactive rotation is required as secret expiration [does not trigger administrative alerts](#secret-expiration-doesnt-trigger-an-alert). 
+> Failure to rotate secrets on a regular basis can result in your [data plane clusters entering an unhealthy state](#data-plane-clusters-are-in-an-unhealthy-state-with-all-nodes-in-warning-state), and possibly redeployment of the Event Hubs on Azure Stack Hub resource provider. As such, it is *critical* that you proactively [rotate the secrets used by Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-rotate-secrets.md). **Secrets should be rotated after completing an install/update to a new release, and on a regular basis, ideally every 6 months.**

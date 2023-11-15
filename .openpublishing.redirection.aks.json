@@ -1269,7 +1269,27 @@
         "source_path": "AKS-Hybrid/secure-communication.md",
         "redirect_url": "/azure/aks/hybrid/certificates-overview",
         "redirect_document_id": false
-      }     
+      },     
+      {
+        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-1.md",
+        "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
+        "redirect_document_id": false
+      },           
+      {
+        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-2a.md",
+        "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
+        "redirect_document_id": false
+      },                 
+      {
+        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-2b.md",
+        "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
+        "redirect_document_id": false
+      },                 
+      {
+        "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-3.md",
+        "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
+        "redirect_document_id": false
+      }      
     ]
   }
   

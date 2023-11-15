@@ -126,7 +126,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
       If you'll be using Velero to back up multiple clusters with multiple blob containers, you may want to create a unique username for each cluster instead of using the name `velero`.
 
-      To create a service principal with the Contributor role, use the following command. Substitute your own subscription ID and, optionally, your own service principal name. Azure Active Directory (Azure AD) will generate a secret for you.
+      To create a service principal with the Contributor role, use the following command. Substitute your own subscription ID and, optionally, your own service principal name. Microsoft Entra ID will generate a secret for you.
 
       ```azurecli
       $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID)
@@ -140,7 +140,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
         $AZURE_CLIENT_SECRET=(az ad sp create-for-rbac --name "velero" --role "Contributor" --query 'password' -o tsv --scopes  /subscriptions/$AZURE_SUBSCRIPTION_ID /subscriptions/$AZURE_BACKUP_SUBSCRIPTION_ID)
         ```
 
-      - If you don't want to use `velero` as your service principal name, make sure the `--name` you choose is unique in Azure Active Directory (Azure AD) and doesn't conflict with other service principals or app registrations.
+      - If you don't want to use `velero` as your service principal name, make sure the `--name` you choose is unique in Microsoft Entra ID and doesn't conflict with other service principals or app registrations.
 
       > [!IMPORTANT]
       > The secret is shown only during this step, when the service principal is created. Be sure to make a note of the secret for use in future steps.

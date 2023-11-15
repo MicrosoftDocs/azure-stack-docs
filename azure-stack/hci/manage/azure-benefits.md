@@ -7,13 +7,16 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 01/25/2023
-ms.lastreviewed: 03/21/2022
+ms.date: 11/13/2023
+ms.lastreviewed: 11/13/2023
 ---
 
 # Azure Benefits on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+
+> [!NOTE]
+> This article is for Azure Stack HCI version 22H2 and earlier only. For version 23H2 and later, see the documentation for [Azure verification for VMs](../deploy/azure-verification.md).
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
@@ -74,6 +77,9 @@ Before you begin, you'll need the following prerequisites:
   - Windows Admin Center (version 2103 or later) with Cluster Manager extension (version 2.41.0 or later).
 
 You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, PowerShell, Azure CLI, or Azure portal. The following sections describe each option.
+
+> [!NOTE]
+> To successfully enable Azure Benefits on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
 
 ## Manage Azure Benefits
 

@@ -59,7 +59,7 @@ You can set up your AKS cluster in the following way, to run AKS on a single nod
 
 | Cluster type  | Control plane VM size | Worker node | For update operations | Load balancer  |
 | ------------- | ------------------ | ---------- | ----------| -------------|
-| AKS Host | Standard_A4_v2 VM size = 8GB |  NA - AKS host does not have worker nodes  |  8GB |  NA - AKS host uses kubevip for load balancing  |
+| AKS Host | Standard_A4_v2 VM size = 8GB |  NA - AKS host doesn't have worker nodes  |  8GB |  NA - AKS host uses kubevip for load balancing  |
 | Workload cluster  |  Standard_A4_v2 VM size = 8GB | Standard_K8S3_v1 for 1 worker node = 6GB | Can re-use the 8GB reserved above for workload cluster upgrade | NA if kubevip is used for load balancing (instead of the default HAProxy load balancer) |
 **Total minimum requirement** | **30GB RAM**
 
@@ -74,11 +74,11 @@ Keep in mind that the above minimum requirement is for an AKS-HCI deployment wit
 | Windows Server failover cluster | 32 | 256 GB |
 | Single node Windows Server | 16 | 128 GB
 
-For a production environment final sizing will depend on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single node Windows Server, you will not get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
+For a production environment final sizing will depend on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single node Windows Server, you won't get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
 
 Other compute requirements for AKS on Azure Stack HCI and Windows Server are in line with Azure Stack HCI's requirements. Visit [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements#server-requirements) for more details on Azure Stack HCI server requirements.
 
-You must install the same operating system on each server in the cluster. If you are using Azure Stack HCI, the same OS and version must be on same on each server in the cluster. If you are using Windows Server Datacenter the same OS and version must be the same on each server in the cluster. Each OS must use the `EN-US` region and language selections. You can't change these settings after installation.
+You must install the same operating system on each server in the cluster. If you're using Azure Stack HCI, the same OS and version must be on same on each server in the cluster. If you're using Windows Server Datacenter the same OS and version must be the same on each server in the cluster. Each OS must use the `EN-US` region and language selections. You can't change these settings after installation.
 
 ## Storage requirements
 
@@ -96,11 +96,11 @@ For an Azure Stack HCI or Windows Server cluster, you've two supported storage c
 
 Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. You can read more about the recommended drive configurations in the [Azure Stack HCI documentation](/azure-stack/hci/concepts/choose-drives). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of the two supported storage configurations above.
 
-Kuberentes uses etcd to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information you, [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
+Kubernetes uses etcd to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information you, [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
 
-For a Windows Server Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage may not deliver the required levels of performance to run multiple virtual machine workloads, and you may see performance issues and timeouts.
+For a Windows Server Datacenter-based cluster, you can either deploy with local storage or SAN-based storage. For local storage, it's recommended to use the built-in [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview), or an equivalent certified virtual SAN solution to create a hyperconverged infrastructure that presents Cluster Shared Volumes for use by workloads. For Storage Spaces Direct, it's required that your storage either be hybrid (flash + HDD) that balances performance and capacity, or all-flash (SSD, NVMe) that maximizes performance. If you choose to deploy with SAN-based storage, ensure that your SAN storage can deliver enough performance to run several virtual machine workloads. Older HDD-based SAN storage might not deliver the required levels of performance to run multiple virtual machine workloads, and you might see performance issues and timeouts.
 
-For single-node Windows Server deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs may cause deployment issues and timeouts.
+For single-node Windows Server deployments using local storage, the use of all-flash storage (SSD, NVMe) is highly recommended to deliver the required performance to host multiple virtual machines on a single physical host. Without flash storage, the lower levels of performance on HDDs might cause deployment issues and timeouts.
 
 
 ## Network requirements
@@ -196,12 +196,12 @@ Download [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/
 > AKS on Azure Stack HCI and Windows Server stores/processes customer data. By default, customer data stays within the region the customer deploys the service instance in. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
 
 #### Additional URL requirements for Azure Arc features
-The above URL list covers the minimum required URLs for you to connect your AKS on Azure Stack HCI service to Azure for billing. You will have to allow additional URLs if you want to use cluster connect, custom locations, Azure RBAC and other Azure services like Azure Monitor, etc. on your AKS workload cluster. For a complete list of Arc URLs, visit [Azure Arc enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements).
+The above URL list covers the minimum required URLs for you to connect your AKS on Azure Stack HCI service to Azure for billing. You'll have to allow additional URLs if you want to use cluster connect, custom locations, Azure RBAC and other Azure services like Azure Monitor, etc. on your AKS workload cluster. For a complete list of Arc URLs, visit [Azure Arc enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements).
 You should also review [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements). Since Arc for server agents are now installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 onwards, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
 
 #### Stretched clusters in AKS on Azure Stack HCI and AKS on Windows Server
 
-As outlined in the [Stretched clusters overview](/azure-stack/hci/concepts/stretched-clusters), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters is not supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
+As outlined in the [Stretched clusters overview](/azure-stack/hci/concepts/stretched-clusters), deploying AKS on Azure Stack HCI and Windows Server using Windows stretched clusters isn't supported. We advise that you use a backup and disaster recovery approach for your datacenter operational continuity. For more information, see [Perform workload cluster backup or restore using Velero and Azure Blob storage on Azure Stack HCI and Windows Server](backup-workload-cluster.md), and [Deploy configurations on AksHci using GitOps with Flux v2](https://techcommunity.microsoft.com/t5/azure-stack-blog/deploy-configurations-on-akshci-using-gitops-with-flux-v2/ba-p/3610596) for application continuity.
 
 ## Windows Admin Center requirements
 
@@ -225,16 +225,18 @@ If you don't already have an Azure account, [create one](https://azure.microsoft
 - Subscription obtained through an Enterprise Agreement (EA)
 - Subscription obtained through the Cloud Solution Provider (CSP) program
 
-### Azure AD permissions, role and access level
+<a name='azure-ad-permissions-role-and-access-level'></a>
 
-You must have sufficient permissions to register an application with your Azure AD tenant.
+### Microsoft Entra permissions, role and access level
+
+You must have sufficient permissions to register an application with your Microsoft Entra tenant.
 
 To check that you have sufficient permissions, follow the information below:
-- Go to the Azure portal and select [Roles and administrators](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) under Azure Active Directory to check your role. 
+- Go to the Azure portal and select [Roles and administrators](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RolesAndAdministrators) under Microsoft Entra ID to check your role. 
 - If your role is **User**, you must make sure that non-administrators can register applications.
-- To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Azure Active Directory service to check if you have permission to register an application.
+- To check if you can register applications, go to [User settings](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings) under the Microsoft Entra service to check if you have permission to register an application.
 
-If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Azure AD that are given to each role, see [Azure AD built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
+If the app registrations setting is set to **No**, only users with an administrator role may register these types of applications. To learn about the available administrator roles and the specific permissions in Microsoft Entra ID that are given to each role, see [Microsoft Entra built-in roles](/azure/active-directory/roles/permissions-reference#all-roles). If your account is assigned the **User** role, but the app registration setting is limited to admin users, ask your administrator either to assign you one of the administrator roles that can create and manage all aspects of app registrations, or to enable users to register apps.
 
 If you don't have enough permissions to register an application and your admin can't give you these permissions, the easiest way to deploy AKS on Azure Stack HCI and Windows Server is to ask your Azure admin to create a service principal with the right permissions. Admins can check the following section to learn how to create a service principal.
 
@@ -296,7 +298,7 @@ $sp = New-AzADServicePrincipal -role "Owner" -scope /subscriptions/$subscription
 Retrieve the password for the service principal by running the following command. Note that the below command only works for Az.Accounts 2.6.0 or lesser. We automatically download Az.Accounts 2.6.0 module when you install the AksHci PowerShell module.
 
 ```powershell
-$secret = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto([System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret))
+$secret = $sp.PasswordCredentials[0].SecretText
 Write-Host "Application ID: $($sp.ApplicationId)"
 Write-Host "App Secret: $secret"
 ```   

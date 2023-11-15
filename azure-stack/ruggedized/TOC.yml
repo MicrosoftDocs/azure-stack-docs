@@ -9,7 +9,13 @@
     - name: Known issues in Azure Stack Hub ruggedized
       href: known-issues.md
     - name: OEM release notes
-      href: oem-release-notes-rca.md
+      items:
+      - name: Azure Stack Hub Ruggedized
+        href: oem-release-notes-rca.md
+      - name: Azure Stack Hub DC (Preview)
+        href: oem-release-notes-mdcv2.md
+      - name: Azure Stack Hub DC
+        href: oem-release-notes-ashdcv1.md
   - name: Quickstarts
     items:
     - name: Use the administrator portal
@@ -180,7 +186,7 @@
         items:
         - name: Manage RBAC
           href: ../operator/azure-stack-manage-permissions.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        - name: Add users for Azure AD
+        - name: Add users for Microsoft Entra ID
           href: ../operator/azure-stack-add-new-user-aad.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
         - name: Use an app identity to access resources
           href: ../operator/give-app-access-to-resources.md?bc=/azure-stack/breadcrumb/toc.json&toc=/azure-stack/ruggedized/toc.json
@@ -543,7 +549,7 @@
     - name: Azure Stack Hub User 
       href: ../user/index.yml
     - name: Azure Stack PowerShell
-      href: /powershell/azure/azure-stack/overview
+      href: /powershell/azurestackhub/overview
   - name: Resources
     items:
     - name: Training and certification
@@ -778,7 +784,7 @@
             items: 
             - name: Deploy a Kubernetes cluster
               href: ../user/azure-stack-solution-template-kubernetes-deploy.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-            - name: Deploy Kubernetes using Azure AD
+            - name: Deploy Kubernetes using Microsoft Entra ID
               href: ../user/azure-stack-solution-template-kubernetes-azuread.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
             - name: Deploy Kubernetes using AD FS
               href: ../user/azure-stack-solution-template-kubernetes-adfs.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
@@ -816,7 +822,7 @@
           items:
           - name: VNet-to-vnet connectivity with FortiGate
             href: ../user/azure-stack-network-howto-vnet-to-vnet.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
-          - name: Setup VPN to on-prem
+          - name: Setup VPN to on-premises
             href: ../user/azure-stack-network-howto-vnet-to-onprem.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
           - name: VNet to VNet connectivity between Azure Stack Hub instances
             href: ../user/azure-stack-network-howto-vnet-to-vnet-stacks.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
@@ -853,7 +859,7 @@
   - name: Reference
     items:
     - name: Azure Stack PowerShell
-      href: /powershell/azure/azure-stack/overview
+      href: /powershell/azurestackhub/overview
     - name: Alerts aka.ms link reference
       href: operator/aks-refer-table-tzl.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: REST API Browser

@@ -40,7 +40,7 @@ Azure Stack Hub support for ACR compared to ACR on Azure:
 | Docker registry              | Yes          | Yes                       |
 | Helm support                 | Yes          | Yes                       |
 | OCI support                  | Yes          | Yes                       |
-| Identity & Access Management | Azure AD     | Azure AD/AD FS            |
+| Identity & Access Management | Microsoft Entra ID     | Microsoft Entra / AD FS            |
 | RBAC                         | Registry     | Registry                  |
 | Remote Repository (Mirror)   | No           | No                        |
 | OSS Vulnerability Scanning   | Yes          | No                        |

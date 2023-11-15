@@ -1,6 +1,6 @@
 ---
 title: Use Azure RBAC for AKS hybrid clusters (preview)
-description: Use Azure RBAC with Azure Active Directory (Azure AD) to control access to AKS hybrid clusters.
+description: Use Azure RBAC with Microsoft Entra ID to control access to AKS hybrid clusters.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
@@ -17,7 +17,7 @@ ms.lastreviewed: 03/23/2023
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to set up Azure RBAC on an AKS hybrid cluster to use Azure Active Directory (Azure AD) and Azure role assignments for authorization. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
+This article describes how to set up Azure RBAC on an AKS hybrid cluster to use Microsoft Entra ID and Azure role assignments for authorization. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
 
 For a conceptual overview of using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
 
@@ -40,11 +40,11 @@ Configure the following network, proxy, and/or firewall settings:
 
 ### Server and client apps
 
-Azure RBAC uses Azure AD client and server apps for different purposes. The client app is used to retrieve the user token once the user authenticates with Azure AD using interactive login; for example, via device code flow. The client app is a public client, and also supports a non-interactive flow to retrieve the token for service principals.
+Azure RBAC uses Microsoft Entra client and server apps for different purposes. The client app is used to retrieve the user token once the user authenticates with Microsoft Entra ID using interactive login; for example, via device code flow. The client app is a public client, and also supports a non-interactive flow to retrieve the token for service principals.
 
 The server app is a confidential client and is used to retrieve a signed-in user's security group details ([for overage claim users](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/azure-active-directory-now-with-group-claims-and-application/ba-p/243862)) and for checking access requests that return the authorization result that the principal (user or SPN) has on the AKS hybrid cluster.
 
-When you register the Azure AD application, it stores configuration information in Azure AD. This configuration enables the application represented by the Azure AD application to authenticate on behalf of the user (or SPN). Once authenticated, the application can then use the Azure AD app ID to access APIs on behalf of the user.
+When you register the Microsoft Entra application, it stores configuration information in Microsoft Entra ID. This configuration enables the application represented by the Microsoft Entra application to authenticate on behalf of the user (or SPN). Once authenticated, the application can then use the Microsoft Entra app ID to access APIs on behalf of the user.
 
 ### Create the server app and client app
 
@@ -53,7 +53,7 @@ Register your server app and secret, and your client app and secret, by performi
 > [!NOTE]
 > These steps direct you to key tasks in [Use Azure RBAC for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/azure-rbac) that are required to prepare for the Azure RBAC setup in AKS hybrid.  
 
-To do these steps, you must have the built-in [Application Administrator role](/azure/active-directory/roles/permissions-reference) in Azure AD. For instructions, see [Assign Azure AD roles to users](/azure/active-directory/roles/manage-roles-portal).
+To do these steps, you must have the built-in [Application Administrator role](/azure/active-directory/roles/permissions-reference) in Microsoft Entra ID. For instructions, see [Assign Microsoft Entra roles to users](/azure/active-directory/roles/manage-roles-portal).
 
 1. [Create a server application and shared secret](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-server-application).
 
@@ -81,7 +81,7 @@ The following command assigns a role to a group instead of a specific user (see 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Azure Arc Kubernetes Cluster Admin" --scope $id
 ```
 
-The assignee is the object ID of the Azure AD group.
+The assignee is the object ID of the Microsoft Entra group.
 
 For more information about the role, [see this section](/azure/role-based-access-control/built-in-roles#azure-arc-enabled-kubernetes-cluster-user-role).
 
@@ -210,7 +210,7 @@ To connect to an AKS hybrid cluster using the `connectedk8s` proxy method, do th
 
 When you connect to an AKS hybrid cluster over a private network, there's no limit the on number of groups you can use.
 
-To retrieve the Azure AD kubeconfig log into and on-premises machine (for example, an HCI cluster), generate the Azure AD kubeconfig using the following command. You can distribute the Azure AD kubeconfig to users that connect from their client machine. The Azure AD kubeconfig doesn't contain any secrets.
+To retrieve the Microsoft Entra kubeconfig log into and on-premises machine (for example, an HCI cluster), generate the Microsoft Entra kubeconfig using the following command. You can distribute the Microsoft Entra kubeconfig to users that connect from their client machine. The Microsoft Entra kubeconfig doesn't contain any secrets.
 
 To connect to an AKS hybrid cluster over a private network, perform the following steps:
 
@@ -220,7 +220,7 @@ To connect to an AKS hybrid cluster over a private network, perform the followin
    Get-AksHciCredential -Name <cluster name> -aadauth
    ```
 
-1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You are prompted for your Azure AD credentials.
+1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You are prompted for your Microsoft Entra credentials.
 
    You might get a warning message, but you can ignore it.
 

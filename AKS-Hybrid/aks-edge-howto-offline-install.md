@@ -1,10 +1,10 @@
 ---
 title: AKS Edge Essentials offline installation
 description: Learn how to configure your machine for AKS Edge Essentials offline installation.
-author: fcabrera
+author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
-ms.date: 04/24/2023
+ms.date: 10/10/2023
 ms.custom: template-how-to
 ---
 
@@ -12,21 +12,22 @@ ms.custom: template-how-to
 
 AKS Edge Essentials is primarily designed to be installed on an internet-connected machine, since many components are updated regularly. However, with some extra steps, it's possible to deploy AKS Edge Essentials in an offline environment.
 
-The following guide goes over the required configurations needed for an AKS Edge Essentials offline installation:
+The following article describes the required configuration needed for an AKS Edge Essentials offline installation:
 
-1. Windows certificates
-1. Internet checks
-1. Licensing
+- Windows certificates
+- Internet checks
+- Licensing
 
 ## Windows certificates
 
-The AKS Edge Essentials setup installs only content that is trusted. It does this by checking Authenticode signatures of the content being downloaded and verifying that all content is trusted before installing it. Also, the **AKSEdge.psm1** PowerShell module and cmdlets used to deploy the cluster are signed and verified. This keeps your environment safe from attacks where the download location is compromised. 
+The AKS Edge Essentials setup only installs content that is trusted. It verifies that trust by checking Authenticode signatures of the content being downloaded and verifying that all content is trusted before installing it. Also, the **AKSEdge.psm1** PowerShell module and cmdlets used to deploy the cluster are signed and verified. This keeps your environment safe from attacks where the download location is compromised.
 
-AKS Edge Essentials setup therefore requires that several standard Microsoft root and intermediate certificates are installed and up-to-date on a user's machine. If the machine has been kept up to date with Windows Update, signing certificates usually are up to date. If the machine is offline, the certificates must be refreshed another way.
+Therefore, AKS Edge Essentials setup requires that several standard Microsoft root and intermediate certificates are installed and up-to-date on a user's machine. If the machine has been kept up to date with Windows Update, signing certificates usually are up to date. If the machine is offline, the certificates must be refreshed another way.
 
 One way to check on the installing system is to follow these steps:
 
 1. Open an elevated PowerShell session.
+
 1. Check for the **Microsoft Root Certificate Authority 2011** by running the following command:
 
    ```powershell
@@ -59,13 +60,13 @@ One way to check on the installing system is to follow these steps:
    F252E794FE438E35ACE6E53762C0A234A2C52135  CN=Microsoft Code Signing PCA 2011, O=Microsoft Corporation, L=Redmond, S=...
    ```
 
-  If the **Microsoft Code Signing PCA 2011** intermediate certificate was only in the **Current User** intermediate certificate store, then it's available only to the user that is logged in. You might need to install it for other users.
+  If the **Microsoft Code Signing PCA 2011** intermediate certificate was only in the **Current User** intermediate certificate store, then it's available only to the user that is signed in. You might need to install it for other users.
 
-### How to install or refresh certificates when offline
+### Install or refresh certificates when offline
 
 There are two options for installing or updating certificates in an offline environment.
 
-#### Option 1 - Install certificates manually or as part of a scripted deployment
+#### Option 1: install certificates manually or as part of a scripted deployment
 
 If you're scripting the deployment of AKS Edge Essentials in an offline environment to client workstations, follow these steps:
 
@@ -84,17 +85,17 @@ If you're scripting the deployment of AKS Edge Essentials in an offline environm
     certutil.exe -addstore -f "CA" "[download path]\MicCodSigPCA2011_2011-07-08.crt"
     ```
 
-1. To check if the certificates were correctly installed, use the PowerShell commands provided in the section [Windows certificates](#windows-certificates) above. 
+1. To check if the certificates were correctly installed, use the PowerShell commands provided in the [Windows certificates](#windows-certificates) section.
 
-#### Option 2 - Distribute trusted root certificates in an enterprise environment
+#### Option 2: distribute trusted root certificates in an enterprise environment
 
 For enterprises with offline machines that don't have the latest root certificates, an administrator can use the instructions in [Configure Trusted Roots and Disallowed Certificates](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn265983(v=ws.11)) to update them.
 
 ## Internet checks
 
-During the deployment of an AKS Edge Essentials cluster, the PowerShell deployment script checks for internet connectivity. These checks are to make sure that DNS servers work, the cluster is able to connect to the internet, and that an Arc connection can be established if the user wants this. However, when doing offline installations, these checks aren't required and should be avoided. 
+During the deployment of an AKS Edge Essentials cluster, the PowerShell deployment script checks for internet connectivity. These checks are to make sure that DNS servers work, the cluster is able to connect to the internet, and that an Arc connection can be established if the user wants this. However, when doing offline installations, these checks aren't required and should be avoided.
 
-During the creation of the [deployment JSON file](./aks-edge-howto-setup-machine.md), ensure that you mark the **InternetDisabled** parameter inside the `Networking` section as **true**. 
+During the creation of the [deployment JSON file](./aks-edge-howto-setup-machine.md), ensure that you mark the `InternetDisabled` parameter inside the `Networking` section as **true**.
 
 ## Licensing
 

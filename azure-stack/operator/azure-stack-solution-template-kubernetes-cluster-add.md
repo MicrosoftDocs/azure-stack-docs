@@ -45,11 +45,11 @@ Create a plan, an offer, and a subscription for the Kubernetes marketplace item.
 
     a. Enter a **Display Name**.
 
-    b. Enter a **User**. Use the Azure AD account associated with your tenant.
+    b. Enter a **User**. Use the Microsoft Entra account associated with your tenant.
 
     c. **Provider Description**
 
-    d. Set the **Directory tenant** to the Azure AD tenant for your Azure Stack Hub. 
+    d. Set the **Directory tenant** to the Microsoft Entra tenant for your Azure Stack Hub. 
 
     e. Select **Offer**. Select the name of the offer that you created. Make note of the Subscription ID.
 

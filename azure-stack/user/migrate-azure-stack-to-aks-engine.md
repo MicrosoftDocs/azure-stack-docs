@@ -43,7 +43,7 @@ The following table compares AKS features in global Azure with features in the A
 | Access Security              |                                                     |           |                               |                   |
 |                              | Kubernetes RBAC                                     | Yes       | Yes                           | Yes               |
 |                              | Security Center Integration                         | Yes       | Yes                           | No                |  
-|                              | Azure AD Auth/RBAC                                  | Yes       | No                            | No                |
+|                              | Microsoft Entra auth/RBAC                                  | Yes       | No                            | No                |
 |                              | Calico Network Policy                               | Yes       | No                            | No                |
 | Monitoring & Logging         |                                                     |           |                               |                   |
 |                              | Integrated Azure Monitoring (Insights, Logs, Metrics, Alerts)   | Yes     | No                  | Yes               |

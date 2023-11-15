@@ -24,7 +24,7 @@ You can create an AKS cluster using:
 - The Azure portal (preview)
 - Azure Resource Manager templates (preview)
 
-When you deploy an AKS cluster, you can choose default options that configure the Kubernetes control plane nodes and Kubernetes cluster settings for you. We offer the flexibility to configure advanced settings like Azure Active Directory (Azure AD), monitoring, and other features during and after the deployment process.
+When you deploy an AKS cluster, you can choose default options that configure the Kubernetes control plane nodes and Kubernetes cluster settings for you. We offer the flexibility to configure advanced settings like Microsoft Entra ID, monitoring, and other features during and after the deployment process.
 
 For more information about Kubernetes basics, see [Kubernetes core concepts for AKS](kubernetes-concepts.md).
 
@@ -42,7 +42,7 @@ With AKS hybrid, you can connect your AKS clusters to Azure Arc while creating t
 
 ### Create and manage AKS clusters using Azure portal and Resource Manager templates
 
-You can now use familiar tools like the Azure portal and Azure Resource Manager templates to manage your AKS hybrid clusters running on Azure Stack HCI or Windows Server. We automatically enable Azure Arc on all AKS hybrid clusters. Through Azure Arc, you can use your Azure AD identity for cluster admin authentication and have a simplified, end-to-end governance and security story for your AKS clusters through Azure Defender. We've also focused on delivering a consistent user experience for all your AKS clusters. If you've used the Azure portal or Azure CLI to create and manage AKS clusters in Azure, it's easy to use AKS hybrid. For more information, see [AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
+You can now use familiar tools like the Azure portal and Azure Resource Manager templates to manage your AKS hybrid clusters running on Azure Stack HCI or Windows Server. We automatically enable Azure Arc on all AKS hybrid clusters. Through Azure Arc, you can use your Microsoft Entra identity for cluster admin authentication and have a simplified, end-to-end governance and security story for your AKS clusters through Azure Defender. We've also focused on delivering a consistent user experience for all your AKS clusters. If you've used the Azure portal or Azure CLI to create and manage AKS clusters in Azure, it's easy to use AKS hybrid. For more information, see [AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
 
 ### Integrated logging and monitoring
 

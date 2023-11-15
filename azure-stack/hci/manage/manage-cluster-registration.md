@@ -135,7 +135,7 @@ Follow these steps to upgrade Arc agent on cluster servers:
 
 You can unregister Azure Stack HCI using Windows Admin Center or using PowerShell.
 
-The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Azure AD app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
+The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Microsoft Entra app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
 
 # [Windows Admin Center](#tab/windows-admin-center)
 
@@ -148,7 +148,7 @@ Follow these steps to unregister your Azure Stack HCI cluster via Windows Admin 
 1. Select **Azure Stack HCI registration**, select the **Unregister** button, and then select **Unregister** again.
 
 > [!NOTE]
-> If your Windows Admin Center gateway is registered to a different Azure AD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
+> If your Windows Admin Center gateway is registered to a different Microsoft Entra tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
 
 # [PowerShell](#tab/power-shell)
 
@@ -201,7 +201,7 @@ If a user destroys an Azure Stack HCI cluster without un-registering it, such as
 
 To delete the Azure Stack HCI resource, navigate to the resource in the Azure portal and select **Delete** from the action bar. You can get the resource details by running the `Get-AzureStackHCI` cmdlet.
 
-Azure Stack HCI creates two Azure AD applications as part of the registration: **resourceName** and **resourceName.arc**. To delete those, go to **Azure AD** > **App Registrations** > **All Applications**. Select **Delete** and confirm.
+Azure Stack HCI creates two Microsoft Entra applications as part of the registration: **resourceName** and **resourceName.arc**. To delete those, go to **Microsoft Entra ID** > **App Registrations** > **All Applications**. Select **Delete** and confirm.
 
 You can also delete the Azure Stack HCI resource by using PowerShell:
 

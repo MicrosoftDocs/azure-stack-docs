@@ -108,7 +108,7 @@ The topology of this approach will look like the following diagram:
 
 ## Get your service principal
 
-You will need to know if your identity manager is Azure AD or AD FS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
+You will need to know if your identity manager is Microsoft Entra ID or AD FS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
 
 | Element | Source |
 | ------- | ------ |

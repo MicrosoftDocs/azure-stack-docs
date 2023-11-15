@@ -36,7 +36,7 @@ items:
         - your Azure subscription using [Azure RBAC](/azure/role-based-access-control/role-assignments-steps) membership in:
           - either the "Owner" role (you'll already be a member if you created the subscription)  
           - or the "User Access Administrator" and "Contributor" roles  
-        - your Azure Active Directory (AD) tenant using [Azure AD RBAC](/azure/active-directory/roles/custom-overview) membership in:
+        - your Microsoft Entra tenant using [Microsoft Entra RBAC](/azure/active-directory/roles/custom-overview) membership in:
           - either the "Global Administrator" role (you'll already be a member if you created the subscription)  
           - or the "Cloud application administrator" role  
     3. **A basic understanding of [how to use the Azure portal](/azure/azure-portal/)**, in particular creating and connecting to a VM.  
@@ -238,7 +238,7 @@ items:
     > - Either membership in the "Owner" role (you'll already be a member if you created the subscription)  
     > - Or membership in the "User Access Administrator" and "Contributor" roles  
     >
-    > [Azure AD RBAC roles](/azure/active-directory/roles/custom-overview) on the Azure AD tenant:
+    > [Microsoft Entra RBAC roles](/azure/active-directory/roles/custom-overview) on the Microsoft Entra tenant:
     > - Either "Global Administrator" (you'll already be a member if you created the subscription)  
     > - or "Cloud application administrator"  
     >
@@ -273,18 +273,18 @@ items:
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-sign-in-done.png" alt-text="Sign in confirmation dialog" lightbox="./media/guided-quick-deploy-eval/register-gateway-sign-in-done.png" :::
 
-    1. Back in the **Cluster Manager** **Dashboard** view you'll see your **Azure Active Directory tenant ID** populated. Confirm the tenant ID, select **Create new**, then select the **Connect** button:
+    1. Back in the **Cluster Manager** **Dashboard** view you'll see your **Microsoft Entra tenant ID** populated. Confirm the tenant ID, select **Create new**, then select the **Connect** button:
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-azure-ad-create-app.png" alt-text="Create service princpals in the Azure AD tenant" lightbox="./media/guided-quick-deploy-eval/register-gateway-azure-ad-create-app.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-azure-ad-create-app.png" alt-text="Create service princpals in the Microsoft Entra tenant" lightbox="./media/guided-quick-deploy-eval/register-gateway-azure-ad-create-app.png" :::
 
        >[!WARNING]
        > It's **critical** that you pause here for 60 seconds to avoid a synchronization problem. **Do not select Sign in** and proceed until you've waited for at least 60 seconds, or you will run into problems later in the registration flow.
 
-    1. Once you've paused for at least 60 seconds after the previous step, and you see the "Now connected to Azure AD" confirmation, select the **Sign in** button.
+    1. Once you've paused for at least 60 seconds after the previous step, and you see the "Now connected to Microsoft Entra ID" confirmation, select the **Sign in** button.
 
-       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-azure-ad-connected.png" alt-text="Sign in to Azure AD tenant and subscription" lightbox="./media/guided-quick-deploy-eval/register-gateway-azure-ad-connected.png" :::
+       :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-azure-ad-connected.png" alt-text="Sign in to Microsoft Entra tenant and subscription" lightbox="./media/guided-quick-deploy-eval/register-gateway-azure-ad-connected.png" :::
 
-    1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your Azure account. Then consent to the permissions requested by the Azure AD application representing Windows Admin Center, by selecting **Accept**:
+    1. The next response is based on the Microsoft Entra role membership of your account. Select the tab below that matches the role membership of your Azure account. Then consent to the permissions requested by the Microsoft Entra application representing Windows Admin Center, by selecting **Accept**:
        # [Global Administrator](#tab/global-admin)
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-gateway-consent-as-global-admin.png" alt-text="Provide consent to give the Azure registration app access to resources" lightbox="./media/guided-quick-deploy-eval/register-gateway-consent-as-global-admin.png" :::
@@ -302,17 +302,17 @@ items:
 
        :::image type="content" source="./media/guided-quick-deploy-eval/cluster-manager-dashboard-not-yet-registered.png" alt-text="Register this cluster on dashboard" lightbox="./media/guided-quick-deploy-eval/cluster-manager-dashboard-not-yet-registered.png":::
 
-    1. The next response is based on the Azure AD role membership of your account. Select the tab below that matches the role membership of your account:
+    1. The next response is based on the Microsoft Entra role membership of your account. Select the tab below that matches the role membership of your account:
 
        # [Global Administrator](#tab/global-admin)
 
-       Select **Accept** to consent incremental permissions to the Azure AD application, allowing it to perform cluster registration:  
+       Select **Accept** to consent incremental permissions to the Microsoft Entra application, allowing it to perform cluster registration:  
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-consent-as-global-admin.png" alt-text="Provide consent to give the Azure registration app cluster registration perms" lightbox="./media/guided-quick-deploy-eval/register-cluster-consent-as-global-admin.png":::
 
        # [Cloud Application Administrator](#tab/cloud-app-admin)
 
-       Select **Accept** to consent incremental permissions to the Azure AD application, allowing it to perform cluster registration:  
+       Select **Accept** to consent incremental permissions to the Microsoft Entra application, allowing it to perform cluster registration:  
 
        :::image type="content" source="./media/guided-quick-deploy-eval/register-cluster-consent-as-cloud-app-admin.png" alt-text="Provide consent to give the Azure registration app cluster registration perms" lightbox="./media/guided-quick-deploy-eval/register-cluster-consent-as-cloud-app-admin.png":::
 
