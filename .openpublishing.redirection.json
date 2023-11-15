@@ -1045,7 +1045,11 @@
       "source_path": "azure-stack/hci/deploy/deployment-quickstart.md",
       "redirect_url": "/azure-stack/hci/deploy/create-cluster",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/index-23h2.yml",
+      "redirect_url": "/azure-stack/hci/index",
+      "redirect_document_id": false
     }
   ]
-  
 }
