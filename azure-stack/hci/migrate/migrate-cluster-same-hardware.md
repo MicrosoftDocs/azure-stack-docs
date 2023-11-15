@@ -31,7 +31,7 @@ There are several requirements and things to consider before you begin migration
 
 - You must have domain credentials with administrator permissions for Azure Stack HCI.
 
-- Back up all VMs on your source cluster. Complete a crash-consistent back up of all applications and data and an application-consistent back up of all databases.  To back up to Azure, see [Use Azure Backup](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+- Back up all VMs on your source cluster. Complete a crash-consistent backup of all applications and data and an application-consistent backup of all databases.  To back up to Azure, see [Use Azure Backup](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 - Collect inventory and configuration of all cluster nodes and cluster naming, network configuration, Cluster Shared Volume (CSV) resiliency and capacity, and quorum witness.
 
