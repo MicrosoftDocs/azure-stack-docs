@@ -59,7 +59,7 @@ With Insights for Azure Stack HCI, you can now monitor and analyze performance, 
 
 ## Azure Arc VM management
 
-Beginning this release, the following Azure Arc management capabilities are available:
+Beginning this release, the following Azure Arc VM management capabilities are available:
 
 - **Simplified Arc Resource Bridge deployment**. The Arc Resource Bridge is now deployed as part of the Azure Stack HCI deployment. 
     For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](./deploy/deploy-via-portal.md).
