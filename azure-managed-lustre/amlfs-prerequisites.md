@@ -75,7 +75,11 @@ An integrated blob container can automatically import files to the Azure Managed
 
 If you don't add an integrated blob container when you create your Lustre system, you can write your own client scripts or commands to move files between your Azure Managed Lustre file system and other storage.
 
-When you plan blob integration for your file system, it's important to understand the differences in how hierarchical blob storage and non-hierarchical blob storage handle metadata. For more information, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
+When you plan blob integration for your file system, it's important to understand the following differences in how metadata is handled based on whether a storage account has hierarchical namespace enabled:
+
+* For a container in a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
+
+* For a container in a storage account with a flat namespace (non-hierarchical), Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
 
 To integrate Azure Blob Storage with your Azure Managed Lustre file system, you must create the following items before you create the file system:
 

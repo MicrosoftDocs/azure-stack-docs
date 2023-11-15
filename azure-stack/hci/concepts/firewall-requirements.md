@@ -4,12 +4,12 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 06/05/2023
+ms.date: 11/01/2023
 ---
 
 # Firewall requirements for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2-21h2.md)]
 
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to use Azure service tags with Microsoft Defender firewall.
 
@@ -60,7 +60,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 - [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md#firewall-url-requirements)
+- [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
