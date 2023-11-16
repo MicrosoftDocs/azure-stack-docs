@@ -69,7 +69,7 @@ Backup products can protect IaaS VM configuration and disks attached to a stoppe
 #### Backup using disk snapshot for running VMs
 
 > [!Important]  
-> Using disk snapshots is currently not supported for VM in a running state. Creating a snapshot of a disk attached to a running VM may degrade the performance or impact the availability of the operating system or application in the VM. The recommendation is to use an in-guest agent to protect the application if planned downtime is not an option. 
+> Using disk snapshots from the portal is currently not supported for VM in a running state. Creating a snapshot of a disk attached to a running VM may degrade the performance or impact the availability of the operating system or application in the VM. The recommendation is to use a backup vendor solution that integrates with the Storage RP incremental snapshot capability, or an in-guest agent to protect the application if planned downtime is not an option.
 
 ### VMs in a scale-set or availability set
 
