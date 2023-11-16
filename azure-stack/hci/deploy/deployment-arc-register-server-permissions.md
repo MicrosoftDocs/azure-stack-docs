@@ -48,7 +48,7 @@ Before you begin, make sure you've done the following:
 
     ```powershell
     #Register PSGallery as a trusted repo
-    Register-PSRepository -Name PSGallery -InstallationPolicy Trusted
+    Register-PSRepository -Name 'PSGallery' -InstallationPolicy Trusted
     
     #Install Arc registration script from PSGallery 
     Install-Module AzsHCI.ARCinstaller
