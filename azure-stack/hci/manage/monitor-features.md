@@ -155,19 +155,21 @@ This tab gives basic information about the workbook and the prerequisites to vie
 
 This tab provides volume information within a cluster and shows the savings for each volume.
 
+:::image type="content" source="media/monitor-features/savings-tab.png" alt-text="Screenshot that shows the Savings tab." lightbox="media/monitor-features/savings-tab.png":::
+
 The following table describes the columns under the **Savings per volume** section:
 
-| Column | Description | Example |
-|--|--|--|
-| Name | The name of the volumes in a cluster. | Volume1 |
-| Deduplication | Indicates if deduplication is enabled (On) or not (Off). | On |
-| Compression | Indicates if compression is enabled or not. | Off (enable) |
-| Volume Size | The size of the volume as specified by the user. | 3 TiB |
-| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. | 3.83 TiB |
-| Saved | The number of bytes saved on each volume. | 1.25TiB |
-| Savings(%) | The saved space divided by the dataset size. | 32.72% |
-| Size On Disk | The total amount of data stored on disk. | 2.58 TiB |
-| Usage (%) | The size on disk divided by the total volume size. | 85.82% |
+| Column | Description |
+|--|--|
+| Name | The name of the volumes in a cluster. |
+| Deduplication | Indicates if deduplication is enabled (On) or not (Off). |
+| Compression | Indicates if compression is enabled or not. |
+| Volume Size | The size of the volume as specified by the user. |
+| Dataset Size | The original size of data on the disk prior to any deduplication and compression optimizations. |
+| Saved | The number of bytes saved on each volume. |
+| Savings(%) | The saved space divided by the dataset size. |
+| Size On Disk | The total amount of data stored on disk. |
+| Usage (%) | The size on disk divided by the total volume size. |
 
 ### Performance
 
@@ -175,15 +177,15 @@ This tab provides details, such as read and write input/output operations/second
 
 :::image type="content" source="media/monitor-features/performance-tab.png" alt-text="Screenshot that shows the Performance tab." lightbox="media/monitor-features/performance-tab.png":::
 
-| Column | Description | Example |
-|--|--|--|
-| Volume | Shows the different cluster shared volumes (CSV) in a cluster. | Volume1 |
-| Read IOPS (Avg) | Gives the average value of input output read operations on a volume. | 9,220 |
-| Write IOPS (Avg) | Gives the average value of input output write operations on a volume. | 3,945  |
-| Read Lat. (Avg) | Gives the average value of read latency on a volume. | 7.31 ms |
-| Write Lat. (Avg) | Gives the average value of write latency on a volume. | 3.37 ms |
-| P95 Read Lat. | Gives the 95th percentile of read latency on a volume. | 860ms |
-| P95 Write Lat. | Gives the 95th percentile of write latency on a volume. | 1.11s|
+| Column | Description |
+|--|--|
+| Volume | Shows the different cluster shared volumes (CSV) in a cluster. |
+| Read IOPS (Avg) | Gives the average value of input output read operations on a volume. |
+| Write IOPS (Avg) | Gives the average value of input output write operations on a volume. |
+| Read Lat. (Avg) | Gives the average value of read latency on a volume. |
+| Write Lat. (Avg) | Gives the average value of write latency on a volume. |
+| P95 Read Lat. | Gives the 95th percentile of read latency on a volume. |
+| P95 Write Lat. | Gives the 95th percentile of write latency on a volume. |
 
 You can select various aggregates like Average, P1st, P5th, P50th, P90th, P95th, 99th, Min, and Max for different metrics.
 
@@ -193,15 +195,15 @@ This tab shows the jobs performed overtime during the deduplication process and 
 
 :::image type="content" source="media/monitor-features/jobs-tab.png" alt-text="Screenshot that shows the Jobs tab." lightbox="media/monitor-features/jobs-tab.png":::
 
-| Column | Description | Example |
-|--|--|--|
-| Volume | Displays the different CSV in a cluster. | Volume1 |
-| Status | Indicates the status (Success/Failed) of the ReFS deduplication. | Success |
-| Start time | Displays the time when ReFS deduplication started. | 4/26/2023, 5:10:45 AM |
-| End time | Displays the time when ReFS deduplication completed. | 4/26/2023, 6:28:19 AM |
-| Duration | Displays the total time taken for ReFS deduplication to finish. | 01 hours 17 mins 33 seconds |
-| Scanned blocks | Displays the total scanned blocks. | 283.02 GiB |
-| Scanned(%) | Displays the total scanned blocks divided by the total volume size. | 27.64% |
+| Column | Description |
+|--|--|
+| Volume | Displays the different CSV in a cluster. |
+| Status | Indicates the status (Success/Failed) of the ReFS deduplication. |
+| Start time | Displays the time when ReFS deduplication started. |
+| End time | Displays the time when ReFS deduplication completed. |
+| Duration | Displays the total time taken for ReFS deduplication to finish. |
+| Scanned blocks | Displays the total scanned blocks. |
+| Scanned(%) | Displays the total scanned blocks divided by the total volume size. |
 
 ### Troubleshoot ReFS deduplication and compression monitoring
 
