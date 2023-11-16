@@ -22,7 +22,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Start the wizard and fill out the basics
 
 <!---1. Open the Azure portal and navigate to the Azure Stack HCI service (searching is an easy way) and then select **Deploy**.--->
-1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com) > **Infrastructure | Azure Stack HCI** and then select **Deploy cluster (preview)**.
+1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Stack HCI**. On the **Get started** tab, select **Deploy cluster (preview)**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
