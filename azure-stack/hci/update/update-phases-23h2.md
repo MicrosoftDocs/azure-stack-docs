@@ -33,7 +33,7 @@ The updates consist of several phases: discovering the update, staging the conte
 
 You can apply these updates via PowerShell or the Azure portal. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you might need to take during each phase and what actions Azure Stack HCI takes through the update operation.
 
-![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](../update/update-phases-23h2.md)
+![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](../updates/update-phases-23h2.md)
 
 ## Phase 1: Discovery and acquisition
 
