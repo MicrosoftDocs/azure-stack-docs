@@ -114,7 +114,7 @@ Configure your deployment with the following command.
 
 ```powershell
 $csvPath = 'C:\clusterstorage\volume01' # update to your perfered CSV path
-Set-AksHciConfig -imageDir $csvPath\Images -workingDir $csvPath\ImageStore -cloudConfigLocation $csvPath\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+Set-AksHciConfig -imageDir $csvPath\Images -workingDir $csvPath\ImageStore -cloudConfigLocation $csvPath\Config -vnet $vnet
 ```
 
 > [!NOTE]
