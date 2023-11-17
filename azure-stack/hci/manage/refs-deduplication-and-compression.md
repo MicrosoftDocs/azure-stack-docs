@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Stack 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2023
+ms.date: 11/17/2023
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Stack HCI (preview)
@@ -17,7 +17,7 @@ This article describes the Resilient File System (ReFS) deduplication and compre
 
 ## What is ReFS deduplication and compression?
 
-ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Stack HCI](../deploy/virtual-desktop-infrastructure.md). This feature helps optimize storage usage, enhancing overall performance, and significantly reducing storage cost.
+ReFS deduplication and compression is a storage optimization feature designed specifically for active workloads, such as [Azure virtual desktop infrastructure (VDI) on Azure Stack HCI](../deploy/virtual-desktop-infrastructure.md). This feature helps optimize storage usage and reduce storage cost.
 
 This feature uses [ReFS block cloning](/windows-server/storage/refs/block-cloning) to reduce data movement and enable metadata only operations. The feature operates at the data block level and uses fixed block size depending on the cluster size. The compression engine generates a heatmap to identify if a block should be eligible for compression, optimizing for CPU usage.
 
@@ -419,4 +419,4 @@ If the CSV is moved to another server of the cluster while compression is in pro
 
 ## Next steps
 
-- [Manage volume](./manage-volumes.md)
+- [Manage volume](./manage-volumes.md).

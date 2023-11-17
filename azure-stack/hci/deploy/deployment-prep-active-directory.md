@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2023
+ms.date: 11/17/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,12 +23,12 @@ Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
 - Complete the [deployment checklist](./deployment-checklist.md).
-- Install the PowerShell module to prepare Active Directory. [Download the version 2310 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2310). 
+- Install the PowerShell module to prepare Active Directory. [Download the version 2310 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2310).
 - Run the following command:
 
     ```azurepowershell
-    Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery
-    ```    
+    Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
+    ```
 
 <!--You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
 
@@ -39,7 +39,6 @@ Import-Module .\AsHciADArtifactsPreCreationTool.psm1
 
 - Obtain domain administrator access to the Active Directory domain server.
 
-    
 ## Active Directory preparation module
 
 The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. Here are the required parameters associated with the cmdlet:
@@ -88,7 +87,7 @@ To prepare and configure Active Directory, follow these steps:
     New-HciAdObjectsPreCreation -Deploy -AzureStackLCMUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>" -AsHciPhysicalNodeList @("<Server name>") -DomainFQDN "<FQDN for the Active Directory domain>" -AsHciClusterName "<Cluster name for deployment>" -AsHciDeploymentPrefix "<Deployment prefix>"
 
 1. When prompted, provide the username and password for the deployment. 
-    1. Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.
+    1. Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`. **Username must be between 1 to 64 characters and only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number.**
     1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 12 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.** <!--For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).-->
 
 
