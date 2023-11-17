@@ -181,14 +181,13 @@ To confirm that the system and all of its Azure resources were successfully depl
 
 ## Post deployment tasks
 
-
-For security reasons, Remote Desktop Protocol(RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. 
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems.
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
 
 1. Run PowerShell as administrator on your management PC.
 1. Connect to your Azure Stack HCI system via a remote PowerShell session.
-    
+
     ```powershell
     $ip="<IP address of the Azure Stack HCI server>"
     Enter-PSSession -ComputerName $ip -Credential get-Credential
@@ -201,8 +200,7 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
     ```
 
-
 ## Next steps
 
-* If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md)
-* [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md)
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md).
+- [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md).

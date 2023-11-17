@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 11/17/2023
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2 (preview)
@@ -46,9 +46,9 @@ You can run the Environment Checker to:
 
 You can run the Environment Checker in two modes:
 
-- As a built-in tool: The Environment Checker functionality comes built-in with the Azure Stack HCI Deployment Tool. By default, the Deployment Tool runs all the validators to perform the pre-deployment readiness checks.
+- Integrated tool: The Environment Checker functionality is integrated into the deployment process. By default, all validators are run during deployment to perform pre-deployment readiness checks.
 
-- As a standalone tool: It's a light-weight PowerShell tool that you can download for free from the Windows PowerShell gallery. You can run the standalone tool anytime, independent of the Deployment Tool. For example, you can run it even before receiving the actual hardware to check if all the connectivity requirements are met.
+- Standalone tool: This light-weight PowerShell tool is available for free download from the Windows PowerShell gallery. You can run the standalone tool anytime, outside of the deployment process. For example, you can run it even before receiving the actual hardware to check if all the connectivity requirements are met.
 
 This article describes how to run the Environment Checker in a standalone mode.
 
@@ -66,7 +66,7 @@ Before you begin, complete the following tasks:
 
 The [Environment Checker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/) works with PowerShell 5.1, which is built into Windows.
 
-You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to [uninstall](#uninstall-environment-checker) it before running the Deployment Tool to avoid any conflicts.
+You can install the Environment Checker on a client computer, staging server, or Azure Stack HCI cluster node. However, if installed on an Azure Stack HCI cluster node, make sure to [uninstall](#uninstall-environment-checker) it before you begin the deployment to avoid any potential conflicts.
 
 To install the Environment Checker, follow these steps:
 
@@ -104,7 +104,7 @@ You can run the validators from the following locations:
 
 - Locally from a workstation or a staging server.
 
-- Locally from the Azure Stack HCI cluster node. However, make sure to uninstall the Environment Checker before running the Deployment Tool to avoid any conflicts.
+- Locally from the Azure Stack HCI cluster node. However, make sure to uninstall the Environment Checker before you begin the deployment to avoid any potential conflicts.
 
 Select each of the following tabs to learn more about the corresponding validator.
 
@@ -115,10 +115,7 @@ Use the connectivity validator to check if all the servers in your cluster have 
 You can use the connectivity validator to:
 
 - Check the connectivity of your servers before receiving the actual hardware. You can run the connectivity validator from any client computer on the network where you'll deploy the Azure Stack HCI cluster.
-- Check the connectivity of all the servers in your cluster after you've deployed the cluster using the Deployment Tool. You can check the connectivity of each server by running the validator cmdlet locally on each server. Or, you can remotely connect from a staging server to check the connectivity of one or more servers.
-
-> [!NOTE]
-> You can use the connectivity validator with Azure Stack HCI, version 21H2 installations also.
+- Check the connectivity of all the servers in your cluster after you've deployed the cluster. You can check the connectivity of each server by running the validator cmdlet locally on each server. Or, you can remotely connect from a staging server to check the connectivity of one or more servers.
 
 ### Run the connectivity validator
 
@@ -525,8 +522,8 @@ The information displayed on each readiness check report varies depending on the
 | Network range test | Displays the result of the network range test. If the test fails, it displays the IP addresses that belong to the reserved IP range. | Network validator report |
 | **Summary** | Lists the count of successful and failed tests. Failed test results are expanded to show the failure details under **Needs Remediation**.| All reports |
 | **Remediation** | Displays only if a test fails. Provides a link to the article that provides guidance on how to remediate the issue. | All reports |
-| **Log location (contains PII)** | Provides the path where the log file is saved. The default path is:<br><br>- `$HOME\.AzStackHci\AzStackHciEnvironmentChecker.log` when you run the Environment Checker in a standalone mode.<br>- `C:\CloudDeployment\Logs` when the Deployment Tool runs the Environment Checker internally.<br><br> Each run of the validator overwrites the existing file.| All reports |
-| **Report Location (contains PII)** | Provides the path where the completed readiness check report is saved in the JSON format. The default path is:<br><br>- `$HOME\.AzStackHci\AzStackHciEnvironmentReport.json` when you run the Environment Checker in a standalone mode.<br>- `C:\CloudDeployment\Logs` when the Deployment Tool runs the Environment Checker internally.<br><br> The report provides detailed diagnostics that are collected during each test. This information can be helpful for system integrators or when you need to contact the support team to troubleshoot the issue. Each run of the validator overwrites the existing file. | All reports |
+| **Log location (contains PII)** | Provides the path where the log file is saved. The default path is:<br><br>- `$HOME\.AzStackHci\AzStackHciEnvironmentChecker.log` when you run the Environment Checker in a standalone mode.<br>- `C:\CloudDeployment\Logs` when the Environment Checker is run as part of the deployment process.<br><br> Each run of the validator overwrites the existing file.| All reports |
+| **Report Location (contains PII)** | Provides the path where the completed readiness check report is saved in the JSON format. The default path is:<br><br>- `$HOME\.AzStackHci\AzStackHciEnvironmentReport.json` when you run the Environment Checker in a standalone mode.<br>- `C:\CloudDeployment\Logs` when the Environment Checker is run as part of the deployment process.<br><br> The report provides detailed diagnostics that are collected during each test. This information can be helpful for system integrators or when you need to contact the support team to troubleshoot the issue. Each run of the validator overwrites the existing file. | All reports |
 | Completion message | At the end of the report, displays a message that the validation check is completed.| All reports|
 
 ## Environment Checker results
@@ -538,7 +535,7 @@ For each test, the validator provides a summary of the unique issues and classif
 
 ## Uninstall environment checker
 
-The environment checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before running the deployment tool, to avoid any conflicts.
+The environment checker is shipped with Azure Stack HCI, make sure to uninstall it from all Azure Stack HCI cluster nodes before you begin the deployment to avoid any potential conflicts.
 
 ```powershell
 Remove-Module AzStackHci.EnvironmentChecker -Force
@@ -551,5 +548,5 @@ For information about how to get support from Microsoft to troubleshoot any vali
 
 ## Next steps
 
-- [Review the deployment checklist](../deploy/deployment-tool-checklist.md)
-- [Contact Microsoft Support](get-support.md)
+- [Review the deployment checklist](../deploy/deployment-tool-checklist.md).
+- [Contact Microsoft Support](get-support.md).
