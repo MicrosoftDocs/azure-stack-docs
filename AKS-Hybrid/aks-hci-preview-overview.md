@@ -27,11 +27,10 @@ into general availability.
 AKS on Azure Stack HCI 23H2 uses Azure Arc to provision AKS Arc clusters from Azure. It enables you to use familiar tools like the Azure portal,
 Azure CLI and Azure Resource Manager templates to create and manage your AKS Arc clusters running on Azure Stack HCI 23H2. Azure Arc is automatically enabled on all your AKS Arc clusters so you can use your Microsoft Entra ID identity for connecting to your clusters from anywhere. Microsoft Entra ensures that your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
 
-Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. If you have created and managed AKS using
-Azure, you'll feel right at home managing AKS Arc clusters with familiar Azure portal or Azure CLI management experiences.
+Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. If you've created and managed AKS using
+Azure, you can manage AKS Arc clusters with familiar Azure portal or Azure CLI management experiences.
 
-You'll also be able to deploy applications at scale using GitOps in both AKS and AKS Arc clusters. GitOps applies development practices like
-version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation.
+You can also deploy applications at scale using GitOps in both AKS and AKS Arc clusters. GitOps applies development practices such as version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation.
 
 At this time, you can perform the following operations through the Azure portal, Azure CLI, and Resource Manager templates:
 
@@ -73,7 +72,7 @@ Kubernetes versions, and so on. The operator can also assign AKS cluster adminis
 
 The AKS on Azure Stack HCI 23H2 workflow is as follows:
 
-1. During the deployment of Azure Stack HCI cluster, all infrastructure components including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator are automatically created and configured.
+1. The deployment of an Azure Stack HCI cluster automatically creates and configures all infrastructure components, including the Arc Resource Bridge, custom location, and the Kubernetes extension for the AKS Arc operator.
 1. Assign built-in RBAC roles for the AKS Arc cluster.
 1. Create AKS Arc virtual networks.
 1. Create AKS Arc clusters on Azure Stack HCI 23H2.

@@ -2,7 +2,7 @@
 title: Overview of AKS hybrid cluster provisioning from Azure (preview)
 description: An overview of AKS hybrid cluster provisioning from Azure.
 ms.topic: overview
-ms.date: 06/22/2023
+ms.date: 11/17/2023
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 10/12/2022
@@ -16,9 +16,9 @@ ms.reviewer: abha
 
 Currently you can manage the lifecycle of AKS hybrid clusters through PowerShell and Windows Admin Center. AKS hybrid cluster provisioning from Azure enables you to use familiar tools like the Azure portal, Azure CLI and Azure Resource Manager templates to create and manage your AKS hybrid clusters running on Azure Stack HCI 22H2 and Windows Server. Azure Arc is automatically enabled on all your AKS hybrid clusters so you can use your Microsoft Entra identity for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies. We've also simplified the end-to-end security posture for your AKS hybrid clusters through Microsoft Defender for Cloud.  
 
-Microsoft continues to focus on delivering a consistent user experience for all your AKS clusters. If you have created and managed AKS using Azure, you'll feel right at home managing AKS hybrid clusters with familiar Azure portal or Azure CLI management experiences.
+Microsoft continues to focus on delivering a consistent user experience for all your AKS clusters. If you've created and managed AKS using Azure, you can manage AKS hybrid clusters with familiar Azure portal or Azure CLI management experiences.
 
-You'll also be able to deploy applications at scale using GitOps in both AKS and AKS hybrid clusters. GitOps applies development practices like version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation.
+You can also deploy applications at scale using GitOps in both AKS and AKS hybrid clusters. GitOps applies development practices such as version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation.
 
 At this time, you can perform the following operations through the Azure portal, Azure CLI, and Resource Manager templates:
 
