@@ -13,19 +13,19 @@ ms.lastreviewed: 11/16/2023
 
 ---
 
-# AKS on Azure Stack HCI 23H2
+# AKS on Azure Stack HCI 23H2 (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article provides an overview of Azure Kubernetes Service (AKS) on Azure Stack HCI 23H2, including a brief introduction, its components, key persona and roles, and the high-level workflow.
 
-This feature is currently in PREVIEW. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released
-into general availability.
+> [!IMPORTANT]
+> This feature is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released
+> into general availability.
 
 ## Overview
 
-AKS on Azure Stack HCI 23H2 uses Azure Arc to provision AKS Arc clusters from Azure. It enables you to use familiar tools like the Azure portal,
-Azure CLI and Azure Resource Manager templates to create and manage your AKS Arc clusters running on Azure Stack HCI 23H2. Azure Arc is automatically enabled on all your AKS Arc clusters so you can use your Microsoft Entra ID identity for connecting to your clusters from anywhere. Microsoft Entra ensures that your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
+AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to provision AKS Arc clusters from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI and Azure Resource Manager templates to create and manage your AKS Arc clusters running on Azure Stack HCI 23H2. Azure Arc is automatically enabled on all your AKS Arc clusters so you can use your Microsoft Entra ID identity for connecting to your clusters from anywhere. Microsoft Entra ensures that your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
 
 Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. If you've created and managed AKS using
 Azure, you can manage AKS Arc clusters with familiar Azure portal or Azure CLI management experiences.
@@ -72,7 +72,7 @@ Kubernetes versions, and so on. The operator can also assign AKS cluster adminis
 
 The AKS on Azure Stack HCI 23H2 workflow is as follows:
 
-1. The deployment of an Azure Stack HCI cluster automatically creates and configures all infrastructure components, including the Arc Resource Bridge, custom location, and the Kubernetes extension for the AKS Arc operator.
+1. Deploy an Azure Stack HCI cluster. The deployment automatically creates and configures all infrastructure components, including the Arc Resource Bridge, custom location, and the Kubernetes extension for the AKS Arc operator.
 1. Assign built-in RBAC roles for the AKS Arc cluster.
 1. Create AKS Arc virtual networks.
 1. Create AKS Arc clusters on Azure Stack HCI 23H2.
