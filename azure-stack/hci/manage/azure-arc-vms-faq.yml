@@ -19,17 +19,17 @@ sections:
         What is changing in Azure Arc Virtual Machine (VM) management on Azure Stack HCI, version 22H2?
       answer: |
         On 15 February 2024, the preview of Arc VM management on Azure Stack HCI, version 22H2 will encounter a breaking change.
-        With the upcoming release of Azure Stack HCI version 23H2, we are supporting Arc VM management exclusively on 23H2. The support for Arc VM management preview on Azure Stack HCI on version 22H2 will end on 15 February 2024.
+        With the upcoming release of Azure Stack HCI version 23H2, we're supporting Arc VM management exclusively on 23H2. The support for Arc VM management preview on Azure Stack HCI on version 22H2 will end on 15 February 2024.
 
     - question: |
         What does this breaking change on Azure Stack HCI, version 22H2 mean for me and my workloads? 
       answer: |
-        The existing Arc VMs created on version 22H2 on your cluster will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February 2024. However, you can't manage or provision new Arc VMs on Azure portal if you are on version 22H2 from November 2023. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Stack HCI, version 23H2. Keep in mind that there is no automated migration support for Arc VMs running on Azure Stack HCI, version 22H2. 
+        The existing Arc VMs created on version 22H2 on your cluster will continue to be accessible through the Azure Command-Line Interface (CLI) until 15 February 2024. However, you can't manage or provision new Arc VMs on Azure portal if you are on version 22H2 from November 2023. To continue the Arc VM preview experience and try out the new features, we strongly recommend that you transition to Azure Stack HCI, version 23H2. Keep in mind that there's no automated migration support for Arc VMs running on Azure Stack HCI, version 22H2. 
 
     - question: |
         What major improvements and features can I expect for Arc VMs in the upcoming Azure Stack HCI, version 23H2?
       answer: |
-        The upcoming Arc VM Management on Azure Stack HCI, version 23H2 has several enhancements and new features. These include a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, additional VM Extensions, improvements to Azure CLI, and more.
+        The upcoming Arc VM Management on Azure Stack HCI, version 23H2 has several enhancements and new features. Improvements include a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, more VM Extensions, improvements to Azure CLI, and more.
 
     - question: |
         When will Azure Stack HCI, version 23H2 be announced, and when can I start using it?
@@ -49,7 +49,7 @@ sections:
     - question: |
         Can Azure Kubernetes Service on Azure Stack HCI and Windows Server and Azure Arc Resource Bridge coexist on the same Azure Stack HCI cluster?
       answer: |
-        Yes. Azure Kubernetes Service on Azure Stack HCI and Windows Server and VM provisioning from the Azure portal can be deployed on the same Azure Stack HCI cluster. You can deploy the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Stack HCI cluster will also remove Arc Resource Bridge.
+        Yes. Azure Kubernetes Service on Azure Stack HCI and Windows Server and VM provisioning from the Azure portal can be deployed on the same Azure Stack HCI cluster. You can deploy the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Stack HCI cluster removes Arc Resource Bridge.
     
     - question: |
         Can I use SDN for Azure Stack HCI VMs created from the Azure portal?
@@ -62,9 +62,9 @@ sections:
         VM management for Azure Stack HCI from the Azure control plane doesn't have any extra fees. Some VM extensions might have a fee.
 
     - question: |
-        Can I use the same name for gallery image projections and will the existing VMs use the new image?
+        Can I use the same name for gallery image projections and do existing VMs use the new image?
       answer: |
-        Two images with the same name result in errors at the time of creating them. This is true for other resources as well, such as logical networks, virtual hard disks etc. An updated image won't change existing VMs that were using it. A copy of the VM image is created at the time VM creation.
+        Two images with the same name result in errors at the time of creating them, which is true for other resources as well, like logical networks, virtual hard disks etc. An updated image doesn't change existing VMs that use it. A copy of the VM image is created at the time VM creation.
 
     - question: | 
         How can I delete a gallery image?  
@@ -77,9 +77,9 @@ sections:
         Deleting a gallery image doesn't affect the VMs that were created using that gallery image. The VMs won't be able to show the image name in the VM details.
 
     - question: | 
-        If I accidently delete Arc Resource Bridge, will the VMs also be deleted?
+        If I delete Arc Resource Bridge, are the VMs also deleted?
       answer: |
-        If you inadvertently remove the Arc Resource Bridge via the Azure Portal, it results in the deletion of the Azure projection of the on-premises Arc Appliance VM. Importantly, this action does not impact your existing workloads. To restore the Azure projection of the Arc Resource Bridge, run `az arcappliance create`. For more information, see [az arcappliance create hci](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci). In the event that the Arc Appliance on-premises VM is accidentally deleted, you'll lose the ability to manage your VMs through Azure portal, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate the Arc Resource Bridge, a redeployment is required. For assistance with this process, contact Microsoft support.
+        If you inadvertently remove the Arc Resource Bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises Arc Appliance VM. Importantly, this action doesn't impact your existing workloads. To restore the Azure projection of the Arc Resource Bridge, run `az arcappliance create`. For more information, see [az arcappliance create hci](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci). If the Arc Appliance on-premises VM is accidentally deleted, you lose the ability to manage your VMs through Azure portal, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate the Arc Resource Bridge, a redeployment is required. For assistance with this process, contact Microsoft support.
     
     - question: |
         What should I do if I unregister and re-register an Azure Stack HCI cluster after Arc VM Management is deployed?
