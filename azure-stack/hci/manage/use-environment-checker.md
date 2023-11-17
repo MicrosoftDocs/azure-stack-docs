@@ -356,7 +356,7 @@ Use the Active Directory validator to:
 
 ### Run the Active Directory validator
 
-To run the Active Directory validator locally from an Azure Stack HCI server node, a workstation, or a staging sever, follow these steps.
+To run the Active Directory validator locally from an Azure Stack HCI server node, a workstation, or a staging server, follow these steps.
 
 1. Ensure the following parameters are unique in the Active Directory per cluster instance:
 
