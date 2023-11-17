@@ -20,7 +20,7 @@ Microsoft continues to focus on delivering a consistent user experience for all 
 
 You'll also be able to deploy applications at scale using GitOps in both AKS and AKS hybrid clusters. GitOps applies development practices like version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation.
 
-At this time, you can perform the following operations through the Azure portal, Azure CLI and Resource Manager templates:
+At this time, you can perform the following operations through the Azure portal, Azure CLI, and Resource Manager templates:
 
 - Create/list/show AKS hybrid preview clusters.
 - Give users access to Azure Resource Manager resources like AKS hybrid clusters, nodepools and vnet object through Azure RBAC.
