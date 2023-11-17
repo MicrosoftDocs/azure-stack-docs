@@ -3,7 +3,7 @@ title: Azure Stack HCI, version 23H2 deployment overview (preview)
 description: Learn about the deployment methods for Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 11/13/2023
+ms.date: 11/17/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -29,25 +29,22 @@ In this release, you can deploy Azure Stack HCI using one of the following metho
 
     For more information, see [Deploy via ARM template](deployment-azure-resource-manager-template.md).
 
-
 ## Deployment sequence
 
 Follow this sequence to deploy Azure Stack HCI in your environment:
 
-
-| Step #                                                       | Description                                                                              |
-|--------------------------------------------------------------|------------------------------------------------------------------------------|
-| [Select validated network topology](#validated-network-topologies)                            | Identify the network reference pattern that corresponds to the way your servers are cabled. You will define the network settings based on this topology.            |
-| [Read the requirements and complete the prerequisites](./deployment-prerequisites.md)         | Review the requirements and complete all the prerequisites before you begin the deployment.            |
-| [View deployment checklist](./deployment-checklist.md)                            | View the checklist to gather the required information ahead of the actual deployment                  |
-| Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md)                             | Prepare your Active Directory (AD) environment for Azure Stack HCI deployment.                      |
-| Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-azure-stack-hci-23h2-software.md)            | Download Azure Stack HCI, version 23H2 OS ISO from Azure portal                                       |
-| Step 3: [Install OS](./deployment-install-os.md)                                         | Install Azure Stack HCI operating system locally on each server in your cluster.                      |
-| Step 4: (Optional) [Configure the proxy](../manage/configure-proxy-settings.md)                       | Optionally configure proxy settings for Azure Stack HCI if your network uses a proxy server for internet access. |
-| Step 5: [Register servers with Arc and assign permissions](./deployment-arc-register-server-permissions.md)     | Install and run the Azure Arc registration script on each of the servers that you intend to cluster.<br> Assign required permissions for the deployment.  |
-| Step 6A: [Deploy the cluster via Azure portal](./deploy-via-portal.md)                  | Use the Azure portal to select Arc servers to create Azure Stack HCI cluster. Use one of the three deployment methods described previously.                       |
-| Step 6B: [Deploy the cluster via ARM template](deployment-azure-resource-manager-template.md)                  | Use the ARM Deployment Template and the Parameter file to deploy Azure Stack HCI cluster.                         |
-
+| Step # | Description |
+|--|--|
+| [Select validated network topology](#validated-network-topologies) | Identify the network reference pattern that corresponds to the way your servers are cabled. You will define the network settings based on this topology. |
+| [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites before you begin the deployment. |
+| [View deployment checklist](./deployment-checklist.md) | View the checklist to gather the required information ahead of the actual deployment |
+| Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md) | Prepare your Active Directory (AD) environment for Azure Stack HCI deployment. |
+| Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-azure-stack-hci-23h2-software.md) | Download Azure Stack HCI, version 23H2 OS ISO from Azure portal |
+| Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI operating system locally on each server in your cluster. |
+| (Optional) [Configure the proxy](../manage/configure-proxy-settings.md) | Optionally configure proxy settings for Azure Stack HCI if your network uses a proxy server for internet access. |
+| Step 4: [Register servers with Arc and assign permissions](./deployment-arc-register-server-permissions.md) | Install and run the Azure Arc registration script on each of the servers that you intend to cluster.<br> Assign required permissions for the deployment. |
+| Step 5A: [Deploy the cluster via Azure portal](./deploy-via-portal.md) | Use the Azure portal to select Arc servers to create Azure Stack HCI cluster. Use one of the three deployment methods described previously. |
+| Step 5B: [Deploy the cluster via ARM template](deployment-azure-resource-manager-template.md) | Use the ARM Deployment Template and the Parameter file to deploy Azure Stack HCI cluster. |
 
 ## Validated network topologies
 
