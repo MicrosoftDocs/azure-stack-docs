@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 11/13/2023
+  ms.date: 11/17/2023
 title: Azure Arc VM management FAQ (preview)
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Stack HCI, versions 23H2 (preview).
@@ -18,8 +18,8 @@ sections:
     - question: |
         What is changing in Azure Arc Virtual Machine (VM) management on Azure Stack HCI, version 22H2?
       answer: |
-        On 15 February 2024, the preview of Arc VM management on Azure Stack HCI, version 22H2 will encounter a breaking change. 
-        With the upcoming release of Azure Stack HCI version 23H2, we are supporting Arc VM management exclusively on 23H2. The support for Arc VM management preview on Azure Stack HCI, version 22H2 will end on 15 February 2024.
+        On 15 February 2024, the preview of Arc VM management on Azure Stack HCI, version 22H2 will encounter a breaking change.
+        With the upcoming release of Azure Stack HCI version 23H2, we are supporting Arc VM management exclusively on 23H2. The support for Arc VM management preview on Azure Stack HCI on version 22H2 will end on 15 February 2024.
 
     - question: |
         What does this breaking change on Azure Stack HCI, version 22H2 mean for me and my workloads? 
@@ -57,17 +57,6 @@ sections:
         SDN is currently not supported for VMs created from the Azure portal.
 
     - question: |
-        My environment doesn't support DNS or Active Directory updates, how can I successfully deploy Arc Resource Bridge?
-      answer: |
-        If you can't enable dynamic DNS updates in your DNS environment, you must precreate records in the Active Directory and the DNS. You can create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice), but don't exceed 32 characters in length. You also need to create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering article](/windows-server/failover-clustering/prestage-cluster-adds). Use the Active Directory object in the following command to complete the installation.
-        ```PowerShell
-        Set-MocConfig -workingDir $csv_path\ResourceBridge  -vnet $vnet -imageDir 
-        $csv_path\imageStore -skipHostLimitChecks -cloudConfigLocation 
-        $csv_path\cloudStore -catalog aks-hci-stable-catalogs-ext -ring stable -clusterRoleName "ca-cloudagent" -CloudServiceIP $CloudServiceIP
-        ```
-        If you hit an error `This typically indicates an issue happened while registering the resource name as a computer object with the  domain controller and/or the DNS server. Check the domain controller and DNS logs for related error messages.` while running `Install-Moc`. Also follow the instructions above.
-
-    - question: |
         Is there a fee to use Arc management for VMs on Azure Stack HCI cluster?
       answer: |
         VM management for Azure Stack HCI from the Azure control plane doesn't have any extra fees. Some VM extensions might have a fee.
@@ -88,18 +77,10 @@ sections:
         Deleting a gallery image doesn't affect the VMs that were created using that gallery image. The VMs won't be able to show the image name in the VM details.
 
     - question: | 
-        If I reinstall the Arc Resource Bridge will the VMs also be redeployed?
+        If I accidently delete Arc Resource Bridge, will the VMs also be deleted?
       answer: |
-        If an Arc Resource Bridge is deleted, then management through the Azure control plane (portal, Azure CLI etc.) is unavailable. The VMs remain on the cluster and are only manageable through on-premises tools (Windows Admin Center, PowerShell etc.).
-
-        Redeploying an Arc Resource Bridge doesn't enable Arc management of existing VMs. However, all new VMs created using the new Resource Bridge can be managed from the Azure control plane.
-
-    - question: |
-        What should I do if the deployment of Arc Resource Bridge didn't succeed?
-
-      answer: |
-        See the [Troubleshoot and debug](troubleshoot-arc-enabled-vms.md) article for common errors. If you're redeploying Arc Resource Bridge, make sure to clean up the previous deployment completely by following the [Uninstall procedure](uninstall-arc-resource-bridge.md).
-
+        If you inadvertently remove the Arc Resource Bridge via the Azure Portal, it results in the deletion of the Azure projection of the on-premises Arc Appliance VM. Importantly, this action does not impact your existing workloads. To restore the Azure projection of the Arc Resource Bridge, run `az arcappliance create`. For more information, see [az arcappliance create hci](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci). In the event that the Arc Appliance on-premises VM is accidentally deleted, you'll lose the ability to manage your VMs through Azure portal, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate the Arc Resource Bridge, a redeployment is required. For assistance with this process, contact Microsoft support.
+    
     - question: |
         What should I do if I unregister and re-register an Azure Stack HCI cluster after Arc VM Management is deployed?
       answer: |
