@@ -22,6 +22,8 @@
   items:
   - name: Overview
     href: aks-hci-preview-overview.md
+  - name: System requirements
+    href: aks-hci-network-system-requirements.md
 - name: Quickstarts
   expanded: true
   items:
