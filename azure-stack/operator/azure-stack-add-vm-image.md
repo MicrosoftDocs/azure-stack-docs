@@ -151,7 +151,7 @@ To remove the VM image as an Azure Stack Hub operator using PowerShell, follow t
      For example: `1.0.0`  
      The version of the VM image that users use when they deploy the VM image. This version is in the format **\#.\#.\#**. Don't include a space or other special characters in this field.  
 
-     For more info about the **Remove-AzsPlatformImage** cmdlet, see the Microsoft PowerShell [Azure Stack Hub Operator module documentation](/powershell/azure/azure-stack/overview).
+     For more info about the **Remove-AzsPlatformImage** cmdlet, see the Microsoft PowerShell [Azure Stack Hub Operator module documentation](/powershell/azurestackhub/overview).
 
 ---
 

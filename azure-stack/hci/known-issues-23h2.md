@@ -3,7 +3,7 @@ title: Release notes with known issues in Azure Stack HCI 23H2 2310 release (pre
 description: Read about the known issues in Azure Stack HCI 2310 public preview release (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/13/2023
+ms.date: 11/17/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -50,6 +50,7 @@ Here are the known issues in version 2310 release:
 |2310 <br> 10.2310.0.30| Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the ARM template to override this parameter and disable RDMA for the intents. |
 |2310 <br> 10.2310.0.30| Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
 |2310 <br> 10.2310.0.30| Deployment |If you select **Review + Create** and you haven't filled out all the tabs, the deployment begins and then eventually fails.|There's no known workaround in this release. |
+|2310 <br> 10.2310.0.30 | Deployment | This issue is seen if an incorrect subscription or resource group was used during registration. When you register the server a second time with Arc, the **Azure Edge Lifecycle Manager** extension fails during the registration but the extension state is reported as **Ready**. | Before you run the registration the second time:<br><br>Make sure to delete the following folders from your server(s): `C:\ecestore`, `C:\CloudDeployment`, and `C:\nugetstore`.<br>Delete the registry key using the  PowerShell cmdlet:<br>`Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation` |
 |2310 <br> 10.2310.0.30| Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 
 
