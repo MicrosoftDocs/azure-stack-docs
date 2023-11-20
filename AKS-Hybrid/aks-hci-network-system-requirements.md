@@ -83,7 +83,7 @@ deployment. Ensure that these are allowed in your firewall configuration:
 | `pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
-| aka.ms | 443 | az extensions | Required to download Az CLI extensions such as akshybrid and connectedk8s. |
+| `aka.ms` | 443 | az extensions | Required to download Az CLI extensions such as akshybrid and connectedk8s. |
 
 ## Next steps
 
