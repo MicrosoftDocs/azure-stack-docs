@@ -17,7 +17,7 @@ ms.lastreviewed: 11/16/2023
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of Azure Kubernetes Service (AKS) on Azure Stack HCI 23H2, including a brief introduction, its components, key persona and roles, and the high-level workflow.
+This article provides an overview of Azure Kubernetes Service (AKS) on Azure Stack HCI 23H2, including a brief introduction, its components, key persona and roles, and the new high-level workflow.
 
 > [!IMPORTANT]
 > This feature is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released
@@ -30,8 +30,6 @@ AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to provi
 Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. If you've created and managed AKS using
 Azure, you can manage AKS Arc clusters with familiar Azure portal or Azure CLI management experiences.
 
-You can also deploy applications at scale using GitOps in both AKS and AKS Arc clusters. GitOps applies development practices such as version control, collaboration, compliance, and continuous integration/continuous deployment (CI/CD) to infrastructure automation.
-
 At this time, you can perform the following operations through the Azure portal, Azure CLI, and Resource Manager templates:
 
 - Create/list/show AKS Arc clusters.
@@ -40,20 +38,11 @@ At this time, you can perform the following operations through the Azure portal,
 - Add/list/show Linux and Windows nodepools on your AKS Arc cluster.
 - Delete your AKS Arc clusters and nodepools.
 
-With Azure Arc, you can use the following Azure services on your AKS Arc cluster provisioning from Azure:
-
-- Container Insights
-- GitOps v2
-- Open Service Mesh
-- Azure Key Vault
-
-To create and manage AKS clusters from Azure, you must install the key components described in the following sections.
-
 ## Components of AKS on Azure Stack HCI 23H2
 
 The AKS on Azure Stack HCI 23H2 infrastructure is comprised of several components including the Arc Resource Bridge, Custom Location, and the Kubernetes extension for the AKS Arc operator. All of these infrastructure components are installed by default when Azure Stack HCI 23H2 is deployed.
 
-- **Arc Resource Bridge**: The Arc Resource Bridge is created automatically when you deploy an Azure Stack HCI 23H2 cluster. This lightweight Kubernetes VM connects your Azure Stack HCI to the Azure cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to the private clouds required to manage resources such as Kubernetes clusters on-premises through Azure.
+- **Arc Resource Bridge**: The Arc Resource Bridge is created automatically when you deploy an Azure Stack HCI 23H2 cluster. This lightweight Kubernetes cluster connects your Azure Stack HCI to the Azure cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to the private clouds required to manage resources such as Kubernetes clusters on-premises through Azure.
 - **Custom Location**: Similar to the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Stack HCI cluster. A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying AKS Arc instances.
 - **Kubernetes Extension for AKS Arc Operator**: The Kubernetes extension for AKS Arc Operator is automatically installed on Arc Resource Bridge when you deploy your Azure Stack HCI 23H2 cluster. It is the on-premises equivalent of an Azure Resource Manager resource provider, helping manage AKS Arc clusters via Azure.
 
@@ -63,19 +52,18 @@ By integrating these components, Azure Arc offers a unified and efficient AKS Ar
 
 **Infrastructure administrator role**: The role of the infrastructure administrator is to set up platform components; for example, setting up Azure Stack HCI, including the custom location, networking, and storage configurations. The admin role then creates on-premises networks that the Kubernetes operator uses to create AKS Arc clusters.
 
-**Kubernetes operator role**: Kubernetes operators create and run applications on their on-premises AKS Arc clusters. The operator is given scoped Azure RBAC access to the Azure subscription, Azure custom location, and AKS Arc network by the infrastructure administrator. No access to the underlying on-premises infrastructure is necessary.
+**Kubernetes operator role**: Kubernetes operators can create and manage Kubernetes clusters on Azure Stack HCI so they can run applications without coordinating with infrastructure administrators. The operator is given scoped access to the Azure subscription, Azure custom location, and AKS Arc network by the infrastructure administrator. No access to the underlying on-premises infrastructure is necessary.
 
 Once the operator has the required access, they are free to create AKS Arc cluster according to application needs - Windows/Linux node pools,
-Kubernetes versions, and so on. The operator can also assign AKS cluster administrator permissions to other Microsoft Entra users in their organization, to access the provisioned AKS Arc clusters.
+Kubernetes versions, and so on. The operator can also assign Kubernetes operator permissions to other Microsoft Entra users in their organization, to access the provisioned AKS Arc clusters.
 
 ## AKS on Azure Stack HCI 23H2 workflow
 
 The AKS on Azure Stack HCI 23H2 workflow is as follows:
 
 1. Deploy an Azure Stack HCI cluster. The deployment automatically creates and configures all infrastructure components, including the Arc Resource Bridge, custom location, and the Kubernetes extension for the AKS Arc operator.
-1. Assign built-in RBAC roles for the AKS Arc cluster.
-1. Create AKS Arc virtual networks.
-1. Create AKS Arc clusters on Azure Stack HCI 23H2.
+2. Create AKS Arc virtual networks.
+3. Create AKS Arc clusters on Azure Stack HCI 23H2.
 
 To troubleshoot issues with your AKS Arc clusters or for more information about existing known issues and limitations, see Troubleshoot AKS on Azure Stack HCI 23H2.
 
