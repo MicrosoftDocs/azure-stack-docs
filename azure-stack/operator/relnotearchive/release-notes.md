@@ -168,7 +168,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Windows Server 2022 is now supported as a guest operating system. Windows Server 2022 VMs must be manually activated using [Automatic Virtual Machine Activation](/windows-server/get-started/automatic-vm-activation) in Windows Server on Azure Stack Hub running version 2108 or later. It cannot be activated on previous versions.
 - Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
 - Two new services, [Azure Kubernetes Service](../../user/aks-overview.md) and [Azure Container Registry](../../user/container-registry-overview.md), are available in public preview with this release.
-- [**AzureStack** module 2.2.0](/powershell/azure/azure-stack/overview?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
+- [**AzureStack** module 2.2.0](/azure-stack/operator?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
 - With this release, telemetry data is uploaded to an Azure Storage account that's managed and controlled by Microsoft. Azure Stack Hub telemetry service connects to `https://*.blob.core.windows.net/` and `https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` for a successful telemetry data upload to Microsoft. Port 443 (HTTPS) must be opened. For more information, see [Azure Stack Hub telemetry](../azure-stack-telemetry.md).
 - This release includes a public preview of remote support, which enables a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent, while controlling the access level and duration of access. Support can only access your device after a support request has been submitted. For more information, see [Remote support for Azure Stack Hub](../remote-support.md).
 
@@ -2003,7 +2003,7 @@ This update includes the following new features and improvements for Azure Stack
    * **Azs.Storage.Admin Module**  
          Bug fix - New Storage Quota uses defaults if none provided.
 
-To review the reference for the updated modules, see [Azure Stack Module Reference](/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
+To review the reference for the updated modules, see [Azure Stack Module Reference](/azure-stack/operator?preserve-view=true&view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
 
 ## Fixed issues
 
@@ -3985,7 +3985,7 @@ The following are now available, but don't require Azure Stack update 1804.
 
 - **New Azure Stack Admin PowerShell Version 1.3.0**.  Azure Stack PowerShell 1.3.0 is now available for installation. This version provides commands for all Admin resource providers to manage Azure Stack.  With this release, some content will be deprecated from the Azure Stack Tools GitHub [repository](https://github.com/Azure/AzureStack-Tools). 
 
-   For installation details, follow the [instructions](../azure-stack-powershell-install.md) or the [help](/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
+   For installation details, follow the [instructions](../azure-stack-powershell-install.md) or the [help](/azure-stack/operator?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
 
 - **Initial release of Azure Stack API Rest Reference**. The [API reference for all Azure Stack Admin resource providers](/rest/api/azure-stack/) is now published. 
 
@@ -4024,7 +4024,7 @@ The following are post-installation known issues for build  **20180513.1**.
 
 <!-- 1272111 - IS --> 
 - After you install or update to this version of Azure Stack, you might not be able to view Azure Stack scale units in the Admin portal.  
-  Workaround: Use PowerShell to view information about Scale Units. For more information, see the [help](/powershell/azure/azure-stack/overview?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
+  Workaround: Use PowerShell to view information about Scale Units. For more information, see the [help](/azure-stack/operator?preserve-view=true&view=azurestackps-1.3.0) content for Azure Stack Module 1.3.0. 
 
 <!-- 2332636 - IS -->  
 - When you use AD FS for your Azure Stack identity system and update to this version of Azure Stack, the default owner of the default provider subscription is reset to the built-in **CloudAdmin** user.  

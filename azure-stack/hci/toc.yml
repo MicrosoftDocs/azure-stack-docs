@@ -123,11 +123,11 @@
             href: manage/repair-server.md
     - name: Monitor
       items:
-        - name: Alerts via Azure monitor
+        - name: Health alerts
           href: manage/health-alerts-via-azure-monitor-alerts.md
-        - name: Via Azure Monitor Metrics
+        - name: Metrics
           href: manage/monitor-cluster-with-metrics.md
-        - name: Features via workbooks
+        - name: Features
           href: manage/monitor-features.md
     - name: Troubleshoot
       items:
@@ -568,6 +568,8 @@
     href: guided-quick-deploy-eval.yml 
   - name: Earlier versions
     items:
+    - name: Azure Arc VM management for version 22H2
+      href: https://databoxupdatepackages.blob.core.windows.net/documentation/MicrosoftAzureStackHCI_ArcVMMangement_Version22H2-10122023.pdf 
     - name: What's new in version 22H2
       href: whats-new-in-hci-22h2.md
     - name: What's new in version 21H2
@@ -586,6 +588,8 @@
           href: manage/whats-new-2306-preview.md
         - name: 2306 updates
           items:
+          - name: 2306.4 release
+            href: manage/whats-new-2306-4-preview.md
           - name: 2306.2 release
             href: manage/whats-new-2306-2-preview.md
           - name: 2306.1 release
@@ -604,7 +608,9 @@
           href: manage/whats-new-preview.md
       - name: View known issues
         items:
-        - name: 2306.2 update release - Current
+        - name: 2306.4 update release - Current
+          href: hci-known-issues-2306-4.md 
+        - name: 2306.2 update release
           href: hci-known-issues-2306-2.md 
         - name: 2306.1 update release
           href: hci-known-issues-2306-1.md 
