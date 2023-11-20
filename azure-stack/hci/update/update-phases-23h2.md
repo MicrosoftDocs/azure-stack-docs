@@ -19,7 +19,7 @@ The procedure in this article applies to both a single server and a multi-server
 
 ## About update phases
 
-The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [Update overview for Azure Stack HCI, version 23H2 (preview)?](whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [Update overview for Azure Stack HCI, version 23H2 (preview)](whats-the-lifecycle-manager-23h2.md).
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
@@ -33,13 +33,13 @@ The updates consist of several phases: discovering the update, staging the conte
 
 You can apply these updates via PowerShell or the Azure portal. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you might need to take during each phase and what actions Azure Stack HCI takes through the update operation.
 
-![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](../update/update-phases-23h2.md)
+![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](../update/media/updates/updates-phases-actions-23h2.png)
 
 ## Phase 1: Discovery and acquisition
 
 Before Microsoft releases a new update package, the package is validated as a collection of components. After the validation is complete, the content is released along with the release notes.
 
-The release notes include the update contents, changes, known issues, and links to any external downloads that might be required (for example, drivers and firmware). For more information, see the [Latest release notes](../known-issues-23h2.md)
+The release notes include the update contents, changes, known issues, and links to any external downloads that might be required (for example, drivers and firmware). For more information, see the [Latest release notes](../known-issues-23h2.md).
 
 After Microsoft releases the update, your Azure Stack HCI update platform will automatically detect the update. Though you don't need to scan for updates, you must go to the **Updates** page in your management surface to see the new update’s details.
 

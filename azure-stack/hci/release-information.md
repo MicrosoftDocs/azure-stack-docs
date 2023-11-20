@@ -124,4 +124,3 @@ For information about what's included in each version of Azure Stack HCI, see th
 - [Release Notes for Azure Stack HCI, version 23H2](https://support.microsoft.com/topic/9981de59-9fae-4118-a636-131a8dd4a013)
 - [Release Notes for Azure Stack HCI, version 22H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-22h2-fea63106-a0a9-4b6c-bb72-a07985c98a56)
 - [Release Notes for Azure Stack HCI, version 21H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-21h2-5c5e6adf-e006-4a29-be22-f6faeff90173)
-

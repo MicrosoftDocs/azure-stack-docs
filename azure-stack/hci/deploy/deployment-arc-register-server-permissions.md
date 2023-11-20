@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2023
+ms.date: 11/16/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -47,7 +47,10 @@ Before you begin, make sure you've done the following:
 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller/0.1.2489.42) from PSGallery.
 
     ```powershell
-    #Install Arc registration script from PSGallery
+    #Register PSGallery as a trusted repo
+    Register-PSRepository -Default -InstallationPolicy Trusted
+    
+    #Install Arc registration script from PSGallery 
     Install-Module AzsHCI.ARCinstaller
 
     #Install required PowerShell modules in your node for registration
@@ -55,7 +58,7 @@ Before you begin, make sure you've done the following:
     Install-Module Az.ConnectedMachine -Force
     Install-Module Az.Resources -Force
     ```
-    
+
     Here's a sample output of the installation:
 
     ```output
@@ -66,12 +69,6 @@ Before you begin, make sure you've done the following:
     running 'Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force'. Do you want PowerShellGet to install
     and import the NuGet provider now?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
-    
-    Untrusted repository
-    You are installing the modules from an untrusted repository. If you trust this repository, change its
-    InstallationPolicy value by running the Set-PSRepository cmdlet. Are you sure you want to install the modules from
-    'PSGallery'?
-    [Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "N"): Y
     PS C:\Users\SetupUser>
     
     PS C:\Users\SetupUser> Install-Module Az.Accounts -Force
@@ -80,7 +77,7 @@ Before you begin, make sure you've done the following:
     ```
 
 1. Set the parameters. The script takes in the following parameters:
-    
+
     |Parameters  |Description  |
     |------------|-------------|
     |`SubscriptionID`    |The ID of the subscription used to register your servers with Azure Arc.         |
