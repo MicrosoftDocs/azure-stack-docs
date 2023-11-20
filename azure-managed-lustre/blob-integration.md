@@ -24,7 +24,6 @@ Azure Managed Lustre supports both hierarchical and non-hierarchical namespaces 
 - With a hierarchical namespace container, Azure Managed Lustre reads POSIX attributes from the blob header.
 - With a non-hierarchical container, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
 
-For more information about using Azure Managed Lustre with hierarchical or non-hierarchical blob containers, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
 
 ## Filter blob imports
 
