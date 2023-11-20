@@ -68,21 +68,21 @@ deployment. Ensure that these are allowed in your firewall configuration:
 
 | URL | Port | Service | Notes |
 |---|---|---|---|
-| https://mcr.microsoft.com | 443 | Microsoft container registry | Used for official Microsoft artifacts such as container images. |
-| https://*.his.arc.azure.com | 443 | Azure Arc identity service | Used for identity and access control. |
-| https://*.dp.kubernetesconfiguration.azure.com | 443 | Kubernetes | Used for Azure Arc configuration. |
-| https://*.servicebus.windows.net | 443 | Cluster connect | Used to securely connect to Azure Arc-enabled Kubernetes clusters without requiring any inbound port to be enabled on the firewall. |
-| https://guestnotificationservice.azure.com | 443 | Notification service | Used for guest notification operations. |
-| https://*.dp.prod.appliances.azure.com | 443 | Data plane service | Used for data plane operations for Resource bridge (appliance). |
-| https://ecpacr.azurecr.io | 443 | Download agent | Used to download Resource bridge (appliance) container images. |
-| *.blob.core.windows.net  *.dl.delivery.mp.microsoft.com <br> *.do.dsp.mp.microsoft.com | 443 | TCP | Used to download Resource bridge (appliance) images. |
-| https://azurearcfork8sdev.azurecr.io | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images. |
-| https://adhs.events.data.microsoft.com | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which means any Kubernetes control plane. |
-| https://v20.events.data.microsoft.com  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Windows Server host. |
-| gcr.io  | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images. |
-| pypi.org  | 443 | Python package | Validate Kubernetes and Python versions. |
-| *.pypi.org  | 443 | Python package | Validate Kubernetes and Python versions. |
-| https://hybridaks.azurecr.io | 443 | Container image | Required to access the HybridAKS operator image. |
+| `https://mcr.microsoft.com` | 443 | Microsoft container registry | Used for official Microsoft artifacts such as container images. |
+| `https://*.his.arc.azure.com` | 443 | Azure Arc identity service | Used for identity and access control. |
+| `https://*.dp.kubernetesconfiguration.azure.com` | 443 | Kubernetes | Used for Azure Arc configuration. |
+| `https://*.servicebus.windows.net` | 443 | Cluster connect | Used to securely connect to Azure Arc-enabled Kubernetes clusters without requiring any inbound port to be enabled on the firewall. |
+| `https://guestnotificationservice.azure.com` | 443 | Notification service | Used for guest notification operations. |
+| `https://*.dp.prod.appliances.azure.com` | 443 | Data plane service | Used for data plane operations for Resource bridge (appliance). |
+| `https://ecpacr.azurecr.io` | 443 | Download agent | Used to download Resource bridge (appliance) container images. |
+| `*.blob.core.windows.net`<br> `*.dl.delivery.mp.microsoft.com` <br> `*.do.dsp.mp.microsoft.com` | 443 | TCP | Used to download Resource bridge (appliance) images. |
+| `https://azurearcfork8sdev.azurecr.io` | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images. |
+| `https://adhs.events.data.microsoft.com` | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which means any Kubernetes control plane. |
+| `https://v20.events.data.microsoft.com`  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Windows Server host. |
+| `gcr.io` | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images. |
+| `pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
+| `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
+| `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
 | aka.ms | 443 | az extensions | Required to download Az CLI extensions such as akshybrid and connectedk8s. |
 
 ## Next steps
