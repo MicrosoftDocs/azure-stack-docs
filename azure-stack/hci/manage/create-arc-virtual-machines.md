@@ -68,7 +68,7 @@ Depending on the type of the network interface that you created, you can create 
 
     ```azurecli
     $vmName ="myhci-vm"
-    $subscription =  "myhci-sub"
+    $subscription =  "<Subscription ID>"
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl"
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
