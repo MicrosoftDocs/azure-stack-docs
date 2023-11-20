@@ -18,16 +18,16 @@ The following requirements apply to an Azure Stack HCI administrator, in consult
 
 ## Static IP networking
 
-These prerequisites are strongly recommended for production and proof of concept deployments:
+These prerequisites are recommended for production and proof of concept deployments:
 
 |      Prerequisite     |      Item     |      Details     |      Value     |
 |---|---|---|---|
-|     1    |     Do you have a static IP subnet?    |     This subnet will be used for assigning an IP address to   the underlying VM of the Azure Arc Resource Bridge.    |     The IP address prefix of your subnet; for example, 172.16.0.0/16.    |
-|     2    |     Do you have at least 4 available IP addresses in the   subnet?    |     Ensure that you have at least 4 continuous available IP   addresses in this subnet.    |     Ensure and list the range of available IP addresses in   your subnet; for example, 172.16.0.3 to 172.16.0.10.    |
-|     3    |     What is the default gateway IP address?    |     The IP address of the default gateway of the subnet you   provided.    |     The IP address of your gateway; for example, 172.16.0.1.    |
-|     4    |     Does the subnet have public DNS resolution access?    |     A minimum of one and a maximum of three DNS server IP   addresses can be provided.    |     The IP address(es) of your DNS servers; for example, 172.16.0.2.     To specify more than one DNS server use a comma "," to   separate them.    |
-|     5    |     Do you have an external virtual switch configured on Azure   Stack HCI?    |     You need a virtual switch configured for subnets used to   deploy AKS clusters on.    |     The name of the virtual switch.    |
-|     6    |     Do you have a VLAN ID?    |     This is an optional parameter. Check with your network   administrator if the subnet you provided above is VLAN tagged.    |     The VLAN ID; for example, 7.    |
+|     1    |     Do you have a static IP subnet?    |     This subnet is used for assigning an IP address to the underlying VM of the Azure Arc Resource Bridge.    |     The IP address prefix of your subnet; for example, 172.16.0.0/16.    |
+|     2    |     Do you have at least 4 available IP addresses in the subnet?    |     Ensure that you have at least 4 continuous available IP addresses in this subnet.    |     Ensure and list the range of available IP addresses in your subnet; for example, 172.16.0.3 to 172.16.0.10.    |
+|     3    |     What is the default gateway IP address?    |     The IP address of the default gateway of the subnet you provided.    |     The IP address of your gateway; for example, 172.16.0.1.    |
+|     4    |     Does the subnet have public DNS resolution access?    |     A minimum of one and a maximum of three DNS server IP addresses can be provided.    |     The IP address(es) of your DNS servers; for example, 172.16.0.2. To specify more than one DNS server use a comma "," to separate them.    |
+|     5    |     Do you have an external virtual switch configured on Azure   Stack HCI?    |     You need a virtual switch configured for subnets used to deploy AKS clusters on.    |     The name of the virtual switch.    |
+|     6    |     Do you have a VLAN ID?    |     This is an optional parameter. Check with your network administrator if the subnet you provided above is VLAN tagged.    |     The VLAN ID; for example, 7.    |
 
 ## DHCP networking
 
@@ -35,10 +35,10 @@ These prerequisites are only recommended for testing and proof of concept (POC) 
 
 |      Prerequisite     |      Item     |      Details     |      Value     |
 |---|---|---|---|
-|     1    |     Do you have a DHCP server with a scope of at least 7 IP   addresses in your environment?    |     This DHCP server will be used to assign an IP address to   the underlying VMs of the AKS cluster.    |     Check with your network administrator if your network   environment has a DHCP server.    |
-|     2    |     Do you have at least 2 IP addresses excluded from the DHCP   scope?    |     You need 2 IP addresses to be excluded from the DHCP   scope.    Apart from 7 required IP addresses in the DHCP scope, we also need to   statically assign IP addresses to some important components, so their IP   address never changes. For example, the Kubernetes Control Plane IP address.    |     List of at least 2 IP addresses in the same subnet as the   DHCP server but excluded from the DHCP scope.    |
-|     3    |     Do you have an external virtual switch configured on Azure   Stack HCI?    |     You need a virtual switch configured for subnets used to   deploy AKS clusters on.    |     The name of the virtual switch.    |
-|     4    |     Do you have a VLAN ID?    |     This is an optional parameter. Check with your network   administrator if the subnet you provided above is VLAN tagged.    |     The VLAN ID; for example, 7.    |
+|     1    |     Do you have a DHCP server with a scope of at least 7 IP addresses in your environment?    |     This DHCP server is used to assign an IP address to the underlying VMs of the AKS cluster.    |     Check with your network administrator if your network environment has a DHCP server.    |
+|     2    |     Do you have at least 2 IP addresses excluded from the DHCP scope?    |     You need 2 IP addresses to be excluded from the DHCP scope. Apart from 7 required IP addresses in the DHCP scope, we also need to statically assign IP addresses to some important components, so their IP address never changes; for example, the Kubernetes Control Plane IP address.    |     List of at least 2 IP addresses in the same subnet as the DHCP server but excluded from the DHCP scope.    |
+|     3    |     Do you have an external virtual switch configured on Azure Stack HCI?    |     You need a virtual switch configured for subnets used to deploy AKS clusters on.    |     The name of the virtual switch.    |
+|     4    |     Do you have a VLAN ID?    |     This is an optional parameter. Check with your network administrator if the subnet you provided above is VLAN tagged.    |     The VLAN ID; for example, 7.    |
 
 ## Proxy settings
 
