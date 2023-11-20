@@ -27,8 +27,7 @@ This article provides an overview of Azure Kubernetes Service (AKS) on Azure Sta
 
 AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to provision AKS Arc clusters from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI and Azure Resource Manager templates to create and manage your AKS Arc clusters running on Azure Stack HCI 23H2. Azure Arc is automatically enabled on all your AKS Arc clusters so you can use your Microsoft Entra ID identity for connecting to your clusters from anywhere. Microsoft Entra ensures that your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
 
-Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. If you've created and managed AKS using
-Azure, you can manage AKS Arc clusters with familiar Azure portal or Azure CLI management experiences.
+Microsoft continues to focus on delivering a consistent user experience for all your AKS clusters. If you've created and managed AKS using Azure, you can manage AKS Arc clusters with familiar Azure portal or Azure CLI management experiences.
 
 At this time, you can perform the following operations through the Azure portal, Azure CLI, and Resource Manager templates:
 
