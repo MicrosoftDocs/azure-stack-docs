@@ -24,7 +24,7 @@ This article helps you understand the variety of PowerShell modules that are use
 | --- | --- | --- |
 | Global Azure Resource Manager | [Azure PowerShell modules](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API browser](/rest/api/) |
 | Azure Stack Hub Resource Manager | [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md) | [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md) |
-| Azure Stack Hub administrator endpoints | [Azure Stack Hub admin module](/powershell/azure/azure-stack/overview) | [REST API browser - Azure Stack Hub](/rest/api/?term=Azure Azure Stack Admin) |
+| Azure Stack Hub administrator endpoints | [Azure Stack Hub admin module](/powershell/azurestackhub/overview) | [REST API browser - Azure Stack Hub](/rest/api/?term=Azure Azure Stack Admin) |
 | Azure Stack Hub privileged endpoint | [Use the privileged endpoint in Azure Stack Hub](../operator/azure-stack-privileged-endpoint.md) | |
 
 Each interface contacts resource providers in global Azure or Azure Stack Hub. Resource providers enable Azure capabilities. For example, the Azure Compute resource provider gives you programmatic access to the creation and management of virtual machines and their supporting resources.

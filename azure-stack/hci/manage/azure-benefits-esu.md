@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 11/13/2023
-ms.lastreviewed: 11/13/2023
+ms.date: 11/15/2023
+ms.lastreviewed: 11/15/2023
 
 ---
 
@@ -26,7 +26,7 @@ To get general information about the ESU program, products that are covered, and
 There are several advantages to getting ESU through Azure, which extend to Azure Stack HCI:
 
 - **Free of charge**: You can get ESUs through Azure Stack HCI for free.
-- **Get an additional year of ESUs for Windows Server and SQL Server 2008 and 2008 R2**: On Azure and Azure Stack HCI only, ESUs for Windows Server and SQL Server 2008 and 2008 R2 will end on January 14, 2024 and July 12, 2023 respectively; a year longer than the usual three-year ESU programs.
+- **Get an additional year of ESUs for Windows Server**: On Azure and Azure Stack HCI only, ESUs for Windows Server will end on January 14, 2024 and July 12, 2023 respectively; a year longer than the usual three-year ESU programs.
 
 ## Tutorial: Get free ESUs through Azure Stack HCI
 
@@ -58,15 +58,15 @@ The following image shows typical output when checking for required prerequisite
 
 Follow these instructions to turn on legacy OS support for Azure VM verification:
 
-- Using Windows Admin Center: [Manage legacy OS support using Windows Admin Center](../deploy/azure-verification.md#1-turn-on-legacy-os-support-on-the-host).
-- Using PowerShell: [Manage legacy OS support using PowerShell](../deploy/azure-verification.md#1-turn-on-legacy-os-support-on-the-host-1).
+- Using Windows Admin Center: [Manage legacy OS support using Windows Admin Center](../deploy/azure-verification.md?tabs=wac#1-turn-on-legacy-os-support-on-the-host).
+- Using PowerShell: [Manage legacy OS support using PowerShell](../deploy/azure-verification.md?tabs=azure-ps#1-turn-on-legacy-os-support-on-the-host-1).
 
 ### Step 2: Enable access for new VMs
 
 You must also enable legacy OS support access for each VM that requires ESU. Follow these instructions:
 
-- Using Windows Admin Center: [Manage legacy OS support access for your VMs - Windows Admin Center](../deploy/azure-verification.md#2-enable-access-for-new-vms). Check that your ESU VMs appear as **Active** in the **VM** tab.
-- Using PowerShell: [Manage legacy OS support access for your VMs - PowerShell](../deploy/azure-verification.md#2-enable-access-for-vms).
+- Using Windows Admin Center: [Manage legacy OS support access for your VMs - Windows Admin Center](../deploy/azure-verification.md?tabs=wac#2-enable-access-for-new-vms). Check that your ESU VMs appear as **Active** in the **VM** tab.
+- Using PowerShell: [Manage legacy OS support access for your VMs - PowerShell](../deploy/azure-verification.md?tabs=azure-ps#2-enable-access-for-vms).
 
 ### Step 3: Install Extended Security Updates
 
@@ -79,7 +79,7 @@ Update, Windows Server Update Services (WSUS), Microsoft Update Catalog, or othe
 
 ### What ESU products does this cover?
 
-ESU covers Windows Server, Windows client, and SQL Server products under the ESU program. For more information, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates).
+ESU covers Windows Server and Windows client products under the ESU program. For more information, see the [product lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates).
 
 ### Does this cover ESUs for Windows Server 2012?
 

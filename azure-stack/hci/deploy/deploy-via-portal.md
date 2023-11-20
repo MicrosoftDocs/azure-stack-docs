@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal (preview)
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/14/2023
+ms.date: 11/16/2023
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -22,7 +22,7 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Start the wizard and fill out the basics
 
 <!---1. Open the Azure portal and navigate to the Azure Stack HCI service (searching is an easy way) and then select **Deploy**.--->
-1. Open a web browser, navigate to <https://aka.ms/IgnitePortal> and then select **Deploy cluster (preview)**.
+1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Stack HCI**. On the **Get started** tab, select **Deploy cluster (preview)**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
@@ -181,14 +181,13 @@ To confirm that the system and all of its Azure resources were successfully depl
 
 ## Post deployment tasks
 
-
-For security reasons, Remote Desktop Protocol(RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. 
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems.
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
 
 1. Run PowerShell as administrator on your management PC.
 1. Connect to your Azure Stack HCI system via a remote PowerShell session.
-    
+
     ```powershell
     $ip="<IP address of the Azure Stack HCI server>"
     Enter-PSSession -ComputerName $ip -Credential get-Credential
@@ -201,8 +200,7 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
     ```
 
-
 ## Next steps
 
-* If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md)
-* [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md)
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md).
+- [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md).
