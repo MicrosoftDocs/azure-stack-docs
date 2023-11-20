@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 11/17/2023
 ---
 
 # Create logical networks for Azure Stack HCI (preview)
@@ -37,7 +37,7 @@ Before you begin, make sure to complete the following prerequisites:
   PS C:\Users\hcideployuser> Get-VmSwitch -SwitchType External
   Name                               SwitchType       NetAdapterInterfaceDescription
   ----                               ----------       ----------------------------
-  ConvergedSwitch(compute_management) External        Teamed-Interface
+  ConvergedSwitch(management_compute_storage) External        Teamed-Interface
   PS C:\Users\hcideployuser>
   ```
 
@@ -45,20 +45,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Sign in and set subscription
 
-1. Connect to a server on your Azure Stack HCI system. Run PowerShell as an administrator.
-
-
-1. Sign in. Type:
-
-    ```azurecli
-    az login --use-device-code
-    ```
-
-1. Set your subscription.
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
 
 ## Create logical network
 
@@ -75,13 +62,15 @@ Create a static logical network when you want to create virtual machines with ne
 
     ```azurecli
     $lnetName = "myhci-lnet-static"
-    $vmSwitchName = "ConvergedSwitch(management_compute_storage)"
+    $vmSwitchName = '"ConvergedSwitch(management_compute_storage)"'
     $subscriptionID = "<Subscription ID>"
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl"
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
+    $gateway = "192.168.200.1"
+    $dnsServers = " 192.168.200.222"
     ```
 
     > [!NOTE]
@@ -160,7 +149,7 @@ Create a static logical network when you want to create virtual machines with ne
             }
           }
         ],
-        "vmSwitchName": "ConvergedSwitch(managementcomputestorage)"
+        "vmSwitchName": "ConvergedSwitch(management_compute_storage)"
       },
       "resourceGroup": "myhci-rg",
       "systemData": {
@@ -189,16 +178,16 @@ Follow these steps to configure a DHCP logical network:
 
     ```azurecli
     $lnetName = "myhci-lnet-dhcp"
-    $vSwitchName = '"ConvergedSwitch(compute_management)"'
+    $vSwitchName = '"ConvergedSwitch(management_compute_storage)"'
     $subscription =  "<Subscription ID>" 
     $resource_group = "myhci-rg"
-    $customLocName = "myhci-cl" 
+    $customLocationName = "myhci-cl" 
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     ```
 
     > [!NOTE]
-    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(compute_management) is passed as '"ConvergedSwitch(compute_management)"'.
+    > For the default VM switch created at the deployment, pass the name string encased in double quotes followed by single quotes. For example, a default VM switch ConvergedSwitch(management_compute_storage) is passed as '"ConvergedSwitch(management_compute_storage)"'.
     
     Here are the parameters that are *required* to create a DHCP logical network:
 
@@ -247,7 +236,7 @@ Follow these steps to configure a DHCP logical network:
             }
           }
         ],
-        "vmSwitchName": "ConvergedSwitch(managementcomputestorage)"
+        "vmSwitchName": "ConvergedSwitch(management_compute_storage)"
       },
       "resourceGroup": "myhci-rg",
       "systemData": {
