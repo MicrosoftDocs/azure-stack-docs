@@ -3,7 +3,7 @@ title: How to use AKS hybrid with SDN and virtual networking infrastructure
 description: Learn how to use AKS hybrid with software defined networking and virtual networking infrastructure.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/21/2023
+ms.date: 11/20/2023
 ms.author: sethm 
 ms.lastreviewed: 10/07/2022
 ms.reviewer: anpaul
@@ -103,12 +103,12 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
 2. In the same PowerShell window you used in Step 1, create a VIP pool to inform AKS of our IPs that can be used from our SDN Load Balancing Logical Network:
 
    ```powershell
-   $VipPool = New-AksHciVipPoolSetting -name "PublicVIP" -vipPoolStart "10.127.132.16" -vipPoolEnd "10.127.132.23
+   $VipPool = New-AksHciVipPoolSetting -name "publicvip" -vipPoolStart "10.127.132.16" -vipPoolEnd "10.127.132.23
    ```
 
    | Parameter     | Description                                                                                                                                      |
    |---------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-   | `-name`         | The "PublicVIP" logical network that you provided when configuring SDN Load Balancers.                                                    |
+   | `-name`         | The "PublicVIP" logical network that you provided when configuring SDN load balancers. Within the cmdlet, this name must be lowercase.                                                    |
    | `-vipPoolStart` | IP start range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network. |
    | `-vipPoolEnd`   | IP end range of logical network used for public load balancer VIP pool. You must use an address range from the "PublicVIP" SDN logical network.   |
 
