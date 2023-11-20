@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 11/13/2023
+ms.date: 11/20/2023
 ---
 
 # Create Arc virtual machines on Azure Stack HCI (preview)
@@ -58,21 +58,7 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 ## Sign in and set subscription
 
-Follow these steps to sign in to Azure CLI and set the subscription to use. Replace the parameters in `< >` with the appropriate values.
-
-1. Run PowerShell as an administrator.
-
-1. Sign in. Type:
-
-    ```azurecli
-    az login
-    ```
-
-1. Set your subscription.
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Create a VM from network interface
 
