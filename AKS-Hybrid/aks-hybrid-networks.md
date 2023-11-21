@@ -43,8 +43,8 @@ Additionally, you should reserve the following number of IP addresses for your K
 
 | Resource type                | Number of IP addresses |
 |------------------------------|------------------------|
-| Kubernetes Internal Services | 1 per service          |
-| Application Services         | 1 per service planned  |
+| Kubernetes internal services | 1 per service          |
+| Application services         | 1 per service planned  |
 
 As you can see, the number of required IP addresses is variable depending on the architecture of your AKS deployment, and the number of services you run on your Kubernetes cluster. We recommend reserving a minimum of 256 IP addresses (/24 subnet) for your deployment.
 
