@@ -52,13 +52,13 @@ As you can see, the number of required IP addresses is variable depending on the
 
 You can choose between Static IP and DHCP based networks for your AKS hybrid clusters. Run the following commands from any one node on your physical cluster.
 
-### [DHCP based network with vLAN](#tab/dhcp)
+### [Static IP-based network with VLAN](#tab/staticip)
 
 ```powershell
 New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd -vlanID $vlanid
 ```
 
-### [Static IP based network with Vlan](#tab/staticip)
+### [DHCP-based network with VLAN](#tab/dhcp)
 
 ```powershell
 New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd -vlanID $vlanid
@@ -77,7 +77,7 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipadd
 | `$vmPoolEnd`       | The end IP address of your VM IP pool. The address must be in range of the subnet.                                                                                            |
 | `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool are for the API server and for Kubernetes services. |
 | `$vipPoolEnd`      | The end IP address of the VIP pool.                                                                                                                       |
-| `$vlanId`          | The identification number of the vLAN in use. Every virtual machine is tagged with that vLAN ID.                                                                        |
+| `$vlanId`          | The identification number of the VLAN in use. Every virtual machine is tagged with that VLAN ID.                                                                        |
 
 ## Next steps
 
