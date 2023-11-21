@@ -14,7 +14,7 @@ ms.reviewer: mikek
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Once you've installed and configured Azure Stack HCI 23H2, the infrastructure administrator must also create Arc-enabled networks and connect these networks to Azure.
+After you install and configure Azure Stack HCI 23H2, the infrastructure administrator must also create Arc-enabled networks and connect these networks to Azure.
 
 > [!NOTE]
 > Both DHCP and static IP-based networking for your AKS clusters are supported. We strongly recommend using static IP addresses for AKS for production deployments.
@@ -23,13 +23,13 @@ Once you've installed and configured Azure Stack HCI 23H2, the infrastructure ad
 
 Before you begin, make sure you meet the following requirements:
 
-- Access and the required permissions to an Azure subscription.
+- An Azure subscription, and the required permissions to access that subscription.
 - Installed and configured Azure Stack HCI 23H2 or newer and created a custom location.
 - IP address exhaustion can lead to Kubernetes cluster deployment failures. As an administrator, you must make sure that the network you create contains enough usable IP addresses. For more information, see the following section.
 
 ## IP address planning
 
-Regardless of your deployment model, the number of IP addresses reserved remains the same. This section describes the number of IP addresses you need to reserve based on your AKS hybrid deployment model.
+Regardless of your deployment model, the number of IP addresses reserved remains the same. This section describes the number of IP addresses you need to reserve, based on your AKS hybrid deployment model.
 
 ## Minimum IP address reservation
 
@@ -50,7 +50,7 @@ As you can see, the number of required IP addresses is variable depending on the
 
 ## Choose between static IP (recommended) and DHCP-based networks
 
-You can choose between Static IP and DHCP based networks for your AKS hybrid clusters. Run the following commands from any one node on your physical cluster.
+You can choose between static IP- and DHCP-based networks for your AKS hybrid clusters. Run the following commands from any single node on your physical cluster:
 
 ### [Static IP-based network with VLAN](#tab/staticip)
 
@@ -66,7 +66,7 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipadd
 
 ---
 
-| Parameter    | Details                                                                                                                                                         |
+| Parameter    | Description                                                                                                                                                         |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `$clustervnetname` | The name of your virtual network for AKS hybrid clusters.                                                                                                 |
 | `$vswitchname`     | The name of your VM switch.                                                                                                                               |
