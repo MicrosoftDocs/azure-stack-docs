@@ -10,7 +10,7 @@ ms.reviewer: mikek
 
 ---
 
-# How to create AKS hybrid networks for Azure
+# How to create AKS hybrid networks and connect them to Azure
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -63,7 +63,7 @@ You can choose between Static IP and DHCP based networks for your AKS hybrid clu
 | `$vmPoolEnd`       | The end IP address of your VM IP pool. The address must be in range of the subnet.                                                                                            |
 | `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool is for the API Server and for Kubernetes services. |
 | `$vipPoolEnd`      | The end IP address of the VIP pool                                                                                                                                            |
-| `$vlanId`          | The identification number of the vLAN in use. Every virtual machine will get tagged with that vLAN ID.                                                                        |
+| `$vlanId`          | The identification number of the vLAN in use. Every virtual machine is tagged with that vLAN ID.                                                                        |
 
 ### [DHCP based network with vLAN](#tab/dhcp)
 
