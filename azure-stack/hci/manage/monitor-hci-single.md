@@ -222,7 +222,7 @@ Follow these steps to repair cluster registration:
 1. Run the repair registration command to remove regkey:
 
    ```powershell
-   Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration -RepairRegistration
+   Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration 
    ```
 
 ##### Repair AMA for Azure Stack HCI
