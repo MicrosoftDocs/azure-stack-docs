@@ -66,7 +66,7 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipadd
 
 ---
 
-| Parameter    | Parameter details                                                                                                                                                         |
+| Parameter    | Details                                                                                                                                                         |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `$clustervnetname` | The name of your virtual network for AKS hybrid clusters.                                                                                                 |
 | `$vswitchname`     | The name of your VM switch.                                                                                                                               |
