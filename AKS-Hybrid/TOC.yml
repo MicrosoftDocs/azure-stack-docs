@@ -18,6 +18,12 @@
       href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
+- name: Preview version 23H2
+  items:
+  - name: Overview
+    href: aks-hci-preview-overview.md
+  - name: System requirements
+    href: aks-hci-network-system-requirements.md
 - name: Quickstarts
   expanded: true
   items:
@@ -439,7 +445,7 @@
   - name: Add-ons, extensions, and integrations
     href: add-ons.md
   - name: Azure Arc Jumpstart
-    href: https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+    href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
   - name: Azure roadmap
