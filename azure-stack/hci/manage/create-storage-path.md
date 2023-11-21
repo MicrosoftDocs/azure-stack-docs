@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 11/20/2023
 ---
 
 # Create storage path for Azure Stack HCI (preview)
@@ -70,21 +70,7 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
 
 ### Sign in and set subscription
 
-1. Connect to one of the servers of your Azure Stack HCI cluster via Remote Desktop Protocol. 
-
-1. Run PowerShell as an administrator.
-
-1. Sign in. Type:
-
-    ```azurecli
-    az login --use-device-code
-    ```
-       
-1. Set your subscription. Replace the parameter in `< >`` with the appropriate value.
-
-    ```azurecli 
-    az account set --subscription <Subscription ID>
-    ```
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set parameters
 
