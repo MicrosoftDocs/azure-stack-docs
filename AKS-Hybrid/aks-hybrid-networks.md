@@ -54,15 +54,15 @@ You can choose between Static IP and DHCP based networks for your AKS hybrid clu
 
 | **Parameter**    | **Parameter details**                                                                                                                                                         |
 |------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$clustervnetname` | The name of your virtual network for AKS hybrid clusters                                                                                                                      |
-| `$vswitchname`     | The name of your VM switch                                                                                                                                                    |
-| `$ipaddressprefix` | The IP address value of your subnet                                                                                                                                           |
-| `$gateway`         | The IP address value of your gateway for the subnet                                                                                                                           |
-| `$dnsservers`      | The IP address value(s) of your DNS servers                                                                                                                                   |
+| `$clustervnetname` | The name of your virtual network for AKS hybrid clusters.                                                                                                 |
+| `$vswitchname`     | The name of your VM switch.                                                                                                                               |
+| `$ipaddressprefix` | The IP address value of your subnet.                                                                                                                      |
+| `$gateway`         | The IP address value of your gateway for the subnet.                                                                                                      |
+| `$dnsservers`      | The IP address value(s) of your DNS servers.                                                                                                              |
 | `$vmPoolStart`     | The start IP address of your VM IP pool. The address must be in range of the subnet.                                                                                          |
 | `$vmPoolEnd`       | The end IP address of your VM IP pool. The address must be in range of the subnet.                                                                                            |
-| `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool is for the API Server and for Kubernetes services. |
-| `$vipPoolEnd`      | The end IP address of the VIP pool                                                                                                                                            |
+| `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool are for the API server and for Kubernetes services. |
+| `$vipPoolEnd`      | The end IP address of the VIP pool.                                                                                                                       |
 | `$vlanId`          | The identification number of the vLAN in use. Every virtual machine is tagged with that vLAN ID.                                                                        |
 
 ### [DHCP based network with vLAN](#tab/dhcp)
