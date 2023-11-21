@@ -1,5 +1,5 @@
 ---
-title: How to create AKS hybrid networks for Azure
+title: How to create AKS hybrid networks for Azure (preview)
 description: Learn how to create Arc enabled networks and connect them to Azure.
 ms.topic: overview
 author: sethmanheim
@@ -10,9 +10,9 @@ ms.reviewer: mikek
 
 ---
 
-# How to create AKS hybrid networks and connect them to Azure
+# How to create AKS hybrid networks and connect them to Azure (preview)
 
-[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 Once you've installed and configured Azure Stack HCI 23H2, the infrastructure administrator must also create Arc-enabled networks and connect these networks to Azure.
 
