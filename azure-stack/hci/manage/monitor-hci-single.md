@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/06/2023
+ms.date: 11/21/2023
 # zone_pivot_groups: hci-versions
 ---
 
@@ -222,7 +222,7 @@ Follow these steps to repair cluster registration:
 1. Run the repair registration command to remove regkey:
 
    ```powershell
-   Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration -RepairRegistration
+   Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration
    ```
 
 ##### Repair AMA for Azure Stack HCI
