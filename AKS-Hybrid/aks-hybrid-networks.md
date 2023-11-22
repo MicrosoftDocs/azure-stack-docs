@@ -68,7 +68,7 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippo
 
 | Parameter    | Description | DHCP | Static |
 |------------------|---------|-----------|-------------------|
-| `$clustervnetname` | The name of your virtual network for AKS hybrid clusters. | X | X |
+| `$clustervnetname` | The name of your virtual network for AKS hybrid clusters. | :::image type="content" source="media/aks-hybrid-networks/check.png" alt-text="X"::: | :::image type="content" source="media/aks-hybrid-networks/check.png" alt-text="X"::: |
 | `$vswitchname`     | The name of your VM switch. | X | X |
 | `$ipaddressprefix` | The IP address value of your subnet.  | N/A | X |
 | `$gateway`         | The IP address value of your gateway for the subnet.  | N/A | X |
