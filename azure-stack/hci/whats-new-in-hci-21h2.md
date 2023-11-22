@@ -2,11 +2,11 @@
 title: What's new in Azure Stack HCI, version 21H2
 description: Find out what's new in Azure Stack HCI, version 21H2
 ms.topic: overview
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/10/2022
+ms.date: 11/22/2023
 ---
 
 # What's new in Azure Stack HCI, version 21H2
