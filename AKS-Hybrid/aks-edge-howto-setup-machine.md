@@ -40,7 +40,7 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both K8s and K3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first, then reboot.
 
 > [!NOTE]
-> The Windows node files must be extracted from the zip archive in the same folder as the installer MSIs if you wish to use the Windows node capability.
+> You must extract the Windows node files from the zip archive into the same folder as the installer MSIs if you want to use the Windows node capability.
 Before you install the MSI, you can review the [feature support matrix](aks-edge-system-requirements.md#ga-feature-support-matrix) to understand the different options available.  
 
 ## Install AKS Edge Essentials
