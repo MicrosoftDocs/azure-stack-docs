@@ -14,6 +14,8 @@ ms.reviewer: mikek
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
+:::image type="content" source="./media/aks-hybrid-networks/check.png" alt-text="Check mark.":::
+
 After you install and configure Azure Stack HCI 23H2, the infrastructure administrator must also create Arc-enabled networks and connect these networks to Azure.
 
 > [!NOTE]
