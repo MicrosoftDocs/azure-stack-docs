@@ -61,23 +61,23 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipadd
 ### [DHCP-based network with VLAN](#tab/dhcp)
 
 ```powershell
-New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipaddressprefix $ipaddressprefix -gateway $gateway -dnsservers $dnsServers -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -k8snodeippoolstart $vmPoolStart -k8snodeippoolend $vmPoolEnd -vlanID $vlanid
+New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -vlanID $vlanid
 ```
 
 ---
 
-| Parameter    | Description                                                                                                                                                         |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$clustervnetname` | The name of your virtual network for AKS hybrid clusters.                                                                                                 |
-| `$vswitchname`     | The name of your VM switch.                                                                                                                               |
-| `$ipaddressprefix` | The IP address value of your subnet.                                                                                                                      |
-| `$gateway`         | The IP address value of your gateway for the subnet.                                                                                                      |
-| `$dnsservers`      | The IP address value(s) of your DNS servers.                                                                                                              |
-| `$vmPoolStart`     | The start IP address of your VM IP pool. The address must be in range of the subnet.                                                                                          |
-| `$vmPoolEnd`       | The end IP address of your VM IP pool. The address must be in range of the subnet.                                                                                            |
-| `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool are for the API server and for Kubernetes services. |
-| `$vipPoolEnd`      | The end IP address of the VIP pool.                                                                                                                       |
-| `$vlanId`          | The identification number of the VLAN in use. Every virtual machine is tagged with that VLAN ID.                                                                        |
+| Parameter    | Description | DHCP | Static |
+|------------------|---------|-----------|-------------------|
+| `$clustervnetname` | The name of your virtual network for AKS hybrid clusters. | X | X |
+| `$vswitchname`     | The name of your VM switch. | X | X |
+| `$ipaddressprefix` | The IP address value of your subnet.  | N/A | X |
+| `$gateway`         | The IP address value of your gateway for the subnet.  | N/A | X |
+| `$dnsservers`      | The IP address value(s) of your DNS servers. | N/A | X |
+| `$vmPoolStart`     | The start IP address of your VM IP pool. The address must be in range of the subnet.  | N/A | X |
+| `$vmPoolEnd`       | The end IP address of your VM IP pool. The address must be in range of the subnet.  | N/A | X |
+| `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool are for the API server and for Kubernetes services. | X | X |
+| `$vipPoolEnd`      | The end IP address of the VIP pool. | X | X |
+| `$vlanId`          | The identification number of the VLAN in use. Every virtual machine is tagged with that VLAN ID. | X | X |
 
 ## Next steps
 
