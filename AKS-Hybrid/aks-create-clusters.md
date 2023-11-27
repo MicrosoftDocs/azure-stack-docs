@@ -82,9 +82,9 @@ kubectl get node -A --kubeconfig .\aks-arc-kube-config
 The following output example shows the node created in the previous steps. Make sure the node status is **Ready**:
 
 ```output
-NAME STATUS ROLES AGE VERSION
-moc-l0ttdmaioew Ready control-plane,master 34m v1.24.11
-moc-ls38tngowsl Ready <none> 32m v1.24.11
+NAME             STATUS ROLES                AGE VERSION
+moc-l0ttdmaioew  Ready  control-plane,master 34m v1.24.11
+moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 ```
 
 ## Deploy the application
@@ -220,8 +220,8 @@ kubectl get service azure-vote-front --watch --kubeconfig .\aks-arc-kube-config
 The EXTERNAL-IP output for the azure-vote-front service initially shows as **pending**.
 
 ```output
-NAME TYPE CLUSTER-IP EXTERNAL-IP PORT(S) AGE
-azure-vote-front LoadBalancer 10.0.37.27 &lt;pending&gt; 80:30572/TCP 6s
+NAME             TYPE         CLUSTER-IP EXTERNAL-IP PORT(S)      AGE
+azure-vote-front LoadBalancer 10.0.37.27 <pending>   80:30572/TCP 6s
 ```
 
 Once the EXTERNAL-IP address changes from **pending** to an actual public IP address, use CTRL-C to stop the kubectl watch process. The following example output shows a valid public IP address assigned to the service:
