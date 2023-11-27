@@ -305,6 +305,8 @@
       href: manage/diskspd-overview.md
   - name: Manage clusters
     items:
+    - name: Configure proxy settings for Azure Stack HCI, version 23H2 (preview)
+      href: manage/configure-proxy-settings-23h2.md
     - name: (Optional) Configure proxy settings
       href: manage/configure-proxy-settings.md
     - name: Manage cluster registration
