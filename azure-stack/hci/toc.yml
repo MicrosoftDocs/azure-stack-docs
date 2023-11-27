@@ -111,7 +111,7 @@
               href: manage/trusted-launch-vm-deploy.md
             - name: Manage guest state protection key
               href: manage/trusted-launch-vm-import-key.md
-        - name: clusters
+        - name: Clusters
           items:
           - name: Configure proxy 
             href: manage/configure-proxy-settings-23h2.md
