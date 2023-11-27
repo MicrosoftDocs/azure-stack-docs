@@ -16,16 +16,16 @@ ms.reviewer: mikek
 
 This article describes how to create AKS clusters in Azure Stack HCI using Azure CLI. The workflow is as follows:
 
-- Create an AKS cluster in Azure Stack HCI 23H2 using Azure CLI. The cluster is Azure Arc-connected by default.
-- While creating the cluster, you provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access.
-- Access the AKS cluster using kubectl and your Microsoft Entra identity.
-- Run a sample multi-container application with a web frontend and a Redis instance in the AKS cluster.
+1. Create an AKS cluster in Azure Stack HCI 23H2 using Azure CLI. The cluster is Azure Arc-connected by default.
+1. While creating the cluster, you provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access.
+1. Access the AKS cluster using kubectl and your Microsoft Entra identity.
+1. Run a sample multi-container application with a web frontend and a Redis instance in the AKS cluster.
 
 ## Before you begin
 
 - Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
   - **Azure subscription ID** - The Azure subscription ID where Azure Stack HCI is used for deployment and registration.
-  - **Custom Location ID** - Azure Resource Manager ID of the custom location. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create AKS hybrid clusters. You can also get the Resouce Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name. These input values are customized during the Azure Stack HCI cluster deployment.
+  - **Custom Location ID** - Azure Resource Manager ID of the custom location. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create AKS hybrid clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name. These input values are customized during the Azure Stack HCI cluster deployment.
   - **Network ID** - Azure Resource Manager ID of the Azure AKS Arc vnet. Your admin should give you the ID of the AKS Arc vnet. This parameter is required in order to create AKS clusters. You can also get the Azure Resource Manager ID using `az akshybrid vnet show --name "<vnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the Azure Arc vnet was created.
 - You can run the steps in this article in a local Azure CLI instance. Make sure you have the latest version of [Az CLI](/cli/azure/install-azure-cli) on your local machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 - To connect to the AKS Arc cluster from anywhere, create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself as a member to the Microsoft Entra group. If you don't add yourself, you cannot access the AKS Arc cluster using kubectl. For more information about creating Microsoft Entra groups and adding users, see [Manage Microsoft Entra groups and group membership](/entra/fundamentals/how-to-manage-groups).
