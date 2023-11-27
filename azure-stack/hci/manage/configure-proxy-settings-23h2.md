@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Stack HCI, version 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/21/2023
+ms.date: 11/27/2023
 ---
 
 # Configure proxy settings for Azure Stack HCI, version 23H2
@@ -20,11 +20,10 @@ For information about firewall requirements for outbound endpoints and internal 
 Before you configure proxy settings, make sure that:
 
 - You know the proxy server name or IP address and port (optional). If you don’t have this information, contact your network administrator.
-- You configure the proxy server prior to Arc registration that communicates with Azure.
+- You configure the proxy server before you [Register to Arc and assign permissions](../deploy/deployment-arc-register-server-permissions.md).
 
-Here are additional considerations to keep in mind before you configure proxy settings:
-
-- Authenticated proxies are not supported in this release.
+> [!NOTE]
+> Authenticated proxies are not supported in this release.
 
 ## Configure proxy settings for Azure Stack HCI operating system
 
@@ -36,12 +35,12 @@ Use the following steps to configure proxy settings:
 
 ### Step 1: Configure proxy settings for the Azure Stack HCI operating system
 
-You must configure the proxy for Azure Stack HCI operating system before you register the server with Azure Arc.
+You must configure the proxy for Azure Stack HCI operating system before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
 Install the `WinInetProxy` module to run the commands in this section. For information about the module and how to install it, see [WinInetProxy 0.1.0 in the PowerShell Gallery](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0). For information about the `WinInetProxy` PowerShell script, see [WinInetProxy.psm1 in the PowerShell Gallery](https://www.powershellgallery.com/packages/WinInetProxy/0.1.0/Content/WinInetProxy.psm1).
 
 > [!NOTE]
-> If you can't install the `WinInetProxy` module to a cluster node because of no internet access, we recommend downloading the module to your management computer, and then manually transferring it to the cluster node where you want to run the module.
+> If you can't install the `WinInetProxy` module to a cluster node because of no internet access, we recommend that you download the module to your management computer, and then manually transfer it to the cluster node where you want to run the module.
 >
 > You can also use the [Start-BitsTransfer](/powershell/module/bitstransfer/start-bitstransfer) PowerShell cmdlet to transfer one or more files between your management computer and a server.
 
@@ -82,48 +81,50 @@ To remove the proxy configuration, run the PowerShell cmdlet `Set-WinInetProxy
 
 ### Step 2: Configure proxy settings for Azure Arc-enabled servers
 
-You must configure the proxy for Azure Arc-enabled servers before you register your server with Azure Arc. To set the proxy server environment variable, run the following commands as administrator on each server in the cluster:
+You must configure the proxy for Azure Arc-enabled servers before you register your server with Azure Arc. 
 
-```powershell
-# If a proxy server is needed, execute these commands with the proxy URL and port.
-[Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://ProxyServerFQDN:port", "Machine")
-$env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
-[Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://ProxyServerFQDN:port", "Machine")
-$env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
-$no_proxy = "localhost,127.0.0.1,.svc,node1,node2,scluster,192.168.0.2,192.168.0.3,*.contoso.com" 
+- To set the proxy server environment variable, run the following commands as administrator on each server in the cluster:
 
-[Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
+    ```powershell
+    # If a proxy server is needed, run these commands with the proxy URL and port.
+    [Environment]::SetEnvironmentVariable("HTTPS_PROXY", "http://ProxyServerFQDN:port", "Machine")
+    $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
+    [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://ProxyServerFQDN:port", "Machine")
+    $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
+    $no_proxy = "localhost,127.0.0.1,.svc,node1,node2,scluster,192.168.0.2,192.168.0.3,*.contoso.com" 
+    
+    [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
+    
+    # For the changes to take effect, restart the agent services after the proxy environment variable is set.
+    Restart-Service -Name himds, ExtensionService, GCArcService
+    ```
 
-# For the changes to take effect, agent services must be restarted after the proxy environment variable is set.
-Restart-Service -Name himds, ExtensionService, GCArcService
-```
+- Confirm that the settings were applied by running the following command:
 
-Confirm that the settings were applied by running the following command:
+    ```powershell
+    echo "https :" $env:https_proxy "http :" $env:http_proxy
+    ```
 
-```powershell
-echo "https :" $env:https_proxy "http :" $env:http_proxy
-```
+    Note that `No_proxy` specifies the list of host URLs that bypass the proxy server; the list must include:
+    
+    - IP address of each cluster member server.
+    - Netbios name of each server.
+    - Netbios cluster name.
+    - *.contoso.com.
 
-Note that `No_proxy` specifies the list of host URLs that bypass the proxy server; the list must include:
+- To remove the proxy configuration, run the following commands as administrator on each server in the cluster:
 
-- IP address of each cluster member server.
-- Netbios name of each server.
-- Netbios cluster name.
-- *.contoso.com.
-
-To remove the proxy configuration, run the following commands as administrator on each server in the cluster:
-
-```powershell
-[Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "Machine") 
-$env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
-[Environment]::SetEnvironmentVariable("HTTP_PROXY", $null, "Machine")  
-$env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
-$no_proxy = "" 
-[Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine") 
-
-# For the changes to take effect, the agent services must be restarted after the proxy environment variable is removed. 
-Restart-Service -Name himds, ExtensionService, GCArcService
-```
+    ```powershell
+    [Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "Machine") 
+    $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
+    [Environment]::SetEnvironmentVariable("HTTP_PROXY", $null, "Machine")  
+    $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
+    $no_proxy = "" 
+    [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine") 
+    
+    # For the changes to take effect, restart the agent services after the proxy environment variable is removed. 
+    Restart-Service -Name himds, ExtensionService, GCArcService
+    ```
 
 For more information about proxy configuration for Azure Arc-enabled servers, see [Managing and maintaining the Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#update-or-remove-proxy-settings).
 
@@ -167,3 +168,7 @@ You can configure proxy settings for Winhttp using the `netsh` command line util
 For more information, see:
 
 - [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
+
+After the proxy is configured, you can continue cluster deployment and:
+
+- [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
