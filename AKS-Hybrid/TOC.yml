@@ -30,6 +30,10 @@
       href: aks-hybrid-networks.md
     - name: Create Kubernetes clusters
       href: aks-create-clusters.md
+  - name: Troubleshooting
+    items:
+    - name: Troubleshooting and known issues
+      href: troubleshoot-aks.md
 - name: Quickstarts
   expanded: true
   items:
