@@ -28,6 +28,8 @@
     items:
     - name: Create hybrid networks and connect them to Azure
       href: aks-hybrid-networks.md
+    - name: Create Kubernetes clusters
+      href: aks-create-clusters.md
 - name: Quickstarts
   expanded: true
   items:

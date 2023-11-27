@@ -1,7 +1,7 @@
 ---
 title: How to create Arc-enabled networks for AKS (preview)
 description: Learn how to create Arc-enabled networks and connect them to Azure.
-ms.topic: overview
+ms.topic: how-to
 author: sethmanheim
 ms.date: 11/21/2022
 ms.author: sethm 
