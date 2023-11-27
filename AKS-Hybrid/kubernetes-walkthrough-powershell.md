@@ -113,7 +113,8 @@ To create the configuration settings for the AKS host, use the [Set-AksHciConfig
 Configure your deployment with the following command.
 
 ```powershell
-Set-AksHciConfig -imageDir c:\clusterstorage\volume1\Images -workingDir c:\ClusterStorage\Volume1\ImageStore -cloudConfigLocation c:\clusterstorage\volume1\Config -vnet $vnet -cloudservicecidr "172.16.10.10/16"
+$csvPath = 'C:\clusterstorage\volume01' # Specify your preferred CSV path
+Set-AksHciConfig -imageDir $csvPath\Images -workingDir $csvPath\ImageStore -cloudConfigLocation $csvPath\Config -vnet $vnet
 ```
 
 > [!NOTE]
