@@ -89,7 +89,7 @@ To install the Environment Checker, follow these steps:
 1. Enter the following cmdlet to install the Environment Checker module:
 
    ```powershell
-   Install-Module -Name AzStackHci.EnvironmentChecker -AllowPrerelease
+   Install-Module -Name AzStackHci.EnvironmentChecker
    ```
 
 1. If prompted, press **Y** (Yes) or **A** (Yes to All) to install the module.
@@ -376,6 +376,7 @@ To run the Active Directory validator locally from an Azure Stack HCI server nod
    ActiveDirectoryServer = 'contoso.local'
    ActiveDirectoryCredentials = (Get-Credential -Message 'Active Directory Credentials')
    ClusterName = 'S-Cluster'
+   PhysicalMachineNames = "node01, node02, node03, node04"
    }
    Invoke-AzStackHciExternalActiveDirectoryValidation @params
    ```
