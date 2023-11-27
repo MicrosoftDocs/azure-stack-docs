@@ -1,16 +1,16 @@
 ---
 title: Troubleshooting and known issues 
-description: Learn about known issues with AKS ib . 
+description: Learn about known issues with AKS on Azure Stack HCI. 
 author: sethmanheim
 ms.topic: troubleshooting
-ms.date: 06/28/2022
+ms.date: 11/28/2023
 ms.author: sethm 
-ms.lastreviewed: 04/08/2022
+ms.lastreviewed: 11/28/2023
 ms.reviewer: guanghu
 
 ---
 
-# Troubleshooting and known issues
+# Troubleshoot AKS
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
