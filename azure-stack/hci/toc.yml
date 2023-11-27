@@ -100,7 +100,7 @@
           - name: To same hardware
             href: migrate/migrate-cluster-same-hardware.md
           - name: To new hardware
-            href: migrate/migrate-cluster-new-hardware.md
+            href: migrate/migrate-cluster-new-hardware.md           
     - name: Manage
       items:
         - name: Azure Arc VMs
