@@ -30,7 +30,7 @@ Release notes for this version also include the release noted issues carried ove
 
 |Release|Feature|Issue|Workaround/Comments|
 |-|------|------|----------|
-|2311 <br> 10.2311.0.XX <!--25710482-->| Deployment |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |There's no known workaround in this release. |
+|2311 <br> 10.2311.0.16 <!--25710482-->| Deployment | |There's no known workaround in this release. |
 
 
 ## Known issues for version 2310
@@ -44,6 +44,7 @@ Here are the known issues in version 2310 release:
 |2310 <br> 10.2310.0.30| Networking |Use of proxy isn't supported in this release. |There's no known workaround in this release. |
 |2310 <br> 10.2310.0.30 <!--24524483-->| Networking |There is an infrequent DNS client issue in this release that causes the deployment to fail on a two-node cluster with a DNS resolution error: *A WebException occurred while sending a RestRequest. WebException.Status: NameResolutionFailure.* <br>As a result of the bug, the DNS record of the second node is deleted soon after it is created resulting in a DNS error.  |Restart the server. This operation registers the DNS record which prevents it from getting deleted. |
 |2310 <br> 10.2310.0.30| Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
+|2310 <br> 10.2310.0.30 <!--25710482-->| Deployment |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |There's no known workaround in this release. |
 |2310 <br> 10.2310.0.30 <!--25661776-->| Arc VM management |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take 30 to 45 minutes. |There's no known workaround in this release. |
 |2310 <br> 10.2310.0.30 <!--25527606-->| Arc VM management | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state doesn't match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.| There's no known workaround in this release.|
 |2310 <br> 10.2310.0.30 <!--25675277-->| Arc VM management | While creating Arc VMs via the Azure CLI on Azure Stack HCI, if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.| Instead of providing the friendly name, always provide the Azure Resource Manager ID of the marketplace image in this release.|
