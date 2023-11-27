@@ -35,7 +35,7 @@ This article describes how to create AKS clusters in Azure Stack HCI using Azure
 
 Run the following command to install the necessary Azure CLI extensions:
 
-```cli
+```azurecli
 az extension add -n akshybrid --upgrade
 az extension add -n customlocation --upgrade
 az extension add -n connectedk8s --upgrade
@@ -45,7 +45,7 @@ az extension add -n connectedk8s --upgrade
 
 Use the `az akshybrid create` command to create an AKS Arc cluster. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
-```cli
+```azurecli
 az akshybrid create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $vnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 1
 ```
 
@@ -59,7 +59,7 @@ This command downloads the kubeconfig of your Kubernetes cluster to your local m
 
 You must have Contributor permissions on the resource group that hosts the AKS hybrid cluster in order to run the following command successfully:
 
-```cli
+```azurecli
 az connectedk8s proxy --name $aksclustername --resource-group $resource_group --file .\aks-arc-kube-config
 ```
 
@@ -75,7 +75,7 @@ Press Ctrl+C to close proxy.
 
 Keep this session running and connect to your Kubernetes cluster from a different terminal/command prompt. Verify that you can connect to your Kubernetes cluster by running the kubectl get command. This command returns a list of the cluster nodes:
 
-```cli
+```azurecli
 kubectl get node -A --kubeconfig .\aks-arc-kube-config
 ```
 
