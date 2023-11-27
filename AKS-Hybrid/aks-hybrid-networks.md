@@ -24,9 +24,9 @@ After you install and configure Azure Stack HCI 23H2, the infrastructure adminis
 Before you begin, make sure you meet the following requirements:
 
 - An Azure subscription, and the required permissions to access that subscription.
-- Installed and configured Azure Stack HCI 23H2 or newer and created a custom location, and the Azure Resource Manager ID of the custom location.
+- Install and configure Azure Stack HCI 23H2 or newer and create a custom location, and get the Azure Resource Manager ID of the custom location.
 - Download the **akshybrid** Az CLI extension to create the AKS network.
-- Make sure that the network you create contains enough usable IP addresses to avoid IP address exhaustion, which can lead to Kubernetes cluster deployment failures. For more information, see the following section.
+- Make sure that the network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see the following section.
 
 ## IP address planning
 
@@ -51,7 +51,9 @@ As you can see, the number of required IP addresses is variable depending on the
 
 ## Choose between static IP (recommended) and DHCP-based networks
 
-You can choose between static IP- and DHCP-based networks for your Kubernetes clusters. Run the following commands from any single node on your physical cluster:
+You can choose between static IP- and DHCP-based networks for your Kubernetes clusters. It's recommended that you only use DHCP-based networks for test and validation environments. For production environments, use static IP address assignments.
+
+Run the following commands from any single node on your physical cluster:
 
 ### [Static IP-based network with VLAN](#tab/staticip)
 
@@ -60,8 +62,6 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -ipadd
 ```
 
 ### [DHCP-based network with VLAN](#tab/dhcp)
-
-It's recommended that you only use DHCP-based networks for test and validation environments. For production environments, use static IP address assignments.
 
 ```powershell
 New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippoolstart $vipPoolStart -vippoolend $vipPoolEnd -vlanID $vlanid
