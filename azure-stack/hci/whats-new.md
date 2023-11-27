@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/14/2023
+ms.date: 11/27/2023
 ---
 
 # What's new in Azure Stack HCI, version 23H2 (preview)
@@ -75,6 +75,10 @@ Beginning this release, the following Azure Arc VM management capabilities are a
     For more information, see [Manage VM extensions for Azure Stack HCI VMs](./manage/virtual-machine-manage-extension.md).
 - **Trusted launch for Azure Arc VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Arc VMs on Azure Stack HCI.
     For more information, see [Trusted launch for Arc VMs](./manage/trusted-launch-vm-overview.md).
+
+## AKS hybrid workloads
+
+Starting this release, you can run Azure Kubernetes Service (AKS) hybrid workloads on Azure Stack HCI. For more information, see [AKS hybrid on Azure Stack HCI](/azure/aks/hybrid/aks-hci-preview-overview).
 
 ## Security capabilities
 
