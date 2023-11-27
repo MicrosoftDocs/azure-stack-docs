@@ -3,10 +3,10 @@ title: How to create AKS clusters (preview)
 description: Learn how to create AKS clusters in Azure Stack HCI using CLI.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 11/21/2022
+ms.date: 11/27/2023
 ms.author: sethm 
-ms.lastreviewed: 11/21/2023
-ms.reviewer: mikek
+ms.lastreviewed: 11/27/2023
+ms.reviewer: guanghu
 
 ---
 
