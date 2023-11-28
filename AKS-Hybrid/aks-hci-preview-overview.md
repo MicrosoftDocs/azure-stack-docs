@@ -8,9 +8,6 @@ ms.author: sethm
 ms.reviewer: guanghu
 ms.lastreviewed: 11/16/2023
 
-# Intent: As an IT Pro, I want to learn how to create and manage AKS hybrid clusters on HCI
-# Keyword: provisioned clusters 
-
 ---
 
 # What's new in AKS on Azure Stack HCI 23H2 (preview)
