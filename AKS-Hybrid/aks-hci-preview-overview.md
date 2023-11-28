@@ -49,7 +49,7 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 
 ## Key personas
 
-**Infrastructure administrator**: The role of the infrastructure administrator is to set up the Azure Stack HCI which will include all the infrastructural components deployment as mentioned above. Administrators also need to set up the platform configurations, like the networking and storage configuration, so that Kubernetes operators can leverage to create and manage Kubernetes clusters.
+**Infrastructure administrator**: The role of the infrastructure administrator is to set up Azure Stack HCI, which includes all the infrastructure component deployment as previously mentioned. Administrators must also set up the platform configuration, such as the networking and storage configuration, so that Kubernetes operators can create and manage Kubernetes clusters.
 
 **Kubernetes operator**: Kubernetes operators can create and manage Kubernetes clusters on Azure Stack HCI so they can run applications without coordinating with infrastructure administrators. The operator is given access to the Azure subscription, Azure custom location, and virtual network by the infrastructure administrator. No access to the underlying on-premises infrastructure is necessary.
 
