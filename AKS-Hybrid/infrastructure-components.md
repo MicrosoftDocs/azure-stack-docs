@@ -22,10 +22,10 @@ This article provides a brief overview of infrastructure component updates for A
 Azure Stack HCI 23H2 consolidates all the relevant updates for the OS, software agents, Azure Arc infrastructure, and OEM drivers and firmware
 into a unified monthly update package. This comprehensive update package is identified and applied from the cloud through the Azure Update Manager tool.
 
-AKS is now a default part of Azure Stack HCI starting from version of 23H2. The whole lifecycle management of AKS Arc infrastructure follows
-the same approach as any other components on Azure Stack HCI 23H2. The approach provides a flexible foundation to integrate and manage various
-aspects of the Azure Stack HCI solution in one place including the management of the OS, core agents and services, and the solution
-extension. AKS Arc infra components, as part of solution extensions, will be updated through the update package of Azure Stack HCI 23H2.
+AKS is now part of Azure Stack HCI starting from version 23H2. The whole lifecycle management of AKS Arc infrastructure follows
+the same approach as any other components on Azure Stack HCI 23H2. This approach provides a flexible foundation to integrate and manage various
+aspects of the Azure Stack HCI solution in one place, including the management of the OS, core agents and services, and the solution
+extension. AKS Arc infrastructure components, as part of solution extensions, will be updated through the update package of Azure Stack HCI 23H2.
 
 For more information, see the [Update overview for Azure Stack HCI, version 23H2 (preview)](/azure-stack/hci/update/whats-the-lifecycle-manager-23h2).
 

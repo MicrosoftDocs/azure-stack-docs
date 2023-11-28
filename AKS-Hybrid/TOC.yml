@@ -24,7 +24,7 @@
     href: aks-hci-preview-overview.md
   - name: System requirements
     href: aks-hci-network-system-requirements.md
-  - name: Infrastructure components updates
+  - name: Infrastructure component updates
     href: infrastructure-components.md
   - name: How-to
     items:
