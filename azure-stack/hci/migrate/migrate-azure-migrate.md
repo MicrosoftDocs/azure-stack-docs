@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 10/18/2023
+ms.date: 11/28/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -19,7 +19,7 @@ This article describes how to migrate the Hyper-V virtual machines (VMs) to Azur
 
 ## Before you begin
 
-Before you migrate your VMs: 
+Before you migrate your VMs:
 
 - Make sure that you have replicated the VM on your Azure Stack HCI cluster. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Stack HCI using Azure Migrate](migrate-hyperv-replicate.md).
 - Make sure the replication has completed and the migration status is **Ready to replicate**.
@@ -72,13 +72,12 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
 1. Select a VM to view its details. Verify that the VM:
     1. The VM is running. The corresponding source VM in the Hyper-V server is turned off.
-    1. The VM has the same disk and network configuration as the source VM. 
-    1. The VM behaves as expected.
-    1. Your applications work as expected.
-
+    1. The VM has the disk and network configuration as configured during replication.
+  
     :::image type="content" source="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png":::
 
-1. Sign into the VM. Verify that the VM is running as expected.
+1. Sign into the VM.
+1. The VM behaves as expected.
 
 1. In the Azure portal, select the ellipses ... next to the VM and select **Complete migration**.
 
@@ -92,19 +91,20 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-3.png":::
 
-    This action starts a deletion job that you can track from the **Jobs** page.
-
+    This action starts the **Delete protected item** job that you can track from the **Jobs** page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
+    
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-4.png":::
 
-    After the migrate resource is deleted, it is also removed it from the **Replications** view. You'll see the migrated VM disappear from the list of the VMs. 
+    After the migrate resource is deleted, it is also removed from the **Replications** view. You'll also see the migrated VM job disappear from the **Replications** view.
 
     :::image type="content" source="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png" alt-text="Screenshot of Replications page with VM not showing in the list in Azure portal."lightbox="./media/migrate-azure-migrate/complete-migration-virtual-machine-5.png":::
 
 ## Clean up
 
-Once you have verified that migration is complete and no more servers need to be migrated, the last step is to clean up. Cleanup requires deletion of the following resources created during migration:
+Once you have verified that migration is complete and no more servers need to be migrated, the last step is to clean up. Clean up requires deletion of the following resources created during migration:
 
 - Source VMs and the associated VM disks from the Hyper-V server and the Failover Cluster Manager.
+- Source and target appliance VMs.
 
 ### Clean up VMs and associated disks
 

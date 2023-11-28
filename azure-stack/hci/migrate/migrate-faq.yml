@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 10/20/2023
+  ms.date: 1/28/2023
 title: Azure Migrate FAQ
 summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you might have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
 
@@ -77,3 +77,11 @@ sections:
       - question: To install the source or target appliance with the downloaded .zip file, I need a Windows Server 2022 operating system (OS).  How can I get the Windows Server 2022 OS?
         answer: |
           You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022) for free for up to 180 days.
+
+      - question: My VMs use static IP addresses - will these addresses be preserved when I migrate my VM to Azure Stack HCI?
+        answer: |
+          Currently Hyper-V migration only supports VMs configured with DHCP. If you have a VM with static IP address, you can always sign on to the VM using VM Connect in Hyper-V Manager and change the IP configuration after migration.
+
+      - question: I use DCHP reservation for my VM IP addresses - do you preserve the MAC address so that the migrated VM can get the same IP address if it is in the same network as my DHCP server? 
+        answer: |
+          This scenario is not supported in this release of the migration tool.

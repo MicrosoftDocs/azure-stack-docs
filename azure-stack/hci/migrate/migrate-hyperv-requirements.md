@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 09/13/2023
+ms.date: 11/28/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -28,11 +28,7 @@ The following operating systems (OS) are supported for the source appliance, tar
 |Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
 |Guest VM     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
-For appliances to discover Windows Server 2008 R2 VMs, you must do the following:
-
-1. Download and install [KB patch 3138612](https://www.microsoft.com/download/details.aspx?id=51208). This clears the Windows Update error 80072EFE.
- You can then update all patches to get the latest Hyper-V integration services.
-2. Run `winrm quickconfig` from a command prompt as an Administrator to add Windows Remote Management (WinRm) access through your firewall.
+To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
 
 ## Supported geographies
 
@@ -78,6 +74,8 @@ Create a Windows Server 2022 VM with this minimum configuration:
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
 ## Arc Resource Bridge requirements
+
+The Arc Resource Bridge is required for migration in the Azure Stack HCI, version 23H2 version of the operating system. The Arc Resource Bridge is installed by default if using the [Azure portal](../deploy/deploy-via-portal.md) deployment option.
 
 The Arc Resource Bridge must be configured and running on the target appliance VM. Make sure that you have the following configured:
 
