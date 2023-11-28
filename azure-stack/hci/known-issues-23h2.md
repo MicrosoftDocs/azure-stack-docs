@@ -15,7 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI.
 
-The article contains the release notes for all the version 23H2 releases. The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
+The article contains the release notes for all of the version 23H2 releases. The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
@@ -24,13 +24,9 @@ For more information about the new features in this release, see [What's new in 
 
 ## Known issues for version 2311
 
-This software release maps to software version number **10.2311.X.XX**. This release supports new deployments and updates from 2310.
+This software release maps to software version number **10.2311.0.16**. This release supports new deployments and updates from 2310.
 
-Release notes for this version also include the release noted issues carried over from previous versions. Here are the known issues in version 2311 release:
-
-|Release|Feature|Issue|Workaround/Comments|
-|-|------|------|----------|
-|2311 <br> 10.2311.0.16 <!--25710482-->| Deployment | |There's no known workaround in this release. |
+Release notes for this version include the release noted issues carried over from previous versions. There are no known issues for this release.
 
 
 ## Known issues for version 2310
