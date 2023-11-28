@@ -27,7 +27,7 @@ The following sections briefly describe the various features and enhancements in
 
 Unlike the prior years, Azure Stack HCI, version 23H2 includes more than just the operating system (OS). There is a single package containing the 23H2 operating system, the orchestrator and Arc VM management software bits. The 23H2 operating system includes the latest cumulative update corresponding to October 2023.-->
 
-## What's new for Azure Stack HCI, version 23H2 2311 release
+## Features and improvements in 2311
 
 This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2.
 
@@ -39,7 +39,7 @@ Starting this release, you can run Azure Kubernetes Service (AKS) hybrid workloa
 
 This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings.md).
 
-## What's new for Azure Stack HCI, version 23H2 2310 release
+## Features and improvements in 2310 
 
 This section lists the new features and improvements in the 2310 release of Azure Stack HCI, version 23H2.
 
