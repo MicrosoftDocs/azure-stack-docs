@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 1/28/2023
+  ms.date: 11/28/2023
 title: Azure Migrate FAQ
 summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you might have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
 
@@ -23,7 +23,7 @@ sections:
           After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
           
           > [!NOTE]
-          > Migration is a one-way process and can't be reversed. The VM version can’t be downgraded.
+          > Migration is a one-way process and can't be reversed. The VM version can't be downgraded.
 
           To make sure that all the VMs are version 10, run the following cmdlet:
 
@@ -66,7 +66,7 @@ sections:
 
       - question: I am located in a geography that is not in the listed supported geographies. Does this mean I can't use this migration solution?
         answer: |
-          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) in one of the [supported geographies](migrate-hyperv-requirements.md#supported-geographies), since your migrated VMs can be in any geography. 
+          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography. 
 
       - question: Will I be charged for this migration solution? 
         answer: |
