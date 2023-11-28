@@ -44,20 +44,18 @@ The Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, 
 
 The workload cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components and Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload clusters managed by one management cluster.
 
-#### Workload cluster components
-
 The workload cluster has many components, as described in the following sections.
 
-##### Control plane
+#### Control plane
 
 - **API server**: The API server enables interaction with the Kubernetes API. This component provides the interaction for management tools, such as Windows Admin Center, PowerShell modules, or kubectl.
 - **Etcd**: Etcd is a distributed key-value store that stores data required for lifecycle management of the cluster. It stores the control plane state.
 
-##### Load balancer
+#### Load balancer
 
 The load balancer is a virtual machine running Linux and HAProxy and KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, AKS Arc adds at least one load balancer virtual machine. Any Kubernetes service of type LoadBalancer that is created on the workload cluster creates a load-balancing rule in the VM.
 
-##### Worker nodes
+#### Worker nodes
 
 To run your applications and supporting services, you need a **Kubernetes node**. An AKS workload cluster has one or more *worker nodes*. Worker
 nodes act as virtual machines (VMs) that run the Kubernetes node components and host the pods and services that make up the application workload.
