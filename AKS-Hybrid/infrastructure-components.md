@@ -1,5 +1,5 @@
 ---
-title: Infrastructure components updates for AKS on Azure Stack HCI (preview)
+title: Infrastructure component updates for AKS on Azure Stack HCI (preview)
 description: Learn about cloud-based updates for infrastructure components in AKS on Azure Stack HCI.
 ms.topic: overview
 author: sethmanheim
@@ -10,9 +10,9 @@ ms.reviewer: guanghu
 
 ---
 
-# Infrastructure components updates for AKS on Azure Stack HCI
+# Infrastructure component updates for AKS on Azure Stack HCI
 
-This article provides a brief overview of infrastructure components update for AKS on Azure Stack HCI 23H2.
+This article provides a brief overview of infrastructure component updates for AKS on Azure Stack HCI 23H2.
 
 > [!IMPORTANT]
 > This feature is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
