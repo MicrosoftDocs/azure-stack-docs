@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/13/2023
+ms.date: 11/20/2023
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -47,20 +47,7 @@ Follow these steps to create a VM image using the Azure CLI.
 
 ### Sign in and set subscription
 
-1. Connect to a server on your Azure Stack HCI system. Run PowerShell as an administrator.
-
-
-1. Sign in. Type:
-
-    ```azurecli
-    az login --use-device-code
-    ```
-
-1. Set your subscription.
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
+[!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
 
 ### Set some parameters
 

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 11/20/2023
 ---
 
 # What is Azure Arc VM management? (preview)
@@ -43,7 +43,9 @@ While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VM
 
 Arc VM Management comprises several components including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the VM operator.
 
-- **Arc Resource Bridge**: This lightweight Kubernetes VM connects your on-premises Azure Stack HCI cluster to the Azure Cloud. The Arc Resource Bridge is created automatically when you deploy the Azure Stack HCI cluster. During the deployment, you specify an IP pool from which 3 IP addresses are used for the Arc Resource Bridge.
+- **Arc Resource Bridge**: This lightweight Kubernetes VM connects your on-premises Azure Stack HCI cluster to the Azure Cloud. The Arc Resource Bridge is created automatically when you deploy the Azure Stack HCI cluster. During the deployment, you specify an IP pool from which 3 IP addresses are used for the Arc Resource Bridge. 
+
+    For more information, see the [Arc Resource Bridge overview](/azure/azure-arc/resource-bridge/overview).
 
 - **Custom Location**: Just like the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Stack HCI cluster. You can use this custom location to deploy Azure services. You can also deploy VMs in these user-defined custom locations, integrating your on-premises setup more closely with Azure.
 

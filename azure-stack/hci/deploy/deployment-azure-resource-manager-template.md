@@ -7,6 +7,7 @@ ms.date: 11/14/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-arm-template
 ---
 
 # Deploy an Azure Stack HCI, version 23H2 via Azure Resource Manager deployment template (preview)
