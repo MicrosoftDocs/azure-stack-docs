@@ -3,11 +3,11 @@ title: Prerequisites for Azure Managed Lustre file systems
 description: Network and storage prerequisites to complete before you create an Azure Managed Lustre file system.
 ms.topic: overview
 ms.date: 06/28/2023
-author: mvbishop
-ms.author: mayabishop
+author: pauljewellmsft
+ms.author: pauljewell
 ms.reviewer: mayabishop
 
-# Intent: As an IT Pro, I  need to understand network and storage requirements for using an Azure Managed Lustre file system, and I need to configure what I need.
+# Intent: As an IT Pro, I need to understand network and storage requirements for using an Azure Managed Lustre file system, and I need to configure resource settings.
 # Keyword: 
 
 ---
@@ -25,7 +25,7 @@ Azure Managed Lustre file systems exist in a virtual network subnet. The subnet 
 
 Each file system you create must have its own unique subnet. You can't move a file system from one network or subnet to another after you create the file system.
 
-Azure Managed Lustre accepts only IPv4 addresses. IPv6 is not supported.
+Azure Managed Lustre accepts only IPv4 addresses. IPv6 isn't supported.
 
 ### Network size requirements
 
@@ -41,26 +41,26 @@ The size of subnet that you need depends on the size of the file system you crea
 
 #### Other network size considerations
 
-When you plan your VNet and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or VNet. For example, consider the following factors.
+When you plan your virtual network and subnet, take into account the requirements for any other services you want to locate within the Azure Managed Lustre subnet or virtual network. For example, consider the following factors.
 
 * If you're using an Azure Kubernetes Service (AKS) cluster with your Azure Managed Lustre file system:
 
   * You can locate the AKS cluster in the same subnet as the managed Lustre system. In that case, you must provide enough IP addresses for the AKS nodes and pods in addition to the address space for the Lustre file system.
 
-  * If you use more than one AKS cluster within the VNet, make sure the VNet has enough capacity for all resources in all of the clusters.
+  * If you use more than one AKS cluster within the virtual network, make sure the virtual network has enough capacity for all resources in all of the clusters.
   
   To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#provide-subnet-access-between-aks-and-azure-managed-lustre).
 
-* If you plan to use another resource to host your compute VMs in the same VNet, check the requirements for that process before creating the VNet and subnet for your Azure Managed Lustre system.
+* If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system.
 
 ### Subnet access and permissions
 
-By default, no specific changes need to be made to enable Azure Managed Lustre. If you have restricted network and/or security policies in your environment, the following should be considered:
+By default, no specific changes need to be made to enable Azure Managed Lustre. If your environment includes restricted network or security policies, the following guidance should be considered:
 
 | Access type | Required network settings |
 |-------------|---------------------------|
 | DNS access  | Use the default Azure-based DNS server. |
-|Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service will also enable the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
+|Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
 |Lustre network port access| Your network security group must allow inbound and outbound access on port 988 and ports 1019-1023.<br>The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement.|
 
 
@@ -75,7 +75,11 @@ An integrated blob container can automatically import files to the Azure Managed
 
 If you don't add an integrated blob container when you create your Lustre system, you can write your own client scripts or commands to move files between your Azure Managed Lustre file system and other storage.
 
-When you plan blob integration for your file system, it's important to understand the differences in how hierarchical blob storage and non-hierarchical blob storage handle metadata. For more information, see [Understand hierarchical and non-hierarchical storage schemas](blob-integration.md#understand-hierarchical-and-non-hierarchical-storage-schemas).
+When you plan blob integration for your file system, it's important to understand the following differences in how metadata is handled based on whether a storage account has hierarchical namespace enabled:
+
+* For a container in a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
+
+* For a container in a storage account with a flat namespace (non-hierarchical), Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
 
 To integrate Azure Blob Storage with your Azure Managed Lustre file system, you must create the following items before you create the file system:
 
@@ -132,7 +136,7 @@ For detailed steps, see [Assign Azure roles using the Azure portal](/azure/role-
 
 ### Private endpoints (optional)
 
-If you are using a private endpoint with your blob setup, in order to ensure Azure Managed Lustre can resolve the SA name, you must enable the private endpoint setting **Integrate with private DNS Zone** during the creation of a new endpoint.
+If you're using a private endpoint with your blob setup, in order to ensure Azure Managed Lustre can resolve the SA name, you must enable the private endpoint setting **Integrate with private DNS Zone** during the creation of a new endpoint.
 
 - **Integrate with Private DNS zone** - Must be set to **Yes**.
 

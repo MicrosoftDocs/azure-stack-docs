@@ -3,7 +3,7 @@ title: How to deploy AKS hybrid target clusters on different SDN virtual network
 description: Learn how to deploy AKS hybrid target clusters on different software defined networking (SDN) virtual networks.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/07/2023
+ms.date: 11/20/2023
 ms.author: sethm 
 ms.lastreviewed: 06/07/2023
 ms.reviewer: kybisnet
@@ -31,7 +31,7 @@ The following image shows the deployment of AKS hybrid target clusters. The imag
 Prior to deploying a new AKS hybrid target cluster, you must create a new virtual network. If the name of the SDN VNet was already created using Windows Admin Center or PowerShell, you can reuse the existing VNet (SDN-managed VNet). If it hasn't been created, we create the VNet for you in the AKS hybrid and SDN Network Controller (MOC Managed Virtual Network):
 
 ```powershell
-New-AksHciNetworkSetting -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci) ` 
+New-AksHciNetworkSetting -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci)" ` 
 -ipAddressPrefix "13.20.0.0/8" -gateway "13.20.0.1" -dnsServers "10.195.95.223"  ` 
 -k8sNodeIpPoolStart "13.20.0.2" -k8sNodeIpPoolEnd "13.20.100.255"
 ```
@@ -50,7 +50,7 @@ New-AksHciNetworkSetting -name "SDNVNet1" -vswitchName "ConvergedSwitch(hci) `
 After you create an SDN VNet that is isolated, you can create a new Kubernetes cluster. First, retrieve the SDN VNet that you created, and save this value into a variable:
 
 ```powershell
-$SDNVNet1 = Get-AksHciClusterNetwork -name "SDNVNet1"
+$vnet = New-AksHciNetworkSetting -name "SDNVNet1" -vSwitchName $vSwitchName -ipAddressPrefix $ipAddressPrefix -gateway $gateway -dnsServers "192.168.60.10" -k8sNodeIpPoolStart $k8sNodeIpPoolStart -k8sNodeIpPoolEnd $k8sNodeIpPoolEnd 
 ```
 
 You can use that variable to pass to the [New-AksHciCluster](reference/ps/new-akshcicluster.md) cmdlet. You must specify at least the name and the VNet:

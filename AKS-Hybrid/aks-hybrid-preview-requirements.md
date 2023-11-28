@@ -12,9 +12,12 @@ ms.date: 06/22/2023
 
 # System requirements for AKS hybrid cluster provisioning from Azure (preview)
 
-> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI
+> Applies to: Windows Server 2019, Windows Server 2022, Azure Stack HCI, version 22H2
 
 This article describes the prerequisites for deploying Azure Arc Resource Bridge and AKS hybrid clusters. For an overview of AKS hybrid cluster provisioning from Azure, see [Overview of AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md)
+
+>[!NOTE]
+>AKS hybrid cluster provisioning from Azure is in preview. This preview applies to Windows Server 2019, Windows Server 2022 and Azure Stack HCI version 22H2. Running this preview on any versions of Windows Server and Azure Stack HCI outside the ones mentioned is not allowed.
 
 ## Minimum resource requirements
 
@@ -55,8 +58,6 @@ Windows Server admin in consultation with the datacenter network admin:
 
 ### Option 1: Static IP networking (Highly recommended)
 
-You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
-
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a static IP subnet? | This subnet will be used for assigning an IP address to the underlying VM of the Azure Arc Resource Bridge. | The IP address prefix of your subnet; for example, **172.16.0.0/16**. |
@@ -68,8 +69,6 @@ You can skip this section if you have Arc VMs installed on your Azure Stack HCI 
 
 ### Option 2: DHCP networking
 
-You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
-
 | Prerequisite |  Item  |  Details  |  Value  |
 | -- | ----- | ------- | ------- |
 | 1 | Do you have a DHCP server with at least 3 IP addresses in your environment? | This DHCP server will be used to assign an IP address to the underlying VM of the Azure Arc Resource Bridge. | Check with your admin if your Windows Server network environment has a DHCP server. |
@@ -79,8 +78,6 @@ You can skip this section if you have Arc VMs installed on your Azure Stack HCI 
 
 ### Proxy settings
 
-You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
-
 | Prerequisite |  Item  |  Details |
 | -- | ----- | ------- |
 | 1 | HTTP URL and port information |  Check with your network admin if your Windows Server or Azure Stack HCI network environment is behind a proxy server. If so, obtain the HTTP URL and port information from your network admin. It should be of the following format: `http://proxy.corp.contoso.com:8080`.  |
@@ -88,8 +85,6 @@ You can skip this section if you have Arc VMs installed on your Azure Stack HCI 
 | 3 | (Optional) Valid credentials for authentication to the proxy server | You can use either a PowerShell credential object containing the username and password to authenticate against the proxy server, or a filename or certificate string of a PFX-formatted client certificate used to authenticate with the proxy server. |
 
 #### Noproxy settings
-
-You can skip this section if you have Arc VMs installed on your Azure Stack HCI cluster.
 
 The following table contains the list of addresses that must be excluded:
 
@@ -145,5 +140,4 @@ The following firewall URL exceptions are needed on all servers in the Windows S
 
 ## Next steps
 
-- [Deploy Azure Arc Resource Bridge on Windows Server using command line](deploy-arc-resource-bridge-windows-server.md)
-- [Deploy AKS hybrid extension if you have Arc VMs set up](deploy-aks-service-hci.md)
+- [Deploy Azure Arc Resource Bridge using command line](deploy-arc-resource-bridge-windows-server.md)

@@ -3,7 +3,7 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.service: azure-stack
 ms.topic: include
-ms.date: 09/30/2022
+ms.date: 11/13/2023
 ms.reviewer: alkohli
 ---
 
@@ -11,8 +11,8 @@ ms.reviewer: alkohli
 
 1. Run the following PowerShell command using local administrator credentials or LCM deployment user credentials.
 
-> [!IMPORTANT]
-Cmdlets inteacting with LCM (Lifecycle Manager) requires proper credentials authorization via the security group (PREFIX-ECESG) and CredSSP (when using remote PowerShell) or Console session (RDP)
+   > [!IMPORTANT]
+   > Cmdlets interacting with LCM (Lifecycle Manager) requires proper credentials authorization via the security group (PREFIX-ECESG) and CredSSP (when using remote PowerShell) or Console session (RDP).
 
 1. Run the following cmdlet to check the WDAC policy mode that is currently enabled:
 
@@ -38,7 +38,7 @@ Cmdlets inteacting with LCM (Lifecycle Manager) requires proper credentials auth
    ```
 
    > [!WARNING]
-   > The Orchestrator will take up to 2 to 3 minutes to switch to the selected mode.
+   > The Orchestrator will take up to two to three minutes to switch to the selected mode.
 
 1. Run `Get-ASWDACPolicyMode` again to confirm the policy mode is updated.
 

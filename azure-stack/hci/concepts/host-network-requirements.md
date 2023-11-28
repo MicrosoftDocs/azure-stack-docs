@@ -39,7 +39,7 @@ For more information about this role-based NIC qualification, please see this [l
 
 |Level|Management Role|Compute Role|Storage Role|
 |----|----|----|----|
-|Role-based distinction|Management|Compute Standard|Compute Storage|
+|Role-based distinction|Management|Compute Standard|Storage Standard|
 |Maximum Award|Not Applicable|Compute Premium|Storage Premium|
  
 > [!NOTE]
