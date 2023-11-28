@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 11/17/2023
+  ms.date: 11/28/2023
 title: Azure Arc VM management FAQ (preview)
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Stack HCI, versions 23H2 (preview).
@@ -32,9 +32,9 @@ sections:
         The upcoming Arc VM Management on Azure Stack HCI, version 23H2 has several enhancements and new features. Improvements include a simpler setup for the Arc Resource Bridge, support for static IPs, more flexible storage placement for VMs and VM images, more VM Extensions, improvements to Azure CLI, and more.
 
     - question: |
-        When will Azure Stack HCI, version 23H2 be announced, and when can I start using it?
+        How do I upgrade my Azure Arc VM management infrastructure components?
       answer: |
-        We plan to share details regarding Azure Stack HCI, version 23H2 during Microsoft Ignite 2023 in November.
+        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Stack HCI 23H2 are handled automatically. For more information, see [Update overview for Azure Stack HCI, version 23H2 (preview)](whats-the-lifecycle-manager-23h2.md).
 
     - question: |
         Why do I need to move to Azure Stack HCI, version 23H2?
@@ -67,9 +67,9 @@ sections:
         Two images with the same name result in errors at the time of creating them, which is true for other resources as well, like logical networks, virtual hard disks etc. An updated image doesn't change existing VMs that use it. A copy of the VM image is created at the time VM creation.
 
     - question: | 
-        How can I delete a gallery image?  
+        How can I delete a VM image?  
       answer: |
-        Gallery images and all other entities can be removed from CLI or from the Azure portal. [See examples here](uninstall-arc-resource-bridge.md).   
+        VM images and all other entities can be removed from CLI or from the Azure portal. For more information, see [Delete a VM image](./virtual-machine-image-azure-marketplace.md#delete-vm-image).   
 
     - question: |
         If I delete a gallery image would all the VMs also get deleted which are deployed?
