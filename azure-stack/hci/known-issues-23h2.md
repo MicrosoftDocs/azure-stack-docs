@@ -3,7 +3,7 @@ title: Release notes with known issues in Azure Stack HCI 23H2 2310 release (pre
 description: Read about the known issues in Azure Stack HCI 2310 public preview release (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/17/2023
+ms.date: 11/27/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
