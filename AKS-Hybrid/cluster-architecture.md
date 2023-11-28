@@ -26,7 +26,7 @@ An Azure Kubernetes Service cluster has the following components:
 - **Arc Resource Bridge** (also known as **Arc appliance**) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - **Workload clusters** (also known as **target clusters**) are where containerized applications are deployed.
 
-:::image type="content" source="media/cluster-architecture/cluster-architecture.png" alt-text="Image showing cluster architecture." lightbox="media/cluster-architecture/cluster-architecture.png":::
+:::image type="content" source="media/cluster-architecture/cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/cluster-architecture/cluster-architecture.png":::
 
 AKS Arc uses a set of predefined configurations to deploy Kubernetes clusters effectively and with scalability in mind. A deployment operation creates multiple Linux or Windows virtual machines and joins them together to create one or more Kubernetes clusters.
 
