@@ -19,7 +19,7 @@ All upgrades are executed in a continuous, rolling manner to ensure uninterrupte
 ## Before you begin
 
 If you're using the Azure CLI, this article requires Azure CLI version 2.34.1 or later. Run `az --version` to find the version. If you need to
-install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+install or upgrade CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 ## Check for available upgrades
 
@@ -29,7 +29,7 @@ Check which Kubernetes releases are available for your cluster by using the foll
 az akshybrid get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-The following example output shows the current version as **1.24.11** and lists the available versions under upgrades:
+The following example output shows the current version as **1.24.11** and lists the available versions under `upgrades`:
 
 ```output
 {  
@@ -66,7 +66,7 @@ When you upgrade a supported AKS cluster, you can't skip Kubernetes minor versio
 > [!NOTE]
 > If no patch is specified, the cluster automatically upgrades to the specified minor version's latest GA patch. For example, setting `--kubernetes-version` to **1.25** results in the cluster upgrading to **1.25.7**.
 
-Upgrade your cluster using the following command:
+You can upgrade your cluster using the following command:
 
 ```azurecli
 az akshybrid upgrade \
@@ -75,7 +75,7 @@ az akshybrid upgrade \
   --kubernetes-version <KUBERNETES_VERSION>
 ```
 
-- Confirm the upgrade was successful using the `show` command:
+Confirm the upgrade was successful by using the `show` command:
 
 ```azurecli
 az akshybrid show --resource-group myResourceGroup --name myAKSCluster
@@ -127,7 +127,7 @@ location>",
 ```
 
 > [!IMPORTANT]
-> When you perform an upgrade from an unsupported version that skips two or more minor versions, the upgrade cannot guarantee functionality. If your version is significantly out of date, we recommend you recreate your cluster instead.
+> When you perform an upgrade from an unsupported version that skips two or more minor versions, the upgrade cannot guarantee proper functionality. If your version is significantly out of date, we recommend you recreate your cluster instead.
 
 ## Update Operating System (OS) version
 
@@ -139,3 +139,4 @@ Updating worker nodes to a newer version of the node image without changing the 
 ## Next steps
 
 - [What's new in AKS on Azure Stack HCI](aks-hci-preview-overview.md)
+- [Create AKS clusters](aks-create-clusters.md)
