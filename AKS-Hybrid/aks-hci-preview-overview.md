@@ -29,7 +29,7 @@ AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to creat
 
 Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. If you have created and managed Kubernetes clusters using Azure, you'll feel right at home managing Kubernetes clusters running on Azure Stack HCI 23H2 using Azure portal or Azure CLI management experiences.
 
-At this time, you can perform the following operations through the Azure CLI and Azure Portal:
+At this time, you can perform the following operations through the Azure CLI and Azure portal:
 
 - Create/list/show Kubernetes clusters.
 - Specify/upgrade Kubernetes cluster' version.
