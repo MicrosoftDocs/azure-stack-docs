@@ -114,7 +114,7 @@ location>",
     "nodeImageVersion": null,  
     "osSku": "CBLMariner",  
     "osType": "Linux",  
-    "vmSize": "Standard\_A4\_v2"  
+    "vmSize": "Standard_A4_v2"  
   },  
   "kubernetesVersion": "1.25.7",  
 ...  
