@@ -26,4 +26,4 @@ TBD
 
 ## Next steps
 
-[AKS on Azure Stack HCI](aks-hci-preview-overview.md)
+[AKS on Azure Stack HCI](aks-preview-overview.md)

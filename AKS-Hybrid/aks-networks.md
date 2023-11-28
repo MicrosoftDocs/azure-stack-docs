@@ -1,6 +1,6 @@
 ---
-title: How to create Arc-enabled networks for AKS (preview)
-description: Learn how to create Arc-enabled networks and connect them to Azure.
+title: Create Arc-enabled networks for AKS (preview)
+description: Learn how to create Arc-enabled networks for AKS and connect them to Azure.
 ms.topic: how-to
 author: sethmanheim
 ms.date: 11/27/2023
@@ -10,7 +10,7 @@ ms.reviewer: mikek
 
 ---
 
-# How to create Arc-enabled networks for AKS (preview)
+# Create Arc-enabled networks for AKS (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -25,7 +25,7 @@ Before you begin, make sure you meet the following requirements:
 
 - An Azure subscription, and the required permissions to access that subscription.
 - Install and configure Azure Stack HCI 23H2 or newer and create a custom location, and get the Azure Resource Manager ID of the custom location.
-- Download the **akshybrid** Az CLI extension to create the AKS network.
+- Download the **aksarc** Az CLI extension to create the AKS network.
 - Make sure that the network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see the following section.
 
 ## IP address planning

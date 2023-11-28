@@ -83,4 +83,4 @@ deployment. Ensure that these are allowed in your firewall configuration:
 
 ## Next steps
 
-[AKS on Azure Stack HCI 23H2 overview](aks-hci-preview-overview.md)
+[AKS on Azure Stack HCI 23H2 overview](aks-preview-overview.md)
