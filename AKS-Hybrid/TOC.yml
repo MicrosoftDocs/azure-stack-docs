@@ -20,16 +20,16 @@
   href: system-requirements.md
 - name: Preview version 23H2
   items:
-  - name: Overview
-    href: aks-hci-preview-overview.md
+  - name: What's new
+    href: aks-preview-overview.md
   - name: System requirements
     href: aks-hci-network-system-requirements.md
   - name: Infrastructure component updates
     href: infrastructure-components.md
   - name: How-to
     items:
-    - name: Create hybrid networks and connect them to Azure
-      href: aks-hybrid-networks.md
+    - name: Create Arc-enabled networks and connect them to Azure
+      href: aks-networks.md
     - name: Create Kubernetes clusters
       href: aks-create-clusters.md
     - name: Upgrade Kubernetes clusters

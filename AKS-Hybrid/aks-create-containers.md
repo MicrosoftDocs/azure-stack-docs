@@ -1,5 +1,5 @@
 ---
-title: How to create AKS containers (preview)
+title: Create AKS containers (preview)
 description: Learn how to create AKS containers in Azure Stack HCI.
 ms.topic: how-to
 author: sethmanheim
@@ -10,7 +10,7 @@ ms.reviewer: guanghu
 
 ---
 
-# How to create AKS containers
+# Create AKS containers (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
