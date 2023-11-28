@@ -57,7 +57,7 @@ Now you can connect to your Kubernetes cluster by running the `az connectedk8s 
 
 This command downloads the kubeconfig of your Kubernetes cluster to your local machine and opens a proxy connection channel to your on-premises Kubernetes cluster. The channel is open for as long as the command runs. Let this command run for as long as you want to access your cluster. If it times out, close the CLI window, open a fresh one, then run the command again.
 
-You must have Contributor permissions on the resource group that hosts the AKS hybrid cluster in order to run the following command successfully:
+You must have Contributor permissions on the resource group that hosts the AKS cluster in order to run the following command successfully:
 
 ```azurecli
 az connectedk8s proxy --name $aksclustername --resource-group $resource_group --file .\aks-arc-kube-config
@@ -91,8 +91,7 @@ moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 
 A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
-You can use a manifest to create all objects needed to run the [Azure Vote application](https://github.com/Azure-Samples/azure-voting-app-redis). This manifest includes two [Kubernetes
-deployments](kubernetes-concepts.md#deployments):
+You can use a manifest to create all objects needed to run the [Azure Vote application](https://github.com/Azure-Samples/azure-voting-app-redis). This manifest includes two [Kubernetes deployments](kubernetes-concepts.md#deployments):
 
 - The sample Azure Vote Python applications.
 - A Redis instance.
