@@ -39,7 +39,7 @@ At this time, you can perform the following operations through the Azure CLI and
 
 ## Simplified AKS components management on Azure Stack HCI 23H2
 
-AKS on Azure Stack HCI 23H2 includes several infrastructural components to provide Azure experiences including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator. These infrastructure components are now included in Azure Stack HCI 23H2.
+AKS on Azure Stack HCI 23H2 includes several infrastructure components that provide Azure experiences, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator. These infrastructure components are now included in Azure Stack HCI 23H2.
 
 - **Arc Resource Bridge**: The Arc Resource Bridge is created automatically when you deploy Azure Stack HCI. This lightweight Kubernetes VM connects your Azure Stack HCI to Azure Cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure.
 - **Custom Location**: Just like the Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Stack HCI. A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying AKS.
