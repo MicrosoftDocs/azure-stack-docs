@@ -30,6 +30,8 @@
       href: aks-hybrid-networks.md
     - name: Create Kubernetes clusters
       href: aks-create-clusters.md
+    - name: Create Windows Server containers
+      href: aks-create-containers.md
   - name: Troubleshooting
     items:
     - name: Troubleshooting and known issues
