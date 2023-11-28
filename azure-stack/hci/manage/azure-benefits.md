@@ -1,17 +1,17 @@
 ---
-title: Azure Benefits on Azure Stack HCI
-description: Learn about the Azure Benefits feature on Azure Stack HCI.
+title: Azure Benefits on Azure Stack HCI (22H2 and earlier)
+description: Learn about the Azure Benefits feature on Azure Stack HCI version 22H2 and earlier.
 author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/13/2023
+ms.date: 11/28/2023
 ms.lastreviewed: 11/13/2023
 ---
 
-# Azure Benefits on Azure Stack HCI
+# Azure Benefits on Azure Stack HCI (22H2 and earlier)
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 

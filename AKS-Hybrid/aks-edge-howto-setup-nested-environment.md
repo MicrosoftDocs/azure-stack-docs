@@ -13,14 +13,28 @@ ms.custom: template-how-to
 This article describes how to set up a nested virtualization environment to deploy an Azure Kubernetes Service (AKS) Edge Essentials cluster.
 
 > [!NOTE]
-> Deploying AKS Edge Essentials on top of a nested virtualization environment is not supported for production scenarios and is limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM or vSphere.
+> Deploying AKS Edge Essentials on top of a nested virtualization environment on VMware ESXi is supported per [VMware KB2009916](https://kb.vmware.com/s/article/2009916). 
+> Other nested virutalization deployments are not supported for production scenarios and are limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM.
 
 ## Prerequisites
 
 - See the [system requirements](aks-edge-system-requirements.md).
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 
-## Azure virtual machines
+## Deployment on Windows VM on VMware ESXi
+VMware ESXi [7.0](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-70-release-notes.html) and [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine. Read [VMware KB2009916](https://kb.vmware.com/s/article/2009916) for more information on VMware ESXi nested virtualization support. 
+
+To set up an AKS Edge Essentials on a VMware ESXi Windows virtual machine, use the following steps:
+1. Create a Windows virtual machine on the VMware ESXi host. For more information about VMware VM deployment, see [VMware - Deploying Virtual Machines](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-39D19B2B-A11C-42AE-AC80-DDA8682AB42C.html).
+>[!NOTE]
+> If you're creating a Windows 11 virtual machine, ensure to meet the minimum requirements by Microsoft to run Windows 11. For more information about Windows 11 VM VMware support, see [Installing Windows 11 as a guest OS on VMware](https://kb.vmware.com/s/article/86207).
+1. Turn off the virtual machine created in previous step.
+1. Select the Windows virtual machine and then **Edit settings**.
+1. Search for _Hardware virtualization_ and turn on _Expose hardware assisted virtualization to the guest OS_.
+1. Select **Save** and start the virtual machine.
+1. Install Hyper-V hypervisor. If you're using Windows client, make sure you [Install Hyper-V on Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). If you're using Windows Server, make sure you [install the Hyper-V role](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server). 
+
+## Deployment on Azure virtual machines
 
 If you're running AKS Edge Essentials on top of an Azure VM, ensure that you use an Azure Compute Unit (ACU) that supports nested virtualization. For more information, see [Azure Compute Unit (ACU)](/azure/virtual-machines/acu). Also, Azure VMs don't support using an external virtual switch, so AKS Edge Essentials deployments on top of the VM host OS are limited to single-machine clusters.
 
