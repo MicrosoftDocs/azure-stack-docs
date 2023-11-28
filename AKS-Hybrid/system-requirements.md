@@ -259,8 +259,8 @@ Run the following steps to create a new service principal with the built-in **Ow
 
 Set the following PowerShell variables in a PowerShell admin window. Verify that the subscription and tenant are what you want to use to register your AKS host for billing.
 ```powershell
-$subscriptionID = <Your Azure subscrption ID>
-$tenantID = <Your Azure tenant ID>
+$subscriptionID = "<Your Azure subscrption ID>"
+$tenantID = "<Your Azure tenant ID>"
 ```
 
 Install and import the AKS hybrid PowerShell module:
