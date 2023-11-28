@@ -40,11 +40,11 @@ The Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, 
 - **AKS Arc cluster extensions**: A cluster extension is the on-premises equivalent of an Azure Resource Manager resource provider. Just as the **Microsoft.ContainerService** resource provider manages AKS clusters in Azure, the AKS Arc cluster extension, once added to your Arc Resource Bridge, helps manage Kubernetes clusters via Azure.
 - **Custom location**: A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying Azure service instances.
 
-### Workload cluster
+### Workload clusters
 
 The workload cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components and Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload clusters managed by one management cluster.
 
-The workload cluster has many components, as described in the following sections.
+A workload cluster has many components, as described in the following sections.
 
 #### Control plane
 
