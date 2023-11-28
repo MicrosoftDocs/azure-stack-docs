@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 11/16/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-azurepowershell
 ---
 
 # Register your servers and assign permissions for Azure Stack HCI, version 23H2 deployment (preview)
@@ -241,4 +242,3 @@ This section describes how to assign Azure permissions for deployment from the A
 After setting up the first server in your cluster, you're ready to deploy using Azure portal:
 
 - [Deploy using Azure portal](./deploy-via-portal.md).
-

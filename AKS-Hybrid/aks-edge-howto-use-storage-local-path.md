@@ -105,7 +105,7 @@ kubectl apply -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/s
 Finally, read the content of the file that was previously written. If everything runs successfully, you should see the **Hello AKS Edge!** message.
 
 ```output
-PS C:\WINDOWS\system32> kubectl exec volume-test -- sh -c "cat /data/test"
+kubectl exec volume-test -- sh -c "cat /data/test"
 Hello AKS Edge!
 ```
 

@@ -79,10 +79,9 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 20348.1850   | 2023-07-11            | [KB 5028171](https://support.microsoft.com/topic/81aa00e1-31fb-42d7-ade1-7de0b37b3738)  |
 | 20348.1787   | 2023-06-13            | [KB 5027225](https://support.microsoft.com/topic/dfe991ea-55bd-4618-89fe-b50870952dae)  |
 | 20348.1726   | 2023-05-09            | [KB 5026370](https://support.microsoft.com/topic/214132e6-d909-4078-8161-6039c14a8322)  |
-| 20348.1668   | 2023-04-11            |
- [KB 5025230](https://support.microsoft.com/topic/2cea5e9c-bd27-4651-9530-1e82de52138c)  |
-| 20348.1607   | 2023-03-14             | [KB 5023705](https://support.microsoft.com/topic/e039eca6-13cf-46c0-b2b4-ee9a27bf6b2d)  |
-| 20348.1547   | 2023-02-14             | [KB 5022842](https://support.microsoft.com/topic/c5f53080-d4aa-4c0e-ade8-62cb35acbd98)  |
+| 20348.1668   | 2023-04-11            | [KB 5025230](https://support.microsoft.com/topic/2cea5e9c-bd27-4651-9530-1e82de52138c)  |
+| 20348.1607   | 2023-03-14            | [KB 5023705](https://support.microsoft.com/topic/e039eca6-13cf-46c0-b2b4-ee9a27bf6b2d)  |
+| 20348.1547   | 2023-02-14            | [KB 5022842](https://support.microsoft.com/topic/c5f53080-d4aa-4c0e-ade8-62cb35acbd98)  |
 | 20348.1487   | 2023-01-10            | [KB 5022291](https://support.microsoft.com/topic/02c080d2-0dee-44a0-8796-37cef529f6d6)  |
 | 20348.1368   | 2022-12-20            | [KB 5022553](https://support.microsoft.com/topic/701b899c-f41c-4888-94fd-7d2f7a97a1a6)  |
 | 20348.1366   | 2022-12-13            | [KB 5021249](https://support.microsoft.com/topic/e6f3210a-c999-4ac8-8fd6-66751febf300)  |
