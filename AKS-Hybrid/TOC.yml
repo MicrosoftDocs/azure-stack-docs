@@ -24,6 +24,8 @@
     href: aks-hci-preview-overview.md
   - name: System requirements
     href: aks-hci-network-system-requirements.md
+  - name: Infrastructure components updates
+    href: infrastructure-components.md
   - name: How-to
     items:
     - name: Create hybrid networks and connect them to Azure
