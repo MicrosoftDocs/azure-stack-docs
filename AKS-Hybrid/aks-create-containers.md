@@ -79,7 +79,7 @@ moc-ls38tngowsl  Ready  <none>               32m v1.24.11
 
 A [Kubernetes manifest file](kubernetes-concepts.md#deployments) defines a cluster's desired state, such as which container images to run.
 
-You can use a YAML manifest to create all the objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a [Kubernetes deployment](kubernetes-concepts.md#deployments) for the ASP.NET sample application and a [Kubernetes service](concepts-network.md#services) to access the application from the internet.
+You can use a YAML manifest to create all the objects needed to run the ASP.NET sample application in a Windows Server container. This manifest includes a [Kubernetes deployment](kubernetes-concepts.md#deployments) for the ASP.NET sample application and a Kubernetes service to access the application from the internet.
 
 The ASP.NET sample application is provided as part of the [.NET Framework samples](https://hub.docker.com/_/microsoft-dotnet-framework-samples/) and runs in a Windows Server container. AKS requires Windows Server containers to be based on images of Windows Server 2019 or greater. The Kubernetes manifest file must also define a [node selector](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/) to ensure your ASP.NET sample application's pods are scheduled on a node that can run Windows Server containers.
 
@@ -174,7 +174,7 @@ When the application runs, a Kubernetes service exposes the application front en
 
 ## Delete nodepool
 
-Delete the nodepool using the [az akshybrid nodepool delete](/cli/azure/group#az_group_delete) command.
+Delete the nodepool using the [`az akshybrid nodepool delete`](/cli/azure/group#az_group_delete) command.
 
 ```azurecli
 az akshybrid nodepool delete -g $myResourceGroup --cluster-name $myAKSCluster --name $mynodepool --no-wait
@@ -182,7 +182,7 @@ az akshybrid nodepool delete -g $myResourceGroup --cluster-name $myAKSCluster --
 
 ## Next steps
 
-In this article, you deployed a Window nodepool to an existing AKS cluster and deployed an ASP.NET sample application in a Windows Server
+In this article, you deployed a Windows nodepool to an existing AKS cluster and deployed an ASP.NET sample application in a Windows Server
 container to it.
 
 For more information about AKS, and a walkthrough of a complete code deployment example, continue to the following tutorial.
