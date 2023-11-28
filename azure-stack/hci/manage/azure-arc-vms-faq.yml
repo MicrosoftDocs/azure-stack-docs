@@ -34,7 +34,7 @@ sections:
     - question: |
         How do I upgrade my Azure Arc VM management infrastructure components?
       answer: |
-        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Stack HCI 23H2 are handled automatically. For more information, see [Update overview for Azure Stack HCI, version 23H2 (preview)](./whats-the-lifecycle-manager-23h2.md).
+        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Stack HCI 23H2 are handled automatically. For more information, see [Update overview for Azure Stack HCI, version 23H2 (preview)](/azure-stack/hci/update/whats-the-lifecycle-manager-23h2).
 
     - question: |
         Why do I need to move to Azure Stack HCI, version 23H2?
