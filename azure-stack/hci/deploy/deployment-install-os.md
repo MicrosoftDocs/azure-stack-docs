@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system (preview)
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/14/2023
+ms.date: 11/27/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -136,4 +136,5 @@ Follow these steps to configure the operating system using *SConfig*:
 
 ## Next steps
 
-[Register Azure Stack HCI servers in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).
+- [Register Azure Stack HCI servers in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).
+- (Optional) [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2.md).
