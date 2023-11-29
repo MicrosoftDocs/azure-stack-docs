@@ -63,14 +63,14 @@ Create a static logical network when you want to create virtual machines with ne
     ```azurecli
     $lnetName = "myhci-lnet-static"
     $vmSwitchName = '"ConvergedSwitch(management_compute_storage)"'
-    $subscriptionID = "<Subscription ID>"
+    $subscription = "<Subscription ID>"
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl"
-    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
     $gateway = "192.168.200.1"
-    $dnsServers = " 192.168.200.222"
+    $dnsServers = "192.168.200.222"
     ```
 
     > [!NOTE]
@@ -98,7 +98,7 @@ Create a static logical network when you want to create virtual machines with ne
 1. Create a static logical network. Run the following cmdlet:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscriptionID --resource-group $resource_group --custom-location $customLocationName --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
     ```
 
     Here's a sample output:
