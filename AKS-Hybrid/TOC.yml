@@ -1,4 +1,4 @@
-- name: Azure Kubernetes Service (AKS) hybrid deployment options
+- name: Azure Kubernetes Service (AKS) on Azure Stack HCI
   href: index.yml
 - name: Overview
   items:
