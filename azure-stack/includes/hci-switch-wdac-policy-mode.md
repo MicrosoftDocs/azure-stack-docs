@@ -19,12 +19,8 @@ ms.reviewer: alkohli
    ```powershell
    Get-AsWdacPolicyMode
    ```
-   This cmdlet returns an integer:
+   This cmdlet returns Audit or Enforced Mode per Node.
 	
-   - 0 – Not deployed
-   - 1 – Audit
-   - 2 - Enforced
-
 1. Run the following cmdlet to switch the policy mode:
 
    ```powershell
@@ -50,14 +46,30 @@ ms.reviewer: alkohli
 
    ```azurepowershell
    PS C:\> Get-AsWdacPolicyMode
+   VERBOSE: Getting WDAC Policy Mode on Node01
+   VERBOSE: WDAC Policy Mode on Node01 is Enforced.
+   VERBOSE: Getting WDAC Policy Mode on Node01
+   VERBOSE: WDAC Policy Mode on Node01 is Enforced.
 
-   2
+   NodeName     PolicyMode
+   --------     ----------
+   Node01 	Enforced
+   Node01 	Enforced
 
    PS C:\> Enable-AsWdacPolicy -Mode Audit
-   VERBOSE: Action plan instance ID specified: a61a1fa2-da14-4711-8de3-0c1cc3a71ff4
-   a61a1fa2-da14-4111-8de3-0c1cc3a71ff4
+   WARNING: Setting WDAC Policy to Audit Mode on all nodes. This will not protect your system against untrusted applications
+   VERBOSE: Action plan instance ID specified: 6826fbf2-cb00-450e-ba08-ac24da6df4aa
+   VERBOSE: Started an action plan 6826fbf2-cb00-450e-ba08-ac24da6df4aa to set WDAC Policy to Audit Mode.
+   6826fbf2-cb00-450e-ba08-ac24da6df4aa
 
-   PS C:\temp> Get-WDACPolicyMode
+   PS C:\> Get-AsWdacPolicyMode
+   VERBOSE: Getting WDAC Policy Mode on Node01
+   VERBOSE: WDAC Policy Mode on Node01 is Audit.
+   VERBOSE: Getting WDAC Policy Mode on Node01
+   VERBOSE: WDAC Policy Mode on Node01 is Audit.
 
-   1
+   NodeName     PolicyMode
+   --------     ----------
+   Node01 	Audit
+   Node01	Audit
    ```
