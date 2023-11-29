@@ -36,7 +36,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 25398.   | 2023-12-12            | [KB 5033383](https://support.microsoft.com/topic/41652ad2-c31c-48e4-b066-af2604c17d15)  |
+| 25398.582  | 2023-12-12            | [KB 5033383](https://support.microsoft.com/topic/41652ad2-c31c-48e4-b066-af2604c17d15)  |
 | 25398.531   | 2023-11-14            | [KB 5032202](https://support.microsoft.com/topic/9981de59-9fae-4118-a636-131a8dd4a013)  |
 
 ## Azure Stack HCI, version 22H2 (OS build 20349)
