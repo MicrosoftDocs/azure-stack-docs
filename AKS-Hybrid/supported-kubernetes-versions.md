@@ -104,7 +104,7 @@ To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI a
 
 ## Release and deprecation process
 
-You can reference upcoming version releases and deprecations on the [AKS Hybrid Kubernetes Release Calendar](#aks-hybrid-kubernetes-release-calendar).
+You can reference upcoming version releases and deprecations on the [AKS Hybrid Kubernetes Release Calendar](#aks-kubernetes-release-calendar).
 
 For new minor versions of Kubernetes:
 
