@@ -50,28 +50,25 @@ All services exposed internally by LCM have authentication or encryption certifi
 Example output from PowerShell:
 
 ```Output
-
-Name                          StartDate             EndDate               Issuer                              KeyLength     KeyExchange    Algorithm 
-
-----                          ---------             -------               ------                              ---------     -----------    --------- 
-
-CN=HealthService              10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=HealthAgent                10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=DownloadService            10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=ECEServiceSecretEncryption 10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=ECEngineService            10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=MetricServiceAgent         10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=PMCService                 10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=ECEngineAgentService       10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx      
-
-CN=URP                        10/2/2023 12:00:00 AM 10/1/2025 12:00:00 AM CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+Name                          StartDate              EndDate                usage                                                                                  Issuer                              KeyLength KeyExchangeAlgorithm                
+----                          ---------              -------                -----                                                                                  ------                              --------- ------------------
+CN=DownloadService            11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=ECEngineAgentService       11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Client Authentication (1.3.6.1.5.5.7.3.2)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=ECEngineAgentService       11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=ECEngineService            11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Client Authentication (1.3.6.1.5.5.7.3.2)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=ECEngineService            11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=ECEServiceSecretEncryption 11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=NODE01.contoso.com         11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM {Server Authentication (1.3.6.1.5.5.7.3.1), Client Authentication (1.3.6.1.5.5.7.3.2)} CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=HealthAgent                11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=HealthAgent                11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Client Authentication (1.3.6.1.5.5.7.3.2)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=HealthService              11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Client Authentication (1.3.6.1.5.5.7.3.2)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=HealthService              11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=LogCollectorService        11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=LogCollectorService        11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Client Authentication (1.3.6.1.5.5.7.3.2)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=MetricServiceAgent         11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=PMCService                 11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=URP                        11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Client Authentication (1.3.6.1.5.5.7.3.2)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
+CN=URP                        11/27/2023 12:00:00 AM 11/26/2025 12:00:00 AM Server Authentication (1.3.6.1.5.5.7.3.1)                                              CN=AzureStackCertificationAuthority      4096 RSA-PKCS1-KeyEx   
 ```
 
 This new component enables three major capabilities:
