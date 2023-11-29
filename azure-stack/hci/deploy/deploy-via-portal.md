@@ -179,7 +179,7 @@ To confirm that the system and all of its Azure resources were successfully depl
 
 ## Post deployment tasks
 
-For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems.
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. For more information on the renamed adminsitrator, go to [../concepts/](other-security-features.md#about-local-built-in-user-accounts). 
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
 
@@ -194,8 +194,15 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
 1. Enable RDP.
 
     ```powershell
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
-    Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+    Enable-ASRemoteDesktop
+    ```
+    > [!NOTE]
+    > As per the security best practices, keep the RDP access disabled when not needed.
+
+1. Disable RDP>
+
+    ```powershell
+    Disable-ASRemoteDesktop
     ```
 
 ## Next steps
