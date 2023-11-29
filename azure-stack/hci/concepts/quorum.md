@@ -4,7 +4,8 @@ description: Understanding cluster and pool quorum in Storage Spaces Direct on A
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 10/31/2023
+ms.date: 11/30/2023
+ms.contributor: alalve
 ---
 
 # Understanding cluster and pool quorum
@@ -216,7 +217,7 @@ Each of the 16 drives has one vote and node 2 also has one vote (since it's the 
 ### Pool quorum recommendations
 
 - Ensure that each node in your cluster is symmetrical (each node has the same number of drives)
-- Enable three-way mirror or dual parity so that you can tolerate a node failure and keep the virtual disks online.
+- Enable three-way mirror or dual parity so that you can tolerate two node failures and keep the virtual disks online.
 - If more than two nodes are down, or two nodes and a disk on another node are down, volumes may not have access to all three copies of their data, and therefore be taken offline and be unavailable. It's recommended to bring back the servers or replace the disks quickly to ensure the most resiliency for all the data in the volume.
 
 ## Next steps
