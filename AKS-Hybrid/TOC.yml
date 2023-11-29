@@ -36,6 +36,10 @@
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
+  - name: Concepts
+    items:
+    - name: Cluster architecture
+      href: cluster-architecture.md
   - name: Troubleshooting
     items:
     - name: Troubleshooting and known issues
