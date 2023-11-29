@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/17/2023
+ms.date: 11/28/2023
 ---
 
 # Create logical networks for Azure Stack HCI (preview)
@@ -66,7 +66,7 @@ Create a static logical network when you want to create virtual machines with ne
     $subscriptionID = "<Subscription ID>"
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl"
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $customLocationID ="/subscriptions/$subscriptionID/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
     $gateway = "192.168.200.1"
@@ -98,7 +98,7 @@ Create a static logical network when you want to create virtual machines with ne
 1. Create a static logical network. Run the following cmdlet:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
+    az stack-hci-vm network lnet create --subscription $subscriptionID --resource-group $resource_group --custom-location $customLocationName --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers     
     ```
 
     Here's a sample output:
