@@ -84,9 +84,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **DomainJoinUsername** - administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **LocalAdminDomainUser** - local administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
-- **RestIpAddress** - Static IP address for your REST API. This IP address is allocated from your management network. It can be used in a variety of ways:
-    - For DNS resolution
-    - For REST IP based deployments
+- **RestIpAddress** - Static IP address for your REST API, which is allocated from your management network. It can be used for DNS resolution or REST IP-based deployments
 - **HyperVHosts** - host servers to be managed by Network Controller
 - **NCUsername** - Network Controller account username
 - **ProductKey** - product key for SDN infrastructure VMs
