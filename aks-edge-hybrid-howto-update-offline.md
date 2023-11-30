@@ -1,10 +1,10 @@
 ---
-title: AKS Edge Essentials update
-description: Learn how to update your AKS Edge Essentials clusters.
-author: rcheeran
-ms.author: rcheeran
+title: AKS Edge Essentials update (offline)
+description: Learn how to update disconnected AKS Edge Essentials clusters.
+author: micbaz
+ms.author: micbaz
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 11/30/2013
 ms.custom: template-how-to
 ---
 
