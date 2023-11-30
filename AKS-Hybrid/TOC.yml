@@ -335,7 +335,7 @@
       href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
-    - name: Updating AKS Edge Essentials
+    - name: Update AKS Edge Essentials
       items:
       - name: Update online
         href: aks-edge-howto-update.md
