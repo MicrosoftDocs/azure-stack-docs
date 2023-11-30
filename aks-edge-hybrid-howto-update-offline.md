@@ -10,7 +10,7 @@ ms.custom: template-how-to
 
 # Update your AKS Edge Essentials cluster (offline)
 
-In a disconnected (offline, air-gapped) environment, where your AKS Edge Essentials nodes are isolated from WSUS and the Internet, it's still possible to update AKS Edge Essentials.  However, a little more manual effort is required to stage the update.  This article explains that process.
+In a disconnected (offline, air-gapped) environment, where your AKS Edge Essentials nodes are isolated from WSUS and the internet, it's still possible to update AKS Edge Essentials. However, a little more manual effort is required to stage the update. This article explains that process.
 
 ## Step 1: download the update files on an Internet-connected machine
 
