@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/08/2023
+ms.date: 11/30/2023
 ms.author: sethm
 ms.reviewer: rtiberiu
-ms.lastreviewed: 11/08/2023
+ms.lastreviewed: 11/30/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -49,16 +49,16 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2309"
-## 2309 build reference
+::: moniker range="azs-2311"
+## 2311 build reference
 
-The Azure Stack Hub 2309 update build number is **1.2309.x.xx**.
+The Azure Stack Hub 2311 update build number is **1.2311.x.xx**.
 
 ### Update type
 
-The Azure Stack Hub 2309 update build type is **Full**. This build contains only important security updates.
+The Azure Stack Hub 2311 update build type is **Full**. This build contains only important security updates.
 
-The 2309 update has the following expected runtimes based on our internal testing:
+The 2311 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
@@ -97,19 +97,19 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2309 update
+### Hotfix prerequisites: before applying the 2311 update
 
-The 2309 release of Azure Stack Hub must be applied on the 2306 release with the following hotfixes:
+The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfixes:
 
 - No Azure Stack Hub hotfix for 2306.
 
-### After successfully applying the 2309 update
+### After successfully applying the 2311 update
 
 When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2309, if any hotfixes for 2309 are subsequently released, you should install them:
+After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix for 2309.
+- No Azure Stack Hub hotfix for 2311.
 ::: moniker-end
 
 ::: moniker range="azs-2306"

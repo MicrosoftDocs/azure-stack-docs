@@ -3,10 +3,10 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/08/2023
+ms.date: 11/30/2023
 ms.author: sethm
 ms.reviewer: rtiberiu
-ms.lastreviewed: 09/09/2020
+ms.lastreviewed: 11/30/2023
 
 # Intent: As an Azure Stack Hub user, I want to know about known issues in the latest release so that I can plan my update and be aware of any issues.
 # Keyword: Notdone: keyword noun phrase
@@ -33,7 +33,7 @@ To access known issues for a different version, use the version selector dropdow
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
 
-::: moniker range="azs-2309"
+::: moniker range="azs-2311"
 <!-- ## Update -->
 
 <!-- ## Networking -->
