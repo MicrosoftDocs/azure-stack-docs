@@ -26,21 +26,21 @@ Because the update delivery mechanism for AKS Edge Essentials updates is Microso
 
 ## Step 2: stage the update
 
-Once the executables have been copied to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node. They are self-extracting executables that place the files into the staging location on the node.  
+Once you have copied the executables to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node. The executables are self-extracting executables that place the files into the staging location on the node.  
 
-The executables, when run, refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`". There is a single dialog box confirming the installation; there is no other user interaction.  
+The executables, when run, refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`". Each executable displays a single dialog box confirming the installation; there's no other user interaction.  
 
-It is possible to perform an unattended extraction by running the executable with a `-y` parameter. Thus, it's possible to automate the installation on a node through a script. For example, the following PowerShell will stage from all the executables in a single folder:
+It's possible to perform an unattended extraction by running the executable with a `-y` parameter. Thus, it's possible to automate the installation on a node through a script. For example, the following PowerShell stages from all the executables in a single folder:
 
 ```powershell
 foreach ($i in Get-ChildItem) { Start-Process $i.fullname -Wait -ArgumentList "-y" }
 ```
 
-## Step 3: validate the files have been extracted
+## Step 3: validate the files are staged
 
-Optionally, validate the files have been staged to `C:\Program Files\AKS-Edge\update-cache`. The exact list of files and content of the files vary depending on the update; your validation is reviewing that files were placed into the folder.
+Optionally, validate the files are staged into `C:\Program Files\AKS-Edge\update-cache`. The exact list of files and content of the files vary depending on the update; your validation is reviewing that files were placed into the folder.
 
 ## Step 4: perform the update
 
-Once you have completed staging the files, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
+Once you have staged the update files, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
 
