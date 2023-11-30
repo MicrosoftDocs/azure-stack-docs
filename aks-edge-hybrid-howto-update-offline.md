@@ -20,7 +20,7 @@ Because the update delivery mechanism for AKS Edge Essentials updates is Microso
 
 1. In the list, locate the desired version and Kubernetes implementation (`k8s` or `k3s`), for example `AKS Edge Essentials k8s 1.26.6 (Version 1.5.203.0)` and click the `Download` button.
 
-1. Download each of the files that make up the full update.  There will be multiple files; the exact number will depend on the update.  They will have names like `akswindows3_2526412badc9e781382a5e064b9f1b664f414c67.exe`.
+1. Download each of the files that make up the full update. There are multiple files; the exact number depends on the update. They have names like `akswindows3_2526412badc9e781382a5e064b9f1b664f414c67.exe`.
 
 1. Copy the executables to a folder on all of the AKS Edge Essentials nodes using any available mechanism (USB flash drive, optical disk, etc.).
 
