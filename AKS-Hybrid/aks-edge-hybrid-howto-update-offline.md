@@ -42,5 +42,5 @@ Optionally, validate the files are staged into `C:\Program Files\AKS-Edge\update
 
 ## Step 4: perform the update
 
-After the update are files, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
+After the update are staged, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
 
