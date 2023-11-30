@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 11/13/2023
+ms.date: 11/30/2023
 ---
 
 # Repair a server on your Azure Stack HCI (preview)
