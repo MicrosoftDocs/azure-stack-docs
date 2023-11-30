@@ -4,7 +4,7 @@ description: This article provides guidance on Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: conceptual
-ms.date: 11/13/2023
+ms.date: 11/29/2023
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -38,7 +38,7 @@ This is useful when:
 
 > [!NOTE]
 >
-> * When your application is blocked, WDAC will create a corresponding event. Review the Event log to understand the details of the policy that's blocking your application. For more information, see the [Windows Defender Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).
+> When your application is blocked, WDAC creates a corresponding event. Review the Event log to understand the details of the policy that's blocking your application. For more information, see the [Windows Defender Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).
 
 Follow these steps to switch between WDAC policy modes. These PowerShell commands interact with the Orchestrator to enable the selected modes.
 
@@ -63,13 +63,13 @@ Use the following steps to create a supplemental policy:
 
 1. Once you have all your software in place, run the following command to create your supplemental policy. Use a unique policy name to help identify it.
 
-   ```azurepowershell
+   ```powershell
    New-CIPolicy -MultiplePolicyFormat -Level Publisher -FilePath c:\wdac\Contoso-policy.xml -UserPEs -Fallback Hash -ScanPath c:\software\codetoscan
    ```
 
 1. Modify the metadata of your supplemental policy.
 
-   ```azurepowershell
+   ```powershell
    # Set Policy Version (VersionEx in the XML file)
     $policyVersion = "1.0.0.1"
     Set-CIPolicyVersion -FilePath $policyPath -Version $policyVersion
@@ -80,18 +80,18 @@ Use the following steps to create a supplemental policy:
 
 1. Deploy the policy.
 
-   ```azurepowershell
-   Add-ASWDACSupplementalPolicy -Path c:\wdac\Contoso-supplemental-policy.xml
+   ```powershell
+   Add-ASWDACSupplementalPolicy -Path c:\wdac\Contoso-policy.xml
    ```
 
 1. To check the status of the new policy:
 
-   ```azurepowershell
+   ```powershell
    Get-ASLocalWDACPolicyInfo
    ```
    Here's a sample output of these cmdlets:
 
-   ```azurepowershell
+   ```powershell
     C:\> Get-ASLocalWDACPolicyInfo
 
     NodeName          : Node01
@@ -116,4 +116,4 @@ Use the following steps to create a supplemental policy:
 
 ## Next steps
 
-* [Install Azure Stack HCI, version 23H2](../manage/install-preview-version.md?tabs=windows-admin-center).
+* [Review the deployment checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-checklist.md).
