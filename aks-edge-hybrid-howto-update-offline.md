@@ -30,7 +30,7 @@ Once the executables have been copied to the AKS Edge Essentials nodes, stage th
 
 The executables, when run, refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`". There is a single dialog box confirming the installation; there is no other user interaction.  
 
-It is possible to perform an unattended extraction by running the executable with a `-y` parameter.  Thus, it's possible to automate the installation on a node through a script.  For example, the following PowerShell will stage from all the executables in a single folder:
+It is possible to perform an unattended extraction by running the executable with a `-y` parameter. Thus, it's possible to automate the installation on a node through a script. For example, the following PowerShell will stage from all the executables in a single folder:
 
 ```powershell
 foreach ($i in Get-ChildItem) { Start-Process $i.fullname -Wait -ArgumentList "-y" }
