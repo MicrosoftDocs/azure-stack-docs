@@ -26,9 +26,9 @@ Because the update delivery mechanism for AKS Edge Essentials updates is Microso
 
 ## Step 2: stage the update
 
-Once you have copied the executables to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node. The executables are self-extracting executables that place the files into the staging location on the node.  
+After the executables are copied to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node. The executables are self-extracting executables that place the files into the staging location on the node.  
 
-The executables, when run, refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`". Each executable displays a single dialog box confirming the installation; there's no other user interaction.  
+The executables, when run, refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`." Each executable displays a single dialog box confirming the installation; there's no other user interaction.  
 
 It's possible to perform an unattended extraction by running the executable with a `-y` parameter. Thus, it's possible to automate the installation on a node through a script. For example, the following PowerShell stages from all the executables in a single folder:
 
@@ -42,5 +42,5 @@ Optionally, validate the files are staged into `C:\Program Files\AKS-Edge\update
 
 ## Step 4: perform the update
 
-Once you have staged the update files, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
+After the update are files, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
 
