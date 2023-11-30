@@ -16,7 +16,7 @@ In a disconnected (offline, air-gapped) environment, where your AKS Edge Essenti
 
 Because the update delivery mechanism for AKS Edge Essentials updates is Microsoft Update, the update files are available for download on the Microsoft Update Catalog web site.
 
-1. On a computer with Internet access, navigate to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=aks+edge+essentials) and search for the AKS Edge Essentials updates.
+1. On a computer with internet access, navigate to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=aks+edge+essentials) and search for the AKS Edge Essentials updates.
 
 1. In the list, locate the desired version and Kubernetes implementation (`k8s` or `k3s`), for example `AKS Edge Essentials k8s 1.26.6 (Version 1.5.203.0)` and click the `Download` button.
 
