@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/30/2023
+ms.date: 11/29/2023
 ms.author: sethm
 ms.reviewer: rtiberiu
-ms.lastreviewed: 11/30/2023
+ms.lastreviewed: 11/29/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -140,7 +140,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- Starting with the 2301 release of Azure Stack Hub, [the Event Hubs resource provider](event-hubs-rp-install.md) is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
 - This build contains only important [security updates](#security-updates). There are no other major changes from the previous build.
 
 <!-- ### Fixes -->
@@ -210,7 +209,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- Starting with the 2301 release, [the Event Hubs resource provider](event-hubs-rp-install.md) is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
 - SQL resource provider 2.0.13 and MySQL resource provider 2.0.13 are released to accommodate some UI breaking changes introduced in Azure Stack Hub 2301. Update the SQL resource provider and MySQL resource provider to the latest version before updating Azure Stack Hub. You may need to refresh the browser cache for the new UI changes to take effect.
 
 <!-- ### Fixes -->
