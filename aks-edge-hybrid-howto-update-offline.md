@@ -26,7 +26,7 @@ Because the update delivery mechanism for AKS Edge Essentials updates is Microso
 
 ## Step 2: stage the update
 
-Once the executables have been copied to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node.  They are self-extracting executables that will place the files into the staging location on the node.  
+Once the executables have been copied to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node. They are self-extracting executables that place the files into the staging location on the node.  
 
 The executables, when run, will refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`".  There will be a single dialog box confirming the installation; there will be no other user interaction.  
 
