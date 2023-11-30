@@ -1,0 +1,46 @@
+---
+title: AKS Edge Essentials update
+description: Learn how to update your AKS Edge Essentials clusters.
+author: rcheeran
+ms.author: rcheeran
+ms.topic: how-to
+ms.date: 10/10/2023
+ms.custom: template-how-to
+---
+
+# Update your AKS Edge Essentials cluster (offline)
+
+In a disconnected (offline, air-gapped) environment, where your AKS Edge Essentials nodes are isolated from WSUS and the Internet, it's still possible to update AKS Edge Essentials.  However, a little more manual effort is required to stage the update.  This article explains that process.
+
+## Step 1: download the update files on an Internet-connected machine
+
+Because the update delivery mechanism for AKS Edge Essentials updates is Microsoft Update, the update files are available for download on the Microsoft Update Catalog web site.
+
+1. On a computer with Internet access, navigate to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=aks+edge+essentials) and search for the AKS Edge Essentials updates.
+
+1. In the list, locate the desired version and Kubernetes implementation (`k8s` or `k3s`), for example `AKS Edge Essentials k8s 1.26.6 (Version 1.5.203.0)` and click the `Download` button.
+
+1. Download each of the files that make up the full update.  There will be multiple files; the exact number will depend on the update.  They will have names like `akswindows3_2526412badc9e781382a5e064b9f1b664f414c67.exe`.
+
+1. Copy the executables to a folder on all of the AKS Edge Essentials nodes using any available mechanism (USB flash drive, optical disk, etc.).
+
+## Step 2: stage the update
+
+Once the executables have been copied to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node.  They are self-extracting executables that will place the files into the staging location on the node.  
+
+The executables, when run, will refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`".  There will be a single dialog box confirming the installation; there will be no other user interaction.  
+
+It is possible to perform an unattended extraction by running the executable with a `-y` parameter.  Thus, it's possible to automate the installation on a node through a script.  For example, the following PowerShell will stage from all the executables in a single folder:
+
+```powershell
+foreach ($i in Get-ChildItem) { Start-Process $i.fullname -Wait -ArgumentList "-y" }
+```
+
+## Step 3: validate the files have been extracted
+
+Optionally, validate the files have been staged to `C:\Program Files\AKS-Edge\update-cache`.  The exact list of files and content of the files will vary depending on the update; your validation will be reviewing that files were placed into the folder.
+
+## Step 4: perform the update
+
+Once you have completed staging the files, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
+
