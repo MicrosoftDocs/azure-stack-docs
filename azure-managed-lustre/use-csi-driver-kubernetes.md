@@ -38,7 +38,7 @@ The following container images are compatible with Azure Managed Lustre file sys
 | CSI driver version | Container image                                                | Supported Kubernetes version | Lustre client version |
 |--------------------|----------------------------------------------------------------|------------------------------|-----------------------|
 | main branch        | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:latest`  | 1.21 or later | 2.15.1 |
-| v0.1.11            | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.11` | 1.21 or later | 2.15.1 |
+| v0.1.12            | `mcr.microsoft.com/oss/kubernetes-csi/azurelustre-csi:v0.1.12` | 1.21 or later | 2.15.1 |
 
 ## Prerequisites
 

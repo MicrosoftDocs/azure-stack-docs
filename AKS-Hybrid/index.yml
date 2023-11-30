@@ -1,24 +1,24 @@
 ### YamlMime:Landing
 
-title: Azure Kubernetes Service (AKS) hybrid deployment options documentation
-summary: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+title: Azure Kubernetes Service (AKS) on Azure Stack HCI documentation
+summary: Azure Kubernetes Service (AKS) on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS is available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
 
 metadata:
-  title: Azure Kubernetes Service (AKS) hybrid deployment options documentation
-  description: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+  title: Azure Kubernetes Service (AKS) on Azure Stack HCI documentation
+  description: Azure Kubernetes Service (AKS) on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS is available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
-  ms.date: 03/19/2020
+  ms.date: 11/29/2023
 
 landingContent:
-  - title: About AKS hybrid
+  - title: About AKS on Azure Stack HCI
     linkLists:
       - linkListType: overview
         links:
-          - text: What is AKS hybrid deployment options?
+          - text: What is AKS on HCI?
             url: aks-hybrid-options-overview.md
-          - text: AKS hybrid cluster provisioning from Azure (preview)
+          - text: Kubernetes cluster provisioning from Azure (preview)
             url: aks-hybrid-preview-overview.md
       - linkListType: concept
         links:
@@ -48,7 +48,7 @@ landingContent:
         links:
           - text: Troubleshoot
             url: aks-edge-troubleshoot-overview.md
-  - title: Get started with AKS hybrid
+  - title: Get started with AKS on Azure Stack HCI
     linkLists:
       - linkListType: deploy
         links:
@@ -119,7 +119,7 @@ landingContent:
             url: connect-to-arc.md 
           - text: Use Kubernetes RBAC with Microsoft Entra ID
             url: kubernetes-rbac-azure-ad.md
-          - text: Monitor AKS on Azure Stack HCI clusters
+          - text: Monitor AKS Arc-enabled clusters
             url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
