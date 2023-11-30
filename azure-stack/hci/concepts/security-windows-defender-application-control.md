@@ -81,7 +81,7 @@ Use the following steps to create a supplemental policy:
 1. Deploy the policy.
 
    ```azurepowershell
-   Add-ASWDACSupplementalPolicy -Path c:\wdac\Contoso-supplemental-policy.xml
+   Add-ASWDACSupplementalPolicy -Path c:\wdac\Contoso-policy.xml
    ```
 
 1. To check the status of the new policy:
