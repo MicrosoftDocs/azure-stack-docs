@@ -28,7 +28,7 @@ Because the update delivery mechanism for AKS Edge Essentials updates is Microso
 
 Once the executables have been copied to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node. They are self-extracting executables that place the files into the staging location on the node.  
 
-The executables, when run, will refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`".  There will be a single dialog box confirming the installation; there will be no other user interaction.  
+The executables, when run, refer to themselves as a name along the lines of "`AKS-EE Windows Fragment`". There is a single dialog box confirming the installation; there is no other user interaction.  
 
 It is possible to perform an unattended extraction by running the executable with a `-y` parameter.  Thus, it's possible to automate the installation on a node through a script.  For example, the following PowerShell will stage from all the executables in a single folder:
 
