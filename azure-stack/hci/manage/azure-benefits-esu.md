@@ -55,7 +55,7 @@ The following image shows typical output when checking for required prerequisite
 ---
 
 > [!NOTE]
-> The following steps are for Azure Stack HCI version 23H2 and later only. For version 22H2 and earlier, see the documentation for [Azure verification for VMs](../deploy/azure-verification.md).
+> The following steps are for Azure Stack HCI version 23H2 and later only. For version 22H2 and earlier, see the documentation for [Azure Benefits (22H2 and earlier)](azure-benefits.md).
 
 ### Step 1: Turn on legacy OS support for Azure VM verification
 
