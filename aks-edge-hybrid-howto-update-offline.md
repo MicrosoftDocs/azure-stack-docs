@@ -38,7 +38,7 @@ foreach ($i in Get-ChildItem) { Start-Process $i.fullname -Wait -ArgumentList "-
 
 ## Step 3: validate the files have been extracted
 
-Optionally, validate the files have been staged to `C:\Program Files\AKS-Edge\update-cache`.  The exact list of files and content of the files will vary depending on the update; your validation will be reviewing that files were placed into the folder.
+Optionally, validate the files have been staged to `C:\Program Files\AKS-Edge\update-cache`. The exact list of files and content of the files vary depending on the update; your validation is reviewing that files were placed into the folder.
 
 ## Step 4: perform the update
 
