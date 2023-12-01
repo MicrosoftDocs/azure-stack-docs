@@ -46,7 +46,7 @@ You should install the latest patch release of the minor version you're running.
 
 AKS defines a generally available (GA) version as a version that's available for download when deploying or updating AKS enabled by Arc. AKS supports three GA minor versions of Kubernetes:
 
-* The latest GA minor version that is released for AKS (which we'll refer to as N).
+* The latest GA minor version that is released for AKS (which we refer to as N).
 * Two previous minor versions. Each supported minor version also supports a maximum of two (2) stable patches.
 
 AKS might also support preview versions, which are explicitly labeled as such.
@@ -78,7 +78,7 @@ When AKS releases 1.18.\*, all the 1.15.\* versions are removed and go out of su
 > [!NOTE]
 > If you're running an unsupported Kubernetes version, you are asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS support policies](./support-policies.md).
 
-In addition to the above, AKS supports a maximum of two patch releases of a given minor version. So given the following supported versions:
+In addition to the this policy, AKS supports a maximum of two patch releases of a given minor version. Given the following supported versions:
 
 ```output
 Current Supported Version List
@@ -145,13 +145,13 @@ The AKS team publishes pre-announcements with planned dates of new Kubernetes ve
 
 ### How often should I expect to upgrade Kubernetes versions to stay in support?
 
-Starting with Kubernetes 1.19, the [open source community has expanded support to one year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS commits to enabling patches and support matching the upstream commitments. For Kubernetes clusters on 1.19 and greater, you'll be able to upgrade a minimum of once a year to stay on a supported version.
+Starting with Kubernetes 1.19, the [open source community expanded support to one year](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/). AKS commits to enabling patches and support matching the upstream commitments. For Kubernetes clusters on 1.19 and greater, you'll be able to upgrade a minimum of once a year to stay on a supported version.
 
 For versions on 1.18 or below, the window of support remains at 9 months, requiring an upgrade once every 9 months to stay on a supported version. Regularly test new versions and be prepared to upgrade to newer versions to capture the latest stable enhancements within Kubernetes.
 
 ### What happens when a user upgrades a Kubernetes cluster with a minor version that isn't supported?
 
-If you're on the n-3 version or older, it means you're outside of support and will be asked to upgrade. When your upgrade from version n-3 to n-2 succeeds, you're back within our support policies. For example:
+If you're on the n-3 version or older, it means you're outside of support and are asked to upgrade. When your upgrade from version n-3 to n-2 succeeds, you're back within our support policies. For example:
 
 * If the oldest supported Kubernetes version is 1.15.a and you are on 1.14.b or older, you're outside of support.
 * When you successfully upgrade from 1.14.b to 1.15.a or greater, you're back within our support policies.
@@ -188,7 +188,7 @@ You can only skip multiple versions when upgrading from an unsupported version b
 
 ### Can I create a new 1.xx.x cluster during its 30-day support window?
 
-No. Once a version is deprecated/removed, you cannot create a cluster with that version. As the change rolls out, you will start to see the old version removed from your version list. This process can take up to two weeks from the announcement, progressively by region.
+No. Once a version is deprecated/removed, you cannot create a cluster with that version. As the change rolls out, you see the old version removed from your version list. This process can take up to two weeks from the announcement, progressively by region.
 
 ### I am on a freshly deprecated version. Can I still add new node pools? Or do I have to upgrade?
 
