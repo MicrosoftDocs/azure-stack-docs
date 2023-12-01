@@ -54,15 +54,19 @@ When files are archived from the Azure Managed Lustre system to the blob contain
 
 You can modify the POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
 
-## Copy a Lustre blob container with AzCopy (or Storage Explorer)
+## Copy a Lustre blob container with AzCopy or Storage Explorer
 
-You can move or copy the blob container Lustre uses by using AzCopy or Storage Explorer. You can include directory attributes by adding the following AzCopy flag:
+You can move or copy the blob container Lustre uses by using AzCopy or Storage Explorer.
+
+For AzCopy, you can include directory attributes by adding the following flag:
 
  `--include-directory-stub`
 
 Including this flag preserves directory POSIX attributes during a transfer, for example, `owner`, `group`, and `permissions`. If you use `azcopy` on the storage container without this flag, or with the flag set to `false`, then the data and directories are included in the transfer, but the directories don't retain their POSIX attributes.
 
-Similarly, for Storage Explorer you can enable this flag in **Settings**, under **Transfers**, by checking the box for **Include Directory Stubs**.  
+In Storage Explorer, you can enable this flag in **Settings** by selecting **Transfers** and checking the box for **Include Directory Stubs**.
+
+:::image type="content" source="./media/blob-integration/blob-integration-storage-explorer.png" alt-text="Screenshot showing how to include directory stubs during a transfer in Storage Explorer." lightbox="media/blob-integration/blob-integration-storage-explorer.png":::
 
 ## Next steps
 
