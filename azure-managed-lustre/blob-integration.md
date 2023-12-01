@@ -4,7 +4,7 @@ description: Understand storage concepts for using Azure Blob storage with an Az
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 06/28/2023
+ms.date: 12/01/2023
 ms.lastreviewed: 06/05/2023
 ms.reviewer: brianl
 
@@ -23,7 +23,6 @@ Azure Managed Lustre supports both hierarchical and non-hierarchical namespaces 
 
 - With a hierarchical namespace container, Azure Managed Lustre reads POSIX attributes from the blob header.
 - With a non-hierarchical container, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
-
 
 ## Filter blob imports
 
@@ -53,11 +52,15 @@ When files are archived from the Azure Managed Lustre system to the blob contain
 
   `hdi_isfolder : true`
 
-You can modify these POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
+You can modify the POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
 
 ## Copy a Lustre blob container with AzCopy (or Storage Explorer)
 
-You can move or copy the blob container Lustre uses by using AzCopy or Storage Explorer, but at the time of this writing, with AzCopy version 10.17.0 the default settings for those tools don't include the directory attributes (such as `hdi_isfolder`). You can include those attributes with the AzCopy flag `--include-directory-stub True`, which includes the directory POSIX attributes (for example, `owner`, `group`, and `permissions`). If you `azcopy` the storage container without that flag set to `True` (it defaults to `False`), the data and directories copy but the directories don't retain their POSIX attributes.
+You can move or copy the blob container Lustre uses by using AzCopy or Storage Explorer. You can include directory attributes by adding the following AzCopy flag:
+
+ `--include-directory-stub`
+
+Including this flag preserves directory POSIX attributes during a transfer, for example, `owner`, `group`, and `permissions`. If you use `azcopy` on the storage container without this flag, or with the flag set to `false`, then the data and directories are included in the transfer, but the directories don't retain their POSIX attributes.
 
 Similarly, for Storage Explorer you can enable this flag in **Settings**, under **Transfers**, by checking the box for **Include Directory Stubs**.  
 
