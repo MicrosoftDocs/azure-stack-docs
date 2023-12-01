@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
-title: Azure Kubernetes Service (AKS) enabled by Arc documentation
+title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
 summary: Azure Kubernetes Service (AKS) enabled by Arc is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS is available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
 
 metadata:
-  title: Azure Kubernetes Service (AKS) enabled by Arc documentation
+  title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
   description: Azure Kubernetes Service (AKS) enabled by Arc is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS is available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
   ms.topic: landing-page
   author: sethmanheim
@@ -12,7 +12,7 @@ metadata:
   ms.date: 11/29/2023
 
 landingContent:
-  - title: About AKS on Azure Stack HCI
+  - title: About AKS enabled by Azure Arc
     linkLists:
       - linkListType: overview
         links:
