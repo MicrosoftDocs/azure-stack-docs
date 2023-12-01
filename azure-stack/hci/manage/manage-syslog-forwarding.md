@@ -464,6 +464,6 @@ Miscellaneous events that are forwarded. These events can't be customized.
 
 Learn more about:
 
-- [Security baseline settings for Azure Stack HCI](secure-baseline).
-- [Windows Defender Application Control for Azure Stack HCI](security-windows-defender-application-control).
-- [BitLocker for Azure Stack HCI](security-bitlocker).
+- [Security baseline settings for Azure Stack HCI](/azure-stack/hci/concepts/secure-baseline).
+- [Windows Defender Application Control for Azure Stack HCI](/azure-stack/hci/concepts/security-windows-defender-application-control).
+- [BitLocker for Azure Stack HCI](/azure-stack/hci/concepts/security-bitlocker).
