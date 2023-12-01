@@ -49,7 +49,7 @@ Syslog forwarding agents work independently from each other but can be managed a
 
 The syslog forwarder in Azure Stack HCI supports the following configurations:
 
-- **Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption:** In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS 1.2 encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption](#syslog-forwarding-with-tcp-mutual-authentication-(client-and-server)-and-tls-12-encryption).
+- **Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption:** In this configuration, both the syslog server and the syslog client verify the identity of each other via certificates. Messages are sent over a TLS 1.2 encrypted channel. For more information, see [Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption](#syslog-forwarding-with-tcp-mutual-authentication-client-and-server-and-tls-12-encryption).
 - **Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption:** In this configuration, the syslog client verifies the identity of the syslog server via a certificate. Messages are sent over a TLS 1.2 encrypted channel. For more information, see [Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption](#syslog-forwarding-with-tcp-server-authentication-and-tls-12-encryption).
 - **Syslog forwarding with TCP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP. For more information, see [Syslog forwarding with TCP and no encryption](#syslog-forwarding-with-tcp-and-no-encryption).
 - **Syslog with UDP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP. For more information, see [Syslog forwarding with UDP and no encryption](#syslog-forwarding-with-udp-and-no-encryption).
@@ -464,6 +464,6 @@ Miscellaneous events that are forwarded. These events can't be customized.
 
 Learn more about:
 
-- [Security baseline settings for Azure Stack HCI](./secure-baseline.md).
-- [Windows Defender Application Control for Azure Stack HCI](./security-windows-defender-application-control.md).
-- [BitLocker for Azure Stack HCI](./security-bitlocker.md).
+- [Security baseline settings for Azure Stack HCI](secure-baseline).
+- [Windows Defender Application Control for Azure Stack HCI](security-windows-defender-application-control).
+- [BitLocker for Azure Stack HCI](security-bitlocker).
