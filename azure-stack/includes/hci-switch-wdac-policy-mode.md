@@ -1,6 +1,6 @@
 ---
 author: ManikaDhiman
-ms.author: v-mandhiman
+ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
 ms.date: 11/29/2023
