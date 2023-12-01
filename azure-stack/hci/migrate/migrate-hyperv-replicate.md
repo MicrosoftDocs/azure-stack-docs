@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 12/01/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -166,7 +166,6 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 1. On the **Replicate** page, on the **Basics** tab:
 
     1. Select the Azure subscription for this project.
-    1. Select an existing storage account (in the same subscription as your Azure Migrate project) or create a new one with default settings (recommended).
     1. Select the resource group for this project.
 	1. For **Cluster resource**, select the Azure Stack HCI cluster resource.
 	1. Verify there is a green check for the cluster.
@@ -185,9 +184,13 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 1. On the **Target settings** tab, complete these tasks:
 
-    1. Select the resource group that you want these VMs to be associated with.
+    1. For **Storage account subscription**, select the same subscription as your Azure Migrate project.
 
-	1. Select the logical network these VMs will use. If you don't see a logical network in the dropdown list, [create a virtual network](../manage/create-virtual-networks.md) and select **Reload virtual switch**.
+    1. For **Resource group**, select the resource group that you want these VMs to be associated with.
+    
+    1. For **Cache storage account**, select an existing storage account or select **New** to create a storage account with default settings. We recommend that you use a new cache storage account to store migration and replication state metadata.
+
+	1. Select the logical network these VMs will use. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload virtual switch**.
 
 	1. Select the storage path where these VMs will be created. If you don't see a storage path in the dropdown list, [create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
