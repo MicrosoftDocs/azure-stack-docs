@@ -1,18 +1,18 @@
 ---
 author: ManikaDhiman
-ms.author: v-mandhiman
+ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 11/13/2023
+ms.date: 11/29/2023
 ms.reviewer: alkohli
 ---
 
 1. Connect to your Azure Stack HCI node.
 
-1. Run the following PowerShell command using local administrator credentials or LCM deployment user credentials.
+1. Run the following PowerShell command using local administrator credentials or deployment user (AzureStackLCMUser) credentials.
 
    > [!IMPORTANT]
-   > Cmdlets interacting with LCM (Lifecycle Manager) requires proper credentials authorization via the security group (PREFIX-ECESG) and CredSSP (when using remote PowerShell) or Console session (RDP).
+   > Cmdlets that require to be signed in as deployment user (AzureStackLCMUser) need proper credentials authorization via the security group (PREFIX-ECESG) and CredSSP (when using remote PowerShell) or Console session (RDP).
 
 1. Run the following cmdlet to check the WDAC policy mode that is currently enabled:
 
