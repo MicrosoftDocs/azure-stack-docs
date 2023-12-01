@@ -85,6 +85,10 @@ The Arc Resource Bridge must be configured and running on the target appliance V
 
 - A custom storage path configured on your Arc Resource Bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
 
+## Azure Migrate project requirements
+
+Existing Azure Migrate customers that have already done VM discovery need to [create a new Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Stack HCI. You cannot use existing Azure Migrate projects for migration.
+
 ## Next steps
 
 - [Complete the prerequisites](migrate-hyperv-prerequisites.md).
