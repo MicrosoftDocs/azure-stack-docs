@@ -9,7 +9,7 @@ ms.author: sethm
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
 
-# Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS hybrid.
+# Intent: As an IT Pro, I want to know how Kubernetes versions are supported, as well as the lifecycle of clusters in AKS enabled by Azure Arc.
 # Keyword: supported Kubernetes versions
 
 ---
@@ -18,7 +18,7 @@ ms.reviewer: mikek
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes the supported Kubernetes versions for Azure Kubernetes Service enabled by Azure Arc. The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community has [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19.
+This article describes the supported Kubernetes versions for Azure Kubernetes Service enabled by Azure Arc. The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19.
 
 Minor version releases include new features and improvements. Patch releases are more frequent (sometimes weekly) and are intended for critical bug fixes within a minor version. Patch releases include fixes for security vulnerabilities or major bugs.
 
@@ -44,7 +44,7 @@ You should install the latest patch release of the minor version you're running.
 
 ## Kubernetes version support policy
 
-AKS hybrid defines a generally available (GA) version as a version that's available for download when deploying or updating AKS hybrid. AKS hybrid supports three GA minor versions of Kubernetes:
+AKS defines a generally available (GA) version as a version that's available for download when deploying or updating AKS enabled by Arc. AKS supports three GA minor versions of Kubernetes:
 
 * The latest GA minor version that is released for AKS (which we'll refer to as N).
 * Two previous minor versions. Each supported minor version also supports a maximum of two (2) stable patches.
@@ -76,7 +76,7 @@ When a new minor version is introduced, the oldest minor version and patch relea
 When AKS releases 1.18.\*, all the 1.15.\* versions are removed and go out of support in 30 days.
 
 > [!NOTE]
-> If customers are running an unsupported Kubernetes version, they are asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS hybrid support policies](./support-policies.md).
+> If you're running an unsupported Kubernetes version, you are asked to upgrade when requesting support for the cluster. Clusters running unsupported Kubernetes releases are not covered by the [AKS support policies](./support-policies.md).
 
 In addition to the above, AKS supports a maximum of two patch releases of a given minor version. So given the following supported versions:
 
@@ -104,7 +104,7 @@ To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI a
 
 ## Release and deprecation process
 
-You can reference upcoming version releases and deprecations on the [AKS Hybrid Kubernetes Release Calendar](#aks-kubernetes-release-calendar).
+You can reference upcoming version releases and deprecations on the [AKS Kubernetes Release Calendar](#aks-kubernetes-release-calendar).
 
 For new minor versions of Kubernetes:
 
@@ -127,7 +127,7 @@ Specific patch releases may be skipped or rollout accelerated, depending on the 
 
 For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
-|  Kubernetes version | Upstream release  | AKS hybrid GA  | End of life |
+|  Kubernetes version | Upstream release  | AKS GA  | End of life |
 |--------------|-------------------|---------|-------------|
 | 1.23  | Dec 2021  | Aug 2022 | 1.26* |
 | 1.24  | May 2022   | Oct 2022 | 1.27*  |
@@ -158,16 +158,16 @@ If you're on the n-3 version or older, it means you're outside of support and wi
 
 Downgrades are not supported.
 
-### What does 'outside of support' mean?
+### What does "outside of support" mean?
 
-'Outside of support' means that:
+"Outside of support" means that:
 
 * The version you're running is outside of the supported versions list.
 * You'll be asked to upgrade the cluster to a supported version when requesting support, unless you're within the 30-day grace period after version deprecation. 
 
 Additionally, AKS doesn't make any runtime (or other) guarantees for clusters outside of the supported versions list.
 
-### What happens when a user scales a Kubernetes cluster with a minor version that isn't supported?
+### What happens when I scale a Kubernetes cluster with a minor version that isn't supported?
 
 For minor versions not supported by AKS, scaling in or out should continue to work. Since there are no Quality of Service guarantees, we recommend upgrading to bring your cluster back into support.
 
