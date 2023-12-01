@@ -1,8 +1,8 @@
-- name: Azure Kubernetes Service (AKS) on Azure Stack HCI
+- name: Azure Kubernetes Service (AKS) enabled by Arc
   href: index.yml
 - name: Overview
   items:
-  - name: AKS on Azure Stack HCI
+  - name: AKS enabled by Arc
     href: aks-hybrid-options-overview.md
   - name: AKS on Azure Stack HCI and Windows Server
     href: overview.md
