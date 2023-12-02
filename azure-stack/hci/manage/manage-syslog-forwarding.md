@@ -3,7 +3,7 @@ title: Manage syslog forwarding for Azure Stack HCI (preview)
 description: Learn about security features for Azure Stack HCI security information and event management (SIEM) (preview).
 author: alkohli
 ms.author: alkohli
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 12/01/2023
