@@ -32,6 +32,9 @@ There are several advantages to getting ESU through Azure, which extend to Azure
 
 This tutorial walks you through how you can use [Azure verification for VMs](../deploy/azure-verification.md) to automatically unlock free ESUs on Azure Stack HCI. Azure verification is a feature on Azure Stack HCI that enables you to extend supported Azure-exclusive benefits to your cluster, including getting ESUs for free.
 
+> [!NOTE]
+> The steps in this tutorial apply to Azure Stack HCI version 23H2 and later only. If you're using version 22H2 and earlier, see the documentation for [Azure Benefits (22H2 and earlier)](azure-benefits.md).
+
 ### Prerequisites
 
 #### [Windows Server 2012/2012 R2](#tab/windows-server-2012)
@@ -53,9 +56,6 @@ The following image shows typical output when checking for required prerequisite
 :::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites.":::
 
 ---
-
-> [!NOTE]
-> The following steps in this section apply to Azure Stack HCI version 23H2 and later only. If you're using version 22H2 and earlier, see the documentation for [Azure Benefits (22H2 and earlier)](azure-benefits.md).
 
 ### Step 1: Turn on legacy OS support for Azure VM verification
 
