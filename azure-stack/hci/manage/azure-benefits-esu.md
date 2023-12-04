@@ -5,14 +5,14 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 11/15/2023
-ms.lastreviewed: 11/15/2023
+ms.date: 12/04/2023
+ms.lastreviewed: 12/04/2023
 
 ---
 
 # Free Extended Security Updates (ESU) through Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)] and later.
+> Applies to Azure Stack HCI, version 21H2, 22H2, 23H2 (preview), and later.
 
 The Extended Security Update (ESU) program enables you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Stack HCI comes with additional benefits and implementation steps – this article explains the specifics for Azure Stack HCI.
 
@@ -31,6 +31,9 @@ There are several advantages to getting ESU through Azure, which extend to Azure
 ## Tutorial: Get free ESUs through Azure Stack HCI
 
 This tutorial walks you through how you can use [Azure verification for VMs](../deploy/azure-verification.md) to automatically unlock free ESUs on Azure Stack HCI. Azure verification is a feature on Azure Stack HCI that enables you to extend supported Azure-exclusive benefits to your cluster, including getting ESUs for free.
+
+> [!NOTE]
+> The steps in this tutorial apply to Azure Stack HCI version 23H2 and later only. If you're using version 22H2 and earlier, see the documentation for [Azure Benefits (22H2 and earlier)](azure-benefits.md).
 
 ### Prerequisites
 
