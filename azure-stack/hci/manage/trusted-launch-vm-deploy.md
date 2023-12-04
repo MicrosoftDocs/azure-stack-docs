@@ -27,7 +27,7 @@ You can create a Trusted launch VM using Azure portal or by using Azure Command-
 
 # [Create using Azure portal](#tab/azure-portal)
 
-To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure portal, with the following changes:”
+To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure portal, with the following changes:
 
 1. While creating the VM, select **Trusted launch virtual machines** for security type.
 
@@ -43,9 +43,9 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
 
 # [Create using CLI](#tab/azure-cli)
 
-To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure CLI, with the following changes:”
+To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure CLI, with the following changes:
 
-1. Create a VM image using a [supported](trusted-launch-vm-overview.md#guest-operating-system-images) VM guest OS image by Trusted launch from Azure Marketplace. For more information, see [Create Azure Stack HCI VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
+1. Create a VM image using a [supported VM guest OS image](trusted-launch-vm-overview.md#guest-operating-system-images) by Trusted launch from Azure Marketplace. For more information, see [Create Azure Stack HCI VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
 
 1. Create a VM using CLI as follows:
 
