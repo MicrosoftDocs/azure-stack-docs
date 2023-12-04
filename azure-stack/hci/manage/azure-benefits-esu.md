@@ -5,8 +5,8 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 11/30/2023
-ms.lastreviewed: 11/29/2023
+ms.date: 12/04/2023
+ms.lastreviewed: 12/04/2023
 
 ---
 
@@ -55,7 +55,7 @@ The following image shows typical output when checking for required prerequisite
 ---
 
 > [!NOTE]
-> The following steps are for Azure Stack HCI version 23H2 and later only. For version 22H2 and earlier, see the documentation for [Azure Benefits (22H2 and earlier)](azure-benefits.md).
+> The following steps in this section apply to Azure Stack HCI version 23H2 and later only. If you're using version 22H2 and earlier, see the documentation for [Azure Benefits (22H2 and earlier)](azure-benefits.md).
 
 ### Step 1: Turn on legacy OS support for Azure VM verification
 
