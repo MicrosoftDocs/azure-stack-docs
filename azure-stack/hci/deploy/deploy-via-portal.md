@@ -177,9 +177,18 @@ To confirm that the system and all of its Azure resources were successfully depl
 
 \* Extra storage accounts may be created by this preview release. Normally there would be one storage account created for the key vault and one for audit logs, which is a locally redundant storage (LRS) account with a lock placed on it.
 
+## Rerun deployment
+
+To rerun the deployment if there is a failure, follow these steps:
+
+1. In the Azure portal, go the resource group you used for the deployment and then navigate to **Deployments**.
+1. In the right-pane, from the top command bar, select **Redeploy**. This action reruns the deployment.
+
+    :::image type="content" source="./media/deploy-via-portal/redeploy-failed-deployment.png" alt-text="Screenshot of how to rerun a failed deployment via Azure portal." lightbox="./media/deploy-via-portal/redeploy-failed-deployment.png":::
+
 ## Post deployment tasks
 
-For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems.
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
 
@@ -194,8 +203,15 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
 1. Enable RDP.
 
     ```powershell
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
-    Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+    Enable-ASRemoteDesktop
+    ```
+    > [!NOTE]
+    > As per the security best practices, keep the RDP access disabled when not needed.
+
+1. Disable RDP>
+
+    ```powershell
+    Disable-ASRemoteDesktop
     ```
 
 ## Next steps
