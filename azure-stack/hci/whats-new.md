@@ -39,7 +39,9 @@ Starting this release, you can run Azure Kubernetes Service (AKS) hybrid workloa
 
 This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings.md).
 
-### 
+### Guest management operations via Azure CLI
+
+In this release, you can perform an extended set of guest management operations via the Azure CLI.
 
 ## Features and improvements in 2310 
 
