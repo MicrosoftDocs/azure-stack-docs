@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/01/2023
+ms.date: 12/05/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -119,7 +119,7 @@ Clean up the source VMs. You can delete the source VMs from the Hyper-V server a
 
         :::image type="content" source="./media/migrate-azure-migrate/delete-source-virtual-machine-hyperv-manager-1.png" alt-text="Screenshot of source VM in Hyper V Manager with delete selected from the context menu." lightbox="./media/migrate-azure-migrate/delete-source-virtual-machine-hyperv-manager-1.png":::
     
-        Alternatively, you can use PowerShell to delete the VM. For more information, see, [Delete VM from Hyper-V server](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps&preserve-view=true).
+        Alternatively, you can use PowerShell to delete the VM. For more information, see the [Remove-VM](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps&preserve-view=true) command.
     1. Navigate to the folder where the virtual hard disk of the VM is stored and delete the virtual hard disk.
 1. The last step is to delete the VM from the Failover Cluster Manager.
     1. In the Failover Cluster Manager, connect to the Hyper-V cluster and go to **Roles**.
