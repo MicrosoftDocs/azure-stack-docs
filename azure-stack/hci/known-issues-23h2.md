@@ -42,7 +42,7 @@ Here are the known issues in this release:
 Here are the known issues from previous releases:
 
 |Feature|Issue|Workaround/Comments|
-|-|------|------|----------|
+|------|------|----------|
 | Networking <!--24524483--> |There is an infrequent DNS client issue in this release that causes the deployment to fail on a two-node cluster with a DNS resolution error: *A WebException occurred while sending a RestRequest. WebException.Status: NameResolutionFailure.* <br>As a result of the bug, the DNS record of the second node is deleted soon after it is created resulting in a DNS error.  |Restart the server. This operation registers the DNS record which prevents it from getting deleted. |
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
 | Arc VM management |Deleting a network interface on an Arc VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
