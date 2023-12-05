@@ -2,6 +2,6 @@
   tocHref: /
   topicHref: /
   items:
-  - name: Azure Kubernetes Service (AKS) on Azure Stack HCI
+  - name: Azure Kubernetes Service (AKS) enabled by Azure Arc
     tocHref: /azure/aks/hybrid/
     topicHref: /azure/aks/hybrid/index
