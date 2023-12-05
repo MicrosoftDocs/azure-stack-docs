@@ -152,10 +152,10 @@ The Azure Migrate project creation fails if the Azure subscription isn't registe
 Verify the following:
 - Make sure that you have **Application Administrator** role on the Azure AD tenant.
 - Make sure that you have the **Contributor** and **User Access Administrator** roles on the Azure subscription.
-- Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [Azure Migrate supported regions](../index.yml).
+- Make sure that you're selecting one of the supported regions for Azure Migrate project creation. For a list of supported regions, see [migrate-hyperv-requirements.md#supported-geographies).
 
 
-### Deleting or changing target cluster information from Source Appliance Configuration Manager doesn't work 
+### Deleting or changing target cluster information from Source Appliance Configuration Manager doesn't work.
 
 **Root cause** 
 When providing information in the Source Appliance Configuration Manager, the target cluster name can't be changed once entered.
