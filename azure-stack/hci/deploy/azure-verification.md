@@ -7,8 +7,8 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/15/2023
-ms.lastreviewed: 11/15/2023
+ms.date: 11/28/2023
+ms.lastreviewed: 11/28/2023
 ---
 
 # Azure verification for VMs
@@ -183,7 +183,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Azure verification for VMs**, view the host attestation status.
 
-<!-- Image needed, but skip for now -->
+   :::image type="content" source="media/azure-verification/cluster-status.png" alt-text="Screenshot showing cluster status on the portal." lightbox="media/azure-verification/cluster-status.png":::
 
 ### [Azure CLI](#tab/azurecli)
 

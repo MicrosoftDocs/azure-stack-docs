@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal (preview)
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/16/2023
+ms.date: 11/28/2023
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -103,9 +103,7 @@ Choose whether to create a new configuration for this system or to load deployme
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
-4. Enter the **Computer name prefix** used when the domain was prepared for deployment.
-
-    This is typically the OU name.
+4. Enter the **Computer name prefix** used when the domain was prepared for deployment (some use the same name as the OU name).
 5. Enter the **OU** created for this deployment.
    For example: ``OU=HCI01,DC=contoso,DC=com``
 6. Enter the **Deployment account** credentials.
@@ -179,9 +177,18 @@ To confirm that the system and all of its Azure resources were successfully depl
 
 \* Extra storage accounts may be created by this preview release. Normally there would be one storage account created for the key vault and one for audit logs, which is a locally redundant storage (LRS) account with a lock placed on it.
 
+## Rerun deployment
+
+To rerun the deployment if there is a failure, follow these steps:
+
+1. In the Azure portal, go the resource group you used for the deployment and then navigate to **Deployments**.
+1. In the right-pane, from the top command bar, select **Redeploy**. This action reruns the deployment.
+
+    :::image type="content" source="./media/deploy-via-portal/redeploy-failed-deployment.png" alt-text="Screenshot of how to rerun a failed deployment via Azure portal." lightbox="./media/deploy-via-portal/redeploy-failed-deployment.png":::
+
 ## Post deployment tasks
 
-For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems.
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
 
@@ -196,8 +203,15 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
 1. Enable RDP.
 
     ```powershell
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
-    Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+    Enable-ASRemoteDesktop
+    ```
+    > [!NOTE]
+    > As per the security best practices, keep the RDP access disabled when not needed.
+
+1. Disable RDP>
+
+    ```powershell
+    Disable-ASRemoteDesktop
     ```
 
 ## Next steps
