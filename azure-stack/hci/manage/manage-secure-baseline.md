@@ -64,7 +64,7 @@ The following table describes security settings that can be configured on your A
 
 | Feature area | Feature     |Description           | Supports drift control? |
 |--------------|-------------|----------------------|---------------------------------|
-| Governance                 | [Security baseline](./secure-baseline.md)            | Maintains the security defaults on each server. Helps protect against changes.  | Yes                             |
+| Governance                 | [Security baseline](.././concepts/secure-baseline.md)            | Maintains the security defaults on each server. Helps protect against changes.  | Yes                             |
 | Credential protection      | [Windows Defender Credential Guard](/windows/security/identity-protection/credential-guard/credential-guard)     | Uses virtualization-based security to isolate secrets from credential-theft attacks. | Yes                             |
 | Application control        | [Windows Defender Application control](/windows/security/threat-protection/windows-defender-application-control/wdac-and-applocker-overview#windows-defender-application-control)           | Controls which drivers and apps are allowed to run directly on each server.           | No                              |
 | Data at-rest encryption    | [BitLocker for OS boot volume](/windows/security/information-protection/bitlocker/bitlocker-overview)          | Encrypts the OS startup volume on each server.                                        | No                              |
@@ -114,4 +114,4 @@ With drift protection enabled, you can only modify non-protected security settin
 
 ## Next steps
 
-- [Understand BitLocker encryption](./security-bitlocker.md).
+- [Understand BitLocker encryption](.././concepts/security-bitlocker.md).
