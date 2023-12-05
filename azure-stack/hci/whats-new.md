@@ -33,11 +33,13 @@ This section lists the new features and improvements in the 2311 release of Azur
 
 ### AKS hybrid workloads
 
-Starting this release, you can run Azure Kubernetes Service (AKS) hybrid workloads on Azure Stack HCI. For more information, see [AKS hybrid on Azure Stack HCI](/azure/aks/hybrid/aks-hci-preview-overview).
+Starting this release, you can run Azure Kubernetes Service (AKS) hybrid workloads on Azure Stack HCI. <!--For more information, see [AKS hybrid on Azure Stack HCI](/azure/aks/hybrid/aks-hci-preview-overview).-->
 
 ### Support for web proxy
 
 This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings.md).
+
+### 
 
 ## Features and improvements in 2310 
 
