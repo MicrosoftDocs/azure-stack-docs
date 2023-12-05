@@ -33,15 +33,15 @@ Release notes for this version include the known issues in this release and rele
 
 Here are the known issues in this release:
 
-|Release|Feature|Issue|Workaround/Comments|
-|-|------|------|----------|
+|Feature|Issue|Workaround/Comments|
+|------|------|----------|
 | Arc VM management <!--26066222--> |When a new server is added to an Azure Stack HCI cluster, storage path is not created automatically for the newly created volume.| You can manually create a storage path for any new volumes. For more information, see [Create a storage path](./manage/create-storage-path.md).  |
 
 # [Known issues from previous releases](#tab/known-issues-previous-releases)
 
 Here are the known issues from previous releases:
 
-|Release|Feature|Issue|Workaround/Comments|
+|Feature|Issue|Workaround/Comments|
 |-|------|------|----------|
 | Networking <!--24524483--> |There is an infrequent DNS client issue in this release that causes the deployment to fail on a two-node cluster with a DNS resolution error: *A WebException occurred while sending a RestRequest. WebException.Status: NameResolutionFailure.* <br>As a result of the bug, the DNS record of the second node is deleted soon after it is created resulting in a DNS error.  |Restart the server. This operation registers the DNS record which prevents it from getting deleted. |
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
@@ -65,18 +65,17 @@ Here are the known issues from previous releases:
 
 Here are the issues fixed in this release:
 
-|Feature|Issue|Workaround/Comments|
-|------|------|----------|
-| Networking |Use of proxy isn't supported in this release. |There's no known workaround in this release. |
-|Security <!--25420275--> |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |The workaround is to go to each server and check the local configuration state of the Syslog component.|
-| Deployment <!--25710482--> |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |There's no known workaround in this release. |
-| Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |There's no known workaround in this release. |
-| Arc VM management <!--25778815-->| Detaching a disk via the Azure CLI results in an error in this release. |There's no known workaround in this release.  |
-| Arc VM management <!--25628443/25635316-->| A resource group with multiple clusters only shows storage paths of one cluster.| Multiple clusters aren't supported for a single resource group in this release.|
-| Arc VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state doesn't match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.| There's no known workaround in this release.|
-| Arc VM management <!--25661776--> |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take 30 to 45 minutes. |There's no known workaround in this release. |
-| Arc VM management <!--25675277--> | While creating Arc VMs via the Azure CLI on Azure Stack HCI, if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.| Instead of providing the friendly name, always provide the Azure Resource Manager ID of the marketplace image in this release.|
-
+|Feature|Issue|
+|------|------|
+| Networking |Use of proxy isn't supported in this release. |
+|Security <!--25420275--> |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |
+| Deployment <!--25710482--> |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |
+| Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |
+| Arc VM management <!--25778815-->| Detaching a disk via the Azure CLI results in an error in this release. |
+| Arc VM management <!--25628443/25635316-->| A resource group with multiple clusters only shows storage paths of one cluster.|
+| Arc VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state doesn't match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.|
+| Arc VM management <!--25661776--> |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take 30 to 45 minutes. |
+| Arc VM management <!--25675277--> | While creating Arc VMs via the Azure CLI on Azure Stack HCI, if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.|
 ---
 
 ## Issues for version 2310
