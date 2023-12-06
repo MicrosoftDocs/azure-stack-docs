@@ -213,7 +213,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. You'll see a notification that the storage path deletion job has started. Once the storage path is deleted, the list refreshes to display the remaining storage paths.
 
-    :::image type="content" source="./media/create-storage-path/./media/create-storage-path/delete-storage-path-3.png" alt-text="Screenshot of updated storage path list after the deletion." lightbox="./media/create-storage-path/./media/create-storage-path/delete-storage-path-3.png":::  
+    :::image type="content" source="./media/create-storage-path/delete-storage-path-3.png" alt-text="Screenshot of updated storage path list after the deletion." lightbox="./media/create-storage-path/delete-storage-path-3.png":::  
 ---
 
 ## Next steps
