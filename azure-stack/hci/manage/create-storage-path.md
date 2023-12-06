@@ -11,7 +11,7 @@ ms.date: 12/05/2023
 
 # Create storage path for Azure Stack HCI (preview)
 
-> Applies to: Azure Stack HCI, versions 23H2 (preview)
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create storage path for VM images used on your Azure Stack HCI cluster. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your cluster. You can create a storage path using the Azure CLI.
 
@@ -24,7 +24,7 @@ When the Azure Stack HCI cluster is deployed, default storage paths are created 
 
 The storage paths on your Azure Stack HCI should point to cluster shared volumes that can be accessed by all the servers on your cluster. We strongly recommend that you create storage path under cluster shared volumes in order to be highly available.
 
-The available space in the cluster shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\Volume01` and the `volume01` is 4 TB, then the size of the storage path is the available space (out of the 4TB) on `Volume01`.
+The available space in the cluster shared volume determines the size of the store available at the storage path. For example, if the storage path is `C:\ClusterStorage\UserStorage_1\Volume01` and the `Volume01` is 4 TB, then the size of the storage path is the available space (out of the 4TB) on `Volume01`.
   
 ## Prerequisites
 
@@ -102,7 +102,7 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
 
     ```console
     PS C:\windows\system32> $storagepathname="test-storagepath"
-    PS C:\windows\system32> $path="C:\ClusterStorage\Volume01"
+    PS C:\windows\system32> $path="C:\ClusterStorage\UserStorage_1\mypath"
     PS C:\windows\system32> $subscription="<Subscription ID>"
     PS C:\windows\system32> $resource_group="myhci-rg"
     PS C:\windows\system32> $customLocationID="/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.ExtendedLocation/customLocations/myhci-cl"
@@ -118,7 +118,7 @@ Follow these steps on one of the servers of your Azure Stack HCI cluster to crea
       "location": "eastus",
       "name": "test-storagepath",
       "properties": {
-        "path": "C:\\ClusterStorage\\Volume01",
+        "path": "C:\\ClusterStorage\\UserStorage_1\\mypath",
         "provisioningState": "Succeeded",
         "status": {
           "availableSizeMB": 36761,
@@ -205,15 +205,15 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Go to Azure Stack HCI cluster resource and then go to **Storage paths**.  
 1. For the storage path that you wish to delete, select the corresponding trashcan icon. 
 
-    :::image type="content" source="./media/create-storage-path/view-storage-path-properties-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/create-storage-path/view-storage-path-properties-1.png":::
+    :::image type="content" source="./media/create-storage-path/delete-storage-path-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/create-storage-path/delete-storage-path-1.png":::
 
 1. In the confirmation dialog, select Yes to contniue. 
 
-    :::image type="content" source="./media/create-storage-path/view-storage-path-properties-1.png" alt-text="Screenshot of storage path properties." lightbox="./media/create-storage-path/view-storage-path-properties-1.png":::
+    :::image type="content" source="./media/create-storage-path/delete-storage-path-2.png" alt-text="Screenshot of deletion confirmation." lightbox="./media/create-storage-path/delete-storage-path-2.png":::
 
 1. You will see a notification that the storage path deletion job has started. Once the storage path is deleted, the list refreshes to display the remaining storage paths.
 
-    :::image type="content" source="./media/create-storage-path/create-storage-path-3.png" alt-text="Screenshot of new storage path added to list of storage paths." lightbox="./media/create-storage-path/create-storage-path-3.png":::  
+    :::image type="content" source="./media/create-storage-path/./media/create-storage-path/delete-storage-path-3.png" alt-text="Screenshot of updated storage path list after the deletion." lightbox="./media/create-storage-path/./media/create-storage-path/delete-storage-path-3.png":::  
 ---
 
 ## Next steps
