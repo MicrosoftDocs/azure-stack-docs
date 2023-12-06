@@ -68,7 +68,7 @@ Here are the issues fixed in this release:
 |Feature|Issue|
 |------|------|
 | Networking |Use of proxy isn't supported in this release. |
-|Security <!--25420275--> |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |
+| Security <!--25420275--> |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |
 | Deployment <!--25710482--> |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |
 | Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |
 | Arc VM management <!--25778815-->| Detaching a disk via the Azure CLI results in an error in this release. |
@@ -85,8 +85,8 @@ This software release maps to software version number **10.2310.0.30**. This rel
 Here are the known issues in version 2310 release:
 
 
-|Release|Feature|Issue|Workaround/Comments|
-|-|------|------|----------|
+|Feature|Issue|Workaround/Comments|
+|------|------|----------|
 | Networking |Use of proxy isn't supported in this release. |There's no known workaround in this release. |
 | Networking <!--24524483--> |There is an infrequent DNS client issue in this release that causes the deployment to fail on a two-node cluster with a DNS resolution error: *A WebException occurred while sending a RestRequest. WebException.Status: NameResolutionFailure.* <br>As a result of the bug, the DNS record of the second node is deleted soon after it is created resulting in a DNS error.  |Restart the server. This operation registers the DNS record which prevents it from getting deleted. |
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
@@ -101,7 +101,7 @@ Here are the known issues in version 2310 release:
 | Deployment <!--25710482--> |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |There's no known workaround in this release. |
 | Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |There's no known workaround in this release. |
 | Deployment |Providing the OU name in an incorrect syntax isn't detected in the Azure portal. The incorrect syntax is however detected at a later step during cluster validation. |There's no known workaround in this release. |
-| Deployment <!--25717459-->| |On server hardware, a USB network adapter is created to access the Baseboard Management Controller (BMC). This adapter can cause the cluster validation to fail during the deployment.| Make sure to disable the BMC network adapter before you begin cloud deployment.|
+| Deployment <!--25717459-->|On server hardware, a USB network adapter is created to access the Baseboard Management Controller (BMC). This adapter can cause the cluster validation to fail during the deployment.| Make sure to disable the BMC network adapter before you begin cloud deployment.|
 | Deployment |A new storage account is created for each run of the deployment. Existing storage accounts aren't supported in this release.| |
 | Deployment |A new key vault is created for each run of the deployment. Existing key vaults aren't supported in this release.| |
 | Deployment |Password for deployment user (also referred to as `AzureStackLCMUserCredential` during Active Directory prep) and local administrator can't include a `:`(colon).| |
