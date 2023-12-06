@@ -76,6 +76,7 @@ Here are the issues fixed in this release:
 | Arc VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state doesn't match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.|
 | Arc VM management <!--25661776--> |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take 30 to 45 minutes. |
 | Arc VM management <!--25675277--> | While creating Arc VMs via the Azure CLI on Azure Stack HCI, if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.|
+
 ---
 
 ## Issues for version 2310
@@ -112,7 +113,7 @@ Here are the known issues in version 2310 release:
 | Deployment |If you select **Review + Create** and you haven't filled out all the tabs, the deployment begins and then eventually fails.|There's no known workaround in this release. |
 | Deployment | This issue is seen if an incorrect subscription or resource group was used during registration. When you register the server a second time with Arc, the **Azure Edge Lifecycle Manager** extension fails during the registration but the extension state is reported as **Ready**. | Before you run the registration the second time:<br><br>Make sure to delete the following folders from your server(s): `C:\ecestore`, `C:\CloudDeployment`, and `C:\nugetstore`.<br>Delete the registry key using the  PowerShell cmdlet:<br>`Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation` |
 | Azure Site Recovery <!--25766680--> |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
-| Azure Site Recovery <!--25891533-->| |There is an issue in this release with IP allocation from the Azure portal to the management network. As a result, Azure Site Recovery can't be installed on your Azure Stack HCI cluster. |There's no known workaround in this release. |
+| Azure Site Recovery <!--25891533-->| There is an issue in this release with IP allocation from the Azure portal to the management network. As a result, Azure Site Recovery can't be installed on your Azure Stack HCI cluster. |There's no known workaround in this release. |
 
 
 ## Next steps
