@@ -1,12 +1,12 @@
 ---
 title: Create storage path for Azure Stack HCI virtual machines images (preview)
-description: Learn how to create storage path for use with VM images for your Azure Stack HCI cluster.(preview).
+description: Learn how to create storage path for use with VM images for your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/20/2023
+ms.date: 12/05/2023
 ---
 
 # Create storage path for Azure Stack HCI (preview)
@@ -41,6 +41,11 @@ Before you begin, make sure to complete the following prerequisites:
 
 
 ## Create a storage path on your cluster
+
+You can use the Azure CLI or the Azure portal to create a storage path on your cluster.
+
+
+# [Azure CLI](#tab/azurecli)
 
 You can use the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster.
 
@@ -158,6 +163,58 @@ You'll receive a notification that the storage path doesn't exist.
 To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume. For more information, see [Delete a volume](./manage-volumes.md#delete-volumes).
 
 If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](./manage-volumes.md#expand-volumes).
+
+# [Azure portal](#tab/azureportal)
+
+You can use the Azure portal to create, show, and list the storage paths on your Azure Stack HCI cluster.
+
+### Create a storage path
+
+Follow these steps in Azure portal of your Azure Stack HCI system.
+
+1. Go to Azure Stack HCI cluster resource and then go to **Storage paths**. If you chose to create workload volumes during the deployment, default storage paths were also automatically created. You can see these default storage paths that were created during deployment. 
+
+1. From the top command bar in the right pane, select **+ Create storage path**. 
+
+   :::image type="content" source="./media/create-storage-path/create-storage-path-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/create-storage-path/create-storage-path-1.png":::
+
+1. In the **Create storage path** pane, input the following parameters:
+    1. Specify a file system path on your disk where the VMs, VM images and other data will reside. This path should be on a cluster share volume (CSV) on your cluster.
+    1. Provide a friendly name for your storage path. The name should be 3 to 64 characters long and should contain letters, numbers, and hyphens.
+  
+    :::image type="content" source="./media/create-storage-path/create-storage-path-2.png" alt-text="Screenshot of specifying file path and friendly name." lightbox="./media/create-storage-path/create-storage-path-2.png":::  
+
+1. You will see a notification that the storage path creation job has started. Once the storage path is created, the list refreshes to display the newly created storage path.
+
+    :::image type="content" source="./media/create-storage-path/create-storage-path-3.png" alt-text="Screenshot of new storage path added to list of storage paths." lightbox="./media/create-storage-path/create-storage-path-3.png":::  
+ 
+### View the storage path properties
+
+Follow these steps in Azure portal of your Azure Stack HCI system.
+
+1. Go to Azure Stack HCI cluster resource and then go to **Storage paths**.  
+1. Select the storage path name. This should drill down in to the storage path properties. 
+
+    :::image type="content" source="./media/create-storage-path/view-storage-path-properties-1.png" alt-text="Screenshot of storage path properties." lightbox="./media/create-storage-path/view-storage-path-properties-1.png":::
+
+
+### Delete a storage path
+
+Follow these steps in Azure portal of your Azure Stack HCI system.
+
+1. Go to Azure Stack HCI cluster resource and then go to **Storage paths**.  
+1. For the storage path that you wish to delete, select the corresponding trashcan icon. 
+
+    :::image type="content" source="./media/create-storage-path/view-storage-path-properties-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/create-storage-path/view-storage-path-properties-1.png":::
+
+1. In the confirmation dialog, select Yes to contniue. 
+
+    :::image type="content" source="./media/create-storage-path/view-storage-path-properties-1.png" alt-text="Screenshot of storage path properties." lightbox="./media/create-storage-path/view-storage-path-properties-1.png":::
+
+1. You will see a notification that the storage path deletion job has started. Once the storage path is deleted, the list refreshes to display the remaining storage paths.
+
+    :::image type="content" source="./media/create-storage-path/create-storage-path-3.png" alt-text="Screenshot of new storage path added to list of storage paths." lightbox="./media/create-storage-path/create-storage-path-3.png":::  
+---
 
 ## Next steps
 
