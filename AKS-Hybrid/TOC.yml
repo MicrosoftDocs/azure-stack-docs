@@ -1,4 +1,4 @@
-- name: Azure Kubernetes Service (AKS) hybrid deployment options
+- name: Azure Kubernetes Service (AKS) enabled by Azure Arc
   href: index.yml
 - name: Overview
   items:
