@@ -2,7 +2,7 @@
   href: index.yml
 - name: Overview
   items:
-  - name: AKS hybrid deployment options
+  - name: AKS enabled by Arc
     href: aks-hybrid-options-overview.md
   - name: AKS on Azure Stack HCI and Windows Server
     href: overview.md
