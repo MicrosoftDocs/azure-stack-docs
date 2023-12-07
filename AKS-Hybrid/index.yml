@@ -28,7 +28,7 @@ landingContent:
             url: concepts-support.md        
           - text: Pricing
             url: pricing.md    
-  - title: Get started on Azure Stack HCI (23H2 preview)
+  - title: Get started on AKS (23H2 preview)
     linkLists:
       - linkListType: overview
         links:
