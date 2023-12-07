@@ -18,18 +18,18 @@ landingContent:
         links:
           - text: What is AKS?
             url: aks-hybrid-options-overview.md
-          - text: Kubernetes cluster provisioning from Azure (preview)
-            url: aks-hybrid-preview-overview.md
+      - linkListType: deploy
+        links:
+          - text: Check system requirements
+            url: aks-hci-network-system-requirements.md
       - linkListType: concept
         links:
-          - text: Clusters and workloads
-            url: kubernetes-concepts.md
-          - text: Networking
-            url: concepts-container-networking.md
-          - text: Quotas and resource limits
-            url: concepts-support.md        
-          - text: Pricing
-            url: pricing.md    
+          - text: Cluster architecture
+            url: cluster-architecture.md
+      - linkListType: how-to-guide
+        links:
+          - text: Create Kubernetes clusters
+            url: aks-create-clusters.md
   - title: Get started on Azure Stack HCI
     linkLists:
       - linkListType: overview
