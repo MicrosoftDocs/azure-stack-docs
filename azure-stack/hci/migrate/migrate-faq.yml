@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 11/28/2023
+  ms.date: 12/07/2023
 title: Azure Migrate FAQ
 summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you might have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
 
@@ -85,3 +85,7 @@ sections:
       - question: I use DCHP reservation for my VM IP addresses - do you preserve the MAC address so that the migrated VM can get the same IP address if it is in the same network as my DHCP server? 
         answer: |
           This scenario is not supported in this release of the migration tool.
+
+      - question: Are VMs that have secure boot enabled, supported for migration? 
+        answer: |
+          Both Linux and Windows VMs that have secure boot enabled, are not supported in this release.
