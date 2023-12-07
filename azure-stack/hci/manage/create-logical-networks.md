@@ -178,11 +178,11 @@ Follow these steps to configure a DHCP logical network:
 
     ```azurecli
     $lnetName = "myhci-lnet-dhcp"
-    $vmSwitchName = '"ConvergedSwitch(management_compute_storage)"'
-    $subscription =  "<Subscription ID>" 
-    $resource_group = "myhci-rg"
-    $customLocationName = "myhci-cl" 
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $vSwitchName = "ConvergedSwitch(management_compute_storage)"
+    $subscription = "<subscription-id>"
+    $resourceGroup = "myhci-rg"
+    $customLocationName = "myhci-cl"
+    $customLocationID = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     ```
 
@@ -204,7 +204,7 @@ Follow these steps to configure a DHCP logical network:
 1. Run the following cmdlet to create a DHCP logical network:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetname --vm-switch-name $vmSwitchName --ip-allocation-method "Dynamic"
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vSwitchName --ip-allocation-method "Dynamic"
     ```
 
     Here's a sample output:
