@@ -6,12 +6,12 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/05/2023
+ms.date: 12/06/2023
 ---
 
 # Manage syslog forwarding for Azure Stack HCI (preview)
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+[!Include [hci-applies-to-supplemental-package-22h2](../..includes/hci-applies-to-supplemental-package-22h2.md)]
 
 This article describes how to configure syslog forwarding for Azure Stack HCI, version 23H2 (preview). Use syslog forwarding to integrate with security monitoring solutions and to retrieve all audits, alerts, and security logs to store them for retention.
 
@@ -68,141 +68,23 @@ The following table provides parameters for the `Set-AzSSyslogForwarder` cmdlet:
 
 ### Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption
 
-In this configuration, the syslog client in Azure Stack HCI forwards messages to the syslog server over TCP using TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity.
+Set the syslog forwarder to use mutual authentication.
 
-This configuration is the most secure as it provides a full validation of the identity of both the client and the server, and it sends messages over an encrypted channel.
+This script starts the action plan. The action plan ID is stored in `$actionPlanInstanceId`. Monitor the action plan and validate that it completes successfully.
 
-> [!IMPORTANT]
-> Microsoft strongly recommends that you use this configuration for production environments.
+```powershell
+$clientCert = Get-PfxCertificate -FilePath $clientCertPath 
+$params = @{ 
+ComputerName = $nodes[0] 
+ArgumentList = @($syslogServerName, $syslogServerPort, $clientCert.Thumbprint) 
+} 
 
-To configure syslog forwarder with TCP, mutual authentication, and TLS 1.2 encryption, run both these cmdlets against a physical host:
-
-Configure the server and provide certificate to the client to authenticate against the server. Run the following command:
-
-   ```powershell
-   Set-AzSSyslogForwarder -ServerName <FQDN or IP address of syslog server> -ServerPort <Port number on which the syslog server is listening on> -ClientCertificateThumbprint <Thumbprint of the client certificate>
-   ```
-
-> [!IMPORTANT]
-> The client certificate must contain a private key. If the client certificate is signed using a self-signed root certificate, you must import the root certificate as well.
-
-Here is an example to set and import certificates for mutual authentication.
-
-This example script must be run from a Deployment VM (DVM).
-
-In this example, certificates should have been stored as pfx files on the DVM.
-
-1. Provide credentials and configurations.
-
-   ```powershell
-   $syslogServerName = "<FQDN or IP address of syslog server>" 
-   $syslogServerPort = "<port of your syslog server>" 
- 
-   $domainAdmin = "<your domainAdmin account name>" 
-   $domainAdminPassword = ConvertTo-SecureString -String "<your domainAdmin account password>" -AsPlainText -Force 
- 
-   $domainAdminCred = New-Object System.Management.Automation.PSCredential ($domainAdmin, $domainAdminPassword) 
- 
-   $certPassword = ConvertTo-SecureString -String "<your client certificate password>" -AsPlainText -Force 
-   $clientCertPath = "<local file path to your client cert pfx file on the DVM>" 
- 
-   Import-Module C:\CloudDeployment\ECEngine\CloudEngine.dll 
-
-   Import-Module C:\CloudDeployment\ECEngine\TestEceInterface.psm1 
-
-   Import-Module C:\CloudDeployment\ECEngine\EnterpriseCloudEngine.psd1 
-
-   $Parameters = Get-EceInterfaceParameters -RolePath "BareMetal" -InterfaceName Deployment 
-
-   $nodes = Get-ClusterNode -Cluster “s-cluster” | ForEach-Object Name
-   ```
-
-1. Import client certificate for ($node in $nodes).
-
-   ```powershell
-   { 
-   $params = @{  
-      ComputerName = $nodeName  
-      Credential = $domainAdminCred 
-   } 
- 
-   $session = New-PSSession @params 
- 
-   $tempPath = Invoke-Command -Session $session -ScriptBlock { 
-    return $env:TEMP 
-   } 
-   $clientCertPathOnNode = "$env:Temp\client.pfx" 
-   Copy-Item -ToSession $session -Path $clientCertPath -Destination $clientCertPathOnNode 
- 
-   $params = @{  
-      Session = $session  
-      ArgumentList = @($serverName, $serverPort, $clientCertPathOnNode, $certPassword)  
-   } 
-   Invoke-Command @params -ScriptBlock {  
-    param($ServerName, $ServerPort, $certPath, $certPassword) 
- 
-   Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\My" -Password $certPassword 
-    Remove-Item -Path $certPath 
-   } 
+$actionPlanInstanceId = Invoke-Command @params -ScriptBlock { 
   
-   Remove-PSSession -Session $session 
-   } 
- 
-   Import self-signed root certificate
-   ```
-
-   Use the following section only in relevant cases:
-
-   ```powershell
-   $rootCertPath = "local file path to your client cert pfx file on the DVM" 
-   foreach ($node in $nodes) 
-   { 
-   $params = @{  
-      ComputerName = $nodeName  
-      Credential = $domainAdminCred 
-   }
-
-   $session = New-PSSession @params
-
-   $tempPath = Invoke-Command -Session $session -ScriptBlock { 
-    return $env:TEMP 
-   } 
-  
-   $rootCertPathOnNode = "$env:Temp\root.pfx" 
-   Copy-Item -ToSession $session -Path $rootCertPath -Destination $rootCertPathOnNode 
-
-   $params = @{  
-      Session = $session  
-      ArgumentList = @($serverName, $serverPort, $clientCertPathOnNode)  
-   } 
-  
-   Invoke-Command @params -ScriptBlock {  
-   param($ServerName, $ServerPort, $certPath) 
-
-   Import-PfxCertificate -FilePath $certPath -CertStoreLocation "Cert:\\LocalMachine\root" -Password $certPassword 
-   Remove-Item -Path $certPath 
-   } 
-   Remove-PSSession -Session $session 
-   }
-   ```
-
-1. Set the syslog forwarder to use mutual authentication.
-
-   This script starts the action plan. The action plan ID is stored in `$actionPlanInstanceId`. Monitor the action plan and validate that it completes successfully.
-
-   ```powershell
-   $clientCert = Get-PfxCertificate -FilePath $clientCertPath 
-   $params = @{ 
-    ComputerName = $nodes[0] 
-    ArgumentList = @($syslogServerName, $syslogServerPort, $clientCert.Thumbprint) 
-   } 
-
-   $actionPlanInstanceId = Invoke-Command @params -ScriptBlock { 
-  
-   param($ServerName, $ServerPort, $ClientCertThumbprint) 
-   return Set-AzSSyslogForwarder -ServerName $ServerName -ServerPort $ServerPort -ClientCertificateThumbprint $ClientCertThumbprint 
-   }
-   ```
+param($ServerName, $ServerPort, $ClientCertThumbprint) 
+return Set-AzSSyslogForwarder -ServerName $ServerName -ServerPort $ServerPort -ClientCertificateThumbprint $ClientCertThumbprint 
+}
+```
 
 ### Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption
 
