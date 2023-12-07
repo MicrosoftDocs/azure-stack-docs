@@ -19,11 +19,15 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2301"
+::: moniker range=">=azs-2311"
+> [!IMPORTANT]  
+> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](https://learn.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information) for more information.
+::: moniker-end
+::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker-end
-::: moniker range="<azs-2301"
+::: moniker range="<azs-2311"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -39,6 +43,9 @@ Before applying the update, make sure to review the following information:
 - [Known issues](known-issues.md)
 - [Hotfixes](#hotfixes)
 - [Security updates](release-notes-security-updates.md)
+
+> [!IMPORTANT] 
+> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](https://learn.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information) for more information.
 
 For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-troubleshooting.md).
 
@@ -71,14 +78,18 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- This build contains only important [security updates](#security-updates). There are no other major feature additions.
+- We are announcing the General Availability of the [VPN Fast Path](https://learn.microsoft.com/en-us/azure-stack/operator/azure-stack-vpn-fast-path-operators). The new VPN SKUs enable customer scenarios in which higher network throughput is necessary – please check the documentation for more details on this feature.
+- With 2311 we are annoucing the Public Preview of the Azure Stack Hub Standard LoadBalancer - this feature will 
+- Azure Site Recovery continues its [Public Preview](https://aka.ms/azshasr) with a simplified deployment where only one dependecy is required. We are planning the General Availability (GA) in early 2024, when we plan to remove all dependecies and have the ASR RP as the only required install. Until then, please test and validate the Public Preview to help us improve the GA launch (please note that GA will require a complete reinstall of the ASR solution).
+
 
 <!-- ### Improvements -->
 
 ### Changes
 
-- Starting with the 2301 release of Azure Stack Hub, [the Event Hubs resource provider](event-hubs-rp-install.md) is offered to subscriptions that have been granted access. If you want to start using this feature, or if you need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md) and our support engineers will guide you through the deployment or upgrade process.
-- This build contains only important [security updates](#security-updates). There are no other major changes from the previous build.
+- With 2311 we are making a change in the base host OS to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric and should not be visible or create any issues to operators of Azure Stack Hub.
+- Starting with 2311 we are not releasing new Azure Stack Development Kit (ASDK) versions. This is because of the changes to internal services which would incur significant complexity. The current released ASDK version can continue to be used for any operational, testing, or training reasons - including for (Azure Stack Hub Foundation Core scripts)[https://aka.ms/azshasdk] used for the (Azure-Stack-Hub-Foundation-Core)[https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training].
+
 
 <!-- ### Fixes -->
 
