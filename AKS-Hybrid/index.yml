@@ -16,6 +16,22 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
+          - text: AKS overview
+            url: aks-hybrid-options-overview.md
+      - linkListType: concept
+        links:
+          - text: Clusters and workloads
+            url: kubernetes-concepts.md
+          - text: Networking
+            url: concepts-container-networking.md
+          - text: Quotas and resource limits
+            url: concepts-support.md        
+          - text: Pricing
+            url: pricing.md    
+  - title: Get started on Azure Stack HCI (23H2 preview)
+    linkLists:
+      - linkListType: overview
+        links:
           - text: What is AKS?
             url: aks-hybrid-options-overview.md
       - linkListType: deploy
@@ -30,22 +46,6 @@ landingContent:
         links:
           - text: Create Kubernetes clusters
             url: aks-create-clusters.md
-  - title: Get started on Azure Stack HCI
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: What's new
-            url: aks-preview-overview.md
-      - linkListType: quickstart
-        links:
-          - text: Get started using PowerShell
-            url: kubernetes-walkthrough-powershell.md 
-      - linkListType: quickstart
-        links: 
-          - text: Get started using Windows Admin Center
-            url: setup.md
-          - text: Create a Kubernetes cluster using Windows Admin Center
-            url: create-kubernetes-cluster.md
   - title: Deploy AKS on resource-limited hardware
     linkLists:
       - linkListType: overview
