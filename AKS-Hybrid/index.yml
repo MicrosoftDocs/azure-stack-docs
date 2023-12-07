@@ -32,8 +32,8 @@ landingContent:
     linkLists:
       - linkListType: overview
         links:
-          - text: What is AKS?
-            url: aks-hybrid-options-overview.md
+          - text: What's new
+            url: aks-preview-overview.md
       - linkListType: deploy
         links:
           - text: Check system requirements
