@@ -30,6 +30,22 @@ landingContent:
             url: concepts-support.md        
           - text: Pricing
             url: pricing.md    
+  - title: Get started on Azure Stack HCI
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What's new
+            url: aks-preview-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Get started using PowerShell
+            url: kubernetes-walkthrough-powershell.md 
+      - linkListType: quickstart
+        links: 
+          - text: Get started using Windows Admin Center
+            url: setup.md
+          - text: Create a Kubernetes cluster using Windows Admin Center
+            url: create-kubernetes-cluster.md
   - title: Deploy AKS on resource-limited hardware
     linkLists:
       - linkListType: overview
@@ -48,22 +64,6 @@ landingContent:
         links:
           - text: Troubleshoot
             url: aks-edge-troubleshoot-overview.md
-  - title: Get started on Azure Stack HCI
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: Check system requirements
-            url: system-requirements.md
-      - linkListType: quickstart
-        links:
-          - text: Get started using PowerShell
-            url: kubernetes-walkthrough-powershell.md 
-      - linkListType: quickstart
-        links: 
-          - text: Get started using Windows Admin Center
-            url: setup.md
-          - text: Create a Kubernetes cluster using Windows Admin Center
-            url: create-kubernetes-cluster.md
   - title: Deploy Windows and Linux applications
     linkLists:
       - linkListType: tutorial
