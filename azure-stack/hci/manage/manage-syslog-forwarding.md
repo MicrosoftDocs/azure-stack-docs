@@ -11,7 +11,7 @@ ms.date: 12/06/2023
 
 # Manage syslog forwarding for Azure Stack HCI (preview)
 
-[!Include [hci-applies-to-supplemental-package-22h2](../..includes/hci-applies-to-supplemental-package-22h2.md)]
+[!Include [hci-applies-to-supplemental-package-22h2](../../includes/hci-applies-to-supplemental-package-22h2.md)]
 
 This article describes how to configure syslog forwarding for Azure Stack HCI, version 23H2 (preview). Use syslog forwarding to integrate with security monitoring solutions and to retrieve all audits, alerts, and security logs to store them for retention.
 
