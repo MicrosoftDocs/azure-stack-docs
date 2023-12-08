@@ -36,7 +36,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 25398.582  | 2023-12-12            | [KB 5033383](https://support.microsoft.com/topic/41652ad2-c31c-48e4-b066-af2604c17d15)  |
+| 25398.584  | 2023-12-12            | [KB 5033383](https://support.microsoft.com/topic/41652ad2-c31c-48e4-b066-af2604c17d15)  |
 | 25398.531   | 2023-11-14            | [KB 5032202](https://support.microsoft.com/topic/9981de59-9fae-4118-a636-131a8dd4a013)  |
 
 ## Azure Stack HCI, version 22H2 (OS build 20349)
@@ -47,7 +47,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article**                                           |
 |:------------ |:----------------------|:---------------------------------------------------------|
-| 20349.2142   | 2023-12-12            | [KB 5033118](https://support.microsoft.com/topic/a4163954-95bd-4db1-b77e-ccaaf8082651)  |
+| 20349.2159   | 2023-12-12            | [KB 5033118](https://support.microsoft.com/topic/a4163954-95bd-4db1-b77e-ccaaf8082651)  |
 | 20349.2113   | 2023-11-14            | [KB 5032198](https://support.microsoft.com/topic/43b510ae-28a3-496a-bea5-ba061c95cd54)  |
 | 20349.2026   | 2023-10-10            | [KB 5031364](https://support.microsoft.com/topic/b827b04b-e11e-4295-b898-042df4b5053b)  |
 | 20349.1970   | 2023-09-12            | [KB 5030216](https://support.microsoft.com/topic/fdf76ccf-ae95-4e19-9842-d4b8f7359fa2)  |
