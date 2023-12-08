@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 12/07/2023
+  ms.date: 10/20/2023
 title: Azure Migrate FAQ
 summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you might have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
 
@@ -23,7 +23,7 @@ sections:
           After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
           
           > [!NOTE]
-          > Migration is a one-way process and can't be reversed. The VM version can't be downgraded.
+          > Migration is a one-way process and can't be reversed. The VM version can’t be downgraded.
 
           To make sure that all the VMs are version 10, run the following cmdlet:
 
@@ -66,7 +66,7 @@ sections:
 
       - question: I am located in a geography that is not in the listed supported geographies. Does this mean I can't use this migration solution?
         answer: |
-          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography. 
+          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md#create-an-azure-storage-account) in one of the [supported geographies](migrate-hyperv-requirements.md#supported-geographies), since your migrated VMs can be in any geography. 
 
       - question: Will I be charged for this migration solution? 
         answer: |
@@ -77,15 +77,3 @@ sections:
       - question: To install the source or target appliance with the downloaded .zip file, I need a Windows Server 2022 operating system (OS).  How can I get the Windows Server 2022 OS?
         answer: |
           You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022) for free for up to 180 days.
-
-      - question: My source VMs use static IP addresses. Will these addresses be preserved when I migrate my VMs to Azure Stack HCI?
-        answer: |
-          Currently Hyper-V migration only supports VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Stack HCI system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.  
-
-      - question: I use DCHP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
-        answer: |
-          This scenario is not supported in this release.
-
-      - question: Are VMs that have secure boot enabled, supported for migration? 
-        answer: |
-          Both Linux and Windows VMs that have secure boot enabled, are not supported in this release.
