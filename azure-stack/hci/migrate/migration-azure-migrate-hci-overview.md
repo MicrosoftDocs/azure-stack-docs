@@ -3,7 +3,7 @@ title: Use Azure Migrate to move Hyper-V VMs to Azure Stack HCI (preview)
 description: Learn about how to use Azure Migrate to migrate Windows and Linux VMs to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 10/18/2023
+ms.date: 11/28/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -25,7 +25,7 @@ For more information on the Azure Migrate platform, see [About Azure Migrate](/a
 
 Here are the benefits of using Azure Migrate to migrate your on-premises VMs to Azure Stack HCI. This solution:
 
-- Requires no prep for your source VMs including installation of agents prior to migration.
+- Requires no preparation for your source VMs including installation of agents prior to migration.
 - Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
 - Keeps the data flow local, from on-premises Hyper-V to Azure Stack HCI.
 - Results in a minimal downtime for the VMs running on your on-premises servers.
@@ -40,9 +40,9 @@ The following diagram shows the migration process to your on-premises Azure Stac
 
 The migration process requires the following components:
 
-- An Azure Migrate project in Azure that contains an Azure Storage account. Both the source and target appliances need to be registered with this project.
+- An Azure Migrate project. Both the source and target appliances need to be registered with this project.
 - Azure Migrate appliance running on your on-premises source Hyper-V servers. The source servers host the VMs that you want to migrate.
-- Target appliance running on your on-premises Azure Stack HCI cluster. The target appliance hosts the VMs that you migrated from your source Hyper-V environment.
+- Target appliance running on your on-premises Azure Stack HCI cluster. The target cluster hosts the VMs that you migrated from your source Hyper-V environment.
 
 > [!NOTE]
 > The Azure Migrate project is used to discover the source VMs and replicate them to the target Azure Stack HCI cluster. The associated Azure Storage account serves as a cache to store the metadata and the replication data.
