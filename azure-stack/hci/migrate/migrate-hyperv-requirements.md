@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/01/2023
+ms.date: 12/07/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -75,15 +75,13 @@ Create a Windows Server 2022 VM with this minimum configuration:
 
 ## Arc Resource Bridge requirements
 
-An Arc Resource Bridge must exist on the Azure Stack HCI, version 23H2 system for migration. The Arc Resource Bridge is automatically created during deployment.
+The following are requirements for the Arc Resource Bridge:
 
-To verify that an Arc Resource Bridge exists on your Azure Stack HCI system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
+- An Arc Resource Bridge must exist on the Azure Stack HCI, version 23H2 system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Stack HCI system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 
-The Arc Resource Bridge must be configured and running on the target appliance VM. Make sure that you have the following:
+- Make sure that a logical network is configured on your Arc Resource Bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
 
-- A logical network configured on your Arc Resource Bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
-
-- A custom storage path configured on your Arc Resource Bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
+- Make sure that a custom storage path is configured on your Arc Resource Bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
 
 ## Azure Migrate project requirements
 

@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/05/2023
+ms.date: 12/07/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -76,8 +76,9 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
   
     :::image type="content" source="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png":::
 
-1. Sign into the VM.
-1. The VM behaves as expected.
+1. Sign into the VM and verify that:
+    1. The VM behaves as expected.
+    1. Your applications work as expected.
 
 1. In the Azure portal, select the ellipses ... next to the VM and select **Complete migration**.
 
@@ -101,7 +102,7 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
 ## Clean up
 
-Once you have verified that migration is complete and no more servers need to be migrated, the last step is to clean up. Clean up requires deletion of the following resources created during migration:
+Once you have verified that migration is complete and no more servers need to be migrated, the last step is to clean up. Cleanup requires deletion of the following resources created during migration:
 
 - Source VMs and the associated VM disks from the Hyper-V server and the Failover Cluster Manager.
 - Source and target appliance VMs.

@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/01/2023
+ms.date: 12/07/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -190,7 +190,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
     
     1. For **Cache storage account**, select an existing storage account or select **New** to create a storage account with default settings. We recommend that you use a new cache storage account to store migration and replication state metadata.
 
-	1. Select the logical network these VMs will use. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload virtual switch**.
+	1. Select the logical network these VMs will use. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
 	1. Select the storage path where these VMs will be created. If you don't see a storage path in the dropdown list, [create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 

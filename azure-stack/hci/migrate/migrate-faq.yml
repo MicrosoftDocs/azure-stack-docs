@@ -78,13 +78,13 @@ sections:
         answer: |
           You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022) for free for up to 180 days.
 
-      - question: My VMs use static IP addresses - will these addresses be preserved when I migrate my VM to Azure Stack HCI?
+      - question: My source VMs use static IP addresses. Will these addresses be preserved when I migrate my VMs to Azure Stack HCI?
         answer: |
-          Currently Hyper-V migration only supports VMs configured with DHCP. If you have a VM with static IP address, you can always sign on to the VM using VM Connect in Hyper-V Manager and change the IP configuration after migration.
+          Currently Hyper-V migration only supports VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Stack HCI system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.  
 
-      - question: I use DCHP reservation for my VM IP addresses - do you preserve the MAC address so that the migrated VM can get the same IP address if it is in the same network as my DHCP server? 
+      - question: I use DCHP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
         answer: |
-          This scenario is not supported in this release of the migration tool.
+          This scenario is not supported in this release.
 
       - question: Are VMs that have secure boot enabled, supported for migration? 
         answer: |
