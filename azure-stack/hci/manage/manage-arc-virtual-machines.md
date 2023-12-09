@@ -1,6 +1,6 @@
 ---
-title: Manage Arc VM resources such as disks, network interface for Azure Stack HCI virtual machines (preview)
-description: Learn how to manage resource such as data disks, network interfaces on an Arc VM (preview).
+title: Manage including restart, start, stop or delete Arc VMs on Azure Stack HCI (preview)
+description: Learn how to manage Arc VMs. This includes operations such as start, stop, restart, view properties of Arc VMs running on your Azure stack HCI, version 23H2 (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,11 +9,11 @@ ms.subservice: azure-stack-hci
 ms.date: 12/06/2023
 ---
 
-# Manage resources for Arc VM on your Azure Stack HCI (preview)
+# Manage Arc VMs on your Azure Stack HCI (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage VM resources such as disks, networks interfaces, cores or memory.  storage path for VM images used on your Azure Stack HCI cluster. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your cluster. You can create a storage path using the Azure CLI.
+This article describes how to manage Arc VMs running on your Azure Stack HCI, version 23H2. The procedures to start, stop, restart or delete an Arc VM are detailed.
 
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
@@ -39,13 +39,13 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
 
-1. In the right pane, from the list of virtual machines, select a VM whose properties you wish to view.
+1. In the right pane, from the list of virtual machines, select the name of the VM whose properties you wish to view.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/view-virtual-machine-properties-1.png" alt-text="Screenshot of VM selected from the list of VMs." lightbox="./media/create-storage-path/create-storage-path-1.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machines/view-virtual-machine-properties-1.png" alt-text="Screenshot of VM selected from the list of VMs." lightbox="./media/manage-arc-virtual-machines/view-virtual-machine-properties-1.png":::
 
-1. In the **Overview** page, from the right pane, go to the **Properties** tab. You can view the properties of your VM.
+1. On the **Overview** page, go to the right pane and then go to the **Properties** tab. You can view the properties of your VM.
     
-   :::image type="content" source="./media/create-storage-path/create-storage-path-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/create-storage-path/create-storage-path-1.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png" alt-text="Screenshot of properties of the selected Arc VM." lightbox="./media/manage-arc-virtual-machines/view-virtual-machine-properties-2.png":::
 
   
 ## Start a VM

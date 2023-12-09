@@ -38,21 +38,26 @@ Before you begin, make sure to complete the following prerequisites:
 
 Follow these steps in Azure portal of your Azure Stack HCI system.
 
-1. Go to Azure Stack HCI cluster resource and then go to **Storage paths**. If you chose to create workload volumes during the deployment, default storage paths were also automatically created. You can see these default storage paths that were created during deployment. 
+1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**. 
+1. From the list of VMs in the right pane, select and go to the VM to which you want to add a data disk.
+1. Go to **Disks**. From the top command bar in the right pane, select **+ Add new disk**.  
 
-1. From the top command bar in the right pane, select **+ Create storage path**. 
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-1.png":::
 
-   :::image type="content" source="./media/create-storage-path/create-storage-path-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/create-storage-path/create-storage-path-1.png":::
-
-1. In the **Create storage path** pane, input the following parameters:
-    1. Specify a file system path on your disk where the VMs, VM images and other data reside. This path should be on a cluster share volume (CSV) on your cluster.
-    1. Provide a friendly name for your storage path. The name should be 3 to 64 characters long and should contain letters, numbers, and hyphens.
+1. In the **Add new disk** blade, input the following parameters:
+    1. Specify a friendly **Name** for the data disk.
+    1. Provide the **Size** for the disk in GB.
+    1. Choose the **Provisioning type** for disk as **Dynamic** or **Static**. 
   
-    :::image type="content" source="./media/create-storage-path/create-storage-path-2.png" alt-text="Screenshot of specifying file path and friendly name." lightbox="./media/create-storage-path/create-storage-path-2.png":::  
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png":::
 
-1. You'll see a notification that the storage path creation job has started. Once the storage path is created, the list refreshes to display the newly created storage path.
+1. Select and **Save** the disk that is created. 
 
-    :::image type="content" source="./media/create-storage-path/create-storage-path-3.png" alt-text="Screenshot of new storage path added to list of storage paths." lightbox="./media/create-storage-path/create-storage-path-3.png":::  
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png":::
+
+1. You'll see a notification that the data disk creation job has started. Once the disk is created, the list refreshes to display the newly added disk.
+
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png":::
 
 ## Delete a data disk
 
