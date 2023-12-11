@@ -135,7 +135,7 @@ To prepare and configure Active Directory, follow these steps:
 
     :::image type="content" source="media/prep-active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/prep-active-directory/active-directory-2.png":::
 
-1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one security group - domain local  with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
+1. The **Users** object should contain one user group corresponding to the user you specified during the creation and two security group - domain local  with this name format: *Active Directory object prefix-OpsAdmin* and *Active Directory object prefix-Sto-SG*. For example: *ms309-OpsAdmin* and *ms309-Sto-SG*.
 
     :::image type="content" source="media/prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/prep-active-directory/active-directory-3.png":::
 
