@@ -24,7 +24,7 @@ For more information about the new features in this release, see [What's new in 
 
 ## Issues for version 2311
 
-This software release maps to software version number **10.2311.0.16**. This release supports new deployments and updates from 2310.
+This software release maps to software version number **10.2311.0.26**. This release supports new deployments and updates from 2310.
 
 Release notes for this version include the known issues in this release and release noted issues carried over from previous versions.
 
@@ -47,19 +47,20 @@ Here are the known issues from previous releases:
 |---------|---------|---------|
 | Networking <!--24524483--> |There is an infrequent DNS client issue in this release that causes the deployment to fail on a two-node cluster with a DNS resolution error: *A WebException occurred while sending a RestRequest. WebException.Status: NameResolutionFailure.* As a result of the bug, the DNS record of the second node is deleted soon after it is created resulting in a DNS error. |Restart the server. This operation registers the DNS record which prevents it from getting deleted. |
 | Azure portal <!--25741164--> |In some instances, the Azure portal might take a while to update and the view might not be current.| You might need to wait for 30 minutes or more to see the updated view. |
+| Azure portal <!--26100617--> |In this release, there is an issue due to which the deployment or update fails if service principal secret has a hyphen as starting character.|  |
 | Arc VM management |Deleting a network interface on an Arc VM from Azure portal doesn't work in this release.| Use the Azure CLI to first remove the network interface and then delete it. For more information, see [Remove the network interface](/cli/azure/stack-hci-vm/nic#az-stack-hci-vm-nic-remove) and see [Delete the network interface](/cli/azure/stack-hci-vm/network/nic#az-stack-hci-vm-network-nic-delete).|
 | Arc VM management| When you create a disk or a network interface in this release with underscore in the name, the operation fails.  |Make sure to not use underscore in the names for disks or network interfaces. |
 | Deployment |Providing the OU name in an incorrect syntax isn't detected in the Azure portal. The incorrect syntax is however detected at a later step during cluster validation. |There's no known workaround in this release. |
 | Deployment <!--25717459-->|On server hardware, a USB network adapter is created to access the Baseboard Management Controller (BMC). This adapter can cause the cluster validation to fail during the deployment.| Make sure to disable the BMC network adapter before you begin cloud deployment.|
 | Deployment |A new storage account is created for each run of the deployment. Existing storage accounts aren't supported in this release.| |
 | Deployment |A new key vault is created for each run of the deployment. Existing key vaults aren't supported in this release.| |
-| Deployment |Password for deployment user (also referred to as `AzureStackLCMUserCredential` during Active Directory prep) and local administrator can't include a `:`(colon).| |
 | Deployment |In some instances, running the [Arc registration script](./deploy/deployment-arc-register-server-permissions.md#register-servers-with-azure-arc) doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. |The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](./deploy/deploy-via-portal.md). |
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
 | Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the ARM template to override this parameter and disable RDMA for the intents. |
 | Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
 | Deployment |If you select **Review + Create** and you haven't filled out all the tabs, the deployment begins and then eventually fails.|There's no known workaround in this release. |
 | Deployment | This issue is seen if an incorrect subscription or resource group was used during registration. When you register the server a second time with Arc, the **Azure Edge Lifecycle Manager** extension fails during the registration but the extension state is reported as **Ready**. | Before you run the registration the second time:<br><br>Make sure to delete the following folders from your server(s): `C:\ecestore`, `C:\CloudDeployment`, and `C:\nugetstore`.<br>Delete the registry key using the  PowerShell cmdlet:<br>`Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation` |
+| Update |When updating a single server system from 2310 to 2311, the host is rebooted. As a result of the reboot, the Arc Resource Bridge VM also restarts. The cluster IP and Kubernetes IP get into a race condition and cause the Arc Resource Bridge to be dysfunctional. |Deploy and update a multi-server system. |
 | Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 
 
@@ -73,6 +74,7 @@ Here are the issues fixed in this release:
 | Security <!--25420275--> |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |
 | Deployment <!--25710482--> |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |
 | Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |
+| Deployment |Password for deployment user (also referred to as `AzureStackLCMUserCredential` during Active Directory prep) and local administrator can't include a `:`(colon).| 
 | Arc VM management <!--25778815-->| Detaching a disk via the Azure CLI results in an error in this release. |
 | Arc VM management <!--25628443/25635316-->| A resource group with multiple clusters only shows storage paths of one cluster.|
 | Arc VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state doesn't match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.|
