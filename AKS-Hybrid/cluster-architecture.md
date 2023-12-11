@@ -2,7 +2,7 @@
 title: AKS Arc and workload cluster architecture (preview)
 description: Learn about AKS Arc and workload cluster architecture.
 ms.topic: overview
-ms.date: 11/28/2023
+ms.date: 12/11/2023
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -12,12 +12,11 @@ ms.lastreviewed: 11/28/2023
 
 # AKS Arc and workload cluster architecture (preview)
 
-> Applies to: AKS on Azure Stack HCI, AKS on Windows Server
+> Applies to: AKS on Azure Stack HCI
 
-Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
+Azure Kubernetes Service (AKS) on Azure Stack HCI is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
 
-This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and nodepools. Workload resources
-such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
+This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and nodepools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
 ## Cluster architecture
 
@@ -42,7 +41,7 @@ The Arc Resource Bridge connects a private cloud (for example, Azure Stack HCI, 
 
 ### Workload clusters
 
-The workload cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components and Linux worker nodes. Windows Server Core based VMs are used for establishing Windows worker nodes. There can be one or more workload clusters managed by one management cluster.
+The workload cluster is a highly available deployment of Kubernetes using Linux VMs for running Kubernetes control plane components and Linux worker nodes. Windows Server Core-based VMs are used for establishing Windows worker nodes. There can be one or more workload clusters managed by one management cluster.
 
 A workload cluster has many components, as described in the following sections.
 

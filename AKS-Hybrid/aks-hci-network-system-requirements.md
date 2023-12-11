@@ -1,8 +1,8 @@
 ---
-title: AKS on Azure Stack HCI 23H2 system requirements (preview)
+title: AKS on Azure Stack HCI 23H2 networking system requirements (preview)
 description: Learn about AKS on Azure Stack HCI 23H2 networking prerequisites.
 ms.topic: overview
-ms.date: 11/17/2023
+ms.date: 12/11/2023
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: mikek
@@ -10,7 +10,7 @@ ms.lastreviewed: 11/17/2023
 
 ---
 
-# AKS on Azure Stack HCI 23H2 system requirements (preview)
+# AKS on Azure Stack HCI 23H2 networking system requirements (preview)
 
 This article describes the required networking prerequisites for installing AKS on Azure Stack HCI 23H2. It's recommended that you work with a network administrator to provide and set up the networking parameters required to deploy AKS.
 
