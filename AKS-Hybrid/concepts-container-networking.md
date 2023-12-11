@@ -110,7 +110,7 @@ Calico supports multiple data planes including: a Linux eBPF data plane, a Linux
 |-------|-------:|------:|
 |Network Policies|No|Yes|
 |IPv6|No|Yes|
-|Layers used|L2 (VxLAN)|L3 (IPinIP, BGP)|
+|Layers used|L2 (VxLAN)|L2 (VxLAN)|
 |Deploy cluster in existing or new virtual network|Yes|Yes|
 |Windows Support|Yes|Yes|
 |Pod-Pod connection|Yes|Yes|
