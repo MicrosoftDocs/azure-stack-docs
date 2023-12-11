@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/07/2023
+ms.date: 09/13/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -28,7 +28,11 @@ The following operating systems (OS) are supported for the source appliance, tar
 |Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
 |Guest VM     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
-To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
+For appliances to discover Windows Server 2008 R2 VMs, you must do the following:
+
+1. Download and install [KB patch 3138612](https://www.microsoft.com/download/details.aspx?id=51208). This clears the Windows Update error 80072EFE.
+ You can then update all patches to get the latest Hyper-V integration services.
+2. Run `winrm quickconfig` from a command prompt as an Administrator to add Windows Remote Management (WinRm) access through your firewall.
 
 ## Supported geographies
 
@@ -75,17 +79,19 @@ Create a Windows Server 2022 VM with this minimum configuration:
 
 ## Arc Resource Bridge requirements
 
-The following are requirements for the Arc Resource Bridge:
+The Arc Resource Bridge must be configured and running on the target appliance VM. Make sure that you have the following configured:
 
-- An Arc Resource Bridge must exist on the Azure Stack HCI, version 23H2 system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Stack HCI system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
+- Arc Resource Bridge must have a virtual network configured.
 
-- Make sure that a logical network is configured on your Arc Resource Bridge. For more information, see [Create a logical network](../manage/create-logical-networks.md).
+- Arc Resource Bridge must have storage path(s) configured.
 
-- Make sure that a custom storage path is configured on your Arc Resource Bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
+Arc Resource Bridge agent logs can be captured by running these PowerShell cmdlets:
 
-## Azure Migrate project requirements
-
-Existing Azure Migrate customers that have already done VM discovery need to [create a new Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Stack HCI. You cannot use existing Azure Migrate projects for migration.
+```PowerShell
+Get-MocLogs
+Get-MocEventLog
+Get-ArcHciLogs
+```
 
 ## Next steps
 
