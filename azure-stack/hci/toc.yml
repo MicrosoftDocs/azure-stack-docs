@@ -525,6 +525,8 @@
     href: /cli/azure/ext/stack-hci/stack-hci
   - name: Azure registration PowerShell commands
     href: /powershell/module/az.stackhci
+  - name: Azure Stack HCI VM PowerShell commands
+    href: /powershell/module/az.stackhcivm
   - name: Go package for ARM Azure Stack HCI service API
     href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
   - name: Azure Stack HCI Java service classes and interfaces

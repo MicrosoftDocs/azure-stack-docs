@@ -3,7 +3,7 @@ title: Prerequisites to deploy Azure Stack HCI, version 23H2 (preview)
 description: Learn about the prerequisites to deploy Azure Stack HCI, version 23h2 (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 11/13/2023
+ms.date: 12/08/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -43,7 +43,7 @@ Before you begin, make sure that the physical server and storage hardware used t
 
 The servers should also meet the following additional requirements: 
 
-- Each server should have dedicated volumes for logs, with log storage at least as fast as data storage. Stretched clusters require at least two volumes: one for replicated data and one for log data.
+- Each server should have dedicated volumes for logs, with log storage at least as fast as data storage. 
 
 - Have direct-attached drives that are physically attached to one server each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, are not supported.
 
