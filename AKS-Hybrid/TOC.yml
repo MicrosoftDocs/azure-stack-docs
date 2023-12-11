@@ -289,36 +289,6 @@
             href: set-multiple-administrators.md
           - name: Remove old PowerShell modules
             href: https://github.com/Azure/aks-hci/issues/130
-- name: AKS hybrid cluster provisioning from Azure
-  items:
-  - name: Overview
-    href: aks-hybrid-preview-overview.md
-  - name: System requirements
-    href: aks-hybrid-preview-requirements.md
-  - name: Quickly deploy an AKS hybrid cluster on an Azure VM
-    href: aks-hybrid-preview-azure-vm.md
-  - name: How-to
-    items:
-     - name: Install AKS service
-       items:
-        - name: Install on Azure Stack HCI
-          href: deploy-aks-service-hci.md
-        - name: Install on Windows Server
-          href: deploy-arc-resource-bridge-windows-server.md
-     - name: Configure networking for AKS hybrid clusters
-       href: create-aks-hybrid-preview-networks.md
-     - name: Provision AKS hybrid clusters from Azure
-       items:
-       - name: Azure CLI
-         href: create-aks-hybrid-preview-cli.md
-       - name: Azure portal
-         href: create-aks-hybrid-preview-portal.md
-  - name: Troubleshooting and known issues 
-    href: troubleshoot-aks-hybrid-preview.md
-  - name: Reference
-    items:
-      - name: REST API reference
-        href: /rest/api/hybridcontainer/
 - name: AKS Edge Essentials
   items:
   - name: Overview
@@ -448,6 +418,8 @@
   items:
   - name: Azure Stack HCI
     href: /azure-stack/hci/index
+  - name: REST API reference
+    href: /rest/api/hybridcontainer/
   - name: Windows Admin Center (WAC)
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
   - name: Azure hybrid cloud
