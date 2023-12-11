@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 11/27/2023
+ms.date: 12/06/2023
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -84,7 +84,7 @@ Before you begin, make sure you've done the following:
     |`SubscriptionID`    |The ID of the subscription used to register your servers with Azure Arc.         |
     |`TenantID`          |The tenant ID used to register your servers with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one does not exist.         |
-    |`Region`            |The Azure region used for registration. For this release, only `eastus` is supported.          |
+    |`Region`            |The Azure region used for registration. For this release, only the `eastus` and `westeurope` are supported.          |
     |`AccountID`         |The user who will register and deploy the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
     
@@ -139,7 +139,7 @@ Before you begin, make sure you've done the following:
 1. Finally run the Arc registration script. The script takes a few minutes to run.
 
     ```powershell
-    #Invoke the registration script. For this preview release, only eastus region is supported.
+    #Invoke the registration script. For this preview release, eastus and westeurope regions are supported.
     Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
