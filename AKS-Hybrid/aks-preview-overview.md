@@ -60,8 +60,6 @@ The AKS on Azure Stack HCI 23H2 workflow is as follows:
 2. Create virtual networks.
 3. Create Kubernetes clusters on Azure Stack HCI 23H2.
 
-To troubleshoot issues with your Kubernetes clusters or for more information about existing known issues and limitations, see [Troubleshoot AKS on Azure Stack HCI 23H2](troubleshoot-aks.md).
-
 ## Next steps
 
 - [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
