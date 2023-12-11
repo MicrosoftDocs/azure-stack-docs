@@ -26,12 +26,7 @@ Once the Arc VMs are deployed, you may need to manage the VMs. This would requir
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure that you have access to an Azure Stack HCI cluster that is deployed and registered. During the deployment, an Arc Resource Bridge and a custom location are also created.
-    
-    Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
-
-1. You have one or more Arc VMs running on this Azure Stack HCI cluster. For more information, see [Create Arc VMs on your Azure Stack HCI](./create-arc-virtual-machines.md).
-
+- Make sure that you have access to an Azure Stack HCI cluster that is deployed and registered. You should have one or more Arc VMs running on this Azure Stack HCI cluster. For more information, see [Create Arc VMs on your Azure Stack HCI](./create-arc-virtual-machines.md).
 
 
 ## Add a data disk
@@ -78,12 +73,32 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     :::image type="content" source="./media/create-storage-path/delete-storage-path-3.png" alt-text="Screenshot of updated storage path list after the deletion." lightbox="./media/create-storage-path/delete-storage-path-3.png":::  
 
 
-## Add a network interfaces
+## Add a network interface
 
 
-1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
-1. In the right pane, from the list of virtual machines, select the VM to which you want to add a network interface.
-1. 
+Follow these steps in Azure portal of your Azure Stack HCI system.
+
+1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**. 
+1. From the list of VMs in the right pane, select and go to the VM to which you want to add a network interface.
+1. Go to **Networking**. From the top command bar in the right pane, select **+ Add network interface**.  
+
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png":::
+
+1. In the **Add new disk** blade, input the following parameters:
+    1. Specify a friendly **Name** for the data disk.
+    1. Provide the **Size** for the disk in GB.
+    1. Choose the **Provisioning type** for disk as **Dynamic** or **Static**. 
+  
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png":::
+
+1. Select and **Save** the disk that is created. 
+
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png":::
+
+1. You'll see a notification that the data disk creation job has started. Once the disk is created, the list refreshes to display the newly added disk.
+
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-1.png":::
+
 
 
 
