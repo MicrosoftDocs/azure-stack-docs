@@ -1,23 +1,23 @@
 ---
-title: Create Arc-enabled networks for AKS (preview)
+title: Create networks for AKS (preview)
 description: Learn how to create Arc-enabled networks for AKS and connect them to Azure.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 12/05/2023
+ms.date: 12/11/2023
 ms.author: sethm 
 ms.lastreviewed: 11/27/2023
 ms.reviewer: mikek
 
 ---
 
-# Create Arc-enabled networks for AKS (preview)
+# Create networks for AKS (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-After you install and configure Azure Stack HCI 23H2, the infrastructure administrator must also create Arc-enabled networks and connect these networks to Azure so that AKS can use the network when creating Kubernetes clusters.
+After you install and configure Azure Stack HCI 23H2, the infrastructure administrator must also create networks and connect them to Azure so that AKS can use the network when creating Kubernetes clusters.
 
 > [!NOTE]
-> Both DHCP and static IP-based networking for your AKS clusters are supported. It's recommended that you use static IP addresses for AKS that's used in production deployments.
+> Both DHCP and static IP-based networking for your AKS clusters are supported. It's recommended that you use static IP addresses.
 
 ## Before you begin
 
@@ -25,7 +25,7 @@ Before you begin, make sure you meet the following requirements:
 
 - An Azure subscription, and the required permissions to access that subscription.
 - Install and configure Azure Stack HCI 23H2 or newer and create a custom location, and get the Azure Resource Manager ID of the custom location.
-- Download the **aksarc** Az CLI extension to create the AKS network.
+- Download the **akshybrid** Az CLI extension to create the AKS network.
 - Make sure that the network you create contains enough usable IP addresses to avoid IP address exhaustion. IP address exhaustion can lead to Kubernetes cluster deployment failures. For more information, see the following section.
 
 ## IP address planning

@@ -22,7 +22,7 @@
   items:
   - name: What's new
     href: aks-preview-overview.md
-  - name: System requirements
+  - name: Network system requirements
     href: aks-hci-network-system-requirements.md
   - name: Infrastructure component updates
     href: infrastructure-components.md
@@ -40,10 +40,6 @@
     items:
     - name: Cluster architecture
       href: cluster-architecture.md
-  - name: Troubleshooting
-    items:
-    - name: Troubleshooting and known issues
-      href: troubleshoot-aks.md
 - name: Quickstarts
   expanded: true
   items:
