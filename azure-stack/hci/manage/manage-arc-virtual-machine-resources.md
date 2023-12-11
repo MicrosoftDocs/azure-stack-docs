@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/06/2023
+ms.date: 12/11/2023
 ---
 
 # Manage resources for Arc VM on your Azure Stack HCI (preview)
@@ -33,7 +33,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 Follow these steps in Azure portal of your Azure Stack HCI system.
 
-1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**. 
+1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM to which you want to add a data disk.
 1. Go to **Disks**. From the top command bar in the right pane, select **+ Add new disk**.  
 
@@ -42,11 +42,11 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. In the **Add new disk** blade, input the following parameters:
     1. Specify a friendly **Name** for the data disk.
     1. Provide the **Size** for the disk in GB.
-    1. Choose the **Provisioning type** for disk as **Dynamic** or **Static**. 
+    1. Choose the **Provisioning type** for disk as **Dynamic** or **Static**.
   
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png":::
 
-1. Select and **Save** the disk that is created. 
+1. Select and **Save** the disk that is created.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png":::
 
@@ -122,9 +122,13 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
     :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-2.png" alt-text="Screenshot of deletion confirmation." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-2.png":::
 
-1. **Apply** the changes to add the specified network interface.
+1. **Apply** the changes to delete the specified network interface. The network interface is dissociated from the Arc VM.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png":::
+
+1. The list of network interfaces is updated with the deleted network interface.
+
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
 
 ## Change cores and memory
 
@@ -132,7 +136,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM whose cores and memory you want to modify.
-1. Go to **Size**. Edit the Virtual processor count or Memory (MB) to change the cores and memory size for the VM. Only the memory size can be changed. The memory type can't be changed once a VM is created.
+1. Go to **Size**. Edit the **Virtual processor count** or **Memory (MB)** to change the cores and memory size for the VM. Only the memory size can be changed. The memory type can't be changed once a VM is created.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/change-cores-memory-1.png" alt-text="Screenshot of Size page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/change-cores-memory-1.png":::
 
