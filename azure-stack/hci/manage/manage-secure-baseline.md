@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/08/2023
+ms.date: 12/11/2023
 ---
 
 # Manage baseline security settings for Azure Stack HCI, version 23H2 (preview)
@@ -19,7 +19,7 @@ This article describes how to manage baseline security settings for your Azure S
 
 ## Enable, disable drift control
 
-Start with the initial security baseline and then modify the drift control and protected security settings defined during the deployment.
+Start with the initial security baseline and then modify drift control and protected security settings defined during deployment.
 
 ### Enable drift control
 
@@ -47,11 +47,11 @@ Use the following steps to disable drift control:
     ```
 
    - **Local** - Affects the local node only. Can be run from a regular remote PowerShell session.
-   - **Cluster** - Affects all nodes in the cluster using the orchestrator. Requires user to belong to the deployment authorization group (PREFIX-ECESG) and CredSSP, or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+   - **Cluster** - Affects all nodes in the cluster using the orchestrator. Requires user to belong to the deployment authorization group (PREFIX-ECESG) and CredSSP, or an Azure Stack HCI server using an RDP connection.
 
-## Configure security during deployment
+## Configure security settings during deployment
 
-When deploying your cluster, you can modify drift control settings and other security settings that constitute the security baseline.
+As part of deployment, you can modify drift control and other security settings that constitute the security baseline on your cluster.
 
 The following table describes security settings that can be configured on your Azure Stack HCI cluster during deployment.
 
@@ -65,13 +65,15 @@ The following table describes security settings that can be configured on your A
 | Data in-transit protection | [Signing for external SMB traffic](/troubleshoot/windows-server/networking/overview-server-message-block-signing)      | Signs SMB traffic between this system and others to help prevent relay attacks.       | Yes                             |
 | Data in-transit protection | [SMB Encryption for in-cluster traffic](/windows-server/storage/file-server/smb-security#smb-encryption) | Encrypts traffic between servers in the cluster (on your storage network).            | No                              |
 
-## Modify security after deployment
+## Modify security settings after deployment
 
-Once the deployment is complete, you can modify security features while maintaining drift control. Some features require a reboot to take effect.
+After deployment is complete, you can use PowerShell to modify security features while maintaining drift control. During deployment, the *AzureStackOSConfigAgent* module is installed.
+
+Some features require a reboot to take effect.
+
+The following table describes security settings that can be configured on your Azure Stack HCI cluster during deployment.
 
 ### PowerShell cmdlet properties
-
-To modify the security feature, use PowerShell cmdlets. During the deployment, the *AzureStackOSConfigAgent* module is installed.
 
 The following cmdlet properties are for the *AzureStackOSConfigAgent* module.
 
@@ -82,8 +84,8 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module.
   - **Local** - Provides boolean value (true/False) on local node. Can be run from a regular remote PowerShell session.
   - **PerNode** - Provides boolean value (true/False) per node.
   - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
-    - AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP (when using remote PowerShell) or Console session (RDP).
-    - Cluster  –Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either CredSSP (when using remote PowerShell) or Console session (RDP).
+    - AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP (when using remote PowerShell) or RDP connection.
+    - Cluster  –Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either CredSSP (when using remote PowerShell) or RDP connection.
   - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
     - Credential Guard
     - Drift Control
