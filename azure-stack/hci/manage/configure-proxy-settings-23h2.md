@@ -4,14 +4,14 @@ description: Learn how to configure proxy settings for Azure Stack HCI, version 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/27/2023
+ms.date: 12/11/2023
 ---
 
 # Configure proxy settings for Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to configure proxy settings for Azure Stack HCI version 23H2 if your network uses a proxy server for internet access.
+This article describes how to configure proxy settings for Azure Stack HCI, version 23H2 if your network uses a proxy server for internet access.
 
 For information about firewall requirements for outbound endpoints and internal rules and ports for Azure Stack HCI, see [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
@@ -135,19 +135,13 @@ You can configure proxy settings for Winhttp using the `netsh` command line util
 - Run the following command from the command prompt to manually configure the proxy server:
 
     ```cmd
-    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port
+    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list="<URL to bypass>"
     ```
 
 - Run the following command from the command prompt to view or verify the current WinHTTP proxy server configuration:
 
     ```cmd
     netsh winhttp show proxy
-    ```
-
-- Run the following command from the command prompt to specify a list of host URLs that bypass the proxy server:
-
-    ```cmd
-    netsh winhttp bypass-list="<URL to bypass>"
     ```
 
 - Note that `No_proxy` specifies the list of host URLs that bypass the proxy server; the list must include:
