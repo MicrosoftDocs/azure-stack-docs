@@ -489,28 +489,6 @@ sections:
           
           Use `$tenantId = (Get-AzContext).Tenant.Id` to set the right tenant. Then, include this tenant as a parameter while running [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md). 
       - question: | 
-          AKS on HCI install fails while waiting for Arc onboarding
-
-        answer: | 
-          The `Install-AksHci` cmdlet returns the following error:
-          
-          ```output
-          Exception [  returned a non zero exit code 1 [Error: Failed to wait for addon arc-onboarding: Job azure-arc-onboarding terminated with Failed 
-          to run CLI command: ERROR: Error while updating agents. Please run 'kubectl get pods -n azure-arc' to check the pods in case of timeout 
-          error. Error: Error: UPGRADE FAILED: timed out waiting for the condition System.Management.Automation.RemoteException 
-          System.Management.Automation.RemoteException
-          : Job Failed Condition
-          ```
-          
-          The error blocks the installation of AKS on HCI.
-          
-          ### Root cause
-          
-          This error might be caused by having Private Link enabled on the setup.
-          
-          ### Mitigation
-          Currently, there is no workaround. AKS on HCI does not work with Private Link.
-      - question: | 
           Error: 'Waiting for pod 'Cloud Operator' to be ready'
 
         answer: | 
