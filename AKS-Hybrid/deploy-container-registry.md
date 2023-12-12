@@ -145,15 +145,15 @@ kubectl create secret docker-registry <secret-name> \
 
 The following table describes the input parameters:
 
-| Value              | Description                                                                                                                          |
-|------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| `secret-name`            | Name of the image pulls secret, for example, `acr-secret``.                                                                               |
-| `namespace`              | Kubernetes namespace into which you put the secret. Only needed if you want to place the secret in a namespace other than the default namespace. |
-| `<REGISTRY_NAME>` | Name of your ACR - for example, `myregistry`. The `--docker-server` is the fully qualified name of the registry sign-in server.            |
-| `appId`                  | ID of the service principal that Kubernetes will use to access your registry.                                                            |
-| `password`               | Service principal password.                                                                                                              |
+|      Value     |      Description     |
+|---|---|
+|     `secret-name`    |     Name of the image pulls secret; for example, `acr-secret`.    |
+|     `namespace`    |     Kubernetes namespace into which to put the secret. Only needed if you want to place the secret in a namespace other than the default namespace.    |
+|     `<REGISTRY_NAME>`    |     Name of your ACR. For example, `myregistry`.   The `--docker-server` is the fully qualified name of the registry sign-in server.    |
+|     `appId`    |     ID of the service principal that Kubernetes uses to access your registry.    |
+|     `password`    |     Service principal password.    |
 
-Once you've created the image pull secret, you can use it to create Kubernetes pods and deployments. Provide the name of the secret under imagePullSecrets in the deployment file, as shown in the following example:
+Once you've created the image pull secret, you can use it to create Kubernetes pods and deployments. Provide the name of the secret under `imagePullSecrets` in the deployment file, as shown in the following example:
 
 ```yml
 apiVersion: v1
