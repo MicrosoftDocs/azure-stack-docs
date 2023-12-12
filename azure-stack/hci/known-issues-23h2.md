@@ -3,7 +3,7 @@ title: Release notes with known issues in Azure Stack HCI 23H2 release (preview)
 description: Read about the known issues and fixed issues in Azure Stack HCI, version 23H2 releases (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 12/06/2023
+ms.date: 12/11/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -36,8 +36,11 @@ Here are the known issues in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Arc VM management <!--26066222--> |When a new server is added to an Azure Stack HCI cluster, storage path is not created automatically for the newly created volume.| You can manually create a storage path for any new volumes. For more information, see [Create a storage path](./manage/create-storage-path.md).  |
- Deployment <!--25963746--> |Cluster deployment fails with the following exception: `Set-AzureStackHCIRegistration. ErrorMessage: LicenseUpdateFailed`.  | Make sure that your firewall rules have an entry for licensing.platform.edge.azure.com. For more information, see [Firewall requirements for Azure Stack HCI](./concepts/firewall-requirements.md). |
+| Deployment <!--25963746--> |Cluster deployment fails with the following exception: `Set-AzureStackHCIRegistration. ErrorMessage: LicenseUpdateFailed`.  | Make sure that your firewall rules have an entry for licensing.platform.edge.azure.com. For more information, see [Firewall requirements for Azure Stack HCI](./concepts/firewall-requirements.md). |
+| Deployment <!--26039020--> |There is a sporadic heartbeat reliability issue in this release due to which the registration encounters the error: HCI registration failed. Error: Arc integration failed. |There's no known workaround in this release.   |
+| Deployment <!--26088401--> |There is an intermittent issue in this release where the Arc integration validation fails with this error: Validator failed. Cannot retrieve the dynamic parameters for the cmdlet. PowerShell Gallery is currently unavailable.  Please try again later. |There's no known workaround in this release.   |
 | Azure portal <!--26100617--> |In this release, there is an issue due to which the deployment or update fails if service principal secret has a hyphen as starting character.|  |
+| Update <!--26110839--> |When updating a single server system from 2310 to 2311, the host is rebooted. As a result of the reboot, the Arc Resource Bridge VM also restarts. The cluster IP and Kubernetes IP get into a race condition and cause the Arc Resource Bridge to be dysfunctional. |The suggested workaround is to have a multi-server deployment and update. |
 
 # [Known issues from previous releases](#tab/known-issues-previous-releases)
 
@@ -60,7 +63,6 @@ Here are the known issues from previous releases:
 | Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
 | Deployment |If you select **Review + Create** and you haven't filled out all the tabs, the deployment begins and then eventually fails.|There's no known workaround in this release. |
 | Deployment | This issue is seen if an incorrect subscription or resource group was used during registration. When you register the server a second time with Arc, the **Azure Edge Lifecycle Manager** extension fails during the registration but the extension state is reported as **Ready**. | Before you run the registration the second time:<br><br>Make sure to delete the following folders from your server(s): `C:\ecestore`, `C:\CloudDeployment`, and `C:\nugetstore`.<br>Delete the registry key using the  PowerShell cmdlet:<br>`Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation` |
-| Update <!--26110839--> |When updating a single server system from 2310 to 2311, the host is rebooted. As a result of the reboot, the Arc Resource Bridge VM also restarts. The cluster IP and Kubernetes IP get into a race condition and cause the Arc Resource Bridge to be dysfunctional. |Deploy and update a multi-server system. |
 | Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 
 
