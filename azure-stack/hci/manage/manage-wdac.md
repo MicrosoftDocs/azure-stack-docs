@@ -1,6 +1,6 @@
 ---
 title: Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)
-description: This article provides guidance on Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview).
+description: This article describes how to use Windows Defender Application Control on Azure Stack HCI, version 23H2 (preview).
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
