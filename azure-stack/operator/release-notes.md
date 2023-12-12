@@ -78,7 +78,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- We are announcing the General Availability of the [VPN Fast Path](https://learn.microsoft.com/en-us/azure-stack/operator/azure-stack-vpn-fast-path-operators). The new VPN SKUs enable customer scenarios in which higher network throughput is necessary – please check the documentation for more details on this feature.
+- We are announcing the General Availability of the [VPN Fast Path](azure-stack-vpn-fast-path-operators.md). The new VPN SKUs enable customer scenarios in which higher network throughput is necessary – please check the documentation for more details on this feature.
 - With 2311 we are annoucing the Public Preview of the Azure Stack Hub Standard LoadBalancer - this feature will 
 - Azure Site Recovery continues its [Public Preview](https://aka.ms/azshasr) with a simplified deployment where only one dependecy is required. We are planning the General Availability (GA) in early 2024, when we plan to remove all dependecies and have the ASR RP as the only required install. Until then, please test and validate the Public Preview to help us improve the GA launch (please note that GA will require a complete reinstall of the ASR solution).
 
