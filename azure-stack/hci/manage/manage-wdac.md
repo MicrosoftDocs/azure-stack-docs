@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 12/11/2023
+ms.date: 12/12/2023
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -19,14 +19,14 @@ This article describes how to use Windows Defender Application Control (WDAC) to
 
 ## Enable WDAC policy modes
 
-You can enable WDAC during deployment or after deployment. Use PowerShell to enable or disable WDAC after deployment.
+You can enable WDAC during or after deployment. Use PowerShell to enable or disable WDAC after deployment.
 
 Connect to one of the cluster nodes and use the following cmdlets to enable the desired WDAC policy in "Audit" or "Enforced" mode. In this build release there are two cmdlets.
 
 - `Enable-AsWdacPolicy` - Affects all cluster nodes.
 - `Enable-ASLocalWDACPolicy` - Affects only the node on which the cmdlet is run.
 
-Depending on the use case, you should run a global cluster change or a local node change.
+Depending on your use case, you should run a global cluster change or a local node change.
 
 This is useful when:
 
@@ -45,7 +45,7 @@ Follow these steps to switch between WDAC policy modes. These PowerShell command
 
 ## Create a WDAC policy to enable third party software
 
-While using this preview with WDAC in enforcement mode, for your non-Microsoft signed software to run, you'll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in our [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+While using this preview with WDAC in enforcement mode, for your non-Microsoft signed software to run, you'll need to build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in the [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
 > [!NOTE]
 > To run or install new software, you might need to switch WDAC to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch WDAC back to enforced mode.
