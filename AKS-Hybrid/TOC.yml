@@ -36,6 +36,8 @@
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
+    - name: Deploy container images using Azure Container Registry
+      href: deploy-container-registry.md
   - name: Concepts
     items:
     - name: Cluster architecture
