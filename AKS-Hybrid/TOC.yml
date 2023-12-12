@@ -38,6 +38,8 @@
       href: aks-create-containers.md
     - name: Deploy container images using Azure Container Registry
       href: deploy-container-registry.md
+    - name: Manage multiple node pools
+      href: manage-node-pools.md
   - name: Concepts
     items:
     - name: Cluster architecture
