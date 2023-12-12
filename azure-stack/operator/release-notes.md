@@ -21,7 +21,7 @@ To access release notes for a different version, use the version selector dropdo
 
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
-> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](https://learn.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information) for more information.
+> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information) for more information.
 ::: moniker-end
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
@@ -45,7 +45,7 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 
 > [!IMPORTANT] 
-> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](https://learn.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information) for more information.
+> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information) for more information.
 
 For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-troubleshooting.md).
 
