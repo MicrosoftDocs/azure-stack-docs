@@ -1,6 +1,6 @@
 ---
 title: Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc (preview)
-description: Learn how to deploy container images from a private container registry using Azure Container Registry (ACR).
+description: Learn how to deploy container images from a private container registry using Azure Container Registry.
 ms.topic: how-to
 ms.date: 12/12/2023
 author: sethmanheim
@@ -12,7 +12,7 @@ ms.lastreviewed: 12/11/2023
 
 # Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc
 
-This article describes how to deploy container images from a private container registry using Azure Container Registry (ACR), which you can run in your own datacenter in AKS Arc deployments. You deploy to your on-premises Kubernetes cluster hosted by AKS. Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
+This article describes how to deploy container images from a private container registry using Azure Container Registry, which you can run in your own datacenter in AKS Arc deployments. You deploy to your on-premises Kubernetes cluster hosted by AKS. Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
 
 The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS Arc.
 
@@ -71,7 +71,7 @@ The previous command should produce output similar to the following text:
 
 Once the service principal is successfully created, copy the appId and password in a safe location, to use later in your deployment.
 
-For more information about working with service principals and ACR, see [Azure Container Registry authentication with service principals](/azure/container-registry/container-registry-auth-service-principal).
+For more information about working with service principals and Azure Container Registry, see [Azure Container Registry authentication with service principals](/azure/container-registry/container-registry-auth-service-principal).
 
 ## Sign in to the private container registry
 
@@ -114,7 +114,7 @@ To get started, tag the image using the docker `tag` command, and then use do
 docker tag poemfinder-app <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
 ```
 
-Verify that the image was correctly tagged by running the docker images command again. After confirming, run docker push to push to the
+Verify that the image was correctly tagged by running the docker images command again. After confirming, run `docker push` to push to the
 container registry, as follows:
 
 ```powershell
