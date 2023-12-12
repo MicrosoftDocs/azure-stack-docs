@@ -6,9 +6,9 @@ metadata:
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
-  ms.custom: devx-track-azurepowershell
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 12/11/2023
+
 title: Resolve issues and errors during an AKS hybrid installation
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
@@ -22,8 +22,11 @@ sections:
 
         answer: | 
           This error message appears after running [Install-AksHci](./reference/ps/install-akshci.md).
+
+          > [!NOTE]
+          > The error might be caused by having Private Link enabled on the setup. Currently, there is no workaround for this scenario. AKS on HCI does not work with Private Link.
           
-          To resolve this issue, use the following steps:
+          If you are not using Private Link, to resolve this issue use the following steps:
           
           1. Open PowerShell and run [Uninstall-AksHci](./reference/ps/uninstall-akshci.md).
           2. Open the Azure portal and navigate to the resource group you used when running `Install-AksHci`.
