@@ -33,7 +33,7 @@ This section lists the new features and improvements in the 2311 release of Azur
 
 ### AKS workloads on Azure Stack HCI
 
-Starting this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. For more information, see [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-preview-overview).
+Starting this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. For more information, see [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-preview-overview).
 
 ### Support for web proxy
 
