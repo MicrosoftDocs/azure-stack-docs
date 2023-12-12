@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/27/2023
+ms.date: 12/11/2023
 ---
 
 # What's new in Azure Stack HCI, version 23H2 (preview)
@@ -31,9 +31,9 @@ Unlike the prior years, Azure Stack HCI, version 23H2 includes more than just th
 
 This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2.
 
-### AKS hybrid workloads
+### AKS workloads on Azure Stack HCI
 
-Starting this release, you can run Azure Kubernetes Service (AKS) hybrid workloads on Azure Stack HCI. <!--For more information, see [AKS hybrid on Azure Stack HCI](/azure/aks/hybrid/aks-hci-preview-overview).-->
+Starting this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. For more information, see [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-preview-overview).
 
 ### Support for web proxy
 
