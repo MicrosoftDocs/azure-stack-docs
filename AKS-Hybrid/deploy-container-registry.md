@@ -12,11 +12,11 @@ ms.lastreviewed: 12/11/2023
 
 # Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc
 
-This article describes how to deploy container images from a private container registry using Azure Container Registry (ACR), which you can run in your own datacenter in AKS Arc deployments. You'll deploy to your on-premises Kubernetes cluster hosted by AKS. ACR allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
+This article describes how to deploy container images from a private container registry using Azure Container Registry (ACR), which you can run in your own datacenter in AKS Arc deployments. You deploy to your on-premises Kubernetes cluster hosted by AKS. Azure Container Registry allows you to build, store, and manage container images and artifacts in a private registry for all types of container deployments.
 
 The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS Arc.
 
-For more information about ACR in Azure, see the [Azure Container Registry documentation](/azure/container-registry/).
+For more information about Azure Container Registry, see the [Azure Container Registry documentation](/azure/container-registry/).
 
 ## Prerequisites
 
@@ -29,15 +29,13 @@ Verify that you have the following requirements:
 
 ## Create a private container registry in Azure
 
-In order to create an ACR, you need to begin with a *resource group*. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the `az group create` command. The following example creates a resource group in the **eastus** region:
+In order to create a container registry, begin with a *resource group*. An Azure resource group is a logical container into which Azure resources are deployed and managed. Create a resource group with the `az group create` command. The following example creates a resource group in the **eastus** region:
 
 ```azurecli
-az group create --name &lt;RESOURCE\_GROUP\_NAME&gt; --location eastus
+az group create --name <RESOURCE_GROUP_NAME> --location eastus
 ```
 
-Create an ACR instance with the [az acr create](/cli/azure/acr) command, and provide your own registry name. The registry name must be unique within Azure and contain 5 to 50 alphanumeric characters. In the rest of this article, `<acrName>` is used as a placeholder for the container
-registry name, but you can provide your own unique registry name. The **Basic** SKU is a cost-optimized entry point for development purposes
-that provides a balance of storage and throughput:
+Create a Container Registry instance with the [az acr create](/cli/azure/acr) command, and provide your own registry name. The registry name must be unique within Azure and contain 5 to 50 alphanumeric characters. In the rest of this article, `<acrName>` is used as a placeholder for the container registry name, but you can provide your own unique registry name. The **Basic** SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput:
 
 ```azurecli
 az acr create --resource-group <RESOURCE_GROUP_NAME> --name <REGISTRY_NAME> --sku Basic
@@ -53,8 +51,7 @@ az ad sp create-for-rbac /
 --name <SERVICE_PRINCIPAL_NAME>
 ```
 
-ACR supports three access roles. The **Contributor** role is used most commonly by application developers. However, in real world scenarios,
-you might need to create multiple service principals depending on the type of access needed:
+Azure Container Registry supports three access roles. The **Contributor** role is used most commonly by application developers. However, in real world scenarios, you might need to create multiple service principals depending on the type of access needed:
 
 - **Contributor**: This role offers push and pull access to the repository.
 - **Reader**: This role only allows pull access to the repository.
@@ -78,7 +75,7 @@ For more information about working with service principals and ACR, see [Azure 
 
 ## Sign in to the private container registry
 
-To use the ACR instance, you must first sign in. You can use either the Azure CLI or the Docker CLI to sign in.
+To use the Container Registry instance, you must first sign in. You can use either the Azure CLI or the Docker CLI to sign in.
 
 ### Option 1: Sign in from the Azure CLI
 
@@ -98,10 +95,9 @@ docker login <REGISTRY_NAME>.azurecr.io -u <appId> -p <password>
 
 In either option, the command should return a **sign in succeeded** message when it completes.
 
-## Push an image to the ACR
+## Push an image to the Container Registry
 
-Once you're successfully logged in, you can start pushing the image to the ACR. First, let's run the docker images command to view the list of
-images on your local machine:
+Once you're successfully logged in, you can start pushing the image to the Container Registry. First, run the docker images command to view the list of images on your local machine:
 
 ```output
 REPOSITORY TAG IMAGE ID CREATED SIZE
@@ -112,28 +108,28 @@ mcr.microsoft.com/azure-functions/dotnet 3.0 9f8ad1bdee67 5 months ago
 poemfinder-app latest 2d9bef425603 6 months ago 208MB
 ```
 
-To get started, tag the image using the docker `tag` command, and then use docker `push` to push it to the ACR:
+To get started, tag the image using the docker `tag` command, and then use docker `push` to push it to the container registry:
 
 ```powershell
 docker tag poemfinder-app <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
 ```
 
 Verify that the image was correctly tagged by running the docker images command again. After confirming, run docker push to push to the
-ACR, as follows:
+container registry, as follows:
 
 ```powershell
 docker push <REGISTRY_NAME>.azurecr.io/poemfinder-app:v1.0
 ```
 
-To confirm that the image was successfully pushed to the ACR, run the following command:
+To confirm that the image was successfully pushed to the container registry, run the following command:
 
 ```azurecli
 az acr repository list --name <REGISTRY_NAME>.azurecr.io --output table
 ```
 
-## Deploy an image from the ACR to AKS
+## Deploy an image from the container registry to AKS
 
-To deploy your container image from the ACR to your Kubernetes cluster, create *Kubernetes Secrets* to store your registry credentials. Kubernetes uses an *image pull secret* to store information needed to authenticate to your registry. To create the pull secret for an ACR, you provide the service principal ID, the password, and the registry URL:
+To deploy your container image from the container registry to your Kubernetes cluster, create *Kubernetes Secrets* to store your registry credentials. Kubernetes uses an *image pull secret* to store information needed to authenticate to your registry. To create the pull secret for a container registry, you provide the service principal ID, the password, and the registry URL:
 
 ```powershell
 kubectl create secret docker-registry <secret-name> \
@@ -149,7 +145,7 @@ The following table describes the input parameters:
 |---|---|
 |     `secret-name`    |     Name of the image pulls secret; for example, `acr-secret`.    |
 |     `namespace`    |     Kubernetes namespace into which to put the secret. Only needed if you want to place the secret in a namespace other than the default namespace.    |
-|     `<REGISTRY_NAME>`    |     Name of your ACR. For example, `myregistry`.   The `--docker-server` is the fully qualified name of the registry sign-in server.    |
+|     `<REGISTRY_NAME>`    |     Name of your container registry. For example, `myregistry`.   The `--docker-server` is the fully qualified name of the registry sign-in server.    |
 |     `appId`    |     ID of the service principal that Kubernetes uses to access your registry.    |
 |     `password`    |     Service principal password.    |
 
@@ -170,7 +166,7 @@ containers:
    - name: acr-secret
 ```
 
-In this example, `poemfinder-app:v1.0` is the name of the image to pull from the ACR, and `acr-secret` is the name of the pull secret you created to access the registry. When you deploy the pod, Kubernetes automatically pulls the image from your registry if the image isn't already present on the cluster.
+In this example, `poemfinder-app:v1.0` is the name of the image to pull from the container registry, and `acr-secret` is the name of the pull secret you created to access the registry. When you deploy the pod, Kubernetes automatically pulls the image from your registry if the image isn't already present on the cluster.
 
 You can save the above pod configuration in a file such as **pod-example.yaml** and then deploy it to Kubernetes, as follows:
 
@@ -178,8 +174,7 @@ You can save the above pod configuration in a file such as **pod-example.yaml**
 kubectl create -f pod-example.yaml
 ```
 
-To confirm that the pod was successfully created using the container image from the ACR, run kubectl describe pod <POD_NAME>, which
-should show the container image used to create the pod.
+To confirm that the pod was successfully created using the container image from the container registry, run kubectl describe pod <POD_NAME>, which should show the container image used to create the pod.
 
 ## Next steps
 
