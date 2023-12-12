@@ -95,7 +95,7 @@ docker login <REGISTRY_NAME>.azurecr.io -u <appId> -p <password>
 
 In either option, the command should return a **sign in succeeded** message when it completes.
 
-## Push an image to the Container Registry
+## Push an image to the container registry
 
 Once you're successfully logged in, you can start pushing the image to the Container Registry. First, run the docker images command to view the list of images on your local machine:
 
@@ -149,7 +149,7 @@ The following table describes the input parameters:
 |     `appId`    |     ID of the service principal that Kubernetes uses to access your registry.    |
 |     `password`    |     Service principal password.    |
 
-Once you've created the image pull secret, you can use it to create Kubernetes pods and deployments. Provide the name of the secret under `imagePullSecrets` in the deployment file, as shown in the following example:
+Once you create the image pull secret, you can use it to create Kubernetes pods and deployments. Provide the name of the secret under `imagePullSecrets` in the deployment file, as shown in the following example:
 
 ```yml
 apiVersion: v1
