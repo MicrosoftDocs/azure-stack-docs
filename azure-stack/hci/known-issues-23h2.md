@@ -40,7 +40,7 @@ Here are the known issues in this release:
 | Deployment <!--26039020--> |There is a sporadic heartbeat reliability issue in this release due to which the registration encounters the error: HCI registration failed. Error: Arc integration failed. |There's no known workaround in this release.   |
 | Deployment <!--26088401--> |There is an intermittent issue in this release where the Arc integration validation fails with this error: Validator failed. Cannot retrieve the dynamic parameters for the cmdlet. PowerShell Gallery is currently unavailable.  Please try again later. |There's no known workaround in this release.   |
 | Azure portal <!--26100617--> |In this release, there is an issue due to which the deployment or update fails if service principal secret has a hyphen as starting character.|  |
-| Update <!--26110839--> |When updating a single server system from 2310 to 2311, the host is rebooted. As a result of the reboot, the Arc Resource Bridge VM also restarts. The cluster IP and Kubernetes IP get into a race condition and cause the Arc Resource Bridge to be dysfunctional. |The suggested workaround is to have a multi-server deployment and update. |
+| Update <!--26110839--> |When updating a single server system from 2310 to 2311, the host is rebooted. As a result of the reboot, the Arc Resource Bridge VM also restarts. The cluster IP and Kubernetes IP get into a race condition and cause the Arc Resource Bridge to be dysfunctional. |There's no known workaround in this release. |
 
 # [Known issues from previous releases](#tab/known-issues-previous-releases)
 
