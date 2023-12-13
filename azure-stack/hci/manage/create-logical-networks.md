@@ -13,7 +13,7 @@ ms.date: 11/17/2023
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create or add logical network for your Azure Stack HCI cluster.
+This article describes how to create or add logical networks for your Azure Stack HCI cluster.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
