@@ -1100,6 +1100,16 @@
       "source_path": "azure-stack/hci/index-23h2.yml",
       "redirect_url": "/azure-stack/hci/index",
       "redirect_document_id": false
+    },
+    {"source_path": "azure-stack/hci/whats-new-in-hci-20h2.md",
+      "redirect_url": "/azure-stack/hci/whats-new-in-hci-22h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/preview-release-notes.md",
+      "redirect_url": "/azure-stack/hci/release-information",
+      "redirect_document_id": false
+
     }
   ]
   

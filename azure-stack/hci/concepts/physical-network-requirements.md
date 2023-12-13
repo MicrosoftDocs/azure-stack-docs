@@ -190,6 +190,16 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) <br>(25 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
 | [NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) <br>(100 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
 
+# [NETGEAR](#tab/NETGEAR)
+
+### 22H2
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; | |
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
+
 # [NVIDIA](#tab/NVIDIA)
 
 ### 22H2
