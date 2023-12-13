@@ -92,7 +92,7 @@ The activity log is the same for compute resources.
 **Store and Archive**  
 
 Some monitoring data is already stored and available in Azure Monitor for a set amount of time. 
- - Metrics are stored for 90 days. 
+ - Metrics are stored for 30 days. 
  - Activity log entries are stored for 90 days. 
  - Diagnostics logs aren't stored.
  - Archive the data to a storage account for longer retention.
