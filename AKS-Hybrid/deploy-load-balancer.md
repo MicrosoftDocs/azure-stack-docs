@@ -49,7 +49,7 @@ This option assumes you want to leverage Arc extensions to deploy MetalLB as a l
 
 To deploy a load balancer using Azure Arc extensions, set the `–load-balancer-count` flag to `0` during cluster creation:
 
-1. Create a Kubernetes cluster and set `–load-balancer-count` flag to `0`.
+1. Create a Kubernetes cluster and set `–load-balancer-count` to `0`:
 
    ```azurecli
    az akshybrid create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count 0
@@ -66,7 +66,7 @@ This option assumes you want to use a custom load balancer for your Kubernetes c
 > [!WARNING]
 > If you choose to deploy your own load balancer, the Kubernetes cluster is unreachable after installation. If you deploy any services with **type=LoadBalancer**, the services are also unreachable until you configure your load balancer.
 
-1. Create a Kubernetes cluster and set `load-balancer-count` to `0`.
+1. Create a Kubernetes cluster and set `load-balancer-count` to `0`:
 
    ```azurecli
    az akshybrid create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count 0
