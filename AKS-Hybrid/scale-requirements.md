@@ -26,11 +26,11 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 | Minimum number of physical nodes in Azure Stack HCI cluster                 | 1                                          |
 | Maximum number of physical nodes in Azure Stack HCI cluster                 | 16                                         |
 | Minimum count for control plane node                                        | 1                                          |
-| Maximum count for control plane node                                        | 5     Allowed values: 1, 3, and 5          |
+| Maximum count for control plane node                                        | 5 <br />    Allowed values: 1, 3, and 5.   |
 | Minimum number of nodes in default node pool created during cluster create  | 1                                          |
 | Minimum number of node pools in an AKS hybrid cluster                       | 1                                          |
 | Maximum number of node pools in an AKS hybrid cluster                       | 16                                         |
-| Minimum number of nodes in a node pool                                      | 1     Cannot create empty node pools.      |
+| Minimum number of nodes in a node pool                                      | 1 <br />    Cannot create empty node pools.|
 | Maximum number of nodes in a node pool                                      | 64                                         |
 | Maximum number of total nodes in a AKS hybrid cluster                       | 200                                        |
 | Maximum number of AKS hybrid clusters per Azure Stack HCI cluster           | 32                                         |
@@ -42,14 +42,14 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 | Number of concurrent AKS cluster creations on an ARB                                                                                                   | 8                                     |
 | Number of concurrent node pool creations on an ARB                                                                                                     | 8                                     |
 | Number of concurrent operations across all different AKS hybrid clusters like upgrade/scaling/etc. excluding create for node pool or clusters per ARB  | 32                                    |
-| Number of long running operations that can be run simultaneously on an AKS hybrid cluster                                                              | 1 long running operation per cluster  |
+| Number of long running operations that can be run simultaneously on an AKS hybrid cluster                                                              | 1 per cluster.  |
 
 ## Default values for virtual machine sizes
 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
 | AKS hybrid control plane nodes  | Standard_A4_v2                         | 8 GB memory, 4 vcpu  |
-| AKS hybrid HA Proxy VM          | Standard_A4_v2.    Cannot be changed.  | 8 GB memory, 4 vcpu  |
+| AKS hybrid HA Proxy VM          | Standard_A4_v2. Cannot be changed.     | 8 GB memory, 4 vcpu  |
 | AKS hybrid Linux worker node    | Standard_K8S3_v1                       | 6 GB memory, 4 vcpu  |
 | AKS hybrid Windows worker node  | Standard_K8S3_v1                       | 6 GB memory, 4 vcpu  |
 
