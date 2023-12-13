@@ -16,9 +16,9 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 
 AKS Arc supports three options you can use to deploy a load balancer for a Kubernetes cluster:
 
-1. Deploy a load balancer as a virtual machine.
-1. Deploy a load balancer using Azure Arc extensions.
-1. Bring your own load balancer.
+- Deploy a load balancer as a virtual machine.
+- Deploy a load balancer using Azure Arc extensions.
+- Bring your own load balancer.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ AKS Arc supports three options you can use to deploy a load balancer for a Kuber
 - Make sure you have enough memory and storage to create a new virtual machine and have virtual IP addresses to assign to application services.
 
 > [!IMPORTANT]
-> If you want to change from using a your own custom load balancer to using either the standard or Arc extension load balancer options, you must redeploy a new Kubernetes cluster with the new load balancer option. If you run an upgrade, the load balancer option you defined during cluster creation remains the same after the upgrade is completed.
+> If you want to change from using your own custom load balancer to using either the standard or Arc extension load balancer options, you must redeploy a new Kubernetes cluster with the new load balancer option. If you run an upgrade, the load balancer option you defined during cluster creation remains the same after the upgrade is completed.
 
 ## Deploy a load balancer as a virtual machine
 
