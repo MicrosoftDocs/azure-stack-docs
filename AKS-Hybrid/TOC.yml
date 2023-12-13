@@ -46,6 +46,8 @@
     items:
     - name: Cluster architecture
       href: cluster-architecture.md
+    - name: Scale requirements
+      href: scale-requirements.md
 - name: Quickstarts
   expanded: true
   items:
