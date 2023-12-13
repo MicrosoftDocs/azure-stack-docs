@@ -87,7 +87,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The [VPN Fast Path](azure-stack-vpn-fast-path-operators.md) feature is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
 - With 2311 we are announcing the public preview of the Azure Stack Hub Standard Load Balancer. This feature enables several scenarios by adding more scale, larger supported pool sizes, backend pool support, HTTPS probes, high-availability ports, and TCP reset on idle.
-- Azure Site Recovery is currently in [public preview](https://aka.ms/azshasr), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery Resource Provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
+- Azure Site Recovery is currently in [public preview](https://aka.ms/azshasr), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
 
 <!-- ### Improvements -->
 
@@ -99,7 +99,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 > Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
 > If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
   
-- Starting with 2311 we are not releasing a new Azure Stack Development Kit (ASDK) version. This decision is due to modifications in internal services that would lead to substantial complexity for the ASDK. The currently released ASDK version remains suitable for operational, testing, or training purposes, including for (Azure Stack Hub Foundation Core scripts)[https://aka.ms/azshasdk] used for the (Azure-Stack-Hub-Foundation-Core)[https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training].
+- Starting with 2311 we are not releasing a new Azure Stack Development Kit (ASDK) version. This decision is due to modifications in internal services that would lead to substantial complexity for the ASDK. The currently released ASDK version remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
 
 <!-- ### Fixes -->
 
