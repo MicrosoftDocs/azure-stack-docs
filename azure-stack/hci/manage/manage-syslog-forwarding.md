@@ -198,7 +198,7 @@ Set-AzSSyslogForwarder -Remove
 
 The following reference material documents syslog message schema and event definitions.
 
-### [Syslog message schema)](#tab/syslog-message-schema)
+### [Syslog message schema](#tab/syslog-message-schema)
 
 The syslog forwarder of the Azure Stack HCI infrastructure sends messages formatted following the BSD syslog protocol defined in RFC3164. CEF is also used to format the syslog message payload.
 
@@ -207,7 +207,7 @@ Priority (PRI) | Time | Host | CEF payload |
 
 The PRI part contains two values: *facility* and *severity*. Both depend on the type of message, like Windows Event, etc.
 
-### [Common Event format payload schema/definitions)](#tab/common-event-format-payload-schema-definition)
+### [Common Event format payload schema/definitions](#tab/common-event-format-payload-schema-definition)
 
 The Common Event format (CEF) payload is based on the following structure. The mapping for each field varies depending on the type of message, like Windows Event, etc.
 
