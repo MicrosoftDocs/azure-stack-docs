@@ -48,8 +48,8 @@ Before applying the update, make sure to review the following information:
 > This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information) for more information.
 
 > [!IMPORTANT] 
-> The 2311 update introduces a change in the base host OS to Windows Server 2022. *Disconnected* customers are required to obtain and update SQL Server 2019 Product Key (PID). *This should be done before starting the update*. To obtain this key, please contact Microsoft support.
-> If you start the update without updating this key, the update will fail shortly after starting with a 'Prepare of Role Cloud raised an exception' message, which will guide you to contact support (the update can be resumed after applying the new key).
+> The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 
 For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-troubleshooting.md).
 
@@ -77,7 +77,7 @@ The 2311 update has the following expected runtimes based on our internal testin
 - 16 nodes: 17-40 hours
 
 > [!IMPORTANT] 
-> Disconnected environments have additional pre-requisite steps which might increase this duration - please check below for required steps to obtain and update SQL Server 2019 Product Key (PID).
+> Disconnected environments have additional prerequisite steps which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
 
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2306 update and should not be compared to other Azure Stack Hub updates.
 
@@ -85,23 +85,21 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- We are announcing the General Availability of the [VPN Fast Path](azure-stack-vpn-fast-path-operators.md). The new VPN SKUs enable customer scenarios in which higher network throughput is necessary – please check the documentation for more details on this feature.
-- With 2311 we are announcing the Public Preview of the Azure Stack Hub Standard LoadBalancer - this feature will enable several scenarios by adding more scale, larger supported pool sizes, backend pool support, https probes, high-availability ports, and TCP reset on idle.
-- Azure Site Recovery (ASR) is currently in its [Public Preview](https://aka.ms/azshasr) phase, which now features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our General Availability (GA) launch in early 2024, at which point we plan to eliminate all dependencies except for the ASR RP itself. In the meantime, we encourage you to test and provide feedback on the Public Preview to help us enhance the GA version. Please be aware that the transition from Preview to GA will require a full reinstallation of the ASR solution (no update, or upgrade path will be possible).
-
+- The [VPN Fast Path](azure-stack-vpn-fast-path-operators.md) feature is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
+- With 2311 we are announcing the public preview of the Azure Stack Hub Standard Load Balancer. This feature enables several scenarios by adding more scale, larger supported pool sizes, backend pool support, HTTPS probes, high-availability ports, and TCP reset on idle.
+- Azure Site Recovery is currently in [public preview](https://aka.ms/azshasr), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery Resource Provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
 
 <!-- ### Improvements -->
 
 ### Changes
 
-- With 2311 we are making a change in the base host OS to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric. Azure Stack Hub environments that have outbound connectivity will not require any additional changes and the update will install directly.
+- 2311 introduces a change in the base host OS, updated to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric. Azure Stack Hub environments that have outbound connectivity do not require any additional changes, and the update is installed directly.
 
 > [!IMPORTANT] 
-> *Disconnected* customers are required to obtain and update SQL Server 2019 Product Key (PID). *This should be done before starting the update*. To obtain this key, please contact Microsoft support.
-> If you start the update without updating this key, the update will fail shortly after extracting the update package with a 'Prepare of Role Cloud raised an exception' message, which will guide you to contact support (the update can be resumed after applying the new key).
+> Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
   
-- Starting with 2311 we are not releasing a new Azure Stack Development Kit (ASDK) version. This decision is due to modifications in internal services that would lead to substantial complexity for the ASDK. The currently released ASDK version remains suitable for operational, testing, or training purposes - including for (Azure Stack Hub Foundation Core scripts)[https://aka.ms/azshasdk] used for the (Azure-Stack-Hub-Foundation-Core)[https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training].
-
+- Starting with 2311 we are not releasing a new Azure Stack Development Kit (ASDK) version. This decision is due to modifications in internal services that would lead to substantial complexity for the ASDK. The currently released ASDK version remains suitable for operational, testing, or training purposes, including for (Azure Stack Hub Foundation Core scripts)[https://aka.ms/azshasdk] used for the (Azure-Stack-Hub-Foundation-Core)[https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training].
 
 <!-- ### Fixes -->
 
