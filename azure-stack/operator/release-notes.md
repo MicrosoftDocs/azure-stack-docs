@@ -21,7 +21,7 @@ To access release notes for a different version, use the version selector dropdo
 
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
-> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information) for more information.
+> This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 ::: moniker-end
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
@@ -45,7 +45,7 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 
 > [!IMPORTANT] 
-> This update package requires an OEM package version of 2.3 or sooner – please check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information) for more information.
+> This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 
 > [!IMPORTANT] 
 > The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
