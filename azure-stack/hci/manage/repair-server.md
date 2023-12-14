@@ -112,7 +112,7 @@ This section describes how to repair a server using PowerShell, monitor the stat
 
 Make sure that you have reviewed the [prerequisites](#prerequisites). 
 
-Follow these steps on the sever you are trying to repair.
+Follow these steps on the server you are trying to repair.
 
 1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
@@ -120,7 +120,7 @@ Follow these steps on the sever you are trying to repair.
     > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
 
 
-Follow these steps on another sever that is a member of the same Azure Stack HCI cluster.
+Follow these steps on another server that is a member of the same Azure Stack HCI cluster.
 
 1. Before you add the server, make sure to get an updated authentication token. Run the following command:
 
