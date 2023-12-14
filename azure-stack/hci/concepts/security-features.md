@@ -42,7 +42,11 @@ Windows Defender Application Control (WDAC) is a software-based security layer t
 
 ## Secure baseline and drift control
 
-When you prepare Active Directory for Azure Stack HCI and create a dedicated organizational unit, existing Group Policy and Group Policy Object (GPO) inheritance are blocked by default to ensure that there is no conflict of security settings.
+Your Azure Stack HCI has more than 300 security settings enabled by default that provide a consistent security baseline, a baseline management system, and an associated drift control mechanism.
+
+You can monitor the security baseline and secured core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
+
+With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remetiation of any changes from the desired state. Continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
 Secure baseline on Azure Stack HCI:
 
@@ -51,14 +55,6 @@ Secure baseline on Azure Stack HCI:
 - Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
 For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../whats-new.md).
-
-### Drift control
-
-You can monitor and perform drift protection of the default enabled security baseline and secured-core settings during both deployment and runtime. You can also disable drift protection during deployment when you configure the security settings.
-
-With drift protection applied, security settings are refreshed regularly every 90 minutes. This refresh interval is the same as that for Group Policies and ensures that any changes from the desired state are remediated. Continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the device lifecycle.
-
-For detailed steps to configure syslog forwarding and drift control, see [Manage syslog forwarding](../whats-new.md) and [Manage baseline security settings](../whats-new.md).
 
 ## BitLocker encryption
 
@@ -74,37 +70,30 @@ For more information about BitLocker, see:
 
 ## Local built-in user accounts
 
-The names of local built-in users associated with the `RID 500` and `RID 501` accounts have been updated:
+In this release, the following local built-in users, associated with `RID 500` and `RID 501`, are available on your Azure Stack HCI system:
 
-|Name |Enabled |Description |
+|Name |Enabled by default |Description |
 |-----|-----|-----|
 |ASBuiltInAdmin |True |Built-in account for administering the computer/domain |
-|ASBuiltInGuest |False |Built-in account for guest access to the computer/domain |
+|ASBuiltInGuest |False |Built-in account for guest access to the computer/domain, protected by the security baseline drift control mechanism. |
 
-> [!Important]
+> [!IMPORTANT]
 > We recommend that you create your own local administrator account, and that you disable the well-known `RID 500` user account.
-
-The `ASBuiltInGuest` account is protected by the security baseline drift control mechanism. For more information, see [Security baseline settings for Azure Stack HCI (preview)](/azure-stack/hci/concepts/secure-baseline).
-
-We also added two new components in the 23H2 release:
-
-- [Secrets management engine](../whats-new.md).
-- [SIEM syslog forwarder agent](../whats-new.md).
 
 ## Manage secrets in Azure Stack HCI
 
-The Lifecycle Manager (LCM) stack requires multiple components to maintain secure communications with other infrastructure resources and services. To ensure security, we implemented internal secret creation and rotation capabilities.
+The Lifecycle Manager on Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. To ensure security, we implemented internal secret creation and rotation capabilities.
 
-All services exposed internally by LCM have authentication or encryption certificates associated with them. When you look into your cluster nodes, you will see several certificates created under the path `LocalMachine/Personal certificate store (Cert:\LocalMachine\My).
+All services exposed internally by Lifecycle Manager have authentication or encryption certificates associated with them. When you look into your cluster nodes, you will see several certificates created under the path `LocalMachine/Personal certificate store (Cert:\LocalMachine\My).
 
-This new component enables the following capabilities:
+In this release, the following capabilities are enabled:
 
-- The ability to create certificates during deployment and post deployment cluster scale actions.
-- Automated auto-rotation mechanism before certificates expire, and a customer option to rotate certificates during the lifetime of the cluster.
-- The ability to monitor and alert if certificates are still valid.
+- The ability to create certificates during deployment and after cluster scale operations.
+- Automated auto-rotation mechanism before certificates expire, and an option to rotate certificates during the lifetime of the cluster.
+- The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> This action will take place using LCM actions and will last about 10 minutes, depending on the size of the cluster.  This action affects all nodes that use LCM, and requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote Powershell invocation or remote desktop protocol (RDP) connection.
+> This action will take about 10 minutes, depending on the size of the cluster.  The operation requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote Powershell invocation or remote desktop protocol (RDP) connection.
 
 ## Syslog forwarding
 
@@ -118,12 +107,7 @@ The following diagram illustrates integration of Azure Stack HCI with an SIEM. A
 
 Syslog forwarding agents are deployed on every Azure Stack HCI host to forward syslog messages to the customer-configured syslog server. Syslog forwarding agents work independently from each other but can be managed together on any one of the hosts.
 
-The syslog forwarder in Azure Stack HCI supports the following configurations:
-
-- **Syslog forwarding with TCP, mutual authentication (client and server), and TLS 1.2 encryption:** In this configuration, both the syslog server and the syslog client can verify the identity of each other via certificates. Messages are sent over a TLS 1.2 encrypted channel.
-- **Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption** In this configuration, the syslog client can verify the identity of the syslog server via a certificate. Messages are sent over a TLS 1.2 encrypted channel.
-- **Syslog forwarding with TCP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP.
-- **Syslog with UDP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP.
+The syslog forwarder in Azure Stack HCI supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there is unidirectional or bidirectional authentication.
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 
