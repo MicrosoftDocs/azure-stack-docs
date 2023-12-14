@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/17/2023
+ms.date: 12/13/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. 
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -55,7 +55,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 ## Prepare Active Directory
 
-When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
+When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts and user groups.
 
 > [!NOTE]
 > In this release, only the Active Directory prepared via the provided module is supported.
@@ -94,11 +94,10 @@ To prepare and configure Active Directory, follow these steps:
     Here is a sample output from a successful completion of the script:
 
     ```    
-    PS C:\temp> New-HciAdObjectsPreCreation -Deploy -AsHciDeploymentUserCredential (get-credential) -AsHciOUName "OU=oudocs,DC=ASHCILab,DC=nttest,DC=microsoft,DC=com" -AsHciPhysicalNodeList @("a6p15140005012", "a4p1074000603b") -DomainFQDN "ASHCILab.nttest.microsoft.com" -AsHciClusterName "docspro2cluster" -AsHciDeploymentPrefix "docspro2"
-    
-    cmdlet Get-Credential at command pipeline position 1
-    Supply values for the following parameters:
-    Credential
+    PS C:\work> ConvertTo-SecureString '<password>' -AsPlainText -Force
+    PS C:\work> "ms309deployuser"
+    PS C:\work> $credential = New-Object System.Management.Automation.PSCredential ($user, $password)
+    PS C:\work> New-HciAdObjectsPreCreation -Deploy -AzureStackLCMUserCredential $credential -AsHciOUName "OU=ms309,DC=PLab8,DC=nttest,DC=microsoft,DC=com" -AsHciPhysicalNodeList @("ms309host") -DomainFQDN "PLab8.nttest.microsoft.com" -AsHciClusterName "ms309cluster" -AsHciDeploymentPrefix "ms309"    
     
     ActiveDirectoryRights : ReadProperty
     InheritanceType       : All
@@ -106,7 +105,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : None
     AccessControlType     : Allow
-    IdentityReference     : ASHCI\docspro2cluster$
+    IdentityReference     : PLAB8\ms309cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
@@ -117,7 +116,7 @@ To prepare and configure Active Directory, follow these steps:
     InheritedObjectType   : 00000000-0000-0000-0000-000000000000
     ObjectFlags           : ObjectAceTypePresent
     AccessControlType     : Allow
-    IdentityReference     : ASHCILAB\docspro2cluster$
+    IdentityReference     : PLAB8\ms309cluster$
     IsInherited           : False
     InheritanceFlags      : ContainerInherit
     PropagationFlags      : None
@@ -136,7 +135,7 @@ To prepare and configure Active Directory, follow these steps:
 
     :::image type="content" source="media/prep-active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/prep-active-directory/active-directory-2.png":::
 
-1. The **Users** object should contain one user group corresponding to the user you specified during the creation and one security group - domain local  with this name format: *Active Directory object prefix-OpsAdmin*. For example: *docspro2-OpsAdmin*.
+1. The **Users** object should contain one user group corresponding to the user you specified during the creation and two security group - domain local  with this name format: *Active Directory object prefix-OpsAdmin* and *Active Directory object prefix-Sto-SG*. For example: *ms309-OpsAdmin* and *ms309-Sto-SG*.
 
     :::image type="content" source="media/prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/prep-active-directory/active-directory-3.png":::
 
