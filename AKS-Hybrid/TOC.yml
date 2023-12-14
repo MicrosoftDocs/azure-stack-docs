@@ -48,8 +48,8 @@
       href: cluster-architecture.md
     - name: Scale requirements
       href: scale-requirements.md
-    - name: Known issues
-      href: aks-known-issues.md
+  - name: Known issues
+    href: aks-known-issues.md
   - name: Reference
     items:
     - name: Azure CLI
