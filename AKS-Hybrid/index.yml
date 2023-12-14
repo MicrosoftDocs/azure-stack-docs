@@ -1,25 +1,23 @@
 ### YamlMime:Landing
 
-title: Azure Kubernetes Service (AKS) on Azure Stack HCI documentation
-summary: Azure Kubernetes Service (AKS) on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS is available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
+summary: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Stack HCI, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
 
 metadata:
-  title: Azure Kubernetes Service (AKS) on Azure Stack HCI documentation
-  description: Azure Kubernetes Service (AKS) on Azure Stack HCI is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS is available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+  title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
+  description: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Stack HCI, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
   ms.date: 11/29/2023
 
 landingContent:
-  - title: About AKS on Azure Stack HCI
+  - title: About AKS enabled by Azure Arc
     linkLists:
       - linkListType: overview
         links:
-          - text: What is AKS on HCI?
+          - text: AKS overview
             url: aks-hybrid-options-overview.md
-          - text: Kubernetes cluster provisioning from Azure (preview)
-            url: aks-hybrid-preview-overview.md
       - linkListType: concept
         links:
           - text: Clusters and workloads
@@ -30,15 +28,33 @@ landingContent:
             url: concepts-support.md        
           - text: Pricing
             url: pricing.md    
-  - title: Deploy on light edge hardware with AKS Edge Essentials
+  - title: Get started with AKS on Azure Stack HCI (23H2 preview)
     linkLists:
       - linkListType: overview
         links:
-          - text: AKS Edge Essentials overview
+          - text: What's new
+            url: aks-preview-overview.md
+      - linkListType: deploy
+        links:
+          - text: Check system requirements
+            url: aks-hci-network-system-requirements.md
+      - linkListType: concept
+        links:
+          - text: Cluster architecture
+            url: cluster-architecture.md
+      - linkListType: how-to-guide
+        links:
+          - text: Create Kubernetes clusters
+            url: aks-create-clusters-cli.md
+  - title: Deploy AKS on resource-limited hardware
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Overview
             url: aks-edge-overview.md
       - linkListType: quickstart
         links:
-          - text: AKS Edge Essentials quickstart
+          - text: Quickstart
             url: aks-edge-quickstart.md
       - linkListType: concept
         links:
@@ -48,22 +64,6 @@ landingContent:
         links:
           - text: Troubleshoot
             url: aks-edge-troubleshoot-overview.md
-  - title: Get started with AKS on Azure Stack HCI
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: Check system requirements
-            url: system-requirements.md
-      - linkListType: quickstart
-        links:
-          - text: Deploy an AKS host and workload cluster using PowerShell
-            url: kubernetes-walkthrough-powershell.md 
-      - linkListType: quickstart
-        links: 
-          - text: Deploy an AKS host and workload cluster using Windows Admin Center
-            url: setup.md
-          - text: Create a Kubernetes cluster using Windows Admin Center
-            url: create-kubernetes-cluster.md
   - title: Deploy Windows and Linux applications
     linkLists:
       - linkListType: tutorial
@@ -115,11 +115,11 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Connect to Azure Arc for Kubernetes
+          - text: Connect to Kubernetes using Azure Arc
             url: connect-to-arc.md 
           - text: Use Kubernetes RBAC with Microsoft Entra ID
             url: kubernetes-rbac-azure-ad.md
-          - text: Monitor AKS Arc-enabled clusters
+          - text: Monitor Arc-enabled Kubernetes clusters
             url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
