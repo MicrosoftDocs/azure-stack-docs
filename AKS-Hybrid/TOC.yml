@@ -26,6 +26,8 @@
     href: aks-hci-network-system-requirements.md
   - name: Infrastructure component updates
     href: infrastructure-components.md
+  - name: Known issues
+    href: aks-known-issues.md
   - name: How-to
     items:
     - name: Create Arc-enabled networks and connect them to Azure
@@ -48,6 +50,10 @@
       href: cluster-architecture.md
     - name: Scale requirements
       href: scale-requirements.md
+  - name: Reference
+    items:
+    - name: Azure CLI
+      href: /cli/azure/akshybrid
 - name: Quickstarts
   expanded: true
   items:
