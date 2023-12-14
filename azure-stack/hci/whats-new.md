@@ -46,15 +46,19 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Support for managing and scaling the node pools**. <!--For more information, see [Manage multiple node pools in AKS Arc](../../AKS-Hybrid/manage-node-pools.md). -->
 - **Support for Linux and Windows Server containers**. <!--For more information, see [Create Windows Server containers](../../AKS-Hybrid/aks-create-containers.md).--> 
 
-For known issues, see for AKS on Azure Stack HCI, version 23H2
+
 
 ### Support for web proxy
 
 This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings.md).
 
-### Guest management operations via Azure CLI
+### Removal of GMSA accounts
 
-In this release, you can perform an extended set of guest management operations via the Azure CLI.
+In this release, the Group Managed Service Accounts (gMSA) created during the Active Directory preparation are removed. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
+
+<!--### Guest management operations via Azure CLI
+
+In this release, you can perform an extended set of guest management operations via the Azure CLI.-->
 
 ## Features and improvements in 2310 
 
