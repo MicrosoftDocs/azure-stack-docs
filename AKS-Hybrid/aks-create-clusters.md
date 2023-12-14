@@ -1,6 +1,6 @@
 ---
-title: Create AKS clusters (preview)
-description: Learn how to create AKS clusters in Azure Stack HCI using CLI.
+title: Create Kubernetes clusters using Azure CLI (preview)
+description: Learn how to create Kubernetes clusters in Azure Stack HCI using Azure CLI.
 ms.topic: how-to
 author: sethmanheim
 ms.date: 11/27/2023
@@ -241,4 +241,4 @@ az akshybrid delete --resource-group $aksclustername --name $resource_group
 
 ## Next steps
 
-- Troubleshoot and known issues with AKS Arc cluster provisioning from Azure
+- [Troubleshoot and known issues with AKS Arc cluster provisioning from Azure](aks-known-issues.md)
