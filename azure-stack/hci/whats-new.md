@@ -33,11 +33,11 @@ This section lists the new features and improvements in the 2311 release of Azur
 
 ### AKS on Azure Stack HCI, version 23H2
 
-Starting this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. <!--For more information, see [What's new in AKS on Azure Stack HCI, version 23H2 (preview)](/azure/aks/hybrid/aks-preview-overview).-->
+Starting this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. <!--For more information, see [What's new in AKS on Azure Stack HCI, version 23H2 (preview)](/azure/aks/hybrid/aks-preview-overview)-->
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Simplified infrastructure deployment on Azure Stack HCI**. In this release, the infrastructure components of AKS on Azure Stack HCI 23H2 including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Stack HCI deployment. <!--For more information, see [Deploy Azure Stack HCI cluster using the Azure portal (preview)](./deploy/deploy-via-portal.md).-->
+- **Simplified infrastructure deployment on Azure Stack HCI**. In this release, the infrastructure components of AKS on Azure Stack HCI 23H2 including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Stack HCI deployment. For more information, see [Deploy Azure Stack HCI cluster using the Azure portal (preview)](./deploy/deploy-via-portal.md).
 - **Integrated infrastructure upgrade on Azure Stack HCI**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Stack HCI 23H2. <!--For more information, see [Infrastructure component updates for AKS on Azure Stack HCI (preview)](../../AKS-Hybrid/infrastructure-components.md).-->
 - **New Azure consistent CLI**. Starting this preview release, a new consistent command line experience is available to create and manage Kubernetes clusters. <!--For more information, see [Azure CLI extension az akshybrid reference](/cli/azure/akshybrid).-->
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Stack HCI with familiar tools such as Azure portal and Azure CLI. <!--For more information, see [Create Kubernetes clusters using Azure CLI](../../AKS-Hybrid/aks-create-clusters.md).-->
@@ -50,7 +50,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 ### Support for web proxy
 
-This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. <!--For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings-23h2.md).-->
+This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings-23h2.md).
 
 ### Removal of GMSA accounts
 
