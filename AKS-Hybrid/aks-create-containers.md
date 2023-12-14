@@ -1,6 +1,6 @@
 ---
-title: Create AKS containers (preview)
-description: Learn how to create AKS containers in Azure Stack HCI.
+title: Create Windows Server containers (preview)
+description: Learn how to create Windows Server containers in Azure Stack HCI.
 ms.topic: how-to
 author: sethmanheim
 ms.date: 11/27/2023
@@ -10,7 +10,7 @@ ms.reviewer: guanghu
 
 ---
 
-# Create AKS containers (preview)
+# Create Windows Server containers (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -23,7 +23,7 @@ Create an AKS cluster following the instructions in [How to create AKS clusters]
 
 ## Add a nodepool
 
-By default, an AKS cluster is created with a nodepool that can run Linux containers. You must add another nodepool that can run Windows Server containers alongside the Linux nodepool.
+By default, a Kubernetes cluster is created with a nodepool that can run Linux containers. You must add another nodepool that can run Windows Server containers alongside the Linux nodepool.
 
 Add a nodepool with Windows container hosts using the `az aks nodepool add` command with the parameter `--os-type Windows`. If the operating system SKU isn't specified, the nodepool is set to the default OS based on the Kubernetes version of the cluster. Windows Server 2022 is the default operating system for Kubernetes versions 1.25.0 and higher. Windows Server 2019 is the default OS for earlier versions.
 
