@@ -32,8 +32,10 @@
     items:
     - name: Create Arc-enabled networks and connect them to Azure
       href: aks-networks.md
-    - name: Create Kubernetes clusters
-      href: aks-create-clusters.md
+    - name: Create Kubernetes clusters using Azure CLI
+      href: aks-create-clusters-cli.md
+    - name: Create Kubernetes clusters using the portal
+      href: aks-create-clusters-portal.md      
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers

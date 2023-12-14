@@ -19,7 +19,7 @@ ASP.NET sample application in a Windows Server container to the cluster.
 
 ## Prerequisites
 
-Create an AKS cluster following the instructions in [How to create AKS clusters](aks-create-clusters.md).
+Create an AKS cluster following the instructions in [How to create AKS clusters](aks-create-clusters-cli.md).
 
 ## Add a nodepool
 

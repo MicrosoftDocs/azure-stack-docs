@@ -45,7 +45,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Create Kubernetes clusters
-            url: aks-create-clusters.md
+            url: aks-create-clusters-cli.md
   - title: Deploy AKS on resource-limited hardware
     linkLists:
       - linkListType: overview
