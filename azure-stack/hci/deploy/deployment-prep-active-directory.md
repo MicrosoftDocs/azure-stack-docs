@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/13/2023
+ms.date: 12/14/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,12 +23,17 @@ Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
 - Complete the [deployment checklist](./deployment-checklist.md).
-- Install the PowerShell module to prepare Active Directory. [Download the version 2310 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2310).
-- Run the following command:
+- Install the PowerShell module to prepare Active Directory. You can follow one of these options:
+    - [Download AsHciADArtifactsPreCreationTool.psm1 from this location](https://github.com/Azure/AzureStack-Tools/tree/master/HCI). Run the following command:
+    
+        ```powershell
+        Import-Module .\AsHciADArtifactsPreCreationTool.psm1
+        ```
+    - [Download the version 2311 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2311). Run the following command:
 
-    ```azurepowershell
-    Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
-    ```
+        ```powershell
+        Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
+        ```
 
 <!--You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
 
