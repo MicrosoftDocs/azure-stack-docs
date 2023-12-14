@@ -34,7 +34,7 @@
       href: aks-networks.md
     - name: Create Kubernetes clusters using Azure CLI
       href: aks-create-clusters-cli.md
-    - name: Create Kubernetes clusters using the Azure portal
+    - name: Create Kubernetes clusters using the portal
       href: aks-create-clusters-portal.md      
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
