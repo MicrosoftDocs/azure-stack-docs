@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/12/2023
+ms.date: 12/14/2023
 ---
 
 # Security features for Azure Stack HCI, version 23H2 (preview)
@@ -38,11 +38,11 @@ For additional security considerations, see:
 
 ## Windows Defender Application Control
 
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see Windows Defender Application Control. For more infromation, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
+Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
 
 ## Secure baseline and drift control
 
-When you prepare Active Directory for Azure Stack HCI and create a dedicated organizational unit, existing Group Policy and Group Policy Object (GPO) inheritance are blocked by default. Blocking these policies ensures that there is no conflict of security settings.
+When you prepare Active Directory for Azure Stack HCI and create a dedicated organizational unit, existing Group Policy and Group Policy Object (GPO) inheritance are blocked by default to ensure that there is no conflict of security settings.
 
 Secure baseline on Azure Stack HCI:
 
@@ -116,11 +116,7 @@ The following diagram illustrates integration of Azure Stack HCI with an SIEM. A
 
 :::image type="content" source="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png" alt-text="The following diagram describes the integration of Azure Stack HCI with an external security information and event management (SIEM) system." border="false" lightbox="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png":::
 
-### About syslog forwarding
-
-Syslog forwarding agents are deployed on every Azure Stack HCI host. Each syslog forwarding agent will forward syslog messages collected from its host to the customer-configured syslog server.
-
-Syslog forwarding agents work independently from each other but can be managed together on any one of the hosts. You can use provided cmdlets with administrator privileges on any host to control the behavior of all forwarder agents.
+Syslog forwarding agents are deployed on every Azure Stack HCI host to forward syslog messages to the customer-configured syslog server. Syslog forwarding agents work independently from each other but can be managed together on any one of the hosts.
 
 The syslog forwarder in Azure Stack HCI supports the following configurations:
 
@@ -128,6 +124,8 @@ The syslog forwarder in Azure Stack HCI supports the following configurations:
 - **Syslog forwarding with TCP, server authentication, and TLS 1.2 encryption** In this configuration, the syslog client can verify the identity of the syslog server via a certificate. Messages are sent over a TLS 1.2 encrypted channel.
 - **Syslog forwarding with TCP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over TCP.
 - **Syslog with UDP and no encryption:** In this configuration, the syslog client and syslog server identities aren’t verified. Messages are sent in clear text over UDP.
+
+For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 
 ## Next steps
 
