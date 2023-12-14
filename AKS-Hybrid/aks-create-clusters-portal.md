@@ -31,8 +31,13 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. On the Azure portal search bar, type Kubernetes Azure Arc.
-1. Select **Add > Create a Kubernetes cluster with Azure Arc (Preview)**.
+1. Select **Add > Create a Kubernetes cluster with Azure Arc (preview)**:
+
+   :::image type="content" source="media/aks-create-clusters-portal/cluster-portal.png" alt-text="Screenshot showing cluster creation page on the portal." lightbox="media/aks-create-clusters-portal/cluster-portal.png":::
+
 1. On the Basics page, configure the following options:
+
+   :::image type="content" source="media/aks-create-clusters-portal/cluster-create-portal.png" alt-text="Screenshot showing Basics page for cluster creation on portal." lightbox="media/aks-create-clusters-portal/cluster-create-portal.png":::
 
    - **Project details**:
      - Select an Azure subscription. This Azure subscription is where your infrastructure administrator deployed the Arc Resource Bridge, AKS Arc extension and custom location.

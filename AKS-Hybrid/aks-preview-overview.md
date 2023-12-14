@@ -22,7 +22,7 @@ This article lists the various features and improvements that are available in A
 
 ## About AKS on Azure Stack HCI 23H2
 
-AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on Azure Stack HCI directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Stack HCI. Since clusters are automatically connected to Arc when they are created, you can use your Microsoft Entra identity for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
+AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on Azure Stack HCI directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Stack HCI. Since clusters are automatically connected to Arc when they are created, you can use your Microsoft Entra ID for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
 
 Microsoft continues to focus on delivering consistent user experience for all your AKS clusters. If you have created and managed Kubernetes clusters using Azure, you'll feel right at home managing Kubernetes clusters running on Azure Stack HCI 23H2 using Azure portal or Azure CLI management experiences.
 
@@ -30,7 +30,7 @@ At this time, you can perform the following operations through the Azure CLI and
 
 - Create/list/show Kubernetes clusters.
 - Specify/upgrade Kubernetes cluster' version.
-- Access the Kubernetes cluster using kubectl and your Microsoft Entra identity.
+- Access the Kubernetes cluster using kubectl and your Microsoft Entra ID.
 - Add/list/show Linux and Windows nodepools on your Kubernetes cluster.
 - Delete your Kubernetes clusters and nodepools.
 

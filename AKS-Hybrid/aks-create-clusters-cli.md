@@ -10,23 +10,23 @@ ms.reviewer: guanghu
 
 ---
 
-# Create AKS clusters (preview)
+# Create Kubernetes clusters using Azure CLI (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to create AKS clusters in Azure Stack HCI using Azure CLI. The workflow is as follows:
+This article describes how to create Kubernetes clusters in Azure Stack HCI using Azure CLI. The workflow is as follows:
 
-1. Create an AKS cluster in Azure Stack HCI 23H2 using Azure CLI. The cluster is Azure Arc-connected by default.
+1. Create a Kubernetes cluster in Azure Stack HCI 23H2 using Azure CLI. The cluster is Azure Arc-connected by default.
 1. While creating the cluster, you provide a Microsoft Entra group that contains the list of Microsoft Entra users with Kubernetes cluster administrator access.
-1. Access the AKS cluster using kubectl and your Microsoft Entra identity.
-1. Run a sample multi-container application with a web frontend and a Redis instance in the AKS cluster.
+1. Access the cluster using kubectl and your Microsoft Entra ID.
+1. Run a sample multi-container application with a web front end and a Redis instance in the cluster.
 
 ## Before you begin
 
 - Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
   - **Azure subscription ID** - The Azure subscription ID where Azure Stack HCI is used for deployment and registration.
   - **Custom Location ID** - Azure Resource Manager ID of the custom location. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create AKS hybrid clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name. These input values are customized during the Azure Stack HCI cluster deployment.
-  - **Network ID** - Azure Resource Manager ID of the Azure AKS Arc vnet. Your admin should give you the ID of the AKS Arc vnet. This parameter is required in order to create AKS clusters. You can also get the Azure Resource Manager ID using `az akshybrid vnet show --name "<vnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the Azure Arc vnet was created.
+  - **Network ID** - Azure Resource Manager ID of the Azure AKS Arc vnet. Your admin should give you the ID of the AKS Arc vnet. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az akshybrid vnet show --name "<vnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the Azure Arc vnet was created.
 - You can run the steps in this article in a local Azure CLI instance. Make sure you have the latest version of [Az CLI](/cli/azure/install-azure-cli) on your local machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 - To connect to the AKS Arc cluster from anywhere, create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself as a member to the Microsoft Entra group. If you don't add yourself, you cannot access the AKS Arc cluster using kubectl. For more information about creating Microsoft Entra groups and adding users, see [Manage Microsoft Entra groups and group membership](/entra/fundamentals/how-to-manage-groups).
 - [Download and install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) on your local machine. The Kubernetes command-line tool, kubectl, enables you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
@@ -57,7 +57,7 @@ Now you can connect to your Kubernetes cluster by running the `az connectedk8s 
 
 This command downloads the kubeconfig of your Kubernetes cluster to your local machine and opens a proxy connection channel to your on-premises Kubernetes cluster. The channel is open for as long as the command runs. Let this command run for as long as you want to access your cluster. If it times out, close the CLI window, open a fresh one, then run the command again.
 
-You must have Contributor permissions on the resource group that hosts the AKS cluster in order to run the following command successfully:
+You must have Contributor permissions on the resource group that hosts the Kubernetes cluster in order to run the following command successfully:
 
 ```azurecli
 az connectedk8s proxy --name $aksclustername --resource-group $resource_group --file .\aks-arc-kube-config
@@ -231,9 +231,9 @@ azure-vote-front LoadBalancer 10.0.37.27 52.179.23.131 80:30572/TCP 2m
 
 To see the Azure Vote app in action, open a web browser to the external IP address of your service.
 
-## Delete the AKS hybrid cluster
+## Delete the cluster
 
-Run the `az akshybrid delete` command to clean up the AKS Arc cluster you created:
+Run the `az akshybrid delete` command to clean up the cluster you created:
 
 ```azurecli
 az akshybrid delete --resource-group $aksclustername --name $resource_group
