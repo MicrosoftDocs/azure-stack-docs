@@ -51,7 +51,7 @@
   - name: Known issues and troubleshooting
     items:
     - name: Known issues
-      href: known-issues.md
+      href: aks-known-issues.md
 - name: Quickstarts
   expanded: true
   items:
