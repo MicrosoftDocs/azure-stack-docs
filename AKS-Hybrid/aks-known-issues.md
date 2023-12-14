@@ -27,7 +27,7 @@ This release maps to software version 10.2311.0.26 of Azure Stack HCI.
 | Portal           | Specifying a Kubernetes version during cluster creation is not supported in the Azure portal.                                       | You can use Azure CLI to create the Kubernetes cluster with a supported Kubernetes version.                                                |
 | Portal           | The available list of VM types is not complete when creating Kubernetes clusters in the Azure portal.                            |                                                                                                                                            |
 | Cluster upgrade  | The Azure CLI command for cluster upgrade `az akshybrid upgrade` does not work without specifying the target Kubernetes version. | You must specify the target Kubernetes version when you run the `az akshybrid upgrade` command with the `--version <target version>` parameter. |
-| Supported VM size | The `az akshybrid vmsize` does not correctly return the required available VM types.                                 | Wait for 10 minutes and rerun the same command to view the supported VM types.                                                 |
+| Supported VM size | The `az akshybrid vmsize` command does not correctly return the required available VM types.                                 | Wait for 10 minutes and rerun the same command to view the supported VM types.                                                 |
 
 ## Next steps
 
