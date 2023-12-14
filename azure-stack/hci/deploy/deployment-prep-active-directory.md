@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/17/2023
+ms.date: 12/13/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. To enable the security model, each component agent on Azure Stack HCI uses a dedicated Group Managed Service Account (gMSA). For an overview of gMSA, see [Group Manager Service Accounts](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. 
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -55,7 +55,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 ## Prepare Active Directory
 
-When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts, gMSA accounts, and user groups.
+When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts and user groups.
 
 > [!NOTE]
 > In this release, only the Active Directory prepared via the provided module is supported.
