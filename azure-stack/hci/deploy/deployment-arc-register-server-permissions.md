@@ -98,6 +98,9 @@ Before you begin, make sure you've done the following:
     
     #Define the tenant you will use to register your server as Arc device
     $Tenant = "YourTenantID"
+
+    #Define the Azure region used for registration.
+    $Region = "YourRegionName"
     ```
 
     Here's a sample output of the parameters:
@@ -106,6 +109,7 @@ Before you begin, make sure you've done the following:
     PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
+    PS C:\Users\SetupUser> $Region = "eastus"
     ```
 
 1. Connect to your Azure account and set the subscription. You will need to open browser on the client that you are using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
@@ -140,7 +144,7 @@ Before you begin, make sure you've done the following:
 
     ```powershell
     #Invoke the registration script. For this preview release, eastus and westeurope regions are supported.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
     If you are accessing the internet via a proxy server, you need to pass the `--proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
@@ -148,7 +152,7 @@ Before you begin, make sure you've done the following:
     Here is a sample output of a successful registration of your servers:
     
     ```output
-    PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
+    PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
     Installing and Running Azure Stack HCI Environment Checker
     All the environment validation checks succeeded
     Installing Hyper-V Management Tools
