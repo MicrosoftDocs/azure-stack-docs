@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 11/20/2023
+ms.date: 12/15/2023
 ---
 
 # Create Arc virtual machines on Azure Stack HCI (preview)
@@ -234,6 +234,15 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Select **Create**. It should take a few minutes to provision the VM.
 
 ---
+
+
+## Use manage identity to authenticate Arc VMs
+
+When the Arc VMs are created on your Azure Stack HCI system, a system-assigned managed identity is also created that lasts for the lifetime of that Arc VM. 
+
+The Arc VMs on Azure Stack HCI are Arc-enabled server can use this system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
+
+For  more information, see [System-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
 
 ## Next steps
 
