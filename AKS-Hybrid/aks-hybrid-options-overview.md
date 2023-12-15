@@ -79,5 +79,4 @@ AKS Edge Essentials | Windows 10/11 IoT Enterprise </br> Windows 10/11 Enterpris
 
 To get started with AKS, see the following articles:
 
-- [AKS enabled by Arc overview](overview.md)
-- [AKS hybrid cluster provisioning from Azure overview](aks-hybrid-preview-overview.md)
+- [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
