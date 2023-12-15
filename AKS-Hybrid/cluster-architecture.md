@@ -77,4 +77,4 @@ For more information, see [node selectors](https://kubernetes.io/docs/concepts/
 ## Next steps
 
 - [What's new in AKS on Azure Stack HCI](aks-preview-overview.md)
-- [Create and manage Kubernetes clusters on-premises using Azure CLI](create-aks-hybrid-preview-cli.md)
+- [Create and manage Kubernetes clusters on-premises using Azure CLI](aks-create-clusters-cli.md)
