@@ -236,7 +236,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 ---
 
 
-## Use manage identity to authenticate Arc VMs
+## Use managed identity to authenticate Arc VMs
 
 When the Arc VMs are created on your Azure Stack HCI system, a system-assigned managed identity is also created that lasts for the lifetime of that Arc VM. 
 
