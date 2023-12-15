@@ -69,23 +69,6 @@ To prepare and configure Active Directory, follow these steps:
 
 1. Sign in to a computer that is joined to your Active Directory domain as a domain administrator.
 1. Run PowerShell as administrator.
-1. Create a [Microsoft Key Distribution Service root key](/windows-server/security/group-managed-service-accounts/create-the-key-distribution-services-kds-root-key) on the domain controller to generate group [Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) passwords. Run the following command.
-
-    ```powershell
-    Add-KdsRootKey -EffectiveTime ((Get-Date).addhours(-10))
-    ```
-
-    Here's the sample output from a successful run of the command:
-
-    ```
-    PS C:\Users\Administrator> Add-KdsRootKey -EffectiveTime ((Get-Date).addhours(-10))
-
-    Guid
-    ----
-    706e1dd7-3601-4f01-f2de-bb04c7b9afc3
-
-    ```
-
 1. Run the following command to create the dedicated OU.
 
     ```powershell
