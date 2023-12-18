@@ -37,22 +37,22 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. From the list of VMs in the right pane, select and go to the VM to which you want to add a data disk.
 1. Go to **Disks**. From the top command bar in the right pane, select **+ Add new disk**.  
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-1.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-1.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-1.png" alt-text="Screenshot of + Add disk selected." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-1.png":::
 
 1. In the **Add new disk** blade, input the following parameters:
     1. Specify a friendly **Name** for the data disk.
     1. Provide the **Size** for the disk in GB.
     1. Choose the **Provisioning type** for disk as **Dynamic** or **Static**.
   
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png" alt-text="Screenshot of Add new disk blade with provided inputs." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png":::
 
 1. Select and **Save** the disk that is created.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png" alt-text="Screenshot of Save selected for data disk to create." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-3.png":::
 
 1. You'll see a notification that the data disk creation job has started. Once the disk is created, the list refreshes to display the newly added disk.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png" alt-text="Screenshot of select + Create storage path." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png" alt-text="Screenshot of list of refreshed data disk." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png":::
 
 ## Delete a data disk
 
@@ -62,19 +62,17 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Go to Azure Stack HCI cluster resource and then go to **Virtual machines**.  
 1. FFrom the list of VMs in the right pane, select and go to the VM whose data disk you want to delete.
 
-    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png" alt-text="Screenshot of delete icon selected for the data disk to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png":::
 
 1. In the confirmation dialog, select **Yes** to continue.
 
-    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-2.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-2.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-2.png" alt-text="Screenshot of confirmation page for the data disk to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-2.png":::
 
 1. **Save** the changes to delete the specified data disk.
 
-    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png" alt-text="Screenshot of save selected for the data disk to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png":::
 
 1. You'll see a notification that the disk deletion job has started. Once the disk is deleted, the list refreshes to display the remaining data disks.
-
-    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png":::
 
 
 ## Add a network interface
@@ -134,4 +132,4 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 ## Next steps
 
-- [Manage Arc VMs](./manage-arc-virtual-machines.md)
+- [Manage VM extensions](./virtual-machine-manage-extension.md)
