@@ -145,6 +145,10 @@
               href: manage/trusted-launch-vm-deploy.md
             - name: Manage guest state protection key
               href: manage/trusted-launch-vm-import-key.md
+        - name: Clusters
+          items:
+          - name: Configure proxy 
+            href: manage/configure-proxy-settings-23h2.md
         - name: Storage
           items: 
           - name: Use ReFS deduplication and compression
