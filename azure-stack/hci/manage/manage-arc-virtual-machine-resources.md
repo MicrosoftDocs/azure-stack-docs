@@ -114,7 +114,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM whose network interface you want to delete.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png" alt-text="Screenshot of VM selected whose network interface you want to deelte." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png":::
 
 1. In the confirmation dialog, select **Yes** to continue.
 
@@ -122,11 +122,11 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. **Apply** the changes to delete the specified network interface. The network interface is dissociated from the Arc VM.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png" alt-text="Screenshot of Apply selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-3.png":::
 
 1. The list of network interfaces is updated with the deleted network interface.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of newly refreshed network interface list for VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
 
 
 
