@@ -590,6 +590,8 @@
           href: manage/whats-new-2306-preview.md
         - name: 2306 updates
           items:
+          - name: 2306.5 release
+            href: manage/whats-new-2306-5-preview.md
           - name: 2306.4 release
             href: manage/whats-new-2306-4-preview.md
           - name: 2306.3 release
