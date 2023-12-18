@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/11/2023
+ms.date: 12/18/2023
 ---
 
 # Manage resources for Arc VM on your Azure Stack HCI (preview)
@@ -62,19 +62,19 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Go to Azure Stack HCI cluster resource and then go to **Virtual machines**.  
 1. FFrom the list of VMs in the right pane, select and go to the VM whose data disk you want to delete.
 
-    :::image type="content" source="./media/create-storage-path/delete-storage-path-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/create-storage-path/delete-storage-path-1.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png":::
 
 1. In the confirmation dialog, select **Yes** to continue.
 
-    :::image type="content" source="./media/create-storage-path/delete-storage-path-2.png" alt-text="Screenshot of deletion confirmation." lightbox="./media/create-storage-path/delete-storage-path-2.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-2.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-2.png":::
 
-1. **Apply** the changes to add the specified network interface.
+1. **Save** the changes to delete the specified data disk.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png":::
 
 1. You'll see a notification that the disk deletion job has started. Once the disk is deleted, the list refreshes to display the remaining data disks.
 
-    :::image type="content" source="./media/create-storage-path/delete-storage-path-3.png" alt-text="Screenshot of updated storage path list after the deletion." lightbox="./media/create-storage-path/delete-storage-path-3.png":::  
+    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png" alt-text="Screenshot of delete icon selected for the storage path to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-3.png":::
 
 
 ## Add a network interface
@@ -130,15 +130,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-4.png":::
 
-## Change cores and memory
 
-Follow these steps in Azure portal of your Azure Stack HCI system.
-
-1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
-1. From the list of VMs in the right pane, select and go to the VM whose cores and memory you want to modify.
-1. Go to **Size**. Edit the **Virtual processor count** or **Memory (MB)** to change the cores and memory size for the VM. Only the memory size can be changed. The memory type can't be changed once a VM is created.
-
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/change-cores-memory-1.png" alt-text="Screenshot of Size page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/change-cores-memory-1.png":::
 
 ## Next steps
 

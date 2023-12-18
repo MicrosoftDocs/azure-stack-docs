@@ -69,7 +69,15 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 ## Delete a VM
 
+## Change cores and memory
 
+Follow these steps in Azure portal of your Azure Stack HCI system.
+
+1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
+1. From the list of VMs in the right pane, select and go to the VM whose cores and memory you want to modify.
+1. Go to **Size**. Edit the **Virtual processor count** or **Memory (MB)** to change the cores and memory size for the VM. Only the memory size can be changed. The memory type can't be changed once a VM is created.
+
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/change-cores-memory-1.png" alt-text="Screenshot of Size page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/change-cores-memory-1.png":::
 
 
 
