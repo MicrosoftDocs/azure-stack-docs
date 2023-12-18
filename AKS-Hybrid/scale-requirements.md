@@ -39,10 +39,10 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 
 | Scale item                                                                                                                                      | Count                             |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
-| Number of concurrent AKS cluster creations on an ARB.                                                                                                   | 8                                     |
-| Number of concurrent node pool creations on an ARB.                                                                                                     | 8                                     |
-| Number of concurrent operations across all different AKS hybrid clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB.  | 32                                    |
-| Number of long running operations that can be run simultaneously on an AKS hybrid cluster.                                                              | 1 per cluster.  |
+| Number of concurrent AKS cluster creations on an ARB                                                                                                   | 8                                     |
+| Number of concurrent node pool creations on an ARB                                                                                                     | 8                                     |
+| Number of concurrent operations across all different AKS hybrid clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32                                    |
+| Number of long running operations that can be run simultaneously on an AKS hybrid cluster                                                              | 1 per cluster.  |
 
 ## Default values for virtual machine sizes
 
