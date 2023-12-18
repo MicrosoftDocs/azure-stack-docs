@@ -48,7 +48,7 @@ This option deploys a virtual machine running **HAProxy + KeepAlive** to provide
 This option assumes you want to leverage Arc extensions to deploy MetalLB as a load balancer for your Kubernetes cluster. In this case, your cluster is created without a load balancer. Then, go to the Azure portal and install MetalLB.
 
 > [!WARNING]
-> IP conflict check is not currently supported. It's recommended that you perform this check when you create load balancers.
+> IP conflict checking is not currently supported. It's recommended that you perform this check when you create load balancers.
 
 To deploy a load balancer using Azure Arc extensions, set the `–load-balancer-count` flag to `0` during cluster creation:
 
