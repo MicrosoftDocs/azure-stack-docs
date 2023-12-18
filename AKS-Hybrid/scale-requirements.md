@@ -23,8 +23,8 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 
 | Scale item                                                               | Count                                      |
 |--------------------------------------------------------------------------|--------------------------------------------|
-| Minimum number of physical nodes in Azure Stack HCI cluster                 | 1                                          |
-| Maximum number of physical nodes in Azure Stack HCI cluster                 | 16                                         |
+| Minimum number of physical nodes in an Azure Stack HCI cluster                 | 1                                          |
+| Maximum number of physical nodes in an Azure Stack HCI cluster                 | 16                                         |
 | Minimum count for control plane node                                        | 1                                          |
 | Maximum count for control plane node                                        | 5 <br />    Allowed values: 1, 3, and 5.   |
 | Minimum number of nodes in default node pool created during cluster create  | 1                                          |
@@ -32,7 +32,7 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 | Maximum number of node pools in an AKS hybrid cluster                       | 16                                         |
 | Minimum number of nodes in a node pool                                      | 1 <br />    Cannot create empty node pools.|
 | Maximum number of nodes in a node pool                                      | 64                                         |
-| Maximum number of total nodes in a AKS hybrid cluster                       | 200                                        |
+| Maximum number of total nodes in an AKS hybrid cluster                       | 200                                        |
 | Maximum number of AKS hybrid clusters per Azure Stack HCI cluster           | 32                                         |
 
 ## Concurrency for AKS enabled by Arc
