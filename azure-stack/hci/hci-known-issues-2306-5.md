@@ -29,7 +29,7 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 
 |#|Feature|Issue|Workaround|
 |-|------|------|----------|
-|1|Deployment |If the remote support agent isn't shut down cleanly, the Cluster discovery cache file can become corrupted. |Delete the Cluster discovery file on all failed nodes from <br> C:\programdata\Microsoft\AzureStack\RemoteSupport\Cluster\ClusterDiscoveryState. <br><br> Restart the agent with this command:<br>`Start-Service -Name "AzureStack Observability RemoteSupportAgent"`|
+|1|Update |The update may fail at the ‘UpdateOtherAgent’ step if the remote support agent’s Cluster discovery cache file becomes corrupt due to an unclean shutdown of the service. |Delete the Cluster discovery file on all failed nodes from <br> C:\programdata\Microsoft\AzureStack\RemoteSupport\Cluster\ClusterDiscoveryState. <br><br> Restart the agent with this command:<br>`Start-Service -Name "AzureStack Observability RemoteSupportAgent"`|
 
 ## Known issues from previous releases
 
