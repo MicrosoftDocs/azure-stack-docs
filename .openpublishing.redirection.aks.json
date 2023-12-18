@@ -1289,7 +1289,52 @@
         "source_path": "AKS-Hybrid/aks-hci-evaluation-guide-3.md",
         "redirect_url": "/azure/aks/hybrid/aks-hci-evaluation-guide",
         "redirect_document_id": false
-      }      
+      },
+      {
+        "source_path": "AKS-Hybrid/aks-hybrid-preview-overview.md",
+        "redirect_url": "/azure/aks/hybrid/aks-preview-overview",
+        "redirect_document_id": false
+      },      
+      {
+        "source_path": "AKS-Hybrid/aks-hybrid-preview-requirements.md",
+        "redirect_url": "/azure/aks/hybrid/aks-hci-network-system-requirements",
+        "redirect_document_id": false
+      },            
+      {
+        "source_path": "AKS-Hybrid/aks-hybrid-preview-azure-vm.md",
+        "redirect_url": "/azure/aks/hybrid/aks-create-clusters",
+        "redirect_document_id": false
+      },                  
+      {
+        "source_path": "AKS-Hybrid/deploy-aks-service-hci.md",
+        "redirect_url": "/azure/aks/hybrid/infrastructure-components",
+        "redirect_document_id": false
+      },                        
+      {
+        "source_path": "AKS-Hybrid/deploy-arc-resource-bridge-windows-server.md",
+        "redirect_url": "/azure/aks/hybrid/infrastructure-components",
+        "redirect_document_id": false
+      },                              
+      {
+        "source_path": "AKS-Hybrid/create-aks-hybrid-preview-networks.md",
+        "redirect_url": "/azure/aks/hybrid/aks-networks",
+        "redirect_document_id": false
+      },                                    
+      {
+        "source_path": "AKS-Hybrid/create-aks-hybrid-preview-cli.md",
+        "redirect_url": "/azure/aks/hybrid/aks-create-clusters",
+        "redirect_document_id": false
+      },                                          
+      {
+        "source_path": "AKS-Hybrid/create-aks-hybrid-preview-portal.md",
+        "redirect_url": "/azure/aks/hybrid/aks-create-clusters",
+        "redirect_document_id": false
+      },                                                
+      {
+        "source_path": "AKS-Hybrid/troubleshoot-aks-hybrid-preview.md",
+        "redirect_url": "/azure/aks/hybrid/aks-preview-overview",
+        "redirect_document_id": false
+      }
     ]
   }
   
