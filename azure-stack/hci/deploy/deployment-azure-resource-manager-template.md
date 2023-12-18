@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 11/14/2023
+ms.date: 12/15/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -35,7 +35,7 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 To authenticate your cluster, you need to create a service principal. You must also assign user access administrator and contributor roles to the service principal. Follow the steps in one of these procedures to create the service principal and assign the roles:
 
 - [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal).
-- [ Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+- [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
 ### Create cloud witness storage account
 
@@ -195,20 +195,15 @@ With all the prerequisite and preparation steps complete, you are ready to deplo
 1. Select **Create** under **Template deployment (deploy using custom templates)**.
     <!--A screenshot of a computer-->
 
-1. Select **Build your own template in the editor**.
-    <!--A screenshot of a computer-->
+1. Near the bottom of the page, find **Start with a quickstart template or template spec** section.
 
-1. On the **Edit template** screen, copy and paste the contents of the `23H2_ClusterDeploy_Template.json` file to a temporary location for the validation run.
-     <!--A screenshot of a computer program-->
+1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
 
-1. Select **Save**.
+1. **Select template**.
 
-1. In a new browser window, navigate to your environment's **Parameter JSON's Secret**. For the secret that matches your environment, select the link to that secret.
+1. You'll see the **Custom deployment** page.
 
-1. On the screen for the corresponding secret, select the **Copy to clipboard** icon to the right of the **Secret value** field at the bottom.
-    <!--A screenshot of a computer-->
-
-1. Back on the **Custom deployment** screen, select **Edit parameters**.
+1. On the **Custom deployment** page, select **Edit parameters**.
 
 1. Paste the Secret value from the clipboard you previously saved to the workspace, where **Deployment Mode = Validate**.
     <!--A screenshot of a computer program-->
