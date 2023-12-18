@@ -21,7 +21,7 @@ This article applies to Azure Stack HCI, Supplemental Package, for 2306.4 patch 
 
 For more information, see [What's new in 23H2](whats-new.md) and [What's in preview](./manage/whats-new-2306-4-preview.md).
 
-[!INCLUDE [important](../includes/hci-preview-2023.md)]
+[!INCLUDE [important](../includes/hci-preview-2306.md)]
 
 ## Known issues in this release
 

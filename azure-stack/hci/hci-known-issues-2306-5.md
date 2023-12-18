@@ -3,7 +3,7 @@ title: Known issues in Azure Stack HCI 2306.5 Supplemental Package (preview)
 description: Read about the known issues in Azure Stack HCI 2306.5 Supplemental Package (preview).
 author: ronmiab
 ms.topic: conceptual
-ms.date: 12/14/2023
+ms.date: 12/18/2023
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -21,7 +21,7 @@ This article applies to Azure Stack HCI, Supplemental Package, for 2306.5 patch 
 
 For more information, see [What's new in 23H2](whats-new.md) and [What's in preview](./manage/whats-new-2306-5-preview.md).
 
-[!INCLUDE [important](../includes/hci-preview-2023.md)]
+[!INCLUDE [important](../includes/hci-preview-2306.md)]
 
 ## Known issues in this release
 

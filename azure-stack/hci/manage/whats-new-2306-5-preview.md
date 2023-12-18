@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/14/2023
+ms.date: 12/18/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2306.5 release (preview)
