@@ -77,11 +77,11 @@
             href: manage/azure-arc-vm-management-prerequisites.md
           - name: Assign RBAC role
             href: manage/assign-vm-rbac-roles.md
-          - name: Manage Arc VM resources
+          - name: Create Arc VM resources
             items:
-            - name: Create a storage path
+            - name: 1. Create a storage path
               href: manage/create-storage-path.md
-            - name: Create VM images
+            - name: 2. Create VM images
               items:
               - name: Using Azure Marketplace images
                 href: manage/virtual-machine-image-azure-marketplace.md
@@ -91,12 +91,14 @@
                 href: manage/virtual-machine-image-local-share.md
               - name: Using sysprepped Ubuntu image
                 href: manage/virtual-machine-image-linux-sysprep.md
-            - name: Create logical networks
+            - name: 3. Create logical networks
               href: manage/create-logical-networks.md
-            - name: Create network interfaces
+            - name: 4. Create network interfaces
               href: manage/create-network-interfaces.md
-          - name: Create Arc VMs
-            href: manage/create-arc-virtual-machines.md
+            - name: 5. Create Arc VMs
+              href: manage/create-arc-virtual-machines.md
+          - name: Manage Arc VM reources 
+            href: manage/manage-arc-virtual-machine-resources.md 
           - name: Manage VM extensions
             href: manage/virtual-machine-manage-extension.md
           - name: Troubleshoot
