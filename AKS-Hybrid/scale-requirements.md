@@ -48,10 +48,10 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
-| AKS hybrid control plane nodes  | Standard_A4_v2                         | 8 GB memory, 4 vcpu  |
-| AKS hybrid HA Proxy VM          | Standard_A4_v2. Cannot be changed.     | 8 GB memory, 4 vcpu  |
-| AKS hybrid Linux worker node    | Standard_K8S3_v1                       | 6 GB memory, 4 vcpu  |
-| AKS hybrid Windows worker node  | Standard_K8S3_v1                       | 6 GB memory, 4 vcpu  |
+| AKS hybrid control plane nodes  | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
+| AKS hybrid HA Proxy VM          | Standard_A4_v2. Cannot be changed.     | 8-GB memory, 4 vcpu  |
+| AKS hybrid Linux worker node    | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
+| AKS hybrid Windows worker node  | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 
 ## Supported values for virtual machine sizes
 
