@@ -64,7 +64,7 @@ Use the following steps to create a supplemental policy:
    New-CIPolicy -MultiplePolicyFormat -Level Publisher -FilePath c:\wdac\Contoso-policy.xml -UserPEs -Fallback Hash -ScanPath c:\software\codetoscan
    ```
 
-1. Modify the metadata of your supplemental policy.
+1. Run the following cmdlet to modify the metadata of your supplemental policy:
 
    ```powershell
    # Set Policy Version (VersionEx in the XML file)
@@ -75,13 +75,13 @@ Use the following steps to create a supplemental policy:
     Set-CIPolicyIdInfo -FilePath c:\wdac\Contoso-policy.xml -PolicyID "Contoso-Policy_$policyVersion" -PolicyName "Contoso-Policy"
    ```
 
-1. Deploy the policy.
+1. Run the following cmdlet to deploy the policy:
 
    ```powershell
    Add-ASWDACSupplementalPolicy -Path c:\wdac\Contoso-policy.xml
    ```
 
-1. To check the status of the new policy:
+1. Run the following cmdlet to check the status of the new policy:
 
    ```powershell
    Get-ASLocalWDACPolicyInfo
