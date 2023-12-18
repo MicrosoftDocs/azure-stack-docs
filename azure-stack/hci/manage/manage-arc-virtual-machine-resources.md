@@ -13,14 +13,14 @@ ms.date: 12/18/2023
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage VM resources such as disks, networks interfaces, cores or memory.  storage path for VM images used on your Azure Stack HCI cluster. Storage paths are an Azure resource and are used to provide a path to store VM configuration files, VM image, and VHDs on your cluster. You can create a storage path using the Azure CLI.
+This article describes how to manage VM resources such as disks and networks interfaces for an Azure Arc virutal machine (VM) running on your Azure Stack HCI system.  You can add or delete data disks and add or delete network interfaces using the Azure portal.
 
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Manage Arc VM resources
 
-Once the Arc VMs are deployed, you may need to manage the VMs. This would require adding data disks, network interafces, cores or memory to a VM, starting, stopping or restarting VMs.
+Once the Arc VMs are deployed, you may need to manage the VMs. This would require adding or deleting data disks, and adding or deleting network interafces.
   
 ## Prerequisites
 
