@@ -13,14 +13,14 @@ ms.date: 12/18/2023
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage VM resources such as disks and networks interfaces for an Azure Arc virutal machine (VM) running on your Azure Stack HCI system.  You can add or delete data disks and add or delete network interfaces using the Azure portal.
+This article describes how to manage VM resources such as disks and networks interfaces for an Azure Arc virtual machine (VM) running on your Azure Stack HCI system.  You can add or delete data disks and add or delete network interfaces using the Azure portal.
 
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Manage Arc VM resources
 
-Once the Arc VMs are deployed, you may need to manage the VMs. This would require adding or deleting data disks, and adding or deleting network interafces.
+Once the Arc VMs are deployed, you may need to manage the VMs. This would require adding or deleting data disks, and adding or deleting network interfaces.
   
 ## Prerequisites
 
@@ -60,7 +60,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. Go to Azure Stack HCI cluster resource and then go to **Virtual machines**.  
-1. FFrom the list of VMs in the right pane, select and go to the VM whose data disk you want to delete.
+1. From the list of VMs in the right pane, select and go to the VM whose data disk you want to delete.
 
     :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png" alt-text="Screenshot of delete icon selected for the data disk to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-data-disk-1.png":::
 
@@ -114,7 +114,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
 1. From the list of VMs in the right pane, select and go to the VM whose network interface you want to delete.
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png" alt-text="Screenshot of VM selected whose network interface you want to deelte." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png" alt-text="Screenshot of VM selected whose network interface you want to delete." lightbox="./media/manage-arc-virtual-machine-resources/delete-network-interface-1.png":::
 
 1. In the confirmation dialog, select **Yes** to continue.
 
