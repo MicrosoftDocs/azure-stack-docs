@@ -238,12 +238,15 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Stack HCI system, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Stack HCI system via Azure CLI, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
-The Arc VMs on Azure Stack HCI are Arc-enabled server can use this system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
+The Arc VMs on Azure Stack HCI are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
 For  more information, see [System-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
 
+> [!NOTE]
+> In the current release, for Arc VMs created via the Azure portal with guest management disabled, system-assigned managed identity is not created.
+> 
 ## Next steps
 
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
