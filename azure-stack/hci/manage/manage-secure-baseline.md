@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/11/2023
+ms.date: 12/18/2023
 ---
 
 # Manage baseline security settings for Azure Stack HCI, version 23H2 (preview)
@@ -75,7 +75,7 @@ The following table describes security settings that can be configured on your A
 
 ### PowerShell cmdlet properties
 
-The following cmdlet properties are for the *AzureStackOSConfigAgent* module.
+The following cmdlet properties are for the *AzureStackOSConfigAgent* module. The module is installed during deployment.
 
 - `Get-AzsSecurity`  -Scope: <Local | PerNode | AllNodes | Cluster>
 - `Enable-AzsSecurity`   -Scope <Local | Cluster>
