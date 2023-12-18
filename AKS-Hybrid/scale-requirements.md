@@ -69,7 +69,6 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 | Standard_K8S3_v1            | 4    | 6            | N/A       |                                       |
 | Standard_NK6                | 6    | 12           | Tesla T4  |                                       |
 | Standard_NK12               | 12   | 24           | Tesla T4  |                                       |
-| GPU rows for A2, A16, etc.  |      |              |           |                                       |
 
 ## Next steps
 
