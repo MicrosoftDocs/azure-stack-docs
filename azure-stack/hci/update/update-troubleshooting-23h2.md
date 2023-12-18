@@ -76,7 +76,7 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
 To resume an update run that previously failed using either the Azure portal or PowerShell, run the following command:
 
 ```powershell
-get-solutionupdate|start-solutionupdate
+get-solutionupdate | start-solutionupdate
 ```
 
 ## Next steps
