@@ -598,21 +598,11 @@
             href: manage/whats-new-2306-2-preview.md
           - name: 2306.1 release
             href: manage/whats-new-2306-1-preview.md
-        - name: 2303 release 
-          href: manage/whats-new-2303-preview.md
-        - name: 2303 updates
-          items:
-          - name: 2303.2 release
-            href: manage/whats-new-2303-2-preview.md 
-          - name: 2303.1 release
-            href: manage/whats-new-2303-1-preview.md  
-        - name: 2301 release 
-          href: manage/whats-new-2301-preview.md
-        - name: 2210 release
-          href: manage/whats-new-preview.md
       - name: View known issues
         items:
-        - name: 2306.4 update release - Current
+        - name: 2306.5 update release - Current
+          href: hci-known-issues-2306.5.md
+        - name: 2306.4 update release
           href: hci-known-issues-2306-4.md 
         - name: 2306.3 update release
           href: hci-known-issues-2306-3.md 
@@ -622,80 +612,7 @@
           href: hci-known-issues-2306-1.md 
         - name: 2306 release
           href: hci-known-issues-2306.md 
-        - name: 2303.2 update release
-          href: hci-known-issues-2303-2.md 
-        - name: 2303.1 update release
-          href: hci-known-issues-2303-1.md 
-        - name: 2303 release
-          href: hci-known-issues-2303.md
-        - name: 2301 release 
-          href: hci-known-issues-2301.md
-        - name: 2210 release
-          href: hci-known-issues.md
-      - name: Plan
+      - name: 22H2 Supplemental Package plan, deploy, and manage
         items:
-        - name: Review security
-          items: 
-          - name: Use Windows Defender Application Control 
-            href: concepts/security-windows-defender-application-control.md
-          - name: Review security baseline settings
-            href: concepts/secure-baseline.md
-          - name: Understand BitLocker encryption
-            href: concepts/security-bitlocker.md
-        - name: Assess environment readiness
-          href: manage/use-environment-checker.md
-      - name: Deploy 
-        items:
-        - name: Deployment overview
-          href: deploy/deployment-tool-introduction.md
-        - name: Review prerequisites
-          href: deploy/deployment-tool-prerequisites.md
-        - name: 0 - View deployment checklist
-          href: deploy/deployment-tool-checklist.md
-        - name: 1 - Prepare Active Directory
-          href: deploy/deployment-tool-active-directory.md
-        - name: 2 - Install OS
-          href: deploy/deployment-tool-install-os.md
-        - name: 3 - Set up the first server
-          href: deploy/deployment-tool-set-up-first-server.md
-        - name: 4 - Choose a deployment method
-          items:
-          - name: 4A - Deploy interactively
-            href: deploy/deployment-tool-new-file.md
-          - name: 4B - Deploy via config file
-            href: deploy/deployment-tool-existing-file.md
-          - name: 4C - Deploy via PowerShell
-            href: deploy/deployment-tool-powershell.md
-          - name: 4D - Deploy using non-native VLAN ID
-            href: deploy/deployment-tool-non-native-vlan.md
-          - name: 4E - Deploy virtual
-            href: deploy/virtual-cluster-deployment.md
-        - name: 5 - Validate deployment
-          href: deploy/deployment-tool-validate.md
-        - name: Collect logs 
-          href: manage/collect-logs.md
-      - name: Troubleshoot
-        items:
-        - name: Troubleshoot environment readiness
-          href: manage/troubleshoot-environment-validation-issues.md
-        - name: Troubleshoot deployment
-          href: deploy/deployment-tool-troubleshoot.md
-      - name: Update
-        items:
-        - name: What's the Lifecycle Manager?
-          href: update/whats-the-lifecycle-manager.md
-        - name: Use Lifecycle Manager for updates
-          href: update/update-azure-stack-hci-solution.md
-        - name: Understand update phases
-          href: update/update-phases.md
-        - name: Update via PowerShell
-          href: update/update-via-powershell.md
-        - name: Troubleshoot updates
-          href: update/update-troubleshooting.md
-      - name: Manage capacity
-        items:
-        - name: Add a server
-          href: manage/add-server.md
-        - name: Repair a server
-          href: manage/repair-server.md
-
+        - name: Deployment and management guide
+          href: https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf
