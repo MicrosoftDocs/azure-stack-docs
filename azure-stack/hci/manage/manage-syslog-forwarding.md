@@ -172,7 +172,7 @@ Each host has its own syslog forwarder agent that uses a local copy of the clust
 Get-AzSSyslogForwarder -PerNode 
 ```
 
-You can also use the following comdlet to verify the configuration on the host you are connected to:
+You can also use the following cmdlet to verify the configuration on the host you are connected to:
 
 ```powershell
 Get-AzSSyslogForwarder -Local

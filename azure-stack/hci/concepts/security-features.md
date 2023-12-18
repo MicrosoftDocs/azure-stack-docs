@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/14/2023
+ms.date: 12/18/2023
 ---
 
 # Security features for Azure Stack HCI, version 23H2 (preview)
@@ -46,7 +46,7 @@ Your Azure Stack HCI has more than 300 security settings enabled by default that
 
 You can monitor the security baseline and secured core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
 
-With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remetiation of any changes from the desired state. Continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
+With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
 Secure baseline on Azure Stack HCI:
 
@@ -65,7 +65,6 @@ We recommend that you store BitLocker recovery keys in a secure location outside
 For more information about BitLocker, see:
 
 - [Use BitLocker with Cluster Shared Volumes (CSV)](../manage/bitlocker-on-csv.md).
-- [Enable Bitlocker encryption on newly created volumes](#manage-bitlocker-encryption).
 - [BitLocker encryption on Azure Stack HCI (preview)](./security-bitlocker.md).
 
 ## Local built-in user accounts
@@ -93,7 +92,7 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> This action will take about 10 minutes, depending on the size of the cluster.  The operation requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote Powershell invocation or remote desktop protocol (RDP) connection.
+> This action will take about 10 minutes, depending on the size of the cluster.  The operation requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote PowerShell invocation or remote desktop protocol (RDP) connection.
 
 ## Syslog forwarding
 
