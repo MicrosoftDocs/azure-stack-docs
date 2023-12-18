@@ -92,20 +92,20 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. From the dropdown list, select a logical **Network** to associate with this network interface. 
     1. Choose the **IPv4 type** as **DHCP** or **Static**. 
   
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-2.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-2.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-2.png" alt-text="Screenshot of Add network interface with inputs provided for the new network interface for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-2.png":::
 
 1. **Apply** the changes to add the specified network interface. 
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png" alt-text="Screenshot of Apply option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-3.png":::
 
 1. You'll see a notification that the network interface creation job has started. Once the network interface is created, it is then attached to the Arc VM. 
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-4.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-4.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-4.png" alt-text="Screenshot of confirmation page for the new network interface creation in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-4.png":::
 
 1. The list of network interfaces is updated with the newly added network interface.
 
 
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-5.png" alt-text="Screenshot of + Add network interface option selected in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-5.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-network-interface-5.png" alt-text="Screenshot of newly refreshed network interface list in the Networking page for a VM." lightbox="./media/manage-arc-virtual-machine-resources/add-network-interface-5.png":::
 
 ## Delete a network interface
 
