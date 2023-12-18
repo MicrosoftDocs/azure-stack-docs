@@ -4,7 +4,7 @@ description: Learn how to troubleshoot solution updates applied to Azure Stack H
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2023
+ms.date: 12/18/2023
 ---
 
 # Troubleshoot solution updates for Azure Stack HCI, version 23H2 (preview)
@@ -71,6 +71,13 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
     PS C:\Users\lcmuser>notepad log.txt
     ```
 
+## Resume an update
+
+To resume an update run that previously failed using either the Azure portal or PowerShell, run the following command:
+
+```powershell
+get-solutionupdate|start-solutionupdate
+```
 
 ## Next steps
 
