@@ -71,7 +71,7 @@ To deploy a load balancer using Azure Arc extensions, set the `--load-balancer-c
 
 1. After the load balancer is successfully created, it's shown in the list as follows. **Provisioning state** shows the operation result:
 
-   :::image type="content" source="media/deploy-load-balancer/network-state.png" alt-text="Scrrenshot showing provisioning state on portal." lightbox="media/deploy-load-balancer/network-state.png":::
+   :::image type="content" source="media/deploy-load-balancer/network-state.png" alt-text="Screenshot showing provisioning state on portal." lightbox="media/deploy-load-balancer/network-state.png":::
 
 1. Go back to the Kubernetes cluster and check that the load balancer works. The load balancer automatically assigns an IP address to your load balancer type service, and then the service is reachable.
 
