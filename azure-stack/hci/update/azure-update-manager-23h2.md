@@ -147,7 +147,7 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
 
 ## Resume an update
 
-You can resume an update, if you see that a previous update run has failed. For more information, see [Resume an update](../update/update-troubleshooting-23h2.md#resume-an-update)
+You can resume an update run if you see that a previous run failed. For more information, see [Resume an update](../update/update-troubleshooting-23h2.md#resume-an-update)
 
 ## Next step
 
