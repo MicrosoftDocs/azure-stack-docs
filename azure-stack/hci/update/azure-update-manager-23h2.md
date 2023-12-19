@@ -145,10 +145,6 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
 
    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
-## Resume an update
+## Troubleshoot updates
 
-To resume a previously failed update run, see [Resume an update](../update/update-troubleshooting-23h2.md#resume-an-update).
-
-## Next step
-
-Learn more about how to [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+To resume a previously failed update run, see [Resume an update](../update/update-troubleshooting-23h2.md#resume-an-update). To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
