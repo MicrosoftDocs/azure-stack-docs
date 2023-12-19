@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/07/2023
+ms.date: 12/19/2023
 ---
 
 # Manage BitLocker encryption on Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable BitLocker encryption and to retrieve BitLocker recovery keys on your Azure Stack HCI system.
+This article describes how to enable BitLocker encryption and retrieve BitLocker recovery keys on your Azure Stack HCI system.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -24,7 +24,7 @@ This article describes how to enable BitLocker encryption and to retrieve BitLoc
 
 You can view, enable, and disable BitLocker encryption settings on your Azure Stack HCI cluster.
 
-## PowerShell cmdlet properties for `AzureStackBitLockerAgent` module
+## PowerShell cmdlet properties
 
 The following cmdlet properties are for BitLocker module: *AzureStackBitLockerAgent*.
 
@@ -52,12 +52,12 @@ Follow these steps to enable BitLocker encryption:
 
 1. Connect to your Azure Stack HCI node.
 
-1. Run the following PowerShell cmdlet signed in as a local administrator:
+1. Run the following PowerShell cmdlet using local administrator credentials:
 
    > [!IMPORTANT]
    > - Enabling BitLocker on volume type BootVolume requires TPM 2.0.
    >
-   > - While enabling BitLocker on volume type `ClusterSharedVolume` (CSV), the volume will be put in redirected mode and any workload VMs will be paused for a short time. This operation is disruptive; plan accordingly. For more information, see [Redirected mode on cluster shared volume]().
+   > - While enabling BitLocker on volume type `ClusterSharedVolume` (CSV), the volume will be put in redirected mode and any workload VMs will be paused for a short time. This operation is disruptive; plan accordingly. For more information, see [How to configure BitLocker encrypted clustered disks in Windows Server 2012](https://techcommunity.microsoft.com/t5/failover-clustering/how-to-configure-bitlocker-encrypted-clustered-disks-in-windows/ba-p/371825).
 
     ```PowerShell
     Enable-ASBitLocker
@@ -67,7 +67,7 @@ Follow these steps to disable BitLocker encryption:
 
 1. Connect to your Azure Stack HCI node.
 
-1. Run the following PowerShell cmdlet signed in as a local administrator:
+1. Run the following PowerShell cmdlet using local administrator credentials:
 
     ```PowerShell
     Disable-ASBitLocker
