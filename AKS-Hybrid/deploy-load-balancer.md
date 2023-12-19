@@ -2,7 +2,7 @@
 title: Deploy a load balancer in AKS Arc (preview)
 description: Learn how to deploy a load balancer in AKS enabled by Arc.
 ms.topic: how-to
-ms.date: 12/18/2023
+ms.date: 12/19/2023
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -45,20 +45,20 @@ This option deploys a virtual machine running **HAProxy + KeepAlive** to provide
 
 ## Deploy a load balancer using Azure Arc extension
 
-This option assumes you want to leverage Arc extensions to deploy MetalLB as a load balancer for your Kubernetes cluster. In this case, your cluster is created without a load balancer. Then, go to the Azure portal and install MetalLB.
+This option assumes that you want to use Arc extensions to deploy MetalLB as a load balancer for your Kubernetes cluster. In this case, your cluster is created without a load balancer. Then, go to the Azure portal and install MetalLB.
 
 > [!WARNING]
 > IP conflict checking is not currently supported. It's recommended that you perform this check when you create load balancers.
 
-To deploy a load balancer using Azure Arc extensions, set the `–load-balancer-count` flag to `0` during cluster creation:
+To deploy a load balancer using Azure Arc extensions, set the `--load-balancer-count` flag to `0` during cluster creation:
 
-1. Create a Kubernetes cluster and set `–load-balancer-count` to `0`:
+1. Create a Kubernetes cluster and set `--load-balancer-count` to `0`:
 
    ```azurecli
    az akshybrid create -n <cluster name> -g <resource group> --custom-location <custom location ID> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count 0
    ```
 
-1. After your Kubernetes cluster is successfully created, navigate to the **Networking** blade in the Azure portal and select **Install** as shown in this image:
+1. After your Kubernetes cluster is successfully created, navigate to the **Networking** blade in the Azure portal and select **Install**:
 
    :::image type="content" source="media/deploy-load-balancer/install-extension.png" alt-text="Screenshot showing extension install screen on portal." lightbox="media/deploy-load-balancer/install-extension.png":::
 
@@ -66,8 +66,8 @@ To deploy a load balancer using Azure Arc extensions, set the `–load-balancer-
 
    :::image type="content" source="media/deploy-load-balancer/create-load-balancer.png" alt-text="Screenshot showing create load balancer on portal." lightbox="media/deploy-load-balancer/create-load-balancer.png":::
 
-   - The IP range should be set to available IPs depending on your environment. The IP range should be in CIDR notation, for example, **192.168.50.51/32** or **192.168.50.51/32,192.168.50.52/32**. Multiple IPs must be separated by commas.
-   - **Selector** is optional. Null value means the load balancer works for all services. **Selector** should be in a format such as **a:b,c:d**, separated by a comma. Remember to replace **=** with **:** for the **a=b** label in the Kubernetes cluster.
+   - The IP range should be set to available IPs depending on your environment. The IP range should be in CIDR notation; for example, **192.168.50.51/32** or **192.168.50.51/32,192.168.50.52/32**. Multiple IPs must be separated by commas.
+   - **Selector** is optional. A Null value means the load balancer works for all services. **Selector** should be in a format such as **a:b,c:d**, separated by a comma. Remember to replace **=** with **:** for the **a=b** label in the Kubernetes cluster.
 
 1. After the load balancer is successfully created, it's shown in the list as follows. **Provisioning state** shows the operation result.
 
