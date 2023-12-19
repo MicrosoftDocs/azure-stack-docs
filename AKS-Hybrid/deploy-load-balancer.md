@@ -45,7 +45,7 @@ This option deploys a virtual machine running **HAProxy + KeepAlive** to provide
 
 ## Deploy a load balancer using Azure Arc extension
 
-This option assumes that you want to use Arc extensions to deploy MetalLB as a load balancer for your Kubernetes cluster. In this case, your cluster is created without a load balancer. Then, go to the Azure portal and install MetalLB.
+This option assumes that you want to use Arc extensions to deploy MetalLB as a load balancer for your Kubernetes cluster. In this case, you create your cluster without a load balancer. Then, go to the Azure portal and install MetalLB.
 
 > [!WARNING]
 > IP conflict checking is not currently supported. It's recommended that you perform this check when you create load balancers.
@@ -69,7 +69,7 @@ To deploy a load balancer using Azure Arc extensions, set the `--load-balancer-c
    - The IP range should be set to available IPs depending on your environment. The IP range should be in CIDR notation; for example, **192.168.50.51/32** or **192.168.50.51/32,192.168.50.52/32**. Multiple IPs must be separated by commas.
    - **Selector** is optional. A Null value means the load balancer works for all services. **Selector** should be in a format such as **a:b,c:d**, separated by a comma. Remember to replace **=** with **:** for the **a=b** label in the Kubernetes cluster.
 
-1. After the load balancer is successfully created, it's shown in the list as follows. **Provisioning state** shows the operation result.
+1. After the load balancer is successfully created, it's shown in the list as follows. **Provisioning state** shows the operation result:
 
    :::image type="content" source="media/deploy-load-balancer/network-state.png" alt-text="Scrrenshot showing provisioning state on portal." lightbox="media/deploy-load-balancer/network-state.png":::
 
@@ -81,7 +81,7 @@ To deploy a load balancer using Azure Arc extensions, set the `--load-balancer-c
 
 To clean up resources, do the following:
 
-1. When one of the load balancers is no longer needed, check the start of the row for the load balancer and select **Delete**. Then select **Yes**.
+1. When one of the load balancers is no longer needed, select the start of the row for the load balancer and select **Delete**. Then select **Yes**.
 1. When the load balancer service is no longer needed, delete all existing load balancers and then select **Uninstall**. Select **Yes** to uninstall the extension.
 
 ## Bring your own load balancer
