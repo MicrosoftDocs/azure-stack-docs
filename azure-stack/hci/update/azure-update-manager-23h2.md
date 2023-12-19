@@ -144,3 +144,11 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
     [![Review and install one-time cluster update in Azure Update Manager.](./media/azure-update-manager/review-plus-install-2.png)](media/azure-update-manager/review-plus-install-2.png#lightbox)
 
    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
+
+## Resume an update
+
+You can resume an update, if you see that a previous update run has failed. For more information, see [Resume an update](../update/update-troubleshooting-23h2.md#resume-an-update)
+
+## Next step
+
+Learn more about how to [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
