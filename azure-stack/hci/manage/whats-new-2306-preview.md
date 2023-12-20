@@ -18,7 +18,7 @@ This article describes the new features or enhancements that are currently avail
 - [What's in the preview channel](#azure-stack-hci-preview-channel).
 - [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-2306-supplemental-package-preview).
 
-To plan, deploy, and manage your Azure Stack HCI 22H2 Supplemental Package, see [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
+To plan, deploy, and manage your Azure Stack HCI, Supplemental Package, see [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
 
 ## Azure Stack HCI preview channel
 
