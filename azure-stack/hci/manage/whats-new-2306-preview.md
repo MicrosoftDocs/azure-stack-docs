@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/30/2023
+ms.date: 12/20/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2306 release (preview)
@@ -17,6 +17,8 @@ This article describes the new features or enhancements that are currently avail
 
 - [What's in the preview channel](#azure-stack-hci-preview-channel).
 - [What's in the Azure Stack HCI, Supplemental Package](#azure-stack-hci-2306-supplemental-package-preview).
+
+To plan, deploy, and manage your 22H2 Supplemental Package, see [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
 
 ## Azure Stack HCI preview channel
 
