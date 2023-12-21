@@ -26,14 +26,14 @@ For an AKS failover cluster with 2 or more physical nodes to function optimally 
 > [!NOTE]
 > Active Directory is not required for single node Azure Stack HCI or Windows Server deployments.
 
-- Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information on setting time synchronization, see [Windows time service](/windows-server/networking/windows-time-service/windows-time-service-top).
-- Make sure the user account(s) used to add update, and manage AKS or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) will require list, read, modify, and delete permissions on all objects in the OU.
+- Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information about setting time synchronization, see [Windows time service](/windows-server/networking/windows-time-service/windows-time-service-top).
+- Make sure the user account(s) used to add update, and manage AKS or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) require list, read, modify, and delete permissions on all objects in the OU.
 - Use a separate organizational unit (OU) for the servers and services by your AKS or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
 - If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI and Windows Server is exempt from the policy.
 
 ## Hardware requirements
 
-Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
+Microsoft recommends purchasing a validated Azure Stack HCI hardware/software solution from our partners. These solutions are designed, assembled, and validated to run our reference architecture and to check compatibility and reliability so you get up and running quickly. You should check that the systems, components, devices, and drivers you're using are Windows Server Certified per the Windows Server Catalog. See the [Azure Stack HCI solutions](https://azure.microsoft.com/overview/azure-stack/hci) website for validated solutions.
 
 > [!IMPORTANT]
 > The host systems for production deployments must be physical hardware. Nested virtualization, characterized as deploying Azure Stack HCI or Windows Server in a virtual machine and installing AKS in that virtual machine, isn't supported.
@@ -90,7 +90,7 @@ For an Azure Stack HCI or Windows Server cluster, there are two supported storag
 - **Hybrid storage** balances performance and capacity using flash storage and hard disk drives (HDDs).
 - **All-flash storage** maximizes performance using solid-state drives (SSDs) or NVMe.
 
-Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. For more information about the recommended drive configurations, see the [Azure Stack HCI documentation](/azure-stack/hci/concepts/choose-drives). All systems that have been validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of these two supported storage configurations.
+Systems that only have HDD-based storage aren't supported by Azure Stack HCI, and thus aren't recommended for running AKS on Azure Stack HCI and Windows Server. For more information about the recommended drive configurations, see the [Azure Stack HCI documentation](/azure-stack/hci/concepts/choose-drives). All systems that are validated in the [Azure Stack HCI catalog](https://hcicatalog.azurewebsites.net/#/) fall into one of these two supported storage configurations.
 
 Kubernetes uses *etcd* to store the state of the clusters. Etcd stores the configuration, specifications, and status of running pods. In addition, Kubernetes uses the store for service discovery. As a coordinating component to the operation of Kubernetes and the workloads it supports, latency and throughput to etcd are critical. You must run AKS on an SSD. For more information, see [Performance](https://etcd.io/docs/v3.2/op-guide/performance/) at etcd.io.
 
@@ -138,7 +138,7 @@ Additionally, you should reserve the following number of IP addresses for your V
 
 As you can see, the number of required IP addresses is variable depending on the AKS architecture and the number of services you run on your Kubernetes cluster. We recommend reserving a total of 256 IP addresses (/24 subnet) for your deployment.
 
-For more information about networking requirements, visit [node networking concepts in AKS](./concepts-node-networking.md) and [container networking concepts in AKS](./concepts-container-networking.md).
+For more information about networking requirements, see [node networking concepts in AKS](./concepts-node-networking.md) and [container networking concepts in AKS](./concepts-container-networking.md).
 
 ### Network port and URL requirements
 
@@ -181,7 +181,7 @@ Download the [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftD
 
 #### Additional URL requirements for Azure Arc features
 
-The previous URL list covers the minimum required URLs for you to connect your AKS service to Azure for billing. You must allow additional URLs if you want to use cluster connect, custom locations, Azure RBAC, and other Azure services like Azure Monitor, etc., on your AKS workload cluster. For a complete list of Arc URLs, visit [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements).
+The previous URL list covers the minimum required URLs for you to connect your AKS service to Azure for billing. You must allow additional URLs if you want to use cluster connect, custom locations, Azure RBAC, and other Azure services like Azure Monitor, etc., on your AKS workload cluster. For a complete list of Arc URLs, see [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements).
 
 You should also review [Azure Stack HCI URLs](/azure-stack/hci/concepts/firewall-requirements). Since Arc for server agents is now installed by default on Azure Stack HCI nodes from Azure Stack HCI 21H2 and above, you should also review the [Arc for server agents URLs](/azure/azure-arc/servers/network-requirements).
 

@@ -40,13 +40,13 @@ The recommended limits were tested with the default virtual machine (VM) sizes, 
 
 The hardware configuration of each physical node in the Azure Stack HCI cluster is as follows:
 
-- Chassis: Dell PowerEdge R650 Server or similar
-- RAM: RDIMM, 3200MT/s, Dual Rank, total of 256 GB
-- CPU: Two (2) Intel Xeon Silver 4316 2.3G, 20C/40T, 10.4GT/s, 30M Cache, Turbo, HT (150 W) DDR4-2666
-- Disk: 8x HDDs (2 TB or larger) and 2x 1.6TB NVMe to support S2D storage configurations
-- Network: Four (4) 100-Gbit NICs (Mellanox or Intel)
+- Chassis: Dell PowerEdge R650 Server or similar.
+- RAM: RDIMM, 3200 MT/s, Dual Rank, total of 256 GB.
+- CPU: Two (2) Intel Xeon Silver 4316 2.3G, 20C/40T, 10.4 GT/s, 30M Cache, Turbo, HT (150 W) DDR4-2666.
+- Disk: 8x HDDs (2 TB or larger) and 2x 1.6 TB NVMe to support S2D storage configurations.
+- Network: Four (4) 100-Gbit NICs (Mellanox or Intel).
 
-Microsoft engineering has tested AKS hybrid using the above configuration. For single node. 2 node, 4 node and 8 node Windows failover clusters. If you have a requirement to exceed the tested configuration, see [Scaling AKS on Azure Stack HCI](#scaling-aks-on-azure-stack-hci).
+Microsoft engineering tested AKS hybrid using the above configuration. For single node. 2 node, 4 node and 8 node Windows failover clusters. If you have a requirement to exceed the tested configuration, see [Scaling AKS on Azure Stack HCI](#scaling-aks-on-azure-stack-hci).
 
 > [!IMPORTANT]  
 > When you upgrade a deployment of AKS, extra resources are temporarily consumed.
@@ -141,9 +141,9 @@ kubectl get nodes -o json | findstr 'hostname podCIDR'
 
 In the example, you can see three nodes with three CIDRs, each capable of hosting 254 pods. The Kubernetes scale documentation recommends that you don't exceed 110 pods per node for performance reasons. See [Considerations for large clusters](https://kubernetes.io/docs/setup/best-practices/cluster-large/).
 
-Additional considerations:
+Other considerations:
 
-- The number of IP addresses for Kubernetes services, outside the VIP pool you've allocated, come from the `10.96.0.0/16` address pool. The system consumes one of the 255 available addresses for the Kubernetes API server.
+- The number of IP addresses for Kubernetes services, outside the VIP pool you allocated, come from the `10.96.0.0/16` address pool. The system consumes one of the 255 available addresses for the Kubernetes API server.
 - The size of the AKS host VM can only be set at installation, when you run **Set-AksHciConfig** for the first time. You can't change it later.
 - You can only set the size of target cluster control plane and load balancer VMs at the time of target cluster creation.
 
@@ -158,7 +158,7 @@ The following scaling example is based on these general assumptions/use cases:
 
 #### Suggestions
 
-- For optimal performance, make sure to set at least 15 percent (100/8=12.5) of cluster capacity aside to allow all resources from one physical node to be re-distributed to the other seven (7) nodes. This configuration ensures that you have some reserve available to do an upgrade or other AKS day two operations.
+- For optimal performance, make sure to set at least 15 percent (100/8=12.5) of cluster capacity aside to allow all resources from one physical node to be redistributed to the other seven (7) nodes. This configuration ensures that you have some reserve available to do an upgrade or other AKS day two operations.
 
 - If you want to grow beyond the 200-VM limit for a maximum hardware sized eight (8) node Azure Stack HCI cluster, increase the size of the AKS host VM. Doubling in size results in roughly double the number of VMs it can manage. In an 8-node Azure Stack HCI cluster, you can get to 8,192 (8x1024) VMs based on the Azure Stack HCI recommended resource limits documented in the [Maximum supported hardware specifications](/azure-stack/hci/concepts/system-requirements#maximum-supported-hardware-specifications). You should reserve approximately 30% of capacity, which leaves you with a theoretical limit of 5,734 VMs across all nodes.
 
