@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 01/19/2023
+ms.date: 12/21/2023
 ms.reviewer: abha
 ms.lastreviewed: 05/02/2022
 
@@ -31,7 +31,7 @@ Follow these steps on all nodes in your Azure Stack HCI cluster or Windows Serve
 
    You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Do not continue to the next step until you have closed all open PowerShell windows.
 
-You can use a [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aks-hci/issues/130), to avoid any PowerShell version-related issues in your AKS deployment.
+You can use a [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130), to avoid any PowerShell version-related issues in your AKS deployment.
 
 ### Validate your installation
 
