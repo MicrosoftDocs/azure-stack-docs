@@ -70,7 +70,8 @@ deployment. Ensure that these are allowed in your firewall configuration:
 | `https://*.servicebus.windows.net` | 443 | Cluster connect | Used to securely connect to Azure Arc-enabled Kubernetes clusters without requiring any inbound port to be enabled on the firewall. |
 | `https://guestnotificationservice.azure.com` | 443 | Notification service | Used for guest notification operations. |
 | `https://*.dp.prod.appliances.azure.com` | 443 | Data plane service | Used for data plane operations for Resource bridge (appliance). |
-| `https://ecpacr.azurecr.io` | 443 | Download agent | Used to download Resource bridge (appliance) container images. |
+| `*.data.mcr.microsoft.com`<br> `azurearcfork8s.azurecr.io`<br> `linuxgeneva-microsoft.azurecr.io`<br> `pipelineagent.azurecr.io`<br> `ecpacr.azurecr.io` | 443 | Download agent | Used to download images and agents. |
+| `*.prod.microsoftmetrics.com`<br> `*.prod.hot.ingestion.msftcloudes.com`<br> `dc.services.visualstudio.com`<br> `*.prod.warm.ingest.monitor.core.windows.net`<br> `gcs.prod.monitoring.core.windows.net` | 443 | Metrics and health monitoring | Used for metrics and monitoring telemetry traffic. |
 | `*.blob.core.windows.net`<br> `*.dl.delivery.mp.microsoft.com` <br> `*.do.dsp.mp.microsoft.com` | 443 | TCP | Used to download Resource bridge (appliance) images. |
 | `https://azurearcfork8sdev.azurecr.io` | 443 | Kubernetes | Used to download Azure Arc for Kubernetes container images. |
 | `https://adhs.events.data.microsoft.com` | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which means any Kubernetes control plane. |
@@ -80,6 +81,13 @@ deployment. Ensure that these are allowed in your firewall configuration:
 | `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
 | `aka.ms` | 443 | az extensions | Required to download Az CLI extensions such as akshybrid and connectedk8s. |
+| `*.login.microsoft.com` | 443 | Azure	| Required to fetch and update Azure Resource Manager tokens. |
+| `sts.windows.net` | 443 | Azure Arc |	For Cluster Connect and Custom Location based scenario. |
+| `hybridaksstorage.z13.web.core.windows.net` |	443 | Azure Stack HCI |	AKSHCI static website hosted in Azure Storage. |
+| `raw.githubusercontent.com` |	443 | Github | used for Github. |
+| `www.microsoft.com` |	80 | Microsoft Offical Website | Microsoft Offical Website. |
+| `*.prod.do.dsp.mp.microsoft.com` | 443 | Microsoft Update | Resource bridge (appliance) image download. |
+| `files.pythonhosted.org` | 443 | Python package | Python package |
 
 ## Next steps
 
