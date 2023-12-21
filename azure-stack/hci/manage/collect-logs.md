@@ -268,4 +268,4 @@ Follow these steps to share logs with Microsoft via Windows Admin Center in the 
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI](../../hci/hci-known-issues.md)
+- [Review known issues in Azure Stack HCI](../../hci/hci-known-issues-2306.md)
