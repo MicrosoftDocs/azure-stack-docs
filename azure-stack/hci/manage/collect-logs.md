@@ -23,19 +23,19 @@ Use the `Send-DiagnosticData` cmdlet from any node on the Azure Stack HCI cluste
 
 ### When to use on-demand log collection
 
-Here's a list of scenarios in which you can perform on-demand log collection:
+Here are the scenarios in which you can perform on-demand log collection:
 
-- Microsoft Support asking for logs based on a case that is open.
-- Logs collected when a cluster is connected and registered.
-- Logs collected when the Observability components are working and installed.
-- Logs collected when a cluster is only partly registered.
-- Logs collected not related to registration failures.
+- Microsoft Support requests for logs based on an open case.
+- Logs are collected when a cluster is connected and registered.
+- Logs are collected when the Observability components are operational and installed.
+- Logs are collected when a cluster is only partly registered.
+- Logs are collected for issues not related to registration failures.
 
 To explore additional log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ## Prerequisites
 
-Before you collect logs on-demand, you must complete the following prerequisites:
+Before you collect on-demand logs, you must complete the following prerequisites:
 
 - You must have access to an Azure Stack HCI cluster.
 - You must have access to Azure.
@@ -43,7 +43,7 @@ Before you collect logs on-demand, you must complete the following prerequisites
 
 ## Perform on-demand log collection
 
-You can collect on-demand logs using PowerShell or Windows Admin Center.
+You can collect on-demand logs using PowerShell or Windows Admin Center in the Azure portal.
 
 # [PowerShell](#tab/power-shell)
 
