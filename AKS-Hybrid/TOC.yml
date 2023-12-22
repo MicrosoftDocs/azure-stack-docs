@@ -57,7 +57,7 @@
     - name: Azure CLI
       href: /cli/azure/akshybrid
     - name: REST API reference
-      href: /rest/api/hybridcontainer/operation-groups?view=rest-hybridcontainer-2023-11-15-preview
+      href: /rest/api/hybridcontainer/operation-groups?view=rest-hybridcontainer-2023-11-15-preview&preserve-view=true
 - name: Quickstarts
   expanded: true
   items:
