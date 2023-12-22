@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 01/19/2023
+ms.date: 12/21/2023
 ms.reviewer: abha
 ms.lastreviewed: 05/02/2022
 
@@ -21,7 +21,7 @@ Follow these steps on all nodes in your Azure Stack HCI cluster or Windows Serve
    Install-Module -Name PowershellGet -Force -Confirm:$false
    ```
 
-   You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Do not continue to the next step until you have closed all open PowerShell windows.
+   You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Don't continue to the next step until you close all open PowerShell windows.
 
 1. Install the AKS-HCI PowerShell module by running the following command on all nodes in your Azure Stack HCI or Windows Server cluster:
 
@@ -29,9 +29,9 @@ Follow these steps on all nodes in your Azure Stack HCI cluster or Windows Serve
    Install-Module -Name AksHci -Repository PSGallery -Force -AcceptLicense
    ```
 
-   You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Do not continue to the next step until you have closed all open PowerShell windows.
+   You must close all existing PowerShell windows again to ensure that loaded modules are refreshed. Don't continue to the next step until you close all open PowerShell windows.
 
-You can use a [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aks-hci/issues/130), to avoid any PowerShell version-related issues in your AKS deployment.
+You can use a [helper script to delete old AKS-HCI PowerShell modules](https://github.com/Azure/aksArc/issues/130), to avoid any PowerShell version-related issues in your AKS deployment.
 
 ### Validate your installation
 

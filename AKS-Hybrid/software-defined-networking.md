@@ -146,7 +146,7 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS hybrid. 
 
 ### Sign in to Azure and configure registration settings
 
-Follow [the instructions here](kubernetes-walkthrough-powershell.md#step-4-log-in-to-azure-and-configure-registration-settings) to configure registration settings.
+Follow [the instructions here](kubernetes-walkthrough-powershell.md#step-4-sign-in-to-azure-and-configure-registration-settings) to configure registration settings.
 
 > [!NOTE]
 > If you don't have owner permissions, it's recommended that you use an [Azure service principal][].

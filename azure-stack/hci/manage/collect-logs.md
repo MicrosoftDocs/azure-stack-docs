@@ -11,7 +11,7 @@ ms.date: 09/20/2023
 
 # Collect diagnostic logs
 
-> Applies to: Azure Stack HCI, Supplemental Package; Azure Stack HCI, version 23H2 (preview)
+> Applies to: Azure Stack HCI, version 23H2 (preview)
 
 This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
 
@@ -164,4 +164,4 @@ Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <Path to the 
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI](../../hci/hci-known-issues.md)
+- [Review known issues in Azure Stack HCI](../../hci/hci-known-issues-2306.md)
