@@ -19,7 +19,7 @@ The release notes are continuously updated, and as critical issues requiring a w
 
 This article applies to Azure Stack HCI, Supplemental Package, for 2306.5 patch update release. This release maps to software version number **10.2306.5.8**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later.
 
-For more information, see [What's new in 23H2](whats-new.md) and [What's in preview](./manage/whats-new-2306-5-preview.md).
+For more information, see [What's new in 22H2](whats-new-in-hci-22h2.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2306-preview.md).
 
 [!INCLUDE [important](../includes/hci-preview-2306.md)]
 

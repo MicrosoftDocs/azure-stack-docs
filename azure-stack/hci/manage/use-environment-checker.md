@@ -545,9 +545,9 @@ Get-Module AzStackHci.EnvironmentChecker -ListAvailable | Where-Object {$_.Path 
 
 ## Troubleshoot environment validation issues
 
-For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment or pre-registration, see [Troubleshoot environment validation issues](./troubleshoot-environment-validation-issues.md).
+For information about how to get support from Microsoft to troubleshoot any validation issues that may arise during cluster deployment or pre-registration, see [Get support for deployment issues](./get-support-for-deployment-issues.md).
 
 ## Next steps
 
-- [Review the deployment checklist](../deploy/deployment-tool-checklist.md).
+- [Review the deployment checklist](../deploy/deployment-checklist.md).
 - [Contact Microsoft Support](get-support.md).

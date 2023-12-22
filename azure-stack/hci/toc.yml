@@ -137,6 +137,8 @@
           href: manage/monitor-features.md
     - name: Troubleshoot
       items:
+      - name: Collect logs
+        href: manage/collect-logs.md
       - name: Get support for deployment issues
         href: manage/get-support-for-deployment-issues.md
     - name: Concepts
