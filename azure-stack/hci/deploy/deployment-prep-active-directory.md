@@ -23,6 +23,15 @@ Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
 - Complete the [deployment checklist](./deployment-checklist.md).
+- Install Remote Server Administration tools :
+    - Active Directory Services and Lightweight Directory Services
+      ```powershell
+      Enable-WindowsOptionalFeature -Online -FeatureName "RSAT-AD-Tools-Feature"
+      ```
+    - DNS Server Tools
+      ```powershell
+      Enable-WindowsOptionalFeature -Online -FeatureName "DNS-Server-Tools"
+      ```
 - Install the PowerShell module to prepare Active Directory. You can follow one of these options:
     - [Download AsHciADArtifactsPreCreationTool.psm1 from this location](https://github.com/Azure/AzureStack-Tools/tree/master/HCI). Run the following command:
     
