@@ -17,7 +17,7 @@ ms.custom: mode-portal
 
 After you set up your Azure Kubernetes Service (AKS) host, you can use Windows Admin Center to create a local Kubernetes cluster. To use PowerShell instead, see [Create a Kubernetes cluster with PowerShell](kubernetes-walkthrough-powershell.md).
 
-Before you proceed to the **Create Kubernetes cluster** wizard, make sure you [set up Azure Kubernetes Service](setup.md) and checked the [system requirements](system-requirements.md). You can access the wizard through the Azure Kubernetes Service host dashboard, as described in the next section.
+Before you proceed to the **Create Kubernetes cluster** wizard, make sure you [set up Azure Kubernetes Service](setup.md) and check the [system requirements](system-requirements.md). You can access the wizard through the Azure Kubernetes Service host dashboard, as described in the next section.
 
 ## Create a local Kubernetes cluster in the AKS host dashboard
 
