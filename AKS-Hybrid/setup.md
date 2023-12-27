@@ -22,7 +22,7 @@ Setup involves the following tasks:
 * Set up Windows Admin Center.
 * Set up an Azure Kubernetes Service host on the system to which you want to deploy the Kubernetes cluster.
 
-Before getting started, make sure you've satisfied all the prerequisites on the [system requirements](.\system-requirements.md) page.
+Before getting started, make sure you satisfy all the prerequisites on the [system requirements](.\system-requirements.md) page.
 
 ## Set up Windows Admin Center
 
@@ -41,14 +41,14 @@ You must set up an AKS host on your Kubernetes cluster before deploying AKS work
 
 This setup can be done using the new Azure Kubernetes Service tool. This tool installs and downloads the necessary packages, as well as create an AKS host cluster that provides core Kubernetes services and orchestrates application workloads.
 
-Now that you've verified the system settings, follow these steps:
+Now that you verified the system settings, follow these steps:
 
 1. Select **Set up** to launch the Setup wizard.
 
 1. Review the prerequisites for the machine on which you're running Windows Admin Center, on the cluster to which you're connected, and the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using has not expired. You must have the **Owner** role on the subscription you are planning on using. When you're finished, select **Next**.
 
    > [!WARNING]
-   > Make sure you have configured at least one external virtual switch before proceeding past this step, or you will not be able to successfully set up your AKS host.
+   > Make sure you configure at least one external virtual switch before proceeding past this step, or you won't be able to successfully set up your AKS host.
 
 1. On the **System checks** page of the wizard, take any required actions, such as [connecting your Windows Admin Center gateway to Azure](/windows-server/manage/windows-admin-center/azure/azure-integration). When connecting your Windows Admin Center gateway to Azure, be sure to create a new Microsoft Entra application. This step checks that Windows Admin Center and the system that hosts AKS have the proper configuration to continue. When you're finished taking action, select **Next**.
 
@@ -59,13 +59,13 @@ Now that you've verified the system settings, follow these steps:
    * **Kubernetes node networking**, which serves as the default for the AKS host and all Linux and Windows Kubernetes nodes VMs that are created to run containers and orchestrate container management.
 
        You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet-connected virtual switch, virtual LAN identification enablement, IP address allocation method, and CloudAgent IP.
-       You can use the CloudAgent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you have selected the static IP address allocation method, there are a few extra fields that must be specified:
+       You can use the CloudAgent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you select the static IP address allocation method, there are a few extra fields that must be specified:
       * **Subnet prefix**, an IP address range that does not conflict with other addresses.
-      * **Gateway**, the gateway through which packets will be routed outside the machine.
+      * **Gateway**, the gateway through which packets are routed outside the machine.
       * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses.
       * **Kubernetes node IP pool start**, the pool start range for IP addresses used by Kubernetes clusters.
       * **Kubernetes node IP pool end**, the pool end range for IP addresses used by Kubernetes clusters.
-      * **Load balancer settings**, which define the pool of addresses used for external services. If you have selected the static IP configuration in the VM networking section, the address pool start and end must be within the subnet range specified in that section.
+      * **Load balancer settings**, which define the pool of addresses used for external services. If you select the static IP configuration in the VM networking section, the address pool start and end must be within the subnet range specified in that section.
 
    The following image shows an example of a DHCP host configuration:
 
@@ -83,7 +83,7 @@ Now that you've verified the system settings, follow these steps:
 
 1. On the **Azure Registration** page of the wizard, provide details about the subscription, resource group, and region you want to use for this service. Your resource group must be in the Australia East, East US, Southeast Asia, or West Europe region.  
 
-   Windows Admin Center requires permissions to access resources in your organization that only an admin can grant. Select **View in Azure** to view your Windows Admin Center gateway in Azure and confirm you have been granted admin consent for the following services:
+   Windows Admin Center requires permissions to access resources in your organization that only an admin can grant. Select **View in Azure** to view your Windows Admin Center gateway in Azure and confirm you were granted admin consent for the following services:
 
    * Azure Service Management: user_impersonation
    * Microsoft Graph: Application.ReadWrite.All
