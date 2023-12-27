@@ -127,7 +127,7 @@
             href: manage/add-server.md
           - name: Repair a server
             href: manage/repair-server.md
-        - name: SDN across multi sites
+        - name: SDN Multisite
           href: manage/manage-sdn-multisite.md 
 
     - name: Monitor

@@ -1,17 +1,17 @@
 ---
-title: Manage SDN Multisite in Azure Stack HCI (preview)
-description: Learn how to manage a multisite SDN solution in Azure Stack HCI (preview)
+title: Manage SDN Multisite for Azure Stack HCI (preview)
+description: Learn how to manage a multisite SDN solution for Azure Stack HCI (preview)
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 12/22/2023
 ---
 
-# Manage SDN Multisite in Azure Stack HCI
+# Manage SDN Multisite for Azure Stack HCI
 
-> Applies to: Azure Stach HCI, version 23H2 (preview)
+> Applies to: Azure Stack HCI, version 23H2 (preview)
 
-This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution in Azure Stack HCI using Windows Admin Center.
+This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution for Azure Stack HCI using Windows Admin Center.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -37,11 +37,20 @@ The SDN Multisite feature currently has a few limitations:
 - Sites must be connected over a private network, as encryption support for sites connected over the internet isn't provided.
 - Internal load balancing isn't supported.
 
-## Prerequisites
+## Enable SDN Multisite
+
+Here's a high-level workflow for enabling SDN Multisite:
+
+- Meet prerequisites. See [Prerequisites](#prerequisites).
+- Understand resource synchronization. See [Understand resource synchronization](#understand-resource-synchronization).
+- Establish peering. See [Establish peering](#establish-peering).
+- Check peering status. See [Check peering status](#check-peering-status).
+
+### Prerequisites
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
-- There must be underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
+- There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
 - Your firewall configuration must permit TCP port 49001 for cross-cluster communication.
 
@@ -49,17 +58,37 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 - SDN must be installed on both sites separately, using [Windows Admin Center](../deploy/sdn-wizard.md) or [SDN Express scripts](./sdn-express.md). This is required so that SDN components, such as Network Controller VMs, Software Load Balancer Multiplexor VMs, and SDN Gateway VMs are unique to each site.
 
-- One of the two sites must not have any virtual networks, NSGs, and user defined routes configured.
+- One of the two sites must not have virtual networks, NSGs, and user defined routes configured.
 
 - The SDN MAC pool must not overlap between the two sites.
 
 - The IP pools for the logical networks, including Hyper-V Network Virtualization Provider Address (HNV PA), Public VIP, Private VIP, Generic Routing Encapsulation (GRE) VIP, and L3 must not overlap between the two sites.
 
-## Establish peering
+### Understand resource synchronization
+
+When you enable SDN Multisite, not all resources from each site are synchronized across all sites. Here are the lists of resources that are synchronized and that remain unsynchronized.
+
+**Synchronized resources**
+
+These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
+
+- Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md)
+- Logical networks. For instructions on how to manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md)
+- Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](./use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](./use-datacenter-firewall-powershell.md)
+- User defined routes
+
+**Unsynchronized resources**
+
+These resources aren't synchronized after peering is established:
+
+- Load balancing policies
+- Virtual IP addresses (VIPs)
+
+These policies are created on the local site, and if you want the same policies on the other site, you must manually create them there. If your backend VMs for load balancing policies are located on a single site, then connectivity over SLB will work fine without any extra configuration. But, if you expect the backend VMs to move from one site to the other, by default, connectivity works only if there are any backend VMs behind a VIP on the local site. If all the backend VMs move to another site, connectivity over that VIP fails.
+
+### Establish peering
 
 Follow these steps to establish peering across multiple sites using Windows Admin Center:
-
-1. Make sure all the [prerequisites](#prerequisites) are met.
 
 1. In Windows Admin Center, connect to your cluster in the primary site to begin peering across sites. Under **Tools**, scroll down to the **Networking** section, and select **Network controllers**.
 
@@ -81,31 +110,9 @@ Follow these steps to establish peering across multiple sites using Windows Admi
 
     :::image type="content" source="./media/manage-sdn-multisite/deploy-sdn-multisite.png" alt-text="Deploy SDN Multisite using Windows Admin Center" lightbox="./media/manage-sdn-multisite/deploy-sdn-multisite.png" :::
 
-    Once peering is initiated, resources such as virtual networks or policy configurations that were once local to the primary site become global resources synced across sites. For details on which resources are synchronized or not, see [Resource synchronization](#resource-synchronization).
+    Once peering is initiated, resources such as virtual networks or policy configurations that were once local to the primary site become global resources synced across sites.
 
-### Resource synchronization
-
-This section lists the resources that are synchronized and those that aren't, after peering is established.
-
-**Synchronized**
-
-Here are the the resources that are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. The guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
-
-- Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md)
-- Logical networks. For instructions on how to manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md)
-- Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](./use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](./use-datacenter-firewall-powershell.md)
-- User defined routes
-
-**Not synchronized**
-
-Here are the resources that are not synchronized after peering is established:
-
-- Load balancing policies
-- Virtual IP addresses (VIPs)
-
-These policies are created on the local site, and if you want the same policies on the other site, you must manually create them there. If your backend VMs for load balancing policies are located on a single site, then connectivity over SLB will work fine without any extra configuration. But, if you expect the backend VMs to move from one site to the other, by default, connectivity works only if there are any backend VMs behind a VIP on the local site. If all the backend VMs move to another site, connectivity over that VIP fails.
-
-## Check peering status
+### Check peering status
 
 After you enable SDN Multisite, review the current configuration to determine which site is designated as the primary and which one as the secondary.
 
@@ -126,19 +133,22 @@ Follow these steps to review SDN Multisite peering status:
 
 ## Manage SDN Multisite
 
-The following section describes the management tasks that you can perform in a multi-site SDN environment.
+This section describes the tasks that you can perform to manage your SDN Multisite solution using Windows Admin Center.
 
-### Change the primary site
+### Change primary site
 
 You can have only one primary site at a time. If your scenario requires more than one primary site, reach out to [sdn_feedback@microsoft.com](mailto:sdn_feedback@microsoft.com).
 
-In certain scenarios, you might need to change your primary site. For example, if your primary site has gone down and becomes unreachable, but there are global policies and resources to be changed and synced. In such cases, you can change the primary site to help prevent data loss and ensure continuity of information. However, if there are pending changes in your old primary site, then there's a potential risk of data loss when transitioning to the new primary sites.
+In certain scenarios, you might need to change your primary site. For example, if your primary site has gone down and becomes unreachable, but there are global policies and resources to be changed and synced. In such cases, you can change the primary site to help prevent data loss and ensure continuity of information. However, if there are pending changes in your old primary site, there's a potential risk of data loss when transitioning to the new primary sites.
 
 Follow these steps to change the primary site:
 
 1. Make sure SDN Multisite is enabled. See [Check peering status](#check-peering-status).
-1. In Windows Admin Center, connect to your cluster in any site. Under **Tools**, scroll down to the **Networking** section, and select **Network controllers**.
+
+1. Connect to your cluster in any site. Under **Tools**, scroll down to the **Networking** section, and select **Network controllers**.
+
 1. On the **Network Controllers** page, under the **Inventory** tab, select the row for the secondary site that you want to convert into primary.
+
 1. Select **Make Primary** to change the secondary site into primary.
 
     :::image type="content" source="./media/manage-sdn-multisite/convert-to-primary.png" alt-text="Screenshot that shows the Make Primary button used for converting a secondary site into primary." lightbox="./media/manage-sdn-multisite/convert-to-primary.png" :::
@@ -150,8 +160,11 @@ There might be scenarios where you need to rename your sites for improved releva
 Follow these steps to rename sites:
 
 1. Make sure SDN Multisite is enabled. See [Check peering status](#check-peering-status).
-1. In Windows Admin Center, connect to your cluster in any site. Under **Tools**, scroll down to the **Networking** section, and select **Network controllers**.
+
+1. Connect to your cluster in any site. Under **Tools**, scroll down to the **Networking** section, and select **Network controllers**.
+
 1. On the **Network Controllers** page, under the **Inventory** tab, select the site to rename.
+
 1. Select **Rename** to change the site name.
 
     :::image type="content" source="./media/manage-sdn-multisite/rename-sites.png" alt-text="Screenshot that shows the Rename button used for renaming a site." lightbox="./media/manage-sdn-multisite/rename-sites.png" :::
@@ -165,6 +178,7 @@ When you remove peering, resource synchronization is aborted, and each site keep
 Follow these steps to remove peering:
 
 1. In Windows Admin Center, connect to your cluster in any site. Under **Tools**, scroll down to the **Networking** section, and select **Network controllers**.
+
 1. On the **Network Controllers** page, select **Delete**.
 
     :::image type="content" source="./media/manage-sdn-multisite/remove-peering-delete-button.png" alt-text="Screenshot that shows the Delete button used for removing peering." lightbox="./media/manage-sdn-multisite/remove-peering-delete-button.png" :::
@@ -175,7 +189,7 @@ Follow these steps to remove peering:
 
     After remove peering, it takes a moment for your sites to update. If it doesn't update, refresh your browser.
 
-### Re-establish peering after removal
+## Re-establish peering after removal
 
 With redeploying after removal, your secondary site will have to be a fresh SDN environment. This means that there can't be any pre-existing virtual networks or network security groups. However, if you’re attempting to redeploy  after removing multisite, your secondary location will have a local cache of the once global resources from  multisite. Even though Multisite has been removed, your secondary location will still have a copy of those resources. Without Multisite, those resources are just out of sync now. With redeployment after Multisite removal, ensure the following:
 
