@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/29/2023
+ms.date: 12/27/2023
 ms.author: sethm
 ms.reviewer: rtiberiu
-ms.lastreviewed: 11/29/2023
+ms.lastreviewed: 12/27/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -44,10 +44,10 @@ Before applying the update, make sure to review the following information:
 - [Hotfixes](#hotfixes)
 - [Security updates](release-notes-security-updates.md)
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
 > If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 
@@ -76,8 +76,8 @@ The 2311 update has the following expected runtimes based on our internal testin
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-> [!IMPORTANT] 
-> Disconnected environments have additional prerequisite steps which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
+> [!IMPORTANT]
+> Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
 
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2311 update and should not be compared to other Azure Stack Hub updates.
 
@@ -95,12 +95,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - 2311 introduces a change in the base host OS, updated to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric. Azure Stack Hub environments that have outbound connectivity do not require any additional changes, and the update is installed directly.
 
-  > [!IMPORTANT] 
+  > [!IMPORTANT]
   > Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
-  > If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume 
-  the update after applying the new key.
+  > If you start the update without this key, the update will fail shortly after starting, with a "Preparation of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
   
-- Starting with 2311 we are not releasing a new Azure Stack Development Kit (ASDK) version. This decision is due to modifications in internal services that would lead to substantial complexity for the ASDK. The currently released ASDK version remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+- Starting with Azure Stack Hub 2311, we are not releasing new Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
 
 <!-- ### Fixes -->
 
