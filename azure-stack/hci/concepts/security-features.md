@@ -23,7 +23,7 @@ This article describes the following security features associated with your Azur
 - [Local built-in user accounts](#local-built-in-user-accounts) - The names of local built-in users associated with the `RID 500` and `RID 501` accounts have been updated in this release.
 - Other security features:
   - [Manage secrets in Azure Stack HCI](#manage-secrets-in-azure-stack-hci) - Enables you to create and rotate internal secrets.
-  - [Syslog forwarding](#syslog-forwarding) - Enables you to forward security-related events to a security information and event management (SIEM) system.
+  - [Syslog forwarding of security events](#syslog-forwarding-of-security-events) - Enables you to forward security-related events to a security information and event management (SIEM) system.
 
 > [!IMPORTANT]
 > Security compliance requires strict log and audit of security events; in Azure Stack HCI, we recommend that customers use our Azure Cloud Sentinel service. For more information, see [Microsoft Sentinel](https://azure.microsoft.com/products/microsoft-sentinel).
@@ -54,7 +54,7 @@ For more information about secure baseline on Azure Stack HCI, see [Manage secur
 
 ## Windows Defender Application Control
 
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
+Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../whats-new.md).
 
 ## BitLocker encryption
 
