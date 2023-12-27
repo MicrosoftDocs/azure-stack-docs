@@ -4,7 +4,7 @@ description: Learn how to manage a multisite SDN solution for Azure Stack HCI (p
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/22/2023
+ms.date: 12/27/2023
 ---
 
 # Manage SDN Multisite for Azure Stack HCI
@@ -124,12 +124,12 @@ Follow these steps to review SDN Multisite peering status:
 
     - **State**: This column can have one of the following values:
         - `Local` indicates the site through which you are accessing SDN Multisite.
-        - `Initated`, `Connected`, or `Failed` indicates the status of peering.
+        - `Initiated`, `Connected`, or `Failed` indicates the status of peering.
     - **Primary**: This column can have one of the following values:
         - `Yes` indicates the site is a primary site.
         - `No` indicates the site is a secondary site.
 
-    :::image type="content" source="./media/manage-sdn-multisite/convert-to-primary.png" alt-text="Screenshot that shows the Make Primary button used for converting a secondary site into primary." lightbox="./media/manage-sdn-multisite/convert-to-primary.png" :::
+        :::image type="content" source="./media/manage-sdn-multisite/check-peering-status.png" alt-text="Screenshot that shows current peering status." lightbox="./media/manage-sdn-multisite/check-peering-status.png" :::
 
 ## Manage SDN Multisite
 
@@ -169,7 +169,7 @@ Follow these steps to rename sites:
 
     :::image type="content" source="./media/manage-sdn-multisite/rename-sites.png" alt-text="Screenshot that shows the Rename button used for renaming a site." lightbox="./media/manage-sdn-multisite/rename-sites.png" :::
 
-## Remove peering
+## Remove SDN Multisite
 
 In some cases, you might need to remove peering to stop resource synchronization across sites. For example, to isolate resources due to a security concern or due to a change in the infrastructure strategy of your organization.
 
@@ -189,7 +189,7 @@ Follow these steps to remove peering:
 
     After remove peering, it takes a moment for your sites to update. If it doesn't update, refresh your browser.
 
-## Re-establish peering after removal
+### Re-establish peering after removal
 
 With redeploying after removal, your secondary site will have to be a fresh SDN environment. This means that there can't be any pre-existing virtual networks or network security groups. However, if you’re attempting to redeploy  after removing multisite, your secondary location will have a local cache of the once global resources from  multisite. Even though Multisite has been removed, your secondary location will still have a copy of those resources. Without Multisite, those resources are just out of sync now. With redeployment after Multisite removal, ensure the following:
 
