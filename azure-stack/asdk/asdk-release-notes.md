@@ -18,6 +18,9 @@ ms.lastreviewed: 08/10/2020
 
 This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, [use the portal to check](../operator/azure-stack-updates.md).
 
+> [!IMPORTANT]
+> Starting with Azure Stack Hub 2311, we are not releasing new ASDK versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The currently released ASDK version remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+
 ::: moniker range=">=azs-2306"
 ## Build 1.2306.2.47
 
