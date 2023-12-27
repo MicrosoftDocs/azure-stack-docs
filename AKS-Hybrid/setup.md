@@ -45,7 +45,7 @@ Now that you verified the system settings, follow these steps:
 
 1. Select **Set up** to launch the Setup wizard.
 
-1. Review the prerequisites for the machine on which you're running Windows Admin Center, on the cluster to which you're connected, and the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using has not expired. You must have the **Owner** role on the subscription you are planning on using. When you're finished, select **Next**.
+1. Review the prerequisites for the machine on which you're running Windows Admin Center, on the cluster to which you're connected, and the network. Additionally, make sure you're signed into an Azure account on Windows Admin Center and that the Azure subscription you're planning on using isn't expired. You must have the **Owner** role on the subscription you are planning on using. When you're finished, select **Next**.
 
    > [!WARNING]
    > Make sure you configure at least one external virtual switch before proceeding past this step, or you won't be able to successfully set up your AKS host.
@@ -59,7 +59,7 @@ Now that you verified the system settings, follow these steps:
    * **Kubernetes node networking**, which serves as the default for the AKS host and all Linux and Windows Kubernetes nodes VMs that are created to run containers and orchestrate container management.
 
        You can also specify separate network configurations for a workload cluster. These settings include the fields for the internet-connected virtual switch, virtual LAN identification enablement, IP address allocation method, and CloudAgent IP.
-       You can use the CloudAgent IP to provide a static IP address to the CloudAgent service. This is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you select the static IP address allocation method, there are a few extra fields that must be specified:
+       You can use the CloudAgent IP to provide a static IP address to the CloudAgent service. This address is applicable regardless of your IP address allocation selection. For more information, see [Kubernetes node networking](./concepts-node-networking.md). If you select the static IP address allocation method, there are a few extra fields that must be specified:
       * **Subnet prefix**, an IP address range that does not conflict with other addresses.
       * **Gateway**, the gateway through which packets are routed outside the machine.
       * **DNS servers**, the comma-separated list of IP addresses for the DNS servers. Use a minimum of one and a maximum of three addresses.
@@ -77,7 +77,7 @@ Now that you verified the system settings, follow these steps:
 
    (Optional) Configure proxy settings as required for the AKS host. These settings are dependent on the proxy settings that are provisioned on the Azure Stack HCI host machine. Make sure you also provision the list of IP addresses that needs to bypass the proxy. When complete, select **Next: Review + Create**.
 
-   [![Screenshow that shows the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png)](.\media\setup\proxy-settings-host-configuration.png#lightbox)
+   [![Screenshot that shows the optional proxy settings that you configure on the Host Configuration page.](.\media\setup\proxy-settings-host-configuration.png)](.\media\setup\proxy-settings-host-configuration.png#lightbox)
 
    Select **Next** after you're finished.
 
@@ -89,7 +89,7 @@ Now that you verified the system settings, follow these steps:
    * Microsoft Graph: Application.ReadWrite.All
    * Microsoft Graph: Directory.AccessAsUser.All
 
-   If you have these permissions, you'll see the permissions in green under **Status** as shown here:
+   If you have these permissions, the permissions appear in green under **Status**, as shown here:
 
    :::image type="content" source="media/setup/access-granted.png" alt-text="Screenshot showing access granted." lightbox="media/setup/access-granted.png":::
 
