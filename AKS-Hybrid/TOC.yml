@@ -69,7 +69,7 @@
           href: kubernetes-walkthrough-powershell.md
         - name: Use Windows Admin Center
           items:
-            - name: Set up AKS hybrid
+            - name: Set up AKS
               href: setup.md
             - name: Create a Kubernetes cluster
               href: create-kubernetes-cluster.md
