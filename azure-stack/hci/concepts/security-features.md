@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/18/2023
+ms.date: 12/27/2023
 ---
 
 # Security features for Azure Stack HCI, version 23H2 (preview)
@@ -17,8 +17,8 @@ Azure Stack HCI is a secure-by-default product that has more than 300 security s
 
 This article describes the following security features associated with your Azure Stack HCI cluster, version 23H2 (preview):
 
-- [Windows Defender Application Control](#windows-defender-application-control) - A software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run.
 - [Secure baseline and drift control](#secure-baseline-and-drift-control) - Improves the security posture by disabling legacy protocols and ciphers, reduces operating expenditure (OPEX) with built-in drift protection, and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
+- [Windows Defender Application Control](#windows-defender-application-control) - A software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run.
 - [Bitlocker encryption](#bitlocker-encryption) - By default, data-at-rest encryption is enabled on data volumes created during deployment.
 - [Local built-in user accounts](#local-built-in-user-accounts) - The names of local built-in users associated with the `RID 500` and `RID 501` accounts have been updated in this release.
 - Other security features:
@@ -36,25 +36,25 @@ For additional security considerations, see:
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Windows Defender Application Control
-
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
-
 ## Secure baseline and drift control
 
 Your Azure Stack HCI has more than 300 security settings enabled by default that provide a consistent security baseline, a baseline management system, and an associated drift control mechanism.
 
-You can monitor the security baseline and secured core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
+You can monitor the security baseline and secured-core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
 
 With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
 Secure baseline on Azure Stack HCI:
 
 - Improves the security posture by disabling legacy protocols and ciphers.
-- Reduces OPEX with a built-in drift protection mechanism, and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
+- Reduces OPEX with a built-in drift protection mechanism and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
 For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../whats-new.md).
+
+## Windows Defender Application Control
+
+Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
 
 ## BitLocker encryption
 
@@ -71,10 +71,10 @@ For more information about BitLocker, see:
 
 In this release, the following local built-in users, associated with `RID 500` and `RID 501`, are available on your Azure Stack HCI system:
 
-|Name |Enabled by default |Description |
-|-----|-----|-----|
-|ASBuiltInAdmin |True |Built-in account for administering the computer/domain |
-|ASBuiltInGuest |False |Built-in account for guest access to the computer/domain, protected by the security baseline drift control mechanism. |
+|Name in initial OS image |Name after deployment |Enabled by default |Description |
+|-----|-----|-----|-----|
+|Administrator |ASBuiltInAdmin |True |Built-in account for administering the computer/domain |
+|Guest |ASBuiltInGuest |False |Built-in account for guest access to the computer/domain, protected by the security baseline drift control mechanism. |
 
 > [!IMPORTANT]
 > We recommend that you create your own local administrator account, and that you disable the well-known `RID 500` user account.
@@ -83,7 +83,7 @@ In this release, the following local built-in users, associated with `RID 500` a
 
 The Lifecycle Manager on Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. To ensure security, we implemented internal secret creation and rotation capabilities.
 
-All services exposed internally by Lifecycle Manager have authentication or encryption certificates associated with them. When you look into your cluster nodes, you will see several certificates created under the path `LocalMachine/Personal certificate store (Cert:\LocalMachine\My).
+All services exposed internally by Lifecycle Manager have authentication or encryption certificates associated with them. When you review your cluster nodes, you will see several certificates created under the path `LocalMachine/Personal certificate store (Cert:\LocalMachine\My).
 
 In this release, the following capabilities are enabled:
 
@@ -94,9 +94,9 @@ In this release, the following capabilities are enabled:
 > [!NOTE]
 > This action will take about 10 minutes, depending on the size of the cluster.  The operation requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote PowerShell invocation or remote desktop protocol (RDP) connection.
 
-## Syslog forwarding
+## Syslog forwarding of security events
 
-For customers and organizations that require their own local SIEM, Azure Stack HCI version 23H2 includes an integrated mechanism that enables you to forward security-related events to an SIEM.
+For customers and organizations that require their own local SIEM, Azure Stack HCI version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
 
 Azure Stack HCI has an integrated syslog forwarder that, once configured, generates syslog messages defined in RFC3164, with the payload in Common Event Format (CEF).
 

@@ -6,20 +6,22 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/12/2023
+ms.date: 12/27/2023
 ---
 
 # Manage syslog forwarding for Azure Stack HCI (preview)
 
 [!Include [Applies to: Azure Stack HCI, version 23H2 (preview)](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to configure syslog forwarding for Azure Stack HCI, version 23H2 (preview). Use syslog forwarding to integrate with security monitoring solutions and to retrieve all audits, alerts, and security logs to store them for retention. For more information about security features in this release, see [Security features for Azure Stack HCI, version 23H2 (preview)](/azure-stack/hci/concepts/security-features).
+This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Stack HCI, version 23H2 (preview).
+
+Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Stack HCI, version 23H2 (preview)](/azure-stack/hci/concepts/security-features).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Configure syslog forwarding
 
-Syslog forwarding agents are deployed on every Azure Stack HCI host. Each of the agents will forward syslog messages collected from the host to the customer-configured syslog server.
+Syslog forwarding agents are deployed on every Azure Stack HCI host by default, ready to be configured. Each of the agents will forward security events in syslog format from the host to the customer-configured syslog server.
 
 Syslog forwarding agents work independently from each other but can be managed all together on any one of the hosts. Use PowerShell cmdlets with administrative privileges on any host to control the behavior of all forwarder agents.
 
