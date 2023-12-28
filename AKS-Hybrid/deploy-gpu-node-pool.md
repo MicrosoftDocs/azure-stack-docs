@@ -1,9 +1,9 @@
 ---
-title: Use GPUs for compute-intensive workloads in AKS hybrid
-description: Learn how to deploy GPU-enabled node pools on AKS hybrid.
+title: Use GPUs for compute-intensive workloads in AKS enabled by Azure Arc
+description: Learn how to deploy GPU-enabled node pools on AKS enabled by Arc.
 author: baziwane
 ms.topic: how-to
-ms.date: 03/22/2023
+ms.date: 12/28/2023
 ms.author: rbaziwane 
 ms.lastreviewed: 03/21/2023
 ms.reviewer: sethm
@@ -11,17 +11,17 @@ ms.reviewer: sethm
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Use GPUs for compute-intensive workloads in AKS hybrid
+# Use GPUs for compute-intensive workloads in AKS enabled by Azure Arc
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more.
 
 ## Before you begin
 
-If you are updating AKS hybrid from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin.
+If you are updating AKS from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin. Follow the steps in this section.
 
 ### Step 1: Uninstall the Nvidia host driver
 
-On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver has been successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
+On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
 
 ```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
@@ -29,7 +29,7 @@ Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:
 
 You should see the GPU devices appear in an error state as shown in this example output:
 
-```shell
+```output
 Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
 Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
 ```
@@ -47,10 +47,13 @@ Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
 ```
 
-To confirm that the GPUs have been correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state.
+To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
+Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video"
+```
+
+```output
 Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
 Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
 ```
@@ -63,26 +66,26 @@ See the [NVIDIA data center documentation](https://docs.nvidia.com/datacenter/te
 
 ```powershell
 Invoke-WebRequest -Uri "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/nvidia_azure_stack_inf_v2022.10.13_public.zip" -OutFile "nvidia_azure_stack_inf_v2022.10.13_public.zip"
-
 mkdir nvidia-mitigation-driver
-
 Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
 ```
 
-To install the mitigation driver, navigate to the folder containing the extracted files, right-click the **nvidia_azure_stack_T4_base.inf** file, and select **Install**. Check that you have the correct driver; AKS hybrid currently supports only the NVIDIA Tesla T4 GPU.
+To install the mitigation driver, navigate to the folder containing the extracted files, right-click the **nvidia_azure_stack_T4_base.inf** file, and select **Install**. Check that you have the correct driver; AKS currently supports only the NVIDIA Tesla T4 GPU.
 
 You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
 
 ```powershell
 pnputil /add-driver nvidia_azure_stack_T4_base.inf /install 
-
 pnputil /scan-devices 
 ```
 
 After you install the mitigation driver, the GPUs are listed in the **OK** state under **Nvidia T4_base - Dismounted**:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia" 
+Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia"
+```
+
+```output
 OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
 OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
 ```
@@ -94,9 +97,9 @@ Repeat steps 1 to 3 for each node in your failover cluster.
 > [!IMPORTANT]
 > GPU-enabled virtual machines are not added to failover clustering in Windows Server 2019, Windows Server 2022, or Azure Stack HCI.
 
-## Install or update AKS hybrid
+## Install or update AKS
 
-See the AKS hybrid quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) or using [Windows Admin Center](setup.md) to install or update AKS hybrid.
+See the AKS quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) or using [Windows Admin Center](setup.md) to install or update AKS enabled by Arc.
 
 ## Create a new workload cluster with a GPU-enabled node pool
 
@@ -155,7 +158,7 @@ kube-system         gpu-feature-discovery-gd62h       0 (0%)    0 (0%)   0 (0%) 
 
 ## Run a GPU-enabled workload
 
-Once the previous steps are completed, create a new YAML file for testing; for example, **gpupod.yaml**. Copy and paste the following YAML into the new file named **gpupod.yaml**, then save it:
+Once you complete the previous steps, create a new YAML file for testing; for example, **gpupod.yaml**. Copy and paste the following YAML into the new file named **gpupod.yaml**, then save it:
 
 ```yaml
 apiVersion: v1
@@ -199,7 +202,7 @@ kubectl logs cuda-vector-add
 
 The following is example output from the previous command:
 
-```shell
+```output
 [Vector addition of 50000 elements]
 Copy input data from the host memory to the CUDA device
 CUDA kernel launch with 196 blocks of 256 threads
@@ -223,8 +226,8 @@ Before you upgrade:
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 
-If an upgrade is triggered on a cluster without extra GPU resources to facilitate the rolling upgrade, the upgrade process will hang until a GPU is available. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after the upgrade succeeds.
+If an upgrade is triggered on a cluster without extra GPU resources to facilitate the rolling upgrade, the upgrade process hangs until a GPU is available. If you run at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after the upgrade succeeds.
 
 ## Next steps
 
-- [AKS hybrid deployment options](aks-hybrid-options-overview.md)
+- [AKS overview](aks-hybrid-options-overview.md)
