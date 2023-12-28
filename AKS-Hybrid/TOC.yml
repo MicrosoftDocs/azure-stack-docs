@@ -56,6 +56,8 @@
     items:
     - name: Azure CLI
       href: /cli/azure/akshybrid
+    - name: REST API reference
+      href: /rest/api/hybridcontainer/operation-groups?view=rest-hybridcontainer-2023-11-15-preview&preserve-view=true
 - name: Quickstarts
   expanded: true
   items:
@@ -67,7 +69,7 @@
           href: kubernetes-walkthrough-powershell.md
         - name: Use Windows Admin Center
           items:
-            - name: Set up AKS hybrid
+            - name: Set up AKS
               href: setup.md
             - name: Create a Kubernetes cluster
               href: create-kubernetes-cluster.md
