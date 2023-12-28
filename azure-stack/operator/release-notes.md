@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/27/2023
+ms.date: 12/28/2023
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 12/27/2023
@@ -87,7 +87,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The [VPN Fast Path](azure-stack-vpn-fast-path-operators.md) feature is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
 - With 2311 we are announcing the public preview of the Azure Stack Hub Standard Load Balancer. This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
-- Azure Site Recovery is currently in [public preview](https://aka.ms/azshasr), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
+- Azure Site Recovery is currently in [public preview](azure-site-recovery-overview.md), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
 
 <!-- ### Improvements -->
 
