@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/19/2023
+ms.date: 12/27/2023
 ---
 
 # Manage BitLocker encryption on Azure Stack HCI, version 23H2 (preview)
