@@ -26,13 +26,13 @@ This article describes how to use Helm to package and deploy applications on AKS
 Verify that you have the following requirements set up:
 
 * A [Kubernetes cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* You configured your local `kubectl` environment to point to your cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * An available container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
 
 In this topic, an ASP.NET Core application is used as an example. You can download the sample application from this [GitHub repository](https://github.com/baziwane/MyMicroservice).
 
-Since the application is deployed to Kubernetes, the following is a simple Dockerfile for the project:
+Since the application is deployed to Kubernetes, the following example is a simple Dockerfile for the project:
 
 ```dockerfile
 FROM mcr.microsoft.com/dotnet/aspnet:5.0-alpine AS base
@@ -142,7 +142,7 @@ Starting from the **charts\mymicroserviceapp** directory in the solution directo
 helm upgrade --install mymicroserviceapp . --namespace=local --set mymicroserviceapp.image.tag="0.1.0" 
 ```
 
-This command creates (or upgrades) an existing release using the name `mymicroserviceapp` in the `local` namespace in the Kubernetes cluster, and produces output similar to this:
+This command creates (or upgrades) an existing release using the name `mymicroserviceapp` in the `local` namespace in the Kubernetes cluster, and produces output similar to this example:
 
 ```output
 Release "mymicroserviceapp" does not exist. Installing it now.
@@ -178,7 +178,7 @@ replicaset.apps/mymicroserviceapp-7849f949df   1         1         1       101s
 
 ## Test your deployment
 
-The application deploys with a service and a node port, so you can call the API from outside the cluster. To do this, send a request to: http://$NODE_IP:$NODE_PORT:
+The application deploys with a service and a node port, so you can call the API from outside the cluster. To make this call, send a request to: http://$NODE_IP:$NODE_PORT:
 
 ```console
 curl http://10.193.2.103:30501/WeatherForeCast/
@@ -214,7 +214,7 @@ The final step is to clean up the cluster. To delete Kubernetes deployment resou
 helm uninstall mymicroserviceapp -n local
 ```
 
-You should get output similar to the following:
+You should get output similar to the following example:
 
 ```output
 release "mymicroserviceapp" uninstalled
