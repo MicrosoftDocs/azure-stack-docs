@@ -18,13 +18,13 @@ This article provides a checklist of prerequisites you can follow to deploy Azur
 ## Prerequisites for AKS on Azure Stack HCI and Windows Server
 
 > [!div class="checklist"]
-> * [Provision a workload cluster with only Linux node pools](use-node-pools.md)
-> * Configure storage [using the AKS hybrid disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md#create-custom-storage-class-for-disks)
+> * [Provision a workload cluster with only Linux node pools](use-node-pools.md).
+> * Configure storage [using the AKS hybrid disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md#create-custom-storage-class-for-disks).
 
 ## Prerequisites for Azure Arc-enabled data services
 
 > [!div class="checklist"]
-> * [Connect your clusters to Azure Arc for Kubernetes](/azure-stack/aks-hci/connect-to-arc)
+> * [Connect your clusters to Azure Arc for Kubernetes](/azure-stack/aks-hci/connect-to-arc).
 
 Confirm whether custom location is enabled on your Kubernetes cluster by running the following command and checking for `customLocation: enabled: true`:
 
@@ -39,7 +39,7 @@ az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --featur
 ```
 
 > [!div class="checklist"]
-> * [Create and manage custom locations on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/custom-locations)(for direct connectivity mode only)
+> * [Create and manage custom locations on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/custom-locations) (for direct connectivity mode only).
 
 ## Next steps
 
