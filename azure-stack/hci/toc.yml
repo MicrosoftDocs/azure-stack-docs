@@ -71,7 +71,7 @@
       items:
         - name: Security
           items:
-          - name: Manage Bitlocker encryption
+          - name: Manage BitLocker encryption
             href: manage/manage-bitlocker.md
         - name: Azure Arc VMs
           items:
