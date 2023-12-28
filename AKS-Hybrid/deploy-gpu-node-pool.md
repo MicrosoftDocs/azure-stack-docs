@@ -181,7 +181,7 @@ Run the following command to deploy the sample application:
 kubectl apply -f gpupod.yaml
 ```
 
-Verify that the pod has started, completed running, and the GPU is assigned:
+Verify that the pod started, completed running, and the GPU is assigned:
 
 ```powershell
 kubectl describe pod cuda-vector-add | findstr 'gpu'
@@ -194,7 +194,7 @@ nvidia.com/gpu: 1
 nvidia.com/gpu: 1
 ```
 
-Check the log file of the pod to see if the test has passed:
+Check the log file of the pod to see if the test passed:
 
 ```powershell
 kubectl logs cuda-vector-add
@@ -217,7 +217,7 @@ If you receive a version mismatch error when calling into drivers, such as "CUDA
 
 ### What happens during upgrade of a GPU-enabled node pool?
 
-Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's used for regular node pools. For GPU-enabled node pools in a new VM to be successfully created on the physical host machine, it requires one or more physical GPUs to be available for successful device assignment. This ensures that your applications can continue running when Kubernetes schedules pods on this upgraded node.
+Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's used for regular node pools. For GPU-enabled node pools in a new VM to be successfully created on the physical host machine, it requires one or more physical GPUs to be available for successful device assignment. This availability ensures that your applications can continue running when Kubernetes schedules pods on this upgraded node.
 
 Before you upgrade:
 
