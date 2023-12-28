@@ -79,7 +79,7 @@
           href: deploy-gpu-node-pool.md
         - name: Deploy applications with Helm
           href: helm-deploy.md
-        - name: Deploy Azure Arc enabled data services
+        - name: Deploy Azure Arc-enabled data services
           href: deploy-arc-data-services.md
         - name: Deploy configurations using GitOps
           href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2
