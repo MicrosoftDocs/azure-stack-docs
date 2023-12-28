@@ -21,6 +21,9 @@ SDN Multisite allows you to expand the capabilities of traditional SDN on Azure 
 
 In a multisite SDN environment, one site is designated as the primary, and the remaining sites serve as secondary. The primary site is responsible for ensuring that the resources are applied and synchronized across all the sites. If the primary site is unreachable, resources can't be updated through the secondary site. However, if the secondary site is unreachable, resources can be updated through the primary site. During multisite peering, the primary site is automatically selected, which you can change later using Windows Admin Center.
 
+> [!IMPORTANT]
+> In this release, SDN Multisite is supported only between two sites.
+
 ## Benefits
 
 Here are the benefits of using SDN Multisite:
@@ -83,6 +86,7 @@ These resources aren't synchronized after peering is established:
 
 - Load balancing policies
 - Virtual IP addresses (VIPs)
+- Gateway policies
 
 These policies are created on the local site, and if you want the same policies on the other site, you must manually create them there. If your backend VMs for load balancing policies are located on a single site, then connectivity over SLB will work fine without any extra configuration. But, if you expect the backend VMs to move from one site to the other, by default, connectivity works only if there are any backend VMs behind a VIP on the local site. If all the backend VMs move to another site, connectivity over that VIP fails.
 
