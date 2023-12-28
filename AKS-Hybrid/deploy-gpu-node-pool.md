@@ -1,6 +1,6 @@
 ---
-title: Use GPUs for compute-intensive workloads in AKS enabled by Azure Arc
-description: Learn how to deploy GPU-enabled node pools on AKS enabled by Arc.
+title: Use GPUs for compute-intensive workloads
+description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
 author: baziwane
 ms.topic: how-to
 ms.date: 12/28/2023
@@ -11,9 +11,9 @@ ms.reviewer: sethm
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Use GPUs for compute-intensive workloads in AKS enabled by Azure Arc
+# Use GPUs for compute-intensive workloads
 
-Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more.
+Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
 ## Before you begin
 
