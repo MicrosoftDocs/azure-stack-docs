@@ -9,17 +9,22 @@ ms.subservice: azure-stack-hci
 ms.date: 09/20/2023
 ---
 
-# Collect diagnostic logs on-demand
+# Collect diagnostic logs
 
 > Applies to: Azure Stack HCI, version 23H2 (preview)
 
-This article describes how to collect diagnostic logs on-demand and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
+This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## About on-demand log collection
+You have multiple ways to send diagnostic logs to Microsoft:
 
-Use the `Send-DiagnosticData` cmdlet from any node on the Azure Stack HCI cluster to manually collect and send diagnostic logs to Microsoft. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+- Send logs manually or on-demand log collection
+- Send logs proactively
+
+## Send logs manually or on-demand
+
+On-demand log collection is the process involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node on the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
@@ -265,6 +270,14 @@ Follow these steps to share logs with Microsoft via Windows Admin Center in the 
 
 1. Connect to Windows Admin Center in the Azure portal. For information, see [Manage Azure Stack HCI clusters using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
 1. 
+1. 
+
+## Collect and send logs proactively
+
+Proactive log collection automatically collects and sends diagnostic logs from your Azure Stack HCI system to Microsoft before you open a support case. Proactive logs are collected only when a system health alarm is triggered. Microsoft Support accesses these logs only in the context of a support case.
+
+For instructions about how to enable proactive log collection on your cluster, see [Telemetry and diagnostics settings](../concepts/telemetry-and-diagnostics-overview.md#telemetry-and-diagnostics-settings).
+
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
