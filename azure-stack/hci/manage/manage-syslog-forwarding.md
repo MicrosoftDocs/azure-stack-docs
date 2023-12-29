@@ -15,7 +15,7 @@ ms.date: 12/27/2023
 
 This article describes how to configure security events to be forwarded to a customer-managed security information and event management (SIEM) system using syslog protocol for Azure Stack HCI, version 23H2 (preview).
 
-Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Stack HCI, version 23H2 (preview)](/azure-stack/hci/concepts/security-features).
+Use syslog forwarding to integrate with security monitoring solutions and to retrieve relevant security event logs to store them for retention on your own SIEM platform. For more information about security features in this release, see [Security features for Azure Stack HCI, version 23H2 (preview)](../concepts/security-features.md).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
