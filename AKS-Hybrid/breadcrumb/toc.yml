@@ -10,7 +10,6 @@
       tocHref: /azure/aks/hybrid/
       topicHref: /azure/aks/hybrid/index
 ### For contextual TOC
-      items:
-      - name: Azure Arc
-        tocHref: /azure/azure-arc/kubernetes/
-        topicHref: /azure/aks/hybrid/index
+    - name: Azure Arc
+      tocHref: /azure/azure-arc/kubernetes/
+      topicHref: /azure/aks/hybrid/index
