@@ -53,7 +53,7 @@
       "feedback_github_repo": "MicrosoftDocs/azure-stack-docs",
       "feedback_product_url": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7",
       "breadcrumb_path": "/azure/aks/hybrid/breadcrumb/toc.json",
-      "extendBreadcrumb": false,
+      // "extendBreadcrumb": false,
       "manager":"femila",
       "ms.service": "azure-stack",
       "recommendations": true
