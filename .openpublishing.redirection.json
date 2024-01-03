@@ -1100,6 +1100,160 @@
       "source_path": "azure-stack/hci/index-23h2.yml",
       "redirect_url": "/azure-stack/hci/index",
       "redirect_document_id": false
+    },
+    {"source_path": "azure-stack/hci/whats-new-in-hci-20h2.md",
+      "redirect_url": "/azure-stack/hci/whats-new-in-hci-22h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/preview-release-notes.md",
+      "redirect_url": "/azure-stack/hci/release-information",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2301-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2303-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2303-1-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2303-2-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2303.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2301.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2303-1.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2303-2.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-active-directory.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-checklist.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-existing-file.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-install-os.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-introduction.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-new-file.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-non-native-vlan.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-powershell.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-prerequisites.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-set-up-first-server.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-validate.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/virtual-cluster-deployment.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-troubleshoot.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/troubleshoot-environment-validation-issues.md",
+      "redirect_url": "/azure-stack/hci/manage/get-support-for-deployment-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-azure-stack-hci-solution.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-phases.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-troubleshooting.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-via-powershell.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
     }
   ]
   

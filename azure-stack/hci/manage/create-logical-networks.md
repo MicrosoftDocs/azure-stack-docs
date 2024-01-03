@@ -13,7 +13,7 @@ ms.date: 11/17/2023
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create or add logical network for your Azure Stack HCI cluster.
+This article describes how to create or add logical networks for your Azure Stack HCI cluster.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
@@ -63,7 +63,7 @@ Create a static logical network when you want to create virtual machines with ne
     ```azurecli
     $lnetName = "myhci-lnet-static"
     $vmSwitchName = '"ConvergedSwitch(management_compute_storage)"'
-    $subscriptionID = "<Subscription ID>"
+    $subscription = "<Subscription ID>"
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl"
     $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
@@ -178,7 +178,7 @@ Follow these steps to configure a DHCP logical network:
 
     ```azurecli
     $lnetName = "myhci-lnet-dhcp"
-    $vSwitchName = '"ConvergedSwitch(management_compute_storage)"'
+    $vmSwitchName = '"ConvergedSwitch(management_compute_storage)"'
     $subscription =  "<Subscription ID>" 
     $resource_group = "myhci-rg"
     $customLocationName = "myhci-cl" 
@@ -204,7 +204,7 @@ Follow these steps to configure a DHCP logical network:
 1. Run the following cmdlet to create a DHCP logical network:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetdynamicname --vm-switch-name $vmswitchname --ip-allocation-method "Dynamic"
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetname --vm-switch-name $vmSwitchName --ip-allocation-method "Dynamic"
     ```
 
     Here's a sample output:
