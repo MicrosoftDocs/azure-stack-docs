@@ -2,14 +2,11 @@
   tocHref: /azure-stack/
   topicHref: /azure/index
   items:
-  - name: Azure Stack 
-    tocHref: /azure-stack/
-    topicHref: /azure-stack/index
+  - name: AKS enabled by Azure Arc
+    tocHref: /azure/aks/hybrid/
+    topicHref: /azure/aks/hybrid/index
     items:
-    - name: AKS enabled by Azure Arc
-      tocHref: /azure/aks/hybrid/
-      topicHref: /azure/aks/hybrid/index
 ### For contextual TOC
-    - name: AKS enabled by Azure Arc
-      tocHref: /azure/azure-arc/kubernetes/
-      topicHref: /azure/aks/hybrid/index
+  - name: AKS enabled by Azure Arc
+    tocHref: /azure/azure-arc/kubernetes/
+    topicHref: /azure/aks/hybrid/index
