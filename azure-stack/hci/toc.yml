@@ -73,6 +73,8 @@
       items:
         - name: Security
           items:
+          - name: Security baseline and drift control
+            href: manage/manage-secure-baseline.md
           - name: Manage syslog forwarding
             href: manage/manage-syslog-forwarding.md
           - name: Manage BitLocker encryption
