@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.date: 01/03/2024
 ---
 
-# Manage SDN Multisite for Azure Stack HCI
+# Manage SDN Multisite for Azure Stack HCI (preview)
 
 > Applies to: Azure Stack HCI, version 23H2 (preview)
 
@@ -21,14 +21,11 @@ SDN Multisite allows you to expand the capabilities of traditional SDN on Azure 
 
 In a multisite SDN environment, one site is designated as the primary, and the remaining sites serve as secondary. The primary site is responsible for ensuring that the resources are applied and synchronized across all the sites. If the primary site is unreachable, resources can't be updated through the secondary site. However, if the secondary site is unreachable, resources can be updated through the primary site. During multisite peering, the primary site is automatically selected, which you can change later using Windows Admin Center.
 
-> [!IMPORTANT]
-> Currently, this release supports SDN Multisite across two sites only.
-
 ## Benefits
 
 Here are the benefits of using SDN Multisite:
 
-- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurationCurrently, support fors.
+- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurations.
 - **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
 - **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) and automatic manageability to any of their associated NSGs across your physical locations.
 
@@ -202,4 +199,5 @@ With redeploying after removal, your secondary site will have to be a fresh SDN 
 
 ## Next steps
 
+- [Read the blog about SDN Multisite](https://techcommunity.microsoft.com/t5/azure-stack-blog/software-defined-networking-multisite-a-tale-of-2-sdn-sites/ba-p/3990521)
 - [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
