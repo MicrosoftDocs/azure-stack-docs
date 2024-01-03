@@ -7,6 +7,6 @@
     topicHref: /azure/aks/hybrid/index
     items:
 ### For contextual TOC
-  - name: AKS enabled by Azure Arc
-    tocHref: /azure/azure-arc/kubernetes/
-    topicHref: /azure/aks/hybrid/index
+    - name: AKS enabled by Azure Arc
+      tocHref: /azure/azure-arc/kubernetes/
+      topicHref: /azure/aks/hybrid/index
