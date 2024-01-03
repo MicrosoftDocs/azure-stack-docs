@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 11/29/2023
+  ms.date: 01/03/2023
 title: Azure Arc VM management FAQ (preview)
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Stack HCI, versions 23H2 (preview).
@@ -51,6 +51,11 @@ sections:
       answer: |
         Yes. Azure Kubernetes Service on Azure Stack HCI and Windows Server and VM provisioning from the Azure portal can be deployed on the same Azure Stack HCI cluster. You can deploy the AKS-HCI management cluster first and then Arc Resource Bridge. In this configuration, uninstalling Azure Kubernetes Service from Azure Stack HCI cluster removes Arc Resource Bridge.
     
+    - question: |
+        I used to be able to create virtual networks for my Arc VMs in past releases. Starting 2310(November 2023), I can only create logical networks. What changed?
+      answer: |
+        Starting with Azure Stack HCI 2310 release, logical networks have replaced virtual networks. Logical networks are the Azure resources that represent your physical network. To connect virtual machines to your network, you need to create logical networks on which you can place your VM network interfaces. Virtual networks created on 22H2 platform cannot be used with 2310 release and beyond, and need to be manually deleted.
+
     - question: |
         Can I use SDN for Azure Stack HCI VMs created from the Azure portal?
       answer: |
