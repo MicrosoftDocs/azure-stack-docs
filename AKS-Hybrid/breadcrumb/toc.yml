@@ -1,7 +1,12 @@
-- name: Docs
-  tocHref: /
-  topicHref: /
+- name: Azure Stack
+  tocHref: /azure-stack/
+  topicHref: /azure-stack/index
   items:
   - name: AKS enabled by Azure Arc
     tocHref: /azure/aks/hybrid/
+    topicHref: /azure/aks/hybrid/index
+###    items:
+### For contextual TOC
+  - name: AKS enabled by Azure Arc
+    tocHref: /azure/azure-arc/kubernetes/
     topicHref: /azure/aks/hybrid/index
