@@ -69,6 +69,10 @@
         href: update/update-troubleshooting-23h2.md
     - name: Manage
       items:
+        - name: Security
+          items:
+          - name: Security baseline and drift control
+            href: manage/manage-secure-baseline.md
         - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?
