@@ -22,7 +22,9 @@
     - name: Known issues
       href: known-issues-23h2.md
     - name: Plan
-      items: 
+      items:
+        - name: Security features
+          href: concepts/security-features.md
         - name: Review security
           items:
           - name: Use Windows Defender Application Control 
@@ -103,6 +105,10 @@
             href: migrate/migrate-cluster-new-hardware.md           
     - name: Manage
       items:
+        - name: Security
+          items:
+          - name: Manage syslog forwarding
+            href: manage/manage-syslog-forwarding.md
         - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?
