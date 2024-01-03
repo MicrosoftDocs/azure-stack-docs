@@ -73,13 +73,10 @@
       items:
         - name: Security
           items:
-<<<<<<< HEAD
           - name: Manage syslog forwarding
             href: manage/manage-syslog-forwarding.md
-=======
           - name: Manage BitLocker encryption
             href: manage/manage-bitlocker.md
->>>>>>> 7cdba2ce5677180985464dec008a3632960b6d62
         - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?
