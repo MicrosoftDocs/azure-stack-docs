@@ -22,7 +22,7 @@ For information on other network patterns, see [Azure Stack HCI network deployme
 
 Scenarios for this network pattern include laboratories, factories, branch offices, and datacenter facilities.
 
-Deploy this pattern for enhanced network performance of your system and if you plan to add additional nodes. East-West storage traffic replication won't interfere or compete with north-sound traffic dedicated for management and compute. Logical network configuration when adding additional nodes are ready without requiring workload downtime or physical connection changes. SDN L3 services are fully supported on this pattern.
+Deploy this pattern for enhanced network performance of your system and if you plan to add additional nodes. East-West storage traffic replication won't interfere or compete with north-south traffic dedicated for management and compute. Logical network configuration when adding additional nodes are ready without requiring workload downtime or physical connection changes. SDN L3 services are fully supported on this pattern.
 
 Routing services such as BGP can be configured directly on the TOR switches if they support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device as they're implemented at the virtual network adapter layer.
 
