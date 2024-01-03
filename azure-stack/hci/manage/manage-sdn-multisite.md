@@ -4,7 +4,7 @@ description: Learn how to manage a multisite SDN solution for Azure Stack HCI (p
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/27/2023
+ms.date: 01/03/2024
 ---
 
 # Manage SDN Multisite for Azure Stack HCI
@@ -22,13 +22,13 @@ SDN Multisite allows you to expand the capabilities of traditional SDN on Azure 
 In a multisite SDN environment, one site is designated as the primary, and the remaining sites serve as secondary. The primary site is responsible for ensuring that the resources are applied and synchronized across all the sites. If the primary site is unreachable, resources can't be updated through the secondary site. However, if the secondary site is unreachable, resources can be updated through the primary site. During multisite peering, the primary site is automatically selected, which you can change later using Windows Admin Center.
 
 > [!IMPORTANT]
-> In this release, SDN Multisite is supported only between two sites.
+> Currently, this release supports SDN Multisite across two sites only.
 
 ## Benefits
 
 Here are the benefits of using SDN Multisite:
 
-- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurations.
+- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurationCurrently, support fors.
 - **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
 - **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) and automatic manageability to any of their associated NSGs across your physical locations.
 
@@ -75,10 +75,10 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 
 These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
 
-- Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md)
-- Logical networks. For instructions on how to manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md)
-- Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](./use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](./use-datacenter-firewall-powershell.md)
-- User defined routes
+- Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md).
+- Logical networks. For instructions on how to manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md).
+- Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](./use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](./use-datacenter-firewall-powershell.md).
+- User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn).
 
 **Unsynchronized resources**
 
