@@ -79,8 +79,11 @@
             href: manage/manage-secure-baseline.md
           - name: Manage BitLocker encryption
             href: manage/manage-bitlocker.md
+          - name: Manage secrets rotation
+            href: manage/manage-secrets-rotation.md 
           - name: Manage syslog forwarding
             href: manage/manage-syslog-forwarding.md
+
         - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?

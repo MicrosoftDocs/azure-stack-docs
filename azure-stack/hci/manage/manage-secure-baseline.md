@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/18/2023
+ms.date: 01/04/2024
 ---
 
 # Manage baseline security settings for Azure Stack HCI, version 23H2 (preview)
@@ -32,8 +32,8 @@ Use the following steps to enable drift control:
     Enable-AzsSecurity -FeatureName DriftControl -Scope <Local | Cluster>
     ```
 
-   - **Local** - Affects the local node only. Can be run from a remote PowerShell session.
-   - **Cluster** - Affects all nodes in the cluster using the orchestrator. Requires you to belong to the deployment authorization group (PREFIX-ECESG) and Credential Security Support Provider (CredSSP), or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
+   - **Local** - Affects the local node only.
+   - **Cluster** - Affects all nodes in the cluster using the orchestrator.
 
 ### Disable drift control
 
@@ -46,8 +46,8 @@ Use the following steps to disable drift control:
     Disable-AzsSecurity -FeatureName DriftControl -Scope <Local | Cluster>
     ```
 
-   - **Local** - Affects the local node only. Can be run from a regular remote PowerShell session.
-   - **Cluster** - Affects all nodes in the cluster using the orchestrator. Requires user to belong to the deployment authorization group (PREFIX-ECESG) and CredSSP, or an Azure Stack HCI server using an RDP connection.
+   - **Local** - Affects the local node only.
+   - **Cluster** - Affects all nodes in the cluster using the orchestrator.
 
 ## Configure security settings during deployment
 
@@ -78,14 +78,14 @@ The following table describes security settings that can be configured on your A
 The following cmdlet properties are for the *AzureStackOSConfigAgent* module. The module is installed during deployment.
 
 - `Get-AzsSecurity`  -Scope: <Local | PerNode | AllNodes | Cluster>
-- `Enable-AzsSecurity`   -Scope <Local | Cluster>
-- `Disable-AzsSecurity`  -Scope <Local | Cluster>
-
   - **Local** - Provides boolean value (true/False) on local node. Can be run from a regular remote PowerShell session.
   - **PerNode** - Provides boolean value (true/False) per node.
   - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
-    - AllNodes –Provides boolean value (true/False) computed across nodes-  requires CredSSP (when using remote PowerShell) or RDP connection.
-    - Cluster  –Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either CredSSP (when using remote PowerShell) or RDP connection.
+    - AllNodes – Provides boolean value (true/False) computed across nodes-  requires CredSSP (when using remote PowerShell) or RDP connection.
+    - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either CredSSP (when using remote PowerShell) or RDP connection.
+
+- `Enable-AzsSecurity`   -Scope <Local | Cluster>
+- `Disable-AzsSecurity`  -Scope <Local | Cluster>
   - **FeatureName** - <CredentialGuard | DriftControl | DRTM | HVCI | SideChannelMitigation | SMBEncryption | SMBSigning | VBS>
     - Credential Guard
     - Drift Control
