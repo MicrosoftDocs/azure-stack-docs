@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/15/2023
+ms.date: 01/04/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -188,6 +188,8 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 With all the prerequisite and preparation steps complete, you are ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file.
 
+Use the parameters contained in the JSON file to fill out all values, including the encoded values discussed previously. Specifically, all values that have a null value need to be populated.
+
 1. In Azure portal, go to **Home**.
 
 1. Select **Create a resource**.
@@ -205,9 +207,6 @@ With all the prerequisite and preparation steps complete, you are ready to deplo
 
 1. On the **Custom deployment** page, select **Edit parameters**.
 
-1. Paste the Secret value from the clipboard you previously saved to the workspace, where **Deployment Mode = Validate**.
-    <!--A screenshot of a computer program-->
-
 1. Select **Save**.
 
 1. Verify that the field for the ARM deployment template has been filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment. All should be filled in except for the resource group.
@@ -215,31 +214,25 @@ With all the prerequisite and preparation steps complete, you are ready to deplo
 1. Select the appropriate resource group for your environment.
 
 1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
-A screenshot of a computer
 
 1. Select **Review + create**.
 
 1. Select  **Create**. This will create the remaining prerequisite resources and validate the deployment. Validation takes about 10 minutes to complete.
 A screenshot of a computer
 
-1. Once validation is complete, select **Redeploy**. 
-A screenshot of a computer
+1. Once validation is complete, select **Redeploy**.
 
 1. On the **Custom deployment** screen, select **Edit parameters**.
 
-1. Paste the contents of the special Params KeyVault for your environment.
-
 1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
     <!--A screen shot of a computer program-->
-
-1. Verify that all the fields for the ARM deployment template have been filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment.
 
 1. Select the appropriate resource group for your environment.
 
 1. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
     <!--A screenshot of a computer-->
 
-1. Select **Review + create**. 
+1. Select **Review + create**.
 
 1. Select **Create**. This will begin deployment, using the existing prerequisite resources that were created during the **Validate** step.
     <!--A screenshot of a computer-->
@@ -256,14 +249,11 @@ A screenshot of a computer
 
     <!--A screenshot of a computer-->
 
-1. Refresh and watch the deployment progress from the seed server. Deployment takes between 2.5 and 3 hours.
+1. Refresh and watch the deployment progress from the seed server. Deployment takes between 2.5 and 3 hours. Several steps will take 40-50 minutes or more.
 
     > [!Note]
     > If you check back on the template deployment, you will see that it eventually times out. This is a known issue, so watching **Deployments (preview)** is the best way to monitor the progress of deployment.
 
-    <!--A screenshot of a computer-->
-
-1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
     <!--A screenshot of a computer-->
 
 1. Once complete, the task at the top will update with status and end time.
