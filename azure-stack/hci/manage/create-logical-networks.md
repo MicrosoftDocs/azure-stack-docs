@@ -276,7 +276,7 @@ Complete the following steps to create a logical network using Azure portal.
 1. On the **Create logical network** page, on the **Basics** tab:
 
     - Select the Azure subscription name.
-    - Associated resource group name.
+    - Select the associated resource group name.
     - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created.
     - Enter the virtual switch name that you saved earlier.
     - The geographic region is autoamtically set to the region where you registered your cluster.
