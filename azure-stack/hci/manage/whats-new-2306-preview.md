@@ -45,6 +45,9 @@ The following new features are available in the 2306 preview release of Suppleme
 - **Remove requirement for D: drive** - In this release, the requirement of boot (C: drive) partition and data (D:) partition is removed. This partition was created when you installed the operating system on your Azure Stack HCI servers.
 - **Manage capacity on your cluster** - Starting this release, you can manage the cluster capacity by adding servers to your cluster. You can also repair a server in an existing cluster. For more information, see [Add a server](./add-server.md) and [Repair a server](./repair-server.md) in your Azure Stack HCI cluster.
 
+## Known Issues
+
+To review a list of the known issues for this release, see [View known issues in Azure Stack HCI, 2306 Supplemental Package release (preview)](../hci-known-issues-2306.md)
 
 ## Next steps
 
