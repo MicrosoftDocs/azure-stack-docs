@@ -1,9 +1,9 @@
 ﻿---
-title: Tutorial - Prepare an application for AKS hybrid 
-description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS hybrid.
+title: Tutorial - Prepare an application for AKS enabled by Azure Arc 
+description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS.
 services: container-service
 ms.topic: tutorial
-ms.date: 10/07/2022
+ms.date: 01/02/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan

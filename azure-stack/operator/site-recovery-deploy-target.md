@@ -4,7 +4,7 @@ description: Learn how to deploy virtual machines to targets in Azure Site Recov
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/10/2023
+ms.date: 01/03/2024
 ---
 
 
@@ -30,6 +30,9 @@ For the installation of these services, you must obtain 2 public key infrastruct
 :::image type="content" source="media/site-recovery-deploy-target/certificates.png" alt-text="Screenshot of certificates selection picker." lightbox="media/site-recovery-deploy-target/certificates.png":::
 
 Once these 2 certificates are ready, installation on the target requires that you download each of these images from Marketplace Management, and start each respective installation.
+
+> [!NOTE]
+> The Azure Site Recovery resource provider manages the DNS zone creation. If you are required to create a new DNS entry during the creation of the SSL certificate, make sure to remove the DNS entry after the certificate is issued. Failing to remove this entry might mean it has a preference over the one created by the Site Recovery resource provider, and the installation of Azure Site Recovery will fail.
 
 ## Download and install packages
 
