@@ -209,6 +209,7 @@ Follow these steps to configure a DHCP logical network:
     | **location** | Azure regions as specified by `az locations`. |
     | **vlan** | VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
 
+
 1. Run the following cmdlet to create a DHCP logical network:
 
     ```azurecli
@@ -272,14 +273,14 @@ Complete the following steps to create a logical network using Azure portal.
 
    :::image type="content" source="./media/create-logical-networks/create-logical-network.png" alt-text="Screenshot showing logical network creation link." lightbox="./media/create-logical-networks/create-logical-network.png":::
 
-1. On the **Create logical network** page, on the **Basics** tab, select or enter the following:
+1. On the **Create logical network** page, on the **Basics** tab:
 
-    - Azure subscription name.
+    - Select the Azure subscription name.
     - Associated resource group name.
-    - Logical network name.
-    - Virtual switch name (select name saved previously).
-    - Geographic region.
-    - Custom location.
+    - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created.
+    - Enter the virtual switch name that you saved earlier.
+    - The geographic region is autoamtically set to the region where you registered your cluster.
+    - The custom location is automatically populated from the cluster.
 
     When complete, select **Next: Network Configuration**.
 
