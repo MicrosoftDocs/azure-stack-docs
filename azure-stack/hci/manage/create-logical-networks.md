@@ -266,11 +266,11 @@ Complete the following steps to create a logical network using Azure portal.
 
 1. In the left pane, under **Resources**, select **Logical networks**.
 
-   :::image type="content" source="./media/logical-networks/select-logical-network.png" alt-text="Screenshot showing Resources pane in Azure portal." lightbox="./media/logical-networks/select-logical-network.png":::
+   :::image type="content" source="./media/create-logical-networks/select-logical-network.png" alt-text="Screenshot showing Resources pane in Azure portal." lightbox="./media/create-logical-networks/select-logical-network.png":::
 
 1. In the right pane, select **Create logical network**.
 
-   :::image type="content" source="./media/logical-networks/create-logical-network.png" alt-text="Screenshot showing logical network creation link." lightbox="./media/logical-networks/create-logical-network.png":::
+   :::image type="content" source="./media/create-logical-networks/create-logical-network.png" alt-text="Screenshot showing logical network creation link." lightbox="./media/create-logical-networks/create-logical-network.png":::
 
 1. On the **Create logical network** page, on the **Basics** tab, select or enter the following:
 
@@ -283,7 +283,7 @@ Complete the following steps to create a logical network using Azure portal.
 
     When complete, select **Next: Network Configuration**.
 
-   :::image type="content" source="./media/logical-networks/enter-network-name.png" alt-text="Screenshot showing Basics tab." lightbox="./media/logical-networks/enter-network-name.png":::
+   :::image type="content" source="./media/create-logical-networks/enter-network-name.png" alt-text="Screenshot showing Basics tab." lightbox="./media/create-logical-networks/enter-network-name.png":::
 
 ### Create a static logical network
 
@@ -296,11 +296,11 @@ Complete the following steps to create a logical network using Azure portal.
 
     When complete, select **Review + Create**.
 
-   :::image type="content" source="./media/logical-networks/enter-ip-addresses.png" alt-text="Screenshot showing Network configuration tab." lightbox="./media/logical-networks/enter-ip-addresses.png":::
+   :::image type="content" source="./media/create-logical-networks/enter-ip-addresses.png" alt-text="Screenshot showing Network configuration tab." lightbox="./media/create-logical-networks/enter-ip-addresses.png":::
 
 1. On the **Review + Create** tab, review network settings and then select **Create**:
 
-   :::image type="content" source="./media/logical-networks/review-and-create-static.png" alt-text="Screenshot showing static network properties page." lightbox="./media/logical-networks/review-and-create-static.png":::
+   :::image type="content" source="./media/create-logical-networks/review-and-create-static.png" alt-text="Screenshot showing static network properties page." lightbox="./media/create-logical-networks/review-and-create-static.png":::
 
 ### Create a DHCP logical network
 
@@ -308,11 +308,11 @@ Complete the following steps to create a logical network using Azure portal.
 
 2. Enter VLAN ID if used.
 
-   :::image type="content" source="./media/logical-networks/configure-dhcp.png" alt-text="Screenshot of 8." lightbox="./media/logical-networks/configure-dhcp.png":::
+   :::image type="content" source="./media/create-logical-networks/configure-dhcp.png" alt-text="Screenshot of 8." lightbox="./media/create-logical-networks/configure-dhcp.png":::
 
 1. On the **Review + Create** tab, review settings and then select **Create**:
 
-   :::image type="content" source="./media/logical-networks/review-and-create.png" alt-text="Screenshot of 5." lightbox="./media/logical-networks/review-and-create.png":::
+   :::image type="content" source="./media/create-logical-networks/review-and-create.png" alt-text="Screenshot of 5." lightbox="./media/create-logical-networks/review-and-create.png":::
 
 ---
 
@@ -322,19 +322,19 @@ These steps are the same for both static and DHCP network deployments.
 
 1. Verify the network deployment job was submitted:
 
-   :::image type="content" source="./media/logical-networks/submitting-deployment.png" alt-text="Screenshot of 9." lightbox="./media/logical-networks/submitting-deployment.png":::
+   :::image type="content" source="./media/create-logical-networks/submitting-deployment.png" alt-text="Screenshot of 9." lightbox="./media/create-logical-networks/submitting-deployment.png":::
 
 1. Verify that the deployment is in progress:
 
-   :::image type="content" source="./media/logical-networks/deployment-in-progress.png" alt-text="Screenshot of 10." lightbox="./media/logical-networks/deployment-in-progress.png":::
+   :::image type="content" source="./media/create-logical-networks/deployment-in-progress.png" alt-text="Screenshot of 10." lightbox="./media/create-logical-networks/deployment-in-progress.png":::
 
 1. Verify the deployment job has successfully completed and then select either **Pin to dashboard** or **Go to resource group**:
 
-   :::image type="content" source="./media/logical-networks/deployment-succeeded.png" alt-text="Screenshot of 11." lightbox="./media/logical-networks/deployment-succeeded.png":::
+   :::image type="content" source="./media/create-logical-networks/deployment-succeeded.png" alt-text="Screenshot of 11." lightbox="./media/create-logical-networks/deployment-succeeded.png":::
 
 1. In the resource group, select **Overview** and then verify the logical network is created and listed on the **Resources** tab:
 
-   :::image type="content" source="./media/logical-networks/verify-network-created.png" alt-text="Screenshot of 12." lightbox="./media/logical-networks/verify-network-created.png":::
+   :::image type="content" source="./media/create-logical-networks/verify-network-created.png" alt-text="Screenshot of 12." lightbox="./media/create-logical-networks/verify-network-created.png":::
 
 ## Next steps
 
