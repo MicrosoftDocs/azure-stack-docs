@@ -73,12 +73,14 @@
       items:
         - name: Security
           items:
-          - name: Security baseline and drift control
+          - name: Manage WDAC
+            href: manage/manage-wdac.md
+          - name: Manage security baseline and drift control
             href: manage/manage-secure-baseline.md
-          - name: Manage syslog forwarding
-            href: manage/manage-syslog-forwarding.md
           - name: Manage BitLocker encryption
             href: manage/manage-bitlocker.md
+          - name: Manage syslog forwarding
+            href: manage/manage-syslog-forwarding.md
         - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?
