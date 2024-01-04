@@ -19,7 +19,7 @@ The Emergency VM Access service (EVA) enables a user to request help from the op
 
 This feature must be enabled per subscription, and the operator needs to enable Remote Desktop access in order for the **cloudadmin** user to access the emergency recovery console VMs (ERCS).
 
-The first step for the user is to request VM console access via PowerShell. The request provides consent and allows the operator with additional information to connect to the virtual machine via its console. Console access does not depend on network connectivity and uses a data channel of the hypervisor.
+The first step for the user is to request VM console access via PowerShell. The request provides consent and allows the operator with additional information to connect to the virtual machine via its console. Console access doesn't depend on network connectivity and uses a data channel of the hypervisor.
 
 It is important to note that the operator can only authenticate to the operating system running inside the VM if the credentials are known. At that point, the operator can also share screens with the user and resolve the issue together to restore network connectivity.
 
@@ -147,7 +147,7 @@ As a user, you provide consent to the operator to create console access for a sp
 
 The next step for the Azure Stack Hub operator is to enable Remote Desktop access to the Emergency Recovery Console VMs (ERCS), which host the privileged endpoints.
 
-Run the following commands in the privileged endpoint (PEP) from the operator workstation that will be used to connect to the ERCS. The command will add the workstation's IP to the network safelist. Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md). The operator can be a member of the **cloudadmin** users group, or **cloudadmin** itself:
+Run the following commands in the privileged endpoint (PEP) from the operator workstation that you use to connect to the ERCS. The command adds the workstation's IP to the network safelist. Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md). The operator can be a member of the **cloudadmin** users group, or **cloudadmin** itself:
 
 ```powershell
 Grant-RdpAccessToErcsVM
