@@ -285,7 +285,7 @@ Complete the following steps to create a logical network using Azure portal.
 
    :::image type="content" source="./media/create-logical-networks/enter-network-name.png" alt-text="Screenshot showing Basics tab." lightbox="./media/create-logical-networks/enter-network-name.png":::
 
-### Create a static logical network
+### Create a static logical network via portal
 
 1. On the **Network configuration** tab, select **Static** and then enter the following:
     - IPv4 address space (previously reserved).
@@ -302,7 +302,7 @@ Complete the following steps to create a logical network using Azure portal.
 
    :::image type="content" source="./media/create-logical-networks/review-and-create-static.png" alt-text="Screenshot showing static network properties page." lightbox="./media/create-logical-networks/review-and-create-static.png":::
 
-### Create a DHCP logical network
+### Create a DHCP logical network via portal
 
 1. On the **Network Configuration** tab, select **DHCP**, and then select **Review + Create**.
 
@@ -314,9 +314,7 @@ Complete the following steps to create a logical network using Azure portal.
 
    :::image type="content" source="./media/create-logical-networks/review-and-create.png" alt-text="Screenshot of 5." lightbox="./media/create-logical-networks/review-and-create.png":::
 
----
-
-## Deploy the logical network
+### Deploy the logical network via portal
 
 These steps are the same for both static and DHCP network deployments.
 
@@ -335,6 +333,9 @@ These steps are the same for both static and DHCP network deployments.
 1. In the resource group, select **Overview** and then verify the logical network is created and listed on the **Resources** tab:
 
    :::image type="content" source="./media/create-logical-networks/verify-network-created.png" alt-text="Screenshot of 12." lightbox="./media/create-logical-networks/verify-network-created.png":::
+
+---
+
 
 ## Next steps
 
