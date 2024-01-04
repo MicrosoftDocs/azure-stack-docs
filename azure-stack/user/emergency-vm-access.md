@@ -21,7 +21,7 @@ This feature must be enabled per subscription, and the operator needs to enable 
 
 The first step for the user is to request VM console access via PowerShell. The request provides consent and allows the operator with additional information to connect to the virtual machine via its console. Console access doesn't depend on network connectivity and uses a data channel of the hypervisor.
 
-It is important to note that the operator can only authenticate to the operating system running inside the VM if the credentials are known. At that point, the operator can also share screens with the user and resolve the issue together to restore network connectivity.
+The operator can only authenticate to the operating system running inside the VM if the credentials are known. At that point, the operator can also share screens with the user and resolve the issue together to restore network connectivity.
 
 > [!IMPORTANT]
 > For VMs running Windows Server, the EVA feature is limited to computers running with a graphical user interface (GUI). For Windows Server, the core operating system doesn't support on-screen keyboard functionality. Since you cannot send the **Ctrl+Alt+Del** key combination as input, you can't sign in to a core server, even though you can connect to its console. If you need to address an issue with the Windows core OS, please engage Microsoft support to provide console access from an unlocked PEP.
@@ -175,7 +175,7 @@ Revoke-RdpAccessToErcsVM
    ConnectTo-TenantVm -ResourceID
    ```
 
-1. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator does not have any credentials with which to sign in to the guest operating system.
+1. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator doesn't have any credentials with which to sign in to the guest operating system.
 
    > [!NOTE]
    > In the sign-in screen, pressing the Windows + U keys launches the on-screen keyboard, which allows sending CTRL + ALT + Delete. You must be in full screen RDP mode in order to use the Windows + U key combination.
