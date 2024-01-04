@@ -279,7 +279,7 @@ Complete the following steps to create a logical network using Azure portal.
     - Select the associated resource group name.
     - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created.
     - Enter the virtual switch name that you saved earlier.
-    - The geographic region is autoamtically set to the region where you registered your cluster.
+    - The geographic region is automatically set to the region where you registered your cluster.
     - The custom location is automatically populated from the cluster.
 
     When complete, select **Next: Network Configuration**.
@@ -307,13 +307,13 @@ Complete the following steps to create a logical network using Azure portal.
 
 1. On the **Network Configuration** tab, select **DHCP**, and then select **Review + Create**.
 
-2. Enter VLAN ID if used.
+1. Enter VLAN ID if used.
 
-   :::image type="content" source="./media/create-logical-networks/configure-dhcp.png" alt-text="Screenshot of 8." lightbox="./media/create-logical-networks/configure-dhcp.png":::
+   :::image type="content" source="./media/create-logical-networks/configure-dhcp.png" alt-text="Screenshot of DHCP configuration for logical network." lightbox="./media/create-logical-networks/configure-dhcp.png":::
 
 1. On the **Review + Create** tab, review settings and then select **Create**:
 
-   :::image type="content" source="./media/create-logical-networks/review-and-create.png" alt-text="Screenshot of 5." lightbox="./media/create-logical-networks/review-and-create.png":::
+   :::image type="content" source="./media/create-logical-networks/review-and-create.png" alt-text="Screenshot of Review + Create for the DHCP logical network." lightbox="./media/create-logical-networks/review-and-create.png":::
 
 ### Deploy the logical network via portal
 
@@ -321,19 +321,19 @@ These steps are the same for both static and DHCP network deployments.
 
 1. Verify the network deployment job was submitted:
 
-   :::image type="content" source="./media/create-logical-networks/submitting-deployment.png" alt-text="Screenshot of 9." lightbox="./media/create-logical-networks/submitting-deployment.png":::
+   :::image type="content" source="./media/create-logical-networks/submitting-deployment.png" alt-text="Screenshot of the submitted deployment job." lightbox="./media/create-logical-networks/submitting-deployment.png":::
 
 1. Verify that the deployment is in progress:
 
-   :::image type="content" source="./media/create-logical-networks/deployment-in-progress.png" alt-text="Screenshot of 10." lightbox="./media/create-logical-networks/deployment-in-progress.png":::
+   :::image type="content" source="./media/create-logical-networks/deployment-in-progress.png" alt-text="Screenshot indicating that the deployment job is in progress." lightbox="./media/create-logical-networks/deployment-in-progress.png":::
 
 1. Verify the deployment job has successfully completed and then select either **Pin to dashboard** or **Go to resource group**:
 
-   :::image type="content" source="./media/create-logical-networks/deployment-succeeded.png" alt-text="Screenshot of 11." lightbox="./media/create-logical-networks/deployment-succeeded.png":::
+   :::image type="content" source="./media/create-logical-networks/deployment-succeeded.png" alt-text="Screenshot of successful completion of the deployment job." lightbox="./media/create-logical-networks/deployment-succeeded.png":::
 
 1. In the resource group, select **Overview** and then verify the logical network is created and listed on the **Resources** tab:
 
-   :::image type="content" source="./media/create-logical-networks/verify-network-created.png" alt-text="Screenshot of 12." lightbox="./media/create-logical-networks/verify-network-created.png":::
+   :::image type="content" source="./media/create-logical-networks/verify-network-created.png" alt-text="Screenshot of the newly created logical network." lightbox="./media/create-logical-networks/verify-network-created.png":::
 
 ---
 
