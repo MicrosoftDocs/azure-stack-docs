@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 01/03/2023
+  ms.date: 01/03/2024
 title: Azure Arc VM management FAQ (preview)
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Stack HCI, versions 23H2 (preview).
