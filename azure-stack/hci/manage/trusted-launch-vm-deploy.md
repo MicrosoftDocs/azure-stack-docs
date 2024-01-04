@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/04/2023
+ms.date: 12/12/2023
 ---
 
 # Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)
@@ -163,7 +163,7 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
 1. Run the following cmdlet to find the owner node of the VM:
 
     ```PowerShell
-    Get-ClusterGroup <VM_Name>
+    Get-ClusterGroup <vmName>
     ```
 
 1. Run the following cmdlet on the owner node of the VM:  

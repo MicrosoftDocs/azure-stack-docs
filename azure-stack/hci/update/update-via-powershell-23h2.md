@@ -463,6 +463,10 @@ After the updates are installed, verify the solution version of the environment 
     PS C:\Users\lcmuser>
     ```
 
+## Troubleshoot updates
+
+To resume a previously failed update run or to troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+
 ## Next steps
 
 Learn more about how to [Update existing Azure Stack HCI clusters](../manage/update-cluster.md) when the orchestrator isn't installed.
