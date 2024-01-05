@@ -45,7 +45,7 @@ To learn how you can back up VMs running on Azure Stack HCI with ease, check out
 Commvault is a complete data management platform to store, protect, manage, and use data across on-premises and cloud locations.
 
 - Application listing: [Microsoft Azure Stack](https://www.commvault.com/supported-technologies/microsoft/azurestack)
-- Application support: [Azure Stack HCI](https://documentation.commvault.com/11.21/essential/132799_microsoft_azure_stack_hci.html)
+- Application support: [Azure Stack HCI](https://documentation.commvault.com/v11/essential/azure_stack_hci.html)
 
 To enhance your Azure Stack HCI deployment with intelligent data management, check out the [Solution Brief](https://bit.ly/2ONrZGv).
 
