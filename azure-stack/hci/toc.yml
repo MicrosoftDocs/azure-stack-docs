@@ -23,16 +23,8 @@
       href: known-issues-23h2.md
     - name: Plan
       items:
-        - name: Security features
+        - name: Review security features
           href: concepts/security-features.md
-        - name: Review security
-          items:
-          - name: Use Windows Defender Application Control 
-            href: concepts/security-windows-defender-application-control.md
-          - name: Review security baseline settings
-            href: concepts/secure-baseline.md
-          - name: Understand BitLocker encryption
-            href: concepts/security-bitlocker.md
         - name: Assess environment readiness
           href: manage/use-environment-checker.md
     - name: Deploy
@@ -159,8 +151,7 @@
       items: 
       - name: Azure Stack HCI observability
         href: concepts/observability.md
-      - name: Other security features
-        href: concepts/other-security-features.md
+
 - name: Plan
   items:
   - name: Requirements
