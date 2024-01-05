@@ -19,7 +19,7 @@ This article describes how to manage Arc virtual machines (VMs) running on Azure
 
 ## Manage Arc VM resources
 
-Once the Arc VMs are deployed, you may need to manage the VMs. This would require adding data disks, network interafces, cores or memory to a VM, starting, stopping or restarting VMs.
+Once the Arc VMs are deployed, you may need to manage the VMs. This would require adding data disks, network interfaces, cores or memory to a VM, starting, stopping or restarting VMs.
 
 ## Prerequisites
 
@@ -51,7 +51,7 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to start a
 
 1. Go to the Azure Stack HCI cluster resource and then go to **Virtual machines**.
 
-1. In the right pane, from the list of virtual machines, select a VM that is not running and you wish to start.
+1. In the right pane, from the list of virtual machines, select a VM that isn't running and you wish to start.
 
 1. On the **Overview** page for the VM, from the top command bar in the right pane, select **Start**, then select **Yes**.
 
