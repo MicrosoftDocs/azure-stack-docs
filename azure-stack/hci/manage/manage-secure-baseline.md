@@ -81,8 +81,8 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
   - **Local** - Provides boolean value (true/False) on local node. Can be run from a regular remote PowerShell session.
   - **PerNode** - Provides boolean value (true/False) per node.
   - **Report** - Requires CredSSP or an Azure Stack HCI server using a remote desktop protocol (RDP) connection.
-    - AllNodes – Provides boolean value (true/False) computed across nodes-  requires CredSSP (when using remote PowerShell) or RDP connection.
-    - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster, requires deployment authorization (PREFIX-ECESG) and either CredSSP (when using remote PowerShell) or RDP connection.
+    - AllNodes – Provides boolean value (true/False) computed across nodes.
+    - Cluster – Provides boolean value from ECE store. Interacts with the orchestrator and acts to all the nodes in the cluster.
 
 - `Enable-AzsSecurity`   -Scope <Local | Cluster>
 - `Disable-AzsSecurity`  -Scope <Local | Cluster>
