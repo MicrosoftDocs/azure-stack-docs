@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/27/2023
+ms.date: 01/04/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2 (preview)
@@ -17,8 +17,8 @@ Azure Stack HCI is a secure-by-default product that has more than 300 security s
 
 This article describes the following security features associated with your Azure Stack HCI cluster, version 23H2 (preview):
 
-- [Secure baseline and drift control](#secure-baseline-and-drift-control) - Improves the security posture by disabling legacy protocols and ciphers, reduces operating expenditure (OPEX) with built-in drift protection, and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - [Windows Defender Application Control](#windows-defender-application-control) - A software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run.
+- [Security baseline and drift control](#security-baseline-and-drift-control) - Improves the security posture by disabling legacy protocols and ciphers, reduces operating expenditure (OPEX) with built-in drift protection, and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - [Bitlocker encryption](#bitlocker-encryption) - By default, data-at-rest encryption is enabled on data volumes created during deployment.
 - [Local built-in user accounts](#local-built-in-user-accounts) - The names of local built-in users associated with the `RID 500` and `RID 501` accounts have been updated in this release.
 - Other security features:
@@ -30,13 +30,19 @@ This article describes the following security features associated with your Azur
 
 For additional security considerations, see:
 
-- [Manage Windows Defender Application Control](../whats-new.md).
-- [Manage baseline security settings and drift control](../whats-new.md).
-- [Manage BitLocker](../whats-new.md).
+- [Manage Windows Defender Application Control](../manage/manage-wdac.md).
+- [Manage security baseline and drift control](../manage/manage-secure-baseline.md).
+- [Manage BitLocker encryption](../manage/manage-bitlocker.md).
+- [Manage secrets rotation](../manage/manage-secrets-rotation.md)
+- [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Secure baseline and drift control
+## Windows Defender Application Control
+
+Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
+
+## Security baseline and drift control
 
 Your Azure Stack HCI has more than 300 security settings enabled by default that provide a consistent security baseline, a baseline management system, and an associated drift control mechanism.
 
@@ -50,11 +56,7 @@ Secure baseline on Azure Stack HCI:
 - Reduces OPEX with a built-in drift protection mechanism and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
-For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../whats-new.md).
-
-## Windows Defender Application Control
-
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../whats-new.md).
+For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../manage/manage-secure-baseline.md).
 
 ## BitLocker encryption
 
@@ -65,7 +67,7 @@ We recommend that you store BitLocker recovery keys in a secure location outside
 For more information about BitLocker, see:
 
 - [Use BitLocker with Cluster Shared Volumes (CSV)](../manage/bitlocker-on-csv.md).
-- [BitLocker encryption on Azure Stack HCI (preview)](./security-bitlocker.md).
+- [BitLocker encryption on Azure Stack HCI (preview)](../manage/manage-bitlocker.md).
 
 ## Local built-in user accounts
 
@@ -92,7 +94,9 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> This action will take about 10 minutes, depending on the size of the cluster.  The operation requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote PowerShell invocation or remote desktop protocol (RDP) connection.
+> This action will take about 10 minutes, depending on the size of the cluster.
+
+For more information, see [Manage secrets rotation](../manage/manage-secrets-rotation.md).
 
 ## Syslog forwarding of security events
 
