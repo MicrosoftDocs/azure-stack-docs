@@ -1,9 +1,9 @@
 ---
 title: Azure Resource Manager template deployment for Azure Stack HCI, version 23H2 (preview)
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template (preview).
-author: alkohli
+author: dsisson
 ms.topic: how-to
-ms.date: 01/04/2024
+ms.date: 01/05/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -66,9 +66,27 @@ Follow these steps to get and encode the access key for the ARM deployment templ
 
 1. The encoded output value you generate is what the ARM deployment template expects. Make a note of this value as well as the name of the storage account. You will use these values later in the deployment process.
 
+### Encode other parameter values
+
+In addition to the storage witness access key, you also need to similiarly encode the values for the following parameters. Use the PowerShell script above to encode these values:
+
+- Local account password (localAdminSecretValue = localaccountname:localacountpassword)
+- Domain account password (domainAdminSecretValue = domainaccountname:domainaccountpassword)
+- Application client ID secret value (arbDeploymentSpnValue = clientId:clientSecretValue)
+
+> [!Note]
+> For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
+
+1. In Azure portal, go to **App registrations**, then select **Overview**.
+1. Find the **Application (client) ID**.
+1. Select **Certifications & secrets**.
+1. Select the **Client secrets** tab.
+1. Under **Value**, copy the secret value.
+1. Encode the value as described previously using PowerShell.
+
 ### Assign resource permissions
 
-You need to create and assign the needed resource permissions before you use the deployment template. 
+You need to create and assign the needed resource permissions before you use the deployment template.
 
 #### Verify access to the resource group
 
@@ -188,7 +206,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 With all the prerequisite and preparation steps complete, you are ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file.
 
-Use the parameters contained in the JSON file to fill out all values, including the encoded values discussed previously. Specifically, all values that have a null value need to be populated.
+Use the parameters contained in the JSON file to fill out all values, including the encoded values generated previously. Specifically, all values that have a null value need to be populated.
 
 1. In Azure portal, go to **Home**.
 
