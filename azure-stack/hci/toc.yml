@@ -109,7 +109,9 @@
               href: manage/create-network-interfaces.md
             - name: 5. Create Arc VMs
               href: manage/create-arc-virtual-machines.md
-          - name: Manage Arc VM reources 
+          - name: Manage Arc VMs
+            href: manage/manage-arc-virtual-machines.md
+          - name: Manage Arc VM reources
             href: manage/manage-arc-virtual-machine-resources.md 
           - name: Manage VM extensions
             href: manage/virtual-machine-manage-extension.md
