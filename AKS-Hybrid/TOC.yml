@@ -3,7 +3,7 @@
 - name: Overview
   expanded: true
   items:
-  - name: AKS enabled by Arc overview
+  - name: AKS enabled by Arc
     href: aks-overview.md
 - name: Architecture
   items:
