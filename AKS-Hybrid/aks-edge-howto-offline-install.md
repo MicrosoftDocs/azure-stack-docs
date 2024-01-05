@@ -97,6 +97,10 @@ During the deployment of an AKS Edge Essentials cluster, the PowerShell deployme
 
 During the creation of the [deployment JSON file](./aks-edge-howto-setup-machine.md), ensure that you mark the `InternetDisabled` parameter inside the `Networking` section as **true**.
 
+## Configure your network adaptors
+
+During deployment, AKS EE needs an adapter that is enabled and has the IP Address, subnet & Default Gateway properties set. These are automatically populated in a DHCP environment. In the case where it is set manually, ensure all three are properties are set before you begin deployment.
+
 ## Licensing
 
 You can license AKS Edge Essentials offline deployments for commercial use using the **Volume licensing model**. AKS Edge Essentials is licensed and priced as a per-device, per-month model. Each licensed unit is applied to a device in your cluster. For more licensing information, see [AKS Edge Essentials - Licensing](aks-edge-licensing.md).
