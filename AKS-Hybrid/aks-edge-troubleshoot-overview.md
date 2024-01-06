@@ -46,7 +46,7 @@ This script checks for the missing images and reimports them as needed.
 
 1. Issue: `Disconnect-AksEdgeArc` doesn't remove the pods from the cluster.
 
-   Workaround: If the pods aren't cleaned up, run the following commands to manually clean up the existing Azure Arc-related resources before trying to reconnect again:
+   Workaround: If the pods aren't cleaned up, run the following commands to manually clean-up the existing Azure Arc-related resources before trying to reconnect again:
 
    ```powershell
        kubectl delete ns azure-arc
@@ -64,7 +64,7 @@ This script checks for the missing images and reimports them as needed.
 
 ###   Failed to get nodeagent certificate : Not Found
 
-Check the network adapter configurations. During deployment, AKS EE needs an adapter that is enabled and has the IP address, subnet & default gateway set. These are automatically populated in a DHCP environment. In the case where it is set manually, ensure all three are set - in many cases the Default Gateway is not set which results in this error. 
+Check the network adapter configurations. During deployment, AKS EE needs an adapter that is enabled and has the IP address, subnet & default gateway set. These are automatically populated in a DHCP environment. In the case, where it's set manually, ensure all three are set - in many cases the Default Gateway is'nt set which results in this error. 
 
 ## Next steps
 
