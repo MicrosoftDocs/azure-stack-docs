@@ -43,7 +43,7 @@ Here are the known issues in this release:
 | Deployment <!--26088401--> |There is an intermittent issue in this release where the Arc integration validation fails with this error: Validator failed. Cannot retrieve the dynamic parameters for the cmdlet. PowerShell Gallery is currently unavailable.  Please try again later. |This issue is intermittent. Try rerunning the deployment. For more information, see [Rerun the deployment](./deploy/deploy-via-portal.md#rerun-deployment).   |
 | Deployment <!--26154450-->| AddNode fails due to trace-execution not being enabled.| Manually copy the cloudcommon folder from one of the other nodes to newly imaged node. |
 | Update <!----> |In rare instances, you may encounter this error while updating your Azure Stack HCI: Type 'UpdateArbAndExtensions' of Role 'MocArb' raised an exception: Exception Upgrading ARB and Extension in step [UpgradeArbAndExtensions :Get-ArcHciConfig] UpgradeArb: Invalid applianceyaml = [C:\AksHci\hci-appliance.yaml].  |If you see this issue, contact Microsoft Support to assist you with the next steps.   |
-| Update <!--26176875--> | Failed to change AzureStackLCMUserPassword: Error: Cannot find an object with identity: '*object identity*'| There's no known workaround in this release. |
+| Update <!--26176875--> | Failed to change AzureStackLCMUserPassword: Error: Cannot find an object with identity: '*object identity*'|  |
 
 
 
