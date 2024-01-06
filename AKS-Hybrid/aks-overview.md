@@ -25,7 +25,7 @@ The available deployment options are:
 
 The following chart can help you to choose the right deployment option for your local environment:
 
-:::image type="content" source="media/aks-overview/aks-chart.png" alt-text="Flowchart showing deployment options.":::
+:::image type="content" source="media/aks-overview/aks-chart.png" alt-text="Flowchart showing deployment options." lightbox="media/aks-overview/aks-chart.png":::
 
 ## Next steps
 
