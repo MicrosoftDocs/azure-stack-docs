@@ -99,7 +99,7 @@ During the creation of the [deployment JSON file](./aks-edge-howto-setup-machine
 
 ## Configure your network adaptors
 
-During deployment, AKS EE needs an adapter that is enabled and has the IP Address, subnet & Default Gateway properties set. These are automatically populated in a DHCP environment. In the case where it is set manually, ensure all three are properties are set before you begin deployment.
+During deployment, AKS Edge Essentials needs an adapter that is enabled and has the IP address, subnet, and default gateway properties set. These are automatically populated in a DHCP environment. If it's set manually, ensure that all three properties are set before you begin deployment.
 
 ## Licensing
 
