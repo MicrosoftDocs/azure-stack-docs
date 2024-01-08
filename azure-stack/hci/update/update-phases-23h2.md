@@ -1,5 +1,5 @@
 ---
-title: Review phases of updates for Azure Stack HCI, version 23H2 (preview).
+title: Review update phases of Azure Stack HCI, version 23H2 (preview).
 description: Understand the various phases of solution updates applied to Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.author: alkohl
@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 11/13/2023
 ---
 
-# Phases of Azure Stack HCI, version 23H2 updates (preview)
+# Review update phases of Azure Stack HCI, version 23H2 updates (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 

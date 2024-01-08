@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/27/2023
+ms.date: 01/04/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2 (preview)
@@ -15,34 +15,21 @@ ms.date: 12/27/2023
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
-This article describes the following security features associated with your Azure Stack HCI cluster, version 23H2 (preview):
-
-- [Secure baseline and drift control](#secure-baseline-and-drift-control) - Improves the security posture by disabling legacy protocols and ciphers, reduces operating expenditure (OPEX) with built-in drift protection, and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
-- [Windows Defender Application Control](#windows-defender-application-control) - A software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run.
-- [Bitlocker encryption](#bitlocker-encryption) - By default, data-at-rest encryption is enabled on data volumes created during deployment.
-- [Local built-in user accounts](#local-built-in-user-accounts) - The names of local built-in users associated with the `RID 500` and `RID 501` accounts have been updated in this release.
-- Other security features:
-  - [Manage secrets in Azure Stack HCI](#manage-secrets-in-azure-stack-hci) - Enables you to create and rotate internal secrets.
-  - [Syslog forwarding of security events](#syslog-forwarding-of-security-events) - Enables you to forward security-related events to a security information and event management (SIEM) system.
-
-> [!IMPORTANT]
-> Security compliance requires strict log and audit of security events; in Azure Stack HCI, we recommend that customers use our Azure Cloud Sentinel service. For more information, see [Microsoft Sentinel](https://azure.microsoft.com/products/microsoft-sentinel).
-
-For additional security considerations, see:
-
-- [Manage Windows Defender Application Control](../whats-new.md).
-- [Manage baseline security settings and drift control](../whats-new.md).
-- [Manage BitLocker](../whats-new.md).
+This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, and more.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Secure baseline and drift control
+## Windows Defender Application Control
+
+Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
+
+## Security baseline and drift control
 
 Your Azure Stack HCI has more than 300 security settings enabled by default that provide a consistent security baseline, a baseline management system, and an associated drift control mechanism.
 
 You can monitor the security baseline and secured-core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
 
-With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
+With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and auto-remediation allow you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
 Secure baseline on Azure Stack HCI:
 
@@ -50,13 +37,9 @@ Secure baseline on Azure Stack HCI:
 - Reduces OPEX with a built-in drift protection mechanism and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
-For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../whats-new.md).
+For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../manage/manage-secure-baseline.md).
 
-## Windows Defender Application Control
-
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../whats-new.md).
-
-## BitLocker encryption
+## Volume encryption via BitLocker
 
 All data-at-rest on your Azure Stack HCI cluster is protected with BitLocker XTS-AES 256-bit encryption. When you deploy your cluster, you have the option to modify security settings. By default, data-at-rest encryption is enabled on data volumes created during deployment. We recommend that you accept the default setting.
 
@@ -65,7 +48,7 @@ We recommend that you store BitLocker recovery keys in a secure location outside
 For more information about BitLocker, see:
 
 - [Use BitLocker with Cluster Shared Volumes (CSV)](../manage/bitlocker-on-csv.md).
-- [BitLocker encryption on Azure Stack HCI (preview)](./security-bitlocker.md).
+- [BitLocker encryption on Azure Stack HCI (preview)](../manage/manage-bitlocker.md).
 
 ## Local built-in user accounts
 
@@ -79,11 +62,11 @@ In this release, the following local built-in users, associated with `RID 500` a
 > [!IMPORTANT]
 > We recommend that you create your own local administrator account, and that you disable the well-known `RID 500` user account.
 
-## Manage secrets in Azure Stack HCI
+## Secret creation and rotation
 
-The Lifecycle Manager on Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. To ensure security, we implemented internal secret creation and rotation capabilities.
+The orchestrator in Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. All the services running on the cluster have authentication and encryption certificates associated with them.
 
-All services exposed internally by Lifecycle Manager have authentication or encryption certificates associated with them. When you review your cluster nodes, you will see several certificates created under the path `LocalMachine/Personal certificate store (Cert:\LocalMachine\My).
+To ensure security, we have implemented internal secret creation and rotation capabilities. When you review your cluster nodes, you see several certificates created under the path LocalMachine/Personal certificate store (`Cert:\LocalMachine\My`).
 
 In this release, the following capabilities are enabled:
 
@@ -92,7 +75,9 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> This action will take about 10 minutes, depending on the size of the cluster.  The operation requires the user to belong to the `LCM authorization` group (PREFIX-ECESG) and `CredSSP` for remote PowerShell invocation or remote desktop protocol (RDP) connection.
+> This action takes about ten minutes, depending on the size of the cluster.
+
+For more information, see [Manage secrets rotation](../manage/manage-secrets-rotation.md).
 
 ## Syslog forwarding of security events
 
