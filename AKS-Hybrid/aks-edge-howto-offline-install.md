@@ -1,10 +1,10 @@
 ---
 title: AKS Edge Essentials offline installation
 description: Learn how to configure your machine for AKS Edge Essentials offline installation.
-author: fcabrera23
-ms.author: fcabrera
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 01/08/2024
 ms.custom: template-how-to
 ---
 
