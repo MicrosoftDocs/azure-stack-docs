@@ -17,7 +17,7 @@ This article describes how you can change the password associated with the deplo
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Rotate credentials
+## Change password
 
 Use the PowerShell cmdlet `Set-azurestacklcmuserpassword` to rotate `AzureStackLCMUserCredential` domain administrator credential secrets.
 
