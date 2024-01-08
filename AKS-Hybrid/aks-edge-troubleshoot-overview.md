@@ -4,9 +4,8 @@ description: Learn about common issues and workarounds in AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 10/17/2023
+ms.date: 01/08/2024
 ms.custom: template-concept
-ms.reviewer: fcabrera
 ---
 
 # Troubleshoot common issues in AKS Edge Essentials
@@ -46,7 +45,7 @@ This script checks for the missing images and reimports them as needed.
 
 1. Issue: `Disconnect-AksEdgeArc` doesn't remove the pods from the cluster.
 
-   Workaround: If the pods aren't cleaned up, run the following commands to manually clean-up the existing Azure Arc-related resources before trying to reconnect again:
+   Workaround: If the pods aren't cleaned up, run the following commands to manually clean up the existing Azure Arc-related resources before trying to reconnect again:
 
    ```powershell
        kubectl delete ns azure-arc
@@ -60,7 +59,7 @@ This script checks for the missing images and reimports them as needed.
 
    :::image type="content" source="media/aks-edge/aks-edge-azure-arc-proxy.png" alt-text="Screenshot showing internet options." lightbox="media/aks-edge/aks-edge-azure-arc-proxy.png":::
 
-## Offline Deployments
+## Offline deployments
 
 ###   Failed to get nodeagent certificate : Not Found
 
