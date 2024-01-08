@@ -105,7 +105,7 @@ Beginning this release, the following Azure Arc VM management capabilities are a
 - **New Azure consistent CLI**. Beginning this preview release, a new consistent command line experience is available to create VM and VM resources such as VM images, storage paths, logical networks, and network interfaces. 
     For more information, see [Create Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md).
 - **Support for static IPs**. This release has the support for static IPs. 
-    For more information, see [Create static logical networks on Azure Stack HCI](./manage/create-logical-networks.md#create-a-static-logical-network).
+    For more information, see [Create static logical networks on Azure Stack HCI](./manage/create-logical-networks.md#create-a-static-logical-network-via-portal).
 - **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Arc VMs. 
     For more information, see [Create storage paths on Azure Stack HCI](./manage/create-storage-path.md).
 - **Support for Azure VM extensions on Arc VMs on Azure Stack HCI**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Stack HCI Arc VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal. 

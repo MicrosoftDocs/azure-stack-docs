@@ -2,12 +2,12 @@
 title: Create Kubernetes clusters using Azure CLI (preview)
 description: Learn how to create Kubernetes clusters in Azure Stack HCI using Azure CLI.
 ms.topic: how-to
+ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.date: 11/27/2023
 ms.author: sethm 
 ms.lastreviewed: 11/27/2023
 ms.reviewer: guanghu
-
 ---
 
 # Create Kubernetes clusters using Azure CLI (preview)
