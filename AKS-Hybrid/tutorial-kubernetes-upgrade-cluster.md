@@ -1,22 +1,21 @@
 ---
-title: Tutorial - Upgrade a cluster in AKS hybrid
-description: In this tutorial, learn how to upgrade an existing cluster in AKS hybrid to the latest available Kubernetes version.
-services: container-service
+title: Tutorial - Upgrade a cluster in AKS enabled by Azure Arc
+description: In this tutorial, learn how to upgrade an existing cluster in AKS enabled by Arc to the latest available Kubernetes version.
 ms.topic: tutorial
-ms.date: 10/07/2022
+ms.date: 01/05/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
 author: sethmanheim
-# Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing AKS cluster to the latest Kubernetes version.
+# Intent: As an IT Pro, I need step-by-step instructions on how to upgrade an existing cluster to the latest Kubernetes version.
 # Keyword: upgrade cluster upgrade Kubernetes
 ---
 
-# Tutorial: Upgrade Kubernetes in AKS hybrid
+# Tutorial: Upgrade Kubernetes in AKS enabled by Azure Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-As part of managing the application and cluster lifecycle, you may wish to upgrade to the latest available version of Kubernetes in when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid).
+As part of managing the application and cluster lifecycle, you might want to upgrade to the latest available version of Kubernetes when you're using AKS enabled by Azure Arc.
 
 This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluster. You'll learn how to:
 
@@ -29,29 +28,28 @@ This tutorial, part seven of seven, describes how to upgrade a Kubernetes cluste
 > * Remove a Kubernetes cluster
 
 ## What are the available update options?
+
 There are several types of updates, which can happen independently from each other and in certain supported combinations:
 
-- [Update the AKS host](update-akshci-host-powershell.md) to the latest version.
-- Update an AKS workload cluster to a new Kubernetes version.
-- Update the AKS container hosts to a newer version of the operating system.
-- Combined update of operating system and Kubernetes version.
+* [Update the AKS host](update-akshci-host-powershell.md) to the latest version.
+* Update an AKS workload cluster to a new Kubernetes version.
+* Update the AKS container hosts to a newer version of the operating system.
+* Combined update of operating system and Kubernetes version.
 
-All updates are performed in a rolling flow in order to avoid outages in workload availability. When a _new_ Kubernetes worker node with a newer build is brought into the cluster, resources are moved from the _old_ node to the _new_ node.  Once this is completed successfully, the _old_ node is decommissioned and removed from the cluster.
+All updates are performed in a rolling flow in order to avoid outages in workload availability. When a new Kubernetes worker node with a newer build is brought into the cluster, resources are moved from the old node to the new node. Once this is completed successfully, the old node is decommissioned and removed from the cluster.
 
 The examples in this tutorial assume that the workload cluster, `mycluster`, is currently on Kubernetes version 1.18.8, and uses an operating system version more than 30 days old.
 
 ## Before you begin
 
-In previous tutorials, you learned how to package an application into a container image, upload it to the Azure Container Registry, and create an AKS cluster. Then you deployed the application to the AKS cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
+In previous tutorials, you learned how to package an application into a container image, upload it to the Azure Container Registry, and create a Kubernetes cluster. Then you deployed the application to the cluster. If you haven't completed these steps, start with [Tutorial 1 – Create container images](tutorial-kubernetes-prepare-application.md).
 
 ## Update the Kubernetes version of a workload cluster
 
 You must upgrade the PowerShell modules and the AKS host first, before updating the Kubernetes version.
 
-> [!Important]
-> Updating a workload cluster to a newer version of Kubernetes works *only* if the target Kubernetes version is supported by the current operating system version. To check for the supported operating system and Kubernetes version combinations, use the `Get-AksHciUpdates` command.
-
-### Update the Kubernetes version of a workload cluster: Example
+> [!IMPORTANT]
+> Updating a workload cluster to a newer version of Kubernetes only works if the target Kubernetes version is supported by the current operating system version. To check for the supported operating system and Kubernetes version combinations, use the `Get-AksHciUpdates` command.
 
 Use the following steps to update the Kubernetes version:
 
@@ -61,8 +59,7 @@ Use the following steps to update the Kubernetes version:
    Get-AksHciCluster
    ```
 
-   **Output**
-   ```
+   ```output
    ProvisioningState     : provisioned
    KubernetesVersion     : v1.20.7
    NodePools             : linuxnodepool
@@ -70,16 +67,15 @@ Use the following steps to update the Kubernetes version:
    LinuxNodeCount        : 0
    ControlPlaneNodeCount : 1
    Name                  : mycluster   
-    ```
+   ```
 
-2. To get the available Kubernetes versions, run the following command:
+1. To get the available Kubernetes versions, run the following command:
 
    ```powershell
-   PS C:\> Get-AksHciKubernetesVersion
+   Get-AksHciKubernetesVersion
    ```
 
-   **Output**
-   ```
+   ```output
    OrchestratorType OrchestratorVersion OS      IsPreview
    ---------------- ------------------- --      ---------
    Kubernetes       v1.19.9             Linux       False
@@ -94,32 +90,30 @@ Use the following steps to update the Kubernetes version:
    Kubernetes       v1.21.1             Windows     False
    ```
 
-   The output shows the Kubernetes versions and operating systems that the version is available on. You can see that there are more upgrade versions available. However, when upgrading clusters, you cannot skip versions. For example, v1.18.xx --> v1.19.xx is allowed, but v1.18.xx --> v1.20.xx is not.
+   The output shows the Kubernetes versions and operating systems on which the version is available. You can see that there are more upgrade versions available. However, when upgrading clusters, you can't skip versions. For example, v1.18.xx --> v1.19.xx is allowed, but v1.18.xx --> v1.20.xx is not.
 
-3. Initiate the Kubernetes version update
+1. Initiate the Kubernetes version update
 
    To update the Kubernetes version, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -name mycluster -kubernetesVersion v1.21.1
+   Update-AksHciCluster -name mycluster -kubernetesVersion v1.21.1
    ```
 
-   > [!Note]
+   > [!NOTE]
    > This command only updates the existing cluster nodes in the `mycluster` workload cluster to the new version of Kubernetes.
 
-## Update the operating system version only
+## Update only the operating system version
 
-> [!Important]
+> [!IMPORTANT]
 > You can update a workload cluster to a newer version of the operating system without changing the Kubernetes version, but that works only if the new operating system version does not require a different Kubernetes version.
-
-### Update only the operating system: Example
 
 Use the steps in the following example to update the OS version:
 
 1. To get available workload cluster updates, run the following command:
 
    ```powershell
-   PS C:\> Get-AksHciClusterUpdates -name mycluster
+   Get-AksHciClusterUpdates -name mycluster
    ```
 
    ```output
@@ -129,25 +123,23 @@ Use the steps in the following example to update the OS version:
    This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.20.5  @{mariner=April 2021; windows=April 2021}
    ```
 
-2. To initiate the operating system version update, run the following command:
+1. To initiate the operating system version update, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.21.1 -operatingSystem
+   Update-AksHciCluster -clusterName mycluster -kubernetesVersion v1.21.1 -operatingSystem
    ```
 
 ## Update both the OS and the Kubernetes version
 
-> [!Important]
+> [!IMPORTANT]
 > Updating a workload cluster to a newer version of the operating system and Kubernetes version is supported.
 
-### Update a workload cluster: Example
-
-The example below assumes there's a new Kubernetes version available, and the current version number is v1.20.7.
+The following example assumes there's a new Kubernetes version available, and the current version number is v1.20.7.
 
 1. To get all available workload cluster updates, run the following command:
 
-   ```powershell 
-   PS C:\> Get-AksHciClusterUpdates -name mycluster
+   ```powershell
+   Get-AksHciClusterUpdates -name mycluster
    ```
 
    ```output
@@ -157,10 +149,10 @@ The example below assumes there's a new Kubernetes version available, and the cu
    This is a minor kubernetes upgrade. (i.e v1.X.1 to v1.Y.1)  v1.20.5    @{mariner=April 2021; windows=April 2021}
    ```
 
-2. To initiate the workload cluster update, run the following command:
+1. To initiate the workload cluster update, run the following command:
 
    ```powershell
-   PS C:\> Update-AksHciCluster -name mycluster -kubernetesVersion v1.21.1
+   Update-AksHciCluster -name mycluster -kubernetesVersion v1.21.1
    ```
 
 ## Validate an upgrade
@@ -173,8 +165,7 @@ Get-AksHciCluster -name mycluster
 
 The following example output shows the cluster runs *KubernetesVersion v1.21.1*:
 
-**Output**
-```
+```output
 ProvisioningState     : provisioned
 KubernetesVersion     : v1.21.1
 NodePools             : linuxnodepool
@@ -186,7 +177,7 @@ Name                  : mycluster
 
 ## Delete the cluster
 
-As this tutorial is the last part of the series, you may want to delete the cluster.  Use the [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md) command to remove the resource group, container service, and all related resources.
+As this tutorial is the last part of the series, you might want to delete the cluster. Use the [Remove-AksHciCluster](./reference/ps/remove-akshcicluster.md) command to remove the resource group, container service, and all related resources:
 
 ```powershell
 Remove-AksHciCluster -name mycluster
@@ -194,7 +185,7 @@ Remove-AksHciCluster -name mycluster
 
 ## Next steps
 
-In this tutorial, you upgraded Kubernetes in an AKS cluster on AKS hybrid. You learned how to:
+In this tutorial, you upgraded Kubernetes in a Kubernetes cluster on AKS enabled by Arc. You learned how to:
 
 > [!div class="checklist"]
 > * Identify current and available Kubernetes versions
@@ -203,5 +194,4 @@ In this tutorial, you upgraded Kubernetes in an AKS cluster on AKS hybrid. You l
 > * Upgrade a Kubernetes cluster to the latest version
 > * Validate a successful upgrade
 
-For more information about AKS hybrid, see [AKS hybrid overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
-
+For more information about AKS enabled by Azure Arc, see the [AKS overview](./overview.md) and [clusters and workloads](./kubernetes-concepts.md).
