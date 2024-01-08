@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template (preview).
 author: dsisson
 ms.topic: how-to
-ms.date: 01/05/2024
+ms.date: 01/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -210,16 +210,20 @@ Use the parameters contained in the JSON file to fill out all values, including 
 
 1. In Azure portal, go to **Home**.
 
-1. Select **Create a resource**.
+1. Select **Get Started**.
 
 1. Select **Create** under **Template deployment (deploy using custom templates)**.
-    <!--A screenshot of a computer-->
+    :::image type="content" source="./media/deploy-via-template/get-started.png" alt-text="Screenshot of the Get Started page for Azure services." lightbox="./media/deploy-via-template/get-started.png":::
 
 1. Near the bottom of the page, find **Start with a quickstart template or template spec** section.
 
+    :::image type="content" source="./media/deploy-via-template/quickstart-template.png" alt-text="Screenshot showing the quickstart template option." lightbox="./media/deploy-via-template/quickstart-template.png":::
+
 1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
 
-1. **Select template**.
+1. When finished, select **Select template**.
+
+    :::image type="content" source="./media/deploy-via-template/select-template.png" alt-text="Screenshot showing template selection." lightbox="./media/deploy-via-template/select-template.png":::
 
 1. You'll see the **Custom deployment** page.
 
