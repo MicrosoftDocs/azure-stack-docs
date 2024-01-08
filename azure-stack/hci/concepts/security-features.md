@@ -29,7 +29,7 @@ Your Azure Stack HCI has more than 300 security settings enabled by default that
 
 You can monitor the security baseline and secured-core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
 
-With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and auto-remediation allows you to have a consistent and reliable security posture throughout the lifecycle of the device.
+With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and auto-remediation allow you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
 Secure baseline on Azure Stack HCI:
 
@@ -66,7 +66,7 @@ In this release, the following local built-in users, associated with `RID 500` a
 
 The orchestrator in Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. All the services running on the cluster have authentication and encryption certificates associated with them.
 
-To ensure security, we have implemented internal secret creation and rotation capabilities. When you review your cluster nodes, you will see several certificates created under the path LocalMachine/Personal certificate store (`Cert:\LocalMachine\My`).
+To ensure security, we have implemented internal secret creation and rotation capabilities. When you review your cluster nodes, you see several certificates created under the path LocalMachine/Personal certificate store (`Cert:\LocalMachine\My`).
 
 In this release, the following capabilities are enabled:
 
