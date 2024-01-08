@@ -15,26 +15,7 @@ ms.date: 01/04/2024
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
-This article describes the following security features associated with your Azure Stack HCI cluster, version 23H2 (preview):
-
-- [Windows Defender Application Control](#windows-defender-application-control) - A software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run.
-- [Security baseline and drift control](#security-baseline-and-drift-control) - Improves the security posture by disabling legacy protocols and ciphers, reduces operating expenditure (OPEX) with built-in drift protection, and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
-- [Bitlocker encryption](#bitlocker-encryption) - By default, data-at-rest encryption is enabled on data volumes created during deployment.
-- [Local built-in user accounts](#local-built-in-user-accounts) - The names of local built-in users associated with the `RID 500` and `RID 501` accounts have been updated in this release.
-- Other security features:
-  - [Manage secrets in Azure Stack HCI](#manage-secrets-in-azure-stack-hci) - Enables you to create and rotate internal secrets.
-  - [Syslog forwarding of security events](#syslog-forwarding-of-security-events) - Enables you to forward security-related events to a security information and event management (SIEM) system.
-
-> [!IMPORTANT]
-> Security compliance requires strict log and audit of security events; in Azure Stack HCI, we recommend that customers use our Azure Cloud Sentinel service. For more information, see [Microsoft Sentinel](https://azure.microsoft.com/products/microsoft-sentinel).
-
-For additional security considerations, see:
-
-- [Manage Windows Defender Application Control](../manage/manage-wdac.md).
-- [Manage security baseline and drift control](../manage/manage-secure-baseline.md).
-- [Manage BitLocker encryption](../manage/manage-bitlocker.md).
-- [Manage secrets rotation](../manage/manage-secrets-rotation.md)
-- [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
+This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, and more.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -58,7 +39,7 @@ Secure baseline on Azure Stack HCI:
 
 For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../manage/manage-secure-baseline.md).
 
-## BitLocker encryption
+## Volume encryption via BitLocker
 
 All data-at-rest on your Azure Stack HCI cluster is protected with BitLocker XTS-AES 256-bit encryption. When you deploy your cluster, you have the option to modify security settings. By default, data-at-rest encryption is enabled on data volumes created during deployment. We recommend that you accept the default setting.
 
@@ -81,11 +62,11 @@ In this release, the following local built-in users, associated with `RID 500` a
 > [!IMPORTANT]
 > We recommend that you create your own local administrator account, and that you disable the well-known `RID 500` user account.
 
-## Manage secrets in Azure Stack HCI
+## Secret creation and rotation
 
-The Lifecycle Manager on Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. To ensure security, we implemented internal secret creation and rotation capabilities.
+The orchestrator in Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. All the services running on the cluster have authentication and encryption certificates associated with them.
 
-All services exposed internally by Lifecycle Manager have authentication or encryption certificates associated with them. When you review your cluster nodes, you will see several certificates created under the path `LocalMachine/Personal certificate store (Cert:\LocalMachine\My).
+To ensure security, we have implemented internal secret creation and rotation capabilities. When you review your cluster nodes, you will see several certificates created under the path LocalMachine/Personal certificate store (`Cert:\LocalMachine\My`).
 
 In this release, the following capabilities are enabled:
 
@@ -94,7 +75,7 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> This action will take about 10 minutes, depending on the size of the cluster.
+> This action takes about ten minutes, depending on the size of the cluster.
 
 For more information, see [Manage secrets rotation](../manage/manage-secrets-rotation.md).
 
