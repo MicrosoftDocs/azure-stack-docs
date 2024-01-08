@@ -1,10 +1,10 @@
 ---
 title: AKS Edge Essentials offline installation
 description: Learn how to configure your machine for AKS Edge Essentials offline installation.
-author: fcabrera23
-ms.author: fcabrera
+author: sethmanheim
+ms.author: sethm
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 01/08/2024
 ms.custom: template-how-to
 ---
 
@@ -96,6 +96,10 @@ For enterprises with offline machines that don't have the latest root certificat
 During the deployment of an AKS Edge Essentials cluster, the PowerShell deployment script checks for internet connectivity. These checks are to make sure that DNS servers work, the cluster is able to connect to the internet, and that an Arc connection can be established if the user wants this. However, when doing offline installations, these checks aren't required and should be avoided.
 
 During the creation of the [deployment JSON file](./aks-edge-howto-setup-machine.md), ensure that you mark the `InternetDisabled` parameter inside the `Networking` section as **true**.
+
+## Configure your network adaptors
+
+During deployment, AKS Edge Essentials needs an adapter that is enabled and has the correct IP address, subnet, and default gateway properties. These values are automatically populated in a DHCP environment. If you're setting manually, ensure that all three properties are set before you begin deployment.
 
 ## Licensing
 
