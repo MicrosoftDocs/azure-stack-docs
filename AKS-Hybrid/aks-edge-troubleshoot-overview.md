@@ -63,7 +63,7 @@ This script checks for the missing images and reimports them as needed.
 
 ### Failed to get nodeagent certificate: Not Found
 
-Check the network adapter configuration. During deployment, AKS Edge Essentials needs an adapter that's enabled and set the IP address, subnet, and default gateway. These values are automatically populated in a DHCP environment. If you're setting manually, ensure all three are set. In many cases the default gateway isn't set, which results in this error.
+Check the network adapter configuration. During deployment, AKS Edge Essentials needs an adapter that's enabled and has the correct IP address, subnet, and default gateway. These values are automatically populated in a DHCP environment. If you're setting manually, ensure all three are set. In many cases the default gateway isn't set, which results in this error.
 
 ## Next steps
 
