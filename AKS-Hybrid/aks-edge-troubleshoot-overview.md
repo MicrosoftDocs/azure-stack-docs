@@ -4,9 +4,8 @@ description: Learn about common issues and workarounds in AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 10/17/2023
+ms.date: 01/08/2024
 ms.custom: template-concept
-ms.reviewer: fcabrera
 ---
 
 # Troubleshoot common issues in AKS Edge Essentials
@@ -59,6 +58,12 @@ This script checks for the missing images and reimports them as needed.
    Workaround: You can enable system-wide proxy settings by following **Internet options > Connections > LAN Settings**.
 
    :::image type="content" source="media/aks-edge/aks-edge-azure-arc-proxy.png" alt-text="Screenshot showing internet options." lightbox="media/aks-edge/aks-edge-azure-arc-proxy.png":::
+
+## Offline deployments
+
+### Failed to get nodeagent certificate: Not Found
+
+Check the network adapter configuration. During deployment, AKS Edge Essentials needs an adapter that's enabled and has the correct IP address, subnet, and default gateway. These values are automatically populated in a DHCP environment. If you're setting manually, ensure all three are set. In many cases the default gateway isn't set, which results in this error.
 
 ## Next steps
 
