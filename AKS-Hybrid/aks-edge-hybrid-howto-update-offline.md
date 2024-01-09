@@ -4,7 +4,7 @@ description: Learn how to update disconnected AKS Edge Essentials clusters.
 author: MikeBazMSFT
 ms.author: micbaz
 ms.topic: how-to
-ms.date: 11/30/2013
+ms.date: 11/30/2023
 ms.custom: template-how-to
 ---
 
@@ -12,7 +12,7 @@ ms.custom: template-how-to
 
 In a disconnected (offline, air-gapped) environment, where your AKS Edge Essentials nodes are isolated from WSUS and the internet, it's still possible to update AKS Edge Essentials. However, a little more manual effort is required to stage the update. This article explains that process.
 
-## Step 1: download the update files on an Internet-connected machine
+## Step 1: Download the update files on an Internet-connected machine
 
 Because the update delivery mechanism for AKS Edge Essentials updates is Microsoft Update, the update files are available for download on the Microsoft Update Catalog web site.
 
@@ -24,7 +24,7 @@ Because the update delivery mechanism for AKS Edge Essentials updates is Microso
 
 1. Copy the executables to a folder on all of the AKS Edge Essentials nodes using any available mechanism (USB flash drive, optical disk, etc.).
 
-## Step 2: stage the update
+## Step 2: Stage the update
 
 After the executables are copied to the AKS Edge Essentials nodes, stage the update on each node by running all of the patch executables on each node. The executables are self-extracting executables that place the files into the staging location on the node.  
 
@@ -36,11 +36,11 @@ It's possible to perform an unattended extraction by running the executable with
 foreach ($i in Get-ChildItem) { Start-Process $i.fullname -Wait -ArgumentList "-y" }
 ```
 
-## Step 3: validate the files are staged
+## Step 3: Validate the files are staged
 
 Optionally, validate the files are staged into `C:\Program Files\AKS-Edge\update-cache`. The exact list of files and content of the files vary depending on the update; your validation is reviewing that files were placed into the folder.
 
-## Step 4: perform the update
+## Step 4: Perform the update
 
 After the update are staged, follow the [standard update process](/azure/aks/hybrid/aks-edge-howto-update) starting at Step 2.
 
