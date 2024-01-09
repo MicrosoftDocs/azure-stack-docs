@@ -407,8 +407,6 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
-    href: manage/arc-extension-management.md
-
 - name: Migrate
   items:
   - name: Cluster to same hardware
