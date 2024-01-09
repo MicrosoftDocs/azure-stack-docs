@@ -17,7 +17,7 @@ This article describes how to deploy and manage the Software Defined Networking 
 
 ## About SDN Multisite
 
-SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters stretched across distinct sites. With SDN Multisite, you can have native Layer 2 and Layer 3 connectivity across multiple physical locations or sites for virtualized workloads.
+SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations. With SDN Multisite, you can have native Layer 2 and Layer 3 connectivity across multiple physical locations or sites for virtualized workloads.
 
 In a multisite SDN environment, one site is designated as the primary, and the remaining sites serve as secondary. The primary site is responsible for ensuring that the resources are applied and synchronized across all the sites. If the primary site is unreachable, resources can't be updated through the secondary site. However, if the secondary site is unreachable, resources can be updated through the primary site. During multisite peering, the primary site is automatically selected, which you can change later using Windows Admin Center.
 
@@ -49,6 +49,8 @@ Here's a high-level workflow for enabling SDN Multisite:
 ### Prerequisites
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:
+
+- You must have access to Azure Stack HCI, version 23H2 (preview) clusters deployed at two separate physical sites.
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 
