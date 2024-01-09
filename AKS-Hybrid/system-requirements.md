@@ -44,7 +44,7 @@ AKS on Azure Stack HCI and Windows Server deployments that exceed the following 
 
 | Resource                     | Maximum |
 | ---------------------------- | --------|
-| Physical servers per cluster | 8       |
+| Physical servers per cluster | 16 (Azure Stack HCI version 23H2)       |
 | Total number of VMs          | 200     |
 
 ## Compute requirements
