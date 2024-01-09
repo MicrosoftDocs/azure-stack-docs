@@ -1,5 +1,5 @@
 ---
-title: AKS Edge Essentials update
+title: AKS Edge Essentials update (online)
 description: Learn how to update your AKS Edge Essentials clusters.
 author: rcheeran
 ms.author: rcheeran
@@ -8,7 +8,7 @@ ms.date: 10/10/2023
 ms.custom: template-how-to
 ---
 
-# Update your AKS Edge Essentials clusters
+# Update your AKS Edge Essentials clusters (online)
 
 As newer versions of AKS Edge Essentials become available, you can update your AKS Edge Essentials cluster to take advantage of the latest features and security improvements. This article describes how to update and upgrade your AKS Edge Essentials devices when fixes and a new version are available.
 
