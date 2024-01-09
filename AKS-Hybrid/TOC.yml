@@ -345,8 +345,12 @@
       href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
-    - name: Update AKS Edge Essentials cluster
-      href: aks-edge-howto-update.md
+    - name: Update AKS Edge Essentials
+      items:
+      - name: Update online
+        href: aks-edge-howto-update.md
+      - name: Update offline (airgapped)
+        href: aks-edge-hybrid-howto-update-offline.md
     - name: Uninstall AKS Edge Essentials
       href: aks-edge-howto-uninstall.md
     - name: Networking
