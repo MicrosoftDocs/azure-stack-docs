@@ -22,15 +22,9 @@
     - name: Known issues
       href: known-issues-23h2.md
     - name: Plan
-      items: 
-        - name: Review security
-          items:
-          - name: Use Windows Defender Application Control 
-            href: concepts/security-windows-defender-application-control.md
-          - name: Review security baseline settings
-            href: concepts/secure-baseline.md
-          - name: Understand BitLocker encryption
-            href: concepts/security-bitlocker.md
+      items:
+        - name: Review security features
+          href: concepts/security-features.md
         - name: Assess environment readiness
           href: manage/use-environment-checker.md
     - name: Deploy
@@ -69,6 +63,19 @@
         href: update/update-troubleshooting-23h2.md
     - name: Manage
       items:
+        - name: Security
+          items:
+          - name: Manage WDAC
+            href: manage/manage-wdac.md
+          - name: Manage security baseline and drift control
+            href: manage/manage-secure-baseline.md
+          - name: Manage BitLocker encryption
+            href: manage/manage-bitlocker.md
+          - name: Manage secrets rotation
+            href: manage/manage-secrets-rotation.md 
+          - name: Manage syslog forwarding
+            href: manage/manage-syslog-forwarding.md
+
         - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?
@@ -97,7 +104,9 @@
               href: manage/create-network-interfaces.md
             - name: 5. Create Arc VMs
               href: manage/create-arc-virtual-machines.md
-          - name: Manage Arc VM reources 
+          - name: Manage Arc VMs
+            href: manage/manage-arc-virtual-machines.md
+          - name: Manage Arc VM reources
             href: manage/manage-arc-virtual-machine-resources.md 
           - name: Manage VM extensions
             href: manage/virtual-machine-manage-extension.md
@@ -145,8 +154,7 @@
       items: 
       - name: Azure Stack HCI observability
         href: concepts/observability.md
-      - name: Other security features
-        href: concepts/other-security-features.md
+
 - name: Plan
   items:
   - name: Requirements

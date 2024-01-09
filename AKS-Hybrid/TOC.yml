@@ -79,12 +79,12 @@
           href: deploy-gpu-node-pool.md
         - name: Deploy applications with Helm
           href: helm-deploy.md
-        - name: Deploy Azure Arc enabled data services
+        - name: Deploy Azure Arc-enabled data services
           href: deploy-arc-data-services.md
         - name: Deploy configurations using GitOps
-          href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2
+          href: /azure/azure-arc/kubernetes/tutorial-use-gitops-flux2?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
         - name: Implement CI/CD using GitOps
-          href: /azure/azure-arc/kubernetes/tutorial-gitops-flux2-ci-cd
+          href: /azure/azure-arc/kubernetes/tutorial-gitops-flux2-ci-cd?toc=/azure/aks/hybrid/toc.json&bc=/azure/aks/hybrid/breadcrumb/toc.json
 - name: Tutorial
   items:
     - name: 1 - Prepare an application
