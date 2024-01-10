@@ -43,12 +43,12 @@ The following table contains the list of addresses that you must exclude by usin
 
 |      IP address       |    Reason for exclusion    |  
 | ----------------------- | ------------------------------------ | 
-| localhost, 127.0.0.1  | Localhost traffic  |
-| .svc | Internal Kubernetes service traffic (.svc) where `.svc` represents a wildcard name. This is similar to saying `*.svc`, but none is used in this schema. |
-| 10.0.0.0/8 | Private network address space. |
-| 172.16.0.0/12 | Private network address space - Kubernetes service CIDR. |
-| 192.168.0.0/16 | Private network address space - Kubernetes pod CIDR. |
-| .contoso.com | You might want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. To exclude all addresses in a domain, you must add the domain to the `noProxy` list. Use a leading period rather than a wildcard (\*) character. In the example, the addresses `.contoso.com` excludes addresses `prefix1.contoso.com`, `prefix2.contoso.com`, and so on. |
+| `localhost`, `127.0.0.1`  | Localhost traffic  |
+| `.svc` | Internal Kubernetes service traffic, where `.svc` represents a wildcard name. This is similar to saying `*.svc`, but none is used in this schema. |
+| `10.0.0.0/8` | Private network address space. |
+| `172.16.0.0/12` | Private network address space - Kubernetes service CIDR. |
+| `192.168.0.0/16` | Private network address space - Kubernetes pod CIDR. |
+| `.contoso.com`` | You might want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. To exclude all addresses in a domain, you must add the domain to the `noProxy` list. Use a leading period rather than a wildcard (\*) character. In the example, the addresses `.contoso.com` excludes addresses `prefix1.contoso.com`, `prefix2.contoso.com`, and so on. |
 
 The default value for `noProxy` is `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16`. While these default values work for many networks, you might need to add more subnet ranges and/or names to the exemption list. For example, you might want to exempt your enterprise namespace (.contoso.com) from being directed through the proxy. You can achieve that by specifying the values in the `noProxy` list.
 
