@@ -145,6 +145,16 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
 
    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
+## Update your hardware via Windows Admin Center
+
+In addition to cluster updates using Azure Update Manager or the Azure Stack HCI cluster resource page, you can use Windows Admin Center to check for and install available hardwar (firmware and driver) updates for your Azure Stack HCI system.
+
+Here is an example of the Windows Admin Center updates tool for systems running Azure Stack HCI, verison 23H2.
+
+[![Review and install hardware updates in Windows Admin Center.](./media/azure-update-manager/review-plus-install-2.png)](media/azure-update-manager/review-plus-install-2.png#lightbox)
+
+For more information, see [Install operating system and hardware updates using Windows Admin Center](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
+
 ## Troubleshoot updates
 
 To resume a previously failed update run or to troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
