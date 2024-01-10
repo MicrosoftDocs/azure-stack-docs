@@ -1,9 +1,9 @@
 ---
 title: Release notes with known issues in Azure Stack HCI 2311 release (preview)
-description: Read about the known issues and fixed issues in Azure Stack HCI, version 23H2 releases (preview).
+description: Read about the known issues and fixed issues in Azure Stack HCI 2311 releases (preview).
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/08/2024
+ms.date: 01/10/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -18,7 +18,7 @@ This article identifies the critical known issues and their workarounds in Azure
 The article contains the release notes for all of the version 23H2 releases. The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
 
-For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
+For more information about the new features in this release, see [What's new in 23H2](whats-new.md#features-and-improvements-in-2311).
 
 [!INCLUDE [important](../includes/hci-preview.md)]
 
