@@ -1,8 +1,8 @@
 ---
-title: Azure policy guidance for AKS hybrid
-description: Learn about AKS hybrid best practices and guidance in using Azure policy.
+title: Azure policy guidance for AKS enabled by Azure Arc
+description: Learn about best practices and guidance in using Azure policy in AKS enabled by Arc.
 ms.topic: article
-ms.date: 08/25/2023
+ms.date: 01/10/2024
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 05/03/2023
@@ -10,9 +10,9 @@ ms.reviewer: sulahiri
 
 ---
 
-# Azure policy in AKS hybrid
+# Azure policy in AKS enabled by Azure Arc
 
-This article provides guidance on applying Azure policies to management clusters and recommendations for deploying AKS hybrid.
+This article provides guidance on applying Azure policies to management clusters and recommendations for deploying AKS enabled by Arc.
 
 ## Best practices in using Azure policies
 
@@ -20,13 +20,13 @@ Azure policies are set at the subscription level. By default, the policies apply
 
 ### Different subscriptions for different environments
 
-Before launching a policy in production, it's recommended that you test it in a preproduction environment. Because policies are set at the subscription level, it's best to keep preproduction and production environments on separate subscriptions.
+Before launching a policy in production, it's recommended that you test it in a pre-production environment. Because policies are set at the subscription level, it's best to keep pre-production and production environments on separate subscriptions.
 
 ### Policy testing in audit mode
 
-Before enforcing a policy in preproduction or production environments, verify its functionality in audit mode.
+Before enforcing a policy in pre-production or production environments, verify its functionality in audit mode.
 
-## Considerations for applying Azure policies to AKS hybrid management clusters
+## Considerations for applying Azure policies to Kubernetes management clusters
 
 Enforcement mode for Azure policy should not be enabled for management clusters. This is because management clusters don't run customer workloads. Enforcing Azure policies can cause some pods not to start.
 
