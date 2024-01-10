@@ -82,7 +82,7 @@ $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machin
 ```
 
 > [!NOTE]
-> We recommend that you use the same proxy settings on all nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster might lead to unexpected results or installation issues. An IP address such as **172.xx** is not valid in NO_PROXY. It must be proper CIDR notation.
+> We recommend that you use the same proxy settings on all nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster might lead to unexpected results or installation issues. An IP address with a wildcard (\*), such as **172.***, is not valid. The IP address must be in proper CIDR notation (**172.0.0.0/8**).
 
 ## Install the AksHci PowerShell modules
 
