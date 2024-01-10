@@ -71,10 +71,7 @@ if ($http_proxy -or $https_proxy) {
 }
 ```
 
-Configure machine-wide proxy exclusions on *each* of the physical cluster hosts where the problem was detected.
-
-> [!NOTE]
-> We recommend that you use the same proxy settings on all nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster might lead to unexpected results or installation issues.
+Configure machine-wide proxy exclusions on each of the physical cluster hosts where the problem was detected.
 
 Run the following PowerShell script and replace the `$no_proxy` parameter string with a suitable `NO_PROXY` exclusion string for your environment. For information about how to correctly configure a `noProxy` list for your environment, see [Exclusion list for excluding private subnets from being sent to the proxy](#exclusion-list-for-excluding-private-subnets-from-being-sent-to-the-proxy).
 
@@ -83,6 +80,9 @@ $no_proxy = "localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.c
 [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
 $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
 ```
+
+> [!NOTE]
+> We recommend that you use the same proxy settings on all nodes in the failover cluster. Having different proxy settings on different physical nodes in the failover cluster might lead to unexpected results or installation issues. An IP address such as **172.xx** is not valid in NO_PROXY. It must be proper CIDR notation.
 
 ## Install the AksHci PowerShell modules
 
