@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/20/2023
+ms.date: 01/11/2024
 ---
 
 # Collect diagnostic logs
@@ -17,14 +17,9 @@ This article describes how to collect diagnostic logs and send them to Microsoft
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-You have multiple ways to send diagnostic logs to Microsoft:
+## On-demand log collection
 
-- Send logs manually or on-demand log collection
-- Send logs proactively
-
-## Send logs manually or on-demand
-
-On-demand log collection is the process involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node on the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft using the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
@@ -48,9 +43,9 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 ## Perform on-demand log collection
 
-You can collect on-demand logs using PowerShell or Windows Admin Center in the Azure portal.
+You can collect on-demand logs using PowerShell, the preferred method, or Windows Admin Center in the Azure portal.
 
-# [PowerShell](#tab/power-shell)
+# [PowerShell (Recommended)](#tab/power-shell)
 
 Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection. The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
 
@@ -214,16 +209,20 @@ Here's a sample output of the `Get-LogCollectionHistory` cmdlet. Note that the `
    PS C:\CloudDeployment\logs>
    ```
 
-## Information required in a Support case
+# [Windows Admin Center in the Azure portal](#tab/windows-admin-center-in-portal)
 
-If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs. When you use `Send-DiagnosticData` to collect logs, it also provides key details that you'll need to share with Microsoft Support. After you collect logs, they are sent to the Kusto database. Microsoft Support can then use the provided information to locate your logs in Kusto and help you in resolving your issue.
+The `Diagnostics` extension in Windows Admin Center in the Azure portal enables you to share logs with Microsoft.
 
-When requested, share the following information wih Microsoft Support:
+Follow these steps to share logs with Microsoft via Windows Admin Center in the Azure portal:
 
-- `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
-- `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
-- `CorrelationId`: A unique identifier to locate the logs.
+1. Connect to Windows Admin Center in the Azure portal. For information, see [Manage Azure Stack HCI clusters using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
+1. In the left pane, under **Extensions**, select **Diagnostics**.
+1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
+1. Select **Send manually** to perform on-demand log collection. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.
+
+   :::image type="content" source="./media/collect-logs/send-logs-manually.png" alt-text="Screenshot of the Diagnostics page showing the Send manually button for on-demand log collection." lightbox="./media/guided-quick-deploy-eval/send-logs-manually.png" :::
+
+---
 
 ## Save logs to a local file share
 
@@ -258,25 +257,16 @@ If you have outbound connectivity from the SMB share where you saved the logs, y
 Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <path-to-share> -ShareCredential $shareCredential
 ```
 
-# [Windows Admin Center in Azure portal](#tab/windows-admin-center-in-portal)
+## Information required in a Support case
 
-The diagnostic extension in Windows Admin Center lets you share logs with Microsoft. You can use the extension to start a log collection whenever you want or set up the options for proactive log collection.
+If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs. When you use `Send-DiagnosticData` to collect logs, it also provides key details that you'll need to share with Microsoft Support. After you collect logs, they are sent to the Kusto database. Microsoft Support can then use the provided information to locate your logs in Kusto and help you in resolving your issue.
 
-- On-demand log collection: Send diagnostic logs for Azure Stack HCI to Microsoft.
+When requested, share the following information wih Microsoft Support:
 
-- Proactive log collection: Send diagnostic logs to Microsoft automatically when a system health issue is detected. This way, the diagnostic data is ready before you contact support.
-
-Follow these steps to share logs with Microsoft via Windows Admin Center in the Azure portal:
-
-1. Connect to Windows Admin Center in the Azure portal. For information, see [Manage Azure Stack HCI clusters using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
-1. 
-1. 
-
-## Collect and send logs proactively
-
-Proactive log collection automatically collects and sends diagnostic logs from your Azure Stack HCI system to Microsoft before you open a support case. Proactive logs are collected only when a system health alarm is triggered. Microsoft Support accesses these logs only in the context of a support case.
-
-For instructions about how to enable proactive log collection on your cluster, see [Telemetry and diagnostics settings](../concepts/telemetry-and-diagnostics-overview.md#telemetry-and-diagnostics-settings).
+- `AEORegion`: The location where your device is registered.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
+- `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
+- `CorrelationId`: A unique identifier to locate the logs.
 
 ## Next steps
 
