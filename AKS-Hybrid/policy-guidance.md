@@ -20,15 +20,15 @@ Azure policies are set at the subscription level. By default, the policies apply
 
 ### Different subscriptions for different environments
 
-Before launching a policy in production, it's recommended that you test it in a pre-production environment. Because policies are set at the subscription level, it's best to keep pre-production and production environments on separate subscriptions.
+Before launching a policy in production, a best practice is to test it in a preproduction environment. Because policies are set at the subscription level, it's best to keep preproduction and production environments on separate subscriptions.
 
 ### Policy testing in audit mode
 
-Before enforcing a policy in pre-production or production environments, verify its functionality in audit mode.
+Before enforcing a policy in preproduction or production environments, verify its functionality in audit mode.
 
 ## Considerations for applying Azure policies to Kubernetes management clusters
 
-Enforcement mode for Azure policy should not be enabled for management clusters. This is because management clusters don't run customer workloads. Enforcing Azure policies can cause some pods not to start.
+You shouldn't enable enforcement mode for Azure policy on management clusters, because management clusters don't run customer workloads. Enforcing Azure policies can cause some pods not to start.
 
 ### Disable enforcement mode on management clusters
 
@@ -36,7 +36,7 @@ The management cluster and target cluster, being on the same subscription, inher
 
 ### Monitor management clusters
 
-Azure policies are primarily for declarative compliance validation, not behavior-based threat detection. If there is concern about the security posture of the management cluster, a threat monitoring tool to track suspicious activities should be evaluated.
+Azure policies are primarily for declarative compliance validation, not behavior-based threat detection. If there's concern about the security posture of the management cluster, a threat monitoring tool to track suspicious activities should be evaluated.
 
 ## Next steps
 
