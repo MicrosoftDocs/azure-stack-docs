@@ -6,8 +6,14 @@
     href: overview.md
   - name: What's new in Azure Stack HCI? 
     href: whats-new.md
-  - name: Release information
-    href: release-information.md
+  - name: Release notes
+    items:
+    - name: Known issues - 2311 release (Current)
+      href: known-issues-2311.md
+    - name: Known issues - 2310 release
+      href: known-issues-23h2.md
+    - name: OS releases
+      href: release-information.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md
   - name: Azure Hybrid Benefit
