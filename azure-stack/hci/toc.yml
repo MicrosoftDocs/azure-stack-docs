@@ -22,15 +22,9 @@
     - name: Known issues
       href: known-issues-23h2.md
     - name: Plan
-      items: 
-        - name: Review security
-          items:
-          - name: Use Windows Defender Application Control 
-            href: concepts/security-windows-defender-application-control.md
-          - name: Review security baseline settings
-            href: concepts/secure-baseline.md
-          - name: Understand BitLocker encryption
-            href: concepts/security-bitlocker.md
+      items:
+        - name: Review security features
+          href: concepts/security-features.md
         - name: Assess environment readiness
           href: manage/use-environment-checker.md
     - name: Deploy
@@ -69,6 +63,19 @@
         href: update/update-troubleshooting-23h2.md
     - name: Manage
       items:
+        - name: Security
+          items:
+          - name: Manage WDAC
+            href: manage/manage-wdac.md
+          - name: Manage security baseline and drift control
+            href: manage/manage-secure-baseline.md
+          - name: Manage BitLocker encryption
+            href: manage/manage-bitlocker.md
+          - name: Manage secrets rotation
+            href: manage/manage-secrets-rotation.md 
+          - name: Manage syslog forwarding
+            href: manage/manage-syslog-forwarding.md
+
         - name: Azure Arc VMs
           items:
           - name: What is Azure Arc VM management?
@@ -77,11 +84,11 @@
             href: manage/azure-arc-vm-management-prerequisites.md
           - name: Assign RBAC role
             href: manage/assign-vm-rbac-roles.md
-          - name: Manage Arc VM resources
+          - name: Create Arc VM resources
             items:
-            - name: Create a storage path
+            - name: 1. Create a storage path
               href: manage/create-storage-path.md
-            - name: Create VM images
+            - name: 2. Create VM images
               items:
               - name: Using Azure Marketplace images
                 href: manage/virtual-machine-image-azure-marketplace.md
@@ -91,12 +98,16 @@
                 href: manage/virtual-machine-image-local-share.md
               - name: Using sysprepped Ubuntu image
                 href: manage/virtual-machine-image-linux-sysprep.md
-            - name: Create logical networks
+            - name: 3. Create logical networks
               href: manage/create-logical-networks.md
-            - name: Create network interfaces
+            - name: 4. Create network interfaces
               href: manage/create-network-interfaces.md
-          - name: Create Arc VMs
-            href: manage/create-arc-virtual-machines.md
+            - name: 5. Create Arc VMs
+              href: manage/create-arc-virtual-machines.md
+          - name: Manage Arc VMs
+            href: manage/manage-arc-virtual-machines.md
+          - name: Manage Arc VM reources
+            href: manage/manage-arc-virtual-machine-resources.md 
           - name: Manage VM extensions
             href: manage/virtual-machine-manage-extension.md
           - name: Troubleshoot
@@ -111,6 +122,10 @@
               href: manage/trusted-launch-vm-deploy.md
             - name: Manage guest state protection key
               href: manage/trusted-launch-vm-import-key.md
+        - name: Clusters
+          items:
+          - name: Configure proxy 
+            href: manage/configure-proxy-settings-23h2.md
         - name: Storage
           items: 
           - name: Use ReFS deduplication and compression
@@ -131,14 +146,15 @@
           href: manage/monitor-features.md
     - name: Troubleshoot
       items:
+      - name: Collect logs
+        href: manage/collect-logs.md
       - name: Get support for deployment issues
         href: manage/get-support-for-deployment-issues.md
     - name: Concepts
       items: 
       - name: Azure Stack HCI observability
         href: concepts/observability.md
-      - name: Other security features
-        href: concepts/other-security-features.md
+
 - name: Plan
   items:
   - name: Requirements
@@ -391,8 +407,6 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
-    href: manage/arc-extension-management.md
-
 - name: Migrate
   items:
   - name: Cluster to same hardware
@@ -409,7 +423,7 @@
   - name: Troubleshoot CredSSP
     href: manage/troubleshoot-credssp.md
   - name: Troubleshoot live migration
-    href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues#failed-to-get-the-network-address-for-the-destination-node-host2-a-cluster-network-isnt-available-for-this-operation-0x000013ab
+    href: /troubleshoot/windows-server/virtualization/troubleshoot-live-migration-issues?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Troubleshoot Storage Spaces Direct
     href: /windows-server/storage/storage-spaces/troubleshooting-storage-spaces?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Troubleshoot storage health
@@ -586,6 +600,8 @@
           href: manage/whats-new-2306-preview.md
         - name: 2306 updates
           items:
+          - name: 2306.5 release
+            href: manage/whats-new-2306-5-preview.md
           - name: 2306.4 release
             href: manage/whats-new-2306-4-preview.md
           - name: 2306.3 release
@@ -594,21 +610,11 @@
             href: manage/whats-new-2306-2-preview.md
           - name: 2306.1 release
             href: manage/whats-new-2306-1-preview.md
-        - name: 2303 release 
-          href: manage/whats-new-2303-preview.md
-        - name: 2303 updates
-          items:
-          - name: 2303.2 release
-            href: manage/whats-new-2303-2-preview.md 
-          - name: 2303.1 release
-            href: manage/whats-new-2303-1-preview.md  
-        - name: 2301 release 
-          href: manage/whats-new-2301-preview.md
-        - name: 2210 release
-          href: manage/whats-new-preview.md
       - name: View known issues
         items:
-        - name: 2306.4 update release - Current
+        - name: 2306.5 update release - Current
+          href: hci-known-issues-2306-5.md
+        - name: 2306.4 update release
           href: hci-known-issues-2306-4.md 
         - name: 2306.3 update release
           href: hci-known-issues-2306-3.md 
@@ -618,80 +624,7 @@
           href: hci-known-issues-2306-1.md 
         - name: 2306 release
           href: hci-known-issues-2306.md 
-        - name: 2303.2 update release
-          href: hci-known-issues-2303-2.md 
-        - name: 2303.1 update release
-          href: hci-known-issues-2303-1.md 
-        - name: 2303 release
-          href: hci-known-issues-2303.md
-        - name: 2301 release 
-          href: hci-known-issues-2301.md
-        - name: 2210 release
-          href: hci-known-issues.md
-      - name: Plan
+      - name: 22H2 Supplemental Package plan, deploy, and manage
         items:
-        - name: Review security
-          items: 
-          - name: Use Windows Defender Application Control 
-            href: concepts/security-windows-defender-application-control.md
-          - name: Review security baseline settings
-            href: concepts/secure-baseline.md
-          - name: Understand BitLocker encryption
-            href: concepts/security-bitlocker.md
-        - name: Assess environment readiness
-          href: manage/use-environment-checker.md
-      - name: Deploy 
-        items:
-        - name: Deployment overview
-          href: deploy/deployment-tool-introduction.md
-        - name: Review prerequisites
-          href: deploy/deployment-tool-prerequisites.md
-        - name: 0 - View deployment checklist
-          href: deploy/deployment-tool-checklist.md
-        - name: 1 - Prepare Active Directory
-          href: deploy/deployment-tool-active-directory.md
-        - name: 2 - Install OS
-          href: deploy/deployment-tool-install-os.md
-        - name: 3 - Set up the first server
-          href: deploy/deployment-tool-set-up-first-server.md
-        - name: 4 - Choose a deployment method
-          items:
-          - name: 4A - Deploy interactively
-            href: deploy/deployment-tool-new-file.md
-          - name: 4B - Deploy via config file
-            href: deploy/deployment-tool-existing-file.md
-          - name: 4C - Deploy via PowerShell
-            href: deploy/deployment-tool-powershell.md
-          - name: 4D - Deploy using non-native VLAN ID
-            href: deploy/deployment-tool-non-native-vlan.md
-          - name: 4E - Deploy virtual
-            href: deploy/virtual-cluster-deployment.md
-        - name: 5 - Validate deployment
-          href: deploy/deployment-tool-validate.md
-        - name: Collect logs 
-          href: manage/collect-logs.md
-      - name: Troubleshoot
-        items:
-        - name: Troubleshoot environment readiness
-          href: manage/troubleshoot-environment-validation-issues.md
-        - name: Troubleshoot deployment
-          href: deploy/deployment-tool-troubleshoot.md
-      - name: Update
-        items:
-        - name: What's the Lifecycle Manager?
-          href: update/whats-the-lifecycle-manager.md
-        - name: Use Lifecycle Manager for updates
-          href: update/update-azure-stack-hci-solution.md
-        - name: Understand update phases
-          href: update/update-phases.md
-        - name: Update via PowerShell
-          href: update/update-via-powershell.md
-        - name: Troubleshoot updates
-          href: update/update-troubleshooting.md
-      - name: Manage capacity
-        items:
-        - name: Add a server
-          href: manage/add-server.md
-        - name: Repair a server
-          href: manage/repair-server.md
-
+        - name: Deployment and management guide
+          href: https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf

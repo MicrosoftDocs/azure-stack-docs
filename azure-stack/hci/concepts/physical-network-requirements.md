@@ -101,6 +101,7 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [Nexus 9300-GX](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9300-gx-series-switches-ds.html)<br>(100, 400 GbE) |NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
 | [Nexus 9300-GX2](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/datasheet-c78-743854.html) <br> (100, 400 GbE)|NX-OS 10.3(2)F or later, ACI 6.0.3e or later|&check;| &check;| &check;| &check; |
 | [Nexus 9332D-H2R]( https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nexus-9332d-h2r-switch-ds.html) <br> (100, 400 GbE)|NX-OS 10.4(1) or later|&check;| &check;| &check;| &check; |
+| [Nexus 9300-H1](https://www.cisco.com/c/en/us/products/collateral/switches/nexus-9000-series-switches/nb-06-nexus-93400ld-h1-switch-ds-cte-en.html) <br> (10, 25 GbE)|NX-OS 10.4(2) or later|&check;| &check;| &check;| &check; |
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
@@ -189,6 +190,16 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [NE1032](https://lenovopress.com/lp0605-thinksystem-ne1032-rackswitch) <br>(10 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
 | [NE2572](https://lenovopress.com/lp0608-lenovo-thinksystem-ne2572-rackswitch) <br>(25 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
 | [NE10032](https://lenovopress.com/lp0609-lenovo-thinksystem-ne10032-rackswitch) <br>(100 GbE)|CNOS 10.10.7.100 or later |&check;| &check;| &check;| &check; |
+
+# [NETGEAR](#tab/NETGEAR)
+
+### 22H2
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [M4500](https://www.netgear.com/assets/campaign/121401/images/m4500.pdf) <br>(10, 25, 100 GbE)|Version 7.0.3.9 or later  |&check;| | &check;| &check; | |
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+
 
 # [NVIDIA](#tab/NVIDIA)
 

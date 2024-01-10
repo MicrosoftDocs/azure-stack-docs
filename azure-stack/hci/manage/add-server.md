@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 11/30/2023
+ms.date: 12/13/2023
 ---
 
 # Add a server on your Azure Stack HCI (preview)
@@ -36,7 +36,7 @@ The following flow diagram shows the overall process to add a server:
 
 To add a server, follow these high-level steps:
 
-1. Install the operating system, drivers, and firmware on the new cluster server that you plan to add. For more information, see [Install OS](../deploy/deployment-tool-install-os.md).
+1. Install the operating system, drivers, and firmware on the new cluster server that you plan to add. For more information, see [Install OS](../deploy/deployment-install-os.md).
 1. Add the prepared server via the `Add-server` PowerShell cmdlet.
 1. When adding a server to the cluster, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
 1. Once the server is added, cluster is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
