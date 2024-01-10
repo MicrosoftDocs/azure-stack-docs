@@ -109,7 +109,7 @@
     href: deploy-cluster-on-two-node-hci.md
   - name: Security
     items:
-      - name: Security for AKS hybrid
+      - name: Security overview
         href: concepts-security.md
       - name: Data collection
         href: data-collection.md
