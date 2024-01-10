@@ -1,6 +1,26 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/concepts/other-security-features.md",
+      "redirect_url":"/azure-stack/hci/manage/security-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/concepts/security-windows-defender-application-control.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-wdac",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/concepts/secure-baseline.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-secure-baseline",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/concepts/security-bitlocker.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/manage/create-virtual-networks.md",
       "redirect_url":"/azure-stack/hci/manage/create-logical-networks",
       "redirect_document_id": false
