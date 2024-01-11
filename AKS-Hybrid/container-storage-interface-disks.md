@@ -1,6 +1,6 @@
 ---
-title: Use Container Storage Interface (CSI) disk drivers in AKS Arc
-description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS Arc.
+title: Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azure Arc
+description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 11/04/2022
@@ -15,9 +15,9 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS enabled by Azure Arc (AKS Arc).
+This article describes how to use Container Storage Interface (CSI) built-in storage classes to dynamically create disk persistent volumes and create custom storage classes in AKS enabled by Arc.
 
-## Overview of CSI in AKS Arc
+## Overview of CSI in AKS enabled by Arc
 
 [!INCLUDE [csi-in-aks-hybrid-overview](includes/csi-in-aks-hybrid-overview.md)]
 
@@ -25,7 +25,7 @@ This article describes how to use Container Storage Interface (CSI) built-in sto
 
 A *storage class* is used to define how a unit of storage is dynamically created with a persistent volume. For more information on how to use storage classes, see [Kubernetes storage classes](https://kubernetes.io/docs/concepts/storage/storage-classes/). 
 
-In AKS Arc, the `default` storage class is created by default and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable; you just need to edit the persistent volume claim with the new size.
+In AKS Arc, the **default**` storage class is created by default and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable; you just need to edit the persistent volume claim with the new size.
 
 To leverage this storage class, create a [PVC](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) and a respective pod that references and uses it. A PVC is used to automatically provision storage based on a storage class. A PVC can use one of the pre-created storage classes or a user-defined storage class to create a VHDX of the desired size. When you create a pod definition, the PVC is specified to request the desired storage.
 
