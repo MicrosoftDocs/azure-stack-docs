@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 12/04/2023
+ms.date: 01/10/2024
 ms.lastreviewed: 12/04/2023
 
 ---
@@ -20,13 +20,6 @@ To get general information about the ESU program, products that are covered, and
 
 > [!NOTE]
 > Azure Stack HCI customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled server that is not Azure Stack HCI, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
-
-## Benefits of getting ESU for VMs on Azure Stack HCI
-
-There are several advantages to getting ESU through Azure, which extend to Azure Stack HCI:
-
-- **Free of charge**: You can get ESUs through Azure Stack HCI for free.
-- **Get an additional year of ESUs for Windows Server**: On Azure and Azure Stack HCI only, ESUs for Windows Server will end on January 14, 2024 and July 12, 2023 respectively; a year longer than the usual three-year ESU programs.
 
 ## Tutorial: Get free ESUs through Azure Stack HCI
 
