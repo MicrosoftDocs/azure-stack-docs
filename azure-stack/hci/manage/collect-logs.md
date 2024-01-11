@@ -41,11 +41,9 @@ Before you collect on-demand logs, you must complete the following prerequisites
 - You must have access to Azure.
 - You must have installed the `TelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
-## Perform on-demand log collection
+## Perform on-demand log collection via PowerShell
 
-You can collect on-demand logs using PowerShell, the preferred method, or Windows Admin Center in the Azure portal.
-
-# [PowerShell (Recommended)](#tab/power-shell)
+You can perform on-demand log collection using PowerShell, the recommeded method, or Windows Admin Center in the Azure portal, as described later in this article.
 
 Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection. The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
 
@@ -67,35 +65,36 @@ where:
 
 - The `FilterByRole` parameter enables you to collect logs for different roles. You can use this parameter to choose which roles you want to collect logs for. The following roles are available for filtering by this parameter. The available roles may be different in a future release.
 
-| Role name | Description |
-|--|--|
-| ALM | Application Lifecyle Management (ALM) involves managing the development, testing, deployment, and maintenance for software applications. |
-| ArcAgent | An agent that allows management of Windows Server via Azure Arc. See [Overview of Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). |
-| AutonomousLogs | Scheduled log collection triggered by `FleetDiagnosticsAgent`. When proactive log collection is disabled, logs are archived locally. making it an autonomous log collection. The `AutonomousLogs` role collets these logs. |
-| BareMetal | Infrastructure role that allows you to run services on bare metal servers without a virtualization layer. You can have full access and control over the operating system and hardware. |
-| CommonInfra | Collects logs for common infrastructure components, such as networking, storage, and security. |
-| DeploymentLogs | Records details of the deployment process, including steps taken, encountered errors, and operation status. |
-| ECE | Manages lifecycle workflows, including deployment, update, add-node, and node replacement. |
-| Extension | Data related to azure-managed extensions. |
-| FleetDiagnosticsAgent | Listens for health trigger to start proactive log collection. These logs are used to diagnose problems with FleetDiagnosticsAgent and proactive log collection. |
-| HCICloudService | An Azure cloud service that provides core functionality for Azure Stack HCI. It combines Azure power with the flexibility of on-premises servers. |
-| DownloadService | Part of infra service to download update content. |
-| Health | Collects health, performance, and usage data from various sources, such as event logs and performance counters. |
-| HostNetwork | Logs used to troubleshoot Network ATC, the underlying operating system component used to configure host networking. |
-| MOC_ARB | Management stack that enables cloud-based management of virtual machines on Azure Stack HCI and Windows Server. |
-| NC | Information related to the network infrastructure. |
-| ObservabilityAgent | Collects logs for the Observability feature. |
-| ObservabilityLogmanTraces | Collects logs for Observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
-| ObservabilityVolume | Collects logs for Observability volume. |
-| OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
-| OSUpdateLogs | Role that collects logs related to operating system updates on Azure Stack HCI nodes, useful for troubleshooting update-related issues. |
-| RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
-| TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
-| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which are not part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+   | Role name | Description |
+   |--|--|
+   | ALM | Application Lifecyle Management (ALM) involves managing the development, testing, deployment, and maintenance for software applications. |
+   | ArcAgent | An agent that allows management of Windows Server via Azure Arc. See [Overview of Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). |
+   | AutonomousLogs | Scheduled log collection triggered by `FleetDiagnosticsAgent`. When proactive log collection is disabled, logs are archived locally. making it an autonomous log collection. The `AutonomousLogs` role collets these logs. |
+   | BareMetal | Infrastructure role that allows you to run services on bare metal servers without a virtualization layer. You can have full access and control over the operating system and hardware. |
+   | CommonInfra | Collects logs for common infrastructure components, such as networking, storage, and security. |
+   | DeploymentLogs | Records details of the deployment process, including steps taken, encountered errors, and operation status. |
+   | ECE | Manages lifecycle workflows, including deployment, update, add-node, and node replacement. |
+   | Extension | Data related to azure-managed extensions. |
+   | FleetDiagnosticsAgent | Listens for health triggers to start log collection. These logs are used to diagnose problems with FleetDiagnosticsAgent and log collection. |
+   | HCICloudService | An Azure cloud service that provides core functionality for Azure Stack HCI. It combines Azure power with the flexibility of on-premises servers. |
+   | DownloadService | Part of infra service to download update content. |
+   | Health | Collects health, performance, and usage data from various sources, such as event logs and performance counters. |
+   | HostNetwork | Logs used to troubleshoot Network ATC, the underlying operating system component used to configure host networking. |
+   | MOC_ARB | Management stack that enables cloud-based management of virtual machines on Azure Stack HCI and Windows Server. |
+   | NC | Information related to the network infrastructure. |
+   | ObservabilityAgent | Collects logs for the Observability feature. |
+   | ObservabilityLogmanTraces | Collects logs for Observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
+   | ObservabilityVolume | Collects logs for Observability volume. |
+   | OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
+   | OSUpdateLogs | Role that collects logs related to operating system updates on Azure Stack HCI nodes, useful for troubleshooting update-related issues. |
+   | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
+   | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
+   | URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which are not part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 - The `CollectSddc` parameter allows you to specify if you want to include or exclude SDDC logs from log collection.
 
    - If set to `$true`, it triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes SDDC logs as part of log collection. This is the default value.
+
    - If set to `$false`, it excludes SDDC logs from log collection.
 
    For more information about using SDDC diagnostic tools, see [Collect diagnostic data for clusters](./collect-diagnostic-data.md).
@@ -209,21 +208,6 @@ Here's a sample output of the `Get-LogCollectionHistory` cmdlet. Note that the `
    PS C:\CloudDeployment\logs>
    ```
 
-# [Windows Admin Center in the Azure portal](#tab/windows-admin-center-in-portal)
-
-The `Diagnostics` extension in Windows Admin Center in the Azure portal enables you to share logs with Microsoft.
-
-Follow these steps to share logs with Microsoft via Windows Admin Center in the Azure portal:
-
-1. Connect to Windows Admin Center in the Azure portal. For information, see [Manage Azure Stack HCI clusters using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
-1. In the left pane, under **Extensions**, select **Diagnostics**.
-1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
-1. Select **Send manually** to perform on-demand log collection. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.
-
-   :::image type="content" source="./media/collect-logs/send-logs-manually.png" alt-text="Screenshot of the Diagnostics page showing the Send manually button for on-demand log collection." lightbox="./media/guided-quick-deploy-eval/send-logs-manually.png" :::
-
----
-
 ## Save logs to a local file share
 
 You can store diagnostic logs on a local Server Message Block (SMB) share if you have network issues or prefer to save data locally instead of sending it to Azure.
@@ -267,6 +251,19 @@ When requested, share the following information wih Microsoft Support:
 - `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
+
+## Perform on-demnad log collection via Windows Admin Center in the Azure portal
+
+The `Diagnostics` extension in Windows Admin Center in the Azure portal enables you to share logs with Microsoft.
+
+Follow these steps to share logs with Microsoft via Windows Admin Center in the Azure portal:
+
+1. Connect to Windows Admin Center in the Azure portal. For information, see [Manage Azure Stack HCI clusters using Windows Admin Center in Azure](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters).
+1. In the left pane, under **Extensions**, select **Diagnostics**.
+1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
+1. Select **Send manually** to perform on-demand log collection. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.
+
+   :::image type="content" source="./media/collect-logs/send-logs-manually.png" alt-text="Screenshot of the Diagnostics page showing the Send manually button for on-demand log collection." lightbox="./media/guided-quick-deploy-eval/send-logs-manually.png" :::
 
 ## Next steps
 
