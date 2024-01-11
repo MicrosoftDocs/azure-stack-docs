@@ -1,10 +1,10 @@
 ---
 title: Manage SDN Multisite for Azure Stack HCI (preview)
-description: Learn how to manage a multisite SDN solution for Azure Stack HCI (preview)
+description: Learn how to manage a multisite SDN solution for Azure Stack HCI (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/03/2024
+ms.date: 01/11/2024
 ---
 
 # Manage SDN Multisite for Azure Stack HCI (preview)
@@ -74,8 +74,7 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 
 These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
 
-- Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md).
-- Logical networks. For instructions on how to manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md).
+- Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
 - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](./use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](./use-datacenter-firewall-powershell.md).
 - User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn).
 
@@ -83,9 +82,10 @@ These resources are synchronized across all sites after peering is established. 
 
 These resources aren't synchronized after peering is established:
 
-- Load balancing policies
-- Virtual IP addresses (VIPs)
-- Gateway policies
+- Load balancing policies.
+- Virtual IP addresses (VIPs).
+- Gateway policies.
+- Logical networks. Although logical networks aren't synchronized across sites, IP pools are checked for overlap and that overlap is not allowed.
 
 These policies are created on the local site, and if you want the same policies on the other site, you must manually create them there. If your backend VMs for load balancing policies are located on a single site, then connectivity over SLB will work fine without any extra configuration. But, if you expect the backend VMs to move from one site to the other, by default, connectivity works only if there are any backend VMs behind a VIP on the local site. If all the backend VMs move to another site, connectivity over that VIP fails.
 
@@ -104,9 +104,9 @@ Follow these steps to establish peering across multiple sites using Windows Admi
     1. Enter the **Network Controller REST Uri** of the secondary site.
 
     1. Enter the **Cluster name for new site** or secondary site.
-    
+
     1. Enter the **Network Controller VM name for new site** or secondary site. This can be any Network Controller VM name of the secondary site.
-    
+
     1. Enter the **Network Controller VM name for** your primary location. This can be any Network Controller VM name of your primary location.
 
 1. Select **Submit**.
@@ -184,13 +184,9 @@ Follow these steps to remove peering:
 
 1. On the **Network Controllers** page, select **Delete**.
 
-    :::image type="content" source="./media/manage-sdn-multisite/remove-peering-delete-button.png" alt-text="Screenshot that shows the Delete button used for removing peering." lightbox="./media/manage-sdn-multisite/remove-peering-delete-button.png" :::
-
 1. On the confirmation window, select **Yes**.
 
-    :::image type="content" source="./media/manage-sdn-multisite/remove-peering-confirmation.png" alt-text="Screenshot of the confirmation window confirming removal of peering." lightbox="./media/manage-sdn-multisite/remove-peering-confirmation.png" :::
-
-    After remove peering, it takes a moment for your sites to update. If it doesn't update, refresh your browser.
+   After remove peering, it takes a moment for your sites to update. If it doesn't update, refresh your browser.
 
 ### Re-establish peering after removal
 
