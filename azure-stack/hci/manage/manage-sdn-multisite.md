@@ -190,10 +190,12 @@ Follow these steps to remove peering:
 
 ### Re-establish peering after removal
 
-With redeploying after removal, your secondary site will have to be a fresh SDN environment. This means that there can't be any pre-existing virtual networks or network security groups. However, if you’re attempting to redeploy  after removing multisite, your secondary location will have a local cache of the once global resources from  multisite. Even though Multisite has been removed, your secondary location will still have a copy of those resources. Without Multisite, those resources are just out of sync now. With redeployment after Multisite removal, ensure the following:
+With redeploying after removal, your secondary site will have to be a fresh SDN environment. This means that there can't be any pre-existing virtual networks or network security groups. However, if you’re attempting to redeploy  after removing SDN Multisite, your secondary location will have a local cache of the once global resources from  SDN Multisite. Even though SDN Multisite has been removed, your secondary location will still have a copy of those resources. Without SDN Multisite, those resources are now out of sync.
 
-- Virtual networks are removed. See [Delete a virtual network](./tenant-virtual-networks.md#delete-a-virtual-network)
-- Network Security Groups are removed. See [Delete a network security group](./use-datacenter-firewall-windows-admin-center.md#delete-a-network-security-group)
+For redeployment after SDN Multisite removal, ensure the following are removed:
+
+- Virtual networks. See [Delete a virtual network](./tenant-virtual-networks.md#delete-a-virtual-network)
+- Network Security Groups. See [Delete a network security group](./use-datacenter-firewall-windows-admin-center.md#delete-a-network-security-group)
 
 ## Next steps
 
