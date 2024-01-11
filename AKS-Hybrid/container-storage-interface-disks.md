@@ -64,13 +64,13 @@ Creating a custom storage class is a two-step process:
 
    1. For AKS on Azure Stack HCI 23H2, create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster. For more information about storage path creation, see [storage path](/azure-stack/hci/manage/create-storage-path).
 
-      Create a storage path named `$storagepathname` at the following path `$path`; for example, **C:\ClusterStorage\test-storagepath**.
+      For `$path`, create a storage path named `$storagepathname`; for example, **C:\ClusterStorage\test-storagepath**:
        
       ```azurecli
       az stack-hci-vm storagepath create --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --path $path
       ```
 
-      Get the storage path resouce ID.
+      Get the storage path resource ID:
 
       ```azurecli
       $storagepathID = az stack-hci-vm storagepath show --name $storagepathname --resource-group $resource_group --query "id" -o tsv 
@@ -90,7 +90,7 @@ Creating a custom storage class is a two-step process:
 
 2. Create a new custom storage class using the new storage path.
    
-   1. Create a file named **sc-aks-hci-disk-custom.yaml**, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new `container`. Use the `storage path ID` or `storage container name` craated in the previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified.
+   1. Create a file named **sc-aks-hci-disk-custom.yaml**, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new `container`. Use the `storage path ID` or `storage container name` created in the previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified:
 
       ```yaml
       kind: StorageClass
