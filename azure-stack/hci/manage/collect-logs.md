@@ -43,7 +43,7 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 ## Perform on-demand log collection via PowerShell
 
-You can perform on-demand log collection using PowerShell, the recommeded method, or Windows Admin Center in the Azure portal, as described later in this article.
+You can perform on-demand log collection using PowerShell, the recommended method, or Windows Admin Center in the Azure portal, as described later in this article.
 
 Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection. The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
 
@@ -67,7 +67,7 @@ where:
 
    | Role name | Description |
    |--|--|
-   | ALM | Application Lifecyle Management (ALM) involves managing the development, testing, deployment, and maintenance for software applications. |
+   | ALM | Application Lifecycle Management (ALM) involves managing the development, testing, deployment, and maintenance for software applications. |
    | ArcAgent | An agent that allows management of Windows Server via Azure Arc. See [Overview of Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). |
    | AutonomousLogs | Scheduled log collection triggered by `FleetDiagnosticsAgent`. When proactive log collection is disabled, logs are archived locally. making it an autonomous log collection. The `AutonomousLogs` role collets these logs. |
    | BareMetal | Infrastructure role that allows you to run services on bare metal servers without a virtualization layer. You can have full access and control over the operating system and hardware. |
@@ -148,7 +148,7 @@ FromDate parameter not specified. Setting to default value 12/04/2023 20:41:21
 ToDate parameter not specified. Setting to default value 12/04/2023 21:41:21
 Converting FromDate and ToDate to UTC
 FromDate in UTC is now 12/04/2023 20:41:21. ToDate in UTC is now 12/04/2023 21:41:21
-The correlation Id is 82f39b5b-d94f-4514-a27e-23745f05f6d1. This is used to query for this log collection in the diagnostic pipeline.
+The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
 Provide the below information to the customer support engineer working on your case.
 AEORegion: eastus
 AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/cluster-e5c7b2aa9a36490f9567b432a0eb51f1
@@ -243,16 +243,16 @@ Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <path-to-shar
 
 ## Information required in a Support case
 
-If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs. When you use `Send-DiagnosticData` to collect logs, it also provides key details that you'll need to share with Microsoft Support. After you collect logs, they are sent to the Kusto database. Microsoft Support can then use the provided information to locate your logs in Kusto and help you in resolving the reported issue.
+If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs. When you use `Send-DiagnosticData` to collect logs, it also provides key details that you'll need to share with Microsoft Support. After you collect logs, they are sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
 
-When requested, share the following information wih Microsoft Support:
+When requested, share the following information with Microsoft Support:
 
 - `AEORegion`: The location where your device is registered.
 - `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
 
-## Perform on-demnad log collection via Windows Admin Center in the Azure portal
+## Perform on-demand log collection via Windows Admin Center in the Azure portal
 
 The `Diagnostics` extension in Windows Admin Center in the Azure portal enables you to perform on-demand log collection and share the logs with Microsoft.
 
@@ -263,7 +263,7 @@ Follow these steps to perform on-demand log collection via Windows Admin Center 
 1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
 1. Select **Send manually**. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.
 
-   :::image type="content" source="./media/collect-logs/send-logs-manually.png" alt-text="Screenshot of the Diagnostics page showing the Send manually button for on-demand log collection." lightbox=".media/collect-logs/send-logs-manually.png" :::
+   :::image type="content" source="./media/collect-logs/send-logs-manually.png" alt-text="Screenshot of the Diagnostics page showing the Send manually button for on-demand log collection." lightbox="./media/collect-logs/send-logs-manually.png" :::
 
 ## Next steps
 
