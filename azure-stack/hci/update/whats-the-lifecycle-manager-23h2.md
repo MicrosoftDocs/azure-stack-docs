@@ -1,5 +1,5 @@
 ---
-title: Update overview for Azure Stack HCI, version 23H2 (preview)
+title: About updates for Azure Stack HCI, version 23H2 (preview)
 description: This article describes the updates feature for this release, benefits, and how to keep various pieces of your Azure Stack HCI, version 23H2 (preview) solution up to date.
 author: ronmiab
 ms.author: robess
@@ -8,7 +8,7 @@ ms.reviewer: thoroet
 ms.date: 11/28/2023
 ---
 
-# Update overview for Azure Stack HCI, version 23H2 (preview)
+# About updates for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 

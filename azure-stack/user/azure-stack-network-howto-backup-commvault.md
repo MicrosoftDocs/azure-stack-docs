@@ -156,7 +156,7 @@ You will need to know if your identity manager is Microsoft Entra ID or AD FS. T
 
     - **Storage Class**: Leave as User container's default storage class.
 
-10. Create a Microsoft Azure Stack Hub Client by following the instructions at [Creating a Microsoft Azure Stack Hub Client](https://documentation.commvault.com/2023e/essential/107795_system_requirements_for_azure_stack_hub.html)
+10. Create a Microsoft Azure Stack Hub Client by following the instructions at [Creating a Microsoft Azure Stack Hub Client](https://documentation.commvault.com/2023e/essential/system_requirements_for_azure_stack_hub.html)
 
     ![The Create Azure Stack Client dialog box has list and text boxes for specifying the characteristics of the client.](./media/azure-stack-network-howto-backup-commvault/commcell-ceate-client.png)
 
@@ -172,7 +172,7 @@ Two options are available. You can choose to replicate changes from the primary 
 
 1. During the configuration of Live Sync, you will need to provide the source Azure Stack Hub (Virtual Server Agent) and the target Azure Stack Hub details.
 
-2. For the steps to configure Commvault Live Sync, see [Live Sync Replication for Microsoft Azure Stack Hub](https://documentation.commvault.com/2023e/essential/104697_commserve_livesync_for_high_availability_disaster_recovery.html).
+2. For the steps to configure Commvault Live Sync, see [Live Sync Replication for Microsoft Azure Stack Hub](https://documentation.commvault.com/2023e/essential/commserve_livesync_for_high_availability_disaster_recovery.html).
 
     ![The Commcell console shows the tabbed page "vm-kr-cvlt > Client Computers > ASIC Azure Stack > Virtual Server > Azure Stack > defaultBackupSet". A context menu for the Off Stack Protection on the page has a Live Sync > Configuration option.](./media/azure-stack-network-howto-backup-commvault/live-sync-1.png)
 
