@@ -263,7 +263,7 @@ Follow these steps to share logs with Microsoft via Windows Admin Center in the 
 1. On the **Diagnostics** page, under **Log activity** review log collection history or select a row to show the details about a specific log collection.
 1. Select **Send manually** to perform on-demand log collection. In the context pane on the right, enter the log start and end time and then select **Collect & upload logs**.
 
-   :::image type="content" source="./media/collect-logs/send-logs-manually.png" alt-text="Screenshot of the Diagnostics page showing the Send manually button for on-demand log collection." lightbox="./media/guided-quick-deploy-eval/send-logs-manually.png" :::
+   :::image type="content" source="./media/collect-logs/send-logs-manually.png" alt-text="Screenshot of the Diagnostics page showing the Send manually button for on-demand log collection." lightbox=".media/collect-logs/send-logs-manually.png" :::
 
 ## Next steps
 
