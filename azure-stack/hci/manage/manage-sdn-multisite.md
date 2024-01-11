@@ -190,7 +190,7 @@ Follow these steps to remove peering:
 
 ### Re-establish peering after SDN Multisite removal
 
-With redeploying after removal, your secondary site will have to be a fresh SDN environment. This means there can't be any pre-existing virtual networks or network security groups. However, if you’re attempting to redeploy after removing SDN Multisite, your secondary location will have a local cache of the once global resources from SDN Multisite. Even though SDN Multisite has been removed, your secondary location will still have a copy of those resources. Without SDN Multisite, those resources are now out of sync.
+If you intend to re-establish your multisite connection after its removal, your secondary site will need to be set up as a new SDN environment. This means there can't be any pre-existing virtual networks or network security groups. However, your secondary location will have a local cache of the once global resources from SDN Multisite. Even though SDN Multisite has been removed, your secondary location will still have a copy of those resources. Without SDN Multisite, those resources are now out of sync.
 
 For redeployment after SDN Multisite removal, ensure the following are removed:
 
