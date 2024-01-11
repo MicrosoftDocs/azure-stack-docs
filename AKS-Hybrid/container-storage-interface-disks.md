@@ -60,11 +60,11 @@ The default storage class stores PVs at the `-imageDir` location specified durin
 
 Creating a custom storage class is a two-step process:
 
-1. Create a new storage path (Azure Stack HCI 23H2) or storage container (Azure Stack HCI version 22H2)
+1. Create a new storage path (Azure Stack HCI 23H2) or storage container (Azure Stack HCI version 22H2).
 
-   1. For AKS on Azure Stack HCI 23H2, create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster. More details of storage path creation pleasae visit [Storage Path](/azure-stack/hci/manage/create-storage-path.md).
+   1. For AKS on Azure Stack HCI 23H2, create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster. For more information about storage path creation, see [storage path](/azure-stack/hci/manage/create-storage-path).
 
-      Create a storage path `$storagepathname` at the following path `$path`, like `C:\ClusterStorage\test-storagepath`.
+      Create a storage path named `$storagepathname` at the following path `$path`; for example, **C:\ClusterStorage\test-storagepath**.
        
       ```azurecli
       az stack-hci-vm storagepath create --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --path $path
@@ -76,7 +76,7 @@ Creating a custom storage class is a two-step process:
       $storagepathID = az stack-hci-vm storagepath show --name $storagepathname --resource-group $resource_group --query "id" -o tsv 
       ```      
               
-   2. For AKS-HCI on Azure Stack HCI 22H2, create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
+   2. For AKS on Azure Stack HCI 22H2, create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
 
        ```powershell
       New-AksHciStorageContainer -Name <e.g. customStorageContainer> -Path <shared storage path>
@@ -90,30 +90,30 @@ Creating a custom storage class is a two-step process:
 
 2. Create a new custom storage class using the new storage path.
    
-   1. Create a file named `sc-aks-hci-disk-custom.yaml`, and then copy the manifest from the YAML file below.  The storage class is the same as the default storage class except with the new `container`. Use the `storage path ID` or `storage container name` craated in thre previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified.
+   1. Create a file named **sc-aks-hci-disk-custom.yaml**, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new `container`. Use the `storage path ID` or `storage container name` craated in the previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified.
 
       ```yaml
-          kind: StorageClass
-          apiVersion: storage.k8s.io/v1
-          metadata:
-           name: aks-hci-disk-custom
-          provisioner: disk.csi.akshci.com
-          parameters:
-           blocksize: "33554432"
-           container: <storage path ID or storage container name>
-           dynamic: "true"
-           group: <e.g clustergroup-akshci> # same as the default storageclass
-           hostname: <e.g. ca-a858c18c.ntprod.contoso.com> # same as the default storageclass
-           logicalsectorsize: "4096"
-           physicalsectorsize: "4096"
-           port: "55000"
-           fsType: ext4 # refer to the note above to determine when to include this parameter
-          allowVolumeExpansion: true
-          reclaimPolicy: Delete
-          volumeBindingMode: Immediate
+      kind: StorageClass
+      apiVersion: storage.k8s.io/v1
+      metadata:
+       name: aks-hci-disk-custom
+      provisioner: disk.csi.akshci.com
+      parameters:
+       blocksize: "33554432"
+       container: <storage path ID or storage container name>
+       dynamic: "true"
+       group: <e.g clustergroup-akshci> # same as the default storageclass
+       hostname: <e.g. ca-a858c18c.ntprod.contoso.com> # same as the default storageclass
+       logicalsectorsize: "4096"
+       physicalsectorsize: "4096"
+       port: "55000"
+       fsType: ext4 # refer to the note above to determine when to include this parameter
+      allowVolumeExpansion: true
+      reclaimPolicy: Delete
+      volumeBindingMode: Immediate
       ```
 
-   2. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your `sc-aks-hci-disk-custom.yaml` file: 
+   2. Create the storage class with the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply/) command and specify your **sc-aks-hci-disk-custom.yaml** file: 
   
       ```console
        $ kubectl apply -f sc-aks-hci-disk-custom.yaml
@@ -122,4 +122,4 @@ Creating a custom storage class is a two-step process:
 
 ## Next steps
 
-- [Use the file Container Storage Interface drivers](./container-storage-interface-files.md)
+- [Use the file Container Storage Interface drivers](container-storage-interface-files.md)
