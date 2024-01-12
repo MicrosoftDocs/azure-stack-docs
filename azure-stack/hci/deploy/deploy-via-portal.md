@@ -1,14 +1,14 @@
 ---
-title: Deploy an Azure Stack HCI system using the Azure portal (preview)
-description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
+title: Deploy an Azure Stack HCI system using the Azure portal
+description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 01/11/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
-# Deploy an Azure Stack HCI, version 23H2 system using the Azure portal (preview)
+# Deploy an Azure Stack HCI, version 23H2 system using the Azure portal
 
 This article helps you deploy an Azure Stack HCI, version 23H2 system for testing using the Azure portal.
 
@@ -22,12 +22,12 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Start the wizard and fill out the basics
 
 <!---1. Open the Azure portal and navigate to the Azure Stack HCI service (searching is an easy way) and then select **Deploy**.--->
-1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Stack HCI**. On the **Get started** tab, select **Deploy cluster (preview)**.
+1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Stack HCI**. On the **Get started** tab, select **Deploy cluster**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
-4. Select the **Region** to store this system's Azure resources—in this preview you must use either **(US) East US** or **(Europe) West Europe**.
+4. Select the **Region** to store this system's Azure resources—in this release you must use either **(US) East US** or **(Europe) West Europe**.
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
@@ -216,5 +216,5 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md).
-- [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI](../manage/create-storage-path.md).
+- [Get support for Azure Stack HCI deployment issues](../manage/get-support-for-deployment-issues.md).
