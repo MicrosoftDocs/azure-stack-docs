@@ -247,16 +247,28 @@ If you have outbound connectivity from the SMB share where you saved the logs, y
 Send-DiagnosticData –FromSMBShare –BypassObsAgent –SharePath <path-to-share> -ShareCredential $shareCredential
 ```
 
-## Information required in a Support case
+## Provide required information in a Support case
 
-If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs. When you use `Send-DiagnosticData` to collect logs, it also provides key details that you'll need to share with Microsoft Support. After you collect logs, they are sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
+If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
 
-When requested, share the following information with Microsoft Support:
+You can obtain this information from either the output of the `Send-DiagnosticData` cmdlet or directly from the problematic page in the Azure portal.
+
+### Provide information from the `Send-DiagnosticData` output
+
+When you use `Send-DiagnosticData` to collect logs, it also provides key details in its output that you'll need to share with Microsoft Support. After you collect logs, they are sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
+
+When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
 - `AEORegion`: The location where your device is registered.
 - `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
+
+### Provide information from the Azure portal page where issue occurs
+
+On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
+
+If you are on any of the HCI blades where you are experiencing issues, the current URI will have the resource ID needed to debug the service.
 
 ## Perform on-demand log collection via Windows Admin Center in the Azure portal
 
