@@ -268,7 +268,7 @@ When requested, share the following information with Microsoft Support. Get this
 
 On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
 
-If you are on any of the HCI blades where you are experiencing issues, the current URI will have the resource ID needed to debug the service.
+If you are on any of the Azure Stack HCI blades where you are experiencing issues, the current URI will have the resource ID needed to debug the service.
 
 ## Perform on-demand log collection via Windows Admin Center in the Azure portal
 
