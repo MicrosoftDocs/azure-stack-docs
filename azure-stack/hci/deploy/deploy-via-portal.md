@@ -84,7 +84,16 @@ Choose whether to create a new configuration for this system or to load deployme
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
-5. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
+5. To customize network settings for an intent, select **Customize network sittings** and provide the following information:
+
+    - Storage traffic priority. This specifies the Priority Flow Control where Data Center Bridging (DCB) is used.
+    - Cluster traffic priority.
+    - Storage traffic bandwidth reservation. This parameter defines the bandwidth allocation in % for the storage traffic.
+    - Adpater properties such as jumbo frame size (in bytes) and RDMA protocol (which can now be disabled).
+
+    :::image type="content" source="./media/deploy-via-portal/customize-networking-settings-1.png" alt-text="Screenshot of the customize network settings for a network intent used in deployment via Azure portal." lightbox="./media/deploy-via-portal/customize-networking-settings-1.png":::
+   
+1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
 
     These IPs are used by Azure Stack HCI and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
 
