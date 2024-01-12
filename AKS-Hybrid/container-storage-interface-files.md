@@ -29,7 +29,7 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ### Use SMB drivers
 
-1. Make sure SMB driver is deployed.
+1. Make sure the SMB driver is deployed.
       1. For AKS on Azure Stack HCI 23H2, the SMB CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command.
          If you create a Kubernetes cluster by using `--disable-smb-driver`, you must enable the the SMB driver on this cluster using the `az aksarc update` command:
          
