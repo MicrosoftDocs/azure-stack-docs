@@ -1,9 +1,9 @@
 ---
-title: Use Container Storage Interface (CSI) file drivers in AKS Arc
+title: Use Container Storage Interface (CSI) file drivers in AKS enabled by Azure Arc
 description: Learn how to use Container Storage Interface (CSI) drivers to manage files in AKS Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/23/2023
+ms.date: 01/12/2024
 ms.author: sethm 
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
