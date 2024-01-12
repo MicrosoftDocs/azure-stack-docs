@@ -2,7 +2,7 @@
   "redirections": [
     {
       "source_path":"azure-stack/hci/concepts/other-security-features.md",
-      "redirect_url":"/azure-stack/hci/manage/security-features",
+      "redirect_url":"/azure-stack/hci/concepts/security-features",
       "redirect_document_id": false
     },
     {
