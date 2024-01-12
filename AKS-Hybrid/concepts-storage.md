@@ -88,7 +88,9 @@ spec:
       image: k8s.gcr.io/nginx 
       volumeMounts: 
       - mountPath: "/mnt/aks-hci" 
-        name: volume 
+        name: volume
+  nodeSelector:
+      kubernetes.io/os: linux
   volumes: 
     - name: volume 
       persistentVolumeClaim: 
