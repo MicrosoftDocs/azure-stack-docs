@@ -98,7 +98,7 @@ sections:
           Move AKS Arc resources location.
 
         answer: | 
-          Moving resources in AKS Arc isn't currently supported. You must delete the AKS Arc cluster, then re-deploy it to the desired location.
+          Moving resources in AKS Arc isn't currently supported. You must delete the Kubernetes cluster, then re-deploy it to the desired location.
 
 additionalContent: |
   ## Next steps
