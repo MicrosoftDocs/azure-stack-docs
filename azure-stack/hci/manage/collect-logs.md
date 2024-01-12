@@ -45,7 +45,12 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 You can perform on-demand log collection using PowerShell, the recommended method, or Windows Admin Center in the Azure portal, as described later in this article.
 
-Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection. The `Send-DiagnosticData`cmdlet takes some time to complete based on which roles the logs are collecting, time duration specified, and the number of nodes in your Azure Stack HCI environment.
+Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection.
+
+Here are some important points to consider:
+
+- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of nodes in your Azure Stack HCI environment.
+- If you don't specify any parameters, the `Send-DiagnosticData` cmdlet collects data from all nodes for the previous one-hour duration.
 
 Here's the syntax of the `Send-DiagnosticData` cmdlet:
 
@@ -82,7 +87,6 @@ where:
    | HostNetwork | Logs used to troubleshoot Network ATC, the underlying operating system component used to configure host networking. |
    | MOC_ARB | Management stack that enables cloud-based management of virtual machines on Azure Stack HCI and Windows Server. |
    | NC | Information related to the network infrastructure. |
-   | ObservabilityAgent | Collects logs for the Observability feature. |
    | ObservabilityLogmanTraces | Collects logs for Observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
    | ObservabilityVolume | Collects logs for Observability volume. |
    | OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
@@ -96,6 +100,8 @@ where:
    - If set to `$true`, it triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes SDDC logs as part of log collection. This is the default value.
 
    - If set to `$false`, it excludes SDDC logs from log collection.
+   
+   - If you don't specify anything, the SDDC logs are collected by default.
 
    For more information about using SDDC diagnostic tools, see [Collect diagnostic data for clusters](./collect-diagnostic-data.md).
 
@@ -224,7 +230,7 @@ Follow these steps to save logs to a local share:
 
    ```powershell
    $user = "<username>"
-   pass = "<password>"
+   $pass = "<password>"
    $sec=ConvertTo-SecureString -String $pass -AsPlainText -Force
    $shareCredential = New-Object System.Management.Automation.PSCredential ($user, $sec)
    ```
