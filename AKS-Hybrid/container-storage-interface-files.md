@@ -17,26 +17,27 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to use Container Storage Interface (CSI) drivers for files to mount Server Message Block (SMB) or NFS shares when multiple nodes need concurrent access to the same storage volume in AKS enabled by Azure Arc(AKS Arc).
+This article describes how to use Container Storage Interface (CSI) drivers for files to mount a Server Message Block (SMB) or NFS shares when multiple nodes need concurrent access to the same storage volume in AKS enabled by Azure Arc.
 
 ## Overview of CSI in AKS Arc
 
 [!INCLUDE [csi-in-aks-hybrid-overview](includes/csi-in-aks-hybrid-overview.md)]
 
-## Use files persistent volumes using _ReadWriteMany_ CSI drivers
+## Use files persistent volumes using ReadWriteMany CSI drivers
 
-If multiple nodes need concurrent access to the same storage volumes in AKS Arc, you can use CSI drivers for files to mount SMB or NFS shares as *ReadWriteMany*. The SMB or NFS shares must be provisioned in advance.
+If multiple nodes need concurrent access to the same storage volumes in AKS Arc, you can use CSI drivers for files to mount SMB or NFS shares as **ReadWriteMany**. You must provision the SMB or NFS shares in advance.
 
 ### Use SMB drivers
 
 1. Make sure SMB driver is deployed.
-      1. For AKS on Azure Stack HCI 23H2, SMB CSI driver is by default installed when you create a kubernetes cluster through Portal or via `az aksarc create`.
-         If you create a Kubernetes cluster by using `--disable-smb-driver`, you need to enable the the SMB driver on this cluster by `az aksarc update`. Azuer CLI command:
+      1. For AKS on Azure Stack HCI 23H2, the SMB CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command.
+         If you create a Kubernetes cluster by using `--disable-smb-driver`, you must enable the the SMB driver on this cluster using the `az aksarc update` command:
+         
          ```azurecli
          az aksarc update -n $aksclustername -g $resource_group --enable-smb-driver
          ```
          
-      2. For AKS on Azure Stack HCI 22H2, deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
+      3. For AKS on Azure Stack HCI 22H2, deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
 
          ```powershell
          Install-AksHciCsiSmb -clusterName mycluster
@@ -71,14 +72,15 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ### Use NFS drivers
 
-1. Make sure NFS driver is deployed.
-      1. For AKS on Azure Stack HCI 23H2, NFS CSI driver is by default installed when you create a kubernetes cluster through Portal or via `az aksarc create`.
-         If you create a Kubernetes cluster by using `--disable-nfs-driver`, you need to enable the the NFS driver on this cluster by `az aksarc update`. Azuer CLI command:
+1. Make sure the NFS driver is deployed.
+      1. For AKS on Azure Stack HCI 23H2, the NFS CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command.
+         If you create a Kubernetes cluster by using `--disable-nfs-driver`, you must enable the the NFS driver on this cluster using the `az aksarc update` command:
+         
          ```azurecli
          az aksarc update -n $aksclustername -g $resource_group --enable-nfs-driver
          ```
          
-      2. For AKS on Azure Stack HCI 22H2, deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
+      3. For AKS on Azure Stack HCI 22H2, deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
 
          ```powershell
          Install-AksHciCsiNfs -clusterName mycluster
