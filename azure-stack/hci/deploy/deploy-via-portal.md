@@ -104,11 +104,12 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-2. Create a new **Storage account** to store the cluster witness file.
-<!---2. Enter an existing **Storage account** or create a new account to store the cluster witness file.
+2. Select an existing Storage account or create a new Storage account to store the cluster witness file. 
 
-    You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
---->
+    When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
+
+    :::image type="content" source="./media/deploy-via-portal/management-tab-2.png" alt-text="Screenshot of the Management tab with storage account for cluster witness for deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-2.png":::
+
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.

@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/11/2024
+ms.date: 01/16/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -135,21 +135,8 @@ Follow these steps to configure the operating system using SConfig:
 
     Your servers will restart; this takes a few minutes.
 
-1. After the servers restart, use option 15 in SConfig to launch the PowerShell session.
+You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment.
 
-1. Skip this step if you're deploying a single server:
-
-    1. On each node, run the following command:
-
-        ```powershell
-        winrm quickconfig
-        ```
-
-    1. Enable Internet Control Message Protocol (ICMP). This command is required for the other nodes to access the first node.
-
-        ```azurepowershell
-        netsh advfirewall firewall add rule name="ICMP Allow incoming V4 echo request" protocol=icmpv4:8,any dir=in action=allow
-        ```
 
 ## Next steps
 
