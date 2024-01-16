@@ -124,13 +124,19 @@ az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName -
 
 ### Enable guest management for the VM
 
-After you have created a VM, you may wish to enable guest management on that VM. To enable guest management, run the following command:
+After you have created a VM, you may wish to enable guest management on that VM. To enable guest management, follow these steps:
 
-```azurecli
-az stack-hci-vm update --name "myhcivm" --enable-agent true -g "myhci-rg"
-```
+1. Run the following command:
 
-You can verify in the Azure portal that the guest management is enabled.
+    ```azurecli
+    az stack-hci-vm update --name "myhcivm" --enable-agent true -g "myhci-rg"
+    ```
+    The guest management is enabled by setting the `enable-agent parameter` to `true`. The guest management should take a few minutes to get enabled.
+
+2. Go to the Azure portal. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
+
+    :::image type="content" source="./media/manage-vm-resources/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/verify-guest-management-enabled-1.png":::
+
 
 # [Azure portal](#tab/azureportal)
 
