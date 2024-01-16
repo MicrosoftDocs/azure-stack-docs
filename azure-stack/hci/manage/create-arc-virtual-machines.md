@@ -92,7 +92,7 @@ Depending on the type of the network interface that you created, you can create 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output. 
 
 > [!NOTE]
-> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Arc VM](#enable-guest-management-for-the-vm) way to enable it after the VM creation.
+> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Arc VM](#enable-guest-management-for-the-vm) to enable it after the VM creation.
 
 In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
@@ -129,7 +129,7 @@ After you have created a VM, you may wish to enable guest management on that VM.
 1. Run the following command:
 
     ```azurecli
-    az stack-hci-vm update --name "myhcivm" --enable-agent true -g "myhci-rg"
+    az stack-hci-vm update --name "myhci-vm" --enable-agent true -g "myhci-rg"
     ```
     The guest management is enabled by setting the `enable-agent parameter` to `true`. The guest management should take a few minutes to get enabled.
 
