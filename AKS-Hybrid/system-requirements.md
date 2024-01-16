@@ -57,7 +57,7 @@ This minimum requirement is for an AKS deployment with one worker node for runni
 | Windows Server failover cluster | 32 | 256 GB |
 | Single node Windows Server | 16 | 128 GB
 
-For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you won't get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
+For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
 
 Other compute requirements for AKS on Azure Stack HCI and Windows Server are in line with Azure Stack HCI requirements. See [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements#server-requirements) for more information about Azure Stack HCI server requirements.
 
@@ -65,7 +65,7 @@ You must install the same operating system on each server in the cluster. If you
 
 ## Storage requirements
 
-The following storage implementations are supported by AKS on Azure Stack HCI and Windows Server:
+AKS on Azure Stack HCI and Windows Server supports the following storage implementations:
 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
