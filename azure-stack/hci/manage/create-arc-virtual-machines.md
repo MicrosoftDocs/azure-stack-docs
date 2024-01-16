@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 12/15/2023
+ms.date: 01/16/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI (preview)
@@ -122,6 +122,15 @@ You can then attach the disk to the VM using the following command:
 az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
 ```
 
+### Enable guest management for the VM
+
+After you have created a VM, you may wish to enable guest management on that VM. To enable guest management, run the following command:
+
+```azurecli
+az stack-hci-vm update --name "myhcivm" --enable-agent true -g "myhci-rg"
+```
+
+You can verify in the Azure portal that the guest management is enabled.
 
 # [Azure portal](#tab/azureportal)
 
