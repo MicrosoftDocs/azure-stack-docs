@@ -1,6 +1,6 @@
 ---
-title: Install Azure Stack HCI, version 23H2 operating system
-description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
+title: Install Azure Stack HCI, version 23H2 operating system (preview)
+description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster (preview).
 author: alkohli
 ms.topic: how-to
 ms.date: 01/11/2024
@@ -9,11 +9,13 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Install the Azure Stack HCI, version 23H2 operating system
+# Install the Azure Stack HCI, version 23H2 operating system (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the steps needed to install the Azure Stack HCI, version 23H2 operating system locally on each server in your cluster.
+
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
