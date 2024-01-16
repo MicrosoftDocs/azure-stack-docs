@@ -1,9 +1,9 @@
 --- 
-title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment (preview) 
+title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment (preview)
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/14/2023
+ms.date: 01/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -15,7 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. 
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
