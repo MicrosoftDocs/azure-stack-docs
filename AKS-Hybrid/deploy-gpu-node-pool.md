@@ -22,8 +22,8 @@ The following GPU models are supported by AKS enabled by Azure Arc:
 | Manufacturer | GPU model | Supported version |
 |--------------|-----------|-----------------|
 | NVidia       | A2        | 2311.2          |
-| Nvidia       | A16       | Coming soon     |
-| Nvidia       | T4        | Coming soon     |
+| Nvidia       | A16       | Not yet supported     |
+| Nvidia       | T4        | Not yet supported    |
 
 ## Before you begin
 
