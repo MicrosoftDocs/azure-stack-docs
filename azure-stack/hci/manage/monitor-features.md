@@ -30,7 +30,7 @@ Enabling Insights on your Azure Stack HCI cluster provides access to a set of sa
 
 You must complete the following prerequisites before you can use Insights for monitoring Azure Stack HCI features:
 
-- You must have access to an Azure Stack HCI, version 23H2 (preview) cluster deployed, registered, and connected to Azure.
+- You must have access to an Azure Stack HCI, version 23H2 cluster deployed, registered, and connected to Azure.
 
 - Your cluster must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
 
