@@ -19,7 +19,7 @@ Graphical Processing Units (GPU) are used for compute-intensive workloads such a
 
 The following GPU models are supported by AKS enabled by Azure Arc:
 
-| Manufacturer | GPU model | Support version |
+| Manufacturer | GPU model | Supported version |
 |--------------|-----------|-----------------|
 | NVidia       | A2        | 2311.2          |
 | Nvidia       | A16       | Coming soon     |
@@ -78,7 +78,7 @@ Continue the deployment of the Azure Stack HCI cluster by following the steps in
 Once the Azure Stack HCI cluster deployment is complete, you can run the following CLI command to show the available VM SKUs on your deployment. If your GPU drivers are installed correctly, the corresponding GPU VM SKUs are listed:
 
 ```azurecli
-az aksarc vmsize list --custom-location<custom location ID> -g <resource group name>
+az aksarc vmsize list --custom-location <custom location ID> -g <resource group name>
 ```
 
 ## Create a new workload cluster with a GPU-enabled node pool
