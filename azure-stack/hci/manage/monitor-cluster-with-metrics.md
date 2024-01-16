@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 01/09/2024
 ---
 
 # Monitor Azure Stack HCI with Azure Monitor Metrics (preview)
@@ -39,6 +39,26 @@ Here are the prerequisites of using Metrics for Azure Stack HCI:
 - You must have access to a cluster that is running Azure Stack HCI, version 23H2 (preview) (Build version: 2311) or later.
 
 - The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+
+## Monitor Azure Stack HCI through the Monitoring tab
+
+In the Azure portal, you can monitor platform metrics of your cluster by navigating to the **Monitoring** tab on your cluster’s **Overview** page. This tab offers a quick way to view graphs for different platform metrics. You can select any of the graphs to further analyze the data in metrics explorer.
+
+Follow these steps to monitor platform metrics of your cluster in the Azure portal:
+
+1. Go to your Azure Stack HCI cluster resource page and select your cluster.
+
+1. On the **Overview** page of your cluster, select the **Monitoring** tab.
+
+   :::image type="content" source="media/monitor-cluster-with-metrics/monitoring-tab.png" alt-text="Screenshot showing the Monitoring tab for your cluster." lightbox="media/monitor-cluster-with-metrics/monitoring-tab.png":::
+
+1. On the **Platform metrics** pane, review the graphs displaying platform metrics. To know the metrics that Azure Monitor collects to populate these graphs, see [Metrics for the Monitoring tab graphs](#metrics-for-the-monitoring-tab-graphs).
+
+   - At the top of the pane, select a duration to change the time range for the graphs.
+   - Select the **See all metrics** link to analyze metrics using metrics explorer. See [Analyze metrics](#analyze-metrics).
+   - Select any of the graphs to open them in metrics explorer to drill down further or to create an alert rule. See [Create metrics alerts](#create-metrics-alerts).
+
+       :::image type="content" source="media/monitor-cluster-with-metrics/platform-metrics.png" alt-text="Screenshot showing the platform metrics for your cluster." lightbox="media/monitor-cluster-with-metrics/platform-metrics.png":::
 
 ## Analyze metrics
 
@@ -121,6 +141,21 @@ Follow these steps to analyze metrics and create alerts for a specific Azure Sta
 ## What metrics are collected?
 
 This section lists the platform metrics that are collected for the Azure Stack HCI cluster, the aggregation types, and the dimensions available for each metric. For more information about metric dimensions, see [Multi-dimensional metrics](/azure/azure-monitor/essentials/data-platform-metrics#multi-dimensional-metrics).
+
+### Metrics for the Monitoring tab graphs
+
+The following table lists the metrics that Azure Monitor collects to populate the graphs on the **Monitoring** tab:
+
+| Metrics | Unit |
+|--|--|
+| Percentage CPU | Percent |
+| Network In/Sec | BytesPerSecond |
+| Network Out/Sec | BytesPerSecond |
+| Disk Read Bytes/Sec | BytesPerSecond |
+| Disk Write Bytes/Sec | BytesPerSecond |
+| Disk Read Operations/Sec | CountPerSecond |
+| Disk Write Operations/Sec | CountPerSecond |
+| Used Memory Bytes | Bytes |
 
 ### Metrics for servers
 
