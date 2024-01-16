@@ -262,8 +262,10 @@
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
     - name: Monitoring and logging
       items:    
-          - name: Use Azure Monitor for containers
-            href: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json
+          - name: Monitor Kubernetes object events
+            href: kubernetes-monitor-object-events.md
+          - name: Enable Container Insights
+            href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Use on-premises monitoring
             href: monitor-logging.md
           - name: View logs to collect and review data
