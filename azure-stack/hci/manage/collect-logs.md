@@ -79,7 +79,7 @@ where:
    | CommonInfra | Collects logs for common infrastructure components, such as networking, storage, and security. |
    | DeploymentLogs | Records details of the deployment process, including steps taken, encountered errors, and operation status. |
    | ECE | Manages lifecycle workflows, including deployment, update, add-node, and node replacement. |
-   | Extension | Data related to azure-managed extensions. |
+   | Extension | Data related to Azure managed extensions. |
    | FleetDiagnosticsAgent | Listens for health triggers to start log collection. These logs are used to diagnose problems with FleetDiagnosticsAgent and log collection. |
    | HCICloudService | An Azure cloud service that provides core functionality for Azure Stack HCI. It combines Azure power with the flexibility of on-premises servers. |
    | DownloadService | Part of infra service to download update content. |
