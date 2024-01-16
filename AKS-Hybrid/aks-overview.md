@@ -2,7 +2,7 @@
 title: AKS enabled by Azure Arc overview
 description: Learn about AKS enabled by Azure Arc.
 ms.topic: overview
-ms.date: 01/06/2024
+ms.date: 01/16/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: scooley
@@ -17,6 +17,8 @@ Azure Kubernetes Service (AKS), enabled by Azure Arc, brings Azure-managed Kuber
 Azure Arc enabled AKS to run both Linux and Windows Kubernetes clusters locally while using Azure for critical management tasks, such as health monitoring and maintenance. Just like AKS in Azure, when you create a Kubernetes cluster, AKS also creates a Kubernetes control plane so you don't have to. For more information about Kubernetes basics, see [Kubernetes core concepts for AKS](kubernetes-concepts.md).
 
 To enable AKS on infrastructures with different capabilities and resource characteristics, there are two pre-configured deployment options available. Although there are two deployment options, both are AKS at their core – AKS shares common components, support for Windows and Linux containers, support for all Arc extensions, and support for the Kubernetes ecosystem.
+
+## Deployment options
 
 The available deployment options are:
 
