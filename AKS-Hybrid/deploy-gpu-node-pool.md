@@ -3,7 +3,7 @@ title: Use GPUs for compute-intensive workloads
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
 author: baziwane
 ms.topic: how-to
-ms.date: 12/28/2023
+ms.date: 01/16/2024
 ms.author: rbaziwane 
 ms.lastreviewed: 03/21/2023
 ms.reviewer: sethm
@@ -15,50 +15,25 @@ ms.reviewer: sethm
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
+## Supported GPU models
+
+The following GPU models are supported by AKS enabled by Azure Arc:
+
+| Manufacturer | GPU model | Support version |
+|--------------|-----------|-----------------|
+| NVidia       | A2        | 2311.2          |
+| Nvidia       | A16       | Coming soon     |
+| Nvidia       | T4        | Coming soon     |
+
 ## Before you begin
 
-If you are updating AKS from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin. Follow the steps in this section.
+To use GPUs in AKS, make sure you installed the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
 
-### Step 1: Uninstall the Nvidia host driver
+### Step 1: install the OS
 
-On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
+Install the Azure Stack HCI, version 23H2 operating system locally on each server in your Azure Stack HCI cluster.
 
-```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
-```
-
-You should see the GPU devices appear in an error state as shown in this example output:
-
-```output
-Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
-Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
-```
-
-### Step 2: Dismount the host driver from the host
-
-When you uninstall the host driver, the physical GPU goes into an error state. You must dismount all the GPU devices from the host.
-
-For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output:
-
-```powershell
-$id1 = "<Copy and paste GPU instance id into this string>"
-$lp1 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
-Disable-PnpDevice -InstanceId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
-```
-
-To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
-
-```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video"
-```
-
-```output
-Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
-Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
-```
-
-### Step 3: Download and install the NVIDIA mitigation driver
+### Step 2: download and install the NVIDIA mitigation driver
 
 The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownload-March2009/licence.php?lang=us).
 
@@ -90,29 +65,34 @@ OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_
 OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
 ```
 
-### Step 4: Repeat steps 1 to 3
+### Step 3: repeat steps 1 and 2
 
-Repeat steps 1 to 3 for each node in your failover cluster.
+Repeat steps 1 and 2 for each server in your HCI cluster.
 
-> [!IMPORTANT]
-> GPU-enabled virtual machines are not added to failover clustering in Windows Server 2019, Windows Server 2022, or Azure Stack HCI.
+### Step 4: continue deployment of the Azure Stack HCI cluster
 
-## Install or update AKS
+Continue the deployment of the Azure Stack HCI cluster by following the steps in [Azure Stack HCI, version 23H2 deployment.](/azure-stack/hci/deploy/deployment-introduction)
 
-See the AKS quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) or using [Windows Admin Center](setup.md) to install or update AKS enabled by Arc.
+### Get a list of available GPU-enabled VM SKUs
+
+Once the Azure Stack HCI cluster deployment is complete, you can run the following CLI command to show the available VM SKUs on your deployment. If your GPU drivers are installed correctly, the corresponding GPU VM SKUs are listed:
+
+```azurecli
+az aksarc vmsize list --custom-location<custom location ID> -g <resource group name>
+```
 
 ## Create a new workload cluster with a GPU-enabled node pool
 
-Currently, using GPU-enabled node pools is only available for Linux node pools.
+Currently, using GPU-enabled node pools is only available for Linux node pools. To create a new Kubernetes cluster:
 
-```powershell
-New-AksHciCluster -Name "gpucluster" -nodePoolName "gpunodepool" -nodeCount 2 -osType linux -nodeVmSize Standard_NK6 
+```azurecli
+az aksarc create -n <aks cluster name> -g <resource group name> --custom-location <custom location ID> --vnet-ids <vnet ID>
 ```
 
-After installing the workload cluster, run the following command to get your Kubeconfig:
+The following example adds a node pool with 2 GPU-enabled (NVDIA A2) nodes with a **Standard\_NC4\_A2** VM SKU:
 
-```powershell
-Get-AksHciCredential -Name gpucluster
+```azurecli
+az aksarc nodepool add --cluster-name <aks cluster name> -n <node pool name> -g <resource group name> --node-count 2 --node-vm-size Standard_NC4_A2 --os-sku Linux
 ```
 
 ## Confirm you can schedule GPUs
@@ -222,7 +202,7 @@ Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's
 Before you upgrade:
 
 1. Plan for downtime during the upgrade.
-2. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
+1. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 
