@@ -17,7 +17,7 @@ ms.date: 11/03/2022
 
 > Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows IoT, Windows 10/11 IoT Enterprise/Enterprise/Pro
 
-This article covers the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
+This article describes the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
 
 ## Hardware requirements
 
