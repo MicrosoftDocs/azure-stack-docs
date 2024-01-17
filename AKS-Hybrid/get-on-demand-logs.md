@@ -1,5 +1,5 @@
 ---
-title: Get on-demand logs for troubleshooting in AKS enabled by Azure Arc
+title: Get on-demand logs for troubleshooting
 description: Learn how to get full on-demand logs in AKS enabled by Arc and send them to Microsoft.
 author: sethmanheim
 ms.topic: how-to
@@ -13,9 +13,9 @@ ms.reviewer: guanghu
 
 ---
 
-# Get on-demand logs for troubleshooting in AKS enabled by Azure Arc
+# Get on-demand logs for troubleshooting
 
-This article describes how to collect full on-demand logs and send them to Microsoft support.
+This article describes how to collect full on-demand logs and send them to Microsoft support for troubleshooting issues with AKS enabled by Azure Arc.
 
 ## Prepare the SSH key
 
