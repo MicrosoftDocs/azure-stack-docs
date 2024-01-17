@@ -46,29 +46,29 @@ The steps are also summarized here:
 
 1. Provide a **Name** for the application, select a **Supported account type** and then select **Register**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Register an application for sservice principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
 
 1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID** for this service principal. You encode and use this value later.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Application (client) ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
 
 #### Create a client secret
 
 1. Go to the service principal that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
 
 1. Add a **Description** for the client secret and provide a timeframe when it **Expires**. Select **Add**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-2.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-2.png":::
 
 1. Copy the **client secret value** as you encode and use it later.
 
     > [!Note]
     > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
 
 ### Create a cloud witness storage account
@@ -79,17 +79,17 @@ Follow these steps to get and encode the access key for the ARM deployment templ
 
 1. In the Azure portal, create a storage account in the same resource group that you would use for deployment. 
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png" alt-text="Screenshot showing creation of storage account for cloud witness." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png":::
 
 1. Once the Storage account is created, verify that you can see the account in the resource group.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png" alt-text="Screenshot showing storage account for cloud witness in the deployment resource group." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png":::
  
 1. Go to the storage account that you created and then go to **Access keys**.
 
 1. For **key1, Key**, select **Show**. Select the **Copy to clipboard** button at the right side of the **Key** field.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png" alt-text="Screenshot showing the access keys for the cloud witness storage account." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png":::
 
     After you copy the key, select **Hide**.
 
@@ -138,7 +138,7 @@ Verify access to the resource group for your registered Azure Stack HCI servers 
 
 1. Select **Access control (IAM)** from the left-hand side of the screen and then select **Check access**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png" alt-text="Screenshot showing check access in the access control for the resource group." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png":::
 
 1. In the **Check access**, input or select the following: 
 
@@ -158,13 +158,13 @@ Verify access to the resource group for your registered Azure Stack HCI servers 
     
         - **Reader**.
 
-        :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png":::
+        :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png" alt-text="Screenshot showing server roles that are enabled on first server." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png":::
 
     1. Select the **X** on the upper right to go back to the server selection screen.
 
 1. Select another server in your Azure Stack HCI cluster. Verify the selected server has the same roles enabled as you verified on the earlier server.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png" alt-text="Screenshot showing server roles that are enabled on second server." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png":::
 
 #### Add access to the resource group
 
@@ -176,11 +176,11 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Select **+ Add** and then select **Add role assignment**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png" alt-text="Screenshot showing Add role assignment flow for access to the resource group." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png":::
 
 1. Search for and select **Azure Connected Machine Resource Manager**. Select **Next**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png" alt-text="Screenshot showing Azure Connected Machine Resource Manager for the resource group." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png":::
 
 
 1. Leave the selection on **User, group, or service principal**. Select **+ Select** members.
@@ -238,6 +238,8 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
 
 #### Verify new role assignments
+
+Optionally verify the role assignments you created.
 
 1. Select **Access Control (IAM) Check Access** to verify the role assignments you created.
 
