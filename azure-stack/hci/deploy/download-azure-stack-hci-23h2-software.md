@@ -1,6 +1,6 @@
 ---
-title: Download Azure Stack HCI, version 23H2 software
-description: Learn how to download Azure Stack HCI, version 23H2 software from the Azure portal.
+title: Download Azure Stack HCI, version 23H2 software (preview)
+description: Learn how to download Azure Stack HCI, version 23H2 software from the Azure portal (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 01/11/2024
 ---
 
-# Download Azure Stack HCI, version 23H2 software
+# Download Azure Stack HCI, version 23H2 software (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
@@ -17,6 +17,7 @@ This article describes how to download the Azure Stack HCI, version 23H2 softwar
 
 The first step in deploying Azure Stack HCI, version 23H2 is to download Azure Stack HCI software from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the Azure Stack HCI software should be pre-installed. In that case, you can skip this step and move on to [Register your servers and assign permissions for Azure Stack HCI deployment](./deployment-arc-register-server-permissions.md).
 
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 

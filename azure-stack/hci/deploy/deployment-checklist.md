@@ -1,6 +1,6 @@
 ---
-title: Deployment checklist for Azure Stack HCI, version 23H2 
-description: Complete the deployment checklist prior to deploying Azure Stack HCI, version 23H2.
+title: Deployment checklist for Azure Stack HCI, version 23H2 (preview)
+description: Complete the deployment checklist prior to deploying Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.topic: article
 ms.date: 01/11/2024
@@ -9,12 +9,13 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Get the deployment checklist for Azure Stack HCI, version 23H2
+# Get the deployment checklist for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 Use the following checklist to gather the required information ahead of the actual deployment of your Azure Stack HCI, version 23H2 cluster.
 
+ [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Deployment checklist
 
