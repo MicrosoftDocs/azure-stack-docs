@@ -25,11 +25,7 @@ For more information, see [What's new in 22H2](whats-new-in-hci-22h2.md#azure-st
 
 ## Known issues in this release
 
-Here are the known issues in the current Azure Stack HCI supplemental package release:
-
-|#|Feature|Issue|Workaround|
-|-|------|------|----------|
-|1|Update |The update may fail at the ‘UpdateOtherAgent’ step if the remote support agent’s Cluster discovery cache file becomes corrupt due to an unclean shutdown of the service. |Delete the Cluster discovery file on all failed nodes from <br> C:\programdata\Microsoft\AzureStack\RemoteSupport\Cluster\ClusterDiscoveryState. <br><br> Restart the agent with this command:<br>`Start-Service -Name "AzureStack Observability RemoteSupportAgent"`|
+Microsoft is not currently aware of any issues with this release. All the known issues are carried over from previous releases.
 
 ## Known issues from previous releases
 
@@ -49,6 +45,7 @@ Here are the known issues that have carried over from the previous releases in A
 |10|Security |In this release, when you run `Get-AsWDACPolicy` cmdlet on a two-node Azure Stack HCI cluster, the cmdlet returns `Unable to determine` as opposed to an integer (0, 1 or 2). |The `Get-ASWDACPolicyMode` cmdlet fetches information related to WDAC policy from the CodeIntegrity events and is unable to get the information as the CodeIntegrity event logs are flushed with 3114 events. <br> A workaround is provided in the output of the cmdlet that instructs you to run `Invoke-RefreshWDACPolicyTool` to refresh the policy on the nodes to generate new CodeIntegrity events.|
 |11|Azure Arc|After update, the Azure Stack HCI cluster servers show as not registered with Azure Arc.|To mitigate this issue, follow these steps: <br> 1. *Azcmamnet.exe* connect on each **Not registered** server <br>2. Register the servers again. Run this cmdlet on each server that isn't registered: <br>`Register-AzStackHCI`   |
 |12|Arc Resource Bridge  |In this release, a custom location isn't created during Arc Resource Bridge deployment.|This issue is seen in switchless configurations only.|
+|13|Update |The update may fail at the ‘UpdateOtherAgent’ step if the remote support agent’s Cluster discovery cache file becomes corrupt due to an unclean shutdown of the service. |Delete the Cluster discovery file on all failed nodes from <br> C:\programdata\Microsoft\AzureStack\RemoteSupport\Cluster\ClusterDiscoveryState. <br><br> Restart the agent with this command:<br>`Start-Service -Name "AzureStack Observability RemoteSupportAgent"`|
 
 ## Next steps
 
