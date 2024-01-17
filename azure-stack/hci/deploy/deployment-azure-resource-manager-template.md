@@ -70,15 +70,6 @@ The steps are also summarized here:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
-<!--#### Get Application ID and Client secret value
-
-1. 
-1. In Azure portal, go to **App registrations**, then select **Overview**.
-1. Find the **Application (client) ID**.
-1. Select **Certifications & secrets**.
-1. Select the **Client secrets** tab.
-1. Under **Value**, copy the secret value.
-1. Encode the value as described previously using PowerShell.-->
 
 ### Create a cloud witness storage account
 
@@ -102,7 +93,10 @@ Follow these steps to get and encode the access key for the ARM deployment templ
 
     After you copy the key, select **Hide**.
 
-1. On a management computer, run PowerShell as administrator. Encode the **Key** value string with the following script:
+
+### Encode parameter values
+
+1. On a management computer, run PowerShell as administrator. Encode the copied **Key** value string with the following script:
 
     ```PowerShell
     $secret="<Key value string coped earlier>" 
@@ -116,8 +110,6 @@ Follow these steps to get and encode the access key for the ARM deployment templ
     ```
 
 1. The encoded output value you generate is what the ARM deployment template expects. Make a note of this value and the name of the storage account. You'll use these values later in the deployment process.
-
-### Encode other parameter values
 
 In addition to the storage witness access key, you also need to similarly encode the values for the following parameters.
 
@@ -231,9 +223,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Once the roles are assigned as **Key Vault Secrets User**, you are able to see them in the **Notifications activity** log.
 
-    <!--:::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::
-
-    :::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::-->
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
 
 #### Verify new role assignments
 
