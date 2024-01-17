@@ -1,27 +1,28 @@
 ---
-title: Azure Resource Manager template deployment for Azure Stack HCI, version 23H2 (preview)
-description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template (preview).
+title: Azure Resource Manager template deployment for Azure Stack HCI, version 23H2
+description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 12/15/2023
+ms.date: 01/16/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-arm-template
 ---
 
-# Deploy an Azure Stack HCI, version 23H2 via Azure Resource Manager deployment template (preview)
+# Deploy an Azure Stack HCI, version 23H2 via Azure Resource Manager deployment template
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article details the prerequisites and preparation required before you use an Azure Resource Manager template (ARM template) in Azure portal to deploy Azure Stack HCI in your environment.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+> [IMPORTANT]
+> ARM template deployment of Azure Stack HCI systems is targeted for deployment-at-scale. The intended audience for this version 23H2 deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then subsequent deployments via the ARM template.
 
 ## Prerequisites
 
 - Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-    - All the mandatory extensions have installed successfully. The mandatory extensions include: Azure Edge Lifecycle Manager, Azure Edge Device Management, and Telemetry and Diagnostics.
+    - All the mandatory extensions have installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, and **Telemetry and Diagnostics**.
     - All servers are running the same version of OS.
     - All the servers have the same network adapter configuration.
 
@@ -30,31 +31,81 @@ This article details the prerequisites and preparation required before you use a
 
 Follow these steps to prepare the Azure resources you need for the deployment:
 
-### Create service principal
+### Create a service principal and client secret
 
-To authenticate your cluster, you need to create a service principal. You must also assign user access administrator and contributor roles to the service principal. Follow the steps in one of these procedures to create the service principal and assign the roles:
+To authenticate your cluster, you need to create a service principal and a corresponding **Client secret**. You must also assign user access administrator and contributor roles to the service principal. 
 
-- [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal).
-- [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
-### Create cloud witness storage account
+#### Create a service principal
 
-First, create a storage account contained within the cloud witness account. You then need to get the access key for this storage account, and then use it in an encoded format with the ARM deployment template.
+Follow the steps in [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal) to create the service principal and assign the roles. Alternatively, use the PowerShell procedure to [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
+
+The steps are also summarized here:
+
+1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/) as at least a Cloud Application Administrator. Browse to **Identity > Applications > App registrations** then select **New registration**.
+
+1. Provide a **Name** for the application, select a **Supported account type** and then select **Register**.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
+
+1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID** for this service principal. You encode and use this value later.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
+
+#### Create a client secret
+
+1. Go to the service principal that you just created and browse to **Certificates & secrets > Client secrets**.
+1. Select **+ New client** secret.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
+
+1. Add a **Description** for the client secret and provide a timeframe when it **Expires**. Select **Add**.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-2.png":::
+
+1. Copy the **client secret value** as you encode and use it later.
+
+    > [!Note]
+    > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
+
+<!--#### Get Application ID and Client secret value
+
+1. 
+1. In Azure portal, go to **App registrations**, then select **Overview**.
+1. Find the **Application (client) ID**.
+1. Select **Certifications & secrets**.
+1. Select the **Client secrets** tab.
+1. Under **Value**, copy the secret value.
+1. Encode the value as described previously using PowerShell.-->
+
+### Create a cloud witness storage account
+
+First, create a storage account to serve as a cloud witness. You then need to get the access key for this storage account, and then use it in an encoded format with the ARM deployment template.
 
 Follow these steps to get and encode the access key for the ARM deployment template:
 
-1. In the Azure portal, go to the storage account that you created and then go to **Access keys**.
+1. In the Azure portal, create a storage account in the same resource group that you would use for deployment. 
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png":::
+
+1. Once the Storage account is created, verify that you can see the account in the resource group.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png":::
+ 
+1. Go to the storage account that you created and then go to **Access keys**.
 
 1. For **key1, Key**, select **Show**. Select the **Copy to clipboard** button at the right side of the **Key** field.
 
-    <!--:::image type="content" source="media/.png" alt-text="Screenshot of access keys in the cloud witness storage account" lightbox="media/.png":::-->
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png":::
 
-1. For **key1, Key**, select **Hide**.
+    After you've copied the key, select **Hide**.
 
-1. In PowerShell, encode the **Key** value string with the following script:
+1. On a management computer, run PowerShell as administrator. Encode the **Key** value string with the following script:
 
     ```PowerShell
-    $secret="examplesecretkeyvaluethatwillbelongerthanthisandoutputwilllookdifferent" 
+    $secret="<Key value string coped earlier>" 
     [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($secret))
     ```
 
@@ -65,6 +116,23 @@ Follow these steps to get and encode the access key for the ARM deployment templ
     ```
 
 1. The encoded output value you generate is what the ARM deployment template expects. Make a note of this value as well as the name of the storage account. You will use these values later in the deployment process.
+
+### Encode other parameter values
+
+In addition to the storage witness access key, you also need to similiarly encode the values for the following parameters.
+
+|Parameter  |Description  |
+|---------|---------|
+|`localaccountname`, `localaccountpassword`     |Username and password for the local administrator for all the servers in your cluster. The credentials are identical for all the servers in your system.         |
+|`domainaccountname`, `omainaccountpassword`      |The new username and password that were created with the appropriate permissions for deployment during the Active Directory preparation step for the `AzureStackLCMUserCredential` object. This account is the same as the user account used by the Azure Stack HCI deployment. <br> For more information, see [Prepare the Active Directory](./deployment-prep-active-directory.md#prepare-active-directory) to get these credentials.        |
+|`clientId`, `clientSecretValue`       |The application (client) ID for the SPN that you created as a prerequisite to this deployment and the corresponding client secret value for the application ID.          |
+
+Run the PowerShell script used in the earlier step to encode these values:
+
+- **Local account password**. <!--This corresponds to the `localAdminSecretValue` in the template.--> Encode `localaccountname:localacountpassword` to get this value for the template.
+- **Domain account password**. <!--This corresponds to the `domainAdminSecretValue` in the template.--> Encode `domainaccountname:domainaccountpassword` to get this value for the template.
+- **Application client ID secret value**. <!--This corresponds to the `arbDeploymentSpnValue` in the template.--> Encode `clientId:clientSecretValue` to get this value for the template.
+
 
 ### Assign resource permissions
 
@@ -103,8 +171,6 @@ Verify access to the resource group for your registered Azure Stack HCI servers 
 #### Add access to the resource group
 
 Add access to the resource group for your registered Azure Stack HCI servers as follows:
-
-1. Under **Current role assignments**, select **Azure Connected Machine Resource Manager**.
 
 1. Go to the appropriate resource group for your Azure Stack HCI environment.
 
@@ -186,20 +252,29 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 ## Deploy using ARM template
 
-With all the prerequisite and preparation steps complete, you are ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file.
+With all the prerequisite and preparation steps complete, you are ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the encoded values generated previously. 
+
+> [!IMPORTANT] 
+> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value need to be populated. If there are null values, then the validation will fail.
 
 1. In Azure portal, go to **Home**.
 
 1. Select **Create a resource**.
 
 1. Select **Create** under **Template deployment (deploy using custom templates)**.
-    <!--A screenshot of a computer-->
+
+    :::image type="content" source="./media/deploy-via-template/get-started.png" alt-text="Screenshot of the Get Started page for Azure services." lightbox="./media/deploy-via-template/get-started.png":::
 
 1. Near the bottom of the page, find **Start with a quickstart template or template spec** section.
 
+    :::image type="content" source="./media/deploy-via-template/quickstart-template.png" alt-text="Screenshot showing the quickstart template option." lightbox="./media/deploy-via-template/quickstart-template.png":::
+
 1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
 
-1. **Select template**.
+1. When finished, **Select template**.
+
+    :::image type="content" source="./media/deploy-via-template/select-template.png" alt-text="Screenshot showing template selection." lightbox="./media/deploy-via-template/select-template.png":::
+
 
 1. You'll see the **Custom deployment** page.
 
@@ -256,7 +331,7 @@ A screenshot of a computer
 
     <!--A screenshot of a computer-->
 
-1. Refresh and watch the deployment progress from the seed server. Deployment takes between 2.5 and 3 hours.
+1. Refresh and watch the deployment progress from the first server (also known as the seed server and is the first server where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps will take 40-50 minutes or more.
 
     > [!Note]
     > If you check back on the template deployment, you will see that it eventually times out. This is a known issue, so watching **Deployments (preview)** is the best way to monitor the progress of deployment.
