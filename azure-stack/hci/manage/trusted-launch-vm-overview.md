@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 01/16/2024
 ---
 
 # Introduction to Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)
@@ -21,7 +21,7 @@ This article introduces Trusted launch for Azure Arc virtual machines (VMs) on A
 
 Trusted launch for Azure Arc VMs supports secure boot, virtual Trusted Platform Module (vTPM), and vTPM state transfer when a VM migrates or fails over within a cluster.
 
-Trusted launch is a security type that can be specified when creating Arc VMs on Azure Stack HCI.
+Trusted launch is a security type that can be specified when creating Arc VMs on Azure Stack HCI. For more information, see [Trusted launch for Azure Arc VMs on Azure Stack HCI](https://techcommunity.microsoft.com/t5/security-compliance-and-identity/trusted-launch-for-azure-arc-vms-on-azure-stack-hci-version-23h2/ba-p/3978051).
 
 ## Capabilities and benefits
 
