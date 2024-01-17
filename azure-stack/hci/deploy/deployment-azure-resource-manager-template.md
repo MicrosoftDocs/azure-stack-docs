@@ -243,11 +243,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Go to **Azure Connected Machine Resource Manager > Microsoft.AzureStackHCI Resource Provider** for the appropriate resource group for your environment.
 
-    <!--:::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::-->
-
 1. Go to **Key Vault Secrets User** for the appropriate resource group for the first server in your environment.
-
-    <!--:::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::-->
 
 1. Go to **Key Vault Secrets User** for the appropriate resource group for the second server in your environment.
 
@@ -256,7 +252,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the encoded values generated previously. 
 
 > [!IMPORTANT] 
-> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value need to be populated. If there are null values, then the validation will fail.
+> In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those need to be populated or the validation fails.
 
 1. In Azure portal, go to **Home** and select **+ Create a resource**.
 
@@ -279,7 +275,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png":::
 
-1. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, select **Save**.
+1. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, **Save** the parameters file.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
@@ -299,7 +295,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     Once deployment initiates, there's a limited Environment Checker run, a Full Environment Checker run, and Cloud Deployment starts. After a few minutes, you can monitor deployment in the portal.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::    
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
 
 1. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
