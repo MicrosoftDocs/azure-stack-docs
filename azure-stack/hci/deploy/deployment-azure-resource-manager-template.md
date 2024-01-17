@@ -170,24 +170,30 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Select **+ Add** and then select **Add role assignment**.
 
-1. Search for and select **Azure Connected Machine Resource Manager**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png":::
 
-1. Select **Next**.
+1. Search for and select **Azure Connected Machine Resource Manager**. Select **Next**.
 
-1. Leave the selection on **User, group, or service principal**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png":::
 
-1. Select **+ Select** members.
 
-1. Filter the list by typing `Microsoft.AzureStackHCI Resource Provider`.
+1. Leave the selection on **User, group, or service principal**. Select **+ Select** members.
 
-1. Select the **Microsoft.AzureStackHCI Resource Provider** option.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png":::
+
+1. Filter the list by typing `Microsoft.AzureStackHCI Resource Provider`. Select the **Microsoft.AzureStackHCI Resource Provider** option.
 
 1. Select **Select**.
 
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png":::
+
 1. Select **Review + assign**, then select this again.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png":::
 
 1. Once the role assignment is added, you are able to see it in the **Notifications activity** log:
 
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png":::
 
 #### Add the Key Vault Secrets User
 
@@ -263,7 +269,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png":::
 
 
-1. On the **Custom deployment** page, you can select the various parameters through the dropdown list or select **Edit parameters**.
+1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png":::
 
@@ -273,38 +279,35 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select the appropriate resource group for your environment.
 
-1. Select **Review + create**. 
+1. Select **Review + create**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
 
-1. On the Review + Create tab, select **Create**. This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
+1. On the **Review + Create** tab, select **Create**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::    
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
+
+    This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
 
     The Deployment screen cycles on the Cluster resource during deployment.
 
     Once deployment initiates, there's a limited Environment Checker run, a Full Environment Checker run, and Cloud Deployment starts. After a few minutes, you can monitor deployment in the portal.
 
-1. In a new browser window, navigate to the resource group for your environment.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::    
 
-1. Select the cluster resource.
+1. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
 1. Select **Deployments (preview)**.
 
-    <!--A screenshot of a computer-->
-
 1. Refresh and watch the deployment progress from the first server (also known as the seed server and is the first server where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
 
-    > [!Note]
+    > [!NOTE]
     > If you check back on the template deployment, you will see that it eventually times out. This is a known issue, so watching **Deployments (preview)** is the best way to monitor the progress of deployment.
 
-    <!--A screenshot of a computer-->
-
 1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
-    <!--A screenshot of a computer-->
 
-1. Once complete, the task at the top updates with status and end time.
-    <!--A screenshot of a computer-->
+    Once complete, the task at the top updates with status and end time.
+
 
 ## Next steps
 
