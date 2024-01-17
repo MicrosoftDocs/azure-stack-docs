@@ -138,27 +138,33 @@ Verify access to the resource group for your registered Azure Stack HCI servers 
 
 1. Select **Access control (IAM)** from the left-hand side of the screen and then select **Check access**.
 
-1. In the **Check access**, select **Managed identity**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png":::
 
-1. Select the appropriate subscription from the drop-down list.
+1. In the **Check access**, input or select the following: 
 
-1. Select **All system-assigned managed identities**.
+    1. Select **Managed identity**.
 
-1. Filter the list by typing the prefix and name of the registered server(s) for this deployment. Select one of the servers in your Azure Stack HCI cluster.
+    1. Select the appropriate subscription from the drop-down list.
 
-1. Under **Current role assignments**, verify the selected server has the following roles enabled:
+    1. Select **All system-assigned managed identities**.
 
-    - **Azure Connected Machine Resource Manager**.
+    1. Filter the list by typing the prefix and name of the registered server(s) for this deployment. Select one of the servers in your Azure Stack HCI cluster.
 
-    - **Azure Stack HCI Device Management Role**.
+    1. Under **Current role assignments**, verify the selected server has the following roles enabled:
 
-    - **Reader**.
+        - **Azure Connected Machine Resource Manager**.
+    
+        - **Azure Stack HCI Device Management Role**.
+    
+        - **Reader**.
 
-1. Select the **X** on the upper right to go back to the server selection screen.
+        :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png":::
+
+    1. Select the **X** on the upper right to go back to the server selection screen.
 
 1. Select another server in your Azure Stack HCI cluster. Verify the selected server has the same roles enabled as you verified on the earlier server.
 
-    <!--:::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::-->
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png":::
 
 #### Add access to the resource group
 
