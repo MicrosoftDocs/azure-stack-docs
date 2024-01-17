@@ -23,7 +23,11 @@ The new update solution includes a retry and remediation logic. This logic attem
 
 ## Collect update logs
 
-You can also collect diagnostic logs to help Microsoft identify and fix the issues. To collect logs for the update failures, follow these steps on the client that you're using to access your cluster:
+You can also collect diagnostic logs to help Microsoft identify and fix the issues.
+
+To collect logs for updates using the Azure portal. see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
+
+To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your cluster:
 
 1. Establish a remote PowerShell session with the server node. Run PowerShell as administrator and run the following command:
     ```powershell
@@ -73,7 +77,7 @@ You can also collect diagnostic logs to help Microsoft identify and fix the issu
 
 ## Resume an update
 
-To resume an update run that previously failed using either the Azure portal or PowerShell, run the following command:
+To resume a previously failed update run using the Azure portal, it is highly recommended that you choose the failed update and select the **Try again** button. Otherwise, use PowerShell and run the following command:
 
 ```powershell
 get-solutionupdate | start-solutionupdate

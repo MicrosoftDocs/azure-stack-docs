@@ -157,4 +157,4 @@ For more information, see [Install operating system and hardware updates using W
 
 ## Troubleshoot updates
 
-To resume a previously failed update run or to troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+In the Azure portal to resume a previously failed update run, browse to the failed update and select the **Try again** button. To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
