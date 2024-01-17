@@ -43,7 +43,7 @@ For more information on the December release, see [Azure Stack HCI, version 22H2
 
 ## Known issues
 
-To review a list of the known issues for this release, see [View known issues in Azure Stack HCI, 2306.7 Supplemental Package release (preview)](../hci-known-issues-2306-5.md).
+To review a list of the known issues for this release, see [View known issues in Azure Stack HCI, 2306.7 Supplemental Package release (preview)](../hci-known-issues-2306-7.md).
 
 ## Next steps
 
