@@ -282,7 +282,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing parameters filled out for the template." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
     > [!TIP]
-    > Download sample parameters files to understand the format in which the inputs must be provided.
+    > [Download a sample parameters file](https://github.com/Azure/AzureStack-Tools) to understand the format in which you must provide the inputs.
 
 1. Select the appropriate resource group for your environment.
 
