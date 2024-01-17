@@ -1,6 +1,6 @@
 ---
-title: Monitoring and logging data in AKS enabled by Azure Arc
-description: Learn how to create and access monitor and logging data for AKS enabled by Arc.
+title: Monitor and log data
+description: Learn how to create and access monitoring and logging data for AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 01/17/2024
@@ -13,11 +13,11 @@ ms.reviewer: guanghu
 
 ---
 
-# Monitoring and logging data in AKS enabled by Azure Arc
+# Monitor and log data
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to monitor your Azure Kubernetes Service (AKS) deployment using on-premises monitoring. Two types of monitoring and logging solutions are available, as described in the following table:
+This article describes how to monitor your AKS enabled by Azure Arc deployment using on-premises monitoring. Two types of monitoring and logging solutions are available, as described in the following table:
 
 |      Solution                    |      Azure connectivity                                                               |      Support and service                                                                                                               |      Cost                                                   |
 |----------------------------------|---------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------|

@@ -270,7 +270,7 @@
             href: view-logs.md
           - name: Get kubelet logs
             href: get-kubelet-logs.md
-          - name: Get on-demand logs
+          - name: Get on-demand logs for troubleshooting
             href: get-on-demand-logs.md
     - name: Use Windows Server containers
       items:
