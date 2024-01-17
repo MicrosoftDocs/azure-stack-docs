@@ -27,7 +27,7 @@ This article details the prerequisites and preparation required before you use a
     - All the servers have the same network adapter configuration.
 
 
-## Prepare Azure resources
+## Step 1: Prepare Azure resources
 
 Follow these steps to prepare the Azure resources you need for the deployment:
 
@@ -126,7 +126,7 @@ Run the PowerShell script used in the earlier step to encode these values:
 - **Application client ID secret value**. This corresponds to the `arbDeploymentSpnValue` in the parameters JSON. Encode `clientId:clientSecretValue` to get this value for the template.
 
 
-### Assign resource permissions
+## Step 2: Assign resource permissions
 
 You need to create and assign the needed resource permissions before you use the deployment template. 
 
@@ -249,7 +249,7 @@ Optionally verify the role assignments you created.
 
 1. Go to **Key Vault Secrets User** for the appropriate resource group for the second server in your environment.
 
-## Deploy using ARM template
+## Step 3: Deploy using ARM template
 
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the encoded values generated previously. 
 
