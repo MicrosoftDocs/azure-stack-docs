@@ -268,7 +268,7 @@
             href: monitor-logging.md
           - name: View logs to collect and review data
             href: view-logs.md
-          - name: Get the kubelet logs
+          - name: Get kubelet logs
             href: get-kubelet-logs.md
           - name: Get on-demand logs
             href: get-on-demand-logs.md
