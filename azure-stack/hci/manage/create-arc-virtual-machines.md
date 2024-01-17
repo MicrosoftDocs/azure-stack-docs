@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 12/15/2023
+ms.date: 01/16/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI (preview)
@@ -92,7 +92,7 @@ Depending on the type of the network interface that you created, you can create 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output. 
 
 > [!NOTE]
-> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, there is no way to enable it after the VM creation.
+> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Arc VM](#enable-guest-management-for-the-vm) to enable it after the VM creation.
 
 In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
@@ -121,6 +121,21 @@ You can then attach the disk to the VM using the following command:
 ```azurecli
 az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
 ```
+
+### Enable guest management for the VM
+
+After you have created a VM, you may wish to enable guest management on that VM. To enable guest management, follow these steps:
+
+1. Run the following command:
+
+    ```azurecli
+    az stack-hci-vm update --name "myhci-vm" --enable-agent true -g "myhci-rg"
+    ```
+    The guest management is enabled by setting the `enable-agent parameter` to `true`. The guest management should take a few minutes to get enabled.
+
+2. Go to the Azure portal. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
+
+    :::image type="content" source="./media/manage-vm-resources/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/verify-guest-management-enabled-1.png":::
 
 
 # [Azure portal](#tab/azureportal)
