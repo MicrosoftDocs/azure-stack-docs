@@ -16,7 +16,7 @@ ms.custom: devx-track-arm-template
 
 This article details the prerequisites and preparation required before you use an Azure Resource Manager template (ARM template) in Azure portal to deploy Azure Stack HCI in your environment.
 
-> [IMPORTANT]
+> [!IMPORTANT]
 > ARM template deployment of Azure Stack HCI systems is targeted for deployment-at-scale. The intended audience for this version 23H2 deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then subsequent deployments via the ARM template.
 
 ## Prerequisites
@@ -196,9 +196,6 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Once the role assignment is added, you are able to see it in the **Notifications activity** log:
 
-    <!--:::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::
-
-    :::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::-->
 
 #### Add the Key Vault Secrets User
 
@@ -206,29 +203,31 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Select **Access control (IAM)** from the left-hand side of the screen.
 
-1. Select **+ Add**.
+1. In the right-pane, select **+ Add** and then select **Add role assignment**.
 
-1. Select **Add role assignment**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png":::
 
-1. Search for and select **Key Vault Secrets User**.
+1. Search for and select **Key Vault Secrets User** and select **Next**.
 
-1. Select **Next**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png":::
 
 1. Select **Managed identity**.
 
-1. Select **+ Select** members.
+1. Select **+ Select** members and input the following:
 
-1. Select the appropriate subscription.
+    1. Select the appropriate subscription.
 
-1. Select **All system-assigned managed identities**.
+    1. Select **All system-assigned managed identities**.
 
-1. Filter the list by typing the prefix and name of the registered servers for your deployment.
+    1. Filter the list by typing the prefix and name of the registered servers for your deployment.
 
-1. Select both servers for your environment.
+    1. Select both servers for your environment and choose **Select**.
 
-1. Choose **Select**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png":::
 
 1. Select **Review + assign**, then select this again.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png":::
 
 1. Once the roles are assigned as **Key Vault Secrets User**, you are able to see them in the **Notifications activity** log.
 
