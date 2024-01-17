@@ -54,7 +54,7 @@ The steps are also summarized here:
 
 #### Create a client secret
 
-1. Go to the service principal that you just created and browse to **Certificates & secrets > Client secrets**.
+1. Go to the service principal that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
@@ -100,7 +100,7 @@ Follow these steps to get and encode the access key for the ARM deployment templ
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png":::
 
-    After you've copied the key, select **Hide**.
+    After you copy the key, select **Hide**.
 
 1. On a management computer, run PowerShell as administrator. Encode the **Key** value string with the following script:
 
@@ -109,17 +109,17 @@ Follow these steps to get and encode the access key for the ARM deployment templ
     [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($secret))
     ```
 
-    The encoded output will look similar to this, and is based on the secret value for the cloud witness storage account for your environment:
+    The encoded output looks similar to this, and is based on the secret value for the cloud witness storage account for your environment:
 
     ```PowerShell
     ZXhhbXBsZXNlY3JldGtleXZhbHVldGhhdHdpbGxiZWxvbmdlcnRoYW50aGlzYW5kb3V0cHV0d2lsbGxvb2tkaWZmZXJlbnQ= 
     ```
 
-1. The encoded output value you generate is what the ARM deployment template expects. Make a note of this value as well as the name of the storage account. You will use these values later in the deployment process.
+1. The encoded output value you generate is what the ARM deployment template expects. Make a note of this value and the name of the storage account. You'll use these values later in the deployment process.
 
 ### Encode other parameter values
 
-In addition to the storage witness access key, you also need to similiarly encode the values for the following parameters.
+In addition to the storage witness access key, you also need to similarly encode the values for the following parameters.
 
 |Parameter  |Description  |
 |---------|---------|
@@ -194,7 +194,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Select **Review + assign**, then select this again.
 
-1. Once the role assignment is added, you'll be able to see it in the **Notifications activity** log:
+1. Once the role assignment is added, you are able to see it in the **Notifications activity** log:
 
     <!--:::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::
 
@@ -230,7 +230,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Select **Review + assign**, then select this again.
 
-1. Once the roles are assigned as **Key Vault Secrets User**, you'll be able to see them in the **Notifications activity** log.
+1. Once the roles are assigned as **Key Vault Secrets User**, you are able to see them in the **Notifications activity** log.
 
     <!--:::image type="content" source="media/.png" alt-text="alt test" lightbox="media/.png":::
 
@@ -238,7 +238,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 #### Verify new role assignments
 
-1. Select **Access Control (IAM) Check Access** to verify the role assignments you just created.
+1. Select **Access Control (IAM) Check Access** to verify the role assignments you created.
 
 1. Go to **Azure Connected Machine Resource Manager > Microsoft.AzureStackHCI Resource Provider** for the appropriate resource group for your environment.
 
@@ -252,7 +252,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 ## Deploy using ARM template
 
-With all the prerequisite and preparation steps complete, you are ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the encoded values generated previously. 
+With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the encoded values generated previously. 
 
 > [!IMPORTANT] 
 > In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value need to be populated. If there are null values, then the validation will fail.
@@ -276,7 +276,7 @@ With all the prerequisite and preparation steps complete, you are ready to deplo
     :::image type="content" source="./media/deploy-via-template/select-template.png" alt-text="Screenshot showing template selection." lightbox="./media/deploy-via-template/select-template.png":::
 
 
-1. You'll see the **Custom deployment** page.
+1. You see the **Custom deployment** page.
 
 1. On the **Custom deployment** page, select **Edit parameters**.
 
@@ -285,7 +285,7 @@ With all the prerequisite and preparation steps complete, you are ready to deplo
 
 1. Select **Save**.
 
-1. Verify that the field for the ARM deployment template has been filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment. All should be filled in except for the resource group.
+1. Verify that the field for the ARM deployment template is filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment. All should be filled in except for the resource group.
 
 1. Select the appropriate resource group for your environment.
 
@@ -294,7 +294,7 @@ A screenshot of a computer
 
 1. Select **Review + create**.
 
-1. Select  **Create**. This will create the remaining prerequisite resources and validate the deployment. Validation takes about 10 minutes to complete.
+1. Select  **Create**. This creates the remaining prerequisite resources and validate the deployment. Validation takes about 10 minutes to complete.
 A screenshot of a computer
 
 1. Once validation is complete, select **Redeploy**. 
@@ -307,7 +307,7 @@ A screenshot of a computer
 1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
     <!--A screen shot of a computer program-->
 
-1. Verify that all the fields for the ARM deployment template have been filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment.
+1. Verify that all the fields for the ARM deployment template are filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment.
 
 1. Select the appropriate resource group for your environment.
 
@@ -316,12 +316,12 @@ A screenshot of a computer
 
 1. Select **Review + create**. 
 
-1. Select **Create**. This will begin deployment, using the existing prerequisite resources that were created during the **Validate** step.
+1. Select **Create**. This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
     <!--A screenshot of a computer-->
 
-    The Deployment screen will cycle on the Cluster resource for the duration of deployment.
+    The Deployment screen cycles on the Cluster resource during deployment.
 
-    Once deployment initiates, there is a limited Environment Checker run, a Full Environment Checker run, and Cloud Deployment starts. After a few minutes, you can monitor deployment in the portal.
+    Once deployment initiates, there's a limited Environment Checker run, a Full Environment Checker run, and Cloud Deployment starts. After a few minutes, you can monitor deployment in the portal.
 
 1. In a new browser window, navigate to the resource group for your environment.
 
@@ -331,7 +331,7 @@ A screenshot of a computer
 
     <!--A screenshot of a computer-->
 
-1. Refresh and watch the deployment progress from the first server (also known as the seed server and is the first server where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps will take 40-50 minutes or more.
+1. Refresh and watch the deployment progress from the first server (also known as the seed server and is the first server where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
 
     > [!Note]
     > If you check back on the template deployment, you will see that it eventually times out. This is a known issue, so watching **Deployments (preview)** is the best way to monitor the progress of deployment.
@@ -341,7 +341,7 @@ A screenshot of a computer
 1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
     <!--A screenshot of a computer-->
 
-1. Once complete, the task at the top will update with status and end time.
+1. Once complete, the task at the top updates with status and end time.
     <!--A screenshot of a computer-->
 
 ## Next steps
