@@ -121,9 +121,9 @@ In addition to the storage witness access key, you also need to similarly encode
 
 Run the PowerShell script used in the earlier step to encode these values:
 
-- **Local account password**. <!--This corresponds to the `localAdminSecretValue` in the template.--> Encode `localaccountname:localacountpassword` to get this value for the template.
-- **Domain account password**. <!--This corresponds to the `domainAdminSecretValue` in the template.--> Encode `domainaccountname:domainaccountpassword` to get this value for the template.
-- **Application client ID secret value**. <!--This corresponds to the `arbDeploymentSpnValue` in the template.--> Encode `clientId:clientSecretValue` to get this value for the template.
+- **Local account password**. This corresponds to the `localAdminSecretValue` in the parameters JSON. Encode `localaccountname:localacountpassword` to get this value for the template.
+- **Domain account password**. This corresponds to the `domainAdminSecretValue` in the parameters JSON. Encode `domainaccountname:domainaccountpassword` to get this value for the template.
+- **Application client ID secret value**. This corresponds to the `arbDeploymentSpnValue` in the parameters JSON. Encode `clientId:clientSecretValue` to get this value for the template.
 
 
 ### Assign resource permissions
@@ -246,67 +246,40 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 > [!IMPORTANT] 
 > In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value need to be populated. If there are null values, then the validation will fail.
 
-1. In Azure portal, go to **Home**.
-
-1. Select **Create a resource**.
+1. In Azure portal, go to **Home** and select **+ Create a resource**.
 
 1. Select **Create** under **Template deployment (deploy using custom templates)**.
 
-    :::image type="content" source="./media/deploy-via-template/get-started.png" alt-text="Screenshot of the Get Started page for Azure services." lightbox="./media/deploy-via-template/get-started.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png":::
 
-1. Near the bottom of the page, find **Start with a quickstart template or template spec** section.
+1. Near the bottom of the page, find **Start with a quickstart template or template spec** section. Select **Quickstart template** option.
 
-    :::image type="content" source="./media/deploy-via-template/quickstart-template.png" alt-text="Screenshot showing the quickstart template option." lightbox="./media/deploy-via-template/quickstart-template.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png":::
 
 1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
 
 1. When finished, **Select template**.
 
-    :::image type="content" source="./media/deploy-via-template/select-template.png" alt-text="Screenshot showing template selection." lightbox="./media/deploy-via-template/select-template.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png":::
 
 
-1. You see the **Custom deployment** page.
+1. On the **Custom deployment** page, you can select the various parameters through the dropdown list or select **Edit parameters**.
 
-1. On the **Custom deployment** page, select **Edit parameters**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png":::
 
-1. Paste the Secret value from the clipboard you previously saved to the workspace, where **Deployment Mode = Validate**.
-    <!--A screenshot of a computer program-->
+1. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, select **Save**.
 
-1. Select **Save**.
-
-1. Verify that the field for the ARM deployment template is filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment. All should be filled in except for the resource group.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
 1. Select the appropriate resource group for your environment.
-
-1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
-A screenshot of a computer
-
-1. Select **Review + create**.
-
-1. Select  **Create**. This creates the remaining prerequisite resources and validate the deployment. Validation takes about 10 minutes to complete.
-A screenshot of a computer
-
-1. Once validation is complete, select **Redeploy**. 
-A screenshot of a computer
-
-1. On the **Custom deployment** screen, select **Edit parameters**.
-
-1. Paste the contents of the special Params KeyVault for your environment.
-
-1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
-    <!--A screen shot of a computer program-->
-
-1. Verify that all the fields for the ARM deployment template are filled in by the Parameters JSON you just pasted from the special Params KeyVault for your environment.
-
-1. Select the appropriate resource group for your environment.
-
-1. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
-    <!--A screenshot of a computer-->
 
 1. Select **Review + create**. 
 
-1. Select **Create**. This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
-    <!--A screenshot of a computer-->
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
+
+1. On the Review + Create tab, select **Create**. This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::    
 
     The Deployment screen cycles on the Cluster resource during deployment.
 
