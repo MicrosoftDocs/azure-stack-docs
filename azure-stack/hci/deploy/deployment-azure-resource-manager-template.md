@@ -199,7 +199,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Once the role assignment is added, you are able to see it in the **Notifications activity** log:
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png" alt-text="Screenshot showing a notification for ." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png" alt-text="Screenshot showing a notification for the role assignments." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png":::
 
 #### Add the Key Vault Secrets User
 
@@ -209,11 +209,11 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. In the right-pane, select **+ Add** and then select **Add role assignment**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png" alt-text="Screenshot showing Add role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png":::
 
 1. Search for and select **Key Vault Secrets User** and select **Next**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png" alt-text="Screenshot showing Key Vault Secrets user." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png":::
 
 1. Select **Managed identity**.
 
@@ -227,15 +227,15 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
     1. Select both servers for your environment and choose **Select**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png" alt-text="Screenshot showing Managed identity selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png":::
 
 1. Select **Review + assign**, then select this again.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png" alt-text="Screenshot showing Review + assign selected." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png":::
 
 1. Once the roles are assigned as **Key Vault Secrets User**, you are able to see them in the **Notifications activity** log.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing the notification for Key Vault Secrets user role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
 
 #### Verify new role assignments
 
@@ -260,26 +260,26 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select **Create** under **Template deployment (deploy using custom templates)**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png" alt-text="Screenshot showing the template deployment (deploy using custom template)." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-1.png":::
 
 1. Near the bottom of the page, find **Start with a quickstart template or template spec** section. Select **Quickstart template** option.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png" alt-text="Screenshot showing the quickstart template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-2.png":::
 
 1. Use the **Quickstart template (disclaimer)** field to filter for the appropriate template. Type *azurestackhci/create-cluster* for the filter.
 
 1. When finished, **Select template**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3.png":::
 
 
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4.png":::
 
 1. Edit parameters such as network intent or storage network intent. Once the parameters are all filled out, **Save** the parameters file.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing parameters filled out for the template." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
     > [!TIP]
     > Download sample parameters files to understand the format in which the inputs must be provided.
@@ -288,11 +288,11 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select **Review + create**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
 
 1. On the **Review + Create** tab, select **Create**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
 
     This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
 
@@ -300,7 +300,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     Once deployment initiates, there's a limited Environment Checker run, a full Environment Checker run, and cloud deployment starts. After a few minutes, you can monitor deployment in the portal.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
 
 1. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
