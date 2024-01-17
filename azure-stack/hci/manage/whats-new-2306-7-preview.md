@@ -28,7 +28,7 @@ Azure Stack HCI, 2306.7 Supplemental Package is now in preview. You can deploy t
 
 [!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp-2306.md)]
 
-To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).
+To learn more about the new deployment methods, see [Deployment overview](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
 
 ### What's new
 
@@ -47,8 +47,4 @@ To review a list of the known issues for this release, see [View known issues in
 
 ## Next steps
 
-- [Join the preview channel](./preview-channel.md) and [install a preview version of Azure Stack HCI](./install-preview-version.md).
-
-- For new Azure Stack HCI deployments via supplemental package:
-    - Read the [Deployment overview](../deploy/deployment-tool-introduction.md).
-    - Learn how to [Deploy interactively](../deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.
+- Read the [Deployment overview](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
