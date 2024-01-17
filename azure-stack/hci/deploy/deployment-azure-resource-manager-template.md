@@ -185,21 +185,21 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
 1. Leave the selection on **User, group, or service principal**. Select **+ Select** members.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png" alt-text="Screenshot showing Members selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png":::
 
 1. Filter the list by typing `Microsoft.AzureStackHCI Resource Provider`. Select the **Microsoft.AzureStackHCI Resource Provider** option.
 
 1. Select **Select**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png" alt-text="Screenshot showing Select members." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png":::
 
 1. Select **Review + assign**, then select this again.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png" alt-text="Screenshot showing Review + assign." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png":::
 
 1. Once the role assignment is added, you are able to see it in the **Notifications activity** log:
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png" alt-text="Screenshot showing a notification for ." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png":::
 
 #### Add the Key Vault Secrets User
 
@@ -281,6 +281,9 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
+    > [!TIP]
+    > Download sample parameters files to understand the format in which the inputs must be provided.
+
 1. Select the appropriate resource group for your environment.
 
 1. Select **Review + create**.
@@ -295,7 +298,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     The Deployment screen cycles on the Cluster resource during deployment.
 
-    Once deployment initiates, there's a limited Environment Checker run, a Full Environment Checker run, and Cloud Deployment starts. After a few minutes, you can monitor deployment in the portal.
+    Once deployment initiates, there's a limited Environment Checker run, a full Environment Checker run, and cloud deployment starts. After a few minutes, you can monitor deployment in the portal.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png" alt-text="Screenshot showing template selection." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-9.png":::
 
