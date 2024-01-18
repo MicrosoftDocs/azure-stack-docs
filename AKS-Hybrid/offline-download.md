@@ -1,7 +1,7 @@
 ---
 title: Use offline download in AKS on Azure Stack HCI
 description: Learn how to use offline download in AKS on Azure Stack HCI
-ms.topic: reference
+ms.topic: how-to
 ms.date: 04/11/2023
 author: sethmanheim
 ms.author: sethm 

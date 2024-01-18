@@ -146,6 +146,8 @@
             href: prestage-cluster-service-host-create.md
     - name: Use offline download
       href: offline-download.md
+    - name: Use manual (offline) download in AKS Arc
+      href: aks-offline-download.md
     - name: Upgrade
       items:
       - name: Upgrade AKS hybrid host
