@@ -5,6 +5,8 @@
   items:
   - name: AKS enabled by Arc
     href: aks-overview.md
+  - name: Uninstall cluster provisioning preview
+    href: aks-hybrid-preview-uninstall.md
 - name: Architecture
   items:
   - name: Baseline architecture for AKS hybrid
