@@ -9,7 +9,7 @@ ms.lastreviewed: 02/19/2023
 
 ---
 
-1. Install and configure the Azure Managed Lustre repository for the YUM package manager. Create the following script and name it `repo.bash`:
+1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
 
    ```bash
    #!/bin/bash
@@ -17,7 +17,7 @@ ms.lastreviewed: 02/19/2023
    
    rpm --import https://packages.microsoft.com/keys/microsoft.asc
    
-   DISTRIB_CODENAME=el7
+   DISTRIB_CODENAME=el9
    
    REPO_PATH=/etc/yum.repos.d/amlfs.repo
    echo -e "[amlfs]" > ${REPO_PATH}
@@ -33,11 +33,11 @@ ms.lastreviewed: 02/19/2023
    ```bash
    sudo bash repo.bash
    ```
-
+v
 1. Install the metapackage that matches your running kernel:
 
    ```bash
-   sudo yum install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   sudo dnf install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
    ```
 
    > [!NOTE]
@@ -47,5 +47,6 @@ ms.lastreviewed: 02/19/2023
 
    ```bash
    export NEWKERNELVERSION=6.7.8
-   sudo yum upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
    ```
+
