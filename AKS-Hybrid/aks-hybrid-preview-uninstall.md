@@ -12,7 +12,7 @@ ms.lastreviewed: 01/18/2024
 
 # Uninstall the AKS hybrid cluster provisioning preview
 
-The AKS hybrid cluster provisioning from Azure (version 22H2) preview ends with the release of [AKS enabled by Azure Arc (version 23H2)](aks-overview.md). This article describes the steps to uninstall the preview bits before upgrading to [AKS Arc](aks-overview.md).
+The AKS hybrid cluster provisioning from Azure (version 22H2) preview ended with the release of [AKS enabled by Azure Arc (version 23H2)](aks-overview.md). This article describes the steps to uninstall the preview bits before upgrading to [AKS Arc](aks-overview.md).
 
 ## Step 1: delete all preview AKS hybrid clusters and Azure vnets created using Az CLI
 
