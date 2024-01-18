@@ -54,7 +54,7 @@ You can create an Arc VM with the OS disk not booted prior to the creation. To e
 
 2. Go to the Azure portal. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
 
-   :::image type="content" source="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/verify-guest-management-enabled-1.png":::
+   :::image type="content" source="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png":::
 
 
 #### Enable guest management for a VM with OS disk booted
