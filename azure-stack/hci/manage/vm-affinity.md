@@ -206,7 +206,7 @@ WebData     SameFaultDomain   {SQL1, WEB1}     1
 
 ### Scenario 2
 
-Let's use the same scenario above except specify that the VMs must reside on the same cluster node but not necessarily in the same site. Using `SameNode`, you can set this as follows:
+Let's use the same scenario above except specify that the VMs must reside on the same cluster node. Using `SameNode`, you can set this as follows:
 
 ```powershell
 New-ClusterAffinityRule -Name WebData1 -Ruletype SameNode -Cluster Cluster1
