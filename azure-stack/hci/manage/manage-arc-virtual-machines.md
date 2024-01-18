@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/17/2024
+ms.date: 01/18/2024
 ---
 
 # Manage Arc VMs on Azure Stack HCI (preview)
@@ -85,7 +85,7 @@ The OS disk of an Arc VM is already booted before the Arc VM is created in migra
           ],
        }
     ``` 
-    The guest agent isn't installed When the status indicates that the VM is in `ProvisioningState/InProgress` and is Waiting for connection with `mocguestagent`.
+    The guest agent isn't installed when the status indicates that the VM is in `ProvisioningState/InProgress` and is `Waiting for connection with mocguestagent`.
 1. Connect to the VM using the OS specific steps. Run PowerShell as administrator.
 1. Run one of the following commands to enable the guest agent on your VM based on the OS type:
 
@@ -100,6 +100,8 @@ The OS disk of an Arc VM is already booted before the Arc VM is created in migra
         ```
  
     The output should indicate that the guest agent is successfully installed.
+
+   :::image type="content" source="./media/manage-arc-virtual-machines/guest-agent-installed-1.png" alt-text="Screenshot showing that the guest agent is successfully enabled on the VM." lightbox="./media/manage-arc-virtual-machines/guest-agent-installed-1.png":::
 
 1. Check the agent status to verify that the guest agent is running on the VM.
 
