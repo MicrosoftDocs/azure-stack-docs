@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management (preview)
 description: Learn how to troubleshoot Azure Arc VM management (preview)
 author: alkohli
 ms.topic: how-to
-ms.date: 10/31/2023
+ms.date: 01/18/2024
 ms.author: alkohli
 ms.reviewer: JasonGerend
 ---
@@ -48,7 +48,56 @@ where:
 
 This section describes the errors related to Azure Arc VM management and their recommended resolutions.
 
-### Permission denied error when you run the arcappliance prepare command
+### Failure when trying to enable guest management
+
+When trying to run this command to enable guest management, you see the following error:
+
+**Error:** `<error message>`
+
+The above failure can be because the managed identity was not created for this VM or because the guest agent is not bootstrapped.
+
+**Resolution:**  
+
+- Managed Identity was not created for this VM. First verify that the Managed Identity is not created for this VM.
+    1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
+    1. Under `Identity` parameter, the `type` should show as `None`.
+    1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
+    
+        ```azurecli
+        az extension add --name connectedmachine
+        ```
+    1. Verify that the connected machine CLI extension is installaed on the cluster. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installaed.
+    
+        ```output
+        [v-hostl]: PS C:\Clusterstorage\lnfrastructure_l\ArcHci> az version
+    	{
+    	"azure-cli": "2.53.0",
+    	"azure-cli-core": "2.53.0",
+    	"azure-cli-telemetry": "1.1.0",
+    	"extensions": {
+    		"akshybrid": "0.1.1",
+    		"arcappliance"^ "1.0.2”,
+    		"connectedk8s": "1.5.4",
+    		"connectedmachine": "0.7.0",
+    		"customlocation": "0.1.3",
+    		"hybridaks": "0.2.4",
+    		"k8s-extension": "1.4.5",
+    		"stack-hci-vm": “0.1.8"
+    		}
+    	}
+        [v-hostl]: PS C:\ClusterStorage\Infrastructure_l\ArcHci>
+        ```
+    1. Run the following command to assign a system managed identity to the VM.
+
+        ```azurecli
+        az connectedmachine update --ids "" --set identity.type="SystemAssigned"
+        ```
+    1. Go to the Azure portal and browse to the Overview page. The JSON view should indicate that the system managed identity is now assigned to the VM.
+
+- Guest agent on the VM is not bootstrapped. To address this issue, follow these steps to [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management-for-a-vm-with-os-disk-booted).
+
+
+<!--### Permission denied error when you run the arcappliance prepare command
 
 If your PowerShell session doesn't have write permissions in the folder from where you run the `az arcapplicance prepare` command, it fails with the following error:
 
@@ -89,15 +138,15 @@ The expiration of the MOC token might result in a failure to create VMs, virtual
         Repair-MOC
         Repair-MocOperatorToken
 ```
+-->
 
-
-## Limitations and known issues
+<!--## Limitations and known issues
 
 Here's a list of existing limitations and known issues with Azure Arc VM management:
 
 - Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
 
-- Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
+Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
 
 - You must deploy Azure Kubernetes and Arc VMs on the same Azure Stack HCI cluster in the following order:
     1. Deploy AKS management cluster
@@ -129,9 +178,8 @@ Here's a list of existing limitations and known issues with Azure Arc VM managem
 
 - Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy isn't supported.
 
-- Naming convention for Azure resources, such as logical networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).
+- Naming convention for Azure resources, such as logical networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).-->
 
 ## Next steps
 
-- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md)
 - [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml)
