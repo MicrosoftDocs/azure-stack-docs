@@ -151,9 +151,7 @@ In addition to cluster updates using Azure Update Manager or the Azure Stack HCI
 
 Here is an example of the Windows Admin Center updates tool for systems running Azure Stack HCI, verison 23H2.
 
-[![Review and install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-wac-23h2.png)](media/azure-update-manager/updates-os-wac-23h2.png#lightbox)
-
-For more information, see [Install operating system and hardware updates using Windows Admin Center](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
+[![Review and install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-wac-23h2.png)](media/azure-update-manager/updates-os-wac-23h2.png#lightbox).
 
 ## Troubleshoot updates
 
