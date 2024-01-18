@@ -60,13 +60,19 @@ The above failure can be because the managed identity was not created for this V
 
 - Managed Identity was not created for this VM. First verify that the Managed Identity is not created for this VM.
     1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
+
+        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png":::
+
     1. Under `Identity` parameter, the `type` should show as `None`.
+
+        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
+
     1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
     
         ```azurecli
         az extension add --name connectedmachine
         ```
-    1. Verify that the connected machine CLI extension is installaed on the cluster. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installaed.
+    1. Verify that the connected machine CLI extension is installed on the cluster. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installed.
     
         ```output
         [v-hostl]: PS C:\Clusterstorage\lnfrastructure_l\ArcHci> az version
@@ -93,6 +99,9 @@ The above failure can be because the managed identity was not created for this V
         az connectedmachine update --ids "<ARM ID for the VM>" --set identity.type="SystemAssigned"
         ```
     1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
+
+        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
+
 
 - Guest agent on the VM is not bootstrapped. To address this issue, follow these steps to [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management-for-a-vm-with-os-disk-booted).
 
