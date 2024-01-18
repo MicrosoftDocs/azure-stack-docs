@@ -90,9 +90,9 @@ The above failure can be because the managed identity was not created for this V
     1. Run the following command to assign a system managed identity to the VM.
 
         ```azurecli
-        az connectedmachine update --ids "" --set identity.type="SystemAssigned"
+        az connectedmachine update --ids "<ARM ID for the VM>" --set identity.type="SystemAssigned"
         ```
-    1. Go to the Azure portal and browse to the Overview page. The JSON view should indicate that the system managed identity is now assigned to the VM.
+    1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
 
 - Guest agent on the VM is not bootstrapped. To address this issue, follow these steps to [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management-for-a-vm-with-os-disk-booted).
 
