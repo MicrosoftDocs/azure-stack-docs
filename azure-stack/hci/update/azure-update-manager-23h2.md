@@ -149,13 +149,13 @@ In addition to cluster updates using Azure Update Manager or the Azure Stack HCI
 
 Here is an example of the Windows Admin Center updates tool for systems running Azure Stack HCI, verison 23H2.
 
-[![Review and install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-wac-23h2.png)](media/azure-update-manager/updates-os-wac-23h2.png#lightbox).
+[![Review and install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-wac-23h2.png)](media/azure-update-manager/updates-os-wac-23h2.png#lightbox)
 
 ## Troubleshoot updates
 
 In the Azure portal to resume a previously failed update run, browse to the failed update and select the **Try again** button. This feature will be available at each stage of an update run: Download updates, Check readiness, and Install.
 
-[![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox).
+[![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
 
 If you are unable to successfully rerun a failed update or want to further troubleshoot an error, follow these steps:
 
