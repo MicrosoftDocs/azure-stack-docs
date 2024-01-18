@@ -43,7 +43,7 @@ You can use the following procedure to create or update a Kubernetes cluster on 
    az aksarc release download --staging-folder 'C:\staging_folder'
    ```
 
-1. Use your preferred tool move the file to the desired Azure Stack HCI system used for Kubernetes clusters.
+1. Use your preferred tool to move the file to the desired Azure Stack HCI system used for Kubernetes clusters.
 1. Save the new files into the target Azure Stack HCI system by running the following command:
 
    ```azurecli
