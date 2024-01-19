@@ -7,6 +7,7 @@ ms.topic: conceptual
 ms.custom:
   - devx-track-azurepowershell
 ms.date: 12/06/2022
+zone_pivot_groups: version-select
 
 # Intent: As an IT Pro, I want to learn about Azure Hybrid Benefit for AKS.   
 # Keyword: Azure Hybrid Benefit for AKS
