@@ -4,9 +4,9 @@ groups:
   title: AKS enabled by Azure Arc versions
   prompt: Choose an AKS Arc version
   pivots:
-  - id: 22H2
+  - id: aks-22h2
     title: Version 22H2
-  - id: 23H2
+  - id: aks-23h2
     title: Version 23H2
 - id: version-2022h1-previous
   title: App Service on Azure Stack Hub Version
