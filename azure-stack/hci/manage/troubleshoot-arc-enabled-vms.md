@@ -58,7 +58,7 @@ The above failure is because the managed identity was not created for this VM. S
 
 **Resolution:**  
 
-- Managed Identity was not created for this VM. First verify that the Managed Identity is not created for this VM.
+First verify that the Managed Identity is not created for this VM.
     1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
 
         :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png":::
