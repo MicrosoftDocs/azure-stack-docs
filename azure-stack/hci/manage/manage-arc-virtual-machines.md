@@ -31,9 +31,9 @@ Before you begin, make sure to complete the following prerequisites:
 
 After you created a VM, you would want to enable guest management on that VM.
 
-There are two agents that are important to understand in the context of guest management - a VM guest agent and an Azure Connected machines agent. Every Arc VM created via Azure portal or Azure CLI is provisioned with a guest agent (also referred to as the `mocguestagent`) on it. 
+There are two agents that are important to understand in the context of guest management - a VM guest agent and an Azure Connected Machine agent. Every Arc VM created via Azure portal or Azure CLI is provisioned with a guest agent (also referred to as the `mocguestagent`) on it.
 
-When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machines](/azure/azure-arc/servers/agent-overview) agent. The Azure Connected Machines agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI VM.
+When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI VM.
 
 Based on whether a guest agent is running on your Arc VM, the steps to enable guest management are different.
 
@@ -86,7 +86,7 @@ To enable guest management on an Arc VM that has guest agent running, run the fo
 ```azurecli
 az stack-hci-vm update --name "myhci-vm" --enable-agent true --resource-group "myhci-rg"
 ```
-The guest management is enabled by setting the `enable-agent parameter` to `true`. Guest management should take a few minutes to get enabled.
+Guest management is enabled by setting the `enable-agent parameter` to `true`. Guest management should take a few minutes to get enabled.
 
 Follow the steps to [verify that the guest management is enabled in the Azure portal](#verify-guest-management-is-enabled-in-the-azure-portal).
 
