@@ -153,7 +153,7 @@ Your status shows as null. Here's a sample output snippet indicating the null st
     },
 ```
 
-Follow these steps :
+Follow these steps:
 
 1. Connect to Azure Stack HCI server.
 1. Run the following command:

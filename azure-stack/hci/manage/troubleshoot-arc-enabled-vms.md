@@ -66,7 +66,7 @@ Follow these steps to verify that the Managed Identity is not created for this V
 
 1. Under `Identity` parameter, the `type` should show as `None`.
 
-    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is abesnt." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
 1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
     
