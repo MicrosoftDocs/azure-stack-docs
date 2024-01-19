@@ -17,7 +17,7 @@ This article provides a brief overview of the Remote Support Arc extension, some
 
 ## About the Remote Support Arc extension
 
-The Remote Support Arc extension (shown as EdgeRemoteSupport in the Azure portal) can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the cluster and facilitating the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
+The Remote Support Arc extension (shown as EdgeRemoteSupport) in the Azure portal can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the cluster and facilitating the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
 
 The scheduled tasks to configure JEA are set up through either:
 
