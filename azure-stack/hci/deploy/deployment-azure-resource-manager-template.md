@@ -33,7 +33,7 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ### Create a service principal and client secret
 
-To authenticate your cluster, you need to create a service principal and a corresponding **Client secret**. You must also assign user access administrator and contributor roles to the service principal. 
+To authenticate your cluster, you need to create a service principal and a corresponding **Client secret**. You must also assign *Azure Resource Bridge Deployment Role* to the service principal.
 
 
 #### Create a service principal
@@ -50,7 +50,7 @@ The steps are also summarized here:
 
 1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID** for this service principal. You encode and use this value later.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Application (client) ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
+   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2.png" alt-text="Screenshot showing Application (client) ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2.png":::
 
 #### Create a client secret
 
@@ -282,19 +282,35 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png" alt-text="Screenshot showing parameters filled out for the template." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-5.png":::
 
     > [!TIP]
-    > [Download a sample parameters file](https://github.com/Azure/AzureStack-Tools) to understand the format in which you must provide the inputs.
+    > [Download a sample parameters file](https://databoxupdatepackages.blob.core.windows.net/documentation/EXAMPLE-cl-Parameters-2Node-Switchless-Compute_Management_withAdapterOverride.json) to understand the format in which you must provide the inputs.
 
 1. Select the appropriate resource group for your environment.
+
+1.  Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
 
 1. Select **Review + create**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
 
-1. On the **Review + Create** tab, select **Create**.
+1. On the **Review + Create** tab, select **Create**. This will create the remaining prerequisite resources and validate the deployment. Validation takes about 10 minutes to complete.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
 
-    This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
+1.  Once validation is complete, select **Redeploy**.
+
+1. On the **Custom deployment** screen, select **Edit parameters**.
+
+1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**. 
+
+1. Verify that all the fields for the ARM deployment template have been filled in by the Parameters JSON.
+
+1. Select the appropriate resource group for your environment.
+
+1. Scroll to the bottom, and confirm that **Deployment Mode = Deploy**.
+
+1. Select **Review + create**.
+
+1. Select **Create**. This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
 
     The Deployment screen cycles on the Cluster resource during deployment.
 
