@@ -35,6 +35,8 @@
       href: aks-create-clusters-portal.md      
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
+    - name: Use labels in a Kubernetes cluster
+      href: cluster-labels.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
     - name: Deploy container images using Azure Container Registry
