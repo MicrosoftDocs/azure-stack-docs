@@ -1,6 +1,6 @@
 ### YamlMime:ZonePivotGroups
 groups:
-- id: version-previous
+- id: version-select
   title: AKS enabled by Azure Arc versions
   prompt: Choose an AKS Arc version
   pivots:

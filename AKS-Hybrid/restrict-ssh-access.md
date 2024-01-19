@@ -7,7 +7,7 @@ ms.date: 05/03/2023
 ms.author: sethm 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
-zone_pivot_groups: version-previous
+zone_pivot_groups: version-select
 
 # Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS hybrid.
 
