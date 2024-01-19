@@ -57,7 +57,7 @@
       "manager":"femila",
       "ms.service": "azure-stack",
       "recommendations": true,
-      "zone_pivot_group_filename": "./AKS-Hybrid/zone-pivot-groups.json"
+      "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
 
     },
     "fileMetadata": {
