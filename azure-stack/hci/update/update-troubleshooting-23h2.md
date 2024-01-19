@@ -91,6 +91,12 @@ If you're using PowerShell and need to resume a previously failed update run, us
 get-solutionupdate | start-solutionupdate
 ```
 
+To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
+
+```powershell
+get-solutionUpdate | start-solutionUpdate -IgnoreWarnings
+```
+
 ## Next steps
 
 Learn more about how to [Run updates via PowerShell](./update-via-powershell-23h2.md).
