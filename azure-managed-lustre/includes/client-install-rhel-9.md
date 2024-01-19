@@ -33,7 +33,6 @@ ms.lastreviewed: 02/19/2023
    ```bash
    sudo bash repo.bash
    ```
-v
 1. Install the metapackage that matches your running kernel:
 
    ```bash
