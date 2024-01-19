@@ -84,7 +84,7 @@ Choose whether to create a new configuration for this system or to load deployme
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
-1. To customize network settings for an intent, select **Customize network sittings** and provide the following information:
+1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
 
     - **Storage traffic priority**. This specifies the Priority Flow Control where Data Center Bridging (DCB) is used.
     - **Cluster traffic priority**.
