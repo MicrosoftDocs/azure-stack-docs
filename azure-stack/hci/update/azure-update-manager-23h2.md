@@ -147,24 +147,24 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
 
 In addition to cluster updates using Azure Update Manager or the Azure Stack HCI cluster resource page, you can use Windows Admin Center to check for and install available hardware (firmware and driver) updates for your Azure Stack HCI system.
 
-Here is an example of the Windows Admin Center updates tool for systems running Azure Stack HCI, verison 23H2.
+Here's an example of the Windows Admin Center updates tool for systems running Azure Stack HCI, version 23H2.
 
 [![Review and install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-wac-23h2.png)](media/azure-update-manager/updates-os-wac-23h2.png#lightbox)
 
 ## Troubleshoot updates
 
-In the Azure portal to resume a previously failed update run, browse to the failed update and select the **Try again** button. This feature will be available at each stage of an update run: Download updates, Check readiness, and Install.
+In the Azure portal to resume a previously failed update run, browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
 [![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
 
-If you are unable to successfully rerun a failed update or want to further troubleshoot an error, follow these steps:
+If you're unable to successfully rerun a failed update or want to troubleshoot an error further, follow these steps:
 
 1. Select the **View details** of an error.
-2. Once the details box opens you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
+2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
 
     [![Review and download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox).
 
-3. After the logs are downloaded you can select the **Open a support ticket** button and fill in the appropriate details for a ticket to Microsoft Support.
+3. Additionally, you can select the **Open a support ticket** button and fill in the appropriate details for a ticket to Microsoft Support.
     - You can include the downloaded logs in your support request for review by the Microsoft Support team.
 
     [![Open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox).

@@ -77,7 +77,27 @@ To collect logs for the update failures using PowerShell, follow these steps on 
 
 ## Resume an update
 
-To resume a previously failed update run using the Azure portal, it is highly recommended that you choose the failed update and select the **Try again** button. Otherwise, use PowerShell and run the following command:
+To resume a previously failed update run, you can retry the update run via the Azure portal or PowerShell.
+
+### the Azure portal
+
+To resume a failed update run using the Azure portal, it is highly recommended that you browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
+
+[![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
+
+To troubleshoot a failed update run further, select the **View details** of an error and then select **Download logs**.
+
+[![Review and open a support request.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
+
+If you need assistance from Microsoft Support, you can open a support request by selecting the **Open support ticket button** and attaching the downloaded JSON error log files to your request ticket.
+
+[![Review and open a support request.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
+
+For more information on opening a support request, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
+
+### PowerShell
+
+If you are using PowerShell and need to resume a previously failed update run, use the following command:
 
 ```powershell
 get-solutionupdate | start-solutionupdate
