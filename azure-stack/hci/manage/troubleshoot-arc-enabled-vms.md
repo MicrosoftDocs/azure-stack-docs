@@ -58,7 +58,7 @@ The above failure is because the managed identity was not created for this VM. S
 
 **Resolution:**  
 
-First verify that the Managed Identity is not created for this VM.
+Follow these steps to verify that the Managed Identity is not created for this VM and then enable System-assigned Managed Identity.
 
 1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
 
