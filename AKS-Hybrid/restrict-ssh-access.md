@@ -7,6 +7,7 @@ ms.date: 05/03/2023
 ms.author: sethm 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
+zone_pivot_groups: version-select
 
 # Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS hybrid.
 
@@ -23,6 +24,7 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 > [!NOTE]
 > Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs and restrict the commands that run over SSH.
 
+::: zone pivot="aks-22h2"
 ## Enable SSH restrictions
 
 To enable SSH restrictions, perform the following steps:
@@ -54,7 +56,7 @@ To enable SSH restrictions, perform the following steps:
    Set-AksHciConfig -ssh $ssh
    ```
 
-### Validation: target cluster 
+### Validation: target cluster
 
 Once you've created the cluster, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
 
@@ -64,12 +66,11 @@ ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 
 You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs has access. SSH attempts from outside the list do not have access.
 
-
 You can also run commands directly from SSH. This command returns the date. `Sudo` commands do not work:
 
 ```powershell
 ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip> date 
-``` 
+```
 
 ### Validation: log collection 
 
@@ -88,6 +89,21 @@ Get-AksHciLogs –virtualMachineLogs
 - There is no support for upgrades.
 - You can add CIDRs or IP addresses to which the SSH access can be restricted.
 - The SSH setting you provide is reused for all target clusters. Individual SSH configuration for workload clusters isn't available.
+::: zone-end
+
+::: zone pivot="aks-23h2"
+## Enable SSH restrictions
+
+The following command limits the set of hosts that can be authorized to be SSH clients. You can only run the SSH commands on those hosts, and the set of commands that you can run is restricted. The hosts are designed either via IP addresses or via CIDR ranges:
+
+```azurecli
+az aksarc create --ssh-authorized-ip-ranges CIDR format
+```
+
+The CIDR format is `0.0.0.0/32`.
+
+This command does two things: it limits the scope of the command, and it also limits the hosts from which this command can be run.
+::: zone-end
 
 ## Next steps
 
