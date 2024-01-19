@@ -15,7 +15,7 @@ This article describes how to apply a solution update to your Azure Stack HCI cl
 
 The procedure in this article applies to both a single server and multi-server cluster that is running the latest version with the orchestrator (Lifecycle Manager) installed. If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
-For information on how to apply solution updates to clusters created with older versions of Azure Stack HCI that didn't have the orchestrator installed see [Update existing Azure Stack HCI clusters](../manage/update-cluster.md).
+For information on how to apply solution updates to clusters created with older versions of Azure Stack HCI that didn't have the orchestrator installed see [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md).
 
 ## About solution updates
 
@@ -473,4 +473,4 @@ To troubleshoot other update run issues, see [Troubleshoot updates](../update/up
 
 ## Next steps
 
-Learn more about how to [Update existing Azure Stack HCI clusters](../manage/update-cluster.md) when the orchestrator isn't installed.
+Learn more about how to [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
