@@ -90,9 +90,7 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 This step applies only if you downloaded the .VHD file. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
 
-Verify that the VM is configured with the following settings:
-
-- Standalone type (non-High Availability type).
+Verify that a standalone VM (non-HA) is configured with the following settings:
 - 16 GB memory.
 - 8 vCPU.
 - 80 GB disk storage.
@@ -100,9 +98,9 @@ Verify that the VM is configured with the following settings:
 
 #### Install using a script (.zip file)
 
-This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the target appliance.
+This step applies only if you downloaded the .zip file.
 
-1. Using **Hyper-V Manager**, create a `Standalone` (non-High Availability type) VM on the target Azure Stack HCI server running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure the VM has access to the internet.
+1. Using **Hyper-V Manager**, create a standalone (non-HA) VM on the target Azure Stack HCI server running on Windows Server 2022 with 80 GB (min) disk storage, 16 GB (min) memory, and 8 virtual processors. Make sure that the VM has access to the internet.
 
 1. In  **Hyper-V Manager**, select the host.
 
@@ -163,16 +161,17 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
     :::image type="content" source="./media/replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/replicate/replicate-start.png":::
 
 1. On the **Specify intent** page:
-    1. Select Azure Stack HCI as **Where you want to migrate**.
-    1. Select Hyper-V as the **Virtualization type**.
-    1. From the dropdown list, select the target appliance that you just configured.
+    1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
+    1. Select **Azure Stack HCI** as **Where do you want to migrate to ?**
+    1. Select **Hyper-V** as the **Virtualization type**.
+    1. From the dropdown list, select the **On-premises appliance** (source) used for discovery.
     1. When finished, select **Continue**.
 
     :::image type="content" source="./media/replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/replicate/replication-screen.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
-    1. This field is automatically populated. If this is not the subscription that has your target cluster, choose another Azure subscription.
+    1. This field is automatically populated. If this is not the subscription that has your target cluster, choose the Azure subscription that has the cluster.
     1. Select the resource group associated with your target cluster.
 	1. For **Cluster resource**, select the Azure Stack HCI cluster resource.
 	1. Verify there is a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
@@ -201,18 +200,20 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
         > [!NOTE]
         > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure project.
 
-    1. Select the **Resource group** associated with your storage account.
+    1. Select the **Resource group** to associate with your storage account.
     
-    1. Select an existing storage account or select **Storage account (new)** to create a new storage account with default settings. 
+    1. The VM subscription is automatically populated.
+    
+    1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
 
         > [!NOTE]
-        > Once created, the storage account location can't be changed.
+        > - We recommend that you create new a storage account to be used as your cache storage account. > > - Once created, the storage account location can't be changed.
 
     1. Select a resource group to associate with your migrated VMs.
+   
+	1. Select the logical network that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-stack-hci-using-azure-migrate). The VMs will be connected to this network. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	1. Select the logical network you created earlier. The VMs will be connected to this network. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
-
-	1. Select the storage path where these VMs will be created. If you don't see a storage path in the dropdown list, [create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
+	1. Select the storage path that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-stack-hci-using-azure-migrate). The VMs will be created at this storage path. If you don't see a storage path in the dropdown list, [create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
     1. When finished, select **Next**.
     
@@ -222,7 +223,7 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
 	1. Rename target VMs as needed.
 	1. Select the OS disk for each VM from the dropdown lists.
-    1. Configure number of vCPUs and RAM for each VM as needed.
+    1. Configure number of vCPUs and RAM including selecting dynamic RAM for each VM, as needed.
     1. When finished, select **Next**.
     
         :::image type="content" source="./media/replicate/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/replicate/replicate-5-compute.png":::
@@ -236,13 +237,19 @@ This step applies only if you downloaded the .zip file. You use the *AzureMigrat
 
     :::image type="content" source="./media/replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/replicate/replicate-6-disks.png":::
 
-1. On the  **Review + Start replication** tab, make sure that all the values are correct and then select **Replicate**. It is very important to stay on the page until the process is complete (this might take 5-10 minutes). If you move away from this page, the replication artifacts won't be create fully leading to a failure in replication and eventually migration.
+1. On the  **Review + Start replication** tab, make sure that all the values are correct and then select **Replicate**. 
 
     :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
 
-1. You are automatically taken to the **Replications** page. Review the replication status. Select **Refresh** to see the replicated VMs appear.
+1. Stay on this page until the process is complete (this might take 5-10 minutes). If you move away from this page, the replication artifacts won't be created fully leading to a failure in replication and eventually migration.
+
+    :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
+
+1. You are automatically taken to **Servers, databses and web apps** page. On the **Migration tools** tile, select **Overview**.
+
+1. Go to **Azure Stack HCI migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
  
-1. As the replication continues, replication status shows progress. After the initial replication is complete, hourly delta replications begin. When the replication is complete, VMs can be migrated. The **Migration status** changes to **Ready to migrate**.
+1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png":::
 

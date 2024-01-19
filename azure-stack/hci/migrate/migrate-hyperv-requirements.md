@@ -56,26 +56,19 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 ## Source Hyper-V server requirements
 
-In this release, you can only migrate VMs that have disks attached to the local cluster storage. If the VM disks aren't attached to the local cluster storage, the disks can’t be migrated.
+- Hyper-V server is supported for both standalone server and cluster configuration.
 
-The source server used for migration should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
+    You can discover and migrate standalone (non-highly available) VMs on standalone Hyper-V hosts. However, standalone VMs hosted on clustered Hyper-V hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
 
-- 16 GB memory.
-- 80 GB disk.
-- 8 vCPUs.
+- The source server used for migration should have sufficient resources to create a Windows Server 2022 VM with this minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 
-
-## Target Azure Stack HCI cluster and requirements
-
-- The target Azure Stack HCI cluster OS must be version 23H2 or later.
-
-- You can discover and migrate standalone VMs on standalone (non-clustered) Hyper-V hosts. However, standalone VMs hosted on clustered Hyper-V hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
+- In this release, you can only migrate VMs that have disks attached to the cluster shared volumes (CSV). If the VM disks aren't attached to the CSV, the disks can’t be migrated.
 
 - Before you begin, for all Windows VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
-## Arc Resource Bridge requirements
+## Target Azure Stack HCI cluster requirements
 
-The following are requirements for the Arc Resource Bridge:
+- The target Azure Stack HCI cluster OS must be running version 23H2.
 
 - An Arc Resource Bridge must exist on the Azure Stack HCI, version 23H2 system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Stack HCI system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 

@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/07/2023
+ms.date: 01/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -27,11 +27,13 @@ Before you migrate your VMs:
 
 ## Migrate VMs
 
-1. In the Azure portal, go to your **Azure Migrate project > Servers, databases and webapps**.
+1. In the Azure portal, go to your **Azure Migrate project > Servers, databases and web apps**.
 
-1. On the **Migration tools** tile, select the number against **Azure Stack HCI** under **Replications**.
+1. On the **Migration tools** tile, select **Overview**.
 
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1.png" alt-text="Screenshot Azure Migrate project > Server, databases and webapps in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1.png":::
+
+1. Go to **Azure Stack HCI migration > Replications**.
 
 1. From the top command bar of the **Replications** page, select **Migrate** to migrate multiple VMs that are ready.  
 
@@ -65,18 +67,18 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
  
 ## Verify migration
 
-1. In the Azure portal, go to your **Azure Stack HCI resource > Virtual machines**.
+1. In the Azure portal, go to your **Azure Stack HCI cluster resource > Virtual machines**.
 1. In the list of VMs in the right-pane, verify that the VMs that you migrated are present.
 
     :::image type="content" source="./media/migrate-azure-migrate/verify-migrated-virtual-machine-1.png" alt-text="Screenshot of Azure Stack HCI > Virtual machines in Azure portal." lightbox="./media/migrate-azure-migrate/verify-migrated-virtual-machine-1.png":::
 
-1. Select a VM to view its details. Verify that the VM:
+1. Select a VM to view its details. Verify that:
     1. The VM is running. The corresponding source VM in the Hyper-V server is turned off.
     1. The VM has the disk and network configuration as configured during replication.
   
     :::image type="content" source="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png":::
 
-1. Sign into the VM and verify that:
+1. Sign into the VM using Hyper-V VM connect. Verify that:
     1. The VM behaves as expected.
     1. Your applications work as expected.
 
@@ -107,25 +109,6 @@ Once you have verified that migration is complete and no more servers need to be
 - Source VMs and the associated VM disks from the Hyper-V server and the Failover Cluster Manager.
 - Source and target appliance VMs.
 
-### Clean up VMs and associated disks
-
-Clean up the source VMs. You can delete the source VMs from the Hyper-V server and the Failover Cluster Manager. When you delete a Hyper-V VM, only the VM configuration files are deleted. The virtual hard disks associated with the VM are not deleted. To clean up the VMs and the associated VM disks, follow these steps:
-
-1. After the migration is complete, delete the source VM from Hyper-V server.
-    1. In the Hyper-V manager, select the source VM that you migrated.
-    1. Right-click the VM and select **Settings**.
-    1. Select **Hard Drive** to copy the file path of the associated virtual hard disk. 
-    1. Verify that the VM is turned off.
-    1. Select the VM and right-click on the name of the VM. From the context menu, select **Delete...**. This action should delete the source VM.
-
-        :::image type="content" source="./media/migrate-azure-migrate/delete-source-virtual-machine-hyperv-manager-1.png" alt-text="Screenshot of source VM in Hyper V Manager with delete selected from the context menu." lightbox="./media/migrate-azure-migrate/delete-source-virtual-machine-hyperv-manager-1.png":::
-    
-        Alternatively, you can use PowerShell to delete the VM. For more information, see the [Remove-VM](/powershell/module/hyper-v/remove-vm?view=windowsserver2022-ps&preserve-view=true) command.
-    1. Navigate to the folder where the virtual hard disk of the VM is stored and delete the virtual hard disk.
-1. The last step is to delete the VM from the Failover Cluster Manager.
-    1. In the Failover Cluster Manager, connect to the Hyper-V cluster and go to **Roles**.
-    1. Select the VM that you migrated. Verify that the VM is turned off.
-    1. Right-click and from the context menu, select **Remove**. When prompted for confirmation, select **Yes** to continue. This action should delete the VM from the Failover Cluster Manager.
 
 ## Next steps
 

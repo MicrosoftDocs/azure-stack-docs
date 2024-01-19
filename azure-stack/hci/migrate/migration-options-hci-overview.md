@@ -44,7 +44,9 @@ Third party migration options are provided by Microsoft partners. These options 
 
 ## Manual migration options
 
-Manual migration options are provided by Microsoft. These options are available to you at no additional cost. These options are available only on systems running Azure Stack HCI, version 22H2. The following manual migration options are available:
+Manual migration options are provided by Microsoft. These options are available to you at no additional cost. These options are available only on systems running Azure Stack HCI, version 22H2. 
+
+The following manual migration options are available:
 
 - [Migrate VMs manually to same hardware](../deploy/migrate-cluster-same-hardware.md): This option is used when you want to migrate a Windows Server failover cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings and storage, and imports your VMs.
 
