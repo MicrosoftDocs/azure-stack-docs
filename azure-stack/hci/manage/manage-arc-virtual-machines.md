@@ -37,6 +37,9 @@ When you enable guest management on an Arc VM, the guest agent installs the [Azu
 
 Based on whether a guest agent is running on your Arc VM, the steps to enable guest management are different.
 
+> [!IMPORTANT] 
+> Make sure that your Azure Stack HCI cluster is on 2311.2 to run this procedure.
+
 ### Verify if guest agent is running
 
 1. To verify whether the guest agent is running on the Arc VM, connect to the Azure Stack HCI server.
@@ -148,7 +151,7 @@ Your status shows as null. Here's a sample output snippet indicating the null st
           }
         },
     ```
-Follow these steps:
+Follow these steps :
 
 1. Connect to Azure Stack HCI server.
 1. Run the following command:
@@ -158,7 +161,7 @@ Follow these steps:
     ```
     The `enable-vm-config-agent` parameter mounts the required *iso* for the guest agent.
 
-Follow the steps in [](#status-displayed-as-connecting).
+1. Wait a few minutes and rerun the `az stack-hci-vm show` command. When the status shows as `connecting`, follow the steps in [Status displayed as connecting](#status-displayed-as-connecting).
 
 #### verify guest management is enabled in the Azure portal
 
