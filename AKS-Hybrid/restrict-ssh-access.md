@@ -25,7 +25,6 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 > Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs and restrict the commands that run over SSH.
 
 ::: zone pivot="aks-22h2"
-
 ## Enable SSH restrictions (previous version)
 
 To enable SSH restrictions, perform the following steps:
