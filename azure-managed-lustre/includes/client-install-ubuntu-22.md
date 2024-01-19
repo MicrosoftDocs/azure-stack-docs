@@ -9,6 +9,47 @@ ms.lastreviewed: 02/19/2023
 
 ---
 
+> [!IMPORTANT]
+> The Azure Marketplace image for the Ubuntu 22.04 LTS release uses the Hardware Enablement (HWE) Kernel by default. However, these kernels are only supported for 6 month periods, and Lustre support for these kernels is often not available when they are released. Therefore, it is recommended that you switch to the LTS kernel, as it will give you more stability as well as maintaining a kernel version that is supported with the Lustre Client.
+
+1. Install the LTS Kernel Metapackage.
+
+   ```bash
+   sudo apt update && sudo apt install linux-image-azure-lts-22.04
+   ```
+
+1. Remove the HWE Kernel Metapackage.
+
+   Remove the default (Hardware Enablement) Kernel metapackage, it will also ask to remove the linux-azure metapackage.  This is expected.
+
+   ```bash
+   sudo apt remove linux-image-azure
+   ```
+
+1. List installed kernels and see which one is supplied by the LTS metapackage
+
+   After the metadata package is removed check to see what kernels are currently installed.  Newly provisioned hosts will have 2 kernels, older hosts may have more. Compare the version that the LTS metapackage provides against the other installed kernels.  Here you will see that a 6.2 kernel is still installed previously from the linux-image-azure metapackage.
+
+   ```bash
+   apt list --installed linux-image*
+   ```
+
+1. Remove any kernels newer than the one mentioned in the LTS metapackage
+
+   Remove any kernels other than the one mentioned in the LTS kernel metapackage.  It will warn about removing the kernel and recommending aborting the process. If you're folowing these steps on a newly provisioned host these work. But if you have concerns, consult ubuntu documentation on configuring kernels to ensure it's able to boot after a reboot.
+
+   ```bash
+   sudo apt remove linux-image-5.15.0-1053-azure
+   ```
+
+1. Verify that you don't have kernels newer than the one mentioned in the LTS metapackage.
+
+   ```bash
+   apt list --installed linux-image*
+   ```
+
+1. Reboot to load the LTS kernel.
+
 1. Install and configure the Azure Managed Lustre repository for the APT package manager. Create the following script and name it `repo.bash`:
 
    ```bash
