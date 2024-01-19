@@ -17,10 +17,6 @@ This article describes how to manage Arc virtual machines (VMs) running on Azure
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
-## Manage Arc VM resources
-
-Once the Arc VMs are deployed, you need to manage the VMs. This requires you to add data disks, network interfaces, cores or memory to a VM, starting, stopping or restarting VMs.
-
 ## Prerequisites
 
 Before you begin, make sure to complete the following prerequisites:
@@ -31,85 +27,26 @@ Before you begin, make sure to complete the following prerequisites:
 
 1. Make sure you have one or more Arc VMs running on this Azure Stack HCI cluster. For more information, see [Create Arc VMs on Azure Stack HCI](./create-arc-virtual-machines.md).
 
-### Enable guest management
+## Enable guest management
 
 After you created a VM, you would want to enable guest management on that VM.
 
-There are two agents that are important to understand in the context of guest management - a VM guest agent and an Azure Connected machines agent. Every Arc VM is born with a guest agent (also referred to as the `mocguestagent`) installed on it.
+There are two agents that are important to understand in the context of guest management - a VM guest agent and an Azure Connected machines agent. Every Arc VM created via Azure portal or Azure CLI is provisioned with a guest agent (also referred to as the `mocguestagent`) on it. This agent is 
 
-When you enable guest management on an Arc VM, another agent known as the Azure Connected Machines agent is installed on the Arc VM. The Azure Connected Machine agent enables you to manage your Windows and Linux VM machines hosted on your Azure Stack HCI system. For more information, see [Azure Connected Machine agent overview](/azure/azure-arc/servers/agent-overview).
+When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machines](/azure/azure-arc/servers/agent-overview) agent. The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI system. 
 
-You can enable guest management on a new Arc VM that you created with its OS not booted or already booted. The steps to enable guest management in these scenarios are different.
+Based on whether a guest agent is running on your Arc VM, the steps to enable guest management are different.
 
-#### Enable guest management on a new Arc VM
+### Verify if guest agent is running
 
-You can create an Arc VM with the OS disk not booted prior to the creation. To enable guest management on this new Arc VM, follow these steps:
-
-1. Run the following command:
-
-   ```azurecli
-   az stack-hci-vm update --name "myhci-vm" --enable-agent true -g "myhci-rg"
-   ```
-   The guest management is enabled by setting the `enable-agent parameter` to `true`. The guest management should take a few minutes to get enabled.
-
-2. Go to the Azure portal. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
-
-   :::image type="content" source="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png":::
-
-
-#### Enable guest management for a VM with OS disk booted
-
-The OS disk of an Arc VM is already booted before the Arc VM is created in migrate scenarios. In these instances, the guest agent isn't bootstrapped. The steps described here can be used for other instances also where the VM guest agent isn't bootstrapped.
-
-1. Check the agent status when guest agent isn't bootstrapped on the Arc VM. Connect to the Azure Stack HCI server via RDP.
+1. To verify whether the guest agent is running on the Arc VM, connect to the Azure Stack HCI server.
 1. Run the following command:
 
     ```azurecli
-    az stack-hci-vm show --name "<VM name>" -g "<Resource group name>"
-    ```
-    Here's a sample output that indicates that the guest agent isn't bootstrapped.
-   
-    ```azurecli
-    az stack-hci-vm show --name "myhci-vm" -g "myhci-rg"
-    
-       "instanceView": {
-       "vmAgent": {
-          "statuses": [
-             {
-             "code": "ProvisioningState/inprogress",
-             "displayStatus": "Connected",
-             "level": "Info",
-             "message": "Waiting for connection with mocguestagent",
-             "time": "2024-01-13T00:57:39Z"
-             },
-          ],
-       }
-    ``` 
-    The guest agent isn't installed when the status indicates that the VM is in `ProvisioningState/InProgress` and is `Waiting for connection with mocguestagent`.
-1. Connect to the VM using the OS specific steps. Run PowerShell as administrator.
-1. Run one of the following commands to enable the guest agent on your VM based on the OS type:
-
-    - **Linux**:
-    
-        ```azurecli
-        sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /mociso && bash /mociso/install.sh && umount /mociso && rm -df /mociso && eject LABEL=mocguestagentprov'
-        ```
-    - **Windows**:
-        ```azurecli
-        $d=Get-Volume -FileSystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install.ps1';powershell $p
-        ```
- 
-    The output should indicate that the guest agent is successfully installed.
-
-   :::image type="content" source="./media/manage-arc-virtual-machines/guest-agent-installed-1.png" alt-text="Screenshot showing that the guest agent is successfully enabled on the VM." lightbox="./media/manage-arc-virtual-machines/guest-agent-installed-1.png":::
-
-1. Check the agent status to verify that the guest agent is running on the VM.
-
-    ```azurecli
-    az stack-hci-vm show --name "<VM name>" -g "<Resource group name>"
+    az stack-hci-vm show --name "<VM name>" --resource-group "<Resource group name>"
     ```
     
-    Here's a snippet of the sample output that indicates the guest agent is enabled:
+    Here's a snippet of the sample output that indicates that the guest agent is running:
 
     ```output
     "instanceView": {
@@ -134,15 +71,103 @@ The OS disk of an Arc VM is already booted before the Arc VM is created in migra
       }
     }
     ```
-    The guest agent is running when in the `statuses`, you see `ProvisioningState/succeeded` and `Successfully established connection with mocguestagent`.
+   
+    The guest agent is running when the status indicates that the VM is in `ProvisioningState/succeeded` and has `Successfully established connected with mocguestagent`.
 
-1. Connect to one of the Azure Stack HCI servers via RDP. Run the following command to enable guest management.
+If your statuses do not match the above output, follow the steps in [Enable guest management when the guest agent is not running](#enable-guest-management-on-a-vm-when-guest-agent-is-not-running).
+
+### Enable guest management on a VM with guest agent running
+
+To enable guest management on an Arc VM that has guest agent running, run the following command:
+
+```azurecli
+az stack-hci-vm update --name "myhci-vm" --enable-agent true --resource-group "myhci-rg"
+```
+The guest management is enabled by setting the `enable-agent parameter` to `true`. The guest management should take a few minutes to get enabled.
+
+Follow the steps to [verify that the guest management is enabled in the Azure portal](#verify-guest-management-is-enabled-in-the-azure-portal).
+
+### Enable guest management on a VM when guest agent is not running
+
+There are two scenarios when the guest agent is not running. Each of these scenarios and the corresponding steps are described in the following sections.
+
+#### Status displayed as connecting
+
+Your status shows as connecting. Here's a sample output snippet indicating the requisite status.
+
+    ```output
+    "instanceView": {
+          "vmAgent": {
+            "statuses": [
+              {
+                "code": "ProvisioningState/inprogress",
+                "displayStatus": "Connecting",
+                "level": "Info",
+                "message": "Waiting for connection with mocguestagent",
+                "time": "2024-01-19T01:41:15Z"
+              }
+            ]
+          }
+        },
+    ```
+Follow these steps:
+
+1. Connect to the VM using the OS specific steps. Run PowerShell as administrator.
+1. Run one of the following commands to enable the guest agent on your VM based on the OS type:
+
+    - **Linux**:
+    
+        ```azurecli
+        sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /mociso && bash /mociso/install.sh && umount /mociso && rm -df /mociso && eject LABEL=mocguestagentprov'
+        ```
+    - **Windows**:
+        ```azurecli
+        $d=Get-Volume -FileSystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install.ps1';powershell $p
+        ```
+ 
+    Here's a sample output for a Linux VM that shows the guest agent is successfully installed.
+
+    :::image type="content" source="./media/manage-arc-virtual-machines/guest-agent-installed-1.png" alt-text="Screenshot showing that the guest agent is successfully enabled on the VM." lightbox="./media/manage-arc-virtual-machines/guest-agent-installed-1.png":::
+
+1. Connect to one of the Azure Stack HCI servers. Run the following command to enable guest management.
+
+   ```azurecli
+   az stack-hci-vm update --name "myhci-vm" --enable-agent true --resource-group "myhci-rg"
+   ```
+
+Follow the steps to [verify that the guest management is enabled in the Azure portal](#verify-guest-management-is-enabled-in-the-azure-portal).
+
+#### Status displayed as null
+
+Your status shows as null. Here's a sample output snippet indicating the null status.
+
+    ```output
+    "instanceView": {
+          "vmAgent": {
+            "statuses": []
+          }
+        },
+    ```
+Follow these steps:
+
+1. Connect to Azure Stack HCI server.
+1. Run the following command:
 
     ```azurecli
-    az stack-hci-vm show --name "<VM name>" -g "<Resource group name>"
+    az stack-hci-vm update --name "<VM Name>" --resource-group "<Resource group name>" --enable-vm-config-agent true
     ```
-    
-If you encounter a failure while enabling guest management, see [Troubleshoot Arc VMs](./troubleshoot-arc-enabled-vms.md).
+    The `enable-vm-config-agent` parameter mounts the required *iso* for the guest agent.
+
+Follow the steps in [](#status-displayed-as-connecting).
+
+#### verify guest management is enabled in the Azure portal
+
+1. Go to the Azure portal. 
+1. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. 
+1. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
+
+   :::image type="content" source="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-arc-virtual-machines/verify-guest-management-enabled-1.png":::
+
 
 ## View VM properties
 
