@@ -14,7 +14,7 @@ ms.custom: devx-track-arm-template
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article details the prerequisites and preparation required before you use an Azure Resource Manager template (ARM template) in Azure portal to deploy Azure Stack HCI in your environment.
+This article details how to use an Azure Resource Manager template (ARM template) in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
 > ARM template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the ARM template.
