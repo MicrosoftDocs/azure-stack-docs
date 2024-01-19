@@ -463,7 +463,7 @@ After the updates are installed, verify the solution version of the environment 
 
 ## Troubleshoot updates
 
-To resume a previously failed update run via PowerShell, run the following command:
+To resume a previously failed update run via PowerShell, use the following command:
 
 ```powershell
     get-solutionupdate|start-solutionupdate
