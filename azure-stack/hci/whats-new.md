@@ -53,7 +53,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings-23h2.md).
 
 > [!NOTE]
-> Auhtenticated and certificate based proxy is not supported for this release. 
+> Authenticated and certificate based proxy is not supported for this release. 
 
 ### Removal of GMSA accounts
 
