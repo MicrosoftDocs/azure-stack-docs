@@ -162,11 +162,10 @@ If you're unable to successfully rerun a failed update or want to troubleshoot a
 1. Select the **View details** of an error.
 2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
 
-    [![Review and download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox).
+    [![Review and download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
 
-3. Additionally, you can select the **Open a support ticket** button and fill in the appropriate details for a ticket to Microsoft Support.
-    - You can include the downloaded logs in your support request for review by the Microsoft Support team.
+3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate details, and attach your downloaded logs to your support request ticket to Microsoft Support.
 
-    [![Open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox).
+    [![Open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
 
 To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
