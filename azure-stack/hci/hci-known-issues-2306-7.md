@@ -49,4 +49,4 @@ Here are the known issues that have carried over from the previous releases in A
 
 ## Next steps
 
-- Read the [Deployment overview](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
+- Read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
