@@ -23,7 +23,7 @@ The new update solution includes a retry and remediation logic. This logic attem
 
 You can also collect diagnostic logs to help Microsoft identify and fix the issues.
 
-To collect logs for updates using the Azure portal. see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md#troubleshoot-updates).
+To collect logs for updates using the Azure portal, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md#troubleshoot-updates).
 
 To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your cluster:
 

@@ -167,3 +167,5 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
     [![Open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
 
 For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
+
+To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).

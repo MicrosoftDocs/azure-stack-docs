@@ -11,6 +11,9 @@ ms.date: 11/13/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
+[!INCLUDE [WARNING](../../includes/hci-applies-to-23h2-cluster-updates.md)]
+This article describes how to use Azure Update Manager to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
+
 This article describes how to apply a solution update to your Azure Stack HCI cluster via PowerShell.
 
 The procedure in this article applies to both a single server and multi-server cluster that is running the latest version with the orchestrator (Lifecycle Manager) installed. If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then the orchestrator was automatically installed as part of the deployment.
@@ -468,6 +471,12 @@ To resume a previously failed update run via PowerShell, use the following comma
 ```powershell
     get-solutionupdate|start-solutionupdate
  ```
+
+To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
+
+```powershell
+get-solutionUpdate | start-solutionUpdate -IgnoreWarnings
+```
 
 To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
 
