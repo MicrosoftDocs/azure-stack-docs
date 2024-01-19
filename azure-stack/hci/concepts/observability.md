@@ -53,10 +53,6 @@ For remote support during the pre-deployment or pre-registration of your Azure S
 
 Diagnostics in Azure Stack HCI helps identify and troubleshoot issues that may arise in the system. With the help of diagnostics, administrators can monitor the performance and health of their Azure Stack HCI environment and take proactive measures to prevent issues from occurring. Additionally, diagnostics can provide valuable insights into the behavior of the system, which can help optimize its performance and improve the overall user experience.
 
-The following diagram illustrates various log collection methods in Azure Stack HCI.
-
-:::image type="content" source="media/observability/log-collection.png" alt-text="Diagram showing different ways to collect diagnostic logs." lightbox="media/observability/log-collection.png":::
-
 ### Compare log collection methods
 
 The following table provides a detailed comparison of different methods of log collection in Azure Stack HCI:
@@ -65,7 +61,6 @@ The following table provides a detailed comparison of different methods of log c
 |--|--|--|--|
 | On-demand log collection | Manually collect and send diagnostic logs for Azure Stack HCI to Microsoft. | Use `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. <br> <br> Logs are temporarily copied locally, parsed, sent, and then deleted. <br> <br> For detailed instructions on how to perform on-demand log collection, see [Collect logs](../manage/collect-logs.md). | - Non-registration failures. <br> - Log collection request from Microsoft Support based on an open case. <br> - Log collection when a cluster is registered and connected. <br> - Log collection when the Observability components are installed and functional. <br> - Log collection when a cluster is partially registered. |
 | Standalone log collection | Send diagnostic data to Microsoft if observability components are not deployed or if there are issues during the cluster registration process. | Save data locally and use `Send-AzStackHciDiagnosticData` command to send data to Microsoft. <br> <br> For detailed instructions on standalone log collections, see [Perform standalone log collection](../manage/get-support-for-deployment-issues.md#perform-standalone-log-collection). | - Deployment failures. <br> - Registration failures. <br> - Log collection request from Microsoft Support based on an open case. <br> - Log collection when a cluster is not registered and doesn't have connectivity. <br> - Log collection when a cluster is partially registered. <br> - Log collection when the Observability components are not available. |
-| Proactive log collection | Automatically collect and deliver diagnostic logs to Microsoft before a support ticket is opened. In this method, the diagnostic data is gathered only when a system health alarm is triggered. | Automatically collects and sends log when a system health alarm is triggered. It requires Azure Stack HCI telemetry and diagnostics extension. <br> For information, see [Azure Stack HCI telemetry and diagnostics extension](./telemetry-and-diagnostics-overview.md). | Preemptive log collection for troubleshooting and issue resolution. |  
 | Autonomous log collection | Collect and store logs locally for failure analysis by customer support in case of intermittent or no connectivity to Azure. In this method, logs are not sent to Azure. | Logs are collected and stored locally for analysis and no automatic sending to Azure occurs. | For failure analysis by customer support when there is intermittent or no connectivity to Azure. |
 
 ## Next steps

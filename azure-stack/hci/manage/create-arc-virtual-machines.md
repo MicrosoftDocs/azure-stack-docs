@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 12/15/2023
+ms.date: 01/17/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI (preview)
@@ -92,7 +92,7 @@ Depending on the type of the network interface that you created, you can create 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output. 
 
 > [!NOTE]
-> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, there is no way to enable it after the VM creation.
+> The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Arc VM](#enable-guest-management-for-the-vm) to enable it after the VM creation.
 
 In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
@@ -121,6 +121,21 @@ You can then attach the disk to the VM using the following command:
 ```azurecli
 az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
 ```
+
+### Enable guest management for the VM
+
+After you have created a VM, you may wish to enable guest management on that VM. To enable guest management, follow these steps:
+
+1. Run the following command:
+
+    ```azurecli
+    az stack-hci-vm update --name "myhci-vm" --enable-agent true -g "myhci-rg"
+    ```
+    The guest management is enabled by setting the `enable-agent parameter` to `true`. The guest management should take a few minutes to get enabled.
+
+2. Go to the Azure portal. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
+
+    :::image type="content" source="./media/manage-vm-resources/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/verify-guest-management-enabled-1.png":::
 
 
 # [Azure portal](#tab/azureportal)
@@ -238,15 +253,13 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 ## Use managed identity to authenticate Arc VMs
 
-When the Arc VMs are created on your Azure Stack HCI system via Azure CLI, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
+When the Arc VMs are created on your Azure Stack HCI system via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
 
 The Arc VMs on Azure Stack HCI are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
 For  more information, see [System-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
 
-> [!NOTE]
-> In the current release, for Arc VMs created via the Azure portal with guest management disabled, system-assigned managed identity is not created.
-> 
+
 ## Next steps
 
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
