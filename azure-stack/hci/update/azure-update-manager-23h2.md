@@ -155,7 +155,7 @@ In the Azure portal to resume a previously failed update run, browse to the fail
 
 [![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
 
-If you're unable to successfully rerun a failed update or want to troubleshoot an error further, follow these steps:
+If you're unable to successfully rerun a failed update or need to troubleshoot an error further, follow these steps:
 
 1. Select the **View details** of an error.
 2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.

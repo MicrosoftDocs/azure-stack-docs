@@ -23,7 +23,7 @@ The new update solution includes a retry and remediation logic. This logic attem
 
 You can also collect diagnostic logs to help Microsoft identify and fix the issues.
 
-To collect logs for updates using the Azure portal. see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
+To collect logs for updates using the Azure portal. see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md#troubleshoot-updates).
 
 To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your cluster:
 
@@ -82,16 +82,6 @@ To resume a previously failed update run, you can retry the update run via the A
 We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
 [![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
-
-To troubleshoot a failed update run further, select the **View details** of an error and then select **Download logs**.
-
-[![Review and download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
-
-If you need assistance from Microsoft Support, you can open a support request by selecting the **Open support ticket button** and attaching the downloaded JSON error log files to your request ticket.
-
-[![Review and open a support request.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
-
-For more information on opening a support request, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### PowerShell
 
