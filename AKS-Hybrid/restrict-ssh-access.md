@@ -7,6 +7,7 @@ ms.date: 05/03/2023
 ms.author: sethm 
 ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
+zone_pivot_groups: version-previous
 
 # Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS hybrid.
 
@@ -22,6 +23,8 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 
 > [!NOTE]
 > Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs and restrict the commands that run over SSH.
+
+::: zone pivot="22H2"
 
 ## Enable SSH restrictions
 
@@ -88,6 +91,21 @@ Get-AksHciLogs –virtualMachineLogs
 - There is no support for upgrades.
 - You can add CIDRs or IP addresses to which the SSH access can be restricted.
 - The SSH setting you provide is reused for all target clusters. Individual SSH configuration for workload clusters isn't available.
+::: zone-end
+
+::: zone pivot="23H2"
+## Enable SSH restrictions
+
+The following command limits the set of hosts that can be authorized to be SSH clients. You can only run the SSH commands on those hosts, and the set of commands that you can run is restricted. The hosts are designed either via IP addresses or via CIDR ranges:
+
+```azurecli
+az aksarc create --ssh-authorized-ip-ranges CIDR format
+```
+
+The CIDR format is `0.0.0.0/32`.
+
+This command does two things: it limits the scope of the command, and it also limits the hosts from which this command can be run.
+::: zone-end
 
 ## Next steps
 

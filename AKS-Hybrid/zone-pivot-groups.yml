@@ -1,0 +1,18 @@
+### YamlMime:ZonePivotGroups
+groups:
+- id: version-previous
+  title: AKS enabled by Azure Arc versions
+  prompt: Choose an AKS Arc version
+  pivots:
+  - id: 22H2
+    title: 22H2
+  - id: 23H2
+    title: 23H2
+- id: version-2022h1-previous
+  title: App Service on Azure Stack Hub Version
+  prompt: Choose version
+  pivots:
+  - id: version-2022h1
+    title: App Service on Azure Stack Hub 2022 H1
+  - id: version-previous
+    title: Previous versions
