@@ -74,10 +74,10 @@ groups:
   title: AKS enabled by Azure Arc versions
   prompt: Choose an AKS Arc version
   pivots:
-  - id: aks-22h2
-    title: Version 22H2
   - id: aks-23h2
     title: Version 23H2
+  - id: aks-22h2
+    title: Version 22H2
 
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
