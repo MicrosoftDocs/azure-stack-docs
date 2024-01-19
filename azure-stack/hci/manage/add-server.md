@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI by adding a se
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 12/13/2023
+ms.date: 01/16/2024
 ---
 
 # Add a server on your Azure Stack HCI (preview)
@@ -106,7 +106,7 @@ On a server that already exists on your cluster, follow these steps:
 
 1. Sign in with the domain user credentials that you provided during the deployment of the cluster.
 
-1. Before you add the server, make sure to get an updated authentication token. Run the following command:
+1. (Optional) Before you add the server, make sure to get an updated authentication token. Run the following command:
 
     ```powershell
     Update-AuthenticationToken 
