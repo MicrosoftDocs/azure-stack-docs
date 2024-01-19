@@ -1,6 +1,6 @@
 ---
 title:  Azure Stack HCI Remote Support Arc extension overview
-description: This article describes the remote support arc extenstion and how to enable it for your Azure Stack HCI server machines.
+description: This article describes the remote support arc extension and how to enable it for your Azure Stack HCI server machines.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
@@ -17,7 +17,7 @@ This article provides a brief overview of the Remote Support Arc extension, some
 
 ## About the Remote Support Arc extension
 
-The Remote Support Arc extension (shown as EdgeRemoteSupport in the Azure portal) can help you reduce setup time and resolve support issues more quickly by pre-installing the remote support agent on all nodes of the cluster and supporting the setup of scheduled tasks to configure [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
+The Remote Support Arc extension (shown as EdgeRemoteSupport in the Azure portal) can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the cluster and facilitating the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
 
 The scheduled tasks to configure JEA are set up through either:
 
@@ -105,25 +105,25 @@ Follow these steps on your client to enable remote support on your Azure Stack H
 
 ## Remote support operations
 
-After you enable remote support there are various operations that you can perform to grant remote access for Microsoft support. The next sections detail some examples of those operations.
+After you enable remote support, there are various operations that you can perform to grant remote access for Microsoft support. The next sections detail some examples of those operations.
 
 ### Enable remote support for diagnostics
 
-In this example, you grant remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access cannot be established.
+In this example, you grant remote support access for diagnostic-related operations only. The consent expires in 1,440 minutes (one day) after which remote access can't be established.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 ```
 
-Use ExpireInMinutes parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access cannot be established.
+Use ExpireInMinutes parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access can't be established.
 
 You can set ExpireInMinutes a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
 
-If duration is not defined, the remote session expires in 480 (8 hours) by default.
+If duration isn't defined, the remote session expires in 480 (8 hours) by default.
 
 ### Enable remote support for diagnostics and repair
 
-In this example, you grant remote support access for diagnostic and repair related operations only. Because expiration was not explicitly provided, it expires in eight hours by default.
+In this example, you grant remote support access for diagnostic and repair related operations only. Because expiration wasn't explicitly provided, it expires in eight hours by default.
 
 ```powershell
 Enable-RemoteSupport -AccessLevel DiagnosticsRepair
@@ -190,8 +190,8 @@ Container       {Name=SupportDiagnosticEndpoint}    SupportDiagnosticEndpoint
 
 **Suggested resolutions**:
 
-- You must wait for a few minutes. Repeat steps two and three for each JEA endpoint to reconnect to your server and enable remote support.
-  - After the third run of the enable remote support command you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
+- You must wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your server and enable remote support.
+  - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
 - [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) into each node and enable remote support.
 
 Next step
