@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/20/2023
+ms.date: 01/18/2024
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images (preview)
@@ -29,13 +29,11 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
 
-
 # [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
-   
----
 
+---
 
 ## Add VM image from Azure Marketplace
 
@@ -62,9 +60,9 @@ Follow these steps to create a VM image using the Azure CLI.
     $location = "<Location for your Azure Stack HCI cluster>"
     $osType = "<OS of source image>"
     ```
-    
+
     The parameters are described in the following table:
-    
+
     | Parameter      | Description                                                                                |
     |----------------|--------------------------------------------------------------------------------------------|
     | `subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
@@ -73,7 +71,7 @@ Follow these steps to create a VM image using the Azure CLI.
     | `os-type`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
     Here's a sample output:
-    
+
     ```
     PS C:\Users\azcli> $subscription = "<Subscription ID>"
     PS C:\Users\azcli> $resource_group = "myhci-rg"
@@ -114,7 +112,6 @@ Follow these steps to create a VM image using the Azure CLI.
     In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
     If the flag is not specified, the workload data is automatically placed in a high availability storage path.
-
 
 The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
 
@@ -180,7 +177,6 @@ PS C:\Users\azcli> az stack-hci-vm image create --subscription $subscription --r
 PS C:\Users\azcli>
 ```
 
-
 # [Azure portal](#tab/azureportal)
 
 Follow these steps to create a VM image using the Azure portal. In the Azure portal of your Azure Stack HCI cluster resource, take the following steps:
@@ -203,7 +199,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
     1. **Save image as.** Enter a name for your VM image.
 
-    1. **Storage path.** Select the storage path for your VM image.
+    1. **Storage path.** Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a custom storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the specified storage path has sufficient storage space.
 
 1. Select **Review + Create** to create your VM image.
 
