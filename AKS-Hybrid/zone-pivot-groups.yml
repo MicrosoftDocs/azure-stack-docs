@@ -8,11 +8,3 @@ groups:
     title: Version 22H2
   - id: aks-23h2
     title: Version 23H2
-- id: version-2022h1-previous
-  title: App Service on Azure Stack Hub Version
-  prompt: Choose version
-  pivots:
-  - id: version-2022h1
-    title: App Service on Azure Stack Hub 2022 H1
-  - id: version-previous
-    title: Previous versions
