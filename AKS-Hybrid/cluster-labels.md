@@ -76,7 +76,7 @@ AKS enabled by Azure Arc follows the same rules as AKS:
 - You can't change the reserved system label. If you attempt to do so, an error is returned.
 - The Kubernetes and AKS reserved prefixes can't be used for any node.
 
-For more information, see [Unavailable labels in the AKS documentation](/azure/aks/use-labels#unavailable-labels).
+For more information, see [Unavailable labels](/azure/aks/use-labels#unavailable-labels) in the AKS documentation.
 
 ## Next steps
 
