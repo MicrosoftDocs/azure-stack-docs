@@ -87,7 +87,7 @@ To resume a failed update run using the Azure portal, it is highly recommended t
 
 To troubleshoot a failed update run further, select the **View details** of an error and then select **Download logs**.
 
-[![Review and open a support request.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
+[![Review and download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
 
 If you need assistance from Microsoft Support, you can open a support request by selecting the **Open support ticket button** and attaching the downloaded JSON error log files to your request ticket.
 
