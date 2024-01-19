@@ -181,7 +181,7 @@ Type            Keys                                Name
 Container       {Name=SupportDiagnosticEndpoint}    SupportDiagnosticEndpoint
 
 
-Processing data for a remote command failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request. For more information, see the about_Remote_Troubleshooting Help topic. 
+Processing data from remote server NodeName failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request. 
 ```
 
 **Error Message**: Processing data from remote server `NodeName` failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.
