@@ -624,7 +624,7 @@
       - name: View known issues
         items:
         - name: 2306.7 update release - Current
-          href: hci-known-issues-236-7.md
+          href: hci-known-issues-2306-7.md
         - name: 2306.5 update release
           href: hci-known-issues-2306-5.md
         - name: 2306.4 update release
