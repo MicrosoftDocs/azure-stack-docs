@@ -151,7 +151,7 @@ Here's an example of the Windows Admin Center updates tool for systems running A
 
 ## Troubleshoot updates
 
-In the Azure portal to resume a previously failed update run, browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
+To resume a previously failed update run, browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
 [![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
 
@@ -166,4 +166,4 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
     [![Open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
 
-To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
