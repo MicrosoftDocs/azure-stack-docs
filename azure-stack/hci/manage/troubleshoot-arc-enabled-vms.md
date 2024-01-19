@@ -50,7 +50,7 @@ This section describes the errors related to Azure Arc VM management and their r
 
 ### Failure when trying to enable guest management
 
-When trying to run this command to enable guest management, you see the following error:
+When trying to run the command to enable guest management, you see the following error:
 
 **Error:** `Deployment failed. Correlation ID: 5d0c4921-78e0-4493-af16-dffee5cbf9d8. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
@@ -59,48 +59,51 @@ The above failure is because the managed identity was not created for this VM. S
 **Resolution:**  
 
 First verify that the Managed Identity is not created for this VM.
-    1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
 
-        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png":::
+1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
 
-    1. Under `Identity` parameter, the `type` should show as `None`.
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png":::
 
-        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is abesnt." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
+1. Under `Identity` parameter, the `type` should show as `None`.
 
-    1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is abesnt." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
+
+1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
     
-        ```azurecli
-        az extension add --name connectedmachine
-        ```
-    1. Verify that the connected machine CLI extension is installed on the cluster. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installed.
+    ```azurecli
+    az extension add --name connectedmachine
+    ```
+
+1. Verify that the connected machine CLI extension is installed on the cluster. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installed.
     
-        ```output
-        [v-hostl]: PS C:\Clusterstorage\lnfrastructure_l\ArcHci> az version
-    	{
-    	"azure-cli": "2.53.0",
-    	"azure-cli-core": "2.53.0",
-    	"azure-cli-telemetry": "1.1.0",
-    	"extensions": {
-    		"akshybrid": "0.1.1",
-    		"arcappliance"^ "1.0.2”,
-    		"connectedk8s": "1.5.4",
-    		"connectedmachine": "0.7.0",
-    		"customlocation": "0.1.3",
-    		"hybridaks": "0.2.4",
-    		"k8s-extension": "1.4.5",
-    		"stack-hci-vm": “0.1.8"
-    		}
-    	}
-        [v-hostl]: PS C:\ClusterStorage\Infrastructure_l\ArcHci>
+    ```output
+    [v-hostl]: PS C:\Clusterstorage\lnfrastructure_l\ArcHci> az version
+    {
+    "azure-cli": "2.53.0",
+    "azure-cli-core": "2.53.0",
+    "azure-cli-telemetry": "1.1.0",
+    "extensions": {
+        "akshybrid": "0.1.1",
+        "arcappliance"^ "1.0.2”,
+        "connectedk8s": "1.5.4",
+        "connectedmachine": "0.7.0",
+        "customlocation": "0.1.3",
+        "hybridaks": "0.2.4",
+        "k8s-extension": "1.4.5",
+        "stack-hci-vm": “0.1.8"
+        }
+    }
+    [v-hostl]: PS C:\ClusterStorage\Infrastructure_l\ArcHci>
         ```
-    1. Run the following command to assign a system managed identity to the VM.
+1. Run the following command to assign a system managed identity to the VM.
 
-        ```azurecli
-        az connectedmachine update --ids "<ARM ID for the VM>" --set identity.type="SystemAssigned"
-        ```
-    1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
+    ```azurecli
+    az connectedmachine update --ids "<ARM ID for the VM>" --set identity.type="SystemAssigned"
+    ```
 
-        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
+1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
+
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
 
 
 ### Azure CLI installation isn't recognized
