@@ -5,7 +5,7 @@ author: alkohli
 ms.topic: how-to
 ms.date: 01/18/2024
 ms.author: alkohli
-ms.reviewer: JasonGerend
+ms.reviewer: vlakshmanan
 ---
 
 # Troubleshoot Azure Arc VM management (preview)
@@ -52,9 +52,9 @@ This section describes the errors related to Azure Arc VM management and their r
 
 When trying to run this command to enable guest management, you see the following error:
 
-**Error:** `<error message>`
+**Error:** `Deployment failed. Correlation ID: 5d0c4921-78e0-4493-af16-dffee5cbf9d8. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
-The above failure can be because the managed identity was not created for this VM or because the guest agent is not bootstrapped.
+The above failure is because the managed identity was not created for this VM. System-assigned Managed Identity is required to enable guest management.
 
 **Resolution:**  
 
@@ -103,20 +103,8 @@ The above failure can be because the managed identity was not created for this V
         :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
 
 
-- Guest agent on the VM is not bootstrapped. To address this issue, follow these steps to [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management-for-a-vm-with-os-disk-booted).
+<!--Guest agent on the VM is not bootstrapped. To address this issue, follow these steps to [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management-for-a-vm-with-os-disk-booted).-->
 
-
-<!--### Permission denied error when you run the arcappliance prepare command
-
-If your PowerShell session doesn't have write permissions in the folder from where you run the `az arcapplicance prepare` command, it fails with the following error:
-
-**Error:** `Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'`
-
-Here's an example output when your PowerShell session doesn't have permissions to write in the `C:\ClusterStorage` folder:
-
-:::image type="content" source="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" alt-text="Screenshot of the arcappliance prepare error." lightbox="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" :::
-
-**Resolution:** Go to your home directory and rerun the `az arcapplicance prepare` command.
 
 ### Azure CLI installation isn't recognized
 
@@ -129,47 +117,12 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
-### KVA timeout error
-
-Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" might appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
-
-- The Arc Resource Bridge VM ($VMIP) doesn't have DNS resolution.
-- The Arc Resource Bridge VM ($VMIP) or $controlPlaneIP don't have internet access.
-- The host isn't able to reach $controlPlaneIP or $VMIP.
-
-To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
-
-### Valid token required error
-
-The expiration of the MOC token might result in a failure to create VMs, virtual hard disks, virtual NICs, or other entities. The error in ArcHCI logs could be "Valid token required" or a variation of that. To resolve this error, run the following command on any server in your Azure Stack HCI cluster:
-```PowerShell
-        rmdir $env:USERPROFILE\.wssd\python -Recurse -Force
-        Repair-MOC
-        Repair-MocOperatorToken
-```
--->
 
 <!--## Limitations and known issues
 
 Here's a list of existing limitations and known issues with Azure Arc VM management:
 
 - Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
-
-Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
-
-- You must deploy Azure Kubernetes and Arc VMs on the same Azure Stack HCI cluster in the following order:
-    1. Deploy AKS management cluster
-    1. Deploy Arc Resource Bridge for Arc VMs
-
-        > [!NOTE]
-        > If Arc Resource Bridge is already deployed, don't deploy the AKS management cluster unless the Arc Resource Bridge is removed.
-
-- You must uninstall AKS management cluster and Arc Resource Bridge in the following order:
-    1. Uninstall Arc Resource Bridge
-    1. Uninstall AKS management cluster
-
-        > [!NOTE]
-        > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it won't remember the VM entities created previously.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools aren't visible in the Azure portal for management.
 
@@ -185,7 +138,7 @@ Arc Resource Bridge provisioning through command line must be performed on a loc
 
 - Support for Arc Resource Bridge and Arc VM Management is currently available only in English language.
 
-- Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy isn't supported.
+- Azure Arc Linux VMs aren't supported behind a network proxy.
 
 - Naming convention for Azure resources, such as logical networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).-->
 
