@@ -26,7 +26,7 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 
 ::: zone pivot="aks-22h2"
 
-## Enable SSH restrictions
+## Enable SSH restrictions (previous version)
 
 To enable SSH restrictions, perform the following steps:
 
