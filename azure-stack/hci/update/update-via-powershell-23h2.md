@@ -478,8 +478,8 @@ To resume a previously failed update due to update health checks in a **Warning*
 get-solutionUpdate | start-solutionUpdate -IgnoreWarnings
 ```
 
-To troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
 
-## Next steps
+## Next step
 
 Learn more about how to [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.

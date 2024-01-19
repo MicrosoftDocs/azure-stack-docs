@@ -93,6 +93,6 @@ get-solutionupdate | start-solutionupdate
 
 ## Next steps
 
-Learn more about how to [Run updates via PowerShell](../update/update-via-powershell-23h2.md).
+Learn more about how to [Run updates via PowerShell](./update-via-powershell-23h2.md).
 
-Learn more about how to [Run updates via the Azure portal](../update/azure-update-manager-23h2.md)
+Learn more about how to [Run updates via the Azure portal](./azure-update-manager-23h2.md)

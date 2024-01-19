@@ -95,7 +95,7 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 You can install available Azure Stack HCI cluster updates via the Azure portal using the Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](./azure-update-manager-23h2.md)
 
-## Next step
+## Next steps
 
 Learn to [Understand update phases](./update-phases-23h2.md).
 
