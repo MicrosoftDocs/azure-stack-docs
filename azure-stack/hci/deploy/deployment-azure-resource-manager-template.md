@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/16/2024
+ms.date: 01/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ ms.custom: devx-track-arm-template
 This article details the prerequisites and preparation required before you use an Azure Resource Manager template (ARM template) in Azure portal to deploy Azure Stack HCI in your environment.
 
 > [!IMPORTANT]
-> ARM template deployment of Azure Stack HCI systems is targeted for deployment-at-scale. The intended audience for this version 23H2 deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then subsequent deployments via the ARM template.
+> ARM template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the ARM template.
 
 ## Prerequisites
 
@@ -46,7 +46,7 @@ The steps are also summarized here:
 
 1. Provide a **Name** for the application, select a **Supported account type** and then select **Register**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Register an application for sservice principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
 
 1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID** for this service principal. You encode and use this value later.
 
