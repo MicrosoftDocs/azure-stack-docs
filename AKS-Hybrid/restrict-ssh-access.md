@@ -24,7 +24,7 @@ Currently, anyone with administrator access to AKS hybrid has access to VMs thro
 > [!NOTE]
 > Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs and restrict the commands that run over SSH.
 
-::: zone pivot="22H2"
+:::zone pivot="22H2"
 
 ## Enable SSH restrictions
 
@@ -57,7 +57,7 @@ To enable SSH restrictions, perform the following steps:
    Set-AksHciConfig -ssh $ssh
    ```
 
-### Validation: target cluster 
+### Validation: target cluster
 
 Once you've created the cluster, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
 
@@ -67,12 +67,11 @@ ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
 
 You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs has access. SSH attempts from outside the list do not have access.
 
-
 You can also run commands directly from SSH. This command returns the date. `Sudo` commands do not work:
 
 ```powershell
 ssh -i (get-mocconfig).sshPrivateKey clouduser@<ip> date 
-``` 
+```
 
 ### Validation: log collection 
 
@@ -91,9 +90,9 @@ Get-AksHciLogs –virtualMachineLogs
 - There is no support for upgrades.
 - You can add CIDRs or IP addresses to which the SSH access can be restricted.
 - The SSH setting you provide is reused for all target clusters. Individual SSH configuration for workload clusters isn't available.
-::: zone-end
+:::zone-end
 
-::: zone pivot="23H2"
+:::zone pivot="23H2"
 ## Enable SSH restrictions
 
 The following command limits the set of hosts that can be authorized to be SSH clients. You can only run the SSH commands on those hosts, and the set of commands that you can run is restricted. The hosts are designed either via IP addresses or via CIDR ranges:
@@ -105,7 +104,7 @@ az aksarc create --ssh-authorized-ip-ranges CIDR format
 The CIDR format is `0.0.0.0/32`.
 
 This command does two things: it limits the scope of the command, and it also limits the hosts from which this command can be run.
-::: zone-end
+:::zone-end
 
 ## Next steps
 
