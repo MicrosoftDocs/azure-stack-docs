@@ -72,15 +72,15 @@ New-ArcHciVirtualNetwork -name $clustervnetname -vswitchname $vswitchname -vippo
 | Parameter    | Description | DHCP | Static |
 |------------------|---------|-----------|-------------------|
 | `$clustervnetname` | The name of your virtual network for AKS hybrid clusters. This name must be lowercase. | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$vswitchname`     | The name of your VM switch. | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$ipaddressprefix` | The IP address value of your subnet.  | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$gateway`         | The IP address value of your gateway for the subnet.  | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$dnsservers`      | The IP address value(s) of your DNS servers. | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$vmPoolStart`     | The start IP address of your VM IP pool. The address must be in range of the subnet.  | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$vmPoolEnd`       | The end IP address of your VM IP pool. The address must be in range of the subnet.  | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool are for the API server and for Kubernetes services. | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$vipPoolEnd`      | The end IP address of the VIP pool. | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
-| `$vlanId`          | The identification number of the VLAN in use. Every virtual machine is tagged with that VLAN ID. | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$vswitchname`     | The name of your VM switch. For example: `"ConvergedSwitch(compute_management)"` | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$ipaddressprefix` | The IP address value of your subnet. For example: `"10.0.0.0/24"` | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$gateway`         | The IP address value of your gateway for the subnet. For example: `"10.0.0.1"`  | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$dnsservers`      | The IP address value(s) of your DNS servers. For example: `"10.0.0.11", "10.0.0.12"` | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$vmPoolStart`     | The start IP address of your VM IP pool. The address must be in range of the subnet. For example: `"10.0.0.20"`  | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$vmPoolEnd`       | The end IP address of your VM IP pool. The address must be in range of the subnet. For example: `"10.0.0.29"` | N/A | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$vipPoolStart`    | The start IP address of the VIP pool. The address must be within the range of the subnet. The IP addresses in the VIP pool are for the API server and for Kubernetes services. For example: `"10.0.0.30"` | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$vipPoolEnd`      | The end IP address of the VIP pool. For example: `"10.0.0.49"`| ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
+| `$vlanId`          | The identification number of the VLAN in use. Every virtual machine is tagged with that VLAN ID. For example: `100` | ![Supported](media/aks-hybrid-networks/check.png) | ![Supported](media/aks-hybrid-networks/check.png) |
 
 ## Connect the network to Azure
 
