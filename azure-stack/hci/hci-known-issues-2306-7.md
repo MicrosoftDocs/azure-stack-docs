@@ -25,7 +25,11 @@ For more information, see [What's new in 22H2](whats-new-in-hci-22h2.md#azure-st
 
 ## Known issues in this release
 
-Microsoft is not currently aware of any issues with this release. All the known issues are carried over from previous releases.
+Here are the known issues in the current Azure Stack HCI supplemental package release:
+
+|#|Feature|Issue|Workaround|
+|--|--------|------|----------|
+|1 | Update | AgentLifecycleManager (ALM) fails to install the Deploy Tool Agent on a single node or one node of a multi-node system. |  Restart a node and resume deployment. |
 
 ## Known issues from previous releases
 
