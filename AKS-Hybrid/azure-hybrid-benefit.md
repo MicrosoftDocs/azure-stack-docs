@@ -32,6 +32,7 @@ The rest of this article describes how to activate this benefit for AKS on Azure
 > [!TIP]
 > You can maximize cost savings by also using Azure Hybrid Benefit for Azure Stack HCI. For more information, see [Azure Hybrid Benefit for Azure Stack HCI](/azure-stack/hci/concepts/azure-hybrid-benefit).
 
+::: zone pivot="aks-22h2"
 ## Activate Azure Hybrid Benefit for AKS
 
 ### Prerequisites
@@ -180,6 +181,189 @@ az connectedk8s show -n <management cluster name> -g <resource group>
 
 ---
 
+::: zone-end
+
+::: zone pivot="aks-23h2"
+## Use Azure Hybrid Benefit for AKS when setting up a cluster
+
+> [!WARNING]
+> Azure Hybrid Benefit for AKS Arc does not work on a bundled OEM partner SKU. If enabled, the setting has no effect.
+
+To enable Azure Hybrid Benefit for AKS during cluster creation, use the `--enable-ahub` flag when you run `az aksarc create`:
+
+```azurecli
+az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location> --enable-ahub
+```
+
+Sample output:
+
+```json
+{
+  "extendedLocation": { 
+    "name": "<custom location>", 
+    "type": "CustomLocation" 
+  }, 
+  "id": "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default", 
+  "name": "default", 
+  "properties": { 
+    "agentPoolProfiles": [ 
+      { 
+        "osSku": "CBLMariner", 
+        "osType": "Linux", 
+        "vmSize": "Standard_A4_v2" 
+      } 
+    ], 
+    "autoScalerProfile": { 
+    }, 
+    "cloudProviderProfile": { 
+      "infraNetworkProfile": { 
+        "vnetSubnetIds": [    ] 
+      } 
+    }, 
+    "clusterVmAccessProfile": { 
+      "authorizedIpRanges": null 
+    }, 
+    "controlPlane": { 
+      "controlPlaneEndpoint": { 
+        "hostIp": null 
+      }, 
+      "count": 1, 
+      "vmSize": "Standard_A4_v2" 
+    }, 
+    "kubernetesVersion": "1.25.11", 
+    "licenseProfile": { 
+      "azureHybridBenefit": "True" 
+    }, 
+    "linuxProfile": { 
+      "ssh": { 
+        "publicKeys": [ 
+          { 
+            "keyData": "<ssh key>" 
+          } 
+        ] 
+      } 
+    }, 
+    "networkProfile": { 
+      "networkPolicy": "calico", 
+      "podCidr": "10.244.0.0/16" 
+    }, 
+    "provisioningState": "Succeeded", 
+    "status": { 
+      "controlPlaneStatus": [ 
+      ], 
+      "currentState": "Succeeded", 
+      "errorMessage": null, 
+      "operationStatus": null 
+    }, 
+    "storageProfile": { 
+      "nfsCsiDriver": { 
+        "enabled": true 
+      }, 
+      "smbCsiDriver": { 
+        "enabled": true 
+      } 
+    } 
+  }, 
+  "resourceGroup": "<resource group>", 
+  "systemData": { 
+  }, 
+  "type": "microsoft.hybridcontainerservice/provisionedclusterinstances" 
+}
+```
+
+## Use Azure Hybrid Benefit for AKS on an existing cluster
+
+Run the `az aksarc update` command with the `--enable-ahub` flag to activate Azure Hybrid Benefit for AKS on a cluster that was already created without the benefit enabled:
+
+```azurecli
+az aksarc update --name <cluster name> -g <resource group> --enable-ahub
+```
+
+## Deactivate Azure Hybrid Benefit for AKS
+
+To deactivate Azure Hybrid Benefit for AKS Arc, run the following command:
+
+```azurecli
+az aksarc update --name <cluster name> -g <resource group> --disable-ahub
+```
+
+Sample output:
+
+```json
+{ 
+"extendedLocation": { 
+    "name": "<custom location>", 
+    "type": "CustomLocation" 
+  }, 
+  "id": "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Kubernetes/connectedClusters/<cluster name>/providers/Microsoft.HybridContainerService/provisionedClusterInstances/default", 
+  "name": "default", 
+  "properties": { 
+    "agentPoolProfiles": [ 
+      { 
+        "osSku": "CBLMariner", 
+        "osType": "Linux", 
+        "vmSize": "Standard_A4_v2" 
+      } 
+    ], 
+    "autoScalerProfile": { 
+    }, 
+    "cloudProviderProfile": { 
+      "infraNetworkProfile": { 
+        "vnetSubnetIds": [    ] 
+      } 
+    }, 
+    "clusterVmAccessProfile": { 
+      "authorizedIpRanges": null 
+    }, 
+    "controlPlane": { 
+      "controlPlaneEndpoint": { 
+        "hostIp": null 
+      }, 
+      "count": 1, 
+      "vmSize": "Standard_A4_v2" 
+    }, 
+    "kubernetesVersion": "1.25.11", 
+    "licenseProfile": { 
+      "azureHybridBenefit": "False" 
+    }, 
+    "linuxProfile": { 
+      "ssh": { 
+        "publicKeys": [ 
+          { 
+            "keyData": "<ssh key>" 
+          } 
+        ] 
+      } 
+    }, 
+    "networkProfile": { 
+      "networkPolicy": "calico", 
+      "podCidr": "10.244.0.0/16" 
+    }, 
+    "provisioningState": "Succeeded", 
+    "status": { 
+      "controlPlaneStatus": [ 
+      ], 
+      "currentState": "Succeeded", 
+      "errorMessage": null, 
+      "operationStatus": null 
+    }, 
+    "storageProfile": { 
+      "nfsCsiDriver": { 
+        "enabled": true 
+      }, 
+      "smbCsiDriver": { 
+        "enabled": true 
+      } 
+    } 
+  }, 
+  "resourceGroup": "<resource group>", 
+  "systemData": { 
+  }, 
+  "type": "microsoft.hybridcontainerservice/provisionedclusterinstances" 
+}
+```
+::: zone-end
+
 ## Maintain compliance for Azure Hybrid Benefit
 
 After activating Azure Hybrid Benefit for AKS, you must regularly check and maintain compliance for Azure Hybrid Benefit. You can perform an inventory of how many units you are running, and check this against the Software Assurance licenses you have. To determine how many clusters with Azure Hybrid Benefit for AKS you are running, you can look at your Microsoft Azure bill.
@@ -190,6 +374,7 @@ To qualify for the Azure Hybrid Benefit for AKS, you must be running AKS on firs
 
 See **Cost Management and Billing** in the Azure portal to verify that the Azure Hybrid Benefit for AKS has been applied to your Microsoft Azure bill. Please note that billing does not apply in real time. There will be a delay of several hours from the time you've activated Azure Hybrid Benefit until it shows on your bill.
 
+::: zone pivot="aks-22h2"
 ### Deactivate Azure Hybrid Benefit for AKS
 
 Run the following command to deactivate the benefit:
@@ -207,6 +392,7 @@ az connectedk8s update -n <name> -g <group> --azure-hybrid-benefit false
 ```
 
 ---
+::: zone-end
 
 ## Next steps
 
