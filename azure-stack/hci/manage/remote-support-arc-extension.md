@@ -9,7 +9,7 @@ ms.lastreviewed: 01/19/2024
 ms.date: 01/19/2024
 ---
 
-# Azure Stack HCI Remote Support ARC extension overview (preview)
+# Azure Stack HCI Remote Support ARC extension overview
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
