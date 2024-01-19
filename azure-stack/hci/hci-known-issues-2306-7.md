@@ -29,7 +29,7 @@ Here are the known issues in the current Azure Stack HCI supplemental package re
 
 |#|Feature|Issue|Workaround|
 |--|--------|------|----------|
-|1 | Update | AgentLifecycleManager (ALM) fails to install the Deploy Tool Agent on a single node or one node of a multi-node system. |  Restart a node and resume deployment. |
+|1 | Update | AgentLifecycleManager (ALM) fails to install the Deploy Tool Agent on a single node or one node of a multi-node system. |  Restart the node and resume deployment. |
 
 ## Known issues from previous releases
 
