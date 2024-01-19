@@ -31,9 +31,9 @@ Before you begin, make sure to complete the following prerequisites:
 
 After you created a VM, you would want to enable guest management on that VM.
 
-There are two agents that are important to understand in the context of guest management - a VM guest agent and an Azure Connected machines agent. Every Arc VM created via Azure portal or Azure CLI is provisioned with a guest agent (also referred to as the `mocguestagent`) on it. This agent is 
+There are two agents that are important to understand in the context of guest management - a VM guest agent and an Azure Connected machines agent. Every Arc VM created via Azure portal or Azure CLI is provisioned with a guest agent (also referred to as the `mocguestagent`) on it. 
 
-When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machines](/azure/azure-arc/servers/agent-overview) agent. The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI system. 
+When you enable guest management on an Arc VM, the guest agent installs the [Azure Connected Machines](/azure/azure-arc/servers/agent-overview) agent. The Azure Connected Machine agent enables you to manage Azure Arc VM extensions on your Azure Stack HCI system.
 
 Based on whether a guest agent is running on your Arc VM, the steps to enable guest management are different.
 
@@ -119,15 +119,15 @@ Follow these steps:
 1. Connect to the VM using the OS specific steps. Run PowerShell as administrator.
 1. Run one of the following commands to enable the guest agent on your VM based on the OS type:
 
-    - **Linux**:
-    
-        ```azurecli
-        sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /mociso && bash /mociso/install.sh && umount /mociso && rm -df /mociso && eject LABEL=mocguestagentprov'
-        ```
-    - **Windows**:
-        ```azurecli
-        $d=Get-Volume -FileSystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install.ps1';powershell $p
-        ```
+    **Linux**:
+  
+      ```azurecli
+      sudo -- sh -c 'mkdir /mociso && mount -L mocguestagentprov /mociso && bash /mociso/install.sh && umount /mociso && rm -df /mociso && eject LABEL=mocguestagentprov'
+      ```
+    **Windows**:
+      ```azurecli
+      $d=Get-Volume -FileSystemLabel mocguestagentprov;$p=Join-Path ($d.DriveLetter+':\') 'install.ps1';powershell $p
+      ```
  
     Here's a sample output for a Linux VM that shows the guest agent is successfully installed.
 
