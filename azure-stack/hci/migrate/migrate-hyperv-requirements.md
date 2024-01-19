@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 12/07/2023
+ms.date: 01/19/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -54,18 +54,18 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |Tenant|Application administrator|
 |Subscription|Contributor, User Access Administrator|
 
-## Source Hyper-V server and VM requirements
+## Source Hyper-V server requirements
 
 In this release, you can only migrate VMs that have disks attached to the local cluster storage. If the VM disks aren't attached to the local cluster storage, the disks can’t be migrated.
 
-Create a Windows Server 2022 VM with this minimum configuration:
+The source server used for migration should have sufficient resources to create a Windows Server 2022 VM with this minimum configuration:
 
 - 16 GB memory.
 - 80 GB disk.
 - 8 vCPUs.
 
 
-## Target Azure Stack HCI cluster and VM requirements
+## Target Azure Stack HCI cluster and requirements
 
 - The target Azure Stack HCI cluster OS must be version 23H2 or later.
 
