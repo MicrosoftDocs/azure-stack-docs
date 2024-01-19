@@ -1,13 +1,13 @@
 ---
-title: Update Azure Stack HCI, version 23H2 clusters via PowerShell (preview).
-description: Learn how to use PowerShell to apply operating system, service, and Solution Extension updates to Azure Stack HCI, version 23H2 (preview).
+title: Update Azure Stack HCI, version 23H2 clusters via PowerShell.
+description: Learn how to use PowerShell to apply operating system, service, and Solution Extension updates to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/13/2023
 ---
 
-# Update your Azure Stack HCI, version 23H2 via PowerShell (preview)
+# Update your Azure Stack HCI, version 23H2 via PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
@@ -15,13 +15,11 @@ This article describes how to apply a solution update to your Azure Stack HCI cl
 
 The procedure in this article applies to both a single server and multi-server cluster that is running the latest version with the orchestrator (Lifecycle Manager) installed. If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
-For information on how to apply solution updates to clusters created with older versions of Azure Stack HCI, that didn't have the orchestrator installed, see [Update existing Azure Stack HCI clusters](../manage/update-cluster.md).
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
+For information on how to apply solution updates to clusters created with older versions of Azure Stack HCI that didn't have the orchestrator installed see [Update existing Azure Stack HCI clusters](../manage/update-cluster.md).
 
 ## About solution updates
 
-The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [Update overview for Azure Stack HCI, version 23H2 (preview)](../update/whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Stack HCI, version 23H2](../update/whats-the-lifecycle-manager-23h2.md).
 
 <!--The update example used in this article doesn't include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).-->
 
@@ -35,7 +33,7 @@ When you apply a solution update, here are the high-level steps that you take:
 1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
 1. Verify the version of the updates installed.
 
-The time taken to install the updates may vary based on the following factors:
+The time taken to install the updates might vary based on the following factors:
 
 - Content of the update.
 - Load on your cluster.
@@ -237,21 +235,21 @@ Before you discover the updates, you can manually validate the system health. Th
     > [!NOTE]
     > In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
 
-3. Review any failures and resolve those before you proceed to the discovery step.
+3. Review any failures and resolve them before you proceed to the discovery step.
 
 ## Step 3: Discover the updates
 
 You can discover updates in one of the following two ways:
 
-- **Discover updates online** - This is the recommended option when your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
-- **Sideload and discover updates** - This is an alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Stack HCI cluster and discover the updates locally.
+- **Discover updates online** - The recommended option when your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
+- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Stack HCI cluster and discover the updates locally.
 
 ### Discover solution updates online (recommended)
 
 Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
 
 1. Connect to a server on your Azure Stack HCI cluster using the deployment user account.
-2. Verify that the update package was discovered by the Update service.
+2. Verify that the update package is discovered by the Update service.
 
     ```powershell
     Get-SolutionUpdate | ft DisplayName, State 
@@ -369,7 +367,7 @@ You can download the updates, perform a set of checks to verify the update readi
 
     When the update starts, the following actions occur:
 
-    - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download may take several minutes.
+    - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
 
         Here's an example output when the updates are being downloaded:
 

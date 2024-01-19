@@ -1,25 +1,23 @@
 ---
-title: Review update phases of Azure Stack HCI, version 23H2 (preview).
-description: Understand the various phases of solution updates applied to Azure Stack HCI, version 23H2 (preview).
+title: Review update phases of Azure Stack HCI, version 23H2.
+description: Understand the various phases of solution updates applied to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohl
 ms.topic: conceptual
 ms.date: 11/13/2023
 ---
 
-# Review update phases of Azure Stack HCI, version 23H2 updates (preview)
+# Review update phases of Azure Stack HCI, version 23H2 updates
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date. This information is applicable to Azure Stack HCI, version 23H2 (preview).
+This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date. This information is applicable to Azure Stack HCI, version 23H2.
 
 The procedure in this article applies to both a single server and a multi-server cluster that is running the latest version including the orchestrator.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
-
 ## About update phases
 
-The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [Update overview for Azure Stack HCI, version 23H2 (preview)](whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Stack HCI, version 23H2](whats-the-lifecycle-manager-23h2.md).
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
@@ -49,7 +47,7 @@ Depending on the hardware in your cluster and the scope of an update bundle, you
 
 There are a series of prechecks before installing a solution update. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Stack HCI cluster is safe to update and ensures updates go more smoothly.
 
-A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content has been downloaded and *before* it begins installing.
+A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content is downloaded and *before* it begins installing.
 
 Readiness checks can also result in blocking conditions or warnings.
 

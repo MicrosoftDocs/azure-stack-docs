@@ -1,23 +1,21 @@
 ---
-title: Troubleshoot solution updates for Azure Stack HCI, version 23H2 (preview)
-description: Learn how to troubleshoot solution updates applied to Azure Stack HCI, version 23H2 (preview).
+title: Troubleshoot solution updates for Azure Stack HCI, version 23H2
+description: Learn how to troubleshoot solution updates applied to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 12/18/2023
 ---
 
-# Troubleshoot solution updates for Azure Stack HCI, version 23H2 (preview)
+# Troubleshoot solution updates for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to troubleshoot solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
-
 ## About troubleshooting updates
 
-If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services, and those for the workloads.
+If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then an orchestrator was installed during the deployment. The orchestrator manages all of the updates for the platform - OS, drivers and firmware, agents and services, and updates for the workloads.
 
 The new update solution includes a retry and remediation logic. This logic attempts to fix update issues in a non-disruptive way, such as retrying a CAU run. If an update run can't be remediated automatically, it fails. When an update fails, you can retry the update.
 
@@ -59,7 +57,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
     Duration        : 00:16:37.9688878
     State           : Failed
     ```
-    Note the `ResourceID` GUID. This corresponds to the `ActionPlanInstanceID`.
+    Note the `ResourceID` GUID. This GUID corresponds to the `ActionPlanInstanceID`.
 
 5. Copy the logs for the `ActionPlanInstanceID` that you noted earlier, to a text file named *log.txt*. Use Notepad to open the text file.
 
@@ -81,7 +79,7 @@ To resume a previously failed update run, you can retry the update run via the A
 
 ### the Azure portal
 
-To resume a failed update run using the Azure portal, it is highly recommended that you browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
+To resume a failed update run, we highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
 [![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
 
@@ -97,7 +95,7 @@ For more information on opening a support request, see [Create a support request
 
 ### PowerShell
 
-If you are using PowerShell and need to resume a previously failed update run, use the following command:
+If you're using PowerShell and need to resume a previously failed update run, use the following command:
 
 ```powershell
 get-solutionupdate | start-solutionupdate

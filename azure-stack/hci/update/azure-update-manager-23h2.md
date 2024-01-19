@@ -16,8 +16,6 @@ ms.date: 11/13/2023
 [!INCLUDE [WARNING](../../includes/hci-applies-to-23h2-cluster-updates.md)]
 This article describes how to use Azure Update Manager to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
-
 ## About Azure Update Manager
 
 Azure Update Manager is an Azure service that allows you to apply, view, and manage updates for each of your Azure Stack HCI cluster's nodes. You can view Azure Stack HCI clusters across your entire infrastructure, or in remote/branch offices and update at scale.
@@ -104,7 +102,7 @@ To view the progress of your clusters, update installation, and completion resul
 To browse for your clusters update history, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **History (Preview)**.
+2. Under Manage Azure Stack HCI, select **History**.
 3. Select an update run with a status of “**Failed to update**” or “**Successfully updated**”.
 
     [![View update history in Azure Update Manager.](./media/azure-update-manager/update-history-progress.png)](media/azure-update-manager/update-history-progress.png#lightbox)
@@ -122,7 +120,7 @@ In addition to using Azure Update Manager, you can update individual Azure Stack
 To install updates on a single cluster from the Azure Stack HCI cluster resource page, follow these steps:
 
 1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
-2. Under Manage Azure Stack HCI, select **Azure Stack HCI (Preview)**.
+2. Under Manage Azure Stack HCI, select **Azure Stack HCI**.
 3. Select the cluster name from the list.
 4. Select the update and then select **One-time update**.
 
