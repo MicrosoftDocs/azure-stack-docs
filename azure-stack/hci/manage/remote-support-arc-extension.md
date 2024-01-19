@@ -194,6 +194,6 @@ Container       {Name=SupportDiagnosticEndpoint}    SupportDiagnosticEndpoint
   - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
 - [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) into each node and enable remote support.
 
-Next step
+## Next step
 
 Learn more about [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md)
