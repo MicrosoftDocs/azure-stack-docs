@@ -98,21 +98,22 @@ There are two scenarios when the guest agent is not running. Each of these scena
 
 Your status shows as connecting. Here's a sample output snippet indicating the requisite status.
 
-    ```output
-    "instanceView": {
-          "vmAgent": {
-            "statuses": [
-              {
-                "code": "ProvisioningState/inprogress",
-                "displayStatus": "Connecting",
-                "level": "Info",
-                "message": "Waiting for connection with mocguestagent",
-                "time": "2024-01-19T01:41:15Z"
-              }
-            ]
+```output
+"instanceView": {
+      "vmAgent": {
+        "statuses": [
+          {
+            "code": "ProvisioningState/inprogress",
+            "displayStatus": "Connecting",
+            "level": "Info",
+            "message": "Waiting for connection with mocguestagent",
+            "time": "2024-01-19T01:41:15Z"
           }
-        },
-    ```
+        ]
+      }
+    },
+```
+
 Follow these steps:
 
 1. Connect to the VM using the OS specific steps. Run PowerShell as administrator.
@@ -144,13 +145,14 @@ Follow the steps to [verify that the guest management is enabled in the Azure po
 
 Your status shows as null. Here's a sample output snippet indicating the null status.
 
-    ```output
-    "instanceView": {
-          "vmAgent": {
-            "statuses": []
-          }
-        },
-    ```
+```output
+"instanceView": {
+      "vmAgent": {
+        "statuses": []
+      }
+    },
+```
+
 Follow these steps :
 
 1. Connect to Azure Stack HCI server.

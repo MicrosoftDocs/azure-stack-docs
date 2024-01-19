@@ -65,7 +65,7 @@ The above failure is because the managed identity was not created for this VM. S
 
     1. Under `Identity` parameter, the `type` should show as `None`.
 
-        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
+        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is abesnt." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
 
     1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
     
@@ -100,10 +100,7 @@ The above failure is because the managed identity was not created for this VM. S
         ```
     1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
 
-        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
-
-
-<!--Guest agent on the VM is not bootstrapped. To address this issue, follow these steps to [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management-for-a-vm-with-os-disk-booted).-->
+        :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
 
 
 ### Azure CLI installation isn't recognized
