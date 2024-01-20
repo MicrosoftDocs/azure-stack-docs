@@ -1047,33 +1047,38 @@
       "redirect_document_id": false
     },    
     {
+      "source_path": "azure-managed-lustre/install-rhel-9.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-9",
+      "redirect_document_id": false
+    },    
+    {
       "source_path": "azure-managed-lustre/install-rhel-8.md",
-      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-8",
       "redirect_document_id": false
     },    
     {
       "source_path": "azure-managed-lustre/install-hpc-alma-86.md",
-      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=alma-86",
       "redirect_document_id": false
     },    
     {
       "source_path": "azure-managed-lustre/install-rhel-7.md",
-      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-7",
       "redirect_document_id": false
     },    
     {
       "source_path": "azure-managed-lustre/install-ubuntu-18.md",
-      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-18",
       "redirect_document_id": false
     },    
     {
       "source_path": "azure-managed-lustre/install-ubuntu-20.md",
-      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-20",
       "redirect_document_id": false
     },    
     {
       "source_path": "azure-managed-lustre/install-ubuntu-22.md",
-      "redirect_url": "/azure/azure-managed-lustre/client-install",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-22",
       "redirect_document_id": false
     },
     {
