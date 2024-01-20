@@ -99,6 +99,33 @@ For more information, see [Connect clients to an Azure Managed Lustre file syste
 [!INCLUDE [client-install-rhel-8](includes/client-install-rhel-8.md)]
 ::: zone-end
 
+::: zone pivot="rhel-9"
+## Tutorial: Install client software for Red Hat Enterprise Linux 9
+
+This tutorial shows how to install the client package to set up client VMs running RHEL 9, and attach them to an Azure Managed Lustre cluster.
+
+For client VMs running:
+
+* Red Hat Enterprise Linux 9 (RHEL 9)
+
+In this tutorial you will:
+
+> [!div class="checklist"]
+> * Download a prebuilt client
+> * Install the prebuilt client
+
+For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
+
+* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
+* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
+* [Mount command](connect-clients.md#mount-command)
+
+### Download and install prebuilt client software
+
+[!INCLUDE [client-install-rhel-9](includes/client-install-rhel-9.md)]
+::: zone-end
+
+
 ::: zone pivot="ubuntu-18"
 ## Tutorial: Install client software for Ubuntu 18.04
 
