@@ -416,6 +416,8 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
+    - name: Remote Support Arc extension
+      href: manage/remote-support-arc-extension.md
 - name: Migrate
   items:
   - name: Cluster to same hardware
