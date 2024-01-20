@@ -245,7 +245,7 @@ This step applies only if you downloaded the .zip file.
 
     :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
 
-1. You are automatically taken to **Servers, databses and web apps** page. On the **Migration tools** tile, select **Overview**.
+1. You are automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
 
 1. Go to **Azure Stack HCI migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
  
