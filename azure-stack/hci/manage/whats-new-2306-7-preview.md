@@ -36,10 +36,10 @@ This release includes the Azure Stack HCI, version 22H2 operating system refresh
 
 - **Updated OS build**: This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to January 2024.
 
-For more information on the January release, see [Azure Stack HCI, version 22H2 OS build 20349.2159](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+For more information on the January release, see [Azure Stack HCI, version 22H2 OS build 20349.2227](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 > [!NOTE]
-> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on the January release, see [Azure Stack HCI, version 22H2 OS build 20349.2159](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on the January release, see [Azure Stack HCI, version 22H2 OS build 20349.2227](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 ## Known issues
 
