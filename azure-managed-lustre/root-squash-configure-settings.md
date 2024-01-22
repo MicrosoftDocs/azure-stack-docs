@@ -44,7 +44,7 @@ To enable root squash during cluster creation, follow these steps:
     Request syntax:
 
     ```http
-    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{filesystemName}?api-version=2023-05-01
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{filesystemName}?api-version={apiVersion}
     ```
 
     Request body:
