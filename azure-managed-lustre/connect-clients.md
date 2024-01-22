@@ -47,6 +47,7 @@ Packages and kernel modules are available for these Linux operating systems. Sel
 - [CentOS Linux 8](install-rhel-8.md)
 - [Red Hat Enterprise Linux (RHEL) 7](install-rhel-7.md)
 - [Red Hat Enterprise Linux (RHEL) 8](install-rhel-8.md)
+- [Red Hat Enterprise Linux (RHEL) 9](install-rhel-9.md)
 - [Ubuntu 18.04](install-ubuntu-18.md)
 - [Ubuntu 20.04](install-ubuntu-20.md)
 - [Ubuntu 22.04](install-ubuntu-22.md)
