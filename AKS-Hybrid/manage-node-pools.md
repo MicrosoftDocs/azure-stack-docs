@@ -177,7 +177,7 @@ In the previous step, you applied the `sku=gpu:NoSchedule` taint when you create
         effect: "NoSchedule"
     ```
 
-2. Schedule the pod using the `kubectl apply` command:
+1. Schedule the pod using the `kubectl apply` command:
 
     ```azurecli
     kubectl apply -f nginx-toleration.yaml
@@ -185,7 +185,7 @@ In the previous step, you applied the `sku=gpu:NoSchedule` taint when you create
 
     It takes a few seconds to schedule the pod and pull the NGINX image.
 
-3. Check the status using the [`kubectl describe pod`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/) command:
+1. Check the status using the [`kubectl describe pod`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/) command:
 
     ```azurecli
     kubectl describe pod mypod
