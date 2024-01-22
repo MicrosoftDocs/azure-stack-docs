@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/18/2024
+ms.date: 01/22/2024
 ---
 
 # Manage Arc VMs on Azure Stack HCI (preview)
@@ -38,7 +38,7 @@ When you enable guest management on an Arc VM, the guest agent installs the [Azu
 Based on whether a guest agent is running on your Arc VM, the steps to enable guest management are different.
 
 > [!IMPORTANT] 
-> Make sure that your Azure Stack HCI cluster is on 2311.2 to run this procedure.
+> Make sure that your Azure Stack HCI cluster is on 2311 <!--2311.2--> to run this procedure.
 
 ### Verify if guest agent is running
 
@@ -56,17 +56,17 @@ Based on whether a guest agent is running on your Arc VM, the steps to enable gu
       "vmAgent": {
         "statuses": [
           {
-            "code": "ProvisioningState/succeeded",
-            "displayStatus": "Connected",
+            "code": "OK",
+            "displayStatus": "Active",
             "level": "Info",
             "message": "Successfully established connection with mocguestagent",
             "time": "2024-01-13T00:57:39Z"
           },
           {
-            "code": "ProvisioningState/succeeded",
-            "displayStatus": "Connected",
+            "code": "OK",
+            "displayStatus": "Active",
             "level": "Info",
-            "message": "New mocguestagent version detected 'v0.13.0-3-gd13b4794'",
+            "message": "Successfully updated mocguestagent version'",
             "time": "2024-01-13T00:57:39Z"
           }
         ],
@@ -103,10 +103,10 @@ Your status shows as connecting. Here's a sample output snippet indicating the r
       "vmAgent": {
         "statuses": [
           {
-            "code": "ProvisioningState/inprogress",
-            "displayStatus": "Connecting",
+            "code": "OK",
+            "displayStatus": "Active",
             "level": "Info",
-            "message": "Waiting for connection with mocguestagent",
+            "message": "Successfully started HyperV listener",
             "time": "2024-01-19T01:41:15Z"
           }
         ]
