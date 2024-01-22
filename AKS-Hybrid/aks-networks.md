@@ -1,5 +1,5 @@
 ---
-title: Create networks for AKS (preview)
+title: Create networks for AKS
 description: Learn how to create Arc-enabled networks for AKS and connect them to Azure.
 ms.topic: how-to
 author: sethmanheim
@@ -10,7 +10,7 @@ ms.reviewer: mikek
 
 ---
 
-# Create networks for AKS (preview)
+# Create networks for AKS
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -92,4 +92,4 @@ az akshybrid vnet create -n "<Name of your Azure connected AKS hybrid vnet>" -g 
 
 ## Next steps
 
-[Create and manage Kubernetes clusters on-premises using Azure CLI](create-aks-hybrid-preview-cli.md)
+[Create and manage Kubernetes clusters on-premises using Azure CLI](aks-create-clusters-cli.md)

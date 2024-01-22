@@ -17,7 +17,7 @@
     href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
-- name: Preview version 23H2
+- name: AKS Arc version 23H2
   items:
   - name: What's new
     href: aks-preview-overview.md
@@ -148,8 +148,8 @@
   items: 
     - name: Install
       items:
-          - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
-            href: prestage-cluster-service-host-create.md
+        - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
+          href: prestage-cluster-service-host-create.md
     - name: Use manual (offline) download in AKS Arc
       href: offline-download.md
     - name: Upgrade

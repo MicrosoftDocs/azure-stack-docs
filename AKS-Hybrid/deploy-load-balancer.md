@@ -1,5 +1,5 @@
 ---
-title: Deploy a load balancer in AKS Arc (preview)
+title: Deploy a load balancer in AKS Arc
 description: Learn how to deploy a load balancer in AKS enabled by Arc.
 ms.topic: how-to
 ms.date: 12/19/2023
@@ -10,7 +10,7 @@ ms.lastreviewed: 12/12/2023
 
 ---
 
-# Deploy a load balancer in AKS Arc (preview)
+# Deploy a load balancer in AKS Arc
 
 The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications.
 

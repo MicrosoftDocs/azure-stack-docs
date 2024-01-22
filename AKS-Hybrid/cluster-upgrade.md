@@ -1,5 +1,5 @@
 ---
-title: Upgrade an Azure Kubernetes Service (AKS) cluster (preview)
+title: Upgrade an Azure Kubernetes Service (AKS) cluster
 description: Learn how to upgrade an Azure Kubernetes Service (AKS) cluster.
 ms.topic: overview
 ms.date: 11/28/2023
@@ -10,7 +10,7 @@ ms.lastreviewed: 11/28/2023
 
 ---
 
-# Upgrade an Azure Kubernetes Service (AKS) cluster (preview)
+# Upgrade an Azure Kubernetes Service (AKS) cluster
 
 As part of managing the application and cluster lifecycle, you might want to upgrade to the latest available version of Kubernetes. An upgrade involves either a move to a newer version of Kubernetes, applying operating system (OS) version updates (patching), or both. AKS Arc supports upgrading (or patching) nodes in a workload cluster with the latest OS and runtime updates.
 

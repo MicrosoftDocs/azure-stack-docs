@@ -1,5 +1,5 @@
 ---
-title: Create Kubernetes clusters using the Azure portal (preview)
+title: Create Kubernetes clusters using the Azure portal
 description: Create Kubernetes clusters using the Azure portal.
 author: sethmanheim
 ms.author: sethm
@@ -10,7 +10,7 @@ ms.reviewer: pradwivedi
 
 ---
 
-# How to deploy a Kubernetes cluster using the Azure portal (preview)
+# How to deploy a Kubernetes cluster using the Azure portal
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -31,7 +31,7 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. On the Azure portal search bar, type Kubernetes Azure Arc.
-1. Select **Add > Create a Kubernetes cluster with Azure Arc (preview)**:
+1. Select **Add > Create a Kubernetes cluster with Azure Arc**:
 
    :::image type="content" source="media/aks-create-clusters-portal/cluster-portal.png" alt-text="Screenshot showing cluster creation page on the portal." lightbox="media/aks-create-clusters-portal/cluster-portal.png":::
 
@@ -48,7 +48,7 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
    - **Primary node pool**:
      - Leave the default values selected.
    - **SSH Keys**
-     - Configure SSH access to the underlying VMs in your Kubernetes nodes for troubleshooting operations. For the preview, you must provide an existing SSH public key.
+     - Configure SSH access to the underlying VMs in your Kubernetes nodes for troubleshooting operations. You must provide an existing SSH public key.
      - Provide an RSA public key in the single line format (starting with "ssh-rsa") or the multi-line PEM format. You can generate SSH keys using PuTTYGen on Windows.
 
 1. Select **Next: Node pools** when complete.
