@@ -31,9 +31,9 @@ the same name as any existing node pool.
 az akshybrid nodepool add --name <node pool name> -g <resource group> --cluster-name <cluster name> --os-sku <Linux or Windows> --node-count <count> --node-vm-size <vm size>
 ```
 
-## Get configuration information of a node pool
+## Get configuration information for a node pool
 
-To see the configuration information of your node pools, use the `az akshybrid nodepool show` command.
+To see the configuration of your node pools, use the `az akshybrid nodepool show` command.
 
 ```azurecli
 az akshybrid nodepool show --cluster-name <cluster name> -n <node pool name> -g <resource group>
@@ -107,7 +107,7 @@ When you create a node pool, you can add taints or labels to it. When you add a 
 
 1. Create a node pool with a taint using the [`az aksarc nodepool add`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-add) command. Specify the name `taintnp` and use the `--node-taints` parameter to specify `sku=gpu:NoSchedule` for the taint:
 
-    ```azurecli-interactive
+    ```azurecli
     az aksarc nodepool add \
         --resource-group myResourceGroup \
         --cluster-name myAKSCluster \
@@ -119,7 +119,7 @@ When you create a node pool, you can add taints or labels to it. When you add a 
 
 1. Check the status of the node pool using the [`az aksarc nodepool list`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-list) command:
 
-    ```azurecli-interactive
+    ```azurecli
     az aksarc nodepool list -g myResourceGroup --cluster-name myAKSCluster
     ```
 
@@ -180,7 +180,7 @@ In the previous step, you applied the `sku=gpu:NoSchedule` taint when you create
 
 2. Schedule the pod using the `kubectl apply` command:
 
-    ```azurecli-interactive
+    ```azurecli
     kubectl apply -f nginx-toleration.yaml
     ```
 
@@ -188,7 +188,7 @@ In the previous step, you applied the `sku=gpu:NoSchedule` taint when you create
 
 3. Check the status using the [`kubectl describe pod`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/) command:
 
-    ```azurecli-interactive
+    ```azurecli
     kubectl describe pod mypod
     ```
 
