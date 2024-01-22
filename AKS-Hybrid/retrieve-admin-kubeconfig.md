@@ -16,7 +16,7 @@ This article describes how to retrieve a certificate-based admin kubeconfig.
 
 ## Get admin certificate-based kubeconfig
 
-Using the following command, the Arc-enabled Kubernetes cluster admin can retrieve the certificate-based admin kubeconfig. To run the Azure CLI command, you must have "contributor", "owner", and "Azure Kubernetes Service Hybrid Cluster Admin Role" permissions on the cluster. You must also have the **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action** action on the cluster, which is pre-configured in the following built-in role.
+An Arc-enabled Kubernetes cluster admin can retrieve the certificate-based admin kubeconfig using the following command. To run the Azure CLI command, you must have "contributor," "owner," and "Azure Kubernetes Service Hybrid Cluster Admin Role" permissions on the cluster. You must also have the **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action** action on the cluster, which is pre-configured in the following built-in role.
 
 ```azurecli
 az aksarc get-credentials --name 
