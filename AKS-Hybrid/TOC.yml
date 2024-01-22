@@ -47,6 +47,8 @@
       href: deploy-load-balancer.md
     - name: Retrieve certificate-based admin kubeconfig
       href: retrieve-admin-kubeconfig.md
+    - name: Use manual (offline) download in AKS Arc
+      href: offline-download.md
     - name: Monitoring and logging
       items:    
           - name: Monitor Kubernetes object events
@@ -61,6 +63,10 @@
             href: aks-get-kubelet-logs.md
           - name: Get on-demand logs for troubleshooting
             href: get-on-demand-logs.md
+    - name: Security and authentication
+      items:
+      - name: Restrict SSH access
+        href: restrict-ssh-access.md
   - name: Concepts
     items:
     - name: Cluster architecture
@@ -164,8 +170,6 @@
       items:
         - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
           href: prestage-cluster-service-host-create.md
-    - name: Use manual (offline) download in AKS Arc
-      href: offline-download.md
     - name: Upgrade
       items:
       - name: Upgrade AKS hybrid host
@@ -270,8 +274,6 @@
             href: update-certificate-bundle.md
           - name: Update certificates
             href: update-certificates.md
-          - name: Restrict SSH access
-            href: restrict-ssh-access.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
