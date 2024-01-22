@@ -1,5 +1,5 @@
 ---
-title: What's new in AKS on Azure Stack HCI 23H2 (preview)
+title: What's new in AKS on Azure Stack HCI 23H2
 description: Learn about AKS on Azure Stack HCI 23H2.
 ms.topic: overview
 ms.date: 12/06/2023
@@ -10,7 +10,7 @@ ms.lastreviewed: 11/16/2023
 
 ---
 
-# What's new in AKS on Azure Stack HCI 23H2 (preview)
+# What's new in AKS on Azure Stack HCI 23H2
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
