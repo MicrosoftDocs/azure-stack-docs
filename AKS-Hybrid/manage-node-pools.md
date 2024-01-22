@@ -1,5 +1,5 @@
 ---
-title: Manage multiple node pools in AKS Arc
+title: Manage node pools for a cluster
 description: Learn how to manage multiple node pools in AKS enabled by Azure Arc.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
@@ -10,13 +10,13 @@ ms.reviewer: rbaziwane
 ms.lastreviewed: 12/11/2023
 ---
 
-# Manage node pools for a cluster in AKS enabled by Azure Arc
+# Manage node pools for a cluster
 
-In AKS Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
+In AKS enabled by Azure Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
 
-## Create an AKS cluster
+## Create a Kubernetes cluster
 
-To get started, create an AKS cluster with a single node pool:
+To get started, create a Kubernetes cluster with a single node pool:
 
 ```azurecli
 az akshybrid create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet id> --generate-ssh-keys --load-balancer-count <load balancer count>
@@ -24,19 +24,18 @@ az akshybrid create -n <cluster name> -g <resource group> --custom-location <cus
 
 ## Add a node pool
 
-You can add a node pool to an existing cluster using the `az akshybrid nodepool add` command. Make sure that the name of the node pool is not
-the same name as any existing node pool.
+You can add a node pool to an existing cluster using the [`az aksarc nodepool add`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-add) command. Make sure that the name of the node pool is not the same name as an existing node pool:
 
 ```azurecli
-az akshybrid nodepool add --name <node pool name> -g <resource group> --cluster-name <cluster name> --os-sku <Linux or Windows> --node-count <count> --node-vm-size <vm size>
+az aksarc nodepool add --name <node pool name> -g <resource group> --cluster-name <cluster name> --os-sku <Linux or Windows> --node-count <count> --node-vm-size <vm size>
 ```
 
 ## Get configuration information for a node pool
 
-To see the configuration of your node pools, use the `az akshybrid nodepool show` command.
+To see the configuration of your node pools, use the [`az aksarc nodepool show`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-show) command:
 
 ```azurecli
-az akshybrid nodepool show --cluster-name <cluster name> -n <node pool name> -g <resource group>
+az aksarc nodepool show --cluster-name <cluster name> -n <node pool name> -g <resource group>
 ```
 
 Example output:
@@ -81,19 +80,19 @@ name&gt;/providers/Microsoft.HybridContainerService/provisionedClusterInstances/
 
 You can scale the number of nodes up or down in a node pool.
 
-To scale the number of nodes in a node pool, use the `az akshybrid nodepool scale` command. The following example scales the number of
+To scale the number of nodes in a node pool, use the [`az aksarc nodepool scale`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-scale) command. The following example scales the number of
 nodes to 2 in a node pool named `nodepool1`:
 
 ```azurecli
-az akshybrid nodepool scale --cluster-name <cluster name> -n nodepool1 -g <resource group> --node-count 2 --yes
+az aksarc nodepool scale --cluster-name <cluster name> -n nodepool1 -g <resource group> --node-count 2 --yes
 ```
 
 ## Delete a node pool
 
-If you need to delete a node pool, use the `az akshybrid nodepool delete` command:
+If you need to delete a node pool, use the [`az aksarc nodepool delete`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-delete) command:
 
 ```azurecli
-az akshybrid nodepool delete --cluster-name <cluster name> -n <node pool name> -g <resource group> --yes
+az aksarc nodepool delete --cluster-name <cluster name> -n <node pool name> -g <resource group> --yes
 ```
 
 ## Specify a taint or label for a node pool
