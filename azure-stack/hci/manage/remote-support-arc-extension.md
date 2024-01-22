@@ -188,11 +188,11 @@ Processing data from remote server NodeName failed with the following error mess
 
 **Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to active JEA. During the remote support JEA configuration, the WinRM restarts twice, which might disrupt the PowerShell session to the node.
 
-**Suggested resolutions**:
+**Suggested resolutions**: To resolve this error and enable remote support you can do one of the following:
 
-- You must wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your server and enable remote support.
+- Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your server and enable remote support.
   - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
-- Instead of using the remote PowerShell session, you can [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) into each node and enable remote support.
+- Instead of using the remote PowerShell session, [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) into each node and enable remote support.
 
 ## Next step
 
