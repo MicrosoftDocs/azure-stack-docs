@@ -3,7 +3,7 @@ title: Manage multiple node pools in AKS Arc
 description: Learn how to manage multiple node pools in AKS enabled by Azure Arc.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.date: 12/12/2023
+ms.date: 01/22/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -12,8 +12,7 @@ ms.lastreviewed: 12/11/2023
 
 # Manage node pools for a cluster in AKS enabled by Azure Arc
 
-In AKS Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run
-your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
+In AKS Arc, nodes of the same configuration are grouped together into *node pools*. These node pools contain the underlying VMs that run your applications. This article shows you how to create and manage node pools for a cluster in AKS Arc.
 
 ## Create an AKS cluster
 
@@ -97,16 +96,16 @@ If you need to delete a node pool, use the `az akshybrid nodepool delete` comman
 az akshybrid nodepool delete --cluster-name <cluster name> -n <node pool name> -g <resource group> --yes
 ```
 
-## Specify a taint， or label for a node pool
+## Specify a taint or label for a node pool
 
-When creating a node pool, you can add taints, or labels to it. When you add a taint, or label, all nodes within that node pool also get that taint, or label.
+When you create a node pool, you can add taints or labels to it. When you add a taint or label, all nodes within that node pool also get that taint, or label.
 
 > [!IMPORTANT]
-> Adding taints, or labels to nodes should be done for the entire node pool using `az aksarc nodepool`. We don't recommend using `kubectl` to apply taints, or labels to individual nodes in a node pool.
+> You should add taints or labels to nodes for the entire node pool using `az aksarc nodepool`. We don't recommend using `kubectl` to apply taints or labels to individual nodes in a node pool.
 
 ### Set node pool taints
 
-1. Create a node pool with a taint using the [`az aksarc nodepool add`][az-aksarc-nodepool-add] command. Specify the name *taintnp* and use the `--node-taints` parameter to specify *sku=gpu:NoSchedule* for the taint.
+1. Create a node pool with a taint using the [`az aksarc nodepool add`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-add) command. Specify the name `taintnp` and use the `--node-taints` parameter to specify `sku=gpu:NoSchedule` for the taint:
 
     ```azurecli-interactive
     az aksarc nodepool add \
@@ -118,13 +117,13 @@ When creating a node pool, you can add taints, or labels to it. When you add a t
         --no-wait
     ```
 
-2. Check the status of the node pool using the [`az aksarc nodepool list`][az-aksarc-nodepool-list] command.
+1. Check the status of the node pool using the [`az aksarc nodepool list`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-list) command:
 
     ```azurecli-interactive
     az aksarc nodepool list -g myResourceGroup --cluster-name myAKSCluster
     ```
 
-    The following example output shows that the *taintnp* node pool is *Creating* nodes with the specified *nodeTaints*:
+    The following example output shows that the `taintnp` node pool creates nodes with the specified `nodeTaints`:
 
     ```output
     [
@@ -145,18 +144,16 @@ When creating a node pool, you can add taints, or labels to it. When you add a t
     ]
     ```
 
-The taint information is visible in Kubernetes for handling scheduling rules for nodes. The Kubernetes scheduler can use taints and tolerations to restrict what workloads can run on nodes.
+The taint information is visible in Kubernetes for handling scheduling rules for nodes. The Kubernetes scheduler can use taints and tolerations to restrict which workloads can run on nodes.
 
-* A **taint** is applied to a node that indicates only specific pods can be scheduled on them.
-* A **toleration** is then applied to a pod that allows them to *tolerate* a node's taint.
-
-For more information on how to use advanced Kubernetes scheduled features, see [Best practices for advanced scheduler features in AKS][taints-tolerations]
+- A *taint* is applied to a node that indicates only specific pods can be scheduled on them.
+- A *toleration* is then applied to a pod that allows them to "tolerate" a node's taint.
 
 ### Set node pool tolerations
 
-In the previous step, you applied the *sku=gpu:NoSchedule* taint when creating your node pool. The following example YAML manifest uses a toleration to allow the Kubernetes scheduler to run an NGINX pod on a node in that node pool.
+In the previous step, you applied the `sku=gpu:NoSchedule` taint when you created the node pool. The following example YAML manifest uses a toleration to allow the Kubernetes scheduler to run an NGINX pod on a node in that node pool:
 
-1. Create a file named `nginx-toleration.yaml` and copy in the following example YAML.
+1. Create a file named **nginx-toleration.yaml** and copy/paste the following example YAML:
 
     ```yaml
     apiVersion: v1
@@ -181,7 +178,7 @@ In the previous step, you applied the *sku=gpu:NoSchedule* taint when creating y
         effect: "NoSchedule"
     ```
 
-2. Schedule the pod using the `kubectl apply` command.
+2. Schedule the pod using the `kubectl apply` command:
 
     ```azurecli-interactive
     kubectl apply -f nginx-toleration.yaml
@@ -189,13 +186,13 @@ In the previous step, you applied the *sku=gpu:NoSchedule* taint when creating y
 
     It takes a few seconds to schedule the pod and pull the NGINX image.
 
-3. Check the status using the [`kubectl describe pod`][kubectl-describe] command.
+3. Check the status using the [`kubectl describe pod`](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_describe/) command:
 
     ```azurecli-interactive
     kubectl describe pod mypod
     ```
 
-    The following condensed example output shows the *sku=gpu:NoSchedule* toleration is applied. In the events section, the scheduler assigned the pod to the *moc-lbeof1gn6x3* node:
+    The following condensed example output shows that the `sku=gpu:NoSchedule` toleration is applied. In the **Events** section, the scheduler assigned the pod to the `moc-lbeof1gn6x3` node:
 
     ```output
     [...]
@@ -212,11 +209,11 @@ In the previous step, you applied the *sku=gpu:NoSchedule* taint when creating y
       Normal  Started    48s  kubelet             Started container
     ```
 
-    Only pods that have this toleration applied can be scheduled on nodes in *taintnp*. Any other pods are scheduled in the *nodepool1* node pool. If you create more node pools, you can use taints and tolerations to limit what pods can be scheduled on those node resources.
+    Only pods that have this toleration applied can be scheduled on nodes in `taintnp`. Any other pods are scheduled in the **nodepool1** node pool. If you create more node pools, you can use taints and tolerations to limit what pods can be scheduled on those node resources.
 
 ### Setting node pool labels
 
-For more information, see [Use labels in an Azure Arc enabled AKS cluster][use-labels].
+For more information, see [Use labels in an Azure Arc enabled AKS cluster](cluster-labels.md).
 
 ## Next steps
 
