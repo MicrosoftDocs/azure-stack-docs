@@ -45,6 +45,8 @@
       href: manage-node-pools.md
     - name: Deploy a load balancer
       href: deploy-load-balancer.md
+    - name: Retrieve certificate-based admin kubeconfig
+      href: retrieve-admin-kubeconfig.md
   - name: Concepts
     items:
     - name: Cluster architecture
