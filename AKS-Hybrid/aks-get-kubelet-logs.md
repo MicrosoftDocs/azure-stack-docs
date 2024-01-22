@@ -48,4 +48,4 @@ You can get the full on-demand logs from the cluster, then contact Microsoft for
 
 - [Get on-demand logs](get-on-demand-logs.md)
 - [View logs to collect and review data](./view-logs.md)
-- [Monitor Kubernetes clusters in AKS](./monitor-logging.md)
+- [Monitor Kubernetes clusters in AKS](./aks-monitor-logging.md)
