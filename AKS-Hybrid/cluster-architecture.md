@@ -1,5 +1,5 @@
 ---
-title: AKS Arc and workload cluster architecture (preview)
+title: AKS Arc and workload cluster architecture
 description: Learn about AKS Arc and workload cluster architecture.
 ms.topic: overview
 ms.date: 12/11/2023
@@ -10,7 +10,7 @@ ms.lastreviewed: 11/28/2023
 
 ---
 
-# AKS Arc and workload cluster architecture (preview)
+# AKS Arc and workload cluster architecture
 
 > Applies to: AKS on Azure Stack HCI
 

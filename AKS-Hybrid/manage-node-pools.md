@@ -1,5 +1,5 @@
 ---
-title: Manage multiple node pools in AKS Arc (preview)
+title: Manage multiple node pools in AKS Arc
 description: Learn how to manage multiple node pools in AKS enabled by Azure Arc.
 ms.topic: how-to
 ms.custom: devx-track-azurecli

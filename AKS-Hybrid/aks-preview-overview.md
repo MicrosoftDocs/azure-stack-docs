@@ -1,5 +1,5 @@
 ---
-title: What's new in AKS on Azure Stack HCI 23H2 (preview)
+title: What's new in AKS on Azure Stack HCI 23H2
 description: Learn about AKS on Azure Stack HCI 23H2.
 ms.topic: overview
 ms.date: 12/06/2023
@@ -10,15 +10,11 @@ ms.lastreviewed: 11/16/2023
 
 ---
 
-# What's new in AKS on Azure Stack HCI 23H2 (preview)
+# What's new in AKS on Azure Stack HCI 23H2
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article lists the various features and improvements that are available in AKS on Azure Stack HCI, version 23H2.
-
-> [!IMPORTANT]
-> This feature is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released
-> into general availability.
 
 ## About AKS on Azure Stack HCI 23H2
 
