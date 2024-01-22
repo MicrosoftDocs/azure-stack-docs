@@ -32,14 +32,14 @@ To learn more about the new deployment methods, see [Deployment overview](https:
 
 ### What's new
 
-This release includes the Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to December 2023.
+This release includes the Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to January 2024.
 
-- **Updated OS build**: This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to December 2023.
+- **Updated OS build**: This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to January 2024.
 
-For more information on the December release, see [Azure Stack HCI, version 22H2 OS build 20349.2159](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+For more information on the January release, see [Azure Stack HCI, version 22H2 OS build 20349.2159](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 > [!NOTE]
-> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on the December release, see [Azure Stack HCI, version 22H2 OS build 20349.2159](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on the January release, see [Azure Stack HCI, version 22H2 OS build 20349.2159](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 ## Known issues
 
@@ -47,5 +47,4 @@ To review a list of the known issues for this release, see [View known issues in
 
 ## Next steps
 
-- For new Azure Stack HCI deployments via supplemental package:
-  - Read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
+- For new Azure Stack HCI deployments via supplemental package read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).

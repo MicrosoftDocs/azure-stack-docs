@@ -47,5 +47,4 @@ To review a list of the known issues for this release, see [View known issues in
 
 ## Next steps
 
-- For new Azure Stack HCI deployments via supplemental package:
-  - Read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
+- For new Azure Stack HCI deployments via supplemental package read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
