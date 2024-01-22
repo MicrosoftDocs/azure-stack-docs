@@ -1,36 +1,38 @@
 ---
-title: Get kubelet logs from cluster nodes
-description: Learn how to get kubelet logs in an Azure Kubernetes Service (AKS) enabled by Arc deployment.
+title: Get Kubelet logs in AKS hybrid
+description: Learn about how to get Kubelet logs for the Azure Kubernetes Service (AKS) in an AKS hybrid deployment.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/17/2024
+ms.date: 10/26/2022
 ms.author: sethm 
-ms.lastreviewed: 1/14/2024
-ms.reviewer: guanghu
-# Intent: As an IT Pro, I need to learn how to obtain kubelet logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS enabled by Arc.  
+ms.lastreviewed: 1/14/2022
+ms.reviewer: oadeniji
+# Intent: As an IT Pro, I need to learn how to obtain kubelet logs in order to troubleshoot problems with my Azure Kubernetes Service in AKS hybrid.  
 # Keyword: kubelet logs cluster nodes troubleshooting
 
 ---
 
-# Get kubelet logs from cluster nodes
+# Get kubelet logs from cluster nodes in AKS hybrid
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-As part of operating a Kubernetes cluster in AKS enabled by Azure Arc, you might need to review logs at some point to troubleshoot a problem. This article describes how to use `journalctl` to view the kubelet logs on a node.
+As part of operating an Azure Kubernetes Service (AKS) cluster in AKS hybrid, you may need to review logs at some point to troubleshoot a problem. You can [view logs](./view-logs.md) for AKS, and you may also need to get _kubelet_ logs from an AKS node for troubleshooting purposes. This topic shows you how to use `journalctl` to view the _kubelet_ logs on a node.
+
+## Before you begin
+
+This article assumes that you have an existing AKS cluster. If you need an AKS cluster, see this [quickstart](kubernetes-walkthrough-powershell.md) for deploying AKS hybrid.
 
 ## Create an SSH connection
 
-First, you must create an SSH connection with the node on which you need to view the kubelet logs. To sign in using SSH, see [connect with SSH](ssh-connection.md) for Windows and Linux worker nodes.
+First, you need to create an SSH connection with the node on which you need to view _kubelet_ logs. To sign in using SSH, see [connect with SSH](./ssh-connection.md) for Windows and Linux worker nodes.
 
 ## Get kubelet logs
 
-Once you connect to the node, run the following command to pull the kubelet logs:
+Once you have connected to the node, run the following command to pull the _kubelet_ logs:
 
 ```console
-chroot /host
-journalctl -u kubelet -o cat
+sudo journalctl -u kubelet -o cat
 ```
-
 The following sample output shows the kubelet log data:
 
 ```output
@@ -42,10 +44,7 @@ I0512 19:15:19.868130    1824 container_manager_linux.go:276] container manager 
 I0512 19:15:19.868169    1824 container_manager_linux.go:281]
 ```
 
-You can get the full on-demand logs from the cluster, then contact Microsoft for any required troubleshooting.
-
 ## Next steps
 
-- [Get on-demand logs](get-on-demand-logs.md)
-- [View logs to collect and review data](./view-logs.md)
-- [Monitor Kubernetes clusters in AKS](./monitor-logging.md)
+- [View logs to collect and review data](./view-logs.md) 
+- [Monitor AKS clusters in AKS hybrid](./monitor-logging.md)

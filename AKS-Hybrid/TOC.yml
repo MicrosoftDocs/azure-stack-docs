@@ -47,6 +47,19 @@
       href: deploy-load-balancer.md
     - name: Retrieve certificate-based admin kubeconfig
       href: retrieve-admin-kubeconfig.md
+    - name: Monitoring and logging
+      items:    
+          - name: Monitor Kubernetes object events
+            href: kubernetes-monitor-object-events.md
+          - name: Enable Container Insights
+            href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
+          - name: Use on-premises monitoring
+            href: monitor-logging.md
+          - name: View logs to collect and review data
+            href: view-logs.md
+          - name: Get kubelet logs
+            href: aks-get-kubelet-logs.md
+
   - name: Concepts
     items:
     - name: Cluster architecture
