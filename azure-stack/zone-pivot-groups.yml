@@ -60,6 +60,8 @@ groups:
     title: Red Hat Enterprise Linux or CentOS 7
   - id: rhel-8
     title: Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
+  - id: rhel-9
+    title: Red Hat Enterprise Linux 9
   - id: centos-7
     title: CentOS Linux 7
   - id: centos-8
