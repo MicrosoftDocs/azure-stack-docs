@@ -28,9 +28,9 @@ Before you begin, make sure that the following prerequisites are completed:
 - You have access to an Azure Stack HCI, version 23H2 or Azure Stack HCI, version 22H2 system that is deployed, registered, and connected to Azure.
 - You have at least **Owner** or **Contributor** roles in your Azure subscription to turn on Foundational cloud security posture management (CSPM).
 
-## Enable Defender for Cloud on Azure Stack HCI
+## Enable Defender for Cloud for Azure Stack HCI
 
-Follow these steps to enable Defender for Cloud on Azure Stack HCI.
+Follow these steps to enable Defender for Cloud for Azure Stack HCI.
 
 - Step 1: Turn on Foundational CSPM.
 - Step 2: Turn on Defender for Servers for Arc-enabled hosts and Arc VMs.
