@@ -13,7 +13,7 @@ ms.date: 11/13/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [WARNING](../../includes/hci-applies-to-23h2-cluster-updates.md)]
+[!INCLUDE [IMPORTANT](../../includes/hci-applies-to-23h2-cluster-updates.md)]
 
 This article describes how to use Azure Update Manager to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
 
