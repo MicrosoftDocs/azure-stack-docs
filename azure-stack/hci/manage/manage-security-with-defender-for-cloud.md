@@ -25,7 +25,9 @@ You can use Defender for Cloud to assess both the individual and overall securit
 
 ## Benefits
 
-- **No additional cost.** With the basic Defender for Cloud plan, you get advanced security features for your Azure Stack HCI system at no additional cost.
+Here are the benefits of using Defender for Cloud for Azure Stack HCI:
+
+- **No additional cost.** With the basic Defender for Cloud plan, you get advanced security features for your Azure Stack HCI system at no extra cost.
 
 - **Seamless integration with Azure Stack HCI-certified hardware.** Defender for Cloud is designed to work seamlessly with Azure Stack HCI-certified hardware to provide consistent Secure Boot, United Extensible Firmware Interface (UEFI), and Trusted Platform Module (TPM) settings out of the box.
 
@@ -34,18 +36,18 @@ You can use Defender for Cloud to assess both the individual and overall securit
 Before you begin, make sure that the following prerequisites are completed.
 
 - You have access to an Azure Stack HCI, version 23H2 or Azure Stack HCI, version 22H2 system that is deployed, registered, and connected to Azure.
-- You have at least Owner or Contributor roles in your Azure subscription to turn on Foundational CSPM.
+- You have at least Owner or Contributor roles in your Azure subscription to turn on Foundational cloud security posture management (CSPM).
 
 ## Enable Defender for Cloud for Azure Stack HCI
 
 After you complete the prerequisites, follow these steps to enable Defender for Cloud for Azure Stack HCI.
 
-- Step 1: Turn on Foundational cloud security posture management (CSPM)
+- Step 1: Turn on Foundational CSPM
 - Step 2: Turn on Defender for Servers for Arc-enabled hosts and Arc VMs
 
 ### Step 1: Turn on Foundational CSPM
 
-This step turns on the basic Defender for Cloud plan—at no additional cost. This plan lets you monitor and identify the steps that you can take to secure your Azure Stack HCI system. For instructions, see [Enable Defender for Cloud on your Azure subscription](/azure/defender-for-cloud/connect-azure-subscription#enable-defender-for-cloud-on-your-azure-subscription).
+This step turns on the basic Defender for Cloud plan—at no extra cost. This plan lets you monitor and identify the steps that you can take to secure your Azure Stack HCI system. For instructions, see [Enable Defender for Cloud on your Azure subscription](/azure/defender-for-cloud/connect-azure-subscription#enable-defender-for-cloud-on-your-azure-subscription).
 
 ### Step 2: Turn on Defender for Servers for Arc-enabled hosts and Arc VMs
 
@@ -94,7 +96,7 @@ Go to the **Defender for Cloud Overview** page to monitor alerts on individual s
 
 - In the Azure portal, go to the **Microsoft Defender for Cloud** blade of your Azure Stack HCI system resource, and then select the **View in Defender for Cloud** link.
 
-   :::image type="content" source="./media/manage-security-with-defender-for-cloud/view-in-defender-for-cloud-link.png" alt-text="Screenshot of the Microsoft Defender for Cloud page showing the security recommendations for your Azure Stack HCI system." lightbox="./media/manage-security-with-defender-for-cloud/view-in-defender-for-cloud-link.png" :::
+   :::image type="content" source="./media/manage-security-with-defender-for-cloud/view-in-defender-for-cloud-link.png" alt-text="Screenshot of the Microsoft Defender for Cloud page highlighting the View in Defender for Cloud link." lightbox="./media/manage-security-with-defender-for-cloud/view-in-defender-for-cloud-link.png" :::
 
 ## Next steps
 
