@@ -27,7 +27,7 @@ Before you begin, you should complete the following tasks:
 
 1. Install the [Azure PowerShell Az module](/powershell/azure/install-azure-powershell).
 
-1. Verify the Azure Migrate PowerShell module is installed. Azure Migrate PowerShell is available as part of Azure PowerShell (Az). Run the following command to check if the Azure Migrate PowerShell module is installed on your computer:
+1. Verify the Azure Migrate PowerShell module is installed. Azure Migrate PowerShell is available as part of the Azure PowerShell Az module. Run the following command to check if Azure Migrate PowerShell is installed on your computer:
 
     ```azurepowershell
     Get-InstalledModule -Name Az.Migrate
@@ -48,19 +48,19 @@ Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you h
 
 ## Initialize, replicate, and migrate
 
-With a new Azure Migrate project and associated appliance setup, initialize replication infrastructure, create and update replications of desired VMs, and migrate them to your desired target location using PowerShell.
+With a new Azure Migrate project and associated appliance setup, initialize replication infrastructure, create and update replications of desired VMs, and migrate them to your desired target location using Azure PowerShell.
 
 ### Retrieve discovered VMs
 
 Retrieve discovered VMs in the Azure Migrate project using the following cmdlet:
 
-```powershell
+```azurepowershell
 Get-AzMigrateDiscoveredServer
 ```
 
-**Example 1**: get all Hyper-V VMs discovered by an Azure Migrate Appliance in a project:
+**Example 1**: Get all Hyper-V VMs discovered by an Azure Migrate appliance in an Azure Migrate project:
 
-```powershell
+```azurepowershell
 $DiscoveredServers = Get-AzMigrateDiscoveredServer `
     -ProjectName $ProjectName `
     -ResourceGroupName $ResourceGroupName `
@@ -69,9 +69,9 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer `
 Write-Output $DiscoveredServers
 ```
 
-**Example 2**: list VMware VMs and filter by the word `test` in their display names: 
+**Example 2**: List Hyper-V VMs and filter by the word `test` in their display names:
 
-```powershell
+```azurepowershell
 Get-AzMigrateDiscoveredServer `
     -ProjectName $ProjectName `
     -ResourceGroupName $ResourceGroupName `
@@ -80,7 +80,6 @@ Get-AzMigrateDiscoveredServer `
     dotnetcli
 ```
 
-
 > [!NOTE]
 > `-SourceMachineType` defaults to VMware, so always specify `HyperV` for the HyperVToAzStackHCI scenario and optionally specify `VMware` for the VMwareToAzStackHCI scenario.
 
@@ -88,13 +87,13 @@ Get-AzMigrateDiscoveredServer `
 
 Run the following cmdlet to retrieve replication fabrics:
 
-```powershell
+```azurepowershell
 Get-AzMigrateHCIReplicationFabric
 ```
 
 Here is an example script to get the fabrics in a resource group:
 
-```powershell
+```azurepowershell
 $Fabrics = Get-AzMigrateHCIReplicationFabric `
 -ResourceGroupName $ResourceGroupName
 Write-Output $Fabrics
@@ -104,11 +103,11 @@ Write-Output $Fabrics
 
 Run the following cmdlet to initialize the replication infrastructure:
 
-```powershell
+```azurepowershell
 Initialize-AzMigrateHCIReplicationInfrastructure
 ```
 
-**Example 1**: Initialize replication infrastructure with default cache storage account:
+**Option 1**: Initialize replication infrastructure with the default cache storage account:
 
 ```powershell
 Initialize-AzMigrateHCIReplicationInfrastructure `
@@ -118,17 +117,18 @@ Initialize-AzMigrateHCIReplicationInfrastructure `
     -TargetApplianceName $TargetApplianceName
 ```
 
-**Example 2**: Initialize replication infrastructure with user-provided cache storage account. First create a storage account and then get thecustom created storage account:
+**Option 2**: Initialize replication infrastructure with custom-created cache storage account.
 
-```powershell
-$CustomStorageAccountName = <Place your storage account name here>
+First create a storage account and then get the custom-created storage account:
+
+```azurepowershell
+$CustomStorageAccountName = <storage_account_name>
 $CustomStorageAccount = Get-AzStorageAccount `
-    -ResourceGroupName <Place name of resource group that holds custom created storage account here> `
+    -ResourceGroupName <resource_group_for_custom_storage_account> `
 -Name $CustomStorageAccountName
-dotnetcli
 ```
 
-**Example 3**: Initialize replication infrastructure with custom created storage account:
+Next, initialize replication infrastructure with custom-created storage account:
 
 ```powershell
 Initialize-AzMigrateHCIReplicationInfrastructure `
@@ -141,35 +141,37 @@ Initialize-AzMigrateHCIReplicationInfrastructure `
 
 ### (Optional) Verify the cache storage account
 
-Verify the creation of the cache storage account if default. See the script output from step 6 above.
+Verify the creation of the cache storage account if using the default. See the script output from previous step.
 
-```powershell
+```azurepowershell
 Get-AzStorageAccount
 ```
 
 **Example**:
 
-```powershell
+```azurepowershell
 Get-AzStorageAccount `
     -ResourceGroupName $ResourceGroupName `
-    -Name <Place name of default storage account outputted in Step 6 here>
+    -Name <default_storage_account_name_from_previous_step>
 ```
 
 ### Replicate a VM
 
 Run the following command to replicate a VM and create a protected item:
 
-```powershell
+```azurepowershell
 New-AzMigrateHCIServerReplication
 ```
 
 **Example**:
 
-```powershell
-$SourceApplianceName = <Place the name of source appliance here> 
-$SourceMachineDisplayNameToMatch = <Place the display name of a machine you wish to match and use to replicate here>
-$SourceMachineType = <Place 'HyperV' or 'VMware'>
+```azurepowershell
+$SourceApplianceName = <source_appliance_name> 
+$SourceMachineDisplayNameToMatch = <source_machine_display_name_to match_and_replicate>
+$SourceMachineType = <enter 'HyperV' or 'VMware'>
+
 # Get VM(s) that match with $SourceMachineDisplayName, could return multiple
+
 $DiscoveredServers = Get-AzMigrateDiscoveredServer `
     -ProjectName $ProjectName `
     -ResourceGroupName $ResourceGroupName `
@@ -179,15 +181,15 @@ $DiscoveredServers = Get-AzMigrateDiscoveredServer `
 
 ### storage container ARM Id, i.e., "/subscriptions/XXX/resourceGroups/XXX/providers/Microsoft.AzureStackHCI/storageContainers/XXX"
 
-$TargetStoragePathId = <Place your storage container ARM Id here>
+$TargetStoragePathId = <storage_container_ARM_ID>
 # target resource group ARM Id, i.e., "/subscriptions/XXX/resourceGroups/XXX"
-$TargetResourceGroupId = <Place your target resource group ARM Id here>
+$TargetResourceGroupId = <target_resource_group_ARM_ID>
 
 # Assuming OS disk can be found at $DiscoverServer.Disk[0]:
 
 foreach ($DiscoveredServer in $DiscoveredServers)
 {
-    $TargetVMName = <Define how you want to name target VM is same unique way>
+    $TargetVMName = <target_VM_name>
     $ReplicationJob = New-AzMigrateHCIServerReplication `  
         -MachineId $DiscoveredServer.Id `
     	  -OSDiskID $DiscoveredServer.Disk[0].InstanceId `
