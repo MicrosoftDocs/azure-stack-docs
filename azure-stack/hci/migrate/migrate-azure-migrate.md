@@ -35,6 +35,8 @@ Before you migrate your VMs:
 
 1. Go to **Azure Stack HCI migration > Replications**.
 
+    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot Azure Stack HCI migration > Replications in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png":::
+
 1. From the top command bar of the **Replications** page, select **Migrate** to migrate multiple VMs that are ready.  
 
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with Migrate option selected." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png":::
