@@ -43,4 +43,4 @@ Contact Microsoft Support to send the logs to Microsoft. If the environment is d
 
 - [Get kubelet logs](get-kubelet-logs.md)
 - [View logs to collect and review data](./view-logs.md)
-- [Monitor Kubernetes clusters in AKS](./monitor-logging.md)
+- [Monitor Kubernetes clusters in AKS](./aks-monitor-logging.md)
