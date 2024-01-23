@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/04/2024
+ms.date: 01/23/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2 (preview)
@@ -15,9 +15,21 @@ ms.date: 01/04/2024
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
-This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, and more.
+This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes Microsoft Defender for Cloud, security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, and more.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
+
+## Microsoft Defender for Cloud
+
+Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services. You can use Defender for Cloud to assess both the individual and overall security posture of all the resources in your Azure Stack HCI environment.
+
+Here are the benefits of using Defender for Cloud for Azure Stack HCI:
+
+- **No additional cost.** With the basic Defender for Cloud plan, you get advanced security features for your Azure Stack HCI system at no extra cost.
+
+- **Seamless integration with Azure Stack HCI-certified hardware.** Defender for Cloud is designed to work seamlessly with Azure Stack HCI-certified hardware to provide consistent Secure Boot, United Extensible Firmware Interface (UEFI), and Trusted Platform Module (TPM) settings out of the box.
+
+For more information, see [Manage system security with Microsoft Defender for Cloud](../manage/manage-security-with-defender-for-cloud.md).
 
 ## Windows Defender Application Control
 
