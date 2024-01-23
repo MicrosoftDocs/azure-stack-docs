@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/29/2023
+ms.date: 01/23/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/29/2023
@@ -108,7 +108,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix for 2306.
+- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1-2306-4-73.md)
 ::: moniker-end
 
 ::: moniker range="azs-2301"
