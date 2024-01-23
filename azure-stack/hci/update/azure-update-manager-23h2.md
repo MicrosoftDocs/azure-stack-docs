@@ -23,7 +23,7 @@ Azure Update Manager is an Azure service that allows you to apply, view, and man
 Here are some benefits of the Azure Update Manager:
 
 - The update agent checks Azure Stack HCI clusters for update health and available updates daily.
-- You can use the summary grid to view the update status and readiness for each cluster.
+- You can view the update status and readiness for each cluster.
 - You can update multiple clusters at the same time.
 - You can view the status of updates while they're in progress.
 - Once complete, you can view the results and history of updates.
@@ -61,8 +61,7 @@ To install cluster updates using Azure Update Manager, follow these steps:
 
 6. On the **Select updates** page, specify the updates you want to include in the deployment.
    1. Select **Systems to update** to view cluster updates to install or remove from the update installation.
-   2. Select the **Version** link to view the update components and their versions.
-   3. Select the Details, **View details** link, to view the update release notes.
+   2. Select the **Version** link to view the update components, versions, and update release notes.
 
 7. Select **Next**.
 

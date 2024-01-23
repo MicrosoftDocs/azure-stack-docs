@@ -22,7 +22,7 @@ The approach in this release provides a flexible foundation to integrate and man
 
 Here's an example of a new cluster deployment using the updates in this release:
 
-:::image type="content" source="media/lifecycle-manager/update-your-solution-23h2.png" alt-text="Screenshot of ways to deploy and update your solution." lightbox="media/lifecycle-manager/update-your-solution-23h2.png":::
+:::image type="content" source="media/about-updates/update-your-solution-23h2.png" alt-text="Screenshot of ways to deploy and update your solution." lightbox="media/about-updates/update-your-solution-23h2.png":::
 
 In this solution the Azure Stack HCI OS, agents and services, drivers, and firmware are automatically updated.
 
