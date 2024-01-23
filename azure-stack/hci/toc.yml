@@ -28,7 +28,11 @@
     - name: What's new in version 23H2?
       href: whats-new.md
     - name: Known issues
-      href: known-issues-23h2.md
+      items:
+      - name: Known issues - 2311 release
+        href: known-issues-2311.md
+      - name: Known issues - 2310 release
+        href: known-issues-23h2.md
     - name: Plan
       items:
         - name: Review security features
