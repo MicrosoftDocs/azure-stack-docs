@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/28/2023
+ms.date: 01/23/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 12/27/2023
@@ -63,7 +63,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2311"
 ## 2311 build reference
 
-The Azure Stack Hub 2311 update build number is **1.2311.x.xx**.
+The Azure Stack Hub 2311 update build number is **1.2311.0.9**.
 
 ### Update type
 

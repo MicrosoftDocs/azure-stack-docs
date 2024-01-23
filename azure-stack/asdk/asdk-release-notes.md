@@ -3,7 +3,7 @@ title: ASDK Release Notes
 description: Improvements, fixes, and known issues for Azure Stack Development Kit (ASDK).
 author: sethmanheim
 ms.topic: article
-ms.date: 12/27/2023
+ms.date: 01/23/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 08/10/2020
