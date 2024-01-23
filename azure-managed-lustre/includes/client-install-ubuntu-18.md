@@ -10,9 +10,9 @@ ms.lastreviewed: 02/19/2023
 ---
 
 > [!CAUTION]
-> Ubuntu 18.04 LTS has reached the end of Standard Support on May, 31, 2023. Microsoft recommends either migrating to the next Ubuntu LTS release or upgrading to Ubuntu Pro to gain access to extended security and maintenance from Canonical. For more information, see the [announcement](https://techcommunity.microsoft.com/t5/linux-and-open-source-blog/canonical-ubuntu-18-04-lts-reaching-end-of-standard-support/ba-p/3822623).
+> Ubuntu 18.04 LTS reached the end of Standard Support on May 31, 2023. Microsoft recommends either migrating to the next Ubuntu LTS release or upgrading to Ubuntu Pro to gain access to extended security and maintenance from Canonical. For more information, see the [announcement](https://techcommunity.microsoft.com/t5/linux-and-open-source-blog/canonical-ubuntu-18-04-lts-reaching-end-of-standard-support/ba-p/3822623).
 
-1. Ensure you have Ubuntu Pro activated and are on the recommended 5.4 kernel which is provided by the linux-image-azure metapackage
+1. Ensure you have Ubuntu Pro activated and are on the recommended 5.4 kernel, which is provided by the linux-image-azure metapackage:
 
    ```bash
    apt list --installed linux-image*
