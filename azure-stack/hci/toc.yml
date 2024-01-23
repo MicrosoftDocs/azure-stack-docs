@@ -9,7 +9,7 @@
   - name: Release notes
     items:
     - name: Known issues - 2311.2 release (Current)
-      href: known-issues-2311.md
+      href: known-issues-2311-2.md
     - name: Known issues - 2311 release
       href: known-issues-2311.md
     - name: Known issues - 2310 release
