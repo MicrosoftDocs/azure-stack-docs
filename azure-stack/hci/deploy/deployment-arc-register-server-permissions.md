@@ -3,19 +3,17 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 01/11/2024
+ms.date: 01/22/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
 ---
 
-# Register your servers and assign permissions for Azure Stack HCI, version 23H2 deployment (preview)
+# Register your servers and assign permissions for Azure Stack HCI, version 23H2 deployment
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to register your Azure Stack HCI servers and then set up the required permissions to deploy an Azure Stack HCI, version 23H2 cluster.
-
- [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -26,19 +24,19 @@ Before you begin, make sure you've done the following:
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server.
 
-- If you are registering the servers, make sure that you have `Contributor` permissions and `User Access Administrator` permissions for the subscription. To verify, follow these steps in the Azure portal:
-    - Go to the subscription that you will use for Azure Stack HCI deployment.
-    - In the left pane, select **Access control (IAM)**.
-    - In the right pane, go to **Check access > View my access > Role assignments**. Verify that you have the `Contributor` and `User Access Administrator` roles assigned.
+- If you are registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
-    :::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the permissions in deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::
+    - [Azure Connected Machine Onboarding role](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
+    - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
 
+    To verify that you have these roles, follow these steps in the Azure portal:
 
-- If you are registering the servers, make sure that you have the **Cloud Application Administrator** role in the tenant used for the deployment. To get the tenant ID and assign the Cloud Application Administrator role, follow these steps: 
-    1. In the Azure portal, go to the **Microsoft Entra ID** resource. In the right pane, select **Tenant ID**.
-        :::image type="content" source="media/deployment-arc-register-server-permissions/tenant-id.png" alt-text="Screenshot of the tenant ID in Microsoft Entra ID in Azure portal." lightbox="./media/deployment-arc-register-server-permissions/tenant-id.png":::
-    1. Go to the **Users** section. Select the user and go to **Assigned roles**. 
-    1. Select **+ Add assignments** and assign the **Cloud Application Administrator** role.
+    1. Go to the subscription that you will use for the Azure Stack HCI deployment.
+    1. Go to the resource group where you are planning to register the servers.
+    1. In the left-pane, go to **Access Control (IAM)**.
+    1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
+
+    :::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the roles and permissions assigned in the deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::
 
 ## Register servers with Azure Arc
 
@@ -230,11 +228,19 @@ This section describes how to assign Azure permissions for deployment from the A
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Go through the tabs and assign `Key Vault Administrator` permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign at subscription level the **Azure Stack HCI Administrator** role permissions to the user who will deploy the cluster.
+
+1. Go through the tabs and assign at subscription level the **Reader** role permissions to the user who will deploy the cluster.
+
+1. Go through the tabs and assign **Key Vault Administrator** permissions to the user who will deploy the cluster.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::
 
-1. Verify that the user has the `Key Vault Administrator` role assigned.
+1. Go through the tabs and assign at resource group level **Key Vault Contributor** role permissions to the user who will deploy the cluster.
+
+1. Go through the tabs and assign at resource group level **Storage Account Contributor** role permissions to the user who will deploy the cluster.
+
+1. In the right pane, go to **Role assignments**. Verify that the user has the all the configured roles. 
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
 
