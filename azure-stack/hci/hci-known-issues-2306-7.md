@@ -1,15 +1,15 @@
 ---
-title: Known issues in Azure Stack HCI 2306.5 Supplemental Package (preview)
-description: Read about the known issues in Azure Stack HCI 2306.5 Supplemental Package (preview).
+title: Known issues in Azure Stack HCI 2306.7 Supplemental Package (preview)
+description: Read about the known issues in Azure Stack HCI 2306.7 Supplemental Package (preview).
 author: ronmiab
 ms.topic: conceptual
-ms.date: 12/18/2023
+ms.date: 01/17/2023
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI, 2306.5 Supplemental Package release (preview)
+# View known issues in Azure Stack HCI, 2306.7 Supplemental Package release (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-supplemental-package.md)]
 
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy Azure Stack HCI, carefully review the information contained in the release notes.
 
-This article applies to Azure Stack HCI, Supplemental Package, for 2306.5 patch update release. This release maps to software version number **10.2306.5.8**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later.
+This article applies to Azure Stack HCI, Supplemental Package, for 2306.7 patch update release. This release maps to software version number **10.2306.7.7**. This release supports only updating Azure Stack HCI deployments running 2306 Supplemental Package and later.
 
 For more information, see [What's new in 22H2](whats-new-in-hci-22h2.md#azure-stack-hci-supplemental-package-preview) and [What's in preview](./manage/whats-new-2306-preview.md).
 
@@ -28,8 +28,8 @@ For more information, see [What's new in 22H2](whats-new-in-hci-22h2.md#azure-st
 Here are the known issues in the current Azure Stack HCI supplemental package release:
 
 |#|Feature|Issue|Workaround|
-|-|------|------|----------|
-|1|Update |The update may fail at the ‘UpdateOtherAgent’ step if the remote support agent’s Cluster discovery cache file becomes corrupt due to an unclean shutdown of the service. |Delete the Cluster discovery file on all failed nodes from <br> C:\programdata\Microsoft\AzureStack\RemoteSupport\Cluster\ClusterDiscoveryState. <br><br> Restart the agent with this command:<br>`Start-Service -Name "AzureStack Observability RemoteSupportAgent"`|
+|--|--------|------|----------|
+|1 | Update | AgentLifecycleManager (ALM) fails to install the Deploy Tool Agent on a single node or one node of a multi-node system. |  Restart the node and resume deployment. |
 
 ## Known issues from previous releases
 
@@ -49,6 +49,7 @@ Here are the known issues that have carried over from the previous releases in A
 |10|Security |In this release, when you run `Get-AsWDACPolicy` cmdlet on a two-node Azure Stack HCI cluster, the cmdlet returns `Unable to determine` as opposed to an integer (0, 1 or 2). |The `Get-ASWDACPolicyMode` cmdlet fetches information related to WDAC policy from the CodeIntegrity events and is unable to get the information as the CodeIntegrity event logs are flushed with 3114 events. <br> A workaround is provided in the output of the cmdlet that instructs you to run `Invoke-RefreshWDACPolicyTool` to refresh the policy on the nodes to generate new CodeIntegrity events.|
 |11|Azure Arc|After update, the Azure Stack HCI cluster servers show as not registered with Azure Arc.|To mitigate this issue, follow these steps: <br> 1. *Azcmamnet.exe* connect on each **Not registered** server <br>2. Register the servers again. Run this cmdlet on each server that isn't registered: <br>`Register-AzStackHCI`   |
 |12|Arc Resource Bridge  |In this release, a custom location isn't created during Arc Resource Bridge deployment.|This issue is seen in switchless configurations only.|
+|13|Update |The update may fail at the ‘UpdateOtherAgent’ step if the remote support agent’s Cluster discovery cache file becomes corrupt due to an unclean shutdown of the service. |Delete the Cluster discovery file on all failed nodes from <br> C:\programdata\Microsoft\AzureStack\RemoteSupport\Cluster\ClusterDiscoveryState. <br><br> Restart the agent with this command:<br>`Start-Service -Name "AzureStack Observability RemoteSupportAgent"`|
 
 ## Next steps
 
