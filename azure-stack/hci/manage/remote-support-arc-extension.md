@@ -13,7 +13,7 @@ ms.date: 01/19/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article provides a brief overview of the Remote Support Arc extension, some benefits of using the extension, and how to enable the extension on your Azure Stack HCI system using PowerShell.
+This article provides a brief overview of the Remote Support Arc extension, its benefits, and how to enable it on your Azure Stack HCI system using PowerShell.
 
 ## About the Remote Support Arc extension
 
@@ -28,7 +28,7 @@ The scheduled tasks to configure JEA are set up through either:
 
 Remote support with your consent, as detailed in [Get remote support for Azure Stack HCI](../manage/get-remote-support.md#remote-support-terms-and-conditions), grants Microsoft support professionals’ access to your device remotely.
 
-Access is used to solve your support cases only after a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) is submitted and is based on the level and duration of time that you grant.
+Access is used to solve your support cases only after you submit a [support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request) and is based on the level and duration of time that you grant.
 
 For information on how remote support works, see [How remote support works](../manage/get-remote-support.md).
 
@@ -43,9 +43,9 @@ Remote support gives you the ability to:
 
 ## Enable remote support via PowerShell on your Azure Stack HCI system
 
-Follow these steps on your client to enable remote support on your Azure Stack HCI cluster.
+To enable remote support on your Azure Stack HCI cluster, follow these steps:
 
-1. Run PowerShell as an administrator on the client you're using to connect to your cluster.
+1. On the client you're using to connect to your cluster, run PowerShell as an administrator.
 
 2. Open a remote PowerShell session to a node on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
 
@@ -67,7 +67,7 @@ Follow these steps on your client to enable remote support on your Azure Stack H
     >
     > For more information, see [Error handling](./remote-support-arc-extension.md#error-handling).
 
-3. Run this command to enable remote support:
+3. To enable remote support, run this command:
 
     ```powershell
     Enable-RemoteSupport -AccessLevel <Diagnostics Or DiagnosticsRepair> -ExpireInMinutes <1440>
@@ -105,7 +105,7 @@ Follow these steps on your client to enable remote support on your Azure Stack H
 
 ## Remote support operations
 
-After you enable remote support, there are various operations that you can perform to grant remote access for Microsoft support. The next sections detail some examples of those operations.
+There are various operations that you can perform to grant remote access for Microsoft support, after you enable remote support. The next sections detail some examples of those operations.
 
 ### Enable remote support for diagnostics
 
@@ -115,9 +115,9 @@ In this example, you grant remote support access for diagnostic-related operatio
 Enable-RemoteSupport -AccessLevel Diagnostics -ExpireInMinutes 1440
 ```
 
-Use ExpireInMinutes parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access can't be established.
+Use the `ExpireInMinutes` parameter to set the duration of the session. In the example, consent expires in 1,440 minutes (one day). After one day, remote access can't be established.
 
-You can set ExpireInMinutes a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
+You can set `ExpireInMinutes` a minimum duration of 60 minutes (one hour) and a maximum of 20,160 minutes (14 days).
 
 If duration isn't defined, the remote session expires in 480 (8 hours) by default.
 
@@ -166,7 +166,7 @@ Get-RemoteSupportSessionHistory -IncludeSessionTranscript -SessionId <SessionId>
 
 ## Error handling
 
-When you run the enable remote support command, for the first time, you might see the following error message:
+When you run the enable remote support command for the first time, you may see the following error message:
 
 ```console
 PS C:\Users\Administrator> etsn -ComputerName v-host1 -Credential $cred
@@ -188,11 +188,11 @@ Processing data from remote server NodeName failed with the following error mess
 
 **Cause**: When you enable remote support, a Windows Remote Management (WinRM) service restart is required to active JEA. During the remote support JEA configuration, the WinRM restarts twice, which might disrupt the PowerShell session to the node.
 
-**Suggested resolutions**: To resolve this error and enable remote support, you can choose one of the following options:
+**Suggested resolutions**: You can choose one of the following options to resolve this error and enable remote support:
 
 - Wait for a few minutes. Repeat step #2 and #3 for each JEA endpoint to reconnect to your server and enable remote support.
   - After the third run of the enable remote support command, you shouldn’t see any other error. Refer to the output at step #3 for a successful example of the remote support installation.
-- Instead of using the remote PowerShell session [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) into each node and enable remote support.
+- Instead of using the remote PowerShell session, you can enable remote support by connecting to each node using [RDP](https://support.microsoft.com/windows/how-to-use-remote-desktop-5fe128d5-8fb1-7a23-3b8a-41e636865e8c) and enabling it.
 
 ## Next step
 
