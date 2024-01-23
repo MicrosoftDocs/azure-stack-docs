@@ -86,7 +86,7 @@ Follow these steps to identify the correlation ID for your deployment in Azure p
 
 Operations such as creating and deleting a protected item (also known as creating and deleting a replication) and planned failover (also known as migration) are also listed as **Jobs** in the Azure Stack HCI migration section of the portal.
 
-In these cases, the **Job ID** needs to be sent in the email as well.
+In these cases, the **Job ID** needs to be collected as well.
 
 Follow these steps to get the job ID:
 
@@ -108,27 +108,27 @@ Follow these steps to get the job ID:
 
 Failures in scheduled operations like hourly replication cycle failures are listed as **Events** under Azure Stack HCI migration section of the portal.
 
-To troubleshoot replication issues, email the following information:
+To troubleshoot replication issues, collect the following information:
 
 - Error details shown in the events that include Time, Error ID, Error message, VM ID.
 - Screenshots of Azure portal if possible.  
    
 ### For UX issues in portal  
 
-To troubleshoot UX issues in portal, email the following information:
+To troubleshoot UX issues in portal, collect the following information:
 
 - Screenshots from Azure portal.
 - Record the operations in browser developer mode. Export the *HAR* file and share it.
 
 ### For appliance registration issues
 
-To troubleshoot appliance registration issues, email the following information:
+To troubleshoot appliance registration issues, collect the following information:
 
 - All the available logs on the appliance at *C:\ProgramData\MicrosoftAzure\Logs*.
 
 ### For discovery issues
 
-To troubleshoot discovery issues, email the following information:
+To troubleshoot discovery issues, collect the following information:
 
 - All available logs on the source appliance at *C:\ProgramData\MicrosoftAzure\Logs\HyperV\Discovery*.
 

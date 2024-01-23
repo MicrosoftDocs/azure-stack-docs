@@ -35,6 +35,8 @@ Before you migrate your VMs:
 
 1. Go to **Azure Stack HCI migration > Replications**.
 
+    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot showing Azure Stack HCI migration > Replications in Azure portal." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-11.png":::
+
 1. From the top command bar of the **Replications** page, select **Migrate** to migrate multiple VMs that are ready.  
 
     :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with Migrate option selected." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-2.png":::
@@ -78,7 +80,7 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
   
     :::image type="content" source="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-azure-migrate/verify-migrated-virtual-machine-2.png":::
 
-1. Sign into the VM using Hyper-V VM connect. Verify that:
+1. Sign into the VM using Hyper-V VMConnect. Verify that:
     1. The VM behaves as expected.
     1. Your applications work as expected.
 

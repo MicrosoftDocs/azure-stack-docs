@@ -91,6 +91,7 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 This step applies only if you downloaded the .VHD file. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
 
 Verify that a standalone VM (non-HA) is configured with the following settings:
+
 - 16 GB memory.
 - 8 vCPU.
 - 80 GB disk storage.
@@ -243,7 +244,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Stay on this page until the process is complete (this might take 5-10 minutes). If you move away from this page, the replication artifacts won't be created fully leading to a failure in replication and eventually migration.
 
-    :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
+    :::image type="content" source="./media/replicate/replicate-77-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/replicate/replicate-77-review.png":::
 
 1. You are automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
 
