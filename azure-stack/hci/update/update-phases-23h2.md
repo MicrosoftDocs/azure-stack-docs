@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 11/13/2023
 ---
 
-# Review update phases of Azure Stack HCI, version 23H2 updates
+# Review update phases of Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 

@@ -14,6 +14,7 @@ ms.date: 11/13/2023
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 [!INCLUDE [WARNING](../../includes/hci-applies-to-23h2-cluster-updates.md)]
+
 This article describes how to use Azure Update Manager to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
 
 ## About Azure Update Manager
@@ -80,7 +81,7 @@ To install cluster updates using Azure Update Manager, follow these steps:
 When you install cluster updates via Azure Update Manager, you can check the progress of those updates.
 
 > [!NOTE]
-> After you trigger an update, it can take up to 5 minutes for the update run to show up in the Portal.
+> After you trigger an update, it can take up to 5 minutes for the update run to show up in the Azure portal.
 
 To view the progress of your clusters, update installation, and completion results, follow these steps:
 

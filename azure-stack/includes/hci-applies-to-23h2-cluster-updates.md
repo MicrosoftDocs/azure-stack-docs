@@ -9,5 +9,5 @@ ms.date: 01/18/2024
 
 <!-- Applies to all update articles for Azure Stack HCI, version 23H2 -->
 
-> [!WARNING]
-> The procedure described here applies only when updating from one version of Azure Stack HCI, version 23H2 to another higher version. For information on updates for Azure Stack HCI, version 22H2, see [Update clusters for Azure Stack HCI, version 22H2](../hci/manage/update-cluster.md).
+> [!IMPORTANT]
+> The procedure described here applies only when updating from one version of Azure Stack HCI, version 23H2 to another higher version. For information on updates for older versions, see [Update clusters for Azure Stack HCI, version 22H2](../hci/manage/update-cluster.md).
