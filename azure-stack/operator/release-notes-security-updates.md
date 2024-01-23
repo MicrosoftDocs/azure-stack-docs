@@ -18,7 +18,7 @@ This article lists all the security updates in the last three updates of Azure S
 ::: moniker range="azs-2311"
 ## 2311 update
 
-Coming soon.
+
 ::: moniker-end
 
 ::: moniker range="azs-2306"
