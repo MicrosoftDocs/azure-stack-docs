@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # View known issues in Azure Stack HCI 2311.2 General Availability release
 
-[!INCLUDE [hci-applies-to-23h2](../includes/hci-applies-to-23h2.md)]
+> Applies to: Azure Stack HCI, version 23H2
 
 This article identifies the critical known issues and their workarounds in Azure Stack HCI. The article contains the release notes for the Azure Stack HCI 2311.2 general availability (GA) release.
 
