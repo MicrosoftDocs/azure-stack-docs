@@ -1,9 +1,9 @@
 ---
 title: Azure Stack Hub VPN Fast Path 
-description: What's new in Azure Stack Hub VPN Fast Path Public Preview for users
+description: Learn about Azure Stack Hub VPN Fast Path for users
 author: cedward
 ms.topic: conceptual
-ms.date: 05/17/2023
+ms.date: 01/23/2024
 ms.author: cedward
 ms.reviewer: iacarago
 ms.lastreviewed: 03/09/2022
@@ -12,17 +12,17 @@ ms.lastreviewed: 03/09/2022
 # Keyword: azure stack hub VPN Gateways
 
 ---
-# Azure Stack Hub VPN Fast Path public preview for tenant users
+# Azure Stack Hub VPN Fast Path for tenant users
 
 ## What is the Azure Stack Hub VPN Fast Path feature?
 
-Azure Stack Hub is introducing the three new SKUs described in this article as part of the VPN Fast Path public preview. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps using the HighPerformance SKU. The new SKUs enable customer scenarios in which higher network throughput is necessary. The throughput values for each SKU are unidirectional values, meaning it supports the given throughput on either send or receive traffic.
+Azure Stack Hub is introducing the three new SKUs described in this article as part of the VPN Fast Path feature. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps using the HighPerformance SKU. The new SKUs enable customer scenarios in which higher network throughput is necessary. The throughput values for each SKU are unidirectional values, meaning it supports the given throughput on either send or receive traffic.
 
-When the Azure Stack operator enables the VPN Fast Path feature on the Azure Stack Hub stamp, the tenant users can create virtual network gateways using the new SKUs. You can adjust existing setups by re-creating the virtual network gateway and its connections with one of the new SKUs.
+When the Azure Stack operator enables the VPN Fast Path feature on an Azure Stack Hub stamp, tenant users can create virtual network gateways using the new SKUs. You can adjust existing setups by re-creating the virtual network gateway and its connections with one of the new SKUs.
 
-## New virtual network gateways SKUs available when VPN Fast is enabled
+## New virtual network gateways SKUs available when VPN Fast Path is enabled
 
-In addition to the 3 new SKUs, the overall Azure Stack Hub VPN capacity increases, allowing for more VPN connections.
+In addition to the 3 new SKUs, the overall Azure Stack Hub VPN capacity increases, allowing more VPN connections.
 
 The following table shows the new throughput for each SKU when VPN Fast Path is enabled:
 
@@ -37,7 +37,7 @@ The following table shows the new throughput for each SKU when VPN Fast Path is 
 
 ## Create virtual network gateways to use the new SKUs
 
-With the VPN Fast Path public preview release, tenant users can create virtual network gateways with the new SKUs using either the Azure Stack Hub portal or PowerShell.
+With VPN Fast Path, tenant users can create virtual network gateways with the new SKUs using either the Azure Stack Hub portal or PowerShell.
 
 ### Create virtual network gateways with new SKUs using the Azure Stack Hub portal
 
@@ -83,12 +83,12 @@ $vpnconnection = New-AzureRmVirtualNetworkGatewayConnection -Name 'Connection-01
 
 ## Upgrading legacy virtual network gateways
 
-You can't update the SKU without recreating the virtual network gateway, which requires deleting all connections associated with the virtual network gateway. You can re-use the local network gateway resources after creating a virtual network gateway with the new SKU. The local network gateway resource defines the address space and IP address of your on-premises device and retains that configuration.
+You can't update the SKU without recreating the virtual network gateway, which requires that you delete all connections associated with the virtual network gateway. You can re-use the local network gateway resources after creating a virtual network gateway with the new SKU. The local network gateway resource defines the address space and IP address of your on-premises device and retains that configuration.
 
 Follow these steps to upgrade virtual network gateway SKUs:
 
 1. Delete all connections on the existing virtual network gateway: make note of the pre-shared key and whether the BGP flag is set to enabled.
-2. Delete the existing virtual network gateway using the legacy SKU: it is not possible to create two virtual network gateways in the same virtual network, so you must delete the existing one.
+2. Delete the existing virtual network gateway using the legacy SKU: it isn't possible to create two virtual network gateways in the same virtual network, so you must delete the existing one.
 3. Create a new virtual network gateway resource with the new SKU: you can select one of the new SKUs enabled with VPN Fast Path.
 4. Create a new connection between the new virtual network gateway and the existing local network gateway: if you are using a custom IP sec policy, create the connection via PowerShell. Use the pre-shared key and BGP flag noted in step 1.
 5. Repeat step 4 for any other connections you want to move to the new SKU: this step is relevant for multi-site scenarios.
