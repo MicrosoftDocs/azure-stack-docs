@@ -58,7 +58,7 @@ To install cluster updates using Azure Update Manager, follow these steps:
    - You can select the links under **Affected systems** to view more details and individual cluster results.
 5. Select **Next**.
 
-    [![Screenshot on installing cluster updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
+    [![Screenshot on the check readiness of updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
 
 6. On the **Select updates** page, specify the updates you want to include in the deployment.
    1. Select **Systems to update** to view cluster updates to install or remove from the update installation.
@@ -70,7 +70,7 @@ To install cluster updates using Azure Update Manager, follow these steps:
 
 8. On the **Review + install** page, verify your update deployment options, and then select **Install**.
 
-    [![Screenshot to install cluster updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](media/azure-update-manager/review-plus-install-1.png#lightbox)
+    [![Screenshot to review and install cluster updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](media/azure-update-manager/review-plus-install-1.png#lightbox)
 
    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
