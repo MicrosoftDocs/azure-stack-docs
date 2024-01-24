@@ -63,7 +63,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2311"
 ## 2311 build reference
 
-The Azure Stack Hub 2311 update build number is **1.2311.0.9**.
+The Azure Stack Hub 2311 update build number is **1.2311.1.21**.
 
 ### Update type
 
