@@ -107,10 +107,6 @@ Here's some of the functionality AKS provides:
 
 With AKS, you can connect your Kubernetes clusters to Azure. Once connected to Azure Arc-enabled Kubernetes, you can access your Kubernetes clusters running on-premises via the Azure portal and deploy management services such as GitOps and Azure Policy. You can also deploy data services such as SQL Managed Instance and PostgreSQL Hyperscale. For more information about Azure Arc-enabled Kubernetes, see the [Azure Arc overview](/azure/azure-arc/kubernetes/overview).
 
-## Create and manage Kubernetes clusters using Azure portal and Resource Manager templates (preview)
-
-You can now use familiar tools like the Azure portal and Azure Resource Manager templates to manage your Kubernetes clusters running on Azure Stack HCI. We automatically enable Azure Arc on all Kubernetes clusters. Through Azure Arc, you can use your Microsoft Entra identity for cluster admin authentication and have a simplified, end-to-end governance and security story for your AKS clusters through Azure Defender. We've also focused on delivering a consistent user experience for all your AKS clusters. If you've used the Azure portal or Azure CLI to create and manage Kubernetes clusters in Azure, it's easy to use AKS hybrid. For more information, see [AKS hybrid cluster provisioning from Azure](aks-hybrid-preview-overview.md).
-
 ## Integrated logging and monitoring
 
 Once you've connected your cluster to Azure Arc, you can use Azure Monitor for monitoring the health of your Kubernetes cluster and applications. Azure Monitor for containers gives you performance visibility by collecting memory and processor metrics from controllers, nodes, and containers. Metrics and container logs are automatically collected for you and are sent to the metrics database in Azure Monitor, while log data is sent to your Log Analytics workspace. For more information about Azure Monitor, see the [container insights overview](/azure/azure-monitor/containers/container-insights-overview).
