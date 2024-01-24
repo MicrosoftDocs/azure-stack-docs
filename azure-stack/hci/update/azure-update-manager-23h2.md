@@ -42,7 +42,7 @@ To browse for available cluster updates using Azure Update Manager, follow these
    - Filter by Subscription, Resource group, Location, Status, Update readiness, Current OS version, and/or Tags to view a list of clusters.
 3. In the cluster list, view the clusters update status, update readiness, current OS version, and the date and time of the last successful update.
 
-    [![Browse for cluster updates in Azure Update Manager.](./media/azure-update-manager/main-link.png)](media/azure-update-manager/main-link.png#lightbox)
+    [![Screenshot to browse for cluster updates in Azure Update Manager.](./media/azure-update-manager/main-link.png)](media/azure-update-manager/main-link.png#lightbox)
 
 ## Install cluster updates
 
@@ -52,13 +52,13 @@ To install cluster updates using Azure Update Manager, follow these steps:
 2. Under Manage Azure Stack HCI, select **Azure Stack HCI**.
 3. Select one or more clusters from the list, then select **One-time Update**.
 
-    [![Install cluster updates in Azure Update Manager.](./media/azure-update-manager/install-update.png)](media/azure-update-manager/install-update.png#lightbox)
+    [![Screenshot to install cluster updates in Azure Update Manager.](./media/azure-update-manager/install-update.png)](media/azure-update-manager/install-update.png#lightbox)
 
 4. On the **Check readiness** page, review the list of readiness checks and their results.
    - You can select the links under **Affected systems** to view more details and individual cluster results.
 5. Select **Next**.
 
-    [![Confirm installing cluster updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
+    [![Screenshot on installing cluster updates in Azure Update Manager.](./media/azure-update-manager/check-readiness.png)](media/azure-update-manager/check-readiness.png#lightbox)
 
 6. On the **Select updates** page, specify the updates you want to include in the deployment.
    1. Select **Systems to update** to view cluster updates to install or remove from the update installation.
@@ -66,15 +66,15 @@ To install cluster updates using Azure Update Manager, follow these steps:
 
 7. Select **Next**.
 
-    [![Specify cluster updates in Azure Update Manager.](./media/azure-update-manager/select-updates.png)](media/azure-update-manager/select-updates.png#lightbox)
+    [![Screenshot to specify cluster updates in Azure Update Manager.](./media/azure-update-manager/select-updates.png)](media/azure-update-manager/select-updates.png#lightbox)
 
 8. On the **Review + install** page, verify your update deployment options, and then select **Install**.
 
-    [![Review and install cluster updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](media/azure-update-manager/review-plus-install-1.png#lightbox)
+    [![Screenshot to install cluster updates in Azure Update Manager.](./media/azure-update-manager/review-plus-install-1.png)](media/azure-update-manager/review-plus-install-1.png#lightbox)
 
    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
-    [![Notification icon while installing cluster updates in Azure Update Manager.](./media/azure-update-manager/installation-notification.png)](media/azure-update-manager/installation-notification.png#lightbox)
+    [![Screenshot of the notification icon while installing cluster updates in Azure Update Manager.](./media/azure-update-manager/installation-notification.png)](media/azure-update-manager/installation-notification.png#lightbox)
 
 ## Track cluster update progress
 
@@ -89,13 +89,13 @@ To view the progress of your clusters, update installation, and completion resul
 2. Under Manage Azure Stack HCI, select **History**.
 3. Select an update run from the list with a status of **In Progress**.
 
-    [![View progress about cluster updates in Azure Update Manager.](./media/azure-update-manager/update-in-progress.png)](media/azure-update-manager/update-in-progress.png#lightbox)
+    [![Screenshot to view progress about cluster updates in Azure Update Manager.](./media/azure-update-manager/update-in-progress.png)](media/azure-update-manager/update-in-progress.png#lightbox)
 
 4. On the **Download updates** page, review the progress of the download and preparation, and then select **Next**.
 5. On the **Check readiness** page, review the progress of the checks, and then select **Next**.
 6. On the **Install** page, review the progress of the update installation.
 
-    [![View update progress in Azure Update Manager.](./media/azure-update-manager/update-install-progress.png)](media/azure-update-manager/update-install-progress.png#lightbox)
+    [![Screenshot to view update progress in Azure Update Manager.](./media/azure-update-manager/update-install-progress.png)](media/azure-update-manager/update-install-progress.png#lightbox)
 
 ## Browse cluster update job history
 
@@ -105,7 +105,7 @@ To browse for your clusters update history, follow these steps:
 2. Under Manage Azure Stack HCI, select **History**.
 3. Select an update run with a status of “**Failed to update**” or “**Successfully updated**”.
 
-    [![View update history in Azure Update Manager.](./media/azure-update-manager/update-history-progress.png)](media/azure-update-manager/update-history-progress.png#lightbox)
+    [![Screenshot to view update history in Azure Update Manager.](./media/azure-update-manager/update-history-progress.png)](media/azure-update-manager/update-history-progress.png#lightbox)
 
 4. On the **Download updates** page, review the results of the download and preparation and then select **Next**.
 5. On the **Check readiness** page, review the results and then select **Next**.
@@ -124,7 +124,7 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
 3. Select the cluster name from the list.
 4. Select the update and then select **One-time update**.
 
-      [![One-time cluster update in Azure Update Manager.](./media/azure-update-manager/update-single-cluster.png)](media/azure-update-manager/update-single-cluster.png#lightbox)
+      [![Screenshot of a one-time cluster update in Azure Update Manager.](./media/azure-update-manager/update-single-cluster.png)](media/azure-update-manager/update-single-cluster.png#lightbox)
 
 5. On the **Check readiness** page, review the list of readiness checks and their results.
    - You can select the links under **Affected systems** to view more details and individual cluster results.
@@ -137,7 +137,7 @@ To install updates on a single cluster from the Azure Stack HCI cluster resource
 8. Select **Next**.
 9. On the **Review + install** page, verify your update deployment options, and select **Install**.
 
-    [![Review and install one-time cluster update in Azure Update Manager.](./media/azure-update-manager/review-plus-install-2.png)](media/azure-update-manager/review-plus-install-2.png#lightbox)
+    [![Screenshot to install a one-time cluster update in Azure Update Manager.](./media/azure-update-manager/review-plus-install-2.png)](media/azure-update-manager/review-plus-install-2.png#lightbox)
 
    You should see a notification that confirms the installation of updates. If you don’t see the notification, select the **notification icon** in the top right taskbar.
 
@@ -147,24 +147,24 @@ In addition to cluster updates using Azure Update Manager or the Azure Stack HCI
 
 Here's an example of the Windows Admin Center updates tool for systems running Azure Stack HCI, version 23H2.
 
-[![Review and install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-wac-23h2.png)](media/azure-update-manager/updates-os-wac-23h2.png#lightbox)
+[![Screenshot to install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-windows-admin-center-23h2.png)](media/azure-update-manager/updates-os-windows-admin-center-23h2.png#lightbox)
 
 ## Troubleshoot updates
 
 To resume a previously failed update run, browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
-[![Review and retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
+[![Screenshot to retry a failed update.](./media/azure-update-manager/try-again-update.png)](media/azure-update-manager/try-again-update.png#lightbox)
 
 If you're unable to successfully rerun a failed update or need to troubleshoot an error further, follow these steps:
 
 1. Select the **View details** of an error.
 2. When the details box opens, you can download error logs by selecting the **Download logs** button. This prompts the download of a JSON file.
 
-    [![Review and download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
+    [![Screenshot to download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
 
 3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so they are available to Microsoft Support.
 
-    [![Open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
+    [![Screenshot to open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
 
 For more information on creating a support ticket, see [Create a support request](/azure/azure-portal/supportability/how-to-create-azure-support-request#create-a-support-request).
 

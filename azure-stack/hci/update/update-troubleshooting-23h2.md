@@ -81,7 +81,7 @@ To resume a previously failed update run, you can retry the update run via the A
 
 We highly recommend using the Azure portal, to browse to your failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
 
-[![Review and retry a failed update.](./media/troubleshoot-updates/try-again-update.png)](media/troubleshoot-updates/try-again-update.png#lightbox)
+[![A screenshot of the retry a failed update button.](./media/troubleshoot-updates/try-again-update.png)](media/troubleshoot-updates/try-again-update.png#lightbox)
 
 ### PowerShell
 
