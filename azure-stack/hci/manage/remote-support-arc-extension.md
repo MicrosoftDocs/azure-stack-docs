@@ -24,7 +24,7 @@ The scheduled tasks to configure JEA are set up through either:
 - Enable remote support (recommended)
 - Restart the host or node
 
-[![Browse for the remote support extension.](../manage/media/remote-support-extension/remote-support-extension.png)](../manage/media/remote-support-extension/remote-support-extension.png#lightbox)
+[![Screenshot that shows where to browse for the remote support extension.](../manage/media/remote-support-extension/remote-support-extension.png)](../manage/media/remote-support-extension/remote-support-extension.png#lightbox)
 
 Remote support with your consent, as detailed in [Get remote support for Azure Stack HCI](../manage/get-remote-support.md#remote-support-terms-and-conditions), grants Microsoft support professionals’ access to your device remotely.
 
