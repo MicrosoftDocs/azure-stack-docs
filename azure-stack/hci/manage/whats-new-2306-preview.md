@@ -51,8 +51,4 @@ To review a list of the known issues for this release, see [View known issues in
 
 ## Next steps
 
-- [Join the preview channel](./preview-channel.md) and [install a preview version of Azure Stack HCI](./install-preview-version.md).
-
-- For new Azure Stack HCI deployments via supplemental package:
-    - Read the [Deployment overview](../deploy/deployment-tool-introduction.md).
-    - Learn how to [Deploy interactively](../deploy/deployment-tool-new-file.md) using the Azure Stack HCI, Supplemental Package.
+- For new Azure Stack HCI deployments via supplemental package read the [Deployment and management guide](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCI-22H2-Supplemental-Package-deployment-and-management-guide.pdf).
