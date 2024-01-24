@@ -31,6 +31,26 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Add a data disk
 
+After you have created a VM, you may want to add a data disk to it. You can add a data disk via the Azure CLI or the Azure portal.
+
+### [Azure CLI](#tab/azurecli)
+
+To add a data disk, you need to first create a disk and then attach the disk to the VM. Follow these steps in Azure CLI of the computer that you are using to connect to your Azure Stack HCI system.
+
+To create a data disk (dynamic) on a specified storage path, run the following command:
+
+```azurecli
+az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1 --dynamic true --storage-path-id $storagePathid
+```
+
+You can then attach the disk to the VM using the following command:
+
+```azurecli
+az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
+```
+
+### [Azure portal](#tab/azureportal)
+
 Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. Go to your Azure Stack HCI cluster resource and then go to **Virtual machines**.
@@ -53,6 +73,9 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. You'll see a notification that the data disk creation job has started. Once the disk is created, the list refreshes to display the newly added disk.
 
    :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png" alt-text="Screenshot of list of refreshed data disk." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-4.png":::
+
+
+---
 
 ## Delete a data disk
 

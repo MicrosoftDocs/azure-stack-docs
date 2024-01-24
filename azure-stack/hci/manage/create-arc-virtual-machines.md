@@ -1,6 +1,6 @@
 ---
-title: Create Arc virtual machines on Azure Stack HCI (preview)
-description: Learn how to view your cluster in the Azure portal and create Arc virtual machines on your Azure Stack HCI (preview).
+title: Create Arc virtual machines on Azure Stack HCI 
+description: Learn how to view your cluster in the Azure portal and create Arc virtual machines on your Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 01/17/2024
+ms.date: 01/24/2024
 ---
 
-# Create Arc virtual machines on Azure Stack HCI (preview)
+# Create Arc virtual machines on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure portal.
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About Azure Stack HCI cluster resource
 
@@ -82,6 +80,24 @@ Depending on the type of the network interface that you created, you can create 
     $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-sp" 
     ```
 
+For static IP, the *required* parameters are tabulated as follows:
+
+    | Parameters | Description |
+    |------------|-------------|
+    | **name**  |Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
+    | **admin-username** |Username for the user on the VM you are deploying on your Azure Stack HCI cluster. |
+    | **admin-password** |Password for the user on the VM you are deploying on your Azure Stack HCI cluster. |
+    | **image-name** | |
+    | **location** | |
+    | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
+    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for VM on your Azure Stack HCI cluster. |
+    | **custom-location** | Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this VM. |
+    | **authentication-type** | Azure regions as specified by `az locations`. |
+    | **nics** |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
+    | **memory-mb** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
+    | **processors** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
+    | **vm-size** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
+    | **storage-path-id** | Ipv4 address of the default gateway. |
 
 1. Run the following command to create a VM.
 
@@ -100,42 +116,11 @@ If the flag is not specified, the workload (VM, VM image, non-OS data disk) is a
 
 ### Create a Linux VM from network interface
 
-To create a Linux VM, use the same command that you used to create the Windows VM. 
+To create a Linux VM, use the same command that you used to create the Windows VM.
 
 - The gallery image specified should be a Linux image.
-- The username and password works with the `authentication-type-all` parameter. 
+- The username and password works with the `authentication-type-all` parameter.
 - For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
-
-### Add a data disk to the VM
-
-After you have created a VM, you may want to add a data disk to it. To add a data disk, you need to first create a disk and then attach the disk to the VM.
-
-To create a data disk (dynamic) on a specified storage path, run the following command:
-
-```azurecli
-az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1 --dynamic true --storage-path-id $storagePathid
-```
-
-You can then attach the disk to the VM using the following command:
-
-```azurecli
-az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
-```
-
-### Enable guest management for the VM
-
-After you have created a VM, you may wish to enable guest management on that VM. To enable guest management, follow these steps:
-
-1. Run the following command:
-
-    ```azurecli
-    az stack-hci-vm update --name "myhci-vm" --enable-agent true -g "myhci-rg"
-    ```
-    The guest management is enabled by setting the `enable-agent parameter` to `true`. The guest management should take a few minutes to get enabled.
-
-2. Go to the Azure portal. Navigate to **Your Azure Stack HCI cluster > Virtual machines** and then select the VM on which you enabled the guest management. In the **Overview** page, on the **Properties** tab in the right pane, go to **Configuration**. The **Guest management** should show as **Enabled (Connected)**.
-
-    :::image type="content" source="./media/manage-vm-resources/verify-guest-management-enabled-1.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/verify-guest-management-enabled-1.png":::
 
 
 # [Azure portal](#tab/azureportal)
