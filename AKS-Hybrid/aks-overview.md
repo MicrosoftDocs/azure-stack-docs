@@ -1,5 +1,5 @@
 ---
-title: AKS enabled by Azure Arc overview
+title: What is AKS enabled by Azure Arc?
 description: Learn about AKS enabled by Azure Arc.
 ms.topic: overview
 ms.date: 01/16/2024
@@ -10,7 +10,7 @@ ms.lastreviewed: 01/06/2024
 
 ---
 
-# AKS enabled by Azure Arc
+# What is AKS enabled by Azure Arc?
 
 Azure Kubernetes Service (AKS), enabled by Azure Arc, brings Azure-managed Kubernetes clusters to a variety of Arc-enabled infrastructures from your datacenter to Edge for IoT so you can run applications wherever you need them.
 
