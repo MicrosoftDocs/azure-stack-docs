@@ -231,20 +231,20 @@ This section describes how to assign Azure permissions for deployment from the A
 
 1. Go through the tabs and assign at subscription level the **Azure Stack HCI Administrator** role permissions to the user who deploys the cluster.
 
-1. Go through the tabs and assign at subscription level the **Reader** role permissions to the user who deploys the cluster.
+    Repeat the above steps to also assign **Reader** role permissions at subscription level to the user who deploys the cluster.
 
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Go through the tabs and assign at resource group level **Key Vault Administrator** permissions to the user who deploys the cluster.
+1. Go through the tabs and assign at resource group level **Key Vault Administrator** permissions to the user who deploys the cluster. Repeat the above steps to also assign the following permissions at resource group level: 
 
+    - Key Vault Contributor
+    - Storage Account Contributor
+ 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
-1. Go through the tabs and assign at resource group level **Key Vault Contributor** role permissions to the user who deploys the cluster.
-
-1. Go through the tabs and assign at resource group level **Storage Account Contributor** role permissions to the user who deploys the cluster.
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
