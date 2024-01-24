@@ -128,7 +128,7 @@ Before you discover the updates, you can manually validate the system health. Th
 
     ```powershell
     $result=Test-EnvironmentReadiness
-    $result|ft Name,Status,Severity  
+    $result | ft Name,Status,Severity  
     ```
 
     Here's a sample output:
@@ -365,7 +365,7 @@ You can download the updates, perform a set of checks to verify the update readi
 2. To track the update progress, monitor the update state. Run the following command:
 
     ```powershell
-    Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState 
+    Get-SolutionUpdate | ft Version,State,UpdateStateProperties,HealthState 
     ```
 
     When the update starts, the following actions occur:
