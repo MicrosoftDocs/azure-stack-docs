@@ -1,23 +1,29 @@
 ---
-title: Manage baseline security settings on Azure Stack HCI, version 23H2 (preview)
-description: Learn how to manage baseline security settings available for Azure Stack HCI, version 23H2 (preview).
+title: Manage security defaults on Azure Stack HCI, version 23H2 (preview)
+description: Learn how to manage security default settings available for Azure Stack HCI, version 23H2 (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/04/2024
+ms.date: 01/23/2024
 ---
 
-# Manage baseline security settings for Azure Stack HCI, version 23H2 (preview)
+# Manage security defaults for Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage baseline security settings for your Azure Stack HCI cluster and the associated drift control mechanism to ensure that the device starts in a known good state.
+This article describes how to manage default security settings for your Azure Stack HCI cluster and modify drift control and protected security settings defined during deployment so your device starts in a known good state.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Enable, disable drift control
+## View default security settings
+
+### View settings in Azure portal
+
+### Manage security settings with PowerShell
+
+## Modify security defaults
 
 Start with the initial security baseline and then modify drift control and protected security settings defined during deployment.
 

@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 12/12/2023
+ms.date: 01/22/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -16,6 +16,15 @@ ms.subservice: azure-stack-hci
 This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2 (preview)](../whats-new.md).
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
+
+## View WDAC settings
+
+### View settings via Azure portal
+
+
+
+### Manage settings with PowerShell
+
 
 ## Enable WDAC policy modes
 

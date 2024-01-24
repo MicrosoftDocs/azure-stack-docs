@@ -1,21 +1,33 @@
 ---
-title: Manage BitLocker encryption on Azure Stack HCI, version 23H2 (preview)
-description: Learn how to manage BitLocker encryption on your Azure Stack HCI, version 23H2 system (preview).
+title: Manage volume encryption with BitLocker on Azure Stack HCI, version 23H2 (preview)
+description: Learn how to manage volume encryption with Bitlocker on your Azure Stack HCI, version 23H2 system (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/27/2023
+ms.date: 01/23/2024
 ---
 
-# Manage BitLocker encryption on Azure Stack HCI, version 23H2 (preview)
+# Manage volume encryption with BitLocker on Azure Stack HCI, version 23H2 (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to enable BitLocker encryption and retrieve BitLocker recovery keys on your Azure Stack HCI system.
+This article describes how to manage volume encryption with BitLocker, and how to retrieve BitLocker recovery keys on your Azure Stack HCI system.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
+
+## View BitLocker settings
+
+### View settings via Azure portal
+
+You can use two kinds of protection, volume encryption and network rncryption.
+
+- **Volume encryption** -
+- **Network encryption** -
+
+
+### Manage security settings with PowerSHell
 
 ## Enable BitLocker encryption
 
