@@ -240,7 +240,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
 1. Go through the tabs and assign at resource group level **Storage Account Contributor** role permissions to the user who will deploy the cluster.
 
-1. In the right pane, go to **Role assignments**. Verify that the user has the all the configured roles. 
+1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
 
