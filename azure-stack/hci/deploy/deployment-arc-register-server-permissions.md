@@ -17,22 +17,22 @@ This article describes how to register your Azure Stack HCI servers and then set
 
 ## Prerequisites
 
-Before you begin, make sure you've done the following:
+Before you begin, make sure you've completed the following prerequisites:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md).
 - Complete the [deployment checklist](./deployment-checklist.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server.
 
-- If you are registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
+- If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
     - [Azure Connected Machine Onboarding role](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
     - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
 
     To verify that you have these roles, follow these steps in the Azure portal:
 
-    1. Go to the subscription that you will use for the Azure Stack HCI deployment.
-    1. Go to the resource group where you are planning to register the servers.
+    1. Go to the subscription that you'll use for the Azure Stack HCI deployment.
+    1. Go to the resource group where you're planning to register the servers.
     1. In the left-pane, go to **Access Control (IAM)**.
     1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
 
@@ -81,7 +81,7 @@ Before you begin, make sure you've done the following:
     |------------|-------------|
     |`SubscriptionID`    |The ID of the subscription used to register your servers with Azure Arc.         |
     |`TenantID`          |The tenant ID used to register your servers with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
-    |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one does not exist.         |
+    |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. For this release, only the `eastus` and `westeurope` are supported.          |
     |`AccountID`         |The user who will register and deploy the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
@@ -106,7 +106,7 @@ Before you begin, make sure you've done the following:
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     ```
 
-1. Connect to your Azure account and set the subscription. You will need to open browser on the client that you are using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
+1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
     ```powershell
     #Connect to your Azure account and Subscription
@@ -141,9 +141,9 @@ Before you begin, make sure you've done the following:
     Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
-    If you are accessing the internet via a proxy server, you need to pass the `--proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
+    If you're accessing the internet via a proxy server, you need to pass the `--proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
 
-    Here is a sample output of a successful registration of your servers:
+    Here's a sample output of a successful registration of your servers:
     
     ```output
     PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
@@ -204,7 +204,7 @@ Before you begin, make sure you've done the following:
     Use -Passthru parameter to return results as a PSObject.   
     ```
 
-1. After the script has completed successfully on all the servers, verify that:
+1. After the script completes successfully on all the servers, verify that:
 
 
     1. Your servers are registered with Arc. Go to the Azure portal and then go to the resource group associated with the registration. The servers appear within the specified resource group as **Machine - Azure Arc** type resources.
@@ -229,23 +229,22 @@ This section describes how to assign Azure permissions for deployment from the A
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-a.png" alt-text="Screenshot of the Add role assignment in Access control in subscription for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-a.png":::
 
-1. Go through the tabs and assign at subscription level the **Azure Stack HCI Administrator** role permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign at subscription level the **Azure Stack HCI Administrator** role permissions to the user who deploys the cluster.
 
-1. Go through the tabs and assign at subscription level the **Reader** role permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign at subscription level the **Reader** role permissions to the user who deploys the cluster.
 
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-
-1. Go through the tabs and assign at resource group level **Key Vault Administrator** permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign at resource group level **Key Vault Administrator** permissions to the user who deploys the cluster.
 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
-1. Go through the tabs and assign at resource group level **Key Vault Contributor** role permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign at resource group level **Key Vault Contributor** role permissions to the user who deploys the cluster.
 
-1. Go through the tabs and assign at resource group level **Storage Account Contributor** role permissions to the user who will deploy the cluster.
+1. Go through the tabs and assign at resource group level **Storage Account Contributor** role permissions to the user who deploys the cluster.
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
