@@ -162,7 +162,7 @@ If you're unable to successfully rerun a failed update or need to troubleshoot a
 
     [![Screenshot to download error logs.](./media/azure-update-manager/download-error-logs.png)](media/azure-update-manager/download-error-logs.png#lightbox)
 
-3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so they are available to Microsoft Support.
+3. Additionally, you can select the **Open a support ticket** button, fill in the appropriate information, and attach your downloaded logs so that they're available to Microsoft Support.
 
     [![Screenshot to open a support ticket.](./media/azure-update-manager/open-support-ticket.png)](media/azure-update-manager/open-support-ticket.png#lightbox)
 

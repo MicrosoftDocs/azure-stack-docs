@@ -28,23 +28,31 @@ To collect logs for updates using the Azure portal, see [Use Azure Update Manage
 To collect logs for the update failures using PowerShell, follow these steps on the client that you're using to access your cluster:
 
 1. Establish a remote PowerShell session with the server node. Run PowerShell as administrator and run the following command:
+
     ```powershell
     Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\password for the server>
     ```
+
 2. Get all the solutions updates and then filter the solution updates corresponding to a specific version. The version used corresponds to the version of solution update that failed to install.
+
     ```powershell
     $Update = Get-SolutionUpdate| ? version -eq "<Version string>" -verbose
     ```
+
 3. Identify the action plan for the failed solution update run.
+
     ```powershell
     $Failure = $update|Get-SolutionUpdateRun
     ```
+
 4. Identify the `ResourceID` for the Update.
+
     ```powershell
     $Failure
     ```
+
     Here's a sample output:
-    
+
     ```output
     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate| ? version -eq "10.2303.1.7" -verbose
     PS C:\Users\lcmuser> $Failure = $Update|Get-SolutionUpdateRun
@@ -57,6 +65,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
     Duration        : 00:16:37.9688878
     State           : Failed
     ```
+
     Note the `ResourceID` GUID. This GUID corresponds to the `ActionPlanInstanceID`.
 
 5. Copy the logs for the `ActionPlanInstanceID` that you noted earlier, to a text file named *log.txt*. Use Notepad to open the text file.
@@ -65,6 +74,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
     Get-ActionplanInstance -ActionplanInstanceId <Action Plan Instance ID> >log.txt
     notepad log.txt
     ```
+
     Here's sample output:
 
     ```output
@@ -101,4 +111,4 @@ get-solutionUpdate | start-solutionUpdate -IgnoreWarnings
 
 Learn more about how to [Run updates via PowerShell](./update-via-powershell-23h2.md).
 
-Learn more about how to [Run updates via the Azure portal](./azure-update-manager-23h2.md)
+Learn more about how to [Run updates via the Azure portal](./azure-update-manager-23h2.md).
