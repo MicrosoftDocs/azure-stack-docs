@@ -4,9 +4,9 @@ description: Learn how to create Kubernetes clusters in Azure Stack HCI using Az
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 11/27/2023
+ms.date: 01/25/2024
 ms.author: sethm 
-ms.lastreviewed: 11/27/2023
+ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
 ---
 
@@ -25,8 +25,8 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 
 - Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
   - **Azure subscription ID** - The Azure subscription ID where Azure Stack HCI is used for deployment and registration.
-  - **Custom Location ID** - Azure Resource Manager ID of the custom location. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create AKS hybrid clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name. These input values are customized during the Azure Stack HCI cluster deployment.
-  - **Network ID** - Azure Resource Manager ID of the Azure AKS Arc vnet created following [these steps](aks-networks.md). Your admin should give you the ID of the AKS Arc vnet. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az akshybrid vnet show --name "<vnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the Azure Arc vnet was created.
+  - **Custom Location ID** - Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Stack HCI cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create AKS hybrid clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name.
+  - **Network ID** - Azure Resource Manager ID of the Azure Stack HCI logical network created following [these steps](aks-networks.md). Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
 - You can run the steps in this article in a local Azure CLI instance. Make sure you have the latest version of [Az CLI](/cli/azure/install-azure-cli) on your local machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 - To connect to the AKS Arc cluster from anywhere, create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself as a member to the Microsoft Entra group. If you don't add yourself, you cannot access the AKS Arc cluster using kubectl. For more information about creating Microsoft Entra groups and adding users, see [Manage Microsoft Entra groups and group membership](/entra/fundamentals/how-to-manage-groups).
 - [Download and install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) on your local machine. The Kubernetes command-line tool, kubectl, enables you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
@@ -36,17 +36,18 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 Run the following command to install the necessary Azure CLI extensions:
 
 ```azurecli
-az extension add -n akshybrid --upgrade
+az extension add -n aksarc --upgrade
 az extension add -n customlocation --upgrade
+az extension add -n stack-hci-vm --upgrade
 az extension add -n connectedk8s --upgrade
 ```
 
-## Create an AKS Arc cluster
+## Create a Kubernetes cluster
 
-Use the `az akshybrid create` command to create an AKS Arc cluster. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
+Use the `az aksarc create` command to create a Kubernetes cluster in AKS Arc. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
 ```azurecli
-az akshybrid create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $vnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 1
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 0  --control-plane-ip $controlplaneIP
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
@@ -233,10 +234,10 @@ To see the Azure Vote app in action, open a web browser to the external IP addre
 
 ## Delete the cluster
 
-Run the `az akshybrid delete` command to clean up the cluster you created:
+Run the `az aksarc delete` command to clean up the cluster you created:
 
 ```azurecli
-az akshybrid delete --resource-group $aksclustername --name $resource_group
+az aksarc delete --resource-group $aksclustername --name $resource_group
 ```
 
 ## Next steps
