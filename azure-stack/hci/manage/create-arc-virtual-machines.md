@@ -80,24 +80,36 @@ Depending on the type of the network interface that you created, you can create 
     $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-sp" 
     ```
 
-For static IP, the *required* parameters are tabulated as follows:
+    The parameters for VM creation are tabulated as follows:
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
+    | **name**  |Name for the VM that you'll create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
     | **admin-username** |Username for the user on the VM you are deploying on your Azure Stack HCI cluster. |
     | **admin-password** |Password for the user on the VM you are deploying on your Azure Stack HCI cluster. |
-    | **image-name** | |
-    | **location** | |
+    | **image-name** |Name of the VM image used to provision the VM. |
+    | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for VM on your Azure Stack HCI cluster. |
-    | **custom-location** | Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this VM. |
-    | **authentication-type** | Azure regions as specified by `az locations`. |
-    | **nics** |VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
-    | **memory-mb** | IP address allocation method and could be `Dynamic` or `Static`. If this parameter isn't specified, by default the logical network is created with a dynamic configuration. |
-    | **processors** | Subnet address in CIDR notation. For example: "192.168.0.0/16". |
-    | **vm-size** | List of IPv4 addresses of DNS servers. Specify multiple DNS servers in a space separated format. For example: "10.0.0.5" "10.0.0.10" |
-    | **storage-path-id** | Ipv4 address of the default gateway. |
+    | **custom-location** |Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this VM. |
+    | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
+    | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
+    | **memory-mb** |Memory in megabtyes allocated to your VM.|
+    | **processors** |The number of processors allocated to your VM.|
+    | **vm-size** |The size of your VM.|
+    | **storage-path-id** |The associated storage path where the VM configuration and the data is saved.  |
+
+    If configuring a proxy server for your VM, the following *optional* parameters can be specified:
+
+    | Parameters | Description |
+    |------------|-------------|
+    | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:[http://proxy.example.com:3128](http://proxy.example.com:3128).  |
+    | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: [http://proxy.example.com:3128](http://proxy.example.com:3128). |
+    | **proxyServerNoproxy**  |URLs which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
+    | **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: [http://username:password@proxyserver.contoso.com:3128](http://username:password@proxyserver.contoso.com:3128). An example is: GusPinto|
+    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: [http://username:password@proxyserver. This URL opens in a new window or tab.contoso.com:3128](http://username:password@proxyserver.contoso.com:3128). An example is: PleaseUseAStrongerPassword! |
+    | **certificateFilePath**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
+  
 
 1. Run the following command to create a VM.
 
@@ -114,6 +126,7 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag is not specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
+
 ### Create a Linux VM from network interface
 
 To create a Linux VM, use the same command that you used to create the Windows VM.
@@ -122,6 +135,8 @@ To create a Linux VM, use the same command that you used to create the Windows V
 - The username and password works with the `authentication-type-all` parameter.
 - For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
 
+> [!IMPORTANT]
+> Proxy servers are not supported for Linux VMs.
 
 # [Azure portal](#tab/azureportal)
 
