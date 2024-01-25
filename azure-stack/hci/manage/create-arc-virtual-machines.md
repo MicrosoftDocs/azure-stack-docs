@@ -102,11 +102,11 @@ Depending on the type of the network interface that you created, you can create 
 
     | Parameters | Description |
     |------------|-------------|
-    | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:[http://proxy.example.com:3128](http://proxy.example.com:3128).  |
-    | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: [http://proxy.example.com:3128](http://proxy.example.com:3128). |
+    | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:[`http://proxy.example.com:3128`](http://proxy.example.com:3128).  |
+    | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: [http://proxy.example.com:3128`](http://proxy.example.com:3128). |
     | **proxyServerNoproxy**  |URLs which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
     | **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: [http://username:password@proxyserver.contoso.com:3128](http://username:password@proxyserver.contoso.com:3128). An example is: GusPinto|
-    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: [http://username:password@proxyserver. This URL opens in a new window or tab.contoso.com:3128](http://username:password@proxyserver.contoso.com:3128). An example is: PleaseUseAStrongerPassword! |
+    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: [`http://username:password@proxyserver.contoso.com:3128`](http://username:password@proxyserver.contoso.com:3128). An example is: `PleaseUseAStrongerPassword!` |
     | **certificateFilePath**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
   
 
