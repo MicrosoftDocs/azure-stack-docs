@@ -19,7 +19,7 @@ This article describes how to create storage path for VM images used on your Azu
 
 ## About storage path
 
-When the Azure Stack HCI cluster is deployed, storage paths are created as part of the deployment. The default option automatically selects a storage path with high availability. You might however decide to use a specific storage path. In this case, ensure that the specfied storage path has sufficient storage space.
+When the Azure Stack HCI cluster is deployed, storage paths are created as part of the deployment. The default option automatically selects a storage path with high availability. You might however decide to use a specific storage path. In this case, ensure that the specified storage path has sufficient storage space.
 
 The storage paths on your Azure Stack HCI cluster should point to cluster shared volumes that can be accessed by all the servers on your cluster. In order to be highy available, we strongly recommend that you create storage paths under cluster shared volumes.
 
