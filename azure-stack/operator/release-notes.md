@@ -122,7 +122,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1.2306.4.73.md)
+- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1-2306-4-73.md)
 
 ### After successfully applying the 2311 update
 
