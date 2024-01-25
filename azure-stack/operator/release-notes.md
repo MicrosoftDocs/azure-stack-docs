@@ -120,9 +120,9 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 ### Hotfix prerequisites: before applying the 2311 update
 
-The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfixes:
+The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
 
-- No Azure Stack Hub hotfix for 2306.
+- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1-2306-4-73.md)
 
 ### After successfully applying the 2311 update
 
@@ -182,7 +182,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 ### Hotfix prerequisites: before applying the 2306 update
 
-The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfixes:
+The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
 
 - [Azure Stack Hub hotfix 1.2301.2.64](hotfix-1-2301-2-64.md)
 
@@ -251,7 +251,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 ### Hotfix prerequisites: before applying the 2301 update
 
-The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfixes:
+The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfix installed:
 
 - [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
 
