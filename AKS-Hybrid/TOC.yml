@@ -3,16 +3,12 @@
 - name: Overview
   expanded: true
   items:
-  - name: AKS enabled by Arc
+  - name: What is AKS enabled by Arc?
     href: aks-overview.md
+  - name: Overview
+    href: overview.md
   - name: Uninstall AKS hybrid cluster provisioning preview
     href: aks-hybrid-preview-uninstall.md
-- name: Architecture
-  items:
-  - name: Baseline architecture for AKS hybrid
-    href: /azure/architecture/example-scenario/hybrid/aks-baseline
-  - name: Network architecture for AKS hybrid
-    href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: System requirements
   href: system-requirements.md
 - name: AKS Arc version 23H2
@@ -447,6 +443,12 @@
     href: help-support.md
   - name: File bugs
     href: https://aka.ms/AKS-hybrid-issues
+- name: Architecture
+  items:
+  - name: Baseline architecture for AKS
+    href: /azure/architecture/example-scenario/hybrid/aks-baseline
+  - name: Network architecture for AKS
+    href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: Reference
   items:
   - name: Azure Stack HCI
