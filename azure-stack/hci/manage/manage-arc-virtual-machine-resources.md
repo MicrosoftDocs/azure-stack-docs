@@ -44,7 +44,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. Choose the **Provisioning type** for disk as **Dynamic** or **Static**.
     1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space. If you select the manual option, previous storage options will auto-populate the dropdown by default.
   
-   :::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png" alt-text="Screenshot of Add new disk blade with provided inputs." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png":::
+   <!--:::image type="content" source="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png" alt-text="Screenshot of Add new disk blade with provided inputs." lightbox="./media/manage-arc-virtual-machine-resources/add-data-disk-2.png":::-->
 
 1. Select **Save** to add the new disk.
 
