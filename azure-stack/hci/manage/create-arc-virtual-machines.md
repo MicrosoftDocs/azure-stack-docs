@@ -39,7 +39,6 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - Access to a network interface that you have created on a logical network associated with your Azure Stack HCI cluster. You can choose a network interface with static IP or one with a dynamic IP allocation. For more information, see how to [Create network interfaces](./create-network-interfaces.md).
 
-
 # [Azure portal](#tab/azureportal)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
@@ -102,11 +101,11 @@ Depending on the type of the network interface that you created, you can create 
 
     | Parameters | Description |
     |------------|-------------|
-    | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:[`http://proxy.example.com:3128`](http://proxy.example.com:3128).  |
-    | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: [`http://proxy.example.com:3128`](http://proxy.example.com:3128). |
+    | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
+    | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
     | **proxyServerNoproxy**  |URLs which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
-    | **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: [`http://username:password@proxyserver.contoso.com:3128`](http://username:password@proxyserver.contoso.com:3128). An example is: GusPinto|
-    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: [`http://username:password@proxyserver.contoso.com:3128`](http://username:password@proxyserver.contoso.com:3128). An example is: `PleaseUseAStrongerPassword!` |
+    | **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
+    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `PleaseUseAStrongerPassword!` |
     | **certificateFilePath**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
   
 
@@ -141,8 +140,8 @@ To create a Linux VM, use the same command that you used to create the Windows V
 
 Follow these steps in Azure portal of your Azure Stack HCI system.
 
-1. Go to **Azure Arc > Virtual machines**.
-1. From the top command bar, select **+ Add/Create**. From the dropdown list, select **Create a machine in a connected host environment**.
+1. Go to **Azure Arc cluster view** > **Virtual machines**.
+1. From the top command bar, select **+ Create VM**.
 
    :::image type="content" source="./media/manage-vm-resources/select-create-vm.png" alt-text="Screenshot of select + Add/Create VM." lightbox="./media/manage-vm-resources/select-create-vm.png":::
 
@@ -161,19 +160,21 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
         > [!IMPORTANT]
-        > VM names should be in lowercase letters and may use hyphens and numbers.
+        > VM names should be in lowercase letters and can include hyphens and numbers.
 
     1. **custom-location** – Select the custom location for your VM. The custom locations are filtered to only show those locations that are enabled for your Azure Stack HCI.
     
         **The Virtual machine kind** is automatically set to **Azure Stack HCI**.
 
-    1. **Security type**: For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on what are Trusted Launch Arc virtual machines, see [What is Trusted Launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md)
-    
-    1. **Image** – Select the Marketplace or customer managed image to create the VM image.
+    1. **Security type** - For the security of your VM, select **Standard** or **Trusted Launch virtual machines**. For more information on what are Trusted Launch Arc virtual machines, see [What is Trusted Launch for Azure Arc Virtual Machines?](./trusted-launch-vm-overview.md).
+
+   1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected. Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space.
+
+   1. **Image** – Select the Marketplace or customer managed image to create the VM image.
     
         1. If you selected a Windows image, provide a username and password for the administrator account. You'll also need to confirm the password.
  
-          <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::-->       
+        <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::-->
 
         1. If you selected a Linux image, in addition to providing username and password, you'll also need SSH keys.
 
@@ -185,22 +186,21 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
     1. **Memory type** – Specify the memory type as static or dynamic.
 
-
 1. In the **VM extensions** section, select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
 
-    :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png":::   
-   
+    :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png":::
+
     > [!NOTE]
     > - You can't enable guest management via Azure portal if the Arc VM is already created.
     > - Add at least one network interface through the **Networking** tab to complete guest management setup.
     > - The network interface that you enable, must have a valid IP address and internet access. For more information, see [Arc VM management networking](../manage/azure-arc-vm-management-networking.md#arc-vm-virtual-network).
 
-1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters: 
+1. Set the local VM administrator account credentials used when connecting to your VM via RDP. In the **Administrator account** section, input the following parameters:
 
     1. Specify the local VM administrator account username.
     1. Specify the password and then **Confirm password**.
 
-1. If you selected a Windows VM image, you can domain join your Windows VM. In the **Domain join** section, input the following parameters: 
+1. If you selected a Windows VM image, you can domain join your Windows VM. In the **Domain join** section, input the following parameters:
    
     1. Select **Enable domain join**.
 
@@ -214,30 +214,32 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     
         If the domain is not specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
 
-1. **(Optional)** Create new or add more disks to the VM. 
+1. **(Optional)** Create new or add more disks to the VM.
 
    :::image type="content" source="./media/manage-vm-resources/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/manage-vm-resources/create-new-disk.png":::
 
-    1. Select **+ Add new disk**. 
-    1. Provide a **Name** and **Size**. 
-    1. You can also choose the disk **Provisioning type** to be **Static** or **Dynamic**.
-    1. Select **Add**.
+    1. Select **+ Add new disk**.
+    1. Provide a **Name** and **Size**.
+    1. Choose the disk **Provisioning type** to be **Static** or **Dynamic**.
+    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space. If you select the manual option, previous storage options will auto-populate the dropdown by default.
+    1. Select **Add**. After it's created, you can see the new disk in the list view.
+    
+       :::image type="content" source="./media/manage-vm-resources/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/manage-vm-resources/create-new-disk.png":::
 
 1. **(Optional)** Create or add a network interface for the VM.
 
     > [!NOTE]
     > If you enabled guest management, you must add at least one network interface.
 
-    :::image type="content" source="./media/manage-vm-resources/create-virtual-network-interface.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/create-virtual-network-interface.png":::
+    :::image type="content" source="./media/manage-vm-resources/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/add-new-disk.png":::
 
     1. Provide a **Name** for the network interface. 
     1. Select the **Network** and choose static or dynamic IP addresses.
-    1. Select IPv4 type as **Static** or **DHCP**. 
+    1. Select IPv4 type as **Static** or **DHCP**.
         
         For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
 
     1. Select **Add**.
-
 
 1. **(Optional)** Add tags to the VM resource if necessary.
 
@@ -249,7 +251,6 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 ---
 
-
 ## Use managed identity to authenticate Arc VMs
 
 When the Arc VMs are created on your Azure Stack HCI system via Azure CLI or Azure portal, a system-assigned managed identity is also created that lasts for the lifetime of the Arc VMs. 
@@ -257,7 +258,6 @@ When the Arc VMs are created on your Azure Stack HCI system via Azure CLI or Azu
 The Arc VMs on Azure Stack HCI are extended from Arc-enabled servers and can use system-assigned managed identity to access other Azure resources that support Microsoft Entra ID-based authentication. For example, the Arc VMs can use a system-assigned managed identity to access the Azure Key Vault.
 
 For  more information, see [System-assigned managed identities](/entra/identity/managed-identities-azure-resources/overview#managed-identity-types) and [Authenticate against Azure resource with Azure Arc-enabled servers](/azure/azure-arc/servers/managed-identity-authentication).
-
 
 ## Next steps
 
