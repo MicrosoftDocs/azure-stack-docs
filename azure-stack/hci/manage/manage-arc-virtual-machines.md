@@ -75,7 +75,9 @@ Based on whether a guest agent is running on your Arc VM, the steps to enable gu
     }
     ```
    
-    The guest agent is running when `statuses` indicate `code` as `ProvisioningState/succeeded` and the `displayStatus` as `Connected`. If running an older version, the `statuses` would indicate `code` as `OK` and the `displayStatus` as `Active`
+    The guest agent is running:
+    - When `statuses` indicate `code` as `ProvisioningState/succeeded` and the `displayStatus` as `Connected`. 
+    - If running an older version, the `statuses` would indicate `code` as `OK` and the `displayStatus` as `Active`
 
 If your statuses do not match the above output, follow the steps in [Enable guest management when the guest agent is not running](#enable-guest-management-on-a-vm-when-guest-agent-is-not-running).
 
@@ -92,7 +94,7 @@ Follow the steps to [verify that the guest management is enabled in the Azure po
 
 ### Enable guest management on a VM when guest agent is not running
 
-There are two scenarios when the guest agent is not running. Each of these scenarios and the corresponding steps are described in the following sections.
+There are two scenarios when the guest agent is not running - when the statuses is connecting and when the statuses are blank. Each of these scenarios and the corresponding steps are described in the following sections.
 
 #### Status displayed as connecting
 
@@ -114,7 +116,10 @@ Your status shows as connecting. Here's a sample output snippet indicating the r
     },
 ```
 
-The guest agent is not running when `statuses` indicate `code` as `ProvisioningState/InProgress` and the `displayStatus` as `Connecting`. If running an older version, the `statuses` would indicate `code` as `OK`, the `displayStatus` as `Active`and `message` as `Successfully started HyperV listener`.
+The guest agent is not running when:
+- The guest agent is not running when `statuses` indicate `code` as `ProvisioningState/InProgress` and the `displayStatus` as `Connecting`. 
+- If running an older version, the `statuses` would indicate `code` as `OK`, the `displayStatus` as `Active`and `message` as `Successfully started HyperV listener`.
+
 
 Follow these steps:
 
@@ -145,7 +150,7 @@ Follow the steps to [verify that the guest management is enabled in the Azure po
 
 #### Status displayed as null
 
-Your status shows as null. Here's a sample output snippet indicating the null status.
+Your status shows as null. This indicates the required *iso* for guest agent is missing. Here's a sample output snippet indicating the null status.
 
 ```output
 "instanceView": {
