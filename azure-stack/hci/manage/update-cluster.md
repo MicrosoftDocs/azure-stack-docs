@@ -1,15 +1,17 @@
 ---
-title: Update Azure Stack HCI clusters
-description: How to apply operating system and firmware updates to Azure Stack HCI using Windows Admin Center and PowerShell.
+title: Update clusters for Azure Stack HCI, version 22H2
+description: How to apply operating system and firmware updates to Azure Stack HCI, version 22H2 using Windows Admin Center and PowerShell.
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
 ms.date: 12/19/2023
 ---
 
-# Update Azure Stack HCI clusters
+# Update Azure Stack HCI clusters, version 22H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+
+[!INCLUDE [WARNING](../../includes/hci-applies-to-22h2-cluster-updates.md)]
 
 This article describes how to install, monitor, and troubleshoot updates on multi-node clusters. To update single-node clusters, see [Updating single-node clusters](../deploy/single-server.md#updating-single-node-clusters).
 
