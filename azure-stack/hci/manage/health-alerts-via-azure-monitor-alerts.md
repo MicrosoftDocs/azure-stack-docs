@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 01/24/2024
 ---
 
 # Respond to Azure Stack HCI health alerts using Azure Monitor alerts (preview)
@@ -37,7 +37,7 @@ Here are the prerequisites for using health alerts with Azure Stack HCI:
 
 - Have access to an Azure Stack HCI, version 23H2 system that is deployed and registered. For more information, see [Deploy Azure Stack HCI via Azure portal](../deploy/deploy-via-portal.md).
 
-## Configure alerts for Azure Stack HCI
+## Configure health alerts for Azure Stack HCI
 
 Here are the high-level steps to configure health alerts for Azure Stack HCI:
 
@@ -45,8 +45,6 @@ Here are the high-level steps to configure health alerts for Azure Stack HCI:
 - **Step 2:** Configure alert processing rules.
 
 ### Step 1: Turn on the health alerts capability
-
-Make sure your Azure subscription is activated for evaluation before you turn on the health alerts capability on your Azure Stack HCI system.
 
 When you enable alerts via the Azure portal, the Azure Monitor extension is installed in the background. To verify that this extension is installed, go to **Settings** > **Extensions** in the Azure portal. This extension shows up as **AzureEdgeAlerts** in the list of extensions.
 
@@ -78,7 +76,7 @@ Here are some common use cases of how you can configure alert processing rules t
 
 For information about alert processing rules and how to configure them, see [Alert processing rules](/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal) and [Configure an alert processing rule](/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal#configure-an-alert-processing-rule).
 
-## Review alerts
+## Review health alerts
 
 In the Azure portal, you can review health alerts on your Azure Stack HCI cluster in real-time from the **Monitoring** > **Alerts** blade.
 
