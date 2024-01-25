@@ -38,7 +38,7 @@ When you enable guest management on an Arc VM, the guest agent installs the [Azu
 Based on whether a guest agent is running on your Arc VM, the steps to enable guest management are different.
 
 > [!IMPORTANT] 
-> Make sure that your Azure Stack HCI cluster is on 2311 <!--2311.2--> to run this procedure.
+> Make sure that your Azure Stack HCI cluster is running 2311 or later to run this procedure.
 
 ### Verify if guest agent is running
 
