@@ -158,7 +158,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     
         1. If you selected a Windows image, provide a username and password for the administrator account. You'll also need to confirm the password.
  
-          <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::-->       
+        <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::-->
 
         1. If you selected a Linux image, in addition to providing username and password, you'll also need SSH keys.
 
