@@ -21,13 +21,9 @@ This article provides a brief conceptual overview of the various security featur
 
 ## Microsoft Defender for Cloud
 
-Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services. You can use Defender for Cloud to assess both the individual and overall security posture of all the resources in your Azure Stack HCI environment.
+Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
 
-Here are the benefits of using Defender for Cloud for Azure Stack HCI:
-
-- **No additional cost.** With the basic Defender for Cloud plan, you get advanced security features for your Azure Stack HCI system at no extra cost.
-
-- **Seamless integration with Azure Stack HCI-certified hardware.** Defender for Cloud is designed to work seamlessly with Azure Stack HCI-certified hardware to provide consistent Secure Boot, United Extensible Firmware Interface (UEFI), and Trusted Platform Module (TPM) settings out of the box.
+With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost.
 
 For more information, see [Manage system security with Microsoft Defender for Cloud](../manage/manage-security-with-defender-for-cloud.md).
 
