@@ -1,12 +1,10 @@
 ---
 title: Azure Kubernetes Service (AKS) enabled by Azure Arc system requirements
 description: Learn about system requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc.
+ms.date: 01/25/2024
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 01/16/2024
-ms.reviewer: mikek
-ms.date: 11/03/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS system requirements
@@ -290,6 +288,17 @@ From the previous output, you now have the **application ID** and the **secret**
 ### Azure resource group
 
 You must have an Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure region available before registration.
+
+### Azure regions
+
+> [!WARNING]
+> AKS Arc currently supports cluster creation exclusively within the following specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
+
+The AKS Arc service is used for registration, billing, and management. It is currently supported in the following regions:
+
+- East US
+- South Central US
+- West Europe
 
 ## Active Directory requirements
 
