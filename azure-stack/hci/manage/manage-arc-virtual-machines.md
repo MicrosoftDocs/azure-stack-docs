@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/22/2024
+ms.date: 01/25/2024
 ---
 
 # Manage Arc VMs on Azure Stack HCI (preview)
@@ -56,15 +56,15 @@ Based on whether a guest agent is running on your Arc VM, the steps to enable gu
       "vmAgent": {
         "statuses": [
           {
-            "code": "OK",
-            "displayStatus": "Active",
+            "code": "ProvisioningState/succeeded",
+            "displayStatus": "Connected",
             "level": "Info",
             "message": "Successfully established connection with mocguestagent",
             "time": "2024-01-13T00:57:39Z"
           },
           {
-            "code": "OK",
-            "displayStatus": "Active",
+            "code": "ProvisioningState/succeeded",
+            "displayStatus": "Connected",
             "level": "Info",
             "message": "Successfully updated mocguestagent version'",
             "time": "2024-01-13T00:57:39Z"
@@ -75,7 +75,7 @@ Based on whether a guest agent is running on your Arc VM, the steps to enable gu
     }
     ```
    
-    The guest agent is running when `statuses` indicate `code` as `ProvisioningState/succeeded` and the `displayStatus` as `connected`.
+    The guest agent is running when `statuses` indicate `code` as `ProvisioningState/succeeded` and the `displayStatus` as `Connected`. If running an older version, the `statuses` would indicate `code` as `OK` and the `displayStatus` as `Active`
 
 If your statuses do not match the above output, follow the steps in [Enable guest management when the guest agent is not running](#enable-guest-management-on-a-vm-when-guest-agent-is-not-running).
 
@@ -103,16 +103,18 @@ Your status shows as connecting. Here's a sample output snippet indicating the r
       "vmAgent": {
         "statuses": [
           {
-            "code": "OK",
-            "displayStatus": "Active",
+            "code": "ProvisioningState/InProgress",
+            "displayStatus": "Connecting",
             "level": "Info",
-            "message": "Successfully started HyperV listener",
+            "message": "Waiting for connection with mocguestagent",
             "time": "2024-01-19T01:41:15Z"
           }
         ]
       }
     },
 ```
+
+The guest agent is not running when `statuses` indicate `code` as `ProvisioningState/InProgress` and the `displayStatus` as `Connecting`. If running an older version, the `statuses` would indicate `code` as `OK`, the `displayStatus` as `Active`and `message` as `Successfully started HyperV listener`.
 
 Follow these steps:
 
