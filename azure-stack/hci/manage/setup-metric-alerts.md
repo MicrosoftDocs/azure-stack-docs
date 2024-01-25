@@ -13,7 +13,7 @@ ms.date: 01/24/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to use Azure Insights for setting up metric alerts. 
+This article describes how to set up metric alerts for Azure Stack HCI.
 
 For information about how to set up log alerts, see [Set up log alerts for Azure Stack HCI systems](./setup-hci-system-alerts.md).
 
@@ -21,32 +21,63 @@ For information about how to set up log alerts, see [Set up log alerts for Azure
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- You must have access to an Azure Stack HCI cluster that is deployed and registered.
-- You must have [Insights enabled on the cluster](./monitor-hci-single.md#enable-insights).
+- You have access to an Azure Stack HCI cluster that is deployed and registered.
 
-## Set up metric alerts using Insights
+- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
-> [!IMPORTANT]
-> Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
+## Create metrics alerts
 
-Follow these steps to set up metric alerts:
+A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. A metric time-series is a series of metric values captured over a period of time. You can use these metrics to create alert rules.
 
-1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Stack HCI**.
+To learn more about metric alerts and how to create alert rules, see [Metric alerts](/azure/azure-monitor/alerts/alerts-types#metric-alerts) and [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule?tabs=metric).
 
-2. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
+You can create metric alerts for your Azure Stack HCI cluster through metrics explorer in the Azure portal or command-Line Interface (CLI).
 
-3. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
+### Create metric alerts through metrics explorer
 
-    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
+Follow these steps to create alerts through metrics explorer:
 
-4. After the query loads, select **+ New alert rule**.
+1. In the Azure portal, select **Metrics** under the **Monitoring** section.
 
-    :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/alerts-logs-insights/new-alert-rule.png":::
+1. Select **Scope** and then select **Metric Namespace** as **Azure Stack HCI**.
 
-5. From the alerts interface you can set up your alert conditions, actions and more. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
+1. Select the **Metric** on which you want to set up alerts.
 
-    :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/alerts-logs-insights/create-alert-rule.png":::
+1. Select **New alert rule**.
+
+    :::image type="content" source="media/setup-metric-alerts/new-alert-rule.png" alt-text="Screenshot showing the option to create a new alert rule." lightbox="media/setup-metric-alerts/new-alert-rule.png":::
+
+1. Select the signal name and then select **Apply**.
+
+    :::image type="content" source="media/setup-metric-alerts/select-a-signal.png" alt-text="Screenshot of the Select a signal pane on the right." lightbox="media/setup-metric-alerts/select-a-signal.png":::
+
+1. Preview the results of the selected metric signal in the **Preview** section. Select values for the **Time range** and **Time series**.
+
+1. In the **Alert logic** section, add details like threshold, operator, aggregation type, threshold values, unit, threshold sensitivity, aggregation granularity, and frequency of evaluation and then select **Next: Actions \>**.
+
+    :::image type="content" source="media/setup-metric-alerts/create-alert-rule-alerts-logic-section.png" alt-text="Screenshot of the Alerts logic section on the Create an alert rule page." lightbox="media/setup-metric-alerts/create-alert-rule-alerts-logic-section.png":::
+
+1. On the **Actions** tab of the **Create and alert rule** page, specify the action group to indicate your preferred method of notification, and then select **Next: Details \>**.
+
+    :::image type="content" source="media/setup-metric-alerts/create-alert-rule-action-tab.png" alt-text="Screenshot of the Select action groups context pane on the Create an alert rule page." lightbox="media/setup-metric-alerts/create-alert-rule-action-tab.png":::
+
+1. On the **Details** tab of the **Create and alert rule** page, select severity and alert rule description. Select **Review+Create** and then select **Create**.
+
+    :::image type="content" source="media/setup-metric-alerts/create-alert-rule-details-tab.png" alt-text="Screenshot of the Details tab on the Create an alert rule page." lightbox="media/setup-metric-alerts/create-alert-rule-details-tab.png":::
+
+### Create metric alerts through Azure CLI
+
+Use the [`az monitor metrics alert create`](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-create) command to create metrics alert rules through Azure CLI.
+
+Here's an example of the command usage:
+
+To create a metric alert rule that monitors if the average CPU usage of a VM is greater than 90, run the following command:
+
+```azure CLI
+az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
+```
 
 ## Next steps
 
-Learn how to [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
+- Learn how to [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule).
+- Learn how to [monitor Azure Stack HCI with Azure Monitor Metrics](./monitor-cluster-with-metrics.md).
