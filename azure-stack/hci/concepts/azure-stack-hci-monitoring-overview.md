@@ -13,15 +13,19 @@ ms.date: 01/24/2024
 
 This article provides an overview of Azure Stack HCI monitoring.
 
-Routine monitoring of your Azure Stack HCI system is crucial for maintaining its health and optimal functionality. By regularly collecting monitoring data from all system components, you can promptly identify and fix any potential issues.
+Monitoring Azure Stack HCI involves the regular collection and analysis of data from all components of your system to promptly identify and address any potential issues. Routine monitoring is crucial for maintaining the health and functionality of your Azure Stack HCI system.
 
-To understand the current performance patterns of your Azure Stack HCI system, identify performance anomalies, and develop methods to address issues, it is important to set baseline performance metrics under different times and load conditions.
+To understand the current performance patterns, identify performance anomalies, and develop methods to address issues, it's important to set baseline performance metrics for your system under different times and load conditions.
   
-Azure Stack HCI utilizes [Azure Monitor](/azure/azure-monitor/overview) features, such as Insights, Metrics, Logs, Workbooks, and Alerts to help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline.  
+Azure Stack HCI utilizes [Azure Monitor](/azure/azure-monitor/overview) tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. These tools help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline.  
 
-## High-level architechture
+## High-level architecture
 
-The integration of Azure Stack HCI with Azure Monitor allows you to use the monitoring capabilities of Azure's centralized monitoring platform. Azure Monitor provides a set of tools for collecting, analyzing, and acting on monitoring data gathered from your Azure Stack HCI system.
+Broadly, the architecture of Azure Stack HCI monitoring comprises the following key components:
+
+- Deploying Azure Monitor Agent and Telemetry and Diagnostics extensions on every node within the cluster. These extensions are responsible for collecting log and metric data from each node, respectively.
+- Storing log data in the Log Analytics workspace based on the instructions specified in Data Collection Rules, while storing metrics data in a dedicated time-series database.
+- Using Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts to analyze, visualize, and respond to the data effectively.
 
 The following diagram is an architectural representation of Azure Stack HCI monitoring implementation.
 
@@ -39,13 +43,13 @@ This section describes the monitoring capabilities in Azure Stack HCI.
 
 ### Insights
 
-Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster using logs. You can use Insights to monitor a single cluster or multiple clusters simultaneously. Insights for Azure Stack HCI collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. This data is then visualized using Azure workbooks. For more information, see[]() and []().
+Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster using logs. You can use Insights to monitor a single cluster or multiple clusters simultaneously. Insights for Azure Stack HCI collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. This data is then visualized using Azure workbooks. For more information, see [Monitor multiple Azure Stack HCI clusters with Insights](../manage/monitor-hci-multi.md) and [Monitor a single Azure Stack HCI cluster with Insights](../manage/monitor-hci-single.md).
 
-With Insights for Azure Stack HCI, you get access to default workbooks with basic metrics, along with specialized workbooks created for monitoring key features of Azure Stack HCI. To learn more about these feature workbooks, see [Monitor HCI features with Insights]().
+With Insights for Azure Stack HCI, you get access to default workbooks with basic metrics, along with specialized workbooks created for monitoring key features of Azure Stack HCI. To learn more about these feature workbooks, see [Monitor HCI features with Insights](../manage/monitor-features.md).
 
 ### Metrics
 
-Azure Stack HCI enables you to store numeric data from your clusters in a dedicated time-series database. This data is collected using Telemetry and Diagnostics Arc extension and then analyzed using Metrics Explorer. To learn more about Metrics, see [](../manage/monitor-cluster-with-metrics.md).
+Azure Stack HCI enables you to store numeric data from your clusters in a dedicated time-series database. This data is collected using Telemetry and Diagnostics Arc extension and then analyzed using Metrics Explorer. To learn more about Metrics, see [Monitor Azure Stack HCI with Azure Monitor Metrics](../manage/monitor-cluster-with-metrics.md).
 
 ### Alerts
 
@@ -58,5 +62,5 @@ The following table provides a brief description and setup instructions for each
 | Alert type | Description | How to configure |
 | --- | --- | --- |
 | Health alerts | These are system-generated alerts and have no additional cost. You don’t need to set up Log Analytics or manually create any alert rules. | See [Configure health alerts for Azure Stack HCI](../manage/health-alerts-via-azure-monitor-alerts.md#configure-health-alerts-for-azure-stack-hci). |
-| Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. |  |
-| Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your Azure Stack HCI system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. |  |
+| Log based alerts | These are customer-defined alerts that are used to perform advanced logic operations on your log data. These alerts allow you to use Log Analytics query to evaluate resource logs at a predefined frequency. | See [Set up log alerts for Azure Stack HCI](../manage/setup-hci-system-alerts.md).  |
+| Metric based alerts | These are customer-defined alerts that are used to evaluate metrics of your Azure Stack HCI system at regular intervals. Metric alerts are useful when you want to be alerted about data that requires little or no manipulation. | See [Set up metric alerts for Azure Stack HCI](../manage/setup-metric-alerts.md). |
