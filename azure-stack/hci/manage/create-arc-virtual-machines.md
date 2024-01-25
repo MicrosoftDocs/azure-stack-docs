@@ -94,9 +94,8 @@ Depending on the type of the network interface that you created, you can create 
     | **custom-location** |Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this VM. |
     | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
-    | **memory-mb** |Memory in megabtyes allocated to your VM.|
-    | **processors** |The number of processors allocated to your VM.|
-    | **vm-size** |The size of your VM.|
+    | **memory-mb** |Memory in megabtyes allocated to your VM. If not specified, defaults are used.|
+    | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
     | **storage-path-id** |The associated storage path where the VM configuration and the data is saved.  |
 
     If configuring a proxy server for your VM, the following *optional* parameters can be specified:
@@ -114,10 +113,10 @@ Depending on the type of the network interface that you created, you can create 
 1. Run the following command to create a VM.
 
    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" vm-size="Custom" --storage-path-id $storagePathId 
+    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
    ``` 
 
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output. 
+The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
 > [!NOTE]
 > The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Arc VM](./manage-arc-virtual-machines.md#enable-guest-management) to enable it after the VM creation.
