@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 01/22/2024
+ms.date: 01/25/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -229,19 +229,21 @@ This section describes how to assign Azure permissions for deployment from the A
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-a.png" alt-text="Screenshot of the Add role assignment in Access control in subscription for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-a.png":::
 
-1. Go through the tabs and assign at subscription level the **Azure Stack HCI Administrator** role permissions to the user who deploys the cluster.
+1. Go through the tabs and assign the following role permissions to the user who deploys the cluster:
 
-    Repeat the above steps to also assign **Reader** role permissions at subscription level to the user who deploys the cluster.
+    - **Azure Stack HCI Administrator**
+    - **Reader**
 
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Go through the tabs and assign at resource group level **Key Vault Administrator** permissions to the user who deploys the cluster. Repeat the above steps to also assign the following permissions at resource group level: 
+1. Go through the tabs and assign the following permissions to the user who deploys the cluster: 
 
-    - Key Vault Contributor
-    - Storage Account Contributor
+    - **Key Vault Administrator**
+    - **Key Vault Contributor**
+    - **Storage Account Contributor**
  
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
