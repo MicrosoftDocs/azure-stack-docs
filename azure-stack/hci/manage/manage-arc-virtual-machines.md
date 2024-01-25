@@ -66,7 +66,7 @@ Based on whether a guest agent is running on your Arc VM, the steps to enable gu
             "code": "ProvisioningState/succeeded",
             "displayStatus": "Connected",
             "level": "Info",
-            "message": "Successfully updated mocguestagent version'",
+            "message": "New mocguestagent version detected 'v0.13.0-3-gd13b4794",
             "time": "2024-01-13T00:57:39Z"
           }
         ],
