@@ -1,5 +1,5 @@
 ---
-title: Set up alerts for Azure Stack HCI systems
+title: Set up log alerts for Azure Stack HCI systems
 description: How to set up alerts for various Azure Stack HCI system resources using sample log queries.
 ms.topic: how-to
 author: ronmiab

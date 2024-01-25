@@ -13,7 +13,9 @@ ms.date: 01/24/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to use Azure Insights for setting up metric alerts. For information about how to set up log alerts, see [](./setup-hci-system-alerts.md).
+This article describes how to use Azure Insights for setting up metric alerts. 
+
+For information about how to set up log alerts, see [Set up log alerts for Azure Stack HCI systems](./setup-hci-system-alerts.md).
 
 ## Prerequisites
 
