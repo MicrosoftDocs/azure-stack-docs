@@ -1,6 +1,6 @@
 ---
 title: Monitor a single Azure Stack HCI, version 23H2 cluster with Insights
-description: Enable logging and monitoring capabilities to monitor a single Azure Stack HCI cluster using Insights.
+description: Enable logging and monitoring capabilities to monitor a single Azure Stack HCI, version 23H2 cluster using Insights.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
