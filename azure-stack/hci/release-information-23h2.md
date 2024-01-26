@@ -34,10 +34,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 - <sup>1</sup> An empty cell indicates there's no **Release build** that aligns with the **OS build** for that month.
 
-- <sup>2</sup> A **Baseline build** is the initial version of the software that you must deploy before upgrading to the next version. An **Update build** includes incremental updates from the most recent **Baseline build**. To deploy an **Update build**, it is necessary to first deploy the previous **Baseline build**.
+- <sup>2</sup> A **Baseline** build is the initial version of the software that you must deploy before upgrading to the next version. An **Update** build includes incremental updates from the most recent **Baseline** build. To deploy an **Update** build, it's necessary to first deploy the previous **Baseline** build.
 
-## Release notes
-
-For information about what's included in each version of Azure Stack HCI, see the following release notes:
+## Next steps
 
 - [Release Notes for Azure Stack HCI, version 23H2](https://support.microsoft.com/topic/9981de59-9fae-4118-a636-131a8dd4a013)
