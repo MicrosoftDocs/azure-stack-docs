@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/23/2024
+ms.date: 01/25/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2 (preview)
@@ -19,11 +19,15 @@ This article describes how to manage default security settings for your Azure St
 
 ## View default security settings
 
-### View settings in Azure portal
+### View security default settings in Azure portal
 
-### Manage security settings with PowerShell
+Use security default settings to manage cluster security, drift control, and secured core server settings on your cluster.
 
-## Modify security defaults
+:::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows the Application control (WDAC) page on Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
+
+### Manage security default settings with PowerShell
+
+## Modify security default settings
 
 Start with the initial security baseline and then modify drift control and protected security settings defined during deployment.
 
