@@ -33,6 +33,10 @@
         href: known-issues-2311.md
       - name: Known issues - 2310 release
         href: known-issues-23h2.md
+    - name: Evaluate
+      items:
+      - name: Deploy a virtual Azure Stack HCI
+        href: deploy/deployment-virtual.md
     - name: Plan
       items:
         - name: Review security features
