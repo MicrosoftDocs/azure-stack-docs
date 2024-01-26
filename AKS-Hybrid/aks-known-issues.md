@@ -14,9 +14,9 @@ ms.reviewer: guanghu
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article identifies critical known issues and their workarounds in AKS enabled by Arc, version 23H2.
+This article identifies important known issues and their workarounds in AKS enabled by Arc, version 23H2.
 
-The article describes known issues in AKS for all Azure Stack HCI 23H2 releases. These known issues are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Kubernetes clusters on Azure Stack HCI, carefully review this information.
+The article describes known issues in AKS Arc for all Azure Stack HCI 23H2 releases. These known issues are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Kubernetes clusters on Azure Stack HCI, carefully review this information.
 
 ## Known issues in version 2311.2
 
