@@ -1,35 +1,34 @@
 ---
-title: Known issues in AKS on Azure Stack HCI (preview)
-description: Learn about known issues in the current version of AKS on Azure Stack HCI.
+title: Known issues in AKS enabled by Azure Arc
+description: Learn about known issues in the current version of AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 12/14/2023
+ms.date: 01/26/2024
 ms.author: sethm 
-ms.lastreviewed: 12/14/2023
+ms.lastreviewed: 01/26/2024
 ms.reviewer: guanghu
 
 ---
 
-# Known issues in AKS on Azure Stack HCI (preview)
+# Known issues in AKS enabled by Azure Arc
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article identifies critical known issues and their workarounds in AKS on Azure Stack HCI, version 23H2.
+This article identifies critical known issues and their workarounds in AKS enabled by Arc, version 23H2.
 
 The article describes known issues in AKS for all Azure Stack HCI 23H2 releases. These known issues are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Kubernetes clusters on Azure Stack HCI, carefully review this information.
 
-## Known issues in version 2311
+## Known issues in version 2311.2
 
-This release maps to software version 10.2311.0.26 of Azure Stack HCI.
+This release maps to software version 10.2311.2.7 of Azure Stack HCI.
 
 | Feature          | Issue                                                                                                                     | Workaround/Comments                                                                                                                        |
 |------------------|---------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| Portal           | Specifying a Kubernetes version during cluster creation is not supported in the Azure portal.                                       | You can use Azure CLI to create the Kubernetes cluster with a supported Kubernetes version.                                                |
-| Portal           | The available list of VM types is not complete when creating Kubernetes clusters in the Azure portal.                            |                                                                                                                                            |
-| Cluster upgrade  | The Azure CLI command for cluster upgrade `az akshybrid upgrade` does not work without specifying the target Kubernetes version. | You must specify the target Kubernetes version when you run the `az akshybrid upgrade` command with the `--version <target version>` parameter. |
-| Supported VM size | The `az akshybrid vmsize` command does not correctly return the required available VM types.                                 | Wait for 10 minutes and rerun the same command to view the supported VM types.                                                 |
+| Cluster deployment            | Creating a Kubernetes cluster using Azure CLI in a different region than the Azure Stack HCI custom location's region is not supported.                                        | Create a resource group in the same region as the Azure Stack HCI custom location region. Use the default option to create a Kubernetes cluster using Azure CLI.                                                 |
+| HCI upgrade           | After an Azure Stack HCI cluster is upgraded to GA (version 2311.2), the Kubernetes cluster created in the preview version (2311.0) doesn't work properly using the new Azure CLI and the portal.                             |  Delete the old Kubernetes cluster created using the preview version using `az akshybrid delete`, and create a new one after you upgrade to GA.                                                                                                        |
+| Cluster deployment  | Creating a Kubernetes cluster in a different Azure subscription than the Azure Stack HCI custom location's Azure subscription is not supported. | Ensure that the Kubernetes cluster is in the same Azure subscription as the one in which the Azure Stack HCI custom location resource is located. |
+| Cluster deployment  | After the Kubernetes cluster creation succeeds, it can take 2-3 hours to complete the Arc onboarding. The **Status**, **Last Connectivity Time**, and **Agent version** fields might not be fully populated until the Arc onboarding is complete.                                 | Wait for 2-3 hours and see if the properties are populated. You can check the properties using Azure CLI (`az aksarc show`), or from the Azure portal.                                                 |
 
 ## Next steps
 
 - [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](aks-preview-overview.md)
