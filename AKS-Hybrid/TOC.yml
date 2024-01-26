@@ -13,6 +13,8 @@
     href: supported-kubernetes-versions.md  
 - name: System requirements
   href: system-requirements.md
+- name: Quotas and resource limits
+  href: concepts-support.md
 - name: AKS Arc version 23H2
   items:
   - name: What's new
