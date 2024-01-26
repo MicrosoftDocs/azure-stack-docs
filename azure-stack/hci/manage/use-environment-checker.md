@@ -549,5 +549,5 @@ For information about how to get support from Microsoft to troubleshoot any vali
 
 ## Next steps
 
-- [Review the deployment checklist](../deploy/deployment-checklist.md).
+- [Complete the prerequisites and deployment checklist](../deploy/deployment-prerequisites.md).
 - [Contact Microsoft Support](get-support.md).
