@@ -1,6 +1,6 @@
 ---
-title: Create Arc virtual machines on Azure Stack HCI (preview)
-description: Learn how to view your cluster in the Azure portal and create Arc virtual machines on your Azure Stack HCI (preview).
+title: Create Arc virtual machines on Azure Stack HCI 
+description: Learn how to view your cluster in the Azure portal and create Arc virtual machines on your Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -11,13 +11,11 @@ ms.custom: devx-track-azurecli
 ms.date: 01/24/2024
 ---
 
-# Create Arc virtual machines on Azure Stack HCI (preview)
+# Create Arc virtual machines on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure portal.
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About Azure Stack HCI cluster resource
 
@@ -81,13 +79,43 @@ Depending on the type of the network interface that you created, you can create 
     $storagePathId = "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/Microsoft.AzureStackHCI/storagecontainers/myhci-sp" 
     ```
 
+    The parameters for VM creation are tabulated as follows:
+
+    | Parameters | Description |
+    |------------|-------------|
+    | **name**  |Name for the VM that you'll create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
+    | **admin-username** |Username for the user on the VM you are deploying on your Azure Stack HCI cluster. |
+    | **admin-password** |Password for the user on the VM you are deploying on your Azure Stack HCI cluster. |
+    | **image-name** |Name of the VM image used to provision the VM. |
+    | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
+    | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
+    | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for VM on your Azure Stack HCI cluster. |
+    | **custom-location** |Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this VM. |
+    | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
+    | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
+    | **memory-mb** |Memory in megabtyes allocated to your VM. If not specified, defaults are used.|
+    | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
+    | **storage-path-id** |The associated storage path where the VM configuration and the data is saved.  |
+
+    If configuring a proxy server for your VM, the following *optional* parameters can be specified:
+
+    | Parameters | Description |
+    |------------|-------------|
+    | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
+    | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
+    | **proxyServerNoproxy**  |URLs which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
+    | **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
+    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `PleaseUseAStrongerPassword!` |
+    | **certificateFilePath**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
+  
+
 1. Run the following command to create a VM.
 
    ```azurecli
-    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" vm-size="Custom" --storage-path-id $storagePathId 
+    az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
    ``` 
 
-The VM is successfully created when the `provisioningState` shows as `succeeded`in the output. 
+The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
 > [!NOTE]
 > The VM created has guest management enabled by default. If for any reason guest management fails during VM creation, you can follow the steps in [Enable guest management on Arc VM](./manage-arc-virtual-machines.md#enable-guest-management) to enable it after the VM creation.
@@ -96,29 +124,17 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag is not specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
+
 ### Create a Linux VM from network interface
 
-To create a Linux VM, use the same command that you used to create the Windows VM. 
+To create a Linux VM, use the same command that you used to create the Windows VM.
 
 - The gallery image specified should be a Linux image.
-- The username and password works with the `authentication-type-all` parameter. 
+- The username and password works with the `authentication-type-all` parameter.
 - For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
 
-### Add a data disk to the VM
-
-After you have created a VM, you may want to add a data disk to it. To add a data disk, you need to first create a disk and then attach the disk to the VM.
-
-To create a data disk (dynamic) on a specified storage path, run the following command:
-
-```azurecli
-az stack-hci-vm disk create --resource-group $resource_group --name $diskName --custom-location $customLocationID --location $location --size-gb 1 --dynamic true --storage-path-id $storagePathid
-```
-
-You can then attach the disk to the VM using the following command:
-
-```azurecli
-az stack-hci-vm disk attach --resource-group $resource_group --vm-name $vmName --disks $diskName --yes
-```
+> [!IMPORTANT]
+> Proxy servers are not supported for Linux VMs.
 
 # [Azure portal](#tab/azureportal)
 

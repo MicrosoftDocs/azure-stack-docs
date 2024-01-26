@@ -84,7 +84,7 @@ Follow these steps to create a network interface on your static logical network.
     | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
     | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster.  |
-    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
+    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
     | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your network interface. If this parameter isn't specified, by default the network interface is created with a dynamic configuration. |
     | **ip-address** | An IPv4 address you want to assign to the network interface that you are creating. For example: "192.168.0.10".  |
