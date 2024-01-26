@@ -19,7 +19,7 @@ This article discusses the security, software, hardware, and networking prerequi
 
 | Requirements                  | Links                                                                                           |
 |-------------------------------|-------------------------------------------------------------------------------------------------|
-| Security features             | [Link](../concepts/security-features.md         |
+| Security features             | [Link](../concepts/security-features.md)         |
 | Environment readiness         | [Link](../manage/use-environment-checker.md)      |
 | System requirements           | [Link](../concepts/system-requirements-23h2.md)      |
 | Firewall requirements         | [Link](../concepts//firewall-requirements.md)         |
