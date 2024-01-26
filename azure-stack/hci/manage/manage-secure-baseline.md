@@ -13,19 +13,21 @@ ms.date: 01/25/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage default security settings for your Azure Stack HCI cluster and modify drift control and protected security settings defined during deployment so your device starts in a known good state.
+This article describes how to manage default security settings for your Azure Stack HCI cluster. You can also modify drift control and protected security settings defined during deployment so your device starts in a known good state.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## View default security settings
+## View security default settings
 
 ### View security default settings in Azure portal
 
 Use security default settings to manage cluster security, drift control, and secured core server settings on your cluster.
 
-:::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows the Application control (WDAC) page on Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
+:::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page on Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
 ### Manage security default settings with PowerShell
+
+With drift protection enabled, you can only modify non-protected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [SecurityBaseline](https://aka.ms/hci-securitybase).
 
 ## Modify security default settings
 
@@ -77,11 +79,7 @@ The following table describes security settings that can be configured on your A
 
 ## Modify security settings after deployment
 
-After deployment is complete, you can use PowerShell to modify security features while maintaining drift control. During deployment, the *AzureStackOSConfigAgent* module is installed.
-
-Some features require a reboot to take effect.
-
-The following table describes security settings that can be configured on your Azure Stack HCI cluster during deployment.
+After deployment is complete, you can use PowerShell to modify security settings while maintaining drift control. Some features require a reboot to take effect.
 
 ### PowerShell cmdlet properties
 
@@ -116,10 +114,6 @@ The following table documents supported security features, whether they support 
 |Enable <br> Disable |Side channel mitigation |Yes |Yes |
 |Enable <br> Disable |SMB signing |Yes |Yes |
 |Enable <br> Disable |SMB cluster encryption |No, cluster setting |No |
-
-## View security settings
-
-With drift protection enabled, you can only modify non-protected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [SecurityBaseline](https://aka.ms/hci-securitybase).
 
 ## Next steps
 
