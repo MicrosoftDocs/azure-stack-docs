@@ -65,7 +65,7 @@ The following lists the steps for the two options:
 
 On your physical host computer, run the following PowerShell command to create an external virtual switch:
 
-```powerShell
+```PowerShell
 New-VMSwitch -Name "external_switch_name" -SwitchType External -NetAdapterName "network_adapter_name" -AllowManagementOS $true
 ```
 
@@ -73,7 +73,7 @@ New-VMSwitch -Name "external_switch_name" -SwitchType External -NetAdapterName "
 
 On your physical host computer, run the following PowerShell command to create an internal virtual switch. The use of this switch ensures that the Azure Stack HCI deployment is isolated.
 
-```powerShell
+```PowerShell
 New-VMSwitch -Name "internal_switch_name" -SwitchType Internal -NetAdapterName "network_adapter_name" 
 ```
 
@@ -81,7 +81,7 @@ Once the internal virtual switch is created, a new network adapter is created on
 
 The following example script creates a NAT network `HCINAT` with prefix `192.168.4.0/24` and defines the `192.168.44.1` IP as the default gateway for the network using the interface on the host:
 
-```powerShell
+```PowerShell
 #Check interface index of the new network adapter on the host connected to InternalSwitch:
 Get-NetAdapter -Name "vEthernet (InternalSwitch)"
 
@@ -98,38 +98,38 @@ Create a VM to serve as the virtual host with the following configuration. You c
 
 - **Hyper-V Manager**. For more information, see [Create a virtual machine using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v) to mirror your physical management network.
 
-- **PowerShell cmdlets**. Make sure to adjust the VM configuration parameters referenced in the linked article in the previous step before you run the PowerShell cmdlets.
+- **PowerShell cmdlets**. Make sure to adjust the VM configuration parameters referenced in the [Virtual host requirements](#virtual-host-requirements) before you run the PowerShell cmdlets.
 
 Follow these steps to create an example VM named `Node1` using PowerShell cmdlets:
 
 1. Create the VM:
 
-    ```powershell
+    ```PowerShell
     New-VHD -Path "your_VHDX_path" -SizeBytes 127GB
     New-VM -Name Node1 -MemoryStartupBytes 20GB -VHDPath "your_VHDX_path" -Generation 2 -Path "VM_config_files_path"
     ```
 
 1. Disable dynamic memory:
 
-    ```powershell
+    ```PowerShell
     Set-VMMemory -VMName "Node1" -DynamicMemoryEnabled $false
     ```
 
 1. Disable VM checkpoints:
 
-    ```powershell
+    ```PowerShell
     Set-VM -VMName "Node1" -CheckpointType Disabled
     ```
 
 1. Remove the default network adapter created during VM creation in the previous step:
 
-    ```powershell
+    ```PowerShell
     Get-VMNetworkAdapter -VMName "Node1" | Remove-VMNetworkAdapter
     ```
 
 1. Add new network adapters to the VM using custom names. This example adds four NICs, but you can add just two if needed. Having four NICs allows you to test two network intents (`Mgmt_Compute` and `Storage` for example) with two NICs each:
 
-    ```powershell
+    ```PowerShell
     Add-VmNetworkAdapter -VmName "Node1" -Name "NIC1"
     Add-VmNetworkAdapter -VmName "Node1" -Name "NIC2"
     Add-VmNetworkAdapter -VmName "Node1" -Name "NIC3"
@@ -138,19 +138,19 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Attach all network adapters to the virtual switch. Specify the name of the virtual switch you created, whether it was external without NAT, or internal with NAT:
 
-    ```powershell
+    ```PowerShell
     Get-VmNetworkAdapter -VmName "Node1" |Connect-VmNetworkAdapter -SwitchName "virtual_switch_name"
     ```
 
 1. Enable MAC spoofing on all network adapters on VM `Node1`. MAC address spoofing is a technique that allows a network adapter to masquerade as another by changing its Media Access Control (MAC) address. This is required in scenarios where you're planning to use nested virtualization:
 
-    ```powershell
+    ```PowerShell
     Get-VmNetworkAdapter -VmName "Node1" |Set-VmNetworkAdapter -MacAddressSpoofing On
     ```
 
 1. Enable trunk port (for multi-node deployments only) for all network adapters on VM `Node1`. This script configures the network adapter of a specific VM to operate in trunk mode. This is typically used in multi-node deployments where you want to allow multiple Virtual Local Area Networks (VLANs) to communicate through a single network adapter:
 
-    ```powershell
+    ```PowerShell
     Get-VmNetworkAdapter -VmName "Node1" |Set-VMNetworkAdapterVlan -Trunk -NativeVlanId 0 -AllowedVlanIdList 0-1000
     ```
 
@@ -158,7 +158,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
     After the following script is executed, `Node1` will have a new key protector assigned to it. This key protector protects the VM's keys, helping to secure the VM against unauthorized access or tampering:
 
-    ```powershell
+    ```PowerShell
     $owner = Get-HgsGuardian UntrustedGuardian
     $kp = New-HgsKeyProtector -Owner $owner -AllowUntrustedRoot
     Set-VMKeyProtector -VMName "Node1" -KeyProtector $kp.RawData
@@ -166,19 +166,19 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Enable the vTPM for `Node1`. By enabling vTPM on a VM, you can use BitLocker and other features that require TPM on the VM. After this command is executed, `Node1` will have a vTPM enabled, assuming the host machine's hardware and the VM's configuration support this feature.
 
-    ```powershell
+    ```PowerShell
     Enable-VmTpm -VMName "Node1"
     ```
 
 1. Change virtual processors to `8`:
 
-   ```powershell
+   ```PowerShell
     Set-VmProcessor -VMName "Node1" -Count 8
     ```
 
 1. Create extra drives to be used as the boot disk and hard disks for Storage Spaces Direct. After these commands are executed, six new VHDXs will be created in the `C:\vms\Node1` directory as shown in this example:
 
-   ```powershell
+   ```PowerShell
     new-VHD -Path "C:\vms\Node1\s2d1.vhdx" -SizeBytes 1024GB
     new-VHD -Path "C:\vms\Node1\s2d2.vhdx" -SizeBytes 1024GB
     new-VHD -Path "C:\vms\Node1\s2d3.vhdx" -SizeBytes 1024GB
@@ -191,7 +191,7 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
     Afterwards, the `Node1` VM has six VHDs attached to it. These VHDXs are used to enable Storage Spaces Direct on the VM, which are required for Azure Stack HCI deployments:
 
-   ```powershell
+   ```PowerShell
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d1.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d2.vhdx"
     Add-VMHardDiskDrive -VMName "Node1" -Path "C:\vms\Node1\s2d3.vhdx"
@@ -202,13 +202,13 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 1. Disable time synchronization:
 
-    ```powershell
+    ```PowerShell
     Get-VMIntegrationService -VMName "Node1" |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
     ```
 
 1. Start the VM:
 
-    ```powershell
+    ```PowerShell
     Start-VM "Node1"
     ```
 
@@ -216,15 +216,15 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
 Complete the following steps to install and configure the Azure Stack HCI OS on the virtual host VMs:
 
-1. [Install the Azure Stack HCI operating system](deployment-install-os.md) using the Azure Stack HCI 23H2 ISO.
+1. [Download Azure Stack HCI 23H2 ISO](./download-azure-stack-hci-23h2-software.md) and [Install the Azure Stack HCI operating system](deployment-install-os.md).
 
-1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements and has at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
+1. Update the password since this is the first VM startup. Make sure the password meets the Azure complexity requirements. The password is at least 12 characters and includes 1 uppercase character, 1 lowercase character, 1 number, and 1 special character.
 
 1. After the password is changed, the Server Configuration Tool (SConfig) is automatically loaded. Select option `15` to exit to the command line and run the next steps from there.
 
 1. Launch SConfig by running the following command:
 
-    ```powershell
+    ```PowerShell
       SConfig
     ```
     
@@ -238,7 +238,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
      1. The `Get-VMNetworkAdapter` cmdlet is used to retrieve the network adapter object for each NIC on the VM, where the `-VMName` parameter specifies the name of the VM, and the `-Name` parameter specifies the name of the network adapter. The `MacAddress` property of the network adapter object is then accessed to get the MAC address:
 
-    ```powershell
+    ```PowerShell
     Get-VMNetworkAdapter -VMName "Node1" -Name "NIC1"
     ```
 
@@ -246,13 +246,13 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
     3. The commands are repeated for each of the four NICs on the VM, and the final formatted MAC address for each NIC is stored in a separate variable:
 
-    ```powershell
+    ```PowerShell
     ($Node1finalmacNIC1, $Node1finalmacNIC2, $Node1finalmacNIC3, $Node1finalmacNIC4).
     ```
 
     4. The following script outputs the final formatted MAC address for each NIC:
 
-    ```powershell
+    ```PowerShell
     $Node1macNIC1 = Get-VMNetworkAdapter -VMName "Node1" -Name "NIC1"
     $Node1macNIC1.MacAddress
     $Node1finalmacNIC1=$Node1macNIC1.MacAddress|ForEach-Object{($_.Insert(2,"-").Insert(5,"-").Insert(8,"-").Insert(11,"-").Insert(14,"-"))-join " "}
@@ -275,7 +275,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
 1. Obtain the `Node1` VM local admin credentials and then rename `Node1`:
 
-    ```powershell
+    ```PowerShell
     $cred = get-credential
     ```
 
@@ -285,7 +285,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
     This is repeated for each of the four NICs on the VM, with the MAC address and new name of each NIC specified separately. This establishes a mapping between the name of the NICs in Hyper-V Manager and the name of the NICs in the VM OS:
 
-    ```powershell
+    ```PowerShell
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {param($Node1finalmacNIC1) Get-NetAdapter -Physical | Where-Object {$_.MacAddress -eq $Node1finalmacNIC1} | Rename-NetAdapter -NewName "NIC1"} -ArgumentList $Node1finalmacNIC1
 
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {param($Node1finalmacNIC2) Get-NetAdapter -Physical | Where-Object {$_.MacAddress -eq $Node1finalmacNIC2} | Rename-NetAdapter -NewName "NIC2"} -ArgumentList $Node1finalmacNIC2
@@ -300,7 +300,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
     > [!NOTE]
     > The interfaces won't automatically obtain IP addresses from a DHCP server and instead need to have IP addresses manually assigned to them:
 
-    ```powershell
+    ```PowerShell
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {Set-NetIPInterface -InterfaceAlias "NIC1" -Dhcp Disabled}
 
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {Set-NetIPInterface -InterfaceAlias "NIC2" -Dhcp Disabled}
@@ -312,7 +312,7 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
 1. Set management IP, gateway, and DNS. After the following commands are executed, `Node1` will have the `NIC1` network interface configured with the specified IP address, subnet mask, default gateway, and DNS server address. Ensure that the management IP address can resolve Active Directory and has outbound connectivity to the internet:
 
-    ```powershell
+    ```PowerShell
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {New-NetIPAddress -InterfaceAlias "NIC1" -IPAddress "192.168.44.201" -PrefixLength 24 -AddressFamily IPv4 -DefaultGateway "192.168.44.1"}
 
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {Set-DnsClientServerAddress -InterfaceAlias "NIC1" -ServerAddresses "192.168.1.254"}
@@ -320,14 +320,14 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
 1. Enable the Hyper-V role. This command restarts the VM `Node1`:
 
-    ```powershell
+    ```PowerShell
     Invoke-Command -VMName "Node1"
     -Credential $cred -ScriptBlock {Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All }
     ```
 
 1. Once `Node1` is restarted and the Hyper-V role is installed, install the Hyper-V Management Tools:
 
-    ```powershell
+    ```PowerShell
     Invoke-Command -VMName "Node1" -Credential $cred -ScriptBlock {Install-WindowsFeature -Name Hyper-V -IncludeManagementTools}
     ```
 
