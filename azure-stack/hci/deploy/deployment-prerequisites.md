@@ -3,7 +3,7 @@ title: Prerequisites to deploy Azure Stack HCI, version 23H2
 description: Learn about the prerequisites to deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/19/2024
+ms.date: 01/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -25,28 +25,7 @@ Review the [security features](../concepts/security-features.md) for Azure Stack
 
 ## Server and storage requirements
 
-Before you begin, make sure that the physical server and storage hardware used to deploy an Azure Stack HCI cluster meets the following requirements:
-
-|Component|Minimum|
-|--|--|
-|Number of servers| 1 to 16 servers are supported. <br> Each server must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
-|CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT).|
-|Memory|A minimum of 32 GB RAM per node.|
-|Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
-|BIOS|Intel VT or AMD-V must be turned on.|
-|Boot drive|A minimum size of 200 GB size.|
-|Data drives|At least 2 disks with a minimum capacity of 500 GB (SSD or HDD).|
-|Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
-|Secure boot|Secure Boot must be present and turned on.|
-
-The servers should also meet the following additional requirements: 
-
-- Each server should have dedicated volumes for logs, with log storage at least as fast as data storage. 
-
-- Have direct-attached drives that are physically attached to one server each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, are not supported.
-
-    > [!NOTE]
-    > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
+Before you begin, make sure that the [server and storage requirements](../concepts/system-requirements-23h2.md#server-and-storage-requirements) are met by the server hardware used to deploy an Azure Stack HCI system.
 
 ## Network requirements
 
