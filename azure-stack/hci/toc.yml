@@ -43,10 +43,8 @@
       items:
       - name: Read overview
         href: deploy/deployment-introduction.md
-      - name: Complete prerequisites
+      - name: Complete prerequisites and checklist
         href: deploy/deployment-prerequisites.md
-      - name: View deployment checklist
-        href: deploy/deployment-checklist.md
       - name: 1. Prepare Active Directory
         href: deploy/deployment-prep-active-directory.md
       - name: 2. Download the software
