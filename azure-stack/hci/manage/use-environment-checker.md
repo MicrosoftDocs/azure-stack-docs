@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/17/2023
+ms.date: 01/26/2024
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2 (preview)
