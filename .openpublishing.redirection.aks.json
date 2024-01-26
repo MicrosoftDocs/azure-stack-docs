@@ -1339,7 +1339,12 @@
         "source_path": "AKS-Hybrid/aks-hybrid-options-overview.md",
         "redirect_url": "/azure/aks/hybrid/overview",
         "redirect_document_id": false
-      }
+      },
+      {
+        "source_path": "AKS-Hybrid/aks-preview-overview.md",
+        "redirect_url": "/azure/aks/hybrid/aks-whatsnew-23h2",
+        "redirect_document_id": false
+      }      
     ]
   }
   
