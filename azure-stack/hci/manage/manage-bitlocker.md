@@ -23,11 +23,11 @@ This article describes how to manage volume encryption and network protection wi
 
 You can use two kinds of protection, volume encryption and network protection.
 
-:::image type="content" source="media/manage-bitlocker/manage-bitlocker.png" alt-text="Screenshot that shows the Data protections page on Azure portal." lightbox="media/manage-bitlocker/manage-bitlocker.png":::
+:::image type="content" source="media/manage-bitlocker/manage-bitlocker.png" alt-text="Screenshot that shows the Data protections page for volume encryption on Azure portal." lightbox="media/manage-bitlocker/manage-bitlocker.png":::
 
 - **Volume encryption** - Use volume encryption with BitLocker to encrypt data on your OS volumes and data volumes.
 
-:::image type="content" source="media/manage-bitlocker/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the Data protections page on Azure portal." lightbox="media/manage-bitlocker/manage-bitlocker-network-protection.png":::
+:::image type="content" source="media/manage-bitlocker/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the Data protections page for network protection on Azure portal." lightbox="media/manage-bitlocker/manage-bitlocker-network-protection.png":::
 
 - **Network protection** - Use volume encryption with BitLocker to protect data on the host's network and on VM network connections.
 
