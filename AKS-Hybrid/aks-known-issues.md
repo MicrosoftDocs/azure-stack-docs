@@ -30,4 +30,5 @@ This release maps to software version 10.2311.2.7 of Azure Stack HCI.
 
 ## Next steps
 
-- [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
+- [AKS network prerequisites](aks-hci-network-system-requirements.md)
+- [System requirements for AKS Arc](system-requirements.md)
