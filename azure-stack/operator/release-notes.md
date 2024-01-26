@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 11/29/2023
+ms.date: 01/23/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
-ms.lastreviewed: 11/29/2023
+ms.lastreviewed: 12/27/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -19,11 +19,15 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2206"
+::: moniker range=">=azs-2311"
+> [!IMPORTANT]  
+> This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
+::: moniker-end
+::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker-end
-::: moniker range="<azs-2206"
+::: moniker range="<azs-2311"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -40,6 +44,13 @@ Before applying the update, make sure to review the following information:
 - [Hotfixes](#hotfixes)
 - [Security updates](release-notes-security-updates.md)
 
+> [!IMPORTANT]
+> This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
+
+> [!IMPORTANT]
+> The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
+
 For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-troubleshooting.md).
 
 ## Download the update
@@ -49,6 +60,79 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+::: moniker range="azs-2311"
+## 2311 build reference
+
+The Azure Stack Hub 2311 update build number is **1.2311.1.22**.
+
+### Update type
+
+The Azure Stack Hub 2311 update build type is **Full**. This build contains only important security updates.
+
+The 2311 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+> [!IMPORTANT]
+> Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2311 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
+
+### What's new
+
+- The [VPN Fast Path for operators](azure-stack-vpn-fast-path-operators.md) feature, [and for users](../user/azure-stack-vpn-fast-path-user.md), is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
+- With 2311 we are announcing the public preview of the Azure Stack Hub Standard Load Balancer. This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
+- Azure Site Recovery is currently in [public preview](azure-site-recovery-overview.md), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
+
+<!-- ### Improvements -->
+
+### Changes
+
+- 2311 introduces a change in the base host OS, updated to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric. Azure Stack Hub environments that have outbound connectivity do not require any additional changes, and the update is installed directly.
+
+  > [!IMPORTANT]
+  > Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+  > If you start the update without this key, the update will fail shortly after starting, with a "Preparation of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
+  
+- Starting with Azure Stack Hub 2311, we are not releasing new Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+
+<!-- ### Fixes -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
+For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+
+### Hotfix prerequisites: before applying the 2311 update
+
+The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1-2306-4-73.md)
+
+### After successfully applying the 2311 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
+
+- No Azure Stack Hub hotfix for 2311.
+::: moniker-end
+
 ::: moniker range="azs-2306"
 ## 2306 build reference
 
@@ -98,7 +182,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 ### Hotfix prerequisites: before applying the 2306 update
 
-The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfixes:
+The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
 
 - [Azure Stack Hub hotfix 1.2301.2.64](hotfix-1-2301-2-64.md)
 
@@ -108,7 +192,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix for 2306.
+- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1-2306-4-73.md)
 ::: moniker-end
 
 ::: moniker range="azs-2301"
@@ -167,7 +251,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 ### Hotfix prerequisites: before applying the 2301 update
 
-The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfixes:
+The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfix installed:
 
 - [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
 
@@ -180,76 +264,12 @@ After the installation of 2301, if any hotfixes for 2301 are subsequently releas
 - [Azure Stack Hub hotfix 1.2301.2.64](hotfix-1-2301-2-64.md)
 ::: moniker-end
 
-::: moniker range="azs-2206"
-## 2206 build reference
-
-The Azure Stack Hub 2206 update build number is **1.2206.1.24**.
-
-### Update type
-
-The Azure Stack Hub 2206 update build type is **Full**.
-
-The 2206 update has the following expected runtimes based on our internal testing:
-
-- 4 nodes: 8-28 hours
-- 8 nodes: 11-30 hours
-- 12 nodes: 14-34 hours
-- 16 nodes: 17-40 hours
-
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2206 update and should not be compared to other Azure Stack Hub updates.
-
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
-
-### What's new
-
-- European Union-based customers can now choose to have all their data stored and processed inside the European Union boundary. For more information, see [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub).
-- Azure Stack Hub now supports retrieving BitLocker keys for data encryption at rest. For more information, see [Retrieving BitLocker recovery keys](azure-stack-security-bitlocker.md#retrieving-bitlocker-recovery-keys).
-
-<!-- ### Improvements -->
-
-### Changes
-
-- SQL RP V2 and MySQL RP V2 are only available to subscriptions that have been granted access. If you are still using SQL RP V1 and MySQL RP V1, it is strongly recommended that you [open a support case](azure-stack-help-and-support-overview.md) to go through the upgrade process before you upgrade to Azure Stack Hub 2206.
-- This release provides support for Azure Stack Hub root certificate rotation. Previously, secret rotation did not rotate the root. You will be able to rotate the root certificate after installing the update. To do so, [perform internal secret rotation](azure-stack-rotate-secrets.md#rotate-internal-secrets) on or before the next time you are notified via expiration alerts. Failure to rotate the root certificate and/or perform internal secret rotation might result in your stamp becoming unrecoverable.
-
-### Fixes
-
-- Fix to improve SLB throughput.
-- Fixed an issue that prevented access to the storage subsystem when scale unit nodes are rebooted.
-
-## Security updates
-
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-## Hotfixes
-
-Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
-
-> [!NOTE]
-> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
-
-For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
-
-### Hotfix prerequisites: before applying the 2206 update
-
-The 2206 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
-
-- [Azure Stack Hub hotfix 1.2108.2.130](hotfix-1-2108-2-130.md)
-
-### After successfully applying the 2206 update
-
-When you update to a new major version (for example, 1.2102.x to 1.2108.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
-
-After the installation of 2206, if any hotfixes for 2206 are subsequently released, you should install them:
-
-- [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
-::: moniker-end
-
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2206"
+## 2206 archived release notes
+::: moniker-end
 ::: moniker range="azs-2108"
 ## 2108 archived release notes
 ::: moniker-end
@@ -317,6 +337,6 @@ After the installation of 2206, if any hotfixes for 2206 are subsequently releas
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-2206"
+::: moniker range="<azs-2301"
 You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

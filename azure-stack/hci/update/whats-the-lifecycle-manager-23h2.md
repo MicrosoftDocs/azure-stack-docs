@@ -1,30 +1,28 @@
 ---
-title: About updates for Azure Stack HCI, version 23H2 (preview)
-description: This article describes the updates feature for this release, benefits, and how to keep various pieces of your Azure Stack HCI, version 23H2 (preview) solution up to date.
+title: About updates for Azure Stack HCI, version 23H2
+description: This article describes the updates feature for this release, benefits, and how to keep various pieces of your Azure Stack HCI, version 23H2 solution up to date.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: thoroet
-ms.date: 11/28/2023
+ms.date: 01/16/2024
 ---
 
-# About updates for Azure Stack HCI, version 23H2 (preview)
+# About updates for Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the new update feature for this release, benefits of the feature, and how to keep various pieces of your Azure Stack HCI solution up to date.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
-
 ## About the updates
 
 Staying up to date with recent security fixes and feature improvements is important for all pieces of the Azure Stack HCI solution. The latest release introduces new features and components in addition to the OS, including the orchestrator (Lifecycle Manager).
 
-The approach in this release provides a flexible foundation to integrate and manage various aspects of the Azure Stack HCI solution in one place. The orchestrator for updates is first installed during and enables the new deployment experience including the management of the OS, core agents and services, and the solution extension.
+The approach in this release provides a flexible foundation to integrate and manage various aspects of the Azure Stack HCI solution in one place. The orchestrator for updates is first installed during deployment and enables the new deployment experience including the management of the OS, core agents and services, and the solution extension.
 
 Here's an example of a new cluster deployment using the updates in this release:
 
-:::image type="content" source="media/lifecycle-manager/update-your-solution-23h2.png" alt-text="Screenshot of ways to deploy and update your solution." lightbox="media/lifecycle-manager/update-your-solution-23h2.png":::
+:::image type="content" source="media/about-updates/update-your-solution-23h2.png" alt-text="Screenshot of ways to deploy and update your solution." lightbox="media/about-updates/update-your-solution-23h2.png":::
 
 In this solution the Azure Stack HCI OS, agents and services, drivers, and firmware are automatically updated.
 
@@ -75,7 +73,7 @@ Solution updates managed by this feature contain new versions of the Azure Stack
 
 - Solution Builder Extension: Hardware vendors might choose to integrate with this feature to enhance the update management experience for their customers.
 
-  - If a hardware vendor has integrated with our update validation and release platform, the solution extension content includes the drivers and firmware, and the orchestrator manages the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
+  - If a hardware vendor integrates with our update validation and release platform, the solution extension content includes the drivers and firmware, and the orchestrator manages the necessary system reboots within the same maintenance window. You can spend less time searching for updates and experience fewer maintenance windows.
 
 This solution is the recommended way to update your Azure Stack HCI cluster.
 
@@ -95,9 +93,9 @@ The PowerShell procedures apply to a single server and multi-server cluster that
 
 ### The Azure portal
 
-You can install available Azure Stack HCI cluster updates via the Azure portal using the Azure Update Manager. For more information, see [What's the Azure Update Manager (preview)?](./azure-update-manager-23h2.md)
+You can install available Azure Stack HCI cluster updates via the Azure portal using the Azure Update Manager. For more information, see [Use Azure Update Manager to update your Azure Stack HCI, version 23H2](./azure-update-manager-23h2.md)
 
-## Next step
+## Next steps
 
 Learn to [Understand update phases](./update-phases-23h2.md).
 

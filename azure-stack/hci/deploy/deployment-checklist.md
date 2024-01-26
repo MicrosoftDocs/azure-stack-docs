@@ -1,9 +1,9 @@
 ---
-title: Deployment checklist for Azure Stack HCI, version 23H2 
+title: Deployment checklist for Azure Stack HCI, version 23H2
 description: Complete the deployment checklist prior to deploying Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: article
-ms.date: 01/11/2024
+ms.date: 01/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci

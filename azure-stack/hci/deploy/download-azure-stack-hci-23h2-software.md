@@ -1,12 +1,12 @@
 ---
-title: Download Azure Stack HCI, version 23H2 software
+title: Download Azure Stack HCI, version 23H2 software 
 description: Learn how to download Azure Stack HCI, version 23H2 software from the Azure portal.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/11/2024
+ms.date: 01/19/2024
 ---
 
 # Download Azure Stack HCI, version 23H2 software

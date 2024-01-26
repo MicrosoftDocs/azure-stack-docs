@@ -30,7 +30,7 @@ Some of the advantages of the telemetry and diagnostics extension include:
 
 - **Improved compliance:** Enables the telemetry and diagnostics data to comply with regional service and data residency requirements during data uploads.
   
-- **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly. With proactive log collection enabled, Microsoft can proactively collect logs and search for specific errors or exception patterns, which saves support time.
+- **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly.
 
 - **Reduced update impact:** Allows non-disruptive update of your Azure Stack HCI system and doesn't require a reboot of the host server.
 
@@ -58,30 +58,9 @@ To access the options to send telemetry data, follow these steps:
 
      - Retention of system data for up to a month.
      - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-     - **Proactive** log collection and upload of logs to an Azure Storage account for troubleshooting. Logs are captured and forwarded from your Azure Stack HCI system to Microsoft when a system health alarm is triggered.
 
-If your portal is unavailable and you need to enable proactive log collection, see the following:
-
-To enable proactive log collection, run this command:
-
-```powershell
-Enable-ProactiveLogCollection
-```
-
-To disable proactive log collection, run this command:
-
-```powershell
-Disable-ProactiveLogCollection
-```
-
-To check the state of your proactive log collection, run this command:
-
-```powershell
-Get-ProactiveLogCollectionState
-```
-
-> [!NOTE]
-> If enhanced data sharing isn't enabled, **Autonomous** log collection still occurs. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
+      > [!NOTE]
+      > If enhanced data sharing isn't enabled, **Autonomous** log collection still occurs. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 

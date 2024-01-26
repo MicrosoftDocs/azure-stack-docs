@@ -3,7 +3,7 @@ title: Prerequisites to deploy Azure Stack HCI, version 23H2
 description: Learn about the prerequisites to deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/11/2024
+ms.date: 01/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -14,7 +14,6 @@ ms.subservice: azure-stack-hci
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article discusses the security, software, hardware, and networking prerequisites in order to deploy Azure Stack HCI, version 23H2.
-
 
 ## Security considerations
 

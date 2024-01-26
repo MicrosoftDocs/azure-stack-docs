@@ -1,41 +1,42 @@
 ---
-title: Update Azure Stack HCI, version 23H2 clusters via PowerShell (preview).
-description: Learn how to use PowerShell to apply operating system, service, and Solution Extension updates to Azure Stack HCI, version 23H2 (preview).
+title: Update Azure Stack HCI, version 23H2 clusters via PowerShell.
+description: Learn how to use PowerShell to apply operating system, service, and Solution Extension updates to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 11/13/2023
 ---
 
-# Update your Azure Stack HCI, version 23H2 via PowerShell (preview)
+# Update your Azure Stack HCI, version 23H2 via PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+
+[!INCLUDE [WARNING](../../includes/hci-applies-to-23h2-cluster-updates.md)]
+This article describes how to use Azure Update Manager to find and install available cluster updates on selected Azure Stack HCI clusters. Additionally, we provide guidance on how to review cluster updates, track progress, and browse cluster updates history.
 
 This article describes how to apply a solution update to your Azure Stack HCI cluster via PowerShell.
 
 The procedure in this article applies to both a single server and multi-server cluster that is running the latest version with the orchestrator (Lifecycle Manager) installed. If your cluster was created via a new deployment of Azure Stack HCI, version 23H2, then the orchestrator was automatically installed as part of the deployment.
 
-For information on how to apply solution updates to clusters created with older versions of Azure Stack HCI, that didn't have the orchestrator installed, see [Update existing Azure Stack HCI clusters](../manage/update-cluster.md).
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
+For information on how to apply solution updates to clusters created with older versions of Azure Stack HCI that didn't have the orchestrator installed see [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md).
 
 ## About solution updates
 
-The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [Update overview for Azure Stack HCI, version 23H2 (preview)](../update/whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Stack HCI, version 23H2](../update/whats-the-lifecycle-manager-23h2.md).
 
 <!--The update example used in this article doesn't include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).-->
 
 When you apply a solution update, here are the high-level steps that you take:
 
 1. Make sure that all the prerequisites are completed.
-1. Identify the software version running on your cluster.
-1. Connect to your Azure Stack HCI cluster via remote PowerShell.
-1. Verify that your cluster is in good health using the [Environment Checker](../manage/use-environment-checker.md?tabs=connectivity).
-1. Discover the updates that are available and filter the ones that you can apply to your cluster.
-1. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
-1. Verify the version of the updates installed.
+2. Identify the software version running on your cluster.
+3. Connect to your Azure Stack HCI cluster via remote PowerShell.
+4. Use the [Environment Checker](../manage/use-environment-checker.md?tabs=connectivity) to verify that your cluster is in good health.
+5. Discover the updates that are available and filter the ones that you can apply to your cluster.
+6. Download the updates, assess the update readiness of your cluster and once ready, install the updates on your cluster. Track the progress of the updates. If needed, you can also monitor the detailed progress.
+7. Verify the version of the updates installed.
 
-The time taken to install the updates may vary based on the following factors:
+The time taken to install the updates might vary based on the following factors:
 
 - Content of the update.
 - Load on your cluster.
@@ -63,7 +64,7 @@ Before you begin, make sure that:
 Follow these steps on your client to connect to one of the servers of your Azure Stack HCI cluster.
 
 1. Run PowerShell as administrator on the client that you're using to connect to your cluster.
-1. Open a remote PowerShell session to a server on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
+2. Open a remote PowerShell session to a server on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
 
     ```powershell
     $cred = Get-Credential
@@ -127,7 +128,7 @@ Before you discover the updates, you can manually validate the system health. Th
 
     ```powershell
     $result=Test-EnvironmentReadiness
-    $result|ft Name,Status,Severity  
+    $result | ft Name,Status,Severity  
     ```
 
     Here's a sample output:
@@ -237,21 +238,21 @@ Before you discover the updates, you can manually validate the system health. Th
     > [!NOTE]
     > In this release, the informational failures for `Test-CauSetup` are expected and will not impact the updates.
 
-3. Review any failures and resolve those before you proceed to the discovery step.
+3. Review any failures and resolve them before you proceed to the discovery step.
 
 ## Step 3: Discover the updates
 
 You can discover updates in one of the following two ways:
 
-- **Discover updates online** - This is the recommended option when your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
-- **Sideload and discover updates** - This is an alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Stack HCI cluster and discover the updates locally.
+- **Discover updates online** - The recommended option when your cluster has good internet connectivity. The solution updates are discovered via the online update catalog.
+- **Sideload and discover updates** - An alternative to discovering updates online and should be used for scenarios with unreliable or slow internet connectivity, or when using solution extension updates provided by your hardware vendor. In these instances, you download the solution updates to a central location. You then sideload the updates to an Azure Stack HCI cluster and discover the updates locally.
 
 ### Discover solution updates online (recommended)
 
 Discovering solution updates using the online catalog is the *recommended* method. Follow these steps to discover solution updates online:
 
 1. Connect to a server on your Azure Stack HCI cluster using the deployment user account.
-2. Verify that the update package was discovered by the Update service.
+2. Verify that the Update service discovers the update package.
 
     ```powershell
     Get-SolutionUpdate | ft DisplayName, State 
@@ -285,7 +286,7 @@ You can now proceed to [Download and install the updates](#step-4-download-check
 If you're using solution extension updates from your hardware, you would need to sideload those updates. Follow these steps to sideload and discover your solution updates.
 
 1. Connect to a server on your Azure Stack HCI cluster using the deployment user account.
-2. Go to the network share and acquire the update package that you use. Verify that the update package that you sideload contains the following files:
+2. Go to the network share and acquire the update package that you use. Verify that the update package you sideload contains the following files:
     - *SolutionUpdate.xml*
     - *SolutionUpdate.zip*
     - *AS_Update_10.2303.4.1.zip*
@@ -308,7 +309,7 @@ If you're using solution extension updates from your hardware, you would need to
     Add-SolutionUpdate -SourceFolder C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\sideload
     ```
 
-6. Verify that the update package is discovered by the Update service and is available to start preparation and installation.
+6. Verify that the Update service discovers the update package and that it's available to start preparation and installation.
 
     ```powershell
     Get-SolutionUpdate | ft DisplayName, Version, State 
@@ -349,7 +350,7 @@ If you're using solution extension updates from your hardware, you would need to
 
 ## Step 4: Download, check readiness, and install updates
 
-You can download the updates, perform a set of checks to verify the update readiness of your cluster, and start installing the updates.
+You can download the updates, perform a set of checks to verify your cluster's update readiness, and start installing the updates.
 
 1. You can only download the update without starting the installation or download and install the update.
 
@@ -364,12 +365,12 @@ You can download the updates, perform a set of checks to verify the update readi
 2. To track the update progress, monitor the update state. Run the following command:
 
     ```powershell
-    Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState 
+    Get-SolutionUpdate | ft Version,State,UpdateStateProperties,HealthState 
     ```
 
     When the update starts, the following actions occur:
 
-    - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download may take several minutes.
+    - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
 
         Here's an example output when the updates are being downloaded:
 
@@ -429,7 +430,7 @@ Once the installation is complete, the **State** changes to `Installed`. For mor
 
 ## Step 5: Verify the installation
 
-After the updates are installed, verify the solution version of the environment and the version of the operating system.
+After the updates are installed, verify the solution version of the environment and the operating system version.
 
 1. After the update is in `Installed` state, check the environment solution version. Run the following command:
 
@@ -448,7 +449,7 @@ After the updates are installed, verify the solution version of the environment 
         
     ```
 
-1. Check the operating system version to confirm it matches the recipe you installed. Run the following command:
+2. Check the operating system version to confirm it matches the recipe you installed. Run the following command:
 
     ```powershell
     cmd /c ver
@@ -465,8 +466,20 @@ After the updates are installed, verify the solution version of the environment 
 
 ## Troubleshoot updates
 
-To resume a previously failed update run or to troubleshoot other update run issues, see [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+To resume a previously failed update run via PowerShell, use the following command:
 
-## Next steps
+```powershell
+get-solutionupdate | start-solutionupdate
+```
 
-Learn more about how to [Update existing Azure Stack HCI clusters](../manage/update-cluster.md) when the orchestrator isn't installed.
+To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
+
+```powershell
+get-solutionUpdate | start-solutionUpdate -IgnoreWarnings
+```
+
+To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
+
+## Next step
+
+Learn more about how to [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md) when the orchestrator isn't installed.
