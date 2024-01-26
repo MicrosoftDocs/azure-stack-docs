@@ -36,9 +36,9 @@ Before you set up Kubernetes RBAC using Microsoft Entra identity, you'll need:
 
 - You'll need access to the following command line tools:
 
-  - **Azure CLI**
+  - **Azure CLI and the connectedk8s extension**
 
-    The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`.
+    The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`. Also, you'll need to the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) to open a channel to your AKS cluster.
 
     For installation instructions, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 
