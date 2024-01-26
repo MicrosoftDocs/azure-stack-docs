@@ -65,7 +65,7 @@ This minimum requirement is for an AKS deployment with one worker node for runni
 
 | Environment | CPU cores per server | RAM |
 | --- | --- | --- |
-| Azure Stack HCI or Windows Server cluster | 32 | 256 GB |
+| Azure Stack HCI | 32 | 256 GB |
 | Windows Server failover cluster | 32 | 256 GB |
 | Single node Windows Server | 16 | 128 GB
 

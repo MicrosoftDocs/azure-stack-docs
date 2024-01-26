@@ -3,9 +3,8 @@ title: Azure Stack Hub servicing policy
 titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 09/12/2023
+ms.date: 01/23/2024
 ms.author: sethm
 ms.lastreviewed: 03/18/2020
 
@@ -47,9 +46,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2311 update](./release-notes.md?preserve-view=true&view=azs-2311)
 - [Azure Stack Hub 2306 update](./release-notes.md?preserve-view=true&view=azs-2306)
 - [Azure Stack Hub 2301 update](./release-notes.md?preserve-view=true&view=azs-2301)
-- [Azure Stack Hub 2206 update](./release-notes.md?preserve-view=true&view=azs-2206)
 
 ## Hotfixes
 

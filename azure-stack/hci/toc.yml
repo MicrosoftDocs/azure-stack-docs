@@ -8,7 +8,9 @@
     href: whats-new.md
   - name: Release notes
     items:
-    - name: Known issues - 2311 release (Current)
+    - name: Known issues - 2311.2 release (Current)
+      href: known-issues-2311-2.md
+    - name: Known issues - 2311 release
       href: known-issues-2311.md
     - name: Known issues - 2310 release
       href: known-issues-23h2.md
@@ -26,7 +28,11 @@
     - name: What's new in version 23H2?
       href: whats-new.md
     - name: Known issues
-      href: known-issues-23h2.md
+      items:
+      - name: Known issues - 2311 release
+        href: known-issues-2311.md
+      - name: Known issues - 2310 release
+        href: known-issues-23h2.md
     - name: Plan
       items:
         - name: Review security features
@@ -418,6 +424,8 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
+    - name: Remote Support Arc extension
+      href: manage/remote-support-arc-extension.md
 - name: Migrate
   items:
   - name: Cluster to same hardware
@@ -611,6 +619,8 @@
           href: manage/whats-new-2306-preview.md
         - name: 2306 updates
           items:
+          - name: 2306.7 release
+            href: manage/whats-new-2306-7-preview.md
           - name: 2306.5 release
             href: manage/whats-new-2306-5-preview.md
           - name: 2306.4 release
@@ -623,7 +633,9 @@
             href: manage/whats-new-2306-1-preview.md
       - name: View known issues
         items:
-        - name: 2306.5 update release - Current
+        - name: 2306.7 update release - Current
+          href: hci-known-issues-2306-7.md
+        - name: 2306.5 update release
           href: hci-known-issues-2306-5.md
         - name: 2306.4 update release
           href: hci-known-issues-2306-4.md 
