@@ -9,6 +9,8 @@
     href: overview.md
   - name: Uninstall AKS hybrid cluster provisioning preview
     href: aks-hybrid-preview-uninstall.md
+  - name: Supported Kubernetes versions
+    href: supported-kubernetes-versions.md  
 - name: System requirements
   href: system-requirements.md
 - name: AKS Arc version 23H2
