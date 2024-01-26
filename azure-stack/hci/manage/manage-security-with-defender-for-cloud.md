@@ -33,15 +33,15 @@ Before you begin, make sure that the following prerequisites are completed:
 Follow these steps to enable Defender for Cloud for Azure Stack HCI.
 
 - Step 1: Turn on Foundational CSPM.
-- Step 2: Turn on Defender for Servers for Arc-enabled hosts and Arc VMs.
+- Step 2: Turn on Defender for Servers for individual servers and Arc VMs.
 
 ### Step 1: Turn on Foundational CSPM
 
-This step turns on the basic Defender for Cloud plan—at no extra cost. This plan lets you monitor and identify the steps that you can take to secure your Azure Stack HCI system. For instructions, see [Enable Defender for Cloud on your Azure subscription](/azure/defender-for-cloud/connect-azure-subscription#enable-defender-for-cloud-on-your-azure-subscription).
+This step turns on the basic Defender for Cloud plan—at no extra cost. This plan lets you monitor and identify the steps that you can take to secure your Azure Stack HCI system, along with other Azure and Arc resources. For instructions, see [Enable Defender for Cloud on your Azure subscription](/azure/defender-for-cloud/connect-azure-subscription#enable-defender-for-cloud-on-your-azure-subscription).
 
-### Step 2: Turn on Defender for Servers for Arc-enabled hosts and Arc VMs
+### Step 2: Turn on Defender for Servers for individual servers and Arc VMs
 
-This step gets you enhanced security features including security alerts on individual servers and Arc-enabled VMs.
+This step gets you enhanced security features including security alerts on individual servers and Arc VMs.
 
 To do so, follow all the instructions in the [Enable the Defender for Servers plan](/azure/defender-for-cloud/tutorial-enable-servers-plan#enable-the-defender-for-servers-plan) section, which includes:
 
@@ -65,7 +65,7 @@ After you've [enabled Defender for Cloud for Azure Stack HCI](#enable-defender-f
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/security-recommendations.png" alt-text="Screenshot of the Microsoft Defender for Cloud page showing the security recommendations on your Azure Stack HCI system." lightbox="./media/manage-security-with-defender-for-cloud/security-recommendations.png" :::
 
-1. (Optional) To view the security recommendations for multiple Azure Stack HCI systems, select the **View in Defender for Cloud** link. This opens the **Recommendations** page in the Microsoft Defender for Cloud portal. This page provides security recommendations across all your Azure resources, including the Azure Stack HCI systems.
+1. (Optional) To view the security recommendations for multiple Azure Stack HCI systems, select the **View in Defender for Cloud** link. This opens the **Recommendations** page in the Microsoft Defender for Cloud portal. This page provides security recommendations across all your Azure resources, including Azure Stack HCI systems.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" alt-text="Screenshot of the Recommendations page in the Defender for Cloud portal." lightbox="./media/manage-security-with-defender-for-cloud/recommendations-defender-for-cloud.png" :::
 
@@ -84,7 +84,7 @@ Follow these steps to access the Microsoft Defender for Cloud portal's pages to 
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" alt-text="Screenshot that shows how to search for Defender for Cloud in the Azure portal." lightbox="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" :::
 
-1. The **Overview** page of the Microsoft Defender for Cloud portal shows the overall security posture of your environment. From the left navigation pane, navigate to various portal pages, such as **Recommendations** to view recommendations for multiple Azure Stack HCI systems or **Security alerts** to monitor alerts for individual servers and Arc VMs running on the Azure Stack HCI system.
+1. The **Overview** page of the Microsoft Defender for Cloud portal shows the overall security posture of your environment. From the left navigation pane, navigate to various portal pages, such as **Recommendations** to view security recommendations for individual servers and Arc VMs running on the Azure Stack HCI system, or **Security alerts** to monitor alerts for them.
 
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" alt-text="Screenshot of the Defender for Cloud Overview page." lightbox="./media/manage-security-with-defender-for-cloud/defender-for-cloud-overview.png" :::
 

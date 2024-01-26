@@ -23,7 +23,7 @@ This article provides a brief conceptual overview of the various security featur
 
 Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
 
-With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost.
+With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts on individual servers and Arc VMs.
 
 For more information, see [Manage system security with Microsoft Defender for Cloud](../manage/manage-security-with-defender-for-cloud.md).
 
