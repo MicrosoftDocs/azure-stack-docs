@@ -1,6 +1,6 @@
 ---
-title: Control access using Microsoft Entra ID and Kubernetes RBAC in AKS hybrid
-description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS hybrid.
+title: Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
+description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 10/21/2022
@@ -8,33 +8,33 @@ ms.reviewer: abha
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 11/04/2022
+ms.date: 01/26/2024
 
 # Intent: As an IT Pro, I need to learn how to enable Kubernetes role-based access control so that I can manage access to resources.
 # Keyword: Kubernetes role-based access control 
 ---
 
-# Control access using Microsoft Entra ID and Kubernetes RBAC in AKS hybrid
+# Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service (AKS) can be configured to use Microsoft Entra ID for user authentication. In this configuration, you sign in to an AKS cluster using a Microsoft Entra authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
+Azure Kubernetes Service (AKS) can be configured to use Microsoft Entra ID for user authentication. In this configuration, you sign in to a Kubernetes cluster using a Microsoft Entra authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
 
-This article describes how to control access using Kubernetes RBAC in an AKS cluster based on Microsoft Entra group membership in AKS hybrid. You'll create a demo group and users in Microsoft Entra ID. And then you'll create roles and role bindings in the AKS cluster to grant the appropriate permissions to create and view resources.
+This article describes how to control access using Kubernetes RBAC in a Kubernetes cluster based on Microsoft Entra group membership in AKS Arc. You create a demo group and users in Microsoft Entra ID. Then, you create roles and role bindings in the cluster to grant the appropriate permissions to create and view resources.
 
 ## Prerequisites
 
-Before you set up Kubernetes RBAC using Microsoft Entra identity, you'll need:
+Before you set up Kubernetes RBAC using Microsoft Entra identity, you need:
 
-- **An AKS cluster created in AKS hybrid**
+- **A Kubernetes cluster created in AKS Arc**
 
-    You'll need an AKS cluster created in AKS hybrid. If you need to set up your cluster, you can find instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS.
+    You need a Kubernetes cluster created in AKS Arc. If you need to set up your cluster, you can find instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS.
 
 - **Azure Arc connection**
 
-    You'll need to have an Azure Arc connection to your AKS cluster. For instruction on enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
+    You must have an Azure Arc connection to your Kubernetes cluster. For information about enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
 
-- You'll need access to the following command line tools:
+- You need access to the following command line tools:
 
   - **Azure CLI and the connectedk8s extension**
 
@@ -50,11 +50,11 @@ Before you set up Kubernetes RBAC using Microsoft Entra identity, you'll need:
 
   - **PowerShell and the AksHci PowerShell module**
 
-    PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. If you have installed AKS hybrid, you'll have access to the AksHci PowerShell module.
+    PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. If you have installed AKS Arc, you have access to the AksHci PowerShell module.
 
 ## Optional first steps
 
-If you don't already have a Microsoft Entra group that contains members, you may want to create a group and add some members, so that you can follow the instructions in this article.
+If you don't already have a Microsoft Entra group that contains members, you might want to create a group and add some members, so that you can follow the instructions in this article.
 
 To demonstrate working with Microsoft Entra ID and Kubernetes RBAC, you can create a Microsoft Entra group for application developers that can be used to show how Kubernetes RBAC and Microsoft Entra ID control access to cluster resources. In production environments, you can use existing users and groups within a Microsoft Entra tenant.
 
@@ -73,7 +73,7 @@ az ad group create --display-name appdev --mail-nickname appdev
 
 With the example group created in Microsoft Entra ID for our application developers, let's add a user to the `appdev` group. You'll use this user account to sign in to the AKS cluster and test the Kubernetes RBAC integration.
 
-Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command. If you have quit your session, you'll need to reconnect to Azure using `az login`.
+Add a user to the **appdev** group created in the previous section using the [az ad group member add](/cli/azure/ad/group/member#az_ad_group_member_add) command. If you quit your session, reconnect to Azure using `az login`.
 
 ```azurecli  
 $AKSDEV_ID = az ad user create --display-name <name> --password <strongpassword> --user-principal-name <name>@contoso.onmicrosoft.com
@@ -84,15 +84,15 @@ az ad group member add --group appdev --member-id $AKSDEV_ID
 
 ## Create a custom Kubernetes RBAC role binding on the AKS cluster resource for the Microsoft Entra group
 
-Configure the AKS cluster to allow your Microsoft Entra group to access the cluster. If you would like to add a group and users to follow the steps in this guide, see [Create demo groups in Microsoft Entra ID](#create-a-demo-group-in-azure-ad).
+Configure the AKS cluster to allow your Microsoft Entra group to access the cluster. If you want to add a group and users, see [Create demo groups in Microsoft Entra ID](#create-a-demo-group-in-azure-ad).
 
-1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command. 
+1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command:
 
    ```powershell
    Get-AksHciCredential -name <name-of-your-cluster>
    ```
 
-2. Create a namespace in the AKS cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named **dev**:
+2. Create a namespace in the Kubernetes cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
 
    ```bash  
    kubectl create namespace dev
@@ -100,9 +100,9 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
    In Kubernetes, **Roles** define the permissions to grant, and **RoleBindings** apply the permissions to desired users or groups. These assignments can be applied to a given namespace or across an entire cluster. For more information, see [Using Kubernetes RBAC authorization](/azure/aks/concepts-identity#kubernetes-rbac).
 
-   Create a role for the **dev** namespace. This role grants full permissions to the namespace. In production environments, you may want to specify more granular permissions for different users or groups.
+   Create a role for the **dev** namespace. This role grants full permissions to the namespace. In production environments, you might want to specify more granular permissions for different users or groups.
 
-3. Create a file named `role-dev-namespace.yaml` and paste the following YAML manifest:
+3. Create a file named **role-dev-namespace.yaml** and paste the following YAML manifest:
 
     ```yaml
     kind: Role
@@ -123,23 +123,23 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
 4. Create the role using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command, and specify the filename of your YAML manifest:
 
-    ```bash  
+    ```powershell
     kubectl apply -f role-dev-namespace.yaml
     ```
 
-5. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step.
+5. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step:
 
     ```azurecli  
     az ad group show --group appdev --query objectId -o tsv
     ```
     
-    The `az ad group show` command returns the value you'll use as `groupObjectId`.
+    The `az ad group show` command returns the value you'll use as `groupObjectId`:
 
     ```output  
     38E5FA30-XXXX-4895-9A00-050712E3673A
     ```
 
-6. Create a file named `rolebinding-dev-namespace.yaml`, and paste in the following YAML manifest. You're establishing the role binding that enables the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId`  with the group object ID produced by the `az ad group show` command.
+6. Create a file named **rolebinding-dev-namespace.yaml**, and paste in the following YAML manifest. You're establishing the role binding that enables the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId`  with the group object ID produced by the `az ad group show` command.
 
     ```yaml
     kind: RoleBinding
@@ -162,7 +162,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
 7. Create the **RoleBinding** using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
 
-    ```bash  
+    ```powershell  
     kubectl apply -f rolebinding-dev-namespace.yaml
     ```
 
@@ -211,9 +211,9 @@ To use a built-in Kubernetes RBAC role with Microsoft Entra ID, do the following
 
 ## Work with cluster resources using Microsoft Entra identities
 
-Now, test the expected permissions when you create and manage resources in an AKS cluster. In these examples, you'll schedule and view pods in the user's assigned namespace. Then, you'll try to schedule and view pods outside the assigned namespace.
+Now, test the expected permissions when you create and manage resources in a Kubernetes cluster. In these examples, you schedule and view pods in the user's assigned namespace. Then, you try to schedule and view pods outside the assigned namespace.
 
-1. Sign in to the Azure using the `$AKSDEV_ID` user account that you passed as an input to the `az ad group member add` command. Run the `az connectedk8s proxy` command to open a channel to the AKS cluster:
+1. Sign in to the Azure using the `$AKSDEV_ID` user account that you passed as an input to the `az ad group member add` command. Run the `az connectedk8s proxy` command to open a channel to the cluster:
 
     ```cli
     az connectedk8s proxy -n <cluster-name> -g <resource-group>
@@ -231,7 +231,7 @@ Now, test the expected permissions when you create and manage resources in an AK
     pod/nginx-dev created
     ```
 
-3. Now, use the [kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command to view pods in the *dev* namespace:
+3. Now, use the [kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command to view pods in the `dev` namespace:
 
     ```bash  
     kubectl get pods --namespace dev
@@ -262,4 +262,4 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 
 ## Next steps
 
-- [Learn more about security in AKS hybrid](concepts-security.md).
+- [Learn more about security in AKS Arc](concepts-security.md).
