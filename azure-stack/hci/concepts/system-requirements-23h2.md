@@ -27,11 +27,9 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
    - Subscription obtained through an Enterprise Agreement (EA).
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
 
-- **Azure permissions**: Make sure that you're assigned the following roles in your Azure subscription: User Access Administrator and Contributor. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/register-with-azure.md#assign-azure-permissions-for-registration).
+- **Azure permissions**: Make sure that you're assigned the required roles and permissions for registration and deployment. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/deployment-arc-register-server-permissions.md#assign-required-permissions-for-deployment).
 
-- **Azure regions**
-
-   The Azure Stack HCI service and [Azure Arc VM management](../manage/azure-arc-vm-management-overview.md) are together supported for the following regions:
+- **Azure regions**: The Azure Stack HCI service and [Azure Arc VM management](../manage/azure-arc-vm-management-overview.md) are together supported for the following regions:
 
    - East US
    - West Europe
@@ -69,10 +67,6 @@ The servers should also meet the following additional requirements:
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
 - Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
-
-For physical networking considerations and requirements, see [Physical network requirements](physical-network-requirements.md).
-
-For host networking considerations and requirements, see [Host network requirements](host-network-requirements.md).
 
 <!--## Maximum supported hardware specifications
 
