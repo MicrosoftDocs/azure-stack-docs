@@ -1,5 +1,5 @@
 ---
-title: Monitor a single Azure Stack HCI cluster with Insights
+title: Monitor a single Azure Stack HCI, version 23H2 cluster with Insights
 description: Enable logging and monitoring capabilities to monitor a single Azure Stack HCI cluster using Insights.
 author: alkohli
 ms.author: alkohli
@@ -11,16 +11,18 @@ ms.date: 01/24/2024
 # zone_pivot_groups: hci-versions
 ---
 
-# Monitor a single Azure Stack HCI cluster with Insights
+# Monitor a single Azure Stack HCI, version 23H2 cluster with Insights
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article explains how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md).
+This article describes how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md).
 
 Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
 
+<!--Check with SME if this Important note is valid for 23H2:
 > [!IMPORTANT]
 > If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview), such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
+-->
 
 ## Benefits
 
@@ -34,11 +36,9 @@ Insights for Azure Stack HCI offers the following benefits:
 
 ## Prerequisites
 
-Here are the prerequisites for using Insights for Azure Stack HCI:
+Here are the prerequisites of using Insights for Azure Stack HCI:
 
-- Azure Stack HCI cluster should be [registered](../deploy/register-with-azure.md) with Azure and Arc-enabled. If you registered your cluster on or after June 15, 2021, this happens by default. Otherwise, you must enable [Azure Arc integration](../deploy/register-with-azure.md?enable-azure-arc-integration).
-
-- The cluster must have Azure Stack HCI, version 22H2 and the May 2023 cumulative update or later installed.
+- You must have access to an Azure Stack HCI cluster that is deployed and registered.
 
 - The managed identity for the Azure resource must be enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
 
@@ -46,7 +46,7 @@ Here are the prerequisites for using Insights for Azure Stack HCI:
 
 Enabling Insights helps you monitor all Azure Stack HCI clusters currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Stack HCI cluster.
 
-To enable this capability from the Azure portal, follow these steps:
+Follow these steps to enable Insights from the Azure portal:
 
 1. In the Azure portal, browse to your Azure Stack HCI cluster resource page, then select your cluster. Under the **Capabilities** tab, select **Insights**.
 
@@ -55,9 +55,6 @@ To enable this capability from the Azure portal, follow these steps:
 1. On the **Insights** page, select **Get Started**.
 
     :::image type="content" source="media/monitor-hci-single/get-started.png" alt-text="Screenshot showing the Get Started button." lightbox="media/monitor-hci-single/get-started.png":::
-
-    > [!NOTE]
-    > The **Get Started** button is available only for Azure Stack HCI, version 22H2 with the May 2023 cumulative update or later installed and only after the managed identity is enabled. Otherwise, this button is disabled.
 
 1. On the **Insights configuration** page, select an existing DCR from the **Data collection rule** dropdown. The DCR specifies the event logs and performance counters that need to be collected and stores it in a Log Analytics workspace. Insights creates a default DCR if one doesn't already exist. Only the DCRs that are enabled for Insights are included.
 
@@ -177,6 +174,7 @@ You must remove the Microsoft Monitoring Agent extension yourself from any compu
 
 :::image type="content" source="media/monitor-hci-single/agent-migration-4.png" alt-text="Screenshot showing the Extensions list." lightbox="media/monitor-hci-single/agent-migration-4.png":::
 
+<!-- Check with SME if the Troubleshoot section applies to 23H2:
 ## Troubleshoot
 
 This section gives guidance for resolving the issues with using Insights for Azure Stack HCI.
@@ -283,7 +281,7 @@ Follow these steps to reconfigure Insights for Azure Stack HCI:
 1. Verify the configuration of the associated DCR. Make sure that event channels and performance counters are added as data sources to the associated DCR, as described in the [Data Collection Rules](#data-collection-rules) section.
 1. If the issue persists after performing the above steps, and you still don't see any data, contact customer support for assistance.
 
-For more detailed troubleshooting guidance, see [Troubleshooting guidance for the Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-windows-arc).
+For more detailed troubleshooting guidance, see [Troubleshooting guidance for the Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-troubleshoot-windows-arc).-->
 
 ## Insights visualizations
 
@@ -362,8 +360,6 @@ Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account 
 ## Next steps
 
 - [Monitor multiple clusters with Insights](/azure-stack/hci/manage/monitor-hci-multi)
-- [Register your cluster with Azure](../deploy/register-with-azure.md)
-- [Enable Azure Arc integration](./manage-cluster-registration.md#enable-azure-arc-integration)
 - [Event Log Channel](/azure-stack/hci/manage/monitor-hci-multi#event-log-channel)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
 - [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot)
