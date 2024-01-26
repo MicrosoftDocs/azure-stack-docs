@@ -39,6 +39,8 @@
       href: cluster-labels.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
+    - name: Use GPUs
+      href: deploy-gpu-node-pool.md
     - name: Deploy container images using Azure Container Registry
       href: deploy-container-registry.md
     - name: Manage multiple node pools
@@ -96,8 +98,6 @@
               href: create-kubernetes-cluster.md
     - name: Develop applications
       items:
-        - name: Use GPUs
-          href: deploy-gpu-node-pool.md
         - name: Deploy applications with Helm
           href: helm-deploy.md
         - name: Deploy Azure Arc-enabled data services
