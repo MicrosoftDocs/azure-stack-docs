@@ -6,7 +6,7 @@
   - name: What is AKS enabled by Arc?
     href: aks-overview.md
   - name: What's new in version 23H2
-    href: aks-whatsnew-23h2.md
+    href: aks-whats-new-23h2.md
   - name: Overview
     href: overview.md
   - name: Uninstall AKS hybrid cluster provisioning preview
