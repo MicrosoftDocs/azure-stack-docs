@@ -17,19 +17,17 @@ This article describes how to manage default security settings for your Azure St
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## View security default settings
-
-### View security default settings in Azure portal
+## View security default settings in Azure portal
 
 Use security default settings to manage cluster security, drift control, and secured core server settings on your cluster.
 
 :::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page on Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
-### Manage security default settings with PowerShell
+## Manage security defaults with PowerShell
 
 With drift protection enabled, you can only modify non-protected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [SecurityBaseline](https://aka.ms/hci-securitybase).
 
-## Modify security default settings
+## Modify security defaults
 
 Start with the initial security baseline and then modify drift control and protected security settings defined during deployment.
 
