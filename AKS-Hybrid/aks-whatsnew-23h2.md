@@ -24,25 +24,25 @@ Microsoft continues to focus on delivering consistent user experience for all yo
 
 ## Simplified AKS component management on Azure Stack HCI 23H2
 
-AKS on Azure Stack HCI 23H2 includes several infrastructure components that provide Azure experiences, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator. These infrastructure components are now included in Azure Stack HCI 23H2.
+AKS on Azure Stack HCI 23H2 includes several infrastructure components that provide Azure experiences, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator. These infrastructure components are now included in Azure Stack HCI 23H2:
 
 - **Arc Resource Bridge**: The Arc Resource Bridge is created automatically when you deploy Azure Stack HCI. This lightweight Kubernetes VM connects your Azure Stack HCI to Azure Cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure.
-- **Custom Location**: Just like Azure Arc Resource Bridge, a custom location is created automatically when you deploy your Azure Stack HCI. A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying AKS.
-- **Kubernetes Extension for AKS Arc Operator**: The *Kubernetes extension for AKS Operator* is automatically installed on Arc Resource Bridge when you deploy Azure Stack HCI. It is the on-premises equivalent of an Azure Resource Manager resource provider, to help manage AKS via Azure.
+- **Custom Location**: Just like Azure Arc Resource Bridge, a custom location is created automatically when you deploy Azure Stack HCI. A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying AKS.
+- **Kubernetes Extension for AKS Arc Operators**: The Kubernetes extension for AKS operators is automatically installed on Arc Resource Bridge when you deploy Azure Stack HCI. It's the on-premises equivalent of an Azure Resource Manager resource provider, to help manage AKS via Azure.
 
 By integrating these components, Azure Arc offers a unified and efficient Kubernetes provisioning and management solution, seamlessly bridging the gap between on-premises and cloud infrastructures.
 
 ## Key personas
 
-**Infrastructure administrator**: The role of the infrastructure administrator is to set up Azure Stack HCI, which includes all the infrastructure component deployment previously mentioned. Administrators must also set up the platform configuration, such as the networking and storage configuration, so that Kubernetes operators can create and manage Kubernetes clusters.
+**Infrastructure administrator**: The role of the infrastructure administrator is to set up Azure Stack HCI, which includes all the infrastructure component deployments previously mentioned. Administrators must also set up the platform configuration, such as the networking and storage configuration, so that Kubernetes operators can create and manage Kubernetes clusters.
 
 **Kubernetes operator**: Kubernetes operators can create and manage Kubernetes clusters on Azure Stack HCI so they can run applications without coordinating with infrastructure administrators. The operator is given access to the Azure subscription, Azure custom location, and virtual network by the infrastructure administrator. No access to the underlying on-premises infrastructure is necessary. Once the operator has the required access, they can create Kubernetes clusters according to application needs: Windows/Linux node pools, Kubernetes versions, etc.
 
-Once the operator has the required access, they are free to create Kubernetes cluster according to application needs - Windows/Linux node pools, Kubernetes versions, etc.
+Once the operator has the required access, they can create Kubernetes clusters according to their application needs - Windows/Linux node pools, Kubernetes versions, etc.
 
 ## Features and improvements
 
-This section lists the new features and improvements of AKS Arc in each release of Azure Stack HCI, version 23H2.
+This section lists the new features and improvements in AKS Arc in each release of Azure Stack HCI, version 23H2.
 
 ### Release 2311.2
 
@@ -50,7 +50,7 @@ AKS enabled by Azure Arc version 23H2 is generally available starting with this 
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **New CLI extension and Azure portal experience**. The new GA version of the Azure CLI extension starting with this release is **az aksarc**. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md). You can also see the new portal cluster creation experience in [Create Kubernetes clusters using the Azure portal](aks-create-clusters-portal.md).  
+- **New CLI extension and Azure portal experience**. The new GA version of the Azure CLI extension starting with this release is [**az aksarc**](/cli/azure/aksarc). For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md). You can also see the new portal cluster creation experience in [Create Kubernetes clusters using the Azure portal](aks-create-clusters-portal.md).  
 - **Support for logical networks**. Starting with this release, creating Kubernetes clusters on Azure Stack HCI 23H2 requires [logical networks](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli) as a prerequisite. For more information, see [How to create logical networks](aks-networks.md).
 - **Available K8S versions and VM sizes**. You can use [`az aksarc get-versions`](/cli/azure/aksarc#az-aksarc-get-versions) and [`az aksarc vmsize list`](/cli/azure/aksarc/vmsize#az-aksarc-vmsize-list) to get the available Kubernetes versions and VM sizes on your system.
 - **Support for Taints and labels**. See [Manage node pools](manage-node-pools.md) for a cluster, and [Use cluster labels](cluster-labels.md) to set the taints and labels for node pools.
