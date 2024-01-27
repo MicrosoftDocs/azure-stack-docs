@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 12/12/2023
+ms.date: 01/26/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -113,4 +113,4 @@ Use the following steps to create a supplemental policy:
 
 ## Next steps
 
-- [Review the deployment checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-checklist.md).
+- [Complete the prerequisites and deployment checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
