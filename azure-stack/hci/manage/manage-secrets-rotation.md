@@ -37,4 +37,4 @@ Once the password is changed, the session ends. You need to sign in with the upd
 
 ## Next steps
 
-- [Complete the prerequsites and checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
+- [Complete the prerequisites and checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
