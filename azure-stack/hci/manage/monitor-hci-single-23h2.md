@@ -115,7 +115,7 @@ The following table describes the performance counters that are monitored:
 | RDMA Activity(*)\RDMA Inbound Bytes/sec | Rate of data received over RDMA by the network adapter per second. |
 | RDMA Activity(*)\RDMA Outbound Bytes/sec | Rate of data sent over RDMA by the network adapter per second. |
 
-After you enable Insights, it can take up to 15 minutes to collect the data. When the process is finished, you are able to see a rich visualization of the health of your cluster from the **Insights** menu on the left pane:
+After you enable Insights, it can take up to 15 minutes to collect the data. When the process is finished, you're able to see a rich visualization of the health of your cluster from the **Insights** menu on the left pane:
 
 :::image type="content" source="media/monitor-hci-single/insights-visualization.png" alt-text="Screenshot showing Insight visualizations." lightbox="media/monitor-hci-single/insights-visualization.png":::
 
@@ -156,12 +156,11 @@ This section gives guidance for resolving the issues with using Insights for Azu
 
 :::image type="content" source="media/monitor-hci-single/blank-workbooks-page.png" alt-text="Screenshot of a blank Workbooks page." lightbox="media/monitor-hci-single/blank-workbooks-page.png":::
 
-**Possible causes.** There might be several possible causes for this issue, including recent configuration of Insights, incomplete troubleshooting steps for clusters registered before November 2023, or associated DCR not being configured properly.
+**Possible causes.** There could be several causes for this issue, such as recent configuration of Insights or improper configuration of the associated DCR.
 
 **Solution.** To troubleshoot the issue, perform the following steps in sequence:
 
 1. If you recently configured Insights, wait for up to one hour for AMA to gather data.
-1. If there's still no data after waiting, make sure you have completed all the steps mentioned in the [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023) section.
 1. Verify the configuration of the associated DCR. Make sure that event channels and performance counters are added as data sources to the associated DCR, as described in the [Data Collection Rules](#data-collection-rules) section.
 1. If the issue persists after performing the above steps, and you still don't see any data, contact customer support for assistance.
 
