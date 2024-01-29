@@ -33,7 +33,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: 1. Download the software
-            url: deploy/download-azure-stack-hci-23h2.md
+            url: /azure-stack/hci/deploy/download-azure-stack-hci-23h2.md
           - text: 2. Install the OS
             url: deploy/deployment-install-os.md
           - text: 3. Register with Arc
@@ -65,7 +65,7 @@ landingContent:
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
-            url: /manage/manage-virtual-machines-in-azure-portal
+            url: manage/manage-arc-virtual-machines.md
 
   # Card
   - title: Manage the cluster
@@ -77,7 +77,7 @@ landingContent:
           - text: Repair server
             url: manage/repair-server.md
           - text: Manage via PowerShell
-            url: manage/cluster-powershell
+            url: manage/cluster-powershell.md
           - text: Manage Arc extensions
             url: manage/arc-extension-management.md
 
@@ -103,7 +103,7 @@ landingContent:
           - text: Microsoft Defender for Cloud (preview)
             url: deploy/deployment-introduction.md
           - text: Azure Site Recovery (preview)
-            url: deploy/deployment-introduction.md
+            url: manage/azure-site-recovery.md
             
   # Card
   - title: Azure Stack HCI concepts
@@ -111,7 +111,7 @@ landingContent:
       - linkListType: concept
         links:
           - text: Network reference patterns overview
-            url: plan/network-patterns-overview
+            url: plan/network-patterns-overview.md
           - text: Security features
             url: concepts/security-features.md
           - text: Observability
@@ -131,4 +131,4 @@ landingContent:
           - text: Deployment issues
             url: manage/get-support-for-deployment-issues.md
           - text: Remote support
-            url: manage/get-remote-support
+            url: manage/get-remote-support.md
