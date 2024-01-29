@@ -66,7 +66,7 @@ The servers should also meet the following additional requirements:
 
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you'll use.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you use.
 
 <!--## Maximum supported hardware specifications
 
