@@ -92,6 +92,8 @@ landingContent:
             url: manage/monitor-cluster-with-metrics.md
           - text: Health alerts
             url: manage/health-alerts-via-azure-monitor-alerts.md
+          - text: Log alerts
+            url: manage/setup-hci-system-alerts.md
 
   # Card
   - title: Try the preview
@@ -99,9 +101,9 @@ landingContent:
       - linkListType: overview
         links:
           - text: Migrate (preview)
-            url: deploy/deployment-introduction.md
+            url: migrate/migration-options-hci-overview.md
           - text: Microsoft Defender for Cloud (preview)
-            url: deploy/deployment-introduction.md
+            url: concepts/security-features.md
           - text: Azure Site Recovery (preview)
             url: manage/azure-site-recovery.md
             
