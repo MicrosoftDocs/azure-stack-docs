@@ -17,7 +17,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: AKS overview
-            url: aks-hybrid-options-overview.md
+            url: aks-overview.md
       - linkListType: concept
         links:
           - text: Clusters and workloads
