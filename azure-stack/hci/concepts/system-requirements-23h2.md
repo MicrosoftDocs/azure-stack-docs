@@ -14,7 +14,7 @@ ms.date: 01/31/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. Note that if you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
+This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. If you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
 ## Azure requirements
 
@@ -54,7 +54,7 @@ The servers should also meet the following additional requirements:
 
 - Each server should have dedicated volumes for logs, with log storage at least as fast as data storage.
 
-- Have direct-attached drives that are physically attached to one server each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, are not supported.
+- Have direct-attached drives that are physically attached to one server each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
 
     > [!NOTE]
     > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
@@ -66,7 +66,7 @@ The servers should also meet the following additional requirements:
 
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you will use.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you'll use.
 
 <!--## Maximum supported hardware specifications
 
@@ -108,7 +108,7 @@ This section contains OEM contact information and links to OEM Azure Stack HCI, 
 | Supermicro            | BigTwin 2U 2-Node   | [Configure BIOS settings](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BIOS)   | [Firmware update process](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BMC)    | [Driver update process](https://www.supermicro.com/wdl/CDR_Images/CDR-X11/)     |     |
 | Thomas-krenn          | All models    | [Configure BIOS settings](https://thomas-krenn.com/azshci-bios)   | [Firmware update process](https://thomas-krenn.com/azshci-driver)  | [Driver update process](https://thomas-krenn.com/azshci-driver)  |    |
 
-For a comprehensive list of all OEM contact information and links download the [Azure Stack HCI OEM Contact]() spreadsheet.
+For a comprehensive list of all OEM contact information and their links download the [Azure Stack HCI OEM Contact]() spreadsheet.
 
 ### BIOS setting
 
@@ -229,7 +229,7 @@ Check with your OEM regarding the necessary firmware that needs to be installed 
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. Windows Admin Center plugins to install drivers and firmware, continue to work with Azure Stack HCI, version 23H2.
+You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware.
 
 |OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
