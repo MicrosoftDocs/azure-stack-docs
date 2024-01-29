@@ -1,23 +1,21 @@
 ---
-title: Security features for Azure Stack HCI, version 23H2 (preview)
-description: Learn about security features available for new deployments of Azure Stack HCI, version 23H2 (preview).
+title: Security features for Azure Stack HCI, version 23H2
+description: Learn about security features available for new deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/04/2024
+ms.date: 01/23/2024
 ---
 
-# Security features for Azure Stack HCI, version 23H2 (preview)
+# Security features for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
-This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, and more.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
+This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
 
 ## Windows Defender Application Control
 
@@ -94,6 +92,14 @@ Syslog forwarding agents are deployed on every Azure Stack HCI host to forward s
 The syslog forwarder in Azure Stack HCI supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there is unidirectional or bidirectional authentication.
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
+
+## Microsoft Defender for Cloud (preview)
+
+Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
+
+With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual servers and Arc VMs.
+
+For more information, see [Manage system security with Microsoft Defender for Cloud](../manage/manage-security-with-defender-for-cloud.md).
 
 ## Next steps
 
