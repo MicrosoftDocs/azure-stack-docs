@@ -168,7 +168,7 @@
 
   - name: Security
     items:
-    - name: Manage with Microsoft Defender for cloud
+    - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
     - name: Manage WDAC
       href: manage/manage-wdac.md
