@@ -17,25 +17,18 @@ Monitoring Azure Stack HCI involves the regular collection and analysis of data 
 
 To understand the current performance patterns, identify performance anomalies, and develop methods to address issues, it's important to set baseline performance metrics for your system under different times and load conditions.
   
-Azure Stack HCI utilizes [Azure Monitor](/azure/azure-monitor/overview) tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. These tools help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline.  
+Azure Stack HCI utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. These tools help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline.  
 
 ## High-level architecture
 
 Broadly, the architecture of Azure Stack HCI monitoring comprises the following key components:
 
-- Deploying Azure Monitor Agent and Telemetry and Diagnostics extensions on every node within the cluster. These extensions are responsible for collecting log and metric data from each node, respectively.
-- Storing log data in the Log Analytics workspace based on the instructions specified in Data Collection Rules, while storing metrics data in a dedicated time-series database.
+- Deploying extensions to collect log, metrics, telemetry, and alerts.
 - Using Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts to analyze, visualize, and respond to the data effectively.
 
 The following diagram is an architectural representation of Azure Stack HCI monitoring implementation.
 
-:::image type="content" source="./media/monitoring-overview/monitoring-architecture.png" alt-text="High-level architecture diagram of Azure Stack HCI monitoring." lightbox="./media/monitoring-overview/monitoring-architecture.png" :::
-
-This diagram shows an Azure Stack HCI cluster with three cluster nodes. Each cluster node is installed with Azure Monitor Windows Agent and Telemetry and Diagnostics extensions.
-
-The Azure Monitor Windows Agent extension collects logs and performance counters and sends them to a Log Analytics workspace based on the instructions defined in Data Collection Rules. Insights for Azure Stack HCI uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized in Azure Workbooks.
-
-On the other hand, the Telemetry and Diagnostics extension collects telemetry and diagnostics data from each node and sends it to Azure Monitor via Azure Stack HCI services. You can then analyze this data in Azure Monitor using different monitoring tools, including Metrics Explorer, Dashboards, Workbooks, and Alerts.
+:::image type="content" source="./media/monitoring-overview/monitoring-architecture.png" alt-text="High-level architecture diagram of Azure Stack HCI monitoring. This diagram shows an Azure Stack HCI cluster with three cluster nodes. Each cluster node is installed with extensions for monitoring." lightbox="./media/monitoring-overview/monitoring-architecture.png" :::
 
 ## Monitoring capabilities in Azure Stack HCI
 
@@ -43,7 +36,7 @@ This section describes the monitoring capabilities in Azure Stack HCI.
 
 ### Insights
 
-Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster using logs. You can use Insights to monitor a single cluster or multiple clusters simultaneously. Insights for Azure Stack HCI collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. This data is then visualized using Azure workbooks. For more information, see [Monitor multiple Azure Stack HCI clusters with Insights](../manage/monitor-hci-multi.md) and [Monitor a single Azure Stack HCI cluster with Insights](../manage/monitor-hci-single.md).
+Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster using logs. You can use Insights to monitor a [single cluster](../manage/monitor-hci-single.md) or [multiple clusters](../manage/monitor-hci-multi.md) simultaneously. Insights for Azure Stack HCI collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. Insights for Azure Stack HCI uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized using Azure Workbooks.
 
 With Insights for Azure Stack HCI, you get access to default workbooks with basic metrics, along with specialized workbooks created for monitoring key features of Azure Stack HCI. To learn more about these feature workbooks, see [Monitor HCI features with Insights](../manage/monitor-features.md).
 
@@ -53,11 +46,13 @@ Azure Stack HCI enables you to store numeric data from your clusters in a dedica
 
 ### Alerts
 
-An effective monitoring solution proactively responds to critical events, without the need for an individual or team to notice the issue. The response could be a text or email to an administrator, or an automated process that attempts to correct an error condition. Azure Monitor Alerts notify you of critical conditions.
+Alerts proactively notify you when important conditions are found in your monitoring data. They allow you to identify and address issues before the users of your system notice them. The response could be a text or email to an administrator, or an automated process that attempts to correct an error condition. You can alert on any metric or log data collected from your Azure Stack HCI system.
+
+For more information on alerting, see [What are Azure Monitor alerts?](/azure/azure-monitor/alerts/alerts-overview).
 
 #### Types of alerts
 
-The following table provides a brief description and setup instructions for each alert type:
+The following table provides a brief description and setup instructions for each alert type in Azure Stack HCI:
 
 | Alert type | Description | How to configure |
 | --- | --- | --- |
