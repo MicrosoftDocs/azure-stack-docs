@@ -148,7 +148,7 @@
         href: manage/create-arc-virtual-machines.md
     - name: Manage Arc VMs
       href: manage/manage-arc-virtual-machines.md
-    - name: Manage Arc VM reources
+    - name: Manage Arc VM resources
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
@@ -270,7 +270,7 @@
   - name: Azure Stack HCI security features
     href: concepts/security-features.md
 
-- name: version 22H2
+- name: Version 22H2
   items:
   - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md 
