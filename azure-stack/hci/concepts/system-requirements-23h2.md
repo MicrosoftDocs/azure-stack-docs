@@ -160,7 +160,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     DriverDescription		: HPE Ethernet 10/25Gb 2-port 640FLR-SFP28 Adapter
     DriverMajorNdisVersion	: 6
     DriverMinorNdisVersion 	: 85
-    DriverName			    : \SystemRoot\5ystem32\drivers\mlx5.sys
+    DriverName			    : \SystemRoot\System32\drivers\mlx5.sys
     DriverProvider			: Mellanox Technologies Ltd.
     DriverVersionString		: 2.70.24728.0
     MajorDriverVersion		: 2
@@ -187,9 +187,41 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
      Here's are some sample outputs:
 
-    :::image type="content" source="media/system-requirements/check-driver-update.png" alt-text="Screenshot to check one driver's update." lightbox="media/system-requirements/check-driver-update.png":::
+    ```console
+    PS C:\Windows\system32> Get-NetAdapter -name ethernet | select *driver
 
-    :::image type="content" source="media/system-requirements/check-driver-update-2.png" alt-text="Screenshot to check a second driver's update." lightbox="media/system-requirements/check-driver-update-2.png":::
+    DriverInformation		: Driver Date 2023-05-03 Version 23.4.26054.0 NDIS 6.85
+    DriverFileName			: mlx5.sys
+    DriverVersion			: 23.4.26054.0
+    DriverDate			    : 2023-05-03
+    DriverDateData			: 133275456000000000
+    DriverDescription		: HPE Ethernet 10/25Gb 2-port 640FLR-SFP28 Adapter
+    DriverMajorNdisVersion	: 6
+    DriverMinorNdisVersion 	: 85
+    DriverName			    : \SystemRoot\System32\drivers\mlx5.sys
+    DriverProvider			: Mellanox Technologies Ltd.
+    DriverVersionString		: 23.4.26054.0
+    MajorDriverVersion		: 2
+    MinorDriverVersion		: 0
+    ```
+
+    ```console
+    PS C:\Windows\system32> Get-NetAdapter "ethernet 2" | select ‘driver
+
+    DriverInformation		: Driver Date 2023-05-03 Version 23.4.26054.0 NDIS 6.85
+    DriverFileName			: mlx5.sys
+    DriverVersion			: 23.4.26054.0
+    DriverDate			    : 2023-05-03
+    DriverDateData			: 133275456000000000
+    DriverDescription		: HPE Ethernet 10/25Gb 2-port 640FLR-SFP28 Adapter
+    DriverMajorNdisVersion	: 6
+    DriverMinorNdisVersion 	: 85
+    DriverName			    : \SystemRoot\System32\drivers\mlx5.sys
+    DriverProvider			: Mellanox Technologies Ltd.
+    DriverVersionString		: 23.4.26054.0
+    MajorDriverVersion		: 2
+    MinorDriverVersion		: 0
+    ```
 
 ## Firmware
 
