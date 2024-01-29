@@ -108,7 +108,7 @@ This section contains OEM contact information and links to OEM Azure Stack HCI, 
 | Supermicro            | BigTwin 2U 2-Node   | [Configure BIOS settings](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BIOS)   | [Firmware update process](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BMC)    | [Driver update process](https://www.supermicro.com/wdl/CDR_Images/CDR-X11/)     |     |
 | Thomas-krenn          | All models    | [Configure BIOS settings](https://thomas-krenn.com/azshci-bios)   | [Firmware update process](https://thomas-krenn.com/azshci-driver)  | [Driver update process](https://thomas-krenn.com/azshci-driver)  |    |
 
-For a comprehensive list of all OEM contact information and their links download the [Azure Stack HCI OEM Contact]() spreadsheet.
+For a comprehensive list of all OEM contact information download the [Azure Stack HCI OEM Contact]() spreadsheet.
 
 ### BIOS setting
 
