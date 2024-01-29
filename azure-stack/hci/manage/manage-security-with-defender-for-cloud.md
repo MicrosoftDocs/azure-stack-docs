@@ -41,7 +41,7 @@ This step turns on the basic Defender for Cloud plan—at no extra cost. This pl
 
 ### Step 2: Turn on Defender for Servers for individual servers and Arc VMs
 
-This step gets you enhanced security features including security alerts on individual servers and Arc VMs.
+This step gets you enhanced security features including security alerts for individual servers and Arc VMs.
 
 To do so, follow all the instructions in the [Enable the Defender for Servers plan](/azure/defender-for-cloud/tutorial-enable-servers-plan#enable-the-defender-for-servers-plan) section, which includes:
 
