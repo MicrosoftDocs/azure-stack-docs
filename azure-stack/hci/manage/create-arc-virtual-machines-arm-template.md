@@ -18,11 +18,10 @@ This article shows you how to use an Azure Resource Manager template to deploy a
 
 When you create an Arc VM using this template, first a virtual network interface is created. You can then optionally enable domain-join and attach a virtual disk with the VM you'll create. The VM created via the template has guest management enabled.
 
-[!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
 If your environment meets the prerequisites and you're familiar with using templates, select the **Deploy to Azure** button. The template opens in the Azure portal.
 
-[![Deploy to Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)
+<!--[![Deploy to Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)-->
 
 ## Prerequisites
 
@@ -36,7 +35,7 @@ Complete the following prerequisites before you use this template. Make sure tha
 
 The template used in this article is from [Azure Quickstart Templates](https://azure.microsoft.com/resources/templates/vm-simple-windows/).
 
-:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json":::
+<!--:::code language="json" source="~/quickstart-templates/quickstarts/microsoft.compute/vm-simple-windows/azuredeploy.json":::-->
 
 Several resources are defined in the template:
 
@@ -52,7 +51,7 @@ Several resources are defined in the template:
 
 1. Select the following image to sign in to Azure and open a template. The template creates a key vault and a secret.
 
-    [![Deploy to Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)
+    <!--[![Deploy to Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2fquickstarts%2fmicrosoft.compute%2fvm-simple-windows%2fazuredeploy.json)-->
 
 1. Select or enter the following values. Use the default values, when available.
 
@@ -60,16 +59,16 @@ Several resources are defined in the template:
     - **Resource group**: select an existing resource group from the drop-down, or select **Create new**, enter a unique name for the resource group, and then select **OK**.
     - **Region**: select a region. For example, **Central US**.
     - **Admin username**: provide a username, such as *azureuser*.
-    - **Admin password**: provide a password to use for the admin account. The password must be at least 12 characters long and meet the [defined complexity requirements](faq.yml#what-are-the-password-requirements-when-creating-a-vm-).
+    - **Admin password**: provide a password to use for the admin account. The password must be at least 12 characters long and meet the Azure complexity requirements <!--[defined complexity requirements](faq.yml#what-are-the-password-requirements-when-creating-a-vm-)-->.
     - **DNS label prefix**: enter a unique identifier to use as part of the DNS label.
     - **OS version**: select which OS version you want to run on the VM.
-    - **VM size**: select the [size](../sizes.md) to use for the VM.
+    - **VM size**: select the size <!--[size](../sizes.md)--> to use for the VM.
     - **Location**: the default is the same location as the resource group, if it already exists.
 1. Select **Review + create**. After validation completes, select **Create** to create and deploy the VM.
 
-Cost information isn't presented during the virtual machine creation process for ARM templates like it is for the [Azure portal](quick-create-portal.md). If you want to learn more about how cost works for virtual machines, see the [Cost optimization Overview page](../plan-to-manage-costs.md).
+<!--Cost information isn't presented during the virtual machine creation process for ARM templates like it is for the [Azure portal](quick-create-portal.md). If you want to learn more about how cost works for virtual machines, see the [Cost optimization Overview page](../plan-to-manage-costs.md).-->
 
-The Azure portal is used to deploy the template. In addition to the Azure portal, you can also use the Azure PowerShell, Azure CLI, and REST API. To learn other deployment methods, see [Deploy templates](../../azure-resource-manager/templates/deploy-powershell.md).
+The Azure portal is used to deploy the template. In addition to the Azure portal, you can also use the Azure PowerShell, Azure CLI, and REST API. To learn other deployment methods, see <!--[Deploy templates](../../azure-resource-manager/templates/deploy-powershell.md)-->.
 
 ## Review deployed resources
 
