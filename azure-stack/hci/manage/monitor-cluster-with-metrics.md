@@ -34,7 +34,7 @@ Here are the benefits of using Metrics for Azure Stack HCI:
 
 Here are the prerequisites of using Metrics for Azure Stack HCI:
 
-- You must have access to a cluster that is running Azure Stack HCI, version 23H2 (Build version: 2311) or later.
+- You must have access to a cluster that is running Azure Stack HCI, version 23H2 (Build version: 2311) or later. The cluster must be deployed and registered with Azure.
 
 - The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
@@ -54,7 +54,7 @@ Follow these steps to monitor platform metrics of your cluster in the Azure port
 
    - At the top of the pane, select a duration to change the time range for the graphs.
    - Select the **See all metrics** link to analyze metrics using metrics explorer. See [Analyze metrics](#analyze-metrics).
-   - Select any of the graphs to open them in metrics explorer to drill down further or to create an alert rule. See [Create metrics alerts](#create-metrics-alerts).
+   - Select any of the graphs to open them in metrics explorer to drill down further or to create an alert rule. See [Create metrics alerts](./setup-metric-alerts.md#create-metrics-alerts).
 
        :::image type="content" source="media/monitor-cluster-with-metrics/platform-metrics.png" alt-text="Screenshot showing the platform metrics for your cluster." lightbox="media/monitor-cluster-with-metrics/platform-metrics.png":::
 
