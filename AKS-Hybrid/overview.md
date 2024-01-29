@@ -1,10 +1,10 @@
 ---
-title: AKS enabled by Azure Arc overview
-description: Learn about AKS enabled by Azure Arc.
+title: AKS enabled by Arc on Windows Server and Azure Stack HCI overview
+description: Learn about AKS enabled by Azure Arc on Windows Server and Azure Stack HCI.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm 
-ms.date: 01/24/2024
+ms.date: 01/29/2024
 
 # Intent: As an IT Pro, I want to use AKS on Azure Stack HCI and Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.
 # Keyword: on-premises Kubernetes
@@ -23,19 +23,19 @@ Or, you can use AKS to orchestrate your cloud-based containers. See [Azure Kuber
 
 The following sections discuss some of the reasons to use AKS on Azure Stack HCI and Windows Server, then answer some common questions about the service and how to get started. For a background on containers, see [Windows and containers](/virtualization/windowscontainers/about/).  For a background on how Kubernetes works in AKS on Azure Stack HCI and Windows Server, see [Kubernetes core concepts](kubernetes-concepts.md) and for a background on Kubernetes, see [Kubernetes.io](https://kubernetes.io).
 
-## Why use AKS on Azure Stack HCI and Windows Server for containerized applications?
+## Why use AKS on Windows Server and Azure Stack HCI for containerized applications?
 
 While you can manage a few containers manually using Docker and Windows, apps often make use of five, ten, or even hundreds of containers, which are where the Kubernetes orchestrator comes in.
 
 Kubernetes is an open-source orchestrator for automating container management at scale. AKS simplifies on-premises Kubernetes deployment by providing wizards you can use to set up Kubernetes and essential Azure Stack HCI add-ons, and also create Kubernetes clusters to host your workloads.
 
-Here's some of the functionality AKS provides on Azure Stack HCI:
+Here's some of the functionality AKS provides on Windows Server and Azure Stack HCI:
 
 - Deploy containerized apps at scale to Kubernetes clusters running across the Azure Stack HCI and Windows Server cluster.
 - Deploy and manage both Linux and Windows-based containerized apps.
 - Scale up or down by adding or removing nodes to the Kubernetes cluster.
 - Manage storage and networking on your Kubernetes cluster.
-- Provide automatic updates for your Kubernetes deployment.
+- Provide regular Kubernetes updates and security fixes for your Kubernetes deployment.
 - Keep up-to-date with the latest available Kubernetes versions.
 - Use the popular Azure services through Azure Arc for Kubernetes.
 
@@ -64,7 +64,7 @@ Once you've set up on-premises Kubernetes using AKS and created a Kubernetes clu
 
 ## Run Linux and Windows containers
 
-AKS fully supports both Linux-based and Windows-based containers. When you create a Kubernetes cluster on Azure Stack HCI, you can choose whether to create node pools (groups of identical Kubernetes cluster nodes) to run Linux containers, Windows containers, or both. 
+AKS fully supports both Linux-based and Windows-based containers. When you create a Kubernetes cluster on Windows Server or Azure Stack HCI, you can choose whether to create node pools (groups of identical Kubernetes cluster nodes) to run Linux containers, Windows containers, or both. 
 
 AKS creates the Linux and Windows nodes so that you don't have to directly manage the Linux or Windows operating systems.
 
@@ -121,7 +121,7 @@ To keep up with application demands, you might need to adjust the number and siz
 
 ## Deploy and manage Windows-based containerized apps
 
-AKS fully supports running both Linux-based and Windows-based containers. When you create a Kubernetes cluster on Azure Stack HCI, you can choose whether to create node pools (groups of identical Kubernetes cluster nodes) to run Linux containers, Windows containers, or both. AKS creates the Linux and Windows nodes so that you don't have to directly manage the Linux or Windows operating systems.
+AKS fully supports running both Linux-based and Windows-based containers. When you create a Kubernetes cluster on Windows Server or Azure Stack HCI, you can choose whether to create node pools (groups of identical Kubernetes cluster nodes) to run Linux containers, Windows containers, or both. AKS creates the Linux and Windows nodes so that you don't have to directly manage the Linux or Windows operating systems.
 
 ## AKS supports deploying GPU-enabled nodes
 

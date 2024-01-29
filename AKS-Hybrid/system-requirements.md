@@ -88,13 +88,15 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 The following requirements apply to an Azure Stack HCI cluster and a Windows Server Datacenter cluster:
 
-- Verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes.
+- Verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes (applies to Windows Server and AKS HCI 22H2).
 - Verify that you have disabled IPv6 on all network adapters.
 - For a successful deployment, the Azure Stack HCI or Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 - Make sure all subnets you define for the cluster are routable between each other and to the internet.
 - Make sure that there's network connectivity between Azure Stack HCI hosts and the tenant VMs.
 - DNS name resolution is required for all nodes to be able to communicate with each other.
 - (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS to register the cloud agent generic cluster name in the DNS system for discovery.
+
+For more information, see [AKS networking system requirements](aks-hci-network-system-requirements.md).
 
 ### IP address assignment  
 

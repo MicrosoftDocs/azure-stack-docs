@@ -1,16 +1,14 @@
 ---
-title: AKS on Azure Stack HCI 23H2 networking system requirements (preview)
+title: AKS on Azure Stack HCI 23H2 networking system requirements
 description: Learn about AKS on Azure Stack HCI 23H2 networking prerequisites.
 ms.topic: overview
-ms.date: 12/11/2023
+ms.date: 01/29/2024
 author: sethmanheim
 ms.author: sethm 
-ms.reviewer: mikek
-ms.lastreviewed: 11/17/2023
 
 ---
 
-# AKS on Azure Stack HCI 23H2 networking system requirements (preview)
+# AKS on Azure Stack HCI 23H2 networking system requirements
 
 This article describes the required networking prerequisites for installing AKS on Azure Stack HCI 23H2. It's recommended that you work with a network administrator to provide and set up the networking parameters required to deploy AKS.
 
@@ -38,8 +36,7 @@ The following requirements apply to an Azure Stack HCI administrator, in consult
 
 ## Proxy settings
 
-In this preview release, proxy settings are inherited from the underlying Azure Stack HCI system. The functionality to set individual proxy
-settings for AKS clusters and change proxy settings will be in a later release.
+In this release, proxy settings are inherited from the underlying Azure Stack HCI system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet.
 
 ## Network port requirements
 
@@ -81,14 +78,15 @@ deployment. Ensure that these are allowed in your firewall configuration:
 | `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
 | `aka.ms` | 443 | az extensions | Required to download Azure CLI extensions such as **akshybrid** and **connectedk8s**. |
-| `*.login.microsoft.com` | 443 | Azure	| Required to fetch and update Azure Resource Manager tokens. |
-| `sts.windows.net` | 443 | Azure Arc |	For Cluster Connect and Custom Location-based scenario. |
-| `hybridaksstorage.z13.web.core.windows.net` |	443 | Azure Stack HCI |	AKSHCI static website hosted in Azure Storage. |
-| `raw.githubusercontent.com` |	443 | Github | Used for Github. |
-| `www.microsoft.com` |	80 | Microsoft Offical Website | Microsoft offical web site. |
+| `*.login.microsoft.com` | 443 | Azure    | Required to fetch and update Azure Resource Manager tokens. |
+| `sts.windows.net` | 443 | Azure Arc |    For Cluster Connect and Custom Location-based scenario. |
+| `hybridaksstorage.z13.web.core.windows.net` |    443 | Azure Stack HCI |    AKSHCI static website hosted in Azure Storage. |
+| `raw.githubusercontent.com` |    443 | Github | Used for Github. |
+| `www.microsoft.com` |    80 | Microsoft Offical Website | Microsoft offical web site. |
 | `*.prod.do.dsp.mp.microsoft.com` | 443 | Microsoft Update | Resource bridge (appliance) image download. |
 | `files.pythonhosted.org` | 443 | Python package | Python package. |
 
 ## Next steps
 
-[AKS on Azure Stack HCI 23H2 overview](aks-preview-overview.md)
+- [Create Arc-enabled networks for AKS](aks-networks.md)
+- [AKS on Azure Stack HCI 23H2 overview](aks-overview.md)

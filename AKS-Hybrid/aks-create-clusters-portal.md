@@ -83,4 +83,4 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 ## Next steps
 
 - [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](aks-preview-overview.md)
+- [What's new in AKS on Azure Stack HCI](aks-whats-new-23h2.md)

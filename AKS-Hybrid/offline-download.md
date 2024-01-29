@@ -254,4 +254,5 @@ You can use the following procedure to create or update a Kubernetes cluster on 
 
 ## Next steps
 
-[Azure Kubernetes Service on Azure Stack HCI](overview.md)
+- [Azure Kubernetes Service on Azure Stack HCI](overview.md)
+- [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md)

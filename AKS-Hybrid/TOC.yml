@@ -5,8 +5,6 @@
   items:
   - name: What is AKS enabled by Arc?
     href: aks-overview.md
-  - name: What's new in version 23H2
-    href: aks-whats-new-23h2.md
   - name: Overview
     href: overview.md
   - name: Uninstall AKS hybrid cluster provisioning preview
@@ -19,6 +17,8 @@
   href: concepts-support.md
 - name: AKS Arc version 23H2
   items:
+  - name: What's new in version 23H2
+    href: aks-whats-new-23h2.md
   - name: Network system requirements
     href: aks-hci-network-system-requirements.md
   - name: Infrastructure component updates
@@ -59,8 +59,6 @@
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Use on-premises monitoring
             href: aks-monitor-logging.md
-          - name: View logs to collect and review data
-            href: view-logs.md
           - name: Get kubelet logs
             href: aks-get-kubelet-logs.md
           - name: Get on-demand logs for troubleshooting

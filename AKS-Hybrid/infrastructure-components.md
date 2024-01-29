@@ -1,21 +1,18 @@
 ---
-title: Infrastructure component updates for AKS on Azure Stack HCI (preview)
+title: Infrastructure component updates for AKS on Azure Stack HCI
 description: Learn about cloud-based updates for infrastructure components in AKS on Azure Stack HCI.
 ms.topic: overview
 author: sethmanheim
-ms.date: 11/28/2023
+ms.date: 01/29/2024
 ms.author: sethm 
 ms.lastreviewed: 11/28/2023
 ms.reviewer: guanghu
 
 ---
 
-# Infrastructure component updates for AKS on Azure Stack HCI (preview)
+# Infrastructure component updates for AKS on Azure Stack HCI
 
 This article provides a brief overview of infrastructure component updates for AKS on Azure Stack HCI 23H2.
-
-> [!IMPORTANT]
-> This feature is currently in preview. See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
 
 ## Cloud-based updates for infrastructure components
 
@@ -27,7 +24,7 @@ the same approach as any other components on Azure Stack HCI 23H2. This approach
 aspects of the Azure Stack HCI solution in one place, including the management of the OS, core agents and services, and the solution
 extension. AKS Arc infrastructure components, as part of solution extensions, will be updated through the update package of Azure Stack HCI 23H2.
 
-For more information, see the [Update overview for Azure Stack HCI, version 23H2 (preview)](/azure-stack/hci/update/whats-the-lifecycle-manager-23h2).
+For more information, see the [Update overview for Azure Stack HCI, version 23H2](/azure-stack/hci/update/whats-the-lifecycle-manager-23h2).
 
 ## Next steps
 
