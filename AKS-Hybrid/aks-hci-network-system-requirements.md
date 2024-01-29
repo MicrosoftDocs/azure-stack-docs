@@ -36,8 +36,7 @@ The following requirements apply to an Azure Stack HCI administrator, in consult
 
 ## Proxy settings
 
-In this preview release, proxy settings are inherited from the underlying Azure Stack HCI system. The functionality to set individual proxy
-settings for AKS clusters and change proxy settings will be in a later release.
+In this release, proxy settings are inherited from the underlying Azure Stack HCI system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet.
 
 ## Network port requirements
 
@@ -90,4 +89,4 @@ deployment. Ensure that these are allowed in your firewall configuration:
 ## Next steps
 
 - [Create Arc-enabled networks for AKS](aks-networks.md)
-- [AKS on Azure Stack HCI 23H2 overview](aks-preview-overview.md)
+- [AKS on Azure Stack HCI 23H2 overview](aks-overview.md)
