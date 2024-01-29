@@ -196,4 +196,4 @@ Processing data from remote server NodeName failed with the following error mess
 
 ## Next step
 
-Learn more about [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md)
+Learn more about [Azure Arc extension management on Azure Stack HCI](../manage/arc-extension-management.md).

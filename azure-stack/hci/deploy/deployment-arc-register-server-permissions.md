@@ -19,8 +19,7 @@ This article describes how to register your Azure Stack HCI servers and then set
 
 Before you begin, make sure you've completed the following prerequisites:
 
-- Satisfy the [prerequisites](./deployment-prerequisites.md).
-- Complete the [deployment checklist](./deployment-checklist.md).
+- Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server.
 
