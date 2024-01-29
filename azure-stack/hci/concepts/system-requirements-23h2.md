@@ -132,7 +132,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
     Here's a sample output:
 
-    :::image type="content" source="media/deployment-prerequisites/identify-ethernet.png" alt-text="Screenshot to identify the ethernet." lightbox="media/deployment-prerequisites/identify-ethernet.png":::
+    :::image type="content" source="media/system-requirements/identify-ethernet.png" alt-text="Screenshot to identify the ethernet." lightbox="media/system-requirements/identify-ethernet.png":::
 
 2. Identify the **DriverFileName**, **DriverVersion**, **DriverDate**, **DriverDescription**, and the **DriverProvider** using this command:
 
@@ -142,7 +142,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
     Here's a sample output:
 
-    :::image type="content" source="media/deployment-prerequisites/identify-driver-information.png" alt-text="Screenshot to identify driver information." lightbox="media/deployment-prerequisites/identify-driver-information.png":::
+    :::image type="content" source="media/system-requirements/identify-driver-information.png" alt-text="Screenshot to identify driver information." lightbox="media/system-requirements/identify-driver-information.png":::
 
 3. Search for your driver and the recommended installation steps.
 
@@ -164,9 +164,9 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
      Here's are some sample outputs:
 
-    :::image type="content" source="media/deployment-prerequisites/check-driver-update.png" alt-text="Screenshot to check one driver's update." lightbox="media/deployment-prerequisites/check-driver-update.png":::
+    :::image type="content" source="media/system-requirements/check-driver-update.png" alt-text="Screenshot to check one driver's update." lightbox="media/system-requirements/check-driver-update.png":::
 
-    :::image type="content" source="media/deployment-prerequisites/check-driver-update-2.png" alt-text="Screenshot to check a second driver's update." lightbox="media/deployment-prerequisites/check-driver-update-2.png":::
+    :::image type="content" source="media/system-requirements/check-driver-update-2.png" alt-text="Screenshot to check a second driver's update." lightbox="media/system-requirements/check-driver-update-2.png":::
 
 ## Firmware
 
