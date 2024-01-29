@@ -1,20 +1,20 @@
 ---
-title: Set up log alerts for Azure Stack HCI systems
-description: How to set up log alerts for various Azure Stack HCI system resources using sample log queries or Azure Insights workbooks.
+title: Set up log alerts for Azure Stack HCI
+description: How to set up log alerts for various Azure Stack HCI system resources using Insights for Azure Stack HCI and sample log queries.
 ms.topic: how-to
 author: ronmiab
 ms.author: robess
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.reviewer: kimlam
-ms.date: 05/15/2023
+ms.date: 01/29/2024
 ---
 
-# Set up log alerts for Azure Stack HCI systems
+# Set up log alerts for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to set up alerts for Azure Stack HCI systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. To use the sample queries, you must first enable logs and associate a log analytics workspace with your Azure Stack HCI system. Additionally, we provide guidance on how to use Azure Insights for monitoring resources and setting up alerts.
+This article describes how to set up log alerts for Azure Stack HCI systems: using Insights for Azure Stack HCI and using pre-existing sample log queries, such as average server CPU, available memory, available volume capacity, and more.
 
 For information about how to set up metric alerts, see [Set up metric alerts for Azure Stack HCI systems](./setup-metric-alerts.md).
 
@@ -23,68 +23,72 @@ For information about how to set up metric alerts, see [Set up metric alerts for
 Before you begin, make sure that the following prerequisites are completed:
 
 - You have access to an Azure Stack HCI cluster that is deployed and registered.
-- To create log alerts via Insights, tou must have [Insights enabled on the cluster](./monitor-hci-single.md#enable-insights).
+- You must have [Insights enabled on the cluster](./monitor-hci-single.md#enable-insights). Enabling Insights configures the cluster to collect required logs in a Log Analytics workspace.
 
-## Set up alerts using sample Log queries
+## Set up log alerts using Insights
 
-You can start monitoring your Azure Stack HCI system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system. Identify the clusters you want to monitor using the sample queries and follow these steps:
+> [!IMPORTANT]
+> Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
+
+Follow these steps to set up log alerts using Insights. Ensure that you have reviewed and completed the [prerequisites](#prerequisites).
+
+1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Stack HCI**.
+
+1. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
+
+1. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
+
+    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
+
+1. After the query loads, select **+ New alert rule**.
+
+    :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/alerts-logs-insights/new-alert-rule.png":::
+
+1. From the alerts interface you can set up your alert conditions, actions, and more. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
+
+    :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/alerts-logs-insights/create-alert-rule.png":::
+
+## Set up alerts using sample log queries
+
+You can start monitoring your Azure Stack HCI system and setting up alerts for it by using pre-existing log queries available in the [Azure portal](https://portal.azure.com). These queries can help you check and monitor the health of your system.
+
+Follow these steps to set up log alerts using sample log queries. Ensure that you have reviewed and completed the [prerequisites](#prerequisites).
+
+1. In the Azure portal, browse to your Azure Stack HCI cluster resource page, then select the cluster you want to monitor using sample log queries.
 
 1. On your cluster **Overview** page, select **JSON View**.
 
     :::image type="content" source="media/alerts-logs-insights/json-view.png" alt-text="Screenshot of the JSON View link to find ClusteArmId." lightbox="media/alerts-logs-insights/json-view.png":::
 
-2. Copy the ClusterArmId detail from the **Resource ID** box.
+1. Copy the ClusterArmId detail from the **Resource ID** box.
 
     :::image type="content" source="media/alerts-logs-insights/resource-id.png" alt-text="Screenshot of the Resource JSON page to copy ClusteArmId information." lightbox="media/alerts-logs-insights/resource-id.png":::
 
-3. From the Azure portal, navigate to or search for **Monitor** and select **Logs**.
+1. From the Azure portal, navigate to or search for **Monitor** and select **Logs**.
 
-4. Select **+ Add filter** to add a filter for **Resource type**.
+1. Select **+ Add filter** to add a filter for **Resource type**.
 
-5. Choose **Azure Stack HCI** for a populated list of Azure Stack HCI system sample logs.
+1. Choose **Azure Stack HCI** for a populated list of Azure Stack HCI system sample logs.
 
     :::image type="content" source="media/alerts-logs-insights/azure-monitor-logs.png" alt-text="Screenshot of the Azure Monitor Logs space and how to access the sample queries." lightbox="media/alerts-logs-insights/azure-monitor-logs.png":::
 
-6. Select **Load to Editor** to open the query workspace.
+1. Select **Load to Editor** to open the query workspace.
 
-7. Set the **scope** to **Log analytics workspace** for logs linked to the cluster resource.
+1. Set the **scope** to **Log analytics workspace** for logs linked to the cluster resource.
 
-8. Paste your **ClusterArmId** detail in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
+1. Paste your **ClusterArmId** detail in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
     :::image type="content" source="media/alerts-logs-insights/cluster-arm-id.png" alt-text="Screenshot of the log analytics workspace and Cluster Arm Id query." lightbox="media/alerts-logs-insights/cluster-arm-id.png":::
 
-9. Select **Run**.
+1. Select **Run**.
 
 After the information appears, you can examine the logs and create alerts based on the results. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
 
-## Set up alerts for multiple clusters
+### Set up alerts for multiple clusters
 
 To set a new or change an existing query to accommodate multiple clusters ClusterArmId's, add the `| where ClusterArmId in~` clause to your query. Include the ClusterArmId's for each of the clusters you want to use in your query. For example, `| where ClusterArmId in~ ('ClusterArmId1', 'ClusterArmId2', 'ClusterArmId3')`
 
 :::image type="content" source="media/alerts-logs-insights/multiple-clusters.png" alt-text="Screenshot of a query to show logs for multiple clusters." lightbox="media/alerts-logs-insights/multiple-clusters.png":::
-
-## Set up alerts using Insights
-
-To set up alerts using Azure Insights workbooks in the Azure portal, you must first configure the Insights function for your Azure Stack HCI system. If your resources aren't monitored and you want to enable Insights, see [How to configure Azure portal to monitor Azure Stack HCI clusters - Azure Stack HCI | Microsoft Docs](../manage/monitor-hci-single.md).
-
-> [!IMPORTANT]
-> Using Insights isn't recommended for high severity alerts. It could take 15 minutes to collect logs.
-
-1. From the Azure portal, navigate to or search for **Monitor** and select **Azure Stack HCI**.
-
-2. Select one of the tabs to view the health of your resources. For example, select **Servers** to view the health of servers in your cluster.
-
-3. Customize the workbook and edit it until you see a blue **Logs view** icon. Select the icon to view and edit your query.
-
-    :::image type="content" source="media/alerts-logs-insights/health-faults.png" alt-text="Screenshot of the monitored resources and the resources health." lightbox="media/alerts-logs-insights/health-faults.png":::
-
-4. After the query loads, select **+ New alert rule**.
-
-    :::image type="content" source="media/alerts-logs-insights/new-alert-rule.png" alt-text="Screenshot of the cluster New alert rule and how to create a new alert." lightbox="media/alerts-logs-insights/new-alert-rule.png":::
-
-5. From the alerts interface you can set up your alert conditions, actions and more. For more information, see [Log query results](setup-hci-system-alerts.md#log-query-results) and [Alert actions and details](setup-hci-system-alerts.md#alert-actions-and-details).
-
-    :::image type="content" source="media/alerts-logs-insights/create-alert-rule.png" alt-text="Screenshot of items to define when a new alert is being created." lightbox="media/alerts-logs-insights/create-alert-rule.png":::
 
 ## Log query results
 

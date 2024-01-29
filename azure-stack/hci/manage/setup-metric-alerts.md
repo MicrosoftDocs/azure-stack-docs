@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 01/24/2024
 ---
 
-# Set up metric alerts for Azure Stack HCI, version 23H2 systems
+# Set up metric alerts for Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
