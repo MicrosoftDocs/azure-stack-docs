@@ -131,13 +131,14 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     Here's a sample output:
 
     ```console
-    PS C:\Windows\system32>	get-netadapter			
-    Name	                        InterfaceDescription	                iflndex     Status	       MacAddress	            LinkSpeed
-    vSMB(compute managemen…	        Hyper-V Virtual Ethernet Adapter #2	        20      Up	           00-15-5D-20-40-00	    25 Gbps
-    vSMB(compute managemen…	        Hyper-V Virtual Ethernet Adapter #3	        24      Up	           00-15-5D-20-40-01	    25 Gbps
-    ethernet	                    HPE Ethernet 10/25Gb 2-port 640FLR…#2	     7      Up	           B8-83-03-58-91-88	    25 Gbps
-    ethernet 2	                    HPE Ethernet 10/25Gb 2-port 640FLR-S…	     5      Up	           B8 83-03-58-91-89	    25 Gbps
-    vManagement(compute_ma…	        Hyper-V Virtual Ethernet Adapter	        14      Up	           B8-83-03-58-91-88	    25 Gbps
+    PS C:\Windows\system32>	get-netadapter
+    
+    Name	                      InterfaceDescription	                iflndex     Status	     MacAddress	            LinkSpeed
+    vSMB(compute managemen…	      Hyper-V Virtual Ethernet Adapter #2	    20      Up	         00-15-5D-20-40-00	    25 Gbps
+    vSMB(compute managemen…	      Hyper-V Virtual Ethernet Adapter #3	    24      Up	         00-15-5D-20-40-01	    25 Gbps
+    ethernet	                  HPE Ethernet 10/25Gb 2-port 640FLR…#2	     7      Up	         B8-83-03-58-91-88	    25 Gbps
+    ethernet 2	                  HPE Ethernet 10/25Gb 2-port 640FLR-S…	     5      Up	         B8 83-03-58-91-89	    25 Gbps
+    vManagement(compute_ma…	      Hyper-V Virtual Ethernet Adapter	        14      Up	         B8-83-03-58-91-88	    25 Gbps
     ```
 
 2. Identify the **DriverFileName**, **DriverVersion**, **DriverDate**, **DriverDescription**, and the **DriverProvider** using this command:
@@ -148,7 +149,23 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
     Here's a sample output:
 
-    :::image type="content" source="media/system-requirements/identify-driver-information.png" alt-text="Screenshot to identify driver information." lightbox="media/system-requirements/identify-driver-information.png":::
+    ```console
+    PS C:\Windows\system32> Get-NetAdapter -name ethernet | select *driver
+
+    DriverInformation		: Driver Date 2021-07-08 Version 2.70.24728.0 NDIS 6.85
+    DriverFileName			: mlx5.sys
+    DriverVersion			: 2.70.24728.0
+    DriverDate			    : 2021-07-08
+    DriverDateData			: 132701760000000000
+    DriverDescription		: HPE Ethernet 10/25Gb 2-port 640FLR-SFP28 Adapter
+    DriverMajorNdisVersion	: 6
+    DriverMinorNdisVersion 	: 85
+    DriverName			    : \SystemRoot\5ystem32\drivers\mlx5.sys
+    DriverProvider			: Mellanox Technologies Ltd.
+    DriverVersionString		: 2.70.24728.0
+    MajorDriverVersion		: 2
+    MinorDriverVersion		: 0
+    ```
 
 3. Search for your driver and the recommended installation steps.
 
