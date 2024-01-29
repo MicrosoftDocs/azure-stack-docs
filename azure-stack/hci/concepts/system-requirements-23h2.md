@@ -130,7 +130,15 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
 
     Here's a sample output:
 
-    :::image type="content" source="media/system-requirements/identify-ethernet.png" alt-text="Screenshot to identify the ethernet." lightbox="media/system-requirements/identify-ethernet.png":::
+    ```console
+    PS C:\Windows\system32>	get-netadapter			
+Name	InterfaceDescription	iflndex Status	MacAddress	LinkSpeed
+vSMB(compute managemen…	Hyper-V Virtual Ethernet Adapter #2	20 Up	00-15-5D-20-40-00	25 Gbps
+vSMB(compute managemen…	Hyper-V Virtual Ethernet Adapter #3	24 up	00-15-5D-20-40-01	25 Gbps
+ethernet	HPE Ethernet 10/25Gb 2-port 640FLR…#2	7 up	B8-83-03-58-91-88	25 Gbps
+ethernet 2	HPE Ethernet 10/25Gb 2-port 640FLR-S…	     5 up	B8 83-03-58-91-89	25 Gbps
+vManagement(compute_ma…	Hyper-V Virtual Ethernet Adapter	14 up	B8-83-03-58-91-88	25 Gbps
+    ```
 
 2. Identify the **DriverFileName**, **DriverVersion**, **DriverDate**, **DriverDescription**, and the **DriverProvider** using this command:
 
