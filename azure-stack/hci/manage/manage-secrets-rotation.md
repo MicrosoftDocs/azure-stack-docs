@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 01/04/2024
+ms.date: 01/26/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -37,4 +37,4 @@ Once the password is changed, the session ends. You need to sign in with the upd
 
 ## Next steps
 
-- [Review the deployment checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-checklist.md).
+- [Complete the prerequisites and checklist and install Azure Stack HCI, version 23H2](../deploy/deployment-prerequisites.md).
