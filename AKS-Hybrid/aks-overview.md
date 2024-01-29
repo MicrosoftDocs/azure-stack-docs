@@ -34,6 +34,3 @@ The following chart can help you to choose the right deployment option for your 
 To get started with AKS, see the following articles:
 
 - [System requirements](aks-hci-network-system-requirements.md)
-- Get started with AKS EE, enabled by Azure Arc
-- Get started with AKS, enabled by Azure Arc
-
