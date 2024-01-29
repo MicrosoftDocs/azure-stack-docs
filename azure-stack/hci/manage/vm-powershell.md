@@ -3,7 +3,7 @@ title: Manage VMs using Windows PowerShell - Azure Stack HCI
 description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
 author: JasonGerend 
 ms.topic: how-to 
-ms.date: 04/17/2023
+ms.date: 01/29/2024
 ms.author: jgerend 
 ms.reviewer: stevenek 
 ---
@@ -13,6 +13,8 @@ ms.reviewer: stevenek
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI.
+
+[!INCLUDE [manage-arc-vm](../../includes/manage-arc-vm.md)]
 
 Typically, you manage VMs from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 
