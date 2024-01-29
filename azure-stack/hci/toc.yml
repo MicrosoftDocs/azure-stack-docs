@@ -43,10 +43,8 @@
       items:
       - name: Read overview
         href: deploy/deployment-introduction.md
-      - name: Complete prerequisites
+      - name: Complete prerequisites and checklist
         href: deploy/deployment-prerequisites.md
-      - name: View deployment checklist
-        href: deploy/deployment-checklist.md
       - name: 1. Prepare Active Directory
         href: deploy/deployment-prep-active-directory.md
       - name: 2. Download the software
@@ -120,7 +118,7 @@
               href: manage/create-arc-virtual-machines.md
           - name: Manage Arc VMs
             href: manage/manage-arc-virtual-machines.md
-          - name: Manage Arc VM reources
+          - name: Manage Arc VM resources
             href: manage/manage-arc-virtual-machine-resources.md 
           - name: Manage VM extensions
             href: manage/virtual-machine-manage-extension.md
