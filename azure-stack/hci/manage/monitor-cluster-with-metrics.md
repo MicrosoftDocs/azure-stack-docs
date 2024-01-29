@@ -64,7 +64,7 @@ Follow these steps to analyze metrics and create alerts for a specific Azure Sta
 
     :::image type="content" source="media/monitor-cluster-with-metrics/cluster-metrics.png" alt-text="Screenshot showing the metrics for your cluster." lightbox="media/monitor-cluster-with-metrics/cluster-metrics.png":::
 
-1. To create alerts, select the **Alerts** option and set up alert as described in [Create metric alerts through metrics explorer](./setup-metric-alerts.md).
+1. To create alerts, select the **Alerts** option and set up alert as described in [Create metric alerts through metrics explorer](./setup-metric-alerts.md#create-metric-alerts-through-metrics-explorer).
 
 ## What metrics are collected?
 
