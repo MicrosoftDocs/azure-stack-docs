@@ -229,7 +229,7 @@ Check with your OEM regarding the necessary firmware that needs to be installed 
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps.
+You should always follow the OEM's recommended installation steps. Windows Admin Center plugins to install drivers and firmware, continue to work with Azure Stack HCI, version 23H2.
 
 |OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
