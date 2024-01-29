@@ -75,17 +75,8 @@ The Azure portal is used to deploy the template. In addition to the Azure portal
 
 You can use the Azure portal to check on the VM and other resource that were created. After the deployment is finished, select **Resource groups** to see the VM and other resources.
 
-## Clean up resources
-
-When no longer needed, delete the resource group, which deletes the VM and all of the resources in the resource group.
-
-1. Select the **Resource group**.
-1. On the page for the resource group, select **Delete resource group**.
-1. When prompted, type the name of the resource group and then select **Delete**.
 
 ## Next steps
 
-In this quickstart, you deployed a simple virtual machine using a Resource Manager template. To learn more about Azure virtual machines, continue to the tutorial for managing VMs.
+- [Manage Arc VMs](./manage-arc-virtual-machines.md)
 
-> [!div class="nextstepaction"]
-> [Azure Windows virtual machine tutorials](./tutorial-manage-vm.md)
