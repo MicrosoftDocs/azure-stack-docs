@@ -19,6 +19,8 @@ This article details how to use an Azure Resource Manager template (ARM template
 > [!IMPORTANT]
 > ARM template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the ARM template.
 
+<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
+
 ## Prerequisites
 
 - Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:

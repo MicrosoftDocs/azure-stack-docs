@@ -13,6 +13,8 @@ ms.date: 08/29/2023
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
+<!--[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]-->
+
 This article describes how to download the Azure Stack HCI software from the Azure portal.
 
 The first step in deploying Azure Stack HCI is to download Azure Stack HCI software from the Azure portal. The software download includes a free 60-day trial. However, if you've purchased Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) through your preferred Microsoft hardware partner, the Azure Stack HCI software should be pre-installed. In that case, you can skip this step and move on to [Create an Azure Stack HCI cluster](create-cluster.md).
