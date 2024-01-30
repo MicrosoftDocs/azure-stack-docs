@@ -78,7 +78,7 @@ Follow these steps to set up log alerts using sample log queries. Ensure that yo
 
 1. Paste your **ClusterArmId** detail in the **`where ClusterArmId =~`** section of the query to see results related to your cluster.
 
-    :::image type="content" source="media/setup-hci-system-alerts/cluster-arm-id.png" alt-text="Screenshot of the log analytics workspace and Cluster Arm Id query." lightbox="media/setup-hci-system-alerts/cluster-arm-id.png":::
+    :::image type="content" source="media/setup-hci-system-alerts/cluster-arm-id.png" alt-text="Screenshot of the log analytics workspace and Cluster Arm ID query." lightbox="media/setup-hci-system-alerts/cluster-arm-id.png":::
 
 1. Select **Run**.
 
