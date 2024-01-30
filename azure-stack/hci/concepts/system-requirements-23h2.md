@@ -29,7 +29,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
 - **Azure permissions**: Make sure that you're assigned the required roles and permissions for registration and deployment. For information on how to assign permissions, see [Assign Azure permissions for registration](../deploy/deployment-arc-register-server-permissions.md#assign-required-permissions-for-deployment).
 
-- **Azure regions**: The Azure Stack HCI service and [Azure Arc VM management](../manage/azure-arc-vm-management-overview.md) are together supported for the following regions:
+- **Azure regions**: Azure Stack HCI is supported for the following regions:
 
    - East US
    - West Europe
@@ -66,7 +66,7 @@ The servers should also meet the following additional requirements:
 
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you use.
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md).
 
 <!--## Maximum supported hardware specifications
 
@@ -93,8 +93,8 @@ In addition to Microsoft Azure Stack HCI updates, many OEMs also release regular
 
 Before deploying Azure Stack HCI, version 23H2, ensure that your hardware is up to date by:
 
-- Determining the current version of your OEM package.
-- Finding the best method to download, install, and update your OEM package.
+- Determining the current version of your Solution Builder Extension (SBE) package.
+- Finding the best method to download, install, and update your SBE package.
 
 ### OEM information
 
@@ -229,13 +229,13 @@ Check with your OEM regarding the necessary firmware that needs to be installed 
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware.
+You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
-|OEM    | Download link                                                    |
+<!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
 |HPE    | [HPE Extensions for Microsoft Windows Admin Center](https://www.hpe.com/us/en/alliance/microsoft/ws-admin-center.html) |
 |Dell   | [Dell OpenManage Integration with Microsoft Windows Admin Center](https://www.dell.com/support/kbdoc/en-us/000177828/support-for-dell-emc-openmanage-integration-with-microsoft-windows-admin-center)|
-|Lenovo | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://support.lenovo.com/us/en/solutions/ht507549-lenovo-xclarity-integrator-for-microsoft-windows-admin-center-v21)
+|Lenovo | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://support.lenovo.com/us/en/solutions/ht507549-lenovo-xclarity-integrator-for-microsoft-windows-admin-center-v21) -->
 
 ## Next steps
 
