@@ -143,7 +143,7 @@ Before you begin, make sure you've done the following:
     Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
-    If you are accessing the internet via a proxy server, you need to pass the `--proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
+    If you are accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
 
     Here is a sample output of a successful registration of your servers:
     
