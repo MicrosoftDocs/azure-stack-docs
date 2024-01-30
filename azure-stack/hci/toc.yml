@@ -21,6 +21,13 @@
   - name: FAQ
     href: faq.yml
 
+- name: Evaluate 
+  items:
+  - name: Virtual deployment
+    href: deploy/deployment-virtual.md
+  - name: HCIBox in Azure
+    href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
+
 - name: Plan
   items:
   - name: Review requirements
@@ -76,8 +83,6 @@
     href: deploy/deployment-introduction.md
   - name: Complete prerequisites
     href: deploy/deployment-prerequisites.md
-  - name: View deployment checklist
-    href: deploy/deployment-checklist.md
   - name: 1. Prepare Active Directory
     href: deploy/deployment-prep-active-directory.md
   - name: 2. Download the software
@@ -215,7 +220,7 @@
 - name: Monitor
   items:
   - name: Overview
-    href: ../index.yml
+    href: concepts/monitoring-overview.md
   - name: Via Azure 
     items:
     - name: Insights
@@ -234,6 +239,8 @@
         href: manage/health-alerts-via-azure-monitor-alerts.md
       - name: Log alerts
         href: manage/setup-hci-system-alerts.md
+      - name: Metric alerts
+        href: manage/setup-metric-alerts.md
   - name: Via PowerShell
     items:
     - name: Health service
