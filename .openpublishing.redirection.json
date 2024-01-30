@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/deploy/deployment-checklist.md",
+      "redirect_url":"/azure-stack/hci/deploy/deployment-prerequisites",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/concepts/other-security-features.md",
       "redirect_url":"/azure-stack/hci/concepts/security-features",
       "redirect_document_id": false

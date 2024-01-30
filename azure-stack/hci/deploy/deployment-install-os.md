@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/19/2024
+ms.date: 01/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -15,13 +15,13 @@ ms.subservice: azure-stack-hci
 
 This article describes the steps needed to install the Azure Stack HCI, version 23H2 operating system locally on each server in your cluster.
 
+<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
 
 ## Prerequisites
 
 Before you begin, make sure you do the following steps:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md).
-- Complete the [deployment checklist](./deployment-checklist.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - Make sure to keep a password handy to use to sign in to the operating system. This password must conform to the length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
 
