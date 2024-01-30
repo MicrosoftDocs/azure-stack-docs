@@ -44,7 +44,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
 
-# [Azure Resource Manager template](#tab/azureresourcemanagertemplate)
+# [Azure Resource Manager template](#tab/armtemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
@@ -258,7 +258,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Select **Create**. It should take a few minutes to provision the VM.
 
 
-# [Azure Resource Manager template](#tab/azureresourcemanagertemplate)
+# [ARM template](#tab/armtemplate)
 
 Follow these steps to deploy the ARM template:
 
