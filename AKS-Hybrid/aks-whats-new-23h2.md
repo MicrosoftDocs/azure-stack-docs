@@ -1,6 +1,6 @@
 ---
-title: What's new in AKS enabled by Azure Arc version 23H2
-description: Learn about what's new in AKS Arc version 23H2.
+title: What's new in AKS on Azure Stack HCI version 23H2
+description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
 ms.date: 01/26/2024
 author: sethmanheim
@@ -10,13 +10,13 @@ ms.lastreviewed: 01/26/2024
 
 ---
 
-# What's new in AKS enabled by Azure Arc version 23H2
+# What's new in AKS on Azure Stack HCI version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article lists the various features and improvements that are available in AKS enabled by Azure Arc, version 23H2.
+This article lists the various features and improvements that are available in AKS enabled by Azure Arc, on HCI version 23H2.
 
-## About AKS Arc 23H2
+## About AKS Arc on Azure Stack HCI 23H2
 
 AKS on Azure Stack HCI 23H2 uses [Azure Arc](/azure/azure-arc/overview) to create new Kubernetes clusters on Azure Stack HCI directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Stack HCI. Since clusters are automatically connected to Arc when they are created, you can use your Microsoft Entra ID for connecting to your clusters from anywhere. This ensures your developers and application operators can provision and configure Kubernetes clusters in accordance with company policies.
 
@@ -46,7 +46,7 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 ### Release 2311.2
 
-AKS enabled by Azure Arc version 23H2 is generally available starting with this release.
+AKS enabled by Azure Arc on HCI version 23H2 is generally available starting with this release.
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
@@ -61,11 +61,11 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 ### Release 2311
 
-Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS enabled by Azure Arc version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure.
+Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on HCI version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure.
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Simplified infrastructure deployment on Azure Stack HCI**. In this release, the infrastructure components of AKS Arc 23H2, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Stack HCI deployment. For more information, see [Deploy an Azure Stack HCI version 23H2 system using the Azure portal](/azure-stack/hci/deploy/deploy-via-portal).
+- **Simplified infrastructure deployment on Azure Stack HCI**. In this release, the infrastructure components of AKS Arc, including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Stack HCI 23H2 deployment. For more information, see [Deploy an Azure Stack HCI version 23H2 system using the Azure portal](/azure-stack/hci/deploy/deploy-via-portal).
 - **Integrated infrastructure upgrade on Azure Stack HCI**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Stack HCI 23H2. For more information, see [Infrastructure component updates](infrastructure-components.md).
 - **New CLI consistent with Azure**. Starting with this release, a new consistent command-line experience is available to create and manage Kubernetes clusters.
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Stack HCI with familiar tools such as the Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md).

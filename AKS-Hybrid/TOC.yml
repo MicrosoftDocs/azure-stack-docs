@@ -15,9 +15,9 @@
   href: system-requirements.md
 - name: Quotas and resource limits
   href: concepts-support.md
-- name: AKS Arc version 23H2
+- name: AKS on Azure Stack HCI version 23H2
   items:
-  - name: What's new in version 23H2
+  - name: What's new in AKS enabled by Azure Arc
     href: aks-whats-new-23h2.md
   - name: Network system requirements
     href: aks-hci-network-system-requirements.md
