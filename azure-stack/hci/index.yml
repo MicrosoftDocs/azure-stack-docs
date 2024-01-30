@@ -61,7 +61,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Run Azure Kubernetes Service
-            url: /azure/aks/hybrid/aks-create-clusters-portal
+            url: /azure/aks/hybrid/aks-preview-overview
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
