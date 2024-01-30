@@ -16,7 +16,7 @@ ms.date: 01/16/2024
 
 This article describes how to use Insights to monitor key Azure Stack HCI features, such as Resilient File System (ReFS) deduplication and compression.
 
-To monitor Azure Stack HCI clusters with Insights, see [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md) and [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md).
+To monitor Azure Stack HCI clusters with Insights, see [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md) and [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md).
 
 ## About using Insights to monitor features
 
@@ -34,7 +34,7 @@ You must complete the following prerequisites before you can use Insights for mo
 
 - Your cluster must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
 
-- You must have [Insights enabled on the cluster](./monitor-hci-single.md#enable-insights).
+- You must have [Insights enabled on the cluster](./monitor-hci-single-23h2.md#enable-insights).
 
 ## Monitor features with Insights
 
@@ -221,5 +221,5 @@ This tab shows the jobs performed overtime during the deduplication process and 
 
 ## Next steps
 
-- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md)
-- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md)
+- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md)
+- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md)

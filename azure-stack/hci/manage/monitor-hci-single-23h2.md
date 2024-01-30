@@ -7,15 +7,15 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/24/2024
+ms.date: 01/31/2024
 # zone_pivot_groups: hci-versions
 ---
 
 # Monitor a single Azure Stack HCI, version 23H2 cluster with Insights
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to-23H2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md).
+This article describes how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md).
 
 Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
 
@@ -242,7 +242,6 @@ Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account 
 
 ## Next steps
 
-- [Monitor multiple clusters with Insights](/azure-stack/hci/manage/monitor-hci-multi)
-- [Event Log Channel](/azure-stack/hci/manage/monitor-hci-multi#event-log-channel)
+- [Monitor multiple clusters with Insights](/azure-stack/hci/manage/monitor-hci-multi-23h2)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
 - [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot)

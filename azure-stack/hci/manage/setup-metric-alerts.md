@@ -1,19 +1,19 @@
 ---
-title: Set up metric alerts for Azure Stack HCI, version 23H2
-description: How to set up metric alerts for Azure Stack HCI, version 23H2.
+title: Set up metric alerts for Azure Stack HCI
+description: How to set up metric alerts for Azure Stack HCI.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/24/2024
+ms.date: 01/31/2024
 ---
 
-# Set up metric alerts for Azure Stack HCI, version 23H2
+# Set up metric alerts for Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to set up metric alerts for Azure Stack HCI, version 23H2.
+This article describes how to set up metric alerts for Azure Stack HCI.
 
 For information about how to set up log alerts, see [Set up log alerts for Azure Stack HCI systems](./setup-hci-system-alerts.md).
 
