@@ -21,6 +21,13 @@
   - name: FAQ
     href: faq.yml
 
+- name: Evaluate 
+  items:
+  - name: Deploy virtual
+    href: deploy/evaluate-virtual.md
+  - name: Deploy in Azure
+    href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
+
 - name: Plan
   items:
   - name: Review requirements
