@@ -61,11 +61,11 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Run Azure Kubernetes Service
-            url: /azure/aks/hybrid/aks-preview-overview
+            url: /azure/aks/hybrid/kubernetes-walkthrough-powershell
           - text: Run Azure Virtual Desktop
-            url: /azure/virtual-desktop/azure-stack-hci-overview
+            url: /azure/virtual-desktop/deploy-azure-virtual-desktop
           - text: Run Azure Arc Virtual Machines
-            url: manage/manage-arc-virtual-machines.md
+            url: /manage/create-arc-virtual-machines.md
 
   # Card
   - title: Manage the cluster
