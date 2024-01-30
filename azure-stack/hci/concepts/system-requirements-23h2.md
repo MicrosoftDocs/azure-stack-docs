@@ -61,7 +61,6 @@ The servers should also meet the following additional requirements:
 
 - For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
-
 ## Networking requirements
 
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
