@@ -4,7 +4,7 @@ description: This article provides an overview of the Azure Stack HCI monitoring
 ms.author: alkohli
 ms.topic: article
 author: alkohli
-ms.date: 01/24/2024
+ms.date: 01/30/2024
 ---
 
 # What is Azure Stack HCI monitoring?
@@ -36,7 +36,7 @@ This section describes the monitoring capabilities in Azure Stack HCI.
 
 ### Insights
 
-Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster using logs. You can use Insights to monitor either a single Azure Stack HCI cluster or multiple clusters simultaneously. Insights for Azure Stack HCI collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. It uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized using Azure Workbooks. To learn about using Insights to monitor a single or multiple clusters, see [Monitor a single cluster with Insights](../manage/monitor-hci-single.md) or [Monitor multiple clusters with Insights](../manage/monitor-hci-multi.md).
+Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster using logs. You can use Insights to monitor either a single Azure Stack HCI cluster or multiple clusters simultaneously. Insights for Azure Stack HCI collects data in the form of logs using Azure Monitor Agent and then stores the data in a Log Analytics workspace. It uses the Kusto Query Language (KQL) to query the Log Analytics workspace, and the results are visualized using Azure Workbooks. To learn about using Insights to monitor a single or multiple clusters, see [Monitor a single cluster with Insights](../manage/monitor-hci-single-23h2.md) or [Monitor multiple clusters with Insights](../manage/monitor-hci-multi.md).
 
 With Insights for Azure Stack HCI, you get access to default workbooks with basic metrics, along with specialized workbooks created for monitoring key features of Azure Stack HCI. To learn more about these feature workbooks, see [Monitor HCI features with Insights](../manage/monitor-features.md).
 

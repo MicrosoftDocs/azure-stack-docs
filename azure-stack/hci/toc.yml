@@ -213,7 +213,7 @@
 - name: Monitor
   items:
   - name: Overview
-    href: ../index.yml
+    href: concepts/monitoring-overview.md
   - name: Via Azure 
     items:
     - name: Insights
