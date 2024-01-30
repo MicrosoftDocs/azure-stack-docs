@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 ms.date: 01/31/2024
 ---
 
-# Monitor multiple Azure Stack HCI clusters with Insights
+# Monitor multiple Azure Stack HCI, version 23H2 clusters with Insights
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 

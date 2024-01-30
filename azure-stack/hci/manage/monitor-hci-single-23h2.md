@@ -242,6 +242,6 @@ Azure Monitor has pay-as-you-go pricing, and the first 5 GB per billing account 
 
 ## Next steps
 
-- [Monitor multiple clusters with Insights](/azure-stack/hci/manage/monitor-hci-multi-23h2)
+- [Monitor multiple clusters with Insights](./monitor-hci-multi-23h2.md)
 - [Azure Monitor pricing calculator](https://azure.microsoft.com/pricing/details/monitor/)
 - [Log Analytics Troubleshooting Tool](/azure/azure-monitor/agents/agent-windows-troubleshoot)

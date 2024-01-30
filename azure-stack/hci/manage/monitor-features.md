@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/16/2024
+ms.date: 01/31/2024
 ---
 
 # Monitor Azure Stack HCI features with Insights

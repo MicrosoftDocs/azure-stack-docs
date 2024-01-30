@@ -382,7 +382,7 @@
       - name: Monitor single cluster with Insights
         href: manage/monitor-hci-single.md
       - name: Monitor multiple clusters with Insights
-        href: manage/monitor-hci-multi,md
+        href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Use DISKSPD to test workloads
