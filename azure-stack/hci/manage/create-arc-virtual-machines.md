@@ -266,11 +266,11 @@ Follow these steps to deploy the ARM template:
 
 1. On the **Select a template** tab, Select **Build your own template in the editor**.
 
-   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal.":::  
+   <!--:::image type="content" source="./media/quickstart-create-templates-use-the-portal/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal.":::-->  
 
 1. You see a blank template.
 
-   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/blank-template.png" alt-text="Screenshot of blank ARM template in Azure portal.":::
+   <!--:::image type="content" source="./media/quickstart-create-templates-use-the-portal/blank-template.png" alt-text="Screenshot of blank ARM template in Azure portal.":::-->
 
 1. Replace the blank template with the template that you downloaded during the prerequisites step. This template creates an Arc VM. First, a virtual network interface is created. You can then optionally enable domain-join and attach a virtual disk with the VM you'll create. Finally, the VM is created with the guest management enabled.
 
@@ -349,11 +349,11 @@ Follow these steps to deploy the ARM template:
 
 1. When the deployment completes, you see the status of the deployment. Select the resource group.
 
-   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/view-second-deployment.png" alt-text="Screenshot of view second deployment page in Azure portal.":::
+   <!--:::image type="content" source="./media/quickstart-create-templates-use-the-portal/view-second-deployment.png" alt-text="Screenshot of view second deployment page in Azure portal.":::-->
 
     Notice that your resource group now contains a VM.
     
-   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal.":::
+   <!--:::image type="content" source="./media/quickstart-create-templates-use-the-portal/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal.":::-->
 
 ---
 
