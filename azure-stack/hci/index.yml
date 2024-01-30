@@ -101,7 +101,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Migrate (preview)
-            url: /aka.ms/hci-migrated
+            url: /index.yml
           - text: Microsoft Defender for Cloud (preview)
             url: concepts/security-features.md
           - text: Azure Site Recovery (preview)
