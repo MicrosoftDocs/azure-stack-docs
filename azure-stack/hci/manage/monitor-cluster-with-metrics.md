@@ -1,24 +1,22 @@
 ---
-title: Monitor Azure Stack HCI with Azure Monitor Metrics (preview)
-description: Learn how to monitor Azure Stack HCI with Azure Monitor Metrics (preview).
+title: Monitor Azure Stack HCI with Azure Monitor Metrics
+description: Learn how to monitor Azure Stack HCI with Azure Monitor Metrics.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 01/29/2024
 ---
 
-# Monitor Azure Stack HCI with Azure Monitor Metrics (preview)
+# Monitor Azure Stack HCI with Azure Monitor Metrics
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to monitor your Azure Stack HCI clusters with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Stack HCI.
 
 When you have critical applications and business processes that rely on Azure resources, it's important to monitor those resources for their availability, performance, and operation. The integration of Azure Monitor Metrics with Azure Stack HCI enables you to store numeric data from your clusters in a dedicated time-series database. This database is automatically created for each Azure subscription. Use [metrics explorer](/azure/azure-monitor/essentials/tutorial-metrics) to analyze data from your Azure Stack HCI system and assess its health and utilization.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Benefits
 
@@ -36,9 +34,29 @@ Here are the benefits of using Metrics for Azure Stack HCI:
 
 Here are the prerequisites of using Metrics for Azure Stack HCI:
 
-- You must have access to a cluster that is running Azure Stack HCI, version 23H2 (preview) (Build version: 2311) or later.
+- You must have access to a cluster that is running Azure Stack HCI, version 23H2 (Build version: 2311) or later. The cluster must be deployed and registered with Azure.
 
 - The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+
+## Monitor Azure Stack HCI through the Monitoring tab
+
+In the Azure portal, you can monitor platform metrics of your cluster by navigating to the **Monitoring** tab on your cluster’s **Overview** page. This tab offers a quick way to view graphs for different platform metrics. You can select any of the graphs to further analyze the data in metrics explorer.
+
+Follow these steps to monitor platform metrics of your cluster in the Azure portal:
+
+1. Go to your Azure Stack HCI cluster resource page and select your cluster.
+
+1. On the **Overview** page of your cluster, select the **Monitoring** tab.
+
+   :::image type="content" source="media/monitor-cluster-with-metrics/monitoring-tab.png" alt-text="Screenshot showing the Monitoring tab for your cluster." lightbox="media/monitor-cluster-with-metrics/monitoring-tab.png":::
+
+1. On the **Platform metrics** pane, review the graphs displaying platform metrics. To know the metrics that Azure Monitor collects to populate these graphs, see [Metrics for the Monitoring tab graphs](#metrics-for-the-monitoring-tab-graphs).
+
+   - At the top of the pane, select a duration to change the time range for the graphs.
+   - Select the **See all metrics** link to analyze metrics using metrics explorer. See [Analyze metrics](#analyze-metrics).
+   - Select any of the graphs to open them in metrics explorer to drill down further or to create an alert rule. See [Create metrics alerts](./setup-metric-alerts.md#create-metrics-alerts).
+
+       :::image type="content" source="media/monitor-cluster-with-metrics/platform-metrics.png" alt-text="Screenshot showing the platform metrics for your cluster." lightbox="media/monitor-cluster-with-metrics/platform-metrics.png":::
 
 ## Analyze metrics
 
@@ -54,61 +72,9 @@ With **Metrics**, you can create charts from metric values and visually correlat
 
 Platform metrics are stored for 93 days, however, you can only query (in the **Metrics** tile) for a maximum of 30 days' worth of data on any single chart. To know more about data retention, see [Metrics in Azure Monitor](/azure/azure-monitor/essentials/data-platform-metrics#platform-and-custom-metrics).
 
-## Create metrics alerts
+### Analyze metrics for a specific cluster
 
-A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. A metric time-series is a series of metric values captured over a period of time. You can use these metrics to create alert rules.
-
-To learn more about metric alerts and how to create alert rules, see [Metric alerts](/azure/azure-monitor/alerts/alerts-types#metric-alerts) and [Create Azure Monitor alert rules](/azure/azure-monitor/alerts/alerts-create-new-alert-rule?tabs=metric).
-
-You can create metric alerts for your Azure Stack HCI cluster through metrics explorer in the Azure portal or command-Line Interface (CLI).
-
-### Create alerts through metrics explorer
-
-Follow these steps to create alerts through metrics explorer:
-
-1. In the Azure portal, select **Metrics** under the **Monitoring** section.
-
-1. Select **Scope** and then select **Metric Namespace** as **Azure Stack HCI**.
-
-1. Select the **Metric** on which you want to set up alerts.
-
-1. Select **New alert rule**.
-
-    :::image type="content" source="media/monitor-cluster-with-metrics/new-alert-rule.png" alt-text="Screenshot showing the option to create a new alert rule." lightbox="media/monitor-cluster-with-metrics/new-alert-rule.png":::
-
-1. Select the signal name and then select **Apply**.
-
-    :::image type="content" source="media/monitor-cluster-with-metrics/select-a-signal.png" alt-text="Screenshot of the Select a signal pane on the right." lightbox="media/monitor-cluster-with-metrics/select-a-signal.png":::
-
-1. Preview the results of the selected metric signal in the **Preview** section. Select values for the **Time range** and **Time series**.
-
-1. In the **Alert logic** section, add details like threshold, operator, aggregation type, threshold values, unit, threshold sensitivity, aggregation granularity, and frequency of evaluation and then select **Next: Actions \>**.
-
-    :::image type="content" source="media/monitor-cluster-with-metrics/create-alert-rule-alerts-logic-section.png" alt-text="Screenshot of the Alerts logic section on the Create an alert rule page." lightbox="media/monitor-cluster-with-metrics/create-alert-rule-alerts-logic-section.png":::
-
-1. On the **Actions** tab of the **Create and alert rule** page, specify the action group to indicate your preferred method of notification, and then select **Next: Details \>**.
-
-    :::image type="content" source="media/monitor-cluster-with-metrics/create-alert-rule-action-tab.png" alt-text="Screenshot of the Select action groups context pane on the Create an alert rule page." lightbox="media/monitor-cluster-with-metrics/create-alert-rule-action-tab.png":::
-
-1. On the **Details** tab of the **Create and alert rule** page, select severity and alert rule description. Select **Review+Create** and then select **Create**.
-
-    :::image type="content" source="media/monitor-cluster-with-metrics/create-alert-rule-details-tab.png" alt-text="Screenshot of the Details tab on the Create an alert rule page." lightbox="media/monitor-cluster-with-metrics/create-alert-rule-details-tab.png":::
-
-### Create alerts through Azure CLI
-
-Use the [`az monitor metrics alert create`](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-create) command to create metrics alert rules through Azure CLI.
-
-Here's an example of the command usage:
-
-To create a metric alert rule that monitors if the average CPU usage of a VM is greater than 90, run the following command:
-
-```azure CLI
-az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
-```
-
-### Analyze metrics and create alerts for a specific cluster
-
-Follow these steps to analyze metrics and create alerts for a specific Azure Stack HCI cluster in the Azure portal:
+Follow these steps to analyze metrics for a specific Azure Stack HCI cluster in the Azure portal:
 
 1. Go to your Azure Stack HCI cluster and navigate to the **Monitoring** section.
 
@@ -116,11 +82,26 @@ Follow these steps to analyze metrics and create alerts for a specific Azure Sta
 
     :::image type="content" source="media/monitor-cluster-with-metrics/cluster-metrics.png" alt-text="Screenshot showing the metrics for your cluster." lightbox="media/monitor-cluster-with-metrics/cluster-metrics.png":::
 
-1. To create alerts, select the **Alerts** option and set up alert as described in [Create alerts through metrics explorer](#next-steps).
+    To create alerts, select the **Alerts** option and set up alerts as described in [Create metric alerts](./setup-metric-alerts.md#create-metrics-alerts).
 
 ## What metrics are collected?
 
 This section lists the platform metrics that are collected for the Azure Stack HCI cluster, the aggregation types, and the dimensions available for each metric. For more information about metric dimensions, see [Multi-dimensional metrics](/azure/azure-monitor/essentials/data-platform-metrics#multi-dimensional-metrics).
+
+### Metrics for the Monitoring tab graphs
+
+The following table lists the metrics that Azure Monitor collects to populate the graphs on the **Monitoring** tab:
+
+| Metrics | Unit |
+|--|--|
+| Percentage CPU | Percent |
+| Network In/Sec | BytesPerSecond |
+| Network Out/Sec | BytesPerSecond |
+| Disk Read Bytes/Sec | BytesPerSecond |
+| Disk Write Bytes/Sec | BytesPerSecond |
+| Disk Read Operations/Sec | CountPerSecond |
+| Disk Write Operations/Sec | CountPerSecond |
+| Used Memory Bytes | Bytes |
 
 ### Metrics for servers
 
@@ -218,5 +199,5 @@ To see in-depth information about how these metrics are collected, see [Performa
 
 ## Next steps
 
-- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md)
+- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md)
 - [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md)

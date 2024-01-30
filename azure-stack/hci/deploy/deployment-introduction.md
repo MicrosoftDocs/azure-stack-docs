@@ -1,21 +1,21 @@
 ---
-title: Azure Stack HCI, version 23H2 deployment overview (preview)
-description: Learn about the deployment methods for Azure Stack HCI, version 23H2 (preview).
+title: Azure Stack HCI, version 23H2 deployment overview 
+description: Learn about the deployment methods for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: overview
-ms.date: 01/11/2024
+ms.date: 01/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# About Azure Stack HCI, version 23H2 deployment (preview)
+# About Azure Stack HCI, version 23H2 deployment
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article is the first in the series of deployment articles that describe how to deploy Azure Stack HCI, version 23H2. This article applies to both single and multi-node deployments. The target audience for this article is IT administrators who are responsible for deploying Azure Stack HCI in their organization.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
+<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
 
 ## About deployment methods
 
@@ -36,8 +36,7 @@ Follow this sequence to deploy Azure Stack HCI in your environment:
 | Step # | Description |
 |--|--|
 | [Select validated network topology](#validated-network-topologies) | Identify the network reference pattern that corresponds to the way your servers are cabled. You will define the network settings based on this topology. |
-| [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites before you begin the deployment. |
-| [View deployment checklist](./deployment-checklist.md) | View the checklist to gather the required information ahead of the actual deployment |
+| [Read the requirements and complete the prerequisites](./deployment-prerequisites.md) | Review the requirements and complete all the prerequisites and a deployment checklist before you begin the deployment. |
 | Step 1: [Prepare Active Directory](./deployment-prep-active-directory.md) | Prepare your Active Directory (AD) environment for Azure Stack HCI deployment. |
 | Step 2: [Download Azure Stack HCI, version 23H2 OS](./download-azure-stack-hci-23h2-software.md) | Download Azure Stack HCI, version 23H2 OS ISO from Azure portal |
 | Step 3: [Install OS](./deployment-install-os.md) | Install Azure Stack HCI operating system locally on each server in your cluster. |
