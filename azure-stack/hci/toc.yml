@@ -225,10 +225,10 @@
     items:
     - name: Insights
       items:
-      - name: Monitor single cluster with Azure Stack HCI Insights
+      - name: Monitor single cluster
         href: manage/monitor-hci-single-23h2.md
-      - name: Monitor multiple clusters with Azure Stack HCI Insights
-        href: manage/monitor-hci-multi.md
+      - name: Monitor multiple clusters
+        href: manage/monitor-hci-multi-23h2.md
       - name: Feature workbooks
         href: manage/monitor-features.md
     - name: Metrics
@@ -379,6 +379,10 @@
         href: manage/storage-repair-speed.md
     - name: Monitor clusters
       items:
+      - name: Monitor single cluster with Insights
+        href: manage/monitor-hci-single.md
+      - name: Monitor multiple clusters with Insights
+        href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Use DISKSPD to test workloads

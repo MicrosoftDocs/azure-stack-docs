@@ -1,6 +1,6 @@
 ---
-title: Monitor multiple Azure Stack HCI clusters with Insights
-description: How to use Insights to monitor the health, performance, and usage of multiple Azure Stack HCI clusters.
+title: Monitor multiple Azure Stack HCI, version 23H2 clusters with Insights
+description: How to use Insights to monitor the health, performance, and usage of multiple Azure Stack HCI, version 23H2 clusters.
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: saniyaislam
@@ -10,14 +10,11 @@ ms.subservice: azure-stack-hci
 ms.date: 01/31/2024
 ---
 
-# Monitor multiple Azure Stack HCI clusters with Insights
+# Monitor multiple Azure Stack HCI, version 23H2 clusters with Insights
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article explains how to use Insights to monitor multiple Azure Stack HCI clusters. For a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single.md).
-
-> [!IMPORTANT]
-> If you registered your Azure Stack HCI cluster and configured Insights before November 2023, certain features that use [Azure Monitor Agent (AMA)](/azure/azure-monitor/agents/agents-overview), such as Arc for Servers, VM Insights, Defender for Cloud, or Sentinel might not collect logs and event data correctly. For troubleshooting guidance, see the [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023) section.
 
 For information about the benefits, prerequisites, and how to enable Insights on each cluster, see [Benefits](./monitor-hci-single.md#benefits), [Prerequisites](./monitor-hci-single.md#prerequisites), and [Enable Insights](./monitor-hci-single-23h2.md#enable-insights).
 
