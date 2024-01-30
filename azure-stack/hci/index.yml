@@ -101,7 +101,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Migrate (preview)
-            url: https://aka.ms/hci-migrated
+            url: /aka.ms/hci-migrated
           - text: Microsoft Defender for Cloud (preview)
             url: concepts/security-features.md
           - text: Azure Site Recovery (preview)
