@@ -101,7 +101,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Migrate (preview)
-            url: /index.yml
+            url: migrate/migrate-cluster-new-hardware.md
           - text: Microsoft Defender for Cloud (preview)
             url: concepts/security-features.md
           - text: Azure Site Recovery (preview)
