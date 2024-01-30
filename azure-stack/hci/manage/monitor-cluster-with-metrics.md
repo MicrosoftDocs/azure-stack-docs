@@ -251,5 +251,5 @@ To see in-depth information about how these metrics are collected, see [Performa
 
 ## Next steps
 
-- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md)
+- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md)
 - [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md)
