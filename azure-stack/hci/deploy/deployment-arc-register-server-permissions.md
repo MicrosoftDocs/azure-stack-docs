@@ -15,6 +15,8 @@ ms.custom: devx-track-azurepowershell
 
 This article describes how to register your Azure Stack HCI servers and then set up the required permissions to deploy an Azure Stack HCI, version 23H2 cluster.
 
+<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
+
 ## Prerequisites
 
 Before you begin, make sure you've completed the following prerequisites:

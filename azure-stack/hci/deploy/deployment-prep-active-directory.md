@@ -15,6 +15,8 @@ ms.subservice: azure-stack-hci
 
 This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. 
 
+<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
+
 ## Prerequisites
 
 Before you begin, make sure you've done the following:
