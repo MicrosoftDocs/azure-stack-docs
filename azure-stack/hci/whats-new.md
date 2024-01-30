@@ -1,31 +1,74 @@
 ---
-title: What's new in Azure Stack HCI, version 23H2 preview release (preview)
-description: Find out what's new in Azure Stack HCI, version 23H2 preview release (preview).
+title: What's new in Azure Stack HCI, version 23H2 release
+description: Find out what's new in Azure Stack HCI, version 23H2 release.
 ms.topic: overview
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/15/2023
+ms.date: 01/30/2024
 ---
 
-# What's new in Azure Stack HCI, version 23H2 (preview)
+# What's new in Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article lists the various features and improvements that are available in Azure Stack HCI, version 23H2.
 
-Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more.
+Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-[!INCLUDE [hci-preview](../includes/hci-preview.md)]
+The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
 
-The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2.
 
-<!--### One integrated package
+## Features and improvements in 2311.2 GA 
 
-Unlike the prior years, Azure Stack HCI, version 23H2 includes more than just the operating system (OS). There is a single package containing the 23H2 operating system, the orchestrator and Arc VM management software bits. The 23H2 operating system includes the latest cumulative update corresponding to October 2023.-->
+This section lists the new features and improvements in the 2311.2 General Availability (GA) release for Azure Stack HCI, version 23H2.
+
+> [IMPORTANT]
+> The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.2 release. To run the GA version, start with a new 2311 deployment and then update to 2311.2.
+
+
+This is the generally available version of the Azure Stack HCI, version 23H2 and all the features that were available at preview are also now generally available. In addition, the following imporvements and enhancements are available:
+
+ 
+### Deployment changes
+
+With this release:
+
+- Deployment is supported using existing storage accounts and existing Azure Key Vaults.
+- A failed deployment can be run using the **Rerun deployment** option that becomes available in the cluster **Overview** page.
+- Network settings such as storage traffic priority, cluster traffic priority, storage traffic bandwidth reservation, jumbo frames, and RDMA protocol can all be customized.
+- Validation must be started explicitly via the **Start validation** button.
+
+### Add server and repair server changes
+
+- Bug fixes in the add server and repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues-2311-2.md).
+
+### Arc VM management changes
+
+In this release:
+
+- Guest management is available via Azure CLI and Azure portal. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
+- Proxy is supported for Arc VMs. For more information, see [Set up proxy for Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md#create-a-vm-from-network-interface).
+- Storage path selection is availble during the VM image creation via the Azure portal. For more information, see [Create a VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md)
+
+### Migration of Hyper-V VMs to Azure Stack HCI (preview)
+
+This is also the Preview release of migration of Hyper-V VMs to Azure Stack HCI using Azure Migrate. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI](./index.yml)
+
+### Monitoring changes
+
+### Security via Microsoft Defender for Cloud
+
+- Starting this release, you can use Microsoft Defender for Cloud (currently in Preview) to provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. For more information, see [Microsoft Defender on Cloud for Azure Stack HCI (Preview)](./manage/manage-security-with-defender-for-cloud.md).
+
+### Supported workloads
+
+Starting this release, the following workloads are generally available on Azure Stack HCI:
+
+- Azure Kubernetes Service (AKS) on Azure Stack HCI. For more information, see [What's new in AKS on Azure Stack HCI](/azure/aks/hybrid/aks-preview-overview).
+- Azure Virtual Desktops (AVD) on Azure Stack HCI. For more information, see [Deploy AVD on Azure Stack HCI](./index.yml).
 
 ## Features and improvements in 2311
 
