@@ -219,7 +219,7 @@
     - name: Insights
       items:
       - name: Monitor single cluster with Azure Stack HCI Insights
-        href: manage/monitor-hci-single-23h2.md
+        href: ../index.yml
       - name: Monitor multiple clusters with Azure Stack HCI Insights
         href: manage/monitor-hci-multi.md
       - name: Feature workbooks
@@ -233,7 +233,7 @@
       - name: Log alerts
         href: manage/setup-hci-system-alerts.md
       - name: Metric alerts
-        href: manage/setup-metric-alerts.md
+        href: ../index.yml
   - name: Via PowerShell
     items:
     - name: Health service
