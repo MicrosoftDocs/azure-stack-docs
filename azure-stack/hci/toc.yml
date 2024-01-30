@@ -234,6 +234,8 @@
         href: manage/health-alerts-via-azure-monitor-alerts.md
       - name: Log alerts
         href: manage/setup-hci-system-alerts.md
+      - name: Metric alerts
+        href: manage/setup-metric-alerts.md
   - name: Via PowerShell
     items:
     - name: Health service
