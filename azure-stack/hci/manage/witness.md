@@ -12,6 +12,8 @@ ms.reviewer: stevenek
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
+<!--[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]-->
+
 This article describes how to set up an Azure Stack HCI or Windows Server cluster with a cluster witness in Azure (known as a cloud witness).
 
 We recommend setting up a cluster witness for clusters with two, three, or four nodes. The witness helps the cluster determine which nodes have the most up-to-date cluster data if some nodes can't communicate with the rest of the cluster. You can host the cluster witness on a file share located on another server, or use a cloud witness.
