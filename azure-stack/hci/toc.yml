@@ -221,7 +221,7 @@
     - name: Insights
       items:
       - name: Monitor single cluster with Azure Stack HCI Insights
-        href: manage/monitor-hci-single.md      
+        href: manage/monitor-hci-single-23h2.md
       - name: Monitor multiple clusters with Azure Stack HCI Insights
         href: manage/monitor-hci-multi.md
       - name: Feature workbooks

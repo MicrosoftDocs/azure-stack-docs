@@ -51,7 +51,7 @@ landingContent:
           - text: Manage via PowerShell
             url: /azure-stack/hci/manage/cluster-powershell
           - text: Monitor via Azure Stack HCI Insights
-            url: /azure-stack/hci/manage/monitor-hci-single
+            url: /azure-stack/hci/manage/monitor-hci-single-23h2
           - text: Monitor via Windows Admin Center
             url: /azure-stack/hci/manage/monitor-cluster
 
