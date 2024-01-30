@@ -29,7 +29,7 @@ This section lists the new features and improvements in the 2311.2 General Avail
 > The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.2 release. To run the GA version, start with a new 2311 deployment and then update to 2311.2.
 
 
-This is the generally available version of the Azure Stack HCI, version 23H2 and all the features that were available with the [2310](#features-and-improvements-in-2310) and [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following imporvements and enhancements are available:
+In this generally available release of the Azure Stack HCI, version 23H2, all the features that were available with the [2310](#features-and-improvements-in-2310) and [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following improvements and enhancements are available:
 
  
 ### Deployment changes
