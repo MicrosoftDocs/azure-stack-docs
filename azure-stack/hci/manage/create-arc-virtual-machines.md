@@ -15,7 +15,7 @@ ms.date: 01/24/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure portal.
+This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Stack HCI cluster resource
 
@@ -43,6 +43,14 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
+
+# [Azure Resource Manager template](#tab/azureresourcemanagertemplate)
+
+[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+
+- Access to a logical network that you'll associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+
+- [Download the ARM template](../index.yml) in the Github repo. You'll use this template to create a VM.
 ---
 
 ## Create Arc VMs
@@ -248,6 +256,104 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     :::image type="content" source="./media/manage-vm-resources/review-virtual-machine.png" alt-text="Screenshot of review page during Create a VM." lightbox="./media/manage-vm-resources/review-virtual-machine.png":::
 
 1. Select **Create**. It should take a few minutes to provision the VM.
+
+
+# [Azure Resource Manager template](#tab/azureresourcemanagertemplate)
+
+Follow these steps to deploy the ARM template: 
+
+1. In the Azure portal, from the top search bar, search for deploy a custom template. Select **Deploy a custom template** from the available options. 
+
+1. On the **Select a template** tab, Select **Build your own template in the editor**.
+
+   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal.":::  
+
+1. You see a blank template.
+
+   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/blank-template.png" alt-text="Screenshot of blank ARM template in Azure portal.":::
+
+1. Replace the blank template with the template that you downloaded during the prerequisites step. This template creates an Arc VM. First, a virtual network interface is created. You can then optionally enable domain-join and attach a virtual disk with the VM you'll create. Finally, the VM is created with the guest management enabled.
+
+   ```json
+   {
+     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+     "contentVersion": "1.0.0.0",
+     "parameters": {
+       "vnetName": {
+         "type": "string",
+         "defaultValue": "VNet1",
+         "metadata": {
+           "description": "VNet name"
+         }
+       },
+       "vnetAddressPrefix": {
+         "type": "string",
+         "defaultValue": "10.0.0.0/16",
+         "metadata": {
+           "description": "Address prefix"
+         }
+       },
+       "subnetPrefix": {
+         "type": "string",
+         "defaultValue": "10.0.0.0/24",
+         "metadata": {
+           "description": "Subnet Prefix"
+         }
+       },
+       "subnetName": {
+         "type": "string",
+         "defaultValue": "Subnet1",
+         "metadata": {
+           "description": "Subnet Name"
+         }
+       },
+       "location": {
+         "type": "string",
+         "defaultValue": "[resourceGroup().location]",
+         "metadata": {
+           "description": "Location for all resources."
+         }
+       }
+     },
+     "resources": [
+       {
+         "type": "Microsoft.Network/virtualNetworks",
+         "apiVersion": "2021-08-01",
+         "name": "[parameters('vnetName')]",
+         "location": "[parameters('location')]",
+         "properties": {
+           "addressSpace": {
+             "addressPrefixes": [
+               "[parameters('vnetAddressPrefix')]"
+             ]
+           },
+           "subnets": [
+             {
+               "name": "[parameters('subnetName')]",
+               "properties": {
+                 "addressPrefix": "[parameters('subnetPrefix')]"
+               }
+             }
+           ]
+         }
+       }
+     ]
+   }
+   ``` 
+
+1. Select **Save**.
+
+1. You see the blade for providing deployment values. Again, select **myResourceGroup** for the resource group. You can use the other default values. When you're done providing values, select **Review + create**
+
+1. After the portal validates the template, select **Create**.
+
+1. When the deployment completes, you see the status of the deployment. Select the resource group.
+
+   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/view-second-deployment.png" alt-text="Screenshot of view second deployment page in Azure portal.":::
+
+    Notice that your resource group now contains a VM.
+    
+   :::image type="content" source="./media/quickstart-create-templates-use-the-portal/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal.":::
 
 ---
 
