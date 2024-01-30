@@ -260,11 +260,11 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 # [Azure Resource Manager template](#tab/azureresourcemanagertemplate)
 
-Follow these steps to deploy the ARM template: 
+Follow these steps to deploy the ARM template:
 
-1. In the Azure portal, from the top search bar, search for deploy a custom template. Select **Deploy a custom template** from the available options. 
+1. In the Azure portal, from the top search bar, search for *deploy a custom template*. Select **Deploy a custom template** from the available options.
 
-1. On the **Select a template** tab, Select **Build your own template in the editor**.
+1. On the **Select a template** tab, select **Build your own template in the editor**.
 
    <!--:::image type="content" source="./media/quickstart-create-templates-use-the-portal/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal.":::-->  
 
@@ -272,73 +272,276 @@ Follow these steps to deploy the ARM template:
 
    <!--:::image type="content" source="./media/quickstart-create-templates-use-the-portal/blank-template.png" alt-text="Screenshot of blank ARM template in Azure portal.":::-->
 
-1. Replace the blank template with the template that you downloaded during the prerequisites step. This template creates an Arc VM. First, a virtual network interface is created. You can then optionally enable domain-join and attach a virtual disk with the VM you'll create. Finally, the VM is created with the guest management enabled.
+1. Replace the blank template with the template that you downloaded during the prerequisites step. 
+
+    This template creates an Arc VM. First, a virtual network interface is created. You can optionally enable domain-join and attach a virtual disk to the VM you'll create. Finally, the VM is created with the guest management enabled.
 
    ```json
-   {
-     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-     "contentVersion": "1.0.0.0",
-     "parameters": {
-       "vnetName": {
-         "type": "string",
-         "defaultValue": "VNet1",
-         "metadata": {
-           "description": "VNet name"
-         }
-       },
-       "vnetAddressPrefix": {
-         "type": "string",
-         "defaultValue": "10.0.0.0/16",
-         "metadata": {
-           "description": "Address prefix"
-         }
-       },
-       "subnetPrefix": {
-         "type": "string",
-         "defaultValue": "10.0.0.0/24",
-         "metadata": {
-           "description": "Subnet Prefix"
-         }
-       },
-       "subnetName": {
-         "type": "string",
-         "defaultValue": "Subnet1",
-         "metadata": {
-           "description": "Subnet Name"
-         }
-       },
-       "location": {
-         "type": "string",
-         "defaultValue": "[resourceGroup().location]",
-         "metadata": {
-           "description": "Location for all resources."
-         }
-       }
-     },
-     "resources": [
-       {
-         "type": "Microsoft.Network/virtualNetworks",
-         "apiVersion": "2021-08-01",
-         "name": "[parameters('vnetName')]",
-         "location": "[parameters('location')]",
-         "properties": {
-           "addressSpace": {
-             "addressPrefixes": [
-               "[parameters('vnetAddressPrefix')]"
-             ]
-           },
-           "subnets": [
-             {
-               "name": "[parameters('subnetName')]",
-               "properties": {
-                 "addressPrefix": "[parameters('subnetPrefix')]"
-               }
-             }
-           ]
-         }
-       }
-     ]
-   }
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "name": {
+                "type": "String",
+                "metadata": {
+                    "description": "The name of the Virtual Machine."
+                }
+            },
+            "location": {
+                "type": "String",
+                "metadata": {
+                    "description": "The Azure region where the resources will be deployed."
+                }
+            },
+            "customLocationId": {
+                "type": "String",
+                "metadata": {
+                    "description": "The custom location ID where the resources will be deployed."
+                }
+            },
+            "adminUsername": {
+                "type": "String",
+                "metadata": {
+                    "description": "The username for the administrator account of the VM."
+                }
+            },
+            "adminPassword": {
+                "type": "SecureString",
+                "metadata": {
+                    "description": "The password for the administrator account of the VM. This should be a secure string."
+                }
+            },
+            "securityType": {
+                "type": "String",
+                "metadata": {
+                    "description": "The type of security configuration for the VM."
+                }
+            },
+            "vNicName": {
+                "type": "String",
+                "metadata": {
+                    "description": "The name of the vNic."
+                }
+            },
+            "privateIPAddress": {
+                "type": "String",
+                "metadata": {
+                    "description": "The IP address for the network interface."
+                }
+            },
+            "subnetId": {
+                "type": "String",
+                "metadata": {
+                    "description": "The ARM ID of the subnet for the network interface."
+                }
+            },
+            "vmSize": {
+                "type": "String",
+                "metadata": {
+                    "description": "The size of the virtual machine instance. It is 'Default' by default."
+                }
+            },
+            "enableVirtualDisk": {
+                "type": "bool",
+                "metadata": {
+                    "description": "Enable or disable the virtual disk."
+                }
+            },
+            "diskName": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The name of the virtual data disk for your VM. Required if enableVirtualDisk is true."
+                }
+            },
+            "diskSize": {
+                "type": "Int",
+                "defaultValue": 0,
+                "metadata": {
+                    "description": "Specify the size of the additional virtual disk to be added to your VM. Required if enableVirtualDisk is true."
+                }
+            },
+            "processors": {
+                "type": "Int",
+                "metadata": {
+                    "description": "The number of processors for the virtual machine."
+                }
+            },
+            "memoryMB": {
+                "type": "Int",
+                "metadata": {
+                    "description": "The amount of memory in MB for the virtual machine."
+                }
+            },
+            "imageReferenceId": {
+                "type": "String",
+                "metadata": {
+                    "description": "The ARM ID of the image to be used for the virtual machine."
+                }
+            },
+            "enableDomainJoin": {
+                "type": "bool",
+                "metadata": {
+                    "description": "Enable or disable the domain join extension."
+                }
+            },
+            "domainToJoin": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The domain to join. Required if enableDomainJoin is true."
+                }
+            },
+            "orgUnitPath": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The Organizational Unit path. Optional, used if enableDomainJoin is true."
+                }
+            },
+            "domainUsername": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The domain username. Required if enableDomainJoin is true."
+                }
+            },
+            "domainPassword": {
+                "type": "SecureString",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The domain password. Required if enableDomainJoin is true."
+                }
+            }
+        },
+        "variables": {
+            "domainJoinExtensionName": "[if(parameters('enableDomainJoin'), concat(parameters('name'),'/joindomain'), '')]",
+            "virtualDiskName": "[if(parameters('enableVirtualDisk'), parameters('diskName'), '')]"
+        },
+        "resources": [
+            {
+                "type": "Microsoft.HybridCompute/machines",
+                "apiVersion": "2023-03-15-preview",
+                "name": "[parameters('name')]",
+                "location": "[parameters('location')]",
+                "kind": "HCI",
+                "identity": {
+                    "type": "SystemAssigned"
+                }
+            },
+            {
+                "condition": "[parameters('enableVirtualDisk')]",
+                "type": "Microsoft.AzureStackHCI/virtualHardDisks",
+                "apiVersion": "2023-09-01-preview",
+                "name": "[variables('virtualDiskName')]",
+                "location": "[parameters('location')]",
+                "extendedLocation": {
+                    "type": "CustomLocation",
+                    "name": "[parameters('customLocationId')]"
+                },
+                "properties": {
+                    "diskSizeGB": "[parameters('diskSize')]",
+                    "dynamic": true
+                }
+            },
+            {
+                "type": "Microsoft.AzureStackHCI/networkInterfaces",
+                "apiVersion": "2023-09-01-preview",
+                "name": "[parameters('vNicName')]",
+                "location": "[parameters('location')]",
+                "extendedLocation": {
+                    "type": "CustomLocation",
+                    "name": "[parameters('customLocationId')]"
+                },
+                "properties": {
+                    "ipConfigurations": [
+                        {
+                            "name": "[parameters('vNicName')]",
+                            "properties": {
+                                "privateIPAddress": "[parameters('privateIPAddress')]",
+                                "subnet": {
+                                    "id": "[parameters('subnetId')]"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "Microsoft.AzureStackHCI/VirtualMachineInstances",
+                "apiVersion": "2023-09-01-preview",
+                "name": "default",
+                "extendedLocation": {
+                    "type": "CustomLocation",
+                    "name": "[parameters('customLocationId')]"            },
+                "dependsOn": [
+                    "[resourceId('Microsoft.HybridCompute/machines', parameters('name'))]",
+                    "[resourceId('Microsoft.AzureStackHCI/networkInterfaces', parameters('vNicName'))]",
+                    "[resourceid('Microsoft.AzureStackHCI/virtualHardDisks', parameters('diskName'))]"
+                ],
+                "properties": {
+                    "osProfile": {
+                        "adminUsername": "[parameters('adminUsername')]",
+                        "adminPassword": "[parameters('adminPassword')]",
+                        "computerName": "[parameters('name')]",
+                        "windowsConfiguration": {
+                            "provisionVMAgent": true,
+                            "provisionVMConfigAgent": true
+                        }
+                    },
+                    "hardwareProfile": {
+                        "vmSize": "Default",
+                        "processors": 4,
+                        "memoryMB": 8192
+                    },
+                    "storageProfile": {
+                        "imageReference": {
+                            "id": "[parameters('imageReferenceId')]"
+                        },
+                        "dataDisks": [
+                            {
+                                "id": "[resourceid('Microsoft.AzureStackHCI/virtualHardDisks',parameters('diskName'))]"
+                            }
+                        ]
+                    },
+                    "networkProfile": {
+                        "networkInterfaces": [
+                            {
+                                "id": "[resourceId('Microsoft.AzureStackHCI/networkInterfaces', parameters('vNicName'))]"
+                            }
+                        ]
+                    }
+                },
+                "scope": "[concat('Microsoft.HybridCompute/machines/', parameters('name'))]"
+            },
+            {
+                "condition": "[parameters('enableDomainJoin')]",
+                "type": "Microsoft.HybridCompute/machines/extensions",
+                "apiVersion": "2023-03-15-preview",
+                "name": "[variables('domainJoinExtensionName')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat(resourceId('Microsoft.HybridCompute/machines', parameters('name')), '/providers/Microsoft.AzureStackHCI/virtualmachineinstances/default')]"
+                ],
+                "properties": {
+                    "publisher": "Microsoft.Compute",
+                    "type": "JsonADDomainExtension",
+                    "typeHandlerVersion": "1.3",
+                    "autoUpgradeMinorVersion": true,
+                    "settings": {
+                        "Name": "[parameters('domainToJoin')]",
+                        "OUPath": "[parameters('orgUnitPath')]",
+                        "User": "[concat(parameters('domainToJoin'), '\\', parameters('domainUsername'))]",
+                        "Restart": "true",
+                        "Options": "3"
+                    },
+                    "protectedSettings": {
+                        "Password": "[parameters('domainPassword')]"
+                    }
+                }
+            }
+        ]
+    }
    ``` 
 
 1. Select **Save**.
