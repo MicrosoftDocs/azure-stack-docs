@@ -128,7 +128,7 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Collect logs
+          - text: Collect log
             url: manage/collect-logs.md
           - text: Deployment issues
             url: manage/get-support-for-deployment-issues.md
