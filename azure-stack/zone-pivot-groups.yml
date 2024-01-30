@@ -73,8 +73,8 @@ groups:
   - id: ubuntu-22
     title: Ubuntu 22.04
 - id: version-select
-  title: AKS enabled by Azure Arc versions
-  prompt: Choose an AKS Arc version
+  title: AKS enabled by Azure Arc HCI versions
+  prompt: AKS on Azure Stack HCI version
   pivots:
   - id: aks-23h2
     title: Version 23H2
