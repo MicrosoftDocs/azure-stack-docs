@@ -1,10 +1,10 @@
 ---
 title: Single server scale-out for Azure Stack HCI version 22H2
 description: Learn how to scale out a single-server cluster for Azure Stack HCI version 22H2.
-author: dansisson
+author: alkohli
 ms.topic: how-to
 ms.date: 08/30/2023
-ms.author: v-dansisson
+ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
