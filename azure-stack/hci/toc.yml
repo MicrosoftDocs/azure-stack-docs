@@ -24,7 +24,7 @@
 - name: Evaluate 
   items:
   - name: Deploy virtual
-    href: deploy/evaluate-virtual.md
+    href: deploy/deployment-virtual.md
   - name: Deploy in Azure
     href: https://arcjumpstart.com/azure_jumpstart_hcibox/getting_started
 
