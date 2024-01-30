@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 01/24/2024
+ms.date: 01/29/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
