@@ -76,8 +76,6 @@
     href: deploy/deployment-introduction.md
   - name: Complete prerequisites
     href: deploy/deployment-prerequisites.md
-  - name: View deployment checklist
-    href: deploy/deployment-checklist.md
   - name: 1. Prepare Active Directory
     href: deploy/deployment-prep-active-directory.md
   - name: 2. Download the software
@@ -221,7 +219,7 @@
     - name: Insights
       items:
       - name: Monitor single cluster with Azure Stack HCI Insights
-        href: manage/monitor-hci-single.md      
+        href: manage/monitor-hci-single-23h2.md
       - name: Monitor multiple clusters with Azure Stack HCI Insights
         href: manage/monitor-hci-multi.md
       - name: Feature workbooks
