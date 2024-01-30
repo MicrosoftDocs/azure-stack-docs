@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 01/29/2024
+ms.date: 01/30/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -50,7 +50,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
 
-- [Download the ARM template](../index.yml) in the GitHub repo. You use this template to create a VM.
+- [Download the ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub repo. You use this template to create a VM.
 ---
 
 ## Create Arc VMs
@@ -552,15 +552,11 @@ Follow these steps to deploy the ARM template:
 
    :::image type="content" source="./media/create-arc-virtual-machines/filled-basics.png" alt-text="Screenshot of filled basics tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-basics.png":::
 
-1. After the portal validates the template, select **Create**.
+1. After the portal validates the template, select **Create**. A deployment job should start.
 
    :::image type="content" source="./media/create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot of Review + Create tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-review-create.png":::
 
-1. When the deployment completes, you see the status of the deployment. Select the resource group.
-
-   <!--:::image type="content" source="./create-arc-virtual-machines/view-second-deployment.png" alt-text="Screenshot of view second deployment page in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
-
-    Notice that your resource group now contains a VM.
+1. When the deployment completes, you see the status of the deployment as complete. After the deployment has successfully completed, a VM is created on your Azure Stack HCI.
     
    <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
 
