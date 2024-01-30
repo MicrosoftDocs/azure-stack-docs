@@ -44,7 +44,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
 
-# [Azure Resource Manager template](#tab/armtemplate)
+# [ARM template](#tab/armtemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
