@@ -65,7 +65,7 @@ landingContent:
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/deploy-azure-virtual-desktop
           - text: Run Azure Arc Virtual Machines
-            url: /azure-stack/hci/manage/create-arc-virtual-machines.md
+            url: /hci/manage/create-arc-virtual-machines.md
 
   # Card
   - title: Manage the cluster
