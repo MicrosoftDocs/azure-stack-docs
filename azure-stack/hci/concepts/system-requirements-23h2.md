@@ -150,7 +150,7 @@ You should always follow the OEM's recommended installation steps. If the OEM's 
     Here's a sample output:
 
     ```console
-    PS C:\Windows\system32> Get-NetAdapter -name ethernet | select *driver
+    PS C:\Windows\system32> Get-NetAdapter -name ethernet | select *driver*
 
     DriverInformation		: Driver Date 2021-07-08 Version 2.70.24728.0 NDIS 6.85
     DriverFileName			: mlx5.sys
