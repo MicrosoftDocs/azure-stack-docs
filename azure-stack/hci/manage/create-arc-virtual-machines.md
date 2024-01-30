@@ -546,15 +546,15 @@ Follow these steps to deploy the ARM template:
 
 1. Select **Save**.
 
-   :::image type="content" source="./create-arc-virtual-machines/edit-template.png" alt-text="Screenshot of template being edited in Azure portal." lightbox="./media/create-arc-virtual-machines/edit-template.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/edit-template.png" alt-text="Screenshot of template being edited in Azure portal." lightbox="./media/create-arc-virtual-machines/edit-template.png":::
 
 1. You see the blade for providing deployment values. Again, select the resource group. You can use the other default values. When you're done providing values, select **Review + create**
 
-   :::image type="content" source="./create-arc-virtual-machines/filled-basics.png" alt-text="Screenshot of filled basics tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-basics.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/filled-basics.png" alt-text="Screenshot of filled basics tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-basics.png":::
 
 1. After the portal validates the template, select **Create**.
 
-   :::image type="content" source="./create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot of Review + Create tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-review-create.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot of Review + Create tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-review-create.png":::
 
 1. When the deployment completes, you see the status of the deployment. Select the resource group.
 
