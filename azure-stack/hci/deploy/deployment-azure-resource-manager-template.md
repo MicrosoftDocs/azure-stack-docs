@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/19/2024
+ms.date: 01/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -300,9 +300,14 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1.  Once validation is complete, select **Redeploy**.
 
-1. On the **Custom deployment** screen, select **Edit parameters**.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7a.png":::
+
+1. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
 1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**. 
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing Redeploy selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
+
 
 1. Verify that all the fields for the ARM deployment template have been filled in by the Parameters JSON.
 
@@ -322,12 +327,12 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. In a new browser window, navigate to the resource group for your environment. Select the cluster resource.
 
-1. Select **Deployments (preview)**.
+1. Select **Deployments**.
 
 1. Refresh and watch the deployment progress from the first server (also known as the seed server and is the first server where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
 
     > [!NOTE]
-    > If you check back on the template deployment, you will see that it eventually times out. This is a known issue, so watching **Deployments (preview)** is the best way to monitor the progress of deployment.
+    > If you check back on the template deployment, you will see that it eventually times out. This is a known issue, so watching **Deployments** is the best way to monitor the progress of deployment.
 
 1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
 
