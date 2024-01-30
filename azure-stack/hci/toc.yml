@@ -295,8 +295,6 @@
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
-  - name: Azure Stack HCI security features
-    href: concepts/security-features.md
 
 - name: Version 22H2
   items:
