@@ -1,6 +1,6 @@
 ---
-title: Create network interfaces for virtual machines on Azure Stack HCI (preview)
-description: Learn how to create network interfaces on an existing logical network associated with your Azure Stack HCI cluster. The Arc VM running on your cluster uses these network interfaces (preview).
+title: Create network interfaces for virtual machines on Azure Stack HCI
+description: Learn how to create network interfaces on an existing logical network associated with your Azure Stack HCI cluster. The Arc VM running on your cluster uses these network interfaces.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -11,14 +11,12 @@ ms.custom: devx-track-azurecli
 ms.date: 11/20/2023
 ---
 
-# Create network interfaces for Arc virtual machines on Azure Stack HCI (preview)
+# Create network interfaces for Arc virtual machines on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create network interfaces that you can associate with an Arc VM on your Azure Stack HCI cluster. You can create network interfaces using the Azure portal or the Azure CLI. 
 
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About network interfaces
 
@@ -84,7 +82,7 @@ Follow these steps to create a network interface on your static logical network.
     | **resource-group** |Name of the resource group where your Azure Stack HCI is deployed. This could also be another precreated resource group. |
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
     | **custom-location** |Name or ID of the custom location to use for logical network on your Azure Stack HCI cluster.  |
-    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `eastus2euap`. |
+    | **location** | Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **subnet-id** |Name of your logical network. For example: `test-lnet-dynamic`.  |
     | **ip-allocation-method** |IP address allocation method and could be `dynamic` or `static` for your network interface. If this parameter isn't specified, by default the network interface is created with a dynamic configuration. |
     | **ip-address** | An IPv4 address you want to assign to the network interface that you are creating. For example: "192.168.0.10".  |

@@ -1,12 +1,10 @@
 ---
 title: Azure Kubernetes Service (AKS) enabled by Azure Arc system requirements
 description: Learn about system requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc.
+ms.date: 01/25/2024
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 12/21/2023
-ms.reviewer: mikek
-ms.date: 11/03/2022
 
 # Intent: As a system administrator, I want to understand the hardware and software needed so that I can run AKS in my datacenter.
 # Keyword: AKS system requirements
@@ -15,21 +13,9 @@ ms.date: 11/03/2022
 
 # System requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022 Datacenter, Windows Server 2019 Datacenter
+> Applies to: Azure Stack HCI, versions 23H2 (except for the [network requirements section](#network-requirements)), 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows IoT, Windows 10/11 IoT Enterprise/Enterprise/Pro
 
-This article covers the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Stack HCI or on Windows Server Datacenter and using it to create Kubernetes clusters. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
-
-## Active Directory requirements
-
-For an AKS failover cluster with 2 or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are met:
-
-> [!NOTE]
-> Active Directory is not required for single node Azure Stack HCI or Windows Server deployments.
-
-- Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information about setting time synchronization, see [Windows time service](/windows-server/networking/windows-time-service/windows-time-service-top).
-- Make sure the user account(s) used to add update, and manage AKS or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) require list, read, modify, and delete permissions on all objects in the OU.
-- Use a separate organizational unit (OU) for the servers and services by your AKS or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
-- If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI and Windows Server is exempt from the policy.
+This article describes the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
 
 ## Hardware requirements
 
@@ -42,10 +28,21 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 AKS on Azure Stack HCI and Windows Server deployments that exceed the following specifications aren't supported:
 
+#### [HCI 23H2](#tab/hci23h2)
+
 | Resource                     | Maximum |
 | ---------------------------- | --------|
 | Physical servers per cluster | 16 (Azure Stack HCI version 23H2)       |
 | Total number of VMs          | 200     |
+
+#### [HCI 22H2](#tab/hci22h2)
+
+| Resource                     | Maximum |
+| ---------------------------- | --------|
+| Physical servers per cluster | 8 (Azure Stack HCI version 23H2 and Windows Server)       |
+| Total number of VMs          | 200     |
+
+---
 
 ## Compute requirements
 
@@ -69,7 +66,7 @@ This minimum requirement is for an AKS deployment with one worker node for runni
 | Windows Server failover cluster | 32 | 256 GB |
 | Single node Windows Server | 16 | 128 GB
 
-For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you won't get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
+For a production environment, final sizing depends on the application and number of worker nodes you're planning to deploy on the Azure Stack HCI or Windows Server cluster. If you choose to run AKS on a single-node Windows Server, you don't get features like high availability that come with running AKS on an Azure Stack HCI or Windows Server cluster or Windows Server failover cluster.
 
 Other compute requirements for AKS on Azure Stack HCI and Windows Server are in line with Azure Stack HCI requirements. See [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements#server-requirements) for more information about Azure Stack HCI server requirements.
 
@@ -77,7 +74,7 @@ You must install the same operating system on each server in the cluster. If you
 
 ## Storage requirements
 
-The following storage implementations are supported by AKS on Azure Stack HCI and Windows Server:
+AKS on Azure Stack HCI and Windows Server supports the following storage implementations:
 
 |  Name                         | Storage type | Required capacity |
 | ---------------------------- | ------------ | ----------------- |
@@ -100,15 +97,17 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 ## Network requirements
 
-The following requirements apply to an Azure Stack HCI cluster and a Windows Server Datacenter cluster:
+The following requirements apply to an Azure Stack HCI 22H2 cluster and a Windows Server Datacenter cluster. For networking requirements on Azure Stack HCI 23H2, see [Networking requirements](aks-hci-network-system-requirements.md).
 
-- Verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes.
+- For Azure Stack HCI 22H2 and Windows Server, verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes. For HCI 23H2, see the [network system requirements](aks-hci-network-system-requirements.md).
 - Verify that you have disabled IPv6 on all network adapters.
 - For a successful deployment, the Azure Stack HCI or Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 - Make sure all subnets you define for the cluster are routable between each other and to the internet.
 - Make sure that there's network connectivity between Azure Stack HCI hosts and the tenant VMs.
 - DNS name resolution is required for all nodes to be able to communicate with each other.
 - (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS to register the cloud agent generic cluster name in the DNS system for discovery.
+
+For more information, see [AKS networking system requirements](aks-hci-network-system-requirements.md).
 
 ### IP address assignment  
 
@@ -302,6 +301,29 @@ From the previous output, you now have the **application ID** and the **secret**
 ### Azure resource group
 
 You must have an Azure resource group in the Australia East, East US, Southeast Asia, or West Europe Azure region available before registration.
+
+### Azure regions
+
+> [!WARNING]
+> AKS Arc currently supports cluster creation exclusively within the following specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
+
+The AKS Arc service is used for registration, billing, and management. It is currently supported in the following regions:
+
+- East US
+- South Central US
+- West Europe
+
+## Active Directory requirements
+
+For an AKS failover cluster with 2 or more physical nodes to function optimally in an Active Directory environment, ensure the following requirements are met:
+
+> [!NOTE]
+> Active Directory is not required for single node Azure Stack HCI or Windows Server deployments.
+
+- Set up time synchronization so that the divergence isn't greater than 2 minutes across all cluster nodes and the domain controller. For information about setting time synchronization, see [Windows time service](/windows-server/networking/windows-time-service/windows-time-service-top).
+- Make sure the user account(s) used to add update, and manage AKS or Windows Server Datacenter clusters has the correct permissions in Active Directory. If you're using Organizational Units (OUs) to manage group policies for servers and services, the user account(s) require list, read, modify, and delete permissions on all objects in the OU.
+- Use a separate organizational unit (OU) for the servers and services by your AKS or Windows Server Datacenter clusters. Using a separate OU allows you to control access and permissions with more granularity.
+- If you're using GPO templates on containers in Active Directory, ensure deploying AKS on Azure Stack HCI and Windows Server is exempt from the policy.
 
 ## Next steps
 
