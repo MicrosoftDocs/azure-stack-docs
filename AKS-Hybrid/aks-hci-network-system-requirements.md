@@ -126,7 +126,7 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 | `sts.windows.net` | 443 | Azure Arc |    For Cluster Connect and Custom Location-based scenario. |
 | `hybridaksstorage.z13.web.core.windows.net` |    443 | Azure Stack HCI |    AKSHCI static website hosted in Azure Storage. |
 | `raw.githubusercontent.com` |    443 | GitHub | Used for GitHub. |
-| `www.microsoft.com` |    80 | Microsoft Offical Website | Microsoft official web site. |
+| `www.microsoft.com` |    80 | Microsoft Official Website | Microsoft official web site. |
 | `*.prod.do.dsp.mp.microsoft.com` | 443 | Microsoft Update | Resource bridge (appliance) image download. |
 | `files.pythonhosted.org` | 443 | Python package | Python package. |
 
