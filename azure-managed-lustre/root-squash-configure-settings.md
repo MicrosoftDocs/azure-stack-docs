@@ -11,9 +11,9 @@ ms.reviewer: mayabishop
 
 # Configure root squash settings for Azure Managed Lustre file systems
 
-Root squash is a security feature that prevents a user with root privileges on a client from accessing files on the remote Managed Lustre file system. This functionality is achieved using the Lustre nodemap feature, and is an important part of protecting user data and system settings from being manipulated by untrusted or compromised clients.
+Root squash is a security feature that prevents a user with root privileges on a client from accessing files on the remote Managed Lustre file system. This functionality is achieved using the Lustre nodemap feature, and is an important part of protecting user data and system settings from manipulation by untrusted or compromised clients.
 
-In this article, you learn how to configure root squash settings for Azure Managed Lustre file systems. You can configure root squash settings via REST API request during cluster creation or on an existing cluster.
+In this article, you learn how to configure root squash settings for Azure Managed Lustre file systems. You can configure root squash settings via REST API request during cluster creation, or for an existing cluster.
 
 ## Prerequisites
 
@@ -25,12 +25,12 @@ The following table details the available parameters for the `rootSquashSettings
 
 | Parameter | Values | Type | Description |
 | --- | --- | --- | --- |
-| `mode` | `RootOnly`, `All`, `None` | String | `RootOnly`: Affects only the **root** user on non-trusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`All`: Affects **all** users on non-trusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`None` (default): Disables the root squash feature so that no squashing of UID and GID is performed for any user on any system. |
-| `nosquashNidLists` | | String | Network ID (NID) IP address lists added to the trusted systems. |
+| `mode` | `RootOnly`, `All`, `None` | String | `RootOnly`: Affects only the **root** user on nontrusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`All`: Affects **all** users on nontrusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`None` (default): Disables the root squash feature so that no squashing of UID and GID is performed for any user on any system. |
+| `nosquashNidLists`<sup>1</sup> | | String | Network ID (NID) IP address lists added to the trusted systems. |
 | `squashUID` | 1 - 4294967295 | Integer | Numeric value that the user ID (UID) is squashed to. |
 | `squashGID` | 1 - 4294967295 | Integer | Numeric value that the group ID (GID) is squashed to. |
 
-You can provide a non-contiguous list of IP addresses for the `nosquashNidLists` parameter by using a semicolon-separated list:
+If you need to add noncontiguous IP addresses as trusted systems, you can provide a semicolon-separated list of IP addresses in the `nosquashNidLists` parameter, as shown in the following example:
 
 ```json
 "nosquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp;10.0.2.10@tcp",
@@ -67,6 +67,30 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
     },
 }
 ```
+
+### [PowerShell](#tab/powershell)
+
+### [Azure CLI](#tab/cli)
+
+---
+
+## View root squash settings for an existing cluster
+
+You can view the root squash settings for an existing Azure Managed Lustre file system. To view the root squash settings for an existing cluster, follow these steps:
+
+### [HTTP](#tab/HTTP)
+
+You can use a `GET` request to return the configuration details for an existing cluster.
+
+The following example shows how to return an existing cluster:
+
+**Request syntax**:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{filesystemName}?api-version={apiVersion}
+```
+
+In the response body, find the `rootSquashSettings` property to view the current root squash settings for the cluster.
 
 ### [PowerShell](#tab/powershell)
 
