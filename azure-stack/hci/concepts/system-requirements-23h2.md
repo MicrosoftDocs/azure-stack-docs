@@ -12,7 +12,7 @@ ms.date: 01/31/2024
 
 # System requirements for Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. If you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
