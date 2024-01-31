@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Physical network requirements and considerations for Azure Stack HCI, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 04/19/2023
+ms.date: 01/31/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
@@ -11,7 +11,7 @@ ms.reviewer: JasonGerend
 # Physical network requirements for Azure Stack HCI
 
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article discusses physical (fabric) network considerations and requirements for Azure Stack HCI, particularly for network switches.
 
