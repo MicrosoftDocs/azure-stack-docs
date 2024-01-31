@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/19/2024
+ms.date: 01/31/2024
 ---
 
 # Download Azure Stack HCI, version 23H2 software
@@ -56,7 +56,7 @@ Follow these steps to download the Azure Stack HCI software:
     1. Select the license terms and privacy notice checkbox.
     1. Select the **Download Azure Stack HCI** button. This action begins the download. Use the downloaded ISO file to install the software on each server that you want to cluster.
 
-        :::image type="content" source="media/download-azure-stack-hci-23h2-software/download-azure-stack-hci-23h2-software.png" alt-text="Screenshot of the Download Azure Stack HCI version 23H2 page." lightbox="media/download-azure-stack-hci-23h2-software/download-azure-stack-hci-23h2-software.png":::
+        :::image type="content" source="media/download-azure-stack-hci-23h2-software/download-azure-stack-hci-23h2-software-1.png" alt-text="Screenshot of the Download Azure Stack HCI version 23H2 page." lightbox="media/download-azure-stack-hci-23h2-software/download-azure-stack-hci-23h2-software-1.png":::
 
 ## Next steps
 
