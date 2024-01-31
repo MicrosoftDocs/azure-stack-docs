@@ -1,12 +1,12 @@
 ---
-title: Security features for Azure Stack HCI, version 23H2
+title: Security features for Azure Stack HCI, version 23H2.
 description: Learn about security features available for new deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/23/2024
+ms.date: 01/31/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -19,7 +19,7 @@ This article provides a brief conceptual overview of the various security featur
 
 ## Windows Defender Application Control
 
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
+Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md).
 
 ## Security baseline and drift control
 
@@ -46,7 +46,7 @@ We recommend that you store BitLocker recovery keys in a secure location outside
 For more information about BitLocker, see:
 
 - [Use BitLocker with Cluster Shared Volumes (CSV)](../manage/bitlocker-on-csv.md).
-- [BitLocker encryption on Azure Stack HCI (preview)](../manage/manage-bitlocker.md).
+- [BitLocker encryption on Azure Stack HCI](../manage/manage-bitlocker.md).
 
 ## Local built-in user accounts
 
@@ -102,7 +102,6 @@ With the basic Defender for Cloud plan, you get recommendations on how to improv
 For more information, see [Manage system security with Microsoft Defender for Cloud](../manage/manage-security-with-defender-for-cloud.md).
 
 ## Next steps
-
 
 - [Assess deployment readiness via the Environment Checker](../manage/use-environment-checker.md).
 - [Read the Azure Stack HCI Security book](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCISecurityBook_0126_final.pdf)

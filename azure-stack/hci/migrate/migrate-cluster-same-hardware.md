@@ -3,14 +3,14 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: alkohli 
 ms.topic: how-to 
-ms.date: 10/20/2023
+ms.date: 12/05/2023
 ms.author: alkohli 
 ms.reviewer: kerimha 
 ---
 
 # Migrate to Azure Stack HCI on same hardware
 
-> Applies to: Azure Stack HCI, versions 22H2, and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
+> Applies to: Azure Stack HCI, versions 23H2, 22H2, and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2008 R2
 
 This topic describes how to migrate a Windows Server failover cluster to Azure Stack HCI using your existing server hardware. This process installs the new Azure Stack HCI operating system and retains your existing cluster settings and storage, and imports your VMs.
 
