@@ -65,7 +65,7 @@ The servers should also meet the following additional requirements:
 
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md)
+- Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md).
 
 <!--## Maximum supported hardware specifications
 
@@ -228,7 +228,7 @@ Check with your OEM regarding the necessary firmware that needs to be installed 
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware.
+You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 <!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|
