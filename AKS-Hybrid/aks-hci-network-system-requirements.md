@@ -18,7 +18,7 @@ This article introduces the core concepts that provide networking to your VMs an
 - Control plane IP
 - Kubernetes load balancers
 
-This article also describes the required networking prerequisites for creating Kubernetes clusters on Azure Stack HCI 23H2. It's recommended that you work with a network administrator to provide and set up the networking parameters required to deploy AKS.
+This article also describes the required networking prerequisites for creating Kubernetes clusters on Azure Stack HCI 23H2. We recommend that you work with a network administrator to provide and set up the networking parameters required to deploy AKS.
 
 ## Networking concepts for AKS clusters on Azure Stack HCI 23H2
 
@@ -58,16 +58,16 @@ For instructions on how to create logical networks using Azure CLI and the Azure
 
 ## Control plane IP
 
-Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly. The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap anywhere else, including Arc VM logical networks, infrastructure network IPs, load balancers, etc. Note that overlapping IP addresses can lead to unexpected failures for both the AKS cluster as well as any other place the IP address is being used. You must plan to reserve one IP address per Kubernetes cluster in your Azure Stack HCI environment.
+Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly. The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap anywhere else, including Arc VM logical networks, infrastructure network IPs, load balancers, etc. Note that overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is being used. You must plan to reserve one IP address per Kubernetes cluster in your Azure Stack HCI environment.
 
 ## Load balancer IPs for containerized applications
 
-The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS supports the following options to deploy a load balancer for your Kubernetes cluster:
+The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This load balancing can help prevent downtime and improve overall performance of applications. AKS supports the following options to deploy a load balancer for your Kubernetes cluster:
 
 - [Deploy MetalLB load balancer using Azure Arc extensions](deploy-load-balancer.md).
 - Bring your own third party load balancer.
 
-Regardless of the option you choose, you must ensure that the IP addresses allocated to the load balancer don't conflict with the IP addresses in the Arc VM logical network or control plane IPs for you Kubernetes clusters. Conflicting IP addresses can lead to unforeseen failures in your AKS deployment and applications.
+Regardless of the option you choose, you must ensure that the IP addresses allocated to the load balancer don't conflict with the IP addresses in the Arc VM logical network or control plane IPs for your Kubernetes clusters. Conflicting IP addresses can lead to unforeseen failures in your AKS deployment and applications.
 
 ## IP address planning for Kubernetes clusters and applications
 
@@ -101,7 +101,7 @@ The configuration of required network ports is now incorporated into the Azure S
 
 For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist) and [Azure Stack HCI 23H2 network requirements](/azure-stack/hci/manage/use-environment-checker?tabs=connectivity#prerequisites).
 
-For deployment and operation of Kubernetes clusters, the following URLs must be reachable from all physical nodes and virtual machines in the deployment. Ensure that these are allowed in your firewall configuration:
+For deployment and operation of Kubernetes clusters, the following URLs must be reachable from all physical nodes and virtual machines in the deployment. Ensure that these URLS are allowed in your firewall configuration:
 
 | URL | Port | Service | Notes |
 |---|---|---|---|
@@ -125,8 +125,8 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 | `*.login.microsoft.com` | 443 | Azure    | Required to fetch and update Azure Resource Manager tokens. |
 | `sts.windows.net` | 443 | Azure Arc |    For Cluster Connect and Custom Location-based scenario. |
 | `hybridaksstorage.z13.web.core.windows.net` |    443 | Azure Stack HCI |    AKSHCI static website hosted in Azure Storage. |
-| `raw.githubusercontent.com` |    443 | Github | Used for Github. |
-| `www.microsoft.com` |    80 | Microsoft Offical Website | Microsoft offical web site. |
+| `raw.githubusercontent.com` |    443 | GitHub | Used for GitHub. |
+| `www.microsoft.com` |    80 | Microsoft Offical Website | Microsoft official web site. |
 | `*.prod.do.dsp.mp.microsoft.com` | 443 | Microsoft Update | Resource bridge (appliance) image download. |
 | `files.pythonhosted.org` | 443 | Python package | Python package. |
 
