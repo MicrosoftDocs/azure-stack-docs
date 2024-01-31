@@ -14,8 +14,6 @@ This article helps you deploy an Azure Stack HCI, version 23H2 system for testin
 
 To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI cluster using Windows Admin Center](create-cluster.md).
 
-<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
-
 ## Prerequisites
 
 * Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md).

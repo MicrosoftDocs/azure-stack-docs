@@ -15,8 +15,6 @@ ms.subservice: azure-stack-hci
 
 This article discusses the security, software, hardware, and networking prerequisites, and the deployment checklist in order to deploy Azure Stack HCI, version 23H2.
 
-<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
-
 ## Review requirements and complete prerequisites
 
 | Requirements                  | Links                                                                                           |
