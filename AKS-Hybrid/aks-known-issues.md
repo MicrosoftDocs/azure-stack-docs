@@ -3,9 +3,9 @@ title: Known issues in AKS enabled by Azure Arc
 description: Learn about known issues in the current version of AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 01/30/2024
+ms.date: 01/31/2024
 ms.author: sethm 
-ms.lastreviewed: 01/30/2024
+ms.lastreviewed: 01/31/2024
 ms.reviewer: guanghu
 zone_pivot_groups: version-select
 
@@ -47,7 +47,8 @@ This release maps to software version 10.2311.0.26 of Azure Stack HCI.
 | Portal           | Specifying a Kubernetes version during cluster creation is not supported in the Azure portal.                                       | You can use Azure CLI to create the Kubernetes cluster with a supported Kubernetes version.                                                |
 | Portal           | The available list of VM types is not complete when creating Kubernetes clusters in the Azure portal.                            |                                                                                                                                            |
 | Cluster upgrade  | The Azure CLI command for cluster upgrade `az akshybrid upgrade` does not work without specifying the target Kubernetes version. | You must specify the target Kubernetes version when you run the `az akshybrid upgrade` command with the `--version <target version>` parameter. |
-| Supported VM size | The `az akshybrid vmsize` command does not correctly return the required available VM types.                                 | Wait for 10 minutes and rerun the same command to view the supported VM types. 
+| Supported VM size | The `az akshybrid vmsize` command does not correctly return the required available VM types.                                 | Wait for 10 minutes and rerun the same command to view the supported VM types. |
+| HCI upgrade      | Creating an AKS Arc cluster in the Azure portal results in the error "The cluster extension does not support resource type **Microsoft.HybridContainerService/ProvisionedClusterInstances** with api-version '2024-01-01'". | The Azure portal is upgraded to the GA version, which doesn't support the preview of AKS on HCI 23H2. You must upgrade your Azure Stack HCI to the latest version. |
 ::: zone-end
 
 ## Next steps
