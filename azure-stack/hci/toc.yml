@@ -173,8 +173,6 @@
 
   - name: Security
     items:
-    - name: Manage with Microsoft Defender for Cloud
-      href: manage/manage-security-with-defender-for-cloud.md
     - name: Manage WDAC
       href: manage/manage-wdac.md
     - name: Manage security baseline and drift control
@@ -185,7 +183,8 @@
       href: manage/manage-secrets-rotation.md 
     - name: Manage syslog forwarding
       href: manage/manage-syslog-forwarding.md
-
+    - name: Manage with Microsoft Defender for Cloud
+      href: manage/manage-security-with-defender-for-cloud.md
   - name: Clusters
     items:
     - name: Configure proxy 
@@ -406,6 +405,10 @@
         href: manage/storage-repair-speed.md
     - name: Monitor clusters
       items:
+      - name: Monitor single cluster with Insights
+        href: manage/monitor-hci-single.md
+      - name: Monitor multiple clusters with Insights
+        href: manage/monitor-hci-multi.md
       - name: Monitor clusters from Windows Admin Center
         href: manage/monitor-cluster.md
       - name: Use DISKSPD to test workloads
