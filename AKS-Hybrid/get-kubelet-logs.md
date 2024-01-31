@@ -47,4 +47,4 @@ I0512 19:15:19.868169    1824 container_manager_linux.go:281]
 ## Next steps
 
 - [View logs to collect and review data](./view-logs.md) 
-- [Monitor AKS clusters in AKS hybrid](./monitor-logging.md)
+- [Monitor AKS clusters in AKS hybrid](./aks-monitor-logging.md)

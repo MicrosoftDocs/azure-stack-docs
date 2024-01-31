@@ -1,9 +1,9 @@
 {
     "redirections": [
       { 
-        "source_path": "azure-stack/aks-hci/adapt-apps-mixed-os-clusters.md", 
-        "redirect_url": "/azure/aks/hybrid/adapt-apps-mixed-os-clusters", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/adapt-apps-mixed-os-clusters.md", 
+        "redirect_url": "/azure/aks/hybrid/adapt-apps-mixed-os-clusters", 
+        "redirect_document_id": false
       },
       {
         "source_path": "azure-stack/aks-hci/ad-sso.md",
@@ -1156,74 +1156,74 @@
           "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/troubleshoot-windows-admin-center.md", 
-        "redirect_url": "/azure-stack/aks-hci/known-issues-windows-admin-center", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/troubleshoot-windows-admin-center.md", 
+        "redirect_url": "/azure-stack/aks-hci/known-issues-windows-admin-center", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/troubleshoot-known-issues.md", 
-        "redirect_url": "/azure-stack/aks-hci/known-issues", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/troubleshoot-known-issues.md", 
+        "redirect_url": "/azure-stack/aks-hci/known-issues", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/troubleshoot-installation.md", 
-        "redirect_url": "/azure-stack/aks-hci/known-issues-installation", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/troubleshoot-installation.md", 
+        "redirect_url": "/azure-stack/aks-hci/known-issues-installation", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/update-aks-hci-concepts.md", 
-        "redirect_url": "/azure-stack/aks-hci/update-akshci-host-powershell", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/update-aks-hci-concepts.md", 
+        "redirect_url": "/azure-stack/aks-hci/update-akshci-host-powershell", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/troubleshoot.md", 
-        "redirect_url": "/azure-stack/aks-hci/troubleshoot-known-issues", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/troubleshoot.md", 
+        "redirect_url": "/azure-stack/aks-hci/troubleshoot-known-issues", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/get-akshciclusterupgrades.md", 
-        "redirect_url": "/azure-stack/aks-hci/get-akshciclusterupdates", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/get-akshciclusterupgrades.md", 
+        "redirect_url": "/azure-stack/aks-hci/get-akshciclusterupdates", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/remove-akshciproxysetting.md", 
-        "redirect_url": "/azure-stack/aks-hci/remove-akshciclusternetwork", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/remove-akshciproxysetting.md", 
+        "redirect_url": "/azure-stack/aks-hci/remove-akshciclusternetwork", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/install-akshciarconboarding.md", 
-        "redirect_url": "/azure-stack/aks-hci/enable-akshciarcconnection", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/install-akshciarconboarding.md", 
+        "redirect_url": "/azure-stack/aks-hci/enable-akshciarcconnection", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/setup-powershell.md", 
-        "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/setup-powershell.md", 
+        "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/create-kubernetes-cluster-powershell.md", 
-        "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/create-kubernetes-cluster-powershell.md", 
+        "redirect_url": "/azure-stack/aks-hci/kubernetes-walkthrough-powershell", 
+        "redirect_document_id": false
       }, 
       { 
-        "source_path": "azure-stack/aks-hci/set-akshciclusternodecount.md", 
-        "redirect_url": "/azure-stack/aks-hci/set-akshcicluster", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/set-akshciclusternodecount.md", 
+        "redirect_url": "/azure-stack/aks-hci/set-akshcicluster", 
+        "redirect_document_id": false
       }, 
       { 
-        "source_path": "azure-stack/aks-hci/concepts-networking.md", 
-        "redirect_url": "/azure-stack/aks-hci/concepts-node-networking", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/concepts-networking.md", 
+        "redirect_url": "/azure-stack/aks-hci/concepts-node-networking", 
+        "redirect_document_id": false
       }, 
       { 
-        "source_path": "azure-stack/aks-hci/proxy.md", 
-        "redirect_url": "/azure-stack/aks-hci/set-proxy-settings", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/proxy.md", 
+        "redirect_url": "/azure-stack/aks-hci/set-proxy-settings", 
+        "redirect_document_id": false
       },
       { 
-        "source_path": "azure-stack/aks-hci/persistent-storage-windows-nodes.md", 
-        "redirect_url": "/azure-stack/aks-hci/persistent-volume", 
-        "redirect_document_id": false
+        "source_path": "azure-stack/aks-hci/persistent-storage-windows-nodes.md", 
+        "redirect_url": "/azure-stack/aks-hci/persistent-volume", 
+        "redirect_document_id": false
       },   
       {
         "source_path": "azure-stack/aks-hci/certificates-and-tokens.md",
@@ -1292,12 +1292,12 @@
       },
       {
         "source_path": "AKS-Hybrid/aks-hybrid-preview-overview.md",
-        "redirect_url": "/azure/aks/hybrid/aks-preview-overview",
+        "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },      
       {
         "source_path": "AKS-Hybrid/aks-hybrid-preview-requirements.md",
-        "redirect_url": "/azure/aks/hybrid/aks-hci-network-system-requirements",
+        "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },            
       {
@@ -1307,17 +1307,17 @@
       },                  
       {
         "source_path": "AKS-Hybrid/deploy-aks-service-hci.md",
-        "redirect_url": "/azure/aks/hybrid/infrastructure-components",
+        "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },                        
       {
         "source_path": "AKS-Hybrid/deploy-arc-resource-bridge-windows-server.md",
-        "redirect_url": "/azure/aks/hybrid/infrastructure-components",
+        "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },                              
       {
         "source_path": "AKS-Hybrid/create-aks-hybrid-preview-networks.md",
-        "redirect_url": "/azure/aks/hybrid/aks-networks",
+        "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
       },                                    
       {
@@ -1332,9 +1332,30 @@
       },                                                
       {
         "source_path": "AKS-Hybrid/troubleshoot-aks-hybrid-preview.md",
-        "redirect_url": "/azure/aks/hybrid/aks-preview-overview",
+        "redirect_url": "/azure/aks/hybrid/aks-hybrid-preview-uninstall",
         "redirect_document_id": false
-      }
+      },
+      {
+        "source_path": "AKS-Hybrid/aks-hybrid-options-overview.md",
+        "redirect_url": "/azure/aks/hybrid/overview",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/aks-preview-overview.md",
+        "redirect_url": "/azure/aks/hybrid/aks-whatsnew-23h2",
+        "redirect_document_id": false
+      },      
+      {
+        "source_path": "AKS-Hybrid/view-logs.md",
+        "redirect_url": "/azure/aks/hybrid/get-on-demand-logs",
+        "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/use-node-pools.md",
+        "redirect_url": "/azure/aks/hybrid/manage-node-pools",
+        "redirect_document_id": false
+      }      
+
     ]
   }
   

@@ -1,23 +1,21 @@
 ---
-title: Use Azure Stack HCI Environment Checker to assess deployment readiness for Azure Stack HCI, version 23H2 (preview).
-description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI, versions 23H2 (preview).
+title: Use Azure Stack HCI Environment Checker to assess deployment readiness for Azure Stack HCI, version 23H2.
+description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI, versions 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/17/2023
+ms.date: 01/31/2024
 ---
 
-# Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2 (preview)
+# Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
 
 For a smooth deployment of the Azure Stack HCI solution, your IT environment must meet certain requirements for connectivity, hardware, networking, and Active Directory. The Azure Stack HCI Environment Checker is a readiness assessment tool that checks these minimum requirements and helps determine if your IT environment is deployment ready.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About the Environment Checker tool
 
@@ -549,5 +547,5 @@ For information about how to get support from Microsoft to troubleshoot any vali
 
 ## Next steps
 
-- [Review the deployment checklist](../deploy/deployment-checklist.md).
+- [Complete the prerequisites and deployment checklist](../deploy/deployment-prerequisites.md).
 - [Contact Microsoft Support](get-support.md).

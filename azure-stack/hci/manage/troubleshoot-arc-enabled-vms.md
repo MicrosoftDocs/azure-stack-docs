@@ -1,20 +1,19 @@
 ---
-title: Troubleshoot Azure Arc VM management (preview)
-description: Learn how to troubleshoot Azure Arc VM management (preview)
+title: Troubleshoot Azure Arc VM management
+description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 01/18/2024
+ms.date: 01/30/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
 
-# Troubleshoot Azure Arc VM management (preview)
+# Troubleshoot Azure Arc VM management
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Collect logs
 
