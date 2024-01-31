@@ -26,7 +26,7 @@ The following table details the available parameters for the `rootSquashSettings
 | Parameter | Values | Type | Description |
 | --- | --- | --- | --- |
 | `mode` | `RootOnly`, `All`, `None` | String | `RootOnly`: Affects only the **root** user on nontrusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`All`: Affects **all** users on nontrusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`None` (default): Disables the root squash feature so that no squashing of UID and GID is performed for any user on any system. |
-| `nosquashNidLists`<sup>1</sup> | | String | Network ID (NID) IP address lists added to the trusted systems. |
+| `nosquashNidLists` | | String | Network ID (NID) IP address lists added to the trusted systems. |
 | `squashUID` | 1 - 4294967295 | Integer | Numeric value that the user ID (UID) is squashed to. |
 | `squashGID` | 1 - 4294967295 | Integer | Numeric value that the group ID (GID) is squashed to. |
 
