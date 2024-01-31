@@ -88,7 +88,7 @@ landingContent:
         links:
           - text: Monitor via Insights
             url: manage/monitor-hci-single.md
-          - text: Azure Monitor Mertics
+          - text: Azure Monitor Metrics
             url: manage/monitor-cluster-with-metrics.md
           - text: Health alerts
             url: manage/health-alerts-via-azure-monitor-alerts.md
