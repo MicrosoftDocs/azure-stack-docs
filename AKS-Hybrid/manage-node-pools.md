@@ -3,11 +3,11 @@ title: Manage node pools for a cluster
 description: Learn how to manage multiple node pools in AKS enabled by Azure Arc.
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.date: 01/22/2024
+ms.date: 01/30/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
-ms.lastreviewed: 12/11/2023
+ms.lastreviewed: 01/30/2024
 ---
 
 # Manage node pools for a cluster

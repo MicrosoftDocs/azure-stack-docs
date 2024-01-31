@@ -3,10 +3,10 @@ title: Azure Hybrid Benefit for AKS enabled by Azure Arc
 description: Activate Azure Hybrid Benefit for AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm
-ms.date: 01/19/2024
+ms.date: 01/30/2024
 ms.topic: conceptual
 ms.reviewer: rbaziwane
-ms.lastreviewed: 01/19/2024
+ms.lastreviewed: 01/30/2024
 ms.custom:
   - devx-track-azurepowershell
 zone_pivot_groups: version-select
@@ -86,25 +86,11 @@ You can verify the AKS host management cluster by running the following command 
 
 Check that the benefit has not already enabled on your management cluster. If the benefit has already been enabled, you should see the property `AzureHybridBenefit` set to `true`.
 
-# [Azure PowerShell](#tab/powershell)
-
 ```PowerShell
 Connect-AzAccount -Tenant <TenantId> -Subscription <SubscriptionId> -UseDeviceAuthentication
 Set-AzContext -Subscription <Subscription>
 Get-AzConnectedKubernetes -ClusterName <management cluster name> -ResourceGroupName <resource group name> | fl
 ```
-
-# [Azure CLI](#tab/azurecli)
-
-```azurecli
-az login --use-device-code
-
-az account set -s <subscription ID>
-
-az connectedk8s show -n <management cluster name> -g <resource group> 
-```
-
----
 
 #### Sample output
 

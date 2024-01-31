@@ -59,7 +59,6 @@ Once you've set up on-premises Kubernetes using AKS and created a Kubernetes clu
   Azure Arc also enables you to manage your Kubernetes clusters with other Azure services including:
   - Azure Monitor
   - Azure Policy
-  - Role-Based Access Control
 - **On-premises using popular tools like Kubectl** - There are many open-source tools that allow you to deploy applications to a Kubernetes cluster, manage cluster resources, troubleshoot, and view running applications. All of these tools work with Kubernetes clusters deployed with AKS on Azure Stack HCI and Windows Server.
 
 ## Run Linux and Windows containers

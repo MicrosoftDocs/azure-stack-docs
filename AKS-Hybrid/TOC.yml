@@ -7,7 +7,7 @@
     href: aks-overview.md
   - name: Overview
     href: overview.md
-  - name: Uninstall AKS hybrid cluster provisioning preview
+  - name: Before you begin - uninstall AKS hybrid cluster provisioning preview
     href: aks-hybrid-preview-uninstall.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
@@ -76,9 +76,9 @@
   - name: Reference
     items:
     - name: Azure CLI
-      href: /cli/azure/akshybrid
+      href: /cli/azure/aksarc
     - name: REST API reference
-      href: /rest/api/hybridcontainer/operation-groups?view=rest-hybridcontainer-2023-11-15-preview&preserve-view=true
+      href: /rest/api/hybridcontainer/operation-groups
 - name: Quickstarts
   expanded: true
   items:
@@ -88,6 +88,8 @@
       items:
         - name: Use PowerShell
           href: kubernetes-walkthrough-powershell.md
+        - name: Use Azure CLI
+          href: aks-create-clusters-cli.md
         - name: Use Windows Admin Center
           items:
             - name: Set up AKS
@@ -455,6 +457,8 @@
   items:
   - name: Azure Stack HCI
     href: /azure-stack/hci/index
+  - name: Azure CLI
+    href: /cli/azure/akshybrid
   - name: REST API reference
     href: /rest/api/hybridcontainer/
   - name: Windows Admin Center (WAC)
