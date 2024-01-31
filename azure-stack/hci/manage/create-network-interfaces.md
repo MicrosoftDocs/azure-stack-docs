@@ -1,6 +1,6 @@
 ---
-title: Create network interfaces for virtual machines on Azure Stack HCI (preview)
-description: Learn how to create network interfaces on an existing logical network associated with your Azure Stack HCI cluster. The Arc VM running on your cluster uses these network interfaces (preview).
+title: Create network interfaces for virtual machines on Azure Stack HCI
+description: Learn how to create network interfaces on an existing logical network associated with your Azure Stack HCI cluster. The Arc VM running on your cluster uses these network interfaces.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
@@ -11,14 +11,12 @@ ms.custom: devx-track-azurecli
 ms.date: 11/20/2023
 ---
 
-# Create network interfaces for Arc virtual machines on Azure Stack HCI (preview)
+# Create network interfaces for Arc virtual machines on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create network interfaces that you can associate with an Arc VM on your Azure Stack HCI cluster. You can create network interfaces using the Azure portal or the Azure CLI. 
 
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About network interfaces
 

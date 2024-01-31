@@ -1,6 +1,6 @@
 ---
-title: Sysprep Linux image for Azure Stack HCI VM via Azure CLI (preview)
-description: Learn how to sysprep Linux images to create Azure Stack HCI VM image (preview).
+title: Sysprep Linux image for Azure Stack HCI VM via Azure CLI 
+description: Learn how to sysprep Linux images to create Azure Stack HCI VM image.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,16 +8,15 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/28/2023
+ms.date: 01/30/2024
 ---
 
-# Sysprep Ubuntu image for Azure Stack HCI virtual machines (preview)
+# Sysprep Ubuntu image for Azure Stack HCI virtual machines
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to prepare an Ubuntu image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -32,7 +31,9 @@ Before you begin, make sure that the following prerequisites are completed.
         - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
         -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
 
-- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your local system. You are required to sysprep gallery images for guest management for VMs created using Ubuntu images.
+- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your local system.
+    - You are required to sysprep gallery images for guest management for VMs created using Ubuntu images.
+    - Only the operating system versions supported by Arc for servers are allowed. See [Supported Ubunutu versions](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
 
 ## Workflow 
 
@@ -179,7 +180,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
     $galleryImageName = "ubuntu-server-ssvm" 
 
-    az azurestackhci galleryimage create --subscription $subscription -g $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --image-path $galleryImagePath --name $galleryImageName --debug --os-type 'Linux' 
+    az stack-hci-vm galleryimage create --subscription $subscription -g $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --image-path $galleryImagePath --name $galleryImageName --debug --os-type 'Linux' 
     ```
 
 
