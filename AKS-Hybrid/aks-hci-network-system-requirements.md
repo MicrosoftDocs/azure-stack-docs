@@ -10,7 +10,7 @@ ms.lastreviewed: 01/31/2024
 
 ---
 
-# Introduction
+# AKS on Azure Stack HCI 23H2 networking system requirements
 
 This article introduces the core concepts that provide networking to your VMs and applications in AKS:
 

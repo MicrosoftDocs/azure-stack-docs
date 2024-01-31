@@ -27,7 +27,7 @@
     href: aks-known-issues.md
   - name: How-to
     items:
-    - name: Create Arc-enabled networks and connect them to Azure
+    - name: Create logical networks for Kubernetes clusters
       href: aks-networks.md
     - name: Create Kubernetes clusters using Azure CLI
       href: aks-create-clusters-cli.md
