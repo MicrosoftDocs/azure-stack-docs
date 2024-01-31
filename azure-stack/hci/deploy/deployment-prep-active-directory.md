@@ -1,28 +1,25 @@
 --- 
-title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment (preview)
-description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2 (preview).
+title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
+description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/11/2024
+ms.date: 01/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prepare Active Directory for Azure Stack HCI, version 23H2 deployment (preview)
+# Prepare Active Directory for Azure Stack HCI, version 23H2 deployment
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2. 
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
 Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
-- Complete the [deployment checklist](./deployment-checklist.md).
 - Install the PowerShell module to prepare Active Directory. You can follow one of these options:
     - [Download AsHciADArtifactsPreCreationTool.psm1 from this location](https://github.com/Azure/AzureStack-Tools/tree/master/HCI). Run the following command:
     
@@ -117,15 +114,15 @@ To prepare and configure Active Directory, follow these steps:
 
 1. An OU with the specified name should be created and within that OU, you'll see **Computers** and **Users** objects.
 
-    :::image type="content" source="media/prep-active-directory/active-directory-1.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/prep-active-directory/active-directory-1.png":::
+    :::image type="content" source="media/deployment-prep-active-directory/active-directory-1.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-1.png":::
 
 1. The **Computers** object should contain one computer account for each server node and one account for the **Cluster Name Object**.
 
-    :::image type="content" source="media/prep-active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/prep-active-directory/active-directory-2.png":::
+    :::image type="content" source="media/deployment-prep-active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/deployment-prep-active-directory/active-directory-2.png":::
 
 1. The **Users** object should contain one user group corresponding to the user you specified during the creation and two security group - domain local  with this name format: *Active Directory object prefix-OpsAdmin* and *Active Directory object prefix-Sto-SG*. For example: *ms309-OpsAdmin* and *ms309-Sto-SG*.
 
-    :::image type="content" source="media/prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/prep-active-directory/active-directory-3.png":::
+    :::image type="content" source="media/deployment-prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-prep-active-directory/active-directory-3.png":::
 
 > [!NOTE]
 > - To perform a second deployment, run the prepare step  with a different prefix and a different OU name.

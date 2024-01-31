@@ -1,16 +1,16 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Arc VM management FAQ (preview)
-  description: The Azure Arc VM management FAQ provides information on questions related to Azure Stack HCI, versions 23H2 (preview) and 22H2 (preview), and for customers looking to move to version 23H2.
+  title: Azure Arc VM management FAQ 
+  description: The Azure Arc VM management FAQ provides information on questions related to Azure Stack HCI, versions 23H2 and 22H2 (preview), and for customers looking to move to version 23H2.
   ms.topic: faq
   author: alkohli
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 01/03/2024
-title: Azure Arc VM management FAQ (preview)
+  ms.date: 01/30/2024
+title: Azure Arc VM management FAQ
 summary:
-  Frequently asked questions about Azure Arc VMs for Azure Stack HCI, versions 23H2 (preview).
+  Frequently asked questions about Azure Arc VMs for Azure Stack HCI, versions 23H2.
 
 sections:
   - name: ignored
@@ -34,7 +34,7 @@ sections:
     - question: |
         How do I upgrade my Azure Arc VM management infrastructure components?
       answer: |
-        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Stack HCI 23H2 are handled automatically. For more information, see [Update overview for Azure Stack HCI, version 23H2 (preview)](/azure-stack/hci/update/whats-the-lifecycle-manager-23h2).
+        Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Stack HCI 23H2 are handled automatically. For more information, see [Update overview for Azure Stack HCI, version 23H2](/azure-stack/hci/update/whats-the-lifecycle-manager-23h2).
 
     - question: |
         Why do I need to move to Azure Stack HCI, version 23H2?
