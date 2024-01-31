@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/30/2024
+ms.date: 01/31/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -17,21 +17,17 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-
 The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
 
-
-## Features and improvements in 2311.2 GA 
+## Features and improvements in 2311.2 GA
 
 This section lists the new features and improvements in the 2311.2 General Availability (GA) release for Azure Stack HCI, version 23H2.
 
 > [!IMPORTANT]
 > The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.2 release. To run the GA version, start with a new 2311 deployment and then update to 2311.2.
 
-
 In this generally available release of the Azure Stack HCI, version 23H2, all the features that were available with the [2310](#features-and-improvements-in-2310) and [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following improvements and enhancements are available:
 
- 
 ### Deployment changes
 
 With this release:
@@ -63,7 +59,7 @@ In the Azure portal, you can now monitor platform metrics of your cluster by nav
 
 ### Security via Microsoft Defender for Cloud
 
-- Starting with this release, you can use Microsoft Defender for Cloud (currently in Preview) to provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. For more information, see [Microsoft Defender on Cloud for Azure Stack HCI (Preview)](./manage/manage-security-with-defender-for-cloud.md).
+You can now use Microsoft Defender for Cloud (currently in Preview) to help improve the security posture of your Azure Stack HCI environment and protect against existing and evolving threats. For more information, see [Microsoft Defender on Cloud for Azure Stack HCI (Preview)](./manage/manage-security-with-defender-for-cloud.md).
 
 ### Supported workloads
 
@@ -91,8 +87,6 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](/azure/aks/hybrid/manage-node-pools). 
 - **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](/azure/aks/hybrid/aks-create-containers).
 
-
-
 ### Support for web proxy
 
 This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings-23h2.md).
@@ -105,7 +99,7 @@ In this release, the Group Managed Service Accounts (gMSA) created during the Ac
 
 In this release, you can perform an extended set of guest management operations via the Azure CLI.-->
 
-## Features and improvements in 2310 
+## Features and improvements in 2310
 
 This section lists the new features and improvements in the 2310 release of Azure Stack HCI, version 23H2.
 
@@ -131,7 +125,7 @@ For more information, see [Respond to Azure Stack HCI health alerts using Azure 
 
 #### Monitor metrics
 
-This release also integrates the Azure Monitor metrics with Azure Stack HCI so that you can monitor the health of your Azure Stack HCI system via the metrics collected for compute, storage, and network resources. This integration enables you to store cluster data in a dedicated time-series database that you can use to analyze data from your Azure Stack HCI system. 
+This release also integrates the Azure Monitor metrics with Azure Stack HCI so that you can monitor the health of your Azure Stack HCI system via the metrics collected for compute, storage, and network resources. This integration enables you to store cluster data in a dedicated time-series database that you can use to analyze data from your Azure Stack HCI system.
  
 For more information, see [Monitor Azure Stack HCI with Azure Monitor metrics](./manage/monitor-cluster-with-metrics.md).
 
@@ -166,7 +160,6 @@ The new installations with this release of Azure Stack HCI start with a *secure-
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
 
-
 ### Capacity management
 
 In this release, you can add and remove servers, or repair servers from your Azure Stack HCI system via the PowerShell.
@@ -174,10 +167,10 @@ In this release, you can add and remove servers, or repair servers from your Azu
 For more information, see [Add server](./manage/add-server.md) and [Repair server](./manage/repair-server.md).
 
 ### ReFS deduplication and compression
- 
-This release introduces the Resilient File System (ReFS) deduplication and compression feature designed specifically for active workloads, such as Azure Virtual Desktop (AVD) on Azure Stack HCI. Enable this feature using Windows Admin Center or PowerShell to optimize storage usage and reduce cost. 
-    For more information, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](./manage/refs-deduplication-and-compression.md).
 
+This release introduces the Resilient File System (ReFS) deduplication and compression feature designed specifically for active workloads, such as Azure Virtual Desktop (AVD) on Azure Stack HCI. Enable this feature using Windows Admin Center or PowerShell to optimize storage usage and reduce cost.
+
+For more information, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](./manage/refs-deduplication-and-compression.md).
 
 ## Next steps
 

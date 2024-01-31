@@ -3,7 +3,7 @@ title: Release notes with known issues in Azure Stack HCI 2311.2 GA release
 description: Read about the known issues and fixed issues in Azure Stack HCI 2311 General Availability (GA) releases.
 author: alkohli
 ms.topic: conceptual
-ms.date: 01/22/2024
+ms.date: 01/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ This article identifies the critical known issues and their workarounds in Azure
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.2 release. To run the GA version, you need to start with a new 2311 deployment and then update to 2311.2.
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
@@ -29,7 +29,6 @@ This software release maps to software version number **10.2311.2.7**. This rele
 
 Release notes for this version include the known issues in this release and release noted issues carried over from previous versions.
 
-
 # [Known issues in this release](#tab/known-issues-this-release)
 
 Here are the known issues in this release:
@@ -39,7 +38,6 @@ Here are the known issues in this release:
 | Arc VM management <!--26423941--> |If the resource group used to deploy an Arc VM on your Azure Stack HCI has an underscore in the name, the guest agent installation will fail. As a result, you won't be able to enable guest management. | Make sure that there are no underscores in the resource groups used to deploy Arc VMs.|
 | Cluster aware updating <!--26411980--> |Resume node operation failed to resume node. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
 | Cluster aware updating <!--26346755--> |Suspend node operation was stuck for greater than 90 minutes. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
-
 
 # [Known issues from previous releases](#tab/known-issues-previous-releases)
 
@@ -68,7 +66,6 @@ Here are the known issues from previous releases:
 | Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 | Update <!--X-->| When updating the Azure Stack HCI cluster via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each cluster node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the cluster nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-4-download-check-readiness-and-install-updates). |
 
-
 # [Fixed issues](#tab/fixed-issues)
 
 Here are the issues fixed in this release:
@@ -84,9 +81,7 @@ Here are the issues fixed in this release:
 | Deployment <!--25717459-->|On server hardware, a USB network adapter is created to access the Baseboard Management Controller (BMC). This adapter can cause the cluster validation to fail during the deployment.| Make sure to disable the BMC network adapter before you begin cloud deployment.|
 | Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the ARM template to override this parameter and disable RDMA for the intents. |
 
-
 ---
-
 
 ## Next steps
 
