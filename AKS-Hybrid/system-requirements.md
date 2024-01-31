@@ -13,7 +13,7 @@ ms.author: sethm
 
 # System requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows IoT, Windows 10/11 IoT Enterprise/Enterprise/Pro
+> Applies to: Azure Stack HCI, versions 23H2 (except for the [network requirements section](#network-requirements)), 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows IoT, Windows 10/11 IoT Enterprise/Enterprise/Pro
 
 This article describes the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
 
@@ -28,10 +28,21 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 AKS on Azure Stack HCI and Windows Server deployments that exceed the following specifications aren't supported:
 
+#### [HCI 23H2](#tab/hci23h2)
+
 | Resource                     | Maximum |
 | ---------------------------- | --------|
 | Physical servers per cluster | 16 (Azure Stack HCI version 23H2)       |
 | Total number of VMs          | 200     |
+
+#### [HCI 22H2](#tab/hci22h2)
+
+| Resource                     | Maximum |
+| ---------------------------- | --------|
+| Physical servers per cluster | 8 (Azure Stack HCI version 23H2 and Windows Server)       |
+| Total number of VMs          | 200     |
+
+---
 
 ## Compute requirements
 
@@ -86,9 +97,9 @@ For single-node Windows Server deployments using local storage, the use of all-f
 
 ## Network requirements
 
-The following requirements apply to an Azure Stack HCI cluster and a Windows Server Datacenter cluster:
+The following requirements apply to an Azure Stack HCI 22H2 cluster and a Windows Server Datacenter cluster. For networking requirements on Azure Stack HCI 23H2, see [Networking requirements](aks-hci-network-system-requirements.md).
 
-- Verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For Azure Stack HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes (applies to Windows Server and AKS HCI 22H2).
+- For Azure Stack HCI 22H2 and Windows Server, verify that you have an existing, external virtual switch configured if you're using Windows Admin Center. For HCI or Windows Server clusters, this switch and its name must be the same across all cluster nodes. For HCI 23H2, see the [network system requirements](aks-hci-network-system-requirements.md).
 - Verify that you have disabled IPv6 on all network adapters.
 - For a successful deployment, the Azure Stack HCI or Windows Server cluster nodes and the Kubernetes cluster VMs must have external internet connectivity.
 - Make sure all subnets you define for the cluster are routable between each other and to the internet.

@@ -2,11 +2,11 @@
 title: Upgrade an Azure Kubernetes Service (AKS) cluster
 description: Learn how to upgrade an Azure Kubernetes Service (AKS) cluster.
 ms.topic: overview
-ms.date: 11/28/2023
+ms.date: 01/30/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
-ms.lastreviewed: 11/28/2023
+ms.lastreviewed: 01/30/2024
 
 ---
 
@@ -18,15 +18,14 @@ All upgrades are executed in a continuous, rolling manner to ensure uninterrupte
 
 ## Before you begin
 
-If you're using the Azure CLI, this article requires Azure CLI version 2.34.1 or later. Run `az --version` to find the version. If you need to
-install or upgrade CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
+If you're using the Azure CLI, this article requires Azure CLI version 2.34.1 or later. Run `az --version` to find the version. If you need to install or upgrade CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 ## Check for available upgrades
 
 Check which Kubernetes releases are available for your cluster by using the following command:
 
 ```azurecli
-az akshybrid get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aksarc get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
 The following example output shows the current version as **1.24.11** and lists the available versions under `upgrades`:
@@ -69,7 +68,7 @@ When you upgrade a supported AKS cluster, you can't skip Kubernetes minor versio
 You can upgrade your cluster using the following command:
 
 ```azurecli
-az akshybrid upgrade \
+az aksarc upgrade \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --kubernetes-version <KUBERNETES_VERSION>
@@ -78,7 +77,7 @@ az akshybrid upgrade \
 Confirm the upgrade was successful by using the `show` command:
 
 ```azurecli
-az akshybrid show --resource-group myResourceGroup --name myAKSCluster
+az aksarc show --resource-group myResourceGroup --name myAKSCluster
 ```
 
 The following example output shows that the cluster now runs **1.25.7**:

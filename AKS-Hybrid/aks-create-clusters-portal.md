@@ -4,10 +4,9 @@ description: Create Kubernetes clusters using the Azure portal.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 01/23/2024
-ms.lastreviewed: 01/23/2024
-ms.reviewer: pradwivedi
-
+ms.date: 01/30/2024
+ms.reviewer: guanghu
+ms.lastreviewed: 01/30/2024
 ---
 
 # How to deploy a Kubernetes cluster using the Azure portal
@@ -24,7 +23,7 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 - Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
   - **Azure subscription ID**: the Azure subscription ID where Azure Resource Bridge, AKS hybrid extensions, and custom location is created.
   - **Custom Location ID**: the Azure Resource Manager ID of the custom location. Your infrastructure admin should give you "Contributor" access to the custom location. Custom Location is a required parameter to create Kubernetes clusters.
-  - **AKS Arc virtual network ID**: the Azure Resource Manager ID of the Azure Arc VNet. Your infrastructure admin should give you "Contributor" access to an AKS Arc VNet. The AKS Arc VNet ID is a required parameter to create Kubernetes clusters.
+  - **AKS Arc logical network ID**: the Azure Resource Manager ID of the Azure Arc logical network. Your infrastructure admin should give you "Contributor" access to an AKS Arc logical network. The logical network ID is a required parameter to create Kubernetes clusters.
 - In order to connect to the cluster from anywhere, you must create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the AKS Arc cluster. Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS Arc cluster using kubectl. For more information about creating Microsoft Entra groups and adding users, see [create Microsoft Entra groups using Azure portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 ## Create a Kubernetes cluster
@@ -68,7 +67,7 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
     - Select Microsoft Entra authentication with Kubernetes RBAC. This option lets you choose one or more Microsoft Entra groups. By default, all members of the specified Microsoft Entra groups have cluster administrator access to the AKS hybrid cluster. This option also enables you to connect to AKS Arc from anywhere, without requiring a line of sight to the on-premises infrastructure. Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS Arc cluster using kubectl.
     - Choose one or more Microsoft Entra groups and then at the bottom of the screen, select **Next: Networking**.
 
-1. On the Networking page, select an AKS Arc VNet from the drop down list, called **Logical Network**. The Kubernetes nodes and services in your cluster get IP addresses and networking configurations from this VNet. Make sure your infrastructure administrator gave you Contributor access on an AKS Arc VNet.
+1. On the Networking page, select an AKS Arc logical network from the drop down list, called **Logical Network**. The Kubernetes nodes and services in your cluster get IP addresses and networking configurations from this logical network. Make sure your infrastructure administrator gave you Contributor access on an AKS Arc logical network.
 
 1. Select **Integration**. Connect your cluster to other services such as Azure Monitor, which is enabled by default. You can also add Kubernetes extensions to your cluster from the **Home > `YourClusterName` > Settings > Extensions** blade.
 
