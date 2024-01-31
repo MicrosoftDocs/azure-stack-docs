@@ -58,7 +58,7 @@ Follow these steps to switch between WDAC policy modes. These PowerShell command
 
 ## Create a WDAC policy to enable third party software
 
-While using this with WDAC in enforcement mode, for your non-Microsoft signed software to run, build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in the [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+While using WDAC in enforcement mode, for your non-Microsoft signed software to run, build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in the [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
 > [!NOTE]
 > To run or install new software, you might need to switch WDAC to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch WDAC back to enforced mode.

@@ -1,6 +1,6 @@
 ---
 title: Manage BitLocker encryption on Azure Stack HCI, version 23H2
-description: Learn how to manage volume encryption with Bitlocker on your Azure Stack HCI, version 23H2 system.
+description: Learn how to manage BitLocker encryption on your Azure Stack HCI, version 23H2 system.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
