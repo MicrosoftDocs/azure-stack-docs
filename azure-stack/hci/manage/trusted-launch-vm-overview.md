@@ -1,21 +1,20 @@
 ---
-title: Introduction to Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)
-description: Learn about Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview).
+title: Overview for Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
+description: Learn about Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/16/2024
+ms.date: 01/31/2024
 ---
 
-# Introduction to Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)
+# Introduction to Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article introduces Trusted launch for Azure Arc virtual machines (VMs) on Azure Stack HCI, version 23H2. You can create a Trusted launch Arc VM using Azure portal or by using Azure Command-Line Interface (CLI).
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Introduction
 
