@@ -224,9 +224,9 @@
     items:
     - name: Insights
       items:
-      - name: Monitor single cluster
+      - name: Single cluster
         href: manage/monitor-hci-single-23h2.md
-      - name: Monitor multiple clusters
+      - name: Multiple clusters
         href: manage/monitor-hci-multi-23h2.md
       - name: Feature workbooks
         href: manage/monitor-features.md

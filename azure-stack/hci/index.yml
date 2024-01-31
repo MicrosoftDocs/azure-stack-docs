@@ -87,7 +87,7 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Monitor via Insights
-            url: manage/monitor-hci-single.md
+            url: manage/monitor-hci-single-23h2.md
           - text: Azure Monitor Metrics
             url: manage/monitor-cluster-with-metrics.md
           - text: Health alerts

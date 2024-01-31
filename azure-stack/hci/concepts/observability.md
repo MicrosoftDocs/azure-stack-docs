@@ -1,21 +1,19 @@
 ---
-title: Azure Stack HCI observability (preview)
-description: Learn about observability in Azure Stack HCI.  (preview)
+title: Azure Stack HCI observability
+description: Learn about observability in Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
-ms.date: 11/17/2023
+ms.date: 01/31/2024
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
 
-# Azure Stack HCI observability (preview)
+# Azure Stack HCI observability
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes observability in Azure Stack HCI and the data sources through which it is achieved.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## What is Azure Stack HCI observability?
 
@@ -65,4 +63,4 @@ The following table provides a detailed comparison of different methods of log c
 
 ## Next steps
 
-- [Azure Stack HCI telemetry and diagnostics extension](./telemetry-and-diagnostics-overview.md).
+- [Azure Stack HCI telemetry and diagnostics extension](./telemetry-and-diagnostics-overview.md)

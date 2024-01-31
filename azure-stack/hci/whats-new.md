@@ -51,7 +51,7 @@ In this release:
 
 ### Migration of Hyper-V VMs to Azure Stack HCI (preview)
 
-This is also the Preview release of migration of Hyper-V VMs to Azure Stack HCI using Azure Migrate. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI](./index.yml)
+This is the Preview release of migration of Hyper-V VMs to Azure Stack HCI using Azure Migrate. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI](./index.yml)
 
 ### Monitoring changes
 

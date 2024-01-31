@@ -1,6 +1,6 @@
 ---
 title: Release notes with known issues in Azure Stack HCI 2311.2 GA release
-description: Read about the known issues and fixed issues in Azure Stack HCI 2311 General Availability (GA) releases.
+description: Read about the known issues and fixed issues in Azure Stack HCI 2311 General Availability (GA) release.
 author: alkohli
 ms.topic: conceptual
 ms.date: 01/31/2024
@@ -11,9 +11,9 @@ ms.subservice: azure-stack-hci
 
 # View known issues in Azure Stack HCI 2311.2 General Availability release
 
-> Applies to: Azure Stack HCI, version 23H2
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article identifies the critical known issues and their workarounds in Azure Stack HCI. The article contains the release notes for the Azure Stack HCI 2311.2 general availability (GA) release.
+This article identifies the critical known issues and their workarounds in Azure Stack HCI 2311.2 General Availability (GA) release.
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
@@ -21,7 +21,6 @@ The release notes are continuously updated, and as critical issues requiring a w
 > The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.2 release. To run the GA version, you need to start with a new 2311 deployment and then update to 2311.2.
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
-
 
 ## Issues for version 2311.2
 
@@ -42,7 +41,6 @@ Here are the known issues in this release:
 # [Known issues from previous releases](#tab/known-issues-previous-releases)
 
 Here are the known issues from previous releases:
-
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|

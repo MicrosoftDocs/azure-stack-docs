@@ -6,16 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/11/2024
+ms.date: 01/31/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 23H2 (preview)
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to collect diagnostic logs and send them to Microsoft to help identify and fix any issues with your Azure Stack HCI solution.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## On-demand log collection
 
@@ -100,7 +98,7 @@ where:
    - If set to `$true`, it triggers the `Get-SDDCDiagnosticInfo` cmdlet and includes SDDC logs as part of log collection. This is the default value.
 
    - If set to `$false`, it excludes SDDC logs from log collection.
-   
+
    - If you don't specify anything, the SDDC logs are collected by default.
 
    For more information about using SDDC diagnostic tools, see [Collect diagnostic data for clusters](./collect-diagnostic-data.md).
@@ -286,4 +284,4 @@ Follow these steps to perform on-demand log collection via Windows Admin Center 
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI](../../hci/hci-known-issues-2306.md)
+- [Review known issues in Azure Stack HCI](../known-issues-2311-2.md)
