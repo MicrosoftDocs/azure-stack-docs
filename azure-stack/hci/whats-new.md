@@ -37,6 +37,8 @@ With this release:
 - Network settings such as storage traffic priority, cluster traffic priority, storage traffic bandwidth reservation, jumbo frames, and RDMA protocol can all be customized.
 - Validation must be started explicitly via the **Start validation** button.
 
+For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+
 ### Add server and repair server changes
 
 - Bug fixes in the add server and repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues-2311-2.md).
@@ -45,28 +47,28 @@ With this release:
 
 In this release:
 
-- Guest management is available via Azure CLI and Azure portal. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
+- Guest management is available via Azure CLI. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
 - Proxy is supported for Arc VMs. For more information, see [Set up proxy for Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md#create-a-vm-from-network-interface).
 - Storage path selection is available during the VM image creation via the Azure portal. For more information, see [Create a VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md)
 
 ### Migration of Hyper-V VMs to Azure Stack HCI (preview)
 
-This is the Preview release of migration of Hyper-V VMs to Azure Stack HCI using Azure Migrate. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI](./index.yml)
+You can now migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate . This feature is currentnly in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI (preview)](./index.yml)
 
 ### Monitoring changes
 
 In the Azure portal, you can now monitor platform metrics of your cluster by navigating to the **Monitoring** tab on your cluster’s **Overview** page. This tab offers a quick way to view graphs for different platform metrics. You can select any graph to open it in Metrics Explorer for a more in-depth analysis. For more information, see [Monitor Azure Stack HCI through the Monitoring tab](./manage/monitor-cluster-with-metrics.md#monitor-azure-stack-hci-through-the-monitoring-tab).
 
-### Security via Microsoft Defender for Cloud
+### Security via Microsoft Defender for Cloud (preview)
 
-You can now use Microsoft Defender for Cloud (currently in Preview) to help improve the security posture of your Azure Stack HCI environment and protect against existing and evolving threats. For more information, see [Microsoft Defender on Cloud for Azure Stack HCI (Preview)](./manage/manage-security-with-defender-for-cloud.md).
+You can now use Microsoft Defender for Cloud to help improve the security posture of your Azure Stack HCI environment and protect against existing and evolving threats. This feature is currently in Preview. For more information, see [Microsoft Defender on Cloud for Azure Stack HCI (Preview)](./manage/manage-security-with-defender-for-cloud.md).
 
 ### Supported workloads
 
 Starting with this release, the following workloads are generally available on Azure Stack HCI:
 
-- Azure Kubernetes Service (AKS) on Azure Stack HCI. For more information, see [What's new in AKS on Azure Stack HCI](/azure/aks/hybrid/aks-preview-overview).
-- Azure Virtual Desktops (AVD) on Azure Stack HCI. For more information, see [Deploy AVD on Azure Stack HCI](./index.yml).
+- Azure Kubernetes Service (AKS) on Azure Stack HCI. For more information, see [Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
+- Azure Virtual Desktops (AVD) on Azure Stack HCI. For more information, see [Deploy AVD on Azure Stack HCI](/azure/virtual-desktop/azure-stack-hci-overview).
 
 ## Features and improvements in 2311
 
