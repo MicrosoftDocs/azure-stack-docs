@@ -37,6 +37,8 @@ With this release:
 - Network settings such as storage traffic priority, cluster traffic priority, storage traffic bandwidth reservation, jumbo frames, and RDMA protocol can all be customized.
 - Validation must be started explicitly via the **Start validation** button.
 
+For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+
 ### Add server and repair server changes
 
 - Bug fixes in the add server and repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues-2311-2.md).
