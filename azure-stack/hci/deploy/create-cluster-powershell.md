@@ -64,7 +64,7 @@ First, connect to each of the servers, join them to a domain (the same domain th
 
 To connect to the servers, you must first have network connectivity, be joined to the same domain or a fully trusted domain, and have local administrative permissions to the servers.
 
-Open PowerShell and use either the fully-qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server.
+Open PowerShell and use either the fully qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server.
 
 For this example, we assume that the servers are named Server1, Server2, Server3, and Server4:
 
