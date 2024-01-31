@@ -1,5 +1,5 @@
 --- 
-title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Migrate 
+title: Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)
 description: Learn prerequisites for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Migrate
+# Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
