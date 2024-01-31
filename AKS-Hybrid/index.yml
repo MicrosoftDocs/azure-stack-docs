@@ -17,7 +17,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: AKS overview
-            url: aks-hybrid-options-overview.md
+            url: aks-overview.md
       - linkListType: concept
         links:
           - text: Clusters and workloads
@@ -28,16 +28,16 @@ landingContent:
             url: concepts-support.md        
           - text: Pricing
             url: pricing.md    
-  - title: Get started with AKS on Azure Stack HCI (23H2 preview)
+  - title: Get started with AKS on Azure Stack HCI (23H2)
     linkLists:
       - linkListType: overview
         links:
           - text: What's new
-            url: aks-preview-overview.md
+            url: aks-whats-new-23h2.md
       - linkListType: deploy
         links:
           - text: Check system requirements
-            url: aks-hci-network-system-requirements.md
+            url: system-requirements.md
       - linkListType: concept
         links:
           - text: Cluster architecture
@@ -64,34 +64,6 @@ landingContent:
         links:
           - text: Troubleshoot
             url: aks-edge-troubleshoot-overview.md
-  - title: Deploy Windows and Linux applications
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Deploy .NET applications
-            url: deploy-windows-application.md
-      - linkListType: how-to-guide
-        links:
-          - text: Adapt apps for mixed-OS Kubernetes clusters
-            url: adapt-apps-mixed-os-clusters.md
-          - text: Use Active Directory single sign-in credentials
-            url: ad-sso.md
-          - text: Configure proxy settings
-            url: set-proxy-settings.md
-          - text: Configure group Managed Service Account
-            url: prepare-windows-nodes-gmsa.md
-          - text: Use persistent volumes
-            url: persistent-volume.md
-
-  - title: Upgrade 
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Use PowerShell
-            url: update-akshci-host-powershell.md
-          - text: Use Windows Admin Center
-            url: update-akshci-host-windows-admin-center.md
-
   - title: Deploy, manage, and update applications
     linkLists:
       - linkListType: tutorial
@@ -116,11 +88,11 @@ landingContent:
       - linkListType: how-to-guide
         links:
           - text: Connect to Kubernetes using Azure Arc
-            url: connect-to-arc.md 
+            url: aks-networks.md 
           - text: Use Kubernetes RBAC with Microsoft Entra ID
             url: kubernetes-rbac-azure-ad.md
           - text: Monitor Arc-enabled Kubernetes clusters
-            url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+            url: aks-monitor-logging.md
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
 
@@ -137,7 +109,9 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Troubleshooting overview
+          - text: Known issues in 23H2
+            url: aks-known-issues.md
+          - text: Troubleshooting overview (22H2)
             url: troubleshoot-overview.md
           - text: Connect to nodes with SSH
             url: ssh-connection.md
