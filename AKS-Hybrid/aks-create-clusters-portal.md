@@ -1,16 +1,15 @@
 ---
-title: Create Kubernetes clusters using the Azure portal (preview)
+title: Create Kubernetes clusters using the Azure portal
 description: Create Kubernetes clusters using the Azure portal.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 12/14/2023
-ms.lastreviewed: 12/14/2023
-ms.reviewer: pradwivedi
-
+ms.date: 01/30/2024
+ms.reviewer: guanghu
+ms.lastreviewed: 01/30/2024
 ---
 
-# How to deploy a Kubernetes cluster using the Azure portal (preview)
+# How to deploy a Kubernetes cluster using the Azure portal
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -24,14 +23,14 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 - Before you begin, make sure you have the following details from your on-premises infrastructure administrator:
   - **Azure subscription ID**: the Azure subscription ID where Azure Resource Bridge, AKS hybrid extensions, and custom location is created.
   - **Custom Location ID**: the Azure Resource Manager ID of the custom location. Your infrastructure admin should give you "Contributor" access to the custom location. Custom Location is a required parameter to create Kubernetes clusters.
-  - **AKS Arc virtual network ID**: the Azure Resource Manager ID of the Azure Arc VNet. Your infrastructure admin should give you "Contributor" access to an AKS Arc VNet. The AKS Arc VNet ID is a required parameter to create Kubernetes clusters.
+  - **AKS Arc logical network ID**: the Azure Resource Manager ID of the Azure Arc logical network. Your infrastructure admin should give you "Contributor" access to an AKS Arc logical network. The logical network ID is a required parameter to create Kubernetes clusters.
 - In order to connect to the cluster from anywhere, you must create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the AKS Arc cluster. Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS Arc cluster using kubectl. For more information about creating Microsoft Entra groups and adding users, see [create Microsoft Entra groups using Azure portal](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
 
 ## Create a Kubernetes cluster
 
 1. Sign in to the [Azure portal](https://portal.azure.com/).
 1. On the Azure portal search bar, type Kubernetes Azure Arc.
-1. Select **Add > Create a Kubernetes cluster with Azure Arc (preview)**:
+1. Select **Add > Create a Kubernetes cluster with Azure Arc**:
 
    :::image type="content" source="media/aks-create-clusters-portal/cluster-portal.png" alt-text="Screenshot showing cluster creation page on the portal." lightbox="media/aks-create-clusters-portal/cluster-portal.png":::
 
@@ -45,10 +44,11 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
    - **Cluster details**:
      - Enter a Kubernetes cluster name, such as **myakshybridcluster**. The name of a Kubernetes cluster name must consist of lowercase alphanumeric characters.
      - Select a custom location where you want to deploy the cluster. Make sure your infrastructure administrator gave you "Contributor" access on a custom location.
+     - Select a K8s version from the list of available versions.
    - **Primary node pool**:
-     - Leave the default values selected.
+     - You can leave the default values selected, or change the default value from the drop down list.
    - **SSH Keys**
-     - Configure SSH access to the underlying VMs in your Kubernetes nodes for troubleshooting operations. For the preview, you must provide an existing SSH public key.
+     - Configure SSH access to the underlying VMs in your Kubernetes nodes for troubleshooting operations. You must provide an existing SSH public key.
      - Provide an RSA public key in the single line format (starting with "ssh-rsa") or the multi-line PEM format. You can generate SSH keys using PuTTYGen on Windows.
 
 1. Select **Next: Node pools** when complete.
@@ -67,9 +67,9 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
     - Select Microsoft Entra authentication with Kubernetes RBAC. This option lets you choose one or more Microsoft Entra groups. By default, all members of the specified Microsoft Entra groups have cluster administrator access to the AKS hybrid cluster. This option also enables you to connect to AKS Arc from anywhere, without requiring a line of sight to the on-premises infrastructure. Make sure to add yourself to the Microsoft Entra group. If you don't add yourself, you can't access the AKS Arc cluster using kubectl.
     - Choose one or more Microsoft Entra groups and then at the bottom of the screen, select **Next: Networking**.
 
-1. On the Networking page, select an AKS Arc VNet, called **Logical Network**. The Kubernetes nodes and services in your cluster get IP addresses and networking configurations from this VNet. Make sure your infrastructure administrator gave you Contributor access on an AKS Arc VNet.
+1. On the Networking page, select an AKS Arc logical network from the drop down list, called **Logical Network**. The Kubernetes nodes and services in your cluster get IP addresses and networking configurations from this logical network. Make sure your infrastructure administrator gave you Contributor access on an AKS Arc logical network.
 
-1. Select **Integration**. Connect your cluster to other services such as Azure Monitor, which is enabled by default.
+1. Select **Integration**. Connect your cluster to other services such as Azure Monitor, which is enabled by default. You can also add Kubernetes extensions to your cluster from the **Home > `YourClusterName` > Settings > Extensions** blade.
 
    You can choose the default Log Analytics workspace. or create one of your own. This workspace stores monitoring data.
 
@@ -82,4 +82,4 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
 ## Next steps
 
 - [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](aks-preview-overview.md)
+- [What's new in AKS on Azure Stack HCI](aks-whats-new-23h2.md)

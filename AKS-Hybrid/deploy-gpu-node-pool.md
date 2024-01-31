@@ -3,10 +3,11 @@ title: Use GPUs for compute-intensive workloads
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
 author: baziwane
 ms.topic: how-to
-ms.date: 12/28/2023
+ms.date: 01/16/2024
 ms.author: rbaziwane 
 ms.lastreviewed: 03/21/2023
 ms.reviewer: sethm
+zone_pivot_groups: version-select
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools
 # Keyword: Run GPU workloads on Kubernetes
 ---
@@ -15,6 +16,75 @@ ms.reviewer: sethm
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
+::: zone pivot="aks-23h2"
+## Supported GPU models
+
+The following GPU models are supported by AKS enabled by Azure Arc:
+
+| Manufacturer | GPU model | Supported version |
+|--------------|-----------|-----------------|
+| NVidia       | A2        | 2311.2          |
+| NVidia       | A16       | Not yet supported     |
+| NVidia       | T4        | Not yet supported    |
+
+## Before you begin
+
+To use GPUs in AKS, make sure you installed the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
+
+### Step 1: install the OS
+
+Install the Azure Stack HCI, version 23H2 operating system locally on each server in your Azure Stack HCI cluster.
+
+### Step 2: download and install the NVIDIA mitigation driver
+
+The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownload-March2009/licence.php?lang=us).
+
+See the [NVIDIA data center documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host machine.
+
+```powershell
+Invoke-WebRequest -Uri "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/nvidia_azure_stack_inf_v2022.10.13_public.zip" -OutFile "nvidia_azure_stack_inf_v2022.10.13_public.zip"
+mkdir nvidia-mitigation-driver
+Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
+```
+
+To install the mitigation driver, navigate to the folder containing the extracted files, right-click the **nvidia_azure_stack_T4_base.inf** file, and select **Install**. Check that you have the correct driver; AKS currently supports only the NVIDIA Tesla T4 GPU.
+
+You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
+
+```powershell
+pnputil /add-driver nvidia_azure_stack_T4_base.inf /install 
+pnputil /scan-devices 
+```
+
+After you install the mitigation driver, the GPUs are listed in the **OK** state under **Nvidia T4_base - Dismounted**:
+
+```powershell
+Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia"
+```
+
+```output
+OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
+OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
+```
+
+### Step 3: repeat steps 1 and 2
+
+Repeat steps 1 and 2 for each server in your HCI cluster.
+
+### Step 4: continue deployment of the Azure Stack HCI cluster
+
+Continue the deployment of the Azure Stack HCI cluster by following the steps in [Azure Stack HCI, version 23H2 deployment.](/azure-stack/hci/deploy/deployment-introduction)
+
+### Get a list of available GPU-enabled VM SKUs
+
+Once the Azure Stack HCI cluster deployment is complete, you can run the following CLI command to show the available VM SKUs on your deployment. If your GPU drivers are installed correctly, the corresponding GPU VM SKUs are listed:
+
+```azurecli
+az aksarc vmsize list --custom-location <custom location ID> -g <resource group name>
+```
+::: zone-end
+
+::: zone pivot="aks-22h2"
 ## Before you begin
 
 If you are updating AKS from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin. Follow the steps in this section.
@@ -100,19 +170,20 @@ Repeat steps 1 to 3 for each node in your failover cluster.
 ## Install or update AKS
 
 See the AKS quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) or using [Windows Admin Center](setup.md) to install or update AKS enabled by Arc.
+::: zone-end
 
 ## Create a new workload cluster with a GPU-enabled node pool
 
-Currently, using GPU-enabled node pools is only available for Linux node pools.
+Currently, using GPU-enabled node pools is only available for Linux node pools. To create a new Kubernetes cluster:
 
-```powershell
-New-AksHciCluster -Name "gpucluster" -nodePoolName "gpunodepool" -nodeCount 2 -osType linux -nodeVmSize Standard_NK6 
+```azurecli
+az aksarc create -n <aks cluster name> -g <resource group name> --custom-location <custom location ID> --vnet-ids <vnet ID>
 ```
 
-After installing the workload cluster, run the following command to get your Kubeconfig:
+The following example adds a node pool with 2 GPU-enabled (NVDIA A2) nodes with a **Standard\_NC4\_A2** VM SKU:
 
-```powershell
-Get-AksHciCredential -Name gpucluster
+```azurecli
+az aksarc nodepool add --cluster-name <aks cluster name> -n <node pool name> -g <resource group name> --node-count 2 --node-vm-size Standard_NC4_A2 --os-sku Linux
 ```
 
 ## Confirm you can schedule GPUs
@@ -139,21 +210,14 @@ kubectl describe <node> | findstr "gpu"
 The output should display the GPU(s) from the worker node and look something like this:
 
 ```output
-         nvidia.com/gpu.compute.major=7
-         nvidia.com/gpu.compute.minor=5
-         nvidia.com/gpu.count=1
-         nvidia.com/gpu.family=turing
-         nvidia.com/gpu.machine=Virtual-Machine
-         nvidia.com/gpu.memory=16384
-         nvidia.com/gpu.product=Tesla-T4
-Annotations:    cluster.x-k8s.io/cluster-name: gpucluster
-                cluster.x-k8s.io/machine: gpunodepool-md-58d9b96dd9-vsdbl
-                cluster.x-k8s.io/owner-name: gpunodepool-md-58d9b96dd9
-         nvidia.com/gpu:   1
-         nvidia.com/gpu:   1
-ProviderID:         moc://gpunodepool-97d9f5667-49lt4
-kube-system         gpu-feature-discovery-gd62h       0 (0%)    0 (0%)   0 (0%)      0 (0%)     7m1s
-         nvidia.com/gpu   0     0
+Capacity: 
+  cpu:                4 
+  ephemeral-storage:  103110508Ki 
+  hugepages-1Gi:      0 
+  hugepages-2Mi:      0 
+  memory:             7865020Ki 
+  nvidia.com/gpu:     1 
+  pods:               110
 ```
 
 ## Run a GPU-enabled workload
@@ -222,7 +286,7 @@ Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's
 Before you upgrade:
 
 1. Plan for downtime during the upgrade.
-2. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
+1. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 

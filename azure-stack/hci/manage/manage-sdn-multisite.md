@@ -1,19 +1,17 @@
 ---
-title: Manage SDN Multisite for Azure Stack HCI (preview)
-description: Learn how to manage a multisite SDN solution for Azure Stack HCI (preview).
+title: Manage SDN Multisite for Azure Stack HCI
+description: Learn how to manage a multisite SDN solution for Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 01/11/2024
 ---
 
-# Manage SDN Multisite for Azure Stack HCI (preview)
+# Manage SDN Multisite for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 23H2 (preview)
+> Applies to: Azure Stack HCI, version 23H2
 
 This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution for Azure Stack HCI using Windows Admin Center.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About SDN Multisite
 
@@ -50,7 +48,7 @@ Here's a high-level workflow for enabling SDN Multisite:
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
-- You must have access to Azure Stack HCI, version 23H2 (preview) clusters deployed at two separate physical sites.
+- You must have access to Azure Stack HCI, version 23H2 clusters deployed at two separate physical sites.
 
 - There must be an underlying [physical network connectivity](../concepts/plan-software-defined-networking-infrastructure.md#physical-and-logical-network-configuration) between the sites. Additionally, the provider network name must be the same on both sites.
 

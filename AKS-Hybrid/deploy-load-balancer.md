@@ -1,8 +1,8 @@
 ---
-title: Deploy a load balancer in AKS Arc (preview)
+title: Deploy a load balancer in AKS Arc
 description: Learn how to deploy a load balancer in AKS enabled by Arc.
 ms.topic: how-to
-ms.date: 12/19/2023
+ms.date: 01/31/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -10,7 +10,7 @@ ms.lastreviewed: 12/12/2023
 
 ---
 
-# Deploy a load balancer in AKS Arc (preview)
+# Deploy a load balancer in AKS Arc
 
 The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications.
 
@@ -38,7 +38,7 @@ This option deploys a virtual machine running **HAProxy + KeepAlive** to provide
 1. To deploy a load balancer, use the flag `–load-balancer-count` to provision a new cluster with the number of load balancers required, as shown in the following example:
 
    ```azurecli
-   az akshybrid create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count <count>
+   az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count <count>
    ```
 
 1. Confirm that you created your Kubernetes cluster with the correct number of load balancer VMs and that services are reachable.
@@ -55,7 +55,7 @@ To deploy a load balancer using Azure Arc extensions, set the `--load-balancer-c
 1. Create a Kubernetes cluster and set `--load-balancer-count` to `0`:
 
    ```azurecli
-   az akshybrid create -n <cluster name> -g <resource group> --custom-location <custom location ID> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count 0
+   az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location ID> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count 0
    ```
 
 1. After your Kubernetes cluster is successfully created, navigate to the **Networking** blade in the Azure portal and select **Install**:
@@ -94,7 +94,7 @@ This option assumes you want to use a custom load balancer for your Kubernetes c
 1. Create a Kubernetes cluster and set `load-balancer-count` to `0`:
 
    ```azurecli
-   az akshybrid create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count 0
+   az aksarc create -n <cluster name> -g <resource group> --custom-location <custom location Id> --vnet-ids <vnet ids> --generate-ssh-keys --load-balancer-count 0
    ```
 
 1. Manually deploy or configure your custom load balancer.

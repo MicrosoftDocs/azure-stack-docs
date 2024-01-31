@@ -6,13 +6,13 @@ ms.author: robess
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: shisab
-ms.date: 08/25/2023
+ms.date: 01/31/2024
 
 # CustomerIntent: As a content writer for Azure Stack HCI, I want to share viable information on the telemetry and diagnostics extension that will help users understand the feature and ways they can benefit from using it.
 ---
 # Azure Stack HCI telemetry and diagnostics extension
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides a brief overview, benefits, and available options for the telemetry and diagnostics extension used for your Azure Stack HCI cluster.
 
@@ -66,7 +66,7 @@ To access the options to send telemetry data, follow these steps:
 
 To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend that you use this cmdlet to upload diagnostic data before opening a support case.
 
-For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
+For more information, see [Collect diagnostic logs](../manage/collect-logs.md).
 
 ## Data collection consent
 

@@ -1,5 +1,5 @@
 ---
-title: Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc (preview)
+title: Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc
 description: Learn how to deploy container images from a private container registry using Azure Container Registry.
 ms.topic: how-to
 ms.date: 12/12/2023
