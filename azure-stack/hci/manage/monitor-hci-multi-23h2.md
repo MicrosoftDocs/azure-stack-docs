@@ -14,9 +14,9 @@ ms.date: 01/31/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article explains how to use Insights to monitor multiple Azure Stack HCI clusters. For a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single.md).
+This article explains how to use Insights to monitor multiple Azure Stack HCI clusters. For a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23h2.md).
 
-For information about the benefits, prerequisites, and how to enable Insights on each cluster, see [Benefits](./monitor-hci-single.md#benefits), [Prerequisites](./monitor-hci-single.md#prerequisites), and [Enable Insights](./monitor-hci-single-23h2.md#enable-insights).
+For information about the benefits, prerequisites, and how to enable Insights on each cluster, see [Benefits](./monitor-hci-single-23h2.md#benefits), [Prerequisites](./monitor-hci-single-23h2.md#prerequisites), and [Enable Insights](./monitor-hci-single-23h2.md#enable-insights).
 
 Watch the video for a quick introduction:
 
@@ -427,6 +427,5 @@ For more information about the data that's collected, see [Health Service faults
 
 For related information, see:
 
-- [Configure Azure portal to monitor Azure Stack HCI clusters](/azure-stack/hci/manage/monitor-hci-single)
-- [Monitor Azure Stack HCI clusters from Windows Admin Center](monitor-cluster.md)
+- [Configure Azure portal to monitor Azure Stack HCI clusters](./monitor-hci-single-23h2.md)
 - [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
