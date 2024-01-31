@@ -1,21 +1,20 @@
 ---
-title: What is Azure Arc VM management? (preview)
-description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters (preview).
+title: What is Azure Arc VM management for Azure Stack HCI
+description: Learn about Azure Arc VM managements to provision and manage on-premises Windows and Linux virtual machines (VMs) running on Azure Stack HCI clusters.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/20/2023
+ms.date: 01/30/2024
 ---
 
-# What is Azure Arc VM management? (preview)
+# What is Azure Arc VM management?
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article provides a brief overview of the Azure Arc VM management feature on Azure Stack HCI including the benefits, its components, and the high-level workflow.  
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## About Azure Arc VM management
  
