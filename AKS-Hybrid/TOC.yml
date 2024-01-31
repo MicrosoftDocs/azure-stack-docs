@@ -196,12 +196,8 @@
               href: work-with-autoscaler-profiles.md
     - name: Cluster and workloads
       items:
-            - name: Cluster operations
-              items:
-                - name: Deploy a container image from Azure Container Registry
-                  href: deploy-azure-container-registry.md
-                - name: Create and manage node pools
-                  href: use-node-pools.md
+            - name: Deploy a container image from Azure Container Registry
+              href: deploy-azure-container-registry.md
             - name: Manage workloads
               items:
                   - name: Create and delete pods
