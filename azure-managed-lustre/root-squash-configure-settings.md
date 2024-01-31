@@ -2,7 +2,7 @@
 title: Configure root squash settings for Azure Managed Lustre file systems
 description: Learn how to configure root squash settings for Azure Managed Lustre file systems. 
 ms.topic: how-to
-ms.date: 01/22/2024
+ms.date: 01/31/2024
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: mayabishop
@@ -30,6 +30,12 @@ The following table details the available parameters for the `rootSquashSettings
 | `squashUID` | 1 - 4294967295 | Integer | Numeric value that the user ID (UID) is squashed to. |
 | `squashGID` | 1 - 4294967295 | Integer | Numeric value that the group ID (GID) is squashed to. |
 
+You can provide a non-contiguous list of IP addresses for the `nosquashNidLists` parameter by using a semicolon-separated list:
+
+```json
+"nosquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp;10.0.2.10@tcp",
+```
+
 ## Enable root squash during cluster creation
 
 When you create an Azure Managed Lustre file system, you can enable root squash during cluster creation.
@@ -39,31 +45,27 @@ To enable root squash during cluster creation, follow these steps:
 ### [HTTP](#tab/HTTP)
 
 1. Decide on the root squash settings you want to use for your cluster. For more information, see [Root squash settings](#root-squash-settings).
-1. Use a `PUT` request to create a cluster with the desired `rootSquashSettings` values in the `properties` section of the request body.
+1. Use a `PUT` request to create a cluster, and include the desired `rootSquashSettings` values in the `properties` section of the request body.
 
-    Request syntax:
+The following example shows how to create a cluster with root squash enabled:
 
-    ```http
-    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{filesystemName}?api-version={apiVersion}
-    ```
+**Request syntax**:
 
-    Request body:
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{filesystemName}?api-version={apiVersion}
+```
 
-    ```json
-    "properties": {
-        "rootSquashSettings": {
-            "mode": "RootOnly",
-            "nosquashNidLists": "10.0.2.4@tcp",
-            "squashUID": 1000,
-            "squashGID": 1000
-        },
-    }
-    ```
-
-You can provide a non-contiguous list of IP addresses for the `nosquashNidLists` parameter by using a semicolon-separated list:
+**Request body**:
 
 ```json
-"nosquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp;10.0.2.10@tcp",
+"properties": {
+    "rootSquashSettings": {
+        "mode": "RootOnly",
+        "nosquashNidLists": "10.0.2.4@tcp",
+        "squashUID": 1000,
+        "squashGID": 1000
+    },
+}
 ```
 
 ### [PowerShell](#tab/powershell)
@@ -78,6 +80,32 @@ You can change the root squash settings for an existing Azure Managed Lustre fil
 
 ### [HTTP](#tab/HTTP)
 
+1. Decide on the root squash settings you want to change or enable for your existing cluster. For more information, see [Root squash settings](#root-squash-settings).
+1. Use a `PATCH` request to modify the existing cluster, and include the desired `rootSquashSettings` values in the `properties` section of the request body. This action overwrites any existing root squash settings, so make sure all settings are provided with the `PATCH` request.
+
+Let's say you need to add a new IP address range to the `nosquashNidLists` parameter. The following example shows how to update an existing cluster to add a new IP address range to the `nosquashNidLists` parameter:
+
+**Request syntax**:
+
+```http
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{filesystemName}?api-version={apiVersion}
+```
+
+**Request body**:
+
+```json
+"properties": {
+    "rootSquashSettings": {
+        "mode": "RootOnly",
+        "nosquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp",
+        "squashUID": 1000,
+        "squashGID": 1000
+    },
+}
+```
+
+In this example, even though the `mode`, `squashUID`, and `squashGID` parameters aren't changing, you must include them in the `PATCH` request body to avoid the values being overwritten.
+
 ### [PowerShell](#tab/powershell)
 
 ### [Azure CLI](#tab/cli)
@@ -86,9 +114,29 @@ You can change the root squash settings for an existing Azure Managed Lustre fil
 
 ## Disable root squash for an existing cluster
 
-You can disable root squash for an existing Azure Managed Lustre file system by using the Azure portal. To disable root squash for an existing cluster, follow these steps:
+You can disable root squash for an existing Azure Managed Lustre file system. To disable root squash for an existing cluster, follow these steps:
 
 ### [HTTP](#tab/HTTP)
+
+1. Use a `PATCH` request to modify the existing cluster, and set the `mode` parameter to `None` in the `properties` section of the request body. No other parameters are required.
+
+The following example shows how to disable root squash for an existing cluster:
+
+**Request syntax**:
+
+```http
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageCache/amlFilesystems/{filesystemName}?api-version={apiVersion}
+```
+
+**Request body**:
+
+```json
+"properties": {
+    "rootSquashSettings": {
+        "mode": "None"
+    },
+}
+```
 
 ### [PowerShell](#tab/powershell)
 
