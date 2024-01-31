@@ -124,7 +124,7 @@ To prepare and configure Active Directory, follow these steps:
 
 1. The **Users** object should contain one user group corresponding to the user you specified during the creation and two security group - domain local  with this name format: *Active Directory object prefix-OpsAdmin* and *Active Directory object prefix-Sto-SG*. For example: *ms309-OpsAdmin* and *ms309-Sto-SG*.
 
-    :::image type="content" source="media/deployment-deployment-prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-prep-active-directory/active-directory-3.png":::
+    :::image type="content" source="media/deployment-prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-prep-active-directory/active-directory-3.png":::
 
 > [!NOTE]
 > - To perform a second deployment, run the prepare step  with a different prefix and a different OU name.
