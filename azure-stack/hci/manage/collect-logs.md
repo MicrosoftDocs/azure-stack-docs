@@ -286,4 +286,4 @@ Follow these steps to perform on-demand log collection via Windows Admin Center 
 ## Next steps
 
 - [Contact Microsoft Support](get-support.md)
-- [Review known issues in Azure Stack HCI](../../hci/hci-known-issues-2306.md)
+- [Review known issues in Azure Stack HCI](../../hci/known-issues-2311-2.md)

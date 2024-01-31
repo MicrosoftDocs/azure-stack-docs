@@ -1302,7 +1302,7 @@
       },            
       {
         "source_path": "AKS-Hybrid/aks-hybrid-preview-azure-vm.md",
-        "redirect_url": "/azure/aks/hybrid/aks-create-clusters",
+        "redirect_url": "/azure/aks/hybrid/aks-create-clusters-cli",
         "redirect_document_id": false
       },                  
       {
@@ -1322,12 +1322,12 @@
       },                                    
       {
         "source_path": "AKS-Hybrid/create-aks-hybrid-preview-cli.md",
-        "redirect_url": "/azure/aks/hybrid/aks-create-clusters",
+        "redirect_url": "/azure/aks/hybrid/aks-create-clusters-cli",
         "redirect_document_id": false
       },                                          
       {
         "source_path": "AKS-Hybrid/create-aks-hybrid-preview-portal.md",
-        "redirect_url": "/azure/aks/hybrid/aks-create-clusters",
+        "redirect_url": "/azure/aks/hybrid/aks-create-clusters-cli",
         "redirect_document_id": false
       },                                                
       {
