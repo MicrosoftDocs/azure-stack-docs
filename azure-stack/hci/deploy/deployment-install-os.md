@@ -15,8 +15,6 @@ ms.subservice: azure-stack-hci
 
 This article describes the steps needed to install the Azure Stack HCI, version 23H2 operating system locally on each server in your cluster.
 
-<!--[!INCLUDE [important-23h2](../../includes/hci-important-deploy-23h2.md)]-->
-
 ## Prerequisites
 
 Before you begin, make sure you do the following steps:
