@@ -1,21 +1,19 @@
 ---
-title: Manage security defaults on Azure Stack HCI, version 23H2 (preview)
-description: Learn how to manage security default settings available for Azure Stack HCI, version 23H2 (preview).
+title: Manage security defaults on Azure Stack HCI, version 23H2
+description: Learn how to manage security default settings available for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/26/2024
+ms.date: 01/31/2024
 ---
 
-# Manage security defaults for Azure Stack HCI, version 23H2 (preview)
+# Manage security defaults for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage default security settings for your Azure Stack HCI cluster. You can also modify drift control and protected security settings defined during deployment so your device starts in a known good state.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## View security default settings in Azure portal
 

@@ -1,21 +1,19 @@
 ---
-title: Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)
-description: This article describes how to use Windows Defender Application Control on Azure Stack HCI, version 23H2 (preview).
+title: Manage Windows Defender Application Control for Azure Stack HCI, version 23H2
+description: This article describes how to use Windows Defender Application Control on Azure Stack HCI, version 23H2.
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 01/26/2024
+ms.date: 01/31/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
 
-# Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)
+# Manage Windows Defender Application Control for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2 (preview)](../whats-new.md).
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
+This article describes how to use Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2](../whats-new.md).
 
 ## View WDAC settings
 
@@ -60,7 +58,7 @@ Follow these steps to switch between WDAC policy modes. These PowerShell command
 
 ## Create a WDAC policy to enable third party software
 
-While using this preview with WDAC in enforcement mode, for your non-Microsoft signed software to run, build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in the [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
+While using this with WDAC in enforcement mode, for your non-Microsoft signed software to run, build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in the [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
 > [!NOTE]
 > To run or install new software, you might need to switch WDAC to audit mode first (see steps above), install your software, test that it works correctly, create the new supplemental policy, and then switch WDAC back to enforced mode.
