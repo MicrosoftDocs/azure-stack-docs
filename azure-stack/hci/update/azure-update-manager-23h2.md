@@ -5,8 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: mindydiep
-ms.lastreviewed: 11/13/2023
-ms.date: 11/13/2023
+ms.date: 01/31/2024
 ---
 
 # Use Azure Update Manager to update your Azure Stack HCI, version 23H2
