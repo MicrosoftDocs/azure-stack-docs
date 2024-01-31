@@ -14,8 +14,8 @@
       href: known-issues-2311.md
     - name: Known issues - 2310 (preview)
       href: known-issues-23h2.md
-    - name: OS releases
-      href: release-information.md
+    - name: Release information
+      href: release-information-23h2.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
@@ -306,6 +306,8 @@
 
 - name: Version 22H2
   items:
+  - name: Release information for version 22H2
+    href: release-information.md
   - name: Azure Hybrid Benefit
     href: concepts/azure-hybrid-benefit-hci.md 
   - name: Deploy version 22H2
