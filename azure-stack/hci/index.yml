@@ -63,7 +63,7 @@ landingContent:
           - text: Run Azure Kubernetes Service
             url: /azure/aks/hybrid/kubernetes-walkthrough-powershell
           - text: Run Azure Virtual Desktop
-            url: /azure/virtual-desktop/deploy-azure-virtual-desktop
+            url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
             url: /azure-stack/hci/manage/create-arc-virtual-machines
 
