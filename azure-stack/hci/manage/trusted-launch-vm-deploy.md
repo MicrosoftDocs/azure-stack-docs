@@ -1,21 +1,20 @@
 ---
-title: Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)
-description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview).
+title: Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
+description: Learn how to deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2.
 ms.topic: how-to
 author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/17/2024
+ms.date: 01/31/2024
 ---
 
-# Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2 (preview)
+# Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to deploy Trusted launch for Azure Arc virtual machines (VMs) on Azure Stack HCI, version 23H2.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -25,7 +24,7 @@ Make sure that you have access to an Azure Stack HCI, version 23H2 cluster that 
 
 You can create a Trusted launch VM using Azure portal or by using Azure Command-Line Interface (CLI). Use the tabs below to select a method.
 
-# [Create using Azure portal](#tab/azure-portal)
+# [Azure portal](#tab/azure-portal)
 
 To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure portal, with the following changes:
 
@@ -41,7 +40,7 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
  
     :::image type="content" source="media/trusted-launch/create-arc-vm-3.png" alt-text="Screenshot showing properties page." lightbox="media/trusted-launch/create-arc-vm-3.png":::
 
-# [Create using CLI](#tab/azure-cli)
+# [Azure CLI](#tab/azure-cli)
 
 To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [Create Arc virtual machines on Azure Stack HCI](create-arc-virtual-machines.md) using Azure CLI, with the following changes:
 
@@ -184,9 +183,9 @@ This example shows a Trusted launch Arc VM running Windows 11 guest with BitLock
 
 1. Enable BitLocker encryption for the OS volume on the Win 11 guest.
 
-    Log into the Windows 11 guest and enable BitLocker encryption (for the OS volume): In the search box on the task bar, type Manage BitLocker, and then select it from the list of results. Select Turn on BitLocker and then follow the instructions to encrypt the OS volume (C:\). BitLocker will use vTPM as a key protector for the OS volume.
+    Sign in to the Windows 11 guest and enable BitLocker encryption (for the OS volume): In the search box on the task bar, type *Manage BitLocker*, and then select it from the list of results. Select **Turn on BitLocker** and then follow the instructions to encrypt the OS volume (C:\). BitLocker will use vTPM as a key protector for the OS volume.
 
-1. Migrate the VM to another node in the cluster.  You can do this using PowerShell:
+1. Migrate the VM to another node in the cluster. Run the following PowerShell command:
 
     ```PowerShell
     Move-ClusterVirtualMachineRole -Name $vmName -Node <destination node name> -MigrationType Shutdown
