@@ -210,21 +210,14 @@ kubectl describe <node> | findstr "gpu"
 The output should display the GPU(s) from the worker node and look something like this:
 
 ```output
-         nvidia.com/gpu.compute.major=7
-         nvidia.com/gpu.compute.minor=5
-         nvidia.com/gpu.count=1
-         nvidia.com/gpu.family=turing
-         nvidia.com/gpu.machine=Virtual-Machine
-         nvidia.com/gpu.memory=16384
-         nvidia.com/gpu.product=Tesla-T4
-Annotations:    cluster.x-k8s.io/cluster-name: gpucluster
-                cluster.x-k8s.io/machine: gpunodepool-md-58d9b96dd9-vsdbl
-                cluster.x-k8s.io/owner-name: gpunodepool-md-58d9b96dd9
-         nvidia.com/gpu:   1
-         nvidia.com/gpu:   1
-ProviderID:         moc://gpunodepool-97d9f5667-49lt4
-kube-system         gpu-feature-discovery-gd62h       0 (0%)    0 (0%)   0 (0%)      0 (0%)     7m1s
-         nvidia.com/gpu   0     0
+Capacity: 
+  cpu:                4 
+  ephemeral-storage:  103110508Ki 
+  hugepages-1Gi:      0 
+  hugepages-2Mi:      0 
+  memory:             7865020Ki 
+  nvidia.com/gpu:     1 
+  pods:               110
 ```
 
 ## Run a GPU-enabled workload
