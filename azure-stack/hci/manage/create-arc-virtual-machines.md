@@ -8,14 +8,14 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 01/24/2024
+ms.date: 01/30/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure portal.
+This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager (ARM) template.
 
 ## About Azure Stack HCI cluster resource
 
@@ -43,6 +43,14 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
+
+# [ARM template](#tab/armtemplate)
+
+[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+
+- Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+
+- [Download the ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub repo. You use this template to create a VM.
 ---
 
 ## Create Arc VMs
@@ -59,7 +67,7 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 ### Create a VM from network interface
 
-Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. Here we will create a VM that uses specific memory and processor counts on a specified storage path.
+Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
 
 1. Set some parameters.
 
@@ -83,9 +91,9 @@ Depending on the type of the network interface that you created, you can create 
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the VM that you'll create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
-    | **admin-username** |Username for the user on the VM you are deploying on your Azure Stack HCI cluster. |
-    | **admin-password** |Password for the user on the VM you are deploying on your Azure Stack HCI cluster. |
+    | **name**  |Name for the VM that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking)|
+    | **admin-username** |Username for the user on the VM you're deploying on your Azure Stack HCI cluster. |
+    | **admin-password** |Password for the user on the VM you're deploying on your Azure Stack HCI cluster. |
     | **image-name** |Name of the VM image used to provision the VM. |
     | **location** |Azure regions as specified by `az locations`. For example, this could be `eastus`, `westeurope`. |
     | **resource-group** |Name of the resource group where you create the VM. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
@@ -93,9 +101,9 @@ Depending on the type of the network interface that you created, you can create 
     | **custom-location** |Use this to provide the custom location associated with your Azure Stack HCI cluster where you're creating this VM. |
     | **authentication-type** |Type of authentication to use with the VM. The accepted values are `all`, `password`, and `ssh`. Default is password for Windows and SSH public key for Linux. Use `all` to enable both `ssh` and `password` authentication.     |
     | **nics** |Names or the IDs of the network interfaces associated with your VM. You must have atleast one network interface when you create a VM, to enable guest management.|
-    | **memory-mb** |Memory in megabtyes allocated to your VM. If not specified, defaults are used.|
+    | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
-    | **storage-path-id** |The associated storage path where the VM configuration and the data is saved.  |
+    | **storage-path-id** |The associated storage path where the VM configuration and the data are saved.  |
 
     If configuring a proxy server for your VM, the following *optional* parameters can be specified:
 
@@ -103,7 +111,7 @@ Depending on the type of the network interface that you created, you can create 
     |------------|-------------|
     | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
     | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
-    | **proxyServerNoproxy**  |URLs which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
+    | **proxyServerNoproxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
     | **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
     | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `PleaseUseAStrongerPassword!` |
     | **certificateFilePath**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
@@ -122,7 +130,7 @@ The VM is successfully created when the `provisioningState` shows as `succeeded`
 
 In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
-If the flag is not specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
+If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
 
 ### Create a Linux VM from network interface
@@ -143,19 +151,19 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Go to **Azure Arc cluster view** > **Virtual machines**.
 1. From the top command bar, select **+ Create VM**.
 
-   :::image type="content" source="./media/manage-vm-resources/select-create-vm.png" alt-text="Screenshot of select + Add/Create VM." lightbox="./media/manage-vm-resources/select-create-vm.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/select-create-vm.png" alt-text="Screenshot of select + Add/Create VM." lightbox="./media/create-arc-virtual-machines/select-create-vm.png":::
 
 1. In the **Create an Azure Arc virtual machine** wizard, on the **Basics** tab, input the following parameters in the **Project details** section:
 
-   :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-project-details.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png" alt-text="Screenshot of Project details on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-project-details.png":::
 
     1. **Subscription** – The subscription is tied to the billing. Choose the subscription that you want to use to deploy this VM.
 
-    1. **Resource group** – Create new or choose an existing resource group where you'll deploy all the resources associated with your VM.
+    1. **Resource group** – Create new or choose an existing resource group where you deploy all the resources associated with your VM.
 
 1. In the **Instance details** section, input the following parameters:
 
-    :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-instance-details.png" alt-text="Screenshot of Instance details on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-instance-details.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png" alt-text="Screenshot of Instance details on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-instance-details.png":::
 
     1. **Virtual machine name** – Enter a name for your VM. The name should follow all the naming conventions for Azure virtual machines.  
     
@@ -174,11 +182,11 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     
         1. If you selected a Windows image, provide a username and password for the administrator account. You'll also need to confirm the password.
  
-        <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/manage-vm-resources/create-arc-vm-windows-image.png":::-->
+        <!--:::image type="content" source="./media/create-arc-virtual-machines/create-arc-vm-windows-image.png" alt-text="Screenshot showing how to Create a VM using Windows VM image." lightbox="./media/create-arc-virtual-machines/create-arc-vm-windows-image.png":::-->
 
         1. If you selected a Linux image, in addition to providing username and password, you'll also need SSH keys.
 
-           <!--:::image type="content" source="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="./media/manage-vm-resources/create-arc-vm-linux-vm-image.png":::-->
+           <!--:::image type="content" source="./media/create-arc-virtual-machines/create-arc-vm-linux-vm-image.png" alt-text="Screenshot showing how to Create a VM using a Linux VM image." lightbox="./media/create-arc-virtual-machines/create-arc-vm-linux-vm-image.png":::-->
 
     1. **Virtual processor count** – Specify the number of vCPUs you would like to use to create the VM.
 
@@ -188,7 +196,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. In the **VM extensions** section, select the checkbox to enable guest management. You can install extensions on VMs where the guest management is enabled.
 
-    :::image type="content" source="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/manage-vm-resources/create-virtual-machines-vmext-adminacct-domainjoin.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png" alt-text="Screenshot of guest management enabled inVM extensions on  Basics tab." lightbox="./media/create-arc-virtual-machines/create-virtual-machines-vmext-adminacct-domainjoin.png":::
 
     > [!NOTE]
     > - You can't enable guest management via Azure portal if the Arc VM is already created.
@@ -212,26 +220,26 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
     1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
     
-        If the domain is not specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
+        If the domain isn't specified, the suffix of the Active Directory domain join UPN is used by default. For example, the user *guspinto@contoso.com* would get the default domain name *contoso.com*.
 
 1. **(Optional)** Create new or add more disks to the VM.
 
-   :::image type="content" source="./media/manage-vm-resources/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/manage-vm-resources/create-new-disk.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/create-arc-virtual-machines/create-new-disk.png":::
 
     1. Select **+ Add new disk**.
     1. Provide a **Name** and **Size**.
     1. Choose the disk **Provisioning type** to be **Static** or **Dynamic**.
-    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space. If you select the manual option, previous storage options will auto-populate the dropdown by default.
+    1. **Storage path** - Select the storage path for your VM image. Select **Choose automatically** to have a storage path with high availability automatically selected.  Select **Choose manually** to specify a storage path to store VM images and configuration files on the Azure Stack HCI cluster. In this case, ensure that the selected storage path has sufficient storage space. If you select the manual option, previous storage options autopopulate the dropdown by default.
     1. Select **Add**. After it's created, you can see the new disk in the list view.
     
-       :::image type="content" source="./media/manage-vm-resources/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/manage-vm-resources/create-new-disk.png":::
+       :::image type="content" source="./media/create-arc-virtual-machines/create-new-disk.png" alt-text="Screenshot of new disk added during Create a VM." lightbox="./media/create-arc-virtual-machines/create-new-disk.png":::
 
 1. **(Optional)** Create or add a network interface for the VM.
 
     > [!NOTE]
     > If you enabled guest management, you must add at least one network interface.
 
-    :::image type="content" source="./media/manage-vm-resources/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/manage-vm-resources/add-new-disk.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-disk.png":::
 
     1. Provide a **Name** for the network interface. 
     1. Select the **Network** and choose static or dynamic IP addresses.
@@ -245,9 +253,312 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
 1. Review all the properties of the VM.
 
-    :::image type="content" source="./media/manage-vm-resources/review-virtual-machine.png" alt-text="Screenshot of review page during Create a VM." lightbox="./media/manage-vm-resources/review-virtual-machine.png":::
+    :::image type="content" source="./media/create-arc-virtual-machines/review-virtual-machine.png" alt-text="Screenshot of review page during Create a VM." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::
 
 1. Select **Create**. It should take a few minutes to provision the VM.
+
+
+# [ARM template](#tab/armtemplate)
+
+Follow these steps to deploy the ARM template:
+
+1. In the Azure portal, from the top search bar, search for *deploy a custom template*. Select **Deploy a custom template** from the available options.
+
+1. On the **Select a template** tab, select **Build your own template in the editor**.
+   
+   :::image type="content" source="./media/create-arc-virtual-machines/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal." lightbox="./media/create-arc-virtual-machines/build-own-template.png":::
+
+1. You see a blank template.
+
+   :::image type="content" source="./media/create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank ARM template in Azure portal." lightbox="./media/create-arc-virtual-machines/blank-template.png":::
+
+1. Replace the blank template with the template that you downloaded during the prerequisites step.
+
+    This template creates an Arc VM. First, a virtual network interface is created. You can optionally enable domain-join and attach a virtual disk to the VM you create. Finally, the VM is created with the guest management enabled.
+
+   ```json
+    {
+        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "name": {
+                "type": "String",
+                "metadata": {
+                    "description": "The name of the Virtual Machine."
+                }
+            },
+            "location": {
+                "type": "String",
+                "metadata": {
+                    "description": "The Azure region where the resources will be deployed."
+                }
+            },
+            "customLocationId": {
+                "type": "String",
+                "metadata": {
+                    "description": "The custom location ID where the resources will be deployed."
+                }
+            },
+            "adminUsername": {
+                "type": "String",
+                "metadata": {
+                    "description": "The username for the administrator account of the VM."
+                }
+            },
+            "adminPassword": {
+                "type": "SecureString",
+                "metadata": {
+                    "description": "The password for the administrator account of the VM. This should be a secure string."
+                }
+            },
+            "securityType": {
+                "type": "String",
+                "metadata": {
+                    "description": "The type of security configuration for the VM."
+                }
+            },
+            "vNicName": {
+                "type": "String",
+                "metadata": {
+                    "description": "The name of the vNic."
+                }
+            },
+            "privateIPAddress": {
+                "type": "String",
+                "metadata": {
+                    "description": "The IP address for the network interface."
+                }
+            },
+            "subnetId": {
+                "type": "String",
+                "metadata": {
+                    "description": "The ARM ID of the subnet for the network interface."
+                }
+            },
+            "vmSize": {
+                "type": "String",
+                "metadata": {
+                    "description": "The size of the virtual machine instance. It is 'Default' by default."
+                }
+            },
+            "enableVirtualDisk": {
+                "type": "bool",
+                "metadata": {
+                    "description": "Enable or disable the virtual disk."
+                }
+            },
+            "diskName": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The name of the virtual data disk for your VM. Required if enableVirtualDisk is true."
+                }
+            },
+            "diskSize": {
+                "type": "Int",
+                "defaultValue": 0,
+                "metadata": {
+                    "description": "Specify the size of the additional virtual disk to be added to your VM. Required if enableVirtualDisk is true."
+                }
+            },
+            "processors": {
+                "type": "Int",
+                "metadata": {
+                    "description": "The number of processors for the virtual machine."
+                }
+            },
+            "memoryMB": {
+                "type": "Int",
+                "metadata": {
+                    "description": "The amount of memory in MB for the virtual machine."
+                }
+            },
+            "imageReferenceId": {
+                "type": "String",
+                "metadata": {
+                    "description": "The ARM ID of the image to be used for the virtual machine."
+                }
+            },
+            "enableDomainJoin": {
+                "type": "bool",
+                "metadata": {
+                    "description": "Enable or disable the domain join extension."
+                }
+            },
+            "domainToJoin": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The domain to join. Required if enableDomainJoin is true."
+                }
+            },
+            "orgUnitPath": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The Organizational Unit path. Optional, used if enableDomainJoin is true."
+                }
+            },
+            "domainUsername": {
+                "type": "String",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The domain username. Required if enableDomainJoin is true."
+                }
+            },
+            "domainPassword": {
+                "type": "SecureString",
+                "defaultValue": "",
+                "metadata": {
+                    "description": "The domain password. Required if enableDomainJoin is true."
+                }
+            }
+        },
+        "variables": {
+            "domainJoinExtensionName": "[if(parameters('enableDomainJoin'), concat(parameters('name'),'/joindomain'), '')]",
+            "virtualDiskName": "[if(parameters('enableVirtualDisk'), parameters('diskName'), '')]"
+        },
+        "resources": [
+            {
+                "type": "Microsoft.HybridCompute/machines",
+                "apiVersion": "2023-03-15-preview",
+                "name": "[parameters('name')]",
+                "location": "[parameters('location')]",
+                "kind": "HCI",
+                "identity": {
+                    "type": "SystemAssigned"
+                }
+            },
+            {
+                "condition": "[parameters('enableVirtualDisk')]",
+                "type": "Microsoft.AzureStackHCI/virtualHardDisks",
+                "apiVersion": "2023-09-01-preview",
+                "name": "[variables('virtualDiskName')]",
+                "location": "[parameters('location')]",
+                "extendedLocation": {
+                    "type": "CustomLocation",
+                    "name": "[parameters('customLocationId')]"
+                },
+                "properties": {
+                    "diskSizeGB": "[parameters('diskSize')]",
+                    "dynamic": true
+                }
+            },
+            {
+                "type": "Microsoft.AzureStackHCI/networkInterfaces",
+                "apiVersion": "2023-09-01-preview",
+                "name": "[parameters('vNicName')]",
+                "location": "[parameters('location')]",
+                "extendedLocation": {
+                    "type": "CustomLocation",
+                    "name": "[parameters('customLocationId')]"
+                },
+                "properties": {
+                    "ipConfigurations": [
+                        {
+                            "name": "[parameters('vNicName')]",
+                            "properties": {
+                                "privateIPAddress": "[parameters('privateIPAddress')]",
+                                "subnet": {
+                                    "id": "[parameters('subnetId')]"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            {
+                "type": "Microsoft.AzureStackHCI/VirtualMachineInstances",
+                "apiVersion": "2023-09-01-preview",
+                "name": "default",
+                "extendedLocation": {
+                    "type": "CustomLocation",
+                    "name": "[parameters('customLocationId')]"            },
+                "dependsOn": [
+                    "[resourceId('Microsoft.HybridCompute/machines', parameters('name'))]",
+                    "[resourceId('Microsoft.AzureStackHCI/networkInterfaces', parameters('vNicName'))]",
+                    "[resourceid('Microsoft.AzureStackHCI/virtualHardDisks', parameters('diskName'))]"
+                ],
+                "properties": {
+                    "osProfile": {
+                        "adminUsername": "[parameters('adminUsername')]",
+                        "adminPassword": "[parameters('adminPassword')]",
+                        "computerName": "[parameters('name')]",
+                        "windowsConfiguration": {
+                            "provisionVMAgent": true,
+                            "provisionVMConfigAgent": true
+                        }
+                    },
+                    "hardwareProfile": {
+                        "vmSize": "Default",
+                        "processors": 4,
+                        "memoryMB": 8192
+                    },
+                    "storageProfile": {
+                        "imageReference": {
+                            "id": "[parameters('imageReferenceId')]"
+                        },
+                        "dataDisks": [
+                            {
+                                "id": "[resourceid('Microsoft.AzureStackHCI/virtualHardDisks',parameters('diskName'))]"
+                            }
+                        ]
+                    },
+                    "networkProfile": {
+                        "networkInterfaces": [
+                            {
+                                "id": "[resourceId('Microsoft.AzureStackHCI/networkInterfaces', parameters('vNicName'))]"
+                            }
+                        ]
+                    }
+                },
+                "scope": "[concat('Microsoft.HybridCompute/machines/', parameters('name'))]"
+            },
+            {
+                "condition": "[parameters('enableDomainJoin')]",
+                "type": "Microsoft.HybridCompute/machines/extensions",
+                "apiVersion": "2023-03-15-preview",
+                "name": "[variables('domainJoinExtensionName')]",
+                "location": "[parameters('location')]",
+                "dependsOn": [
+                    "[concat(resourceId('Microsoft.HybridCompute/machines', parameters('name')), '/providers/Microsoft.AzureStackHCI/virtualmachineinstances/default')]"
+                ],
+                "properties": {
+                    "publisher": "Microsoft.Compute",
+                    "type": "JsonADDomainExtension",
+                    "typeHandlerVersion": "1.3",
+                    "autoUpgradeMinorVersion": true,
+                    "settings": {
+                        "Name": "[parameters('domainToJoin')]",
+                        "OUPath": "[parameters('orgUnitPath')]",
+                        "User": "[concat(parameters('domainToJoin'), '\\', parameters('domainUsername'))]",
+                        "Restart": "true",
+                        "Options": "3"
+                    },
+                    "protectedSettings": {
+                        "Password": "[parameters('domainPassword')]"
+                    }
+                }
+            }
+        ]
+    }
+   ``` 
+
+1. Select **Save**.
+
+   :::image type="content" source="./media/create-arc-virtual-machines/edit-template.png" alt-text="Screenshot of template being edited in Azure portal." lightbox="./media/create-arc-virtual-machines/edit-template.png":::
+
+1. You see the blade for providing deployment values. Again, select the resource group. You can use the other default values. When you're done providing values, select **Review + create**
+
+   :::image type="content" source="./media/create-arc-virtual-machines/filled-basics.png" alt-text="Screenshot of filled basics tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-basics.png":::
+
+1. After the portal validates the template, select **Create**. A deployment job should start.
+
+   :::image type="content" source="./media/create-arc-virtual-machines/filled-review-create.png" alt-text="Screenshot of Review + Create tab for template in Azure portal." lightbox="./media/create-arc-virtual-machines/filled-review-create.png":::
+
+1. When the deployment completes, you see the status of the deployment as complete. After the deployment has successfully completed, a VM is created on your Azure Stack HCI.
+    
+   <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
 
 ---
 

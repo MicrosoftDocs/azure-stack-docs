@@ -4,7 +4,7 @@ description: Learn how to use PowerShell to apply operating system, service, and
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/13/2023
+ms.date: 01/31/2024
 ---
 
 # Update your Azure Stack HCI, version 23H2 via PowerShell
