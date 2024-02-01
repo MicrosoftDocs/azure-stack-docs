@@ -303,7 +303,7 @@ Once the deployment is complete, use the following command to verify that your K
 az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" --output table
 ```
 
-## Step 6: connect to the cluster
+## Step 6: Connect to the cluster
 
 1. To connect to the cluster, run the `az connectedk8s proxy` command. The command downloads and runs a proxy binary on the client machine, and fetches a **kubeconfig** file associated with the cluster:
 
@@ -354,7 +354,7 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
 | Name             | Description                                         | Value                                                        |
 | :--------------- | :-------------------------------------------------- | :----------------------------------------------------------- |
 | `type`             | The resource type                                   | **microsoft.hybridcontainerservice/provisionedclusterinstances**                 |
-| `apiVersion`       | The resource api version                            | **2024-01-01**                                                 |
+| `apiVersion`       | The resource API version                            | **2024-01-01**                                                 |
 | `name`             | The resource name                                   | String (required). Don't change this from **default**. |
 | `properties`       | Properties of a connected cluster.                    |  |
 | `extendedLocation` | The extended location of the cluster.       | [ExtendedLocation](/azure/templates/microsoft.containerservice/managedclusters?pivots=deployment-language-arm-template#extendedlocation-1) |
