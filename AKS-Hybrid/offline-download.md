@@ -2,16 +2,22 @@
 title: Use manual (offline) download in AKS enabled by Azure Arc
 description: Learn how to use manual (offline) download in AKS enabled by Arc.
 ms.topic: how-to
-ms.date: 01/19/2024
+ms.date: 02/01/2024
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 01/19/2024
+ms.lastreviewed: 01/31/2024
 ms.reviewer: waltero
 zone_pivot_groups: version-select
 
 ---
 
+::: zone pivot="aks-22h2"
 # Use manual (offline) download in AKS enabled by Azure Arc
+::: zone-end
+
+::: zone pivot="aks-23h2"
+# Use manual (offline) download in AKS enabled by Azure Arc (preview)
+::: zone-end
 
 ::: zone pivot="aks-22h2"
 If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on HCI images at the same location in which you deploy. Offsite means that you download the AKS on HCI images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
@@ -210,6 +216,10 @@ Update-AksHci
 ::: zone-end
 
 ::: zone pivot="aks-23h2"
+
+> [!NOTE]
+> This feature is currently in preview.
+
 If you have unreliable internet connectivity at your deployment location or need to scan files and images for security and compliance before you deploy, you can manually download images to use to create and update Kubernetes workload clusters. You can issue a command to download the images to a convenient computer with good internet connectivity, and then you can use your preferred tool to move them to the target Azure Stack system. You then save them for the system to use when you need to create or update a Kubernetes cluster.
 
 ## Before you begin
