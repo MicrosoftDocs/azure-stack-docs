@@ -28,9 +28,9 @@ To deploy a Resource Manager template, you need write access on the resources yo
 
 ## Step 1: prepare your Azure account
 
-1. Sign in to Azure: Open your terminal or command prompt and log in to your Azure account using the Azure CLI:
+1. Sign in to Azure: open your terminal or command prompt and sign in to your Azure account using the Azure CLI:
 
-   ```cmd
+   ```azurecli
    az login
    ```
 
@@ -305,7 +305,7 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
 
 ## Step 6: connect to the cluster
 
-1. To connect to the cluster, run the `az connectedk8s proxy` command. The command downloads and runs a proxy binary on the client machine, and fetches a **kubeconfig** file associated with the cluster.
+1. To connect to the cluster, run the `az connectedk8s proxy` command. The command downloads and runs a proxy binary on the client machine, and fetches a **kubeconfig** file associated with the cluster:
 
    ```azurecli
    az connectedk8s proxy --name <cluster name> -g <resource group>
