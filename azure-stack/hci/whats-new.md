@@ -70,13 +70,28 @@ Starting with this release, the following workloads are generally available on A
 - Azure Kubernetes Service (AKS) on Azure Stack HCI. For more information, see [Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
 - Azure Virtual Desktops (AVD) on Azure Stack HCI. For more information, see [Deploy AVD on Azure Stack HCI](/azure/virtual-desktop/azure-stack-hci-overview).
 
+### AKS on Azure Stack HCI, version 23H2
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **New CLI extension and Azure portal experience**. The new GA version of the Azure CLI extension starting with this release is [**az aksarc**](/cli/azure/aksarc). For more information, see [Create Kubernetes clusters using Azure CLI](aks-create-clusters-cli.md). You can also see the new portal cluster creation experience in [Create Kubernetes clusters using the Azure portal](aks-create-clusters-portal.md).  
+- **Support for logical networks**. Starting with this release, creating Kubernetes clusters on Azure Stack HCI 23H2 requires [logical networks](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli) as a prerequisite. For more information, see [How to create logical networks](aks-networks.md).
+- **Available K8S versions and VM sizes**. You can use [`az aksarc get-versions`](/cli/azure/aksarc#az-aksarc-get-versions) and [`az aksarc vmsize list`](/cli/azure/aksarc/vmsize#az-aksarc-vmsize-list) to get the available Kubernetes versions and VM sizes on your system.
+- **Support for Taints and labels**. See [Manage node pools](manage-node-pools.md) for a cluster, and [Use cluster labels](cluster-labels.md) to set the taints and labels for node pools.
+- **Support for upgrading a Kubernetes cluster using Azure CLI**. You can use the Azure CLI to upgrade a Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade a Kubernetes cluster](cluster-upgrade.md).
+- **Support for both disks and files for persistent volumes**. To support stateful applications, you can use the default storage class for disks, or a custom storage class that points to a specific storage path. See [Use persistent volumes](persistent-volume.md) and [Use Container Storage Interface (CSI) disk drivers](container-storage-interface-disks.md). You can also create persistent volumes on file shares, in either SMB or NFS. For more information, see [Use Container Storage Interface (CSI) file drivers](container-storage-interface-files.md).
+- **Support for NVIDIA A2**. You can now create node pools with new VM sizes with GPU NVIDIA A2. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
+- **Diagnostics settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
+
+For more information, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
+
 ## Features and improvements in 2311
 
 This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2.
 
 ### AKS on Azure Stack HCI, version 23H2
 
-Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. For more information, see [What's new in AKS on Azure Stack HCI, version 23H2 (preview)](/azure/aks/hybrid/aks-preview-overview).
+Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. For more information, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
