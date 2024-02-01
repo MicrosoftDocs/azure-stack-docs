@@ -67,6 +67,10 @@
       items:
       - name: Restrict SSH access
         href: restrict-ssh-access.md
+  - name: Quickstarts
+    items:
+    - name: Deploy a cluster using a resource manager template
+      href: resource-manager-quickstart.md
   - name: Concepts
     items:
     - name: Cluster architecture
