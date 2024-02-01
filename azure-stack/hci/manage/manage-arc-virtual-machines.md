@@ -1,21 +1,20 @@
 ---
-title: Manage including restart, start, stop or delete Arc VMs on Azure Stack HCI (preview)
-description: Learn how to manage Arc VMs. This includes operations such as start, stop, restart, view properties of Arc VMs running on Azure Stack HCI, version 23H2 (preview).
+title: Manage including restart, start, stop or delete Arc VMs on Azure Stack HCI 
+description: Learn how to manage Arc VMs. This includes operations such as start, stop, restart, view properties of Arc VMs running on Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/25/2024
+ms.date: 01/30/2024
 ---
 
-# Manage Arc VMs on Azure Stack HCI (preview)
+# Manage Arc VMs on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to manage Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2. The procedures to enable guest management, start, stop, restart, or delete an Arc VM are detailed.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 

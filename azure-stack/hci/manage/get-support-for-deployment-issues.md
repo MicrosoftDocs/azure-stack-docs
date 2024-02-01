@@ -1,21 +1,19 @@
 ---
-title: Get support for Azure Stack HCI deployment issues (preview)
-description: Learn how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support (preview).
+title: Get support for Azure Stack HCI deployment issues
+description: Learn how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 01/31/2024
 ---
 
-# Get support for Azure Stack HCI deployment issues (preview)
+# Get support for Azure Stack HCI deployment issues
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to get Microsoft support for Azure Stack HCI deployment issues, including log collection and remote support.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## Potential deployment issues
 
@@ -104,7 +102,7 @@ Follow these steps to enable remote support:
    > When you run the command to enable remote support, you may get the following error:
    >
    > `Processing data from remote server <NodeName> failed with the following error message: The I/O operation has been aborted because of either a thread exit or an application request.`
-   > 
+   >
    > This means the Just Enough Administration (JEA) configuration has not been established. When you enable remote support, a service restart is required to activate JEA. During the remote support JEA configuration, the Windows Remote Management (WinRM) restarts twice, which may disrupt the PsSession to the node. To resolve this error, wait for a few minutes before reconnecting to the remote node and then run the `Enable-AzStackHciRemoteSupport` command again to enable remote support.
    >
 
