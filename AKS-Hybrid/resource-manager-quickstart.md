@@ -30,15 +30,15 @@ To deploy a Resource Manager template, you need write access on the resources yo
 
 1. Sign in to Azure: Open your terminal or command prompt and log in to your Azure account using the Azure CLI:
 
-```cmd
-az login
-```
+   ```cmd
+   az login
+   ```
 
 1. Set your subscription: replace `<your-subscription-id>` with your subscription ID:
 
-```azurecli
-az account set --subscription "<your-subscription-id>"
-```
+   ```azurecli
+   az account set --subscription "<your-subscription-id>"
+   ```
 
 ## Step 2: create an SSH key pair using Azure CLI
 
@@ -283,7 +283,7 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
 
 ## Step 4: Deploy the template
 
-1. To deploy the template, run the following command to deploy the Kubernetes cluster:
+To deploy the template, run the following command to deploy the Kubernetes cluster:
 
 ```azurecli
 az deployment group create \
@@ -307,32 +307,32 @@ az aksarc show --resource-group "<resource-group-name>" --name "<cluster-name>" 
 
 1. To connect to the cluster, run the `az connectedk8s proxy` command. The command downloads and runs a proxy binary on the client machine, and fetches a **kubeconfig** file associated with the cluster.
 
-```azurecli
-az connectedk8s proxy --name <cluster name> -g <resource group>
-```
+   ```azurecli
+   az connectedk8s proxy --name <cluster name> -g <resource group>
+   ```
 
-Or, use the Kubernetes command-line client, **kubectl**. If you use Azure Cloud Shell, **kubectl** is already installed. To install and run **kubectl** locally, run the `az aksarc install-cli` command.
+   Or, use the Kubernetes command-line client, **kubectl**. If you use Azure Cloud Shell, **kubectl** is already installed. To install and run **kubectl** locally, run the `az aksarc install-cli` command.
 
-Configure **kubectl** to connect to your Kubernetes cluster using the `az aksarc get-credentials` command. This command downloads credentials and configures the Kubernetes CLI to use them:
+   Configure **kubectl** to connect to your Kubernetes cluster using the `az aksarc get-credentials` command. This command downloads credentials and configures the Kubernetes CLI to use them:
 
-```azurecli
-az aksarc get-credentials --resource-group "<resource-group-name>" --name "<cluster-name>"
-```
+   ```azurecli
+   az aksarc get-credentials --resource-group "<resource-group-name>" --name "<cluster-name>"
+   ```
 
 1. Verify the connection to your cluster using the `kubectl get` command. This command returns a list of the cluster nodes:
 
-```cmd
-kubectl get nodes -A --kubeconfig .\<path to kubecofig> 
-```
+   ```cmd
+   kubectl get nodes -A --kubeconfig .\<path to kubecofig> 
+   ```
 
-The following example output shows the three nodes created in the previous steps. Make sure the node status is **Ready**:
+   The following example output shows the three nodes created in the previous steps. Make sure the node status is **Ready**:
 
-```output
-NAME                                STATUS   ROLES   AGE   VERSION
-aks-agentpool-27442051-vmss000000   Ready    agent   10m   v1.27.7
-aks-agentpool-27442051-vmss000001   Ready    agent   10m   v1.27.7
-aks-agentpool-27442051-vmss000002   Ready    agent   11m   v1.27.7
-```
+   ```output
+   NAME                                STATUS   ROLES   AGE   VERSION
+   aks-agentpool-27442051-vmss000000   Ready    agent   10m   v1.27.7
+   aks-agentpool-27442051-vmss000001   Ready    agent   10m   v1.27.7
+   aks-agentpool-27442051-vmss000002   Ready    agent   11m   v1.27.7
+   ```
 
 ## Template resources
 
