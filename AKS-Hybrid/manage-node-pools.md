@@ -78,8 +78,9 @@ name&gt;/providers/Microsoft.HybridContainerService/provisionedClusterInstances/
 }
 ```
 
-## Specify maxPods deployed to a node pool
-You can configure the maximum pods deployable to a node at cluster creation time or when creating new node pools. If you don't specify maxPods when creating new node pools, your node pool will be deployed with a default value of 110 maximum pods.
+## Specify maximum pods deployed to a node pool
+
+You can configure the maximum pods deployable to a node at cluster creation time, or when creating new node pools. If you don't specify `maxPods` when you create node pools, your node pool is deployed with a default value of a maximum 110 pods:
 
 ```azurecli
 az aksarc nodepool add --cluster-name <cluster name> -n <node pool name> -g <resource group> --max-pods 50 --yes
