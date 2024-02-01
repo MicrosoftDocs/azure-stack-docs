@@ -11,12 +11,11 @@ zone_pivot_groups: version-select
 
 ---
 
-::: zone pivot="aks-22h2"
 # Use manual (offline) download in AKS enabled by Azure Arc
-::: zone-end
 
-::: zone pivot="aks-23h2"
-# Use manual (offline) download in AKS enabled by Azure Arc (preview)
+::: zone pivot="aks-22h2"
+> [!NOTE]
+> This feature is currently in preview.
 ::: zone-end
 
 ::: zone pivot="aks-22h2"
@@ -216,10 +215,6 @@ Update-AksHci
 ::: zone-end
 
 ::: zone pivot="aks-23h2"
-
-> [!NOTE]
-> This feature is currently in preview.
-
 If you have unreliable internet connectivity at your deployment location or need to scan files and images for security and compliance before you deploy, you can manually download images to use to create and update Kubernetes workload clusters. You can issue a command to download the images to a convenient computer with good internet connectivity, and then you can use your preferred tool to move them to the target Azure Stack system. You then save them for the system to use when you need to create or update a Kubernetes cluster.
 
 ## Before you begin
@@ -227,7 +222,7 @@ If you have unreliable internet connectivity at your deployment location or need
 Before you begin the download process, the following prerequisites are required:
 
 - The latest release of Azure CLI. For more information, see [how to update the Azure CLI](/cli/azure/update-azure-cli).
-- The latest release of the Azure CLI AKS Arc extension.
+- The latest release of the [Azure CLI AKS Arc extension](/cli/azure/aksarc).
 - Make sure you satisfied all the [system requirement prerequisites](system-requirements.md).
 
 ## Use manual download to create or update a Kubernetes cluster
