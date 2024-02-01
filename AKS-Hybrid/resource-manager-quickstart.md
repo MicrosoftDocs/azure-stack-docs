@@ -156,6 +156,7 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
           },
           "controlPlaneIp": {
             "type": "string",
+            "defaultValue": "<default_value>",
               "metadata": {
                   "description": "Control plane IP address."
               }
