@@ -1284,7 +1284,11 @@
       "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager.md",
       "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager-23h2.md",
+      "redirect_url": "/azure-stack/hci/manage/about-updates",
+      "redirect_document_id": false
     }
   ]
-  
 }
