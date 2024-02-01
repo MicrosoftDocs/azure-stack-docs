@@ -13,7 +13,7 @@ zone_pivot_groups: version-select
 
 # Use manual (offline) download in AKS enabled by Azure Arc
 
-::: zone pivot="aks-22h2"
+::: zone pivot="aks-23h2"
 > [!NOTE]
 > This feature is currently in preview.
 ::: zone-end
