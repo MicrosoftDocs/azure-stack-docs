@@ -53,7 +53,7 @@ In this release:
 
 ### Migration of Hyper-V VMs to Azure Stack HCI (preview)
 
-You can now migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate . This feature is currentnly in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI (preview)](./index.yml)
+You can now migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI (preview)](./index.yml)
 
 ### Monitoring changes
 
@@ -69,7 +69,7 @@ Starting with this release, the following workloads are generally available on A
 
 - Azure Kubernetes Service (AKS) on Azure Stack HCI. For more information, see [Set up an Azure Kubernetes Service host on Azure Stack HCI and deploy a workload cluster using PowerShell](/azure/aks/hybrid/kubernetes-walkthrough-powershell).
 
-    In addition, AKS on HCI has a new CLI extension and Azure portal experience, [Support for logical networks](/azure/aks/hybrid/aks-networks), [Support for taints and labels](/azure/aks/hybrid/cluster-labels), [Support for upgrade via Azure CLI](/azure/aks/hybrid/cluster-upgrade), [Support for Nvidia A2](/azure/aks/hybrid/deploy-gpu-node-pool?pivots=aks-23h2) and more. For more information, see What's new in AKS on [Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
+    In addition, AKS on HCI has a new CLI extension and Azure portal experience, [Support for logical networks](/azure/aks/hybrid/aks-networks), [Support for taints and labels](/azure/aks/hybrid/cluster-labels), [Support for upgrade via Azure CLI](/azure/aks/hybrid/cluster-upgrade), [Support for Nvidia A2](/azure/aks/hybrid/deploy-gpu-node-pool?pivots=aks-23h2) and more. For details, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
 
 - Azure Virtual Desktops (AVD) on Azure Stack HCI. For more information, see [Deploy AVD on Azure Stack HCI](/azure/virtual-desktop/azure-stack-hci-overview).
 
