@@ -1,44 +1,21 @@
 ---
-title: Azure Stack HCI release information
-description: This article provides a list of the Azure Stack HCI releases, including monthly updates, and corresponding OS builds.
+title: Azure Stack HCI, version 22 H2 release information
+description: his article provides the release information for Azure Stack HCI, version 22H2.
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/09/2024
+ms.date: 01/31/2024
 ---
 
-# Azure Stack HCI release information
+# Azure Stack HCI, version 22H2 release information
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-22h2.md)]
 
-Feature updates for Azure Stack HCI are released periodically to enhance the customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates.
+Feature updates for Azure Stack HCI are released periodically to enhance customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released. Microsoft provides monthly quality and security updates for each supported version of Azure Stack HCI and also provides yearly feature updates.
 
-This article provides a list of the available updates for each version of Azure Stack HCI.  
-
-## Azure Stack HCI release summary
-
-The following table provides the release summary of each version of Azure Stack HCI and the date by when you must apply updates to keep your Azure Stack HCI service in a supported state.
-
-All dates are listed in ISO 8601 format: *YYYY-MM-DD*
-
-| **Version** | **Availability date** | **OS build**      | **Apply update by** |
-|:------------|:----------------------|:------------------|:-------------------------|
-| 23H2        | 2023-11-14            | 25398.531        | TBA               |
-| 22H2        | 2022-10-25            | 20349.1194        | 2023-04-25               |
-
-## Azure Stack HCI, version 23H2 (OS build 25398) (preview)
-
-The following are the available updates for Azure Stack HCI, version 23H2.
-
-All dates are listed in ISO 8601 format: *YYYY-MM-DD*
-
-| **OS build** | **Availability date** | **KB article** |
-|:-|:-|:-|
-| 25398.643 | 2024-01-09 | [KB 5034130](https://support.microsoft.com/topic/92a8b0fe-82f7-4c64-a9d8-7295ed6b9a06) |
-| 25398.584 | 2023-12-12 | [KB 5033383](https://support.microsoft.com/topic/41652ad2-c31c-48e4-b066-af2604c17d15) |
-| 25398.531 | 2023-11-14 | [KB 5032202](https://support.microsoft.com/topic/9981de59-9fae-4118-a636-131a8dd4a013) |
+This article provides a list of available updates for Azure Stack HCI, version 22H2.  
 
 ## Azure Stack HCI, version 22H2 (OS build 20349)
 
@@ -68,9 +45,6 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 20349.1249 | 2022-11-08 | [KB 5019081](https://support.microsoft.com/topic/d53a4cf1-0987-4ab7-a529-23f7136f4083) |
 | 20349.1194 | 2022-10-25 | [KB 5018485](https://support.microsoft.com/topic/513988dc-4a9f-40ca-b089-e4c7703ad06e) |
 
-## Release notes
+## Next steps
 
-For information about what's included in each version of Azure Stack HCI, see the following release notes:
-
-- [Release Notes for Azure Stack HCI, version 23H2](https://support.microsoft.com/topic/9981de59-9fae-4118-a636-131a8dd4a013)
 - [Release Notes for Azure Stack HCI, version 22H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-22h2-fea63106-a0a9-4b6c-bb72-a07985c98a56)

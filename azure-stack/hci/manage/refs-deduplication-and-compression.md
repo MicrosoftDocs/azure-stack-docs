@@ -1,19 +1,17 @@
 ---
-title: Optimize storage with ReFS deduplication and compression in Azure Stack HCI (preview)
-description: Learn how to use ReFS deduplication and compression in Azure Stack HCI to optimize storage.  (preview)
+title: Optimize storage with ReFS deduplication and compression in Azure Stack HCI
+description: Learn how to use ReFS deduplication and compression in Azure Stack HCI to optimize storage.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/17/2023
+ms.date: 01/31/2024
 ---
 
-# Optimize storage with ReFS deduplication and compression in Azure Stack HCI (preview)
+# Optimize storage with ReFS deduplication and compression in Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes the Resilient File System (ReFS) deduplication and compression feature and how to use this feature in Azure Stack HCI to optimize storage.
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## What is ReFS deduplication and compression?
 

@@ -28,7 +28,7 @@ The managed identity serves as an identity for the various components of your cl
 
 - **Monitor Azure Stack HCI Insights with Azure Monitor Agent** – The enhanced Azure Stack HCI Insights feature in Azure Monitor requires the Azure Monitor Agent instead of the legacy Microsoft Monitoring Agent (MMA). The Azure Monitor Agent uses managed identity to send logs and data to your Log Analytics workspace.
 
-    For more information, see [Monitor Azure Stack HCI with Azure Monitor Insights](./monitor-hci-single.md).
+    For more information, see [Monitor Azure Stack HCI with Azure Monitor Insights](./monitor-hci-single-23h2.md).
 
 - **Protection of VM workloads via Azure Site Recovery** - You can protect your business critical VM workloads running on Azure Stack HCI cluster by replicating the VMs using the Azure Site Recovery agent which is deployed as an Arc for Server extension. The Azure Stack HCI cluster managed identity is used to download a key credential file from Azure. This file lets the agent know which service to talk to and which Recovery services vault to communicate with. This mechanism allows us to scope the access to the Recovery services vault to only the applicable Azure Stack HCI clusters.
 

@@ -3,13 +3,15 @@ title: Create an Azure Stack HCI cluster using Windows PowerShell
 description: Learn how to create a cluster for Azure Stack HCI using Windows PowerShell
 author: ronmiab
 ms.topic: how-to
-ms.date: 11/16/2023
+ms.date: 01/31/2024
 ms.author: robess
 ms.reviewer: robhind
 ---
 # Create an Azure Stack HCI cluster using Windows PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
 
 In this article, you learn how to use Windows PowerShell to create an Azure Stack HCI hyperconverged cluster that uses Storage Spaces Direct. If you're rather use the Cluster Creation wizard in Windows Admin Center to create the cluster, see [Create the cluster with Windows Admin Center](create-cluster.md).
 
@@ -62,7 +64,7 @@ First, connect to each of the servers, join them to a domain (the same domain th
 
 To connect to the servers, you must first have network connectivity, be joined to the same domain or a fully trusted domain, and have local administrative permissions to the servers.
 
-Open PowerShell and use either the fully-qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server.
+Open PowerShell and use either the fully qualified domain name or the IP address of the server you want to connect to. You'll be prompted for a password after you run the following command on each server.
 
 For this example, we assume that the servers are named Server1, Server2, Server3, and Server4:
 

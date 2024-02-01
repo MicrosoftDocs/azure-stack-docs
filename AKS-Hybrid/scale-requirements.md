@@ -1,5 +1,5 @@
 ---
-title: Scale requirements for AKS on Azure Stack HCI (preview)
+title: Scale requirements for AKS on Azure Stack HCI
 description: Learn about scale requirements for AKS on Azure Stack HCI.
 ms.topic: conceptual
 ms.date: 12/13/2023
@@ -10,7 +10,7 @@ ms.lastreviewed: 12/12/2023
 
 ---
 
-# Scale requirements for AKS on Azure Stack HCI (preview)
+# Scale requirements for AKS on Azure Stack HCI
 
 This article describes the maximum and minimum supported scale count for AKS on Azure Stack HCI clusters and node pools.
 
@@ -19,7 +19,7 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 - 8 physical nodes.
 - A maximum of 200 VMs (in any configuration of clusters, worker nodes).
 
-## Support count for AKS on HCI (preview)
+## Support count for AKS on HCI
 
 | Scale item                                                               | Count                                      |
 |--------------------------------------------------------------------------|--------------------------------------------|
