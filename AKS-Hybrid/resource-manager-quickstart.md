@@ -156,7 +156,6 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
           },
           "controlPlaneIp": {
             "type": "string",
-            "defaultValue": "100.72.19.222",
               "metadata": {
                   "description": "Control plane IP address."
               }
@@ -190,7 +189,6 @@ The template used in this quickstart is from the Azure Quickstart Templates repo
           },
           "customLocation": {
             "type": "string",
-            "defaultValue": "/subscriptions/de3c4d5e-af08-451a-a873-438d86ab6f4b/resourcegroups/edgeci-registration-rr1n22r0915/providers/microsoft.extendedlocation/customlocations/cluster-884ad0596b2d4308b3380ff7f3ba9524-mocarb-cl",
             "metadata": {
                   "description": "Fully qualified custom location resource Id."
               }
