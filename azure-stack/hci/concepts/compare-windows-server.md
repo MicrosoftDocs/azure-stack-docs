@@ -6,12 +6,12 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/24/2021
+ms.date: 02/01/2024
 ---
 
 # Compare Azure Stack HCI to Windows Server
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022
 
 This article explains key differences between Azure Stack HCI and Windows Server and provides guidance about when to use each. Both products are actively supported and maintained by Microsoft. Many organizations choose to deploy both as they are intended for different and complementary purposes.
 
@@ -99,7 +99,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
 
-For more information, see [What's New in Azure Stack HCI, version 22H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
+For more information, see [What's New in Azure Stack HCI, version 23H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
 
 ## Compare management options
 
@@ -114,9 +114,9 @@ The following table compares the management options for Azure Stack HCI and Wind
 | Azure portal | Yes (natively) | Requires Azure Arc agent |
 | Azure portal > Extensions and Arc-enabled host | Yes | Manual <sup>1</sup>|
 | Azure portal > Windows Admin Center integration (preview) | Yes | Azure VMs only <sup>1</sup>|
-| Azure portal > Multi-cluster monitoring for Azure Stack HCI (preview) | Yes | No |
+| Azure portal > Multi-cluster monitoring for Azure Stack HCI | Yes | No |
 | Azure portal > Azure Resource Manager integration for clusters | Yes | No |
-| Azure portal > Arc VM management (preview) | Yes | No |
+| Azure portal > Arc VM management | Yes | No |
 | Desktop experience | No | Yes |
 
 <sup>1</sup> Requires manually installing the Arc-git statusConnected Machine agent on every machine.
