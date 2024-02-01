@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Hub overview 
-description: An overview of what Azure Stack Hub is and how it lets you run Azure services in your datacenter.  
+title: Azure Stack Hub overview
+description: An overview of what Azure Stack Hub is and how it lets you run Azure services in your datacenter.
 author: sethmanheim
 
 ms.topic: overview
@@ -8,11 +8,9 @@ ms.date: 01/31/2022
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/08/2019
-ms.custom: contperf-fy22q2
 
 # Intent: As an Azure Stack operator, I want an overview of what Azure Stack is so I can start using it.
 # Keyword: use azure stack
-
 ---
 
 # Azure Stack Hub overview
