@@ -2,16 +2,21 @@
 title: Use manual (offline) download in AKS enabled by Azure Arc
 description: Learn how to use manual (offline) download in AKS enabled by Arc.
 ms.topic: how-to
-ms.date: 01/19/2024
+ms.date: 02/01/2024
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 01/19/2024
+ms.lastreviewed: 01/31/2024
 ms.reviewer: waltero
 zone_pivot_groups: version-select
 
 ---
 
 # Use manual (offline) download in AKS enabled by Azure Arc
+
+::: zone pivot="aks-23h2"
+> [!NOTE]
+> This feature is currently in preview.
+::: zone-end
 
 ::: zone pivot="aks-22h2"
 If you have unreliable internet connectivity at your deployment location or you need to scan files and images for security and compliance before deploying, you can use offline downloading to install or update from a local path. There are two ways that you can use this feature: *onsite* or *offsite*. Onsite means that you download the AKS on HCI images at the same location in which you deploy. Offsite means that you download the AKS on HCI images to a different location (where you may have better internet connectivity), use a tool of your choice to transfer the images to your deployment site, and then install or update locally.
@@ -217,7 +222,7 @@ If you have unreliable internet connectivity at your deployment location or need
 Before you begin the download process, the following prerequisites are required:
 
 - The latest release of Azure CLI. For more information, see [how to update the Azure CLI](/cli/azure/update-azure-cli).
-- The latest release of the Azure CLI AKS Arc extension.
+- The latest release of the [Azure CLI AKS Arc extension](/cli/azure/aksarc).
 - Make sure you satisfied all the [system requirement prerequisites](system-requirements.md).
 
 ## Use manual download to create or update a Kubernetes cluster
