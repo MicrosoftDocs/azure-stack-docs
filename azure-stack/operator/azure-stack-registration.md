@@ -10,7 +10,6 @@ ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/19/2020
 ms.custom:
-  - contperf-fy21q4
   - devx-track-azurepowershell
 zone_pivot_groups: state-connected-disconnected
 
