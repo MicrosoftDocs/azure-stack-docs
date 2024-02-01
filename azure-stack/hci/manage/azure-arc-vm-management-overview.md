@@ -13,7 +13,7 @@ ms.date: 02/01/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article provides a brief overview of the Azure Arc VM management feature on Azure Stack HCI including the benefits, its components, and the high-level workflow.  
+This article provides a brief overview of the Azure Arc VM management feature on Azure Stack HCI including the benefits, its components, and high-level workflow.  
 
 
 ## About Azure Arc VM management

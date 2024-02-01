@@ -41,7 +41,7 @@ During the cluster deployment, an Arc Resource Bridge is created and the Azure C
 
 ### Connect to the cluster remotely
 
-If you are accessing the Azure Stack HCI system remotely, following requirements must be met:
+If you are accessing the Azure Stack HCI system remotely, the following requirements must be met:
  
 - The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you are using to connect to your Azure Stack HCI cluster.
 
