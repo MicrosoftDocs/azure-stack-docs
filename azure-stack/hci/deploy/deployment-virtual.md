@@ -1,14 +1,14 @@
 ---
-title: Deploy a virtual Azure Stack HCI version 23H2 system
-description: Describes how to perform an Azure Stack HCI version 23H2 virtualized deployment.
+title: Deploy a virtual Azure Stack HCI, version 23H2 system
+description: Describes how to perform an Azure Stack HCI, version 23H2 virtualized deployment.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 01/25/2024
+ms.date: 01/31/2024
 ---
 
-# Deploy a virtual Azure Stack HCI version 23H2 system
+# Deploy a virtual Azure Stack HCI, version 23H2 system
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
