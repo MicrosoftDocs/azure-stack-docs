@@ -5,7 +5,7 @@ ms.topic: overview
 author: sethmanheim
 ms.author: sethm
 ms.date: 04/19/2023
-ms.custom: "e2e-hybrid, contperf-fy22q1"
+ms.custom: e2e-hybrid
 ---
 
 # Azure Stack HCI hybrid capabilities with Azure services
