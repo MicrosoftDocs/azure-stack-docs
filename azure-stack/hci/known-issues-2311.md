@@ -25,10 +25,27 @@ For more information about the new features in this release, see [What's new in 
 
 This software release maps to software version number **10.2311.0.26**. This release supports new deployments and updates from 2310.
 
-Release notes for this version include the known issues in this release and release noted issues carried over from previous versions.
+Release notes for this version include the  issues fixed in this release,  known issues in this release, and release noted issues carried over from previous versions.
+
+## Fixed issues
+
+Here are the issues fixed in this release:
+
+|Feature|Issue|
+|------|------|
+| Networking |Use of proxy isn't supported in this release. |
+| Security <!--25420275--> |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |
+| Deployment <!--25710482--> |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |
+| Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |
+| Deployment |Password for deployment user (also referred to as `AzureStackLCMUserCredential` during Active Directory prep) and local administrator can't include a `:`(colon).| 
+| Arc VM management <!--25778815-->| Detaching a disk via the Azure CLI results in an error in this release. |
+| Arc VM management <!--25628443/25635316-->| A resource group with multiple clusters only shows storage paths of one cluster.|
+| Arc VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state doesn't match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.|
+| Arc VM management <!--25661776--> |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take 30 to 45 minutes. |
+| Arc VM management <!--25675277--> | While creating Arc VMs via the Azure CLI on Azure Stack HCI, if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.|
 
 
-# [Known issues in this release](#tab/known-issues-this-release)
+## Known issues in this release
 
 Here are the known issues in this release:
 
@@ -48,7 +65,7 @@ Here are the known issues in this release:
 | Add server and repair server <!--26154450--> | In this release, add server and repair server scenarios might fail with the following error: </br></br> *CloudEngine.Actions.InterfaceInvocationFailedException: Type 'AddNewNodeConfiguration' of Role 'BareMetal' raised an exception: The term 'Trace-Execution' isn't recognized as the name of a cmdlet, function, script file, or operable program*. | Follow these steps to work around this error: </br></br> 1. Create a copy of the required PowerShell modules on the new node. </br></br> 2. Connect to a node on your Azure Stack HCI system. </br></br> 3. Run the following PowerShell cmdlet: </br></br> Copy-Item "C:\Program Files\WindowsPowerShell\Modules\CloudCommon" "\\newserver\c$\\Program Files\WindowsPowerShell\Modules\CloudCommon" -recursive </br></br> For more information, see [Prerequisite for add and repair server scenarios](../hci/manage/add-server.md#software-prerequisites). |
 
 
-# [Known issues from previous releases](#tab/known-issues-previous-releases)
+## Known issues from previous releases
 
 Here are the known issues from previous releases:
 
@@ -71,26 +88,6 @@ Here are the known issues from previous releases:
 | Deployment | This issue is seen if an incorrect subscription or resource group was used during registration. When you register the server a second time with Arc, the **Azure Edge Lifecycle Manager** extension fails during the registration, but the extension state is reported as **Ready**. | Before you run the registration the second time:<br><br>Make sure to delete the following folders from your server(s): `C:\ecestore`, `C:\CloudDeployment`, and `C:\nugetstore`.<br>Delete the registry key using the  PowerShell cmdlet:<br>`Remove-Item HKLM:\Software\Microsoft\LCMAzureStackStampInformation` |
 | Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 | Update <!--X-->| When updating the Azure Stack HCI cluster via the Azure Update Manager, the update progress and results might not be visible in the Azure portal.| To work around this issue, on each cluster node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the cluster nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details might still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-4-download-check-readiness-and-install-updates). |
-
-
-# [Fixed issues](#tab/fixed-issues)
-
-Here are the issues fixed in this release:
-
-|Feature|Issue|
-|------|------|
-| Networking |Use of proxy isn't supported in this release. |
-| Security <!--25420275--> |When using the `Get-AzsSyslogForwarder` cmdlet with `-PerNode` parameter, an exception is thrown. You aren't able to retrieve the `SyslogForwarder` configuration information of multiple nodes. |
-| Deployment <!--25710482--> |During the deployment, Microsoft Open Cloud (MOC) Arc Resource Bridge installation fails with this error: Unable to find a resource that satisfies the requirement Size [0] Location [MocLocation].: OutOfCapacity\"\n". |
-| Deployment <!--25624270-->|Entering an incorrect DNS updates the DNS configuration in hosts during the validation and the hosts can lose internet connectivity. |
-| Deployment |Password for deployment user (also referred to as `AzureStackLCMUserCredential` during Active Directory prep) and local administrator can't include a `:`(colon).| 
-| Arc VM management <!--25778815-->| Detaching a disk via the Azure CLI results in an error in this release. |
-| Arc VM management <!--25628443/25635316-->| A resource group with multiple clusters only shows storage paths of one cluster.|
-| Arc VM management <!--25527606--> | When you create the Azure Marketplace image on Azure Stack HCI, sometimes the download provisioning state doesn't match the download percentage on Azure Stack HCI cluster. The provisioning state is returned as succeeded while the download percentage is reported as less than 100.|
-| Arc VM management <!--25661776--> |In this release, depending on your environment, the VM deployments on Azure Stack HCI system can take 30 to 45 minutes. |
-| Arc VM management <!--25675277--> | While creating Arc VMs via the Azure CLI on Azure Stack HCI, if you provide the friendly name of marketplace image, an incorrect Azure Resource Manager ID is built and the VM creation errors out.|
-
----
 
 
 ## Next steps

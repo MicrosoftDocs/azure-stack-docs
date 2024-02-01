@@ -14,15 +14,13 @@ ms.custom: "e2e-hybrid, contperf-fy22q1"
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-> Looking for the latest preview? See [What's new in Azure Stack HCI](whats-new.md).
-
 Azure Stack HCI is a hyperconverged infrastructure (HCI) solution that hosts Windows and Linux VM or containerized workloads and their storage. It's a hybrid product that connects the on-premises system to Azure for cloud-based services, monitoring, and management.
 
 ## Overview
 
 An Azure Stack HCI system consists of a server or a cluster of servers running the Azure Stack HCI operating system and connected to Azure. You can use the Azure portal to monitor and manage individual Azure Stack HCI systems as well as view all of your Azure Stack HCI deployments. You can also manage with your existing tools, including Windows Admin Center and PowerShell.
 
-Azure Stack HCI is available for download from the Azure portal with a free 60-day trial ([Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)).
+Azure Stack HCI is available for download from the Azure portal with a free 60-day trial ([Download Azure Stack HCI](./deploy/download-azure-stack-hci-23h2-software.md)).
 
 To acquire the servers to run Azure Stack HCI, you can purchase Azure Stack HCI integrated systems from a Microsoft hardware partner with the operating system pre-installed, or buy validated nodes and install the operating system yourself. See the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) for hardware options and use the Azure Stack HCI sizing tool to estimate hardware requirements.
 
@@ -113,7 +111,7 @@ To get started, you'll need:
     - An average latency of 5 ms round trip between sites if you want to do synchronous replication where writes occur simultaneously in both sites.
 - If you plan to use SDN, you'll need a virtual hard disk (VHD) for the Azure Stack HCI operating system to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md)).
 
-Make sure your hardware meets the [System requirements](concepts/system-requirements.md) and that your network meets the [physical network](concepts/physical-network-requirements.md) and [host network](concepts/host-network-requirements.md) requirements for Azure Stack HCI.
+Make sure your hardware meets the [System requirements](concepts/system-requirements-23h2.md) and that your network meets the [physical network](concepts/physical-network-requirements.md) and [host network](concepts/host-network-requirements.md) requirements for Azure Stack HCI.
 
 For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements, see [AKS requirements on Azure Stack HCI](/azure/aks/hybrid/overview#what-you-need-to-get-started).
 
@@ -126,3 +124,8 @@ Microsoft recommends purchasing Integrated Systems built by our hardware partner
 Browse the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog) to view Azure Stack HCI solutions from Microsoft partners such as ASUS, Blue Chip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
 Some Microsoft partners are developing software that extends the capabilities of Azure Stack HCI while allowing IT admins to use familiar tools. To learn more, see [Utility applications for Azure Stack HCI](concepts/utility-applications.md).
+
+
+## Next steps
+
+- Learn more about [Azure Stack HCI, version 23H2 deployment](./deploy/deployment-introduction.md).
