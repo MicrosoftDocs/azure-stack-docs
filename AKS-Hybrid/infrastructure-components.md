@@ -24,7 +24,7 @@ the same approach as any other components on Azure Stack HCI 23H2. This approach
 aspects of the Azure Stack HCI solution in one place, including the management of the OS, core agents and services, and the solution
 extension. AKS Arc infrastructure components, as part of solution extensions, will be updated through the update package of Azure Stack HCI 23H2.
 
-For more information, see the [Update overview for Azure Stack HCI, version 23H2](/azure-stack/hci/update/whats-the-lifecycle-manager-23h2).
+For more information, see the [Update overview for Azure Stack HCI, version 23H2](/azure-stack/hci/update/about-updates-23h2).
 
 ## Next steps
 
