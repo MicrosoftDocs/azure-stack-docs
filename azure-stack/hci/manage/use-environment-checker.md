@@ -24,7 +24,7 @@ The Environment Checker tool runs a series of tests on each server in your Azure
 The Environment Checker tool consists of the following validators:
 
 - **Connectivity validator.** Checks whether each server in the cluster meets the [connectivity requirements](../concepts/firewall-requirements.md?tabs=allow-table#firewall-requirements-for-outbound-endpoints). For example, each server in the cluster has internet connection and can connect via HTTPS outbound traffic to well-known Azure endpoints through all firewalls and proxy servers.
-- **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements.md). For example, all the servers in the cluster have the same manufacturer and model.
+- **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements-23h2.md). For example, all the servers in the cluster have the same manufacturer and model.
 - **Active Directory validator.** Checks whether the Active Directory preparation tool is run prior to running the deployment.
 - **Network validator.** Validates your network infrastructure for valid IP ranges provided by customers for deployment. For example, it checks there are no active hosts on the network using the reserved IP range.
 - **Arc integration validator.** Checks if the Azure Stack HCI cluster meets all the prerequisites for successful Arc onboarding.
@@ -54,8 +54,8 @@ This article describes how to run the Environment Checker in a standalone mode.
 
 Before you begin, complete the following tasks:
 
-- Review [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
-- Review [Firewall requirements for Azure Stack HCI](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table).
+- Review [Azure Stack HCI system requirements](../concepts/system-requirements-23h2.md).
+- Review [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 - Make sure you have access to a client computer that is running on the network where you'll deploy the Azure Stack HCI cluster.
 - Make sure that the client computer used is running PowerShell 5.1 or later.
 - Make sure you have permission to verify the Active Directory preparation tool is run.

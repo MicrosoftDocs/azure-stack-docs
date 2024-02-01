@@ -30,7 +30,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
 1. Establish a remote PowerShell session with the server node. Run PowerShell as administrator and run the following command:
 
     ```powershell
-    Enter-PSSession -ComputerName <server_IP_address>  -Credential <username\password for the server>
+    Enter-PSSession -ComputerName <server_IP_address> -Credential <username\password for the server>
     ```
 
 2. Get all the solutions updates and then filter the solution updates corresponding to a specific version. The version used corresponds to the version of solution update that failed to install.
