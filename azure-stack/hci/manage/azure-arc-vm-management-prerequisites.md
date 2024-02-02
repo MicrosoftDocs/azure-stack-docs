@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/30/2024
+ms.date: 02/01/2024
 ---
 
 # Azure Arc VM management prerequisites
@@ -21,14 +21,16 @@ The Azure requirements include:
 
 - To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces and VM images through the Azure portal, you  must have **Contributor** level access at the subscription level.
 
-- Arc VM management infrastructure is supported only in East US and West Europe regions only. For Arc VM management on Azure Stack HCI, all entities must be registered, enabled or created in the same region.
+- Arc VM management infrastructure is supported only in East US and West Europe regions. For Arc VM management on Azure Stack HCI, all entities must be registered, enabled or created in the same region.
 
     The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
 
 ## Azure Command-Line Interface (CLI) requirements
 
-You can connect to Azure Stack HCI system directly or you can access the cluster via a client. Depending on whether you are connecting to the cluster directly or via a client, the steps are different.
+You can connect to Azure Stack HCI system directly or you can access the cluster remotely. Depending on whether you are connecting to the cluster directly or remotely, the steps are different.
+
+For information on Azure CLI commands for Azure Stack HCI VMs, see [az stack-hci-vm](/cli/azure/stack-hci-vm).
 
 ### Connect to the cluster directly
 
@@ -37,9 +39,9 @@ If you are accessing the Azure Stack HCI cluster directly, no steps are needed o
 During the cluster deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the cluster. You can connect to and manage the cluster using the Azure CLI extension.
 
 
-### Connect to the cluster via a client
+### Connect to the cluster remotely
 
-If you are accessing the Azure Stack HCI system via a client, following requirements must be met:
+If you are accessing the Azure Stack HCI system remotely, the following requirements must be met:
  
 - The latest version of Azure Command-Line Interface (CLI). You must install this version on the client that you are using to connect to your Azure Stack HCI cluster.
 
