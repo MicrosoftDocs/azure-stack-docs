@@ -5,14 +5,14 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
-ms.date: 11/15/2023
-ms.lastreviewed: 11/15/2023
+ms.date: 02/02/2024
+ms.lastreviewed: 12/04/2023
 
 ---
 
 # Free Extended Security Updates (ESU) through Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)] and later.
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 The Extended Security Update (ESU) program enables you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Stack HCI comes with additional benefits and implementation steps – this article explains the specifics for Azure Stack HCI.
 
@@ -21,16 +21,12 @@ To get general information about the ESU program, products that are covered, and
 > [!NOTE]
 > Azure Stack HCI customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled server that is not Azure Stack HCI, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
 
-## Benefits of getting ESU for VMs on Azure Stack HCI
-
-There are several advantages to getting ESU through Azure, which extend to Azure Stack HCI:
-
-- **Free of charge**: You can get ESUs through Azure Stack HCI for free.
-- **Get an additional year of ESUs for Windows Server**: On Azure and Azure Stack HCI only, ESUs for Windows Server will end on January 14, 2024 and July 12, 2023 respectively; a year longer than the usual three-year ESU programs.
-
 ## Tutorial: Get free ESUs through Azure Stack HCI
 
 This tutorial walks you through how you can use [Azure verification for VMs](../deploy/azure-verification.md) to automatically unlock free ESUs on Azure Stack HCI. Azure verification is a feature on Azure Stack HCI that enables you to extend supported Azure-exclusive benefits to your cluster, including getting ESUs for free.
+
+> [!NOTE]
+> The steps in this tutorial apply to Azure Stack HCI version 23H2 and later only. If you're using version 22H2 and earlier, see the documentation for [Azure Benefits (22H2 and earlier)](azure-benefits.md).
 
 ### Prerequisites
 

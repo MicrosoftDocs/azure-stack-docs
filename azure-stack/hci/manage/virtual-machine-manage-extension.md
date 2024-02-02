@@ -1,15 +1,15 @@
 ---
-title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI (preview)
-description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal (preview).
+title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI 
+description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 02/02/2024
 ---
 
-# Manage VM extensions on Azure Stack HCI virtual machines (preview)
+# Manage VM extensions on Azure Stack HCI virtual machines 
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
@@ -17,7 +17,6 @@ This article describes how to install and manage VM extensions on your Azure Sta
 
 The VM extensions on your Azure Arc VMs on Azure Stack HCI are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc VMs.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Supported VM extensions 
 
@@ -36,17 +35,17 @@ Before you install and manage VM extensions, make sure that:
 
 ## Verify guest management is enabled
 
-To perform guest OS operations on the Arc-enabled VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
+To manage VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](./create-arc-virtual-machines.md).
+> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation via the Azure portal. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](./create-arc-virtual-machines.md).
 
 
 Follow these steps to verify that guest management is enabled using the Azure portal.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview)** > **Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources** > **Virtual machines**.
 
 1. From the list of the VMs displayed in the right-pane, select the VM where you’ll install the extension.
 
@@ -61,7 +60,7 @@ After the guest management enablement is verified, you can now add the VM extens
 
 Follow these steps in Azure portal to add a VM extension.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and go to **Settings > Extensions**.
  
@@ -89,7 +88,7 @@ You can get a list of all the VM extensions installed on your Azure Stack HCI cl
 
 Follow these steps in Azure portal to list the installed VM extensions.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  
@@ -102,7 +101,7 @@ Follow these steps in Azure portal to list the installed VM extensions.
 You might want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
 
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  

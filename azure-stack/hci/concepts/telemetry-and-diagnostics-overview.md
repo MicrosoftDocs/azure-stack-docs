@@ -6,13 +6,13 @@ ms.author: robess
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: shisab
-ms.date: 08/25/2023
+ms.date: 01/31/2024
 
 # CustomerIntent: As a content writer for Azure Stack HCI, I want to share viable information on the telemetry and diagnostics extension that will help users understand the feature and ways they can benefit from using it.
 ---
 # Azure Stack HCI telemetry and diagnostics extension
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides a brief overview, benefits, and available options for the telemetry and diagnostics extension used for your Azure Stack HCI cluster.
 
@@ -30,7 +30,7 @@ Some of the advantages of the telemetry and diagnostics extension include:
 
 - **Improved compliance:** Enables the telemetry and diagnostics data to comply with regional service and data residency requirements during data uploads.
   
-- **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly. With proactive log collection enabled, Microsoft can proactively collect logs and search for specific errors or exception patterns, which saves support time.
+- **Simplified log gathering and faster case resolution:** Lets you easily collect diagnostics logs. These logs are used by Microsoft Support and engineering team to resolve any system issues quickly.
 
 - **Reduced update impact:** Allows non-disruptive update of your Azure Stack HCI system and doesn't require a reboot of the host server.
 
@@ -58,36 +58,15 @@ To access the options to send telemetry data, follow these steps:
 
      - Retention of system data for up to a month.
      - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-     - **Proactive** log collection and upload of logs to an Azure Storage account for troubleshooting. Logs are captured and forwarded from your Azure Stack HCI system to Microsoft when a system health alarm is triggered.
 
-If your portal is unavailable and you need to enable proactive log collection, see the following:
-
-To enable proactive log collection, run this command:
-
-```powershell
-Enable-ProactiveLogCollection
-```
-
-To disable proactive log collection, run this command:
-
-```powershell
-Disable-ProactiveLogCollection
-```
-
-To check the state of your proactive log collection, run this command:
-
-```powershell
-Get-ProactiveLogCollectionState
-```
-
-> [!NOTE]
-> If enhanced data sharing isn't enabled, **Autonomous** log collection still occurs. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
+      > [!NOTE]
+      > If enhanced data sharing isn't enabled, **Autonomous** log collection still occurs. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 
 To identify and fix issues with your Azure Stack HCI solution, you can collect and send diagnostic logs to Microsoft. To manually collect and send diagnostic logs to Microsoft, use the `Send-DiagnosticData` cmdlet from any Azure Stack HCI server node. We recommend that you use this cmdlet to upload diagnostic data before opening a support case.
 
-For more information, see [Collect diagnostic logs (preview)](../manage/collect-logs.md).
+For more information, see [Collect diagnostic logs](../manage/collect-logs.md).
 
 ## Data collection consent
 

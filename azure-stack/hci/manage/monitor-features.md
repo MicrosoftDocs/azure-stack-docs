@@ -1,24 +1,22 @@
 ---
-title: Monitor Azure Stack HCI features with Insights (preview)
-description: Monitor Azure Stack HCI features with Insights (preview).
+title: Monitor Azure Stack HCI features with Insights
+description: Monitor Azure Stack HCI features with Insights.
 author: alkohli
 ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 01/31/2024
 ---
 
-# Monitor Azure Stack HCI features with Insights (preview)
+# Monitor Azure Stack HCI features with Insights
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use Insights to monitor key Azure Stack HCI features, such as Resilient File System (ReFS) deduplication and compression.
 
-To monitor Azure Stack HCI clusters with Insights, see [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md) and [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md).
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
+To monitor Azure Stack HCI clusters with Insights, see [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md) and [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md).
 
 ## About using Insights to monitor features
 
@@ -32,11 +30,11 @@ Enabling Insights on your Azure Stack HCI cluster provides access to a set of sa
 
 You must complete the following prerequisites before you can use Insights for monitoring Azure Stack HCI features:
 
-- You must have access to an Azure Stack HCI, version 23H2 (preview) cluster deployed, registered, and connected to Azure.
+- You must have access to an Azure Stack HCI, version 23H2 cluster deployed, registered, and connected to Azure.
 
 - Your cluster must be Arc-enabled and have [Azure Monitor extension installed](./arc-extension-management.md#install-an-extension).
 
-- You must have [Insights enabled on the cluster](./monitor-hci-single.md#enable-insights).
+- You must have [Insights enabled on the cluster](./monitor-hci-single-23h2.md#enable-insights).
 
 ## Monitor features with Insights
 
@@ -46,7 +44,7 @@ Follow these steps to monitor Azure Stack HCI features with Insights:
 
 1. In the Azure portal, browse to your Azure Stack HCI cluster resource page, and then select your cluster.
 
-1. Select **Insights** from the left pane, and then select the **Overview (Preview)** tab.
+1. Select **Insights** from the left pane, and then select the **Overview** tab.
 
     This tab provides a list of Azure Stack HCI features available for monitoring, along with descriptions of what is monitored, and the current monitoring status.
 
@@ -74,13 +72,13 @@ Based on the monitoring status, you can perform one of these actions:
 
 By default, monitoring for a feature isn't enabled and the monitoring status is displayed as **Not enabled**.
 
-When you enable monitoring for a feature, Insights automatically adds the necessary performance counters and Windows event logs to the associated data collection rule (DCR) within the cluster. Once the DCR is configured, you receive a success message, and the feature name changes from plain text to a clickable link on the **Overview (Preview)** tab.
+When you enable monitoring for a feature, Insights automatically adds the necessary performance counters and Windows event logs to the associated data collection rule (DCR) within the cluster. Once the DCR is configured, you receive a success message, and the feature name changes from plain text to a clickable link on the **Overview** tab.
 
 Once you enable monitoring, it takes around 20-30 minutes for Insights to start collecting data and provide health, performance, and usage insights.
 
 Follow these steps to enable monitoring for a feature:
 
-1. On the **Overview (Preview)** tab, select the feature with the **Not enabled** monitoring status.
+1. On the **Overview** tab, select the feature with the **Not enabled** monitoring status.
 
     :::image type="content" source="media/monitor-features/feature-not-enabled.png" alt-text="Screenshot that shows the status of ReFS deduplication and compression as not enabled." lightbox="media/monitor-features/feature-not-enabled.png":::
 
@@ -96,7 +94,7 @@ By disabling monitoring for a feature, Insights stops collecting monitoring data
 
 Follow these steps to disable monitoring for a feature:
 
-1. On the **Overview (Preview)** tab, select the feature with the **Enabled** monitoring status.
+1. On the **Overview** tab, select the feature with the **Enabled** monitoring status.
 
 1. On the **Disable selected insights** pane on the right, select the **Disable** button.
 
@@ -104,9 +102,9 @@ Follow these steps to disable monitoring for a feature:
 
 ### Enable or disable monitoring for multiple features
 
-Follow these steps to enable or disable monitoring for multiple features simultaneously from the **Overview (Preview)** tab.
+Follow these steps to enable or disable monitoring for multiple features simultaneously from the **Overview** tab.
 
-1. On the **Overview (Preview)** tab, select the checkboxes next to the desired features.
+1. On the **Overview** tab, select the checkboxes next to the desired features.
 
 1. Select either **Enable selected** or **Disable selected**. The **Enable selected insights** or **Disable selected insights** pane appears on the right. It displays a list of features that you selected to enable monitoring or disable monitoring.
 
@@ -114,11 +112,11 @@ Follow these steps to enable or disable monitoring for multiple features simulta
 
 ### Update monitoring for a feature
 
-On the **Overview (Preview)** tab, if **Monitoring status** of a feature is displayed as **Needs update**, it indicates that there are some configuration issues preventing Insights to collect data.
+On the **Overview** tab, if **Monitoring status** of a feature is displayed as **Needs update**, it indicates that there are some configuration issues preventing Insights to collect data.
 
 Follow these steps to update Insights:
 
-1. On the **Overview (Preview)** tab, select the **Needs update** link for the feature with the **Needs update** monitoring status.
+1. On the **Overview** tab, select the **Needs update** link for the feature with the **Needs update** monitoring status.
 
 1. On the right pane, select the **Needs update** button to install the required configuration updates for Insights.
 
@@ -132,7 +130,7 @@ Follow these steps to start monitoring the ReFS deduplication and compression fe
 
 1. Enable monitoring for ReFS deduplication and compression. For instructions, see [Enable monitoring for a feature](#enable-monitoring-for-a-feature).
 
-1. Select the feature name from the **Overview (Preview)** tab to open the workbook.
+1. Select the feature name from the **Overview** tab to open the workbook.
 
 ### What data is collected?
 
@@ -223,5 +221,5 @@ This tab shows the jobs performed overtime during the deduplication process and 
 
 ## Next steps
 
-- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single.md)
-- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi.md)
+- [Monitor a single Azure Stack HCI cluster with Insights](./monitor-hci-single-23h2.md)
+- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md)

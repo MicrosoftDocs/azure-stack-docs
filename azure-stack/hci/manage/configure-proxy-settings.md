@@ -4,12 +4,12 @@ description: Learn how to configure proxy settings for Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 11/01/2023
+ms.date: 11/21/2023
 ---
 
 # Configure proxy settings for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes how to configure proxy settings for Azure Stack HCI if your network uses a proxy server for internet access.
 
@@ -139,7 +139,7 @@ You can configure proxy settings for Microsoft Update and Cluster Cloud Witness 
 - To specify a list of host URLs that bypass proxy server, at the command prompt, type:
 
     ```cmd
-    netsh winhttp bypass-list="<URL to bypass>"
+    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list="<URL to bypass>"
     ```
 
 - To configure the Internet Explorer (IE) proxy settings at the machine level instead for the current user, import `WinInet` proxy configuration into `WinHTTP`.

@@ -1,18 +1,15 @@
 ---
-title: Validate system state with the Azure Stack Hub validation tool  
+title: Validate system state with the Azure Stack Hub validation tool
 description: Learn how to use the Azure Stack Hub validation tool to validate system state.
 author: sethmanheim
-
+ms.date: 01/23/2024
 ms.topic: article
-ms.date: 12/02/2021
 ms.author: sethm
 ms.reviewer: adshar
 ms.lastreviewed: 01/10/2020
-ms.custom: contperf-fy22q2
 
 # Intent: As an Azure Stack operator, I want to use the Azure Stack validation tool to validate the system state.
 # Keyword: azure stack validation tool
-
 ---
 
 
@@ -68,41 +65,61 @@ These low impact tests work on an infrastructure level and provide you with info
 | Test Category                                        | Argument for -Include and -Ignore |
 | :--------------------------------------------------- | :-------------------------------- |
 | Azure Stack Hub ACS Summary                              | AzsAcsSummary                     |
+| Azure Stack Hub Action Plan Status                       | AzsActionPlanStatus               |
+| Azure Stack Hub Agent Health                             | AzsAgentHealth                    |
+| Azure Stack AKS Arc Preview Summary                      | AzsAksArcPreviewSummary           |
 | Azure Stack Hub Active Directory Summary                 | AzsAdSummary                      |
 | Azure Stack Hub Alert Summary                            | AzsAlertSummary                   |
 | Azure Stack Hub Application Crash Summary                | AzsApplicationCrashSummary        |
 | Azure Stack Hub Backup Share Accessibility Summary       | AzsBackupShareAccessibility       |
-| Azure Stack Hub BMC Summary                              | AzsStampBMCSummary                |
-| Azure Stack Hub Cloud Hosting Infrastructure Summary     | AzsHostingInfraSummary            |
-| Azure Stack Hub Cloud Hosting Infrastructure Utilization | AzsHostingInfraUtilization        |
 | Azure Stack Hub Control Plane Summary                    | AzsControlPlane                   |
+| Azure Stack Hub DCB Validation                           | AzsDCBValidation                  |
 | Azure Stack Hub Defender Summary                         | AzsDefenderSummary                |
+| Azure Stack Hub ECE Provisioning Status                  | AzsEceProvisioningStatus          |
 | Azure Stack Hub External Certificates Summary            | AzsExternalCertificates           |
+| Azure Stack Hub GPU Configuration Summary                | AzsGpuConfigurationSummary        |
+| Azure Stack Hub Hardware Monitor Enable                  | AzsGpuConfigurationSummary        |
 | Azure Stack Hub Hosting Infrastructure Firmware Summary  | AzsHostingInfraFWSummary          |
+| Azure Stack Hub Hosting Infrastructure Summary           | AzsHostingInfraSummary            |
+| Azure Stack Hub Hosting Infrastructure Utilization       | AzsHostingInfraUtilization        |
+| Azure Stack Hub Identity Provider Connectivity           | AzsIdentityProviderConnectivity   |
+| Azure Stack Hub Identity Provider Status                 | AzsIdentityProviderStatus         |
 | Azure Stack Hub Infrastructure Capacity                  | AzsInfraCapacity                  |
+| Azure Stack Hub Infrastructure File Validation           | AzsInfraFileValidation            |
 | Azure Stack Hub Infrastructure Performance               | AzsInfraPerformance               |
 | Azure Stack Hub Infrastructure Role Summary              | AzsInfraRoleSummary               |
+| Azure Stack Hub Infrastructure Update Memory             | AzsInfraUpdateMemory              |
+| Azure Stack Hub Infrastructure Update Summary            | AzsInfraUpdateSummary             |
+| Azure Stack Hub NCImos Validation                        | AzsNCImosValidation               |
 | Azure Stack Hub Network Infra                            | AzsNetworkInfra                   |
+| Azure Stack Hub OEM Hardware                             | AzsOemHardware                    |
+| Azure Stack Hub OEM Update Prerequisites                 | AzsOemUpdatePrereqs               |
 | Azure Stack Hub Portal and API Summary                   | AzsPortalAPISummary               |
+| Azure Stack Hub RDMA Operational Status                  | AzsRdmaOperationalStatus          |
+| Azure Stack Hub Resource Provider Authentication Status  | AzsResourceProviderAuthStatus     |
 | Azure Stack Hub Scale Unit VM Events                     | AzsScaleUnitEvents                |
 | Azure Stack Hub Scale Unit VM Resources                  | AzsScaleUnitResources             |
 | Azure Stack Hub Scenarios                                | AzsScenarios                      |
-| Azure Stack Hub SDN Validation Summary                   | AzsSDNValidation                  |
 | Azure Stack Hub Service Fabric Role Summary              | AzsSFRoleSummary                  |
+| Azure Stack Hub SQL Diagnostics                          | AzsSQLDiagnostics                 |
+| Azure Stack Hub SQL Summary                              | AzsSQLSummary                     |
+| Azure Stack Hub Stamp BMC Summary                        | AzsStampBMCSummary                |
 | Azure Stack Hub Storage Data Plane                       | AzsStorageDataPlane               |
 | Azure Stack Hub Storage Services Summary                 | AzsStorageSvcsSummary             |
 | Azure Stack Hub SQL Store Summary                        | AzsStoreSummary                   |
-| Azure Stack Hub Update Summary                           | AzsInfraUpdateSummary             |
+| Azure Stack Hub Usage Summary                            | AzsUsage                          |
+| Azure Stack Hub Usage Bridge Summary                     | AzsUsageBridgeSummary             |
 | Azure Stack Hub VM Placement Summary                     | AzsVmPlacement                    |
 
 ### Cloud scenario tests
 
-In addition to the infrastructure tests above, you can also run cloud scenario tests to check functionality across infrastructure components. Cloud admin credentials are required to run these tests because they involve resource deployment.
+In addition to the infrastructure tests in the previous section, you can also run cloud scenario tests to check functionality across infrastructure components. Cloud admin credentials are required to run these tests because they involve resource deployment.
 
 > [!NOTE]
 > Currently you can't run cloud scenario tests using Active Directory Federated Services (AD FS) credentials.
 
 The following cloud scenarios are tested by the validation tool:
+
 - Resource group creation
 - Plan creation
 - Offer creation
@@ -196,6 +213,7 @@ The following example runs **Test-AzureStack** to test system readiness before i
 ```powershell
 Test-AzureStack -Group UpdateReadiness
 ```
+
 ### Run validation tool to test infrastructure backup settings
 
 *Before* configuring infrastructure backup, you can test the backup share path and credential using the **AzsBackupShareAccessibility** test:

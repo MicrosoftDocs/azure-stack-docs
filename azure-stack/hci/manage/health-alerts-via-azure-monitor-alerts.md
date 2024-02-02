@@ -1,22 +1,19 @@
 ---
-title: Use Azure Monitor alerts for Azure Stack HCI health alerts (preview)
-description: Learn how to use the Azure Monitor alerts to respond to Azure Stack HCI health alerts.(preview)
+title: Use Azure Monitor alerts for Azure Stack HCI health alerts
+description: Learn how to use the Azure Monitor alerts to respond to Azure Stack HCI health alerts.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 01/31/2024
 ---
 
-# Respond to Azure Stack HCI health alerts using Azure Monitor alerts (preview)
+# Respond to Azure Stack HCI health alerts using Azure Monitor alerts
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-
 This article describes how to use [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Stack HCI health alerts.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About integration of Azure Monitor and Azure Stack HCI alerts
 
@@ -29,17 +26,18 @@ For more information about Azure Monitor alerts, see [What are Azure Monitor ale
 The integration of Azure Monitor alerts with Azure Stack HCI offers several key benefits:
 
 - **No additional cost.** By enabling the health alerts capability, you automatically get Azure Monitor alerts for all your Azure Stack HCI cluster health issues at no additional cost. There's no need to set up Log Analytics or manually author any alert rules.
+
 - **Near real-time monitoring.** With Azure Stack HCI health alerts providing near real-time monitoring, you can detect issues as they occur and take immediate action, thereby reducing downtime.
+
 - **Customizability.** The Azure Stack HCI health alerts experience is built on top of Azure Monitor alerts. You can configure the alert processing rules to notify the right team via your preferred [Incident management partners](/azure/azure-monitor/partners), ensuring quick and effective response to the issues.
 
 ## Prerequisites  
 
 Here are the prerequisites for using health alerts with Azure Stack HCI:
 
-- Have access to an Azure Stack HCI, version 23H2 system that is deployed and registered. For more information, see [Deploy Azure Stack HCI via Azure portal](../deploy/deploy-via-portal.md). 
+- Have access to an Azure Stack HCI, version 23H2 system that is deployed and registered. For more information, see [Deploy Azure Stack HCI via Azure portal](../deploy/deploy-via-portal.md).
 
-
-## Configure alerts for Azure Stack HCI
+## Configure health alerts for Azure Stack HCI
 
 Here are the high-level steps to configure health alerts for Azure Stack HCI:
 
@@ -48,12 +46,9 @@ Here are the high-level steps to configure health alerts for Azure Stack HCI:
 
 ### Step 1: Turn on the health alerts capability
 
-Make sure your Azure subscription is activated for evaluation before you turn on the health alerts capability on your Azure Stack HCI system.
-
 When you enable alerts via the Azure portal, the Azure Monitor extension is installed in the background. To verify that this extension is installed, go to **Settings** > **Extensions** in the Azure portal. This extension shows up as **AzureEdgeAlerts** in the list of extensions.
 
 Follow these steps to turn on health alerts via the Azure portal.
-
 
 1. Go to your Azure Stack HCI cluster resource page and select your cluster. Under the **Capabilities** tab, select the **Health alerts** tile.
 
@@ -81,7 +76,7 @@ Here are some common use cases of how you can configure alert processing rules t
 
 For information about alert processing rules and how to configure them, see [Alert processing rules](/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal) and [Configure an alert processing rule](/azure/azure-monitor/alerts/alerts-processing-rules?tabs=portal#configure-an-alert-processing-rule).
 
-## Review alerts
+## Review health alerts
 
 In the Azure portal, you can review health alerts on your Azure Stack HCI cluster in real-time from the **Monitoring** > **Alerts** blade.
 
@@ -97,9 +92,8 @@ The **Alerts** blade has a high-level summary of alerts at each severity level. 
 
 To disable the health alerts capability, uninstall the Azure Monitor alerts extension that you installed earlier.
 
-For instructions, see [Uninstall an extension from the Azure portal](./arc-extension-management.md#uninstall-an-extension)
-
+For instructions, see [Uninstall an extension from the Azure portal](./arc-extension-management.md#uninstall-an-extension).
 
 ## Next steps
 
-- [View a list of health alerts](./health-service-faults.md) that you might run across within your Azure Stack HCI system.
+[View a list of health alerts](./health-service-faults.md) that you might run across within your Azure Stack HCI system.

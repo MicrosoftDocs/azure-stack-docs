@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/15/2023
+ms.date: 11/30/2023
 ---
 
 # What's in preview for Azure Stack HCI, 2306.4 release (preview)
@@ -26,7 +26,8 @@ The Azure Stack HCI preview channel features preview versions of Azure Stack HCI
 
 Azure Stack HCI, 2306.4 Supplemental Package is now in preview. You can deploy this package on servers running the English version of the Azure Stack HCI, version 22H2 OS. For more information on Azure Stack HCI, version 22H2, see [What's new](../whats-new.md).
 
-[!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp.md)]
+[!INCLUDE [hci-deployment-tool-sp](../../includes/hci-deployment-tool-sp-2306.md)]
+
 
 To learn more about the new deployment methods, see [Deployment overview](../deploy/deployment-tool-introduction.md).
 
@@ -34,12 +35,16 @@ To learn more about the new deployment methods, see [Deployment overview](../dep
 
 This release includes the Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to October 2023.
 
-- **Updated OS build**: This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to November 2023.
+- **Updated OS build**: This release includes Azure Stack HCI, version 22H2 operating system refreshed to include the latest cumulative update corresponding to October 2023.
 
-For more information on the November release, see [Azure Stack HCI, version 22H2 OS build 20349.1970](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+For more information on the October release, see [Azure Stack HCI, version 22H2 OS build 20349.2026](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
 
 > [!NOTE]
-> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on the November release, see [Azure Stack HCI, version 22H2 OS build 20349.1970](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+> The Supplemental Package supports only the English version of the Azure Stack HCI OS. Make sure to download the English version and use the refreshed ISO. For more information on the October release, see [Azure Stack HCI, version 22H2 OS build 20349.2026](../release-information.md#azure-stack-hci-version-22h2-os-build-20349).
+
+## Known issues
+
+To review a list of the known issues for this release, see [View known issues in Azure Stack HCI, 2306.4 Supplemental Package release (preview)](../hci-known-issues-2306-4.md).
 
 ## Next steps
 

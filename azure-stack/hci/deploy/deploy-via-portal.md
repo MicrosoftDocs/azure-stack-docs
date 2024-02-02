@@ -1,14 +1,16 @@
 ---
-title: Deploy an Azure Stack HCI system using the Azure portal (preview)
-description: Learn how to deploy an Azure Stack HCI system from the Azure portal (preview)
+title: Deploy an Azure Stack HCI system using the Azure portal
+description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 11/28/2023
+ms.date: 01/31/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
 
-# Deploy an Azure Stack HCI, version 23H2 system using the Azure portal (preview)
+# Deploy an Azure Stack HCI, version 23H2 system using the Azure portal
+
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article helps you deploy an Azure Stack HCI, version 23H2 system for testing using the Azure portal.
 
@@ -22,12 +24,12 @@ To instead deploy Azure Stack HCI, version 22H2, see [Create an Azure Stack HCI 
 ## Start the wizard and fill out the basics
 
 <!---1. Open the Azure portal and navigate to the Azure Stack HCI service (searching is an easy way) and then select **Deploy**.--->
-1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Stack HCI**. On the **Get started** tab, select **Deploy cluster (preview)**.
+1. Open a web browser, navigate to [**Azure portal**](https://portal.azure.com). Search for **Azure Arc**. Select **Azure Arc** and then go to **Infrastructure | Azure Stack HCI**. On the **Get started** tab, select **Deploy cluster**.
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
-4. Select the **Region** to store this system's Azure resources—in this preview you must use either **(US) East US** or **(Europe) West Europe**.
+4. Select the **Region** to store this system's Azure resources—in this release you must use either **(US) East US** or **(Europe) West Europe**.
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
@@ -84,7 +86,16 @@ Choose whether to create a new configuration for this system or to load deployme
 4. For the storage intent, enter the **VLAN ID** set on the network switches used for each storage network.
     :::image type="content" source="./media/deploy-via-portal/networking-tab-1.png" alt-text="Screenshot of the Networking tab with network intents in deployment via Azure portal." lightbox="./media/deploy-via-portal/networking-tab-1.png":::
 
-5. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
+1. To customize network settings for an intent, select **Customize network settings** and provide the following information:
+
+    - **Storage traffic priority**. This specifies the Priority Flow Control where Data Center Bridging (DCB) is used.
+    - **Cluster traffic priority**.
+    - **Storage traffic bandwidth reservation**. This parameter defines the bandwidth allocation in % for the storage traffic.
+    - **Adpater properties** such as **Jumbo frame size** (in bytes) and **RDMA protocol** (which can now be disabled).
+
+    :::image type="content" source="./media/deploy-via-portal/customize-networking-settings-1.png" alt-text="Screenshot of the customize network settings for a network intent used in deployment via Azure portal." lightbox="./media/deploy-via-portal/customize-networking-settings-1.png":::
+   
+1. Using the **Starting IP** and **Ending IP** (and related) fields, allocate a contiguous block of at least six static IP addresses on your management network's subnet, omitting addresses already used by the servers.
 
     These IPs are used by Azure Stack HCI and internal infrastructure (Arc Resource Bridge) that's required for Arc VM management and AKS Hybrid.
 
@@ -95,11 +106,12 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-2. Create a new **Storage account** to store the cluster witness file.
-<!---2. Enter an existing **Storage account** or create a new account to store the cluster witness file.
+2. Select an existing Storage account or create a new Storage account to store the cluster witness file. 
 
-    You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
---->
+    When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
+
+    :::image type="content" source="./media/deploy-via-portal/management-tab-2.png" alt-text="Screenshot of the Management tab with storage account for cluster witness for deployment via Azure portal." lightbox="./media/deploy-via-portal/management-tab-2.png":::
+
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
@@ -142,14 +154,26 @@ Choose whether to create a new configuration for this system or to load deployme
 3. Optionally add a tag to the Azure Stack HCI resource in Azure.
 
     Tags are name/value pairs you can use to categorize resources. You can then view consolidated billing for all resources with a given tag.
-4. Select **Next: Validation**.
+4. Select **Next: Validation**. Select **Start validation**. 
+
+    :::image type="content" source="./media/deploy-via-portal/validation-tab-1.png" alt-text="Screenshot of the Start validation selected in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-1.png"::: 
+
+
+1. The validation will take about 15 minutes for one to two server deployment and more for bigger deployments. Monitor the validation progress.
+
+    :::image type="content" source="./media/deploy-via-portal/validation-tab-2.png" alt-text="Screenshot of the validation in progress in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-2.png"::: 
 
 ## Validate and deploy the system
 
-1. Review the validation results, resolve any actionable issues, and then select **Next**.
+1. After the validation is complete, review the validation results. 
+
+    :::image type="content" source="./media/deploy-via-portal/validation-tab-3.png" alt-text="Screenshot of the successfully completed validation in Validation tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/validation-tab-3.png"::: 
+
+    If the validation has erorrs, resolve any actionable issues, and then select **Next: Review + create**.
 
     Don't select **Try again** while validation tasks are running as doing so can provide inaccurate results in this release.
-1. Review the settings that will be used for deployment and then select **Deploy** to deploy the system.
+
+1. Review the settings that will be used for deployment and then select **Review + create** to deploy the system.
 
     :::image type="content" source="./media/deploy-via-portal/review-create-tab-1.png" alt-text="Screenshot of the Review + Create tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/review-create-tab-1.png":::
 
@@ -165,21 +189,32 @@ To confirm that the system and all of its Azure resources were successfully depl
 1. In the Azure portal, navigate to the resource group into which you deployed the system.
 2. On the **Overview** > **Resources**, you should see the following:
 
-|Number of resources  | Resource type  |
-|---------|---------|
-| 1 per server | Machine - Azure Arc |
-| 1            | Azure Stack HCI     |
-| 1            | Resource bridge     |
-| 1            | Key vault           |
-| 1            | Custom location     |
-| 2*           | Storage account     |
-| 1 per workload volume | Azure Stack HCI storage path - Azure Arc |
+    |Number of resources  | Resource type  |
+    |---------|---------|
+    | 1 per server | Machine - Azure Arc |
+    | 1            | Azure Stack HCI     |
+    | 1            | Arc Resource Bridge |
+    | 1            | Key vault           |
+    | 1            | Custom location     |
+    | 2*           | Storage account     |
+    | 1 per workload volume | Azure Stack HCI storage path - Azure Arc |
+    
+    \* One storage account is created for the key vault and one for the audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
 
-\* Extra storage accounts may be created by this preview release. Normally there would be one storage account created for the key vault and one for audit logs, which is a locally redundant storage (LRS) account with a lock placed on it.
+## Rerun deployment
+
+If your deployment fails, you can rerun the deployment. In your cluster, go to **Deployments** and in the right-pane, select **Rerun deployment**.
+
+:::image type="content" source="./media/deploy-via-portal/rerun-deployment.png" alt-text="Screenshot of how to rerun a failed deployment via Azure portal." lightbox="./media/deploy-via-portal/rerun-deployment.png":::
+
+<!--1. In the Azure portal, go the resource group you used for the deployment and then navigate to **Deployments**.
+1. In the right-pane, from the top command bar, select **Redeploy**. This action reruns the deployment.
+
+    :::image type="content" source="./media/deploy-via-portal/redeploy-failed-deployment.png" alt-text="Screenshot of how to rerun a failed deployment via Azure portal." lightbox="./media/deploy-via-portal/redeploy-failed-deployment.png":::-->
 
 ## Post deployment tasks
 
-For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems.
+For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
 
@@ -194,11 +229,18 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
 1. Enable RDP.
 
     ```powershell
-    Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' -name "fDenyTSConnections" -Value 0
-    Set-NetFirewallRule -DisplayGroup 'Remote Desktop' -Enabled True
+    Enable-ASRemoteDesktop
+    ```
+    > [!NOTE]
+    > As per the security best practices, keep the RDP access disabled when not needed.
+
+1. Disable RDP.
+
+    ```powershell
+    Disable-ASRemoteDesktop
     ```
 
 ## Next steps
 
-- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI (preview)](../manage/create-storage-path.md).
-- [Get support for Azure Stack HCI deployment issues (preview)](../manage/get-support-for-deployment-issues.md).
+- If you didn't create workload volumes during deployment, create workload volumes and storage paths for each volume. For details, see [Create volumes on Azure Stack HCI and Windows Server clusters](../manage/create-volumes.md) and [Create storage path for Azure Stack HCI](../manage/create-storage-path.md).
+- [Get support for Azure Stack HCI deployment issues](../manage/get-support-for-deployment-issues.md).

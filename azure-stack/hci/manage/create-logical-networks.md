@@ -1,21 +1,20 @@
 ---
-title: Create logical networks for Azure Stack HCI cluster (preview)
-description: Learn how to create logical networks on your Azure Stack HCI cluster. The Arc VM running on your cluster used this logical network (preview).
+title: Create logical networks for Azure Stack HCI cluster 
+description: Learn how to create logical networks on your Azure Stack HCI cluster. The Arc VM running on your cluster used this logical network.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/28/2023
+ms.date: 01/03/2024
 ---
 
-# Create logical networks for Azure Stack HCI (preview)
+# Create logical networks for Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create or add logical network for your Azure Stack HCI cluster.
+This article describes how to create or add logical networks for your Azure Stack HCI cluster.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -43,15 +42,23 @@ Before you begin, make sure to complete the following prerequisites:
 
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
 
-## Sign in and set subscription
+## Create the logical network
+
+You can create a logical network using either the Azure Command-Line Interface (CLI) or by using the Azure portal.
+
+# [Azure CLI](#tab/azurecli)
+
+Complete the following steps to create a logical network using Azure CLI.
+
+### Sign in and set subscription
 
 [!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
 
-## Create logical network
+### Create logical network via CLI
 
-You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch for DHCP or a static configuration. The parameters used to create a DHCP and a static logical network are different.
+You can use the `az stack-hci-vm network lnet create` cmdlet to create a logical network on the VM switch for a DHCP or a static IP configuration. The parameters used to create a DHCP and a static logical network are different.
 
-### Create a static logical network
+#### Create a static logical network via CLI
 
 In this release, you can create virtual machines using a static IP only via the Azure CLI.
 
@@ -168,7 +175,7 @@ Create a static logical network when you want to create virtual machines with ne
   Once the logical network creation is complete, you're ready to create virtual machines with network interfaces on these logical networks.
 
 
-### Create a DHCP logical network
+#### Create a DHCP logical network via CLI
 
 Create a DHCP logical network when the underlying network to which you want to connect your virtual machines has DHCP. 
 
@@ -178,11 +185,11 @@ Follow these steps to configure a DHCP logical network:
 
     ```azurecli
     $lnetName = "myhci-lnet-dhcp"
-    $vSwitchName = '"ConvergedSwitch(management_compute_storage)"'
-    $subscription =  "<Subscription ID>" 
-    $resource_group = "myhci-rg"
-    $customLocationName = "myhci-cl" 
-    $customLocationID ="/subscriptions/$subscription/resourceGroups/$resource_group/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
+    $vSwitchName = "ConvergedSwitch(management_compute_storage)"
+    $subscription = "<subscription-id>"
+    $resourceGroup = "myhci-rg"
+    $customLocationName = "myhci-cl"
+    $customLocationID = "/subscriptions/$subscription/resourceGroups/$resourceGroup/providers/Microsoft.ExtendedLocation/customLocations/$customLocationName"
     $location = "eastus"
     ```
 
@@ -201,10 +208,11 @@ Follow these steps to configure a DHCP logical network:
     | **location** | Azure regions as specified by `az locations`. |
     | **vlan** | VLAN identifier for Arc VMs. Contact your network admin to get this value. A value of 0 implies that there's no VLAN ID. |
 
+
 1. Run the following cmdlet to create a DHCP logical network:
 
     ```azurecli
-    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetdynamicname --vm-switch-name $vmswitchname --ip-allocation-method "Dynamic"
+    az stack-hci-vm network lnet create --subscription $subscription --resource-group $resourceGroup --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vSwitchName --ip-allocation-method "Dynamic"
     ```
 
     Here's a sample output:
@@ -252,6 +260,81 @@ Follow these steps to configure a DHCP logical network:
     }
     ```
 
+# [Azure portal](#tab/azureportal)
+
+Complete the following steps to create a logical network using Azure portal.
+
+1. In the left pane, under **Resources**, select **Logical networks**.
+
+   :::image type="content" source="./media/create-logical-networks/select-logical-network.png" alt-text="Screenshot showing Resources pane in Azure portal." lightbox="./media/create-logical-networks/select-logical-network.png":::
+
+1. In the right pane, select **Create logical network**.
+
+   :::image type="content" source="./media/create-logical-networks/create-logical-network.png" alt-text="Screenshot showing logical network creation link." lightbox="./media/create-logical-networks/create-logical-network.png":::
+
+1. On the **Create logical network** page, on the **Basics** tab:
+
+    - Select the Azure subscription name.
+    - Select the associated resource group name.
+    - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created.
+    - Enter the virtual switch name that you saved earlier.
+    - The geographic region is automatically set to the region where you registered your cluster.
+    - The custom location is automatically populated from the cluster.
+
+    When complete, select **Next: Network Configuration**.
+
+   :::image type="content" source="./media/create-logical-networks/enter-network-name.png" alt-text="Screenshot showing Basics tab." lightbox="./media/create-logical-networks/enter-network-name.png":::
+
+### Create a static logical network via portal
+
+1. On the **Network configuration** tab, select **Static** and then enter the following:
+    - IPv4 address space (previously reserved).
+    - IP pools (if used).
+    - Default gateway address.
+    - DNS server address.
+    - VLAN ID (if used).
+
+    When complete, select **Review + Create**.
+
+   :::image type="content" source="./media/create-logical-networks/enter-ip-addresses.png" alt-text="Screenshot showing Network configuration tab." lightbox="./media/create-logical-networks/enter-ip-addresses.png":::
+
+1. On the **Review + Create** tab, review network settings and then select **Create**:
+
+   :::image type="content" source="./media/create-logical-networks/review-and-create-static.png" alt-text="Screenshot showing static network properties page." lightbox="./media/create-logical-networks/review-and-create-static.png":::
+
+### Create a DHCP logical network via portal
+
+1. On the **Network Configuration** tab, select **DHCP**, and then select **Review + Create**.
+
+1. Enter VLAN ID if used.
+
+   :::image type="content" source="./media/create-logical-networks/configure-dhcp.png" alt-text="Screenshot of DHCP configuration for logical network." lightbox="./media/create-logical-networks/configure-dhcp.png":::
+
+1. On the **Review + Create** tab, review settings and then select **Create**:
+
+   :::image type="content" source="./media/create-logical-networks/review-and-create.png" alt-text="Screenshot of Review + Create for the DHCP logical network." lightbox="./media/create-logical-networks/review-and-create.png":::
+
+### Deploy the logical network via portal
+
+These steps are the same for both static and DHCP network deployments.
+
+1. Verify the network deployment job was submitted:
+
+   :::image type="content" source="./media/create-logical-networks/submitting-deployment.png" alt-text="Screenshot of the submitted deployment job." lightbox="./media/create-logical-networks/submitting-deployment.png":::
+
+1. Verify that the deployment is in progress:
+
+   :::image type="content" source="./media/create-logical-networks/deployment-in-progress.png" alt-text="Screenshot indicating that the deployment job is in progress." lightbox="./media/create-logical-networks/deployment-in-progress.png":::
+
+1. Verify the deployment job has successfully completed and then select either **Pin to dashboard** or **Go to resource group**:
+
+   :::image type="content" source="./media/create-logical-networks/deployment-succeeded.png" alt-text="Screenshot of successful completion of the deployment job." lightbox="./media/create-logical-networks/deployment-succeeded.png":::
+
+1. In the resource group, select **Overview** and then verify the logical network is created and listed on the **Resources** tab:
+
+   :::image type="content" source="./media/create-logical-networks/verify-network-created.png" alt-text="Screenshot of the newly created logical network." lightbox="./media/create-logical-networks/verify-network-created.png":::
+
+---
 
 
 ## Next steps
