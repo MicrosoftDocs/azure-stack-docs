@@ -14,7 +14,7 @@ ms.date: 01/31/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article discusses the system requirements for servers, storage, and networking for Azure Stack HCI. If you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
+ This article discusses Azure, server and storage, networking, and other requirements for Azure Stack HCI. If you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
 ## Azure requirements
 
@@ -50,7 +50,7 @@ Before you begin, make sure that the physical server and storage hardware used t
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 
-The servers should also meet the following additional requirements:
+The servers should also meet these extra requirements:
 
 - Each server should have dedicated volumes for logs, with log storage at least as fast as data storage.
 
@@ -59,13 +59,13 @@ The servers should also meet the following additional requirements:
     > [!NOTE]
     > Host-bus adapter (HBA) cards must implement simple pass-through mode for any storage devices used for Storage Spaces Direct.
 
-- For additional feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
+For more feature-specific requirements for Hyper-V, see [System requirements for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows).
 
 ## Networking requirements
 
 An Azure Stack HCI cluster requires a reliable high-bandwidth, low-latency network connection between each server node.
 
-- Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md).
+Verify that physical switches in your network are configured to allow traffic on any VLANs you use. For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md).
 
 <!--## Maximum supported hardware specifications
 
@@ -107,7 +107,7 @@ This section contains OEM contact information and links to OEM Azure Stack HCI, 
 | Supermicro            | BigTwin 2U 2-Node   | [Configure BIOS settings](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BIOS)   | [Firmware update process](https://www.supermicro.com/en/support/resources/downloadcenter/firmware/MBD-X11DPT-B/BMC)    | [Driver update process](https://www.supermicro.com/wdl/CDR_Images/CDR-X11/)     |     |
 | Thomas-krenn          | All models    | [Configure BIOS settings](https://thomas-krenn.com/azshci-bios)   | [Firmware update process](https://thomas-krenn.com/azshci-driver)  | [Driver update process](https://thomas-krenn.com/azshci-driver)  |    |
 
-For a comprehensive list of all OEM contact information download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+For a comprehensive list of all OEM contact information, download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 ### BIOS setting
 
@@ -228,7 +228,7 @@ Check with your OEM regarding the necessary firmware that needs to be installed 
 
 ## Drivers and firmware via the Windows Admin Center extension
 
-You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
+You should always follow the OEM's recommended installation steps. With Azure Stack HCI, version 23H2, Windows Admin Center plugins can be used to install drivers and firmware. For a comprehensive list of all OEM contact information, download the [Azure Stack HCI OEM Contact](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-oem-contact-and-material.xlsx) spreadsheet.
 
 <!--|OEM    | Download link                                                    |
 |-------|------------------------------------------------------------------|

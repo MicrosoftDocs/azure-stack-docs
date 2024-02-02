@@ -203,6 +203,8 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
+    - name: Remote support extension
+      href: manage/remote-support-arc-extension.md
 
   - name: Storage
     items: 

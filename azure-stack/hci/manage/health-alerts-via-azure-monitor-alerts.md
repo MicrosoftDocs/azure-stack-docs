@@ -26,7 +26,9 @@ For more information about Azure Monitor alerts, see [What are Azure Monitor ale
 The integration of Azure Monitor alerts with Azure Stack HCI offers several key benefits:
 
 - **No additional cost.** By enabling the health alerts capability, you automatically get Azure Monitor alerts for all your Azure Stack HCI cluster health issues at no additional cost. There's no need to set up Log Analytics or manually author any alert rules.
+
 - **Near real-time monitoring.** With Azure Stack HCI health alerts providing near real-time monitoring, you can detect issues as they occur and take immediate action, thereby reducing downtime.
+
 - **Customizability.** The Azure Stack HCI health alerts experience is built on top of Azure Monitor alerts. You can configure the alert processing rules to notify the right team via your preferred [Incident management partners](/azure/azure-monitor/partners), ensuring quick and effective response to the issues.
 
 ## Prerequisites  
@@ -94,4 +96,4 @@ For instructions, see [Uninstall an extension from the Azure portal](./arc-exten
 
 ## Next steps
 
-- [View a list of health alerts](./health-service-faults.md) that you might run across within your Azure Stack HCI system.
+[View a list of health alerts](./health-service-faults.md) that you might run across within your Azure Stack HCI system.

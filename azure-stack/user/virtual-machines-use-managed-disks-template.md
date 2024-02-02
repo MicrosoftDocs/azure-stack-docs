@@ -8,7 +8,6 @@ ms.topic: how-to
 ms.reviewer: wellsluo
 ms.lastreviewed: 8/25/2020
 ms.custom:
-  - contperf-fy22q2
   - devx-track-arm-template
 ---
 

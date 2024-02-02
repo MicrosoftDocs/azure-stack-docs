@@ -4,14 +4,12 @@ description: Learn how to deploy from a private container registry to on-premise
 author: sethmanheim
 ms.topic: how-to
 ms.date: 11/02/2022
-ms.author: sethm 
+ms.author: sethm
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
-ms.custom: contperf-fy22q3
 
 # Intent: As a developer, I want to deploy a container image from a private container registry to AKS hybrid.
 # Keyword: private container registry Kubernetes on-premises
-
 ---
 
 # Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS hybrid
