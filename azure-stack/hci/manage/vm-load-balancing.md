@@ -1,6 +1,6 @@
 ---
 title: Virtual machine load balancing
-description: Use this topic to learn how to configure the VM load balancing feature in Azure Stack HCI and Windows Server.
+description: Use this article to learn how to configure the VM load balancing feature in Azure Stack HCI and Windows Server.
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
@@ -14,7 +14,7 @@ ms.date: 01/29/2024
 
 [!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 
-A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It is common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some servers in the cluster are hosting more virtual machines (VMs), while other servers are underutilized.
+A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It's common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some servers in the cluster are hosting more virtual machines (VMs), while other servers are underutilized.
 
 Enabled by default in Azure Stack HCI, Windows Server 2022, Windows Server 2019, and Windows Server 2016, VM load balancing is a feature that allows you to optimize server utilization in your clusters. It identifies over-committed servers and live migrates VMs from those servers to under-committed servers. Failure policies such as anti-affinity, fault domains (sites), and possible owners are honored.
 
@@ -40,7 +40,7 @@ When you join a new server to your cluster, the VM load balancing feature automa
 
 ### Recurring load balancing
 
-By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Here is the flow of the steps:
+By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Here's the flow of the steps:
 
 1. The memory pressure and CPU utilization are evaluated on all servers in the cluster.
 2. All servers exceeding the threshold and those below the threshold are identified.
