@@ -7,7 +7,7 @@ ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 01/31/2024
-ms.custom: "e2e-hybrid, contperf-fy22q1"
+ms.custom: e2e-hybrid
 ---
 
 # Azure Stack HCI solution overview

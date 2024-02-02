@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 02/01/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -15,17 +15,15 @@ ms.subservice: azure-stack-hci
 
 This article describes how to use Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2](../whats-new.md).
 
-## View WDAC settings
+## View WDAC settings via Azure portal
 
-### View WDAC settings via Azure portal
-
-Use WDAC policies to control which drivers and apps are allowed to run on your system.
+Use WDAC policies to control which drivers and apps are allowed to run on your system. You can only view WDAC settings via Azure portal. To manage the settings, see [Manage WDAC settings with PowerShell](manage-wdac.md#manage-wdac-settings-with-powershell).
 
 :::image type="content" source="media/manage-wdac/manage-wdac.png" alt-text="Screenshot that shows the Application control (WDAC) page on Azure portal." lightbox="media/manage-wdac/manage-wdac.png":::
 
-### Manage WDAC settings with PowerShell
+## Manage WDAC settings with PowerShell
 
-## Enable WDAC policy modes
+### Enable WDAC policy modes
 
 You can enable WDAC during or after deployment. Use PowerShell to enable or disable WDAC after deployment.
 
@@ -48,7 +46,7 @@ This is useful when:
 > [!NOTE]
 > When your application is blocked, WDAC creates a corresponding event. Review the Event log to understand details of the policy that's blocking your application. For more information, see the [Windows Defender Application Control operational guide](/windows/security/threat-protection/windows-defender-application-control/windows-defender-application-control-operational-guide).
 
-## Switch WDAC policy modes
+### Switch WDAC policy modes
 
 Follow these steps to switch between WDAC policy modes. These PowerShell commands interact with the Orchestrator to enable the selected modes.
 
@@ -56,7 +54,7 @@ Follow these steps to switch between WDAC policy modes. These PowerShell command
 
 <!--- ## Support for OEM extensions --->
 
-## Create a WDAC policy to enable third party software
+### Create a WDAC policy to enable third party software
 
 While using WDAC in enforcement mode, for your non-Microsoft signed software to run, build on the Microsoft-provided base policy by creating a WDAC supplemental policy. Additional information can be found in the [public WDAC documentation](/windows/security/threat-protection/windows-defender-application-control/deploy-multiple-windows-defender-application-control-policies#supplemental-policy-creation).
 
@@ -65,7 +63,7 @@ While using WDAC in enforcement mode, for your non-Microsoft signed software to 
 
 Create a new policy in the Multiple Policy Format as shown below. Then use ```Add-ASWDACSupplementalPolicy -Path Policy.xml``` to convert it to a supplemental policy and deploy it across nodes in the cluster.
 
-### Create a WDAC supplemental policy
+#### Create a WDAC supplemental policy
 
 Use the following steps to create a supplemental policy:
 

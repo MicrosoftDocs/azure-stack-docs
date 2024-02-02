@@ -6,12 +6,10 @@ ms.author: sethm
 ms.topic: how-to
 ms.date: 03/18/2022
 ms.lastreviewed: 03/18/2022
-ms.custom: contperf-fy22q1
 zone_pivot_groups: state-connected-disconnected
 
-# Intent: As an Azure Stack operator, I want to give an app to access Azure Stack Hub resources. 
+# Intent: As an Azure Stack operator, I want to give an app to access Azure Stack Hub resources.
 # Keyword: azure stack hub app access resources
-
 ---
 # Give an app access to Azure Stack Hub resources
 
