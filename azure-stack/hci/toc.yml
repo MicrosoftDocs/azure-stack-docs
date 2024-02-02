@@ -161,6 +161,8 @@
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
+    - name: License Windows Server VMs
+      href: manage/vm-activate.md
 
   - name: Trusted launch for Arc VMs
     items: 
@@ -170,6 +172,28 @@
         href: manage/trusted-launch-vm-deploy.md
       - name: Manage guest state protection key
         href: manage/trusted-launch-vm-import-key.md
+
+  - name: Manage VMs (Hyper-V)
+    items: 
+      - name: Extended Security Updates (ESUs)
+        href: ./manage/azure-benefits-esu.md
+      - name: Manage VMs
+        href: manage/vm.md
+      - name: Manage VMs with PowerShell
+        href: manage/vm-powershell.md
+      - name: Create VM affinity rules
+        href: manage/vm-affinity.md
+      - name: VM load balancing
+        href: manage/vm-load-balancing.md
+      - name: Dynamic CPU compatibility
+        href: manage/processor-compatibility-mode.md
+      - name: Use GPUs with clustered VMs
+        href: manage/use-gpu-with-clustered-vm.md
+      - name: Partition and share GPUs with VMs
+        href: manage/partition-gpu.md
+      - name: Attach GPU to Linux VM
+        href: manage/attach-gpu-to-linux-vm.md
+
 
   - name: Security
     items:
@@ -203,6 +227,8 @@
       href: manage/arc-extension-management.md
     - name: Telemetry and diagnostics extension
       href: concepts/telemetry-and-diagnostics-overview.md
+    - name: Remote support extension
+      href: manage/remote-support-arc-extension.md
 
   - name: Storage
     items: 
@@ -358,26 +384,6 @@
     items:
     - name: Manage VMs
       items:
-      - name: Activate Windows Server VMs
-        href: manage/vm-activate.md
-      - name: Manage VMs
-        href: manage/vm.md
-      - name: Manage VMs with PowerShell
-        href: manage/vm-powershell.md
-      - name: Extended Security Updates (ESUs)
-        href: ./manage/azure-benefits-esu.md
-      - name: Create VM affinity rules
-        href: manage/vm-affinity.md
-      - name: VM load balancing
-        href: manage/vm-load-balancing.md
-      - name: Dynamic CPU compatibility
-        href: manage/processor-compatibility-mode.md
-      - name: Use GPUs with clustered VMs
-        href: manage/use-gpu-with-clustered-vm.md
-      - name: Partition and share GPUs with VMs
-        href: manage/partition-gpu.md
-      - name: Attach GPU to Linux VM
-        href: manage/attach-gpu-to-linux-vm.md
       - name: Deploy Windows Server Azure Edition VMs
         href: manage/windows-server-azure-edition.md
       - name: Upgrade VMs to Windows Server Azure Edition
