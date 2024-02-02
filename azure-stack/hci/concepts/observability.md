@@ -33,7 +33,7 @@ Observability in Azure Stack HCI is achieved through the following data sources:
 
 ## How is observability installed?
 
-Observability and remote support are installed as part of the Azure Stack HCI deployment process. This allows the [orchestrator](../update/whats-the-lifecycle-manager-23h2.md) automate many of the steps involved in the deployment process. The goal is to offer a simple setup process that takes care of all the components, including observability.
+Observability and remote support are installed as part of the Azure Stack HCI deployment process. This allows the [orchestrator](../update/about-updates-23h2.md) automate many of the steps involved in the deployment process. The goal is to offer a simple setup process that takes care of all the components, including observability.
 
 ## Telemetry
 

@@ -22,7 +22,7 @@ For information on how to apply solution updates to clusters created with older 
 
 ## About solution updates
 
-The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Stack HCI, version 23H2](../update/whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of platform, service, and solution extension updates. For more information on each of these types of updates, see [About updates for Azure Stack HCI, version 23H2](../update/about-updates-23h2.md).
 
 <!--The update example used in this article doesn't include solution extension updates. For more information on solution extension updates, go to [How to install solution extension updates](../index.yml).-->
 
@@ -127,7 +127,7 @@ Before you discover the updates, you can manually validate the system health. Th
 2. Run the following command to validate system health via the [Environment Checker](../manage/use-environment-checker.md).
 
     ```powershell
-    $result=Test-EnvironmentReadiness
+    $result = Test-EnvironmentReadiness
     $result | ft Name,Status,Severity  
     ```
 
@@ -261,7 +261,7 @@ Discovering solution updates using the online catalog is the *recommended* metho
 3. Optionally review the versions of the update package components.
 
     ```powershell
-    $Update=Get-SolutionUpdate 
+    $Update = Get-SolutionUpdate 
     $Update.ComponentVersions
     ```
 

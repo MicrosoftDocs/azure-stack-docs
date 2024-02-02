@@ -110,7 +110,7 @@
 - name: Update 
   items:
   - name: About Updates
-    href: update/whats-the-lifecycle-manager-23h2.md
+    href: update/about-updates-23h2.md
   - name: Understand update phases
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
