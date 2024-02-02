@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 02/01/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -19,9 +19,9 @@ This article provides a brief conceptual overview of the various security featur
 
 ## Windows Defender Application Control
 
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md).
+Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md).
 
-## Security baseline and drift control
+## Security defaults
 
 Your Azure Stack HCI has more than 300 security settings enabled by default that provide a consistent security baseline, a baseline management system, and an associated drift control mechanism.
 
@@ -35,18 +35,20 @@ Secure baseline on Azure Stack HCI:
 - Reduces OPEX with a built-in drift protection mechanism and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
-For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../manage/manage-secure-baseline.md).
+For more information, see [Manage security defaults on Azure Stack HCI](../manage/manage-secure-baseline.md).
 
-## Volume encryption via BitLocker
+## BitLocker encryption
 
-All data-at-rest on your Azure Stack HCI cluster is protected with BitLocker XTS-AES 256-bit encryption. When you deploy your cluster, you have the option to modify security settings. By default, data-at-rest encryption is enabled on data volumes created during deployment. We recommend that you accept the default setting.
+Data-at-rest encryption is enabled on data volumes created during deployment. These data volumes include both infrastructure volumes and workload volumes. When you deploy your cluster, you have the option to modify security settings.
 
-We recommend that you store BitLocker recovery keys in a secure location outside of the system. Once Azure Stack HCI is successfully deployed, you can retrieve BitLocker recovery keys.
+By default, data-at-rest encryption is enabled during deployment. We recommend that you accept the default setting.
 
-For more information about BitLocker, see:
+You must store BitLocker recovery keys in a secure location outside of the system. Once Azure Stack HCI is successfully deployed, you can retrieve BitLocker recovery keys.
+
+For more information about BitLocker encryption, see:
 
 - [Use BitLocker with Cluster Shared Volumes (CSV)](../manage/bitlocker-on-csv.md).
-- [BitLocker encryption on Azure Stack HCI](../manage/manage-bitlocker.md).
+- [Manage BitLocker encryption on Azure Stack HCI](../manage/manage-bitlocker.md).
 
 ## Local built-in user accounts
 
@@ -99,7 +101,7 @@ Microsoft Defender for Cloud is a security posture management solution with ad
 
 With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual servers and Arc VMs.
 
-For more information, see [Manage system security with Microsoft Defender for Cloud](../manage/manage-security-with-defender-for-cloud.md).
+For more information, see [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
 
 ## Next steps
 
