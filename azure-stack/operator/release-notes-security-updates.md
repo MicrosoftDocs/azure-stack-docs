@@ -205,7 +205,7 @@ For more information about these vulnerabilities, click on the following links:
 - [CVE-2023-35362](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-35362)
 - [CVE-2023-35365](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-35365)
 - [CVE-2023-32056](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-32056)
-- [ADV230002]{.ul}s://msrc.microsoft.com/update-guide/vulnerability/ADV230002)
+- [ADV230002](https://msrc.microsoft.com/update-guide/vulnerability/ADV230002)
 - [CVE-2023-36871](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-36871)
 - [CVE-2023-35363](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-35363)
 - [CVE-2023-35308](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-35308)
@@ -281,7 +281,7 @@ For more information about these vulnerabilities, click on the following links:
 - [CVE-2023-33166](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-33166)
 - [CVE-2023-33164](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-33164)
 - [CVE-2023-33163](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-33163)
-- [ADV230001]{.ul}s://msrc.microsoft.com/update-guide/vulnerability/ADV230001)
+- [ADV230001](https://msrc.microsoft.com/update-guide/vulnerability/ADV230001)
 - [CVE-2023-21756](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2023-21756)
 
 ::: moniker-end
