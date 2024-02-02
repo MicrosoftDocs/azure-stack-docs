@@ -143,7 +143,7 @@
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
-        - name: Using sysprepped Ubuntu image
+        - name: Using Ubuntu VM image
           href: manage/virtual-machine-image-linux-sysprep.md
       - name: 3. Create logical networks
         href: manage/create-logical-networks.md
