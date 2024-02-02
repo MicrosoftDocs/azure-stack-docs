@@ -4,19 +4,17 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 11/06/2023
+ms.date: 02/02/2024
 ---
 
 
-- You have your Microsoft account with credentials to access Azure portal.
+- Make sure to review and [Complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
 
-- You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc.
+- You have access to an Azure Stack HCI cluster that is deployed, has an Arc Resource Bridge and a custom location.
 
-   - Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
+   - Go to the **Overview > Server** page in the Azure Stack HCI cluster resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
     
     :::image type="content" source="../hci/manage/media/manage-vm-resources/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../hci/manage/media/manage-vm-resources/azure-arc-connected.png":::
-
-- To enable Azure Arc VMs on your Azure Stack HCI, see [Deploying Azure Arc resource bridge](/azure-stack/hci/manage/azure-arc-vm-management-overview#azure-arc-resource-bridge-deployment-overview). As a part of Arc Resource Bridge deployment, you'll also create a custom location for your Azure Stack HCI cluster that you use later in the scenario. The custom location will also show up in the **Overview** page for Azure Stack HCI cluster.
 
 - For custom images in Azure Storage account, you have the following extra prerequisites:
 
