@@ -173,7 +173,7 @@
       - name: Manage guest state protection key
         href: manage/trusted-launch-vm-import-key.md
 
-  - name: Traditional VMs (Hyper-V)
+  - name: Non Arc VMs
     items: 
       - name: Extended Security Updates (ESUs)
         href: ./manage/azure-benefits-esu.md
