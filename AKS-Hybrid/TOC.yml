@@ -45,6 +45,8 @@
       href: deploy-container-registry.md
     - name: Manage multiple node pools
       href: manage-node-pools.md
+    - name: Manage control plane nodes in a cluster
+      href: manage-control-plane-nodes.md
     - name: Deploy a load balancer
       href: deploy-load-balancer.md
     - name: Retrieve certificate-based admin kubeconfig
