@@ -45,7 +45,7 @@ By default, data-at-rest encryption is enabled during deployment. We recommend t
 
 You must store BitLocker recovery keys in a secure location outside of the system. Once Azure Stack HCI is successfully deployed, you can retrieve BitLocker recovery keys.
 
-For more information about BitLocker, see:
+For more information about BitLocker encryption, see:
 
 - [Use BitLocker with Cluster Shared Volumes (CSV)](../manage/bitlocker-on-csv.md).
 - [Manage BitLocker encryption on Azure Stack HCI](../manage/manage-bitlocker.md).
