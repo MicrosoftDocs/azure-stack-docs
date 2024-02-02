@@ -20,15 +20,15 @@ The control plane includes the following core Kubernetes components:
 - **kube-apiserver**: The API server exposes the underlying Kubernetes APIs. This component provides the interaction for management tools, such as **kubectl** or the Kubernetes dashboard.
 - **etcd**: To maintain the state of your Kubernetes cluster and configuration, the highly available etcd is a key value store within Kubernetes.
 - **kube-scheduler**: When you create or scale applications, the scheduler determines what nodes can run the workload and starts them.
-- **kube-controller-manager**: The controller manager oversees a number of smaller controllers that perform actions such as replicating pods and handling node operations.
+- **kube-controller-manager**: The controller manager oversees smaller controllers that perform actions such as replicating pods and handling node operations.
 
-When you create a Kubernetes cluster, a single control plane node with a default VM size is automatically created for you. You also have the option to define the number and size of the node VMs. If you decide to scale your worker node pools, add new node pools, or if the resource needs of your applications change in AKS, you can manually scale the number of control plane nodes in the cluster.
+When you create a Kubernetes cluster, a single control plane node with a default VM size is automatically created for you. You can also define the number and size of the node VMs. If you decide to scale your worker node pools, add new node pools, or if the resource needs of your applications change in AKS, you can manually scale the number of control plane nodes in the cluster.
 
 For durability and high availability, it's recommended that you deploy 3 or 5 control plane nodes in a production Kubernetes cluster. For more information about running control plane nodes in production, see [Operating etcd in Kubernetes](https://kubernetes.io/docs/tasks/administer-cluster/configure-upgrade-etcd/?utm_source=thenewstack&utm_medium=website&utm_content=inline-mention&utm_campaign=platform#scaling-up-etcd-clusters).
 
 ## Set control plane node parameters while creating an AKS cluster
 
-The following example creates a Kubernetes cluster with 3 control plane nodes and 5 Linux worker nodes. You can use the [`az aksarc create`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-create) command to create Kubernetes clusters enabled by Azure Arc.
+The following example creates a Kubernetes cluster with 3 control plane nodes and 5 Linux worker nodes. You can use the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command to create Kubernetes clusters enabled by Azure Arc.
 
 ```azurecli
 az aksarc create -g my-resource-group --custom-location custom-location-id -n sample-aks-cluster --vnet-id vnet-aks-cluster --control-plane-count 3 --control-plane-vm-size Standard-A4-v2 --node-count 5
@@ -36,7 +36,7 @@ az aksarc create -g my-resource-group --custom-location custom-location-id -n sa
 
 ## Scale control plane nodes in an AKS cluster
 
-You can scale the control plane nodes in a Kubernetes cluster after you create the cluster using the [`az aksarc update`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-update) command.
+You can scale the control plane nodes in a Kubernetes cluster after you create the cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command.
 
 The following command scales the number of control plane nodes in the sample-aks-cluster to 5:
 
