@@ -621,24 +621,24 @@
       href: /rest/api/stackhci
     - name: .NET Namespaces for Azure Stack HCI
       href: /dotnet/api/overview/azure/stack-hci
-- name: For OS and storage management
-  items:
-  - name: Hyper-V PowerShell commands
-    href: /powershell/module/hyper-v
-  - name: Storage PowerShell commands
-    href: /powershell/module/storage
-  - name: ClusterAwareUpdating PowerShell commands
-    href: /powershell/module/clusterawareupdating
-  - name: FailoverClusters PowerShell commands
-    href: /powershell/module/failoverclusters
-  - name: StorageReplica PowerShell commands
-    href: /powershell/module/storagereplica
-  - name: NetAdapter PowerShell commands
-    href: /powershell/module/netadapter
-  - name: NetQoS PowerShell commands
-    href: /powershell/module/netqos
-  - name: DcbQoS PowerShell commands
-    href: /powershell/module/dcbqos
+  - name: For OS and storage management
+    items:
+    - name: Hyper-V PowerShell commands
+      href: /powershell/module/hyper-v
+    - name: Storage PowerShell commands
+      href: /powershell/module/storage
+    - name: ClusterAwareUpdating PowerShell commands
+      href: /powershell/module/clusterawareupdating
+    - name: FailoverClusters PowerShell commands
+      href: /powershell/module/failoverclusters
+    - name: StorageReplica PowerShell commands
+      href: /powershell/module/storagereplica
+    - name: NetAdapter PowerShell commands
+      href: /powershell/module/netadapter
+    - name: NetQoS PowerShell commands
+      href: /powershell/module/netqos
+    - name: DcbQoS PowerShell commands
+      href: /powershell/module/dcbqos
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
