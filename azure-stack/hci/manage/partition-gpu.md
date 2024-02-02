@@ -10,7 +10,7 @@ ms.reviewer: alkohli
 
 # Partition and share GPUs with virtual machines on Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 [!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 

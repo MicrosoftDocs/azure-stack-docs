@@ -10,7 +10,7 @@ ms.date: 01/29/2024
 ---
 # Virtual machine load balancing
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2, 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 [!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 
