@@ -37,7 +37,7 @@ You can run the Environment Checker to:
 - Identify the issues that could potentially block the deployment, such as not running a pre-deployment Active Directory script.
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
-- Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
+- Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the Azure Stack HCI system requirements.
 - Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
@@ -272,7 +272,7 @@ For example, if you want to verify the certificate information for two endpoints
 
 ## [Hardware](#tab/hardware)
 
-The hardware validator checks whether the servers and other hardware components meet the [system requirements](../concepts/system-requirements.md). For example, it checks if all physical servers in your cluster are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.
+The hardware validator checks whether the servers and other hardware components meet the [system requirements](../concepts/system-requirements-23h2.md). For example, it checks if all physical servers in your cluster are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.
 
 We recommend you use the hardware validator before starting the deployment.
 

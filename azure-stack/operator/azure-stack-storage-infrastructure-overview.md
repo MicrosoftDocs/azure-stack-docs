@@ -9,11 +9,9 @@ ms.date: 05/11/2020
 ms.author: sethm
 ms.lastreviewed: 5/5/2020
 ms.reviewer: jiaha
-ms.custom: contperf-fy20q4
 
 # Intent: As an Azure Stack operator, I want to understand storage infrastructure in Azure Stack.
 # Keyword: manage storage infrastructure azure stack
-
 ---
 
 

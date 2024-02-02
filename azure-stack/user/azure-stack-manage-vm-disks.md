@@ -1,5 +1,5 @@
 ---
-title: Create VM disk storage in Azure Stack Hub 
+title: Create VM disk storage in Azure Stack Hub
 description: Create disks for virtual machines in Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
@@ -8,7 +8,6 @@ ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 11/22/2020
 ms.custom:
-  - contperf-fy21q4
   - devx-track-azurepowershell
 
 # Intent: As an Azure Stack user, I want to create managed and unmanaged disk storage in Azure Stack so I can store OS files and other data.
