@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 01/30/2024
+ms.date: 02/02/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -242,10 +242,8 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     :::image type="content" source="./media/create-arc-virtual-machines/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-disk.png":::
 
     1. Provide a **Name** for the network interface. 
-    1. Select the **Network** and choose static or dynamic IP addresses.
-    1. Select IPv4 type as **Static** or **DHCP**.
-        
-        For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
+    1. From the dropddown list, select the **Network**. Based on the network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
+    1. For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
 
     1. Select **Add**.
 
