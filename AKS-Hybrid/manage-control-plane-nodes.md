@@ -1,6 +1,6 @@
 ---
 title: Manage control plane nodes in a Kubernetes cluster
-description: Learn how to manage control plane nodes in an AKS enabled by Azure Arc Kubernetes cluster
+description: Learn how to manage control plane nodes in an AKS enabled by Azure Arc Kubernetes cluster.
 ms.topic: how-to
 ms.date: 02/02/2024
 author: sethmanheim
