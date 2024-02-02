@@ -41,7 +41,7 @@ You can scale the control plane nodes in a Kubernetes cluster after you create t
 The following command scales the number of control plane nodes in the sample-aks-cluster to 5:
 
 ```azurecli
-az aksarc create -g my-resource-group -n sample-aks-cluster --control-plane-count 5
+az aksarc update -g my-resource-group -n sample-aks-cluster --control-plane-count 5
 ```
 
 ## Next steps
