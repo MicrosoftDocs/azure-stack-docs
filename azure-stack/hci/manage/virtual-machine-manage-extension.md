@@ -35,7 +35,7 @@ Before you install and manage VM extensions, make sure that:
 
 ## Verify guest management is enabled
 
-To perform guest OS operations on the Arc-enabled VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
+To manage VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
