@@ -77,7 +77,7 @@ Create a static logical network when you want to create virtual machines with ne
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
     $gateway = "192.168.200.1"
-    $dnsServers = " 192.168.200.222"
+    $dnsServers = "192.168.200.222"
     ```
 
     > [!NOTE]
