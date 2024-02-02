@@ -48,7 +48,7 @@ Use the `Get-AzSubscription` cmdlet to get the list of Azure subscriptions you h
 
 ## Initialize, replicate, and migrate
 
-With a new Azure Migrate project and associated appliance setup, initialize replication infrastructure, create and update replications of desired VMs, and migrate them to your desired target location using Azure PowerShell.
+With a new Azure Migrate project and associated source and target appliance setup, initialize replication infrastructure, create and update replications of desired VMs, and migrate them to your desired target location using Azure PowerShell.
 
 ### Retrieve discovered VMs
 
