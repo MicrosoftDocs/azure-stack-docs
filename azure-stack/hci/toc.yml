@@ -599,24 +599,30 @@
 
 - name: Reference
   items:
-  - name: Azure registration Azure CLI commands
-    href: /cli/azure/ext/stack-hci/stack-hci
-  - name: Azure registration PowerShell commands
-    href: /powershell/module/az.stackhci
-  - name: Azure Stack HCI VM PowerShell commands
-    href: /powershell/module/az.stackhcivm
-  - name: Go package for ARM Azure Stack HCI service API
-    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-  - name: Azure Stack HCI Java service classes and interfaces
-    href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-  - name: Azure Stack HCI management service Python package
-    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-  - name: Azure Stack HCI JavaScript package
-    href: /javascript/api/@azure/arm-azurestackhci
-  - name: Azure Stack HCI REST API reference
-    href: /rest/api/stackhci
-  - name: .NET Namespaces for Azure Stack HCI
-    href: /dotnet/api/overview/azure/stack-hci
+  - name: For Azure Arc VM management
+    items:
+    - name: Azure Stack HCI VM PowerShell commands
+      href: /powershell/module/az.stackhcivm
+  - name: For Azure Stack HCI cluster, service, and management
+    items:
+    - name: Azure registration Azure CLI commands
+      href: /cli/azure/ext/stack-hci/stack-hci
+    - name: Azure registration PowerShell commands
+      href: /powershell/module/az.stackhci
+    - name: Go package for ARM Azure Stack HCI service API
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+    - name: Azure Stack HCI Java service classes and interfaces
+      href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
+    - name: Azure Stack HCI management service Python package
+      href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
+    - name: Azure Stack HCI JavaScript package
+      href: /javascript/api/@azure/arm-azurestackhci
+    - name: Azure Stack HCI REST API reference
+      href: /rest/api/stackhci
+    - name: .NET Namespaces for Azure Stack HCI
+      href: /dotnet/api/overview/azure/stack-hci
+- name: For OS and storage management
+  items:
   - name: Hyper-V PowerShell commands
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands
