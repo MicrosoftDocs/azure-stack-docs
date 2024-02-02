@@ -5,8 +5,8 @@ ms.topic: how-to
 ms.date: 02/02/2024
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 02/02/2024
 ms.reviewer: abha
+ms.lastreviewed: 02/02/2024
 
 # Intent: As an IT Pro, I need to learn how to manage control plane nodes in an AKS Kubernetes cluster
 # Keyword: node count scale clusters control plane nodes
@@ -46,6 +46,6 @@ az aksarc create -g my-resource-group -n sample-aks-cluster --control-plane-coun
 
 ## Next steps
 
-In this article, you learned how to manually scale an AKS cluster to increase the number of control plane nodes. Next, you can:
+In this article, you learned how to manually scale a Kubernetes cluster to increase the number of control plane nodes. Next, you can:
 
 - [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md).
