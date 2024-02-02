@@ -14,7 +14,7 @@ ms.reviewer: stevenek
 
 Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI.
 
-[!INCLUDE [manage-arc-vm](../../includes/manage-arc-vm.md)]
+[!INCLUDE [hci-arc-vm-wac](../../includes/hci-arc-vm-wac.md)]
 
 Typically, you manage VMs from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 

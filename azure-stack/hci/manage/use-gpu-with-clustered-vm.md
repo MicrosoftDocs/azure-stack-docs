@@ -11,7 +11,7 @@ ms.date: 01/29/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-[!INCLUDE [manage-arc-vm-2](../../includes/manage-arc-vm-2.md)]
+[!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 
 This topic provides guidance on how to use graphics processing units (GPUs) with clustered virtual machines (VMs) running the Azure Stack HCI operating system to provide GPU acceleration to workloads in the clustered VMs.
 

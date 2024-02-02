@@ -12,7 +12,7 @@ ms.date: 01/29/2024
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-[!INCLUDE [manage-arc-vm-2](../../includes/manage-arc-vm-2.md)]
+[!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 
 A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It is common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some servers in the cluster are hosting more virtual machines (VMs), while other servers are underutilized.
 

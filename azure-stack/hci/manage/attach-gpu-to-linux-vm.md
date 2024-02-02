@@ -11,7 +11,7 @@ ms.date: 01/29/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-[!INCLUDE [manage-arc-vm-2](../../includes/manage-arc-vm-2.md)]
+[!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 
 This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
 This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.
