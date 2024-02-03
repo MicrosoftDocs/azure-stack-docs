@@ -115,7 +115,7 @@ Depending on the type of the network interface that you created, you can create 
     If creating a VM behind a proxy server, you can run the following command:
 
    ```azurecli
-    az stack-hci-vm create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $vmName --size "Default" --image $galleryImageName --nics $vnicName --admin-username $vmAdminUserName --admin-password $vmAdminPassword --computer-name $computerName --ssh-key-values $sshPublicKeyFile --authentication-type all --enable-agent true
+    az stack-hci-vm create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $vmName --size "Default" --image $imageName --nics $vnicName --admin-username $vmAdminUserName --admin-password $vmAdminPassword --computer-name $computerName --ssh-key-values $sshPublicKeyFile --authentication-type all --enable-agent true
     --proxy-configuration http_proxy="<URL of proxy server>" https_proxy="<>" no_proxy="<>" cert_file_path="<>" 
    ```
 
@@ -128,14 +128,14 @@ Depending on the type of the network interface that you created, you can create 
     | **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
     | **cert_file_path**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
    <!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
-    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `PleaseUseAStrongerPassword!` |-->
+    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
 
 
     Here is a sample command:
 
     ```azurecli
-    az stack-hci-vm create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $vmName --size "Default" --image $galleryImageName --nics $vnicName --admin-username $vmAdminUserName --admin-password $vmAdminPassword --computer-name $computerName --ssh-key-values $sshPublicKeyFile --authentication-type all --enable-agent true
-    --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.v.masd.stbtest.microsoft.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
+    az stack-hci-vm create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $vmName --size "Default" --image $imageName --nics $vnicName --admin-username $vmAdminUserName --admin-password $vmAdminPassword --computer-name $computerName --ssh-key-values $sshPublicKeyFile --authentication-type all --enable-agent true
+    --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
     ```
 
 
