@@ -104,7 +104,7 @@ Depending on the type of the network interface that you created, you can create 
     | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
     | **storage-path-id** |The associated storage path where the VM configuration and the data are saved.  |
-    | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM.  |
+    | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
 
 1. Run the following command to create a VM.
 
