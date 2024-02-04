@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 02/02/2024
+ms.date: 02/03/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -127,11 +127,11 @@ If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is au
 ### Create a VM with proxy configured
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
+
 If creating a VM behind a proxy server, run the following command:
 
 ```azurecli
-az stack-hci-vm create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $vmName --size "Default" --image $imageName --nics $vnicName --admin-username $vmAdminUserName --admin-password $vmAdminPassword --computer-name $computerName --ssh-key-values $sshPublicKeyFile --authentication-type all --enable-agent true
---proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your server>" 
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your server>" 
 ```
 
 You can input the following parameters for `proxy-server-configuration`:
@@ -149,10 +149,9 @@ You can input the following parameters for `proxy-server-configuration`:
 Here is a sample command:
 
 ```azurecli
-az stack-hci-vm create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $vmName --size "Default" --image $imageName --nics $vnicName --admin-username $vmAdminUserName --admin-password $vmAdminPassword --computer-name $computerName --ssh-key-values $sshPublicKeyFile --authentication-type all --enable-agent true
---proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
 ```
-
+For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
 ### Create a Linux VM from network interface
 
