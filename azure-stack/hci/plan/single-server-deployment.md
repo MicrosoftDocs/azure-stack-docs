@@ -2,8 +2,8 @@
 title: Azure Stack HCI single node storage deployment network reference pattern
 description: Plan to deploy an Azure Stack HCI single-server storage network reference pattern.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
