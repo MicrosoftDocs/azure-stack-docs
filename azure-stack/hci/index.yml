@@ -47,7 +47,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: About updates
-            url: update/whats-the-lifecycle-manager-23h2.md
+            url: update/about-updates-23h2.md
       - linkListType: how-to-guide
         links:
           - text: Update via Azure portal

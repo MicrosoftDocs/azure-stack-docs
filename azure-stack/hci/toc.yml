@@ -110,7 +110,7 @@
 - name: Update 
   items:
   - name: About Updates
-    href: update/whats-the-lifecycle-manager-23h2.md
+    href: update/about-updates-23h2.md
   - name: Understand update phases
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
@@ -143,7 +143,7 @@
           href: manage/virtual-machine-image-storage-account.md
         - name: Using images in local share 
           href: manage/virtual-machine-image-local-share.md
-        - name: Using sysprepped Ubuntu image
+        - name: Using Ubuntu VM image
           href: manage/virtual-machine-image-linux-sysprep.md
       - name: 3. Create logical networks
         href: manage/create-logical-networks.md
@@ -161,6 +161,8 @@
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
+    - name: License Windows Server VMs
+      href: manage/vm-activate.md
 
   - name: Trusted launch for Arc VMs
     items: 
@@ -170,6 +172,28 @@
         href: manage/trusted-launch-vm-deploy.md
       - name: Manage guest state protection key
         href: manage/trusted-launch-vm-import-key.md
+
+  - name: Non Arc VMs
+    items: 
+      - name: Extended Security Updates (ESUs)
+        href: ./manage/azure-benefits-esu.md
+      - name: Manage VMs
+        href: manage/vm.md
+      - name: Manage VMs with PowerShell
+        href: manage/vm-powershell.md
+      - name: Create VM affinity rules
+        href: manage/vm-affinity.md
+      - name: VM load balancing
+        href: manage/vm-load-balancing.md
+      - name: Dynamic CPU compatibility
+        href: manage/processor-compatibility-mode.md
+      - name: Use GPUs with clustered VMs
+        href: manage/use-gpu-with-clustered-vm.md
+      - name: Partition and share GPUs with VMs
+        href: manage/partition-gpu.md
+      - name: Attach GPU to Linux VM
+        href: manage/attach-gpu-to-linux-vm.md
+
 
   - name: Security
     items:
@@ -360,26 +384,6 @@
     items:
     - name: Manage VMs
       items:
-      - name: Activate Windows Server VMs
-        href: manage/vm-activate.md
-      - name: Manage VMs
-        href: manage/vm.md
-      - name: Manage VMs with PowerShell
-        href: manage/vm-powershell.md
-      - name: Extended Security Updates (ESUs)
-        href: ./manage/azure-benefits-esu.md
-      - name: Create VM affinity rules
-        href: manage/vm-affinity.md
-      - name: VM load balancing
-        href: manage/vm-load-balancing.md
-      - name: Dynamic CPU compatibility
-        href: manage/processor-compatibility-mode.md
-      - name: Use GPUs with clustered VMs
-        href: manage/use-gpu-with-clustered-vm.md
-      - name: Partition and share GPUs with VMs
-        href: manage/partition-gpu.md
-      - name: Attach GPU to Linux VM
-        href: manage/attach-gpu-to-linux-vm.md
       - name: Deploy Windows Server Azure Edition VMs
         href: manage/windows-server-azure-edition.md
       - name: Upgrade VMs to Windows Server Azure Edition
@@ -599,40 +603,46 @@
 
 - name: Reference
   items:
-  - name: Azure registration Azure CLI commands
-    href: /cli/azure/ext/stack-hci/stack-hci
-  - name: Azure registration PowerShell commands
-    href: /powershell/module/az.stackhci
-  - name: Azure Stack HCI VM PowerShell commands
-    href: /powershell/module/az.stackhcivm
-  - name: Go package for ARM Azure Stack HCI service API
-    href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
-  - name: Azure Stack HCI Java service classes and interfaces
-    href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
-  - name: Azure Stack HCI management service Python package
-    href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
-  - name: Azure Stack HCI JavaScript package
-    href: /javascript/api/@azure/arm-azurestackhci
-  - name: Azure Stack HCI REST API reference
-    href: /rest/api/stackhci
-  - name: .NET Namespaces for Azure Stack HCI
-    href: /dotnet/api/overview/azure/stack-hci
-  - name: Hyper-V PowerShell commands
-    href: /powershell/module/hyper-v
-  - name: Storage PowerShell commands
-    href: /powershell/module/storage
-  - name: ClusterAwareUpdating PowerShell commands
-    href: /powershell/module/clusterawareupdating
-  - name: FailoverClusters PowerShell commands
-    href: /powershell/module/failoverclusters
-  - name: StorageReplica PowerShell commands
-    href: /powershell/module/storagereplica
-  - name: NetAdapter PowerShell commands
-    href: /powershell/module/netadapter
-  - name: NetQoS PowerShell commands
-    href: /powershell/module/netqos
-  - name: DcbQoS PowerShell commands
-    href: /powershell/module/dcbqos
+  - name: For Azure Arc VM management
+    items:
+    - name: Azure Stack HCI VM PowerShell commands
+      href: /powershell/module/az.stackhcivm
+  - name: For Azure Stack HCI cluster, service, and management
+    items:
+    - name: Azure registration Azure CLI commands
+      href: /cli/azure/ext/stack-hci/stack-hci
+    - name: Azure registration PowerShell commands
+      href: /powershell/module/az.stackhci
+    - name: Go package for ARM Azure Stack HCI service API
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/azurestackhci/mgmt/2020-10-01/azurestackhci
+    - name: Azure Stack HCI Java service classes and interfaces
+      href: /java/api/com.microsoft.azure.management.azurestackhci.v2020_10_01
+    - name: Azure Stack HCI management service Python package
+      href: /python/api/azure-mgmt-azurestackhci/azure.mgmt.azurestackhci?view=azure-python&preserve-view=true
+    - name: Azure Stack HCI JavaScript package
+      href: /javascript/api/@azure/arm-azurestackhci
+    - name: Azure Stack HCI REST API reference
+      href: /rest/api/stackhci
+    - name: .NET Namespaces for Azure Stack HCI
+      href: /dotnet/api/overview/azure/stack-hci
+  - name: For OS and storage management
+    items:
+    - name: Hyper-V PowerShell commands
+      href: /powershell/module/hyper-v
+    - name: Storage PowerShell commands
+      href: /powershell/module/storage
+    - name: ClusterAwareUpdating PowerShell commands
+      href: /powershell/module/clusterawareupdating
+    - name: FailoverClusters PowerShell commands
+      href: /powershell/module/failoverclusters
+    - name: StorageReplica PowerShell commands
+      href: /powershell/module/storagereplica
+    - name: NetAdapter PowerShell commands
+      href: /powershell/module/netadapter
+    - name: NetQoS PowerShell commands
+      href: /powershell/module/netqos
+    - name: DcbQoS PowerShell commands
+      href: /powershell/module/dcbqos
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
