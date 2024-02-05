@@ -51,7 +51,7 @@ As an on-premises solution, Azure Stack HCI provides an array of features that h
 
 ## Azure Stack HCI capabilities relevant for PCI DSS
 
-This section briefly outlines how organizations can leverage Azure Stack HCI functionality to meet the requirements of PCI DSS. It is important to note that PCI DSS requirements are applicable to all system components included in or connected to the cardholder data environment (CDE). The content below focuses on the Azure Stack HCI platform level, which hosts service payments or payments-related workloads that included cardholder data.
+This section briefly outlines how organizations can leverage Azure Stack HCI functionality to meet the requirements of PCI DSS. It is important to note that PCI DSS requirements are applicable to all system components included in or connected to the cardholder data environment (CDE). The content below focuses on the Azure Stack HCI platform level, which hosts service payments or payments-related workloads that include cardholder data.
 
 ### Requirement 1: Install and maintain network security controls
 
@@ -70,7 +70,7 @@ Azure Stack HCI is configured securely by default with security tools and techno
 
 #### Drift protection
 
-The default security configuration and secured-core settings of the platform are protected during both deployment and runtime with [drift control(/azure-stack/hci/concepts/secure-baseline#about-security-baseline-and-drift-control)] protection. When enabled, drift control protection will refresh the security settings regularly every 90 minutes to ensure that any changes from the specified state are remediated. This continuous monitoring and auto-remediation allows you to have a consistent and reliable security configuration throughout the lifecycle of the device. You can disable the drift protection during the deployment when you configure the security settings.
+The default security configuration and secured-core settings of the platform are protected during both deployment and runtime with [drift control](/azure-stack/hci/concepts/secure-baseline#about-security-baseline-and-drift-control) protection. When enabled, drift control protection will refresh the security settings regularly every 90 minutes to ensure that any changes from the specified state are remediated. This continuous monitoring and auto-remediation allows you to have a consistent and reliable security configuration throughout the lifecycle of the device. You can disable the drift protection during the deployment when you configure the security settings.
 
 #### Security baseline for workload
 
@@ -114,7 +114,7 @@ For workloads running on top of the Azure Stack HCI platform, including Azure Ku
 
 ### Requirement 7: Restrict access to system components and cardholder data by business need to know
 
-You need to identify roles and their access needs based on the business requirements of your organization, and then ensure that only authorized personnel have access to sensitive systems and data by assigning privileges based on job responsibilities. Use the capabilities described in [Requirement 8: Identify users and authenticate access to system components](#requirement-8-identify-users-and-authenticate-access-to-system-components) to implement your policies and procedures.
+It is your responsibility to identify roles and their access needs based on the business requirements of your organization, and then ensure that only authorized personnel have access to sensitive systems and data by assigning privileges based on job responsibilities. Use the capabilities described in [Requirement 8: Identify users and authenticate access to system components](#requirement-8-identify-users-and-authenticate-access-to-system-components) to implement your policies and procedures.
 
 ### Requirement 8: Identify users and authenticate access to system components
 
@@ -166,7 +166,7 @@ A metric alert rule monitors a resource by evaluating conditions on the resource
 
 #### Service and device alerts
 
-Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure Stack HCI clusters and their underlying components using [PowerShell(/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell)] or [Health Service](/azure-stack/hci/manage/health-service-overview).
+Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure Stack HCI clusters and their underlying components using [PowerShell](/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell) or [Health Service](/azure-stack/hci/manage/health-service-overview).
 
 ### Requirement 11: Test security of systems and networks regularly
 
