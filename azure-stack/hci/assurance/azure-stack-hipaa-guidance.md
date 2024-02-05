@@ -119,7 +119,7 @@ Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azur
 
 #### Windows Defender Antivirus
 
-Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
+Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
 
 #### Windows Defender Application Control
 

@@ -168,7 +168,7 @@ The default security configuration and secured-core settings of the platform are
 
 #### Security baseline for workload
 
-For workloads running on the Azure Stack HCI, you can use the Azure recommended operating system baseline (for both [Windows](https://docs.microsoft.com/azure/governance/policy/samples/guest-configuration-baseline-windows) and [Linux](https://docs.microsoft.com/azure/governance/policy/samples/guest-configuration-baseline-linux)) as a benchmark to define your compute resource configuration baseline.
+For workloads running on the Azure Stack HCI, you can use the Azure recommended operating system baseline (for both [Windows](/azure/governance/policy/samples/guest-configuration-baseline-windows) and [Linux](/azure/governance/policy/samples/guest-configuration-baseline-linux)) as a benchmark to define your compute resource configuration baseline.
 
 #### Platform update
 
@@ -186,7 +186,7 @@ The threat protection functionality in this section can help you meet the follow
 
 #### Windows Defender Antivirus
 
-Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
+Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
 
 #### Windows Defender Application Control (WDAC)
 
