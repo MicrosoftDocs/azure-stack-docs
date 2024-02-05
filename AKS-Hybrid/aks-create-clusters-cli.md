@@ -54,7 +54,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 ## Connect to the Kubernetes cluster
 
-Now you can connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your dev machine. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
+Now you can connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your development machine. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
 This command downloads the kubeconfig of your Kubernetes cluster to your development machine and opens a proxy connection channel to your on-premises Kubernetes cluster. The channel is open for as long as the command runs. Let this command run for as long as you want to access your cluster. If it times out, close the CLI window, open a fresh one, then run the command again.
 
