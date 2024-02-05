@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2311.2 GA re
 description: Read about the known issues and fixed issues in Azure Stack HCI 2311 General Availability (GA) release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/03/2024
+ms.date: 02/05/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -49,6 +49,7 @@ Here are the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
+| Remote shutdown <!--XXXX--> |In this release, there is a bug when trying to remotely shut down the Azure Stack HCI systems. You must update the firewall rule to allow remote autoamtic restarts: <br> `Set-NetFirewallRule -Group "@firewallapi.dll,-36751" -Profile Domain -Enabled true.` For more information, see [Enable a firewall rule to allow automatic restarts](/windows-server/failover-clustering/cluster-aware-updating-requirements#BKMK_FW). | |
 | Updates <!--26659591--> |In rare instances, if a failed update is stuck in an *In progress* state in Azure Update Manager, the **Try again** button is disabled. | To resume the update, run the following PowerShell command :<br>`Get-SolutionUpdate`\|`Start-SolutionUpdate`.|
 | Updates <!--26659432--> |In some cases, `SolutionUpdate` commands could fail if run after the `Send-DiagnosticData` command.  | Make sure to close the PowerShell session used for `Send-DiagnosticData`. Open a new PowerShell session and use it for `SolutionUpdate` commands.|
 | Arc VM management <!--26423941--> |If the resource group used to deploy an Arc VM on your Azure Stack HCI has an underscore in the name, the guest agent installation will fail. As a result, you won't be able to enable guest management. | Make sure that there are no underscores in the resource groups used to deploy Arc VMs.|
