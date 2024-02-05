@@ -47,7 +47,7 @@ The guidance below provides more information about how the security capabilities
 
 The *Payment Card Industry (PCI) Data Security Standards (DSS)* is a global information security standard designed to prevent fraud through increased control of credit card data. PCI DSS is required for organizations of any size if they store, process, or transmit cardholder data. These organizations include (but aren't limited to): merchants, payment processors, issuers, acquirers, and service providers.
 
-Azure cloud services not only has PCI DSS validation for Azure Stack HCI but also offers an array of features across the hybrid environment to help you reduce the associated effort and costs of getting your own PCI DSS validation. To learn more, follow the link to the article below.
+Azure cloud services not only have PCI DSS validation for Azure Stack HCI but also offer an array of features across the hybrid environment to help you reduce the associated effort and costs of getting your own PCI DSS validation. To learn more, follow the link to the article below.
 
 > [!div class="nextstepaction"]
 > [Azure Stack HCI and PCI DSS](azure-stack-pci-dss-guidance.md)

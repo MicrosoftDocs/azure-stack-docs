@@ -12,7 +12,7 @@ ms.reviewer: alkohli
 
 # Azure Stack HCI and ISO/IEC 27001:2022
 
-This article outlines how Azure Stack HCI helps organizations meet the security control requirements of ISO/IEC 27001:2022, both in cloud and on premises. Learn more about Azure Stack and other security standards [Azure Stack and security standards](azure-stack-security-standards.md).
+This article outlines how Azure Stack HCI helps organizations meet the security control requirements of ISO/IEC 27001:2022, both in cloud and on premises. Learn more about Azure Stack and other security standards at [Azure Stack and security standards](azure-stack-security-standards.md).
 
 ## ISO/IEC 27001:2022
 
@@ -47,11 +47,11 @@ This section outlines how organizations can leverage Azure Stack HCI functionali
 - [Backup and recovery](#backup-and-recovery)
 - [Scalability and availability](#scalability-and-availability)
 
-The guidance in this article outlines how Azure Stack HCI platform capabilities can be utilized to meet the requirements of each domain. It is important to note that not all controls are mandatory. Organizations should analyze their environment and carry out risk assessment to determine which controls are necessary. Refer to ISO/IEC 27002:2022 for further details on the requirements.
+The guidance in this article outlines how Azure Stack HCI platform capabilities can be utilized to meet the requirements of each domain. It is important to note that not all controls are mandatory. Organizations should analyze their environment and carry out risk assessment to determine which controls are necessary. Refer to [ISO/IEC 27001](https://www.iso.org/standard/27001) for further details on the requirements.
 
 ### Network security
 
-The network security functionality described in this section can assist you in meeting the following security controls specified in ISO/IEC 27001 standard.
+The network security functionality described in this section can assist you in meeting the following security controls specified in the ISO/IEC 27001 standard.
 
 - 8.20 – Network security
 - 8.21 – Security of network services
@@ -67,7 +67,7 @@ With Azure Stack HCI, you can apply network security controls to safeguard your 
 
 ### Identity and access management
 
-The identity and access management functionality described in this section can assist you in meeting the following security controls specified in ISO/IEC 27001 standard.
+The identity and access management functionality described in this section can assist you in meeting the following security controls specified in the ISO/IEC 27001 standard.
 
 - 8.2 – Privileged access rights
 - 8.3 – Information access restrictions
@@ -79,7 +79,7 @@ Learn more about local identity and access management at [Microsoft Identity Man
 
 ### Data protection
 
-The data protection functionality described in this section can assist you in meeting the following security controls specified in ISO/IEC 27001 standard.
+The data protection functionality described in this section can assist you in meeting the following security controls specified in the ISO/IEC 27001 standard.
 
 - 8.5 – Secure authentication
 - 8.20 – Network security
@@ -96,11 +96,11 @@ By default, all host communications to local and remote endpoints are encrypted 
 
 #### Protecting internal network traffic with Sever Messaging Block (SMB)
 
-SMB signing is enabled by default for client connections in Azure Stack HCI cluster hosts. For intra-cluster traffic, SMB encryption is an option organization may enable during or after deployment to protect data in transit between clusters. AES-256-GCM and AES-256-CCM cryptographic suites are now supported by the SMB 3.1.1 protocol used by client-server file traffic and the intra-cluster data fabric. The protocol continues to support the more broadly compatible AES-128 suite as well. Learn more at [SMB security enhancements](/windows-server/storage/file-server/smb-security).
+SMB signing is enabled by default for client connections in Azure Stack HCI cluster hosts. For intra-cluster traffic, SMB encryption is an option organizations may enable during or after deployment to protect data in transit between clusters. AES-256-GCM and AES-256-CCM cryptographic suites are now supported by the SMB 3.1.1 protocol used by client-server file traffic and the intra-cluster data fabric. The protocol continues to support the more broadly compatible AES-128 suite as well. Learn more at [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
 ### Logging
 
-The logging functionality described in this section can assist you in meeting the following security controls specified in ISO/IEC 27001 standard.
+The logging functionality described in this section can assist you in meeting the following security controls specified in the ISO/IEC 27001 standard.
 
 - 8.15 – Logging
 - 8.17 – Clock synchronization
@@ -123,11 +123,11 @@ If you are using Microsoft Entra ID to manage identity and access to the platfor
 
 #### SIEM integration
 
-Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with Arc-enabled Azure Stack HCI nodes. You can enable and onboard your logs to Microsoft Sentinel which provides security information event management (SIEM) and security orchestration automated response (SOAR) capability. Microsoft Sentinel, like other Azure cloud services, also complies with many well-established security standards such as ISO/IEC 27001, which can help you with your certification process. Additionally, Azure Stack HCI also provides a native syslog event forwarder to send the system events to the third party SIEM solutions.
+Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with Arc-enabled Azure Stack HCI nodes. You can enable and onboard your logs to Microsoft Sentinel, which provides security information event management (SIEM) and security orchestration automated response (SOAR) capability. Microsoft Sentinel, like other Azure cloud services, also complies with many well-established security standards such as ISO/IEC 27001, which can help you with your certification process. Additionally, Azure Stack HCI provides a native syslog event forwarder to send the system events to the third party SIEM solutions.
 
 ### Monitoring
 
-The monitoring functionality described in this section can assist you in meeting the following security controls specified in ISO/IEC 27001 standard.
+The monitoring functionality described in this section can assist you in meeting the following security controls specified in the ISO/IEC 27001 standard.
 
 - 8.15 – Logging
 
@@ -149,7 +149,7 @@ A metric alert rule monitors a resource by evaluating conditions on the resource
 
 #### Service and device alerts
 
-Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure Stack HCI clusters and their underlying components using [PowerShell(/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell)] or [Health Service](/azure-stack/hci/manage/health-service-overview).
+Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure Stack HCI clusters and their underlying components using [PowerShell](/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell) or [Health Service](/azure-stack/hci/manage/health-service-overview).
 
 ### Secure Configuration
 
@@ -164,7 +164,7 @@ Azure Stack HCI is configured securely by default with security tools and techno
 
 #### Drift protection
 
-The default security configuration and secured-core settings of the platform are protected during both deployment and runtime with [drift control(/azure-stack/hci/concepts/secure-baseline#about-security-baseline-and-drift-control)] protection. When enabled, drift control protection will refresh the security settings regularly every 90 minutes to ensure that any changes from the specified state are remediated. This continuous monitoring and auto-remediation allows you to have a consistent and reliable security configuration throughout the lifecycle of the device. You can disable the drift protection during the deployment when you configure the security settings.
+The default security configuration and secured-core settings of the platform are protected during both deployment and runtime with [drift control](/azure-stack/hci/concepts/secure-baseline#about-security-baseline-and-drift-control) protection. When enabled, drift control protection will refresh the security settings regularly every 90 minutes to ensure that any changes from the specified state are remediated. This continuous monitoring and auto-remediation allows you to have a consistent and reliable security configuration throughout the lifecycle of the device. You can disable the drift protection during the deployment when you configure the security settings.
 
 #### Security baseline for workload
 
