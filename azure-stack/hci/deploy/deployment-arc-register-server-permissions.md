@@ -25,7 +25,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
-    - [Azure Connected Machine Onboarding role](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
+    - [Azure Connected Machine Onboarding](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
     - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
 
     To verify that you have these roles, follow these steps in the Azure portal:

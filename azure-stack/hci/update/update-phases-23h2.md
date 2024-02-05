@@ -17,7 +17,7 @@ The procedure in this article applies to both a single server and a multi-server
 
 ## About update phases
 
-The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Stack HCI, version 23H2](whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Stack HCI, version 23H2](about-updates-23h2.md).
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
