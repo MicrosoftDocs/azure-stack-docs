@@ -34,7 +34,7 @@ Azure Stack HCI is a hybrid solution that hosts and stores virtualized workloads
 
 ### Azure cloud services
 
-As HIPAA legislation is designed for healthcare companies, cloud services such as Microsoft Azure cannot be certified. However, Azure and Azure Stack HCI’s connected cloud services comply with other established security frameworks and standards which are equivalent to or more stringent than HIPAA and HITECH. Learn more about the Azure compliance program for the healthcare industry at [Azure and HIPAA](https://learn.microsoft.com/azure/compliance/offerings/offering-hipaa-us).
+As HIPAA legislation is designed for healthcare companies, cloud services such as Microsoft Azure cannot be certified. However, Azure and Azure Stack HCI’s connected cloud services comply with other established security frameworks and standards which are equivalent to or more stringent than HIPAA and HITECH. Learn more about the Azure compliance program for the healthcare industry at [Azure and HIPAA](/azure/compliance/offerings/offering-hipaa-us).
 
 ### On-premises environment
 
@@ -57,13 +57,13 @@ This section outlines how the features of Azure Stack HCI help you achieve the s
 
 The Azure Stack HCI platform provides full and direct access to the underlying system running on cluster nodes via multiple interfaces such as Azure Arc and Windows PowerShell. You can use either conventional Windows tools in local environments or cloud-based solutions like Microsoft Entra ID (formerly Azure Active Directory) to manage identity and access to the platform. In both cases, you can take advantage of built-in security features, such as multi-factor authentication (MFA), conditional access, role-based access control (RBAC), and privileged identity management (PIM) to ensure your environment is secure and compliant.
 
-Learn more about local identity and access management at [Microsoft Identity Manager](https://learn.microsoft.com/microsoft-identity-manager/microsoft-identity-manager-2016) and [Privileged Access Management for Active Directory Domain Services](https://learn.microsoft.com/microsoft-identity-manager/pam/privileged-identity-management-for-active-directory-domain-services). Learn more about cloud-based identity and access management at [Microsoft Entra ID](https://learn.microsoft.com/entra/fundamentals/whatis).
+Learn more about local identity and access management at [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) and [Privileged Access Management for Active Directory Domain Services](/microsoft-identity-manager/pam/privileged-identity-management-for-active-directory-domain-services). Learn more about cloud-based identity and access management at [Microsoft Entra ID](/entra/fundamentals/whatis).
 
 ### Data protection
 
 #### Encrypting data with BitLocker
 
-On Azure Stack HCI clusters, all data-at-rest can be encrypted via BitLocker XTS-AES 256-bit encryption. By default, the system will recommend you enable BitLocker to encrypt all the operating system (OS) volumes and cluster shared volumes (CSV) in your Azure Stack HCI deployment. For any new storage volumes added after the deployment, you need to manually turn on BitLocker to encrypt the new storage volume. Using BitLocker to protect data can help organizations stay compliant with ISO/IEC 27001. Learn more at [Use BitLocker with Cluster Shared Volumes (CSV)](https://learn.microsoft.com/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+On Azure Stack HCI clusters, all data-at-rest can be encrypted via BitLocker XTS-AES 256-bit encryption. By default, the system will recommend you enable BitLocker to encrypt all the operating system (OS) volumes and cluster shared volumes (CSV) in your Azure Stack HCI deployment. For any new storage volumes added after the deployment, you need to manually turn on BitLocker to encrypt the new storage volume. Using BitLocker to protect data can help organizations stay compliant with ISO/IEC 27001. Learn more at [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
 
 #### Protecting external network traffic with TLS/DTLS
 
@@ -71,7 +71,7 @@ By default, all host communications to local and remote endpoints are encrypted 
 
 #### Protecting internal network traffic with Sever Messaging Block (SMB)
 
-SMB signing is enabled by default for client connections in Azure Stack HCI cluster hosts. For intra-cluster traffic, SMB encryption is an option organizations may enable during or after deployment to protect data in transit between clusters. AES-256-GCM and AES-256-CCM cryptographic suites are now supported by the SMB 3.1.1 protocol used by client-server file traffic and the intra-cluster data fabric. The protocol continues to support the more broadly compatible ES-128 suite as well. Learn more at [SMB security enhancements](https://learn.microsoft.com/windows-server/storage/file-server/smb-security).
+SMB signing is enabled by default for client connections in Azure Stack HCI cluster hosts. For intra-cluster traffic, SMB encryption is an option organizations may enable during or after deployment to protect data in transit between clusters. AES-256-GCM and AES-256-CCM cryptographic suites are now supported by the SMB 3.1.1 protocol used by client-server file traffic and the intra-cluster data fabric. The protocol continues to support the more broadly compatible ES-128 suite as well. Learn more at [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
 ### Logging and monitoring
 
@@ -85,11 +85,11 @@ Azure Stack HCI Lifecycle Manager creates and stores activity logs for any actio
 
 #### Cloud activity logs
 
-By registering your clusters with Azure, you can use [Azure Monitor activity logs](https://learn.microsoft.com/azure/azure-monitor/essentials/activity-log) to record operations on each resource at the subscription layer to determine the what, who, and when for any write operations (put, post, or delete) taken on the resources in your subscription.
+By registering your clusters with Azure, you can use [Azure Monitor activity logs](/azure/azure-monitor/essentials/activity-log) to record operations on each resource at the subscription layer to determine the what, who, and when for any write operations (put, post, or delete) taken on the resources in your subscription.
 
 #### Cloud identity logs
 
-If you are using Microsoft Entra ID to manage identity and access to the platform, you can view logs in [Azure AD reporting](https://learn.microsoft.com/entra/identity/monitoring-health/concept-audit-logs) or integrate them with Azure Monitor, Microsoft Sentinel, or other SIEM/monitoring tools for sophisticated monitoring and analytics use cases. If you are using on-premises Active Directory, use the Microsoft Defender for Identity solution to consume your on-premises Active Directory signals to identify, detect, and investigate advanced threats, compromised identities, and malicious insider actions directed at your organization.
+If you are using Microsoft Entra ID to manage identity and access to the platform, you can view logs in [Azure AD reporting](/entra/identity/monitoring-health/concept-audit-logs) or integrate them with Azure Monitor, Microsoft Sentinel, or other SIEM/monitoring tools for sophisticated monitoring and analytics use cases. If you are using on-premises Active Directory, use the Microsoft Defender for Identity solution to consume your on-premises Active Directory signals to identify, detect, and investigate advanced threats, compromised identities, and malicious insider actions directed at your organization.
 
 #### SIEM integration
 
@@ -97,33 +97,33 @@ Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with 
 
 #### Azure Stack HCI Insights
 
-Insights enables you to monitor health, performance, and usage information for clusters that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide pre-built monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Stack HCI resource page or Azure Monitor. Learn more at [Monitor Azure Stack HCI with Insights](https://learn.microsoft.com/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
+Insights enables you to monitor health, performance, and usage information for clusters that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide pre-built monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Stack HCI resource page or Azure Monitor. Learn more at [Monitor Azure Stack HCI with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
 
 #### Azure Stack HCI Metrics
 
-Metrics store numeric data from monitored resources into a time-series database. You can use [Azure Monitor metrics explorer](https://learn.microsoft.com/azure/azure-monitor/essentials/analyze-metrics) to interactively analyze the data in your metric database and chart the values of multiple metrics over time. With Metrics, you can create charts from metric values and visually correlate trends.
+Metrics store numeric data from monitored resources into a time-series database. You can use [Azure Monitor metrics explorer](/azure/azure-monitor/essentials/analyze-metrics) to interactively analyze the data in your metric database and chart the values of multiple metrics over time. With Metrics, you can create charts from metric values and visually correlate trends.
 
 #### Log alerts
 
-To indicate problems in real time, you may set up alerts for Azure Stack HCI systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. Learn more at [Set up alerts for Azure Stack HCI systems](https://learn.microsoft.com/azure-stack/hci/manage/setup-hci-system-alerts).
+To indicate problems in real time, you may set up alerts for Azure Stack HCI systems, using pre-existing sample log queries such as average server CPU, available memory, available volume capacity and more. Learn more at [Set up alerts for Azure Stack HCI systems](/azure-stack/hci/manage/setup-hci-system-alerts).
 
 #### Metric alerts
 
-A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. A metric time-series is a series of metric values captured over a period of time. You can use these metrics to create alert rules. Learn more about how to create metric alerts at [Metric alerts](https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-types#metric-alerts).
+A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. A metric time-series is a series of metric values captured over a period of time. You can use these metrics to create alert rules. Learn more about how to create metric alerts at [Metric alerts](/azure/azure-monitor/alerts/alerts-types#metric-alerts).
 
 #### Service and device alerts
 
-Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure Stack HCI clusters and their underlying components using [PowerShell](https://learn.microsoft.com/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell) or [Health Service](https://learn.microsoft.com/azure-stack/hci/manage/health-service-overview).
+Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azure configuration and more. Device-based alerts for cluster health faults are available as well. You may also monitor Azure Stack HCI clusters and their underlying components using [PowerShell](/azure-stack/hci/manage/monitor-cluster#query-and-process-performance-history-with-powershell) or [Health Service](/azure-stack/hci/manage/health-service-overview).
 
 ### Protection against malware
 
 #### Windows Defender Antivirus
 
-Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](https://learn.microsoft.com/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
+Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server?view=o365-worldwide).
 
 #### Windows Defender Application Control
 
-Windows Defender Application Control (WDAC) is enabled by default on Azure Stack HCI to control which drivers and applications are allowed to run directly on each server, helping prevent malware from accessing the system. Learn more about base policies included in Azure Stack HCI and how to create supplemental policies at [Manage Windows Defender Application Control for Azure Stack HCI](https://learn.microsoft.com/azure-stack/hci/concepts/security-windows-defender-application-control).
+Windows Defender Application Control (WDAC) is enabled by default on Azure Stack HCI to control which drivers and applications are allowed to run directly on each server, helping prevent malware from accessing the system. Learn more about base policies included in Azure Stack HCI and how to create supplemental policies at [Manage Windows Defender Application Control for Azure Stack HCI](/azure-stack/hci/concepts/security-windows-defender-application-control).
 
 #### Microsoft Defender for Cloud
 
@@ -141,7 +141,7 @@ If you use Azure Stack HCI to host container-based deployments, the platform wil
 
 #### Azure Site Recovery
 
-This service allows you to replicate workloads running on your on-premises Azure Stack HCI VMs to the cloud so that your information system can be restored if there is an incident, failure, or loss of storage media. Like other Azure cloud services, Azure Site Recovery has a long track record of security certificates including HITRUST, which you can use to support your accreditation process. Learn more at [Protect VM workloads with Azure Site Recovery on Azure Stack HCI](https://learn.microsoft.com/azure-stack/hci/manage/azure-site-recovery).
+This service allows you to replicate workloads running on your on-premises Azure Stack HCI VMs to the cloud so that your information system can be restored if there is an incident, failure, or loss of storage media. Like other Azure cloud services, Azure Site Recovery has a long track record of security certificates including HITRUST, which you can use to support your accreditation process. Learn more at [Protect VM workloads with Azure Site Recovery on Azure Stack HCI](/azure-stack/hci/manage/azure-site-recovery).
 
 #### Microsoft Azure Backup Server (MABS)
 
@@ -152,4 +152,4 @@ This service enables you to backup Azure Stack HCI virtual machines, specifying 
 - Guest VMs on Azure Stack HCI cluster with CSV storage
 - VM Move within a cluster
 
-Learn more at [Back up Azure Stack HCI virtual machines with Azure Backup Server](https://learn.microsoft.com/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
+Learn more at [Back up Azure Stack HCI virtual machines with Azure Backup Server](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
