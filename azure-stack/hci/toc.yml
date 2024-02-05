@@ -659,6 +659,16 @@
     href: /system-center/
 - name: Resources
   items:
+  - name: Assurance
+    items:
+    - name: Azure Stack HCI and security standards
+      href: /assurance/azure-stack-security-standards.md
+    - name: ISO/IEC 27001 guidance
+      href: /assurance/azure-stack-iso27001-guidance.md
+    - name: PCI DSS guidance
+      href: /assurance/azure-stack-pci-dss-guidance.md
+    - name: HIPAA guidance
+      href: /assurance/azure-stack-hipaa-guidance.md
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
   - name: Pricing
