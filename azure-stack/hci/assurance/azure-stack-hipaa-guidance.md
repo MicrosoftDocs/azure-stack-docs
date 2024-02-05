@@ -16,7 +16,7 @@ This article provides guidance on how organizations can most efficiently navigat
 
 ## Healthcare compliance
 
-The [Health Insurance Portability and Accountability Act of 1996](https://www.cdc.gov/phlp/publications/topic/hipaa.html) (HIPAA) and healthcare standards such as Health Information Technology for Economic and Clinical Health (HITECH) and [Health Information Trust Alliance](https://hitrustalliance.net/hitrust-csf/) (HITRUST) protect the confidentiality, integrity, and availability of patients’ protected health information (PHI). These regulations and standards ensure that healthcare organizations such as doctors’ offices, hospitals, and health insurers (“covered entities”) create, receive, maintain, transmit, or access PHI appropriately. In addition, their requirements extend to business associates who provide services that involve PHI for the covered entities. Microsoft is an example of a business associate who provides information technology services, such as Azure and Azure Stack HCI, to help healthcare companies store and process PHI more efficiently and securely. The following sections provide information on how Azure Stack HCI’s platform capabilities help organizations meet these requirements.
+The [Health Insurance Portability and Accountability Act of 1996](https://www.cdc.gov/phlp/publications/topic/hipaa.html) (HIPAA) and healthcare standards such as Health Information Technology for Economic and Clinical Health (HITECH) and [Health Information Trust Alliance](https://hitrustalliance.net/hitrust-csf/) (HITRUST) protect the confidentiality, integrity, and availability of patients’ protected health information (PHI). These regulations and standards ensure that healthcare organizations such as doctors’ offices, hospitals, and health insurers (“covered entities”) create, receive, maintain, transmit, or access PHI appropriately. In addition, their requirements extend to business associates who provide services that involve PHI for the covered entities. Microsoft is an example of a business associate that provides information technology services like Azure Stack HCI to help healthcare companies store and process PHI more efficiently and securely. The following sections provide information on how Azure Stack HCI’s platform capabilities help organizations meet these requirements.
 
 ## Shared responsibilities
 
@@ -34,7 +34,7 @@ Azure Stack HCI is a hybrid solution that hosts and stores virtualized workloads
 
 ### Azure cloud services
 
-As HIPAA legislation is designed for healthcare companies, cloud services such as Microsoft Azure cannot be certified. However, Azure and Azure Stack HCI’s connected cloud services comply with other established security frameworks and standards which are equivalent to or more stringent than HIPAA and HITECH. Learn more about the Azure compliance program for the healthcare industry at [Azure and HIPAA](/azure/compliance/offerings/offering-hipaa-us).
+As HIPAA legislation is designed for healthcare companies, cloud services such as Microsoft Azure can't be certified. However, Azure and Azure Stack HCI’s connected cloud services comply with other established security frameworks and standards that are equivalent to or more stringent than HIPAA and HITECH. Learn more about the Azure compliance program for the healthcare industry at [Azure and HIPAA](/azure/compliance/offerings/offering-hipaa-us).
 
 ### On-premises environment
 
@@ -55,7 +55,7 @@ This section outlines how the features of Azure Stack HCI help you achieve the s
 
 ### Identity and access management
 
-The Azure Stack HCI platform provides full and direct access to the underlying system running on cluster nodes via multiple interfaces such as Azure Arc and Windows PowerShell. You can use either conventional Windows tools in local environments or cloud-based solutions like Microsoft Entra ID (formerly Azure Active Directory) to manage identity and access to the platform. In both cases, you can take advantage of built-in security features, such as multi-factor authentication (MFA), conditional access, role-based access control (RBAC), and privileged identity management (PIM) to ensure your environment is secure and compliant.
+The Azure Stack HCI platform provides full and direct access to the underlying system running on cluster nodes via multiple interfaces such as Azure Arc and Windows PowerShell. You can use either conventional Windows tools in local environments or cloud-based solutions like Microsoft Entra ID (formerly Azure Active Directory) to manage identity and access to the platform. In both cases, you can take advantage of built-in security features, such as multifactor authentication (MFA), conditional access, role-based access control (RBAC), and privileged identity management (PIM) to ensure your environment is secure and compliant.
 
 Learn more about local identity and access management at [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) and [Privileged Access Management for Active Directory Domain Services](/microsoft-identity-manager/pam/privileged-identity-management-for-active-directory-domain-services). Learn more about cloud-based identity and access management at [Microsoft Entra ID](/entra/fundamentals/whatis).
 
@@ -63,13 +63,13 @@ Learn more about local identity and access management at [Microsoft Identity Man
 
 #### Encrypting data with BitLocker
 
-On Azure Stack HCI clusters, all data-at-rest can be encrypted via BitLocker XTS-AES 256-bit encryption. By default, the system will recommend you enable BitLocker to encrypt all the operating system (OS) volumes and cluster shared volumes (CSV) in your Azure Stack HCI deployment. For any new storage volumes added after the deployment, you need to manually turn on BitLocker to encrypt the new storage volume. Using BitLocker to protect data can help organizations stay compliant with ISO/IEC 27001. Learn more at [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+On Azure Stack HCI clusters, all data-at-rest can be encrypted via BitLocker XTS-AES 256-bit encryption. By default, the system will recommend you enable BitLocker to encrypt all the operating system (OS) volumes and cluster shared volumes (CSV) in your Azure Stack HCI deployment. For any new storage volumes added after the deployment, you need to manually enable BitLocker to encrypt the new storage volume. Using BitLocker to protect data can help organizations stay compliant with ISO/IEC 27001. Learn more at [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
 
 #### Protecting external network traffic with TLS/DTLS
 
 By default, all host communications to local and remote endpoints are encrypted using TLS1.2, TLS1.3, and DTLS 1.2. The platform disables the use of older protocols/hashes such as TLS/DTLS 1.1 SMB1. Azure Stack HCI also supports strong cipher suites like [SDL-compliant](https://www.microsoft.com/securityengineering/sdl/) elliptic curves, limited to NIST curves P-256 and P-384 only.
 
-#### Protecting internal network traffic with Sever Messaging Block (SMB)
+#### Protecting internal network traffic with Server Message Block (SMB)
 
 SMB signing is enabled by default for client connections in Azure Stack HCI cluster hosts. For intra-cluster traffic, SMB encryption is an option organizations may enable during or after deployment to protect data in transit between clusters. AES-256-GCM and AES-256-CCM cryptographic suites are now supported by the SMB 3.1.1 protocol used by client-server file traffic and the intra-cluster data fabric. The protocol continues to support the more broadly compatible ES-128 suite as well. Learn more at [SMB security enhancements](/windows-server/storage/file-server/smb-security).
 
@@ -77,7 +77,7 @@ SMB signing is enabled by default for client connections in Azure Stack HCI clus
 
 #### Local system logs
 
-By default, all operations that are performed within the Azure Stack HCI platform are recorded so that you can track who did what, when, and where on the platform. Logs and alerts created by Windows Defender are also included to help you prevent, detect, and minimize the likelihood and impact of a data compromise. However, since the system log often contains a large volume of information, much of it extraneous to information security monitoring, you need to identify which events are relevant to be collected and utilized for security monitoring purposes. Azure monitoring capabilities help collect, store, alert, and analyze those logs. Reference the [Security Baseline for Azure Stack HCI](https://aka.ms/hci-securitybase) to learn more.
+By default, all operations that are performed within the Azure Stack HCI platform are recorded so that you can track who did what, when, and where on the platform. Logs and alerts created by Windows Defender are also included to help you prevent, detect, and minimize the likelihood and impact of a data compromise. Since the system log often contains a large volume of information, much of it extraneous to information security monitoring, you need to identify which events are relevant to be collected and utilized for security monitoring purposes. Azure monitoring capabilities help collect, store, alert, and analyze those logs. Reference the [Security Baseline for Azure Stack HCI](https://aka.ms/hci-securitybase) to learn more.
 
 #### Local activity logs
 
@@ -89,7 +89,7 @@ By registering your clusters with Azure, you can use [Azure Monitor activity log
 
 #### Cloud identity logs
 
-If you are using Microsoft Entra ID to manage identity and access to the platform, you can view logs in [Azure AD reporting](/entra/identity/monitoring-health/concept-audit-logs) or integrate them with Azure Monitor, Microsoft Sentinel, or other SIEM/monitoring tools for sophisticated monitoring and analytics use cases. If you are using on-premises Active Directory, use the Microsoft Defender for Identity solution to consume your on-premises Active Directory signals to identify, detect, and investigate advanced threats, compromised identities, and malicious insider actions directed at your organization.
+If you're using Microsoft Entra ID to manage identity and access to the platform, you can view logs in [Azure AD reporting](/entra/identity/monitoring-health/concept-audit-logs) or integrate them with Azure Monitor, Microsoft Sentinel, or other SIEM/monitoring tools for sophisticated monitoring and analytics use cases. If you're using on-premises Active Directory, use the Microsoft Defender for Identity solution to consume your on-premises Active Directory signals to identify, detect, and investigate advanced threats, compromised identities, and malicious insider actions directed at your organization.
 
 #### SIEM integration
 
@@ -97,7 +97,7 @@ Microsoft Defender for Cloud and Microsoft Sentinel is natively integrated with 
 
 #### Azure Stack HCI Insights
 
-Insights enables you to monitor health, performance, and usage information for clusters that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide pre-built monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Stack HCI resource page or Azure Monitor. Learn more at [Monitor Azure Stack HCI with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
+Azure Stack HCI Insights enables you to monitor health, performance, and usage information for clusters that are connected to Azure and are enrolled in monitoring. During Insights configuration, a data collection rule is created, which specifies the data to be collected. This data is stored in a Log Analytics workspace, which is then aggregated, filtered, and analyzed to provide prebuilt monitoring dashboards using Azure workbooks. You can view the monitoring data for a single cluster or multiple clusters from your Azure Stack HCI resource page or Azure Monitor. Learn more at [Monitor Azure Stack HCI with Insights](/azure-stack/hci/manage/monitor-hci-single?tabs=22h2-and-later).
 
 #### Azure Stack HCI Metrics
 
@@ -119,7 +119,7 @@ Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azur
 
 #### Windows Defender Antivirus
 
-Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
+Windows Defender Antivirus is a utility application that enables enforcement of real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
 
 #### Windows Defender Application Control
 
@@ -127,7 +127,7 @@ Windows Defender Application Control (WDAC) is enabled by default on Azure Stack
 
 #### Microsoft Defender for Cloud
 
-Microsoft Defender for Cloud with Endpoint Protection (enabled through server plans) provides a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services. Learn more at [Microsoft Defender for Cloud](https://azure.microsoft.com/products/defender-for-cloud/).
+Microsoft Defender for Cloud with Endpoint Protection (enabled through server plans) provides a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through autoprovisioning and protection with Azure services. Learn more at [Microsoft Defender for Cloud](https://azure.microsoft.com/products/defender-for-cloud/).
 
 ### Backup and recovery
 
@@ -137,15 +137,15 @@ Azure Stack HCI provides built-in support for disaster recovery of virtualized w
 
 #### Kubernetes cluster nodes
 
-If you use Azure Stack HCI to host container-based deployments, the platform will help you enhance the agility and resiliency inherent to Azure Kubernetes deployments. Azure Stack HCI manages automatic failover of VMs serving as Kubernetes cluster nodes if there's a localized failure of the underlying physical components. This configuration supplements the high availability built into Kubernetes, which automatically restarts failed containers on the same or another VM.
+If you use Azure Stack HCI to host container-based deployments, the platform helps you enhance the agility and resiliency inherent to Azure Kubernetes deployments. Azure Stack HCI manages automatic failover of VMs serving as Kubernetes cluster nodes if there's a localized failure of the underlying physical components. This configuration supplements the high availability built into Kubernetes, which automatically restarts failed containers on the same or another VM.
 
 #### Azure Site Recovery
 
-This service allows you to replicate workloads running on your on-premises Azure Stack HCI VMs to the cloud so that your information system can be restored if there is an incident, failure, or loss of storage media. Like other Azure cloud services, Azure Site Recovery has a long track record of security certificates including HITRUST, which you can use to support your accreditation process. Learn more at [Protect VM workloads with Azure Site Recovery on Azure Stack HCI](/azure-stack/hci/manage/azure-site-recovery).
+This service allows you to replicate workloads running on your on-premises Azure Stack HCI VMs to the cloud so that your information system can be restored if there's an incident, failure, or loss of storage media. Like other Azure cloud services, Azure Site Recovery has a long track record of security certificates including HITRUST, which you can use to support your accreditation process. Learn more at [Protect VM workloads with Azure Site Recovery on Azure Stack HCI](/azure-stack/hci/manage/azure-site-recovery).
 
 #### Microsoft Azure Backup Server (MABS)
 
-This service enables you to backup Azure Stack HCI virtual machines, specifying a desired frequency and retention period. You can use MABS to back up most of your resources across the environment, including:
+This service enables you to back up Azure Stack HCI virtual machines, specifying a desired frequency and retention period. You can use MABS to back up most of your resources across the environment, including:
 
 - System State/Bare-Metal Recovery (BMR) of Azure Stack HCI host
 - Guest VMs in a cluster that has local or directly attached storage

@@ -14,7 +14,7 @@ ms.reviewer: alkohli
 
 This article provides information about security standards related to Azure Stack HCI. The resources detailed in this article, including certifications and evaluation reports, could be used as sources to help you in your compliance planning.
 
-Azure Stack products, including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge, have a wide range of security features and services across the hybrid environment that can help meet stringent compliance requirements both in cloud and on premises. Each section in this article provides information on Azure Stack HCI and a particular security standard, as well as any completed certifications.
+Azure Stack products, including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge, have a wide range of security features and services across the hybrid environment that can help meet stringent compliance requirements both in cloud and on premises. Each section in this article provides information on Azure Stack HCI and a particular security standard, together with any completed certifications.
 
 ## Federal Information Processing Standard (FIPS) 140
 
@@ -62,7 +62,7 @@ Azure cloud services not only have PCI DSS validation for Azure Stack HCI but al
 
 The *Health Insurance Portability and Accountability Act of 1996 (HIPAA)* is a set of rules and regulations set forth by the U.S. Department of Health and Human Services (HHS) to protect the privacy, security, and integrity of patients’ sensitive health information. HIPAA applies to any organization or individual that creates, receives, maintains, or transmits electronic protected health information (PHI), including (but not limited to) doctors’ offices, hospitals, health insurers, and other healthcare companies.
 
-Complying with HIPAA is essential but challenging work for healthcare solutions companies. If you choose Azure Stack HCI to develop your hybrid IT environment, you can utilize its built-in capabilities as well as the cloud-integrated services to automate many aspects of achieving and maintaining HIPAA compliance. For more information, see the following guidance.
+Complying with HIPAA is essential but challenging work for healthcare solutions companies. If you choose Azure Stack HCI to develop your hybrid IT environment, you can utilize its built-in capabilities and the cloud-integrated services to automate many aspects of achieving and maintaining HIPAA compliance. For more information, see the following guidance.
 
 > [!div class="nextstepaction"]
 > [Azure Stack HCI and HIPAA](azure-stack-hipaa-guidance.md)
