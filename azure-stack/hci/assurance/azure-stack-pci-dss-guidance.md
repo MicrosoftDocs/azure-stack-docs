@@ -32,7 +32,7 @@ As a covered entity, it is your responsibility to achieve and manage your own PC
 
 ### Microsoft
 
-Although it is your responsibility to maintain compliance with the PCI DSS standard, you are not alone in the journey. Microsoft provides supplemental materials and security features across the hybrid environment to help you reduce the associated effort and cost of completing PCI DSS validation. For example, instead of testing everything from scratch, your assessors can use the Azure Attestation of Compliance (AOC) for the portion of your cardholder data environment that is deployed in Azure. Learn more in the content below.
+Although it is your responsibility to maintain compliance with the PCI DSS standard, you are not alone in the journey. Microsoft provides supplemental materials and security features across the hybrid environment to help you reduce the associated effort and cost of completing PCI DSS validation. For example, instead of testing everything from scratch, your assessors can use the Azure Attestation of Compliance (AOC) for the portion of your cardholder data environment that is deployed in Azure. Learn more in the following content.
 
 ## Azure Stack HCI compliance
 
@@ -51,7 +51,7 @@ As an on-premises solution, Azure Stack HCI provides an array of features that h
 
 ## Azure Stack HCI capabilities relevant for PCI DSS
 
-This section briefly outlines how organizations can leverage Azure Stack HCI functionality to meet the requirements of PCI DSS. It is important to note that PCI DSS requirements are applicable to all system components included in or connected to the cardholder data environment (CDE). The content below focuses on the Azure Stack HCI platform level, which hosts service payments or payments-related workloads that include cardholder data.
+This section briefly outlines how organizations can leverage Azure Stack HCI functionality to meet the requirements of PCI DSS. It is important to note that PCI DSS requirements are applicable to all system components included in or connected to the cardholder data environment (CDE). The following content focuses on the Azure Stack HCI platform level, which hosts service payments or payments-related workloads that include cardholder data.
 
 ### Requirement 1: Install and maintain network security controls
 

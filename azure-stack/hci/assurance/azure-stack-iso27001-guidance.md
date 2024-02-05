@@ -31,11 +31,11 @@ Azure Stack HCI provides deep integration with several Azure services, such as A
 
 ### On-premises solutions
 
-On premises, Azure Stack HCI provides an array of features that help organizations satisfy the security requirements of ISO/IEC 27001:2022. The sections below provide more information.
+On premises, Azure Stack HCI provides an array of features that help organizations satisfy the security requirements of ISO/IEC 27001:2022. The following sections provide more information.
 
 ## Azure Stack HCI capabilities relevant for ISO/IEC 27001:2022
 
-This section outlines how organizations can leverage Azure Stack HCI functionality to meet the security controls in Annex A of ISO/IEC 27001:2022. The information below covers technical requirements only. Requirements related to security operations are out of scope, as Azure Stack HCI cannot affect them. The guidance is organized by the nine domains of Annex A:
+This section outlines how organizations can leverage Azure Stack HCI functionality to meet the security controls in Annex A of ISO/IEC 27001:2022. The following information covers technical requirements only. Requirements related to security operations are out of scope, as Azure Stack HCI cannot affect them. The guidance is organized by the nine domains of Annex A:
 
 - [Network security](#network-security)
 - [Identity and access management](#identity-and-access-management)

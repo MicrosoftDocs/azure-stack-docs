@@ -12,11 +12,15 @@ ms.reviewer: alkohli
 
 # Azure Stack HCI and security standards
 
-This article provides information about security standards related to Azure Stack HCI. The resources below, including certifications and evaluation reports, may be used as sources to help you in your compliance planning. Azure Stack products, including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge, have a wide range of security features and services across the hybrid environment that can help meet stringent compliance requirements both in cloud and on premises. Each section in this article provides information on Azure Stack HCI and a particular security standard, as well as any completed certifications.
+This article provides information about security standards related to Azure Stack HCI. The resources detailed in this article, including certifications and evaluation reports, could be used as sources to help you in your compliance planning.
+
+Azure Stack products, including Azure Stack HCI, Azure Stack Hub, and Azure Stack Edge, have a wide range of security features and services across the hybrid environment that can help meet stringent compliance requirements both in cloud and on premises. Each section in this article provides information on Azure Stack HCI and a particular security standard, as well as any completed certifications.
 
 ## Federal Information Processing Standard (FIPS) 140
 
-The *Federal Information Processing Standard (FIPS) 140* is a U.S. government security standard that specifies minimum-security requirements for cryptographic modules in information technology products and systems. Azure Stack is built on Windows Server Datacenter, which has a long history of FIPS 140 validation. The table below lists the current status of Azure Stack FIPS 140 validations. Learn more about the related FIPS 140 validation of Windows Server Datacenter's cryptographic modules and algorithms at [FIPS 140 validation](/windows/security/security-foundations/certification/fips-140-validation).
+The *Federal Information Processing Standard (FIPS) 140* is a U.S. government security standard that specifies minimum-security requirements for cryptographic modules in information technology products and systems. Azure Stack is built on Windows Server Datacenter, which has a long history of FIPS 140 validation.
+
+The following table lists the current status of Azure Stack FIPS 140 validations. For more information about the related FIPS 140 validation of Windows Server Datacenter's cryptographic modules and algorithms, see [FIPS 140 validation](/windows/security/security-foundations/certification/fips-140-validation).
 
 |Products |Evaluation status |Details |
 |---------|---------|---------|
@@ -26,7 +30,9 @@ The *Federal Information Processing Standard (FIPS) 140* is a U.S. government se
 
 ## Common Criteria for Information Technology Security Evaluation (CC)
 
-Microsoft is committed to optimizing the security of its products and services. As part of that commitment, Microsoft supports the *Common Criteria for Information Technology Security Evaluation* program (CC), ensures that products incorporate the features and functions required by relevant Common Criteria *Protection Profiles*, and completes Common Criteria certifications of several operating system products. The table below lists the current status of Azure Stack Common Criteria certifications, together with relevant certification documentation. Learn more about Microsoft’s approach to Common Criteria certifications at [Common Criteria certifications](/windows/security/security-foundations/certification/windows-platform-common-criteria).
+Microsoft is committed to optimizing the security of its products and services. As part of that commitment, Microsoft supports the *Common Criteria for Information Technology Security Evaluation* program (CC), ensures that products incorporate the features and functions required by relevant Common Criteria *Protection Profiles*, and completes Common Criteria certifications of several operating system products.
+
+The following table lists the current status of Azure Stack Common Criteria certifications, together with relevant certification documentation. Learn more about Microsoft’s approach to Common Criteria certifications at [Common Criteria certifications](/windows/security/security-foundations/certification/windows-platform-common-criteria).
 
 |Products |Evaluation status |Details |
 |---------|---------|---------|
@@ -36,9 +42,9 @@ Microsoft is committed to optimizing the security of its products and services. 
 
 ## International Organization for Standardization (ISO/IEC) 27001:2022
 
-ISO/IEC 27001 is a standard that formally specifies an Information Security Management System (ISMS) that is intended to bring information security under explicit management control. It provides assurance that an organization manages and safeguards data according to global standards and mitigates the risk of data leaks. Certification to ISO/IEC 27001 helps organizations comply with numerous regulatory and legal requirements that relate to information security.
+ISO/IEC 27001 is a standard that formally specifies an Information Security Management System (ISMS) that is intended to bring information security under explicit management control. This standard provides assurance that an organization manages and safeguards data according to global standards and mitigates the risk of data leaks. Certification to ISO/IEC 27001 helps organizations comply with numerous regulatory and legal requirements that relate to information security.
 
-The guidance below provides more information about how the security capabilities of Azure Stack HCI can enable you to maintain compliance with ISO/IEC 27001:2022.
+The following guidance provides more information about how the security capabilities of Azure Stack HCI can enable you to maintain compliance with ISO/IEC 27001:2022.
 
 > [!div class="nextstepaction"]
 > [Azure Stack HCI and ISO/IEC 27001](azure-stack-iso27001-guidance.md)
@@ -47,7 +53,7 @@ The guidance below provides more information about how the security capabilities
 
 The *Payment Card Industry (PCI) Data Security Standards (DSS)* is a global information security standard designed to prevent fraud through increased control of credit card data. PCI DSS is required for organizations of any size if they store, process, or transmit cardholder data. These organizations include (but aren't limited to): merchants, payment processors, issuers, acquirers, and service providers.
 
-Azure cloud services not only have PCI DSS validation for Azure Stack HCI but also offer an array of features across the hybrid environment to help you reduce the associated effort and costs of getting your own PCI DSS validation. To learn more, follow the link to the article below.
+Azure cloud services not only have PCI DSS validation for Azure Stack HCI but also offer an array of features across the hybrid environment to help you reduce the associated effort and costs of getting your own PCI DSS validation. For more information, see the following guidance.
 
 > [!div class="nextstepaction"]
 > [Azure Stack HCI and PCI DSS](azure-stack-pci-dss-guidance.md)
@@ -56,7 +62,7 @@ Azure cloud services not only have PCI DSS validation for Azure Stack HCI but al
 
 The *Health Insurance Portability and Accountability Act of 1996 (HIPAA)* is a set of rules and regulations set forth by the U.S. Department of Health and Human Services (HHS) to protect the privacy, security, and integrity of patients’ sensitive health information. HIPAA applies to any organization or individual that creates, receives, maintains, or transmits electronic protected health information (PHI), including (but not limited to) doctors’ offices, hospitals, health insurers, and other healthcare companies.
 
-Complying with HIPAA is essential but challenging work for healthcare solutions companies. If you choose Azure Stack HCI to develop your hybrid IT environment, you can utilize its built-in capabilities as well as the cloud-integrated services to automate many aspects of achieving and maintaining HIPAA compliance. To learn more, follow the link to the article below.
+Complying with HIPAA is essential but challenging work for healthcare solutions companies. If you choose Azure Stack HCI to develop your hybrid IT environment, you can utilize its built-in capabilities as well as the cloud-integrated services to automate many aspects of achieving and maintaining HIPAA compliance. For more information, see the following guidance.
 
 > [!div class="nextstepaction"]
 > [Azure Stack HCI and HIPAA](azure-stack-hipaa-guidance.md)
