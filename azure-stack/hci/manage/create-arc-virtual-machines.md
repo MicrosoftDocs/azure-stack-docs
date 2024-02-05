@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 02/02/2024
+ms.date: 02/03/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -104,24 +104,16 @@ Depending on the type of the network interface that you created, you can create 
     | **memory-mb** |Memory in Megabytes allocated to your VM. If not specified, defaults are used.|
     | **processors** |The number of processors allocated to your VM. If not specified, defaults are used.|
     | **storage-path-id** |The associated storage path where the VM configuration and the data are saved.  |
-
-    If configuring a proxy server for your VM, the following *optional* parameters can be specified:
-
-    | Parameters | Description |
-    |------------|-------------|
-    | **proxyServerHTTP**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
-    | **proxyServerHTTPS**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
-    | **proxyServerNoproxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
-    | **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
-    | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `PleaseUseAStrongerPassword!` |
-    | **certificateFilePath**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
-  
+    | **proxy-configuration** |Use this optional parameter to configure a proxy server for your VM. For more information, see [Create a VM with proxy configured](#create-a-vm-with-proxy-configured).  |
 
 1. Run the following command to create a VM.
 
    ```azurecli
     az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId 
-   ``` 
+   ```
+
+
+
 
 The VM is successfully created when the `provisioningState` shows as `succeeded`in the output.
 
@@ -132,6 +124,34 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
+### Create a VM with proxy configured
+
+Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
+
+If creating a VM behind a proxy server, run the following command:
+
+```azurecli
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="<Http URL of proxy server>" https_proxy="<Https URL of proxy server>" no_proxy="<URLs which bypass proxy>" cert_file_path="<Certificate file path for your server>" 
+```
+
+You can input the following parameters for `proxy-server-configuration`:
+
+| Parameters | Description |
+|------------|-------------|
+| **http_proxy**  |HTTP URLs for proxy server. An example URL is:`http://proxy.example.com:3128`.  |
+| **https_proxy**  |HTTPS URLs for proxy server. The server may still use an HTTP address as shown in this example: `http://proxy.example.com:3128`. |
+| **no_proxy**  |URLs, which can bypass proxy. Typical examples would be `localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8`.|
+| **cert_file_path**  |Name of the certificate file path for your proxy server. An example is: `C:\Users\Palomino\proxycert.crt`. |
+<!--| **proxyServerUsername**  |Username for proxy authentication. The username and password are combined in this URL format: `http://username:password@proxyserver.contoso.com:3128`. An example is: `GusPinto`|
+| **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
+
+
+Here is a sample command:
+
+```azurecli
+az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
+```
+For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
 ### Create a Linux VM from network interface
 
