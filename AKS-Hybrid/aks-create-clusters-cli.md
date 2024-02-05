@@ -4,7 +4,7 @@ description: Learn how to create Kubernetes clusters in Azure Stack HCI using Az
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.date: 01/25/2024
+ms.date: 02/05/2024
 ms.author: sethm 
 ms.lastreviewed: 01/25/2024
 ms.reviewer: guanghu
@@ -29,7 +29,7 @@ This article describes how to create Kubernetes clusters in Azure Stack HCI usin
   - **Network ID** - Azure Resource Manager ID of the Azure Stack HCI logical network created following [these steps](aks-networks.md). Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
 - You can run the steps in this article in a local dev machine to create a Kubernetes cluster on your remote Azure Stack HCI deployment. Make sure you have the latest version of [Az CLI](/cli/azure/install-azure-cli) on your dev machine. You can also choose to upgrade your Az CLI version using `az upgrade`.
 - To connect to the Kubernetes cluster from anywhere, create a Microsoft Entra group and add members to it. All the members in the Microsoft Entra group have cluster administrator access to the AKS hybrid cluster. Make sure to add yourself as a member to the Microsoft Entra group. If you don't add yourself, you cannot access the Kubernetes cluster using kubectl. For more information about creating Microsoft Entra groups and adding users, see [Manage Microsoft Entra groups and group membership](/entra/fundamentals/how-to-manage-groups).
-- [Download and install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) on your dev machine. The Kubernetes command-line tool, kubectl, enables you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
+- [Download and install kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) on your development machine. The Kubernetes command-line tool, kubectl, enables you to run commands against Kubernetes clusters. You can use kubectl to deploy applications, inspect and manage cluster resources, and view logs.
 
 ## Install the Azure CLI extension
 
@@ -56,7 +56,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 Now you can connect to your Kubernetes cluster by running the `az connectedk8s proxy` command from your dev machine. Make sure you sign in to Azure before running this command. If you have multiple Azure subscriptions, select the appropriate subscription ID using the [az account set](/cli/azure/account#az-account-set) command.
 
-This command downloads the kubeconfig of your Kubernetes cluster to your dev machine and opens a proxy connection channel to your on-premises Kubernetes cluster. The channel is open for as long as the command runs. Let this command run for as long as you want to access your cluster. If it times out, close the CLI window, open a fresh one, then run the command again.
+This command downloads the kubeconfig of your Kubernetes cluster to your development machine and opens a proxy connection channel to your on-premises Kubernetes cluster. The channel is open for as long as the command runs. Let this command run for as long as you want to access your cluster. If it times out, close the CLI window, open a fresh one, then run the command again.
 
 You must have Contributor permissions on the resource group that hosts the Kubernetes cluster in order to run the following command successfully:
 
