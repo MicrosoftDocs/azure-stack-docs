@@ -1,29 +1,27 @@
 ---
-title: Security features for Azure Stack HCI, version 23H2 (preview)
-description: Learn about security features available for new deployments of Azure Stack HCI, version 23H2 (preview).
+title: Security features for Azure Stack HCI, version 23H2.
+description: Learn about security features available for new deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/04/2024
+ms.date: 02/01/2024
 ---
 
-# Security features for Azure Stack HCI, version 23H2 (preview)
+# Security features for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
-This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, and more.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
+This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
 
 ## Windows Defender Application Control
 
-Windows Defender Application Control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2 (preview)](../manage/manage-wdac.md).
+Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md).
 
-## Security baseline and drift control
+## Security defaults
 
 Your Azure Stack HCI has more than 300 security settings enabled by default that provide a consistent security baseline, a baseline management system, and an associated drift control mechanism.
 
@@ -37,18 +35,20 @@ Secure baseline on Azure Stack HCI:
 - Reduces OPEX with a built-in drift protection mechanism and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
 - Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
-For more information about secure baseline on Azure Stack HCI, see [Manage secure baseline](../manage/manage-secure-baseline.md).
+For more information, see [Manage security defaults on Azure Stack HCI](../manage/manage-secure-baseline.md).
 
-## Volume encryption via BitLocker
+## BitLocker encryption
 
-All data-at-rest on your Azure Stack HCI cluster is protected with BitLocker XTS-AES 256-bit encryption. When you deploy your cluster, you have the option to modify security settings. By default, data-at-rest encryption is enabled on data volumes created during deployment. We recommend that you accept the default setting.
+Data-at-rest encryption is enabled on data volumes created during deployment. These data volumes include both infrastructure volumes and workload volumes. When you deploy your cluster, you have the option to modify security settings.
 
-We recommend that you store BitLocker recovery keys in a secure location outside of the system. Once Azure Stack HCI is successfully deployed, you can retrieve BitLocker recovery keys.
+By default, data-at-rest encryption is enabled during deployment. We recommend that you accept the default setting.
 
-For more information about BitLocker, see:
+You must store BitLocker recovery keys in a secure location outside of the system. Once Azure Stack HCI is successfully deployed, you can retrieve BitLocker recovery keys.
+
+For more information about BitLocker encryption, see:
 
 - [Use BitLocker with Cluster Shared Volumes (CSV)](../manage/bitlocker-on-csv.md).
-- [BitLocker encryption on Azure Stack HCI (preview)](../manage/manage-bitlocker.md).
+- [Manage BitLocker encryption on Azure Stack HCI](../manage/manage-bitlocker.md).
 
 ## Local built-in user accounts
 
@@ -95,6 +95,15 @@ The syslog forwarder in Azure Stack HCI supports various configurations based on
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 
+## Microsoft Defender for Cloud (preview)
+
+Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
+
+With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual servers and Arc VMs.
+
+For more information, see [Manage system security with Microsoft Defender for Cloud (preview)](../manage/manage-security-with-defender-for-cloud.md).
+
 ## Next steps
 
 - [Assess deployment readiness via the Environment Checker](../manage/use-environment-checker.md).
+- [Read the Azure Stack HCI Security book](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCISecurityBook_0126_final.pdf)

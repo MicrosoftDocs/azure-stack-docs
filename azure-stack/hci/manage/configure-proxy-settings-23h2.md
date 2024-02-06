@@ -91,11 +91,12 @@ You must configure the proxy for Azure Arc-enabled servers before you register y
     $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
     [Environment]::SetEnvironmentVariable("HTTP_PROXY", "http://ProxyServerFQDN:port", "Machine")
     $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
+
     $no_proxy = "localhost,127.0.0.1,.svc,node1,node2,scluster,192.168.0.2,192.168.0.3,*.contoso.com" 
-    
     [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
+    $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
     
-    # For the changes to take effect, restart the agent services after the proxy environment variable is set.
+    # For the changes to take effect, restart the agent services after the proxy environment variable is set.  This is only required if the agent is already installed
     Restart-Service -Name himds, ExtensionService, GCArcService
     ```
 
@@ -121,6 +122,7 @@ You must configure the proxy for Azure Arc-enabled servers before you register y
     $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
     $no_proxy = "" 
     [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine") 
+    $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
     
     # For the changes to take effect, restart the agent services after the proxy environment variable is removed. 
     Restart-Service -Name himds, ExtensionService, GCArcService
@@ -135,7 +137,7 @@ You can configure proxy settings for Winhttp using the `netsh` command line util
 - Run the following command from the command prompt to manually configure the proxy server:
 
     ```cmd
-    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list="<URL to bypass>"
+    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list=""localhost;127.0.0.1;.svc;node1;node2;scluster;192.168.0.2;192.168.0.3;.contoso.com" "
     ```
 
 - Run the following command from the command prompt to view or verify the current WinHTTP proxy server configuration:

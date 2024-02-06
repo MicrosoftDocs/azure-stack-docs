@@ -1,8 +1,8 @@
 ---
 title: Deploy SQL Server on Azure Stack HCI (AKS-HCI)
 description: This topic provides guidance on how to deploy SQL Server on Azure Stack HCI.
-author: hsuzuki
-ms.author: hsuzuki
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/17/2023
 ---

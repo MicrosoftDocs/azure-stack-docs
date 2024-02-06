@@ -1,21 +1,19 @@
 ---
-title: Use Azure Monitor alerts for Azure Stack HCI health alerts (preview)
-description: Learn how to use the Azure Monitor alerts to respond to Azure Stack HCI health alerts.(preview)
+title: Use Azure Monitor alerts for Azure Stack HCI health alerts
+description: Learn how to use the Azure Monitor alerts to respond to Azure Stack HCI health alerts.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/24/2024
+ms.date: 01/31/2024
 ---
 
-# Respond to Azure Stack HCI health alerts using Azure Monitor alerts (preview)
+# Respond to Azure Stack HCI health alerts using Azure Monitor alerts
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use [Azure Monitor alerts](/azure/azure-monitor/alerts/alerts-overview) to proactively identify, notify, and respond to Azure Stack HCI health alerts.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About integration of Azure Monitor and Azure Stack HCI alerts
 
@@ -28,7 +26,9 @@ For more information about Azure Monitor alerts, see [What are Azure Monitor ale
 The integration of Azure Monitor alerts with Azure Stack HCI offers several key benefits:
 
 - **No additional cost.** By enabling the health alerts capability, you automatically get Azure Monitor alerts for all your Azure Stack HCI cluster health issues at no additional cost. There's no need to set up Log Analytics or manually author any alert rules.
+
 - **Near real-time monitoring.** With Azure Stack HCI health alerts providing near real-time monitoring, you can detect issues as they occur and take immediate action, thereby reducing downtime.
+
 - **Customizability.** The Azure Stack HCI health alerts experience is built on top of Azure Monitor alerts. You can configure the alert processing rules to notify the right team via your preferred [Incident management partners](/azure/azure-monitor/partners), ensuring quick and effective response to the issues.
 
 ## Prerequisites  
@@ -96,4 +96,4 @@ For instructions, see [Uninstall an extension from the Azure portal](./arc-exten
 
 ## Next steps
 
-- [View a list of health alerts](./health-service-faults.md) that you might run across within your Azure Stack HCI system.
+[View a list of health alerts](./health-service-faults.md) that you might run across within your Azure Stack HCI system.

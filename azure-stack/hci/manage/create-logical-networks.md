@@ -1,6 +1,6 @@
 ---
-title: Create logical networks for Azure Stack HCI cluster (preview)
-description: Learn how to create logical networks on your Azure Stack HCI cluster. The Arc VM running on your cluster used this logical network (preview).
+title: Create logical networks for Azure Stack HCI cluster 
+description: Learn how to create logical networks on your Azure Stack HCI cluster. The Arc VM running on your cluster used this logical network.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -9,13 +9,12 @@ ms.subservice: azure-stack-hci
 ms.date: 01/03/2024
 ---
 
-# Create logical networks for Azure Stack HCI (preview)
+# Create logical networks for Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to create or add logical networks for your Azure Stack HCI cluster.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -78,7 +77,7 @@ Create a static logical network when you want to create virtual machines with ne
     $location = "eastus"
     $addressPrefixes = "100.68.180.0/28"
     $gateway = "192.168.200.1"
-    $dnsServers = " 192.168.200.222"
+    $dnsServers = "192.168.200.222"
     ```
 
     > [!NOTE]

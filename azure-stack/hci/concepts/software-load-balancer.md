@@ -6,7 +6,6 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom: contperf-fy22q1
 ms.date: 04/17/2023
 ---
 # What is Software Load Balancer \(SLB\) for SDN?

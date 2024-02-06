@@ -1,27 +1,24 @@
 - name: Azure Kubernetes Service (AKS) enabled by Azure Arc
   href: index.yml
 - name: Overview
+  expanded: true
   items:
-  - name: AKS enabled by Arc
-    href: aks-hybrid-options-overview.md
-  - name: AKS on Azure Stack HCI and Windows Server
+  - name: What is AKS enabled by Arc?
+    href: aks-overview.md
+  - name: Overview
     href: overview.md
+  - name: Before you begin - uninstall AKS hybrid cluster provisioning preview
+    href: aks-hybrid-preview-uninstall.md
   - name: Supported Kubernetes versions
-    href: supported-kubernetes-versions.md
-  - name: Quotas and resource limits
-    href: concepts-support.md
-  - name: Architecture
-    items:
-    - name: Baseline architecture for AKS hybrid
-      href: /azure/architecture/example-scenario/hybrid/aks-baseline
-    - name: Network architecture for AKS hybrid
-      href: /azure/architecture/example-scenario/hybrid/aks-network
+    href: supported-kubernetes-versions.md  
 - name: System requirements
   href: system-requirements.md
-- name: Preview version 23H2
+- name: Quotas and resource limits
+  href: concepts-support.md
+- name: AKS on Azure Stack HCI 23H2
   items:
-  - name: What's new
-    href: aks-preview-overview.md
+  - name: What's new in AKS enabled by Azure Arc
+    href: aks-whats-new-23h2.md
   - name: Network system requirements
     href: aks-hci-network-system-requirements.md
   - name: Infrastructure component updates
@@ -30,7 +27,7 @@
     href: aks-known-issues.md
   - name: How-to
     items:
-    - name: Create Arc-enabled networks and connect them to Azure
+    - name: Create logical networks for Kubernetes clusters
       href: aks-networks.md
     - name: Create Kubernetes clusters using Azure CLI
       href: aks-create-clusters-cli.md
@@ -38,14 +35,44 @@
       href: aks-create-clusters-portal.md      
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
+    - name: Use labels in a Kubernetes cluster
+      href: cluster-labels.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
+    - name: Use GPUs
+      href: deploy-gpu-node-pool.md
     - name: Deploy container images using Azure Container Registry
       href: deploy-container-registry.md
     - name: Manage multiple node pools
       href: manage-node-pools.md
+    - name: Manage control plane nodes in a cluster
+      href: manage-control-plane-nodes.md
     - name: Deploy a load balancer
       href: deploy-load-balancer.md
+    - name: Retrieve certificate-based admin kubeconfig
+      href: retrieve-admin-kubeconfig.md
+    - name: Use manual (offline) download in AKS Arc
+      href: offline-download.md
+    - name: Monitoring and logging
+      items:    
+          - name: Monitor Kubernetes object events
+            href: kubernetes-monitor-object-events.md
+          - name: Enable Container Insights
+            href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
+          - name: Use on-premises monitoring
+            href: aks-monitor-logging.md
+          - name: Get kubelet logs
+            href: aks-get-kubelet-logs.md
+          - name: Get on-demand logs for troubleshooting
+            href: get-on-demand-logs.md
+    - name: Security and authentication
+      items:
+      - name: Restrict SSH access
+        href: restrict-ssh-access.md
+  - name: Quickstarts
+    items:
+    - name: Deploy a cluster using a resource manager template
+      href: resource-manager-quickstart.md
   - name: Concepts
     items:
     - name: Cluster architecture
@@ -55,9 +82,9 @@
   - name: Reference
     items:
     - name: Azure CLI
-      href: /cli/azure/akshybrid
+      href: /cli/azure/aksarc
     - name: REST API reference
-      href: /rest/api/hybridcontainer/operation-groups?view=rest-hybridcontainer-2023-11-15-preview&preserve-view=true
+      href: /rest/api/hybridcontainer/operation-groups
 - name: Quickstarts
   expanded: true
   items:
@@ -67,6 +94,8 @@
       items:
         - name: Use PowerShell
           href: kubernetes-walkthrough-powershell.md
+        - name: Use Azure CLI
+          href: aks-create-clusters-cli.md
         - name: Use Windows Admin Center
           items:
             - name: Set up AKS
@@ -75,8 +104,6 @@
               href: create-kubernetes-cluster.md
     - name: Develop applications
       items:
-        - name: Use GPUs
-          href: deploy-gpu-node-pool.md
         - name: Deploy applications with Helm
           href: helm-deploy.md
         - name: Deploy Azure Arc-enabled data services
@@ -147,10 +174,8 @@
   items: 
     - name: Install
       items:
-          - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
-            href: prestage-cluster-service-host-create.md
-    - name: Use offline download
-      href: offline-download.md
+        - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
+          href: prestage-cluster-service-host-create.md
     - name: Upgrade
       items:
       - name: Upgrade AKS hybrid host
@@ -177,12 +202,8 @@
               href: work-with-autoscaler-profiles.md
     - name: Cluster and workloads
       items:
-            - name: Cluster operations
-              items:
-                - name: Deploy a container image from Azure Container Registry
-                  href: deploy-azure-container-registry.md
-                - name: Create and manage node pools
-                  href: use-node-pools.md
+            - name: Deploy a container image from Azure Container Registry
+              href: deploy-azure-container-registry.md
             - name: Manage workloads
               items:
                   - name: Create and delete pods
@@ -255,8 +276,6 @@
             href: update-certificate-bundle.md
           - name: Update certificates
             href: update-certificates.md
-          - name: Restrict SSH access
-            href: restrict-ssh-access.md
           - name: Secrets Store CSI Driver configuration
             href: secrets-store-csi-driver.md
           - name: Encrypt etcd secrets
@@ -267,13 +286,11 @@
             href: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc
     - name: Monitoring and logging
       items:    
-          - name: Use Azure Monitor for containers
-            href: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=/azure/azure-arc/kubernetes/toc.json
           - name: Use on-premises monitoring
             href: monitor-logging.md
           - name: View logs to collect and review data
             href: view-logs.md
-          - name: View the kubelet logs
+          - name: Get kubelet logs
             href: get-kubelet-logs.md
     - name: Use Windows Server containers
       items:
@@ -432,10 +449,18 @@
     href: help-support.md
   - name: File bugs
     href: https://aka.ms/AKS-hybrid-issues
+- name: Architecture
+  items:
+  - name: Baseline architecture for AKS
+    href: /azure/architecture/example-scenario/hybrid/aks-baseline
+  - name: Network architecture for AKS
+    href: /azure/architecture/example-scenario/hybrid/aks-network
 - name: Reference
   items:
   - name: Azure Stack HCI
     href: /azure-stack/hci/index
+  - name: Azure CLI
+    href: /cli/azure/akshybrid
   - name: REST API reference
     href: /rest/api/hybridcontainer/
   - name: Windows Admin Center (WAC)

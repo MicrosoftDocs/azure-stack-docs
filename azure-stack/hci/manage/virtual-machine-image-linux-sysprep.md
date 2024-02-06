@@ -1,6 +1,6 @@
 ---
-title: Sysprep Linux image for Azure Stack HCI VM via Azure CLI (preview)
-description: Learn how to sysprep Linux images to create Azure Stack HCI VM image (preview).
+title: Prepare Linux image for Azure Stack HCI VM via Azure CLI 
+description: Learn how to prepare Linux images to create Azure Stack HCI VM image.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,16 +8,15 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 06/28/2023
+ms.date: 01/30/2024
 ---
 
-# Sysprep Ubuntu image for Azure Stack HCI virtual machines (preview)
+# Prepare Ubuntu image for Azure Stack HCI virtual machines
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to prepare an Ubuntu image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Prerequisites
 
@@ -25,18 +24,13 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - You've access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- Access to a client that can connect to your Azure Stack HCI cluster. This client should be:
-
-    - Running PowerShell 5.0 or later.
-    - Running the latest version of `az` CLI.
-        - [Download the latest version of `az` CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli). Once you have installed `az` CLI, make sure to restart the system.
-        -  If you have an older version of `az` CLI running, make sure to uninstall the older version first.
-
-- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your local system. You are required to sysprep gallery images for guest management for VMs created using Ubuntu images.
+- [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster.
+    - You are required to prepare gallery images for guest management for VMs created using Ubuntu images.
+    - Only the operating system versions supported by Arc for servers are allowed. See [Supported Ubuntu versions](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
 
 ## Workflow 
 
-Follow these steps to sysprep an Ubuntu image and create VM image from that image: 
+Follow these steps to prepare an Ubuntu image and create VM image from that image: 
 
 1. [Create an Ubuntu VM](#step-1-create-an-ubuntu-vm).
 1. [Configure the VM](#step-2-configure-vm). 
@@ -48,9 +42,9 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create VM image from Ubuntu image
 
 > [!IMPORTANT]
-> We recommend that you sysprep an Ubuntu image if you intend to enable guest management on the VMs.
+> We recommend that you prepare an Ubuntu image if you intend to enable guest management on the VMs.
 
-Follow these steps to create a VM image using the Azure CLI.
+Follow these steps on your Azure Stack HCI cluster to create a VM image using the Azure CLI.
 
 ### Step 1: Create an Ubuntu VM
 
@@ -80,7 +74,7 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 
 ### Step 2: Configure VM
 
-Follow these steps to configure the VM that you provisioned earlier:
+Follow these steps on your Azure Stack HCI cluster to configure the VM that you provisioned earlier:
 
 1. Sign into the VM. See steps in [Connect to a Linux VM](/azure/databox-online/azure-stack-edge-gpu-deploy-virtual-machine-portal#connect-to-a-linux-vm).
 1. To download all the latest package lists from the repositories, run the following command:
@@ -107,7 +101,7 @@ Follow these steps to configure the VM that you provisioned earlier:
 
 ### Step 3: Clean up residual configuration
 
-Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations.
+Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
 1. Clean `cloud-init` default configurations.
 
@@ -137,6 +131,8 @@ Delete machine-specific files and data from your VM so that you can create a cle
     
 
 ### Step 4: Create VM image
+
+Follow these steps on your Azure Stack HCI cluster to create the VM image:
 
 1. Run PowerShell as an administrator.
 
@@ -168,7 +164,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
     |----------------|--------------------------------------------------------------------------------------------|
     | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
     | `Resource_Group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `eastus2euap`. |
+    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `westreurope`. |
     | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 
@@ -179,7 +175,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
     $galleryImageName = "ubuntu-server-ssvm" 
 
-    az azurestackhci galleryimage create --subscription $subscription -g $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --image-path $galleryImagePath --name $galleryImageName --debug --os-type 'Linux' 
+    az stack-hci-vm galleryimage create --subscription $subscription -g $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --image-path $galleryImagePath --name $galleryImageName --debug --os-type 'Linux' 
     ```
 
 

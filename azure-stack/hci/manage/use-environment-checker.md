@@ -1,23 +1,21 @@
 ---
-title: Use Azure Stack HCI Environment Checker to assess deployment readiness for Azure Stack HCI, version 23H2 (preview).
-description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI, versions 23H2 (preview).
+title: Use Azure Stack HCI Environment Checker to assess deployment readiness for Azure Stack HCI, version 23H2.
+description: How to use the Environment Checker to assess if your environment is ready for deploying Azure Stack HCI, versions 23H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/17/2023
+ms.date: 01/31/2024
 ---
 
-# Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2 (preview)
+# Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to use the Azure Stack HCI Environment Checker in a standalone mode to assess how ready your environment is for deploying the Azure Stack HCI solution.
 
 For a smooth deployment of the Azure Stack HCI solution, your IT environment must meet certain requirements for connectivity, hardware, networking, and Active Directory. The Azure Stack HCI Environment Checker is a readiness assessment tool that checks these minimum requirements and helps determine if your IT environment is deployment ready.
-
-[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About the Environment Checker tool
 
@@ -26,7 +24,7 @@ The Environment Checker tool runs a series of tests on each server in your Azure
 The Environment Checker tool consists of the following validators:
 
 - **Connectivity validator.** Checks whether each server in the cluster meets the [connectivity requirements](../concepts/firewall-requirements.md?tabs=allow-table#firewall-requirements-for-outbound-endpoints). For example, each server in the cluster has internet connection and can connect via HTTPS outbound traffic to well-known Azure endpoints through all firewalls and proxy servers.
-- **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements.md). For example, all the servers in the cluster have the same manufacturer and model.
+- **Hardware validator.** Checks whether your hardware meets the [system requirements](../concepts/system-requirements-23h2.md). For example, all the servers in the cluster have the same manufacturer and model.
 - **Active Directory validator.** Checks whether the Active Directory preparation tool is run prior to running the deployment.
 - **Network validator.** Validates your network infrastructure for valid IP ranges provided by customers for deployment. For example, it checks there are no active hosts on the network using the reserved IP range.
 - **Arc integration validator.** Checks if the Azure Stack HCI cluster meets all the prerequisites for successful Arc onboarding.
@@ -39,7 +37,7 @@ You can run the Environment Checker to:
 - Identify the issues that could potentially block the deployment, such as not running a pre-deployment Active Directory script.
 - Confirm that the minimum requirements are met.
 - Identify and remediate small issues early and quickly, such as a misconfigured firewall URL or a wrong DNS.
-- Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
+- Identify and remediate discrepancies on your own and ensure that your current environment configuration complies with the Azure Stack HCI system requirements.
 - Collect diagnostic logs and get remote support to troubleshoot any validation issues.
 
 ## Environment Checker modes
@@ -56,8 +54,8 @@ This article describes how to run the Environment Checker in a standalone mode.
 
 Before you begin, complete the following tasks:
 
-- Review [Azure Stack HCI system requirements](/azure-stack/hci/concepts/system-requirements).
-- Review [Firewall requirements for Azure Stack HCI](/azure-stack/hci/concepts/firewall-requirements?tabs=allow-table).
+- Review [Azure Stack HCI system requirements](../concepts/system-requirements-23h2.md).
+- Review [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 - Make sure you have access to a client computer that is running on the network where you'll deploy the Azure Stack HCI cluster.
 - Make sure that the client computer used is running PowerShell 5.1 or later.
 - Make sure you have permission to verify the Active Directory preparation tool is run.
@@ -274,7 +272,7 @@ For example, if you want to verify the certificate information for two endpoints
 
 ## [Hardware](#tab/hardware)
 
-The hardware validator checks whether the servers and other hardware components meet the [system requirements](../concepts/system-requirements.md). For example, it checks if all physical servers in your cluster are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.
+The hardware validator checks whether the servers and other hardware components meet the [system requirements](../concepts/system-requirements-23h2.md). For example, it checks if all physical servers in your cluster are configured uniformly and all hardware components use the same versions of firmware and are operating as expected.
 
 We recommend you use the hardware validator before starting the deployment.
 
@@ -549,5 +547,5 @@ For information about how to get support from Microsoft to troubleshoot any vali
 
 ## Next steps
 
-- [Review the deployment checklist](../deploy/deployment-checklist.md).
+- [Complete the prerequisites and deployment checklist](../deploy/deployment-prerequisites.md).
 - [Contact Microsoft Support](get-support.md).

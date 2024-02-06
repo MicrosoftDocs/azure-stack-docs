@@ -1,25 +1,23 @@
 ---
-title: Review update phases of Azure Stack HCI, version 23H2 (preview).
-description: Understand the various phases of solution updates applied to Azure Stack HCI, version 23H2 (preview).
+title: Review update phases of Azure Stack HCI, version 23H2.
+description: Understand the various phases of solution updates applied to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.author: alkohl
 ms.topic: conceptual
-ms.date: 11/13/2023
+ms.date: 01/31/2024
 ---
 
-# Review update phases of Azure Stack HCI, version 23H2 updates (preview)
+# Review update phases of Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date. This information is applicable to Azure Stack HCI, version 23H2 (preview).
+This article describes the various phases of solution updates that are applied to your Azure Stack HCI cluster to keep it up-to-date. This information is applicable to Azure Stack HCI, version 23H2.
 
 The procedure in this article applies to both a single server and a multi-server cluster that is running the latest version including the orchestrator.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
-
 ## About update phases
 
-The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [Update overview for Azure Stack HCI, version 23H2 (preview)](whats-the-lifecycle-manager-23h2.md).
+The Azure Stack HCI solution updates can consist of OS, agents and service, and solution extension updates. For more information on these solution updates, see [About updates for Azure Stack HCI, version 23H2](about-updates-23h2.md).
 
 The new update feature automates the update process for agents, services, operating system content, and Solution Extension content, with the goal of maintaining availability by shifting workloads around throughout the update process when needed.
 
@@ -33,7 +31,7 @@ The updates consist of several phases: discovering the update, staging the conte
 
 You can apply these updates via PowerShell or the Azure portal. Regardless of the interface you choose, the subsequent sections summarize what happens within each phase of an update. The following diagram shows what actions you might need to take during each phase and what actions Azure Stack HCI takes through the update operation.
 
-![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](../update/media/updates/updates-phases-actions-23h2.png)
+[![A screenshot indicating the various phases of an update with actions you need to perform in each phase.](./media/update-phases/updates-phases-actions-23h2.png)](./media/update-phases/updates-phases-actions-23h2.png#lightbox)
 
 ## Phase 1: Discovery and acquisition
 
@@ -49,7 +47,7 @@ Depending on the hardware in your cluster and the scope of an update bundle, you
 
 There are a series of prechecks before installing a solution update. The prechecks are related to the storage systems, failover cluster requirements, remote management of the cluster, and solution extensions. These prechecks help to confirm that your Azure Stack HCI cluster is safe to update and ensures updates go more smoothly.
 
-A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content has been downloaded and *before* it begins installing.
+A subset of these checks can be initiated outside the update process. Because new checks can be included in each update, these readiness checks are executed *after* the update content is downloaded and *before* it begins installing.
 
 Readiness checks can also result in blocking conditions or warnings.
 
@@ -71,4 +69,4 @@ While the update installs, you can monitor the progress via your chosen interfac
 
 ## Next step
 
-Learn more about how to [Troubleshoot updates](../update/update-troubleshooting-23h2.md).
+Learn more about how to [Troubleshoot updates](./update-troubleshooting-23h2.md).

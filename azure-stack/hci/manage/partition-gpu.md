@@ -4,15 +4,18 @@ description: Learn how to partition and share a GPU with multiple virtual machin
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/05/2023
+ms.date: 01/29/2024
 ms.reviewer: alkohli
 ---
 
 # Partition and share GPUs with virtual machines on Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+
+[!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
 
 This article describes how to use the graphics processing unit (GPU) partitioning feature in Azure Stack HCI. It provides instructions on how to configure GPU partition count, assign GPU partitions, and unassign GPU partitions via Windows Admin Center and PowerShell.
+
 
 ## About GPU partitioning
 

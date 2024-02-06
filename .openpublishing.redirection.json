@@ -1,6 +1,16 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/manage/faqs-arc-enabled-vms.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vms-faq",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/deploy/deployment-checklist.md",
+      "redirect_url":"/azure-stack/hci/deploy/deployment-prerequisites",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/concepts/other-security-features.md",
       "redirect_url":"/azure-stack/hci/concepts/security-features",
       "redirect_document_id": false
@@ -1118,7 +1128,7 @@
     },
     {
       "source_path": "azure-stack/hci/update/update-azure-stack-hci-solution-23h2.md",
-      "redirect_url": "/azure-stack/hci/update/whats-the-lifecycle-manager-23h2",
+      "redirect_url": "/azure-stack/hci/update/about-updates-23h2",
       "redirect_document_id": false
     },
     {
@@ -1279,7 +1289,11 @@
       "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager.md",
       "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager-23h2.md",
+      "redirect_url": "/azure-stack/hci/update/about-updates-23h2",
+      "redirect_document_id": false
     }
   ]
-  
 }
