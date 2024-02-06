@@ -277,8 +277,7 @@ Use the `Start-AzMigrateHCIServerMigration` cmdlet to migrate a replication as p
 
 > [!NOTE]
 > Before starting migration, verify replication succeeded as follows:
- 
-`$ProtectedItem.Property.ProvisioningState` status must be `Succeeded` and `$ProtectedItem.Property.ProtectionState` status must be `Protected`.
+> `$ProtectedItem.Property.ProvisioningState` status must be `Succeeded` and > > `$ProtectedItem.Property.ProtectionState` status must be `Protected`.
 
 
 **Example**
