@@ -151,7 +151,7 @@ Choose whether to create a new configuration for this system or to load deployme
     
     
     > [!IMPORTANT] 
-    > Do not delete the infrastructure volume used to store content from the Lifecycle Manager.
+    > Don't delete the infrastructure volumes created during deployment.
     
     Here is a table summarizing the expected resiliency configuration against the number of servers in your cluster.
     
