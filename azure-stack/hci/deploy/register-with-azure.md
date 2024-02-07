@@ -168,7 +168,7 @@ Follow these steps to register Azure Stack HCI with Azure via Windows Admin Cent
 Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you cannot run the commands from a management computer that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories#installing-powershellget-on-a-disconnected-system).
 
 > [!NOTE]
-> You can’t use this method to register systems running Azure stack HCI, version 23H2 and later. For more information on Azure Stack HCI, version 23H2 deployment, see [Deployment via Azure portal](deploy/deploy-via-portal.md).
+> You can’t use this method to register systems running Azure stack HCI, version 23H2 and later. For more information on Azure Stack HCI, version 23H2 deployment, see [Deployment via Azure portal](deploy-via-portal.md).
 
 1. Make sure all the [prerequisites](#prerequisites) are met.
 
