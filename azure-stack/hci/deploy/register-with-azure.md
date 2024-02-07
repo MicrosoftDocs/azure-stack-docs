@@ -1,8 +1,8 @@
 ---
 title: Register Azure Stack HCI with Azure
 description: How to register Azure Stack HCI clusters with Azure.
-author: alkohli
-ms.author: alkohli
+author: sethmanheim
+ms.author: sethm
 ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
