@@ -27,8 +27,8 @@ The following operating systems (OS) are supported for the source appliance, tar
 |Source appliance     |Windows Server 2022        |
 |Target environment     |Azure Stack HCI, version 23H2         |
 |Target appliance     |Windows Server 2022         |
-|Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
-|Guest VM     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
+|Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
+|Guest VM (Linux)     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
 *To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
 
