@@ -1,8 +1,8 @@
 ---
 title: Deploy virtual desktop infrastructure (VDI) on Azure Stack HCI
 description: This topic provides guidance on how to plan, configure, and deploy virtual desktop infrastructure (VDI) on the Azure Stack HCI operating system.
-author: hsuzuki1999
-ms.author: hsuzuki
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/17/2023
 ---

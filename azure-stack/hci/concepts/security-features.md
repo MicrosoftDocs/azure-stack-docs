@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/01/2024
+ms.date: 02/06/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -106,4 +106,5 @@ For more information, see [Manage system security with Microsoft Defender for Cl
 ## Next steps
 
 - [Assess deployment readiness via the Environment Checker](../manage/use-environment-checker.md).
-- [Read the Azure Stack HCI Security book](https://databoxupdatepackages.blob.core.windows.net/documentation/AzureStackHCISecurityBook_0126_final.pdf)
+- [Read the Azure Stack HCI security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
+- [View the Azure Stack HCI security standards](/azure-stack/hci/assurance/azure-stack-security-standards).
