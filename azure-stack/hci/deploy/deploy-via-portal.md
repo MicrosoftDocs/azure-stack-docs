@@ -152,7 +152,8 @@ Choose whether to create a new configuration for this system or to load deployme
     
     If the resiliency configuration for workload volumes does not suit your applications, you can delete these volumes and create these again as per your needs.
     
-    [!IMPORTANT] Do not delete the infrastructure volume used to store content from the Lifecycle Manager.
+    > [!IMPORTANT] 
+    > Do not delete the infrastructure volume used to store content from the Lifecycle Manager.
     
     Here is a table summarizing the expected resiliency configuration against the number of servers in your cluster.
     
