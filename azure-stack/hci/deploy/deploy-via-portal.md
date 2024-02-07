@@ -153,7 +153,7 @@ Choose whether to create a new configuration for this system or to load deployme
     > [!IMPORTANT] 
     > Don't delete the infrastructure volumes created during deployment.
     
-    Here is a table summarizing the expected resiliency configuration against the number of servers in your cluster.
+    Here's a summary of the volumes that are created based on the number of servers in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
     
     
     |# Servers  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
