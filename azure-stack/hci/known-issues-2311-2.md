@@ -62,7 +62,7 @@ Here are the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Arc VM management <!--26100653--> |Deployment/Update could fail when Arc Resource Bridge auto-generated SPN secret starts with a hyphen.|Retry the operation. This should regenerate the SPN and is likely to succeed.  |
+| Arc VM management <!--26100653--> |Deployment or update of Arc Resource Bridge could fail when the automatically generated SPN secret during this operation, starts with a hyphen.|Retry the deployment/update. The retry should regenerate the SPN secret and the operation will likely succeed.  |
 | Arc VM management <!--X--> |Arc Extensions on Arc VMs stay in "Creating" state indefinitely. | Log in to the VM, open a command prompt, and type the following: <br> **Windows**: <br> `notepad C:\ProgramData\AzureConnectedMachineAgent\Config\agentconfig.json` <br> **Linux**: <br> `sudo vi /var/opt/azcmagent/agentconfig.json` <br>  Next, find the `resourcename` property. Delete the GUID that is appended to the end of the resource name, so this property matches the name of the VM. Then restart the VM.|
 | Arc VM management <!--26066222--> |When a new server is added to an Azure Stack HCI cluster, storage path is not created automatically for the newly created volume.| You can manually create a storage path for any new volumes. For more information, see [Create a storage path](./manage/create-storage-path.md).  |
 | Arc VM management <!--X--> |Restart of Arc VM operation completes after approximately 20 minutes although the VM itself restarts in about a minute.| There's no known workaround in this release.  |
