@@ -148,7 +148,6 @@ Choose whether to create a new configuration for this system or to load deployme
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
 
-    The deployment configures your storage according to the best practices based on the number of servers in the cluster. Storage is configured for at least one infrastructure volume that is used by the deployment and one or multiple workload volumes for your use.
     
     
     > [!IMPORTANT] 
