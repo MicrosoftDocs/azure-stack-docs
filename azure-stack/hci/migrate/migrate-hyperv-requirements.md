@@ -23,7 +23,7 @@ The following operating systems (OS) are supported for the source appliance, tar
 
 |Component  |Supported OS |
 |---------|---------|
-|Source environment     |Hyper-V on Windows Server 2022<br>Hyper-V on Windows Server 2019<br>Hyper-V on Windows Server 2016<br>Hyper-V on Windows Server 2012R2         |
+|Source environment     |Hyper-V on Windows Server 2022<br>Hyper-V on Windows Server 2019<br>Hyper-V on Windows Server 2016<br>Hyper-V on Windows Server 2012 R2         |
 |Source appliance     |Windows Server 2022        |
 |Target environment     |Azure Stack HCI, version 23H2         |
 |Target appliance     |Windows Server 2022         |
