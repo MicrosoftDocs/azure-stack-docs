@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 02/07/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -147,6 +147,21 @@ Choose whether to create a new configuration for this system or to load deployme
         To use this option you must be using a single server and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
+
+    
+    
+    > [!IMPORTANT] 
+    > Don't delete the infrastructure volumes created during deployment.
+    
+    Here's a summary of the volumes that are created based on the number of servers in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
+    
+    
+    |# Servers  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
+    |---------|---------|---------|----------|
+    |Single server    |Two-way mirror         | 1        |  1        |
+    |Two servers     | Two-way mirror       | 1        |  2        |
+    |Three servers +     | Three-way mirror        |1        |1 per server         |
+ 
 
 2. Select **Next: Tags**.
 3. Optionally add a tag to the Azure Stack HCI resource in Azure.
