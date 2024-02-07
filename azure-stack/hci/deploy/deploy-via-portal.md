@@ -150,7 +150,6 @@ Choose whether to create a new configuration for this system or to load deployme
 
     The deployment configures your storage according to the best practices based on the number of servers in the cluster. Storage is configured for at least one infrastructure volume that is used by the deployment and one or multiple workload volumes for your use.
     
-    If the resiliency configuration for workload volumes does not suit your applications, you can delete these volumes and create these again as per your needs.
     
     > [!IMPORTANT] 
     > Do not delete the infrastructure volume used to store content from the Lifecycle Manager.
