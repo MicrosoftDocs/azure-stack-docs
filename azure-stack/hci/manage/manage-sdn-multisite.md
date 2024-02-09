@@ -56,7 +56,6 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 Here's a high-level workflow for enabling SDN Multisite:
 
 - Meet prerequisites. See [Prerequisites](#prerequisites).
-- Understand resource synchronization. See [Understand resource synchronization](#understand-resource-synchronization).
 - Establish peering. See [Establish peering](#establish-peering).
 - Check peering status. See [Check peering status](#check-peering-status).
 

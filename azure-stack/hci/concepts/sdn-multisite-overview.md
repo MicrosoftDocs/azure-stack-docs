@@ -11,7 +11,7 @@ ms.date: 02/06/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of SDN Multisite, it's current capabilities and limitations. Use this article to help design your network topology and disaster recovery plan.
+This article provides an overview of SDN Multisite, its current capabilities and limitations. Use this article to help design your network topology and disaster recovery plan.
 
 For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md).
 
@@ -51,8 +51,8 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 
     These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
 
-    - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
-    - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](./use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](./use-datacenter-firewall-powershell.md).
+    - Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](../manage/tenant-virtual-networks.md). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
+    - Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md).
     - User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn).
 
 - **Unsynchronized resources**
@@ -62,7 +62,7 @@ When you enable SDN Multisite, not all resources from each site are synchronized
     - Load balancing policies.
     - Virtual IP addresses (VIPs).
     - Gateway policies.
-    - Logical networks. Although logical networks aren't synchronized across sites, IP pools are checked for overlap and that overlap is not allowed.
+    - Logical networks. Although logical networks aren't synchronized across sites, IP pools are checked for overlap and that overlap isn't allowed.
 
     These policies are created on the local site, and if you want the same policies on the other site, you must manually create them there. If your backend VMs for load balancing policies are located on a single site, then connectivity over SLB will work fine without any extra configuration. But, if you expect the backend VMs to move from one site to the other, by default, connectivity works only if there are any backend VMs behind a VIP on the local site. If all the backend VMs move to another site, connectivity over that VIP fails.
 
@@ -70,13 +70,13 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 
 Multisite allows VMs on different sites with SDN deployed to communicate over the same subnet without having to set up SDN gateway connections. This simplifies the network topology and reduces the need for additional VMs and subnets. The data path between VMs on different sites relies on the underlying physical infrastructure.
 
-The following scenarios compares how VM communication is established between two physical sites in a traditional SDN setup vs in a SDN Mulltisite setup.
+The following scenarios compare how VM communication is established between two physical sites in a traditional SDN setup vs in an SDN Multisite setup.
 
 ### VM to VM communication without SDN Multisite
 
 In a traditional setup with SDN deployed across two physical sites, you need to establish L3 or GRE gateway connection for intersite communication. You also need to provide additional subnets for your applications. For example, if each site hosts frontend applications, you'd allocate separate subnet ranges like 10.1/16 and 10.6/16. Moreover, when you set up a gateway connection, you also need to allocate additional VMs for your Gateway VMs and manage them thereafter.
 
-:::image type="content" source="./media/sdn-multisite-overview/sdn-without-multisite.png" alt-text="Diagram to show VM to VM communication between two physical sites in a traditional SDN setup." lightbox="./media/sdn-multisite-overview/sdn-without-multisitee.png" :::
+:::image type="content" source="./media/sdn-multisite-overview/sdn-without-multisite.png" alt-text="Diagram to show VM to VM communication between two physical sites in a traditional SDN setup." lightbox="./media/sdn-multisite-overview/sdn-without-multisite.png" :::
 
 ### VM to VM communication with SDN Multisite
 
@@ -86,7 +86,7 @@ With SDN Multisite across two physical locations, you can have native layer 2 co
 
 ## Software Load Balancers and their limitations
 
-Currently, Software Load Balancers are local resources for each of your physical sites. This means that load balancing policies and configurations aren't synced across sites through Multisite. Keep this in mind when migrating VMs from one location to another in a SDN Multisite setup.
+Currently, Software Load Balancers are local resources for each of your physical sites. This means that load balancing policies and configurations aren't synced across sites through Multisite. Keep this in mind when migrating VMs from one location to another in an SDN Multisite setup.
 
 ### Load balancing in SDN Multisite: Example scenario
 
@@ -120,20 +120,20 @@ The third diagram shows that the data packet's path fails after VM migration:
 
 :::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken3.png" alt-text="Diagram shows that the data packet's path fails after VM migration." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken3.png" :::
 
-To workraound this limitation, you can use external load balancer that checks the availability of backend VMs on each site and routes the traffic accordingly. See [Use external load balancer in Multisite with migrating workload VMs](#use-external-load-balancer-in-multisite-with-migrating-workload-vms).
+To workaround this limitation, you can use external load balancer that checks the availability of backend VMs on each site and routes the traffic accordingly. See [Use external load balancer in Multisite with migrating workload VMs](#use-external-load-balancer-in-multisite-with-migrating-workload-vms).
 
 #### Use external load balancer in Multisite with migrating workload VMs
 
-You can enable an external load balancer to check if there are backend VMs behind a load balancer at one of your sites. If there are no backend VMs behind a load balancer, then the VIP for the MUX will not be advertised up to the external load balancer and subsequently any health probe sent forth will fail. This external load balancer ensures connectivity to workloads even as VMs move from one site to another.
+You can enable an external load balancer to check if there are backend VMs behind a load balancer at one of your sites. If there are no backend VMs behind a load balancer, then the VIP for the MUX won't be advertised up to the external load balancer and subsequently any health probe sent forth will fail. This external load balancer ensures connectivity to workloads even as VMs move from one site to another.
 
 :::image type="content" source="./media/sdn-multisite-overview/external-load-balancer.png" alt-text="Diagram showing using an external software local balancer as a solution for migrating VMs between sites in a multisite setup." lightbox="./media/sdn-multisite-overview/external-load-balancer.png" :::
 
-However, if deploying an external load balancer is not an option, use the software load balancing solution as described in [Load balancing in SDN Multisite without migrating workload VMs](#load-balancing-in-sdn-multisite-without-migrating-workload-vms) as long you don't have any migrating workload VMs.
+However, if deploying an external load balancer isn't feasible, use the software load balancing solution as described in [Load balancing in SDN Multisite without migrating workload VMs](#load-balancing-in-sdn-multisite-without-migrating-workload-vms) as long you don't have any migrating workload VMs.
 
 ## Gateways and their limitations
 
-SDN gateway connections are also local resources that aren't synced across sites by Multisite. Each site has its own gateway VMs and gateway connections. When a workload VM is created or migrated to a site, it gets local gateway configuration like gateway routes. If you create a gateway connection for a particular virtual network on one site, VM's from that site lose gateway connectivity upon migration to the other site. For VMs to retain gateway connectivity on migration, you must configure a separate gateway connection for the same virtual network on the other site.
+SDN gateway connections are also local resources that aren't synced across sites by Multisite. Each site has its own gateway VMs and gateway connections. When a workload VM is created or migrated to a site, it gets local gateway configuration like gateway routes. If you create a gateway connection for a particular virtual network on one site, VMs from that site lose gateway connectivity upon migration to the other site. For VMs to retain gateway connectivity on migration, you must configure a separate gateway connection for the same virtual network on the other site.
 
 ## Next steps
 
-[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md)
+[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md).
