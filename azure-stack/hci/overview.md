@@ -32,16 +32,17 @@ Each Azure Stack HCI system consists of between 1 and 16 physical servers. All s
 
 Azure Stack HCI combines the following:
 
-- Azure Stack HCI operating system
 - Validated hardware from a hardware partner
-- Azure services including monitoring and management
-- Windows Admin Center for management via Azure and on-premises
+- Azure Stack HCI operating system
 - Hyper-V-based compute resources
 - Storage Spaces Direct-based virtualized storage
-<!--- SDN-based virtualized networking using Network Controller (optional)-->
-- Azure Kubernetes Service (AKS) hybrid (optional)
+- Windows and Linux virtual machines as Arc-enabled servers
+- Azure Virtual Desktop
+- Azure Kubernetes Service (AKS) enabled by Azure Arc
+- Azure services including monitoring, backup, site recovery, and more
+- Azure portal, ARM and Bicep templates, Azure CLI and tools
 
-:::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The Azure Stack HCI OS runs on top of validated hardware, is managed by Windows Admin Center, and connects to Azure" border="false":::
+:::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Stack HCI solution." lightbox="media/overview/azure-stack-hci-solution.png" :::
 
 See [What's new in Azure Stack HCI](whats-new.md) for details on the latest enhancements.
 
