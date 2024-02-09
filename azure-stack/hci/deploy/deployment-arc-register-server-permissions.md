@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 02/09/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -42,7 +42,7 @@ Before you begin, make sure you've completed the following prerequisites:
 > [!IMPORTANT]
 > Run these steps on every Azure Stack HCI server that you intend to cluster.
 
-1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller/0.1.2489.42) from PSGallery.
+1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
 
     ```powershell
     #Register PSGallery as a trusted repo
