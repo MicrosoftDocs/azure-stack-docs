@@ -38,7 +38,7 @@ This section is optional reading, and explains more about how Azure VM verificat
 
 Azure VM verification relies on a built-in platform attestation service on Azure Stack HCI. This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, and returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
 
-:::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture. lightbox="media/azure-verification/verification-architecture.png":::
+:::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture." lightbox="media/azure-verification/verification-architecture.png":::
 
 1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([i.e., VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
 
