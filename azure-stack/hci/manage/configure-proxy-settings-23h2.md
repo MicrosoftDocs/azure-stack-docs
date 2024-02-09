@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Stack HCI, version 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 12/11/2023
+ms.date: 02/08/2024
 ---
 
 # Configure proxy settings for Azure Stack HCI, version 23H2
@@ -94,7 +94,7 @@ You must configure the proxy for Azure Arc-enabled servers before you register y
 
     $no_proxy = "localhost,127.0.0.1,.svc,node1,node2,scluster,192.168.0.2,192.168.0.3,*.contoso.com" 
     [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine")
-    $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
+    $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
     
     # For the changes to take effect, restart the agent services after the proxy environment variable is set.  This is only required if the agent is already installed
     Restart-Service -Name himds, ExtensionService, GCArcService
@@ -122,7 +122,7 @@ You must configure the proxy for Azure Arc-enabled servers before you register y
     $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
     $no_proxy = "" 
     [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine") 
-    $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
+    $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
     
     # For the changes to take effect, restart the agent services after the proxy environment variable is removed. 
     Restart-Service -Name himds, ExtensionService, GCArcService
