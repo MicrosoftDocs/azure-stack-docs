@@ -2901,7 +2901,7 @@ The following are post-installation known issues for this build version.
     The alert can be safely ignored, but you need to close the alert manually.
 
 <!-- 2368581 - IS, ASDK --> 
-- An Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a **Fabric VM creation error**, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to best understand the capacity available for your workloads.
+- An Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a **Fabric VM creation error**, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](/azure-stack/mdc/azure-stack-capacity-planning-overview) to best understand the capacity available for your workloads.
 
 ### Compute
 
@@ -3209,7 +3209,7 @@ The following are post-installation known issues for this build version.
     The alert can be safely ignored, but you need to close the alert manually.
 
 <!-- 2368581 - IS. ASDK --> 
-- An Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a **Fabric VM creation error**, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to best understand the capacity available for your workloads.
+- An Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a **Fabric VM creation error**, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](/azure-stack/mdc/azure-stack-capacity-planning-overview) to best understand the capacity available for your workloads.
 
 
 ### Compute
@@ -3549,7 +3549,7 @@ The following are post-installation known issues for this build version.
     The alert can be safely ignored, but you need to close the alert manually.
 
 <!-- 2368581 - IS. ASDK --> 
-- An Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a **Fabric VM creation error**, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to best understand the capacity available for your workloads.
+- An Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a **Fabric VM creation error**, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](/azure-stack/mdc/azure-stack-capacity-planning-overview) to best understand the capacity available for your workloads.
 
 
 ### Compute
@@ -3808,7 +3808,7 @@ The following are post-installation known issues for this build version.
   Alert #3 does not automatically close. If you close this alert Azure Stack will create the same alert within 15 minutes.  
 
 <!-- 2368581 - IS. ASDK --> 
-- As an Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a *Fabric VM creation error*, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to best understand the capacity available for your workloads. 
+- As an Azure Stack operator, if you receive a low memory alert and tenant virtual machines fail to deploy with a *Fabric VM creation error*, it is possible that the Azure Stack stamp is out of available memory. Use the [Azure Stack Capacity Planner](/azure-stack/mdc/azure-stack-capacity-planning-overview) to best understand the capacity available for your workloads. 
 
 
 ### Compute
