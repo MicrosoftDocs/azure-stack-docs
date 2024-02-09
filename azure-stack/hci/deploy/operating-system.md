@@ -120,11 +120,11 @@ To manually install the Azure Stack HCI operating system:
 
 1. On the Where do you want to install Azure Stack HCI? page, either confirm the drive location where you want to install the operating system or update it, and then select **Next**.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="The drive location page of the Install Azure Stack HCI wizard." lightbox="../media/operating-system/azure-stack-hci-install-where.png:::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="The drive location page of the Install Azure Stack HCI wizard." lightbox="../media/operating-system/azure-stack-hci-install-where.png":::
 
 1. The Installing Azure Stack HCI page displays to show status on the process.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-installing.png" alt-text="The status page of the Install Azure Stack HCI wizard." lightbox="../media/operating-system/azure-stack-hci-installing.png:::
+    :::image type="content" source="../media/operating-system/azure-stack-hci-installing.png" alt-text="The status page of the Install Azure Stack HCI wizard." lightbox="../media/operating-system/azure-stack-hci-installing.png":::
 
     > [!NOTE]
     > The installation process restarts the operating system twice to complete the process, and displays notices on starting services before opening an Administrator command prompt.
