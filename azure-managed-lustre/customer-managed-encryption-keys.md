@@ -60,7 +60,7 @@ Networking:
 
 
 
-![Example of a keyvault networking configuration that is restricted to selected networks, but allows trusted Microsoft services.](media/customer-managed-encryption-keys/keyvault-network-config.png)
+:::image type="content" source="./media/customer-managed-encryption-keys/keyvault-network-config.png" alt-text="Screenshot showing how to restrict key vault access to selected networks, while allowing access to trusted Microsoft services" lightbox="./media/customer-managed-encryption-keys/keyvault-network-config.png":::
 > [!NOTE]
 > If you are using an existing key vault, you can review the network settings section to confirm that **Allow access from** is set to **Allow public access from all networks**, or make changes if necessary.
 
