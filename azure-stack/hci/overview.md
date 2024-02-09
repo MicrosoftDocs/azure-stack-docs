@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 02/09/2024
 ms.custom: e2e-hybrid
 ---
 
@@ -38,7 +38,7 @@ Azure Stack HCI combines the following:
 - Windows Admin Center for management via Azure and on-premises
 - Hyper-V-based compute resources
 - Storage Spaces Direct-based virtualized storage
-- SDN-based virtualized networking using Network Controller (optional)
+<!--- SDN-based virtualized networking using Network Controller (optional)-->
 - Azure Kubernetes Service (AKS) hybrid (optional)
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The Azure Stack HCI OS runs on top of validated hardware, is managed by Windows Admin Center, and connects to Azure" border="false":::
