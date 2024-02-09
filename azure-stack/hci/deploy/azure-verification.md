@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 11/28/2023
+ms.date: 02/09/2024
 ms.lastreviewed: 11/28/2023
 ---
 
@@ -38,7 +38,7 @@ This section is optional reading, and explains more about how Azure VM verificat
 
 Azure VM verification relies on a built-in platform attestation service on Azure Stack HCI. This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, and returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
 
-:::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture.":::
+:::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture. lightbox="media/azure-verification/verification-architecture.png":::
 
 1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([i.e., VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
 
@@ -231,13 +231,13 @@ For older VMs that lack the necessary Hyper-V functionality ([Guest Service Inte
    - Check that **Legacy OS support** appears as **On**.
    - Under the **Server** tab in the dashboard, check that legacy OS support for every server shows as **On** in the table.
 
-     :::image type="content" source="media/azure-verification/legacy-support.gif" alt-text="Screenshot showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.gif":::
+     :::image type="content" source="media/azure-verification/legacy-support.png" alt-text="Screenshot showing dashboard with legacy OS support information." lightbox="media/azure-verification/legacy-support.png":::
 
 ### 2. Enable access for new VMs
 
 You must enable legacy OS networking for any new VMs that you create after the first setup. To manage access for VMs, navigate to the **VMs** tab. Any VM that requires legacy OS support access appear as **Inactive**. Select the action to **Set up legacy OS networking** for the selected VM, or for all existing VMs on the cluster.
 
-:::image type="content" source="media/azure-verification/legacy-vm.gif" alt-text="Screenshot showing legacy VM dashboard." lightbox="media/azure-verification/legacy-vm.gif":::
+:::image type="content" source="media/azure-verification/legacy-vm.png" alt-text="Screenshot showing legacy VM dashboard." lightbox="media/azure-verification/legacy-vm.png":::
 
 > [!NOTE]
 > To successfully enable legacy OS support on Generation 1 VMs, the VM must first be powered off to enable the NIC to be added.
