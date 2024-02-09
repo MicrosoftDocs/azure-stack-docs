@@ -82,7 +82,7 @@ In a traditional setup with SDN deployed across two physical sites, you need to 
 
 With SDN Multisite across two physical locations, you can have native layer 2 connectivity for intersite communication. This enables you to have a single subnet range for your applications that span across both locations, eliminating the need to set up SDN gateway connection. For example, as illustrated in the following diagram, frontend applications on both locations can use the same subnet, such as 10.1/16, instead of maintaining two separate ones. With this setup, data flow from one VM to another solely relies on your underlying physical infrastructure, avoiding the need to traverse an additional SDN gateway VM.
 
-:::image type="content" source="./media/sdn-multisite-overview/sdn-with-multisite.png" alt-text="Diagram to show VM to VM communication with SDN Multisite." lightbox="./media/sdn-multisite-overview/sdn-with-multisitee.png" :::
+:::image type="content" source="./media/sdn-multisite-overview/sdn-with-multisite.png" alt-text="Diagram to show VM to VM communication with SDN Multisite." lightbox="./media/sdn-multisite-overview/sdn-with-multisite.png" :::
 
 ## Software Load Balancers and their limitations
 
