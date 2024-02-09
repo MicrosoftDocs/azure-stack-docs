@@ -55,7 +55,7 @@ The Azure Stack Hub privileged endpoint (PEP) is a pre-configured remote PowerSh
 | [Set-AzSDnsServerSettings](set-azsdnsserversettings.md) | Update DNS server settings |
 | [Set-CloudAdminUserPassword](set-cloudadminuserpassword.md) | No description. |
 | [Set-GraphApplication](set-graphapplication.md) | Set-GraphApplication is a wrapper function to call ADFS Graph cmdlets on AD FS. |
-| [Set-ServiceAdminOwner](set-serviceadminowner.md) | Script to update service administrator. |
+| [Set-ServiceAdminOwner](set-serviceadminowner.md) | Script used for both Microsoft Entra ID and AD FS systems to update the service administrator. |
 | [Set-SyslogClient](set-syslogclient.md) | Imports and applies syslog client endpoint certificate. |
 | [Set-SyslogServer](set-syslogserver.md) | Sets the syslog server endpoint. |
 | [Set-Telemetry](set-telemetry.md) | Enables or disables the transfer of telemetry data to Microsoft. |
