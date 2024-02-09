@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2311.2 GA re
 description: Read about the known issues and fixed issues in Azure Stack HCI 2311 General Availability (GA) release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/05/2024
+ms.date: 02/09/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -52,6 +52,7 @@ Here are the known issues in this release:
 | Update <!--NA--> |In this release, if you run the `Test-CauRun` cmdlet prior to actually applying the 2311.2 update, you see an error message regarding a missing firewall rule to remotely shut down the Azure Stack HCI system.  | No action is required on your part as the missing rule is automatically created when 2311.2 updates are applied. <br><br>When applying future updates, make sure to run the `Test-EnvironmentReadiness` cmdlet instead of `Test-CauRun`. For more information, see [Step 2: Optionally validate system health](./update/update-via-powershell-23h2.md#step-2-optionally-validate-system-health).|
 | Updates <!--26659591--> |In rare instances, if a failed update is stuck in an *In progress* state in Azure Update Manager, the **Try again** button is disabled. | To resume the update, run the following PowerShell command :<br>`Get-SolutionUpdate`\|`Start-SolutionUpdate`.|
 | Updates <!--26659432--> |In some cases, `SolutionUpdate` commands could fail if run after the `Send-DiagnosticData` command.  | Make sure to close the PowerShell session used for `Send-DiagnosticData`. Open a new PowerShell session and use it for `SolutionUpdate` commands.|
+| Updates <!--26417221--> |In very rare instance, when applying an update from 2311.0.24 to 2311.2.4, cluster status reports *In Progress* instead of expected *Failed to update*.   | Retry the update. If the issue persists, contact Microsoft Support.|
 | Arc VM management <!--26423941--> |If the resource group used to deploy an Arc VM on your Azure Stack HCI has an underscore in the name, the guest agent installation will fail. As a result, you won't be able to enable guest management. | Make sure that there are no underscores in the resource groups used to deploy Arc VMs.|
 | Cluster aware updating <!--26411980--> |Resume node operation failed to resume node. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
 | Cluster aware updating <!--26346755--> |Suspend node operation was stuck for greater than 90 minutes. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
