@@ -26,7 +26,7 @@ To acquire the servers to run Azure Stack HCI, you can purchase Azure Stack HCI 
 
 ## Azure Stack HCI features and architecture
 
-Azure Stack HCI is built on proven technologies including Hyper-V, Storage Spaces Direct, Azure Kubernetes Service (AKS), and Azure-inspired software defined networking (SDN).
+Azure Stack HCI is built on proven technologies including Hyper-V, Storage Spaces Direct, and core Azure management service.
 
 Each Azure Stack HCI system consists of between 1 and 16 physical servers. All servers share common configurations and resources by leveraging the Windows Server Failover Clustering feature.
 
