@@ -19,11 +19,11 @@ This article describes how to manage default security settings for your Azure St
 
 Use security default settings to manage cluster security, drift control, and Secured core server settings on your cluster.
 
-:::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page on Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
+:::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page in the Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
 View the SMB signing status under the **Data protections** > **Network protection** tab. SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI system and other systems.
 
-:::image type="content" source="media/manage-secure-baseline/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the Data protections page for network protection on Azure portal." lightbox="media/manage-secure-baseline/manage-bitlocker-network-protection.png":::
+:::image type="content" source="media/manage-secure-baseline/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the SMB signing status in the Azure portal." lightbox="media/manage-secure-baseline/manage-bitlocker-network-protection.png":::
 
 ## Manage security defaults with PowerShell
 
