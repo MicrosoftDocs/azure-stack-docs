@@ -1,15 +1,15 @@
 ---
-title: Use builtin RBAC roles for Arc VM management on Azure Stack HCI (preview)
-description: Learn how to use RBAC builtin roles for Arc VM management on Azure Stack HCI.(preview)
+title: Use builtin RBAC roles for Arc VM management on Azure Stack HCI
+description: Learn how to use RBAC builtin roles for Arc VM management on Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/13/2023
+ms.date: 02/13/2024
 ---
 
-# Use Role-based Access Control to manage Azure Stack HCI Virtual Machines (preview)
+# Use Role-based Access Control to manage Azure Stack HCI Virtual Machines 
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
@@ -33,7 +33,7 @@ Here's a table that describes the VM actions granted by each role for the VMs an
 
 |Builtin role  |VMs  |VM resources  |
 |---------|---------|---------|
-|Azure Stack HCI Administrator     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete VM resources         |
+|Azure Stack HCI Administrator     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete VM resources including logical networks, VM images, and storage paths         |
 |Azure Stack HCI VM Contributor     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete all VM resources except logical networks, VM images, and storage paths         |
 |Azure Stack HCI VM Reader    |List all VMs         |List all VM resources         |
 
