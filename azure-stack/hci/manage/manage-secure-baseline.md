@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 02/09/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -15,11 +15,15 @@ ms.date: 01/31/2024
 
 This article describes how to manage default security settings for your Azure Stack HCI cluster. You can also modify drift control and protected security settings defined during deployment so your device starts in a known good state.
 
-## View security default settings in Azure portal
+## View security default settings in the Azure portal
 
-Use security default settings to manage cluster security, drift control, and secured core server settings on your cluster.
+Use security default settings to manage cluster security, drift control, and Secured core server settings on your cluster.
 
 :::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page on Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
+
+View the SMB signing status under the **Data protections** > **Network protection** tab. SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI system and other systems.
+
+:::image type="content" source="media/manage-secure-baseline/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the Data protections page for network protection on Azure portal." lightbox="media/manage-secure-baseline/manage-bitlocker-network-protection.png":::
 
 ## Manage security defaults with PowerShell
 
