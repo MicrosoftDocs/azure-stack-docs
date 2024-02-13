@@ -6,14 +6,14 @@ author: alkohli
 ms.subservice: azure-stack-hci
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 02/12/2024
+ms.date: 02/13/2024
 ---
 
 # Azure Stack HCI dashboard
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article details how view and navigate your Azure Stack HCI dashboard in Azure portal.
+This article details how to view and navigate your Azure Stack HCI dashboard in Azure portal. You can display the dashboard in chart view or in list view.
 
 ## View the dashboard chart view
 
@@ -47,9 +47,11 @@ To view the dashboard list view:
 
 1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Stack HCI** > **All clusters (preview)**.
 
-   All columns You can filter the dashboard display by Subscription, Resource group, and Region. You can also group display results using the grouping control at top right.
+   All columns can be sorted by selecting a culmn header. You can filter the dashboard display by Subscription, Resource group, and Region. You can also group display results using the grouping control at top right.
 
    :::image type="content" source="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-list-view.png" alt-text="Screenshot of the Azure Stack HCI dashboard list view." lightbox="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-list-view.png":::
+
+   Select a cluster name to view details about a cluster, or select a parameter to view details about cluster status.
 
 ## Next steps
 
