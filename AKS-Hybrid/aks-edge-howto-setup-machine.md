@@ -30,8 +30,8 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
     | ---- | ---- |
     | K8s installer (1.27.6) | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
     | K3s installer (1.27.6) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
-    | K8s installer (1.26.6) | [aka.ms/aks-edge/k8s-msi-1.25](https://aka.ms/aks-edge/k8s-msi-1.26)  |
-    | K3s installer (1.26.10) | [aka.ms/aks-edge/k3s-msi-1.25](https://aka.ms/aks-edge/k3s-msi-1.26) |
+    | K8s installer (1.26.6) | [aka.ms/aks-edge/k8s-msi-1.26](https://aka.ms/aks-edge/k8s-msi-1.26)  |
+    | K3s installer (1.26.10) | [aka.ms/aks-edge/k3s-msi-1.26](https://aka.ms/aks-edge/k3s-msi-1.26) |
     | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
 
 1. In addition to the MSI, Microsoft provides samples and tools that you can download from the [AKS Edge GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a local folder.
