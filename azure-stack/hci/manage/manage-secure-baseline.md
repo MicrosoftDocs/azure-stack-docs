@@ -99,7 +99,7 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - Drift Control
     - VBS (Virtualization Based Security)- We only support enable command.
     - DRTM (Dynamic Root of Trust for Measurement)
-    - HVCI (Hypervidor Enforced if Code Integrity)
+    - HVCI (Hypervisor Enforced if Code Integrity)
     - Side Channel Mitigation
     - SMB Encryption
     - SMB Signing
