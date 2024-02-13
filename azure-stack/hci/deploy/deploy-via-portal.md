@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 02/07/2024
+ms.date: 02/12/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -212,7 +212,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 2*           | Storage account     |
     | 1 per workload volume | Azure Stack HCI storage path - Azure Arc |
     
-    \* One storage account is created for the key vault and one for the audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
+    \* One storage account is created for the cloud witness and one for key vault audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
 
 ## Rerun deployment
 
