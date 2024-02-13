@@ -15,196 +15,462 @@ zone_pivot_groups: select-os
 
 This tutorial shows how to install an appropriate client package, in order to set up client VMs and attach them to an Azure Managed Lustre cluster. Select an OS version to see the instructions.
 
+In this tutorial you will:
+
+> [!div class="checklist"]
+>
+> - Download a prebuilt client
+> - Install the prebuilt client
+
+For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
+
+- [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
+- [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
+- [Mount command](connect-clients.md#mount-command)
+
 ::: zone pivot="alma-86"
+
 ## Tutorial: Install client software for AlmaLinux HPC 8.6
 
 This tutorial shows how to install the client package to set up client VMs running AlmaLinux HPC 8.6, and attach them to an Azure Managed Lustre cluster.
 
-For client VMs running:
+The instructions apply to client VMs running:
 
-* AlmaLinux HPC 8.6
+- AlmaLinux HPC 8.6
 
-In this tutorial you will:
+::: zone-end
 
-> [!div class="checklist"]
-> * Download a prebuilt client
-> * Install the prebuilt client
+::: zone pivot="rhel-7"
 
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-* [Mount command](connect-clients.md#mount-command)
-
-### Download and install prebuilt client software
-
-[!INCLUDE [client-install-hpc-alma-86](includes/client-install-hpc-alma-86.md)]
-:::zone-end
-
-::: zone pivot="rhel-7,centos-7"
 ## Tutorial: Install client software for Red Hat Enterprise Linux or CentOS 7
 
 This tutorial shows how to install the client package to set up client VMs running RHEL 7 and CentOS 7, and attach them to an Azure Managed Lustre cluster.
 
-For client VMs running:
+The instructions apply to client VMs running:
 
-* Red Hat Enterprise Linux 7 (RHEL 7)
-* CentOS Linux 7
+- Red Hat Enterprise Linux 7 (RHEL 7)
+- CentOS Linux 7
 
-In this tutorial you will:
-
-> [!div class="checklist"]
-> * Download a prebuilt client
-> * Install the prebuilt client
-
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-* [Mount command](connect-clients.md#mount-command)
-
-### Download and install prebuilt client software
-
-[!INCLUDE [client-install-rhel-7](includes/client-install-rhel-7.md)]
 ::: zone-end
 
-::: zone pivot="rhel-8,centos-8,alma-8"
+::: zone pivot="rhel-8"
+
 ## Tutorial: Install client software for Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
 
 This tutorial shows how to install the client package to set up client VMs running RHEL 8, CentOS 8, and Alma 8, and attach them to an Azure Managed Lustre cluster.
 
-For client VMs running:
+The instructions apply to client VMs running:
 
-* Red Hat Enterprise Linux 8 (RHEL 8)
-* CentOS Linux 8
-* Alma Linux 8
-
-In this tutorial you will:
-
-> [!div class="checklist"]
-> * download a pre-built client
-> * install the pre-built client
+- Red Hat Enterprise Linux 8 (RHEL 8)
+- CentOS Linux 8
+- Alma Linux 8
 
 > [!NOTE]
 > For AlmaLinux 8.6 HPC Marketplace images, see the separate [Alma 8.6 HPC install instructions](install-hpc-alma-86.md)
 
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-* [Mount command](connect-clients.md#mount-command)
-
-### Download and install prebuilt client software
-
-[!INCLUDE [client-install-rhel-8](includes/client-install-rhel-8.md)]
 ::: zone-end
 
 ::: zone pivot="rhel-9"
+
 ## Tutorial: Install client software for Red Hat Enterprise Linux 9
 
 This tutorial shows how to install the client package to set up client VMs running RHEL 9, and attach them to an Azure Managed Lustre cluster.
 
-For client VMs running:
+The instructions apply to client VMs running:
 
-* Red Hat Enterprise Linux 9 (RHEL 9)
+- Red Hat Enterprise Linux 9 (RHEL 9)
 
-In this tutorial you will:
-
-> [!div class="checklist"]
-> * Download a prebuilt client
-> * Install the prebuilt client
-
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-* [Mount command](connect-clients.md#mount-command)
-
-### Download and install prebuilt client software
-
-[!INCLUDE [client-install-rhel-9](includes/client-install-rhel-9.md)]
 ::: zone-end
 
-
 ::: zone pivot="ubuntu-18"
+
 ## Tutorial: Install client software for Ubuntu 18.04
 
 This tutorial shows how to install the client package to set up client VMs running Ubuntu 18.04, and attach them to an Azure Managed Lustre cluster.
 
-For client VMs running:
+The instructions apply to client VMs running:
 
-* Ubuntu 18.04
+- Ubuntu 18.04
 
-In this tutorial you will:
-
-> [!div class="checklist"]
-> * download a pre-built client
-> * install the pre-built client
-
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-* [Mount command](connect-clients.md#mount-command)
-
-### Download and install prebuilt client software
-
-[!INCLUDE [client-install-rhel-8](includes/client-install-ubuntu-18.md)]
 ::: zone-end
 
 ::: zone pivot="ubuntu-20"
+
 ## Tutorial: Install client software for Ubuntu 20.04
 
 This tutorial shows how to install the client package to set up client VMs running Ubuntu 20.04, and attach them to an Azure Managed Lustre cluster.
 
-For client VMs running:
+The instructions apply to client VMs running:
 
-* Ubuntu 20.04
+- Ubuntu 20.04
 
-In this tutorial you will:
-
-> [!div class="checklist"]
-> * download a pre-built client
-> * install the pre-built client
-
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-* [Mount command](connect-clients.md#mount-command)
-
-### Download and install prebuilt client software
-
-[!INCLUDE [client-install-ubuntu-20](includes/client-install-ubuntu-20.md)]
 ::: zone-end
 
 ::: zone pivot="ubuntu-22"
+
 ## Tutorial: Install client software for Ubuntu 22.04
 
 This tutorial shows how to install the client package to set up client VMs running Ubuntu 22.04, and attach them to an Azure Managed Lustre cluster.
 
-For client VMs running:
+The instructions apply to client VMs running:
 
-* Ubuntu 22.04
+- Ubuntu 22.04
 
-In this tutorial you will:
-
-> [!div class="checklist"]
-> * download a pre-built client
-> * install the pre-built client
-
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-* [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-* [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-* [Mount command](connect-clients.md#mount-command)
+::: zone-end
 
 ### Download and install prebuilt client software
 
-[!INCLUDE [client-install-ubuntu-22](includes/client-install-ubuntu-22.md)]
+::: zone pivot="alma-86"
+
+> [!WARNING]
+ > These instructions only apply to the AlmaLinux 8.6 HPC marketplace images. For all other AlmaLinux 8 installs, including HPC and general marketplace, refer to [Red Hat 8 instructions](../install-rhel-8.md).
+
+1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+   
+   rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   
+   DISTRIB_CODENAME=el8
+   
+   REPO_PATH=/etc/yum.repos.d/amlfs.repo
+   echo -e "[amlfs]" > ${REPO_PATH}
+   echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
+   echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> ${REPO_PATH}
+   echo -e "enabled=1" >> ${REPO_PATH}
+   echo -e "gpgcheck=1" >> ${REPO_PATH}
+   echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> ${REPO_PATH}
+   ```
+
+1. Execute script as super-user:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel:
+
+   ```bash
+   sudo dnf install --disableexcludes=main --refresh amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+   > [!NOTE]
+   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
+
+   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+
+   ```bash
+   export NEWKERNELVERSION=6.7.8
+   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+:::zone-end
+
+::: zone pivot="rhel-7"
+
+1. Install and configure the Azure Managed Lustre repository for the YUM package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+   
+   rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   
+   DISTRIB_CODENAME=el7
+   
+   REPO_PATH=/etc/yum.repos.d/amlfs.repo
+   echo -e "[amlfs]" > ${REPO_PATH}
+   echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
+   echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> ${REPO_PATH}
+   echo -e "enabled=1" >> ${REPO_PATH}
+   echo -e "gpgcheck=1" >> ${REPO_PATH}
+   echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> ${REPO_PATH}
+   ```
+
+1. Execute script as super-user:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel:
+
+   ```bash
+   sudo yum install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+   > [!NOTE]
+   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
+
+   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+
+   ```bash
+   export NEWKERNELVERSION=6.7.8
+   sudo yum upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+::: zone-end
+
+::: zone pivot="rhel-8"
+
+1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+   
+   rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   
+   DISTRIB_CODENAME=el8
+   
+   REPO_PATH=/etc/yum.repos.d/amlfs.repo
+   echo -e "[amlfs]" > ${REPO_PATH}
+   echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
+   echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> ${REPO_PATH}
+   echo -e "enabled=1" >> ${REPO_PATH}
+   echo -e "gpgcheck=1" >> ${REPO_PATH}
+   echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> ${REPO_PATH}
+   ```
+
+1. Execute script as super-user:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel:
+
+   ```bash
+   sudo dnf install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+   > [!NOTE]
+   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
+
+   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+
+   ```bash
+   export NEWKERNELVERSION=6.7.8
+   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+::: zone-end
+
+::: zone pivot="rhel-9"
+
+1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+   
+   rpm --import https://packages.microsoft.com/keys/microsoft.asc
+   
+   DISTRIB_CODENAME=el9
+   
+   REPO_PATH=/etc/yum.repos.d/amlfs.repo
+   echo -e "[amlfs]" > ${REPO_PATH}
+   echo -e "name=Azure Lustre Packages" >> ${REPO_PATH}
+   echo -e "baseurl=https://packages.microsoft.com/yumrepos/amlfs-${DISTRIB_CODENAME}" >> ${REPO_PATH}
+   echo -e "enabled=1" >> ${REPO_PATH}
+   echo -e "gpgcheck=1" >> ${REPO_PATH}
+   echo -e "gpgkey=https://packages.microsoft.com/keys/microsoft.asc" >> ${REPO_PATH}
+   ```
+
+1. Execute script as super-user:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel:
+
+   ```bash
+   sudo dnf install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+   > [!NOTE]
+   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
+
+   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+
+   ```bash
+   export NEWKERNELVERSION=6.7.8
+   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+   ```
+
+::: zone-end
+
+::: zone pivot="ubuntu-18"
+
+> [!CAUTION]
+> Ubuntu 18.04 LTS reached the end of Standard Support on May 31, 2023. Microsoft recommends either migrating to the next Ubuntu LTS release or upgrading to Ubuntu Pro to gain access to extended security and maintenance from Canonical. For more information, see the [announcement](https://techcommunity.microsoft.com/t5/linux-and-open-source-blog/canonical-ubuntu-18-04-lts-reaching-end-of-standard-support/ba-p/3822623).
+
+1. Ensure you have Ubuntu Pro activated and are on the recommended 5.4 kernel, which is provided by the linux-image-azure metapackage:
+
+   ```bash
+   apt list --installed linux-image*
+   ```
+
+1. Install and configure the Azure Managed Lustre repository for the APT package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+   
+   apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
+   source /etc/lsb-release
+   echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
+   curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+   
+   apt update
+   ```
+
+1. Execute script as a super-user:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel:
+
+   ```bash
+   sudo apt install amlfs-lustre-client-2.15.3-43-gd7e07df=$(uname -r)
+   ```
+
+   > [!NOTE]
+   > This installs a metapackage that will keep the version of Lustre aligned with the installed kernel. In order for this to work, you must use `apt full-upgrade` instead of simply `apt upgrade` when updating your system.
+
+   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+
+   ```bash
+   apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.15.3-43-gd7e07df
+   ```
+
+::: zone-end
+
+::: zone pivot="ubuntu-20"
+
+1. Install and configure the Azure Managed Lustre repository for the APT package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+   
+   apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
+   source /etc/lsb-release
+   echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
+   curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+   
+   apt update
+   ```
+
+1. Execute script as a super-user:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel:
+
+   ```bash
+   sudo apt install amlfs-lustre-client-2.15.3-43-gd7e07df=$(uname -r)
+   ```
+
+   > [!NOTE]
+   > This installs a metapackage that will keep the version of Lustre aligned with the installed kernel. In order for this to work, you must use `apt full-upgrade` instead of simply `apt upgrade` when updating your system.
+
+   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+
+   ```bash
+   apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.15.3-43-gd7e07df
+   ```
+
+::: zone-end
+
+::: zone pivot="ubuntu-22"
+
+> [!IMPORTANT]
+> The Azure Marketplace image for the Ubuntu 22.04 LTS release uses the Hardware Enablement (HWE) kernel by default. However, these kernels are only supported for 6 month periods, and Lustre support for these kernels is often not available when they're released. Therefore, we recommend that you switch to the LTS kernel because it gives you more stability as well as maintains a kernel version that is supported with the Lustre Client.
+
+1. Install the LTS kernel metapackage.
+
+   ```bash
+   sudo apt update && sudo apt install linux-image-azure-lts-22.04
+   ```
+
+1. Remove the HWE kernel metapackage.
+
+   Remove the default (Hardware Enablement) kernel metapackage. It will also ask to remove the linux-azure metapackage.  This is expected.
+
+   ```bash
+   sudo apt remove linux-image-azure
+   ```
+
+1. List installed kernels and see which one is supplied by the LTS metapackage.
+
+   After the metadata package is removed, check to see what kernels are currently installed.  Newly provisioned hosts will have two kernels and older hosts might have more. Compare the version that the LTS metapackage provides against the other installed kernels.  Here you see that a 6.2 kernel is still installed previously from the linux-image-azure metapackage.
+
+   ```bash
+   apt list --installed linux-image*
+   ```
+
+1. Remove any kernels newer than the one mentioned in the LTS metapackage.
+
+   Remove any kernels other than the one mentioned in the LTS kernel metapackage.  It will warn about removing the kernel and recommend aborting the process. If you're following these steps on a newly provisioned host, they work. But if you have concerns, consult Ubuntu documentation on configuring kernels to ensure it's able to boot after a reboot.
+
+   ```bash
+   sudo apt remove linux-image-5.15.0-1053-azure
+   ```
+
+1. Verify that you don't have kernels newer than the one mentioned in the LTS metapackage.
+
+   ```bash
+   apt list --installed linux-image*
+   ```
+
+1. Reboot to load the LTS kernel.
+
+1. Install and configure the Azure Managed Lustre repository for the APT package manager. Create the following script and name it `repo.bash`:
+
+   ```bash
+   #!/bin/bash
+   set -ex
+   
+   apt update && apt install -y ca-certificates curl apt-transport-https lsb-release gnupg
+   source /etc/lsb-release
+   echo "deb [arch=amd64] https://packages.microsoft.com/repos/amlfs-${DISTRIB_CODENAME}/ ${DISTRIB_CODENAME} main" | tee /etc/apt/sources.list.d/amlfs.list
+   curl -sL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
+   
+   apt update
+   ```
+
+1. Execute script as a super-user:
+
+   ```bash
+   sudo bash repo.bash
+   ```
+
+1. Install the metapackage that matches your running kernel:
+
+   ```bash
+   sudo apt install amlfs-lustre-client-2.15.3-43-gd7e07df=$(uname -r)
+   ```
+
+   > [!NOTE]
+   > This installs a metapackage that will keep the version of Lustre aligned with the installed kernel. In order for this to work, you must use `apt full-upgrade` instead of simply `apt upgrade` when updating your system.
+
+   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
+
+   ```bash
+   apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.15.3-43-gd7e07df
+   ```
+
 ::: zone-end
 
 ## Next steps
 
-* [How to connect clients to the file system](connect-clients.md)
-* [Azure Managed Lustre File System overview](amlfs-overview.md)
+- [How to connect clients to the file system](connect-clients.md)
+- [Azure Managed Lustre File System overview](amlfs-overview.md)
