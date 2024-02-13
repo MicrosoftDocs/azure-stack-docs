@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 02/06/2024
+ms.date: 02/13/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -67,7 +67,12 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 ### Create a VM from network interface
 
-Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
+Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. 
+
+> [!NOTE]
+> If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
+
+Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
 
 1. Set some parameters.
 
