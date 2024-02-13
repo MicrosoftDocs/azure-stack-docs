@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Stack HCI, version 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/08/2024
+ms.date: 02/13/2024
 ---
 
 # Configure proxy settings for Azure Stack HCI, version 23H2
@@ -23,7 +23,7 @@ Before you configure proxy settings, make sure that:
 - You configure the proxy server before you [Register to Arc and assign permissions](../deploy/deployment-arc-register-server-permissions.md).
 
 > [!NOTE]
-> Authenticated proxies are not supported in this release.
+> Authenticated and certificate-based proxies are not supported in this release.
 
 ## Configure proxy settings for Azure Stack HCI operating system
 
