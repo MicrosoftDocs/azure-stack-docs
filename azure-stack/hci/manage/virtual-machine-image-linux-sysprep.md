@@ -27,7 +27,10 @@ Before you begin, make sure that the following prerequisites are completed.
 - [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster.
     - You are required to prepare gallery images for guest management for VMs created using Ubuntu images.
     - Only the operating system versions supported by Arc for servers are allowed. Use one of the following versions:
-      - Ubuntu 16.04, 18.04, 20.04, and 22.04 LTS 
+      - Ubuntu 16.04, 18.04, 20.04, and 22.04 LTS
+
+  > [!NOTE]
+  > ONly Ubuntu distros are supported for Arc VMs. Other distros such as RHEL and SUSE are currently not supported.
 
 ## Workflow 
 
