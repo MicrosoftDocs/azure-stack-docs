@@ -30,7 +30,7 @@ Before you begin, make sure that the following prerequisites are completed.
       - Ubuntu 16.04, 18.04, 20.04, and 22.04 LTS
 
   > [!NOTE]
-  > ONly Ubuntu distros are supported for Arc VMs. Other distros such as RHEL and SUSE are currently not supported.
+  > Only the Ubuntu distros are supported for Arc VMs. Other distros such as Red Hat Enterprise Linux (RHEL) and SUSE are currently not supported.
 
 ## Workflow 
 
