@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 01/30/2024
+ms.date: 02/13/2024
 ---
 
 # Prepare Ubuntu image for Azure Stack HCI virtual machines
@@ -26,7 +26,11 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - [Download latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster.
     - You are required to prepare gallery images for guest management for VMs created using Ubuntu images.
-    - Only the operating system versions supported by Arc for servers are allowed. See [Supported Ubuntu versions](/azure/azure-arc/servers/prerequisites#supported-operating-systems).
+    - Only the operating system versions supported by Arc for servers are allowed. Use one of the following versions:
+      - Ubuntu 16.04, 18.04, 20.04, and 22.04 LTS
+
+  > [!NOTE]
+  > Only the Ubuntu distros are supported for Arc VMs. Other distros such as Red Hat Enterprise Linux (RHEL) and SUSE are currently not supported.
 
 ## Workflow 
 
