@@ -75,6 +75,8 @@
             href: aks-get-kubelet-logs.md
           - name: Get on-demand logs for troubleshooting
             href: get-on-demand-logs.md
+  - name: Troubleshooting
+    items:
     - name: Known issues
       href: aks-known-issues.md
   - name: Reference
