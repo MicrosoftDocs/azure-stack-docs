@@ -21,6 +21,8 @@
       href: cluster-architecture.md
     - name: Supported scale requirements
       href: scale-requirements.md
+    - name: Azure Hybrid Benefit
+      href: azure-hybrid-benefit.md
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
@@ -75,10 +77,6 @@
             href: aks-get-kubelet-logs.md
           - name: Get on-demand logs for troubleshooting
             href: get-on-demand-logs.md
-  - name: Billing
-    items:
-    - name: Azure Hybrid Benefit
-      href: azure-hybrid-benefit.md
   - name: Troubleshooting
     items:
     - name: Known issues

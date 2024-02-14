@@ -227,4 +227,5 @@ See **Cost Management and Billing** in the Azure portal to verify that the Azure
 
 ## Next steps
 
-For more information, including pricing, see the [pricing page](pricing.md).
+- [Azure Hybrid Benefit (AKS on Azure Stack HCI 22H2)](azure-hybrid-benefit-22h2.md)
+- [Pricing](pricing.md).
