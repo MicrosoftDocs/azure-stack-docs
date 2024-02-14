@@ -41,8 +41,6 @@
         href: aks-networks.md
       - name: Deploy a load balancer
         href: deploy-load-balancer.md
-    - name: Download Kubernetes VHDs manually
-      href: offline-download.md
     - name: Node pools
       items:
       - name: Manage multiple node pools
@@ -51,6 +49,8 @@
         href: deploy-gpu-node-pool.md
       - name: Use labels in a Kubernetes cluster
         href: cluster-labels.md
+    - name: Download Kubernetes VHDs manually
+      href: offline-download.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers
@@ -362,6 +362,8 @@
             href: container-storage-interface-files.md
       - name: Security and authentication
         items:
+        - name: Restrict SSH access
+          href: restrict-ssh-access-22h2.md
         - name: Use Active Directory single sign-on
           href: ad-sso.md
         - name: Use Kubernetes RBAC with Microsoft Entra ID
