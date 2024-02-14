@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 02/09/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -33,7 +33,7 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
 
 1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-install-language.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard." lightbox="media/install-os/azure-stack-hci-install-language.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-language.png" alt-text="Screenshot of the language page of the Install Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-language.png":::
 
 1. On the **Applicable notices and license terms** page, review the license terms, select the **I accept the license terms** checkbox, and then select **Next**.
 
@@ -42,25 +42,25 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
     > [!NOTE]
     > Upgrade installations are not supported in this release of the operating system.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the language page of the Install Type Azure Stack HCI wizard." lightbox="media/install-os/azure-stack-hci-install-language.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-which-type.png" alt-text="Screenshot of the language page of the Install Type Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-language.png":::
 
 1. On the **Where do you want to install Azure Stack HCI?** page, confirm the drive on which the operating system is installed, and then select **Next**.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-install-where.png" alt-text="Screenshot of the installation type page of the Install Azure Stack HCI wizard." lightbox="media/install-os/azure-stack-hci-install-where.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-install-where.png" alt-text="Screenshot of the installation type page of the Install Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-install-where.png":::
 
     > [!NOTE]
     > If the hardware was used before, run `diskpart` to clean the OS drive. For more information, see [how to use diskpart](/windows-server/administration/windows-commands/diskpart). Also see the instructions in [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
 
 1. The **Installing Azure Stack HCI** page displays to show status on the process.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-installing.png" alt-text="Screenshot of the status page of the Install Azure Stack HCI wizard." lightbox="media/install-os/azure-stack-hci-installing.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-installing.png" alt-text="Screenshot of the status page of the Install Azure Stack HCI wizard." lightbox="media/deployment-install-os/azure-stack-hci-installing.png":::
 
     > [!NOTE]
     > The installation process restarts the operating system twice to complete the process, and displays notices on starting services before opening an Administrator command prompt.
 
 1. At the Administrator command prompt, select **Ok** to change the user's password before signing in to the operating system, then press **Enter**.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-change-admin-password.png" alt-text="Screenshot of the change password prompt." lightbox="media/install-os/azure-stack-hci-change-admin-password.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-change-admin-password.png" alt-text="Screenshot of the change password prompt." lightbox="media/deployment-install-os/azure-stack-hci-change-admin-password.png":::
 
 1. At the **Enter new credential** for Administrator prompt, enter a new password.
 
@@ -71,7 +71,7 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
 
 1. At the **Your password has been changed** confirmation prompt, press **Enter**.
 
-   :::image type="content" source="media/install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/install-os/azure-stack-hci-admin-password-changed.png":::
+   :::image type="content" source="media/deployment-install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/deployment-install-os/azure-stack-hci-admin-password-changed.png":::
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
@@ -81,7 +81,7 @@ You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1
 
 To use SConfig, sign in to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you sign in to the server.
 
-:::image type="content" source="media/install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/install-os/azure-stack-hci-sconfig-screen.png":::
+:::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
 Follow these steps to configure the operating system using SConfig:
 
