@@ -201,4 +201,4 @@ az connectedk8s update -n <name> -g <group> --azure-hybrid-benefit false
 ## Next steps
 
 - [Azure Hybrid Benefit (AKS on Azure Stack HCI 23H2)](azure-hybrid-benefit.md)
-- [Pricing](pricing.md).
+- [Pricing](pricing.md)
