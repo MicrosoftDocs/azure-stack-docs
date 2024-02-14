@@ -75,6 +75,10 @@
             href: aks-get-kubelet-logs.md
           - name: Get on-demand logs for troubleshooting
             href: get-on-demand-logs.md
+  - name: Billing
+    items:
+    - name: Azure Hybrid Benefit
+      href: azure-hybrid-benefit.md
   - name: Troubleshooting
     items:
     - name: Known issues
@@ -258,7 +262,7 @@
         - name: Pricing details
           href: pricing.md
         - name: Azure Hybrid Benefit
-          href: azure-hybrid-benefit.md
+          href: azure-hybrid-benefit-22h2.md
   - name: How-to guides
     items: 
       - name: Deploy an AKS cluster
