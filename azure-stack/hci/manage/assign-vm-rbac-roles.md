@@ -33,7 +33,7 @@ Here's a table that describes the VM actions granted by each role for the VMs an
 
 |Builtin role  |VMs  |VM resources  |
 |---------|---------|---------|
-|Azure Stack HCI Administrator     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete VM resources including logical networks, VM images, and storage paths         |
+|Azure Stack HCI Administrator     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete all VM resources including logical networks, VM images, and storage paths         |
 |Azure Stack HCI VM Contributor     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete all VM resources except logical networks, VM images, and storage paths         |
 |Azure Stack HCI VM Reader    |List all VMs         |List all VM resources         |
 
