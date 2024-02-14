@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on new hardware
 description: Learn how to migrate to Azure Stack HCI on new hardware 
 author: alkohli 
 ms.topic: how-to 
-ms.date: 01/31/2024 
+ms.date: 02/13/2024 
 ms.author: alkohli 
 ms.reviewer: alkohli 
 ---
@@ -23,7 +23,7 @@ To migrate to Azure Stack HCI using the same hardware, see [Migrate to Azure Sta
 
 The following diagram shows a Windows Server source cluster and an Azure Stack HCI destination cluster as an example. You can also migrate VMs on stand-alone servers as well.
 
-:::image type="content" source="media/migrate-new-hardware/migrate-cluster.png" alt-text="Migrate cluster to Azure Stack HCI" lightbox="media/migrate-new-hardware/migrate-cluster.png":::
+:::image type="content" source="media/migrate-cluster-new-hardware/migrate-cluster.png" alt-text="Migrate cluster to Azure Stack HCI" lightbox="media/migrate-cluster-new-hardware/migrate-cluster.png":::
 
 In terms of expected downtime, using a single NIC with a dual 40 GB RDMA East-West network between clusters, and Robocopy configured for 32 multithreads, you can realize transfer speeds of 1.9 TB per hour.
 
