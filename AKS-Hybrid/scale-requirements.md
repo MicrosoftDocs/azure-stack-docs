@@ -12,6 +12,8 @@ ms.lastreviewed: 12/12/2023
 
 # Scale requirements for AKS on Azure Stack HCI
 
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
 This article describes the maximum and minimum supported scale count for AKS on Azure Stack HCI clusters and node pools.
 
 Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the following scale configuration:
