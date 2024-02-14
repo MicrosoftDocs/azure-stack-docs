@@ -12,7 +12,9 @@ ms.reviewer: rbaziwane
 
 # Quickstart: deploy a Kubernetes cluster using an Azure Resource Manager template
 
-This quickstart guide shows how to deploy a Kubernetes cluster in AKS Arc using an Azure Resource Manager template. Azure Arc extends Azure management capabilities to Kubernetes clusters anywhere, providing a unified approach to managing different environments.
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
+This quickstart shows how to deploy a Kubernetes cluster in AKS Arc using an Azure Resource Manager template. Azure Arc extends Azure management capabilities to Kubernetes clusters anywhere, providing a unified approach to managing different environments.
 
 ## Before you begin
 

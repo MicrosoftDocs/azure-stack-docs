@@ -3,7 +3,7 @@ title: Configure group Managed Service Accounts (gMSA) for Windows containers wi
 description: Learn how to configure  Managed Service Accounts (gMSA) for containers on Windows nodes
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/06/2022
+ms.date: 02/13/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 # Configure group Managed Service Accounts (gMSA) for Windows containers with Azure Kubernetes Service on Azure Stack HCI and Windows Server
 
-> Applies to: Azure Stack HCI and Windows Server
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 To use AD Authentication, you can configure group Managed Service Accounts (gMSA) for Windows containers to run with a non-domain joined host. A [group Managed Service Account](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) is a special type of service account introduced in Windows Server 2012 that's designed to allow multiple computers to share an identity without knowing the password. Windows containers cannot be domain joined, but many Windows applications that run in Windows containers still need AD Authentication.
 
@@ -51,21 +51,22 @@ To run a Windows container with a group managed service account, you need the fo
 ## Prepare the gMSA in the domain controller
 
 Follow the steps below to prepare the gMSA in the domain controller:
- 
+
 1. In the domain controller, [prepare Active Directory](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#one-time-preparation-of-active-directory) and [create the gMSA account](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-group-managed-service-account).
-2. Create a domain user account. This user account/password will be saved as a Kubernetes secret and used to retrieve the gMSA password.
-3. To create a GMSA account and grant permission to read the password for the gMSA account created in Step 2, run the following [New-ADServiceAccount](/powershell/module/activedirectory/new-adserviceaccount?preserve-view=true&view=windowsserver2019-ps) PowerShell command:
+1. Create a domain user account. This user account/password will be saved as a Kubernetes secret and used to retrieve the gMSA password.
+1. To create a GMSA account and grant permission to read the password for the gMSA account created in Step 2, run the following [New-ADServiceAccount](/powershell/module/activedirectory/new-adserviceaccount?preserve-view=true&view=windowsserver2019-ps) PowerShell command:
 
    ```powershell
     New-ADServiceAccount -Name "<gmsa account name>" -DnsHostName "<gmsa account name>.<domain name>.com" -ServicePrincipalNames "host/<gmsa account name>", "host/<gmsa account name>.<domain name>.com" -PrincipalsAllowedToRetrieveManagedPassword <username you created earlier> 
    ```
+
    For `-PrincipalsAllowedToRetrieveManagedPassword`, specify the domain username you created earlier as shown in the example below:
 
    ```powershell
    New-ADServiceAccount -Name "WebApp01" -DnsHostName "WebApp01.akshcitest.com" -ServicePrincipalNames "host/WebApp01", "host/WebApp01.akshcitest.com" -PrincipalsAllowedToRetrieveManagedPassword "testgmsa"
    ```
-   
-## Prepare the gMSA credential spec JSON file 
+
+## Prepare the gMSA credential spec JSON file
 
 To prepare the gMSA credential spec JSON file, follow the steps for [creating a credential spec](/virtualization/windowscontainers/manage-containers/manage-serviceaccounts#create-a-credential-spec).
 
@@ -76,21 +77,22 @@ The Kubernetes community already supports domain joined Windows worker nodes for
 Before completing the steps below, make sure the **AksHci** PowerShell module is installed and `kubectl` can connect to your cluster.
 
 1. To install the webhook, run the following [Install-AksHciGmsaWebhook](./reference/ps/install-akshcigmsawebhook.md) PowerShell command:
-   
+
    ```powershell
    Install-AksHciGMSAWebhook -Name <cluster name>
    ```
 
    To validate that the webhook pod is successfully running, run the following command:
-   
+
    ```powershell
    kubectl get pods -n kube-system | findstr gmsa
    ```
-   You should see one pod with the _gmsa-webhook_ prefix that is running. 
-  
-2. Create the secret object that stores the Active Directory user credential. Complete the configuration data below and save the settings into a file named secret.yaml.
 
-   ```
+   You should see one pod with the _gmsa-webhook_ prefix that is running.
+  
+1. Create the secret object that stores the Active Directory user credential. Complete the configuration data below and save the settings into a file named secret.yaml.
+
+   ```yml
    apiVersion: v1
    kind: Secret
    metadata:
@@ -102,15 +104,17 @@ Before completing the steps below, make sure the **AksHci** PowerShell module is
       username: <domain user who can retrieve the gMSA password>
       password: <password>
    ```
-   
+
    Then, run the following command to create the secret object:
+
    ```powershell
    kubectl apply -f secret.yaml
    ```
+
    > [!NOTE]
    > If you create a secret under a namespace other than the default, remember to set the namespace of the deployment to the same namespace. 
 
-3. Use the [Add-AksHciGMSACredentialSpec](./reference/ps/add-akshcigmsacredentialspec.md) PowerShell cmdlet below to create the gMSA CRD, enable role-based access control (RBAC), and then assign the role to the service accounts to use a specific gMSA credential spec file. These steps are described in more detail in this Kubernetes article on [Configure gMSA for Windows pods and containers](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). 
+1. Use the [Add-AksHciGMSACredentialSpec](./reference/ps/add-akshcigmsacredentialspec.md) PowerShell cmdlet to create the gMSA CRD, enable role-based access control (RBAC), and then assign the role to the service accounts to use a specific gMSA credential spec file. These steps are described in more detail in this Kubernetes article on [Configure gMSA for Windows pods and containers](https://kubernetes.io/docs/tasks/configure-pod-container/configure-gmsa/). 
 
    Use the JSON credential spec as input for the following PowerShell command (parameters with asterisks * are mandatory): 
 
@@ -124,7 +128,9 @@ Before completing the steps below, make sure the **AksHci** PowerShell module is
      -clusterRoleName <name of clusterrole to use the credspec>*  
      -overwrite 
    ```
-   To view an example, see the following:
+
+   To view an example, see the following code:
+
    ```powershell
    Add-AksHciGMSACredentialSpec -Name mynewcluster 
      -credSpecFilePath .\credspectest.json 
@@ -134,22 +140,28 @@ Before completing the steps below, make sure the **AksHci** PowerShell module is
    ```
 
 ## Deploy the application
+
 Create the deployment YAML file using the following example settings. The required entries include `serviceAccountName`, `gmsaCredentialSpecName`, `volumeMounts`, and `dnsconfig`.
 
 1. Add the service account:
+
    ```yml
    serviceAccountName: default
       securityContext: 
         windowsOptions: 
           gmsaCredentialSpecName:
    ```
-2. Add the credential spec object:
+
+1. Add the credential spec object:
+
    ```yml
    securityContext: 
         windowsOptions: 
           gmsaCredentialSpecName: <cred spec name>
    ```
-3. Mount the secret for the deployment:
+
+1. Mount the secret for the deployment:
+
    ```yml
    volumeMounts:
         - name: <volume name>
@@ -164,7 +176,8 @@ Create the deployment YAML file using the following example settings. The requir
                 path: my-group/my-username
    ```
   
-4. Add the IP address of the domain controller and domain name under dnsConfig: 
+1. Add the IP address of the domain controller and domain name under dnsConfig:
+
    ```yml
    dnsConfig: 
         nameservers:
@@ -173,42 +186,51 @@ Create the deployment YAML file using the following example settings. The requir
           - <domain>
    ```
 
-## Verify the container is working with gMSA 
+## Verify the container is working with gMSA
 
 After you deploy the container, use the following steps to verify that it's working:
 
 1. Get the container ID for your deployment by running the following command:
+
    ```console
    kubectl get pods
    ```
-2. Open PowerShell and run the following command:
+
+1. Open PowerShell and run the following command:
+
    ```powershell
    kubectl exec -it <container id> powershell
    ```
-3. Once you are in the container, run the following:
 
-   ```
+1. Once you are in the container, run the following:
+
+   ```console
    Nltest /parentdomain 
    Nltest /sc_verify:<domain> 
    ```
 
-   ```Output
+   ```output
    Connection Status = 0 0x0 NERR_Success The command completed successfully. 
    ```
+
    This output shows that the computer has been authenticated by a domain controller, and a secure channel exists between the client computer and the domain controller.
 
-4. Check if the container can obtain a valid Kerberos Ticket Granting Ticket (TGT).
-   ```
+1. Check if the container can obtain a valid Kerberos Ticket Granting Ticket (TGT).
+
+   ```console
    klist get krbtgt
    ```
+
    ```output
    A ticket to krbtgt has been retrieved successfully
    ```
-   
+
 ## Clean up gMSA settings in the cluster
+
 If you need to clean up gMSA settings, use the following uninstall steps.
 
 ### Uninstall the credential spec
+
 To uninstall, run the following [Remove-AksHcigmsaCredentialSpec](./reference/ps/remove-akshcigmsacredentialspec.md) PowerShell command:
 
 ```powershell
@@ -216,6 +238,7 @@ Remove-AksHciGMSACredentialSpec -Name <cluster name> -credSpecName <cred spec ob
 ```
 
 ### Uninstall webhook
+
 To uninstall the webhook, run the following [Uninstall-AksHciGMSAWebhook](./reference/ps/uninstall-akshcigmsawebhook.md) PowerShell command:
 
 ```powershell
