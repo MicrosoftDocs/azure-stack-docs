@@ -1,6 +1,6 @@
 ---
 title: Azure Stack HCI, version 22H2 release information
-description: his article provides the release information for Azure Stack HCI, version 22H2.
+description: This article provides the release information for Azure Stack HCI, version 22H2.
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
