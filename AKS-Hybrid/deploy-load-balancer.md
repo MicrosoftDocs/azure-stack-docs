@@ -12,6 +12,8 @@ ms.lastreviewed: 02/01/2024
 
 # Create a MetalLB load balancer using Azure Arc
 
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
 The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating MetalLB load balancer instance on your Kubernetes cluster using the load balancer Arc extension.
 
 ## Prerequisites
