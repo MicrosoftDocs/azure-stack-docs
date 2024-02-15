@@ -12,6 +12,8 @@ ms.lastreviewed: 01/30/2024
 
 # Upgrade an Azure Kubernetes Service (AKS) cluster
 
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
 As part of managing the application and cluster lifecycle, you might want to upgrade to the latest available version of Kubernetes. An upgrade involves either a move to a newer version of Kubernetes, applying operating system (OS) version updates (patching), or both. AKS Arc supports upgrading (or patching) nodes in a workload cluster with the latest OS and runtime updates.
 
 All upgrades are executed in a continuous, rolling manner to ensure uninterrupted availability of workloads. When a new Kubernetes worker node with a newer build is brought into the cluster, resources are moved from the old node to the new node. Once this is completed successfully, the old node is decommissioned and removed from the cluster.
