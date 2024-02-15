@@ -59,5 +59,5 @@ To view the dashboard list view, follow these steps in the Azure portal:
 
 ## Next steps
 
-- Learn about the various options available to monitor your Azure Stack HCI clusters in [What is Azure Stack HCI monitoring?](monitoring-overview.md).
-- [Assess deployment readiness via the Environment Checker](../manage/use-environment-checker.md).
+- Learn about the various options available to monitor your Azure Stack HCI clusters in [What is Azure Stack HCI monitoring?](../concepts/monitoring-overview.md).
+
