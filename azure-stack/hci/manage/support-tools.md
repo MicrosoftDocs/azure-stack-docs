@@ -4,7 +4,7 @@ description: This topic provides guidance on the Azure Stack HCI Support Diagnos
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/12/2024
+ms.date: 02/15/2024
 ---
 
 # Support tool for Azure Stack HCI (22H2)
@@ -56,10 +56,14 @@ Invoke-AzsSupportDiagnosticCheck –ProductName <BaseSystem,Registration>
 
 ## Example scenario
 
-For troubleshooting Azure Stack HCI registration issues for example, you can run this cmdlet:
+For troubleshooting Azure Stack HCI core products for example, you can run the following cmdlets:
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck -ProductName Registration
+```
+
+```powershell
+Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
 ```
 
 Afterwards, a comprehensive overview of the different components that are required for properly connected Azure Stack HCI systems is created. Based on this overview, you can either follow the troubleshooting guidance or reach out to customer support for further assistance.
