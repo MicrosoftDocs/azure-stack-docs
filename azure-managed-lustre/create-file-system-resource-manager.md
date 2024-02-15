@@ -178,16 +178,11 @@ The parameters in this section are either optional, or required only if you're u
 
 ## Sample JSON files
 
-This section shows sample contents for a template file (**azlustre-template.json**) and a separate parameters file (**azlustre-parameters.json**). These files contain all possible configuration options; you can remove optional parameters when creating your own Azure Resource Manager template.
-
-Downloadable example files:
-
-* [azlustre-template.json](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre-template.json)
-* [azlustre-parameters.json](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre-parameters.json)
+This section shows sample contents for a template file and a separate parameters file. These files contain all possible configuration options; you can remove optional parameters when creating your own Azure Resource Manager template.
 
 ### Template file
 
-This section shows example contents of **azlustre-template.json**:
+This section shows example contents of a template file:
 
 ```json
 {
@@ -284,7 +279,7 @@ This section shows example contents of **azlustre-template.json**:
 
 ### Parameters file
 
-This section shows example contents of **azure-lustre-parameters.json**:
+This section shows example contents of a parameters file:
 
 ```json
 {
@@ -295,10 +290,10 @@ This section shows example contents of **azure-lustre-parameters.json**:
             "value": "eastus"
         },
         "apiVersion": {
-            "value": "2021-11-01-preview"
+            "value": "2023-05-01"
         },
         "fileSystemName": {
-            "value": "ExampleAMLFS"
+            "value": "amlfs-example"
         },
         "availabilityZone": {
             "value": [
@@ -340,10 +335,8 @@ This section shows example contents of **azure-lustre-parameters.json**:
 
 This file includes examples for all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values you don't want.
 
-[Downloadable azlustre.bicep example](https://github.com/Azure/Azure-Managed-Lustre/blob/main/docs/media/example-azlustre.bicep)
-
 ```bicep
-resource fileSystem 'Microsoft.StorageCache/amlFileSystems@2021-11-01-preview' = {
+resource fileSystem 'Microsoft.StorageCache/amlFileSystems@2023-05-01' = {
   name: 'fileSystemName'
   location: 'eastus'
   tags: {
