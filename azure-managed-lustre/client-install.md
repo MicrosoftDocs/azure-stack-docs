@@ -152,19 +152,7 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
-   ```bash
-   sudo dnf install --disableexcludes=main --refresh amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
-
-   > [!NOTE]
-   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
-
-   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
-
-   ```bash
-   export NEWKERNELVERSION=6.7.8
-   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
+   [!INCLUDE [client-install-version-hpc-alma-86](./includes/client-install-version-hpc-alma-86.md)]
 
 :::zone-end
 
@@ -197,19 +185,7 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
-   ```bash
-   sudo yum install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
-
-   > [!NOTE]
-   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
-
-   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
-
-   ```bash
-   export NEWKERNELVERSION=6.7.8
-   sudo yum upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
+   [!INCLUDE [client-install-version-rhel-7](./includes/client-install-version-rhel-7.md)]
 
 ::: zone-end
 
@@ -242,19 +218,7 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
-   ```bash
-   sudo dnf install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
-
-   > [!NOTE]
-   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
-
-   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
-
-   ```bash
-   export NEWKERNELVERSION=6.7.8
-   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
+   [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
 
 ::: zone-end
 
@@ -287,19 +251,7 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
-   ```bash
-   sudo dnf install amlfs-lustre-client-2.15.3_43_gd7e07df-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
-
-   > [!NOTE]
-   > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
-
-   If you want to upgrade only the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
-
-   ```bash
-   export NEWKERNELVERSION=6.7.8
-   sudo dnf upgrade kernel-$NEWKERNELVERSION amlfs-lustre-client-2.15.3_43_gd7e07df-$(echo $NEWKERNELVERSION | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-   ```
+   [!INCLUDE [client-install-version-rhel-8-9](./includes/client-install-version-rhel-8-9.md)]
 
 ::: zone-end
 
@@ -336,18 +288,7 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
-   ```bash
-   sudo apt install [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]=$(uname -r)
-   ```
-
-   > [!NOTE]
-   > This installs a metapackage that will keep the version of Lustre aligned with the installed kernel. In order for this to work, you must use `apt full-upgrade` instead of simply `apt upgrade` when updating your system.
-
-   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
-
-   ```bash
-   apt upgrade linux-image-[new kernel version] [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
-   ```
+   [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
 
 ::: zone-end
 
@@ -375,18 +316,7 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
-   ```bash
-   sudo apt install [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]=$(uname -r)
-   ```
-
-   > [!NOTE]
-   > This installs a metapackage that will keep the version of Lustre aligned with the installed kernel. In order for this to work, you must use `apt full-upgrade` instead of simply `apt upgrade` when updating your system.
-
-   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
-
-   ```bash
-   apt upgrade linux-image-[new kernel version] [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
-   ```
+   [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
 
 ::: zone-end
 
@@ -455,20 +385,7 @@ The instructions apply to client VMs running:
 
 1. Install the metapackage that matches your running kernel:
 
-    sudo apt install [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]=$(uname -r)
-
-   ```bash
-   sudo apt install [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]=$(uname -r)
-   ```
-
-   > [!NOTE]
-   > This installs a metapackage that will keep the version of Lustre aligned with the installed kernel. In order for this to work, you must use `apt full-upgrade` instead of simply `apt upgrade` when updating your system.
-
-   Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
-
-   ```bash
-   apt upgrade linux-image-[new kernel version] [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
-   ```
+   [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]
 
 ::: zone-end
 
