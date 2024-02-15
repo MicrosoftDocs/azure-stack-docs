@@ -13,6 +13,8 @@ ms.reviewer: EkeleAsonye
 
 # Create a StatefulSet in AKS hybrid
 
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
 This article describes how to create, update, and delete **StatefulSets**, which are used to maintain the state of an application beyond a pod lifecycle in an Azure Kubernetes Serice deployment in AKS hybrid.
 
 ## Overview of StatefulSets
