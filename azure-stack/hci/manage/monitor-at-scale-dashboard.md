@@ -1,6 +1,6 @@
 ---
 title: Monitor at scale using the Azure Stack HCI overview page (preview)
-description: Learn to monitor your Azure Stack HCI systems using dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists.
+description: Learn to monitor your Azure Stack HCI systems using dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists. (preview)
 ms.topic: how-to
 author: alkohli
 ms.subservice: azure-stack-hci
@@ -13,15 +13,17 @@ ms.date: 02/15/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
+
 
 This article details how to monitor your Azure Stack HCI systems using the dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists.
+
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## View the dashboard chart view
 
 The Azure Stack HCI dashboard displays overview and detailed information about your clusters.
 
-To view the dashboard chart view:
+To view the dashboard chart view, follow these steps in the Azure portal:
 
 1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Stack HCI** > **Overview (preview)**.
 
@@ -45,7 +47,7 @@ To view the dashboard chart view:
 
 The Azure Stack HCI dashboard list view displays information about your clusters.
 
-To view the dashboard list view:
+To view the dashboard list view, follow these steps in the Azure portal:
 
 1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Stack HCI** > **All clusters (preview)**.
 
