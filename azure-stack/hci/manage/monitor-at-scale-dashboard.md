@@ -27,19 +27,19 @@ To view the dashboard chart view:
 
    You can filter the dashboard display by **Subscription**, **Resource group**, and **Region**.
 
-   :::image type="content" source="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-overview.png" alt-text="Screenshot of the Azure Stack HCI dashboard." lightbox="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-overview.png":::
+   :::image type="content" source="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-overview.png" alt-text="Screenshot of the Azure Stack HCI dashboard." lightbox="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-overview.png":::
 
    To view top alerts, select **Top alerts** in the Alters tile.
 
-   :::image type="content" source="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-alert-details.png" alt-text="Screenshot of the Azure Stack HCI dashboard alert details." lightbox="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-alert-details.png":::
+   :::image type="content" source="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-alert-details.png" alt-text="Screenshot of the Azure Stack HCI dashboard alert details." lightbox="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-alert-details.png":::
 
    To view VM workload details, select **Virtual machines**.
 
-   :::image type="content" source="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-workloads.png" alt-text="Screenshot of the Azure Stack HCI dashboard VM workloads." lightbox="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-workloads.png":::
+   :::image type="content" source="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-workloads.png" alt-text="Screenshot of the Azure Stack HCI dashboard VM workloads." lightbox="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-workloads.png":::
 
    The dashboard will display a list view of workload details for your VM.
 
-   :::image type="content" source="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-workload-details.png" alt-text="Screenshot of the Azure Stack HCI dashboard VM workload details." lightbox="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-workload-details.png":::
+   :::image type="content" source="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-workload-details.png" alt-text="Screenshot of the Azure Stack HCI dashboard VM workload details." lightbox="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-workload-details.png":::
 
 ## View the dashboard list view
 
@@ -51,7 +51,7 @@ To view the dashboard list view:
 
    All columns can be sorted by selecting a culmn header. You can filter the dashboard display by Subscription, Resource group, and Region. You can also group display results using the grouping control at top right.
 
-   :::image type="content" source="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-list-view.png" alt-text="Screenshot of the Azure Stack HCI dashboard list view." lightbox="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-list-view.png":::
+   :::image type="content" source="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-list-view.png" alt-text="Screenshot of the Azure Stack HCI dashboard list view." lightbox="media/monitor-at-scale-dashboard/monitor-at-scale-dashboard-list-view.png":::
 
    Select a cluster name to view details about a cluster, or select a parameter to view details about cluster status.
 
