@@ -123,7 +123,7 @@ The instructions apply to client VMs running:
 ::: zone pivot="alma-86"
 
 > [!WARNING]
- > These instructions only apply to the AlmaLinux 8.6 HPC marketplace images. For all other AlmaLinux 8 installs, including HPC and general marketplace, refer to [Red Hat 8 instructions](../install-rhel-8.md).
+ > These instructions only apply to the AlmaLinux 8.6 HPC marketplace images. For all other AlmaLinux 8 installs, including HPC and general marketplace, refer to [Red Hat 8 instructions](install-rhel-8.md).
 
 1. Install and configure the Azure Managed Lustre repository for the DNF package manager. Create the following script and name it `repo.bash`:
 
@@ -454,6 +454,8 @@ The instructions apply to client VMs running:
    ```
 
 1. Install the metapackage that matches your running kernel:
+
+    sudo apt install [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]=$(uname -r)
 
    ```bash
    sudo apt install [!INCLUDE [client-install-version-ubuntu](./includes/client-install-version-ubuntu.md)]=$(uname -r)
