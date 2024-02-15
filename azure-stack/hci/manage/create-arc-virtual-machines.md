@@ -264,8 +264,8 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. **(Optional)** Create or add a network interface for the VM.
 
     > [!NOTE]
-    > If you enabled guest management, you must add at least one network interface.
-    > If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
+    > - If you enabled guest management, you must add at least one network interface.
+    > - If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
 
     :::image type="content" source="./media/create-arc-virtual-machines/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-disk.png":::
 
