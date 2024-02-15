@@ -12,6 +12,8 @@ ms.reviewer: sulahiri
 
 # Update certificate bundle on container hosts
 
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
 An AKS hybrid cluster needs to trust other on-premises resources such as the container registry. This article describes how to add a certificate chain of trust (root, intermediate and lead certificates) with a public key, for the endpoints the cluster is expected to trust and allow communication. The certificates are added on the Linux hosts.
 
 This scenario uses a modified version of the [noProxy settings](proxy-change.md) command.
