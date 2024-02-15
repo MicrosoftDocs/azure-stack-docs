@@ -56,7 +56,7 @@ Write-Output "Setting context to the Default Provider Subscription: $providerSub
 Set-AzContext -Subscription $providerSubscriptionId
 
 # Change user subscription owner
-$subscription = Get-AzsUserSubscription -
+$subscription = Get-AzsUserSubscription -TargetSubscriptionId $TenantSubcriptionId
 $Subscription.Owner = $OwnerUpn
 $Subscription | Set-AzsUserSubscription | fl *
 ```
@@ -76,7 +76,7 @@ Write-Output "Setting context to the Default Provider Subscription: $providerSub
 Set-AzureRMContext -Subscription $providerSubscriptionId
 
 # Change user subscription owner
-$subscription = Get-AzsUserSubscription -
+$subscription = Get-AzsUserSubscription -TargetSubscriptionId $TenantSubcriptionId
 $Subscription.Owner = $OwnerUpn
 $Subscription | Set-AzsUserSubscription | fl *
 ```
