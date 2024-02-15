@@ -1,36 +1,25 @@
 ---
 title: Install client software for Azure Managed Lustre
-description: Tutorial that describes how to install client software for the Azure Managed Lustre File System.
-ms.topic: tutorial
+description: Learn how to install client software for the Azure Managed Lustre File System.
+ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.lastreviewed: 06/30/2023
 ms.reviewer: dsundarraj
-ms.date: 06/30/2023
+ms.date: 02/15/2024
 zone_pivot_groups: select-os
 
 ---
 
 # Install prebuilt client software
 
-This tutorial shows how to install an appropriate client package, in order to set up client VMs and attach them to an Azure Managed Lustre cluster. Select an OS version to see the instructions.
+This article shows how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
 
-In this tutorial you will:
-
-> [!div class="checklist"]
->
-> - Download a prebuilt client
-> - Install the prebuilt client
-
-For more information, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md), including:
-
-- [Client prerequisites and supported operating systems](connect-clients.md#client-prerequisites)
-- [Installing on a client with existing Lustre client software](connect-clients.md#update-a-lustre-client-to-the-current-version)
-- [Mount command](connect-clients.md#mount-command)
+For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
 ::: zone pivot="alma-86"
 
-## Tutorial: Install client software for AlmaLinux HPC 8.6
+## Install client software for AlmaLinux HPC 8.6
 
 This tutorial shows how to install the client package to set up client VMs running AlmaLinux HPC 8.6, and attach them to an Azure Managed Lustre cluster.
 
@@ -42,7 +31,7 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="rhel-7"
 
-## Tutorial: Install client software for Red Hat Enterprise Linux or CentOS 7
+## Install client software for Red Hat Enterprise Linux or CentOS 7
 
 This tutorial shows how to install the client package to set up client VMs running RHEL 7 and CentOS 7, and attach them to an Azure Managed Lustre cluster.
 
@@ -55,7 +44,7 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="rhel-8"
 
-## Tutorial: Install client software for Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
+## Install client software for Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
 
 This tutorial shows how to install the client package to set up client VMs running RHEL 8, CentOS 8, and Alma 8, and attach them to an Azure Managed Lustre cluster.
 
@@ -72,7 +61,7 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="rhel-9"
 
-## Tutorial: Install client software for Red Hat Enterprise Linux 9
+## Install client software for Red Hat Enterprise Linux 9
 
 This tutorial shows how to install the client package to set up client VMs running RHEL 9, and attach them to an Azure Managed Lustre cluster.
 
@@ -84,7 +73,7 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="ubuntu-18"
 
-## Tutorial: Install client software for Ubuntu 18.04
+## Install client software for Ubuntu 18.04
 
 This tutorial shows how to install the client package to set up client VMs running Ubuntu 18.04, and attach them to an Azure Managed Lustre cluster.
 
@@ -96,7 +85,7 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="ubuntu-20"
 
-## Tutorial: Install client software for Ubuntu 20.04
+## Install client software for Ubuntu 20.04
 
 This tutorial shows how to install the client package to set up client VMs running Ubuntu 20.04, and attach them to an Azure Managed Lustre cluster.
 
@@ -108,7 +97,7 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="ubuntu-22"
 
-## Tutorial: Install client software for Ubuntu 22.04
+## Install client software for Ubuntu 22.04
 
 This tutorial shows how to install the client package to set up client VMs running Ubuntu 22.04, and attach them to an Azure Managed Lustre cluster.
 
@@ -391,5 +380,5 @@ The instructions apply to client VMs running:
 
 ## Next steps
 
-- [How to connect clients to the file system](connect-clients.md)
+- [Connect clients to an Azure Managed Lustre file system](connect-clients.md)
 - [Azure Managed Lustre File System overview](amlfs-overview.md)
