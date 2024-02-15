@@ -1,19 +1,21 @@
 ---
-title: Azure Stack HCI dashboard
-description: Learn to view and navigate your Azure Stack HCI dashboard in Azure portal.
+title: Monitor at scale using the Azure Stack HCI overview page (preview)
+description: Learn to monitor your Azure Stack HCI systems using dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists.
 ms.topic: conceptual
 author: alkohli
 ms.subservice: azure-stack-hci
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 02/13/2024
+ms.date: 02/15/2024
 ---
 
-# Azure Stack HCI dashboard
+# Monitor Azure Stack HCI systems using the dashboard (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article details how to view and navigate your Azure Stack HCI dashboard in Azure portal. You can display the dashboard in chart view or in list view.
+[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
+
+This article details how to monitor your Azure Stack HCI systems using the dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists.
 
 ## View the dashboard chart view
 
@@ -23,7 +25,7 @@ To view the dashboard chart view:
 
 1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Stack HCI** > **Overview (preview)**.
 
-   You can filter the dashboard display by Subscription, Resource group, and Region.
+   You can filter the dashboard display by **Subscription**, **Resource group**, and **Region**.
 
    :::image type="content" source="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-overview.png" alt-text="Screenshot of the Azure Stack HCI dashboard." lightbox="media/azure-stack-hci-dashboard/azure-stack-hci-dashboard-overview.png":::
 
@@ -55,6 +57,5 @@ To view the dashboard list view:
 
 ## Next steps
 
+- Learn about the various options available to monitor your Azure Stack HCI clusters in [What is Azure Stack HCI monitoring?](monitoring-overview.md).
 - [Assess deployment readiness via the Environment Checker](../manage/use-environment-checker.md).
-- [Read the Azure Stack HCI security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
-- [View the Azure Stack HCI security standards](/azure-stack/hci/assurance/azure-stack-security-standards).
