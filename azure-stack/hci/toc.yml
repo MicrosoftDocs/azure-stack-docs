@@ -251,6 +251,8 @@
   items:
   - name: Overview
     href: concepts/monitoring-overview.md
+  - name: Monitor at-scale
+    href: manage/monitor-at-scale-dashboard.md
   - name: Via Azure 
     items:
     - name: Insights
