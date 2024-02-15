@@ -1,6 +1,6 @@
 ---
-title: Concepts - Application availability in AKS hybrid
-description: Learn about application availability in AKS hybrid
+title: Application availability in AKS enabled by Azure Arc
+description: Learn about application availability in AKS enabled by Arc
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 10/07/2022    
@@ -12,15 +12,15 @@ ms.reviewer: rbaziwane
 # Keyword: AKS on Azure Stack HCI and Windows Server architecture live migration disruption Kubernetes container orchestration
 ---
 
-# Application availability in AKS hybrid
+# Application availability in AKS enabled by Azure Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Azure Kubernetes Service hybrid deployment options (AKS hybrid) offer a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads. 
+Azure Kubernetes Service (AKS) enabled by Azure Arc offers a fully supported container platform that can run cloud-native applications on the [Kubernetes container orchestration platform](https://kubernetes.io/). The architecture supports running virtualized Windows and Linux workloads.
 
 The AKS architecture is built with failover clustering and live migration that is automatically enabled for target (workload) clusters. During various disruption events, virtual machines that host customer workloads are freely moved around without perceived application downtime. This means that a traditional enterprise customer, who's managing a legacy application as a singleton to AKS on Azure Stack HCI or Windows Server, will get similar (or better) uptime than what's currently experienced on a legacy VM application. 
 
-This topic describes some fundamental concepts for users who want to run containerized applications on AKS hybrid with live migration enabled in order to ensure applications are available during a disruption. Kubernetes terminology, such as *voluntary disruption* and *involuntary disruption*, is used to refer to downtime of an application running in a pod. 
+This article describes some fundamental concepts for users who want to run containerized applications on AKS Arc with live migration enabled in order to ensure applications are available during a disruption. Kubernetes terminology, such as *voluntary disruption* and *involuntary disruption*, is used to refer to downtime of an application running in a pod. 
 
 ## What is live migration?
 
@@ -35,6 +35,7 @@ For a customer running a legacy application as a singleton on top of Kubernetes,
 ![Diagram showing an example legacy application running as a singleton](./media/singleton.png)
 
 ## Application disruption scenarios
+
 A comparative study of the recovery times for applications running in VMs on AKS on Azure Stack HCI and Windows Server clearly shows that there is minimal impact on the application when common disruption events occur. Three example disruption scenarios include:
 
 - Applying an update that results in a reboot of the physical machine. 
