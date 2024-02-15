@@ -1,7 +1,7 @@
 ---
 title: Monitor at scale using the Azure Stack HCI overview page (preview)
 description: Learn to monitor your Azure Stack HCI systems using dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists.
-ms.topic: conceptual
+ms.topic: how-to
 author: alkohli
 ms.subservice: azure-stack-hci
 ms.author: alkohli
