@@ -24,7 +24,7 @@ Use this step-by-step guide to verify and try out basic pod-to-pod connectivity 
 
 To deploy AKS Arc, follow the steps to [set up an AKS host](./kubernetes-walkthrough-powershell.md).
 
-To use this guide, you'll need:
+To use this guide, you need:
 
 - An AKS workload cluster.
 - At least one Windows worker node deployed in the cluster.
@@ -88,7 +88,7 @@ spec:
 
 Open a PowerShell window, and load the credentials for your target cluster using the [`Get-AksHciCredential`](./reference/ps/get-akshcicredential.md) command. 
 
-Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration, as shown below:
+Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration, as follows:
 
 ```powershell
 kubectl apply -f policy-demo-linux.yaml
@@ -167,7 +167,7 @@ Next, use `kubectl` to list the pods in the `calico-demo` namespace:
 kubectl get pods --namespace calico-demo
 ```
 
-You should see output similar to what's shown below:
+You should see output similar to the following example:
 
 ```output
 NAME      READY   STATUS              RESTARTS   AGE
@@ -211,7 +211,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
     kubectl exec --namespace calico-demo busybox -- nc -vz $(kubectl get pod porter --namespace calico-demo -o 'jsonpath={.status.podIP}') 80
     ```
 
-   If the connection from the **busybox** pod to the **porter** pod succeeds, you get output similar to the following:
+   If the connection from the **busybox** pod to the **porter** pod succeeds, you get output similar to the following example:
 
     ```output
     192.168.40.166 (192.168.40.166:80) open
@@ -251,7 +251,7 @@ Now that the client and server pods are running on both Linux and Windows nodes,
     kubectl exec --namespace calico-demo pwsh -- powershell Invoke-WebRequest -Uri http://$(kubectl get po porter -n calico-demo -o 'jsonpath={.status.podIP}') -UseBasicParsing -TimeoutSec 5
     ```
 
-    If that succeeds, you see output similar to the following:
+    If that succeeds, you see output similar to the following example:
 
     ```output
     StatusCode        : 200
@@ -278,9 +278,7 @@ You have now verified that communication is possible between all pods in the app
 
 ## Apply the policy to the Windows client pod
 
-In a real-world deployment, you want to make sure only pods that are supposed to communicate with each other are allowed to do so.
-
-To achieve this, you apply a basic network policy that allows only the **busybox** pod to reach the **porter** pod.
+In a real-world deployment, you want to make sure only pods that are supposed to communicate with each other are allowed to do so. To achieve this, you apply a basic network policy that allows only the **busybox** pod to reach the **porter** pod.
 
 ### Create the network-policy.yaml file
 
@@ -343,7 +341,7 @@ pWebRequest) [Invoke-WebRequest], WebException
 command terminated with exit code 1
 ```
 
-In this demo, we've configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod-to-pod traffic.
+In this demo, we configured pods on Linux and Windows nodes, verified basic pod connectivity, and tried a basic network policy to isolate pod-to-pod traffic.
 
 As the final step, you can clean up all of the demo resources:
 
