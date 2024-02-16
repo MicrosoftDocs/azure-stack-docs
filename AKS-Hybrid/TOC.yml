@@ -191,7 +191,6 @@
         href: tutorial-kubernetes-prepare-azure-container-registry.md
       - name: 3 - Deploy a workload cluster
         href: tutorial-kubernetes-deploy-cluster.md
-        # If we change this, then we can move this to the main TOC, under overview. AI: Abhilasha
       - name: 4 - Run an application
         href: tutorial-kubernetes-deploy-application.md
       - name: 5 - Scale an application
@@ -343,9 +342,6 @@
           href: multiple-load-balancers.md
         - name: Configure a custom load balancer
           href: configure-custom-load-balancer.md
-#        - name: Deploy MetalLB for load balancing
-#          href: deploy-metallb.md
-          # Remove this, and redirect to this - deploy-load-balancer.md AI: Abhilasha to make sure deploy-load-balancer.md is product agnostic. 
         - name: Use an ingress controller
           href: create-ingress-controller.md
         - name: Use Microsoft Software Defined Networking (SDN)
