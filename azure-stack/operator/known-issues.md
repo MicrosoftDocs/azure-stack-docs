@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/15/2024
+ms.date: 02/16/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -62,7 +62,11 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## Storage -->
 
-## SQL and MySQL
+<!-- ## SQL and MySQL-->
+
+<!-- ## App Service -->
+
+## Resource providers
 
 ### Incorrect rotation status after secret rotation of resource provider certificates
 
@@ -70,8 +74,6 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
 - Remediation: None. No impact to your system or workloads.
 - Occurrence: All supported versions of Azure Stack Hub.
-
-<!-- ## App Service -->
 
 <!-- ## Usage -->
 
