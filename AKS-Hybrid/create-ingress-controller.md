@@ -25,7 +25,7 @@ You can deploy ingress in various ways depending on the use case. Ingress resour
 
 ## Use ingress to expose services through externally reachable URLs
 
-An example of using ingress is shown in the following YAML manifest. The `ingress.class` that's used appears within the metadata (in this example, `ingress-nginx`), and this setting lets the NGINX ingress controller know what it needs to monitor and update:
+An example of using ingress is shown in the following YAML manifest. The `ingress.class` appears within the metadata (in this example, `ingress-nginx`), and this setting lets the NGINX ingress controller know what it needs to monitor and update:
 
 ```yaml
 apiVersion: networking.k8s.io/v1  
@@ -49,11 +49,11 @@ backend:
                      number: 8080
 ```
 
-The `spec` section provides information about what's configured. In this example, a rule (or set of rules) are defined and include the following items:
+The `spec` section provides information about what's configured. In this example, a rule (or set of rules) is defined and includes the following items:
 
 - The host to which the rules are applied.
 - Whether the traffic is HTTP or HTTPS.
-- The path that's monitored.
+- The monitored path.
 - The internal service and port where the traffic is sent.
 
 ## Use ingress to load balance traffic
