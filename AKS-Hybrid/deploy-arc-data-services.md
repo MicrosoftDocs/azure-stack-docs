@@ -21,7 +21,7 @@ This article provides a checklist of prerequisites you can follow to deploy Azur
 
 > [!div class="checklist"]
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md).
-> * Configure storage [using the AKS hybrid disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md#create-custom-storage-class-for-disks).
+> * Configure storage [using the disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md#create-custom-storage-class-for-disks).
 
 ## Prerequisites for Azure Arc-enabled data services
 
