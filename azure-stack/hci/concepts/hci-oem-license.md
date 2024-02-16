@@ -89,4 +89,4 @@ Utilizing this license in a mixed-node scenario will lead to inadvertent billing
 
 ## Next steps
 
-- Read the [License Windows Server VMs on Azure Stack HCI](./manage/vm-activate).
+- Read the [License Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md).
