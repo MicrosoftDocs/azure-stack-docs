@@ -37,7 +37,7 @@ First, create a client pod, **busybox**, and server pod, **nginx**, on the Linux
 
 ### Create a YAML file called policy-demo-linux.yaml
 
-```yml
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -103,7 +103,7 @@ Create a client pod _pwsh_ and server pod _porter_ on the Windows nodes.
 
 ### Create the policy-demo-windows.yaml
 
-```yml
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -284,7 +284,7 @@ To achieve this, you apply a basic network policy that allows only the **busybox
 
 ### Create the network-policy.yaml file
 
-```yml
+```yaml
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
