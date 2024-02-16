@@ -259,7 +259,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
       1. Create a YAML file named **minio-pvc-storage.yaml**, with the following contents:
 
-         ```yml
+         ```yaml
          kind: PersistentVolumeClaim
          apiVersion: v1
          metadata: 
@@ -281,7 +281,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
       1. Create a deployment file, **minio-deployment.yaml**, for starting MinIO. Include the following contents. The deployment will use the persistent volume you created.
 
-         ```yml
+         ```yaml
          apiVersion: apps/v1
          kind: Deployment
          metadata:
@@ -330,7 +330,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
       Create a YAML file with the following settings to configure the service:
 
-      ```yml
+      ```yaml
       apiVersion: v1 
       kind: Service 
       metadata: 
@@ -387,7 +387,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
    1. Create a MinIO credentials file with the following information:
 
-      ```yml
+      ```yaml
       minio.credentials 
              [default] 
         aws_access_key_id=<minio_access_key> 
