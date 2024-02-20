@@ -4,7 +4,7 @@ description: Learn how to install client software for the Azure Managed Lustre F
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.lastreviewed: 06/30/2023
+ms.lastreviewed: 02/20/2024
 ms.reviewer: dsundarraj
 ms.date: 02/15/2024
 zone_pivot_groups: select-os
