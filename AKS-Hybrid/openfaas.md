@@ -15,7 +15,7 @@ ms.reviewer: scooley
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-[OpenFaaS][open-faas] is a framework for building serverless functions by using containers. As an open source project, it has gained large-scale adoption within the community. This article details installing and using OpenFaas on a Kubernetes cluster running on AKS enabled by Azure Arc.
+[OpenFaaS][open-faas] is a framework for building serverless functions by using containers. As an open source project, it gained large-scale adoption within the community. This article describes installing and using OpenFaas on a Kubernetes cluster running on AKS enabled by Azure Arc.
 
 ## Prerequisites
 
