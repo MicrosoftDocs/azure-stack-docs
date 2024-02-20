@@ -107,21 +107,21 @@ If you haven't already created your AKS cluster, create a cluster deployment. Se
 
 ## Create virtual network peering
 
-> [NOTE]
+> [!NOTE]
 > Skip this network peering step if you installed AKS into a subnet on the Azure Managed Lustre virtual network.
 
-The AKS virtual network is created in a separate resource group from the AKS cluster's resource group. You can find the name of this resource group by going to your AKS cluster in the Azure Portal choosing the **Properties** blade and finding the **Infrastructure** resource group.  This resource group contains the virtual network that needs to be paired with the Azure Managed Lustre virtual network. It matches the pattern **MC\_&lt;aks-rg-name&rt;\_&lt;aks-cluster-name&rt;\_&lt;region&rt;**.
+The AKS virtual network is created in a separate resource group from the AKS cluster's resource group. You can find the name of this resource group by going to your AKS cluster in the Azure Portal choosing the **Properties** blade and finding the **Infrastructure** resource group.  This resource group contains the virtual network that needs to be paired with the Azure Managed Lustre virtual network. It matches the pattern **MC\_\<aks-rg-name\>\_\<aks-cluster-name\>\_\<region\>**.
 
 Consult [Virtual Network Peering](/azure/virtual-network/virtual-network-peering-overview) to peer the AKS virtual network with your Azure Manages Lustre virtual network.
 
-> [TIP]
+> [!TIP]
 > Due to the naming of the MC_ resource groups and virtual networks, names of networks can be similar or the same across multiple AKS deployments. When setting up peering pay close attention that you are choosing the AKS networks that you intend to choose.
 
 ## Connect to the AKS cluster
 
 Connect to the Azure Kubernetes Service cluster by doing these steps:
 
-1. Open a terminal session with access to the Azure CLI tools, and login to your Azure account.
+1. Open a terminal session with access to the Azure CLI tools and log in to your Azure account.
 
    ```azurecli
    az login
