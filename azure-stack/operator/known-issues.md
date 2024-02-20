@@ -58,6 +58,13 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## Portal -->
 
+## Portal
+
+- Applicable: This issue applies to release 2311.
+- Cause: In the Azure Stack Hub User portal, under the Virtual Networks section, you’ll find three new options for virtual networks: “DNS Servers”, “Flow Timeout”, and “BGP community string”. You can successfully modify the DNS configuration using the “DNS Servers” option. However, attempts to use the “Flow Timeout” and “BGP community string” options will result in failure within the portal notifications. No changes are made to the underlying services - the errors are only in the portal.
+- Remediation: Microsoft is aware of the problem and will be corrected witht he next update.
+- Occurrence: Common.
+
 <!-- ## Datacenter integration -->
 
 <!-- ## Storage -->
