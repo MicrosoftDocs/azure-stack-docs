@@ -386,8 +386,6 @@
         items:    
         - name: Use on-premises monitoring
           href: monitor-logging.md
-        - name: Get kubelet logs
-          href: get-kubelet-logs.md
       - name: Use Windows Server containers
         items:
         - name: Deploy .NET applications
