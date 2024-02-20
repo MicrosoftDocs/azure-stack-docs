@@ -65,7 +65,7 @@ Kubernetes uses a control plane to ensure every component in the Kubernetes clus
 
 The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This load balancing can help prevent downtime and improve overall performance of applications. AKS supports the following options to deploy a load balancer for your Kubernetes cluster:
 
-- [Deploy MetalLB load balancer using Azure Arc extensions](deploy-load-balancer.md).
+- [Deploy MetalLB load balancer using Azure Arc extensions](deploy-load-balancer-portal.md).
 - Bring your own third party load balancer.
 
 Regardless of the option you choose, you must ensure that the IP addresses allocated to the load balancer don't conflict with the IP addresses in the Arc VM logical network or control plane IPs for your Kubernetes clusters. Conflicting IP addresses can lead to unforeseen failures in your AKS deployment and applications.
