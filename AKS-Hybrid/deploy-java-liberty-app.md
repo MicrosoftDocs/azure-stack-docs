@@ -55,7 +55,7 @@ az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 ## Create a Container Registry instance in Azure
 
-Use the [az acr create](/cli/azure/acr#az-acr-create) command to create the Azure Container Registry instance. The following example creates an Container Registry instance named **youruniquecontainerregistryname**. Make sure **youruniquecontainerregistryname** is unique within Azure:
+Use the [az acr create](/cli/azure/acr#az-acr-create) command to create the Azure Container Registry instance. The following example creates a Container Registry instance named **youruniquecontainerregistryname**. Make sure **youruniquecontainerregistryname** is unique within Azure:
 
 ```azurecli-interactive
 REGISTRY_NAME=youruniquecontainerregistryname
