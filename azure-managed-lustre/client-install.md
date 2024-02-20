@@ -55,7 +55,7 @@ The instructions apply to client VMs running:
 - Alma Linux 8
 
 > [!NOTE]
-> For AlmaLinux 8.6 HPC Marketplace images, see the separate [Alma 8.6 HPC install instructions](install-hpc-alma-86.md)
+> For AlmaLinux 8.6 HPC Marketplace images, see the separate [Alma 8.6 HPC install instructions](install-hpc-alma-86.md).
 
 ::: zone-end
 
