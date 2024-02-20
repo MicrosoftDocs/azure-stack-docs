@@ -7,7 +7,7 @@ ms.date: 01/10/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
-# Intent: As an IT Pro, I want to learn how to secure containers in AKS hybrid.
+# Intent: As an IT Pro, I want to learn how to secure containers in AKS Arc.
 # Keyword: container security
 
 ---
