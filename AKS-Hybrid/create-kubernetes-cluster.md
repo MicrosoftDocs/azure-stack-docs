@@ -67,5 +67,5 @@ This section describes how to use the Create Kubernetes cluster wizard through t
 
 In this quickstart, you deployed a Kubernetes cluster. For more information about AKS enabled by Azure Arc, and to learn how to deploy and manage Linux applications on AKS enabled by Arc, continue to the following tutorial:
 
-- [Tutorial: Deploy Linux applications in AKS hybrid](deploy-linux-application.md)
+- [Tutorial: Deploy Linux applications](deploy-linux-application.md)
 - [Set up multiple administrators](./set-multiple-administrators.md)
