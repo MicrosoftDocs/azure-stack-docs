@@ -88,14 +88,40 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 #### Install using a template (.VHD file)
 
-This step applies only if you downloaded the .VHD file. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
+This step applies only if you downloaded the .VHD zipped file. 
 
-Verify that a standalone VM (non-HA) is configured with the following settings:
+Check that the zipped file is secure, before you deploy it.
 
-- 16 GB memory.
-- 8 vCPU.
-- 80 GB disk storage.
-- Enhanced Session Policy mode enabled.
+1. On the server where you downloaded the file, open an administrator command window.
+2. Run the following command to generate the hash for the VHD.
+    
+    ```powershell    
+    C:\>Get-FileHash -Path <file_location> -Algorithm <Hashing Algorithm>
+    ```
+
+    Here's an example output.
+
+    ```output
+    C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256
+    ```
+
+3. Verify the latest appliance versions and hash values for Azure public cloud:
+
+    |**Scenario** | **Download** | **SHA256**|
+    |--- ---------| ------------ | ----------|
+    |Azure Stack HCI appliance (X.XX GB) | [Latest version](https://go.microsoft.com/fwlink/?linkid=2246416) |  6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb|
+
+4. Extract the zip file to a folder. 
+
+Create an appliance
+
+On a Hyper-V server (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
+
+On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Stack HCI server, and then select **OK**.
+
+Map the C: drive on your Azure Stack HCI server.  Connect to 
+
+Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
 
 #### Install using a script (.zip file)
 
