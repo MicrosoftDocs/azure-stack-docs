@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 02/03/2024
+ms.date: 02/13/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -67,7 +67,12 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 ### Create a VM from network interface
 
-Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
+Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. 
+
+> [!NOTE]
+> If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
+
+Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
 
 1. Set some parameters.
 
@@ -124,6 +129,17 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
+### Create a Linux VM from network interface
+
+To create a Linux VM, use the same command that you used to create the Windows VM.
+
+- The gallery image specified should be a Linux image.
+- The username and password works with the `authentication-type-all` parameter.
+- For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
+
+> [!IMPORTANT]
+> Proxy is not supported for Linux VMs.
+
 ### Create a VM with proxy configured
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
@@ -153,16 +169,7 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 ```
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-### Create a Linux VM from network interface
 
-To create a Linux VM, use the same command that you used to create the Windows VM.
-
-- The gallery image specified should be a Linux image.
-- The username and password works with the `authentication-type-all` parameter.
-- For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
-
-> [!IMPORTANT]
-> Proxy servers are not supported for Linux VMs.
 
 # [Azure portal](#tab/azureportal)
 
@@ -257,7 +264,8 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. **(Optional)** Create or add a network interface for the VM.
 
     > [!NOTE]
-    > If you enabled guest management, you must add at least one network interface.
+    > - If you enabled guest management, you must add at least one network interface.
+    > - If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
 
     :::image type="content" source="./media/create-arc-virtual-machines/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-disk.png":::
 

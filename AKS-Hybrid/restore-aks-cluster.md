@@ -13,6 +13,8 @@ ms.reviewer: rbaziwane
 
 # Restore the state of AKS clusters after a disaster
 
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
 In AKS on Azure Stack HCI or Windows Server, the management cluster is deployed as a single standalone virtual machine (VM) per deployment, making it a single point of failure. It is important to note that a management cluster outage has no impact on applications running in the workload clusters. When the management cluster VM fails, the workload clusters (and workloads) continue running, but you won't be able to perform day-2 operations. For example, you cannot create new workload clusters, create or scale a node pool, or upgrade Kubernetes versions, until the VM is restored.
 
 The management cluster is a VM that's tracked in Windows failover clustering. It is also resilient to host-level disruptions. In other words, during a host machine failure, Windows failover clustering restarts the VM on a healthy host machine. This article provides guidance on how to perform the following tasks:

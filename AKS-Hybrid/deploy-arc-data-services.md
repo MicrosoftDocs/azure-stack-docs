@@ -13,13 +13,15 @@ ms.reviewer: rbaziwane
 
 # Deploy Azure Arc-enabled data services
 
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
 This article provides a checklist of prerequisites you can follow to deploy Azure Arc-enabled data services on Azure Kubernetes Service (AKS) enabled by Azure Arc. You must have [AKS](kubernetes-walkthrough-powershell.md) installed before using the checklist.
 
 ## Prerequisites for AKS on Azure Stack HCI and Windows Server
 
 > [!div class="checklist"]
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md).
-> * Configure storage [using the AKS hybrid disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md#create-custom-storage-class-for-disks).
+> * Configure storage [using the disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md#create-custom-storage-class-for-disks).
 
 ## Prerequisites for Azure Arc-enabled data services
 
