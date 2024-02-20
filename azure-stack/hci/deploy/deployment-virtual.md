@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 02/20/2024
 ---
 
 # Deploy a virtual Azure Stack HCI, version 23H2 system
@@ -204,6 +204,12 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
     ```PowerShell
     Get-VMIntegrationService -VMName "Node1" |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
+    ```
+
+1. Enable nested virtualization:
+
+    ```PowerShell
+    Set-VMProcessor -VMName "Node1" -ExposeVirtualizationExtensions $true
     ```
 
 1. Start the VM:
