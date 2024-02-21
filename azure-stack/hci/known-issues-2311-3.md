@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article identifies the critical known issues and their workarounds in Azure Stack HCI 2311.3 General Availability (GA) release.
+This article identifies the critical known issues and their workarounds in the Azure Stack HCI 2311.3 release.
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
@@ -35,7 +35,7 @@ Here are the issues fixed in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|-------|
 | Deployment |The first deployment step: **Before Cloud Deployment** when [Deploying via Azure portal](./deploy/deploy-via-portal.md) can take from 45 minutes to an hour to complete.| |
-| Deployment <!--26039020--> |There is a sporadic heartbeat reliability issue in this release due to which the registration encounters the error: HCI registration failed. Error: Arc integration failed. |TThis issue is transient and hasn't been identified in the latest release. If you encounter this issue try rerunning the deployment. For more information, see [Rerun the deployment](./deploy//deploy-via-portal.md#rerun-deployment).   |
+| Deployment <!--26039020--> |There is a sporadic heartbeat reliability issue in this release due to which the registration encounters the error: HCI registration failed. Error: Arc integration failed. |This issue is transient and hasn't been identified in the latest release. If you encounter this issue try rerunning the deployment. For more information, see [Rerun the deployment](./deploy//deploy-via-portal.md#rerun-deployment).   |
 | Deployment <!--26088401--> |There is an intermittent issue in this release where the Arc integration validation fails with this error: Validator failed. Cannot retrieve the dynamic parameters for the cmdlet. PowerShell Gallery is currently unavailable.  Please try again later. |This issue is transient and hasn't been identified in the latest release. If you encounter this issue try rerunning the deployment. For more information, see [Rerun the deployment](./deploy/deploy-via-portal.md#rerun-deployment).   |
 
 ## Known issues in this release
