@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/23/2024
+ms.date: 02/16/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -58,6 +58,13 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## Portal -->
 
+## Portal
+
+- Applicable: This issue applies to release 2311.
+- Cause: In the Azure Stack Hub user portal, under the **Virtual Networks** section, there are three new options for virtual networks: **DNS Servers**, **Flow Timeout**, and **BGP community string**. You can successfully modify the DNS configuration using the **DNS Servers** option. However, attempts to use the **Flow Timeout** and **BGP community string** options result in a failure within the portal notifications. No changes are made to the underlying services; the errors are only in the portal.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
 <!-- ## Datacenter integration -->
 
 <!-- ## Storage -->
@@ -65,6 +72,15 @@ To access known issues for a different version, use the version selector dropdow
 <!-- ## SQL and MySQL-->
 
 <!-- ## App Service -->
+
+## Resource providers
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
 
 <!-- ## Usage -->
 
@@ -93,7 +109,14 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## SQL and MySQL-->
 
-<!-- ## App Service -->
+## App Service
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
 
 <!-- ## Usage -->
 
@@ -129,7 +152,14 @@ To access known issues for a different version, use the version selector dropdow
 
 <!-- ## SQL and MySQL-->
 
-<!-- ## App Service -->
+## App Service
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
 
 <!-- ## Usage -->
 

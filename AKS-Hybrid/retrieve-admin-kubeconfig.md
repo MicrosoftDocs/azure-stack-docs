@@ -12,6 +12,8 @@ ms.reviewer: sulahiri
 
 # Retrieve certificate-based admin kubeconfig
 
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
 This article describes how to retrieve a certificate-based admin kubeconfig.
 
 ## Get admin certificate-based kubeconfig

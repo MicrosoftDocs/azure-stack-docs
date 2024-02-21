@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 02/12/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -179,6 +179,7 @@ For more information, see [Optimize storage with ReFS deduplication and compress
 
 ## Next steps
 
+- [Read the blog announcing the general availability of Azure Stack HCI, version 23H2](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
 - [Read the blog about What’s new for Azure Stack HCI at Microsoft Ignite 2023](https://aka.ms/ashciignite2023).
 - For Azure Stack HCI, version 23H2 deployments:
     - Read the [Deployment overview](./deploy/deployment-introduction.md).
