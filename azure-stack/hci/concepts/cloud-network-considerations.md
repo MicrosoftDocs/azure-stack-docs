@@ -1,6 +1,6 @@
 ---
-title: Network considerations for cloud deployment
-description: This topic introduces network considerations Azure Stack HCI cloud deployments.
+title: Network considerations for Azure Stack HCI cloud deployment
+description: This topic introduces network considerations for Azure Stack HCI cloud deployments.
 author: alkohli
 ms.topic: conceptual
 ms.date: 02/21/2024
@@ -8,11 +8,11 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Network considerations for cloud deployment
+# Network considerations for Azure Stack HCI cloud deployment
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-In this article, learn how to design and plan an Azure Stack HCI version 23H2 system network for cloud deployment. Before you continue, familarize yourself with the various [Azure Stack HCI networking patterns](../plan/choose-network-pattern.md) and options available.
+In this article, learn how to design and plan an Azure Stack HCI version 23H2 system network for cloud deployment. Before you continue, familarize yourself with the various [Azure Stack HCI networking patterns](../plan/choose-network-pattern.md) and configurations available.
 
 ## Network design framework
 
@@ -28,13 +28,11 @@ To help determine the size of your Azure Stack HCI system, use the [Azure Stack 
 
 As described in the Azure Stack HCI [system server requirements](system-requirements.md) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you have completed your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
 
-For example, if your workload requires four or more nodes, you will not be able to deploy and use a switchless configuration for the storage network traffic. That implies you will need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Stack HCI cluster network architecture, see [Network reference patterns overview](../plan/network-patterns-overview.md).
+If your workloads require four or more nodes, you will not be able to deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Stack HCI cluster network architecture, see [Network reference patterns overview](../plan/network-patterns-overview.md).
 
-However, if your workload requires three or less nodes, you will be able to decide which storage connectivity option you would like to use. However, if you plan to scale out later, switchless deployments won't support orchestrated scale out operations using the Lifecycle Manager orchestrator. Any scale out operation in your switchless deployments will require manual configuration of your network cabling between the nodes that Microsoft is not actively validating as part of its software development cycle for Azure Stack HCI.
+If your workloads require three or less nodes, you can choose either switchless or switched configurations for storage connectivity. However, if you plan to scale out later to more than three nodes, you need to use a physical switch for storage network traffic. Any scale out operation for switchless deployments require manual configuration of your network cabling between the nodes that Microsoft is not actively validating as part of its software development cycle for Azure Stack HCI.
 
-Switchless configuration with Lifecycle Manager deployment and orchestration support is only available for systems with three or less server nodes. Clusters with four or more nodes require a physical switch for the storage network traffic. In this case, the Azure portal deployment flow will filter these options for you. In addition, ARM deployments only support the validated architecture described here.
-
-In summary, if you scale out your cluster using Lifecycle Manager orchestration, you need to use a physical switch for the storage network traffic.
+Deployments via Azure portal will select these options for you. Deployments via ARM templates only support the validated architecture described here.
 
 ## Step 2: Determine cluster storage connectivity
 
@@ -44,56 +42,50 @@ As described in [Physical network requirements](physical-network-requirements.md
 
 As stated previously, you will only be able to decide between the two options when the size of your cluster is three or less nodes. Any cluster with four or more nodes will automatically be deployed using a network switch for storage. If clusters with less than three nodes, the storage connectivity decision will influence the number and type of network intents you will be able to define in the next step.
 
-For example, for switchless configurations, you will need to define two network traffic intents. Storage traffic for east-west communications using the cross-over cables will not have north-south connectivity and it will be completely isolated from the rest of your network infrastructure. That means you will need to define a second network intent for management outbound connectivity and for your compute workloads.
+For example, for switchless configurations, you will need to define two network traffic intents. Storage traffic for east-west communications using the cross-over cables will not have north-south connectivity and it will be completely isolated from the rest of your network infrastructure. That means you will need to define a second network intent for management outbound connectivity and for your compute workloads. 
 
 Although it is possible to define each network intent with only one physical network adapter port each, that will not provide any fault tolerance. As such, we always recommend using at least two physical network ports for each network intent. If you decide to use a network switch for storage, you can group all network traffic including storage in a single network intent, which is also known as a hyperconverged or fully converged host network configuration.
 
-The following diagram summarizes the options for this step:
+The following diagram summarizes storage connectivity options available to you for various deployments:
 
 :::image type="content" source="media/cloud-network-considerations/step-2-summary.png" alt-text="Diagram showing step 2 option summary for the network desicion framework." lightbox="media/cloud-network-considerations/step-2-summary.png":::
-
-### Using a switchless configuration
-
-Switchless configuration with lifecycle manager deployment and orchestration support is only available for clusters with three or fewer nodes. Scale in and scale out operations are not supported using lifecycle manager orchestration.
-
-Any change in the number of nodes post-deployment will require a manual configuration. At least two network intents are required when using a switchless configuration for storage.
-
-### Using a switched configuration
-
-If you scale out your cluster using lifecycle manager orchestration, you need to use a physical switch for storage network traffic. You can use this architecture with any number of nodes between one to 16. Although this is not recommended, you can use a single intent for all your network traffic types (Management, Compute, and Storage).
 
 ## Step 3: Determine network traffic intents
 
 :::image type="content" source="media/cloud-network-considerations/step-3.png" alt-text="Diagram showing step 3 of the network desicion framework." lightbox="media/cloud-network-considerations/step-3.png":::
 
+> [!NOTE]
+> Although not recommended, you can use a single intent for all your network traffic types (management, compute, and storage).
+
 For Azure Stack HCI version 23H2, all deployments rely on Network ATC for the host network configuration. For more information, see [Deploy host networking with Network ATC](../deploy/network-atc.md).
 
-This section explains what the implications of your design decision for network traffic intents are, and how it influences the next step of the framework. For clout deployments, you are able to select between four options to group your network traffic into one or more intents. As explained in the previous section, the options available depend on the size of your cluster and the storage connectivity type.
+This section explains the implications of your design decision for network traffic intents, and how they influence the next step of the framework. For cloud deployments, you can select between four options to group your network traffic into one or more intents. The options available depend on the number of nodes in your cluster and the storage connectivity type used.
 
-The following network traffic intent options are available:
+The following network intent options are available:
 
 **Group all traffic**. Network ATC will configure a unique intent that includes management, compute, and storge network traffic. The network adapters assigned to this intent share bandwidth and throughput for all network traffic.
 
-- This option requires a physical switch for storage traffic. If you require a switchless architecture, you can't use this type of intent. Azure portal automatically filters out this option if you select a switchless configuration for storage connectivity.
+This option requires a physical switch for storage traffic. If you require a switchless architecture, you can't use this type of intent. Azure portal automatically filters out this option if you select a switchless configuration for storage connectivity.
 
-- This option requires a physical switch for RDMA.
-- At least two network adapter ports are recommended to ensure High Availability.
+At least two network adapter ports are recommended to ensure High Availability.
 
 **Group management and compute traffic.** Network ATC configures two intents. The first intent includes management and compute network traffic, and the second intent includes only storage network traffic. Each intent must have a different set of network adapter ports.
 
 You can use this option for both switched and switchless storage connectivity, provided that:
 
-- At least two network adapter ports are available for each intent recommended to ensure HA.
+- At least two network adapter ports are available for each intent to ensure high availability.
 
 - A physical switch is used for RDMA if you use the network switch for storage.
 
-**Group compute and storage traffic.**  Network ATC configures two intents. The first intent include compute and storage network traffic, and the second intent includes only management network traffic. Each intent must use a different set of network adapter ports. This option is a rare configuration used for private multiaccess edge compute (PMEC) scenarios where management traffic must be fully isolated.
+**Group compute and storage traffic.**  Network ATC configures two intents. The first intent include compute and storage network traffic, and the second intent includes only management network traffic. Each intent must use a different set of network adapter ports. This option is used for private multi-access edge compute (PMEC) scenarios where management traffic must be fully isolated.
 
 This option requires a physical switch for storage traffic as the same ports are shared with compute traffic, which require north-south communication. If you require a switchless configuration, you can't use this type of intent. Azure portal automatically filters out this option if you select a switchless configuration for storage connectivity.
 
 - This option requires a physical switch for RDMA.
-- At least two network adapter ports are recommended to ensure HA.
-- Even when the management intent is declared without compute intent, Network ATC creates a SET virtual switch to provide HA to the management network.
+
+- At least two network adapter ports are recommended to ensure high availability.
+
+- Even when the management intent is declared without a compute intent, Network ATC creates a SET virtual switch to provide high availability to the management network.
 
 **Custom configuration.**  Define up to three intents using your own configuration as long as at least one of the intents includes management traffic. It is recommended to use this option when you need a second compute intent. Scenarios for this second compute intent requirement include remote storage traffic, VMs backup traffic, or a separate compute intent for distinct types of workloads.
 
@@ -101,9 +93,9 @@ Use this option for both switched and switchless storage connectivity if the sto
 
 - Use this option when an additional compute intent is required or when you want to fully separate the distinct types of traffic over different network adapters.
 
-- Use at least two network adapter ports for each intent to ensure HA.
+- Use at least two network adapter ports for each intent to ensure high availability.
 
-A visual summary of the options:
+The following diagram summarizes network intent options available to you for various deployments:
 
 :::image type="content" source="media/cloud-network-considerations/step-3-summary.png" alt-text="Diagram showing step 3 option summary for the network desicion framework." lightbox="media/cloud-network-considerations/step-3-summary.png":::
 
@@ -111,19 +103,19 @@ A visual summary of the options:
 
 :::image type="content" source="media/cloud-network-considerations/step-4.png" alt-text="Diagram showing step 4 of the network desicion framework." lightbox="media/cloud-network-considerations/step-4.png":::
 
-You next define your infrastructure subnet address space, how these addresses are assigned to your cluster, and if there is any proxy requirement for the nodes for outbound connectivity to the internet and other intranet services such as Domain Name System (DNS) or Active Directory Services.
+In this step, you define the infrastructure subnet address space, how these addresses are assigned to your cluster, and if there is any proxy requirement for the nodes for outbound connectivity to the internet and other intranet services such as Domain Name System (DNS) or Active Directory Services.
 
-The following infrastructure subnet components must be planned and defined before you start deployment of the cluster so you can anticipate any routing, firewalling, or subnet future requirements.
+The following infrastructure subnet components must be planned and defined before you start deployment so you can anticipate any routing, firewall, or subnet requirements.
 
 ### Network adapter drivers
 
-Once you installed the operating system, and before configuring networking on your nodes, you must ensure that your network adapters have the latest driver provided by your OEM or NIC vendor. Important capabilities of the network adapters might not surface when using the default Microsoft drivers.
+Once you install the operating system, and before configuring networking on your nodes, you must ensure that your network adapters have the latest driver provided by your OEM or NIC vendor. Important capabilities of the network adapters might not surface when using the default Microsoft drivers.
 
 ### Management IP pool
 
-When doing initial deployment of your Azure Stack HCI system, you must define an IP range of consecutive IPs for infrastructure services deployed by default. To ensure the range has enough IPs for current and future infrastructure services, we enforce defining a range of at least six consecutive available IP addresses. These addresses are used for the cluster IP, the Azure Resource Bridge VM and its components, the upcoming Network Controller Cluster Service IP, and the VM update role. If you anticipate running additional services in the infrastructure network, we recommend assigning an extra buffer of infrastructure IPs to the pool. It is possible to add additional IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
+When doing initial deployment of your Azure Stack HCI system, you must define an IP range of consecutive IPs for infrastructure services deployed by default. To ensure the range has enough IPs for current and future infrastructure services, you must use a range of at least six consecutive available IP addresses. These addresses are used for the cluster IP, the Azure Resource Bridge VM and its components, the upcoming Network Controller Cluster Service IP, and the VM update role. If you anticipate running additional services in the infrastructure network, we recommend assigning an extra buffer of infrastructure IPs to the pool. It is possible to add additional IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
 
-The following conditions must be true when defining your IP pool for the infrastructure subnet during deployment:
+The following conditions must be met when defining your IP pool for the infrastructure subnet during deployment:
 
 - The IP range must use consecutive IPs and all IPs must be available within that range.
 
@@ -135,26 +127,28 @@ The following conditions must be true when defining your IP pool for the infrast
 
 ### Management VLAN ID
 
-We recommend the management subnet of your Azure HCI cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic. If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your servers, and before they are registered to Azure Arc, to ensure you successfully register the nodes using this VLAN. Once the VLAN ID is set and the IPs of your nodes are configured, the lifecycle orchestrator will read this VLAN ID value from the physical network adapter used for management and will store it, so it can be used for the Azure Resource Bridge VM or other infrastructure VM required during deployment. It is not possible to set the management VLAN ID during cloud deployment from Azure portal as this carries the risk of breaking the connectivity between the nodes and Azure if the physical switch VLANs are not routed properly.
+We recommend the management subnet of your Azure HCI cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic. If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your servers, and before they are registered to Azure Arc, to ensure you successfully register the nodes using this VLAN.
 
-### Management VLAN ID when a virtual switch is pre-created
+Once the VLAN ID is set and the IPs of your nodes are configured, the VLAN ID is stored for use with the Azure Resource Bridge VM and other infrastructure VMs required during deployment. It is not possible to set the management VLAN ID during cloud deployment from Azure portal as this carries the risk of breaking the connectivity between the nodes and Azure if the physical switch VLANs are not routed properly.
+
+### Management VLAN ID with a virtual switch
 
 In some scenarios, there is a requirement to create a virtual switch before deployment starts. If a virtual switch configuration is required and you must use a specific VLAN ID, follow these steps:
 
-1. **Create virtual switch with recommended naming convention.**
+**1. Create virtual switch with recommended naming convention.**
 Azure Stack HCI 23H2 deployments relies on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch. Although it is not required, we recommend naming your virtual switches with the same naming convention. The recommended name for the virtual switches is as follows:
 
 Name of the virtual switch: "`ConvergedSwitch($IntentName)`",
 Where `$IntentName` can be any string. This string should match the name of the virtual network adapter for management as described in the next step.
 
-The example below shows how to create the virtual switch with PowerShell using the recommended naming convention with `$IntentName` describing the purpose of the virtual switch. The list of network adapter names is a list of the physical network adapters you plan to use for management and compute network traffic.
+The example below shows how to create the virtual switch with PowerShell using the recommended naming convention with `$IntentName` describing the purpose of the virtual switch. The list of network adapter names is a list of the physical network adapters you plan to use for management and compute network traffic:
 
 ```powershell
 $IntentName = "MgmtCompute"
 New-VMSwitch -Name "ConvergedSwitch($IntentName)" -SwitchType External -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
 ```
 
-1. Configure the management virtual network adapter using required Network ATC naming convention for all nodes. Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
+**2. Configure the management virtual network adapter using required Network ATC naming convention for all nodes**. Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
     - Name of the network adapter and the virtual network adapter: `vManagement($intentname)`
     - Name is case sensitive
     - `$Intentname` can be any string, but must be the same name used for the virtual switch.
@@ -168,28 +162,28 @@ Add-VMNetworkAdapter -ManagementOS -SwitchName "ConvergedSwitch($IntentName)" -N
 Rename-NetAdapter -Name "vEthernet (vManagement($IntentName))" -NewName "vManagement($IntentName)"
 ```
 
-1. **Configure the VLAN ID to the management virtual network adapter for all nodes.** Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command. Once the required VLAN ID is configured, you can assign the IP address and gateways to the management virtual network adapter to validate that it has connectivity with other nodes, DNS, Active Directory, and the internet.
+**3. Configure the VLAN ID to the management virtual network adapter for all nodes.** Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command. Once the required VLAN ID is configured, you can assign the IP address and gateways to the management virtual network adapter to validate that it has connectivity with other nodes, DNS, Active Directory, and the internet.
 
-The following example shows how to configure the management virtual network adapter to use VLAN ID 8 instead of native:
+The following example shows how to configure the management virtual network adapter to use VLAN ID 8 instead of the default:
 
 ```powershell
 Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($IntentName)" -AllowUntaggedTraffic $true -IsolationMode Vlan -DefaultIsolationID
 ```
 
-1. **Reference the physical network adapters for the management intent during cloud deployment**. Although the newly created virtual network adapter will show as being available when deploying via Azure portal, it is important to remember that the network configuration is based on Network ATC, and this means that when configuring the management, or the management and compute intent, we still need to select the physical network adapters used for that intent. Do not select the virtual network adapter for the network intent. The same logic applies to the Azure Resource Manager (ARM) templates. You must specify the physical network adapters that you want to use for the network intents and never the virtual network adapters.
+**4. Reference the physical network adapters for the management intent during deployment**. Although the newly created virtual network adapter will show as being available when deploying via Azure portal, it is important to remember that the network configuration is based on Network ATC, and this means that when configuring the management, or the management and compute intent, we still need to select the physical network adapters used for that intent. Do not select the virtual network adapter for the network intent. The same logic applies to the Azure Resource Manager (ARM) templates. You must specify the physical network adapters that you want to use for the network intents and never the virtual network adapters.
 
-Here are some considerations:
+Here are some considerations for the VLAN ID:
 
-- VLAN ID must be specified on the physical network adapter for management before registering the servers to Azure Arc.
+- VLAN ID must be specified on the physical network adapter for management before registering the servers with Azure Arc.
 - Use specific steps when a virtual switch is required before registering the servers to Azure Arc.
 - The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.
-- There is no VLAN ID input parameter for Azure portal deployment or for ARM template deployment
+- There is no VLAN ID input parameter for Azure portal deployment or for ARM template deployment.
 
 ### Node and cluster IP assignment
 
 With the release of Azure Stack HCI version 23H2, you have two options for assigning IPs for the server nodes and for the cluster IP. Static and Dynamic Host Configuration Protocol (DHCP) protocols are supported. Proper node IP assignment is key for cluster lifecycle management, and it is important to decide between the two options before you register the nodes in Azure Arc.
 
-### IP considerations
+#### IP considerations
 
 Some considerations to keep in mind for IP addresses:
 
