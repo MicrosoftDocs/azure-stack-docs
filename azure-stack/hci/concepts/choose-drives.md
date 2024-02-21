@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/20/2024
+ms.date: 02/21/2024
 ---
 
 # Choose drives for Azure Stack HCI and Windows Server clusters
@@ -45,7 +45,7 @@ To achieve predictable and uniform submillisecond latency across random reads an
 
 There are multiple ways to do so:
 
-![Diagram shows deployment options, including all NVMe for capacity, NVMe for cache with SSD for capacity, and all SSD for capacity.](media/choose-drives/all-flash-deployment-possibilities.png)
+:::image type="content" source="media/choose-drives/all-flash-deployment-possibilities.png" alt-text="Diagram shows deployment options, including all NVMe for capacity, NVMe for cache with SSD for capacity, and all SSD for capacity." lightbox="media/choose-drives/all-flash-deployment-possibilities.png":::
 
 1. **All NVMe.** Using all NVMe provides unmatched performance, including the most predictable low latency. If all your drives are the same model, there is no cache. You can also mix higher-endurance and lower-endurance NVMe models, and configure the former to cache writes for the latter ([requires set-up](/windows-server/storage/storage-spaces/understand-the-cache#manual-configuration)).
 
@@ -60,7 +60,7 @@ There are multiple ways to do so:
 
 For environments with a variety of applications and workloads, some with stringent performance requirements and others requiring considerable storage capacity, you should go "hybrid" with either NVMe or SSDs caching for larger HDDs.
 
-![Diagram shows deployment possibilities, including NVMe for cache with HDD for capacity, SSD for cache with HDD for capacity, and NVMe for cache with mixed SSD and HDD for capacity.](media/choose-drives/hybrid-deployment-possibilities.png)
+:::image type="content" source="media/choose-drives/hybrid-deployment-possibilities.png" alt-text="Diagram shows deployment possibilities, including NVMe for cache with HDD for capacity, SSD for cache with HDD for capacity, and NVMe for cache with mixed SSD and HDD for capacity." lightbox="media/choose-drives/hybrid-deployment-possibilities.png":::
 
 1. **NVMe + HDD**. The NVMe drives will accelerate reads and writes by caching both. Caching reads allows the HDDs to focus on writes. Caching writes absorbs bursts and allows writes to coalesce and be de-staged only as needed, in an artificially serialized manner that maximizes HDD IOPS and IO throughput. This provides NVMe-like write characteristics, and for frequently or recently read data, NVMe-like read characteristics too.
 
@@ -77,7 +77,7 @@ For environments with a variety of applications and workloads, some with stringe
 
 For workloads that require vast capacity and write infrequently, such as archival, backup targets, data warehouses or "cold" storage, you should combine a few SSDs for caching with many larger HDDs for capacity.
 
-![Deployment options for maximizing capacity](media/choose-drives/maximizing-capacity.png)
+:::image type="content" source="media/choose-drives/maximizing-capacity.png" alt-text="Deployment options for maximizing capacity." lightbox="media/choose-drives/maximizing-capacity.png":::
 
 1. **SSD + HDD**. The SSDs will cache reads and writes, to absorb bursts and provide SSD-like write performance, with optimized de-staging later to the HDDs.
 
