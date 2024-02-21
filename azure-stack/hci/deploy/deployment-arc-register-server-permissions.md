@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/13/2024
+ms.date: 02/21/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -22,6 +22,15 @@ Before you begin, make sure you've completed the following prerequisites:
 - Satisfy the [prerequisites and complete deployment checklist](./deployment-prerequisites.md).
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server.
+
+- Make sure to register your subscription with the following resource providers. You would need to be an owner or contributor on your subscription to perform this registration. Run the following PowerShell commands to register the resource providers:
+
+    ```powershell
+    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute"
+    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.GuestConfiguration"
+    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridConnectivity"
+    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI"
+    ```
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
