@@ -30,12 +30,12 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 | Minimum count for control plane node                                        | 1                                          |
 | Maximum count for control plane node                                        | 5 <br />    Allowed values: 1, 3, and 5.   |
 | Minimum number of nodes in default node pool created during cluster create  | 1                                          |
-| Minimum number of node pools in an AKS hybrid cluster                       | 1                                          |
-| Maximum number of node pools in an AKS hybrid cluster                       | 16                                         |
+| Minimum number of node pools in an AKS cluster                       | 1                                          |
+| Maximum number of node pools in an AKS cluster                       | 16                                         |
 | Minimum number of nodes in a node pool                                      | 1 <br />    Can't create empty node pools.|
 | Maximum number of nodes in a node pool                                      | 64                                         |
-| Maximum number of total nodes in an AKS hybrid cluster                       | 200                                        |
-| Maximum number of AKS hybrid clusters per Azure Stack HCI cluster           | 32                                         |
+| Maximum number of total nodes in an AKS cluster                       | 200                                        |
+| Maximum number of AKS clusters per Azure Stack HCI cluster           | 32                                         |
 
 ## Concurrency for AKS enabled by Arc
 
@@ -43,17 +43,17 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 |-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Number of concurrent AKS cluster creations on an ARB                                                                                                   | 8                                     |
 | Number of concurrent node pool creations on an ARB                                                                                                     | 8                                     |
-| Number of concurrent operations across all different AKS hybrid clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32                                    |
-| Number of long running operations that can be run simultaneously on an AKS hybrid cluster                                                              | 1 per cluster.  |
+| Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32                                    |
+| Number of long running operations that can be run simultaneously on an AKS cluster                                                              | 1 per cluster.  |
 
 ## Default values for virtual machine sizes
 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
-| AKS hybrid control plane nodes  | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
-| AKS hybrid HA Proxy VM          | Standard_A4_v2. Can't be changed.      | 8-GB memory, 4 vcpu  |
-| AKS hybrid Linux worker node    | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
-| AKS hybrid Windows worker node  | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
+| AKS Arc control plane nodes  | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
+| AKS Arc HA Proxy VM          | Standard_A4_v2. Can't be changed.      | 8-GB memory, 4 vcpu  |
+| AKS Arc Linux worker node    | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
+| AKS Arc Windows worker node  | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 
 ## Supported values for virtual machine sizes
 
@@ -75,4 +75,4 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 ## Next steps
 
 - [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](aks-preview-overview.md)
+- [What's new in AKS on Azure Stack HCI](aks-whats-new-23h2.md)
