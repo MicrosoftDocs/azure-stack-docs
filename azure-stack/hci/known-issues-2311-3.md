@@ -1,9 +1,9 @@
 ---
-title: Release notes with fixed and known issues in Azure Stack HCI 2311.3 GA release
-description: Read about the known issues and fixed issues in Azure Stack HCI 2311 General Availability (GA) release.
+title: Release notes with fixed and known issues in Azure Stack HCI 2311.3 release
+description: Read about the known issues and fixed issues in Azure Stack HCI 2311.3 release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 02/14/2024
+ms.date: 02/21/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
