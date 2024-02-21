@@ -128,7 +128,7 @@ Before you begin, make sure you've completed the following prerequisites:
     $id = (Get-AzContext).Account.Id   
     ``` 
 
-    Here's a sample output of the setting the subscription and authentication:
+    Here's a sample output of setting the subscription and authentication:
 
     ```output
     PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
