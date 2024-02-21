@@ -18,13 +18,13 @@ This article identifies the critical known issues and their workarounds in Azure
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
 > [!IMPORTANT]
-> The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.3 release. To run the GA version, you need to start with a new 2311 deployment and then update to 2311.3. <!-- Verify if customer needs to go from 2311.2 to 2311.3 -->
+> The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.3 release. To run the GA version, you need to start with a new 2311 deployment and then update to 2311.3.
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
 
 ## Issues for version 2311.3
 
-This software release maps to software version number **10.2311.3.7** <!-- Verify the version number -->. This release only supports updates from 2311 release.
+This software release maps to software version number **10.2311.3.7**. This release only supports updates from 2311 release.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
@@ -38,16 +38,12 @@ Here are the issues fixed in this release:
 | Deployment <!--26039020--> |There is a sporadic heartbeat reliability issue in this release due to which the registration encounters the error: HCI registration failed. Error: Arc integration failed. |TThis issue is transient and hasn't been identified in the latest release. If you encounter this issue try rerunning the deployment. For more information, see [Rerun the deployment](./deploy//deploy-via-portal.md#rerun-deployment).   |
 | Deployment <!--26088401--> |There is an intermittent issue in this release where the Arc integration validation fails with this error: Validator failed. Cannot retrieve the dynamic parameters for the cmdlet. PowerShell Gallery is currently unavailable.  Please try again later. |This issue is transient and hasn't been identified in the latest release. If you encounter this issue try rerunning the deployment. For more information, see [Rerun the deployment](./deploy/deploy-via-portal.md#rerun-deployment).   |
 
-<!-- add new content -->
-
 ## Known issues in this release
 
 Here are the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-
-<!-- add new content -->
 
 ## Known issues from previous releases
 
@@ -72,8 +68,6 @@ Here are the known issues from previous releases:
 | Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
 | Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 | Update <!--X-->| When updating the Azure Stack HCI cluster via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each cluster node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the cluster nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-4-download-check-readiness-and-install-updates). |
-
-
 
 ## Next steps
 
