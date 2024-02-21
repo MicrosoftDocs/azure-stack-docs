@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/20/2024
+ms.date: 02/21/2024
 ms.custom: e2e-hybrid
 ---
 
