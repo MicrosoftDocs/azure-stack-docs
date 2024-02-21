@@ -35,7 +35,7 @@ The following features are out of scope and not supported in this GA release:
 
 To deploy AKS enabled by Arc with SDN, make sure your environment satisfies the deployment criteria of both AKS Arc and SDN.
 
-- [AKS Arc requirements][]
+- [AKS Arc requirements](system-requirements.md)
 - SDN requirements: [Plan a Software Defined Network infrastructure][]
 
 > [!NOTE]
@@ -171,7 +171,7 @@ See the [self-help resources here][Troubleshooting SDN] for SDN [and here for AK
 
 ## Next steps
 
-Next, you can create [workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS hybrid are seamlessly attached to the SDN virtual network that was provided during installation. The SDN Software load balancer is also used as the external load balancer for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
+Next, you can [create workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS hybrid are seamlessly attached to the SDN virtual network that was provided during installation. The SDN Software load balancer is also used as the external load balancer for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
 
 [Software Load Balancer]: /azure-stack/hci/concepts/software-load-balancer
 [Plan a Software Defined Network infrastructure]: /azure-stack/hci/concepts/plan-software-defined-networking-infrastructure
@@ -183,5 +183,5 @@ Next, you can create [workload clusters][] and [deploy your applications][]. All
 [New-AksHciNetworkSetting]: reference/ps/new-akshcinetworksetting.md
 [Set-AksHciConfig]: reference/ps/set-akshciconfig.md
 [Azure service principal]: reference/ps/set-akshciregistration.md#register-aks-hybrid-using-a-service-principal
-[workload clusters]: kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster
-[Deploy your applications]: deploy-windows-application.md
+[create workload clusters]: kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster
+[deploy your applications]: deploy-windows-application.md
