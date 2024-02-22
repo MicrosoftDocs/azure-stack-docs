@@ -135,13 +135,13 @@ If you anticipate running other services in the infrastructure network, we recom
 
 The following conditions must be met when defining your IP pool for the infrastructure subnet during deployment:
 
-- The IP range must use consecutive IPs and all IPs must be available within that range.
 
-- The range of IPs must not include the cluster node management IPs but must be on the same subnet as your nodes.
-
-- The default gateway defined for the management IP pool must provide outbound connectivity to the internet.
-
-- The DNS servers must ensure name resolution with Active Directory and the internet.
+|Column1  | Condition |
+|---------|---------|
+|1     | The IP range must use consecutive IPs and all IPs must be available within that range.        |
+|2     | The range of IPs must not include the cluster node management IPs but must be on the same subnet as your nodes.        |
+|3     | The default gateway defined for the management IP pool must provide outbound connectivity to the internet.        |
+|4     | The DNS servers must ensure name resolution with Active Directory and the internet.        |
 
 ### Management VLAN ID
 
@@ -164,7 +164,8 @@ Once the VLAN ID is set and the IPs of your nodes are configured on the physical
 
 In some scenarios, there is a requirement to create a virtual switch before deployment starts. If a virtual switch configuration is required and you must use a specific VLAN ID, follow these steps:
 
-**1. Create virtual switch with recommended naming convention.**
+#### 1. Create virtual switch with recommended naming convention
+
 Azure Stack HCI deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch. 
 
 Although it isn't required, we recommend naming your virtual switches with the same naming convention. The recommended name for the virtual switches is as follows:
@@ -179,7 +180,9 @@ $IntentName = "MgmtCompute"
 New-VMSwitch -Name "ConvergedSwitch($IntentName)" -SwitchType External -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
 ```
 
-**2. Configure the management virtual network adapter using required Network ATC naming convention for all nodes**. Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
+#### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes 
+
+Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
     - Name of the network adapter and the virtual network adapter: `vManagement($intentname)`.
     - Name is case sensitive.
     - `$Intentname` can be any string, but must be the same name used for the virtual switch.
@@ -193,7 +196,9 @@ Add-VMNetworkAdapter -ManagementOS -SwitchName "ConvergedSwitch($IntentName)" -N
 Rename-NetAdapter -Name "vEthernet (vManagement($IntentName))" -NewName "vManagement($IntentName)"
 ```
 
-**3. Configure the VLAN ID to the management virtual network adapter for all nodes.** Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command. 
+#### 3. Configure VLAN ID to management virtual network adapter for all nodes
+
+Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command. 
 
 Once the required VLAN ID is configured, you can assign the IP address and gateways to the management virtual network adapter to validate that it has connectivity with other nodes, DNS, Active Directory, and the internet.
 
@@ -203,7 +208,9 @@ The following example shows how to configure the management virtual network adap
 Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($IntentName)" -AllowUntaggedTraffic $true -IsolationMode Vlan -DefaultIsolationID
 ```
 
-**4. Reference the physical network adapters for the management intent during deployment**. Although the newly created virtual network adapter shows as available when deploying via Azure portal, it is important to remember that the network configuration is based on Network ATC. This means that when configuring the management, or the management and compute intent, we still need to select the physical network adapters used for that intent.
+#### 4. Reference physical network adapters for the management intent during deployment
+
+Although the newly created virtual network adapter shows as available when deploying via Azure portal, it is important to remember that the network configuration is based on Network ATC. This means that when configuring the management, or the management and compute intent, we still need to select the physical network adapters used for that intent.
 
 > [!NOTE]
 > Do not select the virtual network adapter for the network intent.
@@ -212,10 +219,12 @@ The same logic applies to the Azure Resource Manager (ARM) templates. You must s
 
 Here are some considerations for the VLAN ID:
 
-- VLAN ID must be specified on the physical network adapter for management before registering the servers with Azure Arc.
-- Use specific steps when a virtual switch is required before registering the servers to Azure Arc.
-- The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.
-- There is no VLAN ID input parameter for Azure portal deployment or for ARM template deployment.
+|#  | Considerations  |
+|---------|---------|
+|1    | VLAN ID must be specified on the physical network adapter for management before registering the servers with Azure Arc.         |
+|2     | Use specific steps when a virtual switch is required before registering the servers to Azure Arc.         |
+|3     | The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.        |
+|4     | There is no VLAN ID input parameter for Azure portal deployment or for ARM template deployment.        |
 
 ### Node and cluster IP assignment
 
@@ -229,17 +238,16 @@ For Azure Stack HCI system, you have two options to assign IPs for the server no
 
 Some considerations to keep in mind for IP addresses:
 
-- Infrastructure VMs and services such as Arc Resource Bridge and Network Controller use static IPs from the management IP pool. If you decide to use DHCP to assign the IPs to your nodes and cluster, the management IP pool is still required.
 
-- Node IPs must be on the same subnet of the defined management IP pool range regardless if they're static or dynamic addresses.
+|#  | Considerations  |
+|---------|---------|
+|1    | Infrastructure VMs and services such as Arc Resource Bridge and Network Controller use static IPs from the management IP pool. If you decide to use DHCP to assign the IPs to your nodes and cluster, the management IP pool is still required.         |
+|2     | Node IPs must be on the same subnet of the defined management IP pool range regardless if they're static or dynamic addresses.         |
+|3     | The management IP pool must not include node IPs. Use DHCP exclusions when dynamic IP assignment is used.        |
+|4     | Use DHCP reservations for the nodes as much as possible.        |
+|5     | DHCP addresses are only supported for node IPs and the cluster IP. Infrastructure services use static IPs from the management pool.       |
+|6     | The MAC address from the first physical network adapter is assigned to the management virtual network adapter once the management network intent is created.       |
 
-- The management IP pool must not include node IPs. Use DHCP exclusions when dynamic IP assignment is used.
-
-- Use DHCP reservations for the nodes as much as possible.
-
-- DHCP addresses are only supported for node IPs and the cluster IP. Infrastructure services use static IPs from the management pool.
-
-- The MAC address from the first physical network adapter is assigned to the management virtual network adapter once the management network intent is created.
 
 #### Static IP assignment
 
@@ -269,15 +277,15 @@ The Azure Stack HCI OS has three different services (WinInet, WinHTTP, and envir
 
 Some things to keep in mind:
 
-- Proxy configuration must be completed before registering the nodes in Azure Arc.
 
-- The same proxy configuration must be applied for WinINET, WinHTTP, and environment variables.
-
-- The Environment Checker ensures that proxy configuration is consistent across all proxy components.
-
-- Proxy configuration of Arc Resource Bridge VM and AKS is automatically done by the orchestrator during deployment.
-
-- Only the non-authenticated proxies are supported.
+|#     |Consideration  |
+|---------|---------|
+|1     | Proxy configuration must be completed before registering the nodes in Azure Arc.        |
+|2     | The same proxy configuration must be applied for WinINET, WinHTTP, and environment variables.        |
+|3     | The Environment Checker ensures that proxy configuration is consistent across all proxy components.       |
+|4     | Proxy configuration of Arc Resource Bridge VM and AKS is automatically done by the orchestrator during deployment.        |
+|5     | Only the non-authenticated proxies are supported.        |
+ 
 
 ### Firewall requirements
 
@@ -287,9 +295,11 @@ Firewall configuration must be done prior to registering the nodes in Azure Arc.
 
 Some things to keep in mind:
 
-- Firewall configuration must be done before registering the nodes in Azure Arc.
+|#     |Consideration  |
+|------|---------|
+|1     | Firewall configuration must be done before registering the nodes in Azure Arc.        |
+|2     | Environment Checker in standalone mode can be used to validate the firewall configuration.       |
 
-- Environment Checker in standalone mode can be used to validate the firewall configuration.
 
 ## Step 5: Determine network adapter configuration
 
@@ -309,13 +319,12 @@ The default values used by Network ATC are documented in [Cluster network settin
 
 Some things to keep in mind:
 
-- Use the default configurations as much as possible.
-
-- Physical switches must be configured according to the network adapter configuration.
-
-- Ensure that your network adapters are supported for Azure Stack HCI using the Windows Server Catalog.
-
-- When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. In some instances, Storage Auto IP isn't supported and you need to declare each storage network adapter IP using ARM templates.
+|#     |Consideration  |
+|---------|---------|
+|1     | Use the default configurations as much as possible.        |
+|2     | Physical switches must be configured according to the network adapter configuration.        |
+|3     | Ensure that your network adapters are supported for Azure Stack HCI using the Windows Server Catalog.       |
+|4     | When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. <br><br>In some instances, Storage Auto IP isn't supported and you need to declare each storage network adapter IP using ARM templates.        |
 
 
 ## Next steps
