@@ -26,7 +26,7 @@ The following diagram shows the various decisions and steps that define the netw
 
 To help determine the size of your Azure Stack HCI system, use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use, such as Azure Virtual Desktop, SQL Server, or AKS for example.
 
-As described in the Azure Stack HCI [system server requirements](../concepts/system-requirements-23h2.mdsystem-requirements.md) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
+As described in the Azure Stack HCI [system server requirements](../concepts/system-requirements-23h2.md) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
 
 - **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Stack HCI cluster network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
 
@@ -41,8 +41,8 @@ As described in the Azure Stack HCI [system server requirements](../concepts/sys
 
 As described in [Physical network requirements](../concepts/physical-network-requirements.md), Azure Stack HCI supports two types of connectivity for storage network traffic:
 
-    - Use a physical network switch to handle the traffic.
-    - Directly connect the nodes between them with crossover network or fiber cables for the storage traffic.
+- Use a physical network switch to handle the traffic.
+- Directly connect the nodes between them with crossover network or fiber cables for the storage traffic.
 
 The advantages and disadvantages of each option are documented in the article linked above.
 
