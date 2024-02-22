@@ -68,7 +68,7 @@ This section explains the implications of your design decision for network traff
 
 The available network intent options are discussed in the following sections.
 
-### Network intent option: Group all traffic
+### Network intent: Group all traffic
 
 Network ATC configures a unique intent that includes management, compute, and storage network traffic. The network adapters assigned to this intent share bandwidth and throughput for all network traffic.
 
@@ -76,7 +76,7 @@ Network ATC configures a unique intent that includes management, compute, and st
 
 - At least two network adapter ports are recommended to ensure High Availability.
 
-### Network intent option: Group management and compute traffic
+### Network intent: Group management and compute traffic
 
 Network ATC configures two intents. The first intent includes management and compute network traffic, and the second intent includes only storage network traffic. Each intent must have a different set of network adapter ports.
 
@@ -86,7 +86,7 @@ You can use this option for both switched and switchless storage connectivity, i
 
 - A physical switch is used for RDMA if you use the network switch for storage.
 
-### Network intent option: Group compute and storage traffic.
+### Network intent: Group compute and storage traffic
 
 Network ATC configures two intents. The first intent includes compute and storage network traffic, and the second intent includes only management network traffic. Each intent must use a different set of network adapter ports.
 
@@ -98,7 +98,7 @@ Network ATC configures two intents. The first intent includes compute and storag
 
 - Even when the management intent is declared without a compute intent, Network ATC creates a Switch Embedded Teaming (SET) virtual switch to provide high availability to the management network.
 
-### Network intent option: Custom configuration
+### Network intent: Custom configuration
 
 Define up to three intents using your own configuration as long as at least one of the intents includes management traffic. We recommend that you use this option when you need a second compute intent. Scenarios for this second compute intent requirement include remote storage traffic, VMs backup traffic, or a separate compute intent for distinct types of workloads.
 
@@ -140,13 +140,13 @@ The following conditions must be met when defining your IP pool for the infrastr
 
 - The default gateway defined for the management IP pool must provide outbound connectivity to the internet.
 
-- The DNS server(s) must ensure name resolution with Active Directory and the internet.
+- The DNS servers must ensure name resolution with Active Directory and the internet.
 
 ### Management VLAN ID
 
 We recommend that the management subnet of your Azure HCI cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic.
 
-If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your servers, and before they are registered to Azure Arc, to ensure you successfully register the nodes using this VLAN.
+If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your servers, and before they're registered to Azure Arc, to ensure you successfully register the nodes using this VLAN.
 
 To set the VLAN ID on the physical network adapters, use the following PowerShell command:
 
@@ -314,7 +314,7 @@ Some things to keep in mind:
 
 - Ensure that your network adapters are supported for Azure Stack HCI using the Windows Server Catalog.
 
-- When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. In some instances, Storage Auto IP is not supported and you'll need to declare each storage network adapter IP using ARM templates.
+- When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. In some instances, Storage Auto IP isn't supported and you need to declare each storage network adapter IP using ARM templates.
 
 
 ## Next steps
