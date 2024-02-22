@@ -62,7 +62,7 @@ To see why this happens, consider the simplified illustration below. Each colore
 
 As drawn, Server 1 (10 TB) and Server 2 (10 TB) are full. Server 3 has larger drives, therefore its total capacity is larger (15 TB). However, to store more three-way mirror data on Server 3 would require copies on Server 1 and Server 2 too, which are already full. The remaining 5 TB capacity on Server 3 can't be used – it's *"stranded"* capacity.
 
-:::image type="content" source="media/drive-symmetry-considerations/size-asymmetry-3n-stranded.png" alt-text="Three-way mirror, three servers, stranded capacity." lightbox="media/drive-symmetry-considerations/size-ssymmetry-3n-stranded.png":::
+:::image type="content" source="media/drive-symmetry-considerations/size-asymmetry-3n-stranded.png" alt-text="Three-way mirror, three servers, stranded capacity." lightbox="media/drive-symmetry-considerations/size-asymmetry-3n-stranded.png":::
 
 ### Optimal placement
 
