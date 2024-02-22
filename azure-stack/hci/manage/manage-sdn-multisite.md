@@ -15,22 +15,6 @@ This article describes how to deploy and manage the Software Defined Networking 
 
 For an overview of SDN Multisite, it's current capabilities and limitations, see [Overview of SDN Multisite](../concepts/sdn-multisite-overview.md).
 
-## Benefits
-
-Here are the benefits of using SDN Multisite:
-
-- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurations.
-- **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
-- **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) and automatic manageability to any of their associated NSGs across your physical locations.
-
-## Limitations
-
-The SDN Multisite feature currently has a few limitations:
-
-- Supported only between two sites.
-- Sites must be connected over a private network, as encryption support for sites connected over the internet isn't provided.
-- Internal load balancing isn't supported.
-
 ## Prerequisites
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:

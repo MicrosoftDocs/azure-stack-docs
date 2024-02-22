@@ -4,18 +4,34 @@ description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
-ms.date: 02/06/2024
+ms.date: 02/22/2024
 ---
 
 # What is SDN Multisite?
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of SDN Multisite, its current capabilities and limitations. Use this article to help design your network topology and disaster recovery plan.
+This article provides an overview of SDN Multisite, its benefits, and current limitations. You can use it as a guide to help design your network topology and disaster recovery plan.
+
+SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations or sites. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads.
 
 For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md).
 
-SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations or sites. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads.
+## Benefits
+
+Here are the benefits of using SDN Multisite:
+
+- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurations.
+- **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
+- **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) and automatic manageability to any of their associated NSGs across your physical locations.
+
+## Limitations
+
+The SDN Multisite feature currently has a few limitations:
+
+- Supported only between two sites.
+- Sites must be connected over a private network, as encryption support for sites connected over the internet isn't provided.
+- Internal load balancing isn't supported.
 
 ## Multisite peering
 
@@ -66,7 +82,7 @@ When you enable SDN Multisite, not all resources from each site are synchronized
 
     These policies are created on the local site, and if you want the same policies on the other site, you must manually create them there. If your backend VMs for load balancing policies are located on a single site, then connectivity over SLB will work fine without any extra configuration. But, if you expect the backend VMs to move from one site to the other, by default, connectivity works only if there are any backend VMs behind a VIP on the local site. If all the backend VMs move to another site, connectivity over that VIP fails.
 
-## East-West traffic flow and subnet sharing
+## East-west traffic flow and subnet sharing
 
 Multisite allows VMs on different sites with SDN deployed to communicate over the same subnet without having to set up SDN gateway connections. This simplifies the network topology and reduces the need for additional VMs and subnets. The data path between VMs on different sites relies on the underlying physical infrastructure.
 
@@ -94,31 +110,15 @@ The following sections explain load balancing in Multisite, both without and wit
 
 #### Load balancing in SDN Multisite without migrating workload VMs
 
-In SDN Multisite, if there's no VM migration between locations, data packets are forwarded as usual, similar to the traditional SDN setup. The following two diagrams illustrate the data path from the client machine to VM1 via SLB MUX1 in Cluster 2.
+In SDN Multisite, if there's no VM migration between locations, data packets are forwarded as usual, similar to the traditional SDN setup. The following animation illustrates the data path from the client machine to VM1 via SLB MUX1 in Cluster 2.
 
-The first diagram shows the data packet's path from the client machine to SLB MUX1:
-
-:::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-normal1.png" alt-text="Diagram shows the data packet's path from the client machine to SLB MUX1." lightbox="./media/sdn-multisite-overview/software-load-balancer-normal1.png" :::
-
-The second diagram shows the data packet's path from SLB MUX1 to VM1:
-
-:::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-normal2.png" alt-text="Diagram shows the data packet's path from SLB MUX1 to VM1." lightbox="./media/sdn-multisite-overview/software-load-balancer-normal2.png" :::
+:::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-normal.gif" alt-text="Animation that shows load balancing in an SDN Multisite environment without migrating workloads." lightbox="./media/sdn-multisite-overview/software-load-balancer-normal.gif" :::
 
 #### Load balancing in SDN Multisite with migrating workload VMs
 
-If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you are trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Stack HCI cluster. As workload VMs move, the configurations on the MUXes aren’t global, leaving the other site unaware of migrations. The following diagrams illustrate the VM migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
+If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you are trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Stack HCI cluster. As workload VMs move, the configurations on the MUXes aren’t global, leaving the other site unaware of migrations. The following animation illustrated the VMs migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
 
-The first diagram shows the two clusters before VM migration from Cluster 2 to Cluster 1:
-
-:::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken1.png" alt-text="Diagram shows the two clusters before VM migration from Cluster 2 to Cluster 1." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken1.png" :::
-
-The second diagram shows the two clusters after VM migration:
-
-:::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken2.png" alt-text="Diagram shows the two clusters after VM migration." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken2.png" :::
-
-The third diagram shows that the data packet's path fails after VM migration:
-
-:::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken3.png" alt-text="Diagram shows that the data packet's path fails after VM migration." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken3.png" :::
+:::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken.gif" alt-text="Animation that shows load balancing in an SDN Multisite environment with migrating workloads." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken.gif" :::
 
 To workaround this limitation, you can use external load balancer that checks the availability of backend VMs on each site and routes the traffic accordingly. See [Use external load balancer in Multisite with migrating workload VMs](#use-external-load-balancer-in-multisite-with-migrating-workload-vms).
 
@@ -136,4 +136,4 @@ SDN gateway connections are also local resources that aren't synced across sites
 
 ## Next steps
 
-[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md).
+[Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md)
