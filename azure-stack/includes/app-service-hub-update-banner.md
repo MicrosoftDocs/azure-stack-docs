@@ -14,6 +14,4 @@ ms.lastreviewed: 10/28/2020
 > | Supported Minimum Azure Stack Hub version | App Service RP version |
 > |-----|---|
 > | 2301 and newer | 2302 [Installer](https://aka.ms/appsvcupdate2302installer) ([release notes](../operator/app-service-release-notes-2302.md)) |
-> | 2206.2.52 | 2302 [Installer](https://aka.ms/appsvcupdate2302installer) ([release notes](../operator/app-service-release-notes-2302.md)) |
-> | 2108.2.127 | 2302 [Installer](https://aka.ms/appsvcupdate2302installer) ([release notes](../operator/app-service-release-notes-2302.md)) |
 
