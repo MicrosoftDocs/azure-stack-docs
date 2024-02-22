@@ -133,7 +133,7 @@ The following diagram summarizes network intent options available to you for var
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-4.png" alt-text="Diagram showing step 4 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-4.png":::
 
-In this step, you define the infrastructure subnet address space, how these addresses are assigned to your cluster, and if there is any proxy requirement for the nodes for outbound connectivity to the internet and other intranet services such as Domain Name System (DNS) or Active Directory Services.
+In this step, you define the infrastructure subnet address space, how these addresses are assigned to your cluster, and if there is any proxy or VLAN ID requirement for the nodes for outbound connectivity to the internet and other intranet services such as Domain Name System (DNS) or Active Directory Services.
 
 The following infrastructure subnet components must be planned and defined before you start deployment so you can anticipate any routing, firewall, or subnet requirements.
 
@@ -160,7 +160,7 @@ The following conditions must be met when defining your IP pool for the infrastr
 
 ### Management VLAN ID
 
-We recommend that the management subnet of your Azure HCI cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic.
+We recommend that the management subnet of your Azure HCI cluster use the default VLAN, which in most cases is declared as VLAN ID 0. However, if your network requirements are to use a specific management VLAN for your infrastructure network, it must be configured on your physical network adapters that you plan to use for management traffic.
 
 If you plan to use two physical network adapters for management, you need to set the VLAN on both adapters. This must be done as part of the bootstrap configuration of your servers, and before they're registered to Azure Arc, to ensure you successfully register the nodes using this VLAN.
 
