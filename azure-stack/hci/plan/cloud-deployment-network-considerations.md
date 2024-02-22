@@ -26,9 +26,9 @@ The following diagram shows the various decisions and steps that define the netw
 
 To help determine the size of your Azure Stack HCI system, use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use, such as Azure Virtual Desktop, SQL Server, or AKS for example.
 
-As described in the Azure Stack HCI [system server requirements](system-requirements.md) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
+As described in the Azure Stack HCI [system server requirements](../concepts/system-requirements-23h2.mdsystem-requirements.md) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
 
-- **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Stack HCI cluster network architecture, see [Network reference patterns overview](../plan/network-patterns-overview.md).
+- **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Stack HCI cluster network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
 
 - **If your workloads require three or less nodes**: You can choose either switchless or switched configurations for storage connectivity. However, if you plan to scale out later to more than three nodes, you need to use a physical switch for storage network traffic. Any scale out operation for switchless deployments requires manual configuration of your network cabling between the nodes that Microsoft isn't actively validating as part of its software development cycle for Azure Stack HCI.
 
@@ -39,7 +39,8 @@ As described in the Azure Stack HCI [system server requirements](system-requirem
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-2.png" alt-text="Diagram showing step 2 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-2.png":::
 
-As described in [Physical network requirements](physical-network-requirements.md), Azure Stack HCI supports two types of connectivity for storage network traffic:
+As described in [Physical network requirements](../concepts/physical-network-requirements.md), Azure Stack HCI supports two types of connectivity for storage network traffic:
+
     - Use a physical network switch to handle the traffic.
     - Directly connect the nodes between them with crossover network or fiber cables for the storage traffic.
 
@@ -280,7 +281,7 @@ Some things to keep in mind:
 
 ### Firewall requirements
 
-You are currently required to open several internet endpoints in your firewalls to ensure that Azure Stack HCI and its components can successfully connect to them. For a detailed list of the required endpoints, see [Firewall requirements](firewall-requirements.md). 
+You are currently required to open several internet endpoints in your firewalls to ensure that Azure Stack HCI and its components can successfully connect to them. For a detailed list of the required endpoints, see [Firewall requirements](../concepts/firewall-requirements.md).
 
 Firewall configuration must be done prior to registering the nodes in Azure Arc. You can use the standalone version of the environment checker to validate that your firewalls aren't blocking traffic sent to these endpoints. For more information, see [Azure Stack HCI Environment Checker](../manage/use-environment-checker.md) to assess deployment readiness for Azure Stack HCI.
 
