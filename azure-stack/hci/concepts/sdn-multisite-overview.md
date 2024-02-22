@@ -11,7 +11,7 @@ ms.date: 02/22/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of SDN Multisite, its benefits, and current limitations. You can use it as a guide to help design your network topology and disaster recovery plan.
+This article provides an overview of SDN Multisite, including its benefits and current limitations. You can use it as a guide to help design your network topology and disaster recovery plan.
 
 SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations or sites. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads.
 
@@ -36,6 +36,8 @@ The SDN Multisite feature currently has a few limitations:
 ## Multisite peering
 
 Multisite requires peering between sites, which is initiated like virtual network peering. A connection is automatically initiated on both sites via Windows Admin Center. Once a connection is established, peering becomes successful. For instructions about how to establish peering, see [Establish peering](../manage/manage-sdn-multisite.md#establish-peering).  
+
+The following sections describe about the roles of each site within a multisite environment, and how resources are handled and synchronized between sites.
 
 ### Primary and secondary site roles
 
@@ -96,7 +98,7 @@ In a traditional setup with SDN deployed across two physical sites, you need to 
 
 ### VM to VM communication with SDN Multisite
 
-With SDN Multisite across two physical locations, you can have native layer 2 connectivity for intersite communication. This enables you to have a single subnet range for your applications that span across both locations, eliminating the need to set up SDN gateway connection. For example, as illustrated in the following diagram, frontend applications on both locations can use the same subnet, such as 10.1/16, instead of maintaining two separate ones. With this setup, data flow from one VM to another solely relies on your underlying physical infrastructure, avoiding the need to traverse an additional SDN gateway VM.
+With SDN Multisite across two physical locations, you can have native Layer 2 connectivity for intersite communication. This enables you to have a single subnet range for your applications that span across both locations, eliminating the need to set up SDN gateway connection. For example, as illustrated in the following diagram, frontend applications on both locations can use the same subnet, such as 10.1/16, instead of maintaining two separate ones. With this setup, data flow from one VM to another solely relies on your underlying physical infrastructure, avoiding the need to traverse an additional SDN gateway VM.
 
 :::image type="content" source="./media/sdn-multisite-overview/sdn-with-multisite.png" alt-text="Diagram to show VM to VM communication with SDN Multisite." lightbox="./media/sdn-multisite-overview/sdn-with-multisite.png" :::
 
@@ -106,7 +108,7 @@ Currently, Software Load Balancers are local resources for each of your physical
 
 ### Load balancing in SDN Multisite: Example scenario
 
-The following sections explain load balancing in Multisite, both without and with migrating workload VMs, using an example scenario. Suppose you have two Azure Stack HCI clusters with SDN Multisite enabled, each with its own SDN infrastructure deployed and configured. In this scenario, a client wants to reach VM1 with the IP address 10.0.0.5 and VIP of 11.0.0.5.
+The following sections explain load balancing in Multisite through an example scenario, demonstrating both without and with migrating workload VMs. Suppose you have two Azure Stack HCI clusters with SDN Multisite enabled, each with its own SDN infrastructure deployed and configured. In this scenario, a client wants to reach VM1 with IP address 10.0.0.5 and VIP of 11.0.0.5.
 
 #### Load balancing in SDN Multisite without migrating workload VMs
 
