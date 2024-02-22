@@ -18,11 +18,11 @@ In this article, learn how to design and plan an Azure Stack HCI version 23H2 sy
 
 The following diagram shows the various decisions and steps that define the network design framework. Each design decision enables or permits the design options available in subsequent steps:
 
-:::image type="content" source="media/cloud-network-considerations/network-decision-framework.png" alt-text="Diagram showing step 1 of the network desicion framework." lightbox="media/cloud-network-considerations/network-decision-framework.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/network-decision-framework.png" alt-text="Diagram showing step 1 of the network desicion framework." lightbox="media/cloud-deployment-network-considerations/network-decision-framework.png":::
 
 ## Step 1: Determine cluster size
 
-:::image type="content" source="media/cloud-network-considerations/step-1.png" alt-text="Diagram showing the network desicion framework." lightbox="media/cloud-network-considerations/step-1.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/step-1.png" alt-text="Diagram showing the network desicion framework." lightbox="media/cloud-deployment-network-considerations/step-1.png":::
 
 To help determine the size of your Azure Stack HCI system, use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use, such as Azure Virtual Desktop, SQL Server, or AKS for example.
 
@@ -36,7 +36,7 @@ Deployments via Azure portal will select these options for you. Deployments via 
 
 ## Step 2: Determine cluster storage connectivity
 
-:::image type="content" source="media/cloud-network-considerations/step-2.png" alt-text="Diagram showing step 2 of the network desicion framework." lightbox="media/cloud-network-considerations/step-2.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/step-2.png" alt-text="Diagram showing step 2 of the network desicion framework." lightbox="media/cloud-deployment-network-considerations/step-2.png":::
 
 As described in [Physical network requirements](physical-network-requirements.md), Azure Stack HCI supports two types of connectivity for storage network traffic. The first option is to use a physical network switch to handle the traffic, and the second option is to directly connect the nodes between them with cross-over network or fiber cables for the storage traffic. The advantages and disadvantages of each option are documented in the article linked above.
 
@@ -48,11 +48,11 @@ Although it is possible to define each network intent with only one physical net
 
 The following diagram summarizes storage connectivity options available to you for various deployments:
 
-:::image type="content" source="media/cloud-network-considerations/step-2-summary.png" alt-text="Diagram showing step 2 option summary for the network desicion framework." lightbox="media/cloud-network-considerations/step-2-summary.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/step-2-summary.png" alt-text="Diagram showing step 2 option summary for the network desicion framework." lightbox="media/cloud-deployment-network-considerations/step-2-summary.png":::
 
 ## Step 3: Determine network traffic intents
 
-:::image type="content" source="media/cloud-network-considerations/step-3.png" alt-text="Diagram showing step 3 of the network desicion framework." lightbox="media/cloud-network-considerations/step-3.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/step-3.png" alt-text="Diagram showing step 3 of the network desicion framework." lightbox="media/cloud-deployment-network-considerations/step-3.png":::
 
 > [!NOTE]
 > Although not recommended, you can use a single intent for all your network traffic types (management, compute, and storage).
@@ -97,11 +97,11 @@ Use this option for both switched and switchless storage connectivity if the sto
 
 The following diagram summarizes network intent options available to you for various deployments:
 
-:::image type="content" source="media/cloud-network-considerations/step-3-summary.png" alt-text="Diagram showing step 3 option summary for the network desicion framework." lightbox="media/cloud-network-considerations/step-3-summary.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/step-3-summary.png" alt-text="Diagram showing step 3 option summary for the network desicion framework." lightbox="media/cloud-deployment-network-considerations/step-3-summary.png":::
 
 ## Step 4: Determine management network connectivity
 
-:::image type="content" source="media/cloud-network-considerations/step-4.png" alt-text="Diagram showing step 4 of the network desicion framework." lightbox="media/cloud-network-considerations/step-4.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/step-4.png" alt-text="Diagram showing step 4 of the network desicion framework." lightbox="media/cloud-deployment-network-considerations/step-4.png":::
 
 In this step, you define the infrastructure subnet address space, how these addresses are assigned to your cluster, and if there is any proxy requirement for the nodes for outbound connectivity to the internet and other intranet services such as Domain Name System (DNS) or Active Directory Services.
 
@@ -251,7 +251,7 @@ Some things to keep in mind:
 
 ## Step 5: Determine network adapter configuration
 
-:::image type="content" source="media/cloud-network-considerations/step-5.png" alt-text="Diagram showing step 5 of the network desicion framework." lightbox="media/cloud-network-considerations/step-5.png":::
+:::image type="content" source="media/cloud-deployment-network-considerations/step-5.png" alt-text="Diagram showing step 5 of the network desicion framework." lightbox="media/cloud-deployment-network-considerations/step-5.png":::
 
 Network adapters are qualified by network traffic type (management, compute, and storage) they are used with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com/), the Windows Server 2022 certification indicates one or more of the following roles. Before purchasing a server for Azure Stack HCI, you must have at least one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI version 23H2. Cloud deployment relies on Network ATC to configure the network adapters for the appropriate traffic types, so it is important to use supported network adapters.
 
