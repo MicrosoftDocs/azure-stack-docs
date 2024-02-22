@@ -19,7 +19,7 @@ Active Directory requirements for Azure Stack HCI 23H2 include:
 
 - A dedicated Organization Unit (OU).
 - Group policy inheritance must be blocked for the applicable Group Policy Object (GPO).
--A user account that has permission to join computers to Active Directory and create the cluster name object (CNO).
+- A user account that has permission to join computers to Active Directory and create the cluster name object (CNO).
 
 > [!NOTE]
 > You can use your existing process to meet the above requirements. The script used in this article is optional and provided to simplify this task.
