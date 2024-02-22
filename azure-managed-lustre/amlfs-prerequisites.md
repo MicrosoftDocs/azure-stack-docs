@@ -49,7 +49,7 @@ When you plan your virtual network and subnet, take into account the requirement
 
   * If you use more than one AKS cluster within the virtual network, make sure the virtual network has enough capacity for all resources in all of the clusters.
   
-  To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#provide-subnet-access-between-aks-and-azure-managed-lustre).
+  To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#determine-the-network-type-to-use-with-aks).
 
 * If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system.
 
