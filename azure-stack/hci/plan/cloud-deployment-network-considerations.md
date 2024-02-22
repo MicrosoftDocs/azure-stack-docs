@@ -1,6 +1,6 @@
 ---
 title: Network considerations for cloud deployment for Azure Stack HCI, version 23H2
-description: This article introduces network considerations for cloud deployments for Azure Stack HCI, version 23H2.
+description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
 ms.date: 02/22/2024
@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Cloud deployment network considerations for Azure Stack HCI, version 23H2
+# Network considerations for cloud deployments of Azure Stack HCI, version 23H2
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
@@ -134,9 +134,7 @@ To ensure the range has enough IPs for current and future infrastructure service
 If you anticipate running other services in the infrastructure network, we recommend assigning an extra buffer of infrastructure IPs to the pool. It is possible to add other IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
 
 The following conditions must be met when defining your IP pool for the infrastructure subnet during deployment:
-
-
-|Column1  | Condition |
+|#  | Condition |
 |---------|---------|
 |1     | The IP range must use consecutive IPs and all IPs must be available within that range.        |
 |2     | The range of IPs must not include the cluster node management IPs but must be on the same subnet as your nodes.        |
@@ -218,7 +216,6 @@ Although the newly created virtual network adapter shows as available when deplo
 The same logic applies to the Azure Resource Manager (ARM) templates. You must specify the physical network adapters that you want to use for the network intents and never the virtual network adapters.
 
 Here are some considerations for the VLAN ID:
-
 |#  | Considerations  |
 |---------|---------|
 |1    | VLAN ID must be specified on the physical network adapter for management before registering the servers with Azure Arc.         |
@@ -237,8 +234,6 @@ For Azure Stack HCI system, you have two options to assign IPs for the server no
 #### IP considerations
 
 Some considerations to keep in mind for IP addresses:
-
-
 |#  | Considerations  |
 |---------|---------|
 |1    | Infrastructure VMs and services such as Arc Resource Bridge and Network Controller use static IPs from the management IP pool. If you decide to use DHCP to assign the IPs to your nodes and cluster, the management IP pool is still required.         |
@@ -276,8 +271,6 @@ A proxy is most likely required to access the internet within your on-premises i
 The Azure Stack HCI OS has three different services (WinInet, WinHTTP, and environment variables) that require the same proxy configuration to ensure all OS components can access the internet. The same proxy configuration used for the nodes is automatically carried over to the Arc Resource Bridge VM and AKS, ensuring that they have internet access during deployment.
 
 Some things to keep in mind:
-
-
 |#     |Consideration  |
 |---------|---------|
 |1     | Proxy configuration must be completed before registering the nodes in Azure Arc.        |
@@ -294,7 +287,6 @@ You are currently required to open several internet endpoints in your firewalls 
 Firewall configuration must be done prior to registering the nodes in Azure Arc. You can use the standalone version of the environment checker to validate that your firewalls aren't blocking traffic sent to these endpoints. For more information, see [Azure Stack HCI Environment Checker](../manage/use-environment-checker.md) to assess deployment readiness for Azure Stack HCI.
 
 Some things to keep in mind:
-
 |#     |Consideration  |
 |------|---------|
 |1     | Firewall configuration must be done before registering the nodes in Azure Arc.        |
@@ -318,7 +310,6 @@ The default values used by Network ATC are documented in [Cluster network settin
 - **Traffic Priorities Datacenter Bridging (DCB)**: Set the priorities that fit your requirements.
 
 Some things to keep in mind:
-
 |#     |Consideration  |
 |---------|---------|
 |1     | Use the default configurations as much as possible.        |
