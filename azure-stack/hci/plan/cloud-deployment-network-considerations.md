@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/22/2024
+ms.date: 02/21/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -24,16 +24,24 @@ The following diagram shows the various decisions and steps that define the netw
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-1.png" alt-text="Diagram showing the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-1.png":::
 
-To help determine the size of your Azure Stack HCI system, use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use, such as Azure Virtual Desktop, SQL Server, or AKS for example.
+To help determine the size of your Azure Stack HCI system, use the [Azure Stack HCI sizer tool](https://azurestackhcisolutions.azure.microsoft.com/#/sizer), where you can define your profile such as number of virtual machines (VMs), size of the VMs, and the workload use of the VMs such as Azure Virtual Desktop, SQL Server, or AKS.
 
-As described in the Azure Stack HCI [system server requirements](../concepts/system-requirements-23h2.md) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
+As described in the Azure Stack HCI [system server requirements](../concepts/system-requirements-23h2.md#server-and-storage-requirements) article, the maximum number of servers supported on Azure Stack HCI system is 16. Once you complete your workload capacity planning, you should have a good understanding of the number of server nodes required to run workloads on your infrastructure.
 
 - **If your workloads require four or more nodes**: You can't deploy and use a switchless configuration for storage network traffic. You need to include a physical switch with support for Remote Direct Memory Access (RDMA) to handle storage traffic. For more information on Azure Stack HCI cluster network architecture, see [Network reference patterns overview](./network-patterns-overview.md).
 
-- **If your workloads require three or less nodes**: You can choose either switchless or switched configurations for storage connectivity. However, if you plan to scale out later to more than three nodes, you need to use a physical switch for storage network traffic. Any scale out operation for switchless deployments requires manual configuration of your network cabling between the nodes that Microsoft isn't actively validating as part of its software development cycle for Azure Stack HCI.
+- **If your workloads require three or less nodes**: You can choose either switchless or switched configurations for storage connectivity.
 
-> [!NOTE]
-> [Deployments via Azure portal](../deploy/deploy-via-portal.md) selects between switched and switchless options depending on your cluster size. [Deployments via ARM templates](../deploy/deployment-azure-resource-manager-template.md) only support the validated architecture described in this article.
+- **If you plan to scale out later to more than three nodes**: You need to use a physical switch for storage network traffic. Any scale out operation for switchless deployments requires manual configuration of your network cabling between the nodes that Microsoft isn't actively validating as part of its software development cycle for Azure Stack HCI.
+
+Here are the summarized considerations for the cluster size decision:
+
+
+|Decision  |Consideration  |
+|---------|---------|
+|Cluster size (number of nodes per cluster)     |Switchless configuration via the cloud deployment and orchestration support is only available for 1, 2, or 3 node clusters. <br><br>Clusters with 4 or more nodes require physical switch for the storage network traffic.         |
+|Scale out requirements     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic.         |
+
 
 ## Step 2: Determine cluster storage connectivity
 
@@ -46,11 +54,21 @@ As described in [Physical network requirements](../concepts/physical-network-req
 
 The advantages and disadvantages of each option are documented in the article linked above.
 
-As stated previously, you can only decide between the two options when the size of your cluster is three or less nodes. Any cluster with four or more nodes is automatically deployed using a network switch for storage. If clusters have fewer than three nodes, the storage connectivity decision influences the number and type of network intents you can define in the next step.
+As stated previously, you can only decide between the two options when the size of your cluster is three or less nodes. Any cluster with four or more nodes is automatically deployed using a network switch for storage. 
+
+If clusters have fewer than three nodes, the storage connectivity decision influences the number and type of network intents you can define in the next step.
 
 For example, for switchless configurations, you need to define two network traffic intents. Storage traffic for east-west communications using the crossover cables doesn't have north-south connectivity and it is completely isolated from the rest of your network infrastructure. That means you need to define a second network intent for management outbound connectivity and for your compute workloads.
 
-Although it is possible to define each network intent with only one physical network adapter port each, that doesn't provide any fault tolerance. As such, we always recommend using at least two physical network ports for each network intent. If you decide to use a network switch for storage, you can group all network traffic including storage in a single network intent, which is also known as a hyperconverged or fully converged host network configuration.
+Although it is possible to define each network intent with only one physical network adapter port each, that doesn't provide any fault tolerance. As such, we always recommend using at least two physical network ports for each network intent. If you decide to use a network switch for storage, you can group all network traffic including storage in a single network intent, which is also known as a *hyperconverged* or *fully converged* host network configuration.
+
+Here are the summarized considerations for the cluster storage connectivity decision:
+
+
+|Decision  |Consideration  |
+|---------|---------|
+|No switch for storage     |Switchless configuration with deployment and orchestration support is only available for 1, 2 or 3 node clusters. <br><br>Scale in and scale out operations are not supported using the orchestrator. Any change in the number of nodes after the deployment requires a manual configuration. <br><br>At least 2 network intents are required when using storage switchless configuration.        |
+|Network switch for storage     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic. <br><br>You can use this architecture with any number of nodes between 1 to 16. <br><br>Although is not enforced, you can use a single intent for all your network traffic types (Management, Compute, and Storage)        |
 
 The following diagram summarizes storage connectivity options available to you for various deployments:
 
@@ -60,8 +78,6 @@ The following diagram summarizes storage connectivity options available to you f
 
 :::image type="content" source="media/cloud-deployment-network-considerations/step-3.png" alt-text="Diagram showing step 3 of the network decision framework." lightbox="media/cloud-deployment-network-considerations/step-3.png":::
 
-> [!NOTE]
-> Although not recommended, you can use a single intent for all your network traffic types (management, compute, and storage).
 
 For Azure Stack HCI, all deployments rely on Network ATC for the host network configuration. The network intents are automatically configured when deploying Azure Stack HCI via the Azure portal. To understand more about the network intents and how to troubleshoot those, see [Common network ATC commands](../deploy/network-atc.md#common-network-atc-commands).
 
@@ -131,7 +147,7 @@ When doing the initial deployment of your Azure Stack HCI system, you must defin
 
 To ensure the range has enough IPs for current and future infrastructure services, you must use a range of at least six consecutive available IP addresses. These addresses are used for - the cluster IP, the Azure Resource Bridge VM and its components. 
 
-If you anticipate running other services in the infrastructure network, we recommend assigning an extra buffer of infrastructure IPs to the pool. It is possible to add other IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
+If you anticipate running other services in the infrastructure network, we recommend that you assign an extra buffer of infrastructure IPs to the pool. It is possible to add other IP pools after deployment for the infrastructure network using PowerShell if the size of the pool you planned originally gets exhausted.
 
 The following conditions must be met when defining your IP pool for the infrastructure subnet during deployment:
 
@@ -191,7 +207,9 @@ To update the management virtual network adapter name, use the following command
 ```powershell
 $IntentName = "MgmtCompute"
 Add-VMNetworkAdapter -ManagementOS -SwitchName "ConvergedSwitch($IntentName)" -Name "vManagement($IntentName)"
+
 #NetAdapter needs to be renamed because during creation, Hyper-V adds the string “vEthernet “ to the beginning of the name
+
 Rename-NetAdapter -Name "vEthernet (vManagement($IntentName))" -NewName "vManagement($IntentName)"
 ```
 
@@ -233,19 +251,9 @@ For Azure Stack HCI system, you have two options to assign IPs for the server no
 
 - Proper node IP assignment is key for cluster lifecycle management. Decide between the static and DHCP options before you register the nodes in Azure Arc.
 
-#### IP considerations
+- Infrastructure VMs and services such as Arc Resource Bridge and Network Controller keep using static IPs from the management IP pool. That implies that even if you decide to use DHCP to assign the IPs to your nodes and your cluster IP, the management IP pool is still required.
 
-Some considerations to keep in mind for IP addresses:
-
-|#  | Considerations  |
-|---------|---------|
-|1    | Infrastructure VMs and services such as Arc Resource Bridge and Network Controller use static IPs from the management IP pool. If you decide to use DHCP to assign the IPs to your nodes and cluster, the management IP pool is still required.         |
-|2     | Node IPs must be on the same subnet of the defined management IP pool range regardless if they're static or dynamic addresses.         |
-|3     | The management IP pool must not include node IPs. Use DHCP exclusions when dynamic IP assignment is used.        |
-|4     | Use DHCP reservations for the nodes as much as possible.        |
-|5     | DHCP addresses are only supported for node IPs and the cluster IP. Infrastructure services use static IPs from the management pool.       |
-|6     | The MAC address from the first physical network adapter is assigned to the management virtual network adapter once the management network intent is created.       |
-
+The following sections discuss the implications of each option.
 
 #### Static IP assignment
 
@@ -267,9 +275,21 @@ For example, if the management IP range is defined as 192.168.1.20/24 to 192.168
 
 The process of defining the management IP after creating the management intent involves using the MAC address of the first physical network adapter that is selected for the network intent. This MAC address is then assigned to the virtual network adapter that is created for management purposes. This means that the IP address that the first physical network adapter obtains from the DHCP server is the same IP address that the virtual network adapter uses as the management IP. Therefore, it is important to create DHCP reservation for node IP.
 
+#### Cluster node IP considerations
+
+Some considerations to keep in mind for IP addresses:
+
+|#  | Considerations  |
+|---------|---------|
+|1     | Node IPs must be on the same subnet of the defined management IP pool range regardless if they're static or dynamic addresses.         |
+|2     | The management IP pool must not include node IPs. Use DHCP exclusions when dynamic IP assignment is used.        |
+|3     | Use DHCP reservations for the nodes as much as possible.        |
+|4     | DHCP addresses are only supported for node IPs and the cluster IP. Infrastructure services use static IPs from the management pool.       |
+|5     | The MAC address from the first physical network adapter is assigned to the management virtual network adapter once the management network intent is created.       |
+
 ### Proxy requirements
 
-A proxy is most likely required to access the internet within your on-premises infrastructure. Azure Stack HCI supports only non-authenticated proxy configurations. Given that internet access is required to register the nodes in Azure Arc, the proxy configuration must be set as part of the OS configuration before server nodes are registered. For more information, see [Configure proxy settings](../manage/configure-proxy-settings.md).
+A proxy is most likely required to access the internet within your on-premises infrastructure. Azure Stack HCI supports only non-authenticated proxy configurations. Given that internet access is required to register the nodes in Azure Arc, the proxy configuration must be set as part of the OS configuration before server nodes are registered. For more information, see [Configure proxy settings](../manage/configure-proxy-settings-23h2.md).
 
 The Azure Stack HCI OS has three different services (WinInet, WinHTTP, and environment variables) that require the same proxy configuration to ensure all OS components can access the internet. The same proxy configuration used for the nodes is automatically carried over to the Arc Resource Bridge VM and AKS, ensuring that they have internet access during deployment.
 
@@ -290,7 +310,7 @@ You are currently required to open several internet endpoints in your firewalls 
 
 Firewall configuration must be done prior to registering the nodes in Azure Arc. You can use the standalone version of the environment checker to validate that your firewalls aren't blocking traffic sent to these endpoints. For more information, see [Azure Stack HCI Environment Checker](../manage/use-environment-checker.md) to assess deployment readiness for Azure Stack HCI.
 
-Some things to keep in mind:
+Firewall considerations to keep in mind:
 
 |#     |Consideration  |
 |------|---------|
@@ -312,9 +332,9 @@ The default values used by Network ATC are documented in [Cluster network settin
 - **Jumbo Packets**: Defines the size of the jumbo packets.
 - **Network Direct**: Set this value to false if you want to disable RDMA for your network adapters.
 - **Network Direct Technology**: Set this value to `RoCEv2` or `iWarp`.
-- **Traffic Priorities Datacenter Bridging (DCB)**: Set the priorities that fit your requirements.
+- **Traffic Priorities Datacenter Bridging (DCB)**: Set the priorities that fit your requirements. We highly recommend that you use the default DCB values as these are validated by Microsoft and customers.
 
-Some things to keep in mind:
+Network adapter configuration considerations to keep in mind:
 
 |#     |Consideration  |
 |---------|---------|
