@@ -234,7 +234,7 @@ Although the newly created virtual network adapter shows as available when deplo
 
 The same logic applies to the Azure Resource Manager (ARM) templates. You must specify the physical network adapters that you want to use for the network intents and never the virtual network adapters.
 
-Here are some considerations for the VLAN ID:
+Here are the summarized considerations for the VLAN ID:
 
 |#  | Considerations  |
 |---------|---------|
@@ -277,7 +277,7 @@ The process of defining the management IP after creating the management intent i
 
 #### Cluster node IP considerations
 
-Some considerations to keep in mind for IP addresses:
+Here are the summarized considerations for the IP addresses:
 
 |#  | Considerations  |
 |---------|---------|
@@ -293,7 +293,7 @@ A proxy is most likely required to access the internet within your on-premises i
 
 The Azure Stack HCI OS has three different services (WinInet, WinHTTP, and environment variables) that require the same proxy configuration to ensure all OS components can access the internet. The same proxy configuration used for the nodes is automatically carried over to the Arc Resource Bridge VM and AKS, ensuring that they have internet access during deployment.
 
-Some things to keep in mind:
+Here are the summarized considerations for proxy configuration:
 
 |#     |Consideration  |
 |---------|---------|
@@ -310,7 +310,7 @@ You are currently required to open several internet endpoints in your firewalls 
 
 Firewall configuration must be done prior to registering the nodes in Azure Arc. You can use the standalone version of the environment checker to validate that your firewalls aren't blocking traffic sent to these endpoints. For more information, see [Azure Stack HCI Environment Checker](../manage/use-environment-checker.md) to assess deployment readiness for Azure Stack HCI.
 
-Firewall considerations to keep in mind:
+Here are the summarized considerations for firewall:
 
 |#     |Consideration  |
 |------|---------|
@@ -334,7 +334,7 @@ The default values used by Network ATC are documented in [Cluster network settin
 - **Network Direct Technology**: Set this value to `RoCEv2` or `iWarp`.
 - **Traffic Priorities Datacenter Bridging (DCB)**: Set the priorities that fit your requirements. We highly recommend that you use the default DCB values as these are validated by Microsoft and customers.
 
-Network adapter configuration considerations to keep in mind:
+Here are the summarized considerations for network adapter configuration
 
 |#     |Consideration  |
 |---------|---------|
