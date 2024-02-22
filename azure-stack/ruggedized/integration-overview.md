@@ -63,7 +63,7 @@ To create an Azure Stack Hub resource, take the following steps in the Azure por
 
 1. Select **Next: Shipping address**.
 
-    - If you already have a device, select the combo box for **I have a Azure Stack Hub device**.
+    - If you already have a device, select the combo box for **I have an Azure Stack Hub device**.
 
     - If this is the new device that you are ordering, enter the contact name, company, address to ship the device, and contact information.
 

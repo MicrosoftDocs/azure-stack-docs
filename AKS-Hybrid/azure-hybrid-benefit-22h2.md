@@ -40,7 +40,7 @@ The rest of this article describes how to activate this benefit for AKS on Azure
 
 ### Prerequisites
 
-Make sure you have an AKS hybrid cluster deployed on either an Azure Stack HCI or a Windows Server host.
+Make sure you have an AKS cluster deployed on either an Azure Stack HCI or a Windows Server host.
 
 # [Azure PowerShell](#tab/powershell)
 
@@ -66,7 +66,7 @@ Make sure you have the latest version of [Azure CLI installed](/cli/azure/instal
 ---
 
 > [!NOTE]
-> You must have the **Microsoft.Kubernetes/connectedClusters/write** permission to the Azure Arc-enabled Kubernetes cluster resoruce of the management cluster (`microsoft.kubernetes/connectedclusters`) to activate the Azure Hybrid Benefit for AKS hybrid.
+> You must have the **Microsoft.Kubernetes/connectedClusters/write** permission to the Azure Arc-enabled Kubernetes cluster resoruce of the management cluster (`microsoft.kubernetes/connectedclusters`) to activate the Azure Hybrid Benefit.
 
 ### Retrieve your management cluster name
 
@@ -150,7 +150,7 @@ I confirm I have an eligible Windows Server license with Azure Hybrid Benefit to
 ```
 
 > [!NOTE]
-> You can also do the Azure Hybrid Benefit for AKS hybrid activation operation from an [Azure Cloud Shell](https://shell.azure.com) instance.
+> You can also do the Azure Hybrid Benefit for AKS activation operation from an [Azure Cloud Shell](https://shell.azure.com) instance.
 
 ### Verify that the benefit is enabled
 
