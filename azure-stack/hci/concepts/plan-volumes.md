@@ -27,7 +27,7 @@ Volumes are where you put the files your workloads need, such as VHD or VHDX fil
 
 All volumes are accessible by all servers in the cluster at the same time. Once created, they show up at **C:\ClusterStorage\\** on all servers.
 
-:::image type="content" source="media/plan-volumes/csv-folder-screenshot.png" alt-text="Screen capture shows a file explorer window titled ClusterStorage that contains volumes named Volume1, Volume2, and Volume3." lightbox="media/csv-folder-screenshot.png":::
+:::image type="content" source="media/plan-volumes/csv-folder-screenshot.png" alt-text="Screen capture shows a file explorer window titled ClusterStorage that contains volumes named Volume1, Volume2, and Volume3." lightbox="media/plan-volumes/csv-folder-screenshot.png":::
 
 ## Choosing how many volumes to create
 
