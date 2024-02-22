@@ -30,12 +30,12 @@ Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
 - Install the PowerShell module to prepare Active Directory. You can follow one of these options:
-    - [Download AsHciADArtifactsPreCreationTool.psm1 from this location](https://github.com/Azure/AzureStack-Tools/tree/master/HCI). Run the following command:
+    - [Download AsHciADArtifactsPreCreationTool.psm1 from GitHub](https://github.com/Azure/AzureStack-Tools/tree/master/HCI). Run the following command from the folder with the downloaded file:
     
         ```powershell
         Import-Module .\AsHciADArtifactsPreCreationTool.psm1
         ```
-    - [Download the version 2311 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2311). Run the following command:
+    - [Download the version 2311 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2311). Run the following command from the folder where the module is located:
 
         ```powershell
         Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
@@ -56,7 +56,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 |Parameter|Description|
 |--|--|
-|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Stack HCI deployment.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
+|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Stack HCI deployment.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
 |`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
 |`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
 |`-DomainFQDN`|Fully qualified domain name (FQDN) of the Active Directory domain.|
@@ -88,8 +88,8 @@ To prepare and configure Active Directory, follow these steps:
     Here is a sample output from a successful completion of the script:
 
     ```
-    PS C:\work> ConvertTo-SecureString '<password>' -AsPlainText -Force
-    PS C:\work> "ms309deployuser"
+    PS C:\work> $password = ConvertTo-SecureString '<password>' -AsPlainText -Force
+    PS C:\work> $user = "ms309deployuser"
     PS C:\work> $credential = New-Object System.Management.Automation.PSCredential ($user, $password)
     PS C:\work> New-HciAdObjectsPreCreation -AzureStackLCMUserCredential $credential -AsHciOUName "OU=ms309,DC=PLab8,DC=nttest,DC=microsoft,DC=com"    
     
