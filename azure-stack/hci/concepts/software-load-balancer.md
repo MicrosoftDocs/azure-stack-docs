@@ -6,7 +6,7 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 02/22/2024
 ---
 # What is Software Load Balancer \(SLB\) for SDN?
 
@@ -114,7 +114,7 @@ In addition, you must configure the Azure Stack HCI hosts with the SDN-enabled H
 
 The following figure provides an overview of the SLB infrastructure.
 
-:::image type="content" source="media/software-load-balancing/slb-overview.png" alt-text="Software Load Balancer infrastructure" border="false":::
+:::image type="content" source="media/software-load-balancer/slb-overview.png" alt-text="Software Load Balancer infrastructure." lightbox="media/software-load-balancer/slb-overview.png":::
 
 The following sections provide more information about these elements of the Software Load Balancer infrastructure.
 
