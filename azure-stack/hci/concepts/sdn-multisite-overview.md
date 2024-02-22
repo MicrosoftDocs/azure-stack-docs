@@ -13,7 +13,7 @@ ms.date: 02/22/2024
 
 This article provides an overview of SDN Multisite, including its benefits and current limitations. You can use it as a guide to help design your network topology and disaster recovery plan.
 
-SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations or sites. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads.
+SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites means physical locations.
 
 For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md).
 
