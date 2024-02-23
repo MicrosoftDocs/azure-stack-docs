@@ -1,17 +1,18 @@
 ---
-title: Set up multiple administrators on AKS hybrid
-description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS hybrid
+title: Set up multiple administrators on AKS enabled by Arc
+description: Learn how to set up multiple administrators and register other users with the Microsoft on Cloud (MOC) service on AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 12/11/2023
 ms.author: sethm 
 ms.lastreviewed: 10/12/2022
 ms.reviewer: scooley
-# Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS hybrid.
+
+# Intent: As an IT Pro, I need to learn how to set up multiple administrators and register other users by using the Microsoft on Cloud (MOC) service on AKS enabled by Arc.
 # Keyword: administrator setup register users Microsoft on Cloud (MOC) service 
 ---
 
-# Set up multiple administrators on AKS hybrid
+# Set up multiple administrators
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
