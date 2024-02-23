@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: shisab
-ms.date: 02/23/20244
+ms.date: 02/23/2024
 
 # CustomerIntent: As a content writer for Azure Stack HCI, I want to share viable information on the telemetry and diagnostics extension that will help users understand the feature and ways they can benefit from using it.
 ---
