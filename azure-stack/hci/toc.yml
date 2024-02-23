@@ -8,12 +8,18 @@
     href: whats-new.md
   - name: Release notes
     items:
-    - name: Known issues - 2311.2 GA (Current)
-      href: known-issues-2311-2.md
-    - name: Known issues - 2311 (preview)
-      href: known-issues-2311.md
-    - name: Known issues - 2310 (preview)
-      href: known-issues-23h2.md
+    - name: Known issues 2402 (Current)
+      href:
+    - name: Known issues 2311
+      items:
+      - name: Known issues - 2311.3 (Current)
+        href: known-issues-2311-3.md
+      - name: Known issues - 2311.2 GA
+        href: known-issues-2311-2.md
+      - name: Known issues - 2311 (preview)
+        href: known-issues-2311.md
+      - name: Known issues - 2310 (preview)
+        href: known-issues-23h2.md
     - name: Release information
       href: release-information-23h2.md
   - name: Compare to Windows Server
