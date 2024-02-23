@@ -3,7 +3,7 @@ title: Azure Stack HCI observability
 description: Learn about observability in Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
-ms.date: 02/21/2024
+ms.date: 02/23/2024
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -34,6 +34,22 @@ Observability in Azure Stack HCI is achieved through the following data sources:
 ## How is observability installed?
 
 Observability and remote support are installed as part of the Azure Stack HCI deployment process. This allows the [orchestrator](../update/about-updates-23h2.md) automate many of the steps involved in the deployment process. The goal is to offer a simple setup process that takes care of all the components, including observability.
+
+## What is observability pipeline?
+
+The observability pipeline uses telemetry, diagnostics, and monitoring to collect data from devices. It extends Azure’s observability assets to these devices while staying within the compliance and security constraints imposed due to customer ownership, geo-location, and operation of these devices.
+
+The Observability pipeline is split into these broad areas:
+
+- **Telemetry.** The telemetry section provides a continual flow of curated critical events from Azure Stack HCI to Azure.
+
+- **Diagnostics.** The diagnostics section provides an episodic or on-demand flow of data from Azure Stack HCI to Azure.
+
+- **Monitoring.** The monitoring section provides a continual flow of curated metrics from Azure Stack HCI to Azure. After the data reaches Azure, it's consumed and utilized in different aspects of the product life cycle, such as product development, customer support, case deflection, and trend analysis.
+
+The following diagram depicts the observability pipeline and data flow from Azure stack HCI to Azure:
+
+:::image type="content" source="media/observability/observability-pipeline.png" alt-text="Diagram depicting the components in the Azure Stack HCI observability pipeline." lightbox="media/observability/observability-pipeline.png":::
 
 ## Telemetry
 
