@@ -240,7 +240,7 @@ $subscriptionID = "<Your Azure subscrption ID>"
 $tenantID = "<Your Azure tenant ID>"
 ```
 
-Install and import the AKS hybrid PowerShell module:
+Install and import the AKS PowerShell module:
 
 ```powershell
 Install-Module -Name AksHci
