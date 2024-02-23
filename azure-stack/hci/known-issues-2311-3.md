@@ -24,7 +24,7 @@ For more information about the new features in this release, see [What's new in 
 
 ## Issues for version 2311.3
 
-This software release maps to software version number **10.2311.3.7**. This release only supports updates from 2311 release.
+This software release maps to software version number **10.2311.3.12**. This release only supports updates from 2311 release.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
@@ -40,10 +40,7 @@ Here are the issues fixed in this release:
 
 ## Known issues in this release
 
-Here are the known issues in this release:
-
-|Feature|Issue|Workaround/Comments|
-|------|------|----------|
+Microsoft is not currently aware of any issues with this release. All the known issues are carried over from previous releases.
 
 ## Known issues from previous releases
 
