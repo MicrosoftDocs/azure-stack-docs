@@ -89,7 +89,7 @@ In the following illustration, a client computer performs a DNS query for the IP
 
 9. The host forwards the packet directly to the default gateway for the physical network which uses its standard routing table to forward the packet on to the client, which eventually receives the response.
 
-:::image type="content" source="media/software-load-balancing/slb-process.jpg" alt-text="Software Load Balancing process" border="false":::
+:::image type="content" source="media/software-load-balancer/slb-process.jpg" alt-text="Software Load Balancing process." border="false" lightbox="media/software-load-balancer/slb-process.jpg":::
 
 ### Load balancing internal datacenter traffic
 
