@@ -56,15 +56,15 @@ You can use the [create workflow](create-file-system-portal.md) in Azure portal 
 
 ## Create a template file
 
-Once you've decided on configuation options, you can create a template file. The template file is a JSON or Bicep file that contains the configuration details for your Azure Managed Lustre file system. This section explains the [required](#required-information) and [optional](#optional-information) information to include in your template file.
+Once you decide on configuration options, you can create a template file. The template file is a JSON or Bicep file that contains the configuration details for your Azure Managed Lustre file system. This section explains the [required](#required-information) and [optional](#optional-information) information to include in your template file.
 
-For examples files that contain all possible configuration options, see [Sample JSON files](#sample-json-files) and [Sample Bicep file](#sample-bicep-file).
+For example files that contain all possible configuration options, see [Sample JSON files](#sample-json-files) and [Sample Bicep file](#sample-bicep-file).
 
 ### Required information
 
 This section explains the information you need to include in your Azure Resource Manager template files to create an Azure Managed Lustre file system. The exact syntax is different between Bicep and JSON, so consult the examples for each language type for the literal values.
 
-* **Resource type to create** - This parameter tells Azure Resource Manager that you're creating an Azure Managed Lustre file system by passing a combination of the value `Microsoft.StorageCache/amlFileSystems` and the API version.
+* **Resource type to create** - This value tells Azure Resource Manager that you're creating an Azure Managed Lustre file system by passing a combination of the value `Microsoft.StorageCache/amlFileSystems` and the API version.
 
   There are several ways to create the resource type:
 
@@ -127,7 +127,7 @@ The parameters in this section are either optional, or required only if you're u
 
 * **Blob integration settings** - Supply these values to use an integrated Blob Storage container with this system. For more information, see [Blob integration](create-file-system-portal.md#blob-integration).
 
-  * **Container** - The resource ID of the blob container to use for Lustre HSM.
+  * **Container** - The resource ID of the blob container to use for Lustre hierarchical storage management (HSM).
   * **Logging container** - The resource ID of a different container to hold import and export logs.
   * **Import prefix** (optional) - If this value is provided, only blobs beginning with the import prefix string are imported into the Azure Managed Lustre File System. If you don't provide it, the default value is `/`, which specifies that all blobs in the container are imported.
 
@@ -142,7 +142,7 @@ The parameters in this section are either optional, or required only if you're u
 
 These example steps use Azure CLI commands to create a new resource group and create an Azure Managed Lustre file system in it.
 
-Before you deploy, make sure you've completed the following steps:
+Before you deploy, make sure you complete the following steps:
 
 * [Choose a file system type and size](#choose-file-system-type-and-size)
 * [Create a template file](#create-a-template-file)
@@ -344,7 +344,7 @@ This section shows example contents of a parameters file:
 
 ## Sample Bicep file
 
-This example includes all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values you don't want.
+This example includes all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values, you don't want.
 
 ```bicep
 resource fileSystem 'Microsoft.StorageCache/amlFileSystems@2023-05-01' = {
