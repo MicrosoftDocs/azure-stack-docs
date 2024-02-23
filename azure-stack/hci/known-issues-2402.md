@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI 2402 General Availability release
+# View known issues in Azure Stack HCI 2402 release
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -24,7 +24,7 @@ For more information about the new features in this release, see [What's new in 
 
 ## Issues for version 2402
 
-This software release maps to software version number **10.2402.0.XX**.
+This software release maps to software version number **10.2402.0.20**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
