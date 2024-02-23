@@ -5,9 +5,6 @@
   - name: AKS enabled by Azure Arc
     tocHref: /azure/aks/hybrid/
     topicHref: /azure/aks/hybrid/index
-  - name: AKS Edge Essentials
-    tocHref: /azure/aks/hybrid/aks-edge-overview/
-    topicHref: /azure/aks/hybrid/index
 ###    items:
 ### For contextual TOC
   - name: AKS enabled by Azure Arc
