@@ -40,8 +40,9 @@ Each client that connects to the Lustre file system must have a Lustre client pa
 
 You can download prebuilt and tested client packages for Azure Managed Lustre from the [Linux software repository for Microsoft products](/windows-server/administration/linux-package-repository-for-microsoft-software).
 
-Packages and kernel modules are available for these Linux operating systems. Select the links to go to the installation instructions.
+Packages and kernel modules are available for the following Linux operating systems. Select the links to go to the installation instructions:
 
+- [AlmaLinux HPC 8.6](install-hpc-alma-86.md)
 - [AlmaLinux 8](install-rhel-8.md)
 - [CentOS Linux 7](install-rhel-7.md)
 - [CentOS Linux 8](install-rhel-8.md)
