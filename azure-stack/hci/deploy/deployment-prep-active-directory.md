@@ -22,7 +22,7 @@ Active Directory requirements for Azure Stack HCI 23H2 include:
 - A user account that has permission to join computers to Active Directory and create the cluster name object (CNO).
 
 > [!NOTE]
-> You can use your existing process to meet the above requirements. The script used in this article is optional and provided to simplify this task.
+> You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
 
 ## Prerequisites
 
@@ -58,18 +58,19 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 |--|--|
 |`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Stack HCI deployment.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
 |`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
-|`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
+
+<!--|`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
 |`-DomainFQDN`|Fully qualified domain name (FQDN) of the Active Directory domain.|
 |`-AsHciClusterName`|The name for the new cluster AD object.|
 |`-AsHciDeploymentPrefix`|The prefix used for all AD objects created for the Azure Stack HCI deployment. <br> The prefix must not exceed 8 characters.|
-|`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|
+|`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|-->
 
 ## Prepare Active Directory
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts.
 
 > [!NOTE]
-> In this release, only the Active Directory prepared via the provided module is supported.
+> TO REMOVE? - In this release, only the Active Directory prepared via the provided module is supported.
 
 To prepare and configure Active Directory, follow these steps:
 
@@ -80,9 +81,10 @@ To prepare and configure Active Directory, follow these steps:
     ```powershell
     New-HciAdObjectsPreCreation -AzureStackLCMUserCredential (Get-Credential) -AsHciOUName "<OU name or distinguished name including the domain components>"
 
-1. When prompted, provide the username and password for the deployment. 
+1. When prompted, provide the username and password for the deployment.
+    
     1. Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`. **Username must be between 1 to 64 characters and only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number.**
-    1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 12 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.** <!--For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow).-->
+    1. Make sure that the password meets complexity and length requirements. **Use a password that is at least 12 characters long and contains: a lowercase character, an uppercase character, a numeral, and  a special character.** 
 
 
     Here is a sample output from a successful completion of the script:
@@ -92,8 +94,7 @@ To prepare and configure Active Directory, follow these steps:
     PS C:\work> $user = "ms309deployuser"
     PS C:\work> $credential = New-Object System.Management.Automation.PSCredential ($user, $password)
     PS C:\work> New-HciAdObjectsPreCreation -AzureStackLCMUserCredential $credential -AsHciOUName "OU=ms309,DC=PLab8,DC=nttest,DC=microsoft,DC=com"    
-    
-    PS C:\temp>
+    PS C:\work>
     ```
 
 1. Verify that the OU is created.  If using a Windows Server client, go to **Server Manager > Tools > Active Directory Users and Computers**.
@@ -102,8 +103,11 @@ To prepare and configure Active Directory, follow these steps:
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-1.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-1.png":::
 
+REMOVE?
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/deployment-prep-active-directory/active-directory-2.png":::
 
+
+REMOVE?
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-prep-active-directory/active-directory-3.png":::
 
 > [!NOTE]
@@ -111,4 +115,4 @@ To prepare and configure Active Directory, follow these steps:
 
 ## Next steps
 
-- [Install Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server in your cluster.
+- [Download Azure Stack HCI, version 23H2 software](./download-azure-stack-hci-23h2-software.md) on each server in your cluster.
