@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI 2311.3 General Availability release
+# View known issues in Azure Stack HCI 2311.3 release
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
