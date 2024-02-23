@@ -23,13 +23,32 @@ Graphical Processing Units (GPU) are used for compute-intensive workloads such a
 
 ## Supported GPU models
 
-The following GPU models are supported by AKS enabled by Azure Arc:
+The following GPU models are supported by AKS on Azure Stack HCI 23H2:
 
 | Manufacturer | GPU model | Supported version |
-|--------------|-----------|-----------------|
-| NVidia       | A2        | 2311.2          |
-| NVidia       | A16       | Not yet supported     |
-| NVidia       | T4        | Not yet supported    |
+|--------------|-----------|-------------------|
+| NVidia       | A2        | 2311.2            |
+| NVidia       | A16       | 2402.0            |
+
+## Supported VM sizes
+
+The following VM sizes for each GPU models are supported by AKS on Azure Stack HCI 23H2. 
+
+### The Nvidia A2 is supported by NC2 A2 SKUs
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|-------------------|---|----|----|----|
+| Standard_NC4_A2   | 1 | 16 | 4  | 8  |
+| Standard_NC8_A2   | 1 | 16 | 8  | 16 |
+| Standard_NC16_A2  | 2 | 48 | 16 | 64 |
+| Standard_NC32_A2  | 2 | 48 | 32 | 28 | 
+
+### The Nvidia A16 is supported by NC2 A16 SKUs
+| VM size | GPUs | GPU Memory: GiB | vCPU | Memory: GiB |
+|--------------------|---|----|----|----|
+| Standard_NC4_A16   | 1 | 16 | 4  | 8  |
+| Standard_NC8_A16   | 1 | 16 | 8  | 16 |
+| Standard_NC16_A16  | 2 | 48 | 16 | 64 |
+| Standard_NC32_A16  | 2 | 48 | 32 | 28 | 
 
 ## Before you begin
 
