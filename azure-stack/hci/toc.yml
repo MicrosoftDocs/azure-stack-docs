@@ -12,14 +12,12 @@
       href: known-issues-2402.md
     - name: Known issues 2311
       items:
-      - name: Known issues - 2311.3 (Current)
+      - name: 2311.3 release (Current)
         href: known-issues-2311-3.md
-      - name: Known issues - 2311.2 GA
+      - name: 2311.2 release GA
         href: known-issues-2311-2.md
-      - name: Known issues - 2311 (preview)
+      - name: 2311 release (preview)
         href: known-issues-2311.md
-      - name: Known issues - 2310 (preview)
-        href: known-issues-23h2.md
     - name: Release information
       href: release-information-23h2.md
   - name: Compare to Windows Server
