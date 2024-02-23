@@ -40,7 +40,7 @@ Replace the following values in the script before it runs:
 
 - **$ArmEndpoint**: The Resource Manager endpoint for your environment.
 - **$TenantId**: Your Tenant ID.
-- **$SubscriptionId**: Your subscription ID.
+- **$TenantSubscriptionId**: Your subscription ID.
 - **$OwnerUpn**: An account, for example **user\@example.com**, to add as the new billing owner.
 
 ### [Az modules](#tab/az)
