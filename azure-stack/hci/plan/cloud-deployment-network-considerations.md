@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/22/2024
+ms.date: 02/23/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -39,7 +39,7 @@ Here are the summarized considerations for the cluster size decision:
 
 |Decision  |Consideration  |
 |---------|---------|
-|Cluster size (number of nodes per cluster)     |Switchless configuration via the cloud deployment and orchestration support is only available for 1, 2, or 3 node clusters. <br><br>Clusters with 4 or more nodes require physical switch for the storage network traffic.         |
+|Cluster size (number of nodes per cluster)     |Switchless configuration via the Azure portal or ARM templates is only available for 1, 2, or 3 node clusters. <br><br>Clusters with 4 or more nodes require physical switch for the storage network traffic.         |
 |Scale out requirements     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic.         |
 
 
@@ -67,7 +67,7 @@ Here are the summarized considerations for the cluster storage connectivity deci
 
 |Decision  |Consideration  |
 |---------|---------|
-|No switch for storage     |Switchless configuration with deployment and orchestration support is only available for 1, 2 or 3 node clusters. <br><br>Scale in and scale out operations are not supported using the orchestrator. Any change in the number of nodes after the deployment requires a manual configuration. <br><br>At least 2 network intents are required when using storage switchless configuration.        |
+|No switch for storage     |Switchless configuration via Azure portal or ARM template deployment is only supported for 1, 2 or 3 node clusters. <br><br>1 or 2 node storage switchless clusters can be deployed using the Azure portal or ARM templates.<br><br>3 node storage switchless clusters can be deployed only using ARM templates.<br><br>Scale out operations are not supported with the switchless deployments. Any change to the number of nodes after the deployment requires a manual configuration. <br><br>At least 2 network intents are required when using storage switchless configuration.        |
 |Network switch for storage     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic. <br><br>You can use this architecture with any number of nodes between 1 to 16. <br><br>Although is not enforced, you can use a single intent for all your network traffic types (Management, Compute, and Storage)        |
 
 The following diagram summarizes storage connectivity options available to you for various deployments:
@@ -93,6 +93,8 @@ Network ATC configures a unique intent that includes management, compute, and st
 
 - At least two network adapter ports are recommended to ensure High Availability.
 
+- At least 10 Gbps network interfaces are recommended to support RDMA traffic for storage.
+
 ### Network intent: Group management and compute traffic
 
 Network ATC configures two intents. The first intent includes management and compute network traffic, and the second intent includes only storage network traffic. Each intent must have a different set of network adapter ports.
@@ -103,6 +105,8 @@ You can use this option for both switched and switchless storage connectivity, i
 
 - A physical switch is used for RDMA if you use the network switch for storage.
 
+- At least 10 Gbps network interfaces are recommended to support RDMA traffic for storage.
+
 ### Network intent: Group compute and storage traffic
 
 Network ATC configures two intents. The first intent includes compute and storage network traffic, and the second intent includes only management network traffic. Each intent must use a different set of network adapter ports.
@@ -112,6 +116,8 @@ Network ATC configures two intents. The first intent includes compute and storag
 - This option requires a physical switch for RDMA.
 
 - At least two network adapter ports are recommended to ensure high availability.
+
+- At least 10 Gbps network interfaces are recommended for the compute and storage intent to support RDMA traffic.
 
 - Even when the management intent is declared without a compute intent, Network ATC creates a Switch Embedded Teaming (SET) virtual switch to provide high availability to the management network.
 
@@ -124,6 +130,8 @@ Define up to three intents using your own configuration as long as at least one 
 - Use this option when another compute intent is required or when you want to fully separate the distinct types of traffic over different network adapters.
 
 - Use at least two network adapter ports for each intent to ensure high availability.
+
+- At least 10 Gbps network interfaces are recommended for the compute and storage intent to support RDMA traffic.
 
 The following diagram summarizes network intent options available to you for various deployments:
 
