@@ -8,13 +8,13 @@
     href: whats-new.md
   - name: Release notes
     items:
-    - name: Known issues 2402 (Current)
-      href: known-issues-2402.md
+    - name: Known issues 2402 - Current
+      href: index.yml
     - name: Known issues 2311
       items:
-      - name: 2311.3 release (Current)
+      - name: 2311.3 release - Current
         href: known-issues-2311-3.md
-      - name: 2311.2 release GA
+      - name: 2311.2 release - GA
         href: known-issues-2311-2.md
       - name: 2311 release (preview)
         href: known-issues-2311.md
