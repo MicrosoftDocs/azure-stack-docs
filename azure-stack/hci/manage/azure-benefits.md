@@ -8,7 +8,7 @@ ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
 ms.date: 11/28/2023
-ms.lastreviewed: 11/13/2023
+ms.lastreviewed: 02/23/2024
 ---
 
 # Azure Benefits on Azure Stack HCI (22H2 and earlier)
@@ -45,7 +45,7 @@ Azure Benefits relies on a built-in platform attestation service on Azure Stack 
 
 This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, in order to enable some of the same workloads and benefits available to customers in Azure. Azure Benefits returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
 
-:::image type="content" source="media/azure-benefits/cluster.png" alt-text="Architecture":::
+:::image type="content" source="media/azure-benefits/cluster.png" alt-text="Architecture." lightbox="media/azure-benefits/cluster.png":::
 
 Turning on Azure Benefits starts the service running on your Azure Stack HCI cluster:
 
@@ -135,7 +135,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
 2. Under the feature **Enable Azure Benefits**, view the host attestation status:
 
-   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Screenshot of Azure Benefit Attestation status.":::
+   :::image type="content" source="media/azure-benefits/attestation-status.png" alt-text="Screenshot of Azure Benefit Attestation status." lightbox="media/azure-benefits/attestation-status.png":::
 
 ## [Azure CLI](#tab/azurecli)
 
