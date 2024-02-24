@@ -194,25 +194,28 @@ Once the Multus plugin is installed and running, create the Kubernetes network a
 
 1. Create a **secondarynet-conf.yaml** yaml file for the secondary network. A part of the [Multus quickstart installation](https://github.com/k8snetworkplumbingwg/multus-cni/blob/master/docs/quickstart.md), creates a **CRD** (custom resource definition), which can be used to define the configuration for all extra interfaces. The following sample YAML file adds a secondary network:
 
-    ```yaml
-    # This net-attach-def defines secondarynet-conf
-    apiVersion: "k8s.cni.cncf.io/v1"
-    kind: NetworkAttachmentDefinition
-    metadata:
-    name: secondarynet-conf
-    spec:
-    config: '{
-        "cniVersion": "0.3.1",
-        "plugins": [
-            {
-            "type": "bridge",
-            "bridge": "mynet1",
-            "ipam": {}
-            }
-        ]
-        }'
-    ---
-    ```
+```yaml
+# This net-attach-def defines secondarynet-conf
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: secondarynet-conf
+spec:
+  config: '{
+      "cniVersion": "0.3.1",
+      "plugins": [
+          {
+          "type": "bridge",
+          "bridge": "mynet1",
+          "ipam": {
+            "subnet": "10.0.0.0/24",
+            "rangeStart": "10.0.0.60",
+            "rangeEnd": "10.0.0.120"},
+            "gateway": "10.0.0.1"
+          }
+      ]
+      }'
+```
 
     > [!NOTE]
     > The official Multus documentation specifies a `macvlan` type secondary interface. However, the `macvlan` plugin isn't available by default. To use this plugin, install it before specifying the secondary net configuration. For more information about various network plugins and their sample configurations, see [Using the Multus CNI in OpenShift](https://cloud.redhat.com/blog/using-the-multus-cni-in-openshift).
@@ -225,19 +228,19 @@ Once the Multus plugin is installed and running, create the Kubernetes network a
 
 1. Create a **samplepod.yaml** file to deploy a sample pod that attaches to the previously created secondary interface. The following YAML code is a sample for creating a new pod that uses the secondary interface:
 
-    ```yaml
-    apiVersion: v1
-    kind: Pod
-    metadata:
-    name: samplepod
-    annotations:
-        k8s.v1.cni.cncf.io/networks: secondarynet-conf
-    spec:
-    containers:
-    - name: samplepod
-        command: ["/bin/ash", "-c", "trap : TERM INT; sleep infinity & wait"]
-        image: alpine
-    ```
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: samplepod
+  annotations:
+      k8s.v1.cni.cncf.io/networks: secondarynet-conf
+spec:
+  containers:
+  - name: samplepod
+    command: ["/bin/ash", "-c", "trap : TERM INT; sleep infinity & wait"]
+    image: alpine
+```
 
 1. Create the sample pod using the `samplepod.yaml` created in the previous step:
 
