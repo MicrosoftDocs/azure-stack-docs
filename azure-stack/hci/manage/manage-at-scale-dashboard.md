@@ -15,13 +15,13 @@ ms.date: 02/23/2024
 
 
 
-This article details how to manage at-scale your Azure Stack HCI systems via the dashboard in the Azure portal. You can view the status of Azure Stack HCI systems as charts or lists.
+This article details how to manage at-scale your Azure Stack HCI systems via the dashboard in the Azure portal. You can view the status of the systems as charts or lists.
 
 [!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## View the dashboard charts
 
-The Azure Stack HCI dashboard displays overview and detailed information about your clusters in form of charts.
+The Azure Stack HCI dashboard displays overview and detailed information about your clusters in the form of charts.
 
 To access the dashboard chart view, follow these steps in the Azure portal:
 
@@ -45,13 +45,13 @@ To access the dashboard chart view, follow these steps in the Azure portal:
 
 ## View the all clusters list
 
-The Azure Stack HCI dashboard list view displays information about your clusters.
+The Azure Stack HCI **All clusters** list view displays information about your clusters.
 
 To view the dashboard list view, follow these steps in the Azure portal:
 
-1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Stack HCI** > **All clusters (preview)**. The All clusters view is enhanced to include an hierarchical view of all your workloads within a cluster.
+1. In Azure portal, go to **Azure Arc** > **Infrastructure** > **Azure Stack HCI** > **All clusters (preview)**. The **All clusters** page is enhanced to include an hierarchical view of all your workloads within a cluster.
 
-   All columns can be sorted by selecting a column header. You can filter the dashboard display by Subscription, Resource group, and Region. You can also group display results using the grouping control at top right.
+   All columns can be sorted by selecting a column header. You can filter the dashboard display by subscription, resource group, and region. You can also group display results by using the grouping control at the top right.
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png" alt-text="Screenshot of the Azure Stack HCI dashboard list view." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-list-view.png":::
 
