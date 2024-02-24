@@ -2,16 +2,9 @@
 title: Modular Datacenter integration overview
 description: Learn what to expect for a successful onsite deployment of Azure Modular Datacenter (MDC), from planning to post deployment.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
-ms.assetid: 
 ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: sethm
