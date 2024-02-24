@@ -1,5 +1,5 @@
 ---
-title: Use GPUs for compute-intensive workloads
+title: Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 23H2)
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
 author: baziwane
 ms.topic: how-to
@@ -7,16 +7,20 @@ ms.date: 01/16/2024
 ms.author: rbaziwane 
 ms.lastreviewed: 03/21/2023
 ms.reviewer: sethm
-zone_pivot_groups: version-select
+
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Use GPUs for compute-intensive workloads
+# Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 23H2)
+
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
+> [!NOTE]
+> For information about GPUs in AKS on Azure Stack HCI 22H2, see [Use GPUs (HCI 22H2)](deploy-gpu-node-pool-22h2.md).
 
 Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
-::: zone pivot="aks-23h2"
 ## Supported GPU models
 
 The following GPU models are supported by AKS enabled by Azure Arc:
@@ -29,7 +33,7 @@ The following GPU models are supported by AKS enabled by Azure Arc:
 
 ## Before you begin
 
-To use GPUs in AKS, make sure you installed the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
+To use GPUs in AKS Arc, make sure you installed the necessary GPU drivers before you begin the deployment of the cluster. Follow the steps in this section.
 
 ### Step 1: install the OS
 
@@ -82,95 +86,6 @@ Once the Azure Stack HCI cluster deployment is complete, you can run the followi
 ```azurecli
 az aksarc vmsize list --custom-location <custom location ID> -g <resource group name>
 ```
-::: zone-end
-
-::: zone pivot="aks-22h2"
-## Before you begin
-
-If you are updating AKS from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin. Follow the steps in this section.
-
-### Step 1: Uninstall the Nvidia host driver
-
-On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
-
-```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
-```
-
-You should see the GPU devices appear in an error state as shown in this example output:
-
-```output
-Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
-Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
-```
-
-### Step 2: Dismount the host driver from the host
-
-When you uninstall the host driver, the physical GPU goes into an error state. You must dismount all the GPU devices from the host.
-
-For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output:
-
-```powershell
-$id1 = "<Copy and paste GPU instance id into this string>"
-$lp1 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
-Disable-PnpDevice -InstanceId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
-```
-
-To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
-
-```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video"
-```
-
-```output
-Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
-Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
-```
-
-### Step 3: Download and install the NVIDIA mitigation driver
-
-The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownload-March2009/licence.php?lang=us).
-
-See the [NVIDIA data center documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host machine.
-
-```powershell
-Invoke-WebRequest -Uri "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/nvidia_azure_stack_inf_v2022.10.13_public.zip" -OutFile "nvidia_azure_stack_inf_v2022.10.13_public.zip"
-mkdir nvidia-mitigation-driver
-Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
-```
-
-To install the mitigation driver, navigate to the folder containing the extracted files, right-click the **nvidia_azure_stack_T4_base.inf** file, and select **Install**. Check that you have the correct driver; AKS currently supports only the NVIDIA Tesla T4 GPU.
-
-You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
-
-```powershell
-pnputil /add-driver nvidia_azure_stack_T4_base.inf /install 
-pnputil /scan-devices 
-```
-
-After you install the mitigation driver, the GPUs are listed in the **OK** state under **Nvidia T4_base - Dismounted**:
-
-```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia"
-```
-
-```output
-OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
-OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
-```
-
-### Step 4: Repeat steps 1 to 3
-
-Repeat steps 1 to 3 for each node in your failover cluster.
-
-> [!IMPORTANT]
-> GPU-enabled virtual machines are not added to failover clustering in Windows Server 2019, Windows Server 2022, or Azure Stack HCI.
-
-## Install or update AKS
-
-See the AKS quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) or using [Windows Admin Center](setup.md) to install or update AKS enabled by Arc.
-::: zone-end
 
 ## Create a new workload cluster with a GPU-enabled node pool
 
@@ -294,4 +209,5 @@ If an upgrade is triggered on a cluster without extra GPU resources to facilitat
 
 ## Next steps
 
+- [Use GPUs (AKS on Azure Stack HCI 22H2)](deploy-gpu-node-pool-22h2.md)
 - [AKS overview](aks-hybrid-options-overview.md)

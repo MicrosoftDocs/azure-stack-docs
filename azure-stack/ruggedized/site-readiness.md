@@ -2,15 +2,9 @@
 title: Azure Stack Hub ruggedized site readiness for Azure Stack Hub | Microsoft Docs
 description: Learn site readiness specifications for an Azure Stack Hub ruggedized.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2021
 ms.author: wamota

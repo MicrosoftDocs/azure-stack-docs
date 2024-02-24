@@ -1,6 +1,6 @@
 ---
-title: Concepts - Get support for AKS hybrid and AKS Edge Essentials
-description: Learn about how to get support and open a support request for AKS hybrid or AKS Edge Essentials.
+title: Get support for AKS Arc and AKS Edge Essentials
+description: Learn about how to get support and open a support request for AKS enabled by Azure Arc or AKS Edge Essentials.
 ms.topic: conceptual
 ms.date: 07/12/2023
 ms.custom: fasttrack-edit
@@ -12,15 +12,16 @@ author: sethmanheim
 # Keyword: AKS support AKS help support requests
 ---
 
-# Get support for AKS hybrid and AKS Edge Essentials
+# Get support for AKS enabled by Arc and AKS Edge Essentials
 
-If you encounter an issue with AKS hybrid or AKS Edge Essentials, this article describes how to open a support request.
+If you encounter an issue with AKS enabled by Azure Arc or AKS Edge Essentials, this article describes how to open a support request.
 
 ## Go to Support + troubleshooting in the Azure portal
 
 Select the product you're using to see the relevant instructions on opening a support request.
 
 # [AKS on Azure Stack HCI](#tab/akshci)
+
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Browse to the subscription you're using for Azure Kubernetes Services on Azure Stack HCI. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
@@ -66,6 +67,7 @@ Select the product you're using to see the relevant instructions on opening a su
     :::image type="content" source="media/support/review-create.png" alt-text="Screenshot of confirmation screen to create support request.":::
 
 # [AKS Edge Essentials](#tab/aksee)
+
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Browse to the subscription you're using for AKS Edge Essentials. Select the subscription to open its dashboard.
 1. From the **Support + troubleshooting** category in the navigation menu in the left-hand pane, select **New Support Request**:
@@ -110,4 +112,4 @@ Select the product you're using to see the relevant instructions on opening a su
 
 ## Next steps
 
-- [Review support policies for AKS hybrid](./support-policies.md).
+- [Review support policies for AKS Arc](./support-policies.md)
