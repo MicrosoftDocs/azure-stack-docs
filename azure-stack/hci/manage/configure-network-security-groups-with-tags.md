@@ -5,7 +5,7 @@ ms.author: sethm
 ms.reviewer: anpaul
 ms.topic: article
 author: sethmanheim
-ms.date: 09/22/2022
+ms.date: 02/26/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
@@ -52,7 +52,7 @@ To create network security tag based network security groups, follow these steps
 
 1. In the **Create Network Security Tag** pane, enter a name for the network security tag in the **Name** field.
 
-    :::image type="content" source="media/network-security-groups-with-tags/create-network-security-tag.png" alt-text="Screenshot of the Create Network Security Tag pane.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/create-network-security-tag.png" alt-text="Screenshot of the Create Network Security Tag pane." lightbox="media/configure-network-security-groups-with-tags/create-network-security-tag.png":::
 
 1. (Optional) In the **Type** field, enter a type for the tag. This field is useful if you want to categorize tags for easy management. For example, you can have different tags with the same type "Application", such as SQL, Web, IOT, Sensor, etc.
 
@@ -80,7 +80,7 @@ To assign a network security tag while creating a new VM:
 
 1. Under **Network**, select the network security tag you created earlier, in [Create network security tag](#create-network-security-tags).
 
-    :::image type="content" source="media/network-security-groups-with-tags/assign-tag-during-vm-creation.png" alt-text="Screenshot showing the step to assign network security tag while creating a new VM.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png" alt-text="Screenshot showing the step to assign network security tag while creating a new VM." lighbox="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png":::
 
 1. Select **Create**.
 
@@ -108,7 +108,7 @@ You can assign a network security tag to an existing VM by changing its settings
 
 1. In the **Network Security Groups** pane, type a name for the network security group, and then select **Submit**.
 
-    :::image type="content" source="media/network-security-groups-with-tags/create-network-security-group.png" alt-text="Screenshot showing the Network Security Group pane.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/create-network-security-group.png" alt-text="Screenshot showing the Network Security Group pane." lightbox="media/configure-network-security-groups-with-tags/create-network-security-group.png":::
 
 1. Under **Network Security Groups**, verify that the **Provisioning state** of the new network security group shows **Succeeded**.
 
@@ -170,7 +170,7 @@ To apply a network security group to a network security tag via Windows Admin Ce
 
 1. On the **Editing Network Security Tag** pane for the selected tag, select the network security group you want to apply to the network security tag.
 
-    :::image type="content" source="media/network-security-groups-with-tags/apply-setwork-security-group-to-tag.png" alt-text="Screenshot showing how to apply an existing network security group to a network security tag.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/apply-setwork-security-group-to-tag.png" alt-text="Screenshot showing how to apply an existing network security group to a network security tag." lightbox="media/configure-network-security-groups-with-tags/apply-setwork-security-group-to-tag.png":::
 
 1. Select **Submit**.
 
