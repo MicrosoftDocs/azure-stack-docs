@@ -39,7 +39,7 @@ To access the dashboard chart view, follow these steps in the Azure portal:
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workloads.png" alt-text="Screenshot of the Azure Stack HCI dashboard VM workloads." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workloads.png":::
 
-   The dashboard displays a list view of workload details for your VM.
+   You are taken to the list view of VMs running on your Azure Stack HCI systems.
 
    :::image type="content" source="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png" alt-text="Screenshot of the Azure Stack HCI dashboard VM workload details." lightbox="media/manage-at-scale-dashboard/manage-at-scale-dashboard-workload-details.png":::
 
