@@ -3,7 +3,7 @@ title: Monitor Kubernetes audit events in AKS enabled by Azure Arc
 description: Learn how to create a diagnostic setting to access Kubernetes audit logs.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/23/2024
+ms.date: 02/26/2024
 ms.author: sethm 
 ms.lastreviewed: 02/23/2024
 ms.reviewer: guanghu
@@ -33,6 +33,8 @@ The example command is as follows:
 ```azurecli
 az monitor diagnostic-settings create –name <Diagnostics_Setting_Name> --resource <Cluster_Resource_ID> --logs "[{category:kube-audit,enabled:true},{category:kube-audit-admin,enabled:true},{category:kube-apiserver,enabled:true},{category:kube-controller-manager,enabled:true},{category:kube-scheduler,enabled:true},{category:cluster-autoscaler,enabled:true},{category:cloud-controller-manager,enabled:true},{category:guard,enabled:true},{category:csi-aksarcdisk-controller,enabled:true},{category:csi-aksarcsmb-controller,enabled:true},{category:csi-aksarcnfs-controller,enabled:true}]" --workspace <LA_Workspace_ID>
 ```
+
+:::image type="content" source="media/kubernetes-monitor-audit-events/diagnostic-settings.png" alt-text="Screenshot of portal blade showing diagnostic settings." lightbox="media/kubernetes-monitor-audit-events/diagnostic-settings.png":::
 
 AKS supports either [Azure diagnostics mode](/azure/azure-monitor/essentials/resource-logs#azure-diagnostics-mode) or [resource-specific mode](/azure/azure-monitor/essentials/resource-logs#resource-specific) for resource logs. The mode specifies the tables in the Log Analytics workspace to which the data is sent. Azure diagnostics mode sends all data to the [AzureDiagnostics table](/azure/azure-monitor/reference/tables/azurediagnostics), while resource-specific mode sends data to [ArcK8SAudit](/azure/azure-monitor/reference/tables/arck8saudit), [ArcK8SAuditAdmin](/azure/azure-monitor/reference/tables/arck8sauditadmin), and [ArcK8SControlPlane](/azure/azure-monitor/reference/tables/arck8scontrolplane), as shown in the log category table in the next section.
 
