@@ -4,7 +4,7 @@ description: Connect your AKS Edge Essentials clusters to Arc
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/06/2023
+ms.date: 02/26/2024
 ms.custom: template-how-to
 ---
 
@@ -35,7 +35,7 @@ Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber
 
 ## Step 2: configure your Azure environment
 
-Provide details of your Azure subscription in the **aksedge-config.json** file under the `Arc` section as described in the following table. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a service principal with the built-in `Microsoft.Kubernetes connected cluster role` in order to access resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can [follow the steps here](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal).
+Provide details of your Azure subscription in the [**aksedge-config.json**](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file under the `Arc` section as described in the following table. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a service principal with the built-in `Microsoft.Kubernetes connected cluster role` in order to access resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can [follow the steps here](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal).
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
