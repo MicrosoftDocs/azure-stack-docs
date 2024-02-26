@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/23/2024
+ms.date: 02/26/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -93,7 +93,7 @@ Network ATC configures a unique intent that includes management, compute, and st
 
 - At least two network adapter ports are recommended to ensure High Availability.
 
-- At least 10 Gbps network interfaces are recommended to support RDMA traffic for storage.
+- At least 10 Gbps network interfaces are required to support RDMA traffic for storage.
 
 ### Network intent: Group management and compute traffic
 
@@ -105,7 +105,7 @@ You can use this option for both switched and switchless storage connectivity, i
 
 - A physical switch is used for RDMA if you use the network switch for storage.
 
-- At least 10 Gbps network interfaces are recommended to support RDMA traffic for storage.
+- At least 10 Gbps network interfaces are required to support RDMA traffic for storage.
 
 ### Network intent: Group compute and storage traffic
 
