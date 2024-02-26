@@ -80,7 +80,7 @@ To assign a network security tag while creating a new VM:
 
 1. Under **Network**, select the network security tag you created earlier, in [Create network security tag](#create-network-security-tags).
 
-    :::image type="content" source="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png" alt-text="Screenshot showing the step to assign network security tag while creating a new VM." lighbox="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png" alt-text="Screenshot showing the step to assign network security tag while creating a new VM." lightbox="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png":::
 
 1. Select **Create**.
 
