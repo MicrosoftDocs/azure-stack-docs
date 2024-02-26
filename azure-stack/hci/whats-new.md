@@ -19,6 +19,24 @@ Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solut
 
 The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
 
+## Features and improvements in 2402 
+
+This section lists the new features and improvements in the 2402 release of Azure Stack HCI, version 23H2.
+
+### New built in security role
+
+This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Stack HCI, version 23H2. The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster. To take advantage of the constraint permissions, remove the permissions that were applied before. 
+    
+    An update health check is also included in this release that confirms that the new role is assigned before you apply the update.
+
+### Changes to Active Directory preparation
+
+Beginning this release, the Active Directory preparation process is simplified. You can use your own existing process to create an Organizational Unit (OU), a user account withappropriate permissions, and with Group policy inheritance blocked  for the Group Policy Object (GPO). You can also use the Microsoft provided script to create the OU. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
+
+### New documentation for network considerations
+
+We are also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./index.yml).
+
 ## Features and improvements in 2311.2 GA
 
 This section lists the new features and improvements in the 2311.2 General Availability (GA) release for Azure Stack HCI, version 23H2.
