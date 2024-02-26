@@ -116,7 +116,7 @@ In addition to the storage witness access key, you also need to similarly encode
 |Parameter  |Description  |
 |---------|---------|
 |`localaccountname`, `localaccountpassword`     |Username and password for the local administrator for all the servers in your cluster. The credentials are identical for all the servers in your system.         |
-|`domainaccountname`, `omainaccountpassword`      |The new username and password that were created with the appropriate permissions for deployment during the Active Directory preparation step for the `AzureStackLCMUserCredential` object. This account is the same as the user account used by the Azure Stack HCI deployment. <br> For more information, see [Prepare the Active Directory](./deployment-prep-active-directory.md#prepare-active-directory) to get these credentials.        |
+|`domainaccountname`, `domainaccountpassword`      |The new username and password that were created with the appropriate permissions for deployment during the Active Directory preparation step for the `AzureStackLCMUserCredential` object. This account is the same as the user account used by the Azure Stack HCI deployment. <br> For more information, see [Prepare the Active Directory](./deployment-prep-active-directory.md#prepare-active-directory) to get these credentials.        |
 |`clientId`, `clientSecretValue`       |The application (client) ID for the SPN that you created as a prerequisite to this deployment and the corresponding client secret value for the application ID.          |
 
 Run the PowerShell script used in the earlier step to encode these values:
