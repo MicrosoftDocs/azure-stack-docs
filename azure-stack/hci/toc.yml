@@ -72,6 +72,8 @@
         href: plan/two-node-decision-matrix.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
+  - name: Review cloud deployment network considerations
+    href: plan/cloud-deployment-network-considerations.md
   - name: Review security features
     href: concepts/security-features.md
   - name: Assess environment readiness
