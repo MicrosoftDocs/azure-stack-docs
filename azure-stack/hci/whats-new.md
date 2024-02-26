@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/12/2024
+ms.date: 02/26/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -27,7 +27,7 @@ This section lists the new features and improvements in the 2402 release of Azur
 
 This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Stack HCI, version 23H2. The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster. To take advantage of the constraint permissions, remove the permissions that were applied before. 
     
-    An update health check is also included in this release that confirms that the new role is assigned before you apply the update.
+An update health check is also included in this release that confirms that the new role is assigned before you apply the update.
 
 ### Changes to Active Directory preparation
 
