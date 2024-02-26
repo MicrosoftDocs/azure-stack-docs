@@ -4,11 +4,11 @@ ms.author: v-mandhiman
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 02/23/2024
+ms.date: 02/26/2024
 ms.reviewer: alkohli
 ---
 
-To view settings via the Azure portal, you must apply the MCSB initiative using one of the following methods:
+To view the security settings via the Azure portal, you must apply the MCSB initiative using one of the following methods:
 
 - (Recommended) Turn on the Microsoft Defender for Cloud Foundational cloud security posture management (CSPM) plan, at no extra cost, and confirm that MCSB is applied, as described below.
 - Manually apply the Azure compute security baseline in Azure policy to all cluster servers. See [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
