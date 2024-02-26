@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/26/2024
+ms.date: 02/25/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
