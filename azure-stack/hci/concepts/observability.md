@@ -3,7 +3,7 @@ title: Azure Stack HCI observability
 description: Learn about observability in Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
-ms.date: 02/23/2024
+ms.date: 02/26/2024
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
