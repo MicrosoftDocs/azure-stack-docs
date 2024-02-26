@@ -19,7 +19,7 @@ Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solut
 
 The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
 
-# Features and improvements in 2311.3
+## Features and improvements in 2311.3
 
 A new Azure built in role called `Azure Resource Bridge Deployment Role` is available to harden the security posture for Azure Stack HCI, version 23H2. It applies the concept of the least number of privileges and must be assigned to the service principal used by Azure resource bridge. Previously assigned permissions must be removed to take advantage of the constraint permission.
 
