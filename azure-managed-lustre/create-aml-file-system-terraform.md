@@ -10,6 +10,7 @@ ms.date: 10/25/2023
 ms.author: pauljewell
 content_well_notification: 
   - AI-contribution
+ai-usage: ai-assisted
 ---
 
 # Create an Azure Managed Lustre file system using Terraform
