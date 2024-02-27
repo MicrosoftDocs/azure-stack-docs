@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2311.2 GA re
 description: Read about the known issues and fixed issues in Azure Stack HCI 2311 General Availability (GA) release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/09/2024
+ms.date: 02/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
