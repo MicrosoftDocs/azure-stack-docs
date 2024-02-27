@@ -33,6 +33,10 @@ An update health check is also included in this release that confirms that the n
 
 Beginning this release, the Active Directory preparation process is simplified. You can use your own existing process to create an Organizational Unit (OU), a user account withappropriate permissions, and with Group policy inheritance blocked  for the Group Policy Object (GPO). You can also use the Microsoft provided script to create the OU. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
 
+### Region expansion
+
+Azure Stack HCI, version 23H2 solution is now supported in Australia. For more information, see [Azure Stack HCI supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
 ### New documentation for network considerations
 
 We are also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./index.yml).
