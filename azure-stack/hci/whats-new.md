@@ -81,7 +81,7 @@ Starting with this release, the following workloads are generally available on A
 
 ## Features and improvements in 2311
 
-This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2.
+This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2. Additionally, this section includes features and improvements that were originally released for 2310 starting with cloud-based deployment.
 
 ### AKS on Azure Stack HCI, version 23H2
 
