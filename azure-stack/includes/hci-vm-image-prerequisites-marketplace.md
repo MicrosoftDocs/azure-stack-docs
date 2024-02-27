@@ -4,7 +4,7 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 10/12/2023
+ms.date: 02/27/2024
 ---
 
 - Make sure to review and [Complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
@@ -13,4 +13,4 @@ ms.date: 10/12/2023
 
    - Go to the **Overview > Server** page in the Azure Stack HCI cluster resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
     
-    :::image type="content" source="../hci/manage/media/manage-vm-resources/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../hci/manage/media/manage-vm-resources/azure-arc-connected.png":::
+    :::image type="content" source="../hci/manage/media/virtual-machine-image-azure-marketplace/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../hci/manage/media/virtual-machine-image-azure-marketplace/azure-arc-connected.png":::
