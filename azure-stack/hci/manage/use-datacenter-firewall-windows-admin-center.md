@@ -29,7 +29,7 @@ You can create a network security group in Windows Admin Center.
 1. Under **Network security groups**, select the **Inventory** tab, and then select **New**.
 1. In the **Network Security Group** pane, type a name for the network security group, and then select **Submit**.
 
-    :::image type="content" source="./media/network-security-groups/create-network-security-group.png" alt-text="Screenshot of Windows Admin Center home screen showing the Network Security Group Name box." lightbox="./media/network-security-groups/create-network-security-group.png":::
+    :::image type="content" source="./media/use-datacenter-firewall-windows-admin-center/create-network-security-group.png" alt-text="Screenshot of Windows Admin Center home screen showing the Network Security Group Name box." lightbox="./media/use-datacenter-firewall-windows-admin-center/create-network-security-group.png":::
 
 1. Under **Network security groups**, verify that the **Provisioning state** of the new network security group shows **Succeeded**.
 
@@ -42,7 +42,7 @@ After you create a network security group, you’re ready to create network secu
 1. Under **Network security groups**, select the **Inventory** tab, and then select the network security group that you just created.
 1. Under **Network security rule**, select **New**.
 
-   :::image type="content" source="./media/network-security-groups/create-network-security-group-rules.png" alt-text="Screenshot of Windows Admin Center showing the Network security rule pane." lightbox="./media/network-security-groups/create-network-security-group-rules.png":::
+   :::image type="content" source="./media/use-datacenter-firewall-windows-admin-center/create-network-security-group-rules.png" alt-text="Screenshot of Windows Admin Center showing the Network security rule pane." lightbox="./media/use-datacenter-firewall-windows-admin-center/create-network-security-group-rules.png":::
 
 1. In the **Network security rule** pane, provide the following information:
     1. **Name** of the rule.
@@ -64,7 +64,7 @@ After you create a network security group and rules for it, you need to apply th
 1. Under **Tools**, scroll down to the **Networking** area, and select **Virtual networks**.
 1. Select the **Inventory** tab, and then select a virtual network. On the subsequent page, select a virtual network subnet, and then select **Settings**.
 
-    :::image type="content" source="./media/network-security-groups/apply-network-security-group-virtual-network.png" alt-text="Screenshot of Windows Admin Center showing the Virtual subnet pane." lightbox="./media/network-security-groups/apply-network-security-group-virtual-network.png":::
+    :::image type="content" source="./media/use-datacenter-firewall-windows-admin-center/apply-network-security-group-virtual-network.png" alt-text="Screenshot of Windows Admin Center showing the Virtual subnet pane." lightbox="./media/use-datacenter-firewall-windows-admin-center/apply-network-security-group-virtual-network.png":::
 
 1. Select a network security group from the drop-down list and then select **Submit**.
 
@@ -90,7 +90,7 @@ You can apply a network security group to a network interface, either while crea
 1. On the **Settings** page, select **Networks**.
 1. Scroll down to **Network security group**, expand the drop-down list, select a network security group, and select **Save network settings**.
 
-    :::image type="content" source="./media/network-security-groups/apply-network-security-group-network-interface.png" alt-text="Screenshot of Windows Admin Center showing the Network setting option to associate a network security group with a network interface." lightbox="./media/network-security-groups/apply-network-security-group-network-interface.png":::
+    :::image type="content" source="./media/use-datacenter-firewall-windows-admin-center/apply-network-security-group-network-interface.png" alt-text="Screenshot of Windows Admin Center showing the Network setting option to associate a network security group with a network interface." lightbox="./media/use-datacenter-firewall-windows-admin-center/apply-network-security-group-network-interface.png":::
 
     Completing the last step associates the network security group with the network interface and applies it to all incoming and outgoing traffic for the network interface.
 
@@ -107,7 +107,7 @@ You can easily view all the network security groups in your cluster in a list.
     - Delete a network security group.
     - If you select a network security group in the list, you can view its rules. You can then add, delete, or modify network security group rule settings.
 
-        :::image type="content" source="./media/network-security-groups/get-network-security-groups-list.png" alt-text="Screenshot of Windows Admin Center showing a list of network security groups on the Inventory tab." lightbox="./media/network-security-groups/get-network-security-groups-list.png":::
+        :::image type="content" source="./media/use-datacenter-firewall-windows-admin-center/get-network-security-groups-list.png" alt-text="Screenshot of Windows Admin Center showing a list of network security groups on the Inventory tab." lightbox="./media/use-datacenter-firewall-windows-admin-center/get-network-security-groups-list.png":::
 
 ## Delete a network security group
 
@@ -120,7 +120,7 @@ You can delete a network security group if you no longer need it.
 1. Select the **Inventory** tab, select a network security group in the list, and then select **Delete**.
 1. On the **Delete Confirmation** prompt select **Yes**.
 
-    :::image type="content" source="./media/network-security-groups/delete-network-security-group.png" alt-text="Screenshot of Windows Admin Center showing the Delete confirmation prompt to delete a network security group." lightbox="./media/network-security-groups/delete-network-security-group.png":::
+    :::image type="content" source="./media/use-datacenter-firewall-windows-admin-center/delete-network-security-group.png" alt-text="Screenshot of Windows Admin Center showing the Delete confirmation prompt to delete a network security group." lightbox="./media/use-datacenter-firewall-windows-admin-center/delete-network-security-group.png":::
 
 1. Next to the search box, select **Refresh** to ensure that the network security group has been deleted.
 
