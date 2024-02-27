@@ -2,14 +2,9 @@
 title: Recover data in Azure Stack with Infrastructure Backup Service - MDC
 description: Learn how to back up and restore configuration and service data in Azure Stack using the Infrastructure Backup Service. For a Modular Data Center (MDC).
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-
 ms.service: azure-stack
-ms.workload: tzl
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2021
 ms.author: sethm

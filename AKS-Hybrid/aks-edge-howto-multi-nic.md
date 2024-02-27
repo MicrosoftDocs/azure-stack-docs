@@ -199,19 +199,22 @@ Once the Multus plugin is installed and running, create the Kubernetes network a
     apiVersion: "k8s.cni.cncf.io/v1"
     kind: NetworkAttachmentDefinition
     metadata:
-    name: secondarynet-conf
+      name: secondarynet-conf
     spec:
-    config: '{
-        "cniVersion": "0.3.1",
-        "plugins": [
-            {
-            "type": "bridge",
-            "bridge": "mynet1",
-            "ipam": {}
-            }
-        ]
-        }'
-    ---
+      config: '{
+          "cniVersion": "0.3.1",
+          "plugins": [
+              {
+              "type": "bridge",
+              "bridge": "mynet1",
+              "ipam": {
+                "subnet": "10.0.0.0/24",
+                "rangeStart": "10.0.0.60",
+                "rangeEnd": "10.0.0.120"},
+                "gateway": "10.0.0.1"
+              }
+          ]
+          }'
     ```
 
     > [!NOTE]
@@ -229,12 +232,12 @@ Once the Multus plugin is installed and running, create the Kubernetes network a
     apiVersion: v1
     kind: Pod
     metadata:
-    name: samplepod
-    annotations:
-        k8s.v1.cni.cncf.io/networks: secondarynet-conf
+      name: samplepod
+      annotations:
+          k8s.v1.cni.cncf.io/networks: secondarynet-conf
     spec:
-    containers:
-    - name: samplepod
+      containers:
+      - name: samplepod
         command: ["/bin/ash", "-c", "trap : TERM INT; sleep infinity & wait"]
         image: alpine
     ```
