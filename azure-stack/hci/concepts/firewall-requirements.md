@@ -38,7 +38,7 @@ This article describes how to optionally use a highly locked-down firewall confi
 
 The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist. 
 
-Please also follow the required firewall requirement of [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions).
+Please also follow the required firewall requirements for [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions).
 
 > [!NOTE]
 > The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
