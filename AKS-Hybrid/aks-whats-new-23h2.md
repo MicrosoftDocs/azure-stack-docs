@@ -48,12 +48,12 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Autoscaling**. You can now enable the auto-scaling feature while create or update the kubernetes cluters/nodepools. 
-- **Support for NVIDIA A16**. You can now create node pools with new VM sizes with GPU NVIDIA A16. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
-- **Manually images download** You can now manually download VHD images of kubernetes clusters and upload to Azure Stack HCI cluster, see [Download Kubernetes VHDs manually](offline-download.md).
-- **Diagnostics settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
-- **Certificate Expiration**. You can now shutdown the kubernetes clusters up to 7 days without any certificate expiration issue.
-- **Update status**. You can now view the status of ongoing upgrade. 
+- **Autoscaling**. You can now enable the autoscaling feature when you create or update Kubernetes cluters and nodepools. 
+- **Support for NVIDIA A16**. You can now create node pools in new VM sizes with GPU NVIDIA A16. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
+- **Manual image download**. You can now manually download VHD images of Kubernetes clusters and upload to an Azure Stack HCI cluster. See [Download Kubernetes VHDs manually](offline-download.md).
+- **Diagnostic settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
+- **Certificate expiration**. You can now shut down Kubernetes clusters for up to 7 days without any certificate expiration issues.
+- **Update status**. You can now view the status of ongoing upgrades.
 
 ### Release 2311.2
 
