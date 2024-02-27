@@ -48,7 +48,7 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Autoscaling**. You can now enable the autoscaling feature when you create or update Kubernetes cluters and nodepools. 
+- **Autoscaling**. You can now enable the autoscaling feature when you create or update Kubernetes cluters and node pools. 
 - **Support for NVIDIA A16**. You can now create node pools in new VM sizes with GPU NVIDIA A16. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
 - **Manual image download**. You can now manually download VHD images of Kubernetes clusters and upload to an Azure Stack HCI cluster. See [Download Kubernetes VHDs manually](offline-download.md).
 - **Diagnostic settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
