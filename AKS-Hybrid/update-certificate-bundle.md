@@ -21,15 +21,15 @@ This scenario uses a modified version of the [noProxy settings](proxy-change.md)
 ## Prerequisites and details
 
 - An AKS enabled by Azure Arc deployment running the October 2022 release or later.
-- The certificates are not immediately available upon running the command; they are deployed on the next update.
-- You can check if there is an update available using the PowerShell cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
-- Currently there is no command to view, change, or delete scheduled update. Once the update is applied, it is possible to SSH into the container host and see the certs installed, then delete them.
+- The certificates aren't immediately available upon running the command; they're deployed on the next update.
+- You can check if there's an update available using the PowerShell cmdlet [Get-AksHciClusterUpdates](reference/ps/get-akshciclusterupdates.md).
+- Currently there's no command to view, change, or delete scheduled update. Once the update is applied, it's possible to SSH into the container host and see the certs installed, then delete them.
 
 ## Certificate format
 
 - The certificates should be specified in a single .crt file in PEM format. This format is applicable for updating certificates on Linux container hosts.
 - It's important to make sure the certificates are added in the right order in a single .crt file. For example, `<.leaf.crt>`, `<intermediate.crt>`,`<root.crt>`.
-- The contents of the certificate file are not validated. You must ensure that the file contains the right certificates and is in the correct format.
+- The contents of the certificate file aren't validated. You must ensure that the file contains the right certificates and is in the correct format.
 
 ## Example: create a single certificate bundle
 
