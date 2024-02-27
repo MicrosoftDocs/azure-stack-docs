@@ -35,7 +35,7 @@ Here are the issues fixed in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|-------|
 
-Microsoft isn't currently aware of any fixed issues with this release.
+Microsoft isn't currently aware of any fixed issues with this release. All the known issues are carried over from previous releases.
 
 ## Known issues in this release
 
