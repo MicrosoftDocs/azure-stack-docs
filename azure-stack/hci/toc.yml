@@ -76,6 +76,8 @@
         href: plan/two-node-decision-matrix.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
+  - name: Review cloud deployment network considerations
+    href: plan/cloud-deployment-network-considerations.md
   - name: Review security features
     href: concepts/security-features.md
   - name: Assess environment readiness
@@ -213,10 +215,13 @@
       href: manage/manage-syslog-forwarding.md
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
+      
   - name: Clusters
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
+    - name: Use dashboard to manage at-scale
+      href: manage/manage-at-scale-dashboard.md
 
   - name: Azure services
     items:
