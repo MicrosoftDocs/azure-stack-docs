@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 01/30/2024
+ms.date: 02/27/2024
 ---
 
 # Create Azure Stack HCI VM image using images in a local share
