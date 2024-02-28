@@ -231,7 +231,7 @@ Follow these steps to start event monitoring for Dell APEX Cloud Platform for Mi
 
 1. Enable monitoring for the Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure feature. For instructions, see [Enable monitoring for a feature](#enable-monitoring-for-a-feature).
 
-1. Select the **Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure** feature name from the **Overview** tab to open the workbook.
+1. Select the **Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure** feature from the **Overview** tab to open the workbook.
 
     :::image type="content" source="media/monitor-features/select-dell-workbook.png" alt-text="Screenshot of the Overview tab listing the Dell workbook." lightbox="media/monitor-features/select-dell-workbook.png":::
 
