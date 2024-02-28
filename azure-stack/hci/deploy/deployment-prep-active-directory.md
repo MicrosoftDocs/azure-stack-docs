@@ -15,10 +15,10 @@ ms.subservice: azure-stack-hci
 
 This article describes how to prepare your Active Directory environment before you deploy Azure Stack HCI, version 23H2.
 
-Active Directory requirements for Azure Stack HCI 23H2 include:
+Active Directory requirements for Azure Stack HCI include:
 
 - A dedicated Organization Unit (OU).
-- Group policy inheritance must be blocked for the applicable Group Policy Object (GPO).
+- Group policy inheritance that is blocked for the applicable Group Policy Object (GPO).
 - A user account that has permission to join computers to Active Directory and create the cluster name object (CNO).
 
 > [!NOTE]
@@ -69,8 +69,6 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts.
 
-<!-->> [!NOTE]
-> - In this release, only the Active Directory prepared via the provided module is supported.-->
 
 To prepare and configure Active Directory, follow these steps:
 
