@@ -84,7 +84,7 @@ To use SConfig, sign in to the server running the Azure Stack HCI operating syst
 :::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
 > [!IMPORTANT]
-> Do not install Windows Updates using SConfig. Updates are installed as part of the deployment process. Installing updates using SConfig will cause the deployment to fail.
+> Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
 
 Follow these steps to configure the operating system using SConfig:
 
