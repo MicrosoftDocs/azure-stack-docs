@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 02/12/2024
+ms.date: 02/27/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -104,7 +104,7 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-2. Select an existing Storage account or create a new Storage account to store the cluster witness file. 
+2. Select an existing Storage account or create a new Storage account to store the cluster witness file.
 
     When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
 
@@ -113,7 +113,7 @@ Choose whether to create a new configuration for this system or to load deployme
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
-4. Enter the **Computer name prefix** used when the domain was prepared for deployment (some use the same name as the OU name).
+4. Enter the **Computer name prefix** used by the `AsHciDeploymentPrefix` parameter when the domain was prepared for deployment (some use the same name as the OU name).
 5. Enter the **OU** created for this deployment.
    For example: ``OU=HCI01,DC=contoso,DC=com``
 6. Enter the **Deployment account** credentials.
