@@ -598,9 +598,9 @@ Follow these steps to deploy the ARM template:
 
 1. Download the sample Bicep template below from the [Azure QuickStarts Repo](https://aka.ms/hci-vmbiceptemplate).
 1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Stack HCI cluster.
-1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli.md) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell.md)
+1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
 
-:::code language="bicep" source="~/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
+:::code language="bicep" source="~/quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
 
 ---
 
