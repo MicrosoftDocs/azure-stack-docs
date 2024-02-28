@@ -36,6 +36,8 @@ Microsoft isn't currently aware of any fixed issues with this release.
 
 Here are the known issues in this release:
 
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
 | Security <!--26865704--> |In this release, if you enable Dynamic Root of Measurement (DRTM) using the `Enable-AzSSecurity` cmdlet, you receive the following error:<br> ```DRTM setting is not supported on current release at C:\ProgramFiles\WindowsPowerShell\Modules\AzureStackOSConfigAgent\AzureStackOSConfigAgent psm1:4307 char:17 + ...throw "DRTM setting is not supported on current release".```  |DRTM is not supported in this release.|
 
 ## Known issues from previous releases
