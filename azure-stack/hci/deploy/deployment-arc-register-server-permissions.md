@@ -90,7 +90,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`SubscriptionID`    |The ID of the subscription used to register your servers with Azure Arc.         |
     |`TenantID`          |The tenant ID used to register your servers with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
-    |`Region`            |The Azure region used for registration. For this release, only the `eastus` and `westeurope` are supported.          |
+    |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
     |`AccountID`         |The user who will register and deploy the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
     
@@ -146,7 +146,7 @@ Before you begin, make sure you've completed the following prerequisites:
 1. Finally run the Arc registration script. The script takes a few minutes to run.
 
     ```powershell
-    #Invoke the registration script. For this release, eastus and westeurope regions are supported.
+    #Invoke the registration script. Use a supported region.
     Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
@@ -224,15 +224,9 @@ Before you begin, make sure you've completed the following prerequisites:
 
         :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Stack HCI registered servers with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
 
-    > [!IMPORTANT]
-    > In some instances, running the Arc registration script doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](../deploy/deploy-via-portal.md).
-
-
 ## Assign required permissions for deployment
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
-
-
 
 1. In the Azure portal, go to the subscription used to register the servers. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
@@ -242,7 +236,6 @@ This section describes how to assign Azure permissions for deployment from the A
 
     - **Azure Stack HCI Administrator**
     - **Reader**
-
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
@@ -256,11 +249,9 @@ This section describes how to assign Azure permissions for deployment from the A
  
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
-
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
-
 
 ## Next steps
 
