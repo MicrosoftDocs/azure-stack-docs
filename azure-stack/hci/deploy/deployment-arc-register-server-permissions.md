@@ -224,15 +224,9 @@ Before you begin, make sure you've completed the following prerequisites:
 
         :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Stack HCI registered servers with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
 
-    > [!IMPORTANT]
-    > In some instances, running the Arc registration script doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](../deploy/deploy-via-portal.md).
-
-
 ## Assign required permissions for deployment
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
-
-
 
 1. In the Azure portal, go to the subscription used to register the servers. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
@@ -242,7 +236,6 @@ This section describes how to assign Azure permissions for deployment from the A
 
     - **Azure Stack HCI Administrator**
     - **Reader**
-
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
@@ -256,11 +249,9 @@ This section describes how to assign Azure permissions for deployment from the A
  
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
-
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
-
 
 ## Next steps
 
