@@ -69,8 +69,8 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts.
 
-> [!NOTE]
-> TO REMOVE? - In this release, only the Active Directory prepared via the provided module is supported.
+<!-->> [!NOTE]
+> - In this release, only the Active Directory prepared via the provided module is supported.-->
 
 To prepare and configure Active Directory, follow these steps:
 
@@ -103,12 +103,12 @@ To prepare and configure Active Directory, follow these steps:
 
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-1.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-1.png":::
 
-REMOVE?
+<!--
     :::image type="content" source="media/deployment-prep-active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/deployment-prep-active-directory/active-directory-2.png":::
 
 
 REMOVE?
-    :::image type="content" source="media/deployment-prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-prep-active-directory/active-directory-3.png":::
+    :::image type="content" source="media/deployment-prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-prep-active-directory/active-directory-3.png":::-->
 
 > [!NOTE]
 > If you are repairing a single server, do not delete the existing OU. If the server volumes are encrypted, deleting the OU removes the BitLocker recovery keys.
