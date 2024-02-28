@@ -19,6 +19,32 @@ Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solut
 
 The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
 
+## Features and improvements in 2402
+
+This section lists the new features and improvements in the 2402 release of Azure Stack HCI, version 23H2.
+
+### New built in security role
+
+This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Stack HCI, version 23H2. If you provisioned a cluster prior to January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
+
+The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster.
+
+To take advantage of the constraint permissions, remove the permissions that were applied before. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
+    
+An update health check is also included in this release that confirms that the new role is assigned before you apply the update.
+
+### Changes to Active Directory preparation
+
+Beginning this release, the Active Directory preparation process is simplified. You can use your own existing process to create an Organizational Unit (OU), a user account with appropriate permissions, and with Group policy inheritance blocked for the Group Policy Object (GPO). You can also use the Microsoft provided script to create the OU. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
+
+### Region expansion
+
+Azure Stack HCI, version 23H2 solution is now supported in Australia. For more information, see [Azure Stack HCI supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
+### New documentation for network considerations
+
+We are also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./plan/cloud-deployment-network-considerations.md).
+
 ## Features and improvements in 2311.3
 
 A new Azure built in role called `Azure Resource Bridge Deployment Role` is available to harden the security posture for Azure Stack HCI, version 23H2. It applies the concept of the least number of privileges and must be assigned to the service principal used by Azure resource bridge. Previously assigned permissions must be removed to take advantage of the constraint permission.
