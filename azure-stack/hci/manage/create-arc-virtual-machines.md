@@ -52,7 +52,7 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 - [Download the sample ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
-- # [Bicep template](#tab/biceptemplate)
+# [Bicep template](#tab/biceptemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
