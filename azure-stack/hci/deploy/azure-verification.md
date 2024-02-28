@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 02/09/2024
+ms.date: 02/28/2024
 ms.lastreviewed: 11/28/2023
 ---
 
@@ -175,7 +175,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 - To check that the VMs can access Azure VM verification on the host, run the following command on the VM:
 
   ```powershell
-  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01"
+  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http:// 127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" – usedefaultcredentials
   ```
 
 ### [Azure portal](#tab/azureportal)
