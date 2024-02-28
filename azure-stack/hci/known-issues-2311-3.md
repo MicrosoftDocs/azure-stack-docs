@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2311.3 relea
 description: Read about the known issues and fixed issues in Azure Stack HCI 2311.3 release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 02/26/2024
+ms.date: 02/28/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -30,16 +30,13 @@ Release notes for this version include the issues fixed in this release, known i
 
 ## Fixed issues
 
-Here are the issues fixed in this release:
-
-|Feature|Issue|Workaround/Comments|
-|------|------|-------|
-
-Microsoft isn't currently aware of any fixed issues with this release. All the known issues are carried over from previous releases.
+Microsoft isn't currently aware of any fixed issues with this release. 
 
 ## Known issues in this release
 
-Microsoft isn't currently aware of any issues with this release. All the known issues are carried over from previous releases.
+Here are the known issues in this release:
+
+| Security <!--26865704--> |In this release, if you enable Dynamic Root of Measurement (DRTM) using the `Enable-AzSSecurity` cmdlet, you receive the following error:<br> ```DRTM setting is not supported on current release at C:\ProgramFiles\WindowsPowerShell\Modules\AzureStackOSConfigAgent\AzureStackOSConfigAgent psm1:4307 char:17 + ...throw "DRTM setting is not supported on current release".```  |DRTM is not supported in this release.|
 
 ## Known issues from previous releases
 
