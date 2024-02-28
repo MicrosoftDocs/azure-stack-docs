@@ -13,7 +13,19 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to use Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2](../whats-new.md).
+This article describes how to use Windows Defender Application Control (WDAC) to reduce the attack surface of Azure Stack HCI. For more information, see [Manage baseline security settings on Azure Stack HCI, version 23H2](../whats-new.md).
+
+## Prerequisites
+
+Before you begin, make sure that the following prerequisites are completed:
+
+- You have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
+- You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](#apply-microsoft-cloud-security-benchmark-initiative).
+- You have at least **Owner** or **Contributor** roles in your Azure subscription to apply MCSB.
+
+### Apply Microsoft Cloud Security Benchmark initiative
+
+[!INCLUDE [hci-apply-security-benchmark-initiative](../../includes/hci-apply-security-benchmark-initiative.md)]
 
 ## View WDAC settings via Azure portal
 
