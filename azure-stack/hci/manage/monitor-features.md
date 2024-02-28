@@ -223,7 +223,7 @@ This tab shows the jobs performed overtime during the deduplication process and 
 
 The Dell APEX cloud platform for Microsoft Azure offers a turnkey on-premises infrastructure solution that empowers organizations to unlock innovation through extensive integrations, automation, and a consistent Azure experience across their IT environments.
 
-Use the Dell workbook to visualize both hardware and software events in real-time, resulting in accelerated issue detection and resolution.
+Use the Dell workbook to visualize hardware events in real-time, resulting in accelerated issue detection and resolution.
 
 Follow these steps to start event monitoring for Dell APEX Cloud Platform for Microsoft Azure:
 
@@ -231,7 +231,9 @@ Follow these steps to start event monitoring for Dell APEX Cloud Platform for Mi
 
 1. Enable monitoring for the Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure feature. For instructions, see [Enable monitoring for a feature](#enable-monitoring-for-a-feature).
 
-1. Select the feature name from the **Overview** tab to open the workbook.
+1. Select the **Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure** feature name from the **Overview** tab to open the workbook.
+
+    :::image type="content" source="media/monitor-features/select-dell-workbook.png" alt-text="Screenshot of the Overview tab listing the Dell workbook." lightbox="media/monitor-features/select-dell-workbook.png":::
 
 For information about what data is collected and the different tabs on the workbook, see [Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure](https://dl.dell.com/content/manual62439893-event-monitoring-for-dell-apex-cloud-platform-for-microsoft-azure.pdf).
 
