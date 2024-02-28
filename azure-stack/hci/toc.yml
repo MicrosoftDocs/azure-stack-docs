@@ -8,12 +8,16 @@
     href: whats-new.md
   - name: Release notes
     items:
-    - name: Known issues - 2311.2 GA (Current)
-      href: known-issues-2311-2.md
-    - name: Known issues - 2311 (preview)
-      href: known-issues-2311.md
-    - name: Known issues - 2310 (preview)
-      href: known-issues-23h2.md
+    - name: Known issues 2402 - Current
+      href: index.yml
+    - name: Known issues 2311
+      items:
+      - name: 2311.3 - Current
+        href: known-issues-2311-3.md
+      - name: 2311.2 - GA
+        href: known-issues-2311-2.md
+      - name: 2311 (preview)
+        href: known-issues-2311.md
     - name: Release information
       href: release-information-23h2.md
   - name: Compare to Windows Server
@@ -711,6 +715,8 @@
       href: whats-new-in-hci-22h2.md
     - name: What's new in version 21H2
       href: whats-new-in-hci-21h2.md
+    - name: Known issues in 2310
+      href: known-issues-2310.md
     - name: Create a VM-based lab
       href: deploy/tutorial-private-forest.md
     - name: 22H2 Supplemental Package (Preview)
