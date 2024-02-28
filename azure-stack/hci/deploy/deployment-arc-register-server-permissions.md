@@ -90,7 +90,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`SubscriptionID`    |The ID of the subscription used to register your servers with Azure Arc.         |
     |`TenantID`          |The tenant ID used to register your servers with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
-    |`Region`            |The Azure region used for registration. For this release, only the `eastus` and `westeurope` are supported.          |
+    |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
     |`AccountID`         |The user who will register and deploy the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
     
@@ -146,7 +146,7 @@ Before you begin, make sure you've completed the following prerequisites:
 1. Finally run the Arc registration script. The script takes a few minutes to run.
 
     ```powershell
-    #Invoke the registration script. For this release, eastus and westeurope regions are supported.
+    #Invoke the registration script. Use a supported region.
     Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 

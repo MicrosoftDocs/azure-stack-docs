@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/22/2024
+ms.date: 02/27/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -29,26 +29,16 @@ Active Directory requirements for Azure Stack HCI include:
 Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
-- Install the PowerShell module to prepare Active Directory. You can follow one of these options:
-    - [Download AsHciADArtifactsPreCreationTool.psm1 from GitHub](https://github.com/Azure/AzureStack-Tools/tree/master/HCI). Run the following command from the folder with the downloaded file:
-    
-        ```powershell
-        Import-Module .\AsHciADArtifactsPreCreationTool.psm1
-        ```
-    - [Download the version 2311 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2311). Run the following command from the folder where the module is located:
+- [Download and install the version 2311 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2311). Run the following command from the folder where the module is located:
 
-        ```powershell
-        Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
-        ```
+    ```powershell
+    Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
+    ```
 
-<!--You can also copy the module from the *C:\CloudDeployment\Prepare* folder on your first (staging) server and then import the module. Run this command from the folder where the module is located:
+    > [!NOTE]
+    > Make sure to uninstall any previous versions of the module before installing the new version.
 
-```azurepowershell
-Import-Module .\AsHciADArtifactsPreCreationTool.psm1
-```
--->
-
-- Obtain domain administrator access to the Active Directory domain server.
+- You have obtained permissions to create an OU. If you don't have permissions, contact your Active Directory administrator.
 
 ## Active Directory preparation module
 
@@ -70,7 +60,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts.
 
 
-To prepare and configure Active Directory, follow these steps:
+To create a dedicated OU, follow these steps:
 
 1. Sign in to a computer that is joined to your Active Directory domain as a domain administrator.
 1. Run PowerShell as administrator.
@@ -99,14 +89,8 @@ To prepare and configure Active Directory, follow these steps:
 
 1. An OU with the specified name should be created and within that OU, you'll see the deployment user.
 
-    :::image type="content" source="media/deployment-prep-active-directory/active-directory-1.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-1.png":::
+    :::image type="content" source="media/deployment-prep-active-directory/active-directory-11.png" alt-text="Screenshot of Active Directory Computers and Users window." lightbox="media/deployment-prep-active-directory/active-directory-11.png":::
 
-<!--
-    :::image type="content" source="media/deployment-prep-active-directory/active-directory-2.png" alt-text="Screenshot of Active Directory Cluster Name Object window." lightbox="media/deployment-prep-active-directory/active-directory-2.png":::
-
-
-REMOVE?
-    :::image type="content" source="media/deployment-prep-active-directory/active-directory-3.png" alt-text="Screenshot of Active Directory Users Object window." lightbox="media/deployment-prep-active-directory/active-directory-3.png":::-->
 
 > [!NOTE]
 > If you are repairing a single server, do not delete the existing OU. If the server volumes are encrypted, deleting the OU removes the BitLocker recovery keys.
