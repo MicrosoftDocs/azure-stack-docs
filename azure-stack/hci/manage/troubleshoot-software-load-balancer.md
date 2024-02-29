@@ -35,7 +35,7 @@ Follow these steps to check the configuration state of the SLB MUX through Windo
 
 1. Under **Tools**, scroll down to the **Networking** area. Select **SDN Infrastructure** and then select **Summary**. If there are issues with SLB, you will see it in the **Load Balancers MUX** section. If there are no issues, all the MUX VMs will be in the **Healthy** state.
 
-    :::image type="content" source="./media/software-load-balancer/software-load-balancer-multiplexer-state.png" alt-text="Screenshot of the SDN Infrastructure page in Windows Admin center that shows the state of Load Balancers MUX." lightbox="./media/software-load-balancer/software-load-balancer-multiplexer-state.png":::
+    :::image type="content" source="./media/troubleshoot-software-load-balancer/software-load-balancer-multiplexer-state.png" alt-text="Screenshot of the SDN Infrastructure page in Windows Admin center that shows the state of Load Balancers MUX." lightbox="./media/troubleshoot-software-load-balancer/software-load-balancer-multiplexer-state.png":::
 
 ### [PowerShell](#tab/powershell)
 
