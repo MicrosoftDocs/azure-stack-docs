@@ -37,6 +37,8 @@
         href: aks-create-clusters-portal.md      
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
+      - name: Automatically scale a Kubernetes cluster
+        href: auto-scale-aks-arc.md
     - name: Networking
       items:
       - name: Create logical networks for Kubernetes clusters
