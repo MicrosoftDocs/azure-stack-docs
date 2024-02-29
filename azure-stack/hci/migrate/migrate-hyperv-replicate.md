@@ -93,7 +93,7 @@ This step applies only if you downloaded the .VHD zipped file.
 Check that the zipped file is secure, before you deploy it.
 
 1. On the server where you downloaded the file, open an administrator command window.
-2. Run the following command to generate the hash for the VHD.
+1. Run the following command to generate the hash for the VHD.
     
     ```powershell    
     C:\>Get-FileHash -Path <file_location> -Algorithm <Hashing Algorithm>
@@ -105,23 +105,37 @@ Check that the zipped file is secure, before you deploy it.
     C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256
     ```
 
-3. Verify the latest appliance versions and hash values for Azure public cloud:
+1. Verify the latest appliance versions and hash values for Azure public cloud:
 
-    |**Scenario** | **Download** | **SHA256**|
-    |--- ---------| ------------ | ----------|
-    |Azure Stack HCI appliance (X.XX GB) | [Latest version](https://go.microsoft.com/fwlink/?linkid=2246416) |  6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb|
+    
+    |**Scenario**  |**Download**  |**SHA256**  |
+    |---------|---------|---------|
+    |Azure Stack HCI appliance     |[Latest version](https://go.microsoft.com/fwlink/linkid=2246416)         |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb         |
 
-4. Extract the zip file to a folder. 
 
-Create an appliance
+1. Extract the zip file to a folder.
 
-On a Hyper-V server (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
+Now you can install the appliance using the .VHD file.
 
-On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Stack HCI server, and then select **OK**.
+1. On a Hyper-V server (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
 
-Map the C: drive on your Azure Stack HCI server.  Connect to 
+1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Stack HCI server, and then select **OK**.
 
-Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
+1. Map the `C:` drive on your Azure Stack HCI server. Connect to this drive using File Explorer. Verify that you can access the location where the downloaded VHD is located on your Azure Stack HCI server. 
+
+1. On your Hyper-V server, from the **Actions** pane, select **Import Virtual Machine**. This starts a wizard. Go through the steps of the wizard. Accept the defaults except on the following:
+
+    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateApplianceHCI_v25.24.02.07) that you downloaded on your Azure Stack HCI server. 
+    1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
+    1. Finally review the settings and select **Finish**.
+
+1. In the Hyper-V Manager, under Virtual Machines, you see the VM your created. Select and start the VM.
+
+1.  Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
+
+1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.
+
+1. Open **Azure Migrate Target Appliance Configuration Manager** shortcut from the desktop.
 
 #### Install using a script (.zip file)
 
@@ -150,7 +164,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Sign in to the target appliance VM.
 
-1. Open **Azure Configuration Manager** from the desktop shortcut.
+1. Open **Azure Migrate Target Appliance Configuration Manager** from the desktop shortcut.
 
 1. Locate the target key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, and then select **Verify**.
 
