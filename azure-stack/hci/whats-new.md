@@ -47,9 +47,9 @@ We're also releasing new documentation that provides guidance on network conside
 
 ## Features and improvements in 2311.3
 
-A new Azure built-in role called `Azure Resource Bridge Deployment Role` is available to harden the security posture for Azure Stack HCI, version 23H2. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge principal.
+A new Azure built-in role called `Azure Resource Bridge Deployment Role` is available to harden the security posture for Azure Stack HCI, version 23H2. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
 
-The role applies the concept of the least amount of privileges and must be assigned to the service principal `clustername.arb`, used by Azure resource bridge, before you update the cluster.
+The role applies the concept of the least amount of privileges and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
 
 You must remove the previously assigned permissions to take advantage of the constraint permission. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 
