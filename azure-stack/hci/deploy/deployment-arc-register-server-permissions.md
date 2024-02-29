@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/21/2024
+ms.date: 02/29/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -26,10 +26,10 @@ Before you begin, make sure you've completed the following prerequisites:
 - Make sure to register your subscription with the following resource providers. You would need to be an owner or contributor on your subscription to perform this registration. Run the following PowerShell commands to register the resource providers:
 
     ```powershell
-    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute"
-    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.GuestConfiguration"
-    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridConnectivity"
-    - Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI"
+    - Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridCompute"
+    - Register-AzResourceProvider -ProviderNamespace "Microsoft.GuestConfiguration"
+    - Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridConnectivity"
+    - Register-AzResourceProvider -ProviderNamespace "Microsoft.AzureStackHCI"
     ```
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
@@ -93,6 +93,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
     |`AccountID`         |The user who will register and deploy the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
+
     
 
    ```powershell
@@ -101,6 +102,9 @@ Before you begin, make sure you've completed the following prerequisites:
     
     #Define the resource group where you want to register your server as Arc device
     $RG = "YourResourceGroupName"
+
+    #Define the region you will use to register your server as Arc device
+    $Region = "eastus"
     
     #Define the tenant you will use to register your server as Arc device
     $Tenant = "YourTenantID"
@@ -241,7 +245,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Go through the tabs and assign the following permissions to the user who deploys the cluster: 
+1. Go through the tabs and assign the following permissions to the user who deploys the cluster:
 
     - **Key Vault Administrator**
     - **Key Vault Contributor**
