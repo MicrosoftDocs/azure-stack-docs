@@ -47,13 +47,13 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ---
 
-1. Create Kubernetes secrets to store the credentials required to access SMB shares by running the following command:
+2. Create Kubernetes secrets to store the credentials required to access SMB shares by running the following command:
 
    ```console
    kubectl create secret generic smbcreds --from-literal username=$username --from-literal password=$password --from-literal domain=$domain
    ```
 
-1. Create a storage class using `kubectl` to create a new SMB storage class with the following manifest:
+3. Create a storage class using `kubectl` to create a new SMB storage class with the following manifest:
 
       ```yaml
       apiVersion: storage.k8s.io/v1
@@ -94,7 +94,7 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ---
 
-1. Create an NFS storage class using the following manifest:
+2. Create an NFS storage class using the following manifest:
 
       ```yaml
       apiVersion: storage.k8s.io/v1
