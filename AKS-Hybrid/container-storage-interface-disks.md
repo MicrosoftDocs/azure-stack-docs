@@ -62,7 +62,7 @@ Creating a custom storage class is a two-step process:
 
 ### [AKS on Azure Stack HCI 23H2](#tab/23H2)
 
-Create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster. For more information about storage path creation, see [storage path](/azure-stack/hci/manage/create-storage-path).
+1. Create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster. For more information about storage path creation, see [storage path](/azure-stack/hci/manage/create-storage-path).
 
 For `$path`, create a storage path named `$storagepathname`; for example, **C:\ClusterStorage\test-storagepath**:
 
@@ -78,7 +78,7 @@ $storagepathID = az stack-hci-vm storagepath show --name $storagepathname --reso
 
 ### [AKS on Azure Stack HCI 22H2](#tab/22H2)
 
-Create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
+1. Create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
 
 ```powershell
 New-AksHciStorageContainer -Name <e.g. customStorageContainer> -Path <shared storage path>
