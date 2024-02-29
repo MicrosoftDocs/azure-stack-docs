@@ -25,8 +25,7 @@ To better understand the concept of vCPUs, [see this article](https://social.tec
 
 You can run AKS Edge Essentials in an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization such as the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines.
 
-> [!CAUTION]
-> Running AKS Edge Essentials on a virtual machine, using nested virtualization is an experimental feature and is recommended only for developer use cases.  
+You can also run AKS EE in a virtual machine on VMware and Hyper-V as described [here.](./aks-edge-howto-setup-nested-environment.md)
 
 ### OS requirements
 
@@ -42,7 +41,6 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ## GA feature support matrix
 
-- **Infrastructure**: Install AKS Edge Essentials on physical host machines.
 - **Kubernetes Distribution supported**: Kubernetes (K8S) - Version: 1.24.3 and on Kubernetes (K3S) - Version: 1.24.3
 - **Deployment options**: Single-machine clusters and full Kubernetes deployment on single machines only. Full deployment across multiple machines isn't supported in GA.
 - **Workloads**: Only Linux worker nodes.
@@ -50,7 +48,6 @@ Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate
 
 ## Experimental or prerelease features
 
-- **Infrastructure**: Installing AKS Edge Essentials on a virtual machine using nested virtualization is experimental.
 - **Deployment options**: Full Kubernetes deployment on multiple machines.
 - **Workloads**: Windows worker nodes.
 - **Network plugins**: Flannel on K8S and Calico on K3S.

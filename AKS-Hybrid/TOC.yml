@@ -69,6 +69,8 @@
       items:    
           - name: Monitor Kubernetes object events
             href: kubernetes-monitor-object-events.md
+          - name: Monitor Kubernetes audit events
+            href: kubernetes-monitor-audit-events.md
           - name: Enable Container Insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Use on-premises monitoring
@@ -81,6 +83,8 @@
     items:
     - name: Known issues
       href: aks-known-issues.md
+    - name: Troubleshoot
+      href: aks-troubleshoot.md
   - name: Reference
     items:
     - name: Azure CLI

@@ -33,6 +33,7 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
    - East US
    - West Europe
+   - Australia East
 
 ## Server and storage requirements
 

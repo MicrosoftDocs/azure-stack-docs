@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/09/2024
+ms.date: 02/22/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 12/27/2023
@@ -22,6 +22,10 @@ To access release notes for a different version, use the version selector dropdo
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
 > This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
+
+> [!IMPORTANT]
+> The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 ::: moniker-end
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
@@ -43,13 +47,6 @@ Before applying the update, make sure to review the following information:
 - [Known issues](known-issues.md)
 - [Hotfixes](#hotfixes)
 - [Security updates](release-notes-security-updates.md)
-
-> [!IMPORTANT]
-> This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
-
-> [!IMPORTANT]
-> The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
-> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 
 For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-troubleshooting.md).
 
