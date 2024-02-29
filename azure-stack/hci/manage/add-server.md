@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 01/31/2024
+ms.date: 02/23/2024
 ---
 
 # Add a server on Azure Stack HCI, version 23H2
@@ -30,7 +30,7 @@ You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In 
 
 The following flow diagram shows the overall process to add a server:
 
-![Diagram illustrating process to add a server](./media/add-server/add-server-workflow.png)
+:::image type="content" source="./media/add-server/add-server-workflow.png" alt-text="Diagram illustrating process to add a server." lightbox="./media/add-server/add-server-workflow.png":::
 
 To add a server, follow these high-level steps:
 
