@@ -41,7 +41,7 @@ It takes a few minutes to create the cluster and configure the cluster autoscale
 
 ### Enable the cluster autoscaler on an existing cluster
 
-Update an existing cluster using the [`az aksarc update`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-update) command, and enable and configure the cluster autoscaler using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command updates an existing AKS Arc cluster to enable the cluster autoscaler on the cluster and sets a minimum of one and maximum of three nodes:
+Update an existing cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command, and enable and configure the cluster autoscaler using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command updates an existing AKS Arc cluster to enable the cluster autoscaler on the cluster and sets a minimum of one and maximum of three nodes:
 
 ```azurecli-interactive
 az aksarc update \
@@ -56,7 +56,7 @@ It takes a few minutes to update the cluster and configure the cluster autoscale
 
 ### Disable the cluster autoscaler on a cluster
 
-Disable the cluster autoscaler using the [`az aksarc update`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-update) command and the `--disable-cluster-autoscaler` parameter:
+Disable the cluster autoscaler using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command and the `--disable-cluster-autoscaler` parameter:
 
 ```azurecli-interactive
 az aks update \
@@ -69,7 +69,7 @@ Nodes aren't removed when the cluster autoscaler is disabled.
 
 ## Update the cluster autoscaler settings
 
-As your application demands change, you might need to adjust the cluster autoscaler node count to scale efficiently. Change the node count using the [`az aksarc update`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-update) command and update the cluster autoscaler using the `--update-cluster-autoscaler` parameter and specifying your updated `--min-count` and `--max-count` for the node.
+As your application demands change, you might need to adjust the cluster autoscaler node count to scale efficiently. Change the node count using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command and update the cluster autoscaler using the `--update-cluster-autoscaler` parameter and specifying your updated `--min-count` and `--max-count` for the node.
 
 ```azurecli-interactive
 az aks update \
@@ -109,7 +109,7 @@ The following table lists the available settings for the cluster autoscaler prof
 
 ### Set the cluster autoscaler profile on a new cluster
 
-Create an AKS Arc cluster using the [`az aksarc create`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-create) command and set the cluster autoscaler profile using the `cluster-autoscaler-profile` parameter:
+Create an AKS Arc cluster using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command and set the cluster autoscaler profile using the `cluster-autoscaler-profile` parameter:
 
 ```azurecli-interactive
 az aksarc create \
@@ -124,7 +124,7 @@ az aksarc create \
 
 ### Set the cluster autoscaler profile on an existing cluster
 
-Set the cluster autoscaler on an existing cluster using the [`az aksarc update`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-update) command and the `cluster-autoscaler-profile` parameter. The following example configures the scan interval setting as **30s**:
+Set the cluster autoscaler on an existing cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command and the `cluster-autoscaler-profile` parameter. The following example configures the scan interval setting as **30s**:
 
 ```azurecli-interactive
 az aksarc update \
@@ -135,7 +135,7 @@ az aksarc update \
 
 ### Reset cluster autoscaler profile to default values
 
-Reset the cluster autoscaler profile using the [`az aksarc update`](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-update) command:
+Reset the cluster autoscaler profile using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command:
   
 ```azurecli-interactive
 az aksarc update \
@@ -146,4 +146,4 @@ az aksarc update \
 
 ## Next steps
 
-This article showed you how to automatically scale the number of AKS Arc nodes. To scale node pools manually, see [manage node pools in AKS Arc clusters](/manage-node-pools).
+This article showed you how to automatically scale the number of AKS Arc nodes. To scale node pools manually, see [manage node pools in AKS Arc clusters](manage-node-pools.md).
