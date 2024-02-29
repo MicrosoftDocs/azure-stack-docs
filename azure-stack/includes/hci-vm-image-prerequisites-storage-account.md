@@ -14,7 +14,7 @@ ms.date: 02/02/2024
 
    - Go to the **Overview > Server** page in the Azure Stack HCI cluster resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
     
-    :::image type="content" source="../hci/manage/media/manage-vm-resources/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../hci/manage/media/manage-vm-resources/azure-arc-connected.png":::
+    :::image type="content" source="../hci/manage/media/virtual-machine-image-storage-account/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../hci/manage/media/virtual-machine-image-storage-account/azure-arc-connected.png":::
 
 - For custom images in Azure Storage account, you have the following extra prerequisites:
 
