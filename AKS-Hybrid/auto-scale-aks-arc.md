@@ -21,7 +21,7 @@ To keep up with application demands in Kubernetes, you might need to adjust the 
 
 ## Enable the cluster autoscaler on a new cluster
 
-Create an AKS Arc cluster using the `az aksarc create` command, and enable and configure the cluster autoscaler on the node pool for the cluster using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command creates a cluster with a single node, enables the cluster autoscaler, and sets a minimum of one and maximum of three nodes:
+Create an AKS Arc cluster using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command, and enable and configure the cluster autoscaler on the node pool for the cluster using the `--enable-cluster-autoscaler` parameter and specifying `--min-count` and `--max-count` for a node. The following example command creates a cluster with a single node, enables the cluster autoscaler, and sets a minimum of one and maximum of three nodes:
 
 ```azurecli-interactive
 az aksarc create \
