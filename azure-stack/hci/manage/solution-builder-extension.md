@@ -93,7 +93,7 @@ Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Stack HCI 2311 bundle** update, which includes the same SBE as identified by the SbeVersion number 4.1.2312.5.
 
->[!NOTE]
+> [!NOTE]
 > To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install an SBE update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
@@ -163,6 +163,8 @@ SBE_Contoso_Gen3_4.1.2312.5      SBE                      4.1.2312.5     Additio
 Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     AdditionalContentRequired
 ```
 
-To view information on the SBE update such as its release notes (via the `SBEReleaseLink`) and determine how to download the SBE files from your hardware vendor, use the updates `AdditionalProperties` property of the updates. For more information, see [Discover SBE updates](./solution-builder-extension.md#discover-sbe-updates). You should download the SBE files following the hardware vendor's recommendations and license agreements.
+To view information on the SBE update such as its release notes (via the `SBEReleaseLink`) and determine how to download the SBE files from your hardware vendor, use the updates `AdditionalProperties` property of the updates. 
+
+For more information, see [Discover SBE updates](./solution-builder-extension.md#discover-sbe-updates). You should download the SBE files following the hardware vendor's recommendations and license agreements.
 
 You can now proceed to [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
