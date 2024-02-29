@@ -8,14 +8,14 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 01/30/2024
+ms.date: 02/29/2024
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create virtual machine (VM) images for your Azure Stack HCI using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
+This article describes how to create virtual machine (VM) images for your Azure Stack HCI system using source images from Azure Marketplace. You can create VM images using the Azure portal or Azure CLI and then use these VM images to create Arc VMs on your Azure Stack HCI.
 
 
 ## Prerequisites
