@@ -47,9 +47,11 @@ We are also releasing new documentation that provides guidance on network consid
 
 ## Features and improvements in 2311.3
 
-A new Azure built in role called `Azure Resource Bridge Deployment Role` is available to harden the security posture for Azure Stack HCI, version 23H2. It applies the concept of the least number of privileges and must be assigned to the service principal used by Azure resource bridge. Previously assigned permissions must be removed to take advantage of the constraint permission.
+A new Azure built-in role called `Azure Resource Bridge Deployment Role` is available to harden the security posture for Azure Stack HCI, version 23H2. The role applies the concept of the least amount of privileges and must be assigned to the service principal used by Azure resource bridge.
 
-The built-in role must be assigned to service principal `clustername.arb` before applying the update. An update health check is included that confirms the new role was assigned prior to applying the update.
+Previously assigned permissions must be removed to take advantage of the constraint permission.
+
+Before applying the update, the built-in role must be assigned to service principal `clustername.arb`. An update health check is included that confirms the new role was assigned prior to applying the update.
 
 ## Features and improvements in 2311.2 GA
 
