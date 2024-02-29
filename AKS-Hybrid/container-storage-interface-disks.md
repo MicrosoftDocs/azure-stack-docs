@@ -64,36 +64,36 @@ Creating a custom storage class is a two-step process:
 
 1. Create a new storage path using the `stack-hci-vm storagepath` cmdlets to create, show, and list the storage paths on your Azure Stack HCI cluster. For more information about storage path creation, see [storage path](/azure-stack/hci/manage/create-storage-path).
 
-For `$path`, create a storage path named `$storagepathname`; for example, **C:\ClusterStorage\test-storagepath**:
+   For `$path`, create a storage path named `$storagepathname`; for example, **C:\ClusterStorage\test-storagepath**:
 
-```azurecli
-az stack-hci-vm storagepath create --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --path $path
-```
+   ```azurecli
+   az stack-hci-vm storagepath create --resource-group $resource_group --custom-location $customLocationID --name $storagepathname --path $path
+   ```
 
-Get the storage path resource ID:
+   Get the storage path resource ID:
 
-```azurecli
-$storagepathID = az stack-hci-vm storagepath show --name $storagepathname --resource-group $resource_group --query "id" -o tsv 
-```
+   ```azurecli
+   $storagepathID = az stack-hci-vm storagepath show --name $storagepathname --resource-group $resource_group --query "id" -o tsv 
+   ```
 
 ### [AKS on Azure Stack HCI 22H2](#tab/22H2)
 
 1. Create a new storage container using the following [New-AksHciStorageContainer](./reference/ps/new-akshcistoragecontainer.md) PowerShell command:
 
-```powershell
-New-AksHciStorageContainer -Name <e.g. customStorageContainer> -Path <shared storage path>
-```
+   ```powershell
+   New-AksHciStorageContainer -Name <e.g. customStorageContainer> -Path <shared storage path>
+   ```
 
-Check whether the new storage container is created by running the following [Get-AksHciStorageContainer](./reference/ps/get-akshcistoragecontainer.md) PowerShell command:
+   Check whether the new storage container is created by running the following [Get-AksHciStorageContainer](./reference/ps/get-akshcistoragecontainer.md) PowerShell command:
 
-```powershell
-Get-AksHciStorageContainer -Name "customStorageContainer"
-```
+   ```powershell
+   Get-AksHciStorageContainer -Name "customStorageContainer"
+   ```
 
----
+   ---
 
 2. Create a new custom storage class using the new storage path.
-   
+
    1. Create a file named **sc-aks-hci-disk-custom.yaml**, and then copy the manifest from the YAML file below. The storage class is the same as the default storage class except with the new `container`. Use the `storage path ID` or `storage container name` created in the previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified:
 
       ```yaml
