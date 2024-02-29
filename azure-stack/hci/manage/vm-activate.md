@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 02/27/2024
+ms.date: 02/29/2024
 ---
 
 # License Windows Server VMs on Azure Stack HCI
@@ -235,7 +235,7 @@ To change or add keys:
 
 1. In the **Activate Windows Server VMs** pane, select the servers that you want to manage, and then select **Manage activation keys**.
 
-   :::image type="content" source="./media/vm-activate/change.gif" alt-text="Short demonstration showing how to change or add keys in Windows Admin Center." lightbox="./media/vm-activation/change.gif":::
+   :::image type="content" source="./media/vm-activate/change.gif" alt-text="Short demonstration showing how to change or add keys in Windows Admin Center." lightbox="./media/vm-activate/change.gif":::
 
 2. In the **Manage activation keys** pane, enter the new keys for the selected host servers, and then select **Apply**.
 
