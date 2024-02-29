@@ -1,29 +1,25 @@
 ---
-title: Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 22H2)
-description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on Azure Stack HCI 22H2.
+title: Use GPUs for compute-intensive workloads
+description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc on HCI 22H2.
 author: baziwane
 ms.topic: how-to
-ms.date: 01/16/2024
+ms.date: 02/29/2024
 ms.author: rbaziwane 
 ms.lastreviewed: 03/21/2023
 ms.reviewer: sethm
-
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools
 # Keyword: Run GPU workloads on Kubernetes
 ---
 
-# Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 22H2)
+# Use GPUs for compute-intensive workloads
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-> [!NOTE]
-> For information about GPUs in AKS on Azure Stack HCI 23H2, see [Use GPUs (HCI 23H2)](deploy-gpu-node-pool.md).
-
-Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc on Azure Stack HCI 22H2.
+Graphical Processing Units (GPU) are used for compute-intensive workloads such as machine learning, deep learning, and more. This article describes how to use GPUs for compute-intensive workloads in AKS enabled by Azure Arc.
 
 ## Before you begin
 
-If you update AKS from a preview version older than October 2022 that runs GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin. Follow the steps in this section.
+If you are updating AKS from a preview version older than October 2022 that is running GPU-enabled node pools, make sure you remove all workload clusters running GPUs before you begin. Follow the steps in this section.
 
 ### Step 1: Uninstall the Nvidia host driver
 
@@ -109,16 +105,16 @@ See the AKS quickstart using [PowerShell](kubernetes-walkthrough-powershell.md) 
 
 ## Create a new workload cluster with a GPU-enabled node pool
 
-Currently, using GPU-enabled node pools is only available for Linux node pools. To create a new Kubernetes cluster:
+Currently, using GPU-enabled node pools is only available for Linux node pools.
 
-```azurecli
-az aksarc create -n <aks cluster name> -g <resource group name> --custom-location <custom location ID> --vnet-ids <vnet ID>
+```powershell
+New-AksHciCluster -Name "gpucluster" -nodePoolName "gpunodepool" -nodeCount 2 -osType linux -nodeVmSize Standard_NK6 
 ```
 
-The following example adds a node pool with 2 GPU-enabled (NVDIA A2) nodes with a **Standard\_NC4\_A2** VM SKU:
+After installing the workload cluster, run the following command to get your Kubeconfig:
 
-```azurecli
-az aksarc nodepool add --cluster-name <aks cluster name> -n <node pool name> -g <resource group name> --node-count 2 --node-vm-size Standard_NC4_A2 --os-sku Linux
+```powershell
+Get-AksHciCredential -Name gpucluster
 ```
 
 ## Confirm you can schedule GPUs
@@ -145,14 +141,21 @@ kubectl describe <node> | findstr "gpu"
 The output should display the GPU(s) from the worker node and look something like this:
 
 ```output
-Capacity: 
-  cpu:                4 
-  ephemeral-storage:  103110508Ki 
-  hugepages-1Gi:      0 
-  hugepages-2Mi:      0 
-  memory:             7865020Ki 
-  nvidia.com/gpu:     1 
-  pods:               110
+         nvidia.com/gpu.compute.major=7
+         nvidia.com/gpu.compute.minor=5
+         nvidia.com/gpu.count=1
+         nvidia.com/gpu.family=turing
+         nvidia.com/gpu.machine=Virtual-Machine
+         nvidia.com/gpu.memory=16384
+         nvidia.com/gpu.product=Tesla-T4
+Annotations:    cluster.x-k8s.io/cluster-name: gpucluster
+                cluster.x-k8s.io/machine: gpunodepool-md-58d9b96dd9-vsdbl
+                cluster.x-k8s.io/owner-name: gpunodepool-md-58d9b96dd9
+         nvidia.com/gpu:   1
+         nvidia.com/gpu:   1
+ProviderID:         moc://gpunodepool-97d9f5667-49lt4
+kube-system         gpu-feature-discovery-gd62h       0 (0%)    0 (0%)   0 (0%)      0 (0%)     7m1s
+         nvidia.com/gpu   0     0
 ```
 
 ## Run a GPU-enabled workload
@@ -221,7 +224,7 @@ Upgrading GPU-enabled node pools follows the same rolling upgrade pattern that's
 Before you upgrade:
 
 1. Plan for downtime during the upgrade.
-1. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
+2. Have one extra GPU per physical host if you are running the **Standard_NK6** or 2 extra GPUs if you are running **Standard_NK12**. If you are running at full capacity and don't have an extra GPU, we recommend scaling down your node pool to a single node before the upgrade, then scaling up after upgrade succeeds.
 
 ### What happens if I don't have extra physical GPUs on my physical machine during an upgrade?
 
@@ -229,5 +232,4 @@ If an upgrade is triggered on a cluster without extra GPU resources to facilitat
 
 ## Next steps
 
-- [Use GPUs (AKS on Azure Stack HCI 23H2)](deploy-gpu-node-pool.md)
-- [AKS overview](aks-hybrid-options-overview.md)
+- [AKS overview](overview.md)
