@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/27/2024
+ms.date: 02/29/2024
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2
@@ -446,7 +446,7 @@ The following sample is the output from a successful run of the network validato
 
 The following sample is the output from a failed run of the network validator. This output shows two active hosts are using IP address from the reserved IP range.
 
-   :::image type="content" source="./media/use-environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/environment-checker/network-validator-sample-failed.png":::
+   :::image type="content" source="./media/use-environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/use-environment-checker/network-validator-sample-failed.png":::
 
 ### [Arc integration](#tab/arc-integration)
 
