@@ -53,7 +53,7 @@ The role applies the concept of the least amount of privileges and must be assig
 
 You must remove the previously assigned permissions to take advantage of the constraint permission. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
 
-An update health check that confirms the new role is assigned before applying the update is included in this release.
+Included in this release is an update health check that confirms the new role is assigned before applying the update.
 
 ## Features and improvements in 2311.2 GA
 
