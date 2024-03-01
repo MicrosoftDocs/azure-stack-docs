@@ -34,10 +34,12 @@ landingContent:
             url: create-aml-file-system-terraform.md
   - title: Integrate with data sources
     linkLists:
+      - linkListType: concept
+        links:
+          - text: Use Azure Blob Storage with Azure Managed Lustre
+            url: blob-integration.md
       - linkListType: how-to-guide
         links:
-          - text: Integrate Azure Blob Storage with Azure Managed Lustre
-            url: blob-integration.md
           - text: Export data using archive jobs
             url: export-with-archive-jobs.md
   - title: Access a file system

@@ -16,7 +16,7 @@
       href: create-file-system-resource-manager.md
 - name: Integrate with data sources
   items:
-    - name: Integrate Azure Blob Storage with Azure Managed Lustre
+    - name: Use Azure Blob Storage with Azure Managed Lustre
       href: blob-integration.md
     - name: Export data using archive jobs
       href: export-with-archive-jobs.md
