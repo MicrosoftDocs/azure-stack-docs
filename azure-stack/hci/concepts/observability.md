@@ -29,7 +29,7 @@ Observability in Azure Stack HCI is achieved through the following data sources:
 
 - **Diagnostics.** This includes the ability to collect diagnostic logs. See [Diagnostics](#diagnostics).
 
-:::image type="content" source="media/observability/observability-components.png" alt-text="Diagram depicting the three data source types for Azure Stack HCI observability." lightbox="media/observability/observability-components.png":::
+    :::image type="content" source="media/observability/observability-components.png" alt-text="Diagram depicting the three data source types for Azure Stack HCI observability." lightbox="media/observability/observability-components.png":::
 
 ## How is observability installed?
 
