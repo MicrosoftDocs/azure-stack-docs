@@ -195,7 +195,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
     
 1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download.
 
-   :::image type="content" source="./media/virtual-machine-image-storage-account/./media/virtual-machine-image-storage-account/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/virtual-machine-image-storage-account/deployment-in-progress.png":::
+   :::image type="content" source="./media/virtual-machine-image-storage-account/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/virtual-machine-image-storage-account/deployment-in-progress.png":::
 
    You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
 
