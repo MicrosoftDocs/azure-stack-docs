@@ -32,6 +32,14 @@ landingContent:
             url: create-file-system-resource-manager.md
           - text: Create a file system using Terraform
             url: create-aml-file-system-terraform.md
+  - title: Integrate with data sources
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Integrate Azure Blob Storage with Azure Managed Lustre
+            url: blob-integration.md
+          - text: Export data using archive jobs
+            url: export-with-archive-jobs.md
   - title: Access a file system
     linkLists:
       - linkListType: how-to-guide
@@ -42,14 +50,6 @@ landingContent:
             url: connect-clients.md
           - text: Use Azure Lustre CSI driver for Kubernetes
             url: use-csi-driver-kubernetes.md
-  - title: Transfer data
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Integrate Azure Blob Storage with Azure Managed Lustre
-            url: blob-integration.md
-          - text: Export data using archive jobs
-            url: export-with-archive-jobs.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide

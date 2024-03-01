@@ -14,6 +14,12 @@
       href: create-aml-file-system-terraform.md
     - name: Create file system using Azure Resource Manager
       href: create-file-system-resource-manager.md
+- name: Integrate with data sources
+  items:
+    - name: Integrate Azure Blob Storage with Azure Managed Lustre
+      href: blob-integration.md
+    - name: Export data using archive jobs
+      href: export-with-archive-jobs.md
 - name: Access a file system
   items:
     - name: Install clients
@@ -24,12 +30,6 @@
       href: automount-clients-fstab.md
     - name: Use Azure Lustre CSI driver for Kubernetes
       href: use-csi-driver-kubernetes.md
-- name: Data transfer
-  items:
-    - name: Integrate Azure Blob Storage with Azure Managed Lustre
-      href: blob-integration.md
-    - name: Export data using archive jobs
-      href: export-with-archive-jobs.md
 - name: Security
   items:
     - name: Configure a network security group
