@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/27/2024
+ms.date: 02/29/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -19,7 +19,7 @@ Active Directory requirements for Azure Stack HCI include:
 
 - A dedicated Organization Unit (OU).
 - Group policy inheritance that is blocked for the applicable Group Policy Object (GPO).
-- A user account that has permission to join computers to Active Directory and create the cluster name object (CNO).
+- A user account that has all rights to the OU in the Active Directory.
 
 > [!NOTE]
 > You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
@@ -29,7 +29,7 @@ Active Directory requirements for Azure Stack HCI include:
 Before you begin, make sure you've done the following:
 
 - Satisfy the [prerequisites](./deployment-prerequisites.md) for new deployments of Azure Stack HCI.
-- [Download and install the version 2311 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2311). Run the following command from the folder where the module is located:
+- [Download and install the version 2311 module from the PowerShell Gallery](https://www.powershellgallery.com/packages/AsHciADArtifactsPreCreationTool/10.2402). Run the following command from the folder where the module is located:
 
     ```powershell
     Install-Module AsHciADArtifactsPreCreationTool -Repository PSGallery -Force
@@ -57,12 +57,12 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 ## Prepare Active Directory
 
-When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place all the Azure Stack HCI related objects such as computer accounts.
+When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place the Azure Stack HCI related objects such as deployment user.
 
 
 To create a dedicated OU, follow these steps:
 
-1. Sign in to a computer that is joined to your Active Directory domain as a domain administrator.
+1. Sign in to a computer that is joined to your Active Directory domain.
 1. Run PowerShell as administrator.
 1. Run the following command to create the dedicated OU.
 
