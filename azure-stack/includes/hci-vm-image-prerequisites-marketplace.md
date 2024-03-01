@@ -14,3 +14,4 @@ ms.date: 02/29/2024
    - Go to the **Overview > Server** page in the Azure Stack HCI cluster resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
     
     :::image type="content" source="../hci/manage/media/virtual-machine-image-azure-marketplace/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="../hci/manage/media/virtual-machine-image-azure-marketplace/azure-arc-connected.png":::
+
