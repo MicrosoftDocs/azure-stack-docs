@@ -20,7 +20,7 @@ This article describes how to manage default security settings for your Azure St
 Before you begin, make sure that the following prerequisites are completed:
 
 - You have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
-- If viewing settings via the Azure portal, you would need to satisfy these extra prerequisites:
+- If viewing settings via the Azure portal, make sure to satisfy these extra prerequisites:
   - You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](#apply-microsoft-cloud-security-benchmark-initiative).
   - You have at least **Owner** or **Contributor** roles in your Azure subscription to apply MCSB.
 
