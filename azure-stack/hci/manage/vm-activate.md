@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 08/02/2023
+ms.date: 02/29/2024
 ---
 
 # License Windows Server VMs on Azure Stack HCI
@@ -17,7 +17,7 @@ Windows Server virtual machines (VMs) must be licensed and activated before you 
 
 The following figure shows the different Windows Server VM licensing options:
 
-:::image type="content" source="media/vm-activation/vm-activation-server.png" alt-text="VM licensing":::
+:::image type="content" source="media/vm-activate/vm-activation-server.png" alt-text="VM licensing" lightbox="media/vm-activate/vm-activation-server.png":::
 
 First, choose one of two licensing options:
 
@@ -66,7 +66,7 @@ Windows Server subscription enables you to subscribe to Windows Server guest lic
 
 When Windows Server subscription is purchased, Azure Stack HCI servers retrieve licenses from the cloud and automatically set up AVMA on the cluster. After setting up AVMA, you can then apply the generic AVMA keys on the client side.
 
-:::image type="content" source="media/vm-activation/windows-server-subscription.png" alt-text="Windows Server subscription":::
+:::image type="content" source="media/vm-activate/windows-server-subscription.png" alt-text="Windows Server subscription" lightbox="media/vm-activate/windows-server-subscription.png":::
 
 ### Prerequisites
 
@@ -86,7 +86,7 @@ You can enable Windows Server subscription through different methods. Select one
 2. Under the feature **Windows Server subscription add-on**, select **Purchase.** In the context pane, select **Purchase** again to confirm.
 3. When Windows Server subscription has been successfully purchased, you can start using Windows Server VMs on your cluster. Licenses will take a few minutes to be applied on your cluster.
 
-   :::image type="content" source="media/vm-activation/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activation/portal-purchase-expanded.png":::
+   :::image type="content" source="media/vm-activate/portal-purchase.png" alt-text="Purchase confirmation" lightbox="media/vm-activate/portal-purchase.png":::
 
 ### [Azure CLI](#tab/azurecli)
 
@@ -125,7 +125,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 2. In the **Automatically activate VMs** pane, select **Set up**, and then select **Purchase Windows Server subscription.** Select **Next** and confirm details, then select **Purchase.**
 3. When you complete the purchase successfully, the cluster retrieves licenses from the cloud, and sets up AVMA on your cluster.
 
-   :::image type="content" source="media/vm-activation/confirm-purchase.gif" alt-text="Confirm purchase":::
+   :::image type="content" source="media/vm-activate/confirm-purchase.gif" alt-text="Confirm purchase" lightbox="media/vm-activate/confirm-purchase.gif":::
 
 ### [PowerShell](#tab/powershell)
 
@@ -164,7 +164,7 @@ Now that AVMA has been enabled through Windows Server subscription, you can acti
 
 You can use any existing method to activate VMs on Azure Stack HCI. Optionally, you can use AVMA, which enables activated host servers to automatically activate VMs running on them. For more information, see [AVMA in Windows Server](/windows-server/get-started/automatic-vm-activation).
 
-:::image type="content" source="media/vm-activation/vm-activate.png" alt-text="Activate VMs":::
+:::image type="content" source="media/vm-activate/vm-activate.png" alt-text="Activate VMs" lightbox="media/vm-activate/vm-activate.png":::
 
 ### Benefits of AVMA
 
@@ -216,7 +216,7 @@ To use AVMA in Windows Admin Center:
 
 1. Select **Cluster Manager** from the top drop-down arrow, navigate to the cluster that you want to activate, then under **Settings**, select **Activate Windows Server VMs**.
 
-   :::image type="content" source="media/vm-activation/apply-keys.gif" alt-text="Apply keys":::
+   :::image type="content" source="media/vm-activate/apply-keys.gif" alt-text="Apply keys" lightbox="media/vm-activate/apply-keys.gif":::
 
 1. In the **Automatically activate VMs** pane, select **Set up** and then select **Use existing Windows Server licenses**. In the **Apply activation keys to each server** pane, enter your Windows Server Datacenter keys.
 
@@ -235,7 +235,7 @@ To change or add keys:
 
 1. In the **Activate Windows Server VMs** pane, select the servers that you want to manage, and then select **Manage activation keys**.
 
-   :::image type="content" source="./media/vm-activation/change.gif" alt-text="Short demonstration showing how to change or add keys in Windows Admin Center." lightbox="./media/vm-activation/change.gif":::
+   :::image type="content" source="./media/vm-activate/change.gif" alt-text="Short demonstration showing how to change or add keys in Windows Admin Center." lightbox="./media/vm-activate/change.gif":::
 
 2. In the **Manage activation keys** pane, enter the new keys for the selected host servers, and then select **Apply**.
 
