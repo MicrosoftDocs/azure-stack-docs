@@ -7,8 +7,8 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 02/28/2024
-ms.lastreviewed: 11/28/2023
+ms.date: 03/04/2024
+ms.lastreviewed: 03/04/2024
 ---
 
 # Azure verification for VMs
@@ -172,10 +172,10 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Enable-VMIntegrationService [[-VMName] <VMName>] -Name "Guest Service Interface"
   ```
 
-- To check that the VMs can access Azure VM verification on the host, run the following command on the VM:
+- To check that the VMs can access Azure VM verification on the host, run the following command on the host:
 
   ```powershell
-  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http:// 127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" – usedefaultcredentials
+  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" – usedefaultcredentials
   ```
 
 ### [Azure portal](#tab/azureportal)
