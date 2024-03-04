@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 02/13/2024
+ms.date: 03/04/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -65,7 +65,7 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 [!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
 
-### Create a VM from network interface
+### Create a Windows VM
 
 Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. 
 
@@ -129,7 +129,7 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
-### Create a Linux VM from network interface
+### Create a Linux VM 
 
 To create a Linux VM, use the same command that you used to create the Windows VM.
 
@@ -138,7 +138,7 @@ To create a Linux VM, use the same command that you used to create the Windows V
 - For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
 
 > [!IMPORTANT]
-> Proxy is not supported for Linux VMs.
+> Setting the proxy server during VM creation is not supported for Linux VMs.
 
 ### Create a VM with proxy configured
 
@@ -169,7 +169,17 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 ```
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
+Depending on the PowerShell version you are running on your VM, you may need to enable the proxy settings for your VM.
 
+- For Windows VMs running PowerShell version 5.1 or earlier, sign in to the VM after the creation. Run the following command to enable proxy:
+
+    ```powershell
+    netsh winhttp set proxy proxy-server="http=myproxy;https=sproxy:88" bypass-list="*.foo.com"
+    ```
+
+    After the proxy is enabled, you can then [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management).
+
+- For Windows VMs running PowerShell version later than 5.1, proxy settings passed during VM creation are only used for enabling Arc guest management. After the VM is created, sign in to the VM and run the above command to enable proxy for other applications.
 
 # [Azure portal](#tab/azureportal)
 
