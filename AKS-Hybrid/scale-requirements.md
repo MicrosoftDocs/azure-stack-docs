@@ -55,22 +55,31 @@ Currently, for AKS-HCI using PowerShell/Windows Admin Center, we support the fol
 | AKS Arc Linux worker node    | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 | AKS Arc Windows worker node  | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
 
-## Supported values for virtual machine sizes
+## Supported values for control plane node sizes
 
-| VM Size                     | CPU  | Memory (GB)  | GPU type  | Recommended for control plane nodes?  |
-|-----------------------------|------|--------------|-----------|---------------------------------------|
-| Default                     | 4    | 4            | N/A       |                                       |
-| Standard_A4_v2              | 4    | 8            |           |                                       |
-| Standard_D4s_v3             | 4    | 16           |           |                                       |
-| Standard_D8s_v3             | 8    | 32           |           |                                       |
-| Standard_D16s_v3            | 16   | 64           |           |                                       |
-| Standard_D32s_v3            | 32   | 128          |           |                                       |
-| Standard_DS4_v2             | 8    | 28           |           |                                       |
-| Standard_DS5_v2             | 16   | 56           |           |                                       |
-| Standard_DS13_v2            | 8    | 56           |           |                                       |
-| Standard_K8S3_v1            | 4    | 6            | N/A       |                                       |
-| Standard_NK6                | 6    | 12           | Tesla T4  |                                       |
-| Standard_NK12               | 12   | 24           | Tesla T4  |                                       |
+| VM Size                     | CPU  | Memory (GB)  | 
+|-----------------------------|------|--------------|
+| Standard_A4_v2              | 4    | 8            |
+| Standard_D4s_v3             | 4    | 16           |
+| Standard_D8s_v3             | 8    | 32           |
+| Standard_K8S3_v1            | 4    | 6            |
+
+## Supported values for worker node sizes
+
+| VM Size                     | CPU  | Memory (GB)  | GPU type  | 
+|-----------------------------|------|--------------|-----------|
+| Default                     | 4    | 4            | N/A       |
+| Standard_A4_v2              | 4    | 8            |           |
+| Standard_D4s_v3             | 4    | 16           |           |
+| Standard_D8s_v3             | 8    | 32           |           |
+| Standard_D16s_v3            | 16   | 64           |           |
+| Standard_D32s_v3            | 32   | 128          |           |
+| Standard_DS4_v2             | 8    | 28           |           |
+| Standard_DS5_v2             | 16   | 56           |           |
+| Standard_DS13_v2            | 8    | 56           |           |
+| Standard_K8S3_v1            | 4    | 6            | N/A       |
+| Standard_NK6                | 6    | 12           | Tesla T4  |
+| Standard_NK12               | 12   | 24           | Tesla T4  |
 
 ## Next steps
 
