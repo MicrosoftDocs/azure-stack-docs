@@ -53,7 +53,7 @@ When you plan your virtual network and subnet, take into account the requirement
 
 * If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system.
 
-* When planning multiple clusters within the same subnet, is it necessary to use an address space large enough to accommodate the total requirements for all clusters. 
+* When planning multiple clusters within the same subnet, it's necessary to use an address space large enough to accommodate the total requirements for all clusters. 
 
 ### Subnet access and permissions
 
