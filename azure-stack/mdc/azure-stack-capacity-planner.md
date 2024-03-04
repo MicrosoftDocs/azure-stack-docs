@@ -5,13 +5,7 @@ services: azure-stack
 documentationcenter: ''
 author: prchint
 manager: femila
-editor: ''
-
-ms.assetid:
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: sethm
@@ -66,7 +60,7 @@ To create a model by using a single collection of various sizes and quantities o
    > Total VM Storage refers to the total capacity of the data disk of the VM (the number of supported disks multiplied by the maximum capacity of a single disk [1 TB]). Based on the configuration indicators, we've populated the Available Storage Configurations table so you can choose your desired level of storage resource for each Azure Stack Hub VM. However, it's important to note that you can add or change the Available Storage Configurations table as necessary. <br><br>Each VM starts with an initially assigned local temp storage. To reflect the thin provisioning of temp storage, you can change the local-temp number to anything in the drop-down menu, including the maximum allowable temp storage amount.
 
 4. As you add VMs, you'll see the charts that show available SKU resources changing. These charts allow you to see the effects of adding various sizes and quantities of VMs during the modeling process. Another way to view the effect of changes is to watch the **Consumed** and **Still Available** numbers, listed directly below the list of available VMs. These numbers reflect estimated values based on the currently selected hardware SKU.
-5. If GPU VMs were selected in the DefinedSolutionSKUs tab then the selected GPU type will be available to enter quantity. Please note: ONLY GPU type selected in the DefinedSolutionSKUs tab will be available for capacity planning, any other GPU choices made will be ignored.	
+5. If GPU VMs were selected in the DefinedSolutionSKUs tab then the selected GPU type will be available to enter quantity. Please note: ONLY GPU type selected in the DefinedSolutionSKUs tab will be available for capacity planning, any other GPU choices made will be ignored.    
 6. When you've created your set of VMs, you can find the suggested hardware SKU by selecting **Suggested SKU**. This button is located in the upper right corner of the page, directly below the **Current SKU** label. Using this button, you can then modify your VM configurations and see which hardware supports each configuration.
 
 ## DefineByWorkloadFootprint instructions

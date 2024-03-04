@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 04/17/2023
+ms.date: 02/26/2024
 ---
 
 # Manage Azure Stack HCI gateway connections
@@ -23,7 +23,7 @@ For more information on gateways for SDN, see [What is RAS Gateway for SDN](../c
 
 IPsec gateway connections are used to provide secure site-to-site encrypted connections between SDN virtual networks and external customer networks over the internet.
 
-:::image type="content" source="media/gateway/ipsec-connection.png" alt-text="SDN IPsec gateway connection" lightbox="media/gateway/ipsec-connection.png":::
+:::image type="content" source="media/gateway-connections/ipsec-connection.png" alt-text="SDN IPsec gateway connection." lightbox="media/gateway-connections/ipsec-connection.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the gateway connection on.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
@@ -46,7 +46,7 @@ You can create a new gateway pool using the `New-NetworkControllerGatewayPool` P
 
 GRE-based tunnels enable connectivity between tenant virtual networks and external networks. Because the GRE protocol is lightweight and support for GRE is available on most network devices, it is an ideal choice for tunneling where encryption of data is not required.
 
-:::image type="content" source="media/gateway/gre-connection.png" alt-text="SDN GRE gateway connection" lightbox="media/gateway/gre-connection.png":::
+:::image type="content" source="media/gateway-connections/gre-connection.png" alt-text="SDN GRE gateway connection." lightbox="media/gateway-connections/gre-connection.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the gateway connection on.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
@@ -68,7 +68,7 @@ You can create a new gateway pool using the `New-NetworkControllerGatewayPool` P
 
 L3 forwarding enables connectivity between the physical infrastructure in the data center and the SDN virtual networks. Using an L3 forwarding connection, tenant network VMs can connect to a physical network through the SDN gateway. In this case, the SDN gateway acts as a router between the SDN virtual network and the physical network.
 
-:::image type="content" source="media/gateway/l3-connection.png" alt-text="SDN L3 gateway connection" lightbox="media/gateway/l3-connection.png":::
+:::image type="content" source="media/gateway-connections/l3-connection.png" alt-text="SDN L3 gateway connection." lightbox="media/gateway-connections/l3-connection.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the gateway connection on.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
@@ -101,7 +101,7 @@ You can also create a gateway pool using `New-NetworkControllerGatewayPool` Powe
 
 You can easily see all the gateway connections in your cluster.
 
-:::image type="content" source="media/gateway/view-connections.png" alt-text="View SDN gateway connections" lightbox="media/gateway/view-connections.png":::
+:::image type="content" source="media/gateway-connections/view-connections.png" alt-text="View SDN gateway connections." lightbox="media/gateway-connections/view-connections.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster for which you want to view the gateway connections.
 1. Under **Tools**, scroll down to **Networking**, and select **Gateway Connections**.
@@ -115,7 +115,7 @@ You can easily see all the gateway connections in your cluster.
 
 You can view detailed information for a specific gateway connection from its dedicated page.
 
-:::image type="content" source="media/gateway/view-details.png" alt-text="View SDN gateway details" lightbox="media/gateway/view-details.png":::
+:::image type="content" source="media/gateway-connections/view-details.png" alt-text="View SDN gateway details." lightbox="media/gateway-connections/view-details.png":::
 
 1. Under **Tools**, scroll down and select **Gateway Connections**.
 1. Click the **Inventory** tab on the right, then select the gateway connection. On the subsequent page, you can do the following:
@@ -130,7 +130,7 @@ You can view detailed information for a specific gateway connection from its ded
 
 You can change connection settings for IPsec, GRE, and L3 connections.
 
-:::image type="content" source="media/gateway/change-settings.png" alt-text="Change SDN gateway connection settings" lightbox="media/gateway/change-settings.png":::
+:::image type="content" source="media/gateway-connections/change-settings.png" alt-text="Change SDN gateway connection settings." lightbox="media/gateway-connections/change-settings.png":::
 
 1. Under **Tools**, scroll down and select **Gateway Connections**.
 1. Click the **Inventory** tab on the right, select a gateway connection, then select **Settings**.
@@ -146,7 +146,7 @@ You can change connection settings for IPsec, GRE, and L3 connections.
 
 You can delete a gateway connection if you no longer need it.
 
-:::image type="content" source="media/gateway/delete-connection.png" alt-text="Delete SDN gateway connection" lightbox="media/gateway/delete-connection.png":::
+:::image type="content" source="media/gateway-connections/delete-connection.png" alt-text="Delete SDN gateway connection." lightbox="media/gateway-connections/delete-connection.png":::
 
 1. Under **Tools**, scroll down and select **Gateway connections**.
 1. Click the **Inventory** tab on the right, then select a gateway connection. Click **Delete**.
