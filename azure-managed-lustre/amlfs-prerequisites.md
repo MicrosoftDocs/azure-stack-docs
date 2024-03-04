@@ -23,7 +23,7 @@ This article explains prerequisites that you must configure before creating an A
 
 Azure Managed Lustre file systems exist in a virtual network subnet. The subnet contains the Lustre Management Service (MGS) and handles all client interactions with the virtual Lustre cluster.
 
-Each file system you create must have its own unique subnet. You can't move a file system from one network or subnet to another after you create the file system.
+You can't move a file system from one network or subnet to another after you create the file system.
 
 Azure Managed Lustre accepts only IPv4 addresses. IPv6 isn't supported.
 
@@ -52,6 +52,8 @@ When you plan your virtual network and subnet, take into account the requirement
   To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#determine-the-network-type-to-use-with-aks).
 
 * If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system.
+
+* When planning multiple clusters within the same subnet, is it necessary to use an address space large enough to accommodate the total requirements for all clusters. 
 
 ### Subnet access and permissions
 
