@@ -1,6 +1,6 @@
 ---
 title: Support tool for Azure Stack HCI (22H2)
-description: This topic provides guidance on the Azure Stack HCI Support Diagnostic Tool for Azure Stack HCI, version 22H2.
+description: This article provides guidance on the Azure Stack HCI Support Diagnostic Tool for Azure Stack HCI, version 22H2.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -16,15 +16,17 @@ This article provides information on the Azure Stack HCI Support Diagnostic Tool
 > [!NOTE]
 > This tool is currently only available for Azure Stack HCI, version 22H2.
 
-This tool is designed to simplify the support and troubleshooting process and is not a substitute for expert knowledge. If you encounter any issues, we recommend that you reach out to Microsoft Customer Support for assistance.
+This tool is designed to simplify the support and troubleshooting process and isn't a substitute for expert knowledge. If you encounter any issues, we recommend that you reach out to Microsoft Customer Support for assistance.
 
 
 
 ## Benefits
 
-The Azure Stack HCI Support Diagnostic Tool simplifies the support and troubleshooting process by providing simple commands that do not require any knowledge of the underlying product. This means that you can quickly get a first glance at what might be causing an issue, without needing to be an expert on the product. The tool currently offers the following features:
+The Azure Stack HCI Support Diagnostic Tool simplifies the support and troubleshooting process by providing simple commands that don't require any knowledge of the underlying product. This means that you can quickly get a first glance at what might be causing an issue, without needing to be an expert on the product. 
 
-- **Easy installation and updates**: Can be installed and updated natively using PowerShell Gallery, without any additional requirements.
+The tool currently offers the following features:
+
+- **Easy installation and updates**: Can be installed and updated natively using PowerShell Gallery, without any extra requirements.
 
 - **Diagnostic checks**: Offers diagnostic checks based on common issues, incidents, and telemetry data.
 
