@@ -7,18 +7,18 @@ ms.topic: how-to
 ms.date: 02/15/2024
 ---
 
-# Support tool for Azure Stack HCI (22H2)
+# Use Azure Stack HCI Support Diagnostic tool to troubleshoot issues 
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
-This topic provides information on the Azure Stack HCI Support Diagnostic Tool, which is designed to help you troubleshoot and diagnose complex issues on Azure Stack HCI. The tool consists of a set of PowerShell commands that simplify troubleshooting, resolution, and data collection of common issues in Azure Stack HCI.
+This article provides information on the Azure Stack HCI Support Diagnostic Tool that helps you troubleshoot and diagnose complex issues on your Azure Stack HCI. The tool consists of a set of PowerShell commands that simplify data collection, troubleshooting, and resolution of common issues in Azure Stack HCI.
 
 > [!NOTE]
 > This tool is currently only available for Azure Stack HCI, version 22H2.
 
 This tool is designed to simplify the support and troubleshooting process and is not a substitute for expert knowledge. If you encounter any issues, we recommend that you reach out to Microsoft Customer Support for assistance.
 
-You can download the Azure Stack HCI Support Diagnostic Tool from the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=hci).
+
 
 ## Benefits
 
@@ -34,13 +34,15 @@ The Azure Stack HCI Support Diagnostic Tool simplifies the support and troublesh
 
 ## Prerequisites
 
-Here are a couple things to be aware of to ensure the PowerShell module runs properly:
+The following prerequisites must be completed to ensure the PowerShell module runs properly:
 
-- You must import the module into an elevated PowerShell window by an account with administrator privileges on the local system.
+- Download the Azure Stack HCI Support Diagnostic tool from the [PowerShell Gallery](https://www.powershellgallery.com/packages?q=hci).
 
-- The module should be installed on each node of the Azure Stack HCI system.
+- Import the module into an elevated PowerShell window by an account with administrator privileges on the local system.
 
-## Installing and using the tool
+- Install the  module on each node of the Azure Stack HCI system.
+
+## Install and use the tool
 
 To install the tool, run the following command in PowerShell:
 
@@ -48,15 +50,17 @@ To install the tool, run the following command in PowerShell:
 Install-Module –Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
-The following command is used to list all diagnostic checks that are available. You can check all diagnostic checks by pressing `CTRL+SPACE` after the parameter `ProductName`.
+To list all diagnostic checks that are available, run the following command: 
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck –ProductName <BaseSystem,Registration>
 ```
 
+You can check all diagnostic checks by pressing `CTRL+SPACE` after the parameter `ProductName`.
+
 ## Example scenario
 
-For troubleshooting Azure Stack HCI core products for example, you can run the following cmdlets:
+To troubleshoot Azure Stack HCI core products, for example, you can run the following cmdlets:
 
 ```powershell
 Invoke-AzsSupportDiagnosticCheck -ProductName Registration
@@ -66,7 +70,7 @@ Invoke-AzsSupportDiagnosticCheck -ProductName Registration
 Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
 ```
 
-Afterwards, a comprehensive overview of the different components that are required for properly connected Azure Stack HCI systems is created. Based on this overview, you can either follow the troubleshooting guidance or reach out to customer support for further assistance.
+Afterwards, a comprehensive overview of the different components that are required for properly connected Azure Stack HCI systems is created. Based on this overview, you can either follow the troubleshooting guidance or reach out to Microsoft Support for further assistance.
 
 ## Next steps
 
