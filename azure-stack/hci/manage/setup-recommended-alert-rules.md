@@ -29,7 +29,7 @@ Before you begin, make sure that the following prerequisites are completed:
 
 ## When to enable recommended alerts
 
-If you don't have alert rules defined for your cluster resource, you can enable recommended out-of-the-box alert rules in the Azure portal. The system compiles a list of recommended alert rules using Metrics data and provide threshold recommendations based on:
+If you don't have alert rules defined for your cluster resource, you can enable recommended out-of-the-box alert rules in the Azure portal. The system compiles a list of recommended alert rules using Metrics data and provides threshold recommendations based on:
 
 - The resource provider’s knowledge of important signals and thresholds for monitoring the resource.
 - Data that tells us what customers commonly alert on for this resource.
@@ -66,13 +66,13 @@ When the alert rule creation is complete, you'll see the alerts page for the Azu
 
 Follow these steps to view recommended alert rules:
 
-1. Go to your Azure Stack HCI cluster resource page and select your cluster. From the the **Monitoring** section on the left menu, select **Alerts**.
+1. Go to your Azure Stack HCI cluster resource page and select your cluster. From the **Monitoring** section on the left menu, select **Alerts**.
 
 1. Select **Alert rules** to view the rules you created.
 
     :::image type="content" source="media/setup-recommended-alert-rules/alerts-page.png" alt-text="Screenshot of the alerts page for your cluster." lightbox="media/setup-recommended-alert-rules/alerts-page.png":::
 
-1. Select any of the alert rules to view their details, or to modify their threshold if required.
+1. Select any of the alert rules to view their details, or to modify their threshold if necessary.
 
     :::image type="content" source="media/setup-recommended-alert-rules/view-alert.png" alt-text="Screenshot of the selected alert rule." lightbox="media/setup-recommended-alert-rules/view-alert.png":::
 
