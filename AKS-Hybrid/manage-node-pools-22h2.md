@@ -2,13 +2,12 @@
 title: Manage node pools for a cluster (AKS on Azure Stack HCI 22H2)
 description: Learn how to manage multiple node pools in AKS enabled by Azure Arc (AKS on Azure Stack HCI 22H2).
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom:
 ms.date: 01/31/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
-
 ---
 
 # Manage node pools for a cluster (AKS on Azure Stack HCI 22H2)

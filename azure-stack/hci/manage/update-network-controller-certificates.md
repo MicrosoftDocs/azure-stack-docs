@@ -4,7 +4,7 @@ description: This article describes how to renew Network Controller certificates
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 06/27/2023
+ms.date: 02/27/2024
 ---
 
 # Renew certificates for Network Controller
@@ -117,7 +117,7 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
    Here's a sample screenshot of the warning:
 
-   :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/update-network-controller-certificates/warning-after-certificates-generate.png" :::
 
 1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
 
@@ -126,7 +126,7 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
    Here's a sample screenshot of the PowerShell command window showing the status of ongoing operations:
   
-   :::image type="content" source="./media/network-controller-certificates/screenshot-powershell-window-status.png" alt-text="Screenshot of the PowerShell command window showing the status of ongoing operations." lightbox="./media/network-controller-certificates/screenshot-powershell-window-status.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/screenshot-powershell-window-status.png" alt-text="Screenshot of the PowerShell command window showing the status of ongoing operations." lightbox="./media/update-network-controller-certificates/screenshot-powershell-window-status.png" :::
 
 ### Renew your own certificates automatically
 
@@ -152,7 +152,7 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    Here's a sample screenshot of the warning:
 
-   :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/update-network-controller-certificates/warning-after-certificates-generate.png" :::
 
 1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
 
@@ -218,7 +218,7 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    Here's a sample screenshot of the warning that prompts you to confirm the rotation of certificates:
 
-   :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/update-network-controller-certificates/warning-after-certificates-generate.png" :::
 
 1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
 
