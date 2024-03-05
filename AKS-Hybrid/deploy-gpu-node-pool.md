@@ -70,7 +70,7 @@ mkdir nvidia-mitigation-driver
 Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
 ```
 
-To install the mitigation driver, navigate to the folder containing the extracted files, select the GPU driver file based on the actual GPU type installed on your Azure Stack HCI hosts, taking **A2 GPU** for example, right-click the **nvidia_azure_stack_A2_base.inf** file, and select **Install**.
+To install the mitigation driver, navigate to the folder that contains the extracted files, and select the GPU driver file based on the actual GPU type installed on your Azure Stack HCI hosts. For example, if the type is **A2 GPU**, right-click the **nvidia_azure_stack_A2_base.inf** file, and select **Install**.
 
 You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
 
