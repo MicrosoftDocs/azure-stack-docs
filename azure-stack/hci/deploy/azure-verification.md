@@ -286,7 +286,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
    Add-AzStackHCIVMAttestation -AddAll
    ```
 
-- Check VMs that have access to legacy OS support
+- Check VMs that have access to legacy OS support:
 
    ```powershell
    Get-AzStackHCIVMAttestation
