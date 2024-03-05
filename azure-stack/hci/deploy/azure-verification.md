@@ -7,8 +7,8 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 03/04/2024
-ms.lastreviewed: 03/04/2024
+ms.date: 03/05/2024
+ms.lastreviewed: 03/05/2024
 ---
 
 # Azure verification for VMs
@@ -307,6 +307,12 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
   ```powershell
   Remove-AzStackHCIVMAttestation -RemoveAll
+  ```
+
+- To check that the VMs can access legacy OS support on the host, run the following command on the VM:
+
+  ```powershell
+  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01
   ```
 
 ### [Azure portal](#tab/azureportal)
