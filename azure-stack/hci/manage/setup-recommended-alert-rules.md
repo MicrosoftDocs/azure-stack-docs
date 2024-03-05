@@ -17,18 +17,24 @@ This article describes how to enable recommended alert rules for Azure Stack HCI
 
 A metric alert rule monitors a resource by evaluating conditions on the resource metrics at regular intervals. If the conditions are met, an alert is fired. Recommended alerts are predefined metric-based alerts for your Azure Stack HCI cluster resource. These alerts provide you with initial monitoring for a common set of metrics including CPU percentage and available memory.
 
-For information about how to set up other alerts, see [Set up log alerts for Azure Stack HCI](./setup-hci-system-alerts.md) and [Set up metric alerts for Azure Stack HCI](./setup-metric-alerts.md).
+For information about how to set up log alerts and metric alerts, see [Set up log alerts for Azure Stack HCI](./setup-hci-system-alerts.md) and [Set up metric alerts for Azure Stack HCI](./setup-metric-alerts.md).
 
 ## Prerequisites
 
-Since the recommended alerts are metric-based alerts, they have the same prerequsites as metric alerts. For information, see [prerequisites]().
+Before you begin, make sure that the following prerequisites are completed:
+
+- You have access to an Azure Stack HCI cluster that is deployed and registered.
+
+- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## When to enable recommended alerts
 
-If you don't have alert rules defined for the selected resource, you can enable recommended out-of-the-box alert rules in the Azure portal. The system compiles a list of recommended alert rules using Metrics data and provide threshold recommendations based on:
+If you don't have alert rules defined for your cluster resource, you can enable recommended out-of-the-box alert rules in the Azure portal. The system compiles a list of recommended alert rules using Metrics data and provide threshold recommendations based on:
 
 - The resource provider’s knowledge of important signals and thresholds for monitoring the resource.
 - Data that tells us what customers commonly alert on for this resource.
+
+For a list of predefined recommended alerts available for Azure Stack HCI, see [Recommended alert rules for Azure Stack HCI](#recommended-alert-rules-for-azure-stack-hci).
 
 ## Enable recommended alert rules
 
@@ -44,7 +50,7 @@ Follow these steps to enable recommended alert rules in the Azure portal:
 
     :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-pane.png" alt-text="Screenshot of the Set up recommended alert rules pane with a list of recommended alert rules for your cluster." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-pane.png":::
 
-1. Expand each of the alert rules to see its details. By default, the severity for each is **Informational**. You can change it to another severity, such as **Error**. Change the recommended threshold if required.
+1. Expand each of the alert rules to see its details. By default, the severity for each is **Informational**. You can change it to another severity, such as **Error**. You can also change the recommended threshold if required.
 
     :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png" alt-text="Screenshot of an expanded recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png":::
 
@@ -66,13 +72,13 @@ Follow these steps to view recommended alert rules:
 
     :::image type="content" source="media/setup-recommended-alert-rules/alerts-page.png" alt-text="Screenshot of the alerts page for your cluster." lightbox="media/setup-recommended-alert-rules/alerts-page.png":::
 
-1. Select any of the rules to view their details and to modify their threshold if you want.
+1. Select any of the alert rules to view their details, or to modify their threshold if required.
 
     :::image type="content" source="media/setup-recommended-alert-rules/view-alert.png" alt-text="Screenshot of the selected alert rule." lightbox="media/setup-recommended-alert-rules/view-alert.png":::
 
 ## Recommended alert rules for Azure Stack HCI
 
-The following table lists the predefined recommended alert rules available for Azure Stack HCI:
+Here's a list of predefined recommended alert rules available for Azure Stack HCI:
 
 | Alert name | Performance counters used | Unit | Suggested threshold value |
 |--|--|--|--|
