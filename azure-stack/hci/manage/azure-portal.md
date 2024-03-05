@@ -6,7 +6,7 @@ ms.author: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 02/23/2024
 ---
 
 # Use the Azure portal with Azure Stack HCI
@@ -19,33 +19,33 @@ This topic explains how to connect to the Azure Stack HCI portion of the Azure p
 
 Once an Azure Stack HCI cluster is registered, its Azure resource is visible in the Azure portal. To view it, first sign in to the [Azure portal](https://portal.azure.com). If you've already [registered your cluster with Azure](../deploy/register-with-azure.md), you should see a new resource group with the name of your cluster appended with "-rg". If your Azure Stack HCI resource group is not displayed, search for "hci" and select your cluster from the drop-down menu:
 
-:::image type="content" source="media/azure-portal/azure-portal-search.png" alt-text="Search Azure portal for hci to find your Azure Stack HCI resource":::
+:::image type="content" source="media/azure-portal/azure-portal-search.png" alt-text="Search Azure portal for hci to find your Azure Stack HCI resource." lightbox="media/azure-portal/azure-portal-search.png":::
 
 The home page for the Azure Stack HCI Service lists all of your clusters, along with their resource group, location, and associated subscription.
 
-:::image type="content" source="media/azure-portal/azure-portal-home.png" alt-text="Home page for Azure Stack HCI Service on Azure portal":::
+:::image type="content" source="media/azure-portal/azure-portal-home.png" alt-text="Home page for Azure Stack HCI Service on Azure portal." lightbox="media/azure-portal/azure-portal-home.png":::
 
 Click an Azure Stack HCI resource to view the overview page for that resource, which displays a high-level summary of the cluster and server nodes.
 
-:::image type="content" source="media/azure-portal/azure-portal-overview.png" alt-text="Overview summary page for Azure Stack HCI resource on Azure portal":::
+:::image type="content" source="media/azure-portal/azure-portal-overview.png" alt-text="Overview summary page for Azure Stack HCI resource on Azure portal." lightbox="media/azure-portal/azure-portal-overview.png":::
 
 ## View the activity log
 
 The activity log provides a list of recent operations and events on the cluster along with their status, time, associated subscription, and initiating user. You can filter events by subscription, severity, time span, resource group, and resource.
 
-:::image type="content" source="media/azure-portal/azure-portal-activity-log.png" alt-text="Activity log screen for Azure Stack HCI resource on Azure portal":::
+:::image type="content" source="media/azure-portal/azure-portal-activity-log.png" alt-text="Activity log screen for Azure Stack HCI resource on Azure portal." lightbox="media/azure-portal/azure-portal-activity-log.png":::
 
 ## Configure access control
 
 Use Access control to check user access, manage roles, and add and view role assignments and deny assignments.
 
-:::image type="content" source="media/azure-portal/azure-portal-iam.png" alt-text="Access control screen for Azure Stack HCI resource on Azure portal":::
+:::image type="content" source="media/azure-portal/azure-portal-iam.png" alt-text="Access control screen for Azure Stack HCI resource on Azure portal." lightbox="media/azure-portal/azure-portal-iam.png":::
 
 ## Add and edit tags
 
 Tags are name/value pairs that enable you to categorize resources and view consolidated billing by applying the same tag to multiple resources and resource groups. Tag names are case-insensitive and tag values are case-sensitive. [Learn more about tags](/azure/azure-resource-manager/management/tag-resources).
 
-:::image type="content" source="media/azure-portal/azure-portal-tags.png" alt-text="Add or edit tags for Azure Stack HCI resource on Azure portal":::
+:::image type="content" source="media/azure-portal/azure-portal-tags.png" alt-text="Add or edit tags for Azure Stack HCI resource on Azure portal." lightbox="media/azure-portal/azure-portal-tags.png":::
 
 ## Compare Azure portal and Windows Admin Center
 
@@ -62,5 +62,4 @@ Unlike Windows Admin Center, the Azure portal experience for Azure Stack HCI is 
 
 For related information, see also:
 
-- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md)
-
+- [Connect Azure Stack HCI to Azure](../deploy/register-with-azure.md).

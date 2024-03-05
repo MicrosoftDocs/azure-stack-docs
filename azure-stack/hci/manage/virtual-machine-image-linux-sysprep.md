@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/16/2024
+ms.date: 03/04/2024
 ---
 
 # Prepare Ubuntu image for Azure Stack HCI virtual machines
@@ -54,15 +54,15 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 1. Use the downloaded image to create a VM with the following specifications: 
     1. Provide a friendly name for your VM. 
     
-        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-name.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-name.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-name.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-name.png":::
 
     1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
 
-        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-generation.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-generation.png":::
     
     1. Select **Install operating system from a bootable image** option. Point to ISO that you downloaded earlier.
     
-        :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-iso-option.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-iso-option.png":::
 
     See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
@@ -71,7 +71,7 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
     1. In the left pane, select the **Security** tab. Then under **Secure Boot**, uncheck **Enable Secure Boot**. 
     1. Apply the changes. On the next boot, the VM boots without the secure mode.
 
-    :::image type="content" source="../manage/media/manage-vm-resources/ubuntu-virtual-machine-secure-boot-disabled.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/manage-vm-resources/ubuntu-virtual-machine-secure-boot-disabled.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-secure-boot-disabled.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-secure-boot-disabled.png":::
 
 ### Step 2: Configure VM
 
@@ -172,11 +172,11 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
 1. Use the VHDX of the VM to create an Ubuntu gallery image. Use this Ubuntu VM image to create Arc virtual machines on your Azure Stack HCI.
 
     ```powershell
-    $galleryImagePath = (Get-VMHardDiskDrive -VMName "myubuntuvm").Path 
+    $ImagePath = (Get-VMHardDiskDrive -VMName "myubuntuvm").Path 
 
-    $galleryImageName = "ubuntu-server-ssvm" 
+    $ImageName = "ubuntu-server-ssvm" 
 
-    az stack-hci-vm galleryimage create --subscription $subscription -g $resource_group --extended-location name=$customLocationID type="CustomLocation" --location $location --image-path $galleryImagePath --name $galleryImageName --debug --os-type 'Linux' 
+    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' 
     ```
 
 

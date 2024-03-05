@@ -189,7 +189,7 @@ After you have installed, you'll need to configure your Azure Stack Hub NSGs and
 You can find some reference articles about using F5:
 
 - [Datacenter Availability Services Using BIG-IP DNS](https://clouddocs.f5.com/training/community/dns/html/class3/class3.html)
-- [Deploying the BIG-IP System with HTTP Applications](https://www.f5.com/content/dam/f5/corp/global/pdf/deployment-guides/iapp-http-dg.pdf)
+- [Deploying the BIG-IP System with HTTP Applications](https://www.f5.com/content/dam/f5/corp/global/pdf/deployment-guides/rc-iapp-http-dg.pdf)
 - [Creating a wide IP for GSLB](https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/class10/module2/lab1.html)
 
 ## Next steps

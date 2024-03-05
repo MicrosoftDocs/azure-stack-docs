@@ -37,12 +37,22 @@
         href: aks-create-clusters-portal.md      
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
+      - name: Scale a Kubernetes cluster
+        href: auto-scale-aks-arc.md
     - name: Networking
       items:
       - name: Create logical networks for Kubernetes clusters
         href: aks-networks.md
       - name: Deploy a load balancer
         href: deploy-load-balancer.md
+    - name: Storage
+      items:
+      - name: CSI storage drivers
+        items: 
+        - name: Use disk CSI drivers
+          href: container-storage-interface-disks.md
+        - name: Use file CSI drivers
+          href: container-storage-interface-files.md
     - name: Node pools
       items:
       - name: Manage multiple node pools
@@ -358,12 +368,6 @@
         items:
         - name: Use persistent volume
           href: persistent-volume.md
-        - name: CSI storage drivers
-          items: 
-          - name: Use disk CSI drivers
-            href: container-storage-interface-disks.md
-          - name: Use file CSI drivers
-            href: container-storage-interface-files.md
       - name: Security and authentication
         items:
         - name: Restrict SSH access
