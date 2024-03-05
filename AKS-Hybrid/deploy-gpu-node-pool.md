@@ -1,12 +1,12 @@
 ---
 title: Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 23H2)
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
-author: baziwane
+author: sethmanheim
 ms.topic: how-to
-ms.date: 01/16/2024
-ms.author: rbaziwane 
+ms.date: 03/05/2024
+ms.author: sethm 
 ms.lastreviewed: 03/21/2023
-ms.reviewer: sethm
+ms.reviewer: baziwane
 
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools
 # Keyword: Run GPU workloads on Kubernetes
