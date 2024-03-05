@@ -16,7 +16,6 @@ ms.date: 02/21/2024
 This article provides guidance on how to choose drives to meet your performance and capacity requirements.
 
 ## Drive types
-ms.date: 02/20/2024
 
 Storage Spaces Direct, the underlying storage virtualization technology behind Azure Stack HCI and Windows Server currently works with four types of drives:
 
