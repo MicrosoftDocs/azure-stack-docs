@@ -20,8 +20,9 @@ This article describes how to use Windows Defender Application Control (WDAC) to
 Before you begin, make sure that the following prerequisites are completed:
 
 - You have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
-- You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](#apply-microsoft-cloud-security-benchmark-initiative).
-- You have at least **Owner** or **Contributor** roles in your Azure subscription to apply MCSB.
+- If viewing settings via the Azure portal, make sure to satisfy these extra prerequisites:
+   - You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](#apply-microsoft-cloud-security-benchmark-initiative).
+   - You have at least **Owner** or **Contributor** roles in your Azure subscription to apply MCSB.
 
 ### Apply Microsoft Cloud Security Benchmark initiative
 
