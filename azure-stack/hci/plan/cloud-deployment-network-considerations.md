@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/28/2024
+ms.date: 03/01/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -185,7 +185,12 @@ Once the VLAN ID is set and the IPs of your nodes are configured on the physical
 
 ### Management VLAN ID with a virtual switch
 
-In some scenarios, there is a requirement to create a virtual switch before deployment starts. If a virtual switch configuration is required and you must use a specific VLAN ID, follow these steps:
+In some scenarios, there is a requirement to create a virtual switch before deployment starts. 
+
+> [!NOTE]
+> Before you create a virtual switch, make sure to enable the Hype-V role. For more information, see [Install required Windows role](../deploy/deployment-install-os.md).
+
+If a virtual switch configuration is required and you must use a specific VLAN ID, follow these steps:
 
 #### 1. Create virtual switch with recommended naming convention
 

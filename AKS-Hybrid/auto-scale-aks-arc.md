@@ -2,6 +2,7 @@
 title: Use auto-scaling in a Kubernetes cluster
 description: Learn how to use Az CLI for cluster autoscaling.
 ms.topic: how-to
+ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 02/28/2024
@@ -10,7 +11,6 @@ ms.date: 02/28/2024
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
-
 ---
 
 # Use cluster autoscaler on an AKS Arc cluster
