@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/20/2024
+ms.date: 03/05/2024
 ---
 
 # Enable recommended alert rules for Azure Stack HCI
@@ -23,6 +23,53 @@ For information about how to set up other alerts, see [Set up log alerts for Azu
 
 Since the recommended alerts are metric-based alerts, they have the same prerequsites as metric alerts. For information, see [prerequisites]().
 
+## When to enable recommended alerts
+
+If you don't have alert rules defined for the selected resource, you can enable recommended out-of-the-box alert rules in the Azure portal. The system compiles a list of recommended alert rules using Metrics data and provide threshold recommendations based on:
+
+- The resource provider’s knowledge of important signals and thresholds for monitoring the resource.
+- Data that tells us what customers commonly alert on for this resource.
+
+## Enable recommended alert rules
+
+Follow these steps to enable recommended alert rules in the Azure portal:
+
+1. Go to your Azure Stack HCI cluster resource page and select your cluster.
+
+1. On the left pane, select **Alerts** from the **Monitoring** section, and then select **View + set up** to enable the recommended alerts.
+
+    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png" alt-text="Screenshot showing the option to create view or set up a recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png":::
+
+1. In the **Set up recommended alert rules** pane, review the list of recommended alert rules for your cluster. In the **Select alert rules** section, all recommended alerts are populated with the default values for the rule condition, such as the percentage of CPU usage that you want to trigger an alert.
+
+    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-pane.png" alt-text="Screenshot of the Set up recommended alert rules pane with a list of recommended alert rules for your cluster." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-pane.png":::
+
+1. Expand each of the alert rules to see its details. By default, the severity for each is **Informational**. You can change it to another severity, such as **Error**. Change the recommended threshold if required.
+
+    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png" alt-text="Screenshot of an expanded recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png":::
+
+1. In the **Notify me by** section, ensure that **Email** is enabled and provide an email address to be notified when any of the alerts fire.
+
+1. Select **Use an existing action group**, and enter the details of the existing action group if you want to use an action group that already exists.
+
+1. Turn on the toggle to create the alert rules, and select **Save**.
+
+## View recommended alert rules
+
+When the alert rule creation is complete, you'll see the alerts page for the Azure Stack HCI cluster.
+
+Follow these steps to view recommended alert rules:
+
+1. Go to your Azure Stack HCI cluster resource page and select your cluster. From the the **Monitoring** section on the left menu, select **Alerts**.
+
+1. Select **Alert rules** to view the rules you created.
+
+    :::image type="content" source="media/setup-recommended-alert-rules/alerts-page.png" alt-text="Screenshot of the alerts page for your cluster." lightbox="media/setup-recommended-alert-rules/alerts-page.png":::
+
+1. Select any of the rules to view their details and to modify their threshold if you want.
+
+    :::image type="content" source="media/setup-recommended-alert-rules/view-alert.png" alt-text="Screenshot of the selected alert rule." lightbox="media/setup-recommended-alert-rules/view-alert.png":::
+
 ## Recommended alert rules for Azure Stack HCI
 
 The following table lists the predefined recommended alert rules available for Azure Stack HCI:
@@ -35,44 +82,6 @@ The following table lists the predefined recommended alert rules available for A
 | Volume Latency Write | Cluster CSVFS\\\Avg. sec/Write | Seconds | Greater than 0.500 |
 | Network In Per Second | Network Adapter\\\Bytes Received/sec | BytesPerSecond | Greater than 500000000000 |
 | Network Out Per Second | Network Adapter\\\Bytes Sent/sec | BytesPerSecond | Greater than 200000000000 |
-
-## Enable recommended alert rules
-
-Follow these steps to enable recommended alert rules in the Azure portal:
-
-1. Go to your Azure Stack HCI cluster resource page and select your cluster.
-
-1. On the left pane, select **Alerts** from the **Monitoring** section, and then select **View + set up** to enable the recommended alerts.
-
-    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png" alt-text="Screenshot showing the option to create view or set up a recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png":::
-
-1. Select the signal name and then select **Apply**.
-
-1. Preview the results of the selected metric signal in the **Preview** section. Select values for the **Time range** and **Time series**.
-
-1. In the **Alert logic** section, add details like threshold, operator, aggregation type, threshold values, unit, threshold sensitivity, aggregation granularity, and frequency of evaluation and then select **Next: Actions \>**.
-
-    :::image type="content" source="media/setup-metric-alerts/create-alert-rule-alerts-logic-section.png" alt-text="Screenshot of the Alerts logic section on the Create an alert rule page." lightbox="media/setup-metric-alerts/create-alert-rule-alerts-logic-section.png":::
-
-1. On the **Actions** tab of the **Create and alert rule** page, specify the action group to indicate your preferred method of notification, and then select **Next: Details \>**.
-
-    :::image type="content" source="media/setup-metric-alerts/create-alert-rule-action-tab.png" alt-text="Screenshot of the Select action groups context pane on the Create an alert rule page." lightbox="media/setup-metric-alerts/create-alert-rule-action-tab.png":::
-
-1. On the **Details** tab of the **Create and alert rule** page, select severity and alert rule description. Select **Review+Create** and then select **Create**.
-
-    :::image type="content" source="media/setup-metric-alerts/create-alert-rule-details-tab.png" alt-text="Screenshot of the Details tab on the Create an alert rule page." lightbox="media/setup-metric-alerts/create-alert-rule-details-tab.png":::
-
-### Create metric alerts through Azure CLI
-
-Use the [`az monitor metrics alert create`](/cli/azure/monitor/metrics/alert#az-monitor-metrics-alert-create) command to create metrics alert rules through Azure CLI.
-
-Here's an example of the command usage:
-
-To create a metric alert rule that monitors if the average CPU usage of a VM is greater than 90, run the following command:
-
-```azure CLI
-az monitor metrics alert create -n {nameofthealert} -g {ResourceGroup} --scopes {VirtualMachineResourceID} --condition "avg Percentage CPU > 90" --description {descriptionofthealert}
-```
 
 ## Next steps
 
