@@ -538,6 +538,8 @@
       href: /windows-server/storage/storage-spaces/storage-spaces-states?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
+    - name: Use Diagnostic Support tool
+      href: manage/support-tools.md
     - name: Troubleshoot SDN
       items:
       - name: Troubleshoot SDN deployment
