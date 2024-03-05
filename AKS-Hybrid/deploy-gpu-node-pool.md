@@ -70,24 +70,24 @@ mkdir nvidia-mitigation-driver
 Expand-Archive .\nvidia_azure_stack_inf_v2022.10.13_public.zip .\nvidia-mitigation-driver\
 ```
 
-To install the mitigation driver, navigate to the folder containing the extracted files, right-click the **nvidia_azure_stack_T4_base.inf** file, and select **Install**. Check that you have the correct driver; AKS currently supports only the NVIDIA Tesla T4 GPU.
+To install the mitigation driver, navigate to the folder containing the extracted files, select the GPU driver file based on the actual GPU type installed on your Azure Stack HCI hosts, taking **A2 GPU** for example, right-click the **nvidia_azure_stack_A2_base.inf** file, and select **Install**.
 
 You can also install using the command line by navigating to the folder and running the following commands to install the mitigation driver:
 
 ```powershell
-pnputil /add-driver nvidia_azure_stack_T4_base.inf /install 
+pnputil /add-driver nvidia_azure_stack_A2_base.inf /install 
 pnputil /scan-devices 
 ```
 
-After you install the mitigation driver, the GPUs are listed in the **OK** state under **Nvidia T4_base - Dismounted**:
+After you install the mitigation driver, the GPUs are listed in the **OK** state under **Nvidia A2_base - Dismounted**:
 
 ```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"nvidia"
 ```
 
 ```output
-OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
-OK       Nvidia T4_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
+OK       Nvidia A2_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
+OK       Nvidia A2_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
 ```
 
 ### Step 3: repeat steps 1 and 2
