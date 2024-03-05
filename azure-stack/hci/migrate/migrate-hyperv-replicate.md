@@ -168,7 +168,7 @@ This step applies only if you downloaded the .zip file.
     1. From the dropdown list, select the **On-premises appliance** (source) used for discovery.
     1. When finished, select **Continue**.
 
-    :::image type="content" source="./media/replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-hyperv-replicate/replication-screen.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-hyperv-replicate/replication-screen.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
@@ -178,7 +178,7 @@ This step applies only if you downloaded the .zip file.
 	1. Verify there is a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
     1. When finished, select **Next**.
     
-    :::image type="content" source="./media/replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-hyperv-replicate/replicate-1-basics.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-hyperv-replicate/replicate-1-basics.png":::
     
 
 1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark. 
