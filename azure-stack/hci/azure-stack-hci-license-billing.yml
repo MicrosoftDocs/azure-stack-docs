@@ -1,0 +1,44 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Stack HCI FAQ - License and Billing
+  description: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
+  ms.topic: faq
+  author: ronmiab
+  ms.author: robess
+  ms.service: azure-stack
+  ms.subservice: azure-stack-hci
+  ms.date: 03/06/2024
+title: Azure Stack HCI FAQ - License and Billing
+summary: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
+
+sections:
+  - name: Azure Stack HCI FAQ - License and Billing
+    questions:
+
+      - question: How can I purchase this license?
+        answer: |
+          This license is exclusively available through select OEM partners. Please contact your OEM partner for additional information.
+
+      - question: Do I have to license all physical cores?
+        answer: |
+          Every physical core in the server must be licensed - this license does not support a dynamic core license model. The base license covers up to 16 cores. Additional two-core and four-core add-ons are available for systems with 16-cores or more. For systems with 16-cores or more, you may combine licenses to cover all cores. For example, a 36-core system requires two 16-core licenses plus a four-core add-on license.  
+
+      - question: Is annual renewal or subscription required for this license?
+        answer: |
+          There is no annual renewal or subscription required for this license. This is a one-time prepaid license, exclusively available through select OEM partners. An active Azure account is required for activation. Once purchased, the license remains active for the life of the hardware. You can continue to use the license for as long as the associated hardware that the Azure Stack HCI OS is installed on remains functional and supported.
+
+      - question: Which version of Windows Server is supported for this license?
+        answer: |
+          You can use Windows Server Datacenter 2022, or an earlier version that is supported by Microsoft, as a guest license.  
+
+      - question: Are next version rights for Windows Server Datacenter included?
+        answer: |
+          No, this license is limited to Windows Server Datacenter 2022 and does not include subsequent newer versions unless permitted by Microsoft.
+
+      - question: Where can I get support for this license?
+        answer: |
+          Contact your OEM vendor for support or file an Azure support request through Azure portal.
+
+      - question: Are mixed-node scenarios supported?*
+        answer: |
+          This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](..azure-stack-hci-oem-license.md)
