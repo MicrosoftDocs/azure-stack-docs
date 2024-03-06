@@ -25,7 +25,7 @@ Before you begin, make sure that the following prerequisites are completed:
 
 - You have access to an Azure Stack HCI cluster that is deployed and registered.
 
-- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## When to enable recommended alerts
 
@@ -42,7 +42,7 @@ Follow these steps to enable recommended alert rules in the Azure portal:
 
 1. Go to your Azure Stack HCI cluster resource page and select your cluster.
 
-1. On the left pane, select **Alerts** from the **Monitoring** section, and then select **View + set up** to enable the recommended alerts.
+1. On the left pane, select **Alerts** from the **Monitoring** section, and then select **View + set up** to enable the recommended alerts. You can also select **Set up recommendations**.
 
     :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png" alt-text="Screenshot showing the option to create view or set up a recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png":::
 
@@ -83,11 +83,11 @@ Here's a list of predefined recommended alert rules available for Azure Stack HC
 | Alert name | Performance counters used | Unit | Suggested threshold value |
 |--|--|--|--|
 | Percentage CPU | Hyper-V Hypervisor Logical Processor\\\\% Total Run Time | Percentage | Greater than 80 |
-| Available Memory Bytes | Memory\\\Available Bytes | Bytes | Less than 1000000000 |
-| Volume Latency Read | Cluster CSVFS\\\Avg. sec/Read | Seconds | Greater than 0.500 |
-| Volume Latency Write | Cluster CSVFS\\\Avg. sec/Write | Seconds | Greater than 0.500 |
-| Network In Per Second | Network Adapter\\\Bytes Received/sec | BytesPerSecond | Greater than 500000000000 |
-| Network Out Per Second | Network Adapter\\\Bytes Sent/sec | BytesPerSecond | Greater than 200000000000 |
+| Available Memory Bytes | Memory\\\Available Bytes | GB | Less than 1 |
+| Volume Latency Read | Cluster CSVFS\\\Avg. sec/Read | Milliseconds | Greater than 500 |
+| Volume Latency Write | Cluster CSVFS\\\Avg. sec/Write | Milliseconds | Greater than 500 |
+| Network In Per Second | Network Adapter\\\Bytes Received/sec | GigaBytesPerSecond | Greater Than 500 |
+| Network Out Per Second | Network Adapter\\\Bytes Sent/sec | GigaBytesPerSecond | Greater than 200 |
 
 ## Next steps
 
