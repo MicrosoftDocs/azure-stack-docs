@@ -90,7 +90,7 @@ Here's a list of predefined recommended alert rules available for Azure Stack HC
 | Available Memory Bytes | Memory\\\Available Bytes | GB | Less than 1 |
 | Volume Latency Read | Cluster CSVFS\\\Avg. sec/Read | Milliseconds | Greater than 500 |
 | Volume Latency Write | Cluster CSVFS\\\Avg. sec/Write | Milliseconds | Greater than 500 |
-| Network In Per Second | Network Adapter\\\Bytes Received/sec | GigaBytesPerSecond | Greater Than 500 |
+| Network In Per Second | Network Adapter\\\Bytes Received/sec | GigaBytesPerSecond | Greater than 500 |
 | Network Out Per Second | Network Adapter\\\Bytes Sent/sec | GigaBytesPerSecond | Greater than 200 |
 
 ## Next steps
