@@ -68,13 +68,17 @@ Follow these steps to view recommended alert rules:
 
 1. Go to your Azure Stack HCI cluster resource page and select your cluster. From the **Monitoring** section on the left menu, select **Alerts**.
 
-1. Select **Alert rules** to view the rules you created.
+1. On the **Alerts** page, select **Alert rules** to view the rules you created. To view a single alert rule, you can select the alert rule link.
 
     :::image type="content" source="media/setup-recommended-alert-rules/alerts-page.png" alt-text="Screenshot of the alerts page for your cluster." lightbox="media/setup-recommended-alert-rules/alerts-page.png":::
 
-1. Select any of the alert rules to view their details, or to modify their threshold if necessary.
+1. Review the details of the selected alert rule. You can also select **Edit** to modify the default values of the selected alert rule, such as the default threshold value.
 
     :::image type="content" source="media/setup-recommended-alert-rules/view-alert.png" alt-text="Screenshot of the selected alert rule." lightbox="media/setup-recommended-alert-rules/view-alert.png":::
+
+1. After making the necessary changes, select **Review + save**.
+
+    :::image type="content" source="media/setup-recommended-alert-rules/edit-alert-rule.png" alt-text="Screenshot of the Edit alert rule page." lightbox="media/setup-recommended-alert-rules/edit-alert-rule.png":::
 
 ## Recommended alert rules for Azure Stack HCI
 
