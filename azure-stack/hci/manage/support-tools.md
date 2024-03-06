@@ -16,7 +16,7 @@ This article provides information on the Azure Stack HCI Support Diagnostic Tool
 > [!NOTE]
 > This tool is currently only available for Azure Stack HCI, version 22H2.
 
-This tool is designed to simplify the support and troubleshooting process and isn't a substitute for expert knowledge. If you encounter any issues, we recommend that you reach out to Microsoft Customer Support for assistance.
+This tool is designed to simplify the support and troubleshooting process and isn't a substitute for expert knowledge. If you encounter any issues, we recommend that you reach out to Microsoft Support for assistance.
 
 
 
