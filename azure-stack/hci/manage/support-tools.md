@@ -52,10 +52,10 @@ To install the tool, run the following command in PowerShell:
 Install-Module –Name Microsoft.AzureStack.HCI.CSSTools
 ```
 
-To list all diagnostic checks that are available, run the following command: 
+To list all diagnostic checks that are available, run the following command:
 
 ```powershell
-Invoke-AzsSupportDiagnosticCheck –ProductName <BaseSystem,Registration>
+Invoke-AzsSupportDiagnosticCheck –ProductName <BaseSystem, Registration>
 ```
 
 You can check all diagnostic checks by pressing `CTRL+SPACE` after the parameter `ProductName`.
