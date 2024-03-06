@@ -54,7 +54,7 @@ On the **Basics** tab, enter the following information:
    For best performance, create your Azure Managed Lustre file system in the same region and availability zone as your client machines.
 
    ![Screenshot showing Project Details on the Basics tab for Azure Managed Lustre.](./media/create-file-system-portal/basics-project-details.png)
-
+   
 ### File system details
 
 Set the name and capacity of the Azure Managed Lustre file system:
@@ -69,7 +69,7 @@ Set the name and capacity of the Azure Managed Lustre file system:
 
   To set your Azure Managed Lustre file system size, do these steps:
   
-  1. Choose either **Storage capacity** or **Maximum throughput**.
+1. Choose either **Storage capacity** or **Maximum throughput**.
 
   1. Enter a value in the writeable field - either your desired storage capacity (in TiB) if you selected **Storage capacity**, or your desired maximum throughput (in MB/second) if you selected **Maximum throughput**.
 
@@ -88,28 +88,28 @@ Currently the following throughput configurations are available:
 | 500 MB/second | 4 TB | 128 TB | 4 TB |
 
 > [!NOTE]
-> If you are interested in storage values larger than the listed maximum, please [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview)
-
+> Azure Managed Lustre can support storage capacities up to 2.5PB upon request. To enable this, please [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview)
+> If you need cluster sizes greater than 2.5PB please also [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview) to discuss additional options.
 ### Networking
 
 In the **Networking** section:
 
 1. Enter the virtual network and subnet that you configured earlier in [Network prerequisites](amlfs-prerequisites.md#network-prerequisites):
 
-   1. **Virtual network**: Select or create the network for your Azure Managed Lustre file system.
+1. **Virtual network**: Select or create the network for your Azure Managed Lustre file system.
 
    1. **Subnet**: Select or create the subnet to use for file system interaction.
 
    The Azure Managed Lustre file system uses a dedicated virtual network and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.
 
    You can open the **Manage subnet configuration** link to make sure the subnet meets your network requirements. The network should have enough available IP addresses to handle the file system's load and any additional IP addresses required by any other services that are co-located with the file system.
-  
+
    Also make sure you completed all access settings to enable the subnet to access the needed Azure services.
 
    To review networking requirements, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites) for more information about network sizing and other configuration options.
 
    ![Screenshot showing Network settings for an Azure Managed Lustre file system.](./media/create-file-system-portal/basics-networking.png)
-
+   
 When you finish entering the **Basic** settings, select **Next: Advanced** to continue.
 
 > [!NOTE]
@@ -147,7 +147,7 @@ To configure blob integration:
 
    If you don't want to import files from the blob container, set an import prefix that doesn't match any files in the container.
 
-   * If you use a hierarchical blob storage service like NFSv3-mounted blob storage, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
+* If you use a hierarchical blob storage service like NFSv3-mounted blob storage, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
 
    * If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name.
 
@@ -156,7 +156,7 @@ To configure blob integration:
    You can't change this field after you create the Azure Managed Lustre file system.
 
    ![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
-
+   
 ### Maintenance window
 
 To allow Azure staff to maintain your Azure Managed Lustre file system, they need access to the file system to run diagnostics, update software, and troubleshoot any problems. Use the **Maintenance window** setting to set a time when the system can be disrupted for routine service.
@@ -195,17 +195,17 @@ To use customer-managed encryption keys with your Azure Managed Lustre file syst
 1. Under **Customer key settings**, open the **Select or create a key vault, key, or version** link.
 
    ![Screenshot showing Customer Key Settings for the Create command for Azure Managed Lustre.](./media/create-file-system-portal/customer-key-settings.png)
-
+   
 1. On the **Select a key** screen, select the **Key vault**, **key**, and **Version** of the key to use for this file system. Then choose **Select**.
 
    You can create a new key vault, key, and key version from this page. The key must be a 2048-bit RSA key, and must be stored in Azure Key Vault.
 
    ![Screenshot showing Select a key screen while creating Azure Managed Lustre file system.](./media/create-file-system-portal/key-vault-key-version.png)
-
-   **Customer key settings** now displays your key vault, key, and version.
+   
+      **Customer key settings** now displays your key vault, key, and version.
 
    ![Screenshot showing sample Customer key settings on Basics tab for an Azure Managed Lustre file system.](./media/create-file-system-portal/keys-summary.png)
-
+   
 1. In **Managed identities**, specify one or more user-assigned managed identities to use for this file system. Each identity must have access to the key vault in order to successfully create the Azure Managed Lustre file system.
 
    > [!NOTE]
