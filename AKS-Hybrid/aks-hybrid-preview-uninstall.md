@@ -2,12 +2,12 @@
 title: Before you begin - uninstall the AKS cluster provisioning preview
 description: Learn how to uninstall the AKS cluster provisioning from Azure preview.
 ms.topic: overview
+ms.custom: devx-track-azurecli
 ms.date: 01/30/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
 ms.lastreviewed: 01/30/2024
-
 ---
 
 # Before you begin: uninstall the AKS cluster provisioning preview
