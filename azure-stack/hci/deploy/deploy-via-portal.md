@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 02/12/2024
+ms.date: 02/28/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -27,7 +27,7 @@ This article helps you deploy an Azure Stack HCI, version 23H2 system using the 
 
    All resources in the Azure subscription are billed together.
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
-4. Select the **Region** to store this system's Azure resources—in this release you must use either **(US) East US** or **(Europe) West Europe**.
+4. Select the **Region** to store this system's Azure resources. See [System requirements](../concepts/system-requirements-23h2.md#azure-requirements) for a list of supported regions.
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
@@ -104,7 +104,7 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-2. Select an existing Storage account or create a new Storage account to store the cluster witness file. 
+2. Select an existing Storage account or create a new Storage account to store the cluster witness file.
 
     When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
 
@@ -113,7 +113,7 @@ Choose whether to create a new configuration for this system or to load deployme
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
-4. Enter the **Computer name prefix** used when the domain was prepared for deployment (some use the same name as the OU name).
+4. Enter the **Computer name prefix** used by the `AsHciDeploymentPrefix` parameter when the domain was prepared for deployment (some use the same name as the OU name).
 5. Enter the **OU** created for this deployment.
    For example: ``OU=HCI01,DC=contoso,DC=com``
 6. Enter the **Deployment account** credentials.

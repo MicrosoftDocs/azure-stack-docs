@@ -41,7 +41,7 @@ ms.lastreviewed: 02/19/2023
 1. Install the metapackage that matches your running kernel:
 
    ```bash
-   sudo apt install amlfs-lustre-client-2.15.3-43-gd7e07df=$(uname -r)
+   sudo apt install amlfs-lustre-client-2.15.4-42-gd6d405d=$(uname -r)
    ```
 
    > [!NOTE]
@@ -50,5 +50,5 @@ ms.lastreviewed: 02/19/2023
    Optionally, if you want to upgrade ONLY the kernel (and not all packages), you must, at minimum, also upgrade the amlfs-lustre-client metapackage in order for the Lustre client to continue to work after the reboot. You must run something similar to this:
 
    ```bash
-   apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.15.3-43-gd7e07df
+   apt upgrade linux-image-[new kernel version] amlfs-lustre-client-2.15.4-42-gd6d405d
    ```

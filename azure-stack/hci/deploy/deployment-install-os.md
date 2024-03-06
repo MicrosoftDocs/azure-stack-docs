@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/26/2024
+ms.date: 02/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -83,6 +83,9 @@ To use SConfig, sign in to the server running the Azure Stack HCI operating syst
 
 :::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
+> [!IMPORTANT]
+> Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
+
 Follow these steps to configure the operating system using SConfig:
 
 1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your servers.
@@ -126,7 +129,8 @@ Follow these steps to configure the operating system using SConfig:
 1. Set the local administrator credentials to be identical across all servers.
 
     > [!NOTE]
-    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > - Do not join the servers with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. Cluster nodes are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 
 

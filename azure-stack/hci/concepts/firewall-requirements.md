@@ -36,7 +36,9 @@ This article describes how to optionally use a highly locked-down firewall confi
 
 ## Required firewall URLs
 
-The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
+The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist. 
+
+Please also follow the required firewall requirements for [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions).
 
 > [!NOTE]
 > The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
@@ -58,7 +60,7 @@ The following table provides a list of recommended firewall URLs. If your outbou
 
 Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
-- [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
+- [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
 - [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)

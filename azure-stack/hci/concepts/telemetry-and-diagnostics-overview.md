@@ -44,7 +44,7 @@ To access the options to send telemetry data, follow these steps:
 
 1. Go to your Azure Stack HCI cluster resource in the Azure portal. In the left-pane, go to **Settings** and then select **Extensions**.
 
-   :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
+   :::image type="content" source="media/telemetry-and-diagnostics-overview/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-and-diagnostics-overview/telemetry-diagnostics-extension-1.png":::
 
 2. Choose one of the following options for sharing telemetry data:
 
