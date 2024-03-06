@@ -57,4 +57,4 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 
 ## Next steps
 
-- Read the [License Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md).
+- Read the [License Windows Server VMs on Azure Stack HCI](/azure-stack/hci/manage/vm-activate?tabs=azure-portal).
