@@ -121,17 +121,17 @@ Now you can install the appliance using the .VHD file.
 
 1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Stack HCI server, and then select **OK**.
 
-1. Map the `C:` drive on your Azure Stack HCI server. Connect to this drive using File Explorer. Verify that you can access the location where the downloaded VHD is located on your Azure Stack HCI server. 
+1. Map the drive on your Azure Stack HCI server where you downloaded the VHD. Connect to this drive using File Explorer. Verify that you can access the location where the VHD was downloaded on your Azure Stack HCI server.
 
 1. On your Hyper-V server, from the **Actions** pane, select **Import Virtual Machine**. This starts a wizard. Go through the steps of the wizard. Accept the defaults except on the following:
 
-    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateApplianceHCI_v25.24.02.07) that you downloaded on your Azure Stack HCI server. 
+    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateApplianceHCI_v25.24.02.07) that you downloaded on your Azure Stack HCI server.
     1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
     1. Finally review the settings and select **Finish**.
 
-1. In the Hyper-V Manager, under Virtual Machines, you see the VM your created. Select and start the VM.
+1. In the Hyper-V Manager, under **Virtual Machines**, you see the VM your created. Select and start the VM.
 
-1.  Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
+1. Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
 
 1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.
 
