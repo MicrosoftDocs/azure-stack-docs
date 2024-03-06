@@ -67,9 +67,9 @@ To troubleshoot Azure Stack HCI core products, for example, you can run the foll
 
 #### For registration issues
 
-    ```powershell
-    Invoke-AzsSupportDiagnosticCheck -ProductName Registration
-    ```
+```powershell
+Invoke-AzsSupportDiagnosticCheck -ProductName Registration
+```
 
 Here's an example of the output for registration issue:
 
@@ -127,9 +127,9 @@ Data collection done . Please upload the file to the Microsoft Workspace.
 
 #### For base Azure Stack HCI system issues
 
-    ```powershell
-    Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
-    ```
+```powershell
+Invoke-AzsSupportDiagnosticCheck -ProductName BaseSystem
+```
 Here's an example of the output for base system issues:
 
 ```output
