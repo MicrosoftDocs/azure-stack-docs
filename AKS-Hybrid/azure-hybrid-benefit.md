@@ -8,7 +8,6 @@ ms.topic: conceptual
 ms.reviewer: rbaziwane
 ms.lastreviewed: 01/30/2024
 ms.custom:
-  - devx-track-azurepowershell
 
 # Intent: As an IT Pro, I want to learn about Azure Hybrid Benefit for AKS.   
 # Keyword: Azure Hybrid Benefit for AKS

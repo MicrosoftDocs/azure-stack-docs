@@ -37,12 +37,22 @@
         href: aks-create-clusters-portal.md      
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
+      - name: Scale a Kubernetes cluster
+        href: auto-scale-aks-arc.md
     - name: Networking
       items:
       - name: Create logical networks for Kubernetes clusters
         href: aks-networks.md
       - name: Deploy a load balancer
         href: deploy-load-balancer.md
+    - name: Storage
+      items:
+      - name: CSI storage drivers
+        items: 
+        - name: Use disk CSI drivers
+          href: container-storage-interface-disks.md
+        - name: Use file CSI drivers
+          href: container-storage-interface-files.md
     - name: Node pools
       items:
       - name: Manage multiple node pools
@@ -69,6 +79,8 @@
       items:    
           - name: Monitor Kubernetes object events
             href: kubernetes-monitor-object-events.md
+          - name: Monitor Kubernetes audit events
+            href: kubernetes-monitor-audit-events.md
           - name: Enable Container Insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Use on-premises monitoring
@@ -81,6 +93,8 @@
     items:
     - name: Known issues
       href: aks-known-issues.md
+    - name: Troubleshoot
+      href: aks-troubleshoot.md
   - name: Reference
     items:
     - name: Azure CLI
@@ -191,7 +205,6 @@
         href: tutorial-kubernetes-prepare-azure-container-registry.md
       - name: 3 - Deploy a workload cluster
         href: tutorial-kubernetes-deploy-cluster.md
-        # If we change this, then we can move this to the main TOC, under overview. AI: Abhilasha
       - name: 4 - Run an application
         href: tutorial-kubernetes-deploy-application.md
       - name: 5 - Scale an application
@@ -343,9 +356,6 @@
           href: multiple-load-balancers.md
         - name: Configure a custom load balancer
           href: configure-custom-load-balancer.md
-#        - name: Deploy MetalLB for load balancing
-#          href: deploy-metallb.md
-          # Remove this, and redirect to this - deploy-load-balancer.md AI: Abhilasha to make sure deploy-load-balancer.md is product agnostic. 
         - name: Use an ingress controller
           href: create-ingress-controller.md
         - name: Use Microsoft Software Defined Networking (SDN)
@@ -358,12 +368,6 @@
         items:
         - name: Use persistent volume
           href: persistent-volume.md
-        - name: CSI storage drivers
-          items: 
-          - name: Use disk CSI drivers
-            href: container-storage-interface-disks.md
-          - name: Use file CSI drivers
-            href: container-storage-interface-files.md
       - name: Security and authentication
         items:
         - name: Restrict SSH access
@@ -390,8 +394,6 @@
         items:    
         - name: Use on-premises monitoring
           href: monitor-logging.md
-        - name: Get kubelet logs
-          href: get-kubelet-logs.md
       - name: Use Windows Server containers
         items:
         - name: Deploy .NET applications

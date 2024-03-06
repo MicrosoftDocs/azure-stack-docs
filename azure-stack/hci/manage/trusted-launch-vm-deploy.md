@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 02/27/2024
 ---
 
 # Deploy Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
@@ -30,15 +30,15 @@ To create a Trusted launch Arc VM on Azure Stack HCI, follow the steps in the [C
 
 1. While creating the VM, select **Trusted launch virtual machines** for security type.
 
-    :::image type="content" source="media/trusted-launch-deploy/create-arc-vm-1.png" alt-text="Screenshot showing Trusted launch type selection." lightbox="media/trusted-launch-deploy/create-arc-vm-1.png":::
+    :::image type="content" source="media/trusted-launch-vm-deploy/create-arc-vm-1.png" alt-text="Screenshot showing Trusted launch type selection." lightbox="media/trusted-launch-vm-deploy/create-arc-vm-1.png":::
 
 1. Select a VM guest OS image from the list of supported images:
 
-    :::image type="content" source="media/trusted-launch-deploy/create-arc-vm-2.png" alt-text="Screenshot showing supported guest image selection." lightbox="media/trusted-launch-deploy/create-arc-vm-2.png":::
+    :::image type="content" source="media/trusted-launch-vm-deploy/create-arc-vm-2.png" alt-text="Screenshot showing supported guest image selection." lightbox="media/trusted-launch-vm-deploy/create-arc-vm-2.png":::
 
 1. Once a VM is created, go to the **VM properties** page and verify the security type shown is **Trusted launch**.
  
-    :::image type="content" source="media/trusted-launch-deploy/create-arc-vm-3.png" alt-text="Screenshot showing properties page." lightbox="media/trusted-launch-deploy/create-arc-vm-3.png":::
+    :::image type="content" source="media/trusted-launch-vm-deploy/create-arc-vm-3.png" alt-text="Screenshot showing properties page." lightbox="media/trusted-launch-vm-deploy/create-arc-vm-3.png":::
 
 # [Azure CLI](#tab/azure-cli)
 

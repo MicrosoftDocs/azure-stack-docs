@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/09/2024
+ms.date: 02/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -83,9 +83,18 @@ To use SConfig, sign in to the server running the Azure Stack HCI operating syst
 
 :::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
+> [!IMPORTANT]
+> Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
+
 Follow these steps to configure the operating system using SConfig:
 
-1. Configure networking as per your environment.
+1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your servers.
+
+1. Configure networking as per your environment. You can configure the following optional settings:
+
+    - Configure VLAN IDs for the management network. For more information, see [Management VLAN ID](../plan/cloud-deployment-network-considerations.md#management-vlan-id) and [Management VLAN ID with a virtual switch](../plan/cloud-deployment-network-considerations.md#management-vlan-id-with-a-virtual-switch).
+    - Configure DHCP for the management network. For more information, see [DHCP IP assignment](../plan/cloud-deployment-network-considerations.md#dhcp-ip-assignment).
+    - Configure a proxy server. For more information, see [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2.md).
 
 1. Use the **Network Settings** option in SConfig to configure a default valid gateway and a DNS server. Set **DNS** to the DNS of the domain you're joining.
 
@@ -113,16 +122,17 @@ Follow these steps to configure the operating system using SConfig:
 
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each server rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
-1. (Optional) Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+1. Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
 1. Restart the servers.
 
 1. Set the local administrator credentials to be identical across all servers.
 
     > [!NOTE]
-    > Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
+    > - Do not join the servers with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. Cluster nodes are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
-1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your servers.
+
 
 ## Install required Windows roles
 
@@ -139,5 +149,6 @@ You are now ready to register the Azure Stack HCI server with Azure Arc and assi
 
 ## Next steps
 
-- [Register Azure Stack HCI servers in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).
 - (Optional) [Configure proxy settings for Azure Stack HCI, version 23H2](../manage/configure-proxy-settings-23h2.md).
+- [Register Azure Stack HCI servers in your system with Azure Arc and assign permissions](./deployment-arc-register-server-permissions.md).
+

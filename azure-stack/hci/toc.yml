@@ -8,12 +8,16 @@
     href: whats-new.md
   - name: Release notes
     items:
-    - name: Known issues - 2311.2 GA (Current)
-      href: known-issues-2311-2.md
-    - name: Known issues - 2311 (preview)
-      href: known-issues-2311.md
-    - name: Known issues - 2310 (preview)
-      href: known-issues-23h2.md
+    - name: Known issues 2402 - Current
+      href: known-issues-2402.md
+    - name: Known issues 2311
+      items:
+      - name: 2311.3 - Current
+        href: known-issues-2311-3.md
+      - name: 2311.2 - GA
+        href: known-issues-2311-2.md
+      - name: 2311 (preview)
+        href: known-issues-2311.md
     - name: Release information
       href: release-information-23h2.md
   - name: Compare to Windows Server
@@ -72,6 +76,8 @@
         href: plan/two-node-decision-matrix.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
+  - name: Review cloud deployment network considerations
+    href: plan/cloud-deployment-network-considerations.md
   - name: Review security features
     href: concepts/security-features.md
   - name: Assess environment readiness
@@ -209,10 +215,13 @@
       href: manage/manage-syslog-forwarding.md
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
+      
   - name: Clusters
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
+    - name: Use dashboard to manage at-scale
+      href: manage/manage-at-scale-dashboard.md
 
   - name: Azure services
     items:
@@ -529,6 +538,8 @@
       href: /windows-server/storage/storage-spaces/storage-spaces-states?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
+    - name: Use the Diagnostic Support tool
+      href: manage/support-tools.md
     - name: Troubleshoot SDN
       items:
       - name: Troubleshoot SDN deployment
@@ -706,6 +717,8 @@
       href: whats-new-in-hci-22h2.md
     - name: What's new in version 21H2
       href: whats-new-in-hci-21h2.md
+    - name: Known issues in 2310
+      href: known-issues-2310.md
     - name: Create a VM-based lab
       href: deploy/tutorial-private-forest.md
     - name: 22H2 Supplemental Package (Preview)
