@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 02/27/2024
 ---
 
 # Monitor Azure Stack HCI features with Insights
@@ -218,6 +218,24 @@ This tab shows the jobs performed overtime during the deduplication process and 
 1. Verify if the `Microsoft-Windows-ReFSDedupSVC` event channel is listed, as shown in the following screenshot:
 
     :::image type="content" source="media/monitor-features/refs-event-channel.png" alt-text="Screenshot that shows the ReFS event channel is listed." lightbox="media/monitor-features/refs-event-channel.png":::
+
+## Monitor Dell APEX cloud platform
+
+The Dell APEX cloud platform for Microsoft Azure offers a turnkey on-premises infrastructure solution that empowers organizations to unlock innovation through extensive integrations, automation, and a consistent Azure experience across their IT environments.
+
+Use the Dell workbook to visualize hardware events in real-time, resulting in accelerated issue detection and resolution.
+
+Follow these steps to start event monitoring for Dell APEX Cloud Platform for Microsoft Azure:
+
+1. Make sure the [Prerequisites](#prerequisites) are met before you begin to use workbook.
+
+1. Enable monitoring for the Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure feature. For instructions, see [Enable monitoring for a feature](#enable-monitoring-for-a-feature).
+
+1. Select the **Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure** feature from the **Overview** tab to open the workbook.
+
+    :::image type="content" source="media/monitor-features/select-dell-workbook.png" alt-text="Screenshot of the Overview tab listing the Dell workbook." lightbox="media/monitor-features/select-dell-workbook.png":::
+
+For information about what data is collected and the different tabs on the workbook, see [Event Monitoring for Dell APEX Cloud Platform for Microsoft Azure](https://dl.dell.com/content/manual62439893-event-monitoring-for-dell-apex-cloud-platform-for-microsoft-azure.pdf).
 
 ## Next steps
 
