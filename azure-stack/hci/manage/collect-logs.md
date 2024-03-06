@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 03/06/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI
@@ -72,7 +72,6 @@ where:
    |--|--|
    | ALM | Application Lifecycle Management (ALM) involves managing the development, testing, deployment, and maintenance for software applications. |
    | ArcAgent | An agent that allows management of Windows Server via Azure Arc. See [Overview of Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). |
-   | AutonomousLogs | The role that collects autonomous logs. |
    | BareMetal | Infrastructure role that allows you to run services on bare metal servers without a virtualization layer. You can have full access and control over the operating system and hardware. |
    | CommonInfra | Collects logs for common infrastructure components, such as networking, storage, and security. |
    | DeploymentLogs | Records details of the deployment process, including steps taken, encountered errors, and operation status. |
