@@ -21,7 +21,7 @@ This article describes how to prepare clients and mount the Azure Managed Lustre
 
 Client machines running Linux can access Azure Managed Lustre. The basic client requirements are as follows:
 
-- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Prebuilt client packages have been tested with Azure Managed Lustre. See [Install client software](#install-client-software) for instructions and package download options. Client packages are available for several commonly used Linux OS distributions.
+- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Prebuilt client packages have been tested with Azure Managed Lustre. See [Install or upgrade Lustre client software](#install-or-upgrade-lustre-client-software) for instructions and package download options. Client packages are available for several commonly used Linux OS distributions.
 - **Network access** to the file system - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use virtual network peering.
 - **Mount** - Clients must be able to use the POSIX `mount` command to connect to the file system.
 - **To achieve advertised performance** -
@@ -31,10 +31,10 @@ Client machines running Linux can access Azure Managed Lustre. The basic client 
 
 The basic workflow is as follows:
 
-1. [Install the Lustre client software](#install-client-software) on each client.
-1. [Use the `mount` command](#mount-command) to make the Azure Managed Lustre file system available on the client.
+1. [Install or upgrade Lustre client software](#install-or-upgrade-lustre-client-software) on each client.
+1. Use the [`mount` command](#mount-command) to make the Azure Managed Lustre file system available on the client.
 
-## Install client software
+## Install or upgrade Lustre client software
 
 Each client that connects to the Lustre file system must have a Lustre client package that is compatible with the file system's Lustre version (currently 2.15).
 
@@ -55,51 +55,123 @@ Packages and kernel modules are available for the following Linux operating syst
 
 If you need to support a different distribution, contact the support team.
 
-If you have an older Lustre client on your Linux system, follow the instructions in the [Update a Lustre client to the current version](#update-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
+If you have an older Lustre client on your Linux system, follow the instructions in the [Upgrade a Lustre client to the current version](#upgrade-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
 
 > [!NOTE]
 > Microsoft will publish new packages within one business day of a new kernel being available. If you experience any issues, please file a support ticket.
 
-## Update a Lustre client to the current version
+## Upgrade a Lustre client to the current version
 
-If you're using client machines with an older version of Lustre, make sure you completely uninstall the previous Lustre client's kernel modules in addition to removing the software packages.
+If your client machine uses an older version of Lustre, you can upgrade the Lustre client package to the current version using the following steps. It's important that you completely uninstall the previous Lustre client's kernel modules, in addition to removing the client software packages.
 
-Follow this procedure:
+Follow these steps to upgrade the Lustre client to the current version:
 
-1. Unmount the client machine from the Lustre cluster.
-1. Run this command to remove the kernel modules: `sudo lustre_rmmod`. Run the command twice, to make sure that everything is removed.
-1. Reboot the system to make sure that all kernel modules are unloaded.
-1. Uninstall the old Lustre client packages.
-1. If you're also updating your Linux kernel version, install the new kernel now.
-1. Reboot the system. <!-- This step is not strictly necessary, but testing has shown that it can prevent a wide variety of problems, including some problems that are difficult to diagnose. -->
-1. Install the Azure Managed Lustre-compatible client as described in this article.
+### [Red Hat Enterprise Linux / Alma](#tab/rhel)
+
+1. Unmount any containers or mount point that are mounting the Lustre client using the following command:
+
+    ```bash
+    sudo umount <all Lustre mounts>
+    ```
+
+1. Uninstall the existing Lustre client version using the following command:
+
+    ```bash
+    sudo dnf remove <lustre-client>
+    ```
+
+1. Reboot using `sudo reboot`, or unload the Lustre and LNet kernel modules using the following command:
+
+    ```bash
+    sudo lustre_rmmod
+    ```
+
+1. Install the current version of the Lustre client using the following command:
+
+    ```bash
+    sudo dnf install amlfs-lustre-client-2.15.4_42_gd6d405d-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
+    ```
+
+1. Verify that old kernel modules are removed using the following command:
+
+    ```bash
+    cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
+    ```
+
+    The output should look similar to the following:
+
+    ```bash
+    cat: /sys/module/lustre/version: No such file or directory
+    ```
+
+    If the output shows an old version of the Lustre kernel module, it's recommended to reboot the system.
+
+### [Ubuntu](#tab/ubuntu)
+
+1. Unmount any containers or mount point that are mounting the Lustre client using the following command:
+
+    ```bash
+    sudo umount <all Lustre mounts>
+    ```
+
+1. Uninstall the existing Lustre client version using the following command:
+
+    ```bash
+    sudo apt autoremove <lustre-client>
+    ```
+
+1. Reboot using `sudo reboot`, or unload the Lustre and LNet kernel modules using the following command:
+
+    ```bash
+    sudo lustre_rmmod
+    ```
+
+1. Install the current version of the Lustre client using the following command:
+
+    ```bash
+    sudo apt install amlfs-lustre-client-2.15.4-42-gd6d405d=$(uname -r)
+    ```
+
+1. Verify that old kernel modules are removed using the following command:
+
+    ```bash
+    cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
+    ```
+
+    The output should look similar to the following:
+
+    ```bash
+    cat: /sys/module/lustre/version: No such file or directory
+    ```
+
+    If the output shows an old version of the Lustre kernel module, it's recommended to reboot the system.
+
+---
 
 After performing this procedure, you can mount the client to your Azure Managed Lustre system.
 
-## Mount command
+## Start the Lustre client using the mount command
 
 > [!NOTE]
 > Before you run the `mount` command, make sure that the client host can see the Azure Managed Lustre file system's virtual network. You can do this by pinging the file system's server IP address. If the ping command doesn't succeed, make the file system network a peer to your compute resources network.
 
-Mount all of your clients to the file system's MGS IP address.
-
-The **Client connection** page in the Azure portal shows the IP address and gives a sample mount command that you can copy and use to mount clients.
+Mount all of your clients to the file system's MGS IP address. The **Client connection** page in the Azure portal shows the IP address and gives a sample `mount` command that you can copy and use to mount clients.
 
 :::image type="content" source="media/connect-clients/client-connection.png" alt-text="Screenshot of client connection page in the portal." lightbox="media/connect-clients/client-connection.png":::
 
-The mount command includes three components:
+The `mount` command includes three components:
 
-- **Client path** - The path on the client machine where the Azure Managed Lustre file system should be mounted. The default value is the file system name, but you can change it.
+- **Client path**: The path on the client machine where the Azure Managed Lustre file system should be mounted. The default value is the file system name, but you can change it. Make sure that this directory path exists on the client machine before you use the `mount` command.
+- **MGS IP address**: The IP address for the Azure Managed Lustre file system's Lustre management service (MGS).
+- **Mount command options**: Additional recommended options are included in the sample `mount` command.
 
-  Make sure that this directory path exists on the client machine before you use the `mount` command.
+These components are assembled into a `mount` command with this form:
 
-- **MGS IP address** - The IP address for the Azure Managed Lustre file system's Lustre management service (MGS).
+```bash
+sudo mount -t lustre -o noatime,flock <MGS_IP>@tcp:/lustrefs /<client_path>
+```
 
-- **Mount command options** - Additional recommended options are included in the sample `mount` command.
-
-These components are assembled into a mount command with this form: `sudo mount -t lustre -o noatime,flock <MGS_IP>@tcp:/lustrefs /<client_path>`.
-
-- The `lustrefs` value in the MSG IP term is the system-assigned internal name associated with the Lustre cluster inside the Azure-managed system. Don't change this literal value when you create your own mount commands.
+- The `lustrefs` value in the MSG IP term is the system-assigned internal name associated with the Lustre cluster inside the Azure-managed system. Don't change this literal value when you create your own `mount` commands.
 
 - Set the client path to any convenient mount path that exists on your clients. It doesn't need to be the Azure Managed Lustre file system name (which is the default value).
 
@@ -116,7 +188,7 @@ After your clients are connected to the file system, you can use the Azure Manag
 - Start a compute job.
 
 > [!IMPORTANT]
-> When a client is no longer needed, it is essential that the client be unmounted prior to shutting it down. 
+> When a client is no longer needed, it is essential that the client be unmounted prior to shutting it down.
 > 
 > [How to unmount Azure Managed Lustre Filesystem using Scheduled Events](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/how-to-unmount-azure-managed-lustre-filesystem-using-azure/ba-p/3917814)
 

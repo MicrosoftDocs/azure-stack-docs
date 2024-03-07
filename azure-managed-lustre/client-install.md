@@ -13,7 +13,9 @@ zone_pivot_groups: select-os
 
 # Install prebuilt client software
 
-This article shows how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+In this article, you learn how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+
+If you need to upgrade an existing Lustre client to the current version, see [Upgrade a Lustre client to the current version](connect-clients.md#upgrade-a-lustre-client-to-the-current-version).
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
