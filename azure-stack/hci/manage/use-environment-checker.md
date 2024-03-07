@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/29/2024
+ms.date: 03/07/2024
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2
@@ -146,7 +146,7 @@ Invoke-AzStackHciConnectivityValidation -PsSession $Session
 You can check connectivity for a specific service endpoint by passing the `Service` parameter. In the following example, the validator checks connectivity for Azure Arc service endpoints.
 
 ```powershell
-Invoke-AzStackHciConnectivityValidation -Service Arc
+Invoke-AzStackHciConnectivityValidation -Service "Arc For Servers"
 ```
  
 #### Example 3: Check connectivity if you're using a proxy
