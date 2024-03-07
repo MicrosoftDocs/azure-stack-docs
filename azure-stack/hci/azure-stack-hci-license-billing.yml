@@ -8,8 +8,10 @@ metadata:
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
   ms.date: 03/06/2024
+
 title: Azure Stack HCI FAQ - License and Billing
-summary: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
+summary: |
+  The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
 
 sections:
   - name: Azure Stack HCI FAQ - License and Billing
