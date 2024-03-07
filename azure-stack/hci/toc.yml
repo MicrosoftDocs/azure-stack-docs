@@ -18,6 +18,16 @@
         href: known-issues-2311-2.md
       - name: 2311 (preview)
         href: known-issues-2311.md
+    - name: Security updates
+      items:
+      - name: November 2023 security update
+        href: security-update/hci-security-update-nov-2023.md
+      - name: December 2023 security update
+        href: security-update/hci-security-update-dec-2023.md
+      - name: January 2024 security update
+        href: security-update/hci-security-update-jan-2024.md
+      - name: February 2024 security update
+        href: security-update/hci-security-update-feb-2024.md
     - name: Release information
       href: release-information-23h2.md
   - name: Compare to Windows Server
