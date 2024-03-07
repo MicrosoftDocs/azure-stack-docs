@@ -39,6 +39,6 @@ sections:
         answer: |
           Contact your OEM vendor for support or file an Azure support request through Azure portal.
 
-      - question: Are mixed-node scenarios supported?*
+      - question: Are mixed-node scenarios supported?
         answer: |
           This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
