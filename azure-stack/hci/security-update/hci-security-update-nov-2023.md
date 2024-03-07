@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # November 2023 security update (KB 5032202) for Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This security update for Azure Stack HCI, version 23H2 was released on 11/14/2023 and applies to OS build 25398.531.
 
@@ -49,7 +49,7 @@ Microsoft is not currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](https://learn.microsoft.com/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](./update/about-updates-23h2.md).
+To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](/update/about-updates-23h2.md).
 
 | Release Channel | Available | Next Step |
 | -- | -- | -- |

@@ -11,7 +11,7 @@ ms.subservice: azure-stack-hci
 
 # December 2023 security update (KB 5033383) for Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This security update for Azure Stack HCI, version 23H2 was released on 12/12/2023 and applies to OS build 25398.584.
 
