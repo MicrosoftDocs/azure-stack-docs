@@ -41,4 +41,4 @@ sections:
 
       - question: Are mixed-node scenarios supported?*
         answer: |
-          This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](..azure-stack-hci-oem-license.md)
+          This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios)
