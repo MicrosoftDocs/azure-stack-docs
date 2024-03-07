@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/06/2024
+ms.date: 02/22/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -87,7 +87,7 @@ Azure Stack HCI has an integrated syslog forwarder that, once configured, genera
 
 The following diagram illustrates integration of Azure Stack HCI with an SIEM. All audits, security logs, and alerts are collected on each host and exposed via syslog with the CEF payload.
 
-:::image type="content" source="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png" alt-text="The following diagram describes the integration of Azure Stack HCI with an external security information and event management (SIEM) system." border="false" lightbox="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png":::
+:::image type="content" source="media/security-features/integration-of-azure-stack-hci-with-external-siem.png" alt-text="The following diagram describes the integration of Azure Stack HCI with an external security information and event management (SIEM) system." lightbox="media/security-features/integration-of-azure-stack-hci-with-external-siem.png":::
 
 Syslog forwarding agents are deployed on every Azure Stack HCI host to forward syslog messages to the customer-configured syslog server. Syslog forwarding agents work independently from each other but can be managed together on any one of the hosts.
 
