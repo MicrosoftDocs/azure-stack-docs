@@ -11,6 +11,8 @@ ms.subservice: azure-stack-hci
 
 # Azure Stack HCI OEM license
 
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+
 This article covers the Azure Stack HCI OEM license, which is specifically designed for Azure Stack HCI hardware, including Azure Stack HCI Premier Solutions, integrated systems, and validated nodes.
 
 The Azure Stack HCI OEM license integrates three essential services for your cloud infrastructure:
