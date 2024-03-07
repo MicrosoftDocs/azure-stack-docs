@@ -4,7 +4,7 @@ description: Learn how to use ReFS deduplication and compression in Azure Stack 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 02/26/2024
 ---
 
 # Optimize storage with ReFS deduplication and compression in Azure Stack HCI
@@ -59,11 +59,11 @@ Follow these steps to enable ReFS deduplication and compression via Windows Admi
 
     The following screenshot shows that ReFS deduplication and compression runs on Friday and Saturday at 10:40 AM with a maximum duration of 2 hours, starting from 9/22/2023. If the **Start** date was changed to 9/21/2023, the first run will still be 9/22/2023 10:40AM as that's the first Friday after 9/21/2023.
 
-    :::image type="content" source="media/refs-deduplication-compression/select-refs-deduplication-compression-settings.png" alt-text="Screenshot of the Volume settings pane displaying the ReFS deduplication and compression settings." lightbox="media/refs-deduplication-compression/select-refs-deduplication-compression-settings.png":::
+    :::image type="content" source="media/refs-deduplication-and-compression/select-refs-deduplication-compression-settings.png" alt-text="Screenshot of the Volume settings pane displaying the ReFS deduplication and compression settings." lightbox="media/refs-deduplication-and-compression/select-refs-deduplication-compression-settings.png":::
 
 1. Verify the changes in the **Properties** section of the volume. The schedule appears under the **Properties** section and displays the savings breakdown and next scheduled run time. These savings are updated after each run, and you can observe the performance impact in the charts under the **Performance** section.
 
-    :::image type="content" source="media/refs-deduplication-compression/volume-properties.png" alt-text="Screenshot of the properties section of a volume showing the savings breakdown and next scheduled run time." lightbox="media/refs-deduplication-compression/volume-properties.png":::
+    :::image type="content" source="media/refs-deduplication-and-compression/volume-properties.png" alt-text="Screenshot of the properties section of a volume showing the savings breakdown and next scheduled run time." lightbox="media/refs-deduplication-and-compression/volume-properties.png":::
 
 # [PowerShell](#tab/powershell)
 
