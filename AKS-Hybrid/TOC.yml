@@ -193,10 +193,6 @@
     href: overview.md
   - name: System requirements
     href: system-requirements.md
-  - name: Quickstarts
-    items:
-      - name: Evaluation guide
-        href: aks-hci-evaluation-guide.md
   - name: Tutorial
     items:
       - name: 1 - Prepare an application
