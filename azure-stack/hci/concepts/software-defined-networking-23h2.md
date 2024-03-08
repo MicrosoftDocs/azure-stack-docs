@@ -1,6 +1,6 @@
 ---
-title: Software defined networking (SDN) in Azure Stack HCI and Windows Server
-description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your data center.
+title: Software defined networking (SDN) in Azure Stack HCI, version 23H2
+description: Software defined networking (SDN) provides a way to centrally configure and manage networks and network services such as switching, routing, and load balancing in your Azure Stack HCI system.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
@@ -9,7 +9,7 @@ ms.subservice: azure-stack-hci
 ms.date: 03/08/2024
 ---
 
-# Software Defined Networking (SDN) in Azure Stack HCI and Windows Server
+# Software Defined Networking (SDN) in Azure Stack HCI, version 23H2
 
 > Applies to: Azure Stack HCI, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
