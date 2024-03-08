@@ -32,7 +32,7 @@ Client machines running Linux can access Azure Managed Lustre. The basic client 
 The basic workflow is as follows:
 
 1. [Install or upgrade Lustre client software](#install-or-upgrade-lustre-client-software) on each client.
-1. Use the [`mount` command](#mount-command) to make the Azure Managed Lustre file system available on the client.
+1. Use the [`mount` command](#start-the-lustre-client-using-the-mount-command) to make the Azure Managed Lustre file system available on the client.
 
 ## Install or upgrade Lustre client software
 
