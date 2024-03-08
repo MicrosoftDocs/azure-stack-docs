@@ -1,8 +1,8 @@
 ---
 title: Deploy branch office and edge on Azure Stack HCI
 description: This topic provides guidance on how to plan, configure, and deploy branch office and edge scenarios on the Azure Stack HCI operating system.
-author: hsuzuki
-ms.author: hsuzuki
+author: alkohli
+ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/17/2023
 ---

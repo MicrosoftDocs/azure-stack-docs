@@ -2,8 +2,8 @@
 title: Azure Stack HCI two-node storage switched, non-converged deployment network reference pattern
 description: Plan to deploy an Azure Stack HCI two-node storage switched, non-converged network reference pattern.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

@@ -1,16 +1,17 @@
 ---
-title: AKS on Azure Stack HCI 23H2 networking system requirements
-description: Learn about AKS on Azure Stack HCI 23H2 networking prerequisites.
+title: AKS enabled by Azure Arc network requirements
+description: Learn about AKS network prerequisites.
 ms.topic: overview
-ms.date: 01/31/2024
+ms.date: 02/07/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: abha
-ms.lastreviewed: 01/31/2024
-
+ms.lastreviewed: 02/07/2024
 ---
 
-# AKS on Azure Stack HCI 23H2 networking system requirements
+# AKS enabled by Azure Arc network requirements
+
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 This article introduces the core concepts that provide networking to your VMs and applications in AKS:
 
@@ -18,9 +19,9 @@ This article introduces the core concepts that provide networking to your VMs an
 - Control plane IP
 - Kubernetes load balancers
 
-This article also describes the required networking prerequisites for creating Kubernetes clusters on Azure Stack HCI 23H2. We recommend that you work with a network administrator to provide and set up the networking parameters required to deploy AKS.
+This article also describes the required networking prerequisites for creating Kubernetes clusters. We recommend that you work with a network administrator to provide and set up the networking parameters required to deploy AKS.
 
-## Networking concepts for AKS clusters on Azure Stack HCI 23H2
+## Network concepts for AKS clusters
 
 Ensure that you set up networking correctly for the following components in your Kubernetes clusters:
 
@@ -28,9 +29,9 @@ Ensure that you set up networking correctly for the following components in your
 - AKS control plane IP
 - Load balancer for containerized applications
 
-## Networking for AKS cluster VMs
+## Network for AKS cluster VMs
 
-Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS on Azure Stack HCI 23H2 uses Arc VM logical networks to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For more information about Arc VM networks, see [Logical networks for Azure Stack HCI](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli). You must plan to reserve one IP address per AKS cluster node in your Azure Stack HCI environment.
+Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS uses Arc VM logical networks to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For more information about Arc VM networks, see [Logical networks for Azure Stack HCI](/azure-stack/hci/manage/create-logical-networks?tabs=azurecli). You must plan to reserve one IP address per AKS cluster node in your environment.
 
 ### IP address allocation options for AKS cluster VMs
 
@@ -58,7 +59,7 @@ For instructions on how to create logical networks using Azure CLI and the Azure
 
 ## Control plane IP
 
-Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly. The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap anywhere else, including Arc VM logical networks, infrastructure network IPs, load balancers, etc. Note that overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is being used. You must plan to reserve one IP address per Kubernetes cluster in your Azure Stack HCI environment.
+Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. This KubeVIP instance requires a single immutable "control plane IP address" to function correctly. The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap anywhere else, including Arc VM logical networks, infrastructure network IPs, load balancers, etc. Note that overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is being used. You must plan to reserve one IP address per Kubernetes cluster in your environment.
 
 ## Load balancer IPs for containerized applications
 
@@ -76,16 +77,16 @@ At a minimum, you should reserve the following number of IP addresses per Kubern
 | Parameter    | Minimum number of IP addresses |
 |------------------|---------|
 | IP pool in Arc VM logical network | Reserve 1 IP address for every worker node in your Kubernetes cluster. For example, if you intend to create 3 node pools with 3 nodes in each node pool, you need to have 9 IP addresses in your IP pool.
-| Control plane IP | Reserve 1 IP address for every Kubernetes cluster in your Azure Stack HCI environment. For example, if you intend to create 5 clusters in total, you need to reserve 5 IP addresses, one for each Kubernetes cluster.
+| Control plane IP | Reserve 1 IP address for every Kubernetes cluster in your environment. For example, if you intend to create 5 clusters in total, you need to reserve 5 IP addresses, one for each Kubernetes cluster.
 | Load balancer IPs | The number of IP addresses reserved depends on your application deployment model. As a starting point, you can reserve 1 IP address for every Kubernetes service. |
 
 ## Proxy settings
 
-Proxy settings in AKS are inherited from the underlying Azure Stack HCI 23H2 system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet.
+Proxy settings in AKS are inherited from the underlying infrastructure system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet.
 
 ## Network port requirements
 
-The configuration of required network ports is now incorporated into the Azure Stack HCI 23H2 deployment. Manual configuration of these ports is no longer required. Use the following port list to troubleshoot communication issues between the Arc Resource Bridge and Kubernetes clusters deployed on Azure Stack HCI 23H2 or later:
+The configuration of required network ports is now incorporated into the infrastructure deployment. Manual configuration of these ports is no longer required. Use the following port list to troubleshoot communication issues between the Arc Resource Bridge and Kubernetes clusters:
 
 | Port | Source                           | Description                                          | Firewall notes                                                                                                        |
 |----------|--------------------------------------|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------|

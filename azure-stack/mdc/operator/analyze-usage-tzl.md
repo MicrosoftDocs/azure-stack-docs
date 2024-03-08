@@ -2,15 +2,9 @@
 title: Analyze Azure Stack usage and resource usage API - MDC
 description: Analyzing Azure Stack usage and reference for the resource usage API, which retrieves Azure Stack usage information. For a Modular Data Center (MDC).
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2021
 ms.author: sethm

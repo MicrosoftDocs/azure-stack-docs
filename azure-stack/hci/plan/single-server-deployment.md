@@ -2,12 +2,12 @@
 title: Azure Stack HCI single node storage deployment network reference pattern
 description: Plan to deploy an Azure Stack HCI single-server storage network reference pattern.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 03/04/2024
 ---
 
 # Review single-server storage deployment network reference pattern for Azure Stack HCI
@@ -51,7 +51,7 @@ The following table lists some guidelines for a single-server deployment:
 
 |Network|Management & compute|Storage|BMC|
 |--|--|--|--|
-|Link speed|At least 1 Gbps; 10 Gbps recommended.|At least 1 Gbps; 10 GBps recommended.|Check with hardware manufacturer.|
+|Link speed|At least 1Gbps if RDMA is disabled, 10Gbps recommended.|At least 10Gbps.|Check with hardware manufacturer.|
 |Interface type|RJ45, SFP+, or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|Optional to allow adding a second server; disconnected ports.|One port|
 |RDMA|Optional. Depends on requirements for guest RDMA and NIC support.|N/A|N/A|

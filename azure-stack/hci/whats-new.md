@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 03/04/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -15,9 +15,45 @@ ms.date: 01/31/2024
 
 This article lists the various features and improvements that are available in Azure Stack HCI, version 23H2.
 
-Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution that focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
+Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
 The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
+
+## Features and improvements in 2402
+
+This section lists the new features and improvements in the 2402 release of Azure Stack HCI, version 23H2.
+
+### New built in security role
+
+This release introduces a new Azure built-in role called Azure Resource Bridge Deployment Role, to harden the security posture for Azure Stack HCI, version 23H2. If you provisioned a cluster before January 2024, then you must assign the **Azure Resource Bridge Deployment User** role to the Arc Resource Bridge principal.
+
+The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster.
+
+To take advantage of the constraint permissions, remove the permissions that were applied before. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
+    
+An update health check is also included in this release that confirms that the new role is assigned before you apply the update.
+
+### Changes to Active Directory preparation
+
+Beginning this release, the Active Directory preparation process is simplified. You can use your own existing process to create an Organizational Unit (OU), a user account with appropriate permissions, and with Group policy inheritance blocked for the Group Policy Object (GPO). You can also use the Microsoft provided script to create the OU. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
+
+### Region expansion
+
+Azure Stack HCI, version 23H2 solution is now supported in Australia. For more information, see [Azure Stack HCI supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+
+### New documentation for network considerations
+
+We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./plan/cloud-deployment-network-considerations.md).
+
+## Features and improvements in 2311.3
+
+A new Azure built-in role called **Azure Resource Bridge Deployment Role** is available to harden the security posture for Azure Stack HCI, version 23H2. If you provisioned a cluster before January 2024, then you must assign the Azure Resource Bridge Deployment User role to the Arc Resource Bridge service principal.
+
+The role applies the concept of the least amount of privileges and must be assigned to the Azure resource bridge service principal, `clustername.arb`, before you update the cluster.
+
+You must remove the previously assigned permissions to take advantage of the constraint permission. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
+
+Additionally, this release includes an update health check that confirms the assignment of the new role before applying the update.
 
 ## Features and improvements in 2311.2 GA
 
@@ -26,13 +62,13 @@ This section lists the new features and improvements in the 2311.2 General Avail
 > [!IMPORTANT]
 > The production workloads are only supported on the Azure Stack HCI systems running the generally available 2311.2 release. To run the GA version, start with a new 2311 deployment and then update to 2311.2.
 
-In this generally available release of the Azure Stack HCI, version 23H2, all the features that were available with the [2310](#features-and-improvements-in-2310) and [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following improvements and enhancements are available:
+In this generally available release of the Azure Stack HCI, version 23H2, all the features that were available with the [2311](#features-and-improvements-in-2311) preview releases are also now generally available. In addition, the following improvements and enhancements are available:
 
 ### Deployment changes
 
 With this release:
 
-- Deployment is supported using existing storage accounts and existing Azure Key Vaults.
+- Deployment is supported using existing storage accounts.
 - A failed deployment can be run using the **Rerun deployment** option that becomes available in the cluster **Overview** page.
 - Network settings such as storage traffic priority, cluster traffic priority, storage traffic bandwidth reservation, jumbo frames, and RDMA protocol can all be customized.
 - Validation must be started explicitly via the **Start validation** button.
@@ -48,12 +84,12 @@ For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.m
 In this release:
 
 - Guest management is available via Azure CLI. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
-- Proxy is supported for Arc VMs. For more information, see [Set up proxy for Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md#create-a-vm-from-network-interface).
-- Storage path selection is available during the VM image creation via the Azure portal. For more information, see [Create a VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md)
+- Proxy is supported for Arc VMs. For more information, see [Set up proxy for Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md#create-a-vm-with-proxy-configured).
+- Storage path selection is available during the VM image creation via the Azure portal. For more information, see [Create a VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
 
 ### Migration of Hyper-V VMs to Azure Stack HCI (preview)
 
-You can now migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI (preview)](./index.yml)
+You can now migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This feature is currently in Preview. For more information, see [Migration of Hyper-V VMs using Azure Migrate to Azure Stack HCI (preview)](./index.yml).
 
 ### Monitoring changes
 
@@ -75,7 +111,7 @@ Starting with this release, the following workloads are generally available on A
 
 ## Features and improvements in 2311
 
-This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2.
+This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2. Additionally, this section includes features and improvements that were originally released for 2310 starting with cloud-based deployment.
 
 ### AKS on Azure Stack HCI, version 23H2
 
@@ -104,10 +140,6 @@ In this release, the Group Managed Service Accounts (gMSA) created during the Ac
 
 In this release, you can perform an extended set of guest management operations via the Azure CLI.-->
 
-## Features and improvements in 2310
-
-This section lists the new features and improvements in the 2310 release of Azure Stack HCI, version 23H2.
-
 ### Cloud-based deployment
 
 For servers running Azure Stack HCI, version 23H2, you can perform new deployments via the cloud. You can deploy an Azure Stack HCI cluster in one of the two ways - via the Azure portal or via an Azure Resource Manager deployment template.
@@ -131,11 +163,11 @@ For more information, see [Respond to Azure Stack HCI health alerts using Azure 
 #### Monitor metrics
 
 This release also integrates the Azure Monitor metrics with Azure Stack HCI so that you can monitor the health of your Azure Stack HCI system via the metrics collected for compute, storage, and network resources. This integration enables you to store cluster data in a dedicated time-series database that you can use to analyze data from your Azure Stack HCI system.
- 
+
 For more information, see [Monitor Azure Stack HCI with Azure Monitor metrics](./manage/monitor-cluster-with-metrics.md).
 
 #### Enhanced monitoring capabilities with Insights
- 
+
 With Insights for Azure Stack HCI, you can now monitor and analyze performance, savings, and usage insights about key Azure Stack HCI features, such as ReFS deduplication and compression. To use these enhanced monitoring capabilities, ensure that your cluster is deployed, registered, and connected to Azure, and enrolled in monitoring. For more information, see [Monitor Azure Stack HCI features with Insights](./manage/monitor-features.md).
 
 ### Azure Arc VM management
@@ -179,6 +211,7 @@ For more information, see [Optimize storage with ReFS deduplication and compress
 
 ## Next steps
 
+- [Read the blog announcing the general availability of Azure Stack HCI, version 23H2](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
 - [Read the blog about What’s new for Azure Stack HCI at Microsoft Ignite 2023](https://aka.ms/ashciignite2023).
 - For Azure Stack HCI, version 23H2 deployments:
     - Read the [Deployment overview](./deploy/deployment-introduction.md).

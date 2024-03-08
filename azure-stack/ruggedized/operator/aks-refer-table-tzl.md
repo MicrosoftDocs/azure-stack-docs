@@ -2,15 +2,9 @@
 title: Azure Stack Hub help links cross-reference
 description: Look up portal reference links for Azure Stack Hub.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 2/1/2021
 ms.author: sethm
