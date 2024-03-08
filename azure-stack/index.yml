@@ -47,8 +47,8 @@ productDirectory:
         text: AKS Arc overview  
       - url: /azure/aks/hybrid/aks-hci-network-system-requirements
         text: AKS system requirements                
-      - url: /azure/aks/hybrid/aks-create-clusters-cli
-        text: Create Kubernetes clusters
+      - url: /azure/aks/hybrid/aks-edge-overview
+        text: AKS Edge Essentials overview
       - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
         text: Product information and pricing
   - title: Azure Stack Hub 
