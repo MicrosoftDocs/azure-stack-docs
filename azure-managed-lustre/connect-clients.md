@@ -4,7 +4,7 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 06/28/2023
+ms.date: 03/11/2023
 ms.lastreviewed: 03/24/2023
 ms.reviewer: dsundarraj
 
@@ -21,13 +21,13 @@ This article describes how to prepare clients and mount the Azure Managed Lustre
 
 Client machines running Linux can access Azure Managed Lustre. The basic client requirements are as follows:
 
-- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Prebuilt client packages have been tested with Azure Managed Lustre. See [Install or upgrade Lustre client software](#install-or-upgrade-lustre-client-software) for instructions and package download options. Client packages are available for several commonly used Linux OS distributions.
+- **Lustre client software** - Clients must have the appropriate Lustre client package installed. Prebuilt client packages are tested with Azure Managed Lustre. See [Install or upgrade Lustre client software](#install-or-upgrade-lustre-client-software) for instructions and package download options. Client packages are available for several commonly used Linux OS distributions.
 - **Network access** to the file system - Client machines need network connectivity to the subnet that hosts the Azure Managed Lustre file system. If the clients are in a different virtual network, you might need to use virtual network peering.
 - **Mount** - Clients must be able to use the POSIX `mount` command to connect to the file system.
-- **To achieve advertised performance** -
+- **To achieve advertised performance**:
   - Clients must reside in the same Availability Zone in which the cluster resides.
-  - Be sure to [enable accelerated networking on all client VMs](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled). If this option isn't enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
-- **Security type** - When selecting the security type for the VM, choose the Standard Security Type.  Choosing Trusted Launch or Confidential types prevent the Lustre module from being properly installed on the client.
+  - [Enable accelerated networking](/azure/virtual-network/create-vm-accelerated-networking-cli#confirm-that-accelerated-networking-is-enabled) on all client VMs. If this option isn't enabled, then [fully enabling accelerated networking requires a stop/deallocate of each VM](/azure/virtual-network/accelerated-networking-overview#enabling-accelerated-networking-on-a-running-vm).
+- **Security type** - When selecting the security type for the VM, choose the Standard Security Type. Choosing Trusted Launch or Confidential types prevent the Lustre module from being properly installed on the client.
 
 The basic workflow is as follows:
 
@@ -80,7 +80,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     sudo dnf remove <lustre-client>
     ```
 
-1. Reboot using `sudo reboot`, or unload the Lustre and LNet kernel modules using the following command:
+1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
 
     ```bash
     sudo lustre_rmmod
@@ -98,13 +98,13 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
     ```
 
-    The output should look similar to the following:
+    The output should look similar to the following example:
 
     ```bash
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, it's recommended to reboot the system.
+    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
 
 ### [Ubuntu](#tab/ubuntu)
 
@@ -120,7 +120,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     sudo apt autoremove <lustre-client>
     ```
 
-1. Reboot using `sudo reboot`, or unload the Lustre and LNet kernel modules using the following command:
+1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
 
     ```bash
     sudo lustre_rmmod
@@ -144,7 +144,7 @@ Follow these steps to upgrade the Lustre client to the current version:
     cat: /sys/module/lustre/version: No such file or directory
     ```
 
-    If the output shows an old version of the Lustre kernel module, it's recommended to reboot the system.
+    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
 
 ---
 
