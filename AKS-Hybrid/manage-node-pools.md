@@ -233,4 +233,4 @@ For more information, see [Use labels in an Azure Arc enabled AKS cluster](clust
 
 - [Manage node pools (AKS on Azure Stack HCI 22H2)](manage-node-pools-22h2.md)
 - [Review AKS on Azure Stack HCI 23H2 prerequisites](aks-hci-network-system-requirements.md)
-- [What's new in AKS on Azure Stack HCI](aks-preview-overview.md)
+- [What's new in AKS on Azure Stack HCI](../azure-stack/hci/whats-new.md)
