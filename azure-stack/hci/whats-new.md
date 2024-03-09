@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/26/2024
+ms.date: 03/04/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -68,7 +68,7 @@ In this generally available release of the Azure Stack HCI, version 23H2, all th
 
 With this release:
 
-- Deployment is supported using existing storage accounts and existing Azure Key Vaults.
+- Deployment is supported using existing storage accounts.
 - A failed deployment can be run using the **Rerun deployment** option that becomes available in the cluster **Overview** page.
 - Network settings such as storage traffic priority, cluster traffic priority, storage traffic bandwidth reservation, jumbo frames, and RDMA protocol can all be customized.
 - Validation must be started explicitly via the **Start validation** button.
@@ -84,7 +84,7 @@ For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.m
 In this release:
 
 - Guest management is available via Azure CLI. For more information, see [Enable guest management](./manage/manage-arc-virtual-machines.md).
-- Proxy is supported for Arc VMs. For more information, see [Set up proxy for Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md#create-a-vm-from-network-interface).
+- Proxy is supported for Arc VMs. For more information, see [Set up proxy for Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md#create-a-vm-with-proxy-configured).
 - Storage path selection is available during the VM image creation via the Azure portal. For more information, see [Create a VM image from Azure Marketplace via the Azure portal](./manage/virtual-machine-image-azure-marketplace.md).
 
 ### Migration of Hyper-V VMs to Azure Stack HCI (preview)

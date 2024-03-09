@@ -3,7 +3,7 @@ title: Discover and replicate Hyper-V VMs for migration to Azure Stack HCI using
 description: Learn the discovery and replication process for Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 03/05/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -58,7 +58,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. Verify that you see a non-zero value for **Discovered servers** under **Migration tools**.
 
-    :::image type="content" source="./media/replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/replicate/replicate-discovered-servers.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/migrate-hyperv-replicate/replicate-discovered-servers.png":::
 
 1. Under **Migration and modernization**, select **Replicate**.
 
@@ -68,13 +68,13 @@ Complete the following tasks to generate the target appliance key:
     - Hyper-V.
     - Source appliance (pre-populated; select the applicable one from the dropdown if you have more than one).
 
-    :::image type="content" source="./media/replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/replicate/replicate-specify-intent.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-hyperv-replicate/replicate-specify-intent.png":::
 
 1. Select **Download and configure** in **Before you start replication...** from the information block, then select **Continue**.
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
-    :::image type="content" source="./media/replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/replicate/generate-target-key.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-hyperv-replicate/generate-target-key.png":::
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
@@ -84,18 +84,58 @@ You can download the appliance using either a .VHD file or a .zip file.
 
 Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download installer**.
 
-:::image type="content" source="media/replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/replicate/download-target-appliance.png":::
+:::image type="content" source="media/migrate-hyperv-replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-hyperv-replicate/download-target-appliance.png":::
 
 #### Install using a template (.VHD file)
 
-This step applies only if you downloaded the .VHD file. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
+This step applies only if you downloaded the .VHD zipped file. 
 
-Verify that a standalone VM (non-HA) is configured with the following settings:
+Check that the zipped file is secure, before you deploy it.
 
-- 16 GB memory.
-- 8 vCPU.
-- 80 GB disk storage.
-- Enhanced Session Policy mode enabled.
+1. On the server where you downloaded the file, open an administrator command window.
+1. Run the following command to generate the hash for the VHD.
+    
+    ```powershell    
+    C:\>Get-FileHash -Path <file_location> -Algorithm <Hashing Algorithm>
+    ```
+
+    Here's an example output.
+
+    ```output
+    C:\>Get-FileHash -Path ./AzureMigrateAppliance_v3.20.09.25.zip -Algorithm SHA256
+    ```
+
+1. Verify the latest appliance versions and hash values for Azure public cloud:
+
+    
+    |**Scenario**  |**Download**  |**SHA256**  |
+    |---------|---------|---------|
+    |Azure Stack HCI appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416`         |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb         |
+
+
+1. Extract the zip file to a folder.
+
+Now you can install the appliance using the .VHD file.
+
+1. On a Hyper-V server (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
+
+1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Stack HCI server, and then select **OK**.
+
+1. Map the drive on your Azure Stack HCI server where you downloaded the VHD. Connect to this drive using File Explorer. Verify that you can access the location where the VHD was downloaded on your Azure Stack HCI server.
+
+1. On your Hyper-V server, from the **Actions** pane, select **Import Virtual Machine**. This starts a wizard. Go through the steps of the wizard. Accept the defaults except on the following:
+
+    1. On the **Locate Folder** page, point to the folder that has the VHD (folder name is AzureMigrateApplianceHCI_v25.24.02.07) that you downloaded on your Azure Stack HCI server.
+    1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
+    1. Finally review the settings and select **Finish**.
+
+1. In the Hyper-V Manager, under **Virtual Machines**, you see the VM your created. Select and start the VM.
+
+1. Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
+
+1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.
+
+1. Open **Azure Migrate Target Appliance Configuration Manager** shortcut from the desktop.
 
 #### Install using a script (.zip file)
 
@@ -124,7 +164,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Sign in to the target appliance VM.
 
-1. Open **Azure Configuration Manager** from the desktop shortcut.
+1. Open **Azure Migrate Target Appliance Configuration Manager** from the desktop shortcut.
 
 1. Locate the target key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, and then select **Verify**.
 
@@ -132,21 +172,21 @@ This step applies only if you downloaded the .zip file.
 
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
-    :::image type="content" source="./media/replicate/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/replicate/enter-code.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-hyperv-replicate/enter-code.png":::
 
 1. Wait until you see **The appliance has been successfully registered** message.
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator app. It can take up to 10 minutes for the appliance to be registered.
 
-    :::image type="content" source="./media/replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/replicate/enter-code-2.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/migrate-hyperv-replicate/enter-code-2.png":::
 
 1. After the appliance is registered, under **Provide Azure Stack HCI cluster information**, select **Add cluster information**.
 
-    :::image type="content" source="./media/replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/replicate/add-cluster-info.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-hyperv-replicate/add-cluster-info.png":::
 
 1. For your target Azure Stack HCI cluster, enter the cluster fully qualified domain name (FQDN), domain name, username, and password, and then select **Save**.
 
-    :::image type="content" source="./media/replicate/add-cluster-info-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/replicate/add-cluster-info-2.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/add-cluster-info-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-hyperv-replicate/add-cluster-info-2.png":::
 
 1. Once the credentials are accepted, the status changes to **Validated**. Select **Configure**.
 
@@ -159,7 +199,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Under **Migration and modernization**, select **Replicate**.
 
-    :::image type="content" source="./media/replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/replicate/replicate-start.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/migrate-hyperv-replicate/replicate-start.png":::
 
 1. On the **Specify intent** page:
     1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
@@ -168,7 +208,7 @@ This step applies only if you downloaded the .zip file.
     1. From the dropdown list, select the **On-premises appliance** (source) used for discovery.
     1. When finished, select **Continue**.
 
-    :::image type="content" source="./media/replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/replicate/replication-screen.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-hyperv-replicate/replication-screen.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
@@ -178,7 +218,7 @@ This step applies only if you downloaded the .zip file.
 	1. Verify there is a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
     1. When finished, select **Next**.
     
-    :::image type="content" source="./media/replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/replicate/replicate-1-basics.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-hyperv-replicate/replicate-1-basics.png":::
     
 
 1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark. 
@@ -188,11 +228,11 @@ This step applies only if you downloaded the .zip file.
 
 1. Select **Next**.
 
-    :::image type="content" source="./media/replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/replicate/replicate-2-target.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/migrate-hyperv-replicate/replicate-2-target.png":::
 
 1. On the **Virtual machines** tab, verify the VMs have been discovered and are listed. You can select up to 10 VMs from the list to migrate at one time. Select **Next**.
 
-    :::image type="content" source="./media/replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/replicate/replicate-3-vm.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/migrate-hyperv-replicate/replicate-3-vm.png":::
 
 1. On the **Target settings** tab, complete these tasks:
 
@@ -218,7 +258,7 @@ This step applies only if you downloaded the .zip file.
 
     1. When finished, select **Next**.
     
-        :::image type="content" source="./media/replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/replicate/replicate-4-target-2.png":::
+        :::image type="content" source="./media/migrate-hyperv-replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/migrate-hyperv-replicate/replicate-4-target-2.png":::
 
 1. On the **Compute** tab:
 
@@ -227,7 +267,7 @@ This step applies only if you downloaded the .zip file.
     1. Configure number of vCPUs and RAM including selecting dynamic RAM for each VM, as needed.
     1. When finished, select **Next**.
     
-        :::image type="content" source="./media/replicate/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/replicate/replicate-5-compute.png":::
+        :::image type="content" source="./media/migrate-hyperv-replicate/replicate-5-compute.png" alt-text="Screenshot showing the Compute tab." lightbox="./media/migrate-hyperv-replicate/replicate-5-compute.png":::
 
 1. On the **Disks** tab, select which disks you would like to replicate.
 
@@ -236,15 +276,15 @@ This step applies only if you downloaded the .zip file.
  
 1. Change the disk type if needed and select **Next**.
 
-    :::image type="content" source="./media/replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/replicate/replicate-6-disks.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/migrate-hyperv-replicate/replicate-6-disks.png":::
 
 1. On the  **Review + Start replication** tab, make sure that all the values are correct and then select **Replicate**. 
 
-    :::image type="content" source="./media/replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/replicate/replicate-7-review.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/migrate-hyperv-replicate/replicate-7-review.png":::
 
 1. Stay on this page until the process is complete (this might take 5-10 minutes). If you move away from this page, the replication artifacts won't be created fully leading to a failure in replication and eventually migration.
 
-    :::image type="content" source="./media/replicate/replicate-77-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/replicate/replicate-77-review.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/replicate-77-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/migrate-hyperv-replicate/replicate-77-review.png":::
 
 1. You are automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
 
@@ -252,7 +292,7 @@ This step applies only if you downloaded the .zip file.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-azure-migrate/migrate-replicated-virtual-machine-1a.png":::
+    :::image type="content" source="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-hyperv-replicate/migrate-replicated-virtual-machine-1a.png":::
 
 
 ## Next steps
