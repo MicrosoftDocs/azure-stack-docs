@@ -175,7 +175,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 - To check that the VMs can access Azure VM verification on the host, run the following command on the host:
 
   ```powershell
-  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" – usedefaultcredentials
+  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" –usedefaultcredentials
   ```
 
 ### [Azure portal](#tab/azureportal)
@@ -309,7 +309,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
   Remove-AzStackHCIVMAttestation -RemoveAll
   ```
 
-- To check that the VMs can access legacy OS support on the host, run the following command on the VM:
+- To check that the VMs can access legacy OS support on the host, run the following command on the host:
 
   ```powershell
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01
