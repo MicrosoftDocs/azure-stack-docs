@@ -45,7 +45,7 @@ For more information about this role-based NIC qualification, please see this [l
 > [!NOTE]
 > The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **Storage Premium** qualifications.
 
-:::image type="content" source="media/host-network-requirements/certified-for-windows-qualifications.png" alt-text="Screenshot showing "Certified for Windows" qualifications, including Management, Compute Premium, and Storage Premium features." lightbox="media/host-network-requirements/certified-for-windows-qualifications.png":::
+:::image type="content" source="media/host-network-requirements/certified-for-windows-qualifications.png" alt-text="Screenshot shows 'Certified for Windows' qualifications, including Management, Compute Premium, and Storage Premium features." lightbox="media/host-network-requirements/certified-for-windows-qualifications.png":::
 
 ## Driver Requirements
 
