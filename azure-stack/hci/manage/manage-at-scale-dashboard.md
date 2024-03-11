@@ -57,14 +57,14 @@ To view the dashboard list view, follow these steps in the Azure portal:
 
 ## Troubleshooting
 
-### No data available
+### Issue: No data available 
 
 Use the following information when no cluster data is displayed in the **All clusters (preview)** tab on the Azure portal dashboard. You might see **No data available** in the **Updates** column.
 
 | Issue | Possible causes |
 |-------|----------------------|
-| Microsoft.Edge Resource Provider (RP) is not registered with your subscription. | Use the following steps: <br> 1. Run PowerShell as administrator. <br> 2. Run the following cmdlet: <br> `Register-AzResourceProvider -ProviderNamespace"Microsoft.Edge"` |
-| The Microsoft.Edge RP isn't able to process data for the cluster. |   |
+| *Microsoft.Edge* Resource Provider (RP) is not registered with your subscription. | Use the following steps: <br> 1. Run PowerShell as administrator. <br> 2. Run the following cmdlet: <br> `Register-AzResourceProvider -ProviderNamespace "Microsoft.Edge"` |
+| The *Microsoft.Edge* RP isn't able to process data for the cluster. |   |
 | Your cluster isn't functioning. | Bring up the cluster. |
 | You have an older version cluster running Azure Stack HCI, version 22H2. This version can't be updated to Azure Stack HCI, version 23H2. | Make sure to use an Azure Stack HCI, version 23H2 cluster. |
 
