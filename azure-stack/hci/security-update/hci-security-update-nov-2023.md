@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This security update for Azure Stack HCI, version 23H2 was released on 11/14/2023 and applies to OS build 25398.531.
+This security update for Azure Stack HCI, version 23H2 was released on November 14, 2023 and applies to OS build 25398.531.
 
 For an overview of Azure Stack HCI version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).
 
@@ -35,7 +35,7 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that affects a COM+ component. It might stop responding. This occurs because of a deadlock during COM+ Just-in-Time (JIT) activation. However, this part of this update is off by default for this version of Windows. If you have this issue, you must contact Microsoft support to turn it on.
 
-For more information about security vulnerabilities, please refer to the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [November 2023 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2023-Nov).
+For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [November 2023 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2023-Nov).
 
 ## Servicing stack update - 25398.521
 
@@ -43,7 +43,7 @@ This update makes quality improvements to the servicing stack, which is the comp
 
 ## Known issues
 
-Microsoft is not currently aware of any issues with this update.
+Microsoft isn't currently aware of any issues with this update.
 
 ## Install the update
 
@@ -52,17 +52,17 @@ Microsoft now combines the latest servicing stack update (SSU) for your operatin
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
 
 | Release Channel | Available | Next Step |
-| -- | -- | -- |
-| Windows Update and Microsoft Update | Yes | None. This update will be downloaded and installed automatically from Windows Update. |
-| Windows Update for Business | Yes | None. This update will be downloaded and installed automatically from Windows Update in accordance with configured policies. |
+|--| -- | -- |
+| Windows Update and Microsoft Update | Yes | None. This update is downloaded automatically from Windows Update. |
+| Windows Update for Business | Yes | None. This update is downloaded automatically from Windows Update in accordance with configured policies. |
 | Microsoft Update Catalog | Yes | To get the standalone package for this update, go to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=KB5032202). |
-| Windows Server Update Services (WSUS) | Yes | This update will automatically sync with WSUS if you configure **Products and Classifications** as follows:<br>**Product**: Azure Stack HCI<br>**Classification**: Security Updates |
+| Windows Server Update Services (WSUS) | Yes | This update automatically syncs with WSUS if you configure **Products and Classifications** as follows:<br>**Product**: Azure Stack HCI<br>**Classification**: Security Updates |
 
 ## To remove the LCU
 
 To remove the LCU after installing the combined SSU and LCU package, use the DISM [Remove-WindowsPackage](/powershell/module/dism/remove-windowspackage) command line option with the LCU package name as the argument. You can find the package name by using this command: `DISM /online /get-packages`.
 
-Running [Windows Update Standalone Installer](https://support.microsoft.com/topic/description-of-the-windows-update-standalone-installer-in-windows-799ba3df-ec7e-b05e-ee13-1cdae8f23b19) (wusa.exe) with the /uninstall switch on the combined package will not work because the combined package contains the SSU. You cannot remove the SSU from the system after installation.
+Running [Windows Update Standalone Installer](https://support.microsoft.com/topic/description-of-the-windows-update-standalone-installer-in-windows-799ba3df-ec7e-b05e-ee13-1cdae8f23b19) (wusa.exe) with the /uninstall switch on the combined package won't work because the combined package contains the SSU. You can't remove the SSU from the system after installation.
 
 ## File list
 
