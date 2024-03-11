@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 02/22/2024
+ms.date: 03/11/2024
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
@@ -41,11 +41,11 @@ For more information about this role-based NIC qualification, please see this [l
 |----|----|----|----|
 |Role-based distinction|Management|Compute Standard|Storage Standard|
 |Maximum Award|Not Applicable|Compute Premium|Storage Premium|
- 
+
 > [!NOTE]
 > The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **Storage Premium** qualifications.
 
-![image](https://user-images.githubusercontent.com/12801954/188225569-bb160be0-96a2-4563-97d5-3d8efb3cb597.png)
+:::image type="content" source="media/host-network-requirements/certified-for-windows-qualifications.png" alt-text="Screenshot showing "Certified for Windows" qualifications, including Management, Compute Premium, and Storage Premium features." lightbox="media/host-network-requirements/certified-for-windows-qualifications.png":::
 
 ## Driver Requirements
 
