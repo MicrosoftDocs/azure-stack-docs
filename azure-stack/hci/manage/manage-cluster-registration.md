@@ -6,7 +6,7 @@ author: sethmanheim
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
 ms.author: sethm
-ms.date: 02/26/2024
+ms.date: 03/11/2024
 ---
 
 # Manage Azure Stack HCI cluster registration
