@@ -1,5 +1,5 @@
 ---
-title: Monitor at scale using the Azure Stack HCI overview and all clusters page (preview)
+title: Monitor at scale using the Azure Stack HCI overview and All clusters page (preview)
 description: Learn to monitor your Azure Stack HCI systems using dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists (preview).
 ms.topic: how-to
 author: alkohli
@@ -59,9 +59,9 @@ To view the dashboard list view, follow these steps in the Azure portal:
 
 ### No data available
 
-Use the following information when no cluster data is displayed in the Azure portal dashboard.
+Use the following information when no cluster data is displayed in the **All clusters (preview)** tab on the Azure portal dashboard. You might see **No data available** in the **Updates** column.
 
-| Issue | Possible remediation |
+| Issue | Possible causes |
 |-------|----------------------|
 | Microsoft.Edge Resource Provider (RP) is not registered with your subscription. | Use the following steps: <br> 1. Run PowerShell as administrator. <br> 2. Run the following cmdlet: <br> `Register-AzResourceProvider -ProviderNamespace"Microsoft.Edge"` |
 | The Microsoft.Edge RP isn't able to process data for the cluster. |   |
