@@ -4,7 +4,7 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 03/11/2023
+ms.date: 03/11/2024
 ms.lastreviewed: 03/24/2023
 ms.reviewer: dsundarraj
 
@@ -60,7 +60,7 @@ If you have an older Lustre client on your Linux system, follow the instructions
 > [!NOTE]
 > Microsoft will publish new packages within one business day of a new kernel being available. If you experience any issues, please file a support ticket.
 
-## Upgrade a Lustre client to the current version
+### Upgrade a Lustre client to the current version
 
 If your client machine uses an older version of Lustre, you can upgrade the Lustre client package to the current version using the following steps. It's important that you completely uninstall the previous Lustre client's kernel modules, in addition to removing the client software packages.
 
@@ -189,7 +189,7 @@ After your clients are connected to the file system, you can use the Azure Manag
 
 > [!IMPORTANT]
 > When a client is no longer needed, it is essential that the client be unmounted prior to shutting it down.
-> 
+>
 > [How to unmount Azure Managed Lustre Filesystem using Scheduled Events](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/how-to-unmount-azure-managed-lustre-filesystem-using-azure/ba-p/3917814)
 
 ## Next steps
