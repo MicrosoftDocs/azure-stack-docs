@@ -39,4 +39,4 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 ## Next steps
 
-- [Release Notes for Azure Stack HCI, version 23H2](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-public-preview-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b)
+- [What's new for Azure Stack HCI, version 23H2](./whats-new.md)

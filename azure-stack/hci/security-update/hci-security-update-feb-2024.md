@@ -83,3 +83,8 @@ Running [Windows Update Standalone Installer](https://support.microsoft.com/topi
 For a list of the files that are provided in this update, download the file information for [cumulative update 5034769](https://go.microsoft.com/fwlink/?linkid=2260628).
 
 For a list of the files that are provided in the servicing stack update, download the file information for the [SSU - version 25398.700](https://go.microsoft.com/fwlink/?linkid=2260170).
+
+## Next steps
+
+- [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Stack HCI, version 23H2.
+- [Install updates via Azure pUpdate Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
