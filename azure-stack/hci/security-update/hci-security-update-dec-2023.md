@@ -1,6 +1,6 @@
 ---
-title:  December 2023 security update (KB 5033383) for Azure Stack HCI,version 23H2
-description: Read about the November 2023 security update (KB 5033383) for Azure Stack HCI, version 23H2.
+title:  December 2023 OS security update (KB 5033383) for Azure Stack HCI,version 23H2
+description: Read about the December 2023 OS security update (KB 5033383) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
 ms.date: 03/11/2024

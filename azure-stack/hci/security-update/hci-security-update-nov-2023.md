@@ -1,6 +1,6 @@
 ---
-title:  November 2023 security update (KB 5032202) for Azure Stack HCI,version 23H2
-description: Read about the November 2023 security update (KB 5032202) for Azure Stack HCI, version 23H2.
+title:  November 2023 OS security update (KB 5032202) for Azure Stack HCI, version 23H2
+description: Read about the November 2023 OS security update (KB 5032202) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
 ms.date: 03/11/2024
