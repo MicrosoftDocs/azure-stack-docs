@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# December 2023 security update (KB 5033383) for Azure Stack HCI, version 23H2
+# December 2023 OS security update (KB 5033383) for Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
