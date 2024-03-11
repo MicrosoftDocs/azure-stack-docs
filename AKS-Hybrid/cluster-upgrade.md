@@ -27,7 +27,7 @@ If you're using the Azure CLI, this article requires Azure CLI version 2.34.1 or
 Check which Kubernetes releases are available for your cluster by using the following command:
 
 ```azurecli
-az aksarc get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aksarc get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 The following example output shows the current version as **1.24.11** and lists the available versions under `upgrades`:
