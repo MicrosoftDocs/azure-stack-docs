@@ -43,12 +43,12 @@ productDirectory:
   - title: Azure Kubernetes Service (AKS) enabled by Azure Arc
     imageSrc: media/index/kubernetes-services.svg
     links:
-      - url: /azure/aks/hybrid/aks-hybrid-options-overview
-        text: AKS overview  
-      - url: /azure/aks/hybrid/system-requirements
+      - url: /azure/aks/hybrid/aks-overview
+        text: AKS Arc overview  
+      - url: /azure/aks/hybrid/aks-hci-network-system-requirements
         text: AKS system requirements                
-      - url: /azure/aks/hybrid/aks-hci-evaluation-guide
-        text: AKS evaluation guide 
+      - url: /azure/aks/hybrid/aks-edge-overview
+        text: AKS Edge Essentials overview
       - url: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
         text: Product information and pricing
   - title: Azure Stack Hub 
