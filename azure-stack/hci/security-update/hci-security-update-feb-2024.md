@@ -3,7 +3,7 @@ title:  February 2024 security update (KB 5034769) for Azure Stack HCI, version 
 description: Read about the February 2024 security update (KB 5034769) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/06/2024
+ms.date: 03/11/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
