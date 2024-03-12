@@ -46,7 +46,7 @@ The following cmdlet properties are for volume encryption with BitLocker module:
     Get-ASBitLocker -<Local | PerNode>
     ```
 
-  Where `Local`, `PerNode`, and `Cluster` define the scope at which the cmdlet is run.
+  Where `Local` and`PerNode` define the scope at which the cmdlet is run.
   - **Local** - Can be run in a regular remote PowerShell session and provides BitLocker volume details for the local node.
   - **PerNode** - Requires CredSSP (when using remote PowerShell) or a remote desktop session (RDP). Provides BitLocker volume details per node.
 
