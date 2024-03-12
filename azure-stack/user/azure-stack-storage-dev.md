@@ -65,7 +65,7 @@ To use the new **.NET** client library (**Common: v12.9.0 / Blob: v12.10.0 / Que
 #### Examples
 
 ##### .NET
-```.net
+```csharp
 BlobClientOptions options = new BlobClientOptions(BlobClientOptions.ServiceVersion.V2019_07_07);
 BlobServiceClient client = new BlobServiceClient("<connection_string>", options);
 ```
@@ -117,7 +117,7 @@ To use the new **.NET** client library (**Common: v12.9.0 / Blob: v12.10.0 / Que
 #### Examples
 
 ##### .NET
-```.net
+```csharp
 BlobClientOptions options = new BlobClientOptions(BlobClientOptions.ServiceVersion.V2019_07_07);
 BlobServiceClient client = new BlobServiceClient("<connection_string>", options);
 ```
