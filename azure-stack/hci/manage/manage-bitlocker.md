@@ -47,7 +47,7 @@ The following cmdlet properties are for volume encryption with BitLocker module:
     ```
 
   Where `Local`, `PerNode`, `AllNodes`, and `Cluster` define the scope at which the cmdlet is run.
-  - **Local** - Can be run in a regular remote PowerShell session and rovides BitLocker volume details for the local node.
+  - **Local** - Can be run in a regular remote PowerShell session and provides BitLocker volume details for the local node.
   - **PerNode** - Requires CredSSP (when using remote PowerShell) or a remote desktop session (RDP). Provides BitLocker volume details per node.
 
 - ```powershell
@@ -114,7 +114,7 @@ Follow these steps to get recovery keys for your cluster:
     Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
     ```
 
-   Here is a sample output:
+   Here's a sample output:
 
    ```output
     PS C:\Users\ashciuser> Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
