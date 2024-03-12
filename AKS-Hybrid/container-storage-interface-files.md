@@ -37,7 +37,7 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
       az aksarc update -n $aksclustername -g $resource_group --enable-smb-driver
       ```
 
-### [AKS on Azure Stack HCI 22H2](#tab/22H2)
+### [AKS on Azure Stack HCI 22H2 and Windows Server](#tab/22H2)
 
 1. Make sure the SMB driver is deployed. Deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command:
 
@@ -84,7 +84,7 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
    az aksarc update -n $aksclustername -g $resource_group --enable-nfs-driver
    ```
 
-### [AKS on Azure Stack HCI 22H2](#tab/22H2)
+### [AKS on Azure Stack HCI 22H2 and Windows Server](#tab/22H2)
 
 1. Deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command:
 
@@ -123,7 +123,7 @@ az aksarc update -n $aksclustername -g $resource_group --disable-smb-driver
 az aksarc update -n $aksclustername -g $resource_group --disable-nfs-driver
 ```
 
-### [AKS on Azure Stack HCI 22H2](#tab/22H2)
+### [AKS on Azure Stack HCI 22H2 and Windows Server](#tab/22H2)
 
 Use the following PowerShell commands to uninstall either the SMB or NFS drivers:
 
