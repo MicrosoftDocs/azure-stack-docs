@@ -4,24 +4,23 @@ description: Learn how to install client software for the Azure Managed Lustre F
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.lastreviewed: 02/20/2024
 ms.reviewer: dsundarraj
-ms.date: 02/15/2024
+ms.date: 03/12/2024
 zone_pivot_groups: select-os
 
 ---
 
-# Install prebuilt client software
+# Install prebuilt Lustre client software
 
 In this article, you learn how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
 
-If you need to upgrade an existing Lustre client to the current version, see [Upgrade a Lustre client to the current version](connect-clients.md#upgrade-a-lustre-client-to-the-current-version).
+If you need to upgrade an existing Lustre client to the current version, see [Upgrade a Lustre client to the current version](client-upgrade.md).
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
 ::: zone pivot="alma-86"
 
-## Install client software for AlmaLinux HPC 8.6
+## Upgrade client software
 
 This tutorial shows how to install the client package to set up client VMs running AlmaLinux HPC 8.6, and attach them to an Azure Managed Lustre cluster.
 

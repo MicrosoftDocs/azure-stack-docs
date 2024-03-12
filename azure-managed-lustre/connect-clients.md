@@ -4,8 +4,7 @@ description: Describes how to connect Linux clients with supported software vers
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 03/11/2024
-ms.lastreviewed: 03/24/2023
+ms.date: 03/12/2024
 ms.reviewer: dsundarraj
 
 # Intent: As an IT Pro, XXX.
@@ -55,100 +54,10 @@ Packages and kernel modules are available for the following Linux operating syst
 
 If you need to support a different distribution, contact the support team.
 
-If you have an older Lustre client on your Linux system, follow the instructions in the [Upgrade a Lustre client to the current version](#upgrade-a-lustre-client-to-the-current-version) section. You must remove the old kernel modules and the software packages.
+If you need to upgrade an older Lustre client version on your Linux system, see [Upgrade a Lustre client to the current version](client-upgrade.md). You must remove old kernel modules and software packages as part of the upgrade.
 
 > [!NOTE]
 > Microsoft will publish new packages within one business day of a new kernel being available. If you experience any issues, please file a support ticket.
-
-### Upgrade a Lustre client to the current version
-
-If your client machine uses an older version of Lustre, you can upgrade the Lustre client package to the current version using the following steps. It's important that you completely uninstall the previous Lustre client's kernel modules, in addition to removing the client software packages.
-
-Follow these steps to upgrade the Lustre client to the current version:
-
-### [Red Hat Enterprise Linux / Alma](#tab/rhel)
-
-1. Unmount any containers or mount point that are mounting the Lustre client using the following command:
-
-    ```bash
-    sudo umount <all Lustre mounts>
-    ```
-
-1. Uninstall the existing Lustre client version using the following command:
-
-    ```bash
-    sudo dnf remove <lustre-client>
-    ```
-
-1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
-
-    ```bash
-    sudo lustre_rmmod
-    ```
-
-1. Install the current version of the Lustre client using the following command:
-
-    ```bash
-    sudo dnf install amlfs-lustre-client-2.15.4_42_gd6d405d-$(uname -r | sed -e "s/\.$(uname -p)$//" | sed -re 's/[-_]/\./g')-1
-    ```
-
-1. Verify that old kernel modules are removed using the following command:
-
-    ```bash
-    cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
-    ```
-
-    The output should look similar to the following example:
-
-    ```bash
-    cat: /sys/module/lustre/version: No such file or directory
-    ```
-
-    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
-
-### [Ubuntu](#tab/ubuntu)
-
-1. Unmount any containers or mount point that are mounting the Lustre client using the following command:
-
-    ```bash
-    sudo umount <all Lustre mounts>
-    ```
-
-1. Uninstall the existing Lustre client version using the following command:
-
-    ```bash
-    sudo apt autoremove <lustre-client>
-    ```
-
-1. Reboot using `sudo reboot`, or unload the Lustre and Lustre Networking (LNet) kernel modules using the following command:
-
-    ```bash
-    sudo lustre_rmmod
-    ```
-
-1. Install the current version of the Lustre client using the following command:
-
-    ```bash
-    sudo apt install amlfs-lustre-client-2.15.4-42-gd6d405d=$(uname -r)
-    ```
-
-1. Verify that old kernel modules are removed using the following command:
-
-    ```bash
-    cat /sys/module/lustre/version; lsmod | grep -E 'lustre|lnet'
-    ```
-
-    The output should look similar to the following:
-
-    ```bash
-    cat: /sys/module/lustre/version: No such file or directory
-    ```
-
-    If the output shows an old version of the Lustre kernel module, it's recommended that you reboot the system.
-
----
-
-After performing this procedure, you can mount the client to your Azure Managed Lustre system.
 
 ## Start the Lustre client using the mount command
 
