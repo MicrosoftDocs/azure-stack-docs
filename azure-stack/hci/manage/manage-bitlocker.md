@@ -43,10 +43,10 @@ You can view, enable, and disable volume encryption settings on your Azure Stack
 The following cmdlet properties are for volume encryption with BitLocker module: *AzureStackBitLockerAgent*.
 
 - ```powershell
-    Get-ASBitLocker -<Local | PerNode | AllNodes | Cluster>
+    Get-ASBitLocker -<Local | PerNode>
     ```
 
-  Where `Local`, `PerNode`, `AllNodes`, and `Cluster` define the scope at which the cmdlet is run.
+  Where `Local`, `PerNode`, and `Cluster` define the scope at which the cmdlet is run.
   - **Local** - Can be run in a regular remote PowerShell session and provides BitLocker volume details for the local node.
   - **PerNode** - Requires CredSSP (when using remote PowerShell) or a remote desktop session (RDP). Provides BitLocker volume details per node.
 
