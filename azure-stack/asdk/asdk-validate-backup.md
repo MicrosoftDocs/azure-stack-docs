@@ -143,7 +143,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 Modify the following PowerShell commands for your environment and run them to deploy the ASDK in cloud recovery mode:
 
 > [!IMPORTANT]
-> The `$adminpass` on the following script below must be the local administrator password, not the default "CloudAdmin" user.
+> The `$adminpass` on the following script must be the local administrator password, not the default "CloudAdmin" user.
 
 #### Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate
 
