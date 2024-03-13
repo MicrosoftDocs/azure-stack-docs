@@ -42,10 +42,6 @@ Once the load balancer is successfully created, it's shown in the list as follow
 
 :::image type="content" source="media/deploy-load-balancer-portal/load-balancer-created.png" alt-text="Screenshot showing provisioning state on portal." lightbox="media/deploy-load-balancer-portal/load-balancer-created.png":::
 
-Go back to the Kubernetes cluster and check that the load balancer works. The load balancer automatically assigns an IP address to your load balancer type service, and then the service is reachable.
-
-Run the `kubectl get arcnwloadbalancer -n kube-system` command to check the load balancer status in the Kubernetes cluster. If anything is wrong, you can check the logs for **arcnetworking-prefix** pods in the **kube-system** namespace.
-
 ### Clean up resources
 
 To clean up resources, do the following:
