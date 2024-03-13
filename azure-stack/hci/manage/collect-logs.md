@@ -56,7 +56,7 @@ Here's the syntax of `Send-DiagnosticData`:
 Send-DiagnosticData [[-FilterByRole] <string[]>] [[-FromDate] <datetime>] [[-ToDate] <datetime>] [[-CollectSddc] <bool>] [<CommonParameters>]
 ```
 
-For reference information on `Send-DiagnosticData`, see the [`Send-DiagnosticData` reference](#send-diagnosticdata-reference) section later in this article.
+For reference information on `Send-DiagnosticData`, see the [`Send-DiagnosticData` command reference](#send-diagnosticdata-command-reference) section later in this article.
 
 ## Examples and sample outputs
 
@@ -66,30 +66,30 @@ Here are some example commands with sample outputs that show how to use the `Sen
 
 In this example, you send diagnostics data with date filtering for log files for the past two hours:
 
-   ```powershell
-   Send-DiagnosticData -FromDate (Get-Date).AddHours(-2) -ToDate (Get-Date)
-   ```
+```powershell
+Send-DiagnosticData -FromDate (Get-Date).AddHours(-2) -ToDate (Get-Date)
+```
 
-   Here's a sample output of this command:
+Here's a sample output of this command:
 
-   ```output
-   PS C:\CloudDeployment\logs> Send-DiagnosticData -FromDate (Get-Date).AddHours(-2) -ToDate (Get-Date)
-   Converting FromDate and ToDate to UTC
-   FromDate in UTC is now 12/04/2023 19:14:18. ToDate in UTC is now 12/04/2023 21:14:18
-   The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
-   Provide the below information to the customer support engineer working on your case.
-   AEORegion: eastus
-   AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/<cluster-name>
-   AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/<v-host-name>
-   CorrelationId: <Correlation-ID>
-   Observability Agent is running.
-   Successfully submitted on-demand. Log collection Job Id: <Job-ID>. This is used to track the log collection with Get-LogCollectionHistory.
-   Current log collection status: Running
-   Waiting for log collection to complete... 
-   ==== CUT ==================== CUT =======
-   Log collection ended with status: Succeeded
-   PS C:\CloudDeployment\logs>   
-   ```
+```output
+PS C:\CloudDeployment\logs> Send-DiagnosticData -FromDate (Get-Date).AddHours(-2) -ToDate (Get-Date)
+Converting FromDate and ToDate to UTC
+FromDate in UTC is now 12/04/2023 19:14:18. ToDate in UTC is now 12/04/2023 21:14:18
+The correlation Id is <Correlation-ID>. This is used to query for this log collection in the diagnostic pipeline.
+Provide the below information to the customer support engineer working on your case.
+AEORegion: eastus
+AEODeviceARMResourceUri: /Subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.AzureStackHCI/clusters/<cluster-name>
+AEOClusterNodeArcResourceUri: /subscriptions/<Subscription-ID>/resourceGroups/EDGECI-REGISTRATION/providers/Microsoft.HybridCompute/machines/<v-host-name>
+CorrelationId: <Correlation-ID>
+Observability Agent is running.
+Successfully submitted on-demand. Log collection Job Id: <Job-ID>. This is used to track the log collection with Get-LogCollectionHistory.
+Current log collection status: Running
+Waiting for log collection to complete... 
+==== CUT ==================== CUT =======
+Log collection ended with status: Succeeded
+PS C:\CloudDeployment\logs>   
+```
 
 ### Send diagnostic data for specified roles
 
@@ -137,35 +137,35 @@ Get-LogCollectionHistory  
 
 Here's a sample output of the `Get-LogCollectionHistory` cmdlet. Note that the `datetime` parameters are in the UTC timezone.
 
-   ```output
-   PS C:\CloudDeployment\logs> Get-LogCollectionHistory
-   Name                           Value
-   ----                           -----
-   TimeCollected                  9/29/2022 5:08:14 PM +00:00
-   Status                         Succeeded
-   CollectionFromDate             9/29/2022 4:07:57 PM +00:00
-   CollectionToDate               9/29/2022 5:07:57 PM +00:00
-   LogCollectionId                fdcd94c8-1bd2-4ec6-8612-c92d5abd9a84
-   Type                           OnDemand
-   LogUploadSizeMb                1598
-   UploadNumberOfFiles            1924
-   Directory
-   Location
-   Error
-   ----------                     ---------------------------------------------------------
-   TimeCollected                  9/27/2022 11:57:25 PM +00:00
-   Status                         Succeeded
-   CollectionFromDate             9/27/2022 9:57:16 PM +00:00
-   CollectionToDate               9/27/2022 11:57:16 PM +00:00
-   LogCollectionId                f3d8dcc6-901e-4c72-a3cc-210055e6f198
-   Type                           OnDemand
-   LogUploadSizeMb                1069
-   UploadNumberOfFiles            1941
-   Directory
-   Location
-   Error
-   PS C:\CloudDeployment\logs>
-   ```
+```output
+PS C:\CloudDeployment\logs> Get-LogCollectionHistory
+Name                           Value
+----                           -----
+TimeCollected                  9/29/2022 5:08:14 PM +00:00
+Status                         Succeeded
+CollectionFromDate             9/29/2022 4:07:57 PM +00:00
+CollectionToDate               9/29/2022 5:07:57 PM +00:00
+LogCollectionId                fdcd94c8-1bd2-4ec6-8612-c92d5abd9a84
+Type                           OnDemand
+LogUploadSizeMb                1598
+UploadNumberOfFiles            1924
+Directory
+Location
+Error
+----------                     ---------------------------------------------------------
+TimeCollected                  9/27/2022 11:57:25 PM +00:00
+Status                         Succeeded
+CollectionFromDate             9/27/2022 9:57:16 PM +00:00
+CollectionToDate               9/27/2022 11:57:16 PM +00:00
+LogCollectionId                f3d8dcc6-901e-4c72-a3cc-210055e6f198
+Type                           OnDemand
+LogUploadSizeMb                1069
+UploadNumberOfFiles            1941
+Directory
+Location
+Error
+PS C:\CloudDeployment\logs>
+```
 
 ## Save logs to a local file share
 
@@ -200,7 +200,7 @@ If you have outbound connectivity from the SMB share where you saved the logs, y
 Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-shre> -ShareCredentail $shareCredential
 ```
 
-## Provide required information in a Support case
+## Provide required information in a support case
 
 If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
 
@@ -208,7 +208,7 @@ You can obtain this information from either the output of the `Send-DiagnosticDa
 
 ### Provide information from the `Send-DiagnosticData` output
 
-When you use `Send-DiagnosticData` to collect logs, it also provides key details in its output that you'll need to share with Microsoft Support. After you collect logs, they are sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
+When you use `Send-DiagnosticData` to collect logs, it also provides key details in its output that you need to share with Microsoft Support. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
 
 When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
 
@@ -221,13 +221,13 @@ When requested, share the following information with Microsoft Support. Get this
 
 On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
 
-If you are on any of the Azure Stack HCI blades where you are experiencing issues, the current URI will have the resource ID needed to debug the service.
+If you're on any of the Azure Stack HCI blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
 
-## `Send-DiagnosticData` reference
+## `Send-DiagnosticData` command reference
 
 This section provides reference information on `Send-DiagnosticData`, including its parameters, syntax, and usage examples.
 
-#### FromDate and ToDate
+### FromDate and ToDate
 
 These parameters enable you to collect logs for a specific time period.
 
@@ -250,9 +250,9 @@ Send-DiagnosticData –FromDate $fromDate –ToDate $toDate
 
 All
 
-#### FilterByRole
+### FilterByRole
 
-This parameter lets you choose which roles’ logs you want to collect. You can specify multiple roles. For a list of available roles on which you can filter logs, see [Filter logs for specific roles](#filter-logs-for-specific-roles).
+This parameter lets you choose which roles’ logs you want to collect. You can specify multiple roles. For a list of available roles on which you can filter logs, see [Roles available for filtering logs](#roles-available-for-filtering-logs).
 
 **Syntax**
 
@@ -269,7 +269,7 @@ Send-DiagnosticData –FilterByRole “ALM” -CollectSddc $false
 **Extension version**
 All
 
-#### CollectSddc
+### CollectSddc
 
 Determines whether to include or exclude software-defined data center (SDDC) logs. By default, SDDC logs are included. Set it to $false if you want to exclude them. For more information about using SDDC diagnostic tools, see [Collect diagnostic data for clusters](./collect-diagnostic-data.md).
 
@@ -288,7 +288,7 @@ Send-DiagnosticData –CollectSddc $false
 **Extension version**
 All
 
-#### BypassObsAgent
+### BypassObsAgent
 
 When bypassing the observability agent, logs are collected only on the node where the log collection was initiated. No record of the collection is kept in the history.
 
@@ -306,7 +306,7 @@ Send-DiagnosticData –BypassObsAgent
 **Extension version**
 All
 
-#### SaveToPath
+### SaveToPath
 
 This parameter allows you to save the diagnostic logs to a specified path on the host machine, rather than transmitting them to Microsoft.
 
@@ -343,7 +343,7 @@ Send-DiagnosticData –SaveToPath <output path> -FIlterByRole <role>
 **Extension version**
 Versions 1.0.2.0 and above
 
-#### NoLogCollection
+### NoLogCollection
 
 The `NoLogCollection` switch parameter allows you to send an ad-hoc set of logs to Microsoft. When using this parameter, consider the following details:
 
@@ -375,7 +375,7 @@ Send-DiagnosticData –NoLogCollection –SupplementaryPath <share path>
 **Extension version**
 Versions 1.0.2.0 and above
 
-#### SupplementaryLogs
+### SupplementaryLogs
 
 The SupplementaryLogs parameter allows you to send ad-hoc logs to Microsoft.
 
@@ -426,7 +426,7 @@ Send-DiagnosticData –NoLogCollection –SupplemenatryLogs <path to adhoc logs 
 **Extension version**
 Versions 1.0.2.0 and above
 
-#### ShareCredential
+### ShareCredential
 
 This parameter provides the flexibility to either collect logs and save them to a share path or directly send logs from a share path to Microsoft.
 
@@ -461,9 +461,9 @@ Send-DiagnosticData –NoLogCollection –SupplementaryLogs <share path> –Shar
 **Extension version**
 All
 
-#### (Deprecated) ToSMBShare
+### (Deprecated) ToSMBShare
 
-This parameter allowed you to save logs either to an output path or a share path. If you were using a share path that was not mapped, you needed to use the `ShareCredential` parameter as well. However, we don't recommend to use this parameter.
+This parameter allowed you to save logs either to an output path or a share path. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. However, we don't recommend using this parameter.
 
 **Syntax**
 
@@ -486,11 +486,11 @@ Send-DiagnosticData –ToSMBShare –SharePath <share path> -ShareCredential <cr
 ```
 
 **Extension version**
-Initially accessible across all versions, this feature will eventually be limited to Versions 0.1.42 and earlier.
+Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
-#### (Deprecated) FromSMBShare
+### (Deprecated) FromSMBShare
 
-This parameter allowed you to send logs from an output path or share path directly to Microsoft. If you were using a share path that was not mapped, you needed to use the `ShareCredential` parameter as well. However, going forward we recommended to use the `-NoLogCollection` parameter instead.
+This parameter allowed you to send logs from an output path or share path directly to Microsoft. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. However, going forward we recommend using the `-NoLogCollection` parameter instead.
 
 **Syntax**
 
@@ -509,16 +509,16 @@ Send-DiagnosticData –FromSMBShare –SharePath <share path>
 ```
 
 **Extension version**
-Initially accessible across all versions, this feature will eventually be limited to Versions 0.1.42 and earlier.
+Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
-#### (Deprecated) SharePath
+### (Deprecated) SharePath
 
 The SharePath parameter can be used for one of the following purposes:
- 
-- Save diagnostic logs to a share path or output path.
-- Send logs to Microsoft from a share path or output path. If you are using a share path and the share path is not mapped, then the `ShareCredential` parameter must also be used.
 
-Since this is deprecated, use `–SaveToPath` to save logs to a path, or `–SupplementaryLogs` when sending ad-hoc logs to Microsoft.
+- Save diagnostic logs to a share path or output path.
+- Send logs to Microsoft from a share path or output path. If you're using a share path and the share path is not mapped, then the `ShareCredential` parameter must also be used.
+
+Since this parameter is deprecated, use `–SaveToPath` to save logs to a path, or `–SupplementaryLogs` when sending ad-hoc logs to Microsoft.
 
 **Syntax**
 
@@ -549,9 +549,9 @@ Send-DiagnosticData –FromSMBShare –SharePath <share path>
 ```
 
 **Extension version**
-Initially accessible across all versions, this feature will eventually be limited to Versions 0.1.42 and earlier.
+Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
-### Filter logs for specific roles
+### Roles available for filtering logs
 
 The following roles are available for filtering by the **FilterByRole** parameter. The available roles may be different in a future release.
 
@@ -577,7 +577,7 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | OSUpdateLogs | Role that collects logs related to operating system updates on Azure Stack HCI nodes, useful for troubleshooting update-related issues. |
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
-| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which are not part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+| URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 ## Perform on-demand log collection via Windows Admin Center in the Azure portal
 
