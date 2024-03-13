@@ -3,7 +3,7 @@ title: Azure Stack HCI OEM license
 description: Learn about the Azure Stack HCI OEM license, its benefits, requirements, and mixed-node scenarios that might cause billing conflicts.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 02/16/2024
+ms.date: 03/13/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -34,7 +34,7 @@ With the Azure Stack HCI OEM license, you can simplify the licensing and activat
 
 - Eliminates the need for separate licenses for Windows Server and Azure Stack HCI.
 
-- No need for more tools or keys to activate the Azure Stack HCI operating system. License requirements.
+- No need for more tools or keys to activate the Azure Stack HCI operating system.
 
 ## License requirements
 
