@@ -104,6 +104,11 @@
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
+  - name: Deploy SDN
+    items:
+    - name: Using Express scripts
+      href: deploy/sdn-express-23h2.md
+  
   - name: Deploy workloads
     items:
     - name: Run AKS on HCI
