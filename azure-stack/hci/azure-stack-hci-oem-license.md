@@ -48,15 +48,16 @@ An active Azure account is required for license activation. When you purchase ha
 
 ## Mixed-node scenarios
 
-Mixed-node scenarios occur when different types of servers or nodes are used together within the same cluster or system. If you have a mixed-node scenario in your cluster, the following notification appears in your billed monthly status details:
+Mixed-node scenarios occur when different types of servers or nodes are used together within the same cluster or system. If you have a mixed-node scenario in your cluster, a notification appears in your billed monthly status details:
 
 :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
 :::image type="content" source="media/oem-license/warning-mixed-node.png" alt-text="Screenshot of a warning for a cluster with an unsupported mixed-node scenario." lightbox="media/oem-license/warning-mixed-node.png":::
 
-**We have detected mixed nodes in the same cluster. You will be fully billed as one or more of your servers do not have the OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column.**
+***We have detected mixed nodes in the same cluster. You will be fully billed as one or more of your servers do not have the OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column.***
 
-Utilizing the Azure Stack HCI OEM license in a mixed-node scenario may lead to inadvertent billing issues. All nodes in an Azure Stack HCI system require uniformity across the hardware, operating system, and billing treatment.
+> [!NOTE]
+> Utilizing the Azure Stack HCI OEM license in a mixed-node scenario may lead to inadvertent billing issues. All nodes in an Azure Stack HCI system require uniformity across the hardware, operating system, and billing treatment.
 
 Here are some examples of mixed-mode scenarios that aren't supported:
 
