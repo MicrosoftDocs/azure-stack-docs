@@ -53,5 +53,5 @@ Gateways use [Border Gateway Protocol](/windows-server/remote/remote-access/bgp/
 
 For related information, see also:
 
-- [Plan a Software Defined Network infrastructure](plan-software-defined-networking-infrastructure.md)<!--update this link for 23H2 version-->
+- [Plan a Software Defined Network infrastructure](./plan-software-defined-networking-infrastructure-23h2.md)
 - [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md) <!--update this link for 23H2 version-->

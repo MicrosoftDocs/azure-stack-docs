@@ -343,7 +343,8 @@
     href: concepts/observability.md
   - name: SDN overview
     href: concepts/software-defined-networking-23h2.md
-
+  - name: Plan an SDN infrastructure
+    href: concepts/plan-software-defined-networking-infrastructure-23h2.md
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
