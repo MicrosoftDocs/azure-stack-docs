@@ -26,6 +26,8 @@ This license covers up to 16 cores and is valid for the lifetime of the hardware
 
 An extra two-core and four-core license add-ons are available for systems with 16-cores or more.
 
+:::image type="content" source="media/oem-license/active-oem-license.png" alt-text="Screenshot of a cluster with an active Azure Stack HCI OEM license." lightbox="media/oem-license/active-oem-license.png":::
+
 ## Benefits
 
 With the Azure Stack HCI OEM license, you can simplify the licensing and activation process, as well as reduce costs and operational complexity. Other benefits include:
@@ -57,6 +59,18 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 |Different hardware models or generations | Using different manufacturers or different generations of hardware within the same cluster isn't supported.|
 |Varying operating systems or versions    | Running different operating systems or different versions of the same operating system across the nodes in a cluster isn't supported.|
 |Different billing on server nodes        | Mixing server hardware sold with an Azure Stack HCI OEM license and server hardware purchased with a regular Azure subscription isn't supported.|
+
+If you have a mixed-node scenario in your cluster, the following notification appears in your billed monthly status details:
+
+:::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
+
+:::image type="content" source="media/oem-license/warning-mixed-node.png" alt-text="Screenshot of a warning for a cluster with an unsupported mixed-node scenario." lightbox="media/oem-license/warning-mixed-node.png":::
+
+*We have detected mixed nodes in the same cluster. You will be fully billed as one or more of your servers do not have the OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column.*
+
+Check your nodes to see which servers don't have the OEM license.
+
+For more information on the Azure Stack HCI OEM License, see [Azure Stack HCI FAQ - License and Billing](azure-stack-hci-license-billing).
 
 ## Next step
 
