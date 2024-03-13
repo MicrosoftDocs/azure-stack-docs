@@ -61,7 +61,15 @@ Export the CA root certificate. To export the ASDK root certificate in PEM forma
     Export-Certificate -Type CERT -FilePath root.cer -Cert $root
     ```
 
-4. Copy the certificate to your local machine.
+4. For Linux, the following command is also required:
+
+   ```azurecli
+   export REQUESTS_CA_BUNDLE=~/.local/lib/python3.9/site-packages/certifi/cacert.pem
+   # RECOMMENDED: set the env var automatically for your subsequent sessions
+   echo 'export REQUESTS_CA_BUNDLE=~/.local/lib/python3.9/site-packages/certifi/cacert.pem' >> ~/.bash_profile
+   ```
+
+5. Copy the certificate to your local machine.
 
 ## Set up the virtual machine alias endpoint
 
