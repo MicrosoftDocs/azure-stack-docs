@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Physical network requirements and considerations for Azure Stack HCI, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 02/22/2024
+ms.date: 03/13/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
@@ -376,6 +376,9 @@ Network traffic can be classified by its direction. Traditional Storage Area Net
 
 > [!IMPORTANT]
 > We highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
+
+> [!NOTE]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
 
 ### North-South traffic for Azure Stack HCI
 

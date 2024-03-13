@@ -1,10 +1,10 @@
----
+---13
 title: Firewall requirements for Azure Stack HCI
 description: This topic provides guidance on firewall requirements for the Azure Stack HCI operating system.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 03/13/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -14,6 +14,9 @@ ms.date: 01/31/2024
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to use Azure service tags with Microsoft Defender firewall.
 
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
+
+> [!IMPORTANT]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
 
 ## Firewall requirements for outbound endpoints
 
