@@ -4,7 +4,7 @@ description: This topic provides information on how to plan a Software Defined N
 ms.topic: conceptual
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 03/08/2024
+ms.date: 03/13/2024
 ---
 # Plan a Software Defined Network infrastructure for Azure Stack HCI, version 23H2
 
@@ -199,5 +199,5 @@ Based on your requirements, you may need to deploy a subset of the SDN infrastru
 
 For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
-- [SDN in Azure Stack HCI](./software-defined-networking.md)
+- [SDN in Azure Stack HCI](./software-defined-networking-23h2.md)
 - [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)
