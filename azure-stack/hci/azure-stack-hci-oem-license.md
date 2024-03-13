@@ -70,7 +70,7 @@ If you have a mixed-node scenario in your cluster, the following notification ap
 
 Check your nodes to see which servers don't have the OEM license.
 
-For more information on the Azure Stack HCI OEM License, see [Azure Stack HCI FAQ - License and Billing](azure-stack-hci-license-billing).
+For more information on the Azure Stack HCI OEM License, see [Azure Stack HCI FAQ - License and Billing](azure-stack-hci-license-billing.yml).
 
 ## Next step
 
