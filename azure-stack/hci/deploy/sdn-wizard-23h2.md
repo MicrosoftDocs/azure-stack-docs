@@ -12,13 +12,15 @@ ms.reviewer: anirbanpaul
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you configured your Azure Stack HCI cluster. Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Stack HCI cluster, in the following deployment order:
+This article describes how to deploy Software Defined Networking (SDN) through Windows Admin Center after you deployed your Azure Stack HCI, version 23H2 cluster via the Azure portal. 
+
+Windows Admin Center enables you to deploy all the SDN infrastructure components on your existing Azure Stack HCI cluster, in the following deployment order:
 
 - Network Controller
 - Software Load Balancer (SLB)
 - Gateway
 
-Alternatively, you can deploy the entire SDN infrastructure through the [SDN Express](../manage/sdn-express-23h2.md) scripts.
+Alternatively, you can deploy the entire SDN infrastructure through the [SDN Express](./sdn-express-23h2.md) scripts.
 
 You can also deploy an SDN infrastructure using System Center Virtual Machine Manager (VMM). For more information, see [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
@@ -26,11 +28,11 @@ You can also deploy an SDN infrastructure using System Center Virtual Machine Ma
 
 Before you begin an SDN deployment, plan out and configure your physical and host network infrastructure. Reference the following articles:
 
-- [Physical network requirements](../concepts/physical-network-requirements.md)
-- [Host network requirements](../concepts/host-network-requirements.md)
-- [Deploy a cluster using Azure portal](deploy-via-portal.md)
-- [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md)
-- The **Phased deployment** section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) to determine the capabilities enabled by deploying Network Controller
+- [Physical network requirements](../concepts/physical-network-requirements.md).
+- [Host network requirements](../concepts/host-network-requirements.md).
+- [Deploy a cluster using Azure portal](deploy-via-portal.md).
+- [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
+- The **Phased deployment** section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) to determine the capabilities enabled by deploying Network Controller.
 
 ## Requirements
 
@@ -72,7 +74,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Under **Credentials**, enter the username and password used to join the Network Controller VMs to the cluster domain.
     > [!NOTE]
     > You must enter the username in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`.
-1. Enter the local administrative password for these VMs.
+1. Enter the local administrator password for these VMs.
 1. Under **Advanced**, enter the path to the VMs. You can also use the default populated path.
     > [!NOTE]
     > Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`.

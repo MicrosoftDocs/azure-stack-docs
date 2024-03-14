@@ -35,7 +35,7 @@ The following requirements must be met for a successful SDN deployment:
 - All host servers must have Hyper-V enabled.
 - All host servers must be joined to Active Directory.
 - Active Directory must be prepared. For more information, see [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-- A [virtual switch](create-logical-networks.md) must be created. You can use the default switch created for Azure Stack HCI, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
+- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Stack HCI, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
 - The physical network must be configured for the subnets and VLANs defined in the configuration file.
 - The SDN Express script needs to be run from a Windows Server 2016 or later computer.
 - The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
