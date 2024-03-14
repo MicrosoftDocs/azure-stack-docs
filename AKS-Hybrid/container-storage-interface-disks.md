@@ -3,7 +3,7 @@ title: Use Container Storage Interface (CSI) disk drivers in AKS enabled by Azur
 description: Learn how to use Container Storage Interface (CSI) drivers to manage disks in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/12/2024
+ms.date: 03/14/2024
 ms.author: sethm
 ms.lastreviewed: 01/14/2022
 ms.reviewer: abha
@@ -120,6 +120,7 @@ Creating a custom storage class is a two-step process:
    ```powershell
    Get-AksHciStorageContainer -Name "customStorageContainer"
    ```
+
 2. Create a new custom storage class using the new storage path.
 
    1. Create a file named **sc-aks-hci-disk-custom.yaml**, and then copy the manifest from the following YAML file. The storage class is the same as the default storage class except with the new `container`. Use the `storage container name` created in the previous step for `container`. For `group` and `hostname`, query the default storage class by running `kubectl get storageclass default -o yaml`, and then use the values that are specified:
@@ -151,6 +152,7 @@ Creating a custom storage class is a two-step process:
        $ kubectl apply -f sc-aks-hci-disk-custom.yaml
        storageclass.storage.k8s.io/aks-hci-disk-custom created
       ```
+
    ---
 
 ## Next steps
