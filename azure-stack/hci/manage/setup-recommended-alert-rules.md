@@ -52,13 +52,13 @@ Follow these steps to enable recommended alert rules in the Azure portal:
 
 1. Expand each of the alert rules to see its details. By default, the severity for each is **Informational**. You can change it to another severity, such as **Error**. You can also change the recommended threshold if required.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png" alt-text="Screenshot of an expanded recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png":::
-
 1. In the **Notify me by** section, ensure that **Email** is enabled and provide an email address to be notified when any of the alerts fire.
 
 1. Select **Use an existing action group**, and enter the details of the existing action group if you want to use an action group that already exists.
 
 1. Turn on the toggle to create the alert rules, and select **Save**.
+
+    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png" alt-text="Screenshot of an expanded recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png":::
 
 ## View recommended alert rules
 
