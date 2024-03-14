@@ -135,4 +135,4 @@ The table below compares the product pricing for Azure Stack HCI and Windows Ser
 
 ## Next steps
 
-- [Compare Azure Stack HCI to Azure Stack Hub](compare-azure-stack-hub.md)
+- [Evaluate Azure Stack HCI](https://learn.microsoft.com/en-us/azure-stack/hci/deploy/deployment-virtual).
