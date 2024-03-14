@@ -435,5 +435,5 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 ## Next steps
 
-- For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
-- For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
+- See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
+- See [Deploy using ARM template](../deploy/deployment-azure-resource-manager-template.md).

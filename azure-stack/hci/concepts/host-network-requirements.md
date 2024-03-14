@@ -376,3 +376,6 @@ The following shows the details for the example stretched cluster configuration.
 
 - Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
 - Learn how to simplify host networking using Network ATC. See [Simplify host networking with Network ATC](../deploy/network-atc.md).
+- Brush up on [failover clustering networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
+- See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
+- See [Deploy using ARM template](../deploy/deployment-azure-resource-manager-template.md).
