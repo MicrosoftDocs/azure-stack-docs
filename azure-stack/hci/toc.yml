@@ -104,6 +104,11 @@
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
+  - name: Deploy SDN
+    items:
+    - name: Using Express scripts
+      href: manage/sdn-express-23h2.md
+  
   - name: Deploy workloads
     items:
     - name: Run AKS on HCI
@@ -343,7 +348,10 @@
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
-
+  - name: SDN overview
+    href: concepts/software-defined-networking-23h2.md
+  - name: Plan an SDN infrastructure
+    href: concepts/plan-software-defined-networking-infrastructure-23h2.md
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
@@ -540,6 +548,8 @@
       href: /windows-server/storage/storage-spaces/storage-spaces-states?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
+    - name: Use the Diagnostic Support tool
+      href: manage/support-tools.md
     - name: Troubleshoot SDN
       items:
       - name: Troubleshoot SDN deployment

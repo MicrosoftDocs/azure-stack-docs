@@ -189,7 +189,9 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "feedback_system": "GitHub",
+      "feedback_system": "Standard",
+      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
+      "feedback_help_link_type": "get-help-at-qna",
       "feedback_github_repo": "MicrosoftDocs/azure-stack-docs",
       "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
       "breadcrumb_path": "/azure-stack/breadcrumb/toc.json",

@@ -4,7 +4,7 @@ description: How to register Windows Admin Center with Azure.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 04/19/2023
+ms.date: 02/26/2024
 ---
 
 # Register Windows Admin Center with Azure
@@ -39,7 +39,7 @@ Follow these steps to open the registration pane:
 
 1. Select the **Register** button on the center of the page. The registration pane appears on the right of the page.
 
-   :::image type="content" source="media/register-wac/register-wac.png" alt-text="Screenshot of the registration pane." lightbox="media/register-wac/register-wac.png":::
+   :::image type="content" source="media/register-windows-admin-center/register-wac.png" alt-text="Screenshot of the registration pane." lightbox="media/register-windows-admin-center/register-wac.png":::
 
 Follow these one-time registration steps in the registration pane to register Windows Admin Center with Azure:
 
@@ -49,11 +49,11 @@ Follow these one-time registration steps in the registration pane to register Wi
    
 1. Select the **Enter the code** link. This opens the **Enter code** window in a new browser tab. Paste the code you copied from **Step 2** and then select **Next**.
 
-   :::image type="content" source="media/register-wac/enter-code.png" alt-text="Screenshot of the Enter code window." lightbox="media/register-wac/enter-code.png":::
+   :::image type="content" source="media/register-windows-admin-center/enter-code.png" alt-text="Screenshot of the Enter code window." lightbox="media/register-windows-admin-center/enter-code.png":::
 
    After pasting in the code, an interactive **Sign in** window appears. Enter the email address associated with the Azure account you want to use with Windows Admin Center. The exact prompts that you see varies depending on your security settings (for example, two-factor authentication). Follow the prompts to sign in.
 
-   :::image type="content" source="media/register-wac/sign-in.png" alt-text="Screenshot of the sign in dialog box." lightbox="media/register-wac/sign-in.png":::
+   :::image type="content" source="media/register-windows-admin-center/sign-in.png" alt-text="Screenshot of the sign in dialog box." lightbox="media/register-windows-admin-center/sign-in.png":::
 
    After signing in, you get a confirmation that you're signed into the Windows Admin Center application on your device. Close the confirmation window and return to the original registration page.
 
@@ -65,7 +65,7 @@ Follow these one-time registration steps in the registration pane to register Wi
       
    - If you don't have an existing ID, select **Create new**.
 
-      :::image type="content" source="media/register-wac/connect-to-aad.png" alt-text="Connect to Microsoft Entra ID by supplying your existing Microsoft Entra ID (tenant) ID and application ID, or creating a new application ID." lightbox="media/register-wac/connect-to-aad.png":::
+      :::image type="content" source="media/register-windows-admin-center/connect-to-aad.png" alt-text="Connect to Microsoft Entra ID by supplying your existing Microsoft Entra ID (tenant) ID and application ID, or creating a new application ID." lightbox="media/register-windows-admin-center/connect-to-aad.png":::
 
 1. Select **Connect**.
    
@@ -104,7 +104,7 @@ If you're a Microsoft Entra admin, follow these steps to grant consent to a new 
    
    1. In the **Redirect URIs** box, you will see an existing URI representing the first Windows Admin Center system that registered to the app ID. Select **Add URI** and add two new redirect URIs: *http://localhost:6516* and *https://localhost:6516*. Select **Save.**
 
-      :::image type="content" source="media/register-wac/add-redirect-uris.png" alt-text="To enable multiple users in an organization to register Windows Admin Center using the same Azure app ID, add redirect URIs" lightbox="media/register-wac/add-redirect-uris.png":::
+      :::image type="content" source="media/register-windows-admin-center/add-redirect-uris.png" alt-text="To enable multiple users in an organization to register Windows Admin Center using the same Azure app ID, add redirect URIs" lightbox="media/register-windows-admin-center/add-redirect-uris.png":::
 
    > [!IMPORTANT]
    > Make sure to provide your users with the correct Azure tenant ID and the application ID from step 5, and tell them to select **Use existing** application ID when registering Windows Admin Center. Note that if a Microsoft Entra admin doesn't add redirect URIs and more than one user tries to register Windows Admin Center to the same app ID, they will get an error that the reply URL doesn't match.
