@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center for Azure Stack HCI
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center for Azure Stack HCI
 author: alkohli
 ms.topic: how-to
-ms.date: 03/08/2024
+ms.date: 03/14/2024
 ms.author: alkohli
 ms.reviewer: anirbanpaul
 ---
