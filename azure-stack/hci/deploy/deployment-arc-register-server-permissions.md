@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/29/2024
+ms.date: 03/13/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -23,14 +23,15 @@ Before you begin, make sure you've completed the following prerequisites:
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server.
 
-- Make sure to register your subscription with the following resource providers. You would need to be an owner or contributor on your subscription to perform this registration. Run the following PowerShell commands to register the resource providers:
+- Register your subscription with the following resource providers. You can use either [Azure portal](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) or [Azure Command-Line Interface (CLI)](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to do do. You need to be an owner or contributor on your subscription to register these providers:
 
-    ```powershell
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridCompute"
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.GuestConfiguration"
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridConnectivity"
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.AzureStackHCI"
-    ```
+    - Microsoft.HybridCompute
+    - Microsoft.GuestConfiguration
+    - Microsoft.HybridConnectivity
+    - Microsoft.AzureStackHCI
+
+> [!NOTE]
+> The assumption is that the person registering the Azure subscription with the resource providers is a different person than the one who is registering the Azure Stack HCI servers with Arc.
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
@@ -121,7 +122,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
 1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
-    ```powershell
+    ```azurecli
     #Connect to your Azure account and Subscription
     Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
 
