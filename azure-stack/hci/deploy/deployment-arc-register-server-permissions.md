@@ -40,7 +40,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     To verify that you have these roles, follow these steps in the Azure portal:
 
-    1. Go to the subscription that you'll use for the Azure Stack HCI deployment.
+    1. Go to the subscription that you use for the Azure Stack HCI deployment.
     1. Go to the resource group where you're planning to register the servers.
     1. In the left-pane, go to **Access Control (IAM)**.
     1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
@@ -92,7 +92,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`TenantID`          |The tenant ID used to register your servers with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-    |`AccountID`         |The user who will register and deploy the cluster.         |
+    |`AccountID`         |The user who registers and deploys the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
     
