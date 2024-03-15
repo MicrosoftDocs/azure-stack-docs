@@ -11,6 +11,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path":"azure-stack/hci/manage/sdn-express-23h2.md",
+      "redirect_url":"/azure-stack/hci/deploy/sdn-express-23h2",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/concepts/other-security-features.md",
       "redirect_url":"/azure-stack/hci/concepts/security-features",
       "redirect_document_id": false

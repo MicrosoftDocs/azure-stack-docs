@@ -107,7 +107,9 @@
   - name: Deploy SDN
     items:
     - name: Using Express scripts
-      href: manage/sdn-express-23h2.md
+      href: deploy/sdn-express-23h2.md
+    - name: Using Windows Admin Center
+      href: deploy/sdn-wizard-23h2.md     
   
   - name: Deploy workloads
     items:
