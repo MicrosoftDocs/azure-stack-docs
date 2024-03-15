@@ -25,7 +25,7 @@ Follow these steps to upgrade the Lustre client to the current version:
 
 ### [Red Hat Enterprise Linux / Alma](#tab/rhel)
 
-1. Unmount any containers or mount point that are mounting the Lustre client using the following command:
+1. Unmount any containers or mount points that are mounting the Lustre client using the following command:
 
     ```bash
     sudo umount <all Lustre mounts>
@@ -65,7 +65,7 @@ Follow these steps to upgrade the Lustre client to the current version:
 
 ### [Ubuntu](#tab/ubuntu)
 
-1. Unmount any containers or mount point that are mounting the Lustre client using the following command:
+1. Unmount any containers or mount points that are mounting the Lustre client using the following command:
 
     ```bash
     sudo umount <all Lustre mounts>
