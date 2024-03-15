@@ -24,7 +24,6 @@
     href: concepts/compare-windows-server.md 
   - name: FAQ
     href: faq.yml
-
 - name: Evaluate 
   items:
   - name: Virtual deployment
@@ -705,16 +704,14 @@
       href: manage/get-support.md
     - name: Get remote support
       href: manage/get-remote-support.md
-  - name: Learning paths and modules
+  - name: Trainings
     items:
     - name: Azure Stack HCI foundations
       href: /training/paths/azure-stack-hci-foundations/
     - name: Operate and maintain Azure Stack HCI
       href: /training/paths/operate-maintain-azure-stack-hci/
-    - name: Implement Datacenter Firewall and Software Load Balancer
-      href: /training/modules/implement-firewall-load-balancer/
-    - name: Plan for and deploy SDN infrastructure on Azure Stack HCI
-      href: /training/modules/plan-deploy-sdn-infrastructure/
+    - name: Software Defined Networking (SDN) technical reference
+      href: manage/sdn-technical-reference.md
   - name: Evaluation guide
     href: guided-quick-deploy-eval.yml 
   - name: Earlier versions
