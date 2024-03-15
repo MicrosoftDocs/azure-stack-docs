@@ -124,7 +124,7 @@ landingContent:
         links:
           - text: Azure Stack HCI foundations
             url: /training/paths/azure-stack-hci-foundations
-          - text: Software Defined Networking (SDN) technicla reference
+          - text: Software Defined Networking (SDN) technical reference
             url: manage/sdn-technical-reference.md
 
   # Card

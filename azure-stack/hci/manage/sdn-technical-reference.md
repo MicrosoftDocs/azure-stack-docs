@@ -13,18 +13,18 @@ ms.date: 03/15/2024
 
 This technical reference provides comprehensive learning resources to enhance your understanding of Software Defined Networking (SDN) in Azure Stack HCI.
 
-We continuosly update these resources based on the latest information available and user feedback. Be sure to check back here often for fresh content.
+We continuously update these resources based on the latest information available and user feedback. Be sure to check back here often for fresh content.
 
-## Self-paced, self-directed SDN training
+## SDN training resources: Self-paced, self-directed
 
 The following table contains links to comprehensive training resources for self-paced, self-directed learning. Explore the key concepts provided in the PowerPoint decks and reference articles, and reinforce your understanding through hand-on labs. The entire course is divided into various modules, each with a set of learning objectives. In-line knowledge checks are included to assess your understanding as you progress through the decks.
 
 | Training module | Training deck | Training lab | Reference articles |
 |--|--|--|--|
-| Module 0: Orientation and overview | [Module 0 deck](https://github.com/Azure-Samples/AzureStackHCI/blob/main/sdn-training/AzureStackHCI_SDN_Training_M0_Overview.pptx) | [Module 0 lab](https://github.com/Azure-Samples/AzureStackHCI/blob/main/sdn-training/AzureStackHCI_SDN_Training_Lab_M0_Overview.pdf)| [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md) <br> - [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) |
+| Module 0: Orientation and overview | [Module 0 deck](https://github.com/Azure-Samples/AzureStackHCI/blob/main/sdn-training/AzureStackHCI_SDN_Training_M0_Overview.pptx) | [Module 0 lab](https://github.com/Azure-Samples/AzureStackHCI/blob/main/sdn-training/AzureStackHCI_SDN_Training_Lab_M0_Overview.pdf)| - [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md) <br> - [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) |
 | Module 1: Network Controller | [Module 1 deck](https://github.com/Azure-Samples/AzureStackHCI/blob/main/sdn-training/AzureStackHCI_SDN_Training_M1_Network_Controller.pptx)| [Module 1 lab](https://github.com/Azure-Samples/AzureStackHCI/blob/main/sdn-training/AzureStackHCI_SDN_Training_Lab_M1_Network_Controller.pdf) | - [What is Network Controller?](../concepts/network-controller-overview.md) <br> - [Secure the Network Controller](./nc-security.md) |
 
-## SDN trainings on Microsoft Learn
+## SDN training resources: Microsoft Learn
 
 Microsoft Learn is a free online platform that provides interactive learning for Microsoft products. Explore the following SDN trainings available on Microsoft Learn:
 
