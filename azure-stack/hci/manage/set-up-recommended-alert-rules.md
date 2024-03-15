@@ -44,11 +44,11 @@ Follow these steps to enable recommended alert rules in the Azure portal:
 
 1. On the left pane, select **Alerts** from the **Monitoring** section, and then select **View + set up** to enable the recommended alerts. You can also select **Set up recommendations**.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png" alt-text="Screenshot showing the option to create view or set up a recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules.png":::
+    :::image type="content" source="media/set-up-recommended-alert-rules/set-up-recommended-alert-rules.png" alt-text="Screenshot showing the option to create view or set up a recommended alert rule." lightbox="media/set-up-recommended-alert-rules/set-up-recommended-alert-rules.png":::
 
 1. In the **Set up recommended alert rules** pane, review the list of recommended alert rules for your cluster. In the **Select alert rules** section, all recommended alerts are populated with the default values for the rule condition, such as the percentage of CPU usage that you want to trigger an alert.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-pane.png" alt-text="Screenshot of the Set up recommended alert rules pane with a list of recommended alert rules for your cluster." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-pane.png":::
+    :::image type="content" source="media/set-up-recommended-alert-rules/set-up-recommended-alert-rules-pane.png" alt-text="Screenshot of the Set up recommended alert rules pane with a list of recommended alert rules for your cluster." lightbox="media/set-up-recommended-alert-rules/set-up-recommended-alert-rules-pane.png":::
 
 1. Expand each of the alert rules to see its details. By default, the severity for each is **Informational**. You can change it to another severity, such as **Error**. You can also change the recommended threshold if required.
 
@@ -58,7 +58,7 @@ Follow these steps to enable recommended alert rules in the Azure portal:
 
 1. Turn on the toggle to create the alert rules, and select **Save**.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png" alt-text="Screenshot of an expanded recommended alert rule." lightbox="media/setup-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png":::
+    :::image type="content" source="media/set-up-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png" alt-text="Screenshot of an expanded recommended alert rule." lightbox="media/set-up-recommended-alert-rules/set-up-recommended-alert-rules-expanded.png":::
 
 ## View recommended alert rules
 
@@ -70,19 +70,19 @@ Follow these steps to view recommended alert rules:
 
 1. On the **Alerts** page, select **Alert rules** to view the rules you created.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/alerts-page.png" alt-text="Screenshot of the alerts page for your cluster." lightbox="media/setup-recommended-alert-rules/alerts-page.png":::
+    :::image type="content" source="media/set-up-recommended-alert-rules/alerts-page.png" alt-text="Screenshot of the alerts page for your cluster." lightbox="media/set-up-recommended-alert-rules/alerts-page.png":::
 
 1. On the **Alert rules** page, select the alert rule that you want to view or edit.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/select-alert-rule.png" alt-text="Screenshot of the Alert rules page showing the alerts you have created." lightbox="media/setup-recommended-alert-rules/select-alert-rule.png":::
+    :::image type="content" source="media/set-up-recommended-alert-rules/select-alert-rule.png" alt-text="Screenshot of the Alert rules page showing the alerts you have created." lightbox="media/set-up-recommended-alert-rules/select-alert-rule.png":::
 
 1. Review the details of the selected alert rule. You can also select **Edit** to modify the default values of the selected alert rule, such as the default threshold value.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/view-alert.png" alt-text="Screenshot of the selected alert rule." lightbox="media/setup-recommended-alert-rules/view-alert.png":::
+    :::image type="content" source="media/set-up-recommended-alert-rules/view-alert.png" alt-text="Screenshot of the selected alert rule." lightbox="media/set-up-recommended-alert-rules/view-alert.png":::
 
 1. After making the necessary changes, select **Review + save**.
 
-    :::image type="content" source="media/setup-recommended-alert-rules/edit-alert-rule.png" alt-text="Screenshot of the Edit alert rule page." lightbox="media/setup-recommended-alert-rules/edit-alert-rule.png":::
+    :::image type="content" source="media/set-up-recommended-alert-rules/edit-alert-rule.png" alt-text="Screenshot of the Edit alert rule page." lightbox="media/set-up-recommended-alert-rules/edit-alert-rule.png":::
 
 ## Recommended alert rules for Azure Stack HCI
 
