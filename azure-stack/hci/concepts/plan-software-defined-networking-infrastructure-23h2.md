@@ -4,16 +4,13 @@ description: This topic provides information on how to plan a Software Defined N
 ms.topic: conceptual
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 03/13/2024
+ms.date: 03/15/2024
 ---
 # Plan a Software Defined Network infrastructure for Azure Stack HCI, version 23H2
 
 > Applies to: Azure Stack HCI, versions 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending an SDN infrastructure and using a phased deployment.
-
-   > [!NOTE]
-   > SDN is not supported on stretched (multi-site) clusters.
 
 ## Prerequisites
 
@@ -104,9 +101,9 @@ You need to create and provision additional logical networks to use gateways and
 
 | Logical network | Description |
 |:-|:-|
-| **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. You don’t need to assign a VLAN to this network. |
-| **Private VIP logical network** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. You don’t need to assign a VLAN to this network. This IP can be a maximum of a /22 network. |
-| **GRE VIP logical network** | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs. The VIPs are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it. |
+| **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. You don’t need to assign a VLAN to this network. You don't need to configure this network on your physical switches. Ensure that IP addresses on this network don't overlap with existing IP addresses in your organization. |
+| **Private VIP logical network** | The Private VIP logical network is not required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. You don’t need to assign a VLAN to this network. This IP can be a maximum of a /22 network. You don't need to configure this network on your physical switches. Ensure that IP addresses on this network don't overlap with existing IP addresses in your organization. |
+| **GRE VIP logical network** | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs. The VIPs are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it. You don't need to configure this network on your physical switches. Ensure that IP addresses on this network don't overlap with existing IP addresses in your organization. |
 
 #### Sample network topology
 
