@@ -25,8 +25,8 @@ The following table provides a summary of Azure Stack HCI, version 23H2 release 
 
 All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
-|Release build| OS build |Baseline/Update <sup>1<sup>| What's new | Known issues |
-|--|--|--|--|--|--|
+|Release build| OS build |Baseline/Update <sup>1</sup>| What's new | Known issues |
+|--|--|--|--|--|
 | 10.2402.1.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402-1.md) |
 | 10.2311.4.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23113) | [Known issues](./known-issues-23113.md) |
 | 10.2402.0.23 | 25398.709  <br><br> [Feb OS security update](./security-update/hci-security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402.md) |
