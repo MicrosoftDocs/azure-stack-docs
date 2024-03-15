@@ -22,9 +22,11 @@
       href: export-with-archive-jobs.md
 - name: Access a file system
   items:
-    - name: Install clients
+    - name: Install Lustre client
       href: client-install.md
-    - name: Connect clients to the file system
+    - name: Upgrade Lustre client
+      href: client-upgrade.md
+    - name: Connect client to the file system
       href: connect-clients.md
     - name: Automount Lustre clients with fstab
       href: automount-clients-fstab.md
