@@ -26,8 +26,6 @@ This license covers up to 16 cores and is valid for the lifetime of the hardware
 
 An extra two-core and four-core license add-ons are available for systems with 16-cores or more.
 
-:::image type="content" source="media/oem-license/active-oem-license.png" alt-text="Screenshot of a cluster with an active Azure Stack HCI OEM license." lightbox="media/oem-license/active-oem-license.png":::
-
 ## Benefits
 
 With the Azure Stack HCI OEM license, you can simplify the licensing and activation process, as well as reduce costs and operational complexity. Other benefits include:
@@ -45,6 +43,21 @@ An active Azure account is required for license activation. When you purchase ha
 - Receive the latest updates and security patches by keeping your Azure Stack HCI and AKS up to date.
 
 - Upgrade to the next version of Azure Stack HCI, once the lifecycle of the latest version ends, to continue receiving support and updates.
+
+## Verify license status
+
+To verify if you have an active Azure Stack HCI OEM License, do the following:
+
+1. Go to [the Azure portal](https://portal.azure.com).
+2. Search for your Azure Stack HCI cluster.
+3. Under your cluster select **Overview** to check the **Billing status**.
+    - If you have an active Azure Stack HCI OEM license, your billing status should be **OEM License** and your OEM License status should be **Activated**.
+
+        :::image type="content" source="media/oem-license/active-oem-license.png" alt-text="Screenshot of a cluster with an active Azure Stack HCI OEM license." lightbox="media/oem-license/active-oem-license.png":::
+
+    - If you don't have an active Azure Stack HCI OEM license, you'll see a billing status of **Billing monthly**.
+
+        :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
 ## Mixed-node scenarios
 
