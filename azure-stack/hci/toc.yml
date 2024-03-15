@@ -20,6 +20,10 @@
         href: known-issues-2311.md
     - name: Release information
       href: release-information-23h2.md
+  - name: Security updates
+    items:
+    - name: March 2024 security update
+      href: hci-security-update-mar-2024.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
