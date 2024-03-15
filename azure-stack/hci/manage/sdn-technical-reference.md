@@ -17,7 +17,7 @@ We continuously update these resources based on the latest information available
 
 ## SDN training resources: Self-paced, self-directed
 
-The following table contains links to comprehensive training resources for self-paced, self-directed learning. Explore the key concepts provided in the PowerPoint decks and reference articles, and reinforce your understanding through hand-on labs. The entire course is divided into various modules, each with a set of learning objectives. In-line knowledge checks are included to assess your understanding as you progress through the decks.
+The following table contains links to comprehensive training resources for self-paced, self-directed learning. Explore the key concepts provided in the PowerPoint decks and reference articles, and reinforce your understanding through hands-on labs. The entire course is divided into various modules, each with a set of learning objectives. Inline knowledge checks are included to assess your understanding as you progress through the decks.
 
 | Training module | Training deck | Training lab | Reference articles |
 |--|--|--|--|
