@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2402.2 updat
 description: Read about the known issues and fixed issues in Azure Stack HCI 2402.1 release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/15/2024
+ms.date: 03/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
