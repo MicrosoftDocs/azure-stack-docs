@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This security update for Azure Stack HCI, version 23H2 was released on January 9, 2024 and applies to OS build 25398.643.
+This article describes the security update for Azure Stack HCI, version 23H2 that was released on January 9, 2024 and applies to OS build 25398.643.
 
 <!--For an overview of Azure Stack HCI version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
 
@@ -71,4 +71,4 @@ For a list of the files that are provided in the servicing stack update, downloa
 ## Next steps
 
 - [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Stack HCI, version 23H2.
-- [Install updates via Azure pUpdate Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.

@@ -63,4 +63,4 @@ For a list of the files that are provided in the servicing stack update, downloa
 ## Next steps
 
 - [Install updates via PowerShell](../update/update-via-powershell-23h2.md) for Azure Stack HCI, version 23H2.
-- [Install updates via Azure pUpdate Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
+- [Install updates via Azure Update Manager in Azure portal](../update/azure-update-manager-23h2.md) for Azure Stack HCI, version 23H2.
