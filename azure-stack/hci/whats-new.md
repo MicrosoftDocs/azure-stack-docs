@@ -68,7 +68,7 @@ In this generally available release of the Azure Stack HCI, version 23H2, all th
 
 With this release:
 
-- Deployment is supported using existing storage accounts and existing Azure Key Vaults.
+- Deployment is supported using existing storage accounts.
 - A failed deployment can be run using the **Rerun deployment** option that becomes available in the cluster **Overview** page.
 - Network settings such as storage traffic priority, cluster traffic priority, storage traffic bandwidth reservation, jumbo frames, and RDMA protocol can all be customized.
 - Validation must be started explicitly via the **Start validation** button.
