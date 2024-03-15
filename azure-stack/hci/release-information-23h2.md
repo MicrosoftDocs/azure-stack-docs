@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/11/2024
+ms.date: 03/15/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
@@ -27,8 +27,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline/Update <sup>1<sup>| What's new | Known issues |
 |--|--|--|--|--|--|
-| 10.2402.1.XX | 25398.709  <br><br> [OS security update]() <br><br> Availability date: 2024-03-19 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2402-1) | [Known issues](./known-issues-2402-1.md) |
-| 10.2311.4.XX | 25398.709  <br><br> [OS security update]() <br><br> Availability date: 2024-03-19 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-231114) | [Known issues](./known-issues-23114.md) |
+| 10.2402.1.XX | 25398.762  <br><br> [OS security update]() <br><br> Availability date: 2024-03-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402-1.md) |
+| 10.2311.4.XX | 25398.762  <br><br> [OS security update]() <br><br> Availability date: 2024-03-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23113) | [Known issues](./known-issues-23114.md) |
 | 10.2402.0.23 | 25398.709  <br><br> [KB 5034769](https://support.microsoft.com/en-us/topic/february-13-2024-security-update-kb5034769-07d43f22-f26e-42e5-999c-66dfb7af4253) <br><br> Availability date: 2024-02-13 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402.md) |
 | 10.2311.3.12 | 25398.709  <br><br> [KB 5034769](https://support.microsoft.com/en-us/topic/february-13-2024-security-update-kb5034769-07d43f22-f26e-42e5-999c-66dfb7af4253) <br><br> Availability date: 2024-02-13 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23113) | [Known issues](./known-issues-2311-3.md) |
 | 10.2311.2.7 | 25398.643  <br><br> [KB 5034130](https://support.microsoft.com/topic/92a8b0fe-82f7-4c64-a9d8-7295ed6b9a06) <br><br> Availability date: 2024-01-09| Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23112-ga) | [Known issues](./known-issues-2311-2.md) |
