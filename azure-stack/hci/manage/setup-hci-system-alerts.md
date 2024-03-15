@@ -16,7 +16,7 @@ ms.date: 01/31/2024
 
 This article describes how to set up log alerts for Azure Stack HCI systems: using Insights for Azure Stack HCI and using pre-existing sample log queries, such as average server CPU, available memory, available volume capacity, and more.
 
-For information about how to set up metric alerts, see [Set up metric alerts for Azure Stack HCI systems](./setup-metric-alerts.md).
+For information about how to set up metric alerts, see [Set up metric alerts for Azure Stack HCI](./setup-metric-alerts.md).
 
 ## Prerequisites
 
