@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 02/29/2024
+ms.date: 03/14/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -23,14 +23,15 @@ Before you begin, make sure you've completed the following prerequisites:
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server.
 
-- Make sure to register your subscription with the following resource providers. You would need to be an owner or contributor on your subscription to perform this registration. Run the following PowerShell commands to register the resource providers:
+- Register your subscription with the required resource providers (RPs). You can use either the [Azure portal](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) or the [Azure PowerShell](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register. You need to be an owner or contributor on your subscription to register the following resource RPs:
 
-    ```powershell
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridCompute"
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.GuestConfiguration"
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.HybridConnectivity"
-    - Register-AzResourceProvider -ProviderNamespace "Microsoft.AzureStackHCI"
-    ```
+    - *Microsoft.HybridCompute*
+    - *Microsoft.GuestConfiguration*
+    - *Microsoft.HybridConnectivity*
+    - *Microsoft.AzureStackHCI*
+
+    > [!NOTE]
+    > The assumption is that the person registering the Azure subscription with the resource providers is a different person than the one who is registering the Azure Stack HCI servers with Arc.
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
@@ -39,7 +40,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     To verify that you have these roles, follow these steps in the Azure portal:
 
-    1. Go to the subscription that you'll use for the Azure Stack HCI deployment.
+    1. Go to the subscription that you use for the Azure Stack HCI deployment.
     1. Go to the resource group where you're planning to register the servers.
     1. In the left-pane, go to **Access Control (IAM)**.
     1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
@@ -91,7 +92,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`TenantID`          |The tenant ID used to register your servers with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
-    |`AccountID`         |The user who will register and deploy the cluster.         |
+    |`AccountID`         |The user who registers and deploys the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
     
@@ -121,7 +122,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
 1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
-    ```powershell
+    ```azurecli
     #Connect to your Azure account and Subscription
     Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
 
@@ -247,15 +248,16 @@ This section describes how to assign Azure permissions for deployment from the A
 
 1. Go through the tabs and assign the following permissions to the user who deploys the cluster:
 
-    - **Key Vault Administrator**
-    - **Key Vault Contributor**
-    - **Storage Account Contributor**
+    - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for deployment.
+    - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for deployment.
+    - **Key Vault Contributor**: This permission is required to create the key vault used for deployment.
+    - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
  
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
-    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
+    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
 
 ## Next steps
 
