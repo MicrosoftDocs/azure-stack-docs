@@ -286,7 +286,7 @@
       - name: Metric alerts
         href: manage/setup-metric-alerts.md
       - name: Recommended alert rules
-        href: manage/setup-recommended-alert-rules.md
+        href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
     - name: Health service
