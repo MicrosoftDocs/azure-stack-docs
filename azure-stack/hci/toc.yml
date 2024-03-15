@@ -23,7 +23,7 @@
   - name: Security updates
     items:
     - name: March 2024 security update
-      href: hci-security-update-mar-2024.md
+      href: security-update/hci-security-update-mar-2024.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
