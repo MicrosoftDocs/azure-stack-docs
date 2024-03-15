@@ -12,9 +12,9 @@
       href: release-information-23h2.md
     - name: Known issues 2402 
       items:
-      - name: Known issues 2402.1 - Current
+      - name: 2402.1 - Current
         href: known-issues-2402-1.md
-      - name: Known issues 2402 
+      - name: 2402 
         href: known-issues-2402.md
     - name: Known issues 2311
       items:
