@@ -66,7 +66,7 @@ This article describes the maximum and minimum supported scale count for cluster
 | Standard_D8s_v3             | 8    | 32           |
 
 > [!WARNING]
-> There is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2vCPU and 8GB memory. Microsoft is aware of the problem and working on a resolution.
+> There is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2vCPU and 8GB memory. Microsoft is aware of the problem and is working on a resolution.
 
 ## Next steps
 
