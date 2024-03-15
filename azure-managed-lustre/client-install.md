@@ -5,7 +5,7 @@ ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: dsundarraj
-ms.date: 03/12/2024
+ms.date: 03/15/2024
 zone_pivot_groups: select-os
 
 ---
@@ -339,7 +339,7 @@ The instructions apply to client VMs running:
 
 1. Remove any kernels newer than the one mentioned in the LTS metapackage.
 
-   Remove any kernels other than the one mentioned in the LTS kernel metapackage.  It will warn about removing the kernel and recommend aborting the process. If you're following these steps on a newly provisioned host, they work. But if you have concerns, consult Ubuntu documentation on configuring kernels to ensure it's able to boot after a reboot.
+   During this process, you receive a warning about removing the kernel and a recommendation to abort the process. These steps work if you're following them on a newly provisioned host. However, if you have concerns, consult Ubuntu documentation on configuring kernels to ensure it's able to boot after a reboot.
 
    ```bash
    sudo apt remove linux-image-5.15.0-1053-azure
