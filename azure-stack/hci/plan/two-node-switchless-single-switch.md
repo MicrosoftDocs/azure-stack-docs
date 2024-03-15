@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/24/2024
+ms.date: 03/14/2024
 ---
 
 # Review two-node storage switchless, single switch deployment network reference pattern for Azure Stack HCI
