@@ -13,7 +13,7 @@ ms.date: 03/18/2024
 
 This article provides an overview of SDN Multisite, including its benefits and current limitations. You can use it as a guide to help design your network topology and disaster recovery plan.
 
-SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites means physical locations.
+SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations. SDN Multisite enables native Layer 2 and Layer 3 connectivity across different physical locations for virtualized workloads. In this article, all references to sites mean physical locations.
 
 For information about how to manage SDN Multisite, see [Manage SDN Multisite for Azure Stack HCI](../manage/manage-sdn-multisite.md).
 
@@ -21,7 +21,7 @@ For information about how to manage SDN Multisite, see [Manage SDN Multisite for
 
 Here are the benefits of using SDN Multisite:
 
-- **Unified policy management system.** With shared virtual networks and policy configurations, you can manage and configure your networks across multiple sites from any location.
+- **Unified policy management system.** With shared virtual networks and policy configurations, you can manage and configure your multisite networks from any site.
 - **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
 - **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) on virtual networks, along with automatic manageability to any of their associated NSGs across your physical locations.
 
@@ -45,7 +45,7 @@ In a multisite SDN environment, one site is designated as the primary and the ot
 
 ### Resource handling
 
-- If the primary site is unreachable, global resources, resources requiring global validation or global Customer Address (CA) allocations can't be updated through secondary site. However, other local resources can be updated through secondary site.
+- If the primary site is unreachable, global resources and resources requiring global validation or global Customer Address (CA) allocations can't be updated through secondary site. However, other local resources can be updated through secondary site.
 
     Examples of resources needing global validation include:
 
@@ -118,11 +118,11 @@ In SDN Multisite, if there's no VM migration between locations, data packets are
 
 #### Load balancing in SDN Multisite with migrating workload VMs
 
-If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you are trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Stack HCI cluster. As workload VMs move, the configurations on the MUXes aren’t global, leaving the other site unaware of migrations. The following animation illustrated the VMs migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
+If you decide to migrate one VM or all VMs behind the VIP to the other site, you might encounter situations where the VM you're trying to reach becomes unreachable over the VIP, depending on its location. This happens because load balancer resources are local to each Azure Stack HCI cluster. As workload VMs move, the configurations on the MUXes aren’t global, leaving the other site unaware of migrations. The following animation illustrated the VMs migration from Cluster 2 to Cluster 1 and how the data packet's path fails after the migration.
 
 :::image type="content" source="./media/sdn-multisite-overview/software-load-balancer-broken.gif" alt-text="Animation that shows load balancing in an SDN Multisite environment with migrating workloads." lightbox="./media/sdn-multisite-overview/software-load-balancer-broken.gif" :::
 
-To workaround this limitation, you can use external load balancer that checks the availability of backend VMs on each site and routes the traffic accordingly. See [Use external load balancer in Multisite with migrating workload VMs](#use-external-load-balancer-in-multisite-with-migrating-workload-vms).
+To work around this limitation, you can use external load balancer that checks the availability of backend VMs on each site and routes the traffic accordingly. See [Use external load balancer in Multisite with migrating workload VMs](#use-external-load-balancer-in-multisite-with-migrating-workload-vms).
 
 #### Use external load balancer in Multisite with migrating workload VMs
 
