@@ -110,3 +110,5 @@ AKS Arc on VMware doesn't store or process customer data outside the region in w
 
 ## Next steps
 
+- If you already connected vCenter to Azure Arc and want to add the AKS extension, [see the Quickstart](aks-vmware-quickstart-deploy.md).
+- If your vCenter is not connected to Azure Arc and you want to add the AKS extension, see the Quickstart: Connect VMware vCenter Server to Azure Arc using the help script".
