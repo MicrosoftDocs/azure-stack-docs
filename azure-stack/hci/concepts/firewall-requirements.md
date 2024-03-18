@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 03/13/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -62,7 +62,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 - [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md)
+- [Azure Arc VM management](/azure/azure-arc/resource-bridge/network-requirements)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
