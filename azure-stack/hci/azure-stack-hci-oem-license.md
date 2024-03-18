@@ -1,5 +1,5 @@
 ---
-title: Azure Stack HCI OEM license
+title: About the Azure Stack HCI OEM license
 description: Learn about the Azure Stack HCI OEM license, its benefits, requirements, and mixed-node scenarios that might cause billing conflicts.
 author: ronmiab
 ms.topic: conceptual
@@ -10,25 +10,27 @@ ms.subservice: azure-stack-hci
 # customer intent: As a content developer, I want to provide customers with the appropriate Azure Stack HCI OEM license information so that they can have a clear understanding of what the license covers for their purchase.
 ---
 
-# Azure Stack HCI OEM license
+# About the Azure Stack HCI OEM license
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article covers the Azure Stack HCI OEM license, which is designed for Azure Stack HCI hardware. The license also includes Azure Stack HCI Premier Solutions, integrated systems, and validated nodes.
+This article covers the Azure Stack HCI OEM license, its benefits, license requirements, and more.
 
-The Azure Stack HCI OEM license integrates three essential services for your cloud infrastructure:
+## About the license
+
+The Azure Stack HCI OEM license is designed for Azure Stack HCI hardware including Azure Stack HCI Premier Solutions, integrated systems, and validated nodes. The license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure:
 
 - Azure Stack HCI
 - Azure Kubernetes Services (AKS)
 - Windows Server Datacenter 2022
 
-This license covers up to 16 cores and is valid for the lifetime of the hardware. Additionally, it gives you access to the latest versions of Azure Stack HCI and AKS, with unlimited containers and virtual machines (VMs).
+For systems with 16 cores or more, there are extra two-core and four-core license add-ons available.
 
-Extra two-core and four-core license add-ons are available for systems with 16-cores or more.
+ Additionally, this license grants you access to the latest versions of Azure Stack HCI and AKS, along with unlimited containers and virtual machines (VMs).
 
 ## Benefits
 
-With the Azure Stack HCI OEM license, you can simplify the licensing and activation process, as well as reduce costs and operational complexity. Other benefits include:
+The Azure Stack HCI OEM license simplifies the licensing and activation process, as well as reduces costs and operational complexity. Other benefits include:
 
 - A single license for Windows Server and Azure Stack HCI.
 
@@ -40,9 +42,9 @@ An active Azure account is required for license activation. When you purchase ha
 
 - Install the latest versions of Azure Stack HCI, AKS, and Windows Server Datacenter 2022.
 
-- Keep your Azure Stack HCI and AKS up to date for the latest updates and security patches.
+- Ensure your Azure Stack HCI and AKS remain current to receive the latest updates and security patches.
 
-- Upgrade to the next version of Azure Stack HCI, at the end of the current version lifecycle, for continuous support and updates.
+- Upgrade to the next version of Azure Stack HCI when the current version lifecycle ends to ensure continuous support and receive updates.
 
 ## Verify license status
 
@@ -55,13 +57,13 @@ To verify if you have an active Azure Stack HCI OEM License, use these steps:
 
         :::image type="content" source="media/oem-license/active-oem-license.png" alt-text="Screenshot of a cluster with an active Azure Stack HCI OEM license." lightbox="media/oem-license/active-oem-license.png":::
 
-    - If you don't have an active Azure Stack HCI OEM license, you should see a billing status of **Billed monthly**, and an OEM license status of **Not activated** .
+    - If you don't have an active Azure Stack HCI OEM license, you should see a billing status of **Billed monthly**, and an OEM license status of **Not activated**.
 
         :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
 ## Mixed-node scenarios
 
-Mixed-node scenarios occur when different types of servers or nodes are used together within the same cluster or system. If you have a mixed-node scenario in your cluster, a notification appears in your billed monthly status details:
+Mixed-node scenarios arise when different server types or nodes are combined within the same cluster or system. If your cluster includes a mixed-node scenario, a notification in your monthly billing status details appears.
 
 :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
@@ -70,7 +72,7 @@ Mixed-node scenarios occur when different types of servers or nodes are used tog
 ***We have detected mixed nodes in the same cluster. You will be fully billed as one or more of your servers do not have the OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column.***
 
 > [!NOTE]
-> Utilizing the Azure Stack HCI OEM license in a mixed-node scenario may lead to inadvertent billing issues. All nodes in an Azure Stack HCI system require uniformity across the hardware, operating system, and billing treatment.
+> Using the Azure Stack HCI OEM license in a mixed-node scenario may lead to inadvertent billing issues. All nodes in an Azure Stack HCI system require uniformity across the hardware, operating system, and billing treatment.
 
 Here are some examples of mixed-mode scenarios that aren't supported:
 
