@@ -91,3 +91,4 @@ az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-ver
 
 ## Next steps
 
+- [Supported deployment scale](aks-vmware-scale-requirements.md)
