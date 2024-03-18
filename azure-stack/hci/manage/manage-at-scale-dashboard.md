@@ -1,19 +1,17 @@
 ---
-title: Monitor at scale using the Azure Stack HCI overview page (preview)
+title: Monitor at scale using the Azure Stack HCI overview and All clusters page (preview)
 description: Learn to monitor your Azure Stack HCI systems using dashboards in Azure portal. You can view the status of Azure Stack HCI systems as charts or lists (preview).
 ms.topic: how-to
 author: alkohli
 ms.subservice: azure-stack-hci
 ms.author: alkohli
 ms.reviewer: alkohli
-ms.date: 02/23/2024
+ms.date: 03/11/2024
 ---
 
 # Use the dashboard to manage Azure Stack HCI systems (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
-
-
 
 This article details how to manage at-scale your Azure Stack HCI systems via the dashboard in the Azure portal. You can view the status of the systems as charts or lists.
 
@@ -57,7 +55,19 @@ To view the dashboard list view, follow these steps in the Azure portal:
 
    Select a cluster name to view details about a cluster, or select a parameter to view details about cluster status.
 
+## Troubleshooting
+
+### Issue: No data available 
+
+Use the following information when no cluster data is displayed in the **All clusters (preview)** tab on the Azure portal dashboard. You might see **No data available** in the **Updates** column.
+
+| Issue | Possible causes |
+|-------|----------------------|
+| *Microsoft.Edge* Resource Provider (RP) is not registered with your subscription. | Use the following steps: <br> 1. Run PowerShell as administrator. <br> 2. Run the following cmdlet: <br> `Register-AzResourceProvider -ProviderNamespace "Microsoft.Edge"` |
+| The *Microsoft.Edge* RP isn't able to process data for the cluster. |   |
+| Your cluster isn't functioning. | Bring up the cluster. |
+| You have an older version cluster running Azure Stack HCI, version 22H2. This version can't be updated to Azure Stack HCI, version 23H2. | Make sure to use an Azure Stack HCI, version 23H2 cluster. |
+
 ## Next steps
 
 - Learn about the various options available to monitor your Azure Stack HCI clusters in [What is Azure Stack HCI monitoring?](../concepts/monitoring-overview.md).
-

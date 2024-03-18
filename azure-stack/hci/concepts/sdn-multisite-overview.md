@@ -4,7 +4,7 @@ description: This article provides an overview of the SDN Multisite solution.
 ms.author: alkohli
 ms.topic: conceptual
 author: alkohli
-ms.date: 02/22/2024
+ms.date: 03/18/2024
 ---
 
 # What is SDN Multisite?
@@ -21,9 +21,9 @@ For information about how to manage SDN Multisite, see [Manage SDN Multisite for
 
 Here are the benefits of using SDN Multisite:
 
-- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurations.
+- **Unified policy management system.** With shared virtual networks and policy configurations, you can manage and configure your networks across multiple sites from any location.
 - **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
-- **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) and automatic manageability to any of their associated NSGs across your physical locations.
+- **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) on virtual networks, along with automatic manageability to any of their associated NSGs across your physical locations.
 
 ## Limitations
 
@@ -31,7 +31,7 @@ The SDN Multisite feature currently has a few limitations:
 
 - Supported only between two sites.
 - Sites must be connected over a private network, as encryption support for sites connected over the internet isn't provided.
-- Internal load balancing isn't supported.
+- Internal load balancing isn't supported cross-site.
 
 ## Multisite peering
 
@@ -45,7 +45,7 @@ In a multisite SDN environment, one site is designated as the primary and the ot
 
 ### Resource handling
 
-- If the primary site is unreachable, resources can't be updated through the secondary site. However, this applies only to local resources requiring global validation and global Customer Address (CA) allocations.
+- If the primary site is unreachable, global resources, resources requiring global validation or global Customer Address (CA) allocations can't be updated through secondary site. However, other local resources can be updated through secondary site.
 
     Examples of resources needing global validation include:
 
@@ -57,9 +57,9 @@ In a multisite SDN environment, one site is designated as the primary and the ot
     - Internal load balancing for virtual subnet. Currently, this isn't supported through Multisite.
     - Gateway connections for virtual subnet.
 
-- If the secondary site is unreachable, resources can be updated through the primary site.
+- If the secondary site is unreachable, resources can be updated through the primary site. However, the secondary site might have stale resources until connectivity is restored. Once connectivity is restored, synchronization resumes.
 
-- If the primary site goes down, you can designate your secondary site as the new primary site to perform updates to your network security groups and virtual networks. However, any pending data synchronization from the old primary site will be lost. To address this issue, apply those same changes on the new primary site once the old primary site is back online.
+- If the primary site goes down, you can designate your secondary site as the new primary site to perform updates to your network security groups and virtual networks. However, any pending data synchronization from the old primary site will be lost. To address this issue, apply those same changes on the new primary site once the old primary site is back online. However, it can also lead to global CA allocation conflicts.
 
 ### Resource synchronization
 

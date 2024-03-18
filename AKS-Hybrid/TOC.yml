@@ -61,8 +61,6 @@
         href: deploy-gpu-node-pool.md
       - name: Use labels in a Kubernetes cluster
         href: cluster-labels.md
-    - name: Download Kubernetes VHDs manually
-      href: offline-download.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers
