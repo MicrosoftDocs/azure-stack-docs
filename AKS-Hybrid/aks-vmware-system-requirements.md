@@ -63,7 +63,13 @@ You should create a folder for VM templates to store the Arc Resource Bridge and
 
 ## Azure requirements
 
-You must connect to your Azure account.
+You must connect to your Azure account. For more example:
+
+```azurecli  
+az login --use-device-code
+```
+
+For more information, see [Connect to Azure using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively).
 
 ### Microsoft Entra permissions, role and access level
 
