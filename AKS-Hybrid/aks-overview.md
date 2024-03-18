@@ -35,4 +35,4 @@ To get started with AKS, see the following articles:
 
 - [Overview of AKS on Windows Server](overview.md)
 - [Overview of AKS Edge Essentials](aks-edge-overview.md)
-- [Overview of AKS on VMWare (preview)](aks-vmware-overview.md)
+- [Overview of AKS on VMware (preview)](aks-vmware-overview.md)
