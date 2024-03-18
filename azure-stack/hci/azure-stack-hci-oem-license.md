@@ -55,7 +55,7 @@ To verify if you have an active Azure Stack HCI OEM License, do the following:
 
         :::image type="content" source="media/oem-license/active-oem-license.png" alt-text="Screenshot of a cluster with an active Azure Stack HCI OEM license." lightbox="media/oem-license/active-oem-license.png":::
 
-    - If you don't have an active Azure Stack HCI OEM license, you'll see a billing status of **Billing monthly**.
+    - If you don't have an active Azure Stack HCI OEM license, you'll see a billing status of **Billed monthly**.
 
         :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
