@@ -1,7 +1,7 @@
 ---
 title: Use archive jobs to export data from Azure Managed Lustre
 description: How to use an archive job to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage.
-ms.topic: overview
+ms.topic: how-to
 ms.date: 06/28/2023
 author: pauljewellmsft
 ms.author: pauljewell
@@ -13,7 +13,7 @@ ms.reviewer: brianl
 
 ---
 
-# Use archive jobs to export data from Azure Managed Lustre
+# Create an archive job to export data from Azure Managed Lustre
 
 This article describes how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job, and explains what is exported from the file system.
 
@@ -46,11 +46,11 @@ To create an archive job to export changed data from an Azure Managed Lustre fil
 
    ![Screenshot showing the Blob Integration menu item on the Overview pane for an Azure Managed Lustre file system.](media/export-with-archive-jobs/select-blob-integration-settings.png)
 
-2. Select **+ Create archive job**.
+1. Select **+ Create archive job**.
 
    ![Screenshot showing the Create Archive Job button on the Blob Integration page of an Azure Managed Lustre file system.](media/export-with-archive-jobs/select-create-archive-job.png)
 
-3. To specify what to export in the archive job, enter a **File system path**. Then select **OK**.
+1. To specify what to export in the archive job, enter a **File system path**. Then select **OK**.
 
    * All new or changed files whose filenames begin with this string in the Azure Managed Lustre file system are exported.
 
@@ -109,4 +109,3 @@ The state command reports the state of changes to the file. The following table 
 ## Next steps
 
 * Learn more about [Azure Blob Storage integration with Lustre file systems](blob-integration.md)
-

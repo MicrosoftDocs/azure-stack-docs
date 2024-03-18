@@ -1,7 +1,7 @@
 ---
 title: Create an Azure Managed Lustre file system in the Azure portal
 description: Create an Azure Managed Lustre file system from the Azure portal.
-ms.topic: overview
+ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
 ms.date: 06/28/2023
