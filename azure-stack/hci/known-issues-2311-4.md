@@ -24,7 +24,7 @@ For more information about the new features in this release, see [What's new in 
 
 ## Issues for version 2311.4
 
-This software release maps to software version number **10.2311.4.12**. This release only supports updates from 2311 release.
+This software release maps to software version number **10.2311.4.6**. This release only supports updates from 2311 release.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
