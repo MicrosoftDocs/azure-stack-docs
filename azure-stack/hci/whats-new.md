@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/19/2024
+ms.date: 03/20/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -220,7 +220,6 @@ For more information, see [Add server](./manage/add-server.md) and [Repair serve
 This release introduces the Resilient File System (ReFS) deduplication and compression feature designed specifically for active workloads, such as Azure Virtual Desktop (AVD) on Azure Stack HCI. Enable this feature using Windows Admin Center or PowerShell to optimize storage usage and reduce cost.
 
 For more information, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](./manage/refs-deduplication-and-compression.md).
-
 ---
 
 ## Next steps
