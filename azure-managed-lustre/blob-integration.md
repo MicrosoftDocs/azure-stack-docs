@@ -15,16 +15,22 @@ ms.reviewer: brianl
 
 # Use Azure Blob storage with Azure Managed Lustre
 
-This article explains concepts for using the Azure blob integration with Azure Managed Lustre file systems.
+Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can also export data from the file system to a blob container for long-term storage. This article explains concepts for using blob integration with Azure Managed Lustre file systems.
 
 To understand the requirements and configuration needed for a compatible blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
 
-Azure Managed Lustre supports both hierarchical and non-hierarchical namespaces for blobs with the following minor differences:
+## Blob integration overview
 
-- With a hierarchical namespace container, Azure Managed Lustre reads POSIX attributes from the blob header.
-- With a non-hierarchical container, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
+Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a non-hierarchical, or flat, namespace. The following minor differences apply:
 
-## Filter blob imports using a prefix
+- For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
+- For a storage account that *does not* have hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
+
+## Import data from Blob Storage
+
+You can configure integration with Blob Storage during [cluster creation](create-file-system-portal.md#blob-integration), or you can [manually create an import job](create-manual-import-job.md) any time after the cluster is created.
+
+### Filter blob imports using a prefix
 
 When importing data from a blob container, you can specify one or more prefixes to filter the data imported into the Azure Managed Lustre file system. Contents that match one of the prefixes are added to a metadata record in the file system. When clients request a file, its contents are retrieved from the blob container and stored in the file system.
 
@@ -38,15 +44,11 @@ Use the **Import prefix** option on the **Advanced** tab to specify the data to 
 
 - If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob file names become directory delimiters when stored in Lustre.
 
-## Configuration options for manual import jobs
+## Export data to Blob Storage using an archive job
 
-When you create a manual import job, you can specify the following options:
+You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job.
 
-## Configuration options for export archive jobs
-
-When you create an archive job to export data, you can specify the following options:
-
-## Metadata for exported files
+### Metadata for exported files
 
 When files are archived from the Azure Managed Lustre system to the blob container, additional metadata is saved to simplify reimporting the contents to an Azure Managed Lustre file system.
 
