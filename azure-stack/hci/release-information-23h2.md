@@ -13,7 +13,7 @@ ms.date: 03/19/2024
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-Feature updates for Azure Stack HCI are released periodically to enhance customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they are released.
+Feature updates for Azure Stack HCI are released periodically to enhance customer experience. To keep your Azure Stack HCI service in a supported state, you have up to six months to install updates, but we recommend installing updates as they're released.
 
 Azure Stack HCI also releases monthly quality and security updates. These releases are cumulative, containing all previous updates to keep devices protected and productive.
 
@@ -21,7 +21,7 @@ This article presents the release information for Azure Stack HCI, version 23H2,
 
 ## About Azure Stack HCI, version 23H2 releases
 
-The Azure Stack HCI, version 23H2 includes multiple release trains: 2306, 2311, and 2402. Each release train includes a baseline build and subsequent updates. The baseline build is the initial version of the software that you must deploy before upgrading to the next version. An update build includes incremental updates from the most recent baseline build. To deploy an update build, it's necessary to first deploy the previous baseline build.
+The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, and 2402. Each release train includes a baseline build and subsequent updates. The baseline build is the initial version of the software that you must deploy before upgrading to the next version. An update build includes incremental updates from the most recent baseline build. To deploy an update build, it's necessary to first deploy the previous baseline build.
 
 The following diagram illustrates the release trains and their associated baseline and update builds including the supported update paths.
 
@@ -41,8 +41,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline/Update <sup>1</sup>| What's new | Known issues |
 |--|--|--|--|--|
-| 10.2402.1.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-2402-1) | [Known issues](./known-issues-2402-1.md) |
-| 10.2311.4.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-2311-4) | [Known issues](./known-issues-2311-3.md) |
+| 10.2402.1.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24021) | [Known issues](./known-issues-2402-1.md) |
+| 10.2311.4.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23114) | [Known issues](./known-issues-2311-3.md) |
 | 10.2402.0.23 | 25398.709  <br><br> [Feb OS security update](./security-update/hci-security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402.md) |
 | 10.2311.3.12 | 25398.709  <br><br> [Feb OS security update](./security-update/hci-security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23113) | [Known issues](./known-issues-2311-3.md) |
 | 10.2311.2.7 | 25398.643  <br><br> [Jan OS security update](./security-update/hci-security-update-jan-2024.md) <br><br> Availability date: 2024-01-09| Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23112-ga) | [Known issues](./known-issues-2311-2.md) |

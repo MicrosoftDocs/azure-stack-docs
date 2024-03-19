@@ -17,7 +17,7 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
- There are 2 release trains for Azure Stack HCI, version 23H2: 2402 and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+There are 2 release trains for Azure Stack HCI, version 23H2: 2402 and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
 # [2402 releases](#tab/2402releases)
 
@@ -59,7 +59,7 @@ The 2311 release train includes the following releases:
 
 ## Features and improvements in 2311.4
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-3.md.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-3.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2311.3
 
