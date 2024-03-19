@@ -1,19 +1,16 @@
 ---
-title: Plan a Software Defined Network infrastructure
-description: This topic provides information on how to plan a Software Defined Network (SDN) infrastructure deployment.
+title: Plan a Software Defined Network infrastructure for Azure Stack HCI, version 23H2
+description: This topic provides information on how to plan a Software Defined Network (SDN) infrastructure deployment for Azure Stack HCI, version 23H2.
 ms.topic: conceptual
 ms.author: anpaul
 author: AnirbanPaul
 ms.date: 03/15/2024
 ---
-# Plan a Software Defined Network infrastructure
+# Plan a Software Defined Network infrastructure for Azure Stack HCI, version 23H2
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Learn about deployment planning for a Software Defined Network (SDN) infrastructure, including hardware and software prerequisites. This topic includes planning requirements for physical and logical network configuration, routing, gateways, network hardware, and more. It also includes considerations on extending an SDN infrastructure and using a phased deployment.
-
-   > [!NOTE]
-   > SDN isn't supported on stretched (multi-site) clusters.
 
 ## Prerequisites
 
@@ -23,7 +20,7 @@ There are several hardware and software prerequisites for an SDN infrastructure,
 
     To learn more about Network Controller deployment for your datacenter, see [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller).
 
-- **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, as well as options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
+- **Physical network**. You need access to your physical network devices to configure virtual local area networks (VLANs), routing, and the Border Gateway Protocol (BGP). This topic provides instructions for manual switch configuration, and options to use either BGP peering on Layer-3 switches / routers, or a Routing and Remote Access Server (RRAS) VM.
 
 - **Physical compute hosts**. These hosts run Hyper-V and are required to host an SDN infrastructure and tenant VMs. Specific network hardware is required in these hosts for best performance, as described in the next section.
 
@@ -91,35 +88,37 @@ A DHCP server can automatically assign IP addresses for the management network, 
 >[!NOTE]
 >The Network Controller assigns an HNV Provider IP address to a physical compute host only after the Network Controller Host Agent receives network policy for a specific tenant VM.
 
-| If...                                                    | Then...                                               |
-| :------------------------------------------------------- | :---------------------------------------------------- |
-| The logical networks use VLANs,                          | the physical compute host must connect to a trunked switch port that has access to the VLANs. It's important to note that the physical network adapters on the computer host must not have any VLAN filtering activated.|
-| You are using Switched-Embedded Teaming (SET) and have multiple Network Interface Card (NIC) team members, such as network adapters,| you must connect all NIC team members for that particular host to the same Layer-2 broadcast domain.|
-| The physical compute host is running additional infrastructure VMs, such as Network Controller, the SLB/Multiplexer (MUX), or Gateway, | ensure that the management logical network has sufficient IP addresses for each hosted VM. Also, ensure that the HNV Provider logical network has sufficient IP addresses to allocate to each SLB/MUX and gateway infrastructure VM. Although IP reservation is managed by the Network Controller, failure to reserve a new IP address due to unavailability may result in duplicate IP addresses on your network.|
+| If... | Then... |
+|:-|:-|
+| The logical networks use VLANs, | the physical compute host must connect to a trunked switch port that has access to the VLANs. It's important to note that the physical network adapters on the computer host must not have any VLAN filtering activated. |
+| You are using Switched-Embedded Teaming (SET) and have multiple Network Interface Card (NIC) team members, such as network adapters, | you must connect all NIC team members for that particular host to the same Layer-2 broadcast domain. |
+| The physical compute host is running additional infrastructure VMs, such as Network Controller, the SLB/Multiplexer (MUX), or Gateway, | ensure that the management logical network has sufficient IP addresses for each hosted VM. Also, ensure that the HNV Provider logical network has sufficient IP addresses to allocate to each SLB/MUX and gateway infrastructure VM. Although IP reservation is managed by the Network Controller, failure to reserve a new IP address due to unavailability may result in duplicate IP addresses on your network. |
 
 For information about Hyper-V Network Virtualization (HNV) that you can use to virtualize networks in a Microsoft SDN deployment, see [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization).
 
 #### Gateways and the Software Load Balancer (SLB)
 You need to create and provision additional logical networks to use gateways and the SLB. Make sure to obtain the correct IP prefixes, VLAN IDs, and gateway IP addresses for these networks.
 
-| Logical network| Description                    |
-| :----------------------------- | :------------------ |
+| Logical network | Description |
+|:-|:-|
 | **Public VIP logical network** | The Public virtual IP (VIP) logical network must use IP subnet prefixes that are routable outside of the cloud environment (typically internet routable). These are the front-end IP addresses that external clients use to access resources in the virtual networks, including the front-end VIP for the site-to-site gateway. You don’t need to assign a VLAN to this network. You don't need to configure this network on your physical switches. Ensure that IP addresses on this network don't overlap with existing IP addresses in your organization. |
 | **Private VIP logical network** | The Private VIP logical network isn't required to be routable outside of the cloud. This is because only VIPs that can be accessed from internal cloud clients use it, such as private services. You don’t need to assign a VLAN to this network. This IP can be a maximum of a /22 network. You don't need to configure this network on your physical switches. Ensure that IP addresses on this network don't overlap with existing IP addresses in your organization. |
 | **GRE VIP logical network** | The Generic Routing Encapsulation (GRE) VIP network is a subnet that exists solely to define VIPs. The VIPs are assigned to gateway VMs running on your SDN fabric for a site-to-site (S2S) GRE connection type. You don't need to preconfigure this network in your physical switches or router, or assign a VLAN to it. Ensure that IP addresses on this network don't overlap with existing IP addresses in your organization. |
 
 #### Sample network topology
+
 Change the sample IP subnet prefixes and VLAN IDs for your environment.
 
 | Network name | Subnet | Mask | VLAN ID on trunk | Gateway | Reservation (examples) |
-| :----------------------- | :------------ | :------- | :---------------------------- | :-------------- | :------------------------------------------- |
-| Management              | 10.184.108.0 |    24   |          7                   | 10.184.108.1   | 10.184.108.1 - Router<br> 10.184.108.4 - Network Controller<br> 10.184.108.10 - Compute host 1<br> 10.184.108.11 - Compute host 2<br> 10.184.108.X - Compute host X |
-| HNV Provider             |  10.10.56.0  |    23    |          11                |  10.10.56.1    | 10.10.56.1 - Router<br> 10.10.56.2 - SLB/MUX1<br> 10.10.56.5 - Gateway1 |
-| Public VIP               |  41.40.40.0  |    27    |          NA                |  41.40.40.1    | 41.40.40.1 - Router<br> 41.40.40.3 - IPSec S2S VPN VIP |
-| Private VIP              |  20.20.20.0  |    27    |          NA                |  20.20.20.1    | 20.20.20.1 - Default GW (router) |
-| GRE VIP                  |  31.30.30.0  |    24    |          NA                |  31.30.30.1    | 31.30.30.1 - Default GW |
+|:-|:-|:-|:-|:-|:-|
+| Management | 10.184.108.0 | 24 | 7 | 10.184.108.1 | 10.184.108.1 - Router<br> 10.184.108.4 - Network Controller<br> 10.184.108.10 - Compute host 1<br> 10.184.108.11 - Compute host 2<br> 10.184.108.X - Compute host X |
+| HNV Provider | 10.10.56.0 | 23 | 11 | 10.10.56.1 | 10.10.56.1 - Router<br> 10.10.56.2 - SLB/MUX1<br> 10.10.56.5 - Gateway1 |
+| Public VIP | 41.40.40.0 | 27 | NA | 41.40.40.1 | 41.40.40.1 - Router<br> 41.40.40.3 - IPSec S2S VPN VIP |
+| Private VIP | 20.20.20.0 | 27 | NA | 20.20.20.1 | 20.20.20.1 - Default GW (router) |
+| GRE VIP | 31.30.30.0 | 24 | NA | 31.30.30.1 | 31.30.30.1 - Default GW |
 
 ## Routing infrastructure
+
 Routing information \(such as next-hop\) for the VIP subnets is advertised by the SLB/MUX and Remote Access Server (RAS) gateways into the physical network using internal BGP peering. The VIP logical networks don't have a VLAN assigned and they aren't preconfigured in the Layer-2 switch (such as the Top-of-Rack switch).
 
 You need to create a BGP peer on the router that your SDN infrastructure uses to receive routes for the VIP logical networks advertised by the SLB/MUXes and RAS Gateways. BGP peering only needs to occur one way (from the SLB/MUX or RAS Gateway to the external BGP peer). Above the first layer of routing, you can use static routes or another dynamic routing protocol, such as Open Shortest Path First (OSPF). However, as previously stated, the IP subnet prefix for the VIP logical networks do need to be routable from the physical network to the external BGP peer.
@@ -167,12 +166,12 @@ Host|Hardware requirements|Software requirements|
 ### SDN infrastructure VM role requirements
 The following shows the requirements for the VM roles.
 
-Role|vCPU requirements|Memory requirements|Disk requirements|
---------|-----------------------------|-----------------------|--------------------------
-|Network Controller (three nodes)|4 vCPUs|4 GB minimum<br> (8 GB recommended)|75 GB for operating system drive
-|SLB/MUX (three nodes)|8 vCPUs|8 GB recommended|75 GB for operating system drive
-|RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive)|8 vCPUs|8 GB recommended|75 GB for operating system drive
-|RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router)|2 vCPUs|2 GB|75 GB for operating system drive|
+| Role | vCPU requirements | Memory requirements | Disk requirements |
+|--|--|--|--|
+| Network Controller (three nodes) | 4 vCPUs | 4 GB minimum<br> (8 GB recommended) | 75 GB for operating system drive |
+| SLB/MUX (three nodes) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
+| RAS Gateway<br> (single pool of three nodes<br> gateways, two active, one passive) | 8 vCPUs | 8 GB recommended | 75 GB for operating system drive |
+| RAS Gateway BGP router<br> for SLB/MUX peering<br> (alternatively use ToR switch<br> as BGP Router) | 2 vCPUs | 2 GB | 75 GB for operating system drive |
 
 If you use System Center - Virtual Machine Manager (VMM) for deployment, additional infrastructure VM resources are required for VMM and other non-SDN infrastructure. To learn more, see [System requirements for System Center Virtual Machine Manager](/system-center/vmm/system-requirements?preserve-view=true&view=sc-vmm-2019).
 
@@ -184,17 +183,18 @@ When the tenant workload VMs start to consume too many resources on the physical
 ## Phased deployment
 Based on your requirements, you may need to deploy a subset of the SDN infrastructure. For example, if you want to only host customer workloads in your datacenter, and external communication isn't required, you can deploy Network Controller and skip deploying SLB/MUX and gateway VMs. The following describes networking feature infrastructure requirements for a phased deployment of the SDN infrastructure.
 
-Feature|Deployment requirements|Network requirements|
---------|-------------------------|-------------------------
-|Logical Network management<br> Network security groups (NSGs) (for VLAN-based network)<br> Quality of Service (QoS) (for VLAN-based networks)<br>|Network Controller|None|
-|Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets<br> QoS (for virtual networks)<br> Virtual network peering|Network Controller|HNV PA VLAN, Subnet, Router|
-|Inbound/Outbound NAT<br> Load Balancing|Network Controller<br> SLB/MUX|BGP on HNV PA network<br> Private and Public VIP subnets|
-|GRE gateway connections|Network Controller<br>SLB/MUX<br> Gateway|BGP on HNV PA network<br>Private and Public VIP subnets<br> GRE VIP subnet|
-|IPSec gateway connections|Network Controller<br> SLB/MUX<br> Gateway|BGP on HNV PA network<br> Private and Public VIP subnets|
-|L3 gateway connections|Network Controller<br>SLB/MUX<br> Gateway|BGP on HNV PA network<br>Private and Public VIP subnets<br>Tenant VLAN, Subnet, Router<br> BGP on tenant VLAN optional|
+| Feature | Deployment requirements | Network requirements |
+|--|--|--|
+| Logical Network management<br> Network security groups (NSGs) (for VLAN-based network)<br> Quality of Service (QoS) (for VLAN-based networks)<br> | Network Controller | None |
+| Virtual Networking<br> User Defined Routing<br> ACLs (for virtual network)<br> Encrypted Subnets<br> QoS (for virtual networks)<br> Virtual network peering | Network Controller | HNV PA VLAN, Subnet, Router |
+| Inbound/Outbound NAT<br> Load Balancing | Network Controller<br> SLB/MUX | BGP on HNV PA network<br> Private and Public VIP subnets |
+| GRE gateway connections | Network Controller<br>SLB/MUX<br> Gateway | BGP on HNV PA network<br>Private and Public VIP subnets<br> GRE VIP subnet |
+| IPSec gateway connections | Network Controller<br> SLB/MUX<br> Gateway | BGP on HNV PA network<br> Private and Public VIP subnets |
+| L3 gateway connections | Network Controller<br>SLB/MUX<br> Gateway | BGP on HNV PA network<br>Private and Public VIP subnets<br>Tenant VLAN, Subnet, Router<br> BGP on tenant VLAN optional |
 
 ## Next steps
+
 For related information, see also:
 - [Requirements for Deploying Network Controller](/windows-server/networking/sdn/plan/installation-and-preparation-requirements-for-deploying-network-controller)
-- [SDN in Azure Stack HCI](./software-defined-networking.md)
+- [SDN in Azure Stack HCI](./software-defined-networking-23h2.md)
 - [Learn module: Plan for and deploy SDN infrastructure on Azure Stack HCI](/training/modules/plan-deploy-sdn-infrastructure/)

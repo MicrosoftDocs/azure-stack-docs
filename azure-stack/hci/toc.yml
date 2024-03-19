@@ -1,3 +1,4 @@
+items:
 - name: Azure Stack HCI documentation
   href: index.yml
 - name: Overview
@@ -104,6 +105,13 @@
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
+  - name: Deploy SDN
+    items:
+    - name: Using Express scripts
+      href: deploy/sdn-express-23h2.md
+    - name: Using Windows Admin Center
+      href: deploy/sdn-wizard-23h2.md     
+  
   - name: Deploy workloads
     items:
     - name: Run AKS on HCI
@@ -280,6 +288,8 @@
         href: manage/setup-hci-system-alerts.md
       - name: Metric alerts
         href: manage/setup-metric-alerts.md
+      - name: Recommended alert rules
+        href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
     - name: Health service
@@ -343,7 +353,8 @@
     href: concepts/observability.md
   - name: SDN overview
     href: concepts/software-defined-networking-23h2.md
-
+  - name: Plan an SDN infrastructure
+    href: concepts/plan-software-defined-networking-infrastructure-23h2.md
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
@@ -664,7 +675,7 @@
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: /azure/aks/hybrid/overview
+    href: /azure/aks/hybrid/aks-overview
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud

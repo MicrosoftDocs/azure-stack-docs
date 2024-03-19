@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/13/2024
+ms.date: 03/19/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI
@@ -37,7 +37,7 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 - You must have access to an Azure Stack HCI cluster.
 - You must have access to Azure.
-- You must have installed the `TelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Perform on-demand log collection via PowerShell
 
@@ -122,9 +122,6 @@ Log collection ended with status: Succeeded
 PS C:\Users\docsuser>  
 ```
 
-> [!NOTE]
-> During the log collection process, you might encounter messages stating `Log Collection ended with status: Failed.` This could indicate a partial failure, with some logs possibly missing, rather than a complete failure where no logs were collected. Even in the event of a log collection issue, you may still find the relevant log in Kusto.
-
 ### Get a history of log collection
 
 You can get a history of all the log collections that you have performed. This history helps you learn about the kinds of log collections, the sizes of log collections, the times when logs were collected, and the methods of log collection.
@@ -197,7 +194,7 @@ Follow these steps to save logs to a local share:
 If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
 
 ```powershell
-Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-shre> -ShareCredentail $shareCredential
+Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-share> -ShareCredentail $shareCredential
 ```
 
 ## Provide required information in a support case
@@ -463,7 +460,7 @@ All
 
 ### (Deprecated) ToSMBShare
 
-This parameter allowed you to save logs either to an output path or a share path. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. However, we don't recommend using this parameter.
+This parameter allowed you to save logs either to an output path or a share path. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. However, going forward we recommend using the `-SaveToPath` parameter instead.
 
 **Syntax**
 
