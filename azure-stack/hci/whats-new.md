@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/04/2024
+ms.date: 03/19/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -17,7 +17,13 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
+The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases. There are 2 release trains for Azure Stack HCI, version 23H2: 2402 and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+
+# [2402 releases](#tab/2402releases)
+
+## Features and improvements in 2402.1
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-1.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2402
 
@@ -44,6 +50,12 @@ Azure Stack HCI, version 23H2 solution is now supported in Australia. For more i
 ### New documentation for network considerations
 
 We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./plan/cloud-deployment-network-considerations.md).
+
+# [2311 releases](#tab/2311releases)
+
+## Features and improvements in 2311.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-3.md.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2311.3
 
@@ -208,6 +220,8 @@ For more information, see [Add server](./manage/add-server.md) and [Repair serve
 This release introduces the Resilient File System (ReFS) deduplication and compression feature designed specifically for active workloads, such as Azure Virtual Desktop (AVD) on Azure Stack HCI. Enable this feature using Windows Admin Center or PowerShell to optimize storage usage and reduce cost.
 
 For more information, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](./manage/refs-deduplication-and-compression.md).
+
+---
 
 ## Next steps
 
