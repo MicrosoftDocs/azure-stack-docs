@@ -44,57 +44,57 @@ procedureSection:
       - |
         In the Azure Stack Hub portal, open the ports that are listed in the network settings for your VM.
 
-            a. Open the Azure Stack Hub portal for your tenant.
+          a. Open the Azure Stack Hub portal for your tenant.
 
-            b. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
+          b. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
 
-            c. Select **Networking**.
+          c. Select **Networking**.
 
-            d. Select **Add inbound port rule** under VM.
+          d. Select **Add inbound port rule** under VM.
 
-            e. Add an inbound security rule for the following ports:
+          e. Add an inbound security rule for the following ports:
 
-            | Port | Protocol | Description |
-            | --- | --- | --- |
-            | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
-            | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
-            | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
-            | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
-            | 8172 | Custom | The port used by Web Deploy. |
+          | Port | Protocol | Description |
+          | --- | --- | --- |
+          | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
+          | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
+          | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
+          | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
+          | 8172 | Custom | The port used by Web Deploy. |
 
-            For each port:
+          For each port:
 
-            a. For **Source**, select **Any**.
+          a. For **Source**, select **Any**.
 
-            b. For **Source port range**, type an asterisk (**\***).
+          b. For **Source port range**, type an asterisk (**\***).
 
-            c. For **Destination**, select **Any**.
+          c. For **Destination**, select **Any**.
 
-            d. For **Destination port range**, add the port you want to open.
+          d. For **Destination port range**, add the port you want to open.
 
-            e. For **Protocol**, select **Any**.
+          e. For **Protocol**, select **Any**.
 
-            f. For **Action**, select **Allow**.
+          f. For **Action**, select **Allow**.
 
-            g. For **Priority**, leave the default selection.
+          g. For **Priority**, leave the default selection.
 
-            h. Enter a **Name** and **Description** to help you remember why the port is open.
+          h. Enter a **Name** and **Description** to help you remember why the port is open.
 
-            i. Select **Add**.
+          i. Select **Add**.
       - |
         In the **Overview** settings for your VM in Azure Stack Hub, create a DNS name for your server. Users can connect to your website by using the URL.
 
-            a. Open the Azure Stack Hub portal for your tenant.
+          a. Open the Azure Stack Hub portal for your tenant.
 
-            b. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
+          b. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
 
-            c. Select **Overview**.
+          c. Select **Overview**.
 
-            d. Under **DNS**, select **Configure**.
+          d. Under **DNS**, select **Configure**.
 
-            e. For **Assignment**, select **Dynamic**.
+          e. For **Assignment**, select **Dynamic**.
 
-            f. Enter the DNS name label, such as **mywebapp**, so that your full URL becomes something like *mywebapp.region.cloudapp.azurestack.corp.contoso.com*.
+          f. Enter the DNS name label, such as **mywebapp**, so that your full URL becomes something like *mywebapp.region.cloudapp.azurestack.corp.contoso.com*.
   - title: |
       Create an app 
     summary: |
