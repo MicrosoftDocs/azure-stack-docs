@@ -27,9 +27,9 @@ The following diagram illustrates the release trains and their associated baseli
 
 :::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Stack HCI, version 23H2 release trains with supported update paths":::
 
-- To move to the next release train, you must first deploy the baseline build for that release train. For example, to move from the 2311 release train to the 2402 release train, you must first deploy the 2402 baseline build.
+- To move to the next release train, you must first deploy the baseline build for that release train. For example, to move from the 2311 release train to the 2402 release train, you must first deploy the 2402 baseline build. You can get to 2402 baseline build from either 2311.3 or 2311.4 update build.
 
-- At any time, you can update to the latest update build within your release train. For example, if you're running the 2311 baseline build, you can update to any 2311 update build.
+- At any time, you can update to the latest update build within your release train. For example, if you're running the 2311 baseline build, you can update to any 2311 update build - 2311.2, 2311.3, 2311.4 and so on.
 
 - To keep your Azure Stack HCI in a supported state, you have up to six months to install updates. For example, if you're running the 2311 baseline build, you have up to six months to update to the latest 2311 update build. After six months, you must update to the latest baseline build to remain in a supported state.
 
