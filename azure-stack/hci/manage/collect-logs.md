@@ -458,9 +458,9 @@ Send-DiagnosticData –NoLogCollection –SupplementaryLogs <share path> –Shar
 **Extension version**
 All
 
-### (Deprecated) ToSMBShare
+### (Plan to deprecate) ToSMBShare
 
-This parameter allowed you to save logs either to an output path or a share path. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. However, going forward we recommend using the `-SaveToPath` parameter instead.
+This parameter allows you to save logs either to an output path or a share path. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. Since this parameter will be removed in future versions of the extension, use the `-SaveToPath` parameter instead.
 
 **Syntax**
 
@@ -485,9 +485,9 @@ Send-DiagnosticData –ToSMBShare –SharePath <share path> -ShareCredential <cr
 **Extension version**
 Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
-### (Deprecated) FromSMBShare
+### (Plan to deprecate) FromSMBShare
 
-This parameter allowed you to send logs from an output path or share path directly to Microsoft. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. However, going forward we recommend using the `-NoLogCollection` parameter instead.
+This parameter allows you to send logs from an output path or share path directly to Microsoft. If you were using a share path that wasn't mapped, you needed to use the `ShareCredential` parameter as well. Since this parameter will be removed in future versions of the extension, use the `-NoLogCollection` parameter instead.
 
 **Syntax**
 
@@ -508,14 +508,14 @@ Send-DiagnosticData –FromSMBShare –SharePath <share path>
 **Extension version**
 Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
-### (Deprecated) SharePath
+### (Plan to deprecate) SharePath
 
 The SharePath parameter can be used for one of the following purposes:
 
 - Save diagnostic logs to a share path or output path.
 - Send logs to Microsoft from a share path or output path. If you're using a share path and the share path is not mapped, then the `ShareCredential` parameter must also be used.
 
-Since this parameter is deprecated, use `–SaveToPath` to save logs to a path, or `–SupplementaryLogs` when sending ad-hoc logs to Microsoft.
+Since this parameter will be removed in future versions of the extension, use the `–SaveToPath` to save logs to a path, or `–SupplementaryLogs` when sending ad-hoc logs to Microsoft instead.
 
 **Syntax**
 
