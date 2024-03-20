@@ -26,7 +26,7 @@ For the prerequisites to onboard Arc-enabled VMware vSphere, see [Quickstart: Co
 
 ### Required input
 
-A typical onboarding process that uses the script takes 30 to 60 minutes. During this process, you are prompted for the details specified in [Inputs for the script to deploy Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script#inputs-for-the-script).
+A typical onboarding process that uses the script takes 30 minutes. During this process, you are prompted for the details specified in [Inputs for the script to deploy Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script#inputs-for-the-script).
 
 ## AKS enabled by Azure Arc on VMware requirements
 
@@ -55,7 +55,7 @@ In this preview release, the Arc Resource Bridge and the target clusters share a
 For information about supported VM size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md).
 
 > [!WARNING]
-> For the target cluster control plane, there is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2 vCPUs and 8 GiB memory. Until this issue is fixed, we recommend you deploy target cluster control plane with 16 GiB, and 4 vCPUs. For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see "troubleshooting/ known issues".
+> For the target cluster control plane, there is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2 vCPUs and 8 GiB memory. Until this issue is fixed, we recommend you deploy target cluster control plane with 16 GiB, and 4 vCPUs. For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/ Known issues](aks-vmware-known-issues.md).
 
 #### VM folder and VM templates
 
@@ -70,6 +70,17 @@ az login --use-device-code
 ```
 
 For more information, see [Connect to Azure using the Azure CLI](/cli/azure/authenticate-azure-cli-interactively).
+
+### Azure Checklist
+
+| Parameter                     | Parameter details  |
+|-------------------------------|--------------------|
+| $appliance_Name               | Name of the Arc Resource Bridge created to connect vCenter with Azure  | 
+| $custom_Location              | Name or ID of the custom location created for Arc Resource Bridge and the same name applies to AKS extension  | 
+| $subscriptionID               | The Azure subscription ID where you install the Azure Arc Resource Bridge and custom location  | 
+| $resource_Group               | The resource group in the Azure subscription where you install the Arc Resource Bridge and custom location  | 
+| $network_name                 | Name of the VMware network resource enabled in Azure  | 
+
 
 ### Microsoft Entra permissions, role and access level
 
@@ -90,16 +101,8 @@ You must have an Azure resource group in the supported regions before registrati
 #### Supported regions
 
 You can use the AKS Arc on VMware preview in the following supported regions:
-
-- Australia East
 - East US
-- India Central
-- South Central US
-- Southeast Asia
-- West Europe
-- Canada Central
-- Japan East
-- Italy North
+
 
 > [!WARNING]
 > The AKS Arc on VMware preview currently supports cluster creation exclusively within the specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
@@ -107,6 +110,8 @@ You can use the AKS Arc on VMware preview in the following supported regions:
 #### Data residency
 
 AKS Arc on VMware doesn't store or process customer data outside the region in which the customer deploys the service instance.
+
+
 
 ## Next steps
 
