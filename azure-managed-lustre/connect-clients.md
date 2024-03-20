@@ -32,7 +32,7 @@ The basic workflow is as follows:
 
 1. [Install or upgrade Lustre client software](#install-or-upgrade-lustre-client-software) on each client.
 1. Use the [`mount` command](#start-the-lustre-client-using-the-mount-command) to make the Azure Managed Lustre file system available on the client.
-1. When a client is no longer needed, use the `umount` command without the `-f` (force) or `-l` (lazy) options to cleanly unmount the client prior to shutting it down. Failure to properly unmount a client before rebooting or deprovisioning can result in performance issues for other clients.
+1. When a client is no longer needed, use the `umount` command without the `-f` (force) or `-l` (lazy) options to cleanly unmount the client before shutting it down. Failure to properly unmount a client before rebooting or deprovisioning can result in performance issues for other clients.
 
 ## Install or upgrade Lustre client software
 
@@ -98,7 +98,7 @@ After your clients are connected to the file system, you can use the Azure Manag
 - Start a compute job.
 
 > [!IMPORTANT]
-> When a client is no longer needed, you must cleanly unmount the client without using the `-f` (force) or `-l` (lazy) options prior to shutting it down. Failure to properly unmount a client before rebooting or deprovisioning can result in performance issues for other clients.
+> When a client is no longer needed, you must cleanly unmount the client without using the `-f` (force) or `-l` (lazy) options before shutting it down. Failure to properly unmount a client before rebooting or deprovisioning can result in performance issues for other clients.
 >
 > [How to unmount Azure Managed Lustre Filesystem using Scheduled Events](https://techcommunity.microsoft.com/t5/azure-high-performance-computing/how-to-unmount-azure-managed-lustre-filesystem-using-azure/ba-p/3917814)
 
