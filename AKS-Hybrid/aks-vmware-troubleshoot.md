@@ -16,7 +16,7 @@ This article describes the AKS enabled by Azure Arc on VMware (preview) support 
 
 ## Support policy
 
-AKS on VMWare is available in public preview and is free of charge. Be aware that the AKS on VMWare preview is not recommended for production workloads. Use it with caution.
+AKS on VMware is available in public preview and is free of charge. Be aware that the AKS on VMware preview is not recommended for production workloads. Use it with caution.
 
 **Preview Terms**: "AKS on VMware" (the "Preview") is subject to the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previews are provided "as-is," "with all faults," and "as-available," and are excluded from the SLAs and all limited warranties provided by us. Previews may not be covered by customer support. We may change or discontinue previews at any time without notice. We also may choose not to release a preview into general availability.
 
