@@ -44,9 +44,7 @@ AKS on VMware is designed to enable infrastructure administrators and Kubernetes
 
 ## Pricing and terms of use
 
-AKS on VMware is available for public preview and is currently free of charge. However, be aware that the AKS on VMware preview is not recommended for production workloads. Use it with caution.
-
-**Preview Terms**: The "AKS on VMware" (the "Preview") is subject to the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Previews are provided "as-is", "with all faults", and "as-available", and are excluded from the SLAs and all limited warranties provided in this agreement. Previews may not be covered by customer support. We may change or discontinue Previews at any time without notice. We also may choose not to release a Preview into general availability.
+AKS on VMware is available for public preview and is currently free of charge. However, be aware that the AKS on VMware preview is not recommended for production workloads. Use it with caution. For more information, see [Troubleshooting and support policy](aks-vmware-troubleshoot.md).
 
 ## Next steps
 

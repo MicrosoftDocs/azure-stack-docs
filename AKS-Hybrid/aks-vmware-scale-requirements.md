@@ -71,5 +71,4 @@ This article describes the maximum and minimum supported scale count for cluster
 ## Next steps
 
 - [AKS Arc on VMware overview](aks-vmware-overview.md)
-- AKS Arc on VMware system requirements
-
+- [AKS Arc on VMware system requirements](aks-vmware-system-requirements.md)

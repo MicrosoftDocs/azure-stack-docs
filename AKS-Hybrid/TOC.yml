@@ -190,9 +190,28 @@
   items:
   - name: Overview
     href: aks-vmware-overview.md
+  - name: System requirements
+    href: aks-vmware-system-requirements.md
   - name: Supported scale requirements
     href: aks-vmware-scale-requirements.md
-
+  - name: Quickstart
+    items:
+    - name: Deploy an AKS cluster
+      href: aks-vmware-quickstart-deploy.md
+  - name: Concepts
+    items:
+    - name: Cluster architecture
+      href: aks-vmware-cluster-architecture.md
+  - name: How-to
+    items:
+    - name: Install Kubernetes Extension for Operators
+      href: aks-vmware-install-kubernetes-extension.md
+  - name: Troubleshooting
+    items:
+    - name: Known issues
+      href: aks-vmware-known-issues.md
+    - name: Troubleshoot
+      href: aks-vmware-troubleshoot.md
 - name: AKS on Windows Server
   items:
   - name: Overview
