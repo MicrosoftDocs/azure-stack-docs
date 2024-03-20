@@ -45,13 +45,13 @@ Retrieve the **kva.log** file from the system at **c:\programdata\kva\kva.log** 
 
 ### Issues during Arc Resource Bridge deployment
 
-To collect the logs, execute the following commands from the machine you previously used to attempt the deployment of the Arc resource bridge. Starting with CLI version 1.0.0, you must first run the command `az arcappliance get-credentials`. This ensures that all required credentials for log collection are pulled onto the machine. For more information about this command, see [the CLI documentation](/cli/azure/arcappliance?view=azure-cli-latest#az-arcappliance-get-credentials).
+To collect the logs, execute the following commands from the machine you previously used to attempt the deployment of the Arc resource bridge. Starting with CLI version 1.0.0, you must first run the command `az arcappliance get-credentials`. This ensures that all required credentials for log collection are pulled onto the machine. For more information about this command, see [the CLI documentation](/cli/azure/arcappliance#az-arcappliance-get-credentials).
 
 ```azurecli
 az arcappliance get-credentials –name <name of Arc Resource Bridge> --resource-group <name of resource group>
 ```
 
-After you run the `az arcappliance get-credentials` command, you can proceed with log collection using the [`az arcappliance logs` command](/cli/azure/arcappliance/logs?view=azure-cli-latest#az-arcappliance-logs-vmware):
+After you run the `az arcappliance get-credentials` command, you can proceed with log collection using the [`az arcappliance logs` command](/cli/azure/arcappliance/logs#az-arcappliance-logs-vmware):
 
 ```azurecli
 az arcappliance logs vmware --ip <Arc Resource Bridge VM control plane IP endpoint> --address <vCenter FQDN/IP address, same one used when creating config files> --username <vcenter username> --password <vcenter password>
@@ -105,7 +105,7 @@ This section provides a list of common error messages and their troubleshooting 
 - **Root cause**: this error occurs because the environment has not been cleaned up from the previous deployment before attempting to deploy again.
 - **Resolution**: to resolve this issue, uninstall Arc Resource Bridge, and then try to deploy again.
 
-### x509: certificate has expired or is not yet valid: current time <time1> is before <time2>. Check Failed
+### Error: x509: certificate has expired or is not yet valid: current time \<time1\> is before \<time2\>. Check Failed
 
 - **Root cause**: this error occurs when certificates expire due to a time mismatch between the client machine and VM (or ESXi server). One of them is not NTP-enabled.
 - **Resolution**:
