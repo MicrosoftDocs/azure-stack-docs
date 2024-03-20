@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/19/2024
+ms.date: 03/20/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
@@ -25,9 +25,9 @@ The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limite
 
 The following diagram illustrates the release trains and their associated baseline and update builds including the supported update paths.
 
-:::image type="content" source="./media/release-information-23h2/release-trains-supported=update-paths.png" alt-text="Diagram illustrating Azure Stack HCI, version 23H2 release trains with supported update paths":::
+:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Stack HCI, version 23H2 release trains with supported update paths":::
 
-- To move to the next release train, you must first deploy the baseline build for that release train. For example, to move from the 2311 release train to the 2402 release train, you must first deploy the 2402 baseline build. 
+- To move to the next release train, you must first deploy the baseline build for that release train. For example, to move from the 2311 release train to the 2402 release train, you must first deploy the 2402 baseline build.
 
 - At any time, you can update to the latest update build within your release train. For example, if you're running the 2311 baseline build, you can update to any 2311 update build.
 
