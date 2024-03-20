@@ -208,10 +208,12 @@
       href: aks-vmware-install-kubernetes-extension.md
   - name: Troubleshooting
     items:
+    - name: Troubleshooting and support
+      href: aks-vmware-support-troubleshoot.md
     - name: Known issues
       href: aks-vmware-known-issues.md
-    - name: Troubleshoot
-      href: aks-vmware-support-troubleshoot.md
+    - name: Troubleshooting guide
+      href: aks-vmware-troubleshooting-guide.md
 - name: AKS on Windows Server
   items:
   - name: Overview
