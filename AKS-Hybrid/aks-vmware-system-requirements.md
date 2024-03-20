@@ -77,7 +77,7 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 |-------------------------------|--------------------|
 | `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  | 
 | `$custom_Location`              | Name or ID of the custom location created for Arc Resource Bridge. The same name applies to the AKS extension.  | 
-| $subscriptionID               | The Azure subscription ID where you install the Azure Arc Resource Bridge and custom location  | 
+| `$subscriptionID`               | The Azure subscription ID where you instaledl the Azure Arc Resource Bridge and custom location.  | 
 | $resource_Group               | The resource group in the Azure subscription where you install the Arc Resource Bridge and custom location  | 
 | $aad_Group_Id                 | The $aadGroupId is the ID of a group whose members are responsible for managing the target cluster. The group should also have owner permissions on the resource group where the custom location and target cluster are in.  | 
 | `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
