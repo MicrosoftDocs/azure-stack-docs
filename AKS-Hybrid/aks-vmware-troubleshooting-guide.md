@@ -51,7 +51,7 @@ To collect the logs, execute the following commands from the machine you previou
 az arcappliance get-credentials –name <name of Arc Resource Bridge> --resource-group <name of resource group>
 ```
 
-After you run the `az arcappliance get-credentials` command, you can proceed with log collection using the [`az arcappliance logs` command](/cli/azure/arcappliance/logs#az-arcappliance-logs-vmware):
+After you run the `az arcappliance get-credentials` command, you can proceed with log collection using the [`az arcappliance logs vmware` command](/cli/azure/arcappliance/logs#az-arcappliance-logs-vmware):
 
 ```azurecli
 az arcappliance logs vmware --ip <Arc Resource Bridge VM control plane IP endpoint> --address <vCenter FQDN/IP address, same one used when creating config files> --username <vcenter username> --password <vcenter password>
@@ -61,7 +61,7 @@ If you haven't yet created an appliance VM, the `az arcappliance logs vmware` co
 
 ### Issues when Arc Resource Bridge is up and running
 
-To collect the logs, run the `[az arcappliance logs vmware` command](/cli/azure/arcappliance/logs?view=azure-cli-latest#az-arcappliance-logs-vmware) from the same machine you used to attempt the deployment of Arc Resource Bridge:
+To collect the logs, run the [`az arcappliance logs vmware` command](/cli/azure/arcappliance/logs?view=azure-cli-latest#az-arcappliance-logs-vmware) from the same machine you used to deploy Arc Resource Bridge:
 
 - If you have the kubeconfig for your appliance and the appliance VM is running with a reachable API server, the following command collects logs from the appliance and outputs a .zip file in the current working directory:
 
@@ -114,7 +114,7 @@ This section provides a list of common error messages and their troubleshooting 
 
 ### Error: The term 'az' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again
 
-- **Root cause**: Az CLI is not recognized because the previous PowerShell window was closed and didn't synchronize with the previous syntax on installing Az CLI.
+- **Root cause**: Az CLI is not recognized because the previous PowerShell window was closed and didn't synchronize with the installation of Azure CLI.
 - **Resolution**:
   1. Open a new PowerShell window and navigate to the folder where you stored the Arc Resource Bridge onboarding script.
   1. Execute `.temp\.env\Scripts\Activate.ps1` to install Python venv.
