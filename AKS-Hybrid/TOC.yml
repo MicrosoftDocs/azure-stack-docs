@@ -206,6 +206,8 @@
     items:
     - name: Install Kubernetes Extension for Operators
       href: aks-vmware-install-kubernetes-extension.md
+    - name: Retrieve certificate-based admin kubeconfig
+      href: aks-vmware-retrieve-kubeconfig.md
   - name: Troubleshooting
     items:
     - name: Troubleshooting and support
