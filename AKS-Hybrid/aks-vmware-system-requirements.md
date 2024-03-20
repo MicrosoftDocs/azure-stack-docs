@@ -79,9 +79,9 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 | `$custom_Location`              | Name or ID of the custom location created for Arc Resource Bridge. The same name applies to the AKS extension.  | 
 | `$subscriptionID`               | The Azure subscription ID where you instaledl the Azure Arc Resource Bridge and custom location.  | 
 | `$resource_Group`               | The resource group in the Azure subscription where you installed the Arc Resource Bridge and custom location.  | 
-| $aad_Group_Id                 | The $aadGroupId is the ID of a group whose members are responsible for managing the target cluster. The group should also have owner permissions on the resource group where the custom location and target cluster are in.  | 
+| `$aad_Group_Id`                 | The $aadGroupId is the ID of a group whose members are responsible for managing the target cluster. The group should also have owner permissions on the resource group where the custom location and target cluster are in.  | 
 | `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
-| $control_plane_ip             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address  | 
+| `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address  | 
 
 
 ### Microsoft Entra permissions, role and access level
