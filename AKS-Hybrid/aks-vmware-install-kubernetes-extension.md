@@ -10,26 +10,112 @@ ms.lastreviewed: 03/18/2024
 
 ---
 
-# Install and uninstall the Kubernetes Extension for AKS Arc Operators (preview)
+# Enable the Kubernetes Extension for AKS Arc Operators (preview)
 
-To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), with the Kubernetes Extension for AKS Arc Operators installed. If you already [deployed Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script) but didn't install the Kubernetes Extension for AKS Arc Operators, follow the instructions in this article.
+Applies to: VMware
 
-## Install the Kubernetes Extension for AKS Arc Operators
+To use the AKS Arc on VMware preview, you first need to onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview) There are two scenarios available for accessing this preview:
 
-1. Verify whether the Kubernetes Extension for AKS Arc Operators is installed on your Arc-enabled VMware vSphere by running the following command:
+- If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Arc Operators installed, you will need to follow Step #1: register feature/provider for the first time user, and Step #2: install the aksarc CLI extension for your machine.
+- If you deploy the Arc Resource Bridge without installing the Kubernetes Extension for AKS Arc Operators, you will need to follow all the steps on this page.
+
+
+## Before you begin
+- Make sure you have [installed the Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli) 
+
+
+## Step 1. Register feature/provider for the first time user 
+If your subscription is deploying AKS Arc (Preview) for the first time, you must register the preview features.
+
+1. Prepare your Azure account
 
    ```azurecli
-    az k8s-extension list --cluster-name <cluster-name> --resource-group <resource-group-name>
+    az login -- use-device-code
+    az account set -s '<$subscriptionID>'
     ```
 
-1. Install the Kubernetes extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command to install the Kubernetes Extension for AKS Arc Operators:
+2. Perform a one-time feature registration
 
-    ```azurecli
+   ```azurecli
+   ### Register your subscription ID with the feature
+   az feature register --namespace Microsoft.HybridConnectivity --name hiddenPreviewAccess
+
+   ### Check feature registrationState -o tsv == Registered
+   az feature show --name hiddenPreviewAccess --namespace Microsoft.HybridConnectivity
+    ```
+   
+3. Perform one-time provider registration
+
+   ```azurecli
+   ### Register your subscription ID with the provider
+   az provider register --namespace "Microsoft.HybridContainerService" 
+   az provider register --namespace "Microsoft.HybridConnectivity"
+
+   ### Check provider registrationState -o tsv == Registered
+   az provider show -n Microsoft.HybridContainerService --query registrationState
+   az provider show -n Microsoft.HybridConnectivity --query registrationState
+    ```
+
+## Step 2. Install the aksarc CLI extension for your machine
+   Install the CLI extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command
+
+   ```azurecli
     az extension add -n aksarc
     az extension add -n connectedk8s
+    az extension add –n k8s-extension
+    az extension add –n Arcappliance
+    az extension add –n customlocation
+   ```
+    
+## Step 3. Install the Kubernetes Extension for AKS Arc Operators
+**this cannot be release until we update the final version**
+
+1. Pass the version of the Kubernetes Extension for AKS Arc Operators (Preview)
+    ```PowerShell
+    $extension_name = 'hybridaksopext'
+    $extension_version = '0.4.4-onebranch-rc'
+    $extension_release_train = 'prerelease'
+    ```
+    ```Bash
+    export extension_name='hybridaksopext'
+    export extension_version='0.4.4-onebranch-rc'
+    export extension_release_train='prerelease'
     ```
 
-## Clean up environment from deployments of AKS Arc on VMware
+2. Pass the $resource_group and $appliance_name
+    ```azurecli
+    $resource_group = '$resourceGroup from Arc Resource Bridge deployment'
+    $appliance_name = '$applianceName from Arc Resource Bridge deployment'
+    ```
+
+3. Install the Kubernetes Extension for AKS Arc Operators (Preview)
+    ```azurecli
+    az k8s-extension create -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --extension-type Microsoft.HybridAKSOperator --version $extension_version --release-train $extension_release_train --config Microsoft.CustomLocation.ServiceAccount="default" --auto-upgrade false 
+    ```
+
+## Step 4. Prepare your custom location
+   The custom location has been created during the Arc Resource Bridge deployment. 
+
+1. Get the IDs to configure the custom location
+   ```azurecli
+   ### $extension_name = 'hybridaksopext'
+   $ArcApplianceResourceId = (az arcappliance show -g $resource_group -n $appliance_name --query id -o tsv)
+   $ClusteraksExtensionId = (az k8s-extension show -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --query id -o tsv)
+   ```
+
+2. Patch the custom location: ProvisioningState: “Patching**”
+    ```azurecli
+    ### Use the same custom location information from the Arc Resource Bridge deployment
+    az customlocation patch -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId
+    ```
+
+4. Verify the custom location provisioning state is succeed: ProvisioningState: “Succeeded”
+    ```azurecli
+    az customlocation show -g $customLocationResourceGroupName -n $customLocationName 
+    ```
+
+
+# Clean up environment from deployments of AKS Arc on VMware
 
 Once you complete the evaluation of the AKS Arc on VMware preview, you can follow these steps to clean up your environment:
 
