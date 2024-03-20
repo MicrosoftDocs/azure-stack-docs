@@ -80,7 +80,7 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 | $subscriptionID               | The Azure subscription ID where you install the Azure Arc Resource Bridge and custom location  | 
 | $resource_Group               | The resource group in the Azure subscription where you install the Arc Resource Bridge and custom location  | 
 | $aad_Group_Id                 | The $aadGroupId is the ID of a group whose members are responsible for managing the target cluster. The group should also have owner permissions on the resource group where the custom location and target cluster are in.  | 
-| $network_name                 | Name of the VMware network resource enabled in Azure  | 
+| `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
 | $control_plane_ip             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address  | 
 
 
