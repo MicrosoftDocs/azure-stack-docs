@@ -30,19 +30,35 @@ Azure Managed Lustre works with storage accounts that have hierarchical namespac
 
 You can configure integration with Blob Storage during [cluster creation](create-file-system-portal.md#blob-integration), or you can [manually create an import job](create-manual-import-job.md) any time after the cluster is created.
 
-### Filter blob imports using a prefix
+### Blob container requirements
 
-When importing data from a blob container, you can specify one or more prefixes to filter the data imported into the Azure Managed Lustre file system. Contents that match one of the prefixes are added to a metadata record in the file system. When clients request a file, its contents are retrieved from the blob container and stored in the file system.
+When configuring an import job, you must identify two separate blob containers: the container to import and the logging container. The container to import contains the data that you want to import into the Azure Managed Lustre file system. The logging container is used to store logs for the import job. These two containers must be in the same storage account. To learn more about the requirements for the blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
 
-Use the **Import prefix** option on the **Advanced** tab to specify the data to be imported from your blob container when you create the cluster or run an import job. This field can't be changed after you create the Azure Managed Lustre file system.
+### Import prefix
 
-- The default import prefix, **/**, imports the entire contents of the blob container.
+When importing data from a blob container, you can specify one or more prefixes to filter the data imported into the Azure Managed Lustre file system. Contents that match one of the prefixes are added to a metadata record in the file system. When a client requests a file, its contents are retrieved from the blob container and stored in the file system.
 
-- If you don't want to import files from the blob container, you can set an import prefix that doesn't match any files in the container.
+During cluster creation, use the **Import prefix** fields on the **Advanced** tab to specify the data to be imported from your blob container. These fields only apply to the initial import job. You can't change the import prefix after the cluster is created.
 
-- If you use a hierarchical blob storage service (like NFSv3-mounted blob storage), you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
+For a manual import job, you can specify import prefixes when you create the import job. From the Azure portal, you can specify the import prefix in the **Import prefix** field. You can also specify the import prefix when you use the REST API to create an import job.
 
-- If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name. If the name of a file in your blob container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob file names become directory delimiters when stored in Lustre.
+Keep the following considerations in mind when specifying import prefixes:
+
+- The default import prefix, **/**, imports the contents of the entire blob container.
+- If you specify multiple prefixes, the prefixes must be non-overlapping. For example, if you specify `/data` and `/data2`, the import job fails because the prefixes overlap.
+- If the blob container is in a storage account with hierarchical namespace enabled, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
+- If the blob container is in a storage account with a non-hierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob names become directory delimiters when stored in Lustre.
+
+### Considerations for blob import jobs
+
+The following items are important to consider when importing data from a blob container:
+
+- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start another import job returns an error.
+- Import jobs can be cancelled. You can cancel an import started manually on an existing cluster, or an import initiated during cluster creation.
+- Cluster deployment can return successfully before the corresponding import job is complete. The import job continues to run in the background. You can monitor the import job's progress in the following ways:
+  - **Azure portal**: 
+  - **REST API**: 
+  - **Lustre file in root directory**: A file named similar to `/lustre/IMPORT_<state>.<timestamp_start>` is created in the Lustre root directory during import. The `<state>` placeholder changes as the import progresses. The file is deleted when the import job completes successfully.
 
 ## Export data to Blob Storage using an archive job
 
