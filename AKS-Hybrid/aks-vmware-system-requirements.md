@@ -75,7 +75,7 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 
 | Parameter                     | Parameter details  |
 |-------------------------------|--------------------|
-| $appliance_Name               | Name of the Arc Resource Bridge created to connect vCenter with Azure  | 
+| `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  | 
 | $custom_Location              | Name or ID of the custom location created for Arc Resource Bridge and the same name applies to AKS extension  | 
 | $subscriptionID               | The Azure subscription ID where you install the Azure Arc Resource Bridge and custom location  | 
 | $resource_Group               | The resource group in the Azure subscription where you install the Arc Resource Bridge and custom location  | 
