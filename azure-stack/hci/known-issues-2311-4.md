@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2311.4 relea
 description: Read about the known issues and fixed issues in Azure Stack HCI 2311.4 release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 03/18/2024
+ms.date: 03/20/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci

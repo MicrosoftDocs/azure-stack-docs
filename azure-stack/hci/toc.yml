@@ -19,7 +19,9 @@ items:
         href: known-issues-2402.md
     - name: Known issues 2311
       items:
-      - name: 2311.3 - Current
+      - name: 2311.4 - Current
+        href: known-issues-2311-4.md
+      - name: 2311.3 
         href: known-issues-2311-3.md
       - name: 2311.2 - GA
         href: known-issues-2311-2.md
