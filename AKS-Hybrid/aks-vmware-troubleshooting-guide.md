@@ -61,7 +61,7 @@ If you haven't yet created an appliance VM, the `az arcappliance logs vmware` co
 
 ### Issues when Arc Resource Bridge is up and running
 
-To collect the logs, run the [`az arcappliance logs vmware` command](/cli/azure/arcappliance/logs?view=azure-cli-latest#az-arcappliance-logs-vmware) from the same machine you used to deploy Arc Resource Bridge:
+To collect the logs, run the [`az arcappliance logs vmware` command](/cli/azure/arcappliance/logs#az-arcappliance-logs-vmware) from the same machine you used to deploy Arc Resource Bridge:
 
 - If you have the kubeconfig for your appliance and the appliance VM is running with a reachable API server, the following command collects logs from the appliance and outputs a .zip file in the current working directory:
 
