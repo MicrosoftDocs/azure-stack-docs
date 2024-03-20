@@ -14,11 +14,11 @@ ms.reviewer: leslielin
 
 This article identifies important known issues and their workarounds in the AKS Arc on VMware preview. You can also review the troubleshooting guide [here](link to: troubleshoot) or follow the [troubleshooting overview](link to: troubleshooting overview) to report bugs or provide product feedback.
 
-We continuously update this page. As we identify critical problems that require workarounds, we add them here. Please review this information carefully before deploying AKS Arc on VMware.
+We continuously update this page. As we identify critical problems that require workarounds, we add them here. Review this information carefully before deploying AKS Arc on VMware.
 
 | Known issue               | Root cause/issue description                                                                                                                | Workaround/comments                                                                                                        |
 |---------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
-| VM size **Standard_A4_v2**  | The VM size **Standard_A4_v2** is currently deployed with incorrect specifications: 2 vCPU and 8GB memory. It should be 4 vCPU and 8GB memory.  | This issue does not affect the proper creation of the AKS cluster. We are aware of the problem and are working on a resolution.  |
+| VM size **Standard_A4_v2**  | The VM size **Standard_A4_v2** is currently deployed with incorrect specifications: 2 vCPU and 8 GB memory. It should be 4 vCPU and 8 GB memory.  | This issue doesn't affect the proper creation of the AKS cluster. We're aware of the problem and are working on a resolution.  |
 
 ## Next steps
 
