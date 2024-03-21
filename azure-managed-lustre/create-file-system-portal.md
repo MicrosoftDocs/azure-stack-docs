@@ -121,7 +121,9 @@ Use the **Advanced** tab to set up Blob Storage integration and customize the ma
 
 ### Blob integration
 
-If you want to use integrated Azure Blob storage with your Azure Managed Lustre file system, you must specify it in the **Blob integration** section when you create the file system. You can't add an HSM-integrated blob container to an existing file system.
+TODO: Update section for import/export changes
+
+If you want to use integrated Azure Blob storage with your Azure Managed Lustre file system, you can specify it in the **Blob integration** section when you create the file system. You can't add an HSM-integrated blob container to an existing file system.
 
 Azure Managed Lustre is customized to work seamlessly with Azure Blob Storage. You can specify a populated blob container to make its data accessible from your Azure Managed Lustre file system, or specify an empty container that you populate with data or use to store your output. All setup and maintenance is done for you. You just need to specify which blob container to use.
 
@@ -156,7 +158,7 @@ To configure blob integration:
    You can't change this field after you create the Azure Managed Lustre file system.
 
    ![Screenshot showing blob integration settings on Advanced tab in Azure Managed Lustre Create wizard.](./media/create-file-system-portal/advanced-blob-integration.png)
-   
+
 ### Maintenance window
 
 To allow Azure staff to maintain your Azure Managed Lustre file system, they need access to the file system to run diagnostics, update software, and troubleshoot any problems. Use the **Maintenance window** setting to set a time when the system can be disrupted for routine service.

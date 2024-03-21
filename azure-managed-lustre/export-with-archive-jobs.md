@@ -10,6 +10,7 @@ ms.reviewer: brianl
 
 # Intent: As an IT Pro, I need to be able to export files from my Azure Managed Lustre file system to longterm Azure Blob Storage.
 # Keyword: 
+# TODO: Update section for import/export changes
 
 ---
 

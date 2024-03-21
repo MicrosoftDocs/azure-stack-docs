@@ -71,6 +71,8 @@ By default, no specific changes need to be made to enable Azure Managed Lustre. 
 
 ## Blob integration prerequisites (optional)
 
+TODO: Update section for import/export changes
+
 If you plan to integrate your Azure Managed Lustre file system with Azure Blob Storage, complete the following prerequisites before you create your file system.
 
 An integrated blob container can automatically import files to the Azure Managed Lustre system when you create the file system. You can then create archive jobs to export changed files from your Azure Managed Lustre file system to that container.

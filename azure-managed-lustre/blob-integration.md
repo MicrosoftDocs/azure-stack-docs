@@ -49,6 +49,14 @@ Keep the following considerations in mind when specifying import prefixes:
 - If the blob container is in a storage account with hierarchical namespace enabled, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
 - If the blob container is in a storage account with a non-hierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob names become directory delimiters when stored in Lustre.
 
+### Conflict resolution mode
+
+When importing data from a blob container, you can specify how to handle conflicts between the blob container and the file system. The following options are available:
+
+### Error tolerance
+
+When importing data from a blob container, you can specify the error tolerance level. The error tolerance level determines how the import job handles errors that occur during the import process. The following error tolerance levels are available:
+
 ### Considerations for blob import jobs
 
 The following items are important to consider when importing data from a blob container:
@@ -79,6 +87,12 @@ When files are archived from the Azure Managed Lustre system to the blob contain
   `hdi_isfolder : true`
 
 You can modify the POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
+
+### Considerations for archive jobs
+
+The following items are important to consider when exporting data with an archive job:
+
+- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start an archive job returns an error.
 
 ## Copy a Lustre blob container with AzCopy or Storage Explorer
 
