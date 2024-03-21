@@ -85,7 +85,8 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
     export extension_release_train='prerelease'
     ```
 
-2. Pass the $resource_group and $appliance_name
+2. Pass the `$resource_group` and `$appliance_name`:
+
     ```azurecli
     $resource_group = '$resourceGroup from Arc Resource Bridge deployment'
     $appliance_name = '$applianceName from Arc Resource Bridge deployment'
