@@ -116,7 +116,7 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
     az customlocation patch -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId
     ```
 
-4. Verify the custom location provisioning state is succeed: ProvisioningState: “Succeeded”
+4. Verify the custom location provisioning state is successful: `ProvisioningState: “Succeeded”`:
     ```azurecli
     az customlocation show -g $customLocationResourceGroupName -n $customLocationName 
     ```
