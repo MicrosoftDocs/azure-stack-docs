@@ -110,7 +110,7 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
    $ClusteraksExtensionId = (az k8s-extension show -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --query id -o tsv)
    ```
 
-2. Patch the custom location: ProvisioningState: “Patching**”
+2. Patch the custom location: `ProvisioningState: “Patching”`:
     ```azurecli
     ### Use the same custom location information from the Arc Resource Bridge deployment
     az customlocation patch -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId
