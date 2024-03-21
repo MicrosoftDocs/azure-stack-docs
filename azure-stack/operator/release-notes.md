@@ -127,7 +127,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix for 2311.
+- [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-2-23.md)
 ::: moniker-end
 
 ::: moniker range="azs-2306"
