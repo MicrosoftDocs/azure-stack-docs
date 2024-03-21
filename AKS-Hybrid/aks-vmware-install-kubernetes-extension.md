@@ -2,11 +2,11 @@
 title: Install and uninstall Kubernetes Extension for AKS Arc Operators (preview)
 description: Learn how to install and uninstall the Kubernetes Extension for AKS Arc Operators.
 ms.topic: how-to
-ms.date: 03/18/2024
+ms.date: 03/21/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: leslielin
-ms.lastreviewed: 03/18/2024
+ms.lastreviewed: 03/21/2024
 
 ---
 
@@ -16,27 +16,25 @@ ms.lastreviewed: 03/18/2024
 
 To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview) There are two scenarios available for accessing this preview:
 
-- If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Arc Operators installed, follow Step #1: register feature/provider for the first time user, and Step #2: install the `aksarc` CLI extension.
+- If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Arc Operators installed, you should only follow [Step #1: register feature/provider for the first time user](#step-1-register-featureprovider-for-the-first-time-user), and [Step #2: install the `aksarc` CLI extension](#step-2-install-the-aksarc-cli-extension).
 - If you deploy the Arc Resource Bridge without installing the Kubernetes Extension for AKS Arc Operators, follow all the steps on this page.
-
 
 ## Before you begin
 
-- Make sure you [install the Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli) 
-
+- Make sure you [install the Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 
 ## Step 1. Register feature/provider for the first time user
 
 If your subscription is deploying AKS Arc (Preview) for the first time, you must register the preview features.
 
-1. Prepare your Azure account
+1. Prepare your Azure account:
 
    ```azurecli
     az login -- use-device-code
     az account set -s '<$subscriptionID>'
     ```
 
-2. Perform a one-time feature registration
+1. Perform a one-time feature registration:
 
    ```azurecli
    ### Register your subscription ID with the feature
@@ -45,8 +43,8 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
    ### Check feature registrationState -o tsv == Registered
    az feature show --name hiddenPreviewAccess --namespace Microsoft.HybridConnectivity
     ```
-   
-3. Perform one-time provider registration
+
+1. Perform a one-time provider registration:
 
    ```azurecli
    ### Register your subscription ID with the provider
@@ -56,51 +54,52 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
    ### Check provider registrationState -o tsv == Registered
    az provider show -n Microsoft.HybridContainerService --query registrationState
    az provider show -n Microsoft.HybridConnectivity --query registrationState
-    ```
+   ```
 
 ## Step 2. Install the aksarc CLI extension
 
-   Install the CLI extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command:
+Install the CLI extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command:
 
-   ```azurecli
-    az extension add -n aksarc
-    az extension add -n connectedk8s
-    az extension add –n k8s-extension
-    az extension add –n Arcappliance
-    az extension add –n customlocation
-   ```
-    
+```azurecli
+az extension add -n aksarc
+az extension add -n connectedk8s
+az extension add –n k8s-extension
+az extension add –n Arcappliance
+az extension add –n customlocation
+```
+
 ## Step 3. Install the Kubernetes Extension for AKS Arc Operators
 
+1. Specify the version of the Kubernetes Extension for AKS Arc Operators:
 
-1. Pass the version of the Kubernetes Extension for AKS Arc Operators (preview).
-    ```PowerShell
-    $extension_name = 'hybridaksopext'
-    $extension_version = '0.4.4-onebranch-rc'
-    $extension_release_train = 'prerelease'
-    ```
-    ```Bash
-    export extension_name='hybridaksopext'
-    export extension_version='0.4.4-onebranch-rc'
-    export extension_release_train='prerelease'
-    ```
+   ```PowerShell
+   $extension_name = 'hybridaksopext'
+   $extension_version = '0.4.4-onebranch-rc'
+   $extension_release_train = 'prerelease'
+   ```
 
-2. Pass the `$resource_group` and `$appliance_name`:
+   ```Bash
+   export extension_name='hybridaksopext'
+   export extension_version='0.4.4-onebranch-rc'
+   export extension_release_train='prerelease'
+   ```
 
-    ```azurecli
-    $resource_group = '$resourceGroup from Arc Resource Bridge deployment'
-    $appliance_name = '$applianceName from Arc Resource Bridge deployment'
-    ```
+1. Specify the `$resource_group` and `$appliance_name`:
 
-3. Install the Kubernetes Extension for AKS Arc Operators.
+   ```azurecli
+   $resource_group = '$resourceGroup from Arc Resource Bridge deployment'
+   $appliance_name = '$applianceName from Arc Resource Bridge deployment'
+   ```
 
-    ```azurecli
-    az k8s-extension create -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --extension-type Microsoft.HybridAKSOperator --version $extension_version --release-train $extension_release_train --config Microsoft.CustomLocation.ServiceAccount="default" --auto-upgrade false 
-    ```
+1. Install the Kubernetes Extension for AKS Arc Operators:
+
+   ```azurecli
+   az k8s-extension create -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --extension-type Microsoft.HybridAKSOperator --version $extension_version --release-train $extension_release_train --config Microsoft.CustomLocation.ServiceAccount="default" --auto-upgrade false 
+   ```
 
 ## Step 4. Prepare your custom location
 
-   The custom location was created during the Arc Resource Bridge deployment. 
+The custom location was created during the Arc Resource Bridge deployment.
 
 1. Get the IDs to configure the custom location:
 
@@ -110,19 +109,20 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
    $ClusteraksExtensionId = (az k8s-extension show -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --query id -o tsv)
    ```
 
-2. Patch the custom location: `ProvisioningState: “Patching”`:
-    ```azurecli
-    ### Use the same custom location information from the Arc Resource Bridge deployment
-    az customlocation patch -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId
-    ```
+1. Patch the custom location (`ProvisioningState: "Patching"`):
 
-4. Verify the custom location provisioning state is successful: `ProvisioningState: “Succeeded”`:
-    ```azurecli
-    az customlocation show -g $customLocationResourceGroupName -n $customLocationName 
-    ```
+   ```azurecli
+   ### Use the same custom location information from the Arc Resource Bridge deployment
+   az customlocation patch -g $customLocationResourceGroupName -n $customLocationName --cluster-extension-ids $clusteraksExtensionId
+   ```
 
+1. Verify the custom location provisioning state is successful: `ProvisioningState: "Succeeded"`:
 
-# Clean up environment from deployments of AKS Arc on VMware
+   ```azurecli
+   az customlocation show -g $customLocationResourceGroupName -n $customLocationName 
+   ```
+
+## Clean up environment from deployments of AKS Arc on VMware
 
 Once you complete the evaluation of the AKS Arc on VMware preview, you can follow these steps to clean up your environment:
 
@@ -143,4 +143,3 @@ Once you complete the evaluation of the AKS Arc on VMware preview, you can follo
 
 - If you're beginning to evaluate the AKS Arc on VMware preview and finished installing the Kubernetes Extension for AKS Arc Operators, you can create an AKS cluster by following the instructions in the "Quickstart: Deploy an AKS cluster using Azure CLI."
 - If you completed the evaluation of AKS Arc on VMware, please share your feedback with us through [GitHub](https://github.com/Azure/aksArc/issues).
-
