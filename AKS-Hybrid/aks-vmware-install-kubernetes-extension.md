@@ -12,7 +12,7 @@ ms.lastreviewed: 03/18/2024
 
 # Enable the Kubernetes Extension for AKS Arc Operators (preview)
 
-Applies to: VMware
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
 To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview) There are two scenarios available for accessing this preview:
 

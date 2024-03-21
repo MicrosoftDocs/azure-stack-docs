@@ -12,6 +12,8 @@ ms.reviewer: leslielin
 
 # Troubleshooting and support policy
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This article describes the AKS enabled by Azure Arc on VMware (preview) support policy and offers guidance on issues you might encounter.
 
 ## Support policy

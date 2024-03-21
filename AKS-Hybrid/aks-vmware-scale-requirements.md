@@ -12,6 +12,8 @@ ms.lastreviewed: 03/15/2024
 
 # Scale requirements for AKS Arc on VMware (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This article describes the maximum and minimum supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware.
 
 ## Support count for AKS on HCI

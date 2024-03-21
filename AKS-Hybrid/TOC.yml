@@ -206,12 +206,18 @@
     items:
     - name: Install Kubernetes Extension for Operators
       href: aks-vmware-install-kubernetes-extension.md
+    - name: Retrieve certificate-based admin kubeconfig
+      href: aks-vmware-retrieve-kubeconfig.md
+    - name: Monitoring and logging
+      href: aks-vmware-monitoring-logging.md
   - name: Troubleshooting
     items:
+    - name: Troubleshooting and support
+      href: aks-vmware-support-troubleshoot.md
     - name: Known issues
       href: aks-vmware-known-issues.md
-    - name: Troubleshoot
-      href: aks-vmware-troubleshoot.md
+    - name: Troubleshooting guide
+      href: aks-vmware-troubleshooting-guide.md
 - name: AKS on Windows Server
   items:
   - name: Overview
