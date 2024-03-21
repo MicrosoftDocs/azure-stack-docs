@@ -12,6 +12,8 @@ ms.lastreviewed: 03/18/2024
 
 # Install and uninstall the Kubernetes Extension for AKS Arc Operators (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), with the Kubernetes Extension for AKS Arc Operators installed. If you already [deployed Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script) but didn't install the Kubernetes Extension for AKS Arc Operators, follow the instructions in this article.
 
 ## Install the Kubernetes Extension for AKS Arc Operators

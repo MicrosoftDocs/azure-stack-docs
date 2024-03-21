@@ -12,6 +12,8 @@ ms.lastreviewed: 11/28/2023
 
 # AKS on VMware workload cluster architecture (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This article provides an overview of the cluster architecture and key infrastructure components of Kubernetes, such as the control plane, and worker nodes for the Azure Kubernetes Service (AKS) on VMware.
 
 ## Cluster architecture
