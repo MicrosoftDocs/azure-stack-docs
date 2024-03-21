@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 03/06/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI
@@ -37,7 +37,7 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 - You must have access to an Azure Stack HCI cluster.
 - You must have access to Azure.
-- You must have installed the `TelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Perform on-demand log collection via PowerShell
 
@@ -72,7 +72,6 @@ where:
    |--|--|
    | ALM | Application Lifecycle Management (ALM) involves managing the development, testing, deployment, and maintenance for software applications. |
    | ArcAgent | An agent that allows management of Windows Server via Azure Arc. See [Overview of Azure Connected Machine agent](/azure/azure-arc/servers/agent-overview). |
-   | AutonomousLogs | The role that collects autonomous logs. |
    | BareMetal | Infrastructure role that allows you to run services on bare metal servers without a virtualization layer. You can have full access and control over the operating system and hardware. |
    | CommonInfra | Collects logs for common infrastructure components, such as networking, storage, and security. |
    | DeploymentLogs | Records details of the deployment process, including steps taken, encountered errors, and operation status. |
@@ -90,7 +89,7 @@ where:
    | OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
    | OSUpdateLogs | Role that collects logs related to operating system updates on Azure Stack HCI nodes, useful for troubleshooting update-related issues. |
    | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
-   | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
+   | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `AzureEdgeTelemetryAndDiagnostics` extension is working properly. |
    | URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which are not part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 - The `CollectSddc` parameter allows you to specify if you want to include or exclude SDDC logs from log collection.

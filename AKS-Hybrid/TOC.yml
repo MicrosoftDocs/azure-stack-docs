@@ -69,8 +69,6 @@
         href: deploy-gpu-node-pool.md
       - name: Use labels in a Kubernetes cluster
         href: cluster-labels.md
-    - name: Download Kubernetes VHDs manually
-      href: offline-download.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers
@@ -201,10 +199,6 @@
     href: overview.md
   - name: System requirements
     href: system-requirements.md
-  - name: Quickstarts
-    items:
-      - name: Evaluation guide
-        href: aks-hci-evaluation-guide.md
   - name: Tutorial
     items:
       - name: 1 - Prepare an application

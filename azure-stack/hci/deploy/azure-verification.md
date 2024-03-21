@@ -7,8 +7,8 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 02/28/2024
-ms.lastreviewed: 11/28/2023
+ms.date: 03/05/2024
+ms.lastreviewed: 03/05/2024
 ---
 
 # Azure verification for VMs
@@ -42,7 +42,7 @@ Azure VM verification relies on a built-in platform attestation service on Azure
 
 1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([i.e., VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
 
-   **[Legacy OS support](#legacy-os-support)**: Workloads that cannot make Win32 API calls or directly query an integration service must enable Legacy OS support. This provides a private and non-routable REST endpoint to VMs on the same server.
+   **[Legacy OS support](#legacy-os-support)**: Workloads that cannot make Win32 API calls or directly query an integration service must enable Legacy OS support. This setting provides a private and non-routable REST endpoint to VMs on the same server.
 
      To enable this endpoint, an internal vSwitch is configured on the Azure Stack HCI server (named **AZSHCI_HOST-IMDS_DO_NOT_MODIFY**). After that, VMs must have a NIC configured (**AZSHCI_GUEST-IMDS_DO_NOT_MODIFY**) and attached to the same vSwitch.
 
@@ -172,10 +172,10 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Enable-VMIntegrationService [[-VMName] <VMName>] -Name "Guest Service Interface"
   ```
 
-- To check that the VMs can access Azure VM verification on the host, run the following command on the VM:
+- To check that the VMs can access Azure VM verification on the host, run the following command on the host:
 
   ```powershell
-  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http:// 127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" – usedefaultcredentials
+  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" –usedefaultcredentials
   ```
 
 ### [Azure portal](#tab/azureportal)
@@ -286,7 +286,7 @@ You must enable legacy OS networking for any new VMs that you create after the f
    Add-AzStackHCIVMAttestation -AddAll
    ```
 
-- Check VMs that have access to legacy OS support
+- Get list of VMs that have access to legacy OS support:
 
    ```powershell
    Get-AzStackHCIVMAttestation
@@ -307,6 +307,12 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
   ```powershell
   Remove-AzStackHCIVMAttestation -RemoveAll
+  ```
+
+- To check that the VMs can access legacy OS support on the host, run the following command on the VM:
+
+  ```powershell
+  Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01
   ```
 
 ### [Azure portal](#tab/azureportal)
@@ -356,9 +362,9 @@ No, turning on Azure VM verification incurs no extra fees.
 
 No, Azure VM verification is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
 
-### If I have just upgraded to 23H2 from 22H2, and I have previously turned on the Azure Benefits feature, do I need to do anything new?
+### If I just upgraded to 23H2 from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
 
-If you have upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VMBus in 23H2, make sure that you have [the required prerequisites](#prerequisites).
+If you upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VMBus in 23H2, make sure that you have [the required prerequisites](#prerequisites).
 
 ### I just set up Azure VM verification on my cluster. How do I ensure that Azure VM verification stays active?
 
