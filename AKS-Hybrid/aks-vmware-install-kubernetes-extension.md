@@ -100,7 +100,7 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
 
 ## Step 4. Prepare your custom location
 
-   The custom location has been created during the Arc Resource Bridge deployment. 
+   The custom location was created during the Arc Resource Bridge deployment. 
 
 1. Get the IDs to configure the custom location
    ```azurecli
