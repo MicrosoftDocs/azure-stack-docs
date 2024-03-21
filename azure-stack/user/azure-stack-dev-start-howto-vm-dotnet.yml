@@ -23,7 +23,7 @@ procedureSection:
   - title: |
       Create a VM
     summary: |
-      Create a VM and then install the components you need to host your .NET web app. You will need the IIS Management Console, Web management service, .NET runtime, and Microsoft Web Deploy on your VM. You will need to open the ports for your web server and for Web Deploy from your development machine. When installing the .NET runtime, make sure you're using the same version of .NET on both your target server and development machine.
+      Create a VM and then install the components you need to host your .NET web app. You'll need the IIS Management Console, Web management service, .NET runtime, and Microsoft Web Deploy on your VM. You'll need to open the ports for your web server and for Web Deploy from your development machine. When installing the .NET runtime, make sure you're using the same version of .NET on both your target server and development machine.
     steps: 
       - |
         Create a [Windows Server VM](azure-stack-quick-windows-portal.md).
@@ -58,7 +58,7 @@ procedureSection:
           | --- | --- | --- |
           | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
           | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
-          | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
+          | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You'll use this connection with an SSH client to configure the VM and deploy the app. |
           | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
           | 8172 | Custom | The port used by Web Deploy. |
 
@@ -155,7 +155,7 @@ procedureSection:
 relatedContent:
   - text: Set up a development environment in Azure Stack Hub
     url: azure-stack-dev-start.md
-  - text: common deployments for Azure Stack Hub as IaaS
+  - text: Common deployments for Azure Stack Hub as IaaS
     url: azure-stack-dev-start-deploy-app.md
   - text: C# Guide
     url: /dotnet/csharp/
