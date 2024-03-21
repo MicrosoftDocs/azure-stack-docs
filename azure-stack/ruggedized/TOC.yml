@@ -797,7 +797,7 @@
     - name: Deploy apps
       items: 
       - name: Deploy a C# web app to a Windows VM
-        href: ../user/azure-stack-dev-start-howto-vm-dotnet.md?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: ../user/azure-stack-dev-start-howto-vm-dotnet.yml?toc=/azure-stack/ruggedized/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Deploy a web app to a Linux VM
         items:
         - name: Deploy a Linux VM for a web app

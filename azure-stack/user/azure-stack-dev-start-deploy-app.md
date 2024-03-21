@@ -27,7 +27,7 @@ Before you begin to deploy an app to Azure Stack Hub, set up your development ma
 
 In the following how-to articles, you set up a virtual machine (VM) in Azure Stack Hub and then deploy your app from your development workstation to Azure Stack Hub.
 
-- [.NET Core (C#)](azure-stack-dev-start-howto-vm-dotnet.md)
+- [.NET Core (C#)](azure-stack-dev-start-howto-vm-dotnet.yml)
 - [Java](azure-stack-dev-start-howto-vm-java.md)
 - [Go](azure-stack-dev-start-howto-vm-go.md)
 - [Ruby](azure-stack-dev-start-howto-vm-ruby.md)
