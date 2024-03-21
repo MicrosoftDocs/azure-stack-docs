@@ -58,7 +58,8 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
    az provider show -n Microsoft.HybridConnectivity --query registrationState
     ```
 
-## Step 2. Install the aksarc CLI extension for your machine
+## Step 2. Install the aksarc CLI extension
+
    Install the CLI extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command
 
    ```azurecli
