@@ -73,7 +73,7 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
 ## Step 3. Install the Kubernetes Extension for AKS Arc Operators
 
 
-1. Pass the version of the Kubernetes Extension for AKS Arc Operators (Preview)
+1. Pass the version of the Kubernetes Extension for AKS Arc Operators (preview).
     ```PowerShell
     $extension_name = 'hybridaksopext'
     $extension_version = '0.4.4-onebranch-rc'
