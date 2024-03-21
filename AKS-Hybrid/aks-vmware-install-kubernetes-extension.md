@@ -22,7 +22,7 @@ To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware
 
 ## Before you begin
 
-- Make sure you have [installed the Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli) 
+- Make sure you [install the Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli) 
 
 
 ## Step 1. Register feature/provider for the first time user 
