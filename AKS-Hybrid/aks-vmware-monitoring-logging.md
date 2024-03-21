@@ -15,7 +15,9 @@ ms.reviewer: leslielin
 
 # Monitor and log data in AKS enabled by Azure Arc on VMware (preview)
 
-See the [Monitoring and logging section](aks-monitor-logging.md) of the AKS enabled by Azure Arc documentation for information on monitoring and logging in AKS enabled by Azure Arc on VMware. All the articles in that section also apply to AKS Arc on VMware.
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
+See the [Monitoring and logging section](aks-monitor-logging.md) of the AKS enabled by Azure Arc documentation for information on monitoring and logging in AKS enabled by Azure Arc on VMware. The articles in that section also apply to AKS enabled by Arc on VMware.
 
 ## Next steps
 
