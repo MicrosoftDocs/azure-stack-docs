@@ -16,7 +16,7 @@ Applies to: VMware
 
 To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview) There are two scenarios available for accessing this preview:
 
-- If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Arc Operators installed, you will need to follow Step #1: register feature/provider for the first time user, and Step #2: install the aksarc CLI extension for your machine.
+- If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Arc Operators installed, follow Step #1: register feature/provider for the first time user, and Step #2: install the `aksarc` CLI extension.
 - If you deploy the Arc Resource Bridge without installing the Kubernetes Extension for AKS Arc Operators, you will need to follow all the steps on this page.
 
 
