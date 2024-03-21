@@ -102,7 +102,8 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
 
    The custom location was created during the Arc Resource Bridge deployment. 
 
-1. Get the IDs to configure the custom location
+1. Get the IDs to configure the custom location:
+
    ```azurecli
    ### $extension_name = 'hybridaksopext'
    $ArcApplianceResourceId = (az arcappliance show -g $resource_group -n $appliance_name --query id -o tsv)
