@@ -208,6 +208,8 @@
       href: aks-vmware-install-kubernetes-extension.md
     - name: Retrieve certificate-based admin kubeconfig
       href: aks-vmware-retrieve-kubeconfig.md
+    - name: Monitoring and logging
+      href: aks-vmware-monitoring-logging.md
   - name: Troubleshooting
     items:
     - name: Troubleshooting and support
