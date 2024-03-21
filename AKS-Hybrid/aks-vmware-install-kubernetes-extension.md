@@ -92,7 +92,8 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
     $appliance_name = '$applianceName from Arc Resource Bridge deployment'
     ```
 
-3. Install the Kubernetes Extension for AKS Arc Operators (Preview)
+3. Install the Kubernetes Extension for AKS Arc Operators.
+
     ```azurecli
     az k8s-extension create -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --extension-type Microsoft.HybridAKSOperator --version $extension_version --release-train $extension_release_train --config Microsoft.CustomLocation.ServiceAccount="default" --auto-upgrade false 
     ```
