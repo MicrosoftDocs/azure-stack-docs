@@ -10,6 +10,8 @@ ms.author: sethm
 
 # System requirements and support matrix (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This article describes the system requirements and support matrix for setting up AKS enabled by Azure Arc on VMware. For an overview of AKS Arc on VMware, [see the overview article](aks-vmware-overview.md).
 
 ## Arc-enabled VMware vSphere requirements

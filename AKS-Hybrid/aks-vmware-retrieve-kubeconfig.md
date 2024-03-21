@@ -12,7 +12,7 @@ ms.reviewer: sulahiri
 
 # Retrieve certificate-based admin kubeconfig in AKS Arc on VMware
 
-[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
 This article describes how to retrieve a certificate-based admin kubeconfig in AKS enabled by Azure Arc on VMware.
 

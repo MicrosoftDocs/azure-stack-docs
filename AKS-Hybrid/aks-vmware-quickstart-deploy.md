@@ -9,6 +9,8 @@ ms.date: 03/18/2024
 
 # Quickstart: Deploy an AKS cluster using Azure CLI (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This quickstart shows you how to deploy an AKS cluster in AKS on VMware using the Azure CLI.
 
 ## Prerequisites
