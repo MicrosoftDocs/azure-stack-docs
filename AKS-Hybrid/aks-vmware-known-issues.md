@@ -12,7 +12,7 @@ ms.reviewer: leslielin
 
 # Known issues in AKS enabled by Azure Arc on VMware
 
-This article identifies important known issues and their workarounds in the AKS Arc on VMware preview. You can also review the troubleshooting guide [here](link to: troubleshoot) or follow the [troubleshooting overview](aks-vmware-support-troubleshoot.md) to report bugs or provide product feedback.
+This article identifies important known issues and their workarounds in the AKS Arc on VMware preview. You can also [review the troubleshooting guide here](aks-vmware-troubleshooting-guide.md) or follow the [troubleshooting overview](aks-vmware-support-troubleshoot.md) to report bugs or provide product feedback.
 
 We continuously update this page. As we identify critical problems that require workarounds, we add them here. Review this information carefully before deploying AKS Arc on VMware.
 
