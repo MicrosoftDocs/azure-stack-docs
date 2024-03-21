@@ -60,7 +60,7 @@ If your subscription is deploying AKS Arc (Preview) for the first time, you must
 
 ## Step 2. Install the aksarc CLI extension
 
-   Install the CLI extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command
+   Install the CLI extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command:
 
    ```azurecli
     az extension add -n aksarc
