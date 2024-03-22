@@ -150,5 +150,5 @@ Once you complete the evaluation of the AKS Arc on VMware preview, you can follo
 
 ## Next steps
 
-- If you're beginning to evaluate the AKS Arc on VMware preview and finished enabling the Kubernetes Extension for AKS Arc Operators, you can create an Kubernetes cluster by following the instructions in the [Quickstart: Deploy an AKS cluster using Azure CLI](aks-vmware-quickstart-deploy.md).
+- If you're beginning to evaluate the AKS Arc on VMware preview and finished enabling the Kubernetes Extension for AKS Arc Operators, you can create a Kubernetes cluster by following the instructions in the [Quickstart: Deploy an AKS cluster using Azure CLI](aks-vmware-quickstart-deploy.md).
 - If you completed the evaluation of AKS Arc on VMware, please share your feedback with us through [GitHub](https://github.com/Azure/aksArc/issues).
