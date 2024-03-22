@@ -30,7 +30,7 @@ For systems with 16 cores or more, there are extra two-core and four-core licens
 
 ## Benefits
 
-The Azure Stack HCI OEM license simplifies the licensing and activation process, as well as reduces costs and operational complexity. Other benefits include:
+The Azure Stack HCI OEM license simplifies the licensing and activation process and reduces costs and operational complexity. Other benefits include:
 
 - A single license for Windows Server and Azure Stack HCI.
 
