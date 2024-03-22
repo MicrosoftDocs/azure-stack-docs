@@ -50,6 +50,6 @@ AKS on VMware is available for public preview and is currently free of charge. H
 
 ## Next steps
 
-- For information about the minimum requirements for running AKS on VMware, see the [System Requirements and Support Matrix](aks-vmware-system-requirements.md).
+- For information about the minimum requirements for running AKS on VMware, see [System requirements and support matrix](aks-vmware-system-requirements.md).
 - If you already connected vCenter to Azure Arc and want to add the AKS extension, see [enable Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
 - If your vCenter is not connected to Azure Arc and you want to add the Kubernetes Extension for AKS Arc Operators (preview), see the [Quickstart: Connect VMware vCenter Server to Azure Arc using the help script](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script).
