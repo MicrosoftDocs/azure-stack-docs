@@ -1,5 +1,5 @@
 ---
-title: AKS on VMware workload cluster architecture (preview)
+title: AKS Arc on VMware and workload cluster architecture
 description: Learn about AKS Arc on VMware workload cluster architecture.
 ms.topic: overview
 ms.date: 03/18/2024
@@ -10,7 +10,7 @@ ms.lastreviewed: 11/28/2023
 
 ---
 
-# AKS on VMware workload cluster architecture (preview)
+# AKS Arc on VMware (preview) and workload cluster architecture 
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
@@ -69,5 +69,5 @@ Azure Arc is automatically enabled on all your Kubernetes clusters that are crea
 ## Next steps
 
 - To understand the supported deployment scale for running AKS Arc on VMware, see the [supported deployment scale](aks-vmware-scale-requirements.md).
-- If your vCenter is not connected to Azure Arc and you want to add the AKS extension, see the "Quick start: Connect VMware vCenter Server to Azure Arc using the help script."
-- If you already connected vCenter to Azure Arc and you want to add the AKS extension, see "Install and uninstall Kubernetes extension for AKS Arc Operators" to install the Kubernetes extension for AKS Arc operators.
+- If your vCenter is not connected to Azure Arc and you want to add the AKS extension, see the [Quickstart: Connect VMware vCenter Server to Azure Arc using the help script](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script).
+- If you already connected vCenter to Azure Arc and you want to add the AKS extension, see how to [enable Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
