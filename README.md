@@ -5,7 +5,6 @@ Welcome to the open source [documentation for Azure Stack](https://learn.microso
 - Azure Stack HCI
 - Azure Kubernetes Service (AKS) enabled by Azure Arc
 - Azure Stack Hub
-- Azure Stack Edge
 
 ## Contribute to the Azure Stack documentation
 
