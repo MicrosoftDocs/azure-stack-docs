@@ -21,7 +21,7 @@ To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware
 
 ## Before you begin
 
-- Make sure you [install the Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
+Before you begin, [install the Azure CLI](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 
 ## Step 1. Register feature/provider for the first time user
 
@@ -129,7 +129,7 @@ The custom location was created during the Arc Resource Bridge deployment.
    az customlocation show -g $customLocationResourceGroupName -n $customLocationName 
    ```
 
-Now that you have successfully enabled the Kubernetes Extension for AKS Arc Operators (preview), you can proceed to the next steps to create a Kubernetes cluster.
+Now that you successfully enabled the Kubernetes Extension for AKS Arc Operators (preview), you can proceed to the next steps to create a Kubernetes cluster.
 
 ## Clean up environment from deployments of AKS Arc on VMware
 
@@ -151,4 +151,4 @@ Once you complete the evaluation of the AKS Arc on VMware preview, you can follo
 ## Next steps
 
 - If you're beginning to evaluate the AKS Arc on VMware preview and finished enabling the Kubernetes Extension for AKS Arc Operators, you can create a Kubernetes cluster by following the instructions in the [Quickstart: Deploy an AKS cluster using Azure CLI](aks-vmware-quickstart-deploy.md).
-- If you completed the evaluation of AKS Arc on VMware, please share your feedback with us through [GitHub](https://github.com/Azure/aksArc/issues).
+- If you completed the evaluation of AKS Arc on VMware, you can share your feedback with us through [GitHub](https://github.com/Azure/aksArc/issues).
