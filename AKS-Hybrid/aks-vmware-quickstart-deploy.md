@@ -11,13 +11,13 @@ ms.date: 03/18/2024
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This quickstart shows you how to deploy an AKS cluster in AKS on VMware using the Azure CLI.
+This quickstart shows you how to deploy an AKS cluster in AKS enabled by Azure Arc on VMware using the Azure CLI.
 
 ## Prerequisites
 
 To complete this quickstart, you need to do these things:
 
-- Make sure you review and satisfy all the requirements in "System requirements and support matrix." We recommend you reserve 36-GB memory, 10 vCPUs, and 300-GB storage for the AKS on VMware initial deployment.
+- Make sure you review and satisfy all the requirements in [System requirements and support matrix](aks-vmware-system-requirements.md). We recommend you reserve 36-GB memory, 10 vCPUs, and 300-GB storage for the AKS on VMware initial deployment.
 - Make sure you [deploy Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script) by connecting vCenter to Azure with the Kubernetes Extension for AKS Arc Operators.
 - If you have an existing Arc-enabled VMware vSphere deployment, follow the installation process to [install Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
 

@@ -2,7 +2,7 @@
 title: Scale requirements for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about scale requirements for AKS Arc on VMware.
 ms.topic: conceptual
-ms.date: 03/15/2024
+ms.date: 03/22/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: leslielin
@@ -14,7 +14,7 @@ ms.lastreviewed: 03/15/2024
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article describes the maximum and minimum supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware.
+This article describes the minimum and maximum supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware.
 
 ## Support count for AKS on HCI
 
@@ -39,7 +39,7 @@ This article describes the maximum and minimum supported scale count for cluster
 | Number of concurrent AKS cluster creations on an ARB                                                                                                   | 8                                     |
 | Number of concurrent node pool creations on an ARB                                                                                                     | 8                                     |
 | Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32                                    |
-| Number of long running operations that can be run simultaneously on an AKS cluster                                                              | 1 per cluster.  |
+| Number of long running operations that can be run simultaneously on an AKS cluster                                                              | 1 per cluster  |
 
 ## Default values for virtual machine sizes
 

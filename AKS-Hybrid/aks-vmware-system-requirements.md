@@ -16,11 +16,11 @@ ms.custom: references_regions
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article describes the system requirements and support matrix for setting up AKS enabled by Azure Arc on VMware. For an overview of AKS Arc on VMware, [see the overview article](aks-vmware-overview.md).
+This article describes the system requirements for setting up AKS enabled by Azure Arc on VMware, and the support matrix. For an overview of AKS Arc on VMware, [see the overview article](aks-vmware-overview.md).
 
 ## Arc-enabled VMware vSphere requirements
 
-To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), with the Kubernetes Extension for AKS Arc Operators installed. If you already completed this step, you can proceed with the AKS Arc on VMware requirements.
+To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview), with the Kubernetes Extension for AKS Arc operators installed. If you already completed this step, you can proceed with the AKS Arc on VMware requirements.
 
 ### Support matrix
 
@@ -46,7 +46,7 @@ Before you deploy AKS on VMware, you must set up a few things in VMware vCenter.
 
 You need a designated VMware administration user for the AKS clusters. This user should have the following permissions:
 
-- This role can read all inventory, deploy, and update virtual machines (VMs) to all the resource pools (or clusters), networks, and virtual machine templates that you plan to use with AKS on VMware.
+- This role can read all inventory, deploy, and update virtual machines (VMs) to all the resource pools (or clusters), networks, and virtual machine templates that you plan to use with AKS Arc on VMware.
 
 #### Resource pool
 
@@ -65,7 +65,7 @@ For information about supported VM size options, see the [AKS Arc on VMware scal
 
 #### VM folder and VM templates
 
-You should create a folder for VM templates to store the Arc Resource Bridge and CBL Mariner Linux VM templates used to create AKS on VMware clusters.
+You should create a folder for VM templates, to store the Arc Resource Bridge and CBL Mariner Linux VM templates that are used to create AKS on VMware clusters.
 
 ## Azure requirements
 
@@ -124,4 +124,4 @@ AKS Arc on VMware doesn't store or process customer data outside the region in w
 ## Next steps
 
 - If you already connected vCenter to Azure Arc and want to add the AKS extension, see the [Quickstart: Deploy an AKS cluster using Azure CLI](aks-vmware-quickstart-deploy.md).
-- If your vCenter is not connected to Azure Arc and you want to add the AKS extension, see the [Quickstart: Connect VMware vCenter Server to Azure Arc using the help script](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script).
+- If your vCenter is not connected to Azure Arc and you want to add the AKS extension, see the [Quickstart: Connect VMware vCenter Server to Azure Arc using the helper script](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script).
