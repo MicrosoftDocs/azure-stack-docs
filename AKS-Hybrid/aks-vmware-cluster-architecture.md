@@ -14,13 +14,13 @@ ms.lastreviewed: 11/28/2023
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article provides an overview of the cluster architecture and key infrastructure components of Kubernetes, such as the control plane, and worker nodes for the Azure Kubernetes Service (AKS) on VMware.
+This article provides an overview of the cluster architecture and key infrastructure components of Kubernetes, such as the control plane and worker nodes, for AKS enabled by Azure Arc on VMware.
 
 ## Cluster architecture
 
 An Azure Kubernetes Service cluster has the following components:
 
-- **[Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview)** (also known as **Arc appliance**) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
+- **[Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview)** (also known as the **Arc appliance**) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - **Workload clusters** (also known as **target clusters**) are where containerized applications are deployed.
 
 :::image type="content" source="media/aks-vmware-cluster-architecture/aks-vmware-cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/aks-vmware-cluster-architecture/aks-vmware-cluster-architecture.png":::
@@ -35,7 +35,7 @@ Azure Arc Resource Bridge provides the line of sight to private clouds required 
 
 - **AKS Arc cluster extensions**: A cluster extension is the on-premises equivalent of an Azure Resource Manager resource provider. Just as the **Microsoft.ContainerService** resource provider manages AKS clusters in Azure, the **Microsoft.HybridContainerService** resource provider enables the AKS Arc cluster extension to manage Kubernetes clusters via Azure when added to your Arc Resource Bridge.
 - **Custom location**: A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying Azure service instances.
-- **vCenter resource**: VMware vCenter is server management software that provides a centralized platform for controlling vSphere environments. The Arc Resource Bridge and AKS extensions communicate with the vCenter through the [cluster API provided by vSphere](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/) (CAPv), facilitating the creation of workload clusters. Each of the custom location resource maps to an instance of vCenter. As you connect your vCenter to Azure, you also register your vCenter as an Azure resource, which is the vCenter resource.
+- **vCenter resource**: VMware vCenter is server management software that provides a centralized platform for controlling vSphere environments. The Arc Resource Bridge and AKS extensions communicate with the vCenter through the [cluster API provided by vSphere](https://github.com/kubernetes-sigs/cluster-api-provider-vsphere/) (CAPv), facilitating the creation of workload clusters. Each of the custom location resources maps to an instance of vCenter. As you connect your vCenter to Azure, you also register your vCenter as an Azure resource, which is the vCenter resource.
 
 For an architectural overview of the Azure Arc Resource Bridge, see the [Azure Arc Resource Bridge overview](/azure/azure-arc/resource-bridge/overview#overview). For each Azure Arc Resource Bridge, you can manage multiple vCenter instances by creating vCenter resources with the corresponding custom locations. There is a one-to-one mapping relationship between vCenter resources and custom locations.
 
@@ -52,7 +52,7 @@ A workload cluster has many components, as described in the following sections.
 
 The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This load balancing can help prevent downtime and improve overall performance of applications.
 
-The AKS on VMware preview supports the following options to deploy a load balancer for your Kubernetes cluster:
+The AKS Arc on VMware preview supports the following options to deploy a load balancer for your Kubernetes cluster:
 
 - Bring your own third party load balancer.
 

@@ -2,7 +2,7 @@
 title: AKS on VMware overview (preview)?
 description: Learn about AKS enabled by Azure Arc deployment options on VMware.
 ms.topic: overview
-ms.date: 03/15/2024
+ms.date: 03/22/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: leslielin
@@ -26,23 +26,23 @@ The built-in Kubernetes extension for AKS Arc operators that comes with Arc-enab
 
 ## Simplified management of AKS components on VMware vSphere
 
-To use AKS on VMware, you must onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the Arc Resource Bridge, with the Kubernetes extension for AKS Arc operators (preview) installed. If you have an exisitng Arc-enabled VMware vSphere, follow the instructions to [enable Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
+To use AKS on VMware, you must onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the Arc Resource Bridge, with the Kubernetes extension for AKS Arc operators (preview) installed. If you have an existing Arc-enabled VMware vSphere, follow the instructions to [enable the Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
 
-The following infrastructure components service the AKS on VMware experience, including Arc-enabled VMware vSphere, Arc Resource Bridge, Custom Location, and the Kubernetes extension for the AKS Arc operator:
+The following infrastructure components comprise the AKS on VMware experience:
 
-- [**Arc-enabled VMware vSphere**](/azure/azure-arc/vmware-vsphere/overview): Azure Arc-enabled VMware vSphere is an Azure Arc service that helps you simplify management of hybrid IT estate distributed across VMware vSphere and Azure. It does so by extending the Azure control plane to VMware vSphere infrastructure and enabling the use of Azure security, governance, and management capabilities consistently across VMware vSphere and Azure.
-- [**Arc Resource Bridge**](/azure/azure-arc/resource-bridge/overview): The Arc Resource Bridge is created automatically when you Arc-enable your VMware vSphere cluster. This lightweight Kubernetes VM connects your VMware vSphere to Azure Cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources such as Kubernetes clusters on-premises through Azure.
-- [**Custom Location**](/azure/azure-arc/platform/conceptual-custom-locations): Similar to Azure Arc Resource Bridge, a custom location is created automatically when you deploy Arc-enabled VMware vSphere. A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying AKS.
-- **Kubernetes Extension for AKS Arc Operators**: The Kubernetes extension for AKS operators can be installed on Arc Resource Bridge using a help script from the Azure portal or Azure CLI commands. It's the on-premises equivalent of an Azure Resource Manager resource provider to help manage AKS via Azure.
+- [**Arc-enabled VMware vSphere**](/azure/azure-arc/vmware-vsphere/overview): Azure Arc-enabled VMware vSphere is an Azure Arc service that helps you simplify management of hybrid IT estates distributed across VMware vSphere and Azure. It does so by extending the Azure control plane to VMware vSphere infrastructure and enabling the consistent use of Azure security, governance, and management capabilities across VMware vSphere and Azure.
+- [**Arc Resource Bridge**](/azure/azure-arc/resource-bridge/overview): The Arc Resource Bridge is created automatically when you Arc-enable your VMware vSphere cluster. This lightweight Kubernetes VM connects your VMware vSphere to Azure Cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources, such as Kubernetes clusters on-premises through Azure.
+- [**Custom locations**](/azure/azure-arc/platform/conceptual-custom-locations): Similar to Azure Arc Resource Bridge, a custom location is created automatically when you deploy Arc-enabled VMware vSphere. A custom location is the on-premises equivalent of an Azure region and is an extension of the Azure location construct. Custom locations provide a way for tenant administrators to use their data center with the right extensions installed, as target locations for deploying AKS.
+- **Kubernetes Extension for AKS Arc Operators**: The Kubernetes extension for AKS operators can be installed on Arc Resource Bridge using a helper script, from the Azure portal or using Azure CLI commands. It's the on-premises equivalent of an Azure Resource Manager resource provider to help manage AKS via Azure.
 
 By integrating these components, Azure Arc offers a unified and efficient solution for provisioning and managing Kubernetes. It seamlessly bridges the gap between on-premises and cloud infrastructures.
 
 ## Orchestrate containerized workloads
 
-AKS on VMware is designed to enable infrastructure administrators and Kubernetes operators to orchestrate containerized workloads across Azure and VMware vSphere. The following are some of the key capabilities:
+AKS on VMware is designed to enable infrastructure administrators and Kubernetes operators to orchestrate containerized workloads across Azure and VMware vSphere. The following list describes some key capabilities:
 
 - **Infrastructure administrator**: The infrastructure administrator is responsible for setting up VMware vSphere, which encompasses the deployment of all previously mentioned infrastructure components. The administrator must also establish the platform configuration, including networking and storage, to enable Kubernetes operators to create and manage Kubernetes clusters.
-- **Kubernetes operator**: Kubernetes operators create and manage Kubernetes clusters on VMware. This management enables them to run applications without needing to coordinate with infrastructure administrators. The operator is granted access to the Azure subscription, Azure custom location, and virtual network by the infrastructure administrator. There's no need for access to the underlying on-premises infrastructure. With the necessary access, the operator can create Kubernetes clusters based on application requirements.
+- **Kubernetes operator**: Kubernetes operators create and manage Kubernetes clusters on VMware. This management enables operators to run applications without needing to coordinate with infrastructure administrators. The operator is granted access to the Azure subscription, Azure custom location, and virtual network by the infrastructure administrator. There's no need for access to the underlying on-premises infrastructure. With the necessary access, the operator can create Kubernetes clusters based on application requirements.
 
 ## Pricing and terms of use
 
