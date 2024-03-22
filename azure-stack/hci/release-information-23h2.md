@@ -28,7 +28,7 @@ The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limite
 
 The following diagram illustrates the release trains, their associated baseline builds, and update paths.
 
-:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Stack HCI, version 23H2 release trains with supported update paths.":::
+:::image type="content" source="./media/release-information-23h2/release-trains-supported-update-paths.png" alt-text="Diagram illustrating Azure Stack HCI, version 23H2 release trains with supported update paths."lightbox="./media/release-information-23h2/release-trains-supported-update-paths.png":::
 
 #### Move to the next release train
 
