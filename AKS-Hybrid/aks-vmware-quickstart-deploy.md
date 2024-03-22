@@ -94,5 +94,5 @@ az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-ver
 
 ## Next steps
 
-- See [Supported deployment scale](aks-vmware-scale-requirements.md) for difference configuration options
+- See [Supported deployment scale](aks-vmware-scale-requirements.md) for the different configuration options.
 - [Prepare an application](/azure/aks/hybrid/tutorial-kubernetes-prepare-application)
