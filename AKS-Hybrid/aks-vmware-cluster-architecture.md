@@ -12,6 +12,8 @@ ms.lastreviewed: 11/28/2023
 
 # AKS on VMware workload cluster architecture (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This article provides an overview of the cluster architecture and key infrastructure components of Kubernetes, such as the control plane, and worker nodes for the Azure Kubernetes Service (AKS) on VMware.
 
 ## Cluster architecture
@@ -21,7 +23,7 @@ An Azure Kubernetes Service cluster has the following components:
 - **[Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview)** (also known as **Arc appliance**) provides the core orchestration mechanism and interface for deploying and managing one or more workload clusters.
 - **Workload clusters** (also known as **target clusters**) are where containerized applications are deployed.
 
-:::image type="content" source="media/cluster-architecture/cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/cluster-architecture/cluster-architecture.png":::
+:::image type="content" source="media/aks-vmware-cluster-architecture/aks-vmware-cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/aks-vmware-cluster-architecture/aks-vmware-cluster-architecture.png":::
 
 AKS Arc uses a set of predefined configuration options to deploy Kubernetes clusters effectively and with scalability in mind. A deployment operation creates multiple Linux or Windows virtual machines and joins them together to create one or more Kubernetes clusters.
 

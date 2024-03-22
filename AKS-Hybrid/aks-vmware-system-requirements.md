@@ -10,6 +10,8 @@ ms.author: sethm
 
 # System requirements and support matrix (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This article describes the system requirements and support matrix for setting up AKS enabled by Azure Arc on VMware. For an overview of AKS Arc on VMware, [see the overview article](aks-vmware-overview.md).
 
 ## Arc-enabled VMware vSphere requirements
@@ -108,15 +110,12 @@ You can use the AKS Arc on VMware preview in the following supported regions:
 - Southeast Asia 
 - West Europe
 
-
 > [!WARNING]
 > The AKS Arc on VMware preview currently supports cluster creation exclusively within the specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
 
 #### Data residency
 
 AKS Arc on VMware doesn't store or process customer data outside the region in which the customer deploys the service instance.
-
-
 
 ## Next steps
 
