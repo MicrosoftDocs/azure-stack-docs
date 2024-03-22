@@ -25,7 +25,7 @@ To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware
 
 ## Step 1. Register feature/provider for the first time user
 
-If your subscription is deploying Kubermetes Extension for AKS Arc Operators (preview) for the first time, you must register the preview features.
+If your subscription is deploying the Kubernetes Extension for AKS Arc Operators (preview) for the first time, you must register the preview features.
 
 1. Prepare your Azure account:
 
@@ -115,7 +115,7 @@ The custom location was created during the Arc Resource Bridge deployment.
    $customLocationResourceGroupName = '$resourceGroup from Arc Resource Bridge deployment'
    $customLocationName = '$customLocationName from Arc Resource Bridge deployment'
    ```
-   
+
 1. Patch the custom location: `ProvisioningState: "Patching"`. 
 
    ```azurecli
