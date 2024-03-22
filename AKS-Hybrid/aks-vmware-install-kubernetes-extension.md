@@ -17,7 +17,7 @@ ms.lastreviewed: 03/21/2024
 To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview) There are two scenarios available for accessing this preview:
 
 - If you deploy the Arc Resource Bridge with the Kubernetes Extension for AKS Arc Operators installed, you should only follow [Step #1: register feature/provider for the first time user](#step-1-register-featureprovider-for-the-first-time-user), and [Step #2: install the `aksarc` CLI extension](#step-2-install-the-aksarc-cli-extension).
-- If you deploy the Arc Resource Bridge without installing the Kubernetes Extension for AKS Arc Operators, follow all the steps on this page.
+- If you deploy the Arc Resource Bridge without installing the Kubernetes Extension for AKS Arc Operators, follow all the steps in this article.
 
 ## Before you begin
 
@@ -70,7 +70,7 @@ az extension add -n customlocation
 
 ## Step 3. Install the Kubernetes Extension for AKS Arc Operators
 
-1. Specify the version of the Kubernetes Extension for AKS Arc Operators:
+1. Specify the version of the Kubernetes extension for AKS Arc operators:
 
    ```PowerShell
    $extension_name = 'hybridaksopext'
@@ -91,7 +91,7 @@ az extension add -n customlocation
    $appliance_name = '$applianceName from Arc Resource Bridge deployment'
    ```
 
-1. Install the Kubernetes Extension for AKS Arc Operators. `ProvisioningState= "Succeeded"`
+1. Install the Kubernetes extension for AKS Arc operators:
 
    ```azurecli
    az k8s-extension create -g $resource_group -c $appliance_name --cluster-type appliances --name $extension_name --extension-type Microsoft.HybridAKSOperator --version $extension_version --release-train $extension_release_train --config Microsoft.CustomLocation.ServiceAccount="default" --auto-upgrade false 
@@ -135,7 +135,7 @@ Now that you successfully enabled the Kubernetes Extension for AKS Arc Operators
 
 Once you complete the evaluation of the AKS Arc on VMware preview, you can follow these steps to clean up your environment:
 
-1. Delete the AKS cluster. To delete the workload cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command, or go to the Azure portal.
+1. Delete the AKS cluster. To delete the workload cluster, use the [az aksarc delete](/cli/azure/aksarc#az-aksarc-delete) command, or go to the Azure portal:
 
    ```azurecli
    az aksarc delete -n '<cluster name>' -g $applianceResourceGroupName
