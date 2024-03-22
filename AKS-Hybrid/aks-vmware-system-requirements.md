@@ -84,7 +84,6 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 | `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
 | `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.  | 
 
-
 ### Microsoft Entra permissions, role and access level
 
 You must have sufficient permissions to register an application with your Microsoft Entra tenant. To check that you have sufficient permissions, follow these steps:
