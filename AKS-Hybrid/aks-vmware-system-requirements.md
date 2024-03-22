@@ -1,10 +1,14 @@
 ---
 title: System requirements and support matrix for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about system requirements and the support matrix for AKS enabled by Azure Arc on VMware.
-ms.date: 03/18/2024
+ms.date: 03/22/2024
 ms.topic: conceptual
 author: sethmanheim
-ms.author: sethm 
+ms.author: sethm
+ms.reviewer: leslielin
+ms.lastreviewed: 03/22/2024
+
+ms.custom: references_regions
 
 ---
 
@@ -77,12 +81,12 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 
 | Parameter                     | Parameter details  |
 |-------------------------------|--------------------|
-| `$aad_Group_Id`                 | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster.  | 
-| `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  | 
-| `$custom_Location`              | Custom location name or ID for deploying the Arc Resource Bridge. The same name applies to the AKS extension.  | 
-| `$resource_Group`               | Resource Group name or ID for deploying the Arc Resource Bridge.  | 
-| `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
-| `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.  | 
+| `$aad_Group_Id`                 | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster.  |
+| `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  |
+| `$custom_Location`              | Custom location name or ID for deploying the Arc Resource Bridge. The same name applies to the AKS extension.  |
+| `$resource_Group`               | Resource Group name or ID for deploying the Arc Resource Bridge.  |
+| `$network_name`                 | Name of the VMware network resource enabled in Azure.  |
+| `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.  |
 
 ### Microsoft Entra permissions, role and access level
 
@@ -103,10 +107,11 @@ You must have an Azure resource group in the supported regions before registrati
 #### Supported regions
 
 You can use the AKS Arc on VMware preview in the following supported regions:
+
 - East US
-- Australia East 
-- India Central 
-- Southeast Asia 
+- Australia East
+- India Central
+- Southeast Asia
 - West Europe
 
 > [!WARNING]
