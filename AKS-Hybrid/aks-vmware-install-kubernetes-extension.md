@@ -25,7 +25,7 @@ To use the AKS Arc on VMware preview, you must first onboard [Arc-enabled VMware
 
 ## Step 1. Register feature/provider for the first time user
 
-If your subscription is deploying Kubermetes Extension for AKS Arc Operators (Preview) for the first time, you must register the preview features.
+If your subscription is deploying Kubermetes Extension for AKS Arc Operators (preview) for the first time, you must register the preview features.
 
 1. Prepare your Azure account:
 
