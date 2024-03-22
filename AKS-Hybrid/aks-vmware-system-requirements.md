@@ -47,15 +47,15 @@ You need a designated VMware administration user for the AKS clusters. This user
 In this preview release, the Arc Resource Bridge and the target clusters share a resource pool. To set this up, create a resource pool for the Arc Resource Bridge and the target cluster(s) with the following minimum specifications:
 
 | Cluster type                  | Memory  | vCPUs | Storage  |
-|-------------------------------|---------|-------|----------|
-| Arc Resource Bridge           | 16 GiB  | 4     | 100 GiB  |
-| Target cluster control plane  | 16 GiB  | 4     | 100 GiB  |
-| Target cluster worker node    | 4  GiB  | 2     | 100 GiB  |
+|-------------------------------|--------|-------|---------|
+| Arc Resource Bridge           | 16 GB  | 4     | 100 GB  |
+| Target cluster control plane  | 16 GB  | 4     | 100 GB  |
+| Target cluster worker node    | 4  GB  | 2     | 100 GB  |
 
 For information about supported VM size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md).
 
 > [!WARNING]
-> For the target cluster control plane, there is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2 vCPUs and 8 GiB memory. Until this issue is fixed, we recommend you deploy target cluster control plane with 16 GiB, and 4 vCPUs. For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/ Known issues](aks-vmware-known-issues.md).
+> For the target cluster control plane, there is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2 vCPUs and 8 GB memory. Until this issue is fixed, we recommend you deploy target cluster control plane with 16 GB, and 4 vCPUs. For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/ Known issues](aks-vmware-known-issues.md).
 
 #### VM folder and VM templates
 
@@ -75,11 +75,10 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 
 | Parameter                     | Parameter details  |
 |-------------------------------|--------------------|
+| `$aad_Group_Id`                 | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster.  | 
 | `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  | 
-| `$custom_Location`              | Name or ID of the custom location created for Arc Resource Bridge. The same name applies to the AKS extension.  | 
-| `$subscriptionID`               | The Azure subscription ID where you instaledl the Azure Arc Resource Bridge and custom location.  | 
-| `$resource_Group`               | The resource group in the Azure subscription where you installed the Arc Resource Bridge and custom location.  | 
-| `$aad_Group_Id`                 | The $aadGroupId is the ID of a group whose members are responsible for managing the target cluster. The group should also have owner permissions on the resource group where the custom location and target cluster are in.  | 
+| `$custom_Location`              | Custom location name or ID for deploying the Arc Resource Bridge. The same name applies to the AKS extension.  | 
+| `$resource_Group`               | Resource Group name or ID for deploying the Arc Resource Bridge.  | 
 | `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
 | `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address  | 
 
@@ -104,6 +103,10 @@ You must have an Azure resource group in the supported regions before registrati
 
 You can use the AKS Arc on VMware preview in the following supported regions:
 - East US
+- Australia East 
+- India Central 
+- Southeast Asia 
+- West Europe
 
 
 > [!WARNING]
@@ -117,5 +120,5 @@ AKS Arc on VMware doesn't store or process customer data outside the region in w
 
 ## Next steps
 
-- If you already connected vCenter to Azure Arc and want to add the AKS extension, [see the Quickstart](aks-vmware-quickstart-deploy.md).
-- If your vCenter is not connected to Azure Arc and you want to add the AKS extension, see the Quickstart: Connect VMware vCenter Server to Azure Arc using the help script".
+- If you already connected vCenter to Azure Arc and want to add the AKS extension, [see the Quickstart: Deploy an AKS cluster using Azure CLI](aks-vmware-quickstart-deploy.md).
+- If your vCenter is not connected to Azure Arc and you want to add the AKS extension, see the see the [Quickstart: Connect VMware vCenter Server to Azure Arc using the help script](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script).
