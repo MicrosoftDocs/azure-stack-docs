@@ -38,7 +38,7 @@ To complete this quickstart, you need to do these things:
 | `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
 | `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address  | 
 
-## Step 1: sign in to Azure
+## Step 1: Sign in to Azure
 
 1. Sign in to Azure using the following command:
 
