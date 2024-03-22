@@ -1,6 +1,6 @@
 --- 
 title: Deploy an SDN infrastructure using SDN Express for Azure Stack HCI, version 23H2
-description: Learn to deploy an SDN infrastructure using SDN Express for Azure Stack HCI, version 23h2
+description: Learn to deploy an SDN infrastructure using SDN Express for Azure Stack HCI, version 23h2.
 author: alkohli 
 ms.topic: how-to 
 ms.date: 03/13/2024
@@ -12,7 +12,7 @@ ms.reviewer: anirbanpaul
 
 > Applies to: Azure Stack HCI, version 23H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this topic, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Stack HCI, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
+In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Stack HCI, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure System Center Virtual Machine Manager (VMM). For more information, [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
 
@@ -24,7 +24,7 @@ Before you begin an SDN deployment, plan out and configure your physical and hos
 - [Host network requirements](../concepts/host-network-requirements.md)
 - [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md)
 
-You do not have to deploy all SDN components. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) to determine which infrastructure components you need, and then run the scripts accordingly.
+You don't have to deploy all SDN components. See the [Phased deployment](../concepts/plan-software-defined-networking-infrastructure.md#phased-deployment) section of [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) to determine which infrastructure components you need, and then run the scripts accordingly.
 
 Make sure all host servers have the Azure Stack HCI operating system installed. See [Deploy the Azure Stack HCI operating system](../deploy/deployment-install-os.md) on how to do this.
 
@@ -35,7 +35,7 @@ The following requirements must be met for a successful SDN deployment:
 - All host servers must have Hyper-V enabled.
 - All host servers must be joined to Active Directory.
 - Active Directory must be prepared. For more information, see [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-- A [virtual switch](create-logical-networks.md) must be created. You can use the default switch created for Azure Stack HCI, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
+- A [virtual switch](../manage/create-logical-networks.md) must be created. You can use the default switch created for Azure Stack HCI, version 23H2. You may need to create separate switches for compute traffic and management traffic, for example.
 - The physical network must be configured for the subnets and VLANs defined in the configuration file.
 - The SDN Express script needs to be run from a Windows Server 2016 or later computer.
 - The VHDX file specified in the configuration file must be reachable from the computer where the SDN Express script is run.
@@ -59,7 +59,7 @@ The SDN Express script files live in GitHub. The first step is to get the necess
 
 ## Edit the configuration file
 
-The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you are deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) topic.
+The PowerShell `MultiNodeSampleConfig.psd1` configuration data file contains all the parameters and settings that are needed for the SDN Express script as input for the various parameters and configuration settings. This file has specific information about what needs to be filled out based on whether you're deploying only the network controller component, or the software load balancer and gateway components as well. For detailed information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md) article.
 
 Navigate to the `C:\SDNExpress\scripts` folder and open the `MultiNodeSampleConfig.psd1` file in your favorite text editor. Change specific parameter values to fit your infrastructure and deployment:
 
@@ -69,16 +69,16 @@ The settings and parameters are used by SDN in general for all deployments. For 
 
 - **VHDPath** - VHD file path used by all SDN infrastructure VMs (NC, SLB, GW)
 - **VHDFile** - VHDX file name used by all SDN infrastructure VMs
-- **VMLocation** - file path to SDN infrastructure VMs. Note that Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`
-- **JoinDomain** - domain to which SDN infrastructure VMs are joined to
+- **VMLocation** - file path to SDN infrastructure VMs. Universal Naming Convention (UNC) paths aren't supported. For cluster storage-based paths, use a format like `C:\ClusterStorage\...`
+- **JoinDomain** - domain to which SDN infrastructure VMs are joined
 - **SDNMacPoolStart** - beginning MAC pool address for client workload VMs
 - **SDNMacPoolEnd** -  end MAC pool address for client workload VMs
 - **ManagementSubnet** - management network subnet used by NC to manage Hyper-V hosts, SLB, and GW components
 - **ManagementGateway** - Gateway address for the management network
 - **ManagementDNS** - DNS server for the management network
 - **ManagementVLANID** - VLAN ID for the management network
-- **DomainJoinUsername** - administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
-- **LocalAdminDomainUser** - local administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
+- **DomainJoinUsername** - administrator username. The username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
+- **LocalAdminDomainUser** - local administrator username. The username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
 - **RestIpAddress** - Static IP address for your REST API, which is allocated from your management network. It can be used for DNS resolution or REST IP-based deployments
 - **HyperVHosts** - host servers to be managed by Network Controller
@@ -90,7 +90,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **Locale** - if not specified, locale of deployment computer is used
 - **TimeZone** - if not specified, local time zone of deployment computer is used
 
-Passwords can be optionally included if stored encrypted as text-encoded secure strings.  Passwords will only be used if SDN Express scripts are run on the same computer where passwords were encrypted, otherwise it will prompt for these passwords:
+Passwords can be optionally included if stored encrypted as text-encoded secure strings.  Passwords will only be used if SDN Express scripts are run on the same computer where passwords were encrypted, otherwise it prompts for these passwords:
 
 - **DomainJoinSecurePassword** - for domain account
 - **LocalAdminSecurePassword** - for local administrator account
@@ -139,7 +139,7 @@ Leave this section empty (`Gateways = @()`) if not deploying the Gateway compone
 
 ### Additional settings for SLB and Gateway
 
-The following additional parameters are used by SLB and Gateway VMs. Leave these values blank if you are not deploying SLB or Gateway VMs:
+The following other parameters are used by SLB and Gateway VMs. Leave these values blank if you aren't deploying SLB or Gateway VMs:
 
 - **SDNASN** - Autonomous System Number (ASN) used by SDN to peer with network switches
 - **RouterASN** - Gateway router ASN
@@ -147,7 +147,7 @@ The following additional parameters are used by SLB and Gateway VMs. Leave these
 - **PrivateVIPSubnet** -  virtual IP address (VIP) for the private subnet
 - **PublicVIPSubnet** - virtual IP address for the public subnet
 
-The following additional parameters are used by Gateway VMs only. Leave these values blank if you are not deploying Gateway VMs:
+The following other parameters are used by Gateway VMs only. Leave these values blank if you aren't deploying Gateway VMs:
 
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
@@ -159,7 +159,7 @@ The following additional parameters are used by Gateway VMs only. Leave these va
 
 ### Settings for tenant overlay networks
 
-The following parameters are used if you are deploying and managing overlay virtualized networks for tenants. If you are using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
+The following parameters are used if you are deploying and managing overlay virtualized networks for tenants. If you're using Network Controller to manage traditional VLAN networks instead, these values can be left blank.
 
 - **PASubnet** -  subnet for the Provider Address (PA) network
 - **PAVLANID** - VLAN ID for the PA network

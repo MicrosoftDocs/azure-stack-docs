@@ -46,8 +46,10 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Install prebuilt client software
+          - text: Install prebuilt Lustre client software
             url: client-install.md
+          - text: Upgrade Lustre client software
+            url: client-upgrade.md
           - text: Connect clients to an Azure Managed Lustre file system
             url: connect-clients.md
           - text: Use Azure Lustre CSI driver for Kubernetes
