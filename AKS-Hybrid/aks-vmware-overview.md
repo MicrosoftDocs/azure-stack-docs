@@ -28,7 +28,7 @@ The built-in Kubernetes extension for AKS Arc operators that comes with Arc-enab
 
 To use AKS on VMware, you must onboard [Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/overview) by connecting vCenter to Azure through the Arc Resource Bridge, with the Kubernetes extension for AKS Arc operators (preview) installed. If you have an existing Arc-enabled VMware vSphere, follow the instructions to [enable the Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
 
-The following infrastructure components comprise AKS on VMware experience:
+The following infrastructure components comprise the AKS on VMware experience:
 
 - [**Arc-enabled VMware vSphere**](/azure/azure-arc/vmware-vsphere/overview): Azure Arc-enabled VMware vSphere is an Azure Arc service that helps you simplify management of hybrid IT estates distributed across VMware vSphere and Azure. It does so by extending the Azure control plane to VMware vSphere infrastructure and enabling the consistent use of Azure security, governance, and management capabilities across VMware vSphere and Azure.
 - [**Arc Resource Bridge**](/azure/azure-arc/resource-bridge/overview): The Arc Resource Bridge is created automatically when you Arc-enable your VMware vSphere cluster. This lightweight Kubernetes VM connects your VMware vSphere to Azure Cloud and enables on-premises resource management from Azure. Azure Arc Resource Bridge provides the line of sight to private clouds required to manage resources, such as Kubernetes clusters on-premises through Azure.
