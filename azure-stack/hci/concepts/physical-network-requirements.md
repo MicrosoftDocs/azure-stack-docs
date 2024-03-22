@@ -3,7 +3,7 @@ title: Physical network requirements for Azure Stack HCI
 description: Physical network requirements and considerations for Azure Stack HCI, including network switches.
 author: jacobpedd
 ms.topic: conceptual
-ms.date: 02/22/2024
+ms.date: 03/14/2024
 ms.author: jgerend 
 ms.reviewer: JasonGerend
 ---
@@ -435,8 +435,5 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 
 ## Next steps
 
-- Learn about network adapter and host requirements. See [Host network requirements](host-network-requirements.md).
-- Brush up on failover clustering basics. See [Failover Clustering Networking Basics](https://techcommunity.microsoft.com/t5/failover-clustering/.failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
-- Brush up on using SET. See [Remote Direct Memory Access (RDMA) and Switch Embedded Teaming (SET)](/windows-server/virtualization/hyper-v-virtual-switch/rdma-and-switch-embedded-teaming).
-- For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
-- For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
+- See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
+- See [Deploy using ARM template](../deploy/deployment-azure-resource-manager-template.md).
