@@ -6,14 +6,16 @@ ms.author: anpaul
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/15/2024
+ms.date: 03/22/2024
 ---
 
 # Configure network security groups with PowerShell
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-This article provides instructions for configuring network security groups (NSGs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating network security groups that get applied to a subnet or a network interface. The example scripts in this article use Windows PowerShell commands exported from the **NetworkController** module. You can also [use Windows Admin Center to configure and manage network security groups](use-datacenter-firewall-windows-admin-center.md).
+This article provides instructions for configuring network security groups (NSGs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating network security groups that get applied to a subnet or a network interface. 
+
+The example scripts in this article use Windows PowerShell commands exported from the **NetworkController** module. You can also [use Windows Admin Center to configure and manage network security groups](use-datacenter-firewall-windows-admin-center.md).
 
 ## Configure Datacenter Firewall to allow all traffic
 
@@ -31,10 +33,10 @@ In this example, you create a network security group with two rules:
 1. **AllowAll_Inbound** - allows all network traffic to pass into the network interface where this network security group is configured.
 2. **AllowAllOutbound** - allows all traffic to pass out of the network interface. This network security group, identified by the resource ID "AllowAll-1" is now ready to be used in virtual subnets and network interfaces.
 
-First, connect to one of the cluster nodes by opening a PowerShell session:
+First, connect to one of the SDN cluster nodes by opening a PowerShell session:
 
 ```PowerShell
-Enter-PSSession <server-name>
+Enter-PSSession <SDN-node-name>
 ```
 
 Then, run the following script to create the network security group:
