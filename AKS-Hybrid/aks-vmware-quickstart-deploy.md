@@ -78,11 +78,11 @@ To complete this quickstart, you need to do these things:
    $control_plane_ip = '<Control Plane IP endpoint for your target cluster>'
    ```
 
-> [!NOTE]
-> If the creation of the vNet times out, try running the commands again to recreate the vNet.
+   > [!NOTE]
+   > If the creation of the vNet times out, try running the commands again to recreate the vNet.
 
-> [!NOTE]
-> The control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.
+   > [!NOTE]
+   > The control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.
 
 ## Step 3: Create the AKS cluster
 
