@@ -116,7 +116,7 @@ The custom location was created during the Arc Resource Bridge deployment.
    $customLocationName = '$customLocationName from Arc Resource Bridge deployment'
    ```
    
-1. Patch the custom location `ProvisioningState: "Patching"`. 
+1. Patch the custom location: `ProvisioningState: "Patching"`. 
 
    ```azurecli
    ### Use the same custom location information from the Arc Resource Bridge deployment
@@ -130,7 +130,6 @@ The custom location was created during the Arc Resource Bridge deployment.
    ```
 
 Now that you have successfully enabled the Kubernetes Extension for AKS Arc Operators (preview), you can proceed to the next steps to create a Kubernetes cluster.
-
 
 ## Clean up environment from deployments of AKS Arc on VMware
 
