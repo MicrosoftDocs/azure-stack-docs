@@ -47,7 +47,7 @@ At a minimum, you should have the following number of IP addresses available per
 At this time of the preview, creating AKS Arc clusters in a proxy enabled VMWare environment is not supported. 
 
 ## Firewall URL exceptions
-For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist) and [Azure Stack HCI 23H2 network requirements](/azure-stack/hci/manage/use-environment-checker?tabs=connectivity#prerequisites).
+For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist).
 
 For deployment and operation of Kubernetes clusters, the following URLs must be reachable from all physical nodes and virtual machines in the deployment. Ensure that these URLS are allowed in your firewall configuration:
 
