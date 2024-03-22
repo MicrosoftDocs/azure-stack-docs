@@ -19,25 +19,26 @@ To complete this quickstart, you need to do these things:
 
 - Make sure you review and satisfy all the requirements in [System requirements and support matrix](aks-vmware-system-requirements.md). We recommend you reserve 36-GB memory, 10 vCPUs, and 300-GB storage for the AKS on VMware initial deployment.
 - Make sure you [deploy Arc-enabled VMware vSphere](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script) by connecting vCenter to Azure with the Kubernetes Extension for AKS Arc Operators.
-- If you have an existing Arc-enabled VMware vSphere deployment, follow the installation process to [install Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
+- If you have an existing Arc-enabled VMware vSphere deployment, follow the process to [enable Kubernetes Extension for AKS Arc Operators](aks-vmware-install-kubernetes-extension.md).
 
 ### Azure parameters
 
-| Parameter        | Details                                                                                                                                                                                                                                                           |
-|------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `$subscriptionID`  | Subscription ID used to deploy the Arc Resource Bridge.                                                                                                                                                                                                           |
-| `$custom_location` | Custom location name or ID for deploying the Arc Resource Bridge.                                                                                                                                                                                                 |
-| `$resource_Group`  | Resource Group name or ID for deploying the Arc Resource Bridge.                                                                                                                                                                                                  |
-| `$aad_group_id`    | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster. Usually, you can find your Microsoft Entra ID group here and get its object ID. |
+| Parameter                     | Parameter details  |
+|-------------------------------|--------------------|
+| `$aad_Group_Id`                 | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster.  | 
+| `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  | 
+| `$custom_Location`              | Custom location name or ID for deploying the Arc Resource Bridge. The same name applies to the AKS extension.  | 
+| `$resource_Group`               | Resource Group name or ID for deploying the Arc Resource Bridge.  | 
+ 
 
 ### vCenter server information
 
-|     Parameter            |     Details                                      |
-|--------------------------|------------------------------------------------------------|
-|     `$network_name`        |     Name of the VMware network segment.                   |
-|     `$control_plane_ip`    |     Control Plane IP endpoint for your target cluster.    |
+| Parameter                     | Parameter details  |
+|-------------------------------|--------------------|
+| `$network_name`                 | Name of the VMware network resource enabled in Azure.  | 
+| `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address  | 
 
-## Step 1: sign in to Azure
+## Step 1: Sign in to Azure
 
 1. Sign in to Azure using the following command:
 
@@ -77,11 +78,11 @@ To complete this quickstart, you need to do these things:
    $control_plane_ip = '<Control Plane IP endpoint for your target cluster>'
    ```
 
-> [!NOTE]
-> If the creation of the vNet times out, try running the commands again to recreate the vNet.
+   > [!NOTE]
+   > If the creation of the vNet times out, try running the commands again to recreate the vNet.
 
-> [!NOTE]
-> The control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.
+   > [!NOTE]
+   > The control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.
 
 ## Step 3: Create the AKS cluster
 
@@ -93,4 +94,5 @@ az aksarc create -n '<name of your cluster>' -g $resource_group --kubernetes-ver
 
 ## Next steps
 
-- [Supported deployment scale](aks-vmware-scale-requirements.md)
+- See [Supported deployment scale](aks-vmware-scale-requirements.md) for the different configuration options.
+- [Prepare an application](/azure/aks/hybrid/tutorial-kubernetes-prepare-application)
