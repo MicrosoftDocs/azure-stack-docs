@@ -41,7 +41,7 @@ This article describes the minimum and maximum supported scale count for cluster
 | Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32                                    |
 | Number of long running operations that can be run simultaneously on an AKS cluster                                                              | 1 per cluster  |
 
-## Default values for virtual machine sizes for AKS on VMware (Preview)
+## Default values for virtual machine sizes for AKS on VMware (preview)
 
 | System Role                     | VM Size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
