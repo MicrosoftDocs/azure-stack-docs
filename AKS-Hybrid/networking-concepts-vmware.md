@@ -9,7 +9,8 @@ ms.reviewer: abha
 ms.lastreviewed: 03/22/2024
 ---
 
-# AKS enabled by Azure Arc network requirements
+# AKS enabled by Azure Arc on VMware network requirements
+
 This article introduces the core concepts that provide networking to your VMs and applications in AKS:
 
 - Logical networks for AKS Arc VMs
