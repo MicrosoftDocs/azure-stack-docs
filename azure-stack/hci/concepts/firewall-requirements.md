@@ -18,6 +18,9 @@ If your network uses a proxy server for internet access, see [Configure proxy se
 > [!NOTE]
 > Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
 
+> [!IMPORTANT]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+
 ## Firewall requirements for outbound endpoints
 
 Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section of this article.
