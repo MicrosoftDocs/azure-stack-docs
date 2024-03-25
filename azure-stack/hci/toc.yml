@@ -97,10 +97,12 @@ items:
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
-  - name: Review security features
-    href: concepts/security-features.md
-  - name: Download Azure Stack HCI security book
-    href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
+  - name: Review security
+    items:
+    - name: About security features
+      href: concepts/security-features.md
+    - name: Download Azure Stack HCI security book
+      href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
 
@@ -375,8 +377,7 @@ items:
     href: concepts/software-defined-networking-23h2.md
   - name: Plan an SDN infrastructure
     href: concepts/plan-software-defined-networking-infrastructure-23h2.md
-  - name: Download Azure Stack HCI security book
-    href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
+
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
