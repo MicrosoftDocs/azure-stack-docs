@@ -43,8 +43,8 @@ Here are the known issues in this release:
 
 |Feature  |Issue  |Workaround/Comments  |
 |---------|---------|---------|
-| Arc VM Management <!--27229189--> |When a new node is added into the cluster, the add may fail with: Node add failed at ERROR: An older version of the Arc VM cluster extension is installed on your cluster| |
-|Arc VM Management <!--27197239--> |The arcbridge status shows "UpgradeFailed" on the Azure portal after an update to 10.2311.4.5. |  |
+| Arc VM Management <!--27229189--> |When a new node is added into the cluster, it fails with: Node add failed at ERROR: An older version of the Arc VM cluster extension is installed on your cluster. | |
+|Arc VM Management <!--27197239--> |After an update to 10.2311.4.5, the arcbridge status shows "UpgradeFailed" on the Azure portal. |  |
 
 ## Known issues from previous releases
 
