@@ -299,9 +299,14 @@ Here is the example bandwidth allocation table:
 
 Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched Azure Stack HCI cluster network looks like this:
 
+
+
 :::image type="content" source="media/host-network-requirements/stretched-cluster.png" alt-text="Diagram that shows a stretched cluster." lightbox="media/host-network-requirements/stretched-cluster.png":::
 
 ### Stretched cluster requirements
+
+> [!IMPORTANT]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2
 
 Stretched clusters have the following requirements and characteristics:
 
