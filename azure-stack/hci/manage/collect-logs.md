@@ -264,6 +264,7 @@ Send-DiagnosticData –FilterByRole “ALM” -CollectSddc $false
 ```
 
 **Extension version**
+
 All
 
 ### CollectSddc
@@ -283,6 +284,7 @@ Send-DiagnosticData –CollectSddc $false
 ```
 
 **Extension version**
+
 All
 
 ### BypassObsAgent
@@ -301,6 +303,7 @@ Send-DiagnosticData –BypassObsAgent
 ```
 
 **Extension version**
+
 All
 
 ### SaveToPath
@@ -338,6 +341,7 @@ Send-DiagnosticData –SaveToPath <output path> -FIlterByRole <role>
 ```
 
 **Extension version**
+
 Versions 1.0.2.0 and above
 
 ### NoLogCollection
@@ -370,6 +374,7 @@ Send-DiagnosticData –NoLogCollection –SupplementaryPath <share path>
 ```
 
 **Extension version**
+
 Versions 1.0.2.0 and above
 
 ### SupplementaryLogs
@@ -421,6 +426,7 @@ Send-DiagnosticData –NoLogCollection –SupplemenatryLogs <path to adhoc logs 
 ```
 
 **Extension version**
+
 Versions 1.0.2.0 and above
 
 ### ShareCredential
@@ -456,6 +462,7 @@ Send-DiagnosticData –NoLogCollection –SupplementaryLogs <share path> –Shar
 ```
 
 **Extension version**
+
 All
 
 ### (Plan to deprecate) ToSMBShare
@@ -483,6 +490,7 @@ Send-DiagnosticData –ToSMBShare –SharePath <share path> -ShareCredential <cr
 ```
 
 **Extension version**
+
 Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
 ### (Plan to deprecate) FromSMBShare
@@ -506,6 +514,7 @@ Send-DiagnosticData –FromSMBShare –SharePath <share path>
 ```
 
 **Extension version**
+
 Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
 ### (Plan to deprecate) SharePath
@@ -546,6 +555,7 @@ Send-DiagnosticData –FromSMBShare –SharePath <share path>
 ```
 
 **Extension version**
+
 Initially accessible across all versions, however, this parameter will eventually be limited to Versions 0.1.42 and earlier.
 
 ### Roles available for filtering logs
