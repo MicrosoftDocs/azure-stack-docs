@@ -35,7 +35,7 @@ The following diagram illustrates the release trains, their associated baseline 
 Follow these guidelines to move to the next release train:
 
 - Deploy the baseline build for that release train. For example, to move from the 2311 release train to the 2402 release train, you must first deploy the 2402 baseline build.
-- Consider a fresh deployment with the 2402 baseline build or update the existing deployment. You can get to 2402 baseline build from either 2311.3 or 2311.4 update build.
+- Consider a fresh deployment with the 2402 baseline build or update the existing deployment. If you are on the 2311 release train, you can get to the 2402 release train from either 2311.3 or 2311.4 update builds.
 
 #### Move within the same release train
 
