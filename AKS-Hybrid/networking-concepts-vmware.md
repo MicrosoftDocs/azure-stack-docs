@@ -2,11 +2,11 @@
 title: AKS enabled by Azure Arc on VMWare network requirements (preview)
 description: Learn about AKS enabled by Arc on VMWare network prerequisites.
 ms.topic: overview
-ms.date: 03/22/2024
+ms.date: 03/25/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: abha
-ms.lastreviewed: 03/22/2024
+ms.lastreviewed: 03/25/2024
 ---
 
 # AKS enabled by Azure Arc on VMware network requirements (preview)
@@ -93,5 +93,5 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 
 ## Next steps
 
-- [Review system requirements for AKS on VMWare](/aks-vmware-system-requirements.md)
-- [Review scale requirements for AKS on VMWare](/aks-vmware-scale-requirements.md)
+- [Review system requirements for AKS on VMWare](aks-vmware-system-requirements.md)
+- [Review scale requirements for AKS on VMWare](aks-vmware-scale-requirements.md)
