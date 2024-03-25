@@ -7,6 +7,8 @@
     href: aks-overview.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
+  - name: Data collection
+    href: data-collection.md
 - name: AKS enabled by Azure Arc 
   expanded: true
   items:
@@ -271,8 +273,6 @@
       items:
         - name: Security overview
           href: concepts-security.md
-        - name: Data collection
-          href: data-collection.md
         - name: Container security
           href: container-security.md
         - name: Certificate management overview
