@@ -306,7 +306,7 @@ Stretched clusters provide disaster recovery that spans multiple datacenters. In
 ### Stretched cluster requirements
 
 > [!IMPORTANT]
-> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
 
 Stretched clusters have the following requirements and characteristics:
 
