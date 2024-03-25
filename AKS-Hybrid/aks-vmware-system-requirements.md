@@ -55,13 +55,13 @@ In this preview release, the Arc Resource Bridge and the target clusters share a
 | Cluster type                  | Memory  | vCPUs | Storage  |
 |-------------------------------|--------|-------|---------|
 | Arc Resource Bridge           | 16 GB  | 4     | 100 GB  |
-| Target cluster control plane  | 16 GB  | 4     | 100 GB  |
+| Target cluster control plane  | 8 GB  | 2     | 100 GB  |
 | Target cluster worker node    | 4  GB  | 2     | 100 GB  |
 
 For information about supported VM size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md).
 
 > [!WARNING]
-> For the target cluster control plane, there is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2 vCPUs and 8 GB memory. Until this issue is fixed, we recommend you deploy target cluster control plane with 16 GB, and 4 vCPUs. For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/known issues](aks-vmware-known-issues.md).
+> For the target cluster control plane, there is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2 vCPUs and 8 GB memory. Until this issue is fixed, we recommend you deploy target cluster control plane with 16 GB, and 4 vCPUs (Standard_D4s_v3). For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/known issues](aks-vmware-known-issues.md).
 
 #### VM folder and VM templates
 
