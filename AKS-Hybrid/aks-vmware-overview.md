@@ -18,20 +18,13 @@ As part of the [Azure Kubernetes Service (AKS) enabled by Azure Arc](/azure/aks/
 
 With AKS on VMware, you can manage your AKS Arc clusters running on VMware vSphere using familiar tools like Azure CLI. By default, AKS on VMware is Arc-connected, simplifying the process of bringing Azure capabilities to AKS on VMware through the [Arc Resource Bridge](/azure/azure-arc/resource-bridge/overview).
 
-The integration of the Kubernetes extension for AKS Arc operators (Preview) in Arc-enabled VMware vSphere environments simplifies the orchestration and management of containerized workloads across Azure and VMware vSphere platforms. This innovative approach provides infrastructure administrators and Kubernetes operators a unified, cloud-centric experience for the whole lifecycle management of Kubernetes clusters. It offers key capabilities and benefits such as:
+The integration of the Kubernetes extension for AKS Arc operators in Arc-enabled VMware vSphere environments simplifies the orchestration and management of containerized workloads across Azure and VMware vSphere platforms. This innovative approach provides infrastructure administrators and Kubernetes operators a unified, cloud-centric experience for the whole lifecycle management of Kubernetes clusters. It offers key capabilities and benefits such as:
 
-**Simplified Infrastructure Deployment on Arc-Enabled VMware vSphere with Seamless Onboarding**
+**Simplified infrastructure deployment on Arc-Enabled VMware vSphere with seamless onboarding**: The installation of the Kubernetes extension for AKS Arc operators is now incorporated into the single-step onboarding process for Arc-enabled VMWare vSphere through the Azure Portal.
 
-The installation of the Kubernetes extension for AKS Arc operators is now incorporated into the single-step onboarding process for Arc-enabled VMWare vSphere through the Azure Portal.
+**Unified cloud-based management tools**: Administrators can use widely-adopted tools, such as the Azure Command-Line Interface (CLI), to create, configure, and manage Kubernetes clusters directly on VMware. This integration provides a consistent toolset for managing resources, regardless of their deployment environment.
 
-**Unified Cloud-Based Management Tools**
-
-Administrators can use widely adopted tools, such as the Azure Command-Line Interface (CLI), to create, configure, and manage Kubernetes clusters directly on VMware. This integration provides a consistent toolset for managing resources, regardless of their deployment environment.
-
-**Azure-Consistent Command-Line Experience**
-
-The experience provided by AKS on Azure Stack HCI 23H2 also extends to AKS on VMware, offering a consistent CLI experience in line with Azure standards. Even during the preview phase, where only a subset of commands might be supported, this consistency is essential for administrators who value a uniform and standardized interface across their adaptive cloud deployments.
-
+**Azure-consistent command-line experience**: The experience provided by AKS on Azure Stack HCI 23H2 also extends to AKS on VMware, offering a consistent CLI experience in line with Azure standards. Even during the preview phase, where only a subset of commands might be supported, this consistency is essential for administrators who value a uniform and standardized interface across their adaptive cloud deployments.
 
 ## Simplified management of AKS components on VMware vSphere
 
