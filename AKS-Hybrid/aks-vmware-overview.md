@@ -20,11 +20,9 @@ With AKS on VMware, you can manage your AKS Arc clusters running on VMware vSphe
 
 The integration of the Kubernetes extension for AKS Arc operators in Arc-enabled VMware vSphere environments simplifies the orchestration and management of containerized workloads across Azure and VMware vSphere platforms. This innovative approach provides infrastructure administrators and Kubernetes operators a unified, cloud-centric experience for the whole lifecycle management of Kubernetes clusters. It offers key capabilities and benefits such as:
 
-**Simplified infrastructure deployment on Arc-Enabled VMware vSphere with seamless onboarding**: The installation of the Kubernetes extension for AKS Arc operators is now incorporated into the single-step onboarding process for Arc-enabled VMWare vSphere through the Azure Portal.
-
-**Unified cloud-based management tools**: Administrators can use widely-adopted tools, such as the Azure Command-Line Interface (CLI), to create, configure, and manage Kubernetes clusters directly on VMware. This integration provides a consistent toolset for managing resources, regardless of their deployment environment.
-
-**Azure-consistent command-line experience**: The experience provided by AKS on Azure Stack HCI 23H2 also extends to AKS on VMware, offering a consistent CLI experience in line with Azure standards. Even during the preview phase, where only a subset of commands might be supported, this consistency is essential for administrators who value a uniform and standardized interface across their adaptive cloud deployments.
+- **Simplified infrastructure deployment on Arc-Enabled VMware vSphere with seamless onboarding**: The installation of the Kubernetes extension for AKS Arc operators is now incorporated into the single-step onboarding process for Arc-enabled VMWare vSphere through the Azure Portal.
+- **Unified cloud-based management tools**: Administrators can use widely-adopted tools, such as the Azure Command-Line Interface (CLI), to create, configure, and manage Kubernetes clusters directly on VMware. This integration provides a consistent toolset for managing resources, regardless of their deployment environment.
+- **Azure-consistent command-line experience**: The experience provided by AKS on Azure Stack HCI 23H2 also extends to AKS on VMware, offering a consistent CLI experience in line with Azure standards. Even during the preview phase, where only a subset of commands might be supported, this consistency is essential for administrators who value a uniform and standardized interface across their adaptive cloud deployments.
 
 ## Simplified management of AKS components on VMware vSphere
 
@@ -39,7 +37,8 @@ The following infrastructure components comprise the AKS on VMware experience:
 
 By integrating these components, Azure Arc offers a unified and efficient solution for provisioning and managing Kubernetes. It seamlessly bridges the gap between on-premises and cloud infrastructures.
 
-## Enable infrastructure administrators and Kubernetes operators to orchestrate containerized workloads 
+## Enable infrastructure administrators and Kubernetes operators to orchestrate containerized workloads
+
 - **Infrastructure administrator**: The infrastructure administrator is responsible for setting up VMware vSphere, which encompasses the deployment of all previously mentioned infrastructure components. The administrator must also establish the platform configuration, including networking and storage, to enable Kubernetes operators to create and manage Kubernetes clusters.
 - **Kubernetes operator**: Kubernetes operators create and manage Kubernetes clusters on VMware. This management enables operators to run applications without needing to coordinate with infrastructure administrators. The operator is granted access to the Azure subscription, Azure custom location, and virtual network by the infrastructure administrator. There's no need for access to the underlying on-premises infrastructure. With the necessary access, the operator can create Kubernetes clusters based on application requirements.
 
