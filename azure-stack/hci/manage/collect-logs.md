@@ -325,7 +325,7 @@ Send-DiagnosticData –SaveToPath <output path>
 ```
 
 ```powershell
-Send-DignosticData –SaveToPath <share path>
+Send-DiagnosticData –SaveToPath <share path>
 ```
 
 If you’re using a share path that is not mapped, you must also use the `-ShareCredential` parameter.
