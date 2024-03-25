@@ -33,7 +33,7 @@ Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs 
 
 ## Control plane IP
 
-Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. To function correctly, this KubeVIP instance requires a single immutable "control plane IP address." The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap with any other IP address. Overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is used. You must plan to reserve one IP address per Kubernetes cluster in your environment. Ensure that the control plane IP address is excluded from the scope of your DHCP server.
+Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is always available. To function correctly, this KubeVIP instance requires a single immutable "control plane IP address." The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster doesn't overlap with any other IP address. Overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is used. You must plan to reserve one IP address per Kubernetes cluster in your environment. Ensure that the control plane IP address is excluded from the scope of your DHCP server.
 
 ## Load balancer IPs for containerized applications
 
@@ -41,17 +41,17 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 
 ## IP address planning for Kubernetes clusters and applications
 
-At a minimum, you should have the following number of IP addresses available per Kubernetes cluster. The actual number of IP addresses depends on the number of Kubernetes clusters, the number of nodes in each cluster, and the number of services and applications you intend to run on the Kubernetes cluster:
+At a minimum, you should have the following number of IP addresses available per Kubernetes cluster. The actual number of IP addresses depends on the number of Kubernetes clusters, the number of nodes in each cluster, and the number of services and applications you want to run on the Kubernetes cluster:
 
 | Parameter    | Minimum number of IP addresses |
 |------------------|---------|
-| VMWare logical network segment | 1 IP address for every worker node in your Kubernetes cluster. For example, if you intend to create 3 node pools with 3 nodes in each node pool, you need 9 available IP addresses from your DHCP server. |
-| Control plane IP | Reserve 1 IP address for every Kubernetes cluster in your environment. For example, if you intend to create 5 clusters in total, you must reserve 5 IP addresses, one for each Kubernetes cluster. These 5 IP addresses must be outside the scope of your DHCP server. |
-| Load balancer IPs | The number of IP addresses reserved depends on your application deployment model. As a starting point, you can reserve 1 IP address for every Kubernetes service. |
+| VMWare logical network segment | One IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need 9 available IP addresses from your DHCP server. |
+| Control plane IP | Reserve one IP address for every Kubernetes cluster in your environment. For example, if you need to create 5 clusters in total, you must reserve 5 IP addresses, one for each Kubernetes cluster. These 5 IP addresses must be outside the scope of your DHCP server. |
+| Load balancer IPs | The number of IP addresses reserved depends on your application deployment model. As a starting point, you can reserve one IP address for every Kubernetes service. |
 
 ## Proxy settings
 
-For this preview, creating AKS Arc clusters in a proxy enabled VMWare environment is not supported.
+For this preview, creating AKS Arc clusters in a proxy enabled VMWare environment isn't supported.
 
 ## Firewall URL exceptions
 
