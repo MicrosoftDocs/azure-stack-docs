@@ -4,12 +4,12 @@ description: Learn how to collect logs to troubleshoot Software Defined Networki
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 04/24/2023
+ms.date: 03/21/2024
 ---
 
 # Collect logs for Software Defined Networking on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 This article describes how to collect logs for Software Defined Networking (SDN) on your Azure Stack HCI cluster.
 
@@ -73,7 +73,7 @@ Follow these steps to install the `SdnDiagnostics` PowerShell module on the clie
 
 ## Install the SDN diagnostics PowerShell module on the SDN resources
 
-After you've installed the `SdnDiagnostics` module on the client computer, install the `SdnDiagnostics` module on the SDN resources within the SDN fabric. This ensures that all the SDN resources run the same version of the `SdnDiagnostics` module.
+After you installed the `SdnDiagnostics` module on the client computer, install the `SdnDiagnostics` module on the SDN resources within the SDN fabric. This ensures that all the SDN resources run the same version of the `SdnDiagnostics` module.
 
 Follow these steps in a new PowerShell window to install the `SdnDiagnostics` module on a Network Controller virtual machine (VM):
 
@@ -131,7 +131,7 @@ NetworkController
 
 ## Collect SDN logs using SdnDiagnostics
 
-After you've installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDataCollection` to collect SDN logs.
+After you installed the `SdnDiagnostics` module on the management computer and the SDN resources within the SDN fabric, you're ready to run `Start-SdnDataCollection` to collect SDN logs.
 
 ### Before you run Start-SdnDataCollection
 
