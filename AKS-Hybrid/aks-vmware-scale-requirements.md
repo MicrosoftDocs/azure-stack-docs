@@ -20,8 +20,8 @@ This article describes the minimum and maximum supported scale count for cluster
 
 | Scale item                                                               | Count                                      |
 |--------------------------------------------------------------------------|--------------------------------------------|
-| Minimum number of physical nodes in a VMware vsphere cluster                 | 1                                          |
-| Maximum number of physical nodes in a VMware vsphere cluster                 | 16                                         |
+| Minimum number of physical nodes in a VMware vSphere cluster                 | 1                                          |
+| Maximum number of physical nodes in a VMware vSphere cluster                 | 16                                         |
 | Minimum count for control plane node                                        | 1                                          |
 | Maximum count for control plane node                                        | 5 <br />    Allowed values: 1, 3, and 5.   |
 | Minimum number of nodes in default node pool created during cluster create  | 1                                          |
@@ -30,7 +30,7 @@ This article describes the minimum and maximum supported scale count for cluster
 | Minimum number of nodes in a node pool                                      | 1 <br />    Can't create empty node pools.|
 | Maximum number of nodes in a node pool                                      | 64                                         |
 | Maximum number of total nodes in an AKS cluster                       | 200                                        |
-| Maximum number of AKS clusters per a VMware vsphere cluster           | 32                                         |
+| Maximum number of AKS clusters per a VMware vSphere cluster           | 32                                         |
 
 ## Concurrency
 
