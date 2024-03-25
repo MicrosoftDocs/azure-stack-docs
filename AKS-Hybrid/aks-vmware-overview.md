@@ -44,7 +44,7 @@ By integrating these components, Azure Arc offers a unified and efficient soluti
 
 ## Pricing and terms of use
 
-AKS on VMware is available for public preview and is currently free of charge. During this phase, a trial meter will be operational. To understand the data collection of billing events, refer to the [data collection](data-collection.md) section for more details. However, be aware that the AKS on VMware preview is not recommended for production workloads. Use it with caution. For more information, see [Troubleshooting and support policy](aks-vmware-support-troubleshoot.md).
+AKS on VMware is available for public preview and is currently free of charge. During the preview, a trial meter is operational. To understand the data collection of billing events, see the [data collection](data-collection.md) article for more details. However, be aware that the AKS on VMware preview is not recommended for production workloads. Use it with caution. For more information, see [Troubleshooting and support policy](aks-vmware-support-troubleshoot.md).
 
 ## Next steps
 
