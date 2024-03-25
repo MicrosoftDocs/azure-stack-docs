@@ -11,7 +11,7 @@ ms.lastreviewed: 03/25/2024
 
 # AKS enabled by Azure Arc on VMware network requirements (preview)
 
-This article introduces the core concepts that provide networking to your VMs and applications in AKS enabled by Azure Arc on VMware:
+This article introduces the core concepts that provide networking to your VMs and applications in Azure Kubernetes Service (AKS) enabled by Azure Arc on VMware:
 
 - Logical networks for AKS enabled by Arc VMs
 - Control plane IP
@@ -33,7 +33,7 @@ Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs 
 
 ## Control plane IP
 
-Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. To function correctly, this KubeVIP instance requires a single immutable "control plane IP address." The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap with any other IP address. Note that overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is used. You must plan to reserve one IP address per Kubernetes cluster in your environment. Ensure that the control plane IP address is excluded from the scope of your DHCP server.
+Kubernetes uses a control plane to ensure every component in the Kubernetes cluster is kept in the desired state. The control plane also manages and maintains the worker nodes that hold the containerized applications. AKS deploys the KubeVIP load balancer to ensure that the API server IP address of the Kubernetes control plane is available at all times. To function correctly, this KubeVIP instance requires a single immutable "control plane IP address." The control plane IP is a required parameter to create a Kubernetes cluster. You must ensure that the control plane IP address of a Kubernetes cluster does not overlap with any other IP address. Overlapping IP addresses can lead to unexpected failures for both the AKS cluster and any other place the IP address is used. You must plan to reserve one IP address per Kubernetes cluster in your environment. Ensure that the control plane IP address is excluded from the scope of your DHCP server.
 
 ## Load balancer IPs for containerized applications
 
@@ -57,7 +57,7 @@ For this preview, creating AKS Arc clusters in a proxy enabled VMWare environmen
 
 For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist).
 
-For deployment and operation of Kubernetes clusters, the following URLs must be reachable from all physical nodes and virtual machines in the deployment. Ensure that these URLS are allowed in your firewall configuration:
+For deployment and operation of Kubernetes clusters, the following URLs must be reachable from all physical nodes and virtual machines in the deployment. Ensure that these URLs are allowed in your firewall configuration:
 
 | URL | Port |
 |---|---|
