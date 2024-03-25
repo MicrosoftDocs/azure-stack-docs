@@ -7,7 +7,7 @@ metadata:
   ms.author: cosdar
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 10/15/2021
+  ms.date: 03/25/2024
 title: Azure Stack HCI FAQ
 summary: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server and Azure Stack Hub.
 
@@ -56,7 +56,7 @@ sections:
 
       - question: How often does Azure Stack HCI sync with the cloud?
         answer: |
-          This depends on which features you’re using. At the minimum, Azure Stack HCI will try to sync every 12 hours. If sync doesn’t succeed, the content is retained locally and sent with the next successful sync. In addition to this regular timer, you can manually sync any time, using either the `Sync-AzureStackHCI` PowerShell cmdlet or from Windows Admin Center. If you turn on additional services, they may upload more frequently: for example, Azure Log Analytics would upload every 5 minutes for monitoring.
+          This depends on which features you’re using. At the minimum, Azure Stack HCI will try to sync every 12 hours. If sync doesn’t succeed, the content is retained locally and sent with the next successful sync. In addition to this regular timer, you can manually sync any time using the `Sync-AzureStackHCI` PowerShell cmdlet. If you turn on additional services, they may upload more frequently: for example, Azure Log Analytics would upload every 5 minutes for monitoring.
 
       - question: Where does the synced information actually go?
         answer: |
