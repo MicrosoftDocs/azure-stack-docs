@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 03/36/2024
+ms.date: 03/26/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
