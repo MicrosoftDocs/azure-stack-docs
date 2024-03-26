@@ -10,7 +10,7 @@ ms.lastreviewed: 03/26/2024
 
 ---
 
-# Scale requirements for AKS Arc on VMware (preview)
+# Scale requirements for AKS enabled by Arc on VMware (preview)
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
@@ -23,12 +23,11 @@ This article lists the supported scale count for clusters and node pools in AKS 
 |--------------------------------------------------------------------------|--------------------------------------------|
 | Minimum number of physical nodes in a VMware vSphere cluster                 | 1                                          |
 | Maximum number of physical nodes in a VMware vSphere cluster                 | 32                                         |
-| Minimum count for control plane node                                        | 1                                          |
-| Maximum count for control plane node                                        | 5 <br />    Allowed values: 1, 3, and 5.   |
+| Minimum count for control plane nodes                                        | 1 <br />    Allowed values: 1, 3, and 5.    |
 | Minimum number of nodes in default node pool created during cluster create  | 1                                          |
 | Minimum number of node pools in an AKS cluster                       | 1                                          |
 | Minimum number of nodes in a node pool                                      | 1 <br />    Can't create empty node pools.|
-| Maximum number of AKS clusters per a VMware vSphere cluster           | 10                                         |
+| Maximum number of AKS clusters in a VMware vSphere cluster           | 10                                         |
 
 
 ## Concurrency
@@ -37,7 +36,7 @@ This article lists the supported scale count for clusters and node pools in AKS 
 | Number of concurrent AKS cluster creations on an ARB                                                                                                   | 6                                     |
 | Number of concurrent node pool creations on an ARB                                                                                                     | 6                                     |
 
-## Default values for virtual machine sizes for AKS on VMware (preview)
+## Default values for virtual machine sizes for AKS on VMware
 
 | System role                     | VM size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
