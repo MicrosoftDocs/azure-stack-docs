@@ -14,7 +14,7 @@ ms.lastreviewed: 03/26/2024
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article lists the supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware. Note that these scale counts are contingent on the resources available from the underlying infrastructure.
+This article lists the supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware. These scale counts are contingent on the resources available from the underlying infrastructure.
 
 
 ## Support count
