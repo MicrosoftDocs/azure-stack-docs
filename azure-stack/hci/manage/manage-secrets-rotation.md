@@ -36,7 +36,7 @@ The `Set-AzureStackLCMUserPassword` cmdlet takes the following parameters:
 |`UpdateAD`    | Optional parameter used to set a new password in Active Directory.        |
 
 
-### Run the cmdlet
+### Run Set-AzureStackLCMUserPassword cmdlet
 
 Set the parameters and then run the `Set-AzureStackLCMUserPassword` cmdlet to change the password:
 
@@ -44,7 +44,7 @@ Set the parameters and then run the `Set-AzureStackLCMUserPassword` cmdlet to ch
 $old_pass = convertto-securestring "<Old password>" -asplaintext -force
 $new_pass = convertto-securestring "<New password>" -asplaintext -force
 
-Set-AzureStackLCMUserPassword -Identity mgmt -OldPassword $old_pass -NewPassword $new_pass -UpdateAD Verbose -Confirm:$false
+Set-AzureStackLCMUserPassword -Identity mgmt -OldPassword $old_pass -NewPassword $new_pass -UpdateAD 
 ```
 
 Once the password is changed, the session ends. You then need to sign in with the updated password.
@@ -54,32 +54,12 @@ Here's a sample output when using `Set-AzureStackLCMUserPassword`:
 ```output
 PS C:\Users\MGMT> $old_pass = convertto-securestring "Passwordl23!" -asplaintext -force 
 PS C:\Users\MGMT> $new_pass = convertto-securestring "Passwordl23!1" -asplaintext -force
-PS C:\Users\MGMT> Set-AzureStackLCMUserPassword -Identity mgmt -OldPassword $old_pass -NewPassword $new_pass -UpdateAD Verbose -Confirm:$false
-VERBOSE: Loading module from path 'C:\Program
-Files\WindowsPowerShell\Modules\Microsoft.AS.Infra.Security.SecretRotation\Microsoft.AS.Infra.Security.ActionPlanExecut ion.psml'.
-VERBOSE: Importing function 'Get-LatestActionPlanlnstance'.
-VERBOSE: Importing function 'PrintStatus'.
-VERBOSE: Importing function *Start-ActionPlan'.
-VERBOSE: Creating AzsSecurity log folder: D:\CloudContent\MASLogs\AzsSecurityGeneralLogging
-VERBOSE: Log file path: D:\CloudContent\MASLogs\AzsSecurityGeneralLogging\AzsSecurity_AzsSecurity_20240305-080850.log WARNING: !WARNING!
+PS C:\Users\MGMT> Set-AzureStackLCMUserPassword -Identity mgmt -OldPassword $old_pass -NewPassword $new_pass -UpdateAD 
+WARNING: !WARNING!
 The current session will be unresponsive once this command completes. You will have to login again with updated credentials. Do you want to continue?
-VERBOSE: Creating AzsSecurity log folder: D:\CloudContent\MASLogs\DomainCredentialRotation VERBOSE: Log file path:
-D:\CloudContent\MASLogs\DomainCredentialRotation\AzsSecurity_Set-AzureStackLCMUserPassword_20240305-080850.log VERBOSE: Performing the operation "Set-AzureStackLCMUserPassword” on target "mgmt".
-VERBOSE: Updating credentials for user mgmt.
-VERBOSE: Loading module from path 'C:\Program
-Files\WindowsPowerShell\Modules\Microsoft.AS.Infra.Security.SecretRotation\PasswordUtilities.psml1.
-VERBOSE: Importing function 'GetSecurePassword'.
-VERBOSE: Importing function 'Test-PasswordComplexity'.
-VERBOSE: Importing function 'Test-PasswordLength'.
-VERBOSE: Importing function 'Validateldentity'.
-VERBOSE: Importing function 'GetSecurePassword'.
-VERBOSE: Importing function 'Test-PasswordComplexity'.
-VERBOSE: Importing function 'Test-PasswordLength'.
-VERBOSE: Importing function 'Validateldentity*.
 Updating password in AD. Are you sure you want to perform this action? [Y/N]: Y 
-VERBOSE: mgmt user credentials have been successfully updated.
 WARNING: Please close this session and log in again.
-PS C:\Users\MGMT> _
+PS C:\Users\MGMT> 
 ```
 
 ## Next steps
