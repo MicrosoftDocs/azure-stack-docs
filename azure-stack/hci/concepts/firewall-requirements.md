@@ -15,6 +15,9 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
 
+> [!IMPORTANT]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+
 > [!NOTE]
 > Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
 
