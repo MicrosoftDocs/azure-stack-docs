@@ -57,7 +57,7 @@ PS C:\Users\MGMT> $new_pass = convertto-securestring "Passwordl23!1" -asplaintex
 PS C:\Users\MGMT> Set-AzureStackLCMUserPassword -Identity mgmt -OldPassword $old_pass -NewPassword $new_pass -UpdateAD 
 WARNING: !WARNING!
 The current session will be unresponsive once this command completes. You will have to login again with updated credentials. Do you want to continue?
-Updating password in AD. Are you sure you want to perform this action? [Y/N]: Y 
+Updating password in AD.
 WARNING: Please close this session and log in again.
 PS C:\Users\MGMT> 
 ```
