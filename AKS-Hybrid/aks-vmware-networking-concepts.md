@@ -1,6 +1,6 @@
 ---
-title: AKS enabled by Azure Arc on VMWare network requirements (preview)
-description: Learn about AKS enabled by Arc on VMWare network prerequisites.
+title: AKS enabled by Azure Arc on VMware network requirements (preview)
+description: Learn about AKS enabled by Arc on VMware network prerequisites.
 ms.topic: overview
 ms.date: 03/25/2024
 author: sethmanheim
@@ -10,6 +10,8 @@ ms.lastreviewed: 03/25/2024
 ---
 
 # AKS enabled by Azure Arc on VMware network requirements (preview)
+
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
 This article introduces the core concepts that provide networking to your VMs and applications in Azure Kubernetes Service (AKS) enabled by Azure Arc on VMware:
 
@@ -29,7 +31,7 @@ Ensure that you set up networking correctly for the following components in your
 
 ## Network for AKS cluster VMs
 
-Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS uses VMWare logical network segments to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For this preview, only DHCP-based VMWare logical network segments are supported. Once the VMWare network segment is provided during AKS Arc cluster creation, IP addresses are dynamically allocated to the underlying VMs of the Kubernetes clusters.
+Kubernetes nodes are deployed as specialized virtual machines in AKS. These VMs are allocated IP addresses to enable communication between Kubernetes nodes. AKS uses VMware logical network segments to provide IP addresses and networking for the underlying VMs of the Kubernetes clusters. For this preview, only DHCP-based VMware logical network segments are supported. Once the VMware network segment is provided during AKS Arc cluster creation, IP addresses are dynamically allocated to the underlying VMs of the Kubernetes clusters.
 
 ## Control plane IP
 
@@ -45,13 +47,13 @@ At a minimum, you should have the following number of IP addresses available per
 
 | Parameter    | Minimum number of IP addresses |
 |------------------|---------|
-| VMWare logical network segment | One IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need 9 available IP addresses from your DHCP server. |
+| VMware logical network segment | One IP address for every worker node in your Kubernetes cluster. For example, if you want to create 3 node pools with 3 nodes in each node pool, you need 9 available IP addresses from your DHCP server. |
 | Control plane IP | Reserve one IP address for every Kubernetes cluster in your environment. For example, if you need to create 5 clusters in total, you must reserve 5 IP addresses, one for each Kubernetes cluster. These 5 IP addresses must be outside the scope of your DHCP server. |
 | Load balancer IPs | The number of IP addresses reserved depends on your application deployment model. As a starting point, you can reserve one IP address for every Kubernetes service. |
 
 ## Proxy settings
 
-For this preview, creating AKS Arc clusters in a proxy enabled VMWare environment isn't supported.
+For this preview, creating AKS Arc clusters in a proxy enabled VMware environment isn't supported.
 
 ## Firewall URL exceptions
 
@@ -93,5 +95,5 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 
 ## Next steps
 
-- [Review system requirements for AKS on VMWare](aks-vmware-system-requirements.md)
-- [Review scale requirements for AKS on VMWare](aks-vmware-scale-requirements.md)
+- [Review system requirements for AKS on VMware](aks-vmware-system-requirements.md)
+- [Review scale requirements for AKS on VMware](aks-vmware-scale-requirements.md)
