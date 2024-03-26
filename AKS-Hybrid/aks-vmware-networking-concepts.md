@@ -11,6 +11,8 @@ ms.lastreviewed: 03/25/2024
 
 # AKS enabled by Azure Arc on VMware network requirements (preview)
 
+[!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
+
 This article introduces the core concepts that provide networking to your VMs and applications in Azure Kubernetes Service (AKS) enabled by Azure Arc on VMware:
 
 - Logical networks for AKS enabled by Arc VMs
