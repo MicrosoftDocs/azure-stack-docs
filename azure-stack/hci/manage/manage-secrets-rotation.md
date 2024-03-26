@@ -4,7 +4,7 @@ description: This article describes how to manage internal secret rotation on Az
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 03/11/2024
+ms.date: 03/36/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -20,27 +20,39 @@ This article describes how you can change the password associated with the deplo
 Use the PowerShell cmdlet `Set-AzureStackLCMUserPassword` to rotate the`AzureStackLCMUserCredential` domain administrator credential secrets. This cmdlet changes the password of the user that connects to the server hosts.
 
 > [!NOTE]
-> When running `Set-AzureStackLCMUserPassword`, it only updates what was previously changed in Active Directory.
+> When you run `Set-AzureStackLCMUserPassword`, the cmdlet only updates what was previously changed in Active Directory.
 
 
-## PowerShell cmdlet and properties
+### PowerShell cmdlet and properties
 
-The `Set-AzureStackLCMUserPassword` cmdlet has the following parameters:
+The `Set-AzureStackLCMUserPassword` cmdlet takes the following parameters:
 
-- `Identity`: Username of the user whose password you want to change.
 
-- `OldPassword`: The current password of the user.
+|Parameter|Description  |
+|---------|---------|
+|`Identity`    | Username of the user whose password you want to change.         |
+|`OldPassword` | The current password of the user.        |
+|`NewPassword` | The new password for the user.        |
+|`UpdateAD`    | Optional parameter used to set a new password in Active Directory.        |
 
-- `NewPassword`: The new password for the user.
 
-There is also an optional parameter `UpdateAD`, which when used will set a new password in Active Directory. A confirmation is requested afterwards.
+### Run the cmdlet
+
+Set the parameters and then run the `Set-AzureStackLCMUserPassword` cmdlet to change the password:
+
+```azurepowershell
+$old_pass = convertto-securestring "<Old password>" -asplaintext -force
+$new_pass = convertto-securestring "<New password>" -asplaintext -force
+
+Set-AzureStackLCMUserPassword -Identity mgmt -OldPassword $old_pass -NewPassword $new_pass -UpdateAD Verbose -Confirm:$false
+```
+
 Once the password is changed, the session ends. You then need to sign in with the updated password.
 
-Here is a sample output when using `Set-AzureStackLCMUserPassword`:
+Here's a sample output when using `Set-AzureStackLCMUserPassword`:
 
 ```output
-PS C:\Users\MGMT> .
-PS C:\Users\MGMT> $old pass = convertto-securestring "Passwordl23!" -asplaintext -force 
+PS C:\Users\MGMT> $old_pass = convertto-securestring "Passwordl23!" -asplaintext -force 
 PS C:\Users\MGMT> $new_pass = convertto-securestring "Passwordl23!1" -asplaintext -force
 PS C:\Users\MGMT> Set-AzureStackLCMUserPassword -Identity mgmt -OldPassword $old_pass -NewPassword $new_pass -UpdateAD Verbose -Confirm:$false
 VERBOSE: Loading module from path 'C:\Program
