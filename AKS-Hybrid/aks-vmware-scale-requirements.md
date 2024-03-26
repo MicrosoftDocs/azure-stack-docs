@@ -14,32 +14,28 @@ ms.lastreviewed: 03/15/2024
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article describes the minimum and maximum supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware.
+This article outlines the supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware. Please note, this is contingent on the resources available from the underlying infrastructure.
+
 
 ## Support count
 
 | Scale item                                                               | Count                                      |
 |--------------------------------------------------------------------------|--------------------------------------------|
 | Minimum number of physical nodes in a VMware vSphere cluster                 | 1                                          |
-| Maximum number of physical nodes in a VMware vSphere cluster                 | 16                                         |
+| Maximum number of physical nodes in a VMware vSphere cluster                 | 32                                         |
 | Minimum count for control plane node                                        | 1                                          |
 | Maximum count for control plane node                                        | 5 <br />    Allowed values: 1, 3, and 5.   |
 | Minimum number of nodes in default node pool created during cluster create  | 1                                          |
 | Minimum number of node pools in an AKS cluster                       | 1                                          |
-| Maximum number of node pools in an AKS cluster                       | 16                                         |
 | Minimum number of nodes in a node pool                                      | 1 <br />    Can't create empty node pools.|
-| Maximum number of nodes in a node pool                                      | 64                                         |
-| Maximum number of total nodes in an AKS cluster                       | 200                                        |
-| Maximum number of AKS clusters per a VMware vSphere cluster           | 32                                         |
+| Maximum number of AKS clusters per a VMware vSphere cluster           | 10                                         |
+
 
 ## Concurrency
-
 | Scale item                                                                                                                                      | Count                             |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
-| Number of concurrent AKS cluster creations on an ARB                                                                                                   | 8                                     |
-| Number of concurrent node pool creations on an ARB                                                                                                     | 8                                     |
-| Number of concurrent operations across all different AKS clusters such as upgrade/scaling, etc., excluding creating node pool or clusters per ARB  | 32                                    |
-| Number of long running operations that can be run simultaneously on an AKS cluster                                                              | 1 per cluster  |
+| Number of concurrent AKS cluster creations on an ARB                                                                                                   | 6                                     |
+| Number of concurrent node pool creations on an ARB                                                                                                     | 6                                     |
 
 ## Default values for virtual machine sizes for AKS on VMware (preview)
 
