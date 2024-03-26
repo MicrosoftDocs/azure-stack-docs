@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/13/2024
+ms.date: 03/22/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -17,6 +17,9 @@ If your network uses a proxy server for internet access, see [Configure proxy se
 
 > [!IMPORTANT]
 > Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+
+> [!NOTE]
+> Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
 
 ## Firewall requirements for outbound endpoints
 
