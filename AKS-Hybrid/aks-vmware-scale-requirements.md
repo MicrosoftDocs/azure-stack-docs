@@ -10,7 +10,7 @@ ms.lastreviewed: 03/26/2024
 
 ---
 
-# Scale requirements for AKS Arc on VMware (preview)
+# Scale requirements for AKS enabled by Arc on VMware (preview)
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
@@ -36,7 +36,7 @@ This article lists the supported scale count for clusters and node pools in AKS 
 | Number of concurrent AKS cluster creations on an ARB                                                                                                   | 6                                     |
 | Number of concurrent node pool creations on an ARB                                                                                                     | 6                                     |
 
-## Default values for virtual machine sizes for AKS on VMware (preview)
+## Default values for virtual machine sizes for AKS on VMware
 
 | System role                     | VM size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
