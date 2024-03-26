@@ -2,11 +2,11 @@
 title: Scale requirements for AKS on Azure Stack HCI
 description: Learn about scale requirements for AKS on Azure Stack HCI.
 ms.topic: conceptual
-ms.date: 03/15/2024
+ms.date: 03/26/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: abha
-ms.lastreviewed: 03/15/2024
+ms.lastreviewed: 03/26/2024
 
 ---
 
@@ -72,8 +72,14 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Standard_DS5_v2             | 16   | 56           |
 | Standard_DS13_v2            | 8    | 56           |
 | Standard_K8S3_v1            | 4    | 6            |
-| Standard_NK6                | 6    | 12           |
-| Standard_NK12               | 12   | 24           |
+| Standard_NC4_A2             | 4    | 8            |
+| Standard_NC8_A2             | 8    | 16           |
+| Standard_NC16_A2            | 16   | 64           |
+| Standard_NC32_A2            | 32   | 128          |
+| Standard_NC4_A16            | 4    | 8            |
+| Standard_NC8_A16            | 8    | 16           |
+| Standard_NC16_A16           | 16   | 64           |
+| Standard_NC32_A16           | 32   | 128          |
 
 ## Next steps
 
