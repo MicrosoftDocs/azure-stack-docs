@@ -2,11 +2,11 @@
 title: Scale requirements for AKS enabled by Azure Arc on VMware (preview)
 description: Learn about scale requirements for AKS Arc on VMware.
 ms.topic: conceptual
-ms.date: 03/22/2024
+ms.date: 03/26/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: leslielin
-ms.lastreviewed: 03/15/2024
+ms.lastreviewed: 03/26/2024
 
 ---
 
@@ -14,7 +14,7 @@ ms.lastreviewed: 03/15/2024
 
 [!INCLUDE [aks-applies-to-vmware](includes/aks-hci-applies-to-skus/aks-applies-to-vmware.md)]
 
-This article outlines the supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware. Please note, this is contingent on the resources available from the underlying infrastructure.
+This article lists the supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware. Note that these scale counts are contingent on the resources available from the underlying infrastructure.
 
 
 ## Support count
@@ -39,7 +39,7 @@ This article outlines the supported scale count for clusters and node pools in A
 
 ## Default values for virtual machine sizes for AKS on VMware (preview)
 
-| System Role                     | VM Size                                | Memory, CPU          |
+| System role                     | VM size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
 | AKS Arc control plane nodes  | Standard_A4_v2                         | 8-GB memory, 2 vcpu  |
 | AKS Arc HA Proxy VM          | Standard_A4_v2. Can't be changed.      | 8-GB memory, 4 vcpu  |
