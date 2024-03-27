@@ -76,7 +76,7 @@ landingContent:
             url: aks-vmware-overview.md
       - linkListType: quickstart
         links:
-          - text: Quickstart
+          - text: Deploy an AKS cluster
             url: aks-vmware-quickstart-deploy.md
       - linkListType: concept
         links:
