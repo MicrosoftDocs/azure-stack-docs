@@ -4,7 +4,7 @@ description: This article describes how to use Windows Defender Application Cont
 author:  alkohli
 ms.author:  alkohli
 ms.topic: how-to
-ms.date: 02/01/2024
+ms.date: 03/27/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -21,12 +21,9 @@ Before you begin, make sure that the following prerequisites are completed:
 
 - You have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
 - If viewing settings via the Azure portal, make sure to satisfy these extra prerequisites:
-   - You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](#apply-microsoft-cloud-security-benchmark-initiative).
-   - You have at least **Owner** or **Contributor** roles in your Azure subscription to apply MCSB.
+   - You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
+   - You have at least the **Owner** or **Contributor** roles in your Azure subscription to apply the MCSB.
 
-### Apply Microsoft Cloud Security Benchmark initiative
-
-[!INCLUDE [hci-apply-security-benchmark-initiative](../../includes/hci-apply-security-benchmark-initiative.md)]
 
 ## View WDAC settings via Azure portal
 
