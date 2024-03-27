@@ -188,7 +188,7 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md 
-- name: AKS on VMware
+- name: AKS enabled by Azure Arc on VMware
   items:
   - name: Overview
     href: aks-vmware-overview.md
