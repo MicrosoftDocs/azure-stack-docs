@@ -110,7 +110,7 @@ landingContent:
             url: manage/azure-site-recovery.md
       - linkListType: quickstart
         links:
-          - text: Community provided template
+          - text: Community provided Bicep template
             url: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md
             
   # Card
