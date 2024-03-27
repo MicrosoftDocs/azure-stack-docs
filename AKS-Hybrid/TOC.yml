@@ -7,7 +7,10 @@
     href: aks-overview.md
   - name: Supported Kubernetes versions
     href: supported-kubernetes-versions.md  
+  - name: Data collection
+    href: data-collection.md
 - name: AKS enabled by Azure Arc 
+  expanded: true
   items:
   - name: What's new in AKS on Azure Stack HCI 23H2
     href: aks-whats-new-23h2.md
@@ -185,6 +188,40 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md 
+- name: AKS enabled by Azure Arc on VMware
+  items:
+  - name: Overview
+    href: aks-vmware-overview.md
+  - name: System requirements
+    href: aks-vmware-system-requirements.md
+  - name: Network requirements
+    href: aks-vmware-networking-concepts.md
+  - name: Supported scale requirements
+    href: aks-vmware-scale-requirements.md
+  - name: Quickstart
+    items:
+    - name: Deploy an AKS cluster
+      href: aks-vmware-quickstart-deploy.md
+  - name: Concepts
+    items:
+    - name: Cluster architecture
+      href: aks-vmware-cluster-architecture.md
+  - name: How-to
+    items:
+    - name: Install Kubernetes Extension for Operators
+      href: aks-vmware-install-kubernetes-extension.md
+    - name: Retrieve certificate-based admin kubeconfig
+      href: aks-vmware-retrieve-kubeconfig.md
+    - name: Monitoring and logging
+      href: aks-vmware-monitoring-logging.md
+  - name: Troubleshooting
+    items:
+    - name: Troubleshooting and support
+      href: aks-vmware-support-troubleshoot.md
+    - name: Known issues
+      href: aks-vmware-known-issues.md
+    - name: Troubleshooting guide
+      href: aks-vmware-troubleshooting-guide.md
 - name: AKS on Windows Server
   items:
   - name: Overview
@@ -236,8 +273,6 @@
       items:
         - name: Security overview
           href: concepts-security.md
-        - name: Data collection
-          href: data-collection.md
         - name: Container security
           href: container-security.md
         - name: Certificate management overview
