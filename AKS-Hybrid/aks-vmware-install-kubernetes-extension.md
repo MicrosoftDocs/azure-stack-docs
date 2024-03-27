@@ -61,7 +61,7 @@ If your subscription is deploying the Kubernetes Extension for AKS Arc Operators
 Install the CLI extension. Use the [az extension add](/cli/azure/extension#az-extension-add) command:
 
 ```azurecli
-az extension add -n aksarc
+az extension add -n aksarc --version 1.0.0b1
 az extension add -n connectedk8s
 az extension add -n k8s-extension
 az extension add -n arcappliance
