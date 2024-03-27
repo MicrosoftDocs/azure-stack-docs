@@ -285,6 +285,8 @@ items:
 
   - name: SDN
     items:
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md
     - name: SDN Multisite
       href: manage/manage-sdn-multisite.md
 
@@ -506,8 +508,6 @@ items:
         href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Manage SDN
       items:
-      - name: Update SDN infrastructure
-        href: manage/update-sdn.md
       - name: Assign public IP address to a VM
         href: manage/assign-public-ip-to-vm.md
       - name: Configure network security groups with Windows Admin Center
