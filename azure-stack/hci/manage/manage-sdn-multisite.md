@@ -13,38 +13,9 @@ ms.date: 01/11/2024
 
 This article describes how to deploy and manage the Software Defined Networking (SDN) Multisite solution for Azure Stack HCI using Windows Admin Center.
 
-## About SDN Multisite
+For an overview of SDN Multisite, it's current capabilities and limitations, see [Overview of SDN Multisite](../concepts/sdn-multisite-overview.md).
 
-SDN Multisite allows you to expand the capabilities of traditional SDN on Azure Stack HCI clusters deployed at different physical locations. With SDN Multisite, you can have native Layer 2 and Layer 3 connectivity across multiple physical locations or sites for virtualized workloads.
-
-In a multisite SDN environment, one site is designated as the primary, and the remaining sites serve as secondary. The primary site is responsible for ensuring that the resources are applied and synchronized across all the sites. If the primary site is unreachable, resources can't be updated through the secondary site. However, if the secondary site is unreachable, resources can be updated through the primary site. During multisite peering, the primary site is automatically selected, which you can change later using Windows Admin Center.
-
-## Benefits
-
-Here are the benefits of using SDN Multisite:
-
-- **Unified policy management system.** Manage and configure your networks across multiple sites from a single primary site, with shared virtual networks and policy configurations.
-- **Seamless workload migration.** Seamlessly migrate workloads across physical sites without having to reconfigure IP addresses or pre-existing Network Security Groups (NSGs).
-- **Automatic reachability to new VMs.** Get automatic reachability to newly created virtual machines (VMs) and automatic manageability to any of their associated NSGs across your physical locations.
-
-## Limitations
-
-The SDN Multisite feature currently has a few limitations:
-
-- Supported only between two sites.
-- Sites must be connected over a private network, as encryption support for sites connected over the internet isn't provided.
-- Internal load balancing isn't supported.
-
-## Enable SDN Multisite
-
-Here's a high-level workflow for enabling SDN Multisite:
-
-- Meet prerequisites. See [Prerequisites](#prerequisites).
-- Understand resource synchronization. See [Understand resource synchronization](#understand-resource-synchronization).
-- Establish peering. See [Establish peering](#establish-peering).
-- Check peering status. See [Check peering status](#check-peering-status).
-
-### Prerequisites
+## Prerequisites
 
 Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
@@ -64,28 +35,13 @@ Before you can enable SDN Multisite, ensure the following prerequisites are met:
 
 - The IP pools for the logical networks, including Hyper-V Network Virtualization Provider Address (HNV PA), Public VIP, Private VIP, Generic Routing Encapsulation (GRE) VIP, and L3 must not overlap between the two sites.
 
-### Understand resource synchronization
+## Enable SDN Multisite
 
-When you enable SDN Multisite, not all resources from each site are synchronized across all sites. Here are the lists of resources that are synchronized and that remain unsynchronized.
+Here's a high-level workflow for enabling SDN Multisite:
 
-**Synchronized resources**
-
-These resources are synchronized across all sites after peering is established. You can update these resources from any site, be it primary or secondary. However, the primary site is responsible for ensuring that these resources are applied and synced across sites. Guideline and instructions for managing these resources remain the same as in a single-site SDN environment.
-
-- Virtual networks. For instructions on how to manage virtual networks, see [Manage tenant virtual networks](./tenant-virtual-networks.md). Note that logical networks aren't synchronized across sites. However, if your virtual networks reference a logical network, then the logical network with the same name must exist on both sites.
-- Network Security Groups (NSGs). For instructions on how to configure NSG with Windows Admin Center and PowerShell, see [Configure network security groups with Windows Admin Center](./use-datacenter-firewall-windows-admin-center.md) and [Configure network security groups with PowerShell](./use-datacenter-firewall-powershell.md).
-- User-defined routing. For instructions on how to use user-defined routing, see [Use network virtual appliances on a virtual network](/windows-server/networking/sdn/manage/use-network-virtual-appliances-on-a-vn).
-
-**Unsynchronized resources**
-
-These resources aren't synchronized after peering is established:
-
-- Load balancing policies.
-- Virtual IP addresses (VIPs).
-- Gateway policies.
-- Logical networks. Although logical networks aren't synchronized across sites, IP pools are checked for overlap and that overlap is not allowed.
-
-These policies are created on the local site, and if you want the same policies on the other site, you must manually create them there. If your backend VMs for load balancing policies are located on a single site, then connectivity over SLB will work fine without any extra configuration. But, if you expect the backend VMs to move from one site to the other, by default, connectivity works only if there are any backend VMs behind a VIP on the local site. If all the backend VMs move to another site, connectivity over that VIP fails.
+- Meet prerequisites. See [Prerequisites](#prerequisites).
+- Establish peering. See [Establish peering](#establish-peering).
+- Check peering status. See [Check peering status](#check-peering-status).
 
 ### Establish peering
 

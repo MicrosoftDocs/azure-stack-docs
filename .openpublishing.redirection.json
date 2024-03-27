@@ -1304,6 +1304,11 @@
       "source_path": "azure-stack/hci/known-issues-23h2.md",
       "redirect_url": "/azure-stack/hci/hci/known-issues-2310",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/partition-gpu.md",
+      "redirect_url": "/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci",
+      "redirect_document_id": false
     }
   ]
 }

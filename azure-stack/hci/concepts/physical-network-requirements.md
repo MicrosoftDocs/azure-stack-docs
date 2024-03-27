@@ -377,6 +377,9 @@ Network traffic can be classified by its direction. Traditional Storage Area Net
 > [!IMPORTANT]
 > We highly recommend that all cluster nodes in a site are physically located in the same rack and connected to the same top-of-rack (ToR) switches.
 
+> [!NOTE]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+
 ### North-South traffic for Azure Stack HCI
 
 North-South traffic has the following characteristics:

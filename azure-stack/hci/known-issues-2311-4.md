@@ -39,12 +39,12 @@ Here are the fixed issues in this release:
 
 ## Known issues in this release
 
-Microsoft isn't currently aware of any issues with this release. All the known issues are carried over from previous releases.
-
-<!-- Here are the known issues in this release:
+Here are the known issues in this release:
 
 |Feature  |Issue  |Workaround/Comments  |
-|---------|---------|---------| -->
+|---------|---------|---------|
+| Arc VM management <!--27229189--> |When a new node is added into the cluster, it fails with: Node add failed at ERROR: An older version of the Arc VM cluster extension is installed on your cluster. |Make sure you have the latest firewall requirements including endpoint `https://hciarcvmscontainerregistry.azurecr.io` on port 443. This endpoint is required for Azure Stack HCI Arc VM container registry. |
+|Arc VM management <!--27197239--> |When you update to 10.2311.4.5, the arcbridge status shows "UpgradeFailed" on the Azure portal. |Make sure you have the latest firewall requirements including endpoint `https://hciarcvmscontainerregistry.azurecr.io` on port 443. This endpoint is required for Azure Stack HCI Arc VM container registry.  |
 
 ## Known issues from previous releases
 
