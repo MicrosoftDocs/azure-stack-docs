@@ -102,11 +102,11 @@ Follow these steps to disable volume encryption with BitLocker:
 ## Get BitLocker recovery keys
 
 > [!NOTE]
-> It's important to save BitLocker keys outside of the system. If the cluster is down and you don't have the key, it could potentially result in data loss.
+> BitLocker keys can be retrieved at any time from your local Active Directory. If the cluster is down and you don't have the keys, you might be unable to access the encrypted data on the cluster. To save your BitLocker recovery keys, we recommend that you export and store them in a secure external location such as Azure Key Vault.
 
-Follow these steps to get recovery keys for your cluster:
+Follow these steps to export the recovery keys for your cluster:
 
-1. Connect to your Azure Stack HCI cluster as local administrator.
+1. Connect to your Azure Stack HCI cluster as local administrator. Run the following command in a local console session or local Remote Desktop Protocol (RDP) session or a Remote PowerShell session with CredSSP authentication:
 
 1. To get the recovery key information, run the following command in PowerShell:
 
