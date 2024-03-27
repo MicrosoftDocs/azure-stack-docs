@@ -17,15 +17,12 @@ This article describes how to view and enable BitLocker encryption, and retrieve
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed:
-
-- You have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
-- If viewing settings via the Azure portal, make sure to satisfy these extra prerequisites:
-    - You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
-    - You have at least **Owner** or **Contributor** roles in your Azure subscription to apply MCSB.
+Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
 
 
 ## View BitLocker settings via Azure portal
+
+To view the BitLocker settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
 BitLocker offers two types of protection: encryption for OS volumes and encryption for data volumes. You can only view BitLocker settings in the Azure portal. To manage the settings, see [Manage BitLocker settings with PowerShell](#manage-bitlocker-settings-with-powershell).
 

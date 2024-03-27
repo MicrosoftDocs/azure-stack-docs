@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/23/2024
+ms.date: 03/27/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -53,7 +53,7 @@ To do so, follow all the instructions in the [Enable the Defender for Servers pl
 
 ## Apply Microsoft Cloud Security Benchmark initiative
 
-After you turn on the Microsoft Defender for Cloud Foundational CSPM plan, you must apply the Microsoft Cloud Security Benchmark initiative (MCSB). You can only view the security settings via the Azure portal, if the MCSB is applied. Use one of the following methods to apply the MCSB initiative:
+After you turn on the Microsoft Defender for Cloud Foundational CSPM plan, you must apply the Microsoft Cloud Security Benchmark (MCSB) initiative. You can view the security settings via the Azure portal only when the MCSB is applied. Use one of the following methods to apply the MCSB initiative:
 
 - Apply the MCSB via the portal as described below.
 - Manually apply the Azure compute security baseline in Azure policy to all cluster servers. See [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).

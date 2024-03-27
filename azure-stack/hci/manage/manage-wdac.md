@@ -17,17 +17,14 @@ This article describes how to use Windows Defender Application Control (WDAC) to
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed:
-
-- You have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
-- If viewing settings via the Azure portal, make sure to satisfy these extra prerequisites:
-   - You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
-   - You have at least the **Owner** or **Contributor** roles in your Azure subscription to apply the MCSB.
+Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
 
 
 ## View WDAC settings via Azure portal
 
-Use WDAC policies to control which drivers and apps are allowed to run on your system. You can only view WDAC settings via Azure portal. To manage the settings, see [Manage WDAC settings with PowerShell](manage-wdac.md#manage-wdac-settings-with-powershell).
+To view the WDAC settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
+
+You can Use WDAC policies to control which drivers and apps are allowed to run on your system. You can only view the WDAC settings via Azure portal. To manage the settings, see [Manage WDAC settings with PowerShell](manage-wdac.md#manage-wdac-settings-with-powershell).
 
 :::image type="content" source="media/manage-wdac/manage-wdac.png" alt-text="Screenshot that shows the Application control (WDAC) page on Azure portal." lightbox="media/manage-wdac/manage-wdac.png":::
 
