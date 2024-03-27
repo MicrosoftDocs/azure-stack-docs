@@ -98,7 +98,7 @@ landingContent:
             url: manage/setup-metric-alerts.md
 
   # Card
-  - title: Try the preview
+  - title: Try it out
     linkLists:
       - linkListType: overview
         links:
@@ -108,6 +108,10 @@ landingContent:
             url: manage/manage-security-with-defender-for-cloud.md
           - text: Azure Site Recovery (preview)
             url: manage/azure-site-recovery.md
+      - linkListType: quickstart
+        links:
+          - text: Community provided template
+            url: https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md
             
   # Card
   - title: Azure Stack HCI concepts
