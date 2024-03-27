@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 03/22/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -14,6 +14,15 @@ ms.date: 01/31/2024
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to use Azure service tags with Microsoft Defender firewall.
 
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
+
+> [!NOTE]
+> Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
+
+> [!IMPORTANT]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+
+> [!NOTE]
+> Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
 
 ## Firewall requirements for outbound endpoints
 
@@ -62,7 +71,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 - [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md)
+- [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
