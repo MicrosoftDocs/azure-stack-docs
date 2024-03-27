@@ -1,5 +1,5 @@
 ---
-title: Known issues in AKS enabled by Azure Arc
+title: Known issues in AKS enabled by Azure Arc (preview)
 description: Learn about known issues in the current version of AKS enabled by Arc.
 ms.topic: how-to
 author: sethmanheim
@@ -10,7 +10,7 @@ ms.reviewer: guanghu
 
 ---
 
-# Known issues in AKS enabled by Azure Arc
+# Known issues in AKS enabled by Azure Arc (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
