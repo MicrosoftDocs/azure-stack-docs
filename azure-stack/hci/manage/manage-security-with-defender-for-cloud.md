@@ -77,6 +77,7 @@ Follow these steps to apply the MCSB initiative at the subscription level:
    :::image type="content" source="./media/manage-security-with-defender-for-cloud/toggle-on-status.png" alt-text="Screenshot that shows how to toggle on the Status button." lightbox="./media/manage-security-with-defender-for-cloud/toggle-on-status.png" :::
 
 1. Wait for at least one hour for the Azure policy initiative to evaluate the included resources.
+
 ## View security recommendations
 
 Security recommendations are created when potential security vulnerabilities are identified. These recommendations guide you through the process of configuring the needed control.
