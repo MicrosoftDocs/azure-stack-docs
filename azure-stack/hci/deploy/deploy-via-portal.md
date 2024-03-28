@@ -258,16 +258,19 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     Disable-ASRemoteDesktop
     ```
 
-### Lock Arc Resource bridge
+### Lock Arc Resource bridge and custom location
 
-The Arc Resource Bridge is a critical component that enables Azure Arc services to manage your Azure Stack HCI system. To prevent accidental deletion, lock the Arc Resource Bridge resource.
-Follow these steps:
+The Arc Resource Bridge and custom location together enable the Azure Arc services to manage your Azure Stack HCI system. To prevent the accidental deletion, we recommend that you lock the Arc Resource Bridge and the custom location resources.
+Follow these steps to configure the resource locks:
 
 1. In the Azure portal, navigate to the resource group into which you deployed your Azure Stack HCI system.
-1. On the **Overview** > **Resources**, you should see an Arc Resource Bridge resource.
-1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the Contributor role for the resource group.
+1. On the **Overview** > **Resources** tab, you should see an Arc Resource Bridge resource.
+1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the Azure Stack HCI Administrator role for the resource group.
 1. In the right pane, select **Add**.
 1. Enter the lock details and then select **OK**.
+
+
+Repeat the above stops to lock the custom location.
 
 For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
 
