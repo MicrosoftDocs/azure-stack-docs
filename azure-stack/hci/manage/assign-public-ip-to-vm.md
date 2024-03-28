@@ -3,14 +3,14 @@ title: Assign a public IP address to a virtual machine
 description: Learn how to assign a public IP address to a virtual machine in an SDN environment.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/23/2024
+ms.date: 03/28/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
 # Assign a public IP to a virtual machine
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article describes how to use Windows Admin Center to assign a Software Defined Networking (SDN) public IP address to a virtual machine (VM) in Azure Stack HCI. By assigning a public IP address to a VM, you enable the VM to communicate with external networks, thereby enhancing its capabilities and extending its connectivity.
 
@@ -34,7 +34,7 @@ Before you start assigning public IP address to a VM, make sure the following pr
 
 - Windows Admin Center [installed on a management computer](/windows-server/manage/windows-admin-center/deploy/install) and [registered with Azure](./register-windows-admin-center.md).
 
-- [Software-Defined Networking (SDN) deployed](../deploy/sdn-wizard.md) in your Azure Stack HCI environment.
+- [Software-Defined Networking (SDN) deployed](../deploy/sdn-wizard-23h2.md) in your Azure Stack HCI environment.
 
 - [A public IP address](./load-balancers.md#create-a-public-ip-address-slb) that you can assign to your VM.
 
