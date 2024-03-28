@@ -335,7 +335,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     Once complete, the task at the top updates with status and end time.
 
-If you want to deploy an Azure Stack HCI, version 23H2 cluster, using a community provided Bicep template check out the [Create an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
+You can also check out this community sourced template to [Deploy an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
 ## Next steps
 
