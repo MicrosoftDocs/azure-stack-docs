@@ -39,16 +39,16 @@ The 2301 update has the following expected runtimes based on our internal testin
 
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2301 update and should not be compared to other Azure Stack Hub updates.
 
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
+For more information about update build types, see [Manage updates in Azure Stack Hub](../azure-stack-updates.md).
 
 ### What's new
 
-- Public preview release of the [Azure Site Recovery resource provider](azure-site-recovery-overview.md) for Azure Stack Hub.
-- Public preview release of [VPN Fast Path](azure-stack-vpn-fast-path-operators.md) with new VPN Gateway SKUs.
-- New [VPN Fast Path documentation for Azure Stack Hub operators](azure-stack-vpn-fast-path-operators.md) and [Azure Stack Hub users](../user/azure-stack-vpn-fast-path-user.md).
+- Public preview release of the [Azure Site Recovery resource provider](../azure-site-recovery-overview.md) for Azure Stack Hub.
+- Public preview release of [VPN Fast Path](../azure-stack-vpn-fast-path-operators.md) with new VPN Gateway SKUs.
+- New [VPN Fast Path documentation for Azure Stack Hub operators](../azure-stack-vpn-fast-path-operators.md) and [Azure Stack Hub users](../../user/azure-stack-vpn-fast-path-user.md).
 - Added new VM size **Standard_E20_v3** to support larger database workloads that require more than 112 GB of memory.
 - Added support for NVIDIA A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
-- Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../user/gpu-vms-about.md#nc_a100-v4).
+- Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../../user/gpu-vms-about.md#nc_a100-v4).
 - This update includes all the platform requirements to add [Azure Site Recovery](https://aka.ms/azshasr) on Azure Stack Hub. The first scenario we are enabling is focused on replicating VMs across two Azure Stack Hub regions. ASR on Azure Stack Hub is an Add-on RP which will have to be added through the Marketplace Management.
 - Added the ability for operators to see virtual machine status information across all user subscriptions in the Azure Stack Hub admin portal.
 
@@ -62,7 +62,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ## Security updates
 
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](../release-notes-security-updates.md).
 
 ## Hotfixes
 
@@ -71,7 +71,7 @@ Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, whe
 > [!NOTE]
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
 
-For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+For more information, see our [servicing policy](../azure-stack-servicing-policy.md).
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
@@ -79,7 +79,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
+- [Azure Stack Hub hotfix 1.2206.2.77](../hotfix-1-2206-2-77.md)
 
 ### After successfully applying the 2301 update
 
@@ -87,7 +87,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2301, if any hotfixes for 2301 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
+- [Azure Stack Hub hotfix 1.2301.3.72](../hotfix-1-2301-3-72.md)
 ::: moniker-end
 
 ::: moniker range="azs-2206"
