@@ -34,6 +34,7 @@ If you have an existing Azure Stack HCI cluster that is registered to Azure with
 Here are the Azure-managed extensions:
 
 - [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
+- [Remote Support Arc extension](../manage/remote-support-arc-extension.md)
 
 ## Install an extension
 ### [Azure portal](#tab/azureportal)
