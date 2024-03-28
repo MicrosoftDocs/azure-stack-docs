@@ -287,6 +287,8 @@ items:
     items:
     - name: SDN Multisite
       href: manage/manage-sdn-multisite.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
 
 - name: Monitor
   items:
@@ -508,8 +510,6 @@ items:
       items:
       - name: Update SDN infrastructure
         href: manage/update-sdn.md
-      - name: Assign public IP address to a VM
-        href: manage/assign-public-ip-to-vm.md
       - name: Configure network security groups with Windows Admin Center
         href: manage/use-datacenter-firewall-windows-admin-center.md
       - name: Configure network security groups with PowerShell
