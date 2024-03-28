@@ -39,7 +39,7 @@ Azure Stack Hub provides different kinds of networking capabilities that can be 
 
 ## Standard Load Balancer considerations (preview)
 
-Azure Stack Hub supports the Standard Load Balancer SKU, currently in public preview. While this new SKU enables customer scenarios, there are certain differences between the Standard Load Balancer SKU on Azure Stack Hub and the Azure Load Balancer available in Azure. This section describes the main differences between the two, as well as the scenarios we have validated in the Standard Load Balancer on Azure Stack Hub.
+Azure Stack Hub supports the Standard Load Balancer SKU, currently in public preview. While this new SKU enables customer scenarios, there are certain differences between the Standard Load Balancer SKU on Azure Stack Hub and the Azure Load Balancer available in Azure. This section describes the main differences between the two, and the scenarios we validated in the Standard Load Balancer on Azure Stack Hub.
 
 ### Main differences in Standard Load Balancer between Azure and Azure Stack Hub
 
@@ -86,7 +86,7 @@ Azure Stack Hub supports the Standard Load Balancer SKU, currently in public pre
 
 ### Scenarios
 
-The following scenarios have been validated for the Standard Load Balancer on Azure Stack Hub:
+The following scenarios were validated for the Standard Load Balancer on Azure Stack Hub:
 
 - Standard public IP and HTTPS health probes.
 - Backend pools with different endpoint types.
