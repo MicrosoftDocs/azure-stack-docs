@@ -44,6 +44,16 @@ Once the operator has the required access, they can create Kubernetes clusters a
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Stack HCI, version 23H2.
 
+### Release 2402
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Autoscaling**. You can now enable the autoscaling feature when you create or update Kubernetes cluters and node pools. 
+- **Support for NVIDIA A16**. You can now create node pools in new VM sizes with GPU NVIDIA A16. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
+- **Diagnostic settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
+- **Certificate expiration**. You can now shut down Kubernetes clusters for up to 7 days without any certificate expiration issues.
+- **Update status**. You can now view the status of ongoing Kubernetes cluster upgrades.
+
 ### Release 2311.2
 
 AKS enabled by Azure Arc on HCI version 23H2 is generally available starting with this release.
@@ -57,7 +67,6 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Support for upgrading a Kubernetes cluster using Azure CLI**. You can use the Azure CLI to upgrade a Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade a Kubernetes cluster](cluster-upgrade.md).
 - **Support for both disks and files for persistent volumes**. To support stateful applications, you can use the default storage class for disks, or a custom storage class that points to a specific storage path. See [Use persistent volumes](persistent-volume.md) and [Use Container Storage Interface (CSI) disk drivers](container-storage-interface-disks.md). You can also create persistent volumes on file shares, in either SMB or NFS. For more information, see [Use Container Storage Interface (CSI) file drivers](container-storage-interface-files.md).
 - **Support for NVIDIA A2**. You can now create node pools with new VM sizes with GPU NVIDIA A2. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
-- **Diagnostics settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
 
 ### Release 2311
 

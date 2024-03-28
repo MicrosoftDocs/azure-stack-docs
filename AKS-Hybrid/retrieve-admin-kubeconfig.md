@@ -1,5 +1,5 @@
 ---
-title: Retrieve certificate-based admin kubeconfig
+title: Retrieve certificate-based admin kubeconfig in AKS enabled by Azure Arc
 description: Retrieve certificate-based admin kubeconfig in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
@@ -10,34 +10,14 @@ ms.reviewer: sulahiri
 
 ---
 
-# Retrieve certificate-based admin kubeconfig
+# Retrieve certificate-based admin kubeconfig in AKS Arc
 
-This article describes how to retrieve a certificate-based admin kubeconfig.
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-## Get admin certificate-based kubeconfig
+This article describes how to retrieve a certificate-based admin kubeconfig in AKS enabled by Azure Arc.
 
-An Arc-enabled Kubernetes cluster admin can retrieve the certificate-based admin kubeconfig using the following command. To run the Azure CLI command, you must have "contributor," "owner," and "Azure Kubernetes Service Hybrid Cluster Admin Role" permissions on the cluster. You must also have the **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action** action on the cluster, which is pre-configured in the following built-in role.
-
-```azurecli
-az aksarc get-credentials --name 
-                       --resource-group 
-                       [--admin] 
-                       [--context] 
-                       [--file] 
-                       [--overwrite-existing]
-```
-
-| Parameter          | Description                                                                                                                                          |
-|--------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--name`           | Name of the Arc-enabled AKS instance.                                                                                                                |
-| `--resource-group` | Name of the resource group.                                                                                                                          |
-| `--admin`          | Cluster admin credentials.                                                                                                                           |
-| `--context`        | If specified, overwrite the default context name. The `--admin` parameter takes precedence over `--context`.                                         |
-| `--file`           | Kubernetes configuration file to update. The default is to add a new admin kubeconfig into the default kubeconfig path, which is **~\.kube\config**. |
-| `--overwrite-existing` | Overwrites an existing cluster entry with the same name. The default value is `False`. |
-
-For more information, see the documentation for [`az aksarc`](/cli/azure/aksarc#az-aksarc-get-credentials).
+[!INCLUDE [retrieve-kubeconfig](includes/retrieve-kubeconfig.md)]
 
 ## Next steps
 
-[AKS hybrid overview](aks-hybrid-options-overview.md)
+[AKS Arc overview](aks-overview.md)

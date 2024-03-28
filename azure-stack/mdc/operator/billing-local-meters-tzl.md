@@ -2,15 +2,9 @@
 title: Local billing meters - MDC | Microsoft Docs
 description: Read a list of local Azure Stack meters used when operating from a Modular Data Center (MDC).
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/02/2021
 ms.author: sethm

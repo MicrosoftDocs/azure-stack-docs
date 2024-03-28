@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 03/27/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -15,11 +15,21 @@ ms.date: 01/31/2024
 
 This article describes how to manage default security settings for your Azure Stack HCI cluster. You can also modify drift control and protected security settings defined during deployment so your device starts in a known good state.
 
-## View security default settings in Azure portal
+## Prerequisites
 
-Use security default settings to manage cluster security, drift control, and secured core server settings on your cluster.
+Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
 
-:::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page on Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
+## View security default settings in the Azure portal
+
+To view the security default settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
+
+You can use the security default settings to manage cluster security, drift control, and Secured core server settings on your cluster.
+
+:::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page in the Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
+
+View the SMB signing status under the **Data protections** > **Network protection** tab. SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI system and other systems.
+
+:::image type="content" source="media/manage-secure-baseline/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the SMB signing status in the Azure portal." lightbox="media/manage-secure-baseline/manage-bitlocker-network-protection.png":::
 
 ## Manage security defaults with PowerShell
 
@@ -95,7 +105,7 @@ The following cmdlet properties are for the *AzureStackOSConfigAgent* module. Th
     - Drift Control
     - VBS (Virtualization Based Security)- We only support enable command.
     - DRTM (Dynamic Root of Trust for Measurement)
-    - HVCI (Hypervidor Enforced if Code Integrity)
+    - HVCI (Hypervisor Enforced if Code Integrity)
     - Side Channel Mitigation
     - SMB Encryption
     - SMB Signing

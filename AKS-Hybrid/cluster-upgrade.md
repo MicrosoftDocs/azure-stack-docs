@@ -2,15 +2,17 @@
 title: Upgrade an Azure Kubernetes Service (AKS) cluster
 description: Learn how to upgrade an Azure Kubernetes Service (AKS) cluster.
 ms.topic: overview
-ms.date: 01/30/2024
+ms.date: 02/27/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
-ms.lastreviewed: 01/30/2024
+ms.lastreviewed: 02/27/2024
 
 ---
 
 # Upgrade an Azure Kubernetes Service (AKS) cluster
+
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 As part of managing the application and cluster lifecycle, you might want to upgrade to the latest available version of Kubernetes. An upgrade involves either a move to a newer version of Kubernetes, applying operating system (OS) version updates (patching), or both. AKS Arc supports upgrading (or patching) nodes in a workload cluster with the latest OS and runtime updates.
 
@@ -25,7 +27,7 @@ If you're using the Azure CLI, this article requires Azure CLI version 2.34.1 or
 Check which Kubernetes releases are available for your cluster by using the following command:
 
 ```azurecli
-az aksarc get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
+az aksarc get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 The following example output shows the current version as **1.24.11** and lists the available versions under `upgrades`:
@@ -127,6 +129,8 @@ location>",
 
 > [!IMPORTANT]
 > When you perform an upgrade from an unsupported version that skips two or more minor versions, the upgrade cannot guarantee proper functionality. If your version is significantly out of date, we recommend you recreate your cluster instead.
+
+During an upgrade operation, both the `provisioningState` and `currentState` indicators display an **Upgrading** message to reflect the ongoing process. However, if the operation times out, `provisioningState` shows **Failed**, while `currentState` continues to show **Upgrading** as the upgrade continues in the background. No action is required; the upgrade continues until it's complete.
 
 ## Update Operating System (OS) version
 

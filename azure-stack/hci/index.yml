@@ -60,8 +60,8 @@ landingContent:
     linkLists:
       - linkListType: deploy
         links:
-          - text: Run Azure Kubernetes Service
-            url: /azure/aks/hybrid/kubernetes-walkthrough-powershell
+          - text: Deploy Azure Kubernetes Service clusters
+            url: /azure/aks/hybrid/aks-create-clusters-cli
           - text: Run Azure Virtual Desktop
             url: /azure/virtual-desktop/azure-stack-hci-overview
           - text: Run Azure Arc Virtual Machines
