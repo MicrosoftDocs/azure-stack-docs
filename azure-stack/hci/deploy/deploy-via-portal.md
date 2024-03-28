@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 02/28/2024
+ms.date: 03/28/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -227,6 +227,10 @@ If your deployment fails, you can rerun the deployment. In your cluster, go to *
 
 ## Post deployment tasks
 
+After the deployment is complete, you may need to perform some additional tasks to secure your system and ensure it's ready for workloads.
+
+### Enable RDP
+
 For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
 You may need to connect to the system via RDP to deploy workloads. Follow these steps to connect to your cluster via the Remote PowerShell and then enable RDP:
@@ -244,6 +248,7 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     ```powershell
     Enable-ASRemoteDesktop
     ```
+
     > [!NOTE]
     > As per the security best practices, keep the RDP access disabled when not needed.
 
@@ -252,6 +257,19 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     ```powershell
     Disable-ASRemoteDesktop
     ```
+
+### Lock Arc Resource bridge
+
+The Arc Resource Bridge is a critical component that enables Azure Arc services to manage your Azure Stack HCI system. To prevent accidental deletion, lock the Arc Resource Bridge resource.
+Follow these steps:
+
+1. In the Azure portal, navigate to the resource group into which you deployed your Azure Stack HCI system.
+1. On the **Overview** > **Resources**, you should see an Arc Resource Bridge resource.
+1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the Contributor role for the resource group.
+1. In the right pane, select **Add**.
+1. Enter the lock details and then select **OK**.
+
+For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
 
 ## Next steps
 
