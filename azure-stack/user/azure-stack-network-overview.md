@@ -37,9 +37,9 @@ Azure Stack Hub provides different kinds of networking capabilities that can be 
 - **Deployment and configuration tools**  
     Use a web-based portal or cross-platform command-line tools to deploy and configure network resources.
 
-## Standard Load Balancer considerations
+## Standard Load Balancer considerations (preview)
 
-Azure Stack Hub supports the Standard Load Balancer SKU. While this new SKU enables customer scenarios, there are certain differences between the Standard Load Balancer SKU on Azure Stack Hub and the Azure Load Balancer available in Azure. This section describes the main differences between the two, as well as the scenarios we have validated in the Standard Load Balancer on Azure Stack Hub.
+Azure Stack Hub supports the Standard Load Balancer SKU, currently in public preview. While this new SKU enables customer scenarios, there are certain differences between the Standard Load Balancer SKU on Azure Stack Hub and the Azure Load Balancer available in Azure. This section describes the main differences between the two, as well as the scenarios we have validated in the Standard Load Balancer on Azure Stack Hub.
 
 ### Main differences in Standard Load Balancer between Azure and Azure Stack Hub
 

@@ -2,10 +2,10 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: sethmanheim
-ms.date: 05/17/2021
+ms.date: 03/28/2024
 ms.topic: article
 ms.author: sethm
-ms.reviewer: wamota
+ms.reviewer: rtiberiu
 ms.lastreviewed: 07/10/2019
 
 # Intent: As an Azure Stack user, I want to know the networking differences between Azure and Azure Stack
@@ -55,7 +55,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 |  | Monitoring and Alerts | Azure uses Azure Monitor to provide the ability to set up alerts for VPN resources. | Not yet supported.|
-| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
+| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported. The Standard Load Balancer is currently in public preview. For information, see [Standard Load Balancer considerations](azure-stack-network-overview.md#standard-load-balancer-considerations-preview).<br>The SKU property is not supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |
