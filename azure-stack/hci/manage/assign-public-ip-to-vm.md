@@ -70,7 +70,7 @@ Instead, follow these steps to verify the public IP address configuration:
 
 If you encounter any issues while assigning the public IP address, check the following:
 
-- Make sure the public IP address is not being used by another device in your network.
+- Make sure the public IP address isn't being used by another device in your network.
 
 - Ensure that the virtual switch you selected during the network adapter setup is correctly configured.
 
