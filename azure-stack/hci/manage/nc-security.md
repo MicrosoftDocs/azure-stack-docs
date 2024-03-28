@@ -6,7 +6,7 @@ ms.topic: article
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 04/19/2023
+ms.date: 03/28/2024
 ---
 
 # Secure the Network Controller
@@ -160,7 +160,7 @@ Controller DNS name stored on the peer device.
 
 2. **WinRM**. If Kerberos is being used, the WinRM client account must be present in a predefined group in Active Directory or in the Local Administrators group on the server. If certificates are being used, the client presents a certificate to the server that the server authorizes using the subject name/issuer, and the server uses a mapped user account to perform authentication.
 
-3.  **OVSDB**. There is no authorization provided for this protocol.
+3.  **OVSDB**. Authorization is based on the subject name of the peer entity. Network Controller stores the peer device DNS name and uses it for authorization. This DNS name must match the subject name of the device in the certificate..
 
 ### Encryption
 
