@@ -5,7 +5,6 @@ author: sethmanheim
 ms.topic: article
 ms.custom:
   - has-azure-ad-ps-ref
-  - azure-ad-ref-level-one-done
 ms.date: 03/19/2024
 ms.author: sethm
 ms.reviewer: thoroet
