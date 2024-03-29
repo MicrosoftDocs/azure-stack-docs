@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 12/11/2023
+ms.date: 03/29/2023
 ms.lastreviewed: 1/01/2023
 
 ---
@@ -13,6 +13,8 @@ ms.lastreviewed: 1/01/2023
 |   :---|  :---| :---| :---|
 | Azure Stack HCI Updates download | fe3.delivery.mp.microsoft.com | 443 | For updating Azure Stack HCI, version 23H2. |
 | Azure Stack HCI Updates download | tlu.dl.delivery.mp.microsoft.com | 80 | For updating Azure Stack HCI, version 23H2. |
+| Azure Stack HCI Updates discovery | aka.ms   | 443  | For resolving addresses to discover Azure Stack HCI, version 23H2 and Solution Builder Extension Updates.  |
+| Azure Stack HCI Updates discovery | redirectiontool.trafficmanager.net   | 443  | Underlying service that implements usage data tracking for the aka.ms redirection links.  |
 | Azure Stack HCI | login.microsoftonline.com  | 443  | For Active Directory Authority and used for authentication, token fetch, and validation.|
 | Azure Stack HCI  | graph.windows.net  | 443  | For Graph and used for authentication, token fetch, and validation.   |
 | Azure Stack HCI  | management.azure.com  | 443  | For Resource Manager and used during initial bootstrapping of the cluster to Azure for registration purposes and to unregister the cluster. |
