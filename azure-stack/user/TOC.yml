@@ -185,6 +185,8 @@
           href: azure-stack-network-overview.md
         - name: Networking considerations
           href: azure-stack-network-differences.md
+        - name: Standard Load Balancer considerations
+          href: standard-load-balancer-considerations.md
         - name: VPN gateways
           items:
           - name: Connect using VPN
