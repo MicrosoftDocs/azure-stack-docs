@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 03/27/2024
+ms.date: 03/29/2024
 ---
 
 # Get remote support for Azure Stack HCI

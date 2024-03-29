@@ -333,6 +333,8 @@ items:
   items:
   - name: Collect logs
     href: manage/collect-logs.md
+  - name: Get support
+    href: manage/get-support.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
   - name: Get remote support
@@ -733,10 +735,6 @@ items:
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Azure Benefits (22H2 and earlier)
     href: ./manage/azure-benefits.md
-  - name: Support
-    items:
-    - name: Get support
-      href: manage/get-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
