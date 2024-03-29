@@ -333,10 +333,10 @@ items:
   items:
   - name: Collect logs
     href: manage/collect-logs.md
-  - name: Get support
-    href: manage/get-support.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
+  - name: Get support
+    href: manage/get-support.md
   - name: Get remote support
     href: manage/get-remote-support.md
 
