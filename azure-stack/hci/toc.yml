@@ -97,8 +97,12 @@ items:
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
-  - name: Review security features
-    href: concepts/security-features.md
+  - name: Review security
+    items:
+    - name: About security features
+      href: concepts/security-features.md
+    - name: Download Azure Stack HCI security book
+      href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
 
@@ -221,18 +225,20 @@ items:
         href: manage/processor-compatibility-mode.md
       - name: Use GPUs with clustered VMs
         href: manage/use-gpu-with-clustered-vm.md
-      - name: Partition and share GPUs with VMs
-        href: manage/partition-gpu.md
+      - name: GPU Partitioning
+        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Partition and assign GPUs to a virtual machine
+        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
 
   - name: Security
     items:
-    - name: Manage application control (WDAC)
-      href: manage/manage-wdac.md
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
+    - name: Manage application control (WDAC)
+      href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
     - name: Manage secrets rotation
@@ -373,6 +379,9 @@ items:
     href: concepts/software-defined-networking-23h2.md
   - name: Plan an SDN infrastructure
     href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+  - name: SDN Multisite overview
+    href: concepts/sdn-multisite-overview.md
+
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
