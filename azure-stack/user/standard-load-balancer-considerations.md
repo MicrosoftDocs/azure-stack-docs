@@ -69,8 +69,6 @@ The following scenarios were validated for the Standard Load Balancer on Azure S
 - Internal load balancer with HA ports.
 - Internal load balancer with HA ports and floating IP.
 
-The scenario descriptions, validation steps, and some of the expected differences are [described here](https://www.github.com).
-
 ## Next steps
 
 - [Considerations for Azure Stack Hub networking](azure-stack-network-differences.md)
