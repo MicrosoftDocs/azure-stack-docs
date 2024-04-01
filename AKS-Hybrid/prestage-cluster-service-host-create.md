@@ -76,7 +76,7 @@ Run the following [Set-AksHciRegistration](./reference/ps/set-akshciregistration
 Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<resourceGroupName>"
 ```
 
-## Step 5: Start a new deployment
+## Step 6: Start a new deployment
 
 After you've configured your deployment, you must start it. Starting the deployment installs the AKS agents/services and the AKS host. To begin the deployment, run the following command:
 

@@ -68,6 +68,21 @@ landingContent:
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
 
+  - title: Get started with AKS enabled by Azure Arc on VMware
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is AKS enabled by Azure Arc on VMware?
+            url: aks-vmware-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Deploy an AKS cluster
+            url: aks-vmware-quickstart-deploy.md
+      - linkListType: concept
+        links:
+          - text: Cluster architecture
+            url: aks-vmware-cluster-architecture.md
+
   - title: Develop and debug applications with Bridge to Kubernetes
     linkLists:
       - linkListType: how-to-guide

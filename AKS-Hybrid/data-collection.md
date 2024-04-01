@@ -14,7 +14,7 @@ ms.reviewer: rbaziwane
 
 # AKS enabled by Azure Arc data collection
 
-[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS enabled by Azure Arc
 
 [AKS enabled by Azure Arc](overview.md) is a service that enables you to run Kubernetes clusters in your own infrastructure, using Azure Arc to connect and manage them. AKS collects data from clusters and connected machines to provide you with features such as monitoring, policy enforcement, and security updates. This article explains what data is collected, how it's classified, and how you can control it.
 
