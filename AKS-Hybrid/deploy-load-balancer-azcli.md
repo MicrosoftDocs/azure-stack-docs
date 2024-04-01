@@ -57,7 +57,7 @@ az k8s-runtime load-balancer create --load-balancer-name $lbName --resource-uri 
 ```
 
 ## Create a BGP peer for your Kubernetes cluster
-Create a BGP peer for your Kubernetes cluster remotely by running the [`az k8s-runtime bgp-peer create`](/cli/azure/k8s-runtime/bgp-peer?view=azure-cli-latest#az-k8s-runtime-bgp-peer-create) command. Note that the BGP peer is effective for all load balancers that have `BGP` or `Both` advertise mode.
+Create a BGP peer for your Kubernetes cluster remotely by running the [`az k8s-runtime bgp-peer create`](/cli/azure/k8s-runtime/bgp-peer?view=azure-cli-latest#az-k8s-runtime-bgp-peer-create) command. Note that the BGP peer is effective for all load balancers that have `BGP` or `Both` advertise mode. Creating BGP peers is mandatory if you're using the MetalLB load balancer in `BGP` or `Both` mode.
 
 Configure the following additional variables before proceeding.
 | Parameter                      | Description             | 
