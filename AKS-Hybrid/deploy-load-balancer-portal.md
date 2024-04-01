@@ -1,5 +1,5 @@
 ---
-title: Create a MetalLB load balancer using Azure Arc
+title: Create a MetalLB load balancer using Azure Portal
 description: Learn how to create a MetalLB load balancer on your Kubernetes cluster using an Arc extension.
 ms.topic: how-to
 ms.date: 02/01/2024
@@ -14,7 +14,7 @@ ms.lastreviewed: 02/01/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating MetalLB load balancer instance on your Kubernetes cluster using the load balancer Arc extension.
+The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using the Arc Networking extension.
 
 ## Prerequisites
 
@@ -28,22 +28,19 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 
 Once you successfully create your Kubernetes cluster, navigate to the **Networking** blade in the Azure portal and select **Install**:
 
-:::image type="content" source="media/deploy-load-balancer/install-extension.png" alt-text="Screenshot showing extension install screen on portal." lightbox="media/deploy-load-balancer/install-extension.png":::
+:::image type="content" source="media/deploy-load-balancer-portal/install-extension.png" alt-text="Screenshot showing extension install screen on portal." lightbox="media/deploy-load-balancer-portal/install-extension.png":::
 
 After the extension is successfully installed, you can create a load balancer service. Select **Add** and fill in the load balancer name and its IP range. The **Service Selector** field is optional. Then select **OK**.
 
-:::image type="content" source="media/deploy-load-balancer/create-load-balancer.png" alt-text="Screenshot showing create load balancer on portal." lightbox="media/deploy-load-balancer/create-load-balancer.png":::
+:::image type="content" source="media/deploy-load-balancer-portal/create-load-balancer.png" alt-text="Screenshot showing create load balancer on portal." lightbox="media/deploy-load-balancer-portal/create-load-balancer.png":::
 
-- The IP range should be set to available IPs depending on your environment. The IP range should be in CIDR notation; for example, **192.168.50.51/32** or **192.168.50.51/32,192.168.50.52/32**. Multiple IPs must be separated by commas.
-- **Selector** is optional. A null value means the load balancer works for all services. **Selector** should be in a format such as **a:b,c:d**, separated by a comma. Remember to replace **=** with **:** for the **a=b** label in the Kubernetes cluster.
+- The IP range should be set to available IPs depending on your environment. The IP range should be in CIDR notation; for example, **192.168.50.51/28** or **192.168.50.1-192.168.50.100**. Multiple IP ranges must be separated by commas.
+- The advertise mode can be **ARP**, **BGP**, or **Both**. If using **BGP** or **Both**, BGP peers must be configured.
+- **Service Selector** limits the set of services that can get an IP from the load balancer. The default option (null or empty string) means that the load balancer applies for all services. **Selector** should be in a format of a list of key-value pairs such as **a:b,c:d**, where the kv pairs are separated by a comma.
 
 Once the load balancer is successfully created, it's shown in the list as follows. **Provisioning state** shows the operation result:
 
-:::image type="content" source="media/deploy-load-balancer/load-balancer-created.png" alt-text="Screenshot showing provisioning state on portal." lightbox="media/deploy-load-balancer/load-balancer-created.png":::
-
-Go back to the Kubernetes cluster and check that the load balancer works. The load balancer automatically assigns an IP address to your load balancer type service, and then the service is reachable.
-
-Run the `kubectl get arcnwloadbalancer -n kube-system` command to check the load balancer status in the Kubernetes cluster. If anything is wrong, you can check the logs for **arcnetworking-prefix** pods in the **kube-system** namespace.
+:::image type="content" source="media/deploy-load-balancer-portal/load-balancer-created.png" alt-text="Screenshot showing provisioning state on portal." lightbox="media/deploy-load-balancer-portal/load-balancer-created.png":::
 
 ### Clean up resources
 
