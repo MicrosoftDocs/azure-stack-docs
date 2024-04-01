@@ -5,8 +5,8 @@ ms.topic: how-to
 ms.date: 02/01/2024
 author: sethmanheim
 ms.author: sethm 
-ms.reviewer: rbaziwane
-ms.lastreviewed: 02/01/2024
+ms.reviewer: abha
+ms.lastreviewed: 04/01/2024
 
 ---
 
@@ -14,12 +14,12 @@ ms.lastreviewed: 02/01/2024
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using the Arc Networking extension.
+The main purpose of a load balancer is to distribute traffic across multiple nodes in a Kubernetes cluster. This can help prevent downtime and improve overall performance of applications. AKS enabled by Azure Arc supports creating [MetalLB](https://metallb.universe.tf/) load balancer instance on your Kubernetes cluster using the `Arc Networking` k8s-extension.
 
 ## Prerequisites
-
-- A Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on AKS using the [Azure CLI](aks-create-clusters-cli.md) or the Azure portal.
+- A Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Stack HCI 23H2 using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](/aks-create-clusters-portal.md).
 - Make sure you have enough IP addresses for the load balancer. Ensure that the IP addresses reserved for the load balancer do not conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements.md).
+- This how-to guide assumes you understand how Metal LB works. Read the [overview for MetalLB in Arc Kubernetes clusters to learn more](/load-balancer-overview.md).
 
 ## Deploy MetalLB load balancer using Azure Arc extension
 
@@ -43,12 +43,10 @@ Once the load balancer is successfully created, it's shown in the list as follow
 :::image type="content" source="media/deploy-load-balancer-portal/load-balancer-created.png" alt-text="Screenshot showing provisioning state on portal." lightbox="media/deploy-load-balancer-portal/load-balancer-created.png":::
 
 ### Clean up resources
-
 To clean up resources, do the following:
 
 - When one of the load balancers is no longer needed, select the start of the row for the load balancer and select **Delete**. Then select **Yes**.
 - When the load balancer service is no longer needed, delete all existing load balancers and then select **Uninstall**. Select **Yes** to uninstall the extension.
 
 ## Next steps
-
-- [Review AKS on Azure Stack HCI 23H2 networking concepts](aks-hci-network-system-requirements.md)
+-[Use GitOps Flux v2 Arc extension to deploy applications on your Kubernetes cluster](/azure/azure-arc/kubernetes/monitor-gitops-flux-2).
