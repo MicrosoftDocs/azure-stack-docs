@@ -285,6 +285,10 @@ items:
 
   - name: SDN
     items:
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
     - name: SDN Multisite
       href: manage/manage-sdn-multisite.md
 
@@ -335,6 +339,10 @@ items:
     href: manage/collect-logs.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
+  - name: Get support
+    href: manage/get-support.md
+  - name: Get remote support
+    href: manage/get-remote-support.md
 
 - name: Migrate
   items:
@@ -518,10 +526,6 @@ items:
         href: manage/configure-network-security-groups-with-tags.md
       - name: Manage default network access policies
         href: manage/manage-default-network-access-policies-virtual-machines.md
-      - name: Manage tenant virtual networks
-        href: manage/tenant-virtual-networks.md
-      - name: Manage tenant logical networks
-        href: manage/tenant-logical-networks.md
       - name: Manage SDN security
         items:
         - name: Secure the Network Controller
@@ -731,12 +735,6 @@ items:
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Azure Benefits (22H2 and earlier)
     href: ./manage/azure-benefits.md
-  - name: Support
-    items:
-    - name: Get support
-      href: manage/get-support.md
-    - name: Get remote support
-      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
