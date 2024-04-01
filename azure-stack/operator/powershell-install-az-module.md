@@ -32,7 +32,7 @@ You can also run the Az modules for Azure Stack Hub in a Docker container. For i
 If you would like to install PowerShell Resource Modules (AzureRM) module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md).
 
 > [!IMPORTANT]
-> There will likely not be new Azure Resource Modules module releases. The Azure Resource Modules modules are under support for critical fixes only. Going forward there will only be Az releases for Azure Stack Hub.
+> There will not be new Azure Resource Modules module releases. The Azure Resource Modules modules are under support for critical fixes only. Going forward, there will only be Az releases for Azure Stack Hub.
 
 You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
