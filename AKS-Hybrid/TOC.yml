@@ -46,8 +46,16 @@
       items:
       - name: Create logical networks for Kubernetes clusters
         href: aks-networks.md
-      - name: Deploy a load balancer
-        href: deploy-load-balancer.md
+      - name: Load balancer
+        items:
+        - name: Overview
+          href: load-balancer-overview.md
+        - name: Azure CLI
+          href: deploy-load-balancer-azcli.md
+        - name: Azure Portal
+          href: deploy-load-balancer-portal.md
+        - name: Troubleshoot
+          href: load-balancer-troubleshoot.md
     - name: Storage
       items:
       - name: CSI storage drivers
