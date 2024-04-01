@@ -2,11 +2,11 @@
 title: Scale requirements for AKS on Azure Stack HCI
 description: Learn about scale requirements for AKS on Azure Stack HCI.
 ms.topic: conceptual
-ms.date: 03/15/2024
+ms.date: 03/26/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: abha
-ms.lastreviewed: 03/15/2024
+ms.lastreviewed: 03/26/2024
 
 ---
 
@@ -52,7 +52,7 @@ This article describes the maximum and minimum supported scale count for AKS on 
 
 ## Supported values for control plane node sizes
 
-| VM Size                     | CPU  | Memory (GB)  | 
+| VM Size                     | CPU  | Memory (GB)  |
 |-----------------------------|------|--------------|
 | Standard_A4_v2              | 4    | 8            |
 | Standard_D4s_v3             | 4    | 16           |
@@ -61,20 +61,21 @@ This article describes the maximum and minimum supported scale count for AKS on 
 
 ## Supported values for worker node sizes
 
-| VM Size                     | CPU  | Memory (GB)  | GPU type  | 
-|-----------------------------|------|--------------|-----------|
-| Default                     | 4    | 4            | N/A       |
-| Standard_A4_v2              | 4    | 8            |           |
-| Standard_D4s_v3             | 4    | 16           |           |
-| Standard_D8s_v3             | 8    | 32           |           |
-| Standard_D16s_v3            | 16   | 64           |           |
-| Standard_D32s_v3            | 32   | 128          |           |
-| Standard_DS4_v2             | 8    | 28           |           |
-| Standard_DS5_v2             | 16   | 56           |           |
-| Standard_DS13_v2            | 8    | 56           |           |
-| Standard_K8S3_v1            | 4    | 6            | N/A       |
-| Standard_NK6                | 6    | 12           | Tesla T4  |
-| Standard_NK12               | 12   | 24           | Tesla T4  |
+| VM Size                     | CPU  | Memory (GB)  |
+|-----------------------------|------|--------------|
+| Standard_A4_v2              | 4    | 8            |
+| Standard_A2_v2              | 2    | 4            |
+| Standard_D4s_v3             | 4    | 16           |
+| Standard_D8s_v3             | 8    | 32           |
+| Standard_K8S3_v1            | 4    | 6            |
+| Standard_NC4_A2             | 4    | 8            |
+| Standard_NC8_A2             | 8    | 16           |
+| Standard_NC16_A2            | 16   | 64           |
+| Standard_NC32_A2            | 32   | 128          |
+| Standard_NC4_A16            | 4    | 8            |
+| Standard_NC8_A16            | 8    | 16           |
+| Standard_NC16_A16           | 16   | 64           |
+| Standard_NC32_A16           | 32   | 128          |
 
 ## Next steps
 
