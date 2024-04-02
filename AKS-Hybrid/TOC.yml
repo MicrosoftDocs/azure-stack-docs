@@ -52,8 +52,8 @@
           href: deploy-load-balancer-cli.md
         - name: Azure portal
           href: deploy-load-balancer-portal.md
-        - name: Troubleshoot issues
-          href: load-balancer-troubleshoot.md
+        # - name: Troubleshoot issues
+        #   href: load-balancer-troubleshoot.md
     - name: Storage
       items:
       - name: CSI storage drivers

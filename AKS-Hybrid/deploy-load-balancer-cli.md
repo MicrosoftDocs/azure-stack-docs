@@ -9,7 +9,7 @@ ms.reviewer: xinyuhe
 ms.lastreviewed: 04/02/2024
 ---
 
-# Create a MetalLB load balancer using Azure Arc
+# Create a MetalLB load balancer using Azure Arc and Azure CLI
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -17,7 +17,7 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 
 ## Prerequisites
 
-- A Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Stack HCI 23H2 using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](/aks-create-clusters-portal.md).
+- A Kubernetes cluster with at least one Linux node. You can create a Kubernetes cluster on Azure Stack HCI 23H2 using the [Azure CLI](aks-create-clusters-cli.md) or the [Azure portal](aks-create-clusters-portal.md).
 - Make sure you have enough IP addresses for the load balancer. Ensure that the IP addresses reserved for the load balancer do not conflict with the IP addresses in Arc VM logical networks and control plane IPs. For more information about IP address planning and networking in Kubernetes, see [Networking requirements for AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements.md).
 - This how-to guide assumes you understand how Metal LB works. For more information, see the [overview for MetalLB in Arc Kubernetes clusters](load-balancer-overview.md).
 
@@ -65,7 +65,7 @@ az k8s-runtime load-balancer create --load-balancer-name $lbName --resource-uri 
 
 ## Create a BGP peer for your Kubernetes cluster
 
-Create a BGP peer for your Kubernetes cluster remotely by running the [`az k8s-runtime bgp-peer create`](/cli/azure/k8s-runtime/bgp-peer?view=azure-cli-latest#az-k8s-runtime-bgp-peer-create) command. Note that the BGP peer is effective for all load balancers that have `BGP` or `Both` advertise mode. Creating BGP peers is mandatory if you're using the MetalLB load balancer in `BGP` or `Both` mode.
+Create a BGP peer for your Kubernetes cluster remotely by running the [`az k8s-runtime bgp-peer create`](/cli/azure/k8s-runtime/bgp-peer#az-k8s-runtime-bgp-peer-create) command. Note that the BGP peer is effective for all load balancers that have `BGP` or `Both` advertise mode. Creating BGP peers is mandatory if you're using the MetalLB load balancer in `BGP` or `Both` mode.
 
 Configure the following variables before proceeding:
 
