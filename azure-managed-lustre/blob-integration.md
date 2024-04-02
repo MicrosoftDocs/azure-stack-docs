@@ -4,7 +4,7 @@ description: Understand storage concepts for using Azure Blob storage with an Az
 ms.topic: conceptual
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 12/01/2023
+ms.date: 04/02/2024
 ms.lastreviewed: 06/05/2023
 ms.reviewer: brianl
 
@@ -67,12 +67,12 @@ When importing data from a blob container, you can specify how to handle conflic
 |------|-------------|
 | `fail` | The import job fails immediately with an error if a conflict is detected. |
 | `skip` | The import job skips the file if a conflict is detected. |
-| `overwrite-dirty` | The import job evaluates a conflicting path to see if it should be deleted and re-imported. To learn more, see [overwrite-dirty mode](#overwrite-dirty-mode). |
+| `overwrite-dirty` | The import job evaluates a conflicting path to see if it should be deleted and reimported. To learn more, see [overwrite-dirty mode](#overwrite-dirty-mode). |
 | `overwrite-always` | The import job evaluates a conflicting path and always deletes/re-imports if it's dirty, or releases if it's clean. To learn more, see [overwrite-always mode](#overwrite-always-mode). |
 
 #### Overwrite-dirty mode
 
-The `overwrite-dirty` mode evaluates a conflicting path to see if it should be deleted and re-imported. At a high level, `overwrite-dirty` mode checks the HSM state. If the HSM state is **Clean** and **Archived**, meaning its data is in sync with the blob container as far as Lustre can tell, then only the attributes are updated, if needed. Otherwise, the file is deleted and re-imported from the blob container.
+The `overwrite-dirty` mode evaluates a conflicting path to see if it should be deleted and reimported. At a high level, `overwrite-dirty` mode checks the HSM state. If the HSM state is **Clean** and **Archived**, meaning its data is in sync with the blob container as far as Lustre can tell, then only the attributes are updated, if needed. Otherwise, the file is deleted and reimported from the blob container.
 
 Checking the HSM state doesn't guarantee that the file in Lustre matches the file in the blob container. If you must ensure that the file in Lustre matches the file in the blob container as closely as possible, use the `overwrite-always` mode.
 
@@ -94,7 +94,7 @@ The following error tolerance options are available for import jobs:
 The following items are important to consider when importing data from a blob container:
 
 - Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start another import job returns an error.
-- Import jobs can be cancelled. You can cancel an import started manually on an existing cluster, or an import initiated during cluster creation.
+- Import jobs can be canceled. You can cancel an import started manually on an existing cluster, or an import initiated during cluster creation.
 - Cluster deployment can return successfully before the corresponding import job is complete. The import job continues to run in the background. You can monitor the import job's progress in the following ways:
   - **Azure portal**: 
   - **REST API**: 
@@ -102,21 +102,21 @@ The following items are important to consider when importing data from a blob co
 
 ## Export data to Blob Storage using an archive job
 
-You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job.
+You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by [creating an archive job](export-with-archive-jobs.md).
 
 ### Metadata for exported files
 
-When files are archived from the Azure Managed Lustre system to the blob container, additional metadata is saved to simplify reimporting the contents to an Azure Managed Lustre file system.
+When files are archived from the Azure Managed Lustre file system to the blob container, additional metadata is saved to simplify reimporting the contents to a file system.
 
-- The following POSIX attributes from the Lustre file system are saved in the blob metadata as key-value pairs (value type in parentheses):
+The following table lists POSIX attributes from the Lustre file system that are saved in the blob metadata as key-value pairs:
 
-  - `owner:` (int)
-  - `group:` (int)
-  - `permissions:` (octal or rwxrwxrwx format; sticky bit is supported)
+| POSIX attribute | Type |
+|-----------------|------|
+| `owner` | int |
+| `group` | int |
+| `permissions` | octal or rwxrwxrwx format; sticky bit is supported |
 
-- Directory attributes are saved in an empty blob. This blob has the same name as the directory path and contains the following key-value pair in the blob metadata:
-
-  `hdi_isfolder : true`
+Directory attributes are saved in an empty blob. This blob has the same name as the directory path and contains the following key-value pair in the blob metadata: `hdi_isfolder : true`.
 
 You can modify the POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
 
@@ -124,7 +124,7 @@ You can modify the POSIX attributes manually before using the container to hydra
 
 The following items are important to consider when exporting data with an archive job:
 
-- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start an archive job returns an error.
+- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start an archive job to export data returns an error.
 
 ## Copy a Lustre blob container with AzCopy or Storage Explorer
 
@@ -142,5 +142,6 @@ In Storage Explorer, you can enable this flag in **Settings** by selecting **Tra
 
 ## Next steps
 
-- [Prepare prerequisites for blob storage integration](amlfs-prerequisites.md#blob-integration-prerequisites-optional)
-
+- [Prerequisites for blob storage integration](amlfs-prerequisites.md#blob-integration-prerequisites-optional)
+- [Create a manual import job from Blob Storage to Azure Managed Lustre](create-manual-import-job.md)
+- [Create an archive job to export data from Azure Managed Lustre](export-with-archive-jobs.md)
