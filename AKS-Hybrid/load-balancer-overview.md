@@ -11,9 +11,9 @@ ms.lastreviewed: 04/02/2024
 
 # Overview of MetalLB for Kubernetes clusters
 
-When you set up your AKS Arc cluster, you need a way to make your services accessible outside the cluster. The `LoadBalancer` type is ideal for this, but the external IP remains pending. The MetalLB Arc extension is a tool that allows you to generate external IPs for your applications and services. Arc-enabled Kubernetes clusters can integrate with [MetalLB](https://metallb.universe.tf/configuration/) using the `Arc Networking` k8s-extension.
+When you set up your AKS Arc cluster, you need a way to make your services accessible outside the cluster. The `LoadBalancer` type is ideal for this accessibility, but the external IP remains pending. The MetalLB Arc extension is a tool that allows you to generate external IPs for your applications and services. Arc-enabled Kubernetes clusters can integrate with [MetalLB](https://metallb.universe.tf/configuration/) using the `Arc Networking` k8s-extension.
 
-MetalLB needs IP addresses to use for making your services accessible outside the cluster. MetalLB takes care of assigning and releasing these addresses as needed when you create services, but it only distributes IPs that are in its configured pools. When MetalLB assigns an external IP address to a service, it informs the network outside the cluster that this IP belongs to the cluster. This is done using standard network protocols like ARP or BGP.
+MetalLB needs IP addresses to use for making your services accessible outside the cluster. MetalLB takes care of assigning and releasing these addresses as needed when you create services, but it only distributes IPs that are in its configured pools. When MetalLB assigns an external IP address to a service, it informs the network outside the cluster that this IP belongs to the cluster. This communication is done using standard network protocols like ARP or BGP.
 
 - Layer 2 mode (ARP): In layer 2 mode, one K8s node in the cluster takes ownership of the service, and uses standard address discovery protocols (ARP for IPv4) to make those IPs reachable on the local network. From the LAN's point of view, the announcing machine simply has multiple IP addresses.
 - BGP: In BGP mode, all machines in the cluster establish BGP peering sessions with nearby routers that you control, and tell those routers how to forward traffic to the service IPs. Using BGP enables true load balancing across multiple nodes, and fine-grained traffic control due to BGP's policy mechanisms.
@@ -30,7 +30,7 @@ MetalLB has two components:
 > - The controller pod is a normal pod that lives in any node in the cluster.
 
 - In ARP mode, one of the speaker pods is selected as the leader. It then advertises the IP using an ARP broadcast message, binding the IP with the MAC address of the node it lives in. Thus, all traffic first hits one node, and then kube-proxy spreads it evenly to all the backend pods of the service.
-- In BGP mode, all cluster nodes establish connections with all BGP peers created in the `BGP Peers` tab. Typically a BGP peer is a TOR switch. In order to broadcast the BGP routing information, the BGP peers must be configured so that they recognize the IP and ASN of cluster nodes. When using BGP with ECMP (Equal-Cost MultiPath), traffic hits evenly across all nodes, and thus it achieves true load balancing.
+- In BGP mode, all cluster nodes establish connections with all BGP peers created in the `BGP Peers` tab. Typically a BGP peer is a TOR switch. In order to broadcast the BGP routing information, the BGP peers must be configured so that they recognize the IP and ASN of cluster nodes. When you use BGP with ECMP (Equal-Cost MultiPath), traffic hits evenly across all nodes, and thus it achieves true load balancing.
 
 ## Compare MetalLB L2 (ARP) and BGP modes
 
@@ -44,7 +44,7 @@ The choice between L2 and BGP mode with MetalLB depends on your specific require
 | Scalability                 | Limited to Layer 2 networks, suitable for small to medium-sized K8s deployments. | Suitable for complex network topologies and large-scale K8s deployments. |
 | Compatibility with infrastructure network | Works with any network, but can cause ARP flooding in large K8s clusters, since a single IP is used for all services, and the service's ingress bandwidth is limited to the bandwidth of a single node. | Requires BGP support in the network infrastructure. |
 | Traffic engineering         | Limited control over traffic routing. | Fine-grained control over traffic routing using BGP attributes. |
-| External connectivity       | Requires additional configuration for external connectivity. | Provides seamless connectivity with external networks using BGP routing. |
+| External connectivity       | Requires more configuration for external connectivity. | Provides seamless connectivity with external networks using BGP routing. |
 
 ## Next steps
 
