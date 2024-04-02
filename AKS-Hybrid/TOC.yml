@@ -18,7 +18,7 @@
     items:
     - name: Network system requirements
       href: aks-hci-network-system-requirements.md
-    - name: Using a load balancer in Kubernetes
+    - name: Use a load balancer in Kubernetes
       href: load-balancer-overview.md
     - name: Infrastructure component updates
       href: infrastructure-components.md
@@ -46,9 +46,10 @@
       items:
       - name: Create logical networks for Kubernetes clusters
         href: aks-networks.md
-      - name: Use MetalLB load balancer 
+      - name: Use MetalLB load balancer
+        items:
         - name: Azure CLI
-          href: deploy-load-balancer-azcli.md
+          href: deploy-load-balancer-cli.md
         - name: Azure portal
           href: deploy-load-balancer-portal.md
         - name: Troubleshoot issues
