@@ -153,7 +153,7 @@ To configure blob integration:
 
    * If you use your blob container as a non-hierarchical object store, you can also think of the import prefix as a search string that is compared with the beginning of your blob object name.
 
-   For more information, see [Filter blob imports](blob-integration.md#filter-blob-imports).
+   For more information, see [Import prefix](blob-integration.md#import-prefix).
 
    You can't change this field after you create the Azure Managed Lustre file system.
 

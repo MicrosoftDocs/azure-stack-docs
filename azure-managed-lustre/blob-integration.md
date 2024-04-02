@@ -99,6 +99,7 @@ The following items are important to consider when importing data from a blob co
   - **Azure portal**: 
   - **REST API**: 
   - **Lustre file in root directory**: A file named similar to `/lustre/IMPORT_<state>.<timestamp_start>` is created in the Lustre root directory during import. The `<state>` placeholder changes as the import progresses. The file is deleted when the import job completes successfully.
+- To view details about a completed import job, you can check the logging container. The logging container contains logs for the import job, including any errors or conflicts that occurred during the import.
 
 ## Export data to Blob Storage using an archive job
 
