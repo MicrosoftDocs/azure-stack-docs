@@ -1,3 +1,4 @@
+items:
 - name: Azure Stack HCI documentation
   href: index.yml
 - name: Overview
@@ -8,18 +9,36 @@
     href: whats-new.md
   - name: Release notes
     items:
-    - name: Known issues 2402 - Current
-      href: known-issues-2402.md
+    - name: Release information
+      href: release-information-23h2.md
+    - name: Known issues 2402 
+      items:
+      - name: 2402.1 - Current
+        href: known-issues-2402-1.md
+      - name: 2402 
+        href: known-issues-2402.md
     - name: Known issues 2311
       items:
-      - name: 2311.3 - Current
+      - name: 2311.4 - Current
+        href: known-issues-2311-4.md
+      - name: 2311.3 
         href: known-issues-2311-3.md
       - name: 2311.2 - GA
         href: known-issues-2311-2.md
       - name: 2311 (preview)
         href: known-issues-2311.md
-    - name: Release information
-      href: release-information-23h2.md
+    - name: Security updates
+      items:
+      - name: March 2024 - Current
+        href: security-update/hci-security-update-mar-2024.md
+      - name: February 2024 
+        href: security-update/hci-security-update-feb-2024.md      
+      - name: January 2024 
+        href: security-update/hci-security-update-jan-2024.md
+      - name: December 2023 
+        href: security-update/hci-security-update-dec-2023.md
+      - name: November 2023 
+        href: security-update/hci-security-update-nov-2023.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
@@ -78,8 +97,12 @@
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
-  - name: Review security features
-    href: concepts/security-features.md
+  - name: Review security
+    items:
+    - name: About security features
+      href: concepts/security-features.md
+    - name: Download Azure Stack HCI security book
+      href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
 
@@ -114,7 +137,7 @@
   - name: Deploy workloads
     items:
     - name: Run AKS on HCI
-      href: /azure/aks/hybrid/kubernetes-walkthrough-powershell?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      href: /azure/aks/hybrid/aks-create-clusters-cli?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Virtual Desktop on HCI
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Arc VMs
@@ -202,18 +225,20 @@
         href: manage/processor-compatibility-mode.md
       - name: Use GPUs with clustered VMs
         href: manage/use-gpu-with-clustered-vm.md
-      - name: Partition and share GPUs with VMs
-        href: manage/partition-gpu.md
+      - name: GPU Partitioning
+        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Partition and assign GPUs to a virtual machine
+        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
 
   - name: Security
     items:
-    - name: Manage application control (WDAC)
-      href: manage/manage-wdac.md
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
+    - name: Manage application control (WDAC)
+      href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
     - name: Manage secrets rotation
@@ -260,7 +285,13 @@
 
   - name: SDN
     items:
-    - name: SDN Multisite
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
+    - name: Manage software load balancers
+      href: manage/load-balancers.md
+    - name: Manage SDN Multisite
       href: manage/manage-sdn-multisite.md
 
 - name: Monitor
@@ -310,6 +341,10 @@
     href: manage/collect-logs.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
+  - name: Get support
+    href: manage/get-support.md
+  - name: Get remote support
+    href: manage/get-remote-support.md
 
 - name: Migrate
   items:
@@ -354,6 +389,9 @@
     href: concepts/software-defined-networking-23h2.md
   - name: Plan an SDN infrastructure
     href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+  - name: SDN Multisite overview
+    href: concepts/sdn-multisite-overview.md
+
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
@@ -490,10 +528,6 @@
         href: manage/configure-network-security-groups-with-tags.md
       - name: Manage default network access policies
         href: manage/manage-default-network-access-policies-virtual-machines.md
-      - name: Manage tenant virtual networks
-        href: manage/tenant-virtual-networks.md
-      - name: Manage tenant logical networks
-        href: manage/tenant-logical-networks.md
       - name: Manage SDN security
         items:
         - name: Secure the Network Controller
@@ -508,8 +542,6 @@
           href: manage/kerberos-with-spn.md
       - name: Manage software load balancers
         items:
-        - name: Manage software load balancers
-          href: manage/load-balancers.md
         - name: Configure load balancer for high availability ports
           href: manage/configure-software-load-balancer.md
       - name: Manage gateway connections
@@ -674,7 +706,7 @@
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: /azure/aks/hybrid/overview
+    href: /azure/aks/hybrid/aks-overview
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
@@ -703,12 +735,6 @@
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Azure Benefits (22H2 and earlier)
     href: ./manage/azure-benefits.md
-  - name: Support
-    items:
-    - name: Get support
-      href: manage/get-support.md
-    - name: Get remote support
-      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations

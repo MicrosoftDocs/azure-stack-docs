@@ -5,12 +5,12 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 02/26/2024
+ms.date: 03/29/2024
 ---
 
 # Get remote support for Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides guidance on how to get remote support for your Azure Stack HCI operating system.
 
