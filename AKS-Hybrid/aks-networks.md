@@ -47,7 +47,7 @@ You can create a logical network using either the Azure Command-Line Interface (
 
 # [Azure CLI](#tab/azurecli)
 
-You can use the [`az stack-hci-vm network lnet create`](/network/lnet#az-stack-hci-vm-network-lnet-create) cmdlet to create a logical network on the VM switch in Static IP configuration.
+You can use the [`az stack-hci-vm network lnet create`](/cli/azure/stack-hci-vm/network/lnet#az-stack-hci-vm-network-lnet-create) cmdlet to create a logical network on the VM switch in Static IP configuration.
 
 For static IP, the required parameters are as follows:
 
