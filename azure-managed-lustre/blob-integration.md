@@ -21,30 +21,20 @@ To understand the requirements and configuration needed for a compatible blob co
 
 ## Blob integration overview
 
-Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a non-hierarchical, or flat, namespace. The following minor differences apply:
+You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), or you can [manually create an import job](create-manual-import-job.md) any time after the cluster is created. Once the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account by running Lustre CLI commands on the client, or by [exporting the data using archive jobs](export-with-archive-jobs.md).
 
-- For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
-- For a storage account that *does not* have hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
+When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when first accessed by a client. There's a slight delay when first accessing data while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
 
-Some key interactions between Azure Managed Lustre and Blob include:
-
-- Only file names (namespace) and metadata are imported when the file system is created. The Blob contents are imported later when first accessed.
-
-   At file system creation time, the namespace and metadata from the blob or HNS storage container are imported into the Lustre namespace.  Each blob is imported as one file with slashes in the blob path names corresponding to directories created in Lustre.  You may specify a subset of the namespace to import using an import prefix.
-  
-- Upon first client access (after file system deployment is completed), the contents of the blobs are pulled into the file system.  There will be a slight delay upon first access until the data is available while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
-
-- As new files are created or existing files are modified in the file system, you can export these files back to the storage account by running Lustre cli commands on the client, or using the managed process as described in the `Export data using archive jobs` article.
-
-> [!NOTE]
-> You can also prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities using the command below.
+You can prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. The following command will prefetch the contents of the blobs into the file system:
 
 ```
 nohup find local/directory -type f -print0 | xargs -0 -n 1 sudo lfs hsm_restore &
 ```
 
+Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a non-hierarchical, or flat, namespace. The following minor differences apply:
 
-## Filter blob imports
+- For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
+- For a storage account that *does not* have hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate, empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
 
 ## Import data from Blob Storage
 
@@ -56,26 +46,48 @@ When configuring an import job, you must identify two separate blob containers: 
 
 ### Import prefix
 
-When importing data from a blob container, you can specify one or more prefixes to filter the data imported into the Azure Managed Lustre file system. Contents that match one of the prefixes are added to a metadata record in the file system. When a client requests a file, its contents are retrieved from the blob container and stored in the file system.
+When importing data from a blob container, you can optionally specify one or more prefixes to filter the data imported into the Azure Managed Lustre file system. File names in the blob container that match one of the prefixes are added to a metadata record in the file system. When a client first accesses a file, its contents are retrieved from the blob container and stored in the file system.
 
-During cluster creation, use the **Import prefix** fields on the **Advanced** tab to specify the data to be imported from your blob container. These fields only apply to the initial import job. You can't change the import prefix after the cluster is created.
+In the Azure portal, use the **Import prefix** fields on the **Advanced** tab during cluster creation to specify the data to be imported from your blob container. These fields only apply to the initial import job. You can't change the import prefix after the cluster is created.
 
-For a manual import job, you can specify import prefixes when you create the import job. From the Azure portal, you can specify the import prefix in the **Import prefix** field. You can also specify the import prefix when you use the REST API to create an import job.
+For a manual import job, you can specify import prefixes when you create the import job. From the Azure portal, you can specify import prefixes in the **Import prefix** fields. You can also specify the import prefix when you use the REST API to create an import job.
 
 Keep the following considerations in mind when specifying import prefixes:
 
-- The default import prefix, **/**, imports the contents of the entire blob container.
+- The default import prefix is `/`. This default behavior imports the contents of the entire blob container.
 - If you specify multiple prefixes, the prefixes must be non-overlapping. For example, if you specify `/data` and `/data2`, the import job fails because the prefixes overlap.
 - If the blob container is in a storage account with hierarchical namespace enabled, you can think of the prefix as a file path. Items under the path are included in the Azure Managed Lustre file system.
-- If the blob container is in a storage account with a non-hierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and **/** characters in blob names become directory delimiters when stored in Lustre.
+- If the blob container is in a storage account with a non-hierarchical (or flat) namespace, you can think of the import prefix as a search string that is compared with the beginning of the blob name. If the name of a blob in the container starts with the string you specified as the import prefix, that file is made accessible in the file system. Lustre is a hierarchical file system, and `/` characters in blob names become directory delimiters when stored in Lustre.
 
 ### Conflict resolution mode
 
-When importing data from a blob container, you can specify how to handle conflicts between the blob container and the file system. The following options are available:
+When importing data from a blob container, you can specify how to handle conflicts between the blob container and the file system. This option only applies to manual import jobs that are run for existing clusters. The following table shows the available conflict resolution modes and their descriptions:
+
+| Mode | Description |
+|------|-------------|
+| `fail` | The import job fails immediately with an error if a conflict is detected. |
+| `skip` | The import job skips the file if a conflict is detected. |
+| `overwrite-dirty` | The import job evaluates a conflicting path to see if it should be deleted and re-imported. To learn more, see [overwrite-dirty mode](#overwrite-dirty-mode). |
+| `overwrite-always` | The import job evaluates a conflicting path and always deletes/re-imports if it's dirty, or releases if it's clean. To learn more, see [overwrite-always mode](#overwrite-always-mode). |
+
+#### Overwrite-dirty mode
+
+The `overwrite-dirty` mode evaluates a conflicting path to see if it should be deleted and re-imported. At a high level, `overwrite-dirty` mode checks the HSM state. If the HSM state is **Clean** and **Archived**, meaning its data is in sync with the blob container as far as Lustre can tell, then only the attributes are updated, if needed. Otherwise, the file is deleted and re-imported from the blob container.
+
+Checking the HSM state doesn't guarantee that the file in Lustre matches the file in the blob container. If you must ensure that the file in Lustre matches the file in the blob container as closely as possible, use the `overwrite-always` mode.
+
+#### Overwrite-always mode
+
+The `overwrite-always` mode evaluates a conflicting path and always deletes/re-imports if it's dirty, or releases if it's clean. This mode is useful when you want to ensure that the file system is always in sync with the blob container. It's also the most expensive option, as every previously restored file is either released or deleted/re-imported upon first access.
 
 ### Error tolerance
 
-When importing data from a blob container, you can specify the error tolerance level. The error tolerance level determines how the import job handles errors that occur during the import process. The following error tolerance levels are available:
+When importing data from a blob container, you can specify the error tolerance. The error tolerance level determines how the import job handles transient errors that occur during the import process, for example, operating system errors or network interruptions. It's important to note that errors in this context don't refer to file conflicts, which are handled by the conflict resolution mode.
+
+The following error tolerance options are available for import jobs:
+
+- **Do not allow errors** (default): The import job fails immediately if any error occurs during the import. This is the default behavior.
+- **Allow errors**: The import job continues if an error occurs, but the error is logged. By choosing this option, you can specify the maximum number of errors that can occur before the import job fails.
 
 ### Considerations for blob import jobs
 
