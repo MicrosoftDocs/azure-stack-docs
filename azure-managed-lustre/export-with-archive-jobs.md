@@ -35,7 +35,7 @@ The following procedures tell how to:
 - [Create a manual export (archive) job in the Azure portal](#create-a-manual-export-archive-job-in-the-azure-portal)
 - [Monitor or cancel a manual export (archive) job in the Azure portal](#monitor-or-cancel-a-manual-export-archive-job-in-the-azure-portal)
 - [Create a manual export (archive) job using commands in the native Lustre CLI](#create-manual-export-archive-job-using-the-native-lustre-client-cli)
-- [Monitor archive state for a file using native Luster CLI commands](#monitor-archive-state-using-the-native-lustre-client-cli)
+- [Monitor archive state for a file using native Lustre CLI commands](#monitor-archive-state-using-the-native-lustre-client-cli)
 
 ## Create a manual export (archive) job in the Azure portal
 
