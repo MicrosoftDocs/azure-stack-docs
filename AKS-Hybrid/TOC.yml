@@ -19,9 +19,9 @@
     - name: Networking
       items:
       - name: Networking concepts
-      - href: aks-hci-network-system-requirements.md
+        href: aks-hci-network-system-requirements.md
       - name: Load balancer
-      - href: load-balancer-overview.md
+        href: load-balancer-overview.md
     - name: Infrastructure component updates
       href: infrastructure-components.md
     - name: Cluster architecture
