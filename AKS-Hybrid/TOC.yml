@@ -20,10 +20,6 @@
       items:
       - name: Networking concepts
       - href: aks-hci-network-system-requirements.md
-      - name: Proxy and firewall requirements
-      - href: aks-arc-proxy-firewall.md
-      - name: IP address planning
-      - href: aks-arc-ip-address-planning.md
       - name: Load balancer
       - href: load-balancer-overview.md
     - name: Infrastructure component updates
