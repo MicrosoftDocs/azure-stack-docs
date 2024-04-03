@@ -5,19 +5,19 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 02/26/2024
+ms.date: 04/03/2024
 ---
 
 # Manage Azure Stack HCI gateway connections
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this topic, learn how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN). Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
+This article describes how to create, delete, and update gateway connections using Windows Admin Center after you deploy Software Defined Networking (SDN). Gateways are used for routing network traffic between a virtual network and another network, either local or remote. There are three types of gateway connections – Internet Protocol Security (IPsec), Generic Routing Encapsulation (GRE), and Layer 3 (L3).
 
 > [!NOTE]
 > You need to deploy SDN gateways before you can create a gateway connection. Additionally, you need to deploy Software Load Balancers (SLBs) before you can create an IPsec connection.
 
-For more information on gateways for SDN, see [What is RAS Gateway for SDN](../concepts/gateway-overview.md). For more information on SDN deployment, see [Deploy an SDN infrastructure using SDN Express](sdn-express.md).
+For more information on gateways for SDN, see [What is RAS Gateway for SDN](../concepts/gateway-overview.md). For more information on SDN deployment, see [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md.md). <!--update the conceptual article link if required-->
 
 ## Create a new IPsec gateway connection
 
