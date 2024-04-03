@@ -4,7 +4,7 @@ description: Learn how to create a manual import job to import data from an Azur
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 03/13/2024
+ms.date: 04/03/2024
 ms.reviewer: brianl
 ---
 

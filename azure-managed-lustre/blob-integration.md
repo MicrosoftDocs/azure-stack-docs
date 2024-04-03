@@ -87,7 +87,8 @@ When importing data from a blob container, you can specify the error tolerance. 
 The following error tolerance options are available for import jobs:
 
 - **Do not allow errors** (default): The import job fails immediately if any error occurs during the import. This is the default behavior.
-- **Allow errors**: The import job continues if an error occurs, but the error is logged. By choosing this option, you can specify the maximum number of errors that can occur before the import job fails.
+- **Allow errors**: The import job continues if an error occurs, but the error is logged. By choosing this option, you can specify the maximum number of errors that can occur before the import job fails. If you specify -1, the import job continues regardless of the number of errors that occur. If you specify a number greater than 0, the import job fails if the number of errors exceeds the specified threshold.
+TODO: Add more details about error tolerance options once available.
 
 ### Considerations for blob import jobs
 

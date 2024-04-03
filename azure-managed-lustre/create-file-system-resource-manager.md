@@ -125,6 +125,7 @@ The parameters in this section are either optional, or required only if you're u
 
 * **Tags** - Use this option if you want to set Azure resource metadata tags.
 
+TODO: Update to match the new blob integration settings
 * **Blob integration settings** - Supply these values to use an integrated Blob Storage container with this file system. For more information, see [Blob integration](create-file-system-portal.md#blob-integration).
 
   * **Container** - The resource ID of the blob container to use for Lustre hierarchical storage management (HSM).
@@ -193,6 +194,7 @@ This section shows sample contents for a template file and a separate parameters
 
 ### Template file
 
+TODO: Update to match the new blob integration settings
 This section shows example contents of a template file:
 
 ```json
