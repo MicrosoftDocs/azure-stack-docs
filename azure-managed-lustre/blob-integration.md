@@ -21,7 +21,7 @@ To understand the requirements and configuration needed for a compatible blob co
 
 ## Blob integration overview
 
-You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), or you can [manually create an import job](create-manual-import-job.md) any time after the cluster is created. Once the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account by running Lustre CLI commands on the client, or by [exporting the data using archive jobs](export-with-archive-jobs.md).
+You can configure blob integration during [cluster creation](create-file-system-portal.md#blob-integration), or you can [manually create an import job](create-manual-import-job.md) any time after the cluster is created. Once the data is imported, you can work with the data as you would with other file system data. As new files are created or existing files are modified in the file system, you can export these files back to the storage account by running Lustre CLI commands on the client, or by [exporting the data using manual export (archive) jobs](export-with-archive-jobs.md).
 
 When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when first accessed by a client. There's a slight delay when first accessing data while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
 
@@ -102,13 +102,13 @@ The following items are important to consider when importing data from a blob co
   - **Lustre file in root directory**: A file named similar to `/lustre/IMPORT_<state>.<timestamp_start>` is created in the Lustre root directory during import. The `<state>` placeholder changes as the import progresses. The file is deleted when the import job completes successfully.
 - To view details about a completed import job, you can check the logging container. The logging container contains logs for the import job, including any errors or conflicts that occurred during the import.
 
-## Export data to Blob Storage using an archive job
+## Export data to Blob Storage using a manual export (archive) job
 
-You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by [creating an archive job](export-with-archive-jobs.md).
+You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by [creating a manual export (archive) job](export-with-archive-jobs.md).
 
 ### Metadata for exported files
 
-When files are archived from the Azure Managed Lustre file system to the blob container, additional metadata is saved to simplify reimporting the contents to a file system.
+When files are exported from the Azure Managed Lustre file system to the blob container, additional metadata is saved to simplify reimporting the contents to a file system.
 
 The following table lists POSIX attributes from the Lustre file system that are saved in the blob metadata as key-value pairs:
 
@@ -122,11 +122,11 @@ Directory attributes are saved in an empty blob. This blob has the same name as 
 
 You can modify the POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
 
-### Considerations for archive jobs
+### Considerations for manual export (archive) jobs
 
-The following items are important to consider when exporting data with an archive job:
+The following items are important to consider when exporting data with a manual export (archive) job:
 
-- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start an archive job to export data returns an error.
+- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start a manual export (archive) job to export data returns an error.
 
 ## Copy a Lustre blob container with AzCopy or Storage Explorer
 
@@ -146,4 +146,4 @@ In Storage Explorer, you can enable this flag in **Settings** by selecting **Tra
 
 - [Prerequisites for blob storage integration](amlfs-prerequisites.md#blob-integration-prerequisites-optional)
 - [Create a manual import job from Blob Storage to Azure Managed Lustre](create-manual-import-job.md)
-- [Create an archive job to export data from Azure Managed Lustre](export-with-archive-jobs.md)
+- [Create a manual export (archive) job to export data from Azure Managed Lustre](export-with-archive-jobs.md)
