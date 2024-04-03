@@ -293,7 +293,10 @@ items:
       href: manage/load-balancers.md
     - name: Manage SDN Multisite
       href: manage/manage-sdn-multisite.md
-
+    - name: SDN security 
+      items:
+      - name: Secure the Network Controller
+        href: manage/nc-security.md
 - name: Monitor
   items:
   - name: Overview
@@ -530,8 +533,6 @@ items:
         href: manage/manage-default-network-access-policies-virtual-machines.md
       - name: Manage SDN security
         items:
-        - name: Secure the Network Controller
-          href: manage/nc-security.md
         - name: Manage certificates for SDN
           href: manage/sdn-manage-certs.md
         - name: Update Network Controller certificates
