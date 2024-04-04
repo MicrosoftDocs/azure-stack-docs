@@ -69,6 +69,9 @@ For profiles containing dates, to use a different SDK profile or version you can
 
 | Azure Stack version | Profile |
 |---------------------|---------|
+|2311|2020_09_01|
+|2301|2020_09_01|
+|2206|2020_09_01|
 |2108|2020-09-01|
 |2102|2020-09-01|
 |2008|2019-03-01|
