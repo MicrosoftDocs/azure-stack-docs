@@ -1,5 +1,5 @@
 ---
-title: Overview of MetalLB for Kubernetes clusters
+title: Overview of MetalLB for Kubernetes clusters (preview)
 description: Learn the basic concepts of MetalLB load balancing for AKS enabled by Arc Kubernetes clusters.
 ms.topic: conceptual
 ms.date: 04/02/2024
@@ -9,7 +9,9 @@ ms.reviewer: xinyuhe
 ms.lastreviewed: 04/02/2024
 ---
 
-# Overview of MetalLB for Kubernetes clusters
+# Overview of MetalLB for Kubernetes clusters (preview)
+
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 When you set up your AKS Arc cluster, you need a way to make your services accessible outside the cluster. The `LoadBalancer` type is ideal for this accessibility, but the external IP remains pending. The MetalLB Arc extension is a tool that allows you to generate external IPs for your applications and services. Arc-enabled Kubernetes clusters can integrate with [MetalLB](https://metallb.universe.tf/configuration/) using the `Arc Networking` k8s-extension.
 
