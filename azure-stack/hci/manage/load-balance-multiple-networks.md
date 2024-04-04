@@ -1,63 +1,63 @@
 ---
-title: Set up load balancing on multiple logical networks for Azure Stack HCI
-description: Learn how to Load balance on multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI.
+title: Load balance multiple logical networks for Azure Stack HCI
+description: Learn how to load balance multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.date: 04/04/2024
 ---
 
-# Load balance SDN on multiple networks for Azure Stack HCI
+# Load balance multiple SDN logical networks for Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article provides guidance on how to set up load balancing across multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI. By using multiple logical networks for load balancing gives you more control over isolating workloads from each other.
+This article provides guidance on how to set up load balancing across multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI. By using multiple logical networks for load balancing provides you more control over isolating workloads from each other.
 
-For information on how to create and manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md).
+For information about how to create and manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md).
 
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- All software load balancing (SLB) multiplexer (MUX) virtual machines (VMs) have an extra interface dedicated to extra logical networks.
+- All software load balancing (SLB) multiplexer (MUX) virtual machines (VMs) have an extra interface for additional logical networks.
 
-- On the physical network side, confirm connectivity between the logical networks and the Azure Stack HCI management network by ensuring the management network is trunked at your Top-of-Rack (TOR) switch. This step ensures VM access from the Hyper-V host.
+- On the physical network side, confirm connectivity between the logical networks and the Azure Stack HCI management network by ensuring the management network is trunked at your Top-of-Rack (TOR) switch. This step ensures access to the VM from the Hyper-V host is maintained.
 
 ## Set up load balancing across multiple logical networks
 
-Follow these steps to set up multiple logical networks and add additional interfaces for SDN load balancing using PowerShell:
+Follow these steps to set up multiple SDN logical networks and add extra interfaces for load balancing using PowerShell:
 
-1. To establish communication between the SLB MUX and the correct logical network, create a new network adapter connected to the MUX. This adapter should have connectivity to the new logical network.
+1. Create a new network adapter connected to the MUX to establish communication between the SLB MUX and the correct logical network. This adapter should have connectivity to the new logical network.
 
-1. Define the VM and switch details:
+1. Run the following command to define the VM and switch details:
 
     ```powershell
     $vm = Get-VM -Name'MUX_name'
     $switch = Get-VmSwitch -Name 'switch_name'
     ```
 
-1. Stop the VM and add the adapter:
+1. Run the following command to stop the VM and add the adapter:
 
     ```powershell
     $vm | Stop-Vm
     $vnic = $vm | Add-VMNetworkAdapter -SwitchName $switch.Name -Name 'switch_name' -PassThru
     ```
 
-1. Start the VM, which gives a dynamic MAC address:
+1. Run the following command to start the VM, which gives a dynamic MAC address:
 
     ```powershell
     $vm | Start-VM
     $FormattedMac = [regex]::matches($vnic.MacAddress.ToUpper().Replace(":","").Replace("-",""),'..').groups.value -join "-"
     ```
 
-1. Stop the VM and configure the MAC address:
+1. Run the following command to stop the VM and configure the MAC address:
 
     ```powershell
     $vm | Stop-Vm
     $vnic | Set-VmNetworkAdapter -StaticMacAddress $FormattedMac
     ```
 
-1. Set the port profile and VLAN information:
+1. Run the following command to set the port profile and VLAN information:
 
     ```powershell
     Set-SdnVMNetworkAdapterPortProfile -VMName $vm.Name -MacAddress $vnic.MacAddress -ProfileData2 -ProfileId $([Guid]::Empty)
@@ -66,13 +66,13 @@ Follow these steps to set up multiple logical networks and add additional interf
     $vnic
     ```
 
-1. Start the VM:
+1. Run the following command to start the VM:
 
     ```powershell
     $vm | Start-Vm
     ```
 
-1. Within the MUX, set the IP address. MAC addresses are formatted with dashes within the guest OS, so you need to find the correct MAC address that aligns with the output of step#4:
+1. Run the following command to set the IP address within the MUX. MAC addresses are formatted with dashes within the guest OS. Find the correct MAC address that aligns with the output of step #4:
 
     ```powershell
     Get-NetAdapter
@@ -88,5 +88,4 @@ If you encounter any issues during setup, collect logs for troubleshooting purpo
 
 ## Next steps
 
-- Learn more about [SDN on YouTube](https://www.youtube.com/@microsoftsdn).
 - [Plan an SDN infrastructure](../concepts/plan-software-defined-networking-infrastructure-23h2.md).
