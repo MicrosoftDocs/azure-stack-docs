@@ -63,7 +63,7 @@ To run your applications and supporting services, you need a **Kubernetes node*
 There are core Kubernetes workload components that you can deploy on AKS workload clusters, such as pods and deployments.
 
 > [!WARNING]
-> During the preview, the creation and management of the windows nodepool are not supported.
+> During the preview, the creation and management of Windows nodepools is not supported.
 
 ## Lifecycle management
 
