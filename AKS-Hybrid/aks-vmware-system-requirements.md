@@ -113,6 +113,8 @@ You can use the AKS Arc on VMware preview in the following supported regions:
 - India Central
 - Southeast Asia
 - West Europe
+- Japen East
+- Canada Central
 
 > [!WARNING]
 > The AKS Arc on VMware preview currently supports cluster creation exclusively within the specified Azure regions. If you attempt to deploy in a region outside of this list, a deployment failure occurs.
