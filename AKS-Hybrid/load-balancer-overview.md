@@ -1,5 +1,5 @@
 ---
-title: Overview of MetalLB for Kubernetes clusters (preview)
+title: Overview of MetalLB for Kubernetes clusters
 description: Learn the basic concepts of MetalLB load balancing for AKS enabled by Arc Kubernetes clusters.
 ms.topic: conceptual
 ms.date: 04/02/2024
@@ -9,7 +9,7 @@ ms.reviewer: xinyuhe
 ms.lastreviewed: 04/02/2024
 ---
 
-# Overview of MetalLB for Kubernetes clusters (preview)
+# Overview of MetalLB for Kubernetes clusters
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
