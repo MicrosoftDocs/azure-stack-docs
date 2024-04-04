@@ -11,7 +11,7 @@ ms.date: 04/04/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article provides guidance on how to set up load balancing across multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI. By using multiple logical networks for load balancing provides you more control over isolating workloads from each other.
+This article provides guidance on how to load balance multiple Software Defined Networking (SDN) logical networks for Azure Stack HCI. By using multiple logical networks for load balancing provides you with more control over isolating workloads from each other.
 
 For information about how to create and manage logical networks, see [Manage tenant logical networks](./tenant-logical-networks.md).
 
@@ -19,9 +19,9 @@ For information about how to create and manage logical networks, see [Manage ten
 
 Before you begin, make sure that the following prerequisites are completed:
 
-- All software load balancing (SLB) multiplexer (MUX) virtual machines (VMs) have an extra interface for additional logical networks.
+- Make sure that all software load balancing (SLB) multiplexer (MUX) virtual machines (VMs) have an extra interface for additional logical networks.
 
-- On the physical network side, confirm connectivity between the logical networks and the Azure Stack HCI management network by ensuring the management network is trunked at your Top-of-Rack (TOR) switch. This step ensures access to the VM from the Hyper-V host is maintained.
+- Make sure that there's connectivity between the logical networks and the Azure Stack HCI management network on the physical network side. Ensure the management network is trunked at your Top-of-Rack (TOR) switch to maintain access to the VM from the Hyper-V host.
 
 ## Set up load balancing across multiple logical networks
 
