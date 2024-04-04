@@ -25,7 +25,7 @@ An Azure Kubernetes Service cluster has the following components:
 
 :::image type="content" source="media/aks-vmware-cluster-architecture/aks-vmware-cluster-architecture.png" alt-text="Diagram showing cluster architecture." lightbox="media/aks-vmware-cluster-architecture/aks-vmware-cluster-architecture.png":::
 
-AKS Arc uses a set of predefined configuration options to deploy Kubernetes clusters effectively and with scalability in mind. A deployment operation creates multiple Linux or Windows virtual machines and joins them together to create one or more Kubernetes clusters.
+AKS Arc uses a set of predefined configuration options to deploy Kubernetes clusters effectively and with scalability in mind. A deployment operation creates multiple Linux virtual machines and joins them together to create one or more Kubernetes clusters.
 
 ### Arc Resource Bridge
 
@@ -61,6 +61,9 @@ The AKS Arc on VMware preview supports the following options to deploy a load ba
 To run your applications and supporting services, you need a **Kubernetes node**. An AKS workload cluster has one or more *worker nodes*. Worker nodes act as virtual machines (VMs) that run the Kubernetes node components and host the pods and services that make up the application workload.
 
 There are core Kubernetes workload components that you can deploy on AKS workload clusters, such as pods and deployments.
+
+> [!WARNING]
+> During the preview, the creation and management of the windows nodepool are not supported.
 
 ## Lifecycle management
 
