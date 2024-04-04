@@ -291,6 +291,8 @@ items:
       href: manage/tenant-virtual-networks.md
     - name: Manage software load balancers
       href: manage/load-balancers.md
+    - name: Load balance multiple logical networks
+      href: manage/load-balance-multiple-networks
     - name: Manage SDN Multisite
       href: manage/manage-sdn-multisite.md
 
