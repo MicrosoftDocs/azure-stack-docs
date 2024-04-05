@@ -47,7 +47,7 @@ The Datacenter Firewall offers the following advantages for tenants:
 
 - Ability to define firewall rules to help protect internet-facing workloads and internal workloads on networks
 
-- Ability to define firewall rules to help protect traffic between VMs on the same Layer 2 (L2) subnet as well as between VMs on different L2 subnets
+- Ability to define firewall rules to help protect traffic between VMs on the same Layer 2 (L2) subnet and between VMs on different L2 subnets
 
 - Ability to define firewall rules to help protect and isolate network traffic between tenant on-premises networks and their virtual networks at the service provider
 
@@ -57,7 +57,7 @@ The Datacenter Firewall offers the following advantages for tenants:
 
 For related information, see also:
 
-- [Use Datacenter Firewall to configure ACLs with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md)
-- [Use Datacenter Firewall to configure ACLs with PowerShell](../manage/use-datacenter-firewall-powershell.md)
+- [Configure network security groups with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md)
+- [Configure network security groups with PowerShell](../manage/use-datacenter-firewall-powershell.md)
 - [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)
 - [Learn module: Implement Datacenter Firewall and Software Load Balancer on Azure Stack HCI](/training/modules/implement-firewall-load-balancer/)
