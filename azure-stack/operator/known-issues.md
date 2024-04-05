@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/16/2024
+ms.date: 04/05/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -54,9 +54,14 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: If you see that any physical machine is not powered down, you must turn off that machine through the Baseboard Management Controller (BMC).
 - Occurrence: Common.
 
-<!-- ## Alerts -->
+### False deployment error in portal for API app deployment
 
-<!-- ## Portal -->
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
+- Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+<!-- ## Alerts -->
 
 ## Portal
 
