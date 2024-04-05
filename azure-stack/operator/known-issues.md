@@ -54,13 +54,6 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: If you see that any physical machine is not powered down, you must turn off that machine through the Baseboard Management Controller (BMC).
 - Occurrence: Common.
 
-### False deployment error in portal for API app deployment
-
-- Applicable: This issue applies to release 2311 and later.
-- Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
-- Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
-- Occurrence: Common.
-
 <!-- ## Alerts -->
 
 ## Portal
@@ -68,6 +61,13 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to release 2311.
 - Cause: In the Azure Stack Hub user portal, under the **Virtual Networks** section, there are three new options for virtual networks: **DNS Servers**, **Flow Timeout**, and **BGP community string**. You can successfully modify the DNS configuration using the **DNS Servers** option. However, attempts to use the **Flow Timeout** and **BGP community string** options result in a failure within the portal notifications. No changes are made to the underlying services; the errors are only in the portal.
 - Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Common.
+
+### False deployment error in portal for API app deployment
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: Some users might see an error message with error code **templateLinkAndJson** when deploying an API application from the marketplace, even though the deployment was successful.
+- Remediation: Check your API app after deployment to ensure deployment was successful. Microsoft is aware of the problem and is working on a fix.
 - Occurrence: Common.
 
 <!-- ## Datacenter integration -->
