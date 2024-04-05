@@ -58,7 +58,7 @@ VIPs are located in the SLB Multiplexer (MUX).  The MUX consists of one or more 
 
 - Spread the load from the failed or removed MUX across the healthy MUXes.
 
-When public traffic arrives from the internet, the SLB MUX examines the traffic, which contains the VIP as a destination, and maps and rewrites the traffic so that it will arrive at an individual DIP. For inbound network traffic, this transaction is performed in a two-step process that is split between the MUX VMs and the Hyper-V host where the destination DIP is located:
+When public traffic arrives from the internet, the SLB MUX examines the traffic, which contains the VIP as a destination, and maps and rewrites the traffic so that it arrives at an individual DIP. For inbound network traffic, this transaction is performed in a two-step process that is split between the MUX VMs and the Hyper-V host where the destination DIP is located:
 
 1. Load balance - the MUX uses the VIP to select a DIP, encapsulates the packet, and forwards the traffic to the Hyper-V host where the DIP is located.
 
@@ -86,11 +86,11 @@ In the following illustration, a client computer performs a DNS query for the IP
 
 1. The request reaches the Contoso SharePoint site in Server Farm 2. The server generates a response and sends it to the client, using its own IP address as the source.
 
-1. The host intercepts the outgoing packet in the virtual switch which remembers that the client, now the destination, made the original request to the VIP. The host rewrites the source of the packet to be the VIP so that the client does not see the DIP address.
+1. The host intercepts the outgoing packet in the virtual switch, which remembers that the client, now the destination, made the original request to the VIP. The host rewrites the source of the packet to be the VIP so that the client doesn't see the DIP address.
 
-1. The host forwards the packet directly to the default gateway for the physical network which uses its standard routing table to forward the packet on to the client, which eventually receives the response.
+1. The host forwards the packet directly to the default gateway for the physical network that uses its standard routing table to forward the packet on to the client, which eventually receives the response.
 
-:::image type="content" source="media/software-load-balancer/slb-process.jpg" alt-text="Software Load Balancing process." border="false" lightbox="media/software-load-balancer/slb-process.jpg":::
+:::image type="content" source="media/software-load-balancer/slb-process.jpg" alt-text="Software Load Balancing process." lightbox="media/software-load-balancer/slb-process.jpg":::
 
 ### Load balancing internal datacenter traffic
 
@@ -178,13 +178,13 @@ The following sections describe some of the features and capabilities of Softwar
 
 - You can use SLB on a Hyper-V Network Virtualization-based network.
 
-- You can use SLB with a VLAN-based network for DIP VMs connected to a SDN Enabled Hyper-V virtual switch.
+- You can use SLB with a VLAN-based network for DIP VMs connected to an SDN enabled Hyper-V virtual switch.
 
 - One SLB instance can handle multiple tenants.
 
 - SLB and DIP support a scalable and low-latency return path, as implemented by DSR.
 
-- SLB functions when you are also using Switch Embedded Teaming (SET) or Single Root Input/Output Virtualization (SR-IOV).
+- SLB functions when you're also using Switch Embedded Teaming (SET) or Single Root Input/Output Virtualization (SR-IOV).
 
 - SLB includes Internet Protocol version 6 (IPv6) and version 4 (IPv4) support.
 
