@@ -6,18 +6,18 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/22/2024
+ms.date: 04/05/2024
 ---
 
 # What is Datacenter Firewall?
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Datacenter Firewall is a network layer, 5-tuple (protocol, source and destination port numbers, source and destination IP addresses), stateful, multitenant Software Defined Networking (SDN) firewall. The Datacenter Firewall protects east-west and north-south traffic flows across the network layer of virtual networks and traditional VLAN networks.
 
 ## How Datacenter Firewall works
 
-You enable and configure Datacenter Firewall by creating network security groups (NSGs) that get applied to a subnet or a network interface. Firewall policies are enforced at the vSwitch port of each tenant virtual machine (VM). The policies are pushed through the tenant portal, and [Network Controller](network-controller-overview.md) distributes them to all applicable hosts.
+You enable and configure Datacenter Firewall by creating network security groups (NSGs) that get applied to a subnet or a network interface. Firewall policies are enforced at the vSwitch port of each tenant virtual machine (VM). The policies are pushed through the tenant portal, and [Network Controller](network-controller-overview.md) distributes them to all applicable hosts. <!--update the network controller overview link if needed-->
 
 Tenant administrators can install and configure firewall policies to help protect their networks from unwanted traffic originating from internet and intranet networks.
 
@@ -27,7 +27,7 @@ The service provider administrator or the tenant administrator can manage Datace
 
 ## Advantages for cloud service providers
 
-Datacenter Firewall offers the following advantages for CSPs:
+Datacenter Firewall offers the following advantages for cloud service providers:
 
 - A highly scalable, manageable, and diagnosable software-based firewall solution that can be offered to tenants
 
@@ -59,5 +59,5 @@ For related information, see also:
 
 - [Use Datacenter Firewall to configure ACLs with Windows Admin Center](../manage/use-datacenter-firewall-windows-admin-center.md)
 - [Use Datacenter Firewall to configure ACLs with PowerShell](../manage/use-datacenter-firewall-powershell.md)
-- [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)
 - [Learn module: Implement Datacenter Firewall and Software Load Balancer on Azure Stack HCI](/training/modules/implement-firewall-load-balancer/)
