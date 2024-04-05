@@ -113,7 +113,7 @@ You can use the AKS Arc on VMware preview in the following supported regions:
 - India Central
 - Southeast Asia
 - West Europe
-- Japen East
+- Japan East
 - Canada Central
 
 > [!WARNING]
