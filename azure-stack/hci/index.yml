@@ -26,6 +26,8 @@ landingContent:
         links:
           - text: What's new in Azure Stack HCI, version 23H2?
             url: whats-new.md
+          - text: Software Defined Networking (SDN) technical reference
+            url: manage/sdn-technical-reference.md
 
   # Card 
   - title: Deploy the cluster
