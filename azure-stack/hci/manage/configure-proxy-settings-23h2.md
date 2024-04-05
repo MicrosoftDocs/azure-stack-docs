@@ -139,7 +139,7 @@ You can configure proxy settings for Winhttp using the `netsh` command line util
 - Run the following command from the command prompt to manually configure the proxy server:
 
     ```cmd
-    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list=""localhost;127.0.0.1;.svc;node1;node2;scluster;192.168.0.2;192.168.0.3;*.contoso.com;192.168.0.10""
+    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list="localhost;127.0.0.1;.svc;node1;node2;scluster;192.168.0.2;192.168.0.3;*.contoso.com;192.168.0.10"
     ```
 
 - Run the following command from the command prompt to view or verify the current WinHTTP proxy server configuration:
