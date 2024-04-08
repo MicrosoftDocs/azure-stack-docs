@@ -3,7 +3,7 @@ author: ManikaDhiman
 ms.author: v-mandhiman
 ms.service: azure-stack
 ms.topic: include
-ms.date: 06/29/2022
+ms.date: 04/05/2024
 ---
 
 You can use familiar storage cmdlets in PowerShell to create volumes with nested resiliency, as described in the following section.
@@ -15,7 +15,7 @@ Windows Server 2019 requires you to create new storage tier templates using the 
 > [!NOTE]
 > If you're running Windows Server 2022, Azure Stack HCI 21H2, or Azure Stack HCI 20H2, you can skip this step.
 
-Specify the `-MediaType` of your capacity drives and, optionally, the `-FriendlyName` of your choice. Do not modify other parameters.
+Specify the `-MediaType` of your capacity drives and, optionally, the `-FriendlyName` of your choice. Don't modify other parameters.
 
 For example, if your capacity drives are hard disk drives (HDD), launch PowerShell as Administrator and run the following cmdlets.
 
@@ -28,7 +28,7 @@ To create a NestedParity tier:
 ```powershell
 New-StorageTier -StoragePoolFriendlyName S2D* -FriendlyName NestedParityOnHDD -ResiliencySettingName Parity -MediaType HDD -NumberOfDataCopies 2 -PhysicalDiskRedundancy 1 -NumberOfGroups 1 -FaultDomainAwareness StorageScaleUnit -ColumnIsolation PhysicalDisk
 ```
-If your capacity drives are solid-state drives (SSD), set the `-MediaType` to `SSD` instead and change the `-FriendlyName` to `*OnSSD`. Do not modify other parameters.
+If your capacity drives are solid-state drives (SSD), set the `-MediaType` to `SSD` instead and change the `-FriendlyName` to `*OnSSD`. Don't modify other parameters.
 
 > [!TIP]
 > Verify that `Get-StorageTier` created the tiers successfully.
@@ -49,7 +49,7 @@ Create new volumes using the `New-Volume` cmdlet.
 
 - Nested mirror-accelerated parity
 
-    To use nested mirror-accelerated parity, reference both the `NestedMirror` and `NestedParity` tier templates and specify two sizes, one for each part of the volume (mirror first, parity second). For example, to create one 500 GB volume that's 20% nested two-way mirror and 80% nested parity, run:
+    To use nested mirror-accelerated parity, reference both the `NestedMirror` and `NestedParity` tier templates and specify two sizes, one for each part of the volume (mirror first, parity second). For example, to create one 500-GB volume that's 20% nested two-way mirror and 80% nested parity, run:
 
     ```PowerShell
     New-Volume -StoragePoolFriendlyName S2D* -FriendlyName Volume02 -StorageTierFriendlyNames NestedMirrorOnHDD, NestedParityOnHDD -StorageTierSizes 100GB, 400GB
@@ -59,13 +59,13 @@ Create new volumes using the `New-Volume` cmdlet.
 
 ### Step 3: Continue in Windows Admin Center
 
-Volumes that use nested resiliency appear in [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) with clear labeling, as in the screenshot below. Once they're created, you can manage and monitor them using Windows Admin Center just like any other volume in Storage Spaces Direct.
+Volumes that use nested resiliency appear in [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) with clear labeling, as in the following screenshot. Once they're created, you can manage and monitor them using Windows Admin Center just like any other volume in Storage Spaces Direct.
 
-![Volume management in Windows Admin Center](media/nested-resiliency/windows-admin-center.png)
+:::image type="content" source="media/create-volumes-with-nested-resiliency/windows-admin-center.png" alt-text="Volume management in Windows Admin Center." lightbox="media/create-volumes-with-nested-resiliency/windows-admin-center.png":::
 
 ### Optional: Extend to cache drives
 
-With its default settings, nested resiliency protects against the loss of multiple capacity drives at the same time, or one server and one capacity drive at the same time. To extend this protection to [cache drives](/azure-stack/hci/concepts/cache), there's an additional consideration: because cache drives often provide read and write caching for multiple capacity drives, the only way to ensure you can tolerate the loss of a cache drive when the other server is down is to simply not cache writes, but that impacts performance.
+With its default settings, nested resiliency protects against the loss of multiple capacity drives at the same time, or one server and one capacity drive at the same time. To extend this protection to [cache drives](/azure-stack/hci/concepts/cache), there's another consideration: because cache drives often provide read and write caching for multiple capacity drives, the only way to ensure you can tolerate the loss of a cache drive when the other server is down is to not cache writes, but that impacts performance.
 
 To address this scenario, Storage Spaces Direct offers the option to automatically disable write caching when one server in a two-server cluster is down, and then re-enable write caching once the server is back up. To allow routine restarts without performance impact, write caching isn't disabled until the server has been down for 30 minutes. Once write caching is disabled, the contents of the write cache is written to capacity devices. After this, the server can tolerate a failed cache device in the online server, though reads from the cache might be delayed or fail if a cache device fails.
 
@@ -84,4 +84,4 @@ Once set to **True**, the cache behavior is:
 |---------------------------------|------------------------------------------|--------------------------------|
 | Both servers up                 | Cache reads and writes, full performance | Yes                            |
 | Server down, first 30 minutes   | Cache reads and writes, full performance | No (temporarily)               |
-| After first 30 minutes          | Cache reads only, performance impacted   | Yes (after the cache has been written to capacity drives)                           |
+| After first 30 minutes          | Cache reads only, performance impacted   | Yes (after the cache is written to capacity drives)                           |
