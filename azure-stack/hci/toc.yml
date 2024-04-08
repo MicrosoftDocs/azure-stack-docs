@@ -385,12 +385,16 @@ items:
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
-  - name: SDN overview
-    href: concepts/software-defined-networking-23h2.md
-  - name: Plan an SDN infrastructure
-    href: concepts/plan-software-defined-networking-infrastructure-23h2.md
-  - name: SDN Multisite overview
-    href: concepts/sdn-multisite-overview.md
+  - name: SDN
+    items:
+    - name: SDN technical reference
+      href: manage/sdn-technical-reference.md
+    - name: SDN overview
+      href: concepts/software-defined-networking-23h2.md
+    - name: Plan an SDN infrastructure
+      href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+    - name: SDN Multisite overview
+      href: concepts/sdn-multisite-overview.md
 
 - name: Version 22H2
   items:
