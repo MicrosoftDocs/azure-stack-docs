@@ -21,7 +21,7 @@ BGP Route Reflector is included with [Remote Access Service (RAS) Gateway](gatew
 
 With full mesh synchronization, all BGP routers must connect with all other routers in the routing topology. However, when you use Route Reflector, it's the only router that connects with all other routers, called BGP Route Reflector clients, making route synchronization simpler and reducing network traffic. The Route Reflector learns all routes, calculates best routes, and redistributes the best routes to its BGP clients.
 
-You can configure an individual tenant's remote access tunnels to terminate on more than one RAS Gateway virtual machine (VM). This provides increased flexibility for Cloud Service Providers (CSPs) in situations where one RAS Gateway VM cannot meet all of the bandwidth requirements of the tenant connections.
+You can configure an individual tenant's remote access tunnels to terminate on more than one RAS Gateway virtual machine (VM). This provides increased flexibility for Cloud Service Providers (CSPs) in situations where one RAS Gateway VM can't meet all of the bandwidth requirements of the tenant connections.
 
 This capability, however, introduces the added complexity of route management and effective synchronization of routes between the tenant remote sites and their virtual resources in the cloud datacenter. Providing tenants with connections to multiple RAS Gateways also introduces increased complexity in configuration at the enterprise end, where each tenant site will have separate routing neighbors.
 
