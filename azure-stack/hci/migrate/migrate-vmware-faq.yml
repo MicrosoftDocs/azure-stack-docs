@@ -1,0 +1,49 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Migrate VMware FAQ
+  description: This FAQ provides answers to common questions about the migration of a VMware virtual machine (VM) to an Azure Stack HCI cluster using Azure Migrate.
+  ms.topic: faq
+  author: alkohli
+  ms.author: alkohli
+  ms.service: azure-stack
+  ms.subservice: azure-stack-hci
+  ms.date: 04/09/2024
+title: FAQ - Migration of VMware VMs to Azure Stack HCI using Azure Migrate (preview)
+summary: You can migrate VMware VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you might have about the migration of a VMware VM to an Azure Stack HCI cluster using Azure Migrate.
+
+sections:
+  - name: Azure Migrate VMware general FAQ
+    questions:
+      - question: I have a VMware virtual machine (VM) running. How can I migrate this VM to my Azure Stack HCI cluster?
+        answer: |
+          The VMware VM requires ... 
+
+      - question: I have Linux VMs running on my VMware server. Can I migrate these VMs to Azure Stack HCI?  
+        answer: |
+          Yes. There are many Linux distributions that can run on VMware VMs that will be migrated to Azure Stack HCI. For the full list, see [Supported operating systems](migrate-hyperv-requirements.md#supported-operating-systems). 
+
+      - question: I have a VM running on an older VMware server. Can I migrate this VM to Azure Stack HCI?  
+        answer: |
+          Yes. The migration solution will discover VMs on all the VMware server hosts starting from ... 
+
+      - question: I am located in a geography that is not in the listed supported geographies. Does this mean I can't use this migration solution?
+        answer: |
+          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-vmware-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography. 
+
+      - question: Will I be charged for this migration solution? 
+        answer: |
+          There are no tool usage charges for migration for 180 days. The time starts when you begin replicating the VMware VMs in your project.
+
+          Migration requires some services like storage account and key vault that are created in your subscription. These services will accrue some charges.
+
+      - question: My source VMs use static IP addresses. Will these addresses be preserved when I migrate my VMware VMs to Azure Stack HCI?
+        answer: |
+          Currently Hyper-V migration only supports VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Stack HCI system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.  
+
+      - question: I use DCHP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
+        answer: |
+          This scenario is not supported in this release.
+
+      - question: Are VMs that have secure boot enabled, supported for migration? 
+        answer: |
+          Both Linux and VMware VMs that have secure boot enabled, are not supported in this release.
