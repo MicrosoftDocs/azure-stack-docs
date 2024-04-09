@@ -67,6 +67,52 @@ Use the downloaded Red Hat Enterprise image to create a VM following these steps
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png" alt-text="Screenshot of the New virtual machine wizard on Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png":::
 
+2. Register Red Hat Enterprise, and install the OS:
+
+    1. Sign into the VM.
+
+    2. To register Red Hat Enterprise, run the following command:
+
+        ```azurecli
+        Sudo subscription-manager register
+        ```
+
+    3. Check for software packages and the `cloud-init` tool on your system.
+
+        ```azurecli
+        Sudo yum list installed | grep cloud-init
+        ```
+
+    4. Install the cloud-init tool.
+
+        ```azurecli
+        Sudo yum install -y cloud-init
+        ```
+
+    5. Check the installed Red Hat version.
+
+        ```azurecli
+        cloud-init --version
+        ```
+
+        Here's an example of Red Hat Enterprise version 7.9 installed.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png" alt-text="Screenshot of Red Hat version 7.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png":::
+    
+        Here's an example of Red Hat Enterprise version 8.9 installed.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png" alt-text="Screenshot of Red Hat version 8.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png":::
+
+        Here's an example of Red Hat Enterprise version 9.3 installed.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png" alt-text="Screenshot of Red Hat version 9.3 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png":::
+
+    6. To update all of the distribution packages that are installed, run this command:
+
+        ```azurecli
+        cloud-init --version
+        ```
+
 ### Step 2: Configure the VM
 
 Configure the VM that you provisioned earlier following these steps on your Azure Stack HCI cluster:
@@ -85,4 +131,27 @@ Delete machine-specific files and data from your VM so that you can create a cle
     sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
     ```
 
-<!--what content is needed following this, I can't determine based on the one note.>
+2. Unregister the VM.
+
+    ```bash
+    Sudo subscription-manager unregister
+    Sudo Subscription-manager clean
+    Sudo rm -f /etc/sysconfig/network-scripts/*
+    Sudo rm -f /etc/ssh/ssh_host*
+    Sudo rm /etc/lvm/devices/system.devices
+    ```
+
+3. Remove bash history.
+
+    ```bash
+    sudo rm -f ~/.bash_history 
+    export HISTSIZE=0
+    logout
+    ```
+
+### Step 4: Create the VHD and upload it to the portal
+
+<!--what content is needed following this, I can't determine based on the one note.-->
+
+### Step 5: Use the VHD to deploy the VM
+
