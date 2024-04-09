@@ -56,16 +56,16 @@ For static IP, the required parameters are as follows:
 | `name`  | Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [rules for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking). You can't rename a logical network after it's created. |
 | `resource-group` | Name of the resource group where you create the logical network. |
 | `subscription` | Name or ID of the subscription where your Azure Stack HCI is deployed. |
-| `custom-location` | Provides the custom location associated with your Azure Stack HCI cluster where you're creating the logical network. |
+| `custom-location` | Provide the custom location associated with your Azure Stack HCI cluster where you're creating the logical network. |
 | `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--address-prefixes` | AddressPrefix for the network. Currently only 1 address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--gateway`         | Gateway. The gateway IP address must be within the scope of the address prefix. Usage: `--gateway 10.220.32.16`. | ![Supported](media/aks-hybrid-networks/check.png) |
-| `--ip-allocation-method`         | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. | ![Supported](media/aks-hybrid-networks/check.png) |
+| `--ip-allocation-method`   | The IP address allocation method. Supported values are "Static". Usage: `--ip-allocation-method "Static"`. | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--ip-pool-start`     | The start IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-start "10.220.32.18"`.  | ![Supported](media/aks-hybrid-networks/check.png) |
 | `--ip-pool-end`       | The end IP address of your IP pool. The address must be in range of the address prefix. Usage: `--ip-pool-end "10.220.32.38"`.  | ![Supported](media/aks-hybrid-networks/check.png) |
 ```azurecli
-az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
+az stack-hci-vm network lnet create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name $lnetName --vm-switch-name $vmSwitchName --ip-allocation-method "Static" --address-prefixes $addressPrefixes --gateway $gateway --dns-servers $dnsServers --ip-pool-start $ipPoolStart --ip-pool-end $ipPoolEnd
 ```
 
 # [Azure portal](#tab/azureportal)
