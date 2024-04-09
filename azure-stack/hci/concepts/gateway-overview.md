@@ -6,12 +6,14 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/22/2024
+ms.date: 04/09/2024
 ms.custom: kr2b-contr-experiment
 ---
 # What is Remote Access Service (RAS) Gateway for Software Defined Networking?
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+
+This article provides an overview of Remote Access Service (RAS) Gateway for Software Defined Networking (SDN) in Azure Stack HCI and Windows Server.
 
 RAS Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
@@ -38,7 +40,7 @@ GRE support in S2S tunnels solves the problem of forwarding between tenant virtu
 
 ### Layer 3 forwarding
 
-Layer 3 (L3) forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. By using L3 forwarding connection, tenant network VMs can connect to a physical network through the Software Defined Networking (SDN) gateway, which is already configured in the SDN environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
+Layer 3 (L3) forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. By using L3 forwarding connection, tenant network VMs can connect to a physical network through the SDN gateway, which is already configured in the SDN environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
 
 The following diagram shows an example of the L3 forwarding setup in an Azure Stack HCI cluster configured with SDN:
 
@@ -96,4 +98,4 @@ For related information, see also:
 - [RAS Gateway Deployment Architecture](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-deployment-architecture)
 - [Network Controller overview](network-controller-overview.md)
 - [Plan to deploy Network Controller](network-controller.md)
-- [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)
