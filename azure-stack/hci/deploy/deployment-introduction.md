@@ -59,7 +59,6 @@ Before starting the deployment, we recommend you check the following table that 
 |One node - with network switch for storage|Not applicable|Supported|
 |Two nodes - no switch for storage|Supported|Supported|
 |Two nodes - with network switch for storage|Supported|Supported|
-|Three nodes - with no switch for storage|Not supported|Test only <br> No update or repair support|
 |Three nodes - with network switch for storage|Supported|Supported|
 |Four to 16 nodes - with no network switch for storage|Not supported|Not supported|
 |Four to 16 nodes - with network switch for storage|Supported|Supported|
