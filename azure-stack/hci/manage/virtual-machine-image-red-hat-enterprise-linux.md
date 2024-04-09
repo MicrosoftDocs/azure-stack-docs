@@ -61,11 +61,11 @@ Use the downloaded Red Hat Enterprise image to create a VM following these steps
 
     4. Review the installation summary
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png" alt-text="Screenshot of the New virtual machine wizard on Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png":::
 
     5. Verify the Ethernet connection is on and the host name is correct.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png" alt-text="Screenshot of the New virtual machine wizard on Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png":::
 
 ### Step 2: Configure the VM
 
