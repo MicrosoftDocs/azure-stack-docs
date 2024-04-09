@@ -68,14 +68,14 @@ For static routing, you must configure a route on the physical network to reach 
 
 For dynamic routing with BGP, you must still configure a static /32 route because the BGP connection is between the gateway compartment internal interface and the L3 peer IP. For Connection 1, the peering would be between 10.0.1.6 and 15.0.0.1. Hence, for this connection, you need a static route on the physical switch with destination prefix of 10.0.1.6/32 with the next hop as 15.0.0.5.
 
-If you plan to deploy L3 Gateway connections with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
+If you plan to deploy L3 Gateway connections with BGP routing, make sure to configure the Top of Rack (ToR) switch BGP settings with the following:
 
 - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
 - ebgp multihop: This specifies more hops are required since the BGP neighbor is more than one hop away.
 
 ### Dynamic routing with BGP
 
-BGP reduces the need for manual route configuration on routers because it is a dynamic routing protocol, and automatically learns routes between sites that are connected by using site-to-site VPN connections. If your organization has multiple sites that are connected using BGP-enabled routers, such as RAS Gateway, BGP allows the routers to automatically calculate and use valid routes to each other in the event of network disruption or failure.
+BGP reduces the need for manual route configuration on routers because it's a dynamic routing protocol, and automatically learns routes between sites that are connected by using site-to-site VPN connections. If your organization has multiple sites that are connected using BGP-enabled routers, such as RAS Gateway, BGP allows the routers to automatically calculate and use valid routes to each other in case of network disruption or failure.
 
 The BGP Route Reflector included with RAS Gateway provides an alternative to BGP full mesh topology that is required for route synchronization between routers. For more information, see [What Is Route Reflector?](route-reflector-overview.md)
 
