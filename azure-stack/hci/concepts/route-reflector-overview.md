@@ -6,14 +6,16 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 04/09/2024
 ---
 
 # What is Route Reflector?
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-Border Gateway Protocol (BGP) Route Reflector is included with [Remote Access Service (RAS) Gateway](gateway-overview.md) and provides an alternative to BGP full mesh topology that is required for route synchronization between routers. A Route Reflector in a Software Defined Networking deployment is a logical entity that sits on the control plane between the RAS Gateways and the [Network Controller](network-controller-overview.md). It does not, however, participate in data plane routing.
+This article provides an overview of Border Gateway Protocol (BGP) Route Reflector in Azure Stack HCI and Windows Server.
+
+BGP Route Reflector is included with [Remote Access Service (RAS) Gateway](gateway-overview.md) and provides an alternative to BGP full mesh topology that is required for route synchronization between routers. A Route Reflector in a Software Defined Networking deployment is a logical entity that sits on the control plane between the RAS Gateways and the [Network Controller](network-controller-overview.md). It doesn't, however, participate in data plane routing.
 
 ## How Route Reflector works
 
