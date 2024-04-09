@@ -23,7 +23,7 @@ With full mesh synchronization, all BGP routers must connect with all other rout
 
 You can configure an individual tenant's remote access tunnels to terminate on more than one RAS Gateway virtual machine (VM). This provides increased flexibility for Cloud Service Providers (CSPs) in situations where one RAS Gateway VM cannot meet all of the bandwidth requirements of the tenant connections.
 
-This capability, however, introduces the additional complexity of route management and effective synchronization of routes between the tenant remote sites and their virtual resources in the cloud datacenter. Providing tenants with connections to multiple RAS Gateways also introduces additional complexity in configuration at the enterprise end, where each tenant site will have separate routing neighbors.
+This capability, however, introduces the added complexity of route management and effective synchronization of routes between the tenant remote sites and their virtual resources in the cloud datacenter. Providing tenants with connections to multiple RAS Gateways also introduces increased complexity in configuration at the enterprise end, where each tenant site will have separate routing neighbors.
 
 A BGP Route Reflector in the control plane addresses these problems and makes the CSP internal fabric deployment transparent to the enterprise tenants.
 
@@ -33,7 +33,7 @@ A BGP Route Reflector in the control plane addresses these problems and makes th
 
 - A tenant Route Reflector acts as the Route Reflector for all of the RAS Gateway VMs that are associated with the tenant. Tenant gateways other than the RAS Gateway Route Reflector are the Route Reflector Clients. The Route Reflector performs route synchronization between all Route Reflector Clients so that the actual data path routing can occur.
 
-- A Route Reflector does not provide services for the RAS Gateway upon which it is configured.
+- A Route Reflector doesn't provide services for the RAS Gateway upon which it's configured.
 
 - A Route Reflector updates Network Controller with the enterprise routes that correspond to the tenant's enterprise sites. This allows Network Controller to configure the required Hyper-V Network Virtualization policies on the tenant virtual network for End-to-End Data Path access.
 
