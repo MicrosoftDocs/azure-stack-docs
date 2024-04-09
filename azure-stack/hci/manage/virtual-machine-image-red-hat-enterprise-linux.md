@@ -149,9 +149,6 @@ Delete machine-specific files and data from your VM so that you can create a cle
     logout
     ```
 
-### Step 4: Create the VHD and upload it to the portal
+### Step 4: Create the VHD and deploy the VM
 
 <!--what content is needed following this, I can't determine based on the one note.-->
-
-### Step 5: Use the VHD to deploy the VM
-
