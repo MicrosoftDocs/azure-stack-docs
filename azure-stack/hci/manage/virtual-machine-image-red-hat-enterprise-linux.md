@@ -16,34 +16,34 @@ ms.date: 04/02/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare a Red Hat Enterpise image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
+This article describes how to prepare a Red Hat Enterprise image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed.
+Before you begin, the following prerequisites must be completed. Make sure you have:
 
-- You've access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the Azure Arc should show as **Connected**.
+- Access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the Azure Arc should show as **Connected**.
 
-- You've [Downloaded latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.3, 8.9.0, and 7.9.0. You will prepare this image to create a VM image.
+- [Downloaded latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.3, 8.9.0, and 7.9.0. This image is used to create a VM image.
 
 ## Workflow
 
-Follow these steps to prepare an Red Hat Enterprise image and create a VM image from that image:
+Prepare a Red Hat Enterprise image and use it to create a VM image following these steps:
 
 1. Create a Red Hat Enterprise VM.
 1. Configure the VM.
 1. Clean up the residual configuration.
-1. Create an Red Hat Enterprise VM image.
+1. Create a Red Hat Enterprise VM image.
 
-The following sections provide detailed instructions for each step in the workflow.
+The next sections provide detailed instructions for each step in the workflow.
 
 ## Create VM image from Red Hat Enterprise image
 
-Follow these steps on your Azure Stack HCI cluster to create a VM image using the Azure CLI.
+Use Azure CLI to create a VM image on your Azure Stack HCI cluster following these steps:
 
 ### Step 1: Prepare the VM
 
-Follow these steps to use the downloaded Red Hat Enterprise image to provision a VM:
+Use the downloaded Red Hat Enterprise image to create a VM following these steps:
 
 1. Use the downloaded image to create a VM with the following specifications:
 
@@ -69,7 +69,7 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
 ### Step 2: Configure the VM
 
-Follow these steps on your Azure Stack HCI cluster to configure the VM that you provisioned earlier:
+Configure the VM that you provisioned earlier on your Azure Stack HCI cluster, using these steps:
 
 <!--add content here-->
 
