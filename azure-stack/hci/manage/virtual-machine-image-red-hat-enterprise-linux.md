@@ -1,0 +1,88 @@
+---
+title: Use a Red Hat Enterprise Linux image for Azure Stack HCI VM
+description: Learn how to prepare images using Red Hat Enterprise Linux to create an Azure Stack HCI VM image.
+author: ronmiab
+ms.author: robess
+ms.topic: how-to
+ms.service: azure-stack
+ms.subservice: azure-stack-hci
+ms.custom:
+  - devx-track-azurecli
+ms.date: 04/02/2024
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Stack HCI.
+---
+
+# Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines
+
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
+
+This article describes how to prepare a Red Hat Enterpise image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
+
+## Prerequisites
+
+Before you begin, make sure that the following prerequisites are completed.
+
+- You've access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the Azure Arc should show as **Connected**.
+
+- You've [Downloaded latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.3, 8.9.0, and 7.9.0. You will prepare this image to create a VM image.
+
+## Workflow
+
+Follow these steps to prepare an Red Hat Enterprise image and create a VM image from that image:
+
+1. Create a Red Hat Enterprise VM.
+1. Configure the VM.
+1. Clean up the residual configuration.
+1. Create an Red Hat Enterprise VM image.
+
+The following sections provide detailed instructions for each step in the workflow.
+
+## Create VM image from Red Hat Enterprise image
+
+Follow these steps on your Azure Stack HCI cluster to create a VM image using the Azure CLI.
+
+### Step 1: Prepare the VM
+
+Follow these steps to use the downloaded Red Hat Enterprise image to provision a VM:
+
+1. Use the downloaded image to create a VM with the following specifications:
+
+    1. Provide a friendly name for your VM.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-name-and-location.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-name-and-location.png":::
+
+    2. Specify Generation 2 for your VM as you're working with a VHDX image here. <!--is the VHDX statement valid here?-->
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png":::
+
+    3. Select Install operating system from a bootable image option. Point to ISO that you downloaded earlier.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png":::
+
+    4. Review the installation summary
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png":::
+
+    5. Verify the Ethernet connection is on and the host name is correct.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png":::
+
+### Step 2: Configure the VM
+
+Follow these steps on your Azure Stack HCI cluster to configure the VM that you provisioned earlier:
+
+<!--add content here-->
+
+### Step 3: Clean up residual configuration
+
+Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
+
+1. Clean up logs and cache.
+
+    ```bash
+    sudo yum clean all
+    sudo cloud-init clean
+    sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
+    ```
+
+<!--what content is needed following this, I can't determine based on the one note.>
