@@ -69,7 +69,7 @@ Use the downloaded Red Hat Enterprise image to create a VM following these steps
 
 ### Step 2: Configure the VM
 
-Configure the VM that you provisioned earlier on your Azure Stack HCI cluster, using these steps:
+Configure the VM that you provisioned earlier following these steps on your Azure Stack HCI cluster:
 
 <!--add content here-->
 
