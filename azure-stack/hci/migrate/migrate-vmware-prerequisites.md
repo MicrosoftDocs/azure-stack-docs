@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prerequisites for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)
+# Prerequisites for VMware migration to Azure Stack HCI using Azure Migrate (preview)
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
