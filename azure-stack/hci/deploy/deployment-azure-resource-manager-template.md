@@ -22,10 +22,9 @@ This article details how to use an Azure Resource Manager template (ARM template
 ## Prerequisites
 
 - Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-    - All the mandatory extensions have installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, and **Telemetry and Diagnostics**.
+    - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, and **Telemetry and Diagnostics**.
     - All servers are running the same version of OS.
     - All the servers have the same network adapter configuration.
-
 
 ## Step 1: Prepare Azure resources
 
@@ -116,7 +115,7 @@ In addition to the storage witness access key, you also need to similarly encode
 |Parameter  |Description  |
 |---------|---------|
 |`localaccountname`, `localaccountpassword`     |Username and password for the local administrator for all the servers in your cluster. The credentials are identical for all the servers in your system.         |
-|`domainaccountname`, `omainaccountpassword`      |The new username and password that were created with the appropriate permissions for deployment during the Active Directory preparation step for the `AzureStackLCMUserCredential` object. This account is the same as the user account used by the Azure Stack HCI deployment. <br> For more information, see [Prepare the Active Directory](./deployment-prep-active-directory.md#prepare-active-directory) to get these credentials.        |
+|`domainaccountname`, `domainaccountpassword`      |The new username and password that were created with the appropriate permissions for deployment during the Active Directory preparation step for the `AzureStackLCMUserCredential` object. This account is the same as the user account used by the Azure Stack HCI deployment. <br> For more information, see [Prepare the Active Directory](./deployment-prep-active-directory.md#prepare-active-directory) to get these credentials.        |
 |`clientId`, `clientSecretValue`       |The application (client) ID for the SPN that you created as a prerequisite to this deployment and the corresponding client secret value for the application ID.          |
 
 Run the PowerShell script used in the earlier step to encode these values:
@@ -197,7 +196,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png" alt-text="Screenshot showing Review + assign." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png":::
 
-1. Once the role assignment is added, you are able to see it in the **Notifications activity** log:
+1. Once the role assignment is added, you're able to see it in the **Notifications activity** log:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png" alt-text="Screenshot showing a notification for the role assignments." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png":::
 
@@ -233,7 +232,7 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png" alt-text="Screenshot showing Review + assign selected." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png":::
 
-1. Once the roles are assigned as **Key Vault Secrets User**, you are able to see them in the **Notifications activity** log.
+1. Once the roles are assigned as **Key Vault Secrets User**, you're able to see them in the **Notifications activity** log.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing the notification for Key Vault Secrets user role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
 
@@ -292,7 +291,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png" alt-text="Screenshot showing Review + Create selected on Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-6.png":::
 
-1. On the **Review + Create** tab, select **Create**. This will create the remaining prerequisite resources and validate the deployment. Validation takes about 10 minutes to complete.
+1. On the **Review + Create** tab, select **Create**. This creates the remaining prerequisite resources and validates the deployment. Validation takes about 10 minutes to complete.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png" alt-text="Screenshot showing Create selected on Review + Create tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7.png":::
 
@@ -336,6 +335,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     Once complete, the task at the top updates with status and end time.
 
+You can also check out this community sourced template to [Deploy an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
 ## Next steps
 

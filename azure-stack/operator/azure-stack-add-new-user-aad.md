@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: article
 ms.custom:
   - has-azure-ad-ps-ref
-ms.date: 06/17/2021
+ms.date: 03/19/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 06/17/2021
@@ -48,6 +48,8 @@ You must have an Azure subscription to use the Azure portal.
 ## Create a user account using PowerShell
 
 If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Azure AD module for Windows PowerShell instead.
+
+[!INCLUDE [Azure AD PowerShell deprecation note](~/../azure-stack/reusable-content/msgraph-powershell/includes/aad-powershell-deprecation-note.md)]
 
 1. Install the Microsoft Azure AD module for Windows PowerShell with these steps:
 

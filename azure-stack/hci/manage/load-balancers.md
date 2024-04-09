@@ -5,17 +5,17 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 04/17/2023
+ms.date: 04/02/2024
 ---
 
 # Manage Software Load Balancer for SDN
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 In this topic, learn how to manage Software Load Balancer (SLB) policies using Windows Admin Center after you deploy Software Defined Networking (SDN). SLBs are used to evenly distribute network traffic among multiple resources. SLB enables multiple servers to host the same workload, providing high availability and scalability. You can create load balancers for your workloads hosted on traditional VLAN networks (SDN logical networks) as well as for workloads hosted on SDN virtual networks. To learn more about SLB, see [What is SLB for SDN?](../concepts/software-load-balancer.md)
 
 > [!NOTE]
->You need to deploy the SDN Network Controller and Software Load Balancer (SLB) components before you can create load balancer policies.
+>You need to deploy the SDN Network Controller and SLB components before you can create load balancer policies.
 
 ## Create a new load balancer
 
@@ -29,7 +29,7 @@ You can create three types of SLBs:
 
 To create an SLB, complete the following steps in Windows Admin Center:
 
-:::image type="content" source="media/software-load-balancer/new-load-balancer.png" alt-text="Create an SLB" lightbox="media/software-load-balancer/new-load-balancer.png":::
+:::image type="content" source="media/load-balancers/new-load-balancer.png" alt-text="Create an SLB." lightbox="media/load-balancers/new-load-balancer.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -47,7 +47,7 @@ To create an SLB, complete the following steps in Windows Admin Center:
 
 A public IP address must be created first if you are creating a Public IP Address SLB.
 
-:::image type="content" source="media/software-load-balancer/public-ip-balancer.png" alt-text="Create public IP address SLB" lightbox="media/software-load-balancer/public-ip-balancer.png":::
+:::image type="content" source="media/load-balancers/public-ip-balancer.png" alt-text="Create public IP address SLB." lightbox="media/load-balancers/public-ip-balancer.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the public IP address on.
 1. Under **Tools**, scroll down to **Networking**, and select **Public IP addresses**.
@@ -63,7 +63,7 @@ A public IP address must be created first if you are creating a Public IP Addres
 
 After you create a load balancer, you need to define the front IP configuration for the load balancer. Front IP configuration is the front-end IP used for your load balancer. By default, when you create a load balancer, a front IP configuration is automatically created with the load balancer IP address.
 
-:::image type="content" source="media/software-load-balancer/front-ip-balancer.png" alt-text="Create front IP SLB" lightbox="media/software-load-balancer/front-ip-balancer.png":::
+:::image type="content" source="media/load-balancers/front-ip-balancer.png" alt-text="Create front IP SLB." lightbox="media/load-balancers/front-ip-balancer.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -80,7 +80,7 @@ After you create a load balancer, you need to define the front IP configuration 
 
 A backend pool represents the list of IP addresses that can receive network traffic coming from the front-end IPs. The load balancer handles incoming traffic via the frontend IPs and distributes them to backend IPs based on the load balancing policy.
 
-:::image type="content" source="media/software-load-balancer/backend-pool.png" alt-text="Create backend pool" lightbox="media/software-load-balancer/backend-pool.png":::
+:::image type="content" source="media/load-balancers/backend-pool.png" alt-text="Create backend pool." lightbox="media/load-balancers/backend-pool.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -96,7 +96,7 @@ A backend pool represents the list of IP addresses that can receive network traf
 
 An inbound NAT rule configures the load balancer to apply Network Address Translation (NAT) to inbound traffic. This is used for forwarding external traffic to a specific virtual machine (VM). If you want to configure load balancing, you do not need to setup inbound NAT rules.
 
-:::image type="content" source="media/software-load-balancer/inbound-rules.png" alt-text="Create inbound NAT rule" lightbox="media/software-load-balancer/inbound-rules.png":::
+:::image type="content" source="media/load-balancers/inbound-rules.png" alt-text="Create inbound NAT rule." lightbox="media/load-balancers/inbound-rules.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -116,7 +116,7 @@ An inbound NAT rule configures the load balancer to apply Network Address Transl
 
 An outbound NAT rule configures the load balancer to forward VM network traffic from the SDN virtual or logical network to external destinations using network address translation (NAT). This is useful when you want to configure your internal network resources to have internet access. If you want to configure load balancing, you do not need to setup outbound NAT rules.
 
-:::image type="content" source="media/software-load-balancer/outbound-rules.png" alt-text="Create outbound NAT rule" lightbox="media/software-load-balancer/outbound-rules.png":::
+:::image type="content" source="media/load-balancers/outbound-rules.png" alt-text="Create outbound NAT rule." lightbox="media/load-balancers/outbound-rules.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -134,7 +134,7 @@ A load balancing rule configures the load balancer to evenly distribute tenant n
 
 Set **Session Persistence** using the following procedure. Session persistence specifies the load balancing distribution type to be used by the load balancer. The load balancer uses a distribution algorithm that is a 5-tuple (source IP, source port, destination IP, destination port, and protocol type) hash to map traffic to available servers. This provides stickiness within a transport session, which routes requests for a specific session to the same physical server that serviced the first request for that session. Packets in the same TCP or UDP session will be directed to the same backend instance behind the frontend IP. When the client closes and re-opens the connection or starts a new session from the same source IP, the source port changes and may cause the traffic to go to a different backend IP.
 
-:::image type="content" source="media/software-load-balancer/slb-rule.png" alt-text="Create SLB rule" lightbox="media/software-load-balancer/slb-rule.png":::
+:::image type="content" source="media/load-balancers/slb-rule.png" alt-text="Create SLB rule." lightbox="media/load-balancers/slb-rule.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -159,7 +159,7 @@ Set **Session Persistence** using the following procedure. Session persistence s
 
 A health probe is used by the load balancer to determine the health state of the backend pool members. If a backend pool member is not healthy, it doesn't receive traffic from the load balancer.
 
-:::image type="content" source="media/software-load-balancer/health-probe.png" alt-text="Create health probe" lightbox="media/software-load-balancer/health-probe.png":::
+:::image type="content" source="media/load-balancers/health-probe.png" alt-text="Create health probe." lightbox="media/load-balancers/health-probe.png":::
 
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load Balancers**.
@@ -177,7 +177,7 @@ A health probe is used by the load balancer to determine the health state of the
 
 You can view detailed information for a specific load balancer from its dedicated page.
 
-:::image type="content" source="media/software-load-balancer/load-balancer-details.png" alt-text="View SLB details" lightbox="media/software-load-balancer/load-balancer-details.png":::
+:::image type="content" source="media/load-balancers/load-balancer-details.png" alt-text="View SLB details." lightbox="media/load-balancers/load-balancer-details.png":::
 
 1. In Windows Admin Center, under **Tools**, scroll down and select **Load Balancers**.
 1. Select the **Inventory** tab on the right, then select a load balancer. On the subsequent page, you can do the following:
@@ -193,7 +193,7 @@ You can view detailed information for a specific load balancer from its dedicate
 
 You can delete a load balancer if you no longer need it.
 
-:::image type="content" source="media/software-load-balancer/delete-load-balancer.png" alt-text="Delete SLB" lightbox="media/software-load-balancer/delete-load-balancer.png":::
+:::image type="content" source="media/load-balancers/delete-load-balancer.png" alt-text="Delete SLB." lightbox="media/load-balancers/delete-load-balancer.png":::
 
 1. Under **Tools**, scroll down and select **Load Balancers**.
 1. Click the **Inventory** tab on the right, then select a load balancer. Click **Delete**.
@@ -201,4 +201,4 @@ You can delete a load balancer if you no longer need it.
 
 ## Next steps
 
-See [Deploy an SDN infrastructure using SDN Express](sdn-express.md).
+See [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md).

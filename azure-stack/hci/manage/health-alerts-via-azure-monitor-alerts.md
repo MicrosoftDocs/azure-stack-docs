@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 02/26/2024
 ---
 
 # Respond to Azure Stack HCI health alerts using Azure Monitor alerts
@@ -52,17 +52,17 @@ Follow these steps to turn on health alerts via the Azure portal.
 
 1. Go to your Azure Stack HCI cluster resource page and select your cluster. Under the **Capabilities** tab, select the **Health alerts** tile.
 
-   ![Screenshot of Azure Stack HCI cluster resource page, with your cluster and the Health alerts tile selected.](./media/health-alerts-via-azure-monitor-alerts/alerts-tile-1.png)
+   :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/alerts-tile-1.png" alt-text="Screenshot of Azure Stack HCI cluster resource page, with your cluster and the Health alerts tile selected." lightbox="./media/health-alerts-via-azure-monitor-alerts/alerts-tile-1.png":::
 
 2. On the **Turn on health alerts** pane on the right, select the **Turn on** button.  
 
-   ![Screenshot of health alerts pane on the right with Turn on button selected.](./media/health-alerts-via-azure-monitor-alerts/turn-on-health-alerts-2.png)
+   :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/turn-on-health-alerts-2.png" alt-text="Screenshot of health alerts pane on the right with Turn on button selected." lightbox="./media/health-alerts-via-azure-monitor-alerts/turn-on-health-alerts-2.png":::
 
    The installation of the Azure Monitor alerts extension begins in the background.
 
 3. After the extension is successfully installed, you are taken to the **Capabilities** tab. Verify that the **Health alerts** tile under the **Capabilities** tab now shows as **Configured**.
 
-   ![Screenshot of the Capabilities tab, with Health alerts tile showing as Configured.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-are-configured-3.png)
+   :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/health-alerts-are-configured-3.png" alt-text="Screenshot of the Capabilities tab, with Health alerts tile showing as Configured." lightbox="./media/health-alerts-via-azure-monitor-alerts/health-alerts-are-configured-3.png":::
 
 ### Step 2: Configure alert processing rules
 
@@ -82,7 +82,7 @@ In the Azure portal, you can review health alerts on your Azure Stack HCI cluste
 
 The **Alerts** blade has a high-level summary of alerts at each severity level. You can drill down to see individual alerts at each severity level.
 
-   ![Screenshot of a high-level summary of alerts at each severity level.](./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-4.png)
+   :::image type="content" source="./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-4.png" alt-text="Screenshot of a high-level summary of alerts at each severity level." lightbox="./media/health-alerts-via-azure-monitor-alerts/health-alerts-summary-4.png":::
 
 <!--The **Overview** page of your Azure Stack HCI cluster resource page also displays the alerts.
 

@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/23/2024
+ms.date: 02/22/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 12/27/2023
@@ -22,6 +22,10 @@ To access release notes for a different version, use the version selector dropdo
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
 > This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
+
+> [!IMPORTANT]
+> The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 ::: moniker-end
 ::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
@@ -43,13 +47,6 @@ Before applying the update, make sure to review the following information:
 - [Known issues](known-issues.md)
 - [Hotfixes](#hotfixes)
 - [Security updates](release-notes-security-updates.md)
-
-> [!IMPORTANT]
-> This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
-
-> [!IMPORTANT]
-> The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
-> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
 
 For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-troubleshooting.md).
 
@@ -86,7 +83,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 - The [VPN Fast Path for operators](azure-stack-vpn-fast-path-operators.md) feature, [and for users](../user/azure-stack-vpn-fast-path-user.md), is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
-- With 2311 we are announcing the public preview of the Azure Stack Hub Standard Load Balancer. This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
+- With 2311 we are announcing the public preview of the [Azure Stack Hub Standard Load Balancer](../user/standard-load-balancer-considerations.md). This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
 - Azure Site Recovery is currently in [public preview](azure-site-recovery-overview.md), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
 
 <!-- ### Improvements -->
@@ -122,7 +119,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1-2306-4-73.md)
+- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
 
 ### After successfully applying the 2311 update
 
@@ -130,7 +127,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfix for 2311.
+- [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-2-23.md)
 ::: moniker-end
 
 ::: moniker range="azs-2306"
@@ -184,7 +181,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2301.2.64](hotfix-1-2301-2-64.md)
+- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
 
 ### After successfully applying the 2306 update
 
@@ -192,7 +189,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2306.4.73](hotfix-1-2306-4-73.md)
+- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
 ::: moniker-end
 
 ::: moniker range="azs-2301"
@@ -261,7 +258,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2301, if any hotfixes for 2301 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2301.2.64](hotfix-1-2301-2-64.md)
+- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

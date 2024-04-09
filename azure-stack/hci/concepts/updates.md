@@ -4,7 +4,7 @@ description: An overview of how updates and upgrades are applied to Azure Stack 
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 04/17/2023
+ms.date: 02/23/2024
 ---
 
 # Updates and upgrades
@@ -21,7 +21,7 @@ Azure Stack HCI solutions are designed to have a predictable update and upgrade 
 
 For information on the available updates for each version of Azure Stack HCI, see [Azure Stack HCI release information](../release-information.md).
 
-:::image type="content" source="media/updates/lifecycle-versions.png" alt-text="Azure Stack HCI annual release roadmap" border="false":::
+:::image type="content" source="media/updates/lifecycle-versions.png" alt-text="Azure Stack HCI annual release roadmap." lightbox="media/updates/lifecycle-versions.png":::
 
 ## Updating Azure Stack HCI
 
@@ -30,11 +30,11 @@ Updates to the Azure Stack HCI operating system are installed using Windows Admi
 > [!NOTE]
 > Deploying annual feature updates by using Windows Server Update Services (WSUS) is currently not supported. You can use Windows Update or download the [Azure Stack HCI operating system ISO file](../deploy/download-azure-stack-hci-software.md) to perform a rolling cluster upgrade via Cluster-Aware Updating (CAU), or manually update each node.
 
-:::image type="content" source="../manage/media/preview-channel/feature-updates.png" alt-text="Windows Admin Center showing a feature update ready to install." lightbox="../manage/media/preview-channel/feature-updates.png":::
+:::image type="content" source="media/updates/feature-updates.png" alt-text="Windows Admin Center showing a feature update ready to install." lightbox="media/updates/feature-updates.png":::
 
 Hardware partners and solution builders can plug into Windows Admin Center and develop extensions to keep the firmware, drivers, and BIOS of servers up-to-date and consistent across cluster nodes. Customers who purchase an integrated system with Azure Stack HCI pre-installed can install solution updates via these extensions; customers who simply purchase validated hardware nodes may need to perform the updates separately, according to the hardware vendor's recommendations.
 
-Virtual machines also need to be updated regularly. In addition to Windows Update,  Windows Server Update Services, and System Center Virtual Machine Manager, you can use Azure Update Management to update VMs.
+Virtual machines also need to be updated regularly. In addition to Windows Update,  Windows Server Update Services, and System Center Virtual Machine Manager, you can use Azure Update Manager to update VMs.
 
 ## Migrating to Azure Stack HCI
 

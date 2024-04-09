@@ -2,17 +2,17 @@
 title: Review SDN considerations for network reference patterns
 description: Learn about SDN considerations for network reference patterns for Azure Stack HCI.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 03/14/2024
 ---
 
 # Review SDN considerations for network reference patterns
 
-[!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, you'll review considerations when deploying Software Defined Networking (SDN) in your Azure Stack HCI cluster.
 

@@ -1,7 +1,7 @@
 ---
-title: Azure Kubernetes Service (AKS) enabled by Azure Arc system requirements
-description: Learn about system requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc.
-ms.date: 01/25/2024
+title: System requirements for AKS enabled by Azure Arc on Azure Stack HCI 22H2
+description: Learn about system requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc on Azure Stack HCI 22H2.
+ms.date: 02/13/2024
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
@@ -11,9 +11,9 @@ ms.author: sethm
 
 ---
 
-# System requirements for Azure Kubernetes Service (AKS) enabled by Azure Arc
+# System requirements for AKS enabled by Azure Arc on Azure Stack HCI 22H2
 
-> Applies to: Azure Stack HCI, versions 23H2 (except for the [network requirements section](#network-requirements)), 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows IoT, Windows 10/11 IoT Enterprise/Enterprise/Pro
+> Applies to: Azure Stack HCI, versions 22H2; Windows Server 2022, Windows Server 2019
 
 This article describes the requirements for setting up Azure Kubernetes Service (AKS) enabled by Azure Arc. For an overview of AKS enabled by Arc, see the [AKS overview](overview.md).
 
@@ -28,21 +28,10 @@ Microsoft recommends purchasing a validated Azure Stack HCI hardware/software so
 
 AKS on Azure Stack HCI and Windows Server deployments that exceed the following specifications aren't supported:
 
-#### [HCI 23H2](#tab/hci23h2)
-
 | Resource                     | Maximum |
 | ---------------------------- | --------|
-| Physical servers per cluster | 16 (Azure Stack HCI version 23H2)       |
+| Physical servers per cluster | 8 (Azure Stack HCI version 22H2 and Windows Server)       |
 | Total number of VMs          | 200     |
-
-#### [HCI 22H2](#tab/hci22h2)
-
-| Resource                     | Maximum |
-| ---------------------------- | --------|
-| Physical servers per cluster | 8 (Azure Stack HCI version 23H2 and Windows Server)       |
-| Total number of VMs          | 200     |
-
----
 
 ## Compute requirements
 
@@ -54,7 +43,8 @@ You can set up your AKS cluster in the following way, to run AKS on a single nod
 | ------------- | ------------------ | ---------- | ----------| -------------|
 | AKS host | Standard_A4_v2 VM size = 8GB |  N/A - AKS host doesn't have worker nodes.  |  8GB |  N/A - AKS host uses kubevip for load balancing.  |
 | Workload cluster  |  Standard_A4_v2 VM size = 8GB | Standard_K8S3_v1 for 1 worker node = 6GB | Can re-use this reserved 8GB for workload cluster upgrade. | N/A if kubevip is used for load balancing (instead of the default HAProxy load balancer). |
-**Total minimum requirement** | **30 GB RAM**
+
+Total minimum requirement: **30 GB RAM**.
 
 This minimum requirement is for an AKS deployment with one worker node for running containerized applications. If you choose to add worker nodes or a HAProxy load balancer, the final RAM requirement changes accordingly.
 
@@ -106,8 +96,6 @@ The following requirements apply to an Azure Stack HCI 22H2 cluster and a Window
 - Make sure that there's network connectivity between Azure Stack HCI hosts and the tenant VMs.
 - DNS name resolution is required for all nodes to be able to communicate with each other.
 - (Recommended) Enable dynamic DNS updates in your DNS environment to allow AKS to register the cloud agent generic cluster name in the DNS system for discovery.
-
-For more information, see [AKS networking system requirements](aks-hci-network-system-requirements.md).
 
 ### IP address assignment  
 
@@ -173,7 +161,7 @@ You can cut and paste the allowlist for firewall URL exceptions:
 
 Download the [URL allowlist (json)](https://raw.githubusercontent.com/MicrosoftDocs/edge-modules/main/aks-hci/config/allow-list-end-points.json).
 
-----
+---
 
 > [!NOTE]
 > AKS enabled by Arc stores and processes customer data. By default, customer data stays within the region in which the customer deploys the service instance. This data is stored within regional Microsoft-operated datacenters. For regions with data residency requirements, customer data is always kept within the same region.
@@ -252,7 +240,7 @@ $subscriptionID = "<Your Azure subscrption ID>"
 $tenantID = "<Your Azure tenant ID>"
 ```
 
-Install and import the AKS hybrid PowerShell module:
+Install and import the AKS PowerShell module:
 
 ```powershell
 Install-Module -Name AksHci

@@ -11,6 +11,11 @@
       "redirect_document_id": false
     },
     {
+      "source_path":"azure-stack/hci/manage/sdn-express-23h2.md",
+      "redirect_url":"/azure-stack/hci/deploy/sdn-express-23h2",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/concepts/other-security-features.md",
       "redirect_url":"/azure-stack/hci/concepts/security-features",
       "redirect_document_id": false
@@ -1292,7 +1297,17 @@
     },
     {
       "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager-23h2.md",
-      "redirect_url": "/azure-stack/hci/update/about-updates",
+      "redirect_url": "/azure-stack/hci/update/about-updates-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/known-issues-23h2.md",
+      "redirect_url": "/azure-stack/hci/hci/known-issues-2310",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/partition-gpu.md",
+      "redirect_url": "/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci",
       "redirect_document_id": false
     }
   ]

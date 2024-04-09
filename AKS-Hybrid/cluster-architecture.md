@@ -12,7 +12,7 @@ ms.lastreviewed: 11/28/2023
 
 # AKS Arc and workload cluster architecture
 
-> Applies to: AKS on Azure Stack HCI
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
 Azure Kubernetes Service (AKS) on Azure Stack HCI is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
 

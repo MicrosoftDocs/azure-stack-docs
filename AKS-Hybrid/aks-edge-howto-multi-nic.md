@@ -68,13 +68,13 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
 1. Check the primary interface:
 
     ```powershell
-    sudo ip addr eth0
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip addr eth0"
     ```
 
 1. Check the secondary network interface. If you added more than one extra interface, it appears as **ethX** with **X** being the number of extra network interfaces:
 
     ```powershell
-    sudo ip addr eth1
+    Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ip addr eth1"
     ```
 
 ## Configure Multus CNI plugin
@@ -102,7 +102,7 @@ After successfully installing and deploying the AKS Edge Essentials node, follow
     1. Get the AKS Edge Essentials storage hash token. The hash can be located by going to **/var/lib/rancher/k3s/data/**.
 
         ```powershell
-        Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "ls -AU /var/lib/rancher/k3s/data/ | head -1"
+        Invoke-AksEdgeNodeCommand -NodeType "Linux" -command "sudo ls -AU /var/lib/rancher/k3s/data/ | head -1"
         ```
 
     1. Replace the following volume configuration lines:
@@ -179,7 +179,7 @@ The installation can check the following information:
 1. Ensure that the Multus pods ran without error by running this command:
 
     ```powershell
-    kubectl get pods --all-namespaces | grep -i Multus
+    kubectl get pods --all-namespaces | Select-String 'Multus'
     ```
 
 1. Check the **00-multus.conf** file to ensure the correct CNI version is specified. Update the CNI version value to **0.3.1** if that isn't already the default value:
@@ -199,19 +199,22 @@ Once the Multus plugin is installed and running, create the Kubernetes network a
     apiVersion: "k8s.cni.cncf.io/v1"
     kind: NetworkAttachmentDefinition
     metadata:
-    name: secondarynet-conf
+      name: secondarynet-conf
     spec:
-    config: '{
-        "cniVersion": "0.3.1",
-        "plugins": [
-            {
-            "type": "bridge",
-            "bridge": "mynet1",
-            "ipam": {}
-            }
-        ]
-        }'
-    ---
+      config: '{
+          "cniVersion": "0.3.1",
+          "plugins": [
+              {
+              "type": "bridge",
+              "bridge": "mynet1",
+              "ipam": {
+                "subnet": "10.0.0.0/24",
+                "rangeStart": "10.0.0.60",
+                "rangeEnd": "10.0.0.120"},
+                "gateway": "10.0.0.1"
+              }
+          ]
+          }'
     ```
 
     > [!NOTE]
@@ -229,12 +232,12 @@ Once the Multus plugin is installed and running, create the Kubernetes network a
     apiVersion: v1
     kind: Pod
     metadata:
-    name: samplepod
-    annotations:
-        k8s.v1.cni.cncf.io/networks: secondarynet-conf
+      name: samplepod
+      annotations:
+          k8s.v1.cni.cncf.io/networks: secondarynet-conf
     spec:
-    containers:
-    - name: samplepod
+      containers:
+      - name: samplepod
         command: ["/bin/ash", "-c", "trap : TERM INT; sleep infinity & wait"]
         image: alpine
     ```
