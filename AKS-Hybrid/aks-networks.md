@@ -53,10 +53,10 @@ For static IP, the required parameters are as follows:
 
 | Required parameters | Description |
 |------------|-------------|
-| `name`  | Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [rules for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking). You can't rename a logical network after it's created. |
-| `resource-group` | Name of the resource group where you create the logical network. |
-| `subscription` | Name or ID of the subscription where your Azure Stack HCI is deployed. |
-| `custom-location` | Provide the custom location associated with your Azure Stack HCI cluster where you're creating the logical network. |
+| `--name`  | Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [rules for Azure resources](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking). You can't rename a logical network after it's created. |
+| `--resource-group` | Name of the resource group where you create the logical network. |
+| `--subscription` | Name or ID of the subscription where your Azure Stack HCI is deployed. |
+| `--custom-location` | Provide the custom location associated with your Azure Stack HCI cluster where you're creating the logical network. |
 | `--vm-switch-name`     | The name of the VM switch. Usage: `--vm-switch-name "vm-switch-01"`. | 
 | `--address-prefixes` | AddressPrefix for the network. Currently only 1 address prefix is supported. Usage: `--address-prefixes "10.220.32.16/24"`. |
 | `--dns-servers`      | Space-separated list of DNS server IP addresses. Usage: `--dns-servers 10.220.32.16 10.220.32.17`. | 
