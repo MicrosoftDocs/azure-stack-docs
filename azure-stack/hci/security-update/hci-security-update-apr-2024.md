@@ -21,11 +21,11 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update supports daylight saving time (DST) changes in Palestine. To learn more, see Interim guidance for DST changes announced by Palestinian Authority for 2024, 2025.
+- This update supports daylight saving time (DST) changes in Palestine. To learn more, see [Interim guidance for DST changes](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-dst-changes-announced-by-palestinian/ba-p/4048966) announced by Palestinian Authority for 2024, 2025.
 
-- This update supports DST changes in Kazakhstan. To learn more, see Interim guidance for Kazakhstan time zone changes 2024.  
+- This update supports DST changes in Kazakhstan. To learn more, see [Interim guidance for Kazakhstan time zone changes 2024](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-kazakhstan-time-zone-changes-2024/ba-p/4048963).  
 
-- This update supports DST changes in Samoa. To learn more, see Interim guidance for Samoa DST changes 2021.  
+- This update supports DST changes in Samoa. To learn more, see [Interim guidance for Samoa DST changes 2021](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-samoa-dst-changes-2021/ba-p/4048965).  
 
 - This update addresses an issue that affects a network resource. You cannot access it from a Remote Desktop session. This occurs when you turn on the Remote Credential Guard feature and the client is Windows 11, version 22H2 or higher.  
 
@@ -65,8 +65,7 @@ To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI 
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [cumulative update 5035856](https://go.microsoft.com/fwlink/?linkid=2263215).
-
+For a list of the files that are provided in this update, download the file information for [Cumulative update 5036910](https://go.microsoft.com/fwlink/?linkid=2267131).
 
 
 ## Next steps
