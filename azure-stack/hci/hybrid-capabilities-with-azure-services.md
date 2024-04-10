@@ -14,7 +14,7 @@ ms.custom: e2e-hybrid
 
 Your on-premises Azure Stack HCI solution integrates with Azure cloud via several cloud service components—such as Azure Stack HCI cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Stack HCI deployment.
 
-:::image type="content" source="media/overview/azure-stack-hci-cloud-services.png" alt-text="Diagram shows the integration points between the on-premises Azure Stack HCI solution and Azure cloud" border="false":::
+:::image type="content" source="media/hybrid-capabilities-with-azure-services/azure-stack-hci-cloud-services.png" alt-text="Diagram shows the integration points between the on-premises Azure Stack HCI solution and Azure cloud" border="false" lightbox="media/hybrid-capabilities-with-azure-services/azure-stack-hci-cloud-services.png":::
 
 ## Azure Stack HCI cloud service
 

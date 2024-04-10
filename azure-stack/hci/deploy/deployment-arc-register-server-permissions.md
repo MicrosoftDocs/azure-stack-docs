@@ -240,7 +240,11 @@ This section describes how to assign Azure permissions for deployment from the A
 1. Go through the tabs and assign the following role permissions to the user who deploys the cluster:
 
     - **Azure Stack HCI Administrator**
+    - **Cloud Application Administrator**
     - **Reader**
+
+    > [!NOTE]
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
