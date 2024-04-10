@@ -19,14 +19,14 @@ With Event Hubs on Azure Stack Hub, you can implement business scenarios such as
 
 - AI and machine learning workloads where Event Hubs is the event streaming engine.
 - Implement event-driven architectures in your own sites outside the Azure data centers.
-- Clickstream analytics for your web application(s) deployed on-premises.
+- Clickstream analytics for your web applications deployed on-premises.
 - Device telemetry analysis.
 - Stream processing with open-source frameworks that use Apache Kafka such as Apache Spark, Flink, Storm, and Samza.
 - [Consume compute guest OS metrics and events](azure-stack-metrics-monitor.md).
 
 ## Build Hybrid solutions
 
-You can build hybrid solutions that ingest and process edge data locally on your Azure Stack Hub. You can also send aggregated data to Azure for further processing, visualization, and storage. If appropriate, you can leverage serverless computing on Azure.
+You can build hybrid solutions that ingest and process edge data locally on your Azure Stack Hub. You can also send aggregated data to Azure for further processing, visualization, and storage. If appropriate, you can use serverless computing on Azure.
 
 [![Hybrid solutions diagram](media/event-hubs-overview/hybrid-architecture-ehoash.png)](media/event-hubs-overview/hybrid-architecture-ehoash.png#lightbox)
 
