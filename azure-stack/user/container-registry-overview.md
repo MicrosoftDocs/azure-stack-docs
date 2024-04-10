@@ -75,15 +75,15 @@ The following table shows the features and registry limits of the Azure Stack Hu
 |  - Scope maps                        | N/A             |
 |  - Repositories per scope map        | N/A             |
 
-<sup>1.</sup> Storage included in the rate for each tier.
+<sup>1</sup> Storage included in the rate for each tier.
 
-<sup>2.</sup> Maximum storage allowed for a registry. Operators can offer less storage through quotas.
+<sup>2</sup> Maximum storage allowed for a registry. Operators can offer less storage through quotas.
 
-<sup>3.</sup> **ReadOps**, **WriteOps**, and **Bandwidth** vary based on Azure Stack Hub configuration and user workloads.
+<sup>3</sup> **ReadOps**, **WriteOps**, and **Bandwidth** vary based on Azure Stack Hub configuration and user workloads.
 
-<sup>4.</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
+<sup>4</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
 
-<sup>5.</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
+<sup>5</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
 
 ## Supported commands
 
