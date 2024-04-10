@@ -4,7 +4,7 @@ description: Learn how to create a manual import job to import data from an Azur
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 04/03/2024
+ms.date: 04/10/2024
 ms.reviewer: brianl
 ---
 
@@ -22,18 +22,41 @@ In this article, you learn how to use the Azure portal to create a manual import
 
 Manually importing data from a blob container into an Azure Managed Lustre file system begins with creating an import job. In this section, you learn how to create, configure, and start an import job in the Azure portal.
 
+> [!NOTE]
+> Only one import or export job can run at a time. For example, if an import job is in progress, attempting to start another import or export job returns an error.
+
 ### Configure import options and start the job
 
 To configure the import options and start the job, follow these steps:
 
 1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane.
-1. TODO: Add steps for configuring the import job. Pull screenshots from the portal.
+1. Select **+ Create new job**.
+1. Select **Import** from the **Job type** dropdown.
+1. Enter a name for the import job in the **Job Name** field.
+1. Choose a value for the **Conflict resolution mode** field. This setting determines how the import job handles conflicts between existing files in the file system and files being imported. In this example, we select **Skip**. To learn more, see [Conflict resolution modes](blob-integration.md#conflict-resolution-modes).
+1. Select a value for **Error tolerance**. This setting determines how the import job handles errors that occur during the import process. In this example, we select **Allow errors**. To learn more, see [Error tolerance](blob-integration.md#error-tolerance).
+1. Enter import prefixes to filter the data imported from Blob Storage. Azure portal allows you to enter up to 10 prefixes. In this example, we add the prefixes */data* and */text*. To learn more, see [Import prefixes](blob-integration.md#import-prefixes).
+1. Once the job is configured, select **Start** to begin the import process.
+
+The following screenshot shows the import job configuration settings in Azure portal:
+
+TODO: :::image type="content" source="{source}" alt-text="{alt-text}" lightbox="{source}":::
 
 ## Monitor the import job
 
 After the import job is created, you can monitor its progress to make sure it completes successfully. In this section, you learn how to monitor the import job in the Azure portal.
 
-TODO: Add note about viewing errors/conflicts in the logging container after the import is complete.
+To view the job details, follow these steps:
+
+1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane under **Settings**.
+1. Select the import job you want to monitor from the list of jobs.
+1. The **Job details** pane displays information about the job, including the job status, start time, blobs imported, and any errors or conflicts that occurred during the import process.
+
+The following screenshot shows the job details for an import job in the Azure portal:
+
+TODO: :::image type="content" source="{source}" alt-text="{alt-text}" lightbox="{source}":::
+
+Once the job completes, you can view the logging container to see detailed information about the import process, including any errors or conflicts that occurred. This information is only available after the job completes.
 
 ## Next steps
 

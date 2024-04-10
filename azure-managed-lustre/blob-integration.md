@@ -87,8 +87,7 @@ When importing data from a blob container, you can specify the error tolerance. 
 The following error tolerance options are available for import jobs:
 
 - **Do not allow errors** (default): The import job fails immediately if any error occurs during the import. This is the default behavior.
-- **Allow errors**: The import job continues if an error occurs, but the error is logged. By choosing this option, you can specify the maximum number of errors that can occur before the import job fails. If you specify -1, the import job continues regardless of the number of errors that occur. If you specify a number greater than 0, the import job fails if the number of errors exceeds the specified threshold.
-TODO: Add more details about error tolerance options once available.
+- **Allow errors**: The import job continues if an error occurs, and the error is logged. After the import job completes, you can view errors in the logging container.
 
 ### Considerations for blob import jobs
 
@@ -97,8 +96,7 @@ The following items are important to consider when importing data from a blob co
 - Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start another import job returns an error.
 - Import jobs can be canceled. You can cancel an import started manually on an existing cluster, or an import initiated during cluster creation.
 - Cluster deployment can return successfully before the corresponding import job is complete. The import job continues to run in the background. You can monitor the import job's progress in the following ways:
-  - **Azure portal**: 
-  - **REST API**: 
+  - **Azure portal**: The Azure portal displays the status of the import job. Navigate to the file system and select **Blob integration** to view the import job status.
   - **Lustre file in root directory**: A file named similar to `/lustre/IMPORT_<state>.<timestamp_start>` is created in the Lustre root directory during import. The `<state>` placeholder changes as the import progresses. The file is deleted when the import job completes successfully.
 - To view details about a completed import job, you can check the logging container. The logging container contains logs for the import job, including any errors or conflicts that occurred during the import.
 
@@ -126,7 +124,7 @@ You can modify the POSIX attributes manually before using the container to hydra
 
 The following items are important to consider when exporting data with a manual export (archive) job:
 
-- Only one import or export action can run at a time. For example, if an import job is in progress, attempting to start a manual export (archive) job to export data returns an error.
+- Only one import or export action can run at a time. For example, if an export job is in progress, attempting to start a manual export (archive) job to export data returns an error.
 
 ## Copy a Lustre blob container with AzCopy or Storage Explorer
 
