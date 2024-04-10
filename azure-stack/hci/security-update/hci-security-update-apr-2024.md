@@ -21,11 +21,35 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update addresses an issue that affects Windows Defender Application Control (WDAC). It prevents a stop error that occurs when you apply more than 32 policies.
+- This update supports daylight saving time (DST) changes in Palestine. To learn more, see Interim guidance for DST changes announced by Palestinian Authority for 2024, 2025.
 
-- This update addresses an issue that makes the troubleshooting process fail. This occurs when you use the **Get Help** app.
+- This update supports DST changes in Kazakhstan. To learn more, see Interim guidance for Kazakhstan time zone changes 2024.  
 
-For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [March 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Mar).
+- This update supports DST changes in Samoa. To learn more, see Interim guidance for Samoa DST changes 2021.  
+
+- This update addresses an issue that affects a network resource. You cannot access it from a Remote Desktop session. This occurs when you turn on the Remote Credential Guard feature and the client is Windows 11, version 22H2 or higher.  
+
+- This update addresses an issue that affects Microsoft Edge IE mode. When you open many tabs, it stops responding.  
+
+- This update addresses an issue that affects DNS servers. They receive Event 4016 for a timeout of the Lightweight Directory Access Protocol (LDAP). This occurs when they perform DNS registrations. Name registrations fail with Active Directory Domain Services (AD DS). The issue remains until you restart the DNS service.  
+
+- This update addresses an issue that affects workload virtual machines (VM). They lose their connection to the network in production environments.  
+
+- This update addresses an issue that occurs when you deploy Failover Cluster Network Controllers. Node thumbprints do not refresh while certificates rotate on Software Defined Networking (SDN) hosts. This causes service disruptions. Once you install this or future updates, you must make a call to `Set-NetworkControllerOnFailoverCluster -RefreshNodeCertificateThumbprints $true` after you rotate host certificates.  
+
+- This update addresses an issue that occurs when you use `LoadImage()` to load a top-down bitmap. If the bitmap has a negative height, the image does not load and the function returns NULL.  
+
+- This update addresses an issue that affects the Group Policy service. It fails after you use *LGPO.exe* to apply an audit policy to the system.  
+
+- This update addresses an issue that affects the display of a smart card icon. It does not appear when you sign in. This occurs when there are multiple certificates on the smart card.
+
+- This update addresses an issue that causes your device to shut down after 60 seconds. This occurs when you use a smart card to authenticate on a remote system.
+
+- This update addresses an issue that affects Secure Launch. It does not run on some processors.  
+
+- This update addresses an issue that occurs when you run an application as an Administrator. When you use a PIN to sign in, the application will not run.
+
+For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [April 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Apr).
 
 
 ## Known issues
