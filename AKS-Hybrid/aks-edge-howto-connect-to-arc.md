@@ -42,10 +42,17 @@ Provide details of your Azure subscription in the [**aksedge-config.json**](http
 |`ClusterName` | string | Provide a name for your cluster. The default value is `hostname_cluster`. |
 |`Location` | string | The location of your resource group. Choose the location closest to your deployment. |
 |`SubscriptionId` | GUID | Your subscription ID. In the Azure portal, select the subscription you're using and copy/paste the subscription ID string into the JSON. |
+<<<<<<< Updated upstream
 |`TenantId` | GUID | Your tenant ID. In the Azure portal, search Microsoft Entra ID, which should take you to the **Default Directory** page. From here, you can copy/paste the tenant ID string into the JSON. |
 |`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge Essentials. You can use an existing resource group, or if you add a new name, the system creates one for you. |
 |`ClientId` | GUID | Provide the application ID of the Azure service principal to use as credentials. AKS Edge Essentials uses this service principal to connect your cluster to Arc. You can use the **App Registrations** page in the Microsoft Entra resource page on the Azure portal, to list and manage the service principals in a tenant.|
 |`ClientSecret` | string | Provide the password for the service principal. |
+=======
+|`TenantId` | GUID | Your tenant ID. In the Azure portal, search Azure Active Directory, which should take you to the Default Directory page. From here, you can copy/paste the tenant ID string into the JSON. |
+|`ResourceGroupName` | string | The name of the Azure resource group to host your Azure resources for AKS Edge. You can use an existing resource group, or if you add a new name, the system creates one for you. |
+|`ClientId` | GUID | Provide the Application ID of the Azure Service Principal to use as credentials. AKS uses this service principal to connect your cluster to Arc. You can use the **App Registrations** page in the Azure Active Directory resource page on the Azure portal, to list and manage the service principals in a tenant. Please be aware the Service Principal Requires the "Kubernetes Cluster - Azure Arc Onboarding" Role at either the Subscription or Resource Group level. More information can be found [Microsoft Entra Identity Requirments for Service Principals](https://learn.microsoft.com/en-us/azure/azure-arc/kubernetes/system-requirements#microsoft-entra-identity-requirements)|
+|`ClientSecret` | string | Provide the password for the service principal.  |
+>>>>>>> Stashed changes
 
 > [!NOTE]
 > You only need to perform this configuration once per Azure subscription. You don't need to repeat the procedure for each Kubernetes cluster.
