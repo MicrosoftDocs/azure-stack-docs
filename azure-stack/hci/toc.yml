@@ -285,6 +285,8 @@ items:
 
   - name: SDN
     items:
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
     - name: Manage tenant virtual networks
@@ -293,6 +295,8 @@ items:
       href: manage/load-balancers.md
     - name: Manage SDN Multisite
       href: manage/manage-sdn-multisite.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
 
 - name: Monitor
   items:
@@ -385,12 +389,16 @@ items:
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
-  - name: SDN overview
-    href: concepts/software-defined-networking-23h2.md
-  - name: Plan an SDN infrastructure
-    href: concepts/plan-software-defined-networking-infrastructure-23h2.md
-  - name: SDN Multisite overview
-    href: concepts/sdn-multisite-overview.md
+  - name: SDN
+    items:
+    - name: SDN technical reference
+      href: manage/sdn-technical-reference.md
+    - name: SDN overview
+      href: concepts/software-defined-networking-23h2.md
+    - name: Plan an SDN infrastructure
+      href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+    - name: SDN Multisite overview
+      href: concepts/sdn-multisite-overview.md
 
 - name: Version 22H2
   items:
