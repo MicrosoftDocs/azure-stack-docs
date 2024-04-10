@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/22/2024
+ms.date: 03/29/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -15,13 +15,7 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
 
-> [!NOTE]
-> Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
-
 > [!IMPORTANT]
-> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
-
-> [!NOTE]
 > Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
 
 ## Firewall requirements for outbound endpoints
@@ -85,7 +79,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
+Ensure that the proper network ports are open between all server nodes both within a site and between sites for stretched clusters (stretched cluster functionality is only available in Azure Stack HCI, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
 
 When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports as described in the following sections:
 
