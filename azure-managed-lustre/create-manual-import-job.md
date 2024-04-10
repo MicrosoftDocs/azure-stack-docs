@@ -33,9 +33,9 @@ To configure the import options and start the job, follow these steps:
 1. Select **+ Create new job**.
 1. Select **Import** from the **Job type** dropdown.
 1. Enter a name for the import job in the **Job Name** field.
-1. Choose a value for the **Conflict resolution mode** field. This setting determines how the import job handles conflicts between existing files in the file system and files being imported. In this example, we select **Skip**. To learn more, see [Conflict resolution modes](blob-integration.md#conflict-resolution-modes).
+1. Choose a value for the **Conflict resolution mode** field. This setting determines how the import job handles conflicts between existing files in the file system and files being imported. In this example, we select **Skip**. To learn more, see [Conflict resolution mode](blob-integration.md#conflict-resolution-mode).
 1. Select a value for **Error tolerance**. This setting determines how the import job handles errors that occur during the import process. In this example, we select **Allow errors**. To learn more, see [Error tolerance](blob-integration.md#error-tolerance).
-1. Enter import prefixes to filter the data imported from Blob Storage. Azure portal allows you to enter up to 10 prefixes. In this example, we add the prefixes */data* and */text*. To learn more, see [Import prefixes](blob-integration.md#import-prefixes).
+1. Enter import prefixes to filter the data imported from Blob Storage. Azure portal allows you to enter up to 10 prefixes. In this example, we specify the prefixes */data* and */logs*. To learn more, see [Import prefix](blob-integration.md#import-prefix).
 1. Once the job is configured, select **Start** to begin the import process.
 
 The following screenshot shows the import job configuration settings in Azure portal:
