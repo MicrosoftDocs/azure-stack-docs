@@ -1,15 +1,15 @@
 ---
-title: Release notes with fixed and known issues in Azure Stack HCI 2402.1 update release
-description: Read about the known issues and fixed issues in Azure Stack HCI 2402.1 release.
+title: Release notes with fixed and known issues in Azure Stack HCI 2402.2 update release
+description: Read about the known issues and fixed issues in Azure Stack HCI 2402.2 release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/19/2024
+ms.date: 04/10/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI 2402.1 release
+# View known issues in Azure Stack HCI 2402.2 release
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
@@ -18,13 +18,13 @@ This article identifies the critical known issues and their workarounds in Azure
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
 > [!IMPORTANT]
-> This release supports only updates. You must be running version 2402 to update to this release. New deployments are not supported with this release.
+> This release supports only updates. You must be running version 2402 or 2402.1 to update to this release. New deployments are not supported with this release.
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
 
-## Issues for version 2402.1
+## Issues for version 2402.2
 
-This software release maps to software version number **10.2402.1.5**.
+This software release maps to software version number **10.2402.2.X**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
