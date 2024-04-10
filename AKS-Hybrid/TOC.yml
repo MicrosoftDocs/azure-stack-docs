@@ -16,8 +16,12 @@
     href: aks-whats-new-23h2.md
   - name: Concepts
     items:
-    - name: Network system requirements
-      href: aks-hci-network-system-requirements.md
+    - name: Networking
+      items:
+      - name: Networking concepts
+        href: aks-hci-network-system-requirements.md
+      - name: Load balancer
+        href: load-balancer-overview.md
     - name: Infrastructure component updates
       href: infrastructure-components.md
     - name: Cluster architecture
@@ -40,14 +44,18 @@
         href: aks-create-clusters-portal.md      
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
-      - name: Scale a Kubernetes cluster
-        href: auto-scale-aks-arc.md
     - name: Networking
       items:
       - name: Create logical networks for Kubernetes clusters
         href: aks-networks.md
-      - name: Deploy a load balancer
-        href: deploy-load-balancer.md
+      - name: Use MetalLB load balancer
+        items:
+        - name: Azure CLI
+          href: deploy-load-balancer-cli.md
+        - name: Azure portal
+          href: deploy-load-balancer-portal.md
+        # - name: Troubleshoot issues
+        #   href: load-balancer-troubleshoot.md
     - name: Storage
       items:
       - name: CSI storage drivers
@@ -64,6 +72,8 @@
         href: deploy-gpu-node-pool.md
       - name: Use labels in a Kubernetes cluster
         href: cluster-labels.md
+    - name: Scale a Kubernetes cluster
+      href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers
