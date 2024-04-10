@@ -374,7 +374,7 @@ Yes, this feature is entirely different from the [Windows Data Deduplication](/w
 > [!IMPORTANT]
 > We don't support enabling both ReFS deduplication and compression and Windows Data Deduplication simultaneously.
 
-ReFS deduplication and compression is designed for active workloads, focusing on minimizing performance impact after optimization. Unlike Windows Data Deduplication, ReFS deduplication and compression doesn't use a chunk store to store deduped data, and there is no physical data movement involved. The feature relies on ReFS block cloning to enable metadata-only operations. Windows Data Deduplication might provide better storage savings due to its use of variable block sizes, it is also suitable for a broader range of workload types, such as General-purpose file servers (GPFS), backup targets, and more.
+ReFS deduplication and compression is designed for active workloads, focusing on minimizing performance impact after optimization. Unlike Windows Data Deduplication, ReFS deduplication and compression doesn't use a chunk store to store deduped data, and there's no physical data movement involved. The feature relies on ReFS block cloning to enable metadata-only operations. Windows Data Deduplication might provide better storage savings due to its use of variable block sizes, it's also suitable for a broader range of workload types, such as General-purpose file servers (GPFS), backup targets, and more.
 
 ### What are the phases of ReFS deduplication and compression?
 
