@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2311.5 relea
 description: Read about the known issues and fixed issues in Azure Stack HCI 2311.5 release.
 author: ronmiab
 ms.topic: conceptual
-ms.date: 04/09/2024
+ms.date: 04/16/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -24,7 +24,7 @@ For more information about the new features in this release, see [What's new in 
 
 ## Issues for version 2311.5
 
-This software release maps to software version number **10.2311.5.x**. This release only supports updates from 2311 release.
+This software release maps to software version number **10.2311.5.6**. This release only supports updates from 2311 release.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
