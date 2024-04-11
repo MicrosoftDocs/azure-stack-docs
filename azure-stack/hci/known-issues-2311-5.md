@@ -30,21 +30,22 @@ Release notes for this version include the issues fixed in this release, known i
 
 ## Fixed issues
 
-Here are the fixed issues in this release:
+Microsoft isn't currently aware of any fixed issues with this release.
+
+<!-- Here are the fixed issues in this release:
 
 |Feature  |Issue  |Workaround/Comments  |
-|---------|-------|------------|
-| Arc VM management| When you create a disk or a network interface in this release with underscore in the name, the operation fails.  |Make sure to not use underscore in the names for disks or network interfaces. |
-| Arc VM management <!--26423941--> |If the resource group used to deploy an Arc VM on your Azure Stack HCI has an underscore in the name, the guest agent installation fails. As a result, you won't be able to enable guest management. | Make sure that there are no underscores in the resource groups used to deploy Arc VMs.|
+|---------|-------|------------| -->
 
 ## Known issues in this release
 
-Here are the known issues in this release:
+Microsoft isn't currently aware of any known issues with this release.
+
+<!-- Here are the known issues in this release:
 
 |Feature  |Issue  |Workaround/Comments  |
-|---------|---------|---------|
-| Arc VM management <!--27229189--> |When a new node is added into the cluster, it fails with: Node add failed at ERROR: An older version of the Arc VM cluster extension is installed on your cluster. |Make sure you have the latest firewall requirements including endpoint `https://hciarcvmscontainerregistry.azurecr.io` on port 443. This endpoint is required for Azure Stack HCI Arc VM container registry. |
-|Arc VM management <!--27197239--> |When you update to 10.2311.4.5, the arcbridge status shows "UpgradeFailed" on the Azure portal. |Make sure you have the latest firewall requirements including endpoint `https://hciarcvmscontainerregistry.azurecr.io` on port 443. This endpoint is required for Azure Stack HCI Arc VM container registry.  |
+|---------|------------------| -->
+
 
 ## Known issues from previous releases
 
@@ -52,6 +53,8 @@ Here are the known issues from previous releases:
 
 |Feature  |Issue  |Workaround/Comments  |
 |---------|---------|---------|
+| Arc VM management <!--27229189--> |When a new node is added into the cluster, it fails with: Node add failed at ERROR: An older version of the Arc VM cluster extension is installed on your cluster. |Make sure you have the latest firewall requirements including endpoint `https://hciarcvmscontainerregistry.azurecr.io` on port 443. This endpoint is required for Azure Stack HCI Arc VM container registry. |
+|Arc VM management <!--27197239--> |When you update to 10.2311.4.5, the arcbridge status shows "UpgradeFailed" on the Azure portal. |Make sure you have the latest firewall requirements including endpoint `https://hciarcvmscontainerregistry.azurecr.io` on port 443. This endpoint is required for Azure Stack HCI Arc VM container registry.  |
 | Arc VM management <!--26100653--> |Deployment or update of Arc Resource Bridge could fail when the automatically generated temporary SPN secret during this operation, starts with a hyphen.|Retry the deployment/update. The retry should regenerate the SPN secret and the operation will likely succeed.  |
 | Arc VM management <!--X--> |Arc Extensions on Arc VMs stay in "Creating" state indefinitely. | Sign in to the VM, open a command prompt, and type the following: <br> **Windows**: <br> `notepad C:\ProgramData\AzureConnectedMachineAgent\Config\agentconfig.json` <br> **Linux**: <br> `sudo vi /var/opt/azcmagent/agentconfig.json` <br>  Next, find the `resourcename` property. Delete the GUID that is appended to the end of the resource name, so this property matches the name of the VM. Then restart the VM.|
 | Arc VM management <!--26066222--> |When a new server is added to an Azure Stack HCI cluster, storage path isn't created automatically for the newly created volume.| You can manually create a storage path for any new volumes. For more information, see [Create a storage path](./manage/create-storage-path.md).  |
