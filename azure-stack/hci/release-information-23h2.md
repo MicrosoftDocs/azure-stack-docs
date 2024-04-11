@@ -21,7 +21,7 @@ This article presents the release information for Azure Stack HCI, version 23H2,
 
 ## About Azure Stack HCI, version 23H2 releases
 
-The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, and 2402. Each release train includes a baseline build and subsequent updates. 
+The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, and 2402. Each release train includes a baseline build and subsequent updates.
 
 - **Baseline build**: The baseline build is the initial version of the software on a release train. Before you upgrade to the next version on the same train, you must deploy the baseline build. 
 - **Update build**: An update build includes the incremental updates from the most recent baseline build. 
@@ -53,7 +53,7 @@ The following table provides a summary of Azure Stack HCI, version 23H2 release 
 
 All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
-|Release build| OS build |Baseline/Update <sup>1</sup>| What's new | Known issues |
+|Release build| OS build |Baseline or Update| What's new | Known issues |
 |--|--|--|--|--|
 | 10.2402.2.X | 25398.830  <br><br> [April OS security update](./security-update/hci-security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24022) | [Known issues](./known-issues-2402-2.md) |
 | 10.2311.5.6 | 25398.830  <br><br> [April OS security update](./security-update/hci-security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23115) | [Known issues](./known-issues-2311-5.md) |
@@ -65,7 +65,6 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 10.2311.0.26 | 25398.531 <br><br> [Nov OS security update](./security-update/hci-security-update-nov-2023.md) <br><br> Availability date: 2023-11-14| Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2311) | [Known issues](./known-issues-2311.md) |
 | 10.2310.0.30 | 25398.469| Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2311) | [Known issues](./known-issues-2310.md) |
 
-<sup>1</sup> A **Baseline** build is the initial version of the software that you must deploy before upgrading to the next version. An **Update** build includes incremental updates from the most recent **Baseline** build. To deploy an **Update** build, it's necessary to first deploy the previous **Baseline** build.
 
 ## Next steps
 
