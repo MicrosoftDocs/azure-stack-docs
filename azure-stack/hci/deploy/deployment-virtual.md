@@ -25,7 +25,7 @@ Here are the hardware, networking, and other prerequisites for the virtual deplo
 
 ### Physical host requirements
 
-The following are the minimum requirements to successfully deploy Azure Stack HCI 23H2.  More capacity is required for running actual workloads like virtual machines or containers.
+The following are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.  More capacity is required for running actual workloads like virtual machines or containers.
 
 Before you begin, make sure that:
 
@@ -56,7 +56,7 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Time synchronization in integration  | Disabled. |
 
 > [!NOTE]
-> These are the minimum requirements to successfully deploy Azure Stack HCI 23H2.  Increase the capacity like virtual cores & memory when running actual workloads like virtual machines or containers.
+> These are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.  Increase the capacity like virtual cores & memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
 
