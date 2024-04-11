@@ -285,14 +285,22 @@ items:
 
   - name: SDN
     items:
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage software load balancers
       href: manage/load-balancers.md
+    - name: Configure network security groups with Windows Admin Center
+      href: manage/use-datacenter-firewall-windows-admin-center.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
     - name: Manage SDN Multisite
       href: manage/manage-sdn-multisite.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
 
 - name: Monitor
   items:
@@ -524,12 +532,8 @@ items:
         href: manage/update-sdn.md
       - name: Assign public IP address to a VM
         href: manage/assign-public-ip-to-vm.md
-      - name: Configure network security groups with Windows Admin Center
-        href: manage/use-datacenter-firewall-windows-admin-center.md
       - name: Configure network security groups with PowerShell
         href: manage/use-datacenter-firewall-powershell.md
-      - name: Configure network security groups with tags
-        href: manage/configure-network-security-groups-with-tags.md
       - name: Manage default network access policies
         href: manage/manage-default-network-access-policies-virtual-machines.md
       - name: Manage SDN security
