@@ -3,7 +3,7 @@ title: Metrics and monitoring logs in AKS enabled by Azure Arc
 description: Learn about metrics and logs used to monitor Kubernetes clusters in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/28/2024
+ms.date: 04/11/2024
 ms.author: sethm 
 ms.lastreviewed: 03/28/2024
 ms.reviewer: haojiehan
@@ -29,17 +29,17 @@ AKS enabled by Arc implements control plane logs (including audit logs) for clus
 
 | Category                   | Description                                                                                                                                                                                                   | Table (resource-specific mode)  |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------|
-| kube-apiserver             | Logs from the API server.                                                                                                                                                                                     | ArcK8SControlPlane.             |
+| kube-apiserver             | Logs from the API server.                                                                                                                                                                                     | ArcK8SControlPlane             |
 | kube-audit                 | Audit log data for every audit event including get, list, create, update, delete, patch, and post.                                                                                                            | ArcK8SAudit                     |
 | kube-audit-admin           | Subset of the kube-audit log category. Significantly reduces the number of logs by excluding the get and list audit events from the log.                                                                      | ArcK8SAuditAdmin                |
 | kube-controller-manager    | Gain deeper visibility into issues that can arise between Kubernetes and the Azure control plane. A typical example is when the AKS cluster has insufficient permissions to interact with Azure.                     | ArcK8SControlPlane              |
-| kube-scheduler             | Logs from the scheduler.                                                                                                                                                                                      | ArcK8SControlPlane.             |
+| kube-scheduler             | Logs from the scheduler.                                                                                                                                                                                      | ArcK8SControlPlane             |
 | cluster-autoscaler         | Understand why the AKS cluster is scaled up or down, which might not be expected. This information is also useful to correlate time intervals during which something interesting might have happened in the cluster.  | ArcK8SControlPlane              |
 | cloud-controller-manager   | Logs from the cloud-node-manager component of the Kubernetes cloud controller manager.                                                                                                                        | ArcK8SControlPlane              |
 | guard                      | Managed Microsoft Entra ID and Azure RBAC audits. For managed Microsoft Entra ID, this category includes token in and user info out. For Azure RBAC, it includes access reviews in and out.                   | ArcK8SControlPlane              |
-| csi-aksarcdisk-controller  | Logs from the AKS Arc CSI storage driver.                                                                                                                                                                     | ArcK8SControlPlane.             |
-| csi-aksarcsmb-controller   | Logs from the AKS Arc SMB CSI storage driver.                                                                                                                                                                 | ArcK8SControlPlane.             |
-| csi-aksarcnfs-controller   | Logs from the AKS Arc NFS CSI storage driver.                                                                                                                                                                 | ArcK8SControlPlane.             |
+| csi-aksarcdisk-controller  | Logs from the AKS Arc CSI storage driver.                                                                                                                                                                     | ArcK8SControlPlane             |
+| csi-aksarcsmb-controller   | Logs from the AKS Arc SMB CSI storage driver.                                                                                                                                                                 | ArcK8SControlPlane             |
+| csi-aksarcnfs-controller   | Logs from the AKS Arc NFS CSI storage driver.                                                                                                                                                                 | ArcK8SControlPlane             |
 
 For more information, see the list of [all resource log category types supported in Azure Monitor](/azure/azure-monitor/essentials/resource-logs-schema).
 
