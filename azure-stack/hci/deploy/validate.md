@@ -123,7 +123,7 @@ The following steps show how to identify a Jumbo Packet error from vNIC SMB02 an
 
 1. Scrolling back through the results shows an error in red indicating that the Jumbo Packet for vNIC SMB02 on Host S046036 is set at the default size of 1514, but should be set to 9014.
 
-    :::image type="content" source="../media/validate/jumbo-packet-setting-error.png" alt-text="Validate-DCB tool scan result showing a jumbo packet size setting error" lightbox="../media/validate/jumbo-packet-setting-error.png":::
+    :::image type="content" source="./media/validate/jumbo-packet-setting-error.png" alt-text="Validate-DCB tool scan result showing a jumbo packet size setting error" lightbox="./media/validate/jumbo-packet-setting-error.png":::
 
 1. Reviewing the **Advanced** properties of vNIC SMB02 on Host S046036 shows that the Jumbo Packet is set to the default of **Disabled**.
 
