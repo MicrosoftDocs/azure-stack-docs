@@ -14,6 +14,9 @@ ms.reviewer: dsundarraj
 
 # Connect clients to an Azure Managed Lustre file system
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 This article describes how to prepare clients and mount the Azure Managed Lustre file system from a client machine.
 
 ## Client prerequisites
