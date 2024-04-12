@@ -1309,6 +1309,11 @@
       "source_path": "azure-stack/hci/manage/partition-gpu.md",
       "redirect_url": "/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/container-registry-get-resource-id.md",
+      "redirect_url": "/azure-stack/user/container-registry-troubleshoot#find-your-registry-resource-id-for-support",
+      "redirect_document_id": false
     }
   ]
 }
