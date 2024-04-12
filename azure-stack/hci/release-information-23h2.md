@@ -53,8 +53,8 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline/Update <sup>1</sup>| What's new | Known issues |
 |--|--|--|--|--|
-| 10.2402.1.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24021) | [Known issues](./known-issues-2402-1.md) |
-| 10.2311.4.XX | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23114) | [Known issues](./known-issues-2311-3.md) |
+| 10.2402.1.5 | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24021) | [Known issues](./known-issues-2402-1.md) |
+| 10.2311.4.6 | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23114) | [Known issues](./known-issues-2311-4.md) |
 | 10.2402.0.23 | 25398.709  <br><br> [Feb OS security update](./security-update/hci-security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2402) | [Known issues](./known-issues-2402.md) |
 | 10.2311.3.12 | 25398.709  <br><br> [Feb OS security update](./security-update/hci-security-update-feb-2024.md) <br><br> Availability date: 2024-02-13 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23113) | [Known issues](./known-issues-2311-3.md) |
 | 10.2311.2.7 | 25398.643  <br><br> [Jan OS security update](./security-update/hci-security-update-jan-2024.md) <br><br> Availability date: 2024-01-09| Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23112-ga) | [Known issues](./known-issues-2311-2.md) |
