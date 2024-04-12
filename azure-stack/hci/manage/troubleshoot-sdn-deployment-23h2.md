@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot Software Defined Networking deployment in Azure stack HCI, version 23H2 via Windows Admin Center
+title: Troubleshoot Software Defined Networking deployment in Azure Stack HCI, version 23H2 via Windows Admin Center
 description: Learn how to troubleshoot the deployment of Software Defined Networking (SDN) in Azure Stack HCI, version 23H2 via Windows Admin Center.
 ms.topic: how-to
 ms.author: alkohli
@@ -81,7 +81,7 @@ To verify or enable WinRM and PowerShell remoting, perform these steps:
 
 1. Log into one of the Network Controller VMs either locally or using Remote Desktop Protocol (RDP) connection.
 
-1. Run the following command to disable the Windows firewall:
+1. Run the following command to disable the Windows Firewall:
 
     ```powershell
     Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
