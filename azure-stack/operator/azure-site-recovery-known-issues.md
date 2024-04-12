@@ -12,6 +12,9 @@ ms.lastreviewed: 03/07/2023
 
 # Known issues - Azure Site Recovery on Azure Stack Hub (preview)
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 This article describes known issues for Azure Site Recovery on Azure Stack Hub. Use the following sections for details about the current known issues and limitations in Azure Site Recovery on Azure Stack Hub.
 
 ## Re-protection: available data disk slots on appliance

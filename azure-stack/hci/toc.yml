@@ -97,8 +97,12 @@ items:
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
     href: plan/cloud-deployment-network-considerations.md
-  - name: Review security features
-    href: concepts/security-features.md
+  - name: Review security
+    items:
+    - name: About security features
+      href: concepts/security-features.md
+    - name: Download Azure Stack HCI security book
+      href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
 
@@ -133,7 +137,7 @@ items:
   - name: Deploy workloads
     items:
     - name: Run AKS on HCI
-      href: /azure/aks/hybrid/kubernetes-walkthrough-powershell?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      href: /azure/aks/hybrid/aks-create-clusters-cli?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Virtual Desktop on HCI
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Arc VMs
@@ -221,18 +225,20 @@ items:
         href: manage/processor-compatibility-mode.md
       - name: Use GPUs with clustered VMs
         href: manage/use-gpu-with-clustered-vm.md
-      - name: Partition and share GPUs with VMs
-        href: manage/partition-gpu.md
+      - name: GPU Partitioning
+        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Partition and assign GPUs to a virtual machine
+        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
 
   - name: Security
     items:
-    - name: Manage application control (WDAC)
-      href: manage/manage-wdac.md
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
+    - name: Manage application control (WDAC)
+      href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
     - name: Manage secrets rotation
@@ -279,8 +285,22 @@ items:
 
   - name: SDN
     items:
-    - name: SDN Multisite
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
+    - name: Manage software load balancers
+      href: manage/load-balancers.md
+    - name: Configure network security groups with Windows Admin Center
+      href: manage/use-datacenter-firewall-windows-admin-center.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
+    - name: Manage SDN Multisite
       href: manage/manage-sdn-multisite.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
 
 - name: Monitor
   items:
@@ -329,6 +349,10 @@ items:
     href: manage/collect-logs.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
+  - name: Get support
+    href: manage/get-support.md
+  - name: Get remote support
+    href: manage/get-remote-support.md
 
 - name: Migrate
   items:
@@ -369,10 +393,17 @@ items:
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
-  - name: SDN overview
-    href: concepts/software-defined-networking-23h2.md
-  - name: Plan an SDN infrastructure
-    href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+  - name: SDN
+    items:
+    - name: SDN technical reference
+      href: manage/sdn-technical-reference.md
+    - name: SDN overview
+      href: concepts/software-defined-networking-23h2.md
+    - name: Plan an SDN infrastructure
+      href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+    - name: SDN Multisite overview
+      href: concepts/sdn-multisite-overview.md
+
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
@@ -501,18 +532,10 @@ items:
         href: manage/update-sdn.md
       - name: Assign public IP address to a VM
         href: manage/assign-public-ip-to-vm.md
-      - name: Configure network security groups with Windows Admin Center
-        href: manage/use-datacenter-firewall-windows-admin-center.md
       - name: Configure network security groups with PowerShell
         href: manage/use-datacenter-firewall-powershell.md
-      - name: Configure network security groups with tags
-        href: manage/configure-network-security-groups-with-tags.md
       - name: Manage default network access policies
         href: manage/manage-default-network-access-policies-virtual-machines.md
-      - name: Manage tenant virtual networks
-        href: manage/tenant-virtual-networks.md
-      - name: Manage tenant logical networks
-        href: manage/tenant-logical-networks.md
       - name: Manage SDN security
         items:
         - name: Secure the Network Controller
@@ -527,8 +550,6 @@ items:
           href: manage/kerberos-with-spn.md
       - name: Manage software load balancers
         items:
-        - name: Manage software load balancers
-          href: manage/load-balancers.md
         - name: Configure load balancer for high availability ports
           href: manage/configure-software-load-balancer.md
       - name: Manage gateway connections
@@ -722,12 +743,6 @@ items:
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Azure Benefits (22H2 and earlier)
     href: ./manage/azure-benefits.md
-  - name: Support
-    items:
-    - name: Get support
-      href: manage/get-support.md
-    - name: Get remote support
-      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
