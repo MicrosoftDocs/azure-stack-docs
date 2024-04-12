@@ -25,11 +25,13 @@ Here are the hardware, networking, and other prerequisites for the virtual deplo
 
 ### Physical host requirements
 
-The following are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.  More capacity is required for running actual workloads like virtual machines or containers.
+The following are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.
 
 Before you begin, make sure that:
 
 - You have access to a physical host system that is running Hyper-V on Windows Server 2022, Windows 11, or later. This host is used to provision a virtual Azure Stack HCI deployment.
+
+- You have enough capacity. More capacity is required for running actual workloads like virtual machines or containers.
 
 - The physical hardware used for the virtual deployment meets the following requirements:
 
