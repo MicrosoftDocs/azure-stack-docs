@@ -4,7 +4,7 @@ description: Learn how to troubleshoot the deployment of Software Defined Networ
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 03/21/2024
+ms.date: 04/12/2024
 ---
 
 # Troubleshoot Software Defined Networking deployment in Azure Stack HCI via Windows Admin Center
