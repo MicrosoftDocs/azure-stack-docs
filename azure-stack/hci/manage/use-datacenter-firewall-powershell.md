@@ -6,10 +6,10 @@ ms.author: anpaul
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/12/2024
+ms.date: 04/13/2024
 ---
 
-# Configure network security groups with PowerShell
+# Configure network security groups on your Azure Stack HCI with PowerShell
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
@@ -33,10 +33,10 @@ In this example, you create a network security group with two rules:
 1. **AllowAll_Inbound** - allows all network traffic to pass into the network interface where this network security group is configured.
 2. **AllowAllOutbound** - allows all traffic to pass out of the network interface. This network security group, identified by the resource ID "AllowAll-1" is now ready to be used in virtual subnets and network interfaces.
 
-You can run this command from any computer that has access to the Network Controller REST endpoint. First, open a PowerShell session. In this example, we use the **Enter-PSSession** cmdlet to connect to the SDN node. Replace `<SDN-node-name>` with the name of the SDN node.
+You can run this command from any computer that has access to the Network Controller REST endpoint. First, open a PowerShell session. In this example, use the **Enter-PSSession** cmdlet and replace `<computer-name>` with the name of the computer that has the Network Controller REST endpoint.
 
 ```PowerShell
-Enter-PSSession <SDN-node-name>
+Enter-PSSession <computer-name>
 ```
 
 
