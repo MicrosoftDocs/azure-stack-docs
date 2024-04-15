@@ -39,13 +39,12 @@ Microsoft isn't currently aware of any fixed issues with this release.
 
 ## Known issues in this release
 
-Microsoft isn't currently aware of any known issues with this release.
-
-<!-- Here are the known issues in this release:
+Here are the known issues in this release:
 
 |Feature  |Issue  |Workaround/Comments  |
-|---------|------------------| -->
-
+|---------|------------------|----------|
+|Update <!--27176454-->|Download operations do not terminate after specified timeout of 6 hours. |Microsoft is actively working to resolve this issue, and there's no action required on your part.|
+|Update <!--27210359-->|Update is in Failed state: DownloadFailed. Summary XML from ECE not present. |Microsoft is actively working to resolve this issue, and there's no action required on your part.|
 
 ## Known issues from previous releases
 
