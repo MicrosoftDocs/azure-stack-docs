@@ -350,9 +350,11 @@ items:
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
   - name: Get support
-    href: manage/get-support.md
-  - name: Get remote support
     href: manage/get-remote-support.md
+  - name: Troubleshoot SDN
+    items:
+    - name: Troubleshoot SDN deployment
+      href: manage/troubleshoot-sdn-deployment-23h2.md
 
 - name: Migrate
   items:
