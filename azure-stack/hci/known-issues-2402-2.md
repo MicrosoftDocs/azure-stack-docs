@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2402.2 updat
 description: Read about the known issues and fixed issues in Azure Stack HCI 2402.2 release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/10/2024
+ms.date: 04/15/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402.1 release.
+This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402.2 release.
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
@@ -24,7 +24,7 @@ For more information about the new features in this release, see [What's new in 
 
 ## Issues for version 2402.2
 
-This software release maps to software version number **10.2402.2.X**.
+This software release maps to software version number **2402.2.12**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
@@ -46,7 +46,7 @@ Here are the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| AKS on HCI <!--27081563--> |AKS cluster creation fails with the `Error: Invalid AKS network resource id`. This issue can occur when the associated logical network name has an underscore. |Underscores are not supported in logical network names. Make sure to not use underscore in the names for logical networks deployed on your Azure Stack HCI. |
+| Solution Builder Extension Updates<!--26039754--> | Due to a known issue in this release, successful CAU updates can intermittently be reported as a failure. Get-CauReport can fail if the Cluster Name or Cluster IP Address resources fail to start. |If you encounter this issue, contact Microsoft Support for next steps. They can work with you to manually restart the cluster resources and retry the SBE updates. |
 
 ## Known issues from previous releases
 
@@ -54,6 +54,7 @@ Here are the known issues from previous releases:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
+| AKS on HCI <!--27081563--> |AKS cluster creation fails with the `Error: Invalid AKS network resource id`. This issue can occur when the associated logical network name has an underscore. |Underscores are not supported in logical network names. Make sure to not use underscore in the names for logical networks deployed on your Azure Stack HCI. |
 | Repair server <!--27053788--> |In rare instances, the `Repair-Server` operation fails with the `HealthServiceWaitForDriveFW` error. In these cases, the old drives from the repaired node are not removed and new disks are stuck in the maintenance mode. |To prevent this issue, make sure that you DO NOT drain the node either via the Windows Admin Center or using the `Suspend-ClusterNode -Drain` PowerShell cmdlet before you start `Repair-Server`. <br> If the issue occurs, contact Microsoft Support for next steps. |
 | Repair server <!--27152397--> |This issue is seen when the single server Azure Stack HCI is updated from 2311 to 2402 and then the `Repair-Server` is performed. The repair operation fails. |Before you repair the single node, follow these steps:<br>1. Run version 2402 for the *ADPrepTool*. Follow the steps in [Prepare Active Directory](./deploy/deployment-prep-active-directory.md). This action is quick and adds the required permissions to the Organizational Unit (OU).<br>2. Move the computer object from **Computers** segment to the root OU. Run the following command:<br>`Get-ADComputer <HOSTNAME>` \| `Move-ADObject -TargetPath "<OU path>"`|
 | Deployment <!--27118224--> |If you prepare the Active Directory on your own (not using the script and procedure provided by Microsoft), your Active Directory validation could fail with missing `Generic All` permission. This is due to an issue in the validation check that checks for a dedicated permission entry for `msFVE-RecoverInformationobjects – General – Permissions Full control`, which is required for BitLocker recovery. |Use the [Prepare AD script method](./deploy/deployment-prep-active-directory.md) or if using your own method, make sure to assign the specific permission `msFVE-RecoverInformationobjects – General – Permissions Full control`.  |
