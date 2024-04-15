@@ -1,21 +1,22 @@
 ---
-title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub (preview)
+title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub
 description: Learn how to deploy virtual machines in Azure Site Recovery from source machines on Azure Stack Hub. 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 06/08/2023
+ms.date: 04/15/2024
+ms.reviewer: rtiberiu
+ms.lastreviewed: 04/15/2024
+
 ---
 
 
-# Deploy for source environments (preview)
+# Deploy for source environments
 
 This article describes the actions that are required to complete the installation of the source environment.
 
-
 > [!IMPORTANT]
-> Azure Site Recovery on Azure Stack Hub requires the Azure Stack Hub 2301 update build number to be at least 1.2301.2.58.
-
+> Azure Site Recovery on Azure Stack Hub requires Azure Stack Hub to be a supported version (at least 1.2301.2.58).
 
 ## Prerequisites
 

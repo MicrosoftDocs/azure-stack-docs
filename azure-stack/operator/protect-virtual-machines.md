@@ -1,14 +1,16 @@
 ---
-title: Protect virtual machines in Azure Site Recovery on Azure Stack Hub (preview)
+title: Protect virtual machines in Azure Site Recovery on Azure Stack Hub
 description: Learn how to protect virtual machines in Azure Site Recovery on Azure Stack Hub. 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/06/2023
+ms.date: 04/15/2024
+ms.reviewer: rtiberiu
+ms.lastreviewed: 04/15/2024
+
 ---
 
-
-# Enable VM protection in Azure Site Recovery (preview)
+# Enable VM protection in Azure Site Recovery
 
 Once the target and the source environments are configured, you can start enabling the protection of VMs (from the source to the target). All configuration is done on the target environment, in the Site Recovery vault itself.
 
@@ -20,6 +22,7 @@ Site Recovery helps replicate all the VM data itself, but before starting that, 
 
 - The target network connectivity is configured.
 - The target virtual networks are configured - where each of the protected VMs are connected when a failover occurs.
+- The target user subscription has enough compute quota allocation for all the VMs you plan to potentially failover.
 - These virtual networks can be configured in the same manner as the source networks, or they can have a different design, depending on your disaster recovery plan and goal.
 - Ensure that the new public and private IPs work as expected for the specific workloads you are protecting (when failovers occur, the failed-over VMs have IPs from the target environment).
 - The desired resource group configuration is created.
@@ -164,7 +167,8 @@ For each of the states, there are several considerations:
   - If the VM with the **sourceAzStackVirtualMachineId** on the primary stamp exists, and if it is in a different subscription from the appliance VM, new disks are created in the same subscription and resource group as the failback VM from the replica ones detached from the appliance, so that the new disks can be attached to the failback VM.
 
 - Commit that the failover/failback is done. The failed-over VM on the recovery stamp is deleted after failback is committed.
+- When you uninstall the Azure Site Recovery Resource Provider, all the vaults created in those target Azure Stack Hub stamps are also removed. This is an Azure Stack Hub operator action, with no warnings or alerts for users when it happens.
 
 ## Next steps
 
-Azure Site Recovery overview
+[Azure Site Recovery overview](azure-site-recovery-overview.md)
