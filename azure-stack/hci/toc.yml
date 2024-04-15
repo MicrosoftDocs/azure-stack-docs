@@ -197,6 +197,8 @@ items:
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
+    - name: Azure verification for VMs
+      href: deploy/azure-verification.md
     - name: License Windows Server VMs
       href: manage/vm-activate.md
 
@@ -448,8 +450,6 @@ items:
       href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
     - name: Deploy workloads
       items: 
-      - name: Azure verification for VMs
-        href: deploy/azure-verification.md
       - name: Branch office and edge
         href: deploy/branch-office-edge.md
       - name: Virtual desktop infrastructure
