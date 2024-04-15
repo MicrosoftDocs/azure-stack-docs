@@ -1,5 +1,5 @@
 ---
-title: Known issues for Azure Site Recovery (preview)
+title: Known issues for Azure Site Recovery
 description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
@@ -10,7 +10,7 @@ ms.lastreviewed: 03/07/2023
 
 ---
 
-# Known issues - Azure Site Recovery on Azure Stack Hub (preview)
+# Known issues - Azure Site Recovery on Azure Stack Hub
 
 > [!CAUTION]
 > This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
