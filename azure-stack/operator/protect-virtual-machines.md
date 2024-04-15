@@ -16,7 +16,7 @@ Once the target and the source environments are configured, you can start enabli
 
 ## Prerequisites
 
-You can configure the replication policy for the respective VMs you want to protect in the Site Recovery vault. These VMs are on the source environment, where they have configured a specific resource group structure, virtual networks, public IPs, and NSGs.
+You can configure the replication policy for the respective VMs you want to protect in the Site Recovery vault. These VMs are on the source environment, where they configured a specific resource group structure, virtual networks, public IPs, and NSGs.
 
 Site Recovery helps replicate all the VM data itself, but before starting that, make sure that the following prerequisites are met:
 
@@ -40,13 +40,13 @@ In the target environment, in the Azure Stack Hub user portal, open the Site Rec
 
 :::image type="content" source="media/protect-virtual-machines/protect-workloads.png" alt-text="Screenshot of protect workloads portal screen." lightbox="media/protect-virtual-machines/protect-workloads.png":::
 
-Select the appliance you have configured and check that it is healthy:
+Select the appliance you configured and check that it is healthy:
 
 :::image type="content" source="media/protect-virtual-machines/health-check.png" alt-text="Screenshot of portal health precheck." lightbox="media/protect-virtual-machines/health-check.png":::
 
-The blade then asks you to select the source environment and the source subscription. You should see all the Azure Stack Hub User subscriptions to which the user (or SPN) you have configured has access.
+The blade then asks you to select the source environment and the source subscription. You should see all the Azure Stack Hub User subscriptions to which the user (or SPN) you configured has access.
 
-Select the subscription that contains the source workloads, and select the VMs for which you plan to enable protection. You can protect up to 10 VMs at a time. We have made PowerShell scripts available that can enable larger deployments.
+Select the subscription that contains the source workloads, and select the VMs for which you plan to enable protection. You can protect up to 10 VMs at a time. PowerShell scripts are available that can enable larger deployments.
 
 :::image type="content" source="media/protect-virtual-machines/enable-replication.png" alt-text="Screenshot of enable replication portal screen." lightbox="media/protect-virtual-machines/enable-replication.png":::
 
@@ -54,7 +54,7 @@ Azure Site Recovery replicates all disks attached to the VM. In this version, al
 
 :::image type="content" source="media/protect-virtual-machines/replication-settings.png" alt-text="Screenshot of portal replication settings." lightbox="media/protect-virtual-machines/replication-settings.png":::
 
-In the next step, select the target environment configuration. This configuration includes the networks the VMs connect to, and the cache storage account they use. You must use PowerShell to configure the replication policy. We have provided scripts that help start the customization process.
+In the next step, select the target environment configuration. This configuration includes the networks the VMs connect to, and the cache storage account they use. You must use PowerShell to configure the replication policy. Scripts are available that help start the customization process.
 
 :::image type="content" source="media/protect-virtual-machines/target-environment.png" alt-text="Screenshot of target environment settings on portal." lightbox="media/protect-virtual-machines/target-environment.png":::
 
@@ -157,7 +157,7 @@ For each of the states, there are several considerations:
 
   - Ensure that the Site Recovery appliance VM has enough data disk slots available. The replica disks for re-protection are attached to the appliance (check the Capacity Planning for more information).
   - During the re-protection process, the source VM (which would have the **sourceAzStackVirtualMachineId** on the source stamp) is shut down once the re-protect is triggered, and the OS disk and data disks attached to it are detached and attached to the appliance as replica disks if they are the old ones. The OS disk is replaced with a temporary OS disk of size 1GB.
-  - Even if a disk can be re-used as replica in re-protect, but it is in a different subscription from the appliance VM, a new disk is created from it in the same subscription and resource group as the appliance, so that the new disk can be attached to the appliance. 
+  - Even if a disk can be re-used as replica in re-protect, but it is in a different subscription from the appliance VM, a new disk is created from it in the same subscription and resource group as the appliance, so that the new disk can be attached to the appliance.
   - The attached data disks of the appliance should not be modified/attached/detached/changed manually, as a re-protect manual resync is not supported in public preview (see the known issues article). The re-protection cannot be recovered if the replica disks are removed.
 
 - Failback (planned failover): fail back a re-protected item from the target stamp to the source stamp:
