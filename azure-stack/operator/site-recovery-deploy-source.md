@@ -1,5 +1,5 @@
 ---
-title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub (preview)
+title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub
 description: Learn how to deploy virtual machines in Azure Site Recovery from source machines on Azure Stack Hub. 
 author: sethmanheim
 ms.author: sethm
@@ -8,13 +8,13 @@ ms.date: 06/08/2023
 ---
 
 
-# Deploy for source environments (preview)
+# Deploy for source environments
 
 This article describes the actions that are required to complete the installation of the source environment.
 
 
 > [!IMPORTANT]
-> Azure Site Recovery on Azure Stack Hub requires the Azure Stack Hub 2301 update build number to be at least 1.2301.2.58.
+> Azure Site Recovery on Azure Stack Hub requires the Azure Stack Hub in a supported version (at least 1.2301.2.58).
 
 
 ## Prerequisites
@@ -57,6 +57,7 @@ To start this process, open the **Microsoft Azure Appliance Configuration Manage
 > During the configuration of the appliance, you must provide a user (or SPN) which the appliance then uses for discovery. This user (or SPN) must have **owner** rights on these subscriptions, both to discover resources as well as delegate rights as needed. The Site Recovery Vault discovers all the VMs this user (or SPN) has access to, within the respective tenant.
 
 :::image type="content" source="media/site-recovery-deploy-source/appliance-configuration.png" alt-text="Screenshot of portal showing appliance configuration." lightbox="media/site-recovery-deploy-source/appliance-configuration.png":::
+
 
 ## Next steps
 
