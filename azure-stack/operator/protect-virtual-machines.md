@@ -162,7 +162,7 @@ For each of the states, there are several considerations:
 
 - Failback (planned failover): fail back a re-protected item from the target stamp to the source stamp:
   - Ensure that the initial source subscription, the initial resource group, and the virtual network/subnet of the initial primary NIC still exist on the source stamp. You can retrieve this information from the protected item using PowerShell.
-  - The VM with the **sourceAzStackVirtualMachineId** on the source stamp is created with the replica disks and newly-created NICs if it does not exist; or it is replaced with a replica OS disk and data disks if it exists.
+  - The VM with the **sourceAzStackVirtualMachineId** on the source stamp is created with the replica disks and newly created NICs if it does not exist; or it is replaced with a replica OS disk and data disks if it exists.
   - If the VM with the **sourceAzStackVirtualMachineId** on the primary stamp exists, all the disks attached to it are detached but not deleted, and the NICs remain the same.
   - If the VM with the **sourceAzStackVirtualMachineId** on the primary stamp exists, and if it is in a different subscription from the appliance VM, new disks are created in the same subscription and resource group as the failback VM from the replica ones detached from the appliance, so that the new disks can be attached to the failback VM.
 
