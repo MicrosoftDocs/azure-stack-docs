@@ -23,8 +23,14 @@ This article describes the actions that are required to complete the installatio
 As an Azure Stack Hub operator, download the **ASR appliance on AzureStack Hub** VM image and the respective **Azure Site Recovery –
 extensions** in the Azure Stack Hub Marketplace Management.
 
-For a disconnected or partially connected scenario, download the packages to your local machine then import them into your Azure Stack
-Hub Marketplace:
+> [!NOTE]
+> To protect a Linux-based Virtual Machine, you must download both of the following:
+> - The general extension. In Marketplace Management, the extension is named **Azure Site Recovery - extension for Linux**.
+> - The extension specific to the OS you are trying to protect (for example, an Ubuntu 20.04 virtual machine requires the **Azure Site Recovery - extension for Linux UBUNTU2004** extension).
+> 
+> The reason you need these extensions is that during the initial configuration, the general extension is used to configure and determine the correct specific extension, and once configured, the specific one is used. 
+
+For a disconnected or partially connected scenario, download the packages to your local machine then import them into your Azure Stack Hub Marketplace:
 
 1. Follow the instructions in [Download Marketplace items: disconnected or partially connected scenario](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected). Download and run the Marketplace Syndication tool, which enables you to download resource provider packages.
 1. After the **Azure Marketplace Items** syndication tool window opens, find and select the name of the resource provider to download the required packages to your local machine.
