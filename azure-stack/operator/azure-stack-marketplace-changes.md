@@ -15,6 +15,9 @@ ms.lastreviewed: 05/28/2020
 
 # Azure Stack Hub Marketplace changes
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 This article lists recent additions, updates, changes, and removals of [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md). The information in this section is updated frequently, so check back often for changes.
 
 The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Hub Marketplace items.
