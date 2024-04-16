@@ -3,7 +3,7 @@ title:  April 2024 security update (KB 5036910) for Azure Stack HCI, version 23H
 description: Read about the April 2024 security update (KB 5036910) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/10/2024
+ms.date: 04/16/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -27,7 +27,7 @@ This security update includes quality improvements. When you install this KB:
 
 - This update supports DST changes in Samoa. To learn more, see [Interim guidance for Samoa DST changes 2021](https://techcommunity.microsoft.com/t5/daylight-saving-time-time-zone/interim-guidance-for-samoa-dst-changes-2021/ba-p/4048965).  
 
-- This update addresses an issue that affects a network resource. You cannot access it from a Remote Desktop session. This occurs when you turn on the Remote Credential Guard feature and the client is Windows 11, version 22H2 or higher.  
+- This update addresses an issue that affects a network resource. You can't access it from a Remote Desktop session. This occurs when you turn on the Remote Credential Guard feature and the client is Windows 11, version 22H2 or higher.  
 
 - This update addresses an issue that affects Microsoft Edge IE mode. When you open many tabs, it stops responding.  
 
@@ -35,19 +35,19 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that affects workload virtual machines (VM). They lose their connection to the network in production environments.  
 
-- This update addresses an issue that occurs when you deploy Failover Cluster Network Controllers. Node thumbprints do not refresh while certificates rotate on Software Defined Networking (SDN) hosts. This causes service disruptions. Once you install this or future updates, you must make a call to `Set-NetworkControllerOnFailoverCluster -RefreshNodeCertificateThumbprints $true` after you rotate host certificates.  
+- This update addresses an issue that occurs when you deploy Failover Cluster Network Controllers. Node thumbprints don't refresh while certificates rotate on Software Defined Networking (SDN) hosts. This causes service disruptions. Once you install this or future updates, you must make a call to `Set-NetworkControllerOnFailoverCluster -RefreshNodeCertificateThumbprints $true` after you rotate host certificates.  
 
-- This update addresses an issue that occurs when you use `LoadImage()` to load a top-down bitmap. If the bitmap has a negative height, the image does not load and the function returns NULL.  
+- This update addresses an issue that occurs when you use `LoadImage()` to load a top-down bitmap. If the bitmap has a negative height, the image doesn't load and the function returns NULL.  
 
 - This update addresses an issue that affects the Group Policy service. It fails after you use *LGPO.exe* to apply an audit policy to the system.  
 
-- This update addresses an issue that affects the display of a smart card icon. It does not appear when you sign in. This occurs when there are multiple certificates on the smart card.
+- This update addresses an issue that affects the display of a smart card icon. It doesn't appear when you sign in. This occurs when there are multiple certificates on the smart card.
 
 - This update addresses an issue that causes your device to shut down after 60 seconds. This occurs when you use a smart card to authenticate on a remote system.
 
-- This update addresses an issue that affects Secure Launch. It does not run on some processors.  
+- This update addresses an issue that affects Secure Launch. It doesn't run on some processors.  
 
-- This update addresses an issue that occurs when you run an application as an Administrator. When you use a PIN to sign in, the application will not run.
+- This update addresses an issue that occurs when you run an application as an Administrator. When you use a PIN to sign in, the application won't run.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [April 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Apr).
 
