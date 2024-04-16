@@ -23,6 +23,9 @@ This article describes the actions that are required to complete the installatio
 As an Azure Stack Hub operator, download the **ASR appliance on AzureStack Hub** VM image and the respective **Azure Site Recovery –
 extensions** in the Azure Stack Hub Marketplace Management.
 
+> [!NOTE]
+> Protecting a Linux based Virtual Machine will require downloading both the general extension (in the Marketplace Management, it is named 'Azure Site Recovery - extension for Linux') and the extension specific to the OS you are trying to protect (for example, an Ubuntu 20.04 virtual machine would require the 'Azure Site Recovery - extension for Linux UBUNTU2004' extension). The reason for this is that during the initial configuration, the general extension is used to configure and determine the right specific extensio, and once configured the specific one is used. 
+
 For a disconnected or partially connected scenario, download the packages to your local machine then import them into your Azure Stack
 Hub Marketplace:
 
