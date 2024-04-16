@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 03/05/2024
+ms.date: 04/16/2024
 ms.lastreviewed: 03/05/2024
 ---
 
@@ -68,14 +68,27 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 > [!NOTE]
 > To enable Extended Security Updates (ESUs), you must do additional setup and turn on [legacy OS support](#legacy-os-support).
 
-### Prerequisites
+### Host prerequisites
 
 - [Update your Azure Stack HCI cluster](../manage/update-cluster.md): minimum version 23H2 or later.
 - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): all servers must be online and registered to Azure.
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+- (Optional) If you are using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
+
+### VM prerequisites
+
 - Update your VMs: see [version requirements for workloads](#benefits-available-on-azure-stack-hci).
+
 - Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
-- (optional) If you are using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
+
+- VMs require the ability to download and verify certificates. There are two methods to do so:
+   - (Preferred) The following URLs must be whitelisted and allowed in firewalls:
+
+      - [Azure Certificate Authority details](https://learn.microsoft.com/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-downloads-and-revocation-lists).
+      - [Certificates and trust in Windows](https://learn.microsoft.com/windows-server/identity/ad-cs/certificate-trust#automatic-certificate-trust-list-updates).
+
+   - (Not recommended) Alternatively, if the above URLs can't be whitelisted, then the certificate chains can be downloaded and installed to each client's Certificate Store. See [Azure Certificate Authority details](https://learn.microsoft.com/azure/security/fundamentals/azure-ca-details?tabs=certificate-authority-chains#certificate-authority-details) for more information.
+
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
 
