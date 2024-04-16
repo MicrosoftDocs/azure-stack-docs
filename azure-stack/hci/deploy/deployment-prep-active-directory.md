@@ -56,6 +56,13 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 |`-AsHciDeploymentPrefix`|The prefix used for all AD objects created for the Azure Stack HCI deployment. <br> The prefix must not exceed 8 characters.|
 |`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|-->
 
+> [!NOTE]
+> The `-AsHciOUName` path does not support the following special characters **anywhere** within the OUPath.
+> 
+> **& < > \ '**
+> 
+> Additionally, it is not supported to move the computer objects to a different OU once the deployment is complete.
+
 ## Prepare Active Directory
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place the Azure Stack HCI related objects such as deployment user.
