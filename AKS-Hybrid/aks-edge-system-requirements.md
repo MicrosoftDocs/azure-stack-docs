@@ -4,7 +4,7 @@ description: Requirements and supported versions for AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 10/05/2023
+ms.date: 04/16/2024
 ms.custom: template-concept
 ---
 
@@ -31,13 +31,19 @@ You can also run AKS EE in a virtual machine on VMware and Hyper-V as described 
 
 Install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 
+> [!NOTE]
+> Windows 10 IoT Enterprise, Windows 11 IoT Enterprise, and Windows Server 2022 IoT Enterprise are binary-equivalent to the non-IoT releases, differing in [licensing and distribution](/windows/iot/iot-enterprise/getting_started).
+
 ## Maximum hardware specifications supported
 
 | Parameter | Permissible limit |
-  | ---------- | --------- |
-  | Maximum number of VMs per machine  | 1 Linux VM + 1 Windows VM (optional) |
-  | Maximum number of vCPUs assigned to virtual machines  | 16 vCPUs |
-  | Maximum number of machines per cluster | 15 machines |
+| ---------- | --------- |
+| Maximum number of VMs per machine  | 1 Linux VM + 1 Windows VM (optional) |
+| Maximum number of vCPUs assigned to virtual machines  | 16 vCPUs |
+| Maximum number of machines per cluster | 15 machines |
+
+> [!NOTE]
+> The vCPU limit is per-host, not per-node.
 
 ## GA feature support matrix
 
