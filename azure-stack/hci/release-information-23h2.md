@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/15/2024
+ms.date: 04/16/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
@@ -35,7 +35,7 @@ The following diagram illustrates the release trains, their associated baseline 
 Follow these guidelines to move to the next release train:
 
 - Consider a fresh deployment with the next release train. For example, deploy the 2402 baseline build to move to 2402 release train.
-- Update the existing deployment to a build that allows you to move to the next release train. If you are on the 2311 release train, to get to the 2402 release train:
+- Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2311 release train, to get to the 2402 release train:
     - Update from 2311 --> 2311.3 --> 2402.
     - Update from 2311 --> 2311.4 --> 2402.1.
 
