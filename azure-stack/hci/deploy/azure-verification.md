@@ -33,7 +33,7 @@ Azure verification for VM enables you to use these benefits available only on Az
 | Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.13 or later. |
 
 > [!NOTE]
-> To ensure continued functionality with the latest security, update your VMs on Azure Stack HCI to the [latest cumulative update](../release-information-23h2.md) by June 17, 2024. This update is essential for VMs to continue using Azure benefite.
+> To ensure continued functionality with the latest security, update your VMs on Azure Stack HCI to the [latest cumulative update](../release-information-23h2.md) by June 17, 2024. This update is essential for VMs to continue using Azure benefits.
 
 ## Architecture
 
