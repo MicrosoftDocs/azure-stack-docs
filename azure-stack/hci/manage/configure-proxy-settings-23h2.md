@@ -73,7 +73,7 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
         - Second IP address of the infrastructure pool.
 
           > [!NOTE]
-          > The use of wildcard such as "\<local\>" is not supported in the proxy bypass list.
+          > The use of "\<local\>" is not supported in the proxy bypass list.
 
     Here's an example of the command usage:
 
@@ -160,7 +160,7 @@ You can configure proxy settings for Winhttp using the `netsh` command line util
   - Second IP address of the infrastructure pool.
 
     > [!NOTE]
-    > The use of wildcard such as "\<local\>" is not supported in the proxy bypass list.
+    > The use of "\<local\>" is not supported in the proxy bypass list.
     
 - Run the following command from the command prompt to remove the proxy server configuration for Winhttp:
 
