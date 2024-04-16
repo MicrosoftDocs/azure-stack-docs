@@ -43,8 +43,8 @@ Here are the known issues in this release:
 
 |Feature  |Issue  |Workaround/Comments  |
 |---------|------------------|----------|
-|Update <!--27176454-->|Download operations don't terminate after the specified timeout of 6 hours. |Microsoft is actively working to resolve this issue, and there's no action required on your part.|
-|Update <!--27210359-->|Update is in Failed state: DownloadFailed. Summary XML from ECE not present. |Microsoft is actively working to resolve this issue, and there's no action required on your part.|
+|Update <!--27176454-->|Download operations don't terminate after the specified timeout of 6 hours. |Microsoft is actively working to resolve this issue. If you encounter this issue, contact Microsoft Support for next steps.|
+|Update <!--27210359-->|Update is in Failed state: DownloadFailed. Summary XML from ECE not present. |Microsoft is actively working to resolve this issue. If you encounter this issue, contact Microsoft Support for next steps.|
 
 ## Known issues from previous releases
 
