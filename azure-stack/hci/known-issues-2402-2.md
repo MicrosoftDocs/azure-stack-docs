@@ -30,15 +30,7 @@ Release notes for this version include the issues fixed in this release, known i
 
 ## Fixed issues
 
-Here are the issues fixed in this release:
-
-|Feature|Issue|Workaround/Comments|
-|------|------|-------|
-| Updates <!--26856541--> |In this release, there's a health check issue owing to which a single server Azure Stack HCI can't be updated from the Azure portal. |[Update your Azure Stack HCI via PowerShell](./update/update-via-powershell-23h2.md). |
-| Arc VM management| When you create a disk or a network interface in this release with underscore in the name, the operation fails.  |Make sure to not use underscore in the names for disks or network interfaces. |
-| Arc VM management <!--26423941--> |If the resource group used to deploy an Arc VM on your Azure Stack HCI has an underscore in the name, the guest agent installation fails. As a result, you won't be able to enable guest management. | Make sure that there are no underscores in the resource groups used to deploy Arc VMs.|
-
-
+Microsoft is not aware of any fixed issues in this release.
 
 ## Known issues in this release
 
