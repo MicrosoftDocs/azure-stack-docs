@@ -25,7 +25,11 @@ The 2402 release train includes the following releases:
 
 ## Features and improvements in 2402.2
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes. Here is the list of enhancements:
+
+- **Region expansion** - Two new regions are now supported on your Azure Stack HCI: Southeast Asia and India Central. For more information, see [Azure Stack HCI supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+- **Deployment changes** - A permission check was added to the Azure Portal deployment experience to check for sufficient permissions. For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+- **Update changes** - A notification banner was included in the update experience that informs you when the new updates are available. For more information, see [Update your Azure Stack HCI via the Azure Update Manager](./update/azure-update-manager-23h2.md).
 
 ## Features and improvements in 2402.1
 
