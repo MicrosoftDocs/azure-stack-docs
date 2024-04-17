@@ -87,7 +87,7 @@ This service is created on the Azure Stack Hub admin subscription and managed by
 
 |Service            | vCore  | Memory     | Disk Size  |
 |-------------------|--------|------------|------------|
-|Azure Site Recovery| 12     | 42 GB      | 1.4 TB     |
+|Azure Site Recovery| 18     | 64 GB      | 384 GB     |
 
 > [!NOTE]
 > These resources are Azure Stack Hub services on the administration side of Azure Stack Hub. Once installed, the platform manages these resources.
