@@ -43,13 +43,11 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
-
 # [ARM template](#tab/armtemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
 - Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
-
 - [Download the sample ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
 # [Bicep template](#tab/biceptemplate)
@@ -610,7 +608,7 @@ Follow these steps to deploy the ARM template:
 1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Stack HCI cluster.
 1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
 
-:::code language="bicep" source="~/quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
+<!--:::code language="bicep" source="~/quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::-->
 
 ---
 
