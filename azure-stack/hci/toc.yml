@@ -13,13 +13,17 @@ items:
       href: release-information-23h2.md
     - name: Known issues 2402 
       items:
-      - name: 2402.1 - Current
+      - name: 2402.2 - Current
+        href: known-issues-2402-2.md
+      - name: 2402.1
         href: known-issues-2402-1.md
       - name: 2402 
         href: known-issues-2402.md
     - name: Known issues 2311
       items:
-      - name: 2311.4 - Current
+      - name: 2311.5 - Current
+        href: known-issues-2311-5.md
+      - name: 2311.4 
         href: known-issues-2311-4.md
       - name: 2311.3 
         href: known-issues-2311-3.md
@@ -29,7 +33,9 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: March 2024 - Current
+      - name: April 2024 - Current
+        href: security-update/hci-security-update-apr-2024.md
+      - name: March 2024 
         href: security-update/hci-security-update-mar-2024.md
       - name: February 2024 
         href: security-update/hci-security-update-feb-2024.md      
@@ -285,14 +291,22 @@ items:
 
   - name: SDN
     items:
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md
     - name: Manage tenant logical networks
       href: manage/tenant-logical-networks.md
     - name: Manage tenant virtual networks
       href: manage/tenant-virtual-networks.md
     - name: Manage software load balancers
       href: manage/load-balancers.md
+    - name: Configure network security groups with Windows Admin Center
+      href: manage/use-datacenter-firewall-windows-admin-center.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
     - name: Manage SDN Multisite
       href: manage/manage-sdn-multisite.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
 
 - name: Monitor
   items:
@@ -342,9 +356,11 @@ items:
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
   - name: Get support
-    href: manage/get-support.md
-  - name: Get remote support
     href: manage/get-remote-support.md
+  - name: Troubleshoot SDN
+    items:
+    - name: Troubleshoot SDN deployment
+      href: manage/troubleshoot-sdn-deployment-23h2.md
 
 - name: Migrate
   items:
@@ -385,12 +401,16 @@ items:
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
-  - name: SDN overview
-    href: concepts/software-defined-networking-23h2.md
-  - name: Plan an SDN infrastructure
-    href: concepts/plan-software-defined-networking-infrastructure-23h2.md
-  - name: SDN Multisite overview
-    href: concepts/sdn-multisite-overview.md
+  - name: SDN
+    items:
+    - name: SDN technical reference
+      href: manage/sdn-technical-reference.md
+    - name: SDN overview
+      href: concepts/software-defined-networking-23h2.md
+    - name: Plan an SDN infrastructure
+      href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+    - name: SDN Multisite overview
+      href: concepts/sdn-multisite-overview.md
 
 - name: Version 22H2
   items:
@@ -520,12 +540,8 @@ items:
         href: manage/update-sdn.md
       - name: Assign public IP address to a VM
         href: manage/assign-public-ip-to-vm.md
-      - name: Configure network security groups with Windows Admin Center
-        href: manage/use-datacenter-firewall-windows-admin-center.md
       - name: Configure network security groups with PowerShell
         href: manage/use-datacenter-firewall-powershell.md
-      - name: Configure network security groups with tags
-        href: manage/configure-network-security-groups-with-tags.md
       - name: Manage default network access policies
         href: manage/manage-default-network-access-policies-virtual-machines.md
       - name: Manage SDN security

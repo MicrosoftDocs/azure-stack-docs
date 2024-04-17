@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/27/2024
+ms.date: 04/04/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2

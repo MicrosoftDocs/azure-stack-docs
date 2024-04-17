@@ -5,12 +5,12 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: anpaul
-ms.date: 04/19/2023
+ms.date: 04/10/2024
 ---
 
 # Update SDN infrastructure for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Software Defined Networking (SDN) infrastructure components include Network Controller and optionally, Software Load Balancers (SLBs), and SDN gateways that run on virtual machines (VMs).
 
@@ -22,7 +22,7 @@ Hyper-V hosts can be updated before or after updating the SDN infrastructure.
 
 Complete the following steps for updating the Network Controller:
 
-1. On the first Network Controller VM, install all updates and restart the VM if required by the update. During restart, the Network Controller node goes down and then comes back up again. Upon restarting the VM, it may take a few minutes before it goes back to `Up` status.
+1. On the first Network Controller VM, install all updates and restart the VM if required by the update. During restart, the Network Controller node goes down and then comes back up again. When you restart the VM, it may take a few minutes before it goes back to `Up` status.
 
 1. Before updating the next Network Controller VM, ensure that the status of the node is `Up` by running the following PowerShell `Get-NetworkControllerNode` cmdlet:
 
@@ -59,9 +59,9 @@ Install updates on each SLB VM one at a time to ensure continuous availability o
 
 ## Update SDN gateway
 
-Install updates on each gateway VM one at a time. During the update, the VM may be unavailable or may need to be restarted. In this case, the active connections on that gateway are migrated to a standby gateway VM, if so configured. This will result in some downtime for the tenant connections as they are migrated to the standby gateway.
+Install updates on each gateway VM one at a time. During the update, the VM may be unavailable or may need to be restarted. In this case, the active connections on that gateway are migrated to a standby gateway VM, if so configured. This results in some downtime for the tenant connections as they're migrated to the standby gateway.
 
-1. To minimize downtime, install updates on the redundant gateway VM first. If you have not configured any redundant gateway VMs, ignore this step. To find out whether a particular gateway VM is redundant or not, run the following command on a Network Controller VM:
+1. To minimize downtime, install updates on the redundant gateway VM first. If you haven't configured any redundant gateway VMs, ignore this step. To find out whether a particular gateway VM is redundant or not, run the following command on a Network Controller VM:
 
     ~~~powershell
     (Get-NetworkControllerGateway -ConnectionUri <your_REST_URI_for_Network_Controller_deployment> -ResourceId <your_resource_ID_of_gateway>).Properties.State
@@ -79,4 +79,4 @@ Install updates on each gateway VM one at a time. During the update, the VM may 
 
 ## Next steps
 
-Learn more about SDN infrastructure. See [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
+Learn more about SDN infrastructure. See [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure-23h2.md).

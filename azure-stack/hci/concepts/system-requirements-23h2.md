@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 01/31/2024
+ms.date: 04/11/2024
 ---
 
 # System requirements for Azure Stack HCI, version 23H2
@@ -34,6 +34,8 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
    - East US
    - West Europe
    - Australia East
+   - Southeast Asia
+   - India Central
 
 ## Server and storage requirements
 
