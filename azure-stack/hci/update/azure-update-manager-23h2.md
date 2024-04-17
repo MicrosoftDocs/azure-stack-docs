@@ -32,6 +32,8 @@ Here are some benefits of the Azure Update Manager:
 
 - An Azure Stack HCI, version 23H2 cluster deployed and registered with Azure.
 
+For supported regions of Azure Stack HCI, version 23H2, see [Azure Stack HCI supported regions](../concepts/system-requirements-23h2.md#azure-requirements).
+
 ## Browse for cluster updates
 
 To browse for available cluster updates using Azure Update Manager, follow these steps:
