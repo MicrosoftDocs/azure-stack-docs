@@ -409,6 +409,8 @@ items:
       href: concepts/software-defined-networking-23h2.md
     - name: Plan an SDN infrastructure
       href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+    - name: Network Controller overview
+      href: concepts/network-controller-overview.md
     - name: SDN Multisite overview
       href: concepts/sdn-multisite-overview.md
 
@@ -652,8 +654,6 @@ items:
         href: concepts/software-defined-networking.md
       - name: Plan an SDN infrastructure
         href: concepts/plan-software-defined-networking-infrastructure.md
-      - name: Network Controller overview
-        href: concepts/network-controller-overview.md
       - name: Plan Network Controller
         href: concepts/network-controller.md
       - name: Datacenter Firewall overview

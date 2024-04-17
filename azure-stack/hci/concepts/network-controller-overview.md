@@ -6,11 +6,12 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 04/17/2024
 ---
+
 # What is Network Controller?
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Network Controller is the cornerstone of Software Defined Networking (SDN) management. It is a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
 
@@ -78,4 +79,4 @@ For related information, see also:
 
 - [Plan to deploy Network Controller](network-controller.md)
 - [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
-- [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)
