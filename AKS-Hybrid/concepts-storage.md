@@ -21,13 +21,14 @@ Applications that run in AKS deployments using Azure Kubernetes Service enabled 
 
 Other workloads may require storage that persists on more regular data volumes. Multiple pods may need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you may need a storage option if the pods contain sensitive data or application configuration information. 
 
-![Architectural storage image showing a cluster master and node](media/storage-architecture.png)
+:::image type="content" source="media/concepts-storage/storage-architecture.png" alt-text="Architectural storage image showing a cluster master and node." lightbox="media/concepts-storage/storage-architecture.png":::
 
 This article introduces the core concepts that provide storage to your applications in AKS Arc, including:
+
 - Volumes 
-- Persistent volumes 
-- Storage classes 
-- Persistent volume claims (PVC) 
+- Persistent volumes
+- Storage classes
+- Persistent volume claims (PVC)
 
 ## Volumes
 Applications often need to be able to store and retrieve data. As Kubernetes typically treats individual pods as temporary, disposable resources, different approaches are available for applications to use and persist data. A volume represents a way to store, retrieve, and persist data across pods and through the application lifecycle. 
