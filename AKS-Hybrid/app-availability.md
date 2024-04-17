@@ -28,11 +28,11 @@ This article describes some fundamental concepts for users who want to run conta
 
 The current architecture of AKS on Azure Stack HCI and Windows Server assumes that customers have live migration enabled in their Azure Stack HCI clustered environment. Therefore, all Kubernetes worker node VMs will be created with live migration configured. These nodes can be moved around physical hosts in the event of a disruption to ensure the platform is highly available. 
 
-![Diagram showing AKS on Azure Stack HCI and Windows Server with Failover Clustering enabled](./media/cluster-architecture.png)
+:::image type="content" source="media/app-availability/cluster-architecture.png" alt-text="Diagram showing AKS on Azure Stack HCI and Windows Server with Failover Clustering enabled." lightbox="media/app-availability/cluster-architecture.png":::
 
 For a customer running a legacy application as a singleton on top of Kubernetes, this architecture will meet their high availability needs. Kubernetes will manage scheduling of pods on available worker nodes while Live migration will manage scheduling of worker node VMs on available physical hosts.
 
-![Diagram showing an example legacy application running as a singleton](./media/singleton.png)
+:::image type="content" source="media/app-availability/singleton.png" alt-text="Diagram showing an example legacy application running as a singleton." lightbox="media/app-availability/singleton.png":::
 
 ## Application disruption scenarios
 
