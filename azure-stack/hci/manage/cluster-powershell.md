@@ -28,8 +28,7 @@ Windows PowerShell is used to perform all the tasks in this article. It's recomm
 If the following cmdlets aren't available in your PowerShell session, you may need to add the `Failover Cluster` Module for Windows PowerShell Feature, using the following PowerShell cmd: `Add-WindowsFeature RSAT-Clustering-PowerShell`.
 
 > [!NOTE]
-> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades.
-
+> Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. For versions older than Windows 10 22H2, simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. For Windows 10 22H2 and Windows 11, go to **Settings > System > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Add**. To see operation progress, click the Back button to view status on the "Manage optional features" page. The added feature will persist across Windows 10 version upgrades.
 ## View cluster settings and resources
 
 Gets information about a cluster named Cluster1:

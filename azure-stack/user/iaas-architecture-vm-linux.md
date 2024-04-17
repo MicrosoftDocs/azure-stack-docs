@@ -17,6 +17,9 @@ ms.lastreviewed: 11/01/2019
 
 # Run a Linux virtual machine on Azure Stack Hub
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 Provisioning a virtual machine (VM) in Azure Stack Hub, like Azure, requires some additional components besides the VM itself, including networking and storage resources. This article shows best practices for running a Linux VM on Azure Stack Hub.
 
 ![Architecture for Linux VM on Azure Stack Hub](./media/iaas-architecture-vm-linux/image1.png)

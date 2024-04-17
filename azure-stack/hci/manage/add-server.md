@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 01/31/2024
+ms.date: 02/23/2024
 ---
 
 # Add a server on Azure Stack HCI, version 23H2
@@ -30,7 +30,7 @@ You can dynamically scale your Azure Stack HCI cluster from 1 to 16 servers. In 
 
 The following flow diagram shows the overall process to add a server:
 
-![Diagram illustrating process to add a server](./media/add-server/add-server-workflow.png)
+:::image type="content" source="./media/add-server/add-server-workflow.png" alt-text="Diagram illustrating process to add a server." lightbox="./media/add-server/add-server-workflow.png":::
 
 To add a server, follow these high-level steps:
 
@@ -97,6 +97,11 @@ On the new server that you plan to add, follow these steps.
 
     > [!NOTE]
     > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
+
+2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+
+    > [!NOTE]
+    > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
 
 On a server that already exists on your cluster, follow these steps:
 

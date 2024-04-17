@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 02/26/2024
+ms.date: 03/14/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -185,7 +185,12 @@ Once the VLAN ID is set and the IPs of your nodes are configured on the physical
 
 ### Management VLAN ID with a virtual switch
 
-In some scenarios, there is a requirement to create a virtual switch before deployment starts. If a virtual switch configuration is required and you must use a specific VLAN ID, follow these steps:
+In some scenarios, there is a requirement to create a virtual switch before deployment starts. 
+
+> [!NOTE]
+> Before you create a virtual switch, make sure to enable the Hype-V role. For more information, see [Install required Windows role](../deploy/deployment-install-os.md).
+
+If a virtual switch configuration is required and you must use a specific VLAN ID, follow these steps:
 
 #### 1. Create virtual switch with recommended naming convention
 
@@ -193,22 +198,23 @@ Azure Stack HCI deployments rely on Network ATC to create and configure the virt
 
 Although it isn't required, we recommend naming your virtual switches with the same naming convention. The recommended name for the virtual switches is as follows:
 
-Name of the virtual switch: "`ConvergedSwitch($IntentName)`",
+- Name of the virtual switch: "`ConvergedSwitch($IntentName)`",
 Where `$IntentName` can be any string. This string should match the name of the virtual network adapter for management as described in the next step.
 
 The following example shows how to create the virtual switch with PowerShell using the recommended naming convention with `$IntentName` describing the purpose of the virtual switch. The list of network adapter names is a list of the physical network adapters you plan to use for management and compute network traffic:
 
 ```powershell
 $IntentName = "MgmtCompute"
-New-VMSwitch -Name "ConvergedSwitch($IntentName)" -SwitchType External -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
+New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
 ```
 
 #### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes 
 
 Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
-    - Name of the network adapter and the virtual network adapter: `vManagement($intentname)`.
-    - Name is case sensitive.
-    - `$Intentname` can be any string, but must be the same name used for the virtual switch.
+
+- Name of the network adapter and the virtual network adapter: `vManagement($intentname)`.
+- Name is case sensitive.
+- `$Intentname` can be any string, but must be the same name used for the virtual switch.
 
 To update the management virtual network adapter name, use the following command:
 

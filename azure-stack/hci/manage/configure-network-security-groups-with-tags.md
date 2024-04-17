@@ -5,28 +5,29 @@ ms.author: sethm
 ms.reviewer: anpaul
 ms.topic: article
 author: sethmanheim
-ms.date: 09/22/2022
+ms.date: 04/02/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
 
-[!INCLUDE [hci-applies-to-22h2](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to configure network security groups with network security tags in Windows Admin Center.
 
 With network security tags, you can create custom user-defined tags, attach those tags to your virtual machine (VM) network interfaces, and apply network access policies (with network security groups) based on these tags.
 
-## Key benefits
+<!--Refactored the following section. Please review.-->
+## Simplify security with network security tags
 
-In Azure Stack HCI, version 21H2, you could create network security groups to configure access policies based on network constructs (network prefixes/subnets). So, if you want to prevent your Web Server VMs from communicating with your database VMs, you must identify corresponding network subnets and create policy to deny communication between those subnets. There are a few limitations with this approach:
+Network security groups allow you to configure access policies based on network constructs like network prefixes and subnets. For example, if you want to restrict communication between your Web Server VMs and database VMs, you must identify corresponding network subnets and create a policy to deny communication between those subnets. However, there are some limitations with this approach:
 
-- Your security policies are tied to network constructs, so you'll need to know which apps are hosted on which network segments. You will need to have a fair understanding of your network infrastructure and architecture.
+- Your security policies are tied to network constructs, which means you need to know which applications reside on specific network segments. Understanding your network infrastructure and architecture become crucial.
 
-- You normally build policy for one application and may want to reuse that policy for other applications as well. For example, your web app in production environment can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments. Now, if you provision another web app, it will have a similar policy. But, with network segmentation, your policy needs to be recreated because the policy has network elements that are unique to apps.
+- When building policies for applications, you might want to reuse them across different scenarios. For example, if your production web app can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments, you'd have a similar policy for any new app. However, with network segmentation, recreating policies becomes necessary due to unique network elements for each app.
 
-- If you decommission your old application and provision a new application in the same network segment, you'll have to modify your policy.
+- If you decommission an old application and provision a new one within the same network segment, policy adjustments are required.
 
-With the network security tags feature, you no longer need to track the network segments where your applications are hosted. Using the same Web Server and database VMs example above, you can tag corresponding VMs with "Web" and "Database" network security tags. You can then create a network security group rule to prevent "Web" network security tag from communicating with "Database" network security tag.
+With the network security tags feature, you no longer need to track the network segments where your applications are hosted. This simplifies policy management and avoids the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
 
 ## Create network security tag based network security groups
 
@@ -52,7 +53,7 @@ To create network security tag based network security groups, follow these steps
 
 1. In the **Create Network Security Tag** pane, enter a name for the network security tag in the **Name** field.
 
-    :::image type="content" source="media/network-security-groups-with-tags/create-network-security-tag.png" alt-text="Screenshot of the Create Network Security Tag pane.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/create-network-security-tag.png" alt-text="Screenshot of the Create Network Security Tag pane." lightbox="media/configure-network-security-groups-with-tags/create-network-security-tag.png":::
 
 1. (Optional) In the **Type** field, enter a type for the tag. This field is useful if you want to categorize tags for easy management. For example, you can have different tags with the same type "Application", such as SQL, Web, IOT, Sensor, etc.
 
@@ -80,7 +81,7 @@ To assign a network security tag while creating a new VM:
 
 1. Under **Network**, select the network security tag you created earlier, in [Create network security tag](#create-network-security-tags).
 
-    :::image type="content" source="media/network-security-groups-with-tags/assign-tag-during-vm-creation.png" alt-text="Screenshot showing the step to assign network security tag while creating a new VM.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png" alt-text="Screenshot showing the step to assign network security tag while creating a new VM." lightbox="media/configure-network-security-groups-with-tags/assign-tag-during-vm-creation.png":::
 
 1. Select **Create**.
 
@@ -108,7 +109,7 @@ You can assign a network security tag to an existing VM by changing its settings
 
 1. In the **Network Security Groups** pane, type a name for the network security group, and then select **Submit**.
 
-    :::image type="content" source="media/network-security-groups-with-tags/create-network-security-group.png" alt-text="Screenshot showing the Network Security Group pane.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/create-network-security-group.png" alt-text="Screenshot showing the Network Security Group pane." lightbox="media/configure-network-security-groups-with-tags/create-network-security-group.png":::
 
 1. Under **Network Security Groups**, verify that the **Provisioning state** of the new network security group shows **Succeeded**.
 
@@ -170,7 +171,7 @@ To apply a network security group to a network security tag via Windows Admin Ce
 
 1. On the **Editing Network Security Tag** pane for the selected tag, select the network security group you want to apply to the network security tag.
 
-    :::image type="content" source="media/network-security-groups-with-tags/apply-setwork-security-group-to-tag.png" alt-text="Screenshot showing how to apply an existing network security group to a network security tag.":::
+    :::image type="content" source="media/configure-network-security-groups-with-tags/apply-setwork-security-group-to-tag.png" alt-text="Screenshot showing how to apply an existing network security group to a network security tag." lightbox="media/configure-network-security-groups-with-tags/apply-setwork-security-group-to-tag.png":::
 
 1. Select **Submit**.
 

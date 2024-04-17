@@ -6,7 +6,7 @@ ms.author: robess
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: shisab
-ms.date: 01/31/2024
+ms.date: 03/06/2024
 
 # CustomerIntent: As a content writer for Azure Stack HCI, I want to share viable information on the telemetry and diagnostics extension that will help users understand the feature and ways they can benefit from using it.
 ---
@@ -18,7 +18,7 @@ This article provides a brief overview, benefits, and available options for the 
 
 ## About the extension
 
-The Telemetry and Diagnostics Arc extension (shown as TelemetryAndDiagnostics in the Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior.
+The Telemetry and Diagnostics Arc extension (shown as AzureEdgeTelemetryAndDiagnostics in the Azure portal) enables the collection of telemetry and diagnostics information from your Azure Stack HCI system. This information helps Microsoft gain valuable insights into the system's behavior.
 
 Use the telemetry and diagnostics extension to monitor and assess the performance, functionality, and overall health of your Azure Stack HCI. Microsoft can also use the diagnostics information from this extension to troubleshoot and address any potential issues in your system.
 
@@ -44,7 +44,7 @@ To access the options to send telemetry data, follow these steps:
 
 1. Go to your Azure Stack HCI cluster resource in the Azure portal. In the left-pane, go to **Settings** and then select **Extensions**.
 
-   :::image type="content" source="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-diagnostics/telemetry-diagnostics-extension-1.png":::
+   :::image type="content" source="media/telemetry-and-diagnostics-overview/telemetry-diagnostics-extension-1.png" alt-text="Screenshot of the extension settings screen." lightbox="media/telemetry-and-diagnostics-overview/telemetry-diagnostics-extension-1.png":::
 
 2. Choose one of the following options for sharing telemetry data:
 
@@ -58,9 +58,6 @@ To access the options to send telemetry data, follow these steps:
 
      - Retention of system data for up to a month.
      - Automatic capture of error and diagnostics information for speedier issue resolution. No operator intervention is required.
-
-      > [!NOTE]
-      > If enhanced data sharing isn't enabled, **Autonomous** log collection still occurs. If there's intermittent or no connectivity to Azure, Microsoft captures and stores failure event logs locally for analysis by customer support. Logs aren't sent to Azure.
 
 ## Diagnostic data collection
 

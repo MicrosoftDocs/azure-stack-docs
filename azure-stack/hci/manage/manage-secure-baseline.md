@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/09/2024
+ms.date: 04/04/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -17,19 +17,13 @@ This article describes how to manage default security settings for your Azure St
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed:
-
-- You have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
-- You have applied the Microsoft Cloud Security Benchmark (MCSB) initiative. See [Apply Microsoft Cloud Security Benchmark initiative](#apply-microsoft-cloud-security-benchmark-initiative).
-- You have at least **Owner** or **Contributor** roles in your Azure subscription to apply MCSB.
-
-### Apply Microsoft Cloud Security Benchmark initiative
-
-[!INCLUDE [hci-apply-security-benchmark-initiative](../../includes/hci-apply-security-benchmark-initiative.md)]
+Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
 
 ## View security default settings in the Azure portal
 
-Use security default settings to manage cluster security, drift control, and Secured core server settings on your cluster.
+To view the security default settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
+
+You can use the security default settings to manage cluster security, drift control, and Secured core server settings on your cluster.
 
 :::image type="content" source="media/manage-secure-baseline/manage-secure-baseline.png" alt-text="Screenshot that shows Security defaults page in the Azure portal." lightbox="media/manage-secure-baseline/manage-secure-baseline.png":::
 
