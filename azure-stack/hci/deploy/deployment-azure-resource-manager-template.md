@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 04/18/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -15,6 +15,7 @@ ms.custom: devx-track-arm-template
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article details how to use an Azure Resource Manager template (ARM template) in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
+
 
 > [!IMPORTANT]
 > ARM template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the ARM template.
@@ -32,7 +33,10 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ### Create a service principal and client secret
 
-To authenticate your cluster, you need to create a service principal and a corresponding **Client secret**. You must also assign *Azure Resource Bridge Deployment Role* to the service principal.
+To authenticate your cluster, you need to:
+
+- Create a service principal and a corresponding **Client secret**. 
+- Assign *Azure Resource Bridge Deployment Role* to the service principal.
 
 
 #### Create a service principal
@@ -70,7 +74,7 @@ The steps are also summarized here:
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
 
-### Create a cloud witness storage account
+<!--### Create a cloud witness storage account
 
 First, create a storage account to serve as a cloud witness. You then need to get the access key for this storage account, and then use it in an encoded format with the ARM deployment template.
 
@@ -90,10 +94,10 @@ Follow these steps to get and encode the access key for the ARM deployment templ
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png" alt-text="Screenshot showing the access keys for the cloud witness storage account." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png":::
 
-    After you copy the key, select **Hide**.
+    After you copy the key, select **Hide**.-->
 
 
-### Encode parameter values
+<!--### Encode parameter values
 
 1. On a management computer, run PowerShell as administrator. Encode the copied **Key** value string with the following script:
 
@@ -122,7 +126,7 @@ Run the PowerShell script used in the earlier step to encode these values:
 
 - **Local account password**. This corresponds to the `localAdminSecretValue` in the parameters JSON. Encode `localaccountname:localacountpassword` to get this value for the template.
 - **Domain account password**. This corresponds to the `domainAdminSecretValue` in the parameters JSON. Encode `domainaccountname:domainaccountpassword` to get this value for the template.
-- **Application client ID secret value**. This corresponds to the `arbDeploymentSpnValue` in the parameters JSON. Encode `clientId:clientSecretValue` to get this value for the template.
+- **Application client ID secret value**. This corresponds to the `arbDeploymentSpnValue` in the parameters JSON. Encode `clientId:clientSecretValue` to get this value for the template.-->
 
 
 ## Step 2: Assign resource permissions
