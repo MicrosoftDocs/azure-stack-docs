@@ -45,7 +45,7 @@ You can create a self-signed X.509 certificate and export it with the private ke
 When you create self-signed certificates, you can use the following guidelines.
 
 - You can use the IP address of the Network Controller REST Endpoint for the DnsName parameter - but this isn't recommended because it requires that the Network Controller nodes are all located within a single management subnet (for example, on a single rack)
-- For multiple node NC deployments, the DNS name that you specify will become the FQDN of the Network Controller Cluster (DNS Host A records are automatically created.)
+- For multiple-node Network Controller deployments, the DNS name that you specify will become the FQDN of the Network Controller Cluster (DNS Host A records are automatically created.)
 - For single node Network Controller deployments, the DNS name can be the Network Controller's host name followed by the full domain name.
 
 #### Multiple node
@@ -89,7 +89,7 @@ To create a certificate by using a CA, you must have already deployed a Public K
 
 Creating a certificate with a CA includes the following steps.
 
-1. You or your organization's Domain or Security Administrator configures the certificate template
+1. You or your organization's Domain or Security Administrator configures the certificate template.
 1. You or your organization's Network Controller Administrator or SCVMM Administrator requests a new certificate from the CA.
 
 #### Certificate configuration requirements
