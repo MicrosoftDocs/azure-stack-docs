@@ -1,5 +1,5 @@
 ---
-title: Azure verification for VMs
+title: Azure verification for VMs on Azure Stack HCI
 description: Learn about the Azure verification for VMs feature on Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 03/05/2024
+ms.date: 04/16/2024
 ms.lastreviewed: 03/05/2024
 ---
 
@@ -19,7 +19,7 @@ Microsoft Azure offers a range of differentiated workloads and capabilities that
 
 *Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Stack HCI 23H2 or later. It helps to provide guarantees for these VMs to operate in other Azure environments.
 
-For more information about the previous version of this feature on Azure Stack HCI 22H2 or earlier, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
+For more information about the previous version of this feature on Azure Stack HCI, version 22H2 or earlier, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
 
 ## Benefits available on Azure Stack HCI
 
@@ -27,10 +27,13 @@ Azure verification for VM enables you to use these benefits available only on Az
 
 | Workload                                 | What it is                           | How to get benefits                                                                                                                                                                                                                                                                       |
 |------------------------------------------|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Extended Security Update (ESUs)          | Get security updates at no extra cost for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md). | You must enable [Legacy OS support](#legacy-os-support) for older VMs running version Windows Server 2012/Windows 7 or earlier.|
-| Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Stack HCI using Azure VM verification. <br/> Licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing). | Activated automatically for VMs running version Windows 11 multi-session with 11B update (22H2: KB5032190, 21H2: KB5032192) or later. You must enable [legacy OS support](#legacy-os-support) for VMs running version Windows 10 multi-session. |
-| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/windows-server/get-started/azure-edition) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md?tabs=azure-portal).         | Activated automatically for VMs running Windows Server Azure Edition 2022 with 11B update (KB5032198) or later. |
-| Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.13 or later. |
+| Extended Security Update (ESUs)          | Get security updates at no extra cost for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md). | You must enable [Legacy OS support](#legacy-os-support) for older VMs running version Windows Server 2012 or earlier with [Latest Servicing Stack Updates](https://msrc.microsoft.com/update-guide/advisory/ADV990001).|
+| Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Stack HCI using Azure VM verification. <br/> Licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing). | Activated automatically for VMs running version Windows 11 multi-session with 4B update released on April 9, 2024 (22H2: [KB5036893](https://support.microsoft.com/topic/april-9-2024-kb5036893-os-builds-22621-3447-and-22631-3447-a674a67b-85f5-4a40-8d74-5f8af8ead5bb), 21H2: [KB5036894](https://support.microsoft.com/topic/april-9-2024-kb5036894-os-build-22000-2899-165dd6e1-74be-45b7-84e3-0f2a25d375f3)) or later. You must enable [legacy OS support](#legacy-os-support) for VMs running version Windows 10 multi-session with 4B update released on April 9, 2024  [KB5036892](https://support.microsoft.com/topic/april-9-2024-kb5036892-os-builds-19044-4291-and-19045-4291-cb5d2d42-6b10-48f7-829a-be7d416a811b) or later. |
+| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/windows-server/get-started/azure-edition) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md?tabs=azure-portal).         | Activated automatically for VMs running Windows Server Azure Edition 2022 with 4B update released on April 9, 2024 ([KB5036909](https://support.microsoft.com/topic/april-9-2024-kb5036909-os-build-20348-2402-36062ce9-f426-40c6-9fb9-ee5ab428da8c)) or later. |
+| Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.39 or later. See [Latest Arc agent release](/azure/azure-arc/servers/agent-release-notes). |
+
+> [!NOTE]
+> To ensure continued functionality, update your VMs on Azure Stack HCI to the latest cumulative update by June 17, 2024. This update is essential for VMs to continue using Azure benefits.
 
 ## Architecture
 
