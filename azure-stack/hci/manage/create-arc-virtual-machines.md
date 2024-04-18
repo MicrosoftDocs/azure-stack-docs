@@ -307,7 +307,7 @@ Follow these steps to deploy the ARM template:
 1. In the Azure portal, from the top search bar, search for *deploy a custom template*. Select **Deploy a custom template** from the available options.
 
 1. On the **Select a template** tab, select **Build your own template in the editor**.
-   
+
    :::image type="content" source="./media/create-arc-virtual-machines/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal." lightbox="./media/create-arc-virtual-machines/build-own-template.png":::
 
 1. You see a blank template.
