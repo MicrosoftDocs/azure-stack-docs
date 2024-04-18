@@ -37,7 +37,7 @@ Azure verification for VM enables you to use these benefits available only on Az
 
 ## Architecture
 
-This section is optional reading, and explains more about how Azure VM verification on HCI works "under the hood."
+This section is optional reading, and explains more about how Azure VM verification on Azure Stack HCI works "under the hood."
 
 Azure VM verification relies on a built-in platform attestation service on Azure Stack HCI. This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, and returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
 
@@ -368,11 +368,11 @@ See the [full list here](#benefits-available-on-azure-stack-hci).
 
 ### Does it cost anything to enable Azure VM verification?
 
-No, turning on Azure VM verification incurs no extra fees.
+No. Turning on Azure VM verification incurs no extra fees.
 
 ### Can I use Azure VM verification on environments other than Azure Stack HCI?
 
-No, Azure VM verification is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
+No. Azure VM verification is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
 
 ### If I just upgraded to 23H2 from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
 
