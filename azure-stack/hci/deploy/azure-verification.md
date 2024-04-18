@@ -33,7 +33,7 @@ Azure verification for VM enables you to use these benefits available only on Az
 | Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.39 or later. See [Latest Arc agent release](/azure/azure-arc/servers/agent-release-notes). |
 
 > [!NOTE]
-> To ensure continued functionality, update your VMs on Azure Stack HCI to the latest cumulative update by June 17, 2024. This update is essential for VMs to continue using Azure benefits. See the [Azure blog post](https://techcommunity.microsoft.com/t5/azure-stack-blog/apply-critical-update-for-azure-stack-hci-vms-to-maintain-azure/ba-p/4115023) for more information.
+> To ensure continued functionality, update your VMs on Azure Stack HCI to the latest cumulative update by June 17, 2024. This update is essential for VMs to continue using Azure benefits. See the [Azure Stack HCI blog post](https://techcommunity.microsoft.com/t5/azure-stack-blog/apply-critical-update-for-azure-stack-hci-vms-to-maintain-azure/ba-p/4115023) for more information.
 
 ## Architecture
 
@@ -83,11 +83,6 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 
 - Turn on Hyper-V Guest Service Interface. See the instructions for [Windows Admin Center](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
 
-- VMs require the ability to download and verify certificates. To do so, we recommend that:
-   - (Preferred) You allow the following URL patterns in firewalls:
-
-      - [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-downloads-and-revocation-lists).
-      - [Certificates and trust in Windows](/windows-server/identity/ad-cs/certificate-trust#automatic-certificate-trust-list-updates).
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
 
