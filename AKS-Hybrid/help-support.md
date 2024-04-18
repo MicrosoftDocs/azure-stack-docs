@@ -108,7 +108,7 @@ Select the product you're using to see the relevant instructions on opening a su
 
 1. Select **Next**. Review the information you submitted. If anything is incorrect, select **Previous** and correct it. When all looks correct, select **Create**.
 
-    :::image type="content" source="media/help-support/review-create-edge.png" alt-text=":::image type="content" source="media/help-support/review-create-edge.png" alt-text="Screenshot of confirmation screen to create support request.":::
+    :::image type="content" source="media/help-support/review-create-edge.png" alt-text="Screenshot of confirmation screen to create support request." lightbox="media/help-support/review-create-edge.png":::
 
 ## Next steps
 
