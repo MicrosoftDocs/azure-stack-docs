@@ -4,9 +4,9 @@ description: Azure Site Recovery on Azure Stack Hub helps ensure business contin
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.date: 04/15/2024
+ms.date: 04/18/2024
 ms.reviewer: rtiberiu
-ms.lastreviewed: 04/15/2024
+ms.lastreviewed: 04/18/2024
 
 ---
 
@@ -42,6 +42,15 @@ Azure Site Recovery provides many features, as described in the following table.
 |Testing without disruption | You can easily run disaster recovery drills, without affecting ongoing replication.|
 |Flexible failovers | You can run planned failovers for expected outages with zero-data loss or unplanned failovers with minimal data loss, depending on replication frequency, for unexpected disasters. You can easily fail back to your primary site when it's available again.|
 |Customized recovery plans |Not currently available in this version. You can still customize and sequence the failover and recovery of multi-tier applications running on multiple VMs by using PowerShell scripts, tagging machines together in groups, and optionally adding scripts and manual actions. |
+
+## How is Site Recovery billed?
+
+Azure Site Recovery on Azure Stack Hub is intended to protect a specified number of Virtual Machines. To provide this service at a competitive rate, the cost of ASR is determined based on the physical core count of the target environment, regardless of the number of VMs that are protected. For detailed pricing options, see the [Azure Stack Hub pricing details](https://azure.microsoft.com/pricing/details/azure-stack/hub/).
+
+> [!NOTE]
+> Until the 1st of June 2024, there is no cost for running the ASR service. The pay-as-you-go pricing options will apply starting on the 1st of June 2024.
+
+When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free trial period is provided. This trial period enables testing, automation setup, and VM replication for protection. Following the conclusion of the 30-day trial, charges begin, calculated on the total count of physical cores in the target environment in which your Azure Site Recovery Resource Provider is installed.
 
 ## What can I replicate?
 
