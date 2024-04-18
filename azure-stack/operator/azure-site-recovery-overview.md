@@ -56,7 +56,7 @@ When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free tri
 
 Azure Site Recovery on Azure Stack Hub, with a required agent installed on each of the protected VMs, enables the replication of VMs across two instances, or stamps, of Azure Stack Hub. Azure Stack Hub uses a VM extension, available through the Azure Stack Hub Marketplace, to install this agent.
 
-We've tested and validated the following VM OSs and each has respective Azure Stack Hub Marketplace images available for download:
+The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 
 # [Windows](#tab/windows)
 
@@ -87,7 +87,7 @@ We've tested and validated the following VM OSs and each has respective Azure St
 |Debian 9 | Includes support for 9.1 to 9.13. Debian 9.0 isn't supported. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 10 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 11 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
-|SUSE Linux Enterprise Server 11 | SP3. The upgrade of replicating machines from SP3 to SP4 isn't supported. If a replicated machine has been upgraded, you must disable replication and re-enable replication after the upgrade.|
+|SUSE Linux Enterprise Server 11 | SP3. The upgrade of replicating machines from SP3 to SP4 isn't supported. If a replicated machine was upgraded, you must disable replication and re-enable replication after the upgrade.|
 |SUSE Linux Enterprise Server 11 | SP4 |
 |SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, and SP5. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines).|
 |SUSE Linux Enterprise Server 15 | 15, SP1, SP2, SP3, and SP4. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines).|
