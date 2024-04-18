@@ -34,7 +34,7 @@ Here are the issues fixed in this release:
 
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
-| Update <!--26176875--> | When you try to change your AzureStackLCMUserPassword using command: `Set-AzureStackLCMUserPassword`, you might encounter this error: </br></br> ```Can't find an object with identity: 'object id'*.```| There's no known workaround in this release. |
+| Update <!--26176875--> | When you try to change your AzureStackLCMUserPassword using command: `Set-AzureStackLCMUserPassword`, you might encounter this error: </br></br> ```Can't find an object with identity: 'object id'*.```| If the issue occurs, contact Microsoft Support for next steps.  |
 
 ## Known issues in this release
 
