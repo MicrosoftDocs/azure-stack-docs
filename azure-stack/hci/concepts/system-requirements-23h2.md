@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 04/11/2024
+ms.date: 04/181/2024
 ---
 
 # System requirements for Azure Stack HCI, version 23H2
@@ -40,6 +40,9 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 ## Server and storage requirements
 
 Before you begin, make sure that the physical server and storage hardware used to deploy an Azure Stack HCI cluster meets the following requirements:
+
+> [!NOTE]
+> Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
 
 |Component|Minimum|
 |--|--|

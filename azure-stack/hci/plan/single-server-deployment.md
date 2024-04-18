@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/14/2024
+ms.date: 04/18/2024
 ---
 
 # Review single-server storage deployment network reference pattern for Azure Stack HCI
@@ -17,6 +17,9 @@ ms.date: 03/14/2024
 In this article, you'll learn about the single-server storage network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
 For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+
+> [!NOTE]
+> Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
 
 ## Introduction
 
