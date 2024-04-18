@@ -16,7 +16,7 @@ This article provides an overview of high availability ports rule and their purp
 
 ## Overview of high availability ports rule
 
-High availability ports is a type of load balancing rule that helps you load balance all protocols across all ports. Similar to all load balancing rules, high availability ports rule relies on the 5-tuple connection: source address, destination address, source port, destination port, and protocol.
+High availability ports rule is a type of load balancing rule that helps you load balance all protocols across all ports. Similar to all load balancing rules, high availability ports rule relies on the 5-tuple connection: source address, destination address, source port, destination port, and protocol.
 
 To apply this rule, you set your **Protocol** status to **All**, so that both User Datagram Protocol (UDP) and Transmission Control Protocol (TCP) datagrams are accepted. You also need to set your **Frontend Port** and **Backend Port** to **0** for high availability.
 
@@ -93,8 +93,8 @@ The high availability ports rule supports the following configurations:
 
 The following are the limitations of using high availability ports load balancing rules:
 
-- Combining high availability ports load balancing rules and non high availability ports load balancing rules pointing to the same backend ipconfigurations isn't supported unless both have **Floating IP** enabled.
-- Flow symmetry (primarily for NVA scenarios) is only supported with a single front-end NIC (single front-end IP configuration) and a backend pool. Using multiple load balancers, load balancing rules or multiple NICs won't provide symmetry.
+- Combining high availability ports load balancing rules and non high availability ports load balancing rules pointing to the same backend IP configurations isn't supported unless both have **Floating IP** enabled.
+- Flow symmetry (primarily for NVA scenarios) is only supported with a single front-end NIC (single front-end IP configuration) and a backend pool. Using multiple load balancers, load balancing rules or multiple NICs don't provide symmetry.
 - The backend instance of a high availability ports internal load balancer can't be the backend instance of another internal load balancer.
 - The backend instance of a **Floating IP** high availability ports internal load balancer can't be the backend instance of another non-floating IP high availability ports internal load balancer.
 
