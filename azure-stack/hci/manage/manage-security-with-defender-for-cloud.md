@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/23/2024
+ms.date: 03/27/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -50,6 +50,33 @@ To do so, follow all the instructions in the [Enable the Defender for Servers pl
    - Log Analytics agent
    - Vulnerability assessment
    - Endpoint protection
+
+## Apply Microsoft Cloud Security Benchmark initiative
+
+After you turn on the Microsoft Defender for Cloud Foundational CSPM plan, you must apply the Microsoft Cloud Security Benchmark (MCSB) initiative. You can view the security settings via the Azure portal only when the MCSB is applied. Use one of the following methods to apply the MCSB initiative:
+
+- Apply the MCSB via the portal as described below.
+- Manually apply the Azure compute security baseline in Azure policy to all cluster servers. See [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
+
+Follow these steps to apply the MCSB initiative at the subscription level:
+
+1. Sign into the Azure portal, and search for and select **Microsoft Defender for Cloud**.
+
+   :::image type="content" source="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" alt-text="Screenshot that shows how to search for Defender for Cloud in the Azure portal." lightbox="./media/manage-security-with-defender-for-cloud/access-defender-for-cloud.png" :::
+
+1. On the left pane, scroll down to the **Management** section and select **Environment settings**.
+
+1. On the **Environment settings** page, select the subscription in use from the drop-down.
+
+   :::image type="content" source="./media/manage-security-with-defender-for-cloud/select-subscription.png" alt-text="Screenshot that shows how to select the Azure subscription." lightbox="./media/manage-security-with-defender-for-cloud/select-subscription.png" :::
+
+1. Select the **Security policies** blade.
+
+1. For **Microsoft cloud security benchmark**, toggle the **Status** button to **On**.
+
+   :::image type="content" source="./media/manage-security-with-defender-for-cloud/toggle-on-status.png" alt-text="Screenshot that shows how to toggle on the Status button." lightbox="./media/manage-security-with-defender-for-cloud/toggle-on-status.png" :::
+
+1. Wait for at least one hour for the Azure policy initiative to evaluate the included resources.
 
 ## View security recommendations
 

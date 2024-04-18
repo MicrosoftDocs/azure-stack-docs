@@ -4,12 +4,12 @@ description: This topic provides step-by-step instructions on how to use Windows
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 04/19/2023
+ms.date: 03/29/2024
 ---
 
 # Manage tenant virtual networks
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create, update, and delete Hyper-V Network Virtualization (HNV) virtual networks after you have deployed Software Defined Networking (SDN).
 
@@ -85,4 +85,4 @@ You can delete a virtual network if you no longer need it.
 
 ## Next steps
 For more information, see also:
-- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking.md)
+- [Software Defined Networking (SDN) in Azure Stack HCI](../concepts/software-defined-networking-23h2.md)

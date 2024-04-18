@@ -4,22 +4,26 @@ description: Learn how to install client software for the Azure Managed Lustre F
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.lastreviewed: 02/20/2024
 ms.reviewer: dsundarraj
-ms.date: 02/15/2024
+ms.date: 03/15/2024
 zone_pivot_groups: select-os
 
 ---
 
-# Install prebuilt client software
+# Install prebuilt Lustre client software
 
-This article shows how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
+In this article, you learn how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
+
+If you need to upgrade an existing Lustre client to the current version, see [Upgrade a Lustre client to the current version](client-upgrade.md).
 
 For more information on connecting clients to a cluster, see [Connect clients to an Azure Managed Lustre file system](connect-clients.md).
 
 ::: zone pivot="alma-86"
 
-## Install client software for AlmaLinux HPC 8.6
+## Upgrade client software
 
 This tutorial shows how to install the client package to set up client VMs running AlmaLinux HPC 8.6, and attach them to an Azure Managed Lustre cluster.
 
@@ -338,7 +342,7 @@ The instructions apply to client VMs running:
 
 1. Remove any kernels newer than the one mentioned in the LTS metapackage.
 
-   Remove any kernels other than the one mentioned in the LTS kernel metapackage.  It will warn about removing the kernel and recommend aborting the process. If you're following these steps on a newly provisioned host, they work. But if you have concerns, consult Ubuntu documentation on configuring kernels to ensure it's able to boot after a reboot.
+   You'll receive a warning about removing the kernel, but these steps work if you're following them on a newly provisioned host. However, if you have concerns, consult Ubuntu documentation on configuring kernels to ensure it's able to boot after a reboot.
 
    ```bash
    sudo apt remove linux-image-5.15.0-1053-azure

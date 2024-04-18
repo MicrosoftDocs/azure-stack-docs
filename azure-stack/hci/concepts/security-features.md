@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/06/2024
+ms.date: 02/22/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -16,10 +16,6 @@ ms.date: 02/06/2024
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
 This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
-
-## Windows Defender Application Control
-
-Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md).
 
 ## Security defaults
 
@@ -36,6 +32,10 @@ Secure baseline on Azure Stack HCI:
 - Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
 For more information, see [Manage security defaults on Azure Stack HCI](../manage/manage-secure-baseline.md).
+
+## Windows Defender Application Control
+
+Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
 
 ## BitLocker encryption
 
@@ -87,7 +87,7 @@ Azure Stack HCI has an integrated syslog forwarder that, once configured, genera
 
 The following diagram illustrates integration of Azure Stack HCI with an SIEM. All audits, security logs, and alerts are collected on each host and exposed via syslog with the CEF payload.
 
-:::image type="content" source="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png" alt-text="The following diagram describes the integration of Azure Stack HCI with an external security information and event management (SIEM) system." border="false" lightbox="media/other-security-features/integration-of-azure-stack-hci-with-external-siem.png":::
+:::image type="content" source="media/security-features/integration-of-azure-stack-hci-with-external-siem.png" alt-text="The following diagram describes the integration of Azure Stack HCI with an external security information and event management (SIEM) system." lightbox="media/security-features/integration-of-azure-stack-hci-with-external-siem.png":::
 
 Syslog forwarding agents are deployed on every Azure Stack HCI host to forward syslog messages to the customer-configured syslog server. Syslog forwarding agents work independently from each other but can be managed together on any one of the hosts.
 
