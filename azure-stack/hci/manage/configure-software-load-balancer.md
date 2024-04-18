@@ -5,14 +5,14 @@ ms.author: sethm
 ms.reviewer: anpaul
 ms.topic: article
 author: sethmanheim
-ms.date: 02/26/2024
+ms.date: 04/18/2024
 ---
 
 # Configure Software Load Balancer for high availability ports
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
-This article provides an overview of high availability ports rule and why to use high availability ports. It then describes the prerequisites of setting up a high availability ports rule, steps to configure it, supported configurations, and its limitations.
+This article provides an overview of high availability ports rule and their purpose. It also describes the prerequisites for setting up such rules, the configuration steps, supported configurations, and associated limitations.
 
 ## Overview of high availability ports rule
 
@@ -48,7 +48,7 @@ To set up the high availability ports rule, you must configure the following:
 1. In Windows Admin Center, under **All Connections**, select the cluster you want to create the load balancer on.
 1. Under **Tools**, scroll down to **Networking**, and select **Load balancers**.
     - If **Load balancers** isn't available under **Tools**, add the feature through the **SDN Load balancers** extension. For information about how to install the extension, see [Install and manage extensions](/windows-server/manage/windows-admin-center/configure/using-extensions).
-    - If you don't have a load balancer created yet, see [Deploy SDN Software Load Balancer](../deploy/sdn-wizard.md#deploy-sdn-software-load-balancer).
+    - If you don't have a load balancer created yet, see [Deploy SDN Software Load Balancer](../deploy/sdn-wizard-23h2.md#deploy-sdn-software-load-balancer).
 
 1. After creating your load balancer or selecting the appropriate load balancer to apply the high availability rule to, scroll down to where you can see the **Load Balancing Rules** section.
 
@@ -100,4 +100,4 @@ The following are the limitations of using high availability ports load balancin
 
 ## Next steps
 
-See [Deploy an SDN infrastructure using SDN Express](sdn-express.md).
+See [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md).
