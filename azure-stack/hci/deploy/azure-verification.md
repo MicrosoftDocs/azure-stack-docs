@@ -83,11 +83,11 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 
 - Turn on Hyper-V Guest Service Interface. See the instructions for [Windows Admin Center](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
 
-- VMs require the ability to download and verify certificates. To do so, we recommend that: 
+- VMs require the ability to download and verify certificates. To do so, we recommend that:
    - (Preferred) You allow the following URL patterns in firewalls:
 
-      - [Azure Certificate Authority details](https://learn.microsoft.com/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-downloads-and-revocation-lists).
-      - [Certificates and trust in Windows](https://learn.microsoft.com/windows-server/identity/ad-cs/certificate-trust#automatic-certificate-trust-list-updates).
+      - [Azure Certificate Authority details](/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-downloads-and-revocation-lists).
+      - [Certificates and trust in Windows](/windows-server/identity/ad-cs/certificate-trust#automatic-certificate-trust-list-updates).
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
 
@@ -376,7 +376,7 @@ No, Azure VM verification is a feature built into the Azure Stack HCI OS, and ca
 
 ### If I just upgraded to 23H2 from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
 
-If you upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VMBus in 23H2, make sure that you have [the required prerequisites](#prerequisites).
+If you upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VMBus in 23H2, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
 
 ### I just set up Azure VM verification on my cluster. How do I ensure that Azure VM verification stays active?
 
@@ -385,14 +385,14 @@ If you upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI
 
 ### What happens when I deploy new VMs, or delete VMs?
 
-- When you deploy new VMs that require Azure VM verification, they are automatically activated if they have the correct [prerequisites](#prerequisites).
+- When you deploy new VMs that require Azure VM verification, they are automatically activated if they have the correct [VM prerequisites](#vm-prerequisites).
 
 - However, for legacy VMs using legacy OS support, you can manually add new VMs to access Azure VM verification using Windows Admin Center or PowerShell, using the [preceding instructions](#legacy-os-support).
 - You can still delete and migrate VMs as usual. The NIC **AZSHCI_GUEST-IMDS_DO_NOT_MODIFY** still exists on the VM after migration. To clean up the NIC before migration, you can remove VMs from Azure VM verification using Windows Admin Center or PowerShell using the preceding instructions for legacy OS support, or you can migrate first and manually delete NICs afterwards.
 
 ### What happens when I add or remove servers?
 
-- When you add a server, it's automatically activated if it has the correct [prerequisites](#prerequisites).
+- When you add a server, it's automatically activated if it has the correct [Host prerequisites](#host-prerequisites).
 - If you're using legacy OS support, you might need to manually enable these servers. Run `Enable-AzStackHCIAttestation [[-ComputerName] <String>]` in PowerShell. You can still delete servers or remove them from the cluster as usual. The vSwitch **AZSHCI_HOST-IMDS_DO_NOT_MODIFY** still exists on the server after removal from the cluster. You can leave it if you're planning to add the server back to the cluster later, or you can remove it manually.
 
 ## Next steps
