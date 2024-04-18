@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 04/16/2024
+ms.date: 04/18/2024
 ms.lastreviewed: 03/05/2024
 ---
 
@@ -61,7 +61,7 @@ Azure VM verification relies on a built-in platform attestation service on Azure
 
     HciSvc then returns a signed response using the Azure certificate it stored. Consumers verify the response and activate associated benefits.
 
-## Tutorial: managing Azure VM verification
+## Manage Azure VM verification
 
 Azure VM verification is automatically enabled by default in Azure Stack HCI 23H2 or later. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
 
@@ -70,25 +70,21 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 
 ### Host prerequisites
 
-- [Update your Azure Stack HCI cluster](../manage/update-cluster.md): minimum version 23H2 or later.
-- [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): all servers must be online and registered to Azure.
+- Make sure that you have access to an Azure Stack HCI, version 23H2 system. All servers must be online, registered, and cluster deployed. For more information, see [Register your servers with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 - (Optional) If you are using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
 
 ### VM prerequisites
 
-- Update your VMs: see [version requirements for workloads](#benefits-available-on-azure-stack-hci).
+- Makre sure to update your VMs. See the [version requirements for workloads](#benefits-available-on-azure-stack-hci).
 
-- Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
+- Turn on Hyper-V Guest Service Interface. See the instructions for [Windows Admin Center](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
 
-- VMs require the ability to download and verify certificates. There are two methods to do so:
-   - (Preferred) The following URLs must be whitelisted and allowed in firewalls:
+- VMs require the ability to download and verify certificates. To do so, we recommend that: 
+   - (Preferred) You allow the following URL patterns in firewalls:
 
       - [Azure Certificate Authority details](https://learn.microsoft.com/azure/security/fundamentals/azure-ca-details?tabs=root-and-subordinate-cas-list#certificate-downloads-and-revocation-lists).
       - [Certificates and trust in Windows](https://learn.microsoft.com/windows-server/identity/ad-cs/certificate-trust#automatic-certificate-trust-list-updates).
-
-   - (Not recommended) Alternatively, if the above URLs can't be whitelisted, then the certificate chains can be downloaded and installed to each client's Certificate Store. See [Azure Certificate Authority details](https://learn.microsoft.com/azure/security/fundamentals/azure-ca-details?tabs=certificate-authority-chains#certificate-authority-details) for more information.
-
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
 
