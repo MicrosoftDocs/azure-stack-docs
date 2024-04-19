@@ -48,9 +48,11 @@ The steps are also summarized here:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
 
-1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID**  and the **Object ID** for this service principal. You encode and use this value later.
+1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID**  and the **Object ID** for this service principal. 
 
    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing Application (client) ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
+
+    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the ARM template.
 
 #### Create a client secret for ARB service principal
 
@@ -63,13 +65,14 @@ The steps are also summarized here:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-2.png" alt-text="Screenshot showing Add a client secret blade." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-2.png":::
 
-1. Copy the **client secret value** as you encode and use it later.
+1. Copy the **client secret value** as you use it later.
 
     > [!Note]
     > For the application client ID, you will need it's secret value. Client secret values can't be viewed except for immediately after creation. Be sure to save this value when created before leaving the page.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
+    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the ARM template.
 
 ### Get the object ID for the Azure Stack HCI Resource Provider service principal
 
@@ -89,6 +92,8 @@ This object ID for the Azure Stack HCI RP service principal is unique per Azure 
     ```powershell
     Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
     ```
+
+    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
 
 ## Step 2: Assign resource permissions
 
@@ -134,11 +139,11 @@ You need to assign the **Key Vault Secrets User** role to the servers in your en
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing the notification for Key Vault Secrets user role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
 
-#### Verify role assignment (Is this needed?)
+#### Verify role assignment
 
 Optionally verify the role assignments you created.
 
-1. Select **Access Control (IAM) Check Access** to verify the role assignments you created.
+1. Select **Access Control (IAM) Check Access** to verify the role assignment you created.
 
 1. Go to **Key Vault Secrets User** for the appropriate resource group for the first server in your environment.
 
@@ -146,7 +151,7 @@ Optionally verify the role assignments you created.
 
 ## Step 3: Deploy using ARM template
 
-With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the encoded values generated previously. 
+With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
 > [!IMPORTANT] 
 > In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those need to be populated or the validation fails.
