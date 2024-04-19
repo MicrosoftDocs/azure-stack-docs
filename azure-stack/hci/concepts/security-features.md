@@ -44,7 +44,7 @@ Microsoft provides base signed policies including a block mode and an audit mode
 
 #### Composition of base policies
 
-The Azure Stack HCI base policy allows all the Microsoft components delivered by the OS and the Cloud deployments to be trusted. 
+The Azure Stack HCI base policy allows all the Microsoft components delivered by the OS and the cloud deployment to be trusted. 
 
 A base policy consists of the following sections:
 
@@ -84,7 +84,7 @@ For more information, see the full documented [List of option rules](/windows/se
 
 Microsoft also enables a set of block/deny rules that limits the user mode applications and kernel components compiled and updated on a regular basis that could potentially represent a risk on the secuirity posture of the solution.
 
-For more information, see the default lists in WDAC public documentation:
+For more information, see the following default lists:
 
 - [Driver Block list](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
 
