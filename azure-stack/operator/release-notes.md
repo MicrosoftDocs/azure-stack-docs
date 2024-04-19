@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/28/2024
+ms.date: 04/19/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 12/27/2023
@@ -81,6 +81,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 - With 2404 we are announcing the general availability of the Azure Stack Hub Standard Load Balancer. This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
+- With the 2404 release, Azure Container Registry is out of public preview and released to general availability. Azure Container Registry is a private, secure, and close-to-compute registry for Windows container images, Linux container images, Helm charts, and other OCI artifacts. At no extra cost, it enables both connected and disconnected customers to quickly and reliably store, deploy, and manage container workloads through the user portal, PowerShell, Azure CLI, and/or Docker CLI. It also enables you to assign role-based access control (RBAC) and to create webhooks. Container Registry is now fully supported and fully integrated with other components of Azure Stack Hub, such as the Azure Kubernetes Service (AKS) engine. To install Container Registry, [follow the instructions here](container-registries-install.md).
 
 <!-- ### Improvements -->
 
