@@ -28,7 +28,7 @@ You learn how to:
 
 Once completed, the following application runs in your local development environment:
 
-:::image type="content" source="./media/azure-vote-local.png" alt-text="This image shows the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
+:::image type="content" source="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png" alt-text="Screenshot showing the container image that the Azure Voting App running locally opened in a local web browser." lightbox="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png":::
 
 In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into a Kubernetes cluster.
 
@@ -97,7 +97,7 @@ Use the sample `docker-compose.yaml` file to create the container image, downloa
 docker-compose up -d
 ```
 
-When completed, use the [docker images][docker-images] command to see the created images. Three images have been downloaded or created. The **azure-vote-front** image contains the front-end application and uses the **nginx-flask** image as a base. The **redis** image is used to start a Redis instance.
+When completed, use the [docker images][docker-images] command to see the created images. Three images were downloaded or created. The **azure-vote-front** image contains the front-end application and uses the **nginx-flask** image as a base. The **redis** image is used to start a Redis instance.
 
 ```output
 $ docker images
@@ -122,11 +122,11 @@ d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoi
 
 To see the running application, enter `http://localhost:8080` in a local web browser. The sample application loads, as shown in the following example:
 
-:::image type="content" source="./media/azure-vote-local.png" alt-text="Screenshot showing the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
+:::image type="content" source="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png" alt-text="Screenshot showing the container image opened in a local web browser." lightbox="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png":::
 
 ## Clean up resources
 
-Now that the application's functionality has been validated, the running containers can be stopped and removed. Do not delete the container images - in the next tutorial, the **azure-vote-front** image is uploaded to an Azure Container Registry instance.
+Now that the application's functionality is validated, the running containers can be stopped and removed. Don't delete the container images - in the next tutorial, the **azure-vote-front** image is uploaded to an Azure Container Registry instance.
 
 Stop and remove the container instances and resources with the [docker-compose down][docker-compose-down] command:
 

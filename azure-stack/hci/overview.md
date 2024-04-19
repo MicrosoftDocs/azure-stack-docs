@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/21/2024
+ms.date: 03/13/2024
 ms.custom: e2e-hybrid
 ---
 
@@ -71,7 +71,7 @@ Customers often choose Azure Stack HCI in the following scenarios.
 | Highly performant SQL Server | Azure Stack HCI provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more, see [Deploy SQL Server on Azure Stack HCI](deploy/sql-server.md). |
 | Trusted enterprise virtualization | Azure Stack HCI satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more, see [Deploy Trusted Enterprise Virtualization on Azure Stack HCI](deploy/trusted-enterprise-virtualization.md). |
 | Scale-out storage | Storage Spaces Direct is a core technology of Azure Stack HCI that uses industry-standard servers with locally attached drives to offer high availability, performance, and scalability. Using Storage Spaces Direct results in significant cost reductions compared with competing offers based on storage area network (SAN) or network-attached storage (NAS) technologies. These benefits result from an innovative design and a wide range of enhancements, such as persistent read/write cache drives, mirror-accelerated parity, nested resiliency, and deduplication. |
-| Disaster recovery for virtualized workloads | An Azure Stack HCI stretched cluster provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks. |
+| Disaster recovery for virtualized workloads | An Azure Stack HCI stretched cluster (functionality only available in Azure Stack HCI, version 22H2) provides automatic failover of virtualized workloads to a secondary site following a primary site failure. Synchronous replication ensures crash consistency of VM disks. |
 | Data center consolidation and modernization | Refreshing and consolidating aging virtualization hosts with Azure Stack HCI can improve scalability and make your environment easier to manage and secure. It's also an opportunity to retire legacy SAN storage to reduce footprint and total cost of ownership. Operations and systems administration are simplified with unified tools and interfaces and a single point of support. |
 | Branch office and edge | For branch office and edge workloads, you can minimize infrastructure costs by deploying two-node clusters with inexpensive witness options, such as Cloud Witness or a USB drive–based file share witness. Another factor that contributes to the lower cost of two-node clusters is support for switchless networking, which relies on crossover cable between cluster nodes instead of more expensive high-speed switches. Customers can also centrally view remote Azure Stack HCI deployments in the Azure portal. To learn more, see [Deploy branch office and edge on Azure Stack HCI](deploy/branch-office-edge.md). |
 
@@ -106,7 +106,7 @@ To get started, you'll need:
 - An [Azure subscription](https://azure.microsoft.com/).
 - Operating system licenses for your workload VMs – for example, Windows Server. See [Activate Windows Server VMs](manage/vm-activate.md).
 - An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure connectivity requirements](concepts/firewall-requirements.md) for more information.
-- For clusters stretched across sites:
+- For clusters stretched across sites (functionality only available in Azure Stack HCI, version 22H2):
     - At least four severs (two in each site)
     - At least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred)
     - An average latency of 5 ms round trip between sites if you want to do synchronous replication where writes occur simultaneously in both sites.

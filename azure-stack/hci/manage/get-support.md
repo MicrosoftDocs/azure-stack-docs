@@ -4,12 +4,12 @@ description: This topic provides guidance on how to get support for the Azure St
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 03/12/2021
+ms.date: 03/29/2024
 ---
 
 # Get support for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This topic provides guidance on how to get support for the Azure Stack HCI operating system. Azure Stack HCI follows the same support process as Azure. Enterprise customers can follow the process described in [Create an Azure support request](/azure/azure-portal/supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support.
 
@@ -33,7 +33,7 @@ For information about other Azure Stack HCI support resources available through 
 
 ## Partner support resources for Azure Stack HCI
 
-Azure Stack HCI Integrated System solution hardware from your preferred hardware partner arrives with the operating system preinstalled. You can expect hardware service, support, and security updates from your hardware partner for at least five years. For more information, see [Updates and upgrades](../concepts/updates.md).
+Azure Stack HCI Integrated System solution hardware from your preferred hardware partner arrives with the operating system preinstalled. You can expect hardware service, support, and security updates from your hardware partner for at least five years. For more information, see [About updates for Azure Stack HCI](../update/update-phases-23h2.md).
 
 To learn more about Integrated System partners and their solutions and support offerings, see the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog).
 
