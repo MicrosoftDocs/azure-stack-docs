@@ -32,9 +32,11 @@ For systems with 16 cores or more, there are extra two-core and four-core licens
 
 The Azure Stack HCI OEM license simplifies the licensing and activation process and reduces costs and operational complexity. Other benefits include:
 
-- A single license for Windows Server and Azure Stack HCI.
+- A single license for Azure Stack HCI, AKS, and Windows Server guest VMs.
 
 - No tools or keys to activate the Azure Stack HCI operating system.
+
+- Azure Stack HCI is preinstalled for optimal system performance. AKS and Windows Server are available to download when you're ready to deploy.
 
 ## License requirements
 

@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Azure Stack HCI FAQ - license and billing
-  description: The Azure Stack HCI FAQ provides information on the Azure Stack HCI OEM license and billing.s
+  description: The Azure Stack HCI FAQ provides information on the Azure Stack HCI OEM license and billing.
   ms.topic: faq
   author: ronmiab
   ms.author: robess
@@ -46,3 +46,11 @@ sections:
       - question: Are mixed-node scenarios supported?
         answer: |
           This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
+
+      - question: Does Azure Kubernetes Service offer unlimited virtualization?
+        answer: |
+          AKS on Azure Stack HCI offers unlimited containers like Windows Server Datacenter offers unlimited virtualization. You can run as many containers and VMs as your infrastructure supports, without incurring extra licensing costs.
+
+      - question: Is a product key or Certificate of Authenticity (COA) required?
+        answer: |
+          This license doesn't include product keys or Certificate of Authenticity (COA), the license is automatically authenticated once you register the device in Azure. Should you have any failure that requires a re-install, contact your OEM vendor.
