@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/22/2024
+ms.date: 04/19/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -36,6 +36,60 @@ For more information, see [Manage security defaults on Azure Stack HCI](../manag
 ## Windows Defender Application Control
 
 Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
+
+
+### About WDAC policy design
+
+Microsoft provides base signed policies including a block mode and an audit mode policies for Azure Stack HCI. Using the WDAC platform, the appropriate properties are defined for the policies. These properties include the options rules and the allow/deny rules that are updated on a regular basis as part of the continuous product updates.
+
+#### Composition of base policies
+
+The Azure Stack HCI base policy allows all the Microsoft components delivered by the OS and the Cloud deployments to be trusted. 
+
+A base policy consists of the following sections:
+
+- **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID and more.
+- **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a very small set of the option rules tied to their base policy.
+- **Allow/Deny Rules**: These rules define the code trust boundaries. The rules can be based on Publishers, Signers, File Hash and more.
+
+#### Option rules
+
+The option rules enabled by the base policy are:
+
+For the Enforced policy, the following option rules are enabled by default:
+
+|Option rule|Value|
+|-----|-----|
+|Enabled|UMCI|
+|Required|WHQL|
+|Enabled|Allow Supplemental Policies|
+|Enabled|Revoked Expired As Unsigned|
+|Disabled|Flight Signing|
+|Enabled|Unsigned System Integrity Policy (Default)|
+|Enabled|Dynamic Code Security|
+|Enabled|Advanced Boot Options Menu|
+|Disabled|Script Enforcement|
+|Enabled|Managed Installer|
+|Enabled|Update Policy No Reboot|
+
+Audit Policy adds the following option rule:
+
+|Option rule|Value|
+|-----|-----|
+|Enabled|Audit Mode (Default)|
+
+For more information, see the full documented [List of option rules](/windows/security/application-security/application-control/windows-defender-application-control/design/select-types-of-rules-to-create#table-1-windows-defender-application-control-policy---policy-rule-options).
+
+#### Allow/Deny rules
+
+Microsoft also enables a set of block/deny rules that limits the user mode applications and kernel components compiled and updated on a regular basis that could potentially represent a risk on the secuirity posture of the solution.
+
+For more information, see the default lists in WDAC public documentation:
+
+- [Driver Block list](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
+
+- [User Mode Block list](/windows/security/application-security/application-control/windows-defender-application-control/design/applications-that-can-bypass-wdac).
+
 
 ## BitLocker encryption
 
