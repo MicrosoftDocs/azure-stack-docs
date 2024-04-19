@@ -44,7 +44,7 @@ The steps are also summarized here:
 
 1. Sign in to the [Microsoft Entra admin center](https://entra.microsoft.com/) as at least a Cloud Application Administrator. Browse to **Identity > Applications > App registrations** then select **New registration**.
 
-1. Provide a **Name** for the application, select a **Supported account type** and then select **Register**.
+1. Provide a **Name** for the application, select a **Supported account type**, and then select **Register**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
 
@@ -207,7 +207,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
 
-1. Verify that all the fields for the ARM deployment template have been filled in by the Parameters JSON.
+1. Verify that all the fields for the ARM deployment template are filled in by the Parameters JSON.
 
 1. Select the appropriate resource group for your environment.
 
