@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/18/2024
+ms.date: 04/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,7 +23,7 @@ This article details how to use an Azure Resource Manager template (ARM template
 ## Prerequisites
 
 - Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-    - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, and **Telemetry and Diagnostics**.
+    - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Edge Remote Support**.
     - All servers are running the same version of OS.
     - All the servers have the same network adapter configuration.
 
@@ -33,13 +33,10 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 ### Create a service principal and client secret
 
-To authenticate your cluster, you need to:
-
-- Create a service principal and a corresponding **Client secret**. 
-- Assign *Azure Resource Bridge Deployment Role* to the service principal.
+To authenticate your cluster, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
 
 
-#### Create a service principal
+#### Create a service principal for ARB
 
 Follow the steps in [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal) to create the service principal and assign the roles. Alternatively, use the PowerShell procedure to [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -51,11 +48,11 @@ The steps are also summarized here:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
 
-1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID** for this service principal. You encode and use this value later.
+1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID**  and the **Object ID** for this service principal. You encode and use this value later.
 
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2.png" alt-text="Screenshot showing Application (client) ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2.png":::
+   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing Application (client) ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
 
-#### Create a client secret
+#### Create a client secret for ARB service principal
 
 1. Go to the service principal that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
@@ -74,135 +71,32 @@ The steps are also summarized here:
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
 
-<!--### Create a cloud witness storage account
+### Get the object ID for the Azure Stack HCI Resource Provider service principal
 
-First, create a storage account to serve as a cloud witness. You then need to get the access key for this storage account, and then use it in an encoded format with the ARM deployment template.
+This object ID for the Azure Stack HCI RP service principal is unique per Azure tenant.
 
-Follow these steps to get and encode the access key for the ARM deployment template:
+1. In your Microsoft Entra admin center, go to **Identity > Enterprise applications**.
+1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
-1. In the Azure portal, create a storage account in the same resource group that you would use for deployment. 
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1.png" alt-text="Screenshot showing the search for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1.png":::
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png" alt-text="Screenshot showing creation of storage account for cloud witness." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-1.png":::
+1. Select the SPN that is listed and copy the **Object ID**.
 
-1. Once the Storage account is created, verify that you can see the account in the resource group.
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1.png" alt-text="Screenshot showing the object ID for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1.png":::
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png" alt-text="Screenshot showing storage account for cloud witness in the deployment resource group." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-6.png":::
- 
-1. Go to the storage account that you created and then go to **Access keys**.
+    Alternatively, you can use PowerShell to get the object ID of the Azure Stack HCI RP service principal. Run the following command in PowerShell:
 
-1. For **key1, Key**, select **Show**. Select the **Copy to clipboard** button at the right side of the **Key** field.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png" alt-text="Screenshot showing the access keys for the cloud witness storage account." lightbox="./media/deployment-azure-resource-manager-template/cloud-witness-storage-account-access-key-1.png":::
-
-    After you copy the key, select **Hide**.-->
-
-
-<!--### Encode parameter values
-
-1. On a management computer, run PowerShell as administrator. Encode the copied **Key** value string with the following script:
-
-    ```PowerShell
-    $secret="<Key value string coped earlier>" 
-    [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($secret))
+    ```powershell
+    Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
     ```
-
-    The encoded output looks similar to this, and is based on the secret value for the cloud witness storage account for your environment:
-
-    ```PowerShell
-    ZXhhbXBsZXNlY3JldGtleXZhbHVldGhhdHdpbGxiZWxvbmdlcnRoYW50aGlzYW5kb3V0cHV0d2lsbGxvb2tkaWZmZXJlbnQ= 
-    ```
-
-1. The encoded output value you generate is what the ARM deployment template expects. Make a note of this value and the name of the storage account. You'll use these values later in the deployment process.
-
-In addition to the storage witness access key, you also need to similarly encode the values for the following parameters.
-
-|Parameter  |Description  |
-|---------|---------|
-|`localaccountname`, `localaccountpassword`     |Username and password for the local administrator for all the servers in your cluster. The credentials are identical for all the servers in your system.         |
-|`domainaccountname`, `domainaccountpassword`      |The new username and password that were created with the appropriate permissions for deployment during the Active Directory preparation step for the `AzureStackLCMUserCredential` object. This account is the same as the user account used by the Azure Stack HCI deployment. <br> For more information, see [Prepare the Active Directory](./deployment-prep-active-directory.md#prepare-active-directory) to get these credentials.        |
-|`clientId`, `clientSecretValue`       |The application (client) ID for the SPN that you created as a prerequisite to this deployment and the corresponding client secret value for the application ID.          |
-
-Run the PowerShell script used in the earlier step to encode these values:
-
-- **Local account password**. This corresponds to the `localAdminSecretValue` in the parameters JSON. Encode `localaccountname:localacountpassword` to get this value for the template.
-- **Domain account password**. This corresponds to the `domainAdminSecretValue` in the parameters JSON. Encode `domainaccountname:domainaccountpassword` to get this value for the template.
-- **Application client ID secret value**. This corresponds to the `arbDeploymentSpnValue` in the parameters JSON. Encode `clientId:clientSecretValue` to get this value for the template.-->
-
 
 ## Step 2: Assign resource permissions
 
-You need to create and assign the needed resource permissions before you use the deployment template. 
+You need to create and assign the needed resource permissions before you use the deployment template. The following permissions are already assigned:
+    - Role assignments for the Arc machines.
+    - Role assignments for the ARB service principal at subscription level.
 
-#### Verify access to the resource group
-
-Verify access to the resource group for your registered Azure Stack HCI servers as follows:
-
-1. In Azure portal, go to the appropriate resource group.
-
-1. Select **Access control (IAM)** from the left-hand side of the screen and then select **Check access**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png" alt-text="Screenshot showing check access in the access control for the resource group." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-1.png":::
-
-1. In the **Check access**, input or select the following: 
-
-    1. Select **Managed identity**.
-
-    1. Select the appropriate subscription from the drop-down list.
-
-    1. Select **All system-assigned managed identities**.
-
-    1. Filter the list by typing the prefix and name of the registered server(s) for this deployment. Select one of the servers in your Azure Stack HCI cluster.
-
-    1. Under **Current role assignments**, verify the selected server has the following roles enabled:
-
-        - **Azure Connected Machine Resource Manager**.
-    
-        - **Azure Stack HCI Device Management Role**.
-    
-        - **Reader**.
-
-        :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png" alt-text="Screenshot showing server roles that are enabled on first server." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-2.png":::
-
-    1. Select the **X** on the upper right to go back to the server selection screen.
-
-1. Select another server in your Azure Stack HCI cluster. Verify the selected server has the same roles enabled as you verified on the earlier server.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png" alt-text="Screenshot showing server roles that are enabled on second server." lightbox="./media/deployment-azure-resource-manager-template/assign-resource-permissions-3.png":::
-
-#### Add access to the resource group
-
-Add access to the resource group for your registered Azure Stack HCI servers as follows:
-
-1. Go to the appropriate resource group for your Azure Stack HCI environment.
-
-1. Select **Access control (IAM)** from the left-hand side of the screen.
-
-1. Select **+ Add** and then select **Add role assignment**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png" alt-text="Screenshot showing Add role assignment flow for access to the resource group." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-1.png":::
-
-1. Search for and select **Azure Connected Machine Resource Manager**. Select **Next**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png" alt-text="Screenshot showing Azure Connected Machine Resource Manager for the resource group." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-2.png":::
-
-
-1. Leave the selection on **User, group, or service principal**. Select **+ Select** members.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png" alt-text="Screenshot showing Members selection." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-3.png":::
-
-1. Filter the list by typing `Microsoft.AzureStackHCI Resource Provider`. Select the **Microsoft.AzureStackHCI Resource Provider** option.
-
-1. Select **Select**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png" alt-text="Screenshot showing Select members." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-4.png":::
-
-1. Select **Review + assign**, then select this again.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png" alt-text="Screenshot showing Review + assign." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-6.png":::
-
-1. Once the role assignment is added, you're able to see it in the **Notifications activity** log:
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png" alt-text="Screenshot showing a notification for the role assignments." lightbox="./media/deployment-azure-resource-manager-template/add-resource-group-access-7.png":::
+You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
 
 #### Add the Key Vault Secrets User
 
@@ -240,13 +134,11 @@ Add access to the resource group for your registered Azure Stack HCI servers as 
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing the notification for Key Vault Secrets user role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
 
-#### Verify new role assignments
+#### Verify role assignment (Is this needed?)
 
 Optionally verify the role assignments you created.
 
 1. Select **Access Control (IAM) Check Access** to verify the role assignments you created.
-
-1. Go to **Azure Connected Machine Resource Manager > Microsoft.AzureStackHCI Resource Provider** for the appropriate resource group for your environment.
 
 1. Go to **Key Vault Secrets User** for the appropriate resource group for the first server in your environment.
 
