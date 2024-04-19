@@ -27,6 +27,49 @@ You can Use WDAC policies to control which drivers and apps are allowed to run o
 
 :::image type="content" source="media/manage-wdac/manage-wdac.png" alt-text="Screenshot that shows the Application control (WDAC) page on Azure portal." lightbox="media/manage-wdac/manage-wdac.png":::
 
+## Overview of WDAC policy design
+
+Microsoft provides the base signed policies for Azure Stack HCI, we deliver a block mode policy and audit mode policy. WDAC platform allows us to define the right set of properties, rule options and allow/deny rules in the policy, which gets updated on regular basis as part of the product continuous updates.
+
+### Composition of base policies
+
+The base policy for Azure Stack HCI allows all the Microsoft components delivered by the OS and the Cloud deployments to be trusted. 
+
+The composition of the base policy has 3 major sections:
+- Metadata: Defines unique properties of the policy like: Policy name, version, GUID
+- Option Rules: Defines the WDAC policies behaviours, supplemental policies can only differ from a very small set of the option rules tied to their based policy.
+- Allow/Deny Rules: These policies defines the code trust boundaries, it can be based on Publishers, Signers, File Hash etc.
+
+#### Option Rules:
+
+Currently the option rules enabled by the base policy are:
+Enforced Policy:
+   Enabled:UMCI
+   Required:WHQL
+   Enabled:Allow Supplemental Policies
+   Enabled:Revoked Expired As Unsigned
+   Disabled:Flight Signing
+   Enabled:Unsigned System Integrity Policy (Default)
+   Enabled:Dynamic Code Security
+   Enabled:Advanced Boot Options Menu
+   Disabled:Script Enforcement
+   Enabled:Managed Installer
+   Enabled:Update Policy No Reboot
+
+Audit Policy will add this option rule: 
+   Enabled:Audit Mode (Default)
+
+The full documented list of options rules can be found here: https://learn.microsoft.com/en-us/windows/security/application-security/application-control/windows-defender-application-control/design/select-types-of-rules-to-create#table-1-windows-defender-application-control-policy---policy-rule-options
+
+#### Allow/Deny Rules
+
+Additionally we do enable a set of block/deny rules that limits the user mode applications and kernel components we compile and update on regular basis that could potentially represent a risk on the secuirity posture of the solution.
+The default lists are publicly available in the WDAC feature documentation:
+
+Driver Block list: https://learn.microsoft.com/en-us/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules
+
+User Mode Block list: https://learn.microsoft.com/en-us/windows/security/application-security/application-control/windows-defender-application-control/design/applications-that-can-bypass-wdac
+
 ## Manage WDAC settings with PowerShell
 
 ### Enable WDAC policy modes
