@@ -45,6 +45,8 @@ Here are the known issues in this release:
 |---------|------------------|----------|
 |Update <!--27176454-->|Download operations don't terminate after the specified timeout of 6 hours. |Microsoft is actively working to resolve this issue. If you encounter this issue, contact Microsoft Support for next steps.|
 |Update <!--27210359-->|Update is in Failed state: DownloadFailed. Summary XML from ECE not present. |Microsoft is actively working to resolve this issue. If you encounter this issue, contact Microsoft Support for next steps.|
+| Updates <!--27625941--> | When applying a cluster update from 10.2311.5.6 to 10.2402.2.11 the `Get-SolutionUpdate` cmdlet may not respond and eventually fails with a RequestTimeoutException after approximately 10 minutes. This is likely to occur following an add or repair server scenario. | Use the `Start-ClusterGroup` and `Stop-ClusterGroup` cmdlets to restart the update service. </br><br> PS C:\ > Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group" \| Stop-ClusterGroup </br><br> Name OwnerNode State </br><br>  --------- ------- ---------- </br><br> Azure Stack HCI Update Service Cluster Group v-Host2   Offline </br><br> PS C:\ > Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group" \| Start-ClusterGroup </br><br> Name OwnerNode State </br><br>  --------- ------- ---------- </br><br> Azure Stack HCI Update Service Cluster Group v-Host2   Online
+
 
 ## Known issues from previous releases
 
