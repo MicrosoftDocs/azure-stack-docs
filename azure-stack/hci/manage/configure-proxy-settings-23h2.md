@@ -124,7 +124,7 @@ You must configure the proxy for Azure Arc-enabled servers before you register y
     [Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "Machine") 
     $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
     [Environment]::SetEnvironmentVariable("HTTP_PROXY", $null, "Machine")  
-    $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
+    $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
     $no_proxy = "" 
     [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine") 
     $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
