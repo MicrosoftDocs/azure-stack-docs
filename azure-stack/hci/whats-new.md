@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/04/2024
+ms.date: 04/16/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -17,7 +17,23 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-The following sections briefly describe the various features and enhancements in Azure Stack HCI, version 23H2 releases.
+There are 2 release trains for Azure Stack HCI, version 23H2: 2402 and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+
+# [2402 releases](#tab/2402releases)
+
+The 2402 release train includes the following releases:
+
+## Features and improvements in 2402.2
+
+This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes. Here's the list of enhancements:
+
+- **Region expansion** - Two new regions are now supported on your Azure Stack HCI: Southeast Asia and India Central. For more information, see [Azure Stack HCI supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+- **Deployment changes** - A permission check was added to the Azure portal deployment experience to check for sufficient permissions. For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
+- **Update changes** - A notification banner was included in the update experience that informs you when the new updates are available. For more information, see [Update your Azure Stack HCI via the Azure Update Manager](./update/azure-update-manager-23h2.md).
+
+## Features and improvements in 2402.1
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-1.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2402
 
@@ -44,6 +60,18 @@ Azure Stack HCI, version 23H2 solution is now supported in Australia. For more i
 ### New documentation for network considerations
 
 We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./plan/cloud-deployment-network-considerations.md).
+
+# [2311 releases](#tab/2311releases)
+
+The 2311 release train includes the following releases:
+
+## Features and improvements in 2311.5
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-5.md#fixed-issues) to understand the bug fixes.
+
+## Features and improvements in 2311.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2311-4.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2311.3
 
@@ -113,32 +141,6 @@ Starting with this release, the following workloads are generally available on A
 
 This section lists the new features and improvements in the 2311 release of Azure Stack HCI, version 23H2. Additionally, this section includes features and improvements that were originally released for 2310 starting with cloud-based deployment.
 
-### AKS on Azure Stack HCI, version 23H2
-
-Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. For more information, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
-
-The following Kubernetes cluster deployment and management capabilities are available:
-
-- **Simplified infrastructure deployment on Azure Stack HCI**. In this release, the infrastructure components of AKS on Azure Stack HCI 23H2 including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Stack HCI deployment. For more information, see [Deploy Azure Stack HCI cluster using the Azure portal (preview)](./deploy/deploy-via-portal.md).
-- **Integrated infrastructure upgrade on Azure Stack HCI**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Stack HCI 23H2. For more information, see [Infrastructure component updates for AKS on Azure Stack HCI (preview)](/azure/aks/hybrid/infrastructure-components).
-- **New Azure consistent CLI**. Starting with this preview release, a new consistent command line experience is available to create and manage Kubernetes clusters. <!--For more information, see [Azure CLI extension az akshybrid reference](https://learn.microsoft.com/cli/azure/akshybrid).-->
-- **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Stack HCI with familiar tools such as Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](/azure/aks/hybrid/aks-create-clusters-cli).
-- **Support upgrading a Kubernetes cluster using Azure CLI**. You can use the Azure CLI to upgrade the Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade an Azure Kubernetes Service (AKS) cluster (preview)](/azure/aks/hybrid/cluster-upgrade).
-- **Support Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Stack HCI. For more information, see [Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc](/azure/aks/hybrid/deploy-container-registry).
-- **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](/azure/aks/hybrid/manage-node-pools). 
-- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](/azure/aks/hybrid/aks-create-containers).
-
-### Support for web proxy
-
-This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings-23h2.md).
-
-### Removal of GMSA accounts
-
-In this release, the Group Managed Service Accounts (gMSA) created during the Active Directory preparation are removed. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
-
-<!--### Guest management operations via Azure CLI
-
-In this release, you can perform an extended set of guest management operations via the Azure CLI.-->
 
 ### Cloud-based deployment
 
@@ -189,6 +191,22 @@ Beginning this release, the following Azure Arc VM management capabilities are a
 - **Trusted launch for Azure Arc VMs**. Azure Trusted Launch protects VMs against boot kits, rootkits, and kernel-level malware. Starting this preview release, some of those Trusted Launch capabilities are available for Arc VMs on Azure Stack HCI.
     For more information, see [Trusted launch for Arc VMs](./manage/trusted-launch-vm-overview.md).
 
+
+### AKS on Azure Stack HCI, version 23H2
+
+Starting with this release, you can run Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI system. AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. For more information, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Simplified infrastructure deployment on Azure Stack HCI**. In this release, the infrastructure components of AKS on Azure Stack HCI 23H2 including the Arc Resource Bridge, Custom Location, and the Kubernetes Extension for the AKS Arc operator, are all deployed as part of the Azure Stack HCI deployment. For more information, see [Deploy Azure Stack HCI cluster using the Azure portal (preview)](./deploy/deploy-via-portal.md).
+- **Integrated infrastructure upgrade on Azure Stack HCI**. The whole lifecycle management of AKS Arc infrastructure follows the same approach as the other components on Azure Stack HCI 23H2. For more information, see [Infrastructure component updates for AKS on Azure Stack HCI (preview)](/azure/aks/hybrid/infrastructure-components).
+- **New Azure consistent CLI**. Starting with this preview release, a new consistent command line experience is available to create and manage Kubernetes clusters. <!--For more information, see [Azure CLI extension az akshybrid reference](https://learn.microsoft.com/cli/azure/akshybrid).-->
+- **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Stack HCI with familiar tools such as Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](/azure/aks/hybrid/aks-create-clusters-cli).
+- **Support upgrading a Kubernetes cluster using Azure CLI**. You can use the Azure CLI to upgrade the Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade an Azure Kubernetes Service (AKS) cluster (preview)](/azure/aks/hybrid/cluster-upgrade).
+- **Support Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Stack HCI. For more information, see [Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc](/azure/aks/hybrid/deploy-container-registry).
+- **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](/azure/aks/hybrid/manage-node-pools). 
+- **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](/azure/aks/hybrid/aks-create-containers).
+
 ### Security capabilities
 
 The new installations with this release of Azure Stack HCI start with a *secure-by-default* strategy. The new version #has a tailored security baseline coupled with a security drift control mechanism and a set of well-known security features enabled by default. This release provides:
@@ -196,6 +214,19 @@ The new installations with this release of Azure Stack HCI start with a *secure-
 - A tailored security baseline with over 300 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Stack HCI](../hci/concepts/secure-baseline.md).
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
+
+
+### Support for web proxy
+
+This release supports configuring a web proxy for your Azure Stack HCI system. You perform this optional configuration if your network uses a proxy server for internet access. For more information, see [Configure web proxy for Azure Stack HCI](./manage/configure-proxy-settings-23h2.md).
+
+### Removal of GMSA accounts
+
+In this release, the Group Managed Service Accounts (gMSA) created during the Active Directory preparation are removed. For more information, see [Prepare Active Directory](./deploy/deployment-prep-active-directory.md).
+
+<!--### Guest management operations via Azure CLI
+
+In this release, you can perform an extended set of guest management operations via the Azure CLI.-->
 
 ### Capacity management
 
@@ -208,6 +239,8 @@ For more information, see [Add server](./manage/add-server.md) and [Repair serve
 This release introduces the Resilient File System (ReFS) deduplication and compression feature designed specifically for active workloads, such as Azure Virtual Desktop (AVD) on Azure Stack HCI. Enable this feature using Windows Admin Center or PowerShell to optimize storage usage and reduce cost.
 
 For more information, see [Optimize storage with ReFS deduplication and compression in Azure Stack HCI](./manage/refs-deduplication-and-compression.md).
+
+---
 
 ## Next steps
 
