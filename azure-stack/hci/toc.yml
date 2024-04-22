@@ -413,6 +413,8 @@ items:
       href: concepts/plan-software-defined-networking-infrastructure-23h2.md
     - name: Network Controller overview
       href: concepts/network-controller-overview.md
+    - name: Datacenter Firewall overview
+      href: concepts/datacenter-firewall-overview.md
     - name: SDN Multisite overview
       href: concepts/sdn-multisite-overview.md
 
@@ -656,8 +658,6 @@ items:
         href: concepts/plan-software-defined-networking-infrastructure.md
       - name: Plan Network Controller
         href: concepts/network-controller.md
-      - name: Datacenter Firewall overview
-        href: concepts/datacenter-firewall-overview.md
       - name: Software Load Balancer overview
         href: concepts/software-load-balancer.md
       - name: RAS Gateway overview

@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/04/2024
+ms.date: 04/19/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -33,20 +33,22 @@ View the SMB signing status under the **Data protections** > **Network protectio
 
 ## View security baseline compliance in the Azure portal
 
-Once your Azure stack HCI cluster is enrolled with Microsoft Defender for Cloud or assigned the policy: "Windows machines should meet requirements of the Azure compute security baseline" this will generate a report for your servers. 
-The compliance score of the Azure Stack HCI Host Nodes (when all hardware requierements for Secured-Core are met)  is 281 our of 288 rules are compliant.
+After you've enrolled your Azure stack HCI system with Microsoft Defender for Cloud or assigned the built-in policy: Windows machines should meet requirements of the Azure compute security baseline, a report is generated for your servers.
 
-Below you can find the rationale of the current gap:
 
-|Name    |    State    |Expected    |Actual   | Logic    | Comments    |
-|--------------|-------------|----------------------|----------------------|----------------------|---------------------------------|
-Interactive logon: Message text for users attempting to log on	|Non-compliant	|Expected: | Actual: | Operator: NOTEQUALS	|We expect customer to define this value with no Drift control in place.
-Interactive logon: Message title for users attempting to log on	|Non-compliant	|Expected: | Actual: | Operator: NOTEQUALS	|We expect customer to define this value with no Drift control in place.
-Minimum password length	|Non-compliant	|Expected: 14 | Actual: 0 | Operator: GREATEROREQUAL|	We expect customer to define this value with no Drift control in place that aligns with their Organization policy.
-Prevent device metadata retrieval from the Internet	|Non-compliant	|Expected: 1 | Actual: (null) | Operator: EQUALS	ASM:  |This control does not apply to Azure Stack HCI.
-Prevent users and apps from accessing dangerous websites	|Non-compliant	|Expected: 1 | Actual: (null) | Operator: EQUALS	|This control is part of the Windows Defender protections, not enabled by default but customers can evaluate to enable it.
-Hardened UNC Paths - NETLOGON	|Non-compliant	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive, this can safely be ignored.
-Hardened UNC Paths - SYSVOL	|Non-compliant	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive, this can safely be ignored.
+For Azure Stack HCI server, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of the 288. This score indicates that 281 out of 288 rules are compliant.
+
+The following table explains the rules that are not compliant and the rationale of the current gap:
+
+|Rule name    |   Expected    |Actual   | Logic    | Comments    |
+|--------------|----------------------|----------------------|----------------------|---------------------------------|
+|Interactive logon: Message text for users attempting to log on|Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
+|Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
+|Minimum password length	|Expected: 14 | Actual: 0 | Operator: GREATEROREQUAL|	We expect you to define this value with no drift control in place that aligns with your organization's policy.|
+|Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: EQUALS|This control doesn't apply to Azure Stack HCI.|
+|Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: EQUALS|This control is a part of the Windows Defender protections, not enabled by default. You can evaulte whether you want to enable.|
+|Hardened UNC Paths - NETLOGON	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive. This rule can be safely ignored.|
+|Hardened UNC Paths - SYSVOL	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive. This rule can be safely ignored.|
 
 
 ## Manage security defaults with PowerShell
