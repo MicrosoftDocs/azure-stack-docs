@@ -6,13 +6,14 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 04/17/2024
 ---
+
 # What is Network Controller?
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-Network Controller is the cornerstone of Software Defined Networking (SDN) management. It is a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
+Network Controller is the cornerstone of Software Defined Networking (SDN) management. It's a highly scalable server role that provides a centralized, programmable point of automation to manage, configure, monitor, and troubleshoot virtual network infrastructure.
 
 Using Network Controller, you can automate the configuration and management of network infrastructure instead of performing manual configuration of network devices and services.
 
@@ -38,7 +39,7 @@ Network Controller supports Virtual Local Area Network (VLAN) based networks, Ne
 
 ## Firewall management
 
-This Network Controller feature allows you to configure and manage allow/deny firewall Access Control rules for your workload VMs for both internal (East/West) and external (North/South) network traffic in your datacenter. The firewall rules are plumbed in the vSwitch port of workload VMs, and so they are distributed across your workloads in the datacenter and move along with your workloads.
+This Network Controller feature allows you to configure and manage allow/deny firewall Access Control rules for your workload VMs for both internal (East/West) and external (North/South) network traffic in your datacenter. The firewall rules are plumbed in the vSwitch port of workload VMs, and so they're distributed across your workloads in the datacenter and move along with your workloads.
 
 Using the Northbound API, you can define the firewall rules for both incoming and outgoing traffic from the workload VMs. You can also configure each firewall rule to log the traffic that was allowed or denied by the rule.
 
@@ -64,7 +65,7 @@ To learn more about user-defined routes, see [Use Network Virtual Appliances on 
 
 ## Network Controller deployment considerations
 
-- Do not deploy the Network Controller server role on physical hosts. The Network Controller should be deployed on its own dedicated VMs.
+- Don't deploy the Network Controller server role on physical hosts. The Network Controller should be deployed on its own dedicated VMs.
 
 - You can deploy Network Controller in both domain and non-domain environments. In domain environments, Network Controller authenticates users and network devices by using Kerberos; in non-domain environments, you must deploy certificates for authentication.
 
@@ -78,4 +79,4 @@ For related information, see also:
 
 - [Plan to deploy Network Controller](network-controller.md)
 - [Deploy Network Controller using Windows PowerShell](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts)
-- [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)
