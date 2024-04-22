@@ -114,6 +114,7 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
  
     # [Output](#tab/output)
+
     Here's a sample output of the parameters:
 
     ```output
@@ -126,6 +127,8 @@ Before you begin, make sure you've completed the following prerequisites:
     ---
 1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
+    # [PowerShell](#tab/powershell)
+
     ```azurecli
     #Connect to your Azure account and Subscription
     Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
@@ -135,7 +138,9 @@ Before you begin, make sure you've completed the following prerequisites:
 
     #Get the Account ID for the registration
     $id = (Get-AzContext).Account.Id   
-    ``` 
+    ```
+
+    # [Output](#tab/output)
 
     Here's a sample output of setting the subscription and authentication:
 
@@ -151,8 +156,12 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
- 
+
+    ---
+
 1. Finally run the Arc registration script. The script takes a few minutes to run.
+
+    # [PowerShell](#tab/powershell)
 
     ```powershell
     #Invoke the registration script. Use a supported region.
@@ -160,6 +169,8 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
 
     If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
+
+    # [Output](#tab/output)
 
     Here's a sample output of a successful registration of your servers:
     
@@ -221,6 +232,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Report location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentReport.json
     Use -Passthru parameter to return results as a PSObject.   
     ```
+    ---
 
 1. After the script completes successfully on all the servers, verify that:
 
