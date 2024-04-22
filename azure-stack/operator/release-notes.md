@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/19/2024
+ms.date: 04/22/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
-ms.lastreviewed: 12/27/2023
+ms.lastreviewed: 04/22/2024
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -82,6 +82,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - With 2404 we are announcing the general availability of the [Azure Stack Hub Standard Load Balancer](../user/standard-load-balancer-considerations.md). This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
 - With 2404 we are announcing the general availability of [Azure Container Registry](container-registries-overview.md). Azure Container Registry is a private, secure, and close-to-compute registry for Windows container images, Linux container images, Helm charts, and other OCI artifacts. At no extra cost, it enables both connected and disconnected customers to quickly and reliably store, deploy, and manage container workloads through the user portal, PowerShell, Azure CLI, and/or Docker CLI. It also enables you to assign role-based access control (RBAC) and to create webhooks. Container Registry is now fully supported and fully integrated with other components of Azure Stack Hub, such as the Azure Kubernetes Service (AKS) engine. To install Container Registry, [follow the instructions here](container-registries-install.md).
+- With 2404 we are announcing the general availability of [Azure Site Recovery](azure-site-recovery-overview.md). Azure Site Recovery on Azure Stack Hub helps to ensure business continuity by replicating virtual machine (VM) workloads from a primary site to a secondary location. The GA version has a simplified deployment (no dependency services). Note that the transition from preview versions to GA requires a full reinstallation of the Azure Site Recovery solution (no upgrade path is be possible).
 
 <!-- ### Improvements -->
 
