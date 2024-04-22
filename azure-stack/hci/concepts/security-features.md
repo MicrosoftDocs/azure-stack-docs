@@ -44,7 +44,7 @@ Microsoft provides base signed policies including a block mode and an audit mode
 
 #### Composition of base policies
 
-The Azure Stack HCI base policy allows all the Microsoft components delivered by the OS and the cloud deployment to be trusted. 
+The Azure Stack HCI base policy allows all the Microsoft components delivered by the OS and the cloud deployments to be trusted. 
 
 A base policy consists of the following sections:
 
