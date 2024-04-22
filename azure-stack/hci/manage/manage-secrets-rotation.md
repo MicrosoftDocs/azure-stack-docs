@@ -64,7 +64,10 @@ PS C:\Users\MGMT>
 
 ## Change deployment service principal
 
-This section describes how you can change the service principal used for deployment. This scenario only applies when you have upgraded from Azure Stack HCI 2306 software to Azure Stack HCI, version 23H2.
+This section describes how you can change the service principal used for deployment. 
+
+> [!NOTE]
+> This scenario applies only when you upgraded Azure Stack HCI 2306 software to Azure Stack HCI, version 23H2.
 
 Follow these steps in to change the deployment service principal:
 
