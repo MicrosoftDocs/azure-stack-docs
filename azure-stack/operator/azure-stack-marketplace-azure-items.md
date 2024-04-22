@@ -3,7 +3,7 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/18/2022
+ms.date: 04/22/2024
 ms.author: sethm
 ms.reviewer: vrajasekaran
 ms.lastreviewed: 12/9/2020
@@ -105,4 +105,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![CipherTrust Cloud Key Manager](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust Cloud Key Manager](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Leveraging Microsoft Azure and other cloud provider Bring Your Own Key (BYOK) APIs, the CipherTrust Cloud Key Manager reduces key management complexity and operational costs by giving you multicloud lifecycle control of encryption keys with centralized management and visibility. | Thales eSecurity |
 | ![Veeam Backup & Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup & Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam&reg; Backup & Replication&trade; helps businesses achieve comprehensive data protection for all workloads -- virtual, physical, and cloud-based. With a single console, you can achieve fast, flexible, and reliable backup, recovery, and replication of all apps and data. | Veeam Software |
 | ![Versa Operating System (VOS)](media/azure-stack-marketplace-azure-items/versa.png) | [Versa Operating System (VOS)](https://azuremarketplace.microsoft.com/marketplace/apps/versanetworks.versa-operating-system?tab=Overview) | The Versa Operating System (VOS) is a comprehensive and advanced next-generation virtual appliance that brings the power of SD-WAN, SD-Routing and SD-Security into the Microsoft Azure cloud. | Versa Networks |
+| ![VyOS Universal Router](media/azure-stack-marketplace-azure-items/vyos.png) | [VyOS Universal Router](https://azuremarketplace.microsoft.com/marketplace/apps/sentriumsl.vyos-1-2-lts-on-azure?tab=Overview) | The VyOS Universal Router for Microsoft Azure is a network OS with multi-cloud support for BGP, Multicast, IPSEC, VXLAN, EVPN, WireGuard, OpenVPN, and SSTP.
+ | VyOS |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Business Continuity as a Service](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.stackbcaas) | ZeroDown&reg; Software technology provides businesses with continuous access to their company data via their Business Continuity as a Service (BCaaS)&trade; architecture, protecting apps, and transactions, if network interruptions occur that would normally hinder the enterprise. | ZeroDown Software |
