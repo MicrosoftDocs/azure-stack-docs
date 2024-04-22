@@ -15,6 +15,9 @@ ms.lastreviewed: 9/8/2020
 
 # Move a generalized VM from on-premises to Azure Stack Hub
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 You can add a virtual machine (VM) image from your on-premises environment. You can create your image as a virtual hard disk (VHD) and upload the image to a storage account in your Azure Stack Hub instance. You can then create a VM from the VHD.
 
 A generalized disk image is one that has been prepared with **Sysprep** to remove any unique information (such as user accounts), enabling it to be reused to create multiple VMs. Generalized VHDs are a good fit for when are creating images that the Azure Stack Hub cloud operator plans to use as marketplace items.

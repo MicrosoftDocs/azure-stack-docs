@@ -4,16 +4,16 @@ description: Configure network security groups with Windows Admin Center
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
-ms.date: 04/19/2023
+ms.date: 04/10/2024
 ---
 
 # Configure network security groups with Windows Admin Center
 
->Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+>Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This topic provides step-by-step instructions on how to use Windows Admin Center to create and configure network security groups (NSGs) to manage data traffic flow using Datacenter Firewall. It also provides instructions on managing network security groups on Software Defined Network (SDN) virtual and logical networks. You enable and configure Datacenter Firewall by creating network security groups and applying them to either a subnet or a network interface. To learn more, see [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md) To use PowerShell scripts to do this, see [Configure network security groups with PowerShell](use-datacenter-firewall-powershell.md).
 
-Before you configure network security groups, you need to deploy Network Controller. To learn about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md) To deploy Network Controller using PowerShell scripts, see [Deploy an SDN infrastructure](sdn-express.md).
+Before you configure network security groups, you need to deploy Network Controller. To learn about Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md) To deploy Network Controller using PowerShell scripts, see [Deploy an SDN infrastructure](../deploy/sdn-express-23h2.md).
 
 Additionally, if you want to apply network security groups to an SDN logical network, you need to first create a logical network. Likewise, if you want to apply network security groups to an SDN virtual network, you need to first create a virtual network. To learn more, see:
 
@@ -113,7 +113,7 @@ You can easily view all the network security groups in your cluster in a list.
 
 You can delete a network security group if you no longer need it.
 
->[!NOTE]
+> [!NOTE]
 > After you delete a network security group from the list of network security groups, ensure that it is not associated with either a subnet or a network interface.
 
 1. Under **Tools**, scroll down to the **Networking** area, and select **Network security groups**.
@@ -128,4 +128,4 @@ You can delete a network security group if you no longer need it.
 
 For more information, see also:
 
-- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
+- [Software Defined Networking (SDN) in Azure Stack HCI and Windows Server](../concepts/software-defined-networking-23h2.md)

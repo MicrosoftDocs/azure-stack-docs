@@ -10,6 +10,9 @@ ms.subservice: azure-stack-hci
 
 # Review requirements for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article lists the system requirements for migrating Hyper-V virtual machines (VMs) to Azure Stack HCI using Azure Migrate.
