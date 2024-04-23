@@ -660,13 +660,6 @@ items:
         href: concepts/plan-software-defined-networking-infrastructure.md
       - name: Plan Network Controller
         href: concepts/network-controller.md
-<<<<<<< HEAD
-      - name: Datacenter Firewall overview
-        href: concepts/datacenter-firewall-overview.md
-=======
-      - name: Software Load Balancer overview
-        href: concepts/software-load-balancer.md
->>>>>>> 0dd4d22ad766933f69c9edfe297ad3e47806207e
       - name: RAS Gateway overview
         href: concepts/gateway-overview.md
       - name: Route Reflector overview
