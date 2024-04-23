@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 04/23/2024
+ms.date: 04/22/2024
 ---
 
 # System requirements for Azure Stack HCI, version 23H2
