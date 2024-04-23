@@ -19,7 +19,7 @@ Azure Stack HCI is a hyperconverged system that allows you to repair servers fro
 
 Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace.
 
-Parts that support hot swap typically do not require you to reimage the server unlike the non hot-swappable components such as motherboard do. Consult your hardware manufacturer to determine which component replacements would require you to reimage the server. For more information, see [Component replacement](#component-replacement).
+Parts that support hot swap typically don't require you to reimage the server unlike the non hot-swappable components such as motherboard do. Consult your hardware manufacturer to determine which component replacements would require you to reimage the server. For more information, see [Component replacement](#component-replacement).
 
 ## Repair server workflow
 
@@ -110,12 +110,17 @@ This section describes how to repair a server using PowerShell, monitor the stat
 
 Make sure that you have reviewed the [prerequisites](#prerequisites). 
 
-Follow these steps on the server you are trying to repair.
+Follow these steps on the server you're trying to repair.
 
 1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
     > [!NOTE]
     > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
+
+2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+
+    > [!NOTE]
+    > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
 
 Follow these steps on another server that is a member of the same Azure Stack HCI cluster.
 
@@ -144,7 +149,7 @@ To monitor the progress of the add server operation, follow these steps:
 
 Following recovery scenarios and the recommended mitigation steps are tabulated for repairing a server:
 
-| Scenario description | Mitigation | Supported ? |
+| Scenario description | Mitigation | Supported? |
 |--|--|--|
 | Repair server operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`. | Yes |
 | Repair server operation succeeded partially but had to start with a fresh operation system install. | In this scenario, the orchestrator (also known as Lifecycle Manager) has already updated its knowledge store with the new server. Use the repair server scenario. | Yes |

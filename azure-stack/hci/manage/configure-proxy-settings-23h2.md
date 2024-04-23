@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Stack HCI, version 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 02/14/2024
+ms.date: 04/16/2024
 ---
 
 # Configure proxy settings for Azure Stack HCI, version 23H2
@@ -69,13 +69,16 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
         - IP address of each cluster member server.
         - Netbios name of each server.
         - Netbios cluster name.
-        - *.contoso.com.
+        - contoso.com.
         - Second IP address of the infrastructure pool.
+
+          > [!NOTE]
+          > The use of "\<local\>" is not supported in the proxy bypass list.
 
     Here's an example of the command usage:
 
     ```powershell
-    Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer proxy.contoso.com:8080 -ProxyBypass "localhost,127.0.0.1,.svc,node1,node2,s-cluster,192.168.0.2,192.168.0.3,*.contoso.com,192.168.0.10"
+    Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer proxy.contoso.com:8080 -ProxyBypass "localhost,127.0.0.1,svc,node1,node2,s-cluster,192.168.0.2,192.168.0.3,contoso.com,192.168.0.10"
     ```
 
 To remove the proxy configuration, run the PowerShell cmdlet `Set-WinInetProxy` without arguments.
@@ -121,7 +124,7 @@ You must configure the proxy for Azure Arc-enabled servers before you register y
     [Environment]::SetEnvironmentVariable("HTTPS_PROXY", $null, "Machine") 
     $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY", "Machine")
     [Environment]::SetEnvironmentVariable("HTTP_PROXY", $null, "Machine")  
-    $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
+    $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine") 
     $no_proxy = "" 
     [Environment]::SetEnvironmentVariable("NO_PROXY", $no_proxy, "Machine") 
     $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
@@ -139,7 +142,7 @@ You can configure proxy settings for Winhttp using the `netsh` command line util
 - Run the following command from the command prompt to manually configure the proxy server:
 
     ```cmd
-    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list=""localhost;127.0.0.1;.svc;node1;node2;scluster;192.168.0.2;192.168.0.3;*.contoso.com;192.168.0.10""
+    netsh winhttp set proxy Proxy_Server_Address:Proxy_Port bypass-list="localhost;127.0.0.1;.svc;node1;node2;scluster;192.168.0.2;192.168.0.3;*.contoso.com;192.168.0.10"
     ```
 
 - Run the following command from the command prompt to view or verify the current WinHTTP proxy server configuration:
@@ -153,9 +156,12 @@ You can configure proxy settings for Winhttp using the `netsh` command line util
   - IP address of each cluster member server.
   - Netbios name of each server.
   - Netbios cluster name.
-  - *.contoso.com.
+  - *.contoso.com. 
   - Second IP address of the infrastructure pool.
 
+    > [!NOTE]
+    > The use of "\<local\>" is not supported in the proxy bypass list.
+    
 - Run the following command from the command prompt to remove the proxy server configuration for Winhttp:
 
     ```cmd

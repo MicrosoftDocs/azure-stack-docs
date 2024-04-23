@@ -6,16 +6,16 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/05/2024
+ms.date: 04/23/2024
 ---
 
-# What is Software Load Balancer \(SLB\) for SDN?
+# What is Software Load Balancer (SLB) for SDN?
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Cloud Service Providers (CSPs) and enterprises that are deploying [Software Defined Networking (SDN)](software-defined-networking-23h2.md) can use Software Load Balancer (SLB) to evenly distribute tenant and tenant customer network traffic among virtual network resources. SLB enables multiple servers to host the same workload, providing high availability and scalability.
 
-Software Load Balancer can provide a multitenant, unified edge by integrating with SDN technologies such as [RAS Gateway](gateway-overview.md), [Datacenter Firewall](datacenter-firewall-overview.md), and [Route Reflector](route-reflector-overview.md). <!--update links if needed-->
+Software Load Balancer can provide a multitenant, unified edge by integrating with SDN technologies such as [RAS Gateway](gateway-overview.md), [Datacenter Firewall](datacenter-firewall-overview.md), and [Route Reflector](route-reflector-overview.md).
 
 > [!NOTE]
 > Multitenancy for VLANs is not supported by [Network Controller](network-controller-overview.md). However, you can use VLANs with SLB for service provider managed workloads, such as the datacenter infrastructure and high density web servers.
