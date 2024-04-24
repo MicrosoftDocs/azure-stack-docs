@@ -425,6 +425,8 @@ items:
       href: concepts/datacenter-firewall-overview.md
     - name: RAS Gateway overview
       href: concepts/gateway-overview.md
+    - name: Route Reflector overview
+      href: concepts/route-reflector-overview.md
     - name: SDN Multisite overview
       href: concepts/sdn-multisite-overview.md
 
@@ -433,7 +435,9 @@ items:
   - name: Release information for version 22H2
     href: release-information.md
   - name: Azure Hybrid Benefit
-    href: concepts/azure-hybrid-benefit-hci.md 
+    href: concepts/azure-hybrid-benefit-hci.md
+  - name: Review requirements for 22H2
+    href: concepts/system-requirements.md
   - name: Deploy version 22H2
     items:
     - name: 0. Download the Azure Stack HCI software
@@ -660,8 +664,6 @@ items:
         href: concepts/plan-software-defined-networking-infrastructure.md
       - name: Plan Network Controller
         href: concepts/network-controller.md
-      - name: Route Reflector overview
-        href: concepts/route-reflector-overview.md
     - name: Maintenance and security
       items:
       - name: Billing
