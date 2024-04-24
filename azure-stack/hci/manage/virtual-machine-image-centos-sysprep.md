@@ -46,9 +46,9 @@ The following sections provide detailed instructions for each step in the workfl
 
 Follow these steps on your Azure Stack HCI cluster to create a VM image using the Azure CLI.
 
-### Step 1: Create an CentOS VM
+### Step 1: Create a CentOS VM
 
-Follow these steps to use the downloaded Ubuntu image to provision a VM:
+Follow these steps to use the downloaded CentOS image to provision a VM:
 
 1. Use the downloaded image to create a VM with the following specifications: 
     1. Provide a friendly name for your VM. 
