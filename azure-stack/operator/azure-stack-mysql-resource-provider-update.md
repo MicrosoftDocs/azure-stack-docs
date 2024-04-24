@@ -27,7 +27,7 @@ When Azure Stack Hub releases a new build, we may release A new MySQL resource p
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-   |2206, 2301, 2306|MySQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+   |2206, 2301, 2306, 2311|MySQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |2108, 2206|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |     |     |     |
 
