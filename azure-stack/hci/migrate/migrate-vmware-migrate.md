@@ -114,4 +114,4 @@ Once you have verified that migration is complete and no more servers need to be
 
 ## Next steps
 
-- If you experience any issues during migration, see [Troubleshoot VMware migration issues](./migrate-vmware-troubleshoot.md).
+- If you experience any issues during migration, see [Troubleshoot VMware migration issues](./migrate-troubleshoot.md).
