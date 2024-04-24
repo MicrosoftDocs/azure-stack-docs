@@ -3,7 +3,7 @@ title: Use Azure Migrate to move VMware VMs to Azure Stack HCI (preview)
 description: Learn about how to use Azure Migrate to migrate VMware VMs to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 04/09/2024
+ms.date: 04/24/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -27,7 +27,7 @@ Here are the benefits of using Azure Migrate to migrate your on-premises VMware 
 
 - Requires no preparation for your VMware VMs including installation of agents prior to migration.
 - Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
-- Keeps the data flow local, from on-premises Hyper-V to Azure Stack HCI.
+- Keeps the data flow local, from on-premises VMware source servers to Azure Stack HCI.
 - Results in a minimal downtime for the VMs running on your on-premises VMware servers.
 
 ## Migration components
@@ -36,7 +36,7 @@ With Azure Migrate, you can choose to migrate your data from your on-premises VM
 
 The following diagram shows the migration process to your on-premises Azure Stack HCI cluster:
 
-:::image type="content" source="./media/migration-azure-migrate-vmware-overview/azure-migrate-workflow-1.png" alt-text="Diagram that shows a high-level workflow for VMware migration using Azure Migrate.":::
+:::image type="content" source="./media/migration-azure-migrate-vmware-overview/azure-migrate-vmware-workflow-1.png" alt-text="Diagram that shows a high-level workflow for VMware migration using Azure Migrate.":::
 
 The migration process requires the following components:
 
@@ -54,15 +54,15 @@ Here are the key phases of the migration process:
 
 |#  |Phase  |Description  |
 |---------|---------|---------|
-|1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project and an Azure Storage account in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-hyperv-prerequisites.md).         |
-|2.     |**Discover**       |Create and configure an Azure Migrate VMware appliance. Use this appliance to discover your on-premises source VMware servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-hyperv-replicate.md).          |
-|3.     |**Replicate**      |Create and configure the target appliance on your Azure Stack HCI. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate Hyper-V VMs](migrate-hyperv-replicate.md).         |
-|4.     |**Migrate, verify**|Once the replication is complete, select and migrate VMware VMs to your Azure Stack HCI. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMware VMs. <br><br> For more information, see [Migrate and verify Hyper-V VMs](./migrate-azure-migrate.md).         |
+|1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project and an Azure Storage account in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-vmware-prerequisites.md).         |
+|2.     |**Discover**       |Create and configure an Azure Migrate VMware appliance. Use this appliance to discover your on-premises source VMware servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-vmware-replicate.md).          |
+|3.     |**Replicate**      |Create and configure the target appliance on your Azure Stack HCI. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate Hyper-V VMs](migrate-vmware-replicate.md).         |
+|4.     |**Migrate, verify**|Once the replication is complete, select and migrate VMware VMs to your Azure Stack HCI. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMware VMs. <br><br> For more information, see [Migrate and verify VMware VMs](./migrate-azure-migrate.md).         |
 
 
 ## Next steps
 
 To prepare for VMware migration, see the following articles:
 
-- [Review the requirements](migrate-hyperv-requirements.md) for Hyper-V VM migration to Azure Stack HCI.
-- [Complete the prerequisites](migrate-hyperv-prerequisites.md) for Hyper-V VM migration to Azure Stack HCI.
+- [Review the requirements](migrate-vmware-requirements.md) for VMware VM migration to Azure Stack HCI.
+- [Complete the prerequisites](migrate-vmware-prerequisites.md) for VMware VM migration to Azure Stack HCI.
