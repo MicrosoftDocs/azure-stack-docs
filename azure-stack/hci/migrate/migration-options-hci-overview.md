@@ -61,5 +61,5 @@ The following manual migration options are available:
 ## Next steps
 
 To learn more about migration using Azure Migrate, see:
-- [Hyper-V migration to Azure Stack HCI ](./migration-azure-migrate-hci-overview.md).
+- [Hyper-V migration to Azure Stack HCI](./migration-azure-migrate-hci-overview.md).
 - [VMware migration to Azure Stack HCI](./migration-azure-migrate-vmware-overview.md).

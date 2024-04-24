@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Stack HCI using Azur
 description: Learn the system requirements for VMware migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/09/2024
+ms.date: 04/24/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -57,17 +57,17 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 - VMware server is supported for both standalone server and cluster configuration.
 
-    You can discover and migrate standalone (non-highly available) VMs on standalone VMware hosts. However, standalone VMware VMs hosted on clustered VMware hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
+    CHECK You can discover and migrate standalone (non-highly available) VMs on standalone VMware hosts. However, standalone VMware VMs hosted on clustered VMware hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
 
-- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with this minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
+- The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 
 - In this release, you can only migrate VMs that have disks attached to the cluster shared volumes (CSV). If the VM disks aren't attached to the CSV, the disks can’t be migrated.
 
-- Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
+- CHECK Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
 ## Target Azure Stack HCI cluster requirements
 
-- The target Azure Stack HCI cluster OS must be running version 23H2.
+- The target Azure Stack HCI cluster OS must be version 23H2.
 
 - An Arc Resource Bridge must exist on the Azure Stack HCI, version 23H2 system for migration. The Arc Resource Bridge is automatically created during the deployment. To verify that an Arc Resource Bridge exists on your Azure Stack HCI system, see [Deploy using Azure portal](../deploy/deploy-via-portal.md).  
 
@@ -77,7 +77,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 ## Azure Migrate project requirements
 
-Existing Azure Migrate customers that have already done VM discovery need to [create a new Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Stack HCI. You cannot use existing Azure Migrate projects for migration.
+If you have an existing Azure Migrate project with VM discovery complete, you need to [create a new Azure Migrate project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Stack HCI. You can't use existing Azure Migrate projects for migration.
 
 ## Next steps
 
