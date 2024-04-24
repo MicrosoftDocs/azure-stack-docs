@@ -435,7 +435,9 @@ items:
   - name: Release information for version 22H2
     href: release-information.md
   - name: Azure Hybrid Benefit
-    href: concepts/azure-hybrid-benefit-hci.md 
+    href: concepts/azure-hybrid-benefit-hci.md
+  - name: Review requirements for 22H2
+    href: concepts/system-requirements.md
   - name: Deploy version 22H2
     items:
     - name: 0. Download the Azure Stack HCI software
