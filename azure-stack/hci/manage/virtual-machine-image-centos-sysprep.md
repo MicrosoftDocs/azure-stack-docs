@@ -33,8 +33,9 @@ Follow these steps to prepare an CentOS image and create a VM image from that im
 1. [Configure the VM](#step-2-configure-vm).
 1. [Clean up the residual configuration](#step-3-clean-up-residual-configuration).
 1. [Create an CentOS VM image](#step-4-create-vm-image).
-1. [Deploy the VM](#step-5-deploy-vm).
-1. [Validate deployment]().
+1. [Deploy the VM](#step-5-create-the-vhd-vm).
+1. [Deploy the VM](#step-6-deploy-the-vm).
+1. [Validate deployment](#step-7-validate-deployment).
 
 The following sections provide detailed instructions for each step in the workflow.
 
@@ -66,22 +67,22 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 
 1. Select **Assign Memory**, then enter `4096` for **Startup memory**:
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-assign-memory.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/centos-virtual-machine-assign-memory.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-assign-memory.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-assign-memory.png":::
 
 1. Disable secure boot on the VM.
     1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**.
     1. In the left pane, select the **Security** tab. Then under **Secure Boot**, uncheck **Enable Secure Boot**.
     1. Apply the changes. On the next boot, the VM boots without the secure mode.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-secure-boot-disabled.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/centos-virtual-machine-secure-boot-disabled.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-secure-boot-disabled.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-secure-boot-disabled.png":::
 
 Here are several example screenshots of CentOS installation pages:
 
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-1.png" alt-text="Screenshot of CentOS management page 1." lightbox="../manage/media/virtual-machine-image-linux-sysprep/centos-1.png":::
+:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-1.png" alt-text="Screenshot of CentOS management page 1." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-1.png":::
 
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-2.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-linux-sysprep/centos-2.png":::
+:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-2.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-2.png":::
 
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-3.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-linux-sysprep/centos-3.png":::
+:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-3.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-3.png":::
 
 ### Step 2: Configure VM
 
@@ -197,7 +198,7 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
 
     :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/validation-2.png" alt-text="Screenshot of example output for validation 2." lightbox="../manage/media/virtual-machine-image-centos-sysprep/validation-2.png":::
 
-### Create the VHD
+### Step 5: Create the VHD
 
 Export a VHD or copy the VHD from your VM. Run the following command to obtain the path:
 
@@ -208,7 +209,7 @@ Get-VMHardDiskDrive -VMName "centos7-3"
 Where in this example the path would be: *<Get-VMHardDiskDrive -VMName "centos7-3">.Path*
 
 
-### Deploy the VM
+### Step 6: Deploy the VM
 
 1. To get `the CustomLocationId` needed for the next step, run the following command and make note of the value:
 
@@ -230,7 +231,7 @@ Where in this example the path would be: *<Get-VMHardDiskDrive -VMName "centos7-
     --authentication-type all --nics $vmNic --custom-location $clid  `--hardware-profile memory-mb="1024" processors="1" vm-size="Custom"
     ```
 
-### Validate deployment
+### Step 7: Validate deployment
 
 Validate your VM deployment from a ssh console (Example: `ssh -l admin 192.168.200.23`), and then run the following command from the VM to get status output:
 
@@ -239,7 +240,7 @@ sudo systemctl status mocguestagent
 ```
 
 **Example status output:**
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/validation-3.png" alt-text="Screenshot of example output for validation." lightbox="../manage/media/virtual-machine-image-linux-sysprep/centos-virtual-machine-secure-boot-disabled.png":::
+:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/validation-3.png" alt-text="Screenshot of example output for validation." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-secure-boot-disabled.png":::
 
 ## Next steps
 
