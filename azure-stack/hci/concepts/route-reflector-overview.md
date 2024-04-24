@@ -6,7 +6,7 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/09/2024
+ms.date: 04/24/2024
 ---
 
 # What is Route Reflector?

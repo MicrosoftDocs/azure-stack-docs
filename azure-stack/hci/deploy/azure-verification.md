@@ -1,5 +1,5 @@
 ---
-title: Azure verification for VMs
+title: Azure verification for VMs on Azure Stack HCI
 description: Learn about the Azure verification for VMs feature on Azure Stack HCI.
 author: sethmanheim
 ms.author: sethm
@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 03/05/2024
+ms.date: 04/18/2024
 ms.lastreviewed: 03/05/2024
 ---
 
@@ -19,30 +19,33 @@ Microsoft Azure offers a range of differentiated workloads and capabilities that
 
 *Azure verification for VMs* makes it possible for supported Azure-exclusive workloads to work outside of the cloud. This feature, modeled after the [IMDS attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service in Azure, is a built-in platform attestation service that is enabled by default on Azure Stack HCI 23H2 or later. It helps to provide guarantees for these VMs to operate in other Azure environments.
 
-For more information about the previous version of this feature on Azure Stack HCI 22H2 or earlier, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
+For more information about the previous version of this feature on Azure Stack HCI, version 22H2 or earlier, see [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md).
 
 ## Benefits available on Azure Stack HCI
 
 Azure verification for VM enables you to use these benefits available only on Azure Stack HCI:
 
-| Workload                                 | What it is                           | How to get benefits                                                                                                                                                                                                                                                                       |
+| Workload                                 | What it's                           | How to get benefits                                                                                                                                                                                                                                                                       |
 |------------------------------------------|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Extended Security Update (ESUs)          | Get security updates at no extra cost for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md). | You must enable [Legacy OS support](#legacy-os-support) for older VMs running version Windows Server 2012/Windows 7 or earlier.|
-| Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Stack HCI using Azure VM verification. <br/> Licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing). | Activated automatically for VMs running version Windows 11 multi-session with 11B update (22H2: KB5032190, 21H2: KB5032192) or later. You must enable [legacy OS support](#legacy-os-support) for VMs running version Windows 10 multi-session. |
-| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/windows-server/get-started/azure-edition) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md?tabs=azure-portal).         | Activated automatically for VMs running Windows Server Azure Edition 2022 with 11B update (KB5032198) or later. |
-| Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.13 or later. |
+| Extended Security Update (ESUs)          | Get security updates at no extra cost for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md). | You must enable [Legacy OS support](#legacy-os-support) for older VMs running version Windows Server 2012 or earlier with [Latest Servicing Stack Updates](https://msrc.microsoft.com/update-guide/advisory/ADV990001).|
+| Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Stack HCI using Azure VM verification. <br/> Licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing). | Activated automatically for VMs running version Windows 11 multi-session with 4B update released on April 9, 2024 (22H2: [KB5036893](https://support.microsoft.com/topic/april-9-2024-kb5036893-os-builds-22621-3447-and-22631-3447-a674a67b-85f5-4a40-8d74-5f8af8ead5bb), 21H2: [KB5036894](https://support.microsoft.com/topic/april-9-2024-kb5036894-os-build-22000-2899-165dd6e1-74be-45b7-84e3-0f2a25d375f3)) or later. You must enable [legacy OS support](#legacy-os-support) for VMs running version Windows 10 multi-session with 4B update released on April 9, 2024  [KB5036892](https://support.microsoft.com/topic/april-9-2024-kb5036892-os-builds-19044-4291-and-19045-4291-cb5d2d42-6b10-48f7-829a-be7d416a811b) or later. |
+| Windows Server Datacenter: Azure Edition | Azure Edition VMs can run only on Azure infrastructure. Activate your [Windows Server Azure Edition](/windows-server/get-started/azure-edition) VMs and use the latest Windows Server innovations and other exclusive features. <br/> Licensing requirements still apply. See ways to [license Windows Server VMs on Azure Stack HCI](../manage/vm-activate.md?tabs=azure-portal).         | Activated automatically for VMs running Windows Server Azure Edition 2022 with 4B update released on April 9, 2024 ([KB5036909](https://support.microsoft.com/topic/april-9-2024-kb5036909-os-build-20348-2402-36062ce9-f426-40c6-9fb9-ee5ab428da8c)) or later. |
+| Azure Policy guest configuration         | Get [Azure Policy guest configuration](/azure/governance/policy/concepts/guest-configuration) at no cost. This Arc extension enables the auditing and configuration of OS settings as code for servers and VMs. | Arc agent version 1.39 or later. See [Latest Arc agent release](/azure/azure-arc/servers/agent-release-notes). |
+
+> [!NOTE]
+> To ensure continued functionality, update your VMs on Azure Stack HCI to the latest cumulative update by June 17, 2024. This update is essential for VMs to continue using Azure benefits. See the [Azure Stack HCI blog post](https://techcommunity.microsoft.com/t5/azure-stack-blog/apply-critical-update-for-azure-stack-hci-vms-to-maintain-azure/ba-p/4115023) for more information.
 
 ## Architecture
 
-This section is optional reading, and explains more about how Azure VM verification on HCI works "under the hood."
+This section is optional reading, and explains more about how Azure VM verification on Azure Stack HCI works "under the hood."
 
 Azure VM verification relies on a built-in platform attestation service on Azure Stack HCI. This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, and returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
 
 :::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture." lightbox="media/azure-verification/verification-architecture.png":::
 
-1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets ([i.e., VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
+1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets that is, ([VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
 
-   **[Legacy OS support](#legacy-os-support)**: Workloads that cannot make Win32 API calls or directly query an integration service must enable Legacy OS support. This setting provides a private and non-routable REST endpoint to VMs on the same server.
+   **[Legacy OS support](#legacy-os-support)**: Workloads that can't make Win32 API calls or directly query an integration service must enable Legacy OS support. This setting provides a private and nonroutable REST endpoint to VMs on the same server.
 
      To enable this endpoint, an internal vSwitch is configured on the Azure Stack HCI server (named **AZSHCI_HOST-IMDS_DO_NOT_MODIFY**). After that, VMs must have a NIC configured (**AZSHCI_GUEST-IMDS_DO_NOT_MODIFY**) and attached to the same vSwitch.
 
@@ -54,28 +57,32 @@ Azure VM verification relies on a built-in platform attestation service on Azure
    > [!NOTE]
    > Certificates are renewed every time the Azure Stack HCI cluster syncs with Azure, and each renewal is valid for 30 days. As long as you maintain the usual 30 day connectivity requirements for Azure Stack HCI, no user action is required to renew certificates.
 
-3. To activate benefits, consumer workloads request attestation from servers. They try to send requests via VMBus, or they can also query the REST endpoint using the networking components configured in legacy OS support. Both approaches for VM-server communication are supported and can coexist on the same cluster.
+3. To activate benefits, consumer workloads request attestation from servers. They try to send requests via VM Bus, or they can also query the REST endpoint using the networking components configured in legacy OS support. Both approaches for VM-server communication are supported and can coexist on the same cluster.
 
    > [!NOTE]
    > When using legacy OS support, you must manually enable access for VMs that require the activation of benefits.
 
     HciSvc then returns a signed response using the Azure certificate it stored. Consumers verify the response and activate associated benefits.
 
-## Tutorial: managing Azure VM verification
+## Manage Azure VM verification
 
 Azure VM verification is automatically enabled by default in Azure Stack HCI 23H2 or later. The following instructions outline the prerequisites for using this feature and steps for managing benefits (optional).
 
 > [!NOTE]
 > To enable Extended Security Updates (ESUs), you must do additional setup and turn on [legacy OS support](#legacy-os-support).
 
-### Prerequisites
+### Host prerequisites
 
-- [Update your Azure Stack HCI cluster](../manage/update-cluster.md): minimum version 23H2 or later.
-- [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): all servers must be online and registered to Azure.
+- Make sure that you have access to an Azure Stack HCI, version 23H2 system. All servers must be online, registered, and cluster deployed. For more information, see [Register your servers with Arc](./deployment-arc-register-server-permissions.md) and see [Deploy via Azure portal](deploy-via-portal.md).
 - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
-- Update your VMs: see [version requirements for workloads](#benefits-available-on-azure-stack-hci).
-- Turn on Hyper-V Guest Service Interface: See the instructions [for WAC](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
-- (optional) If you are using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
+- (Optional) If you're using Windows Admin Center, you must install Cluster Manager extension (version 2.319.0) or later.
+
+### VM prerequisites
+
+- Make sure to update your VMs. See the [version requirements for workloads](#benefits-available-on-azure-stack-hci).
+
+- Turn on Hyper-V Guest Service Interface. See the instructions for [Windows Admin Center](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
+
 
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
 
@@ -94,7 +101,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 ### Troubleshoot servers
 
 - Under the **Server** tab, if one or more servers appear as **Expired**:
-  - If the server has not synced with Azure for more than 30 days, its status appears as **Expired** or **Inactive**. Click on **Sync with Azure** to schedule a manual sync.
+  - If the server hasn't synced with Azure for more than 30 days, its status appears as **Expired** or **Inactive**. Select on **Sync with Azure** to schedule a manual sync.
 
 ### Manage benefits activated on VMs
 
@@ -105,7 +112,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
    - **Active benefits**: These VMs have Azure-exclusive features activated via Azure VM verification.
    - **Inactive benefits**: These VMs have Azure-exclusive features that need further action before activation.
    - **Unknown**: We can't determine the eligible benefits for these VMs because Hyper-V data exchange is turned off. See the following troubleshooting section.
-   - **No applicable benefits**: These VMs do not have Azure-exclusive features and hence do not require Azure VM verification.
+   - **No applicable benefits**: These VMs don't have Azure-exclusive features and hence don't require Azure VM verification.
 
 3. The table displays the **Eligible benefit** that is applicable for each VM. See the [full list of benefits available on Azure Stack HCI](#benefits-available-on-azure-stack-hci).
 
@@ -139,7 +146,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### Troubleshoot servers
 
-- If Azure VM verification for one or more servers is not yet synced and renewed with Azure, it might appear as **Expired** or **Inactive**. Schedule a manual sync:
+- If Azure VM verification for one or more servers isn't yet synced and renewed with Azure, it might appear as **Expired** or **Inactive**. Schedule a manual sync:
 
   ```powershell
   Sync-AzureStackHCI
@@ -187,7 +194,7 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
 
 ### [Azure CLI](#tab/azurecli)
 
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification following these steps:
 
@@ -317,11 +324,11 @@ You must enable legacy OS networking for any new VMs that you create after the f
 
 ### [Azure portal](#tab/azureportal)
 
-You cannot view legacy OS support from the Azure portal at this time.
+You can't view legacy OS support from the Azure portal at this time.
   
 ### [Azure CLI](#tab/azurecli)
 
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification by following these steps:
 
@@ -356,31 +363,31 @@ See the [full list here](#benefits-available-on-azure-stack-hci).
 
 ### Does it cost anything to enable Azure VM verification?
 
-No, turning on Azure VM verification incurs no extra fees.
+No. Turning on Azure VM verification incurs no extra fees.
 
 ### Can I use Azure VM verification on environments other than Azure Stack HCI?
 
-No, Azure VM verification is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
+No. Azure VM verification is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
 
 ### If I just upgraded to 23H2 from 22H2, and I previously turned on the Azure Benefits feature, do I need to do anything new?
 
-If you upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VMBus in 23H2, make sure that you have [the required prerequisites](#prerequisites).
+If you upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI](../manage/azure-benefits.md) set up for your workloads, you don't need to do anything when you upgrade to 23H2. When you upgrade, the feature remains enabled, and legacy OS support is turned on as well. However, if you want to use an improved way of doing VM-to-host communication through VM Bus in 23H2, make sure that you have the required [host prerequisites](#host-prerequisites) and the [VM prerequisites](#vm-prerequisites).
 
 ### I just set up Azure VM verification on my cluster. How do I ensure that Azure VM verification stays active?
 
-- In most cases, there is no user action required. Azure Stack HCI automatically renews Azure VM verification when it syncs with Azure.
+- In most cases, there's no user action required. Azure Stack HCI automatically renews Azure VM verification when it syncs with Azure.
 - However, if the cluster disconnects for more than 30 days and Azure VM verification shows as **Expired**, you can manually sync using PowerShell and Windows Admin Center. For more information, see [syncing Azure Stack HCI](../faq.yml#what-happens-if-the-30-day-limit-is-exceeded).
 
 ### What happens when I deploy new VMs, or delete VMs?
 
-- When you deploy new VMs that require Azure VM verification, they are automatically activated if they have the correct [prerequisites](#prerequisites).
+- When you deploy new VMs that require Azure VM verification, they're automatically activated if they have the correct [VM prerequisites](#vm-prerequisites).
 
 - However, for legacy VMs using legacy OS support, you can manually add new VMs to access Azure VM verification using Windows Admin Center or PowerShell, using the [preceding instructions](#legacy-os-support).
 - You can still delete and migrate VMs as usual. The NIC **AZSHCI_GUEST-IMDS_DO_NOT_MODIFY** still exists on the VM after migration. To clean up the NIC before migration, you can remove VMs from Azure VM verification using Windows Admin Center or PowerShell using the preceding instructions for legacy OS support, or you can migrate first and manually delete NICs afterwards.
 
 ### What happens when I add or remove servers?
 
-- When you add a server, it's automatically activated if it has the correct [prerequisites](#prerequisites).
+- When you add a server, it's automatically activated if it has the correct [Host prerequisites](#host-prerequisites).
 - If you're using legacy OS support, you might need to manually enable these servers. Run `Enable-AzStackHCIAttestation [[-ComputerName] <String>]` in PowerShell. You can still delete servers or remove them from the cluster as usual. The vSwitch **AZSHCI_HOST-IMDS_DO_NOT_MODIFY** still exists on the server after removal from the cluster. You can leave it if you're planning to add the server back to the cluster later, or you can remove it manually.
 
 ## Next steps
