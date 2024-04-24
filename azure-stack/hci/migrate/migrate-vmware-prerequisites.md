@@ -22,7 +22,7 @@ The following list contains the prerequisites that must be met to migrate VMware
 
 |Prerequisite|Applies to|More information|
 |--|--|--|
-|Open required Vmware firewall ports.|source|CHECK [Port access](/azure/migrate/migrate-support-matrix-vmware-migration#port-requirements-agentless)<br>TCP port 443 inbound.|
+|Open required VMware firewall ports.|source|CHECK [Port access](/azure/migrate/migrate-support-matrix-vmware-migration#port-requirements-agentless)<br>TCP port 443 inbound.|
 |Open required Hyper-V firewall ports.|target|[Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).<br>[URL access](/azure/migrate/migrate-appliance#url-access).|
 |Configure SAN policy on VMware VMs.|source|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
 |Deploy, configure, and register an Azure Stack HCI cluster.|target|[Create and register an Azure Stack HCI cluster](../deploy/deployment-introduction.md).|
