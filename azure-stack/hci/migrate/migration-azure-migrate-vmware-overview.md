@@ -41,11 +41,11 @@ The following diagram shows the migration process to your on-premises Azure Stac
 The migration process requires the following components:
 
 - An Azure Migrate project. Both the source and target appliances need to be registered with this project.
-- Azure Migrate appliance running on your on-premises VMware Hyper-V servers. The VMware source servers host the VMs that you want to migrate.
-- Target appliance running on your on-premises Azure Stack HCI cluster. The target cluster hosts the VMs that you migrated from your VMware source Hyper-V environment.
+- Azure Migrate appliance running on your on-premises VMware servers. The VMware source servers host the VMs that you want to migrate.
+- Target appliance running on your on-premises Azure Stack HCI cluster. The target cluster hosts the VMs that you migrated from your VMware source environment.
 
 > [!NOTE]
-> The Azure Migrate project is used to discover the VMware VMs and replicate them to the target Azure Stack HCI cluster. The associated Azure Storage account serves as a cache to store the metadata and the replication data.
+> The Azure Migrate project is used to discover the VMware VMs and replicate them to the target Azure Stack HCI cluster. The VMware VM disks and data that are being migrated are not stored in the associated Azure Storage account. Only the metadata and the replication date is stored in Storage account.
 
 ## Migration phases
 
@@ -55,8 +55,8 @@ Here are the key phases of the migration process:
 |#  |Phase  |Description  |
 |---------|---------|---------|
 |1.     |**Prepare**        |Prepare to migrate by completing the migration prerequisites. Deploy, configure, and register your Azure Stack HCI cluster. This cluster is the migration target. Create an Azure Migrate project and an Azure Storage account in Azure.<br><br> For more information, see [Review prerequisites for Azure Migrate](migrate-vmware-prerequisites.md).         |
-|2.     |**Discover**       |Create and configure an Azure Migrate VMware appliance. Use this appliance to discover your on-premises source VMware servers. <br><br> For more information, see [Discover Hyper-V VMs](migrate-vmware-replicate.md).          |
-|3.     |**Replicate**      |Create and configure the target appliance on your Azure Stack HCI. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate Hyper-V VMs](migrate-vmware-replicate.md).         |
+|2.     |**Discover**       |Create and configure an Azure Migrate source appliance on VMware. Use this appliance to discover your on-premises source VMware servers. <br><br> For more information, see [Discover VMware VMs](migrate-vmware-replicate.md).          |
+|3.     |**Replicate**      |Create and configure the target appliance on your Azure Stack HCI. Select and replicate the VMs that were discovered in the previous step. <br><br> For more information, see [Replicate VMware VMs](migrate-vmware-replicate.md).         |
 |4.     |**Migrate, verify**|Once the replication is complete, select and migrate VMware VMs to your Azure Stack HCI. After the migration is complete, verify that the VMs have booted successfully and the data has migrated properly. You can now pause the replication and decommission the source VMware VMs. <br><br> For more information, see [Migrate and verify VMware VMs](./migrate-vmware-migrate.md).         |
 
 
