@@ -33,7 +33,7 @@ Follow these steps to prepare an CentOS image and create a VM image from that im
 1. [Configure the VM](#step-2-configure-vm).
 1. [Clean up the residual configuration](#step-3-clean-up-residual-configuration).
 1. [Create an CentOS VM image](#step-4-create-vm-image).
-1. [Deploy the VM](#step-5-create-the-vhd-vm).
+1. [Deploy the VM](#step-5-create-the-vhd).
 1. [Deploy the VM](#step-6-deploy-the-vm).
 1. [Validate deployment](#step-7-validate-deployment).
 
