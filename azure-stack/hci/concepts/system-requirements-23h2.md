@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 01/31/2024
+ms.date: 04/22/2024
 ---
 
 # System requirements for Azure Stack HCI, version 23H2
@@ -34,6 +34,11 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
    - East US
    - West Europe
    - Australia East
+   - Southeast Asia
+   - India Central
+   - Canada Central
+   - Japan East
+   - South Central US
 
 ## Server and storage requirements
 
@@ -47,7 +52,7 @@ Before you begin, make sure that the physical server and storage hardware used t
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
 |Boot drive|A minimum size of 200 GB size.|
-|Data drives|At least 2 disks with a minimum capacity of 500 GB (SSD or HDD).|
+|Data drives|At least 2 disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.|
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 
