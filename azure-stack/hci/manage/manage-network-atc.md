@@ -177,7 +177,7 @@ $clusterOverride = New-NetIntentGlobalClusterOverrides
 
 The 'clusterOverride' variable has the following properties: 
 
-:::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object." lightbox="media/manage-network-atc/cluster-override.png"::: 
+:::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object." lightbox="media/manage-network-atc/cluster-override.png":::
 
 Once you set any property for the override, you can add it as a GlobalOverride for your cluster with the following command:
 
@@ -397,7 +397,7 @@ Network ATC ensures that the deployed configuration stays the same across all cl
 1. Modify one of the physical adapter's MTU without specifying an override. This emulates an accidental change or "configuration drift", which must be remediated.
 
     ```powershell
-    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryKeyword *JumboPacket -RegistryValue 4088
+    Set-NetAdapterAdvancedProperty -Name pNIC01 -RegistryKeyword *JumboPacket -RegistryValue 4088
     ```
 
 1. Verify that the adapter's existing MTU (JumboPacket) value has been modified:

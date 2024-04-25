@@ -1,22 +1,18 @@
 ---
-title: Get remote support for Azure Stack HCI (preview)
-description: This topic provides guidance on how to get remote support for the Azure Stack HCI operating system.
+title: Get remote support for Azure Stack HCI
+description: Learn how to get remote support for the Azure Stack HCI operating system.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 06/14/2023
+ms.date: 03/29/2024
 ---
 
-# Get remote support for Azure Stack HCI (preview)
+# Get remote support for Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
 
-> [!IMPORTANT]
-> Remote support for Azure Stack HCI is currently in preview.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) for legal terms that apply to Azure features that are in beta, preview, or otherwise not yet released into general availability.
-
-This topic provides guidance on how to get remote support for your Azure Stack HCI operating system.
+This article provides guidance on how to get remote support for your Azure Stack HCI operating system.
 
 You can use remote support to allow a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent while controlling the access level and
 duration of access. Microsoft support can access your device only after a [support request is submitted](/azure/azure-portal/supportability/how-to-create-azure-support-request).
@@ -24,7 +20,7 @@ duration of access. Microsoft support can access your device only after a [suppo
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses the HTTPS protocol over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the
 access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
-:::image type="content" source="media/remote-support/remote-support-workflow.png" alt-text="Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/remote-support/remote-support-workflow.png" :::
+:::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
 
 ## Why use remote support?
 
@@ -89,11 +85,11 @@ If you are using a proxy with Azure Stack HCI, include the following endpoints i
 - \*.servicebus.windows.net
 - \*.core.windows.net
 - login.microsoftonline.com
-- https\://edgesupprdwestuufrontend.westus2.cloudapp.azure.com
-- https\://edgesupprdwesteufrontend.westeurope.cloudapp.azure.com
-- https\://edgesupprdeastusfrontend.eastus.cloudapp.azure.com
-- https\://edgesupprdwestcufrontend.westcentralus.cloudapp.azure.com
-- https\://edgesupprdasiasefrontend.southeastasia.cloudapp.azure.com
+- https\://asztrsprod.westus2.cloudapp.azure.com
+- https\://asztrsprod.westeurope.cloudapp.azure.com
+- https\://asztrsprod.eastus.cloudapp.azure.com
+- https\://asztrsprod.westcentralus.cloudapp.azure.com
+- https\://asztrsprod.southeastasia.cloudapp.azure.com
 - https\://edgesupprd.trafficmanager.net
 
 ### Install JEA configurations (before Azure registration)
@@ -115,13 +111,13 @@ For example scenarios that show how to perform various operations to grant remot
 
 Install the Remote Support extension from the Windows Admin Center Extensions feed. Make sure that the Remote Support extension is updated to the latest version if already installed.
 
-:::image type="content" source="media/remote-support/remote-support-extension-feed.png" alt-text="Screenshot of the Extensions page that displays Remote Support as available extension." lightbox="media/remote-support/remote-support-extension-feed.png":::
+:::image type="content" source="media/get-remote-support/remote-support-extension-feed.png" alt-text="Screenshot of the Extensions page that displays Remote Support as available extension." lightbox="media/get-remote-support/remote-support-extension-feed.png":::
 
 ### Grant remote support access
 
 Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands. You must have domain admin account to complete this step. Carefully read the [remote support terms and conditions](#remote-support-terms-and-conditions) before granting access.
 
-:::image type="content" source="media/remote-support/remote-support-hci-grant-access.png" alt-text="Screenshot of grant remote support access options" lightbox="media/remote-support/remote-support-hci-grant-access.png":::
+:::image type="content" source="media/get-remote-support/remote-support-hci-grant-access.png" alt-text="Screenshot of grant remote support access options." lightbox="media/get-remote-support/remote-support-hci-grant-access.png":::
 
 ## Remote support examples
 
@@ -213,8 +209,8 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Measure-Object        
     Select-Object
     Sort-Object
+    Out-Default
     Where-Object
-    Out-Default
 ```
 
 **Azure Stack HCI**
@@ -225,6 +221,7 @@ The **Diagnostics** access level includes the following commands that Microsoft 
     Get-AzureStackHCIBillingRecord
     Get-AzureStackHCIRegistrationCertificate
     Get-AzureStackHCISubscriptionStatus
+    Send-DiagnosticData
     Test-AzStackHCIConnection
 ```
 

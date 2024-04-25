@@ -1,19 +1,21 @@
 ---
 title: Configure network security groups with PowerShell
-description: Configure network security groups with PowerShell
+description: Configure network security groups with PowerShell.
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/19/2023
+ms.date: 04/13/2024
 ---
 
-# Configure network security groups with PowerShell
+# Configure network security groups on your Azure Stack HCI with PowerShell
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-This topic provides instructions for configuring network security groups (NSGs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating network security groups that get applied to a subnet or a network interface. The example scripts in this topic use Windows PowerShell commands exported from the **NetworkController** module. You can also [use Windows Admin Center to configure and manage network security groups](use-datacenter-firewall-windows-admin-center.md).
+This article provides instructions for configuring network security groups (NSGs) to manage data traffic flow using [Datacenter Firewall](../concepts/datacenter-firewall-overview.md) for Software Defined Networking (SDN) in Azure Stack HCI using Windows PowerShell. You enable and configure Datacenter Firewall by creating network security groups that get applied to a subnet or a network interface. 
+
+The example scripts in this article use Windows PowerShell commands exported from the **NetworkController** module. You can also [use Windows Admin Center to configure and manage network security groups](use-datacenter-firewall-windows-admin-center.md).
 
 ## Configure Datacenter Firewall to allow all traffic
 
@@ -26,18 +28,17 @@ Use the entries in the following table to create a set of rules that allow all i
 |    \*     |       \*       |   All    |     \*      |        \*        |  Inbound  | Allow  |   100    |
 |    \*     |       \*       |   All    |     \*      |        \*        | Outbound  | Allow  |   110    |
 
----
-
 In this example, you create a network security group with two rules:
 
 1. **AllowAll_Inbound** - allows all network traffic to pass into the network interface where this network security group is configured.
 2. **AllowAllOutbound** - allows all traffic to pass out of the network interface. This network security group, identified by the resource ID "AllowAll-1" is now ready to be used in virtual subnets and network interfaces.
 
-First, connect to one of the cluster nodes by opening a PowerShell session:
+You can run this command from any computer that has access to the Network Controller REST endpoint. First, open a PowerShell session. In this example, use the **Enter-PSSession** cmdlet and replace `<computer-name>` with the name of the computer that has the Network Controller REST endpoint.
 
 ```PowerShell
-Enter-PSSession <server-name>
+Enter-PSSession <computer-name>
 ```
+
 
 Then, run the following script to create the network security group:
 
@@ -73,11 +74,12 @@ $acllistproperties.AclRules = @($aclrule1, $aclrule2)
 New-NetworkControllerAccessControlList -ResourceId "AllowAll" -Properties $acllistproperties -ConnectionUri <NC REST FQDN>
 ```
 
->[!NOTE]
->The Windows PowerShell command reference for Network Controller is located in the topic [Network Controller cmdlets](/powershell/module/networkcontroller/).
+> [!NOTE]
+> The Windows PowerShell command reference for Network Controller is in the [Network Controller cmdlets](/powershell/module/networkcontroller/).
 
 ## Use network security groups to limit traffic on a subnet
-In this example, you create a network security group that prevents virtual machines (VMs) within the 192.168.0.0/24 subnet from communicating with each other. This type of network security group is useful for limiting the ability of an attacker to spread laterally within the subnet, while still allowing the VMs to receive requests from outside of the subnet, as well as to communicate with other services on other subnets.
+
+In this example, you create a network security group that prevents virtual machines (VMs) within the 192.168.0.0/24 subnet from communicating with each other. This type of network security group is useful for limiting the ability of an attacker to spread laterally within the subnet, while still allowing the VMs to receive requests from outside of the subnet, and to communicate with other services on other subnets.
 
 |   Source IP    | Destination IP | Protocol | Source Port | Destination Port | Direction | Action | Priority |
 |:--------------:|:--------------:|:--------:|:-----------:|:----------------:|:---------:|:------:|:--------:|
@@ -88,7 +90,6 @@ In this example, you create a network security group that prevents virtual machi
 |       \*       |       \*       |   All    |     \*      |        \*        |  Inbound  | Allow  |   104    |
 |       \*       |       \*       |   All    |     \*      |        \*        | Outbound  | Allow  |   105    |
 
----
 
 The network security group created by the example script below, identified by the resource ID **Subnet-192-168-0-0**, can now be applied to a virtual network subnet that uses the "192.168.0.0/24" subnet address. Any network interface that is attached to that virtual network subnet automatically gets the above network security group rules applied.
 
@@ -206,16 +207,16 @@ Once you've created a network security group and assigned it to a virtual subnet
 
 In this example, we demonstrate how to add a network security group to a virtual network.
 
->[!TIP]
->It is also possible to add a network security group at the same time that you create the network interface.
+> [!TIP]
+> It is also possible to add a network security group at the same time that you create the network interface.
 
-1. Get or create the network interface to which you will add the network security group.
+1. Get or create the network interface to which you'll add the network security group.
 
    ```PowerShell
    $nic = get-networkcontrollernetworkinterface -ConnectionUri $uri -ResourceId "MyVM_Ethernet1"
    ```
 
-2. Get or create the network security group you will add to the network interface.
+2. Get or create the network security group you'll add to the network interface.
 
    ```PowerShell
    $acl = get-networkcontrolleraccesscontrollist -ConnectionUri $uri -ResourceId "AllowAllACL"
@@ -237,7 +238,7 @@ In this example, we demonstrate how to add a network security group to a virtual
 
 In this example, we show you how to remove a network security group from a network interface. Removing a network security group applies the default set of rules to the network interface. The default set of rules allows all outbound traffic but blocks all inbound traffic. If you want to allow all inbound traffic, you must follow the previous [example](#add-a-network-security-group-to-a-network-interface) to add a network security group that allows all inbound and all outbound traffic.
 
-1. Get the network interface from which you will remove the network security group.
+1. Get the network interface from which you'll remove the network security group.
    ```PowerShell
    $nic = get-networkcontrollernetworkinterface -ConnectionUri $uri -ResourceId "MyVM_Ethernet1"
    ```
@@ -254,9 +255,9 @@ In this example, we show you how to remove a network security group from a netwo
 
 ## Firewall auditing
 
-Introduced in Windows Server 2019, firewall auditing is a new capability for the Datacenter Firewall that records any flow processed by SDN firewall rules. All network security groups that have logging enabled are recorded. The log files must be in a syntax that is consistent with the [Azure Network Watcher flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). These logs can be used for diagnostics or archived for later analysis.
+The firewall auditing capability for the Datacenter Firewall records any flow processed by SDN firewall rules. All network security groups that have logging enabled are recorded. The log files must be in a syntax that is consistent with the [Azure Network Watcher flow logs](/azure/network-watcher/network-watcher-nsg-flow-logging-overview). These logs can be used for diagnostics or archived for later analysis.
 
-Here is a sample script to enable firewall auditing on the host servers. Update the variables at the beginning and run this on an Azure Stack HCI cluster with [Network Controller](../concepts/network-controller-overview.md) deployed:
+Here's a sample script to enable firewall auditing on the host servers. Update the variables at the beginning and run this on an Azure Stack HCI cluster with [Network Controller](../concepts/network-controller-overview.md) deployed:
 
 ```PowerShell
 $logpath = "C:\test\log1"
@@ -403,8 +404,8 @@ Note, logging takes place only for rules that have **Logging** set to **Enabled*
 
 ## Next steps
 
-For related information, see also:
+For related information, see:
 
-- [Datacenter Firewall overview](../concepts/datacenter-firewall-overview.md)
-- [Network Controller overview](../concepts/network-controller-overview.md)
-- [SDN in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md)
+- [Datacenter Firewall overview](../concepts/datacenter-firewall-overview.md).
+- [Network Controller overview](../concepts/network-controller-overview.md).
+- [SDN in Azure Stack HCI and Windows Server](../concepts/software-defined-networking.md).

@@ -88,7 +88,7 @@ Check that your machine meets the following criteria:
 
 | Parameter | Description |
 | --- | --- |
-| `AadServiceAdminUser` | The global admin user for your Azure AD tenant. For example: vaasadmin@contoso.onmicrosoft.com. |
+| `AadServiceAdminUser` | The global admin user for your Microsoft Entra tenant. For example: vaasadmin@contoso.onmicrosoft.com. |
 | `AadServiceAdminPassword` | The password for the global admin user. |
 | `CloudAdminUserName` | The cloud admin user who can access and run permitted commands within the privileged endpoint. For example: AzusreStack\CloudAdmin. For more information, see [Workflow common parameters for VaaS](azure-stack-vaas-parameters.md). |
 | `CloudAdminPassword` | The password for cloud admin account.|
@@ -107,7 +107,7 @@ The tests run remote operations. The machine that runs the tests must have acces
 
 2. Open a browser and go to `https://adminportal.<EXTERNALFQDN>` in order to check that the MAS Portal can be reached.
 
-3. Sign in using the Azure AD service administrator name and password values provided when creating the test pass.
+3. Sign in using the Microsoft Entra service administrator name and password values provided when creating the test pass.
 
 4. Check the system's health by running the **Test-AzureStack** PowerShell cmdlet as described in [Run a validation test for Azure Stack Hub](../operator/azure-stack-diagnostic-test.md). Fix any warnings and errors before launching any tests.
 

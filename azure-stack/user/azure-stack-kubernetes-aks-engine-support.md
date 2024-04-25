@@ -29,7 +29,7 @@ Because customer cluster nodes execute private code and store sensitive data, Mi
 
 ## Version support
 
-AKS engine version support follows the pattern established by the rest of the Azure Stack Hub support policy: support of an AKS engine version on Azure Stack Hub is based on the n-2 formula. For example, if the latest version of AKS engine is v0.55.0, the set of supported versions are: 0.48.0, 0.51.0, 0.55.0. It's also important to follow the Azure Stack Hub update version and corresponding mapping to the AKS engine supported version; this mapping is maintained in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
+Support of an AKS engine version on Azure Stack Hub is based on the n-1 formula. For example, if the latest version of AKS engine is v0.55.0, the set of supported versions are: 0.51.0, 0.55.0. It's also important to follow the Azure Stack Hub update version and corresponding mapping to the AKS engine supported version; this mapping is maintained in the [AKS engine release notes](kubernetes-aks-engine-release-notes.md#aks-engine-and-azure-stack-version-mapping).
 
 ## AKS engine supported areas
 
@@ -52,7 +52,7 @@ Microsoft does not provide technical support for the following areas:
 -  Azure Stack Hub Kubernetes Marketplace item.
 -  Using the following AKS engine cluster definition options and add-ins.
     -  Not supported add-ins:  
-            -  Azure AD Pod Identity  
+            -  Microsoft Entra Pod Identity  
             -  ACI Connector  
             -  Blobfuse Flex Volume  
             -  Cluster Autoscaler  

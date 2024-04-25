@@ -70,11 +70,11 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
 - **Access control** can improve the security of your management landscape. If you're using a Windows Admin Center server (vs. running on a Windows 10 PC), you can control two levels of access to Windows Admin Center itself: gateway users and gateway administrators. Gateway administrator identity provider options include:
     - Active Directory or local machine groups to enforce smartcard authentication.
-    - Azure Active Directory to enforce conditional access and multifactor authentication.
+    - Microsoft Entra ID to enforce conditional access and multifactor authentication.
  
     To learn more, see [User access options with Windows Admin Center](/windows-server/manage/windows-admin-center/plan/user-access-options) and [Configure User Access Control and Permissions](/windows-server/manage/windows-admin-center/configure/user-access-control).
 
-- **Browser traffic** to Windows Admin Center uses HTTPS. Traffic from Windows Admin Center to managed servers uses standard PowerShell and Windows Management Instrumentation (WMI) over Windows Remote Management (WinRM). Windows Admin Center supports the Local Administrator Password Solution (LAPS), resource-based constrained delegation, gateway access control using Active Directory (AD) or Microsoft Azure Active Directory (Azure AD), and role-based access control (RBAC) for managing the Windows Admin Center gateway.
+- **Browser traffic** to Windows Admin Center uses HTTPS. Traffic from Windows Admin Center to managed servers uses standard PowerShell and Windows Management Instrumentation (WMI) over Windows Remote Management (WinRM). Windows Admin Center supports the Local Administrator Password Solution (LAPS), resource-based constrained delegation, gateway access control using Active Directory (AD) or Microsoft Entra ID, and role-based access control (RBAC) for managing the Windows Admin Center gateway.
 
     Windows Admin Center supports Microsoft Edge (Windows 10, version 1709 or later), Google Chrome, and Microsoft Edge Insider on Windows 10. You can install Windows Admin Center on either a Windows 10 PC or a Windows server.
 
@@ -93,7 +93,6 @@ This section discusses how to use Windows Admin Center to protect privileged ide
 
     To learn more, see [Manage Servers with Windows Admin Center](/windows-server/manage/windows-admin-center/use/manage-servers).
 
-
 ## Part 2: Use Microsoft Defender for Cloud (MDC)
 
 *Microsoft Defender for Cloud* is a unified infrastructure security management system that strengthens the security posture of your data centers and provides advanced threat protection across your hybrid workloads in the cloud and on premises. Defender for Cloud provides you with tools to assess the security status of your network, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. Defender for Cloud performs all of these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
@@ -106,7 +105,7 @@ Working with Defender for Cloud through Windows Admin Center requires an Azure s
 
 After registering, access MDC in Windows Admin Center: On the **All Connections** page, select a server or VM, under **Tools**, select **Microsoft Defender for Cloud**, and then select **Sign into Azure**.
 
-To learn more, see [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction).
+For more information, see [What is Microsoft Defender for Cloud?](/azure/defender-for-cloud/defender-for-cloud-introduction).
 
 ## Part 3: Add advanced security
 
@@ -158,6 +157,5 @@ The following sections recommend advanced security tools and technologies to fur
 
 
 ## Next steps
-For more information on security and regulatory compliance, see also:
+For more information about security and regulatory compliance, see:
 - [Security and Assurance](/windows-server/security/security-and-assurance)
-- [Security best practices for Azure solutions](https://azure.microsoft.com/resources/security-best-practices-for-azure-solutions/)

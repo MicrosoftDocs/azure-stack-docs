@@ -7,16 +7,20 @@ ms.reviewer: arduppal
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/11/2023
+ms.custom: devx-track-azurepowershell
+ms.date: 02/07/2024
 ---
 
 # Register Azure Stack HCI with Azure
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
+
 Now that you've deployed the [Azure Stack HCI operating system](./operating-system.md) and [created a cluster](./create-cluster.md), you must register it with Azure.
 
 This article describes how to register Azure Stack HCI with Azure via Windows Admin Center or PowerShell. For information on how to manage cluster registration, see [Manage cluster registration](../manage/manage-cluster-registration.md).
+
 
 ## About Azure Stack HCI registration
 
@@ -38,7 +42,7 @@ Before you begin cluster registration, make sure the following prerequisites are
 
 - **Windows Admin Center.** If you're using Windows Admin Center to register the cluster, make sure you:
 
-   - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). For registration, use the same Azure Active Directory (tenant) ID that you plan to use for the cluster registration. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Azure Active Directory**, and copy/paste your tenant ID.
+   - [Install Windows Admin Center](/windows-server/manage/windows-admin-center/deploy/install) on a management computer and [register Windows Admin Center with Azure](../manage/register-windows-admin-center.md). For registration, use the same Microsoft Entra ID (tenant) ID that you plan to use for the cluster registration. To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Microsoft Entra ID**, and copy/paste your tenant ID.
 
    - To register your cluster in Azure China, install Windows Admin Center version 2103.2 or later.
 
@@ -163,6 +167,9 @@ Follow these steps to register Azure Stack HCI with Azure via Windows Admin Cent
 
 Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you cannot run the commands from a management computer that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories#installing-powershellget-on-a-disconnected-system).
 
+> [!NOTE]
+> You can’t use this method to register systems running Azure stack HCI, version 23H2 and later. For more information on Azure Stack HCI, version 23H2 deployment, see [Deployment via Azure portal](deploy-via-portal.md).
+
 1. Make sure all the [prerequisites](#prerequisites) are met.
 
 1. Open a PowerShell session as an administrator on your management computer and then run the following command to download and install the required registration module from the PowerShell Gallery:
@@ -178,7 +185,7 @@ Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you
 
 1. Use the [Register-AzStackHCI](/powershell/module/az.stackhci/register-azstackhci) cmdlet, with the `subscriptionID`, `TenantID`, `ComputerName`, and `Region` parameters. The following example registers an HCI cluster to the East US region by connecting to one of the nodes of the cluster called `server1`, and automatically Arc-enables each node of the cluster.
 
-   To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Azure Active Directory**, and copy/paste your tenant ID:
+   To get your Azure subscription ID, visit the Azure portal, navigate to **Subscriptions**, and copy/paste your ID from the list. To get your tenant ID, visit the Azure portal, navigate to **Microsoft Entra ID**, and copy/paste your tenant ID:
 
    ```powershell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName server1 -Region "eastus" -TenantId "<tenant_id>"  

@@ -1,10 +1,10 @@
-- name: Docs
-  tocHref: /
-  topicHref: /
+- name: Azure
+  tocHref: /azure-stack/
+  topicHref: /azure/index
   items:
   - name: Azure Stack 
     tocHref: /azure-stack/
-    topicHref: /azure-stack/
+    topicHref: /azure-stack/index
     items:
     - name: Hub ASDK
       tocHref: /azure-stack/asdk/
@@ -12,17 +12,6 @@
     - name: Hub Operator
       tocHref: /azure-stack/operator/
       topicHref: /azure-stack/operator/index
-      items:
-      - name: How-to guides / Back up Azure Stack
-        tocHref: /azure-stack/operator/azure-stack-backup-infrastructure-backup/
-        topicHref: /azure-stack/operator/azure-stack-backup-infrastructure-backup/
-        items:
-        - name: Back up files and applications on Azure Stack
-          tocHref: /azure/backup/backup-mabs-files-applications-azure-stack
-          topicHref: /azure/backup/backup-mabs-files-applications-azure-stack
-        - name: Replicate Azure Stack VMs to Azure
-          tocHref: /azure/site-recovery/azure-stack-site-recovery
-          topicHref: /azure/site-recovery/azure-stack-site-recovery
     - name: Hub Partner
       tocHref: /azure-stack/partner/
       topicHref: /azure-stack/partner/index
@@ -35,17 +24,6 @@
     - name: HCI
       tocHref: /azure-stack/hci/
       topicHref: /azure-stack/hci/index
-    - name: HCI
-      tocHref: /azure-stack/hci/
-      topicHref: /azure-stack/hci/index
-      items:
-      - name: Overview
-        tocHref: /azure-stack/hci/overview/
-        topicHref: /azure-stack/hci/overview/
-        items: 
-        - name: Evaluate Azure Stack HCI
-          tocHref: /azure-stack/hci/guided-quick-deploy-eval
-          topicHRef: /azure-stack/hci/guided-quick-deploy-eval            
 ### For contextual TOC
     - name: HCI
       tocHref: /windows-server/
@@ -55,4 +33,7 @@
       topicHref: /azure-stack/hci/index
     - name: HCI
       tocHref: /azure/
+      topicHref: /azure-stack/hci/index
+    - name: HCI
+      tocHref: /troubleshoot/
       topicHref: /azure-stack/hci/index

@@ -4,7 +4,7 @@ description: Clusters and nodes running on AKS Edge Essentials
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 02/13/2023
+ms.date: 10/06/2023
 ms.custom: template-concept
 ---
 
@@ -14,7 +14,7 @@ This article describes how to create AKS Edge Essentials cluster deployments, no
 
 ## Virtual machine nodes
 
-When you create an AKS Edge Essentials deployment, AKS Edge Essentials creates a virtual machine for each deployed node. AKS Edge Essentials manages the lifecycle, configuration, and updates of the virtual machines. 
+When you create an AKS Edge Essentials deployment, AKS Edge Essentials creates a virtual machine (VM) for each deployed node. AKS Edge Essentials manages the lifecycle, configuration, and updates of the VMs.
 
 ![Screenshot showing the the VMs in AKS Edge.](./media/aks-edge/aks-edge-vm.png)
 
@@ -25,7 +25,7 @@ Deployments can only create one Linux VM on a given host machine. This Linux VM 
 - No package manager
 - Reduced footprint
 
-Running a Windows node is optional and you can create a Windows node if you need to deploy Windows containers. This node runs as a Windows virtual machine based on [Windows 10 IoT Enterprise LTSC 2019](/lifecycle/products/windows-10-iot-enterprise-ltsc-2019). The Windows VM brings all the security features and capabilities of Windows 10. 
+Running a Windows node is optional and you can create a Windows node if you need to deploy Windows containers. This node runs as a Windows virtual machine based on [Windows 10 IoT Enterprise LTSC 2019](/lifecycle/products/windows-10-iot-enterprise-ltsc-2019). The Windows VM brings all the security features and capabilities of Windows 10.
 
 You can define the amount of CPU and memory resources that you'd like to allocate for each of the VMs. This static allocation enables you to control how resources are used and ensures that applications running on the host have the required resources.
 

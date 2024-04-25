@@ -63,9 +63,6 @@ The types of measures include:
  - Crash dumps
  - Customer error logs
 
-> [!NOTE]  
-> Linux Diagnostics Extension on Azure Stack Hub is not supported.
-
 ### Host and Guest VM metrics
 
 The previously listed compute resources have a dedicated host VM and guest OS. The host VM and guest OS are the equivalent of root VM and guest VM in Hyper-V hypervisor. You can collect metrics for both the host VM and the guest OS. You can also collect diagnostics logs for the guest OS. A list of collectible metrics for host and guest VM metrics on Azure Stack Hub is available at [Supported metrics with Azure Monitor on Azure Stack Hub](azure-stack-metrics-supported.md). 
@@ -92,7 +89,7 @@ The activity log is the same for compute resources.
 **Store and Archive**  
 
 Some monitoring data is already stored and available in Azure Monitor for a set amount of time. 
- - Metrics are stored for 90 days. 
+ - Metrics are stored for 30 days. 
  - Activity log entries are stored for 90 days. 
  - Diagnostics logs aren't stored.
  - Archive the data to a storage account for longer retention.

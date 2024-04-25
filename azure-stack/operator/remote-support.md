@@ -5,10 +5,10 @@ description: Learn about remote support for Azure Stack Hub
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 08/23/2022
+ms.date: 07/27/2023
 ms.author: sethm
 ms.reviewer: shisab
-ms.lastreviewed: 04/19/2022
+ms.lastreviewed: 07/27/2023
 
 # Intent: As an Azure Stack operator, I want to use remote support to enable Microsoft support to diagnose and troubleshoot Azure Stack Hub
 ---
@@ -16,7 +16,7 @@ ms.lastreviewed: 04/19/2022
 # Remote support for Azure Stack Hub
 
 > [!IMPORTANT]
-> Remote support is in public preview and only available in the following versions:
+> Remote support is only available in the following versions:
 >
 > - 2206
 > - 2108

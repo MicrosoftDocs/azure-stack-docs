@@ -2,11 +2,11 @@
 title: What's new in Azure Stack HCI, version 21H2
 description: Find out what's new in Azure Stack HCI, version 21H2
 ms.topic: overview
-author: jasongerend
-ms.author: jgerend
+author: alkohli
+ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/10/2022
+ms.date: 11/22/2023
 ---
 
 # What's new in Azure Stack HCI, version 21H2
@@ -65,7 +65,7 @@ With Azure Site Recovery support, you can now continuously replicate VMs from Az
 
 ### Arc-enabled PaaS services on Azure Stack HCI (preview)
 
-Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](/azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](/azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](/azure/app-service/overview-arc-integration) on Azure Stack HCI. To learn more about these services through tutorials and demos, visit [Azure Arc Jumpstart](https://azurearcjumpstart.io/).
+Azure Stack HCI runs Platform-as-a-Service (PaaS) services on-premises with Azure Arc, and offers the ability to host Azure Kubernetes Service. You can also run Azure Arc enabled data services, including [SQL Managed Instance](/azure/azure-arc/data/managed-instance-overview) and [PostgreSQL Hyperscale (preview)](/azure/azure-arc/data/what-is-azure-arc-enabled-postgres-hyperscale), and [App Service, Functions, and Logic Apps on Azure Arc (preview)](/azure/app-service/overview-arc-integration) on Azure Stack HCI.
 
 ### Arc VM management on Azure Stack HCI (preview)
 
@@ -128,4 +128,4 @@ For more information about Windows Admin Center, see the [Windows Admin Center d
 ## Next steps
 
 - [Watch the webinar on what's new in Azure Stack HCI, version 21H2](https://www.youtube.com/watch?v=uiU1XTO0oMw&t=343s)
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Download Azure Stack HCI](deploy/download-azure-stack-hci-software.md)

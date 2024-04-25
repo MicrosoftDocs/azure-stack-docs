@@ -4,10 +4,8 @@ description: Learn how to use the ASDK to validate an Azure Stack integrated sys
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/15/2021
+ms.date: 03/12/2024
 ms.author: sethm
-ms.reviewer: hectorl
-ms.lastreviewed: 1/15/2020
 
 # Intent: As an ASDK user, I want to use the ASDK to validate an Azure Stack backup so I don't impact my production cloud.
 # Keyword: validate azure stack backup
@@ -92,7 +90,7 @@ New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\A
 
 Next, copy your Azure Stack backup files to the newly created share. Make sure to copy the entire MASBackup folder from the backup source share to the root of the share that the restoring ASDK is accessing. E.g., the `\\<ComputerName>\AzSBackups\` directory should contain a single MASBackup directory.
 
-Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\Certificates\AAD\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in Azure AD, or copy the decryption certificate (.pfx) to the certifcate directory: `C:\CloudDeployment\Setup\Certificates\ADFS\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in ADFS.
+Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\Certificates\AAD\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in Microsoft Entra ID, or copy the decryption certificate (.pfx) to the certifcate directory: `C:\CloudDeployment\Setup\Certificates\ADFS\InfrastructureBackup` and rename the file to `BackupDecryptionCert.pfx` when Azure Stack Hub deployment is based in ADFS.
 
 ## Deploy the ASDK in cloud recovery mode
 
@@ -116,7 +114,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 
     ![ASDK installer script](media/asdk-validate-backup/1.PNG) 
 
-3. Enter your Azure AD directory info (optional) and the local admin password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
+3. Enter your Microsoft Entra directory info (optional) and the local admin password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
 
     ![ASDK Identity and credentials page](media/asdk-validate-backup/2.PNG) 
 
@@ -145,12 +143,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 Modify the following PowerShell commands for your environment and run them to deploy the ASDK in cloud recovery mode:
 
 > [!IMPORTANT]
-> The `$adminpass` on the script below **must be** the password of the default "CloudAdmin" user ? > from the production environment **when the backup was taken**.
-For example:
->
->- If you have created additional cloud admins in addition to the default "CloudAdmin" user through PEP. The credentials of any of these additional cloud admins will not work.
->- If you have changed the default "CloudAdmin" user password through PEP, you will need to use the old password when the backup was taken to restore that particular backup, because backed up certificates and AD are protected by that old CloudAdmin password.
->- If the you could not remember the old CloudAdmin password but you do remember the new CloudAdmin password, any new backups taken after the password change can be restored using the new password.
+> The `$adminpass` on the following script must be the local administrator password, not the default "CloudAdmin" user.
 
 #### Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate
 
@@ -199,4 +192,3 @@ Wait 60 minutes after calling this cmdlet to start verification of backup data o
 ## Next steps
 
 [Register Azure Stack](asdk-register.md)
-

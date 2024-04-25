@@ -7,7 +7,7 @@ ms.reviewer: arduppal
 ms.topic: conceptual
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 02/28/2023
+ms.date: 09/22/2023
 ---
 
 # Troubleshoot Azure Stack HCI registration
@@ -18,7 +18,9 @@ Troubleshooting Azure Stack HCI registration issues requires looking at both Pow
 
 ## Collect PowerShell registration logs
 
-When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files named **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. These files are created in the working directory of the PowerShell session in which the cmdlets are run. Debug logs are not included by default. If there is an issue that needs the additional debug logs, set the debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
+When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files named **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. You can set the log directory for these log files using the `-LogsDirectory` parameter in the `Register-AzStackHCI` cmdlet, and call `Get-AzStackHCILogsDirectory` to obtain the location. By default, these files are created in **C:\ProgramData\AzureStackHCI\Registration**. For PowerShell module version 2.1.2 or earlier, these files are created in the working directory of the PowerShell session in which the cmdlets are run.
+
+By default, debug logs are not included. If there is an issue that needs the additional debug logs, set the debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
 
 ```PowerShell
 $DebugPreference = 'Continue'
@@ -60,14 +62,14 @@ If there are node names after the **Couldn't generate self-signed certificate on
 
 If there are node names after the **Couldn't set and verify registration certificate on node(s)** part of the error message, then the service was able to generate the certificate on the server(s), but the server(s) weren't able to successfully call the HCI cloud service API. To troubleshoot:
 
-1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Azure Active Directory, and that it's not being blocked by firewall(s). See [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
+1. Make sure each server has the required internet connectivity to talk to Azure Stack HCI cloud services and other required Azure services like Microsoft Entra ID, and that it's not being blocked by firewall(s). See [Firewall requirements for Azure Stack HCI](../concepts/firewall-requirements.md).
 
 1. Try running the `Invoke-AzStackHciConnectivityValidation` cmdlet from the [AzStackHCI.EnvironmentChecker](https://www.powershellgallery.com/packages/AzStackHci.EnvironmentChecker/0.2.5) module and make sure it succeeds. This cmdlet invokes the health endpoint of HCI cloud services to test connectivity.
 
 1. Look at the hcisvc debug logs on each node listed in the error message.
 
    - It's OK to have the message **ExecuteWithRetry operation AADTokenFetch failed with retryable error** appear a few times before it either fails with **ExecuteWithRetry operation AADTokenFetch failed after all retries** or **ExecuteWithRetry operation AADTokenFetch succeeded in retry**.
-   - If you encounter **ExecuteWithRetry operation AADTokenFetch failed after all retries** in the logs, the system wasn't able to fetch the Azure Active Directory token from the service even after all the retries. There will be an associated Azure AD exception that's logged with this message. 
+   - If you encounter **ExecuteWithRetry operation AADTokenFetch failed after all retries** in the logs, the system wasn't able to fetch the Microsoft Entra token from the service even after all the retries. There will be an associated Microsoft Entra exception that's logged with this message. 
    - If you see **AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'**, this is an issue with how the time is set on the server. Check the UTC time on all servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct times on the servers and try the registration again.
 
 ## Deleting HCI resource from portal and re-registering the same cluster causes issues
@@ -80,7 +82,7 @@ If you explicitly deleted the Azure Sack HCI cluster resource from the Azure por
 
 1. Sign in to the on-premises HCI cluster server using the cluster user credentials.
 2. Run the `Unregister-AzStackHCI` cmdlet on the cluster to clean up the cluster registration state and cluster Arc state.
-    - If unregistration succeeds, navigate to **Azure Active Directory > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.
+    - If unregistration succeeds, navigate to **Microsoft Entra ID > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.
     - If unregistration fails with the error **ERROR: Couldn't disable Azure Arc integration on Node \<node name\>, try running the `Disable-AzureStackHCIArcIntegration` cmdlet on the node. If the node is in a state where `Disable-AzureStackHCIArcIntegration` cannot be run, remove the node from the cluster and try running the `Unregister-AzStackHCI` cmdlet again.** Sign in to each individual node:
         1. Change directory to where the Arc agent is installed: `cd 'C:\Program Files\AzureConnectedMachineAgent\'`.
         2. Get the status on arcmagent.exe and determine the Azure resource group it is projected to: `.\azcmagent.exe show`. Output for this command shows the resource group information.
@@ -91,7 +93,7 @@ If you explicitly deleted the Azure Sack HCI cluster resource from the Azure por
 
 **Failure state explanation**:
 
-If the cluster is disconnected for more than 8 hours, it is possible that the associated Azure AD app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
+If the cluster is disconnected for more than 8 hours, it is possible that the associated Microsoft Entra app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
 
 - If the `<clustername>` app ID is deleted, the cluster resource **Azure Connection** in the Azure portal displays **Disconnected - Cluster not in connected state for more than 8 hours**. Look at the **HCIsvc** debug logs on the node: the error message will be **Application with identifier '\<ID\>' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant.**
 - If `<clustername>.arc` created during Arc enablement is deleted, there are no visible errors during normal operation. This identity is required only during the registration and unregistration processes. In this scenario, unregistration fails with the error **Couldn't disable Azure Arc integration on Node \<Node Name\>. Try running the Disable-AzureStackHCIArcIntegration cmdlet on the node. If the node is in a state where the Disable-AzureStackHCIArcIntegration cmdlet could not be run, remove the node from the cluster and try running the Unregister-AzStackHCI cmdlet again.**
@@ -100,13 +102,13 @@ Deleting any of these applications results in a failure to communicate from the 
 
 **Remediation action**:
 
-- If only the `<clustername> AppId` is deleted, perform a repair registration on the cluster to set up the Azure AD applications:
+- If only the `<clustername> AppId` is deleted, perform a repair registration on the cluster to set up the Microsoft Entra applications:
 
    ```powershell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -RepairRegistration
    ```
 
-   Repairing the registration recreates the necessary Azure AD applications while retaining other information such as resource name, resource group and other registration choices.
+   Repairing the registration recreates the necessary Microsoft Entra applications while retaining other information such as resource name, resource group and other registration choices.
 
 - If the `<clustername>.arc` app ID is deleted, there is no visible error in the logs. Unregistration will fail if `<clustername>.arc` is deleted. If unregistration fails, follow the same remediation action [described in this section](#deleting-hci-resource-from-portal-and-re-registering-the-same-cluster-causes-issues).
 
@@ -194,7 +196,7 @@ For example:
 **Remediation action**:
 
 1. Delete the cluster and Arc resources from the portal.
-2. Navigate to **Azure Active Directory > App registrations (All applications)**, and search for the name matching `<clusterName>` and `<clusterName>.arc`, then delete the two app IDs.
+2. Navigate to **Microsoft Entra ID > App registrations (All applications)**, and search for the name matching `<clusterName>` and `<clusterName>.arc`, then delete the two app IDs.
 
 ## Issuing Sync-AzureStackHCI immediately after restart of the nodes of the cluster result in Arc resource deletion
 
@@ -280,19 +282,19 @@ To resolve this issue, follow the [guidelines to update proxy settings](/azure/a
 
 **Remediation action**:
 
-Perform a repair registration on the cluster to add new certificates in the Azure AD application:
+Perform a repair registration on the cluster to add new certificates in the Microsoft Entra application:
 
 ```powershell
 Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -RepairRegistration
 ```
 
-Repairing the registration generates new replacement certificates in the Azure AD application, while retaining other information such as the resource name, resource group, and other registration choices.
+Repairing the registration generates new replacement certificates in the Microsoft Entra application, while retaining other information such as the resource name, resource group, and other registration choices.
 
 ## OnPremisesPasswordValidationTimeSkew
 
 **Failure state explanation**:
 
-Azure AD token generation fails with a time error if the local node time is too far out of sync with true current time (UTC). Azure AD returns the following error:
+Microsoft Entra token generation fails with a time error if the local node time is too far out of sync with true current time (UTC). Microsoft Entra ID returns the following error:
 
 **AADSTS80013: OnPremisesPasswordValidationTimeSkew - The authentication attempt could not be completed due to time skew between the machine running the authentication agent and AD. Fix time sync issues.**
 
@@ -304,7 +306,7 @@ Ensure the time is synchronized to a known and accurate time source.
 
 **Failure state explanation**:
 
-If the user account used for registration is part of multiple Azure AD tenants, you must specify `-TenantId` during cluster registration and un-registration, otherwise it will fail with the error **Unable to acquire token for tenant with error. You must use multi-factor authentication to access tenant. Please rerun `Connect-AzAccount` with additional parameter `-TenantId`.**
+If the user account used for registration is part of multiple Microsoft Entra tenants, you must specify `-TenantId` during cluster registration and un-registration, otherwise it will fail with the error **Unable to acquire token for tenant with error. You must use multi-factor authentication to access tenant. Please rerun `Connect-AzAccount` with additional parameter `-TenantId`.**
 
 **Remediation action**:
 

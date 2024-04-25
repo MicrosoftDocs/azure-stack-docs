@@ -40,7 +40,7 @@ Parts of using the self-hosted runner:
 - Self-hosted runner hosted on Azure
 - Azure Stack Hub
 
-A limitation of using GitHub Actions with Azure Stack Hub is that the process requires using an Azure Stack Hub connected to the web. The workflow is triggered in a GitHub repository. You can use both Azure Active Directory (Azure AD) or Active Directory Federated Services (AD FS) as your identity provider.
+A limitation of using GitHub Actions with Azure Stack Hub is that the process requires using an Azure Stack Hub connected to the web. The workflow is triggered in a GitHub repository. You can use both Microsoft Entra ID or Active Directory Federated Services (AD FS) as your identity provider.
 
 Although this is out of the scope of this article, your self-hosted runner can also use a virtual private network to connect to your Azure Stack Hub behind a firewall.
 

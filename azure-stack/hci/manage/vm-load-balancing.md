@@ -1,18 +1,20 @@
 ---
 title: Virtual machine load balancing
-description: Use this topic to learn how to configure the VM load balancing feature in Azure Stack HCI and Windows Server.
+description: Use this article to learn how to configure the VM load balancing feature in Azure Stack HCI and Windows Server.
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 02/27/2024
 ---
 # Virtual machine load balancing
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It is common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some servers in the cluster are hosting more virtual machines (VMs), while other servers are underutilized.
+[!INCLUDE [hci-arc-vm](../../includes/hci-arc-vm.md)]
+
+A key consideration for HCI deployments is the capital expenditure (CapEx) required to go into production. It's common to add redundancy to avoid under-capacity during peak traffic in production, but this increases CapEx. This redundancy is often needed because some servers in the cluster are hosting more virtual machines (VMs), while other servers are underutilized.
 
 Enabled by default in Azure Stack HCI, Windows Server 2022, Windows Server 2019, and Windows Server 2016, VM load balancing is a feature that allows you to optimize server utilization in your clusters. It identifies over-committed servers and live migrates VMs from those servers to under-committed servers. Failure policies such as anti-affinity, fault domains (sites), and possible owners are honored.
 
@@ -34,18 +36,18 @@ When you join a new server to your cluster, the VM load balancing feature automa
 3. The servers with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
 4. VMs are live migrated (with no downtime) from a server that exceeds the threshold to the newly added server in the cluster.
 
-:::image type="content" source="media/vm-load-balancing/server-added.png" alt-text="Image showing a new server being added to a cluster" border="false"::: 
+:::image type="content" source="media/vm-load-balancing/server-added.png" alt-text="Image showing a new server being added to a cluster" lightbox="media/vm-load-balancing/server-added.png":::
 
 ### Recurring load balancing
 
-By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Here is the flow of the steps:
+By default, VM load balancing is configured for periodic balancing: the memory pressure and CPU utilization on each server in the cluster are evaluated for balancing every 30 minutes. Here's the flow of the steps:
 
 1. The memory pressure and CPU utilization are evaluated on all servers in the cluster.
 2. All servers exceeding the threshold and those below the threshold are identified.
 3. The servers with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
 4. VMs are live migrated (with no downtime) from a server that exceeds the threshold to another server that is under the minimum threshold.
 
-:::image type="content" source="media/vm-load-balancing/periodic-balancing.png" alt-text="Image showing a live cluster being automatically rebalanced" border="false"::: 
+:::image type="content" source="media/vm-load-balancing/periodic-balancing.png" alt-text="Image showing a live cluster being automatically rebalanced" lightbox="media/vm-load-balancing/periodic-balancing.png":::
 
 ## Configure VM load balancing using Windows Admin Center
 

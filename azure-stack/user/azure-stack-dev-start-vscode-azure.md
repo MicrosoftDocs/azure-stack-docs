@@ -18,7 +18,7 @@ ms.custom: vscode-azure-extension-update-completed
 
 This article describes how to connect to Azure Stack Hub using the Azure Account extension, which enables you to use Azure directly from Visual Studio Code. You will need to update your Visual Studio Code (VS Code) settings.
 
-VS Code is a lightweight editor for building and debug web and cloud applications. ASP.NET Core, Python, NodeJS, Go, and other developers use VS Code. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for other Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack Hub subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. You can sign in to Azure Stack Hub, select your subscription, and open a new command line in a Cloud Shell.
+VS Code is a lightweight editor for building and debug web and cloud applications. ASP.NET Core, Python, NodeJS, Go, and other developers use VS Code. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for other Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack Hub subscription using both Microsoft Entra ID and Active Directory Federated Services (AD FS) for your identity manager. You can sign in to Azure Stack Hub, select your subscription, and open a new command line in a Cloud Shell.
 
 > [!NOTE]  
 > You can use the steps in this article for an Active Directory Federated Services (AD FS) environment. Use your AD FS credentials and endpoints.
@@ -103,7 +103,7 @@ The Azure Stack Hub Resource Manager is a management framework that allows you t
         | `azure.cloud` | You must use the literal constant "AzureCustomCloud" for this parameter.|
         | `azure.tenant` | The value of your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
         | `azure.customCloud.resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack Hub. |
-        | `validateAuthority` | You can leave out this parameter if you are using Azure AD as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
+        | `validateAuthority` | You can leave out this parameter if you are using Microsoft Entra ID as your identity manager. Add the parameter with a value of `false` if you are using AD FS. |
 
     - JSON snippet:
 

@@ -4,7 +4,7 @@ description: Use Azure Site Recovery to protect Hyper-V VM workloads running on 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/12/2023
+ms.date: 02/23/2024
 ---
 <!-- This article is used by the Windows Server Docs, all links must be site relative (except include files). For example, /azure-stack/hci/manage/azure-site-recovery -->
 
@@ -34,12 +34,11 @@ In the current implementation of Azure Site Recovery integration with Azure Stac
 > [!NOTE]
 > Azure Site Recovery doesn't support the replication, failover, and failback of the Arc resource bridge and Arc VMs.
 
-
 ## Overall workflow
 
 The following diagram illustrates the overall workflow of Azure Site Recovery working with Azure Stack HCI.
 
-![Illustration describing Azure Site Recovery and Azure Stack HCI workflow.](/azure-stack/hci/manage/media/azure-site-recovery/site-recovery-workflow.png)
+:::image type="content" source="media/azure-site-recovery/site-recovery-workflow.png" alt-text="Illustration describing Azure Site Recovery and Azure Stack HCI workflow." lightbox="media/azure-site-recovery/site-recovery-workflow.png":::
 
 Here are the main steps that occur when using Site Recovery with an Azure Stack HCI cluster:
 
@@ -96,16 +95,15 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
 
 1. In the right-pane, go to the **Capabilities** tab and select the **Disaster recovery** tile. As managed identity is enabled on your cluster, disaster recovery should be available.
 
-    ![Screenshot of Capabilities tab in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/prepare-infra-1.png)
+    :::image type="content" source="media/azure-site-recovery/prepare-infra-1.png" alt-text="Screenshot of Capabilities tab in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/prepare-infra-1.png":::
 
 1. In the right-pane, go to **Protect** and select **Protect VM workloads**.
 
-    ![Screenshot of Protect VM workloads in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/prepare-infra-2.png)
+    :::image type="content" source="media/azure-site-recovery/prepare-infra-2.png" alt-text="Screenshot of Protect VM workloads in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/prepare-infra-2.png":::
 
 1. On the **Replicate VMs to Azure**, select **Prepare infrastructure**.
 
-    ![Screenshot of Prepare infrastructure in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/prepare-infra-3.png)
-
+    :::image type="content" source="media/azure-site-recovery/prepare-infra-3.png" alt-text="Screenshot of Prepare infrastructure in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/prepare-infra-3.png":::
 
 1. On the **Prepare infrastructure**, select an existing or create a new Recovery services vault. You use this vault to store the configuration information for virtual machine workloads. For more information, see [Recovery services vault overview](/azure/backup/backup-azure-recovery-services-vault-overview).
     1. If you choose to create a new Recovery services vault, the subscription and resource groups are automatically populated.
@@ -117,15 +115,15 @@ On your Azure Stack HCI target cluster, follow these steps to prepare infrastruc
 
         Select **Review + Create** to start the vault creation. For more information, see [Create and configure a Recovery services vault](/azure/backup/backup-create-recovery-services-vault).
 
-        ![Screenshot of Create Recovery Services vault in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/prepare-infra-4.png)
+        :::image type="content" source="media/azure-site-recovery/prepare-infra-4.png" alt-text="Screenshot of Create Recovery Services vault in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/prepare-infra-4.png":::
 
 1. Select an existing **Hyper-V site** or create a new site.
 
-    ![Screenshot of Create Hyper-V site in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/prepare-infra-5.png)
+    :::image type="content" source="media/azure-site-recovery/prepare-infra-5.png" alt-text="Screenshot of Create Hyper-V site in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/prepare-infra-5.png":::
 
 1. Select an existing **Replication policy** or create new. This policy is used to replicate your VM workloads. For more information, see [Replication policy](/azure/site-recovery/hyper-v-azure-tutorial#replication-policy). After the policy is created, select **OK**.
 
-    ![Screenshot of Create replication policy in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/prepare-infra-6.png)
+    :::image type="content" source="media/azure-site-recovery/prepare-infra-6.png" alt-text="Screenshot of Create replication policy in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/prepare-infra-6.png":::
 
 1. Select **Prepare infrastructure**. When you select **Prepare infrastructure**, the following actions occur:
     1. A **Resource Group** with the **Storage Account** and the specified **Vault** and the replication policy are created in the specified **Location**.
@@ -143,9 +141,10 @@ After the infrastructure preparation is complete, follow these steps to select t
 
 1. On **Step 2: Enable replication**, select **Enable replication**. You're now directed to the Recovery services vault where you can specify the VMs to replicate.
 
-    ![Screenshot of Enable replication in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-1.png)
+    :::image type="content" source="media/azure-site-recovery/enable-replication-1.png" alt-text="Screenshot of Enable replication in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-1.png":::
 
-1. On the **Source environment** tab, specify the source location for your Hyper-V site. In this instance, you have set up the Hyper-V site on your Azure Stack HCI cluster. Select **Next**.
+1. Select **Replicate** and in the dropdown select **Hyper-V machines to Azure**. 
+2. On the **Source environment** tab, specify the source location for your Hyper-V site. In this instance, you have set up the Hyper-V site on your Azure Stack HCI cluster. Select **Next**.
 
 1. On the **Target environment** tab, complete these steps:
     1. For **Subscription**, enter or select the subscription.
@@ -153,50 +152,50 @@ After the infrastructure preparation is complete, follow these steps to select t
     1. For **Post-failover deployment model**, select **Resource Manager**. The Azure Resource Manager deployment is used when the failover occurs.
     1. For **Storage account**, enter or select an existing storage account associated with the subscription that you have chosen. This account could be a standard or a premium storage account that is used for the VM’s replication.
 
-        ![Screenshot of target environment tab in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-2.png)
+        :::image type="content" source="media/azure-site-recovery/enable-replication-2.png" alt-text="Screenshot of target environment tab in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-2.png":::
 
     1. For the network configuration of the VMs that you’ve selected to replicate in Azure, provide a virtual network and a subnet that would be associated with the VMs in Azure. To create this network, see the instructions in [Create an Azure network for failover](/azure/site-recovery/tutorial-dr-drill-azure#create-a-network-for-test-failover).
 
         You can also choose to do the network configuration later.
 
-        ![Screenshot of target environment tab with Configure later selected in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-3.png)
+        :::image type="content" source="media/azure-site-recovery/enable-replication-3.png" alt-text="Screenshot of target environment tab with Configure later selected in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-3.png":::
 
         Once the VM is replicated, you can select the replicated VM and go to the **Compute and Network** setting and provide the network information.
 
 1. Select **Next**.
 1. On the **Virtual machine selection** tab, select the VMs to replicate, and then select **Next**. Make sure to review the [capacity requirements for protecting the VM](/azure/site-recovery/site-recovery-capacity-planner).
 
-    ![Screenshot of virtual selection tab in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-4.png)
+    :::image type="content" source="media/azure-site-recovery/enable-replication-4.png" alt-text="Screenshot of virtual selection tab in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-4.png":::
 
 1. On the **Replication settings** tab, select the operating system type, operating system disk and the data disks for the VM you intend to replicate to Azure, and then select **Next**.
 
-    ![Screenshot of Replication settings tab in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-5.png)
+    :::image type="content" source="media/azure-site-recovery/enable-replication-5.png" alt-text="Screenshot of Replication settings tab in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-5.png":::
 
 1. On the **Replication policy** tab, verify that the correct replication policy is selected. The selected policy should be the same replication policy that you created when preparing the infrastructure. Select **Next**.
 
-    ![Screenshot of Replication policy tab in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-6.png)
+    :::image type="content" source="media/azure-site-recovery/enable-replication-6.png" alt-text="Screenshot of Replication policy tab in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-6.png":::
 
 1. On the **Review** tab, review your selections, and then select **Enable Replication**.
 
-    ![Screenshot of Review tab in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-7.png)
+    :::image type="content" source="media/azure-site-recovery/enable-replication-7.png" alt-text="Screenshot of Review tab in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-7.png":::
 
 1. A notification indicating that the replication job is in progress is displayed. Go to **Protected items \> Replication items** to view the status of the replication health and the status of the replication job.
 
-    ![Screenshot of Replicated items in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-8.png)
+    :::image type="content" source="media/azure-site-recovery/enable-replication-8.png" alt-text="Screenshot of Replicated items in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-8.png":::
 
 1. To monitor the VM replication, follow these steps.
 
     1. To view the **Replication health** and **Status**, select the VM and go to the Overview. You can see the percentage completion of the replication job.
      
-        ![Screenshot of Overview of a replicated item in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-9.png)
+        :::image type="content" source="media/azure-site-recovery/enable-replication-9.png" alt-text="Screenshot of Overview of a replicated item in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-9.png":::
     
     1. To see a more granular job status and **Job id**, select the VM and go to the **Properties** of the replicated VM.
 
-        ![Screenshot of Properties of a replicated item in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-10.png)
+        :::image type="content" source="media/azure-site-recovery/enable-replication-10.png" alt-text="Screenshot of Properties of a replicated item in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-10.png":::
 
     1. To view the disk information, go to **Disks**. Once the replication is complete, the **Operating system disk** and **Data disk** should show as **Protected**.
 
-        ![Screenshot of Disks for a selected replicated VM in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/enable-replication-11.png)
+        :::image type="content" source="media/azure-site-recovery/enable-replication-11.png" alt-text="Screenshot of Disks for a selected replicated VM in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/enable-replication-11.png":::
 
 The next step is to configure a test failover.
 
@@ -212,7 +211,7 @@ To prepare for fail over to an Azure VM, complete the following steps:
 
 1. Once the replication is complete and the VM is **Protected** as reflected in the status, you can start **Test Failover**.
 
-    ![Screenshot of Test failover for a selected replicated VM in Azure portal for Azure Stack HCI cluster resource.](/azure-stack/hci/manage/media/azure-site-recovery/run-test-failover-1.png)
+    :::image type="content" source="media/azure-site-recovery/run-test-failover-1.png" alt-text="Screenshot of Test failover for a selected replicated VM in Azure portal for Azure Stack HCI cluster resource." lightbox="media/azure-site-recovery/run-test-failover-1.png":::
 
 1. To run a test failover, see the detailed instructions in [Run a disaster recovery drill to Azure](/azure/site-recovery/tutorial-dr-drill-azure#run-a-test-failover-for-a-single-vm).
 
@@ -243,9 +242,8 @@ Here's a list of known issues and the associated workarounds in this release:
 |----|----------------------|---------------------------|
 | 1. | When you register Azure Site Recovery with a cluster, a node fails to install Azure Site Recovery or register to the Azure Site Recovery service.  | In this instance, your VMs may not be protected. Verify that all servers in the cluster are registered in the Azure portal by going to the **Recovery Services vault** \> **Jobs** \> **Site Recovery Jobs**. |
 | 2. | Azure Site Recovery agent fails to install. No error details are seen at the cluster or server levels in the Azure Stack HCI portal. | When the Azure Site Recovery agent installation fails, it is because of the one of the following reasons:  <br><br> - Installation fails as Hyper-V isn't set up on the cluster. </br><br> - The Hyper-V host is already associated to a Hyper-V site and you're trying to install the extension with a different Hyper-V site. </br>  |
-| 3. | Azure Site Recovery extension installation succeeds on one of the cluster nodes but fails to install on other nodes. Selecting the failed extension shows the following error message: *"Extension returned nonzero exit code for Enable: 13. . Extension error output: C:\\Packages\\Plugins\\Microsoft.SiteRecovery.Dra.Windows\\1.0.0.4\\script\\RegisterAsr.ps1 : Failed to register for ASR \nwith DRConfigurator.exe.\n    + CategoryInfo          : NotSpecified: (:) [Write-Error], WriteErrorException\n    + FullyQualifiedErrorId : Microsoft.PowerShell.Commands.WriteErrorException,RegisterAsr.ps1\n \nC:\\Packages\\Plugins\\Microsoft.SiteRecovery.Dra.Windows\\1.0.0.4\\script\\RegisterAsr.ps1 : Checking if Credentials file \nexists.\nProcessing credentials file\nInstalling management cert\nInitializing registration process.\nStopping DR service\nGetting resource details\nThe ASR can't be registered due to an internal error. Run Setup again to register the server.\nThe ASR can't be registered due to an internal error. Run Setup again to register the server.* <br><br>Azure Site Recovery extension uses the Managed Identity to get a certificate with the private key (validity of two days). This certificate can be used for the registration of the extension against the Key Vault. When all the nodes query the Azure Site Recovery service for this certificate, each time a new certificate is generated, and the older certificates are invalidated. This results in the extension installation succeeding on one node but not on the rest.| To work around this issue, follow these steps in the cluster resource of your Azure Stack HCI cluster: <br><br> 1. In the Azure portal, browse to your Azure Stack HCI cluster resource. Go to **Overview > Nodes >**. Select the node where the extension installation failed. This takes you to the Arc for Servers portal blade. </br><br>2. In the left pane, go to **Extensions**.</br><br>3. Select the Azure Site Recovery extension and select **Uninstall**.</br><br>4. After the Azure Site Recovery extension is uninstalled from the node, open a PowerShell session on any of the nodes of the cluster.</br><br>5. Type `Sync-AzureStackHci`. This begins the Azure Site Recovery extension installation on the node. </br><br>6. Verify that the extension has installed successfully on the node.</br><br>  a. In the left pane, go to **Extensions** and verify that the extensions show up as **Succeeded** with a green check. </br><br>  b. On the node, go to the registry. Go to the following location: *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Site Recovery\Registration* and validate the key vault name, resource name and site name.</br>  |
-
+| 3. | Azure Site Recovery agent fails to install. Error message of "Microsoft Azure Site Recovery Provider installation has failed with exit code - 1." appears in the portal with the failed installation. | The installation fails when WDAC is enforced. <br><br> - Setting WDAC to "Audit" mode will allow the installation to complete.  To set the WDAC mode to be Audit, you can follow the instructions in [Manage WDAC settings with PowerShell](/azure-stack/hci/manage/manage-wdac#manage-wdac-settings-with-powershell) |
 
 ## Next steps
 
-[Learn more about Hybrid capabilities with Azure services](/azure-stack/hci/hybrid-capabilities-with-azure-services)
+- [Learn more about Hybrid capabilities with Azure services](/azure-stack/hci/hybrid-capabilities-with-azure-services).

@@ -4,8 +4,9 @@ description: Learn how to manage the Azure Stack HCI cluster registration.
 ms.topic: how-to
 author: sethmanheim
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-azurepowershell
 ms.author: sethm
-ms.date: 5/11/2023
+ms.date: 03/11/2024
 ---
 
 # Manage Azure Stack HCI cluster registration
@@ -25,22 +26,22 @@ When you connect to a cluster using Windows Admin Center, you'll see the dashboa
 - For Azure Stack HCI registration, **Connected** means that the cluster is already registered with Azure and has successfully synced to the cloud within the last day.
 - For Arc-enabled servers, **Connected** means that all physical servers are Arc-enabled and can be managed from the Azure portal.
 
-    :::image type="content" source="media/register-with-azure/dashboard-connected.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/register-with-azure/dashboard-connected.png":::
+    :::image type="content" source="media/manage-cluster-registration/dashboard-connected.png" alt-text="Screenshot that shows the cluster connection status on the Windows Admin Center dashboard." lightbox="media/manage-cluster-registration/dashboard-connected.png":::
 
 You can get more information by selecting **Azure Arc** from the **Tools** menu on the left.
 
 > [!NOTE]
 > The Azure Arc dashboard is currently in public preview.
 
-:::image type="content" source="media/register-with-azure/overview-connected.png" alt-text="Screenshot that shows selections for getting Azure Stack HCI registration information." lightbox="media/register-with-azure/overview-connected.png":::
+:::image type="content" source="media/manage-cluster-registration/overview-connected.png" alt-text="Screenshot that shows selections for getting Azure Stack HCI registration information." lightbox="media/manage-cluster-registration/overview-connected.png":::
 
 On the **Overview** page, you will find high-level status information about Azure Stack HCI registration and Arc-enabled servers. You can click on either tile to be taken to the individual pages.
 
-:::image type="content" source="media/register-with-azure/hci-registration-connected.png" alt-text="Screenshot of status information about registration." lightbox="media/register-with-azure/hci-registration-connected.png":::
+:::image type="content" source="media/manage-cluster-registration/hci-registration-connected.png" alt-text="Screenshot of status information about registration." lightbox="media/manage-cluster-registration/hci-registration-connected.png":::
 
 On the **Azure Stack HCI registration** page, you can view both the Azure Stack HCI system and server status. This includes the Azure connection status and last Azure sync. You can find **Useful links** to troubleshooting documentation and cluster extensions. You can **Unregister** if needed.
 
-:::image type="content" source="media/register-with-azure/arc-enabled-servers-connected.png" alt-text="Screenshot of servers status." lightbox="media/register-with-azure/arc-enabled-servers-connected.png":::
+:::image type="content" source="media/manage-cluster-registration/arc-enabled-servers-connected.png" alt-text="Screenshot of servers status." lightbox="media/manage-cluster-registration/arc-enabled-servers-connected.png":::
 
 If your cluster is registered with Azure, but the physical servers are not yet Arc-enabled, you can do so from the **Arc-enabled servers** page. If the physical servers are Arc-enabled, you can view the Azure Arc status and version ID for each server. You can also find **Useful links** to troubleshooting information.
 
@@ -50,17 +51,17 @@ Use the `Get-AzureStackHCI` PowerShell cmdlet to view the registration status, c
 
 For example, after you install the Azure Stack HCI operating system, but before you create or join a cluster, the `ClusterStatus` property shows a `NotYet` status:
 
-:::image type="content" source="media/register-with-azure/1-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status before cluster creation.":::
+:::image type="content" source="media/manage-cluster-registration/1-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status before cluster creation." lightbox="media/manage-cluster-registration/1-get-azurestackhci.png":::
 
 After the cluster is created, only `RegistrationStatus` shows a `NotYet` status:
 
-:::image type="content" source="media/register-with-azure/2-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after cluster creation.":::
+:::image type="content" source="media/manage-cluster-registration/2-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after cluster creation." lightbox="media/manage-cluster-registration/2-get-azurestackhci.png":::
 
 You must register an Azure Stack HCI cluster within 30 days of installation, as defined in the Azure Online Services Terms. If you haven't created or joined a cluster after 30 days, `ClusterStatus` will show `OutOfPolicy`. If you haven't registered the cluster after 30 days, `RegistrationStatus` will show `OutOfPolicy`.
 
 After the cluster is registered, you can see `ConnectionStatus` and the `LastConnected` time. The `LastConnected` time is usually within the last day unless the cluster is temporarily disconnected from the internet. An Azure Stack HCI cluster can operate fully offline for up to 30 consecutive days.
 
-:::image type="content" source="media/register-with-azure/3-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after registration.":::
+:::image type="content" source="media/manage-cluster-registration/3-get-azurestackhci.png" alt-text="Screenshot that shows the Azure registration status after registration." lightbox="media/manage-cluster-registration/3-get-azurestackhci.png":::
 
 If you exceed the maximum period of offline operation, `ConnectionStatus` will show `OutOfPolicy`.
 
@@ -71,9 +72,9 @@ If you exceed the maximum period of offline operation, `ConnectionStatus` will s
 
 To view the status of the cluster and Arc resources, navigate to the resource group used during registration in the Azure portal:
 
-:::image type="content" source="media/register-with-azure/cluster-status-1.png" alt-text="Screenshot of cluster resources." lightbox="media/register-with-azure/cluster-status-1.png":::
+:::image type="content" source="media/manage-cluster-registration/cluster-status-1.png" alt-text="Screenshot of cluster resources." lightbox="media/manage-cluster-registration/cluster-status-1.png":::
 
-:::image type="content" source="media/register-with-azure/cluster-status-2.png" alt-text="Screenshot of cluster status blade." lightbox="media/register-with-azure/cluster-status-2.png":::
+:::image type="content" source="media/manage-cluster-registration/cluster-status-2.png" alt-text="Screenshot of cluster status blade." lightbox="media/manage-cluster-registration/cluster-status-2.png":::
 
 ---
 
@@ -89,13 +90,19 @@ You need to manually enable Azure Arc integration in the following scenarios:
 
 Follow these steps to enable Azure Arc integration:
 
-1. Install the latest version of the `Az.StackHCI` module on your management PC:
+1. Install the latest version of the `Az.Resources` module on your management PC:
+
+    ```PowerShell
+    Install-Module -Name Az.Resources
+    ``````
+
+2. Install the latest version of the `Az.StackHCI` module on your management PC:
 
    ```PowerShell
    Install-Module -Name Az.StackHCI
    ```
 
-1. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
+3. Rerun the `Register-AzStackHCI` cmdlet and specify your Azure subscription ID, which must be the same ID with which the cluster was originally registered. The `-ComputerName` parameter can be the name of any server in the cluster. This step enables Azure Arc integration on every server in the cluster. It will not affect your current cluster registration with Azure, and you don't need to unregister the cluster first:
 
    ```PowerShell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -ComputerName Server1 -Region <region> -TenantId "<tenant_id>"
@@ -114,13 +121,13 @@ Follow these steps to upgrade Arc agent on cluster servers:
 
 1. In the [Server Configuration Tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig), select the option to **Install Updates** (option 6):
 
-   :::image type="content" source="media/register/sconfig-install.png" alt-text="Screenshot of SConfig showing the option to install update.":::
+   :::image type="content" source="media/manage-cluster-registration/sconfig-install.png" alt-text="Screenshot of SConfig showing the option to install update." lightbox="media/manage-cluster-registration/sconfig-install.png":::
 
 2. Select the option for **All quality updates** (option 1).
 
 3. You can choose to specifically update the Arc agent, or install all of the updates available:
 
-   :::image type="content" source="media/register/sconfig-updates.png" alt-text="Sconfig options":::
+   :::image type="content" source="media/manage-cluster-registration/sconfig-updates.png" alt-text="Sconfig options." lightbox="media/manage-cluster-registration/sconfig-updates.png":::
 
 4. Run `azcmagent version` from PowerShell on each node to verify the Arc agent version.
 
@@ -128,7 +135,7 @@ Follow these steps to upgrade Arc agent on cluster servers:
 
 You can unregister Azure Stack HCI using Windows Admin Center or using PowerShell.
 
-The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Azure AD app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
+The unregistration process automatically cleans up the Azure resource that represents the cluster, the Azure resource group (if the group was created during registration and doesn't contain any other resources), and the Microsoft Entra app identity. This cleanup stops all monitoring, support, and billing functionality through Azure Arc.
 
 # [Windows Admin Center](#tab/windows-admin-center)
 
@@ -141,7 +148,7 @@ Follow these steps to unregister your Azure Stack HCI cluster via Windows Admin 
 1. Select **Azure Stack HCI registration**, select the **Unregister** button, and then select **Unregister** again.
 
 > [!NOTE]
-> If your Windows Admin Center gateway is registered to a different Azure AD tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
+> If your Windows Admin Center gateway is registered to a different Microsoft Entra tenant ID that was used to initially register the cluster, you might encounter problems when you try to unregister the cluster using Windows Admin Center. If this happens, you can use the PowerShell instructions in the next section.
 
 # [PowerShell](#tab/power-shell)
 
@@ -194,7 +201,7 @@ If a user destroys an Azure Stack HCI cluster without un-registering it, such as
 
 To delete the Azure Stack HCI resource, navigate to the resource in the Azure portal and select **Delete** from the action bar. You can get the resource details by running the `Get-AzureStackHCI` cmdlet.
 
-Azure Stack HCI creates two Azure AD applications as part of the registration: **resourceName** and **resourceName.arc**. To delete those, go to **Azure AD** > **App Registrations** > **All Applications**. Select **Delete** and confirm.
+Azure Stack HCI creates two Microsoft Entra applications as part of the registration: **resourceName** and **resourceName.arc**. To delete those, go to **Microsoft Entra ID** > **App Registrations** > **All Applications**. Select **Delete** and confirm.
 
 You can also delete the Azure Stack HCI resource by using PowerShell:
 

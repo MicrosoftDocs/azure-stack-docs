@@ -3,9 +3,9 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom:
+ms.custom: devx-track-azurecli
 ms.topic: include
-ms.date: 10/05/2022
+ms.date: 11/06/2023
 ---
 
 Follow these steps to list VM image using Azure CLI.
@@ -14,13 +14,13 @@ Follow these steps to list VM image using Azure CLI.
 1. Set some parameters.
 
     ```azurecli
-    $Subscription = "<Subscription ID associated with your cluster>"
-    $Resource_Group = "<Resource group name for your cluster>"
+    $subscription = "<Subscription ID associated with your cluster>"
+    $resource_group = "<Resource group name for your cluster>"
     ```
 1. List all the VM images associated with your cluster. Run the following command:
 
     ```azurecli
-    az azurestackhci image list --subscription $Subscription --resource-group $Resource_Group
+    az stack-hci-vm image list --subscription $subscription --resource-group $resource_group
     ```
     
     Depending on the command used, a corresponding set of images associated with the Azure Stack HCI cluster are listed.
@@ -35,80 +35,20 @@ Follow these steps to list VM image using Azure CLI.
 Here's a sample output.
 
 ```
-PS C:\Users\azcli> az azurestackhci image list --subscription "b8d594e5-51f3-4c11-9c54-a7771b81c712" --resource-group "mkclus90-rg"
-Command group 'azurestackhci' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
+PS C:\Users\azcli> az stack-hci-vm image list --subscription "<Subscription ID>" --resource-group "myhci-rg"
+Command group 'stack-hci-vm' is experimental and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 [
   {
     "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
+      "name": "/subscriptions/<Subscription ID>/resourcegroups/myhci-rg/providers/microsoft.extendedlocation/customlocations/myhci-cl",
       "type": "CustomLocation"
     },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/testvhdgen1",
-    "location": "eastus2euap",
-    "name": "testvhdgen1",
+    "id": "/subscriptions/<Subscription ID>/resourceGroups/myhci-rg/providers/microsoft.azurestackhci/marketplacegalleryimages/w
+inServer2022Az-01",
+    "location": "eastus",
+    "name": "winServer2022Az-01",
     "properties": {
-      "containerName": null,
-      "hyperVGeneration": "V1",
-      "identifier": null,
-      "imagePath": null,
-      "osType": "Windows",
-      "provisioningState": "Succeeded",
-      "status": null,
-      "version": null
-    },
-    "resourceGroup": "mkclus90-rg",
-    "systemData": {
-      "createdAt": "2022-07-28T22:45:30.803142+00:00",
-      "createdBy": "guspinto@microsoft.com",
-      "createdByType": "User",
-      "lastModifiedAt": "2022-07-28T22:45:30.803142+00:00",
-      "lastModifiedBy": "guspinto@microsoft.com",
-      "lastModifiedByType": "User"
-    },
-    "tags": null,
-    "type": "microsoft.azurestackhci/galleryimages"
-  },
-  {
-    "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-      "type": "CustomLocation"
-    },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/galleryimages/testvhdxgen2",
-    "location": "eastus2euap",
-    "name": "testvhdxgen2",
-    "properties": {
-      "containerName": null,
-      "hyperVGeneration": null,
-      "identifier": null,
-      "imagePath": null,
-      "osType": "Windows",
-      "provisioningState": "Succeeded",
-      "status": null,
-      "version": null
-    },
-    "resourceGroup": "mkclus90-rg",
-    "systemData": {
-      "createdAt": "2022-07-28T23:00:56.490100+00:00",
-      "createdBy": "guspinto@microsoft.com",
-      "createdByType": "User",
-      "lastModifiedAt": "2022-07-28T23:00:56.490100+00:00",
-      "lastModifiedBy": "guspinto@microsoft.com",
-      "lastModifiedByType": "User"
-    },
-    "tags": null,
-    "type": "microsoft.azurestackhci/galleryimages"
-  },
-  {
-    "extendedLocation": {
-      "name": "/subscriptions/<Subscription ID>/resourcegroups/mkclus90-rg/providers/microsoft.extendedlocation/customlocations/cl04",
-      "type": "CustomLocation"
-    },
-    "id": "/subscriptions/<Subscription ID>/resourceGroups/mkclus90-rg/providers/Microsoft.AzureStackHCI/marketplacegalleryimages/marketplacetest03",
-    "location": "eastus2euap",
-    "name": "marketplacetest03",
-    "properties": {
-      "containerName": null,
-      "hyperVGeneration": null,
+      "hyperVGeneration": "V2",
       "identifier": {
         "offer": "windowsserver",
         "publisher": "microsoftwindowsserver",
@@ -117,33 +57,38 @@ Command group 'azurestackhci' is experimental and under development. Reference a
       "imagePath": null,
       "osType": "Windows",
       "provisioningState": "Succeeded",
-      "resourceName": "marketplacetest03",
       "status": {
-        "downloadStatus": {},
+        "downloadStatus": {
+          "downloadSizeInMB": 6710
+        },
+        "progressPercentage": 100,
         "provisioningStatus": {
-          "operationId": "<Operation ID>",
+          "operationId": "19742d69-4a00-4086-8f17-4dc1f7ee6681*E1E9889F0D1840B93150BD74D428EAE483CB67B0904F9A198C161AD471F670ED",
           "status": "Succeeded"
         }
       },
+      "storagepathId": null,
       "version": {
-        "name": "20348.707.220609",
+        "name": "20348.2031.231006",
         "properties": {
           "storageProfile": {
-            "osDiskImage": {}
+            "osDiskImage": {
+              "sizeInMB": 130050
+            }
           }
         }
       }
     },
-    "resourceGroup": "mkclus90-rg",
+    "resourceGroup": "myhci-rg",
     "systemData": {
-      "createdAt": "2022-08-01T22:29:11.074104+00:00",
-      "createdBy": "guspinto@microsoft.com",
+      "createdAt": "2023-10-30T21:44:53.020512+00:00",
+      "createdBy": "guspinto@contoso.com",
       "createdByType": "User",
-      "lastModifiedAt": "2022-08-01T22:36:12.900694+00:00",
-      "lastModifiedBy": "<ID>",
+      "lastModifiedAt": "2023-10-30T22:08:25.495995+00:00",
+      "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
       "lastModifiedByType": "Application"
     },
-    "tags": null,
+    "tags": {},
     "type": "microsoft.azurestackhci/marketplacegalleryimages"
   }
 ]

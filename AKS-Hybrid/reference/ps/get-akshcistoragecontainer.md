@@ -1,19 +1,19 @@
 ---
 title: Get-AksHciStorageContainer for AKS hybrid
 author: sethmanheim
-description: The Get-AksHciStorageContainer PowerShell command returns the Storage Container name and location for the specified Storage Container
+description: The Get-AksHciStorageContainer PowerShell command returns the Storage container name and location for the specified Storage container.
 ms.topic: reference
-ms.date: 3/3/2021
+ms.date: 08/25/2023
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
-ms.reviewer: jeguan
 
 ---
 
-# Get-AksHciContainerStorage
+# Get-AksHciStorageContainer
 
 ## Synopsis
-Get the information of the specified storage container.
+
+Gets information about the specified storage container.
 
 ## Syntax
 
@@ -22,11 +22,13 @@ Get-AksHciStorageContainer [-name <String>]
 ```
 
 ## Description
-Get the information of the specified storage container. If the storage container is not specified, the command will return all the storage containers.
+
+Gets information about the specified storage container. If the storage container is not specified, the command returns all the storage containers.
 
 ## Examples
 
 ### Example
+
 ```powershell
 Get-AksHciStorageContainer -name mystoragecontainer
 ```
@@ -34,7 +36,8 @@ Get-AksHciStorageContainer -name mystoragecontainer
 ## Parameters
 
 ### -name
-The name of the new Storage Container. 
+
+The name of the new Storage container.
 
 ```yaml
 Type: System.String
@@ -47,6 +50,7 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
 ## Next steps
 
 [AksHci PowerShell Reference](index.md)

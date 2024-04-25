@@ -18,7 +18,7 @@ ms.lastreviewed: 6/10/2021
 
 Use this article as a guide to help you develop a data protection and disaster recovery strategy for user-deployed IaaS virtual machines (VMs) deployed on Azure Stack Hub.
 
-To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack Hub: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
+To protect against data loss and extended downtime, implement a backup-recovery or disaster-recovery plan for user applications and their data. Each application must be evaluated as part of your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy.
 
 ## Considerations for protecting IaaS VMs
 
@@ -29,9 +29,9 @@ First, make sure there is a clear understanding of the roles and responsibilitie
 Users are responsible for protecting VMs. Operators are responsible for keeping Azure Stack Hub online and healthy. Azure Stack Hub includes a service that backs up internal service data from infrastructure services and **does not** include any user data including user-created VMs, storage accounts with user or application data, or user databases.
 
 
-| Application owner/architect 	| Azure Stack Hub operator 	|
-|---	|---	|
-| <ul><li>Align application architecture with cloud design principles.</li></br><li>Modernize traditional applications as required, to prepare them for the cloud environment.</li></br><li>Define acceptable RTO and RPO for the application.</li></br><li>Identify application resources and data repositories that need to be protected.</li></br><li>Implement a data and application recovery method that best aligns to the application architecture and customer requirements.</li></ul> 	| <ul><li>Identify the organization's business continuity and disaster recovery goals.</li></br><li>Deploy enough Azure Stack Hub instances to meet the organization's BC/DR goals.</li></br><li>Design and operate application/data protection infrastructure.</li></br><li>Provide managed solutions or self-service access to protection services.</li></br><li>Work with application owners/architects to understand application design and recommend protection strategies.</li></br><li>Enable infrastructure backup for service healing and cloud recovery.</li></ul> 	|
+| Application owner/architect     | Azure Stack Hub operator     |
+|---    |---    |
+| - Align application architecture with cloud design principles.</br>- Modernize traditional applications as required, to prepare them for the cloud environment.</br>- Define acceptable RTO and RPO for the application.</br>- Identify application resources and data repositories that need to be protected.</br>- Implement a data and application recovery method that best aligns to the application architecture and customer requirements.  | - Identify the organization's business continuity and disaster recovery goals.</br>- Deploy enough Azure Stack Hub instances to meet the organization's BC/DR goals.</br>- Design and operate application/data protection infrastructure.</br>- Provide managed solutions or self-service access to protection services.</br>- Work with application owners/architects to understand application design and recommend protection strategies.</br>- Enable infrastructure backup for service healing and cloud recovery.     |
 
 ## Source/target combinations
 
@@ -69,7 +69,7 @@ Backup products can protect IaaS VM configuration and disks attached to a stoppe
 #### Backup using disk snapshot for running VMs
 
 > [!Important]  
-> Using disk snapshots is currently not supported for VM in a running state. Creating a snapshot of a disk attached to a running VM may degrade the performance or impact the availability of the operating system or application in the VM. The recommendation is to use an in-guest agent to protect the application if planned downtime is not an option. 
+> Using disk snapshots from the portal is currently not supported for VM in a running state. Creating a snapshot of a disk attached to a running VM may degrade the performance or impact the availability of the operating system or application in the VM. The recommendation is to use a backup vendor solution that integrates with the Storage RP incremental snapshot capability, or an in-guest agent to protect the application if planned downtime is not an option.
 
 ### VMs in a scale-set or availability set
 
@@ -112,19 +112,13 @@ You will need to make some changes to your VM after restoring the machine from b
     If your VM has a static IP internally set, the internal IP on the virtual network adapter can be set to match the original. You may need to consider if the VNET has a S2S VPN to an external environment where the IP address might be in use.
 - **Unneeded artifacts**  
     If the VM was backed up on a different platform, such as VMware vSphere, you will need to follow some additional steps to clean up any unneeded artifacts from the source.
+
 ## Next steps
 
-This article provided general guidelines for protecting user VMs deployed on Azure Stack Hub. For information about using Azure services to protect user VMs, refer to:
+This article provided general guidelines for protecting user VMs deployed on Azure Stack Hub. For information about using Azure services to protect user VMs, see:
 
 - [Azure Stack IaaS - part four - Protect Your Stuff](https://azure.microsoft.com/blog/azure-stack-iaas-part-four/)
-- [Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)
-
-### Azure Backup Server
- - [Use Azure Backup to back up files and apps on Azure Stack Hub](/azure/backup/backup-mabs-files-applications-azure-stack)
- - [Azure Backup Server support for Azure Stack Hub](/azure/backup/ ) 
- 
- ### Azure Site Recovery
- - [Azure Site Recovery support for Azure Stack Hub](/azure/site-recovery/)  
- 
- ### Partner products
- - [Azure Stack Hub Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)
+- [Use Azure Backup to back up files and apps on Azure Stack Hub](/azure/backup/backup-mabs-files-applications-azure-stack)
+- [Azure Backup Server support for Azure Stack Hub](/azure/backup/)
+- [Azure Site Recovery support for Azure Stack Hub](/azure/site-recovery/)  
+- [Azure Stack Hub Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)

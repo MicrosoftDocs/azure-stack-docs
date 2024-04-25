@@ -4,12 +4,12 @@ description: Learn how to troubleshoot Software Load Balancer for SDN in Azure S
 ms.topic: how-to
 ms.author: sethm
 author: sethmanheim
-ms.date: 05/09/2023
+ms.date: 04/12/2024
 ---
 
 # Troubleshoot Software Load Balancer for SDN
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 If you've set up Software Load Balancer (SLB) for Software Defined Networking (SDN) and your data path isn't working through SLB, there could be several reasons behind it. This article helps you identify and troubleshoot some common issues in SLB for SDN.
 
@@ -33,9 +33,9 @@ Follow these steps to check the configuration state of the SLB MUX through Windo
 
 1. On the Windows Admin Center home screen, under **All connections**, select the cluster that you want to connect to.
 
-1. Under **Tools**, scroll down to the **Networking** area. Select **SDN Infrastructure** and then select **Summary**. If there are issues with SLB, you will see it in the **Load Balancers MUX** section. If there are no issues, all the MUX VMs will be in the **Healthy** state.
+1. Under **Tools**, scroll down to the **Networking** area. Select **SDN Infrastructure** and then select **Summary**. If there are issues with SLB, you'll see it in the **Load Balancers MUX** section. If there are no issues, all the MUX VMs are in the **Healthy** state.
 
-    :::image type="content" source="./media/software-load-balancer/software-load-balancer-multiplexer-state.png" alt-text="Screenshot of the SDN Infrastructure page in Windows Admin center that shows the state of Load Balancers MUX." lightbox="./media/software-load-balancer/software-load-balancer-multiplexer-state.png":::
+    :::image type="content" source="./media/troubleshoot-software-load-balancer/software-load-balancer-multiplexer-state.png" alt-text="Screenshot of the SDN Infrastructure page in Windows Admin center that shows the state of Load Balancers MUX." lightbox="./media/troubleshoot-software-load-balancer/software-load-balancer-multiplexer-state.png":::
 
 ### [PowerShell](#tab/powershell)
 
@@ -152,7 +152,7 @@ To troubleshoot why the virtual server isn't reachable, check that:
     Get-Service slbmux
     ```
 
-- There are no firewall issues. Ensure that port 8560 isn't blocked by the firewall on the MUX VM. If the `Test-NetConnection` command above succeeds, it implies there's no firewall issue.
+- There are no firewall issues. Ensure that port 8560 isn't blocked by the firewall on the MUX VM. If the `Test-NetConnection` command succeeds, it implies there's no firewall issue.
 
 ### Certificate not trusted or certificate not authorized
 
@@ -168,7 +168,7 @@ You can get this error if the certificate presented by the SLB MUX to the Networ
 
     - `NodeFQDN` is the FQDN of the MUX VM.
 
-1. After identifying the certificate, check the following:
+1. After identifying the certificate, check the certificate:
 
     1. To test the certificate, run the following command:
 
@@ -220,7 +220,7 @@ If there isn't any reachability and certificate issue, perform the following ste
 
 You might get data path connectivity issues, even when the SLB MUX VMs are in a healthy configuration state. This implies that the SLB traffic is getting dropped somewhere along the way. To identify where the traffic is getting dropped, you need to collect data path traces. Before you do that, ensure the following:
 
-- **The ToR switch can see the advertised VIPs.** As you have already set up a load balancer for load balancing, inbound NAT, outbound NAT or a combination of those, the load balancer VIP is advertised to the ToR. Using the switch CLI, check if the VIP is getting advertised. <!--can we describe how to check this?-->
+- **The ToR switch can see the advertised VIPs.** As you've set up a load balancer for load balancing, inbound NAT, outbound NAT or a combination of those, the load balancer VIP is advertised to the ToR. Using the switch CLI, check if the VIP is getting advertised. <!--can we describe how to check this?-->
 
 - **The SLBM VIP must not be blocked on the ToR or any physical firewalls.** This is the IP address specified as loadBalancerManagerIPAddress in the LoadBalancerManager/config resource of the Network Controller. When the inbound packet comes in and MUX VM determines the correct backend IP to send the packet to, it sends the packet with the source IP address as the MUX SLBM VIP. There can be scenarios where that is dropped on the ToR.
 
@@ -258,13 +258,13 @@ You might get data path connectivity issues, even when the SLB MUX VMs are in a 
     
     You can also find all this information by using the following Windows Admin Center extensions:
 
-    - **Logical Networks** for LNET details
-    - **Virtual Networks** for VNET details
+    - **Logical Networks** for logical network details
+    - **Virtual Networks** for virtual network details
     - **Network Security Groups** for ACL details
 
 ## Collect SLB state dump
 
-If necessary, you can create an SLB state dump and check for any errors. Additionally, you may share the state dump with Microsoft for advanced troubleshooting purposes. SLB state dump gives end-to-end information about all the VIPs. You can run the [DumpSlbRestState.ps1 script](https://github.com/microsoft/SDN/blob/master/Diagnostics/DumpSlbRestState.ps1) to collect the SLB state dump. The following section describes the various errors scenarios that you can check in the state dump.
+If necessary, you can create an SLB state dump and check for any errors. Additionally, you can share the state dump with Microsoft for advanced troubleshooting purposes. SLB state dump gives end-to-end information about all the VIPs. You can run the [DumpSlbRestState.ps1 script](https://github.com/microsoft/SDN/blob/master/Diagnostics/DumpSlbRestState.ps1) to collect the SLB state dump. The following section describes the various errors scenarios that you can check in the state dump.
 
 ### Check whether the MuxAdvertisedRoutes is empty or is missing the affected VIPs
 

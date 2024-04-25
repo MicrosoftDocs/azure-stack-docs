@@ -26,7 +26,7 @@ Visual Studio Code is a lightweight editor for building and debugging cloud appl
 - Access connection string and primary key.
 - Open in storage explorer for memory or computationally heavy tasks, or for page and append Blob support.
 
-The extension works with both Azure Active Directory (Azure AD) and Active Directory Federated Services (AD FS) identity managers.
+The extension works with both Microsoft Entra ID and Active Directory Federated Services (AD FS) identity managers.
 
 ## Prerequisites for the extension
 

@@ -185,6 +185,8 @@
           href: azure-stack-network-overview.md
         - name: Networking considerations
           href: azure-stack-network-differences.md
+        - name: Standard Load Balancer considerations
+          href: standard-load-balancer-considerations.md
         - name: VPN gateways
           items:
           - name: Connect using VPN
@@ -312,7 +314,7 @@
           items: 
           - name: Deploy a Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-deploy.md
-          - name: Deploy Kubernetes using Azure AD
+          - name: Deploy Kubernetes using Microsoft Entra ID
             href: azure-stack-solution-template-kubernetes-azuread.md
           - name: Deploy Kubernetes using AD FS
             href: azure-stack-solution-template-kubernetes-adfs.md
@@ -331,7 +333,7 @@
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
-      href: azure-stack-dev-start-howto-vm-dotnet.md
+      href: azure-stack-dev-start-howto-vm-dotnet.yml
     - name: Deploy a web app to a Linux VM
       items:
       - name: Deploy a Linux VM for a web app
@@ -399,7 +401,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: /powershell/azure/azure-stack/overview
+    href: /powershell/azurestackhub/overview
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI

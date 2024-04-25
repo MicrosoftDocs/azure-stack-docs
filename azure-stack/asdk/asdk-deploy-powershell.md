@@ -21,7 +21,7 @@ The Azure Stack Development Kit (ASDK) is a testing and development environment 
 
 ## Prerequisites
 
-Prepare the ASDK host computer. Plan your hardware, software, and network. The computer that hosts the ASDK must meet hardware, software, and network requirements. Choose between using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). Be sure to follow these prerequisites before starting your deployment so that the installation process runs smoothly.
+Prepare the ASDK host computer. Plan your hardware, software, and network. The computer that hosts the ASDK must meet hardware, software, and network requirements. Choose between using Microsoft Entra ID or Active Directory Federation Services (AD FS). Be sure to follow these prerequisites before starting your deployment so that the installation process runs smoothly.
 
 Before you deploy the ASDK, make sure your planned ASDK host computer's hardware, operating system, account, and network configurations meet the minimum requirements for installing the ASDK.
 
@@ -66,15 +66,17 @@ Open an elevated PowerShell console and run the commands in this section to depl
 > [!IMPORTANT]
 > ASDK installation supports exactly one network interface card (NIC) for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script.
 
-You can deploy Azure Stack with Azure AD or Windows Server AD FS as the identity provider. Azure Stack, resource providers, and other apps work the same way with both.
+You can deploy Azure Stack with Microsoft Entra ID or Windows Server AD FS as the identity provider. Azure Stack, resource providers, and other apps work the same way with both.
 
 > [!TIP]
 > If you don't supply any setup parameters (see InstallAzureStackPOC.ps1 optional parameters and examples below), you're prompted for the required parameters.
 
-### Deploy Azure Stack using Azure AD 
-To deploy Azure Stack **using Azure AD as the identity provider**, you must have internet connectivity either directly or through a transparent proxy. 
+<a name='deploy-azure-stack-using-azure-ad'></a>
 
-Run the following PowerShell commands to deploy the ASDK using Azure AD:
+### Deploy Azure Stack using Microsoft Entra ID 
+To deploy Azure Stack **using Microsoft Entra ID as the identity provider**, you must have internet connectivity either directly or through a transparent proxy. 
+
+Run the following PowerShell commands to deploy the ASDK using Microsoft Entra ID:
 
   ```powershell
   cd C:\CloudDeployment\Setup     
@@ -82,9 +84,9 @@ Run the following PowerShell commands to deploy the ASDK using Azure AD:
   .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password
   ```
 
-A few minutes into ASDK installation you'll be prompted for Azure AD credentials. Provide the global admin credentials for your Azure AD tenant.
+A few minutes into ASDK installation you'll be prompted for Microsoft Entra credentials. Provide the global admin credentials for your Microsoft Entra tenant.
 
-After deployment, Azure Active Directory global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+After deployment, Microsoft Entra global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
 ### Deploy Azure Stack using AD FS 
 To deploy the ASDK  **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter):
@@ -103,10 +105,12 @@ The deployment process can take a few hours, during which time the system automa
 > If you want to monitor the deployment progress after the ASDK host reboots, you must sign in as AzureStack\AzureStackAdmin. If you sign in as a local admin after the host computer is restarted (and joined to the azurestack.local domain), you won't see the deployment progress. Don't rerun deployment, instead sign in as AzureStack\AzureStackAdmin with the same password as the local admin to validate that the setup is running.
 
 
-#### Azure AD deployment script examples
-You can script the entire Azure AD deployment. Here are a few commented examples that include some optional parameters.
+<a name='azure-ad-deployment-script-examples'></a>
 
-If your Azure AD identity is only associated with **one** Azure AD directory:
+#### Microsoft Entra deployment script examples
+You can script the entire Microsoft Entra deployment. Here are a few commented examples that include some optional parameters.
+
+If your Microsoft Entra identity is only associated with **one** Microsoft Entra directory:
 
 ```powershell
 cd C:\CloudDeployment\Setup 
@@ -115,7 +119,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>"
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
-If your Azure AD identity is associated with **greater than one** Azure AD directory:
+If your Microsoft Entra identity is associated with **greater than one** Microsoft Entra directory:
 ```powershell
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
@@ -134,9 +138,9 @@ If your environment doesn't have DHCP enabled, then you must include the followi
 |Parameter|Required/Optional|Description|
 |-----|-----|-----|
 |AdminPassword|Required|Sets the local admin account and all other user accounts on all the VMs created as part of ASDK deployment. This password must match the current local admin password on the host.|
-|InfraAzureDirectoryTenantName|Required|Sets the tenant directory. Use this parameter to specify a specific directory where the Azure AD account has permissions to manage multiple directories. Full name of an Azure AD tenant in the format of .onmicrosoft.com or an Azure AD verified custom domain name.|
+|InfraAzureDirectoryTenantName|Required|Sets the tenant directory. Use this parameter to specify a specific directory where the Microsoft Entra account has permissions to manage multiple directories. Full name of a Microsoft Entra tenant in the format of .onmicrosoft.com or a Microsoft Entra ID verified custom domain name.|
 |TimeServer|Required|Use this parameter to specify a specific time server. This parameter must be provided as a valid time server IP address. Server names aren't supported.|
-|InfraAzureDirectoryTenantAdminCredential|Optional|Sets the Azure Active Directory user name and password. These Azure credentials must be an Org ID.|
+|InfraAzureDirectoryTenantAdminCredential|Optional|Sets the Microsoft Entra user name and password. These Azure credentials must be an Org ID.|
 |InfraAzureEnvironment|Optional|Select the Azure Environment with which you want to register this Azure Stack deployment. Options include global Azure, Azure - China, Azure - US Government.|
 |DNSForwarder|Optional|A DNS server is created as part of the Azure Stack deployment. To allow computers inside the solution to resolve names outside of the stamp, provide your existing infrastructure DNS server. The in-stamp DNS server forwards unknown name resolution requests to this server.|
 |Rerun|Optional|Use this flag to rerun deployment. All previous input is used. Reentering data previously provided isn't supported because several unique values are generated and used for deployment.|
@@ -161,4 +165,3 @@ You must register Azure Stack with Azure so that you can [download Azure Marketp
 Congratulations! After completing these steps, you'll have an ASDK environment with both admin `https://adminportal.local.azurestack.external` and user `https://portal.local.azurestack.external` portals. 
 
 [Post ASDK installation configuration tasks](asdk-post-deploy.md)
-

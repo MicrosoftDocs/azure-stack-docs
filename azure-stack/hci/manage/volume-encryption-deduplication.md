@@ -1,62 +1,45 @@
 ---
-title: Enable volume encryption, deduplication, and compression - Azure Stack HCI
-description: This topic covers how to use volume encryption, deduplication, and compression in Azure Stack HCI using Windows Admin Center.
+title: Enable volume encryption and deduplication - Azure Stack HCI and Windows Server
+description: This topic covers how to use volume encryption and deduplication in Azure Stack HCI and Windows Server using Windows Admin Center.
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 04/19/2023
+ms.date: 08/17/2023
 ---
 
-# Enable volume encryption, deduplication, and compression in Azure Stack HCI
+# Enable volume encryption and deduplication in Azure Stack HCI and Windows Server
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
-This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI using Windows Admin Center. It also covers how to enable deduplication and compression on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
+This topic covers how to enable encryption with BitLocker on volumes in Azure Stack HCI or Windows Server using Windows Admin Center. It also covers how to enable deduplication on volumes. To learn how to create volumes, see [Create volumes](create-volumes.md).
 
-## Turn on BitLocker to protect volumes
+## Encrypt volumes with BitLocker
+
 To turn on BitLocker in Windows Admin Center:
 
-1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
+1. Connect to an Azure Stack HCI system or Storage Spaces Direct cluster running Windows Server, and then on the **Tools** pane, select **Volumes**.
 
     >[!NOTE]
-    > To use a new feature that provides an additional locally held BitLocker key and not rely on Active Directory, you must use Windows PowerShell. The new feature is only available in Windows Server 2022 and Azure Stack HCI, version 21H2. For more information, see [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
+    > To use a new feature that provides an additional locally held BitLocker key without relying on Active Directory, you must use Windows PowerShell. The new feature is only available in Windows Server 2022 and Azure Stack HCI, version 21H2 and newer. For more information, see [Use BitLocker with Cluster Shared Volumes (CSV)](/windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022).
 
-1. On the **Volumes** page, select the **Inventory** tab, and then under **Optional features**, switch on the **Encryption (BitLocker)** toggle.
-
-    :::image type="content" source="media/volume-encryption-deduplication/bitlocker-toggle-switch.png" alt-text="The toggle switch to enable BitLocker":::
-
-1. On the **Encryption (BitLocker)** pop-up, select **Start**, and then on the **Turn on Encryption** page, provide your credentials to complete the workflow.
+1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**.
+1. Under **More features**, select **Use encryption**.
+1. Select any optional settings, such as backing up the recovery password to Active Directory Domain Services, and then select **Save**.
 
    If the **Install BitLocker feature first** pop-up displays, follow its instructions to install the feature on each server in the cluster, and then restart your servers.
 
-## Turn on deduplication and compression
-Deduplication and compression are managed per volume. Deduplication and compression use a post-processing model, which means that you won't see savings until it runs. When it does, it will work over all files, even files that were there from before.
+## Turn on deduplication
 
-To turn on deduplication and compression on a volume in Windows Admin Center:
+Deduplication uses a post-processing model, which means that you won't see savings until it runs. When it does, it deduplicates all existing files.
 
-1. Connect to a Storage Spaces Direct cluster, and then on the **Tools** pane, select **Volumes**.
-1. On the **Volumes** page, select the **Inventory** tab.
-1. In the list of volumes, select the name of the volume that you want to manage.
-1. On the volume details page, switch on the **Deduplication and compression** toggle.
-1. On the **Enable deduplication** pane, select the deduplication mode.
+To turn on deduplication on a volume in Windows Admin Center:
 
-    Instead of complicated settings, Windows Admin Center lets you choose between ready-made profiles for different workloads. If you're not sure, use the default setting.
+1. Connect to an Azure Stack HCI system or Storage Spaces Direct cluster running Windows Server, and then on the **Tools** pane, select **Volumes**.
+1. On the **Volumes** page, select the **Inventory** tab, select the appropriate volume, and then select **Settings**.
+1. Under **More features**, select  **Use deduplication**, and then select the deduplication mode. If you're not sure, use the default setting.
 
-1. Select **Enable deduplication**.
-
-Watch a quick video on how to turn on deduplication and compression. The video doesn't show encryption.
-
-> [!VIDEO https://www.youtube-nocookie.com/embed/PRibTacyKko]
-
-Enabling volume encryption has a small impact on volume performance—typically under 10%, but the impact varies depending on your hardware and workloads. Data deduplication and compression also has an impact on performance—for details, see [Determine which workloads are candidates for Data Deduplication](/windows-server/storage/data-deduplication/install-enable#enable-dedup-candidate-workloads).
-
-<!---Add info on greyed out ReFS option? --->
-
-You're done! Repeat as needed to protect the data in your volumes.
+1. Select **Save**.
 
 ## Next steps
-For related topics and other storage management tasks, see also:
 
-- [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Plan volumes](../concepts/plan-volumes.md)
 - [Manage volumes](manage-volumes.md)

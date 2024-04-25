@@ -46,7 +46,7 @@
     href: get-akshciregistration.md
   - name: Get-AksHciRelease
     href: get-akshcirelease.md
-  - name: Get-AksHciContainerStorage
+  - name: Get-AksHciStorageContainer
     href: get-akshcistoragecontainer.md
   - name: Get-AksHciUpdates
     href: get-akshciupdates.md

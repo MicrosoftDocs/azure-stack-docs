@@ -46,7 +46,7 @@ MDC supports a consistent environment with Azure in disadvantaged communications
 
  - Static, modular, rapidly deployable datacenters with Azure cloud services to power large analytics apps in modular operations centers.
  - Azure's modular edge offerings maintain consistency between the cloud and the edge through a singular approach for supporting IaaS primitives such as virtual machines, storage, and virtual networking.
- - Azure Active Directory and RBAC support.
+ - Microsoft Entra ID and RBAC support.
  - Common administrative interfaces.
  - API symmetry and support for Microsoft, third party, and open-source DevOps tools.
  - Management and monitoring through Azure Log Analytics and Azure Security Center.
