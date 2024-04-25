@@ -197,7 +197,7 @@ During deployment of a target cluster, a `HAProxy`-based load balancer resource 
 
 Ingress controllers work at layer 7, and are able to use more intelligent rules to distribute application traffic. A common use of an ingress controller is to route HTTP traffic to different applications based on the inbound URL.
 
-![Diagram showing Ingress traffic flow in an AKS cluster on Azure Stack HCI](media/net/aks-ingress.png)
+:::image type="content" source="media/concepts-node-networking/aks-ingress.png" alt-text="Diagram showing ingress traffic flow in an AKS cluster on Azure Stack HCI." lightbox="media/concepts-node-networking/aks-ingress.png":::
 
 ## Next steps
 

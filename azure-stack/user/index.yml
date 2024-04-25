@@ -41,7 +41,7 @@ landingContent:
           - text: Create a VM from a template
             url: azure-stack-create-vm-template.md
           - text: Deploy a C# web app to a Windows VM
-            url: azure-stack-dev-start-howto-vm-dotnet.md
+            url: azure-stack-dev-start-howto-vm-dotnet.yml
           - text: Deploy a Java web app
             url: azure-stack-dev-start-howto-vm-java.md
           - text: Deploy a Python web app
