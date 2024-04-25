@@ -608,6 +608,7 @@ For  more information, see [System-assigned managed identities](/entra/identity/
 
 ## Next steps
 
+- [Delete Arc VMs](./manage-arc-virtual-machines.md#delete-a-vm).
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
 - [Troubleshoot Arc VMs](troubleshoot-arc-enabled-vms.md).
 - [Frequently Asked Questions for Arc VM management](./azure-arc-vms-faq.yml).
