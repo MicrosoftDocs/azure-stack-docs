@@ -40,7 +40,7 @@ Application control (WDAC) is a software-based security layer that reduces attac
 
 ### About WDAC policy design
 
-Microsoft provides base signed policies including a block mode and an audit mode policies for Azure Stack HCI. Using the WDAC platform, the appropriate properties are defined for the policies. These properties include the options rules and the allow/deny rules that are updated on a regular basis as part of the continuous product updates.
+Microsoft provides base signed policies including block mode and audit mode policies for Azure Stack HCI. Using the WDAC platform, the appropriate properties are defined for the policies. These properties include the options rules and the allow or deny rules that are updated regularly as part of the continuous product updates.
 
 #### Composition of base policies
 
@@ -48,15 +48,13 @@ The Azure Stack HCI base policy allows all the Microsoft components delivered by
 
 A base policy consists of the following sections:
 
-- **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID and more.
-- **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a very small set of the option rules tied to their base policy.
+- **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID, and more.
+- **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a small set of the option rules tied to their base policy.
 - **Allow/Deny Rules**: These rules define the code trust boundaries. The rules can be based on Publishers, Signers, File Hash and more.
 
 #### Option rules
 
-The option rules enabled by the base policy are:
-
-For the Enforced policy, the following option rules are enabled by default:
+This section discussed the option rules enabled by the base policy. For the enforced policy, the following option rules are enabled by default:
 
 |Option rule|Value|
 |-----|-----|
@@ -72,7 +70,7 @@ For the Enforced policy, the following option rules are enabled by default:
 |Enabled|Managed Installer|
 |Enabled|Update Policy No Reboot|
 
-Audit Policy adds the following option rule:
+Audit policy adds the following option rules to the base policy:
 
 |Option rule|Value|
 |-----|-----|
@@ -80,15 +78,15 @@ Audit Policy adds the following option rule:
 
 For more information, see the full documented [List of option rules](/windows/security/application-security/application-control/windows-defender-application-control/design/select-types-of-rules-to-create#table-1-windows-defender-application-control-policy---policy-rule-options).
 
-#### Allow/Deny rules
+#### Allow or deny rules
 
-Microsoft also enables a set of block/deny rules that limits the user mode applications and kernel components compiled and updated on a regular basis that could potentially represent a risk on the secuirity posture of the solution.
+Microsoft also enables a set of block/deny rules that limit the user mode applications and kernel components compiled and updated regularly that could potentially represent a risk on the security posture of the solution.
 
 For more information, see the following default lists:
 
-- [Driver Block list](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
+- [Driver blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
 
-- [User Mode Block list](/windows/security/application-security/application-control/windows-defender-application-control/design/applications-that-can-bypass-wdac).
+- [User Mode blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/applications-that-can-bypass-wdac).
 
 
 ## BitLocker encryption
@@ -145,7 +143,7 @@ The following diagram illustrates integration of Azure Stack HCI with an SIEM. A
 
 Syslog forwarding agents are deployed on every Azure Stack HCI host to forward syslog messages to the customer-configured syslog server. Syslog forwarding agents work independently from each other but can be managed together on any one of the hosts.
 
-The syslog forwarder in Azure Stack HCI supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there is unidirectional or bidirectional authentication.
+The syslog forwarder in Azure Stack HCI supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there's unidirectional or bidirectional authentication.
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 
