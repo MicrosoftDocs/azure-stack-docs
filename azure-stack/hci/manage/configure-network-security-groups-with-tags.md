@@ -5,28 +5,29 @@ ms.author: sethm
 ms.reviewer: anpaul
 ms.topic: article
 author: sethmanheim
-ms.date: 02/26/2024
+ms.date: 04/02/2024
 ---
 
 # Configure network security groups with tags in Windows Admin Center
 
-[!INCLUDE [hci-applies-to-22h2](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to configure network security groups with network security tags in Windows Admin Center.
 
 With network security tags, you can create custom user-defined tags, attach those tags to your virtual machine (VM) network interfaces, and apply network access policies (with network security groups) based on these tags.
 
-## Key benefits
+<!--Refactored the following section. Please review.-->
+## Simplify security with network security tags
 
-In Azure Stack HCI, version 21H2, you could create network security groups to configure access policies based on network constructs (network prefixes/subnets). So, if you want to prevent your Web Server VMs from communicating with your database VMs, you must identify corresponding network subnets and create policy to deny communication between those subnets. There are a few limitations with this approach:
+Network security groups allow you to configure access policies based on network constructs like network prefixes and subnets. For example, if you want to restrict communication between your Web Server VMs and database VMs, you must identify corresponding network subnets and create a policy to deny communication between those subnets. However, there are some limitations with this approach:
 
-- Your security policies are tied to network constructs, so you'll need to know which apps are hosted on which network segments. You will need to have a fair understanding of your network infrastructure and architecture.
+- Your security policies are tied to network constructs, which means you need to know which applications reside on specific network segments. Understanding your network infrastructure and architecture become crucial.
 
-- You normally build policy for one application and may want to reuse that policy for other applications as well. For example, your web app in production environment can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments. Now, if you provision another web app, it will have a similar policy. But, with network segmentation, your policy needs to be recreated because the policy has network elements that are unique to apps.
+- When building policies for applications, you might want to reuse them across different scenarios. For example, if your production web app can only be reached over port 80 from the internet, and can't be reached by other apps in production or other environments, you'd have a similar policy for any new app. However, with network segmentation, recreating policies becomes necessary due to unique network elements for each app.
 
-- If you decommission your old application and provision a new application in the same network segment, you'll have to modify your policy.
+- If you decommission an old application and provision a new one within the same network segment, policy adjustments are required.
 
-With the network security tags feature, you no longer need to track the network segments where your applications are hosted. Using the same Web Server and database VMs example above, you can tag corresponding VMs with "Web" and "Database" network security tags. You can then create a network security group rule to prevent "Web" network security tag from communicating with "Database" network security tag.
+With the network security tags feature, you no longer need to track the network segments where your applications are hosted. This simplifies policy management and avoids the complexities associated with network constructs. Let's reconsider the example with Web Server and database VMs: Tag the corresponding VMs with "Web" and "Database" network security tags, then create a rule to restrict communication between "Web" and "Database" tags.
 
 ## Create network security tag based network security groups
 

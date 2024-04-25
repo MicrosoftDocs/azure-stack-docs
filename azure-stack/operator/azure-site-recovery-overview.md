@@ -1,21 +1,18 @@
 ---
-title: Azure Site Recovery overview (preview)
+title: Azure Site Recovery overview
 description: Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.date: 06/19/2023
+ms.date: 04/18/2024
 ms.reviewer: rtiberiu
-ms.lastreviewed: 03/07/2023
+ms.lastreviewed: 04/18/2024
 
 ---
 
-# Azure Site Recovery overview (preview)
+# Azure Site Recovery overview
 
 Azure Site Recovery on Azure Stack Hub helps ensure business continuity by keeping business apps and workloads running during outages. Azure Site Recovery on Azure Stack Hub replicates virtual machine (VM) workloads from a primary site to a secondary location. When an outage occurs at your primary site, you fail over to a secondary location, and access apps from there. After the primary location is running again, you can fail back to it.
-
-> [!IMPORTANT]
-> During the public preview of Azure Site Recovery on Azure Stack Hub, updates might require a complete re-installation (a complete removal and then re-add) of the service.
 
 To enable replication of VMs across two Azure Stack Hub stamps, configure the following environments:
 
@@ -23,8 +20,8 @@ To enable replication of VMs across two Azure Stack Hub stamps, configure the fo
   - **Azure Stack Hub Operator**, download the Azure Site Recovery Appliance VM and the Azure Site Recovery VM extensions in the Marketplace Management.
   - **Azure Stack Users**, in the user subscriptions, configure the connection to the target vault in this source environment.
 
-- **Target** environment is where the Azure Site Recovery Resource Provider and dependencies run.
-  - **Azure Stack Hub Operator**, download the respective images.
+- **Target** environment is where the Azure Site Recovery Resource Provider runs.
+  - **Azure Stack Hub Operator**, download and install the respective resource provider.
   - **Azure Stack Hub Users**, configure the vault and prepare the prerequisites for your replicated VMs.
 
     :::image type="content" source="../operator/media/azure-site-recovery/overview/source-and-target.png" alt-text="Screenshot of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/overview/source-and-target.png":::
@@ -44,13 +41,22 @@ Azure Site Recovery provides many features, as described in the following table.
 |Keep apps consistent over failover | You can replicate using recovery points with application-consistent snapshots. These snapshots capture disk data, all data in memory, and all transactions in process.|
 |Testing without disruption | You can easily run disaster recovery drills, without affecting ongoing replication.|
 |Flexible failovers | You can run planned failovers for expected outages with zero-data loss or unplanned failovers with minimal data loss, depending on replication frequency, for unexpected disasters. You can easily fail back to your primary site when it's available again.|
-|Customized recovery plans |**Not currently available in public preview.** Using recovery plans, you can customize and sequence the failover and recovery of multi-tier applications running on multiple VMs. You can group machines together in a recovery plan, and optionally add scripts and manual actions.
+|Customized recovery plans |Not currently available in this version. You can still customize and sequence the failover and recovery of multi-tier applications running on multiple VMs by using PowerShell scripts, tagging machines together in groups, and optionally adding scripts and manual actions. |
+
+## How is Site Recovery billed?
+
+Azure Site Recovery on Azure Stack Hub is intended to protect a specified number of Virtual Machines. To provide this service at a competitive rate, the cost of Azure Site Recovery is determined based on the physical core count of the target environment, regardless of the number of VMs that are protected. For detailed pricing options, see the [Azure Stack Hub pricing details](https://azure.microsoft.com/pricing/details/azure-stack/hub/).
+
+> [!NOTE]
+> Until the 1st of June 2024, there is no cost for running the Azure Site Recovery service. The pay-as-you-go pricing options will apply starting on the 1st of June 2024.
+
+When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free trial period is provided. This trial period enables testing, automation setup, and VM replication for protection. Following the conclusion of the 30-day trial, charges begin, calculated on the total count of physical cores in the target environment in which your Azure Site Recovery Resource Provider is installed.
 
 ## What can I replicate?
 
 Azure Site Recovery on Azure Stack Hub, with a required agent installed on each of the protected VMs, enables the replication of VMs across two instances, or stamps, of Azure Stack Hub. Azure Stack Hub uses a VM extension, available through the Azure Stack Hub Marketplace, to install this agent.
 
-We've tested and validated the following VM OSs and each has respective Azure Stack Hub Marketplace images available for download:
+The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 
 # [Windows](#tab/windows)
 
@@ -72,17 +78,16 @@ We've tested and validated the following VM OSs and each has respective Azure St
 | Operating system    | Details   |
 |---------------------|-----------|
 |Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/topic/update-rollup-41-for-azure-site-recovery-267eebca-ab08-c5ee-5b04-b3be62426191), [7.8](https://support.microsoft.com/topic/update-rollup-46-for-azure-site-recovery-0e938469-3de5-9ed4-d1bf-91fd24e711de), [7.9](https://support.microsoft.com/topic/update-rollup-49-for-azure-site-recovery-e455bd62-ed02-038d-87b4-a257fb4cdbe6), [8.0](https://support.microsoft.com/topic/update-rollup-42-for-azure-site-recovery-88be2b2d-fb52-3a36-4af2-785bbd847074), 8.1, [8.2](https://support.microsoft.com/topic/update-rollup-47-for-azure-site-recovery-8ceb92e2-27c2-8f20-e229-52bdbaa27963), [8.3](https://support.microsoft.com/topic/update-rollup-52-for-azure-site-recovery-c98af2b9-74af-8796-3184-d1d292bf3344), [8.4](https://support.microsoft.com/topic/update-rollup-60-for-azure-site-recovery-kb5011122-883a93a7-57df-4b26-a1c4-847efb34a9e8) (4.18.0-305.30.1.el8_4.x86_64 or higher), [8.5](https://support.microsoft.com/topic/update-rollup-60-for-azure-site-recovery-kb5011122-883a93a7-57df-4b26-a1c4-847efb34a9e8) (4.18.0-348.5.1.el8_5.x86_64 or higher), [8.6](https://support.microsoft.com/topic/update-rollup-62-for-azure-site-recovery-e7aff36f-b6ad-4705-901c-f662c00c402b), and 8.7.|
-|CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, [7.8](https://support.microsoft.com/topic/update-rollup-46-for-azure-site-recovery-0e938469-3de5-9ed4-d1bf-91fd24e711de), [7.9 pre-GA version](https://support.microsoft.com/topic/update-rollup-49-for-azure-site-recovery-e455bd62-ed02-038d-87b4-a257fb4cdbe6), 7.9 GA version is supported from 9.37 hotfix patch, 8.0, 8.1, [8.2](https://support.microsoft.com/topic/update-rollup-47-for-azure-site-recovery-8ceb92e2-27c2-8f20-e229-52bdbaa27963), [8.3](https://support.microsoft.com/topic/update-rollup-52-for-azure-site-recovery-c98af2b9-74af-8796-3184-d1d292bf3344), 8.4 (4.18.0-305.30.1.el8_4.x86_64 or later), 8.5 (4.18.0-348.5.1.el8_5.x86_64 or later), 8.6, and 8.7.|
 |Ubuntu 14.04 LTS Server |Includes support for all 14.04.x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines).|
 |Ubuntu 16.04 LTS Server | Includes support for all 16.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
 |Ubuntu 18.04 LTS Server | Includes support for all 18.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines). Ubuntu servers using password-based authentication and sign-in, and the cloud-init package to configure cloud VMs, might have password-based sign-in disabled on failover, depending on the cloud-init configuration. Password-based sign-in, of the failover VM in Azure portal, can be re-enabled on the virtual machine by resetting the password from the **Support > Troubleshooting > Settings** menu.|
 |Ubuntu 20.04 LTS server | Includes support for all 20.04.x versions. [Supported kernel version](/azure/site-recovery/azure-to-azure-support-matrix#supported-ubuntu-kernel-versions-for-azure-virtual-machines).|
-|Debian 7 | Includes support for all 7. x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
+|Debian 7 | Includes support for versions starting with 7.4 and later (7.2 and earlier are not supported due to a limitation in that version).|
 |Debian 8 | Includes support for all 8. x versions. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 9 | Includes support for 9.1 to 9.13. Debian 9.0 isn't supported. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 10 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 11 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
-|SUSE Linux Enterprise Server 11 | SP3. The upgrade of replicating machines from SP3 to SP4 isn't supported. If a replicated machine has been upgraded, you must disable replication and re-enable replication after the upgrade.|
+|SUSE Linux Enterprise Server 11 | SP3. The upgrade of replicating machines from SP3 to SP4 isn't supported. If a replicated machine was upgraded, you must disable replication and re-enable replication after the upgrade.|
 |SUSE Linux Enterprise Server 11 | SP4 |
 |SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, and SP5. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines).|
 |SUSE Linux Enterprise Server 15 | 15, SP1, SP2, SP3, and SP4. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines).|

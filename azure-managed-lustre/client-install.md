@@ -12,6 +12,9 @@ zone_pivot_groups: select-os
 
 # Install prebuilt Lustre client software
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 In this article, you learn how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
 
 If you need to upgrade an existing Lustre client to the current version, see [Upgrade a Lustre client to the current version](client-upgrade.md).

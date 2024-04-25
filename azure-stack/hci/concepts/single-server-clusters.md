@@ -27,7 +27,7 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 
 ## Prerequisites
 
-- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
+- A server from the [Azure Stack HCI Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - An [Azure Subscription](https://azure.microsoft.com/).
 
 For hardware, software, and network requirements see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).

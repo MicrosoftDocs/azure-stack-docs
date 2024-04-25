@@ -1,16 +1,15 @@
 ---
-title: Capacity planning using Azure Site Recovery (preview)
+title: Capacity planning using Azure Site Recovery
 description: Learn about capacity planning for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
 ms.topic: conceptual
-ms.date: 06/19/2023
+ms.date: 04/15/2024
 ms.reviewer: rtiberiu
-ms.lastreviewed: 03/07/2023
-
+ms.lastreviewed: 04/15/2024
 ---
 
-# Capacity planning using Azure Site Recovery (preview)
+# Capacity planning using Azure Site Recovery
 
 As an organization, it's imperative to adopt a business continuity and disaster recovery (BCDR) strategy that keeps your data safe, apps available, and workloads online during planned and unplanned outages.
 
@@ -21,7 +20,7 @@ To enable replication of VMs across two Azure Stack Hub stamps, you configure tw
 - **Source** environment:
   - The Azure Stack Hub stamp where tenant VMs are running.
 - **Target** environment:
-  - Where the Azure Site Recovery Resource Provider and dependencies run.
+  - Where the Azure Site Recovery Resource Provider runs.
 
 :::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/source-and-target.png" alt-text="Snapshot of replication of VMs across two Azure Stack Hub stamps."lightbox="media/azure-site-recovery/capacity-planning/source-and-target.png":::
 
@@ -77,20 +76,18 @@ The target environment requires one Azure Site Recovery vault to be created for 
 
 ## Azure Site Recovery RP resources
 
-Installing Azure Site Recovery on Azure Stack Hub involves adding the Site Recovery dependency server and the Site Recovery Resource Provider (RP) itself.
+Installation of Azure Site Recovery on Azure Stack Hub requires that you install the Site Recovery Resource Provider (RP).
 
 > [!NOTE]
 > With Microsoft.SiteRecovery-1.2301.2216.2287, Azure Site Recovery on Azure Stack Hub does not require Event Hubs as a dependency.
 
 :::image type="content" source="../operator/media/azure-site-recovery/capacity-planning/three-services.png" alt-text="Screenshot of the three services to install Azure Site Recovery on Azure Stack Hub."lightbox="media/azure-site-recovery/capacity-planning/three-services.png":::
 
-These two services are created on the Azure Stack Hub admin subscription and managed by Azure Stack Hub itself, therefore there's no configuration required. However, as with any service, these resources consume memory, storage, and have certain vCPUs allocated:
+This service is created on the Azure Stack Hub admin subscription and managed by Azure Stack Hub itself, therefore there's no configuration required. However, as with any service, these resources consume memory, storage, and have certain vCPUs allocated:
 
 |Service            | vCore  | Memory     | Disk Size  |
 |-------------------|--------|------------|------------|
-|Dependency Service | 12     | 42 GB      | 600 GB     |
-|Azure Site Recovery| 12     | 42 GB      | 300 GB     |
-|**Total**          | **24** | **84 GB** | **900 GB**|
+|Azure Site Recovery| 18     | 64 GB      | 384 GB     |
 
 > [!NOTE]
 > These resources are Azure Stack Hub services on the administration side of Azure Stack Hub. Once installed, the platform manages these resources.

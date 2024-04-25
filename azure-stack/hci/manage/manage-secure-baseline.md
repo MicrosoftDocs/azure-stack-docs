@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/27/2024
+ms.date: 04/19/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -30,6 +30,26 @@ You can use the security default settings to manage cluster security, drift cont
 View the SMB signing status under the **Data protections** > **Network protection** tab. SMB signing allows you to digitally sign SMB traffic between an Azure Stack HCI system and other systems.
 
 :::image type="content" source="media/manage-secure-baseline/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the SMB signing status in the Azure portal." lightbox="media/manage-secure-baseline/manage-bitlocker-network-protection.png":::
+
+## View security baseline compliance in the Azure portal
+
+After you've enrolled your Azure stack HCI system with Microsoft Defender for Cloud or assigned the built-in policy: Windows machines should meet requirements of the Azure compute security baseline, a report is generated for your servers.
+
+
+For Azure Stack HCI server, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of the 288. This score indicates that 281 out of 288 rules are compliant.
+
+The following table explains the rules that are not compliant and the rationale of the current gap:
+
+|Rule name    |   Expected    |Actual   | Logic    | Comments    |
+|--------------|----------------------|----------------------|----------------------|---------------------------------|
+|Interactive logon: Message text for users attempting to log on|Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
+|Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
+|Minimum password length	|Expected: 14 | Actual: 0 | Operator: GREATEROREQUAL|	We expect you to define this value with no drift control in place that aligns with your organization's policy.|
+|Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: EQUALS|This control doesn't apply to Azure Stack HCI.|
+|Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: EQUALS|This control is a part of the Windows Defender protections, not enabled by default. You can evaulte whether you want to enable.|
+|Hardened UNC Paths - NETLOGON	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive. This rule can be safely ignored.|
+|Hardened UNC Paths - SYSVOL	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive. This rule can be safely ignored.|
+
 
 ## Manage security defaults with PowerShell
 
