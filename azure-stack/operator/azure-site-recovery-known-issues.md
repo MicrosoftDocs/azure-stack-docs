@@ -21,18 +21,18 @@ This article describes known issues for Azure Site Recovery on Azure Stack Hub. 
 
 When you protect a VM, Azure Site Recovery needs to add an additional 1 GB of data to an existing disk. Since Azure Stack Hub has a hard limitation for the maximum size of a disk at 1023 GB, the maximum size of a disk protected by Site Recovery must be equal to or less than 1022.
 
-When you try to protect a VM with a disk of 1023Gb will have the following behavior:
+When you try to protect a VM with a disk of 1023Gb, the following behavior occurs:
 
 - Enable protection succeeds as a seed disk of only 1 GB is created and ready for use. There is no error at this step.
 - Replication is blocked at **xx% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1024 GB and write to it. This operation fails, as Azure Stack Hub does not support 1024 GB disks.
 
   :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-1.png" alt-text="Screenshot of Azure portal showing maximum disk error." lightbox="media/azure-site-recovery-known-issues/max-disk-number-1.png":::
 
-- The seed disk created for this disk (in the target subscription) is still at 1 GB in size, and the **Activity log** shows a number of **Write Disk** failures with the error message **The value '1024' of parameter 'disk.diskSizeGb' is out of range. Value '1024' must be between '1' and '1023' inclusive.**
+- The seed disk created for this disk (in the target subscription) is still at 1 GB in size, and the **Activity log** shows a few **Write Disk** failures with the error message **The value '1024' of parameter 'disk.diskSizeGb' is out of range. Value '1024' must be between '1' and '1023' inclusive.**
 
   :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-2.png" alt-text="Screenshot of Azure portal showing write disk errors." lightbox="media/azure-site-recovery-known-issues/max-disk-number-2.png":::
 
-The current workaround for this is to create a new disk (of 1022 GB or less), attach it to your source VM, copy the data from the 1023 GB disk to the new one, and then remove the 1023 GB disk from the source VM. Once this is done, and the VM has all disks smaller or equal to 1022 GB, you can enable the protection using Azure Site Recovery.
+The current workaround for this issue is to create a new disk (of 1022 GB or less), attach it to your source VM, copy the data from the 1023 GB disk to the new one, and then remove the 1023 GB disk from the source VM. Once this procedure is done, and the VM has all disks smaller or equal to 1022 GB, you can enable the protection using Azure Site Recovery.
 
 ## Re-protection: available data disk slots on appliance
 
