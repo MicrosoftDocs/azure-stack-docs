@@ -63,7 +63,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 - In this release, you can only migrate VMs that have disks attached to the cluster shared volumes (CSV). If the VM disks aren't attached to the CSV, the disks can’t be migrated.
 
-- CHECK Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
+- Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
 
 ## Target Azure Stack HCI cluster requirements
 
