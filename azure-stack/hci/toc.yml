@@ -301,6 +301,8 @@ items:
       href: manage/tenant-virtual-networks.md
     - name: Manage software load balancers
       href: manage/load-balancers.md
+    - name: Manage gateway connections
+      href: manage/gateway-connections.md
     - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Configure network security groups with tags
@@ -309,7 +311,6 @@ items:
       href: manage/manage-sdn-multisite.md
     - name: Assign public IP address to a VM
       href: manage/assign-public-ip-to-vm.md
-
 - name: Monitor
   items:
   - name: Overview
@@ -578,8 +579,6 @@ items:
         items:
         - name: Configure load balancer for high availability ports
           href: manage/configure-software-load-balancer.md
-      - name: Manage gateway connections
-        href: manage/gateway-connections.md
     - name: Manage Azure services
       items:
       - name: Hybrid capabilities with Azure services
