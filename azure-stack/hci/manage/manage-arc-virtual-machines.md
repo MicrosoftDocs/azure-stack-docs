@@ -250,7 +250,7 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to remove 
 
     Note that when a VM is deleted, all the resources associated with the VM are not deleted. For example, the data disks or the network interfaces associated with the VM are not deleted. You need to locate and delete these resources separately.
 
-    :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of select + remove VM." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of warning when deleting VM." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
 
 1. Verify the VM is removed.
 
