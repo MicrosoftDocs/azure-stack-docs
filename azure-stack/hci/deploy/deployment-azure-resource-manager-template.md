@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/19/2024
+ms.date: 04/25/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,7 +23,7 @@ This article details how to use an Azure Resource Manager template (ARM template
 ## Prerequisites
 
 - Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-    - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Edge Remote Support**.
+    - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
     - All servers are running the same version of OS.
     - All the servers have the same network adapter configuration.
 
@@ -46,11 +46,15 @@ The steps are also summarized here:
 
 1. Provide a **Name** for the application, select a **Supported account type**, and then select **Register**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png":::
 
-1. Once the service principal is created, go to the **Overview** page. Copy the **Application (client) ID**  and the **Object ID** for this service principal. 
+1. Once the service principal is created, go to the **Enterprise applications** page. Search for the SPN you created and select the SPN.
 
-   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing Application (client) ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
+   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
+
+1. Under properties, copy the **Application (client) ID**  and the **Object ID** for this service principal.
+
+   :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png":::
 
     You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the ARM template.
 
@@ -74,18 +78,18 @@ The steps are also summarized here:
 
     You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the ARM template.
 
-### Get the object ID for the Azure Stack HCI Resource Provider service principal
+### Get the object ID for Azure Stack HCI Resource Provider
 
-This object ID for the Azure Stack HCI RP service principal is unique per Azure tenant.
+This object ID for the Azure Stack HCI RP is unique per Azure tenant.
 
-1. In your Microsoft Entra admin center, go to **Identity > Enterprise applications**.
+1. In the Azure portal, search for and go to Microsoft Entra ID.  
 1. Go to the **Overview** tab and search for *Microsoft.AzureStackHCI Resource Provider*.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1.png" alt-text="Screenshot showing the search for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png" alt-text="Screenshot showing the search for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/search-azure-stackhci-resource-provider-1a.png":::
 
 1. Select the SPN that is listed and copy the **Object ID**.
 
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1.png" alt-text="Screenshot showing the object ID for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1.png":::
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png" alt-text="Screenshot showing the object ID for the Azure Stack HCI Resource Provider service principal." lightbox="./media/deployment-azure-resource-manager-template/get-azure-stackhci-object-id-1a.png":::
 
     Alternatively, you can use PowerShell to get the object ID of the Azure Stack HCI RP service principal. Run the following command in PowerShell:
 
