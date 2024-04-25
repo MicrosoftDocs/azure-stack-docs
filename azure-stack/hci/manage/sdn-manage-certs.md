@@ -4,7 +4,7 @@ description: Learn how to manage certificates for Network Controller Northbound 
 ms.topic: article
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 04/18/2024
+ms.date: 04/25/2024
 ---
 
 # Manage certificates for Software Defined Networking
