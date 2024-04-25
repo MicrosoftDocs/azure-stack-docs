@@ -5,7 +5,7 @@ ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
-ms.date: 11/07/2022
+ms.date: 02/26/2024
 ---
 
 # Use default network access policies on virtual machines on your Azure Stack HCI
@@ -56,9 +56,7 @@ Here's an example that explains how you can attach your VM directly to a VLAN wi
 
 1. When creating a VM, attach it to the logical network and logical network subnet created earlier. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
-    ![Screenshot showing how to attach VM directly to VLAN.](./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png)
-
-
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png" alt-text="Screenshot showing how to attach VM directly to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/attach-vm-logical-network-1.png":::
 
 ### Apply default network policies
 
@@ -84,24 +82,37 @@ You have three options:
 
 If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs on your Azure Stack HCI, and you have enabled default network access policies, you'll see two issues:
 
-- The VMs may not have network connectivity. This will happen since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state.
+- The VMs may not have network connectivity. This will happen since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state. 
 
     To unblock the port, run the following commands from a PowerShell session on a Hyper-V host where the VM is located:
 
     1. Run PowerShell as an administrator.
-    1. Download and install the [PowerShell Script from the gallery](https://www.powershellgallery.com/). Run the following command:
+    1. Download and install the [SdnDiagnostics](https://www.powershellgallery.com/packages/SdnDiagnostics) module. Run the following command:
     
         ```azurepowershell
-        Install-Script -Name SetVMPortProfile
+        Install-Module -Name SdnDiagnostics
+        ```
+
+        Alternatively, if already installed then leverage the following:
+
+        ```azurepowershell
+        Update-Module -Name SdnDiagnostics
         ```
 
         Accept all prompts to install from [PowerShell Gallery](https://www.powershellgallery.com/).
 
+    1. Confirm if VFP port is applied to the VM
+
+        ```azurepowershell
+        Get-SdnVMNetworkAdapterPortProfile -VMName <VMName>
+        ```
+
+        Ensure that VFP port profile information is returned for the adapter. If not, then proceed with associating a port profile.
+ 
     1. Specify the ports to be unblocked on the VM.
     
         ```azurepowershell
-        SetVMPortProfile.ps1 -VMName \<Name of VM whose port has to be unblocked\> -VMNetworkAdapterName \<Name of the adapter in the
-        VM\> -ProfileId "00000000-0000-0000-0000-000000000000" -ProfileData 2
+        Set-SdnVMNetworkAdapterPortProfile -VMName <VMName> -MacAddress <MACAddress> -ProfileId ([guid]::Empty) -ProfileData 2
         ```
 
 - The VM doesn't have default network policies applied. Since this VM was created outside Windows Admin Center, the default policies for the VM aren't applied, and the **Network Settings** for the VM doesn't display correctly. To rectify this issue, follow these steps:
@@ -110,8 +121,7 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
 
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
-    ![Screenshot showing how to enable default network to VLAN.](./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png)
-
+    :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
 
 ## Upgrade from 21H2
 

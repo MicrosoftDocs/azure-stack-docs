@@ -4,12 +4,12 @@ description: A discussion of resiliency options in Storage Spaces Direct includi
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
-ms.date: 07/21/2020
+ms.date: 04/17/2023
 ---
 
 # Fault tolerance and storage efficiency on Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 This article explains the resiliency options available and outlines the scale requirements, storage efficiency, and general advantages and tradeoffs of each.
 

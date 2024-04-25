@@ -4,12 +4,12 @@ description: How to create volumes on Azure Stack HCI and Windows Server cluster
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 07/22/2021
+ms.date: 02/26/2024
 ---
 
 # Create volumes on Azure Stack HCI and Windows Server clusters
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 This article describes how to create volumes on a cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable deduplication and compression, integrity checksums, or BitLocker encryption on volumes. To learn how to create volumes and set up replication for stretched clusters, see [Create stretched volumes](create-stretched-volumes.md).
 
@@ -30,7 +30,7 @@ To create a two-way or three-way mirror volume using Windows Admin Center:
 1. Under **More options,** you can use the checkboxes to turn on deduplication and compression, integrity checksums, or BitLocker encryption.
 1. Select **Create**.
 
-   :::image type="content" source="media/create-volumes/create-mirror-volume.png" alt-text="You can use Windows Admin Center to create a two-way or three-way mirror volume" lightbox="media/create-volumes/create-mirror-volume.png":::
+   :::image type="content" source="media/create-volumes/create-mirror-volume.png" alt-text="You can use Windows Admin Center to create a two-way or three-way mirror volume." lightbox="media/create-volumes/create-mirror-volume.png":::
 
 Depending on the size, creating the volume can take a few minutes. Notifications in the upper-right will let you know when the volume is created. The new volume will then appear in the Inventory list.
 
@@ -203,5 +203,4 @@ Nested resiliency only applies to two-server clusters running Azure Stack HCI or
 For related topics and other storage management tasks, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Extend volumes](extend-volumes.md)
-- [Delete volumes](delete-volumes.md)
+- [Manage volumes](manage-volumes.md)

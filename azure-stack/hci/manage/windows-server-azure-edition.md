@@ -2,14 +2,14 @@
 title: Deploy Windows Server Azure Edition VMs
 description: Learn how to deploy Windows Server Azure Edition VMs starting with an image in Azure Stack HCI Marketplace or Azure Marketplace.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/07/2023
+ms.date: 11/13/2023
 ---
 
 # Deploy Windows Server Azure Edition VMs
@@ -30,17 +30,15 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
 - **VM licensing:**  Windows Server Azure Edition can be licensed with either:
 
-  - **Windows Server subscription**: Turn on the subscription on your Azure Stack HCI cluster, then apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest. To learn more, see [Windows Server subscription](vm-activate.md#tutorial-windows-server-subscription).
+  - **Windows Server subscription**: Turn on the subscription on your Azure Stack HCI cluster, then apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest. To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
 
-  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#tutorial-bring-your-own-license-byol-activation-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
+  - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-bring-your-own-license-byol-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
 
    > [!Tip]
    > If you already have Windows Server Datacenter licenses with active Software Assurance, you can also turn on Windows Server subscription at no additional cost through [Azure Hybrid Benefit](../concepts/azure-hybrid-benefit-hci.md?tabs=azureportal). This is more convenient and allows you to save more.
 
-- **Azure Benefits:** You'll need to enable Azure Benefits on your cluster. Azure Benefits is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads like Windows Server Azure Edition. For specific information, see [Azure Benefits on Azure Stack HCI](azure-benefits.md).
+- **Azure verification for VMs:** You must enable Azure verification for VMs on your cluster. Azure VM verification is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads, such as Windows Server Azure Edition. For more information, see [Azure verification for VMs](../deploy/azure-verification.md).
 
->[!NOTE]
->While Windows Server Azure Edition and Hotpatch are available on the Azure public cloud (Azure IaaS), this experience is in preview for this Azure Stack HCI release.
 
 ## Deploy the OS
 
@@ -48,11 +46,11 @@ Windows Server Azure Edition can be deployed as a guest VM using either an HCI M
 
 ## [HCI marketplace image](#tab/hci)
 
-You can provision a Windows Server Azure Edition VM using an HCI Marketplace image in conjunction with [VM provisioning using Azure portal](azure-arc-vm-management-overview.md).
+You can provision a Windows Server Azure Edition VM using an Azure Stack HCI Marketplace image in conjunction with [VM provisioning using Azure portal](azure-arc-vm-management-overview.md).
 
 You do this by following these steps:
 
-1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#azure-arc-vm-management-deployment-workflow) on your Azure Stack HCI.
+1. Deploy [Azure Arc VM management](azure-arc-vm-management-overview.md#) on your Azure Stack HCI.
 
 1. Learn about how certain [Azure Marketplace images](virtual-machine-image-azure-marketplace.md) can now be used to create VMs on Azure Stack HCI.
 
@@ -118,7 +116,7 @@ To export the VHD:
 
 1. Open a browser and go to the SAS URL of the managed disk you created at [Create a new Azure managed disk from the image](/azure/virtual-desktop/azure-stack-hci#create-a-new-azure-managed-disk-from-the-image). You can download the VHD image for the image you downloaded at Azure Marketplace at this URL.
 
-1. Download the VHD image. The process may take several minutes. Make sure the image has fully downloaded before proceeding. If you’re running the [azcopy](/azure/storage/common/storage-ref-azcopy) command, you can skip MD5 checksum validation by running this command:
+1. Download the VHD image. The process might take several minutes. Make sure the image has fully downloaded before proceeding. If you're running the [azcopy](/azure/storage/common/storage-ref-azcopy) command, you can skip MD5 checksum validation by running this command:
 
     ```powershell
     azcopy copy "$sas" "destination_path_on_cluster" --check-md5 NoCheck
@@ -152,14 +150,13 @@ Convert-VHD -Path "<path_to_vhd\filename.vhd>" -DestinationPath "destination_pat
 
 ## Using Hotpatch
 
-There are a few important differences using Hotpatch with Azure Edition guest VMs on Azure Stack HCI in this preview release as compared to using Hotpatch with Azure Edition guest VMs on Azure IaaS.
+There are a few important differences using Hotpatch with Azure Edition guest VMs on Azure Stack HCI as compared to using Hotpatch with Azure Edition guest VMs on Azure IaaS.
 
-These differences include the following limitations for this preview release:
+These differences include the following limitations for using Hotpatch with Azure Edition guest VMs for this Azure Stack HCI release:
 
 - Hotpatch configuration isn't available using Azure Update Manager.
 - Hotpatch can't be disabled.
 - Automatic Patching orchestration isn't available.
-- Orchestration must be performed manually, such as by using Windows Update with SConfig.
 
 ## Next steps
 

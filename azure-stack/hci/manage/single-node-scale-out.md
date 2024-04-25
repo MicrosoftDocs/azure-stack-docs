@@ -1,16 +1,18 @@
 ---
 title: Single server scale-out for Azure Stack HCI version 22H2
 description: Learn how to scale out a single-server cluster for Azure Stack HCI version 22H2.
-author: dansisson
+author: alkohli
 ms.topic: how-to
-ms.date: 10/17/2022
-ms.author: v-dansisson
+ms.date: 01/31/2024
+ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
 # Single server scale-out for your Azure Stack HCI
 
 > Applies to: Azure Stack HCI, version 22H2
+
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
 
 Azure Stack HCI version 22H2 supports inline fault domain and resiliency changes for single-server cluster scale-out. This article describes how you can scale out your Azure Stack HCI cluster.
 
@@ -122,7 +124,7 @@ Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 4
 **For a tiered volume**, run the following command:
 
 ```powershell
-Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberfOfDataCopies 4
+Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberOfDataCopies 4
 ```
 
 Then, move the volume to a different node to remount the volume. A remount is needed as ReFS only recognizes provisioning type at mount time.
@@ -152,7 +154,7 @@ Set-VirtualDisk -FriendlyName <name> -NumberOfDataCopies 3
 **For a tiered volume**, run the following command:
 
 ```powershell
-Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberfOfDataCopies 3
+Get-StorageTier -FriendlyName <volume_name*> | Set-StorageTier -NumberOfDataCopies 3
 ```
 
 Then, move the volume to a different node to remount the volume. A remount is needed as ReFS only recognizes provisioning type at mount time.
@@ -160,6 +162,9 @@ Then, move the volume to a different node to remount the volume. A remount is ne
 ```powershell
 Move-ClusterSharedVolume -Name <name> -Node <node>
 ```
+
+> [!NOTE]
+> Volumes created in Windows Admin Center are configured as tiered volumes. To change the volume resiliency, use the StorageTier cmdlets, such as [Get-StorageTier](/powershell/module/storage/get-storagetier) and [Set-StorageTier](/powershell/module/storage/set-storagetier).
 
 ## Next steps
 

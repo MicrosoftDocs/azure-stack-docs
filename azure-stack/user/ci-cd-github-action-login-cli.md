@@ -3,6 +3,8 @@ title: Use the Azure login action with Azure CLI and PowerShell on Azure Stack H
 description: Use the Azure login action with Azure CLI and PowerShell to create a continuous integration, continuous deployment (CI/CD) workflow on Azure Stack Hub
 author: sethmanheim
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 1/11/2021
 ms.author: sethm
 ms.reviewer: thoroet
@@ -10,7 +12,6 @@ ms.lastreviewed: 1/11/2021
 
 # Intent: As a developer, I want to create a continuous integration, continuous deployment workflow on Azure Stack Hub so I can easily validate, integrate, and publish my solution on Azure Stack Hub.
 # Keyword: GitHub Actions Azure Stack Hub login
-
 ---
 
 # Use the Azure login action with Azure CLI and PowerShell on Azure Stack Hub
@@ -39,7 +40,7 @@ Parts of using the self-hosted runner:
 - Self-hosted runner hosted on Azure
 - Azure Stack Hub
 
-A limitation of using GitHub Actions with Azure Stack Hub is that the process requires using an Azure Stack Hub connected to the web. The workflow is triggered in a GitHub repository. You can use both Azure Active Directory (Azure AD) or Active Directory Federated Services (AD FS) as your identity provider.
+A limitation of using GitHub Actions with Azure Stack Hub is that the process requires using an Azure Stack Hub connected to the web. The workflow is triggered in a GitHub repository. You can use both Microsoft Entra ID or Active Directory Federated Services (AD FS) as your identity provider.
 
 Although this is out of the scope of this article, your self-hosted runner can also use a virtual private network to connect to your Azure Stack Hub behind a firewall.
 

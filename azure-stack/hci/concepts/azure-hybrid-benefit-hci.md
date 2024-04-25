@@ -1,21 +1,22 @@
 ---
 title: Azure Hybrid Benefit for Azure Stack HCI
 description: Learn about Azure Hybrid Benefit for Azure Stack HCI.
-author: ManikaDhiman
-ms.author: v-mandhiman
+author: sethmanheim
+ms.author: sethm
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/10/2022
+ms.custom: devx-track-azurepowershell
+ms.date: 02/20/2024
 ---
 
 # Azure Hybrid Benefit for Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 This article describes Azure Hybrid Benefit and how to use it for Azure Stack HCI.
 
-[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Stack HCI, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Stack HCI at no additional cost.
+[Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) is a program that helps you reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for Azure Stack HCI, you can maximize the value of your on-premises licenses and modernize your existing infrastructure to Azure Stack HCI at no additional cost.
 
 ## What is Azure Hybrid Benefit for Azure Stack HCI?
 
@@ -24,7 +25,7 @@ If you have [Windows Server Datacenter licenses](https://www.microsoft.com/licen
 This benefit waives the Azure Stack HCI host service fee and Windows Server guest subscription on your cluster. Other costs associated with Azure Stack HCI, such as Azure services, are billed as per normal. For details about pricing with Azure Hybrid Benefit, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 
 > [!TIP]
-> You can maximize cost savings by also using Azure Hybrid Benefit for AKS on Azure Stack HCI. For more information, see [Azure Hybrid Benefits for AKS on Azure Stack HCI](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
+> You can maximize cost savings by also using Azure Hybrid Benefit for AKS. For more information, see [Azure Hybrid Benefits for AKS](/windows-server/get-started/azure-hybrid-benefit#getting-azure-hybrid-benefit-for-aks).
 
 ## Activate Azure Hybrid Benefit for Azure Stack HCI
 
@@ -39,7 +40,7 @@ The following prerequisites are required to activate Azure Hybrid Benefit for yo
     - Version 22H2 or later; or
     - Version 21H2 with at least the September 13, 2022 security update [KB5017316](https://support.microsoft.com/topic/september-13-2022-security-update-kb5017316-0f0e00f9-a27c-496d-81b7-aa3b3bb010bc) or later
     
-- Make sure that all servers in your cluster are online and [registered](../deploy/register-with-azure.md#register-a-cluster-using-windows-admin-center) with Azure
+- Make sure that all servers in your cluster are online and [registered](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster) with Azure
 
 - Make sure that your cluster has Windows Server Datacenter licenses with active Software Assurance. For other licensing prerequisites, see [Licensing prerequisites](/windows-server/get-started/azure-hybrid-benefit#licensing-prerequisites-1)
 
@@ -47,6 +48,7 @@ The following prerequisites are required to activate Azure Hybrid Benefit for yo
 
 ### Activate Azure Hybrid Benefit
 
+# [Azure portal](#tab/azure-portal)
 Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI cluster via the Azure portal:
 
 1. Use your Microsoft Azure credentials to sign in to the Azure portal at this URL: https://portal.azure.com.
@@ -58,7 +60,7 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
     > [!NOTE]
     > You can't deactivate Azure Hybrid Benefit for your cluster after activation. Proceed after you have confirmed the changes.
 
-    :::image type="content" source="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png" alt-text="Screenshot showing how to activate Azure Hybrid Benefit." lightbox="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png":::
+    :::image type="content" source="media/azure-hybrid-benefit-hci/activate-azure-hybrid-benefit.png" alt-text="Screenshot showing how to activate Azure Hybrid Benefit." lightbox="media/azure-hybrid-benefit-hci/activate-azure-hybrid-benefit.png":::
 
 1. When Azure Hybrid Benefit successfully activates for your cluster, the Azure Stack HCI host fee is waived for the cluster.
 
@@ -69,7 +71,67 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
 
 1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, check the details and then select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the cluster.
 
-    :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
+    :::image type="content" source="media/azure-hybrid-benefit-hci/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit-hci/activate-windows-server-subscription.png":::
+
+# [Azure PowerShell](#tab/azure-powershell)
+Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following steps:
+
+1. Set up parameters from your subscription, resource group, and cluster name
+    ```powershell
+    $subscription = "00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+    $resourceGroup = "hcicluster-rg" # Replace with your resource group name
+    $clusterName = "HCICluster" # Replace with your cluster name
+
+    Set-AzContext -Subscription "${subscription}"
+    ```
+
+
+1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+    ```powershell
+    Install-Module -Name Az.ResourceGraph
+    Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+    ```
+
+    
+1. To enable Azure Hybrid Benefits, run the following command and check if Azure Hybrid Benefits got enabled using above command:
+    ```powershell    
+    Invoke-AzStackHciExtendClusterSoftwareAssuranceBenefit -ClusterName "${clusterName}" -ResourceGroupName "${resourceGroup}" -SoftwareAssuranceIntent "Enable"
+    ```
+
+# [Azure CLI](#tab/azure-cli)
+Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in Azure Cloud Shell. This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Hybrid Benefits following these steps:
+
+1. Set up parameters from your subscription, resource group, and cluster name
+    ```azurecli
+    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+    resourceGroup="hcicluster-rg" # Replace with your resource group name
+    clusterName="HCICluster" # Replace with your cluster name
+
+    az account set --subscription "${subscription}"
+    ```
+
+1. To view Azure Hybrid Benefits status on a cluster, run the following command:
+    ```azurecli    
+    az stack-hci cluster list \
+    --resource-group "${resourceGroup}" \
+    --query "[?name=='${clusterName}'].{Name:name, SoftwareAssurance:softwareAssuranceProperties.softwareAssuranceStatus}" \
+    -o table
+    ```
+
+    
+1. To enable Azure Hybrid Benefits, run the following command:
+    ```azurecli    
+    az stack-hci cluster extend-software-assurance-benefit \
+    --cluster-name "${clusterName}" \
+    --resource-group "${resourceGroup}" \
+    --software-assurance-intent enable
+    ```
+
+---
 
 ## Maintain compliance for Azure Hybrid Benefit
 
@@ -81,7 +143,7 @@ You can perform an inventory of your clusters through the Azure portal and [Azur
 
 You can verify if your cluster is using Azure Hybrid Benefit via Azure portal, PowerShell, or Azure CLI.
 
-# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azure-portal)
 
 1. In your Azure Stack HCI cluster resource page, under **Settings**, select **Configuration**. 
 1. Under **Azure Hybrid Benefit**, the status shows as:
@@ -90,20 +152,18 @@ You can verify if your cluster is using Azure Hybrid Benefit via Azure portal, P
 
 You can also navigate to **Cost Analysis** > **Cost by Resource** > **Cost by Resource**. Expand your Azure Stack HCI resource to check that the meter is under **Software Assurance**.
 
-# [PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/azure-powershell)
 
 ```powershell
 Install-Module -Name Az.ResourceGraph
-Connect-AzAccount -Environment $EnvironmentName -Subscription $subId
-Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == 'yourClusterName' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+Search-AzGraph -Query "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
 ```
 
-# [Azure CLI](#tab/azurecli)
+# [Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az login
 az extension add --name resource-graph
-az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where name == ' clustername' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
+az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'| where name == '${clusterName}' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
 ```
 
 ---
@@ -112,31 +172,30 @@ az graph query -q "resources | where type == 'microsoft.azurestackhci/clusters'|
 
 You can list all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription using PowerShell and Azure CLI.
 
-# [Azure portal](#tab/azureportal)
+# [Azure portal](#tab/azure-portal)
 
 Use PowerShell or Azure CLI to list all Azure Stack HCI clusters with Azure Hybrid Benefit in a subscription.
 
-# [PowerShell](#tab/powershell)
+# [Azure PowerShell](#tab/azure-powershell)
 
 ```powershell
 Install-Module -Name Az.ResourceGraph
 Connect-AzAccount -Environment $EnvironmentName -Subscription $subId
-Search-AzGraph -Query "Resources | where type == 'microsoft.azurestackhci/clusters' | where properties['softwareAssuranceProperties']['softwareAssuranceStatus'] == 'Enabled'"
+Search-AzGraph -Query "Resources | where type == 'microsoft.azurestackhci/clusters' | where properties['softwareAssuranceProperties']['softwareAssuranceStatus'] == 'Enabled' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
 ```
 
-# [Azure CLI](#tab/azurecli)
+# [Azure CLI](#tab/azure-cli)
 
 ```azurecli
-az login
 az extension add --name resource-graph
-az graph query -q "Resources | where type == 'microsoft.azurestackhci/clusters' | where properties['softwareAssuranceProperties']['softwareAssuranceStatus'] == 'Enabled'"
+az graph query -q "Resources | where type == 'microsoft.azurestackhci/clusters' | where properties['softwareAssuranceProperties']['softwareAssuranceStatus'] == 'Enabled' | project id, properties['softwareAssuranceProperties']['softwareAssuranceStatus']"
 ```
 
 ---
 
 ## Troubleshoot Azure Hybrid Benefit for Azure Stack HCI
 
-This section describes the errors that you may get when activating Azure Hybrid Benefit for Azure Stack HCI.
+This section describes the errors that you might get when activating Azure Hybrid Benefit for Azure Stack HCI.
 
 **Error**
 
@@ -152,13 +211,13 @@ This error can occur if you have a new Software Assurance contract or if you hav
 
 ## FAQs
 
-This section answers questions you may have about Azure Hybrid Benefit for Azure Stack HCI.
+This section answers questions you might have about Azure Hybrid Benefit for Azure Stack HCI.
 
 ### How does licensing work for Azure Hybrid Benefit?
 
 For more information about licensing, see [Azure Hybrid Benefit for Windows Server](/windows-server/get-started/azure-hybrid-benefit).
 
-### Can I opt-in to Azure Hybrid Benefit for an existing cluster?
+### Can I opt in to Azure Hybrid Benefit for an existing cluster?
 
 Yes.
 

@@ -127,7 +127,7 @@ Prior to rotation of external secrets:
 6. Create a folder in the file share named `Certificates`. Inside the certificates folder, create a subfolder named `AAD` or `ADFS`, depending on the identity provider your Hub uses. For example, ***.\Certificates\AAD*** or ***.\Certificates\ADFS***. No other folders besides the certificates folder and the identity provider subfolder should be created here.
 7. Copy the new set of replacement external certificates created in step #2, to the **.\Certificates\\\<IdentityProvider>** folder created in step #6. As mentioned above, your identity provider subfolder must either be `AAD` or `ADFS`. Please ensure that the subject alternative names (SANs) of your replacement external certificates follow the `cert.<regionName>.<externalFQDN>` format specified in [Azure Stack Hub public key infrastructure (PKI) certificate requirements](../operator/azure-stack-pki-certs.md#mandatory-certificates).
 
-    Here's an example of a folder structure for the Azure AD Identity Provider:
+    Here's an example of a folder structure for the Microsoft Entra identity Provider:
 
     ```powershell
         <ShareName>
@@ -171,7 +171,7 @@ Prior to rotation of external secrets:
                               <CertName>.pfx
     ```
 
-<sup>*</sup>Applicable when using Azure Container Registry (ACR) for AAD and ADFS.
+<sup>*</sup>Applicable when using Azure Container Registry (ACR) for Microsoft Entra ID and ADFS.
 
 >[!NOTE]
 > If you are rotating external Container Registry certificates you must manually create a **`Container Registry`** subfolder in the identity provider subfolder. Additionally, you must store the corresponding .pfx certificate within this manually created subfolder.

@@ -1,9 +1,8 @@
 ﻿---
-title: Tutorial - Prepare an application for AKS hybrid 
-description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS hybrid.
-services: container-service
+title: Tutorial - Prepare an application for AKS enabled by Azure Arc 
+description: In this tutorial, learn how to prepare and build a multi-container app with Docker Compose that you can then deploy to AKS.
 ms.topic: tutorial
-ms.date: 10/07/2022
+ms.date: 01/05/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -14,11 +13,11 @@ author: sethmanheim
 
 ---
 
-# Tutorial: Prepare an application for AKS hybrid
+# Tutorial: Prepare an application for AKS
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In this tutorial, part one of seven, a multi-container application is prepared for use on a Kubernetes cluster when you're using Azure Kubernetes Service hybrid deployment options (AKS hybrid). Existing development tools such as Docker Compose are used to locally build and test an application. 
+In this tutorial, part one of seven, a multi-container application is prepared for use on a Kubernetes cluster when you're using Azure Kubernetes Service enabled by Azure Arc. Existing development tools such as Docker Compose are used to locally build and test an application.
 
 You learn how to:
 
@@ -29,9 +28,9 @@ You learn how to:
 
 Once completed, the following application runs in your local development environment:
 
-:::image type="content" source="./media/azure-vote-local.png" alt-text="This image shows the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
+:::image type="content" source="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png" alt-text="Screenshot showing the container image that the Azure Voting App running locally opened in a local web browser." lightbox="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png":::
 
-In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into an AKS cluster.
+In later tutorials, the container image is uploaded to an Azure Container Registry, and then deployed into a Kubernetes cluster.
 
 ## Before you begin
 
@@ -40,19 +39,19 @@ This tutorial assumes a basic understanding of core Docker concepts such as cont
 To complete this tutorial, you need a local Docker development environment running Linux containers. Docker provides packages that configure Docker on [Windows][docker-for-windows].
 
 > [!NOTE]
-> AKS hybrid does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
+> AKS does not include the Docker components required to complete every step in these tutorials. Therefore, we recommend using a full Docker development environment.
 
 ## Get application code
 
 The [sample application][sample-application] used in this tutorial is a basic voting app consisting of a front-end web component and a back-end Redis instance. The web component is packaged into a custom container image. The Redis instance uses an unmodified image from Docker Hub.
 
-Use [git][] to clone the sample application to your development environment:
+Use [GitHub][git] to clone the sample application to your development environment:
 
 ```console
 git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 ```
 
-Change into the cloned directory.
+Change into the cloned directory:
 
 ```console
 cd azure-voting-app-redis
@@ -90,7 +89,7 @@ azure-voting-app-redis
 
 ## Create container images
 
-[Docker Compose][docker-compose] can be used to automate building container images and the deployment of multi-container applications.
+You can use [Docker Compose][docker-compose] to automate building container images and the deployment of multi-container applications.
 
 Use the sample `docker-compose.yaml` file to create the container image, download the Redis image, and start the application:
 
@@ -98,9 +97,9 @@ Use the sample `docker-compose.yaml` file to create the container image, downloa
 docker-compose up -d
 ```
 
-When completed, use the [docker images][docker-images] command to see the created images. Three images have been downloaded or created. The *azure-vote-front* image contains the front-end application and uses the *nginx-flask* image as a base. The *redis* image is used to start a Redis instance.
+When completed, use the [docker images][docker-images] command to see the created images. Three images were downloaded or created. The **azure-vote-front** image contains the front-end application and uses the **nginx-flask** image as a base. The **redis** image is used to start a Redis instance.
 
-```
+```output
 $ docker images
 
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
@@ -111,7 +110,7 @@ tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863 
 
 Run the [docker ps][docker-ps] command to see the running containers:
 
-```
+```console
 $ docker ps
 
 CONTAINER ID        IMAGE                                             COMMAND                  CREATED             STATUS              PORTS                           NAMES
@@ -123,11 +122,11 @@ d10e5244f237        mcr.microsoft.com/azuredocs/azure-vote-front:v1   "/entrypoi
 
 To see the running application, enter `http://localhost:8080` in a local web browser. The sample application loads, as shown in the following example:
 
-:::image type="content" source="./media/azure-vote-local.png" alt-text="Screenshot showing the container image that the Azure Voting App running locally opened in a local web browser" lightbox="./media/azure-vote-local.png":::
+:::image type="content" source="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png" alt-text="Screenshot showing the container image opened in a local web browser." lightbox="./media/tutorial-kubernetes-prepare-application/azure-vote-local.png":::
 
 ## Clean up resources
 
-Now that the application's functionality has been validated, the running containers can be stopped and removed. ***Do not delete the container images*** - in the next tutorial, the *azure-vote-front* image is uploaded to an Azure Container Registry instance.
+Now that the application's functionality is validated, the running containers can be stopped and removed. Don't delete the container images - in the next tutorial, the **azure-vote-front** image is uploaded to an Azure Container Registry instance.
 
 Stop and remove the container instances and resources with the [docker-compose down][docker-compose-down] command:
 
@@ -135,7 +134,7 @@ Stop and remove the container instances and resources with the [docker-compose d
 docker-compose down
 ```
 
-When the local application has been removed, you have a Docker image that contains the Azure Vote application, *azure-vote-front*, for use with the next tutorial.
+When you remove the local application, you have a Docker image that contains the Azure Vote application, **azure-vote-front**, for use with the next tutorial.
 
 ## Next steps
 
@@ -151,10 +150,7 @@ Advance to the next tutorial to learn how to store container images in Azure Con
 > [!div class="nextstepaction"]
 > [Push images to Azure Container Registry](./tutorial-kubernetes-prepare-azure-container-registry.md)
 
-<!-- LINKS - external -->
 [docker-compose]: https://docs.docker.com/compose/
-[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
-[docker-for-mac]: https://docs.docker.com/docker-for-mac/
 [docker-for-windows]: https://docs.docker.com/docker-for-windows/
 [docker-get-started]: https://docs.docker.com/get-started/
 [docker-images]: https://docs.docker.com/engine/reference/commandline/images/
@@ -162,5 +158,3 @@ Advance to the next tutorial to learn how to store container images in Azure Con
 [docker-compose-down]: https://docs.docker.com/compose/reference/down
 [git]: https://git-scm.com/downloads
 [sample-application]: https://github.com/Azure-Samples/azure-voting-app-redis
-
-<!-- LINKS - internal -->

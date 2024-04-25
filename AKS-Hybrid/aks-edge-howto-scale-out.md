@@ -4,26 +4,27 @@ description: Learn how to scale out your AKS Edge Essentials applications to mul
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 12/05/2022
+ms.date: 10/06/2023
 ms.custom: template-how-to
 ---
 
 # Scaling out on multiple machines
 
 Now that AKS Edge Essentials is installed on your primary machine, this article describes how you can scale out your cluster to other secondary machines to create a multi-machine deployment.
-> [!WARNING]
+
+> [!CAUTION]
 > Scaling to additional nodes is an experimental feature.
 
 ## Prerequisites
 
 - Set up your [scalable Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
-- Set up your secondary machines as described in the [Set up machine](aks-edge-howto-setup-machine.md) article. You can't mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **K8s**, you must install the **K8s** msi on the secondary machines as well.
+- Set up your secondary machines as described in the [Set up machine article](aks-edge-howto-setup-machine.md). You can't mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **K8s**, you must install the **K8s** msi on the secondary machines as well.
 
-## 1. Get cluster configuration from your primary machine
+## Step 1: get cluster configuration from your primary machine
 
 On your primary machine on which you created your scalable deployment, run the following steps in an elevated PowerShell window to create the appropriate configuration file based on your requirements.
 
-- To scale by adding a Linux-only worker node, create the required configuration file using the following command and specify the `NodeType` as "Linux" and provide a unique and available IP address for this node.
+- To scale by adding a Linux-only worker node, create the required configuration file using the following command and specify the `NodeType` as "Linux" and provide a unique and available IP address for this node:
 
     ```powershell
     New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Linux -LinuxNodeIp x.x.x.x -outFile .\ScaleConfig.json | Out-Null
@@ -41,7 +42,7 @@ On your primary machine on which you created your scalable deployment, run the f
     New-AksEdgeScaleConfig -scaleType AddMachine -NodeType Windows -WindowsNodeIp x.x.x.x -outFile .\ScaleConfig.json | Out-Null
     ```
 
-- To add a Linux and Windows worker node, specify the `NodeType` as "LinuxAndWindows" and provide a unique IP address for both the Linux and Windows nodes as follows:
+- To add a Linux and Windows worker node, specify the `NodeType` as "LinuxAndWindows" and provide a unique IP address for both the Linux and Windows nodes:
 
     ```powershell
     New-AksEdgeScaleConfig -scaleType AddMachine -NodeType LinuxandWindows -LinuxNodeIp x.x.x.x -WindowsNodeIp x.x.x.x -outFile .\ScaleConfig.json | Out-Null
@@ -53,22 +54,26 @@ On your primary machine on which you created your scalable deployment, run the f
     New-AksEdgeScaleConfig -scaleType AddMachine -NodeType LinuxandWindows -LinuxNodeIp x.x.x.x -WindowsNodeIp x.x.x.x  -ControlPlane -outFile .\ScaleConfig.json | Out-Null
     ```
 
-This command exports the necessary data to join a cluster in the JSON format and returns it as a JSON string and stores it in the file specified via `outFile` parameter.
+These commands export the necessary data to join a cluster in the JSON format, return it as a JSON string, and store it in the file specified via `outFile` parameter.
 
-## 2. Validate the configuration parameters
+> [!CAUTION]
+> Every time you run the `New-AksEdgeScaleConfig` command, the previously-created `ClusterJoinToken` becomes invalid, so you can't use a previously created **ScaleConfig.json** file. Additionally, `ClusterJoinToken` is only valid for 24 hours.
 
- The **.\ScaleConfig.json** configuration file includes the configurations from the primary machine. Review and update necessary sections providing details relevant to the machine you're scaling to.
+## Step 2: validate the configuration parameters
 
-- Verify the `NetworkConnection.AdapterName` with reference to the secondary machine. If you've created an external switch on your Hyper-V on your secondary machine, you can choose to specify the vswitch details in your **ScaleConfig.json** file. If you don't create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS edge automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
+The **.\ScaleConfig.json** configuration file includes the configuration from the primary machine. Review and update necessary sections, and provide details relevant to the machine you're scaling to.
+
+- Verify the `NetworkConnection.AdapterName` with reference to the secondary machine. If you've created an external switch on your Hyper-V on your secondary machine, you can choose to specify the vswitch details in your **ScaleConfig.json** file. If you don't create an external switch in Hyper-V manager and run the `New-AksEdgeDeployment` command, AKS Edge Essentials automatically creates an external switch named `aksedgesw-ext` and uses that for your deployment.
+
     > [!NOTE]
-    > In this release, there is a known issue in automatic creation of external switches with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter. Then provide the switch details in your configuration JSON as described below.
+    > In this release, there is a known issue in automatic creation of external switches with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter. Then provide the switch details in your configuration JSON as described in this section.
 
-- The `Network.NetworkPlugin` by default is `flannel`. Flannel is the default CNI for a K3S cluster. For a K8S cluster, change the `NetworkPlugin` to `calico`.
-- Verify the resource configurations for the secondary nodes. You can modify these parameters as needed. Ensure that you [reserve enough memory for each node](./aks-edge-concept-clusters-nodes.md). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
+- The `Network.NetworkPlugin` is `flannel` by default. Flannel is the default CNI for a K3S cluster. For a K8S cluster, change the `NetworkPlugin` to `calico`.
+- Verify the resource configuration for the secondary nodes. You can modify these parameters as needed. Ensure that you [reserve enough memory for each node](./aks-edge-concept-clusters-nodes.md). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
 
-- The only supported setting is to have an odd number of control plane nodes. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
+- An odd number of control plane nodes is the only supported setting. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.
 
-## 3. Bring up a node on your secondary machine
+## Step 3: bring up a node on your secondary machine
 
 Now you're ready to bring up nodes on your secondary machines and add them to the cluster.
 
@@ -78,7 +83,7 @@ To deploy the corresponding node on the secondary machine, you can now use the *
 New-AksEdgeDeployment -JsonConfigFilePath .\ScaleConfig.json
 ```
 
-## 4. Validate your cluster setup
+## Step 4: validate your cluster setup
 
 On any node in the cluster, run the following cmdlet:
 
@@ -88,13 +93,13 @@ kubectl get nodes -o wide
 
 You should be able to see all the nodes of the cluster.
 
-![Screenshot showing multiple nodes.](./media/aks-edge/aks-edge-multi-nodes.png)
+:::image type="content" source="media/aks-edge/aks-edge-multi-nodes.png" alt-text="Screenshot showing multiple nodes." lightbox="media/aks-edge/aks-edge-multi-nodes.png":::
 
-## 5. Add more nodes
+## Step 5: add more nodes
 
-You can generate a new `ScaleConfig` file based on the nodeType required by repeating steps 1-4. Ensure that you provide IP addresses that are available in your network each time you add a node.
+You can generate a new **ScaleConfig** file based on the nodeType required by repeating steps 1-4. Ensure that you provide IP addresses that are available in your network each time you add a node.
 
-## 6. Add the second node (Linux/Windows) on a machine that already has a node (optional)
+## Step 6: add the second node (Linux/Windows) on a machine that already has a node (optional)
 
 You can add another node to an existing machine that already has a node. For example, if your machine is running a Linux node, you can add a Windows node to it:
 
@@ -102,10 +107,10 @@ You can add another node to an existing machine that already has a node. For exa
 New-AksEdgeScaleConfig -ScaleType AddNode -NodeType Windows -WindowsNodeIp "xxx" -outFile .\ScaleConfig.json | Out-Null
 ```
 
-You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM here.
+You can also specify parameters such as `CpuCount` and/or `MemoryInMB` for your Windows VM.
 
 > [!NOTE]
-> Run `New-AksEdgeScaleConfig` only on the machines that has the **Linux node with ControlPlane** role.
+> Run `New-AksEdgeScaleConfig` only on machines that have the **Linux node with ControlPlane** role.
 
 You can use the generated configuration file and run the following command to add the Windows node:
 

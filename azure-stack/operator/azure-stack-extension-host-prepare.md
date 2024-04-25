@@ -60,7 +60,7 @@ The Azure Stack Hub Readiness Checker tool lets you create a certificate signing
     ```
 
     > [!Note]  
-    > If you deploy with Azure Active Directory Federated Services (AD FS) the following directories must be added to **$directories** in the script: `ADFS`, `Graph`.
+    > If you deploy with Microsoft Entra ID Federated Services (AD FS) the following directories must be added to **$directories** in the script: `ADFS`, `Graph`.
 
 4. Place the existing certificates, which you're currently using in Azure Stack Hub, in appropriate directories. For example, put the **Admin ARM** certificate in the `Arm Admin` folder. And then put the newly created hosting certificates in the `Admin extension host` and `Public extension host` directories.
 5. Run the following cmdlet to start the certificate check:
@@ -72,7 +72,6 @@ The Azure Stack Hub Readiness Checker tool lets you create a certificate signing
     ```
 
 6. Check the output and if all certificates pass all tests.
-
 
 ## Import extension host certificates
 

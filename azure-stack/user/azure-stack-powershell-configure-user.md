@@ -22,7 +22,7 @@ You can connect to Azure Stack Hub with PowerShell to manage Azure Stack Hub res
 
 To get setup:
   - Make sure you have the requirements.
-  - Connect with Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). 
+  - Connect with Microsoft Entra ID or Active Directory Federation Services (AD FS). 
   - Register resource providers.
   - Test your connectivity.
 
@@ -35,12 +35,14 @@ Configure these prerequisites from the [development kit](../asdk/asdk-connect.md
 
 Make sure you replace the following script variables with values from your Azure Stack Hub configuration:
 
-- **Azure AD tenant name**  
-  The name of your Azure AD tenant used to manage Azure Stack Hub. For example, yourdirectory.onmicrosoft.com.
+- **Microsoft Entra tenant name**  
+  The name of your Microsoft Entra tenant used to manage Azure Stack Hub. For example, yourdirectory.onmicrosoft.com.
 - **Azure Resource Manager endpoint**  
   For Azure Stack Development kit, this value is set to `https://management.local.azurestack.external`. To get this value for Azure Stack Hub integrated systems, contact your service provider.
 
-## Connect to Azure Stack Hub with Azure AD
+<a name='connect-to-azure-stack-hub-with-azure-ad'></a>
+
+## Connect to Azure Stack Hub with Microsoft Entra ID
 
 ### [Az modules](#tab/az1)
 
@@ -146,5 +148,5 @@ New-AzureRMResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 - [Develop templates for Azure Stack Hub](azure-stack-develop-templates.md)
 - [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
-- [Azure Stack Hub PowerShell Module Reference](/powershell/azure/azure-stack/overview)
+- [Azure Stack Hub PowerShell Module Reference](/powershell/azurestackhub/overview)
 - If you want to set up PowerShell for the cloud operator environment, refer to the [Configure the Azure Stack Hub operator's PowerShell environment](../operator/azure-stack-powershell-configure-admin.md) article.

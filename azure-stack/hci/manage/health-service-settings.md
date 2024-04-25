@@ -1,15 +1,15 @@
 ---
 description: "Learn more about: Health Service settings"
 title: Modify Health Service settings
-manager: eldenc
-ms.author: arduppal
+ms.author: sethm
 ms.topic: article
-author: arduppal
-ms.date: 08/13/2021
+author: sethmanheim
+ms.date: 01/31/2024
 ---
+
 # Modify Health Service settings
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
 
@@ -33,7 +33,7 @@ Get-StorageSubSystem Cluster* | Set-StorageHealthSetting -Name "System.Storage.V
 
 Some commonly modified settings are listed below, along with their default values.
 
-### Volume Capacity Threshold
+### Volume capacity threshold
 
 ```
 "System.Storage.Volume.CapacityThreshold.Enabled"  = True
@@ -41,28 +41,34 @@ Some commonly modified settings are listed below, along with their default value
 "System.Storage.Volume.CapacityThreshold.Critical" = 90
 ```
 
-### Pool Reserve Capacity Threshold
+### Pool reserve capacity threshold
 
 ```
 "System.Storage.StoragePool.CheckPoolReserveCapacity.Enabled" = True
 ```
 
-### Physical Disk Lifecycle
+### Physical disk lifecycle
 
 ```
 "System.Storage.PhysicalDisk.AutoPool.Enabled"                             = True
 "System.Storage.PhysicalDisk.AutoRetire.OnLostCommunication.Enabled"       = True
 "System.Storage.PhysicalDisk.AutoRetire.OnUnresponsive.Enabled"            = True
 "System.Storage.PhysicalDisk.AutoRetire.DelayMs"                           = 900000 (i.e. 15 minutes)
-"System.Storage.PhysicalDisk.Unresponsive.Reset.CountResetIntervalSeconds" = 360 (i.e. 60 minutes)
+"System.Storage.PhysicalDisk.Unresponsive.Reset.CountResetIntervalSeconds" = 3600 (i.e. 60 minutes)
 "System.Storage.PhysicalDisk.Unresponsive.Reset.CountAllowed"              = 3
 ```
 
-### Supported Components Document
+### Available memory threshold
+
+```
+"Microsoft.Health.Setting.Node.AvailableToSystemMemoryLimit" = 0.100
+```
+
+### Supported components document
 
 The Health Service provides an enforcement mechanism to restrict the components used by Storage Spaces Direct to those on a Supported Components Document provided by the administrator or solution vendor. For more information, see [Supported Components Document](health-service-overview.md#supported-components-document).
 
-### Firmware Rollout
+### Firmware rollout
 
 ```
 "System.Storage.PhysicalDisk.AutoFirmwareUpdate.SingleDrive.Enabled"       = True
@@ -73,7 +79,7 @@ The Health Service provides an enforcement mechanism to restrict the components 
 "System.Storage.PhysicalDisk.AutoFirmwareUpdate.RollOut.FailureTolerance"  = 3
 ```
 
-### Platform / Quiescence
+### Platform/Quiescence
 
 ```
 "Platform.Quiescence.MinDelaySeconds" = 120 (i.e. 2 minutes)
@@ -92,7 +98,7 @@ The Health Service provides an enforcement mechanism to restrict the components 
 "System.LogLevel" = 4
 ```
 
-## Additional References
+## Next steps
 
 - [Health Service in Windows Server 2016](health-service-overview.md)
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)

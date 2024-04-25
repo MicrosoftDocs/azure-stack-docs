@@ -3,11 +3,12 @@ title: Set-AksEdgeBillingPodState for AKS Edge
 author: rcheeran
 description: The Set-AksEdgeBillingPodState PowerShell command  allows AIDE front end to set Billing pod state after joining Arc through Azure CLI.
 ms.topic: reference
+ms.custom:
+  - devx-track-azurecli
 ms.date: 02/02/2023
 ms.author: rcheeran 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
-
 ---
 
 # Set-AksEdgeBillingPodState

@@ -2,16 +2,9 @@
 title: Modular Datacenter integration overview
 description: Learn what to expect for a successful onsite deployment of Azure Modular Datacenter (MDC), from planning to post deployment.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
-ms.assetid: 
 ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: sethm
@@ -31,7 +24,7 @@ The following table lists what can be expected during the various phases of depl
 | Participant |Order process |Predeployment |Integration, validation, transport |Onsite deployment |Post deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
 |Microsoft | Signal to delivery to US location. |Provide required tooling and documentation to collect datacenter requirements. |- Validate configuration artifacts and check validation results.<br>- Ensure hardware is delivered. |- Rack and stack.<br>- Network integration.<br>- Azure Stack Hub deployment.<br>- Hand off to customer. |Registration and Azure Stack Hub Marketplace syndication.|
-|Customer |Signal purchase. |- Fill out network details in deployment worksheet.<br>- Collect certificates.<br>- Obtain Azure Active Directory (Azure AD) accounts.<br>- Run any validation tooling provided. |Ensure the site is ready with network, power, and cooling prerequisites. |- Be prepared with deployment configuration artifacts.<br>- Ensure customer's network engineer is available. |     |
+|Customer |Signal purchase. |- Fill out network details in deployment worksheet.<br>- Collect certificates.<br>- Obtain Microsoft Entra accounts.<br>- Run any validation tooling provided. |Ensure the site is ready with network, power, and cooling prerequisites. |- Be prepared with deployment configuration artifacts.<br>- Ensure customer's network engineer is available. |     |
 
 ## Order process
 
@@ -46,7 +39,7 @@ You decide how to integrate Azure Stack Hub into your datacenter. Microsoft has 
 
 You'll choose the following items:
 
-- **Azure Stack Hub connection model and identity provider.** You can choose to deploy Azure Stack Hub either [connected to the internet (and to Azure)](../operator/azure-stack-connected-deployment.md) or [disconnected](../operator/azure-stack-disconnected-deployment.md). To get the most benefit from Azure Stack Hub, including hybrid scenarios, you want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure AD is a one-time decision that you must make at deployment time. *You can't change your identity provider later without redeploying the entire system.*
+- **Azure Stack Hub connection model and identity provider.** You can choose to deploy Azure Stack Hub either [connected to the internet (and to Azure)](../operator/azure-stack-connected-deployment.md) or [disconnected](../operator/azure-stack-disconnected-deployment.md). To get the most benefit from Azure Stack Hub, including hybrid scenarios, you want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Microsoft Entra ID is a one-time decision that you must make at deployment time. *You can't change your identity provider later without redeploying the entire system.*
 - **Network integration.** [Network integration](../operator/azure-stack-network.md) is crucial for deployment, operation, and management of Azure Stack Hub systems. There are several considerations that go into ensuring the Azure Stack Hub solution is resilient and has a highly available physical infrastructure to support its operations.
 - **Firewall integration.** We recommend that you [use a firewall](../operator/azure-stack-firewall.md) to help secure Azure Stack Hub. Firewalls can help prevent DDoS attacks, intrusion detection, and content inspection. Firewalls can become a throughput bottleneck for Azure storage services.
 - **Certificate requirements.** It's critical that all [required certificates](../operator/azure-stack-pki-certs.md) are available before an onsite engineer arrives at your datacenter for deployment.
@@ -99,4 +92,3 @@ Actions that should be taken by the Microsoft deployment engineer:
 ## Next steps
 
 [Modular Datacenter deployment overview](deployment-overview.md)
-

@@ -1,7 +1,7 @@
 ---
-title: Set up Azure AD and storage resources for VaaS
+title: Set up Microsoft Entra ID and storage resources for VaaS
 titleSuffix: Azure Stack Hub
-description: Learn how to set up Azure AD and storage resources for Azure Stack Hub validation as a service.
+description: Learn how to set up Microsoft Entra ID and storage resources for Azure Stack Hub validation as a service.
 author: sethmanheim
 ms.topic: tutorial
 ms.date: 12/16/2020
@@ -12,8 +12,8 @@ ms.lastreviewed: 11/26/2018
 
 ROBOTS: NOINDEX
 
-# Intent: As an Azure Stack Hub user, I want to set up Azure AD and storage resources for Azure Stack Hub validation as a service.
-# Keyword: azure stack hub vaaldation azure ad storage resources
+# Intent: As an Azure Stack Hub user, I want to set up Microsoft Entra ID and storage resources for Azure Stack Hub validation as a service.
+# Keyword: azure stack hub vaaldation Microsoft Entra storage resources
 
 ---
 
@@ -27,40 +27,42 @@ Validation as a service (VaaS) is an Azure service that's used to validate and s
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
-> * Get ready to use VaaS by setting up your Azure Active Directory (AD).
+> * Get ready to use VaaS by setting up your Microsoft Entra ID.
 > * Create a storage account.
 
-## Configure an Azure AD tenant
+<a name='configure-an-azure-ad-tenant'></a>
 
-An Azure AD tenant is used to register an organization and authenticate users with VaaS. The partner will use the role-based access control (RBAC) features of the tenant to manage who in the partner organization can use VaaS. For more information, see [What is Azure Active Directory?](/azure/active-directory/fundamentals/active-directory-whatis).
+## Configure a Microsoft Entra tenant
+
+A Microsoft Entra tenant is used to register an organization and authenticate users with VaaS. The partner will use the role-based access control (RBAC) features of the tenant to manage who in the partner organization can use VaaS. For more information, see [What is Microsoft Entra ID?](/azure/active-directory/fundamentals/active-directory-whatis).
 
 ### Create a tenant
 
 Create a tenant that your organization will use to access VaaS services. Use a descriptive name (for example, `ContosoVaaS@onmicrosoft.com`).
 
-1. Create an Azure AD tenant in the [Azure portal](https://portal.azure.com), or use an existing tenant. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](/azure/active-directory/get-started-azure-ad). -->
+1. Create a Microsoft Entra tenant in the [Azure portal](https://portal.azure.com), or use an existing tenant. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](/azure/active-directory/get-started-azure-ad). -->
 
 2. Add members of your organization to the tenant. These users will be responsible for using the service to view or schedule tests. Once you finish registration, you'll define users' access levels.
 
-3. (Optional) If you want to isolate VaaS resources and actions among different groups within an organization, you can create multiple Azure AD tenant directories.
+3. (Optional) If you want to isolate VaaS resources and actions among different groups within an organization, you can create multiple Microsoft Entra tenant directories.
 
 ### Register your tenant
 
-This process authorizes your tenant with the **Azure Stack Hub Validation Service** Azure AD application.
+This process authorizes your tenant with the **Azure Stack Hub Validation Service** Microsoft Entra application.
 
 1. Send the following information about the tenant to Microsoft at [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
 
     | Data | Description |
     |--------------------------------|---------------------------------------------------------------------------------------------|
     | Organization Name | The official organization name. |
-    | Azure AD Tenant Directory Name | The Azure AD Tenant Directory name being registered. |
-    | Azure AD Tenant Directory ID | The Azure AD Tenant Directory GUID associated with the directory. For information on how to find your Azure AD Tenant Directory ID, see [Get tenant ID](/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
+    | Microsoft Entra tenant Directory Name | The Microsoft Entra tenant Directory name being registered. |
+    | Microsoft Entra tenant Directory ID | The Microsoft Entra tenant Directory GUID associated with the directory. For information on how to find your Microsoft Entra tenant Directory ID, see [Get tenant ID](/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
 
 2. Wait for confirmation from the Azure Stack Hub Validation team to check that your tenant can use the Azure Stack Hub Validation portal.
 
 ### Consent to the VaaS app
 
-There are two applications that require admin consents to function properly, one for accessing the VaaS portal and another for starting up the VaaS agents on DVMs. As the Azure AD administrator, give the VaaS Azure AD applications the required permissions on behalf of your tenant.
+There are two applications that require admin consents to function properly, one for accessing the VaaS portal and another for starting up the VaaS agents on DVMs. As the Microsoft Entra administrator, give the VaaS Microsoft Entra applications the required permissions on behalf of your tenant.
 
 For portal application consent:
 
@@ -68,7 +70,7 @@ For portal application consent:
 
 2. Select **My Account**.
 
-3. Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
+3. Accept the terms to continue when prompted to grant VaaS the listed Microsoft Entra permissions.
 
 For agent application consent:
 
@@ -76,7 +78,7 @@ For agent application consent:
 
 2. Access the link from the browser.
 
-3. Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
+3. Accept the terms to continue when prompted to grant VaaS the listed Microsoft Entra permissions.
 
 ## Assign User Roles
 
@@ -91,7 +93,7 @@ Authorize the users in your tenant to run actions in VaaS by assigning one of th
 To assign roles for the VaaS service app:
 
 1. Sign in to the [Azure portal](https://portal.azure.com).
-2. Select **All Services** > **Azure Active Directory** under the **Identity** section.
+2. Select **All Services** > **Microsoft Entra ID** under the **Identity** section.
 3. Select **Enterprise Applications** > **AzureStack Validation Management Api [wsfed enabled] [Migrated]** app.
 4. Select **Users and groups**. The **AzureStack Validation Management Api [wsfed enabled] [Migrated] - Users and group** blade lists the users with permission to use the app.
 5. Select **+ Add user** to add a user from your tenant and assign a role.

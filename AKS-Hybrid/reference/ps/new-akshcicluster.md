@@ -3,7 +3,7 @@ title: New-AksHciCluster for AKS hybrid
 author: sethmanheim
 description: The New-AksHciCluster PowerShell command creates a new managed Kubernetes cluster.
 ms.topic: reference
-ms.date: 11/30/2022
+ms.date: 05/03/2023
 ms.author: sethm
 ms.lastreviewed: 
 ms.reviewer: mikek
@@ -26,7 +26,6 @@ New-AksHciCluster -name <String>
                  [-osType {linux, windows}]
                  [-kubernetesVersion <String>]
                  [-controlPlaneNodeCount <int>]
-                 [-nodeCount <int>]
                  [-controlPlaneVmSize <VmSize>]
                  [-loadBalancerVmSize <VmSize>]
                  [-loadBalancerSettings <loadBalancer>]

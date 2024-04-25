@@ -32,9 +32,9 @@ If you need more information about planning and setting up a service offering, s
 
 The Kubernetes cluster will need service principal (SPN) and role-based permissions in Azure Stack Hub.
 
-- **Create an SPN in Azure AD**
+- **Create an SPN in Microsoft Entra ID**
 
-    If you use Azure Active Directory (Azure AD) for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret.  
+    If you use Microsoft Entra ID for your identity management service, you'll need to create an SPN for users deploying a Kubernetes cluster. Create an SPN using a client secret.  
 
     For instructions using the Administrative portal, see [Create an app registration](./give-app-access-to-resources.md?tabs=az1%2Caz2&pivots=state-connected#manage-an-azure-ad-app).  
     For instructions, see [Create an app registration that uses a client secret credential](./give-app-access-to-resources.md#create-an-app-registration-that-uses-a-client-secret-credential).

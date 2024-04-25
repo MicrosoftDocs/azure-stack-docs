@@ -185,16 +185,20 @@
           href: azure-stack-network-overview.md
         - name: Networking considerations
           href: azure-stack-network-differences.md
+        - name: Standard Load Balancer considerations
+          href: standard-load-balancer-considerations.md
         - name: VPN gateways
           items:
           - name: Connect using VPN
             href: azure-stack-connect-vpn.md
-          - name: About VPN gateway
+          - name: About VPN gateways
             href: azure-stack-vpn-gateway-about-vpn-gateways.md
           - name: Configure IPSec/IKE connection policies
             href: azure-stack-vpn-s2s.md
           - name: VPN gateway settings
             href: azure-stack-vpn-gateway-settings.md
+          - name: VPN Fast Path
+            href: azure-stack-vpn-fast-path-user.md
           - name: Troubleshoot Network Virtual Appliance issues
             href: network-virtual-appliance.md
           - name: Troubleshoot site-to-site connections
@@ -290,6 +294,8 @@
           items:
           - name: Overview
             href: aks-overview.md
+          - name: Migrate to AKS engine from AKS preview
+            href: migrate-azure-stack-to-aks-engine.md
           - name: AKS commands
             href: aks-commands.md
           - name: Use AKS with CLI
@@ -308,7 +314,7 @@
           items: 
           - name: Deploy a Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-deploy.md
-          - name: Deploy Kubernetes using Azure AD
+          - name: Deploy Kubernetes using Microsoft Entra ID
             href: azure-stack-solution-template-kubernetes-azuread.md
           - name: Deploy Kubernetes using AD FS
             href: azure-stack-solution-template-kubernetes-adfs.md
@@ -327,7 +333,7 @@
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
-      href: azure-stack-dev-start-howto-vm-dotnet.md
+      href: azure-stack-dev-start-howto-vm-dotnet.yml
     - name: Deploy a web app to a Linux VM
       items:
       - name: Deploy a Linux VM for a web app
@@ -395,7 +401,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: /powershell/azure/azure-stack/overview
+    href: /powershell/azurestackhub/overview
   - name: Azure Stack Hub administrator REST APIs
     href: /rest/api/azure-stack/
   - name: Azure CLI

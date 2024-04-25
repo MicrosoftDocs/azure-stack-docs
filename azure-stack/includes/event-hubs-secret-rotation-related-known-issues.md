@@ -3,16 +3,10 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 07/22/2021
-ms.reviewer: sethm
-ms.lastreviewed: 07/22/2021
+ms.date: 10/13/2023
+ms.reviewer: kalkeea
+ms.lastreviewed: 10/13/2023
 ---
-
-### Secret expiration doesn't trigger an alert
-
-- Applicable: This issue applies to all supported releases of Event Hubs on Azure Stack Hub.
-- Cause: Administrative alerts aren't currently integrated.
-- Remediation: Complete the process in [How to rotate secrets for Event Hubs on Azure Stack Hubs](../operator/event-hubs-rp-rotate-secrets.md) regularly, ideally every six months.
 
 ### Data plane clusters are in an unhealthy state with all nodes in warning state
 

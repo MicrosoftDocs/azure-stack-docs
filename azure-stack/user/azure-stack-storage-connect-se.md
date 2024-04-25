@@ -1,19 +1,15 @@
 ---
-title: Connect Storage Explorer to Azure Stack Hub subscription or storage account 
+title: Connect Storage Explorer to Azure Stack Hub subscription or storage account
 description: Learn how to connect Storage Explorer to an  Azure Stack Hub subscription
 author: sethmanheim
-
 ms.topic: conceptual
 ms.date: 6/23/2021
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
-custom: contperf-fy21q4
-
 
 # Intent: As an Azure Stack user, I want to manage my Azure Stack Storage so that my apps can access data.
 # Keyword: Azure Stack storage explorer
-
 ---
 
 # Connect Storage Explorer to an Azure Stack Hub subscription or a storage account
@@ -71,9 +67,11 @@ Export and then import Azure Stack Hub certificate for disconnected integrated s
 
     ![Ensure Target Azure Stack Hub is selected](./media/azure-stack-storage-connect-se/target-azure-stack-new.png)
 
-## Connect to an Azure Stack Hub subscription with Azure AD
+<a name='connect-to-an-azure-stack-hub-subscription-with-azure-ad'></a>
 
-Use the following steps to connect Storage Explorer to an Azure Stack Hub subscription, which belongs to an Azure Active Directory (Azure AD) account.
+## Connect to an Azure Stack Hub subscription with Microsoft Entra ID
+
+Use the following steps to connect Storage Explorer to an Azure Stack Hub subscription, which belongs to a Microsoft Entra account.
 
 1. In the left pane of Storage Explorer, select **Manage Accounts**.  
     All the Microsoft subscription for which you are signed in are displayed.

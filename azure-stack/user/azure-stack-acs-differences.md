@@ -42,7 +42,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Page blob page size|512 bytes. |4 KB. 
 |Table partition key and row key size|1,024 characters (2,048 bytes).|400 characters (800 bytes).
 |Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
-|Azure AD Authentication for storage|Generally available. |Not yet supported.
+|Microsoft Entra authentication for storage|Generally available. |Not yet supported.
 |Immutable Blobs|Generally available. |The API is supported when you use version 2008 or later, the portal is supported from version 2206 and later.
 |Batch API for Blob Storage|In preview. |Not yet supported.
 |Firewall and virtual network rules for storage|Generally available. |Not yet supported.|
@@ -58,6 +58,24 @@ There are also differences with storage metrics:
 The following versions are supported with Azure Stack Hub Storage:
 
 Azure Storage services APIs:
+
+::: moniker range=">=azs-2301"
+
+2301 update or newer versions:
+- [2020-10-02](/rest/api/storageservices/version-2020-10-02)
+- [2019-07-07](/rest/api/storageservices/version-2019-07-07)
+- [2019-02-02](/rest/api/storageservices/version-2019-02-02)
+- [2018-11-09](/rest/api/storageservices/version-2018-11-09)
+- [2018-03-28](/rest/api/storageservices/version-2018-03-28)
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
+- [2017-04-17](/rest/api/storageservices/version-2017-04-17)
+- [2016-05-31](/rest/api/storageservices/version-2016-05-31)
+- [2015-12-11](/rest/api/storageservices/version-2015-12-11)
+- [2015-07-08](/rest/api/storageservices/version-2015-07-08)
+- [2015-04-05](/rest/api/storageservices/version-2015-04-05)
+
+::: moniker-end
 
 ::: moniker range=">=azs-2008"
 

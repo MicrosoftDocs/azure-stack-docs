@@ -3,21 +3,23 @@ title: Create an Azure Stack HCI cluster using Windows Admin Center
 description: Learn how to create a server cluster for Azure Stack HCI using Windows Admin Center
 author: JasonGerend
 ms.topic: how-to
-ms.date: 3/10/2023
+ms.date: 02/09/2024
 ms.author: jgerend
 ms.reviewer: shsathee
 ---
 
 # Create an Azure Stack HCI cluster using Windows Admin Center
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
-Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and optionally Software Defined Networking. The Create cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
+
+Now that you've deployed the Azure Stack HCI operating system, you'll learn how to use Windows Admin Center to create an Azure Stack HCI cluster that uses Storage Spaces Direct, and, optionally, Software Defined Networking. The Create Cluster wizard in Windows Admin Center will do most of the heavy lifting for you. If you'd rather do it yourself with PowerShell, see [Create an Azure Stack HCI cluster using PowerShell](create-cluster-powershell.md). The PowerShell article is also a good source of information for what is going on under the hood of the wizard and for troubleshooting purposes.
 
 > [!NOTE]
 > If you are doing a single server installation of Azure Stack HCI 21H2, use [PowerShell](../deploy/create-cluster-powershell.md#using-windows-powershell) to create the cluster.
 
-If you're interested in testing Azure Stack HCI, but have limited or no spare hardware, check out the [Azure Stack HCI Evaluation Guide](https://github.com/Azure/AzureStackHCI-EvalGuide/blob/main/README.md), where we'll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
+If you're interested in testing Azure Stack HCI but have limited or no spare hardware, see the [Azure Stack HCI Evaluation Guide](../guided-quick-deploy-eval.yml?tabs=global-admin), where we'll walk you through experiencing Azure Stack HCI using nested virtualization inside an Azure VM. Or try the [Create a VM-based lab for Azure Stack HCI](tutorial-private-forest.md) tutorial to create your own private lab environment using nested virtualization on a server of your choice to deploy VMs running Azure Stack HCI for clustering.
 
 ## Cluster creation workflow
 
@@ -78,7 +80,7 @@ To start the Create Cluster wizard in Windows Admin Center:
 1. In the **Add or create resources** panel, under **Server clusters**, select **Create new**.
 1. Under **Choose the cluster type**, select **Azure Stack HCI**.
 
-    :::image type="content" source="media/cluster/create-cluster-type.png" alt-text="Create cluster wizard - HCI option" lightbox="media/cluster/create-cluster-type.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-type.png" alt-text="Create cluster wizard - HCI option" lightbox="media/create-cluster/create-cluster-type.png":::
 
 1. Under **Select server locations**, select one the following:
 
@@ -87,7 +89,7 @@ To start the Create Cluster wizard in Windows Admin Center:
 
 1. When finished, click **Create**. You'll see the Create Cluster wizard, as shown below.
 
-    :::image type="content" source="media/cluster/create-cluster-wizard.png" alt-text="Create cluster wizard - Get Started" lightbox="media/cluster/create-cluster-wizard.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-wizard.png" alt-text="Create cluster wizard - Get Started" lightbox="media/create-cluster/create-cluster-wizard.png":::
 
    Proceed to the next step in the cluster creation workflow, [Step 1: Get started](#step-1-get-started).
 
@@ -138,13 +140,13 @@ This is the recommended option for configuring host networking. For more informa
 
 1. On **2.1 Verify network adapters**, review the list displayed, and exclude or add any adapters you want to cluster. Wait for a couple of minutes for the adapters to show up. Only adapters with matching names, interface descriptions, and link speed on each server are displayed. All other adapters are hidden.
 
-    :::image type="content" source="media/cluster/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/cluster/create-cluster-atc-verify-adaptor.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-atc-verify-adaptor.png" alt-text="Create cluster wizard - Verify network adapters" lightbox="media/create-cluster/create-cluster-atc-verify-adaptor.png":::
 
 1. If you don't see your adapters in the list, click **Show hidden adapters** to see all the available adapters and then select the missing adapters.
 
 1. On the **Select the cluster network adapters** page, select the checkbox for any adapters listed that you want to cluster. The adapters must have matching names, interface descriptions, and link speeds on each server. You can rename the adapters to match, or just select the matching adapters. When finished, click **Close**.
 
-    :::image type="content" source="media/cluster/create-cluster-atc-see-all-adaptor.png" alt-text="Create cluster wizard - See all adapters" lightbox="media/cluster/create-cluster-atc-see-all-adaptor.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-atc-see-all-adaptor.png" alt-text="Create cluster wizard - See all adapters" lightbox="media/create-cluster/create-cluster-atc-see-all-adaptor.png":::
 
 1. The selected adapters will now display under **Adapters available on all servers**. When finished selecting and verifying adapters, click **Next**.  
 
@@ -172,7 +174,7 @@ This is the recommended option for configuring host networking. For more informa
     - VLAN ID
     - IP address (this is usually on a private subnet such as 10.71.1.x and 10.71.2.x) 
 
-    :::image type="content" source="media/cluster/create-cluster-atc-provide-network.png" alt-text="Create cluster wizard - Provide network details" lightbox="media/cluster/create-cluster-atc-provide-network.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-atc-provide-network.png" alt-text="Create cluster wizard - Provide network details" lightbox="media/create-cluster/create-cluster-atc-provide-network.png":::
 
 1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
 
@@ -187,7 +189,7 @@ Follow these steps to manually configure host networking.
 
 1. On **2.2 Select management adapters**, select one or two management adapters to use for each server. It is mandatory to select at least one of the adapters for management purposes, as the wizard requires at least one dedicated physical NIC for cluster management.  Once an adapter is designated for management, it's excluded from the rest of the wizard workflow.
 
-    :::image type="content" source="media/cluster/create-cluster-management-adapters.png" alt-text="Create cluster wizard - Select management adapters" lightbox="media/cluster/create-cluster-management-adapters.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-management-adapters.png" alt-text="Create cluster wizard - Select management adapters" lightbox="media/create-cluster/create-cluster-management-adapters.png":::
 
     Management adapters have two configuration options:
 
@@ -226,7 +228,7 @@ Follow these steps to manually configure host networking.
         > [!NOTE]
         > If you are going to deploy Network Controller for SDN (in **Step 5: SDN** of the wizard), you will need a virtual switch. So if you opt out of creating a virtual switch here and don't create one outside the wizard, the wizard won't deploy Network Controller.
 
-        :::image type="content" source="media/cluster/create-cluster-virtual-switches.png" alt-text="Create cluster wizard - virtual switches" lightbox="media/cluster/create-cluster-virtual-switches.png":::
+        :::image type="content" source="media/create-cluster/create-cluster-virtual-switches.png" alt-text="Create cluster wizard - virtual switches" lightbox="media/create-cluster/create-cluster-virtual-switches.png":::
 
     The following table shows which virtual switch configurations are supported and enabled for various network adapter configurations:
 
@@ -240,7 +242,7 @@ Follow these steps to manually configure host networking.
 
 1. Step **2.4 RDMA** is optional. If you're using RDMA, select the **Configure RDMA (Recommended)** checkbox and click **Next**.
 
-    :::image type="content" source="media/cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/cluster/create-cluster-rdma.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-rdma.png" alt-text="Create cluster wizard - configure RDMA" lightbox="media/create-cluster/create-cluster-rdma.png":::
 
     For information on assigning bandwidth reservations, see the [Traffic bandwidth allocation](../concepts/host-network-requirements.md#traffic-bandwidth-allocation) section in [Host network requirements](../concepts/host-network-requirements.md).
 
@@ -254,7 +256,7 @@ Follow these steps to manually configure host networking.
 
 1. On **2.5 Define networks**, review and edit the Name, IP address, Subnet mask, VLAN ID, and Default gateway fields for each adapter listed.
 
-    :::image type="content" source="media/cluster/create-cluster-define-networks.png" alt-text="Create cluster wizard - Define networks" lightbox="media/cluster/create-cluster-define-networks.png":::
+    :::image type="content" source="media/create-cluster/create-cluster-define-networks.png" alt-text="Create cluster wizard - Define networks" lightbox="media/create-cluster/create-cluster-define-networks.png":::
 
 1. When finished, click **Apply and test**. You may need to **Retry connectivity test** if status is not OK for an adapter.
 1. Select **Next: Clustering** to proceed to [Step 3: Clustering](#step-3-clustering).
@@ -271,12 +273,21 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
     - Specify one or more static addresses. The IP address must be entered in the following format: IP address/current subnet length. For example: 10.0.0.200/24.
     - Assign address dynamically with DHCP.
 
-1. When finished, select **Create cluster**. This can take a while to complete. If you get the error "Failed to reach cluster through DNS", select the **Retry connectivity checks** button. You might have to wait a couple hours before it'll succeed on larger networks due to DNS propagation delays.
+1. When finished, select **Create cluster**. This can take a while to complete. 
 
-    > [!NOTE]
-    > The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
+    If you get the error "Failed to reach cluster through DNS," select the **Retry connectivity checks** button. You might have to wait several hours before it succeeds on larger networks due to DNS propagation delays.
 
-1. On **3.2 Deploy host networking settings**, select **Deploy** to apply the Network ATC intents you defined earlier. This can take a few minutes to complete. When finished, select **Next**.
+    > [!IMPORTANT]
+    >  If you failed to create a cluster, do not click the **Back** button instead of the **Retry connectivity checks button**. If you select **Back**, the Cluster Creation wizard exits prematurely, and can potentially reset the entire process.
+
+    If you encounter issues with deployment after the cluster is created and you want to restart the Cluster Creation wizard, first remove (destroy) the cluster. To do so, see  [Remove a cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
+
+1. The next step appears only if you selected **Use Network ATC to deploy and manage networking (Recommended)** for step **1.8 Choose host networking**.
+
+    In **Deploy host networking settings**, select **Deploy** to apply the Network ATC intents you defined earlier. If you chose to manually deploy host networking in step 1.8 of the Cluster Creation wizard, you won't see this page.
+
+1. On **3.2 Deploy host networking settings**, select **Deploy** to apply the 
+ Network ATC intents you defined earlier. This can take a few minutes to complete. When finished, select **Next**.
 
 1. On **3.3 Validate cluster**, select **Validate**. Validation can take several minutes. Note that the in-wizard validation is not the same as the post-cluster creation validation step, which performs additional checks to catch any hardware or configuration problems before the cluster goes into production. If you experience issues with cluster validation, see [Troubleshoot cluster validation reporting](../manage/validate-qos.md).
 
@@ -301,7 +312,8 @@ Step 3 of the wizard makes sure everything thus far is set up correctly, automat
 
 ## Step 4: Storage
 
-Step 4 of the wizard walks you through setting up Storage Spaces Direct for your cluster.
+Complete these steps after finishing the Create Cluster wizard. 
+Step 4 walks you through setting up Storage Spaces Direct for your cluster.
 
 1. On **4.1 Clean drives**, you can optionally select **Erase drives** if it makes sense for your deployment.
 1. On **4.2 Check drives**, click the **>** icon next to each server to verify that the disks are working and connected. If all is OK, click **Next**.
@@ -325,12 +337,13 @@ This optional step walks you through setting up the Network Controller component
 You can also deploy Network Controller using SDN Express scripts. See [Deploy an SDN infrastructure using SDN Express](../manage/sdn-express.md).
 
 > [!NOTE]
-> The Create Cluster wizard does not currently support configuring SLB And RAS gateway. You can use [SDN Express scripts](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) to configure these components. Also, SDN is not supported or available for stretched clusters. 
+> The Create Cluster wizard does not currently support configuring SLB And RAS gateway. You can use [SDN Express scripts](https://github.com/microsoft/SDN/tree/master/SDNExpress/scripts) to configure these components. Also, SDN is not supported or available for stretched clusters.
 
-:::image type="content" source="media/cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/cluster/create-cluster-network-controller.png":::
+:::image type="content" source="media/create-cluster/create-cluster-network-controller.png" alt-text="Create cluster wizard - create Network Controller" lightbox="media/create-cluster/create-cluster-network-controller.png":::
 
 1. Under **Host**, enter a name for the Network Controller. This is the DNS name used by management clients (such as Windows Admin Center) to communicate with Network Controller. You can also use the default populated name.
-1. Specify a path to the Azure Stack HCI VHD file. Use **Browse** to find it quicker.
+1. Download the Azure Stack HCI VHDX file. For more information, see [Download the VHDX file](../manage/sdn-express.md#download-the-vhdx-file).
+1. Specify the path where you downloaded the VHDX file. Use **Browse** to find it quicker.
 1. Specify the number of VMs to be dedicated for Network Controller. Three VMs are strongly recommended for production deployments.
 1. Under **Network**, enter the VLAN ID of the management network. Network Controller needs connectivity to same management network as the Hyper-V hosts so that it can communicate and configure the hosts.
 1. For **VM network addressing**, select either **DHCP** or **Static**.
@@ -357,6 +370,12 @@ If Network Controller deployment fails, do the following before you try this aga
 - Clean up any VHD mount points that the wizard created.
 
 - Ensure you have at least 50-100GB of free space on your Hyper-V hosts.
+
+## Step 6: Remove a Cluster (optional)
+
+There are situations in which you may need to actually remove the cluster which you created in Step 3. If so, choose the **Remove the Cluster** option in the Cluster Creation wizard.
+
+For more information about removing a cluster, see [Remove a cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
 
 ## Next steps
 

@@ -3,6 +3,8 @@ title: Setting up certificates for Azure CLI on the Azure Stack Development Kit 
 description: Learn about setting up certificates for Azure CLI on the Azure Stack Development Kit Azure Stack Development Kit.
 author: sethmanheim
 ms.topic: how-to
+ms.custom:
+  - devx-track-azurecli
 ms.date: 11/5/2021
 ms.author: sethm
 ms.reviewer: raymondl
@@ -10,7 +12,6 @@ ms.lastreviewed: 11/5/2021
 
 # Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
 # Keyword: manage azure stack CLI
-
 ---
 
 # Setting up certificates for Azure CLI on Azure Stack Hub or Azure Stack Development Kit
@@ -60,7 +61,15 @@ Export the CA root certificate. To export the ASDK root certificate in PEM forma
     Export-Certificate -Type CERT -FilePath root.cer -Cert $root
     ```
 
-4. Copy the certificate to your local machine.
+4. For Linux, the following command is also required:
+
+   ```azurecli
+   export REQUESTS_CA_BUNDLE=~/.local/lib/python3.9/site-packages/certifi/cacert.pem
+   # RECOMMENDED: set the env var automatically for your subsequent sessions
+   echo 'export REQUESTS_CA_BUNDLE=~/.local/lib/python3.9/site-packages/certifi/cacert.pem' >> ~/.bash_profile
+   ```
+
+5. Copy the certificate to your local machine.
 
 ## Set up the virtual machine alias endpoint
 

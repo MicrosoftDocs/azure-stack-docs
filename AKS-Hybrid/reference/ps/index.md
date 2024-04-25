@@ -3,10 +3,9 @@ title: AksHci PowerShell module for AKS hybrid
 description: Learn how to use the AksHci module commands to manage AKS hybrid 
 author: sethmanheim
 ms.topic: reference
-ms.date: 01/26/2023
+ms.date: 08/25/2023
 ms.author: sethm 
 ms.lastreviewed: 01/26/2023
-ms.reviewer: jeguan
 
 ---
 
@@ -38,7 +37,7 @@ Commands to interact with AKS hybrid.
 | [Get-AksHciProxySetting](./get-akshciproxysetting.md) | Retrieves a list or an individual proxy settings object. |
 | [Get-AksHciRegistration](./get-akshciregistration.md) | Gets registration information for the AKS hybrid deployment. |
 | [Get-AksHciRelease](./get-akshcirelease.md) | Downloads the install and upgrade bits to a local share. |
-| [Get-AksHciContainerStorage](./get-akshcistoragecontainer.md) | Gets the information of the specified storage container. |
+| [Get-AksHciStorageContainer](./get-akshcistoragecontainer.md) | Gets information about the specified storage container. |
 | [Get-AksHciUpdates](./get-akshciupdates.md) | Lists available updates for AKS hybrid. |
 | [Get-AksHciVersion](./get-akshciversion.md) | Gets the current version of AKS hybrid. |
 | [Get-AksHciVmSize](./get-akshcivmsize.md) | Lists supported VM sizes. |
@@ -56,6 +55,7 @@ Commands to interact with AKS hybrid.
 | [New-AksHciNetworkSetting](./new-akshcinetworksetting.md) | Creates an object for a new virtual network. |
 | [New-AksHciNodePool](./new-akshcinodepool.md) | Creates a new node pool to an existing cluster. |
 | [New-AksHciProxySetting](./new-akshciproxysetting.md) | Creates an object defining proxy server settings to pass into `Set-AksHciConfig`. |
+| [New-AksHciSSHConfiguration](./new-akshcisshconfiguration.md) | Creates an object for a new SSH configuration. |
 | [New-AksHciStorageContainer](./new-akshcistoragecontainer.md) | Creates a new storage container.  |
 | [Remove-AksHciAutoScalerProfile](./remove-akshciautoscalerprofile.md) | Removes an unused autoscaler configuration profile from the system.  |
 | [Remove-AksHciCluster](./remove-akshcicluster.md) | Deletes a managed Kubernetes cluster. |
@@ -74,6 +74,7 @@ Commands to interact with AKS hybrid.
 | [Set-AksHciNodePool](./set-akshcinodepool.md) | Scales a node pool within a Kubernetes cluster. |
 | [Set-AksHciRegistration](./set-akshciregistration.md) | Registers AKS hybrid with Azure. |
 | [Sync-AksHciBilling](./sync-akshcibilling.md) | Manually triggers a billing records sync. |
+| [Test-UpdateAksHci](./test-updateakshci.md) | Checks whether any target clusters are outside the AKS hybrid support window. |
 | [Uninstall-AksHci](./uninstall-akshci.md) | Removes AKS hybrid. |
 | [Uninstall-AksHciAdAuth](./uninstall-akshciadauth.md) | Removes Active Directory authentication. |
 | [Uninstall-AksHciCsiNfs](./uninstall-akshcicsinfs.md) | Uninstalls CSI NFS Plugin in a cluster. |

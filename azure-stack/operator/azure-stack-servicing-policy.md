@@ -3,11 +3,9 @@ title: Azure Stack Hub servicing policy
 titleSuffix: Azure Stack Hub
 description: Learn about the Azure Stack Hub servicing policy and how to keep an integrated system in a supported state.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 07/06/2022
+ms.date: 01/23/2024
 ms.author: sethm
-ms.reviewer: niy
 ms.lastreviewed: 03/18/2020
 
 # Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
@@ -48,9 +46,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2206 update](./release-notes.md?preserve-view=true&view=azs-2206)
-- [Azure Stack Hub 2108 update](./release-notes.md?preserve-view=true&view=azs-2108)
-- [Azure Stack Hub 2102 update](./release-notes.md?preserve-view=true&view=azs-2102)
+- [Azure Stack Hub 2311 update](./release-notes.md?preserve-view=true&view=azs-2311)
+- [Azure Stack Hub 2306 update](./release-notes.md?preserve-view=true&view=azs-2306)
+- [Azure Stack Hub 2301 update](./release-notes.md?preserve-view=true&view=azs-2301)
 
 ## Hotfixes
 
@@ -80,7 +78,7 @@ You must also have an active support agreement with the hardware partner that ma
 
 Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version (N-2) to receive support.
 
-For example, if the most recent update version available is 2206 (N), the two previous update versions were 2108 and 2102, which means both 2108 (N-1) and 2102 (N-2) remain in support. However, the 2008 version would be out of support, as 2008 would be N-3 when the 2206 update was released.
+For example, if the most recent update version available is 2306 (N), the two previous update versions were 2301 and 2206, which means both 2301 (N-1) and 2206 (N-2) remain in support. However, the 2108 version would be out of support, as 2108 would be N-3 when the 2306 update was released.
 
 Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
 

@@ -4,12 +4,12 @@ description: This topic provides guidance on how to change languages in the Azur
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 07/21/2020
+ms.date: 02/26/2024
 ---
 
 # Change languages in Azure Stack HCI
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
 
 You can change your preferred language in a management PC, Windows Admin Center, Microsoft Edge, and the Azure Stack HCI operating system on the servers that you manage. Windows Admin Center remains in your language of choice regardless of language changes in these other resources.
 
@@ -37,7 +37,7 @@ To change the language in Windows Admin Center:
 1. Expand the **Language** drop-down list to select your preferred language, and then expand the **Regional format** drop-down list to select a different region if needed.
 1. Select **Save and reload**.
 
-    :::image type="content" source="media/languages/language-region.png" alt-text="The Language / Region page in Windows Admin Center":::
+    :::image type="content" source="media/languages/language-region.png" alt-text="The Language / Region page in Windows Admin Center." lightbox="media/languages/language-region.png":::
 
 To learn more, see [Windows Admin Center Settings](/windows-server/manage/windows-admin-center/configure/settings).
 

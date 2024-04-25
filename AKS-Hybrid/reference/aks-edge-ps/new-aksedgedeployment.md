@@ -16,16 +16,22 @@ Creates a new AksEdge deployment on this machine.
 
 ## Syntax
 
-### fromJsonConfigFile (Default)
+### JsonConfigFilePath (Default)
 
 ```powershell
 New-AksEdgeDeployment [-JsonConfigFilePath <String>] [<CommonParameters>]
 ```
 
-### fromJsonConfigString
+### JsonConfigString
 
 ```powershell
 New-AksEdgeDeployment -JsonConfigString <String> [<CommonParameters>]
+```
+
+### Force
+
+```powershell
+New-AksEdgeDeployment [-JsonConfigFilePath <String>] -Force [<CommonParameters>]
 ```
 
 ## Description
@@ -78,6 +84,24 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Force
+
+This parameter enables you to create a deployment without the need to confirm the TPM pass-through capability. Note that enabling TPM passthrough to the virtual machine might increase security risks.
+If `-Force` is specified, you are not asked for confirmation unless `-Confirm` is also specified.
+Otherwise, user will be asked for confirmation to enable TPM pass-through capability. 
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

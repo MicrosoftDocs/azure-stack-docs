@@ -2,16 +2,9 @@
 title: Azure Stack Hub datacenter integration overview
 description: Learn what to expect for a successful on-site deployment of Azure Stack Hub ruggedized from Microsoft, from planning to post-deployment.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
-ms.assetid: 
 ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: sethm
@@ -30,7 +23,7 @@ The following table depicts what can be expected during the various phases of de
 | Participant |Order Process |Pre-Deployment |Integration, Validation, Transport |Onsite Deployment |Post-Deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
 |Microsoft |- Signal to delivery to US location<br>- Azure Stack Hub ruggedized  = 10 Days |Provide required tooling and documentation to collect datacenter requirements |- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered |- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer |Registration and Marketplace syndication|
-| Customer |Signals purchase |- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Azure AD accounts<br>- Runs any validation tooling provided |Ensure the site is ready with network, power, cooling prerequisites |- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available |     |
+| Customer |Signals purchase |- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Microsoft Entra accounts<br>- Runs any validation tooling provided |Ensure the site is ready with network, power, cooling prerequisites |- Be prepared with deployment configuration artifacts<br>- Customer's network engineer available |     |
 
 ## Order process
 
@@ -63,7 +56,7 @@ To create an Azure Stack Hub resource, take the following steps in the Azure por
 
 1. Select **Next: Shipping address**.
 
-    - If you already have a device, select the combo box for **I have a Azure Stack Hub device**.
+    - If you already have a device, select the combo box for **I have an Azure Stack Hub device**.
 
     - If this is the new device that you are ordering, enter the contact name, company, address to ship the device, and contact information.
 
@@ -85,7 +78,7 @@ Microsoft has published a [deployment worksheet](../operator/azure-stack-deploym
 
 You'll choose the following items:
 
-- **Azure Stack Hub connection model and identity provider.** You can choose to deploy Azure Stack Hub either [connected to the internet (and to Azure)](../operator/azure-stack-connected-deployment.md) or [disconnected](../operator/azure-stack-disconnected-deployment.md). To get the most benefit from Azure Stack Hub, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. *You can't change your identity provider later without redeploying the entire system.*
+- **Azure Stack Hub connection model and identity provider.** You can choose to deploy Azure Stack Hub either [connected to the internet (and to Azure)](../operator/azure-stack-connected-deployment.md) or [disconnected](../operator/azure-stack-disconnected-deployment.md). To get the most benefit from Azure Stack Hub, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Microsoft Entra ID is a one-time decision that you must make at deployment time. *You can't change your identity provider later without redeploying the entire system.*
 - **Network integration.** [Network integration](../operator/azure-stack-network.md) is crucial for deployment, operation, and management of Azure Stack Hub systems. There are several considerations that go into ensuring the Azure Stack Hub solution is resilient and has a highly available physical infrastructure to support its operations.
 - **Firewall integration.** We recommended that you [use a firewall](../operator/azure-stack-firewall.md) to help secure Azure Stack Hub. Firewalls can help prevent DDoS attacks, intrusion detection, and content inspection. Firewalls can become a throughput bottleneck for Azure storage services.
 - **Certificate requirements.** It's critical that all [required certificates](../operator/azure-stack-pki-certs.md) are available before an onsite engineer arrives at your datacenter for deployment.

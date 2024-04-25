@@ -23,7 +23,7 @@ Enable backup when you're ready to put your cloud into production. Don't enable 
 Before you enable your backup service, make sure you have the [requirements in place](#verify-requirements-for-the-infrastructure-backup-service).
 
 > [!Note]  
-> The Infrastructure Backup Service doesn't include user data and apps. For more info on how to protect IaaS VM-based apps, see [protect VMs deployed on Azure Stack Hub](../user/azure-stack-manage-vm-protect.md). For a comprehensive understanding of how to protect apps on Azure Stack Hub, see the [Azure Stack Hub considerations for business continuity and disaster recovery whitepaper](https://aka.ms/azurestackbcdrconsiderationswp).
+> The Infrastructure Backup Service doesn't include user data and apps. For more info on how to protect IaaS VM-based apps, see [protect VMs deployed on Azure Stack Hub](../user/azure-stack-manage-vm-protect.md).
 
 ## The Infrastructure Backup Service
 
