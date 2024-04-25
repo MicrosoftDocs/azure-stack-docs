@@ -31,7 +31,7 @@ The Network Controller automatically configures the SPN. All you need to do is t
 
 1. Select the **Security** tab and click **Advanced**.
 
-1. In the list, if all the Network Controller machine accounts or a security group having all the Network Controller machine accounts is not listed, click **Add** to add it.
+1. In the list, if all the Network Controller machine accounts or a security group having all the Network Controller machine accounts isn't listed, click **Add** to add it.
 
 1. For each Network Controller machine account or a single security group containing the Network Controller machine accounts:
 
@@ -53,7 +53,7 @@ The Network Controller automatically configures the SPN. All you need to do is t
 
 ## Failure to provide permissions for SPN registration or modification
 
-On a fresh Windows Server 2019 deployment, if you chose Kerberos for REST client authentication and don't grant permission for Network Controller nodes to register or modify the SPN, REST operations on Network Controller will fail. This prevents you from effectively managing your SDN infrastructure.
+On a new Windows Server 2019 deployment, if you chose Kerberos for REST client authentication and don't authorize Network Controller nodes to register or modify the SPN, REST operations on Network Controller will fail. This prevents you from effectively managing your SDN infrastructure.
 
 For an upgrade from Windows Server 2016 to Windows Server 2019, and you chose Kerberos for REST client authentication, REST operations don't get blocked, ensuring transparency for existing production deployments.
 
