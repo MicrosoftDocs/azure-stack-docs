@@ -5,13 +5,15 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: kimlam
-ms.lastreviewed: 01/17/2023
-ms.date: 01/17/2023
+ms.lastreviewed: 04/01/2024
+ms.date: 04/01/2024
 ---
 
 # Using Azure Stack HCI on a single server
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+
+[!INCLUDE [warning-23h2](../../includes/hci-warning-single-server-22h2.md)]
 
 This article provides an overview of running Azure Stack HCI on a single server, also known as a single-node cluster. Using a single server minimizes hardware and software costs in locations that can tolerate lower resiliency. A single server can also allow for a smaller initial deployment that you can add servers to later (scaling out).
 
@@ -25,7 +27,7 @@ Along with the benefits mentioned, there are some initial limitations to recogni
 
 ## Prerequisites
 
-- A server from the [Azure Stack HCI Catalog](https://hcicatalog.azurewebsites.net/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
+- A server from the [Azure Stack HCI Catalog](https://azurestackhcisolutions.azure.microsoft.com/#/catalog) that's certified for use as a single-node cluster and configured with all NVMe or all SSD drives.
 - An [Azure Subscription](https://azure.microsoft.com/).
 
 For hardware, software, and network requirements see [What you need for Azure Stack HCI](/azure-stack/hci/overview#what-you-need-for-azure-stack-hci).
@@ -48,7 +50,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Azure benefits](../manage/azure-benefits.md) on Azure Stack HCI | Yes | Yes |
 |[Activate Windows Server Subscriptions](../manage/vm-activate.md) | Yes | Yes |
 |[Azure Defender and Secured-core](/shows/inside-azure-for-it/securing-azure-stack-hci-with-azure-defender-and-secured-core) | Yes | Yes |
-|[Azure Kubernetes Service on Azure Stack HCI](/azure-stack/aks-hci/) (AKS-HCI) | Yes | Yes |
+|[Azure Kubernetes Service (AKS) hybrid](/azure-stack/aks-hci/) | Yes | Yes |
 |[Azure Virtual Desktop](/azure/virtual-desktop/overview) | Yes | Yes |
 |[Azure Site Recovery](../manage/azure-site-recovery.md) | Yes | Yes |
 |[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No | Yes |
@@ -56,7 +58,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 
 ## Known issues
 
-The following table describes currently known issues for single-node clusters. This list is subject to change as other items are identified: check back for updates.
+The following table describes currently known issues for single-node clusters. This list is subject to change as other items are identified, check back for updates.
 
 |Issue | Notes|
 |-----------|---------------|

@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: tutorial
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/11/2022
+ms.date: 07/20/2023
 ---
 
 # Tutorial: Create a VM-based lab for Azure Stack HCI
@@ -47,9 +47,7 @@ Connect to the physical server on which you'll create the VM-based lab. If you'r
 
 ### Download Azure Stack HCI
 
-Launch a web browser on the server and visit the [Azure Stack HCI product page](https://azure.microsoft.com/products/azure-stack/hci/). Select "Register for a free trial" and complete the short registration form. Select the box indicating that you agree with the licensing and privacy terms, and then select **submit**.
-
-Select **Download Azure Stack HCI**, which will trigger an ISO download.
+You can download the Azure Stack HCI OS from the Azure portal. For download instructions, see [Download Azure Stack HCI operating system](./download-azure-stack-hci-software.md).
 
 ### Download Windows Server
 

@@ -1,64 +1,51 @@
 ---
-title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI (preview)
-description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal (preview).
+title: Manage VM Extensions on Arc-enabled VMs on Azure Stack HCI 
+description: Learn how to enable guest management and then install and manage extensions on Azure Arc-enabled VMs running on Azure Stack HCI via Azure portal.
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/07/2023
+ms.date: 02/02/2024
 ---
 
-# Manage VM extensions on Azure Stack HCI virtual machines (preview)
+# Manage VM extensions on Azure Stack HCI virtual machines 
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to install and manage VM extensions on your Azure Stack HCI via the Azure portal.
 
-The VM extensions on your Azure Arc-enabled VMs on Azure Stack HCI are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc-enabled VMs.
-
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
-
-## Supported VM extensions on Windows
-
-The following VM extensions are supported on Azure Stack HCI VMs.
-
-| Extension       | Publisher  | Type               |
-|---------------------|--------------|------------|
-| Custom Script Extension | Microsoft.Compute    |CustomScriptExtension|
-| Domain Join Extension* | Microsoft.Compute    |DomainJoinExtension|
-
-**Domain Join extension is only available during VM creation.*
+The VM extensions on your Azure Arc VMs on Azure Stack HCI are useful for post-deployment configuration, software installation, or other management tasks. To install VM extensions, you must enable Azure guest management on your Arc VMs.
 
 
-## Supported VM extensions on Linux
+## Supported VM extensions 
 
-The following VM extensions are supported on Azure Stack HCI VMs.
+For a full list of supported VM extensions, see:
 
-| Extension       | Publisher  | Type               |
-|---------------------|--------------|------------|
-| Custom Script Extension | Microsoft.Compute    |CustomScriptExtension|
+- [Supported VM extensions for Windows](/azure/azure-arc/servers/manage-vm-extensions#windows-extensions)
+
+- [Supported VM extensions for Linux](/azure/azure-arc/servers/manage-vm-extensions#linux-extensions)
 
 
 ## Prerequisites
 
 Before you install and manage VM extensions, make sure that:
 
-- You’ve access to an Arc-enabled Azure Stack HCI VM that has guest management enabled. Guest management is supported on Windows and Linux VMs. For more information on how to create an Arc-enabled VM, see [Deploy Arc-enabled VMs on your Azure Stack HCI cluster](./manage-virtual-machines-in-azure-portal.md).
+- You’ve access to an Arc VM running on your Azure Stack HCI and the VM has guest management enabled. Guest management is supported on Windows and Linux VMs. For more information on how to create an Arc VM, see [Create Arc VMs on your Azure Stack HCI cluster](./create-arc-virtual-machines.md).
 
 ## Verify guest management is enabled
 
-To perform guest OS operations on the Arc-enabled VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
+To manage VMs on Azure Stack HCI, you must enable guest management on the VMs. When you enable guest management, an agent is installed on the VM.
 
 You must verify that guest management is enabled on your VMs before you install VM extensions.
 
 > [!NOTE]
-> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](../manage/manage-virtual-machines-in-azure-portal.md#create-arc-vms).
+> Domain Join extensions are supported only for Windows VMs. These extensions can only be enabled and installed during VM creation via the Azure portal. For more information on how to enable Domain Join extension when creating Arc VMs, see [Create Arc VMs in Azure Stack HCI](./create-arc-virtual-machines.md).
 
 
 Follow these steps to verify that guest management is enabled using the Azure portal.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview)** > **Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources** > **Virtual machines**.
 
 1. From the list of the VMs displayed in the right-pane, select the VM where you’ll install the extension.
 
@@ -73,28 +60,27 @@ After the guest management enablement is verified, you can now add the VM extens
 
 Follow these steps in Azure portal to add a VM extension.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and go to **Settings > Extensions**.
  
 1. From the top of the command bar in the right-pane, select **+ Add**.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png" alt-text="Screenshot showing + Add selected to add an extension in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-1.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png" alt-text="Screenshot showing + Add selected to add an extension in the chosen Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-1.png":::
 
-1. In the **Install extension**, choose from the available extensions. In this example, we'll deploy the **Custom Script Extension for Windows - Azure arc**.
+1. In the **Install extension**, choose from the available extensions. In this example, we'll deploy the **Azure Monitor Agent for Windows (Recommended)**.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png" alt-text="Screenshot showing the Custom Script Extension selected in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-2.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png" alt-text="Screenshot showing the Azure Monitor Extension selected in the chosen Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-2.png":::
 
 1. Provide the parameters to configure the selected VM extension. 
-    For example, if you choose Custom Script Extension, on the **Create** tab, input the script file and the arguments that you want to execute at runtime.
 
-    Make sure that the script to execute is uploaded in an Azure Storage account and the VM can reach the storage account.
+    In this example, you specify if you want to use proxy for your VM and the corresponding proxy settings such as proxy server URL and port number.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png" alt-text="Screenshot showing configuration of Custom Script Extension installation in the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/add-custom-script-extension-3.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png" alt-text="Screenshot showing configuration of Azure Monitor Extension installation in the chosen Arc VM." lightbox="./media/virtual-machine-manage-extension/add-azure-monitor-extension-3.png":::
 
 1. Select **Review + Create**.
 
-The extension may take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
+The extension might take a few minutes to install. After the extension is installed, the list refreshes to display the newly installed extension.
 
 ## List installed extensions
 
@@ -102,7 +88,7 @@ You can get a list of all the VM extensions installed on your Azure Stack HCI cl
 
 Follow these steps in Azure portal to list the installed VM extensions.
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  
@@ -112,18 +98,18 @@ Follow these steps in Azure portal to list the installed VM extensions.
 
 ## Delete VM extension
 
-You may want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
+You might want to delete a VM extension if the installation fails for some reason or if the extension is no longer needed.
 
 
-1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources (Preview) > Virtual machines**.
+1. In the Azure portal of your Azure Stack HCI cluster resource, go to **Resources > Virtual machines**.
 
 1. Select your VM and select **Extensions**.
  
 1. From the list of extensions on your VM, choose the extension you wish to remove. From the top command bar, select **Uninstall** to remove the extension.
 
-    In this example, **Custom Script Extension for Windows - Azure arc** is selected.
+    In this example, **AzureMonitorWindowsAgent** is selected.
 
-    :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png" alt-text="Screenshot showing Uninstall selected for the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-custom-script-extension-1.png":::
+    :::image type="content" source="./media/virtual-machine-manage-extension/uninstall-azure-monitor-extension-1.png" alt-text="Screenshot showing Uninstall selected for the chosen Arc-enabled VM." lightbox="./media/virtual-machine-manage-extension/uninstall-azure-monitor-extension-1.png":::
 
 The extension should take a couple minutes for removal.  
 
@@ -132,5 +118,5 @@ The extension should take a couple minutes for removal.
 
 Learn how to:
 
-- [Enable guest management when creating Arc VMs](../manage/manage-virtual-machines-in-azure-portal.md).
+- [Enable guest management when creating Arc VMs](./create-arc-virtual-machines.md#create-arc-vms).
 - Troubleshoot [VM extension issues](/azure/azure-arc/servers/troubleshoot-vm-extensions).

@@ -1,18 +1,18 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot Kubernetes management and workload cluster issues in AKS hybrid
-  description: Get help to troubleshoot Kubernetes workload cluster issues and errors in AKS hybrid.
+  title: Troubleshoot Kubernetes management and workload cluster issues in AKS Arc
+  description: Get help to troubleshoot Kubernetes workload cluster issues and errors in AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 12/21/2022
+  ms.date: 07/10/2023
 
-title: Troubleshoot Kubernetes management and workload cluster issues in AKS hybrid
+title: Troubleshoot Kubernetes management and workload cluster issues in AKS Arc
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
-  Use this article to help you troubleshoot and resolve issues on Kubernetes management and workload clusters in AKS hybrid.
+  Use this article to help you troubleshoot and resolve issues on Kubernetes management and workload clusters in AKS Arc.
   
 sections:
   - name: Single section - ignored
@@ -87,9 +87,9 @@ sections:
           When running Get-AksHciCluster, a "release version not found" error occurs
 
         answer: | 
-          When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS hybrid installation in Windows Admin Center, the output shows an error: "A release with version 1.0.3.10818 was NOT FOUND." However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build has expired. 
+          When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS Arc installation in Windows Admin Center, the output shows an error: "A release with version 1.0.3.10818 was NOT FOUND." However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build has expired. 
           
-          To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS hybrid build.
+          To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS Arc build.
       - question: | 
           Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
 
@@ -114,6 +114,66 @@ sections:
           ```
           
           Then, verify the network settings to ensure there are enough IP addresses left in the pool to create more VMs.
+          
+      - question: | 
+          Error: You must be logged in to the server (Unauthorized)
+
+        answer: | 
+          Commands such as `Update-AksHci`, `Update-AksHciCertificates`, `Update-AksHciClusterCertificates`, and all interactions with the management cluster, can return "Error: You must be logged in to the server (Unauthorized)."
+          
+          This error can occur when the **kubeconfig** file is expired. To check if it's expired, run the following script:
+          
+          ```powershell
+          $kubeconfig= $(get-kvaconfig).kubeconfig
+          $certDataRegex = '(?ms).*client-certificate-data:\s*(?<CertData>[^\n\r]+)'
+          $certDataMatch = Select-String -Path $kubeconfig -Pattern $certDataRegex
+          $certData = $certDataMatch.Matches[0].Groups['CertData'].Value
+          $certObject = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2
+          $certObject.Import([System.Convert]::FromBase64String($certData))
+          $expiryDate = $certObject.GetExpirationDateString()
+          $expiryDate
+          ```
+          
+          If this script displays a date that is earlier than the current date, then the **kubeconfig** file has expired.
+          
+          To mitigate the issue, copy the **admin.conf** file, which is inside the management control plane VM, to the HCI host:
+          
+          - SSH to the management control plane VM:
+            - Get the management control plane VM IP:
+          
+              ```powershell
+              get-clusternode | % {Get-vm -computerName $_ } | get-vmnetworkadapter | select Name, IPAddresses
+              ```
+          
+            - SSH into it:
+          
+              ```powershell
+              ssh -o StrictHostKeyChecking=no -i (Get-MocConfig).sshPrivateKey clouduser@<mgmt-control-plane-ip>
+              ```
+          
+          - Copy the file to the **clouduser** location:
+          
+            ```powershell
+            cp /etc/kubernetes/admin.conf /home/clouduser/admin.conf
+            ```
+          
+          - Give access to **clouduser**:
+          
+            ```powershell
+            sudo chown clouduser:clouduser admin.conf
+            ```
+          
+          - [Optional] Create a backup of the **kubeconfig** file:
+          
+            ```powershell
+            mv $(Get-KvaConfig).kubeconfig "$((Get-KvaConfig).kubeconfig).backup"
+            ```
+          
+          - Copy the file:
+          
+            ```powershell
+            scp -i (get-mocconfig).sshPrivateKey clouduser@10.64.92.14:~/admin.conf $(Get-KvaConfig).kubeconfig
+            ```
           
       - question: | 
           Hyper-V manager shows high CPU and/or memory demands for the management cluster (AKS host)
@@ -157,7 +217,7 @@ sections:
           If a management or workload cluster isn't used for more than 60 days, the certificates will expire
 
         answer: | 
-          If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS hybrid. When an AKS cluster isn't upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional. However, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will remain in a non-functional state.
+          If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS Arc. When an AKS cluster isn't upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional. However, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will remain in a non-functional state.
           
           To resolve this issue, run the following steps:
           
@@ -325,8 +385,6 @@ sections:
         answer: | 
           When _kubelet_ is under disk pressure, it collects unused container images, which may include pause images, and when this happens, ContainerD can't pull the image. 
           
-          Currently, AKS hybrid uses Azure Container Registry (ACR) only with authentication disabled as a workaround for an ACR bug. Therefore, the same credentials shipped to customers could be used to pull the pause images on affected nodes - for example, username: 1516df5a-f1cc-4a6a-856c-03d127b02d05, password: 92684690-48b5-4dce-856d-ef4cccb54f22.
-          
           To resolve this issue, run the following steps:
           
           1. Connect to the affected node using SSH, and run the following command:
@@ -338,7 +396,7 @@ sections:
           2. To pull the image, run the following command:
           
             ```powershell
-            crictl pull --creds aaa:bbb ecpacr.azurecr.io/pause:3.2
+            crictl pull ecpacr.azurecr.io/kube-proxy:<Kubernetes version>
             ```
   
 

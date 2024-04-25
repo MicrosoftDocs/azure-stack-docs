@@ -82,10 +82,10 @@ Retreive your tenant ID.
 $tenant = (Get-AzContext).Tenant.Id
 ```
 
-Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the "Microsoft.Kubernetes connected cluster" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/azurerm/create-azure-service-principal-azureps).
+Create a service principal by running the [New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal) PowerShell command. This command creates a service principal with the "Contributor" role and sets the scope at a subscription level. For more information on creating service principals, visit [create an Azure service principal with Azure PowerShell](/powershell/azure/azurerm/create-azure-service-principal-azureps).
 
 ```powershell
-$sp = New-AzADServicePrincipal -Role "Microsoft.Kubernetes connected cluster role" -Scope "/subscriptions/myazuresubscription"
+$sp = New-AzADServicePrincipal -Role "Contributor" -Scope "/subscriptions/myazuresubscription"
 ```
 
 Retrieve the password for the service principal by running the following command:

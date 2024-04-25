@@ -13,7 +13,7 @@ ms.lastreviewed: 10/04/2022
 
 # Start-AksEdgeNode
 
-Starts the node VM if it's currently stopped.
+Starts the node VM if it's currently stopped. This cmdlet is an asynchronous call and doesn't wait for the Kubernetes endpoint to be available. You'll have to wait for a while before the Kubernetes endpoint is made available. 
 
 ## Syntax
 
@@ -23,8 +23,7 @@ Start-AksEdgeNode [[-NodeType] <String>]
 
 ## Description
 
-The Start-AksEdgeNode cmdlet starts the virtual machine.
-No action is taken if the virtual machine is already started.
+The Start-AksEdgeNode cmdlet starts the virtual machine. No action is taken if the virtual machine is already started.
 
 ## Examples
 
@@ -38,10 +37,7 @@ Start-AksEdgeNode -NodeType Linux
 
 ### -NodeType
 
-This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
-'LinuxAndWindows', should be drained.
-When not specified, the 'Linux' node is drained only.
-When both nodes are drained, the Windows node is drained first, then the Linux node.
+Indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with 'LinuxAndWindows'.
 
 ```yaml
 Type: String

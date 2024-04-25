@@ -3,10 +3,10 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/04/2023
+ms.date: 02/22/2024
 ms.author: sethm
-ms.reviewer: thoroet
-ms.lastreviewed: 09/09/2020
+ms.reviewer: rtiberiu
+ms.lastreviewed: 12/27/2023
 
 # Intent: As an Azure Stack Hub operator, I want to know what's new in the latest release so that I can plan my update.
 # Keyword: release notes what's new
@@ -19,11 +19,19 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2102"
+::: moniker range=">=azs-2311"
+> [!IMPORTANT]  
+> This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
+
+> [!IMPORTANT]
+> The 2311 update introduces a change in the base host OS, updated to Windows Server 2022. Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+> If you start the update without this key, the update will fail shortly after starting, with a "Prepare of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
+::: moniker-end
+::: moniker range=">=azs-2311"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker-end
-::: moniker range="<azs-2102"
+::: moniker range="<azs-2311"
 > [!IMPORTANT]  
 > If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
@@ -49,42 +57,48 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2206"
-## 2206 build reference
+::: moniker range="azs-2311"
+## 2311 build reference
 
-The Azure Stack Hub 2206 update build number is **1.2206.1.24**.
+The Azure Stack Hub 2311 update build number is **1.2311.1.22**.
 
 ### Update type
 
-The Azure Stack Hub 2206 update build type is **Full**.
+The Azure Stack Hub 2311 update build type is **Full**. This build contains only important security updates.
 
-The 2206 update has the following expected runtimes based on our internal testing:
+The 2311 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2206 update and should not be compared to other Azure Stack Hub updates.
+> [!IMPORTANT]
+> Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2311 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-- European Union-based customers can now choose to have all their data stored and processed inside the European Union boundary. For more information, see [EU Schrems II initiative for Azure Stack Hub](azure-stack-security-foundations.md#eu-schrems-ii-initiative-for-azure-stack-hub).
-- Azure Stack Hub now supports retrieving BitLocker keys for data encryption at rest. For more information, see [Retrieving BitLocker recovery keys](azure-stack-security-bitlocker.md#retrieving-bitlocker-recovery-keys).
+- The [VPN Fast Path for operators](azure-stack-vpn-fast-path-operators.md) feature, [and for users](../user/azure-stack-vpn-fast-path-user.md), is now generally available. The new VPN SKUs enable scenarios in which higher network throughput is necessary. See the documentation for more information about this feature.
+- With 2311 we are announcing the public preview of the [Azure Stack Hub Standard Load Balancer](../user/standard-load-balancer-considerations.md). This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
+- Azure Site Recovery is currently in [public preview](azure-site-recovery-overview.md), which features a simplified deployment process that only requires one dependency. We aim to further streamline this solution by the time of our general availability launch in early 2024, at which point we plan to eliminate all dependencies except for the Site Recovery resource provider itself. In the meantime, we encourage you to test and provide feedback on the public preview to help us enhance the GA version. Be aware that the transition from preview to GA will require a full reinstallation of the Azure Site Recovery solution (no update or upgrade path will be possible).
 
 <!-- ### Improvements -->
 
 ### Changes
 
-- SQL RP V2 and MySQL RP V2 are only available to subscriptions that have been granted access. If you are still using SQL RP V1 and MySQL RP V1, it is strongly recommended that you [open a support case](azure-stack-help-and-support-overview.md) to go through the upgrade process before you upgrading to ASH 2206.
-- This release provides support for Azure Stack Hub root certificate rotation. Previously, secret rotation did not rotate the root. You will be able to rotate the root certificate after installing the update. To do so, [perform internal secret rotation](azure-stack-rotate-secrets.md#rotate-internal-secrets) on or before the next time you are notified via expiration alerts. Failure to rotate the root certificate and/or perform internal secret rotation might result in your stamp becoming unrecoverable.
+- 2311 introduces a change in the base host OS, updated to Windows Server 2022, in order to simplify future updates and security fixes. This change is part of the fabric. Azure Stack Hub environments that have outbound connectivity do not require any additional changes, and the update is installed directly.
 
-### Fixes
+  > [!IMPORTANT]
+  > Disconnected customers must obtain and update a SQL Server 2019 product key (PID). You must get the key before starting the update. To obtain this key, contact Microsoft support.
+  > If you start the update without this key, the update will fail shortly after starting, with a "Preparation of Role Cloud raised an exception" message, which advises you contact support. You can resume the update after applying the new key.
+  
+- Starting with Azure Stack Hub 2311, we are not releasing new Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
 
-- Fix to improve SLB throughput.
-- Fixed an issue that prevented access to the storage subsystem when scale unit nodes are rebooted.
+<!-- ### Fixes -->
 
 ## Security updates
 
@@ -101,72 +115,52 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2206 update
+### Hotfix prerequisites: before applying the 2311 update
 
-The 2206 release of Azure Stack Hub must be applied on the 2108 release with the following hotfixes:
+The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2108.2.130](hotfix-1-2108-2-130.md)
+- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
 
-### After successfully applying the 2206 update
+### After successfully applying the 2311 update
 
-When you update to a new major version (for example, 1.2102.x to 1.2108.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2206, if any hotfixes for 2206 are subsequently released, you should install them:
+After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2206.2.52](hotfix-1-2206-2-52.md)
+- [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-2-23.md)
 ::: moniker-end
 
-::: moniker range="azs-2108"
-## 2108 build reference
+::: moniker range="azs-2306"
+## 2306 build reference
 
-The latest Azure Stack Hub 2108 update build number is **1.2108.2.65**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
+The Azure Stack Hub 2306 update build number is **1.2306.2.47**.
 
 ### Update type
 
-The Azure Stack Hub 2108 update build type is **Full**.
+The Azure Stack Hub 2306 update build type is **Full**. This build contains only important security updates.
 
-The 2108 update has the following expected runtimes based on our internal testing:
+The 2306 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2108 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2306 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-- Azure Stack Hub operators can now configure GPU quotas for VMs.
-- [Emergency VM Access](../user/emergency-vm-access.md) is now available in Azure Stack Hub without contacting Microsoft Support.
-- Windows Server 2022 is now supported as a guest operating system. Windows Server 2022 VMs must be manually activated using [Automatic Virtual Machine Activation](/windows-server/get-started/automatic-vm-activation) in Windows Server on Azure Stack Hub running version 2108 or later. It cannot be activated on previous versions.
-- Starting with this version, if proactive log collection is disabled, logs are captured and stored locally for proactive failure events. The local logs can only be accessed by Microsoft in the context of a support case. New alerts have been added to the proactive log collection **Alert** library.
-- Two new services, [Azure Kubernetes Service](../user/aks-overview.md) and [Azure Container Registry](../user/container-registry-overview.md), are available in public preview with this release.
-- [**AzureStack** module 2.2.0](/powershell/azure/azure-stack/overview?view=azurestackps-2.2.0&preserve-view=true) is released to align with Azure Stack Hub version 2108. The version update includes changes in compute administrator module and new modules `Azs.ContainerRegistry.Admin` and `Azs.ContainerService.Admin`. For more information, see the [change log](https://github.com/Azure/azurestack-powershell/blob/release-2108/src/changelog.md).
-- With this release, telemetry data is uploaded to an Azure Storage account that's managed and controlled by Microsoft. Azure Stack Hub telemetry service connects to `https://*.blob.core.windows.net/` and `https://azsdiagprdwestusfrontend.westus.cloudapp.azure.com/` for a successful telemetry data upload to Microsoft. Port 443 (HTTPS) must be opened. For more information, see [Azure Stack Hub telemetry](azure-stack-telemetry.md).
-- This release includes a public preview of remote support, which enables a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent, while controlling the access level and duration of access. Support can only access your device after a support request has been submitted. For more information, see [Remote support for Azure Stack Hub](remote-support.md).
+- This build contains only important [security updates](#security-updates). There are no other major feature additions.
 
-### Improvements
-
-- When the external SMB share is almost full, the alert description has been adjusted to align with progressive backup.
-- To prevent upload failures, the number of parallel infrastructure backup repository uploads to the external SMB share is now limited.
-- Replaced **Node-Inaccessible-for-vm-placement** alert with alerts to distinguish between **host-unresponsive** scenarios and **hostagent-service-on-node-unresponsive** scenarios.
-- App Service now has the ability to discover the default NAT IP for outbound connections.
+<!-- ### Improvements -->
 
 ### Changes
 
-- Before starting the 2108 update, you must stop (deallocate) all virtual machines that use a GPU, to ensure the update can complete successfully. This applies to AMD and NVIDIA GPUs, as the underlying implementation changes to no pooled resources.
-- SQL RP and MySQL RP are only available to subscriptions that have been granted access. If you want to start using these resource providers, or need to upgrade from a previous version, [open a support case](azure-stack-help-and-support-overview.md), and Microsoft support engineers can help you with the deployment or upgrade process.
-- **Set-AzSLegalNotice** now triggers the appearance of a new screen that contains the caption and the text that were set when running the command. This screen appears every time a new instance of the portal is created.
+- This build contains only important [security updates](#security-updates). There are no other major changes from the previous build.
 
-### Fixes
-
-- Fixed an issue in which one repository failure when uploading to the external SMB share caused the entire infrastructure backup to fail.
-- Fixed an issue that caused N series VMs with multiple GPUs to fail creation.
-- Fixed an issue in which uninstalling a VM extension nulls out protected settings for existing VM extensions.
-- Fixed an issue that caused internal load balancers to use external IPs.
-- Fixed an issue downloading serial logs from the portal.
+<!-- ### Fixes -->
 
 ## Security updates
 
@@ -174,136 +168,111 @@ For information about security updates in this update of Azure Stack Hub, see [A
 
 ## Hotfixes
 
-Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
 > [!NOTE]
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
-
-For more information about hotfixes, see our [servicing policy](azure-stack-servicing-policy.md).
-
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
-
-### Hotfix prerequisites: before applying the 2108 update
-
-The 2108 release of Azure Stack Hub must be applied on the 2102 release with the following hotfixes:
-
-- [Azure Stack Hub hotfix 1.2102.31.153](hotfix-1-2102-31-153.md)
-
-### After successfully applying the 2108 update
-
-When you update to a new major version (for example, 1.2102.x to 1.2108.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
-
-After the installation of 2108, if any hotfixes for 2108 are subsequently released, you should install them:
-
-- [Azure Stack Hub hotfix 1.2108.2.130](hotfix-1-2108-2-130.md)
-::: moniker-end
-
-::: moniker range="azs-2102"
-## 2102 build reference
-
-The latest Azure Stack Hub 2102 update build number is **1.2102.30.97**. For updated build and hotfix information, see the [Hotfixes](#hotfixes) section.
-
-### Update type
-
-The Azure Stack Hub 2102 update build type is **Full**.
-
-The 2102 update has the following expected runtimes based on our internal testing:
-
-- 4 nodes: 8-20 hours
-- 8 nodes: 11-26 hours
-- 12 nodes: 14-32 hours
-- 16 nodes: 17-38 hours
-
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2102 update and should not be compared to other Azure Stack Hub updates.
-
-For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
-
-### What's new
-
-- This release includes a public preview of remote support, which enables a Microsoft support professional to solve your support case faster by permitting access to your device remotely and performing limited troubleshooting and repair. You can enable this feature by granting consent, while controlling the access level and duration of access. Support can only access your device after a support request has been submitted. For more information, see [Remote support for Azure Stack Hub](remote-support.md).
-- The Azure Stack Hub infrastructure backup service now supports progressive backup. This feature helps reduce storage requirements on the external backup location, and changes the way files are organized on the external backup store. It is recommended that you do not manipulate files under the backup root directory.
-- Azure Stack Hub managed disks now support Azure Disk APIs version **2019-07-01**, with a subset of the available features.
-- Azure Stack Hub Storage now supports Azure Storage services management APIs version **2019-06-01**, with a subset of total available features.
-- The Azure Stack Hub administrator portal now shows GPU-related information, including capacity data. This requires a GPU to be installed in the system.
-- Users can now deploy all supported VM sizes, using Nvidia T4 via the Azure Stack Hub user portal.
-- Azure Stack Hub operators can now configure multi-tenancy in Azure Stack Hub via the administrator portal. For more information, see [Configure multi-tenancy](enable-multitenancy.md).
-- Azure Stack Hub operators can now configure a legal notice using the privileged endpoint. For more information, see [Configure Azure Stack Hub security controls](azure-stack-security-configuration.md#legal-notice-for-pep-sessions).
-- During the update process, Granular Bitmap Repair (GBR), an optimization in the storage repair process, is introduced to repair out-of-sync data. Compared to the previous process, smaller segments are repaired, which leads to less repair time and a shorter overall update duration. GBR is enabled by default for all new deployments of 2102. For an update to 2102 from an earlier version (2008), GBR is enabled during the update. GBR requires that all physical disks are in a healthy state, so an extra validation was added in the **UpdateReadiness** check. Patch & update will fail at an early stage if the validation fails. At that point, a cloud admin must take action to resolve the disk problem before resuming the update. To follow up with the OEM, check the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
-- Azure Stack Hub now supports new Dv3, Ev3, and SQL-specific D-series VM sizes.
-- Azure Stack Hub now supports adding GPUs to any existing system. To add a GPU, execute **stop-azurestack**, run through the process of **stop-azurestack**, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs must be **stop-deallocated** and then re-started.
-- Reduced OEM update time using the live update process.
-- The AKS engine on Azure Stack Hub added the following new features. For details, see the release notes under the [AKS engine documentation](../user/azure-stack-kubernetes-aks-engine-overview.md):
-
-  - General availability of Ubuntu 18.04.
-  - Support for Kubernetes 1.17.17 and 1.18.15.
-  - Certificate rotation command public preview.
-  - CSI Driver Azure Disks public preview.
-  - CSI Driver NFS public preview.
-  - CSI Driver for Azure Blobs private preview.
-  - T4 Nvidia GPU support private preview.
-  - Azure Active Directory integration private preview.
-
-### Improvements
-
-- Increased the Network Controller log retention period, so the logs will be available for longer to help engineers in effective troubleshooting, even after an issue has been resolved.
-- Improvements to preserve the Network Controller, Gateway VM, Load Balancer, and Host Agent logs during an update.
-- Improved the deletion logic for networking resources that are blocked by a failed provisioning state.
-- Reduced the XRP memory to 14 GB per VM and WAS memory to 10 GB per VM. By avoiding the increase in total VM memory footprint, more tenant VMs are deployable.
-- The log collection HTML report, which gives a snapshot of the files on the stamp and diagnostic share, now has a summarized view of the collected files, roles, resource providers, and event information to better help understand the success and failure rate of the log collection process. 
-- Added PowerShell cmdlets [Set-AzSLegalNotice](../reference/pep/set-azslegalnotice.md) and [Get-AzSLegalNotice](../reference/pep/get-azslegalnotice.md) to the privileged endpoint (PEP) to retrieve and update the content of the login banner text after deployment.
-- Removed Active Directory Certificate Services (ADCS) and the CA VM entirely from Azure Stack Hub. This reduces the infrastructure footprint and saves up to 2 hours of update time.
-
-### Changes
-
-- The Fabric Resource Provider APIs now expose information about GPUs if available in the scale unit.
-- Azure Stack Hub operators can now change the GPU partitioning ratio via PowerShell (AMD only). This requires all virtual machines to be deallocated.
-- This build includes a new version of Azure Resource Manager.
-- The Azure Stack Hub user portal now uses the full screen experience for load balancers, Network Security Groups, DNS zones, and disk and VM creation.
-- In the 2102 release, the Windows Admin Center (WAC) is enabled on demand from an unlocked PEP session. By default, WAC is not enabled. To enable it, specify the `-EnableWac` flag; for example, `unlock-supportsession -EnableWac`.
-- Proactive log collection now uses an improved algorithm, which captures logs during error conditions that aren't visible to an operator. This algorithm ensures that the correct diagnostic info is collected at the right time, without requiring any operator interaction. In some cases, Microsoft support can begin troubleshooting and resolving problems sooner. Initial algorithm improvements focus on patch and update operations. Enabling proactive log collections is recommended, as more operations are optimized and the benefits increase.
-- There is a temporary increase of 10 GB of memory used by the Azure Stack Hub infrastructure.
-
-### Fixes
-
-- Fixed an issue in which internal DNS zones became out of sync during update, and caused the update to fail. This fix has been backported to 2008 and 2005 via hotfixes.
-- Fixed an issue in which disk space was exhausted by logs on physical hosts, Network Controllers, Gateways and load balancers. This fix has been backported to 2008.
-- Fixed an issue in which deletion of resource groups or virtual networks failed due to an orphaned resource in the Network Controller layer.
-- Removed the **ND6s_dev** size from the VM size picker, as it is an unsupported VM size.
-- Fixed an issue in which performing **Stop-Deallocate** on a VM results in an MTU configuration on the VM to be removed. This behavior was inconsistent with Azure.
-
-## Security updates
-
-For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
-
-## Hotfixes
-
-Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2005.x to 1.2008.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
 For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
+### Hotfix prerequisites: before applying the 2306 update
+
+The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
+
+- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
+
+### After successfully applying the 2306 update
+
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
+::: moniker-end
+
+::: moniker range="azs-2301"
+## 2301 build reference
+
+The Azure Stack Hub 2301 update build number is **1.2301.2.58**.
+
+### Update type
+
+The Azure Stack Hub 2301 update build type is **Full**.
+
+The 2301 update has the following expected runtimes based on our internal testing:
+
+- 4 nodes: 8-28 hours
+- 8 nodes: 11-30 hours
+- 12 nodes: 14-34 hours
+- 16 nodes: 17-40 hours
+
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2301 update and should not be compared to other Azure Stack Hub updates.
+
+For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
+
+### What's new
+
+- Public preview release of the [Azure Site Recovery resource provider](azure-site-recovery-overview.md) for Azure Stack Hub.
+- Public preview release of [VPN Fast Path](azure-stack-vpn-fast-path-operators.md) with new VPN Gateway SKUs.
+- New [VPN Fast Path documentation for Azure Stack Hub operators](azure-stack-vpn-fast-path-operators.md) and [Azure Stack Hub users](../user/azure-stack-vpn-fast-path-user.md).
+- Added new VM size **Standard_E20_v3** to support larger database workloads that require more than 112 GB of memory.
+- Added support for NVIDIA A100 Tensor GPU. Validate with your OEM if your hardware can support the GPU requirements.
+- Added new VM series for A100. For more details, see [GPUs on Azure Stack Hub](../user/gpu-vms-about.md#nc_a100-v4).
+- This update includes all the platform requirements to add [Azure Site Recovery](https://aka.ms/azshasr) on Azure Stack Hub. The first scenario we are enabling is focused on replicating VMs across two Azure Stack Hub regions. ASR on Azure Stack Hub is an Add-on RP which will have to be added through the Marketplace Management.
+- Added the ability for operators to see virtual machine status information across all user subscriptions in the Azure Stack Hub admin portal.
+
+<!-- ### Improvements -->
+
+### Changes
+
+- SQL resource provider 2.0.13 and MySQL resource provider 2.0.13 are released to accommodate some UI breaking changes introduced in Azure Stack Hub 2301. Update the SQL resource provider and MySQL resource provider to the latest version before updating Azure Stack Hub. You may need to refresh the browser cache for the new UI changes to take effect.
+
+<!-- ### Fixes -->
+
+## Security updates
+
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
+
+## Hotfixes
+
+Azure Stack Hub releases hotfixes regularly. Starting with the 2005 release, when you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
 > [!NOTE]
 > Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
 
-### Hotfix prerequisites: before applying the 2102 update
+For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
-The 2102 release of Azure Stack Hub must be applied on the 2008 release with the following hotfixes:
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-- [Azure Stack Hub hotfix 1.2008.41.161](hotfix-1-2008-41-161.md)
+### Hotfix prerequisites: before applying the 2301 update
 
-### After successfully applying the 2102 update
+The 2301 release of Azure Stack Hub must be applied on the 2206 release with the following hotfix installed:
 
-When you update to a new major version (for example, 1.2008.x to 1.2102.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+- [Azure Stack Hub hotfix 1.2206.2.77](hotfix-1-2206-2-77.md)
 
-After the installation of 2102, if any hotfixes for 2102 are subsequently released, you should install them:
+### After successfully applying the 2301 update
 
-- [Azure Stack Hub hotfix 1.2102.31.153](hotfix-1-2102-31-153.md)
+When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
+
+After the installation of 2301, if any hotfixes for 2301 are subsequently released, you should install them:
+
+- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-2206"
+## 2206 archived release notes
+::: moniker-end
+::: moniker range="azs-2108"
+## 2108 archived release notes
+::: moniker-end
+::: moniker range="azs-2102"
+## 2102 archived release notes
+::: moniker-end
 ::: moniker range="azs-2008"
 ## 2008 archived release notes
 ::: moniker-end
@@ -365,6 +334,6 @@ After the installation of 2102, if any hotfixes for 2102 are subsequently releas
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-2102"
+::: moniker range="<azs-2301"
 You can access older versions of Azure Stack Hub release notes in the table of contents on the left side, under [Resources > Release notes archive](./relnotearchive/release-notes.md). Select the desired archived version from the version selector dropdown in the upper left. These archived articles are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end

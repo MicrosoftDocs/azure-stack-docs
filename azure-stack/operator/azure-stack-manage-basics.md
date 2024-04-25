@@ -61,14 +61,14 @@ Azure Stack Hub will continue to add support for Azure services. For the project
 
 ## What account should I use?
 
-There are a few account considerations to be aware of when managing Azure Stack Hub. Especially in deployments using Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Azure Active Directory (Azure AD). The following account considerations apply to both Azure Stack Hub integrated systems and ASDK deployments:
+There are a few account considerations to be aware of when managing Azure Stack Hub. Especially in deployments using Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Microsoft Entra ID. The following account considerations apply to both Azure Stack Hub integrated systems and ASDK deployments:
 
-|Account|Azure AD|AD FS|
+|Account|Microsoft Entra ID|AD FS|
 |-----|-----|-----|
 |Local Administrator (.\Administrator)|ASDK host administrator.|ASDK host administrator.|
 |AzureStack\AzureStackAdmin|ASDK host administrator.<br><br>Can be used to sign in to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.|ASDK host administrator.<br><br>No access to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.<br><br>No longer owner of the Default Provider Subscription (DPS).|
 |AzureStack\CloudAdmin|Can access and run permitted commands within the privileged endpoint.|Can access and run permitted commands within the privileged endpoint.<br><br>Can't sign in to the ASDK host.<br><br>Owner of the Default Provider Subscription (DPS).|
-|Azure AD Global Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
+|Microsoft Entra Global Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
 |
 
 [!INCLUDE [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)]
@@ -90,7 +90,7 @@ You'll also need to add items to [Azure Stack Hub Marketplace](azure-stack-marke
 
 In addition to providing services, you must do the regular duties of an operator to keep Azure Stack Hub up and running. These duties include the following tasks:
 
-- Add user accounts (for [Azure AD](azure-stack-add-new-user-aad.md) deployment or for [AD FS](azure-stack-add-users-adfs.md) deployment).
+- Add user accounts (for [Microsoft Entra ID](azure-stack-add-new-user-aad.md) deployment or for [AD FS](azure-stack-add-users-adfs.md) deployment).
 - [Assign role-based access control (RBAC) roles](azure-stack-manage-permissions.md) (This task isn't restricted to admins.)
 - [Monitor infrastructure health](azure-stack-monitor-health.md).
 - Manage [network](azure-stack-viewing-public-ip-address-consumption.md) and [storage](azure-stack-manage-storage-accounts.md) resources.

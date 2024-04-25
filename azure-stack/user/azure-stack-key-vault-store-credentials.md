@@ -54,7 +54,7 @@ To create a key vault, follow these steps:
 
 1. Sign in to your Azure account through the Azure portal.
 
-2. Select **Azure Active Directory**, then **App registrations**, then **Add**.
+2. Select **Microsoft Entra ID**, then **App registrations**, then **Add**.
 
 3. Provide a name and URL for the app. Select either **Web app / API** or **Native** for the type of app you want to create. After setting the values, select **Create**.
 

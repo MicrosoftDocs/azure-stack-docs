@@ -82,7 +82,7 @@ The [general datacenter integration considerations](azure-stack-datacenter-integ
 
 You'll choose the following items:
 
-- **Azure Stack Hub connection model and identity provider**. You can choose to deploy Azure Stack Hub either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack Hub, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change your identity provider later without redeploying the entire system**.
+- **Azure Stack Hub connection model and identity provider**. You can choose to deploy Azure Stack Hub either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack Hub, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Microsoft Entra ID is a one-time decision that you must make at deployment time. **You can't change your identity provider later without redeploying the entire system**.
 
 - **Licensing model**. The licensing model options for you to choose from depend on the kind of deployment you'll have. Your identity provider choice has no bearing on tenant virtual machines or the identity system and accounts they use.
     - Customers that are in a [disconnected deployment](azure-stack-disconnected-deployment.md) have only one option: capacity-based billing.
@@ -103,8 +103,8 @@ The following table lists changes to your Azure Stack Hub deployment that requir
 
 |     Option                                                   |     Re-deployment    |
 |--------------------------------------------------------------|----------------------|
-|     Change identity system from Azure AD to AD FS                  |     Yes              |
-|     Change the Azure AD directory that was used for deployment    |     Yes              |
+|     Change identity system from Microsoft Entra ID to Active Directory FS                  |     Yes              |
+|     Change the Microsoft Entra directory that was used for deployment    |     Yes              |
 |     Change the network IP ranges                             |     Yes              |
 |     Change the AD FS integrated Active Directory              |     No               |
 |     Change the billing model                                 |     No               |

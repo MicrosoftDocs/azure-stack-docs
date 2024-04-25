@@ -3,14 +3,14 @@ title: Stretched clusters overview
 description: Learn about stretched clusters
 author: jasongerend
 ms.topic: how-to
-ms.date: 12/21/2020
+ms.date: 02/22/2024
 ms.author: jgerend
 ms.reviewer: johnmar
 ---
 
 # Stretched clusters overview
 
-> Applies to: Azure Stack HCI, versions 21H2 and 20H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly and without the need for manual intervention. Storage Replica provides the replication of volumes across sites for disaster recovery, with all servers staying in sync.
 
@@ -32,13 +32,13 @@ Take a few minutes to watch the video on stretched clustering with Azure Stack H
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
-:::image type="content" source="media/stretched-cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/stretched-cluster/active-passive-stretched-cluster.png":::
+:::image type="content" source="media/stretched-clusters/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario."  lightbox="media/stretched-clusters/active-passive-stretched-cluster.png":::
 
 ## Active-active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
-:::image type="content" source="media/stretched-cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/stretched-cluster/active-active-stretched-cluster.png":::
+:::image type="content" source="media/stretched-clusters/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/stretched-clusters/active-active-stretched-cluster.png":::
 
 ## Guest IP failover considerations
 

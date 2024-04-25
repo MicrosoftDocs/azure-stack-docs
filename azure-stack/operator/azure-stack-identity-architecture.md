@@ -1,6 +1,6 @@
 ---
 title: Identity architecture for Azure Stack Hub 
-description: Learn about identity architecture for Azure Stack Hub, and the differences between Azure AD and AD FS.
+description: Learn about identity architecture for Azure Stack Hub, and the differences between Microsoft Entra ID and AD FS.
 author: sethmanheim
 ms.topic: conceptual
 ms.date: 03/21/2022
@@ -8,7 +8,7 @@ ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/21/2022
 
-# Intent: As an Azure Stack operator, I want to know about identity architecture, and the differences between Azure AD and AD FS.
+# Intent: As an Azure Stack operator, I want to know about identity architecture, and the differences between Microsoft Entra ID and AD FS.
 # Keyword: azure stack identity architecture
 
 ---
@@ -16,13 +16,13 @@ ms.lastreviewed: 03/21/2022
 
 # Identity architecture for Azure Stack Hub
 
-When choosing an identity provider to use with Azure Stack Hub, you should understand the important differences between the options of Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS).
+When choosing an identity provider to use with Azure Stack Hub, you should understand the important differences between the options of Microsoft Entra ID and Active Directory Federation Services (AD FS).
 
 ## Capabilities and limitations
 
 The identity provider that you choose can limit your options, including support for multi-tenancy.
 
-|Capability or scenario        |Azure AD  |AD FS  |
+|Capability or scenario        |Microsoft Entra ID  |AD FS  |
 |------------------------------|----------|-------|
 |Connected to the internet     |Yes       |Optional|
 |Support for multi-tenancy     |Yes       |No      |
@@ -40,24 +40,28 @@ The identity provider that you choose can limit your options, including support 
 
 The following sections discuss the different identity topologies that you can use.
 
-### Azure AD: single-tenant topology
+<a name='azure-ad-single-tenant-topology'></a>
 
-By default, when you install Azure Stack Hub and use Azure AD, Azure Stack Hub uses a single-tenant topology.
+### Microsoft Entra ID: single-tenant topology
+
+By default, when you install Azure Stack Hub and use Microsoft Entra ID, Azure Stack Hub uses a single-tenant topology.
 
 A single-tenant topology is useful when:
 - All users are part of the same tenant.
 - A service provider hosts an Azure Stack Hub instance for an organization.
 
-![Azure Stack Hub single-tenant topology with Azure AD](media/azure-stack-identity-architecture/single-tenant.svg)
+![Azure Stack Hub single-tenant topology with Microsoft Entra ID](media/azure-stack-identity-architecture/single-tenant.svg)
 
 This topology features the following characteristics:
 
-- Azure Stack Hub registers all apps and services to the same Azure AD tenant directory.
+- Azure Stack Hub registers all apps and services to the same Microsoft Entra tenant directory.
 - Azure Stack Hub authenticates only the users and apps from that directory, including tokens.
 - Identities for administrators (cloud operators) and tenant users are in the same directory tenant.
 - To enable a user from another directory to access this Azure Stack Hub environment, you must [invite the user as a guest](azure-stack-identity-overview.md#guest-users) to the tenant directory.
 
-### Azure AD: multi-tenant topology
+<a name='azure-ad-multi-tenant-topology'></a>
+
+### Microsoft Entra ID: multi-tenant topology
 
 Cloud operators can configure Azure Stack Hub to allow access to apps by tenants from one or more organizations. Users access apps through the Azure Stack Hub user portal. In this configuration, the administrator portal (used by the cloud operator) is limited to users from a single directory.
 
@@ -65,7 +69,7 @@ A multi-tenant topology is useful when:
 
 - A service provider wants to allow users from multiple organizations to access Azure Stack Hub.
 
-![Azure Stack Hub multi-tenant topology with Azure AD](media/azure-stack-identity-architecture/multi-tenant.svg)
+![Azure Stack Hub multi-tenant topology with Microsoft Entra ID](media/azure-stack-identity-architecture/multi-tenant.svg)
 
 This topology features the following characteristics:
 

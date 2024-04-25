@@ -6,12 +6,12 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/02/2022
+ms.date: 03/14/2024
 ---
 
 # Azure Stack HCI network deployment patterns
 
-[!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI using either one or two physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
 
@@ -37,4 +37,4 @@ Use the following table to directly go to a pattern and its content.
 
 ## Next steps
 
-- [Download Azure Stack HCI](https://azure.microsoft.com/products/azure-stack/hci/hci-download/)
+- [Download Azure Stack HCI](../deploy/download-azure-stack-hci-software.md)

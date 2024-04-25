@@ -2,14 +2,9 @@
 title: Manage Azure Stack Hub with Azure CLI - MDC | Microsoft Docs
 description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub for a Modular Data Center (MDC).
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/2/2020
 ms.author: sethm
@@ -57,9 +52,11 @@ You should see the version of Azure CLI and other dependent libraries that are i
 ![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
 
-## Windows/Linux (Azure AD)
+<a name='windowslinux-azure-ad'></a>
 
-This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Windows/Linux machine.
+## Windows/Linux (Microsoft Entra ID)
+
+This section walks you through setting up CLI if you're using Microsoft Entra ID as your identity management service, and are using CLI on a Windows/Linux machine.
 
 ### Connect to Azure Stack Hub
 

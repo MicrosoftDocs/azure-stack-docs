@@ -5,12 +5,12 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 11/18/2022
+ms.date: 02/23/2024
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
 
-[!INCLUDE [hci-applies-to-22h2-21h2-20h2](../../includes/hci-applies-to-22h2-21h2-20h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
 You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must closely match the rest of the servers in the cluster when it comes to CPU type, memory, number of drives, and the type and size of the drives.
 
@@ -32,7 +32,7 @@ The first step is to acquire new HCI hardware from your original OEM. Always ref
 
 Use Windows Admin Center to join the server to your cluster.
 
-:::image type="content" source="media/manage-cluster/add-server.png" alt-text="Add server screen" lightbox="media/manage-cluster/add-server.png":::
+:::image type="content" source="media/add-cluster/add-server.png" alt-text="Add server screen" lightbox="media/add-cluster/add-server.png":::
 
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
@@ -68,9 +68,29 @@ Before you run the script, ensure that a virtual switch is created and the serve
     - ComputerName is the fully qualified domain name (FQDN) of the server to be added
     - HostPASubnetPrefix is the address prefix of the Provider Address (PA) network
 
+### Add a server to an Arc VM managed cluster
+
+To add a server to an Arc VM managed cluster, you must enable Arc VM management on the new server after adding it to the cluster.
+
+Follow these steps to add a server to an Azure Arc VM managed cluster:
+
+1. To add a server to an Arc VM managed cluster, run the following command:
+
+    ```powershell
+    Add-ClusterNode -Cluster Cluster1 -Name $nodeName
+    ```
+
+1. To enable Arc VM management on the newly added server, run the following command:
+
+    ```powershell
+    New-MocPhysicalNode -nodeName $nodeName
+    ```
+
 ## Remove a server from a cluster
 
 Keep in mind that when you remove a server, you will also remove any virtual machines (VMs), drives, and workloads associated with the server.
+
+For more information about removing a cluster, see [Remove a Cluster](/azure-stack/hci/manage/cluster-powershell#remove-a-cluster).
 
 ### Uninstall VM extensions
 
@@ -89,7 +109,7 @@ To remove a server from a cluster by using PowerShell:
 
 The steps for removing a server from your cluster by using Windows Admin Center are similar to those for adding a server to a cluster.
 
-:::image type="content" source="media/manage-cluster/remove-server.png" alt-text="Remove server dialog" lightbox="media/manage-cluster/remove-server.png":::
+:::image type="content" source="media/add-cluster/remove-server.png" alt-text="Remove server dialog" lightbox="media/add-cluster/remove-server.png":::
 
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
@@ -100,6 +120,24 @@ The steps for removing a server from your cluster by using Windows Admin Center 
 1. Verify the server has been successfully removed from the cluster.
 
 Anytime you add or remove servers from a cluster, be sure and run a cluster validation test afterwards.
+
+### Remove a server from an Arc VM managed cluster
+
+To remove a server from an Arc VM managed cluster, you must disable Arc VM management on the server before removing it from the cluster.
+
+Follow these steps to remove a server from an Arc VM managed cluster:
+
+1. To disable Arc VM Management on the server that you want to remove, run the following command:
+
+    ```powershell
+    Remove-MocPhysicalNode -nodeName $nodeName
+    ```
+
+1. To remove the server from the cluster, run the following command:
+
+    ```powershell
+    Remove-ClusterNode -Cluster Cluster1 -Name $nodeName
+    ```
 
 ## Add server pairs to a stretched cluster
 
@@ -271,4 +309,4 @@ Once the servers have been successfully removed, the associated drives are autom
 
 ## Next steps
 
-- You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md) for more information.
+- You should validate the cluster after adding or removing a server. For more information, see [Validate the cluster](../deploy/validate.md).

@@ -3,7 +3,7 @@ title: Use Azure Key Vault to store secrets with Azure Kubernetes Service on Azu
 description: Learn how to use Azure Key Vault to store secrets with Azure Kubernetes Service on Azure Stack Hub
 author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 11/21/2022
 ms.author: sethm
 ms.reviewer: waltero
 ms.lastreviewed: 10/26/2021
@@ -40,4 +40,4 @@ Azure Key Vault Provider for Secrets Store CSI Driver is an open source project 
 
 ## Next steps
 
-[Overview of the AKS engine](azure-stack-kubernetes-aks-engine-overview.md)
+[Overview of AKS engine](azure-stack-kubernetes-aks-engine-overview.md)

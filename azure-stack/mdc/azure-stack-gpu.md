@@ -2,13 +2,9 @@
 title: GPU VMs on Azure Stack | Microsoft Docs 
 description: Reference for GPU computing in Azure Stack. 
 services: azure-stack 
-documentationcenter: '' 
 author: sethmanheim 
 manager: femila 
 ms.service: azure-stack 
-ms.workload: na 
-pms.tgt_pltfrm: na 
-ms.devlang: na 
 ms.topic: article 
 ms.date: 01/02/2020 
 ms.author: sethm 
@@ -28,7 +24,7 @@ This topic covers how to manage GPU VMs on Azure Stack Hub.
 
 ## Partitioned GPU VM size 
 
-The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPUs. With NVv4-series Azure Stack Hub is introducing virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only Windows guest operating system. 
+The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. With NVv4-series Azure Stack Hub is introducing virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently support only Windows guest operating system. 
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs | 
 | --- | --- | --- | --- | --- | --- | --- | --- |   

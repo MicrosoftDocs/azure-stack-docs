@@ -6,12 +6,12 @@ ms.topic: article
 ms.assetid: c4e2f6c7-0364-4bf8-bb66-9af59c0bbd74
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 11/02/2021
+ms.date: 04/19/2023
 ---
 
 # Manage certificates for Software Defined Networking
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 You can use this topic to learn how to manage certificates for Network Controller Northbound and Southbound communications when you deploy Software Defined Networking \(SDN\) in Windows Server 2019 or 2016 Datacenter and you are using System Center Virtual Machine Manager \(SCVMM\) as your SDN management client.
 

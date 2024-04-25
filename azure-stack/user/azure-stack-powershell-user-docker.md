@@ -16,6 +16,9 @@ ms.lastreviewed: 12/16/2020
 
 # Use Docker to run PowerShell for Azure Stack Hub
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 In this article, you can use Docker to create a container on which to run the version of PowerShell that's required for working with the various interfaces. You can find instructions for using both AzureRM modules and the latest Az modules. AzureRM requires a Windows-based container. Az uses a Linux-based container.
 
 ## Docker prerequisites
@@ -32,7 +35,7 @@ In this article, you can use Docker to create a container on which to run the ve
 
 ### Set up a service principal for using PowerShell
 
-To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Azure Active Directory (Azure AD) tenant. You delegate permissions with user role-based access control (RBAC). You may need to request the service principal from your cloud operator.
+To use PowerShell to access resources in Azure Stack Hub, you need a service principal in your Microsoft Entra tenant. You delegate permissions with user role-based access control (RBAC). You may need to request the service principal from your cloud operator.
 
 1. To set up your service principal, follow the instructions in [Give applications access to Azure Stack Hub resources by creating service principals](../operator/give-app-access-to-resources.md).
 

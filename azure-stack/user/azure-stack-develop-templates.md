@@ -4,6 +4,8 @@ description: Learn how to develop Azure Resource Manager templates for app porta
 author: sethmanheim
 
 ms.topic: article
+ms.custom:
+  - devx-track-arm-template
 ms.date: 2/1/2021
 ms.author: sethm
 ms.reviewer: unknown
@@ -11,7 +13,6 @@ ms.lastreviewed: 05/21/2019
 
 # Intent: As an Azure/Azure Stack user, I want to use Azure Resource Manager templates so I can test app portability from Azure to Azure Stack.
 # Keyword: azure stack templates
-
 ---
 
 

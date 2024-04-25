@@ -5,6 +5,8 @@ author: sethmanheim
 
 
 ms.topic: article
+ms.custom:
+  - devx-track-arm-template
 ms.date: 2/1/2022
 ms.author: sethm
 ms.reviewer: justini
@@ -12,7 +14,6 @@ ms.lastreviewed: 11/14/2019
 
 # Intent: As an Azure Stack user, I want to use Azure Resource Manager templates to provision resources for my application.
 # Keyword: resource manager templates
-
 ---
 
 # Use Azure Resource Manager templates in Azure Stack Hub

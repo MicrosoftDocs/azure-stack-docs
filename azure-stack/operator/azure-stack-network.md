@@ -120,7 +120,7 @@ This /29 (six host IPs) network is dedicated to connecting the management ports 
 
 ## Permitted networks
 
-The Deployment Worksheet has a field allowing the operator to change some access control list (ACL)s to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, the HLH OS and the HLH BMC. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack Hub switch configuration](./azure-stack-customer-defined.md#access-control-list-updates).
+The Deployment Worksheet has a field allowing the operator to change some access control list (ACL)s to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, and the HLH OS. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack Hub switch configuration](./azure-stack-customer-defined.md#access-control-list-updates).
 
 ## Next steps
 

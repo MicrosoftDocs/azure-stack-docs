@@ -13,7 +13,7 @@ ms.lastreviewed: 04/27/2020
 # Register-DirectoryService
 
 ## Synopsis
-Script to register customer Active Directory (Azure AD) with Graph Service.
+Script to register customer Microsoft Entra ID with Graph Service.
 **CustomADGlobalCatalog** is the global catalog for custom Active Directory.
 This will be `RootDomain` value from output of **Get-ADForest** cmdlet.
 

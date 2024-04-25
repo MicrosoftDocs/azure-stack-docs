@@ -50,7 +50,7 @@
 - name: Reference
   items:
   - name: Azure Stack PowerShell
-    href: /powershell/azure/azure-stack/overview
+    href: /powershell/azurestackhub/overview
   - name: CLI
     href: /cli/azure/
 - name: Related

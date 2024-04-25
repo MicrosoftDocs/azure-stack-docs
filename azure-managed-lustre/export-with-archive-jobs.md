@@ -1,35 +1,31 @@
 ---
-title: Use archive jobs to export data from Azure Managed Lustre (preview)
+title: Use archive jobs to export data from Azure Managed Lustre
 description: How to use an archive job to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage.
 ms.topic: overview
-author: sethmanheim
-ms.author: sethm 
+ms.date: 06/28/2023
+author: pauljewellmsft
+ms.author: pauljewell
 ms.lastreviewed: 02/23/2023
 ms.reviewer: brianl
-ms.date: 02/24/2023
 
 # Intent: As an IT Pro, I need to be able to export files from my Azure Managed Lustre file system to longterm Azure Blob Storage.
 # Keyword: 
 
 ---
 
-# Use archive jobs to export data from Azure Managed Lustre (preview)
+# Use archive jobs to export data from Azure Managed Lustre
 
 This article describes how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an archive job, and explains what is exported from the file system.
 
 This export method is only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, use client filesystem commands to copy the data without creating an archive job.
 
-[!INCLUDE [public-preview-disclaimer](includes/managed-lustre-preview-disclaimer.md)]
-
 ## Which files does an archive job export?
 
 When you archive files from your Azure Managed Lustre system, not all of the files are copied into the blob container that you specified when you created the file system:
 
-* An archive job only copies new or changed data. If the file that you imported from the blob container during file system creation hasn't changed, the archive job doesn't export the file.
-
-* Files with metadata changes only (owner, permissions, extended attributes) aren't exported.
-
-* If you delete a file in the Azure Managed Lustre file system, the archive job does not delete the file from the original source.
+* Archive jobs only copy files that are new or whose contents have been modified. If the file that you imported from the blob container during file system creation is unchanged, the archive job doesn't export the file.
+* Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
+* If you delete a file in the Azure Managed Lustre file system, the archive job doesn't delete the file from the original source.
 
 Archiving data is a manual process that you can do in the Azure portal or by using commands in the native Lustre client CLI. With both methods, you can monitor the state of the archive job.
 
@@ -44,7 +40,7 @@ The following procedures tell how to:
 
 To create an archive job to export changed data from an Azure Managed Lustre file system in the Azure portal, do the following steps:
 
-1. Sign in to the Azure Managed Lustre preview portal using this URL: [https://aka.ms/azureLustrePrivatePreview](https://aka.ms/azureLustrePrivatePreview), and open your Azure Managed Lustre file system.
+1. Sign in to [the Azure portal](https://portal.azure.com), and open your Azure Managed Lustre file system.
 
 1. Under **Settings**,  open the **Blob integration** page to export changed files to the integrated blob container.
 
@@ -100,15 +96,17 @@ Each file has an associated state, which indicates the relationship between the 
 sudo lfs hsm_state path/to/export/file
 ```
 
-The state command reports the state of changes to the file. one of four states for the file:
+The state command reports the state of changes to the file. The following table shows the possible file states:
 
 |State|Description|
 |-----|-----------|
-|`(0x0000000d) released exists archived`|The file's contents (the data) exist in Blob Storage only. Only the metadata exists in Lustre. An archive job won't update (overwrite) the file in Blob Storage.|
-|`(0x00000009) exists archived`|An archive job won't export the file to Blob Storage because Blob Storage already has the latest copy.|
-|`(0x0000000b) exists dirty archived`|The file has changes that haven't been archived. To send the changes in Lustre back to Blob Storage, run an archive job. The archive job overwrites the file in Blob Storage.|
-|`(0x00000000)`|The file is new and only exists in the Lustre file system. An archive job will create a new file in the blob container. If the file is updated again in Lustre, run another archive job to copy those changes to Blob Storage.|
+|`(0x0000000d) released exists archived`|The file's contents (the data) exist in Blob Storage only. Only the metadata exists in Lustre. An archive job doesn't update (overwrite) the file in Blob Storage.|
+|`(0x00000009) exists archived`|An archive job doesn't export the file to Blob Storage because Blob Storage already has the latest copy.|
+|`(0x0000000b) exists dirty archived`|The file has changes that aren't archived. To send the changes in Lustre back to Blob Storage, run an archive job. The archive job overwrites the file in Blob Storage.|
+|`(0x00000000)`|The file is new and only exists in the Lustre file system. An archive job creates a new file in the blob container. If the file is updated again in Lustre, run another archive job to copy those changes to Blob Storage.|
+|`(0x00000001) exists`|The file is new and only exists in the Lustre file system. An archive job has been started and hasn't completed for this file. |
 
 ## Next steps
 
 * Learn more about [Azure Blob Storage integration with Lustre file systems](blob-integration.md)
+

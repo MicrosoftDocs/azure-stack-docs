@@ -1,67 +1,44 @@
 ---
-title: Restrict SSH access in AKS hybrid
-description: Learn how to restrict SSH access in AKS hybrid.
+title: Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Stack HCI 23H2)
+description: Learn how to restrict SSH access in AKS Arc on HCI 23H2.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/21/2023
+ms.date: 01/29/2024
 ms.author: sethm 
-ms.lastreviewed: 02/21/2023
+ms.lastreviewed: 04/27/2023
 ms.reviewer: oadeniji
 
-# Intent: As an IT Pro, I want to ue Active Directory Authentication to securely connect to the Kubernetes API server with SSO credentials.
-# Keyword: secure connection to Kubernetes API server
+
+# Intent: As an IT Pro, I want to restrict access to some IP addresses and CIDRs in AKS enabled by Arc.
 
 ---
 
-# Restrict SSH access to virtual machines
+# Restrict SSH access to virtual machines in AKS enabled by Azure Arc (AKS on Azure Stack HCI 23H2)
 
-This article describes a new security feature in AKS hybrid that restricts Secure Shell Protocol (SSH) access to underlying virtual machines (VMs). The feature limits access to only certain IP addresses.
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
+This article describes a new security feature in AKS Arc that restricts Secure Shell Protocol (SSH) access to underlying virtual machines (VMs). The feature limits access to only certain IP addresses, and restricts the set of commands that you can run over SSH.
 
 ## Overview
 
-Currently, anyone with administrator access to AKS hybrid has access to VMs through SSH on any machine. In some scenarios you might want to reduce that access, because unlimited access makes it difficult to pass compliance.
+Currently, anyone with administrator access to AKS enabled by Arc has access to VMs through SSH on any machine. In some scenarios, you might want to limit that access, because unlimited access makes it difficult to pass compliance.
 
 > [!NOTE]
-> Currently, this capability is available only for a new installation of AKS hybrid, and not for upgrades. Only a new installation of AKS hybrid can pass the restricted IPs.
+> Currently, this capability is available only for a new installation of AKS Arc, and not for upgrades. Only a new installation of AKS Arc can pass the restricted IPs and restrict the commands that run over SSH.
 
-## Enable SSH restriction
+## Enable SSH restrictions
 
-To enable SSH restrictions, perform the following steps:
+The following command limits the set of hosts that can be authorized to be SSH clients. You can only run the SSH commands on those hosts, and the set of commands that you can run is restricted. The hosts are designed either via IP addresses or via CIDR ranges:
 
-1. Create an SSH configuration using the `New-AksHciSSHConfiguration` cmdlet, with the allowed source IP addresses or CIDR you want to permit access to the VMs:
-
-   ```powershell
-   $ssh = New-AksHciSSHConfiguration -name sshConfig -cidr 172.16.0.0/24
-   ```
-
-   or
-
-   ```powershell
-   $ssh = New-AksHciSSHConfiguration -name sshConfig -ipAddresses 4.4.4.4,8.8.8.8
-   ```
-
-1. Add the SSH configuration by running the [Set-AksHciConfig](reference/ps/set-akshciconfig.md) cmdlet, passing in the SSH configuration you created in the previous step:
-
-   ```powershell
-   Set-AksHciConfig -ssh $ssh
-   ```
-
-### Validation
-
-Once you've created the cluster, you can manually validate that the SSH restriction has been added by trying to SSH into one of the VMs. For example:
-
-```powershell
-ssh -i (get-MocConfig).sshPrivateKey clouduser@<vm-ipaddress>
+```azurecli
+az aksarc create --ssh-authorized-ip-ranges CIDR format
 ```
 
-You can perform this step within the list of IP addresses/CIDRs specified, or outside the list of IP addresses. The SSH from within the range of IP addresses/CIDRs should have access. SSH attempts from outside the list should not have access.
+The CIDR format is `0.0.0.0/32`.
 
-### Considerations
-
-- You can only set the configuration during the installation phase of AKS hybrid.
-- There is no support for upgrades.
-- The SSH setting you provide is reused for all target clusters. Individual SSH configuration for workload clusters isn't available.
+This command does two things: it limits the scope of the command, and it also limits the hosts from which this command can be run.
 
 ## Next steps
 
-[AKS hybrid overview](aks-hybrid-options-overview.md)
+- [Restrict SSH access (AKS on Azure Stack HCI 22H2)](restrict-ssh-access-22h2.md)
+- [AKS enabled by Arc overview](aks-overview.md)

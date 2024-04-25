@@ -37,9 +37,7 @@ Test-AksEdgeNode -NodeType Windows
 ### -NodeType
 
 This parameter indicates whether the 'Linux' node or the 'Windows' node, or both at the same time with
-'LinuxAndWindows', should be drained.
-When not specified, the 'Linux' node is drained only.
-When both nodes are drained, the Windows node is drained first, then the Linux node.
+'LinuxAndWindows'.
 
 ```yaml
 Type: String

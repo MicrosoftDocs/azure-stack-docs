@@ -2,17 +2,17 @@
 title: Azure Stack HCI two-node storage switched, non-converged deployment network reference pattern
 description: Plan to deploy an Azure Stack HCI two-node storage switched, non-converged network reference pattern.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 12/02/2022
+ms.date: 03/14/2024
 ---
 
 # Review two-node storage switched, non-converged deployment network reference pattern for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, you'll learn about the two-node storage switched, non-converged, two-TOR-switch network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
@@ -22,7 +22,7 @@ For information on other network patterns, see [Azure Stack HCI network deployme
 
 Scenarios for this network pattern include laboratories, factories, branch offices, and datacenter facilities.
 
-Deploy this pattern for enhanced network performance of your system and if you plan to add additional nodes. East-West storage traffic replication won't interfere or compete with north-sound traffic dedicated for management and compute. Logical network configuration when adding additional nodes are ready without requiring workload downtime or physical connection changes. SDN L3 services are fully supported on this pattern.
+Deploy this pattern for enhanced network performance of your system and if you plan to add additional nodes. East-West storage traffic replication won't interfere or compete with north-south traffic dedicated for management and compute. Logical network configuration when adding additional nodes are ready without requiring workload downtime or physical connection changes. SDN L3 services are fully supported on this pattern.
 
 Routing services such as BGP can be configured directly on the TOR switches if they support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device as they're implemented at the virtual network adapter layer.
 

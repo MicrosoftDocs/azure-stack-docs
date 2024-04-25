@@ -6,7 +6,7 @@ ms.author: chcurlet
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/19/2021
+ms.date: 03/17/2023
 ---
 
 # Enable quick restarts with Kernel Soft Reboot
@@ -106,6 +106,9 @@ The following table shows how each name-value pair provides more information on 
 | **SoftBootStatus** | Indicates if Kernel Soft Reboot is **Enabled**, **NotEnabled**, **NotInstalled**, or **Bypassed** if the server opts out of Kernel Soft Reboot using registry key settings. |
 
 For additional troubleshooting, see [Save-CauDebugTrace](/powershell/module/clusterawareupdating/save-caudebugtrace?&preserve-view=true).
+
+
+
 
 ## FAQ
 

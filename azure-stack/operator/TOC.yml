@@ -14,6 +14,26 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2311.2.23
+        href: hotfix-1-2311-2-23.md
+      - name: Hotfix 1.2306.4.74
+        href: hotfix-1-2306-4-74.md      
+      - name: Hotfix 1.2301.3.72
+        href: hotfix-1-2301-3-72.md
+      - name: Hotfix 1.2306.4.73
+        href: hotfix-1-2306-4-73.md      
+      - name: Hotfix 1.2206.2.77
+        href: hotfix-1-2206-2-77.md      
+      - name: Hotfix 1.2301.2.64
+        href: hotfix-1-2301-2-64.md
+      - name: Hotfix 1.2206.2.76
+        href: hotfix-1-2206-2-76.md      
+      - name: Hotfix 1.2301.2.63
+        href: hotfix-1-2301-2-63.md
+      - name: Hotfix 1.2301.2.60
+        href: hotfix-1-2301-2-60.md
+      - name: Hotfix 1.2206.2.66
+        href: hotfix-1-2206-2-66.md
       - name: Hotfix 1.2108.2.130
         href: hotfix-1-2108-2-130.md            
       - name: Hotfix 1.2102.31.153
@@ -264,6 +284,8 @@
       href: azure-stack-connect-expressroute.md  
     - name: Enable CLI for users
       href: azure-stack-cli-admin.md
+    - name: VPN Fast Path
+      href: azure-stack-vpn-fast-path-operators.md
     - name: Set up management environment
       items:
       - name: Install PowerShell Az
@@ -332,7 +354,7 @@
         href: azure-stack-identity-architecture.md
       - name: Manage RBAC
         href: azure-stack-manage-permissions.md
-      - name: Add users for Azure AD
+      - name: Add users for Microsoft Entra ID
         href: azure-stack-add-new-user-aad.md
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
@@ -456,6 +478,24 @@
         href: container-registries-troubleshoot.md
     - name: Azure Kubernetes Service
       href: aks-add-on.md
+    - name: Azure Site Recovery
+      items:
+      - name: Overview
+        href: azure-site-recovery-overview.md
+      - name: Deploy
+        items:
+        - name: Deployment overview
+          href: site-recovery-deploy.md
+        - name: Deploy source environment
+          href: site-recovery-deploy-source.md
+        - name: Deploy target environment
+          href: site-recovery-deploy-target.md        
+      - name: Protect virtual machines
+        href: protect-virtual-machines.md
+      - name: Capacity planning
+        href: azure-site-recovery-capacity-planning.md
+      - name: Known issues
+        href: azure-site-recovery-known-issues.md
     - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
@@ -484,6 +524,10 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.5.0 release notes [Mar 2024] 
+          href: event-hubs-rp-release-1-2102-50.md
+        - name: 1.2102.4.0 release notes [Oct 2023] 
+          href: event-hubs-rp-release-1-2102-40.md
         - name: 1.2102.3.0 release notes [Jan 2023] 
           href: event-hubs-rp-release-1-2102-30.md
         - name: 1.2102.2.0 release notes [Mar 2022] 
@@ -532,10 +576,6 @@
           href: azure-stack-mysql-resource-provider-2-0-13.md
         - name: MySQL resource provider 2.0.00.0 release notes
           href: azure-stack-mysql-resource-provider-20000.md
-        - name: MySQL resource provider 1.1.93.0 release notes
-          href: azure-stack-mysql-resource-provider-11930.md
-        - name: MySQL resource provider 1.1.47.0 release notes
-          href: azure-stack-mysql-resource-provider-11470.md
     - name: SQL on Azure Stack Hub
       items:
       - name: Overview
@@ -560,10 +600,6 @@
           href: azure-stack-sql-resource-provider-2-0-13.md 
         - name: SQL resource provider 2.0.00.0 release notes
           href: azure-stack-sql-resource-provider-20000.md 
-        - name: SQL resource provider 1.1.93.0 release notes
-          href: azure-stack-sql-resource-provider-11930.md   
-        - name: SQL resource provider 1.1.47.0 release notes
-          href: azure-stack-sql-resource-provider-11470.md   
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:
@@ -635,7 +671,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: /powershell/azure/azure-stack/overview
+    href: /powershell/azurestackhub/overview
   - name: Azure Stack Hub privileged endpoint
     href: ../reference/pep/    
   - name: Azure Stack Hub administrator REST APIs

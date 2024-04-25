@@ -1,15 +1,15 @@
 ---
 title: Plan to deploy Network Controller
-description: This topic covers how to plan to deploy Network Controller via Windows Admin Center on a set of virtual machines (VMs).
+description: This article covers how to plan to deploy Network Controller via Windows Admin Center on a set of virtual machines (VMs).
 author: AnirbanPaul
 ms.author: anpaul
 ms.topic: conceptual
-ms.date: 10/14/2021
+ms.date: 11/29/2023
 ---
 
 # Plan to deploy Network Controller
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 Planning to deploy Network Controller via Windows Admin Center requires a set of virtual machines (VMs) running the Azure Stack HCI or Windows Server operating system. Network Controller is a highly available and scalable server role that requires a minimum of three VMs to provide high availability on your network.
 
@@ -19,6 +19,7 @@ Planning to deploy Network Controller via Windows Admin Center requires a set of
 ## Network Controller requirements
 
 The following is required to deploy Network Controller:
+
 - A virtual hard disk (VHD) for the Azure Stack HCI operating system to create Network Controller VMs.
 - A domain name and credentials to join Network Controller VMs to a domain.
 - At least one virtual switch that you configure using the Cluster Creation wizard in Windows Admin Center.
@@ -50,9 +51,12 @@ The following is required to deploy Network Controller:
 
 You can deploy Network Controller cluster nodes on either the same subnet or different subnets. If you plan to deploy Network Controller cluster nodes on different subnets, you must provide the Network Controller REST DNS name during the deployment process.
 
+> [!NOTE]
+> If you've deployed your Network Controllers with static IP addresses for your REST API services, there's no need to enable dynamic DNS.
+
 ### Enable dynamic DNS updates for a zone
 
-To enable dynamic DNS updates for a zone, perform the following steps:
+To enable dynamic DNS updates for a zone, follow these steps:
 
 1. On the DNS server, open the **DNS Manager** console.
 1. In the left pane, select **Forward Lookup Zones**.
@@ -61,7 +65,7 @@ To enable dynamic DNS updates for a zone, perform the following steps:
 
 ### Restrict dynamic updates to Network Controller nodes
 
-To restrict dynamic updates of the Network Controller name record to only Network Controller nodes, perform the following steps:
+To restrict dynamic updates of the Network Controller name record to only Network Controller nodes, follow these steps:
 
 1. On the DNS server, open the **DNS Manager** console.
 1. In the left pane, select **Forward Lookup Zones**.

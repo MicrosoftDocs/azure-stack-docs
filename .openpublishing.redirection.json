@@ -1,5 +1,75 @@
 {
   "redirections": [
+    {
+      "source_path":"azure-stack/hci/manage/preview-channel.md",
+      "redirect_url":"/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/faqs-arc-enabled-vms.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vms-faq",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/deploy/deployment-checklist.md",
+      "redirect_url":"/azure-stack/hci/deploy/deployment-prerequisites",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/sdn-express-23h2.md",
+      "redirect_url":"/azure-stack/hci/deploy/sdn-express-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/concepts/other-security-features.md",
+      "redirect_url":"/azure-stack/hci/concepts/security-features",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/concepts/security-windows-defender-application-control.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-wdac",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/concepts/secure-baseline.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-secure-baseline",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/concepts/security-bitlocker.md",
+      "redirect_url":"/azure-stack/hci/manage/manage-bitlocker",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/create-virtual-networks.md",
+      "redirect_url":"/azure-stack/hci/manage/create-logical-networks",
+      "redirect_document_id": false
+    },  
+    {
+      "source_path":"azure-stack/hci/manage/azure-arc-vm-management-networking.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview",
+      "redirect_document_id": false
+    },  
+    {
+      "source_path":"azure-stack/hci/manage/manage-virtual-machines-in-azure-portal.md",
+      "redirect_url":"/azure-stack/hci/manage/create-arc-virtual-machines",
+      "redirect_document_id": false
+    },  
+    {
+      "source_path":"azure-stack/hci/manage/uninstall-arc-resource-bridge.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line.md",
+      "redirect_url":"/azure-stack/hci/manage/azure-arc-vm-management-overview/",
+      "redirect_document_id": false
+    }, 
+    {
+      "source_path":"azure-stack/hci/manage/deploy-arc-resource-bridge-using-wac.md",
+      "redirect_url":"/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
+      "redirect_document_id": false
+    }, 
     { 
       "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
       "redirect_url": "/azure/iot-hub/", 
@@ -966,11 +1036,294 @@
       "redirect_url": "/windows-server/failover-clustering/cluster-set",
       "redirect_document_id": false
     },
-        {
+    {
+      "source_path": "azure-stack/hci/deploy/deploy-manage-azure-stack-hci.md",
+      "redirect_url": "/system-center/vmm/deploy-manage-azure-stack-hci",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/legacy-collection-telemetry-extension.md",
+      "redirect_url": "/azure-stack/hci/overview",
+      "redirect_document_id": true
+    },
+    {    
+      "source_path": "azure-stack/hci/manage/extend-volumes.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-volumes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/delete-volumes.md",
+      "redirect_url": "/azure-stack/hci/manage/manage-volumes",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/hci/manage/azure-arc-vm-management-proxy.md",
       "redirect_url": "/azure-stack/hci/manage/azure-arc-vm-management-prerequisites",
       "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-managed-lustre/preview-support.md",
+      "redirect_url": "/azure/azure-managed-lustre/amlfs-overview",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-rhel-9.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-9",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-rhel-8.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-8",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-hpc-alma-86.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=alma-86",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-rhel-7.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=rhel-7",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-18.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-18",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-20.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-20",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-managed-lustre/install-ubuntu-22.md",
+      "redirect_url": "/azure/azure-managed-lustre/client-install?pivots=ubuntu-22",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/get-started.md",
+      "redirect_url": "/azure-stack/hci/manage/monitor-cluster",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/glossary-lifecycle-management.md",
+      "redirect_url": "/azure-stack/hci/update/whats-the-lifecycle-manager",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/migrate/migrate-hyperv-discover.md",
+      "redirect_url": "/azure-stack/hci/migrate/migrate-hyperv-replicate",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/migrate-cluster-same-hardware.md",
+      "redirect_url": "/azure-stack/hci/migrate/migrate-cluster-same-hardware",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/migrate-cluster-new-hardware.md",
+      "redirect_url": "/azure-stack/hci/migrate/migrate-cluster-new-hardware",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/concepts/compare-azure-stack-hub.md",
+      "redirect_url": "/azure-stack/hci/overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-quickstart.md",
+      "redirect_url": "/azure-stack/hci/deploy/create-cluster",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-azure-stack-hci-solution-23h2.md",
+      "redirect_url": "/azure-stack/hci/update/about-updates-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/index-23h2.yml",
+      "redirect_url": "/azure-stack/hci/index",
+      "redirect_document_id": false
+    },
+    {"source_path": "azure-stack/hci/whats-new-in-hci-20h2.md",
+      "redirect_url": "/azure-stack/hci/whats-new-in-hci-22h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/preview-release-notes.md",
+      "redirect_url": "/azure-stack/hci/release-information",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2301-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2303-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2303-1-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/whats-new-2303-2-preview.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2303.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2301.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2303-1.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/hci-known-issues-2303-2.md",
+      "redirect_url": "/azure-stack/hci/hci-known-issues-2306",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-active-directory.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-checklist.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-existing-file.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-install-os.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-introduction.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-new-file.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-non-native-vlan.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-powershell.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-prerequisites.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-set-up-first-server.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-validate.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/virtual-cluster-deployment.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/deploy/deployment-tool-troubleshoot.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/troubleshoot-environment-validation-issues.md",
+      "redirect_url": "/azure-stack/hci/manage/get-support-for-deployment-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-azure-stack-hci-solution.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-phases.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-troubleshooting.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/update-via-powershell.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager.md",
+      "redirect_url": "/azure-stack/hci/manage/whats-new-2306-preview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager-23h2.md",
+      "redirect_url": "/azure-stack/hci/update/about-updates-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/known-issues-23h2.md",
+      "redirect_url": "/azure-stack/hci/hci/known-issues-2310",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/partition-gpu.md",
+      "redirect_url": "/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/troubleshoot-sdn-deployment-23h2.md",
+      "redirect_url": "/azure-stack/hci/manage/troubleshoot-sdn-deployment",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/container-registry-get-resource-id.md",
+      "redirect_url": "/azure-stack/user/container-registry-troubleshoot#find-your-registry-resource-id-for-support",
+      "redirect_document_id": false
     }
   ]
-  
 }
