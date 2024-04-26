@@ -1,19 +1,19 @@
 ---
 title: Network Controller Security
-description: You can use this topic to learn how to configure security for all communication between Network Controller and other software and devices.
+description: Learn how to configure security for all communication between Network Controller and other software and devices.
 manager: grcusanz
 ms.topic: article
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 03/28/2024
+ms.date: 04/26/2024
 ---
 
 # Secure the Network Controller
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-In this topic, you learn how to configure security for all communication between [Network Controller](/azure-stack/hci/concepts/network-controller-overview) and other software and devices.
+This article describes how to configure security for all communication between [Network Controller](../concepts/network-controller-overview.md) and other software and devices.
 
 The communication paths that you can secure include Northbound communication on the management plane, cluster communication between Network Controller virtual machines \(VMs\) in a cluster, and Southbound communication on the data plane.
 
@@ -21,8 +21,7 @@ The communication paths that you can secure include Northbound communication on 
 
 2. **Network Controller Cluster Communication**. When you configure three or more VMs as Network Controller cluster nodes, these nodes communicate with each other. This communication might be related to synchronizing and replication of data across nodes, or specific communication between Network Controller services.
 
-3.  **Southbound Communication**. Network Controller communicates on the data plane with SDN infrastructure and other devices like software load balancers, gateways, and host machines. You can use Network Controller to configure and manage these southbound devices so that they maintain the goal state that you have configured for the network.
-
+3. **Southbound Communication**. Network Controller communicates on the data plane with SDN infrastructure and other devices like software load balancers, gateways, and host machines. You can use Network Controller to configure and manage these southbound devices so that they maintain the goal state that you have configured for the network.
 
 ## Northbound Communication
 
@@ -45,19 +44,17 @@ Network Controller supports the following three modes of authentication between 
 
 You can configure the Authentication mode for Northbound communication by using the Windows PowerShell command **[Install-NetworkController](/powershell/module/networkcontroller/install-networkcontroller)** with the _ClientAuthentication_ parameter.
 
-
 ### Authorization
 
 When you configure authorization for Network Controller Northbound communication, you allow Network Controller cluster nodes and management clients to verify that the device with which they're communicating is trusted and has permission to participate in the communication.
 
 Use the following authorization methods for each of the authentication modes supported by Network Controller.
 
-1.  **Kerberos**. When you're using the Kerberos authentication method, you define the users and computers authorized to communicate with Network Controller by creating a security group in Active Directory, and then adding the authorized users and computers to the group. You can configure Network Controller to use the security group for authorization by using the _ClientSecurityGroup_ parameter of the **[Install-NetworkController](/powershell/module/networkcontroller/install-networkcontroller)** Windows PowerShell command. After installing the Network Controller, you can change the security group by using the **[Set-NetworkController](/powershell/module/networkcontroller/Set-NetworkController)** command with the parameter _-ClientSecurityGroup_. If using SCVMM, you must provide the security group as a parameter during deployment.
+1. **Kerberos**. When you're using the Kerberos authentication method, you define the users and computers authorized to communicate with Network Controller by creating a security group in Active Directory, and then adding the authorized users and computers to the group. You can configure Network Controller to use the security group for authorization by using the _ClientSecurityGroup_ parameter of the **[Install-NetworkController](/powershell/module/networkcontroller/install-networkcontroller)** Windows PowerShell command. After installing the Network Controller, you can change the security group by using the **[Set-NetworkController](/powershell/module/networkcontroller/Set-NetworkController)** command with the parameter _-ClientSecurityGroup_. If using SCVMM, you must provide the security group as a parameter during deployment.
 
-2.  **X509**. When you're using the X509 authentication method, Network Controller only accepts requests from management clients whose certificate thumbprints are known to Network Controller. You can configure these thumbprints by using the _ClientCertificateThumbprint_ parameter of the **[Install-NetworkController](/powershell/module/networkcontroller/install-networkcontroller)** Windows PowerShell command. You can add other client thumbprints at any time by using the **[Set-NetworkController](/powershell/module/networkcontroller/Set-NetworkController)** command.
+2. **X509**. When you're using the X509 authentication method, Network Controller only accepts requests from management clients whose certificate thumbprints are known to Network Controller. You can configure these thumbprints by using the _ClientCertificateThumbprint_ parameter of the **[Install-NetworkController](/powershell/module/networkcontroller/install-networkcontroller)** Windows PowerShell command. You can add other client thumbprints at any time by using the **[Set-NetworkController](/powershell/module/networkcontroller/Set-NetworkController)** command.
 
-3.  **None**. When you choose this mode, there's no authentication performed between nodes and management clients. Use None for testing purposes in a test environment and, therefore, not recommended for use in a production environment.
-
+3. **None**. When you choose this mode, there's no authentication performed between nodes and management clients. Use None for testing purposes in a test environment and, therefore, not recommended for use in a production environment.
 
 ### Encryption
 
@@ -70,7 +67,6 @@ Northbound communication uses Secure Sockets Layer \(SSL\) to create an encrypte
 - If Network Controller nodes are on different subnets, the subject name of their certificates must be the same as the value used for the _RestName_ parameter in the **Install-NetworkController** Windows PowerShell command.
 
 - All of the management clients must trust the SSL certificate.
-
 
 ### SSL Certificate Enrollment and Configuration
 
@@ -130,13 +126,13 @@ encryption depending on the type of device and protocol used by Network Controll
 
 The following table provides information about Network Controller interaction with different southbound devices.
 
-| Southbound device/service | Protocol              | Authentication used    |
-|---------------------------|-----------------------|------------------------|
-| Software Load Balancer    | WCF (MUX), TCP (Host) | Certificates           |
-| Firewall                  | OVSDB                 | Certificates           |
-| Gateway                   | WinRM                 | Kerberos, Certificates |
-| Virtual Networking        | OVSDB, WCF            | Certificates           |
-| User defined routing      | OVSDB                 | Certificates           |
+| Southbound device/service | Protocol | Authentication used |
+|--|--|--|
+| Software Load Balancer | WCF (MUX), TCP (Host) | Certificates |
+| Firewall | OVSDB | Certificates |
+| Gateway | WinRM | Kerberos, Certificates |
+| Virtual Networking | OVSDB, WCF | Certificates |
+| User defined routing | OVSDB | Certificates |
 
 For each of these protocols, the communication mechanism is described in the following section.
 
@@ -160,7 +156,7 @@ Controller DNS name stored on the peer device.
 
 2. **WinRM**. If Kerberos is being used, the WinRM client account must be present in a predefined group in Active Directory or in the Local Administrators group on the server. If certificates are being used, the client presents a certificate to the server that the server authorizes using the subject name/issuer, and the server uses a mapped user account to perform authentication.
 
-3.  **OVSDB**. Authorization is based on the subject name of the peer entity. Network Controller stores the peer device DNS name and uses it for authorization. This DNS name must match the subject name of the device in the certificate.
+3. **OVSDB**. Authorization is based on the subject name of the peer entity. Network Controller stores the peer device DNS name and uses it for authorization. This DNS name must match the subject name of the device in the certificate.
 
 ### Encryption
 
