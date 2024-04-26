@@ -171,7 +171,7 @@ Cluster-Aware Updating (CAU) can coordinate the complete cluster updating operat
 - **Remote updating mode** For this mode, a remote management computer (usually a Windows 10 PC) that has network connectivity to the failover cluster but is not a member of the failover cluster is configured with the Failover Clustering Tools. From the remote management computer, called the Update Coordinator, the administrator triggers an on-demand updating run by using a default or custom updating run profile. Remote updating mode is useful for monitoring real-time progress during the updating run and for clusters that are running on Server Core installations.  
 
    > [!NOTE]
-   > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. Simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. To see installation progress, click the Back button to view status on the "Manage optional features" page. The installed feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/download/details.aspx?id=45520).
+   > Starting with Windows 10 October 2018 Update, RSAT is included as a set of "Features on Demand" right from Windows 10. For versions older than Windows 10 22H2, simply go to **Settings > Apps > Apps & features > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Install**. For Windows 10 22H2 and Windows 11, go to **Settings > System > Optional features > Add a feature > RSAT: Failover Clustering Tools**, and select **Add**. To see operation progress, click the Back button to view status on the "Manage optional features" page. The added feature will persist across Windows 10 version upgrades. To install RSAT for Windows 10 prior to the October 2018 Update, [download an RSAT package](https://www.microsoft.com/download/details.aspx?id=45520).
 
 ### Add CAU cluster role to the cluster
 
@@ -315,8 +315,7 @@ Once the feature updates are installed, you'll need to update the cluster functi
    Run the following cmdlet on any server in the cluster:
 
    ```PowerShell
-   Update-ClusterFunctionalLevel='true';
-   ```
+   Update-ClusterFunctionalLevel
 
    You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
 
