@@ -252,9 +252,9 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to remove 
 
     :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of warning when deleting VM." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
 
-1. You can now go to the resource group where this VM was deployed. You can see that the VM is removed from the list of resources in the resource group. You may need to select the option to **Show hidden types** to view the resources associated with this VM that were not deleted. 
+1. You can now go to the resource group where this VM was deployed. You can see that the VM is removed from the list of resources in the resource group. You may need to select the option to **Show hidden types** to view the resources associated with this VM that were not deleted.
 
-    :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of warning when deleting VM." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
+    :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
 
   Locate the associated resources such as the network interfaces and data disks, and delete them.
 
