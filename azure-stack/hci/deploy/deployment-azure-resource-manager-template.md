@@ -230,9 +230,6 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Refresh and watch the deployment progress from the first server (also known as the seed server and is the first server where you deployed the cluster). Deployment takes between 2.5 and 3 hours. Several steps take 40-50 minutes or more.
 
-    > [!NOTE]
-    > If you check back on the template deployment, you will see that it eventually times out. This is a known issue, so watching **Deployments** is the best way to monitor the progress of deployment.
-
 1. The step in deployment that takes the longest is **Deploy Moc and ARB Stack**. This step takes 40-45 minutes.
 
     Once complete, the task at the top updates with status and end time.
