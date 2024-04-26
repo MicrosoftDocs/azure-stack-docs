@@ -99,13 +99,8 @@ This object ID for the Azure Stack HCI RP is unique per Azure tenant.
 
     You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
 
-## Step 2: Assign resource permissions
 
-You need to create and assign the needed resource permissions before you use the deployment template. The following permissions are already assigned:
-    - Role assignments for the Arc machines.
-    - Role assignments for the ARB service principal at subscription level.
-
-You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
+<!--You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
 
 #### Add the Key Vault Secrets User
 
@@ -151,9 +146,11 @@ Optionally verify the role assignments you created.
 
 1. Go to **Key Vault Secrets User** for the appropriate resource group for the first server in your environment.
 
-1. Go to **Key Vault Secrets User** for the appropriate resource group for the second server in your environment.
+1. Go to **Key Vault Secrets User** for the appropriate resource group for the second server in your environment.-->
 
-## Step 3: Deploy using ARM template
+## Step 2: Deploy using ARM template
+
+ARM template creates and assigns all the resource permissions required for deployment. 
 
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
@@ -241,6 +238,18 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
     Once complete, the task at the top updates with status and end time.
 
 You can also check out this community sourced template to [Deploy an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
+
+## Troubleshooting deployment issues
+
+If the deployment fails, you should see an error message on the deployments page. 
+
+1. On the **Deployment details**, select the **error details**.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-1.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-1.png":::
+
+2. Copy the error message from the **Errors** blade. You can provide this error message to Microsoft support for further assistance.
+
+    :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the status of environment checker validation." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
 
 ## Next steps
 
