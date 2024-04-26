@@ -25,12 +25,12 @@ MetalLB has two components:
 - Controller: responsible for allocating IP for each service of `type=loadbalancer`.
 - Speaker: responsible for advertising the IP using `ARP` or `BGP` protocol. To satisfy the high availability (HA) requirement, the speaker deployment is a daemonset.
 
-  :::image type="content" source="media/load-balancer-overview/metallb-architecture.png" alt-text="MetalLB Architecture" lightbox="media/load-balancer-overview/metallb-architecture.png":::
+> [!NOTE]
+>
+> - Speaker pods use the host network; i.e., their IP is the node IP, so that they can directly send broadcast messages via the host network interface.
+> - The controller pod is a normal pod that lives in any node in the cluster.
 
-  > [!NOTE]
-  >
-  > - Speaker pods use the host network; i.e., their IP is the node IP, so that they can directly send broadcast messages via the host network interface.
-  > - The controller pod is a normal pod that lives in any node in the cluster.
+:::image type="content" source="media/load-balancer-overview/metallb-architecture.png" alt-text="MetalLB Architecture" lightbox="media/load-balancer-overview/metallb-architecture.png":::
 
 - In ARP mode, one of the speaker pods is selected as the leader. It then advertises the IP using an ARP broadcast message, binding the IP with the MAC address of the node it lives in. Thus, all traffic first hits one node, and then kube-proxy spreads it evenly to all the backend pods of the service.
 - In BGP mode, all cluster nodes establish connections with all BGP peers created in the `BGP Peers` tab. Typically a BGP peer is a TOR switch. In order to broadcast the BGP routing information, the BGP peers must be configured so that they recognize the IP and ASN of cluster nodes. When you use BGP with ECMP (Equal-Cost MultiPath), traffic hits evenly across all nodes, and therefore achieves true load balancing.
