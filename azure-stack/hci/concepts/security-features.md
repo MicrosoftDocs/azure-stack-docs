@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/19/2024
+ms.date: 04/26/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -50,7 +50,7 @@ A base policy consists of the following sections:
 
 - **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID, and more.
 - **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a small set of the option rules tied to their base policy.
-- **Allow/Deny Rules**: These rules define the code trust boundaries. The rules can be based on Publishers, Signers, File Hash and more.
+- **Allow or deny Rules**: These rules define the code trust boundaries. The rules can be based on Publishers, Signers, File Hash and more.
 
 #### Option rules
 
