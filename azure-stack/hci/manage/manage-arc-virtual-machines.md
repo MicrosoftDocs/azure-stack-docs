@@ -244,11 +244,19 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to remove 
 
 1. In the right pane, from the list of virtual machines, select a VM that you wish to remove from your system.
 
-1. On the **Overview** page for the VM, from the top command bar in the right pane, select **Delete**, then select **Yes**.
+1. On the **Overview** page for the VM, from the top command bar in the right pane, select **Delete**, then select **Yes**. 
 
-1. Verify the VM is removed.
+    You are now prompted to confirm the deletion. Select **Yes**. Verify the VM is removed.
 
-   :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine.png" alt-text="Screenshot of select + remove VM." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine.png":::
+    Note that when a VM is deleted, all the resources associated with the VM are not deleted. For example, the data disks or the network interfaces associated with the VM are not deleted. You need to locate and delete these resources separately.
+
+    :::image type="content" source="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png" alt-text="Screenshot of warning when deleting VM." lightbox="./media/manage-arc-virtual-machines/delete-virtual-machine-warning.png":::
+
+1. You can now go to the resource group where this VM was deployed. You can see that the VM is removed from the list of resources in the resource group. You may need to select the option to **Show hidden types** to view the resources associated with this VM that were not deleted.
+
+    :::image type="content" source="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png" alt-text="Screenshot of hidden types resources associated with a virtual machine." lightbox="./media/manage-arc-virtual-machines/locate-network-interfaces-data-disks-deleted-virtual-machine.png":::
+
+  Locate the associated resources such as the network interfaces and data disks, and delete them.
 
 ## Change cores and memory
 
