@@ -147,7 +147,7 @@ There are [over 10,000 clusters](https://techcommunity.microsoft.com/t5/storage-
 
 Visit [Microsoft.com/HCI](https://www.microsoft.com/hci) to read their stories.
 
-:::image type="content" source="media/storage-spaces-direct-overview/customer-stories.png" alt-text="Grid of customer logos." link="https://www.microsoft.com/hci." lightbox="media/storage-spaces-direct-overview/customer-stories.png":::
+:::image type="content" source="media/storage-spaces-direct-overview/customer-stories.png" alt-text="Grid of customer logos." link="https://azure.microsoft.com/products/azure-stack/hci/" lightbox="media/storage-spaces-direct-overview/customer-stories.png":::
 
 ## Additional references
 

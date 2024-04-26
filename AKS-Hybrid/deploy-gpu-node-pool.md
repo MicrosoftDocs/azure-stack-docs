@@ -119,7 +119,7 @@ az aksarc create -n <aks cluster name> -g <resource group name> --custom-locatio
 The following example adds a node pool with 2 GPU-enabled (NVDIA A2) nodes with a **Standard\_NC4\_A2** VM SKU:
 
 ```azurecli
-az aksarc nodepool add --cluster-name <aks cluster name> -n <node pool name> -g <resource group name> --node-count 2 --node-vm-size Standard_NC4_A2 --os-sku Linux
+az aksarc nodepool add --cluster-name <aks cluster name> -n <node pool name> -g <resource group name> --node-count 2 --node-vm-size Standard_NC4_A2 --os-type Linux
 ```
 
 ## Confirm you can schedule GPUs

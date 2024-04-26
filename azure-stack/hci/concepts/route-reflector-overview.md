@@ -6,22 +6,24 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 04/24/2024
 ---
 
 # What is Route Reflector?
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
-Border Gateway Protocol (BGP) Route Reflector is included with [Remote Access Service (RAS) Gateway](gateway-overview.md) and provides an alternative to BGP full mesh topology that is required for route synchronization between routers. A Route Reflector in a Software Defined Networking deployment is a logical entity that sits on the control plane between the RAS Gateways and the [Network Controller](network-controller-overview.md). It does not, however, participate in data plane routing.
+This article provides an overview of Border Gateway Protocol (BGP) Route Reflector in Azure Stack HCI and Windows Server.
+
+BGP Route Reflector is included with [Remote Access Service (RAS) Gateway](gateway-overview.md) and provides an alternative to BGP full mesh topology that is required for route synchronization between routers. A Route Reflector in a Software Defined Networking deployment is a logical entity that sits on the control plane between the RAS Gateways and the [Network Controller](network-controller-overview.md). It doesn't, however, participate in data plane routing.
 
 ## How Route Reflector works
 
-With full mesh synchronization, all BGP routers must connect with all other routers in the routing topology. When you use Route Reflector, however, the Route Reflector is the only router that connects with all of the other routers, called BGP Route Reflector clients, thereby simplifying route synchronization and reducing network traffic. The Route Reflector learns all routes, calculates best routes, and redistributes the best routes to its BGP clients.
+With full mesh synchronization, all BGP routers must connect with all other routers in the routing topology. However, when you use Route Reflector, it's the only router that connects with all other routers, called BGP Route Reflector clients, making route synchronization simpler and reducing network traffic. The Route Reflector learns all routes, calculates best routes, and redistributes the best routes to its BGP clients.
 
-You can configure an individual tenant's remote access tunnels to terminate on more than one RAS Gateway virtual machine (VM). This provides increased flexibility for Cloud Service Providers (CSPs) in situations where one RAS Gateway VM cannot meet all of the bandwidth requirements of the tenant connections.
+You can configure an individual tenant's remote access tunnels to terminate on more than one RAS Gateway virtual machine (VM). This provides increased flexibility for Cloud Service Providers (CSPs) in situations where one RAS Gateway VM can't meet all of the bandwidth requirements of the tenant connections.
 
-This capability, however, introduces the additional complexity of route management and effective synchronization of routes between the tenant remote sites and their virtual resources in the cloud datacenter. Providing tenants with connections to multiple RAS Gateways also introduces additional complexity in configuration at the enterprise end, where each tenant site will have separate routing neighbors.
+This capability, however, introduces the added complexity of route management and effective synchronization of routes between the tenant remote sites and their virtual resources in the cloud datacenter. Providing tenants with connections to multiple RAS Gateways also introduces increased complexity in configuration at the enterprise end, where each tenant site will have separate routing neighbors.
 
 A BGP Route Reflector in the control plane addresses these problems and makes the CSP internal fabric deployment transparent to the enterprise tenants.
 
@@ -31,7 +33,7 @@ A BGP Route Reflector in the control plane addresses these problems and makes th
 
 - A tenant Route Reflector acts as the Route Reflector for all of the RAS Gateway VMs that are associated with the tenant. Tenant gateways other than the RAS Gateway Route Reflector are the Route Reflector Clients. The Route Reflector performs route synchronization between all Route Reflector Clients so that the actual data path routing can occur.
 
-- A Route Reflector does not provide services for the RAS Gateway upon which it is configured.
+- A Route Reflector doesn't provide services for the RAS Gateway upon which it's configured.
 
 - A Route Reflector updates Network Controller with the enterprise routes that correspond to the tenant's enterprise sites. This allows Network Controller to configure the required Hyper-V Network Virtualization policies on the tenant virtual network for End-to-End Data Path access.
 

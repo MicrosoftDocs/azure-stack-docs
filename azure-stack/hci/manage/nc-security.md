@@ -6,7 +6,7 @@ ms.topic: article
 ms.assetid: bc625de9-ee31-40a4-9ad2-7448bfbfb6e6
 ms.author: anpaul
 author: AnirbanPaul
-ms.date: 04/03/2024
+ms.date: 04/26/2024
 ---
 
 # Secure the Network Controller

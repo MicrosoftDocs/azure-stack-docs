@@ -60,7 +60,7 @@ For detailed pricing information, see the [AKS pricing details](https://azure.mi
 
 If you enable hyper-threading on your physical computer, AKS also enables hyper-threading on the worker nodes. If you enable hyper-threading, it effectively halves the number of virtual cores needed in each worker node.
 
-![Pricing for AKS is affected by hyper-threading.](media/concepts/hyper-thread-hyperv-manager.png)
+:::image type="content" source="media/pricing/hyper-thread-hyperv-manager.png" alt-text="Screenshot showing how pricing for AKS is affected by hyper-threading." lightbox="media/pricing/hyper-thread-hyperv-manager.png":::
 
 ## Next steps
 
