@@ -15,19 +15,19 @@ ms.date: 04/26/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare an CentOS Linux image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
+This article describes how to prepare a CentOS Linux image to create a virtual machine on your Azure Stack HCI cluster. You use Azure CLI for the VM image creation.
 
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed.
 
-- You've access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
+- You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- You've [downloaded the latest supported Centos ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Stack HCI cluster. Use the *CentOS-7-x86_64-Everything-2207-02.iso* file for download. You will prepare this image to create a VM image.
+- You have [downloaded the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Stack HCI cluster. Use the *CentOS-7-x86_64-Everything-2207-02.iso* file for download. You'll prepare this image to create a VM image.
 
 ## Workflow
 
-Follow these steps to prepare an CentOS image and create a VM image from that image:
+Follow these steps to prepare a CentOS image and create a VM image from that image:
 
 1. [Create a CentOS VM](#step-1-create-a-centos-vm).
 1. [Configure the VM](#step-2-configure-vm).
@@ -191,7 +191,7 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
     az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' 
     ```
 
-1. Validate that the image is created. Here is example code and output for validation:
+1. Validate that the image is created. Here's example code and output for validation:
 
     :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/validation-1.png" alt-text="Screenshot of example output for validation 1." lightbox="../manage/media/virtual-machine-image-centos-sysprep/validation-1.png":::
 
@@ -205,7 +205,7 @@ Export a VHD or copy the VHD from your VM. Run the following command to obtain t
 Get-VMHardDiskDrive -VMName "centos7-3"
 ```
 
-Where in this example the path would be: *<Get-VMHardDiskDrive -VMName "centos7-3">.Path*
+Where in this example the path would be: `<Get-VMHardDiskDrive -VMName "centos7-3">.Path`
 
 
 ### Step 6: Deploy the VM
@@ -232,7 +232,7 @@ Where in this example the path would be: *<Get-VMHardDiskDrive -VMName "centos7-
 
 ### Step 7: Validate deployment
 
-Validate your VM deployment from a ssh console (Example: `ssh -l admin 192.168.200.23`), and then run the following command from the VM to get status output:
+Validate your VM deployment from an `ssh` console (Example: `ssh -l admin 192.168.200.23`), and then run the following command from the VM to get status output:
 
 ```azurecli
 sudo systemctl status mocguestagent
