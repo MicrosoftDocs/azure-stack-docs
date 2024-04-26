@@ -41,13 +41,13 @@ The following table explains the rules that aren't compliant and the rationale o
 
 | Rule name           | Expected    | Actual   | Logic    | Comments    |
 |---------------------|---------------|---------|----------|------------|
-| Interactive logon: Message text for users attempting to log on| Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
-| Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
-| Minimum password length |Expected: 14 | Actual: 0 | Operator: GREATEROREQUAL|	We expect you to define this value with no drift control in place that aligns with your organization's policy.|
-| Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: EQUALS|This control doesn't apply to Azure Stack HCI.|
-| Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: EQUALS|This control is a part of the Windows Defender protections, not enabled by default. You can evaulte whether you want to enable.|
-| Hardened UNC Paths - NETLOGON | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: EQUALS | Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
-|Hardened UNC Paths - SYSVOL | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: EQUALS |Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
+| Interactive logon: Message text for users attempting to log on| Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
+| Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
+| Minimum password length |Expected: 14 | Actual: 0 | Operator: <br> GREATEROREQUAL| We expect you to define this value with no drift control in place that aligns with your organization's policy.|
+| Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: <br> EQUALS|This control doesn't apply to Azure Stack HCI.|
+| Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: <br> EQUALS | This control is a part of the Windows Defender protections, not enabled by default. <br> You can evaulte whether you want to enable.|
+| Hardened UNC Paths - NETLOGON | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS | Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
+|Hardened UNC Paths - SYSVOL | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS |Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
 
 ## Manage security defaults with PowerShell
 
