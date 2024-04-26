@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/24/2024
+ms.date: 04/26/2024
 ---
 
 # Prepare CentOS Linux image for Azure Stack HCI virtual machines
@@ -29,10 +29,10 @@ Before you begin, make sure that the following prerequisites are completed.
 
 Follow these steps to prepare an CentOS image and create a VM image from that image:
 
-1. [Create an CentOS VM](#step-1-create-an-centos-vm).
+1. [Create a CentOS VM](#step-1-create-a-centos-vm).
 1. [Configure the VM](#step-2-configure-vm).
 1. [Clean up the residual configuration](#step-3-clean-up-residual-configuration).
-1. [Create an CentOS VM image](#step-4-create-vm-image).
+1. [Create a CentOS VM image](#step-4-create-vm-image).
 1. [Create the VHD](#step-5-create-the-vhd).
 1. [Deploy the VM](#step-6-deploy-the-vm).
 1. [Validate deployment](#step-7-validate-deployment).
@@ -42,7 +42,7 @@ The following sections provide detailed instructions for each step in the workfl
 ## Create VM image from CentOS image
 
 > [!IMPORTANT]
-> We recommend that you prepare an CentOS image if you intend to enable guest management on the VMs.
+> We recommend that you prepare a CentOS image if you intend to enable guest management on the VMs.
 
 Follow these steps on your Azure Stack HCI cluster to create a VM image using the Azure CLI.
 
@@ -50,8 +50,8 @@ Follow these steps on your Azure Stack HCI cluster to create a VM image using th
 
 Follow these steps to use the downloaded CentOS image to provision a VM:
 
-1. Use the downloaded image to create a VM with the following specifications: 
-    1. Provide a friendly name for your VM. 
+1. Use the downloaded image to create a VM with the following specifications:
+    1. Provide a friendly name for your VM.
     
         :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-name.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-name.png":::
 
@@ -59,7 +59,7 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 
         :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-generation.png":::
     
-    1. Select **Install operating system from a bootable image** option. Point to ISO that you downloaded earlier.
+    1. Select **Install operating system from a bootable image** option. Point to the ISO that you downloaded earlier.
     
         :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-iso-option.png":::
 
@@ -142,7 +142,6 @@ Delete machine-specific files and data from your VM so that you can create a cle
     ```
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
-    
 
 ### Step 4: Create VM image
 
