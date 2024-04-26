@@ -33,7 +33,7 @@ View the SMB signing status under the **Data protections** > **Network protectio
 
 ## View security baseline compliance in the Azure portal
 
-After you've enrolled your Azure Stack HCI system with Microsoft Defender for Cloud or assigned the built-in policy: Windows machines should meet requirements of the Azure compute security baseline, a report is generated for your servers.
+After you enroll your Azure Stack HCI system with Microsoft Defender for Cloud or assigned the built-in policy, a report is generated for your servers. At this point, Windows machines should meet requirements of the Azure compute security baseline. For the full list of rules your Azure Stack HCI server is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
 For Azure Stack HCI server, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of the 288. This score indicates that 281 out of 288 rules are compliant.
 
