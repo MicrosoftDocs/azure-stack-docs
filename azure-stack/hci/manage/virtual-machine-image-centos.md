@@ -65,7 +65,7 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 
     1. Select **Configure networking**, then from the dropdown list select the virtual switch that the VM will use for connection.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png" alt-text="Screenshot of the Configure networking page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png":::
     
     1. Accept the defaults on the **Connect Virtual Hard Disk** page.
 
@@ -97,31 +97,31 @@ Once the VM is running, follow these steps:
 
 1. Select the language and then select **Continue**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-language.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-language.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-language.png" alt-text="Screenshot of the select language during CentOS installation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-language.png":::
 
 1. Select the installation destination and then select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-installation-destination.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-installation-destination.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-installation-destination.png" alt-text="Screenshot of the installation destination during CentOS installation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-installation-destination.png":::
 
 1. Select the **Network & host name**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-network-and-hostname.png" alt-text="Screenshot of CentOS management page 1." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-network-and-hostname.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-network-and-hostname.png" alt-text="Screenshot of the select network and hostname during CentOS installation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-network-and-hostname.png":::
 
     Enable the ON switch for the network interface and then select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png" alt-text="Screenshot of the enable network interface during CentOS installation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png":::
 
 1. Select **User setting** and set the root password. Enter a password, confirm the password, and select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-set-root-password.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-set-root-password.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-set-root-password.png" alt-text="Screenshot of the set root password during CentOS installation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-set-root-password.png":::
 
 1. Select **Finish configuration**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-finish-configuration.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-finish-configuration.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-finish-configuration.png" alt-text="Screenshot of the select finish configuration during CentOS installation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-finish-configuration.png":::
 
 1. Select **Begin Installation**. Once the installation is complete, **Reboot** the VM.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png" alt-text="Screenshot of the begin installation during CentOS installation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png":::
 
 ### Step 3: Configure VM
 
