@@ -92,7 +92,7 @@ Before completing the steps below, make sure the **AksHci** PowerShell module is
   
 1. Create the secret object that stores the Active Directory user credential. Complete the configuration data below and save the settings into a file named secret.yaml.
 
-   ```yml
+   ```yaml
    apiVersion: v1
    kind: Secret
    metadata:
@@ -145,7 +145,7 @@ Create the deployment YAML file using the following example settings. The requir
 
 1. Add the service account:
 
-   ```yml
+   ```yaml
    serviceAccountName: default
       securityContext: 
         windowsOptions: 
@@ -154,7 +154,7 @@ Create the deployment YAML file using the following example settings. The requir
 
 1. Add the credential spec object:
 
-   ```yml
+   ```yaml
    securityContext: 
         windowsOptions: 
           gmsaCredentialSpecName: <cred spec name>
@@ -162,7 +162,7 @@ Create the deployment YAML file using the following example settings. The requir
 
 1. Mount the secret for the deployment:
 
-   ```yml
+   ```yaml
    volumeMounts:
         - name: <volume name>
           mountPath: <vmount path>
@@ -178,7 +178,7 @@ Create the deployment YAML file using the following example settings. The requir
   
 1. Add the IP address of the domain controller and domain name under dnsConfig:
 
-   ```yml
+   ```yaml
    dnsConfig: 
         nameservers:
           - <IP address for domain controller>
@@ -247,5 +247,5 @@ Uninstall-AksHciGMSAWebhook -Name <cluster name>
 
 ## Next steps
 
-- [Use persistent volume on a Kubernetes cluster](persistent-volume.md).
+- [Use persistent volume on a Kubernetes cluster](persistent-volume.md)
 - [Monitor AKS on Azure Stack HCI and Windows Server clusters](monitor-logging.md)

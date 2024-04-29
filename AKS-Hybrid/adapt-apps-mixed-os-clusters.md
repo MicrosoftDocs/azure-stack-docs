@@ -22,7 +22,7 @@ This article assumes a basic understanding of Kubernetes concepts. For more info
 
 ## Node selectors
 
-A *Node Selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector`: Windows or Linux, as shown in the following examples:
+A *node selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` value of Windows or Linux, as shown in the following examples:
 
 ```yml
 kubernetes.io/os = Windows
@@ -112,5 +112,5 @@ For more information about taints and tolerations, see [Taints and Tolerations](
 
 In this how-to guide, you learned how to add node selectors or taints and tolerations to your Kubernetes clusters using kubectl. Next, you can:
 
-- [Deploy a Linux applications on a Kubernetes cluster](deploy-linux-application.md)
+- [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](deploy-windows-application.md)
