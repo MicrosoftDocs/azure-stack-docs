@@ -8,7 +8,7 @@ ms.author: sethm
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
 
-# Intent: As a developer, I want to deploy a container image from a private container registry to AKS hybrid.
+# Intent: As a developer, I want to deploy a container image from a private container registry to AKS enabled by Arc.
 # Keyword: private container registry Kubernetes on-premises
 ---
 

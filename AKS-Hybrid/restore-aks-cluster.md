@@ -7,7 +7,7 @@ ms.date: 01/10/2023
 ms.author: rbaziwane 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: rbaziwane
-# Intent: As an IT Pro, I need to learn how to restore AKS hybrid following a disaster.
+# Intent: As an IT Pro, I need to learn how to restore AKS Arc following a disaster.
 # Keyword: Disaster Recovery
 ---
 

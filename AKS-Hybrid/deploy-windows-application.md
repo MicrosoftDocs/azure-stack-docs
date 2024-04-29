@@ -19,7 +19,7 @@ ms.reviewer: abha
 
 This tutorial describes how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS enabled by Arc, and then test and scale your application. You also learn how to join a Windows node to an Active Directory domain.
 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Azure Arc](kubernetes-concepts.md).
 
 ## Before you begin
 

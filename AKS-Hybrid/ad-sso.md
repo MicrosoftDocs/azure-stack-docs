@@ -19,7 +19,7 @@ ms.reviewer: sulahiri
 
 You can create a secure connection to your Kubernetes API server in AKS enabled by Arc using Active Directory (AD) single sign-on (SSO) credentials.
 
-## Overview of AD in AKS hybrid
+## Overview of AD in AKS enabled by Arc
 
 Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The kubeconfig file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
