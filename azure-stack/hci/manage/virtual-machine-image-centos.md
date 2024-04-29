@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/26/2024
+ms.date: 04/29/2024
 ---
 
 # Prepare CentOS Linux image for Azure Stack HCI virtual machines
@@ -23,7 +23,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- You have [downloaded the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Stack HCI cluster. Use the *CentOS-7-x86_64-Everything-2207-02.iso* file for download. You'll prepare this image to create a VM image.
+- You have [downloaded the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Stack HCI cluster. Here, we downloaded the *CentOS-7-x86_64-Everything-2207-02.iso* file. You'll use this image to create a VM image.
 
 ## Workflow
 
@@ -53,84 +53,93 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 1. Use the downloaded image to create a VM with the following specifications:
     1. Provide a friendly name for your VM.
     
-        :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-name.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-name.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-name.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-name.png":::
 
     1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-generation.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-generation.png":::
+    
+    1. Select **Assign Memory**, then enter `4096` for **Startup memory**:
+    
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png":::
+
+    1. Select **Configure networking**, then from the dropdown list select the virtual switch that the VM will use for connection.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png":::
     
     1. Select **Install operating system from a bootable image** option. Point to the ISO that you downloaded earlier.
     
-        :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-iso-option.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-iso-option.png":::
 
     See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
-1. Select **Assign Memory**, then enter `4096` for **Startup memory**:
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-assign-memory.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-assign-memory.png":::
-
-1. Disable secure boot on the VM.
+1. Use the UEFI Certificate on the VM.
     1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**.
-    1. In the left pane, select the **Security** tab. Then under **Secure Boot**, uncheck **Enable Secure Boot**.
-    1. Apply the changes. On the next boot, the VM boots without the secure mode.
+    1. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the Template dropdown list, select **Microsoft UEFI Certificate Authority**.
+    1. Select OK to save the changes.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-secure-boot-disabled.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-secure-boot-disabled.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png":::
 
-Here are several example screenshots of CentOS installation pages:
+1. Select the VM from the Hyper-V Manager and then start the VM. The VM will boot from the ISO image that you provided.
 
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-1.png" alt-text="Screenshot of CentOS management page 1." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-1.png":::
+### Step 2: Connect to VM
 
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-2.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-2.png":::
+Once the VM is running, follow these steps:
 
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/centos-3.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-3.png":::
+1. Select the VM from the Hyper-V Manager, right-click to invoke the context menu and then select **Connect**.
+
+1. Select the Install CentOS 7 option from the boot menu.
+
+1. Select the language and then select **Continue**.
+
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png":::
+
+1. Select the installation destination and then select **Done**.
+1. Select the network & host name.
+
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-1.png" alt-text="Screenshot of CentOS management page 1." lightbox="../manage/media/virtual-machine-image-centos/centos-1.png"::: 
+
+    Enable the ON switch for the network interface and then select **Done**.
+
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-2.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-centos/centos-2.png":::
+1. Select User setting and set the root password. Enter a password, confirm the password, and select **Done**.
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-3.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-3.png":::
+
+1. Select **Finish configuration**.
+1. Select **Begin Installation**. Once the installation is complete, **Reboot** the VM.
+
 
 ### Step 2: Configure VM
 
 Follow these steps on your Azure Stack HCI cluster to configure the VM that you provisioned earlier:
 
-1. Sign into the VM. See steps in [Connect to a Linux VM](/azure/databox-online/azure-stack-edge-gpu-deploy-virtual-machine-portal#connect-to-a-linux-vm).
+1. Connect and then sign into the VM using the root password that you created during the CentOS installation.
 1. To download all the latest package lists from the repositories, run the following command:
 
     ```azurecli
     sudo apt update
     ```
 
-1. Install [Azure tailored kernel](https://ubuntu.com/blog/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel). This is a required step for your VM to get an IP for the network interface.
 
-    ```azurecli
-    sudo apt install linux-azure -y
-    ```
 
-1. Install SSH server. Run the following command:
-
-    ```azurecli
-    sudo apt install openssh-server openssh-client -y
-    ```
-
-1. Configure passwordless sudo. Add the following at the end of `/etc/sudoers` file using `visudo`:
-
-    ```azurecli
-    ALL ALL=(ALL) NOPASSWD:ALL
-    ```
 
 ### Step 3: Clean up residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
-1. Clean `cloud-init` default configurations.
+1. <!--CHECK-->Clean `cloud-init` default configurations.
 
     ```bash
-    sudo rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg /etc/cloud/cloud.cfg.d/99-installer.cfg /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg
-    sudo rm -f /etc/cloud/ds-identify.cfg
-    sudo rm -f /etc/netplan/*.yaml
+    sudo yum clean all
+    sudo cloud-init clean
     ```
 
-1. Clean up logs and cache.
+1. <!--CHECK-->Clean up logs and cache.
 
     ```bash
     sudo cloud-init clean --logs --seed
     sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
-    sudo apt-get clean
     ```
 
 1. Remove bash history.
@@ -138,7 +147,6 @@ Delete machine-specific files and data from your VM so that you can create a cle
     ```bash
     rm -f ~/.bash_history 
     export HISTSIZE=0 
-    logout
     ```
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
@@ -193,9 +201,9 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
 
 1. Validate that the image is created. Here's example code and output for validation:
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/validation-1.png" alt-text="Screenshot of example output for validation 1." lightbox="../manage/media/virtual-machine-image-centos-sysprep/validation-1.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/validation-1.png" alt-text="Screenshot of example output for validation 1." lightbox="../manage/media/virtual-machine-image-centos/validation-1.png":::
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/validation-2.png" alt-text="Screenshot of example output for validation 2." lightbox="../manage/media/virtual-machine-image-centos-sysprep/validation-2.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/validation-2.png" alt-text="Screenshot of example output for validation 2." lightbox="../manage/media/virtual-machine-image-centos/validation-2.png":::
 
 ### Step 5: Create the VHD
 
@@ -210,7 +218,7 @@ Where in this example the path would be: `<Get-VMHardDiskDrive -VMName "centos7-
 
 ### Step 6: Deploy the VM
 
-1. To get `the CustomLocationId` needed for the next step, run the following command and make note of the value:
+1. To get the `CustomLocationId` needed for the next step, run the following command and make note of the value:
 
     ```azurecli
     az customlocation list --resource-group $resourceGroup
@@ -239,7 +247,7 @@ sudo systemctl status mocguestagent
 ```
 
 **Example status output:**
-:::image type="content" source="../manage/media/virtual-machine-image-centos-sysprep/validation-3.png" alt-text="Screenshot of example output for validation." lightbox="../manage/media/virtual-machine-image-centos-sysprep/centos-virtual-machine-secure-boot-disabled.png":::
+:::image type="content" source="../manage/media/virtual-machine-image-centos/validation-3.png" alt-text="Screenshot of example output for validation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-secure-boot-disabled.png":::
 
 ## Next steps
 
