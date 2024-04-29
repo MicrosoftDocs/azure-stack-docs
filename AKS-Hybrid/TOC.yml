@@ -32,8 +32,10 @@
       href: azure-hybrid-benefit.md
     - name: Billing
       items:
-      - name: Pricing details
+      - name: Pricing overview
         href: pricing.md
+      - name: Pricing details
+        href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
@@ -116,6 +118,20 @@
       href: /cli/azure/aksarc
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
+    - name: Azure Stack HCI
+      href: /azure-stack/hci/index
+    - name: Windows Admin Center (WAC)
+      href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+    - name: Azure hybrid cloud
+      href: /hybrid
+    - name: Windows Server
+      href: /windows-server/
+    - name: Release notes
+      href: https://aka.ms/AKS-hybrid-Releasenotes
+    - name: AKS Arc PowerShell
+      href: ./reference/ps/index.md
+    - name: Add-ons, extensions, and integrations
+      href: add-ons.md    
 - name: AKS Edge Essentials
   items:
   - name: Overview
@@ -515,24 +531,6 @@
       href: /azure/architecture/example-scenario/hybrid/aks-baseline
     - name: Network architecture for AKS
       href: /azure/architecture/example-scenario/hybrid/aks-network
-  - name: Reference
-    items:
-    - name: Azure Stack HCI
-      href: /azure-stack/hci/index
-    - name: Windows Admin Center (WAC)
-      href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-    - name: Azure hybrid cloud
-      href: /hybrid
-    - name: Windows Server
-      href: /windows-server/
-    - name: Release notes
-      href: https://aka.ms/AKS-hybrid-Releasenotes
-    - name: AKS Arc PowerShell
-      href: ./reference/ps/index.md
-    - name: Add-ons, extensions, and integrations
-      href: add-ons.md
-    - name: Pricing
-      href: https://azure.microsoft.com/pricing/details/azure-stack/aks-hci/
   - name: Resources
     items:
     - name: Azure Arc Jumpstart
