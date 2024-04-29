@@ -318,5 +318,5 @@ If you see certificate validation errors, complete the steps to [uninstall and r
 
 In this how-to guide, you learned how to configure AD Authentication to securely connect to the API server with SSO credentials. Next, you can:
 
-- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

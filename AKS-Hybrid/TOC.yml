@@ -242,7 +242,7 @@
     href: overview.md
   - name: System requirements
     href: system-requirements.md
-  - name: Quickstarts
+  - name: Quickstarts 
     items:
     - name: Deploy an AKS cluster
       items:
@@ -329,7 +329,7 @@
         href: azure-hybrid-benefit-22h2.md
   - name: How-to guides
     items: 
-    - name: Install AKS hybrid host with prestaged cluster service objects and DNS records
+    - name: Install AKS Arc host with prestaged cluster service objects and DNS records
       href: prestage-cluster-service-host-create.md
     - name: Use manual (offline) download
       href: offline-download-22h2.md
@@ -339,7 +339,7 @@
       href: manage-node-pools-22h2.md
     - name: Upgrade
       items:
-      - name: Upgrade AKS hybrid host
+      - name: Upgrade AKS Arc host
         items:
         - name: Use PowerShell
           href: update-akshci-host-powershell.md
@@ -385,7 +385,7 @@
         items:
         - name: Connect to Azure Arc for Kubernetes
           href: connect-to-arc.md
-        - name: Az PowerShell module CLI commands
+        - name: Az module CLI commands
           href: /cli/azure/connectedk8s
       - name: Networking
         items:
@@ -409,7 +409,7 @@
             href: deploy-target-clusters-virtual-networks.md
       - name: Storage
         items:
-        - name: Use persistent volume
+        - name: Use persistent volumes
           href: persistent-volume.md
       - name: Security and authentication
         items:
@@ -419,7 +419,7 @@
           href: ad-sso.md
         - name: Use Kubernetes RBAC with Microsoft Entra ID
           href: kubernetes-rbac-azure-ad.md
-        - name: Use Azure RBAC with AKS hybrid clusters
+        - name: Use Azure RBAC with AKS clusters
           href: azure-rbac-aks-hybrid.md
         - name: Update certificate bundle on container hosts
           href: update-certificate-bundle.md
