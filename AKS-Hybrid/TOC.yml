@@ -30,6 +30,10 @@
       href: scale-requirements.md
     - name: Azure Hybrid Benefit
       href: azure-hybrid-benefit.md
+    - name: Billing
+      items:
+      - name: Pricing details
+        href: pricing.md
   - name: Quickstarts
     items:
     - name: Jumpstart HCIBox (external link)
@@ -309,10 +313,8 @@
       href: node-repair.md
     - name: Billing
       items:
-        - name: Pricing details
-          href: pricing.md
-        - name: Azure Hybrid Benefit
-          href: azure-hybrid-benefit-22h2.md
+      - name: Azure Hybrid Benefit
+        href: azure-hybrid-benefit-22h2.md
   - name: How-to guides
     items: 
       - name: Deploy an AKS cluster
