@@ -111,13 +111,17 @@ Once the VM is running, follow these steps:
 
     :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png":::
 
-1. Select User setting and set the root password. Enter a password, confirm the password, and select **Done**.
+1. Select **User setting** and set the root password. Enter a password, confirm the password, and select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-3.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-3.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-set-root-password.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-set-root-password.png":::
 
 1. Select **Finish configuration**.
+
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-finish-configuration.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-finish-configuration.png":::
+
 1. Select **Begin Installation**. Once the installation is complete, **Reboot** the VM.
 
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png":::
 
 ### Step 2: Configure VM
 
@@ -130,7 +134,7 @@ Follow these steps to configure the VM that you provisioned earlier:
     sudo yum list installed | grep cloud-init
     ```
 
-1. Install cloud-init and verify the version of the `cloud-init` installed.
+1. Install `cloud-init` and verify the version of the `cloud-init` installed.
 
     ```bash
     sudo yum install cloud-init
@@ -212,7 +216,7 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
 1. Use the VHDX of the VM to create a CentOS gallery image. Use this CentOS VM image to create Arc virtual machines on your Azure Stack HCI.
 
     ```powershell
-    $ImagePath = (Get-VMHardDiskDrive -VMName "mycentosvm").Path 
+    $ImagePath = (Get-VMHardDiskDrive -VMName "mycentosvmimg1").Path 
 
     $ImageName = "centos-server-ssvm" 
 
