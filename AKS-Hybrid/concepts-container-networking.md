@@ -33,15 +33,15 @@ To simplify the network configuration for application workloads, Kubernetes uses
 
 **Cluster IP**: creates an internal IP address for use within the Kubernetes cluster. Use Cluster IP for internal-only applications that support other workloads within the cluster.
 
-![Diagram showing Cluster IP traffic flow in an AKS cluster](media/net/aks-cluster-ip.png)
+:::image type="content" source="media/concepts-container-networking/aks-cluster-ip.png" alt-text="Diagram showing cluster IP traffic flow in an AKS cluster." lightbox="media/concepts-container-networking/aks-cluster-ip.png":::
 
 **NodePort**: creates a port mapping on the underlying node that allows the application to be directly accessed with the node IP address and port.
 
-![Diagram showing NodePort traffic flow in an AKS cluster](media/net/aks-nodeport.png)
+:::image type="content" source="media/concepts-container-networking/aks-nodeport.png" alt-text="Diagram showing NodePort traffic flow in an AKS cluster." lightbox="media/concepts-container-networking/aks-nodeport.png":::
 
 **LoadBalancer**: creates an Azure load balancer resource, configures an external IP address, and connects the requested pods to the load balancer backend pool. To allow customers' traffic to reach the application, load balancing rules are created on the desired ports.
 
-![Diagram showing Load Balancer traffic flow in an AKS-HCI cluster](media/net/aks-load-balancer.png)
+:::image type="content" source="media/concepts-container-networking/aks-load-balancer.png" alt-text="Diagram showing load balancer traffic flow in an AKS cluster." lightbox="media/concepts-container-networking/aks-load-balancer.png":::
 
 For other control and routing of the inbound traffic, you can use an ingress controller.
 

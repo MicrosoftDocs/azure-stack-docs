@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2402.2 updat
 description: Read about the known issues and fixed issues in Azure Stack HCI 2402.2 release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 04/16/2024
+ms.date: 04/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -18,7 +18,7 @@ This article identifies the critical known issues and their workarounds in Azure
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
 > [!IMPORTANT]
-> This release supports only updates. You must be running version 2402 or 2402.1 to update to this release. New deployments are not supported with this release.
+> This release supports only updates. New deployments are not supported with this release. For more information on supported updated paths for this release, see [Release information](./release-information-23h2.md#about-azure-stack-hci-version-23h2-releases).
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
 
@@ -38,7 +38,8 @@ Here are the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Solution Builder Extension Updates<!--26039754--> | Due to a known issue in this release, successful CAU updates can intermittently be reported as a failure. Get-CauReport can fail if the Cluster Name or Cluster IP Address resources fail to start. |If you encounter this issue, contact Microsoft Support for next steps. They can work with you to manually restart the cluster resources and retry the SBE updates. |
+| Updates<!--26039754--> | Attempts to install solution updates can fail at the end of the CAU steps with:*<br>*`There was a failure in a Common Information Model (CIM) operation, that is, an operation performed by software that Cluster-Aware Updating depends on.` *<br>* This rare issue occurs if the `Cluster Name` or `Cluster IP Address` resources fail to start after a node reboot and is most typical in small clusters. |If you encounter this issue, contact Microsoft Support for next steps. They can work with you to manually restart the cluster resources and resume the update as needed. |
+| Updates <!--27625941--> | When applying a cluster update to 10.2402.2.11 the `Get-SolutionUpdate` cmdlet may not respond and eventually fails with a RequestTimeoutException after approximately 10 minutes. This is likely to occur following an add or repair server scenario. | Use the `Start-ClusterGroup` and `Stop-ClusterGroup` cmdlets to restart the update service. </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Stop-ClusterGroup` </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Start-ClusterGroup` </br><br> A succesful run of these cmdlets should bring the update service online. |
 
 ## Known issues from previous releases
 
