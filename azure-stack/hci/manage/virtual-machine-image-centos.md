@@ -123,7 +123,7 @@ Once the VM is running, follow these steps:
 
     :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-reboot.png":::
 
-### Step 2: Configure VM
+### Step 3: Configure VM
 
 Follow these steps to configure the VM that you provisioned earlier:
 
@@ -147,7 +147,7 @@ Follow these steps to configure the VM that you provisioned earlier:
     sudo apt yum -y update
     ```
 
-### Step 3: Clean up residual configuration
+### Step 4: Clean up residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
@@ -175,7 +175,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
 
-### Step 4: Create VM image
+### Step 5: Create VM image
 
 Follow these steps on your Azure Stack HCI cluster to create the VM image:
 
@@ -229,7 +229,7 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
 
     :::image type="content" source="../manage/media/virtual-machine-image-centos/validation-2.png" alt-text="Screenshot of example output for validation 2." lightbox="../manage/media/virtual-machine-image-centos/validation-2.png":::
 
-### Step 5: Create the VHD
+### Step 6: Create the VHD
 
 Export a VHD or copy the VHD from your VM. Run the following command to obtain the path:
 
@@ -240,7 +240,7 @@ Get-VMHardDiskDrive -VMName "centos7-3"
 Where in this example the path would be: `<Get-VMHardDiskDrive -VMName "centos7-3">.Path`
 
 
-### Step 6: Deploy the VM
+### Step 7: Deploy the VM
 
 1. To get the `CustomLocationId` needed for the next step, run the following command and make note of the value:
 
@@ -262,7 +262,7 @@ Where in this example the path would be: `<Get-VMHardDiskDrive -VMName "centos7-
     --authentication-type all --nics $vmNic --custom-location $clid  `--hardware-profile memory-mb="1024" processors="1" vm-size="Custom"
     ```
 
-### Step 7: Validate deployment
+### Step 8: Validate deployment
 
 Validate your VM deployment from an `ssh` console (Example: `ssh -l admin 192.168.200.23`), and then run the following command from the VM to get status output:
 
