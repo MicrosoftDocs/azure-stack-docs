@@ -67,6 +67,10 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png":::
     
+    1. Accept the defaults on the **Connect Virtual Hard Disk** page.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-connect-virtual-hard-disk.png" alt-text="Screenshot of the New virtual machine wizard on Connect virtual hard disk page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-connect-virtual-hard-disk.png":::
+
     1. Select **Install operating system from a bootable image** option. Point to the ISO that you downloaded earlier.
     
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-iso-option.png" alt-text="Screenshot of the New virtual machine wizard on Installation options page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-iso-option.png":::
@@ -74,7 +78,7 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
     See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
 
-1. Use the UEFI Certificate on the VM.
+1. Use the UEFI certificate to Secure Boot the VM.
     1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**.
     1. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the Template dropdown list, select **Microsoft UEFI Certificate Authority**.
     1. Select OK to save the changes.
@@ -89,21 +93,26 @@ Once the VM is running, follow these steps:
 
 1. Select the VM from the Hyper-V Manager, right-click to invoke the context menu and then select **Connect**.
 
-1. Select the Install CentOS 7 option from the boot menu.
+1. Select the **Install CentOS 7** option from the boot menu.
 
 1. Select the language and then select **Continue**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-language.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-language.png":::
 
 1. Select the installation destination and then select **Done**.
-1. Select the network & host name.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-1.png" alt-text="Screenshot of CentOS management page 1." lightbox="../manage/media/virtual-machine-image-centos/centos-1.png"::: 
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-installation-destination.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-installation-destination.png":::
+
+1. Select the **Network & host name**.
+
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-network-and-hostname.png" alt-text="Screenshot of CentOS management page 1." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-select-network-and-hostname.png":::
 
     Enable the ON switch for the network interface and then select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-2.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-centos/centos-2.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png" alt-text="Screenshot of CentOS management page 2." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-switch-network-interface.png":::
+
 1. Select User setting and set the root password. Enter a password, confirm the password, and select **Done**.
+
     :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-3.png" alt-text="Screenshot of CentOS management page 3." lightbox="../manage/media/virtual-machine-image-centos/centos-3.png":::
 
 1. Select **Finish configuration**.
@@ -112,17 +121,27 @@ Once the VM is running, follow these steps:
 
 ### Step 2: Configure VM
 
-Follow these steps on your Azure Stack HCI cluster to configure the VM that you provisioned earlier:
+Follow these steps to configure the VM that you provisioned earlier:
 
 1. Connect and then sign into the VM using the root password that you created during the CentOS installation.
-1. To download all the latest package lists from the repositories, run the following command:
+1. Make sure that `cloud-init` was not installed.
 
-    ```azurecli
-    sudo apt update
+    ```bash
+    sudo yum list installed | grep cloud-init
     ```
 
+1. Install cloud-init and verify the version of the `cloud-init` installed.
 
+    ```bash
+    sudo yum install cloud-init
+    sudo yum cloud-init --version
+    ```
 
+1. Apply any latest updates to the VM.
+
+    ```bash
+    sudo apt yum -y update
+    ```
 
 ### Step 3: Clean up residual configuration
 
@@ -147,6 +166,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
     ```bash
     rm -f ~/.bash_history 
     export HISTSIZE=0 
+    logout
     ```
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
