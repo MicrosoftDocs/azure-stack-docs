@@ -59,7 +59,7 @@ Each pair of storge adapters between the nodes will operate in different IP subn
 
 - StorageAutoIP parameter must be set to false, Switchless parameter must be set to true,  and the customer is responsible to specify the IPs on the ARM template used to deploy the Azure Stack HCI 23H2 cluster from Azure.
 
-- In Azure Stack HCI 23H2 cloud deployments, scale out storage switchless clusters is not supported. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template).
+- In Azure Stack HCI 23H2 cloud deployments, scale out storage switchless clusters is not supported. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
 
 - In Azure Stack HCI 23H2 cloud deployments, it is only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template).
 
