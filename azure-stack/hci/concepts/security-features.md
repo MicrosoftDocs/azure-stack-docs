@@ -35,18 +35,20 @@ For more information, see [Manage security defaults on Azure Stack HCI](../manag
 
 ## Windows Defender Application Control
 
-Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
+Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
 
+To achive such goal, WDAC provides two main operation modes, Enforcement mode and Audit mode. In enforcement mode, untrusted code will be blocked and events will be recorded. In Audit mode, untrusted code will be allowed to run and events will be recorded. To learn more about WDAC related events see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
+
+> [!NOTE]
+> Microsoft recommend to always run Application control (WDAC) layer in enforcement mode to drasticalty reduce your security risk exposure.
 
 ### About WDAC policy design
 
-Microsoft provides base signed policies including block mode and audit mode policies for Azure Stack HCI. Using the WDAC platform, the appropriate properties are defined for the policies. These properties include the options rules and the allow or deny rules that are updated regularly as part of the continuous product updates.
+Microsoft provides base signed policies for both Enforcement mode and audit mode for Azure Stack HCI, additionanly these policies comes with a predefine set of platform behaviour rules and additionl block rules to further leverage the application control layer.
 
 #### Composition of base policies
 
-The Azure Stack HCI base policy allows all the Microsoft components delivered by the OS and the cloud deployments to be trusted. 
-
-A base policy consists of the following sections:
+Azure Stack HCI base policies consists of the following sections:
 
 - **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID, and more.
 - **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a small set of the option rules tied to their base policy.
@@ -78,11 +80,15 @@ Audit policy adds the following option rules to the base policy:
 
 For more information, see the full documented [List of option rules](/windows/security/application-security/application-control/windows-defender-application-control/design/select-types-of-rules-to-create#table-1-windows-defender-application-control-policy---policy-rule-options).
 
-#### Allow or deny rules
+#### Allow and Deny rules
 
-Microsoft also enables a set of block/deny rules that limit the user mode applications and kernel components compiled and updated regularly that could potentially represent a risk on the security posture of the solution.
+The Allow rules in the base policy will allow all the Microsoft components delivered by the OS and the cloud deployments to be trusted. 
+The Deny rules will block user mode applications and kernel components considered unsafe for the security posture of the solution.
 
-For more information, see the following default lists:
+> [!NOTE]
+> The allow and deny rules provided in the base policy are updated regularly to warranty the product funtionality and maximize the protection of the solution. 
+
+For learn more about the Deny rules, see the following lists:
 
 - [Driver blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
 
