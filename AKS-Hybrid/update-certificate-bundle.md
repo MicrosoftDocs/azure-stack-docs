@@ -49,4 +49,4 @@ Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
 
 ## Next steps
 
-[AKS overview](overview.md)
+[AKS on Windows Server overview](overview.md)

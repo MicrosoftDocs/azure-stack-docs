@@ -30,7 +30,7 @@ The following rules are used by AKS Arc for applying updates to installed add-on
 | [Install-AksHciCsiNfs](reference/ps/install-akshcicsinfs.md)      | Installs the CSI NFS plug-in to a cluster.                       |
 | [Install-AksHciCsiSmb](reference/ps/install-akshcicsismb.md)      | Installs the CSI SMB plug-in to a cluster.                       |
 | [Install-AksHciGmsaWebhook](reference/ps/install-akshcigmsawebhook.md) | Installs gMSA webhook add-on to the cluster.                     |
-| [Install-AksHciMonitoring](reference/ps/install-akshcimonitoring.md)  | Installs Prometheus for monitoring in the AKS hybrid deployment. |
+| [Install-AksHciMonitoring](reference/ps/install-akshcimonitoring.md)  | Installs Prometheus for monitoring in the AKS enabled by Arc deployment. |
 
 ## Azure Arc extensions
 
@@ -58,4 +58,4 @@ The following table shows examples of open-source and third-party integrations:
 
 ## Next steps
 
-- [AKS hybrid overview](aks-hybrid-options-overview.md)
+- [AKS enabled by Arc overview](aks-overview.md)

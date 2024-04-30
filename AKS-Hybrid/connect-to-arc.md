@@ -84,9 +84,9 @@ Enable-AksHciArcConnection -name $clusterName
 
 ## Connect your AKS cluster to Azure Arc using a service principal
 
-If you don't have access to a subscription on which you're an "Owner", you can connect your AKS cluster to Azure Arc using a *service principal*.
+If you don't have access to a subscription on which you're an "Owner," you can connect your AKS cluster to Azure Arc using a *service principal*.
 
-The first command prompts for service principal credentials and stores them in the `credential` variable. Enter your application ID for the username and then use the service principal secret as the password when prompted. Make sure you get these values from your subscription admin. The second command connects your cluster to Azure Arc using the service principal credentials stored in the `credential` variable:
+The first command prompts for service principal credentials and stores them in the `$Credential` variable. When prompted, enter your application ID for the username and then use the service principal secret as the password. Make sure you get these values from your subscription admin. The second command connects your cluster to Azure Arc using the service principal credentials stored in the `$Credential` variable:
 
 ```powershell
 $Credential = Get-Credential
