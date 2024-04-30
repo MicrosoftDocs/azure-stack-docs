@@ -100,9 +100,9 @@ This object ID for the Azure Stack HCI RP is unique per Azure tenant.
     You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
 
 
-<!--You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
+    <!--You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
 
-#### Add the Key Vault Secrets User
+<!--#### Add the Key Vault Secrets User
 
 1. Go to the appropriate resource group for Azure Stack HCI environment.
 
