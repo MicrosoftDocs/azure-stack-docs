@@ -408,7 +408,7 @@ You can free up space on an overused volume by manually migrating some managed d
    If you are migrating multiple managed disks in one migration job, you can also check the sub tasks of the job.
 
    ```powershell
-   $job.Subtasks
+   $job.Subtask
    ```
 
    ![Example: Migration sub task status](media/azure-stack-manage-storage-shares/diskmigrationsubtask.png)
