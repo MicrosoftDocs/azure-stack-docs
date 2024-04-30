@@ -54,7 +54,7 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 - [Deploy MetalLB load balancer using Azure Arc extension](deploy-load-balancer-portal.md).
 - Bring your own third party load balancer.
 
-Whether you choose MetalLB Arc extension, or bring your own load balancer, you must provide a set of IP addresses to the load balancer service. You have the following options:
+Whether you choose the MetalLB Arc extension, or bring your own load balancer, you must provide a set of IP addresses to the load balancer service. You have the following options:
 
 - Provide IP addresses for your services from the same subnet as the AKS Arc VMs.
 - Use a different network and list of IP addresses if your application needs external load balancing.
@@ -101,16 +101,15 @@ Continuing with this example, and adding it to the following table, you get:
 
 Proxy settings in AKS are inherited from the underlying infrastructure system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet.
 
-## Network port requirements
+## Network port & cross-VLAN requirements
+When you deploy Azure Stack HCI, you allocate a contiguous block of at least [six static IP addresses on your management network's subnet](/azure-stack/hci/deploy/deploy-via-portal#specify-network-settings), omitting addresses already used by the physical servers. These IPs are used by Azure Stack HCI and internal infrastructure (Arc Resource Bridge) for Arc VM management and AKS Arc. If your management network that provides IP addresses to Arc Resource Bridge related Azure Stack HCI services are on a different VLAN than the logical network you used to create AKS clusters, you need to ensure that the following ports are opened to successfully create and operate an AKS cluster. 
 
-The configuration of required network ports is now incorporated into the infrastructure deployment. Manual configuration of these ports is no longer required. Use the following port list to troubleshoot communication issues between the Arc Resource Bridge and Kubernetes clusters:
-
-| Destination Port | Destination | Source | Description | Cross vlan firewall notes |
+| Destination Port | Destination | Source | Description | Cross VLAN networking notes |
 |------------------|-------------|--------|-------------|----------------|
-| 22 | AKS Arc VMs | Azure Arc Resource Bridge, Azure Stack HCI physical hosts | Required to collect logs for troubleshooting. | If you use separate VLANs, the physical Hyper-V Hosts need to access the AKS Arc cluster VMs on this port.|
-| 6443 | AKS Arc VMs | Azure Arc Resource Bridge VM | Required to communicate with Kubernetes APIs. | If you use separate VLANs, Arc Resource Bridge needs to access the AKS Arc cluster VMs on this port.|
-| 55000    | Cloud agent for MOC | AKS Arc VMs | Cloud Agent gRPC server | If you use separate VLANs, the AKS Arc VMs need to access the cloud agent IP on this port.|
-| 65000    | Cloud agent for MOC | AKS Arc VMs | Cloud Agent gRPC authentication | If you use separate VLANs, the Azure Arc Resource Bridge VM needs to access the cloud agent IP on this port.|
+| 22 | Logical network used for AKS Arc VMs | IP addresses in management network | Required to collect logs for troubleshooting. | If you use separate VLANs, IP addresses in management network used for Azure Stack HCI and Arc Resource Bridge need to access the AKS Arc cluster VMs on this port.|
+| 6443 | Logical network used for AKS Arc VMs | IP addresses in management network | Required to communicate with Kubernetes APIs. | If you use separate VLANs, IP addresses in management network used for Azure Stack HCI and Arc Resource Bridge need to access the AKS Arc cluster VMs on this port.|
+| 55000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC server | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port. |
+| 65000 | IP addresses in management network | Logical network used for AKS Arc VMs | Cloud Agent gRPC authentication | If you use separate VLANs, the AKS Arc VMs need to access the IP addresses in management network used for cloud agent IP and cluster IP on this port. |
 
 ## Firewall URL exceptions
 
@@ -136,7 +135,7 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 | `pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
-| `aka.ms` | 443 | az extensions | Required to download Azure CLI extensions such as **akshybrid** and **connectedk8s**. |
+| `aka.ms` | 443 | az extensions | Required to download Azure CLI extensions such as **aksarc** and **connectedk8s**. |
 | `*.login.microsoft.com` | 443 | Azure    | Required to fetch and update Azure Resource Manager tokens. |
 | `sts.windows.net` | 443 | Azure Arc |    For Cluster Connect and Custom Location-based scenario. |
 | `hybridaksstorage.z13.web.core.windows.net` |    443 | Azure Stack HCI |    AKSHCI static website hosted in Azure Storage. |

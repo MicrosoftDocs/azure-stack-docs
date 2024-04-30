@@ -4,7 +4,7 @@ description: Learn how to load balance multiple Software Defined Networking (SDN
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 04/04/2024
+ms.date: 04/30/2024
 ---
 
 # Load balance multiple SDN logical networks for Azure Stack HCI
@@ -18,6 +18,8 @@ For information about how to create and manage logical networks, see [Manage ten
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed:
+
+- Make sure to install the SDN diagnostics PowerShell module on the client computer and SDN resources. See [Install the SDN diagnostics PowerShell module on the client computer](./sdn-log-collection.md#install-the-sdn-diagnostics-powershell-module-on-the-client-computer) and [Install the SDN diagnostics PowerShell module on the SDN resources](./sdn-log-collection.md#install-the-sdn-diagnostics-powershell-module-on-the-sdn-resources).
 
 - Make sure that all software load balancing (SLB) multiplexer (MUX) virtual machines (VMs) have an extra interface for additional logical networks.
 

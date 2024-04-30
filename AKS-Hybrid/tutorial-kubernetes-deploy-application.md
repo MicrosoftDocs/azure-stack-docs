@@ -28,7 +28,7 @@ This tutorial, part four of seven, describes how you can deploy a sample applica
 
 Later tutorials describe how to scale and update this application.
 
-This quickstart assumes a basic understanding of Kubernetes concepts.
+This tutorial assumes a basic understanding of Kubernetes concepts.
 
 ## Before you begin
 
@@ -115,7 +115,7 @@ azure-vote-front   LoadBalancer   10.0.34.242   52.179.23.131   80:30676/TCP   6
 
 To see the application in action, open a web browser to the external IP address of your service:
 
-:::image type="content" source="./media/azure-vote.png" alt-text="Screenshot showing the container image Azure Voting App running in an AKS cluster opened in a local web browser" lightbox="./media/azure-vote.png":::
+:::image type="content" source="./media/tutorial-kubernetes-deploy-application/azure-vote.png" alt-text="Screenshot showing the container image Azure Voting App running in an AKS cluster opened in a local web browser" lightbox="media/tutorial-kubernetes-deploy-application/azure-vote.png":::
 
 If the application didn't load, it might be due to an authorization problem with your image registry. To view the status of your containers, use the `kubectl get pods` command. If the container images can't be pulled, see [Authenticate with Azure Container Registry from Azure Kubernetes Service](/azure/aks/cluster-container-registry-integration).
 

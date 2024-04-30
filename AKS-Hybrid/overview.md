@@ -49,7 +49,7 @@ AKS simplifies the process of setting up Kubernetes on Azure Stack HCI and Windo
 
 View the GIF below to familiarize yourself with the deployment process:
 
-![GIF for deploying AKS HCI](./media/aks-hci-deployment.gif)
+:::image type="content" source="media/overview/aks-hci-deployment.gif" alt-text="GIF showing AKS deployment." lightbox="media/overview/aks-hci-deployment.gif":::
 
 ## View and manage on-premises Kubernetes using tools or Azure Arc
 

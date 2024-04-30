@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/27/2024
+ms.date: 04/04/2024
 ---
 
 # Manage BitLocker encryption on Azure Stack HCI, version 23H2
@@ -18,7 +18,6 @@ This article describes how to view and enable BitLocker encryption, and retrieve
 ## Prerequisites
 
 Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
-
 
 ## View BitLocker settings via Azure portal
 

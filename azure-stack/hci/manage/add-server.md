@@ -98,6 +98,11 @@ On the new server that you plan to add, follow these steps.
     > [!NOTE]
     > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
 
+2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+
+    > [!NOTE]
+    > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
+
 On a server that already exists on your cluster, follow these steps:
 
 1. Sign in with the domain user credentials that you provided during the deployment of the cluster.
