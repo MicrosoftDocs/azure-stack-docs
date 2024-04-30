@@ -62,7 +62,7 @@ Each pair of storge adapters between the nodes will operate in different IP subn
 
 - In Azure Stack HCI 23H2 cloud deployments, it is only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template).
 
-For more information, see [Network ATC overview](../concepts/network-atc-overview).
+For more information, see [Network ATC overview](/concepts/network-atc-overview.d).
 
 ### Management VLAN
 
@@ -94,7 +94,7 @@ In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encap
 
 The HNV Provider Address (PA) network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there is a need for deploying virtual networks using VXLAN encapsulation for an additional layer of isolation and network multitenancy.
 
-For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure#management-and-hnv-provider).
+For more information, see [Plan a Software Defined Network infrastructure](/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
 
 ## Network ATC intents
 
