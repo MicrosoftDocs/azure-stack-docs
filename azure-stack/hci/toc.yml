@@ -313,6 +313,8 @@ items:
       href: manage/assign-public-ip-to-vm.md
     - name: Configure load balancer for high availability ports
       href: manage/configure-software-load-balancer.md
+    - name: Load balance multiple logical networks
+      href: manage/load-balance-multiple-networks.md
     - name: Manage SDN security
       items:
       - name: Manage certificates for SDN
