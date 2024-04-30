@@ -22,7 +22,7 @@ The following list contains the prerequisites that must be met to migrate VMware
 
 |Prerequisite|Applies to|More information|
 |--|--|--|
-|Open required VMware firewall ports.|source|CHECK [Port access](/azure/migrate/migrate-support-matrix-vmware-migration#port-requirements-agentless)<br>TCP port 443 inbound.|
+|Open required VMware firewall ports.|source| [Port access](/azure/migrate/migrate-support-matrix-vmware-migration#port-requirements-agentless)<br>TCP port 443 inbound.|
 |Open required Hyper-V firewall ports.|target|[Port access](/azure/migrate/migrate-support-matrix-hyper-v#port-access).<br>[URL access](/azure/migrate/migrate-appliance#url-access).|
 |Configure SAN policy on VMware VMs.|source|[Configure SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy).|
 |Deploy, configure, and register an Azure Stack HCI cluster.|target|[Create and register an Azure Stack HCI cluster](../deploy/deployment-introduction.md).|
@@ -30,12 +30,13 @@ The following list contains the prerequisites that must be met to migrate VMware
 |Verify and make a note of the custom location created during deployment on the Azure Stack HCI system.|target|[Verify a successful deployment](../deploy/deploy-via-portal.md#verify-a-successful-deployment).|
 |Create a custom storage path for the Arc Resource Bridge for storing VM configuration and OS disks.|target| [Create storage path](../manage/create-storage-path.md).|
 |Create a logical network for the Arc Resource Bridge for VMs to use.|target|[Create a logical network.](../manage/create-logical-networks.md)|
-|CHECK Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).|
+|Enable contributor and user administrator access on the subscription for the Azure Migrate project.|both|[Assign Azure roles using the Azure portal](/azure/role-based-access-control/role-assignments-portal).|
 |Create an Azure Migrate project|source, target|[Create an Azure Migrate project](#create-an-azure-migrate-project).|
+<!-- check port access, sub access-->
 
 ## Create an Azure Migrate project
 
-CHECK <!--add an include here-->Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects).
+<!--CHECK add an include here-->Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects).
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
