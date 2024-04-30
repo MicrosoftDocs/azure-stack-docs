@@ -71,7 +71,7 @@ All physical compute hosts must access the management logical network. For IP ad
 
 A DHCP server can automatically assign IP addresses for the management network, or you can manually assign static IP addresses. When DHCP is the preferred IP assignment method, DHCP reservations without expiration are recommended.
 
-For information, see [DHCP Network considerations for cloud deployment](../plan/cloud-deployment-network-considerations#dhcp-ip-assignment)
+For information, see [DHCP Network considerations for cloud deployment](cloud-deployment-network-considerations.md#dhcp-ip-assignment)
 
 The management network supports two different VLAN configurations Native or Tagged traffic:
 
@@ -85,7 +85,7 @@ The management network supports two different VLAN configurations Native or Tagg
 
 The Management network supports traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, and Active Directory.
 
-For more information, see [Management VLAN network considerations](../plan/cloud-deployment-network-considerations#management-vlan-id).
+For more information, see [Management VLAN network considerations](cloud-deployment-network-considerations.md#management-vlan-id).
 
 ### Compute VLANs
 
@@ -95,7 +95,7 @@ In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encap
 
 The HNV Provider Address (PA) network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there is a need of deploying virtual networks using VXLAN encapsulation for an additional layer of isolation and network multitenancy.
 
-For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure#management-and-hnv-provider).
+For more information, see [Plan a Software Defined Network infrastructure](./concepts/plan-software-defined-networking-infrastructure#management-and-hnv-provider).
 
 ## Network ATC intents
 
