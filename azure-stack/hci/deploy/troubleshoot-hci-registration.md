@@ -7,12 +7,15 @@ ms.reviewer: arduppal
 ms.topic: conceptual
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 09/22/2023
+ms.date: 04/30/2024
 ---
 
 # Troubleshoot Azure Stack HCI registration
 
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+
+> [!IMPORTANT]
+> Troubleshooting instructions provided in this article apply to an older version, Azure Stack HCI, version 22H2. To troubleshoot new deployments running the latest generally available version, Azure Stack HCI, version 23H2, see [Get support for Azure Stack HCI deployment issues](../manage/get-support-for-deployment-issues.md).
 
 Troubleshooting Azure Stack HCI registration issues requires looking at both PowerShell registration logs and hcisvc debug logs from each server in the cluster.
 
@@ -20,7 +23,7 @@ Troubleshooting Azure Stack HCI registration issues requires looking at both Pow
 
 When the `Register-AzStackHCI` and `Unregister-AzStackHCI` cmdlets are run, log files named **RegisterHCI_{yyyymmdd-hhss}.log** and **UnregisterHCI_{yyyymmdd-hhss}.log** are created for each attempt. You can set the log directory for these log files using the `-LogsDirectory` parameter in the `Register-AzStackHCI` cmdlet, and call `Get-AzStackHCILogsDirectory` to obtain the location. By default, these files are created in **C:\ProgramData\AzureStackHCI\Registration**. For PowerShell module version 2.1.2 or earlier, these files are created in the working directory of the PowerShell session in which the cmdlets are run.
 
-By default, debug logs are not included. If there is an issue that needs the additional debug logs, set the debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
+By default, debug logs aren't included. If there's an issue that needs the additional debug logs, set the debug preference to **Continue** by running the following cmdlet before running `Register-AzStackHCI` or `Unregister-AzStackHCI`:
 
 ```PowerShell
 $DebugPreference = 'Continue'
@@ -69,7 +72,7 @@ If there are node names after the **Couldn't set and verify registration certifi
 1. Look at the hcisvc debug logs on each node listed in the error message.
 
    - It's OK to have the message **ExecuteWithRetry operation AADTokenFetch failed with retryable error** appear a few times before it either fails with **ExecuteWithRetry operation AADTokenFetch failed after all retries** or **ExecuteWithRetry operation AADTokenFetch succeeded in retry**.
-   - If you encounter **ExecuteWithRetry operation AADTokenFetch failed after all retries** in the logs, the system wasn't able to fetch the Microsoft Entra token from the service even after all the retries. There will be an associated Microsoft Entra exception that's logged with this message. 
+   - If you encounter **ExecuteWithRetry operation AADTokenFetch failed after all retries** in the logs, the system wasn't able to fetch the Microsoft Entra token from the service even after all the retries. There's an associated Microsoft Entra exception that's logged with this message.
    - If you see **AADSTS700027: Client assertion contains an invalid signature. [Reason - The key used is expired. Thumbprint of key used by client: '{SomeThumbprint}', Found key 'Start=06/29/2021 21:13:15, End=06/29/2023 21:13:15'**, this is an issue with how the time is set on the server. Check the UTC time on all servers by running `[System.DateTime]::UtcNow` in PowerShell, and compare it with the actual UTC time. If the time isn't correct, then set the correct times on the servers and try the registration again.
 
 ## Deleting HCI resource from portal and re-registering the same cluster causes issues
@@ -85,7 +88,7 @@ If you explicitly deleted the Azure Sack HCI cluster resource from the Azure por
     - If unregistration succeeds, navigate to **Microsoft Entra ID > App registrations (All applications)** and search for the name matching `clusterName` and `clusterName.arc`. Delete the two app IDs if they exist.
     - If unregistration fails with the error **ERROR: Couldn't disable Azure Arc integration on Node \<node name\>, try running the `Disable-AzureStackHCIArcIntegration` cmdlet on the node. If the node is in a state where `Disable-AzureStackHCIArcIntegration` cannot be run, remove the node from the cluster and try running the `Unregister-AzStackHCI` cmdlet again.** Sign in to each individual node:
         1. Change directory to where the Arc agent is installed: `cd 'C:\Program Files\AzureConnectedMachineAgent\'`.
-        2. Get the status on arcmagent.exe and determine the Azure resource group it is projected to: `.\azcmagent.exe show`. Output for this command shows the resource group information.
+        2. Get the status on arcmagent.exe and determine the Azure resource group it's projected to: `.\azcmagent.exe show`. Output for this command shows the resource group information.
         3. Force disconnect the Arc agent from node: `.\azcmagent.exe disconnect --force-local-only`.
         4. Sign in to the Azure portal and delete the **Arc-for-Server** resource from the resource group determined in step ii.
 
@@ -93,9 +96,9 @@ If you explicitly deleted the Azure Sack HCI cluster resource from the Azure por
 
 **Failure state explanation**:
 
-If the cluster is disconnected for more than 8 hours, it is possible that the associated Microsoft Entra app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
+If the cluster is disconnected for more than 8 hours, it's possible that the associated Microsoft Entra app registrations representing the HCI cluster and Arc registrations could have been accidentally deleted. For the proper functioning of HCI cluster and Arc scenarios, two app registrations are created in the tenant during registration.
 
-- If the `<clustername>` app ID is deleted, the cluster resource **Azure Connection** in the Azure portal displays **Disconnected - Cluster not in connected state for more than 8 hours**. Look at the **HCIsvc** debug logs on the node: the error message will be **Application with identifier '\<ID\>' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant.**
+- If the `<clustername>` app ID is deleted, the cluster resource **Azure Connection** in the Azure portal displays **Disconnected - Cluster not in connected state for more than 8 hours**. Look at the **HCIsvc** debug logs on the node: the error message is **Application with identifier '\<ID\>' was not found in the directory 'Default Directory'. This can happen if the application has not been installed by the administrator of the tenant or consented to by any user in the tenant. You may have sent your authentication request to the wrong tenant.**
 - If `<clustername>.arc` created during Arc enablement is deleted, there are no visible errors during normal operation. This identity is required only during the registration and unregistration processes. In this scenario, unregistration fails with the error **Couldn't disable Azure Arc integration on Node \<Node Name\>. Try running the Disable-AzureStackHCIArcIntegration cmdlet on the node. If the node is in a state where the Disable-AzureStackHCIArcIntegration cmdlet could not be run, remove the node from the cluster and try running the Unregister-AzStackHCI cmdlet again.**
 
 Deleting any of these applications results in a failure to communicate from the HCI cluster to the cloud.
@@ -110,15 +113,15 @@ Deleting any of these applications results in a failure to communicate from the 
 
    Repairing the registration recreates the necessary Microsoft Entra applications while retaining other information such as resource name, resource group and other registration choices.
 
-- If the `<clustername>.arc` app ID is deleted, there is no visible error in the logs. Unregistration will fail if `<clustername>.arc` is deleted. If unregistration fails, follow the same remediation action [described in this section](#deleting-hci-resource-from-portal-and-re-registering-the-same-cluster-causes-issues).
+- If the `<clustername>.arc` app ID is deleted, there's no visible error in the logs. Unregistration fails if `<clustername>.arc` is deleted. If unregistration fails, follow the same remediation action [described in this section](#deleting-hci-resource-from-portal-and-re-registering-the-same-cluster-causes-issues).
 
 ## Out of policy error
 
 **Failure state explanation**:
 
-If a previously registered cluster is showing a status of **OutOfPolicy**, changes to the system configuration may have caused the registration status of Azure Stack HCI to fall out of policy.
+If a previously registered cluster is showing a status of **OutOfPolicy**, changes to the system configuration may cause the registration status of Azure Stack HCI to fall out of policy.
 
-For example, system changes may include, but are not limited to:
+For example, system changes may include, but aren't limited to:
 
 - Turning off Secure Boot settings conflicts on the registered node.
 - Clearing the Trusted Platform Module (TPM).
@@ -131,7 +134,7 @@ For example, system changes may include, but are not limited to:
 
 There are three types of event ID messages: informational, warnings, and errors.
 
-The following messages were updates with Azure Stack HCI 21H2 with KB5010421, and will not be seen if this KB is not installed.
+The following messages were updates with Azure Stack HCI 21H2 with KB5010421, and won't be seen if this KB isn't installed.
 
 ### Informational event ID
 
@@ -139,11 +142,11 @@ Informational event ID messages that occur during registration. Review and follo
 
 - (Informational) **Event ID 592:** "Azure Stack HCI has initiated a repair of its data. No further action from the user is required at this time."
 
-- (Informational) **Event ID 594:** "Azure Stack HCI encountered an error accessing its data. To repair, please check which nodes are affected - if the entire cluster is OutOfPolicy (run Get-AzureStackHCI) please run Unregister-AzStackHCI on the cluster, restart and then run Register-AzStackHCI. If only this node is affected, remove this node from the cluster, restart and wait for repair to complete, then rejoin to cluster."
+- (Informational) **Event ID 594:** "Azure Stack HCI encountered an error accessing its data. To repair, check which nodes are affected - if the entire cluster is OutOfPolicy (run Get-AzureStackHCI) run Unregister-AzStackHCI on the cluster, restart and then run Register-AzStackHCI. If only this node is affected, remove this node from the cluster, restart and wait for repair to complete, then rejoin to cluster."
 
 ### Warning event ID
 
-With warning messages, the status of the registration is not completed. There may or may not be a problem. First, review the event ID message before taking any troubleshooting step(s).
+With warning messages, the status of the registration isn't completed. There may or may not be a problem. First, review the event ID message before taking any troubleshooting step(s).
 
 (Warning) **Event ID 585:** "Azure Stack HCI failed to renew license from Azure. To get more details about the specific error, enable the Microsoft-AzureStack-HCI/Debug event channel."
 
@@ -169,7 +172,7 @@ This issue is caused by unregistering an HCI cluster with the wrong cloud enviro
 
 For example:
 
-- **Wrong `-EnvironmentName <value>`**: You registered your cluster in `-EnvironmentName AzureUSGovernment` as in the following example. Note that the default `-EnvironmentName` is "Azurecloud". For example, you ran:
+- **Wrong `-EnvironmentName <value>`**: You registered your cluster in `-EnvironmentName AzureUSGovernment` as in the following example. The default `-EnvironmentName` is "Azurecloud". For example, you ran:
 
    ```powershell
    Register-AzStackHCI  -SubscriptionId "<subscription_ID>" -EnvironmentName AzureUSGovernment
@@ -202,7 +205,7 @@ For example:
 
 **Failure state explanation**:
 
-Performing a census sync before node synchronization can result in the sync being sent to Azure, which does not include the node. This results in the Arc resource for that node being removed. The `Sync-AzureStackHCI` cmdlet must be used only to debug the HCI cluster's cloud connectivity. The HCI cluster has a small warmup time after a reboot to reconcile the cluster state; therefore, do not execute `Sync-AzureStackHCI` soon after rebooting a node.
+Performing a census sync before node synchronization can result in the sync being sent to Azure, which doesn't include the node. This results in the Arc resource for that node being removed. The `Sync-AzureStackHCI` cmdlet must be used only to debug the HCI cluster's cloud connectivity. The HCI cluster has a small warmup time after a reboot to reconcile the cluster state; therefore, don't execute `Sync-AzureStackHCI` soon after rebooting a node.
 
 **Remediation action**:
 
@@ -264,7 +267,7 @@ Wait for 12 hours after the registration for the problem to be resolved automati
 
 **Failure state explanation**:
 
-This can also happen when the proxy is not configured properly for a connection to Azure ARC cloud services from HCI nodes. You might see the following error in the Arc agent logs:
+This can also happen when the proxy isn't configured properly for a connection to Azure ARC cloud services from HCI nodes. You might see the following error in the Arc agent logs:
 
 :::image type="content" source="media/troubleshoot-hci-registration/azure-arc-logs.png" alt-text="Screenshot of Arc agent logs." lightbox="media/troubleshoot-hci-registration/azure-arc-logs.png":::
 
@@ -277,7 +280,7 @@ To resolve this issue, follow the [guidelines to update proxy settings](/azure/a
 **Failure state explanation**:
 
 1. From the Azure portal, the cluster resource **Azure Connection** displays **Disconnected**.
-2. Look at the HCIsvc debug logs on the node. The error message will be **exception: AADSTS700027: Client assertion failed signature validation**.
+2. Look at the HCIsvc debug logs on the node. The error message is **exception: AADSTS700027: Client assertion failed signature validation**.
 3. The error can also be shown as **RotateRegistrationCertificate failed: Invalid Audience**.
 
 **Remediation action**:
@@ -306,7 +309,7 @@ Ensure the time is synchronized to a known and accurate time source.
 
 **Failure state explanation**:
 
-If the user account used for registration is part of multiple Microsoft Entra tenants, you must specify `-TenantId` during cluster registration and un-registration, otherwise it will fail with the error **Unable to acquire token for tenant with error. You must use multi-factor authentication to access tenant. Please rerun `Connect-AzAccount` with additional parameter `-TenantId`.**
+If the user account used for registration is part of multiple Microsoft Entra tenants, you must specify `-TenantId` during cluster registration and un-registration, otherwise it fails with the error **Unable to acquire token for tenant with error. You must use multi-factor authentication to access tenant. Please rerun `Connect-AzAccount` with additional parameter `-TenantId`.**
 
 **Remediation action**:
 
@@ -326,7 +329,7 @@ If the user account used for registration is part of multiple Microsoft Entra te
 
 **Failure state explanation**:
 
-This issue happens when one or more cluster nodes had connectivity issues after registration, and were not able to connect to Azure for a long time. Even after the resolution of connectivity issues, the nodes are unable to reconnect to Azure due to the expired certificates.
+This issue happens when one or more cluster nodes had connectivity issues after registration, and weren't able to connect to Azure for a long time. Even after the resolution of connectivity issues, the nodes are unable to reconnect to Azure due to the expired certificates.
 
 **Remediation action**:
 
@@ -344,7 +347,7 @@ This issue happens when one or more cluster nodes had connectivity issues after 
 
 **Failure state explanation**:
 
-If the cluster is not registered with Azure upon deployment, or if the cluster is registered but has not connected to Azure for more than 30 days, the system will not allow new virtual machines (VMs) to be created or added. When this occurs, you will see the following error message when attempting to create VMs:
+If the cluster isn't registered with Azure upon deployment, or if the cluster is registered but hasn't connected to Azure for more than 30 days, the system won't allow new virtual machines (VMs) to be created or added. When this occurs, you'll see the following error message when attempting to create VMs:
 
 `There was a failure configuring the virtual machine role for 'vmname'. Job failed. Error opening "vmname" clustered roles. The service being accessed is licensed for a particular number of connections. No more connections can be made to the service at this time because there are already as many connections as the service can accept.`
 
