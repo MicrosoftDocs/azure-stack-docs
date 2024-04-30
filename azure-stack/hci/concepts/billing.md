@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/29/2024
+ms.date: 04/30/2024
 ---
 
 # Azure Stack HCI billing and payment
@@ -53,4 +53,4 @@ To manually upload core data to Azure, use the **`Sync-AzureStackHCI`** cmdlet.
 For related information, see also:
 
 - [Pricing Overview—How Azure Pricing Works](https://azure.microsoft.com/pricing/)
-- [Overview of Azure Cost Management and Billing](/azure/cost-management-billing/cost-management-billing-overview)
+- [Azure Cost and Billing](/azure/cost-management-billing/cost-management-billing-overview)
