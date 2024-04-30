@@ -23,11 +23,12 @@ The following operating systems (OS) are supported for the VMware source applian
 
 |Component  |Supported OS |
 |---------|---------|
-|Source environment     |VMware vCenter Server versions 7.0, 6.7, and 6.5         |
+|Source environment     |VMware vCenter Server version 7.0 <br> VMware vCenter Server version 6.7</br><br>VMware vCenter Server version 6.5         |
 |Source appliance     |VMware ESXi versions 6.5 or later         |
 |Target environment     |Azure Stack HCI, version 23H2         |
 |Target appliance     |Windows Server 2022         |
-|Guest VM (VMware)    |VMware ESXi versions 6.5 or later   |
+|Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
+|Guest VM (Linux)     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
 ## Supported geographies
 
