@@ -46,7 +46,7 @@ The following update scenarios are not supported in Windows Admin Center, but yo
 
 ## Next steps
 
-In this article, you learned how to upgrade AKS workload clusters in AKS hybrid. Next, you can:
+In this article, you learned how to upgrade AKS workload clusters in AKS enabled by Azure Arc. Next, you can:
 
 - [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)
