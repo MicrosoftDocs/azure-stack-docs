@@ -142,20 +142,17 @@ Follow these steps to configure the VM:
     sudo yum cloud-init --version
     ```
 
-1. Apply any latest updates to the VM.
+1. <!--CHECK why this is after cloud-init and not before--> Apply any latest updates to the VM.
 
     ```bash
     sudo yum -y update
     ```
-    <!--:::image type="content" source="../manage/media/virtual-machine-image-centos/validation-1.png" alt-text="Screenshot of example output for validation 1." lightbox="../manage/media/virtual-machine-image-centos/validation-1.png":::-->
-
-    <!--:::image type="content" source="../manage/media/virtual-machine-image-centos/validation-2.png" alt-text="Screenshot of example output for validation 2." lightbox="../manage/media/virtual-machine-image-centos/validation-2.png":::-->
 
 ### Step 4: Clean up residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
-1. <!--CHECK-->Clean `cloud-init` default configurations.
+1. Clean `cloud-init` default configurations. <!--CHECK should we use cloud-init clean or use cloud-init clean --logs --seed-->
 
     ```bash
     sudo yum clean all
@@ -178,6 +175,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
     ```
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
+1. Export a VHD or copy the VHD from your VM. Copy the VHD to user storage on the cluster shared volume on your Azure Stack HCI. Alternatively you can also copy the VHDX as a page blob to an Azure Storage account.
 
 ### Step 5: Create VM image
 
@@ -217,62 +215,19 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
     | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
 
 
-1. Use the VHDX of the VM to create a CentOS gallery image. Use this CentOS VM image to create Arc virtual machines on your Azure Stack HCI.
+1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Arc virtual machines on your Azure Stack HCI.
+
+    Make sure to copy the VHDX in user storage in the cluster shared volume of your Azure Stack HCI. For exmaple, the path could look like: `C:\ClusterStorage\UserStorage_1\linuxvhdx`.
 
     ```powershell
-    $ImagePath = (Get-VMHardDiskDrive -VMName "mycentosvmimg1").Path 
+    $ImagePath = "Path to user storage in CSV" 
 
-    $ImageName = "centos-server-ssvm" 
+    $ImageName = "mylinuxvmimg" 
 
     az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' 
     ```
 
-1. Validate that the image is created. 
-
-
-### Step 6: Create the VHD
-
-Export a VHD or copy the VHD from your VM. Run the following command to obtain the path:
-
-```powershell
-Get-VMHardDiskDrive -VMName "centos7-3"
-```
-
-Where in this example the path would be: `<Get-VMHardDiskDrive -VMName "centos7-3">.Path`
-
-
-### Step 7: Deploy the VM
-
-1. To get the `CustomLocationId` needed for the next step, run the following command and make note of the value:
-
-    ```azurecli
-    az customlocation list --resource-group $resourceGroup
-    ```
-
-1. Run the following commands to create the VM image, create a NIC, and then create the VM:
- 
-   ```azurecli
-    $location = "westeurope"
-    az stack-hci-vm image create --subscription $subscription -g $resourcegroup --custom-location $CustomLocationId --location $location --image-path "C:\ClusterStorage\Infrastructure_1\centos7.vhdx" --name $ImageName --os-type 'Linux'
- 
-    az stack-hci-vm  network nic create --name $nicName --resource-group $resourcegroup --custom-location $CustomLocationId --location $location --ip-address $ipaddress --subnet-id $logicalnetwork
- 
-    az stack-hci-vm  create --name $vmName -g $resourcegroup `--admin-username admin --admin-password password`
-    --computer-name $vmName `
-          --image $img.Id --location $location `
-    --authentication-type all --nics $vmNic --custom-location $clid  `--hardware-profile memory-mb="1024" processors="1" vm-size="Custom"
-    ```
-
-### Step 8: Validate deployment
-
-Validate your VM deployment from an `ssh` console (Example: `ssh -l admin 192.168.200.23`), and then run the following command from the VM to get status output:
-
-```azurecli
-sudo systemctl status mocguestagent
-```
-
-**Example status output:**
-:::image type="content" source="../manage/media/virtual-machine-image-centos/validation-3.png" alt-text="Screenshot of example output for validation." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-secure-boot-disabled.png":::
+1. Validate that the image is created.
 
 ## Next steps
 
