@@ -262,4 +262,4 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 
 ## Next steps
 
-- [Learn more about security in AKS Arc](concepts-security.md).
+- [Learn more about security in AKS Arc on Windows Server](concepts-security.md)

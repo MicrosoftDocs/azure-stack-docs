@@ -94,7 +94,7 @@ Next, use `kubectl` to apply the `policy-demo-linux.yaml` configuration, as foll
 kubectl apply -f policy-demo-linux.yaml
 ```
 
-## Create pods on Window nodes
+## Create pods on Windows nodes
 
 Create a client pod _pwsh_ and server pod _porter_ on the Windows nodes. 
 
@@ -353,5 +353,5 @@ kubectl delete namespace calico-demo
 
 In this article, you learned how to secure traffic between pods using network policies. Next, you can:
 
-- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)
