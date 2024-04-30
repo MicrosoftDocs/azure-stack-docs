@@ -30,7 +30,7 @@ Before you begin, make sure that the following prerequisites are completed.
 Follow these steps to prepare a CentOS image and create a VM image from that image:
 
 1. [Create a CentOS VM](#step-1-create-a-centos-vm).
-1. [Configure the VM](#step-2-connect-to-vm).
+1. [Configure the VM](#step-2-connect-to-vm-and-install-centos).
 1. [Configure VM](#step-3-configure-vm).
 1. [Clean up the residual configuration](#step-4-clean-up-residual-configuration).
 1. [Create a CentOS VM image](#step-5-create-vm-image).
@@ -88,7 +88,7 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 
 1. Select the VM from the Hyper-V Manager and then start the VM. The VM will boot from the ISO image that you provided.
 
-### Step 2: Connect to VM
+### Step 2: Connect to VM and install CentOS
 
 Once the VM is running, follow these steps:
 
@@ -126,7 +126,7 @@ Once the VM is running, follow these steps:
 
 ### Step 3: Configure VM
 
-Follow these steps to configure the VM that you provisioned earlier:
+Follow these steps to configure the VM:
 
 1. Connect and then sign into the VM using the root password that you created during the CentOS installation.
 1. Make sure that `cloud-init` was not installed.
@@ -145,8 +145,11 @@ Follow these steps to configure the VM that you provisioned earlier:
 1. Apply any latest updates to the VM.
 
     ```bash
-    sudo apt yum -y update
+    sudo yum -y update
     ```
+    <!--:::image type="content" source="../manage/media/virtual-machine-image-centos/validation-1.png" alt-text="Screenshot of example output for validation 1." lightbox="../manage/media/virtual-machine-image-centos/validation-1.png":::-->
+
+    <!--:::image type="content" source="../manage/media/virtual-machine-image-centos/validation-2.png" alt-text="Screenshot of example output for validation 2." lightbox="../manage/media/virtual-machine-image-centos/validation-2.png":::-->
 
 ### Step 4: Clean up residual configuration
 
@@ -224,11 +227,8 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image:
     az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' 
     ```
 
-1. Validate that the image is created. Here's example code and output for validation:
+1. Validate that the image is created. 
 
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/validation-1.png" alt-text="Screenshot of example output for validation 1." lightbox="../manage/media/virtual-machine-image-centos/validation-1.png":::
-
-    :::image type="content" source="../manage/media/virtual-machine-image-centos/validation-2.png" alt-text="Screenshot of example output for validation 2." lightbox="../manage/media/virtual-machine-image-centos/validation-2.png":::
 
 ### Step 6: Create the VHD
 
