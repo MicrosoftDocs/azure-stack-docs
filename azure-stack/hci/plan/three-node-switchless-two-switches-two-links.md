@@ -58,9 +58,9 @@ Each pair of storge adapters between the nodes will operate in different IP subn
 
 - StorageAutoIP parameter must be set to false, Switchless parameter must be set to true,  and the customer is responsible to specify the IPs on the ARM template used to deploy the Azure Stack HCI version 23H2 cluster from Azure.
 
-- In Azure Stack HCI 23H2 cloud deployments, scale out storage switchless clusters is not supported. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template).
+- In Azure Stack HCI 23H2 cloud deployments, scale out storage switchless clusters is not supported. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template.md).
 
-- In Azure Stack HCI 23H2 cloud deployments, it is only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template).
+- In Azure Stack HCI 23H2 cloud deployments, it is only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template).
 
 For more information, see [Network ATC overview](../concepts/network-atc-overview).
 
@@ -70,7 +70,7 @@ All physical compute hosts must access the management logical network. For IP ad
 
 A DHCP server can automatically assign IP addresses for the management network, or you can manually assign static IP addresses. When DHCP is the preferred IP assignment method, DHCP reservations without expiration are recommended.
 
-For information, see [DHCP Network considerations for cloud deployment](../plan/cloud-deployment-network-considerations#dhcp-ip-assignment)
+For information, see [DHCP Network considerations for cloud deployment](cloud-deployment-network-considerations.md#dhcp-ip-assignment)
 
 The management network supports two different VLAN configurations - Native or Tagged traffic:
 
@@ -84,7 +84,7 @@ The management network supports two different VLAN configurations - Native or Ta
 
 The Management network supports traffic used by the administrator for management of the cluster including Remote Desktop, Windows Admin Center, and Active Directory.
 
-For more information, see [Management VLAN network considerations](../plan/cloud-deployment-network-considerations#management-vlan-id).
+For more information, see [Management VLAN network considerations](cloud-deployment-network-considerations.md#management-vlan-id).
 
 ### Compute VLANs
 
