@@ -19,17 +19,17 @@ sections:
 
       - question: How can I purchase this license?
         answer: |
-          This license is exclusively available through select OEM partners. Contact your OEM partner for more information.
+          This license is exclusively available through Dell, HPE, and Lenovo as a pre-installed license activated in Azure. Contact your OEM partner for more information.
 
       - question: Do I have to license all physical cores?
         answer: |
-          Every physical core in the server must be licensed. This license doesn't support a dynamic core license model. The base license covers up to 16 cores and extra two-core and four-core add-ons are available for systems with 16-cores or more. 
+          Yes, every physical core in the server must be licensed. This license doesn't support a dynamic core license model. The base license covers up to 16 cores and extra two-core and four-core add-ons are available for systems with 16-cores or more. 
           
           For systems with 16-cores or more, you may combine licenses to cover all cores. For example, a 36-core system requires two 16-core licenses plus a four-core add-on license.  
 
-      - question: Is annual renewal or subscription required for this license?
+      - question: Is an annual renewal or subscription required for this license?
         answer: |
-          This license doesn't require annual renewals or subscriptions. It's a one-time prepaid license, exclusively offered through specific OEM partners. Once acquired, the license remains valid for the lifetime of the hardware. You can continue using the license as long as the associated hardware, where the Azure Stack HCI OS is installed, remains functional and supported.
+          No, this license doesn't require annual renewals or subscriptions. It's a prepaid license that is tied to the life of the hardware that the Azure Stack HCI OS is installed on. Once acquired, the license remains valid for the lifetime of the hardware. You can continue using the license as long as the associated hardware, where the Azure Stack HCI OS is installed, remains functional and supported.
       
       - question: Which version of Windows Server is supported for this license?
         answer: |
@@ -45,12 +45,12 @@ sections:
 
       - question: Are mixed-node scenarios supported?
         answer: |
-          This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
+          No, this license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
 
       - question: Does Azure Kubernetes Service offer unlimited virtualization?
         answer: |
-          AKS on Azure Stack HCI offers unlimited containers like Windows Server Datacenter offers unlimited virtualization. You can run as many containers and VMs as your infrastructure supports, without incurring extra licensing costs.
+          Yes, AKS on Azure Stack HCI offers unlimited containers like Windows Server Datacenter offers unlimited virtualization. You can run as many containers and VMs as your infrastructure supports, without incurring extra licensing costs.
 
       - question: Is a product key or Certificate of Authenticity (COA) required?
         answer: |
-          This license doesn't include product keys or Certificate of Authenticity (COA), the license is automatically authenticated once you register the device in Azure. Should you have any failure that requires a re-install, contact your OEM vendor.
+          No, this pre-installed license doesn't include product keys or Certificate of Authenticity (COA), the license is automatically authenticated once you register the device in Azure. Should you have any failure that requires a re-install, contact your OEM vendor.

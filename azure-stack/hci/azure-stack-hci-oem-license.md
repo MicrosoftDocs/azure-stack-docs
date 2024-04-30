@@ -18,7 +18,7 @@ This article covers the Azure Stack HCI OEM license, its benefits, license requi
 
 ## About the license
 
-The Azure Stack HCI OEM license is designed for Azure Stack HCI hardware including Azure Stack HCI Premier Solutions, integrated systems, and validated nodes. The license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure:
+The Azure Stack HCI OEM pre-installed license is designed for Azure Stack HCI hardware including Azure Stack HCI Premier Solutions, integrated systems, and validated nodes. The license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure:
 
 - Azure Stack HCI
 - Azure Kubernetes Services (AKS)
@@ -30,9 +30,9 @@ For systems with 16 cores or more, there are extra two-core and four-core licens
 
 ## Benefits
 
-The Azure Stack HCI OEM license simplifies the licensing and activation process and reduces costs and operational complexity. Other benefits include:
+The Azure Stack HCI pre-installed OEM license simplifies the licensing and activation process and reduces costs and operational complexity. Other benefits include:
 
-- A single license for Azure Stack HCI, AKS, and Windows Server guest VMs.
+- A single license for Azure Stack HCI, AKS, and Windows Server 2022 guest VMs.
 
 - No tools or keys to activate the Azure Stack HCI operating system.
 
@@ -40,7 +40,7 @@ The Azure Stack HCI OEM license simplifies the licensing and activation process 
 
 ## License requirements
 
-An active Azure account is required for license activation. When you purchase hardware and activate this license, you should:
+An active Azure account is required for license activation. When you purchase the pre-installed hardware and activate this license, you should:
 
 - Install the latest versions of Azure Stack HCI, AKS, and Windows Server Datacenter 2022 guest VMs.
 
@@ -50,7 +50,7 @@ An active Azure account is required for license activation. When you purchase ha
 
 ## Verify license status
 
-To verify if you have an active Azure Stack HCI OEM License, use these steps:
+To verify if you have an active Azure Stack HCI pre-installed OEM License, use these steps:
 
 1. Go to [the Azure portal](https://portal.azure.com).
 2. Search for your Azure Stack HCI cluster.
