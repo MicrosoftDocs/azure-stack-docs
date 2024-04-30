@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/26/2024
+ms.date: 04/30/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -35,24 +35,26 @@ For more information, see [Manage security defaults on Azure Stack HCI](../manag
 
 ## Windows Defender Application Control
 
-Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
+WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
 
-To achive such goal, WDAC provides two main operation modes, Enforcement mode and Audit mode. In enforcement mode, untrusted code will be blocked and events will be recorded. In Audit mode, untrusted code will be allowed to run and events will be recorded. To learn more about WDAC related events see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
+WDAC provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code will be blocked and events will be recorded. In Audit mode, untrusted code will be allowed to run and events will be recorded. To learn more about WDAC-related events, see [List of Events](windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
 
-> [!NOTE]
-> Microsoft recommend to always run Application control (WDAC) layer in enforcement mode to drasticalty reduce your security risk exposure.
+> [!IMPORTANT]
+> To minimize security risk, always run WDAC in Enforcement mode.
 
 ### About WDAC policy design
 
-Microsoft provides base signed policies for both Enforcement mode and audit mode for Azure Stack HCI, additionanly these policies comes with a predefine set of platform behaviour rules and additionl block rules to further leverage the application control layer.
+Microsoft provides base signed policies for both Enforcement mode and Audit mode for Azure Stack HCI.
+
+Additionally, these policies include a predefined set of platform behaviour rules and block rules to further leverage the application control layer.
 
 #### Composition of base policies
 
-Azure Stack HCI base policies consists of the following sections:
+Azure Stack HCI base policies include the following sections:
 
 - **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID, and more.
 - **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a small set of the option rules tied to their base policy.
-- **Allow or deny Rules**: These rules define the code trust boundaries. The rules can be based on Publishers, Signers, File Hash and more.
+- **Allow and Deny Rules**: These rules define code trust boundaries. The rules can be based on Publishers, Signers, File Hash, and more.
 
 #### Option rules
 
@@ -86,14 +88,13 @@ The Allow rules in the base policy will allow all the Microsoft components deliv
 The Deny rules will block user mode applications and kernel components considered unsafe for the security posture of the solution.
 
 > [!NOTE]
-> The allow and deny rules provided in the base policy are updated regularly to warranty the product funtionality and maximize the protection of the solution. 
+> The Allow and Deny rules in the base policy are updated regularly to improve product funtionality and maximize protection of your solution.
 
-For learn more about the Deny rules, see the following lists:
+To learn more about Deny rules, see:
 
 - [Driver blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
 
 - [User Mode blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/applications-that-can-bypass-wdac).
-
 
 ## BitLocker encryption
 
