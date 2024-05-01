@@ -104,7 +104,7 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 :::image type="content" source="media/migrate-vmware-replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-vmware-replicate/download-target-appliance.png":::
 
-#### Install using a .OVA file
+#### Install using an .OVA file
 
 This step applies only if you downloaded the .OVA file.
 
@@ -264,7 +264,7 @@ This step applies only if you downloaded the .zip file.
     1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
 
         > [!NOTE]
-        > - We recommend that you create new a storage account to be used as your cache storage account. > > - Once created, the storage account location can't be changed.
+        > - We recommend that you create new a storage account to be used as your cache storage account. Once created, the storage account location can't be changed.
 
     1. Select a resource group to associate with your migrated VMs.
    
@@ -308,7 +308,7 @@ This step applies only if you downloaded the .zip file.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1a.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1a.png":::
 
 
 ## Next steps

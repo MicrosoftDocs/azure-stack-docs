@@ -18,7 +18,7 @@ This article lists the system requirements for migrating VMware virtual machines
 
 ## Supported operating systems
 
-The following operating systems (OS) are supported for the VMware source appliance, target appliance, and for the guest VMs that you are migrating.
+The following operating systems (OSs) are supported for the VMware source appliance, target appliance, and for the guest VMs that you are migrating.
 
 
 |Component  |Supported OS |
@@ -58,7 +58,7 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 - VMware server is supported for both standalone server and cluster configuration.
 
-    <!--CHECK--> You can discover and migrate standalone (non-highly available) VMs on standalone VMware hosts. However, standalone VMware VMs hosted on clustered VMware hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.
+    You can discover and migrate standalone (non-highly available) VMs on standalone VMware hosts. However, standalone VMware VMs hosted on clustered VMware hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.<!--CHECK--> 
 
 - The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 

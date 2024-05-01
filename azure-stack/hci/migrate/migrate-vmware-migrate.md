@@ -31,15 +31,15 @@ Before you migrate your VMware VMs:
 
 1. On the **Migration tools** tile, select **Overview**.
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-1.png" alt-text="Screenshot Azure Migrate project > Server, databases and webapps in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-1.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-1.png" alt-text="Screenshot of Server, databases and webapps page in Azure Migrate in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-1.png":::
 
 1. Go to **Azure Stack HCI migration > Replications**.
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot showing Azure Stack HCI migration > Replications in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png" alt-text="Screenshot showing Replications in Azure Stack HCI migration in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-11.png":::
 
 1. From the top command bar of the **Replications** page, select **Migrate** to migrate multiple VMs that are ready.  
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot Azure Migrate: Migration and modernization > Replications in Azure portal with Migrate option selected." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png" alt-text="Screenshot with Replications page in Azure portal with Migrate option selected." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-2.png":::
 
     Alternatively, you can select **Migrate** from the context menu for a single VM that is ready to migrate.
 
