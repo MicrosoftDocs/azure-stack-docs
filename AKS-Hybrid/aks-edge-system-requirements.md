@@ -20,6 +20,7 @@ This article describes the requirements for the host machine that runs AKS Edge 
   | Total physical memory | 4 GB with at least 2.5 GB free | 8 GB with at least 4.5 GB free  |
   | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
   | Disk space | At least 14 GB free |At least 14 GB free |
+  | Disk type| Standard SSD | Premium SSD required for Azure VMs |
 
 To better understand the concept of vCPUs, [see this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).
 
