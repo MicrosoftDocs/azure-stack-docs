@@ -4,7 +4,7 @@ description: Learn how to create a manual import job to import data from an Azur
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 04/10/2024
+ms.date: 05/01/2024
 ms.reviewer: brianl
 ---
 
@@ -29,7 +29,7 @@ Manually importing data from a blob container into an Azure Managed Lustre file 
 
 To configure the import options and start the job, follow these steps:
 
-1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane.
+1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane under **Settings**.
 1. Select **+ Create new job**.
 1. Select **Import** from the **Job type** dropdown.
 1. Enter a name for the import job in the **Job Name** field.
@@ -40,7 +40,7 @@ To configure the import options and start the job, follow these steps:
 
 The following screenshot shows the import job configuration settings in Azure portal:
 
-TODO: :::image type="content" source="{source}" alt-text="{alt-text}" lightbox="{source}":::
+:::image type="content" source="./media/manual-import/create-manual-import.png" alt-text="Screenshot showing portal setup for creating a manual import job." lightbox="./media/manual-import/create-manual-import.png":::
 
 ## Monitor the import job
 
@@ -49,12 +49,12 @@ After the import job is created, you can monitor its progress to make sure it co
 To view the job details, follow these steps:
 
 1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane under **Settings**.
-1. Select the import job you want to monitor from the list of jobs.
+1. Select the import job you want to monitor from the list of recent jobs.
 1. The **Job details** pane displays information about the job, including the job status, start time, blobs imported, and any errors or conflicts that occurred during the import process.
 
 The following screenshot shows the job details for an import job in the Azure portal:
 
-TODO: :::image type="content" source="{source}" alt-text="{alt-text}" lightbox="{source}":::
+:::image type="content" source="./media/manual-import/manual-import-job-details.png" alt-text="Screenshot showing job details for a manual import job." lightbox="./media/manual-import/manual-import-job-details.png":::
 
 Once the job completes, you can view the logging container to see detailed information about the import process, including any errors or conflicts that occurred. This information is only available after the job completes.
 
