@@ -56,11 +56,11 @@ Each pair of storge adapters between the nodes will operate in different IP subn
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
-- StorageAutoIP parameter must be set to false, Switchless parameter must be set to true,  and the customer is responsible to specify the IPs on the ARM template used to deploy the Azure Stack HCI version 23H2 cluster from Azure.
+- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and the customer is responsible to specify the IPs on the ARM template used to deploy the Azure Stack HCI version 23H2 cluster from Azure.
 
-- In Azure Stack HCI 23H2 cloud deployments, scale out storage switchless clusters is not supported. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template.md).
+- In Azure Stack HCI version 23H2 cloud deployments, scale out storage switchless clusters is not supported. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template.md).
 
-- In Azure Stack HCI 23H2 cloud deployments, it is only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template).
+- In Azure Stack HCI version 23H2 cloud deployments, it is only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template).
 
 For more information, see [Network ATC overview](/concepts/network-atc-overview.d).
 
@@ -72,7 +72,7 @@ A DHCP server can automatically assign IP addresses for the management network, 
 
 For information, see [DHCP Network considerations for cloud deployment](cloud-deployment-network-considerations.md#dhcp-ip-assignment)
 
-The management network supports two different VLAN configurations - Native or Tagged traffic:
+The management network supports two different VLAN configurations - Native and Tagged:
 
 - Native VLAN for management network does not require to supply a VLAN ID.
 
@@ -106,17 +106,17 @@ For three-node storage switchless patterns, two Network ATC intents are created.
 
 - Intent Type: Management and Compute
 - Intent Mode: Cluster mode
-- Teaming: Yes. pNIC01 and pNIC02 Team
-- Default Management VLAN: Configured VLAN for management adapters isn’t modified
-- PA & Compute VLANs and vNICs: Network ATC is transparent to PA vNICs and VLAN or compute VM vNICs and VLANs
+- Teaming: Yes. pNIC01 and pNIC02 team.
+- Default Management VLAN: Configured VLAN for management adapters isn’t modified.
+- PA and Compute VLANs and vNICs: Network ATC is transparent to PA vNICs and VLAN or compute VM vNICs and VLANs.
 
 ### Storage intent
 
 - Intent type: Storage
 - Intent mode: Cluster mode
 - Teaming: No. RDMA NICs use SMB Multichannel to provide resiliency and bandwidth aggregation.
-- Default VLANs: single VLAN for all subnets
-- Storage Auto IP: False. This pattern requires manual IP configuration or ARM template IPs definition.
+- Default VLANs: single VLAN for all subnets.
+- Storage Auto IP: False. This pattern requires manual IP configuration or ARM template IP definition.
 
 - Six subnets required (user defined):
     - Storage Network 1: 10.0.1.0/24 – Node1 -> Node2
