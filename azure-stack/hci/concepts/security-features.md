@@ -15,7 +15,7 @@ ms.date: 04/30/2024
 
 Azure Stack HCI is a secure-by-default product that has more than 300 security settings enabled right from the start. Default security settings provide a consistent security baseline to ensure that devices start in a known good state.
 
-This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. This includes security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
+This article provides a brief conceptual overview of the various security features associated with your Azure Stack HCI cluster. Features include security defaults, Windows Defender for Application Control (WDAC), volume encryption via BitLocker, secret rotation, local built-in user accounts, Microsoft Defender for Cloud, and more.
 
 ## Security defaults
 
@@ -23,7 +23,7 @@ Your Azure Stack HCI has more than 300 security settings enabled by default that
 
 You can monitor the security baseline and secured-core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
 
-With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and auto-remediation allow you to have a consistent and reliable security posture throughout the lifecycle of the device.
+With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and autoremediation allow you to have a consistent and reliable security posture throughout the lifecycle of the device.
 
 Secure baseline on Azure Stack HCI:
 
@@ -37,7 +37,7 @@ For more information, see [Manage security defaults on Azure Stack HCI](../manag
 
 WDAC is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
 
-WDAC provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code will be blocked and events will be recorded. In Audit mode, untrusted code will be allowed to run and events will be recorded. To learn more about WDAC-related events, see [List of Events](windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
+WDAC provides two main operation modes, Enforcement mode and Audit mode. In Enforcement mode, untrusted code is blocked and events are recorded. In Audit mode, untrusted code is allowed to run and events are recorded. To learn more about WDAC-related events, see [List of Events](/windows/security/application-security/application-control/windows-defender-application-control/operations/event-id-explanations).
 
 > [!IMPORTANT]
 > To minimize security risk, always run WDAC in Enforcement mode.
@@ -46,7 +46,7 @@ WDAC provides two main operation modes, Enforcement mode and Audit mode. In Enfo
 
 Microsoft provides base signed policies for both Enforcement mode and Audit mode for Azure Stack HCI.
 
-Additionally, these policies include a predefined set of platform behaviour rules and block rules to further leverage the application control layer.
+Additionally, these policies include a predefined set of platform behavior rules and block rules to apply the application control layer.
 
 #### Composition of base policies
 
@@ -85,7 +85,7 @@ For more information, see the full documented [List of option rules](/windows/se
 #### Allow and Deny rules
 
 The Allow rules in the base policy will allow all the Microsoft components delivered by the OS and the cloud deployments to be trusted. 
-The Deny rules will block user mode applications and kernel components considered unsafe for the security posture of the solution.
+The Deny rules block user mode applications and kernel components considered unsafe for the security posture of the solution.
 
 > [!NOTE]
 > The Allow and Deny rules in the base policy are updated regularly to improve product funtionality and maximize protection of your solution.
@@ -98,7 +98,7 @@ To learn more about Deny rules, see:
 
 ## BitLocker encryption
 
-Data-at-rest encryption is enabled on data volumes created during deployment. These data volumes include both infrastructure volumes and workload volumes. When you deploy your cluster, you have the option to modify security settings.
+Data-at-rest encryption is enabled on data volumes created during deployment. These data volumes include both infrastructure volumes and workload volumes. When you deploy your cluster, you can modify security settings.
 
 By default, data-at-rest encryption is enabled during deployment. We recommend that you accept the default setting.
 
@@ -125,12 +125,12 @@ In this release, the following local built-in users, associated with `RID 500` a
 
 The orchestrator in Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. All the services running on the cluster have authentication and encryption certificates associated with them.
 
-To ensure security, we have implemented internal secret creation and rotation capabilities. When you review your cluster nodes, you see several certificates created under the path LocalMachine/Personal certificate store (`Cert:\LocalMachine\My`).
+To ensure security, we implement internal secret creation and rotation capabilities. When you review your cluster nodes, you see several certificates created under the path LocalMachine/Personal certificate store (`Cert:\LocalMachine\My`).
 
 In this release, the following capabilities are enabled:
 
 - The ability to create certificates during deployment and after cluster scale operations.
-- Automated auto-rotation mechanism before certificates expire, and an option to rotate certificates during the lifetime of the cluster.
+- Automated autorotation before certificates expire, and an option to rotate certificates during the lifetime of the cluster.
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
@@ -156,7 +156,7 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 ## Microsoft Defender for Cloud (preview)
 
-Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through auto-provisioning and protection with Azure services.
+Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through autoprovisioning and protection with Azure services.
 
 With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual servers and Arc VMs.
 
