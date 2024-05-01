@@ -10,7 +10,7 @@ ms.reviewer: brianl
 
 # Create a manual import job from Blob Storage to a file system
 
-Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can configure this integration during [cluster creation](create-file-system-portal.md#blob-integration), or you can manually create an import job any time after the cluster is created.
+Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can configure this integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can manually create an import job any time after the cluster is created.
 
 In this article, you learn how to use the Azure portal to create a manual import job to import data from a blob container into an existing Azure Managed Lustre file system.
 

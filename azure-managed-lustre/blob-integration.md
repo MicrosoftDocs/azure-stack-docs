@@ -38,11 +38,11 @@ Azure Managed Lustre works with storage accounts that have hierarchical namespac
 
 ## Import data from Blob Storage
 
-You can configure integration with Blob Storage during [cluster creation](create-file-system-portal.md#blob-integration), or you can [manually create an import job](create-manual-import-job.md) any time after the cluster is created.
+You can configure integration with Blob Storage during [cluster creation](create-file-system-portal.md#blob-integration), and you can [manually create an import job](create-manual-import-job.md) any time after the cluster is created.
 
 ### Blob container requirements
 
-When configuring an import job, you must identify two separate blob containers: the container to import and the logging container. The container to import contains the data that you want to import into the Azure Managed Lustre file system. The logging container is used to store logs for the import job. These two containers must be in the same storage account. To learn more about the requirements for the blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
+When configuring blob integration during cluster creation, you must identify two separate blob containers: the container to import and the logging container. The container to import contains the data that you want to import into the Azure Managed Lustre file system. The logging container is used to store logs for the import job. These two containers must be in the same storage account. To learn more about the requirements for the blob container, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
 
 ### Import prefix
 
