@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Stack HCI using 
 description: Learn the discovery and replication process for VMware VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/09/2024
+ms.date: 05/01/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -198,11 +198,11 @@ This step applies only if you downloaded the .zip file.
 
 1. After the appliance is registered, under **Provide Azure Stack HCI cluster information**, select **Add cluster information**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-info.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-vmware-replicate/add-cluster-info.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-information.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-vmware-replicate/add-cluster-information.png":::
 
 1. For your target Azure Stack HCI cluster, enter the cluster fully qualified domain name (FQDN), domain name, username, and password, and then select **Save**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-info-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-cluster-info-2.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-cluster-information-2.png":::
 
 1. Once the credentials are accepted, the status changes to **Validated**. Select **Configure**.
 
@@ -308,7 +308,7 @@ This step applies only if you downloaded the .zip file.
  
 1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
  
-    :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1a.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
 
 ## Next steps
