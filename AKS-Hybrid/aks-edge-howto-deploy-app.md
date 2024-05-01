@@ -126,7 +126,7 @@ Open a web browser and locate the **NodePort** to access your service:
 To clean up, delete all resources using the following command:
 
 ```powershell
-kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/samples/others/win-sample.yaml
+kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/others/win-sample.yaml
 ```
 
 ## Deploying your own applications
