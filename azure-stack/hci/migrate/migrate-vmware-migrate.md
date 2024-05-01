@@ -51,14 +51,14 @@ Before you migrate your VMware VMs:
     1. Select whether or not you would like to shut down VM(s) before migration. We recommend that you shut down VMs as that ensures no data is lost.
     1. Select **Migrate** to start the migration. A notification appears that the migration has started.
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3a.png" alt-text="Screenshot of Migrate page with context menu in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3a.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-a.png" alt-text="Screenshot of Migrate page with context menu in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-a.png":::
     
 1. Refresh the page periodically to view the migration status. You can also select the migration status at any time to view the progress details. 
 
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3b.png" alt-text="Screenshot of Migrate page with migration status selected in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3b.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-b.png" alt-text="Screenshot of Migrate page with migration status selected in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-b.png":::
 
     The **Planned failover** blade indicates the various migration tasks in progress.
-    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3c.png" alt-text="Screenshot of Planned failover for a VM in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3c.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-c.png" alt-text="Screenshot of Planned failover for a VM in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-c.png":::
 
     The migration status changes from **Migration in progress** to **Completed** when the migration is complete.
 
