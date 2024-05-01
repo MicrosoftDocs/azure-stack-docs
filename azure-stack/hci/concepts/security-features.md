@@ -19,17 +19,17 @@ This article provides a brief conceptual overview of the various security featur
 
 ## Security defaults
 
-Your Azure Stack HCI has more than 300 security settings enabled by default that provide a consistent security baseline, a baseline management system, and an associated drift control mechanism.
+Your Azure Stack HCI has security settings enabled by default that provide a consistent security baseline, a baseline management system, and a drift control mechanism.
 
 You can monitor the security baseline and secured-core settings during both deployment and runtime. You can also disable drift control during deployment when you configure security settings.
 
-With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and autoremediation allow you to have a consistent and reliable security posture throughout the lifecycle of the device.
+With drift control applied, security settings are refreshed every 90 minutes. This refresh interval ensures remediation of any changes from the desired state. Continuous monitoring and autoremediation enable a consistent and reliable security posture throughout the lifecycle of the device.
 
 Secure baseline on Azure Stack HCI:
 
 - Improves the security posture by disabling legacy protocols and ciphers.
-- Reduces OPEX with a built-in drift protection mechanism and enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
-- Enables you to closely meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
+- Reduces OPEX with a built-in drift protection mechanism that enables consistent at-scale monitoring via the Azure Arc Hybrid Edge baseline.
+- Enables you to meet Center for Internet Security (CIS) benchmark and Defense Information System Agency (DISA) Security Technical Implementation Guide (STIG) requirements for the OS and recommended security baseline.
 
 For more information, see [Manage security defaults on Azure Stack HCI](../manage/manage-secure-baseline.md).
 
@@ -44,21 +44,21 @@ WDAC provides two main operation modes, Enforcement mode and Audit mode. In Enfo
 
 ### About WDAC policy design
 
-Microsoft provides base signed policies for both Enforcement mode and Audit mode for Azure Stack HCI.
-
-Additionally, these policies include a predefined set of platform behavior rules and block rules to apply the application control layer.
+Microsoft provides base signed policies on Azure Stack HCI for both Enforcement mode and Audit mode. Additionally, policies include a predefined set of platform behavior rules and block rules to apply to the application control layer.
 
 #### Composition of base policies
 
 Azure Stack HCI base policies include the following sections:
 
 - **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID, and more.
-- **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a small set of the option rules tied to their base policy.
-- **Allow and Deny Rules**: These rules define code trust boundaries. The rules can be based on Publishers, Signers, File Hash, and more.
+- **Option Rules**: These rules define policy behavior. Supplemental policies can only differ from a small set of the option rules tied to their base policy.
+- **Allow and Deny Rules**: These rules define code trust boundaries. Rules can be based on Publishers, Signers, File Hash, and more.
 
 #### Option rules
 
-This section discussed the option rules enabled by the base policy. For the enforced policy, the following option rules are enabled by default:
+This section discussed the option rules enabled by the base policy. 
+
+For the enforced policy, the following option rules are enabled by default:
 
 |Option rule|Value|
 |-----|-----|
@@ -80,12 +80,11 @@ Audit policy adds the following option rules to the base policy:
 |-----|-----|
 |Enabled|Audit Mode (Default)|
 
-For more information, see the full documented [List of option rules](/windows/security/application-security/application-control/windows-defender-application-control/design/select-types-of-rules-to-create#table-1-windows-defender-application-control-policy---policy-rule-options).
+For more information, see the full [List of option rules](/windows/security/application-security/application-control/windows-defender-application-control/design/select-types-of-rules-to-create#table-1-windows-defender-application-control-policy---policy-rule-options).
 
 #### Allow and Deny rules
 
-The Allow rules in the base policy will allow all the Microsoft components delivered by the OS and the cloud deployments to be trusted. 
-The Deny rules block user mode applications and kernel components considered unsafe for the security posture of the solution.
+Allow rules in the base policy allow all Microsoft components delivered by the OS and the cloud deployments to be trusted. Deny rules block user mode applications and kernel components considered unsafe for the security posture of the solution.
 
 > [!NOTE]
 > The Allow and Deny rules in the base policy are updated regularly to improve product funtionality and maximize protection of your solution.
@@ -102,7 +101,7 @@ Data-at-rest encryption is enabled on data volumes created during deployment. Th
 
 By default, data-at-rest encryption is enabled during deployment. We recommend that you accept the default setting.
 
-You must store BitLocker recovery keys in a secure location outside of the system. Once Azure Stack HCI is successfully deployed, you can retrieve BitLocker recovery keys.
+Once Azure Stack HCI is successfully deployed, you can retrieve BitLocker recovery keys. You must store BitLocker recovery keys in a secure location outside of the system.
 
 For more information about BitLocker encryption, see:
 
@@ -111,11 +110,11 @@ For more information about BitLocker encryption, see:
 
 ## Local built-in user accounts
 
-In this release, the following local built-in users, associated with `RID 500` and `RID 501`, are available on your Azure Stack HCI system:
+In this release, the following local built-in users associated with `RID 500` and `RID 501` are available on your Azure Stack HCI system:
 
 |Name in initial OS image |Name after deployment |Enabled by default |Description |
 |-----|-----|-----|-----|
-|Administrator |ASBuiltInAdmin |True |Built-in account for administering the computer/domain |
+|Administrator |ASBuiltInAdmin |True |Built-in account for administering the computer/domain. |
 |Guest |ASBuiltInGuest |False |Built-in account for guest access to the computer/domain, protected by the security baseline drift control mechanism. |
 
 > [!IMPORTANT]
@@ -123,7 +122,7 @@ In this release, the following local built-in users, associated with `RID 500` a
 
 ## Secret creation and rotation
 
-The orchestrator in Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. All the services running on the cluster have authentication and encryption certificates associated with them.
+The orchestrator in Azure Stack HCI requires multiple components to maintain secure communications with other infrastructure resources and services. All services running on the cluster have authentication and encryption certificates associated with them.
 
 To ensure security, we implement internal secret creation and rotation capabilities. When you review your cluster nodes, you see several certificates created under the path LocalMachine/Personal certificate store (`Cert:\LocalMachine\My`).
 
@@ -134,13 +133,13 @@ In this release, the following capabilities are enabled:
 - The ability to monitor and alert whether certificates are still valid.
 
 > [!NOTE]
-> This action takes about ten minutes, depending on the size of the cluster.
+> Secret creation and rotation operations take about ten minutes to complete, depending on the size of the cluster.
 
 For more information, see [Manage secrets rotation](../manage/manage-secrets-rotation.md).
 
 ## Syslog forwarding of security events
 
-For customers and organizations that require their own local SIEM, Azure Stack HCI version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
+For customers and organizations that require their own local security information and event management (SIEM) system, Azure Stack HCI version 23H2 includes an integrated mechanism that enables you to forward security-related events to a SIEM.
 
 Azure Stack HCI has an integrated syslog forwarder that, once configured, generates syslog messages defined in RFC3164, with the payload in Common Event Format (CEF).
 
@@ -156,7 +155,7 @@ For more information, see [Manage syslog forwarding](../manage/manage-syslog-for
 
 ## Microsoft Defender for Cloud (preview)
 
-Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud with no deployment overhead through autoprovisioning and protection with Azure services.
+Microsoft Defender for Cloud is a security posture management solution with advanced threat protection capabilities. It provides you with tools to assess the security status of your infrastructure, protect workloads, raise security alerts, and follow specific recommendations to remediate attacks and address future threats. It performs all these services at high speed in the cloud through autoprovisioning and protection with Azure services, with no deployment overhead.
 
 With the basic Defender for Cloud plan, you get recommendations on how to improve the security posture of your Azure Stack HCI system at no extra cost. With the paid Defender for Servers plan, you get enhanced security features including security alerts for individual servers and Arc VMs.
 
