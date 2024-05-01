@@ -7,7 +7,7 @@ metadata:
   ms.author: cosdar
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 03/25/2024
+  ms.date: 05/01/2024
 title: Azure Stack HCI FAQ
 summary: The Azure Stack HCI FAQ provides information on Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server.
 
@@ -16,15 +16,26 @@ sections:
     questions:
       - question: How does Azure Stack HCI use the cloud?
         answer: |
-          Azure Stack HCI is an on-premises hyperconverged infrastructure stack delivered as an Azure hybrid service. You install the Azure Stack HCI software on physical servers that you control on your premises. Then you connect to Azure for cloud-based monitoring, support, billing, and optional management and security features. This FAQ section clarifies how Azure Stack HCI uses the cloud by addressing frequently asked questions about connectivity requirements and behavior.
+          Azure Stack HCI is an on-premises hyperconverged infrastructure stack delivered as an Azure hybrid service. You install the Azure Stack HCI software on physical servers that you control on your premises.
+          
+          Then you connect to Azure for cloud-based monitoring, support, billing, and optional management and security features.
+          
+          This FAQ section clarifies how Azure Stack HCI uses the cloud by addressing frequently asked questions about connectivity requirements and behavior.
 
       - question: Does my data stored on Azure Stack HCI get sent to the cloud?
         answer: |
           No. Customer data, including the names, metadata, configuration, and contents of your on-premises virtual machines (VMs) is never sent to the cloud unless you turn on more services, like Azure Backup or Azure Site Recovery, or unless you enroll those VMs individually into cloud management services like Azure Arc.
 
-          Because Azure Stack HCI doesn't store customer data in the cloud, business continuity disaster recovery (BCDR) for the customer's on-premises data is defined and controlled by the customer. To set up your own site-to-site replication using a stretched cluster, see [Stretched clusters overview](concepts/stretched-clusters.md). Stretched cluster functionality only available in Azure Stack HCI, version 22H2.
+          Because Azure Stack HCI doesn't store customer data in the cloud, business continuity disaster recovery (BCDR) for the customer's on-premises data is defined and controlled by the customer.
           
-          To learn more about the diagnostic data we collect to keep Azure Stack HCI secure, up to date, and working as expected, see [Azure Stack HCI data collection](concepts/data-collection.md) and [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+          To set up your own site-to-site replication using a stretched cluster, see [Stretched clusters overview](concepts/stretched-clusters.md). Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
+          
+          To learn more about the diagnostic data we collect to keep Azure Stack HCI secure, up to date, and working as expected, see: 
+          
+          [Azure Stack HCI data collection](concepts/data-collection.md).
+          [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+          [Collect diagnostic logs for Azure Stack HCI](manage/collect-logs.md).
+          [Get support for Azure Stack HCI deployment issues](manage/get-support-for-deployment-issues.md).
 
       - question: Does the control plane for Azure Stack HCI go through the cloud?
         answer: |
@@ -78,9 +89,9 @@ sections:
         answer: |
           Azure Stack HCI supports several guest operating systems. For more information, see [Supported Windows guest operating systems for Hyper-V on Windows Server](/windows-server/virtualization/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows).
 
-      - question: Can I upgrade from Windows Server 2019 to Azure Stack HCI?
+      - question: Can I upgrade from Windows Server to Azure Stack HCI?
         answer: |
-          There's no in-place upgrade from Windows Server to Azure Stack HCI at this time. Stay tuned for specific migration guidance for customers running hyperconverged clusters based on Windows Server 2019 and 2016.
+          There's no in-place upgrade from Windows Server to Azure Stack HCI at this time. However, you can migrate your VM workloads from Windows Server to Azure Stack HCI using Azure Migrate. For more information, see [Overview of Azure Migrate based migration for Azure Stack HCI (preview)](/migrate/migration-azure-migrate-hci-overview.md).
           
       - question: What Azure services can I connect to Azure Stack HCI?
         answer: |
