@@ -39,29 +39,22 @@ The following procedures tell how to:
 
 To create a manual export (archive) job to export changed data from an Azure Managed Lustre file system in the Azure portal, do the following steps:
 
-1. Sign in to [the Azure portal](https://portal.azure.com), and open your Azure Managed Lustre file system.
-1. Under **Settings**,  open the **Blob integration** pane.
+1. In the Azure portal, open your Azure Managed Lustre file system and navigate to the **Blob integration** pane under **Settings**.
+1. Select **+ Create new job**.
 
-    :::image type="content" source="./media/export-with-archive-jobs/select-blob-integration-settings.png" alt-text="Screenshot showing the Blob Integration menu item on the Overview pane for an Azure Managed Lustre file system." lightbox="./media/export-with-archive-jobs/select-blob-integration-settings.png":::
-
-1. Select **+ Create archive job**.
-
-    :::image type="content" source="./media/export-with-archive-jobs/select-create-archive-job.png" alt-text="Screenshot showing the Create Archive Job button on the Blob Integration page of an Azure Managed Lustre file system." lightbox="./media/export-with-archive-jobs/select-create-archive-job.png":::
-
-1. To specify what to export in the manual export (archive) job, enter a value in **File system path**. Then select **OK**.
-
+1. Specify what to export in the manual export (archive) job by entering a value in **File system path**.
    - All new or changed files whose filenames begin with this string in the Azure Managed Lustre file system are exported.
-   - Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. If you want to avoid overwriting existing files in the blob container, make sure the files' path in your Lustre system doesn't overlap the existing files' path in the blob container.
+   - Files are written to the blob container with the same file path (or prefix) that they have in the Lustre system. If you want to avoid overwriting existing files in the blob container, make sure the path of the file in your Lustre system doesn't overlap the existing path of the file in the blob container.
 
-:::image type="content" source="./media/export-with-archive-jobs/create-archive-job-options.png" alt-text="Screenshot showing the Create Archive Job pane for an Azure Managed Lustre file system." lightbox="./media/export-with-archive-jobs/create-archive-job-options.png":::
+The following screenshot shows the manual export (archive) job configuration settings in the Azure portal:
+
+:::image type="content" source="./media/export-with-archive-jobs/create-archive-job-options.png" alt-text="Screenshot showing portal setup for creating a manual export (archive) job." lightbox="./media/export-with-archive-jobs/create-archive-job-options.png":::
 
 ## Monitor or cancel a manual export (archive) job in the Azure portal
 
-You can monitor or cancel manual export (archive) jobs you created through blob integration with your Azure Managed Lustre file system in the Azure portal. The **Archive jobs** section of the **Blob integration** page shows the status of each job.
+You can monitor or cancel manual export (archive) jobs you created through blob integration with your Azure Managed Lustre file system in the Azure portal. The **Recent jobs** section of the **Blob integration** page shows the status of each job.
 
-:::image type="content" source="./media/export-with-archive-jobs/archive-jobs.png" alt-text="Screenshot showing the Blob Integration pane for an Azure Managed Lustre file system. The Archive Jobs heading and the Cancel button for a completed job are highlighted." lightbox="./media/export-with-archive-jobs/archive-jobs.png":::
-
-Only one archive job runs at a time. To cancel the job that's in progress, select the **Cancel** button at the top of the page. Or select the **Cancel** link for that job in the **Archive jobs** table. The **Cancel** link isn't available for a completed job.
+Only one archive job runs at a time. To cancel the job that's in progress, select the **Cancel** link for that job in the **Recent jobs** table. The **Cancel** link isn't available for a completed job.
 
 ## Create manual export (archive) job using the native Lustre client CLI
 
