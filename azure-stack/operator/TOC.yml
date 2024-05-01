@@ -491,7 +491,7 @@
         - name: Deploy target environment
           href: site-recovery-deploy-target.md        
         - name: Enable multi-tenancy
-          href: site-recovery-enable-multitenant.md
+          href: site-recovery-enable-multi-tenant.md
       - name: Protect virtual machines
         href: protect-virtual-machines.md
       - name: Capacity planning

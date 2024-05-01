@@ -72,7 +72,7 @@ The process to create a service principal uses the guest tenant ID (for each res
     az ad sp create --id <application-id>
     ```
 
-   :::image type="content" source="media/site-recovery-enable-multi-tenant/service-principal-output.png" alt-text=":::image type="content" source="media/site-recovery-enable-multi-tenant/service-principal-output.png" alt-text="Screenshot showing service principal creation output.":::":::
+   :::image type="content" source="media/site-recovery-enable-multi-tenant/service-principal-output.png" alt-text="Screenshot showing service principal creation output." lightbox="media/site-recovery-enable-multi-tenant/service-principal-output.png":::
 
 ## Register provider
 
