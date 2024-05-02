@@ -38,12 +38,12 @@ Install-Module Az.ConnectedKubernetes -Repository PSGallery -Force -AllowClobber
 Provide details of your Azure subscription in the [**aksedge-config.json**](https://github.com/Azure/AKS-Edge/blob/main/tools/aksedge-config.json) file under the `Arc` section as described in the following table. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a service principal with the built-in `Microsoft.Kubernetes connected cluster role` in order to access resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aksedge-config.json** file. If you need to create a service principal, you can [follow the steps here](/azure/aks/hybrid/system-requirements?tabs=allow-table#optional-create-a-new-service-principal).
 
 > [!IMPORTANT]
-> Client secrets are a form of password.  Proper management is critical to the security of your environment!
-> * When creating the client secret, consider setting a very short expiration time, based on the registration timing and scope for your deployment.
+> Client secrets are a form of password.  Proper management is critical to the security of your environment.
+> * When you create the client secret, set a very short expiration time, based on the registration timing and scope for your deployment.
 > * Be sure to protect the client secret value and the configuration file from general access.
-> * Consider that if a cluster's configuration file is backed up while it has the client secret stored, the client secret will be available to anyone with access to the backup.
-> * Once a cluster is registered, remove the client secret from the configuration file for that cluster.
-> * Once you have completed registering all clusters in scope for your task, you should rotate the client secret and/or delete the service principal from your Entra ID environment.
+> * Consider that if a cluster's configuration file is backed up while it has the client secret stored, the client secret is available to anyone with access to the backup.
+> * Once you register a cluster, remove the client secret from the configuration file for that cluster.
+> * Once you register all clusters in scope for your task, you should rotate the client secret and/or delete the service principal from your Microsoft Entra ID environment.
 
 | Attribute | Value type      |  Description |
 | :------------ |:-----------|:--------|
