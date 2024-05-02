@@ -88,4 +88,4 @@ In the Azure Stack Hub portal, in the subscription blade, find **Microsoft.DataR
 ## Next steps
 
 [Azure Site Recovery overview](azure-site-recovery-overview.md)
-[Protect Virtual Machines](https://learn.microsoft.com/azure-stack/operator/protect-virtual-machines)
+[Protect Virtual Machines](protect-virtual-machines.md)
