@@ -31,7 +31,7 @@ The first step is to identify the application ID used by Azure Site Recovery. Th
 
 ### Identify the AppID directly
 
-1. Go to the Azure Portal, select the Azure Stack Hub home directory, and navigate to **AAD - Application registration**.
+1. Go to the Azure portal, select the Azure Stack Hub home directory, and navigate to **AAD - Application registration**.
 1. In **All applications**, search for **Azure Stack - Site Recovery**:
 
    :::image type="content" source="media/site-recovery-enable-multi-tenant/all-applications.png" alt-text="Screenshot of portal page showing all applications." lightbox="media/site-recovery-enable-multi-tenant/all-applications.png":::
@@ -51,7 +51,7 @@ In the user portal, in the home directory of Azure Stack Hub, check any subscrip
 
 ## Make the Site Recovery application multitenant
 
-In the Azure Portal, navigate to Microsoft Entra ID of the Azure Stack Hub home directory, and find the **Application registration**. In **All applications**, search for **Azure Stack - Site Recovery** or the **APP ID** identified in the previous step. Select the application and go to the **Authentication** section. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)**, then select **Save**.
+In the Azure portal, navigate to Microsoft Entra ID of the Azure Stack Hub home directory, and find the **Application registration**. In **All applications**, search for **Azure Stack - Site Recovery** or the **APP ID** identified in the previous step. Select the application and go to the **Authentication** section. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)**, then select **Save**.
 
 :::image type="content" source="media/site-recovery-enable-multi-tenant/authentication.png" alt-text="Screenshot of portal page showing authentication." lightbox="media/site-recovery-enable-multi-tenant/authentication.png":::
 
@@ -83,7 +83,7 @@ The next step is to register the namespace **Microsoft.DataReplication** to each
 > [!NOTE]
 > If you tried to register this namespace following the previous steps, it likely failed with a **Deployment failed** message. In that case, follow the previous steps, and then try to re-register the namespace. This should complete successfully once you complete these steps.
 
-In the Azure Stack Hub Portal, in the subscription blade, find **Microsoft.DataReplication** in the **Resource provider** section, and select **Register**.
+In the Azure Stack Hub portal, in the subscription blade, find **Microsoft.DataReplication** in the **Resource provider** section, and select **Register**.
 
 ## Next steps
 
