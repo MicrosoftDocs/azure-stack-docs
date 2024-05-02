@@ -34,10 +34,8 @@ sections:
           
           - [Azure Stack HCI data collection](concepts/data-collection.md).<br>
           - [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).<br>
-          
-          [Collect diagnostic logs for Azure Stack HCI](manage/collect-logs.md).
-          
-          [Get support for Azure Stack HCI deployment issues](manage/get-support-for-deployment-issues.md).
+          - [Collect diagnostic logs for Azure Stack HCI](manage/collect-logs.md).<br>
+          - [Get support for Azure Stack HCI deployment issues](manage/get-support-for-deployment-issues.md).<br>
 
       - question: Does the control plane for Azure Stack HCI go through the cloud?
         answer: |
