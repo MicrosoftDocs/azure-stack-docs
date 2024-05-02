@@ -1,6 +1,6 @@
 ---
-title: Enable multiple tenants in Azure Site Recovery on Azure Stack Hub
-description: Learn how to Enable multiple tenants in Azure Site Recovery on Azure Stack Hub.
+title: Enable multi-tenant scenarios for Azure Site Recovery on Azure Stack Hub
+description: Learn how to Enable multiple tenants for Azure Site Recovery on Azure Stack Hub.
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
@@ -10,9 +10,11 @@ ms.lastreviewed: 05/01/2024
 
 ---
 
-# Enable multiple tenant scenarios in Azure Site Recovery
+# Enable multi-tenant scenarios for Azure Site Recovery
 
-Azure Site Recovery has a Microsoft Entra ID application requirement, which is used to access resources in the target subscription to replicate and failover VMs. This application is created in the Azure Stack Hub home Microsoft Entra ID tenant. When Azure Stack Hub is used in a multitenant scenario (that is, multiple Microsoft Entra ID tenants on the same Azure Stack Hub stamp that is used as the Site Recovery target), and the target subscription uses a Microsoft Entra ID tenant other than the home tenant, the Site Recovery service principal must create a service principal in the target tenant. The service principal isn't created automatically for any Microsoft Entra ID tenant except the home directory (and in the home directory, it's done automatically). The Azure Stack Hub operator must run this command on each respective Microsoft Entra ID tenant, or provide this command to each of their Microsoft Entra ID tenant admins, in order for them to run it in their respective Microsoft Entra ID tenant.
+On target Azure Stack Hub, the Azure Site Recovery service has a Microsoft Entra ID application requirement which is used to access resources, in the target subscription, to replicate and failover VMs. The steps in this article are focused only on the Target Azure Stack Hub, when Azure Site Recovery is used in multi-tenant type deployments.
+
+This required application is created in the Azure Stack Hub home Microsoft Entra ID tenant. When Azure Stack Hub is used in a multitenant scenario (that is, multiple Microsoft Entra ID tenants on the same Azure Stack Hub stamp that is used as the Site Recovery target), and the target subscription uses a Microsoft Entra ID tenant other than the home tenant, the Site Recovery service principal must create a service principal in the target tenant. The service principal isn't created automatically for any Microsoft Entra ID tenant except the home directory (and in the home directory, it's done automatically). The Azure Stack Hub Operator must run this command on each respective Microsoft Entra ID tenant, or provide this command to each of their Microsoft Entra ID tenant admins, in order for them to run it in their respective Microsoft Entra ID tenant.
 
 ## Process overview
 
@@ -49,7 +51,7 @@ In the user portal, in the home directory of Azure Stack Hub, check any subscrip
 
 ## Make the Site Recovery application multitenant
 
-In the Azure Stack Hub home directory in the Azure portal, navigate to Microsoft Entra ID and find the **Application registration**. In **All applications**, search for **Azure Stack - Site Recovery** or the **APP ID** identified in the previous step. Select the application and go to the **Authentication** section. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)**, then select **Save**.
+In the Azure portal, navigate to Microsoft Entra ID of the Azure Stack Hub home directory, and find the **Application registration**. In **All applications**, search for **Azure Stack - Site Recovery** or the **APP ID** identified in the previous step. Select the application and go to the **Authentication** section. Select **Accounts in any organizational directory (Any Azure AD directory - Multitenant)**, then select **Save**.
 
 :::image type="content" source="media/site-recovery-enable-multi-tenant/authentication.png" alt-text="Screenshot of portal page showing authentication." lightbox="media/site-recovery-enable-multi-tenant/authentication.png":::
 
@@ -76,7 +78,7 @@ The process to create a service principal uses the guest tenant ID (for each res
 
 ## Register provider
 
-The next step is to register the namespace **Microsoft.DataReplication** to each subscription you want to use as target subscription.
+The next step is to register the namespace **Microsoft.DataReplication** to each Azure Stack Hub user-subscription you want to use as Azure Site Recovery target subscription.
 
 > [!NOTE]
 > If you tried to register this namespace following the previous steps, it likely failed with a **Deployment failed** message. In that case, follow the previous steps, and then try to re-register the namespace. This should complete successfully once you complete these steps.
@@ -86,3 +88,4 @@ In the Azure Stack Hub portal, in the subscription blade, find **Microsoft.DataR
 ## Next steps
 
 [Azure Site Recovery overview](azure-site-recovery-overview.md)
+[Protect Virtual Machines](https://learn.microsoft.com/azure-stack/operator/protect-virtual-machines)
