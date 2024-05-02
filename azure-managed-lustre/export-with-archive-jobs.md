@@ -14,17 +14,17 @@ ms.reviewer: brianl
 
 # Create an export job to export data from Azure Managed Lustre
 
-This article describes how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an export job, and explains what is exported from the file system.
+In this article, you learn how to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by creating an export job.
 
-This export method is only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, use client filesystem commands to copy the data without creating an export job.
+Export jobs are only available when you integrate Azure Blob Storage with your Azure Managed Lustre file system during file system creation. For more information, see [Azure Blob Storage integration](amlfs-overview.md#azure-blob-storage-integration). If you didn't integrate a blob container when you created the file system, use client filesystem commands to copy the data without creating an export job.
 
 ## Which files are exported during an export job?
 
-When you export files from your Azure Managed Lustre system, not all of the files are copied into the blob container that you specified when you created the file system:
+When you export files from your Azure Managed Lustre system, not all of the files are copied into the blob container that you specified when you created the file system. The following rules apply to export jobs:
 
-- Export jobs only copy files that are new or whose contents have been modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
+- Export jobs only copy files that are new or whose contents are modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
 - Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
-- If you delete a file in the Azure Managed Lustre file system, the export job doesn't delete the file from the original source.
+- Files deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
 
 Exporting data is a user-initiated process that you can do in the Azure portal or by using commands in the native Lustre client CLI. With both methods, you can monitor the state of the export job.
 
