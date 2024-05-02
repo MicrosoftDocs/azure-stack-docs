@@ -133,7 +133,7 @@ You must have two separate blob containers in the same storage account, which ar
 - **Logging container**: A second container for import/export logs in the storage account. You must store the logs in a different container from the data container.
 
 > [!NOTE]
-> You can add files to the file system later from clients. However, files added to the original blob container after you create the file system won't be imported to the Azure Managed Lustre file system unless you [create a manual import job](create-manual-import-job.md).
+> You can add files to the file system later from clients. However, files added to the original blob container after you create the file system won't be imported to the Azure Managed Lustre file system unless you [create an import job](create-import-job.md).
 
 ### Private endpoints (optional)
 

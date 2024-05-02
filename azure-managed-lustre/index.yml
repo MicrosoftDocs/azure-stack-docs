@@ -40,9 +40,9 @@ landingContent:
             url: blob-integration.md
       - linkListType: how-to-guide
         links:
-          - text: Import data using manual import jobs
-            url: create-manual-import-job.md
-          - text: Export data using manual export (archive) jobs
+          - text: Import data using import jobs
+            url: create-import-job.md
+          - text: Export data using export jobs
             url: export-with-archive-jobs.md
   - title: Access a file system
     linkLists:

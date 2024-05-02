@@ -42,7 +42,7 @@ All Azure Managed Lustre file systems that are created as a "durable" file syste
 
 The Azure Managed Lustre file system itself also contributes to data resilience through the object storage processes it uses to store data on these disks.
 
-If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage. Once integrated, you can use manual export (archive) jobs to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-prerequisites.md#supported-storage-account-types).
+If you need regional or global data redundancy, you can integrate your file system with Azure Blob Storage. Once integrated, you can initiate an export job to export files to an Azure Blob Storage container with a different redundancy policy for long-term storage. Configure Azure Blob Storage redundancy for the storage account. You can choose zonal data redundancy (ZRS) or global data redundancy (GRS) when you create the storage account. To learn more about data redundancy options for your Azure Managed Lustre files, see [Supported storage account types](amlfs-prerequisites.md#supported-storage-account-types).
 
 ## Azure Blob Storage integration
 
