@@ -47,8 +47,8 @@
       // "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
       "breadcrumb_path": "/azure/azure-managed-lustre/breadcrumb/toc.json",
       "extendBreadcrumb": false,
-      "manager":"femila",
-      "ms.service": "azure-stack",
+      "manager":"akashdubey",
+      "ms.service": "azure-managed-lustre",
       "recommendations": true,
       "zone_pivot_group_filename": "../azure-stack/zone-pivot-groups.json"
    },
@@ -59,9 +59,6 @@
     },
     "feedback_product_url": {
       "aks-hci/**/*.md": "https://feedback.azure.com/d365community/forum/a2f8da29-b853-ec11-8f8e-0022481f2fe7"
-    },
-    "ms.subservice": {
-      "./**/*.md": "azure-managed-lustre"
     }
   },
     "template": [],
