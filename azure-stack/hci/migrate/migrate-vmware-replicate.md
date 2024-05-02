@@ -24,13 +24,12 @@ For both the source VMware vCenter Server and target Azure Stack HCI appliances,
 
 ## Step 1: Create and configure the source VMware appliance
 
-You select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
-
-Next, in **vSphere Client**, select the applicable VMs to be migrated.
-
-### Generate the project key
-
-In this step, you generate the key for the source VMware appliance - see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key) for specific steps.
+1. In the Azure portal, go to your Azure Migrate project and then go to **Servers, databases and webapps**.
+1. On the **Azure Migrate: Discovery and assessment tool** tile, select **Discover**.
+1. On the Discover page, select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
+1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
+1. Copy the **Project key** and save it for later use.
+1. You can now **Download the Azure Migrate source appliance** using either an .OVA file or a .zip file. The detailed steps are provided in the subsequent sections.
 
 ### Create the source appliance
 
@@ -38,29 +37,44 @@ You can install the appliance using either an .OVA file or a .zip file that you 
 
 #### Install using an .OVA file
 
-This step applies only if you are deploying the source VMware appliance using an .OVA file.
+This step applies only if you are deploying the source VMware appliance using an .OVA file. 
+
+1. To create the source VMware appliance, see [Create a source appliance in the VMware environment starting from the OVA file](/azure/migrate/tutorial-discover-vmware#create-the-appliance-server). <!--[VM using an OVA file](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-8ABDB2E1-DDBF-40E3-8ED6-DC857783E3E3.html) in the VMware documentation.-->
+1. [Verify that the appliance can access Azure](/azure/migrate/tutorial-discover-vmware#verify-appliance-access-to-azure). <!--check if this is needed-->
 
 #### Install using a .zip file
 
-This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the source appliance. For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
+This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the source appliance. 
+For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
 
-```powershell
-Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+1. Copy the downloaded zip file to the new VM that you created in the vCenter.
+1. Extract the zip to a folder.
+1. Navigate to the extracted folder. Open a PowerShell window as an administrator and run the following command:
 
-.\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget -DisableAutoUpdate
-```
+    ```powershell
+    Set-ExecutionPolicy -ExecutionPolicy Unrestricted
+    
+    .\AzureMigrateInstaller.ps1 -Scenario VMware -Cloud Public -PrivateEndpoint:$false -EnableAzureStackHCITarget -DisableAutoUpdate
+    ```
 
+1. Select option 1 as the desired configuration: **Primary appliance to discover, assess and migrate servers**.
+1. Follow the rest of the onscreen instructions to install the source appliance and uninstall Internet Explorer.
+1. Restart the VM after the installation is complete.
 
-### Configure the appliance and discover VMs
+### Configure the source appliance and discover VMs
 
-Once the source appliance is installed, you are ready to [Configure the appliance](/azure/migrate/how-to-set-up-appliance-hyper-v#configure-the-appliance).
+Once the source appliance is installed, follow these steps:
 
-Download and extract the **VMware Virtual Disk Development Kit** to the folder path provided, select **Verify**, then:
-- Enter admin credentials used when discovering the VMware VMs.
-- Enter the FQDN or IP of the vCenter server.
-- Disable the slider.
-- Select **Start Discovery**.
+1. [Configure the source appliance](/azure/migrate/tutorial-discover-vmware#configure-the-appliance). This would include:
+    1.  [Setting up the prerequisites and registering the appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
 
+    1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** to the folder path provided, select **Verify**, then:
+        - Enter admin credentials used when discovering the VMware VMs.
+        - Enter the FQDN or IP of the vCenter server.
+        - Disable the slider.
+        - Select **Start Discovery**.
+
+    1. On the Onboard to Azure Stack HCI section, enter the name and credentials for the target Azure Stack HCI cluster. This is the cluster where the VMs are migrated. Select **Save**.
 
 After the appliance is configured, you start the VM discovery process.
 
@@ -151,7 +165,6 @@ Now you can install the appliance using the .VHD file.
 
 1. After the VM has started up, sign in to the VM as an administrator. Enter the password you provided in the previous step.
 
-1. Open **Azure Migrate Target Appliance Configuration Manager** shortcut from the desktop.
 
 #### Install using a script (.zip file)
 
@@ -196,11 +209,11 @@ This step applies only if you downloaded the .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/migrate-vmware-replicate/enter-code-2.png":::
 
-1. After the appliance is registered, under **Provide Azure Stack HCI cluster information**, select **Add cluster information**.
+1. After the appliance is registered, under **Manage Azure Stack HCI cluster information**, select **Add cluster information**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-information.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-vmware-replicate/add-cluster-information.png":::
 
-1. For your target Azure Stack HCI cluster, enter the cluster fully qualified domain name (FQDN), domain name, username, and password, and then select **Save**.
+1. For your target Azure Stack HCI cluster, enter the cluster FQDN (example format is *clustername.domain.com*), domain name, username, and password, and then select **Save**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-cluster-information-2.png":::
 
@@ -228,7 +241,7 @@ This step applies only if you downloaded the .zip file.
 
 1. On the **Replicate** page, on the **Basics** tab:
 
-    1. This field is automatically populated. If this is not the subscription that has your target cluster, choose the Azure subscription that has the cluster.
+    1. The subscription field is automatically populated. If this is not the subscription that has your target cluster, choose the Azure subscription that has the cluster.
     1. Select the resource group associated with your target cluster.
 	1. For **Cluster resource**, select the Azure Stack HCI cluster resource.
 	1. Verify there is a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
@@ -237,7 +250,7 @@ This step applies only if you downloaded the .zip file.
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::
     
 
-1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark. 
+1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark.
 
     > [!NOTE]
     > A green checkmark indicates that the target appliance is successfully registered and configured. If you haven't configured your target appliance yet, you will see the configuration page here instead.
