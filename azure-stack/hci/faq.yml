@@ -32,7 +32,8 @@ sections:
           
           To learn more about the diagnostic data we collect to keep Azure Stack HCI secure, up to date, and working as expected, see: 
           
-          - [Azure Stack HCI data collection](concepts/data-collection.md).<br>- [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+          - [Azure Stack HCI data collection](concepts/data-collection.md).<br>
+          - [Data residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).<br>
           
           [Collect diagnostic logs for Azure Stack HCI](manage/collect-logs.md).
           
