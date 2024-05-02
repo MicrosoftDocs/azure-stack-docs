@@ -4,23 +4,23 @@ description: This article describes the cloud service components of Azure Stack 
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm
-ms.date: 04/19/2023
+ms.date: 05/01/2024
 ms.custom: e2e-hybrid
 ---
 
 # Azure Stack HCI hybrid capabilities with Azure services
 
-[!INCLUDE [applies-to](../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
-Your on-premises Azure Stack HCI solution integrates with Azure cloud via several cloud service components—such as Azure Stack HCI cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Stack HCI deployment.
+Your on-premises Azure Stack HCI solution integrates with Azure cloud via several cloud service components, such as Azure Stack HCI cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Stack HCI deployment.
 
-:::image type="content" source="media/hybrid-capabilities-with-azure-services/azure-stack-hci-cloud-services.png" alt-text="Diagram shows the integration points between the on-premises Azure Stack HCI solution and Azure cloud" border="false" lightbox="media/hybrid-capabilities-with-azure-services/azure-stack-hci-cloud-services.png":::
+:::image type="content" source="media/hybrid-capabilities-with-azure-services/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Stack HCI solution, which shows the integration points between the on-premises Azure Stack HCI solution and Azure cloud" border="false" lightbox="media/hybrid-capabilities-with-azure-services/azure-stack-hci-solution.png":::
 
 ## Azure Stack HCI cloud service
 
 The Azure Stack HCI cloud service in Azure is an integral part of the Azure Stack HCI product offering. In your Azure Stack HCI cluster, the Azure Stack HCI operating system (OS) has an always-running system service called HciSvc. This OS service initiates communications to the Azure Stack HCI cloud service to deliver the following core functionality:
 
-- **Registration.** The Azure Stack HCI cloud service processes registration requests initiated from Azure Stack HCI OS deployments. You must register your Azure Stack HCI cluster with Azure to enable other hybrid capabilities. To learn more about registration, see [Connect Azure Stack HCI to Azure](deploy/register-with-azure.md).
+- **Registration.** The Azure Stack HCI cloud service processes registration requests initiated from Azure Stack HCI OS deployments. You must register your Azure Stack HCI cluster with Azure to enable other hybrid capabilities. To learn more about registration, see [Register your servers and assign permissions for Azure Stack HCI, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md). <!-- this will change in 23H2>
 
 - **Monitoring.** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them. The Azure Stack HCI cloud service enables access to a projected view of your Azure Stack HCI clusters in the Azure portal and other Azure tools. To learn more about basic monitoring, see [Use the Azure portal with Azure Stack HCI](manage/azure-portal.md). Advanced monitoring can also be optionally enabled via Azure Arc and Azure Monitor. This is covered in the [Azure Arc on Azure Stack HCI](#azure-arc-on-azure-stack-hci) section of this article.
 
@@ -33,6 +33,8 @@ The Azure Stack HCI cloud service in Azure is an integral part of the Azure Stac
     The Azure Stack HCI cloud service also distributes certificates to the Azure Stack HCI clusters that have the Azure Benefits service enabled. To learn more about Azure Benefits, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
 
 - **Diagnostics.** We collect required diagnostic data to keep Azure Stack HCI secure, up to date, and working as expected. The Azure Stack HCI cloud service processes this data for diagnostic purposes. To learn more about diagnostics, see [Azure Stack HCI data collection](concepts/data-collection.md).
+
+<!--Should we add **Management** also as another functionality and link out to the 'Enhanced management of Azure Stack HCI from Azure' article?-->
 
 In the Azure Stack HCI cloud service, standard Azure components exist, including a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These Azure components enable access to Azure Stack HCI functionality via standard Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Stack HCI cloud service also enables contextual navigation from an Azure Stack HCI cluster resource to its Azure Arc-enabled node resources, and Azure Arc-enabled virtual machine (VM) resources.
 
@@ -58,7 +60,7 @@ In addition to hybrid functionality provided through Azure Arc, you can enable t
 
 - **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. To learn more about Azure Backup, see [Back up Azure Stack HCI virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines). 
 
-- **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Stack HCI to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md). 
+- **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Stack HCI to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
 
 ## Next steps
 
