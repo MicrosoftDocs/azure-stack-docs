@@ -26,7 +26,7 @@ To better understand the concept of vCPUs, [see this article](https://social.tec
 
 To better understand the etcd hardware recommendations, [see this article](https://etcd.io/docs/v3.5/op-guide/hardware/).
 
-You can run AKS Edge Essentials in an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization such as the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines. When using an Azure VM, a premium SSD is required, per the [Azure Virtual Machine documentation](https://learn.microsoft.com/en-us/azure/virtual-machines/disks-types#disk-type-comparison). 
+You can run AKS Edge Essentials in an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization such as the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines. When using an Azure VM, a premium SSD is required, per the [Azure Virtual Machine documentation](/azure/virtual-machines/disks-types#disk-type-comparison). 
 
 You can also run AKS EE in a virtual machine on VMware and Hyper-V as described [here.](./aks-edge-howto-setup-nested-environment.md)
 
