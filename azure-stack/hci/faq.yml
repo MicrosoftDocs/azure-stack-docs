@@ -103,7 +103,7 @@ sections:
           
       - question: What Azure services can I connect to Azure Stack HCI?
         answer: |
-          For an updated list of Azure services that you can connect Azure Stack HCI to, see [Managing hybrid capabilities on Azure Stack HCI with Azure services.](hybrid-capabilities-with-azure-services.md).
+          For an updated list of Azure services that you can connect Azure Stack HCI to, see [Managing hybrid capabilities on Azure Stack HCI with Azure services](hybrid-capabilities-with-azure-services.md).
           
       - question: How are the Azure Stack Hub and Azure Stack HCI solutions different?
         answer: |
