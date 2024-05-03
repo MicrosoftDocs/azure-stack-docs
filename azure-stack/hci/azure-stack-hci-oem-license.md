@@ -100,6 +100,6 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 
 - Read [Azure Kubernetes Service on Azure Stack HCI](/azure/aks/hybrid/aks-create-clusters-portal).
 
-- For more information on the Azure Stack HCI OEM License, see [Azure Stack HCI FAQ - License and Billing](azure-stack-hci-license-billing.yml).
+- For more information on the Azure Stack HCI OEM License, see [Azure Stack HCI OEM license and billing FAQ](azure-stack-hci-license-billing.yml).
 
 - Read more about billing for specific OEM partners, see [Azure Stack HCI billing and payments](./concepts/billing.md).
