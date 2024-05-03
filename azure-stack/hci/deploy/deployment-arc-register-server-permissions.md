@@ -260,7 +260,7 @@ This section describes how to assign Azure permissions for deployment from the A
     - **Reader**
 
     > [!NOTE]
-    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. This needs to be set at tenant level and not directly at the subscription. After deployment, this permission can be removed.
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
