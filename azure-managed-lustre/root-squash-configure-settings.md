@@ -21,20 +21,20 @@ In this article, you learn how to configure root squash settings for Azure Manag
 
 ## Root squash settings
 
-The following table details the available parameters for the `rootSquashSettings` property, which is available for REST API version 2023-11-01-preview and later:
+The following table details the available parameters for the `rootSquashSettings` property, which is available for REST API version 2024-03-01 and later:
 
 | Parameter | Values | Type | Description |
 | --- | --- | --- | --- |
 | `mode` | `RootOnly`, `All`, `None` | String | `RootOnly`: Affects only the **root** user on nontrusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`All`: Affects **all** users on nontrusted systems. UID and GID on files are squashed to the provided `squashUID` and `squashGID`, respectively.</br>`None` (default): Disables the root squash feature so that no squashing of UID and GID is performed for any user on any system. |
-| `nosquashNidLists` | | String | Network ID (NID) IP address lists added to the trusted systems. |
+| `noSquashNidLists` | | String | Network ID (NID) IP address lists added to the trusted systems. |
 | `squashUID` | 1 - 4294967295 | Integer | Numeric value that the user ID (UID) is squashed to. |
 | `squashGID` | 1 - 4294967295 | Integer | Numeric value that the group ID (GID) is squashed to. |
 | `status` | | String | File system squash status. |
 
-If you need to add noncontiguous IP addresses as trusted systems, you can provide a semicolon-separated list of IP addresses in the `nosquashNidLists` parameter, as shown in the following example:
+If you need to add noncontiguous IP addresses as trusted systems, you can provide a semicolon-separated list of IP addresses in the `noSquashNidLists` parameter, as shown in the following example:
 
 ```json
-"nosquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp;10.0.2.10@tcp",
+"noSquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp;10.0.2.10@tcp",
 ```
 
 ## Enable root squash during cluster creation
@@ -62,7 +62,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 "properties": {
     "rootSquashSettings": {
         "mode": "RootOnly",
-        "nosquashNidLists": "10.0.2.4@tcp",
+        "noSquashNidLists": "10.0.2.4@tcp",
         "squashUID": 1000,
         "squashGID": 1000
     },
@@ -108,7 +108,7 @@ You can change the root squash settings for an existing Azure Managed Lustre fil
 1. Decide on the root squash settings you want to change or enable for your existing cluster. For more information, see [Root squash settings](#root-squash-settings).
 1. Use a `PATCH` request to modify the existing cluster, and include the desired `rootSquashSettings` values in the `properties` section of the request body. This action overwrites any existing root squash settings, so make sure all settings are provided with the `PATCH` request.
 
-Let's say you need to add a new IP address range to the `nosquashNidLists` parameter. The following example shows how to update an existing cluster to add a new IP address range to the `nosquashNidLists` parameter:
+Let's say you need to add a new IP address range to the `noSquashNidLists` parameter. The following example shows how to update an existing cluster to add a new IP address range to the `noSquashNidLists` parameter:
 
 **Request syntax**:
 
@@ -122,7 +122,7 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 "properties": {
     "rootSquashSettings": {
         "mode": "RootOnly",
-        "nosquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp",
+        "noSquashNidLists": "10.0.2.4@tcp;10.0.2.[6-8]@tcp",
         "squashUID": 1000,
         "squashGID": 1000
     },
