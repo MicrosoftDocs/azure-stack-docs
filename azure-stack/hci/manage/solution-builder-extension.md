@@ -23,6 +23,8 @@ The Solution Builder Extension (SBE) allows you to apply updates to your Azure S
 
 With the release of Azure Stack HCI, version 23H2, these types of updates can be packaged into **Solution Builder Extension** or **SBE packages**. <!--To understand whether your hardware vendor releases SBE package updates, check "*this vendor table.*"-->
 
+## SBE package updates
+
 SBE package updates are integrated into the solution update process for Azure Stack HCI, version 23H2. These updates can be installed as part of a combined (full solution) update with other Microsoft Azure Stack HCI updates using orchestration within Azure Stack HCI. For example, if a SBE update matching your cluster’s hardware is released, it shows as an available update in the Azure portal or via the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
 
 By installing such combined updates, you can keep your entire solution up to date with less effort and minimal effect on running workloads.
