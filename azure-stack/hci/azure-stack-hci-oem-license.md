@@ -75,7 +75,7 @@ For information on activating AKS, see [Azure Kubernetes Service on Azure Stack 
 
 ## Mixed-node scenarios
 
-When a cluster or system uses different server types or billing models this is known as a mixed-node scenario. If your cluster includes a mixed-node scenario, a notificaation in your monthly billing status details appears.
+When a cluster or system uses different server types or billing models this is known as a mixed-node scenario. If your cluster includes a mixed-node scenario, a notification in your monthly billing status details appears.
 
 :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
@@ -96,10 +96,10 @@ Here are some examples of mixed-mode scenarios that aren't supported:
 
 ## Next step
 
-- Read the [License Windows Server VMs on Azure Stack HCI](/azure-stack/hci/manage/vm-activate?tabs=azure-portal).
+- Read [License Windows Server VMs on Azure Stack HCI](/azure-stack/hci/manage/vm-activate?tabs=azure-portal).
 
 - Read [Azure Kubernetes Service on Azure Stack HCI](/azure/aks/hybrid/aks-create-clusters-portal).
 
-- For more information on the Azure Stack HCI OEM License, see [Azure Stack HCI OEM license and billing FAQ](azure-stack-hci-license-billing.yml).
+- Read [Azure Stack HCI OEM license and billing FAQ](azure-stack-hci-license-billing.yml).
 
 - Read more about billing for specific OEM partners, see [Azure Stack HCI billing and payments](./concepts/billing.md).
