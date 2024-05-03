@@ -1,14 +1,17 @@
 ---
-title:  Solution Builder Extension updates on Azure Stack HCI, version 23H2 overview
+title: Solution Builder Extension updates on Azure Stack HCI, version 23H2.
 description: This article describes the Solution Builder Extension updates and how to apply them on your Azure Stack HCI server machines.
 author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
 ms.date: 05/03/2024
+
+#customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for the Solution Builder Extension so that customers gain knowledge and keep their Azure Stack HCI systems up to date in the most efficient way.
+
 ---
 
-# Solution Builder Extension updates for your Azure Stack HCI, version 23H2
+# Solution Builder Extension updates for your Azure Stack HCI.
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
@@ -20,7 +23,7 @@ The Solution Builder Extension (SBE) allows you to apply updates to your Azure S
 
 With the release of Azure Stack HCI, version 23H2, these types of updates can be packaged into **Solution Builder Extension** or **SBE packages**. <!--To understand whether your hardware vendor releases SBE package updates, check "*this vendor table.*"-->
 
-SBE package updates are integrated into the solution update process for Azure Stack HCI, version 23H2. These updates can be installed as part of a combined (full solution) update with other Microsoft Azure Stack HCI updates using orchestration within Azure Stack HCI. For example, if an SBE update matching your cluster’s hardware is released, it shows as an available update in the Azure portal or via the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
+SBE package updates are integrated into the solution update process for Azure Stack HCI, version 23H2. These updates can be installed as part of a combined (full solution) update with other Microsoft Azure Stack HCI updates using orchestration within Azure Stack HCI. For example, if a SBE update matching your cluster’s hardware is released, it shows as an available update in the Azure portal or via the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
 
 By installing such combined updates, you can keep your entire solution up to date with less effort and minimal effect on running workloads.
 
@@ -32,14 +35,14 @@ In addition to installing hardware updates, Solution Builder extensions may impl
 |---------------------------|---------------|
 | Health Service Integration | The SBE package can extend **Health Check** validation performed by Azure Stack HCI before various lifecycle actions (Deployment, Update, Add Node, Repair Node, etc.) occur. The validation checks help to ensure issues are resolved before performing any specific lifecycle actions.<br/><br/> Hardware vendors typically use this integration to evaluate if there's a hardware issue that needs immediate attention. For example, it might identify problems with hardware vendor management software, a non-redundant power supply, or higher than expected temperatures. It could also identify SSD drive wear approaching a critical state. Be sure to review your hardware vendor's SBE documentation for details on hardware health checks supported by their extension. |
 | Customized Deployment | The SBE package can implement customized steps that are executed automatically as part of the cluster deployment process. <br/><br/> Hardware vendors typically use this capability to configure or install any value-add software via their SBE for the solution.  |
-| Customized Solution Update | The SBE package can implement customized steps that are performed both before and after the main portion of the solution update process. Even when it isn't performing an SBE update, SBE packages that implement this capability always run these extra steps. For example, the execution of hardware vendor specific steps before or after Azure Stack HCI Operating System updates, when no updates to the SBE are needed. <br/><br/> Hardware vendors typically use this capability to prepare nodes for any update related tasks that may involve rebooting servers. |
+| Customized Solution Update | The SBE package can implement customized steps that are performed both before and after the main portion of the solution update process. Even when it isn't performing a SBE update, SBE packages that implement this capability always run these extra steps. For example, the execution of hardware vendor specific steps before or after Azure Stack HCI Operating System updates, when no updates to the SBE are needed. <br/><br/> Hardware vendors typically use this capability to prepare nodes for any update related tasks that may involve rebooting servers. |
 
-## Identify an SBE update for your hardware
+## Identify a SBE update for your hardware
 
-With Azure Stack HCI, version 23H2, all hardware added to the Azure Stack HCI catalog as an integrated system or premier solution is required to implement an SBE that supports firmware and driver updates. Microsoft recommends purchasing newer integrated systems and premier solutions to take advantage of the full solution, update at-scale, capabilities that are enabled through the SBE.
+With Azure Stack HCI, version 23H2, all hardware added to the Azure Stack HCI catalog as an integrated system or premier solution is required to implement a SBE that supports firmware and driver updates. Microsoft recommends purchasing newer integrated systems and premier solutions to take advantage of the full solution, update at-scale, capabilities that are enabled through the SBE.
 
 > [!NOTE]
-> An SBE might not be implemented for your hardware if:
+> A SBE might not be implemented for your hardware if:
 >
 > - It was added to the Azure Stack HCI catalog before Azure Stack HCI, version 23H2.
 >
@@ -47,7 +50,7 @@ With Azure Stack HCI, version 23H2, all hardware added to the Azure Stack HCI ca
 >
 > Consult with your hardware vendor’s Azure Stack HCI documentation to determine if your server model supports a Solution Builder Extension.
 
-If your hardware doesn't support an SBE update experience, the process for updating your hardware is similar to that of Azure Stack HCI, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
+If your hardware doesn't support a SBE update experience, the process for updating your hardware is similar to that of Azure Stack HCI, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
 
 If your hardware doesn't support hardware updates using SBE packages or Windows Admin Center, your firmware and driver updates may need to be performed separately. Follow the recommendations of your hardware vendor.
 
@@ -93,7 +96,7 @@ Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Stack HCI 2311 bundle** update, which includes the same SBE as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
-> To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install an SBE update before the combined solution update.
+> To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install a SBE update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
 
@@ -166,4 +169,6 @@ To view information on the SBE update such as its release notes (via the `SBERel
 
 For more information, see [Discover SBE updates](./solution-builder-extension.md#discover-sbe-updates). You should download the SBE files following the hardware vendor's recommendations and license agreements.
 
-You can now proceed to [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
+## Next step
+
+- Read [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
