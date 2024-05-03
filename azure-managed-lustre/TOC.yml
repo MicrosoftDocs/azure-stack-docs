@@ -32,6 +32,10 @@
       href: automount-clients-fstab.md
     - name: Use Azure Lustre CSI driver for Kubernetes
       href: use-csi-driver-kubernetes.md
+- name: Manage a file system
+  items:
+    - name: Configure root squash settings
+      href: root-squash-configure-settings.md
 - name: Security
   items:
     - name: Configure a network security group
