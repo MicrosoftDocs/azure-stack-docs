@@ -41,8 +41,8 @@ sections:
 
       - question: Where can I get support for this license?
         answer: |
-          Contact your OEM vendor for support or file an Azure support request through [the Azure portal](https://portal.azure.com).
-
+          For support with your Azure Stack HCI OEM license first contact your OEM vendor. If for some reason you're unable to get vendor support file an Azure support request through [the Azure portal](https://portal.azure.com/).
+      
       - question: Are mixed-node scenarios supported?
         answer: |
           No. This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
