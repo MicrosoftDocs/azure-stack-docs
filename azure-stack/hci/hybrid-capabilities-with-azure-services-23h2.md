@@ -24,14 +24,17 @@ The Azure Stack HCI cloud service in Azure is an integral part of the Azure Stac
 
 - **Monitoring.** View all of your Azure Stack HCI clusters in a single, global view where you can group them by resource group and tag them. The Azure Stack HCI cloud service enables access to a projected view of your Azure Stack HCI clusters in the Azure portal and other Azure tools. To learn more about basic monitoring, see [Use the Azure portal with Azure Stack HCI](manage/azure-portal.md). For advanced monitoring, Azure Stack HCI utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. These tools help collect data, analyze, and proactively respond to consistent or trending variances from your established baseline. For information about monitoring Azure Stack HCI, see [What is Azure Stack HCI monitoring?](concepts/monitoring-overview.md).
 
-- **Support.** Azure Stack HCI follows the same support process as Azure. The Azure Stack HCI cloud service, through its projected view of your Azure Stack HCI cluster in the Azure portal, enables you to create and support requests. To learn more about support, see [Get support for Azure Stack HCI](manage/get-support.md). To get support for Azure Stack HCI deployment issues, including log collection and remote support, see [Get support for Azure Stack HCI deployment issues](manage/get-support-for-deployment-issues.md). To get remote support for your Azure Stack HCI operating system, see [Get remote support for Azure Stack HCI](manage/get-remote-support.md).
+- **Support.** Azure Stack HCI follows the same support process as Azure. The Azure Stack HCI cloud service, through its projected view of your Azure Stack HCI cluster in the Azure portal, enables you to create and support requests. To learn more about support, see [Get support for Azure Stack HCI](manage/get-support.md). To address deployment issues with Azure Stack HCI deployment issues, including log collection and remote support, see [Get support for Azure Stack HCI deployment issues](manage/get-support-for-deployment-issues.md). To get remote support for your Azure Stack HCI operating system, see [Get remote support for Azure Stack HCI](manage/get-remote-support.md).
 
+<!--need to update 'Billing'-->
 - **Billing.** Pay for Azure Stack HCI through your Azure subscription. The Azure Stack HCI cloud service sends usage data to Azure Commerce to calculate the monthly bill for the registered subscription. To learn more about billing, see [Azure Stack HCI billing and payment](concepts/billing.md).
 
+<!--need to update 'Licensing'-->
 - **Licensing.** An Azure Stack HCI cluster requires cloud connectivity to keep its license up to date. The Azure Stack HCI cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Stack HCI FAQ - What happens if the 30-day limit is exceeded?](faq.yml#what-happens-if-the-30-day-limit-is-exceeded)
 
     The Azure Stack HCI cloud service also distributes certificates to the Azure Stack HCI clusters that have the Azure Benefits service enabled. To learn more about Azure Benefits, see [Azure Benefits on Azure Stack HCI](manage/azure-benefits.md).
 
+<!--check with Shireen if https://learn.microsoft.com/en-us/azure-stack/hci/release-information article is still applicable to 23H2.-->
 - **Diagnostics.** We collect required diagnostic data to keep Azure Stack HCI secure, up to date, and working as expected. The Azure Stack HCI cloud service processes this data for diagnostic purposes. To learn more about diagnostics, see [Collect diagnostic logs for Azure Stack HCI](manage/collect-logs.md).
 <!--should we add 'Observability' instead of 'Monitoring', 'Support', and 'Diagnostics'-->
 <!--Should we add **Management** also as another functionality and link out to the 'Enhanced management of Azure Stack HCI from Azure' article?-->
@@ -45,17 +48,21 @@ Azure Arc simplifies governance and management by delivering a consistent manage
 
 Azure Stack HCI delivers hybrid value through the following Azure Arc technologies:
 
-- [**Azure Arc-enabled servers.**](/azure/azure-arc/servers/overview) Starting with Azure Stack HCI, version 23H2, as part of the Azure Stack HCI deployment, you must register every Azure Stack HCI server that you intend to cluster with Azure Arc. For more information, see [Register your servers and assign permissions for Azure Stack HCI, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md)
+- [**Azure Arc-enabled servers.**](/azure/azure-arc/servers/overview) As part of the Azure Stack HCI deployment process, you must register every Azure Stack HCI server that you intend to cluster with Azure Arc. For more information, see [Register your servers and assign permissions for Azure Stack HCI, version 23H2 deployment](deploy/deployment-arc-register-server-permissions.md)
 
-- [**Azure Arc VMs.**] Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Stack HCI environment. Administrators can manage Arc VMs on their Azure Stack HCI clusters by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
+    You can install, upgrade, and manage Azure Arc extensions on Azure Stack HCI server machines to run hybrid services like monitoring and Windows Admin Center in the Azure portal. For more information, see [Azure Arc extension management on Azure Stack HCI](manage/arc-extension-management.md).
 
-- [**Azure Arc-enabled Kubernetes.**](/azure/azure-arc/kubernetes/overview) If you run [Azure Kubernetes Service on Azure Stack HCI and Windows Server ](/azure/aks/hybrid/overview), you can project it to Azure via Azure Arc-enabled Kubernetes. To learn more about connecting an Azure Kubernetes Service on Azure Stack HCI and Windows Server cluster, see [Connect an Azure Kubernetes Service cluster to Azure Arc in AKS hybrid](/azure/aks/hybrid/connect-to-arc).
+- **Azure Arc VMs.** Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Stack HCI environment. Administrators can manage Arc VMs on their Azure Stack HCI clusters by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. For more information, see [What is Azure Arc VM management?](manage/azure-arc-vm-management-overview.md).
+
+- [**Azure Kubernetes Service (AKS) enabled by Arc.**](/azure/aks/hybrid/) AKS on Azure Stack HCI, version 23H2 uses Azure Arc to create new Kubernetes clusters on Azure Stack HCI directly from Azure. It enables you to use familiar tools like the Azure portal, Azure CLI, and Azure Resource Manager templates to create and manage your Kubernetes clusters running on Azure Stack HCI. For more information, see [What's new in AKS on Azure Stack HCI version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
 
 ## Other Azure hybrid services
 
+<!--should we include other hybrid services that are depicted in the overview diagram, such as Azure Key Vault, Azure Update Manager, Microsoft Defender for Cloud, Azure Policy, Azure File Sync, Azure Monitor?-->
+
 In addition to hybrid functionality provided through Azure Arc, you can enable the following Azure services for other hybrid capabilities on Azure Stack HCI:
 
-- **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. To learn more about Azure Backup, see [Back up Azure Stack HCI virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines). 
+- **Azure Backup.** With Microsoft Azure Backup Server (MABS) v3 UR2, you can back up Azure Stack HCI host (System State/BMR) and virtual machines (VMs) running on the Azure Stack HCI cluster. To learn more about Azure Backup, see [Back up Azure Stack HCI virtual machines with MABS](/azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines).
 
 - **Azure Site Recovery.** With Azure Site Recovery support, you can continuously replicate VMs from Azure Stack HCI to Azure, as well as fail over and fail back. To learn more about Azure Site Recovery, see [Protect your Hyper-V Virtual Machines with Azure Site Recovery and Windows Admin Center](manage/azure-site-recovery.md).
 
