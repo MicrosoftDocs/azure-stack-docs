@@ -1,6 +1,6 @@
 ---
-title: Hybrid capabilities with Azure services
-description: This article describes the cloud service components of Azure Stack HCI.
+title: Hybrid capabilities with Azure services in Azure Stack HCI, version 23H2
+description: This article describes the cloud service components of Azure Stack HCI, version 23H2.
 ms.topic: overview
 author: sethmanheim
 ms.author: sethm
@@ -8,13 +8,13 @@ ms.date: 05/01/2024
 ms.custom: e2e-hybrid
 ---
 
-# Azure Stack HCI hybrid capabilities with Azure services
+# Azure Stack HCI, version 23H2 hybrid capabilities with Azure services
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2-22h2.md)]
 
 Your on-premises Azure Stack HCI solution integrates with Azure cloud via several cloud service components, such as Azure Stack HCI cloud service, Azure Arc, and other Azure hybrid services. This article describes the functionality provided by these cloud service components, and how they help provide hybrid capabilities to your Azure Stack HCI deployment.
 
-:::image type="content" source="media/hybrid-capabilities-with-azure-services/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Stack HCI solution, which shows the integration points between the on-premises Azure Stack HCI solution and Azure cloud" border="false" lightbox="media/hybrid-capabilities-with-azure-services/azure-stack-hci-solution.png":::
+:::image type="content" source="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Stack HCI solution, which shows the integration points between the on-premises Azure Stack HCI solution and Azure cloud" border="false" lightbox="media/hybrid-capabilities-with-azure-services-23h2/azure-stack-hci-solution.png":::
 
 ## Azure Stack HCI cloud service
 
