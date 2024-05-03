@@ -2,7 +2,7 @@
 title: Configure root squash settings for Azure Managed Lustre file systems
 description: Learn how to configure root squash settings for Azure Managed Lustre file systems. 
 ms.topic: how-to
-ms.date: 02/21/2024
+ms.date: 05/03/2024
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: mayabishop
@@ -43,8 +43,6 @@ When you create an Azure Managed Lustre file system, you can enable root squash 
 
 To enable root squash during cluster creation, follow these steps:
 
-### [HTTP](#tab/HTTP)
-
 1. Decide on the root squash settings you want to use for your cluster. For more information, see [Root squash settings](#root-squash-settings).
 1. Use a `PUT` request to create a cluster, and include the desired `rootSquashSettings` values in the `properties` section of the request body.
 
@@ -69,19 +67,11 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 }
 ```
 
-### [PowerShell](#tab/powershell)
-
-### [Azure CLI](#tab/cli)
-
----
-
 ## View root squash settings for an existing cluster
 
 You can view the root squash settings for an existing Azure Managed Lustre file system. To view the root squash settings for an existing cluster, follow these steps:
 
-### [HTTP](#tab/HTTP)
-
-You can use a `GET` request to return the configuration details for an existing cluster.
+1. Use a `GET` request to return the configuration details for an existing cluster.
 
 The following example shows how to return an existing cluster:
 
@@ -93,17 +83,9 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 In the response body, find the `rootSquashSettings` property to view the current root squash settings for the cluster.
 
-### [PowerShell](#tab/powershell)
-
-### [Azure CLI](#tab/cli)
-
----
-
 ## Change root squash settings for an existing cluster
 
 You can change the root squash settings for an existing Azure Managed Lustre file system. To change the root squash settings for an existing cluster, follow these steps:
-
-### [HTTP](#tab/HTTP)
 
 1. Decide on the root squash settings you want to change or enable for your existing cluster. For more information, see [Root squash settings](#root-squash-settings).
 1. Use a `PATCH` request to modify the existing cluster, and include the desired `rootSquashSettings` values in the `properties` section of the request body. This action overwrites any existing root squash settings, so make sure all settings are provided with the `PATCH` request.
@@ -131,17 +113,9 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
 
 In this example, even though the `mode`, `squashUID`, and `squashGID` parameters aren't changing, you must include them in the `PATCH` request body to avoid the values being overwritten.
 
-### [PowerShell](#tab/powershell)
-
-### [Azure CLI](#tab/cli)
-
----
-
 ## Disable root squash for an existing cluster
 
 You can disable root squash for an existing Azure Managed Lustre file system. To disable root squash for an existing cluster, follow these steps:
-
-### [HTTP](#tab/HTTP)
 
 1. Use a `PATCH` request to modify the existing cluster, and set the `mode` parameter to `None` in the `properties` section of the request body. No other parameters are required.
 
@@ -162,12 +136,6 @@ PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups
     },
 }
 ```
-
-### [PowerShell](#tab/powershell)
-
-### [Azure CLI](#tab/cli)
-
----
 
 ## Next steps
 
