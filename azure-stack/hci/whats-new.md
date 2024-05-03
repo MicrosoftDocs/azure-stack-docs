@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/16/2024
+ms.date: 04/22/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -27,7 +27,7 @@ The 2402 release train includes the following releases:
 
 This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes. Here's the list of enhancements:
 
-- **Region expansion** - Two new regions are now supported on your Azure Stack HCI: Southeast Asia and India Central. For more information, see [Azure Stack HCI supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
+- **Region expansion** - The following new regions are now supported on your Azure Stack HCI: Southeast Asia, India Central, Canada Central, Japan East, and South Central US. For more information, see [Azure Stack HCI supported regions](./concepts/system-requirements-23h2.md#azure-requirements).
 - **Deployment changes** - A permission check was added to the Azure portal deployment experience to check for sufficient permissions. For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.md).
 - **Update changes** - A notification banner was included in the update experience that informs you when the new updates are available. For more information, see [Update your Azure Stack HCI via the Azure Update Manager](./update/azure-update-manager-23h2.md).
 

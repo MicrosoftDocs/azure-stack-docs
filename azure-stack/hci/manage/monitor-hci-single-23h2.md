@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 04/22/2024
 # zone_pivot_groups: hci-versions
 ---
 
@@ -18,6 +18,10 @@ ms.date: 01/31/2024
 This article describes how to use Insights to monitor a single Azure Stack HCI cluster. For multiple Azure Stack HCI clusters, see [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md).
 
 Insights is a feature of Azure Monitor that quickly gets you started monitoring your Azure Stack HCI cluster. You can view key metrics, health, and usage information regarding cluster, servers, virtual machines, and storage.
+
+Take a few moments to watch the video walkthrough on Insights for Azure Stack HCI:
+
+> [!VIDEO https://www.youtube.com/embed/Cet2s5pnY7k]
 
 ## Benefits
 

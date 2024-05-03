@@ -93,7 +93,7 @@ To install charts with Helm, use the [helm install][helm-install-command] comman
 
 The following command is provided twice, one for use in Azure CLI, and one for use in a PowerShell console. If you run commands in a PowerShell console, the command includes the backtick ( ` ) to allow line continuation.
 
-```console
+```azurecli
 helm install my-nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux

@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 03/11/2024
+ms.date: 04/17/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -47,7 +47,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 
 |Parameter|Description|
 |--|--|
-|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Stack HCI deployment.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name must be unique for each deployment and you can't use *admin* as the username.|
+|`-AzureStackLCMUserCredential`|A new user object that is created with the appropriate permissions for deployment. This account is the same as the user account used by the Azure Stack HCI deployment.<br> Make sure that only the username is provided. The name should not include the domain name, for example, `contoso\username`.<br>The password must conform to the length and complexity requirements. Use a password that is at least 12 characters long. The password must also contain three out of the four requirements: a lowercase character, an uppercase character, a numeral, and  a special character.<br>For more information, see [password complexity requirements](/azure/active-directory-b2c/password-complexity?pivots=b2c-user-flow). <br> The name can use *admin* as the username.|
 |`-AsHciOUName`|A new Organizational Unit (OU) to store all the objects for the Azure Stack HCI deployment. Existing group policies and inheritance are blocked in this OU to ensure there's no conflict of settings. The OU must be specified as the distinguished name (DN). For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
 
 <!--|`-AsHciPhysicalNodeList`|A list of computer names that are created for the physical cluster servers.|
@@ -55,6 +55,10 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 |`-AsHciClusterName`|The name for the new cluster AD object.|
 |`-AsHciDeploymentPrefix`|The prefix used for all AD objects created for the Azure Stack HCI deployment. <br> The prefix must not exceed 8 characters.|
 |`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|-->
+
+> [!NOTE]
+> - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path `- &,”,’,<,>`.
+> - Moving the computer objects to a different OU after the deployment is complete is also not supported.
 
 ## Prepare Active Directory
 

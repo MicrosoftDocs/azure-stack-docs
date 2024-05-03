@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/22/2024
+ms.date: 04/26/2024
 ---
 
 # Security features for Azure Stack HCI, version 23H2
@@ -36,6 +36,58 @@ For more information, see [Manage security defaults on Azure Stack HCI](../manag
 ## Windows Defender Application Control
 
 Application control (WDAC) is a software-based security layer that reduces attack surface by enforcing an explicit list of software that is allowed to run. WDAC is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Manage Windows Defender Application Control for Azure Stack HCI, version 23H2](../manage/manage-wdac.md#manage-wdac-settings-with-powershell).
+
+
+### About WDAC policy design
+
+Microsoft provides base signed policies including block mode and audit mode policies for Azure Stack HCI. Using the WDAC platform, the appropriate properties are defined for the policies. These properties include the options rules and the allow or deny rules that are updated regularly as part of the continuous product updates.
+
+#### Composition of base policies
+
+The Azure Stack HCI base policy allows all the Microsoft components delivered by the OS and the cloud deployments to be trusted. 
+
+A base policy consists of the following sections:
+
+- **Metadata**: The metadata defines unique properties of the policy such as the policy name, version, GUID, and more.
+- **Option Rules**: These rules define the policy behavior. The supplemental policies can only differ from a small set of the option rules tied to their base policy.
+- **Allow or deny Rules**: These rules define the code trust boundaries. The rules can be based on Publishers, Signers, File Hash and more.
+
+#### Option rules
+
+This section discussed the option rules enabled by the base policy. For the enforced policy, the following option rules are enabled by default:
+
+|Option rule|Value|
+|-----|-----|
+|Enabled|UMCI|
+|Required|WHQL|
+|Enabled|Allow Supplemental Policies|
+|Enabled|Revoked Expired As Unsigned|
+|Disabled|Flight Signing|
+|Enabled|Unsigned System Integrity Policy (Default)|
+|Enabled|Dynamic Code Security|
+|Enabled|Advanced Boot Options Menu|
+|Disabled|Script Enforcement|
+|Enabled|Managed Installer|
+|Enabled|Update Policy No Reboot|
+
+Audit policy adds the following option rules to the base policy:
+
+|Option rule|Value|
+|-----|-----|
+|Enabled|Audit Mode (Default)|
+
+For more information, see the full documented [List of option rules](/windows/security/application-security/application-control/windows-defender-application-control/design/select-types-of-rules-to-create#table-1-windows-defender-application-control-policy---policy-rule-options).
+
+#### Allow or deny rules
+
+Microsoft also enables a set of block/deny rules that limit the user mode applications and kernel components compiled and updated regularly that could potentially represent a risk on the security posture of the solution.
+
+For more information, see the following default lists:
+
+- [Driver blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/microsoft-recommended-driver-block-rules).
+
+- [User Mode blocklist](/windows/security/application-security/application-control/windows-defender-application-control/design/applications-that-can-bypass-wdac).
+
 
 ## BitLocker encryption
 
@@ -91,7 +143,7 @@ The following diagram illustrates integration of Azure Stack HCI with an SIEM. A
 
 Syslog forwarding agents are deployed on every Azure Stack HCI host to forward syslog messages to the customer-configured syslog server. Syslog forwarding agents work independently from each other but can be managed together on any one of the hosts.
 
-The syslog forwarder in Azure Stack HCI supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there is unidirectional or bidirectional authentication.
+The syslog forwarder in Azure Stack HCI supports various configurations based on whether syslog forwarding is with TCP or UDP, whether the encryption is enabled or not, and whether there's unidirectional or bidirectional authentication.
 
 For more information, see [Manage syslog forwarding](../manage/manage-syslog-forwarding.md).
 

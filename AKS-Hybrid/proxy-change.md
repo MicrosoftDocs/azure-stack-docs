@@ -136,4 +136,4 @@ To apply the proxy updates:
 
 ## Next steps
 
-For more information about networking in AKS enabled by Arc, see [Kubernetes networking concepts](/azure-stack/aks-hci/concepts-node-networking).
+For more information about networking in AKS enabled by Arc, see [Kubernetes networking concepts](concepts-node-networking.md).

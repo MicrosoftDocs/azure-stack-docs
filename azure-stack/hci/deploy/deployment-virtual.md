@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 02/20/2024
+ms.date: 04/18/2024
 ---
 
 # Deploy a virtual Azure Stack HCI, version 23H2 system
@@ -86,7 +86,7 @@ New-VMSwitch -Name "internal_switch_name" -SwitchType Internal -NetAdapterName "
 
 Once the internal virtual switch is created, a new network adapter is created on the host. You must assign an IP address to this network adapter to become the default gateway of your virtual hosts once connected to this internal switch network. You also need to define the NAT network subnet where the virtual hosts are connected.
 
-The following example script creates a NAT network `HCINAT` with prefix `192.168.4.0/24` and defines the `192.168.44.1` IP as the default gateway for the network using the interface on the host:
+The following example script creates a NAT network `HCINAT` with prefix `192.168.44.0/24` and defines the `192.168.44.1` IP as the default gateway for the network using the interface on the host:
 
 ```PowerShell
 #Check interface index of the new network adapter on the host connected to InternalSwitch:

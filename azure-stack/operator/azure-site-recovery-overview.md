@@ -4,9 +4,9 @@ description: Azure Site Recovery on Azure Stack Hub helps ensure business contin
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.date: 04/15/2024
+ms.date: 04/18/2024
 ms.reviewer: rtiberiu
-ms.lastreviewed: 04/15/2024
+ms.lastreviewed: 04/18/2024
 
 ---
 
@@ -43,11 +43,20 @@ Azure Site Recovery provides many features, as described in the following table.
 |Flexible failovers | You can run planned failovers for expected outages with zero-data loss or unplanned failovers with minimal data loss, depending on replication frequency, for unexpected disasters. You can easily fail back to your primary site when it's available again.|
 |Customized recovery plans |Not currently available in this version. You can still customize and sequence the failover and recovery of multi-tier applications running on multiple VMs by using PowerShell scripts, tagging machines together in groups, and optionally adding scripts and manual actions. |
 
+## How is Site Recovery billed?
+
+Azure Site Recovery on Azure Stack Hub is intended to protect a specified number of Virtual Machines. To provide this service at a competitive rate, the cost of Azure Site Recovery is determined based on the physical core count of the target environment, regardless of the number of VMs that are protected. For detailed pricing options, see the [Azure Stack Hub pricing details](https://azure.microsoft.com/pricing/details/azure-stack/hub/).
+
+> [!NOTE]
+> Until the 1st of June 2024, there is no cost for running the Azure Site Recovery service. The pay-as-you-go pricing options will apply starting on the 1st of June 2024.
+
+When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free trial period is provided. This trial period enables testing, automation setup, and VM replication for protection. Following the conclusion of the 30-day trial, charges begin, calculated on the total count of physical cores in the target environment in which your Azure Site Recovery Resource Provider is installed.
+
 ## What can I replicate?
 
 Azure Site Recovery on Azure Stack Hub, with a required agent installed on each of the protected VMs, enables the replication of VMs across two instances, or stamps, of Azure Stack Hub. Azure Stack Hub uses a VM extension, available through the Azure Stack Hub Marketplace, to install this agent.
 
-We've tested and validated the following VM OSs and each has respective Azure Stack Hub Marketplace images available for download:
+The following VM OSs were tested and validated, and each has respective Azure Stack Hub Marketplace images available for download:
 
 # [Windows](#tab/windows)
 
@@ -78,7 +87,7 @@ We've tested and validated the following VM OSs and each has respective Azure St
 |Debian 9 | Includes support for 9.1 to 9.13. Debian 9.0 isn't supported. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 10 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
 |Debian 11 | [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-debian-kernel-versions-for-azure-virtual-machines).|
-|SUSE Linux Enterprise Server 11 | SP3. The upgrade of replicating machines from SP3 to SP4 isn't supported. If a replicated machine has been upgraded, you must disable replication and re-enable replication after the upgrade.|
+|SUSE Linux Enterprise Server 11 | SP3. The upgrade of replicating machines from SP3 to SP4 isn't supported. If a replicated machine was upgraded, you must disable replication and re-enable replication after the upgrade.|
 |SUSE Linux Enterprise Server 11 | SP4 |
 |SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, and SP5. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines).|
 |SUSE Linux Enterprise Server 15 | 15, SP1, SP2, SP3, and SP4. [Supported kernel versions](/azure/site-recovery/azure-to-azure-support-matrix#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines).|

@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 03/14/2024
+ms.date: 04/22/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -54,6 +54,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
 
+    # [PowerShell](#tab/powershell)
     ```powershell
     #Register PSGallery as a trusted repo
     Register-PSRepository -Default -InstallationPolicy Trusted
@@ -66,7 +67,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Install-Module Az.ConnectedMachine -Force
     Install-Module Az.Resources -Force
     ```
-
+    # [Output](#tab/output)
     Here's a sample output of the installation:
 
     ```output
@@ -83,7 +84,7 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -Force
     PS C:\Users\SetupUser> Install-Module Az.Resources -Force
     ```
-
+    ---
 1. Set the parameters. The script takes in the following parameters:
 
     |Parameters  |Description  |
@@ -96,8 +97,9 @@ Before you begin, make sure you've completed the following prerequisites:
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
     
+    # [PowerShell](#tab/powershell)
 
-   ```powershell
+    ```powershell
     #Define the subscription where you want to register your server as Arc device
     $Subscription = "YourSubscriptionID"
     
@@ -110,6 +112,8 @@ Before you begin, make sure you've completed the following prerequisites:
     #Define the tenant you will use to register your server as Arc device
     $Tenant = "YourTenantID"
     ```
+ 
+    # [Output](#tab/output)
 
     Here's a sample output of the parameters:
 
@@ -120,7 +124,10 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $Region = "eastus"
     ```
 
+    ---
 1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
+
+    # [PowerShell](#tab/powershell)
 
     ```azurecli
     #Connect to your Azure account and Subscription
@@ -131,7 +138,9 @@ Before you begin, make sure you've completed the following prerequisites:
 
     #Get the Account ID for the registration
     $id = (Get-AzContext).Account.Id   
-    ``` 
+    ```
+
+    # [Output](#tab/output)
 
     Here's a sample output of setting the subscription and authentication:
 
@@ -147,15 +156,21 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
- 
+
+    ---
+
 1. Finally run the Arc registration script. The script takes a few minutes to run.
+
+    # [PowerShell](#tab/powershell)
 
     ```powershell
     #Invoke the registration script. Use a supported region.
     Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
-    If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
+    If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
+
+    # [Output](#tab/output)
 
     Here's a sample output of a successful registration of your servers:
     
@@ -217,6 +232,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Report location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentReport.json
     Use -Passthru parameter to return results as a PSObject.   
     ```
+    ---
 
 1. After the script completes successfully on all the servers, verify that:
 

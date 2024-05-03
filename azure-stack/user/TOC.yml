@@ -333,7 +333,7 @@
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
-      href: azure-stack-dev-start-howto-vm-dotnet.md
+      href: azure-stack-dev-start-howto-vm-dotnet.yml
     - name: Deploy a web app to a Linux VM
       items:
       - name: Deploy a Linux VM for a web app

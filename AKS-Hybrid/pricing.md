@@ -17,16 +17,16 @@ ms.date: 10/04/2022
 
 # AKS enabled by Azure Arc pricing details
 
-[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Stack HCI 23H2
 
 Azure Kubernetes Service (AKS) enabled by Azure Arc is a subscription-based Kubernetes offering that can be run on Azure Stack HCI or Windows Server Hyper-V clusters. You can download and install AKS Arc on your existing hardware either in your own on-premises data center, or on the edge. The pricing is based on usage and requires an Azure subscription, which you can obtain for free. The billing unit is a virtual core or vCPU. All initial AKS deployments include a free 60-day evaluation period, at the end of which a pay-as-you-go rate per vCPU (of running worker nodes) per day is applied.
 
 > [!IMPORTANT]
-> Starting in June 2023, we have made revisions that solidify the 60-day evaluation period as a one-time benefit per subscription, at the end of which a pay-as-you-go rate per vCPU will apply. This modification means the evaluation period no longer resets when you reinstall AKS hybrid. This change is being made to better align with our existing pricing guidelines and to ensure the continued provision of high-quality services.
+> Starting in June 2023, we have made revisions that solidify the 60-day evaluation period as a one-time benefit per subscription, at the end of which a pay-as-you-go rate per vCPU will apply. This modification means the evaluation period no longer resets when you reinstall AKS enabled by Arc. This change is being made to better align with our existing pricing guidelines and to ensure the continued provision of high-quality services.
 
 ## Pricing details
 
-Azure pricing for running workloads on AKS hybrid is based on US currency list pricing with:
+Azure pricing for running workloads on AKS enabled by Arc is based on US currency list pricing with:
 
 - Pay-as-you-go pricing
 - D-series general purpose VM sizes (D2s v4, D4s V4, and D8s V4)
@@ -54,13 +54,13 @@ For detailed pricing information, see the [AKS pricing details](https://azure.mi
 - If you enable hyper-threading on the physical computer, this reduces the measured vCPU count by 50 percent.
 
 > [!NOTE]
-> Running Windows Server containers on AKS Arc requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid benefits](azure-hybrid-benefit.md) might apply, thus reducing or eliminating the Windows Server license fees.
+> Running Windows Server containers on AKS Arc requires a Windows Server license. The license can be acquired separately through regular licensing channels, or it can be added to the cost of running a Windows virtual machine on Azure. For users with Windows Server Software Assurance, [Azure Hybrid Benefits](azure-hybrid-benefit.md) might apply, thus reducing or eliminating the Windows Server license fees.
 
 ## Impact of hyper-threading on pricing for AKS
 
 If you enable hyper-threading on your physical computer, AKS also enables hyper-threading on the worker nodes. If you enable hyper-threading, it effectively halves the number of virtual cores needed in each worker node.
 
-![Pricing for AKS is affected by hyper-threading.](media/concepts/hyper-thread-hyperv-manager.png)
+:::image type="content" source="media/pricing/hyper-thread-hyperv-manager.png" alt-text="Screenshot showing how pricing for AKS is affected by hyper-threading." lightbox="media/pricing/hyper-thread-hyperv-manager.png":::
 
 ## Next steps
 

@@ -1,17 +1,15 @@
 ---
-title: Troubleshoot Software Defined Networking deployment via Windows Admin Center
-description: Learn how to troubleshoot the deployment of Software Defined Networking (SDN) via Windows Admin Center.
+title: Troubleshoot Software Defined Networking deployment in Azure Stack HCI, version 23H2 via Windows Admin Center
+description: Learn how to troubleshoot the deployment of Software Defined Networking (SDN) in Azure Stack HCI, version 23H2 via Windows Admin Center.
 ms.topic: how-to
 ms.author: alkohli
 author: alkohli
-ms.date: 06/02/2023
+ms.date: 04/24/2024
 ---
 
-# Troubleshoot Software Defined Networking deployment via Windows Admin Center
+# Troubleshoot Software Defined Networking deployment in Azure Stack HCI via Windows Admin Center
 
-> Applies to: Azure Stack HCI, versions 22H2, 21H2, and 20H2; Windows Server 2022, Windows Server 2019
-
-You can deploy Software Defined Networking (SDN) on Azure Stack HCI using [SDN Express PowerShell scripts](../manage/sdn-express.md) or using Windows Admin Center either [as part of the cluster creation workflow](../deploy/create-cluster.md#step-5-sdn-optional) or [after creating a cluster](../deploy/sdn-wizard.md).
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 This article provides guidance on how to troubleshoot issues that you may encounter while deploying the SDN components using Windows Admin Center. Use this guidance to troubleshoot the issues before creating a support ticket. This article also provides instructions on how to collect logs after successfully troubleshooting the issues to help diagnose the cause of deployment failure.
 
@@ -37,7 +35,7 @@ After you've completed these checks and resolved any identified issues through t
 
 ### Download the correct VHDX file
 
-You must download a virtual hard disk of the Azure Stack HCI operating system to use for the SDN infrastructure VMs (Network Controller, Software Load Balancer, Gateway). For download instructions, see [Download the VHDX file](../deploy/sdn-wizard.md#download-the-vhdx-file).
+You must download a virtual hard disk of the Azure Stack HCI operating system to use for the SDN infrastructure VMs (Network Controller, Software Load Balancer, Gateway). For download instructions, see [Download the VHDX file](../deploy/sdn-wizard-23h2.md#download-the-vhdx-file).
 
 ### Verify the connectivity of your management network VLAN
 
@@ -81,7 +79,7 @@ To verify or enable WinRM and PowerShell remoting, perform these steps:
 
 1. Log into one of the Network Controller VMs either locally or using Remote Desktop Protocol (RDP) connection.
 
-1. Run the following command to disable the Windows firewall:
+1. Run the following command to disable the Windows Firewall:
 
     ```powershell
     Set-NetFirewallProfile -Profile Domain,Public,Private -Enabled False
