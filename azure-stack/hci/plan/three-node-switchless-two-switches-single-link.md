@@ -14,15 +14,16 @@ ms.date: 05/01/2024
 
 [!INCLUDE [includes](../../includes/hci-applies-to-23h2.md)] and later
 
-In this article, you learn about the three-node storage switchless with two TOR L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Stack HCI solution.
+In this article, you learn about the three-node storage switchless with two Top of Rack (TOR) L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Stack HCI solution.
 
-For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+> [!NOTE]
+> The 3-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
-Scenarios for this network pattern include laboratories, factories, retail stores, and public sectors/government.
+Scenarios for this network pattern include laboratories, factories, retail stores, public sectors, and government.
 
-Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. SDN L3 services are fully supported on this pattern. Routing services such as BGP can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or QoS don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
+Consider implementing this pattern when looking for a cost-efficient solution that has fault tolerance across all the network components. Software Defined Network (SDN) L3 services are fully supported on this pattern. Routing services such as Border Gateway Protocol (BGP) can be configured directly on the TOR switches if they support L3 services. Network security features such as micro segmentation or Quality of Service (QoS) don't require extra configuration of the firewall device, as they're implemented at virtual network adapter layer.
 
 ## Physical connectivity components
 
@@ -30,7 +31,7 @@ Consider implementing this pattern when looking for a cost-efficient solution th
 
 As illustrated in the diagram above, this pattern has the following physical network components:
 
-- For northbound/southbound communication the Azure Stack HCI cluster requires two TOR switches in MLAG configuration.
+- For northbound and southbound communication, the Azure Stack HCI cluster requires two TOR switches in multi-chassis link aggregation group (MLAG) configuration.
 - Two network cards using SET virtual switch to handle management and compute traffic, connected to the TOR switches. Each NIC is connected to different TOR.
 - Two RDMA NICs on each node in a full-mesh dual link configuration for East-West traffic for the storage.
     > [!NOTE]
@@ -53,15 +54,17 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The Storage intent-based traffic consists of three individual subnets supporting RDMA traffic. Each interface is dedicated to a separate node interconnect network. This traffic is only intended to travel between the three nodes. Storage traffic on these subnets is isolated without connectivity to other resources.
 
-Each pair of storage adapters between the nodes operate in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor. When deploying a three-node switchless configuration, Network ATC has the following requirements:
+Each pair of storage adapters between the nodes operate in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor. 
+
+When deploying a three-node switchless configuration, Network ATC has the following requirements:
 
 - Only supports a single VLAN for all the IP subnets used for storage connectivity.
 
-- StorageAutoIP parameter must be set to false, Switchless parameter must be set to true,  and the customer is responsible to specify the IPs on the ARM template used to deploy the Azure Stack HCI 23H2 cluster from Azure.
+- `StorageAutoIP` parameter must be set to false, `Switchless` parameter must be set to true,  and you are responsible to specify the IPs on the ARM template used to deploy the Azure Stack HCI 23H2 cluster from Azure.
 
-- In Azure Stack HCI 23H2 cloud deployments, scale out storage switchless clusters isn't supported. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
+- In Azure Stack HCI 23H2 cloud deployments, scale out storage switchless clusters aren't supported. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
 
-- In Azure Stack HCI 23H2 cloud deployments, it's only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](/deploy/deployment-azure-resource-manager-template.md).
+- In Azure Stack HCI 23H2 cloud deployments, it's only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
 
 For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
 
@@ -73,11 +76,11 @@ A DHCP server can automatically assign IP addresses for the management network, 
 
 For information, see [DHCP Network considerations for cloud deployment.](cloud-deployment-network-considerations.md#dhcp-ip-assignment)
 
-The management network supports two different VLAN configurations: Native and Tagged:
+The management network supports two different VLAN configurations for traffic - **Native** and **Tagged**. The following considerations apply to each configuration:
 
 - Native VLAN for management network does not require to supply a VLAN ID.
 
-- Tagged VLAN for management network requires VLAN ID configuration on the physical network adapters or the management virtual network adapter before registering the nodes in Azure Arc. See more details on the link below.
+- Tagged VLAN for management network requires VLAN ID configuration on the physical network adapters or the management virtual network adapter before registering the nodes in Azure Arc. See more details on the link below <!--CHECK-->.
 
 - Physical switch ports must be configured correctly to accept the VLAN ID on the management adapters.
 
@@ -89,13 +92,13 @@ For more information, see [Management VLAN network considerations](cloud-deploym
 
 ### Compute VLANs
 
-In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encapsulation. Instead, they can use traditional VLANs to isolate their tenant workloads. Those VLANs need to be configured on the TOR switches port in trunk mode. When connecting new virtual machines to these VLANs, the corresponding VLAN tag is defined on the virtual network adapter.
+In some scenarios, you don’t need to use SDN Virtual Networks with VXLAN encapsulation. Instead, you can use traditional VLANs to isolate their tenant workloads. Those VLANs need to be configured on the TOR switches port in trunk mode. When connecting new virtual machines to these VLANs, the corresponding VLAN tag is defined on the virtual network adapter.
 
 ### HNV Provider Address (PA) network
 
-The HNV Provider Address (PA) network serves as the underlying physical network for East/West (internal-internal) tenant traffic, North/South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there's a need of deploying virtual networks using VXLAN encapsulation for an extra layer of isolation and network multitenancy.
+The Hyper-V Network Virtualization Provider Address (HNV PA) network serves as the underlying physical network for East-West (internal-internal) tenant traffic, North-South (external-internal) tenant traffic, and to exchange BGP peering information with the physical network. This network is only required when there's a need to deploy virtual networks using VXLAN encapsulation for an extra layer of isolation and network multitenancy.
 
-For more information, see [Plan a Software Defined Network infrastructure](/concepts/plan-software-defined-networking-infrastructure.md#management-and-hnv-provider).
+For more information, see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure-23h2.md#management-and-hnv-provider).
 
 ## Network ATC intents
 
@@ -125,7 +128,7 @@ For three-node storage switchless patterns, two Network ATC intents are created.
     - Storage Network 3: 10.0.3.0/24 – Node 2 -> Node 3
 
 
-For more information, see [Deploy host networking with Network ATC](../deploy/network-atc.md).
+For more information, see [Deploy host networking with Network ATC](../deploy/network-atc.md).<!--CHECK as article needs to be updated as current version applies to only 22H2-->
 
 ## ARM template Storage intent network configuration example
 
