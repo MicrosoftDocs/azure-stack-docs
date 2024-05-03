@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/01/2024
+ms.date: 05/03/2024
 ---
 
 # Download Azure Stack HCI, version 23H2 software
@@ -30,6 +30,9 @@ Before you begin the download of Azure Stack HCI, version 23H2 software, ensure 
    - Subscription obtained through the Cloud Solution Provider (CSP) program.
 
 ## Download the Azure Stack HCI software from the Azure portal
+
+> [!IMPORTANT]
+> English is the only language that is supported for Azure Stack HCI.
 
 Follow these steps to download the Azure Stack HCI software:
 
