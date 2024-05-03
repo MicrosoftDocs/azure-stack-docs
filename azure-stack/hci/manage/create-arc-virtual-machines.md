@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 02/03/2024
+ms.date: 03/04/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -43,14 +43,20 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
-
 # [ARM template](#tab/armtemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
 - Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+- [Download the sample ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
-- [Download the ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub repo. You use this template to create a VM.
+# [Bicep template](#tab/biceptemplate)
+
+[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+
+- Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+- [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
+
 ---
 
 ## Create Arc VMs
@@ -65,9 +71,14 @@ Follow these steps on the client running az CLI that is connected to your Azure 
 
 [!INCLUDE [hci-vm-sign-in-set-subscription](../../includes/hci-vm-sign-in-set-subscription.md)]
 
-### Create a VM from network interface
+### Create a Windows VM
 
-Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
+Depending on the type of the network interface that you created, you can create a VM that has network interface with static IP or one with a dynamic IP allocation. 
+
+> [!NOTE]
+> If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
+
+Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
 
 1. Set some parameters.
 
@@ -124,6 +135,17 @@ In this example, the storage path was specified using the `--storage-path-id` fl
 
 If the flag isn't specified, the workload (VM, VM image, non-OS data disk) is automatically placed in a high availability storage path.
 
+### Create a Linux VM 
+
+To create a Linux VM, use the same command that you used to create the Windows VM.
+
+- The gallery image specified should be a Linux image.
+- The username and password works with the `authentication-type-all` parameter.
+- For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
+
+> [!IMPORTANT]
+> Setting the proxy server during VM creation is not supported for Linux VMs.
+
 ### Create a VM with proxy configured
 
 Use this optional parameter **proxy-configuration** to configure a proxy server for your VM.
@@ -153,16 +175,17 @@ az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-u
 ```
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-### Create a Linux VM from network interface
+Depending on the PowerShell version you are running on your VM, you may need to enable the proxy settings for your VM.
 
-To create a Linux VM, use the same command that you used to create the Windows VM.
+- For Windows VMs running PowerShell version 5.1 or earlier, sign in to the VM after the creation. Run the following command to enable proxy:
 
-- The gallery image specified should be a Linux image.
-- The username and password works with the `authentication-type-all` parameter.
-- For SSH keys, you need to pass the `ssh-key-values` parameters along with the `authentication-type-all`.
+    ```powershell
+    netsh winhttp set proxy proxy-server="http=myproxy;https=sproxy:88" bypass-list="*.foo.com"
+    ```
 
-> [!IMPORTANT]
-> Proxy servers are not supported for Linux VMs.
+    After the proxy is enabled, you can then [Enable guest management](./manage-arc-virtual-machines.md#enable-guest-management).
+
+- For Windows VMs running PowerShell version later than 5.1, proxy settings passed during VM creation are only used for enabling Arc guest management. After the VM is created, sign in to the VM and run the above command to enable proxy for other applications.
 
 # [Azure portal](#tab/azureportal)
 
@@ -257,12 +280,13 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. **(Optional)** Create or add a network interface for the VM.
 
     > [!NOTE]
-    > If you enabled guest management, you must add at least one network interface.
+    > - If you enabled guest management, you must add at least one network interface.
+    > - If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
 
     :::image type="content" source="./media/create-arc-virtual-machines/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-disk.png":::
 
     1. Provide a **Name** for the network interface. 
-    1. From the dropddown list, select the **Network**. Based on the network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
+    1. From the drop-down list, select the **Network**. Based on the network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
     1. For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
 
     1. Select **Add**.
@@ -283,7 +307,7 @@ Follow these steps to deploy the ARM template:
 1. In the Azure portal, from the top search bar, search for *deploy a custom template*. Select **Deploy a custom template** from the available options.
 
 1. On the **Select a template** tab, select **Build your own template in the editor**.
-   
+
    :::image type="content" source="./media/create-arc-virtual-machines/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal." lightbox="./media/create-arc-virtual-machines/build-own-template.png":::
 
 1. You see a blank template.
@@ -578,6 +602,14 @@ Follow these steps to deploy the ARM template:
     
    <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
 
+# [Bicep template](#tab/biceptemplate)
+
+1. Download the sample Bicep template below from the [Azure QuickStarts Repo](https://aka.ms/hci-vmbiceptemplate).
+1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Stack HCI cluster.
+1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
+
+   :::code language="bicep" source="~/../quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
+
 ---
 
 ## Use managed identity to authenticate Arc VMs
@@ -590,6 +622,7 @@ For  more information, see [System-assigned managed identities](/entra/identity/
 
 ## Next steps
 
+- [Delete Arc VMs](./manage-arc-virtual-machines.md#delete-a-vm).
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
 - [Troubleshoot Arc VMs](troubleshoot-arc-enabled-vms.md).
 - [Frequently Asked Questions for Arc VM management](./azure-arc-vms-faq.yml).

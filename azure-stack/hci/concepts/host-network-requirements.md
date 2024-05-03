@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 03/14/2024
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
@@ -32,7 +32,7 @@ Azure Stack HCI network traffic can be classified by its intended purpose:
 
 Network adapters are qualified by the **network traffic types** (see above) they are supported for use with. As you review the [Windows Server Catalog](https://www.windowsservercatalog.com), the Windows Server 2022 certification now indicates one or more of the following roles. Before purchasing a server for Azure Stack HCI, you must minimally have *at least* one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. You can then use [Network ATC](network-atc-overview.md) to configure your adapters for the appropriate traffic types.
 
-For more information about this role-based NIC qualification, please see this [link](https://aka.ms/RoleBasedNIC).
+For more information about this role-based NIC qualification, please see this [link](https://techcommunity.microsoft.com/t5/networking-blog/nic-certification-updates-in-the-windows-server-catalog/ba-p/3606506).
 
 > [!IMPORTANT]
 > Using an adapter outside of its qualified traffic type is not supported.
@@ -41,11 +41,11 @@ For more information about this role-based NIC qualification, please see this [l
 |----|----|----|----|
 |Role-based distinction|Management|Compute Standard|Storage Standard|
 |Maximum Award|Not Applicable|Compute Premium|Storage Premium|
- 
+
 > [!NOTE]
 > The highest qualification for any adapter in our ecosystem will contain the **Management**, **Compute Premium**, and **Storage Premium** qualifications.
- 
-![image](https://user-images.githubusercontent.com/12801954/188225569-bb160be0-96a2-4563-97d5-3d8efb3cb597.png)
+
+:::image type="content" source="media/host-network-requirements/certified-for-windows-qualifications.png" alt-text="Screenshot shows 'Certified for Windows' qualifications, including Management, Compute Premium, and Storage Premium features." lightbox="media/host-network-requirements/certified-for-windows-qualifications.png":::
 
 ## Driver Requirements
 
@@ -237,11 +237,11 @@ Consider the following example of a four node cluster. Each server has two stora
 
 However, this creates unnecessary connections and causes congestion at the interlink (multi-chassis link aggregation group or MC-LAG) that connects the ToR switches (marked with Xs). See the following diagram:
 
-:::image type="content" source="media/plan-networking/four-node-cluster-1.png" alt-text="Diagram that shows a four-node cluster on the same subnet." lightbox="media/plan-networking/four-node-cluster-1.png":::
+:::image type="content" source="media/host-network-requirements/four-node-cluster-1.png" alt-text="Diagram that shows a four-node cluster on the same subnet." lightbox="media/host-network-requirements/four-node-cluster-1.png":::
 
 The recommended approach is to use separate subnets and VLANs for each set of adapters. In the following diagram, the right-hand ports now use subnet 192.168.2.x /24 and VLAN2. This allows traffic on the left-side ports to remain on TOR1 and the traffic on the right-side ports to remain on TOR2.
 
-:::image type="content" source="media/plan-networking/four-node-cluster-2.png" alt-text="Diagram that shows a four-node cluster on different subnets." lightbox="media/plan-networking/four-node-cluster-2.png":::
+:::image type="content" source="media/host-network-requirements/four-node-cluster-2.png" alt-text="Diagram that shows a four-node cluster on different subnets." lightbox="media/host-network-requirements/four-node-cluster-2.png":::
 
 ## Traffic bandwidth allocation
 
@@ -284,7 +284,7 @@ Here is the example bandwidth allocation table:
 
 |NIC speed|Teamed bandwidth|SMB bandwidth reservation**|SBL/CSV %|SBL/CSV bandwidth|Live Migration %|Max Live Migration bandwidth|Heartbeat %|Heartbeat bandwidth|
 |---------|-----------------|--------------------------|---------|-----------------|----------------|-----------------------------|----------|-------------------|
-|10 Gbps  |20 Gbps          |10 Gbps                   |70%       |7 Gbps           |*\*            |200 Mbps                     |          |
+|10 Gbps  |20 Gbps          |10 Gbps                   |70%       |7 Gbps           |\*            |200 Mbps                     |          |
 |25 Gbps  |50 Gbps          |25 Gbps                   |70%       |17.5 Gbps        |29%            |7.25 Gbps                    |1%        |250 Mbps               |
 |40 Gbps  |80 Gbps          |40 Gbps                   |70%       |28 Gbps          |29%            |11.6 Gbps                    |1%        |400 Mbps|
 |50 Gbps  |100 Gbps         |50 Gbps                   |70%       |35 Gbps          |29%            |14.5 Gbps                    |1%        |500 Mbps|
@@ -299,9 +299,14 @@ Here is the example bandwidth allocation table:
 
 Stretched clusters provide disaster recovery that spans multiple datacenters. In its simplest form, a stretched Azure Stack HCI cluster network looks like this:
 
-:::image type="content" source="media/plan-networking/stretched-cluster.png" alt-text="Diagram that shows a stretched cluster." lightbox="media/plan-networking/stretched-cluster.png":::
+
+
+:::image type="content" source="media/host-network-requirements/stretched-cluster.png" alt-text="Diagram that shows a stretched cluster." lightbox="media/host-network-requirements/stretched-cluster.png":::
 
 ### Stretched cluster requirements
+
+> [!IMPORTANT]
+> Stretched cluster functionality is only available in Azure Stack HCI, version 22H2.
 
 Stretched clusters have the following requirements and characteristics:
 
@@ -329,7 +334,7 @@ Stretched clusters have the following requirements and characteristics:
 
 The following example illustrates a stretched cluster configuration. To ensure that a specific virtual NIC is mapped to a specific physical adapter, use the [Set-VMNetworkAdapterTeammapping](/powershell/module/hyper-v/set-vmnetworkadapterteammapping) cmdlet.
 
-:::image type="content" source="media/plan-networking/stretched-cluster-example.png" alt-text="Diagram that shows an example of stretched cluster storage." lightbox="media/plan-networking/stretched-cluster-example.png":::
+:::image type="content" source="media/host-network-requirements/stretched-cluster-example.png" alt-text="Diagram that shows an example of stretched cluster storage." lightbox="media/host-network-requirements/stretched-cluster-example.png":::
 
 The following shows the details for the example stretched cluster configuration.
 
@@ -377,5 +382,5 @@ The following shows the details for the example stretched cluster configuration.
 - Learn about network switch and physical network requirements. See [Physical network requirements](physical-network-requirements.md).
 - Learn how to simplify host networking using Network ATC. See [Simplify host networking with Network ATC](../deploy/network-atc.md).
 - Brush up on [failover clustering networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
-- For deployment, see [Create a cluster using Windows Admin Center](../deploy/create-cluster.md).
-- For deployment, see [Create a cluster using Windows PowerShell](../deploy/create-cluster-powershell.md).
+- See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
+- See [Deploy using ARM template](../deploy/deployment-azure-resource-manager-template.md).

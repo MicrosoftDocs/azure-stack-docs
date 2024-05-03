@@ -6,7 +6,7 @@ ms.author: sethm
 ms.topic: overview
 ms.reviewer: jlei
 ms.date: 02/02/2024
-ms.lastreviewed: 12/04/2023
+ms.lastreviewed: 02/23/2024
 
 ---
 
@@ -46,7 +46,7 @@ This tutorial walks you through how you can use [Azure verification for VMs](../
 
 The following image shows typical output when checking for required prerequisites using PowerShell. Your actual output might look different; this image is example output that shows installed prerequisites:
 
-:::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites.":::
+:::image type="content" source="media/azure-benefits-esu/esu-prerequisites.png" alt-text="Screenshot that shows E S U prerequisites." lightbox="media/azure-benefits-esu/esu-prerequisites.png":::
 
 ---
 

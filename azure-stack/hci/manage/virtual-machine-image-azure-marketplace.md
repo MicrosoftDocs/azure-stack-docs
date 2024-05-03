@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 01/30/2024
+ms.date: 02/29/2024
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images
@@ -184,7 +184,7 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
 1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from Azure Marketplace**.
 
-   :::image type="content" source="./media/manage-vm-resources/add-image-from-azure-marketplace.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/manage-vm-resources/add-image-from-azure-marketplace.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/add-image-from-azure-marketplace.png" alt-text="Screenshot showing Add VM image from Azure Marketplace option." lightbox="./media/virtual-machine-image-azure-marketplace/add-image-from-azure-marketplace.png":::
 
 1. In the **Create an image** page, on the **Basics** tab, input the following information:
 
@@ -202,15 +202,15 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
 1. Select **Review + Create** to create your VM image.
 
-   :::image type="content" source="./media/manage-vm-resources/create-an-image.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/manage-vm-resources/create-an-image.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/create-an-image.png" alt-text="Screenshot of the Create an Image page highlighting the Review + Create button." lightbox="./media/virtual-machine-image-azure-marketplace/create-an-image.png":::
 
 1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
         
-   :::image type="content" source="./media/manage-vm-resources/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/manage-vm-resources/create-an-image-create.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/create-an-image-create.png" alt-text="Screenshot of the Create an Image page highlighting the Create button." lightbox="./media/virtual-machine-image-azure-marketplace/create-an-image-create.png":::
   
 1. An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the Marketplace image and the network bandwidth available for the download. 
 
-   :::image type="content" source="./media/manage-vm-resources/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/manage-vm-resources/deployment-in-progress.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/deployment-in-progress.png" alt-text="Screenshot showing deployment is in progress." lightbox="./media/virtual-machine-image-azure-marketplace/deployment-in-progress.png":::
 
    You can track the image deployment on the VM image grid. You can see the list of the VM images that are already downloaded and the ones that are being downloaded on the cluster.
 
@@ -218,11 +218,11 @@ Follow these steps to create a VM image using the Azure portal. In the Azure por
 
 1. When the image download is complete, the VM image shows up in the list of images, and the **Status** shows as **Available**.
 
-   :::image type="content" source="./media/manage-vm-resources/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/manage-vm-resources/added-vm-image.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/added-vm-image.png" alt-text="Screenshot showing the newly added VM image in the list of images." lightbox="./media/virtual-machine-image-azure-marketplace/added-vm-image.png":::
 
    If the download of the VM image fails, the error details are shown in the portal blade.
 
-   :::image type="content" source="./media/manage-vm-resources/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/manage-vm-resources/failed-deployment.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/failed-deployment.png" alt-text="Screenshot showing an error when the download of VM image fails." lightbox="./media/virtual-machine-image-azure-marketplace/failed-deployment.png":::
 
 ---
 
@@ -263,21 +263,21 @@ To update a VM image, use the following steps in Azure portal.
 
 1. To see if an update is available, select a VM image from the list view.
 
-   :::image type="content" source="./media/manage-vm-resources/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/manage-vm-resources/new-update-available.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/new-update-available.png" alt-text="Screenshot showing that a VM image update is available for download." lightbox="./media/virtual-machine-image-azure-marketplace/new-update-available.png":::
 
    In the **Overview** blade, you see a banner that shows the new VM image available for download, if one is available. To update to the new image, select **the arrow icon**.
 
-   :::image type="content" source="./media/manage-vm-resources/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/manage-vm-resources/new-update-available-in-image-details.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/new-update-available-in-image-details.png" alt-text="Screenshot showing a new VM image available for download in VM image details." lightbox="./media/virtual-machine-image-azure-marketplace/new-update-available-in-image-details.png":::
 
 2. Review image details and then select **Review and create**. By default, the new image uses the same resource group and instance details as the previous image.
 
    The name for the new image is incremented based on the name of the previous image. For example, an existing image named *winServer2022-01* will have an updated image named *winServer2022-02*.
 
-   :::image type="content" source="./media/manage-vm-resources/review-and-create-image.png" alt-text="Screenshot showing the Review and create dialog for a new VM image." lightbox="./media/manage-vm-resources/review-and-create-image.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/review-and-create-image.png" alt-text="Screenshot showing the Review and create dialog for a new VM image." lightbox="./media/virtual-machine-image-azure-marketplace/review-and-create-image.png":::
 
 3. To complete the operation, select **Create**.
 
-   :::image type="content" source="./media/manage-vm-resources/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/manage-vm-resources/create-image.png":::
+   :::image type="content" source="./media/virtual-machine-image-azure-marketplace/create-image.png" alt-text="Screenshot showing the Create image dialog for a new VM image." lightbox="./media/virtual-machine-image-azure-marketplace/create-image.png":::
 
    After the new VM image is created, create a VM using the new image and verify that the VM works properly. After verification, you can delete the old VM image.
 

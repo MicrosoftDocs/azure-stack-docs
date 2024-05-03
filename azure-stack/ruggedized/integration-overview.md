@@ -2,16 +2,9 @@
 title: Azure Stack Hub datacenter integration overview
 description: Learn what to expect for a successful on-site deployment of Azure Stack Hub ruggedized from Microsoft, from planning to post-deployment.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
-ms.assetid: 
 ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2021
 ms.author: sethm
@@ -30,7 +23,7 @@ The following table depicts what can be expected during the various phases of de
 | Participant |Order Process |Pre-Deployment |Integration, Validation, Transport |Onsite Deployment |Post-Deployment |
 |---|---------------|---------------|-----------------------------------|--------------------|----------------|
 |Microsoft |- Signal to delivery to US location<br>- Azure Stack Hub ruggedized  = 10 Days |Provide required tooling and documentation to collect datacenter requirements |- Validate configuration artifacts and check validation results<br>- Ensure hardware is delivered |- Rack and stack<br>- Network integration<br>- Azure Stack Hub deployment<br>- Hand off to customer |Registration and Marketplace syndication|
-| Customer |Signals purchase |- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Microsoft Entra accounts<br>- Runs any validation tooling provided |Ensure the site is ready with network, power, cooling prerequisites |- Be prepared with deployment configuration artifacts<br>- Customer’s network engineer available |     |
+| Customer |Signals purchase |- Fills out network details in deployment worksheet<br>- Collects certificates<br>- Obtains Microsoft Entra accounts<br>- Runs any validation tooling provided |Ensure the site is ready with network, power, cooling prerequisites |- Be prepared with deployment configuration artifacts<br>- Customer's network engineer available |     |
 
 ## Order process
 
@@ -63,7 +56,7 @@ To create an Azure Stack Hub resource, take the following steps in the Azure por
 
 1. Select **Next: Shipping address**.
 
-    - If you already have a device, select the combo box for **I have a Azure Stack Hub device**.
+    - If you already have a device, select the combo box for **I have an Azure Stack Hub device**.
 
     - If this is the new device that you are ordering, enter the contact name, company, address to ship the device, and contact information.
 

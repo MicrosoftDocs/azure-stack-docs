@@ -108,7 +108,7 @@ For more information, see [Storage Replica overview](/windows-server/storage/sto
 
 With this release, GPU partitioning is now supported on NVIDIA [A2](https://www.nvidia.com/en-us/data-center/products/a2/), [A10](https://www.nvidia.com/en-us/data-center/products/a10-gpu/), [A16](https://www.nvidia.com/en-us/data-center/products/a16-gpu/), and [A40](https://www.nvidia.com/en-us/data-center/a40/) GPUs in Azure Stack HCI, enabled with NVIDIA RTX Virtual Workstation (vWS) and NVIDIA Virtual PC (vPC) software. GPU partitioning is implemented using single root I/O virtualization (SR-IOV), which provides a strong, hardware-backed security boundary with predictable performance for each virtual machine.
 
-For more information, see [Partition and share GPU with virtual machines on Azure Stack HCI](../hci/manage/partition-gpu.md).
+For more information, see [Partition and share GPU with virtual machines on Azure Stack HCI](/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json).
 
 ### Hyper-V live migration improvements
 

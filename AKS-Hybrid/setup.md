@@ -15,6 +15,8 @@ ms.custom: mode-portal
 
 # Quickstart: Set up AKS enabled by Azure Arc using Windows Admin Center
 
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+
 In this quickstart, you set up AKS enabled by Arc using Windows Admin Center. To use PowerShell instead, see [Set up with PowerShell](kubernetes-walkthrough-powershell.md).
 
 Setup involves the following tasks:

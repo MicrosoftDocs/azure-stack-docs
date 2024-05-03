@@ -16,6 +16,9 @@ ms.lastreviewed: 12/16/2020
 
 # Use Docker to run PowerShell for Azure Stack Hub
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 In this article, you can use Docker to create a container on which to run the version of PowerShell that's required for working with the various interfaces. You can find instructions for using both AzureRM modules and the latest Az modules. AzureRM requires a Windows-based container. Az uses a Linux-based container.
 
 ## Docker prerequisites

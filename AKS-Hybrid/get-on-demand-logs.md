@@ -15,6 +15,8 @@ ms.reviewer: guanghu
 
 # Get on-demand logs for troubleshooting
 
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)], AKS enabled by Azure Arc on VMware (preview)
+
 This article describes how to collect full on-demand logs and send them to Microsoft support for troubleshooting issues with AKS enabled by Azure Arc.
 
 ## Prepare the SSH key

@@ -17,7 +17,7 @@ This article provides a brief overview of the Remote Support Arc extension, its 
 
 ## About the Remote Support Arc extension
 
-The Remote Support Arc extension, shown as EdgeRemoteSupport in the Azure portal, can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the cluster. Additionally, it supports the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
+The Remote Support Arc extension, shown as AzureEdgeRemoteSupport in the Azure portal, can expedite setup time and enhance support issue resolution. This capability happens by pre-installing the remote support agent on all nodes of the cluster. Additionally, it supports the configuration of scheduled tasks for [Just Enough Administration (JEA)](../manage/get-remote-support.md#install-jea-configurations-before-azure-registration).
 
 The scheduled tasks to configure JEA are set up through either:
 
@@ -40,6 +40,20 @@ Remote support gives you the ability to:
 - View the detailed transcript of all executed operations at any time.
 - Grant just-in-time authenticated access on an incident-by-incident basis. You can define the access level and duration for each incident.
 - Revoke consent at any time, which in turn terminates the remote session. Access is automatically disabled once the consent duration expires.
+
+## Scenarios for remote support
+
+The scenarios in this list highlight the critical role of remote support in efficiently managing and troubleshooting complex systems.
+
+|Scenario | Description|
+|---------|------------|
+|Log Collection Initiation | Use remote support to initiate log collection for diagnostic purposes. This includes the initiation of the command `Send-Diagnosticdata`. |
+|Azure Stack HCI Information Retrieval | Obtain details related to Azure Stack HCI, including node connections, Arc integration, billing, licensing, registration, subscription information, and test connections to Azure Stack HCI. |
+|Hyper-V Troubleshooting |Retrieve comprehensive information about Hyper-V issues, such as virtual hard disks, Hyper-V hosts, virtual switches, virtual hard disk sets, BIOS settings, VMConnect, firmware details, GPU configuration, virtual network adapters, CPU settings, security configurations, and virtual machine settings.<br></br> Additionally, address Access Control Lists (ACL) settings for network adapters.|
+|Observability Pipeline Testing | Verify the functionality of the observability pipeline to ensure the ability to send data to Microsoft.|
+|Cluster Information Retrieval | Retrieve relevant details about clusters, cluster groups, cluster nodes, cluster resources, shared volumes, and Cluster-Aware Updating (CAU) specifics. |
+| Network Adapter Details | Access basic properties of network adapters, configure Remote Direct Memory Access (RDMA) settings, examine path configurations, review network connection specifics, gather virtual port information, capture packet details, manage firewall settings, and explore NAT configuration details.<br></br> Additionally, retrieve information about VM Switches and IPsec settings. |
+|Storage, Clusters, and Networking Insights | Gather information related to storage enclosures, storage-related jobs, storage nodes, storage subsystems, virtual disks, volumes, Storage Spaces Direct (S2D) Clusters, fault domain details, cluster group sets, available disks, network specifics for clusters, SMB client information, and disk images. 
 
 ## Enable remote support via PowerShell on your Azure Stack HCI system
 

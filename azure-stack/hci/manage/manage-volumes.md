@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: jgerend
-ms.date: 05/02/2023
+ms.date: 02/26/2024
 ---
 
 # Manage volumes in Azure Stack HCI and Windows Server
@@ -56,7 +56,7 @@ Before you expand a volume, make sure you have enough capacity in the storage po
 
 In Storage Spaces Direct, every volume is composed of several stacked objects: the cluster shared volume (CSV), which is a volume; the partition; the disk, which is a virtual disk; and one or more storage tiers (if applicable). To resize a volume, you need to resize several of these objects.
 
-![Diagram shows the layers of a volume, including cluster shard volume, volume, partition, disk, virtual disk, and storage tiers.](media/manage-volumes/volumes-in-smapi.png)
+:::image type="content" source="media/manage-volumes/volumes-in-smapi.png" alt-text="Diagram shows the layers of a volume, including cluster shard volume, volume, partition, disk, virtual disk, and storage tiers." lightbox="media/manage-volumes/volumes-in-smapi.png":::
 
 To familiarize yourself with them, try running the `Get-` cmdlet with the corresponding noun in PowerShell.
 

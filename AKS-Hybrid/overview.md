@@ -1,5 +1,5 @@
 ---
-title: AKS enabled by Arc on Windows Server and Azure Stack HCI overview
+title: Overview of AKS on Windows Server and Azure Stack HCI, version 22H2
 description: Learn about AKS enabled by Azure Arc on Windows Server and Azure Stack HCI.
 ms.topic: overview
 author: sethmanheim
@@ -11,9 +11,9 @@ ms.date: 01/29/2024
 
 ---
 
-# Overview of AKS enabled by Azure Arc
+# Overview of AKS on Windows Server and Azure Stack HCI, version 22H2
 
-> Applies to: Azure Stack HCI and Windows Server
+[!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server is an on-premises Kubernetes implementation of AKS. AKS on Azure Stack HCI and Windows Server automates running containerized applications at scale. AKS makes it quicker to get started hosting Linux and Windows containers in your datacenter.
 
@@ -49,7 +49,7 @@ AKS simplifies the process of setting up Kubernetes on Azure Stack HCI and Windo
 
 View the GIF below to familiarize yourself with the deployment process:
 
-![GIF for deploying AKS HCI](./media/aks-hci-deployment.gif)
+:::image type="content" source="media/overview/aks-hci-deployment.gif" alt-text="GIF showing AKS deployment." lightbox="media/overview/aks-hci-deployment.gif":::
 
 ## View and manage on-premises Kubernetes using tools or Azure Arc
 

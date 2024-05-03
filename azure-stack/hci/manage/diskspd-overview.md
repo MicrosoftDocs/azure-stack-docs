@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use DISKSPD to test workload
 author: JasonGerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 02/26/2024
 ---
 
 # Use DISKSPD to test workload storage performance
@@ -38,13 +38,13 @@ Without further ado, let’s get started:
     ```
 
      ```powershell
-     $client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.0.21a/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.0.21a.zip")
+     $client.DownloadFile("https://github.com/microsoft/diskspd/releases/download/v2.1/DiskSpd.zip","<ENTER_PATH>\DiskSpd-2.1.zip")
     ```
 
 1. Use the following command to unzip the downloaded file:
 
      ```powershell
-     Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.0.21a.zip -DestinationPath C:\DISKSPD
+     Expand-Archive -LiteralPath <ENTERPATH>\DiskSpd-2.1.zip -DestinationPath C:\DISKSPD
     ```
 
 1. Change directory to the DISKSPD directory and locate the appropriate executable file for the Windows operating system that the target computer is running.
@@ -56,7 +56,7 @@ Without further ado, let’s get started:
 
     In the ZIP file, you'll see three subfolders: amd64 (64-bit systems), x86 (32-bit systems), and ARM64 (ARM systems). These options enable you to run the tool in every Windows client or server version.
 
-    :::image type="content" source="media/diskspd/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd/download-directory.png":::
+    :::image type="content" source="media/diskspd-overview/download-directory.png" alt-text="Directory to download the DISKSPD .zip file." lightbox="media/diskspd-overview/download-directory.png":::
 
 1. Run DISKSPD with the following PowerShell command. Replace everything inside the square brackets, including the brackets themselves with your appropriate settings.
 
@@ -119,20 +119,20 @@ Armed with your understanding of the parameters and environment, you're ready to
 
 The following diagram shows what the DISKSPD process looks like in our example environment. It shows an example of a 1 MiB write operation from a non-coordinator node. The three-way resiliency structure, along with the operation from a non-coordinator node, leads to two network hops, decreasing performance. If you're wondering what a coordinator node is, don’t worry! You'll learn about it in the [Things to consider](#things-to-consider) section. The red squares represent the VM and drive bottlenecks.
 
-:::image type="content" source="media/diskspd/environment.png" alt-text="The sample environment used to test performance with DISKSPD." lightbox="media/diskspd/environment.png":::
+:::image type="content" source="media/diskspd-overview/environment.png" alt-text="The sample environment used to test performance with DISKSPD." lightbox="media/diskspd-overview/environment.png":::
 
 Now that you've got a visual understanding, let’s examine the four main sections of the .txt file output:
 1. Input settings
    
     This section describes the command you ran, the input parameters, and additional details about the test run.
 
-    :::image type="content" source="media/diskspd/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="media/diskspd/command-input-parameters.png":::
+    :::image type="content" source="media/diskspd-overview/command-input-parameters.png" alt-text="Example output shows command and input parameters." lightbox="media/diskspd-overview/command-input-parameters.png":::
 
 1. CPU utilization details
    
     This section highlights information such as the test time, number of threads, number of available processors, and the average utilization of every CPU core during the test. In this case, there are two CPU cores that averaged around 4.67% usage.
 
-    :::image type="content" source="media/diskspd/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd/cpu-details.png":::
+    :::image type="content" source="media/diskspd-overview/cpu-details.png" alt-text="Example CPU details." lightbox="media/diskspd-overview/cpu-details.png":::
 
 1. Total I/O
    
@@ -142,13 +142,13 @@ Now that you've got a visual understanding, let’s examine the four main sectio
 
     The last three columns show the standard deviation of IOPS at 17.72 (from -D parameter), the standard deviation of the latency at 20.994 milliseconds (from -L parameter), and the file path.
 
-      :::image type="content" source="media/diskspd/total-io.png" alt-text="Example shows total overall I/O performance data." lightbox="media/diskspd/total-io.png":::
+      :::image type="content" source="media/diskspd-overview/total-io.png" alt-text="Example shows total overall I/O performance data." lightbox="media/diskspd-overview/total-io.png":::
 
     From the results, you can quickly determine that the cluster configuration is terrible. You can see that it hit the VM limitation of 1920 before the SSD limitation of 5000. If you were limited by the SSD rather than the VM, you could have taken advantage of up to 20000 IOPS (4 drives * 5000) by spanning the test file across multiple drives.
 
     In the end, you need to decide what values are acceptable for your specific workload. The following figure shows some important relationships to help you consider the tradeoffs:
 
-    :::image type="content" source="media/diskspd/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd/tradeoffs.png":::
+    :::image type="content" source="media/diskspd-overview/tradeoffs.png" alt-text="Figure shows workload relationship tradeoffs." lightbox="media/diskspd-overview/tradeoffs.png":::
 
     The second relationship in the figure is important, and it's sometimes referred to as Little’s Law. The law introduces the idea that there are three characteristics that govern process behavior and that you only need to change one to influence the other two, and thus the entire process. And so, if you're unhappy with your system’s performance, you have three dimensions of freedom to influence it. Little's Law dictates that in our example, IOPS is the "throughput" (input output operations per second), latency is the "queue time", and queue depth is the "inventory".
 
@@ -160,7 +160,7 @@ Now that you've got a visual understanding, let’s examine the four main sectio
 
     Moreover, the “nines” refer to the number of nines. For example, “3-nines” is equivalent to the 99th percentile. The number of nines exposes how many I/O operations ran at that percentile. Eventually, you'll reach a point where it no longer makes sense to take the latency values seriously. In this case, you can see that the latency values remain constant after “4-nines.” At this point, the latency value is based on only one I/O operation out of the 234408 operations.
 
-    :::image type="content" source="media/diskspd/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd/storage-performance.png":::
+    :::image type="content" source="media/diskspd-overview/storage-performance.png" alt-text="Example shows percentile latencies per operation type of storage performance." lightbox="media/diskspd-overview/storage-performance.png":::
 
 ## Things to consider
 Now that you've started using DISKSPD, there are several things to consider to get real-world test results. These include paying close attention to the parameters you set, storage space health and variables, CSV ownership, and the difference between DISKSPD and file copy.
@@ -224,7 +224,7 @@ Here is an example:
 
 From this example, you can clearly see in the results of the following figure that latency decreased, IOPS increased, and throughput increased when the coordinator node owns the CSV.
 
-:::image type="content" source="media/diskspd/coordinator-node-data.png" alt-text="Example shows coordinator node data output." lightbox="media/diskspd/coordinator-node-data.png":::
+:::image type="content" source="media/diskspd-overview/coordinator-node-data.png" alt-text="Example shows coordinator node data output." lightbox="media/diskspd-overview/coordinator-node-data.png":::
 
 ### Online Transaction Processing (OLTP) workload
 Online Transactional Processing (OLTP) workload queries (Update, Insert, Delete) focus on transaction-oriented tasks. Compared to Online Analytical Processing (OLAP), OLTP is storage latency dependent. Because each operation issues little I/O, what you care about is how many operations per second you can sustain.

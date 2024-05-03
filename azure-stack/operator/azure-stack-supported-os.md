@@ -17,6 +17,9 @@ ms.lastreviewed: 09/09/2021
 
 # Guest operating systems supported on Azure Stack Hub
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 ## Windows
 
 Azure Stack Hub supports the Windows guest operating systems listed in the following table:

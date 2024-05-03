@@ -1,6 +1,6 @@
 ---
 title: Back up, restore workload clusters using Velero
-description: Learn how to back up and restore workload clusters to Azure Blob Storage or MinIO using Velero in AKS hybrid.
+description: Learn how to back up and restore workload clusters to Azure Blob Storage or MinIO using Velero in AKS Arc.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 11/21/2022
@@ -13,13 +13,13 @@ ms.reviewer: scooley
 
 ---
 
-# Back up, restore workload clusters using Velero in AKS hybrid
+# Back up, restore workload clusters using Velero
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob Storage or MinIO storage in [AKS hybrid](.\aks-hybrid-options-overview.md).
+This article describes how to install and use Velero to back up and restore workload and target clusters using Azure Blob Storage or MinIO storage in AKS enabled by Azure Arc.
 
-[Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS hybrid target cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
+[Velero](https://velero.io/docs) is an open-source community standard tool for backing up and restoring Kubernetes cluster objects and persistent volumes. It supports various [storage providers](https://velero.io/docs/main/supported-providers/) to store its backups. If an AKS Arc target Kubernetes cluster crashes and fails to recover, you can use a Velero backup to restore its contents and internal API objects to a new cluster.
 
 If you don't want to store your backups in Azure Blob Storage, you can use MinIO with Velero. This article describes how to [install and configure Velero to use Azure Blob Storage](#install-velero-with-azure-blob-storage) or [install and configure Velero to use MinIO storage](#install-velero-with-minio-storage).
 
@@ -226,7 +226,7 @@ The procedures in this section describe how to install Velero and use Azure Blob
 
       - The command installs the Microsoft Azure plugin, which must be compatible with the Velero CLI version you're using. The example command uses Microsoft Azure plugin version 1.5.0, which is compatible with the latest Velero CLI version, 1.9.0. To find out which version of the Microsoft Azure plugin to install with your Valero CLI version, see the [compatibility matrix](https://github.com/vmware-tanzu/velero-plugin-for-microsoft-azure#compatibility).
 
-      - Be sure to include the `--use-restic` parameter to enable backup of Kubernetes volumes at the file system level using `Restic`. `Restic` can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS hybrid, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, `Restic` is needed to enable persistent volume snapshots. AKS hybrid currently doesn't support volume snapshots.
+      - Be sure to include the `--use-restic` parameter to enable backup of Kubernetes volumes at the file system level using `Restic`. `Restic` can be used to back up any type of Kubernetes volume. By default, Velero supports taking snapshots of persistent volumes for Amazon EBS Volumes, Azure Managed Disks, and Google Persistent Disks. In AKS Arc, Kubernetes volumes use Cluster Shared Volumes (CSVs) to store data. Hence, `Restic` is needed to enable persistent volume snapshots. AKS Arc currently doesn't support volume snapshots.
 
       - `subscriptionId=$AZURE_BACKUP_SUBSCRIPTION_ID` is optional. You only need to include it if Velero and the workload cluster have different subscription IDs. If they use the same Azure subscription, you can remove the `subscriptionId` parameter, and the **credentials-velero.txt** file will provide that information.
 
@@ -255,11 +255,11 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
 1. Install MinIO:
 
-   1. Create a persistent volume to store the MinIO backup. The example creates a persistent volume in the default storage class in AKS hybrid, which already exists.  
+   1. Create a persistent volume to store the MinIO backup. The example creates a persistent volume in the default storage class in AKS Arc, which already exists.  
 
       1. Create a YAML file named **minio-pvc-storage.yaml**, with the following contents:
 
-         ```yml
+         ```yaml
          kind: PersistentVolumeClaim
          apiVersion: v1
          metadata: 
@@ -281,7 +281,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
       1. Create a deployment file, **minio-deployment.yaml**, for starting MinIO. Include the following contents. The deployment will use the persistent volume you created.
 
-         ```yml
+         ```yaml
          apiVersion: apps/v1
          kind: Deployment
          metadata:
@@ -330,7 +330,7 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
       Create a YAML file with the following settings to configure the service:
 
-      ```yml
+      ```yaml
       apiVersion: v1 
       kind: Service 
       metadata: 
@@ -387,9 +387,9 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
 
    1. Create a MinIO credentials file with the following information:
 
-      ```yml
+      ```yaml
       minio.credentials 
- 	        [default] 
+             [default] 
         aws_access_key_id=<minio_access_key> 
         aws_secret_access_key=<minio_secret_key> 
       ```
@@ -496,5 +496,5 @@ kubectl delete crds -l component=velero
 
 ## Next steps
 
-- [Troubleshoot management and workload clusters in AKS hybrid](./known-issues-workload-clusters.yml)
-- [Troubleshoot storage issues in AKS hybrid](./known-issues-storage.yml)
+- [Troubleshoot management and workload clusters](known-issues-workload-clusters.yml)
+- [Troubleshoot storage issues](known-issues-storage.yml)

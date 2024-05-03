@@ -1,6 +1,11 @@
 {
   "redirections": [
     {
+      "source_path":"azure-stack/hci/manage/preview-channel.md",
+      "redirect_url":"/azure-stack/hci/deploy/download-azure-stack-hci-23h2-software",
+      "redirect_document_id": false
+    },
+    {
       "source_path":"azure-stack/hci/manage/faqs-arc-enabled-vms.md",
       "redirect_url":"/azure-stack/hci/manage/azure-arc-vms-faq",
       "redirect_document_id": false
@@ -8,6 +13,11 @@
     {
       "source_path":"azure-stack/hci/deploy/deployment-checklist.md",
       "redirect_url":"/azure-stack/hci/deploy/deployment-prerequisites",
+      "redirect_document_id": false
+    },
+    {
+      "source_path":"azure-stack/hci/manage/sdn-express-23h2.md",
+      "redirect_url":"/azure-stack/hci/deploy/sdn-express-23h2",
       "redirect_document_id": false
     },
     {
@@ -1292,7 +1302,27 @@
     },
     {
       "source_path": "azure-stack/hci/update/whats-the-lifecycle-manager-23h2.md",
-      "redirect_url": "/azure-stack/hci/update/about-updates",
+      "redirect_url": "/azure-stack/hci/update/about-updates-23h2",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/known-issues-23h2.md",
+      "redirect_url": "/azure-stack/hci/hci/known-issues-2310",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/partition-gpu.md",
+      "redirect_url": "/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/troubleshoot-sdn-deployment-23h2.md",
+      "redirect_url": "/azure-stack/hci/manage/troubleshoot-sdn-deployment",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/container-registry-get-resource-id.md",
+      "redirect_url": "/azure-stack/user/container-registry-troubleshoot#find-your-registry-resource-id-for-support",
       "redirect_document_id": false
     }
   ]

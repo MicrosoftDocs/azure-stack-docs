@@ -54,4 +54,4 @@ When you run the Azure Arc-enabled Kubernetes clusters on the following products
 ## Next steps
 
 - Read about [licensing options](./aks-edge-licensing.md)
-- [Contact the AKS Edge Essentials product team](mailto:teamprojecthaven@microsoft.com)
+- [Contact the AKS Edge Essentials product team](mailto:aksee-inquire@microsoft.com)

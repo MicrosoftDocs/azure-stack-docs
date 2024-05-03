@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 03/28/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -27,7 +27,7 @@ This article helps you deploy an Azure Stack HCI, version 23H2 system using the 
 
    All resources in the Azure subscription are billed together.
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
-4. Select the **Region** to store this system's Azure resources—in this release you must use either **(US) East US** or **(Europe) West Europe**.
+4. Select the **Region** to store this system's Azure resources. See [System requirements](../concepts/system-requirements-23h2.md#azure-requirements) for a list of supported regions.
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Select or create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
@@ -104,7 +104,7 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Specify management settings
 
 1. Optionally edit the suggested **Custom location name** that helps users identify this system when creating resources such as VMs on it.
-2. Select an existing Storage account or create a new Storage account to store the cluster witness file. 
+2. Select an existing Storage account or create a new Storage account to store the cluster witness file.
 
     When selecting an existing account, the dropdown list filters to display only the storage accounts contained in the specified resource group for deployment. You can use the same storage account with multiple clusters; each witness uses less than a kilobyte of storage.
 
@@ -113,7 +113,7 @@ Choose whether to create a new configuration for this system or to load deployme
 3. Enter the Active Directory **Domain** you're deploying this system into.
 
     This must be the same fully qualified domain name (FQDN) used when the Active Directory Domain Services (AD DS) domain was prepared for deployment.
-4. Enter the **Computer name prefix** used when the domain was prepared for deployment (some use the same name as the OU name).
+4. Enter the **Computer name prefix** used by the `AsHciDeploymentPrefix` parameter when the domain was prepared for deployment (some use the same name as the OU name).
 5. Enter the **OU** created for this deployment.
    For example: ``OU=HCI01,DC=contoso,DC=com``
 6. Enter the **Deployment account** credentials.
@@ -147,6 +147,21 @@ Choose whether to create a new configuration for this system or to load deployme
         To use this option you must be using a single server and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
 
     :::image type="content" source="./media/deploy-via-portal/advanced-tab-1.png" alt-text="Screenshot of the Advanced tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/advanced-tab-1.png":::
+
+    
+    
+    > [!IMPORTANT] 
+    > Don't delete the infrastructure volumes created during deployment.
+    
+    Here's a summary of the volumes that are created based on the number of servers in your system. To change the resiliency setting of the workload volumes, delete them and recreate them, being careful not to delete the infrastructure volumes.
+    
+    
+    |# Servers  |Volume resiliency  |# Infrastructure volumes  |# Workload volumes  |
+    |---------|---------|---------|----------|
+    |Single server    |Two-way mirror         | 1        |  1        |
+    |Two servers     | Two-way mirror       | 1        |  2        |
+    |Three servers +     | Three-way mirror        |1        |1 per server         |
+ 
 
 2. Select **Next: Tags**.
 3. Optionally add a tag to the Azure Stack HCI resource in Azure.
@@ -197,7 +212,7 @@ To confirm that the system and all of its Azure resources were successfully depl
     | 2*           | Storage account     |
     | 1 per workload volume | Azure Stack HCI storage path - Azure Arc |
     
-    \* One storage account is created for the key vault and one for the audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
+    \* One storage account is created for the cloud witness and one for key vault audit logs. These accounts are locally redundant storage (LRS) account with a lock placed on them.
 
 ## Rerun deployment
 
@@ -211,6 +226,10 @@ If your deployment fails, you can rerun the deployment. In your cluster, go to *
     :::image type="content" source="./media/deploy-via-portal/redeploy-failed-deployment.png" alt-text="Screenshot of how to rerun a failed deployment via Azure portal." lightbox="./media/deploy-via-portal/redeploy-failed-deployment.png":::-->
 
 ## Post deployment tasks
+
+After the deployment is complete, you may need to perform some additional tasks to secure your system and ensure it's ready for workloads.
+
+### Enable RDP
 
 For security reasons, Remote Desktop Protocol (RDP) is disabled and the local administrator renamed after the deployment completes on Azure Stack HCI systems. For more information on the renamed administrator, go to [Local builtin user accounts](../concepts/other-security-features.md#about-local-built-in-user-accounts).
 
@@ -229,6 +248,7 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     ```powershell
     Enable-ASRemoteDesktop
     ```
+
     > [!NOTE]
     > As per the security best practices, keep the RDP access disabled when not needed.
 
@@ -237,6 +257,20 @@ You may need to connect to the system via RDP to deploy workloads. Follow these 
     ```powershell
     Disable-ASRemoteDesktop
     ```
+
+### Lock Arc Resource bridge
+
+The Arc Resource Bridge enables the Azure Arc services to manage your Azure Stack HCI system. To prevent the accidental deletion, we recommend that you lock the Arc Resource Bridge resource.
+Follow these steps to configure the resource locks:
+
+1. In the Azure portal, navigate to the resource group into which you deployed your Azure Stack HCI system.
+1. On the **Overview** > **Resources** tab, you should see an Arc Resource Bridge resource.
+1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the Azure Stack HCI Administrator role for the resource group.
+1. In the right pane, select **Add**.
+1. Enter the lock details and then select **OK**.
+
+
+For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
 
 ## Next steps
 

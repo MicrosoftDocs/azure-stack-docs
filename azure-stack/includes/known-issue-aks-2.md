@@ -3,7 +3,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 04/27/2023
+ms.date: 03/12/2024
 ms.reviewer: waltero
 ms.lastreviewed: 04/27/2022
 
@@ -24,7 +24,7 @@ ms.lastreviewed: 04/27/2022
   2. Restart the `kubelet` service with the following command:
 
      ```bash  
-     sudo systemctl restart kubelet
+     sudo systemctl reboot node
      ```
 
   You can also use the SPN and secret with the API model and force an upgrade. For instructions, see [Forcing an upgrade](../user/azure-stack-kubernetes-aks-engine-upgrade.md?#forcing-an-upgrade).

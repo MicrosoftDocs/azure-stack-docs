@@ -2,8 +2,8 @@
 title: Upgrade Windows Server VMs on Azure Stack HCI to Windows Server Azure Edition
 description: Learn how to upgrade existing Windows Server VMs or Azure Stack HCI VMs to Windows Server Azure Edition.
 ms.topic: how-to
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci

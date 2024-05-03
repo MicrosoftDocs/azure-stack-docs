@@ -5,7 +5,7 @@ ms.topic: how-to
 author: JasonGerend
 ms.author: jgerend
 ms.reviewer: stevenek
-ms.date: 04/17/2023
+ms.date: 02/23/2024
 ---
 
 # Add or remove servers for an Azure Stack HCI cluster
@@ -32,7 +32,7 @@ The first step is to acquire new HCI hardware from your original OEM. Always ref
 
 Use Windows Admin Center to join the server to your cluster.
 
-:::image type="content" source="media/manage-cluster/add-server.png" alt-text="Add server screen" lightbox="media/manage-cluster/add-server.png":::
+:::image type="content" source="media/add-cluster/add-server.png" alt-text="Add server screen" lightbox="media/add-cluster/add-server.png":::
 
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
@@ -109,7 +109,7 @@ To remove a server from a cluster by using PowerShell:
 
 The steps for removing a server from your cluster by using Windows Admin Center are similar to those for adding a server to a cluster.
 
-:::image type="content" source="media/manage-cluster/remove-server.png" alt-text="Remove server dialog" lightbox="media/manage-cluster/remove-server.png":::
+:::image type="content" source="media/add-cluster/remove-server.png" alt-text="Remove server dialog" lightbox="media/add-cluster/remove-server.png":::
 
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.

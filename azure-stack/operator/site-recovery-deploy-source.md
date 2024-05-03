@@ -1,29 +1,36 @@
 ---
-title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub (preview)
+title: Deploy virtual machines from source environments to Azure Site Recovery on Azure Stack Hub
 description: Learn how to deploy virtual machines in Azure Site Recovery from source machines on Azure Stack Hub. 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 06/08/2023
+ms.date: 04/15/2024
+ms.reviewer: rtiberiu
+ms.lastreviewed: 04/15/2024
+
 ---
 
 
-# Deploy for source environments (preview)
+# Deploy for source environments
 
 This article describes the actions that are required to complete the installation of the source environment.
 
-
 > [!IMPORTANT]
-> Azure Site Recovery on Azure Stack Hub requires the Azure Stack Hub 2301 update build number to be at least 1.2301.2.58.
-
+> Azure Site Recovery on Azure Stack Hub requires Azure Stack Hub to be a supported version (at least 1.2301.2.58).
 
 ## Prerequisites
 
 As an Azure Stack Hub operator, download the **ASR appliance on AzureStack Hub** VM image and the respective **Azure Site Recovery –
 extensions** in the Azure Stack Hub Marketplace Management.
 
-For a disconnected or partially connected scenario, download the packages to your local machine then import them into your Azure Stack
-Hub Marketplace:
+> [!NOTE]
+> To protect a Linux-based Virtual Machine, you must download both of the following:
+> - The general extension. In Marketplace Management, the extension is named **Azure Site Recovery - extension for Linux**.
+> - The extension specific to the OS you are trying to protect (for example, an Ubuntu 20.04 virtual machine requires the **Azure Site Recovery - extension for Linux UBUNTU2004** extension).
+> 
+> The reason you need these extensions is that during the initial configuration, the general extension is used to configure and determine the correct specific extension, and once configured, the specific one is used. 
+
+For a disconnected or partially connected scenario, download the packages to your local machine then import them into your Azure Stack Hub Marketplace:
 
 1. Follow the instructions in [Download Marketplace items: disconnected or partially connected scenario](/azure-stack/operator/azure-stack-download-azure-marketplace-item?pivots=state-disconnected). Download and run the Marketplace Syndication tool, which enables you to download resource provider packages.
 1. After the **Azure Marketplace Items** syndication tool window opens, find and select the name of the resource provider to download the required packages to your local machine.

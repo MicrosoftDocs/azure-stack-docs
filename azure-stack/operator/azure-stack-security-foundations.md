@@ -5,7 +5,7 @@ description: Learn about the security posture and controls applied to Azure Stac
 author: sethmanheim
 
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 04/25/2024
 ms.author: sethm
 ms.reviewer: fiseraci
 ms.lastreviewed: 04/01/2021
@@ -105,7 +105,7 @@ The compliance documentation can be found on the [Microsoft Service Trust Portal
 ::: moniker range=">=azs-2206"
 ### EU Schrems II initiative for Azure Stack Hub
 
-Microsoft has announced its intention to surpass existing data storage commitments by enabling EU-based customers to process and store all their data in the EU; you will no longer have to store data outside the EU. This enhanced commitment includes Azure Stack Hub customers. See [Answering Europe’s Call: Storing and Processing EU Data in the EU](https://blogs.microsoft.com/eupolicy/2021/05/06/eu-data-boundary/) for more information.
+Microsoft has announced its intention to surpass existing data storage commitments by enabling EU-based customers to process and store all their data in the EU; you will no longer have to store data outside the EU. This enhanced commitment includes Azure Stack Hub customers. See [Answering Europe's Call: Storing and Processing EU Data in the EU](https://blogs.microsoft.com/eupolicy/2021/05/06/eu-data-boundary/) for more information.
 
 Starting with version 2206, you can select your geographical preference for data processing on existing Azure Stack Hub deployments. After downloading the hotfix, you will receive the following alert.
 
@@ -117,11 +117,13 @@ Starting with version 2206, you can select your geographical preference for data
 You can resolve this alert for your existing Azure Stack Hub deployment in one of two ways, depending on your geographical preference for storing and processing your data.
 
 - If you opt to have your data stored and processed **within the EU**, run the following PowerShell cmdlet to set geographical preference. The residency location for the data will be updated and all data will be stored and processed in the EU.
+
   ```powershell
   Set-DataResidencyLocation -Europe
   ```
 
 - If you opt to have your data stored and processed outside the EU, run the following PowerShell cmdlet to set geographical preference. The residency location for the data will be updated and all data will be processed outside the EU.
+
   ```powershell
   Set-DataResidencyLocation -Europe:$false
   ```

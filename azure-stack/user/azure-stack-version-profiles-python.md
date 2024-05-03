@@ -48,6 +48,7 @@ For profiles containing dates, to use a different SDK profile or version, substi
 
 | Azure Stack version | Profile |
 |---------------------|---------|
+|2311|2020_09_01|
 |2301|2020_09_01|
 |2206|2020_09_01|
 |2108|2020_09_01|

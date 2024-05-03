@@ -2,15 +2,9 @@
 title: Enable backup for Azure Stack from the administrator portal - MDC
 description: Learn how to enable the Infrastructure Backup Service from the administrator portal so that Azure Stack can be restored in case of failure. For a Modular Data Center.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: tzl
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2021
 ms.author: sethm

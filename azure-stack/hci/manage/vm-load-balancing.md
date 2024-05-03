@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/29/2024
+ms.date: 02/27/2024
 ---
 # Virtual machine load balancing
 
@@ -36,7 +36,7 @@ When you join a new server to your cluster, the VM load balancing feature automa
 3. The servers with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
 4. VMs are live migrated (with no downtime) from a server that exceeds the threshold to the newly added server in the cluster.
 
-:::image type="content" source="media/vm-load-balancing/server-added.png" alt-text="Image showing a new server being added to a cluster" border="false"::: 
+:::image type="content" source="media/vm-load-balancing/server-added.png" alt-text="Image showing a new server being added to a cluster" lightbox="media/vm-load-balancing/server-added.png":::
 
 ### Recurring load balancing
 
@@ -47,7 +47,7 @@ By default, VM load balancing is configured for periodic balancing: the memory p
 3. The servers with the highest memory pressure and CPU utilization are identified to determine priority of balancing.
 4. VMs are live migrated (with no downtime) from a server that exceeds the threshold to another server that is under the minimum threshold.
 
-:::image type="content" source="media/vm-load-balancing/periodic-balancing.png" alt-text="Image showing a live cluster being automatically rebalanced" border="false"::: 
+:::image type="content" source="media/vm-load-balancing/periodic-balancing.png" alt-text="Image showing a live cluster being automatically rebalanced" lightbox="media/vm-load-balancing/periodic-balancing.png":::
 
 ## Configure VM load balancing using Windows Admin Center
 

@@ -4,10 +4,8 @@ description: Learn how to use the ASDK to validate an Azure Stack integrated sys
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/15/2021
+ms.date: 03/12/2024
 ms.author: sethm
-ms.reviewer: hectorl
-ms.lastreviewed: 1/15/2020
 
 # Intent: As an ASDK user, I want to use the ASDK to validate an Azure Stack backup so I don't impact my production cloud.
 # Keyword: validate azure stack backup
@@ -145,12 +143,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 Modify the following PowerShell commands for your environment and run them to deploy the ASDK in cloud recovery mode:
 
 > [!IMPORTANT]
-> The `$adminpass` on the script below **must be** the password of the default "CloudAdmin" user ? > from the production environment **when the backup was taken**.
-For example:
->
->- If you have created additional cloud admins in addition to the default "CloudAdmin" user through PEP. The credentials of any of these additional cloud admins will not work.
->- If you have changed the default "CloudAdmin" user password through PEP, you will need to use the old password when the backup was taken to restore that particular backup, because backed up certificates and AD are protected by that old CloudAdmin password.
->- If the you could not remember the old CloudAdmin password but you do remember the new CloudAdmin password, any new backups taken after the password change can be restored using the new password.
+> The `$adminpass` on the following script must be the local administrator password, not the default "CloudAdmin" user.
 
 #### Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate
 

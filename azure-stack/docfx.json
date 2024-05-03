@@ -189,8 +189,9 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
-      "feedback_system": "GitHub",
-      "feedback_github_repo": "MicrosoftDocs/azure-stack-docs",
+      "feedback_system": "Standard",
+      "feedback_help_link_url": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
+      "feedback_help_link_type": "get-help-at-qna",
       "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
       "breadcrumb_path": "/azure-stack/breadcrumb/toc.json",
       "uhfHeaderId": "azure",
@@ -213,6 +214,16 @@
       },
       "feedback_product_url": {
         "hci/**/*.md": "https://feedback.azure.com/d365community/forum/74a4b1b9-0725-ec11-b6e6-000d3a4f07b8"
+      },
+      "feedback_help_link_url": {
+        "hci/**/*.md": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
+        "hci/**/*.yml": "https://learn.microsoft.com/answers/tags/6/azure-stack-hci",
+        "operator/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
+        "user/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
+        "mdc/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
+        "asdk/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
+        "partner/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub",
+        "reference/**/*.md": "https://learn.microsoft.com/answers/tags/205/azure-stack-hub"
       },
       "ms.subservice": {
         "asdk/**/*.md": "azure-stack-hub-asdk",

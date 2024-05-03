@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 01/31/2024
+ms.date: 04/24/2024
 ---
 
 # System requirements for Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
  This article discusses Azure, server and storage, networking, and other requirements for Azure Stack HCI. If you purchase Azure Stack HCI Integrated System solution hardware from the [Azure Stack HCI Catalog](https://aka.ms/AzureStackHCICatalog), you can skip to the [Networking requirements](#networking-requirements) since the hardware already adheres to server and storage requirements.
 
@@ -33,6 +33,12 @@ Here are the Azure requirements for your Azure Stack HCI cluster:
 
    - East US
    - West Europe
+   - Australia East
+   - Southeast Asia
+   - India Central
+   - Canada Central
+   - Japan East
+   - South Central US
 
 ## Server and storage requirements
 
@@ -42,11 +48,11 @@ Before you begin, make sure that the physical server and storage hardware used t
 |--|--|
 |Number of servers| 1 to 16 servers are supported. <br> Each server must be the same model, manufacturer, have the same network adapters, and have the same number and type of storage drives.|
 |CPU|A 64-bit Intel Nehalem grade or AMD EPYC or later compatible processor with second-level address translation (SLAT).|
-|Memory|A minimum of 32 GB RAM per node.|
+|Memory|A minimum of 32-GB RAM per node.|
 |Host network adapters|At least two network adapters listed in the Windows Server Catalog. Or dedicated network adapters per intent, which does require two separate adapters for storage intent. For more information, see [Windows Server Catalog](https://www.windowsservercatalog.com/).|
 |BIOS|Intel VT or AMD-V must be turned on.|
-|Boot drive|A minimum size of 200 GB size.|
-|Data drives|At least 2 disks with a minimum capacity of 500 GB (SSD or HDD).|
+|Boot drive|A minimum size of 200-GB size.|
+|Data drives|At least two disks with a minimum capacity of 500 GB (SSD or HDD).<br>Single servers must use only a single drive type: Nonvolatile Memory Express (NVMe) or Solid-State (SSD) drives.|
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 

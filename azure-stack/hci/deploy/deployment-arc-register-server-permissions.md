@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 04/22/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -23,6 +23,16 @@ Before you begin, make sure you've completed the following prerequisites:
 - Prepare your [Active Directory](./deployment-prep-active-directory.md) environment.
 - [Install the Azure Stack HCI, version 23H2 operating system](./deployment-install-os.md) on each server.
 
+- Register your subscription with the required resource providers (RPs). You can use either the [Azure portal](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider-1) or the [Azure PowerShell](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register. You need to be an owner or contributor on your subscription to register the following resource RPs:
+
+    - *Microsoft.HybridCompute*
+    - *Microsoft.GuestConfiguration*
+    - *Microsoft.HybridConnectivity*
+    - *Microsoft.AzureStackHCI*
+
+    > [!NOTE]
+    > The assumption is that the person registering the Azure subscription with the resource providers is a different person than the one who is registering the Azure Stack HCI servers with Arc.
+
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
     - [Azure Connected Machine Onboarding](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
@@ -30,7 +40,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     To verify that you have these roles, follow these steps in the Azure portal:
 
-    1. Go to the subscription that you'll use for the Azure Stack HCI deployment.
+    1. Go to the subscription that you use for the Azure Stack HCI deployment.
     1. Go to the resource group where you're planning to register the servers.
     1. In the left-pane, go to **Access Control (IAM)**.
     1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
@@ -42,8 +52,9 @@ Before you begin, make sure you've completed the following prerequisites:
 > [!IMPORTANT]
 > Run these steps on every Azure Stack HCI server that you intend to cluster.
 
-1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller/0.1.2489.42) from PSGallery.
+1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
 
+    # [PowerShell](#tab/powershell)
     ```powershell
     #Register PSGallery as a trusted repo
     Register-PSRepository -Default -InstallationPolicy Trusted
@@ -56,7 +67,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Install-Module Az.ConnectedMachine -Force
     Install-Module Az.Resources -Force
     ```
-
+    # [Output](#tab/output)
     Here's a sample output of the installation:
 
     ```output
@@ -73,7 +84,7 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -Force
     PS C:\Users\SetupUser> Install-Module Az.Resources -Force
     ```
-
+    ---
 1. Set the parameters. The script takes in the following parameters:
 
     |Parameters  |Description  |
@@ -81,21 +92,28 @@ Before you begin, make sure you've completed the following prerequisites:
     |`SubscriptionID`    |The ID of the subscription used to register your servers with Azure Arc.         |
     |`TenantID`          |The tenant ID used to register your servers with Azure Arc. Go to your Microsoft Entra ID and copy the tenant ID property.       |
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
-    |`Region`            |The Azure region used for registration. For this release, only the `eastus` and `westeurope` are supported.          |
-    |`AccountID`         |The user who will register and deploy the cluster.         |
+    |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
+    |`AccountID`         |The user who registers and deploys the cluster.         |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
-    
 
-   ```powershell
+    
+    # [PowerShell](#tab/powershell)
+
+    ```powershell
     #Define the subscription where you want to register your server as Arc device
     $Subscription = "YourSubscriptionID"
     
     #Define the resource group where you want to register your server as Arc device
     $RG = "YourResourceGroupName"
+
+    #Define the region you will use to register your server as Arc device
+    $Region = "eastus"
     
     #Define the tenant you will use to register your server as Arc device
     $Tenant = "YourTenantID"
     ```
+ 
+    # [Output](#tab/output)
 
     Here's a sample output of the parameters:
 
@@ -103,11 +121,15 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $Subscription = "<Subscription ID>"
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
+    PS C:\Users\SetupUser> $Region = "eastus"
     ```
 
+    ---
 1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
-    ```powershell
+    # [PowerShell](#tab/powershell)
+
+    ```azurecli
     #Connect to your Azure account and Subscription
     Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
 
@@ -116,9 +138,11 @@ Before you begin, make sure you've completed the following prerequisites:
 
     #Get the Account ID for the registration
     $id = (Get-AzContext).Account.Id   
-    ``` 
+    ```
 
-    Here's a sample output of the setting the subscription and authentication:
+    # [Output](#tab/output)
+
+    Here's a sample output of setting the subscription and authentication:
 
     ```output
     PS C:\Users\SetupUser> Connect-AzAccount -SubscriptionId $Subscription -TenantId $Tenant -DeviceCode
@@ -132,20 +156,26 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $ARMtoken = (Get-AzAccessToken).Token
     PS C:\Users\SetupUser> $id = (Get-AzContext).Account.Id
     ```
- 
+
+    ---
+
 1. Finally run the Arc registration script. The script takes a few minutes to run.
 
+    # [PowerShell](#tab/powershell)
+
     ```powershell
-    #Invoke the registration script. For this release, eastus and westeurope regions are supported.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
+    #Invoke the registration script. Use a supported region.
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
     ```
 
-    If you're accessing the internet via a proxy server, you need to pass the `--proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script. 
+    If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
+
+    # [Output](#tab/output)
 
     Here's a sample output of a successful registration of your servers:
     
     ```output
-    PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
+    PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
     Installing and Running Azure Stack HCI Environment Checker
     All the environment validation checks succeeded
     Installing Hyper-V Management Tools
@@ -202,6 +232,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Report location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentReport.json
     Use -Passthru parameter to return results as a PSObject.   
     ```
+    ---
 
 1. After the script completes successfully on all the servers, verify that:
 
@@ -214,15 +245,9 @@ Before you begin, make sure you've completed the following prerequisites:
 
         :::image type="content" source="media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png" alt-text="Screenshot of the Azure Stack HCI registered servers with mandatory extensions installed." lightbox="./media/deployment-arc-register-server-permissions/mandatory-extensions-installed-registered-servers.png":::
 
-    > [!IMPORTANT]
-    > In some instances, running the Arc registration script doesn't install the mandatory extensions, Azure Edge device Management or Azure Edge Lifecycle Manager. The workaround is to run the script again and make sure that all the mandatory extensions are installed before you [Deploy via Azure portal](../deploy/deploy-via-portal.md).
-
-
 ## Assign required permissions for deployment
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
-
-
 
 1. In the Azure portal, go to the subscription used to register the servers. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
@@ -231,26 +256,28 @@ This section describes how to assign Azure permissions for deployment from the A
 1. Go through the tabs and assign the following role permissions to the user who deploys the cluster:
 
     - **Azure Stack HCI Administrator**
+    - **Cloud Application Administrator**
     - **Reader**
 
+    > [!NOTE]
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
 
-1. Go through the tabs and assign the following permissions to the user who deploys the cluster: 
+1. Go through the tabs and assign the following permissions to the user who deploys the cluster:
 
-    - **Key Vault Administrator**
-    - **Key Vault Contributor**
-    - **Storage Account Contributor**
+    - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for deployment.
+    - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for deployment.
+    - **Key Vault Contributor**: This permission is required to create the key vault used for deployment.
+    - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
  
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
-
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
-    :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::
-
+    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
 
 ## Next steps
 

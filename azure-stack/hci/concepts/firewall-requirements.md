@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 03/29/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -14,6 +14,9 @@ ms.date: 01/31/2024
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to use Azure service tags with Microsoft Defender firewall.
 
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
+
+> [!IMPORTANT]
+> Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
 
 ## Firewall requirements for outbound endpoints
 
@@ -36,7 +39,9 @@ This article describes how to optionally use a highly locked-down firewall confi
 
 ## Required firewall URLs
 
-The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
+The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist. 
+
+Please also follow the required firewall requirements for [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions).
 
 > [!NOTE]
 > The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
@@ -58,9 +63,9 @@ The following table provides a list of recommended firewall URLs. If your outbou
 
 Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
-- [AKS on Azure Stack HCI](/azure-stack/aks-hci/system-requirements?tabs=allow-table#aks-on-azure-stack-hci-requirements)
+- [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions)
 - [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc VM management](../manage/azure-arc-vm-management-prerequisites.md)
+- [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
@@ -74,7 +79,7 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all server nodes both within a site and between sites (for stretched clusters). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
+Ensure that the proper network ports are open between all server nodes both within a site and between sites for stretched clusters (stretched cluster functionality is only available in Azure Stack HCI, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
 
 When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports as described in the following sections:
 

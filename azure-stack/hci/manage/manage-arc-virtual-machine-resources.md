@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/30/2024
+ms.date: 02/13/2024
 ---
 
 # Manage resources for Arc VM on your Azure Stack HCI
@@ -95,6 +95,9 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. You'll see a notification that the disk deletion job has started. Once the disk is deleted, the list refreshes to display the remaining data disks.
 
 ## Add a network interface
+
+> [!NOTE]
+> Adding a network interface with static IP after the VM is provisioned is not supported.
 
 Follow these steps in Azure portal of your Azure Stack HCI system.
 

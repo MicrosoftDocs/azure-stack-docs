@@ -3,7 +3,7 @@ title: Migrate to Azure Stack HCI on same hardware
 description: Learn how to migrate a cluster to Azure Stack HCI on the same hardware
 author: alkohli 
 ms.topic: how-to 
-ms.date: 01/31/2024
+ms.date: 02/13/2024
 ms.author: alkohli 
 ms.reviewer: kerimha 
 ---
@@ -16,7 +16,7 @@ This topic describes how to migrate a Windows Server failover cluster to Azure S
 
 The following diagram depicts migrating your Windows Server cluster in-place using the same server hardware. After shutting down your cluster, Azure Stack HCI is installed, storage is reattached, and your VMs are imported and made highly available (HA).
 
-:::image type="content" source="media/migrate-same-hardware/migrate-cluster-same-hardware.png" alt-text="Migrate cluster to Azure Stack HCI on the same hardware" lightbox="media/migrate-same-hardware/migrate-cluster-same-hardware.png":::
+:::image type="content" source="media/migrate-cluster-same-hardware/migrate-cluster-same-hardware.png" alt-text="Migrate cluster to Azure Stack HCI on the same hardware" lightbox="media/migrate-cluster-same-hardware/migrate-cluster-same-hardware.png":::
 
 To migrate your VMs to new Azure Stack HCI hardware, see [Migrate to Azure Stack HCI on new hardware](migrate-cluster-new-hardware.md).
 

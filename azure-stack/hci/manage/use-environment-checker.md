@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 03/07/2024
 ---
 
 # Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2
@@ -146,7 +146,7 @@ Invoke-AzStackHciConnectivityValidation -PsSession $Session
 You can check connectivity for a specific service endpoint by passing the `Service` parameter. In the following example, the validator checks connectivity for Azure Arc service endpoints.
 
 ```powershell
-Invoke-AzStackHciConnectivityValidation -Service Arc
+Invoke-AzStackHciConnectivityValidation -Service "Arc For Servers"
 ```
  
 #### Example 3: Check connectivity if you're using a proxy
@@ -170,7 +170,7 @@ Invoke-AzStackHciConnectivityValidation –PassThru
 
 Here's a sample screenshot of the output:
 
-   :::image type="content" source="./media/environment-checker/connectivity-validator-pass-thru-parameter.png" alt-text="Screenshot of a passed connectivity validator report for PassThru parameter." lightbox="./media/environment-checker/connectivity-validator-pass-thru-parameter.png":::
+   :::image type="content" source="./media/use-environment-checker/connectivity-validator-pass-thru-parameter.png" alt-text="Screenshot of a passed connectivity validator report for PassThru parameter." lightbox="./media/use-environment-checker/connectivity-validator-pass-thru-parameter.png":::
 
 ### Connectivity validator attributes
 
@@ -208,19 +208,19 @@ To learn more about different sections in the readiness check report, see [Under
 
 The following sample output is from a successful run of the connectivity validator. The output indicates a healthy connection to all the endpoints, including well-known Azure services and observability services. Under **Diagnostics**, you can see the validator checks if a DNS server is present and healthy. It collects WinHttp, IE proxy, and environment variable proxy settings for diagnostics and data collection. It also checks if a transparent proxy is used in the outbound path and displays the output.
 
-   :::image type="content" source="./media/environment-checker/connectivity-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the connectivity validator." lightbox="./media/environment-checker/connectivity-validator-sample-passed.png":::
+   :::image type="content" source="./media/use-environment-checker/connectivity-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the connectivity validator." lightbox="./media/use-environment-checker/connectivity-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
 If a test fails, the connectivity validator returns information to help you resolve the issue, as shown in the sample output below. The **Needs Remediation** section displays the issue that caused the failure. The **Remediation** section lists the relevant article to help remediate the issue.
 
-   :::image type="content" source="./media/environment-checker/connectivity-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the connectivity validator." lightbox="./media/environment-checker/connectivity-validator-sample-failed.png":::
+   :::image type="content" source="./media/use-environment-checker/connectivity-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the connectivity validator." lightbox="./media/use-environment-checker/connectivity-validator-sample-failed.png":::
 
 ### Potential failure scenario for connectivity validator
 
 The connectivity validator checks for SSL inspection before testing connectivity of any required endpoints. If SSL inspection is turned on in your Azure Stack HCI system, you get the following error:
 
-:::image type="content" source="./media/environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/environment-checker/error-connectivity-validation.png":::
+:::image type="content" source="./media/use-environment-checker/error-connectivity-validation.png" alt-text="Screenshot of the error when the connectivity validation fails." lightbox="./media/use-environment-checker/error-connectivity-validation.png":::
 
 **Workaround**
 
@@ -333,7 +333,7 @@ To learn more about different sections in the readiness check report, see [Under
 
 The following sample is the output from a successful run of the hardware validator:
 
-   :::image type="content" source="./media/environment-checker/hardware-validator-sample-passed.png" alt-text="Screenshot of a passed report after running hardware validator." lightbox="./media/environment-checker/hardware-validator-sample-passed.png":::
+   :::image type="content" source="./media/use-environment-checker/hardware-validator-sample-passed.png" alt-text="Screenshot of a passed report after running hardware validator." lightbox="./media/use-environment-checker/hardware-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
@@ -341,7 +341,7 @@ The following sample is the output from a failed run of the hardware validator:
 
 This sample output indicates seven critical issues that you must fix before proceeding with the deployment. One server in the cluster doesn't have the same network adapters as others. Also, some of the network adapter properties in that server don't meet the minimum requirements.
 
-   :::image type="content" source="./media/environment-checker/hardware-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the hardware validator." lightbox="./media/environment-checker/hardware-validator-sample-failed.png":::
+   :::image type="content" source="./media/use-environment-checker/hardware-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the hardware validator." lightbox="./media/use-environment-checker/hardware-validator-sample-failed.png":::
 
 ### [Active Directory](#tab/active-directory)
 
@@ -391,13 +391,13 @@ To learn more about different sections in the readiness check report, see [Under
 
 The following sample is the output from a successful run of the Active Directory validator. The output indicates that the specified OU exists and contains proper sub-OUs.
 
-   :::image type="content" source="./media/environment-checker/active-directory-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Active Directory validator." lightbox="./media/environment-checker/active-directory-validator-sample-passed.png":::
+   :::image type="content" source="./media/use-environment-checker/active-directory-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Active Directory validator." lightbox="./media/use-environment-checker/active-directory-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
 The following sample is the output from a failed run of the Active Directory validator. The report indicates that the Active Directory tool hasn't been run and proper Organizational Unit (OU) isn't created.
 
-   :::image type="content" source="./media/environment-checker/active-directory-validator-sample-failed.png" alt-text="Screenshot of another failed report after running the Active Directory validator." lightbox="./media/environment-checker/active-directory-validator-sample-failed.png":::
+   :::image type="content" source="./media/use-environment-checker/active-directory-validator-sample-failed.png" alt-text="Screenshot of another failed report after running the Active Directory validator." lightbox="./media/use-environment-checker/active-directory-validator-sample-failed.png":::
 
 To remediate the blocking issues in this output, open the Active Directory tool and pass the following parameters:
 
@@ -440,13 +440,13 @@ To learn more about different sections in the readiness check report, see [Under
 
 The following sample is the output from a successful run of the network validator. The output indicates no active host is using an IP address from the reserved IP range.
 
-   :::image type="content" source="./media/environment-checker/network-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the network validator." lightbox="./media/environment-checker/network-validator-sample-passed.png":::
+   :::image type="content" source="./media/use-environment-checker/network-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the network validator." lightbox="./media/use-environment-checker/network-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
 The following sample is the output from a failed run of the network validator. This output shows two active hosts are using IP address from the reserved IP range.
 
-   :::image type="content" source="./media/environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/environment-checker/network-validator-sample-failed.png":::
+   :::image type="content" source="./media/use-environment-checker/network-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the network validator." lightbox="./media/use-environment-checker/network-validator-sample-failed.png":::
 
 ### [Arc integration](#tab/arc-integration)
 
@@ -496,13 +496,13 @@ To learn more about different sections in the readiness check report, see [Under
 
 The following sample is the output from a successful run of the Arc Integration validator. The output indicates that there are no existing Arc resources within the resource group with the same names as the nodes in the current cluster.
 
-   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-passed.png":::
+   :::image type="content" source="./media/use-environment-checker/arc-integration-validator-sample-passed.png" alt-text="Screenshot of a passed report after running the Arc integration validator." lightbox="./media/use-environment-checker/arc-integration-validator-sample-passed.png":::
 
 **Sample output: Failed test**
 
 The following sample is the output from a failed run of the Arc integration validator. This output shows that there are existing Arc resources within the resource group that share the same names as the nodes in the current cluster. For a successful cluster onboarding, you must rectify this conflict by selecting an alternative resource group to onboard your cluster or remove conflicting Arc resources from the existing resource group.
 
-   :::image type="content" source="./media/environment-checker/arc-integration-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the Arc integration validator." lightbox="./media/environment-checker/arc-integration-validator-sample-failed.png":::
+   :::image type="content" source="./media/use-environment-checker/arc-integration-validator-sample-failed.png" alt-text="Screenshot of a failed report after running the Arc integration validator." lightbox="./media/use-environment-checker/arc-integration-validator-sample-failed.png":::
 
 ---
 

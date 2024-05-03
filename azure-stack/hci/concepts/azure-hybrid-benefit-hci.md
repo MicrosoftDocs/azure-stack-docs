@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
-ms.date: 04/17/2023
+ms.date: 04/29/2024
 ---
 
 # Azure Hybrid Benefit for Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes Azure Hybrid Benefit and how to use it for Azure Stack HCI.
 
@@ -60,7 +60,7 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
     > [!NOTE]
     > You can't deactivate Azure Hybrid Benefit for your cluster after activation. Proceed after you have confirmed the changes.
 
-    :::image type="content" source="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png" alt-text="Screenshot showing how to activate Azure Hybrid Benefit." lightbox="media/azure-hybrid-benefit/activate-azure-hybrid-benefit.png":::
+    :::image type="content" source="media/azure-hybrid-benefit-hci/activate-azure-hybrid-benefit.png" alt-text="Screenshot showing how to activate Azure Hybrid Benefit." lightbox="media/azure-hybrid-benefit-hci/activate-azure-hybrid-benefit.png":::
 
 1. When Azure Hybrid Benefit successfully activates for your cluster, the Azure Stack HCI host fee is waived for the cluster.
 
@@ -71,12 +71,12 @@ Follow these steps to activate Azure Hybrid Benefit for your Azure Stack HCI clu
 
 1. In the **Activate Azure Hybrid Benefit** pane on the right-hand side, check the details and then select **Activate** to confirm. Upon activation, licenses take a few minutes to apply and set up automatic VM activation (AVMA) on the cluster.
 
-    :::image type="content" source="media/azure-hybrid-benefit/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit/activate-windows-server-subscription.png":::
+    :::image type="content" source="media/azure-hybrid-benefit-hci/activate-windows-server-subscription.png" alt-text="Screenshot showing how to activate Windows Server subscription." lightbox="media/azure-hybrid-benefit-hci/activate-windows-server-subscription.png":::
 
 # [Azure PowerShell](#tab/azure-powershell)
-Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure PowerShell can be run in Azure Cloud Shell. This document details how to use PowerShell in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure PowerShell to perform the following steps:
 
 1. Set up parameters from your subscription, resource group, and cluster name
     ```powershell

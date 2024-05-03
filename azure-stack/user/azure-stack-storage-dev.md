@@ -3,7 +3,7 @@ title: Learn Azure Stack Hub storage development tools
 description: Guidance to get started with using Azure Stack Hub storage development tools 
 author: sethmanheim
 ms.author: sethm
-ms.date: 2/1/2021
+ms.date: 03/12/2024
 ms.topic: conceptual
 ms.reviewer: jiahan
 ms.lastreviewed: 08/12/2020
@@ -65,7 +65,7 @@ To use the new **.NET** client library (**Common: v12.9.0 / Blob: v12.10.0 / Que
 #### Examples
 
 ##### .NET
-```.net
+```csharp
 BlobClientOptions options = new BlobClientOptions(BlobClientOptions.ServiceVersion.V2019_07_07);
 BlobServiceClient client = new BlobServiceClient("<connection_string>", options);
 ```
@@ -95,9 +95,6 @@ BlobServiceClient blobServiceClient = new BlobServiceClientBuilder()
 | Python | Blob: 12.3.1<br>Queue: 12.1.6 | GitHub release:<br>Blob:<br><https://github.com/Azure/azure-sdk-for-python/tree/azure-storage-blob_12.3.1/sdk/storage/azure-storage-blob><br>Queue:<br><https://github.com/Azure/azure-sdk-for-python/tree/azure-storage-queue_12.1.6/sdk/storage/azure-storage-queue> | Service instance declaration |
 | Ruby | 1.0.1 | RubyGems package:<br>Common:<br><https://rubygems.org/gems/azure-storage-common/versions/1.0.1><br>Blob: <https://rubygems.org/gems/azure-storage-blob/versions/1.0.1><br>Queue: <https://rubygems.org/gems/azure-storage-queue/versions/1.0.1><br>Table: <https://rubygems.org/gems/azure-storage-table/versions/1.0.1><br> <br>GitHub release:<br>Common: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common><br>Blob: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob><br>Queue: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-queue><br>Table: <https://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-table> | Connection string setup |
 
-> [!NOTE]
-> There is a high severity vulnerability in old version of .NET and Java client library, because of the dependencies on a vulnerable version of Jackson package. It is strongly suggested to use the latest supported version of .NET and Java client library to avoid security issue.
-
 #### Install PHP client via Composer - current
 
 To install via Composer: (take the blob as an example).
@@ -120,7 +117,7 @@ To use the new **.NET** client library (**Common: v12.9.0 / Blob: v12.10.0 / Que
 #### Examples
 
 ##### .NET
-```.net
+```csharp
 BlobClientOptions options = new BlobClientOptions(BlobClientOptions.ServiceVersion.V2019_07_07);
 BlobServiceClient client = new BlobServiceClient("<connection_string>", options);
 ```

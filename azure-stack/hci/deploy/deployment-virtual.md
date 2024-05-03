@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.topic: how-to
-ms.date: 01/31/2024
+ms.date: 04/18/2024
 ---
 
 # Deploy a virtual Azure Stack HCI, version 23H2 system
@@ -25,12 +25,16 @@ Here are the hardware, networking, and other prerequisites for the virtual deplo
 
 ### Physical host requirements
 
+The following are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.
+
 Before you begin, make sure that:
 
 - You have access to a physical host system that is running Hyper-V on Windows Server 2022, Windows 11, or later. This host is used to provision a virtual Azure Stack HCI deployment.
 
+- You have enough capacity. More capacity is required for running actual workloads like virtual machines or containers.
+
 - The physical hardware used for the virtual deployment meets the following requirements:
- 
+
     | Component | Minimum |
     | ------------- | -------- |
     | Processor| Intel VT-x or AMD-V, with support for nested virtualization. For more information, see [Does My Processor Support Intel® virtualization technology?](https://www.intel.com/content/www/us/en/support/articles/000005486/processors.html).
@@ -52,6 +56,9 @@ Before you begin, make sure that each virtual host system can dedicate the follo
 | Hard disks for Storage Spaces Direct | Six dynamic expanding disks. Maximum disk size is 1024 GB. |
 | Data disk | At least 127 GB. |
 | Time synchronization in integration  | Disabled. |
+
+> [!NOTE]
+> These are the minimum requirements to successfully deploy Azure Stack HCI, version 23H2.  Increase the capacity like virtual cores and memory when running actual workloads like virtual machines or containers.
 
 ## Set up the virtual switch
 
@@ -79,7 +86,7 @@ New-VMSwitch -Name "internal_switch_name" -SwitchType Internal -NetAdapterName "
 
 Once the internal virtual switch is created, a new network adapter is created on the host. You must assign an IP address to this network adapter to become the default gateway of your virtual hosts once connected to this internal switch network. You also need to define the NAT network subnet where the virtual hosts are connected.
 
-The following example script creates a NAT network `HCINAT` with prefix `192.168.4.0/24` and defines the `192.168.44.1` IP as the default gateway for the network using the interface on the host:
+The following example script creates a NAT network `HCINAT` with prefix `192.168.44.0/24` and defines the `192.168.44.1` IP as the default gateway for the network using the interface on the host:
 
 ```PowerShell
 #Check interface index of the new network adapter on the host connected to InternalSwitch:
@@ -204,6 +211,12 @@ Follow these steps to create an example VM named `Node1` using PowerShell cmdlet
 
     ```PowerShell
     Get-VMIntegrationService -VMName "Node1" |Where-Object {$_.name -like "T*"}|Disable-VMIntegrationService
+    ```
+
+1. Enable nested virtualization:
+
+    ```PowerShell
+    Set-VMProcessor -VMName "Node1" -ExposeVirtualizationExtensions $true
     ```
 
 1. Start the VM:

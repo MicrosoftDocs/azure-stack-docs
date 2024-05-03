@@ -51,7 +51,7 @@ The management pack for Azure Stack Hub provides the following capabilities:
 - You can add custom information to a region.
 - Supports notification and reporting.
 
-To download the System Center Management Pack and the associated user guide, see [Download System Center Management Pack for Microsoft Azure Stack Hub](https://www.microsoft.com/en-us/download/details.aspx?id=55184). You can also download it directly from Operations Manager.
+To download the System Center Management Pack and the associated user guide, see [Download System Center Management Pack for Microsoft Azure Stack Hub](https://aka.ms/azstackscommp).
 
 For a ticketing solution, you can integrate Operations Manager with System Center Service Manager. The integrated product connector enables bidirectional communication that allows you to close an alert in Azure Stack Hub and Operations Manager after you resolve a service request in Service Manager.
 

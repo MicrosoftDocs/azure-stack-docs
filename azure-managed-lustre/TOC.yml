@@ -2,22 +2,10 @@
   href: index.yml
 - name: Overview
   items:
-  - name: Azure Managed Lustre File System overview 
+  - name: Introduction to Azure Managed Lustre 
     href: amlfs-overview.md
-- name: Tutorials
+- name: Create a file system
   items:
-    - name: Install clients
-      href: client-install.md
-- name: Concepts
-  items:
-  - name: Use Azure Blob storage with Azure Managed Lustre
-    href: blob-integration.md
-- name: How-to guides
-  items:
-  - name: Connect clients to the file system
-    href: connect-clients.md
-  - name: Create a file system
-    items:
     - name: Prerequisites
       href: amlfs-prerequisites.md
     - name: Create file system in Azure portal
@@ -26,21 +14,35 @@
       href: create-aml-file-system-terraform.md
     - name: Create file system using Azure Resource Manager
       href: create-file-system-resource-manager.md
-    - name: Use Azure Lustre CSI driver for Kubernetes
-      href: use-csi-driver-kubernetes.md
+- name: Integrate with data sources
+  items:
+    - name: Use Azure Blob Storage with Azure Managed Lustre
+      href: blob-integration.md
+    - name: Export data using archive jobs
+      href: export-with-archive-jobs.md
+- name: Access a file system
+  items:
+    - name: Install Lustre client
+      href: client-install.md
+    - name: Upgrade Lustre client
+      href: client-upgrade.md
+    - name: Connect client to the file system
+      href: connect-clients.md
     - name: Automount Lustre clients with fstab
       href: automount-clients-fstab.md
-  - name: Export data
-    items:
-    - name: Use archive jobs to export data
-      href: export-with-archive-jobs.md
-  - name: Security
-    items:
+    - name: Use Azure Lustre CSI driver for Kubernetes
+      href: use-csi-driver-kubernetes.md
+- name: Manage a file system
+  items:
+    - name: Configure root squash settings
+      href: root-squash-configure-settings.md
+- name: Security
+  items:
     - name: Configure a network security group
       href: configure-network-security-group.md
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
-- name: Troubleshooting
+- name: Availability and disaster recovery
   items:
   - name: Recover from a regional outage
     href: amlfs-region-recovery.md

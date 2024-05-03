@@ -9,25 +9,19 @@ metadata:
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
-  ms.date: 11/29/2023
+  ms.date: 02/15/2024
 
 landingContent:
   - title: About AKS enabled by Azure Arc
     linkLists:
       - linkListType: overview
         links:
-          - text: AKS overview
+          - text: What is AKS enabled by Azure Arc?
             url: aks-overview.md
       - linkListType: concept
         links:
-          - text: Clusters and workloads
-            url: kubernetes-concepts.md
-          - text: Networking
-            url: concepts-container-networking.md
-          - text: Quotas and resource limits
-            url: concepts-support.md        
-          - text: Pricing
-            url: pricing.md    
+          - text: Create clusters
+            url: aks-create-clusters-cli.md
   - title: Get started with AKS on Azure Stack HCI (23H2)
     linkLists:
       - linkListType: overview
@@ -37,7 +31,7 @@ landingContent:
       - linkListType: deploy
         links:
           - text: Check system requirements
-            url: system-requirements.md
+            url: aks-hci-network-system-requirements.md
       - linkListType: concept
         links:
           - text: Cluster architecture
@@ -64,37 +58,30 @@ landingContent:
         links:
           - text: Troubleshoot
             url: aks-edge-troubleshoot-overview.md
-  - title: Deploy, manage, and update applications
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: 1. Prepare an application
-            url: tutorial-kubernetes-prepare-application.md
-          - text: 2. Create container registry
-            url: tutorial-kubernetes-prepare-azure-container-registry.md
-          - text: 3. Deploy a workload cluster
-            url: tutorial-kubernetes-deploy-cluster.md
-          - text: 4. Run an application
-            url: tutorial-kubernetes-deploy-application.md
-          - text: 5. Scale an application
-            url: tutorial-kubernetes-scale.md
-          - text: 6. Update an application
-            url: tutorial-kubernetes-app-update.md
-          - text: 7. Upgrade Kubernetes cluster
-            url: tutorial-kubernetes-upgrade-cluster.md
 
   - title: Integrate with Azure
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Connect to Kubernetes using Azure Arc
-            url: aks-networks.md 
-          - text: Use Kubernetes RBAC with Microsoft Entra ID
-            url: kubernetes-rbac-azure-ad.md
           - text: Monitor Arc-enabled Kubernetes clusters
             url: aks-monitor-logging.md
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+
+  - title: Get started with AKS enabled by Azure Arc on VMware
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is AKS enabled by Azure Arc on VMware?
+            url: aks-vmware-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Deploy an AKS cluster
+            url: aks-vmware-quickstart-deploy.md
+      - linkListType: concept
+        links:
+          - text: Cluster architecture
+            url: aks-vmware-cluster-architecture.md
 
   - title: Develop and debug applications with Bridge to Kubernetes
     linkLists:

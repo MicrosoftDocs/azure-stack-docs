@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 01/30/2024
+ms.date: 02/27/2024
 ---
 
 # Create Azure Stack HCI VM image using images in a local share
@@ -168,7 +168,7 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
 1. Select **+ Add VM Image** and from the dropdown list, select **Add VM image from a local share**.
 
-   :::image type="content" source="./media/manage-vm-resources/add-vm-from-local-share.png" alt-text="Screenshot showing Add VM image from a local share option." lightbox="./media/manage-vm-resources/add-vm-from-local-share.png":::
+   :::image type="content" source="./media/virtual-machine-image-local-share/add-vm-from-local-share.png" alt-text="Screenshot showing Add VM image from a local share option." lightbox="./media/virtual-machine-image-local-share/add-vm-from-local-share.png":::
 
 1. In the **Create an image** page, on the **Basics** tab, input the following information:
 
@@ -192,11 +192,11 @@ In the Azure portal of your Azure Stack HCI cluster resource, perform the follow
 
 1. Select **Review + Create** to create your VM image.
 
-   :::image type="content" source="./media/manage-vm-resources/create-an-image-from-local-share.png" alt-text="Screenshot of the Create an image page showing the fields in the Basics tab." lightbox="./media/manage-vm-resources/create-an-image-from-local-share.png":::
+   :::image type="content" source="./media/virtual-machine-image-local-share/create-an-image-from-local-share.png" alt-text="Screenshot of the Create an image page showing the fields in the Basics tab." lightbox="./media/virtual-machine-image-local-share/create-an-image-from-local-share.png":::
 
 1. The input parameters are validated. If the validations succeed, you can review the VM image details and select **Create**.
 
-   :::image type="content" source="./media/manage-vm-resources/create-an-image-create-button.png" alt-text="Screenshot of the Create an image page with the Create button highlighted." lightbox="./media/manage-vm-resources/create-an-image-create-button.png":::
+   :::image type="content" source="./media/virtual-machine-image-local-share/create-an-image-create-button.png" alt-text="Screenshot of the Create an image page with the Create button highlighted." lightbox="./media/virtual-machine-image-local-share/create-an-image-create-button.png":::
 
    An Azure Resource Manager template deployment job starts for the VM image. The image deployment takes a few minutes to complete. The time taken to download the image depends on the size of the custom image and the network bandwidth available for the download.
 

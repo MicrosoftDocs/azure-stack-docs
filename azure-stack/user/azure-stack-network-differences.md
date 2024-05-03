@@ -2,10 +2,10 @@
 title: Azure Stack Hub networking differences 
 description: Learn about differences and considerations when working with networking in Azure Stack Hub.
 author: sethmanheim
-ms.date: 05/17/2021
+ms.date: 03/28/2024
 ms.topic: article
 ms.author: sethm
-ms.reviewer: wamota
+ms.reviewer: rtiberiu
 ms.lastreviewed: 07/10/2019
 
 # Intent: As an Azure Stack user, I want to know the networking differences between Azure and Azure Stack
@@ -27,7 +27,7 @@ This article provides an overview of the unique considerations for Azure Stack H
 
 | Service | Feature | Azure (global) | Azure Stack Hub |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| DNS | Multi-tenant DNS | Supported | Not yet supported |
+| DNS | Multitenant DNS | Supported | Not yet supported |
 |  | DNS zones per subscription | 100 (default)<br>Can be increased on request. | 100 |
 |  | DNS record sets per zone | 5000 (default)<br>Can be increased on request. | 5000 |
 |  | Name servers for zone delegation | Azure provides four name servers for each user (tenant) zone that is created. | Azure Stack Hub provides two name servers for each user (tenant) zone that is created. |
@@ -49,15 +49,15 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Virtual Network Gateway Type | Azure Supports VPN<br> Express Route <br> Hyper Net. | Azure Stack Hub currently supports only VPN type. |
 |  | VPN Gateway SKUs | Support for Basic, GW1, GW2, GW3, Standard High Performance, Ultra-High Performance. | Support for Basic, Standard, and High-Performance SKUs. |
 |  | VPN Type | Azure supports both policy-based and route-based. | Azure Stack Hub supports route-based only. |
-|  | BGP Settings | Azure supports configuration of BGP Peering Address and Peer Weight. | BGP Peering Address and Peer Weight are auto-configured in Azure Stack Hub.<br/> Support for up to 150 routes for BGP advertisement.<br/> There's no way for the user to configure these settings with their own values. |
+|  | BGP settings | Azure supports configuration of BGP peering address and peer weight. | BGP peering address and peer weight are automatically configured in Azure Stack Hub.<br/> Support for up to 150 routes for BGP advertisement.<br/> There's no way for you to configure these settings with your own values. |
 |  | Default Gateway Site | Azure supports configuration of a default site for forced tunneling. | Not yet supported. |
 |  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Resizing not supported. |
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
-|  | Monitoring and Alerts | Azure uses Azure Monitor to provide the ability to set up alerts for VPN resources. | Not yet supported.|
-| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
+|  | Monitoring and Alerts | Azure uses Azure Monitor to set up alerts for VPN resources. | Not yet supported.|
+| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported. The Standard Load Balancer is currently in public preview. For information, see [Standard Load Balancer considerations](standard-load-balancer-considerations.md).<br>The SKU property isn't supported.<br>The Basic SKU load balancer supports 200 front-end IP configurations per load balancer.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
-|  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack Hub doesn't yet support Service Endpoints, so these can't be specified. |
+|  | Inbound NAT rules support for service endpoints | Azure supports specifying Service Endpoints for inbound NAT rules. | Azure Stack Hub doesn't yet support service endpoints, so these rules can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack Hub. |
 |  | Health Probes | Azure originates the Load Balancer health probes from the IP address 168.63.129.16 | Azure Stack Hub Load Balancer health probes source is from the subnet Gateway IP and originates from the host where the Virtual Machine DIP is present. For example, if the subnet range is 10.0.0.0/24, the first IP of the subnet is reserved for the gateway IP, which would be 10.0.0.1. |
 || FloatingIP | When enabled, Frontend and backend ports can be different. | Azure Stack Hub only supports FloatingIP enabled with same Frontend and Backend port |
@@ -72,8 +72,8 @@ This article provides an overview of the unique considerations for Azure Stack H
 |  | Internal DNS Name Label | Supported | Not yet supported. |
 |  | Private IP Address Version | Both IPv6 and IPv4 are supported. | Only IPv4 is supported. |
 |  | Static MAC Address | Not supported | Not supported. Each Azure Stack Hub system uses the same MAC address pool. |
-|  | Network interface for virtual machines | Supported. New network interface configuration only applied after rebooting the virtual machine. | Supported. New network interface configuration is applied while the virtual machine is running. This might impact overall virtual machine connectivity and drop existing connections for a few seconds. It is recommended to add the network interface while the virtual machine is stopped or during a planned maintenance. |
-|  | Primary Network interface for virtual machines replacement | Supported. New network interface configuration only applied after rebooting the virtual machine. | It is possible to replace the primary network interface of a virtual machine by stopping the VM, attaching a second network interface, detaching the primary interface and deleting the primary network interface resource. If primary network interface resource is not deleted, the virtual machine will not start. |
+|  | Network interface for virtual machines | Supported. New network interface configuration only applied after rebooting the virtual machine. | Supported. New network interface configuration is applied while the virtual machine is running. This process might impact overall virtual machine connectivity and drop existing connections for a few seconds. It's recommended that you add the network interface while the virtual machine is stopped or during a planned maintenance. |
+|  | Primary Network interface for virtual machines replacement | Supported. New network interface configuration only applied after rebooting the virtual machine. | It's possible to replace the primary network interface of a virtual machine by stopping the VM, attaching a second network interface, detaching the primary interface and deleting the primary network interface resource. If the primary network interface resource is not deleted, the virtual machine can't start. |
 | Network Watcher | Network Watcher tenant network monitoring capabilities | Supported | Not yet supported. |
 | CDN | Content Delivery Network profiles | Supported | Not yet supported. |
 | Application gateway | Layer-7 load balancing | Supported | Not yet supported. |

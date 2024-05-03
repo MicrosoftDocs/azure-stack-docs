@@ -10,6 +10,9 @@ ms.subservice: azure-stack-hci
 
 # Review requirements for Hyper-V VM migration to Azure Stack HCI using Azure Migrate (preview)
 
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article lists the system requirements for migrating Hyper-V virtual machines (VMs) to Azure Stack HCI using Azure Migrate.
@@ -23,12 +26,14 @@ The following operating systems (OS) are supported for the source appliance, tar
 
 |Component  |Supported OS |
 |---------|---------|
-|Source appliance     |Windows Server 2022         |
+|Source environment     |Hyper-V on Windows Server 2022<br>Hyper-V on Windows Server 2019<br>Hyper-V on Windows Server 2016<br>Hyper-V on Windows Server 2012 R2         |
+|Source appliance     |Windows Server 2022        |
+|Target environment     |Azure Stack HCI, version 23H2         |
 |Target appliance     |Windows Server 2022         |
-|Guest VM    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
-|Guest VM     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
+|Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
+|Guest VM (Linux)     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
 
-To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
+*To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
 
 ## Supported geographies
 

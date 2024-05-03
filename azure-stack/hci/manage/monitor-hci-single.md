@@ -1,8 +1,8 @@
 ---
 title: Monitor a single Azure Stack HCI cluster with Insights
 description: Enable logging and monitoring capabilities to monitor a single Azure Stack HCI cluster using Insights.
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack

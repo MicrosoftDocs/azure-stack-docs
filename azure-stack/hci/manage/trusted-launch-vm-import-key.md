@@ -5,7 +5,7 @@ author: alkohli
 ms.author: alkohli
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 01/31/2024
+ms.date: 02/28/2024
 ---
 
 # Manage Trusted launch Arc VM guest state protection key on Azure Stack HCI, version 23H2
@@ -36,7 +36,7 @@ Run the following commands from the target Azure Stack HCI cluster.
 1. Sign into the key vault using administrative privileges.
 
    ```azurepowershell
-   mocctl.exe security login --identity --loginpath (Get-MocConfig).mocLoginYAML
+   mocctl.exe security login --identity --loginpath (Get-MocConfig).mocLoginYAML --cloudFqdn (Get-MocConfig).cloudFqdn
    ```
 
 1. Create a master key in the target key vault. Run the following command.
@@ -66,7 +66,7 @@ Run the following commands from the source Azure Stack HCI cluster.
 1. Sign into the key vault using administrative privileges.
 
    ```azurepowershell
-     mocctl.exe security login --identity --loginpath (Get-MocConfig).mocLoginYAML
+     mocctl.exe security login --identity --loginpath (Get-MocConfig).mocLoginYAML --cloudFqdn (Get-MocConfig).cloudFqdn
    ```
 
 1. Export the VM guest state protection key for the VM.

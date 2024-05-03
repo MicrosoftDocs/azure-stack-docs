@@ -4,7 +4,7 @@ description: This topic provides guidance on how to use GPUs with clustered virt
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 01/29/2024
+ms.date: 02/27/2024
 ---
 
 # Use GPUs with clustered VMs
@@ -34,18 +34,18 @@ Use Windows Admin Center to prepare the cluster, assign a VM to a GPU resource p
 To prepare the cluster and assign a VM to a GPU resource pool:
 1. On the **Tools** menu, under **Extensions**, select **GPUs** to open the tool.
 
-   :::image type="content" source="media/use-gpu-with-vm/gpu-extension.png" alt-text="Screenshot of the GPU tool in Windows Admin Center" lightbox="media/use-gpu-with-vm/gpu-extension.png":::
+   :::image type="content" source="media/use-gpu-with-clustered-vm/gpu-extension.png" alt-text="Screenshot of the GPU tool in Windows Admin Center" lightbox="media/use-gpu-with-clustered-vm/gpu-extension.png":::
 
 1. On tool's main page, select the **GPU pools** tab, and then select **Create GPU pool**.
 
-   :::image type="content" source="media/use-gpu-with-vm/create-gpu-pool.png" alt-text="Screenshot of the Create GPU pools page in Windows Admin Center" lightbox="media/use-gpu-with-vm/create-gpu-pool.png":::
+   :::image type="content" source="media/use-gpu-with-clustered-vm/create-gpu-pool.png" alt-text="Screenshot of the Create GPU pools page in Windows Admin Center" lightbox="media/use-gpu-with-clustered-vm/create-gpu-pool.png":::
 
 1. On the **New GPU pool** page, specify the following and then select **Save**:
    1. **Server** name
    1. **GPU pool** name
    1. **GPUs** that you want to add to the pool
 
-   :::image type="content" source="media/use-gpu-with-vm/new-gpu-pool.png" alt-text="Screenshot of the New GPU pool page in Windows Admin Center to specify servers, pool name, and GPUs" lightbox="media/use-gpu-with-vm/new-gpu-pool.png":::
+   :::image type="content" source="media/use-gpu-with-clustered-vm/new-gpu-pool.png" alt-text="Screenshot of the New GPU pool page in Windows Admin Center to specify servers, pool name, and GPUs" lightbox="media/use-gpu-with-clustered-vm/new-gpu-pool.png":::
 
    After the process completes, you'll receive a success prompt that shows the name of the new GPU pool and the host server.
 
@@ -56,17 +56,17 @@ To prepare the cluster and assign a VM to a GPU resource pool:
 
    You can also define advanced setting values for memory-mapped IO (MMIO) spaces to determine resource requirements for a single GPU.
 
-   :::image type="content" source="media/use-gpu-with-vm/assign-vm-to-gpu-pool.png" alt-text="Screenshot of the Assign VM to GPU pool page in Windows Admin Center where you assign a VM to a GPU from the GPU pool" lightbox="media/use-gpu-with-vm/assign-vm-to-gpu-pool.png":::
+   :::image type="content" source="media/use-gpu-with-clustered-vm/assign-vm-to-gpu-pool.png" alt-text="Screenshot of the Assign VM to GPU pool page in Windows Admin Center where you assign a VM to a GPU from the GPU pool" lightbox="media/use-gpu-with-clustered-vm/assign-vm-to-gpu-pool.png":::
 
    After the process completes, you'll receive a confirmation prompt that shows you successfully assigned the GPU from the GPU resource pool to the VM, which displays under **Assigned VMs**.
 
-   :::image type="content" source="media/use-gpu-with-vm/gpu-assigned-to-vm-confirmed.png" alt-text="Screenshot of success prompt showing GPU assigned to a VM and the VM displaying under Assigned VMs" lightbox="media/use-gpu-with-vm/gpu-assigned-to-vm-confirmed.png":::
+   :::image type="content" source="media/use-gpu-with-clustered-vm/gpu-assigned-to-vm-confirmed.png" alt-text="Screenshot of success prompt showing GPU assigned to a VM and the VM displaying under Assigned VMs" lightbox="media/use-gpu-with-clustered-vm/gpu-assigned-to-vm-confirmed.png":::
 
 To unassign a VM from a GPU resource pool:
 1. On the **GPU pools** tab, select the GPU that you want to unassign, and then select **Unassign VM**.
 1. On the **Unassign VM from GPU pool** page, in the **Virtual machines** list box, specify the name of the VM, and then select **Unassign**.
 
-   :::image type="content" source="media/use-gpu-with-vm/unassign-vm-from-gpu-pool.png" alt-text="Screenshot of Unassign VM from GPU pool page showing VM to be unassigned" lightbox="media/use-gpu-with-vm/unassign-vm-from-gpu-pool.png":::
+   :::image type="content" source="media/use-gpu-with-clustered-vm/unassign-vm-from-gpu-pool.png" alt-text="Screenshot of Unassign VM from GPU pool page showing VM to be unassigned" lightbox="media/use-gpu-with-clustered-vm/unassign-vm-from-gpu-pool.png":::
 
    After the process completes, you'll receive a success prompt that the VM has been unassigned from the GPU pool, and under **Assignment status** the GPU shows **Available (Not assigned)**.
 

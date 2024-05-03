@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
   title: Resolve errors when enabling and disabling Azure Arc on AKS workload clusters
-  description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS hybrid.
+  description: Find solutions to known issues and errors when enabling and disabling Azure Arc on AKS workload clusters in AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
@@ -9,11 +9,11 @@ metadata:
   ms.topic: faq
   ms.date: 07/10/2023
 
-title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS hybrid
+title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS enabled by Arc
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
   
-  This article describes errors you may encounter (and their workarounds) while connecting or disconnecting your AKS workload clusters to Azure Arc using the PowerShell cmdlets [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) and [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) in AKS hybrid. For issues that are not covered in this article, see [Troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
+  This article describes errors you may encounter (and their workarounds) while connecting or disconnecting your AKS workload clusters to Azure Arc using the PowerShell cmdlets [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) and [Disable-AksHciArcConnection](./reference/ps/disable-akshciarcconnection.md) in AKS Arc. For issues that are not covered in this article, see [Troubleshooting Arc enabled Kubernetes](/azure/azure-arc/kubernetes/troubleshooting).
   
   You can also [open a support issue](./help-support.md) if none of the workarounds listed below apply to you.
   
@@ -78,7 +78,7 @@ sections:
           
           `Error while updating agents for enabling features. Please run "kubectl get pods -n azure-arc" to check the pods in case of timeout error. Error: Error: UPGRADE FAILED: timed out waiting for the condition`
           
-          This is a known issue with the September release and is fixed in the October release. New AKS clusters created using the October release and connected to Arc using [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) do not experience this issue. Update your AKS hybrid deployment to the October release and then reconnect your existing clusters to Arc for a workaround to this issue.
+          This is a known issue with the September release and is fixed in the October release. New AKS clusters created using the October release and connected to Arc using [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) do not experience this issue. Update your AKS Arc deployment to the October release and then reconnect your existing clusters to Arc for a workaround to this issue.
           
       - question: | 
           Error: 'Connection to Azure failed. Please run 'Set-AksHciRegistration' and try again'
@@ -86,7 +86,7 @@ sections:
         answer: | 
           This error means that your login credentials to Azure have expired. 
           
-          Use [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) to log in to Azure before running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command again. When rerunning `Set-AksHciRegistration`, make sure you use the same subscription and resource group details you used when you first registered the AKS host to Azure for billing. If you rerun the command with a different subscription or resource group, they will not be registered. Once the subscription and resource group are set in `Set-AksHciRegistration`, they cannot be changed without uninstalling AKS hybrid.
+          Use [Set-AksHciRegistration](./reference/ps/set-akshciregistration.md) to log in to Azure before running the [Enable-AksHciArcConnection](./reference/ps/enable-akshciarcconnection.md) command again. When rerunning `Set-AksHciRegistration`, make sure you use the same subscription and resource group details you used when you first registered the AKS host to Azure for billing. If you rerun the command with a different subscription or resource group, they will not be registered. Once the subscription and resource group are set in `Set-AksHciRegistration`, they cannot be changed without uninstalling AKS Arc.
           
       - question: | 
           Error: ''My-Cluster' is not a valid cluster name. Names must be lowercase and match the regular expression pattern: '^[a-z0-9][a-z0-9-]*[a-z0-9]$''

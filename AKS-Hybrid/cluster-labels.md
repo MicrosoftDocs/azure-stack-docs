@@ -12,6 +12,8 @@ ms.reviewer: guanghu
 
 # Use cluster labels in AKS enabled by Azure Arc
 
+[!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
+
 If you have multiple node pools, you might want to add a label during node pool creation. Kubernetes labels handle the scheduling rules for nodes.
 
 This article describes how to use labels in a Kubernetes cluster on AKS enabled by Arc.

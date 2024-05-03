@@ -14,6 +14,12 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2311.2.23
+        href: hotfix-1-2311-2-23.md
+      - name: Hotfix 1.2306.4.74
+        href: hotfix-1-2306-4-74.md      
+      - name: Hotfix 1.2301.3.72
+        href: hotfix-1-2301-3-72.md
       - name: Hotfix 1.2306.4.73
         href: hotfix-1-2306-4-73.md      
       - name: Hotfix 1.2206.2.77
@@ -484,6 +490,8 @@
           href: site-recovery-deploy-source.md
         - name: Deploy target environment
           href: site-recovery-deploy-target.md        
+        - name: Enable multitenancy
+          href: site-recovery-enable-multi-tenant.md
       - name: Protect virtual machines
         href: protect-virtual-machines.md
       - name: Capacity planning
@@ -518,6 +526,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.5.0 release notes [Mar 2024] 
+          href: event-hubs-rp-release-1-2102-50.md
         - name: 1.2102.4.0 release notes [Oct 2023] 
           href: event-hubs-rp-release-1-2102-40.md
         - name: 1.2102.3.0 release notes [Jan 2023] 

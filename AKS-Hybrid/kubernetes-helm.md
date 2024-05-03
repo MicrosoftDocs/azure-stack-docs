@@ -1,6 +1,6 @@
 ---
-title: Install existing applications with Helm in AKS hybrid
-description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service (AKS) clusters in AKS hybrid.
+title: Install existing applications with Helm
+description: Learn how to use the Helm packaging tool to deploy containers on Azure Kubernetes Service (AKS) clusters in AKS enabled by Azure Arc.
 services: container-service
 author: sethmanheim
 ms.topic: article
@@ -14,22 +14,22 @@ ms.reviewer: scooley
 # Keyword: Helm charts deploy Helm
 ---
 
-# Install existing applications with Helm in AKS hybrid
+# Install existing applications with Helm
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to configure and use Helm to install and manage Kubernetes applications in a Kubernetes cluster in AKS hybrid.
+This article describes how to configure and use Helm to install and manage Kubernetes applications in a Kubernetes cluster in AKS enabled by Azure Arc.
 
-[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as *APT* and *Sum*, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
+[Helm][helm] is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers such as **APT** and **Sum**, Helm is used to manage Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
 ## Before you begin
 
 Verify that you have set up the following requirements:
 
-* An [AKS cluster](./setup.md) with at least one Linux worker node that's up and running.
-* You have configured your local `kubectl` environment to point to your AKS cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
+* A [Kubernetes cluster](./setup.md) with at least one Linux worker node that's up and running.
+* You configured your local `kubectl` environment to point to your cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites are installed.
-* [Azure CLI](/cli/azure/install-azure-cli) can also be used to run commands, if you prefer this to PowerShell.
+* You can use [Azure CLI](/cli/azure/install-azure-cli) to run commands, if you prefer this to PowerShell.
 
 > [!IMPORTANT]
 > [!INCLUDE [helm-charts-in-mixed-linux-windows-clusters](includes/helm-charts-in-mixed-linux-windows-clusters.md)]
@@ -84,16 +84,16 @@ The following example shows a successful repo update:
 ```output
 Hang tight while we grab the latest from your chart repositories...
 ...Successfully got an update from the "ingress-nginx" chart repository
-Update Complete. ⎈ Happy Helming!⎈
+Update Complete. Happy Helming!
 ```
 
 ### Run Helm charts
 
 To install charts with Helm, use the [helm install][helm-install-command] command, and specify a release name and the name of the chart to install. To see a Helm chart installation in action, install a basic nginx deployment using a Helm chart.
 
-The command below is provided twice, one for use in Azure CLI, and one for use in a PowerShell console. If you're running commands in a PowerShell console, you'll see the command includes the backtick ( ` ) to allow line continuation.
+The following command is provided twice, one for use in Azure CLI, and one for use in a PowerShell console. If you run commands in a PowerShell console, the command includes the backtick ( ` ) to allow line continuation.
 
-```console
+```azurecli
 helm install my-nginx-ingress ingress-nginx/ingress-nginx \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
     --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux
@@ -177,12 +177,7 @@ For more information about managing Kubernetes application deployments with Helm
 [helm]: https://github.com/kubernetes/helm/
 [helm-cleanup]: https://helm.sh/docs/intro/using_helm/#helm-uninstall-uninstalling-a-release
 [helm-documentation]: https://helm.sh/docs/
-[helm-install]: https://helm.sh/docs/intro/install/
 [helm-install-command]: https://helm.sh/docs/intro/using_helm/#helm-install-installing-a-package
 [helm-repo-add]: https://helm.sh/docs/intro/quickstart/#initialize-a-helm-chart-repository
 [helm-search]: https://helm.sh/docs/intro/using_helm/#helm-search-finding-charts
 [helm-repo-update]: https://helm.sh/docs/intro/using_helm/#helm-repo-working-with-repositories
-            
-<!-- LINKS - internal -->
-[node-selectors]: adapt-apps-mixed-os-clusters.md#node-selector
-[taints]: adapt-apps-mixed-os-clusters.md#taints-and-tolerations

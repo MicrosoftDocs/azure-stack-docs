@@ -1,3 +1,4 @@
+items:
 - name: Azure Stack HCI documentation
   href: index.yml
 - name: Overview
@@ -8,14 +9,42 @@
     href: whats-new.md
   - name: Release notes
     items:
-    - name: Known issues - 2311.2 GA (Current)
-      href: known-issues-2311-2.md
-    - name: Known issues - 2311 (preview)
-      href: known-issues-2311.md
-    - name: Known issues - 2310 (preview)
-      href: known-issues-23h2.md
     - name: Release information
       href: release-information-23h2.md
+    - name: Known issues 2402 
+      items:
+      - name: 2402.2 - Current
+        href: known-issues-2402-2.md
+      - name: 2402.1
+        href: known-issues-2402-1.md
+      - name: 2402 
+        href: known-issues-2402.md
+    - name: Known issues 2311
+      items:
+      - name: 2311.5 - Current
+        href: known-issues-2311-5.md
+      - name: 2311.4 
+        href: known-issues-2311-4.md
+      - name: 2311.3 
+        href: known-issues-2311-3.md
+      - name: 2311.2 - GA
+        href: known-issues-2311-2.md
+      - name: 2311 (preview)
+        href: known-issues-2311.md
+    - name: Security updates
+      items:
+      - name: April 2024 - Current
+        href: security-update/hci-security-update-apr-2024.md
+      - name: March 2024 
+        href: security-update/hci-security-update-mar-2024.md
+      - name: February 2024 
+        href: security-update/hci-security-update-feb-2024.md      
+      - name: January 2024 
+        href: security-update/hci-security-update-jan-2024.md
+      - name: December 2023 
+        href: security-update/hci-security-update-dec-2023.md
+      - name: November 2023 
+        href: security-update/hci-security-update-nov-2023.md
   - name: Compare to Windows Server
     href: concepts/compare-windows-server.md 
   - name: FAQ
@@ -72,8 +101,14 @@
         href: plan/two-node-decision-matrix.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
-  - name: Review security features
-    href: concepts/security-features.md
+  - name: Review cloud deployment network considerations
+    href: plan/cloud-deployment-network-considerations.md
+  - name: Review security
+    items:
+    - name: About security features
+      href: concepts/security-features.md
+    - name: Download Azure Stack HCI security book
+      href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
 
@@ -98,12 +133,19 @@
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
+  - name: Deploy SDN
+    items:
+    - name: Using Express scripts
+      href: deploy/sdn-express-23h2.md
+    - name: Using Windows Admin Center
+      href: deploy/sdn-wizard-23h2.md     
+  
   - name: Deploy workloads
     items:
     - name: Run AKS on HCI
-      href: /azure/aks/hybrid/kubernetes-walkthrough-powershell
+      href: /azure/aks/hybrid/aks-create-clusters-cli?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Virtual Desktop on HCI
-      href: /azure/virtual-desktop/deploy-azure-virtual-desktop
+      href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Arc VMs
       href: manage/create-arc-virtual-machines.md
 
@@ -161,6 +203,8 @@
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
+    - name: Azure verification for VMs
+      href: deploy/azure-verification.md
     - name: License Windows Server VMs
       href: manage/vm-activate.md
 
@@ -189,18 +233,20 @@
         href: manage/processor-compatibility-mode.md
       - name: Use GPUs with clustered VMs
         href: manage/use-gpu-with-clustered-vm.md
-      - name: Partition and share GPUs with VMs
-        href: manage/partition-gpu.md
+      - name: GPU Partitioning
+        href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      - name: Partition and assign GPUs to a virtual machine
+        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
 
   - name: Security
     items:
-    - name: Manage application control (WDAC)
-      href: manage/manage-wdac.md
     - name: Manage security defaults
       href: manage/manage-secure-baseline.md
+    - name: Manage application control (WDAC)
+      href: manage/manage-wdac.md
     - name: Manage BitLocker encryption
       href: manage/manage-bitlocker.md
     - name: Manage secrets rotation
@@ -209,10 +255,13 @@
       href: manage/manage-syslog-forwarding.md
     - name: Manage with Microsoft Defender for Cloud
       href: manage/manage-security-with-defender-for-cloud.md
+      
   - name: Clusters
     items:
     - name: Configure proxy 
       href: manage/configure-proxy-settings-23h2.md
+    - name: Use dashboard to manage at-scale
+      href: manage/manage-at-scale-dashboard.md
 
   - name: Azure services
     items:
@@ -242,6 +291,42 @@
     - name: Repair a server
       href: manage/repair-server.md
 
+  - name: SDN
+    items:
+    - name: Update SDN infrastructure
+      href: manage/update-sdn.md
+    - name: Manage tenant logical networks
+      href: manage/tenant-logical-networks.md
+    - name: Manage tenant virtual networks
+      href: manage/tenant-virtual-networks.md
+    - name: Manage software load balancers
+      href: manage/load-balancers.md
+    - name: Manage gateway connections
+      href: manage/gateway-connections.md
+    - name: Configure network security groups with Windows Admin Center
+      href: manage/use-datacenter-firewall-windows-admin-center.md
+    - name: Configure network security groups with tags
+      href: manage/configure-network-security-groups-with-tags.md
+    - name: Manage SDN Multisite
+      href: manage/manage-sdn-multisite.md
+    - name: Assign public IP address to a VM
+      href: manage/assign-public-ip-to-vm.md
+    - name: Configure load balancer for high availability ports
+      href: manage/configure-software-load-balancer.md
+    - name: Load balance multiple logical networks
+      href: manage/load-balance-multiple-networks.md
+    - name: Manage SDN security
+      items:
+      - name: Manage certificates for SDN
+        href: manage/sdn-manage-certs.md
+      - name: Secure the Network Controller
+        href: manage/nc-security.md
+  - name: Billing
+    items:
+    - name: Azure Hybrid Benefit
+      href: concepts/azure-hybrid-benefit-hci.md
+    - name: Billing and payment
+      href: concepts/billing.md
 - name: Monitor
   items:
   - name: Overview
@@ -266,6 +351,8 @@
         href: manage/setup-hci-system-alerts.md
       - name: Metric alerts
         href: manage/setup-metric-alerts.md
+      - name: Recommended alert rules
+        href: manage/set-up-recommended-alert-rules.md
   - name: Via PowerShell
     items:
     - name: Health service
@@ -287,6 +374,18 @@
     href: manage/collect-logs.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
+  - name: Get support for Azure Stack HCI
+    href: manage/get-support.md
+  - name: Get remote support
+    href: manage/get-remote-support.md
+  - name: Troubleshoot SDN
+    items:
+    - name: Troubleshoot SDN deployment
+      href: manage/troubleshoot-sdn-deployment.md
+    - name: Collect SDN logs
+      href: manage/sdn-log-collection.md
+    - name: Troubleshoot Software Load Balancer for SDN
+      href: manage/troubleshoot-software-load-balancer.md
 
 - name: Migrate
   items:
@@ -313,9 +412,9 @@
   - name: Migrate using SCVMM (v22H2 only)
     items:
     - name: For Hyper-V VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#step-8-migrate-vms-from-windows-server-to-azure-stack-hci-cluster
     - name: For VMware VMs
-      href: /system-center/vmm/deploy-manage-azure-stack-hci?view=sc-vmm-2022&preserve-view=true#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
+      href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json#step-9-migrate-vmware-workloads-to-azure-stack-hci-cluster-using-scvmm
   - name: Migrate manually (v22H2 only)
     items:
     - name: To same hardware
@@ -327,13 +426,33 @@
   items: 
   - name: Azure Stack HCI observability
     href: concepts/observability.md
+  - name: SDN
+    items:
+    - name: SDN technical reference
+      href: manage/sdn-technical-reference.md
+    - name: SDN overview
+      href: concepts/software-defined-networking-23h2.md
+    - name: Plan an SDN infrastructure
+      href: concepts/plan-software-defined-networking-infrastructure-23h2.md
+    - name: Network Controller overview
+      href: concepts/network-controller-overview.md
+    - name: Software Load Balancer overview
+      href: concepts/software-load-balancer.md
+    - name: Datacenter Firewall overview
+      href: concepts/datacenter-firewall-overview.md
+    - name: RAS Gateway overview
+      href: concepts/gateway-overview.md
+    - name: Route Reflector overview
+      href: concepts/route-reflector-overview.md
+    - name: SDN Multisite overview
+      href: concepts/sdn-multisite-overview.md
 
 - name: Version 22H2
   items:
   - name: Release information for version 22H2
     href: release-information.md
-  - name: Azure Hybrid Benefit
-    href: concepts/azure-hybrid-benefit-hci.md 
+  - name: Review requirements for 22H2
+    href: concepts/system-requirements.md
   - name: Deploy version 22H2
     items:
     - name: 0. Download the Azure Stack HCI software
@@ -370,8 +489,6 @@
       href: /system-center/vmm/deploy-manage-azure-stack-hci?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json  
     - name: Deploy workloads
       items: 
-      - name: Azure verification for VMs
-        href: deploy/azure-verification.md
       - name: Branch office and edge
         href: deploy/branch-office-edge.md
       - name: Virtual desktop infrastructure
@@ -456,38 +573,18 @@
         href: manage/update-sdn.md
       - name: Assign public IP address to a VM
         href: manage/assign-public-ip-to-vm.md
-      - name: Configure network security groups with Windows Admin Center
-        href: manage/use-datacenter-firewall-windows-admin-center.md
       - name: Configure network security groups with PowerShell
         href: manage/use-datacenter-firewall-powershell.md
-      - name: Configure network security groups with tags
-        href: manage/configure-network-security-groups-with-tags.md
       - name: Manage default network access policies
         href: manage/manage-default-network-access-policies-virtual-machines.md
-      - name: Manage tenant virtual networks
-        href: manage/tenant-virtual-networks.md
-      - name: Manage tenant logical networks
-        href: manage/tenant-logical-networks.md
       - name: Manage SDN security
         items:
-        - name: Secure the Network Controller
-          href: manage/nc-security.md
-        - name: Manage certificates for SDN
-          href: manage/sdn-manage-certs.md
         - name: Update Network Controller certificates
           href: manage/update-network-controller-certificates.md
         - name: Update SDN infrastructure certificates
           href: manage/update-sdn-infrastructure-certificates.md
         - name: Authenticate with Kerberos
           href: manage/kerberos-with-spn.md
-      - name: Manage software load balancers
-        items:
-        - name: Manage software load balancers
-          href: manage/load-balancers.md
-        - name: Configure load balancer for high availability ports
-          href: manage/configure-software-load-balancer.md
-      - name: Manage gateway connections
-        href: manage/gateway-connections.md
     - name: Manage Azure services
       items:
       - name: Hybrid capabilities with Azure services
@@ -524,14 +621,8 @@
       href: /windows-server/storage/storage-spaces/storage-spaces-states?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Collect diagnostic data
       href: manage/collect-diagnostic-data.md
-    - name: Troubleshoot SDN
-      items:
-      - name: Troubleshoot SDN deployment
-        href: manage/troubleshoot-sdn-deployment.md
-      - name: Collect SDN logs
-        href: manage/sdn-log-collection.md
-      - name: Troubleshoot Software Load Balancer for SDN
-        href: manage/troubleshoot-software-load-balancer.md
+    - name: Use the Diagnostic Support tool
+      href: manage/support-tools.md
   - name: Concepts
     items:
     - name: Storage and clusters
@@ -576,22 +667,10 @@
         href: concepts/software-defined-networking.md
       - name: Plan an SDN infrastructure
         href: concepts/plan-software-defined-networking-infrastructure.md
-      - name: Network Controller overview
-        href: concepts/network-controller-overview.md
       - name: Plan Network Controller
         href: concepts/network-controller.md
-      - name: Datacenter Firewall overview
-        href: concepts/datacenter-firewall-overview.md
-      - name: Software Load Balancer overview
-        href: concepts/software-load-balancer.md
-      - name: RAS Gateway overview
-        href: concepts/gateway-overview.md
-      - name: Route Reflector overview
-        href: concepts/route-reflector-overview.md
     - name: Maintenance and security
       items:
-      - name: Billing
-        href: concepts/billing.md
       - name: Updates and upgrades
         href: concepts/updates.md
       - name: Security considerations
@@ -646,7 +725,7 @@
 - name: Related
   items:
   - name: Azure Kubernetes Service on Azure Stack HCI and Windows Server 
-    href: /azure/aks/hybrid/overview
+    href: /azure/aks/hybrid/aks-overview
   - name: Azure Stack family
     href: ../index.yml
   - name: Azure hybrid cloud
@@ -659,18 +738,22 @@
     href: /system-center/
 - name: Resources
   items:
+  - name: Assurance
+    items:
+    - name: Azure Stack HCI and security standards
+      href: assurance/azure-stack-security-standards.md
+    - name: ISO/IEC 27001 guidance
+      href: assurance/azure-stack-iso27001-guidance.md
+    - name: PCI DSS guidance
+      href: assurance/azure-stack-pci-dss-guidance.md
+    - name: HIPAA guidance
+      href: assurance/azure-stack-hipaa-guidance.md
   - name: Azure Stack HCI product page
     href: https://azure.com/hci
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
   - name: Azure Benefits (22H2 and earlier)
     href: ./manage/azure-benefits.md
-  - name: Support
-    items:
-    - name: Get support
-      href: manage/get-support.md
-    - name: Get remote support
-      href: manage/get-remote-support.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
@@ -691,6 +774,8 @@
       href: whats-new-in-hci-22h2.md
     - name: What's new in version 21H2
       href: whats-new-in-hci-21h2.md
+    - name: Known issues in 2310
+      href: known-issues-2310.md
     - name: Create a VM-based lab
       href: deploy/tutorial-private-forest.md
     - name: 22H2 Supplemental Package (Preview)

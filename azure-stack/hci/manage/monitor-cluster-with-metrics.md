@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/29/2024
+ms.date: 04/22/2024
 ---
 
 # Monitor Azure Stack HCI with Azure Monitor Metrics
@@ -17,6 +17,10 @@ ms.date: 01/29/2024
 This article describes how to monitor your Azure Stack HCI clusters with [Azure Monitor Metrics](/azure/azure-monitor/essentials/data-platform-metrics). It also provides a comprehensive list of metrics collected for compute, storage, and network resources in Azure Stack HCI.
 
 When you have critical applications and business processes that rely on Azure resources, it's important to monitor those resources for their availability, performance, and operation. The integration of Azure Monitor Metrics with Azure Stack HCI enables you to store numeric data from your clusters in a dedicated time-series database. This database is automatically created for each Azure subscription. Use [metrics explorer](/azure/azure-monitor/essentials/tutorial-metrics) to analyze data from your Azure Stack HCI system and assess its health and utilization.
+
+Take a few moments to watch the video walkthrough on creating metric charts in metrics explorer and alerts using Metrics:
+
+> [!VIDEO https://www.youtube.com/embed/ll3GByNvcdY]
 
 ## Benefits
 
@@ -36,7 +40,7 @@ Here are the prerequisites of using Metrics for Azure Stack HCI:
 
 - You must have access to a cluster that is running Azure Stack HCI, version 23H2 (Build version: 2311) or later. The cluster must be deployed and registered with Azure.
 
-- The `TelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
+- The `AzureEdgeTelemetryAndDiagnostics` extension must be installed to collect telemetry and diagnostics information from your Azure Stack HCI system. For more information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Monitor Azure Stack HCI through the Monitoring tab
 

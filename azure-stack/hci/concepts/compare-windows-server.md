@@ -6,7 +6,7 @@ author: jasongerend
 ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/01/2024
+ms.date: 03/13/2024
 ---
 
 # Compare Azure Stack HCI to Windows Server
@@ -89,7 +89,7 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Secured-core Server| Yes | Yes |
 | Stronger, faster network encryption | Yes | Yes |
 | 4-5x faster Storage Spaces repairs | Yes | Yes |
-| Stretch clustering for disaster recovery with Storage Spaces Direct | Yes | No |
+| Stretch clustering for disaster recovery with Storage Spaces Direct<sup>1</sup> | Yes | No |
 | High availability for GPU workload | Yes | No |
 | Restart up to 10x faster with kernel-only restarts | Yes | No |
 | Simplified host networking with Network ATC | Yes | No |
@@ -98,6 +98,8 @@ The following table compares the technical features of Azure Stack HCI and Windo
 | Dynamic processor compatibility mode| Yes | No |
 | Cluster-Aware OS feature update | Yes | No |
 | Integrated driver and firmware updates | Yes (Integrated Systems only) | No |
+
+<sup>1</sup> Functionality only available in Azure Stack HCI, version 22H2.
 
 For more information, see [What's New in Azure Stack HCI, version 23H2](../whats-new.md) and [Using Azure Stack HCI on a single server](single-server-clusters.md).
 
@@ -135,4 +137,4 @@ The table below compares the product pricing for Azure Stack HCI and Windows Ser
 
 ## Next steps
 
-- [Compare Azure Stack HCI to Azure Stack Hub](compare-azure-stack-hub.md)
+- [Evaluate Azure Stack HCI](../deploy/deployment-virtual.md).

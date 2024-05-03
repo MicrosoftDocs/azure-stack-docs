@@ -56,7 +56,7 @@ You can manually move your VM into Azure Stack Hub with the following scenarios:
 | Scenario | Instructions |
 | --- | --- |
 | Global Azure to Azure Stack Hub | Prepare your VHD in global Azure and then upload to Azure Stack Hub. For more information, see [Move a VM from Azure to Azure Stack Hub](vm-move-from-azure.md). |
-| Local generalized to Azure Stack Hub | Prepare your VHD and generalize a VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a generalized VM from on-premises to Azure Stack Hub](vm-move-generalized.md). |
+| Local generalized to Azure Stack Hub | Prepare your VHD and generalize a VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a generalized VM from on-premises to Azure Stack Hub](vm-move-generalized.md).<br> When you generalize an Azure VM and use the captured VM image in Azure Stack Hub, you must remove the extensions and VM agent in Azure VM. If you don't remove the VM agent in the Azure VM before generalizing, the VM agent shows **not ready** in the Azure Stack VM. |
 | Local specialized to Azure Stack Hub | Prepare your specialized VHD locally in Hyper-V and then upload to Azure Stack Hub. For more information, see [Move a specialized VM from on-premises to Azure Stack Hub](vm-move-specialized.md). |
 
 ## Migrate to Azure Stack Hub

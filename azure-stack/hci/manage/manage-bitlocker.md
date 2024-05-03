@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 04/04/2024
 ---
 
 # Manage BitLocker encryption on Azure Stack HCI, version 23H2
@@ -15,22 +15,19 @@ ms.date: 01/31/2024
 
 This article describes how to view and enable BitLocker encryption, and retrieve BitLocker recovery keys on your Azure Stack HCI system.
 
+## Prerequisites
+
+Before you begin, make sure that you have access to an Azure Stack HCI, version 23H2 system that is deployed, registered, and connected to Azure.
+
 ## View BitLocker settings via Azure portal
 
-BitLocker offers two types of protection: volume encryption and network protection. You can only view BitLocker settings in the Azure portal. To manage the settings, see [Manage BitLocker settings with PowerShell](#manage-bitlocker-settings-with-powershell).
+To view the BitLocker settings in the Azure portal, make sure that you have applied the MCSB initiative. For more information, see [Apply Microsoft Cloud Security Benchmark initiative](./manage-security-with-defender-for-cloud.md#apply-microsoft-cloud-security-benchmark-initiative).
 
-- **Volume encryption** - BitLocker encrypts data on your OS volumes and data volumes (includes infrastructure and workload volumes).
+BitLocker offers two types of protection: encryption for OS volumes and encryption for data volumes. You can only view BitLocker settings in the Azure portal. To manage the settings, see [Manage BitLocker settings with PowerShell](#manage-bitlocker-settings-with-powershell).
 
-    :::image type="content" source="media/manage-bitlocker/manage-bitlocker.png" alt-text="Screenshot that shows the Data protections page for volume encryption on Azure portal." lightbox="media/manage-bitlocker/manage-bitlocker.png":::
-
-- **Network protection** - BitLocker protects data on your host's network and on VM network connections.
-
-    :::image type="content" source="media/manage-bitlocker/manage-bitlocker-network-protection.png" alt-text="Screenshot that shows the Data protections page for network protection on Azure portal." lightbox="media/manage-bitlocker/manage-bitlocker-network-protection.png":::
+:::image type="content" source="media/manage-bitlocker/manage-bitlocker.png" alt-text="Screenshot that shows the Data protections page for volume encryption on Azure portal." lightbox="media/manage-bitlocker/manage-bitlocker.png":::
 
 ## Manage BitLocker settings with PowerShell
-
-> [!NOTE]
-> It's important to save BitLocker keys outside of the system. If the cluster is down and you don't have the key, it could potentially result in data loss.
 
 You can view, enable, and disable volume encryption settings on your Azure Stack HCI cluster.
 
@@ -38,11 +35,23 @@ You can view, enable, and disable volume encryption settings on your Azure Stack
 
 The following cmdlet properties are for volume encryption with BitLocker module: *AzureStackBitLockerAgent*.
 
-- `Get-ASBitLocker` - Scope <Local | PerNode | AllNodes | Cluster>
-  - **Local** - Provides BitLocker volume details for the local node. Can be run in a regular remote PowerShell session.
-  - **PerNode** - Provides BitLocker volume details per node. Requires CredSSP (when using remote PowerShell) or a remote desktop session (RDP).
-- `Enable-ASBitLocker` - Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
-- `Disable-ASBitLocker` - Scope <Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
+- ```powershell
+    Get-ASBitLocker -<Local | PerNode>
+    ```
+
+  Where `Local` and`PerNode` define the scope at which the cmdlet is run.
+  - **Local** - Can be run in a regular remote PowerShell session and provides BitLocker volume details for the local node.
+  - **PerNode** - Requires CredSSP (when using remote PowerShell) or a remote desktop session (RDP). Provides BitLocker volume details per node.
+
+- ```powershell
+    Enable-ASBitLocker -<Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
+    ```
+
+
+- ```powershell
+    Disable-ASBitLocker -<Local | Cluster> -VolumeType <BootVolume | ClusterSharedVolume>
+    ```
+
 
 ### View encryption settings for volume encryption with BitLocker
 
@@ -85,9 +94,12 @@ Follow these steps to disable volume encryption with BitLocker:
 
 ## Get BitLocker recovery keys
 
-Follow these steps to get recovery keys for your cluster:
+> [!NOTE]
+> BitLocker keys can be retrieved at any time from your local Active Directory. If the cluster is down and you don't have the keys, you might be unable to access the encrypted data on the cluster. To save your BitLocker recovery keys, we recommend that you export and store them in a secure external location such as Azure Key Vault.
 
-1. Connect to your Azure Stack HCI cluster as local administrator.
+Follow these steps to export the recovery keys for your cluster:
+
+1. Connect to your Azure Stack HCI cluster as local administrator. Run the following command in a local console session or local Remote Desktop Protocol (RDP) session or a Remote PowerShell session with CredSSP authentication:
 
 1. To get the recovery key information, run the following command in PowerShell:
 
@@ -95,7 +107,7 @@ Follow these steps to get recovery keys for your cluster:
     Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey
     ```
 
-   Here is a sample output:
+   Here's a sample output:
 
    ```output
     PS C:\Users\ashciuser> Get-AsRecoveryKeyInfo | ft ComputerName, PasswordID, RecoveryKey

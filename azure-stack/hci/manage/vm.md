@@ -3,7 +3,7 @@ title: Manage VMs with Windows Admin Center
 description: Learn how to create and manage virtual machines in a cluster on Azure Stack HCI using Windows Admin Center.
 author: jasongerend
 ms.topic: how-to
-ms.date: 01/29/2024
+ms.date: 02/27/2024
 ms.author: jgerend
 ---
 
@@ -19,7 +19,7 @@ Windows Admin Center can be used to create and manage your virtual machines (VMs
 
 You can easily create a new VM using Windows Admin Center.
 
-:::image type="content" source="media/manage-vm/new-vm.png" alt-text="New VM screen" lightbox="media/manage-vm/new-vm.png":::
+:::image type="content" source="media/vm/new-vm.png" alt-text="New VM screen" lightbox="media/vm/new-vm.png":::
 
 1. On the Windows Admin Center home screen, under **All connections**, select the server or cluster you want to create the VM on.
 2. Under **Tools**, scroll down and select **Virtual machines**.
@@ -53,7 +53,7 @@ You can easily create a new VM using Windows Admin Center.
 
 You can easily see all VMs on a server or in your cluster.
 
-:::image type="content" source="media/manage-vm/vm-inventory.png" alt-text="Virtual machines screen" lightbox="media/manage-vm/vm-inventory.png":::
+:::image type="content" source="media/vm/vm-inventory.png" alt-text="Virtual machines screen" lightbox="media/vm/vm-inventory.png":::
 
 1. In Windows Admin Center, under **Tools**, scroll down and select **Virtual Machines**.
 2. The  **Inventory** tab on the right lists all VMs available on the current server or the cluster, and provides commands to manage individual VMs. You can:
@@ -70,7 +70,7 @@ You can easily see all VMs on a server or in your cluster.
 
 You can view detailed information and performance charts for a specific VM from its dedicated page.
 
-:::image type="content" source="media/manage-vm/vm-details.png" alt-text="Virtual machines detailed info screen" lightbox="media/manage-vm/vm-details.png":::
+:::image type="content" source="media/vm/vm-details.png" alt-text="Virtual machines detailed info screen" lightbox="media/vm/vm-details.png":::
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
 2. Click the **Inventory** tab on the right, then select the VM. On the subsequent page, you can do the following:
@@ -88,7 +88,7 @@ You can view detailed information and performance charts for a specific VM from 
 
 You can view resources usage and performance metrics for all VMs in your cluster.
 
-:::image type="content" source="media/manage-vm/host-metrics.png" alt-text="host metrics screen" lightbox="media/manage-vm/host-metrics.png":::
+:::image type="content" source="media/vm/host-metrics.png" alt-text="host metrics screen" lightbox="media/vm/host-metrics.png":::
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
 2. The **Summary** tab on the right provides a holistic view of Hyper-V host resources and performance for a selected server or cluster, including the following:
@@ -112,19 +112,19 @@ There are a variety of settings that you can change for a VM.
     - To change default VM start/stop actions, select the appropriate settings from the dropdown boxes.
     - To change time intervals for pausing or starting a VM, enter the appropriate values in the fields shown
 
-        :::image type="content" source="media/manage-vm/vm-settings-general.png" alt-text="VM general settings screen" lightbox="media/manage-vm/vm-settings-general.png":::
+        :::image type="content" source="media/vm/vm-settings-general.png" alt-text="VM general settings screen" lightbox="media/vm/vm-settings-general.png":::
 
 4. Select **Memory** to change VM startup memory, dynamic memory range, memory buffer percentage, and memory weight.
 
-    :::image type="content" source="media/manage-vm/vm-settings-memory.png" alt-text="Change VM memory settings screen" lightbox="media/manage-vm/vm-settings-memory.png":::
+    :::image type="content" source="media/vm/vm-settings-memory.png" alt-text="Change VM memory settings screen" lightbox="media/vm/vm-settings-memory.png":::
 
 5. Select **Processors** to change the number of virtual processors, to enable nested virtualization, or to enable simultaneous multithreading (SMT).
 
-    :::image type="content" source="media/manage-vm/vm-settings-processor.png" alt-text="Change VM processor settings screen" lightbox="media/manage-vm/vm-settings-processor.png":::
+    :::image type="content" source="media/vm/vm-settings-processor.png" alt-text="Change VM processor settings screen" lightbox="media/vm/vm-settings-processor.png":::
 
 6. To change the size of an existing disk, modify the value in **Size (GB)**. To add a new virtual disk, select **Disks** and then select whether to create an empty virtual disk or to use an existing virtual disk or ISO (.iso) image file. Click **Browse** and select the path to the virtual disk or image file.
 
-    :::image type="content" source="media/manage-vm/vm-settings-disk.png" alt-text="Change VM disk settings screen" lightbox="media/manage-vm/vm-settings-disk.png":::
+    :::image type="content" source="media/vm/vm-settings-disk.png" alt-text="Change VM disk settings screen" lightbox="media/vm/vm-settings-disk.png":::
 
 7. To add, remove, or change network adapter settings, select **Networks** and do the following:
     - Select a virtual switch from the dropdown list.
@@ -139,22 +139,22 @@ There are a variety of settings that you can change for a VM.
         - Enable MAC address spoofing
         - Enable bandwidth management and specify the max/min range
 
-        :::image type="content" source="media/manage-vm/vm-settings-network.png" alt-text="Change VM network settings screen" lightbox="media/manage-vm/vm-settings-network.png":::
+        :::image type="content" source="media/vm/vm-settings-network.png" alt-text="Change VM network settings screen" lightbox="media/vm/vm-settings-network.png":::
 
 8. Select **Boot order** to add boot devices or change the VM boot sequence.
 
-    :::image type="content" source="media/manage-vm/vm-settings-boot.png" alt-text="Change VM boot order screen" lightbox="media/manage-vm/vm-settings-boot.png":::
+    :::image type="content" source="media/vm/vm-settings-boot.png" alt-text="Change VM boot order screen" lightbox="media/vm/vm-settings-boot.png":::
 
 9. Select **Checkpoints** to enable VM checkpoints, select checkpoint type, and specify checkpoint file location.
 
     > [!NOTE]
     > The **Production** checkpoint setting is recommended and uses backup technology in the guest operating system to create data-consistent checkpoints. The **Standard** setting uses VHD snapshots to create checkpoints with application and service state.
 
-     :::image type="content" source="media/manage-vm/vm-settings-checkpoint.png" alt-text="Change VM checkpoints screen" lightbox="media/manage-vm/vm-settings-checkpoint.png":::
+     :::image type="content" source="media/vm/vm-settings-checkpoint.png" alt-text="Change VM checkpoints screen" lightbox="media/vm/vm-settings-checkpoint.png":::
 
 10. Select **Affinity rules** to create an affinity rule for a VM. For more information on creating affinity rules, see [Create server and site affinity rules for VMs](vm-affinity.md).
 
-    :::image type="content" source="media/manage-vm/vm-affinity.png" alt-text="VM affinity rule screen" lightbox="media/manage-vm/vm-affinity.png":::
+    :::image type="content" source="media/vm/vm-affinity.png" alt-text="VM affinity rule screen" lightbox="media/vm/vm-affinity.png":::
 
 11. To change VM security settings, select **Security** and do the following:
     - Select **Enable Secure Boot** to help prevent unauthorized code from running at boot time (recommended). Also select a Microsoft or open-source template from the drop-down box
@@ -173,7 +173,7 @@ generate a KP that allows running the VM on this host.
 
     - Under **Security Policy**, select **Enable Shielding** for additional protection options for the VM.
 
-        :::image type="content" source="media/manage-vm/vm-settings-security.png" alt-text="Change VM security settings" lightbox="media/manage-vm/vm-settings-security.png":::
+        :::image type="content" source="media/vm/vm-settings-security.png" alt-text="Change VM security settings" lightbox="media/vm/vm-settings-security.png":::
 
 ## Move a VM to another server or cluster
 
@@ -184,17 +184,17 @@ You can easily move a virtual machine to another server or another cluster as fo
 3. Choose a server from the list and select **Move**.
 4. If you want to move both the VM and its storage, choose whether to move it to another cluster or to another server in the same cluster.
 
-    :::image type="content" source="media/manage-vm/vm-more-move.png" alt-text="Move VM screen" lightbox="media/manage-vm/vm-more-move.png":::
+    :::image type="content" source="media/vm/vm-more-move.png" alt-text="Move VM screen" lightbox="media/vm/vm-more-move.png":::
 
 5. If you want to move just the VM's storage, select either to move it to the same path or select different paths for configuration, checkpoint, or smart paging.
 
-    :::image type="content" source="media/manage-vm/vm-move-storage.png" alt-text="Move VM Storage screen" lightbox="media/manage-vm/vm-move-storage.png":::
+    :::image type="content" source="media/vm/vm-move-storage.png" alt-text="Move VM Storage screen" lightbox="media/vm/vm-move-storage.png":::
 
 ## Join a VM to a domain
 
 You can easily join a VM to a domain as follows:
 
-:::image type="content" source="media/manage-vm/vm-domain-join.png" alt-text="Move VM Domain join screen" lightbox="media/manage-vm/vm-domain-join.png":::
+:::image type="content" source="media/vm/vm-domain-join.png" alt-text="Move VM Domain join screen" lightbox="media/vm/vm-domain-join.png":::
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
 2. Under the **Inventory** tab, select a VM from the list and select **Manage > Domain join**.
@@ -211,13 +211,13 @@ You can easily clone a VM as follows:
 3. Specify a name and path to the cloned VM.
 4. Run Sysprep on your VM if you haven't already done so.
 
-:::image type="content" source="media/manage-vm/vm-clone.png" alt-text="Clone VM screen" lightbox="media/manage-vm/vm-clone.png":::
+:::image type="content" source="media/vm/vm-clone.png" alt-text="Clone VM screen" lightbox="media/vm/vm-clone.png":::
 
 ## Import or export a VM
 
 You can easily import or export a VM. The following procedure describes the import process.
 
-:::image type="content" source="media/manage-vm/vm-more-import.png" alt-text="Import VM screen" lightbox="media/manage-vm/vm-more-import.png":::
+:::image type="content" source="media/vm/vm-more-import.png" alt-text="Import VM screen" lightbox="media/vm/vm-more-import.png":::
 
 1. Under **Tools**, scroll down and select **Virtual machines**.
 2. On the **Inventory** tab, select **Add > Import**.
@@ -233,7 +233,7 @@ For exporting a VM, the process is similar:
 3. Select **Manage > Export**.
 4. Enter the path to export the VM to.
 
-:::image type="content" source="media/manage-vm/vm-export.png" alt-text="Export VM screen" lightbox="media/manage-vm/vm-export.png":::
+:::image type="content" source="media/vm/vm-export.png" alt-text="Export VM screen" lightbox="media/vm/vm-export.png":::
 
 ## View VM event logs
 
@@ -258,7 +258,7 @@ Instead of using Windows Admin Center, you can also manage your VMs through a Hy
 
 You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises VMs to Azure. This is an optional value-add service. To get started, see [Protect VMs using Azure Site Recovery](/windows-server/manage/windows-admin-center/azure/azure-site-recovery).
 
-:::image type="content" source="media/manage-vm/vm-more-azure.png" alt-text="Setup Azure Site Recovery screen" lightbox="media/manage-vm/vm-more-azure.png":::
+:::image type="content" source="media/vm/vm-more-azure.png" alt-text="Setup Azure Site Recovery screen" lightbox="media/vm/vm-more-azure.png":::
 
 ## Remove a VM and resources
 

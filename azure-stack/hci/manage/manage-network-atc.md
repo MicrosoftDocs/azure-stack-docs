@@ -177,7 +177,7 @@ $clusterOverride = New-NetIntentGlobalClusterOverrides
 
 The 'clusterOverride' variable has the following properties: 
 
-:::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object." lightbox="media/manage-network-atc/cluster-override.png"::: 
+:::image type="content" source="media/manage-network-atc/cluster-override.png" alt-text="Screenshot of Cluster Override Object." lightbox="media/manage-network-atc/cluster-override.png":::
 
 Once you set any property for the override, you can add it as a GlobalOverride for your cluster with the following command:
 
@@ -220,7 +220,7 @@ AutoDetect: Similar to the AutoDetect parameter above, this is a true or false p
 You can set your proxy configurations in the following ways:
 
 ```powershell
-$ProxyOverride = New-NetIntentGlobalProxyOverrides -ProxyServer https://itg.contoso.com:3128 -ProxyBypass = *.foo.com
+$ProxyOverride = New-NetIntentGlobalProxyOverrides -ProxyServer https://itg.contoso.com:3128 -ProxyBypass *.foo.com
 ```
 
 Using the `AutoConfigURL` switch, you can set your proxy configuration in the following way:

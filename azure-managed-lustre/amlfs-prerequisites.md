@@ -23,7 +23,7 @@ This article explains prerequisites that you must configure before creating an A
 
 Azure Managed Lustre file systems exist in a virtual network subnet. The subnet contains the Lustre Management Service (MGS) and handles all client interactions with the virtual Lustre cluster.
 
-Each file system you create must have its own unique subnet. You can't move a file system from one network or subnet to another after you create the file system.
+You can't move a file system from one network or subnet to another after you create the file system.
 
 Azure Managed Lustre accepts only IPv4 addresses. IPv6 isn't supported.
 
@@ -49,9 +49,11 @@ When you plan your virtual network and subnet, take into account the requirement
 
   * If you use more than one AKS cluster within the virtual network, make sure the virtual network has enough capacity for all resources in all of the clusters.
   
-  To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#provide-subnet-access-between-aks-and-azure-managed-lustre).
+  To learn more about network strategies for Azure Managed Lustre and AKS, see [AKS subnet access](use-csi-driver-kubernetes.md#determine-the-network-type-to-use-with-aks).
 
 * If you plan to use another resource to host your compute VMs in the same virtual network, check the requirements for that process before creating the virtual network and subnet for your Azure Managed Lustre system.
+
+* When planning multiple clusters within the same subnet, it's necessary to use an address space large enough to accommodate the total requirements for all clusters.
 
 ### Subnet access and permissions
 
@@ -63,6 +65,11 @@ By default, no specific changes need to be made to enable Azure Managed Lustre. 
 |Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
 |Lustre network port access| Your network security group must allow inbound and outbound access on port 988 and ports 1019-1023.<br>The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement.|
 
+#### Known limitations
+
+The following limitations apply to virtual network subnets for Azure Managed Lustre file systems:
+
+* Azure Managed Lustre and Azure NetApp Files resources can't share a subnet. If you use the Azure NetApp Files service, you must create your Azure Managed Lustre file system in a separate subnet. The deployment fails if you try to create an Azure Managed Lustre file system in a subnet that currently contains, or has previously contained, Azure NetApp Files resources.
 
 > [!NOTE]
 > After you create your Azure Managed Lustre file system, several new network interfaces appear in the file system's resource group. Their names start with **amlfs-** and end with **-snic**. Don't change any settings on these interfaces. Specifically, leave the default value, **enabled**, for the **Accelerated networking** setting. Disabling accelerated networking on these network interfaces degrades your file system's performance.

@@ -15,7 +15,7 @@ ms.reviewer: abha
 
 # Use Container Storage Interface (CSI) file drivers in AKS enabled by Azure Arc
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Stack HCI 23H2
 
 This article describes how to use Container Storage Interface (CSI) drivers for files to mount a Server Message Block (SMB) or NFS shares when multiple nodes need concurrent access to the same storage volume in AKS enabled by Azure Arc.
 
@@ -29,19 +29,23 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ### Use SMB drivers
 
-1. Make sure the SMB driver is deployed.
-      1. For AKS on Azure Stack HCI 23H2, the SMB CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command.
-         If you create a Kubernetes cluster by using `--disable-smb-driver`, you must enable the SMB driver on this cluster using the `az aksarc update` command:
-         
-         ```azurecli
-         az aksarc update -n $aksclustername -g $resource_group --enable-smb-driver
-         ```
-         
-      3. For AKS on Azure Stack HCI 22H2, deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
+### [AKS on Azure Stack HCI 23H2](#tab/23H2)
 
-         ```powershell
-         Install-AksHciCsiSmb -clusterName mycluster
-         ```
+1. Make sure the SMB driver is deployed. The SMB CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command. If you create a Kubernetes cluster by using `--disable-smb-driver`, you must enable the SMB driver on this cluster using the `az aksarc update` command:
+
+      ```azurecli
+      az aksarc update -n $aksclustername -g $resource_group --enable-smb-driver
+      ```
+
+### [AKS on Azure Stack HCI 22H2 and Windows Server](#tab/22H2)
+
+1. Make sure the SMB driver is deployed. Deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command:
+
+      ```powershell
+      Install-AksHciCsiSmb -clusterName mycluster
+      ```
+
+---
 
 2. Create Kubernetes secrets to store the credentials required to access SMB shares by running the following command:
 
@@ -72,19 +76,23 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ### Use NFS drivers
 
-1. Make sure the NFS driver is deployed.
-      1. For AKS on Azure Stack HCI 23H2, the NFS CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command.
-         If you create a Kubernetes cluster by using `--disable-nfs-driver`, you must enable the the NFS driver on this cluster using the `az aksarc update` command:
-         
-         ```azurecli
-         az aksarc update -n $aksclustername -g $resource_group --enable-nfs-driver
-         ```
-         
-      3. For AKS on Azure Stack HCI 22H2, deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command: 
+### [AKS on Azure Stack HCI 23H2](#tab/23H2)
 
-         ```powershell
-         Install-AksHciCsiNfs -clusterName mycluster
-         ```
+1. Make sure the NFS driver is deployed. The NFS CSI driver is installed by default when you create a Kubernetes cluster using the Azure portal or the `az aksarc create` command. If you create a Kubernetes cluster by using `--disable-nfs-driver`, you must enable the the NFS driver on this cluster using the `az aksarc update` command:
+
+   ```azurecli
+   az aksarc update -n $aksclustername -g $resource_group --enable-nfs-driver
+   ```
+
+### [AKS on Azure Stack HCI 22H2 and Windows Server](#tab/22H2)
+
+1. Deploy the driver using the following [Install-AksHciCsiSmb](./reference/ps/install-akshcicsismb.md) PowerShell command:
+
+   ```powershell
+   Install-AksHciCsiNfs -clusterName mycluster
+   ```
+
+---
 
 2. Create an NFS storage class using the following manifest:
 
@@ -106,19 +114,25 @@ If multiple nodes need concurrent access to the same storage volumes in AKS Arc,
 
 ### To uninstall SMB or NFS drivers
 
-For AKS on Azure Stack HCI 23H2, use the following Azure CLI commands to uninstall either the SMB or NFS drivers: 
+### [AKS on Azure Stack HCI 23H2](#tab/23H2)
+
+Use the following Azure CLI commands to uninstall either the SMB or NFS drivers:
 
 ```azurecli
 az aksarc update -n $aksclustername -g $resource_group --disable-smb-driver
 az aksarc update -n $aksclustername -g $resource_group --disable-nfs-driver
 ```
 
-For AKS-HCI on Azure Stack HCI 22H2, use the following PowerShell commands to uninstall either the SMB or NFS drivers:
+### [AKS on Azure Stack HCI 22H2 and Windows Server](#tab/22H2)
+
+Use the following PowerShell commands to uninstall either the SMB or NFS drivers:
 
 ```powershell
 Uninstall-AksHciCsiSMB -clusterName <clustername>
 Uninstall-AksHciCsiNFS -clusterName <clustername>
 ```
+
+---
 
 ## Next steps
 

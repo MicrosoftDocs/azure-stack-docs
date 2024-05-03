@@ -1,12 +1,12 @@
 ---
-title: Azure Stack HCI, version 22 H2 release information
-description: his article provides the release information for Azure Stack HCI, version 22H2.
+title: Azure Stack HCI, version 22H2 release information
+description: This article provides the release information for Azure Stack HCI, version 22H2.
 author: jasongerend
 ms.author: jgerend
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 04/08/2024
 ---
 
 # Azure Stack HCI, version 22H2 release information
@@ -25,6 +25,9 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 | **OS build** | **Availability date** | **KB article** |
 |:-|:-|:-|
+| 20349.2402 | 2024-04-09 | [KB 5036909](https://support.microsoft.com/topic/0e07bb7f-e3bc-417f-b20a-bbbfc7fd353b) |
+| 20349.2340 | 2024-03-12 | [KB 5035857](https://support.microsoft.com/topic/377e715c-d0ff-4099-883c-4da5fb73a020) |
+| 20349.2322 | 2024-02-13 | [KB 5034770](https://support.microsoft.com/topic/80671395-9f9c-4efa-8a8a-ccc0bd06e41e) |
 | 20349.2227 | 2024-01-09 | [KB 5034129](https://support.microsoft.com/topic/41c9d33a-acaa-4693-add9-de0318f95238) |
 | 20349.2159 | 2023-12-12 | [KB 5033118](https://support.microsoft.com/topic/a4163954-95bd-4db1-b77e-ccaaf8082651) |
 | 20349.2113 | 2023-11-14 | [KB 5032198](https://support.microsoft.com/topic/43b510ae-28a3-496a-bea5-ba061c95cd54) |

@@ -4,7 +4,7 @@ description: Understanding Storage Spaces Direct diagnostic data collection tool
 ms.author: sethm
 ms.topic: article
 author: sethmanheim
-ms.date: 04/17/2023
+ms.date: 02/26/2024
 ---
 # Collect diagnostic data for clusters
 
@@ -26,15 +26,15 @@ To install SDDC diagnostic tools and begin collecting data, follow these steps:
 
 1. Launch Windows Admin Center and select **Tools > Diagnostics**. If diagnostics tools are not already installed, click the **Install** button.
    
-   :::image type="content" source="media/data-collection/install-diagnostic-tools.png" alt-text="Click Install to install SDDC diagnostic tools." lightbox="media/data-collection/install-diagnostic-tools.png":::
+   :::image type="content" source="media/collect-diagnostic-data/install-diagnostic-tools.png" alt-text="Click Install to install SDDC diagnostic tools." lightbox="media/collect-diagnostic-data/install-diagnostic-tools.png":::
    
 2. To begin collecting diagnostic data, click **Collect**. You should see a message that says "Collecting diagnostic information. This may take a few minutes." After the initial data collection, if you want to automatically collect data every 24 hours, change the slider to **On**.
    
-   :::image type="content" source="media/data-collection/collect-diagnostic-data.png" alt-text="Click Collect to being collecting diagnostic data." lightbox="media/data-collection/collect-diagnostic-data.png":::
+   :::image type="content" source="media/collect-diagnostic-data/collect-diagnostic-data.png" alt-text="Click Collect to being collecting diagnostic data." lightbox="media/collect-diagnostic-data/collect-diagnostic-data.png":::
    
 3. Data collection is not complete until you see the screenshot below. To view collected diagnostic information, choose **Download (.zip)** or **Open in Files tool**.
    
-   :::image type="content" source="media/data-collection/view-diagnostic-information.png" alt-text="To view diagnostic information, you can either download a .zip file or open in Files tool." lightbox="media/data-collection/view-diagnostic-information.png":::
+   :::image type="content" source="media/collect-diagnostic-data/view-diagnostic-information.png" alt-text="To view diagnostic information, you can either download a .zip file or open in Files tool." lightbox="media/collect-diagnostic-data/view-diagnostic-information.png":::
    
 ## Installing Get-SDDCDiagnosticInfo with PowerShell
 
@@ -132,15 +132,15 @@ Get-SddcDiagnosticInfo -ClusterName S2D-Cluster -WriteToPath d:\SDDCDiagTemp
 
 As you can see, the script will also do validation of current cluster state:
 
-![data collection powershell screenshot](media/data-collection/collect-data.png)
+:::image type="content" source="media/collect-diagnostic-data/collect-data.png" alt-text="Data collection PowerShell screenshot." lightbox="media/collect-diagnostic-data/collect-data.png":::
 
 All data is being written to SDDCDiagTemp folder:
 
-![data in file explorer screenshot](media/data-collection/collect-data-folder.png)
+:::image type="content" source="media/collect-diagnostic-data/collect-data-folder.png" alt-text="Data in File Explorer screenshot." lightbox="media/collect-diagnostic-data/collect-data-folder.png":::
 
 After the script finishes, it will create a ZIP in your user directory:
 
-![data zip in powershell screenshot](media/data-collection/collect-data-result.png)
+:::image type="content" source="media/collect-diagnostic-data/collect-data-result.png" alt-text="Data zip in PowerShell screenshot." lightbox="media/collect-diagnostic-data/collect-data-result.png":::
 
 Let's generate a report into a text file:
 

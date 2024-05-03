@@ -70,7 +70,7 @@ docker-compose up --build -d
 
 To verify that the updated container image shows your changes, open a local web browser to `http://localhost:8080`.
 
-:::image type="content" source="media/vote-app-updated.png" alt-text="Screenshot showing an example of the updated container image Azure Voting App running locally opened in a local web browser":::
+:::image type="content" source="media/tutorial-kubernetes-app-update/vote-app-updated.png" alt-text="Screenshot showing an example of the updated container image Azure Voting App running locally opened in a local web browser" lightbox="media/tutorial-kubernetes-app-update/vote-app-updated.png":::
 
 The updated values provided in **config_file.cfg** are displayed in your running application.
 
@@ -151,7 +151,7 @@ kubectl get service azure-vote-front
 
 Next, open a web browser to the IP address of your service:
 
-:::image type="content" source="media/vote-app-updated-external.png" alt-text="Screenshot showing an example of the updated image Azure Voting App running in a Kubernetes cluster opened in a local web browser.":::
+:::image type="content" source="media/tutorial-kubernetes-app-update/vote-app-updated-external.png" alt-text="Screenshot showing an example of the updated image Azure Voting App running in a Kubernetes cluster opened in a local web browser." lightbox="media/tutorial-kubernetes-app-update/vote-app-updated-external.png":::
 
 ## Next steps
 

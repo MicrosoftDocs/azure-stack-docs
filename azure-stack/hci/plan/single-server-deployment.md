@@ -2,17 +2,17 @@
 title: Azure Stack HCI single node storage deployment network reference pattern
 description: Plan to deploy an Azure Stack HCI single-server storage network reference pattern.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 04/23/2024
 ---
 
 # Review single-server storage deployment network reference pattern for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
 In this article, you'll learn about the single-server storage network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
@@ -36,6 +36,9 @@ Although Software Defined Networking (SDN) Layer 3 (L3) services are fully suppo
 
 Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
 
+> [!NOTE]
+> Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
+
 ## Physical connectivity components
 
 As illustrated in the diagram below, this pattern has the following physical network components:
@@ -51,7 +54,7 @@ The following table lists some guidelines for a single-server deployment:
 
 |Network|Management & compute|Storage|BMC|
 |--|--|--|--|
-|Link speed|At least 1 Gbps; 10 Gbps recommended.|At least 1 Gbps; 10 GBps recommended.|Check with hardware manufacturer.|
+|Link speed|At least 1Gbps if RDMA is disabled, 10Gbps recommended.|At least 10Gbps.|Check with hardware manufacturer.|
 |Interface type|RJ45, SFP+, or SFP28|SFP+ or SFP28|RJ45|
 |Ports and aggregation|Two teamed ports|Optional to allow adding a second server; disconnected ports.|One port|
 |RDMA|Optional. Depends on requirements for guest RDMA and NIC support.|N/A|N/A|
