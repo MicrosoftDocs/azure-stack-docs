@@ -14,7 +14,7 @@ summary: |
   The Azure Stack HCI FAQ provides information on the Azure Stack HCI OEM license and billing.
 
 sections:
-  - name: Azure Stack HCI FAQ - license and billing
+  - name: Azure Stack HCI FAQ license and billing
     questions:
 
       - question: How can I purchase this license?
