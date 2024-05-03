@@ -67,7 +67,7 @@ For support with your Azure Stack HCI OEM license first contact your OEM vendor.
 
 ## Licensing Windows Server guest VMs on Azure Stack HCI
 
-You can activate Windows Server VMs on an Azure Stack HCI cluster using generic AVMA client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](../hci/manage/vm-activate.md#activate-bring-your-own-license-byol-through-avma)
+You can activate Windows Server VMs on an Azure Stack HCI cluster using generic AVMA client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](../hci/manage/vm-activate.md#activate-bring-your-own-license-byol-through-avma).
 
 ## Licensing Azure Kubernetes Service (AKS) on Azure Stack HCI
 
@@ -75,7 +75,7 @@ For information on activating AKS, see [Azure Kubernetes Service on Azure Stack 
 
 ## Mixed-node scenarios
 
-When a cluster or system incorporates different server types or billing models this is known as a mixed-node scenario. If your cluster includes a mixed-node scenario, a notificaation in your monthly billing status details appears.
+When a cluster or system uses different server types or billing models this is known as a mixed-node scenario. If your cluster includes a mixed-node scenario, a notificaation in your monthly billing status details appears.
 
 :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
