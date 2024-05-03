@@ -5,8 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
-ms.lastreviewed: 01/19/2024
-ms.date: 01/19/2024
+ms.date: 05/03/2024
 ---
 
 # Solution Builder Extension updates for your Azure Stack HCI, version 23H2
@@ -60,7 +59,7 @@ If your hardware doesn't support hardware updates using SBE packages or Windows 
 | Dell Technologies | 15G (AX-750, AX-650, AX-7525, … AX-*50) | SBE  | [AzureStackSBEUpdate/DellEMC](https://aka.ms/AzureStackSBEUpdate/DellEMC) |
 | Dell Technologies | Dell APEX Cloud Platform (MC-760, MC-660) | SBE | [AzureStackSBEUpdate/DellEMC](https://aka.ms/AzureStackSBEUpdate/DellEMC) |
 |Fujitsu  |     | Update per hardware vendor docs |                       |
-| HPE | All | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/hpe.hci.snap-in/overview/1.3.0) | [Microsoft Windows Admin Center Extensions](https://www.hpe.com/us/en/alliance/microsoft/ws-admin-center.html) |
+| Hewlett Packard Enterprise | All | SBE and [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/hpe.hci.snap-in/overview/1.3.0) | 1. Install [SBE](https://myenterpriselicense.hpe.com/cwp-ui/product-details/SBE_UPDATES/4.1.2403.2/sw_free). </br><br> 2. Install hardware updates via [Windows Admin Center](https://www.hpe.com/us/en/alliance/microsoft/ws-admin-center.html). |
 | Lenovo | ThinkAgile MX-* Premier Solutions and Integrated Systems | SBE | [AzureStackSBEUpdate/Lenovo](https://aka.ms/AzureStackSBEUpdate/Lenovo) |
 | Lenovo | Other Lenovo Validated Nodes  | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) |
 
