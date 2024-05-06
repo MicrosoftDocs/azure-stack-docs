@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 05/06/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
@@ -104,6 +104,21 @@ Follow these steps to verify that the Managed Identity is not created for this V
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
 
+### Failure deploying an Arc VM
+
+You see the following error when trying to deploy an Arc VM on your Azure Stack HCI cluster:
+
+**Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
+
+The above failure is because the `SystemAssigned` managed identity object is not under the `Microsoft.HybridCompute/machines` resource type.
+
+**Resolution:**  
+
+Verify in your deployment template that:
+
+The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type. 
+
+The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Stack HCI](./create-arc-virtual-machines.md).
 
 ### Azure CLI installation isn't recognized
 
