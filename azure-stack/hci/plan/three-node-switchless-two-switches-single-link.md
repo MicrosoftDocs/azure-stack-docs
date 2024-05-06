@@ -66,7 +66,7 @@ When deploying a three-node switchless configuration, Network ATC has the follow
 
 - In Azure Stack HCI 23H2 cloud deployments, it's only possible to deploy this scenario using ARM templates. For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
 
-For more information, see [Network ATC overview](/concepts/network-atc-overview.md).
+For more information, see [Network ATC overview](../concepts/network-atc-overview.md).
 
 ### Management VLAN
 
