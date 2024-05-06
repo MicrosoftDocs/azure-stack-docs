@@ -11,7 +11,7 @@ ms.date: 05/03/2024
 
 ---
 
-# Solution Builder Extension updates for your Azure Stack HCI.
+# Solution Builder Extension updates for your Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
