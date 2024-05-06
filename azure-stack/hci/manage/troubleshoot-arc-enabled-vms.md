@@ -114,11 +114,11 @@ The above failure is because the `SystemAssigned` managed identity object is not
 
 **Resolution:**  
 
-Make sure to verify that in your deployment template:
+Verify in your deployment template that:
 
-The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
+The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type. 
 
-For more information, see the sample template in [Create Arc virtual machines on Azure Stack HCI](./create-arc-virtual-machines.md).
+The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Stack HCI](./create-arc-virtual-machines.md).
 
 ### Azure CLI installation isn't recognized
 
