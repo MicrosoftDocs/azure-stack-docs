@@ -41,14 +41,14 @@ In addition to installing hardware updates, Solution Builder extensions may impl
 
 ## Identify an SBE update for your hardware
 
-With Azure Stack HCI, version 23H2, all hardware added to the Azure Stack HCI catalog as an integrated system or premier solution is required to implement a SBE that supports firmware and driver updates. Microsoft recommends purchasing newer integrated systems and premier solutions to take advantage of the full solution, update at-scale, capabilities that are enabled through the SBE.
+With Azure Stack HCI, version 23H2, all hardware added to the Azure Stack HCI catalog as an Integrated System or Premier Solution is required to implement a SBE that supports firmware and driver updates. Microsoft recommends purchasing newer Integrated Systems and Premier Solutions to take advantage of the full solution, update at-scale, capabilities that are enabled through the SBE.
 
 > [!NOTE]
 > A SBE might not be implemented for your hardware if:
 >
 > - It was added to the Azure Stack HCI catalog before Azure Stack HCI, version 23H2.
 >
-> - Your hardware was purchased as a validated node.
+> - Your hardware was purchased as a Validated Node.
 >
 > Consult with your hardware vendor’s Azure Stack HCI documentation to determine if your server model supports a Solution Builder Extension.
 
@@ -59,14 +59,14 @@ If your hardware doesn't support hardware updates using SBE packages or Windows 
 | Solution Builder (server hardware vendor) | Platform series/generation | Hardware Update Method  | For more information  |
 |-----------------|------------------|---------------|-------------------|
 | DataON   | Models starting with S2D7 and AZS7   | SBE | [Must Stay Up to Date - DataON](https://www.dataonstorage.com/dataon-must/must-stay-up-to-date/)                   |
-| DataON  | Other Integrated Systems and Validated nodes (not previously listed)    | SBE    | [AzureStackSBEUpdate - DataON](https://aka.ms/AzureStackSBEUpdate/DataON) |
+| DataON  | Other Integrated Systems and Validated Nodes (not previously listed)    | SBE    | [AzureStackSBEUpdate - DataON](https://aka.ms/AzureStackSBEUpdate/DataON) |
 | Dell Technologies  | Premier Solutions: </br><br> MC-660, MC-760 | APEX Cloud Platform Hardware Updates (SBE) | [Check here for the Support Matrix of Dell APEX Cloud Platform for Microsoft Azure:](https://dl.dell.com/content/manual34666301-dell-apex-cloud-platform-for-microsoft-azure-support-matrix.pdf) |
 | Dell Technologies | 15G Integrated Systems - Clusters running Azure Stack OS 23H2:</br><br> AX-650, AX-750, AX-6515, AX-7525 | SBE (once available)  | [Check here for SBE availability and information:](https://www.dell.com/support/kbdoc/en-us/000224407) |
 | Dell Technologies | 15G Integrated Systems - Clusters running Azure Stack OS 23H2:</br><br> AX-650, AX-750, AX-6515, AX-7525 | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0)  | [Full Stack Cluster-Aware Updating for Azure Stack HCI clusters using the OpenManage Integration snap-in](https://infohub.delltechnologies.com/en-us/l/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/full-stack-cluster-aware-updating-for-azure-stack-hci-clusters-using-the-openmanage-integration-snap-in-34/) |
 | Dell Technologies | 14G Integrated Systems Clusters running Azure Stack OS 22H2:</br><br> AX-740xd, AX-640 | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/dell-emc.openmanage-integration/overview/3.2.0) | [Full Stack Cluster-Aware Updating for Azure Stack HCI clusters using the OpenManage Integration snap-in](https://infohub.delltechnologies.com/en-us/l/e2e-deployment-and-operations-guide-cluster-creation-using-windows-admin-center-wac-1/full-stack-cluster-aware-updating-for-azure-stack-hci-clusters-using-the-openmanage-integration-snap-in-34/) |
 | Hewlett Packard Enterprise | All | SBE and [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/hpe.hci.snap-in/overview/1.3.0) | 1. Install [SBE](https://www.hpe.com/info/ASHCI-SBE). </br><br> 2. Install hardware updates via [Windows Admin Center](https://www.hpe.com/us/en/alliance/microsoft/ws-admin-center.html). |
 | Lenovo | Premier Solutions and specific Integrated Systems:</br><br> MX455v3, MX450v2 | SBE | [AzureStackSBEUpdate - Lenovo](https://aka.ms/AzureStackSBEUpdate/Lenovo) |
-| Lenovo | Other Integrated Systems and Validated nodes (not previously listed)  | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) |
+| Lenovo | Other Integrated Systems and Validated Nodes (not previously listed)  | [Windows Admin Center Extension](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) | [Lenovo XClarity Integrator for Microsoft Windows Admin Center](https://dev.azure.com/WindowsAdminCenter/Windows%20Admin%20Center%20Feed/_artifacts/feed/WAC/NuGet/lnvgy_sw_xclarity_integrator_for_wac/overview/4.5.1) |
 
 ## Discover SBE Updates
 
