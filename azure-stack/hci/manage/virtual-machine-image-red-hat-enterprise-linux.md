@@ -1,5 +1,5 @@
 ---
-title: Use a Red Hat Enterprise Linux image for Azure Stack HCI VM
+title: Prepare a Red Hat Enterprise Linux image for Azure Stack HCI VM
 description: Learn how to prepare images using Red Hat Enterprise Linux to create an Azure Stack HCI VM image.
 author: ronmiab
 ms.author: robess
@@ -41,7 +41,7 @@ The next sections provide detailed instructions for each step in the workflow.
 
 Use Azure CLI to create a VM image on your Azure Stack HCI cluster following these steps:
 
-### Step 1: Prepare the VM
+### Step 1: Create a Red Hat Enterprise VM
 
 Use the downloaded Red Hat Enterprise image to create a VM following these steps:
 
@@ -55,19 +55,27 @@ Use the downloaded Red Hat Enterprise image to create a VM following these steps
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png":::
 
-    3. Select Install operating system from a bootable image option. Point to ISO that you downloaded earlier.
+    3. Assign the necessary amount of memory. To improve performance, specify more than the minimum amount recommended for the operating system.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png":::
 
-    4. Review the installation summary
+    4. Select Install operating system from a bootable image option. Point to the ISO that you downloaded earlier.
+
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png" alt-text="Screenshot of the OS Installation Options screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png":::
+
+        See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
+
+    5. Review the installation summary
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png" alt-text="Screenshot of the New virtual machine wizard on Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png":::
 
-    5. Verify the Ethernet connection is on and the host name is correct.
+    6. Verify the Ethernet connection is on and the host name is correct.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png" alt-text="Screenshot of the New virtual machine wizard on Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png":::
 
-2. Register Red Hat Enterprise, and install the OS:
+### Step 2: Register Red Hat Enterprise and install the OS
+
+Use Azure CLI to register Red Hat Enteprise and install the OS folling these steps:
 
     1. Sign into the VM.
 
@@ -113,13 +121,13 @@ Use the downloaded Red Hat Enterprise image to create a VM following these steps
         cloud-init --version
         ```
 
-### Step 2: Configure the VM
+### Step 3: Configure the VM
 
 Configure the VM that you provisioned earlier following these steps on your Azure Stack HCI cluster:
 
 <!--add content here-->
 
-### Step 3: Clean up residual configuration
+### Step 4: Clean up residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
@@ -149,6 +157,6 @@ Delete machine-specific files and data from your VM so that you can create a cle
     logout
     ```
 
-### Step 4: Create the VHD and deploy the VM
+### Step 5: Create the VHD and deploy the VM
 
 <!--what content is needed following this, I can't determine based on the one note.-->
