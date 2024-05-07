@@ -16,7 +16,7 @@ ms.date: 04/02/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare a Red Hat Enterprise image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
+This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
 
 ## Prerequisites
 
