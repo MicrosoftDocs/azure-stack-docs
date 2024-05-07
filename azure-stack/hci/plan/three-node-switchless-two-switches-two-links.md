@@ -124,12 +124,12 @@ For three-node storage switchless patterns, two Network ATC intents are created.
 - Storage Auto IP: False. This pattern requires manual IP configuration or ARM template IP definition.
 
 - Six subnets required (user defined):
-    - Storage Network 1: 10.0.1.0/24 – Node 1 -> Node 2
-    - Storage Network 2: 10.0.2.0/24 – Node 1 -> Node 2
-    - Storage Network 3: 10.0.3.0/24 – Node 2 -> Node 3
-    - Storage Network 4: 10.0.4.0/24 – Node 1 -> Node 3
-    - Storage Network 5: 10.0.5.0/24 – Node 1 -> Node 3
-    - Storage Network 6: 10.0.6.0/24 – Node 2 -> Node 3
+    - Storage Network 1: 10.0.1.0/24 – `Node1 -> Node2`
+    - Storage Network 2: 10.0.2.0/24 – `Node1 -> Node2`
+    - Storage Network 3: 10.0.3.0/24 – `Node2 -> Node3`
+    - Storage Network 4: 10.0.4.0/24 – `Node1 -> Node3`
+    - Storage Network 5: 10.0.5.0/24 – `Node1 -> Node3`
+    - Storage Network 6: 10.0.6.0/24 – `Node2 -> Node3`
 
 For more information, see [Deploy host networking with Network ATC](../deploy/network-atc.md).
 
