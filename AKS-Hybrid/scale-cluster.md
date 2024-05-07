@@ -36,5 +36,5 @@ Set-AksHciNodePool -clustername mycluster -name linuxnodepool -count 3
 
 In this article, you learned how to manually scale a Kubernetes cluster to increase or decrease the number of control plane nodes and worker nodes. Next, you can:
 
-- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

@@ -7,7 +7,7 @@ ms.date: 01/10/2023
 ms.author: rbaziwane 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: rbaziwane
-# Intent: As an IT Pro, I need to learn how to restore AKS hybrid following a disaster.
+# Intent: As an IT Pro, I need to learn how to restore AKS Arc following a disaster.
 # Keyword: Disaster Recovery
 ---
 
@@ -15,7 +15,7 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [aks-hybrid-applies-to-azure-stack-hci-windows-server-sku](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In AKS on Azure Stack HCI or Windows Server, the management cluster is deployed as a single standalone virtual machine (VM) per deployment, making it a single point of failure. It's important to note that a management cluster outage has no impact on applications running in the workload clusters. When the management cluster VM fails, the workload clusters (and workloads) continue running, but you can't perform day-2 operations. For example, you cannot create new workload clusters, create or scale a node pool, or upgrade Kubernetes versions, until the VM is restored.
+In AKS on Azure Stack HCI or Windows Server, the management cluster is deployed as a single standalone virtual machine (VM) per deployment, making it a single point of failure. It's important to note that a management cluster outage has no impact on applications running in the workload clusters. When the management cluster VM fails, the workload clusters (and workloads) continue running, but you can't perform day-2 operations. For example, you can't create new workload clusters, create or scale a node pool, or upgrade Kubernetes versions, until the VM is restored.
 
 The management cluster is a VM that's tracked in Windows failover clustering. It's also resilient to host-level disruptions. In other words, during a host machine failure, Windows failover clustering restarts the VM on a healthy host machine. This article provides guidance on how to perform the following tasks:
 
@@ -50,7 +50,7 @@ Recovering from a management cluster corruption requires uninstalling AKS and re
 The following prerequisites are required:
 
 - Workload cluster backups: [Back up, restore workload clusters using Velero](/azure/aks/hybrid/backup-workload-cluster#use-velero-to-create-a-workload-cluster-backup).
-- Backup of AKS configuration for previous networking, storage, and cluster settings. Cluster settings include sizes and counts of control plane, load balancer and worker node VMs. For example, if your old cluster had 3 **Standard_A2_V2** control plane VMs, you must create 3 control plane VMs in the new environment.
+- Backup of AKS configuration for previous networking, storage, and cluster settings. Cluster settings include sizes and counts of control plane, load balancer, and worker node VMs. For example, if your old cluster had 3 **Standard_A2_V2** control plane VMs, you must create 3 control plane VMs in the new environment.
 
 To recover from management cluster corruption, perform the following steps:
 
@@ -67,9 +67,9 @@ To recover from management cluster corruption, perform the following steps:
 
 ### What resiliency is built into the management cluster?
 
-Each AKS deployment includes a management cluster that is a single standalone VM. For resiliency and high availability, AKS relies on windows failover clustering to recover the VM in the event of a disruption.
+Each AKS deployment includes a management cluster that is a single standalone VM. For resiliency and high availability, AKS relies on windows failover clustering to recover the VM if a disruption occurs.
 
-Note that a management cluster outage has no impact on applications running in workload clusters. When the management cluster VM goes down, this impacts your ability to perform AKS Day 2 operations, such as create new workload clusters, create or scale node pools, upgrade Kubernetes versions, etc., until the VM is recovered. In cases where you are unable to recover from a management cluster failure, we recommend contacting Microsoft Support.
+A management cluster outage has no impact on applications running in workload clusters. When the management cluster VM goes down, this impacts your ability to perform AKS Day 2 operations, such as create new workload clusters, create or scale node pools, upgrade Kubernetes versions, etc., until the VM is recovered. In cases where you're unable to recover from a management cluster failure, we recommend contacting Microsoft Support.
 
 ### What's included in a Velero backup?  
 
@@ -86,7 +86,7 @@ Note that a management cluster outage has no impact on applications running in w
 
 ### What's not included in Velero backups?
 
-The Velero backup does not include the following:
+The Velero backup doesn't include the following items:
 
 - Management cluster (AKS) configuration
 - Control plane VM (API server) metadata  

@@ -8,7 +8,7 @@ ms.author: sethm
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
 
-# Intent: As a developer, I want to deploy a container image from a private container registry to AKS hybrid.
+# Intent: As a developer, I want to deploy a container image from a private container registry to AKS enabled by Arc.
 # Keyword: private container registry Kubernetes on-premises
 ---
 
@@ -179,6 +179,6 @@ To confirm that the pod was successfully created using the container image from 
 
 In this article, you learned how to deploy a container image from the Azure Container Registry to AKS Arc. Next, you can:
 
-- [Create and manage multiple node pools for a cluster](./use-node-pools.md)
+- [Create and manage node pools for a cluster](./manage-node-pools-22h2.md)
 - [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

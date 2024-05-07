@@ -20,10 +20,13 @@ This article describes the requirements for the host machine that runs AKS Edge 
   | Total physical memory | 4 GB with at least 2.5 GB free | 8 GB with at least 4.5 GB free  |
   | CPU | 2 vCPUs, clock speed at least 1.8 GHz |4 vCPUs, clock speed at least 1.8 GHz|
   | Disk space | At least 14 GB free |At least 14 GB free |
+  | Disk type| SSD | SSD |
 
 To better understand the concept of vCPUs, [see this article](https://social.technet.microsoft.com/wiki/contents/articles/1234.hyper-v-concepts-vcpu-virtual-processor-q-a.aspx).
 
-You can run AKS Edge Essentials in an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization such as the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines.
+To better understand the etcd hardware recommendations, [see this article](https://etcd.io/docs/v3.5/op-guide/hardware/).
+
+You can run AKS Edge Essentials in an Azure VM. You can create a Windows VM with either Windows 10/11 IoT Enterprise/Enterprise/Pro and Windows Server 2019, 2022 SKU, on a VM image that supports nested virtualization such as the [Dv5 and Dsv5-series](/azure/virtual-machines/dv5-dsv5-series) virtual machines. When using an Azure VM, a premium SSD is required, per the [Azure Virtual Machine documentation](/azure/virtual-machines/disks-types#disk-type-comparison). 
 
 You can also run AKS EE in a virtual machine on VMware and Hyper-V as described [here.](./aks-edge-howto-setup-nested-environment.md)
 

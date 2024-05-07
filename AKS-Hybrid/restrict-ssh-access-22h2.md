@@ -94,4 +94,4 @@ Get-AksHciLogs –virtualMachineLogs
 ## Next steps
 
 - [Restrict SSH access (AKS on Azure Stack HCI 23H2)](restrict-ssh-access.md)
-- [AKS enabled by Arc overview](aks-overview.md)
+- [AKS on Windows Server overview](aks-overview.md)

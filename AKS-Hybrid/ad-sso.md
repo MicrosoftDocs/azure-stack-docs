@@ -19,7 +19,7 @@ ms.reviewer: sulahiri
 
 You can create a secure connection to your Kubernetes API server in AKS enabled by Arc using Active Directory (AD) single sign-on (SSO) credentials.
 
-## Overview of AD in AKS hybrid
+## Overview of AD in AKS enabled by Arc
 
 Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The kubeconfig file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
@@ -318,5 +318,5 @@ If you see certificate validation errors, complete the steps to [uninstall and r
 
 In this how-to guide, you learned how to configure AD Authentication to securely connect to the API server with SSO credentials. Next, you can:
 
-- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

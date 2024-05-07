@@ -7,7 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/14/2024
+ms.date: 04/23/2024
 ---
 
 # Review single-server storage deployment network reference pattern for Azure Stack HCI
@@ -35,6 +35,9 @@ Use the single-server storage pattern in the following scenarios:
 Although Software Defined Networking (SDN) Layer 3 (L3) services are fully supported on this pattern, routing services such as Border Gateway Protocol (BGP) may need to be configured for the firewall device on the top-of-rack (TOR) switch.
 
 Network security features such as microsegmentation and Quality of Service (QoS) don't require extra configuration for the firewall device, as they're implemented at the virtual network adapter layer. For more information, see [Microsegmentation with Azure Stack HCI](https://techcommunity.microsoft.com/t5/azure-stack-blog/microsegmentation-with-azure-stack-hci/ba-p/2276339).
+
+> [!NOTE]
+> Single servers must use only a single drive type: Non-volatile Memory Express (NVMe) or Solid-State (SSD) drives.
 
 ## Physical connectivity components
 

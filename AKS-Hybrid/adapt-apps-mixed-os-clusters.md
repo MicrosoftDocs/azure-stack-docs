@@ -18,11 +18,11 @@ ms.reviewer: abha
 
 AKS enabled by Azure Arc enables you to run Kubernetes clusters with both Linux and Windows nodes, but you must make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you learn how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
-This article assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
+This article assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Arc](kubernetes-concepts.md).
 
 ## Node selectors
 
-A *Node Selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector`: Windows or Linux, as shown in the following examples:
+A *node selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` value of Windows or Linux, as shown in the following examples:
 
 ```yml
 kubernetes.io/os = Windows
@@ -112,5 +112,5 @@ For more information about taints and tolerations, see [Taints and Tolerations](
 
 In this how-to guide, you learned how to add node selectors or taints and tolerations to your Kubernetes clusters using kubectl. Next, you can:
 
-- [Deploy a Linux applications on a Kubernetes cluster](deploy-linux-application.md)
+- [Deploy a Linux application on a Kubernetes cluster](deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](deploy-windows-application.md)
