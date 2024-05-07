@@ -16,25 +16,62 @@ ms.date: 01/26/2024
 
 # Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
 
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
+[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)], AKS on Azure Stack HCI 23H2
 
 Azure Kubernetes Service (AKS) can be configured to use Microsoft Entra ID for user authentication. In this configuration, you sign in to a Kubernetes cluster using a Microsoft Entra authentication token. Once authenticated, you can use the built-in Kubernetes role-based access control (Kubernetes RBAC) to manage access to namespaces and cluster resources based on a user's identity or group membership.
 
 This article describes how to control access using Kubernetes RBAC in a Kubernetes cluster based on Microsoft Entra group membership in AKS Arc. You create a demo group and users in Microsoft Entra ID. Then, you create roles and role bindings in the cluster to grant the appropriate permissions to create and view resources.
 
+
+
 ## Prerequisites
 
-Before you set up Kubernetes RBAC using Microsoft Entra identity, you need:
+Before you set up Kubernetes RBAC using Microsoft Enterprise identity, you need to have:
+
+1. A Kubernetes cluster created in AKS Arc.
+2. An Azure Arc connection.
+3. Access to the required module and command-line module installed to perform.
+
+
+
+### [AKS on Azure Stack HCI 23H2](#tab/23H2)
 
 - **A Kubernetes cluster created in AKS Arc**
 
-    You need a Kubernetes cluster created in AKS Arc. If you need to set up your cluster, you can find instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS.
+  You need a Kubernetes cluster created in AKS Arc. If you need to set up your cluster, you can find instructions for using [Azure Portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md) to deploy AKS.
 
 - **Azure Arc connection**
 
-    You must have an Azure Arc connection to your Kubernetes cluster. For information about enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
+  AKS on Azure Stack HCI 23H2 is connected with Azure Arc by default.
 
-- You need access to the following command line tools:
+- **Access to the required module and command-line module installed to perform.**
+
+  - **Azure CLI and the connectedk8s extension**
+
+    The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`. Also, you'll need to install the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) in order to open a channel to your Kubernetes cluster.
+
+    For installation instructions, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
+
+
+  - **Kubectl**
+
+    The Kubernetes command-line tool, kubectl, allows you to run commands targeting your Kubernetes clusters. To check whether you have installed kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`.
+
+    For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
+
+    
+
+### [AKS on Azure Stack HCI 22H2](#tab/22H2)
+
+- **A Kubernetes cluster created in AKS Arc**
+
+  You need a Kubernetes cluster created in AKS Arc. If you need to set up your cluster, you can find instructions for using [Windows Admin Center](setup.md) or [PowerShell](kubernetes-walkthrough-powershell.md) to deploy AKS.
+
+- **Azure Arc connection**
+
+  You must have an Azure Arc connection to your Kubernetes cluster. For information about enabling Azure Arc, see [Connect an Azure Kubernetes Service on Azure Stack HCI cluster to Azure Arc-enabled Kubernetes](connect-to-arc.md).
+
+- **Access to the required module and command-line module installed to perform.**
 
   - **Azure CLI and the connectedk8s extension**
 
@@ -51,6 +88,8 @@ Before you set up Kubernetes RBAC using Microsoft Entra identity, you need:
   - **PowerShell and the AksHci PowerShell module**
 
     PowerShell is a cross-platform task automation solution made up of a command-line shell, a scripting language, and a configuration management framework. If you have installed AKS Arc, you have access to the AksHci PowerShell module.
+
+
 
 ## Optional first steps
 
@@ -82,9 +121,103 @@ az ad group member add --group appdev --member-id $AKSDEV_ID
 
 <a name='create-a-custom-kubernetes-rbac-role-binding-on-the-aks-cluster-resource-for-the-azure-ad-group'></a>
 
+
+
 ## Create a custom Kubernetes RBAC role binding on the AKS cluster resource for the Microsoft Entra group
 
 Configure the AKS cluster to allow your Microsoft Entra group to access the cluster. If you want to add a group and users, see [Create demo groups in Microsoft Entra ID](#create-a-demo-group-in-azure-ad).
+
+### [AKS on Azure Stack HCI 23H2](#tab/23H2)
+
+1. Get the cluster admin credentials using the [az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials) command:
+
+   ```Azure CLI
+   az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin
+   ```
+
+2. Create a namespace in the Kubernetes cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
+
+   ```bash  
+   kubectl create namespace dev
+   ```
+
+   In Kubernetes, **Roles** define the permissions to grant, and **RoleBindings** apply the permissions to desired users or groups. These assignments can be applied to a given namespace or across an entire cluster. For more information, see [Using Kubernetes RBAC authorization](/azure/aks/concepts-identity#kubernetes-rbac).
+
+   Create a role for the **dev** namespace. This role grants full permissions to the namespace. In production environments, you might want to specify more granular permissions for different users or groups.
+
+3. Create a file named **role-dev-namespace.yaml** and paste the following YAML manifest:
+
+   ```yaml
+   kind: Role
+   apiVersion: rbac.authorization.k8s.io/v1
+   metadata:
+     name: dev-user-full-access
+     namespace: dev
+   rules:
+   - apiGroups: ["", "extensions", "apps"]
+     resources: ["*"]
+     verbs: ["*"]
+   - apiGroups: ["batch"]
+     resources:
+     - jobs
+     - cronjobs
+     verbs: ["*"]
+   ```
+
+4. Create the role using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command, and specify the filename of your YAML manifest:
+
+   ```powershell
+   kubectl apply -f role-dev-namespace.yaml
+   ```
+
+5. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step:
+
+   ```azurecli  
+   az ad group show --group appdev --query objectId -o tsv
+   ```
+
+   The `az ad group show` command returns the value you'll use as `groupObjectId`:
+
+   ```output  
+   38E5FA30-XXXX-4895-9A00-050712E3673A
+   ```
+
+6. Create a file named **rolebinding-dev-namespace.yaml**, and paste in the following YAML manifest. You're establishing the role binding that enables the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId`  with the group object ID produced by the `az ad group show` command.
+
+   ```yaml
+   kind: RoleBinding
+   apiVersion: rbac.authorization.k8s.io/v1
+   metadata:
+     name: dev-user-access
+     namespace: dev
+   roleRef:
+     apiGroup: rbac.authorization.k8s.io
+     kind: Role
+     name: dev-user-full-access
+   subjects:
+   - kind: Group
+     namespace: dev
+     name: groupObjectId
+   ```
+
+   > [!TIP]  
+   > If you want to create the **RoleBinding** for a single user, specify `kind: User` and replace `groupObjectId` with the user principal name (UPN) in the sample.
+
+7. Create the **RoleBinding** using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
+
+   ```powershell  
+   kubectl apply -f rolebinding-dev-namespace.yaml
+   ```
+
+   ```output  
+   rolebinding.rbac.authorization.k8s.io/dev-user-access created
+   ```
+
+
+
+
+
+### [AKS on Azure Stack HCI 22H2](#tab/22H2)
 
 1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command:
 
@@ -169,6 +302,8 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
     ```output  
     rolebinding.rbac.authorization.k8s.io/dev-user-access created
     ```
+
+
 
 ## Use built-in Kubernetes RBAC roles for your AKS cluster resource
 
