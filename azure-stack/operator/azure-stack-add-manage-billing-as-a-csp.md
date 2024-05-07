@@ -2,11 +2,10 @@
 title: Manage Azure Stack Hub usage and billing as a Cloud Solution Provider 
 description: Learn how to register Azure Stack Hub as a Cloud Solution Provider (CSP) and add customers for billing.
 author: sethmanheim
-
 ms.topic: article
-ms.date: 10/11/2021
+ms.date: 05/07/2024
 ms.author: sethm
-ms.reviewer: alfredop
+ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2019
 
 # Intent: As an Azure Stack operator, I want to manage usage and billing for my users.
@@ -49,6 +48,8 @@ For a description of APSS subscriptions and how to create them, see [Add Azure P
 #### CSP subscriptions
 
 CSP subscriptions are the preferred choice for registration when a CSP reseller or an end customer operates Azure Stack Hub.
+
+Services such as [Azure Site Recovery](azure-site-recovery-overview.md#how-is-site-recovery-billed) only report usage data in the subscription associated with the Azure Stack Hub registration. This subscription is typically managed by the CSP that operates the multi-tenant environment. As a result, it is the responsibility of the CSP to accurately determine and bill each of their customers who utilize the Azure Site Recovery service.
 
 ## Register Azure Stack Hub
 
