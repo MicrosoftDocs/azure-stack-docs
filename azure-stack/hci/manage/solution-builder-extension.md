@@ -173,4 +173,4 @@ For more information, see [Discover SBE updates](./solution-builder-extension.md
 
 ## Next step
 
-- Read [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
+- [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
