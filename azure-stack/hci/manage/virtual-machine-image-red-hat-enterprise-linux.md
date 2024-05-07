@@ -77,49 +77,49 @@ Use the downloaded Red Hat Enterprise image to create a VM following these steps
 
 Use Azure CLI to register Red Hat Enteprise and install the OS folling these steps:
 
-    1. Sign into the VM.
+1. Sign into the VM.
 
-    2. To register Red Hat Enterprise, run the following command:
+2. To register Red Hat Enterprise, run the following command:
 
-        ```azurecli
-        Sudo subscription-manager register
-        ```
+    ```azurecli
+    Sudo subscription-manager register
+    ```
 
-    3. Check for software packages and the `cloud-init` tool on your system.
+3. Check for software packages and the `cloud-init` tool on your system.
 
-        ```azurecli
-        Sudo yum list installed | grep cloud-init
-        ```
+    ```azurecli
+    Sudo yum list installed | grep cloud-init
+    ```
 
-    4. Install the cloud-init tool.
+4. Install the cloud-init tool.
 
-        ```azurecli
-        Sudo yum install -y cloud-init
-        ```
+    ```azurecli
+    Sudo yum install -y cloud-init
+    ```
 
-    5. Check the installed Red Hat version.
+5. Check the installed Red Hat version.
 
-        ```azurecli
-        cloud-init --version
-        ```
+    ```azurecli
+    cloud-init --version
+    ```
 
-        Here's an example of Red Hat Enterprise version 7.9 installed.
+    Here's an example of Red Hat Enterprise version 7.9 installed.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png" alt-text="Screenshot of Red Hat version 7.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png" alt-text="Screenshot of Red Hat version 7.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png":::
     
-        Here's an example of Red Hat Enterprise version 8.9 installed.
+    Here's an example of Red Hat Enterprise version 8.9 installed.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png" alt-text="Screenshot of Red Hat version 8.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png" alt-text="Screenshot of Red Hat version 8.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png":::
 
-        Here's an example of Red Hat Enterprise version 9.3 installed.
+    Here's an example of Red Hat Enterprise version 9.3 installed.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png" alt-text="Screenshot of Red Hat version 9.3 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png" alt-text="Screenshot of Red Hat version 9.3 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png":::
 
-    6. To update all of the distribution packages that are installed, run this command:
+6. To update all of the distribution packages that are installed, run this command:
 
-        ```azurecli
-        cloud-init --version
-        ```
+    ```azurecli
+    cloud-init --version
+    ```
 
 ### Step 3: Configure the VM
 
