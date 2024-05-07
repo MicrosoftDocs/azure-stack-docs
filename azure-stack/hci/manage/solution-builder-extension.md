@@ -15,7 +15,7 @@ ms.date: 05/03/2024
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article provides an overview of the Solution Builder Extension (SBE) updates and explains how to identify and install them on your Azure Stack HCI, version 23H2 clusters. Furthermore, it offers insights into the extension’s advanced capabilities.
+This article provides an overview of the Solution Builder Extension (SBE) updates and explains how to identify and install them on your Azure Stack HCI, version 23H2 clusters. Additionally, it offers insights into the extension’s advanced capabilities.
 
 ## About the extension
 
