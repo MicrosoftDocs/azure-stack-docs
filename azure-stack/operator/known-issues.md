@@ -59,8 +59,8 @@ To access known issues for a different version, use the version selector dropdow
 ### False storage volume utilization alert in Test-AzureStack report
 
 - Applicable: This issue applies to release 2311 and later.
-- Cause: The new OS build with 2311 introduces a new system alert for thin provisioning - an alert will be raised when the storage pool usage exceeds 70%. Fixed-size volumes are used in the Azs Hub deployment, so the 70% threshold will always be exceeded. Customer may find this warning in Test-AzureStack's reports.
-- Remediation: Ignore the alert in the Test-AzureStack report. Microsoft is aware of the problem and is working on a fix.
+- Cause: The new OS build with 2311 introduces a new system alert for thin provisioning: an alert is raised when the storage pool usage exceeds 70%. Fixed-size volumes are used in the Azure Stack Hub deployment, so the 70% threshold is always exceeded. You can find this warning in the Test-AzureStack reports.
+- Remediation: You can ignore the alert in the Test-AzureStack report. Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
