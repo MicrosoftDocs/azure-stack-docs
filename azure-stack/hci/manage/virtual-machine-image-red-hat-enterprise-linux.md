@@ -1,6 +1,6 @@
 ---
-title: Prepare a Red Hat Enterprise Linux image for Azure Stack HCI VM
-description: Learn how to prepare images using Red Hat Enterprise Linux to create an Azure Stack HCI VM image.
+title: Prepare a Red Hat Enterprise Linux image for Azure Stack HCI virtual machines
+description: Learn how to prepare a Red Hat Enterprise Linux image for an Azure Stack HCI virtual machine.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/02/2024
+ms.date: 05/07/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Stack HCI.
 ---
 
@@ -57,7 +57,7 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
     2. Specify **Generation 2** for your VM as you're working with a VHDX image here. <!--is the VHDX statement valid here?-->
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png":::
 
-    3. Select **Assign Memory**, then enter `4096` for Starup memory.
+    3. Select **Assign Memory**, then enter `4096` for Startup memory.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png":::
 
@@ -76,7 +76,7 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
 ### Step 2: Register Red Hat Enterprise and install the OS
 
- Register Red Hat Enteprise and install the OS following these steps:
+ Register Red Hat Enterprise and install the OS following these steps:
 
 1. Sign into the VM.
 
