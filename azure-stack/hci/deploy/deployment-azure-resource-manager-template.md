@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/30/2024
+ms.date: 05/07/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -18,7 +18,8 @@ This article details how to use an Azure Resource Manager template (ARM template
 
 
 > [!IMPORTANT]
-> ARM template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the ARM template.
+> - ARM template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the ARM template.
+> - We strongly recommend that you do not sequentially deploy the same nodes via ARM template and Azure portal. For instance, if your portal deployment has failed, do not retry the deployment with the ARM template. The objects created by portal may result in issues with the ARM template deployment leading to a failed retry.
 
 ## Prerequisites
 
@@ -60,7 +61,7 @@ The steps are also summarized here:
 
 #### Create a client secret for ARB service principal
 
-1. Go to the service principal that you created and browse to **Certificates & secrets > Client secrets**.
+1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
@@ -98,55 +99,6 @@ This object ID for the Azure Stack HCI RP is unique per Azure tenant.
     ```
 
     You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
-
-
-    <!--You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
-
-<!--#### Add the Key Vault Secrets User
-
-1. Go to the appropriate resource group for Azure Stack HCI environment.
-
-1. Select **Access control (IAM)** from the left-hand side of the screen.
-
-1. In the right-pane, select **+ Add** and then select **Add role assignment**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png" alt-text="Screenshot showing Add role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png":::
-
-1. Search for and select **Key Vault Secrets User** and select **Next**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png" alt-text="Screenshot showing Key Vault Secrets user." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png":::
-
-1. Select **Managed identity**.
-
-1. Select **+ Select** members and input the following:
-
-    1. Select the appropriate subscription.
-
-    1. Select **All system-assigned managed identities**.
-
-    1. Filter the list by typing the prefix and name of the registered servers for your deployment.
-
-    1. Select both servers for your environment and choose **Select**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png" alt-text="Screenshot showing Managed identity selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png":::
-
-1. Select **Review + assign**, then select this again.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png" alt-text="Screenshot showing Review + assign selected." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png":::
-
-1. Once the roles are assigned as **Key Vault Secrets User**, you're able to see them in the **Notifications activity** log.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing the notification for Key Vault Secrets user role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
-
-#### Verify role assignment
-
-Optionally verify the role assignments you created.
-
-1. Select **Access Control (IAM) Check Access** to verify the role assignment you created.
-
-1. Go to **Key Vault Secrets User** for the appropriate resource group for the first server in your environment.
-
-1. Go to **Key Vault Secrets User** for the appropriate resource group for the second server in your environment.-->
 
 ## Step 2: Deploy using ARM template
 
@@ -187,7 +139,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select the appropriate resource group for your environment.
 
-1.  Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
+1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
 
 1. Select **Review + create**.
 
@@ -203,7 +155,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
-1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**. 
+1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
@@ -236,9 +188,10 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 You can also check out this community sourced template to [Deploy an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
+
 ## Troubleshooting deployment issues
 
-If the deployment fails, you should see an error message on the deployments page. 
+If the deployment fails, you should see an error message on the deployments page.
 
 1. On the **Deployment details**, select the **error details**.
 
@@ -247,6 +200,16 @@ If the deployment fails, you should see an error message on the deployments page
 2. Copy the error message from the **Errors** blade. You can provide this error message to Microsoft support for further assistance.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the summary in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
+
+### Known ARM template deployment
+
+This section contains known issues and workarounds for ARM template deployment.
+
+|Issue|Workaround/Comments|
+|------|-------|
+|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
+|In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster has completed the validation stage, we recommend that you do not initiate another ARM template deployment in "Validate" mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
+
 
 ## Next steps
 
