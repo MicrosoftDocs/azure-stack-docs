@@ -26,7 +26,7 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 
 ## Prerequisites
 
-Before you set up Kubernetes RBAC using Microsoft Enterprise identity, you need to have:
+Before you set up Kubernetes RBAC using Microsoft Entra identity, you need to have:
 
 1. A Kubernetes cluster created in AKS Arc.
 2. An Azure Arc connection.
@@ -127,15 +127,29 @@ az ad group member add --group appdev --member-id $AKSDEV_ID
 
 Configure the AKS cluster to allow your Microsoft Entra group to access the cluster. If you want to add a group and users, see [Create demo groups in Microsoft Entra ID](#create-a-demo-group-in-azure-ad).
 
-### [AKS on Azure Stack HCI 23H2](#tab/23H2)
+### Get the cluster admin credentials
 
-1. Get the cluster admin credentials using the [az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials) command:
+#### [AKS on Azure Stack HCI 23H2](#tab/23H2)
 
-   ```Azure CLI
-   az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin
-   ```
+using the [az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials) command:
 
-2. Create a namespace in the Kubernetes cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
+```Azure CLI
+`az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin`
+```
+
+#### [AKS on Azure Stack HCI 22H2](#tab/22H2)
+
+using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command:
+
+```powershell
+Get-AksHciCredential -name <name-of-your-cluster>
+```
+
+
+
+### Use the cluster admin credentials to create a customer Kubernetes RBAC role binding
+
+1. Create a namespace in the Kubernetes cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
 
    ```bash  
    kubectl create namespace dev
@@ -145,7 +159,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
    Create a role for the **dev** namespace. This role grants full permissions to the namespace. In production environments, you might want to specify more granular permissions for different users or groups.
 
-3. Create a file named **role-dev-namespace.yaml** and paste the following YAML manifest:
+2. Create a file named **role-dev-namespace.yaml** and paste the following YAML manifest:
 
    ```yaml
    kind: Role
@@ -164,13 +178,13 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
      verbs: ["*"]
    ```
 
-4. Create the role using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command, and specify the filename of your YAML manifest:
+3. Create the role using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command, and specify the filename of your YAML manifest:
 
    ```powershell
    kubectl apply -f role-dev-namespace.yaml
    ```
 
-5. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step:
+4. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step:
 
    ```azurecli  
    az ad group show --group appdev --query objectId -o tsv
@@ -182,7 +196,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
    38E5FA30-XXXX-4895-9A00-050712E3673A
    ```
 
-6. Create a file named **rolebinding-dev-namespace.yaml**, and paste in the following YAML manifest. You're establishing the role binding that enables the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId`  with the group object ID produced by the `az ad group show` command.
+5. Create a file named **rolebinding-dev-namespace.yaml**, and paste in the following YAML manifest. You're establishing the role binding that enables the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId`  with the group object ID produced by the `az ad group show` command.
 
    ```yaml
    kind: RoleBinding
@@ -203,7 +217,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
    > [!TIP]  
    > If you want to create the **RoleBinding** for a single user, specify `kind: User` and replace `groupObjectId` with the user principal name (UPN) in the sample.
 
-7. Create the **RoleBinding** using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
+6. Create the **RoleBinding** using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
 
    ```powershell  
    kubectl apply -f rolebinding-dev-namespace.yaml
@@ -212,96 +226,6 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
    ```output  
    rolebinding.rbac.authorization.k8s.io/dev-user-access created
    ```
-
-
-
-
-
-### [AKS on Azure Stack HCI 22H2](#tab/22H2)
-
-1. Get the cluster admin credentials using the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) command:
-
-   ```powershell
-   Get-AksHciCredential -name <name-of-your-cluster>
-   ```
-
-2. Create a namespace in the Kubernetes cluster using the [kubectl create namespace](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
-
-   ```bash  
-   kubectl create namespace dev
-   ```
-
-   In Kubernetes, **Roles** define the permissions to grant, and **RoleBindings** apply the permissions to desired users or groups. These assignments can be applied to a given namespace or across an entire cluster. For more information, see [Using Kubernetes RBAC authorization](/azure/aks/concepts-identity#kubernetes-rbac).
-
-   Create a role for the **dev** namespace. This role grants full permissions to the namespace. In production environments, you might want to specify more granular permissions for different users or groups.
-
-3. Create a file named **role-dev-namespace.yaml** and paste the following YAML manifest:
-
-    ```yaml
-    kind: Role
-    apiVersion: rbac.authorization.k8s.io/v1
-    metadata:
-      name: dev-user-full-access
-      namespace: dev
-    rules:
-    - apiGroups: ["", "extensions", "apps"]
-      resources: ["*"]
-      verbs: ["*"]
-    - apiGroups: ["batch"]
-      resources:
-      - jobs
-      - cronjobs
-      verbs: ["*"]
-    ```
-
-4. Create the role using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command, and specify the filename of your YAML manifest:
-
-    ```powershell
-    kubectl apply -f role-dev-namespace.yaml
-    ```
-
-5. Get the resource ID for the **appdev** group using the [az ad group show](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step:
-
-    ```azurecli  
-    az ad group show --group appdev --query objectId -o tsv
-    ```
-    
-    The `az ad group show` command returns the value you'll use as `groupObjectId`:
-
-    ```output  
-    38E5FA30-XXXX-4895-9A00-050712E3673A
-    ```
-
-6. Create a file named **rolebinding-dev-namespace.yaml**, and paste in the following YAML manifest. You're establishing the role binding that enables the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId`  with the group object ID produced by the `az ad group show` command.
-
-    ```yaml
-    kind: RoleBinding
-    apiVersion: rbac.authorization.k8s.io/v1
-    metadata:
-      name: dev-user-access
-      namespace: dev
-    roleRef:
-      apiGroup: rbac.authorization.k8s.io
-      kind: Role
-      name: dev-user-full-access
-    subjects:
-    - kind: Group
-      namespace: dev
-      name: groupObjectId
-    ```
-
-    > [!TIP]  
-    > If you want to create the **RoleBinding** for a single user, specify `kind: User` and replace `groupObjectId` with the user principal name (UPN) in the sample.
-
-7. Create the **RoleBinding** using the [kubectl apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
-
-    ```powershell  
-    kubectl apply -f rolebinding-dev-namespace.yaml
-    ```
-
-    ```output  
-    rolebinding.rbac.authorization.k8s.io/dev-user-access created
-    ```
 
 
 
@@ -344,6 +268,8 @@ To use a built-in Kubernetes RBAC role with Microsoft Entra ID, do the following
 
 <a name='work-with-cluster-resources-using-azure-ad-identities'></a>
 
+
+
 ## Work with cluster resources using Microsoft Entra identities
 
 Now, test the expected permissions when you create and manage resources in a Kubernetes cluster. In these examples, you schedule and view pods in the user's assigned namespace. Then, you try to schedule and view pods outside the assigned namespace.
@@ -381,6 +307,8 @@ Now, test the expected permissions when you create and manage resources in a Kub
     nginx-dev   1/1     Running   0          4m
     ```
 
+
+
 ### Create and view cluster resources outside the assigned namespace
 
 To attempt to view pods outside the **dev** namespace, use the [kubectl get pods](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command with the `--all-namespaces` flag.
@@ -395,6 +323,8 @@ The user's group membership doesn't have a Kubernetes role that allows this acti
 Error from server (Forbidden): pods is forbidden: User cannot list resource "pods" in API group "" at the cluster scope
 ```
 
+
+
 ## Next steps
 
-- [Learn more about security in AKS Arc on Windows Server](concepts-security.md)
+- [Learn more about Concepts in Security](concepts-security.md)
