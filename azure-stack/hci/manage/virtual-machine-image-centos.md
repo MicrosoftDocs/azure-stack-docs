@@ -137,7 +137,7 @@ Follow these steps to configure the VM:
 
     ```bash
     sudo yum install cloud-init
-    sudo yum cloud-init --version
+    cloud-init --version
     ```
 
 1. Apply any latest updates to the VM. <!--CHECK why this is after cloud-init and not before-->
