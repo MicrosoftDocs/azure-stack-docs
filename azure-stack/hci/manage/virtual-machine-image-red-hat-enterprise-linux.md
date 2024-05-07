@@ -22,9 +22,9 @@ This article describes how to prepare a Red Hat Enterprise Linux image to create
 
 Before you begin, the following prerequisites must be completed. Make sure you have:
 
-- Access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the Azure Arc should show as **Connected**.
+- Access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- [Downloaded latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.3, 8.9.0, and 7.9.0. This image is used to create a VM image.
+- [Downloaded latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.3, 8.9.0, and 7.9.0. You'll use this to create a VM image.
 
 ## Workflow
 
@@ -35,15 +35,18 @@ Prepare a Red Hat Enterprise image and use it to create a VM image following the
 1. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-clean-up-residual-configuration).
 1. [Create a Red Hat Enterprise VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-create-the-vhd-and-deploy-the-vm).
 
-The next sections provide detailed instructions for each step in the workflow.
+The following sections provide detailed instructions for each step in the workflow.
 
 ## Create VM image from Red Hat Enterprise image
 
-Use Azure CLI to create a VM image on your Azure Stack HCI cluster following these steps:
+> [!IMPORTANT]
+> We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
+
+Follow these steps on your Azure Stack HCI cluster to create a VM image using the Azure CLI.
 
 ### Step 1: Create a Red Hat Enterprise VM
 
-Use the downloaded Red Hat Enterprise image to create a VM following these steps:
+Follow these steps to use the downloaded Red Hat Enterprise image to provision a VM:
 
 1. Use the downloaded image to create a VM with the following specifications:
 
@@ -51,31 +54,29 @@ Use the downloaded Red Hat Enterprise image to create a VM following these steps
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-name-and-location.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-name-and-location.png":::
 
-    2. Specify Generation 2 for your VM as you're working with a VHDX image here. <!--is the VHDX statement valid here?-->
-
+    2. Specify **Generation 2** for your VM as you're working with a VHDX image here. <!--is the VHDX statement valid here?-->
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-generation.png":::
 
-    3. Assign the necessary amount of memory. To improve performance, specify more than the minimum amount recommended for the operating system.
+    3. Select **Assign Memory**, then enter `4096` for Starup memory.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/virtual-machine-memory.png":::
 
-    4. Select Install operating system from a bootable image option. Point to the ISO that you downloaded earlier.
+    4. Select **Install Options**, then select the **Install an operating system from a bootable image file** option. Point to the ISO that you downloaded earlier.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png" alt-text="Screenshot of the OS Installation Options screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png":::
 
         See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
-    5. Review the installation summary
-
+    5. Select the **Network & Host Name**.
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png" alt-text="Screenshot of the New virtual machine wizard on Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png":::
 
-    6. Verify the Ethernet connection is on and the host name is correct.
+    6. Verify the **Ethernet** connection is **ON** and the host name is correct. Then select **Done**.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png" alt-text="Screenshot of the New virtual machine wizard on Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png":::
 
 ### Step 2: Register Red Hat Enterprise and install the OS
 
-Use Azure CLI to register Red Hat Enteprise and install the OS folling these steps:
+Use Azure CLI to register Red Hat Enteprise and install the OS following these steps:
 
 1. Sign into the VM.
 
@@ -103,18 +104,6 @@ Use Azure CLI to register Red Hat Enteprise and install the OS folling these ste
     cloud-init --version
     ```
 
-    Here's an example of Red Hat Enterprise version 7.9 installed.
-
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png" alt-text="Screenshot of Red Hat version 7.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-7-9.png":::
-    
-    Here's an example of Red Hat Enterprise version 8.9 installed.
-
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png" alt-text="Screenshot of Red Hat version 8.9 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-8-9.png":::
-
-    Here's an example of Red Hat Enterprise version 9.3 installed.
-
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png" alt-text="Screenshot of Red Hat version 9.3 installed." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/rhel-9-3.png":::
-
 6. To update all of the distribution packages that are installed, run this command:
 
     ```azurecli
@@ -131,25 +120,31 @@ Configure the VM that you provisioned earlier following these steps on your Azur
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
-1. Clean up logs and cache.
+1. Clean `cloud-init` default configurations.
 
     ```bash
     sudo yum clean all
     sudo cloud-init clean
+    ```
+
+2. Clean up logs and cache.
+
+    ```bash
+    sudo cloud-init clean --logs --seed
     sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
     ```
 
-2. Unregister the VM.
+3. Unregister the VM.
 
     ```bash
-    Sudo subscription-manager unregister
-    Sudo Subscription-manager clean
-    Sudo rm -f /etc/sysconfig/network-scripts/*
-    Sudo rm -f /etc/ssh/ssh_host*
-    Sudo rm /etc/lvm/devices/system.devices
+    sudo subscription-manager unregister
+    sudo Subscription-manager clean
+    sudo rm -f /etc/sysconfig/network-scripts/*
+    sudo rm -f /etc/ssh/ssh_host*
+    sudo rm /etc/lvm/devices/system.devices
     ```
 
-3. Remove bash history.
+4. Remove bash history.
 
     ```bash
     sudo rm -f ~/.bash_history 
@@ -157,6 +152,56 @@ Delete machine-specific files and data from your VM so that you can create a cle
     logout
     ```
 
+5. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
+
 ### Step 5: Create the VHD and deploy the VM
 
-<!--what content is needed following this, I can't determine based on the one note.-->
+Follow these steps on your Azure Stack HCI cluster to create the VM image:
+
+1. Run PowerShell as an administrator.
+
+2. Sign in. Run the following cmdlet:
+
+    ```azurecli
+    az login
+    ```
+
+3. Set your subscription. Run the following cmdlet:
+
+    ```azurecli
+    az account set --subscription <Subscription ID>
+    ```
+
+4. Set parameters for your subscription, resource group, custom location, location, OS type for the image, name of the image and the path where the image is located. Replace the parameters in `< >` with the appropriate values.
+
+    ```azurecli
+    $Subscription = "<Subscription ID>"
+    $Resource_Group = "<Resource group>"
+    $CustomLocation = "<Custom location>"
+    $Location = "<Location for your Azure Stack HCI cluster>"
+    $OsType = "<OS of source image>"
+    ```
+    
+    The parameters are described in the following table:
+    
+    | Parameter      | Description                                                                                |
+    |----------------|--------------------------------------------------------------------------------------------|
+    | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
+    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
+    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `westreurope`. |
+    | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
+
+
+5. Use the VHDX of the VM to create a gallery image. Use this VM image to create Arc virtual machines on your Azure Stack HCI.
+
+    Make sure to copy the VHDX in user storage in the cluster shared volume of your Azure Stack HCI. For exmaple, the path could look like: `C:\ClusterStorage\UserStorage_1\linuxvhdx`.
+
+    ```powershell
+    $ImagePath = "Path to user storage in CSV" 
+
+    $ImageName = "mylinuxvmimg" 
+
+    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' 
+    ```
+
+6. Validate that the image is created.
