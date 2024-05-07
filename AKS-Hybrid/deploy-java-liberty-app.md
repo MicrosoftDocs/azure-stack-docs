@@ -246,7 +246,7 @@ kubectl delete -f openlibertyapplication.yaml
 
 ## Next steps
 
-You can learn more from references used in this guide:
+For more information, see the references used in this guide:
 
 * [Azure Kubernetes Service](https://azure.microsoft.com/free/services/kubernetes-service/)
 * [Open Liberty](https://openliberty.io/)

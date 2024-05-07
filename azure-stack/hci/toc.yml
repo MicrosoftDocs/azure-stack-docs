@@ -313,12 +313,20 @@ items:
       href: manage/assign-public-ip-to-vm.md
     - name: Configure load balancer for high availability ports
       href: manage/configure-software-load-balancer.md
+    - name: Load balance multiple logical networks
+      href: manage/load-balance-multiple-networks.md
     - name: Manage SDN security
       items:
       - name: Manage certificates for SDN
         href: manage/sdn-manage-certs.md
       - name: Secure the Network Controller
         href: manage/nc-security.md
+  - name: Billing
+    items:
+    - name: Azure Hybrid Benefit
+      href: concepts/azure-hybrid-benefit-hci.md
+    - name: Billing and payment
+      href: concepts/billing.md
 - name: Monitor
   items:
   - name: Overview
@@ -443,8 +451,6 @@ items:
   items:
   - name: Release information for version 22H2
     href: release-information.md
-  - name: Azure Hybrid Benefit
-    href: concepts/azure-hybrid-benefit-hci.md
   - name: Review requirements for 22H2
     href: concepts/system-requirements.md
   - name: Deploy version 22H2
@@ -665,8 +671,6 @@ items:
         href: concepts/network-controller.md
     - name: Maintenance and security
       items:
-      - name: Billing
-        href: concepts/billing.md
       - name: Updates and upgrades
         href: concepts/updates.md
       - name: Security considerations

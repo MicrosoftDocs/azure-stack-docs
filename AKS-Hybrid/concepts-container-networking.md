@@ -130,5 +130,5 @@ New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'flannel'
 This article covers networking concepts for containers in AKS nodes on Azure Stack HCI. For more information on AKS on Azure Stack HCI concepts, see the following articles:
 
 - [Network concepts for AKS nodes](./concepts-node-networking.md)
-- [Cluster and workloads](./kubernetes-concepts.md)
+- [Clusters and workloads](./kubernetes-concepts.md)
 - [Secure traffic between pods using network policies](./calico-networking-policy.md).
