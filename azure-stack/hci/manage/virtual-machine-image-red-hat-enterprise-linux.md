@@ -65,8 +65,6 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png" alt-text="Screenshot of the OS Installation Options screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png":::
 
-        See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
-
     5. Select the **Network & Host Name**.
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png" alt-text="Screenshot of the New virtual machine wizard on Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/installation-summary.png":::
 
@@ -74,9 +72,11 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png" alt-text="Screenshot of the New virtual machine wizard on Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/network-and-host-name.png":::
 
+    See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
+
 ### Step 2: Register Red Hat Enterprise and install the OS
 
-Use Azure CLI to register Red Hat Enteprise and install the OS following these steps:
+ Register Red Hat Enteprise and install the OS following these steps:
 
 1. Sign into the VM.
 
