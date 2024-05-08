@@ -54,24 +54,24 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
     1. Provide a friendly name for your VM.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png" alt-text="Screenshot of the New virtual machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png" alt-text="Screenshot of the new Virtual Machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png":::
 
     2. Specify **Generation 2** for your VM as you're working with a VHDX image here. <!--is the VHDX statement valid here?-->
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot of the Virtual Machine wizard on Generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
 
     3. Select **Assign Memory**, then enter `4096` for Startup memory.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png" alt-text="Screenshot of the New virtual machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png" alt-text="Screenshot of the Virtual Machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png":::
 
     4. Select **Configure Networking**, then from the dropdown list select the virtual switch that the VM will use for the connection.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png" alt-text="Screenshot of the New virtual machine wizard on Configure Networking page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png" alt-text="Screenshot of the Virtual Machine wizard on Configure Networking page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png":::
 
     5. Accept the defaults on the **Connect Virtual Hard Disk** page.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png" alt-text="Screenshot of the New virtual machine wizard on Configure Networking page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png" alt-text="Screenshot of the Virtual Machine wizard on Virtual Hard Disk page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png":::
 
-    4. Select **Install Options**, then select the **Install an operating system from a bootable image file** option. Point to the ISO that you downloaded earlier.
+    6. Select **Install Options**, then select the **Install an operating system from a bootable image file** option. Point to the ISO that you downloaded earlier.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png" alt-text="Screenshot of the OS Installation Options screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png":::
 
@@ -99,19 +99,19 @@ Once the VM is running, follow these steps:
 
 3. Select the language and then select **Continue**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png" alt-text="Screenshot of the Language select screen." lightbox="../manage/media/red-hat-virtual-machine-select-language.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png" alt-text="Screenshot of the Language select screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png":::
 
 4. On the **Installation Summary** page you may see other actionable items.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png" alt-text="Screenshot of the Installation Summary with actionable items." lightbox="../manage/media/red-hat-installation-summary.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png" alt-text="Screenshot of the Installation Summary with actionable items." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png":::
 
 5. Select **Connect to Red Hat**, create credentials, select **Register**, and then select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png" alt-text="Screenshot of the Installation Summary page with actionable items." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png" alt-text="Screenshot of the Connect to Red Hat page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png":::
 
 6. Select **Software Selection**, keep the defaults, and select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png" alt-text="Screenshot of the Installation Summary page with actionable items." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png" alt-text="Screenshot of the Software Selection page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png":::
 
 7. Select the **Installation Destination** and then select **Done**.
 
@@ -119,15 +119,15 @@ Once the VM is running, follow these steps:
 
 8. Select the **Network & Host Name**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png" alt-text="Screenshot of the virtual machine wizard on thec completed Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png" alt-text="Screenshot of the completed Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png":::
 
 9. Verify the **Ethernet** connection is **ON** and the host name is correct. Then select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png" alt-text="Screenshot of the virtual machine wizard on Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png" alt-text="Screenshot of the Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png":::
 
 10. Select **User setting** and set the root password. Enter a password, confirm the password, and select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png" alt-text="Screenshot of the virtual machine wizard on Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png" alt-text="Screenshot of the User Settings credentials page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png":::
 
 11. Select **Begin Installation**.
 
@@ -242,23 +242,23 @@ Delete machine-specific files and data from your VM so that you can create a cle
     logout
     ```
 
-```console
-    [hcitest@localhost ~]$ sudo yum clean all 
-    Updating Subscription Management repositories.
-    17 files removed
-    [hcitest@localhost ~]$ sudo cloud-init clean
-    [hcitest@localhost ~]$ sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/* 
-    [hcitest@localhost ~]$ sudo subscription-manager unregister 
-    Unregistering from: subscription.rhsm.redhat.com:443/subscription 
-    System has been unregistered.
-    [hcitest@localhost ~]$ sudo subscription-manager clean 
-    All local data removed
-    [hcitest@localhost ~]$ sudo rm -f /etc/sysconfig/network-scripts/* 
-    [hcitest@localhost ~]$ sudo rm -f /etc/ssh/ssh_host*
-    [hcitest@localhost ~]$ sudo rm /etc/lvm/devices/system.devices
-    [hcitest@localhost ~]$ sudo rm -f ~/.bash_history 
-    [hcitest@localhost ~]$ export HISTSIZE=0
-    [hcitest@localhost ~]$ exit
+    ```console
+        [hcitest@localhost ~]$ sudo yum clean all 
+        Updating Subscription Management repositories.
+        17 files removed
+        [hcitest@localhost ~]$ sudo cloud-init clean
+        [hcitest@localhost ~]$ sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/* 
+        [hcitest@localhost ~]$ sudo subscription-manager unregister 
+        Unregistering from: subscription.rhsm.redhat.com:443/subscription 
+        System has been unregistered.
+        [hcitest@localhost ~]$ sudo subscription-manager clean 
+        All local data removed
+        [hcitest@localhost ~]$ sudo rm -f /etc/sysconfig/network-scripts/* 
+        [hcitest@localhost ~]$ sudo rm -f /etc/ssh/ssh_host*
+        [hcitest@localhost ~]$ sudo rm /etc/lvm/devices/system.devices
+        [hcitest@localhost ~]$ sudo rm -f ~/.bash_history 
+        [hcitest@localhost ~]$ export HISTSIZE=0
+        [hcitest@localhost ~]$ exit
     ```
 
 5. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
