@@ -17,11 +17,7 @@ ms.custom: devx-track-arm-template
 This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
-<<<<<<< Updated upstream
-> Resource Manager template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the Resource Manager template.
-=======
 > Azure Resource Manager template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
->>>>>>> Stashed changes
 
 ## Prerequisites
 
@@ -38,8 +34,7 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 To authenticate your cluster, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
 
-
-#### Create a service principal for ARB
+### Create a service principal for ARB
 
 Follow the steps in [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal) to create the service principal and assign the roles. Alternatively, use the PowerShell procedure to [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -61,7 +56,7 @@ The steps are also summarized here:
 
     You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the Resource Manager template.
 
-#### Create a client secret for ARB service principal
+### Create a client secret for ARB service principal
 
 1. Go to the service principal that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
@@ -153,11 +148,7 @@ Optionally verify the role assignments you created.
 
 ## Step 2: Deploy using Azure Resource Manager template
 
-<<<<<<< Updated upstream
-The Resource Manager template creates and assigns all the resource permissions required for deployment.
-=======
 A Resource Manager template creates and assigns all the resource permissions required for deployment.
->>>>>>> Stashed changes
 
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
@@ -180,7 +171,6 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
 
-
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png":::
@@ -194,7 +184,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select the appropriate resource group for your environment.
 
-1.  Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
+1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
 
 1. Select **Review + create**.
 
@@ -242,7 +232,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 You can also check out this community sourced template to [Deploy an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
-## Troubleshooting deployment issues
+## Troubleshoot deployment issues
 
 If the deployment fails, you should see an error message on the deployments page.
 
