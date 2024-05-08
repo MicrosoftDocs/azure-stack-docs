@@ -118,6 +118,21 @@ Once a VM is protected and data replicated, there are further tasks you can perf
   > [!NOTE]
   > At this time we don't support re-enabling protection (after a failback process). You must disable protection, remove the agent, and then enable protection again for this VM. This process can be automated and we provide scripts to help you get started.
 
+## Uninstall Azure Site Recovery VM Extension
+
+It is by design, that uninstalling the the Azure Site Recovery extensions will not remove the Mobility service that runs within that VM. This will block any future protection and will require manual steps to enable protection againg for that VM.
+
+  > [!NOTE]
+  > When you "Disable replication" from the Azure Site Recovery Vault, all these steps are done automatically by the system. The steps below refer to only the situation where the Azure Site Recovery VM Extension is manually uninstalled.
+
+After the Azure Site Recovery VM Extension is removed, the mobility service that runs within that VM needs to be install. To do so, please refer to these steps to [Uninstall Mobility service](https://learn.microsoft.com/azure/site-recovery/vmware-physical-manage-mobility-service#uninstall-mobility-service).
+ 
+  > [!NOTE]
+  > If you plan to re-enable protection for that VM, after following the steps above, please make sure to restart the VM before trying to add protection using Azure Site Recovery.
+
+
+
+
 ## Considerations
 
 The following information is not necessary for normal operations. However, these notes can help give you a better understanding of the processes that take place behind the scenes.
