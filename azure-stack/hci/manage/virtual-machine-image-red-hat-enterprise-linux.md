@@ -34,8 +34,8 @@ Prepare a Red Hat Enterprise image and use it to create a VM image following the
 2. [Connect VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect-vm-and-install-red-hat-os).
 3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise)
 4. [Configure the VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-configure-the-vm).
-5. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-clean-up-residual-configuration).
-6. [Create the VHD and deploy the VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-create-the-vhd-and-deploy-the-vm).
+5. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-clean-up-residual-configuration).
+6. [Create the VHD and deploy the VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-6-create-the-vhd-and-deploy-the-vm).
 
 The following sections provide detailed instructions for each step in the workflow.
 
