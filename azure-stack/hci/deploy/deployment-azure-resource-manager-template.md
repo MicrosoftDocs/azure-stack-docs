@@ -201,7 +201,7 @@ If the deployment fails, you should see an error message on the deployments page
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the summary in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
 
-### Known ARM template deployment
+### Known issues for ARM template deployment
 
 This section contains known issues and workarounds for ARM template deployment.
 
