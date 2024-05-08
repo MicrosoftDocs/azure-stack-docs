@@ -221,7 +221,6 @@ Delete machine-specific files and data from your VM so that you can create a cle
 2. Clean up logs and cache.
 
     ```bash
-    sudo cloud-init clean
     sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
     ```
 
@@ -244,18 +243,19 @@ Delete machine-specific files and data from your VM so that you can create a cle
     ```
 
     ```console
-        [hcitest@localhost ~]$ sudo yum clean all Updating Subscription Management repositories.
+        [hcitest@localhost ~]$ sudo yum clean all 
+        Updating Subscription Management repositories.
         17 files removed
         [hcitest@localhost ~]$ sudo cloud-init clean
         [hcitest@localhost ~]$ sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/* 
-        [hcitest@localhost ~]$ sudo rm -f **/.bash_history [hcitest@localhost ~]$ export HISTSIZE=0
+        [hcitest@localhost ~]$ sudo rm -f ~/.bash_history [hcitest@localhost ~]$ export HISTSIZE=0
         [hcitest@localhost ~]$ sudo subscription-manager unregister Unregistering from: subscription.rhsm.redhat.com:443/subscription System has been unregistered.
         [hcitest@localhost ~]$ sudo subscription-manager clean 
         All local data removed
         [hcitest@localhost ~]$ sudo rm -f /etc/sysconfig/network-scripts/* 
         [hcitest@localhost ~]$ sudo rm -f /etc/ssh/ssh_host*
         [hcitest@localhost ~]$ sudo rm /etc/lvm/devices/system.devices
-        [hcitest@localhost ~]$ logout
+        [hcitest@localhost ~]$ exit
     ```
 
 5. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
