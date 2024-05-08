@@ -37,7 +37,7 @@ Before you begin, make sure that:
 
     | Component | Minimum |
     | ------------- | -------- |
-    | Processor| Intel VT-x or AMD-V, with support for nested virtualization. For more information, see [Does My Processor Support Intel® virtualization technology?](https://www.intel.com/content/www/us/en/support/articles/000005486/processors.html).
+    | Processor| Intel VT-x or AMD-V, with support for nested virtualization. For more information, see [Does My Processor Support Intel&reg; virtualization technology?](https://www.intel.com/content/www/us/en/support/articles/000005486/processors.html).
     | Memory| The physical host must have a minimum of 32 GB RAM for single virtual node deployments. The virtual host VM should have at least 24 GB RAM.<br><br>The physical host must have a minimum of 64 GB RAM for two virtual node deployments. Each virtual host VM should have at least 24 GB RAM.|
     | Host network adapters| A single network adapter.|
     | Storage| 1 TB Solid state drive (SSD). |
@@ -350,10 +350,10 @@ Complete the following steps to install and configure the Azure Stack HCI OS on 
 
     - [Deploy Azure Stack HCI using Azure portal](deploy-via-portal.md).
 
-    - [Deploy Azure Stack HCI using an ARM template](deployment-azure-resource-manager-template.md).
+    - [Deploy Azure Stack HCI using an Azure Resource Manager template](deployment-azure-resource-manager-template.md).
 
 Repeat the process above for extra nodes if you plan to test multi-node deployments. Ensure virtual host names and management IPs are unique and on the same subnet:
 
 ## Next steps
 
-- [Register to Arc and assign permissions for deployment](deployment-arc-register-server-permissions.md).
+- [Register to Arc and assign permissions for deployment](deployment-arc-register-server-permissions.md)

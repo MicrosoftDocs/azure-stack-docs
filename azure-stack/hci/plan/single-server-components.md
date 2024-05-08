@@ -14,15 +14,15 @@ ms.date: 03/14/2024
 
 [!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll learn about which network components are deployed for the single-server reference pattern, as shown in the following diagram:
+This article describes which network components are deployed for the single-server reference pattern, as shown in the following diagram:
 
 :::image type="content" source="media/single-server-components/components.png" alt-text="Diagram showing components for single-server network pattern." lightbox="media/single-server-components/components.png":::
 
-### Optional components
+## Optional components
 
-The following are optional components. For more information on Software Defined Networking (SDN), see  [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
+The following components are optional. For more information about Software Defined Networking (SDN), see [Plan a Software Defined Network infrastructure](../concepts/plan-software-defined-networking-infrastructure.md).
 
-#### SDN Network Controller VM
+### SDN Network Controller VM
 
 The Network Controller VM is optionally deployed. If a Network Controller VM is not deployed, default network access policies are not available. A Network Controller VM is needed if you have any of the following requirements:
 
@@ -34,11 +34,11 @@ The Network Controller VM is optionally deployed. If a Network Controller VM is 
 
 - Configure Quality of Service (QoS) policies for VMs attached to virtual networks or traditional VLAN-based networks.
 
-#### SDN Software Load Balancer VM
+### SDN Software Load Balancer VM
 
 The SDN Software Load Balancer (SLB) VM is used to evenly distribute network traffic among multiple VMs. It enables multiple servers to host the same workload, providing high availability and scalability. It is also used to provide inbound Network Address Translation (NAT) services for inbound access to VMs, and outbound NAT services for outbound connectivity.
 
-#### SDN Gateway VM
+### SDN Gateway VM
 
 The SDN Gateway VM is used to route network traffic between a virtual network and another network, either local or remote. SDN Gateways can be used to:
 
