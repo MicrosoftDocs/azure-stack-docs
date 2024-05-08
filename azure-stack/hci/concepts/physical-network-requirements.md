@@ -439,4 +439,4 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 ## Next steps
 
 - See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
-- See [Deploy using ARM template](../deploy/deployment-azure-resource-manager-template.md).
+- See [Deploy using Azure Resource Manager template](../deploy/deployment-azure-resource-manager-template.md).
