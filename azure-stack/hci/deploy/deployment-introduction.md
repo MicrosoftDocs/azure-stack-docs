@@ -25,9 +25,9 @@ In this release, you can deploy Azure Stack HCI using one of the following metho
 
     For more information, see [Deploy via Azure portal](deploy-via-portal.md).
 
-- **Deploy from an Azure Resource Manager(ARM) template**: Select this option to deploy an Azure Stack HCI cluster using an ARM Deployment Template and the corresponding Parameters file. An ARM template is a JSON file containing customized template expressions where you can define dynamic values and logic that determine the Azure resources to deploy. 
+- **Deploy from an Azure Resource Manager template**: Select this option to deploy an Azure Stack HCI cluster using an Azure Resource Manager deployment template and the corresponding parameters file. A Resource Manager template is a JSON file containing customized template expressions where you can define dynamic values and logic that determine the Azure resources to deploy.
 
-    For more information, see [Deploy via ARM template](deployment-azure-resource-manager-template.md).
+    For more information, see [Deploy via Resource Manager template](deployment-azure-resource-manager-template.md).
 
 ## Deployment sequence
 
@@ -43,7 +43,7 @@ Follow this sequence to deploy Azure Stack HCI in your environment:
 | (Optional) [Configure the proxy](../manage/configure-proxy-settings.md) | Optionally configure proxy settings for Azure Stack HCI if your network uses a proxy server for internet access. |
 | Step 4: [Register servers with Arc and assign permissions](./deployment-arc-register-server-permissions.md) | Install and run the Azure Arc registration script on each of the servers that you intend to cluster.<br> Assign required permissions for the deployment. |
 | Step 5A: [Deploy the cluster via Azure portal](./deploy-via-portal.md) | Use the Azure portal to select Arc servers to create Azure Stack HCI cluster. |
-| Step 5B: [Deploy the cluster via ARM template](deployment-azure-resource-manager-template.md) | Use the ARM Deployment Template and the Parameter file to deploy Azure Stack HCI cluster. |
+| Step 5B: [Deploy the cluster via Resource Manager template](deployment-azure-resource-manager-template.md) | Use the Resource Manager deployment template and the parameter file to deploy an Azure Stack HCI cluster. |
 
 ## Validated network topologies
 
@@ -53,7 +53,7 @@ Before starting the deployment, we recommend you check the following table that 
 
 #### Supported network topologies
 
-|Network topology|Azure portal|ARM template|
+|Network topology|Azure portal|Resource Manager template|
 |---|---|---|
 |One node - no switch for storage|By default|Supported|
 |One node - with network switch for storage|Not applicable|Supported|

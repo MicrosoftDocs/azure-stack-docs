@@ -17,7 +17,11 @@ ms.custom: devx-track-arm-template
 This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
+<<<<<<< Updated upstream
 > Resource Manager template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the Resource Manager template.
+=======
+> Azure Resource Manager template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
+>>>>>>> Stashed changes
 
 ## Prerequisites
 
@@ -149,7 +153,11 @@ Optionally verify the role assignments you created.
 
 ## Step 2: Deploy using Azure Resource Manager template
 
+<<<<<<< Updated upstream
 The Resource Manager template creates and assigns all the resource permissions required for deployment.
+=======
+A Resource Manager template creates and assigns all the resource permissions required for deployment.
+>>>>>>> Stashed changes
 
 With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
@@ -236,7 +244,7 @@ You can also check out this community sourced template to [Deploy an Azure Stack
 
 ## Troubleshooting deployment issues
 
-If the deployment fails, you should see an error message on the deployments page. 
+If the deployment fails, you should see an error message on the deployments page.
 
 1. On the **Deployment details**, select the **error details**.
 
@@ -248,6 +256,5 @@ If the deployment fails, you should see an error message on the deployments page
 
 ## Next steps
 
-Learn more:
 - [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
-- About how to [Deploy Azure Arc VMs on Azure Stack HCI](../manage/create-arc-virtual-machines.md).
+- [Deploy Azure Arc VMs on Azure Stack HCI](../manage/create-arc-virtual-machines.md)

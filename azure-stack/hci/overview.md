@@ -40,7 +40,7 @@ Azure Stack HCI combines the following:
 - Azure Virtual Desktop
 - Azure Kubernetes Service (AKS) enabled by Azure Arc
 - Azure services including monitoring, backup, site recovery, and more
-- Azure portal, ARM and Bicep templates, Azure CLI and tools
+- Azure portal, Azure Resource Manager and Bicep templates, Azure CLI and tools
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Stack HCI solution." lightbox="media/overview/azure-stack-hci-solution.png" :::
 
