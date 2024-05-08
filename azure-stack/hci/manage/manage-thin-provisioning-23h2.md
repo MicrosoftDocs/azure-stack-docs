@@ -1,8 +1,8 @@
 ---
 title: Storage thin provisioning in Azure Stack HCI, version 23H2
 description: How to use storage thin provisioning on Azure Stack HCI, version 23H2 clusters by using Windows PowerShell.
-author: v-loberner
-ms.author: akohli
+author: TinaWu-Msft
+ms.author: tinawu
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
@@ -17,23 +17,23 @@ This article describes how thin provisioning works on your Azure Stack HCI clust
 
 ## Capacity management: thin vs. fixed provisioned volumes
 
-Thin provisioning is recommended over the traditional fixed provisioning if you don't know exactly how much storage a volume will need and want more flexibility. If you want to limit the size of a volume or limit how much storage a volume can take from the pool, then use fixed provisioning instead.
+Thin provisioning is recommended over the traditional fixed provisioning if you don't know exactly how much storage a volume requires. Thin provisioning provides flexibility compared to traditional fixed provisioning. If you want to limit the size of a volume or limit how much storage a volume can take from the pool, use fixed provisioning.
 
 Below is a comparison of the two provisioning types with empty volumes.
 
-With traditional fixed provisioning, pre-allocated space is not available in the storage pool. With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth.
+With traditional fixed provisioning, preallocated space isn't available in the storage pool. With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth.
 
 | **Fixed provisioning** | **Thin provisioning** |
 |:----------------------:|:---------------------:|
-|:::image type="content" source="media/manage-thin-provisioning-23h2/fixed-provisioning.png" alt-text="With traditional fixed provisioning, pre-allocated space is not available in the storage pool." lightbox="media/manage-thin-provisioning-23h2/fixed-provisioning.png":::|:::image type="content" source="media/manage-thin-provisioning-23h2/thin-provisioning.png" alt-text="With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." lightbox="media/manage-thin-provisioning-23h2/thin-provisioning.png":::|
+|:::image type="content" source="media/manage-thin-provisioning-23h2/fixed-provisioning.png" alt-text="With traditional fixed provisioning, preallocated space isn't available in the storage pool." lightbox="media/manage-thin-provisioning-23h2/fixed-provisioning.png":::|:::image type="content" source="media/manage-thin-provisioning-23h2/thin-provisioning.png" alt-text="With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." lightbox="media/manage-thin-provisioning-23h2/thin-provisioning.png":::|
 
-When a thin-provisioned volume is created, the footprint will be smaller than the specified size of volume. As data is added or removed from the volume, the volume footprint will increase and decrease accordingly.
+When a thin-provisioned volume is created, the footprint is smaller than the specified size of volume. As data is added or removed from the volume, the volume footprint increases and decreases accordingly.
 
-:::image type="content" source="media/manage-thin-provisioning-23h2/storage-pool.gif" alt-text="As data is added or removed from the volume, the volume footprint will increase and decrease accordingly." lightbox="media/manage-thin-provisioning-23h2/storage-pool.gif":::
+:::image type="content" source="media/manage-thin-provisioning-23h2/storage-pool.gif" alt-text="As data is added or removed from the volume, the volume footprint increases and decreases accordingly." lightbox="media/manage-thin-provisioning-23h2/storage-pool.gif":::
 
-Thin provisioning will work with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of clusters. Because TRIM is disabled for stretched clusters, storage will not be returned to the pool after data is deleted.
+Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of clusters. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
 
-You can create volumes that exceed the total available storage capacity by overprovisioning. An alert will be sent when over 70% (customizable) of the pool capacity is used, signaling that you should add more capacity or delete some data.
+You can create volumes that exceed the total available storage capacity by overprovisioning. An alert is sent when over 70% (customizable) of the pool capacity is used, signaling that you should add more capacity or delete some data.
 
 :::image type="content" source="media/manage-thin-provisioning-23h2/thin-provisioning.gif" alt-text="You can create volumes that exceed the total available storage capacity by overprovisioning." lightbox="media/manage-thin-provisioning-23h2/thin-provisioning.gif":::
 
@@ -63,7 +63,7 @@ Check the volume provisioning type:
 Get-VirtualDisk -FriendlyName <name of virtual disk> | ft FriendlyName,ProvisioningType 
 ```
 
-### Option 2: Manage default provisioned volume settings
+### Option 2: Manage default provisioning alert threshold
 
 The alert threshold for thin provisioning is set at 70%. We recommend that you accept the default alert threshold.
 
@@ -73,40 +73,9 @@ To change the default thin provisioning alert threshold, run the following cmdle
 Set-StoragePool -FriendlyName <name of storage pool> -ThinProvisioningAlertThresholds <% value>
 ```
 
-To change the pool default setting to create thin provisioned volumes, run the following cmdlet:
-
-```PowerShell
-Set-StoragePool -FriendlyName <name of storage pool> -ProvisioningTypeDefault Thin
-```
-
-To check the default provisioning setting, run the following cmdlet:
-
-```PowerShell
-Get-StoragePool -FriendlyName <name of storage pool> | ft FriendlyName,ProvisioningTypeDefault
-```
-
-## Manage thin provisioning
-
-To check a volume's provisioning type:
-
-1. In **Cluster Manager**, select **Volumes** from the **Tools** pane at the left and go to the **Inventory** tab.
-1. Select a volume to visit its **Properties** page.
-1. Check the provisioning type.
-
-:::image type="content" source="media/manage-thin-provisioning-23h2/check-volume-provisioning-type.png" alt-text="You can check the volume provisioning type by visiting a volume's Properties page." lightbox="media/manage-thin-provisioning-23h2/check-volume-provisioning-type.png":::
-
-To display Provisioning type as a column heading:
-
-1. In **Cluster Manager**, select **Volumes** from the **Tools** pane at the left and go to the **Inventory** tab.
-1. Click on the Column picker icon.
-1. Click **Add a column** and search for **Provisioning type**
-1. Select **Save**.
-
-:::image type="content" source="media/manage-thin-provisioning-23h2/display-provisioning-type.png" alt-text="You can display Provisioning type as a column heading by clicking the Column picker icon and selecting Add a column." lightbox="media/thin-provisioning/display-provisioning-type.png":::
-
 ## Thin provisioning FAQ
 
-This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 21H2.
+This section answers frequently asked questions about thin provisioning on Azure Stack HCI, version 23H2.
 
 ### Can existing fixed volumes be converted to thin?
 
