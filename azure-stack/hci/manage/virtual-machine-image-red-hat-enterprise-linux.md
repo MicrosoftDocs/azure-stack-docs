@@ -143,8 +143,8 @@ See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-
 
 2. To register Red Hat Enterprise, run the following command. You'll be prompted to enter your RHEL login credentials.
 
-> [!NOTE]
-> When typing your password you may not see any characters. Once you've finished typing your credentials, hit Enter.
+    > [!NOTE]
+    > When typing your password you may not see any characters. Once you've finished typing your credentials, hit Enter.
 
     ```azurecli
     Sudo subscription-manager register
