@@ -41,7 +41,7 @@ Here are the issues fixed in this release:
 | Deployment |A new storage account is created for each run of the deployment. Existing storage accounts aren't supported in this release.| |
 | Deployment |A new key vault is created for each run of the deployment. Existing key vaults aren't supported in this release.| |
 | Deployment <!--25717459-->|On server hardware, a USB network adapter is created to access the Baseboard Management Controller (BMC). This adapter can cause the cluster validation to fail during the deployment.| Make sure to disable the BMC network adapter before you begin cloud deployment.|
-| Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the ARM template to override this parameter and disable RDMA for the intents. |
+| Deployment |The network direct intent overrides defined on the template aren't working in this release.|Use the Azure Resource Manager template to override this parameter and disable RDMA for the intents. |
 
 ## Known issues in this release
 
