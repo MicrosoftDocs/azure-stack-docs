@@ -3,7 +3,7 @@ title: Azure Stack Hub known issues
 description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/05/2024
+ms.date: 05/07/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 11/30/2023
@@ -90,6 +90,15 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to release 2311.
 - Cause: In some cases when you run the `Start-AzsCryptoWipe` [command to shut down Azure Stack Hub](/azure-stack/operator/azure-stack-hub-decommission#shut-down-azure-stack-hub), one of the physical machines is not powered off.
 - Remediation: If you see that any physical machine is not powered down, you must turn off that machine through the Baseboard Management Controller (BMC).
+- Occurrence: Common.
+
+## Storage
+
+### False storage volume utilization alert in Test-AzureStack report
+
+- Applicable: This issue applies to release 2311 and later.
+- Cause: The new OS build with 2311 introduces a new system alert for thin provisioning: an alert is raised when the storage pool usage exceeds 70%. Fixed-size volumes are used in the Azure Stack Hub deployment, so the 70% threshold is always exceeded. You can find this warning in the Test-AzureStack reports.
+- Remediation: You can ignore the alert in the Test-AzureStack report. Microsoft is aware of the issue and is working on a fix.
 - Occurrence: Common.
 
 <!-- ## Alerts -->
