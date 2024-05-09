@@ -32,10 +32,10 @@ Prepare a Red Hat Enterprise image and use it to create a VM image following the
 
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise-linux.md#create-vm-image-from-red-hat-enterprise-image).
 2. [Connect VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect-vm-and-install-red-hat-os).
-3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise).
-4. [Configure VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-configure-vm).
-5. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-clean-up-residual-configuration).
-6. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-6-create-vm-image).
+<!--3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise).-->
+3. [Configure VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-configure-vm).
+4. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-clean-up-residual-configuration).
+5. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-create-vm-image).
 
 The following sections provide detailed instructions for each step in the workflow.
 
@@ -166,7 +166,7 @@ Register Red Hat Enterprise following these steps:
     The registered system name is: localhost.localdomain 
     ``` -->
 
-### Step 4: Configure VM
+### Step 3: Configure VM
 
 Follow these steps to configure the VM:
 
@@ -216,7 +216,7 @@ Follow these steps to configure the VM:
     /usr/bin/cloud-init 23.4-7.el9_4 
     ```
 
-### Step 5: Clean up residual configuration
+### Step 4: Clean up residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
@@ -281,10 +281,10 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png" alt-text="Screenshot of exporting a Virtual Machine VHDX." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png":::
 
-### Step 6: Create VM image
+### Step 5: Create VM image
 
 [!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]
 
-## Next step
+## Next steps
 
 - [Create Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Stack HCI cluster.
