@@ -40,15 +40,15 @@ This article lists the supported scale count for clusters and node pools in AKS 
 
 | System role                     | VM size                                | Memory, CPU          |
 |---------------------------------|----------------------------------------|----------------------|
-| AKS Arc control plane nodes  | Standard_A4_v2                         | 8-GB memory, 2 vcpu  |
+| AKS Arc control plane nodes  | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
 | AKS Arc HA Proxy VM          | Standard_A4_v2. Can't be changed.      | 8-GB memory, 4 vcpu  |
-| AKS Arc Linux worker node    | Standard_K8S3_v1                       | 4-GB memory, 2 vcpu  |
+| AKS Arc Linux worker node    | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
 
 ## Supported values for control plane node sizes
 
 | VM Size                     | CPU  | Memory (GB)  | 
 |-----------------------------|------|--------------|
-| Standard_A4_v2              | 2    | 8            |
+| Standard_A4_v2              | 4    | 8            |
 | Standard_D4s_v3             | 4    | 16           |
 | Standard_D8s_v3             | 8    | 32           |
 | Standard_K8S3_v1            | 4    | 6            |
@@ -58,12 +58,12 @@ This article lists the supported scale count for clusters and node pools in AKS 
 | VM Size                     | CPU  | Memory (GB)  |
 |-----------------------------|------|--------------|
 | Standard_A2_v2 (default)    | 2    | 4            |
-| Standard_A4_v2              | 2    | 8            |
+| Standard_A4_v2              | 4    | 8            |
 | Standard_D4s_v3             | 4    | 16           |
 | Standard_D8s_v3             | 8    | 32           |
 
-> [!WARNING]
-> There is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2vCPU and 8GB memory. Microsoft is aware of the problem and is working on a resolution.
+> [!NOTE]
+> There was a known issue where the VM size was deployed with incorrect specifications in the previous version of Arc Resource Bridge. This issue has been resolved in the Arc Resource Bridge 1.1.0 Release or later. Following [this](/azure/azure-arc/resource-bridge/upgrade) documentation to upgrade your Arc Resource Bridge, or learn more from the [Arc Resource Bridge release note](https://github.com/Azure/ArcResourceBridge/releases). To understand the full context of this issue, see [Known issues in AKS enabled by Azure Arc on VMware](aks-vmware-known-issues.md)
 
 ## Next steps
 
