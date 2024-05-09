@@ -63,7 +63,7 @@ To complete this quickstart, you need to do these things:
    $network_name = '<Name of the VMware Network segment>'
    ```
 
-1. Create a vNet with the same `$resource_group` and `$custom_location` you used to deploy your Arc Resource Bridge:
+1. Create a vNet with the same `$resource_group` you used to deploy your Arc Resource Bridge and `$custom_location` with the prefix "AKS-" and the default namespace. 
 
    ```azurecli
    az aksarc vnet create -n '<name of the vNet>' -g $resource_group --custom-location $custom_location --vsphere-segment-name $network_name
