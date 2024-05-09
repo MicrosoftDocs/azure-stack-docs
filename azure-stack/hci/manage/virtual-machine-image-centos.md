@@ -167,12 +167,17 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
 1. Export a VHDX or copy the VHDX from your VM. You can use the following methods:
-    - Copy the VHDX as a page blob to a container in Azure Storage account.
-    - Alternatively, copy the VHDX to user storage on the cluster shared volume on your Azure Stack HCI.  
+    - Copy the VHDX to user storage on the cluster shared volume on your Azure Stack HCI.
+    - Alternatively, copy the VHDX as a page blob to a container in Azure Storage account.  
 
 ### Step 5: Create VM image
 
-Follow these steps on your Azure Stack HCI cluster to create the VM image:
+Depending on where you copied the VHDX, use one of the following procedures to create the VM image:
+
+<!--- If your VHDX is in Azure Storage account, see [Create a VM image using Azure Storage account](./virtual-machine-image-storage-account.md#azure-portal).
+- If your VHDX is in user storage on the cluster shared volume, see [Create a VM image using image in the local share](./virtual-machine-image-local-share.md#azure-portal).-->
+
+Follow these steps on your Azure Stack HCI cluster to create the VM image from the VHDX of the VM that you created in the previous steps. Use Azure CLI to create the VM image:
 
 <!--update this as az cli link was added[!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]-->
 
