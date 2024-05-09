@@ -35,7 +35,7 @@ Prepare a Red Hat Enterprise image and use it to create a VM image following the
 3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise)
 4. [Configure the VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-configure-the-vm).
 5. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-clean-up-residual-configuration).
-6. [Create the VHD and deploy the VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-6-create-the-vhd-and-deploy-the-vm).
+6. [Create VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-6-create-vm-image).
 
 The following sections provide detailed instructions for each step in the workflow.
 
@@ -150,13 +150,15 @@ See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-
     Sudo subscription-manager register
     ```
 
+    Here's example output:
+
     ```console
-        [hcitest@localhost ~]$ sudo subscription-manager register 
-        Registering to: subscription.rhsm.redhat.com:443/subscription 
-        Username : hcitest 
-        Password :
-        The system has been registered with ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
-        The registered system name is: localhost.localdomain 
+    [hcitest@localhost ~]$ sudo subscription-manager register 
+    Registering to: subscription.rhsm.redhat.com:443/subscription 
+    Username : hcitest 
+    Password :
+    The system has been registered with ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
+    The registered system name is: localhost.localdomain 
     ```
 
 ### Step 4: Configure the VM
@@ -178,8 +180,10 @@ Follow these steps to configure the VM:
     cloud-init --version
     ```
 
+    Here's example output:
+
     ```console
-    [hcitest@localhost ~]$ sudo subscription-manager register
+    [hcitest@localhost ~]$ sudo yum install -y cloud-init
     Installed:
     cloud-init-23.4-7.el9_4.noarch 
     dhcp-client-12:4.4.2-19.bl.el9.x86_64 
@@ -201,7 +205,7 @@ Follow these steps to configure the VM:
     python3-pyrsistent-0.17.3-8.el9.x86_64 
     python3-pyserial-3.4-12.el9.noarch 
     python3-pytz-2021.1-5.el9.noarch
-    
+        
     Complete!
     [hcitest@localhost ~]$ cloud-init —version 
     /usr/bin/cloud-init 23.4-7.el9_4 
@@ -218,6 +222,15 @@ Delete machine-specific files and data from your VM so that you can create a cle
     sudo cloud-init clean
     ```
 
+    Here's example output:
+
+    ```console
+    [hcitest@localhost ~]$ sudo yum clean all 
+    Updating Subscription Management repositories.
+    17 files removed
+    [hcitest@localhost ~]$ sudo cloud-init clean
+    ```
+
 2. Clean up logs and cache.
 
     ```bash
@@ -229,44 +242,40 @@ Delete machine-specific files and data from your VM so that you can create a cle
     ```bash
     sudo subscription-manager unregister
     sudo Subscription-manager clean
+    ```
+
+    Here's example output:
+
+    ```console
+    [hcitest@localhost ~]$ sudo subscription-manager unregister 
+    Unregistering from: subscription.rhsm.redhat.com:443/subscription 
+    System has been unregistered.
+    [hcitest@localhost ~]$ sudo subscription-manager clean 
+    All local data removed
+    ```
+
+4. Clean any host specific details.
+
+    ```bash
     sudo rm -f /etc/sysconfig/network-scripts/*
     sudo rm -f /etc/ssh/ssh_host*
     sudo rm /etc/lvm/devices/system.devices
     ```
 
-4. Remove bash history.
+5. Remove bash history.
 
     ```bash
     sudo rm -f ~/.bash_history 
     export HISTSIZE=0
-    logout
+    exit
     ```
 
-    ```console
-        [hcitest@localhost ~]$ sudo yum clean all 
-        Updating Subscription Management repositories.
-        17 files removed
-        [hcitest@localhost ~]$ sudo cloud-init clean
-        [hcitest@localhost ~]$ sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/* 
-        [hcitest@localhost ~]$ sudo subscription-manager unregister 
-        Unregistering from: subscription.rhsm.redhat.com:443/subscription 
-        System has been unregistered.
-        [hcitest@localhost ~]$ sudo subscription-manager clean 
-        All local data removed
-        [hcitest@localhost ~]$ sudo rm -f /etc/sysconfig/network-scripts/* 
-        [hcitest@localhost ~]$ sudo rm -f /etc/ssh/ssh_host*
-        [hcitest@localhost ~]$ sudo rm /etc/lvm/devices/system.devices
-        [hcitest@localhost ~]$ sudo rm -f ~/.bash_history 
-        [hcitest@localhost ~]$ export HISTSIZE=0
-        [hcitest@localhost ~]$ exit
-    ```
+6. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
 
-5. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
-
-6. Export a VHD or copy the VHD from your VM. Copy the VHD to a user storage on the cluster shared volume on your Azure Stack HCI. Alternatively, you can copy the VHDX as a page blob to an Azure Storage account.
+7. Export a VHD or copy the VHD from your VM. Copy the VHD to a user storage on the cluster shared volume on your Azure Stack HCI. Alternatively, you can copy the VHDX as a page blob to an Azure Storage account.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png" alt-text="Screenshot of exporting a Virtual Machine VHDX." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png":::
 
-### Step 6: Create the VHD and deploy the VM
+### Step 6: Create VM image
 
 [!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]
