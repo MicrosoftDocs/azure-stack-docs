@@ -171,6 +171,7 @@ To view information on the SBE update such as its release notes (via the `SBERel
 
 For more information, see [Discover SBE updates](./solution-builder-extension.md#discover-sbe-updates). You should download the SBE files following the hardware vendor's recommendations and license agreements.
 
-## Next step
+## Next steps
 
 - [Sideload and discover solution updates](../update/update-via-powershell-23h2.md#sideload-and-discover-solution-updates).
+- [Understand update phases of Azure Stack HCI, version 23H2](../update/update-phases-23h2.md).
