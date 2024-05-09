@@ -122,10 +122,7 @@ Once a VM is protected and data replicated, there are further tasks you can perf
 
 By design, when you uninstall the the Azure Site Recovery extension, it doesn't remove the mobility service that runs within that VM. This blocks any future protection and requires manual steps to enable protection again for that VM.
 
-> [!NOTE]
-> When you select **Disable replication** from the Azure Site Recovery vault, all these steps are done automatically by the system. The following steps refer only to the situation in which the Azure Site Recovery VM extension is manually uninstalled.
-
-After you remove the Azure Site Recovery VM extension, you must install the mobility service that runs within that VM. To do so, see these steps to [Uninstall Mobility service](/azure/site-recovery/vmware-physical-manage-mobility-service#uninstall-mobility-service).
+After you remove the Azure Site Recovery VM extension, you must uninstall the mobility service that runs within that VM. To do so, see these steps to [Uninstall Mobility service](/azure/site-recovery/vmware-physical-manage-mobility-service#uninstall-mobility-service).
  
 > [!NOTE]
 > If you plan to re-enable protection for that VM, after following the previous steps, make sure to restart the VM before trying to add protection using Azure Site Recovery.
