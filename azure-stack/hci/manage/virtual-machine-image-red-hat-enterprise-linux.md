@@ -32,7 +32,6 @@ Prepare a Red Hat Enterprise image and use it to create a VM image following the
 
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise-linux.md#create-vm-image-from-red-hat-enterprise-image).
 2. [Connect VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect-vm-and-install-red-hat-os).
-<!--3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise).-->
 3. [Configure VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-configure-vm).
 4. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-clean-up-residual-configuration).
 5. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-create-vm-image).
@@ -139,32 +138,6 @@ Once the VM is running, follow these steps:
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png" alt-text="Screenshot of the Reboot System button after installation." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png":::
 
 See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
-
-<!--### Step 3: Register Red Hat Enterprise
-
-Register Red Hat Enterprise following these steps:
-
-1. Sign into the VM.
-
-2. To register Red Hat Enterprise, run the following command. You'll be prompted to enter your RHEL login credentials.
-
-    > [!NOTE]
-    > When typing your password you may not see any characters. Once you've finished typing your credentials, hit Enter.
-
-    ```azurecli
-    Sudo subscription-manager register
-    ```
-
-    Here's example output:
-
-    ```console
-    [hcitest@localhost ~]$ sudo subscription-manager register 
-    Registering to: subscription.rhsm.redhat.com:443/subscription 
-    Username : hcitest 
-    Password :
-    The system has been registered with ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
-    The registered system name is: localhost.localdomain 
-    ``` -->
 
 ### Step 3: Configure VM
 
