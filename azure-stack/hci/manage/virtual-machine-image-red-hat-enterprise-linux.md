@@ -32,7 +32,7 @@ Prepare a Red Hat Enterprise image and use it to create a VM image following the
 
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise-linux.md#create-vm-image-from-red-hat-enterprise-image).
 2. [Connect VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect-vm-and-install-red-hat-os).
-3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise)
+3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise).
 4. [Configure the VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-configure-the-vm).
 5. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-clean-up-residual-configuration).
 6. [Create VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-6-create-vm-image).
@@ -56,14 +56,15 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png" alt-text="Screenshot of the new Virtual Machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png":::
 
-    2. Specify **Generation 2** for your VM as you're working with a VHDX image here. <!--is the VHDX statement valid here?-->
+    2. Specify **Generation 2** for your VM as you're working with a VHDX image here.
+
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot of the Virtual Machine wizard on Generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
 
     3. Select **Assign Memory**, then enter `4096` for Startup memory.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png" alt-text="Screenshot of the Virtual Machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png":::
 
-    4. Select **Configure Networking**, then from the dropdown list select the virtual switch that the VM will use for the connection.
+    4. Select **Configure Networking**, then from the dropdown list select the virtual switch that the VM uses for the connection.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png" alt-text="Screenshot of the Virtual Machine wizard on Configure Networking page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png":::
 
@@ -101,7 +102,7 @@ Once the VM is running, follow these steps:
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png" alt-text="Screenshot of the Language select screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png":::
 
-4. On the **Installation Summary** page you may see other actionable items.
+4. On the **Installation Summary** page, you may see other actionable items.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png" alt-text="Screenshot of the Installation Summary with actionable items." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png":::
 
@@ -137,7 +138,7 @@ See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-
 
 ### Step 3: Register Red Hat Enterprise
 
- Register Red Hat Enterprise following these steps:
+Register Red Hat Enterprise following these steps:
 
 1. Sign into the VM.
 
@@ -167,7 +168,7 @@ Follow these steps to configure the VM:
 
 1. Connect and then sign into the VM using the root password that you created during the Red Hat Enterprise installation.
 
-2. Make sure that `cloud-init` was not installed
+2. Make sure that `cloud-init` wasn't installed
 
     ```azurecli
     Sudo yum list installed | grep cloud-init
