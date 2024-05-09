@@ -16,7 +16,7 @@ ms.date: 04/26/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI, version 23H2 and later. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure Marketplace.
+The Windows Server Azure Edition operating system can be deployed as a guest virtual machine (VM) on Azure Stack HCI, version 23H2. This article describes how to deploy and hotpatch Windows Server Azure Edition VMs starting with an image in Azure Stack HCI marketplace or an image in Azure Marketplace.
 
 > [!NOTE]
 > Both Azure Arc VMs and non-Arc VMs are supported.
@@ -29,7 +29,7 @@ To upgrade an existing VM to Windows Server Azure Edition, see [Upgrade VMs to W
 
 To use Windows Server Azure Edition on your Azure Stack HCI environment, here are a couple of considerations:
 
-- **Azure Stack HCI host version:**  Windows Server Azure Edition can be deployed on any Azure Stack HCI version, including version 23H3 and later.
+- **Azure Stack HCI host version:**  Windows Server Azure Edition can be deployed on Azure Stack HCI, version 23H2.
 
 - **VM licensing:**  Windows Server Azure Edition can be licensed with either:
 
@@ -43,7 +43,7 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 - **Azure verification for VMs:** You must enable Azure verification for VMs on your cluster. Azure VM verification is an attestation feature on Azure Stack HCI that makes it possible to run supported Azure-exclusive workloads, such as Windows Server Azure Edition. For more information, see [Azure verification for VMs](../deploy/azure-verification.md).
 
     > [!NOTE]
-    > A member of the Administrator group needs to sign onto the host to perform attestation and provide the proper license. For more information, see the Troubleshooting section below.
+    > If you are experiencing issues with Windows Server Azure Edition, a member of the Administrator group needs to sign onto the Azure Stack HCI host to perform attestation and provide the proper license. For more information, see the [Troubleshooting](#troubleshooting) section in this article.
 
 ## Deploy the OS
 
@@ -165,13 +165,13 @@ These differences include the following limitations for using Hotpatch with Azur
 
 ## Troubleshooting
 
-To obtain Azure verification for the Windows Server Azure Edition license, a member of the Administrator group is required to sign onto the host to enable attestation. For this situation, run the following in FClip.exe as an administrator in the system context:
+To obtain Azure verification for the Windows Server Azure Edition license, a member of the Administrator group is required to sign onto the host to enable attestation. In this case, run the following command in *FClip.exe* as an administrator in the system context:
 
-```output
+```cmd
 Schtasks /change /TN "\Microsoft\Windows\Clip\LicenseImdsIntegration" /RU "NT Authority\System"
 ```
 
-For more information on FClip, see [flcip](https://github.com/urbans0ft/fclip) on GitHub.
+For more information, see [flcip](https://github.com/urbans0ft/fclip) on GitHub.
 
 ## Next steps
 
