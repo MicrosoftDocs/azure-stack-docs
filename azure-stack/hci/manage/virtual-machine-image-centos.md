@@ -30,7 +30,7 @@ Before you begin, make sure that the following prerequisites are completed.
 Follow these steps to prepare a CentOS image and create a VM image from that image:
 
 1. [Create a CentOS VM](#step-1-create-a-centos-vm).
-1. [Configure the VM](#step-2-connect-to-vm-and-install-centos).
+1. [Connect to VM and install CentOS](#step-2-connect-to-vm-and-install-centos).
 1. [Configure VM](#step-3-configure-vm).
 1. [Clean up the residual configuration](#step-4-clean-up-residual-configuration).
 1. [Create a CentOS VM image](#step-5-create-vm-image).
@@ -58,11 +58,11 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-generation.png" alt-text="Screenshot of the New virtual machine wizard on Specify generation page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-generation.png":::
     
-    1. Select **Assign Memory**, then enter `4096` for **Startup memory**:
+    1. Assign `4096` for **Startup memory**:
     
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png":::
 
-    1. Select **Configure networking**, then from the dropdown list select the virtual switch that the VM will use for connection.
+    1. Select the virtual network switch that the VM will use for connection.
 
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png" alt-text="Screenshot of the Configure networking page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png":::
     
@@ -79,8 +79,8 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 
 1. Use the UEFI certificate to Secure Boot the VM.
     1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**.
-    1. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the Template dropdown list, select **Microsoft UEFI Certificate Authority**.
-    1. Select OK to save the changes.
+    1. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the **Template** dropdown list, select **Microsoft UEFI Certificate Authority**.
+    1. Select **OK** to save the changes.
 
     :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png":::
 
@@ -140,27 +140,20 @@ Follow these steps to configure the VM:
     cloud-init --version
     ```
 
-1. Apply any latest updates to the VM. <!--CHECK why this is after cloud-init and not before-->
-
-    ```bash
-    sudo yum -y update
-    ```
-
 ### Step 4: Clean up residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
-1. Clean `cloud-init` default configurations. <!--CHECK should we use cloud-init clean or use cloud-init clean --logs --seed-->
+1. Clean `cloud-init` default configurations. 
 
     ```bash
     sudo yum clean all
     sudo cloud-init clean
     ```
 
-1. <!--CHECK-->Clean up logs and cache.
+1. Clean up logs and cache.
 
     ```bash
-    sudo cloud-init clean --logs --seed
     sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
     ```
 
@@ -178,6 +171,8 @@ Delete machine-specific files and data from your VM so that you can create a cle
 ### Step 5: Create VM image
 
 Follow these steps on your Azure Stack HCI cluster to create the VM image:
+
+<!--[!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]-->
 
 1. Run PowerShell as an administrator.
 
