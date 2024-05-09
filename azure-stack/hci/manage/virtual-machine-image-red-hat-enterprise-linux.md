@@ -24,7 +24,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- You have downloaded latest supported [Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here we have downloaded the rhel-9.4-x86_64-boot.iso file. You use this image to create a VM image.
+- You have downloaded latest supported [Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here we have downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
 
 ## Workflow
 
