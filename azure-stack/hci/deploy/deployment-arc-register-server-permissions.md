@@ -242,10 +242,10 @@ This section describes how to assign Azure permissions for deployment from the A
     - **Azure Stack HCI Administrator**
     - **Reader**
 
-Additionally you need to assign the **Cloud Application Administrator** role to the account doing the deployment. The Cloud Application Administrator is an Entra ID Role, so it needs to be assigned to the user in Entra ID. 
+Additionally, you must assign the **Cloud Application Administrator** role to the account doing the deployment. The Cloud Application Administrator is an Entra ID role, so it needs to be assigned to the user in Entra ID. 
 
     > [!NOTE]
-    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed. Please use the Entra ID Portal to assign this role.
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed. Use the Entra ID portal to assign this role.
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
