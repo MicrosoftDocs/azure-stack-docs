@@ -30,7 +30,7 @@ To complete this quickstart, you need to do these things:
 |-------------------------------|--------------------|
 | `$aad_Group_Id`                 | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster.  | 
 | `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  | 
-| `$custom_Location`              | Custom location name or ID for deploying the Arc Resource Bridge. The same name applies to the AKS extension.  | 
+| `$custom_Location`              | Custom location name or ID. If you choose to **Enable Kubernetes Service on VMware [Preview]** when you **Connect vCenter to Azure** from the Azure Portal per [this progress](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix "AKS-" and the default namespace is created for you to deploy AKS on VMware. If you **Enable Kubernetes Service on VMware [Preview]** by following the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace. IMPORTANT: The "default" namespace must be used.  | 
 | `$resource_Group`               | Resource Group name or ID for deploying the Arc Resource Bridge.  | 
  
 
@@ -63,7 +63,7 @@ To complete this quickstart, you need to do these things:
    $network_name = '<Name of the VMware Network segment>'
    ```
 
-1. Create a vNet with the same `$resource_group` and `$custom_location` you used to deploy your Arc Resource Bridge:
+1. Create a vNet with the same `$resource_group` you used to deploy your Arc Resource Bridge and `$custom_location` with the default namespace. 
 
    ```azurecli
    az aksarc vnet create -n '<name of the vNet>' -g $resource_group --custom-location $custom_location --vsphere-segment-name $network_name

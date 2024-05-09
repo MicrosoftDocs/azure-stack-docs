@@ -55,17 +55,28 @@ In this preview release, the Arc Resource Bridge and the target clusters share a
 | Cluster type                  | Memory  | vCPUs | Storage  |
 |-------------------------------|--------|-------|---------|
 | Arc Resource Bridge           | 16 GB  | 4     | 100 GB  |
-| Target cluster control plane  | 8 GB  | 2     | 100 GB  |
-| Target cluster worker node    | 4  GB  | 2     | 100 GB  |
+| Target cluster control plane  |  8 GB  | 4     | 100 GB  |
+| Target cluster worker node    |  8 GB  | 4     | 100 GB  |
 
 For information about supported VM size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md).
 
-> [!WARNING]
-> For the target cluster control plane, there is a known issue with the VM size **Standard_A4_v2**, which is currently deployed with 2 vCPUs and 8 GB memory. Until this issue is fixed, we recommend you deploy target cluster control plane with 16 GB, and 4 vCPUs (Standard_D4s_v3). For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/known issues](aks-vmware-known-issues.md).
+> [!NOTE]
+> There was a known issue where the VM size was deployed with incorrect specifications in the previous version of Arc Resource Bridge. This issue has been resolved in the Arc Resource Bridge 1.1.0 Release or later. Following [this](/azure/azure-arc/resource-bridge/upgrade) documentation to upgrade your Arc Resource Bridge, or learn more from the [Arc Resource Bridge release note](https://github.com/Azure/ArcResourceBridge/releases).
+> For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/known issues](aks-vmware-known-issues.md).
 
 #### VM folder and VM templates
 
 You should create a folder for VM templates, to store the Arc Resource Bridge and CBL Mariner Linux VM templates that are used to create AKS on VMware clusters.
+
+## Supported Kubernetes version
+
+In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. Check the [Arc Resource Bridge release note](https://github.com/Azure/ArcResourceBridge/releases) to understand which Kubernetes version is supported for each specific version number.
+
+## Custom location
+If you choose to **Enable Kubernetes Service on VMware [Preview]** when you **Connect vCenter to Azure** from the [Azure Portal](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix "AKS-" and the default namespace is created for you to deploy AKS on VMware. If you **Enable Kubernetes Service on VMware [Preview]** by following the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace. 
+
+> [!IMPORTANT]
+> The "default" namespace must be used.
 
 ## Azure requirements
 
@@ -83,7 +94,7 @@ For more information, see [Connect to Azure using the Azure CLI](/cli/azure/auth
 |-------------------------------|--------------------|
 | `$aad_Group_Id`                 | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster.  |
 | `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  |
-| `$custom_Location`              | Custom location name or ID for deploying the Arc Resource Bridge. The same name applies to the AKS extension.  |
+| `$custom_Location`              | Custom location name or ID. If you choose to **Enable Kubernetes Service on VMware [Preview]** when you **Connect vCenter to Azure** from the Azure Portal per [this progress](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix "AKS-" and the default namespace is created for you to deploy AKS on VMware. If you **Enable Kubernetes Service on VMware [Preview]** by following the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace. IMPORTANT: The "default" namespace must be used.  |
 | `$resource_Group`               | Resource Group name or ID for deploying the Arc Resource Bridge.  |
 | `$network_name`                 | Name of the VMware network resource enabled in Azure.  |
 | `$control_plane_ip`             | The control plane IP for your target cluster. This control plane IP must be reserved/excluded in DHCP and different from the Arc Resource Bridge IP address.  |
@@ -103,6 +114,9 @@ If you don't have permissions to register an application and your admin can't gi
 ### Azure resource group
 
 You must have an Azure resource group in the supported regions before registration.
+
+> [!WARNING]
+> If your Azure resource group is not in a supported region, a deployment failure will occur.
 
 #### Supported regions
 
