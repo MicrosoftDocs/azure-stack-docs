@@ -42,13 +42,13 @@ This article lists the supported scale count for clusters and node pools in AKS 
 |---------------------------------|----------------------------------------|----------------------|
 | AKS Arc control plane nodes  | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
 | AKS Arc HA Proxy VM          | Standard_A4_v2. Can't be changed.      | 8-GB memory, 4 vcpu  |
-| AKS Arc Linux worker node    | Standard_K8S3_v1                       | 6-GB memory, 4 vcpu  |
+| AKS Arc Linux worker node    | Standard_A4_v2                         | 8-GB memory, 4 vcpu  |
 
 ## Supported values for control plane node sizes
 
 | VM Size                     | CPU  | Memory (GB)  | 
 |-----------------------------|------|--------------|
-| Standard_A4_v2              | 2    | 8            |
+| Standard_A4_v2              | 4    | 8            |
 | Standard_D4s_v3             | 4    | 16           |
 | Standard_D8s_v3             | 8    | 32           |
 | Standard_K8S3_v1            | 4    | 6            |
