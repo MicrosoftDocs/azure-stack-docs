@@ -30,7 +30,7 @@ To complete this quickstart, you need to do these things:
 |-------------------------------|--------------------|
 | `$aad_Group_Id`                 | The ID of a group whose members manage the target cluster. This group should also have owner permissions on the resource group containing the custom location and target cluster.  | 
 | `$appliance_Name`               | Name of the Arc Resource Bridge created to connect vCenter with Azure.  | 
-| `$custom_Location`              | Custom location name or ID for deploying the Arc Resource Bridge. The same name applies to the AKS extension.  | 
+| `$custom_Location`              | Custom location name or ID. During the Arc Resource Bridge deployment, two custom locations were created. To deploy AKS on VMware, use the custom location with the prefix "AKS-" and the default namespace.   | 
 | `$resource_Group`               | Resource Group name or ID for deploying the Arc Resource Bridge.  | 
  
 
