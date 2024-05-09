@@ -83,13 +83,13 @@ Follow these steps to verify that the Managed Identity is not created for this V
     "azure-cli-telemetry": "1.1.0",
     "extensions": {
         "akshybrid": "0.1.1",
-        "arcappliance"^ "1.0.2”,
+        "arcappliance"^ "1.0.2",
         "connectedk8s": "1.5.4",
         "connectedmachine": "0.7.0",
         "customlocation": "0.1.3",
         "hybridaks": "0.2.4",
         "k8s-extension": "1.4.5",
-        "stack-hci-vm": “0.1.8"
+        "stack-hci-vm": "0.1.8"
         }
     }
     [v-hostl]: PS C:\ClusterStorage\Infrastructure_l\ArcHci>
@@ -97,7 +97,7 @@ Follow these steps to verify that the Managed Identity is not created for this V
 1. Run the following command to assign a system managed identity to the VM.
 
     ```azurecli
-    az connectedmachine update --ids "<ARM ID for the VM>" --set identity.type="SystemAssigned"
+    az connectedmachine update --ids "<Resource Manager ID for the VM>" --set identity.type="SystemAssigned"
     ```
 
 1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
