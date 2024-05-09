@@ -1,6 +1,6 @@
 ---
-title: Prepare a Red Hat Enterprise Linux image for Azure Stack HCI virtual machines
-description: Learn how to prepare a Red Hat Enterprise Linux image for an Azure Stack HCI virtual machine.
+title: Prepare Red Hat Enterprise Linux image for Azure Stack HCI VM via Azure CLI
+description: Learn how to prepare a Red Hat Enterprise Linux image to create Azure Stack HCI VM image.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/07/2024
+ms.date: 05/09/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Stack HCI.
 ---
 
@@ -16,7 +16,7 @@ ms.date: 05/07/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
+This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine on your Azure Stack HCI cluster. You use Azure CLI for the VM image creation.
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- You have downloaded latest supported [Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here we have downloaded the rhel-9.4-x86_64-boot.iso file. You'll use this to create a VM image.
+- You have downloaded latest supported [Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here we have downloaded the rhel-9.4-x86_64-boot.iso file. You use this image to create a VM image.
 
 ## Workflow
 
@@ -33,9 +33,9 @@ Prepare a Red Hat Enterprise image and use it to create a VM image following the
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise-linux.md#create-vm-image-from-red-hat-enterprise-image).
 2. [Connect VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect-vm-and-install-red-hat-os).
 3. [Register Red Hat Enterprise](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-register-red-hat-enterprise).
-4. [Configure the VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-configure-the-vm).
+4. [Configure VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-configure-vm).
 5. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-clean-up-residual-configuration).
-6. [Create VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-6-create-vm-image).
+6. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-6-create-vm-image).
 
 The following sections provide detailed instructions for each step in the workflow.
 
@@ -60,7 +60,7 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot of the Virtual Machine wizard on Generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
 
-    3. Select **Assign Memory**, then enter `4096` for Startup memory.
+    3. Select **Assign Memory**, then enter `4096` for **Startup memory**.
 
         :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png" alt-text="Screenshot of the Virtual Machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png":::
 
@@ -82,9 +82,9 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
     1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**.
 
-    2. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the Template dropdown list, select **Microsoft UEFI Certificate Authority**.
+    2. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the template dropdown list, select **Microsoft UEFI Certificate Authority**.
 
-    3. Select OK to save the changes.
+    3. Select **OK** to save the changes.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of UEFI Secure Boot enabled screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png":::
 
@@ -122,17 +122,21 @@ Once the VM is running, follow these steps:
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png" alt-text="Screenshot of the completed Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png":::
 
-9. Verify the **Ethernet** connection is **ON** and the host name is correct. Then select **Done**.
+    Enable the **ON** switch for the network interface and then select **Done**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png" alt-text="Screenshot of the Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png":::
 
-10. Select **User setting** and set the root password. Enter a password, confirm the password, and select **Done**.
+9. Select **User setting** and set the root password. Enter a password, confirm the password, and select **Done**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png" alt-text="Screenshot of the User Settings credentials page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png":::
 
-11. Select **Begin Installation**.
+10. Select **Begin Installation**.
 
-12. Once the installation is complete, select **Reboot System**.
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-begin-installation.png" alt-text="Screenshot of the Begin Installation button." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-begin-installation.png":::
+
+11. Once the installation is complete, select **Reboot System** to reboot the VM.
+
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png" alt-text="Screenshot of the Reboot System button after installation." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png":::
 
 See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
@@ -162,7 +166,7 @@ Register Red Hat Enterprise following these steps:
     The registered system name is: localhost.localdomain 
     ```
 
-### Step 4: Configure the VM
+### Step 4: Configure VM
 
 Follow these steps to configure the VM:
 
@@ -280,3 +284,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 ### Step 6: Create VM image
 
 [!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]
+
+## Next step
+
+- [Create Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Stack HCI cluster.
