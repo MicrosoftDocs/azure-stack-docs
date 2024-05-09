@@ -140,7 +140,7 @@ Once the VM is running, follow these steps:
 
 See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
-### Step 3: Register Red Hat Enterprise
+<!--### Step 3: Register Red Hat Enterprise
 
 Register Red Hat Enterprise following these steps:
 
@@ -164,7 +164,7 @@ Register Red Hat Enterprise following these steps:
     Password :
     The system has been registered with ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx 
     The registered system name is: localhost.localdomain 
-    ```
+    ``` -->
 
 ### Step 4: Configure VM
 
