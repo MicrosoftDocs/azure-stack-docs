@@ -253,16 +253,16 @@ Additionally, you must assign the **Cloud Application Administrator** role to th
 
 1. Go through the tabs and assign the following permissions to the user who deploys the cluster:
 
-    - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for deployment.
-    - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for deployment.
-    - **Key Vault Contributor**: This permission is required to create the key vault used for deployment.
-    - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
+   - **Key Vault Data Access Administrator**: This permission is required to manage data plane permissions to the key vault used for deployment.
+   - **Key Vault Secrets Officer**: This permission is required to read and write secrets in the key vault used for deployment.
+   - **Key Vault Contributor**: This permission is required to create the key vault used for deployment.
+   - **Storage Account Contributor**: This permission is required to create the storage account used for deployment.
  
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
+   <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
-    <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
+   <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
 
 ## Next steps
 
