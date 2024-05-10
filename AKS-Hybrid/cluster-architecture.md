@@ -2,7 +2,7 @@
 title: AKS Arc and workload cluster architecture
 description: Learn about AKS Arc and workload cluster architecture.
 ms.topic: overview
-ms.date: 12/11/2023
+ms.date: 05/10/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -53,6 +53,8 @@ A workload cluster has many components, as described in the following sections.
 #### Load balancer
 
 The load balancer is a virtual machine running Linux and HAProxy and KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, AKS Arc adds at least one load balancer virtual machine. Any Kubernetes service of type LoadBalancer that is created on the workload cluster creates a load-balancing rule in the VM.
+
+The MetalLB Arc extension is a tool that allows you to generate external IPs for your applications and services. Arc-enabled Kubernetes clusters can integrate with [MetalLB](https://metallb.universe.tf/configuration/) using the `Arc Networking` k8s-extension. For information about MetalLB load balancing for AKS enabled by Arc Kubernetes clusters, see the [Overview of MetalLB for Kubernetes clusters](load-balancer-overview.md).
 
 #### Worker nodes
 
