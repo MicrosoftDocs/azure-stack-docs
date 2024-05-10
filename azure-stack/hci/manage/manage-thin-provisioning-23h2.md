@@ -25,17 +25,17 @@ With traditional fixed provisioning, preallocated space isn't available in the s
 
 | **Fixed provisioning** | **Thin provisioning** |
 |:----------------------:|:---------------------:|
-|:::image type="content" source="media/manage-thin-provisioning-23h2/fixed-provisioning.png" alt-text="With traditional fixed provisioning, preallocated space isn't available in the storage pool." lightbox="media/manage-thin-provisioning-23h2/fixed-provisioning.png":::|:::image type="content" source="media/manage-thin-provisioning-23h2/thin-provisioning.png" alt-text="With thin provisioning, space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." lightbox="media/manage-thin-provisioning-23h2/thin-provisioning.png":::|
+|:::image type="content" source="media/manage-thin-provisioning-23h2/fixed-provisioning.png" alt-text="Diagram of traditional fixed provisioning. Preallocated space isn't available in the storage pool." lightbox="media/manage-thin-provisioning-23h2/fixed-provisioning.png":::|:::image type="content" source="media/manage-thin-provisioning-23h2/thin-provisioning.png" alt-text="Diagram of thin provisioning. Space is allocated from the pool when needed and volumes can be over-provisioned (size larger than available capacity) to accommodate anticipated growth." lightbox="media/manage-thin-provisioning-23h2/thin-provisioning.png":::|
 
 When a thin-provisioned volume is created, the footprint is smaller than the specified size of volume. As data is added or removed from the volume, the volume footprint increases and decreases accordingly.
 
-:::image type="content" source="media/manage-thin-provisioning-23h2/storage-pool.gif" alt-text="As data is added or removed from the volume, the volume footprint increases and decreases accordingly." lightbox="media/manage-thin-provisioning-23h2/storage-pool.gif":::
+:::image type="content" source="media/manage-thin-provisioning-23h2/storage-pool.gif" alt-text="Diagram showing that as data is added or removed from the volume, the volume footprint increases and decreases accordingly." lightbox="media/manage-thin-provisioning-23h2/storage-pool.gif":::
 
 Thin provisioning works with all resiliency settings (three-way mirror, mirror accelerated parity, etc.) and all types of clusters. Because TRIM is disabled for stretched clusters, storage isn't returned to the pool after data is deleted.
 
 You can create volumes that exceed the total available storage capacity by overprovisioning. An alert is sent when over 70% (customizable) of the pool capacity is used, signaling that you should add more capacity or delete some data.
 
-:::image type="content" source="media/manage-thin-provisioning-23h2/thin-provisioning.gif" alt-text="You can create volumes that exceed the total available storage capacity by overprovisioning." lightbox="media/manage-thin-provisioning-23h2/thin-provisioning.gif":::
+:::image type="content" source="media/manage-thin-provisioning-23h2/thin-provisioning.gif" alt-text="Diagram showing that you can create volumes that exceed the total available storage capacity by overprovisioning." lightbox="media/manage-thin-provisioning-23h2/thin-provisioning.gif":::
 
 ## Use thin provisioning with PowerShell
 
