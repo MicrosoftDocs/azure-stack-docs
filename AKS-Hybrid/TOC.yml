@@ -99,7 +99,7 @@
       - name: Use Kubernetes RBAC with Microsoft Entra ID
         href: kubernetes-rbac-azure-ad.md
       - name: Use Azure RBAC for Kubernetes Authorization
-        href: azure-rbac-aks-arc.md
+        href: azure-rbac-23h2.md
     - name: Monitoring and logging
       items:    
           - name: Monitor Kubernetes object events
