@@ -81,7 +81,7 @@ The management network supports two different VLAN configurations for traffic - 
 
 - Native VLAN for management network doesn't require you to supply a VLAN ID.
 
-- Tagged VLAN for management network requires VLAN ID configuration on the physical network adapters or the management virtual network adapter before registering the nodes in Azure Arc. See more details in the link below.
+- Tagged VLAN for management network requires VLAN ID configuration on the physical network adapters or the management virtual network adapter before registering the nodes in Azure Arc.
 
 - Physical switch ports must be configured correctly to accept the VLAN ID on the management adapters.
 
@@ -105,15 +105,15 @@ For more information, see [Plan a Software Defined Network infrastructure](../co
 
 For three-node storage switchless patterns, two Network ATC intents are created. The first intent is for management and compute network traffic, and the second intent is for storage traffic.
 
-:::image type="content" source="media/three-node-switchless-two-switches-dual-link/network-atc.png" alt-text="Diagram showing three-node switchless, two TOR, dual link Network ATC intents" lightbox="media/three-node-switchless-two-switches-dual-link/network-atc.png":::
+:::image type="content" source="media/three-node-switchless-two-switches-dual-link/network-atc.png" alt-text="Diagram showing three-node switchless, two TOR, dual link Network ATC intents." lightbox="media/three-node-switchless-two-switches-dual-link/network-atc.png":::
 
 ### Management and compute intent
 
-- Intent Type: Management and Compute
-- Intent Mode: Cluster mode
+- Intent type: Management and Compute
+- Intent mode: Cluster mode
 - Teaming: Yes. pNIC01 and pNIC02 team.
-- Default Management VLAN: Configured VLAN for management adapters isn’t modified.
-- PA and Compute VLANs and vNICs: Network ATC is transparent to PA vNICs and VLAN or compute VM vNICs and VLANs.
+- Default management VLAN: Configured VLAN for management adapters isn’t modified.
+- PA and compute VLANs and vNICs: Network ATC is transparent to PA vNICs and VLAN or compute VM vNICs and VLANs.
 
 ### Storage intent
 
