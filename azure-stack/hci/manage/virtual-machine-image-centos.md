@@ -23,7 +23,7 @@ Before you begin, make sure that the following prerequisites are completed.
 
 - You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- You have [downloaded the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Stack HCI cluster. Here, we downloaded the *CentOS-7-x86_64-Everything-2207-02.iso* file. You'll use this image to create a VM image.
+- You have [downloaded the latest supported ISO image](http://repo1.sea.innoscale.net/centos/7.9.2009/isos/x86_64/) on your Azure Stack HCI cluster. Here, we downloaded the *CentOS-7-x86_64-Everything-2207-02.iso* file. You use this image to create a VM image.
 
 ## Workflow
 
@@ -60,9 +60,9 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
     
     1. Assign `4096` for **Startup memory**:
     
-        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png" alt-text="Screenshot of the assign memory on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png" alt-text="Screenshot of the Assign memory page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-assign-memory.png":::
 
-    1. Select the virtual network switch that the VM will use for connection.
+    1. Select the virtual network switch that the VM uses for connection.
 
         :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png" alt-text="Screenshot of the Configure networking page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-configure-networking.png":::
     
@@ -84,7 +84,7 @@ Follow these steps to use the downloaded CentOS image to provision a VM:
 
     :::image type="content" source="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-centos/centos-virtual-machine-microsoft-ufei-certificate-authority.png":::
 
-1. Select the VM from the Hyper-V Manager and then start the VM. The VM will boot from the ISO image that you provided.
+1. Select the VM from the Hyper-V Manager and then start the VM. The VM boots from the ISO image that you provided.
 
 ### Step 2: Connect to VM and install CentOS
 
@@ -127,7 +127,7 @@ Once the VM is running, follow these steps:
 Follow these steps to configure the VM:
 
 1. Connect and then sign into the VM using the root password that you created during the CentOS installation.
-1. Make sure that `cloud-init` was not installed.
+1. Make sure that `cloud-init` wasn't installed.
 
     ```bash
     sudo yum list installed | grep cloud-init
