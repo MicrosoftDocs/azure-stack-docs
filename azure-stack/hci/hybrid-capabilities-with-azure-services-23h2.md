@@ -4,7 +4,7 @@ description: This article describes the cloud service components of Azure Stack 
 ms.topic: overview
 author: ManikaDhiman
 ms.author: v-manidhiman
-ms.date: 05/01/2024
+ms.date: 05/10/2024
 ms.custom: e2e-hybrid
 ---
 
@@ -20,7 +20,7 @@ Your on-premises Azure Stack HCI solution integrates with Azure cloud via severa
 
 The Azure Stack HCI cloud service in Azure is a key part of the Azure Stack HCI product offering. Within the Azure Stack HCI operating system (OS), the  always-running HciSvc system service communicates with the Azure Stack HCI cloud service to deliver cloud-based functionalities.
 
-The Azure Stack HCI cloud service comprises standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Stack HCI functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Stack HCI cloud service also enables contextual navigation from an Azure Stack HCI cluster resource to its Arc machines and Arc virtual machines (VMs).
+The Azure Stack HCI cloud service comprises of standard Azure components, such as a resource provider in Azure Resource Manager and a UI extension in the Azure portal. These components enable access to Azure Stack HCI functionality via familiar Azure tools and UX, such as [Azure portal](manage/azure-portal.md), [Azure PowerShell](/powershell/module/az.stackhci/?view=azps-7.2.0&preserve-view=true), and [Azure CLI](/cli/azure/stack-hci?view=azure-cli-latest&preserve-view=true). The Azure Stack HCI cloud service also enables contextual navigation from an Azure Stack HCI cluster resource to its Arc machines and Arc virtual machines (VMs).
 
 The Azure Stack HCI cloud service extends the hybrid capabilities for Azure Stack HCI by enabling the following cloud-based functionalities:
 
@@ -28,15 +28,15 @@ The Azure Stack HCI cloud service extends the hybrid capabilities for Azure Stac
 
 - **Deployment and security.** Azure Stack HCI supports cloud-based deployment through the Azure portal or an Azure Resource Manager deployment template. For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](deploy/deploy-via-portal.md) and [Deploy Azure Stack HCI via the Azure Resource Manager deployment template](deploy/deployment-azure-resource-manager-template.md).
 
-    The Azure Stack HCI deployment follows a secure-by-default strategy, including a tailored security baseline, a security drift control mechanism, and default security features. Post-deployment, you can view the security settings for Azure Stack HCI via the Azure portal.
+    The Azure Stack HCI deployment follows a secure-by-default strategy, including a tailored security baseline, a security drift control mechanism, and default security features. Post-deployment, you can view the security settings for Azure Stack HCI via the Azure portal. For more information, see [About security features](concepts/security-features.md).
 
-- **Updates.** Keep your Azure Stack HCI solution up-to-date with security fixes and feature improvements. The latest updates are identified and applied from the cloud through the Azure Update Manager tool. For more information, see [About updates for Azure Stack HCI, version 23H2](update/about-updates-23h2.md).
+- **Updates.** You can keep your Azure Stack HCI solution up-to-date with security fixes and feature improvements. The latest updates are identified and applied from the cloud through the Azure Update Manager tool. For more information, see [About updates for Azure Stack HCI, version 23H2](update/about-updates-23h2.md).
 
-- **Monitoring.** Perform basic monitoring of all Azure Stack HCI cluster resources and confirm the deployment via the Azure portal. For more information, see [Verify a successful deployment](deploy/deploy-via-portal.md#verify-a-successful-deployment). Advanced monitoring utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. For information about monitoring Azure Stack HCI, see [What is Azure Stack HCI monitoring?](concepts/monitoring-overview.md).
+- **Monitoring.** You can perform basic monitoring of all Azure Stack HCI cluster resources and confirm the deployment via the Azure portal. For more information, see [Verify a successful deployment](deploy/deploy-via-portal.md#verify-a-successful-deployment). Advanced monitoring utilizes Azure Monitor tools, such as Insights, Metrics, Logs, Workbooks, and Alerts. For information about monitoring Azure Stack HCI, see [What is Azure Stack HCI monitoring?](concepts/monitoring-overview.md).
 
 - **Observability and support.** Azure Stack HCI observability feature collects telemetry and diagnostic data, which helps Microsoft in system analysis and issue resolution. Observability and remote support are integral to the Azure Stack HCI deployment process. For more information, see [Azure Stack HCI observability](concepts/observability.md) and [Get remote support for Azure Stack HCI](manage/get-remote-support.md).
 
-- **Billing.** Pay for Azure Stack HCI through your Azure subscription. The Azure Stack HCI cloud service sends usage data to Azure Commerce to calculate the monthly bill for the registered subscription. For more information, see [Azure Stack HCI billing and payment](concepts/billing.md).
+- **Billing.** The Azure Stack HCI cloud service sends usage data to Azure Commerce to calculate the monthly bill for the registered subscription. You can pay for Azure Stack HCI through your Azure subscription. For more information, see [Azure Stack HCI billing and payment](concepts/billing.md).
 
 - **Licensing.** An Azure Stack HCI cluster requires cloud connectivity to keep its license up to date. The Azure Stack HCI cloud service validates proper registrations and distributes new licenses. To learn more about how licensing impacts functionality, see [Azure Stack HCI FAQ - What happens if the 30-day limit is exceeded?](faq.yml#what-happens-if-the-30-day-limit-is-exceeded)
 
@@ -44,7 +44,7 @@ The Azure Stack HCI cloud service extends the hybrid capabilities for Azure Stac
 
 - **Diagnostics.** Azure Stack HCI diagnostic data helps Microsoft detect, diagnose, and fix problems to restore service health and improve products. To collect diagnostic data for a registered and connected cluster, see [Collect diagnostic logs for Azure Stack HCI](manage/collect-logs.md). To collect diagnostics data in scenarios where observability components aren't deployed or during issues with the cluster registration process, see [Perform standalone log collection](manage/get-support-for-deployment-issues.md#perform-standalone-log-collection).
 
-- **Enhanced management.** Perform enhanced management of your Azure Stack HCI cluster from Azure, enabled via Managed Identity created for the cluster resource of your Azure Stack HCI cluster. For more information, see [Enhanced management of Azure Stack HCI from Azure](manage/azure-enhanced-management-managed-identity.md).
+- **Enhanced management.** You can perform enhanced management of your Azure Stack HCI cluster from Azure. This feature is enabled by the Managed Identity created for your Azure Stack HCI cluster resource that serves as the identity for the various components of your cluster. For more information, see [Enhanced management of Azure Stack HCI from Azure](manage/azure-enhanced-management-managed-identity.md).
 <!--update applies to for the 'Enhanced management of Azure Stack HCI from Azure' article?-->
 
 ## Azure Arc on Azure Stack HCI
