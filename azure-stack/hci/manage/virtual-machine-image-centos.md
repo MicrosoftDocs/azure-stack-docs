@@ -217,17 +217,18 @@ Follow these steps on your Azure Stack HCI cluster to create the VM image from t
 
 1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Arc virtual machines on your Azure Stack HCI.
 
-    Make sure to copy the VHDX in user storage in the cluster shared volume of your Azure Stack HCI. For exmaple, the path could look like: `C:\ClusterStorage\UserStorage_1\linuxvhdx`.
+    Make sure to copy the VHDX in user storage in the cluster shared volume of your Azure Stack HCI. For exmaple, the path could look like: `C:\ClusterStorage\UserStorage_1\linux.vhdx`.
 
     ```powershell
     $ImagePath = "Path to user storage in CSV" 
 
     $ImageName = "mylinuxvmimg" 
 
-    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' 
+    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' --storage-path-id $storagepathid
     ```
 
-    For more information, see [Create a VM image using Azure CLI](./virtual-machine-image-local-share.md#azure-cli).
+    For more information, see [Create a VM image using image in the local share](./virtual-machine-image-local-share.md).
+
 1. Validate that the image is created.
 
 ## Next steps
