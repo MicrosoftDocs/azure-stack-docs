@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/30/2024
+ms.date: 05/07/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -58,7 +58,7 @@ The steps are also summarized here:
 
 ### Create a client secret for ARB service principal
 
-1. Go to the service principal that you created and browse to **Certificates & secrets > Client secrets**.
+1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
@@ -96,7 +96,6 @@ This object ID for the Azure Stack HCI RP is unique per Azure tenant.
     ```
 
     You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the Resource Manager template.
-
 
     <!--You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
 
@@ -200,7 +199,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
-1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**. 
+1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
@@ -243,6 +242,16 @@ If the deployment fails, you should see an error message on the deployments page
 2. Copy the error message from the **Errors** blade. You can provide this error message to Microsoft support for further assistance.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the summary in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
+
+### Known issues for ARM template deployment
+
+This section contains known issues and workarounds for ARM template deployment.
+
+|Issue|Workaround/Comments|
+|------|-------|
+|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
+|In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster has completed the validation stage, we recommend that you do not initiate another ARM template deployment in "Validate" mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
+
 
 ## Next steps
 
