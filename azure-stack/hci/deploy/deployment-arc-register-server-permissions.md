@@ -275,7 +275,7 @@ This section describes how to assign Azure permissions for deployment from the A
 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
 
-1. Lastly, in the Azure portal go to the Microsoft Entra Roles and Administrators, assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
+1. Lastly, in the Azure portal go to Microsoft Entra Roles and Administrators, assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
 
