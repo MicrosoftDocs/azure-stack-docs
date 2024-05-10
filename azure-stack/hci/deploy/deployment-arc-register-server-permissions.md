@@ -258,13 +258,6 @@ This section describes how to assign Azure permissions for deployment from the A
     - **Azure Stack HCI Administrator**
     - **Reader**
 
-1. Next, assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
-
-    :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
-
-    > [!NOTE]
-    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
-
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment.png" alt-text="Screenshot of the Add role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment.png":::
@@ -281,6 +274,13 @@ This section describes how to assign Azure permissions for deployment from the A
 1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
+
+1. Lastly, in the Azure portal go to the Microsoft Entra Roles and Administrators, assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
+
+    :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
+
+    > [!NOTE]
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
 
 ## Next steps
 
