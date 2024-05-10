@@ -60,10 +60,11 @@ Before starting the deployment, we recommend you check the following table that 
 |Two nodes - no switch for storage|Supported|Supported|
 |Two nodes - with network switch for storage|Supported|Supported|
 |Three nodes - with network switch for storage|Supported|Supported|
+|Three nodes - with no network switch for storage|Not supported|Supported|
 |Four to 16 nodes - with no network switch for storage|Not supported|Not supported|
 |Four to 16 nodes - with network switch for storage|Supported|Supported|
 
-The two network topology options are:
+The two storage network options are:
 
 - **No switch for storage**. When you select this option, your Azure Stack HCI system uses crossover network cables directly connected to your network interfaces for storage communication. The current supported switchless deployments from the portal are one or two nodes.
 
