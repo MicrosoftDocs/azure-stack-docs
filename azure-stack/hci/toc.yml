@@ -286,7 +286,9 @@ items:
       href: manage/remote-support-arc-extension.md
 
   - name: Storage
-    items: 
+    items:
+    - name: Storage thin provisioning
+      href: manage/manage-thin-provisioning-23h2.md
     - name: Use ReFS deduplication and compression
       href: manage/refs-deduplication-and-compression.md
 
