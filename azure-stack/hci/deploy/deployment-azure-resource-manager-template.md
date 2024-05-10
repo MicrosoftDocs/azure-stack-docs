@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 04/30/2024
+ms.date: 05/07/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -14,18 +14,17 @@ ms.custom: devx-track-arm-template
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article details how to use an Azure Resource Manager template (ARM template) in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
-
+This article details how to use an Azure Resource Manager template in the Azure portal to deploy an Azure Stack HCI in your environment. The article also contains the prerequisites and the preparation steps required to begin the deployment.
 
 > [!IMPORTANT]
-> ARM template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment are IT Administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first and then perform subsequent deployments via the ARM template.
+> Azure Resource Manager template deployment of Azure Stack HCI, version 23H2 systems is targeted for deployments-at-scale. The intended audience for this deployment is IT administrators who have experience deploying Azure Stack HCI clusters. We recommend that you deploy a version 23H2 system via the Azure portal first, and then perform subsequent deployments via the Resource Manager template.
 
 ## Prerequisites
 
 - Completion of [Register your servers with Azure Arc and assign deployment permissions](./deployment-arc-register-server-permissions.md). Make sure that:
-    - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
-    - All servers are running the same version of OS.
-    - All the servers have the same network adapter configuration.
+  - All the mandatory extensions are installed successfully. The mandatory extensions include: **Azure Edge Lifecycle Manager**, **Azure Edge Device Management**, **Telemetry and Diagnostics**, and **Azure Edge Remote Support**.
+  - All servers are running the same version of OS.
+  - All the servers have the same network adapter configuration.
 
 ## Step 1: Prepare Azure resources
 
@@ -35,8 +34,7 @@ Follow these steps to prepare the Azure resources you need for the deployment:
 
 To authenticate your cluster, you need to create a service principal and a corresponding **Client secret** for Arc Resource Bridge (ARB).
 
-
-#### Create a service principal for ARB
+### Create a service principal for ARB
 
 Follow the steps in [Create a Microsoft Entra application and service principal that can access resources via Azure portal](/entra/identity-platform/howto-create-service-principal-portal) to create the service principal and assign the roles. Alternatively, use the PowerShell procedure to [Create an Azure service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -56,11 +54,11 @@ The steps are also summarized here:
 
    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png" alt-text="Screenshot showing Application (client) ID and the object ID for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2b.png":::
 
-    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the ARM template.
+    You use the **Application (client) ID** against the `arbDeploymentAppID` parameter and the **Object ID** against the `arbDeploymentSPNObjectID` parameter in the Resource Manager template.
 
-#### Create a client secret for ARB service principal
+### Create a client secret for ARB service principal
 
-1. Go to the service principal that you created and browse to **Certificates & secrets > Client secrets**.
+1. Go to the application registration that you created and browse to **Certificates & secrets > Client secrets**.
 1. Select **+ New client** secret.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-1.png" alt-text="Screenshot showing creation of a new client secret." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-1.png":::
@@ -76,7 +74,7 @@ The steps are also summarized here:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-client-secret-3.png" alt-text="Screenshot showing client secret value." lightbox="./media/deployment-azure-resource-manager-template/create-client-secret-3.png":::
 
-    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the ARM template.
+    You use the **client secret value** against the `arbDeploymentAppSecret` parameter in the Resource Manager template.
 
 ### Get the object ID for Azure Stack HCI Resource Provider
 
@@ -97,8 +95,7 @@ This object ID for the Azure Stack HCI RP is unique per Azure tenant.
     Get-AzADServicePrincipal -DisplayName "Microsoft.AzureStackHCI Resource Provider"
     ```
 
-    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the ARM template.
-
+    You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the Resource Manager template.
 
     <!--You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
 
@@ -148,16 +145,16 @@ Optionally verify the role assignments you created.
 
 1. Go to **Key Vault Secrets User** for the appropriate resource group for the second server in your environment.-->
 
-## Step 2: Deploy using ARM template
+## Step 2: Deploy using Azure Resource Manager template
 
-ARM template creates and assigns all the resource permissions required for deployment. 
+A Resource Manager template creates and assigns all the resource permissions required for deployment.
 
-With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested ARM deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
+With all the prerequisite and preparation steps complete, you're ready to deploy using a known good and tested Resource Manager deployment template and corresponding parameters JSON file. Use the parameters contained in the JSON file to fill out all values, including the values generated previously.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > In this release, make sure that all the parameters contained in the JSON value are filled out including the ones that have a null value. If there are null values, then those need to be populated or the validation fails.
 
-1. In Azure portal, go to **Home** and select **+ Create a resource**.
+1. In the Azure portal, go to **Home** and select **+ Create a resource**.
 
 1. Select **Create** under **Template deployment (deploy using custom templates)**.
 
@@ -173,7 +170,6 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png" alt-text="Screenshot showing template selected." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-3a.png":::
 
-
 1. On the **Basics** tab, you see the **Custom deployment** page. You can select the various parameters through the dropdown list or select **Edit parameters**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png" alt-text="Screenshot showing Custom deployment page on the Basics tab." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-4a.png":::
@@ -187,7 +183,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select the appropriate resource group for your environment.
 
-1.  Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
+1. Scroll to the bottom, and confirm that **Deployment Mode = Validate**.
 
 1. Select **Review + create**.
 
@@ -203,12 +199,11 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. On the **Custom deployment** screen, select **Edit parameters**. Load up the previously saved parameters and select **Save**.
 
-1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**. 
+1. At the bottom of the workspace, change the final value in the JSON from **Validate** to **Deploy**, where **Deployment Mode = Deploy**.
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png" alt-text="Screenshot showing deploy selected for deployment mode." lightbox="./media/deployment-azure-resource-manager-template/deploy-arm-template-7b.png":::
 
-
-1. Verify that all the fields for the ARM deployment template are filled in by the Parameters JSON.
+1. Verify that all the fields for the Resource Manager deployment template are filled in by the Parameters JSON.
 
 1. Select the appropriate resource group for your environment.
 
@@ -236,9 +231,9 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 You can also check out this community sourced template to [Deploy an Azure Stack HCI, version 23H2 cluster using Bicep](https://github.com/Azure/azure-quickstart-templates/blob/master/quickstarts/microsoft.azurestackhci/create-cluster-with-prereqs/README.md).
 
-## Troubleshooting deployment issues
+## Troubleshoot deployment issues
 
-If the deployment fails, you should see an error message on the deployments page. 
+If the deployment fails, you should see an error message on the deployments page.
 
 1. On the **Deployment details**, select the **error details**.
 
@@ -248,8 +243,17 @@ If the deployment fails, you should see an error message on the deployments page
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png" alt-text="Screenshot showing the summary in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/select-view-error-details-2.png":::
 
+### Known issues for ARM template deployment
+
+This section contains known issues and workarounds for ARM template deployment.
+
+|Issue|Workaround/Comments|
+|------|-------|
+|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
+|In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster has completed the validation stage, we recommend that you do not initiate another ARM template deployment in "Validate" mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
+
+
 ## Next steps
 
-Learn more:
 - [About Arc VM management](../manage/azure-arc-vm-management-overview.md)
-- About how to [Deploy Azure Arc VMs on Azure Stack HCI](../manage/create-arc-virtual-machines.md).
+- [Deploy Azure Arc VMs on Azure Stack HCI](../manage/create-arc-virtual-machines.md)
