@@ -99,6 +99,12 @@ items:
         href: plan/two-node-ip-requirements.md
       - name: Decision matrix
         href: plan/two-node-decision-matrix.md
+    - name: Three-node switchless deployments
+      items:
+      - name: Storage switchless, dual TOR, single link
+        href: plan/three-node-switchless-two-switches-single-link.md
+      - name: Storage switchless, dual TOR, dual link
+        href: plan/three-node-switchless-two-switches-two-links.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
