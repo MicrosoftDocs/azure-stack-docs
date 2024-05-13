@@ -20,20 +20,20 @@ This article describes how to prepare a Red Hat Enterprise Linux image to create
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed.
+Before you begin, make sure that the following prerequisites are completed. Make sure you have:
 
-- You have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
+- Access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- You have downloaded latest supported [Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here we have downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
+- [Downloaded latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
 
 ## Workflow
 
-Prepare a Red Hat Enterprise image and use it to create a VM image following these steps:
+Follow these steps to prepare a Red Hat Enterprise image and create a VM image:
 
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise-linux.md#create-vm-image-from-red-hat-enterprise-image).
-2. [Connect VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect-vm-and-install-red-hat-os).
+2. [Connect to VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect--to-vm-and-install-red-hat-os).
 3. [Configure VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-configure-vm).
-4. [Clean up residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-clean-up-residual-configuration).
+4. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-clean-up-the-residual-configuration).
 5. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-create-vm-image).
 
 The following sections provide detailed instructions for each step in the workflow.
@@ -79,7 +79,7 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
 2. Use the UEFI certificate to Secure Boot the VM.
 
-    1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**.
+    1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine, right-click, and then select **Settings**.
 
     2. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the template dropdown list, select **Microsoft UEFI Certificate Authority**.
 
@@ -87,13 +87,13 @@ Follow these steps to use the downloaded Red Hat Enterprise image to provision a
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of UEFI Secure Boot enabled screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png":::
 
-3. Select the VM from the Hyper-V Manager and then start the VM. The VM will boot from the ISO image that you provided.
+3. Select the VM from the Hyper-V Manager and then start the VM. The VM boots from the ISO image that you provided.
 
-### Step 2: Connect VM and install Red Hat OS
+### Step 2: Connect to VM and install Red Hat OS
 
 Once the VM is running, follow these steps:
 
-1. Select the VM from the Hyper-V Manager, right-click to invoke the context menu and then select **Connect**.
+1. Select the VM from the Hyper-V Manager, right-click to invoke the context menu, and then select **Connect**.
 
 2. Select the **Install Red Hat Enterprise Linux 9.4** option from the boot menu.
 
@@ -117,11 +117,9 @@ Once the VM is running, follow these steps:
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png" alt-text="Screenshot of the Installation Destination page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png":::
 
-8. Select the **Network & Host Name**.
+8. Select the **Network & Host Name**, enable the **ON** switch for the network interface, and then select **Done**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png" alt-text="Screenshot of the completed Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png":::
-
-    Enable the **ON** switch for the network interface and then select **Done**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png" alt-text="Screenshot of the Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png":::
 
@@ -145,15 +143,15 @@ Follow these steps to configure the VM:
 
 1. Connect and then sign into the VM using the root password that you created during the Red Hat Enterprise installation.
 
-2. Make sure that `cloud-init` wasn't installed
+2. Make sure that `cloud-init` wasn't installed.
 
-    ```azurecli
+    ```bash
     Sudo yum list installed | grep cloud-init
     ```
 
-3. Install the `cloud-init` tool and verify the installed version.
+3. Install the `cloud-init` tool and verify the version of `cloud-init` installed.
 
-    ```azurecli
+    ```bash
     Sudo yum install -y cloud-init
     cloud-init --version
     ```
@@ -189,7 +187,7 @@ Follow these steps to configure the VM:
     /usr/bin/cloud-init 23.4-7.el9_4 
     ```
 
-### Step 4: Clean up residual configuration
+### Step 4: Clean up the residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
 
@@ -250,7 +248,9 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 6. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
 
-7. Export a VHD or copy the VHD from your VM. Copy the VHD to a user storage on the cluster shared volume on your Azure Stack HCI. Alternatively, you can copy the VHDX as a page blob to an Azure Storage account.
+7. Export a VHDX or copy the VHDX from your VM. You can use the following methods:
+    - Copy the VHDX to a user storage on the cluster shared volume on your Azure Stack HCI.
+    - Alternatively, copy the VHDX as a page blob to a container in an Azure Storage account.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png" alt-text="Screenshot of exporting a Virtual Machine VHDX." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png":::
 
