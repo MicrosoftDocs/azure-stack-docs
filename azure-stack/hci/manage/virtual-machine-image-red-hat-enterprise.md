@@ -31,7 +31,7 @@ Before you begin, make sure that the following prerequisites are completed. Make
 Follow these steps to prepare a Red Hat Enterprise image and create a VM image:
 
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise-linux.md#create-vm-image-from-red-hat-enterprise-image).
-2. [Connect to VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect--to-vm-and-install-red-hat-os).
+2. [Connect to VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise-linux.md#step-2-connect-to-vm-and-install-red-hat-os).
 3. [Configure VM](./virtual-machine-image-red-hat-enterprise-linux.md#step-3-configure-vm).
 4. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprise-linux.md#step-4-clean-up-the-residual-configuration).
 5. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise-linux.md#step-5-create-vm-image).
