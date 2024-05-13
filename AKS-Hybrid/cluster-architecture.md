@@ -2,7 +2,7 @@
 title: AKS Arc and workload cluster architecture
 description: Learn about AKS Arc and workload cluster architecture.
 ms.topic: overview
-ms.date: 12/11/2023
+ms.date: 05/10/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: rbaziwane
@@ -16,7 +16,7 @@ ms.lastreviewed: 11/28/2023
 
 Azure Kubernetes Service (AKS) on Azure Stack HCI is an enterprise-grade Kubernetes container platform. It includes Microsoft-supported core Kubernetes, a purpose-built Windows container host, and a Microsoft-supported Linux container host, with a goal to have a simple deployment and lifecycle management experience.
 
-This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and nodepools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
+This article introduces the core Kubernetes infrastructure components, such as the control plane, nodes, and node pools. Workload resources such as pods, deployments, and sets are also introduced, along with how to group resources into namespaces.
 
 ## Cluster architecture
 
@@ -54,6 +54,8 @@ A workload cluster has many components, as described in the following sections.
 
 The load balancer is a virtual machine running Linux and HAProxy and KeepAlive to provide load balanced services for the workload clusters deployed by the management cluster. For each workload cluster, AKS Arc adds at least one load balancer virtual machine. Any Kubernetes service of type LoadBalancer that is created on the workload cluster creates a load-balancing rule in the VM.
 
+The MetalLB Arc extension is a tool that allows you to generate external IPs for your applications and services. Arc-enabled Kubernetes clusters can integrate with [MetalLB](https://metallb.universe.tf/configuration/) using the `Arc Networking` k8s-extension. For information about MetalLB load balancing for AKS enabled by Arc Kubernetes clusters, see the [Overview of MetalLB for Kubernetes clusters](load-balancer-overview.md).
+
 #### Worker nodes
 
 To run your applications and supporting services, you need a **Kubernetes node**. An AKS workload cluster has one or more *worker nodes*. Worker
@@ -70,7 +72,7 @@ Azure Arc is automatically enabled on all your Kubernetes clusters created using
 If a given workload cluster consists of both Linux and Windows worker nodes, it must be scheduled onto an OS that can support provisioning the workload. Kubernetes offers two mechanisms to ensure that workloads land on nodes with a target operating system:
 
 - **Node Selector** is a simple field in the pod spec that constrains pods to only be scheduled onto healthy nodes matching the operating system.
-- **Taints and tolerations** work together to ensure that pods are not scheduled onto nodes unintentionally. A node can be "tainted" so as to not accept pods that do not explicitly tolerate its taint through a "toleration" in the pod spec.
+- **Taints and tolerations** work together to ensure that pods aren't scheduled onto nodes unintentionally. A node can be "tainted" so as to not accept pods that don't explicitly tolerate its taint through a "toleration" in the pod spec.
 
 For more information, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/) and [taints and tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
 
