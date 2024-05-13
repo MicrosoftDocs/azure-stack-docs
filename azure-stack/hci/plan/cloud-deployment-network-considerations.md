@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/07/2024
+ms.date: 05/13/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -161,10 +161,11 @@ The following conditions must be met when defining your IP pool for the infrastr
 
 |#  | Condition |
 |---------|---------|
-|1     | The IP range must use consecutive IPs and all IPs must be available within that range.        |
+|1     | The IP range must use consecutive IPs and all IPs must be available within that range. This IP range can't be changed post deployment.       |
 |2     | The range of IPs must not include the cluster node management IPs but must be on the same subnet as your nodes.        |
 |3     | The default gateway defined for the management IP pool must provide outbound connectivity to the internet.        |
 |4     | The DNS servers must ensure name resolution with Active Directory and the internet.        |
+|5     | The management IPs require outbound internet access.        |
 
 ### Management VLAN ID
 
