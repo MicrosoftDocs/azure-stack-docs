@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Stack HCI using 
 description: Learn the discovery and replication process for VMware VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/01/2024
+ms.date: 05/10/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -20,9 +20,11 @@ For more information on appliances for Azure Migrate and how to manage them, see
 
 ## Before you begin
 
-For both the source VMware vCenter Server and target Azure Stack HCI appliances, make sure that the hardware has sufficient resource to support the creation of a Windows Server 2022 VM with 16 GB RAM, 80 GB of disk storage, 8 vCPUs, and an external virtual switch.
+For both the source VMware vCenter Server and target Azure Stack HCI appliances, make sure that the underlying hardware has sufficient resources to support the creation of a Windows Server 2022 VM with a minimum of 16 GB RAM, 80 GB of disk storage (HDD), 8 vCPUs, and an external virtual switch.
 
 ## Step 1: Create and configure the source VMware appliance
+
+### Generate the project key
 
 1. In the Azure portal, go to your Azure Migrate project and then go to **Servers, databases and webapps**.
 1. On the **Azure Migrate: Discovery and assessment tool** tile, select **Discover**.
@@ -31,25 +33,34 @@ For both the source VMware vCenter Server and target Azure Stack HCI appliances,
 1. Copy the **Project key** and save it for later use.
 1. You can now **Download the Azure Migrate source appliance** using either an .OVA file or a .zip file. The detailed steps are provided in the subsequent sections.
 
+
 ### Create the source appliance
 
-You can install the appliance using either an .OVA file or a .zip file that you download to your VMware host server. For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).
+You can install the appliance using either an .OVA file or a .zip file that you download to your VMware host server. <!-- REMOVE For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).-->
 
 #### Install using an .OVA file
 
-This step applies only if you are deploying the source VMware appliance using an .OVA file. 
+This step applies only if you are deploying the source VMware appliance using an .OVA file.
 
-1. To create the source VMware appliance, see [Create a source appliance in the VMware environment starting from the OVA file](/azure/migrate/tutorial-discover-vmware#create-the-appliance-server). <!--[VM using an OVA file](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.hostclient.doc/GUID-8ABDB2E1-DDBF-40E3-8ED6-DC857783E3E3.html) in the VMware documentation.-->
+1. Once you have downloaded the .OVA file, [Verify that the file is secure](/azure/migrate/how-to-set-up-appliance-vmware#verify-security). 
+1. [Create the source VMware appliance](/azure/migrate/tutorial-discover-vmware#create-the-appliance-server). 
 1. [Verify that the appliance can access Azure](/azure/migrate/tutorial-discover-vmware#verify-appliance-access-to-azure). <!--check if this is needed-->
+
 
 #### Install using a .zip file
 
-This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the source appliance. 
+This step applies only if you downloaded the .zip file. You use the *AzureMigrateInstaller.ps1* PowerShell script to install the source appliance.
 For specific information, see [Set up an appliance with a script](/azure/migrate/deploy-appliance-script).
 
-1. Copy the downloaded zip file to the new VM that you created in the vCenter.
-1. Extract the zip to a folder.
-1. Navigate to the extracted folder. Open a PowerShell window as an administrator and run the following command:
+1. Create a VM in the VMware vCenter with the following configuration:
+    - Operating system: Windows Server 2022
+    - vCPU: 8
+    - Disk: >80 GB
+    - Memory: 16 GB
+    <!--For detailed steps, see [Creating a VM in vSphere](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-FBEED81C-F9D9-4193-BDCC-CC4A60C20A4E.html?hWord=N4IghgNiBcIMICcCmYAuSAEA3Alg1ArpBgLZgDGAFjgHZIgC+QA).-->
+1. Once the VM is created, sign into the VM as an administrator.
+1. Copy the downloaded zip file to the new VM that you created in the vCenter. Extract the zip to a folder and go to the extracted folder.
+1. Open a PowerShell window as an administrator and run the following command:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted
@@ -59,26 +70,40 @@ For specific information, see [Set up an appliance with a script](/azure/migrate
 
 1. Select option 1 as the desired configuration: **Primary appliance to discover, assess and migrate servers**.
 1. Follow the rest of the onscreen instructions to install the source appliance and uninstall Internet Explorer.
-1. Restart the VM after the installation is complete.
+1. Restart the VM after the installation is complete. Sign in to the VM.
 
 ### Configure the source appliance and discover VMs
 
 Once the source appliance is installed, follow these steps:
 
-1. [Configure the source appliance](/azure/migrate/tutorial-discover-vmware#configure-the-appliance). This would include:
-    1.  [Setting up the prerequisites and registering the appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
+1. [Configure the source appliance](/azure/migrate/tutorial-discover-vmware#configure-the-appliance). Complete these steps.
+    1.  [Set up the prerequisites and register the source appliance](/azure/migrate/tutorial-discover-vmware#set-up-prerequisites-and-register-the-appliance).
 
-    1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** to the folder path provided, select **Verify**, then:
-        - Enter admin credentials used when discovering the VMware VMs.
-        - Enter the FQDN or IP of the vCenter server.
-        - Disable the slider.
-        - Select **Start Discovery**.
+        :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
 
-    1. On the Onboard to Azure Stack HCI section, enter the name and credentials for the target Azure Stack HCI cluster. This is the cluster where the VMs are migrated. Select **Save**.
+    1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Version 6.7 and 7.0 are currently supported.
 
-After the appliance is configured, you start the VM discovery process.
+        :::image type="content" source="./media/migrate-vmware-replicate/verify-vddk-installation-1.png" alt-text="Screenshot of verification of VDDK installation." lightbox="./media/migrate-vmware-replicate/verify-vddk-installation-1.png":::
 
-Wait until you have a green checkmark indicating discovery is finished, then go to the Azure portal to review VM inventory.
+    1. Provide vCenter server credentials for the discovery of Vmware VMs.
+        1. Select **Add credentials**.
+        1. Select the **Source type** as vCenter Server.
+        1. Provide a **Friendly name** for the credentials.
+        1. Enter the **Username** and the **Password** for the vCenter server.
+        1. **Save** the credentials.
+    1. Add discovery sources.
+        1. Add the vCenter discovery source.
+        1. Enter the IP address or FQDN of the vCenter server.
+        1. Enter the friendly name for the credentials used when discovering the VMware VMs.
+        1. Select **Save**. Select **Add more** to repeat this step for each vCenter server. The disocvery source table is updated.
+
+        :::image type="content" source="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png" alt-text="Screenshot of credentials and discovery sources configured." lightbox="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png":::
+
+    1. Disable the slider.
+    1. Select **Start Discovery**. The discovery may take several minutes to finish.
+    1. On the **Onboard to Azure Stack HCI** section, enter the name and credentials for the target Azure Stack HCI cluster. This is the cluster where the VMs are migrated. Select **Save**.
+
+ Wait until you have a green checkmark indicating that the discovery is finished. After the discovery is complete, go to the Azure portal to review the VM inventory.
 
 ## Step 2: Create and configure the target appliance
 
