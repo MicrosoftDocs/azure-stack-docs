@@ -85,6 +85,9 @@ Use the following steps to disable drift control:
    - **Local** - Affects the local node only.
    - **Cluster** - Affects all nodes in the cluster using the orchestrator.
 
+> [!IMPORTANT]
+> If you disable drift control, the protected settings are modified. If you enable drift control again, any changes that you since made to the protected settings are overwritten.
+
 ## Configure security settings during deployment
 
 As part of deployment, you can modify drift control and other security settings that constitute the security baseline on your cluster.
