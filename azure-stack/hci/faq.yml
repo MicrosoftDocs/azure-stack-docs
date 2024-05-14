@@ -7,7 +7,7 @@ metadata:
   ms.author: cosdar
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 05/02/2024
+  ms.date: 05/14/2024
 title: Azure Stack HCI FAQ
 summary: The Azure Stack HCI FAQ provides information about Azure Stack HCI connectivity with the cloud, and how Azure Stack HCI relates to Windows Server.
 
@@ -104,17 +104,7 @@ sections:
       - question: What Azure services can I connect to Azure Stack HCI?
         answer: |
           For an updated list of Azure services that you can connect Azure Stack HCI to, see [Managing hybrid capabilities on Azure Stack HCI with Azure services](hybrid-capabilities-with-azure-services.md).
-          
-      - question: How are the Azure Stack Hub and Azure Stack HCI solutions different?
-        answer: |
-          With Azure Stack Hub, you run cloud services on-premises. You can run Azure IaaS and PaaS services on-premises to consistently build and run cloud apps anywhere, managed with the Azure portal on-premises.
-          
-          With Azure Stack HCI, you run virtualized workloads on-premises, managed with Windows Admin Center, and familiar Windows Server tools. You can also connect to Azure for hybrid scenarios like cloud-based Site Recovery, monitoring, and others.
-          
-      - question: Can I upgrade from Azure Stack HCI to Azure Stack Hub?
-        answer: |
-          No, but customers can migrate their workloads from Azure Stack HCI to Azure Stack Hub or Azure.
-          
+
       - question: How do I identify an Azure Stack HCI server?
         answer: |
           In Azure portal, go to your server. If the server is Arc registered, you should be able to see the OS version and overall Azure Stack HCI version. 
