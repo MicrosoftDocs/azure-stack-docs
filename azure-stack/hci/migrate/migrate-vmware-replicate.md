@@ -301,7 +301,7 @@ This step applies only if you downloaded the .zip file.
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::
     
 
-1. On the **Target appliance** tab, verify that the target appliance is connected - you should see a green checkmark.
+1. On the **Target appliance** tab, look for a green checkmark to verify that the target appliance is connected.
 
     > [!NOTE]
     > A green checkmark indicates that the target appliance is successfully registered and configured. If you haven't configured your target appliance yet, you will see the configuration page here instead.
@@ -328,21 +328,25 @@ This step applies only if you downloaded the .zip file.
     1. For your **Cache storage account**, select an existing storage account. You can also select **(New) Storage account** to create a new storage account with a randomly generated name.
 
         > [!NOTE]
-        > - We recommend that you create new a storage account to be used as your cache storage account. Once created, the storage account location can't be changed.
+        > We recommend that you create a new storage account to be used as your cache storage account.
 
-    1. Select a resource group to associate with your migrated VMs.
+    1. Select a resource group to associate with your migrated VMs. This resource group can be different than the resource group associated with your storage account.
    
-	1. Select the logical network that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs will be connected to this network. If you don't see a logical network in the dropdown list, [create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
+	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs will be connected to this network. 
 
-	1. Select the storage path that you created as a [prerequisite](./migrate-hyperv-prerequisites.md#prerequisites-for-hyper-v-vm-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs will be created at this storage path. If you don't see a storage path in the dropdown list, [create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
+        If you don't see a logical network in the dropdown list, [Create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
+
+	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs will be created at this storage path.
+
+        If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
     1. When finished, select **Next**.
-    
+
         :::image type="content" source="./media/migrate-vmware-replicate/replicate-4-target-2.png" alt-text="Screenshot showing the Target settings tab." lightbox="./media/migrate-vmware-replicate/replicate-4-target-2.png":::
 
 1. On the **Compute** tab:
 
-	1. Rename target VMs as needed.
+	1. Rename target VMs as needed. Make sure that the VM names conform to the [Azure naming conventions](/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute).
 	1. Select the OS disk for each VM from the dropdown lists.
     1. Configure number of vCPUs and RAM including selecting dynamic RAM for each VM, as needed.
     1. When finished, select **Next**.
@@ -358,7 +362,7 @@ This step applies only if you downloaded the .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-6-disks.png" alt-text="Screenshot showing the Disks tab." lightbox="./media/migrate-vmware-replicate/replicate-6-disks.png":::
 
-1. On the  **Review + Start replication** tab, make sure that all the values are correct and then select **Replicate**. 
+1. On the  **Review + Start replication** tab, make sure that all the values are correct and then select **Replicate**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-7-review.png" alt-text="Screenshot showing the Review + Start replication tab." lightbox="./media/migrate-vmware-replicate/replicate-7-review.png":::
 
