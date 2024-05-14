@@ -4,7 +4,7 @@ description: This technical reference serves as a one-stop-shop to access learni
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 04/24/2024
+ms.date: 05/14/2024
 ---
 
 # Technical reference for Software Defined Networking in Azure Stack HCI
@@ -25,6 +25,7 @@ The following table contains links to comprehensive training resources for self-
 | Module 1: Network Controller | [Module 1 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-1)| [Module 1 lab](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-1) | - [What is Network Controller?](../concepts/network-controller-overview.md) <br> - [Secure the Network Controller](./nc-security.md) |
 | Module 2: Hyper-V Network Virtualization | [Module 2 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-2)| N/A | - [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization) <br> - [Hyper-V Network Virtualization Technical Details](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyperv-network-virtualization-technical-details-windows-server)|
 | Module 3: Virtual networks | [Module 3 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-3)| [Module 3 lab](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-3) | - [Manage tenant virtual networks](./tenant-virtual-networks.md)|
+| Module 4: Datacenter Firewall | [Module 4 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-4)| [Module 4 lab](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-4) | - [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md)|
 
 ## SDN training resources: Microsoft Learn
 
