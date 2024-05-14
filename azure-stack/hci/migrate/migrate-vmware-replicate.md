@@ -150,7 +150,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/./media/migrate-vmware-replicate/generate-target-key-1.png.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/./media/migrate-vmware-replicate/generate-target-key-1.png":::
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
@@ -374,11 +374,11 @@ This step applies only if you downloaded the .zip file.
 
 1. Go to **Azure Stack HCI migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
  
-1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated. 
- 
+1. As the replication continues, replication status shows progress. Continue refreshing periodically. After the initial replication is complete, hourly delta replications begin. The **Migration status** changes to **Ready to migrate**. The VMs can be migrated.
+
     :::image type="content" source="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png" alt-text="Screenshot showing Replications page in Azure portal with migration status Ready to migrate." lightbox="./media/migrate-vmware-replicate/migrate-replicated-virtual-machine-1-a.png":::
 
 
 ## Next steps
 
-- Complete [Hyper-V VM Migration](migrate-vmware-migrate.md).
+- Complete [VMware VM Migration](migrate-vmware-migrate.md).
