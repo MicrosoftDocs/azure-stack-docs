@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/13/2024
+ms.date: 05/14/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -196,7 +196,7 @@ If a virtual switch configuration is required and you must use a specific VLAN I
 
 Azure Stack HCI deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch.
 
-Although it isn't required, we recommend naming your virtual switch names with the same naming convention. The recommended name for the virtual switches is as follows:
+We recommend naming your virtual switch names with the same naming convention. The recommended name for the virtual switches is as follows:
 
 "`ConvergedSwitch($IntentName)`",
 where `$IntentName` must match the name of the intent typed into the portal during deployment. This string must also match the name of the virtual network adapter used for management as described in the next step.
