@@ -122,7 +122,7 @@ The cluster information table is updated with the cluster information. The statu
 
 Wait until you have a green checkmark indicating that the discovery is finished. The migration readiness checks are also completed successfully. After the discovery is complete, go to the Azure portal to review the VM inventory.
 
-:::image type="content" source="./media/migrate-vmware-replicate/discovery-complete-1.png" alt-text="Screenshot showing that discovery is complete." lightbox="./media/migrate-vmware-replicate/discovery-complete-1.png"::
+:::image type="content" source="./media/migrate-vmware-replicate/discovery-complete-1.png" alt-text="Screenshot showing that discovery is complete." lightbox="./media/migrate-vmware-replicate/discovery-complete-1.png":::
 
 ## Step 2: Create and configure the target appliance
 
@@ -150,7 +150,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/-1.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/./media/migrate-vmware-replicate/generate-target-key-1.png.png":::
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
@@ -239,11 +239,11 @@ This step applies only if you downloaded the .zip file.
 
 1. Open **Azure Migrate Target Appliance Configuration Manager** from the desktop shortcut. Read and accept the **Terms of Use**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/terms-of-use-1.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/terms-of-use-1.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/terms-of-use-1.png" alt-text="Screenshot showing the terms of use on launching Azure Migrate Target Appliance Configuration Manager." lightbox="./media/migrate-vmware-replicate/terms-of-use-1.png":::
 
 1. Locate the target key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, and then select **Verify**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/verify-target-appliance-project-key-1.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/verify-target-appliance-project-key-1.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/verify-target-appliance-project-key-1.png" alt-text="Screenshot showing Verify selected under Verification of Azure Migrate project key." lightbox="./media/migrate-vmware-replicate/verify-target-appliance-project-key-1.png":::
 
 
 1. After the verification is complete, select **Log in** and sign in to your Azure account.
@@ -254,7 +254,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Wait until you see **The appliance has been successfully registered** message.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/target-appliance-registered-1.png" alt-text="Screenshot showing the Azure Migrate Target Appliance successfully registered." lightbox="./media/migrate-vmware-replicate/target-appliance-registered-1.png":::
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator app. It can take up to 10 minutes for the appliance to be registered.
 
@@ -262,13 +262,13 @@ This step applies only if you downloaded the .zip file.
 
 1. After the appliance is registered, under **Manage Azure Stack HCI cluster information**, select **Add cluster information**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-information.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-vmware-replicate/add-cluster-information.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-appliance-information-1.png" alt-text="Screenshot showing Add cluster information button." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-1.png":::
 
 1. For your target Azure Stack HCI cluster, enter the cluster FQDN (example format is *clustername.domain.com*), domain name, username, and password, and then select **Save**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/add-cluster-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-cluster-information-2.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-appliance-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-2.png":::
 
-1. Once the credentials are accepted, the status changes to **Validated**. Select **Configure**.
+1. After the credentials are accepted, the status changes to **Validated**. Select **Configure**.
 
 1. Wait until the configuration is complete and you see this message: **Successfully configured Azure Migrate project.**
 
@@ -277,9 +277,9 @@ This step applies only if you downloaded the .zip file.
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. Under **Migration and modernization**, select **Replicate**.
+1. Under **Migration tools**, select **Replicate**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/replicate-start.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/migrate-vmware-replicate/replicate-start.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/replicate-start-1.png" alt-text="Screenshot showing the Replicate start process." lightbox="./media/migrate-vmware-replicate/replicate-start-1.png":::
 
 1. On the **Specify intent** page:
     1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
@@ -288,7 +288,7 @@ This step applies only if you downloaded the .zip file.
     1. From the dropdown list, select the **On-premises appliance** (source) used for discovery.
     1. When finished, select **Continue**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/replication-screen.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-vmware-replicate/replication-screen.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/replication-specify-intent-1.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-vmware-replicate/replication-specify-intent-1.png":::
 
 1. On the **Replicate** page, on the **Basics** tab:
 
