@@ -19,20 +19,20 @@ ms.reviewer: abha
 
 This tutorial describes how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS enabled by Arc, and then test and scale your application. You also learn how to join a Windows node to an Active Directory domain.
 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS hybrid](kubernetes-concepts.md).
+This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Azure Arc](kubernetes-concepts.md).
 
 ## Before you begin
 
 Make sure you met the following requirements:
 
-* An [Azure Kubernetes Service cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node up and running.
-* A kubeconfig file to access the cluster.
-* The [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) is installed.
+- An [Azure Kubernetes Service cluster](./kubernetes-walkthrough-powershell.md) with at least one Windows worker node up and running.
+- A kubeconfig file to access the cluster.
+- The [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module) is installed.
 
 When you follow the procedures:
 
-* Run the commands in a PowerShell administrative window.
-* Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can use either node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
+- Run the commands in a PowerShell administrative window.
+- Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can use either node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
 ## Deploy the application
 
@@ -155,5 +155,5 @@ kubectl get pods -n default
 
 ## Next steps
 
-* [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters).
-* [Use persistent volumes on a Kubernetes cluster](persistent-volume.md).
+- [Use Azure Monitor to monitor your cluster and application](/azure/azure-monitor/insights/container-insights-enable-arc-enabled-clusters)
+- [Use persistent volumes on a Kubernetes cluster](persistent-volume.md)

@@ -87,7 +87,7 @@ Choose one of your Azure Stack HCI servers to drive the creation of AKS Arc. The
 
    | Parameter                               | Description                                                                                    |
    |-----------------------------------------|------------------------------------------------------------------------------------------------|
-   | `-name`                                   | Name of virtual network in AKS hybrid (must be lowercase).                                        |
+   | `-name`                                   | Name of virtual network in AKS enabled by Arc (must be lowercase).                                        |
    | `-vswitchName`                            | Name of external vSwitch on the Azure Stack HCI servers. Use same vSwitch that was used for SDN deployment. |
    | `-k8sNodeIpPoolStart` <br /> `-k8sNodeIpPoolEnd` | IP start/end range of SDN virtual network.                                                      |
    | `-ipAddressPrefix`                        | Virtual network subnet in CIDR notation.                                                        |
@@ -171,7 +171,7 @@ See the [self-help resources here][Troubleshooting SDN] for SDN [and here for AK
 
 ## Next steps
 
-Next, you can [create workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS hybrid are seamlessly attached to the SDN virtual network that was provided during installation. The SDN Software load balancer is also used as the external load balancer for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
+Next, you can [create workload clusters][] and [deploy your applications][]. All AKS VM NICs in AKS enabled by Arc are seamlessly attached to the SDN virtual network that was provided during installation. The SDN Software load balancer is also used as the external load balancer for all Kubernetes services, and acts as the load balancer for the API server on Kubernetes control-plane(s).
 
 [Software Load Balancer]: /azure-stack/hci/concepts/software-load-balancer
 [Plan a Software Defined Network infrastructure]: /azure-stack/hci/concepts/plan-software-defined-networking-infrastructure

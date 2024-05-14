@@ -232,7 +232,7 @@ To show the test secret held in `secrets-store`, run the following command:
 kubectl exec busybox-secrets-store-inline --namespace kube-system -- cat /mnt/secrets-store/ExampleSecret 
 ```
 
-The output should show the value of the secret. In this example, it should show the output below:
+The output should show the value of the secret. In this example, it should show the following output:
 
 ```output
 MyAKSHCIExampleSecret
@@ -240,5 +240,5 @@ MyAKSHCIExampleSecret
 
 ## Next steps
 
-- [Deploy Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy Linux applications on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

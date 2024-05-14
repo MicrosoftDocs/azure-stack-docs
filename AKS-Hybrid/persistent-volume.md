@@ -27,8 +27,8 @@ While you can provision a persistent volume for both Windows and Linux nodes, th
 
 Here's what you need to get started:
 
-* A [Kubernetes cluster](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster) with at least one Windows worker node.
-* A kubeconfig file to [access the Kubernetes cluster](./kubernetes-walkthrough-powershell.md#access-your-clusters-using-kubectl).
+- A [Kubernetes cluster](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster) with at least one Windows worker node.
+- A kubeconfig file to [access the Kubernetes cluster](./kubernetes-walkthrough-powershell.md#access-your-clusters-using-kubectl).
 
 ## Create a persistent volume claim
 
@@ -55,17 +55,17 @@ kubectl create -f pvc-akshci-csi.yaml
 
 The following output will show that your persistent volume claim has been created successfully:
 
-**Output:**
-```
+Output:
+
+```output
 persistentvolumeclaim/pvc-akshci-csi created
 ```
 
 ## Use persistent volume
 
-To use a persistent volume, create a file named `winwebserver.yaml` and copy and paste the following YAML definition. Then, create a pod with access to the persistent volume claim and vhdx. 
+To use a persistent volume, create a file named `winwebserver.yaml` and copy and paste the following YAML definition. Then, create a pod with access to the persistent volume claim and vhdx.
 
 In the following YAML definition, `mountPath` is the path to mount a volume inside a container. After a successful pod creation, you'll see the subdirectory **mnt** created in **C:\\** and the subdirectory **akshciscsi** created inside **mnt**.
-
 
 ```yaml
 apiVersion: apps/v1 
@@ -102,36 +102,44 @@ spec:
 ```
 
 To create a pod with the above YAML definition, run:
-```
+
+```powershell
 kubectl create -f winwebserver.yaml 
 ```
 
-To make sure the pod is running, execute the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time. 
-```
+To make sure the pod is running, execute the following command. Wait a few minutes until the pod is in a running state, since pulling the image takes time:
+
+```powershell
 kubectl get pods -o wide 
 ```
-Once your pod is running, view the pod status by running the following command: 
-```
+
+Once your pod is running, view the pod status by running the following command:
+
+```powershell
 kubectl.exe describe pod %podName% 
 ```
 
 To verify your volume has been mounted in the pod, run the following command:
-```
+
+```powershell
 kubectl exec -it %podname% cmd.exe 
 ```
 
 ## Delete a persistent volume claim
 
-Before you delete a persistent volume claim, you must delete the app deployment by running:
-```
+Before you delete a persistent volume claim, you must delete the app deployment by running the following command:
+
+```powershell
 kubectl delete deployments win-webserver
 ```
 
 You can then delete a persistent volume claim by running:
-```
+
+```powershell
 kubectl delete PersistentVolumeClaim pvc-akshci-csi
 ```
 
 ## Next steps
-- [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md).
-- [Connect your Kubernetes cluster to Azure Arc for Kubernetes](./connect-to-arc.md).
+
+- [Deploy a Windows application on your Kubernetes cluster](./deploy-windows-application.md)
+- [Connect your Kubernetes cluster to Azure Arc for Kubernetes](./connect-to-arc.md)
