@@ -106,12 +106,12 @@ Before you discover the updates, make sure that the cluster was deployed using t
 
     ```console
     PS C:\Users\lcmuser> Get-StampInformation
+
     Deployment ID             : b4457f25-6681-4e0e-b197-a7a433d621d6
     OemVersion                : 2.1.0.0
     PackageHash               :
     StampVersion              : 10.2303.0.31
     InitialDeployedVersion    : 10.2303.0.26
-    PS C:\Users\lcmuser>
     ```
 
 3. Make a note of the `StampVersion` on your cluster. The stamp version reflects the solution version that your cluster is running.
@@ -135,12 +135,16 @@ Before you discover the updates, you can manually validate the system health. Th
 
     ```console
     PS C:\Users\lcmuser> whoami
+
     rq2205\lcmuser                                                                                               
+
     PS C:\Users\lcmuser> $result=Test-EnvironmentReadiness                                                         
+
     VERBOSE: Looking up shared vhd product drive letter.                                                                    
     WARNING: Unable to find volume with label Deployment                                                                    
     VERBOSE: Get-Package returned with Success:True                                                                        
-    VERBOSE: Found package Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment with version  10.2303.0.31 at                                                                                                         C:\NugetStore\Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.10.2303.0.31\Microsoft.Azure Stack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.nuspec.                                                   
+    VERBOSE: Found package Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment with version  10.2303.0.31 at                                                                                                         
+    C:\NugetStore\Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.10.2303.0.31\Microsoft.Azure Stack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.nuspec.                                                   
     03/29/2023 15:45:58 : Launching StoragePools                                                                            
     03/29/2023 15:45:58 : Launching StoragePhysicalDisks                                                                    
     03/29/2023 15:45:58 : Launching StorageMapping                                                                          
@@ -173,7 +177,8 @@ Before you discover the updates, you can manually validate the system health. Th
     VERBOSE: SolutionExtension module supports Tag 'HealthServiceIntegration'.
     VERBOSE: SolutionExtension module SolutionExtension at
     C:\ClusterStorage\Infrastructure_1\Shares\SU1_Infrastructure_1\CloudMedia\SBE\Installed\Content\Configuration\SolutionExtension is valid.
-   PS C:\Users\lcmuser> $result|ft Name,Status,Severity
+
+    PS C:\Users\lcmuser> $result|ft Name,Status,Severity
     
     Name                                    Status  Severity
     ----                                    ------  --------
@@ -231,8 +236,6 @@ Before you discover the updates, you can manually validate the system health. Th
     Storage Cluster Shared Volume Summary   SUCCESS CRITICAL
     Storage Cluster Shared Volume Summary   SUCCESS CRITICAL
     Test-SBEPrecheckStatus                  Success Informational  
-    
-    PS C:\Users\lcmuser>
     ```
 
     > [!NOTE]
@@ -276,7 +279,6 @@ Discovering solution updates using the online catalog is the *recommended* metho
     Services    10.2303.0.31
     Platform    10.2303.0.31
     SBE         4.1.2.3
-     PS C:\Users\lcmuser>
     ```
 
 You can now proceed to [Download and install the updates](#step-4-download-check-readiness-and-install-updates).
@@ -323,8 +325,6 @@ If you're using solution extension updates from your hardware, you would need to
     DisplayName                 Version      State
     -----------                 -------      -----
     Azure Stack HCI 2303 bundle 10.2303.0.31 Ready
-
-     PS C:\Users\lcmuser>
     ```
 
 7. Optionally check the version of the update package components. Run the following command:
@@ -345,14 +345,13 @@ If you're using solution extension updates from your hardware, you would need to
     Services    10.2303.0.31
     Platform    10.2303.0.31
     SBE         4.1.2.3
-     PS C:\Users\lcmuser>
     ```
 
 ## Step 4: Download, check readiness, and install updates
 
 You can download the updates, perform a set of checks to verify your cluster's update readiness, and start installing the updates.
 
-1. You can only download the update without starting the installation or download and install the update.
+You can only download the update without starting the installation or download and install the update.
 
     - To download and install the update, run the following command:
 
@@ -362,73 +361,123 @@ You can download the updates, perform a set of checks to verify your cluster's u
 
     - To only download the updates without starting the installation, use the `-PrepareOnly` flag with `Start-SolutionUpdate`.
 
-2. To track the update progress, monitor the update state. Run the following command:
+## Step 5: Monitoring the installation process
 
-    ```powershell
-    Get-SolutionUpdate | ft Version,State,UpdateStateProperties,HealthState 
+**Option 1: Tracking the progress with "Get-SolutionUpdate"**
+    
+To track the update progress, monitor the update state. Run the following command:
+
+```powershell
+Get-SolutionUpdate | ft Version,State,UpdateStateProperties,HealthState 
+```
+    
+When the update starts, the following actions occur:
+
+- Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
+
+    Here's an example output when the updates are being downloaded:
+    
+    ```console
+    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+    
+    Version              State UpdateStateProperties HealthState
+    -------              ----- --------------------- -----------
+    10.2303.4.1 Downloading                        InProgress
+    ```
+  
+- Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
+
+    ```console
+    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+
+    Version              State UpdateStateProperties HealthState
+    -------              ----- --------------------- -----------
+    10.2303.4.1 HealthChecking                        InProgress
     ```
 
-    When the update starts, the following actions occur:
+- When the system is ready, updates are installed. During this phase, the **State** of the updates shows as `Installing` and `UpdateStateProperties` shows the percentage of the installation that was completed.
 
-    - Download of the updates begins. Depending on the size of the download package and the network bandwidth, the download might take several minutes.
+    > [!IMPORTANT]
+    > During the install, the cluster servers may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single server, your Azure Stack HCI will experience a downtime.
 
-        Here's an example output when the updates are being downloaded:
+    Here's a sample output while the updates are being installed.
 
-        ```console
-          PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+    ```console
+    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
 
-        Version              State UpdateStateProperties HealthState
-        -------              ----- --------------------- -----------
-        10.2303.4.1 Downloading                        InProgress
-        ```
+    Version          State UpdateStateProperties HealthState
+    -------          ----- --------------------- -----------
+    10.2303.4.1 Installing 6% complete.              Success
+    
+    
+    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+    
+    Version          State UpdateStateProperties HealthState
+    -------          ----- --------------------- -----------
+    10.2303.4.1 Installing 25% complete.             Success
 
-    - Once the package is downloaded, readiness checks are performed to assess the update readiness of your cluster. For more information about the readiness checks, see [Update phases](./update-phases-23h2.md#phase-2-readiness-checks-and-staging). During this phase, the **State** of the update shows as `HealthChecking`.
+    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+    
+    Version          State UpdateStateProperties HealthState
+    -------          ----- --------------------- -----------
+    10.2303.4.1 Installing 40% complete.             Success
 
-        ```console
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+    PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+    
+    Version          State UpdateStateProperties HealthState
+    -------          ----- --------------------- -----------
+    10.2303.4.1 Installing 89% complete.             Success
+    ```
 
-        Version              State UpdateStateProperties HealthState
-        -------              ----- --------------------- -----------
-        10.2303.4.1 HealthChecking                        InProgress
-        ```
+- Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
 
-    - When the system is ready, updates are installed. During this phase, the **State** of the updates shows as `Installing` and `UpdateStateProperties` shows the percentage of the installation that was completed.
+**Option 2: Tracking the process via continuous PowerShell Script**
 
-        > [!IMPORTANT]
-        > During the install, the cluster servers may reboot and you may need to establish the remote PowerShell session again to monitor the updates. If updating a single server, your Azure Stack HCI will experience a downtime.
+To reduce manual interaction you can use this script. It will run the Get-SolutionUpdate until the progress reaches 100% or the Healthstate is no longer "Success".
+You can adjust the seconds to you level of verbosity needed.
+    
+```powershell
+# Track progress
+[int]$seconds = 10
+While ($true) {
+    $updatestatus = Get-SolutionUpdate
+    $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
+    
+    # Extract the percentage value from UpdateStateProperties
+    $percentageString = $updatestatus.UpdateStateProperties -replace '[^\d]+'
+    $percentage = [int]$percentageString
 
-        Here's a sample output while the updates are being installed.
+    $formattedStatus = "$timestamp - Version: $($updatestatus.Version) State: $($updatestatus.State) UpdateStateProperties: $($updatestatus.UpdateStateProperties) HealthState: $($updatestatus.HealthState)"
+    Write-Host $formattedStatus, Next Update in $seconds seconds
 
-        ```console
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
+    # Break the loop if conditions are met
+    if ($percentage -ge 100 -or $updatestatus.HealthState -ne "Success") {
+        break
+    }
 
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 6% complete.              Success
-        
-        
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-        
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 25% complete.             Success
+    Start-Sleep $seconds
+}
+```
 
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-        
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 40% complete.             Success
+**Option 3: Tracking the Update progress via Azure Portal once started**
+    
+To view the progress, once started via PowerShell, you can change to the Azure Portal, following these steps:
+    
+1. Sign into [the Azure portal](https://portal.azure.com) and go to **Azure Update Manager**.
+2. Search for **AzurestackHCI** or *AzureStackHCI Clustername* 
+3. Navigate to **All Clusters** tab
+4. Select your cluster
+5. In the navigation pane expand **"Operation"***
+6. Click on **"Updates"**
+7. Click on the "History" tab
+8. Select the UpdateName with Status "In Progress
+9. On the **Download updates** page, review the progress of the download and preparation, and then select **Next**.
+10. On the **Check readiness** page, review the progress of the checks, and then select **Next**.
+11. On the **Install** page, review the progress of the update installation.
+    
+    [![Screenshot to view update progress in Azure Update Manager.](./media/azure-update-manager/update-install-progress.png)](media/azure-update-manager/update-install-progress.png#lightbox)
 
-        PS C:\Users\lcmuser> Get-SolutionUpdate|ft Version,State,UpdateStateProperties,HealthState
-        
-        Version          State UpdateStateProperties HealthState
-        -------          ----- --------------------- -----------
-        10.2303.4.1 Installing 89% complete.             Success
-        ```
-
-Once the installation is complete, the **State** changes to `Installed`. For more information on the various states of the updates, see [Installation progress and monitoring](./update-phases-23h2.md#phase-3-installation-progress-and-monitoring).
-
-## Step 5: Verify the installation
+## Step 6: Verify the installation
 
 After the updates are installed, verify the solution version of the environment and the operating system version.
 
@@ -446,7 +495,6 @@ After the updates are installed, verify the solution version of the environment 
     State               CurrentVersion
     -----               --------------
     AppliedSuccessfully 10.2303.0.31
-        
     ```
 
 2. Check the operating system version to confirm it matches the recipe you installed. Run the following command:
@@ -461,8 +509,22 @@ After the updates are installed, verify the solution version of the environment 
     PS C:\Users\lcmuser> cmd /c ver
     
     Microsoft Windows [Version 10.0.20349.1547]
-    PS C:\Users\lcmuser>
     ```
+
+3. Alternatively you can fetch the version number via (Remote-)PowerShell
+    
+    ```powershell
+    # check OS Build UBR Number
+    $RegistryPath = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\'
+    $ComputersInfo  =  Get-ItemProperty -Path $RegistryPath
+    # check for updates
+    $UpdatesNode = $ComputersInfo | Select-Object PSComputerName,CurrentBuildNumber,UBR
+    Write-Host "Azure Stack HCI Node Update status"
+    $UpdatesNode
+    ```
+
+The Azure Stack HCI 23H2 Update level is determined by minor build number value. You can find more information here: [What's new](../whats-new.md)
+
 
 ## Troubleshoot updates
 
