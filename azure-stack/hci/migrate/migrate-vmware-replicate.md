@@ -112,7 +112,7 @@ You now provide the Azure Stack HCI cluster information to onboard the discovere
 1. Provide the **Username** and the **Password** for the target Azure Stack HCI cluster.
 1. Select **Save**.
 
-:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-1.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
+:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-1.png" alt-text="Screenshot showing Add cluster information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
 
 The cluster information table is updated with the cluster information. The status changes to **Validated**.
 
@@ -150,7 +150,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/./media/migrate-vmware-replicate/generate-target-key-1.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/generate-target-key-1.png":::
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
