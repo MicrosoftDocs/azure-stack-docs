@@ -57,10 +57,11 @@ This security update includes quality improvements. When you install this KB:
 
 For more information about security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-May).
 
-## Azure Stack HCI, version 23H2 servicing stack update - 25398.880
+## Servicing stack update - 25398.880
 
 This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
 
+This update is available for Windows Update, Windows Update for Business, and Microsoft Update, and is downloaded and installed automatically from Windows Update. To get the standalone package for this update, go to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=KB5037781) website.
 
 ## Known issues
 
@@ -71,6 +72,14 @@ Microsoft isn't currently aware of any issues with this update.
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
+
+## To remove the LCU
+
+To remove the LCU after installing the combined SSU and LCU package, use the `DISM/Remove-Package` command line option with the LCU package name as the argument. You can find the package name by using this command:
+
+`DISM /online /get-packages`
+
+Running Windows Update Standalone Installer (wusa.exe) with the `/uninstall` switch on the combined package will not work because the combined package contains the SSU. You cannot remove the SSU from the system after installation.
 
 
 ## File list
