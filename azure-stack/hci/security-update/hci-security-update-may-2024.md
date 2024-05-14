@@ -1,6 +1,6 @@
 ---
 title:  May 2024 security update (KB 5037781) for Azure Stack HCI, version 23H2
-description: Read about the May 2024 security update (KB 5036910) for Azure Stack HCI, version 23H2.
+description: Read about the May 2024 security update (KB 5037781) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
 ms.date: 05/14/2024
@@ -21,9 +21,9 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update addresses an issue that affects IE mode. A webpage stops working as expected when there is an open modal dialog.
+- This update addresses an issue that affects IE mode. A web page may stop working as expected when there is an open modal dialog.
 
-- This update addresses an issue in that affects IE mode. It stops responding. This occurs if you press the left arrow key when an empty text box has focus and caret browsing is on.
+- This update addresses an issue that affects IE mode. It stops responding. This occurs if you press the left arrow key when an empty text box has focus and caret browsing is on.
 
 - This update addresses an issue that affects Wi-Fi Protected Access 3 (WPA3) in the Group Policy editor. HTML preview rendering fails.
 
@@ -45,15 +45,15 @@ This security update includes quality improvements. When you install this KB:
 
 - This update includes quarterly changes to the Windows Kernel Vulnerable Driver Blocklist file, `DriverSiPolicy.p7b`. It adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.
 
-- This update addresses an issue that affects Trusted Platform Modules (TPM). On certain devices, they did not initialize correctly. Because of this, TPM-based scenarios stopped working.
+- This update addresses an issue that affects Trusted Platform Modules (TPM). On certain devices, they do not initialize correctly. Because of this, TPM-based scenarios stop working.
 
 - This update addresses an issue that affects Active Directory. Bind requests to IPv6 addresses fail. This occurs when the requestor is not joined to a domain.
 
 - This update addresses an issue that might affect Virtual Secure Mode (VSM) scenarios. They might fail. These scenarios include VPN, Windows Hello, Credential Guard, and Key Guard.
 
-- This update addresses an issue that might affect domain controllers (DC). NTLM authentication traffic might increase.
+- This update addresses an issue that might affect domain controllers. NTLM authentication traffic might increase.
 
-- This update addresses a known issue that might cause your VPN connection to fail. This occurs after you install the update dated April 9, 2024, or later.
+- This update addresses a known issue that might cause your VPN connection to fail. This occurs after you install the update dated April 9, 2024 or later.
 
 For more information about security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-May).
 
