@@ -59,7 +59,7 @@ For specific information, see [Set up an appliance with a script](/azure/migrate
     - Memory: 16 GB
     <!--For detailed steps, see [Creating a VM in vSphere](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.html.hostclient.doc/GUID-FBEED81C-F9D9-4193-BDCC-CC4A60C20A4E.html?hWord=N4IghgNiBcIMICcCmYAuSAEA3Alg1ArpBgLZgDGAFjgHZIgC+QA).-->
 1. Once the VM is created, sign into the VM as an administrator.
-1. Copy the downloaded zip file to the new VM that you created in the vCenter. Extract the zip to a folder and go to the extracted folder.
+1. Copy the downloaded zip file to the new VM that you created in the vCenter. Extract the zip to a folder and go where the  *AzureMigrateInstaller.ps1* PowerShell script resides in the extracted folder.
 1. Open a PowerShell window as an administrator and run the following command:
 
     ```powershell
@@ -103,7 +103,26 @@ Once the source appliance is installed, follow these steps:
     1. Select **Start Discovery**. The discovery may take several minutes to finish.
     1. On the **Onboard to Azure Stack HCI** section, enter the name and credentials for the target Azure Stack HCI cluster. This is the cluster where the VMs are migrated. Select **Save**.
 
- Wait until you have a green checkmark indicating that the discovery is finished. After the discovery is complete, go to the Azure portal to review the VM inventory.
+### Onboard to Azure Stack HCI
+
+You now provide the Azure Stack HCI cluster information to onboard the discovered VMs.
+
+1. Select **Add cluster information**.
+1. Enter the **Domain** for your target Azure Stack HCI cluster.
+1. Provide the **Username** and the **Password** for the target Azure Stack HCI cluster.
+1. Select **Save**.
+
+:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-1.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
+
+The cluster information table is updated with the cluster information. The status changes to **Validated**.
+
+:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-2.png" alt-text="Screenshot showing Add cluster information is added to the table." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-2.png":::
+
+### Wait for the discovery to complete
+
+Wait until you have a green checkmark indicating that the discovery is finished. The migration readiness checks are also completed successfully. After the discovery is complete, go to the Azure portal to review the VM inventory.
+
+:::image type="content" source="./media/migrate-vmware-replicate/discovery-complete-1.png" alt-text="Screenshot showing that discovery is complete." lightbox="./media/migrate-vmware-replicate/discovery-complete-1.png"::
 
 ## Step 2: Create and configure the target appliance
 
@@ -131,7 +150,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/generate-target-key.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/-1.png":::
 
 1. Copy and paste the key to Notepad (or other text editor) after it is generated for future use.
 
@@ -141,7 +160,7 @@ You can download the appliance using either a .VHD file or a .zip file.
 
 Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** or **.zip file**, and then select **Download installer**.
 
-:::image type="content" source="media/migrate-vmware-replicate/download-target-appliance.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-vmware-replicate/download-target-appliance.png":::
+:::image type="content" source="media/migrate-vmware-replicate/download-target-appliance-1.png" alt-text="Screenshot of download target appliance step 2." lightbox="media/migrate-vmware-replicate/download-target-appliance-1.png":::
 
 #### Install using an .OVA file
 
@@ -150,7 +169,7 @@ This step applies only if you downloaded the .OVA file.
 1. On the server where you downloaded the file, open an administrator command window.
 1. Run the following command to generate the hash for the OVA.
     
-    ```powershell    
+    ```powershell
     C:\>Get-FileHash -Path <file_location> -Algorithm <Hashing Algorithm>
     ```
 
@@ -172,7 +191,7 @@ This step applies only if you downloaded the .OVA file.
 
 Now you can install the appliance using the .VHD file.
 
-1. On a Hyper-V server (this could be your source server), go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**. 
+1. On a Hyper-V server, go to the Hyper-V Manager. Select **Hyper-V Manager > Connect to server**.
 
 1. On the **Select Computer** dialog box, select **Another computer**. Browse to the Azure Stack HCI server, and then select **OK**.
 
@@ -184,7 +203,7 @@ Now you can install the appliance using the .VHD file.
     1. On the **Connect Network** page, select a switch from the dropdown list for **Connection**. Create a VM using the VHD you downloaded, then start and sign into the VM. Make sure the VM has access to the internet.
     1. Finally review the settings and select **Finish**.
 
-1. In the Hyper-V Manager, under **Virtual Machines**, you see the VM your created. Select and start the VM.
+1. In the Hyper-V Manager, under **Virtual Machines**, you see the VM you created. Select and start the VM.
 
 1. Once the VM starts, accept the license terms and conditions. On the **Customize settings** page, provide and confirm a password for the administrator account and then select **Finish**.
 
@@ -218,17 +237,24 @@ This step applies only if you downloaded the .zip file.
 
 1. Sign in to the target appliance VM.
 
-1. Open **Azure Migrate Target Appliance Configuration Manager** from the desktop shortcut.
+1. Open **Azure Migrate Target Appliance Configuration Manager** from the desktop shortcut. Read and accept the **Terms of Use**.
+
+    :::image type="content" source="./media/migrate-vmware-replicate/terms-of-use-1.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/terms-of-use-1.png":::
 
 1. Locate the target key that you previously generated, paste it in the field under **Verification of Azure Migrate project key**, and then select **Verify**.
 
-1. Once the verification is complete, select **Log in** and sign in to your Azure account.
+    :::image type="content" source="./media/migrate-vmware-replicate/verify-target-appliance-project-key-1.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/verify-target-appliance-project-key-1.png":::
+
+
+1. After the verification is complete, select **Log in** and sign in to your Azure account.
 
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
     :::image type="content" source="./media/migrate-vmware-replicate/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
 
 1. Wait until you see **The appliance has been successfully registered** message.
+
+    :::image type="content" source="./media/migrate-vmware-replicate/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator app. It can take up to 10 minutes for the appliance to be registered.
 
