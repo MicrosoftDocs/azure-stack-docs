@@ -41,14 +41,14 @@ On the **Basics** tab, you provide essential information about your Azure Manage
 | Section | Field | Required or optional | Description |
 |---------|-------|----------------------|-------------|
 | Project details | Subscription | Required | Select the subscription to use for the Azure Managed Lustre file system. |
-| Project details | Resource group | Required | Select an existing resource group, or create a new resource to use for this deployment. |
+| Project details | Resource group | Required | Select an existing resource group, or create a new resource group to use for this deployment. |
 | Project details | Region | Required | Select the Azure region for your file system. For optimal performance, create the file system in the same region and availability zone as your client machines. |
 | Project details | Availability zone | Required | Select the availability zone for your file system. |
-| File system details | File system name | Required | Enter a name to identify this file system in your list of resources. This name is not the name of the file system used in `mount` commands. |
+| File system details | File system name | Required | Enter a name to identify this file system in your list of resources. This name isn't the name of the file system used in `mount` commands. |
 | File system details | File system type | Required | Shows **Durable, SSD**. |
-| File system details | Storage and throughput | Required | Enter the storage capacity of your file system in TiB, or the maximum throughput in MB/s.</br></br>There are two factors that determine your file system size: The amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). When you select one of these options, the other values are calculated based on the **Throughput per TiB** setting for your file system type.</br></br>To set the file system size, choose either **Storage capacity** or **Maximum throughput**. Enter a value in the corresponding field, either the desired storage capacity (in TiB) if you selected **Storage capacity**, or the desired maximum throughput (in MB/second) if you selected **Maximum throughput**.</br></br>Note: These values are rounded up to meet incremental size requirements. The values are never rounded down, so check the final configuration to make sure it's cost-effective for your workload.</br></br>To learn more about available throughput configurations, see [Throughput configurations](#throughput-configurations). |
+| File system details | Storage and throughput | Required | Enter the storage capacity of your file system in TiB, or the maximum throughput in MB/s.</br></br>There are two factors that determine your file system size: The amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). When you select one of these options, the other values are calculated based on the **Throughput per TiB** setting for your file system type. To set the file system size, choose either **Storage capacity** or **Maximum throughput**. Enter a value in the corresponding field, either the desired storage capacity (in TiB) if you selected **Storage capacity**, or the desired maximum throughput (in MB/second) if you selected **Maximum throughput**.</br></br>Note: These values are rounded up to meet incremental size requirements. The values are never rounded down, so check the final configuration to make sure it's cost-effective for your workload. To learn more about available throughput configurations, see [Throughput configurations](#throughput-configurations). |
 | Networking | Virtual network | Required | Select an existing virtual network to use for the file system, or create a new virtual network. For more information about network sizing and other configuration options, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites). |
-| Networking | Subnet | Required | Select an existing subnet or create a new one.</br></br>The Azure Managed Lustre file system uses a dedicated virtual network and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system.</br></br>You can open the **Manage subnet configuration** link to make sure the subnet meets your network requirements. The network should have enough available IP addresses to handle the file system's load and any additional IP addresses required by any other services that are co-located with the file system. Make sure you complete all access settings to enable the subnet to access the needed Azure services. |
+| Networking | Subnet | Required | Select an existing subnet or create a new one. The Azure Managed Lustre file system uses a dedicated virtual network and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system. You can open the **Manage subnet configuration** link to make sure the subnet meets your network requirements. The network should have enough available IP addresses to handle the file system's load and any additional IP addresses required by any other services that are colocated with the file system. Make sure you complete all access settings to enable the subnet to access the needed Azure services. |
 | Maintenance window | Day of the week | Required | Provide a preferred day of the week for the Azure team to perform maintenance and troubleshooting with minimal impact. This is used infrequently and only as needed. To learn more, see [Maintenance window](#maintenance-window). |
 | Maintenance window | Start time | Required | Provide the time that the maintenance window may begin. Time should be in 24-hour format (HH:MM). |
 
@@ -85,7 +85,7 @@ Maintenance is typically performed less than once a month. Routine software upgr
 
 ## Advanced tab
 
-Use the **Advanced** tab to optionally set up Blob Storage integration.
+Use the **Advanced** tab to optionally enable and configure Blob Storage integration.
 
 ### Blob integration
 
@@ -149,11 +149,11 @@ When you finish entering customer key settings and managed identities, select **
 
 ## Review + create tab
 
-When you navigate to the **Review + create tab**, Azure runs validation on the Azure Managed Lustre file system settings that you've chosen. If validation passes, you can proceed to create the file system.
+When you navigate to the **Review + create** tab, Azure runs validation on the Azure Managed Lustre file system settings. If validation passes, you can proceed to create the file system.
 
 If validation fails, then the portal indicates which settings need to be modified.
 
-The following image shows the Review tab data prior to the creation of a new file system:
+The following image shows the **Review + create** tab before the creation of a new file system:
 
 :::image type="content" source="./media/create-file-system-portal/review-create-tab.png" alt-text="A screenshot showing the review and create tab in Azure Managed Lustre create flow." lightbox="./media/create-file-system-portal/review-create-tab.png":::
 
