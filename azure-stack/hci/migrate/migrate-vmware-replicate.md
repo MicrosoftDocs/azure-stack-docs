@@ -31,18 +31,18 @@ For both the source VMware vCenter Server and target Azure Stack HCI appliances,
 1. On the Discover page, select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 1. Copy the **Project key** and save it for later use.
-1. You can now **Download the Azure Migrate source appliance** using either an .OVA file or a .zip file. The detailed steps are provided in the subsequent sections.
+1. You can now **Download the Azure Migrate source appliance** using either an *.OVA* file or a .zip file. The detailed steps are provided in the subsequent sections.
 
 
 ### Create the source appliance
 
-You can install the appliance using either an .OVA file or a .zip file that you download to your VMware host server. <!-- REMOVE For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).-->
+You can install the appliance using either an *.OVA* file or a .zip file that you download to your VMware host server. <!-- REMOVE For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).-->
 
 #### Install using an .OVA file
 
-This step applies only if you are deploying the source VMware appliance using an .OVA file.
+This step applies only if you are deploying the source VMware appliance using an *.OVA* file.
 
-1. Once you have downloaded the .OVA file, [Verify that the file is secure](/azure/migrate/how-to-set-up-appliance-vmware#verify-security). 
+1. Once you have downloaded the **.OVA** file, [Verify that the file is secure](/azure/migrate/how-to-set-up-appliance-vmware#verify-security). 
 1. [Create the source VMware appliance](/azure/migrate/tutorial-discover-vmware#create-the-appliance-server). 
 1. [Verify that the appliance can access Azure](/azure/migrate/tutorial-discover-vmware#verify-appliance-access-to-azure). <!--check if this is needed-->
 
@@ -85,7 +85,7 @@ Once the source appliance is installed, follow these steps:
 
         :::image type="content" source="./media/migrate-vmware-replicate/verify-vddk-installation-1.png" alt-text="Screenshot of verification of VDDK installation." lightbox="./media/migrate-vmware-replicate/verify-vddk-installation-1.png":::
 
-    1. Provide vCenter server credentials for the discovery of Vmware VMs.
+    1. Provide vCenter server credentials for the discovery of VMware VMs.
         1. Select **Add credentials**.
         1. Select the **Source type** as vCenter Server.
         1. Provide a **Friendly name** for the credentials.
@@ -95,7 +95,7 @@ Once the source appliance is installed, follow these steps:
         1. Add the vCenter discovery source.
         1. Enter the IP address or FQDN of the vCenter server.
         1. Enter the friendly name for the credentials used when discovering the VMware VMs.
-        1. Select **Save**. Select **Add more** to repeat this step for each vCenter server. The disocvery source table is updated.
+        1. Select **Save**. Select **Add more** to repeat this step for each vCenter server. The discovery source table is updated.
 
         :::image type="content" source="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png" alt-text="Screenshot of credentials and discovery sources configured." lightbox="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png":::
 
@@ -132,7 +132,7 @@ Complete the following tasks to generate the target appliance key:
 
 1. In the Azure portal, go to your Azure Migrate project and select **Servers, databases and web apps**.
 
-1. Verify that you see a non-zero value for **Discovered servers** under **Migration tools**.
+1. Verify that you see a nonzero value for **Discovered servers** under **Migration tools**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-discovered-servers.png" alt-text="Screenshot showing the discovered servers." lightbox="./media/migrate-vmware-replicate/replicate-discovered-servers.png":::
 
@@ -142,7 +142,7 @@ Complete the following tasks to generate the target appliance key:
     - Servers or virtual machines (VM).
     - Azure Stack HCI.
     - VMware vSphere.
-    - Source appliance (pre-populated; select the applicable one from the dropdown if you have more than one).
+    - Source appliance (prepopulated; select the applicable one from the dropdown if you have more than one).
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-vmware-replicate/replicate-specify-intent.png":::
 
@@ -164,7 +164,7 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 
 #### Install using an .OVA file
 
-This step applies only if you downloaded the .OVA file.
+This step applies only if you downloaded the *.OVA* file.
 
 1. On the server where you downloaded the file, open an administrator command window.
 1. Run the following command to generate the hash for the OVA.
@@ -250,7 +250,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/enter-code.png" alt-text="Screenshot showing the authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/enter-code.png" alt-text="Screenshot showing the Authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
 
 1. Wait until you see **The appliance has been successfully registered** message.
 
@@ -292,10 +292,10 @@ This step applies only if you downloaded the .zip file.
 
 1. On the **Replicate** page, on the **Basics** tab:
 
-    1. The subscription field is automatically populated. If this is not the subscription that has your target cluster, choose the Azure subscription that has the cluster.
+    1. The subscription field is automatically populated. If this isn't the subscription that has your target cluster, choose the Azure subscription that has the cluster.
     1. Select the resource group associated with your target cluster.
 	1. For **Cluster resource**, select the Azure Stack HCI cluster resource.
-	1. Verify there is a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
+	1. Verify there's a green check for the cluster. A green check indicates that all the prerequisites such as Arc Resource Bridge are configured on this cluster.
     1. When finished, select **Next**.
     
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-1-basics.png" alt-text="Screenshot showing the Basics tab." lightbox="./media/migrate-vmware-replicate/replicate-1-basics.png":::
@@ -310,13 +310,13 @@ This step applies only if you downloaded the .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/migrate-vmware-replicate/replicate-2-target.png":::
 
-1. On the **Virtual machines** tab, verify the VMs have been discovered and are listed. You can select up to 10 VMs from the list to migrate at one time. Select **Next**.
+1. On the **Virtual machines** tab, verify the VMs were discovered and are listed. You can select up to 10 VMs from the list to migrate at one time. Select **Next**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/migrate-vmware-replicate/replicate-3-vm.png":::
 
 1. On the **Target settings** tab, complete these tasks:
 
-    1. The **Storage account subscription** is automatically populated. If this is not the subscription where you want to create the storage account, choose another subscription.
+    1. The **Storage account subscription** is automatically populated. If this isn't the subscription where you want to create the storage account, choose another subscription.
         
         > [!NOTE]
         > Migration requires a storage account to be created. This account must reside in the same subscription as your Azure project.
@@ -332,11 +332,11 @@ This step applies only if you downloaded the .zip file.
 
     1. Select a resource group to associate with your migrated VMs. This resource group can be different than the resource group associated with your storage account.
    
-	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs will be connected to this network. 
+	1. Select the logical network that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs are connected to this network. 
 
         If you don't see a logical network in the dropdown list, [Create a logical network](../manage/create-logical-networks.md) and select **Reload logical network**.
 
-	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs will be created at this storage path.
+	1. Select the storage path that you created as a [prerequisite](./migrate-vmware-prerequisites.md#prerequisites-for-vmware-migration-to-azure-stack-hci-using-azure-migrate-preview). The VMs are created at this storage path.
 
         If you don't see a storage path in the dropdown list, [Create a storage path](../manage/create-storage-path.md) and select **Reload storage path**.
 
@@ -370,7 +370,7 @@ This step applies only if you downloaded the .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-77-review.png" alt-text="Screenshot showing the warning on the Review + Start replication tab." lightbox="./media/migrate-vmware-replicate/replicate-77-review.png":::
 
-1. You are automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
+1. You're automatically taken to **Servers, databases and web apps** page. On the **Migration tools** tile, select **Overview**.
 
 1. Go to **Azure Stack HCI migration > Replications**. Review the replication status. Select **Refresh** to see the replicated VMs appear.
  
