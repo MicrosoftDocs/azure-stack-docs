@@ -125,12 +125,11 @@ The parameters in this section are either optional, or required only if you're u
 
 * **Tags** - Use this option if you want to set Azure resource metadata tags.
 
-TODO: Update to match the new blob integration settings
 * **Blob integration settings** - Supply these values to use an integrated Blob Storage container with this file system. For more information, see [Blob integration](create-file-system-portal.md#blob-integration).
 
   * **Container** - The resource ID of the blob container to use for Lustre hierarchical storage management (HSM).
   * **Logging container** - The resource ID of a separate container to hold import and export logs. The logging container must be in the same storage account as the data container.
-  * **Import prefix** (optional) - Optionally supply one or more prefixes to filter the data imported into the Azure Managed Lustre file system. The default import prefix is `/`, and the default behavior imports the contents of the entire blob container. To learn more about import prefixes, see [Import prefix](blob-integration.md#import-prefix).
+  * **Import prefix** (optional) - If this value is provided, only blobs beginning with the import prefix string are imported into the Azure Managed Lustre File System. If you don't provide it, the default value is `/`, which specifies that all blobs in the container are imported.
 
 * **Customer-managed key settings** - Supply these values if you want to use an Azure Key Vault to control the encryption keys that are used to encrypt your data in the Azure Managed Lustre system. By default, data is encrypted using Microsoft-managed encryption keys.
 
@@ -194,7 +193,6 @@ This section shows sample contents for a template file and a separate parameters
 
 ### Template file
 
-TODO: Update to match the new blob integration settings
 This section shows example contents of a template file:
 
 ```json

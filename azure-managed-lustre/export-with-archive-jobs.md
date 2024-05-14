@@ -2,7 +2,7 @@
 title: Use export jobs to export data from Azure Managed Lustre
 description: How to use an export job to copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage.
 ms.topic: how-to
-ms.date: 06/28/2023
+ms.date: 05/14/2024
 author: pauljewellmsft
 ms.author: pauljewell
 ms.lastreviewed: 02/23/2023

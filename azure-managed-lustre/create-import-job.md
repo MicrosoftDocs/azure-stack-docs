@@ -4,7 +4,7 @@ description: Learn how to create an import job to import data from an Azure Blob
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 05/01/2024
+ms.date: 05/14/2024
 ms.reviewer: brianl
 ---
 

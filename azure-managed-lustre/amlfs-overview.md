@@ -4,7 +4,7 @@ description: Use Azure Managed Lustre to quickly create an Azure-based Lustre fi
 ms.topic: overview
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 06/28/2023
+ms.date: 05/14/2024
 ms.reviewer: mayabishop
 ms.custom: references_regions
 
