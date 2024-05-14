@@ -157,6 +157,8 @@ The following image shows the Review tab data prior to the creation of a new fil
 
 :::image type="content" source="./media/create-file-system-portal/review-create-tab.png" alt-text="A screenshot showing the review and create tab in Azure Managed Lustre create flow." lightbox="./media/create-file-system-portal/review-create-tab.png":::
 
+Select **Create** to begin deployment of the Azure Managed Lustre file system.
+
 ## Next steps
 
 - Learn how to [connect clients to your new Azure Managed Lustre file system](connect-clients.md)
