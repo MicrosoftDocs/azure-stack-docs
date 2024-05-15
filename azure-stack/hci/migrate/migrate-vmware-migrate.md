@@ -78,7 +78,7 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
     1. The VM is running. The corresponding source VM on the VMware server is turned off.
     1. The VM has the disk and network configuration as configured during replication.
   
-    :::image type="content" source="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2-a.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2-a.png":::
 
 1. Sign into the VM using Hyper-V VMConnect. Verify that:
     1. The VM behaves as expected.
@@ -92,13 +92,17 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
     :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-2.png" alt-text="Screenshot of Replications view with a VM selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-2.png":::
 
-    From the top command bar, select **Complete migration**. When prompted for confirmation, select **Yes** to continue. Repeat this action for all the migrated VMs.
+    From the top command bar, select **Complete migration**. When prompted for confirmation, select **Yes** to continue. 
 
     :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3.png":::
 
-    This action starts the **Delete protected item** job that you can track from the **Jobs** page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
+    Repeat this action for all the migrated VMs.
+
+    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png":::
+
+    The **Complete migration** action starts the **Delete protected item** job that you can track from the **Jobs** page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
     
-    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png":::
+   <!--:::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png":::-- old one-->
 
     After the migrate resource is deleted, it is also removed from the **Replications** view. You'll also see the migrated VM job disappear from the **Replications** view.
 
