@@ -15,7 +15,7 @@ ms.date: 03/04/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager (ARM) template.
+This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Stack HCI cluster resource
 
@@ -43,14 +43,20 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
-
-# [ARM template](#tab/armtemplate)
+# [Azure Resource Manager template](#tab/armtemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
 - Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+- [Download the sample Azure Resource Manager template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
-- [Download the ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub repo. You use this template to create a VM.
+# [Bicep template](#tab/biceptemplate)
+
+[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+
+- Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
+- [Download the sample Bicep template](https://aka.ms/hci-vmbiceptemplate)
+
 ---
 
 ## Create Arc VMs
@@ -280,7 +286,7 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     :::image type="content" source="./media/create-arc-virtual-machines/add-new-disk.png" alt-text="Screenshot of network interface added during Create a VM." lightbox="./media/create-arc-virtual-machines/add-new-disk.png":::
 
     1. Provide a **Name** for the network interface. 
-    1. From the dropddown list, select the **Network**. Based on the network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
+    1. From the drop-down list, select the **Network**. Based on the network selected, you see the IPv4 type automatically populate as **Static** or **DHCP**.
     1. For **Static** IP, choose the **Allocation method** as **Automatic** or **Manual**. For **Manual** IP, provide an IP address.
 
     1. Select **Add**.
@@ -294,19 +300,19 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Select **Create**. It should take a few minutes to provision the VM.
 
 
-# [ARM template](#tab/armtemplate)
+# [Azure Resource Manager template](#tab/armtemplate)
 
-Follow these steps to deploy the ARM template:
+Follow these steps to deploy the Resource Manager template:
 
 1. In the Azure portal, from the top search bar, search for *deploy a custom template*. Select **Deploy a custom template** from the available options.
 
 1. On the **Select a template** tab, select **Build your own template in the editor**.
-   
+
    :::image type="content" source="./media/create-arc-virtual-machines/build-own-template.png" alt-text="Screenshot of build your own template option in Azure portal." lightbox="./media/create-arc-virtual-machines/build-own-template.png":::
 
 1. You see a blank template.
 
-   :::image type="content" source="./media/create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank ARM template in Azure portal." lightbox="./media/create-arc-virtual-machines/blank-template.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank Resource Manager template in Azure portal." lightbox="./media/create-arc-virtual-machines/blank-template.png":::
 
 1. Replace the blank template with the template that you downloaded during the prerequisites step.
 
@@ -368,7 +374,7 @@ Follow these steps to deploy the ARM template:
             "subnetId": {
                 "type": "String",
                 "metadata": {
-                    "description": "The ARM ID of the subnet for the network interface."
+                    "description": "The Azure Resource Manager ID of the subnet for the network interface."
                 }
             },
             "vmSize": {
@@ -412,7 +418,7 @@ Follow these steps to deploy the ARM template:
             "imageReferenceId": {
                 "type": "String",
                 "metadata": {
-                    "description": "The ARM ID of the image to be used for the virtual machine."
+                    "description": "The Azure Resource Manager ID of the image to be used for the virtual machine."
                 }
             },
             "enableDomainJoin": {
@@ -596,6 +602,14 @@ Follow these steps to deploy the ARM template:
     
    <!--:::image type="content" source="./create-arc-virtual-machines/view-resource-group.png" alt-text="Screenshot of resource group with storage account and virtual network in Azure portal." lightbox="./media/create-arc-virtual-machines/review-virtual-machine.png":::-->
 
+# [Bicep template](#tab/biceptemplate)
+
+1. Download the sample Bicep template below from the [Azure QuickStarts Repo](https://aka.ms/hci-vmbiceptemplate).
+1. Specify parameter values to match your environment. The Custom Location name, Logical Network name parameter values should reference resources you have already created for your Azure Stack HCI cluster.
+1. Deploy the Bicep template using [Azure CLI](/azure/azure-resource-manager/bicep/deploy-cli) or [Azure PowerShell](/azure/azure-resource-manager/bicep/deploy-powershell)
+
+   :::code language="bicep" source="~/../quickstart-templates/quickstarts/microsoft.azurestackhci/vm-windows-disks-and-adjoin/main.bicep":::
+
 ---
 
 ## Use managed identity to authenticate Arc VMs
@@ -608,6 +622,7 @@ For  more information, see [System-assigned managed identities](/entra/identity/
 
 ## Next steps
 
+- [Delete Arc VMs](./manage-arc-virtual-machines.md#delete-a-vm).
 - [Install and manage VM extensions](./virtual-machine-manage-extension.md).
 - [Troubleshoot Arc VMs](troubleshoot-arc-enabled-vms.md).
 - [Frequently Asked Questions for Arc VM management](./azure-arc-vms-faq.yml).

@@ -118,5 +118,5 @@ Restart-VM -name $vmName -force
 
 ## Next steps
 
-- [Scale the node count in an AKS cluster](scale-cluster.md).
-- [Upgrade the AKS host](update-akshci-host-powershell.md).
+- [Scale the node count in an AKS cluster](scale-cluster.md)
+- [Upgrade the AKS host](update-akshci-host-powershell.md)

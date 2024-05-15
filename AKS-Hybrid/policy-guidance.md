@@ -42,4 +42,4 @@ Azure policies are primarily for declarative compliance validation, not behavior
 
 ## Next steps
 
-[Security concepts in AKS hybrid](concepts-security.md)
+[Security concepts in AKS enabled by Arc](concepts-security.md)

@@ -54,7 +54,7 @@ Some commonly modified settings are listed below, along with their default value
 "System.Storage.PhysicalDisk.AutoRetire.OnLostCommunication.Enabled"       = True
 "System.Storage.PhysicalDisk.AutoRetire.OnUnresponsive.Enabled"            = True
 "System.Storage.PhysicalDisk.AutoRetire.DelayMs"                           = 900000 (i.e. 15 minutes)
-"System.Storage.PhysicalDisk.Unresponsive.Reset.CountResetIntervalSeconds" = 360 (i.e. 60 minutes)
+"System.Storage.PhysicalDisk.Unresponsive.Reset.CountResetIntervalSeconds" = 3600 (i.e. 60 minutes)
 "System.Storage.PhysicalDisk.Unresponsive.Reset.CountAllowed"              = 3
 ```
 

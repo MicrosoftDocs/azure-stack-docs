@@ -232,4 +232,4 @@ If an upgrade is triggered on a cluster without extra GPU resources to facilitat
 
 ## Next steps
 
-- [AKS overview](overview.md)
+- [AKS on HCI and Windows Server overview](overview.md)
