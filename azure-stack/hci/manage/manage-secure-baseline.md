@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/13/2024
+ms.date: 05/14/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -86,7 +86,7 @@ Use the following steps to disable drift control:
    - **Cluster** - Affects all nodes in the cluster using the orchestrator.
 
 > [!IMPORTANT]
-> If you disable drift control, the protected settings are modified. If you enable drift control again, any changes that you since made to the protected settings are overwritten.
+> If you disable drift control, the protected settings can be modified. If you enable drift control again, any changes that you since made to the protected settings are overwritten.
 
 ## Configure security settings during deployment
 
