@@ -40,8 +40,8 @@ The compressed log file consists of different configuration files, deployment an
 | **aksedgehost-systeminfo** | Information | Windows host OS information including: PowerShell version, Windows OS version, CPU, memory, and storage. |
 | **Microsoft-Windows-Host-Network-Service-Admin.xml** | Windows Event Log | HNS service Windows Event Log - Internal use only. |
 | **Microsoft-Windows-Host-Network-Service-Operational.xml** | Windows Event Log | HNS operational service Windows Event Log - internal use only. |
-| **Microsoft-Windows-Hyper-V-Compute-Admin.xml**| Windows Event Log | Events from the [Host Compute Service (HCS)](/virtualization/community/team-blog/2017/20170127-introducing-the-host-compute-service-hcs) are collected here - internal use only. |
-| **Microsoft-Windows-Hyper-V-Compute-Operational.xml** | Windows Event Log | Events from the [Host Compute Service (HCS)](/virtualization/community/team-blog/2017/20170127-introducing-the-host-compute-service-hcs) are collected here - internal use only. |
+| **Microsoft-Windows-Hyper-V-Compute-Admin.xml**| Windows Event Log | Events from the Host Compute Service (HCS) are collected here - internal use only. |
+| **Microsoft-Windows-Hyper-V-Compute-Operational.xml** | Windows Event Log | Events from the Host Compute Service (HCS) are collected here - internal use only. |
 | **Microsoft-Windows-Hyper-V-VMMS-Admin.xml** | Windows Event Log | Events from the virtual machine management service (VMMS) can be found here - internal use only. |
 | **Microsoft-Windows-Hyper-V-VMMS-Networking.xml** | Windows Event Log | Events from the virtual machine management service (VMMS) networking stack can be found here - internal use only. |
 | **Microsoft-Windows-Hyper-V-VMMS-Operational.xml** | Windows Event Log | Events from the virtual machine management service (VMMS) operation can be found here - internal use only. |
@@ -82,7 +82,7 @@ These logs should be independent of the cluster type and the Kubernetes distribu
 | ***\<Windows-hostname\>*-wedge-aksedge-agent-config** | Deployment configuration | Windows virtual machine configuration - internal use only. |
 | ***\<Windows-hostname\>*-ledge-aksedge-lifecycle-mgmt** | VM information | Windows virtual machine lifecycle management logs - Internal use only. |
 | **config** | Deployment configuration | Copy of JSON configuration used for deployment. Sensitive information isn't included. |
-| **hcsdiag_list** | VM Information | Running virtual machines created by [HCS](/virtualization/community/team-blog/2017/20170127-introducing-the-host-compute-service-hcs). Only valid for Windows Client host OS deployments. AKS Edge Essentials nodes should run under the **wssdagent** name. |
+| **hcsdiag_list** | VM Information | Running virtual machines created by HCS. Only valid for Windows Client host OS deployments. AKS Edge Essentials nodes should run under the **wssdagent** name. |
 | **hnsdiag_list_all** | VM information | Network information related to the virtual machines. Only valid for Windows Client host OS deployments.
 | **kubectl_describe** | Kubernetes information | Output of running `kubectl describe nodes`. For more information about this command, see the [Kubectl reference documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe). |
 | **kubectl_pods** | Cluster information | Output of running `kubectl describe pods`. For more information about this command, see the [Kubectl reference documentation](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe). |

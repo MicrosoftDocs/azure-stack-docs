@@ -118,8 +118,6 @@ Follow these steps to configure the operating system using SConfig:
 
    Once the server is domain joined, it synchronizes its time from the PDC emulator.
 
-1. Rename all the servers using option 2 in SConfig to match what you used when preparing Active Directory, as you won't rename the servers later. <!--Make a note of the network adapter names in the OS so as to ensure that these names match in the *config.json* file that you create later.-->
-
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each server rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
 1. Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.

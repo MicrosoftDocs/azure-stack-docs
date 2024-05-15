@@ -14,15 +14,15 @@ ms.date: 04/23/2024
 
 [!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll learn about the single-server storage network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+This article describes the single-server storage network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article also helps you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
-For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+For information about other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
 
 ## Introduction
 
 Single-server deployments provide cost and space benefits while helping to modernize your infrastructure and bring Azure hybrid computing to locations that can tolerate the resiliency of a single server. Azure Stack HCI running on a single-server behaves similarly to Azure Stack HCI on a multi-node cluster: it brings native Azure Arc integration, the ability to add servers to scale out the cluster, and it includes the same [Azure benefits](../manage/azure-benefits.md).
 
-It also supports the same workloads, such as Azure Virtual Desktop (AVD) and AKS hybrid, and is supported and billed the same way.
+It also supports the same workloads, such as Azure Virtual Desktop (AVD) and AKS on Azure Stack HCI, and is supported and billed the same way.
 
 ## Scenarios
 

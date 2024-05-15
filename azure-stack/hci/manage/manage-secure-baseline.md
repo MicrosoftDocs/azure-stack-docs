@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/19/2024
+ms.date: 05/14/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -33,27 +33,25 @@ View the SMB signing status under the **Data protections** > **Network protectio
 
 ## View security baseline compliance in the Azure portal
 
-After you've enrolled your Azure stack HCI system with Microsoft Defender for Cloud or assigned the built-in policy: Windows machines should meet requirements of the Azure compute security baseline, a report is generated for your servers.
+After you enroll your Azure Stack HCI system with Microsoft Defender for Cloud or assign the built-in policy *Windows machines should meet requirements of the Azure compute security baseline*, a compliance report is generated. For the full list of rules your Azure Stack HCI server is compared to, see [Windows security baseline](/azure/governance/policy/samples/guest-configuration-baseline-windows).
 
+For Azure Stack HCI server, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of 288 rules - that is, 281 out of 288 rules are compliant.
 
-For Azure Stack HCI server, when all the hardware requirements for Secured-core are met, the compliance score is 281 out of the 288. This score indicates that 281 out of 288 rules are compliant.
+The following table explains the rules that aren't compliant and the rationale of the current gap:
 
-The following table explains the rules that are not compliant and the rationale of the current gap:
-
-|Rule name    |   Expected    |Actual   | Logic    | Comments    |
-|--------------|----------------------|----------------------|----------------------|---------------------------------|
-|Interactive logon: Message text for users attempting to log on|Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
-|Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: NOTEQUALS|We expect you to define this value with no drift control in place.|
-|Minimum password length	|Expected: 14 | Actual: 0 | Operator: GREATEROREQUAL|	We expect you to define this value with no drift control in place that aligns with your organization's policy.|
-|Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: EQUALS|This control doesn't apply to Azure Stack HCI.|
-|Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: EQUALS|This control is a part of the Windows Defender protections, not enabled by default. You can evaulte whether you want to enable.|
-|Hardened UNC Paths - NETLOGON	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive. This rule can be safely ignored.|
-|Hardened UNC Paths - SYSVOL	|Expected: RequireMutualAuthentication=1, RequireIntegrity=1 | Actual: RequireMutualAuthentication=1,RequireIntegrity=1,RequirePrivacy=1 | Operator: EQUALS	|Azure Stack HCI is more restrictive. This rule can be safely ignored.|
-
+| Rule name           | Expected    | Actual   | Logic    | Comments    |
+|---------------------|---------------|---------|----------|------------|
+| Interactive logon: Message text for users attempting to log on| Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
+| Interactive logon: Message title for users attempting to log on|Expected: | Actual: | Operator: <br> NOTEQUALS|We expect you to define this value with no drift control in place.|
+| Minimum password length |Expected: 14 | Actual: 0 | Operator: <br> GREATEROREQUAL| We expect you to define this value with no drift control in place that aligns with your organization's policy.|
+| Prevent device metadata retrieval from the Internet|Expected: 1 | Actual: (null) | Operator: <br> EQUALS|This control doesn't apply to Azure Stack HCI.|
+| Prevent users and apps from accessing dangerous websites|Expected: 1 | Actual: (null) | Operator: <br> EQUALS | This control is a part of the Windows Defender protections, not enabled by default. <br> You can evaluate whether you want to enable.|
+| Hardened UNC Paths - NETLOGON | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS | Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
+|Hardened UNC Paths - SYSVOL | Expected: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 | Actual: <br> RequireMutualAuthentication=1 <br> RequireIntegrity=1 <br> RequirePrivacy=1 | Operator: <br> EQUALS |Azure Stack HCI is more restrictive. <br> This rule can be safely ignored.|
 
 ## Manage security defaults with PowerShell
 
-With drift protection enabled, you can only modify non-protected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [SecurityBaseline](https://aka.ms/hci-securitybase).
+With drift protection enabled, you can only modify nonprotected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [SecurityBaseline](https://aka.ms/hci-securitybase).
 
 ## Modify security defaults
 
@@ -86,6 +84,9 @@ Use the following steps to disable drift control:
 
    - **Local** - Affects the local node only.
    - **Cluster** - Affects all nodes in the cluster using the orchestrator.
+
+> [!IMPORTANT]
+> If you disable drift control, the protected settings can be modified. If you enable drift control again, any changes that you since made to the protected settings are overwritten.
 
 ## Configure security settings during deployment
 
