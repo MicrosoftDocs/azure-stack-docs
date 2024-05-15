@@ -61,7 +61,7 @@ In this preview release, the Arc Resource Bridge and the target clusters share a
 For information about supported VM size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md).
 
 > [!NOTE]
-> There was a known issue where the VM size was deployed with incorrect specifications in the previous version of Arc Resource Bridge. This issue has been resolved in the Arc Resource Bridge 1.1.0 Release or later. Following [this](/azure/azure-arc/resource-bridge/upgrade) documentation to upgrade your Arc Resource Bridge, or learn more from the [Arc Resource Bridge release note](https://github.com/Azure/ArcResourceBridge/releases).
+> In the previous version of Arc Resource Bridge, there was a known issue in which the VM size was deployed with incorrect specifications. This issue was resolved in the Arc Resource Bridge version 1.1.0 and later releases. [See this article](/azure/azure-arc/resource-bridge/upgrade) to upgrade your Arc Resource Bridge. For more information, see the [Arc Resource Bridge release notes](https://github.com/Azure/ArcResourceBridge/releases). To understand the full context of this issue, see the [known issues in AKS enabled by Azure Arc on VMware](aks-vmware-known-issues.md).
 > For more information about support size options, see the [AKS Arc on VMware scale requirements](aks-vmware-scale-requirements.md). For known issues, see [troubleshooting/known issues](aks-vmware-known-issues.md).
 
 #### VM folder and VM templates
@@ -70,13 +70,14 @@ You should create a folder for VM templates, to store the Arc Resource Bridge an
 
 ## Supported Kubernetes version
 
-In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. Check the [Arc Resource Bridge release note](https://github.com/Azure/ArcResourceBridge/releases) to understand which Kubernetes version is supported for each specific version number.
+In this preview release, you can only deploy the same Kubernetes version that the Arc Resource Bridge supports. See the [Arc Resource Bridge release notes](https://github.com/Azure/ArcResourceBridge/releases) for information about which Kubernetes version is supported for each specific version number.
 
 ## Custom location
-If you choose to **Enable Kubernetes Service on VMware [Preview]** when you **Connect vCenter to Azure** from the [Azure Portal](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix "AKS-" and the default namespace is created for you to deploy AKS on VMware. If you **Enable Kubernetes Service on VMware [Preview]** by following the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace. 
+
+If you choose to **Enable Kubernetes Service on VMware [preview]** when you **Connect vCenter to Azure** [from the Azure portal](/azure/azure-arc/vmware-vsphere/quick-start-connect-vcenter-to-arc-using-script), a custom location with the prefix **AKS-**, and a default namespace, are created for you to deploy AKS on VMware. If you **Enable Kubernetes Service on VMware [preview]** using the [Azure CLI process](aks-vmware-install-kubernetes-extension.md), you can specify the name of the custom location of your choice with the default namespace.
 
 > [!IMPORTANT]
-> The "default" namespace must be used.
+> You must use the **default** namespace.
 
 ## Azure requirements
 
@@ -116,7 +117,7 @@ If you don't have permissions to register an application and your admin can't gi
 You must have an Azure resource group in the supported regions before registration.
 
 > [!WARNING]
-> If your Azure resource group is not in a supported region, a deployment failure will occur.
+> If your Azure resource group is not in a supported region, a deployment failure occurs.
 
 #### Supported regions
 

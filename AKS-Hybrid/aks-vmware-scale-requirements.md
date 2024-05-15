@@ -16,7 +16,6 @@ ms.lastreviewed: 03/26/2024
 
 This article lists the supported scale count for clusters and node pools in AKS enabled by Azure Arc on VMware. These scale counts are contingent on the resources available from the underlying infrastructure.
 
-
 ## Support count
 
 | Scale item                                                               | Count                                      |
@@ -29,8 +28,8 @@ This article lists the supported scale count for clusters and node pools in AKS 
 | Minimum number of nodes in a node pool                                      | 1 <br />    Can't create empty node pools.|
 | Maximum number of AKS clusters in a VMware vSphere cluster           | 10                                         |
 
-
 ## Concurrency
+
 | Scale item                                                                                                                                      | Count                             |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Number of concurrent AKS cluster creations on an ARB                                                                                                   | 6                                     |
@@ -63,7 +62,7 @@ This article lists the supported scale count for clusters and node pools in AKS 
 | Standard_D8s_v3             | 8    | 32           |
 
 > [!NOTE]
-> There was a known issue where the VM size was deployed with incorrect specifications in the previous version of Arc Resource Bridge. This issue has been resolved in the Arc Resource Bridge 1.1.0 Release or later. Following [this](/azure/azure-arc/resource-bridge/upgrade) documentation to upgrade your Arc Resource Bridge, or learn more from the [Arc Resource Bridge release note](https://github.com/Azure/ArcResourceBridge/releases). To understand the full context of this issue, see [Known issues in AKS enabled by Azure Arc on VMware](aks-vmware-known-issues.md)
+> In the previous version of Arc Resource Bridge, there was a known issue in which the VM size was deployed with incorrect specifications. This issue was resolved in the Arc Resource Bridge version 1.1.0 and later releases. [See this article](/azure/azure-arc/resource-bridge/upgrade) to upgrade your Arc Resource Bridge. For more information, see the [Arc Resource Bridge release notes](https://github.com/Azure/ArcResourceBridge/releases). To understand the full context of this issue, see the [known issues in AKS enabled by Azure Arc on VMware](aks-vmware-known-issues.md).
 
 ## Next steps
 
