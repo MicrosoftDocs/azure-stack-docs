@@ -1,6 +1,6 @@
 ---
-title: Prepare CentOS Linux image for Azure Stack HCI VM via Azure CLI 
-description: Learn how to prepare CentOS Linux images to create Azure Stack HCI VM image.
+title: Prepare CentOS Linux image for Azure Stack HCI VM via Azure CLI (preview)
+description: Learn how to prepare CentOS Linux images to create Azure Stack HCI VM image (preview).
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
@@ -8,10 +8,10 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/29/2024
+ms.date: 05/15/2024
 ---
 
-# Prepare CentOS Linux image for Azure Stack HCI virtual machines
+# Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
@@ -172,64 +172,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
 
 ### Step 5: Create VM image
 
-Depending on where you copied the VHDX, use one of the following procedures to create the VM image:
-
-<!--- If your VHDX is in Azure Storage account, see [Create a VM image using Azure Storage account](./virtual-machine-image-storage-account.md#azure-portal).
-- If your VHDX is in user storage on the cluster shared volume, see [Create a VM image using image in the local share](./virtual-machine-image-local-share.md#azure-portal).-->
-
-Follow these steps on your Azure Stack HCI cluster to create the VM image from the VHDX of the VM that you created in the previous steps. Use Azure CLI to create the VM image:
-
-<!--update this as az cli link was added[!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]-->
-
-1. Run PowerShell as an administrator.
-
-1. Sign in. Run the following cmdlet:
-
-    ```azurecli
-    az login
-    ```
-
-1. Set your subscription. Run the following cmdlet:
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
-
-1. Set parameters for your subscription, resource group, custom location, location, OS type for the image, name of the image and the path where the image is located. Replace the parameters in `< >` with the appropriate values.
-
-    ```azurecli
-    $Subscription = "<Subscription ID>"
-    $Resource_Group = "<Resource group>"
-    $CustomLocation = "<Custom location>"
-    $Location = "<Location for your Azure Stack HCI cluster>"
-    $OsType = "<OS of source image>"
-    ```
-    
-    The parameters are described in the following table:
-    
-    | Parameter      | Description                                                                                |
-    |----------------|--------------------------------------------------------------------------------------------|
-    | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `westreurope`. |
-    | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
-
-
-1. Use the VHDX of the VM to create a gallery image. Use this VM image to create Arc virtual machines on your Azure Stack HCI.
-
-    Make sure to copy the VHDX in user storage in the cluster shared volume of your Azure Stack HCI. For exmaple, the path could look like: `C:\ClusterStorage\UserStorage_1\linux.vhdx`.
-
-    ```powershell
-    $ImagePath = "Path to user storage in CSV" 
-
-    $ImageName = "mylinuxvmimg" 
-
-    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' --storage-path-id $storagepathid
-    ```
-
-    For more information, see [Create a VM image using image in the local share](./virtual-machine-image-local-share.md).
-
-1. Validate that the image is created.
+[!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]
 
 ## Next steps
 

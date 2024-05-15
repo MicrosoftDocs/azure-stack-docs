@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 03/04/2024
+ms.date: 05/15/2024
 ---
 
 # Prepare Ubuntu image for Azure Stack HCI virtual machines
@@ -17,19 +17,15 @@ ms.date: 03/04/2024
 
 This article describes how to prepare an Ubuntu image to create a virtual machine on your Azure Stack HCI cluster. You'll use Azure CLI for the VM image creation.
 
-
 ## Prerequisites
 
 Before you begin, make sure that the following prerequisites are completed.
 
 - You've access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
 
-- You've [Downloaded latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster. The supported OS versions are *Ubuntu 18.04*, *20.04*, and *22.04 LTS*.  You will prepare this image to create a VM image. 
+- You've [Downloaded latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster. The supported OS versions are *Ubuntu 18.04*, *20.04*, and *22.04 LTS*.  You will prepare this image to create a VM image.
 
-  > [!NOTE]
-  > Only the Ubuntu distros are supported for Arc VMs. Other distros such as Red Hat Enterprise Linux (RHEL) and SUSE are currently not supported.
-
-## Workflow 
+## Workflow
 
 Follow these steps to prepare an Ubuntu image and create VM image from that image: 
 
@@ -129,56 +125,10 @@ Delete machine-specific files and data from your VM so that you can create a cle
     ```
 
 1. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
-    
 
 ### Step 4: Create VM image
 
-Follow these steps on your Azure Stack HCI cluster to create the VM image:
-
-1. Run PowerShell as an administrator.
-
-1. Sign in. Run the following cmdlet:
-
-    ```azurecli
-    az login
-    ```
-
-1. Set your subscription. Run the following cmdlet:
-
-    ```azurecli
-    az account set --subscription <Subscription ID>
-    ```
-
-1. Set parameters for your subscription, resource group, custom location, location, OS type for the image, name of the image and the path where the image is located. Replace the parameters in `< >` with the appropriate values.
-
-    ```azurecli
-    $Subscription = "<Subscription ID>"
-    $Resource_Group = "<Resource group>"
-    $CustomLocation = "<Custom location>"
-    $Location = "<Location for your Azure Stack HCI cluster>"
-    $OsType = "<OS of source image>"
-    ```
-    
-    The parameters are described in the following table:
-    
-    | Parameter      | Description                                                                                |
-    |----------------|--------------------------------------------------------------------------------------------|
-    | `Subscription`   | Subscription associated with your Azure Stack HCI cluster.        |
-    | `Resource_Group` | Resource group for Azure Stack HCI cluster that you associate with this image.        |
-    | `Location`       | Location for your Azure Stack HCI cluster. For example, this could be `eastus`, `westreurope`. |
-    | `OsType`         | Operating system associated with the source image. This can be Windows or Linux.           |
-
-
-1. Use the VHDX of the VM to create an Ubuntu gallery image. Use this Ubuntu VM image to create Arc virtual machines on your Azure Stack HCI.
-
-    ```powershell
-    $ImagePath = (Get-VMHardDiskDrive -VMName "myubuntuvm").Path 
-
-    $ImageName = "ubuntu-server-ssvm" 
-
-    az stack-hci-vm image create --subscription $subscription -g $resource_group --custom-location $CustomLocation --location $location --image-path $ImagePath --name $ImageName --debug --os-type 'Linux' 
-    ```
-
+[!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]
 
 ## Next steps
 
