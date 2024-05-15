@@ -98,7 +98,7 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
     Repeat this action for all the migrated VMs.
 
-    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png" alt-text="Screenshot of multiple VMs completing migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png":::
 
     The **Complete migration** action starts the **Delete protected item** job that you can track from the **Jobs** page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
     
