@@ -19,7 +19,7 @@ sections:
 
       - question: How can I purchase this license?
         answer: |
-          This license is exclusively designed for Azure Stack HCI Premier Solutions, integrated systems, and validated nodes as a pre-installed license activated in Azure. Contact your OEM partner for more information.
+          This license is exclusively designed for Azure Stack HCI Premier Solutions, Integrated Systems, and Validated Nodes as a pre-installed license activated in Azure. Contact your OEM partner for more information.
 
       - question: Do I have to license all physical cores?
         answer: |
@@ -33,7 +33,7 @@ sections:
       
       - question: Which version of Windows Server is supported for this license?
         answer: |
-          You can use Windows Server Datacenter 2022, or an earlier version that Microsoft supports, as a guest license.  
+          You can use Windows Server Datacenter 2022, or an [earlier version](/windows-server/get-started/automatic-vm-activation?tabs=server2025) that Microsoft supports, as a guest license.  
 
       - question: Are next version rights for Windows Server Datacenter included?
         answer: |
@@ -41,13 +41,13 @@ sections:
 
       - question: Where can I get support for this license?
         answer: |
-          For support with your Azure Stack HCI OEM license first contact your OEM vendor. If for some reason you're unable to get vendor support file an Azure support request through [the Azure portal](https://portal.azure.com/).
+          For support with your Azure Stack HCI OEM license first contact your OEM vendor. If for some reason you're unable to get vendor support, file an Azure support request through [the Azure portal](https://portal.azure.com/).
       
       - question: Are mixed-node scenarios supported?
         answer: |
           No. This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
 
-      - question: Does Azure Kubernetes Service offer unlimited virtualization?
+      - question: Does Azure Kubernetes Service (AKS) offer unlimited virtualization?
         answer: |
           Yes. AKS on Azure Stack HCI offers unlimited containers like Windows Server Datacenter offers unlimited virtualization. You can run as many containers and VMs as your infrastructure supports, without incurring extra licensing costs.
 
