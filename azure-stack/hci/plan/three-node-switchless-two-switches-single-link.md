@@ -7,14 +7,14 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/01/2024
+ms.date: 05/14/2024
 ---
 
 # Review three-node storage switchless, dual TOR, single link deployment network reference pattern for Azure Stack HCI
 
 [!INCLUDE [includes](../../includes/hci-applies-to-23h2.md)] and later
 
-In this article, you learn about the three-node storage switchless with two Top of Rack (TOR) L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Stack HCI solution.
+In this article, learn about the three-node storage switchless with two TOR L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Stack HCI solution.
 
 > [!NOTE]
 > The 3-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
