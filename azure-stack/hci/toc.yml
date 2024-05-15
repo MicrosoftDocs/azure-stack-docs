@@ -335,6 +335,8 @@ items:
         href: manage/sdn-manage-certs.md
       - name: Secure the Network Controller
         href: manage/nc-security.md
+      - name: Authenticate with Kerberos
+        href: manage/kerberos-with-spn.md
   - name: Billing
     items:
     - name: Azure Hybrid Benefit
@@ -597,8 +599,6 @@ items:
           href: manage/update-network-controller-certificates.md
         - name: Update SDN infrastructure certificates
           href: manage/update-sdn-infrastructure-certificates.md
-        - name: Authenticate with Kerberos
-          href: manage/kerberos-with-spn.md
     - name: Manage Azure services
       items:
       - name: Hybrid capabilities with Azure services
