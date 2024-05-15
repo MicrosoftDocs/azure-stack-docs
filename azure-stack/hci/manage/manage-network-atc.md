@@ -220,7 +220,7 @@ AutoDetect: Similar to the AutoDetect parameter above, this is a true or false p
 You can set your proxy configurations in the following ways:
 
 ```powershell
-$ProxyOverride = New-NetIntentGlobalProxyOverrides -ProxyServer https://itg.contoso.com:3128 -ProxyBypass = *.foo.com
+$ProxyOverride = New-NetIntentGlobalProxyOverrides -ProxyServer https://itg.contoso.com:3128 -ProxyBypass *.foo.com
 ```
 
 Using the `AutoConfigURL` switch, you can set your proxy configuration in the following way:

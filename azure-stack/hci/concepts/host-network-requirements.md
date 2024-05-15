@@ -76,7 +76,7 @@ Dynamic VMMQ is an intelligent, receive-side technology. It builds upon its pred
 
 - Optimizes host efficiency by using fewer CPU cores.
 - Automatic tuning of network traffic processing to CPU cores, thus enabling VMs to meet and maintain expected throughput.
-- Enables “bursty” workloads to receive the expected amount of traffic.
+- Enables "bursty" workloads to receive the expected amount of traffic.
 
 For more information on Dynamic VMMQ, see the blog post [Synthetic accelerations](https://techcommunity.microsoft.com/t5/networking-blog/synthetic-accelerations-in-a-nutshell-windows-server-2019/ba-p/653976).
 
@@ -159,7 +159,7 @@ SET is a software-based teaming technology that has been included in the Windows
 SET is the only teaming technology supported by Azure Stack HCI. SET works well with compute, storage, and management traffic.
 
 > [!IMPORTANT]
-> Azure Stack HCI doesn’t support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
+> Azure Stack HCI doesn't support NIC teaming with the older Load Balancing/Failover (LBFO). See the blog post [Teaming in Azure Stack HCI](https://techcommunity.microsoft.com/t5/networking-blog/teaming-in-azure-stack-hci/ba-p/1070642) for more information on LBFO in Azure Stack HCI.
 
 SET is important for Azure Stack HCI because it's the only teaming technology that enables:
 
@@ -284,7 +284,7 @@ Here is the example bandwidth allocation table:
 
 |NIC speed|Teamed bandwidth|SMB bandwidth reservation**|SBL/CSV %|SBL/CSV bandwidth|Live Migration %|Max Live Migration bandwidth|Heartbeat %|Heartbeat bandwidth|
 |---------|-----------------|--------------------------|---------|-----------------|----------------|-----------------------------|----------|-------------------|
-|10 Gbps  |20 Gbps          |10 Gbps                   |70%       |7 Gbps           |*\*            |200 Mbps                     |          |
+|10 Gbps  |20 Gbps          |10 Gbps                   |70%       |7 Gbps           |\*            |200 Mbps                     |          |
 |25 Gbps  |50 Gbps          |25 Gbps                   |70%       |17.5 Gbps        |29%            |7.25 Gbps                    |1%        |250 Mbps               |
 |40 Gbps  |80 Gbps          |40 Gbps                   |70%       |28 Gbps          |29%            |11.6 Gbps                    |1%        |400 Mbps|
 |50 Gbps  |100 Gbps         |50 Gbps                   |70%       |35 Gbps          |29%            |14.5 Gbps                    |1%        |500 Mbps|
@@ -383,4 +383,4 @@ The following shows the details for the example stretched cluster configuration.
 - Learn how to simplify host networking using Network ATC. See [Simplify host networking with Network ATC](../deploy/network-atc.md).
 - Brush up on [failover clustering networking basics](https://techcommunity.microsoft.com/t5/failover-clustering/failover-clustering-networking-basics-and-fundamentals/ba-p/1706005?s=09).
 - See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
-- See [Deploy using ARM template](../deploy/deployment-azure-resource-manager-template.md).
+- See [Deploy using Azure Resource Manager template](../deploy/deployment-azure-resource-manager-template.md).

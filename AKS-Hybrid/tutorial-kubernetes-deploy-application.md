@@ -28,7 +28,7 @@ This tutorial, part four of seven, describes how you can deploy a sample applica
 
 Later tutorials describe how to scale and update this application.
 
-This quickstart assumes a basic understanding of Kubernetes concepts.
+This tutorial assumes a basic understanding of Kubernetes concepts.
 
 ## Before you begin
 

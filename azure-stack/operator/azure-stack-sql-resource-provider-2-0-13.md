@@ -24,7 +24,7 @@ The resource provider has a minimum corresponding Azure Stack Hub build. It is r
  |Supported Azure Stack Hub version|SQL resource provider version|
  |-----|-----|
  |Version 2108,2206|SQL RP version 2.0.6.0|  
- |Version 2206, 2301|SQL RP version 2.0.13.0|  
+ |Version 2206, 2301, 2306|SQL RP version 2.0.13.0|  
  |     |     |
 
 > [!IMPORTANT]

@@ -17,13 +17,13 @@ ms.custom:
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-Azure Hybrid Benefit is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for AKS enabled by Arc, you can maximize the value of your on-premises licenses and modernize your applications at no additional cost.
+Azure Hybrid Benefit is a program that enables you to significantly reduce the costs of running workloads in the cloud. With Azure Hybrid Benefit for AKS enabled by Azure Arc, you can maximize the value of your on-premises licenses and modernize your applications at no additional cost.
 
-## What is Azure Hybrid Benefit for AKS?
+## What is Azure Hybrid Benefit for AKS enabled by Arc?
 
-Azure Hybrid Benefit for AKS enabled by Arc is a new benefit that can help you significantly reduce the cost of running Kubernetes on-premises or at the edge. It works by letting you apply your on-premises Windows Server Datacenter or Standard licenses with Software Assurance (SA) to pay for AKS. Each Windows Server core license entitles use on 1 virtual core of AKS. There are a few important details to note regarding activation of the benefit for AKS:
+Azure Hybrid Benefit for AKS enabled by Arc can help you significantly reduce the cost of running Kubernetes on-premises or at the edge. It works by letting you apply your on-premises Windows Server Datacenter or Standard licenses with Software Assurance (SA) to pay for AKS. Each Windows Server core license entitles use on 1 virtual core of AKS. There are a few important details to note regarding activation of the benefit for AKS:
 
-- Azure Hybrid Benefit for AKS is enabled at the management cluster (or AKS host) level. You don't need to enable the benefit for workload clusters.
+- Azure Hybrid Benefit for AKS Arc is enabled at the management cluster (or AKS host) level. You don't need to enable the benefit for workload clusters.
 - If you have multiple AKS on Azure Stack HCI or Windows Server deployments, you must enable Azure Hybrid Benefit individually for each deployment.
 - If you enable Azure Hybrid Benefit on an AKS Arc deployment during the trial period, it doesn't nullify your trial period. The benefit is activated immediately, and is applied at the end of the trial period.
 - Reinstalling AKS Arc doesn't automatically reinstate the benefit. You must reactivate this benefit for the new deployment.
@@ -35,7 +35,7 @@ The rest of this article describes how to activate this benefit for AKS on Azure
 > [!TIP]
 > You can maximize cost savings by also using Azure Hybrid Benefit for Azure Stack HCI. For more information, see [Azure Hybrid Benefit for Azure Stack HCI](/azure-stack/hci/concepts/azure-hybrid-benefit).
 
-## Use Azure Hybrid Benefit for AKS when setting up a cluster
+## Use Azure Hybrid Benefit for AKS enabled by Arc when setting up a cluster
 
 > [!WARNING]
 > Azure Hybrid Benefit for AKS Arc does not work on a bundled OEM partner SKU. If enabled, the setting has no effect.
@@ -122,15 +122,15 @@ Sample output:
 }
 ```
 
-## Use Azure Hybrid Benefit for AKS on an existing cluster
+## Use Azure Hybrid Benefit for AKS Arc on an existing cluster
 
-Run the `az aksarc update` command with the `--enable-ahub` flag to activate Azure Hybrid Benefit for AKS on a cluster that was already created without the benefit enabled:
+Run the `az aksarc update` command with the `--enable-ahub` flag to activate Azure Hybrid Benefit for AKS enabled by Arc on a cluster that was already created without the benefit enabled:
 
 ```azurecli
 az aksarc update --name <cluster name> -g <resource group> --enable-ahub
 ```
 
-## Deactivate Azure Hybrid Benefit for AKS
+## Deactivate Azure Hybrid Benefit for AKS Arc
 
 To deactivate Azure Hybrid Benefit for AKS Arc, run the following command:
 
@@ -216,13 +216,13 @@ Sample output:
 
 ## Maintain compliance for Azure Hybrid Benefit
 
-After activating Azure Hybrid Benefit for AKS, you must regularly check and maintain compliance for Azure Hybrid Benefit. You can perform an inventory of how many units you are running, and check this against the Software Assurance licenses you have. To determine how many clusters with Azure Hybrid Benefit for AKS you are running, you can look at your Microsoft Azure bill.
+After activating Azure Hybrid Benefit for AKS Arc, you must regularly check and maintain compliance. You can perform an inventory of how many units you are running, and check this against the Software Assurance licenses you have. To determine how many clusters with Azure Hybrid Benefit for AKS you run, you can look at your Microsoft Azure bill.
 
-To qualify for the Azure Hybrid Benefit for AKS, you must be running AKS on first-party Microsoft infrastructure such as Azure Stack HCI or Windows Server 2019/2022 and have the appropriate license to cover the underlying infrastructure. You can only use Azure Hybrid Benefit for AKS during the Software Assurance term. When the Software Assurance term is nearing expiry, you must either renew your agreement with Software Assurance, or deactivate the Azure Hybrid Benefit functionality.
+To qualify for the Azure Hybrid Benefit for AKS Arc, you must be running AKS on first-party Microsoft infrastructure such as Azure Stack HCI or Windows Server 2019/2022 and have the appropriate license to cover the underlying infrastructure. You can only use Azure Hybrid Benefit for AKS Arc during the Software Assurance term. When the Software Assurance term nears expiration, you must either renew your agreement with Software Assurance, or deactivate the Azure Hybrid Benefit functionality.
 
-### Verify that Azure Hybrid Benefit for AKS is applied to my Microsoft Azure Bill
+### Verify that Azure Hybrid Benefit for AKS Arc is applied to my Microsoft Azure bill
 
-See **Cost Management and Billing** in the Azure portal to verify that the Azure Hybrid Benefit for AKS has been applied to your Microsoft Azure bill. Please note that billing does not apply in real time. There will be a delay of several hours from the time you've activated Azure Hybrid Benefit until it shows on your bill.
+See **Cost Management and Billing** in the Azure portal to verify that the Azure Hybrid Benefit for AKS Arc was applied to your Microsoft Azure bill. Note that billing does not apply in real time. There is a delay of several hours from the time you've activated Azure Hybrid Benefit until it shows on your bill.
 
 ## Next steps
 

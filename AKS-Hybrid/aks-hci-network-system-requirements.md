@@ -54,7 +54,7 @@ The main purpose of a load balancer is to distribute traffic across multiple nod
 - [Deploy MetalLB load balancer using Azure Arc extension](deploy-load-balancer-portal.md).
 - Bring your own third party load balancer.
 
-Whether you choose MetalLB Arc extension, or bring your own load balancer, you must provide a set of IP addresses to the load balancer service. You have the following options:
+Whether you choose the MetalLB Arc extension, or bring your own load balancer, you must provide a set of IP addresses to the load balancer service. You have the following options:
 
 - Provide IP addresses for your services from the same subnet as the AKS Arc VMs.
 - Use a different network and list of IP addresses if your application needs external load balancing.
