@@ -4,7 +4,7 @@ description: This article describes how to renew Network Controller certificates
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 04/25/2024
+ms.date: 05/15/2024
 ---
 
 # Renew certificates for Network Controller
