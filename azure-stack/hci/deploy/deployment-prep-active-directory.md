@@ -41,6 +41,8 @@ Before you begin, make sure you've done the following:
 
 - You have obtained permissions to create an OU. If you don't have permissions, contact your Active Directory administrator.
 
+- If you have a firewall between your Azure Stack HCI system and Active Directory, ensure the proper firewall rules are configured. For specific guidance, see [How to configure a firewall for Active Directory domains and trusts](/troubleshoot/windows-server/active-directory/config-firewall-for-ad-domains-and-trusts.md#windows-server-2008-and-later-versions).
+
 ## Active Directory preparation module
 
 The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. Here are the required parameters associated with the cmdlet:
