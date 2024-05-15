@@ -333,6 +333,8 @@ items:
       items:
       - name: Manage certificates for SDN
         href: manage/sdn-manage-certs.md
+      - name: Update Network Controller certificates
+        href: manage/update-network-controller-certificates.md
       - name: Secure the Network Controller
         href: manage/nc-security.md
   - name: Billing
@@ -593,8 +595,6 @@ items:
         href: manage/manage-default-network-access-policies-virtual-machines.md
       - name: Manage SDN security
         items:
-        - name: Update Network Controller certificates
-          href: manage/update-network-controller-certificates.md
         - name: Update SDN infrastructure certificates
           href: manage/update-sdn-infrastructure-certificates.md
         - name: Authenticate with Kerberos
