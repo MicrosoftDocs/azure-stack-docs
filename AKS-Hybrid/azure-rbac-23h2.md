@@ -133,7 +133,7 @@ users:
 
 ## Step 3: Create role assignments for users to access the cluster 
 
-Now, infrastructure administrators are ready to create role assignments for users to access the cluster. To assign roles on a Kubernetes cluster, you must have Owner permission on the subscription, resource group, or cluster. We use the [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) command to create role assignments. For available role assignments and detailed instructions, see [How to create role assignments](/azure/azure-arc/kubernetes/azure-rbac#create-role-assignments-for-users-to-access-the-cluster).
+Now, infrastructure administrators are ready to create role assignments for users to access the cluster. To assign roles on a Kubernetes cluster, you must have Owner permission on the subscription, resource group, or cluster. We use the [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) command to create role assignments. For available role assignments and detailed instructions, see [How to create role assignments](/azure/azure-arc/kubernetes/azure-rbac#create-role-assignments-for-users-to-access-the-cluster).
 
 First, we get the $ARM-ID for the target cluster to which we'd like to assign a role.
 
