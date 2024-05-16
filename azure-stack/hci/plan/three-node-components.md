@@ -1,26 +1,26 @@
 ---
-title: Review two-node storage reference pattern components for Azure Stack HCI
-description: Learn about two-node storage reference pattern components for Azure Stack HCI.
+title: Review three-node storage reference pattern components for Azure Stack HCI
+description: Learn about three-node storage reference pattern components for Azure Stack HCI.
 ms.topic: conceptual
 author: alkohli
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 03/14/2024
+ms.date: 05/15/2024
 ---
 
-# Review two-node storage reference pattern components for Azure Stack HCI
+# Review three-node storage reference pattern components for Azure Stack HCI
 
 [!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll learn about which network components get deployed for two-node reference patterns, as shown below:
+In this article, you'll learn about which network components get deployed for three-node reference patterns, as shown below:
 
-:::image type="content" source="media/two-node-components/components.png" alt-text="Diagram showing components for the two-node network pattern." lightbox="media/two-node-components/components.png":::
+:::image type="content" source="media/three-node-components/components.png" alt-text="Diagram showing components for the three-node network pattern." lightbox="media/three-node-components/components.png":::
 
 ## VM components
 
-The following table lists all the components running on VMs for two-node network patterns:
+The following table lists all the components running on VMs for three-node network patterns:
 
 |Component|Number of VMs|OS disk size|Data disk size|vCPUs|Memory|
 |--|--|--|--|--|--|
@@ -76,4 +76,4 @@ The following components run as services or agents on the host server:
 
 ## Next steps
 
-Learn about [Two-node deployment IP requirements](two-node-ip-requirements.md).
+Learn about [three-node deployment IP requirements](three-node-ip-requirements.md).

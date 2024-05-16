@@ -70,6 +70,11 @@
       "redirect_url":"/azure-stack/hci/manage/deploy-arc-resource-bridge-using-command-line/",
       "redirect_document_id": false
     }, 
+    {
+      "source_path":"azure-stack/hci/plan/two-node-decision-matrix.md",
+      "redirect_url":"/azure-stack/hci/plan/two-node-ip-components",
+      "redirect_document_id": false
+    }, 
     { 
       "source_path": "azure-stack/operator/iot-hub-rp-install.md", 
       "redirect_url": "/azure/iot-hub/", 
