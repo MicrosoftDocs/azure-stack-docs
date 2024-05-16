@@ -34,7 +34,7 @@ Before you set up Kubernetes RBAC using Microsoft Entra ID, you need to have the
 
 
 
-### [AKS on Azure Stack HCI 23H2](#tab/23H2)
+### [AKS on Azure Stack HCI 23H2](#tab/Azure Stack HCI 23H2)
 
 - **A Kubernetes cluster created in AKS Arc**
 
@@ -61,7 +61,7 @@ Before you set up Kubernetes RBAC using Microsoft Entra ID, you need to have the
 
     
 
-### [AKS on Azure Stack HCI 22H2](#tab/22H2)
+### [AKS on Azure Stack HCI 22H2](#tab/Azure Stack HCI 22H2)
 
 - **A Kubernetes cluster created in AKS Arc**
 

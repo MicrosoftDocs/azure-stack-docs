@@ -58,7 +58,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 ## Step 2: Get admin certificate-based kubeconfig for Entra ID authentication
 
-To access the Kubernetes cluster with the given permissions, the Kubernetes operator will need the Microsoft Entra *kubeconfig*, which can be obtained using the [az aksarc get-credentials](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials). This *kubeconfig* can be distributed to users connecting from their client machines. The Microsoft Entra kubeconfig does not contain any secrets.
+To access the Kubernetes cluster with the given permissions, the Kubernetes operator will need the Microsoft Entra *kubeconfig*, which can be obtained using the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials). This *kubeconfig* can be distributed to users connecting from their client machines. The Microsoft Entra kubeconfig does not contain any secrets.
 
 To run this Azure CLI command, you must have "Contributor," "Owner," and "Azure Kubernetes Service Hybrid Cluster Admin Role" permissions on the cluster. Learn more from [Retrieve certificate-based admin kubeconfig](/azure/aks/hybrid/retrieve-admin-kubeconfig)
 
@@ -76,7 +76,7 @@ When assigning a role for a Kubernetes cluster, infrastructure administrator can
 
 
 
-First, use the [`az ad sp create`](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create) command to create an Azure service principal and obtain the credentials needed to access the Azure RBAC-enabled Kubernetes cluster. You can find the instructions below, or more detailed instructions are documented in [Use a service principal with Azure Kubernetes Service]( /azure/aks/kubernetes-service-principal?tabs=azure-cli)
+First, use the [`az ad sp create`](/cli/azure/ad/sp#az-ad-sp-create) command to create an Azure service principal and obtain the credentials needed to access the Azure RBAC-enabled Kubernetes cluster. You can find the instructions below, or more detailed instructions are documented in [Use a service principal with Azure Kubernetes Service]( /azure/aks/kubernetes-service-principal?tabs=azure-cli)
 
 ```azurecli
 $spnenablerbac = "<SPN-name>"
@@ -133,7 +133,7 @@ users:
 
 ## Step 3: Create role assignments for users to access the cluster 
 
-Now, infrastructure administrators are ready to create role assignments for users to access the cluster. To assign roles on a Kubernetes cluster, you must have Owner permission on the subscription, resource group, or cluster. We use the [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) command to create role assignments. For available role assignments and detailed instructions, see [How to create role assignments](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI%2Ckubernetes-latest#create-role-assignments-for-users-to-access-the-cluster).
+Now, infrastructure administrators are ready to create role assignments for users to access the cluster. To assign roles on a Kubernetes cluster, you must have Owner permission on the subscription, resource group, or cluster. We use the [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) command to create role assignments. For available role assignments and detailed instructions, see [How to create role assignments](/azure/azure-arc/kubernetes/azure-rbac#create-role-assignments-for-users-to-access-the-cluster).
 
 First, we get the $ARM-ID for the target cluster to which we'd like to assign a role.
 

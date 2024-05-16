@@ -129,7 +129,7 @@ With Azure RBAC, you can provide your users (or identities) with granular access
 
 With the Azure RBAC integration, AKS Arc will use a Kubernetes Authorization webhook server so you can manage Microsoft Entra integrated Kubernetes cluster resource permissions and assignments using Azure role definition and role assignments.
 
-![](C:\MicrosoftDocs\azure-stack-docs-pr\AKS-Hybrid\azure-rbac-k8s-authz-flow.png)
+![](\media\concepts-security\azure-rbac-k8s-authz-flow.png)
 
 As shown in the above diagram, when using the Azure RBAC integration, all requests to the Kubernetes API will follow the same authentication flow as explained on the [Microsoft Entra integration section](Microsoft Entra integration).
 
@@ -163,11 +163,11 @@ AKS Arc provides the following four built-in roles. They are similar to the [Kub
 
 Enhance your AKS Arc cluster security with Microsoft Entra integration. Built on decades of enterprise identity management, Microsoft Entra ID is a multi-tenant, cloud-based directory and identity management service that combines core directory services, application access management, and identity protection. With Microsoft Entra ID, you can integrate on-premises identities into AKS Arc clusters to provide a single source for account management and security.
 
-![](C:\MicrosoftDocs\azure-stack-docs-pr\AKS-Hybrid\aad-integration.png)
+![](\media\concepts-security\aad-integration.png)
 
 With Microsoft Entra integrated AKS clusters, you can grant users or groups access to Kubernetes resources within a namespace or across the cluster.
 
-1. To obtain a `kubectl` configuration context, a user runs the [az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials) command.
+1. To obtain a `kubectl` configuration context, a user runs the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command.
 2. When a user interacts with the AKS Arc cluster with `kubectl`, they're prompted to sign in with their Microsoft Entra credentials.
 
 This approach provides a single source for user account management and password credentials. The user can only access the resources as defined by the cluster administrator.
