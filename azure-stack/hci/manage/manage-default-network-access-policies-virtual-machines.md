@@ -27,8 +27,8 @@ To enable default network access policies, you need to install Network Controlle
 
 You can attach default policies to a VM in two ways:
 
-- When creating a VM. You'll need to attach the VM to a logical network (traditional VLAN network) or an SDN virtual network.
-- After the VM is created.
+- During VM creation. You'll need to attach the VM to a logical network (traditional VLAN network) or an SDN virtual network.
+- Post VM creation.
 
 ### Create and attach networks
 
@@ -45,7 +45,7 @@ After you have created a logical network in Windows Admin Center, you can create
 > [!NOTE]
 > Unlike in 22H2, you can no longer connect a VM directly to a VLAN using Windows Admin Center. Instead, you must create a logical network representing the VLAN, create a logical network subnet with the VLAN, and then attach the VM to the logical network subnet.
 
-Here's an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed. In this example, we'll demonstrate how to connect your VM to VLAN 5:
+Here's an example that explains how you can attach your VM directly to a VLAN with Azure Stack HCI 22H2 when Network Controller is installed. In this example, we demonstrate how to connect your VM to VLAN 5:
 
 1. Create a logical network with any name. Ensure that Network Virtualization is disabled.
 
@@ -69,7 +69,7 @@ You have three options:
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png" alt-text="Screenshot showing the No protection option selected for VMs in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/no-protection-1.png":::
 
-- **Open some ports** - Choose this option to go with default policies. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH or RDP as per your requirements.
+- **Open some ports** - Choose this option to go with default policies. The default policies block all inbound access and allow all outbound access. You can optionally enable inbound access to one or more well defined ports, for example, HTTP, HTTPS, SSH, or RDP as per your requirements.
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png" alt-text="Screenshot showing the ports that can be opened on VMs specified during VM creation in Windows Admin Center." lightbox="./media/manage-default-network-access-policies-virtual-machines/ports-to-open-1.png":::
 
@@ -79,9 +79,9 @@ You have three options:
 
 ## VMs created outside of Windows Admin Center
 
-If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs on your Azure Stack HCI, and you have enabled default network access policies, you'll see two issues:
+If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShell cmdlet) to create VMs on your Azure Stack HCI, and you have enabled default network access policies, you might encounter these two issues:
 
-- The VMs may not have network connectivity. This will happen since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state. 
+- The VMs may not have network connectivity. This happens since the VM is being managed by a Hyper-V switch extension called Virtual Filtering Platform (VFP) and by default, the Hyper-V port connected to the VM is in blocked state.
 
     To unblock the port, run the following commands from a PowerShell session on a Hyper-V host where the VM is located:
 
@@ -92,7 +92,7 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
         Install-Module -Name SdnDiagnostics
         ```
 
-        Alternatively, if already installed then leverage the following:
+        Alternatively, if already installed then use the following:
 
         ```azurepowershell
         Update-Module -Name SdnDiagnostics
