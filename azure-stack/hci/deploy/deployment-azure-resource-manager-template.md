@@ -252,10 +252,6 @@ This section contains known issues and workarounds for ARM template deployment.
 |In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
 |In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster has completed the validation stage, we recommend that you do not initiate another ARM template deployment in "Validate" mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
 
-## Troubleshoot deployment issues
-
-You may encounter the following errors related to role assignment:
-
 ### Resource Conflict error
 
 If the same Resource group is used for deploying Azure Stack HCI clusters using Azure portal as well as using an ARM template, you may see the `"The role assignment already exists"` error during deployment as shown on the **Overview > Deployment details** page for the applicable resource. The following string is displayed on the pop-out page under **Errors > Raw errors** as listed below:
