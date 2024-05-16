@@ -37,7 +37,8 @@ To repair an existing server, follow these high-level steps:
 
     The storage is automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that can run for multiple days depending on number of the servers and the storage used.
 
-
+> [!NOTE]
+> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is repaired.
 
 ## Supported scenarios
 
