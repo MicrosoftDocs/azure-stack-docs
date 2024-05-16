@@ -131,7 +131,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
 #### [AKS on Azure Stack HCI 23H2](#tab/23H2)
 
-using the [az aksarc get-credentials](/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials) command:
+using the [az aksarc get-credentials](/cli/azure/aksarc?view=azure-cli-latest#az-aksarc-get-credentials) command:
 
 ```Azure CLI
 `az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin`

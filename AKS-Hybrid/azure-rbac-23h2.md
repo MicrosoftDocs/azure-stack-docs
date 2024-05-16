@@ -1,13 +1,13 @@
 ---
-title: Use Azure RBAC for AKS clusters (preview)
-description: Use Azure RBAC with Microsoft Entra ID to control access to AKS clusters.
+title: Use Azure role-based access control (RBAC) for Kubernetes Authorization
+description: Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. 
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.author: sethm
-ms.reviewer: sulahiri
-ms.date: 10/09/2023
-ms.lastreviewed: 03/23/2023
+ms.author: leslielin
+ms.reviewer: sethm
+ms.date: 5/16/2024
+ms.lastreviewed: 5/16/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -16,7 +16,7 @@ ms.lastreviewed: 03/23/2023
 
 # Use Azure role-based access control (RBAC) for Kubernetes Authorization
 
-[!INCLUDE [hci-applies-to-23h2](https://github.com/MicrosoftDocs/azure-stack-docs/blob/main/AKS-Hybrid/includes/hci-applies-to-23h2.md)]
+Applies to: AKS on Azure Stack HCI 23H2
 
 Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the `kubectl` tool based on the given permissions. The Azure CLI provides an easy way to get the access credentials and *kubeconfig* configuration file to connect to your AKS Arc clusters using `kubectl`.
 
@@ -30,7 +30,7 @@ For a conceptual overview, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azu
 
 - AKS on Azure Stack HCI 23H2 currently only supports enabling Azure RBAC during Kubernetes cluster creation. You cannot enable Azure RBAC after the Kubernetes cluster has been created.
 
-- To enable Azure RBAC, you must be running Azure CLI `aksarc extension version 1.1.1` or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
+- To enable Azure RBAC, you must be running Azure CLI `aksarc extension version 1.1.1` or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
 - To interact with Kubernetes clusters, you must install [kubectl]([Install Tools | Kubernetes](https://kubernetes.io/docs/tasks/tools/)) and [kubelogin]([Installation - Azure Kubelogin](https://azure.github.io/kubelogin/install.html)). Follow links to the public documentation to complete the installation.
 
@@ -133,7 +133,7 @@ users:
 
 ## Step 3: Create role assignments for users to access the cluster 
 
-Now, infrastructure administrators are ready to create role assignments for users to access the cluster. To assign roles on a Kubernetes cluster, you must have Owner permission on the subscription, resource group, or cluster. We use the [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) command to create role assignments. For available role assignments and detailed instructions, see [How to create role assignments](azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI%2Ckubernetes-latest#create-role-assignments-for-users-to-access-the-cluster).
+Now, infrastructure administrators are ready to create role assignments for users to access the cluster. To assign roles on a Kubernetes cluster, you must have Owner permission on the subscription, resource group, or cluster. We use the [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) command to create role assignments. For available role assignments and detailed instructions, see [How to create role assignments](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI%2Ckubernetes-latest#create-role-assignments-for-users-to-access-the-cluster).
 
 First, we get the $ARM-ID for the target cluster to which we'd like to assign a role.
 
@@ -155,7 +155,7 @@ az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee
 
 ## Step 4: Connect to an AKS cluster over a private network via Azure RBAC for authorized activity
 
-Now the infrastructure administrator has created an Azure RBAC-enabled Kubernetes cluster and completed the role assignment. The Kubernetes operator can now use *kubelogin* and *kubectl* with signed-in Azure credentials to perform authorized activities. See [How to create role assignments](https://www.notion.so/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI%2Ckubernetes-latest#create-role-assignments-for-users-to-access-the-cluster) for Built-in roles with respective permissions.
+Now the infrastructure administrator has created an Azure RBAC-enabled Kubernetes cluster and completed the role assignment. The Kubernetes operator can now use *kubelogin* and *kubectl* with signed-in Azure credentials to perform authorized activities. See [How to create role assignments](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI%2Ckubernetes-latest#create-role-assignments-for-users-to-access-the-cluster) for Built-in roles with respective permissions.
 
 Use the Microsoft Entra *kubeconfig* file from step #3 to perform *kubelogin*. See the following command as an example.
 
