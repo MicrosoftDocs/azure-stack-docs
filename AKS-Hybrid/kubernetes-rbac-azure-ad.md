@@ -26,7 +26,7 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 
 ## Prerequisites
 
-Before you set up Kubernetes RBAC using Microsoft Entra identity, you need to have:
+Before you set up Kubernetes RBAC using Microsoft Entra ID, you need to have the following prerequisites:
 
 1. A Kubernetes cluster created in AKS Arc.
 2. An Azure Arc connection.
