@@ -62,12 +62,12 @@ Follow these steps to use the downloaded Ubuntu image to provision a VM:
 
     See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
 
-1. Disable secure boot on the VM. 
-    1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine and right-click and then select **Settings**. 
-    1. In the left pane, select the **Security** tab. Then under **Secure Boot**, uncheck **Enable Secure Boot**. 
-    1. Apply the changes. On the next boot, the VM boots without the secure mode.
+1. Use the UEFI certificate to Secure Boot the VM.
+    1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine, right-click, and then select **Settings**.
+    1. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the **Template** dropdown list, select **Microsoft UEFI Certificate Authority**.
+    1. Select **OK** to save the changes.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-secure-boot-disabled.png" alt-text="Screenshot of the secure boot disabled for VM on Settings page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-secure-boot-disabled.png":::
+     :::image type="content" source="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-secure-boot-the-vm.png" alt-text="Screenshot of the secure boot options for VM on the Settings page." lightbox="../manage/media/virtual-machine-image-linux-sysprep/ubuntu-virtual-machine-secure-boot-the-vm.png":::
 
 ### Step 2: Configure VM
 
