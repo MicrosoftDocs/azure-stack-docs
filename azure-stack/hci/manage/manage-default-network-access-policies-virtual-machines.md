@@ -1,27 +1,27 @@
 ---
-title: Enable, assign default network access policies on Azure Stack HCI VMs
-description: Learn how to enable and assign default network access policies on VMs running on your Azure Stack HCI via the Windows Admin Center.
+title: Enable and assign default network access policies on Azure Stack HCI VMs
+description: Learn how to enable and assign default network access policies on VMs running on Azure Stack HCI via the Windows Admin Center.
 ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
-ms.date: 02/26/2024
+ms.date: 05/15/2024
 ---
 
-# Use default network access policies on virtual machines on your Azure Stack HCI
+# Use default network access policies on virtual machines on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, version 22H2
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on your Azure Stack HCI.
+This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
 
-Default network policies can be used to protect virtual machines running on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on your Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
+Default network policies can be used to protect virtual machines running on your Azure Stack HCI from external unauthorized attacks. These policies block all inbound access to virtual machines on Azure Stack HCI (except the specified management ports you want enabled) while allowing all outbound access. Use these policies to ensure that your workload VMs have access to only required assets, thereby making it difficult for the threats to spread laterally.
 
 > [!NOTE]
 > In this release, you can enable and assign default network policies through the Windows Admin Center.
 
 ## Enable default network access policies
 
-To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard.md).
+To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
 ## Assign default network policies to a VM
 
@@ -37,7 +37,6 @@ Depending on the type of network you want to attach your VM to, steps may be dif
 - **Attach VMs to a physical network**: Create one or more logical networks to represent those physical networks. A logical network is just a representation of the physical network(s) available to your Azure Stack HCI. For more information, see how to [Create a logical network](./tenant-logical-networks.md).
 
 - **Attach VMs to a SDN virtual network**: Create a virtual network before you create the VM. For more information, see how to [Create a virtual network](./tenant-virtual-networks.md).
-
 
 #### Attach VM to a logical network
 
