@@ -7,7 +7,7 @@ metadata:
   ms.author: robess
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 03/13/2024
+  ms.date: 05/17/2024
 
 title: Azure Stack HCI OEM license and billing FAQ
 summary: |
@@ -29,7 +29,7 @@ sections:
 
       - question: Is an annual renewal or subscription required for this license?
         answer: |
-          No. This license doesn't require annual renewals or subscriptions. It's a prepaid license that is tied to the life of the hardware that the Azure Stack HCI OS is installed on. Once acquired, the license remains valid for the lifetime of the hardware. You can continue using the license as long as the associated hardware, where the Azure Stack HCI OS is installed, remains functional and supported.
+          No. This license doesn't require annual renewals or subscriptions. It's a prepaid license that is tied to the life of the hardware that the Azure Stack HCI OS is installed on. Once acquired, the license remains valid for the lifetime of the hardware. You can continue using the license if the associated hardware, where the Azure Stack HCI OS is installed, remains functional and supported.
       
       - question: Which version of Windows Server is supported for this license?
         answer: |
@@ -37,11 +37,11 @@ sections:
 
       - question: Are next version rights for Windows Server Datacenter included?
         answer: |
-          No. This license is limited to Windows Server Datacenter 2022 and doesn't include newer subsequent versions unless permitted by Microsoft. You can use Windows Server Datacenter 2022, or an earlier version that Microsoft supports, as a guest license.
+          No. This license is limited to Windows Server Datacenter 2022 or earlier and doesn't include newer subsequent versions unless permitted by Microsoft. You can use Windows Server Datacenter 2022, or an earlier version that Microsoft supports, as a guest license.
 
       - question: Where can I get support for this license?
         answer: |
-          For support with your Azure Stack HCI OEM license first contact your OEM vendor. If for some reason you're unable to get vendor support, file an Azure support request through [the Azure portal](https://portal.azure.com/).
+          For support with your Azure Stack HCI OEM license first contact your OEM vendor. For additional help, file an Azure support request through [the Azure portal](https://portal.azure.com/).
       
       - question: Are mixed-node scenarios supported?
         answer: |
@@ -57,13 +57,13 @@ sections:
 
       - question: Do I have access to the latest features?
         answer: |
-          Yes. An active Azure subscription ensures that you automatically receive the latest updates and enhancements for both Azure Stack HCI and Azure Kubernetes Services on HCI. However, it's important to know that while Windows Server under this license receives security updates and fixes, it doesn't include enhancements.
+          Yes. An active Azure subscription ensures you automatically receive the latest updates and enhancements for Azure Stack HCI and Azure Kubernetes Services on HCI. However, it's important to know that while Windows Server under this license receives security updates and fixes, it doesn't include enhancements.
 
       - question: Are there Reassignment Rights associated with this license?
         answer: |
           No. This license doesn't include reassignment rights. This means that the license is tied to the original hardware on which the Azure Stack HCI OS is pre-installed and can't be transferred to different hardware or systems. This approach ensures that the license and its benefits remain specific to the initial hardware setup.
 
-      - question: Does This License Include an End-User License Agreement (EULA)?
+      - question: Does this license include an End-User License Agreement (EULA)?
         answer: |
           Yes. There's an End-User License Agreement (EULA) that combines Azure Stack HCI (as the host), Azure Kubernetes Services on Azure Stack HCI, and Windows Server Datacenter 2022 (as the guest) into a single package.
 
