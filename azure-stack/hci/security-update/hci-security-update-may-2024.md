@@ -21,13 +21,13 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update addresses an issue that affects IE mode. A web page may stop working as expected when there is an open modal dialog.
+- This update addresses an issue that affects IE mode. A web page may stop working as expected when there's an open modal dialog.
 
 - This update addresses an issue that affects IE mode. It stops responding. This occurs if you press the left arrow key when an empty text box has focus and caret browsing is on.
 
 - This update addresses an issue that affects Wi-Fi Protected Access 3 (WPA3) in the Group Policy editor. HTML preview rendering fails.
 
-- This update addresses an issue that affects Packet Monitor (pktmon). It is less reliable.
+- This update addresses an issue that affects Packet Monitor (pktmon). It's less reliable.
 
 - This update addresses an issue that affects a server after you remove it from a domain. The `Get-LocalGroupMember` cmdlet returns an exception. This occurs if the local groups contain domain members.
 
@@ -41,13 +41,13 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses an issue that might affect the cursor when you type in Japanese. The cursor might move to an unexpected place.
 
-- This update addresses an issue that affects the cursor. Its movement lags in some screen capture scenarios. This is especially true when you are using the remote desktop protocol (RDP).
+- This update addresses an issue that affects the cursor. Its movement lags in some screen capture scenarios. This is especially true when you're using the remote desktop protocol (RDP).
 
 - This update includes quarterly changes to the Windows Kernel Vulnerable Driver Blocklist file, `DriverSiPolicy.p7b`. It adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.
 
-- This update addresses an issue that affects Trusted Platform Modules (TPM). On certain devices, they do not initialize correctly. Because of this, TPM-based scenarios stop working.
+- This update addresses an issue that affects Trusted Platform Modules (TPM). On certain devices, they don't initialize correctly. Because of this, TPM-based scenarios stop working.
 
-- This update addresses an issue that affects Active Directory. Bind requests to IPv6 addresses fail. This occurs when the requestor is not joined to a domain.
+- This update addresses an issue that affects Active Directory. Bind requests to IPv6 addresses fail. This occurs when the requestor isn't joined to a domain.
 
 - This update addresses an issue that might affect Virtual Secure Mode (VSM) scenarios. They might fail. These scenarios include VPN, Windows Hello, Credential Guard, and Key Guard.
 
@@ -55,13 +55,8 @@ This security update includes quality improvements. When you install this KB:
 
 - This update addresses a known issue that might cause your VPN connection to fail. This occurs after you install the update dated April 9, 2024 or later.
 
-For more information about security vulnerabilities, please refer to the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-May).
+For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [May 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-May).
 
-## Servicing stack update - 25398.880
-
-This update makes quality improvements to the servicing stack, which is the component that installs Windows updates. Servicing stack updates (SSU) ensure that you have a robust and reliable servicing stack so that your devices can receive and install Microsoft updates.
-
-This update is available for Windows Update, Windows Update for Business, and Microsoft Update, and is downloaded and installed automatically from Windows Update. To get the standalone package for this update, go to the [Microsoft Update Catalog](https://www.catalog.update.microsoft.com/Search.aspx?q=KB5037781) website.
 
 ## Known issues
 
@@ -73,20 +68,10 @@ Microsoft now combines the latest servicing stack update (SSU) for your operatin
 
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
 
-## To remove the LCU
-
-To remove the LCU after installing the combined SSU and LCU package, use the `DISM/Remove-Package` command line option with the LCU package name as the argument. You can find the package name by using this command:
-
-`DISM /online /get-packages`
-
-Running Windows Update Standalone Installer (wusa.exe) with the `/uninstall` switch on the combined package will not work because the combined package contains the SSU. You cannot remove the SSU from the system after installation.
-
 
 ## File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5037781](https://go.microsoft.com/fwlink/?linkid=2271901).
-
-For a list of the files that are provided in the servicing stack update, download the [file information for the SSU - version 25398.880](https://go.microsoft.com/fwlink/?linkid=2270984).
 
 
 ## Next steps
