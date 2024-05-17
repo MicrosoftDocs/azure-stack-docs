@@ -88,5 +88,5 @@ Now you’re ready to deploy Network Controller on VMs.
 
 - [Deploy an Azure Stack HCI cluster](../deploy/deploy-via-portal.md)
 - [Deploy an SDN infrastructure using SDN Express](../deploy/sdn-express-23h2.md)
-- [Network Controller overview](plan-network-controller-deployment-overview.md)
-- [Network Controller High Availability](/windows-server/networking/sdn/technologies/plan-network-controller-deployment/plan-network-controller-deployment-high-availability)
+- [What is Network Controller?](network-controller-overview.md)
+- [Network Controller High Availability](/windows-server/networking/sdn/technologies/network-controller/network-controller-high-availability)
