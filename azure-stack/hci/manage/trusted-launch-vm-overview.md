@@ -40,7 +40,7 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 
 - As part of Trusted launch Arc VM creation, Hyper-V creates VM files on disk to store the VM state. By default, access to those VM files is restricted to host server administrators. Host administrators must ensure that the location where those VM files are stored remains appropriately access-restricted at all times.
 
-- VM live migration network traffic is not encrypted. We strongly recommend that you enable IPsec to protect live migration network traffic. For more information, see [Network Recommendations for a Hyper-V Cluster](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn550728.md#How_to_isolate_the_network_traffic_on_a_Hyper-V_cluster).
+- VM live migration network traffic is not encrypted. We strongly recommend that you enable IPsec to protect live migration network traffic. For more information, see [Network Recommendations for a Hyper-V Cluster](https://learn.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn550728(v=ws.11)#How_to_isolate_the_network_traffic_on_a_Hyper-V_cluster).
 
 ## Guest operating system images
 
