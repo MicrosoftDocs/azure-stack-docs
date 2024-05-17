@@ -1,19 +1,19 @@
 ---
-title: Release notes with fixed and known issues in Azure Stack HCI 2402.2 update release
-description: Read about the known issues and fixed issues in Azure Stack HCI 2402.2 release.
-author: alkohli
+title: Release notes with fixed and known issues in Azure Stack HCI 2402.3 update release
+description: Read about the known issues and fixed issues in Azure Stack HCI 2402.3 release.
+author: ronmiab
 ms.topic: conceptual
-ms.date: 04/22/2024
-ms.author: alkohli
+ms.date: 05/17/2024
+ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI 2402.2 release
+# View known issues in Azure Stack HCI 2402.3 release
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402.2 release.
+This article identifies the critical known issues and their workarounds in Azure Stack HCI 2402.3 release.
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
@@ -22,9 +22,9 @@ The release notes are continuously updated, and as critical issues requiring a w
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
 
-## Issues for version 2402.2
+## Issues for version 2402.3
 
-This software release maps to software version number **2402.2.12**.
+This software release maps to software version number **2402.3.12**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
@@ -38,8 +38,6 @@ Here are the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Updates<!--26039754--> | Attempts to install solution updates can fail at the end of the CAU steps with:*<br>*`There was a failure in a Common Information Model (CIM) operation, that is, an operation performed by software that Cluster-Aware Updating depends on.` *<br>* This rare issue occurs if the `Cluster Name` or `Cluster IP Address` resources fail to start after a node reboot and is most typical in small clusters. |If you encounter this issue, contact Microsoft Support for next steps. They can work with you to manually restart the cluster resources and resume the update as needed. |
-| Updates <!--27625941--> | When applying a cluster update to 10.2402.2.11 the `Get-SolutionUpdate` cmdlet may not respond and eventually fails with a RequestTimeoutException after approximately 10 minutes. This is likely to occur following an add or repair server scenario. | Use the `Start-ClusterGroup` and `Stop-ClusterGroup` cmdlets to restart the update service. </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Stop-ClusterGroup` </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Start-ClusterGroup` </br><br> A succesful run of these cmdlets should bring the update service online. |
 
 
 ## Known issues from previous releases
@@ -73,9 +71,11 @@ Here are the known issues from previous releases:
 | Deployment |Deployments via Azure Resource Manager time out after 2 hours. Deployments that exceed 2 hours show up as failed in the resource group though the cluster is successfully created.| To monitor the deployment in the Azure portal, go to the Azure Stack HCI cluster resource and then go to new **Deployments** entry. |
 | Azure Site Recovery |Azure Site Recovery can't be installed on an Azure Stack HCI cluster in this release. |There's no known workaround in this release. |
 | Update <!--X-->| When updating the Azure Stack HCI cluster via the Azure Update Manager, the update progress and results may not be visible in the Azure portal.| To work around this issue, on each cluster node, add the following registry key (no value needed):<br><br>`New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Services\HciCloudManagementSvc\Parameters" -force`</br><br> Then on one of the cluster nodes, restart the Cloud Management cluster group. </br><br>`Stop-ClusterGroup "Cloud Management"`</br><br>`Start-ClusterGroup "Cloud Management"`</br><br> This won't fully remediate the issue as the progress details may still not be displayed for a duration of the update process. To get the latest update details, you can [Retrieve the update progress with PowerShell](./update/update-via-powershell-23h2.md#step-4-download-check-readiness-and-install-updates). |
-| Updates <!--26659591--> |In rare instances, if a failed update is stuck in an *In progress* state in Azure Update Manager, the **Try again** button is disabled. | To resume the update, run the following PowerShell command:<br>`Get-SolutionUpdate`\|`Start-SolutionUpdate`.|
+| Update <!--26659591--> |In rare instances, if a failed update is stuck in an *In progress* state in Azure Update Manager, the **Try again** button is disabled. | To resume the update, run the following PowerShell command:<br>`Get-SolutionUpdate`\|`Start-SolutionUpdate`.|
 | Updates <!--26659432--> |In some cases, `SolutionUpdate` commands could fail if run after the `Send-DiagnosticData` command.  | Make sure to close the PowerShell session used for `Send-DiagnosticData`. Open a new PowerShell session and use it for `SolutionUpdate` commands.|
-| Updates <!--26417221--> |In rare instances, when applying an update from 2311.0.24 to 2311.2.4, cluster status reports *In Progress* instead of expected *Failed to update*.   | Retry the update. If the issue persists, contact Microsoft Support.|
+| Update <!--26417221--> |In rare instances, when applying an update from 2311.0.24 to 2311.2.4, cluster status reports *In Progress* instead of expected *Failed to update*.   | Retry the update. If the issue persists, contact Microsoft Support.|
+| Update <!--26039754--> | Attempts to install solution updates can fail at the end of the CAU steps with:*<br>*`There was a failure in a Common Information Model (CIM) operation, that is, an operation performed by software that Cluster-Aware Updating depends on.` *<br>* This rare issue occurs if the `Cluster Name` or `Cluster IP Address` resources fail to start after a node reboot and is most typical in small clusters. |If you encounter this issue, contact Microsoft Support for next steps. They can work with you to manually restart the cluster resources and resume the update as needed. |
+| Update <!--27625941--> | When applying a cluster update to 10.2402.3.11 the `Get-SolutionUpdate` cmdlet may not respond and eventually fails with a RequestTimeoutException after approximately 10 minutes. This is likely to occur following an add or repair server scenario. | Use the `Start-ClusterGroup` and `Stop-ClusterGroup` cmdlets to restart the update service. </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Stop-ClusterGroup` </br><br> `Get-ClusterGroup -Name "Azure Stack HCI Update Service Cluster Group"` \| `Start-ClusterGroup` </br><br> A successful run of these cmdlets should bring the update service online. |
 | Cluster aware updating <!--26411980--> |Resume node operation failed to resume node. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
 | Cluster aware updating <!--26346755--> |Suspend node operation was stuck for greater than 90 minutes. | This is a transient issue and could resolve on its own. Wait for a few minutes and retry the operation. If the issue persists, contact Microsoft Support.|
 
