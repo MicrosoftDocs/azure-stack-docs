@@ -27,7 +27,7 @@ This article helps you deploy an Azure Stack HCI, version 23H2 system using the 
 
    All resources in the Azure subscription are billed together.
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
-4. Select the **Region** to store this system's Azure resources. for a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+4. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
    We don't transfer a lot of data so it's OK if the region isn't close.
 5. Create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
