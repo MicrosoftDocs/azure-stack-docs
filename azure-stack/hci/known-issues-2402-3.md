@@ -41,7 +41,6 @@ Microsoft isn't aware of any known issues in this release.
 |Feature|Issue|Workaround/Comments|
 |------|------|----------| -->
 
-
 ## Known issues from previous releases
 
 Here are the known issues from previous releases:
