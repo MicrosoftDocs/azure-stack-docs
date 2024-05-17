@@ -34,10 +34,12 @@ Microsoft isn't aware of any fixed issues in this release.
 
 ## Known issues in this release
 
-Here are the known issues in this release:
+Microsoft isn't aware of any known issues in this release.
+
+<!-- Here are the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
-|------|------|----------|
+|------|------|----------| -->
 
 
 ## Known issues from previous releases
