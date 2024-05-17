@@ -29,15 +29,15 @@ The following are required before you deploy the Network Controller:
 
     **Option 1**: The management network is physically separated from the workload networks. This option uses a single virtual switch for both compute and storage:
 
-    :::image type="content" source="./media/plan-network-controller-deployment/topology-option-1.png" alt-text="Option 1 to create a physical network for the Network Controller." lightbox="./media/plan-network-controller-deployment/topology-option-1.png":::
+    :::image type="content" source="./media/plan-network-controller-deployment/topology-option-1.png" alt-text="Diagram of Option 1 to create a physical network for the Network Controller." lightbox="./media/plan-network-controller-deployment/topology-option-1.png":::
 
     **Option 2**: The management network is physically separated from the workload networks. This option uses a single virtual switch for compute only:
 
-    :::image type="content" source="./media/plan-network-controller-deployment/topology-option-2.png" alt-text="Option 2 to create a physical network for the Network Controller." lightbox="./media/plan-network-controller-deployment/topology-option-2.png":::
+    :::image type="content" source="./media/plan-network-controller-deployment/topology-option-2.png" alt-text="Diagram of Option 2 to create a physical network for the Network Controller." lightbox="./media/plan-network-controller-deployment/topology-option-2.png":::
 
     **Option 3**: The management network is physically separated from the workload networks. This option uses two virtual switches, one for compute, and one for storage:
 
-    :::image type="content" source="./media/plan-network-controller-deployment/topology-option-3.png" alt-text="Option 3 to create a physical network for the Network Controller." lightbox="./media/plan-network-controller-deployment/topology-option-3.png":::
+    :::image type="content" source="./media/plan-network-controller-deployment/topology-option-3.png" alt-text="Diagram of Option 3 to create a physical network for the Network Controller." lightbox="./media/plan-network-controller-deployment/topology-option-3.png":::
 
 - You can also team the management physical adapters to use the same management switch. In this case, we still recommend using one of supported topology options.
 - Management network information that Network Controller uses to communicate with Windows Admin Center and the Hyper-V hosts.
