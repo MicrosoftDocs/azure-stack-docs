@@ -132,6 +132,16 @@
       href: ./reference/ps/index.md
     - name: Add-ons, extensions, and integrations
       href: add-ons.md    
+  - name: Resources
+    items:
+    - name: Azure Arc Jumpstart
+      href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
+    - name: Azure roadmap
+      href: https://azure.microsoft.com/roadmap/
+    - name: AKS roadmap
+      href: https://aka.ms/k8sroadmap
+    - name: AKS enabled Arc roadmap
+      href: https://aka.ms/AKS-hybrid-roadmap
 - name: AKS Edge Essentials
   items:
   - name: Overview
@@ -531,13 +541,3 @@
       href: /azure/architecture/example-scenario/hybrid/aks-baseline
     - name: Network architecture for AKS
       href: /azure/architecture/example-scenario/hybrid/aks-network
-  - name: Resources
-    items:
-    - name: Azure Arc Jumpstart
-      href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
-    - name: Azure roadmap
-      href: https://azure.microsoft.com/roadmap/
-    - name: AKS roadmap
-      href: https://aka.ms/k8sroadmap
-    - name: AKS enabled Arc roadmap
-      href: https://aka.ms/AKS-hybrid-roadmap

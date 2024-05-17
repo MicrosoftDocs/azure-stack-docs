@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 02/26/2024
+ms.date: 05/15/2024
 ---
 
 # Repair a server on Azure Stack HCI, version 23H2
@@ -36,6 +36,9 @@ To repair an existing server, follow these high-level steps:
 1. Run the repair server operation. The Azure Stack HCI operating system, drivers, and firmware are updated as part of the repair operation.
 
     The storage is automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that can run for multiple days depending on number of the servers and the storage used.
+
+> [!NOTE]
+> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is repaired.
 
 ## Supported scenarios
 
@@ -138,6 +141,9 @@ Follow these steps on another server that is a member of the same Azure Stack HC
     ```
 
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
+
+> [!NOTE]
+> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is repaired.
 
 ### Monitor operation progress
 

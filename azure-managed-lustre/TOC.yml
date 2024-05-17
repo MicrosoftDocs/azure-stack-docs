@@ -18,7 +18,9 @@
   items:
     - name: Use Azure Blob Storage with Azure Managed Lustre
       href: blob-integration.md
-    - name: Export data using archive jobs
+    - name: Import data using import jobs
+      href: create-import-job.md
+    - name: Export data using export jobs
       href: export-with-archive-jobs.md
 - name: Access a file system
   items:
@@ -32,6 +34,10 @@
       href: automount-clients-fstab.md
     - name: Use Azure Lustre CSI driver for Kubernetes
       href: use-csi-driver-kubernetes.md
+- name: Manage a file system
+  items:
+    - name: Configure root squash settings
+      href: root-squash-configure-settings.md
 - name: Security
   items:
     - name: Configure a network security group

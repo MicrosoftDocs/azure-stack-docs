@@ -9,7 +9,7 @@ metadata:
   ms.topic: landing-page
   author: pauljewellmsft
   ms.author: pauljewell 
-  ms.date: 03/05/2024
+  ms.date: 05/14/2024
 
 landingContent:
   - title: About Azure Managed Lustre
@@ -40,7 +40,9 @@ landingContent:
             url: blob-integration.md
       - linkListType: how-to-guide
         links:
-          - text: Export data using archive jobs
+          - text: Import data using import jobs
+            url: create-import-job.md
+          - text: Export data using export jobs
             url: export-with-archive-jobs.md
   - title: Access a file system
     linkLists:
@@ -54,6 +56,12 @@ landingContent:
             url: connect-clients.md
           - text: Use Azure Lustre CSI driver for Kubernetes
             url: use-csi-driver-kubernetes.md
+  - title: Manage a file system
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Configure root squash settings
+            url: root-squash-configure-settings.md
   - title: Security
     linkLists:
       - linkListType: how-to-guide

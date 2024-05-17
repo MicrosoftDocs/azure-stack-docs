@@ -4,7 +4,7 @@ description: Azure Site Recovery on Azure Stack Hub helps ensure business contin
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.date: 04/18/2024
+ms.date: 05/07/2024
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/18/2024
 
@@ -51,6 +51,8 @@ Azure Site Recovery on Azure Stack Hub is intended to protect a specified number
 > Until the 1st of June 2024, there is no cost for running the Azure Site Recovery service. The pay-as-you-go pricing options will apply starting on the 1st of June 2024.
 
 When you first install Azure Site Recovery on Azure Stack Hub, a 30-day free trial period is provided. This trial period enables testing, automation setup, and VM replication for protection. Following the conclusion of the 30-day trial, charges begin, calculated on the total count of physical cores in the target environment in which your Azure Site Recovery Resource Provider is installed.
+
+[Cloud Solution Providers](azure-stack-add-manage-billing-as-a-csp.md) (CSPs) who offer multi-tenant environments should note that Azure Site Recovery usage is reported only on the primary Azure Stack Hub registration subscription. Any usage from failed-over virtual machines or storage associated with protected VMs is accurately allocated to the customer's respective Azure subscription. The Azure Site Recovery solution's cost (on the target side) is reported only in the subscription used for Azure Stack Hub registration. Typically, this subscription is owned by the CSP offering the [multitenant](site-recovery-enable-multi-tenant.md) environment. Consequently, the CSP is responsible for determining and appropriately billing each of their customers using Azure Site Recovery.
 
 ## What can I replicate?
 
