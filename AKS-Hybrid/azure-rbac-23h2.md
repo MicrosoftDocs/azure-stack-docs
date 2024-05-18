@@ -20,11 +20,11 @@ Applies to: AKS on Azure Stack HCI 23H2
 
 Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the `kubectl` tool based on the given permissions. The Azure CLI provides an easy way to get the access credentials and *kubeconfig* configuration file to connect to your AKS Arc clusters using `kubectl`.
 
-When you leverage integrated authentication between Microsoft Entra ID and AKS Arc, you can use Microsoft Entra users, groups, or service principals as subjects in [Kubernetes role-based access control (Kubernetes RBAC)](concepts-security-access-and-identity-options.md#kubernetes-RBAC). This feature frees you from having to separately manage user identities and credentials for Kubernetes. However, you still have to set up and manage Azure RBAC and Kubernetes RBAC separately.
+When you leverage integrated authentication between Microsoft Entra ID and AKS Arc, you can use Microsoft Entra users, groups, or service principals as subjects in [Kubernetes role-based access control (Kubernetes RBAC)](concepts-security-access-and-identity-options.md). This feature frees you from having to separately manage user identities and credentials for Kubernetes. However, you still have to set up and manage Azure RBAC and Kubernetes RBAC separately.
 
 This article describes how to use Azure RBAC for Kubernetes cluster authorization with Microsoft Azure AD and Azure role assignments.
 
-For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-and-identity-options.md#Azure-RBAC-for-Kubernetes-Authorization) for AKS enabled by Azure Arc.
+For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-and-identity-options.md) for AKS enabled by Azure Arc.
 
 
 
@@ -53,7 +53,7 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 You can create an Azure RBAC-enabled Kubernetes cluster for authorization and Microsoft Azure AD for authentication.
 
 ```Azure CLI
-az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --control-plane-ip $controlplaneIP --enable-azure-rbac
+az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --generate-ssh-keys --control-plane-ip $controlplaneIP --enable-azure-rbac
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.

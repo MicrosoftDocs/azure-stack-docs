@@ -1,6 +1,6 @@
 ---
-title: Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
-description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS enabled by Arc.
+title: Control access using Microsoft Entra ID and Kubernetes RBAC for Windows Server
+description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) for Windows Server
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 10/21/2022
