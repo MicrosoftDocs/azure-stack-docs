@@ -144,7 +144,8 @@ Before you discover the updates, you can manually validate the system health. Th
     WARNING: Unable to find volume with label Deployment                                                                    
     VERBOSE: Get-Package returned with Success:True                                                                        
     VERBOSE: Found package Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment with version  10.2303.0.31 at                                                                                                         
-    C:\NugetStore\Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.10.2303.0.31\Microsoft.Azure Stack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.nuspec.                                                   
+    C:\NugetStore\Microsoft.AzureStack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.10.2303.0.31\Microsoft.Azure 
+    Stack.Solution.Deploy.EnterpriseCloudEngine.Client.Deployment.nuspec.                                                   
     03/29/2023 15:45:58 : Launching StoragePools                                                                            
     03/29/2023 15:45:58 : Launching StoragePhysicalDisks                                                                    
     03/29/2023 15:45:58 : Launching StorageMapping                                                                          
