@@ -14,7 +14,7 @@ ms.date: 01/26/2024
 # Keyword: Kubernetes role-based access control 
 ---
 
-# Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
+# Control access using Microsoft Entra ID and Kubernetes RBAC for Windows Server
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
