@@ -61,7 +61,7 @@ A ClusterRole grants and applies permissions to resources across the entire clus
 
 ### RoleBindings and ClusterRoleBindings
 
-Once you've defined roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS Arc cluster [integrates with Microsoft Entra ID](#Microsoft Entra integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [How-to use Kubernetes role-based access control and Microsoft Entra ID](kubernetes-rbac-azure-ad.md)
+Once you've defined roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS Arc cluster [integrates with Microsoft Entra ID](#Microsoft Entra integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [How-to use Kubernetes role-based access control and Microsoft Entra ID](kubernetes-rbac-23h2.md)
 
 
 
@@ -127,7 +127,7 @@ With Azure RBAC, you can provide your users (or identities) with granular access
 
 With the Azure RBAC integration, AKS Arc will use a Kubernetes Authorization webhook server so you can manage Microsoft Entra integrated Kubernetes cluster resource permissions and assignments using Azure role definition and role assignments.
 
-![](media/concepts-security/azure-rbac-k8s-authz-flow.png)
+![Azure RBAC Flow](media/concepts-security/azure-rbac-k8s-authz-flow.png)
 
 As shown in the above diagram, when using the Azure RBAC integration, all requests to the Kubernetes API will follow the same authentication flow as explained on the [Microsoft Entra integration section](#Microsoft Entra integration).
 
@@ -158,7 +158,7 @@ AKS enabled by Azure Arc provides the following four built-in roles. They are si
 
 Enhance your AKS Arc cluster security with Microsoft Entra integration. Built on decades of enterprise identity management, Microsoft Entra ID is a multi-tenant, cloud-based directory and identity management service that combines core directory services, application access management, and identity protection. With Microsoft Entra ID, you can integrate on-premises identities into AKS Arc clusters to provide a single source for account management and security.
 
-![](media/concepts-security/aad-integration.png)
+![Microsoft Entra Integration](media/concepts-security/aad-integration.png)
 
 With Microsoft Entra integrated AKS clusters, you can grant users or groups access to Kubernetes resources within a namespace or across the cluster.
 
@@ -199,5 +199,5 @@ In the Azure portal, you can find:
 
 ------
 
-- To get started with Kubernetes RBAC for Kubernetes Authorization, see [How-to use Kubernetes role-based access control and Microsoft Entra ID](kubernetes-rbac-azure-ad.md)
+- To get started with Kubernetes RBAC for Kubernetes Authorization, see [How-to use Kubernetes role-based access control and Microsoft Entra ID](kubernetes-rbac-23h2.md)
 - To get started with Azure RBAC for Kubernetes Authorization, see [Use Azure RBAC for Kubernetes Authorization](azure-rbac-23h2.md)
