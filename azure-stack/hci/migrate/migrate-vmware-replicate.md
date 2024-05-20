@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Stack HCI using 
 description: Learn the discovery and replication process for VMware VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 05/10/2024
+ms.date: 05/20/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -27,16 +27,19 @@ For both the source VMware vCenter Server and target Azure Stack HCI appliances,
 ### Generate the project key
 
 1. In the Azure portal, go to your Azure Migrate project and then go to **Servers, databases and webapps**.
-1. On the **Azure Migrate: Discovery and assessment tool** tile, select **Discover**.
-1. On the Discover page, select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
+1. On the **Migration tools** tile, select **Discover**.
+
+
+    :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png" alt-text="Screenshot of going to Discover page from Migration tools tile for your source appliance." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-1.png":::
+1. On the **Discover** page, select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 1. Copy the **Project key** and save it for later use.
-1. You can now **Download the Azure Migrate source appliance** using either an *.OVA* file or a .zip file. The detailed steps are provided in the subsequent sections.
+1. You can now **Download the Azure Migrate source appliance** using either a *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
 
 
 ### Create the source appliance
 
-You can install the appliance using either an *.OVA* file or a .zip file that you download to your VMware host server. <!-- REMOVE For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).-->
+You can install the appliance using either an *.ova* file or a *.zip* file that you download to your VMware host server. <!-- REMOVE For more information on appliances for Azure Migrate and how to manage them, see [Azure Migrate appliance](/azure/migrate/migrate-appliance).-->
 
 #### Install using an .OVA file
 
@@ -99,9 +102,10 @@ Once the source appliance is installed, follow these steps:
 
         :::image type="content" source="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png" alt-text="Screenshot of credentials and discovery sources configured." lightbox="./media/migrate-vmware-replicate/manage-credentials-discovery-sources-1.png":::
 
-    1. Disable the slider.
+    1. Disable the slider under the **Applications discovery and agentless dependency analysis** section, as this is currently not supported in VMware to Azure Stack HCI migrations.
     1. Select **Start Discovery**. The discovery may take several minutes to finish.
-    1. On the **Onboard to Azure Stack HCI** section, enter the name and credentials for the target Azure Stack HCI cluster. This is the cluster where the VMs are migrated. Select **Save**.
+
+You'll next onboard to the target Azure Stack HCI cluster.
 
 ### Onboard to Azure Stack HCI
 
