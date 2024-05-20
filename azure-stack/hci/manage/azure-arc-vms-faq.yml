@@ -7,7 +7,7 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 01/30/2024
+  ms.date: 05/20/2024
 title: Azure Arc VM management FAQ
 summary:
   Frequently asked questions about Azure Arc VMs for Azure Stack HCI, versions 23H2.
@@ -36,6 +36,12 @@ sections:
       answer: |
         Updates for Arc VM management infrastructure components like MOC, Arc Resource Bridge, and Kubernetes extensions on Azure Stack HCI 23H2 are handled automatically. For more information, see [Update overview for Azure Stack HCI, version 23H2](../update/about-updates-23h2.md).
 
+    - question: | 
+        Will I be charged when updating my Arc VM using the Azure Update Manager service?
+      answer: |
+        No. You can update Arc VMs for free when using the Azure Update Manager service. However, updating non-Arc VMs created using Windows Admin Center or Hyper-V Manager, and VMs that were Arc-enabled independently, will incur a charge. For more information, see [Azure Update Manager Pricing for Arc-enabled servers](
+        /azure/update-manager/update-manager-faq#pricing).
+        
     - question: |
         Why do I need to move to Azure Stack HCI, version 23H2?
       answer: |
@@ -85,3 +91,4 @@ sections:
         If I delete Arc Resource Bridge, are the VMs also deleted?
       answer: |
         If you inadvertently remove the Arc Resource Bridge via the Azure portal, it results in the deletion of the Azure projection of the on-premises Arc Appliance VM. Importantly, this action doesn't impact your existing workloads. To restore the Azure projection of the Arc Resource Bridge, run `az arcappliance create`. For more information, see [az arcappliance create hci](https://learn.microsoft.com/cli/azure/arcappliance/create?view=azure-cli-latest#az-arcappliance-create-hci). If the Arc Appliance on-premises VM is accidentally deleted, you lose the ability to manage your VMs through Azure portal, your workloads remain accessible through local on-premises tools like Windows Admin Center, Hyper-V, and PowerShell. To reinstate the Arc Resource Bridge, a redeployment is required. For assistance with this process, contact Microsoft support.
+
