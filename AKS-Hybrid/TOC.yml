@@ -24,7 +24,7 @@
         href: load-balancer-overview.md
     - name: Security
       items:
-      - name: Access and Identity Options
+      - name: Access and identity options
         href: concepts-security-access-and-identity-options.md
     - name: Infrastructure component updates
       href: infrastructure-components.md
@@ -98,7 +98,7 @@
         href: restrict-ssh-access.md
       - name: Use Kubernetes RBAC with Microsoft Entra ID
         href: kubernetes-rbac-23h2.md
-      - name: Use Azure RBAC for Kubernetes Authorization
+      - name: Use Azure RBAC for Kubernetes authorization
         href: azure-rbac-23h2.md
     - name: Monitoring and logging
       items:    
