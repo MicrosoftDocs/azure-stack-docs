@@ -281,6 +281,8 @@ items:
       href: manage/azure-enhanced-management-managed-identity.md
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
+    - name: Use Azure Backup
+      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
 
   - name: Azure Arc extensions
     items:
@@ -603,9 +605,6 @@ items:
         href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use Azure portal
         href: manage/azure-portal.md
-      - name: Use Azure Backup
-        href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-
   - name: Migrate
     items:
     - name: Cluster to same hardware
