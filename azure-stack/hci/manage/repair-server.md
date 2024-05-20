@@ -117,9 +117,6 @@ Follow these steps on the server you're trying to repair.
 
 1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-    > [!NOTE]
-    > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
-
 2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
