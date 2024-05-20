@@ -4,8 +4,8 @@ description: Learn how infrastructure administrators can use Azure RBAC to contr
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
-ms.author: leslielin
-ms.reviewer: sethm
+ms.author: sethm
+ms.reviewer: leslielin
 ms.date: 5/16/2024
 ms.lastreviewed: 5/16/2024
 
