@@ -74,7 +74,7 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/deployment-install-os/azure-stack-hci-admin-password-changed.png":::
 
 >[!IMPORTANT]
-> After the OS is installed, a web service run until the server is registered with Azure Arc. After the server is registered, the web service is disabled. During this period, it is expected that security software may flag the open port and the listener (TCP 443) associated with the web service as a potential threat. This is a false positive and can be ignored.
+> After the OS is installed, a web service run until the server is registered with Azure Arc. After the server is registered, the web service is disabled. During this period, it is expected that security software may flag the open port and the listener (TCP 443) associated with the web service as a potential threat. 
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
