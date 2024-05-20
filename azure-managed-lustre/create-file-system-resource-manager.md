@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Managed Lustre file system using Azure Resource Manager templates
-description: Use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
+title: Create an Azure Managed Lustre file system by using Azure Resource Manager templates
+description: Learn how to use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
 ms.date: 02/23/2024
 author: pauljewellmsft
@@ -10,68 +10,59 @@ ms.reviewer: mayabishop
 
 ---
 
-# Create an Azure Managed Lustre file system using Azure Resource Manager templates
+# Create an Azure Managed Lustre file system by using Azure Resource Manager templates
 
-You can automate Azure Managed Lustre file system creation by using Azure Resource Manager templates. This article explains the basic procedure and gives examples of the files you need.
+You can automate the creation of an Azure Managed Lustre file system by using [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/). This article explains the basic procedure and gives examples of the files that you need.
 
-For more information about the templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/templates/).
+This article gives examples of two methods for creating ARM templates:
 
-This article gives examples of two different methods for creating Azure Resource Manager templates:
-
-* Use JSON to create Azure Resource Manager templates directly. See [JSON template syntax](/azure/azure-resource-manager/templates/syntax).
-* Use [Bicep](/azure/azure-resource-manager/bicep/overview?tabs=bicep), which uses simpler syntax to supply the configuration details. When you deploy the template, the Bicep files are converted into Azure Resource Manager template files. See the [Bicep documentation](/azure/azure-resource-manager/bicep/).
+* Use JSON to create ARM templates directly. See [JSON template syntax](/azure/azure-resource-manager/templates/syntax).
+* Use [Bicep](/azure/azure-resource-manager/bicep/overview?tabs=bicep), which uses simpler syntax to supply the configuration details. When you deploy the template, the Bicep files are converted into ARM template files. See the [Bicep documentation](/azure/azure-resource-manager/bicep/).
 
 To learn more about your options, see [Comparing JSON and Bicep for templates](/azure/azure-resource-manager/bicep/compare-template-syntax).
 
 ## Choose file system type and size
 
-Before you write a template, you must make some decisions about your Azure Managed Lustre file system. To learn more about the configuration options, see the setup details at [Create an Azure Managed Lustre file system](create-file-system-portal.md).
+Before you write a template, you must make some decisions about your Azure Managed Lustre file system. To learn more about the configuration options, see the setup details in [Create an Azure Managed Lustre file system](create-file-system-portal.md).
 
-When you use a template, specify a **SKU name** to define the basic type of Azure Managed Lustre system to create. If you use the Azure portal to create your Azure Managed Lustre, you specify the system type indirectly by selecting its capabilities.
+When you use a template, specify a *SKU* name to define the basic type of Azure Managed Lustre system to create. If you use the Azure portal to create your Azure Managed Lustre, you specify the system type indirectly by selecting its capabilities.
 
-In Azure, the term **SKU** defines a set of features for the resource being created. For an Azure Managed Lustre file system, the SKU sets system qualities such as the type of disks used, the amount of storage supported, and the maximum throughput capacity.
+For an Azure Managed Lustre file system, the SKU represents a product tier. It sets system qualities such as the type of disks, the supported amount of storage, and the maximum throughput capacity.
 
-Currently, the following SKUs are supported:
+These SKUs create a file system that uses durable SSD storage. The following table shows the values for throughput and storage size in each supported SKU:
 
-* AMLFS-Durable-Premium-40
-* AMLFS-Durable-Premium-125
-* AMLFS-Durable-Premium-250
-* AMLFS-Durable-Premium-500
-
-These SKUs create a file system that uses durable SSD storage. The following table shows the throughput and storage size values for each SKU:
-
-| SKU | Throughput per TiB storage | Storage Min | Storage Max<sup>1</sup> | Increment |
+| SKU | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
 |----------|-----------|-----------|-----------|-----------|
-| AMLFS-Durable-Premium-40 | 40 MB/second | 48 TB | 768 TB | 48 TB|
-| AMLFS-Durable-Premium-125 | 125 MB/second | 16 TB | 128 TB | 16 TB |
-| AMLFS-Durable-Premium-250 | 250 MB/second | 8 TB | 128 TB | 8 TB |
-| AMLFS-Durable-Premium-500 | 500 MB/second | 4 TB | 128 TB | 4 TB |
+| AMLFS-Durable-Premium-40 | 40 MBsec | 48 TB | 768 TB | 48 TB|
+| AMLFS-Durable-Premium-125 | 125 MBsec | 16 TB | 128 TB | 16 TB |
+| AMLFS-Durable-Premium-250 | 250 MBsec | 8 TB | 128 TB | 8 TB |
+| AMLFS-Durable-Premium-500 | 500 MBsec | 4 TB | 128 TB | 4 TB |
 
-<sup>1</sup> If you require storage values larger than the listed maximum, you can [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview) to explore options.
+If you require storage values larger than the listed maximum, you can [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview) to explore options.
 
-You can use the [create workflow](create-file-system-portal.md) in Azure portal to check SKU capabilities. SKU-specific settings are on the **Basics** tab under **File system details**.
+To check SKU capabilities, you can use the [workflow for creating a Managed Lustre file system by using the Azure portal](create-file-system-portal.md). SKU-specific settings are on the **Basics** tab under **File system details**.
 
 > [!TIP]
-> See [Required information](#required-information) for a command you can use to check the available SKU names.
+> For a command that you can use to check the available SKU names, see [Required information](#required-information).
 
 ## Create a template file
 
-Once you decide on configuration options, you can create a template file. The template file is a JSON or Bicep file that contains the configuration details for your Azure Managed Lustre file system. This section explains the [required](#required-information) and [optional](#optional-information) information to include in your template file.
+After you decide on configuration options, you can create a template file. The template file is a JSON or Bicep file that contains the configuration details for your Azure Managed Lustre file system. This section explains the [required](#required-information) and [optional](#optional-information) information to include in your template file.
 
 For example files that contain all possible configuration options, see [Sample JSON files](#sample-json-files) and [Sample Bicep file](#sample-bicep-file).
 
 ### Required information
 
-This section explains the information you need to include in your Azure Resource Manager template files to create an Azure Managed Lustre file system. The exact syntax is different between Bicep and JSON, so consult the examples for each language type for the literal values.
+This section explains the information you need to include in your ARM template files to create an Azure Managed Lustre file system. The exact syntax is different between Bicep and JSON, so consult the examples for each language type for the literal values.
 
-* **Resource type to create** - This value tells Azure Resource Manager that you're creating an Azure Managed Lustre file system by passing a combination of the value `Microsoft.StorageCache/amlFileSystems` and the API version.
+* **Resource type to create**: This value tells Azure Resource Manager that you're creating an Azure Managed Lustre file system by passing a combination of the value `Microsoft.StorageCache/amlFileSystems` and the API version.
 
   There are several ways to create the resource type:
 
   * In this article's JSON example, the resource type value is passed literally in the **template.json** file, but the API version value is read from the **parameters.json** file.
   * In the Bicep example, the resource type and API version are passed together at the beginning of the template file.
 
-* **API version** - The version of Azure Managed Lustre to create.
+* **API version**: The version of Azure Managed Lustre to create.
 
   To find the current API version:
 
@@ -79,7 +70,7 @@ This section explains the information you need to include in your Azure Resource
   az provider show --namespace Microsoft.StorageCache --query "resourceTypes[?resourceType=='amlFilesystems'].apiVersions" --out table
   ```
 
-* **SKU name** - The performance model for the file system, either `AMLFS-Durable-Premium-125` or `AMLFS-Durable-Premium-250`.
+* **SKU name**: The performance model for the file system, either `AMLFS-Durable-Premium-125` or `AMLFS-Durable-Premium-250`.
 
   Use the following command to find available SKUs (use the current API version):
 
@@ -87,7 +78,7 @@ This section explains the information you need to include in your Azure Resource
   az rest --url https://management.azure.com/subscriptions/<subscription_id>/providers/Microsoft.StorageCache/skus/?api-version=<version> | jq '.value[].name' | grep AMLFS| uniq
   ```
 
-* **Location** - The name of the Azure region where the file system is created.
+* **Location**: The name of the Azure region where the file system is created.
 
   To find the regions and availability zones where Azure Managed Lustre is supported:
   
@@ -104,17 +95,17 @@ This section explains the information you need to include in your Azure Resource
   az account list-locations --query "[?displayName=='West US'].name" --output tsv
   ```
 
-* **Availability zone** - The availability zone to use within the Azure region.
+* **Availability zone**: The availability zone to use within the Azure region.
 
   Use the previous command in **Location** to find availability zones. Specify a single availability zone for your system.
 
-* **File system name** - The user-visible name for this Azure Managed Lustre file system.
+* **File system name**: The user-visible name for this Azure Managed Lustre file system.
 
-* **File system subnet** - The subnet that the file system uses. Provide the subnet URI; for example, `/subscriptions/<SubscriptionID>/resourceGroups/<VnetResourceGroupName>/providers/Microsoft.Network/virtualNetworks/<VnetName>/subnets/<SubnetName>`.
+* **File system subnet**: The subnet that the file system uses. Provide the subnet URI; for example, `/subscriptions/<SubscriptionID>/resourceGroups/<VnetResourceGroupName>/providers/Microsoft.Network/virtualNetworks/<VnetName>/subnets/<SubnetName>`.
 
-* **Storage capacity** - The size of your Azure Managed Lustre cluster, in TiB. Values depend on the SKU. For more information, see  [Choose file system type and size](#choose-file-system-type-and-size).
+* **Storage capacity**: The size of your Azure Managed Lustre cluster, in TiB. Values depend on the SKU. For more information, see  [Choose file system type and size](#choose-file-system-type-and-size).
 
-* **Maintenance period** - Requires two values that set the maintenance period. These values define a 30-minute period weekly during which system updates can be done.
+* **Maintenance period**: Requires two values that set the maintenance period. These values define a 30-minute period weekly during which system updates can be done.
 
   * Day of the week (for example, `Sunday`)
   * Time of day (UTC) (for example, `22:00`)
@@ -123,20 +114,20 @@ This section explains the information you need to include in your Azure Resource
 
 The parameters in this section are either optional, or required only if you're using specific features.
 
-* **Tags** - Use this option if you want to set Azure resource metadata tags.
+* **Tags**: Use this option if you want to set Azure resource metadata tags.
 
-* **Blob integration settings** - Supply these values to use an integrated Blob Storage container with this file system. For more information, see [Blob integration](create-file-system-portal.md#blob-integration).
+* **Blob integration settings**: Supply these values to use an integrated Blob Storage container with this file system. For more information, see [Blob integration](create-file-system-portal.md#blob-integration).
 
-  * **Container** - The resource ID of the blob container to use for Lustre hierarchical storage management (HSM).
-  * **Logging container** - The resource ID of a separate container to hold import and export logs. The logging container must be in the same storage account as the data container.
-  * **Import prefix** (optional) - If this value is provided, only blobs beginning with the import prefix string are imported into the Azure Managed Lustre File System. If you don't provide it, the default value is `/`, which specifies that all blobs in the container are imported.
+  * **Container**: The resource ID of the blob container to use for Lustre hierarchical storage management (HSM).
+  * **Logging container**: The resource ID of a separate container to hold import and export logs. The logging container must be in the same storage account as the data container.
+  * **Import prefix** (optional): If this value is provided, only blobs beginning with the import prefix string are imported into the Azure Managed Lustre File System. If you don't provide it, the default value is `/`, which specifies that all blobs in the container are imported.
 
-* **Customer-managed key settings** - Supply these values if you want to use an Azure Key Vault to control the encryption keys that are used to encrypt your data in the Azure Managed Lustre system. By default, data is encrypted using Microsoft-managed encryption keys.
+* **Customer-managed key settings**: Supply these values if you want to use an Azure Key Vault to control the encryption keys that are used to encrypt your data in the Azure Managed Lustre system. By default, data is encrypted using Microsoft-managed encryption keys.
 
-  * **Identity type** - set this to `UserAssigned` to turn on customer-managed keys.
-  * **Encryption Key Vault** - The resource ID of the Azure Key Vault that stores the encryption keys.
-  * **Encryption key URL** - The identifier for the key to use to encrypt your data.
-  * **Managed identity** - A user-assigned managed identity that the Azure Managed Lustre file system uses to access the Azure Key Vault. For more information, see [Use customer-managed encryption keys](customer-managed-encryption-keys.md).
+  * **Identity type**: Set this to `UserAssigned` to turn on customer-managed keys.
+  * **Encryption Key Vault**: The resource ID of the Azure Key Vault that stores the encryption keys.
+  * **Encryption key URL**: The identifier for the key to use to encrypt your data.
+  * **Managed identity**: A user-assigned managed identity that the Azure Managed Lustre file system uses to access the Azure Key Vault. For more information, see [Use customer-managed encryption keys](customer-managed-encryption-keys.md).
 
 ## Deploy the file system using the template
 
@@ -167,7 +158,7 @@ Follow these steps to deploy the file system using the template:
 
 1. Deploy the Azure Managed Lustre file system by using the template. The syntax is different depending on whether you're using JSON or Bicep files, and the number of files you use.
 
-   You can deploy both Bicep and JSON templates as single files or multiple files. For more information and to see the exact syntax for each option, see the [Azure Resource Manager templates documentation](/azure/azure-resource-manager/templates).
+   You can deploy both Bicep and JSON templates as single files or multiple files. For more information and to see the exact syntax for each option, see the [ARM templates documentation](/azure/azure-resource-manager/templates).
 
    Example JSON command:
 
@@ -189,7 +180,7 @@ Follow these steps to deploy the file system using the template:
 
 ## Sample JSON files
 
-This section shows sample contents for a template file and a separate parameters file. These files contain all possible configuration options. You can remove optional parameters when creating your own Azure Resource Manager template.
+This section shows sample contents for a template file and a separate parameters file. These files contain all possible configuration options. You can remove optional parameters when creating your own ARM template.
 
 ### Template file
 
@@ -344,7 +335,7 @@ This section shows example contents of a parameters file:
 
 ## Sample Bicep file
 
-This example includes all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values, you don't want.
+This example includes all of the possible values in an Azure Managed Lustre template. When you create your template, remove any optional values that you don't want.
 
 ```bicep
 resource fileSystem 'Microsoft.StorageCache/amlFileSystems@2023-05-01' = {
@@ -390,6 +381,6 @@ resource fileSystem 'Microsoft.StorageCache/amlFileSystems@2023-05-01' = {
 }
 ```
 
-## Next steps
+## Related content
 
 * [Azure Managed Lustre File System overview](amlfs-overview.md)
