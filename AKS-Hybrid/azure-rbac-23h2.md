@@ -1,6 +1,6 @@
 ---
-title: Use Azure role-based access control (RBAC) for Kubernetes Authorization
-description: Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. 
+title: Use Azure role-based access control (RBAC) for Kubernetes authorization
+description: Learn how infrastructure administrators can use Azure RBAC to control who can access kubeconfig. 
 ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
@@ -14,26 +14,22 @@ ms.lastreviewed: 5/16/2024
 
 ---
 
-# Use Azure role-based access control (RBAC) for Kubernetes Authorization
+# Use Azure role-based access control (RBAC) for Kubernetes authorization
 
 Applies to: AKS on Azure Stack HCI 23H2
 
-Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the `kubectl` tool based on the given permissions. The Azure CLI provides an easy way to get the access credentials and *kubeconfig* configuration file to connect to your AKS Arc clusters using `kubectl`.
+Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the **kubectl** tool based on the given permissions. Azure CLI provides an easy way to get the access credentials and kubeconfig configuration file to connect to your AKS enabled by Arc clusters using **kubectl**.
 
-When you leverage integrated authentication between Microsoft Entra ID and AKS Arc, you can use Microsoft Entra users, groups, or service principals as subjects in [Kubernetes role-based access control (Kubernetes RBAC)](concepts-security-access-and-identity-options.md). This feature frees you from having to separately manage user identities and credentials for Kubernetes. However, you still have to set up and manage Azure RBAC and Kubernetes RBAC separately.
+When you use integrated authentication between Microsoft Entra ID and AKS Arc, you can use Microsoft Entra users, groups, or service principals as subjects in [Kubernetes role-based access control (Kubernetes RBAC)](concepts-security-access-and-identity-options.md). This feature frees you from having to separately manage user identities and credentials for Kubernetes. However, you still must set up and manage Azure RBAC and Kubernetes RBAC separately.
 
-This article describes how to use Azure RBAC for Kubernetes cluster authorization with Microsoft Azure AD and Azure role assignments.
+This article describes how to use Azure RBAC for Kubernetes cluster authorization with Microsoft Entra ID and Azure role assignments.
 
 For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-and-identity-options.md) for AKS enabled by Azure Arc.
 
-
-
 ## Before you begin
 
-- AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC during Kubernetes cluster creation. You cannot enable Azure RBAC after the Kubernetes cluster has been created.
-
-- To enable Azure RBAC, you must be running Azure CLI `aksarc extension version 1.1.1` or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
-
+- AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
+- To enable Azure RBAC, you must be running the Azure CLI **aksarc extension version 1.1.1** or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - To interact with Kubernetes clusters, you must install [kubectl]([Install Tools | Kubernetes](https://kubernetes.io/docs/tasks/tools/)) and [kubelogin]([Installation - Azure Kubelogin](https://azure.github.io/kubelogin/install.html)). Follow links to the public documentation to complete the installation.
 
 - The infrastructure administrator will need the following permissions to enable Azure RBAC while creating an Kubernetes cluster.
