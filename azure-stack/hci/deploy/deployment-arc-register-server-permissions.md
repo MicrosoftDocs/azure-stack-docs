@@ -64,7 +64,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     #Install required PowerShell modules in your node for registration
     Install-Module Az.Accounts -RequiredVersion 2.19.0 -Force
-    Install-Module Az.ConnectedMachine -Force
+    Install-Module Az.ConnectedMachine -RequiredVersion 0.7.2 -Force
     Install-Module Az.Resources -RequiredVersion 6.16.2 -Force
     ```
     # [Output](#tab/output)
@@ -81,7 +81,7 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser>
     
     PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.19.0 -Force
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -Force
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.7.2 -Force
     PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.16.2 -Force
     ```
     ---
