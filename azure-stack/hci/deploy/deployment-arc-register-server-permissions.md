@@ -61,8 +61,9 @@ Before you begin, make sure you've completed the following prerequisites:
 
     #Install required PowerShell modules in your node for registration
     Install-Module Az.Accounts -RequiredVersion 2.13.2
-    Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
     Install-Module Az.Resources -RequiredVersion 6.12.0
+    Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    
 
     #Install Arc registration script from PSGallery 
     Install-Module AzsHCI.ARCinstaller
@@ -72,8 +73,8 @@ Before you begin, make sure you've completed the following prerequisites:
 
     ```output
     PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.13.2
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
     PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
     PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                           
     NuGet provider is required to continue                                                                                  
     PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
