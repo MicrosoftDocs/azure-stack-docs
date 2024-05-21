@@ -34,23 +34,24 @@ Here are the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Active Directory<!--27022398--> |When deploying using a large Active Directory an issue has been addressed that can cause timeouts when adding users to the local administrator group |Workaround |
-| Deployment<!--26376120--> |New ARM templates have been released for cluster creation that simplify the dependency resource creation. Including some fixes reported that address missing mandatory field |Workaround |
-| Deployment<!--27101544--> |The secret rotation PowerShell command  “Set-AzureStackLCMUserPassword” supports a new parameter to skip the confirmation message.   |Workaround |
-| Deployment<!--27837538--> |Improved the reliability of secret rotation when services not restarting in a timely manner.  |Workaround |
-| Deployment<!--26737110--> |Fixed an issue in deployment when setting the diagnostic level in Azure and the device.   |Workaround |
-| SBE<!--25093172--> |A new PowerShell command that can be used to update the SBE partner property values provided at deployment time.  |Workaround |
-| SBE<!--27940543--> |Fixed an issue that prevents the update service to respond to requests after an SBE only update run.  |Workaround |
-| Add server/Repair server<!--27101597--> | An issue has been fixed that prevents a node from joining Active Directory during an add server operation.  |Workaround |
-| Networking<!--ADO--> |Improved the reliability of Network ATC when setting up the host networking configuration with certain network adapter types.  |Workaround |
-| Networking<!--ADO--> |Improved reliability when detecting firmware versions for disk drives.  |Workaround |
-| Updates<!--27230554--> |Improved the reliability of update notifications for health check results sent from the device to AUM (Azure Update Manager). In certain cases, the message size could have been too large and caused no results to be shown in AUM.  |Workaround |
-| Updates<!--27689489--> |Fixed a file lock issue that can cause update failures for the trusted launch VM agent (IGVM).  |Workaround |
-| Updates<!--27726586--> |Fixed an issue that prevented the orchestrator agent from being restarted during an update run.  |Workaround |
-| Updates<!--27745420--> |Fixed a rare condition where it took a long time for the update service to discover or start an update. |Workaround |
-| Updates<!--26805746--> |Fixed an issue for CAU (Cluster Aware Updating) interaction with the orchestrator when an update in progress is reported by CAU. |Workaround |
-| Updates<!--26952963--> |Introducing an adjusted naming schema for updates that allows the identification of feature versus cumulative updates. |Workaround |
-| Updates<!--27775374--> |Improved the reliability of reporting the cluster update progress to the orchestrator.  |Workaround |
+| Active Directory<!--27022398--> |When deploying using a large Active Directory an issue has been addressed that can cause timeouts when adding users to the local administrator group | |
+| Deployment<!--26376120--> |New ARM templates have been released for cluster creation that simplify the dependency resource creation. Including some fixes reported that address missing mandatory field | |
+| Deployment<!--27101544--> |The secret rotation PowerShell command  “Set-AzureStackLCMUserPassword” supports a new parameter to skip the confirmation message.   ||
+| Deployment<!--27837538--> |Improved the reliability of secret rotation when services not restarting in a timely manner.  | |
+| Deployment<!--26737110--> |Fixed an issue in deployment when setting the diagnostic level in Azure and the device.   | |
+| SBE<!--25093172--> |A new PowerShell command that can be used to update the SBE partner property values provided at deployment time.  | |
+| SBE<!--27940543--> |Fixed an issue that prevents the update service to respond to requests after an SBE only update run.  | |
+| Add server/Repair server<!--27101597--> | An issue has been fixed that prevents a node from joining Active Directory during an add server operation.  | |
+| Networking<!--27285196--> |Improved the reliability of Network ATC when setting up the host networking configuration with certain network adapter types.  | |
+| Networking<!--27395303--> |Improved reliability when detecting firmware versions for disk drives.  | |
+| Updates<!--27230554--> |Improved the reliability of update notifications for health check results sent from the device to AUM (Azure Update Manager). In certain cases, the message size could have been too large and caused no results to be shown in AUM.  | |
+| Updates<!--27689489--> |Fixed a file lock issue that can cause update failures for the trusted launch VM agent (IGVM).  | |
+| Updates<!--27726586--> |Fixed an issue that prevented the orchestrator agent from being restarted during an update run.  | |
+| Updates<!--27745420--> |Fixed a rare condition where it took a long time for the update service to discover or start an update. | |
+| Updates<!--26805746--> |Fixed an issue for CAU (Cluster Aware Updating) interaction with the orchestrator when an update in progress is reported by CAU. | |
+| Updates<!--26952963--> |Introducing an adjusted naming schema for updates that allows the identification of feature versus cumulative updates. | |
+| Updates<!--27775374--> |Improved the reliability of reporting the cluster update progress to the orchestrator.  | |
+| Azure Arc<!--27775374--> |Resolved an issue where the Azure Arc connection was lost when the Hybrid Instance Metadata service (HIMDS) restarted, breaking Azure portal functionality. The device will now automatically reinitiate the Azure Arc connection in these cases.  | |
 
 
 
