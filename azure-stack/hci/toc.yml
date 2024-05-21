@@ -277,6 +277,8 @@ items:
 
   - name: Azure services
     items:
+    - name: Hybrid capabilities with Azure services
+      href: hybrid-capabilities-with-azure-services-23h2.md
     - name: Enhanced management from Azure
       href: manage/azure-enhanced-management-managed-identity.md
     - name: Use Azure Site Recovery
