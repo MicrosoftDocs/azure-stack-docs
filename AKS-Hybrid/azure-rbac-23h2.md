@@ -167,7 +167,7 @@ az role definition delete -n "AKS Arc Deployment Reader"
 
 ## Next steps
 
-- Understand the concept of [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
-- Understand the concept of [Access and Identity Options ](concepts-security-access-and-identity-options.md)for AKS enabled by Azure Arc
-- Learn how-to [create an Azure service pricipal with Azure CLI](/cli/azure/azure-cli-sp-tutorial-1)
-- See the available Azure permissions for [Hybrid + Multicloud](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes)
+- [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
+- [Access and identity options ](concepts-security-access-and-identity-options.md)for AKS enabled by Azure Arc
+- [Create an Azure service principal with Azure CLI](/cli/azure/azure-cli-sp-tutorial-1)
+- Available Azure permissions for [Hybrid + Multicloud](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes)
