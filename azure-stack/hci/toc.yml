@@ -153,6 +153,8 @@ items:
   items:
   - name: About Updates
     href: update/about-updates-23h2.md
+  - name: About Solution Builder ExtensionSoftware Updates
+    href: update/solution-builder-extension.md
   - name: Understand update phases
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
