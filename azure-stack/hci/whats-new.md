@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/22/2024
+ms.date: 05/21/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -17,7 +17,62 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-There are 2 release trains for Azure Stack HCI, version 23H2: 2402 and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+There are currently 3 release trains for Azure Stack HCI, version 23H2: 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+
+# [2405 releases](#tab/2405releases)
+
+The 2405 release train includes the following release:
+
+## Features and improvements in 2405
+
+### Deployment changes
+
+- **New ISO image** - Starting this release, a new ISO image for the Azure Stack HCI OS is available for download via the Azure portal.  This new image has Hyper-V enabled by default which further reduces the required bootstrap steps. For more information, see [Download Azure Stack HCI, 23H2 OS](./deploy/download-azure-stack-hci-23h2-software.md).
+
+- **Active Directory integration** - In this release, an issue related to the use of a large Active Directory that results in timeouts when adding users to the local administrator group, is fixed. <!--27022398-->
+
+- **New Azure Resource Manager (ARM) template** - A new ARM deployment template is available that simplifies the resource creation dependencies. The new template creation also includes multiple fixes around the missing mandatory fields. <!--26376120-->
+- Fixed an issue in deployment when setting the diagnostic level in Azure and the device. <!--26737110-->
+
+- **Secret rotation improvements** - Beginning this release, improvements were made to the secret rotation flow.
+    - The secret rotation PowerShell command 'Set-AzureStackLCMUserPassword' now supports a new parameter to skip the confirmation message. This is useful when automating secret rotation. <!--27101544-->
+    - Improved the reliability of secret rotation when services not restarting in a timely manner. <!--27837538-->
+
+- **SBE improvements**
+- A new PowerShell command that can be used to update the SBE partner property values provided at deployment time. <!--25093172-->
+- Fixed an issue that prevents the update service to respond to requests after an SBE only update run. <!--27940543-->
+
+- **Add/repair server fixes**
+- An issue has been fixed that prevents a node from joining Active Directory during an add server operation. <!--27101597-->
+
+- **Reliability improvements**
+- For Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
+- When detecting the firmware versions for disk drives. <!--27395303-->
+
+For more information, see the Fixed issues list in the [Known issues in 2405](./known-issues-2405.md#fixed-issues).
+
+### Updates changes
+
+- Starting this release, an adjusted naming schema is introduced for updates. This schema allows the identification of feature versus cumulative updates. <!--26952963-->
+
+- This release contains reliability improvements:
+    - For the update notifications for health check results sent from the device to Azure Update Manager (AUM). In certain instances, the message size was too large and no results were shown in AUM. <!--27230554-->
+    - For reporting the cluster update progress to the orchestrator.
+
+- This release has bug fixes for various issues:
+    - A file lock issue that could cause update failures for the trusted launch VM agent (IGVM). <!--27689489-->
+    - An issue that prevented the orchestrator agent from restarting during an update run. <!--27726586-->
+    - A rare condition where the update service took a long time to discover or start an update. <!--27745420-->
+    - An issue for Cluster Aware Updating (CAU) interaction with the orchestrator when an update in progress is reported by CAU. <!--26805746-->
+
+For more information, see the Fixed issues list in the [Known issues in 2405](./known-issues-2405.md#fixed-issues).
+
+### Arc VM management changes
+
+- This release contains new documentation that provides guidance on VM image creation starting with a CentOS image or a Red Hat Enterprise Linux (RHEL) image. For more information, see:
+    - [Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-centos.md).
+    - [Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-red-hat-enterprise.md).
+
 
 # [2402 releases](#tab/2402releases)
 
