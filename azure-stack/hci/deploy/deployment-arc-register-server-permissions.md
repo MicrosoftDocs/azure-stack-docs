@@ -170,6 +170,8 @@ Before you begin, make sure you've completed the following prerequisites:
 
     If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
 
+    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
+
     # [Output](#tab/output)
 
     Here's a sample output of a successful registration of your servers:
