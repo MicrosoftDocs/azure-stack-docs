@@ -44,14 +44,14 @@ On the **Basics** tab, provide the following essential information about your Az
 | **Project details** | **Region** | Select the Azure region for your file system. For optimal performance, create the file system in the same region and availability zone as your client machines. |
 | **Project details** | **Availability zone** | Select the availability zone for your file system. |
 | **File system details** | **File system name** | Enter a name to identify this file system in your list of resources. This name isn't the name of the file system used in `mount` commands. |
-| **File system details** | **File system type** | The field shows **Durable, SSD** by default. |
-| **File system details** | **Storage and throughput** | Enter the storage capacity of your file system in tebibytes (TiB), or the maximum throughput in megabytes per second (MBps).</br></br>Two factors determine your file system size: the amount of storage allocated for your data (storage capacity) and the maximum data transfer rate (throughput). When you select one of these options, the other values are calculated based on the **Throughput per TiB** setting for your file system type. To set the file system size, choose either **Storage capacity** or **Maximum throughput**. Enter a value in the corresponding field, either the desired storage capacity (in TiB) if you selected **Storage capacity**, or the desired maximum throughput (in MBsec) if you selected **Maximum throughput**.</br></br>Note that these values are rounded up to meet incremental size requirements. The values are never rounded down, so check the final configuration to make sure that it's cost-effective for your workload. For more information, see [Throughput configurations](#throughput-configurations). |
+| **File system details** | **File system type** | The value is **Durable, SSD** by default. |
+| **File system details** | **Storage and throughput** | Enter the storage capacity of your file system in tebibytes (TiB), or enter the maximum throughput in megabytes per second (MBps).</br></br>Two factors determine your file system size: the amount of storage allocated for your data (storage capacity) and the maximum data transfer rate (throughput). When you select one of these options, the other values are calculated based on the **Throughput per TiB** setting for your file system type. To set the file system size, select either **Storage capacity** or **Maximum throughput**, and then enter a value in the corresponding box.</br></br>Note that these values are rounded up to meet incremental size requirements. The values are never rounded down, so check the final configuration to make sure that it's cost-effective for your workload. For more information, see [Throughput configurations](#throughput-configurations). |
 | **Networking** | **Virtual network** | Select an existing virtual network to use for the file system, or create a new virtual network. For more information about network sizing and other configuration options, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites). |
-| **Networking** | **Subnet** | Select an existing subnet or create a new one. </br></br>The Azure Managed Lustre file system uses a dedicated virtual network and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system. </br></br>You can open the **Manage subnet configuration** link to make sure that the subnet meets your network requirements. The network should have enough available IP addresses to handle the file system's load and any additional IP addresses required by any other services that are colocated with the file system. Make sure that you complete all access settings to enable the subnet to access the needed Azure services. |
+| **Networking** | **Subnet** | Select an existing subnet or create a new one. </br></br>The Azure Managed Lustre file system uses a dedicated virtual network and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system. </br></br>You can open the **Manage subnet configuration** link to make sure that the subnet meets your network requirements. The network should have enough available IP addresses to handle the file system's load and any additional IP addresses required by other services that are colocated with the file system. Make sure that you complete all access settings to enable the subnet to access the needed Azure services. |
 | **Maintenance window** | **Day of the week** | Provide a preferred day of the week for the Azure team to perform maintenance and troubleshooting with minimal impact. This setting is used infrequently and only as needed. To learn more, see [Maintenance window](#maintenance-window). |
 | **Maintenance window** | **Start time** | Provide the time that the maintenance window can begin. Time should be in 24-hour format (*HH*:*MM*). |
 
-The following screenshot shows the **Basics** tab for creating an Azure Managed Lustre file system in the Azure portal:
+The following screenshot shows an example of the **Basics** tab for creating an Azure Managed Lustre file system in the Azure portal:
 
 :::image type="content" source="./media/create-file-system-portal/basics-tab.png" alt-text="Screenshot that shows the Basics tab for creating an Azure Managed Lustre file system in the Azure portal." lightbox="./media/create-file-system-portal/basics-tab.png":::
 
@@ -66,10 +66,10 @@ Currently, the following throughput configurations are available:
 
 | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
 |-----------|-----------|-----------|-----------|
-| 40 MBsec | 48 TiB | 768 TiB | 48 TiB |
-| 125 MBsec | 16 TiB | 128 TiB | 16 TiB |
-| 250 MBsec | 8 TiB | 128 TiB | 8 TiB |
-| 500 MBsec | 4 TiB | 128 TiB | 4 TiB |
+| 40 MBps | 48 TiB | 768 TiB | 48 TiB |
+| 125 MBps | 16 TiB | 128 TiB | 16 TiB |
+| 250 MBps | 8 TiB | 128 TiB | 8 TiB |
+| 500 MBps | 4 TiB | 128 TiB | 4 TiB |
 
 > [!NOTE]
 > Upon request, Azure Managed Lustre can support larger storage capacities up to 2.5 petabytes (PB). To make a request for a larger storage capacity, [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview).
@@ -95,10 +95,10 @@ Configuring blob integration during cluster creation is optional, but it's the o
 To configure blob integration, follow these steps:
 
 1. Create or configure a storage account and blob containers for integration with the file system. To learn more about the requirements for these resources, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional). The storage account doesn't need to be in the same subscription as the Azure Managed Lustre file system.
-1. Select the **Import/export data from blob** check box.
+1. Select the **Import/export data from blob** checkbox.
 1. Specify the **Subscription**, **Storage account**, and **Container** values to use with your Lustre file system.
-1. In the **Logging container** field, select the container where you want to store import/export logs. The logs must be stored in a separate container from the data container, but the containers must be in the same storage account.
-1. In the **Import Prefix(es)** fields, you can optionally supply one or more prefixes to filter the data that's imported into the Azure Managed Lustre file system. The default import prefix is `/`, and the default behavior imports the contents of the entire blob container. For more information, see [Import prefix](blob-integration.md#import-prefix).
+1. In the **Logging container** box, select the container where you want to store import/export logs. The logs must be stored in a separate container from the data container, but the containers must be in the same storage account.
+1. In the **Import Prefix(es)** boxes, you can optionally supply one or more prefixes to filter the data that's imported into the Azure Managed Lustre file system. The default import prefix is `/`, and the default behavior imports the contents of the entire blob container. For more information, see [Import prefix](blob-integration.md#import-prefix).
 
 :::image type="content" source="./media/create-file-system-portal/advanced-blob-integration.png" alt-text="Screenshot that shows blob integration settings on the Advanced tab for creating an Azure Managed Lustre file system." lightbox="./media/create-file-system-portal/advanced-blob-integration.png":::
 
@@ -108,7 +108,7 @@ When you finish entering details on the **Advanced** tab, you can optionally sel
 
 You can optionally manage the encryption keys for your Azure Managed Lustre file system storage by supplying your Azure Key Vault information on the **Disk encryption keys** tab. The key vault must be in the same region and in the same subscription as the cache.
 
-If you don't need customer-managed keys, you can skip this section. Azure encrypts data with Microsoft-managed keys by default. For more information, see [Azure storage encryption](/azure/storage/common/storage-service-encryption).
+If you don't need customer-managed keys, you can skip this section. Azure encrypts data with Microsoft-managed keys by default. For more information, see [Azure Storage encryption](/azure/storage/common/storage-service-encryption).
 
 > [!NOTE]
 > You can't change between Microsoft-managed keys and customer-managed keys after you create the file system.
@@ -148,7 +148,7 @@ When you go to the **Review + create** tab, Azure runs validation on your settin
 
 If validation fails, the portal indicates which settings you need to modify.
 
-The following image shows the **Review + create** tab before the creation of a new file system:
+The following screenshot shows an example of the **Review + create** tab before the creation of a new file system:
 
 :::image type="content" source="./media/create-file-system-portal/review-create-tab.png" alt-text="Screenshot that shows the tab for reviewing settings and creating an Azure Managed Lustre file system." lightbox="./media/create-file-system-portal/review-create-tab.png":::
 

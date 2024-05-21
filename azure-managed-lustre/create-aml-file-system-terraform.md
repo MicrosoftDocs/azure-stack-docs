@@ -112,7 +112,7 @@ In this article, you learn how to:
     $managed_lustre_file_system_name=$(terraform output -raw managed_lustre_file_system_name)
     ```
 
-1. Run [Get-AzStorageCacheAmlFileSystem](/powershell/module/az.storagecache/get-azstoragecacheamlfilesystem) to display the name of the Lustre file system:
+1. Run [Get-AzStorageCacheAmlFileSystem](/powershell/module/az.storagecache/get-azstoragecacheamlfilesystem) to display the name of the Managed Lustre file system:
 
     ```azurepowershell
     Get-AzStorageCacheAmlFileSystem -ResourceGroupName $resource_group_name `
@@ -129,7 +129,6 @@ In this article, you learn how to:
 
 See [Troubleshoot common problems when using Terraform on Azure](/azure/developer/terraform/troubleshoot).
 
-## Next step
+## Related content
 
-> [!div class="nextstepaction"]
-> [Learn about Azure Managed Lustre](amlfs-overview.md)
+* [Azure Managed Lustre overview](amlfs-overview.md)

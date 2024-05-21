@@ -31,10 +31,10 @@ The following table shows the values for throughput and storage size in each sup
 
 | SKU | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
 |----------|-----------|-----------|-----------|-----------|
-| AMLFS-Durable-Premium-40 | 40 MBsec | 48 TB | 768 TB | 48 TB|
-| AMLFS-Durable-Premium-125 | 125 MBsec | 16 TB | 128 TB | 16 TB |
-| AMLFS-Durable-Premium-250 | 250 MBsec | 8 TB | 128 TB | 8 TB |
-| AMLFS-Durable-Premium-500 | 500 MBsec | 4 TB | 128 TB | 4 TB |
+| AMLFS-Durable-Premium-40 | 40 MBps | 48 TB | 768 TB | 48 TB|
+| AMLFS-Durable-Premium-125 | 125 MBps | 16 TB | 128 TB | 16 TB |
+| AMLFS-Durable-Premium-250 | 250 MBps | 8 TB | 128 TB | 8 TB |
+| AMLFS-Durable-Premium-500 | 500 MBps | 4 TB | 128 TB | 4 TB |
 
 If you require storage values larger than the listed maximum, you can [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview) to explore options.
 
@@ -68,7 +68,7 @@ To create an Azure Managed Lustre file system by using an ARM template, you need
 
 * **SKU name**: The performance model for the file system, either `AMLFS-Durable-Premium-125` or `AMLFS-Durable-Premium-250`.
 
-  Use the following command to find available SKUs. Include the current API version.
+  To find available SKUs, use the following command. Include the current API version.
 
   ```azurecli
   az rest --url https://management.azure.com/subscriptions/<subscription_id>/providers/Microsoft.StorageCache/skus/?api-version=<version> | jq '.value[].name' | grep AMLFS| uniq
@@ -92,7 +92,7 @@ To create an Azure Managed Lustre file system by using an ARM template, you need
 
 * **Availability zone**: The availability zone to use within the Azure region.
 
-  Use the previous command in **Location** to find availability zones. Specify a single availability zone for your system.
+  To find availability zones, use the previous command in **Location**. Specify a single availability zone for your system.
 
 * **File system name**: The user-visible name for this Azure Managed Lustre file system.
 
