@@ -58,14 +58,14 @@ Before you begin, make sure you've completed the following prerequisites:
     ```powershell
     #Register PSGallery as a trusted repo
     Register-PSRepository -Default -InstallationPolicy Trusted
-    
-    #Install Arc registration script from PSGallery 
-    Install-Module AzsHCI.ARCinstaller
 
     #Install required PowerShell modules in your node for registration
-    Install-Module Az.Accounts -RequiredVersion 2.19.0 -Force
-    Install-Module Az.ConnectedMachine -RequiredVersion 0.7.2 -Force
-    Install-Module Az.Resources -RequiredVersion 6.16.2 -Force
+    Install-Module Az.Accounts -RequiredVersion 2.13.2
+    Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    Install-Module Az.Resources -RequiredVersion 6.12.0
+
+    #Install Arc registration script from PSGallery 
+    Install-Module AzsHCI.ARCinstaller
     ```
     # [Output](#tab/output)
     Here's a sample output of the installation:
@@ -80,9 +80,9 @@ Before you begin, make sure you've completed the following prerequisites:
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
     PS C:\Users\SetupUser>
     
-    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.19.0 -Force
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.7.2 -Force
-    PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.16.2 -Force
+    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.13.2 -Force
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2 -Force
+    PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0 -Force
     ```
     ---
 1. Set the parameters. The script takes in the following parameters:
