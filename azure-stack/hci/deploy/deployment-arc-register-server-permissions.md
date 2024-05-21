@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 04/22/2024
+ms.date: 05/21/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -63,9 +63,9 @@ Before you begin, make sure you've completed the following prerequisites:
     Install-Module AzsHCI.ARCinstaller
 
     #Install required PowerShell modules in your node for registration
-    Install-Module Az.Accounts -Force
-    Install-Module Az.ConnectedMachine -Force
-    Install-Module Az.Resources -Force
+    Install-Module Az.Accounts -RequiredVersion 2.19.0 -Force
+    Install-Module Az.ConnectedMachine -RequiredVersion 0.7.2 -Force
+    Install-Module Az.Resources -RequiredVersion 6.16.2 -Force
     ```
     # [Output](#tab/output)
     Here's a sample output of the installation:
@@ -80,9 +80,9 @@ Before you begin, make sure you've completed the following prerequisites:
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
     PS C:\Users\SetupUser>
     
-    PS C:\Users\SetupUser> Install-Module Az.Accounts -Force
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -Force
-    PS C:\Users\SetupUser> Install-Module Az.Resources -Force
+    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.19.0 -Force
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.7.2 -Force
+    PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.16.2 -Force
     ```
     ---
 1. Set the parameters. The script takes in the following parameters:
@@ -169,6 +169,8 @@ Before you begin, make sure you've completed the following prerequisites:
     ```
 
     If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
+
+    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
     # [Output](#tab/output)
 

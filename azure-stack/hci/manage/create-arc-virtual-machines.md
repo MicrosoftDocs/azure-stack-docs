@@ -15,7 +15,7 @@ ms.date: 03/04/2024
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager (ARM) template.
+This article describes how to create an Arc VM starting with the VM images that you've created on your Azure Stack HCI cluster. You can create Arc VMs using the Azure CLI, Azure portal, or Azure Resource Manager template.
 
 ## About Azure Stack HCI cluster resource
 
@@ -43,12 +43,12 @@ Before you create an Azure Arc-enabled VM, make sure that the following prerequi
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
-# [ARM template](#tab/armtemplate)
+# [Azure Resource Manager template](#tab/armtemplate)
 
 [!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
 
 - Access to a logical network that you associate with the VM on your Azure Stack HCI cluster. For more information, see how to [Create logical network](./create-logical-networks.md).
-- [Download the sample ARM template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
+- [Download the sample Azure Resource Manager template](https://aka.ms/hci-vmarmtemp) in the GitHub Azure QuickStarts repo. You use this template to create a VM.
 
 # [Bicep template](#tab/biceptemplate)
 
@@ -300,9 +300,9 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 1. Select **Create**. It should take a few minutes to provision the VM.
 
 
-# [ARM template](#tab/armtemplate)
+# [Azure Resource Manager template](#tab/armtemplate)
 
-Follow these steps to deploy the ARM template:
+Follow these steps to deploy the Resource Manager template:
 
 1. In the Azure portal, from the top search bar, search for *deploy a custom template*. Select **Deploy a custom template** from the available options.
 
@@ -312,7 +312,7 @@ Follow these steps to deploy the ARM template:
 
 1. You see a blank template.
 
-   :::image type="content" source="./media/create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank ARM template in Azure portal." lightbox="./media/create-arc-virtual-machines/blank-template.png":::
+   :::image type="content" source="./media/create-arc-virtual-machines/blank-template.png" alt-text="Screenshot of blank Resource Manager template in Azure portal." lightbox="./media/create-arc-virtual-machines/blank-template.png":::
 
 1. Replace the blank template with the template that you downloaded during the prerequisites step.
 
@@ -374,7 +374,7 @@ Follow these steps to deploy the ARM template:
             "subnetId": {
                 "type": "String",
                 "metadata": {
-                    "description": "The ARM ID of the subnet for the network interface."
+                    "description": "The Azure Resource Manager ID of the subnet for the network interface."
                 }
             },
             "vmSize": {
@@ -418,7 +418,7 @@ Follow these steps to deploy the ARM template:
             "imageReferenceId": {
                 "type": "String",
                 "metadata": {
-                    "description": "The ARM ID of the image to be used for the virtual machine."
+                    "description": "The Azure Resource Manager ID of the image to be used for the virtual machine."
                 }
             },
             "enableDomainJoin": {
