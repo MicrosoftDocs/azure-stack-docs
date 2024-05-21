@@ -45,9 +45,9 @@ The 2405 release train includes the following release:
 - **Add/repair server fixes**
 - An issue has been fixed that prevents a node from joining Active Directory during an add server operation. <!--27101597-->
 
-- **Reliability improvements**
-- For Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
-- When detecting the firmware versions for disk drives. <!--27395303-->
+- **Reliability improvements**:
+    - For Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
+    - When detecting the firmware versions for disk drives. <!--27395303-->
 
 For more information, see the Fixed issues list in the [Known issues in 2405](./known-issues-2405.md#fixed-issues).
 
