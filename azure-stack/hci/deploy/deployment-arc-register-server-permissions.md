@@ -80,9 +80,9 @@ Before you begin, make sure you've completed the following prerequisites:
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
     PS C:\Users\SetupUser>
     
-    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.13.2 -Force
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2 -Force
-    PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0 -Force
+    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.13.2
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0
     ```
     ---
 1. Set the parameters. The script takes in the following parameters:
