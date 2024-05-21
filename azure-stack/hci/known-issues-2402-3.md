@@ -24,7 +24,7 @@ For more information about the new features in this release, see [What's new in 
 
 ## Issues for version 2402.3
 
-This software release maps to software version number **2402.3.12**.
+This software release maps to software version number **2402.3.10**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
