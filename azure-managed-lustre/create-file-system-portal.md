@@ -86,6 +86,8 @@ Maintenance is typically performed less than once a month. Routine software upgr
 
 Use the **Advanced** tab to optionally enable and configure Azure Blob Storage integration. You can use this integration to import and export data between the file system and a blob container.
 
+### Blob integration
+
 If you want to integrate data from Azure Blob Storage with your Azure Managed Lustre file system, you can specify the details in the **Blob integration** section when you create the file system.
 
 Configuring blob integration during cluster creation is optional, but it's the only way to use [Lustre Hierarchical Storage Management (HSM)](https://doc.lustre.org/lustre_manual.xhtml#lustrehsm) features. If you don't want the benefits of Lustre HSM, you can import and export data for the Azure Managed Lustre file system by using client commands directly.
@@ -155,4 +157,4 @@ Select **Create** to begin deployment of the Azure Managed Lustre file system.
 ## Next step
 
 > [!div class="nextstepaction"]
-> [Connect clients to an Azure Managed Lustre file system](link.md)
+> [Connect clients to an Azure Managed Lustre file system](connect-clients.md)

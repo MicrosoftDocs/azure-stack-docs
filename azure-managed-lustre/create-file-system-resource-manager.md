@@ -111,7 +111,7 @@ The following parameters are optional or are required only if you're using speci
 
 * **Tags**: Use this option if you want to set Azure resource metadata tags.
 
-* **Blob integration settings**: Supply these values to use an integrated Azure Blob Storage container with this file system. For more information, see [Advanced tab](create-file-system-portal.md#advanced-tab).
+* **Blob integration settings**: Supply these values to use an integrated Azure Blob Storage container with this file system. For more information, see [Blob integration](create-file-system-portal.md#blob-integration).
 
   * **Container**: The resource ID of the blob container to use for [Lustre Hierarchical Storage Management (HSM)](https://doc.lustre.org/lustre_manual.xhtml#lustrehsm).
   * **Logging container**: The resource ID of a separate container to hold import and export logs. The logging container must be in the same storage account as the data container.
