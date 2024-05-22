@@ -13,7 +13,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 2402 
       items:
-      - name: 2402.2 - Current
+      - name: 2402.3 - Current
+        href: known-issues-2402-3.md
+      - name: 2402.2
         href: known-issues-2402-2.md
       - name: 2402.1
         href: known-issues-2402-1.md
@@ -277,6 +279,8 @@ items:
 
   - name: Azure services
     items:
+    - name: Hybrid capabilities with Azure services
+      href: hybrid-capabilities-with-azure-services-23h2.md
     - name: Enhanced management from Azure
       href: manage/azure-enhanced-management-managed-identity.md
     - name: Use Azure Site Recovery
