@@ -141,7 +141,7 @@ SBECopyright       Copyright (C) Contoso. All rights reserved.
 SBELicenseUri      https://contoso.com/SBE/EULA.pdf 
 ```
 
-As provided in the example, **Solution Builder ExtensionReleaseLink** and **Solution Builder ExtensionNotifyMessage** may contain important information about the urgency of installing the solution builder extension update, as opposed to deferring the update for a later update maintenance window.
+As provided in the example, **SBEReleaseLink** and **SBENotifyMessage** may contain important information about the urgency of installing the solution builder extension update, as opposed to deferring the update for a later update maintenance window.
 
 ## The AdditionalContentRequired update state
 
@@ -166,7 +166,7 @@ SBE_Contoso_Gen3_4.1.2312.5      SBE                      4.1.2312.5     Additio
 Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     AdditionalContentRequired
 ```
 
-To view information on the solution builder extension update such as its release notes (via the `Solution Builder ExtensionReleaseLink`) and determine how to download the solution builder extension files from your hardware vendor, use the updates `AdditionalProperties` property of the updates.
+To view information on the solution builder extension update such as its release notes (via the `SBEReleaseLink`) and determine how to download the solution builder extension files from your hardware vendor, use the updates `AdditionalProperties` property of the updates.
 
 For more information, see [Discover Solution Builder Extension updates](./solution-builder-extension.md#discover-solution-builder-extension-updates). You should download the solution builder extension files following the hardware vendor's recommendations and license agreements.
 
