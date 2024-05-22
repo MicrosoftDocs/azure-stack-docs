@@ -70,13 +70,13 @@ If your hardware doesn't support hardware updates using solution builder extensi
 
 ## Discover Solution Builder Extension Updates
 
-The Azure Stack HCI Lifecycle Management orchestration integrates solution builder extension updates, which include both solution builder extension (hardware-only) updates and full solution updates for Azure Stack HCI and solution builder extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent solution builder extension update by itself or a combined "Solution" update using the same process.
+The Azure Stack HCI Lifecycle Management orchestration integrates solution builder extension updates, which include both solution builder extension (hardware-only) updates and full solution updates for Azure Stack HCI and solution builder extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent solution builder extension update by itself or a combined "solution" update using the same process.
 
 To discover and select updates via the Azure portal, see [Browse for cluster updates](../update/azure-update-manager-23h2.md#browse-for-cluster-updates).
 
 For the remainder of this section, we discuss discovering solution builder extension vs solution updates using PowerShell.
 
-To understand if an update is a standalone "Solution Builder Extension" or combined "Solution" update, use the properties `PackageType` and `Solution Builder ExtensionVersion`.
+To understand if an update is a standalone solution builder extension or combined "solution" update, use the properties `PackageType` and `Solution Builder ExtensionVersion`.
 
 ```powershell
 $Update = Get-SolutionUpdate
