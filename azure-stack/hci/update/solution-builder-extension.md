@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
-ms.date: 05/03/2024
+ms.date: 05/22/2024
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for the Solution Builder Extension so that customers gain knowledge and keep their Azure Stack HCI systems up to date in the most efficient way.
 
@@ -76,26 +76,26 @@ To discover and select updates via the Azure portal, see [Browse for cluster upd
 
 For the remainder of this section, we discuss discovering solution builder extension vs solution updates using PowerShell.
 
-To understand if an update is a standalone solution builder extension or combined "solution" update, use the properties `PackageType` and `Solution Builder ExtensionVersion`.
+To understand if an update is a standalone solution builder extension or combined "solution" update, use the properties `PackageType` and `SbeVersion`.
 
 ```powershell
 $Update = Get-SolutionUpdate
-$Update | ft DisplayName, PackageType, Version, Solution Builder ExtensionVersion, State
+$Update | ft DisplayName, PackageType, Version, SbeVersion, State
 ```
 
 Here's a sample output:
 
 ```console
 PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
-PS C:\Users\lcmuser> $Update | ft DisplayName, PackageType, Version, Solution Builder ExtensionVersion, State
+PS C:\Users\lcmuser> $Update | ft DisplayName, PackageType, Version, SbeVersion, State
 
-DisplayName                      PackageType Version      Solution Builder ExtensionVersion     State
+DisplayName                      PackageType Version      SbeVersion     State
 -----------                      ----------- -------      ----------     -----
-Solution Builder Extension_Contoso_Gen3_4.1.2312.5      Solution Builder Extension                      4.1.2312.5     Ready
+SBE_Contoso_Gen3_4.1.2312.5      SBE                      4.1.2312.5     Ready
 Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready 
 ```
 
-In the sample output, you can see that two updates are ready to be installed: the standalone **Solution Builder Extension_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Stack HCI 2311 bundle** update, which includes the same Solution Builder Extension as identified by the Solution Builder ExtensionVersion number 4.1.2312.5.
+In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Stack HCI 2311 bundle** update, which includes the same Solution Builder Extension as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
 > To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `Solution Builder ExtensionReleaseLink` and `Solution Builder ExtensionNotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install a solution builder extension update before the combined solution update.
@@ -117,7 +117,7 @@ PackageType Version      LastUpdated
 ----------- -------      -----------
 Services    10.2311.0.26
 Platform    10.2311.0.26
-Solution Builder Extension         4.1.2312.5
+SBE         4.1.2312.5
 ```
 
 ```powershell
@@ -131,15 +131,14 @@ PS C:\Users\lcmuser> $Update | Where-Object {$_.PackageType -eq "Solution" } | s
 
 Key                Value
 ---                -----
-Solution Builder ExtensionReleaseLink     https://contoso.com/Solution Builder Extension/4.1.2312.5/ReleaseNotes.pdf
-Solution Builder ExtensionNotifyMessage   URGENT! Includes firmware updates that impact system reliability. See release notes!
-Solution Builder ExtensionFamily          Gen3
-Solution Builder ExtensionPublisher       Contoso
+SBEReleaseLink     https://contoso.com/SBE/4.1.2312.5/ReleaseNotes.pdf
+SBENotifyMessage   URGENT! Includes firmware updates that impact system reliability. See release notes!
+SBEFamily          Gen3
+SBEPublisher       Contoso
 SupportedModels    Contoso550G3,Contoso320G3
-Solution Builder ExtensionPackageSizeInMb 4
-Solution Builder ExtensionCopyright       Copyright (C) Contoso. All rights reserved.
-Solution Builder ExtensionLicenseUri      https://contoso.com/Solution Builder Extension/EULA.pdf 
-
+SBEPackageSizeInMb 4
+SBECopyright       Copyright (C) Contoso. All rights reserved.
+SBELicenseUri      https://contoso.com/SBE/EULA.pdf 
 ```
 
 As provided in the example, **Solution Builder ExtensionReleaseLink** and **Solution Builder ExtensionNotifyMessage** may contain important information about the urgency of installing the solution builder extension update, as opposed to deferring the update for a later update maintenance window.
@@ -152,18 +151,18 @@ The **AdditionalContentRequired** state is used to identify files that must be s
 
 ```powershell
 $Update = Get-SolutionUpdate 
-$Update | ft DisplayName, PackageType, Version, Solution Builder ExtensionVersion, State
+$Update | ft DisplayName, PackageType, Version, SbeVersion, State
 ```
 
 Here's a sample output:
 
 ```console
 PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
-PS C:\Users\lcmuser> $Update | ft DisplayName, PackageType, Version, Solution Builder ExtensionVersion, State
+PS C:\Users\lcmuser> $Update | ft DisplayName, PackageType, Version, SbeVersion, State
 
-DisplayName                      PackageType Version      Solution Builder ExtensionVersion     State
+DisplayName                      PackageType Version      SbeVersion     State
 -----------                      ----------- -------      ----------     -----
-Solution Builder Extension_Contoso_Gen3_4.1.2312.5      Solution Builder Extension                      4.1.2312.5     AdditionalContentRequired
+SBE_Contoso_Gen3_4.1.2312.5      SBE                      4.1.2312.5     AdditionalContentRequired
 Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     AdditionalContentRequired
 ```
 
