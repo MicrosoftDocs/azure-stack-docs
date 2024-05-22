@@ -125,7 +125,7 @@ To use customer-managed encryption keys with your Azure Managed Lustre file syst
 
 1. On the **Select a key** pane, select the **Key vault**, **Key**, and **Version** values for the key that you're using for this file system. Then choose **Select**.
 
-   You can create a new key vault, key, and key version from this pane. The key must be a 2,048-bit RSA key, and it must be stored in Azure Key Vault.
+   You can create a new key vault, key, and key version from this pane. The key must be a 2048-bit RSA key, and it must be stored in Azure Key Vault.
 
     :::image type="content" source="./media/create-file-system-portal/key-vault-key-version.png" alt-text="Screenshot that shows the pane for selecting a key while creating an Azure Managed Lustre file system." lightbox="./media/create-file-system-portal/key-vault-key-version.png":::
 
