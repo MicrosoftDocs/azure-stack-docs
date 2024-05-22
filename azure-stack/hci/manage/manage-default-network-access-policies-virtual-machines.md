@@ -21,7 +21,7 @@ Default network policies can be used to protect virtual machines running on your
 
 ## Enable default network access policies
 
-To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
+To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard.md).
 
 ## Assign default network policies to a VM
 
