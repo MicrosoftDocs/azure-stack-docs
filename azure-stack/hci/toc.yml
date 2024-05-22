@@ -326,7 +326,7 @@ items:
     - name: Manage gateway connections
       href: manage/gateway-connections.md
     - name: Manage default network access policies
-      href: manage/manage-default-network-access-policies-virtual-machines.md
+      href: manage/manage-default-network-access-policies-virtual-machines-23h2.md
     - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Configure network security groups with PowerShell
@@ -611,6 +611,10 @@ items:
         href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use Azure portal
         href: manage/azure-portal.md
+    - name: Manage SDN 
+      items:
+      - name: Manage default network access policies
+        href: manage/manage-default-network-access-policies-virtual-machines.md   
   - name: Migrate
     items:
     - name: Cluster to same hardware
