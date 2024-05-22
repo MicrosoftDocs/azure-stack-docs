@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/07/2024
+ms.date: 05/16/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -251,6 +251,47 @@ This section contains known issues and workarounds for ARM template deployment.
 |------|-------|
 |In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
 |In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster has completed the validation stage, we recommend that you do not initiate another ARM template deployment in "Validate" mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
+
+### Resource Conflict error
+
+If the same Resource group is used for deploying Azure Stack HCI clusters using Azure portal as well as using an ARM template, you may see the `"The role assignment already exists"` error during deployment as shown on the **Overview > Deployment details** page for the applicable resource. The following string is displayed on the pop-out page under **Errors > Raw errors** as listed below:
+
+```PowerShell
+{
+  "code": "Deployment failed",
+  "message": "At least one resource group operation
+failed. Please list deployment operations for details.
+Please see https://aka.ms/arm-deployment-operations for
+usage details.",
+  "details": [
+    {
+       "code": "Conflict",
+       "message": "{\r\n  \"error\": {\r\n    \"code\":
+\"RoleAssignmentExists\",\r\n    \"message\":  \"The role
+assignment already exists.\"\r\n}"
+    }
+  }
+}
+```
+
+This error indicates that an equivalent role assignment was already done by some other identity for the same Resource group scope and the ARM template deployment is unable to perform role assignment.
+
+Please ignore this error. This error does not fail or block ARM template execution, and the execution continues to create other resources.
+
+### Resource BadRequest error
+
+Role assignment fails with error `"Tenant ID, application ID, principal ID, and scope are not allowed to be updated"` error during deployment as shown on the **Overview > Deployment details** page for the applicable resource. The following string is displayed on the pop-out page under **Errors > Raw errors** as listed below.
+
+```PowerShell
+{
+  "code": "RoleAssignmentUpdateNotPermitted",
+  "message": "Tenant ID, application ID, principal ID, and scope are not allowed to be updated."
+}
+```
+
+This error could show up when there are zombie role assignments in the same resource group, such as when a prior deployment was performed later the resources corresponding to that deployment were related but the role assignment resources were left around, this error could show up.
+
+Zombie role assignments are displayed on the **Access control (IAM) > Role assignments > Type : Unknown** tab and are listed as **Identity not found. Unable to find identity.** Please delete such role assignments and then reattempt ARM template deployment.
 
 
 ## Next steps
