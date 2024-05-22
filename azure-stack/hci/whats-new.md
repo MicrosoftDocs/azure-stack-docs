@@ -29,11 +29,11 @@ Here are the features and improvements in this release.
 
 ### Deployment changes
 
-- **New ISO image** - Starting this release, a new ISO image for the Azure Stack HCI OS is available for download via the Azure portal.  This new image has Hyper-V enabled by default which further reduces the required bootstrap steps. For more information, see [Download Azure Stack HCI, 23H2 OS](./deploy/download-azure-stack-hci-23h2-software.md).
+- **New ISO image** - Starting this release, a new ISO image for the Azure Stack HCI OS is available for download via the Azure portal.  This new image has Hyper-V enabled by default, which further reduces the required bootstrap steps. For more information, see [Download Azure Stack HCI, 23H2 OS](./deploy/download-azure-stack-hci-23h2-software.md).
 
 - **Active Directory integration** - In this release, an issue related to the use of a large Active Directory that results in timeouts when adding users to the local administrator group, is fixed. <!--27022398-->
 
-- **New Azure Resource Manager (ARM) template** - A new ARM deployment template is available that simplifies the resource creation dependencies. The new template creation also includes multiple fixes around the missing mandatory fields. <!--26376120-->
+- **New Azure Resource Manager (ARM) template** - A new ARM template is available for deployment that simplifies the resource creation dependencies. The new template creation also includes multiple fixes around the missing mandatory fields. <!--26376120-->
 
 - Fixed an issue in deployment when setting the diagnostic level in Azure and the device. <!--26737110-->
 
@@ -45,7 +45,7 @@ Here are the features and improvements in this release.
     - A new PowerShell command that can be used to update the SBE partner property values provided at deployment time. <!--25093172-->
     - Fixed an issue that prevents the update service to respond to requests after an SBE only update run. <!--27940543-->
 
-- **Add/repair server fixes** - An issue has been fixed that prevents a node from joining Active Directory during an add server operation. <!--27101597-->
+- **Add server and Repair server fixes** - An issue is fixed that prevents a node from joining Active Directory during an add server operation. <!--27101597-->
 
 - **Reliability improvements** include:
   - For Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
@@ -179,7 +179,7 @@ For more information, see [Deploy via Azure portal](./deploy/deploy-via-portal.m
 
 ### Add server and repair server changes
 
-- Bug fixes in the add server and repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues-2311-2.md).
+- Bug fixes in the Add server and Repair server scenarios. For more information, see the [Fixed issues in 2311.2](./known-issues-2311-2.md).
 
 ### Arc VM management changes
 
