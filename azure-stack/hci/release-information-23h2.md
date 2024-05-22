@@ -43,7 +43,7 @@ Follow these guidelines to move to the next release train:
 
 Follow these guidelines to move within the same release train:
 
-- Within your release train, you can update to the latest update build any time. For example, if you're running the 2311 baseline build, you can update to any of the 2311 update builds such as 2311.2, 2311.3, 2311.4, or 2311.5 and so on.
+- Within your release train, you can update to the latest update build anytime. For example, if you're running the 2311 baseline build, you can update to any of the 2311 update builds such as 2311.2, 2311.3, 2311.4, or 2311.5 and so on.
 
 - To keep your Azure Stack HCI in a supported state, you have up to six months to install updates. For example, if you're running the 2311 baseline build, update to a later build within 6 months.
 
