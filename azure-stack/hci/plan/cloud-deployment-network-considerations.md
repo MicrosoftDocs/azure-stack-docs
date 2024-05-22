@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/13/2024
+ms.date: 05/14/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -195,14 +195,14 @@ If a virtual switch configuration is required and you must use a specific VLAN I
 
 #### 1. Create virtual switch with recommended naming convention
 
-Azure Stack HCI deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch. 
+Azure Stack HCI deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch.
 
-Although it isn't required, we recommend naming your virtual switches with the same naming convention. The recommended name for the virtual switches is as follows:
+We recommend naming your virtual switch names with the same naming convention. The recommended name for the virtual switches is as follows:
 
-- Name of the virtual switch: "`ConvergedSwitch($IntentName)`",
-Where `$IntentName` can be any string. This string should match the name of the virtual network adapter for management as described in the next step.
+"`ConvergedSwitch($IntentName)`",
+where `$IntentName` must match the name of the intent typed into the portal during deployment. This string must also match the name of the virtual network adapter used for management as described in the next step.
 
-The following example shows how to create the virtual switch with PowerShell using the recommended naming convention with `$IntentName` describing the purpose of the virtual switch. The list of network adapter names is a list of the physical network adapters you plan to use for management and compute network traffic:
+The following example shows how to create the virtual switch with PowerShell using the recommended naming convention with `$IntentName`. The list of network adapter names is a list of the physical network adapters you plan to use for management and compute network traffic:
 
 ```powershell
 $IntentName = "MgmtCompute"
@@ -230,14 +230,14 @@ Rename-NetAdapter -Name "vEthernet (vManagement($IntentName))" -NewName "vManage
 
 #### 3. Configure VLAN ID to management virtual network adapter for all nodes
 
-Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command. 
+Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command.
 
 Once the required VLAN ID is configured, you can assign the IP address and gateways to the management virtual network adapter to validate that it has connectivity with other nodes, DNS, Active Directory, and the internet.
 
-The following example shows how to configure the management virtual network adapter to use VLAN ID 8 instead of the default:
+The following example shows how to configure the management virtual network adapter to use VLAN ID `8` instead of the default:
 
 ```powershell
-Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($IntentName)" -AllowUntaggedTraffic $true -IsolationMode Vlan -DefaultIsolationID
+Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($IntentName)" -AllowUntaggedTraffic $true -IsolationMode Vlan -DefaultIsolationID "8"
 ```
 
 #### 4. Reference physical network adapters for the management intent during deployment
