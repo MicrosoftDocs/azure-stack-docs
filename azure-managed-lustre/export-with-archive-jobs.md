@@ -44,7 +44,7 @@ Only one archive job runs at a time. To cancel the job that's in progress, selec
 
 If an export job doesn't complete successfully, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied during the previous job.
 
-Retries can be common when attempting to export data from file systems where data is changing. To learn more about these scenarios, see [Running export jobs in active file systems](blob-integration.md#running-export-jobs-in-active-file-systems).
+Retries can be common when attempting to export data from active file systems where data is frequently changing. To learn more about these scenarios, see [Running export jobs in active file systems](blob-integration.md#running-export-jobs-in-active-file-systems).
 
 ## Next step
 
