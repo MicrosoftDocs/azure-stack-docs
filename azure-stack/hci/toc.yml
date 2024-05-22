@@ -11,6 +11,10 @@ items:
     items:
     - name: Release information
       href: release-information-23h2.md
+    - name: Known issues 2405 
+      items:
+      - name: 2405.0 - Current
+        href: known-issues-2405.md
     - name: Known issues 2402 
       items:
       - name: 2402.3 - Current
@@ -35,6 +39,8 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
+      - name: May 2024 - Current
+        href: security-update/hci-security-update-may-2024.md
       - name: April 2024 - Current
         href: security-update/hci-security-update-apr-2024.md
       - name: March 2024 

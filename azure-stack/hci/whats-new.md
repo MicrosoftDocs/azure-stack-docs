@@ -42,14 +42,14 @@ Here are the features and improvements in this release.
     - Improved the reliability of secret rotation when services not restarting in a timely manner. <!--27837538-->
 
 - **SBE improvements** include:
-    - A new PowerShell command that can be used to update the SBE partner property values provided at deployment time. <!--25093172-->
-    - Fixed an issue that prevents the update service to respond to requests after an SBE only update run. <!--27940543-->
+    - A new PowerShell command that can be used to update the Solution Builder Extension partner property values provided at deployment time. <!--25093172-->
+    - Fixing an issue that prevents the update service to respond to requests after a Solution Builder Extension only update run. <!--27940543-->
 
 - **Add server and Repair server fixes** - An issue is fixed that prevents a node from joining Active Directory during an add server operation. <!--27101597-->
 
-- **Reliability improvements** include:
-  - For Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
-  - When detecting the firmware versions for disk drives. <!--27395303-->
+- **Reliability enhancements** include:
+  - Changes for Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
+  - Changes when detecting the firmware versions for disk drives. <!--27395303-->
 
 For more information, see the Fixed issues list in the [Known issues in 2405](./known-issues-2405.md#fixed-issues).
 
@@ -87,7 +87,7 @@ This release contains the following improvements to observability:
     - [Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-centos.md).
     - [Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-red-hat-enterprise.md).
 
-
+---
 
 # [2402 releases](#tab/2402releases)
 
