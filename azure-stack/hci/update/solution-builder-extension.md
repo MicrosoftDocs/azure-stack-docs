@@ -98,7 +98,7 @@ Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Stack HCI 2311 bundle** update, which includes the same Solution Builder Extension as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
-> To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `Solution Builder ExtensionReleaseLink` and `Solution Builder ExtensionNotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install a solution builder extension update before the combined solution update.
+> To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install a solution builder extension update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
 
