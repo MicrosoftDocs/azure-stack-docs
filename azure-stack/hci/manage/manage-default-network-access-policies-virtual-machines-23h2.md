@@ -1,6 +1,6 @@
 ---
-title: Enable and assign default network access policies on Azure Stack HCI VMs
-description: Learn how to enable and assign default network access policies on VMs running on Azure Stack HCI via the Windows Admin Center.
+title: Enable and assign default network access policies on Azure Stack HCI, version 23H2 VMs
+description: Learn how to enable and assign default network access policies on VMs running on Azure Stack HCI, version 23H2 via the Windows Admin Center.
 ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
@@ -8,9 +8,9 @@ author: alkohli
 ms.date: 05/22/2024
 ---
 
-# Use default network access policies on virtual machines on Azure Stack HCI
+# Use default network access policies on virtual machines on Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
 
@@ -21,7 +21,7 @@ Default network policies can be used to protect virtual machines running on your
 
 ## Enable default network access policies
 
-To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard.md).
+To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
 
 ## Assign default network policies to a VM
 
@@ -121,29 +121,6 @@ If you're using alternate mechanisms (for example, Hyper-V UI or New-VM PowerShe
     [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
 
     :::image type="content" source="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png" alt-text="Screenshot showing how to enable default network to VLAN." lightbox="./media/manage-default-network-access-policies-virtual-machines/enable-policies-other-vms-1.png":::
-
-## Upgrade from 21H2
-
-> [!NOTE]
-> Skip this section, if you upgraded from Azure Stack HCI 21H2 version and didn't have the Network Controller installed.
-
-If you had Network Controller installed on 21H2 version and also had workload VMs on your cluster, those VMs would be in one of the following 4 isolation modes in VM (in **Network Settings**):
-
-1. **Default (None)**: Since this mode no longer exists after you move to 22H2, The **Isolation Mode** in the VM **Network Settings** page on Windows Admin Center will be blank. The VM will still continue to have same level of network connectivity as before upgrade to 22H2. To display the correct network settings in Windows Admin Center and apply default policies, follow these steps:
-
-    In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md). Create a subnet under the logical network and provide the VLAN ID for network to which the VM is connected. Then, attach a VM to the logical network using the following steps:
-
-    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
-
-1. **VLAN**: Since this mode no longer exists in 22H2, the **Isolation mode** in the VM **Network Settings** page on Windows Admin Center will be blank. The VM will continue to have same level of network connectivity as before upgrading to 22H2.
-
-    In Windows Admin Center, [Create a logical network](./tenant-logical-networks.md). Create a subnet under the logical network and provide no VLAN ID or subnet prefix. Then, attach a VM to the logical network using the following steps:
-
-    [!INCLUDE [hci-display-correct-default-network-policies-windows](../../includes/hci-display-correct-default-network-policies-windows.md)]
-
-1. **Logical Network**: The **Network Settings** page for the VM remains the same as in 21H2.
-
-1. **Virtual Network**: The **Network Settings** page for the VM remains the same as in 21H2.
 
 ## Next steps
 
