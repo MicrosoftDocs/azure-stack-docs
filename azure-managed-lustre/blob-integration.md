@@ -117,7 +117,7 @@ When you export files from your Azure Managed Lustre system, not all files are c
 
 In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
 
-In file systems with a lot of activity, retries may fail multiple times because files are changing often. To verify that a file has been successfully exported, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
+In file systems with a lot of activity, retries may fail multiple times because files are changing often. To verify that a file has been successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
 
 If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before initiating the export job. This approach helps to guarantee that all data is exported by avoiding errors due to file system activity.
 
