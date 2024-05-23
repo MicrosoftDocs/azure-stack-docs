@@ -78,7 +78,7 @@ AKS enabled by Azure Arc provides the following built-in roles:
 
 You can choose to create your own role definition for use in role assignments.
 
-The following example shows a role definition that allows a user to only read deployments. For more information, see [the full list of data actions that you can use to construct a role definition](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes).
+The following example shows a role definition that allows a user to only read deployments. For more information, see [the full list of data actions that you can use to construct a role definition](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes). To learn the full instructions for creating a custom role, see [Steps to create a custom role](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)
 
 To create your own custom role definitions, copy the following JSON object into a file called **custom-role.json**. Replace the `<subscription-id>` placeholder with the actual subscription ID. The custom role uses one of the data actions and lets you view all deployments in the scope (cluster or namespace) where the role assignment is created.
 
@@ -112,9 +112,9 @@ az role assignment create --role "AKS Arc Deployment Reader" --assignee <assigne
 
 ## Step 3: Use Azure RBAC for Kubernetes authorization with kubectl
 
-To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command. You can distribute this kubeconfig to users who connect from their client machines, as it does not contain any secrets.
+To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
 
-To run this Azure CLI command, you must have **Azure Kubernetes Service Arc Cluster Admin** role permissions on the cluster. For more informtation, see [Retrieve certificate-based admin kubeconfig](/azure/aks/hybrid/retrieve-admin-kubeconfig).
+To run this Azure CLI command, you must have **Azure Kubernetes Service Arc Cluster Admin** role permissions on the cluster. For more information, see [Retrieve certificate-based admin kubeconfig](/azure/aks/hybrid/retrieve-admin-kubeconfig).
 
 ```azurecli
 az aksarc get-credentials --subscription "<$subscriptionID>" -g "<$resource_Group>" -n "<name of your cluster>" --file <file-name>
