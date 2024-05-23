@@ -19,7 +19,7 @@ Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solut
 
 There are currently 3 release trains for Azure Stack HCI, version 23H2: 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
-# [2405 releases](#tab/2405releases)
+## [2405 releases](#tab/2405releases)
 
 The 2405 release train includes the following release:
 
@@ -84,12 +84,11 @@ This release contains the following improvements to observability:
 ### Arc VM management changes
 
 - This release contains new documentation that provides guidance on VM image creation starting with a CentOS image or a Red Hat Enterprise Linux (RHEL) image. For more information, see:
-    - [Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-centos.md).
-    - [Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-red-hat-enterprise.md).
+  - [Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-centos.md).
+  - [Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-red-hat-enterprise.md).
 
----
 
-# [2402 releases](#tab/2402releases)
+## [2402 releases](#tab/2402releases)
 
 The 2402 release train includes the following releases:
 
@@ -120,7 +119,7 @@ This release introduces a new Azure built-in role called Azure Resource Bridge D
 The role applies the concept of least amount of privileges and must be assigned to the service principal: *clustername.arb* before you update the cluster.
 
 To take advantage of the constraint permissions, remove the permissions that were applied before. Follow the steps to [Assign an Azure RBAC role via the portal](/azure/role-based-access-control/role-assignments-portal?tabs=delegate-condition). Search for and assign the Azure Resource Bridge Deployment role to the member: `<deployment-cluster-name>-cl.arb`.
-    
+
 An update health check is also included in this release that confirms that the new role is assigned before you apply the update.
 
 ### Changes to Active Directory preparation
@@ -135,7 +134,8 @@ Azure Stack HCI, version 23H2 solution is now supported in Australia. For more i
 
 We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./plan/cloud-deployment-network-considerations.md).
 
-# [2311 releases](#tab/2311releases)
+
+## [2311 releases](#tab/2311releases)
 
 The 2311 release train includes the following releases:
 
@@ -250,7 +250,7 @@ With Insights for Azure Stack HCI, you can now monitor and analyze performance, 
 
 Beginning this release, the following Azure Arc VM management capabilities are available:
 
-- **Simplified Arc Resource Bridge deployment**. The Arc Resource Bridge is now deployed as part of the Azure Stack HCI deployment. 
+- **Simplified Arc Resource Bridge deployment**. The Arc Resource Bridge is now deployed as part of the Azure Stack HCI deployment.
     For more information, see [Deploy Azure Stack HCI cluster using the Azure portal](./deploy/deploy-via-portal.md).
 - **New RBAC roles for Arc VMs**. This release introduces new RBAC roles for Arc VMs.
     For more information, see [Manage RBAC roles for Arc VMs](./manage/assign-vm-rbac-roles.md).
@@ -258,7 +258,7 @@ Beginning this release, the following Azure Arc VM management capabilities are a
     For more information, see [Create Arc VMs on Azure Stack HCI](./manage/create-arc-virtual-machines.md).
 - **Support for static IPs**. This release has the support for static IPs. 
     For more information, see [Create static logical networks on Azure Stack HCI](./manage/create-logical-networks.md#create-a-static-logical-network-via-portal).
-- **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Arc VMs. 
+- **Support for storage paths**. While default storage paths are created during the deployment, you can also specify custom storage paths for your Arc VMs.
     For more information, see [Create storage paths on Azure Stack HCI](./manage/create-storage-path.md).
 - **Support for Azure VM extensions on Arc VMs on Azure Stack HCI**. Starting with this preview release, you can also enable and manage the Azure VM extensions that are supported on Azure Arc, on Azure Stack HCI Arc VMs created via the Azure CLI. You can manage these VM extensions using the Azure CLI or the Azure portal. 
     For more information, see [Manage VM extensions for Azure Stack HCI VMs](./manage/virtual-machine-manage-extension.md).
@@ -277,7 +277,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Cloud-based management**. You can now create and manage Kubernetes clusters on Azure Stack HCI with familiar tools such as Azure portal and Azure CLI. For more information, see [Create Kubernetes clusters using Azure CLI](/azure/aks/hybrid/aks-create-clusters-cli).
 - **Support for upgrading a Kubernetes cluster using Azure CLI**. You can use Azure CLI to upgrade the Kubernetes cluster to a newer version and apply the OS version updates. For more information, see [Upgrade an Azure Kubernetes Service (AKS) cluster (preview)](/azure/aks/hybrid/cluster-upgrade).
 - **Support for Azure Container Registry to deploy container images**. In this release, you can deploy container images from a private container registry using Azure Container Registry to your Kubernetes clusters running on Azure Stack HCI. For more information, see [Deploy from private container registry to on-premises Kubernetes using Azure Container Registry and AKS Arc](/azure/aks/hybrid/deploy-container-registry).
-- **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](/azure/aks/hybrid/manage-node-pools). 
+- **Support for managing and scaling the node pools**. For more information, see [Manage multiple node pools in AKS Arc](/azure/aks/hybrid/manage-node-pools).
 - **Support for Linux and Windows Server containers**. For more information, see [Create Windows Server containers](/azure/aks/hybrid/aks-create-containers).
 
 ### Security capabilities
@@ -287,7 +287,6 @@ The new installations with this release of Azure Stack HCI start with a *secure-
 - A tailored security baseline with over 300 security settings configured and enforced with a security drift control mechanism. For more information, see [Security baseline settings for Azure Stack HCI](../hci/concepts/secure-baseline.md).
 - Out-of-box protection for data and network with SMB signing and BitLocker encryption for OS and Cluster Shared Volumes. For more information, see [BitLocker encryption for Azure Stack HCI](./concepts/security-bitlocker.md).
 - Reduced attack surface as Windows Defender Application Control is enabled by default and limits the applications and the code that you can run on the core platform. For more information, see [Windows Defender Application Control for Azure Stack HCI](./concepts/security-windows-defender-application-control.md).
-
 
 ### Support for web proxy
 
@@ -320,5 +319,5 @@ For more information, see [Optimize storage with ReFS deduplication and compress
 - [Read the blog announcing the general availability of Azure Stack HCI, version 23H2](https://techcommunity.microsoft.com/t5/azure-stack-blog/azure-stack-hci-version-23h2-is-generally-available/ba-p/4046110).
 - [Read the blog about What's new for Azure Stack HCI at Microsoft Ignite 2023](https://aka.ms/ashciignite2023).
 - For Azure Stack HCI, version 23H2 deployments:
-    - Read the [Deployment overview](./deploy/deployment-introduction.md).
-    - Learn how to [Deploy Azure Stack HCI, version 23H2 via the Azure portal](./deploy/deploy-via-portal.md).
+  - Read the [Deployment overview](./deploy/deployment-introduction.md).
+  - Learn how to [Deploy Azure Stack HCI, version 23H2 via the Azure portal](./deploy/deploy-via-portal.md).
