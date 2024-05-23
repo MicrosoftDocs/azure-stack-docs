@@ -3,7 +3,7 @@ title: Azure Resource Manager template deployment for Azure Stack HCI, version 2
 description: Learn how to prepare and then deploy Azure Stack HCI, version 23H2 using the Azure Resource Manager template.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/16/2024
+ms.date: 05/22/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -97,53 +97,7 @@ This object ID for the Azure Stack HCI RP is unique per Azure tenant.
 
     You use the **Object ID** against the `hciResourceProviderObjectID` parameter in the Resource Manager template.
 
-    <!--You need to assign the **Key Vault Secrets User** role to the servers in your environment. This role is required for the servers to access the Key Vault secrets that are used during deployment.
-
-<!--#### Add the Key Vault Secrets User
-
-1. Go to the appropriate resource group for Azure Stack HCI environment.
-
-1. Select **Access control (IAM)** from the left-hand side of the screen.
-
-1. In the right-pane, select **+ Add** and then select **Add role assignment**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png" alt-text="Screenshot showing Add role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-1.png":::
-
-1. Search for and select **Key Vault Secrets User** and select **Next**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png" alt-text="Screenshot showing Key Vault Secrets user." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-2.png":::
-
-1. Select **Managed identity**.
-
-1. Select **+ Select** members and input the following:
-
-    1. Select the appropriate subscription.
-
-    1. Select **All system-assigned managed identities**.
-
-    1. Filter the list by typing the prefix and name of the registered servers for your deployment.
-
-    1. Select both servers for your environment and choose **Select**.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png" alt-text="Screenshot showing Managed identity selection." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-3.png":::
-
-1. Select **Review + assign**, then select this again.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png" alt-text="Screenshot showing Review + assign selected." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-4.png":::
-
-1. Once the roles are assigned as **Key Vault Secrets User**, you're able to see them in the **Notifications activity** log.
-
-    :::image type="content" source="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png" alt-text="Screenshot showing the notification for Key Vault Secrets user role assignment." lightbox="./media/deployment-azure-resource-manager-template/add-key-vault-secrets-user-5.png":::
-
-#### Verify role assignment
-
-Optionally verify the role assignments you created.
-
-1. Select **Access Control (IAM) Check Access** to verify the role assignment you created.
-
-1. Go to **Key Vault Secrets User** for the appropriate resource group for the first server in your environment.
-
-1. Go to **Key Vault Secrets User** for the appropriate resource group for the second server in your environment.-->
+    
 
 ## Step 2: Deploy using Azure Resource Manager template
 
@@ -249,49 +203,10 @@ This section contains known issues and workarounds for ARM template deployment.
 
 |Issue|Workaround/Comments|
 |------|-------|
-|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
+|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.<br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br>
+This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
+|Role assignment fails with error `"Tenant ID, application ID, principal ID, and scope are not allowed to be updated"` error. <br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br>This error could show up when there are zombie role assignments in the same resource group. For example, when a prior deployment was performed and the resources corresponding to that deployment were deleted but the role assignment resources were left around.| To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.** Delete such role assignments and then retry ARM template deployment.|
 |In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster has completed the validation stage, we recommend that you do not initiate another ARM template deployment in "Validate" mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
-
-### Resource Conflict error
-
-If the same Resource group is used for deploying Azure Stack HCI clusters using Azure portal as well as using an ARM template, you may see the `"The role assignment already exists"` error during deployment as shown on the **Overview > Deployment details** page for the applicable resource. The following string is displayed on the pop-out page under **Errors > Raw errors** as listed below:
-
-```PowerShell
-{
-  "code": "Deployment failed",
-  "message": "At least one resource group operation
-failed. Please list deployment operations for details.
-Please see https://aka.ms/arm-deployment-operations for
-usage details.",
-  "details": [
-    {
-       "code": "Conflict",
-       "message": "{\r\n  \"error\": {\r\n    \"code\":
-\"RoleAssignmentExists\",\r\n    \"message\":  \"The role
-assignment already exists.\"\r\n}"
-    }
-  }
-}
-```
-
-This error indicates that an equivalent role assignment was already done by some other identity for the same Resource group scope and the ARM template deployment is unable to perform role assignment.
-
-Please ignore this error. This error does not fail or block ARM template execution, and the execution continues to create other resources.
-
-### Resource BadRequest error
-
-Role assignment fails with error `"Tenant ID, application ID, principal ID, and scope are not allowed to be updated"` error during deployment as shown on the **Overview > Deployment details** page for the applicable resource. The following string is displayed on the pop-out page under **Errors > Raw errors** as listed below.
-
-```PowerShell
-{
-  "code": "RoleAssignmentUpdateNotPermitted",
-  "message": "Tenant ID, application ID, principal ID, and scope are not allowed to be updated."
-}
-```
-
-This error could show up when there are zombie role assignments in the same resource group, such as when a prior deployment was performed later the resources corresponding to that deployment were related but the role assignment resources were left around, this error could show up.
-
-Zombie role assignments are displayed on the **Access control (IAM) > Role assignments > Type : Unknown** tab and are listed as **Identity not found. Unable to find identity.** Please delete such role assignments and then reattempt ARM template deployment.
 
 
 ## Next steps
