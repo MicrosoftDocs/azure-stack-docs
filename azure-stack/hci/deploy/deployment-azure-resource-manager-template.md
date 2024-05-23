@@ -46,7 +46,7 @@ The steps are also summarized here:
 
     :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png" alt-text="Screenshot showing Register an application for service principal creation." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-1a.png":::
 
-1. Once the service principal is created, go to the **Enterprise applications** page. Search for the SPN you created and select the SPN.
+1. Once the service principal is created, go to the **Enterprise applications** page. Search for and select the SPN you created.
 
    :::image type="content" source="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png" alt-text="Screenshot showing search results for the service principal created." lightbox="./media/deployment-azure-resource-manager-template/create-service-principal-2a.png":::
 
@@ -165,7 +165,7 @@ With all the prerequisite and preparation steps complete, you're ready to deploy
 
 1. Select **Review + create**.
 
-1. Select **Create**. This begins deployment, using the existing prerequisite resources that were created during the **Validate** step.
+1. Select **Create**. The deployment begins, using the existing prerequisite resources that were created during the **Validate** step.
 
     The Deployment screen cycles on the Cluster resource during deployment.
 
@@ -203,9 +203,9 @@ This section contains known issues and workarounds for ARM template deployment.
 
 |Issue|Workaround/Comments|
 |------|-------|
-|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.<br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you do not interchange deployment modes between the portal and ARM template.|
-|Role assignment fails with error *Tenant ID, application ID, principal ID, and scope are not allowed to be updated.* <br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error could show up when there are zombie role assignments in the same resource group. For example, when a prior deployment was performed and the resources corresponding to that deployment were deleted but the role assignment resources were left around.| To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.|
-|In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster has completed the validation stage, we recommend that you do not initiate another ARM template deployment in **Validate** mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
+|In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment.<br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.| Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you don't interchange deployment modes between the portal and ARM template.|
+|Role assignment fails with error *Tenant ID, application ID, principal ID, and scope aren't allowed to be updated.* <br><br>You see this error on the **Overview > Deployment details** page for the applicable resource. <br><br>This error could show up when there are zombie role assignments in the same resource group. For example, when a prior deployment was performed and the resources corresponding to that deployment were deleted but the role assignment resources were left around.| To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.|
+|In this release, you may encounter license sync issue when using ARM template deployment. |After the cluster completes the validation stage, we recommend that you don't initiate another ARM template deployment in **Validate** mode if your cluster is in **Deployment failed** state. Starting another deployment resets the cluster properties, which could result in license sync issues. |
 
 
 ## Next steps
