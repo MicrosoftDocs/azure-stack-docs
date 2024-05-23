@@ -35,11 +35,11 @@ Here are the features and improvements in this release.
 
 - **New Azure Resource Manager (ARM) template** - A new ARM template is available for deployment that simplifies the resource creation dependencies. The new template creation also includes multiple fixes around the missing mandatory fields. <!--26376120-->
 
-- Fixed an issue in deployment when setting the diagnostic level in Azure and the device. <!--26737110-->
+- A deployment issue, encountered when setting the diagnostic level in Azure and the device, is fixed. <!--26737110-->
 
 - **Secret rotation improvements** - Beginning this release, improvements were made to the secret rotation flow.
     - The secret rotation PowerShell command 'Set-AzureStackLCMUserPassword' now supports a new parameter to skip the confirmation message. This parameter is useful when automating secret rotation. <!--27101544-->
-    - Improved the reliability of secret rotation when services not restarting in a timely manner. <!--27837538-->
+    - Reliability improvements were made around to the services not restarting in a timely manner. <!--27837538-->
 
 - **SBE improvements** include:
     - A new PowerShell command that can be used to update the Solution Builder Extension partner property values provided at deployment time. <!--25093172-->
@@ -60,7 +60,7 @@ This release contains the following changes for updates:
 - Starting this release, an adjusted naming schema is introduced for updates. This schema allows the identification of feature versus cumulative updates. <!--26952963-->
 
 - This release contains reliability improvements:
-  - For the update notifications for health check results sent from the device to Azure Update Manager (AUM). In certain instances, the message size was too large and no results were shown in AUM. <!--27230554-->
+  - For the update notifications for health check results sent from the device to Azure Update Manager. In certain instances, the message size was too large and results weren't shown in the Update Manager. <!--27230554-->
   - For reporting the cluster update progress to the orchestrator.
 
 - This release has bug fixes for various issues including:
@@ -68,9 +68,9 @@ This release contains the following changes for updates:
   - A file lock issue that could cause update failures for the trusted launch VM agent (IGVM). <!--27689489-->
   - An issue that prevented the orchestrator agent from restarting during an update run. <!--27726586-->
   - A rare condition where the update service took a long time to discover or start an update. <!--27745420-->
-  - An issue for Cluster Aware Updating (CAU) interaction with the orchestrator when an update in progress is reported by CAU. <!--26805746-->
+  - An issue for Cluster-Aware Updating (CAU) interaction with the orchestrator when an update in progress is reported by CAU. <!--26805746-->
 
-For more information, see the Fixed issues list in the [Known issues in 2405](./known-issues-2405.md#fixed-issues).
+For more information, see the [Fixed issues list in in 2405](./known-issues-2405.md#fixed-issues).
 
 ### Observability changes
 
