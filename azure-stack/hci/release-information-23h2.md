@@ -36,8 +36,8 @@ Follow these guidelines to move to the next release train:
 
 - Consider a fresh deployment with the next release train. For example, deploy the 2402 baseline build to move to 2402 release train.
 - Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2311 release train, to get to the 2402 release train:
-    - Update from 2311 --> 2311.3 --> 2402.
-    - Update from 2311 --> 2311.4 --> 2402.1.
+  - Update from 2311 --> 2311.3 --> 2402.
+  - Update from 2311 --> 2311.4 --> 2402.1.
 
 #### Move within the same release train
 
@@ -66,7 +66,6 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 10.2311.2.7 | 25398.643  <br><br> [Jan OS security update](./security-update/hci-security-update-jan-2024.md) <br><br> Availability date: 2024-01-09| Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23112-ga) | [Known issues](./known-issues-2311-2.md) |
 | 10.2311.0.26 | 25398.531 <br><br> [Nov OS security update](./security-update/hci-security-update-nov-2023.md) <br><br> Availability date: 2023-11-14| Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2311) | [Known issues](./known-issues-2311.md) |
 | 10.2310.0.30 | 25398.469| Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2311) | [Known issues](./known-issues-2310.md) |
-
 
 ## Next steps
 
