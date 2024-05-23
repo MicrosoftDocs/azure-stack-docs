@@ -72,7 +72,7 @@
     }, 
     {
       "source_path":"azure-stack/hci/plan/two-node-decision-matrix.md",
-      "redirect_url":"/azure-stack/hci/plan/two-node-ip-components",
+      "redirect_url":"/azure-stack/hci/plan/two-node-components",
       "redirect_document_id": false
     }, 
     { 
