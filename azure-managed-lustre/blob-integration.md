@@ -105,6 +105,22 @@ The following items are important to consider when importing data from a blob co
 
 You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by [creating an export job](export-with-archive-jobs.md).
 
+### Which files are exported during an export job?
+
+When you export files from your Azure Managed Lustre system, not all files are copied to the blob container that you specified when you created the file system. The following rules apply to export jobs:
+
+- Export jobs only copy files that are new or whose contents are modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
+- Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
+- Files deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
+
+### Running export jobs in active file systems
+
+In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
+
+In file systems with a lot of activity, retries may fail multiple times because files are frequently changing. To verify that a file has been successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
+
+If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before initiating the export job. This approach helps to guarantee that all data is exported by avoiding errors due to file system activity.
+
 ### Metadata for exported files
 
 When files are exported from the Azure Managed Lustre file system to the blob container, additional metadata is saved to simplify reimporting the contents to a file system.
