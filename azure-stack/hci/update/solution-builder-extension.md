@@ -147,7 +147,7 @@ SBELicenseUri      https://contoso.com/SBE/EULA.pdf
 
 As provided in the example, **SBEReleaseLink** and **SBENotifyMessage** may contain important information about the urgency of installing the Solution Builder Extension update, as opposed to deferring the update for a later update maintenance window.
 
-## The AdditionalContentRequired update state
+#### The AdditionalContentRequired update state
 
 While Azure Stack HCI can automatically discover Solution Builder Extension updates, in many cases, Solution Builder Extension packages must be downloaded from the hardware vendor’s support site and then sideloaded into the cluster.
 
