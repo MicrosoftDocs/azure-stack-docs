@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/21/2024
+ms.date: 05/23/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -86,6 +86,15 @@ This release contains the following improvements to observability:
 - This release contains new documentation that provides guidance on VM image creation starting with a CentOS image or a Red Hat Enterprise Linux (RHEL) image. For more information, see:
   - [Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-centos.md).
   - [Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-red-hat-enterprise.md).
+
+## Azure portal, extensions, and resource provider changes
+
+Here are the changes related to the Azure portal, extensions, and resource providers:
+
+- In this release, an issue was fixed that prevented from showing a failed deployement in the Cluster overview when the deployment was cancelled.
+- The **Retry** button in Azure portal is renamed to **Resume** as the deployment continues from the step that it failed.
+- The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
+- This release changes the behavior to not delete the Arc server resources when the Azure Stack HCI cluster resource is deleted.
 
 
 ## [2402 releases](#tab/2402releases)
