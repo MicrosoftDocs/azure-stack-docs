@@ -133,6 +133,7 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 | `https://v20.events.data.microsoft.com`  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Windows Server host. |
 | `gcr.io` | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images. |
 | `storage.googleapis.com` | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images. |
+| `docker.io` |  443 | Docker container registry | Used for Kubernetes official artifacts such as container base images. |
 | `pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
