@@ -36,7 +36,7 @@ This security update includes quality improvements. When you install this KB:
     - Name: `\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\DNS\Parameters\MaxComputationForNsec3Validation`
     - Type: DWORD
     - Default: 1000
-    - Max: 600
+    - Max: 9600
     - Min: 1
 
 - This update addresses an issue that might affect the cursor when you type in Japanese. The cursor might move to an unexpected place.
