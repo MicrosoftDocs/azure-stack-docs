@@ -19,29 +19,29 @@ This article provides an overview of the Solution Builder Extension updates and 
 
 ## About the extension
 
-The Solution Builder Extension (shown as SBE in the Azure CLI) allows you to apply updates to your Azure Stack HCI, version 23H2 cluster from your hardware vendor. In addition to Microsoft Azure Stack HCI solution updates, many hardware vendors release regular updates for your Azure Stack HCI hardware. These updates can include driver and firmware updates, hardware monitoring, and diagnostic tools. Additionally, you can receive updates related to supplemental policies for Windows Defender Application Control (WDAC) and validation logic integrated into Azure Stack HCI pre-update health checks.
+The Solution Builder Extension (referred to as SBE in the Azure CLI) allows you to apply updates to your Azure Stack HCI, version 23H2 cluster from your hardware vendor. In addition to Microsoft Azure Stack HCI solution updates, many hardware vendors release regular updates for your Azure Stack HCI hardware. These updates may include driver and firmware updates, hardware monitoring enhancements, and diagnostic tools. Additionally, you can receive updates related to supplemental policies for Windows Defender Application Control (WDAC) and validation logic integrated into Azure Stack HCI pre-update health checks.
 
-With the release of Azure Stack HCI, version 23H2, these types of updates can be packaged into **Solution Builder Extension** or **Solution Builder Extension packages**.
+Starting with Azure Stack HCI, version 23H2, these types of updates are packaged into **Solution Builder Extension** or **Solution Builder Extension packages**.
 
 ## Solution Builder Extension package updates
 
-Solution Builder Extension package updates are integrated into the solution update process for Azure Stack HCI, version 23H2. These updates can be installed as part of a combined (full solution) update with other Microsoft Azure Stack HCI updates using orchestration within Azure Stack HCI. For example, if a solution builder extension update matching your cluster’s hardware is released, it shows as an available update in the Azure portal or via the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
+Solution Builder Extension package updates are integrated into the solution update process for Azure Stack HCI, version 23H2. You can install these updates as part of a combined (full solution) update with other Azure Stack HCI updates using orchestration within Azure Stack HCI. For example, if a Solution Builder Extension update that matches your cluster’s hardware becomes available, it appears as an update option in the Azure portal or can be retrieved using the `Get-SolutionUpdate` PowerShell cmdlet. For more information, see [About updates for Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
 
-By installing such combined updates, you can keep your entire solution up to date with less effort and minimal effect on running workloads.
+By installing such combined updates, you can keep your entire solution up to date with less impact and minimal effect on running workloads.
 
 ## Advanced Solution Builder Extension capabilities
 
-In addition to installing hardware updates, solution builder extensions may implement optional capabilities as described in the following table. Consult with your hardware vendor’s Azure Stack HCI documentation to determine if advanced solution builder extension capabilities are implemented.
+In addition to installing hardware updates, Solution Builder Extension may also provide optional advanced capabilities, as described in the following table. Refer to your hardware vendor’s Azure Stack HCI documentation to determine if advanced Solution Builder Extension capabilities are implemented.
 
 | Advanced Solution Builder Extension Capability   |Description    |
 |---------------------------|---------------|
-| Health Service Integration | The solution builder extension package can extend **Health Check** validation performed by Azure Stack HCI before various lifecycle actions (Deployment, Update, Add Node, Repair Node, and others) occur. The validation checks help to ensure issues are resolved before performing any specific lifecycle actions.<br/><br/> Hardware vendors typically use this integration to evaluate if there's a hardware issue that needs immediate attention. For example, it might identify problems with hardware vendor management software, a non-redundant power supply, or higher than expected temperatures. It could also identify SSD drive wear approaching a critical state. Be sure to review your hardware vendor's solution builder extension documentation for details on hardware health checks supported by their extension. |
-| Customized Deployment | The solution builder extension package can implement customized steps that are executed automatically as part of the cluster deployment process. <br/><br/> Hardware vendors typically use this capability to configure or install any value-add software via their solution builder extension for the solution.  |
-| Customized Solution Update | The solution builder extension package can implement customized steps that are performed both before and after the main portion of the solution update process. Even when it isn't performing a solution builder extension update, solution builder extension packages that implement this capability always run these extra steps. For example, the execution of hardware vendor specific steps before or after Azure Stack HCI Operating System updates, when no updates to the solution builder extension are needed. <br/><br/> Hardware vendors typically use this capability to prepare nodes for any update related tasks that may involve rebooting servers. |
+| Health service integration | The Solution Builder Extension package can extend **Health Check** validation performed by Azure Stack HCI before various lifecycle actions (deployment, update, add node, repair node, and others) occur. The validation checks help to ensure issues are resolved before performing any specific lifecycle actions.<br/><br/> Hardware vendors typically use this integration to evaluate if there's a hardware issue that needs immediate attention. For example, it might identify problems with hardware vendor management software, a non-redundant power supply, or higher than expected temperatures. It could also identify SSD drive wear approaching a critical state. Be sure to review your hardware vendor's Solution Builder Extension documentation for details on hardware health checks supported by their extension. |
+| Customized deployment | The Solution Builder Extension package can implement customized steps that are executed automatically as part of the cluster deployment process. <br/><br/> Hardware vendors typically use this capability to configure or install any value-add software via their Solution Builder Extension for the solution.  |
+| Customized solution update | The Solution Builder Extension package can implement customized steps that are performed both before and after the main portion of the solution update process. Even when it isn't performing a Solution Builder Extension update, Solution Builder Extension packages that implement this capability always run these extra steps. For example, the execution of hardware vendor specific steps before or after Azure Stack HCI Operating System updates, when no updates to the Solution Builder Extension are needed. <br/><br/> Hardware vendors typically use this capability to prepare nodes for any update related tasks that may involve rebooting servers. |
 
-## Identify an Solution Builder Extension update for your hardware
+## Identify a Solution Builder Extension update for your hardware
 
-With Azure Stack HCI, version 23H2, all hardware added to the Azure Stack HCI catalog as an Integrated System or Premier Solution is required to implement a solution builder extension that supports firmware and driver updates. Microsoft recommends purchasing newer Integrated Systems and Premier Solutions to take advantage of the full solution, update at-scale, capabilities that are enabled through the solution builder extension.
+Starting with Azure Stack HCI, version 23H2, any hardware added to the Azure Stack HCI catalog as an Integrated System or Premier Solution must implement a Solution Builder Extension that supports firmware and driver update. Microsoft recommends purchasing newer Integrated Systems and Premier Solutions to take advantage of the full solution, update at-scale, capabilities that are enabled through the Solution Builder Extension.
 
 > [!NOTE]
 > A solution builder extension might not be implemented for your hardware if:
@@ -52,9 +52,11 @@ With Azure Stack HCI, version 23H2, all hardware added to the Azure Stack HCI ca
 >
 > Consult with your hardware vendor’s Azure Stack HCI documentation to determine if your server model supports a Solution Builder Extension.
 
-If your hardware doesn't support a solution builder extension update experience, the process for updating your hardware is like that of Azure Stack HCI, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
+If your hardware doesn't support a Solution Builder Extension update experience, the process for updating your hardware is like that of Azure Stack HCI, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
 
-If your hardware doesn't support hardware updates using solution builder extension packages or Windows Admin Center, your firmware and driver updates may need to be performed separately. Follow the recommendations of your hardware vendor.
+If your hardware doesn't support hardware updates using Solution Builder Extension packages or Windows Admin Center, your firmware and driver updates may need to be performed separately. Follow the recommendations of your hardware vendor.
+
+The following table provides the hardware update method for different hardware vendors along with their respective platform series and generations.
 
 | Solution Builder (server hardware vendor) | Platform series/generation | Hardware Update Method  | For more information  |
 |-----------------|------------------|---------------|-------------------|
@@ -70,13 +72,15 @@ If your hardware doesn't support hardware updates using solution builder extensi
 
 ## Discover Solution Builder Extension Updates
 
-The Azure Stack HCI Lifecycle Management orchestration integrates solution builder extension updates, which include both solution builder extension (hardware-only) updates and full solution updates for Azure Stack HCI and solution builder extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent solution builder extension update by itself or a combined "solution" update using the same process.
+The Azure Stack HCI Lifecycle Management orchestration integrates Solution Builder Extension updates, which include both Solution Builder Extension (hardware-only) updates and full solution updates for Azure Stack HCI and Solution Builder Extension. These updates can be managed using the same update management tools for the Azure portal and PowerShell. This means that you can install an urgent Solution Builder Extension update by itself or a combined "Solution" update using the same process.
+
+### Discover Solution Builder Extension updates via the Azure portal
 
 To discover and select updates via the Azure portal, see [Browse for cluster updates](../update/azure-update-manager-23h2.md#browse-for-cluster-updates).
 
-For the remainder of this section, we discuss discovering solution builder extension vs solution updates using PowerShell.
+### Discover Solution Builder Extension updates via PowerShell
 
-To understand if an update is a standalone solution builder extension or combined "solution" update, use the properties `PackageType` and `SbeVersion`.
+To understand if an update is a standalone Solution Builder Extension or combined "Solution" update, use the properties `PackageType` and `SbeVersion`.
 
 ```powershell
 $Update = Get-SolutionUpdate
@@ -98,7 +102,7 @@ Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Stack HCI 2311 bundle** update, which includes the same Solution Builder Extension as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
-> To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install a solution builder extension update before the combined solution update.
+> To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
 
@@ -141,11 +145,11 @@ SBECopyright       Copyright (C) Contoso. All rights reserved.
 SBELicenseUri      https://contoso.com/SBE/EULA.pdf 
 ```
 
-As provided in the example, **SBEReleaseLink** and **SBENotifyMessage** may contain important information about the urgency of installing the solution builder extension update, as opposed to deferring the update for a later update maintenance window.
+As provided in the example, **SBEReleaseLink** and **SBENotifyMessage** may contain important information about the urgency of installing the Solution Builder Extension update, as opposed to deferring the update for a later update maintenance window.
 
 ## The AdditionalContentRequired update state
 
-While Azure Stack HCI can automatically discover solution builder extension updates, in many cases, solution builder extension packages must be downloaded from the hardware vendor’s support site and then sideloaded into the cluster.
+While Azure Stack HCI can automatically discover Solution Builder Extension updates, in many cases, Solution Builder Extension packages must be downloaded from the hardware vendor’s support site and then sideloaded into the cluster.
 
 The **AdditionalContentRequired** state is used to identify files that must be sideloaded before the update can be installed.
 
@@ -166,9 +170,9 @@ SBE_Contoso_Gen3_4.1.2312.5      SBE                      4.1.2312.5     Additio
 Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     AdditionalContentRequired
 ```
 
-To view information on the solution builder extension update such as its release notes (via the `SBEReleaseLink`) and determine how to download the solution builder extension files from your hardware vendor, use the updates `AdditionalProperties` property of the updates.
+To view information on the Solution Builder Extension update such as its release notes (via the `SBEReleaseLink`) and determine how to download the Solution Builder Extension files from your hardware vendor, use the updates `AdditionalProperties` property of the updates.
 
-For more information, see [Discover Solution Builder Extension updates](./solution-builder-extension.md#discover-solution-builder-extension-updates). You should download the solution builder extension files following the hardware vendor's recommendations and license agreements.
+For more information, see [Discover Solution Builder Extension updates](./solution-builder-extension.md#discover-solution-builder-extension-updates). You should download the Solution Builder Extension files following the hardware vendor's recommendations and license agreements.
 
 ## Next steps
 
