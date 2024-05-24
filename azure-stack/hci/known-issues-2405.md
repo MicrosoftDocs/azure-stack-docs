@@ -60,15 +60,12 @@ Here are the known issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Feature<!--26039754--> | Issue  |Workaround |
 | Update<!--XX--> | When viewing the readiness check results for an Azure Stack HCI cluster via the Azure Update Manager, there may be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
 
 ## Known issues from previous releases
 
 Here are the known issues from previous releases:
 
-|Feature  |Issue  |Workaround  |
-|---------|---------|---------|
 |Feature  |Issue  |Workaround  |
 |---------|---------|---------|
 | AKS on HCI <!--27081563--> |AKS cluster creation fails with the `Error: Invalid AKS network resource id`. This issue can occur when the associated logical network name has an underscore. |Underscores aren't supported in logical network names. Make sure to not use underscore in the names for logical networks deployed on your Azure Stack HCI. |
