@@ -10,7 +10,7 @@ ms.lastreviewed: 11/28/2023
 
 ---
 
-# AKS Arc and workload cluster architecture
+# AKS on Azure Stack HCI 23H2 architecture
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
