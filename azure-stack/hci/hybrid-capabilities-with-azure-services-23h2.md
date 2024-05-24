@@ -46,7 +46,7 @@ The Azure Stack HCI cloud service extends the hybrid capabilities for Azure Stac
 
 ## Azure Arc on Azure Stack HCI
 
-Azure Arc simplifies governance and management by delivering a consistent management plane from Azure. To learn more about Azure Arc, see [Azure Arc overview](/azure/azure-arc/overview).
+Azure Arc simplifies governance and management by delivering a consistent management plane from Azure. To learn more about Azure Arc, see [Azure Arc overview](/azure/azure-arc/overview). For additional guidance regarding the different services Azure Arc offers, see [Choosing the right Azure Arc service for machines](/azure/azure-arc/choose-service).
 
 Azure Stack HCI delivers hybrid value through the following Azure Arc technologies:
 
