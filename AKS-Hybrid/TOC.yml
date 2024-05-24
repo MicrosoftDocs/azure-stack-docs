@@ -16,16 +16,14 @@
     href: aks-whats-new-23h2.md
   - name: Concepts
     items:
+    - name: Architecture
+      href: cluster-architecture.md
     - name: Networking
       items:
       - name: Networking concepts
         href: aks-hci-network-system-requirements.md
       - name: Load balancer
-        href: load-balancer-overview.md
-    - name: Infrastructure component updates
-      href: infrastructure-components.md
-    - name: Cluster architecture
-      href: cluster-architecture.md
+        href: load-balancer-overview.md      
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Azure Hybrid Benefit
