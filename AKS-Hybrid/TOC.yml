@@ -9,7 +9,7 @@
     href: supported-kubernetes-versions.md  
   - name: Data collection
     href: data-collection.md
-- name: AKS enabled by Azure Arc 
+- name: AKS on Azure Stack HCI 23H2
   expanded: true
   items:
   - name: What's new in AKS on Azure Stack HCI 23H2
@@ -120,12 +120,8 @@
       href: /rest/api/hybridcontainer/operation-groups
     - name: Azure Stack HCI
       href: /azure-stack/hci/index
-    - name: Windows Admin Center (WAC)
-      href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
     - name: Azure hybrid cloud
       href: /hybrid
-    - name: Windows Server
-      href: /windows-server/
     - name: Release notes
       href: https://aka.ms/AKS-hybrid-Releasenotes
     - name: AKS Arc PowerShell
@@ -228,7 +224,7 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md 
-- name: AKS enabled by Azure Arc on VMware
+- name: AKS on VMware
   items:
   - name: Overview
     href: aks-vmware-overview.md
