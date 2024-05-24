@@ -54,7 +54,7 @@ Starting with Azure Stack HCI, version 23H2, any hardware added to the Azure Sta
 
 If your hardware doesn't support a Solution Builder Extension update experience, the process for updating your hardware is like that of Azure Stack HCI, version 22H2. This means that your hardware updates may be available using Windows Admin Center. For more information, see  [Update Azure Stack HCI clusters, version 22H2](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
 
-If your hardware doesn't support hardware updates using Solution Builder Extension packages or Windows Admin Center, your firmware and driver updates may need to be performed separately. Follow the recommendations of your hardware vendor.
+Your firmware and driver updates may need to be performed separately, if your hardware doesn't support hardware updates using Solution Builder Extension packages or Windows Admin Center. Follow the recommendations of your hardware vendor.
 
 The following table provides the hardware update method for different hardware vendors along with their respective platform series and generations.
 
@@ -102,7 +102,7 @@ Azure Stack HCI 2311 bundle      Solution    10.2311.0.26 4.1.2312.5     Ready
 In the sample output, you can see that two updates are ready to be installed: the standalone **SBE_Contoso_Gen3_4.1.2312.5** update and the combined **Azure Stack HCI 2311 bundle** update, which includes the same Solution Builder Extension as identified by the SbeVersion number 4.1.2312.5.
 
 > [!NOTE]
-> To reduce the number of update operations needed to keep your cluster up to date, Microsoft recommends installing the combined “Solution” update in most cases. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties provided by your hardware vendor in the `AdditionalProperties` of the update to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
+> Microsoft recommends installing the combined “Solution” update in most cases, to reduce the number of update operations needed to keep your cluster up to date. You can refer to the `SBEReleaseLink` and `SBENotifyMessage` properties, provided by your hardware vendor in the `AdditionalProperties` of the update, to determine if there's an urgent reason to install a Solution Builder Extension update before the combined solution update.
 
 To determine which update to install, use the **ComponentVersions** and **AdditionalProperties** values from `Get-SolutionUpdate`.
 
