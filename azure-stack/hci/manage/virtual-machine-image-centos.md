@@ -11,7 +11,7 @@ ms.custom:
 ms.date: 05/15/2024
 ---
 
-# Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)
+# Prepare a CentOS Linux image for Azure Stack HCI virtual machines (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 

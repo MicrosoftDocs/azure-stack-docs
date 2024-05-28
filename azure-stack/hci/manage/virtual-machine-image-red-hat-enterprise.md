@@ -32,7 +32,7 @@ To prepare a Red Hat Enterprise image and create a VM image:
 1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise.md#create-a-vm-image-from-a-red-hat-enterprise-image)
 1. [Connect to a VM and install the Red Hat OS](./virtual-machine-image-red-hat-enterprise.md#step-2-connect-to-a-vm-and-install-the-red-hat-os)
 1. [Configure the VM](./virtual-machine-image-red-hat-enterprise.md#step-3-configure-the-vm)
-1. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprisemd#step-4-clean-up-the-residual-configuration)
+1. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprise.md#step-4-clean-up-the-residual-configuration)
 1. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise.md#step-5-create-the-vm-image)
 
 The following sections provide detailed instructions for each step in the workflow.
@@ -104,7 +104,7 @@ After the VM is running, follow these steps:
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png" alt-text="Screenshot that shows the Installation Summary with actionable items." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png":::
 
-1. Select **Connect to Red Hat** and create credentials. Select **Register** > **Done**.
+1. Select **Connect to Red Hat** and create credentials. Select **Register** and then select **Done**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png" alt-text="Screenshot that shows the Connect to Red Hat page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png":::
 
@@ -112,13 +112,15 @@ After the VM is running, follow these steps:
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png" alt-text="Screenshot that shows the Software Selection page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png":::
 
-1. Select **Installation Destination** > **Done**.
+1. Select **Installation Destination** and then select **Done**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png" alt-text="Screenshot that shows the Installation Destination page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png":::
 
-1. Select **Network & Host Name**, enable the **ON** switch for the network interface, and then select **Done**.
+1. Select **Network & Host Name**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png" alt-text="Screenshot that shows the completed Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png":::
+
+1. Enable the **ON** switch for the network interface and then select **Done**.
 
     :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png" alt-text="Screenshot that shows the Network & Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png":::
 
