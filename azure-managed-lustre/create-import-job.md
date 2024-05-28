@@ -14,6 +14,11 @@ Azure Managed Lustre integrates with Azure Blob Storage to simplify the process 
 
 In this article, you learn how to use the Azure portal to create an import job to import data from a blob container into an existing Azure Managed Lustre file system.
 
+> [!NOTE]
+> When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when accessed by a client for the first time. When first accessing the data, there's a slight delay while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system. This delay only occurs the first time a file is accessed.
+>
+> You can choose to prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. To learn more, see [Restore data from from a blob container](blob-integration.md#restore-data-from-a-blob-container).
+
 ## Prerequisites
 
 - Existing Azure Managed Lustre file system - create one using the [Azure portal](create-file-system-portal.md), [Azure Resource Manager](create-file-system-resource-manager.md), or [Terraform](create-aml-file-system-terraform.md). To learn more about blob integration, see [Blob integration prerequisites](amlfs-prerequisites.md#blob-integration-prerequisites-optional).
