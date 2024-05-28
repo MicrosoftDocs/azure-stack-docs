@@ -186,7 +186,7 @@ The following tests are required to be run for OEM package validation:
 
 5. Review the results for the **required** tests.
 
-To submit a package signing request, send an email to [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) with the Solution name and Package Validation name associated with this run.
+To submit a package signing request, contact Microsoft Support with the solution name and package validation name associated with this run.
 
 ## Next steps
 
