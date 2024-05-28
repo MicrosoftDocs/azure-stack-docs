@@ -186,6 +186,8 @@ The following tests are required to be run for OEM package validation:
 
 5. Review the results for the **required** tests.
 
+To submit a package signing request, contact Microsoft Support with the solution name and package validation name associated with this run.
+
 ## Next steps
 
 - [Monitor and manage tests in the VaaS portal](azure-stack-vaas-monitor-test.md)
