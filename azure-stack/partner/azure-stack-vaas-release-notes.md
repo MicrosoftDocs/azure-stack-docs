@@ -88,7 +88,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
   - Bugfix for Compute test - TestVMOperations
 
 - Known issues:
-  - The following test cases can fail to run during OEM validation workflow:
+  - Contact Microsoft Support if the following test cases fail to run during OEM validation workflow:
     - Test101LinuxEmptyAttachedDiskManagedDisk
     - Test101WindowsEmptyAttachedDiskManagedDisk
 
@@ -100,7 +100,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
   - VaaS PowerShell Extension update: Package Validation workflow automation is now supported. See Azure Stack Hub VaaS Automate with PowerShell for detailed information about the location and step-by-step instructions to use this extension.
 
 - Known issues:
-  - The following test cases can fail to run during OEM validation workflow:
+  - Contact Microsoft Support if the following test cases fail to run during OEM validation workflow:
     - Test101LinuxEmptyAttachedDiskManagedDisk
     - Test101WindowsEmptyAttachedDiskManagedDisk
 
