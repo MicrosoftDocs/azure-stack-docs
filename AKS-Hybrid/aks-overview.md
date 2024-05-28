@@ -12,7 +12,7 @@ ms.lastreviewed: 05/28/2024
 
 # What is AKS enabled by Azure Arc?
 
-Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that you can use to deploy and manage containerized applications on-premises, in datacenters, or at edge locations such as retail stores or manufacturing plants. You need minimal Kubernetes expertise to get started with AKS. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. AKS is an ideal platform for deploying and managing containerized applications that require high availability, scalability, and portability, and for deploying applications to multiple locations, using open-source tools, and integrating with existing DevOps tools.
+Azure Kubernetes Service (AKS) enabled by Azure Arc is a managed Kubernetes service that you use to deploy and manage containerized applications on-premises, in datacenters, or at edge locations such as retail stores or manufacturing plants. You need minimal Kubernetes expertise to get started with AKS. AKS reduces the complexity and operational overhead of managing Kubernetes by offloading much of that responsibility to Azure. AKS is an ideal platform for deploying and managing containerized applications that require high availability, scalability, and portability, and for deploying applications to multiple locations, using open-source tools, and integrating with existing DevOps tools.
 
 ## Overview of AKS enabled by Azure Arc
 
