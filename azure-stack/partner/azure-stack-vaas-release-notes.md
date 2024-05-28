@@ -45,7 +45,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 - CSE Validation workflow is now updated to be able to install a test signed OEM extension package automatically post a full AzureStack update.
   - Prior to this fix, VaaS would fail to install a Test-Signed OEM extension package on a stamp post AzureStack Full update. VaaS would apply AzureStack update and then quit the run.
   - This has been fixed and you should see CSE Validation Workflow installing the provided AzureStack update and test-signed OEM extension package.
-- Added OEM package validation extension to ‘OEM Validation Workflow’
+- Added OEM package validation extension to 'OEM Validation Workflow'
   - This extension will run before kicking off any updates on the stamp.
   - The extension will validate the OEM extension package contents and the elements of the oemMetadata.xml
   - If there were any errors/issues with the OEM extension package, we will catch it before the VaaS tests get kicked off.
@@ -88,7 +88,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
   - Bugfix for Compute test - TestVMOperations
 
 - Known issues:
-  - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
+  - The following test cases can fail to run during OEM validation workflow:
     - Test101LinuxEmptyAttachedDiskManagedDisk
     - Test101WindowsEmptyAttachedDiskManagedDisk
 
@@ -100,7 +100,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
   - VaaS PowerShell Extension update: Package Validation workflow automation is now supported. See Azure Stack Hub VaaS Automate with PowerShell for detailed information about the location and step-by-step instructions to use this extension.
 
 - Known issues:
-  - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
+  - The following test cases can fail to run during OEM validation workflow:
     - Test101LinuxEmptyAttachedDiskManagedDisk
     - Test101WindowsEmptyAttachedDiskManagedDisk
 
