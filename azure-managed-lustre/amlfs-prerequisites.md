@@ -55,7 +55,7 @@ By default, no specific changes need to be made to enable Azure Managed Lustre. 
 |-------------|---------------------------|
 | DNS access  | Use the default Azure-based DNS server. |
 |Azure cloud service access | Configure your network security group to permit the Azure Managed Lustre file system to access Azure cloud services from within the file system subnet.<br><br>Add an outbound security rule with the following properties:<br>- **Port**: Any<br>- **Protocol**: Any<br>- **Source**: Virtual Network<br>- **Destination**: "AzureCloud" service tag<br>- **Action**: Allow<br><br>Note: Configuring the Azure cloud service also enables the necessary configuration of the Azure Queue service.<br><br>For more information, see [Virtual network service tags](/azure/virtual-network/service-tags-overview).|
-|Lustre network port access| Your network security group must allow inbound and outbound access on port 988 and ports 1019-1023. No other services can reserve or reserve these ports on your Lustre clients.<br>The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement.|
+|Lustre network port access| Your network security group must allow inbound and outbound access on port 988 and ports 1019-1023. No other services can reserve or use these ports on your Lustre clients.<br>The default rules `65000 AllowVnetInBound` and `65000 AllowVnetOutBound` meet this requirement.|
 
 #### Known limitations
 
