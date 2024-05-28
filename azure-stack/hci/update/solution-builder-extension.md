@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: overview
 ms.reviewer: dandefolo
-ms.date: 05/22/2024
+ms.date: 05/28/2024
 
 #customer intent: As a Senior Content Developer, I want provide customers with the highest level of content for the Solution Builder Extension so that customers gain knowledge and keep their Azure Stack HCI systems up to date in the most efficient way.
 
