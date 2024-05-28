@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/14/2024
+ms.date: 05/28/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -206,7 +206,7 @@ The following example shows how to create the virtual switch with PowerShell usi
 
 ```powershell
 $IntentName = "MgmtCompute"
-New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
+New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 ```
 
 #### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes 
@@ -221,11 +221,13 @@ To update the management virtual network adapter name, use the following command
 
 ```powershell
 $IntentName = "MgmtCompute"
-Add-VMNetworkAdapter -ManagementOS -SwitchName "ConvergedSwitch($IntentName)" -Name "vManagement($IntentName)"
 
-#NetAdapter needs to be renamed because during creation, Hyper-V adds the string "vEthernet " to the beginning of the name
+#NetAdapter needs to be renamed because during creation, Hyper-V adds the string “vEthernet” to the beginning of the name.
+Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vManagement(MgmtCompute)"
 
-Rename-NetAdapter -Name "vEthernet (vManagement($IntentName))" -NewName "vManagement($IntentName)"
+#VMNetworkAdapter for management needs to be renamed because during creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch(MgmtCompute)" -NewName "vManagement(MgmtCompute)"
+
 ```
 
 #### 3. Configure VLAN ID to management virtual network adapter for all nodes
