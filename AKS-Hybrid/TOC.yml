@@ -22,6 +22,10 @@
         href: aks-hci-network-system-requirements.md
       - name: Load balancer
         href: load-balancer-overview.md
+    - name: Security
+      items:
+      - name: Access and identity options
+        href: concepts-security-access-and-identity-options.md
     - name: Infrastructure component updates
       href: infrastructure-components.md
     - name: Cluster architecture
@@ -92,6 +96,10 @@
         href: retrieve-admin-kubeconfig.md
       - name: Restrict SSH access
         href: restrict-ssh-access.md
+      - name: Use Kubernetes RBAC with Microsoft Entra ID
+        href: kubernetes-rbac-23h2.md
+      - name: Use Azure RBAC for Kubernetes authorization
+        href: azure-rbac-23h2.md
     - name: Monitoring and logging
       items:    
           - name: Monitor Kubernetes object events
