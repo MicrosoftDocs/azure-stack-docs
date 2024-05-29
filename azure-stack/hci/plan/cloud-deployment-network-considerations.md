@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/28/2024
+ms.date: 05/29/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -209,15 +209,17 @@ $IntentName = "MgmtCompute"
 New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 ```
 
-#### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes 
+#### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes
 
-Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
+Once the virtual switch is created with the management virtual network adapter, the network adapter name must be compliant with Network ATC naming standards.
 
-- Name of the network adapter and the virtual network adapter: `vManagement($intentname)`.
-- Name is case sensitive.
-- `$Intentname` can be any string, but must be the same name used for the virtual switch.
+Specifically, the name of the virtual network adapter used for management traffic must use the following naming conventions:
 
-To update the management virtual network adapter name, use the following command:
+- Name of the network adapter and the virtual network adapter must use `vManagement($intentname)`.
+- This name is case-sensitive.
+- `$Intentname` can be any string, but must be the same name used for the virtual switch. Make sure you use this same string in Azure Portal when defining the `Mgmt` intent name.
+
+To update the management virtual network adapter name, use the following commands:
 
 ```powershell
 $IntentName = "MgmtCompute"
