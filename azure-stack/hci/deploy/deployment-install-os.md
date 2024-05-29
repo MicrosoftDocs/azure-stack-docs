@@ -123,7 +123,7 @@ Follow these steps to configure the operating system using SConfig:
 1. Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
     > [!NOTE]
-    > This step does not apply when doing a server repair task.
+    > This step doesn't apply to a server repair operation.
 
 1. Restart the servers.
 
