@@ -3,7 +3,7 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 11/29/2023
+ms.date: 05/29/2024
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022

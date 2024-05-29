@@ -46,7 +46,7 @@ This section lists the new features and improvements in AKS Arc in each release 
 
 The following Kubernetes cluster deployment and management capabilities are available:
 
-- **Autoscaling**. You can now enable the autoscaling feature when you create or update Kubernetes cluters and node pools. 
+- **Autoscaling**. You can now enable the autoscaling feature when you create or update Kubernetes cluters and node pools.
 - **Support for NVIDIA A16**. You can now create node pools in new VM sizes with GPU NVIDIA A16. For more information, see [Use GPUs for compute-intensive workloads](deploy-gpu-node-pool.md).
 - **Diagnostic settings**. You can export audit logs and other control plane logs to one or more destinations. For more information, see [Diagnostic settings in Azure Monitor](/azure/azure-monitor/essentials/diagnostic-settings).
 - **Certificate expiration**. You can now shut down Kubernetes clusters for up to 7 days without any certificate expiration issues.

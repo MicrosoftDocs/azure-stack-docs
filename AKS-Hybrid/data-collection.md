@@ -3,7 +3,7 @@ title: AKS enabled by Azure Arc data collection
 description: Learn about the data exchanged between Kubernetes clusters and Azure.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 01/17/2024
+ms.date: 05/29/2024
 ms.author: sethm 
 ms.reviewer: rbaziwane
 
@@ -13,6 +13,7 @@ ms.reviewer: rbaziwane
 ---
 
 # AKS enabled by Azure Arc data collection
+
 [AKS enabled by Azure Arc](overview.md) is a service that enables you to run Kubernetes clusters in your own infrastructure, using Azure Arc to connect and manage them. AKS collects data from clusters and connected machines to provide you with features such as monitoring, policy enforcement, and security updates. This article explains what data is collected, how it's classified, and how you can control it.
 
 During the deployment of AKS, you must furnish a subscription and an Azure region in which data is stored. The Azure region is a virtual representation of your on-premises resources and doesn't correspond to the actual physical on-premises location. It represents the region in which Microsoft-operated datacenters store this data.
@@ -23,7 +24,7 @@ During the deployment of AKS, you must furnish a subscription and an Azure regio
 There are three separate tiers to consider when curating data collection and exchange for on-premises deployments. This article describes the data exchanged between Kubernetes clusters (Tier 2) and Azure. See the public documentation for descriptions of data collection and exchange between [tier 1](/azure/azure-arc/kubernetes/conceptual-data-exchange) and [tier 3](/azure-stack/hci/concepts/data-collection).
 
 - Tier 1: Azure Arc-enabled services such as Azure Monitor, Azure Defender, Event Grid, etc.
-- Tier 2: Kubernetes clusters - AKS enabled by Arc.
+- Tier 2: Kubernetes clusters: AKS enabled by Arc.
 - Tier 3: Physical host, such as Windows Server or Azure Stack HCI.
 
 ## Data collection and residency
@@ -55,3 +56,7 @@ AKS collects the following types of data:
 > All events use either the Windows Universal Telemetry Client (UTC) or the Mariner Azure Device Health Service (ADHS).
 
 For more information about Azure data collection and privacy policies, see the [Microsoft Privacy Statement](https://privacy.microsoft.com/privacystatement).
+
+## Next steps
+
+[AKS enabled by Arc overview](aks-overview.md)
