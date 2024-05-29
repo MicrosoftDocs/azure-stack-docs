@@ -1379,6 +1379,11 @@
         "source_path": "AKS-Hybrid/deploy-load-balancer.md",
         "redirect_url": "/azure/aks/hybrid/deploy-load-balancer-cli",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/infrastructure-components.md",
+        "redirect_url": "/azure/aks/hybrid/cluster-architecture",
+        "redirect_document_id": false
       }
     ]
   }
