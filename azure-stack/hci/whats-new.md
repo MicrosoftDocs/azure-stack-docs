@@ -45,7 +45,9 @@ Here are the features and improvements in this release.
     - A new PowerShell command that can be used to update the Solution Builder Extension partner property values provided at deployment time. <!--25093172-->
     - Fixing an issue that prevents the update service to respond to requests after a Solution Builder Extension only update run. <!--27940543-->
 
-- **Add server and Repair server fixes** - An issue is fixed that prevents a node from joining Active Directory during an add server operation. <!--27101597-->
+- **Add server and Repair server fixes** include:
+  - An issue that prevents a node from joining Active Directory during an add server operation. <!--27101597-->
+  - Enabling deployment when a disjoint namespace is used.
 
 - **Reliability enhancements** include:
   - Changes for Network ATC when setting up the host networking configuration with certain network adapter types. <!--27285196-->
@@ -72,6 +74,21 @@ This release contains the following changes for updates:
 
 For more information, see the [Fixed issues list in in 2405](./known-issues-2405.md#fixed-issues).
 
+### Environment checker changes
+
+In this release, changes to the environment checker include several new checks:
+
+- A new check is added to ensure the inbox drivers on the physical network adapters are not in use. The provided OEM or manufacturer latest drivers must be installed before deployment.
+- A new check is added to ensure the link speed across physical network adapters on the same intent is identical.
+- A new check is added to ensure RDMA is operational on the storage network adapters before deployment.
+- A new check is added to validate the infrastructure IP addresses defined during deployment have outbound connectivity and can resolve the DNS.
+- A new check is added to ensure the DNS server value is not empty on the management IP address.
+- A new check is added to make sure that there is only 1 IP address on the management network adapter.
+- A new check is added to make sure that there is only 1 IP address on the management network adapter.
+- A new check is added to ensure that the minimum bandwidth required for RDMA storage adapters is at least 10 Gb.
+- Check that the uplink connectivity in any physical network adapters assigned to Network ATC intents is up.
+- Improved the ability to handle adapters that do not expose the VLAN ID field correctly.
+
 ### Observability changes
 
 This release contains the following improvements to observability:
@@ -79,7 +96,6 @@ This release contains the following improvements to observability:
 - When starting a log collection, a warning message now advises you to limit the log collection to 24 hours.
 - Deployment logs are automatically collected by default.
 - The newly added `Test-observability` feature validates whether the telemetry and diagnostic data can be successfully sent to Microsoft.
-
 
 ### Arc VM management changes
 
@@ -96,6 +112,9 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 - The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
 - This release changes the behavior to not delete the Arc server resources when the Azure Stack HCI cluster resource is deleted.
 
+### AKS on Azure Stack HCI, version 23H2
+
+For a list of the changes and improvements in AKS on Azure Stack HCI, version 23H2, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
 
 ## [2402 releases](#tab/2402releases)
 
