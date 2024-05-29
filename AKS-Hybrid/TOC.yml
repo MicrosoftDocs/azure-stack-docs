@@ -132,10 +132,6 @@
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
     - name: Azure roadmap
       href: https://azure.microsoft.com/roadmap/
-    - name: AKS roadmap
-      href: https://aka.ms/k8sroadmap
-    - name: AKS enabled Arc roadmap
-      href: https://aka.ms/AKS-hybrid-roadmap
 - name: AKS Edge Essentials
   items:
   - name: Overview
