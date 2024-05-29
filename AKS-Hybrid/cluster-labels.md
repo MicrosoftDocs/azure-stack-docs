@@ -71,20 +71,19 @@ This article describes how to use labels in a Kubernetes cluster on AKS enabled 
    kubectl get nodes --show-labels | grep -e "dept=HR"
    ```
 
-## Updating labels on existing node pools
+## Update labels on existing node pools
 
-1. Update a label on an existing node pool using the [`az aksarc nodepool update`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-update) command. Updating labels on existing node pools overwrites the old labels with the new labels. Labels must be a key/value pair and have a [valid syntax](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
+1. Update a label on an existing node pool using the [az aksarc nodepool update](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-update) command. Updating labels on existing node pools overwrites the old labels with the new labels. Labels must be a key/value pair and have a [valid syntax](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 
-    ```azurecli
-    az aksarc nodepool update --resource-group myResourceGroup --cluster-name myAKSCluster --name labelnp --labels dept=ACCT costcenter=6000 --no-wait
-    ```
+   ```azurecli
+   az aksarc nodepool update --resource-group myResourceGroup --cluster-name myAKSCluster --name labelnp --labels dept=ACCT costcenter=6000 --no-wait
+   ```
 
 2. Verify the labels were set using the `kubectl get nodes --show-labels` command.
 
-    ```powershell
-    kubectl get nodes --show-labels | grep -e "costcenter=6000" -e "dept=ACCT"
-    ```
-
+   ```powershell
+   kubectl get nodes --show-labels | grep -e "costcenter=6000" -e "dept=ACCT"
+   ```
 
 ## Unavailable labels
 
