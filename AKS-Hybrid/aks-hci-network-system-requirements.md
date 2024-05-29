@@ -137,6 +137,7 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 | `pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
+| `aszk8snetworking.azurecr.io` | 443 | Container image | Required to access MetalLB Arc extension images. |
 | `aka.ms` | 443 | az extensions | Required to download Azure CLI extensions such as **aksarc** and **connectedk8s**. |
 | `*.login.microsoft.com` | 443 | Azure    | Required to fetch and update Azure Resource Manager tokens. |
 | `sts.windows.net` | 443 | Azure Arc |    For Cluster Connect and Custom Location-based scenario. |
