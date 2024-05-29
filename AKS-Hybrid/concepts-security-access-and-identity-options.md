@@ -18,7 +18,7 @@ ms.reviewer:
 
 Applies to: AKS on Azure Stack HCI 23H2
 
-You can authenticate, authorize, secure, and control access to Kubernetes clusters in a variety of ways:
+You can authenticate, authorize, secure, and control access to Kubernetes clusters in various ways:
 
 - With Kubernetes role-based access control (Kubernetes RBAC), you can grant users, groups, and service accounts access to only the resources they need.
 - With Azure Kubernetes Service (AKS) enabled by Azure Arc, you can further enhance the security and permissions structure using Microsoft Entra ID and Azure RBAC. 
@@ -51,7 +51,7 @@ A ClusterRole grants and applies permissions to resources across the entire clus
 
 ### RoleBindings and ClusterRoleBindings
 
-Once you've defined roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS Arc cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-23h2.md)
+Once you define roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS Arc cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-23h2.md)
 
 #### RoleBindings
 
@@ -158,7 +158,7 @@ In the Azure portal, you can find:
 - The Cluster Admin Microsoft Entra group is shown on the **Configuration** tab.
   - You can also use the `--aad-admin-group-object-ids` parameter in the Azure CLI.
 
-| Description                                                  | Role grant required                                          | Cluster admin Microsoft Entra group(s)                       | When to use                                                  |
+| Description                                                  | Role grant required                                          | Cluster admin Microsoft Entra groups                       | When to use                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Legacy admin login using client certificate                  | **Azure Kubernetes Service Arc Cluster Admin Role**. This role allows `az aksarc get-credentials` to be used with the `--admin` flag, which downloads a [legacy (non-Microsoft Entra) cluster admin certificate](/azure/aks/control-kubeconfig-access) into the user's **.kube/config**. This is the only purpose of the Azure Kubernetes Admin role. | n/a                                                          | If you're permanently blocked by not having access to a valid Microsoft Entra group with access to your cluster. |
 | Microsoft Entra ID with manual (Cluster) RoleBindings        | **Azure Kubernetes Service Arc Cluster User Role**. The "User" role allows `az aks get-credentials` to be used without the `--admin` flag. This is the only purpose of the "Azure Kubernetes Service Cluster User" role.) The result, on a Microsoft Entra ID-enabled cluster, is the download of [an empty entry](/azure/aks/control-kubeconfig-access) into **.kube/config**, which triggers browser-based authentication when it's first used by **kubectl**. | Because the user is not in any Cluster Admin group, their rights are controlled entirely by any RoleBindings or ClusterRoleBindings that are set up by cluster admins. The (Cluster) RoleBindings [nominate Microsoft Entra users or Microsoft Entra groups](/azure/aks/azure-ad-rbac) as their subjects. If no such bindings were set up, the user can't excute any **kubectl** commands. | If you want fine-grained access control, and you're not using Azure RBAC for Kubernetes Authorization. Note that the user who sets up the bindings must log in by one of the other methods listed in this table. |

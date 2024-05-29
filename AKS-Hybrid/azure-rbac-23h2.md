@@ -100,13 +100,13 @@ To create your own custom role definitions, copy the following JSON object into 
 
 For information about custom roles and how to author them, see [Azure custom roles](/azure/role-based-access-control/custom-roles).
 
-Create the role definition using the [az role definition create](/cli/azure/role/definition?view=azure-cli-latest#az-role-definition-create) command, setting the `--role-definition` parameter to the **deploy-view.json** file you created in the previous step:
+Create the role definition using the [az role definition create](/cli/azure/role/definition#az-role-definition-create) command, setting the `--role-definition` parameter to the **deploy-view.json** file you created in the previous step:
 
 ```azurecli
 az role definition create --role-definition @deploy-view.json 
 ```
 
-Assign the role definition to a user or other identity using the [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) command:
+Assign the role definition to a user or other identity using the [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) command:
 
 ```azurecli
 az role assignment create --role "AKS Arc Deployment Reader" --assignee <assignee-object-id> --scope $ARM_ID
