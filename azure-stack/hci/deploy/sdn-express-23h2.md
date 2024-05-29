@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express for Azure Stack HCI, versi
 description: Learn to deploy an SDN infrastructure using SDN Express for Azure Stack HCI, version 23h2.
 author: alkohli 
 ms.topic: how-to 
-ms.date: 03/13/2024
+ms.date: 05/29/2024
 ms.author: alkohli 
 ms.reviewer: anirbanpaul 
 ---
@@ -15,6 +15,9 @@ ms.reviewer: anirbanpaul
 In this article, you deploy an end-to-end Software Defined Network (SDN) infrastructure for Azure Stack HCI, version 23H2 using SDN Express PowerShell scripts. The infrastructure includes a highly available (HA) Network Controller (NC), and optionally, a highly available Software Load Balancer (SLB), and a highly available Gateway (GW).  The scripts support a phased deployment, where you can deploy just the Network Controller component to achieve a core set of functionality with minimal network requirements.
 
 You can also deploy an SDN infrastructure System Center Virtual Machine Manager (VMM). For more information, [Manage SDN resources in the VMM fabric](/system-center/vmm/network-sdn).
+
+> [!IMPORTANT]
+> If you are deploying SDN on an Azure Stack HCI, version 23H2 cluster, ensure that all the applicable SDN infrastructure VMs (Network Controller, Software Load Balancers, Gateways) are on the latest Windows Update patch. You can initiate the update from the SConfig UI on the machines. Without the latest patches, connectivity issues may arise. For more information about updating the SDN infrastructure, see [Update SDN infrastructure for Azure Stack HCI](../manage/update-sdn.md).
 
 ## Before you begin
 
