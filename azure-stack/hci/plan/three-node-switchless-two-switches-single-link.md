@@ -7,14 +7,14 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/01/2024
+ms.date: 05/15/2024
 ---
 
 # Review three-node storage switchless, dual TOR, single link deployment network reference pattern for Azure Stack HCI
 
 [!INCLUDE [includes](../../includes/hci-applies-to-23h2.md)] and later
 
-In this article, you learn about the three-node storage switchless with two Top of Rack (TOR) L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Stack HCI solution.
+In this article, learn about the three-node storage switchless with two TOR L3 switches and full-mesh single link network reference pattern that you can use to deploy your Azure Stack HCI solution.
 
 > [!NOTE]
 > The 3-node switchless network reference patterns described in this article were tested and validated by Microsoft. For information on two-node switchless network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
@@ -37,7 +37,6 @@ As illustrated in the diagram above, this pattern has the following physical net
     > [!NOTE]
     > For this configuration, there is no redundant network connection between the nodes.
 
-
 |Networks|Management and compute|Storage|
 |--|--|--|
 |Link speed|At least 1 GBps. 10 GBps recommended|At least 10 GBps|
@@ -54,7 +53,7 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The Storage intent-based traffic consists of three individual subnets supporting RDMA traffic. Each interface is dedicated to a separate node interconnect network. This traffic is only intended to travel between the three nodes. Storage traffic on these subnets is isolated without connectivity to other resources.
 
-Each pair of storage adapters between the nodes operates in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor. 
+Each pair of storage adapters between the nodes operates in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor.
 
 When deploying a three-node switchless configuration, Network ATC has the following requirements:
 
@@ -69,8 +68,6 @@ When deploying a three-node switchless configuration, Network ATC has the follow
     - It's only possible to deploy this three-node scenario using ARM templates.
     
     For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
-
-
 
 ### Management VLAN
 
@@ -130,7 +127,6 @@ For three-node storage switchless patterns, two Network ATC intents are created.
     - Storage Network 1: 10.0.1.0/24 – `Node1 -> Node2`
     - Storage Network 2: 10.0.2.0/24 – `Node1 -> Node2`
     - Storage Network 3: 10.0.3.0/24 – `Node2 -> Node3`
-
 
 For more information, see [Deploy host networking with Network ATC](../deploy/network-atc.md).
 

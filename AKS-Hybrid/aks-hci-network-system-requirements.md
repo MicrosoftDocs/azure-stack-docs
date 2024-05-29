@@ -132,9 +132,12 @@ For deployment and operation of Kubernetes clusters, the following URLs must be 
 | `https://adhs.events.data.microsoft.com` | 443 | Telemetry | ADHS is a telemetry service running inside the appliance/mariner OS. Used periodically to send required diagnostic data to Microsoft from control plane nodes. Used when telemetry is coming off mariner, which means any Kubernetes control plane. |
 | `https://v20.events.data.microsoft.com`  | 443 | Telemetry | Used periodically to send required diagnostic data to Microsoft from the Windows Server host. |
 | `gcr.io` | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images. |
+| `storage.googleapis.com` | 443 | Google container registry | Used for Kubernetes official artifacts such as container base images. |
+| `docker.io` |  443 | Docker container registry | Used for Kubernetes official artifacts such as container base images. |
 | `pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `*.pypi.org`  | 443 | Python package | Validate Kubernetes and Python versions. |
 | `https://hybridaks.azurecr.io` | 443 | Container image | Required to access the HybridAKS operator image. |
+| `aszk8snetworking.azurecr.io` | 443 | Container image | Required to access MetalLB Arc extension images. |
 | `aka.ms` | 443 | az extensions | Required to download Azure CLI extensions such as **aksarc** and **connectedk8s**. |
 | `*.login.microsoft.com` | 443 | Azure    | Required to fetch and update Azure Resource Manager tokens. |
 | `sts.windows.net` | 443 | Azure Arc |    For Cluster Connect and Custom Location-based scenario. |
