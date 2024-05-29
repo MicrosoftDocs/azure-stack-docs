@@ -51,7 +51,7 @@ A ClusterRole grants and applies permissions to resources across the entire clus
 
 ### RoleBindings and ClusterRoleBindings
 
-Once you've defined roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS Arc cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [How-to use Kubernetes role-based access control and Microsoft Entra ID](kubernetes-rbac-23h2.md)
+Once you've defined roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS Arc cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-23h2.md)
 
 #### RoleBindings
 
@@ -167,5 +167,5 @@ In the Azure portal, you can find:
 
 ## Next steps
 
-- To get started with Kubernetes RBAC for Kubernetes authorization, see [How-to use Kubernetes role-based access control and Microsoft Entra ID](kubernetes-rbac-23h2.md)
+- To get started with Kubernetes RBAC for Kubernetes authorization, see [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-23h2.md)
 - To get started with Azure RBAC for Kubernetes authorization, see [Use Azure RBAC for Kubernetes Authorization](azure-rbac-23h2.md)

@@ -6,8 +6,8 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 5/16/2024
-ms.lastreviewed: 5/16/2024
+ms.date: 5/29/2024
+ms.lastreviewed: 5/29/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -57,7 +57,7 @@ First, get the `$ARM-ID` for the target cluster to which you want to assign a ro
 $ARM_ID = (az connectedk8s show --subscription "<$subscriptionID>" -g "<$resource_Group>" -n "<name of your cluster>" --query id -o tsv)
 ```
 
-Second, use the `az role assignment create` command to assign roles to your target cluster. You must provide the `$ARM_ID` from the first step and the `assignee-object-id` for this step. The `assignee-object-id` can be a Microsoft Entra ID or a service principal client ID.
+Then, use the `az role assignment create` command to assign roles to your target cluster. You must provide the `$ARM_ID` from the first step and the `assignee-object-id` for this step. The `assignee-object-id` can be a Microsoft Entra ID or a service principal client ID.
 
 The following example assigns the **Azure Arc Kubernetes Cluster Admin** role to the resource group that contains the cluster: 
 
@@ -78,7 +78,7 @@ AKS enabled by Azure Arc provides the following built-in roles:
 
 You can choose to create your own role definition for use in role assignments.
 
-The following example shows a role definition that allows a user to only read deployments. For more information, see [the full list of data actions that you can use to construct a role definition](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes). To learn the full instructions for creating a custom role, see [Steps to create a custom role](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)
+The following example shows a role definition that allows a user to only read deployments. For more information, see [the full list of data actions that you can use to construct a role definition](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes). For more information about creating a custom role, see [Steps to create a custom role](/azure/role-based-access-control/custom-roles#steps-to-create-a-custom-role)
 
 To create your own custom role definitions, copy the following JSON object into a file called **custom-role.json**. Replace the `<subscription-id>` placeholder with the actual subscription ID. The custom role uses one of the data actions and lets you view all deployments in the scope (cluster or namespace) where the role assignment is created.
 
@@ -98,15 +98,15 @@ To create your own custom role definitions, copy the following JSON object into 
 }
 ```
 
-For more information about custom roles and how to author them, see [Azure custom roles](/azure/role-based-access-control/custom-roles).
+For information about custom roles and how to author them, see [Azure custom roles](/azure/role-based-access-control/custom-roles).
 
-Create the role definition using the [`az role definition create`][az-role-definition-create] command, setting the `--role-definition` parameter to the **deploy-view.json** file you created in the previous step:
+Create the role definition using the [az role definition create](/cli/azure/role/definition?view=azure-cli-latest#az-role-definition-create) command, setting the `--role-definition` parameter to the **deploy-view.json** file you created in the previous step:
 
 ```azurecli
 az role definition create --role-definition @deploy-view.json 
 ```
 
-Assign the role definition to a user or other identity using the [`az role assignment create`][az-role-assignment-create] command:
+Assign the role definition to a user or other identity using the [az role assignment create](/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create) command:
 
 ```azurecli
 az role assignment create --role "AKS Arc Deployment Reader" --assignee <assignee-object-id> --scope $ARM_ID
@@ -166,13 +166,13 @@ az role assignment delete --ids <LIST OF ASSIGNMENT IDS>
 
 ### Delete role definition
 
-```azurecli-interactive
+```azurecli
 az role definition delete -n "AKS Arc Deployment Reader"
 ```
 
 ## Next steps
 
 - [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
-- [Access and identity options ](concepts-security-access-and-identity-options.md)for AKS enabled by Azure Arc
+- [Access and identity options](concepts-security-access-and-identity-options.md) for AKS enabled by Azure Arc
 - [Create an Azure service principal with Azure CLI](/cli/azure/azure-cli-sp-tutorial-1)
 - Available Azure permissions for [Hybrid + Multicloud](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes)
