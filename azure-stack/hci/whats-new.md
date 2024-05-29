@@ -23,6 +23,10 @@ There are 2 release trains for Azure Stack HCI, version 23H2: 2402 and 2311. The
 
 The 2402 release train includes the following releases:
 
+## Features and improvements in 2402.3
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-3.md#fixed-issues) to understand the bug fixes.
+
 ## Features and improvements in 2402.2
 
 This is primarily a bug fix release with a few enhancements. See the [Fixed issues list](./known-issues-2402-2.md#fixed-issues) to understand the bug fixes. Here's the list of enhancements:

@@ -1,6 +1,6 @@
 ---
-title: Prepare Red Hat Enterprise Linux image for Azure Stack HCI VM via Azure CLI
-description: Learn how to prepare a Red Hat Enterprise Linux image to create Azure Stack HCI VM image.
+title: Prepare Red Hat Enterprise Linux image for Azure Stack HCI VM via Azure CLI (preview)
+description: Learn how to prepare a Red Hat Enterprise Linux image to create Azure Stack HCI VM image (preview).
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -8,11 +8,11 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/09/2024
+ms.date: 05/15/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Stack HCI.
 ---
 
-# Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines
+# Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 

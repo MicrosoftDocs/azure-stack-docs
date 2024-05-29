@@ -22,7 +22,7 @@ ROBOTS: NOINDEX
 
 Learn how to use the **solution validation** workflow to validate new Azure Stack Hub solutions.
 
-An Azure Stack Hub solution is a hardware bill of materials (BoM) that has been jointly agreed upon between Microsoft and the partner after meeting the Windows Server logo certification requirements. A solution must be recertified when there has been a change to the hardware BoM. For further questions about when to revalidate solutions, contact the team at [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
+An Azure Stack Hub solution is a hardware bill of materials (BoM) that has been jointly agreed upon between Microsoft and the partner after meeting the Windows Server logo certification requirements. A solution must be recertified when there has been a change to the hardware BoM.
 
 To validate your solution, run the solution validation workflow twice. Run it once for the *minimally* supported configuration. Run it a second time for the *maximally* supported configuration. Microsoft validates the solution if both configurations pass all tests.
 

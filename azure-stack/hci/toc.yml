@@ -13,7 +13,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 2402 
       items:
-      - name: 2402.2 - Current
+      - name: 2402.3 - Current
+        href: known-issues-2402-3.md
+      - name: 2402.2
         href: known-issues-2402-2.md
       - name: 2402.1
         href: known-issues-2402-1.md
@@ -33,7 +35,9 @@ items:
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: April 2024 - Current
+      - name: May 2024 - Current
+        href: security-update/hci-security-update-may-2024.md
+      - name: April 2024
         href: security-update/hci-security-update-apr-2024.md
       - name: March 2024 
         href: security-update/hci-security-update-mar-2024.md
@@ -97,14 +101,16 @@ items:
         href: plan/two-node-components.md
       - name: Pattern IP requirements
         href: plan/two-node-ip-requirements.md
-      - name: Decision matrix
-        href: plan/two-node-decision-matrix.md
     - name: Three-node switchless deployments
       items:
       - name: Storage switchless, dual TOR, single link
         href: plan/three-node-switchless-two-switches-single-link.md
       - name: Storage switchless, dual TOR, dual link
         href: plan/three-node-switchless-two-switches-two-links.md
+      - name: Pattern components
+        href: plan/three-node-components.md
+      - name: Pattern IP requirements
+        href: plan/three-node-ip-requirements.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
@@ -159,6 +165,8 @@ items:
   items:
   - name: About Updates
     href: update/about-updates-23h2.md
+  - name: About Solution Builder Extension software updates
+    href: update/solution-builder-extension.md
   - name: Understand update phases
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
@@ -277,10 +285,14 @@ items:
 
   - name: Azure services
     items:
+    - name: Hybrid capabilities with Azure services
+      href: hybrid-capabilities-with-azure-services-23h2.md
     - name: Enhanced management from Azure
       href: manage/azure-enhanced-management-managed-identity.md
     - name: Use Azure Site Recovery
       href: manage/azure-site-recovery.md
+    - name: Use Azure Backup
+      href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
 
   - name: Azure Arc extensions
     items:
@@ -317,8 +329,12 @@ items:
       href: manage/load-balancers.md
     - name: Manage gateway connections
       href: manage/gateway-connections.md
+    - name: Manage default network access policies
+      href: manage/manage-default-network-access-policies-virtual-machines-23h2.md
     - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
+    - name: Configure network security groups with PowerShell
+      href: manage/use-datacenter-firewall-powershell.md
     - name: Configure network security groups with tags
       href: manage/configure-network-security-groups-with-tags.md
     - name: Manage SDN Multisite
@@ -333,8 +349,14 @@ items:
       items:
       - name: Manage certificates for SDN
         href: manage/sdn-manage-certs.md
+      - name: Update Network Controller certificates
+        href: manage/update-network-controller-certificates.md
+      - name: Update SDN infrastructure certificates
+        href: manage/update-sdn-infrastructure-certificates.md
       - name: Secure the Network Controller
         href: manage/nc-security.md
+      - name: Authenticate with Kerberos
+        href: manage/kerberos-with-spn.md
   - name: Billing
     items:
     - name: Azure Hybrid Benefit
@@ -466,6 +488,8 @@ items:
       href: concepts/plan-software-defined-networking-infrastructure-23h2.md
     - name: Network Controller overview
       href: concepts/network-controller-overview.md
+    - name: Plan Network Controller
+      href: concepts/plan-network-controller-deployment.md
     - name: Software Load Balancer overview
       href: concepts/software-load-balancer.md
     - name: Datacenter Firewall overview
@@ -597,24 +621,6 @@ items:
         href: manage/change-privacy-settings.md
       - name: Use BitLocker with Cluster Shared Volumes
         href: /windows-server/failover-clustering/bitlocker-on-csv-in-ws-2022?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Manage SDN
-      items:
-      - name: Update SDN infrastructure
-        href: manage/update-sdn.md
-      - name: Assign public IP address to a VM
-        href: manage/assign-public-ip-to-vm.md
-      - name: Configure network security groups with PowerShell
-        href: manage/use-datacenter-firewall-powershell.md
-      - name: Manage default network access policies
-        href: manage/manage-default-network-access-policies-virtual-machines.md
-      - name: Manage SDN security
-        items:
-        - name: Update Network Controller certificates
-          href: manage/update-network-controller-certificates.md
-        - name: Update SDN infrastructure certificates
-          href: manage/update-sdn-infrastructure-certificates.md
-        - name: Authenticate with Kerberos
-          href: manage/kerberos-with-spn.md
     - name: Manage Azure services
       items:
       - name: Hybrid capabilities with Azure services
@@ -625,9 +631,10 @@ items:
         href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use Azure portal
         href: manage/azure-portal.md
-      - name: Use Azure Backup
-        href: /azure/backup/back-up-azure-stack-hyperconverged-infrastructure-virtual-machines?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-
+    - name: Manage SDN 
+      items:
+      - name: Manage default network access policies
+        href: manage/manage-default-network-access-policies-virtual-machines.md   
   - name: Migrate
     items:
     - name: Cluster to same hardware
