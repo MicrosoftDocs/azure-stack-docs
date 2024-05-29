@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2024
+ms.date: 05/29/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -121,6 +121,9 @@ Follow these steps to configure the operating system using SConfig:
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each server rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
 1. Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+
+    > [!NOTE]
+    > This step does not apply when doing a server repair task.
 
 1. Restart the servers.
 

@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/15/2024
+ms.date: 05/29/2024
 ---
 
 # Repair a server on Azure Stack HCI, version 23H2
@@ -139,6 +139,9 @@ Follow these steps on another server that is a member of the same Azure Stack HC
     $Cred = Get-Credential 
     Repair-Server -Name "< Name of the new server>" -LocalAdminCredential $Cred
     ```
+
+    > [!NOTE]
+    > The server name must be the NetBIOS name.
 
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
 
