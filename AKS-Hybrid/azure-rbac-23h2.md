@@ -98,6 +98,8 @@ To create your own custom role definitions, copy the following JSON object into 
 }
 ```
 
+For more information about custom roles and how to author them, see [Azure custom roles](/azure/role-based-access-control/custom-roles).
+
 Create the role definition using the [`az role definition create`][az-role-definition-create] command, setting the `--role-definition` parameter to the **deploy-view.json** file you created in the previous step:
 
 ```azurecli
@@ -113,6 +115,9 @@ az role assignment create --role "AKS Arc Deployment Reader" --assignee <assigne
 ## Step 3: Use Azure RBAC for Kubernetes authorization with kubectl
 
 To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
+
+> [!CAUTION]
+> The admin kubeconfig contains secrets, so you should follow best security practices for the admin kubeconfig; such as securely handle it, rotate secrets periodically, and so on.
 
 To run this Azure CLI command, you must have **Azure Kubernetes Service Arc Cluster Admin** role permissions on the cluster. For more information, see [Retrieve certificate-based admin kubeconfig](/azure/aks/hybrid/retrieve-admin-kubeconfig).
 
