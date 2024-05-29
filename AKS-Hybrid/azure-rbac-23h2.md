@@ -42,28 +42,12 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 You can create an Azure RBAC-enabled Kubernetes cluster for authorization and a Microsoft Entra ID for authentication.
 
 ```azurecli
-az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --generate-ssh-keys --control-plane-ip $controlplaneIP --enable-azure-rbac
+az aksarc create -n $aks_cluster_name -g $resource_group_name --custom-location $customlocation_ID --vnet-ids $logicnet_Id --generate-ssh-keys --control-plane-ip $controlplaneIP --enable-azure-rbac
 ```
 
 After a few minutes, the command completes and returns JSON-formatted information about the cluster.
 
-## Step 2: Create role assignments for users to access the cluster 
-
-You can use the [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) command to create role assignments.
-
-First, get the `$ARM-ID` for the target cluster to which you want to assign a role.
-
-```azurecli
-$ARM_ID = (az connectedk8s show --subscription "<$subscriptionID>" -g "<$resource_Group>" -n "<name of your cluster>" --query id -o tsv)
-```
-
-Then, use the `az role assignment create` command to assign roles to your target cluster. You must provide the `$ARM_ID` from the first step and the `assignee-object-id` for this step. The `assignee-object-id` can be a Microsoft Entra ID or a service principal client ID.
-
-The following example assigns the **Azure Arc Kubernetes Cluster Admin** role to the resource group that contains the cluster: 
-
-```azurecli
-az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee <assignee-object-id> --scope $ARM_ID
-```
+## Step 2: Create role assignments for users to access the cluster
 
 AKS enabled by Azure Arc provides the following built-in roles:
 
@@ -73,6 +57,22 @@ AKS enabled by Azure Arc provides the following built-in roles:
 | [Azure Arc Kubernetes Writer](/azure/role-based-access-control/built-in-roles#azure-arc-kubernetes-writer) | Allows read/write access to most objects in a namespace. <br />Doesn't allow viewing or modifying roles or role bindings. <br />Allows accessing `secrets` and running pods as any `ServiceAccount` in the namespace, so it can be used to gain the API access levels of any `ServiceAccount` in the namespace. |
 | [Azure Arc Kubernetes Admin](/azure/role-based-access-control/built-in-roles#azure-arc-kubernetes-admin) | Allows admin access, intended to be granted within a namespace. <br />Allows read/write access to most resources in a namespace (or cluster scope), including the ability to create roles and role bindings within the namespace. <br />Doesn't allow write access to resource quota or to the namespace itself. |
 | [Azure Arc Kubernetes Cluster Admin](/azure/role-based-access-control/built-in-roles#azure-arc-kubernetes-cluster-admin) | Allows "super-user" access to perform any action on any resource.<br/>Gives full control over every resource in the cluster and in all namespaces. |
+
+You can use the [az role assignment create](/cli/azure/role/assignment#az-role-assignment-create) command to create role assignments.
+
+First, get the `$ARM-ID` for the target cluster to which you want to assign a role.
+
+```azurecli
+$ARM_ID = (az connectedk8s show --subscription "$subscription_ID" -g "$resource_group_name" -n "name_of_your_cluster>" --query id -o tsv)
+```
+
+Then, use the `az role assignment create` command to assign roles to your Kubernetes cluster. You must provide the `$ARM_ID` from the first step and the `assignee-object-id` for this step. The `assignee-object-id` can be a Microsoft Entra ID or a service principal client ID.
+
+The following example assigns the **Azure Arc Kubernetes Cluster Admin** role to the Kubernetes cluster:
+
+```azurecli
+az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee <assignee-object-id> --scope $ARM_ID
+```
 
 ### Create custom role definitions
 
