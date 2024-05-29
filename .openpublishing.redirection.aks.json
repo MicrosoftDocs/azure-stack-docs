@@ -1379,6 +1379,11 @@
         "source_path": "AKS-Hybrid/deploy-load-balancer.md",
         "redirect_url": "/azure/aks/hybrid/deploy-load-balancer-cli",
         "redirect_document_id": false
+      },
+      {
+        "source_path": "AKS-Hybrid/kubernetes-rbac-azure-ad.md",
+        "redirect_url": "/azure/aks/hybrid/kubernetes-rbac-entra-id",
+        "redirect_document_id": false
       }
     ]
   }
