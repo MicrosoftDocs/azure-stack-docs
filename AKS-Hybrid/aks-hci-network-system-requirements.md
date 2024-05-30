@@ -116,7 +116,7 @@ When you deploy Azure Stack HCI, you allocate a contiguous block of at least [si
 For information about the Azure Arc firewall/proxy URL allowlist, see the [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements#firewallproxy-url-allowlist) and [Azure Stack HCI 23H2 network requirements](/azure-stack/hci/manage/use-environment-checker?tabs=connectivity#prerequisites).
 
 > [!NOTE]
-> If you're deploying older Azure Stack HCI [release 2402](/azure-stack/hci/whats-new?tabs=2402releases#features-and-improvements-in-24023) and older, you also need to allow `gcr.io` and `storage.googleapis.com` URLs. These URLs have been removed from the latest AKS Arc release.
+> If you're deploying an older Azure Stack HCI [release, such as 2402](/azure-stack/hci/whats-new?tabs=2402releases#features-and-improvements-in-24023) and earlier, you must also allow the **gcr.io** and **storage.googleapis.com** URLs. These URLs were removed from the latest AKS Arc release.
 
 | URL | Port | Service | Notes |
 |---|---|---|---|
