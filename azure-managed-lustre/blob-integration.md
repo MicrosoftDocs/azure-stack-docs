@@ -4,7 +4,7 @@ description: Understand storage concepts for using Azure Blob storage with an Az
 ms.topic: conceptual
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 05/14/2024
+ms.date: 05/30/2024
 ms.lastreviewed: 06/05/2023
 ms.reviewer: brianl
 
@@ -32,7 +32,7 @@ Azure Managed Lustre works with storage accounts that have hierarchical namespac
 - For a storage account with hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob header.
 - For a storage account that *does not* have hierarchical namespace enabled, Azure Managed Lustre reads POSIX attributes from the blob metadata. A separate, empty file with the same name as your blob container contents is created to hold the metadata. This file is a sibling to the actual data directory in the Azure Managed Lustre file system.
 
-## Import data from Blob Storage
+## Import from Blob Storage
 
 You can configure integration with Blob Storage during [cluster creation](create-file-system-portal.md#blob-integration), and you can [create an import job](create-import-job.md) any time after the cluster is created.
 
@@ -97,51 +97,9 @@ The following items are important to consider when importing data from a blob co
 - To view details about a completed import job, you can check the logging container. The logging container contains logs for the import job, including any errors or conflicts that occurred during the import.
 - If the import job fails for any reason, you might not have complete statistics about the import job, such as the number of files imported or number of conflicts.
 
-## Export data to Blob Storage using an export job
-
-You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by [creating an export job](export-with-archive-jobs.md).
-
-### Which files are exported during an export job?
-
-When you export files from your Azure Managed Lustre system, not all files are copied to the blob container that you specified when you created the file system. The following rules apply to export jobs:
-
-- Export jobs only copy files that are new or whose contents are modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
-- Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
-- Files deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
-
-### Running export jobs in active file systems
-
-In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
-
-In file systems with a lot of activity, retries may fail multiple times because files are frequently changing. To verify that a file has been successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
-
-If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before initiating the export job. This approach helps to guarantee that all data is exported by avoiding errors due to file system activity.
-
-### Metadata for exported files
-
-When files are exported from the Azure Managed Lustre file system to the blob container, additional metadata is saved to simplify reimporting the contents to a file system.
-
-The following table lists POSIX attributes from the Lustre file system that are saved in the blob metadata as key-value pairs:
-
-| POSIX attribute | Type |
-|-----------------|------|
-| `owner` | int |
-| `group` | int |
-| `permissions` | octal or rwxrwxrwx format; sticky bit is supported |
-
-Directory attributes are saved in an empty blob. This blob has the same name as the directory path and contains the following key-value pair in the blob metadata: `hdi_isfolder : true`.
-
-You can modify the POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
-
-### Considerations for export jobs
-
-The following items are important to consider when exporting data with an export job:
-
-- Only one import or export action can run at a time. For example, if an export job is in progress, attempting to start another export job returns an error.
-
 ## Restore data from a blob container
 
-For certain workloads and scenarios, you might prefer to restore the data from a blob container before it's first accessed. You can choose to prefetch the contents of blobs to avoid the initial delay when the blob is accessed for the first time after import. To prefetch the contents of blobs, you can use Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. The following command will prefetch the contents of the blobs into the file system:
+By default, the contents of a blob are imported to a file system the first time the corresponding file is accessed by a client. For certain workloads and scenarios, you might prefer to restore the data from a blob container before it's first accessed. You can choose to prefetch the contents of blobs to avoid the initial delay when the blob is accessed for the first time after import. To prefetch the contents of blobs, you can use Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. The following command will prefetch the contents of the blobs into the file system:
 
 ```bash
 nohup find local/directory -type f -print0 | xargs -0 -n 1 sudo lfs hsm_restore &
@@ -227,6 +185,48 @@ sys	0m37.960s
 
 > [!NOTE]
 > At this time, Azure Managed Lustre restores data from Blob Storage at a maximum throughput rate of ~7.5GiB/second.
+
+## Export data to Blob Storage using an export job
+
+You can copy data from your Azure Managed Lustre file system to long-term storage in Azure Blob Storage by [creating an export job](export-with-archive-jobs.md).
+
+### Which files are exported during an export job?
+
+When you export files from your Azure Managed Lustre system, not all files are copied to the blob container that you specified when you created the file system. The following rules apply to export jobs:
+
+- Export jobs only copy files that are new or whose contents are modified. If the file that you imported from the blob container during file system creation is unchanged, the export job doesn't export the file.
+- Files with metadata changes only aren't exported. Metadata changes include: owner, permissions, extended attributes, and name changes (renamed).
+- Files deleted in the Azure Managed Lustre file system aren't deleted in the original blob container during the export job. The export job doesn't delete files in the blob container.
+
+### Running export jobs in active file systems
+
+In active file systems, changes to files during the export job can result in failure status. This failure status lets you know that not all data in the file system could be exported to Blob Storage. In this situation, you can retry the export by [creating a new export job](export-with-archive-jobs.md#create-an-export-job). The new job copies only the files that weren't copied in the previous job.
+
+In file systems with a lot of activity, retries may fail multiple times because files are frequently changing. To verify that a file has been successfully exported to Blob Storage, check the timestamp on the corresponding blob. After the job completes, you can also view the logging container configured at deployment time to see detailed information about the export job. The logging container provides diagnostic information about which files failed, and why they failed.
+
+If you're preparing to decommission a cluster and want to perform a final export to Blob Storage, you should make sure that all I/O activities are halted before initiating the export job. This approach helps to guarantee that all data is exported by avoiding errors due to file system activity.
+
+### Metadata for exported files
+
+When files are exported from the Azure Managed Lustre file system to the blob container, additional metadata is saved to simplify reimporting the contents to a file system.
+
+The following table lists POSIX attributes from the Lustre file system that are saved in the blob metadata as key-value pairs:
+
+| POSIX attribute | Type |
+|-----------------|------|
+| `owner` | int |
+| `group` | int |
+| `permissions` | octal or rwxrwxrwx format; sticky bit is supported |
+
+Directory attributes are saved in an empty blob. This blob has the same name as the directory path and contains the following key-value pair in the blob metadata: `hdi_isfolder : true`.
+
+You can modify the POSIX attributes manually before using the container to hydrate a new Lustre cluster. Edit or add blob metadata by using the key-value pairs described earlier.
+
+### Considerations for export jobs
+
+The following items are important to consider when exporting data with an export job:
+
+- Only one import or export action can run at a time. For example, if an export job is in progress, attempting to start another export job returns an error.
 
 ## Copy a Lustre blob container with AzCopy or Storage Explorer
 
