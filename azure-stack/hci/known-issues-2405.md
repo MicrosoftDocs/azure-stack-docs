@@ -62,6 +62,7 @@ Here are the known issues in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Update<!--XX--> | When viewing the readiness check results for an Azure Stack HCI cluster via the Azure Update Manager, there may be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
+| Deployment<!--27312671--> | In some instances, the registration of Azure Stack HCI servers might fail with: *Encountered internal server error*. |There's no known workaround in this release. |
 
 ## Known issues from previous releases
 
