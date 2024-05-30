@@ -97,7 +97,7 @@ The following items are important to consider when importing data from a blob co
 - To view details about a completed import job, you can check the logging container. The logging container contains logs for the import job, including any errors or conflicts that occurred during the import.
 - If the import job fails for any reason, you might not have complete statistics about the import job, such as the number of files imported or number of conflicts.
 
-## Restore data from a blob container
+## Restore data from Blob Storage
 
 By default, the contents of a blob are imported to a file system the first time the corresponding file is accessed by a client. For certain workloads and scenarios, you might prefer to restore the data from a blob container before it's first accessed. You can choose to prefetch the contents of blobs to avoid the initial delay when the blob is accessed for the first time after import. To prefetch the contents of blobs, you can use Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. The following command will prefetch the contents of the blobs into the file system:
 
