@@ -9,23 +9,21 @@
     href: supported-kubernetes-versions.md  
   - name: Data collection
     href: data-collection.md
-- name: AKS enabled by Azure Arc 
+- name: AKS on Azure Stack HCI 23H2
   expanded: true
   items:
   - name: What's new in AKS on Azure Stack HCI 23H2
     href: aks-whats-new-23h2.md
   - name: Concepts
     items:
+    - name: Architecture
+      href: cluster-architecture.md
     - name: Networking
       items:
       - name: Networking concepts
         href: aks-hci-network-system-requirements.md
       - name: Load balancer
-        href: load-balancer-overview.md
-    - name: Infrastructure component updates
-      href: infrastructure-components.md
-    - name: Cluster architecture
-      href: cluster-architecture.md
+        href: load-balancer-overview.md      
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Azure Hybrid Benefit
@@ -120,12 +118,8 @@
       href: /rest/api/hybridcontainer/operation-groups
     - name: Azure Stack HCI
       href: /azure-stack/hci/index
-    - name: Windows Admin Center (WAC)
-      href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
     - name: Azure hybrid cloud
       href: /hybrid
-    - name: Windows Server
-      href: /windows-server/
     - name: Release notes
       href: https://aka.ms/AKS-hybrid-Releasenotes
     - name: AKS Arc PowerShell
@@ -138,10 +132,6 @@
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
     - name: Azure roadmap
       href: https://azure.microsoft.com/roadmap/
-    - name: AKS roadmap
-      href: https://aka.ms/k8sroadmap
-    - name: AKS enabled Arc roadmap
-      href: https://aka.ms/AKS-hybrid-roadmap
 - name: AKS Edge Essentials
   items:
   - name: Overview
@@ -228,7 +218,7 @@
       href: aks-edge-licensing.md
     - name: Microsoft Software License Terms
       href: aks-edge-software-license-terms.md 
-- name: AKS enabled by Azure Arc on VMware
+- name: AKS on VMware
   items:
   - name: Overview
     href: aks-vmware-overview.md
