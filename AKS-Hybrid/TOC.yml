@@ -60,6 +60,16 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
+    - name: Security and authentication
+      items:
+      - name: Retrieve certificate-based admin kubeconfig
+        href: retrieve-admin-kubeconfig.md
+      - name: Restrict SSH access
+        href: restrict-ssh-access.md
+      - name: Use Kubernetes RBAC with Microsoft Entra ID
+        href: kubernetes-rbac-23h2.md
+      - name: Use Azure RBAC for Kubernetes authorization
+        href: azure-rbac-23h2.md
     - name: Storage
       items:
       - name: CSI storage drivers
@@ -84,16 +94,6 @@
       href: aks-create-containers.md
     - name: Deploy container images using Azure Container Registry
       href: deploy-container-registry.md
-    - name: Security and authentication
-      items:
-      - name: Retrieve certificate-based admin kubeconfig
-        href: retrieve-admin-kubeconfig.md
-      - name: Restrict SSH access
-        href: restrict-ssh-access.md
-      - name: Use Kubernetes RBAC with Microsoft Entra ID
-        href: kubernetes-rbac-23h2.md
-      - name: Use Azure RBAC for Kubernetes authorization
-        href: azure-rbac-23h2.md
     - name: Monitoring and logging
       items:    
           - name: Monitor Kubernetes object events
