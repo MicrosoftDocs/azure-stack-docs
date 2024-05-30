@@ -76,6 +76,8 @@
         href: deploy-gpu-node-pool.md
       - name: Use labels in a Kubernetes cluster
         href: cluster-labels.md
+    - name: Download Kubernetes VHDs manually
+      href: offline-download.md
     - name: Scale a Kubernetes cluster
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
@@ -96,6 +98,8 @@
             href: kubernetes-monitor-object-events.md
           - name: Monitor Kubernetes audit events
             href: kubernetes-monitor-audit-events.md
+          - name: Monitor logs reference
+            href: kubernetes-monitor-metrics.md
           - name: Enable Container Insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable
           - name: Use on-premises monitoring
