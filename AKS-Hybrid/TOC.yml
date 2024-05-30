@@ -82,7 +82,7 @@
             href: kubernetes-monitor-object-events.md
           - name: Monitor Kubernetes audit events
             href: kubernetes-monitor-audit-events.md
-          - name: Monitoring logs reference
+          - name: Monitor logs reference
             href: kubernetes-monitor-metrics.md
           - name: Enable Container Insights
             href: /azure/azure-monitor/containers/kubernetes-monitoring-enable

@@ -3,7 +3,7 @@ title: Metrics and monitoring logs in AKS enabled by Azure Arc
 description: Learn about metrics and logs used to monitor Kubernetes clusters in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/11/2024
+ms.date: 05/30/2024
 ms.author: sethm 
 ms.lastreviewed: 03/28/2024
 ms.reviewer: haojiehan
