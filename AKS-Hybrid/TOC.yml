@@ -76,6 +76,8 @@
         href: deploy-gpu-node-pool.md
       - name: Use labels in a Kubernetes cluster
         href: cluster-labels.md
+    - name: Download Kubernetes VHDs manually
+      href: offline-download.md
     - name: Scale a Kubernetes cluster
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
