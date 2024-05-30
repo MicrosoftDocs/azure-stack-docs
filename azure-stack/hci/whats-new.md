@@ -59,7 +59,7 @@ For more information, see the [Fixed issues list in 2405](./known-issues-2405.md
 
 This release contains the following changes for updates:
 
-- Starting this release, an adjusted naming schema is introduced for updates. This schema allows for the idenitification of feature versus cumulative updates. <!--26952963-->
+- Starting this release, an adjusted naming schema is introduced for updates. This schema allows for the identification of feature versus cumulative updates. <!--26952963-->
 
 - This release contains reliability improvements:
   - For the update notifications for health check results sent from the device to Azure Update Manager. In certain instances, the message size was too large and results weren't shown in the Update Manager. <!--27230554-->
@@ -107,7 +107,7 @@ This release contains the following improvements to observability:
 
 Here are the changes related to the Azure portal, extensions, and resource providers:
 
-- In this release, an issue was fixed that prevented from showing a failed deployement in the Cluster overview when the deployment was cancelled.
+- In this release, an issue was fixed that prevented from showing a failed deployment in the Cluster overview when the deployment was canceled.
 - The **Retry** button in Azure portal is renamed to **Resume** as the deployment continues from the step that it failed.
 - The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
 - This release changes the behavior to not delete the Arc server resources when the Azure Stack HCI cluster resource is deleted.
