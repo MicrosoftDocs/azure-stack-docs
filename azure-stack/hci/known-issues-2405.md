@@ -62,7 +62,7 @@ Here are the known issues in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Update<!--XX--> | When viewing the readiness check results for an Azure Stack HCI cluster via the Azure Update Manager, there may be multiple readiness checks with the same name.  |There's no known workaround in this release. Select **View details** to view specific information about the readiness check. |
-| Deployment<!--27312671--> | In some instances, the registration of Azure Stack HCI servers might fail with: *Encountered internal server error*. |There's no known workaround in this release. |
+| Deployment<!--27312671--> | In some instances, during the registration of Azure Stack HCI servers, this error may be seen in the debug logs: *Encountered internal server error*. The registration does not fail but one of the mandatory extensions may not be installed. |Follow these steps to mitigate the issue: <br>1. Go to the Azure portal and then go to the resource group associated with the registration. <br>2. From the resource group, select the registered server. <br>3. Go to the **Extensions**. The four mandatory extensions show up in the right pane. <br>4. If the status of one of the extensions shows as **Failed**, select the extension and install it again.  |
 
 ## Known issues from previous releases
 
