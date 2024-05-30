@@ -3,7 +3,7 @@ title: Supported Kubernetes versions for AKS enabled by Azure Arc
 description: Understand the Kubernetes version support policy and lifecycle of clusters for Azure Kubernetes Service enabled by Azure Arc.
 services: container-service
 ms.topic: article
-ms.date: 11/29/2023
+ms.date: 05/29/2024
 author: sethmanheim
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -15,8 +15,6 @@ ms.reviewer: mikek
 ---
 
 # Supported Kubernetes versions in AKS
-
-[!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 This article describes the supported Kubernetes versions for Azure Kubernetes Service enabled by Azure Arc. The Kubernetes community releases minor versions roughly every three months. Recently, the Kubernetes community [increased the support window for each version from nine months to 12 months](https://kubernetes.io/blog/2020/08/31/kubernetes-1-19-feature-one-year-support/), starting with version 1.19.
 
@@ -104,8 +102,6 @@ To install or update your version of `kubectl`, run `az AKS on Azure Stack HCI a
 
 ## Release and deprecation process
 
-You can reference upcoming version releases and deprecations on the [AKS Kubernetes Release Calendar](#aks-kubernetes-release-calendar).
-
 For new minor versions of Kubernetes:
 
 * AKS publishes a pre-announcement with the planned date of a new version release and respective old version deprecation in the [AKS release notes](https://aka.ms/aks-hci-relnotes) at least 30 days prior to removal.
@@ -122,20 +118,6 @@ For new patch versions of Kubernetes:
 AKS reserves the right to add or remove new/existing versions with one or more critical production-impacting bugs or security issues without advance notice.
 
 Specific patch releases may be skipped or rollout accelerated, depending on the severity of the bug or security issue.
-
-## AKS Kubernetes release calendar
-
-For the past release history, see [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
-
-|  Kubernetes version | Upstream release  | AKS GA  | End of life |
-|--------------|-------------------|---------|-------------|
-| 1.23  | Dec 2021  | Aug 2022 | 1.26* |
-| 1.24  | May 2022   | Oct 2022 | 1.27*  |
-| 1.25  | Aug 2022   | May 2023  | 1.28*  |
-| 1.26  | Dec 2022   | July/Aug 2023*  | 1.29*  |
-| 1.27  | Apr 2023   | Sep/Oct 2023* | 1.30*  |
-
-All (*) values are predicted.
 
 ## FAQ
 

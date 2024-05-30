@@ -1381,8 +1381,13 @@
         "redirect_document_id": false
       },
       {
+<<<<<<< HEAD
         "source_path": "AKS-Hybrid/kubernetes-rbac-azure-ad.md",
         "redirect_url": "/azure/aks/hybrid/kubernetes-rbac-entra-id",
+=======
+        "source_path": "AKS-Hybrid/infrastructure-components.md",
+        "redirect_url": "/azure/aks/hybrid/cluster-architecture",
+>>>>>>> e28be431fb67d938ada1b72c4fc7351afd2774ce
         "redirect_document_id": false
       }
     ]
