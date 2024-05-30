@@ -25,7 +25,7 @@ You can configure blob integration during [cluster creation](create-file-system-
 
 When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when first accessed by a client. There's a slight delay when first accessing data while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system.
 
-You can prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. To learn more, see [Restore data from a blob container](#restore-data-from-a-blob-container).
+You can prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. To learn more, see [Restore data from Blob Storage](#restore-data-from-blob-storage).
 
 Azure Managed Lustre works with storage accounts that have hierarchical namespace enabled and storage accounts with a non-hierarchical, or flat, namespace. The following minor differences apply:
 
