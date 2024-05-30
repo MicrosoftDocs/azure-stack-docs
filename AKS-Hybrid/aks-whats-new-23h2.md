@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 04/25/2024
+ms.date: 05/28/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
-ms.lastreviewed: 01/26/2024
+ms.lastreviewed: 05/28/2024
 
 ---
 
@@ -41,6 +41,15 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 ## Features and improvements
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Stack HCI, version 23H2.
+
+### Release 2405
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **Azure RBAC support**. You can now enable Azure RBAC for Kubernetes while creating AKS Arc clusters using Azure CLI and Azure Resource Manager templates.
+- **Taints and labels update**. You can can now update taints and labels during an AKS Arc node pool update operation using Azure CLI and Azure Resource Manager templates.
+- **AKS Arc cluster platform metrics and alerts**. You can now view AKS Arc cluster metrics (platform metrics) and create metric-based alerts.
+- **Auto cert repair**. You can now automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
 
 ### Release 2402
 
