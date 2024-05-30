@@ -243,4 +243,6 @@ Error from server (Forbidden): pods is forbidden: User cannot list resource "pod
 
 ## Next steps
 
-- [Security concepts](concepts-security.md)
+- [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
+- [AKS Arc overview](aks-overview.md)
+

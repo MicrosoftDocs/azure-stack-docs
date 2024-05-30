@@ -18,13 +18,13 @@ ms.lastreviewed: 5/29/2024
 
 Applies to: AKS on Azure Stack HCI 23H2
 
-Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the **kubectl** tool based on the given permissions. Azure CLI provides an easy way to get the access credentials and kubeconfig configuration file to connect to your AKS enabled by Arc clusters using **kubectl**.
+Infrastructure administrators can use Azure role-based access control (Azure RBAC) to control who can access the *kubeconfig* file and the permissions they have. Kubernetes operators can interact with Kubernetes clusters using the **kubectl** tool based on the given permissions. Azure CLI provides an easy way to get the access credentials and kubeconfig configuration file to connect to your AKS Arc clusters using **kubectl**.
 
 When you use integrated authentication between Microsoft Entra ID and AKS Arc, you can use Microsoft Entra users, groups, or service principals as subjects in [Kubernetes role-based access control (Kubernetes RBAC)](concepts-security-access-and-identity-options.md). This feature frees you from having to separately manage user identities and credentials for Kubernetes. However, you still must set up and manage Azure RBAC and Kubernetes RBAC separately.
 
 This article describes how to use Azure RBAC for Kubernetes cluster authorization with Microsoft Entra ID and Azure role assignments.
 
-For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-and-identity-options.md) for AKS enabled by Azure Arc.
+For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-and-identity-options.md) for AKS Arc.
 
 ## Before you begin
 
@@ -49,7 +49,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 ## Step 2: Create role assignments for users to access the cluster
 
-AKS enabled by Azure Arc provides the following built-in roles:
+AKS Arc provides the following built-in roles:
 
 | Role                                                     | Description                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -135,7 +135,7 @@ To sign in, use a web browser to open the page `https://microsoft.com/devicelogi
 
 ### Use Azure RBAC for Kubernetes authorization with kubelogin
 
-AKS enabled by Azure Arc provides the [`kubelogin`](https://github.com/Azure/kubelogin) plugin to help unblock additional scenarios, such as non-interactive logins, older `kubectl` versions, or using SSO across multiple clusters without the need to sign in to a new cluster.
+AKS Arc provides the [`kubelogin`](https://github.com/Azure/kubelogin) plugin to help unblock additional scenarios, such as non-interactive logins, older `kubectl` versions, or using SSO across multiple clusters without the need to sign in to a new cluster.
 
 You can use the `kubelogin` plugin by running the following command:
 
@@ -173,6 +173,6 @@ az role definition delete -n "AKS Arc Deployment Reader"
 ## Next steps
 
 - [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
-- [Access and identity options](concepts-security-access-and-identity-options.md) for AKS enabled by Azure Arc
+- [Access and identity options](concepts-security-access-and-identity-options.md) for AKS Arc
 - [Create an Azure service principal with Azure CLI](/cli/azure/azure-cli-sp-tutorial-1)
 - Available Azure permissions for [Hybrid + Multicloud](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes)
