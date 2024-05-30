@@ -41,7 +41,7 @@ items:
       items:
       - name: May 2024 - Current
         href: security-update/hci-security-update-may-2024.md
-      - name: April 2024 - Current
+      - name: April 2024
         href: security-update/hci-security-update-apr-2024.md
       - name: March 2024 
         href: security-update/hci-security-update-mar-2024.md
