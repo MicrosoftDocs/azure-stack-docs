@@ -4,7 +4,7 @@ description: Learn how to create an import job to import data from an Azure Blob
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 05/14/2024
+ms.date: 05/30/2024
 ms.reviewer: brianl
 ---
 
@@ -13,6 +13,11 @@ ms.reviewer: brianl
 Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can configure this integration during [cluster creation](create-file-system-portal.md#blob-integration), and you can create an import job any time after the cluster is created.
 
 In this article, you learn how to use the Azure portal to create an import job to import data from a blob container into an existing Azure Managed Lustre file system.
+
+> [!NOTE]
+> When you import data from a blob container to an Azure Managed Lustre file system, only the file names (namespace) and metadata are imported into the Lustre namespace. The actual contents of a blob are imported when accessed by a client for the first time. When first accessing the data, there's a slight delay while the Lustre Hierarchical Storage Management (HSM) feature pulls in the blob contents to the corresponding file in the file system. This delay only occurs the first time a file is accessed.
+>
+> You can choose to prefetch the contents of blobs using Lustre's `lfs hsm_restore` command from a mounted client with sudo capabilities. To learn more, see [Restore data from Blob Storage](blob-integration.md#restore-data-from-blob-storage).
 
 ## Prerequisites
 
