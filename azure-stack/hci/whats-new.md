@@ -103,7 +103,7 @@ This release contains the following improvements to observability:
   - [Prepare CentOS Linux image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-centos.md).
   - [Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)](./manage/virtual-machine-image-red-hat-enterprise.md).
 
-## Azure portal, extensions, and resource provider changes
+### Azure portal, extensions, and resource provider changes
 
 Here are the changes related to the Azure portal, extensions, and resource providers:
 
