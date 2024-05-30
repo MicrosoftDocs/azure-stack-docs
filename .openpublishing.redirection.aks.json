@@ -1371,11 +1371,6 @@
         "redirect_document_id": false
       },
       {
-        "source_path": "AKS-Hybrid/offline-download.md",
-        "redirect_url": "/azure/aks/hybrid/aks-overview",
-        "redirect_document_id": false
-      },
-      {
         "source_path": "AKS-Hybrid/deploy-load-balancer.md",
         "redirect_url": "/azure/aks/hybrid/deploy-load-balancer-cli",
         "redirect_document_id": false
