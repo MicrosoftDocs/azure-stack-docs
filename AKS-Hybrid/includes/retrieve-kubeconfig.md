@@ -30,6 +30,7 @@ An AKS, enabled by Azure Arc cluster administrator can retrieve the certificate-
   ```
   
 - To run the Azure CLI command, you must have the `Azure Kubernetes Service Arc Cluster Admin` role, or **Microsoft.HybridContainerService/provisionedClusterInstances/listAdminKubeconfig/action** action on the Kubernetes cluster.
+- In order to retrieve, and use the certificate based admin Kubeconfig, you need to have direct line of sight to your AKS cluster. Run the following commands on the physical machine, or a jumbox that has access to the physical machines on which your AKS cluster is running.
 
 ### Retrieve the certificate-based admin kubeconfig using Az CLI
 
