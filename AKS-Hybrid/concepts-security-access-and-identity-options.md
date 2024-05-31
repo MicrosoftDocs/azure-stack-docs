@@ -20,8 +20,8 @@ Applies to: AKS on Azure Stack HCI 23H2
 
 You can authenticate, authorize, secure, and control access to Kubernetes clusters in various ways:
 
-- With Kubernetes role-based access control (Kubernetes RBAC), you can grant users, groups, and service accounts access to only the resources they need.
-- With Azure Kubernetes Service (AKS) enabled by Azure Arc, you can further enhance the security and permissions structure using Microsoft Entra ID and Azure RBAC. 
+- With [Kubernetes role-based access control (Kubernetes RBAC)](kubernetes-rbac-23h2.md), you can grant users, groups, and service accounts access to only the resources they need.
+- With [Azure Kubernetes Service (AKS) enabled by Azure Arc](azure-rbac-23h2.md), you can further enhance the security and permissions structure using Microsoft Entra ID and Azure RBAC.
 
 Kubernetes RBAC and AKS enabled by Arc help you secure your cluster access and provide only the minimum required permissions to developers and operators.
 
@@ -80,25 +80,25 @@ Azure Role-based Access Control (RBAC) is an authorization system built on [Azur
 
 | RBAC system | Description                                              |
 | --------------- | ------------------------------------------------------------ |
-| Kubernetes RBAC | Designed to work on Kubernetes resources within your AKS Arc cluster. |
-| Azure RBAC      | Designed to work on resources within your Azure subscription. |
+| [Kubernetes RBAC](kubernetes-rbac-23h2.md) | Designed to work on Kubernetes resources within your AKS Arc cluster. |
+| [Azure RBAC](azure-rbac-23h2.md)      | Designed to work on resources within your Azure subscription. |
 
 With Azure RBAC, you create a *role definition* that outlines the permissions to be applied. You then assign a user or group this role definition via a *role assignment* for a particular *scope*. The scope can be an individual resource, a resource group, or across the subscription.
 
 For more information, see [What is Azure role-based access control (Azure RBAC)?](/azure/role-based-access-control/overview)
 
-There are two levels of access needed to fully operate an AKS Arc cluster:
+There are two required levels of access to fully operate an AKS Arc cluster:
 
 - Access the AKS resource in your Azure subscription.
   - Control scaling or upgrading your cluster using the AKS Arc APIs.
   - Pull your **kubeconfig**.
 - Access to the Kubernetes API. This access is controlled by either:
-  - Kubernetes RBAC.
+  - Kubernetes RBAC, or
   - Integrating Azure RBAC with AKS Arc for Kubernetes authorization.
   
 ### Azure RBAC to authorize access to the AKS resource
 
-With Azure RBAC, you can provide your users (or identities) with granular access to AKS resources across one or more subscriptions. For example, you could use the **Azure Kubernetes Service Arc Contributor** role to scale and upgrade your cluster. Meanwhile, another user with the **Azure Kubernetes Service Arc Cluster Admin** role only has permission to pull the Admin **kubeconfig**.
+With Azure RBAC, you can provide your users (or identities) with granular access to AKS resources across one or more subscriptions. For example, you can use the **Azure Kubernetes Service Arc Contributor** role to scale and upgrade your cluster. Meanwhile, another user with the **Azure Kubernetes Service Arc Cluster Admin** role only has permission to pull the admin **kubeconfig**.
 
 ### Azure RBAC for Kubernetes authorization
 
@@ -134,18 +134,18 @@ Enhance your AKS Arc cluster security with Microsoft Entra integration. Built on
 
 :::image type="content" source="media/concepts-security-access-and-identity-options/entra-integration.png" alt-text="Flowchart showing Entra integration." lightbox="media/concepts-security-access-and-identity-options/entra-integration.png":::
 
-With Microsoft Entra integrated AKS clusters, you can grant users or groups access to Kubernetes resources within a namespace or across the cluster.
+With Microsoft Entra-integrated AKS clusters, you can grant users or groups access to Kubernetes resources within a namespace or across the cluster.
 
 - To obtain a **kubectl** configuration context, run the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command.
 - When a user interacts with the AKS Arc cluster with **kubectl**, they're prompted to sign in with their Microsoft Entra credentials.
 
 This approach provides a single source for user account management and password credentials. The user can only access the resources as defined by the cluster administrator.
 
-Microsoft Entra authentication is provided to AKS clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information on OpenID Connect, see the [OpenID Connect documentation](/azure/active-directory/develop/v2-protocols-oidc). From inside of the Kubernetes cluster, [Webhook Token Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication) is used to verify authentication tokens. Webhook token authentication is configured and managed as part of the AKS cluster.
+Microsoft Entra authentication is provided to AKS clusters with **OpenID Connect**. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information about OpenID Connect, see the [OpenID Connect documentation](/azure/active-directory/develop/v2-protocols-oidc). From inside the Kubernetes cluster, [Webhook Token Authentication](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication) is used to verify authentication tokens. Webhook token authentication is configured and managed as part of the AKS cluster.
 
 ## Summary
 
-View the table for a summary of how users can authenticate to Kubernetes when Microsoft Entra integration is enabled. In all cases, the sequence of commands is:
+The following table contains a summary of how users can authenticate to Kubernetes when Microsoft Entra integration is enabled. In all cases, the sequence of commands is:
 
 1. Run `az login` to authenticate to Azure.
 2. Run `az aksarc get-credentials` to download credentials for the cluster into `.kube/config`.
@@ -154,7 +154,7 @@ View the table for a summary of how users can authenticate to Kubernetes when Mi
 
 In the Azure portal, you can find:
 
-- The *Role Assignment* (Azure RBAC role grant) referred to in the second column is shown on the **Access Control (IAM)** tab.
+- The *Role assignment* (Azure RBAC role grant) referred to in the second column is shown on the **Access Control (IAM)** tab.
 - The Cluster Admin Microsoft Entra group is shown on the **Configuration** tab.
   - You can also use the `--aad-admin-group-object-ids` parameter in the Azure CLI.
 
