@@ -19,5 +19,4 @@ This article describes how to retrieve a certificate-based admin kubeconfig in A
 [!INCLUDE [retrieve-kubeconfig](includes/retrieve-kubeconfig.md)]
 
 ## Next steps
-
-[AKS Arc overview](aks-overview.md)
+- [Use Azure RBAC for Kubernetes authorization](azure-rbac-23h2.md)
