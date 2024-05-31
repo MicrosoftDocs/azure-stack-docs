@@ -224,10 +224,17 @@ In the previous step, you applied the `sku=gpu:NoSchedule` taint when you create
 
     Only pods that have this toleration applied can be scheduled on nodes in `taintnp`. Any other pods are scheduled in the **nodepool1** node pool. If you create more node pools, you can use taints and tolerations to limit what pods can be scheduled on those node resources.
 
+### Update a cluster node pool to add a node taint
+
+Update a cluster to add a node taint using the [`az aksarc update`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-update) command and the `--node-taints` parameter to specify `sku=gpu:NoSchedule` for the taint. AKS Arc doesn't add a new taint, it replaces the taints with the new values. The old taints are deleted.
+
+```azurecli
+az aksarc update -g myResourceGroup --cluster-name myAKSCluster --name taintnp --node-taints "sku=gpu:NoSchedule"   
+```
+
 ### Setting node pool labels
 
 For more information, see [Use labels in an Azure Arc enabled AKS cluster](cluster-labels.md).
-::: zone-end
 
 ## Next steps
 
