@@ -1,5 +1,5 @@
 ---
-title: Access and identity options for Azure Kubernetes Service (AKS) enabled by Azure Arc
+title: Access and identity options for Azure Kubernetes Service (AKS) Arc
 description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Stack HCI.
 author: leslielin
 ms.topic: conceptual
@@ -14,18 +14,18 @@ ms.reviewer:
 
 ---
 
-# Access and identity options for AKS enabled by Azure Arc 
+# Access and identity options for AKS Arc
 
 Applies to: AKS on Azure Stack HCI 23H2
 
 You can authenticate, authorize, secure, and control access to Kubernetes clusters in various ways:
 
 - With [Kubernetes role-based access control (Kubernetes RBAC)](kubernetes-rbac-23h2.md), you can grant users, groups, and service accounts access to only the resources they need.
-- With [Azure Kubernetes Service (AKS) enabled by Azure Arc](azure-rbac-23h2.md), you can further enhance the security and permissions structure using Microsoft Entra ID and Azure RBAC.
+- With [AKS Arc](azure-rbac-23h2.md), you can further enhance the security and permissions structure using Microsoft Entra ID and Azure RBAC.
 
-Kubernetes RBAC and AKS enabled by Arc help you secure your cluster access and provide only the minimum required permissions to developers and operators.
+Kubernetes RBAC and AKS Arc help you secure your cluster access and provide only the minimum required permissions to developers and operators.
 
-This article introduces the core concepts that help you authenticate and assign permissions in AKS enabled by Azure Arc.
+This article introduces the core concepts that help you authenticate and assign permissions in AKS Arc.
 
 ## Kubernetes RBAC
 
@@ -64,7 +64,7 @@ To bind roles across the entire cluster, or to cluster resources outside a given
 With a ClusterRoleBinding, you bind roles to users and apply to resources across the entire cluster, not a specific namespace. This approach lets you grant administrators or support engineers access to all resources in the AKS cluster.
 
 > [!NOTE]
-> AKS enabled by Arc performs any cluster actions with user consent under a built-in Kubernetes role named **aks-service** and a built-in role binding **aks-service-rolebinding**. This role enables AKS to troubleshoot and diagnose cluster issues, but can't modify permissions or create roles or role bindings, or perform other high privilege actions. Role access is only enabled under active support tickets with just-in-time (JIT) access. 
+> AKS Arc performs any cluster actions with user consent under a built-in Kubernetes role named **aks-service** and a built-in role binding **aks-service-rolebinding**. This role enables AKS to troubleshoot and diagnose cluster issues, but can't modify permissions or create roles or role bindings, or perform other high privilege actions. Role access is only enabled under active support tickets with just-in-time (JIT) access. 
 
 ## Kubernetes service accounts
 
@@ -104,7 +104,7 @@ With Azure RBAC, you can provide your users (or identities) with granular access
 
 With the Azure RBAC integration, AKS Arc uses a Kubernetes authorization webhook server so you can manage Microsoft Entra integrated Kubernetes cluster resource permissions and assignments using Azure role definition and role assignments.
 
-:::image type="content" source="media/concepts-security-access-and-identity-options/azure-rbac-k8s-authz-flow.png" alt-text="Image showing authorization flow." lightbox="media/concepts-security-access-and-identity-options/azure-rbac-k8s-authz-flow.png":::
+:::image type="content" source="media/concepts-security-access-identity/azure-rbac-k8s-authorization-flow.png" alt-text="Diagram of authorization flow." lightbox="media/concepts-security-access-identity/azure-rbac-k8s-authorization-flow.png":::
 
 As shown in this diagram, when using the Azure RBAC integration, all requests to the Kubernetes API follow the same authentication flow as described in [Microsoft Entra integration](#microsoft-entra-integration).
 
@@ -119,7 +119,7 @@ With this feature, you not only give users permissions to the AKS Arc resource a
 
 ### Built-in roles
 
-AKS enabled by Azure Arc provides the following four built-in roles. They are similar to the [Kubernetes built-in roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) with a few differences, such as supporting CRDs. See the full list of actions allowed by each [Azure built-in role](/azure/role-based-access-control/built-in-roles).
+AKS Arc provides the following four built-in roles. They are similar to the [Kubernetes built-in roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) with a few differences, such as supporting CRDs. See the full list of actions allowed by each [Azure built-in role](/azure/role-based-access-control/built-in-roles).
 
 | Role                                                     | Description                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -130,9 +130,9 @@ AKS enabled by Azure Arc provides the following four built-in roles. They are si
 
 ## Microsoft Entra integration
 
-Enhance your AKS Arc cluster security with Microsoft Entra integration. Built on enterprise identity management experience, Microsoft Entra ID is a multi-tenant, cloud-based directory and identity management service that combines core directory services, application access management, and identity protection. With Microsoft Entra ID, you can integrate on-premises identities into AKS Arc clusters to provide a single source for account management and security.
+Enhance your AKS Arc cluster security with Microsoft Entra integration. Built on enterprise identity management experience, Microsoft Entra ID is a multitenant, cloud-based directory and identity management service that combines core directory services, application access management, and identity protection. With Microsoft Entra ID, you can integrate on-premises identities into AKS Arc clusters to provide a single source for account management and security.
 
-:::image type="content" source="media/concepts-security-access-and-identity-options/entra-integration.png" alt-text="Flowchart showing Entra integration." lightbox="media/concepts-security-access-and-identity-options/entra-integration.png":::
+:::image type="content" source="media/concepts-security-access-identity/entra-integration.png" alt-text="Flowchart showing Entra integration." lightbox="media/concepts-security-access-identity/entra-integration.png":::
 
 With Microsoft Entra-integrated AKS clusters, you can grant users or groups access to Kubernetes resources within a namespace or across the cluster.
 

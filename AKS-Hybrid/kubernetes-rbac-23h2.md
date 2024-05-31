@@ -64,15 +64,15 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 
 1. Use the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command to get the cluster admin credentials:
 
-```azurecli
-az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin
-```
+  ```azurecli
+  az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin
+  ```
 
 1. Create a namespace in the Kubernetes cluster using the [`kubectl create namespace`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
 
-```bash  
-kubectl create namespace dev
-```
+  ```bash  
+  kubectl create namespace dev
+  ```
 
 In Kubernetes, **Roles** define the permissions to grant, and **RoleBindings** apply the permissions to desired users or groups. These assignments can be applied to a given namespace or across an entire cluster. For more information, see [Using Kubernetes RBAC authorization](/azure/aks/concepts-identity#kubernetes-rbac).
 
@@ -80,71 +80,71 @@ Create a role for the **dev** namespace. This role grants full permissions to th
 
 1. Create a file named **role-dev-namespace.yaml** and copy/paste the following YAML manifest:
 
-```yaml
-kind: Role
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: dev-user-full-access
-  namespace: dev
-rules:
-- apiGroups: ["", "extensions", "apps"]
-  resources: ["*"]
-  verbs: ["*"]
-- apiGroups: ["batch"]
-  resources:
-  - jobs
-  - cronjobs
-  verbs: ["*"]
-```
+  ```yaml
+  kind: Role
+  apiVersion: rbac.authorization.k8s.io/v1
+  metadata:
+    name: dev-user-full-access
+    namespace: dev
+  rules:
+  - apiGroups: ["", "extensions", "apps"]
+    resources: ["*"]
+    verbs: ["*"]
+  - apiGroups: ["batch"]
+    resources:
+    - jobs
+    - cronjobs
+    verbs: ["*"]
+  ```
 
 1. Create the role using the [`kubectl apply`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command, and specify the filename of your YAML manifest:
 
-```bash
-kubectl apply -f role-dev-namespace.yaml
-```
+  ```bash
+  kubectl apply -f role-dev-namespace.yaml
+  ```
 
 1. Get the resource ID for the **appdev** group using the [`az ad group show`](/cli/azure/ad/group#az_ad_group_show) command. This group is set as the subject of a RoleBinding in the next step:
 
-```azurecli  
-az ad group show --group appdev --query objectId -o tsv
-```
+  ```azurecli  
+  az ad group show --group appdev --query objectId -o tsv
+  ```
 
-The `az ad group show` command returns the value you use as `groupObjectId`:
+  The `az ad group show` command returns the value you use as `groupObjectId`:
 
-```output  
-38E5FA30-XXXX-4895-9A00-050712E3673A
-```
+  ```output  
+  38E5FA30-XXXX-4895-9A00-050712E3673A
+  ```
 
 1. Create a file named **rolebinding-dev-namespace.yaml**, and copy/paste the following YAML manifest. You establish the role binding that enables the **appdev** group to use the `role-dev-namespace` role for namespace access. On the last line, replace `groupObjectId` with the group object ID produced by the `az ad group show` command:
 
-```yaml
-kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1
-metadata:
-  name: dev-user-access
-  namespace: dev
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: Role
-  name: dev-user-full-access
-subjects:
-- kind: Group
-  namespace: dev
-  name: groupObjectId
-```
+  ```yaml
+  kind: RoleBinding
+  apiVersion: rbac.authorization.k8s.io/v1
+  metadata:
+    name: dev-user-access
+    namespace: dev
+  roleRef:
+    apiGroup: rbac.authorization.k8s.io
+    kind: Role
+    name: dev-user-full-access
+  subjects:
+  - kind: Group
+    namespace: dev
+    name: groupObjectId
+  ```
 
-> [!TIP]  
-> If you want to create the **RoleBinding** for a single user, specify `kind: User` and replace `groupObjectId` with the user principal name (UPN) in the example.
+  > [!TIP]  
+  > If you want to create the **RoleBinding** for a single user, specify `kind: User` and replace `groupObjectId` with the user principal name (UPN) in the example.
 
 1. Create the **RoleBinding** using the [`kubectl apply`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) command and specify the filename of your YAML manifest:
 
-```bash  
-kubectl apply -f rolebinding-dev-namespace.yaml
-```
+  ```bash  
+  kubectl apply -f rolebinding-dev-namespace.yaml
+  ```
 
-```output  
-rolebinding.rbac.authorization.k8s.io/dev-user-access created
-```
+  ```output  
+  rolebinding.rbac.authorization.k8s.io/dev-user-access created
+  ```
 
 ## Use built-in Kubernetes RBAC roles for your AKS cluster resource
 

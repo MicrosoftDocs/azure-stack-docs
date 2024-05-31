@@ -62,6 +62,8 @@
         #   href: load-balancer-troubleshoot.md
     - name: Security and authentication
       items:
+      - name: Access and identity options
+        href: concepts-security-access-identity.md
       - name: Retrieve certificate-based admin kubeconfig
         href: retrieve-admin-kubeconfig.md
       - name: Restrict SSH access

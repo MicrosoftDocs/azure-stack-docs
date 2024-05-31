@@ -210,7 +210,7 @@ Now, test the expected permissions when you create and manage resources in a Kub
    kubectl get pods --namespace dev
    ```
 
-   When NGINX is successfully running, you should see the following the output:
+   When NGINX is successfully running, you should see the following output:
 
     ```output  
     NAME        READY   STATUS    RESTARTS   AGE
