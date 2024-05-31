@@ -43,6 +43,9 @@ Ensure you meet the following prerequisites:
 
 You can retrive the kubeconfig of your AKS cluster using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command.
 
+> [!CAUTION]
+> The admin kubeconfig contains secrets, so you should follow best security practices for the admin kubeconfig; such as securely handle it, rotate secrets periodically, and so on.
+
 ```azurecli
 az aksarc get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
