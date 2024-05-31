@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2024
+ms.date: 05/29/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -73,11 +73,14 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
 
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/deployment-install-os/azure-stack-hci-admin-password-changed.png":::
 
+> [!IMPORTANT]
+> After the OS is installed, a web service runs until the server is registered with Azure Arc. After the server is registered, the web service is disabled. During this period, it is expected that the security software may flag the open port and the listener (TCP 443) associated with the web service as a potential threat.
+
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
 ## Configure the operating system using SConfig
 
-You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1) to configure Azure Stack HCI version 23H2 after installation. 
+You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1) to configure Azure Stack HCI, version 23H2 after installation.
 
 To use SConfig, sign in to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you sign in to the server.
 
@@ -89,6 +92,9 @@ To use SConfig, sign in to the server running the Azure Stack HCI operating syst
 Follow these steps to configure the operating system using SConfig:
 
 1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your servers.
+
+    > [!IMPORTANT]
+    > If your hardware partner provides a solution builder extension (SBE), copy it to each server that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Stack HCI solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 1. Configure networking as per your environment. You can configure the following optional settings:
 
@@ -130,17 +136,6 @@ Follow these steps to configure the operating system using SConfig:
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
     > - Do not join the servers with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. Cluster nodes are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
-
-
-## Install required Windows roles
-
-1. Install the Hyper-V role. Run the following command on each server of the cluster:
-
-    ```powershell
-    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-    ```
-
-    Your servers will restart; this takes a few minutes.
 
 You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment.
 
