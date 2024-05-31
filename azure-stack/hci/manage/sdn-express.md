@@ -203,6 +203,8 @@ The following configuration sample files for deploying SDN are available on the 
 
 - **SDN Gateways.psd1** - Deploy Network Controller, Software Load Balancer and Gateway for connectivity to external networks.
 
+[!INCLUDE [redeploy-sdn-network-controller](../../includes/hci-redeploy-sdn-network-controller.md)]
+
 ## Next steps
 
 - [Manage VMs](../manage/vm.md)
