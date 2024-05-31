@@ -16,7 +16,7 @@ ms.lastreviewed: 9/9/2021
 # Add Linux images to the Azure Stack Hub Marketplace
 
 > [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
+> CentOS is a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux-based image to the Azure Stack Hub Marketplace. The easiest way to add a Linux image to Azure Stack Hub is through marketplace management. These images have been prepared and tested for compatibility with Azure Stack Hub.
 
@@ -62,11 +62,10 @@ For more information about the agent, see the [FAQ for WALinuxAgent](https://git
 
 You can prepare your own Linux image using the following instructions:
 
-* [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=/azure/virtual-machines/linux/toc.json)
-* [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
-* [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
-* [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
-* [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=/azure/virtual-machines/linux/toc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
+- [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
+- [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=/azure/virtual-machines/linux/toc.json)
 
 ## Cloud-init
 
