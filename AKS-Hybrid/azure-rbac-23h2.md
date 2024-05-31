@@ -28,14 +28,13 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 
 ## Before you begin
 
-- AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
+- AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during initial deployment and Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
 - To enable Azure RBAC, you must be running the Azure CLI **aksarc extension version 1.1.1** or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - To interact with Kubernetes clusters, you must install [kubectl](https://kubernetes.io/docs/tasks/tools/) and [kubelogin](https://azure.github.io/kubelogin/install.html).
 - The infrastructure administrator needs the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
   - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role. 
   - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
 - New role assignments can take up to five minutes to propagate and be updated by the authorization server.
-- Azure RBAC for Kubernetes authorization requires that the Microsoft Entra tenant configured for authentication is same as the tenant for the subscription that contains your AKS Arc cluster.
 
 ## Step 1: Create an Azure RBAC-enabled Kubernetes cluster
 
@@ -73,6 +72,8 @@ The following example assigns the **Azure Arc Kubernetes Cluster Admin** role to
 ```azurecli
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee <assignee-object-id> --scope $ARM_ID
 ```
+
+The scope can be the resource group containing the cluster, or the Azure Resource Manager ID of the cluster.
 
 ### Create custom role definitions
 
