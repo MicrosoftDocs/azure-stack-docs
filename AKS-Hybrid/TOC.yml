@@ -124,6 +124,8 @@
       href: aks-known-issues.md
     - name: Troubleshoot
       href: aks-troubleshoot.md
+    - name: KubeAPIServer unreachable
+      href: kubeapiserver-unreachable.md
   - name: Reference
     items:
     - name: Azure CLI
