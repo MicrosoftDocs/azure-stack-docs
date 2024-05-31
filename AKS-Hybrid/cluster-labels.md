@@ -36,7 +36,7 @@ This article describes how to use labels in a Kubernetes cluster on AKS enabled 
 
 1. Create a node pool with a label using the [`az aksarc nodepool add`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-add) command and specify a name for the `--name` parameters and labels for the `--labels` parameter. Labels must be a key/value pair and have [valid syntax](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 
-   The following example creates a node pool named `labelnp` with the labels `dept=HR`:
+   The following example creates a node pool named `labelnp` with the label `dept=HR`:
 
    ```azurecli
    az aks nodepool add –resource-group myResourceGroup –cluster-name myAKSCluster –name labelnp –node-count 1 –labels dept=HR –no-wait
