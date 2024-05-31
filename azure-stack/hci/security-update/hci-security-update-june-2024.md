@@ -21,7 +21,7 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update affects Server Message Block (SMB) over Quick UDP Internet Connections (QUIC). It turns on the SMB over QUIC client certificate authentication feature. Administrators can use it to restrict which clients can access SMB over QUIC servers. To learn more, see [Configure SMB over QUIC client access control in Windows Server](https://learn.microsoft.com/windows-server/storage/file-server/configure-smb-over-quic-client-access-control).
+- This update affects Server Message Block (SMB) over Quick UDP Internet Connections (QUIC). It turns on the SMB over QUIC client certificate authentication feature. Administrators can use it to restrict which clients can access SMB over QUIC servers. To learn more, see [Configure SMB over QUIC client access control in Windows Server](/windows-server/storage/file-server/configure-smb-over-quic-client-access-control).
 
 - This update affects the version of **curl.exe** that is in Windows. The version number is now 8.7.1.  
 
