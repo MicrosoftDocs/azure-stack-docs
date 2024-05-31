@@ -11,7 +11,7 @@ ms.reviewer: sulahiri
 
 ---
 
-## Get admin certificate-based kubeconfig
+## Get certificate-based admin kubeconfig
 
 An AKS, enabled by Azure Arc cluster administrator can retrieve the certificate-based admin kubeconfig using the following command. 
 
