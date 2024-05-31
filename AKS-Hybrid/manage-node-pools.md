@@ -226,7 +226,7 @@ In the previous step, you applied the `sku=gpu:NoSchedule` taint when you create
 
 ### Update a cluster node pool to add a node taint
 
-Update a cluster to add a node taint using the [az aksarc update](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-update) command and the `--node-taints` parameter to specify `sku=gpu:NoSchedule` for the taint.
+Update a cluster to add a node taint using the [`az aksarc update`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-update) command and the `--node-taints` parameter to specify `sku=gpu:NoSchedule` for the taint. AKS Arc doesn't add a new taint, it replaces the taints with the new values. The old taints are deleted.
 
 ```azurecli
 az aksarc update -g myResourceGroup --cluster-name myAKSCluster --name taintnp --node-taints "sku=gpu:NoSchedule"   
