@@ -9,7 +9,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 04/26/2024
+ms.date: 05/31/2024
 ---
 
 # Deploy Windows Server Azure Edition VMs on Azure Stack HCI, version 23H2
@@ -33,7 +33,10 @@ To use Windows Server Azure Edition on your Azure Stack HCI environment, here ar
 
 - **VM licensing:**  Windows Server Azure Edition can be licensed with either:
 
-  - **Windows Server subscription**: Turn on the subscription on your Azure Stack HCI cluster, then apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest. To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
+  - **Windows Server subscription**: Turn on the subscription on your Azure Stack HCI cluster, then choose one of the following options to activate:
+    - Apply [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys) on the guest VM using the `slmgr /ipk <AVMA_key>` command.
+    - Apply AVMA client key on every Azure Stack HCI host using the `Set-VMAutomaticActivation <product key>` cmdlet.
+    To learn more, see [Activate Windows Server subscription](vm-activate.md#activate-windows-server-subscription).
 
   - **Bring Your Own License (BYOL)**: If you have a valid Windows Server Datacenter license with active Software Assurance (SA), you can use [AVMA](vm-activate.md#activate-bring-your-own-license-byol-through-avma) or [KMS](/windows-server/get-started/kms-client-activation-keys) for guest activation.
 
