@@ -124,7 +124,7 @@
       href: aks-known-issues.md
     - name: Troubleshoot
       href: aks-troubleshoot.md
-    - name: KubeAPIServer unreachable
+    - name: KubeAPIServer unreachable error
       href: kubeapiserver-unreachable.md
   - name: Reference
     items:
