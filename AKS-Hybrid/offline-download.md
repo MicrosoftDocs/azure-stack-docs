@@ -78,5 +78,5 @@ Before you begin the download process, the following prerequisites are required:
 
 ## Next steps
 
-- [Create Kubernetes clusters on Azure Stack HCI using Azure portal](aks-create-clusters-portal)
-- [Create node pools on AKS clusters](manage-node-pools)
+- [Create Kubernetes clusters on Azure Stack HCI using Azure portal](aks-create-clusters-portal.md)
+- [Create node pools on AKS clusters](manage-node-pools.md)
