@@ -94,6 +94,8 @@
       items:
       - name: Labels
         href: cluster-labels.md
+      - name: Taints
+        href: aks-arc-use-node-taints.md
     - name: Scale a Kubernetes cluster
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
