@@ -4,6 +4,7 @@ description: Learn how to troubleshoot the failed to either reach kube-apiserver
 ms.topic: troubleshoot
 ms.date: 05/29/2024
 ms.reviewer: abha
+ms.author: abha
 #Customer intent: As an Azure Kubernetes user, I want to troubleshoot the "failed to either reach kube-apiserver or control plane IP of Kubernetes cluster from Arc Resource Bridge IP error" error code so that I can successfully start or create and deploy an Azure Kubernetes Service Arc cluster.
 
 ---
@@ -29,10 +30,10 @@ Failed to either reach kube-apiserver or control plane IP %s:%d of Kubernetes cl
 - Duplicate IPs and IP address collisions is another reason why the API server may be unreachable. Ensure that you've not used the IP addresses provided in the management network anywhere else. Likewise, ensure that the control plane IP provided during the AKS cluster creation operation isnt used anywhere else. 
 
 ## Contact Microsoft Support
-If the problem persists, collect the following before [creating a support request](/aks-troubleshoot#open-a-support-request). Collect [AKS cluster logs](/get-on-demand-logs) before creating the support request.
+If the problem persists, collect the following before [creating a support request](aks-troubleshoot#open-a-support-request). Collect [AKS cluster logs](get-on-demand-logs) before creating the support request.
 
 ## More information
-- [Review known issues for AKS on Azure Stack HCI 23H2](/aks-known-issues)
-- [Review AKS on Azure Stack HCI 23H2 architecture](/cluster-architecture)
-- [Review networking pre-requisities for AKS on Azure Stack HCI 23H2](/aks-hci-network-system-requirements)
+- [Review known issues for AKS on Azure Stack HCI 23H2](aks-known-issues)
+- [Review AKS on Azure Stack HCI 23H2 architecture](cluster-architecture)
+- [Review networking pre-requisities for AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements)
 
