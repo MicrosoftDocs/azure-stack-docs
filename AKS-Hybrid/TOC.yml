@@ -49,7 +49,7 @@
       - name: Azure portal
         href: aks-create-clusters-portal.md   
       - name: Deploy to Azure using a quickstart template
-        href: https://learn.microsoft.com/samples/azure/azure-quickstart-templates/aks-on-ashci
+        href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
     - name: Networking
@@ -132,18 +132,12 @@
       href: /cli/azure/aksarc
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
+  - name: Resources
+    items:
     - name: Azure Stack HCI
       href: /azure-stack/hci/index
     - name: Azure hybrid cloud
       href: /hybrid
-    - name: Release notes
-      href: https://aka.ms/AKS-hybrid-Releasenotes
-    - name: AKS Arc PowerShell
-      href: ./reference/ps/index.md
-    - name: Add-ons, extensions, and integrations
-      href: add-ons.md    
-  - name: Resources
-    items:
     - name: Azure Arc Jumpstart
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
     - name: Azure roadmap
@@ -541,6 +535,12 @@
       href: help-support.md
     - name: File bugs
       href: https://aka.ms/AKS-hybrid-issues
+    - name: Release notes
+      href: https://aka.ms/AKS-hybrid-Releasenotes
+    - name: AKS Arc PowerShell
+      href: ./reference/ps/index.md
+    - name: Add-ons, extensions, and integrations
+      href: add-ons.md    
   - name: Architecture
     items:
     - name: Baseline architecture for AKS
