@@ -5,7 +5,7 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: reference
-ms.date: 12/01/2022
+ms.date: 06/03/2024
 ms.reviewer: unknown
 ms.lastreviewed: 4/28/2021
 
@@ -14,9 +14,6 @@ ms.lastreviewed: 4/28/2021
 ---
 
 # Graphics processing unit (GPU) virtual machine (VM) on Azure Stack Hub
-
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 This article describes which graphics processing unit (GPU) models are supported on an Azure Stack Hub integrated system. You can also find instructions on installing the drivers used with the GPUs. GPU support in Azure Stack Hub enables solutions such as artificial intelligence, training, inference, and data visualization. The AMD Radeon Instinct MI25 can be used to support graphic-intensive applications such as Autodesk AutoCAD.
 
@@ -188,9 +185,7 @@ You will need to reference some URLs for your settings.
 | URL | Notes |
 | --- | --- |
 | PUBKEY_URL | The PUBKEY_URL is the public key for the Nvidia driver repository not for the Linux VM. It is used to install driver for Ubuntu. |
-| DKMS_URL | DKMS_URL is used to get the package to compile the Nvidia kernel module on RedHat/CentOs. |
 | DRIVER_URL  | DRIVER_URL is the URL to download the Nvidia driver's repository information and it is added to the Linux VM's list of repos. |
-| LIS_URL  | LIS_URL is the URL to download the Linux Integration Service package for RedHat/CentOs, [Linux Integration Services v4.3 for Hyper-V and Azure](https://www.microsoft.com/download/details.aspx?id=55106) at URL `https://www.microsoft.com/download/details.aspx?id=55106` by default it is not installed LIS_RHEL_ver is the fallback kernel version that should work with the Nvidia driver. It is used on RedHat/CentOs if the Linux VM's kernel is not compatible with the requested Nvidia driver. |
 
 Add the URLs to your settings.
 
