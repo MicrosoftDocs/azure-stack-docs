@@ -14,10 +14,7 @@ ms.reviewer: sulahiri
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-This article describes how to retrieve a certificate-based admin kubeconfig in AKS enabled by Azure Arc.
-
 [!INCLUDE [retrieve-kubeconfig](includes/retrieve-kubeconfig.md)]
 
 ## Next steps
-
-[AKS Arc overview](aks-overview.md)
+- [Use Azure RBAC for Kubernetes authorization](azure-rbac-23h2.md)
