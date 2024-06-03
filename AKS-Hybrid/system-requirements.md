@@ -135,7 +135,7 @@ When creating a Kubernetes cluster on Azure Stack HCI, the following firewall po
 
 If the Azure Stack HCI physical cluster nodes and the Azure Kubernetes cluster VMs are on two isolated vlans, these ports must be opened at the firewall between them:
 
-| Port   | Source                               | Description                                        | Firewall Notes                                                                               |
+| Port   | Destination                          | Description                                        | Firewall Notes                                                                               |
 |-------|--------------------------------------|----------------------------------------------------|----------------------------------------------------------------------------------------------|
 | 22    | AKS VMs                              | Required to collect logs when using `Get-AksHciLogs`. | If using separate VLANs, the physical Hyper-V Hosts must access the AKS VMs on this port. |
 | 6443  | AKS VMs                              | Required to communicate with Kubernetes APIs.       | If using separate VLANs, the physical Hyper-V Hosts must access the AKS VMs on this port. |
