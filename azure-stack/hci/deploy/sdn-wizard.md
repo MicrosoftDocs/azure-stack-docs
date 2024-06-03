@@ -3,7 +3,7 @@ title: Deploy SDN using Windows Admin Center
 description: Learn how to deploy an SDN infrastructure using Windows Admin Center
 author: sethmanheim
 ms.topic: how-to
-ms.date: 08/22/2023
+ms.date: 05/31/2024
 ms.author: sethm
 ms.reviewer: JasonGerend
 ---
@@ -92,29 +92,7 @@ SDN Network Controller deployment is a functionality of the SDN Infrastructure e
 1. Wait until the wizard completes its job. Stay on this page until all progress tasks are complete, and then click **Finish**.
 1. After the Network Controller VMs are created, configure dynamic DNS updates for the Network Controller cluster name on the DNS server. For more information, see [Dynamic DNS updates](../concepts/network-controller.md#dynamic-dns-updates).
 
-### Redeploy SDN Network Controller
-
-If the Network Controller deployment fails or you want to deploy it again, do the following:
-
-1. Delete all Network Controller VMs and their VHDs from all server nodes.
-1. Remove the following registry key from all hosts by running this command:
-
-   ```powershell
-    Remove-ItemProperty -path 'HKLM:\SYSTEM\CurrentControlSet\Services\NcHostAgent\Parameters\' -Name Connections
-   ```
-
-1. After removing the registry key, remove the cluster from the Windows Admin Center management, and then add it back.
-
-   > [!NOTE]
-   > If you don't do this step, you may not see the SDN deployment wizard in Windows Admin Center.
-
-1. (Additional step only if you plan to uninstall Network Controller and not deploy it again) Run the following cmdlet on all the servers in your Azure Stack HCI cluster, and then skip the last step.
-    
-    ```powershell
-    Disable-VMSwitchExtension -VMSwitchName "<Compute vmswitch name>" -Name "Microsoft Azure VFP Switch Extension"
-    ```
-
-1. Run the deployment wizard again.
+[!INCLUDE [redeploy-sdn-network-controller](../../includes/hci-redeploy-sdn-network-controller.md)]
 
 ## Deploy SDN Software Load Balancer
 

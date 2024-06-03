@@ -2,7 +2,7 @@
 title: Azure Stack HCI and security standards
 description: Learn about Azure Stack HCI, security standards, and security assurance.
 ms.date: 2/5/2024
-ms.topic: connceptual
+ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.author: nguyenhung
@@ -32,7 +32,7 @@ The following table lists the current status of Azure Stack FIPS 140 validations
 
 Microsoft is committed to optimizing the security of its products and services. As part of that commitment, Microsoft supports the *Common Criteria for Information Technology Security Evaluation* program (CC), ensures that products incorporate the features and functions required by relevant Common Criteria *Protection Profiles*, and completes Common Criteria certifications of several operating system products.
 
-The following table lists the current status of Azure Stack Common Criteria certifications, together with relevant certification documentation. Learn more about Microsoft’s approach to Common Criteria certifications at [Common Criteria certifications](/windows/security/security-foundations/certification/windows-platform-common-criteria).
+The following table lists the current status of Azure Stack Common Criteria certifications, together with relevant certification documentation. Learn more about Microsoft's approach to Common Criteria certifications at [Common Criteria certifications](/windows/security/security-foundations/certification/windows-platform-common-criteria).
 
 |Products |Evaluation status |Details |
 |---------|---------|---------|
@@ -60,7 +60,7 @@ Azure cloud services not only have PCI DSS validation for Azure Stack HCI but al
 
 ## Health Insurance Portability and Accountability Act of 1996 (HIPAA)
 
-The *Health Insurance Portability and Accountability Act of 1996 (HIPAA)* is a set of rules and regulations set forth by the U.S. Department of Health and Human Services (HHS) to protect the privacy, security, and integrity of patients’ sensitive health information. HIPAA applies to any organization or individual that creates, receives, maintains, or transmits electronic protected health information (PHI), including (but not limited to) doctors’ offices, hospitals, health insurers, and other healthcare companies.
+The *Health Insurance Portability and Accountability Act of 1996 (HIPAA)* is a set of rules and regulations set forth by the U.S. Department of Health and Human Services (HHS) to protect the privacy, security, and integrity of patients' sensitive health information. HIPAA applies to any organization or individual that creates, receives, maintains, or transmits electronic protected health information (PHI), including (but not limited to) doctors' offices, hospitals, health insurers, and other healthcare companies.
 
 Complying with HIPAA is essential but challenging work for healthcare solutions companies. If you choose Azure Stack HCI to develop your hybrid IT environment, you can utilize its built-in capabilities and the cloud-integrated services to automate many aspects of achieving and maintaining HIPAA compliance. For more information, see the following guidance.
 
