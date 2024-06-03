@@ -182,19 +182,7 @@ Before you begin, make sure you've completed the following prerequisites:
     Starting AzStackHci ArcIntegration Initialization
     Constructing node config using ARM Access Token
     Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
-    Waiting for bootstrap to complete: InProgress
+    =========SNIPPED=========SNIPPED=============
     Waiting for bootstrap to complete: InProgress
     Waiting for bootstrap to complete: InProgress
     Waiting for bootstrap to complete: Succeeded
