@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/15/2024
+ms.date: 06/03/2024
 ---
 
 # Add a server on Azure Stack HCI, version 23H2
