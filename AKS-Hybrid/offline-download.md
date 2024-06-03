@@ -25,7 +25,7 @@ If you have unreliable internet connectivity at your deployment location or need
 Before you begin the download process, the following prerequisites are required:
 
 - The latest release of Azure CLI. For more information, see [how to update the Azure CLI](/cli/azure/update-azure-cli).
-- Make sure you satisfied all the [system requirement prerequisites](aks-hci-network-system-requirements).
+- Make sure you satisfied all the [system requirement prerequisites](aks-hci-network-system-requirements.md).
 - The name of the resource group that contains your system's Arc Resource Bridge and the name of the Resource Bridge resource instance. You can get this information by visiting the Azure portal. This information should be under your Azure subscription.
 
 ## Use manual download to create or update a Kubernetes cluster
