@@ -102,7 +102,7 @@
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
-    - name: Integrate ACR with a Kubernetes cluster
+    - name: Integrate Azure Container Registry with a Kubernetes cluster
       href: deploy-container-registry.md
     - name: Monitoring and logging
       items:    
