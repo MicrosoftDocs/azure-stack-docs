@@ -385,13 +385,12 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       mc mb minio/velero-backup
       ```
 
-   1. Create a MinIO credentials file with the following information:
+   1. Create a MinIO credentials file **minio.credentials** with the following information:
 
       ```yaml
-      minio.credentials 
-             [default] 
-        aws_access_key_id=<minio_access_key> 
-        aws_secret_access_key=<minio_secret_key> 
+      [default] 
+      aws_access_key_id=<minio_access_key> 
+      aws_secret_access_key=<minio_secret_key> 
       ```
 
 1. Install Velero:  
