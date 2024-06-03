@@ -223,18 +223,18 @@ items:
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
+    - name: License Arc VMs
+      items:
+      - name: Azure verification for VMs
+        href: deploy/azure-verification.md
+      - name: License Windows Server VMs
+        href: manage/vm-activate.md
+      - name: Deploy Windows Server Azure Edition VMs
+        href: manage/windows-server-azure-edition-23h2.md
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
-    - name: Azure verification for VMs
-      href: deploy/azure-verification.md
-    - name: License Windows Server VMs
-      href: manage/vm-activate.md
-    - name: License Arc VMs 
-      items:
-      - name: Deploy Windows Server Azure Edition VMs
-        href: manage/windows-server-azure-edition-23h2.md
 
   - name: Trusted launch for Arc VMs
     items: 
@@ -246,9 +246,7 @@ items:
         href: manage/trusted-launch-vm-import-key.md
 
   - name: Non Arc VMs
-    items: 
-      - name: Extended Security Updates (ESUs)
-        href: ./manage/azure-benefits-esu.md
+    items:
       - name: Manage VMs
         href: manage/vm.md
       - name: Manage VMs with PowerShell
@@ -497,6 +495,8 @@ items:
   items:
   - name: Release information for version 22H2
     href: release-information.md
+  - name: Extended Security Updates (ESUs)
+    href: ./manage/azure-benefits-esu.md
   - name: Review requirements for 22H2
     href: concepts/system-requirements.md
   - name: Deploy version 22H2
