@@ -304,20 +304,20 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
                containers: 
                - name: minio 
                image: minio/minio:latest 
-               args: 
+               args:
                - server 
                - /storage 
                env: 
                - name: MINIO_ACCESS_KEY 
-                  value: "<you can define this>" 
+                 value: "<you can define this>" 
                - name: MINIO_SECRET_KEY 
-                  value: "<you can define this>" 
+                 value: "<you can define this>" 
                ports: 
                - containerPort: 9000 
-                  hostPort: 9000 
+                 hostPort: 9000 
                volumeMounts: 
                - name: storage  
-                  mountPath: "/storage" 
+                 mountPath: "/storage" 
          ```
 
          Then create the deployment:
@@ -339,8 +339,8 @@ If you don't want to store your backups in MinIO, go to [Set up Velero to use Az
       type: LoadBalancer 
       ports: 
          - port: 9000 
-            targetPort: 9000 
-            protocol: TCP 
+           targetPort: 9000 
+           protocol: TCP 
       selector: 
          app: minio 
       ```
