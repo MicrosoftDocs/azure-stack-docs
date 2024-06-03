@@ -15,12 +15,6 @@ ms.lastreviewed: 9/9/2021
 
 # Add Linux images to the Azure Stack Hub Marketplace
 
-<<<<<<< Updated upstream
-> [!CAUTION]
-> CentOS is a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
-
-=======
->>>>>>> Stashed changes
 You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux-based image to the Azure Stack Hub Marketplace. The easiest way to add a Linux image to Azure Stack Hub is through marketplace management. These images have been prepared and tested for compatibility with Azure Stack Hub.
 
 ## Marketplace management
