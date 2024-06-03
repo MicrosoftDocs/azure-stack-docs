@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 04/18/2024
+ms.date: 06/03/2024
 ms.lastreviewed: 03/05/2024
 ---
 
@@ -25,7 +25,7 @@ For more information about the previous version of this feature on Azure Stack H
 
 Azure verification for VM enables you to use these benefits available only on Azure Stack HCI:
 
-| Workload                                 | What it's                           | How to get benefits                                                                                                                                                                                                                                                                       |
+| Workload                                 | What it is                           | How to get benefits                                                                                                                                                                                                                                                                       |
 |------------------------------------------|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Extended Security Update (ESUs)          | Get security updates at no extra cost for end-of-support SQL and Windows Server VMs on Azure Stack HCI. <br/> For more information, see [Free Extended Security Updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md). | You must enable [Legacy OS support](#legacy-os-support) for older VMs running version Windows Server 2012 or earlier with [Latest Servicing Stack Updates](https://msrc.microsoft.com/update-guide/advisory/ADV990001).|
 | Azure Virtual Desktop (AVD)                    | AVD session hosts can run only on Azure infrastructure. Activate your Windows multi-session VMs on Azure Stack HCI using Azure VM verification. <br/> Licensing requirements for AVD still apply. See [Azure Virtual Desktop pricing](/azure/virtual-desktop/azure-stack-hci-overview#pricing). | Activated automatically for VMs running version Windows 11 multi-session with 4B update released on April 9, 2024 (22H2: [KB5036893](https://support.microsoft.com/topic/april-9-2024-kb5036893-os-builds-22621-3447-and-22631-3447-a674a67b-85f5-4a40-8d74-5f8af8ead5bb), 21H2: [KB5036894](https://support.microsoft.com/topic/april-9-2024-kb5036894-os-build-22000-2899-165dd6e1-74be-45b7-84e3-0f2a25d375f3)) or later. You must enable [legacy OS support](#legacy-os-support) for VMs running version Windows 10 multi-session with 4B update released on April 9, 2024  [KB5036892](https://support.microsoft.com/topic/april-9-2024-kb5036892-os-builds-19044-4291-and-19045-4291-cb5d2d42-6b10-48f7-829a-be7d416a811b) or later. |
@@ -83,8 +83,39 @@ Azure VM verification is automatically enabled by default in Azure Stack HCI 23H
 
 - Turn on Hyper-V Guest Service Interface. See the instructions for [Windows Admin Center](azure-verification.md?tabs=wac#troubleshoot-vms) or for [PowerShell](azure-verification.md?tabs=azure-ps#troubleshoot-vms-1).
 
-
 You can manage Azure VM verification using Windows Admin Center or PowerShell, or view its status using Azure CLI or the Azure portal. The following sections describe each option.
+
+### [Azure portal](#tab/azureportal)
+
+1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
+2. Under the feature **Azure verification for VMs**, view the host attestation status.
+
+   :::image type="content" source="media/azure-verification/cluster-status.png" alt-text="Screenshot showing cluster status on the portal." lightbox="media/azure-verification/cluster-status.png":::
+
+### [Azure CLI](#tab/azurecli)
+
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification following these steps:
+
+1. Set up parameters from your subscription, resource group, and cluster name
+
+   ```azurecli
+   subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
+   resourceGroup="hcicluster-rg" # Replace with your resource group name
+   clusterName="HCICluster" # Replace with your cluster name
+
+   az account set --subscription "${subscription}"
+   ```
+
+2. To view Azure VM verification status on a cluster, run the following command:
+
+   ```azurecli
+   az stack-hci cluster list \
+   --resource-group "${resourceGroup}" \
+   --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.imdsAttestation}" \
+   -o table
+   ```
 
 ### [Windows Admin Center](#tab/wac)
 
@@ -185,20 +216,23 @@ You can manage Azure VM verification using Windows Admin Center or PowerShell, o
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri "http://127.0.0.1:42542/metadata/attested/document?api-version=2018-10-01" –usedefaultcredentials
   ```
 
+---
+
+## Legacy OS support
+
+For older VMs that lack the necessary Hyper-V functionality ([Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service)) to communicate directly with the host, you must configure traditional networking components for Azure VM verification. If you have these workloads, such as Extended Security Updates (ESUs), follow the instructions in this section to set up legacy OS support.
+
 ### [Azure portal](#tab/azureportal)
 
-1. In your Azure Stack HCI cluster resource page, navigate to the **Configuration** tab.
-2. Under the feature **Azure verification for VMs**, view the host attestation status.
-
-   :::image type="content" source="media/azure-verification/cluster-status.png" alt-text="Screenshot showing cluster status on the portal." lightbox="media/azure-verification/cluster-status.png":::
-
+You can't view legacy OS support from the Azure portal at this time.
+  
 ### [Azure CLI](#tab/azurecli)
 
-Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification following these steps:
+Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification by following these steps:
 
-1. Set up parameters from your subscription, resource group, and cluster name
+1. Set up parameters from your subscription, resource group, and cluster name:
 
    ```azurecli
    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
@@ -208,20 +242,14 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check 
    az account set --subscription "${subscription}"
    ```
 
-2. To view Azure VM verification status on a cluster, run the following command:
+2. To view legacy OS support status on a cluster, run the following command:
 
-   ```azurecli    
+   ```azurecli
    az stack-hci cluster list \
    --resource-group "${resourceGroup}" \
-   --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.imdsAttestation}" \
+   --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.supportedCapabilities}" \
    -o table
    ```
-
----
-
-## Legacy OS support
-
-For older VMs that lack the necessary Hyper-V functionality ([Guest Service Interface](/virtualization/hyper-v-on-windows/reference/integration-services#hyper-v-powershell-direct-service)) to communicate directly with the host, you must configure traditional networking components for Azure VM verification. If you have these workloads, such as Extended Security Updates (ESUs), follow the instructions in this section to set up legacy OS support.
 
 ### [Windows Admin Center](#tab/wac)
 
@@ -322,35 +350,6 @@ You must enable legacy OS networking for any new VMs that you create after the f
   Invoke-RestMethod -Headers @{"Metadata"="true"} -Method GET -Uri http://169.254.169.253:80/metadata/attested/document?api-version=2018-10-01
   ```
 
-### [Azure portal](#tab/azureportal)
-
-You can't view legacy OS support from the Azure portal at this time.
-  
-### [Azure CLI](#tab/azurecli)
-
-Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This section describes how to use Bash in Azure Cloud Shell. For more information, see the [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
-
-Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to check Azure VM verification by following these steps:
-
-1. Set up parameters from your subscription, resource group, and cluster name:
-
-   ```azurecli
-   subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID
-   resourceGroup="hcicluster-rg" # Replace with your resource group name
-   clusterName="HCICluster" # Replace with your cluster name
-
-   az account set --subscription "${subscription}"
-   ```
-
-2. To view legacy OS support status on a cluster, run the following command:
-
-   ```azurecli    
-   az stack-hci cluster list \
-   --resource-group "${resourceGroup}" \
-   --query "[?name=='${clusterName}'].{Name:name, AzureBenefitsHostAttestation:reportedProperties.supportedCapabilities}" \
-   -o table
-   ```
-
 ---
 
 ## FAQ
@@ -392,6 +391,6 @@ If you upgraded a cluster that previously had [Azure Benefits on Azure Stack HCI
 
 ## Next steps
 
-- [Extended security updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md)
-- [Azure Stack HCI overview](../overview.md)
-- [Azure Stack HCI FAQ](../faq.yml)
+- [Extended security updates (ESU) on Azure Stack HCI](../manage/azure-benefits-esu.md).
+- [Azure Stack HCI overview](../overview.md).
+- [Azure Stack HCI FAQ](../faq.yml).
