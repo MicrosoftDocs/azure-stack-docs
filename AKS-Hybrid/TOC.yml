@@ -24,7 +24,7 @@
         href: aks-hci-network-system-requirements.md
       - name: Load balancer
         href: load-balancer-overview.md      
-    - name: Access and Identity
+    - name: Access and identity
       href: concepts-security-access-identity.md
     - name: Supported scale requirements
       href: scale-requirements.md
