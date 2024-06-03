@@ -11,7 +11,7 @@ ms.reviewer: waltero
 
 ---
 
-# Use manual (offline) download in AKS, enabled by Azure Arc (preview)
+# Use manual (offline) download in AKS enabled by Azure Arc (preview)
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
@@ -30,53 +30,53 @@ Before you begin the download process, the following prerequisites are required:
 
 ## Use manual download to create or update a Kubernetes cluster
 
-1. If you have not installed the AKS, enabled by Azure Arc extension, run the following command:
+1. If you haven't installed the AKS enabled by Azure Arc extension, run the following command:
 
    ```azurecli
    az extension add --name aksarc
    ```
 
-2. If you already had the extension installed, ensure it's running the latest version by issuing the following command:
+1. If you already had the extension installed, ensure it's running the latest version by issuing the following command:
 
    ```azurecli
    az extension update --name aksarc
    ```
 
-3. Sign in into your Azure subscription that has access to Azure Resource Bridge, and that corresponds to the target Azure Stack HCI. Run the following command:
+1. Sign in into your Azure subscription that has access to Azure Resource Bridge, and that corresponds to the target Azure Stack HCI. Run the following command:
 
    ```azurecli
    az login
    ```
 
-4. Retrieve the name of the AKS extension from the Arc Resource Bridge by running the following command:
+1. Retrieve the name of the AKS extension from the Arc Resource Bridge by running the following command:
 
    ```azurecli
    $hybridAksExtensionName = az k8s-extension list -g "myResouceGroup" -c "myArcResourceBridge" --cluster-type appliances --query "[?extensionType=='microsoft.hybridaksoperator'].name" -o tsv
    ```
 
-5. Update the configuration of the AKS extension to enable "offline download" of the images. Keep it separate from the automatic download of the VM images used to create Kubernetes clusters. Run the following command:
+1. Update the configuration of the AKS extension to enable "offline download" of the images. Keep it separate from the automatic download of the VM images used to create Kubernetes clusters. Run the following command:
 
    ```azurecli
    az k8s-extension update -g "myResouceGroup" -c "myArcResourceBridge" --name $hybridAksExtensionName -t appliances --config offline-download="true"
    ```
 
-6. On a computer with reliable internet connectivity, download the required files by running the following command:
+1. On a computer with reliable internet connectivity, download the required files by running the following command:
 
    ```azurecli
    az aksarc release download --staging-folder 'C:\staging_folder'
    ```
 
-7. Use your preferred tool to move the file to the desired Azure Stack HCI system used for Kubernetes clusters.
+1. Use your preferred tool to move the file to the desired Azure Stack HCI system used for Kubernetes clusters.
 
-8. Save the new files into the target Azure Stack HCI system by running the following command:
+1. Save the new files into the target Azure Stack HCI system by running the following command:
 
    ```azurecli
    az aksarc release save--staging-folder 'C:\staging_folder' --config-file <applica_config_file>
    ```
 
-9. You can now [create a Kubernetes cluster by following these instructions](aks-create-clusters-cli.md).
+1. You can now [create a Kubernetes cluster by following these instructions](aks-create-clusters-cli.md).
 
 ## Next steps
 
-- [Create Kubernetes clusters on Azure Stack HCI using Azure portal](aks-create-clusters-portal.md)
+- [Create Kubernetes clusters on Azure Stack HCI using the Azure portal](aks-create-clusters-portal.md)
 - [Create node pools on AKS clusters](manage-node-pools.md)

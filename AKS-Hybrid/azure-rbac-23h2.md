@@ -24,29 +24,31 @@ When you use integrated authentication between Microsoft Entra ID and AKS, you c
 
 This article describes how to use Azure RBAC for Kubernetes cluster authorization with Microsoft Entra ID and Azure role assignments.
 
-For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-identity.md) for AKS, enabled by Azure Arc.
+For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concepts-security-access-identity.md) for AKS enabled by Azure Arc.
 
 ## Before you begin
+
+Before you begin, make sure you have the following prerequisites:
 
 - AKS currently supports enabling Azure RBAC only during initial deployment and Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
 - Azure CLI. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extension. Note that you need to run **`aksarc` extension version 1.1.1** or later to enable Azure RBAC.
 
-  ```azurecli
-  az extension add --name aksarc
-  az extension add --name connectedk8s
-  ```
+```azurecli
+az extension add --name aksarc
+az extension add --name connectedk8s
+```
 
-  If you've already installed the `aksarc` extension, update the extension to the latest version:
+If you already installed the `aksarc` extension, update the extension to the latest version:
 
-  ```azurecli
-  az extension update --name aksarc
-  az extension update --name connectedk8s
-  ```
+```azurecli
+az extension update --name aksarc
+az extension update --name connectedk8s
+```
   
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
-- The user needs the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
-  - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role. 
+- You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
+  - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
   - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
   - New role assignments can take up to five minutes to propagate and be updated by the authorization server.
 
@@ -62,7 +64,7 @@ After a few minutes, the command completes and returns JSON-formatted informatio
 
 ## Step 2: Create role assignments for users to access the cluster
 
-AKS, enabled by Azure Arc provides the following built-in roles:
+AKS enabled by Azure Arc provides the following built-in roles:
 
 | Role                                                     | Description                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -87,7 +89,7 @@ The following example assigns the **Azure Arc Kubernetes Viewer** role to the Ku
 az role assignment create --role "Azure Arc Kubernetes Viewer" --assignee <assignee-object-id> --scope $ARM_ID
 ```
 
-In the above example, the scope is the Azure Resource Manager ID of the cluster. It can also be the resource group containing the Kubernetes cluster.
+In this example, the scope is the Azure Resource Manager ID of the cluster. It can also be the resource group containing the Kubernetes cluster.
 
 ### Create custom role definitions
 
@@ -129,7 +131,7 @@ az role assignment create --role "AKS Arc Deployment Reader" --assignee <assigne
 
 ## Step 3: Use Azure RBAC for Kubernetes authorization with kubectl
 
-To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command. This command gives access to the admin-based kubeconfig, as well as a user-based kubeconfig. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
+To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command. This command provides access to the admin-based kubeconfig, as well as a user-based kubeconfig. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
 
 To run this Azure CLI command, you must have **Azure Kubernetes Service Arc Cluster User** role permissions on the cluster. 
 
@@ -185,6 +187,6 @@ az role definition delete -n "AKS Arc Deployment Reader"
 ## Next steps
 
 - [Azure role-based access control (Azure RBAC)](/azure/role-based-access-control/overview)
-- [Access and identity options](concepts-security-access-identity.md) for AKS, enabled by Azure Arc
+- [Access and identity options](concepts-security-access-identity.md) for AKS enabled by Azure Arc
 - [Create an Azure service principal with Azure CLI](/cli/azure/azure-cli-sp-tutorial-1)
 - Available Azure permissions for [Hybrid + Multicloud](/azure/role-based-access-control/resource-provider-operations#microsoftkubernetes)

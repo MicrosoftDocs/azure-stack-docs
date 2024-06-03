@@ -3,9 +3,9 @@ title: Retrieve certificate-based admin kubeconfig in AKS enabled by Azure Arc
 description: Retrieve certificate-based admin kubeconfig in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/22/2024
+ms.date: 06/03/2024
 ms.author: sethm 
-ms.lastreviewed: 01/22/2024
+ms.lastreviewed: 06/03/2024
 ms.reviewer: sulahiri
 
 ---
@@ -17,4 +17,5 @@ ms.reviewer: sulahiri
 [!INCLUDE [retrieve-kubeconfig](includes/retrieve-kubeconfig.md)]
 
 ## Next steps
+
 - [Use Azure RBAC for Kubernetes authorization](azure-rbac-23h2.md)

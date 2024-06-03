@@ -3,10 +3,10 @@ title: Access and identity options for Azure Kubernetes Service (AKS) Arc
 description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Stack HCI.
 author: leslielin
 ms.topic: conceptual
-ms.date: 05/05/2024
+ms.date: 06/03/2024
 ms.author: leslielin
-ms.lastreviewed: 
-ms.reviewer: 
+ms.lastreviewed: 06/03/2024
+ms.reviewer: abha
 
 # Intent: As an IT Pro, I want to learn how to improve the security of the applications and infrastructure within my AKS on Azure Stack HCI deployment(s).
 # Keyword: security concepts infrastructure security
@@ -14,7 +14,7 @@ ms.reviewer:
 
 ---
 
-# Access and identity options for AKS, enabled by Azure Arc 
+# Access and identity options for AKS enabled by Azure Arc
 
 Applies to: AKS on Azure Stack HCI 23H2
 
@@ -51,7 +51,7 @@ A ClusterRole grants and applies permissions to resources across the entire clus
 
 ### RoleBindings and ClusterRoleBindings
 
-Once you define roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-23h2.md)
+Once you define roles to grant permissions to resources, you assign those Kubernetes RBAC permissions with a *RoleBinding*. If your AKS cluster [integrates with Microsoft Entra ID](#microsoft-entra-integration), RoleBindings grant permissions to Microsoft Entra users to perform actions within the cluster. See [Control access using Microsoft Entra ID and Kubernetes RBAC](kubernetes-rbac-23h2.md)
 
 #### RoleBindings
 
@@ -87,7 +87,7 @@ For more information, see [What is Azure role-based access control (Azure RBAC)?
 There are two required levels of access to fully operate an AKS Arc cluster:
 
 - Access the AKS resource in your Azure subscription.
-  - Control scaling or upgrading your cluster using the AKS, enabled by Azure Arc APIs.
+  - Control scaling or upgrading your cluster using the AKS enabled by Azure Arc APIs.
   - Pull your **admin, certificate-based kubeconfig**.
   - Pull your **Entra ID enabled kubeconfig**.
 - Access to the Kubernetes API. This access is controlled by either:
@@ -117,7 +117,7 @@ With this feature, you not only give users permissions to the AKS resource acros
 
 ### Built-in roles
 
-AKS, enabled by Azure Arc provides the following four built-in roles. They are similar to the [Kubernetes built-in roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) with a few differences, such as supporting CRDs. See the full list of actions allowed by each [Azure built-in role](/azure/role-based-access-control/built-in-roles).
+AKS enabled by Azure Arc provides the following four built-in roles. They are similar to the [Kubernetes built-in roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) with a few differences, such as supporting CRDs. See the full list of actions allowed by each [Azure built-in role](/azure/role-based-access-control/built-in-roles).
 
 | Role                                                     | Description                                              |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |

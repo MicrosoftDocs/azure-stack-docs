@@ -14,7 +14,7 @@ ms.date: 05/29/2024
 # Keyword: Kubernetes role-based access control 
 ---
 
-# Control access using Microsoft Entra ID and Kubernetes RBAC in AKS, enabled by Azure Arc
+# Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
 
 Applies to: AKS on Azure Stack HCI 23H2
 
@@ -26,21 +26,22 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you must have the following prerequisites:
 
-- An AKS, enabled by Azure Arc cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
-- You need the Azure CLI installed and configured. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli). 
-- Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extension:
+- An AKS enabled by Azure Arc cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
+- You need the Azure CLI installed and configured. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+- Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extensions:
 
   ```azurecli
   az extension add --name aksarc
   az extension add --name connectedk8s
   ```
 
-  If you've already installed the `aksarc` extension, update the extension to the latest version:
+  If you already installed the `aksarc` extension, update the extension to the latest version:
 
   ```azurecli
   az extension update --name aksarc
   az extension update --name connectedk8s
-  ```  
+  ```
+
 - **Kubectl**. The Kubernetes command-line tool, kubectl, enables you to run commands targeting your Kubernetes clusters. To check whether you installed kubectl, open a command prompt and type `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`. For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 
 ## Optional first steps
@@ -182,15 +183,15 @@ To use a built-in Kubernetes RBAC role with Microsoft Entra ID, follow these ste
 
 1. Apply the built-in `view` Kubernetes RBAC role to your Microsoft Entra group:
 
-    ```bash
-    kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --group=<Azure AD group object ID>
-    ```
+   ```bash
+   kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --group=<Azure AD group object ID>
+   ```
 
-2. Apply the built-in `view` Kubernetes RBAC role to each of your Microsoft Entra users:
+1. Apply the built-in `view` Kubernetes RBAC role to each of your Microsoft Entra users:
 
-    ```bash
-    kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --user=<Azure AD user object ID>
-    ```
+   ```bash
+   kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --user=<Azure AD user object ID>
+   ```
 
 ## Work with cluster resources using Microsoft Entra identities
 
@@ -198,34 +199,34 @@ Now, test the expected permissions when you create and manage resources in a Kub
 
 1. Sign in to the Azure using the `$AKSDEV_ID` user account that you passed as an input to the `az ad group member add` command. Run the `az connectedk8s proxy` command to open a channel to the cluster:
 
-    ```cli
-    az connectedk8s proxy --name "sample-aksarccluster" --resource-group "sample-rg"
-    ```
+   ```cli
+   az connectedk8s proxy --name "sample-aksarccluster" --resource-group "sample-rg"
+   ```
 
-2. After the proxy channel is established, open another session, and schedule an NGINX pod using the [`kubectl run`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run) command in the **dev** namespace:
+1. After the proxy channel is established, open another session, and schedule an NGINX pod using the [`kubectl run`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run) command in the **dev** namespace:
 
-    ```bash  
-    kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
-    ```
+   ```bash  
+   kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
+   ```
 
-    When NGINX is successfully scheduled, you see the following the output:
+   When NGINX is successfully scheduled, you see the following the output:
 
-    ```output  
-    pod/nginx-dev created
-    ```
+   ```output  
+   pod/nginx-dev created
+   ```
 
-3. Now, use the [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command to view pods in the `dev` namespace:
+1. Now, use the [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command to view pods in the `dev` namespace:
 
-    ```bash  
-    kubectl get pods --namespace dev
-    ```
+   ```bash  
+   kubectl get pods --namespace dev
+   ```
 
-    When NGINX is successfully running, you should see the following output:
+   When NGINX is successfully running, you should see the following output:
 
-    ```output  
-    NAME        READY   STATUS    RESTARTS   AGE
-    nginx-dev   1/1     Running   0          4m
-    ```
+   ```output  
+   NAME        READY   STATUS    RESTARTS   AGE
+   nginx-dev   1/1     Running   0          4m
+   ```
 
 ### Create and view cluster resources outside the assigned namespace
 
