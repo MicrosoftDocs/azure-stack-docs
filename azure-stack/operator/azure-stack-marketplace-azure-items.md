@@ -3,7 +3,7 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/22/2024
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: vrajasekaran
 ms.lastreviewed: 12/9/2020
@@ -14,9 +14,6 @@ ms.lastreviewed: 12/9/2020
 ---
 
 # Azure Marketplace items available for Azure Stack Hub
-
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 This article describes the Azure Marketplace items that are available for Azure Stack Hub.
 
@@ -53,7 +50,7 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![SQL Server 2014 SP3 on Windows Server 2012 R2](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2014 SP3 on Windows Server 2012 R2](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp3-ws2012r2) | SQL Server 2014 Service Pack 2. **Required download:** SQL IaaS Extension. | Microsoft |
 | ![Microsoft Machine Learning Server 9.3.0 on Windows Server 2016](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server 9.3.0 on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) | Microsoft Machine Learning Server 9.3.0 on Windows Server 2016. | Microsoft |
 | ![Microsoft Machine Learning Server 9.3.0 on Ubuntu 16.04](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server 9.3.0 on Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-2004?tab=Overview) | Microsoft Machine Learning Server 9.3.0 on Ubuntu 16.04. | Microsoft + Canonical |
-| ![Microsoft Machine Learning Server 9.3.0 on CentOS Linux 7.2](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server Windows Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftwindowsserver.windowsserver) | Microsoft Machine Learning Server 9.3.0 on CentOS Linux 7.2. | Microsoft + Rogue Wave |
+| ![Windows Server Virtual Machine Images](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server Virtual Machine Images](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver) | Windows Server Virtual Machine Images | Microsoft |
 
 ## Linux distributions
 
@@ -63,9 +60,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Ubuntu%20Server&page=1) | Ubuntu Server is the world's most popular Linux for cloud environments. | Canonical |
 | ![Debian 10 "Buster"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/debian.debian-10) | Debian GNU/Linux is one of the most popular Linux distributions. | Debian |
 | ![Oracle Linux](media/azure-stack-marketplace-azure-items/oracle.png) | [Oracle Linux](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oracle-linux) | The Oracle Linux operating system is engineered for open cloud infrastructure. It delivers leading performance, scalability, and reliability for enterprise SaaS and PaaS workloads, as well as traditional enterprise apps. | Oracle |
-| ![CentOS-based 7.6](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.6](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/openlogic.centos?tab=Overview) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic) |
-| ![CentOS-based 7.5-LVM](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.5-LVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/openlogic.centos-lvm) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic) |
-| ![CentOS-based HPC](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based HPC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/openlogic.centos-hpc) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic)  |
 
 ## Third-Party BYOL, free, trial images, and solution templates
 

@@ -3,7 +3,7 @@ title: Add Linux images to the Azure Stack Hub Marketplace
 description: Learn how to add Linux images to the Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
-ms.date: 9/9/2021
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 9/9/2021
@@ -15,9 +15,12 @@ ms.lastreviewed: 9/9/2021
 
 # Add Linux images to the Azure Stack Hub Marketplace
 
+<<<<<<< Updated upstream
 > [!CAUTION]
 > CentOS is a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
+=======
+>>>>>>> Stashed changes
 You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux-based image to the Azure Stack Hub Marketplace. The easiest way to add a Linux image to Azure Stack Hub is through marketplace management. These images have been prepared and tested for compatibility with Azure Stack Hub.
 
 ## Marketplace management
@@ -153,5 +156,5 @@ After you've added the image to the Marketplace, a Marketplace item is created a
 
 ## Next steps
 
-* [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
-* [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md)
+- [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
+- [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md)
