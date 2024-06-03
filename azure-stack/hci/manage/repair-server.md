@@ -4,7 +4,7 @@ description: Learn how to repair a server on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/15/2024
+ms.date: 06/03/2024
 ---
 
 # Repair a server on Azure Stack HCI, version 23H2
@@ -123,6 +123,11 @@ Follow these steps on the server you're trying to repair.
     > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
 
 Follow these steps on another server that is a member of the same Azure Stack HCI cluster.
+
+1. Assign the following permissions to the repaired nodes:
+
+    - Azure Stack HCI Device Management Role
+    - Key Vault Secrets User
 
 1. Before you add the server, make sure to get an updated authentication token. Run the following command:
 
