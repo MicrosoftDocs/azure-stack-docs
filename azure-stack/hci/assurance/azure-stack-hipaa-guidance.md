@@ -2,7 +2,7 @@
 title: HIPAA guidance for Azure Stack HCI
 description: Learn about HIPAA compliance using Azure Stack HCI.
 ms.date: 2/5/2024
-ms.topic: connceptual
+ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.author: nguyenhung
@@ -16,7 +16,7 @@ This article provides guidance on how organizations can most efficiently navigat
 
 ## Healthcare compliance
 
-The [Health Insurance Portability and Accountability Act of 1996](https://www.cdc.gov/phlp/publications/topic/hipaa.html) (HIPAA) and healthcare standards such as Health Information Technology for Economic and Clinical Health (HITECH) and [Health Information Trust Alliance](https://hitrustalliance.net/hitrust-csf/) (HITRUST) protect the confidentiality, integrity, and availability of patients’ protected health information (PHI). These regulations and standards ensure that healthcare organizations such as doctors’ offices, hospitals, and health insurers (“covered entities”) create, receive, maintain, transmit, or access PHI appropriately. In addition, their requirements extend to business associates who provide services that involve PHI for the covered entities. Microsoft is an example of a business associate that provides information technology services like Azure Stack HCI to help healthcare companies store and process PHI more efficiently and securely. The following sections provide information on how Azure Stack HCI’s platform capabilities help organizations meet these requirements.
+The [Health Insurance Portability and Accountability Act of 1996](https://www.cdc.gov/phlp/publications/topic/hipaa.html) (HIPAA) and healthcare standards such as Health Information Technology for Economic and Clinical Health (HITECH) and [Health Information Trust Alliance](https://hitrustalliance.net/hitrust-csf/) (HITRUST) protect the confidentiality, integrity, and availability of patients' protected health information (PHI). These regulations and standards ensure that healthcare organizations such as doctors' offices, hospitals, and health insurers ("covered entities") create, receive, maintain, transmit, or access PHI appropriately. In addition, their requirements extend to business associates who provide services that involve PHI for the covered entities. Microsoft is an example of a business associate that provides information technology services like Azure Stack HCI to help healthcare companies store and process PHI more efficiently and securely. The following sections provide information on how Azure Stack HCI's platform capabilities help organizations meet these requirements.
 
 ## Shared responsibilities
 
@@ -34,7 +34,7 @@ Azure Stack HCI is a hybrid solution that hosts and stores virtualized workloads
 
 ### Azure cloud services
 
-As HIPAA legislation is designed for healthcare companies, cloud services such as Microsoft Azure can't be certified. However, Azure and Azure Stack HCI’s connected cloud services comply with other established security frameworks and standards that are equivalent to or more stringent than HIPAA and HITECH. Learn more about the Azure compliance program for the healthcare industry at [Azure and HIPAA](/azure/compliance/offerings/offering-hipaa-us).
+As HIPAA legislation is designed for healthcare companies, cloud services such as Microsoft Azure can't be certified. However, Azure and Azure Stack HCI's connected cloud services comply with other established security frameworks and standards that are equivalent to or more stringent than HIPAA and HITECH. Learn more about the Azure compliance program for the healthcare industry at [Azure and HIPAA](/azure/compliance/offerings/offering-hipaa-us).
 
 ### On-premises environment
 
@@ -119,7 +119,7 @@ Azure Stack HCI provides service-based alerts for connectivity, OS updates, Azur
 
 #### Windows Defender Antivirus
 
-Windows Defender Antivirus is a utility application that enables enforcement of real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
+Windows Defender Antivirus is a utility application that enables enforcement of real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system's ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
 
 #### Windows Defender Application Control
 
