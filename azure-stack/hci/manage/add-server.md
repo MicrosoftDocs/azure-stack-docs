@@ -107,6 +107,7 @@ On the new server that you plan to add, follow these steps.
 
     - Azure Stack HCI Device Management Role
     - Key Vault Secrets User
+    For more information, see [Assign permissions to the server](../deploy/deployment-arc-register-server-permissions.md).
 
 On a server that already exists on your cluster, follow these steps:
 
