@@ -108,9 +108,7 @@ When configuring the `WinInet` proxy bypass list, keep the following points in m
 
 You must configure the `WinHTTP` proxy settings before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
-This requires you to set `WinHTTP` proxy for Azure Stack HCI updates and cloud witness.
-
-Run the following PowerShell command as administrator on each server in the cluster:
+To configure the `WinHTTP` proxy for Azure Stack HCI updates and cloud witness, run the following PowerShell command as administrator on each server in the cluster:
 
 ```powershell
 Set-winhttpproxy -proxyserver http://<Proxy_Server_Address:Proxy_Port> -BypassList <URLs to bypass>
