@@ -24,7 +24,7 @@ Before you begin to configure proxy settings, make sure that:
 
 Here are some important considerations to keep in mind before you configure proxy settings:
 
-- Understand that proxy settings are separate for different components and features of Azure Stack HCI (`WinInet`,`WinHttp`, and `Environment Variables`). You must configure the proxy settings for all the required components and any other features that you plan on using.
+- Understand that proxy settings are separate for different components and features of Azure Stack HCI (`WinInet`,`WinHTTP`, and `Environment Variables`). You must configure the proxy settings for all the required components and any other features that you plan on using.
 - Although each component has specific command parameters and proxy bypass list string requirements, we recommend keeping the same proxy configuration across the different component and features.
 - We don't support authenticated proxies using username and password due to security constraints.
 - If you're using SSL inspection in your proxy, you need to bypass the required Azure Stack HCI and its components (Arc Resource Bridge, Azure Kubernetes Service (AKS), etc.) outbound URLs.
@@ -69,7 +69,7 @@ When configuring the `WinInet` proxy bypass list, keep the following points in m
 - CIDR notation to bypass subnets isn't supported.
 - Asterisk can be used as wildcards to bypass subnets or domain names. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
 - Proxy name must be specified with `http://` and the port. For example, `http://192.168.1.250:8080`.
-- We recommend using the same bypass string when configuring `WinInet` and `WinHttp`.
+- We recommend using the same bypass string when configuring `WinInet` and `WinHTTP`.
 - The use of `<local>` strings isn't supported in the proxy bypass list.
 
 ### View and remove WinInet proxy configuration
@@ -87,7 +87,7 @@ When configuring the `WinInet` proxy bypass list, keep the following points in m
     PS C:\>
     ```
 
-- To remove the `WinInet` proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
+- To remove the `WinInet` proxy configuration for Azure Stack HCI updates and cloud witness, at the command prompt, type:
 
     ```powershell
     PS C:\> Set-WinInetProxy
@@ -104,11 +104,13 @@ When configuring the `WinInet` proxy bypass list, keep the following points in m
     PS C:\> Get-WinhttpProxy -Advanced
     ```
 
-## Configure proxy settings for WinHttp
+## Configure proxy settings for WinHTTP
 
-You must configure the `WinHttp` proxy settings before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
+You must configure the `WinHTTP` proxy settings before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
-To manually configure proxy configuration for Microsoft Update and Cluster Cloud Witness with PowerShell, type:
+This requires you to set `WinHTTP` proxy for Azure Stack HCI updates and cloud witness.
+
+Run the following PowerShell command as administrator on each server in the cluster:
 
 ```powershell
 Set-winhttpproxy -proxyserver http://<Proxy_Server_Address:Proxy_Port> -BypassList <URLs to bypass>
@@ -127,15 +129,15 @@ Here's an example of the command usage:
 Set-winhttpproxy -proxyserver http://192.168.1.250:8080 -BypassList "localhost;127.0.0.1;*.contoso.com;node1;node2;192.168.1.*;s-cluster"
 ```
 
-### WinHttp proxy bypass list string considerations
+### WinHTTP proxy bypass list string considerations
 
-When configuring the `WinHttp` proxy bypass list string, keep the following points in mind:
+When configuring the `WinHTTP` proxy bypass list string, keep the following points in mind:
 
 - Parameters must be separated with comma `,` or semicolon `;`.
 - CIDR notation to bypass subnets isn't supported.
 - Asterisk can be used as wildcards to bypass subnets or domain names. For example, `192.168.1.*` for subnets or `*.contoso.com` for domain names.
 - Proxy name must be specified with `http://` and the port. For example, `http://192.168.1.250:8080`.
-- We recommend using the same bypass string when configuring `WinInet` and `WinHttp`.
+- We recommend using the same bypass string when configuring `WinInet` and `WinHTTP`.
 - The use of `<local>` strings isn't supported in the proxy bypass list.
 
 ### View and remove WinHTTP proxy configuration
@@ -153,7 +155,7 @@ When configuring the `WinHttp` proxy bypass list string, keep the following poin
     PS C:\>
     ```
 
-- To remove the `WinHTTP` proxy configuration for Microsoft Update and Cluster Cloud Witness, at the command prompt, type:
+- To remove the `WinHTTP` proxy configuration for Azure Stack HCI updates and cloud witness, at the command prompt, type:
 
     ```powershell
     PS C:\> Reset-WinhttpProxy -Direct
