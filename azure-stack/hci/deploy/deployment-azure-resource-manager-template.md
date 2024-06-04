@@ -209,13 +209,19 @@ This section contains known issues and workarounds for ARM template deployment.
 
 **Issue**: In this release, you may see *Role assignment already exists* error. This error occurs if the Azure Stack HCI cluster deployment was attempted from the portal first and the same resource group was used for ARM template deployment. You see this error on the **Overview > Deployment details** page for the applicable resource. This error indicates that an equivalent role assignment was already done by another identity for the same resource group scope and the ARM template deployment is unable to perform role assignment.
 
+:::image type="content" source="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png" alt-text="Screenshot showing the role assignment exists message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-role-assignment-already-exists-1.png":::
+
 **Workaround**: Although these errors can be disregarded and deployment can proceed via the ARM template, we strongly recommend that you don't interchange deployment modes between the portal and ARM template.
 
 #### Tenant ID, application ID, principal ID, and scope aren't allowed to be updated
 
 **Issue**: Role assignment fails with error *Tenant ID, application ID, principal ID, and scope aren't allowed to be updated*. You see this error on the **Overview > Deployment details** page for the applicable resource. This error could show up when there are zombie role assignments in the same resource group. For example, when a prior deployment was performed and the resources corresponding to that deployment were deleted but the role assignment resources were left around.
 
+:::image type="content" source="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png" alt-text="Screenshot showing the tenant ID, application ID, principal ID, and scope can't be updated message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-tenantid-applicationid-principalid-not-allowed-to-update-1.png":::
+
 **Workaround**: To identify the zombie role assignments, go to **Access control (IAM) > Role assignments > Type : Unknown** tab. These assignments are listed as **Identity not found. Unable to find identity.* Delete such role assignments and then retry ARM template deployment.
+
+:::image type="content" source="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png" alt-text="Screenshot showing the identity not found message in the Errors blade." lightbox="./media/deployment-azure-resource-manager-template/error-identity-not-found-1.png":::
 
 #### License sync issue
 
