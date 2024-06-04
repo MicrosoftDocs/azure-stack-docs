@@ -322,7 +322,7 @@ If you're using solution extension updates from your hardware, you would need to
     
     DisplayName                 Version      State
     -----------                 -------      -----
-    Azure Stack HCI 2303 bundle 10.2303.0.31 Ready
+    2023.03 Feature Update 10.2303.0.31 Ready
 
      PS C:\Users\lcmuser>
     ```
