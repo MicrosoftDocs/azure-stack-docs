@@ -353,13 +353,13 @@ You can download the updates, perform a set of checks to verify your cluster's u
 
 You can only download the update without starting the installation or download and install the update.
 
-    - To download and install the update, run the following command:
+   - To download and install the update, run the following command:
 
         ```powershell
         Get-SolutionUpdate | Start-SolutionUpdate
         ```
 
-    - To only download the updates without starting the installation, use the `-PrepareOnly` flag with `Start-SolutionUpdate`.
+   - To only download the updates without starting the installation, use the `-PrepareOnly` flag with `Start-SolutionUpdate`.
 
 ## Step 5: Monitoring the installation process
 
