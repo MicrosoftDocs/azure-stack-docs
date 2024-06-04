@@ -150,8 +150,6 @@ Here's an example of the Windows Admin Center updates tool for systems running A
 
 [![Screenshot to install hardware updates in Windows Admin Center.](./media/azure-update-manager/updates-os-windows-admin-center-23h2.png)](media/azure-update-manager/updates-os-windows-admin-center-23h2.png#lightbox)
 
-For more information, see [Install operating system and hardware updates using Windows Admin Center](../manage/update-cluster.md#install-operating-system-and-hardware-updates-using-windows-admin-center).
-
 ## Troubleshoot updates
 
 To resume a previously failed update run, browse to the failed update and select the **Try again** button. This functionality is available at the Download updates, Check readiness, and Install stages of an update run.
