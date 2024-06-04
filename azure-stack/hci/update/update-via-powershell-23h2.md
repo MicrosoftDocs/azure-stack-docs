@@ -66,10 +66,9 @@ Follow these steps on your client to connect to one of the servers of your Azure
 1. Run PowerShell as administrator on the client that you're using to connect to your cluster.
 2. Open a remote PowerShell session to a server on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
 
-    ```powershell
+    `powershell
     $cred = Get-Credential
-    Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred 
-    ```
+    Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred`
 
     > [!NOTE]
     > You should sign in using your deployment user account credentials: which is the account you created when preparing [Active Directory](../deploy/deployment-prep-active-directory.md) and used during the deployment of the Azure Stack HCI system.
