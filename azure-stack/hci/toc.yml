@@ -247,6 +247,8 @@ items:
 
   - name: Non Arc VMs
     items:
+      - name: Extended Security Updates (ESUs)
+        href: ./manage/azure-benefits-esu.md
       - name: Manage VMs
         href: manage/vm.md
       - name: Manage VMs with PowerShell
@@ -495,8 +497,8 @@ items:
   items:
   - name: Release information for version 22H2
     href: release-information.md
-  - name: Extended Security Updates (ESUs)
-    href: ./manage/azure-benefits-esu.md
+  - name: Azure Benefits (22H2 and earlier)
+    href: ./manage/azure-benefits.md
   - name: Review requirements for 22H2
     href: concepts/system-requirements.md
   - name: Deploy version 22H2
@@ -781,8 +783,6 @@ items:
     href: https://azure.com/hci
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Azure Benefits (22H2 and earlier)
-    href: ./manage/azure-benefits.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
