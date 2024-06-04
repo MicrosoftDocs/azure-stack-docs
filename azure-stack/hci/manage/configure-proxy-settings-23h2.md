@@ -63,7 +63,7 @@ Set-WinInetProxy -ProxySettingsPerUser 0 -ProxyServer http://192.168.1.250:8080 
 
 ### WinInet proxy bypass list string considerations
 
-You must consider the following when configuring the `WinInet` proxy bypass list:
+When configuring the `WinInet` proxy bypass list, keep the following points in mind:
 
 - Parameters must be separated with comma `,` or semicolon `;`.
 - CIDR notation to bypass subnets isn't supported.
@@ -129,7 +129,7 @@ Set-winhttpproxy -proxyserver http://192.168.1.250:8080 -BypassList "localhost;1
 
 ### WinHttp proxy bypass list string considerations
 
-You must consider the following when configuring the `WinHttp` proxy bypass list string:
+When configuring the `WinHttp` proxy bypass list string, keep the following points in mind:
 
 - Parameters must be separated with comma `,` or semicolon `;`.
 - CIDR notation to bypass subnets isn't supported.
@@ -201,7 +201,7 @@ $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machin
 
 ### Environment Variables proxy bypass list string considerations
 
-You must consider the following when configuring the Environment Variables proxy bypass list string:
+When configuring the Environment Variables proxy bypass list string, keep the following points in mind:
 
 - Parameters must be separated with comma `,`.
 - CIDR notation to bypass subnets must be used.
