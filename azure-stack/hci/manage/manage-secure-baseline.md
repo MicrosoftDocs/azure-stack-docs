@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/14/2024
+ms.date: 05/29/2024
 ---
 
 # Manage security defaults for Azure Stack HCI, version 23H2
@@ -51,7 +51,7 @@ The following table explains the rules that aren't compliant and the rationale o
 
 ## Manage security defaults with PowerShell
 
-With drift protection enabled, you can only modify nonprotected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [SecurityBaseline](https://aka.ms/hci-securitybase).
+With drift protection enabled, you can only modify nonprotected security settings. To modify protected security settings that form the baseline, you must first disable drift protection. To view and download the complete list of security settings, see [Security Baseline](https://aka.ms/hci-securitybase).
 
 ## Modify security defaults
 

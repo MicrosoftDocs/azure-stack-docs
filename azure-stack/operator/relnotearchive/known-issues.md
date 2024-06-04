@@ -1635,13 +1635,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ### Virtual machine scale set
 
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
-
 #### Remove scale set
 
 - Applicable: This issue applies to all supported releases.
@@ -1812,13 +1805,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Occurrence: Common
 
 ### Virtual machine scale set
-
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
 
 #### Remove scale set
 

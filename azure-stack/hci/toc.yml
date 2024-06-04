@@ -11,6 +11,10 @@ items:
     items:
     - name: Release information
       href: release-information-23h2.md
+    - name: Known issues 2405 
+      items:
+      - name: 2405.0 - Current
+        href: known-issues-2405.md
     - name: Known issues 2402 
       items:
       - name: 2402.3 - Current
@@ -227,6 +231,10 @@ items:
       href: deploy/azure-verification.md
     - name: License Windows Server VMs
       href: manage/vm-activate.md
+    - name: License Arc VMs 
+      items:
+      - name: Deploy Windows Server Azure Edition VMs
+        href: manage/windows-server-azure-edition-23h2.md
 
   - name: Trusted launch for Arc VMs
     items: 
