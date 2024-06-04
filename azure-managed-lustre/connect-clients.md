@@ -14,9 +14,6 @@ ms.reviewer: dsundarraj
 
 # Connect clients to an Azure Managed Lustre file system
 
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
-
 This article describes how to prepare clients and mount the Azure Managed Lustre file system from a client machine.
 
 ## Client prerequisites
@@ -47,8 +44,6 @@ Packages and kernel modules are available for the following Linux operating syst
 
 - [AlmaLinux HPC 8.6](install-hpc-alma-86.md)
 - [AlmaLinux 8](install-rhel-8.md)
-- [CentOS Linux 7](install-rhel-7.md)
-- [CentOS Linux 8](install-rhel-8.md)
 - [Red Hat Enterprise Linux (RHEL) 7](install-rhel-7.md)
 - [Red Hat Enterprise Linux (RHEL) 8](install-rhel-8.md)
 - [Red Hat Enterprise Linux (RHEL) 9](install-rhel-9.md)
