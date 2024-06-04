@@ -34,17 +34,17 @@ Before you begin, make sure you have the following prerequisites:
 - Azure CLI. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extension. Note that you need to run **`aksarc` extension version 1.1.1** or later to enable Azure RBAC.
 
-```azurecli
-az extension add --name aksarc
-az extension add --name connectedk8s
-```
+  ```azurecli
+  az extension add --name aksarc
+  az extension add --name connectedk8s
+  ```
 
-If you already installed the `aksarc` extension, update the extension to the latest version:
+  If you already installed the `aksarc` extension, update the extension to the latest version:
 
-```azurecli
-az extension update --name aksarc
-az extension update --name connectedk8s
-```
+  ```azurecli
+  az extension update --name aksarc
+  az extension update --name connectedk8s
+  ```
   
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
 - You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
