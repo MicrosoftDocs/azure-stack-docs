@@ -4,7 +4,7 @@ description: Learn how to configure proxy settings for Azure Stack HCI, version 
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/30/2024
+ms.date: 06/04/2024
 ---
 
 # Configure proxy settings for Azure Stack HCI, version 23H2
@@ -24,7 +24,7 @@ Before you begin to configure proxy settings, make sure that:
 
 Here are some important considerations to keep in mind before you configure proxy settings:
 
-- Understand that proxy settings are separate for different components and features of Azure Stack HCI (`WinInet`,`WinHttp`, and environment variables). You must configure the proxy settings for all the required components and any other features that you plan on using.
+- Understand that proxy settings are separate for different components and features of Azure Stack HCI (`WinInet`,`WinHttp`, and `Environment Variables`). You must configure the proxy settings for all the required components and any other features that you plan on using.
 - Although each component has specific command parameters and proxy bypass list string requirements, we recommend keeping the same proxy configuration across the different component and features.
 - We don't support authenticated proxies using username and password due to security constraints.
 - If you're using SSL inspection in your proxy, you need to bypass the required Azure Stack HCI and its components (Arc Resource Bridge, Azure Kubernetes Service (AKS), etc.) outbound URLs.
@@ -51,9 +51,9 @@ To configure the proxy settings for the Azure Stack HCI operating system, run th
 
     | Parameter | Description |
     |---|---|
-    | ProxySettingsPerUser | Specifies if the proxy settings are per machine or per user: <br><br>- 0 - Proxy settings are per machine.<br>- 1 (default) - Proxy settings are per user.<br>- If no value is provided, the environment variable ProxySettingsPerUser is used instead, if present.|
+    | ProxySettingsPerUser | Specifies if the proxy settings are per machine or per user: <br><br>- 0 - Proxy settings are per machine.<br>- 1 (default) - Proxy settings are per user.<br>- If no value is provided, the `ProxySettingsPerUser` environment variable is used instead, if present.|
     | ProxyServer | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`.|
-    | ProxyBypass | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass “localhost”` to bypass local intranet URLs. The list must include:<br><br>- At least the IP address of each server.<br>- At least the IP address of cluster.<br>- Optionally, you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or Domain name with wildcard for any host or subdomain. |
+    | ProxyBypass | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass “localhost”` to bypass local intranet URLs. The list must include:<br><br>- At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
 
 Here's an example of the command usage:
 
@@ -119,7 +119,7 @@ The parameters are described in the following table:
 | Parameter | Description |
 |---|---|
 | ProxyServer | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
-| BypassList | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass <local>` to bypass local intranet URLs. The list must include: <br><br> - At least the IP address of each server.<br>- At least the IP address of cluster.<br>- Optionally, you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or Domain name with wildcard for any host or subdomain. |
+| BypassList | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass <local>` to bypass local intranet URLs. The list must include: <br><br> - At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
 
 Here's an example of the command usage:
 
@@ -162,11 +162,11 @@ You must consider the following when configuring the `WinHttp` proxy bypass list
     PS C:\>
     ```
 
-## Configure proxy settings for environment variables
+## Configure proxy settings for Environment Variables
 
 You must configure the proxy for Azure Arc-enabled servers, Azure Resource Bridge, and AKS before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
-To set the proxy server environment variable, run the following commands as administrator on each server in the cluster:
+To set the proxy server Environment Variable, run the following commands as administrator on each server in the cluster:
 
 ```powershell
 # If a proxy server is needed, execute these commands with the proxy URL and port.
@@ -185,7 +185,7 @@ The parameters are described in the following table:
 |---|---|
 | HTTPS_PROXY variable | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
 | HTTP_PROXY variable | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
-| NO_PROXY variable | String to bypass local intranet URLs, domains, and subnets. The list must include:<br><br>- At least the IP address of each server.<br>- At least the IP address of cluster.<br>- Optionally, you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or Domain name with wildcard for any host or subdomain.<br>- `.svc` for internal Kubernetes service traffic. |
+| NO_PROXY variable | String to bypass local intranet URLs, domains, and subnets. The list must include:<br><br>- At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with dot `.` wildcard for any host or subdomain.<br>- `.svc` for internal Kubernetes service traffic.|
 
 Here's an example of the command usage:
 
@@ -199,9 +199,9 @@ $no_proxy = "localhost,127.0.0.1,.svc,192.168.1.0/24,.contoso.com,node1,node2,s-
 $env:NO_PROXY = [System.Environment]::GetEnvironmentVariable("NO_PROXY", "Machine")
 ```
 
-### Environment variables proxy bypass list string considerations
+### Environment Variables proxy bypass list string considerations
 
-You must consider the following when configuring the environment variables proxy bypass list string:
+You must consider the following when configuring the Environment Variables proxy bypass list string:
 
 - Parameters must be separated with comma `,`.
 - CIDR notation to bypass subnets must be used.
@@ -209,12 +209,12 @@ You must consider the following when configuring the environment variables proxy
 - Dots `.` Should be used as wildcards to bypass domain names or local services. For example `.contoso.com` or `.svc`.
 - Proxy name must be specified with `http://` and the port for both HTTP_PROXY and HTTPS_PROXY variables. For example, `http://192.168.1.250:8080`.
 - `.svc` bypass is for AKS internal services communication in Linux notation. This is required for Arc Resource Bridge and AKS.
-- AKS requires to bypass the following subnets. 10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16. These subnets will be added to the environment variables bypass list automatically if they aren't defined.
+- AKS requires to bypass the following subnets. 10.0.0.0/8, 172.16.0.0/12 and 192.168.0.0/16. These subnets will be added to the Environment Variables bypass list automatically if they aren't defined.
 - The use of `<local>` strings isn't supported in the proxy bypass list.
 
-### Confirm and remove the environment variables proxy configuration
+### Confirm and remove the Environment Variables proxy configuration
 
-- To confirm that environment variables proxy configuration is applied, run the following command:
+- To confirm that Environment Variables proxy configuration is applied, run the following command:
 
     ```powershell
     echo "https :" $env:https_proxy "http :" $env:http_proxy "bypasslist " $env:no_proxy
