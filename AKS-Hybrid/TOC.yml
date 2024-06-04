@@ -68,10 +68,10 @@
       href: offline-download.md
     - name: Security and authentication
       items:
-      - name: Use Kubernetes RBAC with Microsoft Entra ID
-        href: kubernetes-rbac-23h2.md
       - name: Use Azure RBAC for Kubernetes authorization
         href: azure-rbac-23h2.md
+      - name: Use Kubernetes RBAC with Microsoft Entra ID
+        href: kubernetes-rbac-23h2.md
       - name: Retrieve certificate-based admin kubeconfig
         href: retrieve-admin-kubeconfig.md
       - name: Restrict SSH access
