@@ -14,7 +14,7 @@ ms.date: 05/29/2024
 # Keyword: Kubernetes role-based access control 
 ---
 
-# Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enabled by Azure Arc
+# Control access using Microsoft Entra ID and Kubernetes RBAC
 
 Applies to: AKS on Azure Stack HCI 23H2
 
