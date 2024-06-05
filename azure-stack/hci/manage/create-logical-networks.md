@@ -87,7 +87,7 @@ Create a static logical network when you want to create virtual machines with ne
 
     | Parameters | Description |
     |------------|-------------|
-    | **name**  |Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created. |
+    | **name**  |Name for the logical network that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Naming rules for Azure network resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork) You can't rename a logical network after it's created. |
     | **vm-switch-name** |Name of the external virtual switch on your Azure Stack HCI cluster where you deploy the logical network. |
     | **resource-group** |Name of the resource group where you create the logical network. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
     | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could be another subscription you use for logical network on your Azure Stack HCI cluster. |
@@ -276,7 +276,7 @@ Complete the following steps to create a logical network using Azure portal.
 
     - Select the Azure subscription name.
     - Select the associated resource group name.
-    - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a logical network after it's created.
+    - Provide a logical network name. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork) You can't rename a logical network after it's created.
     - Enter the virtual switch name that you saved earlier.
     - The geographic region is automatically set to the region where you registered your cluster.
     - The custom location is automatically populated from the cluster.
