@@ -68,14 +68,8 @@ This article describes the maximum and minimum supported scale count for AKS on 
 | Standard_D4s_v3             | 4    | 16           |
 | Standard_D8s_v3             | 8    | 32           |
 | Standard_K8S3_v1            | 4    | 6            |
-| Standard_NC4_A2             | 4    | 8            |
-| Standard_NC8_A2             | 8    | 16           |
-| Standard_NC16_A2            | 16   | 64           |
-| Standard_NC32_A2            | 32   | 128          |
-| Standard_NC4_A16            | 4    | 8            |
-| Standard_NC8_A16            | 8    | 16           |
-| Standard_NC16_A16           | 16   | 64           |
-| Standard_NC32_A16           | 32   | 128          |
+
+For more worker node sizes with GPU support, see [Use GPUs](deploy-gpu-node-pool.md). 
 
 ## Next steps
 
