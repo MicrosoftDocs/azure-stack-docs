@@ -25,7 +25,7 @@ Failed to either reach kube-apiserver or control plane IP %s:%d of Kubernetes cl
 
 ## Possible causes and follow-ups
 
-- Check whether the logical network into which you deployed the AKS cluster is reachable from the management network. The management network is a [block of 6 IP addresses that were allocated during Azure stack HCI deployment.](/azure-stack/hci/deploy/deploy-via-portal#specify-network-settings).
+- Check whether the logical network into which you deployed the AKS cluster is reachable from the management network. The management network is a [block of 6 IP addresses that were allocated during Azure stack HCI deployment](/azure-stack/hci/deploy/deploy-via-portal#specify-network-settings).
 - Check whether the `control plane IP` address of the AKS cluster is reachable from the management network. You can find the control plane IP address by running the [`az aksarc show`](/cli/azure/aksarc#az-aksarc-show) command.
 - One possible reason for connectivity issues here is if the Arc Resource Bridge is in a different vlan than the logical network in which you created the AKS cluster. If the Arc Resource Bridge is in a different vlan, ensure that cross-vlan communication is enabled.
 - Another frequent issue occurs if you have a firewall that isolates the management network from logical networks. Ensure that you opened the required ports so the management network can reach AKS Arc VMs. Review [the network requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for more information about required ports.

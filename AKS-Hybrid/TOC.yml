@@ -127,7 +127,7 @@
     - name: Troubleshoot
       href: aks-troubleshoot.md
     - name: KubeAPIServer unreachable error
-      href: kubeapiserver-unreachable.md
+      href: kube-api-server-unreachable.md
   - name: Reference
     items:
     - name: Azure CLI
