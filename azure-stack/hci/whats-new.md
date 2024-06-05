@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/23/2024
+ms.date: 06/04/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -29,7 +29,7 @@ Here are the features and improvements in this release.
 
 ### Deployment changes
 
-- **New ISO image** - Starting this release, you can download a new ISO image for Azure Stack HCI Operating System (OS) from the Azure portal. This new image has Hyper-V enabled by default, which reduces the required bootstrap steps. For more information, see [Download Azure Stack HCI, 23H2 OS](./deploy/download-azure-stack-hci-23h2-software.md).
+<!--- **New ISO image** - Starting this release, you can download a new ISO image for Azure Stack HCI Operating System (OS) from the Azure portal. This new image has Hyper-V enabled by default, which reduces the required bootstrap steps. For more information, see [Download Azure Stack HCI, 23H2 OS](./deploy/download-azure-stack-hci-23h2-software.md).-->
 
 - **Active Directory integration** - In this release, an issue related to the use of a large Active Directory that results in timeouts when adding users to the local administrator group, is fixed. <!--27022398-->
 
