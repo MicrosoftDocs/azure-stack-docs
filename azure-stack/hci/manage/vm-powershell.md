@@ -161,7 +161,7 @@ The `New-VHD` cmdlet is used to create a new VHD for a VM. For detailed informat
 The following example creates a dynamic virtual hard disk in VHDX format that is 10 GB in size. The file name extension determines the format and the default type of dynamic is used because no type is specified.
 
 ```powershell
-Get-ClusterGroup
+New-VHD -Path "C:\Path\To\Your\VHD.vhdx" -SizeBytes 10GB
 ```
 
 ## Add a network adapter to a VM
