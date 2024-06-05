@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/23/2024
+ms.date: 06/04/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -36,7 +36,7 @@ Here are the features and improvements in this release.
 - **New Azure Resource Manager (ARM) template** - This release has a new ARM template for deployment that simplifies the resource creation dependencies. The new template creation also includes multiple fixes around the missing mandatory fields. <!--26376120-->
 
 - **Secret rotation improvements** - In this release, improvements were made to the secret rotation flow.
-  - The secret rotation PowerShell command 'Set-AzureStackLCMUserPassword' now supports a new parameter to skip the confirmation message. This parameter is useful when automating secret rotation. <!--27101544-->
+  - The secret rotation PowerShell command `Set-AzureStackLCMUserPassword` now supports a new parameter to skip the confirmation message. This parameter is useful when automating secret rotation. <!--27101544-->
   - Reliability improvements were made around the services not restarting in a timely manner. <!--27837538-->
 
 - **SBE improvements** include:
@@ -83,7 +83,6 @@ In this release, changes to the environment checker include several new checks:
 - A new check is added to ensure RDMA is operational on the storage network adapters before deployment.
 - A new check is added to validate the infrastructure IP addresses defined during deployment have outbound connectivity and can resolve the DNS.
 - A new check is added to ensure the DNS server value is not empty on the management IP address.
-- A new check is added to make sure that there is only 1 IP address on the management network adapter.
 - A new check is added to make sure that there is only 1 IP address on the management network adapter.
 - A new check is added to ensure that the minimum bandwidth required for RDMA storage adapters is at least 10 Gb.
 - Check that the uplink connectivity in any physical network adapters assigned to Network ATC intents is up.
