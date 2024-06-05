@@ -13,7 +13,7 @@ ms.reviewer: brianl
 
 ---
 
-# Use Azure Blob storage with Azure Managed Lustre
+# Use Azure Blob Storage with Azure Managed Lustre
 
 Azure Managed Lustre integrates with Azure Blob Storage to simplify the process of importing data from a blob container to a file system. You can also export data from the file system to a blob container for long-term storage. This article explains concepts for using blob integration with Azure Managed Lustre file systems.
 
