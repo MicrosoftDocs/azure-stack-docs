@@ -60,11 +60,50 @@ To use GPUs in AKS Arc, make sure you installed the necessary GPU drivers before
 
 Install the Azure Stack HCI, version 23H2 operating system locally on each server in your Azure Stack HCI cluster.
 
-### Step 2: download and install the NVIDIA mitigation driver
+### Step 2: Uninstall the Nvidia host driver
+
+On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
+
+```powershell
+Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
+```
+
+You should see the GPU devices appear in an error state as shown in this example output:
+
+```output
+Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
+Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
+```
+
+### Step 3: Dismount the host driver from the host
+
+When you uninstall the host driver, the physical GPU goes into an error state. You must dismount all the GPU devices from the host.
+
+For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output:
+
+```powershell
+$id1 = "<Copy and paste GPU instance id into this string>"
+$lp1 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
+Disable-PnpDevice -InstanceId $id1 -Confirm:$false
+Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
+```
+
+To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
+
+```powershell
+Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video"
+```
+
+```output
+Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000 
+Unknown       3D Video Controller               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000 
+```
+
+### Step 4: download and install the NVIDIA mitigation driver
 
 The software might include components developed and owned by NVIDIA Corporation or its licensors. The use of these components is governed by the [NVIDIA end user license agreement](https://www.nvidia.com/content/DriverDownload-March2009/licence.php?lang=us).
 
-See the [NVIDIA data center documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host machine.
+See the [NVIDIA data center documentation](https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/) to download the NVIDIA mitigation driver. After downloading the driver, expand the archive and install the mitigation driver on each host machine. You can follow the Powershell script below to download the migitation driver and extact it. 
 
 ```powershell
 Invoke-WebRequest -Uri "https://docs.nvidia.com/datacenter/tesla/gpu-passthrough/nvidia_azure_stack_inf_v2022.10.13_public.zip" -OutFile "nvidia_azure_stack_inf_v2022.10.13_public.zip"
@@ -92,11 +131,11 @@ OK       Nvidia A2_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_
 OK       Nvidia A2_base - Dismounted               PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&3569C1D3&0&0000
 ```
 
-### Step 3: repeat steps 1 and 2
+### Step 5: repeat steps 1 to 4
 
-Repeat steps 1 and 2 for each server in your HCI cluster.
+Repeat steps 1 to 4 for each server in your HCI cluster.
 
-### Step 4: continue deployment of the Azure Stack HCI cluster
+### Step 6: continue deployment of the Azure Stack HCI cluster
 
 Continue the deployment of the Azure Stack HCI cluster by following the steps in [Azure Stack HCI, version 23H2 deployment.](/azure-stack/hci/deploy/deployment-introduction)
 
