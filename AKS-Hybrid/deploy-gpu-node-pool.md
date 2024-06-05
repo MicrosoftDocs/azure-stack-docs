@@ -3,9 +3,9 @@ title: Use GPUs for compute-intensive workloads (AKS on Azure Stack HCI 23H2)
 description: Learn how to deploy GPU-enabled node pools in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 03/05/2024
+ms.date: 06/05/2024
 ms.author: sethm 
-ms.lastreviewed: 03/21/2023
+ms.lastreviewed: 06/05/2024
 ms.reviewer: baziwane
 
 # Intent: As an IT Pro, I want to learn how to deploy GPU-enabled node pools
@@ -60,7 +60,7 @@ To use GPUs in AKS Arc, make sure you installed the necessary GPU drivers before
 
 Install the Azure Stack HCI, version 23H2 operating system locally on each server in your Azure Stack HCI cluster.
 
-### Step 2: Uninstall the Nvidia host driver
+### Step 2: Uninstall the NVIDIA host driver
 
 On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
 
