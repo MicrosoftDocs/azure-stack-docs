@@ -7,7 +7,7 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 06/03/2024
+ms.date: 06/05/2024
 ms.lastreviewed: 03/05/2024
 ---
 
@@ -34,35 +34,6 @@ Azure verification for VM enables you to use these benefits available only on Az
 
 > [!NOTE]
 > To ensure continued functionality, update your VMs on Azure Stack HCI to the latest cumulative update by June 17, 2024. This update is essential for VMs to continue using Azure benefits. See the [Azure Stack HCI blog post](https://techcommunity.microsoft.com/t5/azure-stack-blog/apply-critical-update-for-azure-stack-hci-vms-to-maintain-azure/ba-p/4115023) for more information.
-
-## Architecture
-
-This section is optional reading, and explains more about how Azure VM verification on Azure Stack HCI works "under the hood."
-
-Azure VM verification relies on a built-in platform attestation service on Azure Stack HCI. This service is modeled after the same [IMDS Attestation](/azure/virtual-machines/windows/instance-metadata-service?tabs=windows#attested-data) service that runs in Azure, and returns an almost identical payload. The main difference is that it runs on-premises, and therefore guarantees that VMs are running on Azure Stack HCI instead of Azure.
-
-:::image type="content" source="media/azure-verification/verification-architecture.png" alt-text="Diagram showing Azure verification architecture." lightbox="media/azure-verification/verification-architecture.png":::
-
-1. Azure VM verification is turned on by default with Azure Stack HCI running version 23H2 or later. During server startup, HciSvc generates an Integration Service over Hyper-V sockets that is, ([VMBus](/virtualization/hyper-v-on-windows/reference/hyper-v-architecture)) to facilitate secure communication between VMs and servers.
-
-   **[Legacy OS support](#legacy-os-support)**: Workloads that can't make Win32 API calls or directly query an integration service must enable Legacy OS support. This setting provides a private and nonroutable REST endpoint to VMs on the same server.
-
-     To enable this endpoint, an internal vSwitch is configured on the Azure Stack HCI server (named **AZSHCI_HOST-IMDS_DO_NOT_MODIFY**). After that, VMs must have a NIC configured (**AZSHCI_GUEST-IMDS_DO_NOT_MODIFY**) and attached to the same vSwitch.
-
-     > [!NOTE]
-     > Modifying or deleting this switch and NIC prevents Azure VM verification from working properly. If you encounter errors, try turning off and then turning back on legacy OS support.
-
-2. Whenever Azure Stack HCI syncs with Azure, HciSvc obtains a certificate from Azure, and securely stores it within an enclave on each server.
-
-   > [!NOTE]
-   > Certificates are renewed every time the Azure Stack HCI cluster syncs with Azure, and each renewal is valid for 30 days. As long as you maintain the usual 30 day connectivity requirements for Azure Stack HCI, no user action is required to renew certificates.
-
-3. To activate benefits, consumer workloads request attestation from servers. They try to send requests via VM Bus, or they can also query the REST endpoint using the networking components configured in legacy OS support. Both approaches for VM-server communication are supported and can coexist on the same cluster.
-
-   > [!NOTE]
-   > When using legacy OS support, you must manually enable access for VMs that require the activation of benefits.
-
-    HciSvc then returns a signed response using the Azure certificate it stored. Consumers verify the response and activate associated benefits.
 
 ## Manage Azure VM verification
 
