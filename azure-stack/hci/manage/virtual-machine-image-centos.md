@@ -6,8 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom:
-  - devx-track-azurecli
+ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 05/15/2024
 ---
 
