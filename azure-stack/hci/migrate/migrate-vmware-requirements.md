@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Stack HCI using Azur
 description: Learn the system requirements for VMware migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/24/2024
+ms.date: 06/26/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -38,7 +38,7 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 |-|-|
 |Asia-Pacific|South East Asia, East Asia|
 |Europe|North Europe, West Europe|
-|United States|East US, Central US, West Central US, West US2|
+|United States|Central US, West US2|
 
 Keep in mind the following information as you create a project:
 
