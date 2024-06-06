@@ -122,7 +122,7 @@ You now provide the Azure Stack HCI cluster information to onboard the discovere
 1. Provide the **Username** and the **Password** for the target Azure Stack HCI cluster.
 1. Select **Save**.
 
-:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-1.png" alt-text="Screenshot showing Add cluster information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
+:::image type="content" source="./media/migrate-vmware-replicate/add-target-cluster-information-11.png" alt-text="Screenshot showing Add cluster information popup for source appliance." lightbox="./media/migrate-vmware-replicate/add-target-cluster-information-1.png":::
 
 The cluster information table is updated with the cluster information. The status changes to **Validated**.
 
@@ -262,7 +262,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Enter the code that is displayed in your Authenticator (or similar) app for MFA authentication.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/enter-code.png" alt-text="Screenshot showing the Authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/enter-code-1.png" alt-text="Screenshot showing the Authenticate code popup." lightbox="./media/migrate-vmware-replicate/enter-code.png":::
 
 1. Wait until you see **The appliance has been successfully registered** message.
 
@@ -270,7 +270,7 @@ This step applies only if you downloaded the .zip file.
 
 1. Sign in to Microsoft Azure PowerShell using the code displayed in your Authenticator app. It can take up to 10 minutes for the appliance to be registered.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/migrate-vmware-replicate/enter-code-2.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/enter-code-2.png" alt-text="Screenshot showing the Azure Login popup." lightbox="./media/migrate-vmware-replicate/enter-code-22.png":::
 
 1. After the appliance is registered, under **Manage Azure Stack HCI cluster information**, select **Add cluster information**.
 
@@ -278,7 +278,7 @@ This step applies only if you downloaded the .zip file.
 
 1. For your target Azure Stack HCI cluster, enter the cluster FQDN (example format is *clustername.domain.com*), domain name, username, and password, and then select **Save**.
 
-    :::image type="content" source="./media/migrate-vmware-replicate/add-target-appliance-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-2.png":::
+    :::image type="content" source="./media/migrate-vmware-replicate/add-target-appliance-information-2.png" alt-text="Screenshot showing Add cluster information popup." lightbox="./media/migrate-vmware-replicate/add-target-appliance-information-22.png":::
 
 1. After the credentials are accepted, the status changes to **Validated**. Select **Configure**.
 
