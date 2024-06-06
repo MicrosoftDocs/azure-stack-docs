@@ -156,13 +156,7 @@ Checkpoint-VM -ComputerName Server1 -Name VM1 -SnapshotName BeforeInstallingUpda
 
 ## Create a VHD for a VM
 
-The `New-VHD` cmdlet is used to create a new VHD for a VM. For detailed information on how to use it, see the [New-VHD](/powershell/module/hyper-v/new-vhd) reference documentation.
-
-The following example creates a dynamic virtual hard disk in VHDX format that is 10 GB in size. The file name extension determines the format and the default type of dynamic is used because no type is specified.
-
-```powershell
-Get-ClusterGroup
-```
+The `New-VHD` cmdlet is used to create a new VHD for a VM. For detailed information about how to use it, see the [New-VHD](/powershell/module/hyper-v/new-vhd) reference documentation.
 
 ## Add a network adapter to a VM
 
