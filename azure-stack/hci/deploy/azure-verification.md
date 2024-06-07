@@ -7,13 +7,13 @@ ms.topic: overview
 ms.custom:
   - devx-track-azurepowershell
 ms.reviewer: jlei
-ms.date: 06/05/2024
+ms.date: 06/07/2024
 ms.lastreviewed: 03/05/2024
 ---
 
 # Azure verification for VMs
 
-[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)] and later.
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
