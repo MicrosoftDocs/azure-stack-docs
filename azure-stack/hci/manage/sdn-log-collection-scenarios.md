@@ -55,19 +55,19 @@ In scenarios where the `ConfigurationState` indicates a failure, you might need 
 
 | Resource | Roles |
 |--|--|
-| AccessControlList | NetworkController, Server |
-| Gateways | NetworkController, Gateway |
-| GatewayPools | NetworkController, Gateway |
-| LoadBalancerMuxes | NetworkController, LoadBalancerMux |
-| LoadBalancers | NetworkController,LoadBalancerMux, Server |
-| LogicalNetworks | NetworkController, Server |
-| NetworkInterfaces | NetworkController, Server |
-| PublicIPAddress | NetworkController,LoadBalancerMux, Server |
-| SecurityTags | NetworkController, Server |
-| Servers | NetworkController, Server |
-| RouteTables | NetworkController, Server |
-| VirtualGateways | NetworkController, Gateway |
-| VirtualNetworks | NetworkController, Server |
+| AccessControlList | `NetworkController,Server` |
+| Gateways | `NetworkController,Gateway` |
+| GatewayPools | `NetworkController,Gateway` |
+| LoadBalancerMuxes | `NetworkController,LoadBalancerMux` |
+| LoadBalancers | `NetworkController,LoadBalancerMux,Server` |
+| LogicalNetworks | `NetworkController,Server` |
+| NetworkInterfaces | `NetworkController,Server` |
+| PublicIPAddress | `NetworkController,LoadBalancerMux,Server` |
+| SecurityTags | `NetworkController,Server` |
+| Servers | `NetworkController,Server` |
+| RouteTables | `NetworkController,Server` |
+| VirtualGateways | `NetworkController,Gateway` |
+| VirtualNetworks | `NetworkController,Server` |
 
 ## Troubleshoot network DataPath
 
@@ -161,7 +161,7 @@ This section addresses scenarios where you encounter the following issues:
 
 Follow these steps to collect trace files for troubleshooting East/West traffic flow:
 
-1. Identify the Hyper-V host that the VMs you're troubleshooting are hosted on. Once you have the Hyper-V hosts identified, perform network tracing using [Start-SdnNetshTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnNetshTrace) and [Stop-SdnNetshTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Stop-SdnNetshTrace):
+1. Identify the Hyper-V host that the VMs you're troubleshooting are hosted on. Once you identify the Hyper-V hosts, perform network tracing using [Start-SdnNetshTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Start-SdnNetshTrace) and [Stop-SdnNetshTrace](https://github.com/microsoft/SdnDiagnostics/wiki/Stop-SdnNetshTrace):
 
     ```powershell
     Start-SdnNetshTrace -ComputerName 'server01.contoso.com','server02.contoso.com' -Role:Server
