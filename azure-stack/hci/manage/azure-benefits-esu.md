@@ -16,7 +16,7 @@ ms.lastreviewed: 02/23/2024
 
 The Extended Security Update (ESU) program enables you to get important security patches for legacy Microsoft products that are past the end of support. Getting ESU through Azure Stack HCI comes with additional benefits and implementation steps. This article explains the specifics for Azure Stack HCI.
 
-To get general information about the ESU program, products that are covered, and support dates, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates). For detailed steps to set up legacy OS support, see [Azure verification for VMs](../deploy/azure-verification#legacy-os-support).
+To get general information about the ESU program, products that are covered, and support dates, see the [Product Lifecycle FAQ](/lifecycle/faq/extended-security-updates#esu-availability-and-end-dates). For detailed steps to set up legacy OS support, see [Azure verification for VMs](../deploy/azure-verification.md#legacy-os-support).
 
 > [!NOTE]
 > Azure Stack HCI customers can obtain ESUs at no cost through Azure verification for VMs by following the instructions in this article. If you have an Arc-enabled server that is not Azure Stack HCI, you should consider obtaining ESU licenses through Arc. For more information, see [Deliver Extended Security Updates](/azure/azure-arc/servers/deliver-extended-security-updates) (through Arc).
