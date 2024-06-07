@@ -11,7 +11,7 @@ ms.date: 06/07/2024
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
-This article describes the data to collect to troubleshoot common issues in Software Defined Networking (SDN) on your Azure Stack HCI cluster. Use this information to perform initial troubleshooting before contacting Microsoft Support.
+This article describes what data to collect to troubleshoot common issues in Software Defined Networking (SDN) on your Azure Stack HCI cluster. Use this information to perform initial troubleshooting before contacting Microsoft Support.
 
 ## Prerequisites
 
@@ -150,7 +150,7 @@ Follow these steps to collect trace files for troubleshooting Load Balancer VIP 
     Start-SdnDataCollection -Role NetworkController,LoadBalancerMux -IncludeLogs -FromDate (Get-Date).AddHours(-1)
     ```
 
-Additionally, a `{VIP}_TraceMapping.json` file is generated under the working directory on your workstation. This file includes valuable information for analyzing the network traces.
+    Additionally, a `{VIP}_TraceMapping.json` file is generated under the working directory on your workstation. This file includes valuable information for analyzing the network traces.
 
 ### Troubleshoot East/West traffic flow
 

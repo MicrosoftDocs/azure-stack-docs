@@ -74,7 +74,7 @@ Follow these steps to install the `SdnDiagnostics` PowerShell module on the clie
     ```powershell
     Get-Module -Name SdnDiagmostics
     ```
-    - If you have multiple versions loaded into the runspace, recommend to remove and then re-import the module.
+    - If you have multiple versions loaded into the runspace, we recommend removing and then re-importing the module.
 
         ```powershell
         Remove-Module -Name SdnDiagnostics
