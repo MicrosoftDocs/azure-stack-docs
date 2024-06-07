@@ -95,7 +95,7 @@ To create the Arc gateway resource in Azure, follow these steps:
 | management.azure.com | Azure Resource Manager Endpoint, required for ARM control channel. |
 | login.microsoftonline.com | Microsoft Entra ID endpoint, for acquiring identity access tokens. |
 | gbl.his.arc.azure.com | The cloud service endpoint for communicating with Arc Agents. |
-| <region>.his.arc.azure.com | The cloud service endpoint for communicating with Arc agents. |
+| <your_region>.his.arc.azure.com | The cloud service endpoint for communicating with Arc agents. |
 | packages.microsoft.com | Required to acquire a Linux-based Arc agentry payload; only needed to connect Linux servers to Azure Arc. |
 | download.microsoft.com | Used to download the Windows installation package. |
 
