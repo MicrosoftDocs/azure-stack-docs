@@ -3,11 +3,11 @@ title: Use OpenFaaS with AKS enabled by Azure Arc
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) cluster to build serverless functions with containers in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: article
+ms.custom: linux-related-content
 ms.date: 11/07/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
-# Intent: As an IT Pro, I want to learn how to use OpenFaaS in order to build serverless functions with containers in AKS.
 # Keyword: OpenFaaS serverless functions
 ---
 

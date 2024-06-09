@@ -4,6 +4,7 @@ titleSuffix: Azure Stack
 description: Learn which guest operating systems can be used on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
+ms.custom: linux-related-content
 ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: thoroet
@@ -11,7 +12,6 @@ ms.lastreviewed: 09/09/2021
 
 # Intent: As an Azure Stack operator, I want to learnm which guest operating systems can be used on Azure Stack.
 # Keyword: azure stack guest operating systems
-
 ---
 
 
