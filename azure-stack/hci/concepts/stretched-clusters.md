@@ -12,6 +12,9 @@ ms.reviewer: johnmar
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
+> [!IMPORTANT]
+> Stretch clusters are not yet supported in Azure Stack HCI version 23H2.
+
 An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly and without the need for manual intervention. Storage Replica provides the replication of volumes across sites for disaster recovery, with all servers staying in sync.
 
 Storage Replica supports both synchronous and asynchronous replication:
