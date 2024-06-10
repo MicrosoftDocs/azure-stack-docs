@@ -3,7 +3,7 @@ title: Prerequisites for VMware VM migration to Azure Stack HCI using Azure Migr
 description: Learn prerequisites for VMware migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/24/2024
+ms.date: 05/20/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -58,4 +58,4 @@ The following list contains the prerequisites that must be met to migrate VMware
 
 ## Next steps
 
-- [Discover and replicate Hyper-V VMs](migrate-vmware-replicate.md).
+- [Discover and replicate VMware VMs](migrate-vmware-replicate.md).

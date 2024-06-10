@@ -3,7 +3,7 @@ title: Migrate VMware VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate VMware VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 04/09/2024
+ms.date: 05/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -21,7 +21,7 @@ This article describes how to migrate the VMware virtual machines (VMs) to Azure
 
 Before you migrate your VMware VMs:
 
-- Make sure that you have replicated the VMware VM on your Azure Stack HCI cluster. To replicate a VM, use the instructions in [Replicate VMware VMs to Azure Stack HCI using Azure Migrate](migrate-vmware-replicate.md).
+- Make sure that you have replicated the VMware VMs on your Azure Stack HCI cluster. To replicate a VM, use the instructions in [Replicate VMware VMs to Azure Stack HCI using Azure Migrate](migrate-vmware-replicate.md).
 - Make sure the replication has completed and the migration status is **Ready to replicate**.
 
 
@@ -53,7 +53,7 @@ Before you migrate your VMware VMs:
 
     :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-a.png" alt-text="Screenshot of Migrate page with context menu in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-a.png":::
     
-1. Refresh the page periodically to view the migration status. You can also select the migration status at any time to view the progress details. 
+1. Refresh the page periodically to view the migration status. You can also select the migration status at any time to view the progress details.
 
     :::image type="content" source="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-b.png" alt-text="Screenshot of Migrate page with migration status selected in Azure portal." lightbox="./media/migrate-vmware-migrate/migrate-replicated-virtual-machine-3-b.png":::
 
@@ -75,10 +75,10 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
     :::image type="content" source="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-1.png" alt-text="Screenshot of Azure Stack HCI > Virtual machines in Azure portal." lightbox="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-1.png":::
 
 1. Select a VM to view its details. Verify that:
-    1. The VM is running. The corresponding source VM in the Hyper-V server is turned off.
+    1. The VM is running. The corresponding source VM on the VMware server is turned off.
     1. The VM has the disk and network configuration as configured during replication.
   
-    :::image type="content" source="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2.png":::
+    :::image type="content" source="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2-a.png" alt-text="Screenshot of migrated VM details in Azure portal." lightbox="./media/migrate-vmware-migrate/verify-migrated-virtual-machine-2-a.png":::
 
 1. Sign into the VM using Hyper-V VMConnect. Verify that:
     1. The VM behaves as expected.
@@ -92,13 +92,17 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
     :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-2.png" alt-text="Screenshot of Replications view with a VM selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-2.png":::
 
-    From the top command bar, select **Complete migration**. When prompted for confirmation, select **Yes** to continue. Repeat this action for all the migrated VMs.
+    From the top command bar, select **Complete migration**. When prompted for confirmation, select **Yes** to continue. 
 
     :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3.png" alt-text="Screenshot of confirmation to complete migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3.png":::
 
-    This action starts the **Delete protected item** job that you can track from the **Jobs** page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
+    Repeat this action for all the migrated VMs.
+
+    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png" alt-text="Screenshot of multiple VMs completing migration in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-3-a.png":::
+
+    The **Complete migration** action starts the **Delete protected item** job that you can track from the **Jobs** page. This job will only clean up the replication by deleting the delete protected item job - this will not affect your migrated VM.  
     
-    :::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png":::
+   <!--:::image type="content" source="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png" alt-text="Screenshot of Jobs page with deletion job selected in Azure portal."lightbox="./media/migrate-vmware-migrate/complete-migration-virtual-machine-4.png":::-- old one-->
 
     After the migrate resource is deleted, it is also removed from the **Replications** view. You'll also see the migrated VM job disappear from the **Replications** view.
 
@@ -108,7 +112,7 @@ Once the migration is complete, the VMs are running on your Azure Stack HCI clus
 
 Once you have verified that migration is complete and no more servers need to be migrated, the last step is to clean up. Cleanup requires deletion of the following resources created during migration:
 
-- Source VMs and the associated VM disks from VMware vCenter and the Failover Cluster Manager.
+- Source VMs and the associated VM disks from VMware vCenter.
 - Source VMware appliance and target Azure Stack HCI appliance VMs.
 
 
