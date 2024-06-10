@@ -7,7 +7,7 @@ ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 03/13/2024
-ms.custom: e2e-hybrid
+ms.custom: e2e-hybrid, linux-related-content
 ---
 
 # Azure Stack HCI solution overview

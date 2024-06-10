@@ -3,6 +3,7 @@ title: Add Linux images to the Azure Stack Hub Marketplace
 description: Learn how to add Linux images to the Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
+ms.custom: linux-related-content
 ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: thoroet
@@ -10,7 +11,6 @@ ms.lastreviewed: 9/9/2021
 
 # Intent: As an Azure Stack operator, I want to add Linux images to Azure Stack so my users can deploy Linux VMs.
 # Keyword: azure stack add linux image marketplace
-
 ---
 
 # Add Linux images to the Azure Stack Hub Marketplace
