@@ -80,7 +80,7 @@ Follow these steps in a new PowerShell window to install the `SdnDiagnostics` mo
 1. To set the variable for the Network Controller VM name, run the following cmdlet:
 
     ```powershell
-    $NCVMName = ‘example: nc01.contoso.com’
+    $NCVMName = 'nc01.contoso.com'
     ```
 
 1. To import the `SdnDiagnostics` module into the current session, run the following cmdlet:
@@ -124,7 +124,7 @@ FabricNodes			{nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, n
 NcUrl				https ://SDN-POD06.TAILWINDTRADERS.COM
 Server			    {CPPE-P06N01.tailwindtraders.com, CPPE-P06N02.tailwindtraders.com, CPPE-P06N03.tailwi...
 Gateway			    {nc01-pod06.tailwindtraders.com, nc02-pod06.tailwindtraders.com, nc03-pod06.tailwindt...
-LoadBalancerMux 
+SoftwareLoadBalancer 
 NetworkController
 
 ```
@@ -141,7 +141,7 @@ A few things to consider before you run the `Start-SdnDataCollection` cmdlet:
 
 - If you don't specify the `FromDate` parameter, logs are collected for the past four hours by default.
 
-- The `Start-SdnDataCollection` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, LoadBalancerMux. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
+- The `Start-SdnDataCollection` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, SoftwareLoadBalancer. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
 
 - If you don't specify any credentials, the `Start-SdnDataCollection` cmdlet uses the credentials of the current user by default.
 
@@ -164,19 +164,19 @@ In this example, you run the `Start-SdnDataCollection` cmdlet from a Network Con
 1. Set the variable for one of the Network Controller VMs:
 
     ```powershell
-    $NCVMName = ‘example: nc01.contoso.com’
+    $NCVMName = 'nc01.contoso.com'
     ```
 
 1. Run the following cmdlet to collect logs from Network Controller, Software Load Balancers, Gateways, and the servers running Azure Stack HCI:
 
     ```powershell
-    Start-SdnDataCollection -NetworkController $NCVMName -Credential (Get-Credential) -Role Gateway,NetworkController,Server,LoadBalancerMux -IncludeLogs -IncludeNetView
+    Start-SdnDataCollection -NetworkController $NCVMName -Credential (Get-Credential) -Role Gateway,NetworkController,Server,SoftwareLoadBalancer -IncludeLogs -IncludeNetView
     ```
 
 Here's a sample output of the `Start-SdnDataCollection` cmdlet:
 
 ```output
-PS C:\> Start-SdnDataCollection -Networkcontroller SSdnDiagnostics.Environmentinfo.NetworkController[0] -Role Gateway,LoadBalancerMux,Networkcontrol1er.server -includeLogs -Fromoate (Get-Date).AddHours(-l)
+PS C:\> Start-SdnDataCollection -Networkcontroller $NCVMName -Role Gateway,SoftwareLoadBalancer,Networkcontroller,Server -includeLogs -FromDate (Get-Date).AddHours(-1)
 [    N26-2] Starting SDN Data Collection
 [    N26-2] Results will be saved to C:\windows\Tracing\sdnDataCollection\20220ll8-23325l
 [    N26-2]	Node N26-GW0l.sal8.nttest.microsoft.com with role Gateway added	for data collection
