@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/04/2024
+ms.date: 06/10/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -21,7 +21,11 @@ There are currently 3 release trains for Azure Stack HCI, version 23H2: 2405, 24
 
 ## [2405 releases](#tab/2405releases)
 
-The 2405 release train includes the following release:
+The 2405 release train includes the following releases:
+
+## Features and improvements in 2405.1
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2405-1.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2405
 
