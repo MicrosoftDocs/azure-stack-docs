@@ -1317,7 +1317,7 @@
     },
     {
       "source_path": "azure-stack/hci/manage/partition-gpu.md",
-      "redirect_url": "/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci",
+      "redirect_url": "/windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json",
       "redirect_document_id": false
     },
     {
@@ -1328,6 +1328,11 @@
     {
       "source_path": "azure-stack/user/container-registry-get-resource-id.md",
       "redirect_url": "/azure-stack/user/container-registry-troubleshoot#find-your-registry-resource-id-for-support",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/hci/manage/use-gpu-with-clustered-vm.md",
+      "redirect_url": "/windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json",
       "redirect_document_id": false
     }
   ]
