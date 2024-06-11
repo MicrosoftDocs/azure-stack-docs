@@ -4,6 +4,7 @@ description: Learn how to run a Linux virtual machine on Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: how-to
+ms.custom: linux-related-content
 ms.date: 2/1/2021
 ms.author: sethm
 ms.reviewer: kivenkat
@@ -11,7 +12,6 @@ ms.lastreviewed: 11/01/2019
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
-
 ---
 
 

@@ -3,13 +3,12 @@ title: Node auto-repair
 description: Learn about automatic node repair of Windows and Linux nodes in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
+ms.custom: linux-related-content
 ms.date: 01/27/2023
 ms.author: sethm 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: oadeniji
-# Intent: As an IT Pro, I need to learn how to automatically repair unhealthy nodes in order to avoid service disruptions.
 # Keyword: unhealthy nodes service disruptions node repair auto-repair
-
 ---
 
 # Node auto-repair
