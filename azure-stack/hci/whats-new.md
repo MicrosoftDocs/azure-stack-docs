@@ -119,6 +119,10 @@ For a list of the changes and improvements in AKS on Azure Stack HCI, version 23
 
 The 2402 release train includes the following releases:
 
+## Features and improvements in 2402.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-4.md#fixed-issues) to understand the bug fixes.
+
 ## Features and improvements in 2402.3
 
 This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-3.md#fixed-issues) to understand the bug fixes.
