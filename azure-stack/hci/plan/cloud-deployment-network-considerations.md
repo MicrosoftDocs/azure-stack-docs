@@ -294,6 +294,8 @@ For example, if the management IP range is defined as 192.168.1.20/24 to 192.168
 
 The process of defining the management IP after creating the management intent involves using the MAC address of the first physical network adapter that is selected for the network intent. This MAC address is then assigned to the virtual network adapter that is created for management purposes. This means that the IP address that the first physical network adapter obtains from the DHCP server is the same IP address that the virtual network adapter uses as the management IP. Therefore, it is important to create DHCP reservation for node IP.
 
+The network validation logic used during Cloud deployment will fail if it detects multiple physical network interfaces that have a default gateway in their configuration. If you need to use DHCP for your host IP assignments, you need to pre-create the SET _(switch embedded teaming)_ virtual switch and the management virtual network adapter as described above, so only that virtual network adapter acquires an IP address from DHCP.
+
 #### Cluster node IP considerations
 
 Here are the summarized considerations for the IP addresses:
