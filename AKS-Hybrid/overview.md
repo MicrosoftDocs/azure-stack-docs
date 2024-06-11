@@ -2,13 +2,13 @@
 title: Overview of AKS on Windows Server and Azure Stack HCI, version 22H2
 description: Learn about AKS enabled by Azure Arc on Windows Server and Azure Stack HCI.
 ms.topic: overview
+ms.custom: linux-related-content
 author: sethmanheim
 ms.author: sethm 
 ms.date: 01/29/2024
 
 # Intent: As an IT Pro, I want to use AKS on Azure Stack HCI and Windows Server to deploy on-premises Kubernetes and orchestrate containerized workloads.
 # Keyword: on-premises Kubernetes
-
 ---
 
 # Overview of AKS on Windows Server and Azure Stack HCI, version 22H2

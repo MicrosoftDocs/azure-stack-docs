@@ -3,6 +3,7 @@ title: Deploy a Linux app in AKS enabled by Azure Arc
 description: Learn how to deploy a multi-container Linux app to your Kubernetes cluster in AKS enabled by Arc using a custom image stored in Azure Container Registry.
 author: sethmanheim
 ms.topic: tutorial
+ms.custom: linux-related-content
 ms.date: 11/03/2022
 ms.author: sethm 
 ms.lastreviewed: 06/27/2022
@@ -10,7 +11,6 @@ ms.reviewer: abha
 
 # Intent: As an IT Pro, I want step-by-step instructions on how to use an image to deploy a multi-container Linux app to my AKS cluster.
 # Keyword: deploy an app
-
 ---
 
 # Tutorial: Deploy a Linux app

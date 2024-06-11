@@ -5,7 +5,7 @@ author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
 ms.date: 10/10/2023
-ms.custom: template-how-to
+ms.custom: template-how-to, linux-related-content
 ---
 
 # TPM access for AKS Edge Essentials

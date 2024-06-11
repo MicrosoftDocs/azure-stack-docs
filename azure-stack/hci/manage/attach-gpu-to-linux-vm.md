@@ -4,6 +4,7 @@ description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
+ms.custom: linux-related-content
 ms.date: 02/23/2024
 ---
 
