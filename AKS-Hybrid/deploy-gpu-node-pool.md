@@ -86,7 +86,7 @@ Driver Version:     03/05/2024 31.0.15.5178
 Signer Name:        Microsoft Windows Hardware Compatibility Publisher
 ```
 
-Run the following command in your Powershell session, and replace `.\oem1.inf` with the value in **Published Name** from the previous **PNPUTIL Enum-Devices** output.
+Run the following command in your Powershell session, and replace `.\oem1.inf` with the value in **Published Name** from the previous **PNPUTIL Enum-Devices** output:
 
 ```powershell
 pnputil /delete-driver .\oem1.inf /uninstall /reboot
