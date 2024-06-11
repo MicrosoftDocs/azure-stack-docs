@@ -6,14 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/30/2024
+ms.date: 06/11/2024
 ---
 
 # Manage Arc VMs on Azure Stack HCI
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to manage Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2. The procedures to enable guest management, start, stop, restart, or delete an Arc VM are detailed.
+This article describes how to manage Arc virtual machines (VMs) running on Azure Stack HCI, version 23H2. The procedures to enable guest management, start, stop, restart, pause, save, or delete an Arc VM, are detailed.
 
 
 ## Prerequisites
@@ -235,6 +235,56 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to restart
 1. Verify the VM has restarted.
 
    :::image type="content" source="./media/manage-arc-virtual-machines/restart-virtual-machine.png" alt-text="Screenshot of select + restart VM." lightbox="./media/manage-arc-virtual-machines/restart-virtual-machine.png":::
+
+## Pause a VM
+
+Pausing the VMs is useful to save the compute resources when you are not using the VMs. Pausing a VM stops any CPU activity and saves the current state of the VM in the memory. You can only pause running VMs. Once paused, you can resume the VM later.
+
+1. [Connect to the server node of your Azure Stack HCI system](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly).
+1. To pause the VM, run the following PowerShell cmdlet:
+
+    ```azurecli
+    az stack-hci-vm pause --name "<VM name>" --resource-group "<Resource group name>"
+    ```
+
+    The parameters used for this cmdlet are as follows:
+
+    |Parameter  |Description  |
+    |---------|---------|
+    |`name`     |Name of the virtual machine.         |
+    |`resource-group`    |Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.         |
+    |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
+
+    Here's an example output:
+
+    ```output
+
+    ```
+
+## Save a VM
+
+Saving a VM stores the current state of the VM to the disk and stops the VM. Saving a VM frees up memory and CPU resources. You can only save running VMs.
+
+1. [Connect to the server node of your Azure Stack HCI system](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly).
+1. To save the VM, run the following PowerShell cmdlet:
+
+    ```azurecli
+    az stack-hci-vm save --name "<VM name>" --resource-group "<Resource group name>"
+    ```
+
+    The parameters used for this cmdlet are as follows:
+
+    |Parameter  |Description  |
+    |---------|---------|
+    |`name`     |Name of the virtual machine.         |
+    |`resource-group`    |Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.         |
+    |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
+
+    Here's an example output:
+
+    ```output
+
+    ```
 
 ## Delete a VM
 
