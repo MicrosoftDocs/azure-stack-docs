@@ -62,11 +62,36 @@ Install the Azure Stack HCI, version 23H2 operating system locally on each serve
 
 ### Step 2: uninstall the NVIDIA host driver
 
-On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
+Open a remote powershell session to each host, or run the following local in Powershell.You will need to start by uninstalling the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled.
+
+```powershell
+PNPUTIL /enum-drivers
+```
+
+
+ Open an elevated PowerShell terminal and run the following command:
 
 ```powershell
 Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
 ```
+You should see the Installed Drivers in the PNPUTIL output, if the "Provider Name" is listed as "NVIDIA Corporation" that is the driver you need to target for uninstall, note the "Published Name" you will be using that in the next command.
+
+```output
+Published Name:     oem15.inf
+Original Name:      nvlwswi.inf
+Provider Name:      NVIDIA
+Class Name:         Display
+Class GUID:         {4d36e968-e325-11ce-bfc1-08002be10318}
+Driver Version:     03/05/2024 31.0.15.5178
+Signer Name:        Microsoft Windows Hardware Compatibility Publisher
+```
+
+Run the following in your Powershell session, replacing the ".\oem1.inf" with the value in "Published  Name" from the "PNPUTIL Enum-Devices" output from earlier.
+
+```powershell
+pnputil /delete-driver .\oem1.inf /uninstall /reboot
+```
+After the reboot is complete, reconnect via Powershell or RDP Session. 
 
 You should see the GPU devices appear in an error state as shown in this example output:
 
@@ -82,7 +107,8 @@ When you uninstall the host driver, the physical GPU goes into an error state. Y
 For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output:
 
 ```powershell
-$id1 = "<Copy and paste GPU instance id into this string>"
+$gpu=Get-PnpDevice  -FriendlyName "3D Video Controller"
+$id1 =$gpu[0].InstanceId
 $lp1 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
 Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
