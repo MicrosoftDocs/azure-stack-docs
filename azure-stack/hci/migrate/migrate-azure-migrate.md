@@ -7,6 +7,7 @@ ms.date: 01/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
+ms.custom: linux-related-content
 ---
 
 # Migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview)

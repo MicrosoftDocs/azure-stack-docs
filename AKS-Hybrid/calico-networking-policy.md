@@ -3,7 +3,7 @@ title: Use Calico network policy to secure pod traffic
 description: Learn how to use network policy to secure traffic between pods in Azure Kubernetes Service deployments in AKS enabled by Arc.
 ms.topic: how-to
 ms.date: 11/04/2022
-ms.custom: fasttrack-edit
+ms.custom: fasttrack-edit, linux-related-content
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
@@ -11,7 +11,6 @@ author: sethmanheim
 
 # Intent: As an IT Pro, I want to learn how to use Calico's network policies to secure traffic between pods in my AKS Azure Stack HCI deployment.
 # Keyword: secure network traffic, Calico network
-
 ---
 
 # Use Calico network policy to secure pod traffic

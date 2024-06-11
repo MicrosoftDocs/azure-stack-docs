@@ -10,8 +10,7 @@ ms.date: 2/1/2021
 ms.author: sethm
 ms.reviewer: raymondl
 ms.lastreviewed: 1/9/2020 
-ms.custom: devx-track-azurecli
-
+ms.custom: devx-track-azurecli, linux-related-content
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI
 

@@ -16,7 +16,7 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
 
 > [!IMPORTANT]
-> Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
+> Azure Express Route and Azure Private Link are not supported for Azure Stack HCI, version 23H2 or any of its components, because it is not possible to access the public endpoints required for Azure Stack HCI 23H2.
 
 ## Firewall requirements for outbound endpoints
 

@@ -9,8 +9,7 @@ ms.author: sethm
 
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using Azure CLI.
 # Keyword: linux virtual machine CLI
-
-ms.custom: mode-api, devx-track-azurecli
+ms.custom: mode-api, devx-track-azurecli, linux-related-content
 ---
 
 
