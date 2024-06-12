@@ -274,8 +274,6 @@
         href: logs.yml
       - name: nodepool
         href: nodepool.yml
-      - name: release
-        href: release.yml
       - name: vmsize
         href: vmsize.yml
       - name: vnet
