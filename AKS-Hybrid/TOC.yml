@@ -264,6 +264,20 @@
       href: aks-vmware-known-issues.md
     - name: Troubleshooting guide
       href: aks-vmware-troubleshooting-guide.md
+  - name: Reference
+    items:
+    - name: aksarc CLI version 1.0.0b1
+      items:
+      - name: Commands
+        href: aksarc.yml
+      - name: logs
+        href: logs.yml
+      - name: nodepool
+        href: nodepool.yml
+      - name: vmsize
+        href: vmsize.yml
+      - name: vnet
+        href: vnet.yml
 - name: AKS on Windows Server
   items:
   - name: Overview
