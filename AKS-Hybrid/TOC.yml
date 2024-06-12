@@ -132,6 +132,8 @@
     items:
     - name: Azure CLI
       href: /cli/azure/aksarc
+    - name: New CLI
+      href: aksarc.yml
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
