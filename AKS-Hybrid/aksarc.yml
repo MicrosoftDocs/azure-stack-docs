@@ -3,8 +3,7 @@ uid: az_aksarc
 name: az aksarc
 extensionInformation: >-
   > [!NOTE]
-
-  > This reference is part of the **aksarc** extension for the Azure CLI (version 2.32.0 or higher). The extension will automatically install the first time you run an **az aksarc** command. [Learn more](https://learn.microsoft.com/cli/azure/azure-cli-extensions-overview) about extensions.
+  > This reference is part of the **aksarc** extension for the Azure CLI (version 2.32.0 or higher). The extension automatically installs the first time you run an **az aksarc** command. [Learn more](https://learn.microsoft.com/cli/azure/azure-cli-extensions-overview) about extensions.
 summary: |-
   Manage provisioned clusters.
 status: Preview
@@ -67,10 +66,10 @@ directCommands:
       Number of control plane nodes.
   - name: --control-plane-ip
     summary: |-
-      API server IP Address for the control plane.
+      API server IP address for the control plane.
   - name: --control-plane-vm-size
     summary: |-
-      VM Size of control plane.
+      VM size of control plane.
   - name: --enable-ahub
     defaultValue: "False"
     summary: |-
@@ -85,7 +84,7 @@ directCommands:
       Generate ssh key-pair if not present.
   - name: --kubernetes-version -k
     summary: |-
-      The kubernetes version of the provisioned cluster.
+      The Kubernetes version of the provisioned cluster.
   - name: --load-balancer-count
     summary: |-
       Number of load balancer nodes.
@@ -99,23 +98,23 @@ directCommands:
   - name: --node-count -c
     defaultValue: "1"
     summary: |-
-      Number of nodes to be created in the nodepool.
+      Number of nodes to be created in the node pool.
   - name: --node-vm-size
     summary: |-
-      VM Size of the nodes in the nodepool.
+      VM size of the nodes in the node pool.
   - name: --pod-cidr
     summary: |-
       The CIDR notation IP ranges from which to assign pod IPs.
   - name: --ssh-key-value
     defaultValue: "~\\.ssh\\id_rsa.pub"
     summary: |-
-      Path to the ssh public key to be injected into the control plane.
+      Path to the SSH public key to be injected into the control plane.
   - name: --tags
     summary: |-
       Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.
   - name: --vnet-ids
     summary: |-
-      ARM resource ID(s) of the VNets.
+      Azure Resource Manager resource ID(s) of the VNets.
 - uid: az_aksarc_delete
   name: az aksarc delete
   summary: |-
@@ -141,7 +140,7 @@ directCommands:
   - isRequired: true
     name: --resource-group -g
     summary: |-
-      Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+      Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`.
   optionalParameters:
   - name: --no-wait
     defaultValue: "False"
@@ -154,7 +153,7 @@ directCommands:
 - uid: az_aksarc_get-credentials
   name: az aksarc get-credentials
   summary: |-
-    Get local kubeconfig of the provisioned cluster.
+    Gets local kubeconfig of the provisioned cluster.
   status: Preview
   isPreview: true
   previewOrExperimentalInfo: "Command group 'aksarc' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus"
@@ -181,15 +180,15 @@ directCommands:
   - isRequired: true
     name: --resource-group -g
     summary: |-
-      Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+      Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`.
   optionalParameters:
   - name: --admin -a
     defaultValue: "False"
     summary: |-
-      Get cluster administrator credentials.
+      Gets cluster administrator credentials.
   - name: --context
     summary: |-
-      If specified, overwrite the default context name.
+      If specified, overwrites the default context name.
   - name: --file -f
     defaultValue: "~\\.kube\\config"
     summary: |-
@@ -197,7 +196,7 @@ directCommands:
   - name: --overwrite-existing
     defaultValue: "False"
     summary: |-
-      Overwrite any existing cluster entry with the same name.
+      Overwrites any existing cluster entry with the same name.
 - uid: az_aksarc_list
   name: az aksarc list
   summary: |-
@@ -217,11 +216,11 @@ directCommands:
   optionalParameters:
   - name: --resource-group -g
     summary: |-
-      Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+      Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`.
 - uid: az_aksarc_notice
   name: az aksarc notice
   summary: |-
-    Output NOTICE file to user specified filepath.
+    Outputs NOTICE file to user-specified filepath.
   status: Preview
   isPreview: true
   previewOrExperimentalInfo: "Command group 'aksarc' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus"
@@ -235,7 +234,7 @@ directCommands:
   - isRequired: true
     name: --output-filepath
     summary: |-
-      Output filepath for NOTICE file.
+      Outputs filepath for NOTICE file.
 - uid: az_aksarc_show
   name: az aksarc show
   summary: |-
@@ -259,7 +258,7 @@ directCommands:
   - isRequired: true
     name: --resource-group -g
     summary: |-
-      Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+      Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`.
 - uid: az_aksarc_update
   name: az aksarc update
   summary: |-
@@ -284,10 +283,10 @@ directCommands:
       Enable Azure Hybrid User Benefits feature for a provisioned cluster.
     syntax: az aksarc update --name "sample-aksarccluster" --resource-group "sample-rg" --enable-ahub
   - summary: |-
-      Disable Azure Hybrid User Benefits feature for a provisioned cluster.
+      Disables the Azure Hybrid User Benefits feature for a provisioned cluster.
     syntax: az aksarc update --name "sample-aksarccluster" --resource-group "sample-rg"--disable-ahub
   - summary: |-
-      Scale Up Control Plane Nodes.
+      Scales up Control Plane nodes.
     syntax: az aksarc update --name "sample-aksarccluster" --resource-group "sample-rg" --control-plane-node-count 5
   requiredParameters:
   - isRequired: true
@@ -297,22 +296,22 @@ directCommands:
   - isRequired: true
     name: --resource-group -g
     summary: |-
-      Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.
+      Name of the resource group. You can configure the default group using `az configure --defaults group=<name>`.
   optionalParameters:
   - name: --aad-admin-group-object-ids -i
     summary: |-
       Comma-separated list of aad group object IDs that will be set as cluster admin on the provisioned cluster.
   - name: --control-plane-count --control-plane-node-count
     summary: |-
-      Number of nodes to scale the Control Plane to.
+      Number of nodes to which to scale the Control Plane.
   - name: --disable-ahub
     defaultValue: "False"
     summary: |-
-      Disable Azure Hybrid User Benefits (AHUB) for the provisioned cluster.
+      Disables Azure Hybrid User Benefits (AHUB) for the provisioned cluster.
   - name: --enable-ahub
     defaultValue: "False"
     summary: |-
-      Enable Azure Hybrid User Benefits (AHUB) for the provisioned cluster.
+      Enables Azure Hybrid User Benefits (AHUB) for the provisioned cluster.
   - name: --tags
     summary: |-
       Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.commands:
