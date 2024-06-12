@@ -316,6 +316,7 @@ directCommands:
   - name: --tags
     summary: |-
       Space-separated tags: key[=value] [key[=value] ...]. Use "" to clear existing tags.commands:
+commands:
 - az_aksarc_create
 - az_aksarc_delete
 - az_aksarc_get-credentials
