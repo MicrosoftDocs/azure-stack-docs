@@ -411,27 +411,27 @@ commands:
 - az_aksarc_get-versions
 - az_aksarc_list
 - az_aksarc_logs
-# - az_aksarc_logs_hci
-# - az_aksarc_nodepool
-# - az_aksarc_nodepool_add
-# - az_aksarc_nodepool_delete
-# - az_aksarc_nodepool_list
-# - az_aksarc_nodepool_scale
-# - az_aksarc_nodepool_show
+- az_aksarc_logs_hci
+- az_aksarc_nodepool
+- az_aksarc_nodepool_add
+- az_aksarc_nodepool_delete
+- az_aksarc_nodepool_list
+- az_aksarc_nodepool_scale
+- az_aksarc_nodepool_show
 - az_aksarc_notice
-# - az_aksarc_release
-# - az_aksarc_release_download
-# - az_aksarc_release_save
+- az_aksarc_release
+- az_aksarc_release_download
+- az_aksarc_release_save
 - az_aksarc_show
 - az_aksarc_update
 - az_aksarc_upgrade
-# - az_aksarc_vmsize
-# - az_aksarc_vmsize_list
-# - az_aksarc_vnet
-# - az_aksarc_vnet_create
-# - az_aksarc_vnet_delete
-# - az_aksarc_vnet_list
-# - az_aksarc_vnet_show
+- az_aksarc_vmsize
+- az_aksarc_vmsize_list
+- az_aksarc_vnet
+- az_aksarc_vnet_create
+- az_aksarc_vnet_delete
+- az_aksarc_vnet_list
+- az_aksarc_vnet_show
 globalParameters:
 - name: --debug
   summary: |-
