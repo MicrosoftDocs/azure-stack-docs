@@ -24,6 +24,8 @@
         href: aks-hci-network-system-requirements.md
       - name: Load balancer
         href: load-balancer-overview.md      
+    - name: Access and identity
+      href: concepts-security-access-identity.md
     - name: Supported scale requirements
       href: scale-requirements.md
     - name: Azure Hybrid Benefit
@@ -45,7 +47,9 @@
       - name: Azure CLI
         href: aks-create-clusters-cli.md
       - name: Azure portal
-        href: aks-create-clusters-portal.md      
+        href: aks-create-clusters-portal.md   
+      - name: Deploy to Azure using a quickstart template
+        href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
         href: resource-manager-quickstart.md
     - name: Networking
@@ -60,6 +64,18 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
+    - name: Download Kubernetes VHDs manually
+      href: offline-download.md
+    - name: Security and authentication
+      items:
+      - name: Use Azure RBAC for Kubernetes authorization
+        href: azure-rbac-23h2.md
+      - name: Use Kubernetes RBAC with Microsoft Entra ID
+        href: kubernetes-rbac-23h2.md
+      - name: Retrieve certificate-based admin kubeconfig
+        href: retrieve-admin-kubeconfig.md
+      - name: Restrict SSH access
+        href: restrict-ssh-access.md
     - name: Storage
       items:
       - name: CSI storage drivers
@@ -74,24 +90,20 @@
         href: manage-node-pools.md
       - name: Use GPUs
         href: deploy-gpu-node-pool.md
-      - name: Use labels in a Kubernetes cluster
+    - name: Cluster management
+      items:
+      - name: Labels
         href: cluster-labels.md
-    - name: Download Kubernetes VHDs manually
-      href: offline-download.md
+      - name: Taints
+        href: aks-arc-use-node-taints.md
     - name: Scale a Kubernetes cluster
       href: auto-scale-aks-arc.md
     - name: Upgrade Kubernetes clusters
       href: cluster-upgrade.md
     - name: Create Windows Server containers
       href: aks-create-containers.md
-    - name: Deploy container images using Azure Container Registry
+    - name: Integrate Azure Container Registry with a Kubernetes cluster
       href: deploy-container-registry.md
-    - name: Security and authentication
-      items:
-      - name: Retrieve certificate-based admin kubeconfig
-        href: retrieve-admin-kubeconfig.md
-      - name: Restrict SSH access
-        href: restrict-ssh-access.md
     - name: Monitoring and logging
       items:    
           - name: Monitor Kubernetes object events
@@ -114,24 +126,20 @@
       href: aks-known-issues.md
     - name: Troubleshoot
       href: aks-troubleshoot.md
+    - name: KubeAPIServer unreachable error
+      href: kube-api-server-unreachable.md
   - name: Reference
     items:
     - name: Azure CLI
       href: /cli/azure/aksarc
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
+  - name: Resources
+    items:
     - name: Azure Stack HCI
       href: /azure-stack/hci/index
     - name: Azure hybrid cloud
       href: /hybrid
-    - name: Release notes
-      href: https://aka.ms/AKS-hybrid-Releasenotes
-    - name: AKS Arc PowerShell
-      href: ./reference/ps/index.md
-    - name: Add-ons, extensions, and integrations
-      href: add-ons.md    
-  - name: Resources
-    items:
     - name: Azure Arc Jumpstart
       href: https://azurearcjumpstart.com/azure_arc_jumpstart/azure_arc_k8s/aks_stack_hci/
     - name: Azure roadmap
@@ -438,7 +446,7 @@
         - name: Use Active Directory single sign-on
           href: ad-sso.md
         - name: Use Kubernetes RBAC with Microsoft Entra ID
-          href: kubernetes-rbac-azure-ad.md
+          href: kubernetes-rbac-entra-id.md
         - name: Use Azure RBAC with AKS clusters
           href: azure-rbac-aks-hybrid.md
         - name: Update certificate bundle on container hosts
@@ -529,6 +537,12 @@
       href: help-support.md
     - name: File bugs
       href: https://aka.ms/AKS-hybrid-issues
+    - name: Release notes
+      href: https://aka.ms/AKS-hybrid-Releasenotes
+    - name: AKS Arc PowerShell
+      href: ./reference/ps/index.md
+    - name: Add-ons, extensions, and integrations
+      href: add-ons.md    
   - name: Architecture
     items:
     - name: Baseline architecture for AKS

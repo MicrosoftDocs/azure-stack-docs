@@ -80,7 +80,7 @@ Azure Stack HCI Insights provides health, performance, and usage insights about 
 This section lists the new cluster infrastructure features that are available in Azure Stack HCI, version 21H2:
 
 - **[Use Azure Stack HCI on a single server](../hci/concepts/single-server-clusters.md)**: Minimize hardware and software costs in locations that can tolerate lower resiliency.
-- **[Use GPUs with clustered VMs](manage/use-gpu-with-clustered-vm.md)**: Provide GPU acceleration to workloads running in clustered VMs.
+- **[Use GPUs with clustered VMs](/windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json)**: Provide GPU acceleration to workloads running in clustered VMs.
 - **[Dynamic CPU compatibility mode](manage/processor-compatibility-mode.md)**: Processor compatibility mode has been updated to take advantage of new processor capabilities in a clustered environment.
 - **[Storage thin provisioning](manage/thin-provisioning.md)**: Improve storage efficiency and simplify management with thin provisioning.
 - **[Network ATC](deploy/network-atc.md)**: Simplify host networking and network configuration management.
