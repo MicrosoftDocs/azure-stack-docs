@@ -266,7 +266,7 @@
       href: aks-vmware-troubleshooting-guide.md
   - name: Reference
     items:
-    - name: aksarc version 1.0.0b1
+    - name: aksarc CLI version 1.0.0b1
       items:
       - name: Commands
         href: aksarc.yml
