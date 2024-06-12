@@ -132,18 +132,6 @@
     items:
     - name: Azure CLI
       href: /cli/azure/aksarc
-    - name: New CLI
-      href: aksarc.yml
-    - name: Vnet
-      href: vnet.yml
-    - name: VMsize
-      href: vmsize.yml
-    - name: Release
-      href: release.yml
-    - name: Node pool
-      href: nodepool.yml
-    - name: Logs
-      href: logs.yml
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
@@ -551,10 +539,24 @@
       href: https://aka.ms/AKS-hybrid-issues
     - name: Release notes
       href: https://aka.ms/AKS-hybrid-Releasenotes
-    - name: AKS Arc PowerShell
-      href: ./reference/ps/index.md
     - name: Add-ons, extensions, and integrations
       href: add-ons.md    
+  - name: Reference
+    items:
+    - name: Azure CLI
+      href: aksarc.yml
+    - name: Vnet
+      href: vnet.yml
+    - name: VMsize
+      href: vmsize.yml
+    - name: Release
+      href: release.yml
+    - name: Node pool
+      href: nodepool.yml
+    - name: Logs
+      href: logs.yml
+    - name: AKS Arc PowerShell
+      href: ./reference/ps/index.md
   - name: Architecture
     items:
     - name: Baseline architecture for AKS
