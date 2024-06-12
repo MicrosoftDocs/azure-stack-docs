@@ -264,6 +264,20 @@
       href: aks-vmware-known-issues.md
     - name: Troubleshooting guide
       href: aks-vmware-troubleshooting-guide.md
+  - name: Reference
+    items:
+    - name: Azure CLI
+      href: aksarc.yml
+    - name: Vnet
+      href: vnet.yml
+    - name: VMsize
+      href: vmsize.yml
+    - name: Release
+      href: release.yml
+    - name: Node pool
+      href: nodepool.yml
+    - name: Logs
+      href: logs.yml
 - name: AKS on Windows Server
   items:
   - name: Overview
@@ -539,24 +553,10 @@
       href: https://aka.ms/AKS-hybrid-issues
     - name: Release notes
       href: https://aka.ms/AKS-hybrid-Releasenotes
-    - name: Add-ons, extensions, and integrations
-      href: add-ons.md    
-  - name: Reference
-    items:
-    - name: Azure CLI
-      href: aksarc.yml
-    - name: Vnet
-      href: vnet.yml
-    - name: VMsize
-      href: vmsize.yml
-    - name: Release
-      href: release.yml
-    - name: Node pool
-      href: nodepool.yml
-    - name: Logs
-      href: logs.yml
     - name: AKS Arc PowerShell
       href: ./reference/ps/index.md
+    - name: Add-ons, extensions, and integrations
+      href: add-ons.md    
   - name: Architecture
     items:
     - name: Baseline architecture for AKS
