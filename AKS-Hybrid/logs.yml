@@ -4,7 +4,7 @@ name: az aksarc logs
 extensionInformation: >-
   > [!NOTE]
 
-  > This reference is part of the **aksarc** extension for the Azure CLI (version 2.32.0 or higher). The extension will automatically install the first time you run an **az aksarc logs** command. [Learn more](https://learn.microsoft.com/cli/azure/azure-cli-extensions-overview) about extensions.
+  > This reference is part of the **aksarc** extension for the Azure CLI (version 2.32.0 or higher). The extension automatically installs the first time you run an **az aksarc logs** command. [Learn more](https://learn.microsoft.com/cli/azure/azure-cli-extensions-overview) about extensions.
 summary: |-
   Collects logs from provisioned clusters.
 status: Preview
