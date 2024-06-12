@@ -83,7 +83,7 @@ To create the Arc gateway resource in Azure, follow these steps:
 1. Run the following command to add the extension:
 
     ```azurecli
-    az extesnion add --allow-preview true --yes --source [whl file path] 
+    az extension add --allow-preview true --yes --source [whl file path] 
     ```
 
 1. On a computer with access to Azure, run the following commands to create your Arc gateway resource:
@@ -190,14 +190,14 @@ Once the deployment validation starts, connect to the first server node from you
 1. To check the Arc agent configuration and verify that it is using the gateway, connect to the Azure Stack HCI server node.
 1. Run the following command: `"c:\program files\AzureConnectedMachineAgent>.\azcmagent show"`. The result should show the following values:
 
-  :::image type="content" source="media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png" alt-text="Azure Arc gateway connected machine agent output window." lightbox="./media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png":::
+    :::image type="content" source="media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png" alt-text="Azure Arc gateway connected machine agent output window." lightbox="./media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png":::
 
-  - **Agent Version** should show as `1.40.02664.1629` or above. <!--CHECK-->
-  - **Agent Status** should show as `Connected`.
-  - **Using HTTPS Proxy** is empty when Arc gateway is not in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
-  - **Upstream Proxy** will always show as empty for Azure Stack HCI as it uses the environment variables to configure the Arc agent.
-  - **Upstream Proxy Bypass List** should show as your bypass list.
-  - **Azure Arc Proxy (arcproxy)** will show as `Stopped` when Arc gateway is not in use and shows as `Running` when Arc gateway is enabled.
+    - **Agent Version** should show as `1.40.02664.1629` or above. <!--CHECK-->
+    - **Agent Status** should show as `Connected`.
+    - **Using HTTPS Proxy** is empty when Arc gateway is not in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
+    - **Upstream Proxy** will always show as empty for Azure Stack HCI as it uses the environment variables to configure the Arc agent.
+    - **Upstream Proxy Bypass List** should show as your bypass list.
+    - **Azure Arc Proxy (arcproxy)** will show as `Stopped` when Arc gateway is not in use and shows as `Running` when Arc gateway is enabled.
 
 1. Verify that setup was successful by running the `"c:\program files\AzureConnectedMachineAgent>.\azcmagent check"` command. The result should show the following values:
 
