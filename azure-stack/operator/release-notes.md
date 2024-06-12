@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/22/2024
+ms.date: 06/12/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 12/27/2023
@@ -119,7 +119,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
+- [Azure Stack Hub hotfix 1.2306.4.97](hotfix-1-2306-4-97.md)
 
 ### After successfully applying the 2311 update
 
@@ -127,7 +127,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-2-23.md)
+- [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-3-44.md)
 ::: moniker-end
 
 ::: moniker range="azs-2306"
@@ -152,13 +152,14 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### What's new
 
-- This build contains only important [security updates](#security-updates). There are no other major feature additions.
+- This build contains important [security updates](#security-updates). There are no other major feature additions.
 
 <!-- ### Improvements -->
 
 ### Changes
 
-- This build contains only important [security updates](#security-updates). There are no other major changes from the previous build.
+- The Azure Stack Hub 2306 release is the last major update that can be installed on integrated systems that are based on Intel's Broadwell CPU platform. The 2311 (and later) releases are based on a Windows Server 2022 code base which is [not supported on the Broadwell platform by Intel](https://www.intel.com/content/www/us/en/support/articles/000022396/processors.html). For any CPU processor family or hardware-related questions, contact your [hardware OEM partner](azure-stack-update-oem.md#oem-contact-information).
+- This build contains these important [security updates](#security-updates).
 
 <!-- ### Fixes -->
 
@@ -181,7 +182,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
+- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-96.md)
 
 ### After successfully applying the 2306 update
 
@@ -189,7 +190,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-74.md)
+- [Azure Stack Hub hotfix 1.2306.4.74](hotfix-1-2306-4-97.md)
 ::: moniker-end
 
 ::: moniker range="azs-2301"
@@ -258,7 +259,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2301, if any hotfixes for 2301 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-72.md)
+- [Azure Stack Hub hotfix 1.2301.3.72](hotfix-1-2301-3-96.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>
