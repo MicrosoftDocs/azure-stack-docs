@@ -8,26 +8,26 @@ ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Set up Azure Arc gateway for Azure Stack HCI, version 2405 (preview)
+# Set up Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
 
-Applies to: Azure Stack HCI, version 2405 (preview)
+Applies to: Azure Stack HCI, version 23H2 (preview)
 
-This article describes how to set up an Azure Arc Gateway for Azure Stack HCI, version 2405 (preview) systems.
+This article describes how to set up an Azure Arc Gateway for software release 2405 on Azure Stack HCI, version 23H2 systems.
 
-Starting with Azure Stack HCI, version 2405, you can participate in the Arc gateway Public Preview to evaluate how to significantly reduce the number of required endpoints to be opened for deployment of, and simplified management for, Azure Stack HCI systems.
+You can use the Arc gateway Preview to evaluate how to significantly reduce the number of required endpoints to be opened for the deployment and simplified management of Azure Stack HCI systems.
 
-After completing the [Limited Public Preview Signup - Arc Gateway form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), you can start using the Arc gateway for new or existing Azure Stack HCI, version 2405 deployments.
+After you complete the [Arc Gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new or existing Azure Stack HCI deployments of software version 2405.
 
 > [!IMPORTANT]
-> This article covers how to set up and use Azure Arc Gateway Preview with Azure Stack HCI, version 2405 clusters. For using the Arc gateway on standalone servers, see [How to simplify network configuration requirements through Azure Arc gateway](deployment-azure-arc-gateway.md).
+> This article covers how to set up and use the Arc Gateway Preview with Azure Stack HCI, version 2405 clusters only. To use the Arc gateway on standalone servers, see [How to simplify network configuration requirements through Azure Arc gateway](deployment-azure-arc-gateway.md).
 
 ## Scenarios
 
-You can use the Azure Arc gateway in the following supported scenarios:
+Azure Arc gateway supports the following scenarios:
 
-- Use the Arc gateway before deploying new Azure Stack HCI clusters running software version 2405.
+- Use the Arc gateway before you deploy new Azure Stack HCI clusters running software version 2405.
 
-- Use the Arc gateway on existing Azure Stack HCI, version 2405 clusters.
+- Use the Arc gateway on existing Azure Stack HCI cluster running software version 2405.
 
 ## Architecture
 
@@ -47,7 +47,7 @@ When the Arc gateway is set up, traffic flows via the following hops: **Arc Agen
 
 ## Limitations
 
-The Azure Arc gateway has limitations you should consider when planning your setup. These limitations apply to the Preview release only. These limitations may no longer apply when the Arc gateway is in general release:
+Consider the following limitations of Arc gateway in the Preview release:
 
 - TLS terminating proxies aren't supported in this release.
 
@@ -67,14 +67,14 @@ You must first create the Arc gateway resource in your Azure subscription. You c
 
 To create the Arc gateway resource in Azure, follow these steps:
 
-1. Install the [Azure Command Line Interface (CLI)](/cli/azure/install-azure-cli-windows?tabs=azure-cli) if you haven't already.
+1. Install the [Azure Command Line Interface (CLI)](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
 
 1. Download the [connectedmachine-0.7.0-py3-none-any.whl](https://aka.ms/ArcGatewayWhl) file. This file contains the commands required to create and manage the Arc gateway resource.
 
 1. Run the following command to add the `connectedmachine extension:az extension`:
 
     ```azurecli
-    add --allow-preview true --yes --source [whl file path] 
+    az extesnion add --allow-preview true --yes --source [whl file path] 
     ```
 
 1. On any computer with access to Azure, run the following commands to create your Arc gateway resource:
@@ -87,17 +87,17 @@ To create the Arc gateway resource in Azure, follow these steps:
 
     The gateway creation process takes about four to five minutes to complete.
 
-1. When the resource is successfully created, the success response includes all the URLs that need to be allowed in your proxy, including the Arc gateway URL. Ensure all URLs are allowed in the environment where your Azure Arc resources are. The following URLs are required:
+1. When the resource is successfully created, the success response includes all the URLs that need to be allowed in your proxy, including the Arc gateway URL. Make sure that all the URLs are allowed in the environment that has your Azure Arc resources. The following URLs are required:
 
-| URL | Purpose |
-|--|--|
-| [Your URL Prefix].gw.arc.azure.com | Gateway URL -This URL can be obtained by running `az connectedmachine gateway list` after you create your gateway resource. |
-| management.azure.com | Azure Resource Manager Endpoint, required for ARM control channel. |
-| login.microsoftonline.com | Microsoft Entra ID endpoint, for acquiring identity access tokens. |
-| gbl.his.arc.azure.com | The cloud service endpoint for communicating with Arc Agents. |
-| <your_region>.his.arc.azure.com | The cloud service endpoint for communicating with Arc agents. |
-| packages.microsoft.com | Required to acquire a Linux-based Arc agentry payload; only needed to connect Linux servers to Azure Arc. |
-| download.microsoft.com | Used to download the Windows installation package. |
+    | URL | Purpose |
+    |--|--|
+    | [Your URL Prefix].gw.arc.azure.com | Gateway URL. To get this URL, run `az connectedmachine gateway list` after you create your gateway resource. |
+    | management.azure.com | Azure Resource Manager (ARM) Endpoint. This URL is required for the ARM control plane. |
+    | login.microsoftonline.com | Microsoft Entra ID endpoint. This URL is used to acquire identity access tokens. |
+    | gbl.his.arc.azure.com | The cloud service endpoint to communicate with Arc agents. |
+    | <your_region>.his.arc.azure.com | The cloud service endpoint to communicate with Arc agents. |
+    | packages.microsoft.com | This URL is required to acquire a Linux-based Arc agentry payload. This URL is only needed to connect Linux servers to Azure Arc. |
+    | download.microsoft.com | This URL is used to download the Windows installation package. |
 
 ### Step 2: Register new servers using the ArcGatewayID
 
