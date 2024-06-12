@@ -134,6 +134,16 @@
       href: /cli/azure/aksarc
     - name: New CLI
       href: aksarc.yml
+    - name: Vnet
+      href: vnet.yml
+    - name: VMsize
+      href: vmsize.yml
+    - name: Release
+      href: release.yml
+    - name: Node pool
+      href: nodepool.yml
+    - name: Logs
+      href: logs.yml
     - name: REST API reference
       href: /rest/api/hybridcontainer/operation-groups
   - name: Resources
