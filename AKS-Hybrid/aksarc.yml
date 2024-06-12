@@ -410,7 +410,7 @@ commands:
 - az_aksarc_get-upgrades
 - az_aksarc_get-versions
 - az_aksarc_list
-# - az_aksarc_logs
+- az_aksarc_logs
 # - az_aksarc_logs_hci
 # - az_aksarc_nodepool
 # - az_aksarc_nodepool_add
