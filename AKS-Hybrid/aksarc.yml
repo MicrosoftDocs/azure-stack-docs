@@ -274,7 +274,6 @@ commands:
 - az_aksarc_nodepool_scale
 - az_aksarc_nodepool_show
 - az_aksarc_notice
-- az_aksarc_release
 - az_aksarc_show
 - az_aksarc_vmsize
 - az_aksarc_vmsize_list
