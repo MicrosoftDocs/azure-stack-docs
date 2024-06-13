@@ -30,7 +30,7 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 
 - AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
 - To enable Azure RBAC, you must be running the Azure CLI **aksarc extension version 1.1.1** or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
-- To interact with Kubernetes clusters, you must install [kubectl](https://kubernetes.io/docs/tasks/tools/) and [kubelogin](https://azure.github.io/kubelogin/install.html).
+- To interact with Kubernetes clusters, you must install [kubectl](https://kubernetes.io/docs/tasks/tools/) and [kubelogin](https://azure.github.io/kubelogin/install.html). 
 - The infrastructure administrator needs the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
   - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role. 
   - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
@@ -110,6 +110,8 @@ Assign the role definition to a user or other identity using the [`az role assig
 az role assignment create --role "AKS Arc Deployment Reader" --assignee <assignee-object-id> --scope $ARM_ID
 ```
 
+
+
 ## Step 3: Use Azure RBAC for Kubernetes authorization with kubectl
 
 To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [az aksarc get-credentials](/cli/azure/aksarc#az-aksarc-get-credentials) command. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
@@ -126,26 +128,7 @@ Now, you can use kubectl manage your cluster. For example, you can list the node
 kubectl get nodes
 ```
 
-To sign in, use a web browser to open the page `https://microsoft.com/devicelogin`, and enter the code **AAAAAAAAA** to authenticate.
 
-### Use Azure RBAC for Kubernetes authorization with kubelogin
-
-AKS enabled by Azure Arc provides the [`kubelogin`](https://github.com/Azure/kubelogin) plugin to help unblock additional scenarios, such as non-interactive logins, older `kubectl` versions, or using SSO across multiple clusters without the need to sign in to a new cluster.
-
-You can use the `kubelogin` plugin by running the following command:
-
-```bash
-export KUBECONFIG=/path/to/kubeconfig
-kubelogin convert-kubeconfig
-```
-
-Similar to `kubectl`, you must log in the first time you run it, as shown in the following example:
-
-```bash
-kubectl get nodes
-```
-
-To sign in, use a web browser to open the page `https://microsoft.com/devicelogin`, and enter the code **AAAAAAAAA** to authenticate.
 
 ## Clean up resources
 
@@ -164,6 +147,8 @@ az role assignment delete --ids <LIST OF ASSIGNMENT IDS>
 ```azurecli-interactive
 az role definition delete -n "AKS Arc Deployment Reader"
 ```
+
+
 
 ## Next steps
 
