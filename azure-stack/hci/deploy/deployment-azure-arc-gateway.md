@@ -222,15 +222,19 @@ This option is for using Azure Arc Gateway on existing Azure Stack HCI, version 
     az connectedmachine setting update --resource-group [res-group] --subscription [subscription name] --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name [Arc server resource name] -settings-resource-name default --gateway-resource-id [Full Arm resourceid]
     ```
 
+### Step 3: Update the machine to use the Arc gateway resource  
+
 1. Update each server in the cluster to use the Arc gateway resource. Run the following command on your Arc-enabled server to set it to use the Arc gateway:
 
     ```azurecli
     azcmagent config set connection.type gateway
     ```
 
+### Step 4: Await reconciliation
+
 1. Await reconciliation. Once your servers have been updated to use the Arc gateway, some Azure Arc endpoints that were previously allowed in your proxy or firewalls won't be needed any longer. Wait one hour before you begin removing endpoints from your firewall or proxy.
 
-### Step 2: Verify that setup succeeded
+### Step 5: Verify that setup succeeded
 
 1. On the onboarded server, run the `azcmagent show` command. The result should show the following values:
 
@@ -245,12 +249,6 @@ This option is for using Azure Arc Gateway on existing Azure Stack HCI, version 
     - **connection.type** should show as `gateway`.
 
     - **Reachable** column should list `true` for all URLs.
-
-### Step 3: Update the machine to use the Arc gateway resource  
-
-### Step 4: Await reconciliation
-
-### Step 5: Verify that setup succeeded
 
 ## Delete a Gateway Resource
 
@@ -274,16 +272,11 @@ To delete an Arc gateway resource, you must first detach it from the server itâ€
 
 You can audit Arc gateway traffic by viewing the gateway router logs.  
 
-### To view logs on Windows  
+Follow these steps to view the logs:
 
 1. Run the `azcmagent logs` command.
 
 1. In the resulting .zip file, view the logs in the *C:\ProgramData\Microsoft\ArcGatewayRouter* folder.
 
-### To view logs on Linux  
-
-1. Run `sudo azcmagent logs` and share the resulting log file.
-
-1. View the logs in the */usr/local/arcrtr/logs/* folder.
 
 ## Next steps
