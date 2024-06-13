@@ -79,7 +79,7 @@ Currently, the following throughput configurations are available:
 
 ### Maintenance window
 
-Use the **Maintenance window** setting to control the day and time when system updates can occur. Tasks that are active during this maintenance might fail or be delayed.
+Use the **Maintenance window** setting to control the day and time when system updates can occur.
 
 System updates are typically applied to the service once every two months. The service might be temporarily unavailable during the maintenance window when system updates are being applied. System updates include, but aren't limited to, security updates, Lustre code fixes, and service enhancements.
 
