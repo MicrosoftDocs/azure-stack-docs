@@ -7,7 +7,7 @@ metadata:
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 6/13/2024
 
 title: Resolve errors when enabling or disabling Azure Arc on your AKS workload clusters in AKS enabled by Arc
 summary: |
@@ -138,7 +138,7 @@ sections:
           Error: Unable to read ConfigMap 'azure-clusterconfig' in 'azure-arc' namespace
 
         answer: | 
-          You may encounter this issue when trying to re-enable the Arc connection on an AKS cluster after disabling an existing connection. The error is generated due to a change to the namespace in which Azure Arc secrets are stored.
+          You may encounter this issue when trying to re-enable the Arc connection on an AKS cluster after disabling an existing connection. The error is due to a change to the namespace in which Azure Arc secrets are stored.
 
           The steps that lead to the error are:
 
