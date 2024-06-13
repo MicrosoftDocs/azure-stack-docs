@@ -1,0 +1,75 @@
+### YamlMime:AzureCLIGroup
+uid: az_aksarc_logs
+name: az aksarc logs
+extensionInformation: >-
+  > [!NOTE]
+
+  > This reference is part of the **aksarc** extension for the Azure CLI (version 2.32.0 or higher). The extension automatically installs the first time you run an **az aksarc logs** command. [Learn more](https://learn.microsoft.com/cli/azure/azure-cli-extensions-overview) about extensions.
+summary: |-
+  Collects logs from provisioned clusters.
+status: Preview
+isPreview: true
+previewOrExperimentalInfo: "Command group 'aksarc' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus"
+sourceType: Extension
+directCommands:
+- uid: az_aksarc_logs_hci
+  name: az aksarc logs hci
+  summary: |-
+    Collects logs from provisioned clusters in HCI environment.
+  status: Preview
+  isPreview: true
+  previewOrExperimentalInfo: "Command group 'aksarc logs' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus"
+  sourceType: Extension
+  syntax: >-
+    az aksarc logs hci [--credentials-dir]
+                       [--ip]
+                       [--kubeconfig]
+                       [--out-dir]
+  examples:
+  - summary: |-
+      Collects logs with IP address and SSH credentials
+    syntax: az aksarc logs hci --ip 192.168.200.31 192.168.200.32 --ssh-key ~/.ssh --out-dir ./logs
+  - summary: |-
+      Collects logs with kubeconfig and SSH credentials. kubeconfig is only used to collect IP addresses, and `ssh-key` file path is used instead of `directory`.
+    syntax: az aksarc logs hci --kubeconfig ~/.kube/config --ssh-key ~/.ssh/id_rsa --out-dir ./logs
+  optionalParameters:
+  - name: --credentials-dir --ssh-key
+    summary: |-
+      Path to SSH credentials to connect to nodes, either `id_rsa` file or `directory` is accepted.
+  - name: --ip --ips
+    summary: |-
+      IP(s) of all the nodes (control plane, etc.) needed to collect logs.
+  - name: --kubeconfig
+    summary: |-
+      Path to kubeconfig file to connect to the cluster.
+  - name: --out-dir
+    summary: |-
+      Output directory to store collected logs. If not specified, logs are stored in the current directory.
+commands:
+- az_aksarc_logs_hci
+globalParameters:
+- name: --debug
+  summary: |-
+    Increase logging verbosity to show all debug logs.
+- name: --help -h
+  summary: |-
+    Show this help message and exit.
+- name: --only-show-errors
+  summary: |-
+    Only show errors, suppressing warnings.
+- name: --output -o
+  defaultValue: "json"
+  parameterValueGroup: "json, jsonc, none, table, tsv, yaml, yamlc"
+  summary: |-
+    Output format.
+- name: --query
+  summary: |-
+    JMESPath query string. See [http://jmespath.org/](http://jmespath.org) for more information and examples.
+- name: --subscription
+  summary: |-
+    Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.
+- name: --verbose
+  summary: |-
+    Increase logging verbosity. Use --debug for full debug logs.
+metadata:
+  description: Collect logs from provisioned clusters.
