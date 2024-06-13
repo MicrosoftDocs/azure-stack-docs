@@ -4,7 +4,7 @@ description: Create an Azure Managed Lustre file system from the Azure portal.
 ms.topic: how-to
 author: pauljewellmsft
 ms.author: pauljewell
-ms.date: 05/14/2024
+ms.date: 06/13/2024
 ms.lastreviewed: 06/06/2023
 ms.reviewer: mayabishop
 
@@ -41,7 +41,7 @@ On the **Basics** tab, you provide essential information about your Azure Manage
 | Section | Field | Required or optional | Description |
 |---------|-------|----------------------|-------------|
 | Project details | Subscription | Required | Select the subscription to use for the Azure Managed Lustre file system. |
-| Project details | Resource group | Required | Select an existing resource group, or create a new resource group to use for this deployment. |
+| Project details | Resource group | Required | Select an existing resource group, or create a new resource group for this deployment. |
 | Project details | Region | Required | Select the Azure region for your file system. For optimal performance, create the file system in the same region and availability zone as your client machines. |
 | Project details | Availability zone | Required | Select the availability zone for your file system. |
 | File system details | File system name | Required | Enter a name to identify this file system in your list of resources. This name isn't the name of the file system used in `mount` commands. |
@@ -49,8 +49,8 @@ On the **Basics** tab, you provide essential information about your Azure Manage
 | File system details | Storage and throughput | Required | Enter the storage capacity of your file system in TiB, or the maximum throughput in MB/s.</br></br>There are two factors that determine your file system size: The amount of storage allocated for your data (storage capacity), and the maximum data transfer rate (throughput). When you select one of these options, the other values are calculated based on the **Throughput per TiB** setting for your file system type. To set the file system size, choose either **Storage capacity** or **Maximum throughput**. Enter a value in the corresponding field, either the desired storage capacity (in TiB) if you selected **Storage capacity**, or the desired maximum throughput (in MB/second) if you selected **Maximum throughput**.</br></br>Note: These values are rounded up to meet incremental size requirements. The values are never rounded down, so check the final configuration to make sure it's cost-effective for your workload. To learn more about available throughput configurations, see [Throughput configurations](#throughput-configurations). |
 | Networking | Virtual network | Required | Select an existing virtual network to use for the file system, or create a new virtual network. For more information about network sizing and other configuration options, see [Network prerequisites](amlfs-prerequisites.md#network-prerequisites). |
 | Networking | Subnet | Required | Select an existing subnet or create a new one. The Azure Managed Lustre file system uses a dedicated virtual network and one subnet. The subnet contains the Lustre Management Service (MGS), which handles all of the client interaction with the Azure Managed Lustre system. You can open the **Manage subnet configuration** link to make sure the subnet meets your network requirements. The network should have enough available IP addresses to handle the file system's load and any additional IP addresses required by any other services that are colocated with the file system. Make sure you complete all access settings to enable the subnet to access the needed Azure services. |
-| Maintenance window | Day of the week | Required | Provide a preferred day of the week for the Azure team to perform maintenance and troubleshooting with minimal impact. This is used infrequently and only as needed. To learn more, see [Maintenance window](#maintenance-window). |
-| Maintenance window | Start time | Required | Provide the time that the maintenance window may begin. Time should be in 24-hour format (HH:MM). |
+| Maintenance window | Day of the week | Required | Provide a preferred day of the week and time for the Azure team to perform maintenance and troubleshooting. This maintenance is infrequent and performed only as needed. To learn more, see [Maintenance window](#maintenance-window). |
+| Maintenance window | Start time | Required | Provide the time that the maintenance window can begin. Time should be in 24-hour format (HH:MM). |
 
 The following screenshot shows the **Basics** tab for creating an Azure Managed Lustre file system in the Azure portal:
 
@@ -79,9 +79,11 @@ Currently, the following throughput configurations are available:
 
 ### Maintenance window
 
-To allow the Azure team to maintain your Azure Managed Lustre file system, they need access to the file system to run diagnostics, update software, and troubleshoot any problems. Use the **Maintenance window** setting to set a time when the system can be disrupted for routine service. Tasks that are active during this service might fail or be delayed.
+Use the **Maintenance window** setting to control the day and time when system updates can occur. Tasks that are active during this maintenance might fail or be delayed.
 
-Maintenance is typically performed less than once a month. Routine software upgrades happen about six times a year, and approximately five other update tasks might be required to address vulnerabilities or critical bugs over the same time.
+System updates are typically applied to the service once every two months. The service might be temporarily unavailable during the maintenance window when system updates are being applied. System updates include, but aren't limited to, security updates, Lustre code fixes, and service enhancements.
+
+During the maintenance window, user workloads accessing the file system will temporarily pause if a system update is being applied. User workloads resume when the system updates are complete. If you have multiple Azure Managed Lustre deployments, consider spacing out their maintenance windows for availability when updates are necessary.
 
 ## Advanced tab
 
@@ -136,7 +138,7 @@ To use customer-managed encryption keys with your Azure Managed Lustre file syst
 
    **Customer key settings** now displays your key vault, key, and version.
 
-    :::image type="content" source="./media/create-file-system-portal/keys-summary.png" alt-text="A screenshot showing sample Customer key settings on Basics tab for an Azure Managed Lustre file system." lightbox="./media/create-file-system-portal/keys-summary.png":::
+    :::image type="content" source="./media/create-file-system-portal/keys-summary.png" alt-text="A screenshot showing sample customer key settings on Basics tab for an Azure Managed Lustre file system." lightbox="./media/create-file-system-portal/keys-summary.png":::
 
 1. In **Managed identities**, specify one or more user-assigned managed identities to use for this file system. Each identity must have access to the key vault in order to successfully create the Azure Managed Lustre file system.
 
