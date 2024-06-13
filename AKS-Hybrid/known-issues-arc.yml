@@ -134,9 +134,48 @@ sections:
           You may encounter this issue if you have not configured your Azure subscription with the Arc-enabled Kubernetes resource providers. We currently check that `Microsoft.Kubernetes` and `Microsoft.KubernetesConfiguration` are configured. 
           
           For more information about enabling these resource providers, see [Register providers for Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#register-providers-for-azure-arc-enabled-kubernetes).
-          
-  
+      - question: | 
+          Error: Unable to read ConfigMap 'azure-clusterconfig' in 'azure-arc' namespace
 
+        answer: | 
+          You may encounter this issue when trying to re-enable the Arc connection on an AKS cluster after disabling an existing connection. The error is generated due to a change to the namespace in which Azure Arc secrets are stored.
+
+          The steps that lead to the error are:
+
+          1. Connect a workload cluster to Azure Arc with `Enable-AksHciArcConnection -name $clusterName`.
+          1. Disconnect the cluster from Azure Arc: `Disable-AksHciArcConnection -name $clusterName`.
+          1. Connect the workload cluster to Azure Arc with this command again: `Enable-AksHciArcConnection -name $clusterName`.
+
+          The error is:
+
+          ```output
+          returned a non zero exit code 1 [Error: Job azure-arc-onboarding terminated with Failed to run CLI command: Error from server (NotFound): namespaces "azure-arc"
+          not found
+          System.Management.Automation.RemoteException
+          ERROR: Unable to read ConfigMap 'azure-clusterconfig' in 'azure-arc' namespace:
+          Error Response: {"kind":"Status","apiVersion":"v1","metadata":{},"status":"Failure","message":"configmaps \"azure-clusterconfig\" not
+          found","reason":"NotFound","details":{"name":"azure-clusterconfig","kind":"configmaps"},"code":404}
+          System.Management.Automation.RemoteException
+          System.Management.Automation.RemoteException
+          : Job Failed Condition
+          ```
+
+          `Enable-AksHciArcConnection` always fails, and after you run `Disable-AksHciArcConnection`, there is a remaining secret in the azure-arc-release namespace. To check if the secret exists, you can run the following command and ensure that no secret is listed:
+
+          ```powershell
+          kubectl get secret -nazure-arc-release sh.helm.release.v1.azure-arc.v1
+          ```
+
+          To work around this issue, delete the azure-arc-release namespace after running `Disable-AksHciArcConnection`:
+
+          ```powershell
+          $clusterName = "<name of cluster>"
+          Get-AksHciCredential -name $clusterName
+          kubectl delete namespace azure-arc-release
+          Disable-AksHciArcConnection -name $clusterName
+          Enable-AksHciArcConnection -name $clusterName
+          ```
+  
 additionalContent: |
   ## Next steps
   
