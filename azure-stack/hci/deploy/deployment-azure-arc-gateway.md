@@ -246,34 +246,13 @@ This option is for using Azure Arc Gateway on existing Azure Stack HCI, version 
 
     - **Reachable** column should list `true` for all URLs.
 
-### Step 3: (Linux only) Ensure other scenarios use the Arc gateway  
+### Step 3: Update the machine to use the Arc gateway resource  
 
-On Linux, if using either Azure Monitor or Microsoft Defender for Endpoint, more commands should be run to work with the Azure Arc gateway.  
+### Step 4: Await reconciliation
 
-#### For Azure Monitor
+### Step 5: Verify that setup succeeded
 
-If using Azure Monitor, follow these steps:
-
-Explicit proxy setting should be provided while deploying the Monitoring Agent. From Azure Cloudshell, run the following command:
-
-```powershell
-$settings = @{"proxy" = @{mode = "application"; address = "http://127.0.0.1:40343"; auth = false}} 
-
-New-AzConnectedMachineExtension -Name AzureMonitorLinuxAgent -ExtensionType  
-AzureMonitorLinuxAgent -Publisher Microsoft.Azure.Monitor -ResourceGroupName  <resource-group-name> -MachineName <arc-server-name> -Location <arc-server-location> -Setting $settings
-```
-
-If you’re deploying Azure Monitor via Azure portal, ensure you check the **Use Proxy** setting, and set the **Proxy Address** as `http://127.0.0.1:40343`.
-
-#### For Microsoft Defender for Endpoint
-
-If using Microsoft Defender for Endpoint, run the following command:
-
-```azurecli
-mdatp config proxy set --value http://127.0.0.1:403
-```
-
-## Cleaning up resources
+## Delete a Gateway Resource
 
 To delete an Arc gateway resource, you must first detach it from the server it’s attached to.  
 
@@ -307,7 +286,4 @@ You can audit Arc gateway traffic by viewing the gateway router logs.
 
 1. View the logs in the */usr/local/arcrtr/logs/* folder.
 
-## Known issues
-
-- It isn't yet possible to use Azure CLI to run the commands listed.  
-
+## Next steps
