@@ -132,7 +132,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. Once the configuration is complete, status for Arc configuration should turn to **Success (Open in Azure portal)**.  
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-status.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup configuration status." lightbox="media/deployment-arc-register-local-ui/setup-configuration-status.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-final-status.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup configuration status." lightbox="media/deployment-arc-register-local-ui/setup-configuration-final-status.png":::
 
 1. Repeat all the steps on the other servers until the Arc configuration has succeeded. Select the **Open in Azure portal** link.
 
