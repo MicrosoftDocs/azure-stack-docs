@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 05/29/2024
+ms.date: 06/13/2024
 ms.lastreviewed: 1/01/2023
 
 ---
@@ -23,6 +23,7 @@ ms.lastreviewed: 1/01/2023
 | Azure Stack HCI | azurestackhci.azurefd.net   | 443  | Previous URL for Data plane. This URL was recently changed. If you registered your cluster using this old URL, you must allowlist it as well.  |
 | Azure Stack HCI | hciarcvmscontainerregistry.azurecr.io | 443 | For Arc VM container registry on Azure Stack HCI. <br> Required only for Azure Stack HCI, version 23H2.|
 | Azure Key Vault | *.vault.azure.com | 443 | Access to key vault to access Azure Stack HCI credentials. Replace \* with the name of the key vault you plan to use. <br> Required only for Azure Stack HCI, version 23H2.|
+| Azure Key Vault | `*.vault.azure.net/secrets/*` | 443 | Access to key vault to access Azure Stack HCI deployment secrets. Replace the first * with the name of the key vault you plan to use and the 2nd * with the secret names. <br> Required only for Azure Stack HCI, version 23H2.|
 | Arc For Servers | aka.ms   | 443  | For resolving the download script during installation.  |
 | Arc For Servers | download.microsoft.com  | 443  | For downloading the Windows installation package.   |
 | Arc For Servers | login.windows.net  | 443  | For Microsoft Entra ID     |
