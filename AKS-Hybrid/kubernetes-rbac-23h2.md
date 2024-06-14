@@ -26,27 +26,17 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you must have the following prerequisites:
 
-<<<<<<< HEAD
-- An AKS enabled by Azure Arc cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
-- You need the Azure CLI installed and configured. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
-- Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extensions:
-=======
-1. You have an existing AKS Arc cluster with Microsoft Entra integration enabled. If you need an AKS cluster with this configuration, see [Integrate Microsoft Entra ID with AKS Arc](enable-authentication-microsoft-entra-id.md) to create or update your cluster.
->>>>>>> 970acca6906a9e78e434b204a0b91ae7835d89d9
+1. An existing AKS Arc cluster with Microsoft Entra integration enabled. If you need an AKS cluster with this configuration, see [Integrate Microsoft Entra ID with AKS Arc](enable-authentication-microsoft-entra-id.md) to create or update your cluster.
+1. An Azure Arc connection: AKS on Azure Stack HCI 23H2 is connected to Azure Arc by default.
+1. Access to the required module and command-line module installed to perform.
 
-  ```azurecli
-  az extension add --name aksarc
-  az extension add --name connectedk8s
-  ```
+   - **Azure CLI and the connectedk8s extension**. The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`. Also, install the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) in order to open a channel to your Kubernetes cluster.
 
-  If you already installed the `aksarc` extension, update the extension to the latest version:
+     For installation instructions, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 
-  ```azurecli
-  az extension update --name aksarc
-  az extension update --name connectedk8s
-  ```
+   - **Kubectl**. The Kubernetes command-line tool, **kubectl**, enables you to run commands that target your Kubernetes clusters. To check whether you have installed kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`.
 
-- **Kubectl**. The Kubernetes command-line tool, kubectl, enables you to run commands targeting your Kubernetes clusters. To check whether you installed kubectl, open a command prompt and type `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`. For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
+     For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 
 ## Optional first steps
 
