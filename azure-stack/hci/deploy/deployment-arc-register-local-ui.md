@@ -11,11 +11,11 @@ ms.date: 06/14/2024
 
 ## Bootstrap methods
 
-After you have procured the hardware that you intend to use to set up your Azure Stack HCI system, you will bootstrap the hardware using one of the following methods:  
+After you have procured the hardware that you intend to use to set up your Azure Stack HCI system, you bootstrap the hardware using one of the following methods:  
 
 - **Site bootstrap key** - Use this method if you have many sites and servers to deploy Azure Stack HCI on - for example, hundreds or thousands of them. Make a site for all the deployments and prepare the physical devices. Then set up the devices so that they can access a home URL and get the configuration from Azure. Generate a site bootstrap key that is then distributed across all the deployments. Configure the devices via local web-based UI and connect to Arc and finally provision the devices.
 
-- **Multi-server Arc script file** - Use this basic method if you intend to deploy a few sites with a small number of servers per site. Use a local web-based UI to configure the devices and to provide a bootstrap file with an Arc script for registration.
+- **Multi-server Arc script file** - Use this basic method if you intend to deploy a few sites with a few servers per site. Use a local web-based UI to configure the devices and to provide a bootstrap file with an Arc script for registration.
 
 > [!NOTE]
 > This guide only covers the bootstrapping for Azure Stack HCI via the Arc script file.
@@ -39,7 +39,7 @@ Before you begin, make sure that you:
 1. Get the tenant ID of your Microsoft Entra tenant. You use this information later.
 1. If you have set up an Azure Arc gateway, get the resource ID of the Arc gateway.
 
-   You’ll need this information later.
+   You need this information later.
 
 1. Make sure that your subscription is registered against the following resource providers. Run the following PowerShell commands:
 
@@ -50,7 +50,7 @@ Before you begin, make sure that you:
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI"
    ```
 
-1. To create a service principal, your Microsoft Entra tenant must allow users to register applications. If it does not, your account must be a member of the **Application Administrator** or **Cloud Application Administrator** administrative role.
+1. To create a service principal, your Microsoft Entra tenant must allow users to register applications. If it doesn't, your account must be a member of the **Application Administrator** or **Cloud Application Administrator** administrative role.
 
 1. To assign Arc-enabled server roles, your account must be a member of the **Owner** or **User Access Administrator** role in the subscription that you want to use for onboarding.
 
@@ -87,7 +87,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the network settings with static allocation."lightbox="media/deployment-arc-register-local-ui/setup-network-settings.png":::
 
-1. Provide additional details. Select **Enter additional details**.
+1. Provide more details. Select **Enter additional details**.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-button.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup Enter Additional details selected."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-button.png":::
 
@@ -106,10 +106,10 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. On the **Arc agent setup** tab, under **Arc agent details**, provide the following inputs.
 
-   1. Enter a **Subscription ID** that you'll use to register the server.
+   1. Enter a **Subscription ID** that you use to register the server.
    1. Provide a **Resource group** name. This resource group contains the server and the cluster resources that you create.
    1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Stack HCI cluster. 
-   1. Sepcify the **Cloud type** as **AzureCloud**.
+   1. Specify the **Cloud type** as **AzureCloud**.
    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id)
    1. If you have set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up.
 
@@ -122,10 +122,10 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. On the **Review and apply** tab, verify the server details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your servers boot up automatically at this point and you must sign in again.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="creenshot that shows the Review and apply tab on Azure Stack HCI Azure Arc agent setup page."lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="Screenshot that shows the Review and apply tab on Azure Stack HCI Azure Arc agent setup page."lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
 
 
-1. Wait for the configuration to complete. First, the device details will be uploaded, followed by registration of the server to Azure and, finally, the mandatory Arc extensions are installed.
+1. Wait for the configuration to complete. First, the device details are uploaded, followed by registration of the server to Azure and, finally, the mandatory Arc extensions are installed.
 
    > [!NOTE]
    > The entire process may take 15 to 30 minutes.
