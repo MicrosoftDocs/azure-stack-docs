@@ -122,7 +122,8 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. On the **Review and apply** tab, verify the server details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your servers boot up automatically at this point and you must sign in again.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page, "Review and apply" tab." lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="creenshot that shows the Review and apply tab on Azure Stack HCI Azure Arc agent setup page."lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
+
 
 1. Wait for the configuration to complete. First, the device details will be uploaded, followed by registration of the server to Azure and, finally, the mandatory Arc extensions are installed.
 
