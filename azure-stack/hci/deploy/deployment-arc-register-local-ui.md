@@ -89,7 +89,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. Provide additional details. Select **Enter additional details**.
 
-    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-detailes-button.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the pencil icon called out."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-detailes-button.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-button.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup Enter Additional details selected."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-button.png":::
 
 1. On the **Additional details** blade, provide the following inputs.
 
@@ -101,7 +101,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. Select **Apply**.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the network settings with static allocation."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the additional details configured."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
 
 
 1. On the **Arc agent setup** tab, under **Arc agent details**, provide the following inputs.
@@ -122,7 +122,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. On the **Review and apply** tab, verify the server details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your servers boot up automatically at this point and you must sign in again.
 
-    :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page, "Review and apply" tab." lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page, "Review and apply" tab." lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
 
 1. Wait for the configuration to complete. First, the device details will be uploaded, followed by registration of the server to Azure and, finally, the mandatory Arc extensions are installed.
 
