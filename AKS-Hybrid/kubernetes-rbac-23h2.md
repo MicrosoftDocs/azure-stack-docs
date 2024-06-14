@@ -26,9 +26,13 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you must have the following prerequisites:
 
+<<<<<<< HEAD
 - An AKS enabled by Azure Arc cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
 - You need the Azure CLI installed and configured. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extensions:
+=======
+1. You have an existing AKS Arc cluster with Microsoft Entra integration enabled. If you need an AKS cluster with this configuration, see [Integrate Microsoft Entra ID with AKS Arc](enable-authentication-microsoft-entra-id.md) to create or update your cluster.
+>>>>>>> 970acca6906a9e78e434b204a0b91ae7835d89d9
 
   ```azurecli
   az extension add --name aksarc

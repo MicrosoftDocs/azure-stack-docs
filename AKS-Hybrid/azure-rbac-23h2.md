@@ -28,28 +28,12 @@ For a conceptual overview, see [Azure RBAC for Kubernetes Authorization](concept
 
 ## Before you begin
 
-Before you begin, make sure you have the following prerequisites:
-
-- AKS currently supports enabling Azure RBAC only during initial deployment and Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
-- Azure CLI. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
-- Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extension. Note that you need to run **`aksarc` extension version 1.1.1** or later to enable Azure RBAC.
-
-  ```azurecli
-  az extension add --name aksarc
-  az extension add --name connectedk8s
-  ```
-
-  If you already installed the `aksarc` extension, update the extension to the latest version:
-
-  ```azurecli
-  az extension update --name aksarc
-  az extension update --name connectedk8s
-  ```
-  
-- To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
-- You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
-  - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
-  - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
+- AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
+- To enable Azure RBAC, you must be running the Azure CLI **aksarc extension version 1.1.1** or later. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+- To interact with Kubernetes clusters, you must install [kubectl](https://kubernetes.io/docs/tasks/tools/) and [kubelogin](https://azure.github.io/kubelogin/install.html). 
+- The infrastructure administrator needs the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
+  - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role. 
+  - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the **Microsoft.Authorization/roleAssignments/write** permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
   - New role assignments can take up to five minutes to propagate and be updated by the authorization server.
 
 ## Step 1: Create an Azure RBAC-enabled Kubernetes cluster
@@ -145,27 +129,6 @@ Now, you can use kubectl manage your cluster. For example, you can list the node
 kubectl get nodes
 ```
 
-To sign in, use a web browser to open the page `https://microsoft.com/devicelogin`, and enter the code **AAAAAAAAA** to authenticate.
-
-### Use Azure RBAC for Kubernetes authorization with kubelogin
-
-AKS provides the [`kubelogin`](https://github.com/Azure/kubelogin) plugin to help unblock additional scenarios, such as non-interactive logins, older `kubectl` versions, or using SSO across multiple clusters without the need to sign in to a new cluster.
-
-You can use the `kubelogin` plugin by running the following command:
-
-```bash
-export KUBECONFIG=/path/to/kubeconfig
-kubelogin convert-kubeconfig
-```
-
-Similar to `kubectl`, you must log in the first time you run it, as shown in the following example:
-
-```bash
-kubectl get nodes
-```
-
-To sign in, use a web browser to open the page `https://microsoft.com/devicelogin`, and enter the code **AAAAAAAAA** to authenticate.
-
 ## Clean up resources
 
 ### Delete role assignment
@@ -183,6 +146,8 @@ az role assignment delete --ids <LIST OF ASSIGNMENT IDS>
 ```azurecli
 az role definition delete -n "AKS Arc Deployment Reader"
 ```
+
+
 
 ## Next steps
 
