@@ -1,6 +1,6 @@
 ---
-title: Use an Arc script file to bootstrap Azure Stack HCI (preview).
-description: Learn how to use an Arc script file to bootstrap servers on Azure Stack HCI systems (preview).
+title: Use local web UI to register Azure Stack HCI servers with Azure Arc (preview).
+description: Learn how to use the web UI to bootstrap and Arc register the Azure Stack HCI servers (preview).
 ms.topic: article
 author: alkohli
 ms.author: alkohli
@@ -36,7 +36,7 @@ After you have procured the hardware that you intend to use to set up your Azure
 
 ### Azure prerequisites
 
-1. Make sure that your subscription is registered against the following resource providers. Run the following PowerShell commands:
+- Make sure that your subscription is registered against the following resource providers. You need to be an owner or contributor on your subscription to register. Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
 
    ```powershell
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute"
@@ -45,21 +45,21 @@ After you have procured the hardware that you intend to use to set up your Azure
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI"
    ```
 
-1. [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your servers. Make a note of the resource group name.
-1. [Get the tenant ID of your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id). You use this information later.
-1. If you set up an Azure Arc gateway, get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`. You need this information later.
+- [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your servers. Make a note of the resource group name.
+- [Get the tenant ID of your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id). You use this information later.
+- If you set up an Azure Arc gateway, get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`. You need this information later.
 
-1. If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
+- If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
-    - Azure Connected Machine Onboarding
-    - Azure Connected Machine Resource Administrator
+  - [Azure Connected Machine Onboarding](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
+  - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
 
-    To verify that you have these roles, follow these steps in the Azure portal:
+   To verify that you have these roles, follow these steps in the Azure portal:
 
-    a. Go to the subscription that you use for the Azure Stack HCI deployment.
-    b. Go to the resource group where you're planning to register the servers.
-    c. In the left-pane, go to Access Control (IAM).
-    d. In the right-pane, go the Role assignments. Verify that you have the Azure Connected Machine Onboarding and Azure Connected Machine Resource Administrator roles assigned.
+   1. Go to the subscription that you use for the Azure Stack HCI deployment.
+   1. Go to the resource group where you're planning to register the servers.
+   1. In the left-pane, go to **Access Control (IAM)**.
+   1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
 
 <!--1. To create a service principal, your Microsoft Entra tenant must allow users to register applications. If it doesn't, your account must be a member of the **Application Administrator** or **Cloud Application Administrator** administrative role.
 
@@ -112,7 +112,6 @@ Follow these steps to configure the network settings and connect the servers to 
 1. Select **Apply**.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the additional details configured."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
-
 
 1. On the **Arc agent setup** tab, under **Arc agent details**, provide the following inputs.
 
