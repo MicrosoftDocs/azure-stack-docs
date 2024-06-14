@@ -43,7 +43,7 @@ Use the following table to directly go to a pattern and its content.
 
 ### Three-node switchless dual link
 
-**Go to [Three-node switchless dual link deployment](three-node-switchless-two-switches-dual-links.md)**
+**Go to [Three-node switchless dual link deployment](three-node-switchless-two-switches-two-links.md)**
 
 :::image type="content" source="media/three-node-switchless-two-switches-dual-link/physical-components-layout.png" alt-text="Diagram showing three-node switchless, two TOR, two link physical connectivity layout." lightbox="media/three-node-switchless-two-switches-dual-link/physical-components-layout.png":::
 
