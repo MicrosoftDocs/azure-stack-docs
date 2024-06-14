@@ -3,7 +3,7 @@ title: Enable Azure managed identity authentication for Kubernetes clusters with
 description: Learn how to enable Microsoft Entra ID on Azure Kubernetes Service with kubelogin and authenticate Azure users with credentials or managed roles.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 10/21/2022
+ms.lastreviewed: 06/14/2024
 ms.reviewer: abha
 ms.topic: how-to
 ms.custom:
@@ -18,15 +18,13 @@ ms.date: 01/26/2024
 
 # Enable Azure managed identity authentication for Kubernetes clusters with kubelogin
 
-The Microsoft Entra integration for AKS enabled by Azure Arc simplifies the Microsoft Entra integration process. Previously, you were required to create a client and server app, and the Microsoft Entra tenant had to assign [Directory Readers][/entra/identity/role-based-access-control/permissions-reference#directory-readers] role permissions. Now, the AKS Arc resource provider manages the client and server apps for you.
+The Microsoft Entra integration for AKS enabled by Azure Arc simplifies the Microsoft Entra integration process. Previously, you were required to create a client and server app, and the Microsoft Entra tenant had to assign [Directory Readers](/entra/identity/role-based-access-control/permissions-reference#directory-readers) role permissions. Now, the AKS Arc resource provider manages the client and server apps for you.
 
-Cluster administrators can configure Kubernetes role-based access control (Kubernetes RBAC) based on a user's identity or directory group membership. Microsoft Entra authentication is provided to AKS clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information on OpenID Connect, see the [OpenID Connect documentation][/entra/identity-platform/v2-protocols-oidc].
+Cluster administrators can configure Kubernetes role-based access control (Kubernetes RBAC) based on a user's identity or directory group membership. Microsoft Entra authentication is provided to AKS clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information on OpenID Connect, see the [OpenID Connect documentation](/entra/identity-platform/v2-protocols-oidc).
 
 Learn more about the Microsoft Entra integration flow in the [Microsoft Entra documentation](/concepts-security-access-identity#microsoft-entra-integration).
 
 This article provides details on how to enable and use managed identities for Azure resources with your AKS cluster.
-
-
 
 ## Limitations
 
@@ -35,8 +33,6 @@ The following are constraints integrating Azure managed identity authentication 
 * Integration can't be disabled once added.
 * Downgrades from an integrated cluster to the legacy Microsoft Entra ID clusters aren't supported.
 * Clusters without Kubernetes RBAC support are unable to add the integration.
-
-
 
 ## Before you begin
 
@@ -50,8 +46,6 @@ The following requirements need to be met in order to properly install the AKS a
 > [!NOTE]
 > Microsoft Entra integrated clusters using a Kubernetes version newer than version 1.24 automatically use the `kubelogin` format. Starting with Kubernetes version 1.24, the default format of the clusterUser credential for Microsoft Entra ID clusters is `exec`, which requires [`kubelogin`][kubelogin] binary in the execution PATH. There is no behavior change for non-Microsoft Entra clusters, or Microsoft Entra ID clusters running a version older than 1.24.
 > Existing downloaded `kubeconfig` continues to work. An optional query parameter **format** is included when getting clusterUser credential to overwrite the default behavior change. You can explicitly specify format to **azure** if you need to maintain the old `kubeconfig` format .
-
-
 
 ## Enable the integration on your AKS Arc cluster
 
