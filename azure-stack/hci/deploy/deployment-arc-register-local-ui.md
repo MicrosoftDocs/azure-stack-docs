@@ -101,7 +101,8 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. Select **Apply**.
 
-    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the "Additional details" blade." lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the network settings with static allocation."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
+
 
 1. On the **Arc agent setup** tab, under **Arc agent details**, provide the following inputs.
 
