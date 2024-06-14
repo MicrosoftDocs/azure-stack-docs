@@ -16,35 +16,30 @@ ms.date: 03/14/2024
 
 In this article, you'll gain an overview understanding for deploying network reference patterns on Azure Stack HCI.
 
-A deployment consists of single-server or two-node systems that connect to one or two Top of Rack (TOR) switches. This environment has the following characteristics:
+A deployment consists of single-server or multiple server systems (up to 16 servers per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments has the following characteristics:
 
-- Two storage ports dedicated for storage traffic intent. The RDMA NIC is optional for single-server deployments.
+- At least two network adapters dedicated for storage traffic intent. The only exception to this rule are the single-server deployments, where network adapters for storage are not required if you are not planning to scale out the cluster in the future.
 
-- One or two ports dedicated to management and compute traffic intents.
+- One or two network adapter dedicated to management and compute traffic intents.
 
-- One optional Baseboard Management Controller (BMC) for OOB management.
+## Storage switchless connectivity considerations
 
-A single-server deployment features a single TOR switch for northbound/southbound (internal-external) traffic. Two-node deployments consist of either a storage switchless configuration using one or two TOR switches; or a storage switched configuration using two TOR switches with either non-converged or fully converged host network adapters.
+The following highlights some considerations of using switchless configurations:
 
-## Switchless advantages and disadvantages
+- Storage switchless deployments in Azure Stack HCI 23H2 only support 1,2 or 3 nodes.
 
-The following highlights some advantages and disadvantages of using switchless configurations:
+- Scale out operations on storage switchless deployments from Azure portal or ARM are not supported in Azure Stack HCI 23H2 clusters.  
 
-- No switch is necessary for in-cluster (East-West) traffic; however, a switch is required for traffic outside the cluster (North-South). This may result in lower capital expenditure (CAPEX) costs, but is dependent on the number of nodes in the cluster.
+- No switch is necessary for in-cluster (East-West) traffic; however, a physical switch is required for traffic outside the cluster (North-South).
 
-- If switchless is used, configuration is limited to the host, which may reduce the potential number of configuration steps needed. However, this value diminishes as the cluster size increases.
+- Network ATC does not support storage network autoIP on 3 nodes switchless deployments. Planning is required for IP and subnet addressing schemes.
 
-- Switchless has the lowest level of resiliency, and it comes with extra complexity and planning if after the initial deployment it needs to be scaled up. Storage connectivity needs to be enabled when adding the second node, which will require to define what physical connectivity between nodes is needed.
-
-- More planning is required for IP and subnet addressing schemes.
-
-- Storage adapters are single-purpose interfaces. Management, compute, stretched cluster, and other traffic requiring North-South communication can't use these adapters.
+- Storage adapters are single-purpose interfaces. Management, compute, stretched cluster, and other traffic requiring North-South communication can't use the storage network adapters.
 
 - As the number of nodes in the cluster grows beyond two nodes, the cost of network adapters could exceed the cost of using network switches.
 
 - Beyond a three-node cluster, cable management complexity grows.
 
-- Cluster expansion beyond two-nodes is complex, potentially requiring per-node hardware and software configuration changes.
 
 For more information, see [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md).
 
