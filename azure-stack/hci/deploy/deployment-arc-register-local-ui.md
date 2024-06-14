@@ -9,37 +9,32 @@ ms.date: 06/14/2024
 
 # Register your Azure Stack HCI, version 23H2 servers via the local UI (preview)
 
-## Bootstrap methods
+Applies to: Azure Stack HCI, software version 2405.1 and later
 
-After you have procured the hardware that you intend to use to set up your Azure Stack HCI system, you bootstrap the hardware using one of the following methods:  
+<!--[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]-->
 
-- **Site bootstrap key** - Use this method if you have many sites and servers to deploy Azure Stack HCI on - for example, hundreds or thousands of them. Make a site for all the deployments and prepare the physical devices. Then set up the devices so that they can access a home URL and get the configuration from Azure. Generate a site bootstrap key that is then distributed across all the deployments. Configure the devices via local web-based UI and connect to Arc and finally provision the devices.
+This article describes how to use a local web-based UI to bootstrap and register the servers that you intend to cluster as an Azure Stack HCI system. After your servers are registered with Azure Arc, you can proceed to deploy via the Azure portal or an Azure Resource Manager (ARM) template.
 
-- **Multi-server Arc script file** - Use this basic method if you intend to deploy a few sites with a few servers per site. Use a local web-based UI to configure the devices and to provide a bootstrap file with an Arc script for registration.
+Use the local web-based UI method if you intend to deploy some sites with a few servers per site.
 
-> [!NOTE]
-> This guide only covers the bootstrapping for Azure Stack HCI via the Arc script file.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
-## Arc script bootstrap step-by-step
+## Prerequisites
 
-### Step 0: Complete the prerequisites
+After you have procured the hardware that you intend to use to set up your Azure Stack HCI system, you bootstrap the hardware using a local web-based UI. Before you begin, make sure that you satisfy the following server and Azure prerequisites:
 
-Before you begin, make sure that you:
+### Server prerequisites
 
+1. You have the servers that you intend to cluster as an Azure Stack HCI system. The servers must be powered on and connected to the network.
 1. [Complete prerequisites for your environment](../deploy/deployment-prerequisites.md).
 1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-1. Download the customized ISO/VHD required for this testing from here:
-    1. [VHD](https://aka.ms/ashci/vhd).
-    1. [ISO](https://aka.ms/ashci/iso).
-1. Use the customized ISO/VHD that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Stack HCI, version 23H2 software](../deploy/deployment-install-os.md).
+1. [Download the composed ISO](../deploy/download-azure-stack-hci-23h2-software.md) required to install the preview version of Azure Stack HCI, 23H2.
+1. Use the customized ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Stack HCI, version 23H2 software](../deploy/deployment-install-os.md).
 1. For your servers, note down the:
    1. Serial number of the servers.
    1. Local administrator credentials to sign into the server.
-1. Create a resource group where you want to register your servers. Make a note of the resource group name.
-1. Get the tenant ID of your Microsoft Entra tenant. You use this information later.
-1. If you have set up an Azure Arc gateway, get the resource ID of the Arc gateway.
 
-   You need this information later.
+### Azure prerequisites
 
 1. Make sure that your subscription is registered against the following resource providers. Run the following PowerShell commands:
 
@@ -50,10 +45,25 @@ Before you begin, make sure that you:
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI"
    ```
 
-1. To create a service principal, your Microsoft Entra tenant must allow users to register applications. If it doesn't, your account must be a member of the **Application Administrator** or **Cloud Application Administrator** administrative role.
+1. [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your servers. Make a note of the resource group name.
+1. [Get the tenant ID of your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id). You use this information later.
+1. If you set up an Azure Arc gateway, get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`. You need this information later.
 
-1. To assign Arc-enabled server roles, your account must be a member of the **Owner** or **User Access Administrator** role in the subscription that you want to use for onboarding.
+1. If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
+    - Azure Connected Machine Onboarding
+    - Azure Connected Machine Resource Administrator
+
+    To verify that you have these roles, follow these steps in the Azure portal:
+
+    a. Go to the subscription that you use for the Azure Stack HCI deployment.
+    b. Go to the resource group where you're planning to register the servers.
+    c. In the left-pane, go to Access Control (IAM).
+    d. In the right-pane, go the Role assignments. Verify that you have the Azure Connected Machine Onboarding and Azure Connected Machine Resource Administrator roles assigned.
+
+<!--1. To create a service principal, your Microsoft Entra tenant must allow users to register applications. If it doesn't, your account must be a member of the **Application Administrator** or **Cloud Application Administrator** administrative role.
+
+1. To assign Arc-enabled server roles, your account must be a member of the **Owner** or **User Access Administrator** role in the subscription that you want to use for onboarding.-->
 
 ### Step 1: Configure the network and connect to Azure
 
