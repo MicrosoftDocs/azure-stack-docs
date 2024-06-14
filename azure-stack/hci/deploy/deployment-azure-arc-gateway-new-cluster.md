@@ -3,67 +3,36 @@ title: Set up Azure Arc gateway for Azure Stack HCI, version 2405 (preview)
 description: Learn how to deploy Azure Arc gateway for Azure Stack HCI, version 2405 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 06/10/2024
+ms.date: 06/14/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Simplify Azure Stack HCI, version 23H2 outbound network requirements through Azure Arc gateway (preview)
+# Simplify outbound network requirements for new Azure Stack HCI, version 23H2 clusters through Azure Arc gateway (preview)
 
-Applies to: Azure Stack HCI, version 23H2 (preview)
+Applies to: Azure Stack HCI, version 23H2
 
-This article describes how to set up an Azure Arc Gateway for software release 2405 on Azure Stack HCI, version 23H2 systems.
+This article describes how to set up an Azure Arc Gateway for new deployments of Azure Stack HCI running software version 2405.
 
-You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters.
+You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. You can enable the Arc gateway for new deployments or for existing deployments.
 
-> [!IMPORTANT]
-> This article covers how to set up and use the Arc Gateway Preview with Azure Stack HCI 2405. To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
+This article only covers the new Azure Stack HCI deployments. For existing deployments, see [Enable Azure Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
 
-## Supported scenarios
-
-Use the Arc gateway for the following scenarios:
-
-- Enable Arc gateway before you deploy new Azure Stack HCI clusters running software version 2405.
-
-- Enable Arc gateway on existing Azure Stack HCI clusters running software version 2405.
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## How it works
 
-The Arc gateway works by introducing the following components:
-
-- **Arc gateway resource** – An Azure resource that acts as a common entry point for Azure traffic. This gateway resource has a specific domain or URL that you can use. When you create the Arc Gateway resource, this domain or URL is a part of the success response.  
-
-- **Arc proxy** – A new component that is added to the Arc Agentry. This component runs as a service (Called  the **Azure Arc Proxy**) and works as a forward proxy for the Azure Arc agents and extensions.
-    The gateway router doesn't need any configuration from your side. This router is part of the Arc core agentry and runs within the context of an Arc-enabled resource.
-
-With the Arc gateway in place, the traffic flows through these steps: **Arc agentry → Gateway router → Enterprise Proxy → Arc gateway → Target service**.  The traffic flow is illustrated in the following diagram:
-
-  :::image type="content" source="media/deployment-azure-arc-gateway/arc-gateway-component-diagram.png" alt-text="Azure Arc gateway component diagram." lightbox="./media/deployment-azure-arc-gateway/arc-gateway-component-diagram.png":::
-
-  Each Azure Stack HCI cluster node has its own Arc agent with the gateway router connecting and creating the tunnel to the Arc gateway resource in Azure.
+[!INCLUDE [hci-about-arc-gateway](../../includes/hci-about-arc-gateway.md)]
 
 ## Restrictions and limitations
 
-Consider the following limitations of Arc gateway in the Preview release:
-
-- TLS terminating proxies aren't supported with the Arc gateway (Preview).
-
-- Use of ExpressRoute, Site-to-Site VPN, or Private Endpoints in addition to the Arc gateway (Preview) isn't supported.  
-
-- The Arc gateway is only supported for Arc-enabled Servers.
-
-- The server must use the Arc-enabled Servers agent version 1.40 or later to use the Arc gateway feature.
+[!INCLUDE [hci-arc-gateway-limitations](../../includes/hci-arc-gateway-limitations.md)]
 
 ## How to use the Arc gateway on Azure Stack HCI
 
-After you complete the [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new or existing Azure Stack HCI 2405 deployments.
+After you complete the [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new Azure Stack HCI 2405 deployments.
 
-Choose from one of the following options:
-
-- **Option 1**: Enable Arc gateway for new Azure Stack HCI deployments.
-- **Option 2**: Enable Arc gateway for existing Azure Stack HCI deployments.
-
-## Option 1: Enable Arc gateway for new Azure Stack HCI deployments
+## Enable Arc gateway for new Azure Stack HCI deployments
 
 The following steps are required to enable the Azure Arc gateway on new Azure Stack HCI 2405 deployments.
 
@@ -170,8 +139,9 @@ $ARMtoken = (Get-AzAccessToken).Token
 $id = (Get-AzContext).Account.Id
 
 #Invoke the Azure Stack HCI node registration script with ArcGatewayID parameter to connect the agent with the gateway as part of the installation.
-Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus2euap -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force -ArcGatewayID "/subscriptions/<Subscription ID>/resourceGroups/<Resourcegroup>/providers/Microsoft.HybridCompute/gateways/<ArcGateway>",<!--check-->
+Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus2euap -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force -ArcGatewayID "/subscriptions/<Subscription ID>/resourceGroups/<Resourcegroup>/providers/Microsoft.HybridCompute/gateways/<ArcGateway>",
 ```
+<!--check whether the above ends in a comma-->
 
 ### Step 3: Start the Azure Stack HCI cloud deployment
 
@@ -181,7 +151,9 @@ Once the Azure Stack HCI nodes are registered in Arc and all the extensions are 
 
 - [Deploy Azure Stack HCI via ARM template](deployment-azure-resource-manager-template.md).
 
-### Step 4: Verify that setup succeeded
+Next step is to [Verify that the setup was successful](#verify-that-setup-succeeded).
+
+## Step 4: Verify that setup succeeded
 
 Once the deployment validation starts, connect to the first server node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones keep using your firewall or proxy security solutions. You should find the Arc gateway sign in *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -192,12 +164,12 @@ Once the deployment validation starts, connect to the first server node from you
 
     :::image type="content" source="media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png" alt-text="Azure Arc gateway connected machine agent output window." lightbox="./media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png":::
 
-    - **Agent Version** should show as `1.40.02664.1629` or above. <!--CHECK-->
+    - **Agent Version** should show as `1.40` or later. <!--CHECK-->
     - **Agent Status** should show as `Connected`.
     - **Using HTTPS Proxy** is empty when Arc gateway isn't in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
-    - **Upstream Proxy** will always show as empty for Azure Stack HCI as it uses the environment variables to configure the Arc agent.
-    - **Upstream Proxy Bypass List** should show as your bypass list.
-    - **Azure Arc Proxy (arcproxy)** will show as `Stopped` when Arc gateway isn't in use and shows as `Running` when Arc gateway is enabled.
+    - **Upstream Proxy** always shows as empty for Azure Stack HCI as it uses the environment variables to configure the Arc agent.
+    - **Upstream Proxy Bypass List** should show your bypass list.
+    - **Azure Arc Proxy (arcproxy)** shows as `Stopped` when Arc gateway isn't in use and shows as `Running` when Arc gateway is enabled.
 
 1. Verify that setup was successful by running the `"c:\program files\AzureConnectedMachineAgent>.\azcmagent check"` command. The result should show the following values:
 
@@ -207,48 +179,6 @@ Once the deployment validation starts, connect to the first server node from you
 
     - **Reachable** column should list `true` for all URLs.
 
-## Option 2: Arc gateway for existing clusters
-
-This option is for using Azure Arc Gateway on existing Azure Stack HCI, version 2405 systems.
-
-> [!NOTE]
-> All server must be running the Arc-enabled Servers Agent version 1.40 or above to use the Arc gateway feature.
-
-  :::image type="content" source="media/deployment-azure-arc-gateway/existing-deployment-workflow.png" alt-text="Azure Arc gateway existing deployment workflow." lightbox="./media/deployment-azure-arc-gateway/existing-deployment-workflow.png":::
-
-1. Associate each existing server in the cluster with the Arc gateway resource by running the following:
-
-    ```azurecli
-    az connectedmachine setting update --resource-group [res-group] --subscription [subscription name] --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name [Arc server resource name] -settings-resource-name default --gateway-resource-id [Full Arm resourceid]
-    ```
-
-### Step 3: Update the machine to use the Arc gateway resource  
-
-1. Update each server in the cluster to use the Arc gateway resource. Run the following command on your Arc-enabled server to set it to use the Arc gateway:
-
-    ```azurecli
-    azcmagent config set connection.type gateway
-    ```
-
-### Step 4: Await reconciliation
-
-1. Await reconciliation. Once your servers have been updated to use the Arc gateway, some Azure Arc endpoints that were previously allowed in your proxy or firewalls won't be needed any longer. Wait one hour before you begin removing endpoints from your firewall or proxy.
-
-### Step 5: Verify that setup succeeded
-
-1. On the onboarded server, run the `azcmagent show` command. The result should show the following values:
-
-    - **Agent Status** should show as `Connected`.
-
-    - **Using HTTPS Proxy** should show as `http://localhost:40343`.
-
-    - **Upstream Proxy** should show as your proxy if applicable.
-
-1. Verify that setup was successful by running the `azcmagent check` command. The result should show the following values:
-
-    - **connection.type** should show as `gateway`.
-
-    - **Reachable** column should list `true` for all URLs.
 
 ## Delete a Gateway Resource
 
