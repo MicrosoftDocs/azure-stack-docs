@@ -141,7 +141,11 @@ items:
   - name: 3. Install the OS
     href: deploy/deployment-install-os.md
   - name: 4. Register with Arc and set up permissions
-    href: deploy/deployment-arc-register-server-permissions.md
+    items:
+    - name: Via console
+      href: deploy/deployment-arc-register-server-permissions.md
+    - name: Via local UI (Preview)
+      href: deploy/deployment-arc-register-local-ui.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
