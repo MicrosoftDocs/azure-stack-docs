@@ -16,9 +16,9 @@ ms.date: 03/14/2024
 
 In this article, gain an overview understanding for deploying network reference patterns on Azure Stack HCI.
 
-A deployment consists of single-server or multiple server systems (up to 16 servers per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments has the following characteristics:
+A deployment consists of single-server or multiple server systems (up to 16 servers per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
 
-- At least two network adapters dedicated for storage traffic intent. The only exception to this rule are the single-server deployments, where network adapters for storage are not required if you are not planning to scale out the cluster in the future.
+- At least two network adapters dedicated for storage traffic intent. The only exception to this rule is single-server deployments, where network adapters for storage aren't required if you aren't planning to scale out the cluster in the future.
 
 - One or two network adapter dedicated to management and compute traffic intents.
 
@@ -28,11 +28,11 @@ The following highlights some considerations of using switchless configurations:
 
 - Storage switchless deployments in Azure Stack HCI 23H2 only support 1,2 or 3 nodes.
 
-- Scale out operations on storage switchless deployments from Azure portal or ARM are not supported in Azure Stack HCI 23H2 clusters.  
+- Scale out operations on storage switchless deployments from Azure portal or ARM aren't supported in Azure Stack HCI 23H2 clusters.  
 
 - No switch is necessary for in-cluster (East-West) traffic; however, a physical switch is required for traffic outside the cluster (North-South).
 
-- Network ATC does not support storage network autoIP on 3 nodes switchless deployments. Planning is required for IP and subnet addressing schemes.
+- Network ATC doesn't support storage network autoIP on 3 nodes switchless deployments. Planning is required for IP and subnet addressing schemes.
 
 - Storage adapters are single-purpose interfaces. Management, compute, stretched cluster, and other traffic requiring North-South communication can't use the storage network adapters.
 
