@@ -85,11 +85,11 @@ Follow these steps to configure the network settings and connect the servers to 
    > [!IMPORTANT]
    > Make sure that the IPs you assign are free and not in use.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the pencil icon called out."lightbox="media/deployment-arc-register-local-ui/setup-network-settings.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the network settings with static allocation."lightbox="media/deployment-arc-register-local-ui/setup-network-settings.png":::
 
 1. Provide additional details. Select **Enter additional details**.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-button.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the "Enter additional details" button called out." lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-button.png":::
+    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-detailes-button.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the pencil icon called out."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-detailes-button.png":::
 
 1. On the **Additional details** blade, provide the following inputs.
 
@@ -101,7 +101,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. Select **Apply**.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the "Additional details" blade." lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
+    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the "Additional details" blade." lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
 
 1. On the **Arc agent setup** tab, under **Arc agent details**, provide the following inputs.
 
@@ -121,7 +121,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. On the **Review and apply** tab, verify the server details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your servers boot up automatically at this point and you must sign in again.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page, "Review and apply" tab." lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
+    :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page, "Review and apply" tab." lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
 
 1. Wait for the configuration to complete. First, the device details will be uploaded, followed by registration of the server to Azure and, finally, the mandatory Arc extensions are installed.
 
@@ -150,7 +150,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent extensions installed successfully." lightbox="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png":::
 
-   If an extension fails to install, see how to [Install an Azure Arc extension](../manage/arc-extension-management?tabs=azurepowershell#install-an-extension).
+   If an extension fails to install, see how to [Install an Azure Arc extension](../manage/arc-extension-management.md#install-an-extension).
 
 ## Next steps
 
