@@ -165,4 +165,6 @@ Follow these steps to configure the network settings and connect the servers to 
 
 ## Next steps
 
-- Use the steps in [Deploy your Azure Stack HCI, version 23H2 via Azure portal](../deploy/deploy-via-portal.md) to deploy your cluster.
+- Deploy your Azure Stack HCI, version 23H2 via one of the following options:
+  - [Via the Azure portal](../deploy/deploy-via-portal.md).
+  - [Via the ARM template](../deploy/deployment-azure-resource-manager-template.md).
