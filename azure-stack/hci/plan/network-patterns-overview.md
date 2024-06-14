@@ -14,7 +14,7 @@ ms.date: 03/14/2024
 
 [!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll gain an overview understanding for deploying network reference patterns on Azure Stack HCI.
+In this article, gain an overview understanding for deploying network reference patterns on Azure Stack HCI.
 
 A deployment consists of single-server or multiple server systems (up to 16 servers per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments has the following characteristics:
 
