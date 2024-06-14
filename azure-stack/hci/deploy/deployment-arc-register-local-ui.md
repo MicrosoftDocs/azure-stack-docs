@@ -4,7 +4,7 @@ description: Learn how to use an Arc script file to bootstrap servers on Azure S
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/11/2024
+ms.date: 06/14/2024
 ---
 
 # Register your Azure Stack HCI, version 23H2 servers via the local UI (preview)
