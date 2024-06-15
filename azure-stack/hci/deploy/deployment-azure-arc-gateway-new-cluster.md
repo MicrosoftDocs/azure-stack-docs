@@ -1,6 +1,6 @@
 --- 
-title: Set up Azure Arc gateway for Azure Stack HCI, version 2405 (preview)
-description: Learn how to deploy Azure Arc gateway for Azure Stack HCI, version 2405 (preview). 
+title: Set up Azure Arc gateway for new Azure Stack HCI cluster running version 2405 (preview)
+description: Learn how to deploy Azure Arc gateway for new Azure Stack HCI cluster deployments running software version 2405 (preview). 
 author: alkohli
 ms.topic: how-to
 ms.date: 06/14/2024

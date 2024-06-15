@@ -149,6 +149,13 @@ items:
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
+  - name: Deploy with Arc gateway (Preview)
+    items:
+    - name: New v23H2 deployment
+      href: deploy/deployment-azure-arc-gateway-new-cluster.md
+    - name: Existing v23H2 deployment
+      href: deploy/deployment-azure-arc-gateway-existing-cluster.md
+
   - name: Deploy SDN
     items:
     - name: Using Express scripts
