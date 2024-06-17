@@ -5,7 +5,7 @@ author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
 ms.date: 10/12/2023
-ms.custom: template-how-to
+ms.custom: template-how-to, linux-related-content
 ---
 
 # AKS Edge Essentials multiple NIC configurations

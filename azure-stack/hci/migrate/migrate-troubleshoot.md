@@ -7,6 +7,7 @@ ms.date: 12/05/2023
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
+ms.custom: linux-related-content
 ---
 
 # Troubleshoot issues migrating Hyper-V VMs to Azure Stack HCI via Azure Migrate (preview)

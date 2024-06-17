@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/15/2024
+ms.date: 06/04/2024
 ---
 
 # Add a server on Azure Stack HCI, version 23H2
@@ -98,13 +98,16 @@ On the new server that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-    > [!NOTE]
-    > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
-
-2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+1. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
     > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
+
+1. Assign the following permissions to the newly added server nodes:
+
+    - Azure Stack HCI Device Management Role
+    - Key Vault Secrets User
+    For more information, see [Assign permissions to the server](../deploy/deployment-arc-register-server-permissions.md).
 
 On a server that already exists on your cluster, follow these steps:
 
