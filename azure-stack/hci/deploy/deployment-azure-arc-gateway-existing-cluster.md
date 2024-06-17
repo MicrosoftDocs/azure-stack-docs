@@ -85,7 +85,7 @@ Once the deployment validation starts, connect to the first server node from you
 
 1. Verify that setup was successful by running the `"c:\program files\AzureConnectedMachineAgent>.\azcmagent check"` command. The result should show the following values:
 
-    :::image type="content" source="media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png" alt-text="Azure Arc gateway connected machine agent output window." lightbox="./media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png":::
+    :::image type="content" source="media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png" alt-text="Verify that setup is successful from the output of azcmagent check command." lightbox="./media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png":::
 
     - **connection.type** should show as `gateway`.
 
@@ -107,6 +107,6 @@ Follow these steps to view the logs:
 
 Deploy workloads on your Azure Stack HCI cluster:
 
-- [Run Azure Virtual Machines on Azure Stack HCI](../manage/create-arc-virtual-machines.mdvirtual-machines/overview).
-- [Deploy Azure Kubernetes Service on Azure Stack HCI](/azure-stack/hci/kubernetes/overview).
-- [Deploy Azure Virtual Desktop on Azure Stack HCI]().
+- [Run Azure Virtual Machines on Azure Stack HCI](../manage/create-arc-virtual-machines.md).
+- [Deploy Azure Kubernetes Service on Azure Stack HCI](/azure/aks/hybrid/aks-create-clusters-cli).
+- [Deploy Azure Virtual Desktop on Azure Stack HCI](/azure/virtual-desktop/deploy-azure-virtual-desktop).

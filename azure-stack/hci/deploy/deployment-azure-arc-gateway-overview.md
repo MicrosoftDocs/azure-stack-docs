@@ -12,7 +12,7 @@ ms.subservice: azure-stack-hci
 
 Applies to: Azure Stack HCI, version 23H2
 
-This article provides an overview Azure Arc Gateway for Azure Stack HCI, version 23H2. The Arc gateway can be enabled on deployments of Azure Stack HCI running software version 2405 or later. The article also describes how to create and delete the Arc gateway resource in Azure.
+This article provides an overview of the Azure Arc Gateway for Azure Stack HCI, version 23H2. The Arc gateway can be enabled on deployments of Azure Stack HCI running software version 2405 or later. The article also describes how to create and delete the Arc gateway resource in Azure.
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. Once you have created the Arc gateway, you can connect to and use it for new or existing deployments of Azure Stack HCI.
 
@@ -30,7 +30,7 @@ You can use the Arc gateway to significantly reduce the number of required endpo
 
 After you complete the [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new or existing Azure Stack HCI 2405 deployments.
 
-### Create the Arc gateway resource in Azure
+## Create the Arc gateway resource in Azure
 
 You must first create the Arc gateway resource in your Azure subscription. You can do so from any computer that has an internet connection, for example, your laptop.
 
@@ -68,7 +68,6 @@ To create the Arc gateway resource in Azure, follow these steps:
     | packages.microsoft.com | This URL is required to acquire a Linux-based Arc agentry payload. This URL is only needed to connect Linux servers to Arc. |
     | download.microsoft.com | This URL is used to download the Windows installation package. |
 
-
 ## Enable Arc gateway for Azure Stack HCI deployments
 
 You can now enable the Arc gateway for new or existing Azure Stack HCI deployments:
@@ -76,18 +75,17 @@ You can now enable the Arc gateway for new or existing Azure Stack HCI deploymen
 - For new Azure Stack HCI deployments, see [Enable Arc gateway on new Azure Stack HCI 2405 clusters](deployment-azure-arc-gateway-new-cluster.md).
 - For existing Azure Stack HCI deployments, see [Enable Arc gateway on existing Azure Stack HCI 2405 clusters](deployment-azure-arc-gateway-existing-cluster.md).
 
-
 ## Delete a Gateway Resource
 
-To delete an Arc gateway resource, you must first detach it from the server it’s attached to.  
+To delete an Arc gateway resource, you must first detach it from the servers to which it is attached.  
 
-1. Detach the gateway resource from your Arc-enabled server by setting the connection type to **direct** instead of **gateway** - run the following command:
+1. To detach the gateway resource from your Arc-enabled server, set the connection type to **direct** instead of **gateway**. Run the following command:
 
     ```azurecli
     azcmagent config set connection.type direct
     ```
 
-1. Delete the gateway resource by running the following command:
+1. To delete the gateway resource,  run the following command:
 
     ```azurecli
     az connectedmachine gateway delete --resource group <resource group name> --gateway-name <gateway resource name>
@@ -95,10 +93,9 @@ To delete an Arc gateway resource, you must first detach it from the server it�
 
     This operation can take a couple of minutes.  
 
-
 ## Next steps
 
 - Learn how to:
 
-  - [Enable the Arc gateway for new Azure Stack HCI deployments](deployment-azure-arc-gateway-new-cluster.md)
-  - [Enable the Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md)
+  - [Enable the Arc gateway for new Azure Stack HCI deployments](deployment-azure-arc-gateway-new-cluster.md).
+  - [Enable the Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md).

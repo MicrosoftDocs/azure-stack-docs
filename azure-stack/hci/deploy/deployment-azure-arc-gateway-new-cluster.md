@@ -16,7 +16,7 @@ This article describes how to set up an Azure Arc Gateway for new deployments of
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. You can enable the Arc gateway for new deployments or for existing deployments.
 
-This article only covers the new Azure Stack HCI deployments. For existing deployments, see [Enable Azure Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway](/azure/azure-arc/servers/arc-gateway).
+This article only covers the new Azure Stack HCI deployments. For existing deployments, see [Enable Azure Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway]().
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -113,7 +113,7 @@ Once the Azure Stack HCI nodes are registered in Arc and all the extensions are 
 
 - [Deploy Azure Stack HCI via ARM template](deployment-azure-resource-manager-template.md).
 
-Next step is to [Verify that the setup was successful](#verify-that-setup-succeeded).
+Next step is to [Verify that the setup was successful](#step-3-verify-that-setup-succeeded).
 
 ## Step 3: Verify that setup succeeded
 
@@ -135,7 +135,7 @@ Once the deployment validation starts, connect to the first server node from you
 
 1. Verify that setup was successful by running the `"c:\program files\AzureConnectedMachineAgent>.\azcmagent check"` command. The result should show the following values:
 
-    :::image type="content" source="media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png" alt-text="Azure Arc gateway connected machine agent output window." lightbox="./media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png":::
+    :::image type="content" source="media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png" alt-text="Verify that setup is successful from the output of azcmagent check command." lightbox="./media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png":::
 
     - **connection.type** should show as `gateway`.
 
