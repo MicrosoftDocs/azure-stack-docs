@@ -16,7 +16,7 @@ This article describes how to set up an Azure Arc Gateway for new deployments of
 
 You can use the Arc gateway to significantly reduce the number of required endpoints needed to deploy and manage Azure Stack HCI clusters. You can enable the Arc gateway for new deployments or for existing deployments.
 
-This article only covers the new Azure Stack HCI deployments. For existing deployments, see [Enable Azure Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway]().
+<!--This article only covers the new Azure Stack HCI deployments. For existing deployments, see [Enable Azure Arc gateway for existing Azure Stack HCI deployments](deployment-azure-arc-gateway-existing-cluster.md). To use the Arc gateway on standalone Arc for Servers scenarion, see [How to simplify network configuration requirements through Azure Arc gateway]().-->
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -117,29 +117,7 @@ Next step is to [Verify that the setup was successful](#step-3-verify-that-setup
 
 ## Step 3: Verify that setup succeeded
 
-Once the deployment validation starts, connect to the first server node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones keep using your firewall or proxy security solutions. You should find the Arc gateway sign in *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
-
-  :::image type="content" source="media/deployment-azure-arc-gateway/arc-gateway-log-location.png" alt-text="Location of log file for Azure Arc gateway." lightbox="./media/deployment-azure-arc-gateway/arc-gateway-log-location.png":::
-
-1. To check the Arc agent configuration and verify that it is using the gateway, connect to the Azure Stack HCI server node.
-1. Run the following command: `"c:\program files\AzureConnectedMachineAgent>.\azcmagent show"`. The result should show the following values:
-
-    :::image type="content" source="media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png" alt-text="Azure Arc gateway connected machine agent output window." lightbox="./media/deployment-azure-arc-gateway/connected-machine-agent-with-arc-gateway-output.png":::
-
-    - **Agent Version** should show as `1.40` or later. <!--CHECK-->
-    - **Agent Status** should show as `Connected`.
-    - **Using HTTPS Proxy** is empty when Arc gateway isn't in use. It should show as `http://localhost:40343` when the Arc gateway is enabled.
-    - **Upstream Proxy** always shows as empty for Azure Stack HCI as it uses the environment variables to configure the Arc agent.
-    - **Upstream Proxy Bypass List** should show your bypass list.
-    - **Azure Arc Proxy (arcproxy)** shows as `Stopped` when Arc gateway isn't in use and shows as `Running` when Arc gateway is enabled.
-
-1. Verify that setup was successful by running the `"c:\program files\AzureConnectedMachineAgent>.\azcmagent check"` command. The result should show the following values:
-
-    :::image type="content" source="media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png" alt-text="Verify that setup is successful from the output of azcmagent check command." lightbox="./media/deployment-azure-arc-gateway/check-connected-machine-agent-with-arc-gateway.png":::
-
-    - **connection.type** should show as `gateway`.
-
-    - **Reachable** column should list `true` for all URLs.
+[!INCLUDE [hci-gateway-verify-setup-successful](../../includes/hci-gateway-verify-setup-successful.md)]
 
 
 ## Troubleshooting  
