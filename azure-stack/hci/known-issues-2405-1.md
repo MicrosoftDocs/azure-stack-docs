@@ -3,7 +3,7 @@ title: Release notes with fixed and known issues in Azure Stack HCI 2405.1 updat
 description: Read about the known issues and fixed issues in Azure Stack HCI 2405.1 update release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/10/2024
+ms.date: 06/17/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -35,6 +35,19 @@ Here are the fixed issues in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Feature<!--XX--> |Issue description |Workaround steps|
+| Updates|Fixed an issue that caused update runs to fail in post CAU (Cluster aware updating step although a CAU rerun would have fixed the issue. |Workaround steps|
+| Updates |Improved the reliability for partner health checks implemented in their solution builder extension (SBE). |Workaround steps|
+| Arc VM management |A new feature was added to rotate the service principal credentials used by Arc Resource Bridge. |Workaround steps|
+| Observability |In this release, an issues was fixed. This issue resulted in proactive log collection not being enabled by default after the extension was installed. ||
+| Updates<!--27726586--> |•	Fixed an issue where ALM (AgentLifecycleManager) failed to restart services after secret rotation.  |Workaround steps|
+| Updates<!--28182644--> |Fixed an issue where using the Powershell command Start-SolutionUpdate to retry a failed solution update failed.  |Workaround steps|
+| Feature<!--28266857--> |Fixed an issue that caused a Solution Builder Extension update to fail to download. |Workaround steps|
+| Feature<!--28266857--> |Fixed an issue where updates failed at SPN (Service Principal Name) verification based on deployment SPN settings.  |Workaround steps|
+| Feature<!--28314329--> |Fixed a issue where the update fails because updating of Arc Resource Bridge (ARB) can take a long time.  |Workaround steps|
+| Feature<!--28334617--> |Fixed an issue where Solution Builder Update health checks were missing from the pre-update or daily health checks |Workaround steps|
+| Add server <br> Repair server<!--28011823--> |During `Add-Server`, the cluster storage network # shouldn't expected to be the same as the storage VLAN ID. |Workaround steps|
+| Networking<!--28276687--> |AzStackHci_Network_Test_Infra_IP_Connection need to honour the severity of the endpoint defintion |Workaround steps|
+
 
 
 ## Known issues in this release
@@ -45,7 +58,6 @@ Here are the known issues in this release:
 |------|------|----------|
 | Feature<!--XX--> |Issue description |Workaround steps|
 | Deployment<!--XX--> |The new ISO image for the Azure Stack HCI, version 23H2 operating system was rolled back to a previous version owing to compatibility issues with some hardware configurations.   |If you encounter any issues in Arc registration, roll back to the previous version. No action is required for you if you have already successfully deployed the newer image. Both the ISO images are the same operating system build version.|
-
 
 ## Known issues from previous releases
 

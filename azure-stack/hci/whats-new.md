@@ -25,7 +25,11 @@ The 2405 release train includes the following releases:
 
 ## Features and improvements in 2405.1
 
-This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2405-1.md#fixed-issues) to understand the bug fixes.
+This is primarily a bug fix release with a few improvements.
+
+ 
+
+See the [Fixed issues list](./known-issues-2405-1.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2405
 
