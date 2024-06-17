@@ -3,7 +3,7 @@ title: Azure Stack HCI OEM license overview
 description: Learn about the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
-ms.date: 05/17/2024
+ms.date: 06/17/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -75,13 +75,13 @@ For information on activating AKS, see [Azure Kubernetes Service on Azure Stack 
 
 ## Mixed-node scenarios
 
-When a cluster or system uses different server types or billing models this is known as a mixed-node scenario. If your cluster includes a mixed-node scenario, a notification in your monthly billing status details appears.
+When a cluster or system uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your cluster includes a mixed-node scenario where one or more of your servers do not have the OEM license, a notification in your monthly billing status details appears.
 
 :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
 :::image type="content" source="media/oem-license/warning-mixed-node.png" alt-text="Screenshot of a warning for a cluster with an unsupported mixed-node scenario." lightbox="media/oem-license/warning-mixed-node.png":::
 
-***We have detected mixed nodes in the same cluster. You will be fully billed as one or more of your servers do not have the OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column.***
+***We have detected mixed nodes in your cluster. You will be billed monthly for each node in your cluster as one or more servers in your cluster do not have an OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column. Learn more.***
 
 > [!NOTE]
 > Using the Azure Stack HCI OEM license in a mixed-node scenario may lead to inadvertent billing issues. All nodes in an Azure Stack HCI system require uniformity across the hardware, operating system, and billing treatment.
