@@ -38,7 +38,7 @@ The following steps are required to enable the Azure Arc gateway on new Azure St
   :::image type="content" source="media/deployment-azure-arc-gateway/new-deployment-workflow.png" alt-text="Azure Arc gateway new deployment workflow." lightbox="./media/deployment-azure-arc-gateway/new-deployment-workflow.png":::
 
 
-### Step 1: Register new Azure Stack HCI servers via the Arc gateway ID
+## Step 1: Register new Azure Stack HCI servers via the Arc gateway ID
 
 Once the Arc gateway resource is created, start connecting the Arc agents running on your Azure Stack HCI nodes as part of agent installation.  
 
@@ -105,7 +105,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 ```
 <!--check whether the above ends in a comma-->
 
-### Step 2: Start the Azure Stack HCI cloud deployment
+## Step 2: Start the Azure Stack HCI cloud deployment
 
 Once the Azure Stack HCI nodes are registered in Arc and all the extensions are installed, you can start the deployment from the Azure portal or via the ARM templates as documented here:
 
