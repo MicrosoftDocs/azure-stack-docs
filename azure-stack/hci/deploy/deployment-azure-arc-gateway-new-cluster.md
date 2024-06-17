@@ -3,7 +3,7 @@ title: Set up Azure Arc gateway for new Azure Stack HCI cluster running version 
 description: Learn how to deploy Azure Arc gateway for new Azure Stack HCI cluster deployments running software version 2405 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 06/14/2024
+ms.date: 06/17/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -20,17 +20,16 @@ This article only covers the new Azure Stack HCI deployments. For existing deplo
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
-## How it works
+## Prerequisites
 
-[!INCLUDE [hci-about-arc-gateway](../../includes/hci-about-arc-gateway.md)]
+Before you start, make sure you have the following:
 
-## Restrictions and limitations
+- A completed [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u).
+- An Arc gateway resource in Azure. To create the resource, follow the steps in [Create the Arc gateway resource in Azure](./deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure).
+- Azure Stack HCI servers that you intend to cluster.
 
-[!INCLUDE [hci-arc-gateway-limitations](../../includes/hci-arc-gateway-limitations.md)]
-
-## How to use the Arc gateway on Azure Stack HCI
-
-After you complete the [Arc gateway Preview signup form](https://forms.office.com/pages/responsepage.aspx?id=v4j5cvGGr0GRqy180BHbR2WRja4SbkFJm6k6LDfxchxUN1dYTlZIM1JYTVFCN0RVTjgyVEZHMkFTSC4u), start using the Arc gateway for new Azure Stack HCI 2405 deployments.
+  - These servers must be running software version 2405 or later.
+  - These servers must be running the Azure Connected Machine agent version 1.40 or later.
 
 ## Enable Arc gateway for new Azure Stack HCI deployments
 
@@ -38,47 +37,10 @@ The following steps are required to enable the Azure Arc gateway on new Azure St
 
   :::image type="content" source="media/deployment-azure-arc-gateway/new-deployment-workflow.png" alt-text="Azure Arc gateway new deployment workflow." lightbox="./media/deployment-azure-arc-gateway/new-deployment-workflow.png":::
 
-### Step 1: Create the Arc gateway resource in Azure
 
-You must first create the Arc gateway resource in your Azure subscription. You can do so from any computer that has an internet connection, for example, your laptop.
+### Step 1: Register new Azure Stack HCI servers via the Arc gateway ID
 
-To create the Arc gateway resource in Azure, follow these steps:
-
-1. Download the [az connectedmachine.whl](https://aka.ms/ArcGatewayWhl) file extension. This file contains the az connected machine commands required to create and manage your Gateway Resource.
-
-1. Install the [Azure Command Line Interface (CLI)](/cli/azure/install-azure-cli-windows?tabs=azure-cli).
-
-
-1. Run the following command to add the extension:
-
-    ```azurecli
-    az extension add --allow-preview true --yes --source [whl file path] 
-    ```
-
-1. On a computer with access to Azure, run the following commands to create your Arc gateway resource:
-
-    ```azurecli
-    az login --use-device-code
-    az account set --subscription [subscription name or id]
-    az connectedmachine gateway create --name [Your Gateway Name] --resource-group [Your Resource Group] --location [Location] --gateway-type public --allowed-features *
-    ```
-
-    The gateway creation process takes about four to five minutes to complete.
-
-1. When the resource is successfully created, the success response includes all the URLs that need to be allowed in your proxy, including the Arc gateway URL. Make sure that all the URLs are allowed in the environment that has your Azure Arc resources. The following URLs are required:
-
-    | URL | Purpose |
-    |--|--|
-    | [Your URL Prefix].gw.arc.azure.com | Gateway URL. To get this URL, run `az connectedmachine gateway list` after you create your gateway resource. |
-    | management.azure.com | Azure Resource Manager (ARM) Endpoint. This URL is required for the ARM control plane. |
-    | login.microsoftonline.com | Microsoft Entra ID endpoint. This URL is used to acquire identity access tokens. |
-    | gbl.his.arc.azure.com <br><your_region>.his.arc.azure.com  | The cloud service endpoint to communicate with Arc agents. |
-    | packages.microsoft.com | This URL is required to acquire a Linux-based Arc agentry payload. This URL is only needed to connect Linux servers to Arc. |
-    | download.microsoft.com | This URL is used to download the Windows installation package. |
-
-### Step 2: Register new Azure Stack HCI servers via the Arc gateway ID
-
-Once the Arc gateway resource is created, you're now ready to start connecting Arc agents running on your Azure Stack HCI nodes as part of agent installation.  
+Once the Arc gateway resource is created, start connecting the Arc agents running on your Azure Stack HCI nodes as part of agent installation.  
 
 You need the **ArcGatewayID** from Azure to run the snode registration script. To get the **ArcGatewayID**, run the following command:
 
@@ -143,7 +105,7 @@ Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup 
 ```
 <!--check whether the above ends in a comma-->
 
-### Step 3: Start the Azure Stack HCI cloud deployment
+### Step 2: Start the Azure Stack HCI cloud deployment
 
 Once the Azure Stack HCI nodes are registered in Arc and all the extensions are installed, you can start the deployment from the Azure portal or via the ARM templates as documented here:
 
@@ -153,7 +115,7 @@ Once the Azure Stack HCI nodes are registered in Arc and all the extensions are 
 
 Next step is to [Verify that the setup was successful](#verify-that-setup-succeeded).
 
-## Step 4: Verify that setup succeeded
+## Step 3: Verify that setup succeeded
 
 Once the deployment validation starts, connect to the first server node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones keep using your firewall or proxy security solutions. You should find the Arc gateway sign in *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
@@ -180,27 +142,9 @@ Once the deployment validation starts, connect to the first server node from you
     - **Reachable** column should list `true` for all URLs.
 
 
-## Delete a Gateway Resource
-
-To delete an Arc gateway resource, you must first detach it from the server it’s attached to.  
-
-1. Detach the gateway resource from your Arc-enabled server by setting the connection type to **direct** instead of **gateway** - run the following command:
-
-    ```azurecli
-    azcmagent config set connection.type direct
-    ```
-
-1. Delete the gateway resource by running the following command:
-
-    ```azurecli
-    az connectedmachine gateway delete --resource group <resource group name> --gateway-name <gateway resource name>
-    ```
-
-    This operation can take a couple of minutes.  
-
 ## Troubleshooting  
 
-You can audit Arc gateway traffic by viewing the gateway router logs.  
+You can audit the Arc gateway traffic by viewing the gateway router logs.  
 
 Follow these steps to view the logs:
 
@@ -210,3 +154,8 @@ Follow these steps to view the logs:
 
 
 ## Next steps
+
+Deploy your Azure Stack HCI cluster:
+
+- [Via the Azure portal](./deploy-via-portal.md).
+- [Via the ARM templates](./deployment-azure-resource-manager-template.md).
