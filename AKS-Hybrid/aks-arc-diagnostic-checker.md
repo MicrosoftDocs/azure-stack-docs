@@ -38,7 +38,10 @@ VMName                                                 IPAddresses
 <cluster-name>-XXXXXX-control-plane-XXXXXX {172.16.0.10, 172.16.0.4, fe80::ec:d3ff:fea0:1}
 ```
 
-If your AKS control plane node VM has 2 IPv4 addresses, use any one of the IPv4 address as an input for `vmIP` parameter in the diagnostic checker.
+If your AKS cluster has
+- 0 IPv4 addreeses: File a [support request](/aks-troubleshoot#open-a-support-request).
+- 1 IP address: Use the IPv4 address as the input for `vmIP` parameter.
+- 2 IP addresses: Use any one of the IPv4 address as an input for `vmIP` parameter in the diagnostic checker.
 
 ## Run the diagnostic checker script
 
