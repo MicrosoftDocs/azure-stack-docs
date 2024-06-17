@@ -40,28 +40,24 @@ The following steps are required to enable the Azure Arc gateway on existing Azu
 
 ## Step 1: Associate the Arc gateway resource with your existing Azure Stack HCI cluster
 
-> [!NOTE]
-> All servers must run the Arc-enabled Servers Agent version 1.40 or later to use the Arc gateway feature.
 
-  :::image type="content" source="media/deployment-azure-arc-gateway/existing-deployment-workflow.png" alt-text="Azure Arc gateway existing deployment workflow." lightbox="./media/deployment-azure-arc-gateway/existing-deployment-workflow.png":::
+Associate each existing server in the cluster with the Arc gateway resource. Run the following command:
 
-1. Associate each existing server in the cluster with the Arc gateway resource by running the following:
-
-    ```azurecli
-    az connectedmachine setting update --resource-group [res-group] --subscription [subscription name] --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name [Arc server resource name] -settings-resource-name default --gateway-resource-id [Full Arm resourceid]
-    ```
+```azurecli
+az connectedmachine setting update --resource-group [res-group] --subscription [subscription name] --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name [Arc server resource name] -settings-resource-name default --gateway-resource-id [Full Arm resourceid]
+```
 
 ## Step 2: Update the machine to use the Arc gateway resource  
 
-1. Update each server in the cluster to use the Arc gateway resource. Run the following command on your Arc-enabled server to set it to use the Arc gateway:
+Update each server in the cluster to use the Arc gateway resource. Run the following command on your Arc-enabled server to set it to use the Arc gateway:
 
-    ```azurecli
-    azcmagent config set connection.type gateway
-    ```
+```azurecli
+azcmagent config set connection.type gateway
+```
 
 ## Step 3: Await reconciliation
 
-1. Await reconciliation. Once your servers have been updated to use the Arc gateway, some Azure Arc endpoints that were previously allowed in your proxy or firewalls won't be needed any longer. Wait one hour before you begin removing endpoints from your firewall or proxy.
+Await reconciliation. Once your servers have been updated to use the Arc gateway, some Azure Arc endpoints that were previously allowed in your proxy or firewalls won't be needed any longer. Wait one hour before you begin removing endpoints from your firewall or proxy.
 
 Next step is to verify that the setup was successful.
 
