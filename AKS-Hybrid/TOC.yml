@@ -186,6 +186,8 @@
       href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
+    - name: Use GPU acceleration
+      href: aks-edge-gpu.md
     - name: Update AKS Edge Essentials
       items:
       - name: Update online
