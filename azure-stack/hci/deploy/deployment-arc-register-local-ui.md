@@ -202,21 +202,15 @@ To diagnose and troubleshoot any device issues related to hardware, time server,
 
    :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-2.png":::
 
-<!--Here is a table that describes the diagnostic tests:
+Here is a table that describes the diagnostic tests:
 
 | Test Name                        | Description                                                               |
-|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure portal connectivity        | The test validates the connectivity of your device to Azure.portal.                                                                                                                                                                                                              |
-| Disks                            | The test validates that all the device disks are connected and functional. This includes checking that the disks have the right firmware installed and Bitlocker is configured correctly.                                                                                                         |
-| Power supply units (PSUs)        | The test validates all the power supplies are connected and working.    |
-| Network interfaces               | The test validates that all the network interfaces are connected on your device and that the network topology for that system is as expected.    |
-| Central Processing Units (CPUs)  | The test validates that CPUs on the system have the right configuration and that they are up and functional.    |
-| Compute acceleration             | The test validates that the compute acceleration is functioning as expected in terms of both hardware and software. Depending on the device model, the compute acceleration could be a Graphical Processing Unit (GPU) or Vision Processing Unit (VPU) or a Field Programmable Gate Array (FPGA). |
-| Network settings                 | This test validates the network configuration of the device.  |
+|----------------------------------|-----------------------------------------------------------------------|
 | Internet connectivity            | This test validates the internet connectivity of the device. |
-| System software                  | This test validates that the system storage and software stack is functioning as expected.                    |
+| Web proxy (if configured)        | This test validates the web proxy configuration of the device.  |
 | Time sync                        | This test validates the device time settings and checks that the time server configured on the device is valid and accessible.                   |
-| Software Update readiness        | This test validates that the update server configured is valid and accessible.     |
+| Azure Arc agent                  | This test validates the Azure Arc agent is installed and running on the device. |
+| Environment checker              | The Environment Checker tool runs a series of tests to evaulate the deployment readiness of your environment for Azure Stack HCI deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2](../manage/use-environment-checker.md#about-the-environment-checker-tool) |
 
 ### Collect a Support package from the local UI
 
@@ -226,7 +220,7 @@ A log package is composed of all the relevant logs that can help Microsoft Suppo
 
    :::image type="content" source="media/deployment-arc-register-local-ui/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-local-ui/collect-support-package-1.png":::
 
-1. After the Support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.-->
+1. After the Support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.
 
 
 ## Next steps
