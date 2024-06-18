@@ -58,17 +58,17 @@ Follow these steps to collect diagnostic logs for you Azure Stack HCI cluster vi
 
 1. On the **Diagnostics** page, under **Log activity**, review log collection history. You can also select a link under **Time collected** to view details about a specific log collection in the **Log details** pane.
 
-   :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Diagnostics tab." lightbox="./media/collect-logs/log-details-pane.png" :::
+   :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
 1. To collect and send logs now, select **Send logs** .
 
-   :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Diagnostics tab." lightbox="./media/collect-logs/diagnostics-tab.png" :::
+   :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Send logs button." lightbox="./media/collect-logs/diagnostics-tab.png" :::
 
 1. On the **Send logs** pane on the right, select the **Log start time** and **Log end time**.
 
 1. Select the **Collect and upload logs** button. By selecting this, you agree to the terms and conditions of collection logs.
 
-   :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Diagnostics tab." lightbox="./media/collect-logs/send-logs-pane.png" :::
+   :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
 
 ## Collect logs via PowerShell
 
