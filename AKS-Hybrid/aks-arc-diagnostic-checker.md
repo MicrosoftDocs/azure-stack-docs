@@ -14,6 +14,8 @@ ms.reviewer: abha
 
 It can be hard to identify environment related issues like networking configurations that can result in an AKS cluster create failure. Diagnostic checker is a PowerShell based tool that can help identify potential causes in the environment due to which your AKS cluster create failed. 
 
+** Note that the tool below can only be used if an AKS cluster has been created but is in a failed state. You cannot use the below tool if you do not see an AKS cluster on Azure portal** If the AKS cluster create fails even before an ARM resource is created, proceed direclty to filing a support request](/aks-troubleshoot#open-a-support-request).
+
 ## Before you begin
 
 Before you begin, make sure you have the following. If you do not meet the requirements for running the diagnostic checker tool, proceed directly to [filing a support request](/aks-troubleshoot#open-a-support-request).
@@ -27,8 +29,7 @@ Before you begin, make sure you have the following. If you do not meet the requi
 
 Run the following command from any one physical node in your Azure Stack HCI cluster. Ensure that you're passing the name, and not ARM ID of the AKS cluster in the below commands.
 ```powershell
-$cluster_name="<name of the AKS cluster>"
-Get-VM | Where-Object {$_.Name -like "$cluster_name*control-plane-*"} | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName, IPAddresses | Format-Table -AutoSize
+invoke-command -computername (get-clusternode) -script {Get-VM| Where-Object {$_.Name -like "$cluster_name*control-plane-*"} | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName, IPAddresses| Format-Table -AutoSize}
 ```
 
 Expected output:
@@ -38,7 +39,9 @@ VMName                                                 IPAddresses
 <cluster-name>-XXXXXX-control-plane-XXXXXX {172.16.0.10, 172.16.0.4, fe80::ec:d3ff:fea0:1}
 ```
 
-If your AKS cluster has
+If you do not see a control plane VM as shown in the output above, proceed directly to [filing a support request](/aks-troubleshoot#open-a-support-request).
+
+If you see a control plane VM, and it has:
 - 0 IPv4 addreeses: File a [support request](/aks-troubleshoot#open-a-support-request).
 - 1 IP address: Use the IPv4 address as the input for `vmIP` parameter.
 - 2 IP addresses: Use any one of the IPv4 address as an input for `vmIP` parameter in the diagnostic checker.
@@ -51,7 +54,7 @@ Copy the following PowerShell script `run_diagnostic.ps1` into any 1 node of you
 .SYNOPSIS
     Runs diagnostic checker tool in target cluster control plane VM and returns the result.
 
-    This script will run the following tests from target cluster control plane VM:
+    This script will run the following tests from AKS cluster control plane VM:
     1. cloud-agent-connectivity-test: Checks whether the DNS server can resolve the Moc cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. Cloud agent is created using one of the IP addresses from the [management IP pool](/hci/plan/cloud-deployment-network-considerations#management-ip-pool), on port 55000. The control plane node VM is given an IP address from the Arc VM logical network.
     2. gateway-icmp-ping-test: Checks whether the gateway specified in the logical network attached to the AKS cluster is reachable from the AKS cluster control plane node VM.
     3. http-connectivity-required-url-test: Checks whether the required URLs are reachable from the AKS cluster control plane node VM.
@@ -63,10 +66,10 @@ Copy the following PowerShell script `run_diagnostic.ps1` into any 1 node of you
     The name of the LNET used for the cluster.
 
 .PARAMETER sshPath
-    The path to the private SSH key for the target cluster.
+    The path to the private SSH key for the AKS cluster.
 
 .PARAMETER vmIP
-    IP of the target cluster control plane VM.
+    IP of the AKS cluster control plane VM.
 
 
 .EXAMPLE
@@ -158,8 +161,8 @@ $filePath = "config.yaml"
 Set-Content -Path $filePath -Value $configContent
 
 $dest = 'clouduser@' + $vmIP + ":config.yaml"
-# Copy the config file to target cluster VM
-Write-Host "Copying test config file to target cluster VM...."
+# Copy the config file to AKS cluster VM
+Write-Host "Copying test config file to AKS cluster VM...."
 $command = "scp -i $sshPath -o StrictHostKeyChecking=no config.yaml $dest"
 $output=Invoke-Expression $command 2>&1
 if ($LASTEXITCODE -eq 1) {
@@ -230,6 +233,16 @@ foreach ($check in $resultContent.spec.checks) {
 }
 
 $testResults | Format-Table -Wrap -AutoSize
+```
+
+Sample output:
+
+```output
+TestName                            Outcome Recommendation
+--------                            ------- --------------
+cloud-agent-connectivity-test       Success
+gateway-icmp-ping-test              Success 
+http-connectivity-required-url-test Failure Ensure that the logical network IP addresses have outbound internet access. If there is a firewall, ensure that AKS required URLs are accessible from Arc VM logical network.
 ```
 
 ## Analyzing diagnostic checker output
