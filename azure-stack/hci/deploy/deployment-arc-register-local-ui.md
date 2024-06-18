@@ -196,13 +196,13 @@ To diagnose and troubleshoot any device issues related to hardware, time server,
 1. Select the bell icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane.
 1. Select **Run diagnostic tests**. The diagnostic tests check the health of the server hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent and the extensions.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostic-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-1.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-1.png":::
 
 1. After the tests are completed, the results are displayed. Here is a sample output of the diagnostic tests when there is a device issue:
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostic-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-2.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-2.png":::
 
-Here is a table that describes the diagnostic tests:
+<!--Here is a table that describes the diagnostic tests:
 
 | Test Name                        | Description                                                               |
 |----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -226,9 +226,8 @@ A log package is composed of all the relevant logs that can help Microsoft Suppo
 
    :::image type="content" source="media/deployment-arc-register-local-ui/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-local-ui/collect-support-package-1.png":::
 
-1. After the Support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.
+1. After the Support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.-->
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/collect-support-package-2.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Download selected." lightbox="media/deployment-arc-register-local-ui/collect-support-package-2.png":::
 
 ## Next steps
 
