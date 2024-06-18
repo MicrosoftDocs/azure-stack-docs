@@ -18,9 +18,9 @@ In this article, gain an overview understanding for deploying network reference 
 
 A deployment consists of single-server or multiple server systems (up to 16 servers per cluster) that connect to one or two Top of Rack (TOR) switches. Those environments have the following characteristics:
 
-- At least two network adapters dedicated for storage traffic intent. The only exception to this rule is single-server deployments, where network adapters for storage aren't required if you aren't planning to scale out the cluster in the future.
+- At least two network adapter ports dedicated for storage traffic intent. The only exception to this rule is single-server deployments, where network adapters for storage aren't required if you aren't planning to scale out the cluster in the future.
 
-- One or two network adapter dedicated to management and compute traffic intents.
+- One or two network adapter ports dedicated to management and compute traffic intents.
 
 ## Storage switchless connectivity considerations
 
