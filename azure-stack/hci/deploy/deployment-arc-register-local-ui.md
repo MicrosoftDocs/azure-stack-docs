@@ -4,7 +4,7 @@ description: Learn how to use the web UI to bootstrap and Arc register the Azure
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/14/2024
+ms.date: 06/18/2024
 ---
 
 # Register your Azure Stack HCI, version 23H2 servers via the local UI (preview)
@@ -27,9 +27,18 @@ After you have procured the hardware that you intend to use to set up your Azure
 
 1. You have the servers that you intend to cluster as an Azure Stack HCI system. The servers must be powered on and connected to the network.
 1. [Complete prerequisites for your environment](../deploy/deployment-prerequisites.md).
+1. Make sure to add the following URL patterns to the allow list of your firewall:
+  
+    |#  |URl pattern  |Component description  |
+    |---------|---------|---------|
+    |1  |`prod.eastus.device.discovery.ffg.azure.net` |Used by FFG service for device discovery.           |
+    |2  |`*.<region>.prod.ffg.azure.net` |Used by FFG service for device provsioning.        |
+    |3  |`management.azure.com` <br> `login.microsoftonline.com` |Used by Azure Edge Hardware Center.         |
+    |4  |  XXXX       |Used by the device.        |
+
 1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
 1. [Download the composed ISO](../deploy/download-azure-stack-hci-23h2-software.md) required to install the preview version of Azure Stack HCI, 23H2.
-1. Use the customized ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Stack HCI, version 23H2 software](../deploy/deployment-install-os.md).
+1. Use the composed ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Stack HCI, version 23H2 software](../deploy/deployment-install-os.md).
 1. For your servers, note down the:
    1. Serial number of the servers.
    1. Local administrator credentials to sign into the server.
@@ -65,7 +74,7 @@ After you have procured the hardware that you intend to use to set up your Azure
 
 1. To assign Arc-enabled server roles, your account must be a member of the **Owner** or **User Access Administrator** role in the subscription that you want to use for onboarding.-->
 
-### Step 1: Configure the network and connect to Azure
+## Step 1: Configure the network and connect to Azure
 
 Follow these steps to configure the network settings and connect the servers to Azure.
 
@@ -118,6 +127,8 @@ Follow these steps to configure the network settings and connect the servers to 
    1. Enter a **Subscription ID** that you use to register the server.
    1. Provide a **Resource group** name. This resource group contains the server and the cluster resources that you create.
    1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Stack HCI cluster. 
+      > [!IMPORTANT]
+      > The region is specified with the spaces removed. For example, **East US** is specified as **EastUS**.
    1. Specify the **Cloud type** as **AzureCloud**.
    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id)
    1. If you have set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up.
@@ -149,7 +160,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup configuration status, open in Azure portal option." lightbox="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png":::
 
-### Step 2: Verify servers are connected to Arc
+## Step 2: Verify servers are connected to Arc
 
 1. In the Azure portal, go to the resource group for bootstrapping.
 
@@ -165,6 +176,6 @@ Follow these steps to configure the network settings and connect the servers to 
 
 ## Next steps
 
-- Deploy your Azure Stack HCI, version 23H2 via one of the following options:
+- Deploy your Azure Stack HCI, version 23H2 system via one of the following options:
   - [Via the Azure portal](../deploy/deploy-via-portal.md).
   - [Via the ARM template](../deploy/deployment-azure-resource-manager-template.md).
