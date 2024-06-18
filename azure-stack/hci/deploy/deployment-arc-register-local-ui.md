@@ -32,7 +32,7 @@ After you have procured the hardware that you intend to use to set up your Azure
     |#  |URl pattern  |Component description  |
     |---------|---------|---------|
     |1  |`prod.eastus.device.discovery.ffg.azure.net` |Used by FFG service for device discovery.           |
-    |2  |`*.<region>.prod.ffg.azure.net` |Used by FFG service for device provsioning.        |
+    |2  |`*.<region>.prod.ffg.azure.net` |Used by FFG service for device provsioning. Replace <region> with the region you are using. The region name should be input with the spaces removed. For example, East US should be inputted as EastUS.       |
     |3  |`management.azure.com` <br> `login.microsoftonline.com` |Used by Azure Edge Hardware Center.         |
     |4  |  XXXX       |Used by the device.        |
 
@@ -56,7 +56,12 @@ After you have procured the hardware that you intend to use to set up your Azure
 
 - [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your servers. Make a note of the resource group name.
 - [Get the tenant ID of your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id). You use this information later.
-- If you set up an Azure Arc gateway, get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`. You need this information later.
+- If you set up an Azure Arc gateway, get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`. 
+   To get the ArcGatewayID, run the following command:
+   `az connectedmachine gateway list`
+
+   For more information, see
+   Make a note of the Arc gateway ID. You need this information later.
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
@@ -173,6 +178,57 @@ Follow these steps to configure the network settings and connect the servers to 
    :::image type="content" source="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent extensions installed successfully." lightbox="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png":::
 
    If an extension fails to install, see how to [Install an Azure Arc extension](../manage/arc-extension-management.md#install-an-extension).
+
+
+## Troubleshooting
+
+If you encounter any issues with the local UI, you can use the following resources to troubleshoot:
+
+1. Run diagnostic tests.
+1. Collect a Support package.
+
+Each of these resources is discussed in the following sections.
+
+### Run diagnostic tests from the local UI
+
+To diagnose and troubleshoot any device issues related to hardware, time server, and network, you can run the diagnostics tests. Follow these steps to run the diagnostic tests from the local UI:
+
+1. Select the bell icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane.
+1. Select **Run diagnostic tests**. The diagnostic tests check the health of the server hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent and the extensions.
+
+   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostic-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-1.png":::
+
+1. After the tests are completed, the results are displayed. Here is a sample output of the diagnostic tests when there is a device issue:
+
+   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostic-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-2.png":::
+
+Here is a table that describes the diagnostic tests:
+
+| Test Name                        | Description                                                               |
+|----------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure portal connectivity        | The test validates the connectivity of your device to Azure.portal.                                                                                                                                                                                                              |
+| Disks                            | The test validates that all the device disks are connected and functional. This includes checking that the disks have the right firmware installed and Bitlocker is configured correctly.                                                                                                         |
+| Power supply units (PSUs)        | The test validates all the power supplies are connected and working.    |
+| Network interfaces               | The test validates that all the network interfaces are connected on your device and that the network topology for that system is as expected.    |
+| Central Processing Units (CPUs)  | The test validates that CPUs on the system have the right configuration and that they are up and functional.    |
+| Compute acceleration             | The test validates that the compute acceleration is functioning as expected in terms of both hardware and software. Depending on the device model, the compute acceleration could be a Graphical Processing Unit (GPU) or Vision Processing Unit (VPU) or a Field Programmable Gate Array (FPGA). |
+| Network settings                 | This test validates the network configuration of the device.  |
+| Internet connectivity            | This test validates the internet connectivity of the device. |
+| System software                  | This test validates that the system storage and software stack is functioning as expected.                    |
+| Time sync                        | This test validates the device time settings and checks that the time server configured on the device is valid and accessible.                   |
+| Software Update readiness        | This test validates that the update server configured is valid and accessible.     |
+
+### Collect a Support package from the local UI
+
+A log package is composed of all the relevant logs that can help Microsoft Support troubleshoot any device issues. You can generate a log package via the local web UI. Follow these steps to collect a Support package from the local UI:
+
+1. Select the bell icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection may take several minutes.
+
+   :::image type="content" source="media/deployment-arc-register-local-ui/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-local-ui/collect-support-package-1.png":::
+
+1. After the Support package is created, select **Download**. A zipped package is downloaded on your local system. You can unzip the package and view the system log files.
+
+   :::image type="content" source="media/deployment-arc-register-local-ui/collect-support-package-2.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Download selected." lightbox="media/deployment-arc-register-local-ui/collect-support-package-2.png":::
 
 ## Next steps
 
