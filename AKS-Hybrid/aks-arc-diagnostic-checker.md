@@ -29,7 +29,7 @@ Before you begin, make sure you have the following. If you do not meet the requi
 
 Run the following command from any one physical node in your Azure Stack HCI cluster. Ensure that you're passing the name, and not ARM ID of the AKS cluster in the below commands.
 ```powershell
-invoke-command -computername (get-clusternode) -script {Get-VM| Where-Object {$_.Name -like "$cluster_name*control-plane-*"} | Select-Object -ExpandProperty NetworkAdapters | Select-Object VMName, IPAddresses| Format-Table -AutoSize}
+invoke-command -computername (get-clusternode) -script {get-vmnetworkadapter -vmname *} | Where-Object {$_.Name -like "$cluster_name*control-plane-*"} | select vmname, ipaddresses
 ```
 
 Expected output:
