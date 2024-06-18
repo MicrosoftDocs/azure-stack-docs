@@ -266,7 +266,7 @@ Follow these steps to configure the resource locks:
 1. On the **Overview** > **Resources** tab, you should see an Arc Resource Bridge resource.
 1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the Azure Stack HCI Administrator role for the resource group.
 1. In the right pane, select **Add**.
-1. Enter the lock details and then select **OK**.
+1. Enter the lock name, in the lock type choose Delete and then select **OK**. 
 
 
 For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
