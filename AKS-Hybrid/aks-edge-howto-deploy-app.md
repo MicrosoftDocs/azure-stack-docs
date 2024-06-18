@@ -5,7 +5,7 @@ author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
 ms.date: 05/01/2024
-ms.custom: template-how-to
+ms.custom: template-how-to, linux-related-content
 ---
 
 # Deploy an application

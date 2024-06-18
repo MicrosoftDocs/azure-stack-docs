@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/29/2024
+ms.date: 05/31/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -16,7 +16,7 @@ This article provides guidance on how to configure firewalls for the Azure Stack
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
 
 > [!IMPORTANT]
-> Azure Private Link is not supported for Azure Stack HCI, version 23H2 or any of its components.
+> Azure Express Route and Azure Private Link are not supported for Azure Stack HCI, version 23H2 or any of its components, because it is not possible to access the public endpoints required for Azure Stack HCI 23H2.
 
 ## Firewall requirements for outbound endpoints
 
@@ -29,7 +29,7 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited only t
 - Port 443 (HTTPS)
 
 > [!IMPORTANT]
-> Azure Stack HCI doesn’t support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Stack HCI to prevent any connectivity errors.
+> Azure Stack HCI doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Stack HCI to prevent any connectivity errors.
 
 As shown in the following diagram, Azure Stack HCI accesses Azure using more than one firewall potentially.
 
@@ -39,9 +39,9 @@ This article describes how to optionally use a highly locked-down firewall confi
 
 ## Required firewall URLs
 
-The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist. 
+The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
 
-Please also follow the required firewall requirements for [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions).
+Additionally, follow the required firewall requirements for [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions).
 
 > [!NOTE]
 > The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.

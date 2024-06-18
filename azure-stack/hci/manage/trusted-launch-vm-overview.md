@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/31/2024
+ms.date: 06/03/2024
 ---
 
 # Introduction to Trusted launch for Azure Arc VMs on Azure Stack HCI, version 23H2
@@ -25,7 +25,7 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 ## Capabilities and benefits
 
 | Capability | Benefit |
-| -- | -- |
+|----|----|
 | Secure boot | Helps reduce risk of malware (rootkits) during boot by verifying that boot components are signed by trusted publishers. |
 | vTPM | Virtualized version of a hardware TPM that serves as a dedicated vault for keys, certificates, and secrets.  |
 | vTPM state transfer| Preserves vTPM when the VM migrates or fails over within a cluster. |
@@ -34,6 +34,14 @@ Trusted launch is a security type that can be specified when creating Arc VMs on
 > [!NOTE]
 > VM guest boot integrity verification is not available.
 
+## Guidance
+
+- IgvmAgent is a component that is installed on all nodes in the Azure Stack HCI cluster. It enables support for isolated VMs such as Trusted launch Arc VMs for example.
+
+- As part of Trusted launch Arc VM creation, Hyper-V creates VM files on disk to store the VM state. By default, access to those VM files is restricted to host server administrators. Host administrators must ensure that the location where those VM files are stored always remains appropriately access-restricted.
+
+<!--- VM live migration network traffic is not encrypted. We strongly recommend that you enable IPsec to protect live migration network traffic. For more information, see [Network Recommendations for a Hyper-V Cluster](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn550728(v=ws.11)#How_to_isolate_the_network_traffic_on_a_Hyper-V_cluster).-->
+
 ## Guest operating system images
 
 The following VM guest OS images from Azure Marketplace are supported. The VM image can be created using Azure portal or Azure CLI.
@@ -41,7 +49,7 @@ The following VM guest OS images from Azure Marketplace are supported. The VM im
 For more information, see [Create Azure Stack HCI VM image using Azure Marketplace](/azure-stack/hci/manage/virtual-machine-image-azure-marketplace?tabs=azurecli).
 
 | Name | Publisher | Offer | SKU | Version number |
-| -- | -- | -- | -- | -- |
+|---|---|---|---|---|
 | Windows 11 Enterprise multi-session, version 22H2 - Gen2 | microsoftwindowsdesktop | windows-11  | win11-22h2-avd | 22621.2428.231001 |
 | Windows 11 Enterprise multi-session, version 22H2 + Microsoft 365 Apps (preview) - Gen2 | microsoftwindowsdesktop | windows11preview | win11-22h2-avd-m365 | 22621.382.220810 |
 | Windows 11 Enterprise multi-session, version 21H2 - Gen2 | microsoftwindowsdesktop  | windows-11  | win11-21h2-avd | 22000.2538.231001 |

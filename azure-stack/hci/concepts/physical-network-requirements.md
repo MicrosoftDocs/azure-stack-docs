@@ -78,7 +78,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
 | [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
-
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
 ### 22H2
 
 |Model |Firmware|Management |Storage |Compute (Standard)|Compute (SDN)|
@@ -88,7 +89,8 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 | [CX 8360 series](https://www.arubanetworks.com/resource/aruba-cx-8360-switch-series-data-sheet/) <br>(10, 25 GbE) |AOS CX version 10.11.1010 or later |&check;| &check;| &check;| &check; |
 | [CX 10000 series](https://www.arubanetworks.com/resource/aruba-cx-10000-switch-series-data-sheet/) <br>(10, 25 GbE)|AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
 | [CX 9300 series](https://www.arubanetworks.com/resource/aruba-cx-9300-switch-series-data-sheet/)<br>(100, 400 GbE) |AOS CX version 10.11.1010 or later|&check;| &check;| &check;| &check; |
-
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
 # [Cisco](#tab/Cisco)
 
 ### 23H2
@@ -126,7 +128,16 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 
 
 # [Dell](#tab/Dell)
+### 23H2
 
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [S41xx series](https://www.dell.com/learn/us/en/45/shared-content~data-sheets~en/documents~dell-emc-networking-s4100-series-spec-sheet.pdf) <br>(10 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S52xx series](https://www.delltechnologies.com/resources/en-us/asset/data-sheets/products/networking/dell_emc_networking-s5200_on_spec_sheet.pdf) <br>(10, 25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+| [S54xx series](https://www.delltechnologies.com/asset/en-us/products/networking/technical-support/dell-emc-powerswitch-s5448f-on-spec-sheet.pdf) <br>(25, 100 GbE)|SmartFabric OS10.5.4 or later |&check;| &check;| &check;| &check; |
+
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
 ### 22H2
 
 |Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
@@ -439,4 +450,4 @@ Azure Stack HCI supports switchless (direct) connections for East-West traffic f
 ## Next steps
 
 - See [Deploy using Azure portal](../deploy/deploy-via-portal.md).
-- See [Deploy using ARM template](../deploy/deployment-azure-resource-manager-template.md).
+- See [Deploy using Azure Resource Manager template](../deploy/deployment-azure-resource-manager-template.md).

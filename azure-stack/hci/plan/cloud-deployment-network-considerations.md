@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 03/14/2024
+ms.date: 05/29/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -39,7 +39,7 @@ Here are the summarized considerations for the cluster size decision:
 
 |Decision  |Consideration  |
 |---------|---------|
-|Cluster size (number of nodes per cluster)     |Switchless configuration via the Azure portal or ARM templates is only available for 1, 2, or 3 node clusters. <br><br>Clusters with 4 or more nodes require physical switch for the storage network traffic.         |
+|Cluster size (number of nodes per cluster)     |Switchless configuration via the Azure portal or Azure Resource Manager templates is only available for 1, 2, or 3 node clusters. <br><br>Clusters with 4 or more nodes require physical switch for the storage network traffic.         |
 |Scale out requirements     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic.         |
 
 
@@ -67,7 +67,7 @@ Here are the summarized considerations for the cluster storage connectivity deci
 
 |Decision  |Consideration  |
 |---------|---------|
-|No switch for storage     |Switchless configuration via Azure portal or ARM template deployment is only supported for 1, 2 or 3 node clusters. <br><br>1 or 2 node storage switchless clusters can be deployed using the Azure portal or ARM templates.<br><br>3 node storage switchless clusters can be deployed only using ARM templates.<br><br>Scale out operations are not supported with the switchless deployments. Any change to the number of nodes after the deployment requires a manual configuration. <br><br>At least 2 network intents are required when using storage switchless configuration.        |
+|No switch for storage     |Switchless configuration via Azure portal or Resource Manager template deployment is only supported for 1, 2 or 3 node clusters. <br><br>1 or 2 node storage switchless clusters can be deployed using the Azure portal or Resource Manager templates.<br><br>3 node storage switchless clusters can be deployed only using Resource Manager templates.<br><br>Scale out operations are not supported with the switchless deployments. Any change to the number of nodes after the deployment requires a manual configuration. <br><br>At least 2 network intents are required when using storage switchless configuration.        |
 |Network switch for storage     |If you intend to scale out your cluster using the orchestrator, you need to use a physical switch for the storage network traffic. <br><br>You can use this architecture with any number of nodes between 1 to 16. <br><br>Although is not enforced, you can use a single intent for all your network traffic types (Management, Compute, and Storage)        |
 
 The following diagram summarizes storage connectivity options available to you for various deployments:
@@ -161,10 +161,11 @@ The following conditions must be met when defining your IP pool for the infrastr
 
 |#  | Condition |
 |---------|---------|
-|1     | The IP range must use consecutive IPs and all IPs must be available within that range.        |
+|1     | The IP range must use consecutive IPs and all IPs must be available within that range. This IP range can't be changed post deployment.       |
 |2     | The range of IPs must not include the cluster node management IPs but must be on the same subnet as your nodes.        |
 |3     | The default gateway defined for the management IP pool must provide outbound connectivity to the internet.        |
 |4     | The DNS servers must ensure name resolution with Active Directory and the internet.        |
+|5     | The management IPs require outbound internet access.        |
 
 ### Management VLAN ID
 
@@ -194,49 +195,53 @@ If a virtual switch configuration is required and you must use a specific VLAN I
 
 #### 1. Create virtual switch with recommended naming convention
 
-Azure Stack HCI deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch. 
+Azure Stack HCI deployments rely on Network ATC to create and configure the virtual switches and virtual network adapters for management, compute, and storage intents. By default, when Network ATC creates the virtual switch for the intents, it uses a specific name for the virtual switch.
 
-Although it isn't required, we recommend naming your virtual switches with the same naming convention. The recommended name for the virtual switches is as follows:
+We recommend naming your virtual switch names with the same naming convention. The recommended name for the virtual switches is as follows:
 
-- Name of the virtual switch: "`ConvergedSwitch($IntentName)`",
-Where `$IntentName` can be any string. This string should match the name of the virtual network adapter for management as described in the next step.
+"`ConvergedSwitch($IntentName)`",
+where `$IntentName` must match the name of the intent typed into the portal during deployment. This string must also match the name of the virtual network adapter used for management as described in the next step.
 
-The following example shows how to create the virtual switch with PowerShell using the recommended naming convention with `$IntentName` describing the purpose of the virtual switch. The list of network adapter names is a list of the physical network adapters you plan to use for management and compute network traffic:
+The following example shows how to create the virtual switch with PowerShell using the recommended naming convention with `$IntentName`. The list of network adapter names is a list of the physical network adapters you plan to use for management and compute network traffic:
 
 ```powershell
 $IntentName = "MgmtCompute"
-New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
+New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 ```
 
-#### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes 
+#### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes
 
-Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
+Once the virtual switch and the associated management virtual network adapter are created, make sure that the network adapter name is compliant with Network ATC naming standards.
 
-- Name of the network adapter and the virtual network adapter: `vManagement($intentname)`.
-- Name is case sensitive.
-- `$Intentname` can be any string, but must be the same name used for the virtual switch.
+Specifically, the name of the virtual network adapter used for management traffic must use the following conventions:
 
-To update the management virtual network adapter name, use the following command:
+- Name of the network adapter and the virtual network adapter must use `vManagement($intentname)`.
+- This name is case-sensitive.
+- `$Intentname` can be any string, but must be the same name used for the virtual switch. Make sure you use this same string in Azure portal when defining the `Mgmt` intent name.
+
+To update the management virtual network adapter name, use the following commands:
 
 ```powershell
 $IntentName = "MgmtCompute"
-Add-VMNetworkAdapter -ManagementOS -SwitchName "ConvergedSwitch($IntentName)" -Name "vManagement($IntentName)"
 
-#NetAdapter needs to be renamed because during creation, Hyper-V adds the string “vEthernet “ to the beginning of the name
+#Rename NetAdapter because during creation, Hyper-V adds the string “vEthernet” to the beginning of the name.
+Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vManagement(MgmtCompute)"
 
-Rename-NetAdapter -Name "vEthernet (vManagement($IntentName))" -NewName "vManagement($IntentName)"
+#Rename VMNetworkAdapter for management because during creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch(MgmtCompute)" -NewName "vManagement(MgmtCompute)"
+
 ```
 
 #### 3. Configure VLAN ID to management virtual network adapter for all nodes
 
-Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command. 
+Once the virtual switch and the management virtual network adapter are created, you can specify the required VLAN ID for this adapter. Although there are different options to assign a VLAN ID to a virtual network adapter, the only supported option is to use the `Set-VMNetworkAdapterIsolation` command.
 
 Once the required VLAN ID is configured, you can assign the IP address and gateways to the management virtual network adapter to validate that it has connectivity with other nodes, DNS, Active Directory, and the internet.
 
-The following example shows how to configure the management virtual network adapter to use VLAN ID 8 instead of the default:
+The following example shows how to configure the management virtual network adapter to use VLAN ID `8` instead of the default:
 
 ```powershell
-Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($IntentName)" -AllowUntaggedTraffic $true -IsolationMode Vlan -DefaultIsolationID
+Set-VMNetworkAdapterIsolation -ManagementOS -VMNetworkAdapterName "vManagement($IntentName)" -AllowUntaggedTraffic $true -IsolationMode Vlan -DefaultIsolationID "8"
 ```
 
 #### 4. Reference physical network adapters for the management intent during deployment
@@ -246,7 +251,7 @@ Although the newly created virtual network adapter shows as available when deplo
 > [!NOTE]
 > Do not select the virtual network adapter for the network intent.
 
-The same logic applies to the Azure Resource Manager (ARM) templates. You must specify the physical network adapters that you want to use for the network intents and never the virtual network adapters.
+The same logic applies to the Azure Resource Manager templates. You must specify the physical network adapters that you want to use for the network intents and never the virtual network adapters.
 
 Here are the summarized considerations for the VLAN ID:
 
@@ -255,7 +260,7 @@ Here are the summarized considerations for the VLAN ID:
 |1    | VLAN ID must be specified on the physical network adapter for management before registering the servers with Azure Arc.         |
 |2     | Use specific steps when a virtual switch is required before registering the servers to Azure Arc.         |
 |3     | The management VLAN ID is carried over from the host configuration to the infrastructure VMs during deployment.        |
-|4     | There is no VLAN ID input parameter for Azure portal deployment or for ARM template deployment.        |
+|4     | There is no VLAN ID input parameter for Azure portal deployment or for Resource Manager template deployment.        |
 
 ### Node and cluster IP assignment
 
@@ -288,6 +293,8 @@ If IPs for the nodes are acquired from a DHCP server, a dynamic IP is also used 
 For example, if the management IP range is defined as 192.168.1.20/24 to 192.168.1.30/24 for the infrastructure static IPs, the DHCP scope defined for subnet 192.168.1.0/24 must have an exclusion equivalent to the management IP pool to avoid IP conflicts with the infrastructure services. We also recommend that you use DHCP reservations for node IPs.
 
 The process of defining the management IP after creating the management intent involves using the MAC address of the first physical network adapter that is selected for the network intent. This MAC address is then assigned to the virtual network adapter that is created for management purposes. This means that the IP address that the first physical network adapter obtains from the DHCP server is the same IP address that the virtual network adapter uses as the management IP. Therefore, it is important to create DHCP reservation for node IP.
+
+The network validation logic used during Cloud deployment will fail if it detects multiple physical network interfaces that have a default gateway in their configuration. If you need to use DHCP for your host IP assignments, you need to pre-create the SET _(switch embedded teaming)_ virtual switch and the management virtual network adapter as described above, so only the management virtual network adapter acquires an IP address from the DHCP server.
 
 #### Cluster node IP considerations
 
@@ -340,7 +347,7 @@ Network adapters are qualified by network traffic type (management, compute, and
 
 Before purchasing a server for Azure Stack HCI, you must have at least one adapter that is qualified for management, compute, and storage as all three traffic types are required on Azure Stack HCI. Cloud deployment relies on Network ATC to configure the network adapters for the appropriate traffic types, so it is important to use supported network adapters.
 
-The default values used by Network ATC are documented in [Cluster network settings](../deploy/network-atc.md?tabs=22H2#cluster-network-settings). We recommend that you use the default values. With that said, the following options can be overridden using Azure portal or ARM templates if needed:
+The default values used by Network ATC are documented in [Cluster network settings](../deploy/network-atc.md?tabs=22H2#cluster-network-settings). We recommend that you use the default values. With that said, the following options can be overridden using Azure portal or Resource Manager templates if needed:
 
 - **Storage VLANs**: Set this value to the required VLANs for storage.
 - **Jumbo Packets**: Defines the size of the jumbo packets.
@@ -355,7 +362,7 @@ Here are the summarized considerations for network adapter configuration:
 |1     | Use the default configurations as much as possible.        |
 |2     | Physical switches must be configured according to the network adapter configuration. See [Physical network requirements for Azure Stack HCI](../concepts/physical-network-requirements.md#network-switches-for-azure-stack-hci).    |
 |3     | Ensure that your network adapters are supported for Azure Stack HCI using the Windows Server Catalog.       |
-|4     | When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. <br><br>In some instances, Storage Auto IP isn't supported and you need to declare each storage network adapter IP using ARM templates.        |
+|4     | When accepting the defaults, Network ATC automatically configures the storage network adapter IPs and VLANs. This is known as Storage Auto IP configuration. <br><br>In some instances, Storage Auto IP isn't supported and you need to declare each storage network adapter IP using Resource Manager templates.        |
 
 
 ## Next steps

@@ -7,7 +7,7 @@ ms.author: jgerend
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.date: 03/13/2024
-ms.custom: e2e-hybrid
+ms.custom: e2e-hybrid, linux-related-content
 ---
 
 # Azure Stack HCI solution overview
@@ -40,7 +40,7 @@ Azure Stack HCI combines the following:
 - Azure Virtual Desktop
 - Azure Kubernetes Service (AKS) enabled by Azure Arc
 - Azure services including monitoring, backup, site recovery, and more
-- Azure portal, ARM and Bicep templates, Azure CLI and tools
+- Azure portal, Azure Resource Manager and Bicep templates, Azure CLI and tools
 
 :::image type="content" source="media/overview/azure-stack-hci-solution.png" alt-text="The architecture diagram of the Azure Stack HCI solution." lightbox="media/overview/azure-stack-hci-solution.png" :::
 
@@ -66,7 +66,7 @@ Customers often choose Azure Stack HCI in the following scenarios.
 | Use case | Description |
 |:-|:-|
 | Azure Virtual Desktop (AVD) | Azure Virtual Desktop for Azure Stack HCI lets you deploy Azure Virtual Desktop session hosts on your on-premises Azure Stack HCI infrastructure. You manage your session hosts from the Azure portal. To learn more, see [Azure Virtual Desktop for Azure Stack HCI](/azure/virtual-desktop/azure-stack-hci-overview). |
-| Azure Kubernetes Service (AKS) hybrid | You can leverage Azure Stack HCI to host container-based deployments, which increases workload density and resource usage efficiency. Azure Stack HCI also further enhances the agility and resiliency inherent to Azure Kubernetes deployments. Azure Stack HCI manages automatic failover of VMs serving as Kubernetes cluster nodes in case of a localized failure of the underlying physical components. This supplements the high availability built into Kubernetes, which automatically restarts failed containers on either the same or another VM. To learn more, see [Azure Kubernetes Service on Azure Stack HCI and Windows Server](/azure/aks/hybrid/overview). |
+| Azure Kubernetes Service (AKS) enabled by Azure Arc | You can leverage Azure Stack HCI to host container-based deployments, which increases workload density and resource usage efficiency. Azure Stack HCI also further enhances the agility and resiliency inherent to Azure Kubernetes deployments. Azure Stack HCI manages automatic failover of VMs serving as Kubernetes cluster nodes in case of a localized failure of the underlying physical components. This supplements the high availability built into Kubernetes, which automatically restarts failed containers on either the same or another VM. To learn more, see [Azure Kubernetes Service on Azure Stack HCI and Windows Server](/azure/aks/hybrid/aks-overview). |
 | Run Azure Arc services on-premises | Azure Arc allows you to run Azure services anywhere. This allows you to build consistent hybrid and multicloud application architectures by using Azure services that can run in Azure, on-premises, at the edge, or at other cloud providers. Azure Arc enabled services allow you to run Arc VMs, Azure data services and Azure application services such as Azure App Service, Functions, Logic Apps, Event Grid, and API Management anywhere to support hybrid workloads. To learn more, see [Azure Arc overview](/azure/azure-arc/overview). |
 | Highly performant SQL Server | Azure Stack HCI provides an additional layer of resiliency to highly available, mission-critical Always On availability groups-based deployments of SQL Server. This approach also offers extra benefits associated with the single-vendor approach, including simplified support and performance optimizations built into the underlying platform. To learn more, see [Deploy SQL Server on Azure Stack HCI](deploy/sql-server.md). |
 | Trusted enterprise virtualization | Azure Stack HCI satisfies the trusted enterprise virtualization requirements through its built-in support for Virtualization-based Security (VBS). VBS relies on Hyper-V to implement the mechanism referred to as virtual secure mode, which forms a dedicated, isolated memory region within its guest VMs. By using programming techniques, it's possible to perform designated, security-sensitive operations in this dedicated memory region while blocking access to it from the host OS. This considerably limits potential vulnerability to kernel-based exploits. To learn more, see [Deploy Trusted Enterprise Virtualization on Azure Stack HCI](deploy/trusted-enterprise-virtualization.md). |
@@ -107,14 +107,14 @@ To get started, you'll need:
 - Operating system licenses for your workload VMs – for example, Windows Server. See [Activate Windows Server VMs](manage/vm-activate.md).
 - An internet connection for each server in the cluster that can connect via HTTPS outbound traffic to well-known Azure endpoints at least every 30 days. See [Azure connectivity requirements](concepts/firewall-requirements.md) for more information.
 - For clusters stretched across sites (functionality only available in Azure Stack HCI, version 22H2):
-    - At least four severs (two in each site)
-    - At least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred)
-    - An average latency of 5 ms round trip between sites if you want to do synchronous replication where writes occur simultaneously in both sites.
+  - At least four severs (two in each site)
+  - At least one 1 Gb connection between sites (a 25 Gb RDMA connection is preferred)
+  - An average latency of 5 ms round trip between sites if you want to do synchronous replication where writes occur simultaneously in both sites.
 - If you plan to use SDN, you'll need a virtual hard disk (VHD) for the Azure Stack HCI operating system to create Network Controller VMs (see [Plan to deploy Network Controller](concepts/network-controller.md)).
 
 Make sure your hardware meets the [System requirements](concepts/system-requirements-23h2.md) and that your network meets the [physical network](concepts/physical-network-requirements.md) and [host network](concepts/host-network-requirements.md) requirements for Azure Stack HCI.
 
-For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements, see [AKS requirements on Azure Stack HCI](/azure/aks/hybrid/overview#what-you-need-to-get-started).
+For Azure Kubernetes Service on Azure Stack HCI and Windows Server requirements, see [AKS network requirements](/azure/aks/hybrid/aks-hci-network-system-requirements).
 
 Azure Stack HCI is priced on a per core basis on your on-premises servers. For current pricing, see [Azure Stack HCI pricing](https://azure.microsoft.com/pricing/details/azure-stack/hci/).
 

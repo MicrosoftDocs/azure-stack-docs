@@ -6,6 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom: linux-related-content
 ms.date: 02/01/2024
 ---
 
@@ -15,12 +16,11 @@ ms.date: 02/01/2024
 
 This article provides a brief overview of the Azure Arc VM management feature on Azure Stack HCI including the benefits, its components, and high-level workflow.  
 
-
 ## About Azure Arc VM management
- 
+
 Azure Arc VM management lets you provision and manage Windows and Linux VMs hosted in an on-premises Azure Stack HCI environment. This feature enables IT admins create, modify, delete, and assign permissions and roles to app owners thereby enabling self-service VM management.
 
-Administrators can manage Arc VMs on their Azure Stack HCI clusters by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager (ARM) templates. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, you can also automate VM provisioning in a secure cloud environment.
+Administrators can manage Arc VMs on their Azure Stack HCI clusters by using Azure management tools, including Azure portal, Azure CLI, Azure PowerShell, and Azure Resource Manager templates. Using [Azure Resource Manager](/azure/azure-resource-manager/management/overview) templates, you can also automate VM provisioning in a secure cloud environment.
 
 To find answers to frequently asked questions about Arc VM management on Azure Stack HCI, see the [FAQ](./azure-arc-vms-faq.yml).
 
@@ -29,7 +29,7 @@ To find answers to frequently asked questions about Arc VM management on Azure S
 While Hyper-V provides capabilities to manage your on-premises VMs, Azure Arc VMs offer many benefits over traditional on-premises tools including:
 
 - Role-based access control via builtin Azure Stack HCI roles ensures that only authorized users can perform VM management operations thereby enhancing security. For more information, see [Azure Stack HCI Arc VM management roles](./assign-vm-rbac-roles.md).
-- Arc VM management provides the ability to deploy with ARM templates, Bicep, and Terraform.
+- Arc VM management provides the ability to deploy with Resource Manager templates, Bicep, and Terraform.
 - The Azure portal acts as a single pane of glass to manage VMs on Azure Stack HCI clusters and Azure VMs. With Azure Arc VM management, you can perform various operations from the Azure portal or Azure CLI including:
 
   - Create, manage, update, and delete VMs. For more information, see [Create Arc VMs](./create-arc-virtual-machines.md)

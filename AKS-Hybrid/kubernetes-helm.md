@@ -4,14 +4,13 @@ description: Learn how to use the Helm packaging tool to deploy containers on Az
 services: container-service
 author: sethmanheim
 ms.topic: article
+ms.custom: linux-related-content
 ms.date: 11/04/2022
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
-
-# Customer intent: As a cluster operator or developer, I want to learn how to deploy Helm into an AKS cluster and then install and manage applications using Helm charts.
-# Intent: As an IT Pro, I want to learn how to deploy Helm into an AKS cluster so that I can use Helm charts to install and manage applications.
 # Keyword: Helm charts deploy Helm
+# Customer intent: As a cluster operator or developer, I want to learn how to deploy Helm into an AKS cluster and then install and manage applications using Helm charts.
 ---
 
 # Install existing applications with Helm

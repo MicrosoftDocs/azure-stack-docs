@@ -40,7 +40,7 @@ procedureSection:
       - |
         Download [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0/runtime) on your VM. 
       - |
-        Download [Web Deploy v3.6](https://www.microsoft.com/download/details.aspx?id=43717). Install it from the MSI file, and then enable all of the features.
+        Download Web Deploy v3.6. Install it from the MSI file, and then enable all of the features.
       - |
         In the Azure Stack Hub portal, open the ports that are listed in the network settings for your VM.
 

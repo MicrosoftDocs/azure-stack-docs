@@ -12,9 +12,6 @@ zone_pivot_groups: select-os
 
 # Install prebuilt Lustre client software
 
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
-
 In this article, you learn how to download and install a Lustre client package. Once installed, you can set up client VMs and attach them to an Azure Managed Lustre cluster. Select an operating system version to see the instructions.
 
 If you need to upgrade an existing Lustre client to the current version, see [Upgrade a Lustre client to the current version](client-upgrade.md).
@@ -35,27 +32,25 @@ The instructions apply to client VMs running:
 
 ::: zone pivot="rhel-7"
 
-## Install client software for Red Hat Enterprise Linux or CentOS 7
+## Install client software for Red Hat Enterprise Linux 7
 
-This tutorial shows how to install the client package to set up client VMs running RHEL 7 and CentOS 7, and attach them to an Azure Managed Lustre cluster.
+This tutorial shows how to install the client package to set up client VMs running RHEL 7, and attach them to an Azure Managed Lustre cluster.
 
 The instructions apply to client VMs running:
 
 - Red Hat Enterprise Linux 7 (RHEL 7)
-- CentOS Linux 7
 
 ::: zone-end
 
 ::: zone pivot="rhel-8"
 
-## Install client software for Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
+## Install client software for Red Hat Enterprise Linux or AlmaLinux 8
 
-This tutorial shows how to install the client package to set up client VMs running RHEL 8, CentOS 8, and Alma 8, and attach them to an Azure Managed Lustre cluster.
+This tutorial shows how to install the client package to set up client VMs running RHEL 8 or Alma 8, and attach them to an Azure Managed Lustre cluster.
 
 The instructions apply to client VMs running:
 
 - Red Hat Enterprise Linux 8 (RHEL 8)
-- CentOS Linux 8
 - Alma Linux 8
 
 > [!NOTE]

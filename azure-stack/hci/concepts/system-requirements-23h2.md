@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
-ms.date: 04/24/2024
+ms.date: 06/10/2024
 ---
 
 # System requirements for Azure Stack HCI, version 23H2
@@ -56,9 +56,7 @@ Before you begin, make sure that the physical server and storage hardware used t
 |Trusted Platform Module (TPM)|TPM version 2.0 hardware must be present and turned on.|
 |Secure boot|Secure Boot must be present and turned on.|
 
-The servers should also meet these extra requirements:
-
-- Each server should have dedicated volumes for logs, with log storage at least as fast as data storage.
+The servers should also meet this extra requirement:
 
 - Have direct-attached drives that are physically attached to one server each. RAID controller cards or SAN (Fibre Channel, iSCSI, FCoE) storage, shared SAS enclosures connected to multiple servers, or any form of multi-path IO (MPIO) where drives are accessible by multiple paths, aren't supported.
 

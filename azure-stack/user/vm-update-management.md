@@ -4,6 +4,7 @@ description: Use the Azure Monitor for VMs, Update Management, Change Tracking, 
 author: sethmanheim
 
 ms.topic: article
+ms.custom: linux-related-content
 ms.date: 11/22/2020
 ms.author: sethm
 ms.reviewer: rtiberiu
@@ -11,7 +12,6 @@ ms.lastreviewed: 11/22/2020
 
 # Intent: As an Azure Stack user, I want to update and manage my VMs using Azure Automation tools so I can keep everything running smoothly. 
 # Keyword: vm update management automation
-
 ---
 
 # VM update and management automation in Azure Stack Hub

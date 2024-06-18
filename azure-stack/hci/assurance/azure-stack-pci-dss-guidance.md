@@ -2,7 +2,7 @@
 title: PCI DSS guidance for Azure Stack HCI
 description: Learn about PCI DSS compliance using Azure Stack HCI.
 ms.date: 2/5/2024
-ms.topic: connceptual
+ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.author: nguyenhung
@@ -92,7 +92,7 @@ By default, all host communications to local and remote endpoints are encrypted 
 
 #### Windows Defender Antivirus
 
-Windows Defender Antivirus is a utility application that enables enforcement of real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
+Windows Defender Antivirus is a utility application that enables enforcement of real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system's ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
 
 #### Windows Defender Application Control (WDAC)
 

@@ -4,16 +4,13 @@ description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting
-ms.date: 04/25/2024
+ms.custom: linux-related-content
+ms.date: 06/03/2024
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/25/2024
-
 ---
 
 # Known issues - Azure Site Recovery on Azure Stack Hub
-
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 This article describes known issues for Azure Site Recovery on Azure Stack Hub. Use the following sections for details about the current known issues and limitations in Azure Site Recovery on Azure Stack Hub.
 
@@ -67,7 +64,6 @@ The current workaround for this issue is to create a new disk (of 1022 GB or les
 
 3. For an unsupported kernel version, check for an older kernel version to which you can roll back, by running the appropriate command for your VM:
     - Debian/Ubuntu: `dpkg --list | grep linux-image`
-    - RedHat/CentOS/RHEL: `rpm -qa kernel`
 
     The following image shows an example in an Ubuntu VM on version 5.4.0-1103-azure, which is unsupported. After the command runs, you can see a supported version, 5.4.0-1077-azure, which is already installed on the VM. With this information, you can roll back to the supported version.
 

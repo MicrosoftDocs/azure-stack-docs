@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 02/23/2024
+ms.date: 06/04/2024
 ---
 
 # Add a server on Azure Stack HCI, version 23H2
@@ -38,6 +38,9 @@ To add a server, follow these high-level steps:
 1. Add the prepared server via the `Add-server` PowerShell cmdlet.
 1. When adding a server to the cluster, the system validates that the new incoming server meets the CPU, memory, and storage (drives) requirements before it actually adds the server.
 1. Once the server is added, cluster is also validated to ensure that it's functioning normally. Next, the storage pool is automatically rebalanced. Storage rebalance is a low priority task that doesn't impact actual workloads. The rebalance can run for multiple days depending on number of the servers and the storage used.
+
+> [!NOTE]
+> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is added.
 
 ## Supported scenarios
 
@@ -95,13 +98,16 @@ On the new server that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-    > [!NOTE]
-    > You must also [Install required Windows Roles](../deploy/deployment-install-os.md#install-required-windows-roles).
-
-2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
+1. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
     > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
+
+1. Assign the following permissions to the newly added server nodes:
+
+    - Azure Stack HCI Device Management Role
+    - Key Vault Secrets User
+    For more information, see [Assign permissions to the server](../deploy/deployment-arc-register-server-permissions.md).
 
 On a server that already exists on your cluster, follow these steps:
 
@@ -122,6 +128,9 @@ On a server that already exists on your cluster, follow these steps:
     ```
 
 1. Make a note of the operation ID as output by the `Add-Server` command. You use this operation ID later to monitor the progress of the `Add-Server` operation.
+
+> [!NOTE]
+> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is added.
 
 ### Monitor operation progress
 

@@ -30,8 +30,8 @@ Role-based access control (RBAC) provides fine-grained access control that you c
 
 Azure Stack Hub has three basic roles that you can apply to all resource types:
 
-* **Owner**: can manage everything, including access to resources.
-* **Contributor**: can manage everything, except access to resources.
+* **Owner**: Grants full access to manage all resources, including the ability to assign roles in Azure Stack RBAC.
+* **Contributor**: Grants full access to manage all resources, but does not allow you to assign roles in Azure Stack RBAC.
 * **Reader**: can view everything, but can't make any changes.
 
 ### Resource hierarchy and inheritance
