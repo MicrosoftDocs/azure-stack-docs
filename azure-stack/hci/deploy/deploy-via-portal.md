@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 06/17/2024
+ms.date: 06/18/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -271,10 +271,9 @@ Follow these steps to configure the resource locks:
 
 1. In the Azure portal, navigate to the resource group into which you deployed your Azure Stack HCI system.
 1. On the **Overview** > **Resources** tab, you should see an Arc Resource Bridge resource.
-1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the Azure Stack HCI Administrator role for the resource group.
+1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the *Azure Stack HCI Administrator* role for the resource group.
 1. In the right pane, select **Add**.
-1. Enter the lock details and then select **OK**.
-
+1. Specify a **Lock name**. Make sure to choose **Delete** as **Lock type** for the Arc Resource Bridge, and then select **OK**.
 
 For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
 
