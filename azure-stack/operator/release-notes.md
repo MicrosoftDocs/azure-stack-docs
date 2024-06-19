@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 06/12/2024
+ms.date: 06/19/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -55,16 +55,16 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
-::: moniker range="azs-2404"
-## 2404 build reference
+::: moniker range="azs-2406"
+## 2406 build reference
 
-The Azure Stack Hub 2404 update build number is **1.2404.x.xx**.
+The Azure Stack Hub 2406 update build number is **1.2406.x.xx**.
 
 ### Update type
 
-The Azure Stack Hub 2404 update build type is **Full**. This build contains only important security updates.
+The Azure Stack Hub 2406 update build type is **Full**. This build contains only important security updates.
 
-The 2404 update has the following expected runtimes based on our internal testing:
+The 2406 update has the following expected runtimes based on our internal testing:
 
 - 4 nodes: 8-28 hours
 - 8 nodes: 11-30 hours
@@ -74,15 +74,15 @@ The 2404 update has the following expected runtimes based on our internal testin
 > [!IMPORTANT]
 > Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
 
-Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2404 update and should not be compared to other Azure Stack Hub updates.
+Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2406 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 ### What's new
 
-- With 2404 we are announcing the general availability of the [Azure Stack Hub Standard Load Balancer](../user/standard-load-balancer-considerations.md). This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
-- With 2404 we are announcing the general availability of [Azure Container Registry](container-registries-overview.md). Azure Container Registry is a private, secure, and close-to-compute registry for Windows container images, Linux container images, Helm charts, and other OCI artifacts. At no extra cost, it enables both connected and disconnected customers to quickly and reliably store, deploy, and manage container workloads through the user portal, PowerShell, Azure CLI, and/or Docker CLI. It also enables you to assign role-based access control (RBAC) and to create webhooks. Container Registry is now fully supported and fully integrated with other components of Azure Stack Hub, such as the Azure Kubernetes Service (AKS) engine. To install Container Registry, [follow the instructions here](container-registries-install.md).
-- With 2404 we are announcing the general availability of [Azure Site Recovery](azure-site-recovery-overview.md). Azure Site Recovery on Azure Stack Hub helps to ensure business continuity by replicating virtual machine (VM) workloads from a primary site to a secondary location. The GA version has a simplified deployment (no dependency services). Note that the transition from preview versions to GA requires a full reinstallation of the Azure Site Recovery solution (no upgrade path is be possible).
+- With 2406 we are announcing the general availability of the [Azure Stack Hub Standard Load Balancer](../user/standard-load-balancer-considerations.md). This feature enables several scenarios: allowing standalone VMs to be in a backend pool, HTTPS probes, high-availability ports, and TCP reset on idle.
+- With 2406 we are announcing the general availability of [Azure Container Registry](container-registries-overview.md). Azure Container Registry is a private, secure, and close-to-compute registry for Windows container images, Linux container images, Helm charts, and other OCI artifacts. At no extra cost, it enables both connected and disconnected customers to quickly and reliably store, deploy, and manage container workloads through the user portal, PowerShell, Azure CLI, and/or Docker CLI. It also enables you to assign role-based access control (RBAC) and to create webhooks. Container Registry is now fully supported and fully integrated with other components of Azure Stack Hub, such as the Azure Kubernetes Service (AKS) engine. To install Container Registry, [follow the instructions here](container-registries-install.md).
+- With 2406 we are announcing the general availability of [Azure Site Recovery](azure-site-recovery-overview.md). Azure Site Recovery on Azure Stack Hub helps to ensure business continuity by replicating virtual machine (VM) workloads from a primary site to a secondary location. The GA version has a simplified deployment (no dependency services). Note that the transition from preview versions to GA requires a full reinstallation of the Azure Site Recovery solution (no upgrade path is be possible).
 
 <!-- ### Improvements -->
 
@@ -107,19 +107,19 @@ For more information, see our [servicing policy](azure-stack-servicing-policy.md
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Hotfix prerequisites: before applying the 2404 update
+### Hotfix prerequisites: before applying the 2406 update
 
-The 2404 release of Azure Stack Hub must be applied on the 2311 release with the following hotfix installed:
+The 2406 release of Azure Stack Hub must be applied on the 2311 release with the following hotfix installed:
 
 - [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-2-23.md)
 
-### After successfully applying the 2404 update
+### After successfully applying the 2406 update
 
 When you update to a new major version (for example, 1.2108.x to 1.2206.x), the latest hotfixes (if any) in the new major version are installed automatically. From that point forward, if a hotfix is released for your build, you should install it.
 
-After the installation of 2404, if any hotfixes for 2404 are subsequently released, you should install them:
+After the installation of 2406, if any hotfixes for 2406 are subsequently released, you should install them:
 
-- No Azure Stack Hub hotfixes are currently available for the 2404 release.
+- No Azure Stack Hub hotfixes are currently available for the 2406 release.
 ::: moniker-end
 
 ::: moniker range="azs-2311"
