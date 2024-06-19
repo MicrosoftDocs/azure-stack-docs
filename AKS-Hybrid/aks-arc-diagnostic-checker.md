@@ -14,7 +14,7 @@ ms.reviewer: abha
 
 It can be hard to identify environment related issues like networking configurations that can result in an AKS cluster create failure. Diagnostic checker is a PowerShell based tool that can help identify potential causes in the environment due to which your AKS cluster create failed. 
 
-**Note that the tool below can only be used if an AKS cluster has been created but is in a failed state. You cannot use the below tool if you do not see an AKS cluster on Azure portal** If the AKS cluster create fails even before an ARM resource is created, proceed direclty to filing a support request](/aks-troubleshoot#open-a-support-request).
+**Note that the tool below can only be used if an AKS cluster has been created but is in a failed state. You cannot use the below tool if you do not see an AKS cluster on Azure portal** If the AKS cluster create fails even before an ARM resource is created, proceed direclty to filing a support request](aks-troubleshoot.md#open-a-support-request).
 
 ## Before you begin
 
