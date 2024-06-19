@@ -14,16 +14,16 @@ ms.reviewer: abha
 
 It can be hard to identify environment related issues like networking configurations that can result in an AKS cluster create failure. Diagnostic checker is a PowerShell based tool that can help identify potential causes in the environment due to which your AKS cluster create failed. 
 
-**Note that the tool below can only be used if an AKS cluster has been created but is in a failed state. You cannot use the below tool if you do not see an AKS cluster on Azure portal** If the AKS cluster create fails even before an ARM resource is created, proceed direclty to filing a support request](aks-troubleshoot.md#open-a-support-request).
+**Note that the tool below can only be used if an AKS cluster has been created but is in a failed state. You cannot use the below tool if you do not see an AKS cluster on Azure portal** If the AKS cluster create fails even before an ARM resource is created, proceed direclty to [filing a support request](aks-troubleshoot.md#open-a-support-request).
 
 ## Before you begin
 
-Before you begin, make sure you have the following. If you do not meet the requirements for running the diagnostic checker tool, proceed directly to [filing a support request](/aks-troubleshoot#open-a-support-request).
+Before you begin, make sure you have the following. If you do not meet the requirements for running the diagnostic checker tool, proceed directly to [filing a support request](aks-troubleshoot.md#open-a-support-request).
 
 - Direct access to the Azure Stack HCI cluster where you created the AKS cluster. This can be through remote desktop (RDP), or you can also login to one of the Azure Stack HCI physical nodes.
-- Review [networking concepts for creating an AKS cluster](/aks-hci-network-system-requirements) and [AKS cluster architecture](/cluster-architecture).
+- Review [networking concepts for creating an AKS cluster](aks-hci-network-system-requirements.md) and [AKS cluster architecture](cluster-architecture.md).
 - The name of the logical network attached to the AKS cluster. 
-- SSH private key for the AKS cluster, used to login to the AKS cluster [control plane node](/cluster-architecture#control-plane-nodes) VM.
+- SSH private key for the AKS cluster, used to login to the AKS cluster [control plane node](cluster-architecture.md#control-plane-nodes.md) VM.
 
 ## Obtain control plane node VM IP of the AKS cluster
 
@@ -39,10 +39,10 @@ VMName                                                 IPAddresses
 <cluster-name>-XXXXXX-control-plane-XXXXXX {172.16.0.10, 172.16.0.4, fe80::ec:d3ff:fea0:1}
 ```
 
-If you do not see a control plane VM as shown in the output above, proceed directly to [filing a support request](/aks-troubleshoot#open-a-support-request).
+If you do not see a control plane VM as shown in the output above, proceed directly to [filing a support request](aks-troubleshoot.md#open-a-support-request).
 
 If you see a control plane VM, and it has:
-- 0 IPv4 addreeses: File a [support request](/aks-troubleshoot#open-a-support-request).
+- 0 IPv4 addreeses: File a [support request](aks-troubleshoot.md#open-a-support-request).
 - 1 IP address: Use the IPv4 address as the input for `vmIP` parameter.
 - 2 IP addresses: Use any one of the IPv4 address as an input for `vmIP` parameter in the diagnostic checker.
 
@@ -278,9 +278,9 @@ The table below provides a summary of each test performed by the script, includi
 
 | **Test Name**                        | **Description**                                                                 | **Causes for failure**                                                                                      | **Mitigation Recommendations**                                                                                                                                     |
 |--------------------------------------|---------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| cloud-agent-connectivity-test        | Checks whether the DNS server can resolve the Moc cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. Cloud agent is created using one of the IP addresses from the [management IP pool](/hci/plan/cloud-deployment-network-considerations#management-ip-pool), on port 55000. The control plane node VM is given IP address(es) from the Arc VM logical network. | Logical network IP addresses cannot connect to management IP pool addresses due to: <br> - Incorrect DNS server resolution. <br> - Firewall rules <br> - The logical network is in a different vlan than the manageement IP pool and there is no cross-vlan connectivity. | Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. Check [AKS network port and cross vlan requirements](/aks-hci-network-system-requirements#network-port-and-cross-vlan-requirements) for detailed list of ports that need to be opened. |    
+| cloud-agent-connectivity-test        | Checks whether the DNS server can resolve the Moc cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. Cloud agent is created using one of the IP addresses from the [management IP pool](/hci/plan/cloud-deployment-network-considerations.md#management-ip-pool), on port 55000. The control plane node VM is given IP address(es) from the Arc VM logical network. | Logical network IP addresses cannot connect to management IP pool addresses due to: <br> - Incorrect DNS server resolution. <br> - Firewall rules <br> - The logical network is in a different vlan than the manageement IP pool and there is no cross-vlan connectivity. | Make sure that the logical network IP addresses can connect to all the management IP pool addresses on the required ports. Check [AKS network port and cross vlan requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for detailed list of ports that need to be opened. |    
 | gateway-icmp-ping-test   | Checks whether the gateway specified in the logical network attached to the AKS cluster is reachable from the AKS cluster control plane node VM. | - Gateway is down or unreachable <br>- Network routing issues between AKS cluster control plane node VM and the gateway <br>- Firewall blocking ICMP traffic | - Ensure gateway is operational<br>- Verify routing configurations<br>- Adjust firewall rules to allow ICMP traffic                                              |
-| http-connectivity-required-url-test  | Checks whether the required URLs are reachable from the AKS cluster control plane node VM.                         | - Control plane node VM has no outbound internet access <br> -Required URLs have not been allowed through firewall.                           | Ensure that the logical network IP addresses have outbound internet access. If there is a firewall, ensure that [AKS required URLs](/aks-hci-network-system-requirements#firewall-url-exceptions) are accessible from Arc VM logical network.  |
+| http-connectivity-required-url-test  | Checks whether the required URLs are reachable from the AKS cluster control plane node VM.                         | - Control plane node VM has no outbound internet access <br> -Required URLs have not been allowed through firewall.                           | Ensure that the logical network IP addresses have outbound internet access. If there is a firewall, ensure that [AKS required URLs](aks-hci-network-system-requirements.md#firewall-url-exceptions) are accessible from Arc VM logical network.  |
 
 ## Next steps
 
