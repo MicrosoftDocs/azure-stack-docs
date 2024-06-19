@@ -45,8 +45,6 @@ Here are the fixed issues in this release:
 | Add server <br> Repair server<!--28011823--> |During `Add-Server`, the cluster storage network shouldn't be expected to be the same as the storage VLAN ID. ||
 | Networking<!--28276687--> |AzStackHci_Network_Test_Infra_IP_Connection needs to honor the severity of the endpoint definition. ||
 
-
-
 ## Known issues in this release
 
 Microsoft isn't aware of any known issues in this release.
