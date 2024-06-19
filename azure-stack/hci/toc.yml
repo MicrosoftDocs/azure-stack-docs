@@ -14,7 +14,7 @@ items:
     - name: Known issues 2405 
       items:
       - name: 2405.1 - Current
-        href: known-issues-2405.md
+        href: known-issues-2405-1.md
       - name: 2405.0
         href: known-issues-2405.md
     - name: Known issues 2402 
