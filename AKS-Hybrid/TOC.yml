@@ -64,8 +64,6 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
-    - name: Download Kubernetes VHDs manually
-      href: offline-download.md
     - name: Security and authentication
       items:
       - name: Use Azure RBAC for Kubernetes authorization
