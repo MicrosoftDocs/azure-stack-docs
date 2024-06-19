@@ -31,8 +31,9 @@ This is primarily a bug fix release with a few improvements.
 - **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
 - **Multiple bug fixes related to Updates**
 - **Reliabiltiy improvements for partner health checks implemented in their Solution Builder Extensions**
+- **Rotation of Arc Resource Bridge (ARB) service principal credentials** - Starting this release, you can rotate the service principal credentials used by ARB.
 
-For more information, see the [Fixed issues list](./known-issues-2405-1.md#fixed-issues).
+For more information on bug fixes, see the [Fixed issues list](./known-issues-2405-1.md#fixed-issues).
 
 ## Features and improvements in 2405
 
