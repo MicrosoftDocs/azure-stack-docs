@@ -803,8 +803,6 @@ items:
     href: guided-quick-deploy-eval.yml 
   - name: Earlier versions
     items:
-    - name: Azure Arc VM management for version 22H2
-      href: https://databoxupdatepackages.blob.core.windows.net/documentation/MicrosoftAzureStackHCI_ArcVMManagement_Version22H2-11272023.pdf
     - name: What's new in version 22H2
       href: whats-new-in-hci-22h2.md
     - name: What's new in version 21H2
