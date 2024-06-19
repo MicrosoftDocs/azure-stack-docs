@@ -1,6 +1,7 @@
 ---
 title: Use diagnostic checker to identify common causes for failures (preview)
 description: Learn how to diagnose common causes for failures 
+ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
 ms.date: 06/17/2024
