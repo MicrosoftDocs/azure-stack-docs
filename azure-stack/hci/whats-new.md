@@ -29,7 +29,7 @@ This is primarily a bug fix release with a few improvements.
 
 - **Custom storage IPs for add and repair server scenarios**: Starting this release, it is possible to add servers or repair servers to the Azure Stack HCI cluster using custom IPs for the storage intent network adapters.
 - **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
-- **Reliabiltiy improvements for partner health checks implemented in their Solution Builder Extensions**
+- **Reliabiltiy improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
 - **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
 - **Multiple bug fixes related to Updates** were made in this release.
 
