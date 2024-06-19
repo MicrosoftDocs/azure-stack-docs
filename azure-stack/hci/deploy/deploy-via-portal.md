@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 05/17/2024
+ms.date: 06/18/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -26,16 +26,23 @@ This article helps you deploy an Azure Stack HCI, version 23H2 system using the 
 2. Select the **Subscription** and **Resource group** in which to store this system's resources.
 
    All resources in the Azure subscription are billed together.
+
 3. Enter the **Cluster name** used for this Azure Stack HCI system when Active Directory Domain Services (AD DS) was prepared for this deployment.
+
 4. Select the **Region** to store this system's Azure resources. For a list of supported Azure regions, [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
    We don't transfer a lot of data so it's OK if the region isn't close.
+
 5. Create an empty **Key vault** to securely store secrets for this system, such as cryptographic keys, local admin credentials, and BitLocker recovery keys.
 
     Key Vault adds cost in addition to the Azure Stack HCI subscription. For details, see [Key Vault Pricing](https://azure.microsoft.com/pricing/details/key-vault).
+
 6. Select the server or servers that make up this Azure Stack HCI system.
 
-    :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
+   > [!IMPORTANT]
+   > Servers must not be joined to Active Directory before deployment.
+
+   :::image type="content" source="./media/deploy-via-portal/basics-tab-1.png" alt-text="Screenshot of the Basics tab in deployment via Azure portal." lightbox="./media/deploy-via-portal/basics-tab-1.png":::
 
 7. Select **Validate**, wait for the green validation checkbox to appear, and then select **Next: Configuration**.
 
@@ -264,10 +271,9 @@ Follow these steps to configure the resource locks:
 
 1. In the Azure portal, navigate to the resource group into which you deployed your Azure Stack HCI system.
 1. On the **Overview** > **Resources** tab, you should see an Arc Resource Bridge resource.
-1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the Azure Stack HCI Administrator role for the resource group.
+1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the *Azure Stack HCI Administrator* role for the resource group.
 1. In the right pane, select **Add**.
-1. Enter the lock details and then select **OK**.
-
+1. Specify a **Lock name**. Make sure to choose **Delete** as **Lock type** for the Arc Resource Bridge, and then select **OK**.
 
 For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
 
