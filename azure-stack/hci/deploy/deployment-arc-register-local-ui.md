@@ -4,7 +4,7 @@ description: Learn how to use the web UI to bootstrap and Arc register the Azure
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/18/2024
+ms.date: 06/19/2024
 ---
 
 # Register your Azure Stack HCI, version 23H2 servers via the local UI (preview)
@@ -26,16 +26,7 @@ After you have procured the hardware that you intend to use to set up your Azure
 ### Server prerequisites
 
 1. You have the servers that you intend to cluster as an Azure Stack HCI system. The servers must be powered on and connected to the network.
-1. [Complete prerequisites for your environment](../deploy/deployment-prerequisites.md).
-1. Make sure to add the following URL patterns to the allow list of your firewall:
-  
-    |#  |URl pattern  |Component description  |
-    |---------|---------|---------|
-    |1  |`prod.eastus.device.discovery.ffg.azure.net` |Used by FFG service for device discovery.           |
-    |2  |`*.<region>.prod.ffg.azure.net` |Used by FFG service for device provsioning. Replace <region> with the region you are using. The region name should be input with the spaces removed. For example, East US should be inputted as EastUS.       |
-    |3  |`management.azure.com` <br> `login.microsoftonline.com` |Used by Azure Edge Hardware Center.         |
-    |4  |  XXXX       |Used by the device.        |
-
+1. [Complete prerequisites for your environment](../deploy/deployment-prerequisites.md)
 1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
 1. [Download the composed ISO](../deploy/download-azure-stack-hci-23h2-software.md) required to install the preview version of Azure Stack HCI, 23H2.
 1. Use the composed ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Stack HCI, version 23H2 software](../deploy/deployment-install-os.md).
@@ -60,13 +51,12 @@ After you have procured the hardware that you intend to use to set up your Azure
    To get the ArcGatewayID, run the following command:
    `az connectedmachine gateway list`
 
-   For more information, see
    Make a note of the Arc gateway ID. You need this information later.
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
-  - [Azure Connected Machine Onboarding](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
-  - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
+  - Azure Connected Machine Onboarding.
+  - Azure Connected Machine Resource Administrator.
 
    To verify that you have these roles, follow these steps in the Azure portal:
 
@@ -196,11 +186,11 @@ To diagnose and troubleshoot any device issues related to hardware, time server,
 1. Select the bell icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane.
 1. Select **Run diagnostic tests**. The diagnostic tests check the health of the server hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent and the extensions.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-1.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected."lightbox="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png":::
 
 1. After the tests are completed, the results are displayed. Here is a sample output of the diagnostic tests when there is a device issue:
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run." lightbox="media/deployment-arc-register-local-ui/run-diagnostic-tests-2.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run."lightbox="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png":::
 
 Here is a table that describes the diagnostic tests:
 
