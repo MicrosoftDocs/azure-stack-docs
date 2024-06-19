@@ -17,13 +17,15 @@ items:
         href: known-issues-2405.md
     - name: Known issues 2402 
       items:
-      - name: 2402.3 - Current
+      - name: 2402.4 - Current
+        href: known-issues-2402-4.md
+      - name: 2402.3
         href: known-issues-2402-3.md
       - name: 2402.2
         href: known-issues-2402-2.md
       - name: 2402.1
         href: known-issues-2402-1.md
-      - name: 2402 
+      - name: 2402.0 
         href: known-issues-2402.md
     - name: Known issues 2311
       items:

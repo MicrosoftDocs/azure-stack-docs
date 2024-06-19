@@ -119,7 +119,7 @@ The parameters are described in the following table:
 | Parameter | Description |
 |---|---|
 | ProxyServer | Specifies the proxy server endpoint in the format `http://[Proxy_Server_Address]:[Proxy_Port]`. For example, `http://proxy.contoso.com:8080`. |
-| BypassList | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass <local>` to bypass local intranet URLs. The list must include: <br><br> - At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
+| BypassList | Specifies the list of host URLs that bypass proxy server set by the `-ProxyServer` parameter. For example, you can set `-ProxyBypass "localhost"` to bypass local intranet URLs. The list must include: <br><br> - At least the IP address of each server.<br>- At least the IP address of cluster.<br>- At least the IPs you defined for your infrastructure network. Arc Resource Bridge, AKS, and future infrastructure services using these IPs require outbound connectivity.<br>- Or you can bypass the entire infrastructure subnet.<br>- NetBIOS name of each server.<br>- NetBIOS name of the cluster.<br>- Domain name or domain name with asterisk `*` wildcard for any host or subdomain. |
 
 Here's an example of the command usage:
 
@@ -164,7 +164,7 @@ When configuring the `WinHTTP` proxy bypass list string, keep the following poin
 
 ## Configure proxy settings for Environment Variables
 
-You must configure the proxy for Azure Arc-enabled servers, Azure Resource Bridge, and AKS before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
+You must configure the proxy for Azure Resource Bridge and AKS before you [Register the servers with Azure Arc](../deploy/deployment-arc-register-server-permissions.md).
 
 To set the proxy server Environment Variable, run the following commands as administrator on each server in the cluster:
 
@@ -229,7 +229,31 @@ When configuring the Environment Variables proxy bypass list string, keep the fo
     $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY", "Machine")
     ```
 
-    For more information on proxy configuration for Azure Arc-enabled servers, see [Managing and maintaining the Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#update-or-remove-proxy-settings).
+## Configure proxy settings for Arc-enabled servers agent
+
+To configure the Azure Arc-enabled servers agent to communicate through a proxy server, run the following command:
+
+```bash
+azcmagent config set proxy.url "http://ProxyServerFQDN:port"
+```
+
+You can use an IP address or simple hostname in place of the FQDN if your network requires it. If your proxy server runs on port 80, you may omit ":80" at the end.
+
+To check if a proxy server URL is configured in the agent settings, run the following command:
+
+```bash
+azcmagent config get proxy.url
+```
+
+To stop the agent from communicating through a proxy server, run the following command:
+
+```bash
+azcmagent config clear proxy.url
+```
+
+You do not need to restart any services when reconfiguring the proxy settings with the `azcmagent config` command.
+
+Please review the Arc-enabled servers agent page for further details [Managing and maintaining the Connected Machine agent](/azure/azure-arc/servers/manage-agent?tabs=windows#update-or-remove-proxy-settings).
 
 ## Configure proxy settings for Azure services
 

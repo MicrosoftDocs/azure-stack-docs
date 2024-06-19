@@ -35,7 +35,7 @@ Use Azure Storage Explorer or AzCopy to reduce that chance that your VHD will be
 3. Use AzCopy to upload your VHD into the your container in the storage account.
 
     ```powershell  
-    set AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09
+    $env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"
     azcopy cp "/path/to/file.vhd" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS] --blob-type=PageBlob
     ```
 
