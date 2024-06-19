@@ -225,14 +225,15 @@ items:
       href: manage/virtual-machine-manage-extension.md
     - name: License Arc VMs
       items:
-      - name: Extended Security Updates (ESUs)
-        href: manage/azure-benefits-esu.md
       - name: Azure verification for VMs
         href: deploy/azure-verification.md
       - name: License Windows Server VMs
         href: manage/vm-activate.md
       - name: Deploy Windows Server Azure Edition VMs
         href: manage/windows-server-azure-edition-23h2.md
+      - name: Extended Security Updates (ESUs)
+        href: manage/azure-benefits-esu.md
+   
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
@@ -267,7 +268,6 @@ items:
         href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
-
 
   - name: Security
     items:
