@@ -3,7 +3,7 @@ title:  June 2024 security update (KB 5039236) for Azure Stack HCI, version 23H2
 description: Read about the June 2024 security update (KB 5039236) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 06/11/2024
+ms.date: 06/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Stack HCI, version 23H2 that was released on June 11, 2024 and applies to OS build 25398.945.
+This article describes the OS security update for Azure Stack HCI, version 23H2 that was released on June 19, 2024 and applies to OS build 25398.950.
 
 <!--For an overview of Azure Stack HCI, version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
 

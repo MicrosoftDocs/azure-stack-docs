@@ -35,8 +35,6 @@ Here are the fixed issues in this release:
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
 | Updates|An update issue was fixed. This issue caused the update to fail after the Cluster-Aware Updating (CAU) step although a CAU rerun in this case would have fixed the issue. ||
-| Updates |Improved the reliability for partner health checks implemented in their solution builder extension (SBE). ||
-| Arc VM management |A new feature was added to rotate the service principal credentials used by Arc Resource Bridge. ||
 | Observability |In this release, an issue was fixed that resulted in proactive log collection being disabled by default after the extension was installed. ||
 | Updates<!--27726586--> |An issue was fixed where the Agent Lifecycle Manager (ALM) failed to restart services after secret rotation.  ||
 | Updates<!--28182644--> |In this release, an issue was fixed where using the Powershell command `Start-SolutionUpdate` to retry a failed solution update failed.  ||
