@@ -56,6 +56,7 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 |Release build| OS build |Baseline or Update| What's new | Known issues |
 |--|--|--|--|--|
 | 10.2405.1.4 | 25398.950  <br><br> [June OS security update](./security-update/hci-security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-2405-1) | [Known issues](./known-issues-2405-1.md) |
+| 10.2402.4.4  | 25398.950 <br><br> [June OS security update](index.yml) <br><br> Availability date: 2024-06-19 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-24024) | [Known issues](./known-issues-2402-4.md) |
 | 10.2405.0.24 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-30 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2405) | [Known issues](./known-issues-2405.md) |
 | 10.2402.3.10 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-21 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24023) | [Known issues](./known-issues-2402-3.md) |
 | 10.2402.2.12 | 25398.830  <br><br> [April OS security update](./security-update/hci-security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24022) | [Known issues](./known-issues-2402-2.md) |

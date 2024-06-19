@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/10/2024
+ms.date: 06/19/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -126,6 +126,10 @@ For a list of the changes and improvements in AKS on Azure Stack HCI, version 23
 ## [2402 releases](#tab/2402releases)
 
 The 2402 release train includes the following releases:
+
+## Features and improvements in 2402.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-4.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2402.3
 
