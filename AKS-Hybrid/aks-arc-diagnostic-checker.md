@@ -54,7 +54,7 @@ Copy the following PowerShell script `run_diagnostic.ps1` into any 1 node of you
 .SYNOPSIS
     Runs diagnostic checker tool in target cluster control plane VM and returns the result.
 
-    This script will run the following tests from AKS cluster control plane VM:
+    This script will run the following tests from target cluster control plane VM:
     1. cloud-agent-connectivity-test: Checks whether the DNS server can resolve the Moc cloud agent FQDN and that the cloud agent is reachable from the control plane node VM. Cloud agent is created using one of the IP addresses from the [management IP pool](/hci/plan/cloud-deployment-network-considerations#management-ip-pool), on port 55000. The control plane node VM is given an IP address from the Arc VM logical network.
     2. gateway-icmp-ping-test: Checks whether the gateway specified in the logical network attached to the AKS cluster is reachable from the AKS cluster control plane node VM.
     3. http-connectivity-required-url-test: Checks whether the required URLs are reachable from the AKS cluster control plane node VM.
@@ -66,10 +66,10 @@ Copy the following PowerShell script `run_diagnostic.ps1` into any 1 node of you
     The name of the LNET used for the cluster.
 
 .PARAMETER sshPath
-    The path to the private SSH key for the AKS cluster.
+    The path to the private SSH key for the target cluster.
 
 .PARAMETER vmIP
-    IP of the AKS cluster control plane VM.
+    IP of the target cluster control plane VM.
 
 
 .EXAMPLE
@@ -103,6 +103,21 @@ $urlArray = @(
     "https://graph.microsoft.com"
 )
 $urlList=$urlArray -join ","
+
+# check vm is reachable
+try {
+  $pingResult = Test-Connection -ComputerName $vmIP -Count 1 -ErrorAction Stop
+  if ($pingResult.StatusCode -eq 0) {
+    Write-Host "Connection to $vmIP succeeded."
+  } else {
+    Write-Host "Connection to AKS cluster control plane VM $vmIP failed with status code: $($pingResult.StatusCode). Please make sure AKS cluster control plane VM $vmIP is reachable from the host"
+    exit
+  }
+} catch {
+  Write-Host "Connection to AKS cluster control plane VM $vmIP failed. Please make sure AKS cluster control plane VM $vmIP is reachable from the host"
+  Write-Host "Exception message: $_"
+  exit
+}
 
 # retreiving LNET 
 $lnet=get-mocvirtualnetwork -group Default_Group -name $lnetName
@@ -161,13 +176,20 @@ $filePath = "config.yaml"
 Set-Content -Path $filePath -Value $configContent
 
 $dest = 'clouduser@' + $vmIP + ":config.yaml"
-# Copy the config file to AKS cluster VM
-Write-Host "Copying test config file to AKS cluster VM...."
-$command = "scp -i $sshPath -o StrictHostKeyChecking=no config.yaml $dest"
-$output=Invoke-Expression $command 2>&1
-if ($LASTEXITCODE -eq 1) {
-    Write-Error "Couldn't connect to AKS cluster control plane VM $vmIP. Please check the ssh key and make sure AKS cluster control plane VM is reachable from the host"
+
+# Copy the config file to target cluster VM
+Write-Host "Copying test config file to target cluster VM...."
+$command = "scp -i $sshPath -o StrictHostKeyChecking=no -o BatchMode=yes config.yaml $dest"
+try {
+  $output=invoke-expression $command
+  if ($LASTEXITCODE -ne 0) {
+    Write-Error "Couldn't ssh to AKS cluster control plane VM $vmIP. Please check the ssh key"
     exit
+  }
+} catch {
+  Write-Host "Couldn't ssh to AKS cluster control plane VM $vmIP. Please check the ssh key"
+  Write-Host "Exception message: $_"
+  exit
 }
 Write-Output "Copied config.yaml successfully."
 $runScriptContent = @"
@@ -178,24 +200,28 @@ $filePath = "run_diag.sh"
 
 Set-Content -Path $filePath -Value $runScriptContent
 $dest = 'clouduser@' + $vmIP + ":run_diag.sh"
-scp -i $sshPath -o StrictHostKeyChecking=no run_diag.sh $dest
+scp -i $sshPath -o StrictHostKeyChecking=no -o BatchMode=yes run_diag.sh $dest
 
 $dest = 'clouduser@' + $vmIP
-ssh -i $sshPath $dest -o StrictHostKeyChecking=no 'chmod +x run_diag.sh'
+ssh -i $sshPath $dest -o StrictHostKeyChecking=no -o BatchMode=yes 'chmod +x run_diag.sh'
 
 $sedCommand="sed -i -e 's/\r$//' run_diag.sh"
-ssh -i $sshPath -o StrictHostKeyChecking=no $dest $sedCommand
+ssh -i $sshPath -o StrictHostKeyChecking=no -o BatchMode=yes $dest $sedCommand
 
 if (Test-Path -Path "results.yaml") {
-  Remove-Item results.yaml
+  Remove-Item results.yaml
 }
 
-ssh -i $sshPath -o StrictHostKeyChecking=no $dest './run_diag.sh'
-ssh -i $sshPath -o StrictHostKeyChecking=no $dest "sudo su - root -c 'chmod a+r /home/clouduser/results.yaml'"
+ssh -i $sshPath -o StrictHostKeyChecking=no -o BatchMode=yes $dest './run_diag.sh'
+ssh -i $sshPath -o StrictHostKeyChecking=no -o BatchMode=yes $dest "sudo su - root -c 'chmod a+r /home/clouduser/results.yaml'"
 
 $src= 'clouduser@' + $vmIP + ":results.yaml"
-scp -i $sshPath $src results.yaml
+scp -i $sshPath -o StrictHostKeyChecking=no -o BatchMode=yes $src results.yaml
 
+if (-Not (Test-Path -Path "results.yaml")) {
+  write-host "Test failed to perform"
+  exit
+}
 
 Install-Module powershell-yaml
 
@@ -233,6 +259,7 @@ foreach ($check in $resultContent.spec.checks) {
 }
 
 $testResults | Format-Table -Wrap -AutoSize
+
 ```
 
 Sample output:
