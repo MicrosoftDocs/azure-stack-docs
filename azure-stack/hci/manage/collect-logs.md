@@ -19,12 +19,6 @@ This article describes how to collect diagnostic logs for Azure Stack HCI and se
 
 On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
-You can perform on-demand log collection using any of the following methods:
-
-- **(Recommended) Azure portal**. Use this method when you want to collect logs at the cluster level and send them to Microsoft. See [Collect logs via the Azure portal](#collect-logs-via-the-azure-portal)
-
-- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You can save them to an SMB share, send supplementary logs, or send logs for specific rules only. To collect logs and send them to Microsoft, run the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system. See [Collect logs via PowerShell](#collect-logs-via-powershell)
-
 ### When to use on-demand log collection
 
 Here are the scenarios in which you can perform on-demand log collection:
@@ -39,14 +33,21 @@ To explore additional log collection methods in Azure Stack HCI and understand w
 
 ## Prerequisites
 
-Before you collect on-demand logs via the Azure portal, you must complete the following prerequisites:
+Before you collect on-demand logs, you must complete the following prerequisites:
 
 - You must have access to an Azure Stack HCI cluster.
 - You must have access to Azure.
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
-- You must review the terms and conditions for log collection.
 
-## Collect logs via the Azure portal
+## Collect logs for Azure Stack HCI
+
+You can perform on-demand log collection using any of the following methods:
+
+- **(Recommended) Azure portal**. Use this method when you want to collect and send logs at the cluster level.
+
+- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You can save them to an SMB share, send supplementary logs, or send logs for specific rules only. To collect logs and send them to Microsoft, run the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system.
+
+### [Azure portal (recommended)](#tab/azureportal)
 
 Follow these steps to collect diagnostic logs for you Azure Stack HCI cluster via the Azure portal:
 
@@ -56,7 +57,7 @@ Follow these steps to collect diagnostic logs for you Azure Stack HCI cluster vi
 
    :::image type="content" source="./media/collect-logs/get-started-tab.png" alt-text="Screenshot shows the Get started tab." lightbox="./media/collect-logs/get-started-tab.png" :::
 
-1. On the **Diagnostics** page, under **Log activity**, review log collection history. You can also select a link under **Time collected** to view details about a specific log collection in the **Log details** pane.
+1. On the **Diagnostics** tab, under **Log activity**, review the log collection entries for your cluster. If you want more details about a specific log collection entry, select the link under **Time collected** to view more details in the **Log details** pane.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
@@ -70,7 +71,7 @@ Follow these steps to collect diagnostic logs for you Azure Stack HCI cluster vi
 
    :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
 
-## Collect logs via PowerShell
+## [PowerShell](#tab/powershell)
 
 Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection.
 
@@ -614,6 +615,8 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
 | TestObservability | Collects logs from the `Test-Observability` cmdlet, which is used to test that the `TelemetryAndDiagnostics` extension is working properly. |
 | URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
+
+---
 
 ## Next steps
 
