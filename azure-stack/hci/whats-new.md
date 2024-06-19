@@ -27,9 +27,12 @@ The 2405 release train includes the following releases:
 
 This is primarily a bug fix release with a few improvements.
 
- 
+- **Custom storage IPs for add and repair server scenarios**: Starting in 2405.1, it is possible to add servers or repair servers to the Azure Stack HCI cluster using custom IPs for the storage intent network adapters.
+- **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
+- **Multiple bug fixes related to Updates**
+- **Reliabiltiy improvements for partner health checks implemented in their Solution Builder Extensions**
 
-See the [Fixed issues list](./known-issues-2405-1.md#fixed-issues) to understand the bug fixes.
+For more information, see the [Fixed issues list](./known-issues-2405-1.md#fixed-issues).
 
 ## Features and improvements in 2405
 
