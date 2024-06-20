@@ -21,7 +21,7 @@ As with RAID, there are a few different ways Storage Spaces can do this, which m
 
 ## Mirroring
 
-Mirroring provides fault tolerance by keeping multiple copies of all data. This most closely resembles RAID-1. How that data is striped and placed is non-trivial (see [this blog](https://techcommunity.microsoft.com/t5/storage-at-microsoft/deep-dive-the-storage-pool-in-storage-spaces-direct/ba-p/425959) to learn more), but it is absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently.
+Mirroring provides fault tolerance by keeping multiple copies of all data. This most closely resembles RAID-1. How that data is striped and placed is non-trivial (see [this blog](https://techcommunity.microsoft.com/t5/storage-at-microsoft/deep-dive-the-storage-pool-in-storage-spaces-direct/ba-p/425959) to learn more), but it's absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently.
 
 You can choose between two flavors of mirroring – "two-way" and "three-way."
 
@@ -52,7 +52,7 @@ Storage Spaces offers two flavors of parity – "single" parity and "dual" parit
 > We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](plan-volumes.md#choosing-the-resiliency-type).
 
 ### Single parity
-Single parity keeps only one bitwise parity symbol, which provides fault tolerance against only one failure at a time. It most closely resembles RAID-5. To use single parity, you need at least three hardware fault domains – with Storage Spaces Direct, that means three servers. Because three-way mirroring provides more fault tolerance at the same scale, we discourage using single parity. But, it's there if you insist on using it, and it is fully supported.
+Single parity keeps only one bitwise parity symbol, which provides fault tolerance against only one failure at a time. It most closely resembles RAID-5. To use single parity, you need at least three hardware fault domains – with Storage Spaces Direct, that means three servers. Because three-way mirroring provides more fault tolerance at the same scale, we discourage using single parity. But, it's there if you insist on using it, and it's fully supported.
 
    >[!WARNING]
    > We discourage using single parity because it can only safely tolerate one hardware failure at a time: if you're rebooting one server when suddenly another drive or server fails, you will experience downtime. If you only have three servers, we recommend using three-way mirroring. If you have four or more, see the next section.
@@ -85,7 +85,7 @@ A Storage Spaces Direct volume can be part mirror and part parity. Writes land f
 
 To mix three-way mirror and dual parity, you need at least four fault domains, meaning four servers.
 
-The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose. For example, the demo at the 37-minute mark of this presentation shows [various mixes achieving 46 percent, 54 percent, and 65 percent efficiency](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=36m55s) with 12 servers.
+The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose.
 
 > [!IMPORTANT]
 > We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](plan-volumes.md#choosing-the-resiliency-type).
@@ -117,7 +117,7 @@ This section summarizes the resiliency types available in Storage Spaces Direct,
 
 ### Dual parity efficiency for hybrid deployments
 
-This table shows the storage efficiency of dual parity and local reconstruction codes at each scale for hybrid deployments which contain both hard disk drives (HDD) and solid-state drives (SSD).
+This table shows the storage efficiency of dual parity and local reconstruction codes at each scale for hybrid deployments, which contain both hard disk drives (HDD) and solid-state drives (SSD).
 
 |    Fault domains      |    Layout           |    Efficiency   |
 |-----------------------|---------------------|-----------------|
@@ -139,7 +139,7 @@ This table shows the storage efficiency of dual parity and local reconstruction 
 
 ### Dual parity efficiency for all-flash deployments
 
-This table shows the storage efficiency of dual parity and local reconstruction codes at each scale for all-flash deployments which contain only solid-state drives (SSD). The parity layout can use larger group sizes and achieve better storage efficiency in an all-flash configuration.
+This table shows the storage efficiency of dual parity and local reconstruction codes at each scale for all-flash deployments, which contain only solid-state drives (SSD). The parity layout can use larger group sizes and achieve better storage efficiency in an all-flash configuration.
 
 |    Fault domains      |    Layout           |    Efficiency   |
 |-----------------------|---------------------|-----------------|
@@ -182,7 +182,7 @@ These six examples show what three-way mirroring and/or dual parity **can** tole
 
 ![fault-tolerance-examples-5-and-6](media/fault-tolerance/Fault-Tolerance-Example-56.png)
 
-...in every case, all volumes will stay online. (Make sure your cluster maintains quorum.)
+...in every case, all volumes stay online. (Make sure your cluster maintains quorum.)
 
 ### Examples where everything goes offline
 
