@@ -38,10 +38,10 @@ Here are the fixed issues in this release:
 | Observability |In this release, an issue was fixed that resulted in proactive log collection being disabled by default after the extension was installed. ||
 | Updates<!--27726586--> |An issue was fixed where the Agent Lifecycle Manager (ALM) failed to restart services after secret rotation.  ||
 | Updates<!--28182644--> |In this release, an issue was fixed where using the PowerShell command `Start-SolutionUpdate` to retry a failed solution update failed.  ||
-| Feature<!--28266857--> |An issue was fixed that caused a Solution Builder Extension update to fail to download. ||
-| Feature<!--28266857--> |An issue was fixed wherE the updates failed during the Service Principal Name (SPN) verification based on the deployment SPN settings.  ||
-| Feature<!--28314329--> |An issue was fixed where the update of Arc Resource Bridge (ARB) takes a long time and the update fails.  ||
-| Feature<!--28334617--> |An issue was fixed where the Solution Builder Update health checks were missing from the preupdate or daily health checks. ||
+| Updates<!--28266857--> |An issue was fixed that caused a Solution Builder Extension update to fail to download. ||
+| Updates<!--28266857--> |An issue was fixed where the updates failed during the Service Principal Name (SPN) verification based on the deployment SPN settings.  ||
+| Updates<!--28314329--> |An issue was fixed where the update of Arc Resource Bridge (ARB) takes a long time and the update fails.  ||
+| Updates<!--28334617--> |An issue was fixed where the Solution Builder Update health checks were missing from the preupdate or daily health checks. ||
 | Add server <br> Repair server<!--28011823--> |During `Add-Server`, the cluster storage network shouldn't be expected to be the same as the storage VLAN ID. ||
 | Networking<!--28276687--> |AzStackHci_Network_Test_Infra_IP_Connection needs to honor the severity of the endpoint definition. ||
 
