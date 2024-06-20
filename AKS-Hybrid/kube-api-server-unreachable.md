@@ -4,10 +4,10 @@ description: Learn how to troubleshoot the "failed to either reach kube-apiserve
 ms.topic: troubleshooting
 author: sethmanheim
 ms.author: sethm
-ms.date: 05/29/2024
+ms.date: 06/20/2024
 ms.reviewer: abha
 
-#Customer intent: As an Azure Kubernetes user, I want to troubleshoot the "failed to either reach kube-apiserver or control plane IP of Kubernetes cluster from Arc Resource Bridge IP error" error code so that I can successfully start or create and deploy an Azure Kubernetes Service Arc cluster.
+# Customer intent: As an Azure Kubernetes user, I want to troubleshoot the "failed to either reach kube-apiserver or control plane IP of Kubernetes cluster from Arc Resource Bridge IP error" error code so that I can successfully start or create and deploy an Azure Kubernetes Service Arc cluster.
 
 ---
 
@@ -31,9 +31,9 @@ Failed to either reach kube-apiserver or control plane IP %s:%d of Kubernetes cl
 - Another frequent issue occurs if you have a firewall that isolates the management network from logical networks. Ensure that you opened the required ports so the management network can reach AKS Arc VMs. Review [the network requirements](aks-hci-network-system-requirements.md#network-port-and-cross-vlan-requirements) for more information about required ports.
 - Duplicate IPs and IP address collisions are other reasons why the API server might be unreachable. Ensure that you didn't use the IP addresses provided in the management network anywhere else. Likewise, ensure that the control plane IP provided during the AKS cluster creation operation isn't used anywhere else.
 
-## Use diagnostic checker tool
-Diagnostic checker is a PowerShell based tool that can help identify potential causes in the environment due to which your AKS cluster create failed. [Use diagnostic checker tool](aks-arc-diagnostic-checker.md) to identify some of the common networking issues that could lead to an AKS cluster create failure due to API server being unreachable. 
+## Use the diagnostic checker tool
 
+The diagnostic checker is a PowerShell-based tool that can help identify AKS cluster creation failures due to potential issues in the environment. [Use the diagnostic checker tool](aks-arc-diagnostic-checker.md) to identify some of the common networking issues that can lead to an AKS cluster creation failure due to the API server being unreachable.
 
 ## Contact Microsoft Support
 
@@ -41,7 +41,7 @@ If the problem persists, collect the following information before [creating a su
 
 ## Next steps
 
-- [Use diagnostic checker tool to identify common environment issues](aks-arc-diagnostic-checker.md)
+- [Use the diagnostic checker tool to identify common environment issues](aks-arc-diagnostic-checker.md)
 - [Review AKS on Azure Stack HCI 23H2 architecture](cluster-architecture.md)
-- [Review Azure Stack HCI network considerations](/azure-stack/hci/plan/cloud-deployment-network-considerations).
+- [Review Azure Stack HCI network considerations](/azure-stack/hci/plan/cloud-deployment-network-considerations)
 - [Review networking prerequisities for AKS on Azure Stack HCI 23H2](aks-hci-network-system-requirements.md)
