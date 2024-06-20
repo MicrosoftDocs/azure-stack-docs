@@ -3,7 +3,7 @@ title: Set up Azure Arc gateway for existing Azure Stack HCI cluster running ver
 description: Learn how to deploy Azure Arc gateway for existing Azure Stack HCI deployments running software version 2405 (preview). 
 author: alkohli
 ms.topic: how-to
-ms.date: 06/17/2024
+ms.date: 06/20/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -35,7 +35,7 @@ Before you start, make sure you have the following:
 
 The following steps are required to enable the Azure Arc gateway on existing Azure Stack HCI 2405 deployments.
 
-  :::image type="content" source="media/deployment-azure-arc-gateway/existing-deployment-workflow.png" alt-text="Azure Arc gateway new deployment workflow." lightbox="./media/deployment-azure-arc-gateway/existing-deployment-workflow.png":::
+  :::image type="content" source="media/deployment-azure-arc-gateway/existing-deployment-workflow.png" alt-text="Diagram of Azure Arc gateway new deployment workflow." lightbox="./media/deployment-azure-arc-gateway/existing-deployment-workflow.png":::
 
 
 ## Step 1: Associate the Arc gateway resource with your existing Azure Stack HCI cluster
