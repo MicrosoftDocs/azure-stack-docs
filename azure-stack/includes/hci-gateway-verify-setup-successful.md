@@ -10,7 +10,7 @@ ms.subservice: azure-stack-hci
 
 Once the deployment validation starts, connect to the first server node from your cluster and open the Arc gateway log to monitor which endpoints are being redirected to the Arc gateway and which ones keep using your firewall or proxy security solutions. You should find the Arc gateway sign in *c:\programdata\AzureConnectedMAchineAgent\Log\arcproxy.log*.
 
-  :::image type="content" source="./media/hci-gateway-verify-setup-successful/arc-gateway-log-location.png" alt-text="Screenshot oflLocation of log file for Azure Arc gateway." lightbox="./media/hci-gateway-verify-setup-successful/arc-gateway-log-location.png":::
+  :::image type="content" source="./media/hci-gateway-verify-setup-successful/arc-gateway-log-location.png" alt-text="Screenshot of location of log file for Azure Arc gateway." lightbox="./media/hci-gateway-verify-setup-successful/arc-gateway-log-location.png":::
 
 1. To check the Arc agent configuration and verify that it is using the gateway, connect to the Azure Stack HCI server node.
 1. Run the following command: `"c:\program files\AzureConnectedMachineAgent>.\azcmagent show"`. The result should show the following values:
