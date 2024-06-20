@@ -29,7 +29,7 @@ Here are the scenarios in which you can perform on-demand log collection:
 - Logs are collected when a cluster is only partly registered.
 - Logs are collected for issues not related to registration failures.
 
-To explore additional log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
+To explore other log collection methods in Azure Stack HCI and understand when to use them, see [Diagnostics](../concepts/observability.md#diagnostics).
 
 ## Prerequisites
 
@@ -49,7 +49,7 @@ You can perform on-demand log collection using any of the following methods:
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
-Follow these steps to collect diagnostic logs for you Azure Stack HCI cluster via the Azure portal:
+Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster via the Azure portal:
 
 1. the Azure portal, go to the Azure Stack HCI cluster resource.
 1. In the left pane, under **Settings**, select **Diagnostics and Remote Support**.
@@ -162,7 +162,7 @@ To get a history of log collections for the last 90 days, enter:
 Get-LogCollectionHistory  
 ```
 
-Here's a sample output of the `Get-LogCollectionHistory` cmdlet. Note that the `datetime` parameters are in the UTC timezone.
+Here's a sample output of the `Get-LogCollectionHistory` cmdlet. The `datetime` parameters are in the UTC timezone.
 
 ```output
 PS C:\CloudDeployment\logs> Get-LogCollectionHistory
@@ -358,7 +358,7 @@ Send-DiagnosticData –SaveToPath <output path>
 Send-DiagnosticData –SaveToPath <share path>
 ```
 
-If you’re using a share path that is not mapped, you must also use the `-ShareCredential` parameter.
+If you’re using a share path that isn't mapped, you must also use the `-ShareCredential` parameter.
 
 ```powershell
 Send-DiagnosticData –SaveToPath <share path> -ShareCredential <credentials for share path>
@@ -552,7 +552,7 @@ Initially accessible across all versions, however, this parameter will eventuall
 The SharePath parameter can be used for one of the following purposes:
 
 - Save diagnostic logs to a share path or output path.
-- Send logs to Microsoft from a share path or output path. If you're using a share path and the share path is not mapped, then the `ShareCredential` parameter must also be used.
+- Send logs to Microsoft from a share path or output path. If you're using a share path and the share path isn't mapped, then the `ShareCredential` parameter must also be used.
 
 Since this parameter will be removed in future versions of the extension, use the `–SaveToPath` to save logs to a path, or `–SupplementaryLogs` when sending ad-hoc logs to Microsoft instead.
 
