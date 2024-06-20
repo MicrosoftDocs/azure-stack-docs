@@ -30,13 +30,15 @@ Before you start, make sure you have the following:
 - An existing Azure Stack cluster running software version 2405 or later.
   - The servers in the cluster must be running the Azure Connected Machine agent version 1.40 or later.
 
-
 ## Enable Arc gateway for existing Azure Stack HCI deployments
 
 The following steps are required to enable the Azure Arc gateway on existing Azure Stack HCI 2405 deployments.
 
-  :::image type="content" source="media/deployment-azure-arc-gateway/existing-deployment-workflow.png" alt-text="Diagram of Azure Arc gateway new deployment workflow." lightbox="./media/deployment-azure-arc-gateway/existing-deployment-workflow.png":::
-
+0. Create the Arc gateway resource in Azure (prerequisite).
+1. Associate the Arc gateway resource with your existing Azure Stack HCI cluster.
+2. Update Arc agent configuration on each deployed Azure Stack HCI server to use the Arc gateway ID.
+3. Await reconciliation.
+4. Verify that supported endpoints are redirected through the Arc gateway.
 
 ## Step 1: Associate the Arc gateway resource with your existing Azure Stack HCI cluster
 

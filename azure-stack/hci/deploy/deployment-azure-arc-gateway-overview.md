@@ -8,7 +8,7 @@ ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# About Azure Arc Gateway for Azure Stack HCI, version 23H2 (preview)
+# About Azure Arc gateway for Azure Stack HCI, version 23H2 (preview)
 
 Applies to: Azure Stack HCI, version 23H2
 
@@ -30,7 +30,7 @@ The Arc gateway works by introducing the following components:
 With the Arc gateway in place, the traffic flows through these steps: **Arc agentry → Gateway router → Enterprise Proxy → Arc gateway → Target service**.  The traffic flow is illustrated in the following diagram:
 
 
-  :::image type="content" source="./media/deployment-azure-arc-gateway/arc-gateway-component-diagram.png" alt-text="Azure Arc gateway component diagram." lightbox="./media/deployment-azure-arc-gateway/arc-gateway-component-diagram.png":::
+  :::image type="content" source="./media/deployment-azure-arc-gateway/arc-gateway-component-diagram.png" alt-text="Diagram of Azure Arc gateway components." lightbox="./media/deployment-azure-arc-gateway/arc-gateway-component-diagram.png":::
 
   Each Azure Stack HCI cluster node has its own Arc agent with the gateway router connecting and creating the tunnel to the Arc gateway resource in Azure.
 
@@ -87,7 +87,7 @@ You can now enable the Arc gateway for new or existing Azure Stack HCI deploymen
 - For new Azure Stack HCI deployments, see [Enable Arc gateway on new Azure Stack HCI 2405 clusters](deployment-azure-arc-gateway-new-cluster.md).
 - For existing Azure Stack HCI deployments, see [Enable Arc gateway on existing Azure Stack HCI 2405 clusters](deployment-azure-arc-gateway-existing-cluster.md).
 
-## Delete a Gateway Resource
+## Delete the Arc gateway resource
 
 To delete an Arc gateway resource, you must first detach it from the servers to which it is attached.  
 

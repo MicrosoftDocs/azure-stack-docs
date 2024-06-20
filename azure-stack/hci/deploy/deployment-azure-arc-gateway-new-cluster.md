@@ -35,7 +35,10 @@ Before you start, make sure you have the following:
 
 The following steps are required to enable the Azure Arc gateway on new Azure Stack HCI 2405 deployments.
 
-  :::image type="content" source="media/deployment-azure-arc-gateway/new-deployment-workflow.png" alt-text="Azure Arc gateway new deployment workflow." lightbox="./media/deployment-azure-arc-gateway/new-deployment-workflow.png":::
+0. Create the Arc gateway resource in Azure (prerequisite).
+1. Register new Azure Stack HCI servers with Arc using the Arc gateway ID.
+2. Start the Azure Stack HCI cloud deployment.
+3. Verify that supported endpoints are redirected through the Arc gateway during deployment.
 
 
 ## Step 1: Register new Azure Stack HCI servers via the Arc gateway ID
@@ -101,9 +104,9 @@ $ARMtoken = (Get-AzAccessToken).Token
 $id = (Get-AzContext).Account.Id
 
 #Invoke the Azure Stack HCI node registration script with ArcGatewayID parameter to connect the agent with the gateway as part of the installation.
-Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus2euap -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force -ArcGatewayID "/subscriptions/<Subscription ID>/resourceGroups/<Resourcegroup>/providers/Microsoft.HybridCompute/gateways/<ArcGateway>",
+Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region eastus2euap -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force -ArcGatewayID "/subscriptions/<Subscription ID>/resourceGroups/<Resourcegroup>/providers/Microsoft.HybridCompute/gateways/<ArcGateway>"
 ```
-<!--check whether the above ends in a comma-->
+
 
 ## Step 2: Start the Azure Stack HCI cloud deployment
 
