@@ -77,8 +77,6 @@ For information on activating AKS, see [Azure Kubernetes Service on Azure Stack 
 
 When a cluster or system uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your cluster includes a mixed-node scenario where one or more of your servers do not have the OEM license, a notification in your monthly billing status details appears.
 
-:::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
-
 :::image type="content" source="media/oem-license/warning-mixed-node.png" alt-text="Screenshot of a warning for a cluster with an unsupported mixed-node scenario." lightbox="media/oem-license/warning-mixed-node.png":::
 
 ***We have detected mixed nodes in your cluster. You will be billed monthly for each node in your cluster as one or more servers in your cluster do not have an OEM license. To see which servers do not have the OEM license, go to Overview > Nodes and check the OEM license column. Learn more.***
