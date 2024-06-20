@@ -13,7 +13,7 @@ ms.custom: devx-track-azurepowershell
 
 Many of our customers deploy Azure Stack HCI in large Active Directories with established processes and tools for assigning permissions. The Active Directory preparation script provided for Azure Stack HCI is optional and all required permissions can be configured manually including the creation of the organizational unit and blocking inheritance of GPOs.
 
-Furthermore, it is a customer choice what DNS server to use for example Microsoft DNS servers that support integration with Active Directory to take advantage of secure dynamic update. If none Microsoft DNS servers are used, a set of DNS records must be created for HCI to enable deployment and update of the solution.
+Furthermore, it is a customer choice what DNS server to use, for example,  Microsoft DNS servers that support integration with Active Directory to take advantage of secure dynamic update. If none Microsoft DNS servers are used, a set of DNS records must be created for HCI to enable deployment and update of the solution.
 
 The purpose of this article is to detail the required permissions and DNS records required for Azure Stack HCI, including examples.
 
@@ -21,19 +21,19 @@ The purpose of this article is to detail the required permissions and DNS record
 
 Before diving into the details,  lets clarify some of the Active Directory requirements.
 
-A dedicated organization unit referenced as OU in the article going forward is required to optimize query times for object discovery which is critical for very large Active Directories spanning multiple Sites. This dedicated OU is only required for the computer objects and the Windows failover cluster CNO.
+A dedicated organization unit referenced as OU in the article going forward is required to optimize query times for object discovery, which is critical for large Active Directories spanning multiple Sites. This dedicated OU is only required for the computer objects and the Windows failover cluster CNO.
 
 The user referenced as deployment user can reside anywhere in the directory it just requires the necessary permissions over the dedicated OU.
 
 Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects and the new engine introduced with HCI version 23H2 that manages security settings including drift protection. You can learn more about security features in [Security features for Azure Stack HCI, version 23H2](../concepts/security-features).
 
-Computer account objects and cluster CNO can be [pre-created](https://learn.microsoft.com/windows-server/failover-clustering/prestage-cluster-adds) using the deployment user as an alternative to have the deployment itself create them.
+Computer account objects and cluster CNO can be [precreated](https://learn.microsoft.com/windows-server/failover-clustering/prestage-cluster-adds) using the deployment user as an alternative to have the deployment itself create them.
 
 ## Required permissions
 
 The permissions required by the user object referenced as deployment user is scoped to be applicable to the dedicated OU only.
 
-The permissions can be summarized as read, create and delete computer objects with the ability to retrieve BitLocker recovery information.
+The permissions can be summarized as read, create, and delete computer objects with the ability to retrieve BitLocker recovery information.
 
 1. Permissions the deployment user must have over the OU and all descendant objects:
 
@@ -103,7 +103,7 @@ Set-Acl -Path $ouPath -AclObject $acl
 
 ## DNS records
 
-If your DNS server does not support secure dynamic updates, you must create required records prior starting the deployment of Azure Stack HCI version 23H2.
+If your DNS server doesn't support secure dynamic updates, you must create required records prior to starting the deployment of Azure Stack HCI version 23H2.
 
 Below is the list of required DNS records and types:
 
@@ -122,9 +122,9 @@ Nslookup “machine name”
 
 ## Cluster aware updating (CAU)
 
-Cluster aware updating does leverage a client access point (VCO) which does require a DNS record.
+Cluster aware updating does apply a client access point (VCO) which does require a DNS record.
 
-In environments where dynamic secure updates are not possible it requires to manually create the VCO. For more information about how to create the VCO, see [Prestage cluster computer objects in Active Directory Domain Services](https://learn.microsoft.com/windows-server/failover-clustering/prestage-cluster-adds#more-information).
+In environments where dynamic secure updates aren't possible it requires to manually create the VCO. For more information about how to create the VCO, see [Prestage cluster computer objects in Active Directory Domain Services](https://learn.microsoft.com/windows-server/failover-clustering/prestage-cluster-adds#more-information).
 
 > [!NOTE]
 > Dynamic DNS update must be disabled in the Windows DNS client. Unfortunately, the timing is very critical because the setting is protected by the drift control build into Network ATC.
