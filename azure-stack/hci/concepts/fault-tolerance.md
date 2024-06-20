@@ -83,7 +83,9 @@ We recommend this in-depth yet eminently readable walk-through of [how local rec
 
 A Storage Spaces Direct volume can be part mirror and part parity. Writes land first in the mirrored portion and are gradually moved into the parity portion later. Effectively, this is [using mirroring to accelerate erasure coding](https://techcommunity.microsoft.com/t5/storage-at-microsoft/bg-p/FileCAB).
 
-To mix three-way mirror and dual parity, you need at least four fault domains, meaning four servers. The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose.
+To mix three-way mirror and dual parity, you need at least four fault domains, meaning four servers.
+
+The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose.
 
 > [!IMPORTANT]
 > We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](plan-volumes.md#choosing-the-resiliency-type).
