@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/04/2024
+ms.date: 06/19/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -21,7 +21,19 @@ There are currently 3 release trains for Azure Stack HCI, version 23H2: 2405, 24
 
 ## [2405 releases](#tab/2405releases)
 
-The 2405 release train includes the following release:
+The 2405 release train includes the following releases:
+
+## Features and improvements in 2405.1
+
+This is primarily a bug fix release with a few improvements.
+
+- **Custom storage IPs for add and repair server scenarios**: Starting this release, it is possible to add servers or repair servers to the Azure Stack HCI cluster using custom IPs for the storage intent network adapters.
+- **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
+- **Reliabiltiy improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
+- **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
+- **Multiple bug fixes related to Updates** were made in this release.
+
+For more information on bug fixes, see the [Fixed issues list](./known-issues-2405-1.md#fixed-issues).
 
 ## Features and improvements in 2405
 
@@ -118,6 +130,10 @@ For a list of the changes and improvements in AKS on Azure Stack HCI, version 23
 ## [2402 releases](#tab/2402releases)
 
 The 2402 release train includes the following releases:
+
+## Features and improvements in 2402.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-4.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2402.3
 
