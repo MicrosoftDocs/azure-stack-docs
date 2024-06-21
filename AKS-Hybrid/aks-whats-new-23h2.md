@@ -54,12 +54,14 @@ The following Kubernetes cluster deployment and management capabilities are avai
 
 #### Supported component versions
 
-The following versions are supported in release 2405:
+The following component versions are supported in release 2405:
 
 | Component           | 2024-06-11                                       |
 |---------------------|--------------------------------------------------|
 | AKS Arc             | 1.0.23.10605                                     |
 | Kubernetes versions | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5 |
+
+For more information, see the [AKS Arc release notes](https://aka.ms/AKS-hybrid-Releasenotes).
 
 ### Release 2402
 
