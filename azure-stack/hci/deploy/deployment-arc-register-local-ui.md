@@ -126,7 +126,7 @@ Follow these steps to configure the network settings and connect the servers to 
       > The region is specified with the spaces removed. For example, **East US** is specified as **EastUS**.
    1. Specify the **Cloud type** as **AzureCloud**.
    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
-   1. If you have set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deploy).
+   1. If you have set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
 
       :::image type="content" source="media/deployment-arc-register-local-ui/setup-arc-agent-details.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page." lightbox="media/deployment-arc-register-local-ui/setup-arc-agent-details.png":::
 
@@ -146,9 +146,11 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-details.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup, configuration details." lightbox="media/deployment-arc-register-local-ui/setup-configuration-details.png":::
 
-1. Once the configuration is complete, status for Arc configuration should turn to **Success (Open in Azure portal)**.  
+   During the Arc registration process, you'll need to authenticate with your Azure account. The local UI displays a code that you need to enter at [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) to authenticate. Follow the instructions to complete the authentication process.
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-final-status.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup configuration status." lightbox="media/deployment-arc-register-local-ui/setup-configuration-final-status.png":::
+   :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-authentication.png" alt-text="Screenshot that shows the authentication with your Azure account." lightbox="media/deployment-arc-register-local-ui/setup-configuration-authentication.png":::
+
+1. Once the configuration is complete, status for Arc configuration should turn to **Success (Open in Azure portal)**.  
 
 1. Repeat all the steps on the other servers until the Arc configuration has succeeded. Select the **Open in Azure portal** link.
 
