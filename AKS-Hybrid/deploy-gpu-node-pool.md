@@ -93,6 +93,10 @@ pnputil /delete-driver .\oem1.inf /uninstall /reboot
 ```
 After the reboot is complete, reconnect via Powershell or an RDP Session. 
 
+```powershell
+Get-PnpDevice | Where-Object FriendlyName -Like '3D Video*' | Select-Object Status, FriendlyName, InstanceId 
+```
+
 You should see the GPU devices appear in an error state as shown in this example output:
 
 ```output
