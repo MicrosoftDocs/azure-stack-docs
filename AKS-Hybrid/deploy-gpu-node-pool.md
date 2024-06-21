@@ -114,7 +114,7 @@ Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
 ```
 
-IF you have more then one GPU, please use the additonal command:
+If you have more than one GPU, use the following additional command:
 
 ```powershell
 $gpu=Get-PnpDevice -FriendlyName "3D Video Controller"
