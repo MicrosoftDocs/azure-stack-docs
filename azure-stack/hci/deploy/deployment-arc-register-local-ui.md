@@ -108,7 +108,7 @@ Follow these steps to configure the network settings and connect the servers to 
 1. On the **Additional details** blade, provide the following inputs.
 
    1. Enable Remote desktop protocol.
-   1. Choose **Public endpoint** or **Proxy server** as the connectivity method. If selecting a proxy server, provide the proxy URL and the bypass list. 
+   1. Choose **Public endpoint** or **Proxy server** as the connectivity method. If selecting a proxy server, provide the proxy URL and the bypass list.
    1. Select a time zone.
    1. Specify a preferred and an alternate NTP server to act as a time server or accept **Default**. The default is *time.windows.com*.
    1. Set the hostname for your server to what you specified during the preparation of Active Directory. Changing the hostname automatically reboots the system.
@@ -162,11 +162,11 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. In the Azure portal, go to the resource group for bootstrapping.
 
-1. On the resource group used to bootstrap, you should see your Arc-enabled servers. In this example, you see two servers.
+1. On the resource group used to bootstrap, you should see your Arc-enabled servers. In this example, you see a single server.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-arc-enabled-servers.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent Arc-enabled servers in Azure portal." lightbox="media/deployment-arc-register-local-ui/setup-arc-enabled-servers.png":::
 
-1. Select and drill down into a server. Go to **Settings** > **Extension**. Make sure that all the mandatory extensions are installed successfully.
+1. Select and drill down into the server. Go to **Settings** > **Extension**. Make sure that all the mandatory extensions are installed successfully.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent extensions installed successfully." lightbox="media/deployment-arc-register-local-ui/arc-agent-extensions-installed-successfully.png":::
 
