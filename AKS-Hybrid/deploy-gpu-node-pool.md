@@ -113,9 +113,9 @@ For each GPU (3D Video Controller) device, run the following commands in PowerSh
 ```powershell
 $gpu=Get-PnpDevice -FriendlyName "3D Video Controller"
 $id0 =$gpu[0].InstanceId
-$lp0 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
-Disable-PnpDevice -InstanceId $id1 -Confirm:$false
-Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
+$lp0 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id0).Data[0]
+Disable-PnpDevice -InstanceId $id0 -Confirm:$false
+Dismount-VMHostAssignableDevice -LocationPath $lp0 -Force
 ```
 
 If you have more than one GPU, use the following additional command:
