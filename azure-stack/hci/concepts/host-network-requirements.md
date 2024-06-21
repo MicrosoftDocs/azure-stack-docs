@@ -3,7 +3,7 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 06/20/2024
+ms.date: 03/14/2024
 ms.author: dacuo
 ms.reviewer: JasonGerend
 ---
@@ -317,6 +317,8 @@ Stretched clusters have the following requirements and characteristics:
 - Host communication between sites must cross a Layer-3 boundary; stretched Layer-2 topologies aren't supported.
 
 - Have enough bandwidth to run the workloads at the other site. In the event of a failover, the alternate site will need to run all traffic. We recommend that you provision sites at 50 percent of their available network capacity. This isn't a requirement, however, if you are able to tolerate lower performance during a failover.
+
+- Replication between sites (north/south traffic) can use the same physical NICs as the local storage (east/west traffic). If you're using the same physical adapters, these adapters must be teamed with SET. The adapters must also have additional virtual NICs provisioned for routable traffic between sites.
 
 - Adapters used for communication between sites:
 
