@@ -71,7 +71,7 @@ PNPUTIL /enum-drivers
 Open an elevated PowerShell prompt and run the following command:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
+Get-PnpDevice | Where-Object FriendlyName -Like '3D Video*' | Select-Object Status, FriendlyName, InstanceId 
 ```
 
 You should see the installed drivers in the **PNPUTIL** output. If the **Provider Name** is listed as **NVIDIA Corporation**, that is the driver you need to target for uninstalling. Make a note of the **Published Name**, as you must use that in the next command:
@@ -104,11 +104,21 @@ Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_1
 
 When you uninstall the host driver, the physical GPU goes into an error state. You must dismount all the GPU devices from the host.
 
-For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output:
+For each GPU (3D Video Controller) device, run the following commands in PowerShell. This command will create a variable named "ID1" and "lp1" and populate the instance ID of the first GPU; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output. 
 
 ```powershell
 $gpu=Get-PnpDevice -FriendlyName "3D Video Controller"
-$id1 =$gpu[0].InstanceId
+$id0 =$gpu[0].InstanceId
+$lp0 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
+Disable-PnpDevice -InstanceId $id1 -Confirm:$false
+Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
+```
+
+IF you have more then one GPU, please use the additonal command:
+
+```powershell
+$gpu=Get-PnpDevice -FriendlyName "3D Video Controller"
+$id1 =$gpu[1].InstanceId
 $lp1 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
 Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
@@ -117,7 +127,7 @@ Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
 To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video"
+Get-PnpDevice | Where-Object FriendlyName -Like '3D Video*' | Select-Object Status, FriendlyName, InstanceId
 ```
 
 ```output
