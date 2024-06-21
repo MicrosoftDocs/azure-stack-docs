@@ -111,7 +111,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 - Test content updates:
   - Monthly Azure Stack Hub Update Verification (Version 5.1.46.0 -> 5.1.49.0).
   - OEM Extension Package Verification (Version 5.1.46.0 -> 5.1.49.0).
-  - Results for 5.1.46.0 were retained. If you had a successful run on 5.1.46.0, notify vaashelp@microsoft.com when submitting results.
+  - Results for 5.1.46.0 were retained. If you had a successful run on 5.1.46.0, notify Microsoft Support when submitting results.
 
 - Bug fixes
   - Fixed an issue where Monthly Azure Stack Hub Update Verification failed to run if the update .zip contained special characters.
@@ -124,7 +124,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
     1. Click Start (not PowerShell on your taskbar), find PowerShell, and open as an administrator.
     1. Type mstest.exe and verify it's available as a command.
     1. Restart the agent and rerun the test.
-  - Occasionally, Cloud Simulation Engine reports failures with \*vm tests. Contact vaashelp@microsoft.com before attempting a rerun.
+  - Occasionally, Cloud Simulation Engine reports failures with \*vm tests. Contact Microsoft Support before attempting a rerun.
 
 2019 October 29
 
@@ -171,7 +171,7 @@ If you're running the Azure Stack Hub Monthly Update Verification workflow and t
 1. Run the OEM update as normal.
 2. Execute Test-AzureStack after successful application of the package and save the output.
 3. Cancel the test.
-4. Send the saved output to VaaSHelp@microsoft.com to receive passing results for the run.
+4. Send the saved output to Microsoft Support to receive passing results for the run.
 
 ## Version 4.0.2
 

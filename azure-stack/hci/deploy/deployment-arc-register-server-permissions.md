@@ -94,6 +94,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
     |`AccountID`         |The user who registers and deploys the cluster.         |
+    |`ProxyServer`       |Optional parameter. Proxy Server address when is required for outbound connectivity. |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
     
@@ -111,6 +112,9 @@ Before you begin, make sure you've completed the following prerequisites:
     
     #Define the tenant you will use to register your server as Arc device
     $Tenant = "YourTenantID"
+    
+    #Define the proxy address if your HCI deployment access internet via proxy
+    $ProxyServer = "http://proxyaddress:port"
     ```
  
     # [Output](#tab/output)
@@ -122,6 +126,7 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Region = "eastus"
+    PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
     ```
 
     ---
@@ -165,7 +170,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer
     ```
 
     If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
