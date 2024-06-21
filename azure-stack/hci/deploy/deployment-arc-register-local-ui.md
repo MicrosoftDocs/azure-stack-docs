@@ -82,9 +82,9 @@ Follow these steps to configure the network settings and connect the servers to 
 
 1. Sign in to the server with the local administrator credentials.
 
-   <!-->:::image type="content" source="media/deployment-arc-register-local-ui/admin-logon-dialog.png" alt-text="Screenshot that shows the Azure Stack HCI local UI sign in dialog." lightbox="media/deployment-arc-register-local-ui/admin-logon-dialog.png":::
+   <!--:::image type="content" source="media/deployment-arc-register-local-ui/admin-logon-dialog.png" alt-text="Screenshot that shows the Azure Stack HCI local UI sign in dialog." lightbox="media/deployment-arc-register-local-ui/admin-logon-dialog.png":::-->
 
-   :::image type="content" source="media/deployment-arc-register-local-ui/admin-password-dialog.png" alt-text="Screenshot that shows the Azure Stack HCI local UI password dialog." lightbox="media/deployment-arc-register-local-ui/admin-password-dialog.png":::-->
+   <!--:::image type="content" source="media/deployment-arc-register-local-ui/admin-password-dialog.png" alt-text="Screenshot that shows the Azure Stack HCI local UI password dialog." lightbox="media/deployment-arc-register-local-ui/admin-password-dialog.png":::-->
 
 1. On the Azure agent setup page, select **Start**.
 
