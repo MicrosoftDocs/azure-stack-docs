@@ -117,6 +117,8 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page with the additional details configured."lightbox="media/deployment-arc-register-local-ui/setup-network-settings-details-blade.png":::
 
+1. Select **Next** on the **Basics** tab.
+
 1. On the **Arc agent setup** tab, under **Arc agent details**, provide the following inputs.
 
    1. Enter a **Subscription ID** that you use to register the server.
@@ -146,7 +148,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-details.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup, configuration details." lightbox="media/deployment-arc-register-local-ui/setup-configuration-details.png":::
 
-   During the Arc registration process, you'll need to authenticate with your Azure account. The local UI displays a code that you need to enter at [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) to authenticate. Follow the instructions to complete the authentication process.
+   During the Arc registration process, you need to authenticate with your Azure account. The local UI displays a code that you need to enter at [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) to authenticate. Follow the instructions to complete the authentication process.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-authentication.png" alt-text="Screenshot that shows the authentication with your Azure account." lightbox="media/deployment-arc-register-local-ui/setup-configuration-authentication.png":::
 
@@ -170,13 +172,19 @@ Follow these steps to configure the network settings and connect the servers to 
 
    If an extension fails to install, see how to [Install an Azure Arc extension](../manage/arc-extension-management.md#install-an-extension).
 
-
 ## Troubleshooting
 
-If you encounter any issues with the local UI, you can use the following resources to troubleshoot:
+You might need to collect the logs or diagnose the problems if you encounter any issues while configuring the server with the local UI. You can use the following resources to troubleshoot:
 
+1. Get local UI logs from the server.
 1. Run diagnostic tests.
 1. Collect a Support package.
+
+### Get local UI logs if UI is inaccessible
+
+If you can't access the local UI, you can get the local UI logs from the server. The logs are stored in the following location: `C:\Windows\System32\Bootstrap\Logs`. You can access the logs by connecting to the server via Remote Desktop Protocol (RDP).
+
+
 
 Each of these resources is discussed in the following sections.
 
@@ -184,16 +192,16 @@ Each of these resources is discussed in the following sections.
 
 To diagnose and troubleshoot any device issues related to hardware, time server, and network, you can run the diagnostics tests. Follow these steps to run the diagnostic tests from the local UI:
 
-1. Select the bell icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane.
+1. Select the help icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane.
 1. Select **Run diagnostic tests**. The diagnostic tests check the health of the server hardware, time server, and the network connectivity. The tests also check the status of the Azure Arc agent and the extensions.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Run diagnostic tests selected."lightbox="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png":::
 
-1. After the tests are completed, the results are displayed. Here is a sample output of the diagnostic tests when there is a device issue:
+1. After the tests are completed, the results are displayed. Here's a sample output of the diagnostic tests when there's a device issue:
 
    :::image type="content" source="media/deployment-arc-register-local-ui/run-diagnostics-tests-2.png" alt-text="Screenshot that shows the error output after the diagnostic tests were run."lightbox="media/deployment-arc-register-local-ui/run-diagnostics-tests-1.png":::
 
-Here is a table that describes the diagnostic tests:
+Here's a table that describes the diagnostic tests:
 
 | Test Name                        | Description                                                               |
 |----------------------------------|-----------------------------------------------------------------------|
@@ -201,13 +209,13 @@ Here is a table that describes the diagnostic tests:
 | Web proxy (if configured)        | This test validates the web proxy configuration of the device.  |
 | Time sync                        | This test validates the device time settings and checks that the time server configured on the device is valid and accessible.                   |
 | Azure Arc agent                  | This test validates the Azure Arc agent is installed and running on the device. |
-| Environment checker              | The Environment Checker tool runs a series of tests to evaulate the deployment readiness of your environment for Azure Stack HCI deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2](../manage/use-environment-checker.md#about-the-environment-checker-tool) |
+| Environment checker              | The Environment Checker tool runs a series of tests to evaluate the deployment readiness of your environment for Azure Stack HCI deployment including those for connectivity, hardware, Active Directory, network, and Arc integration. For more information, see [Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2](../manage/use-environment-checker.md#about-the-environment-checker-tool) |
 
 ### Collect a Support package from the local UI
 
 A log package is composed of all the relevant logs that can help Microsoft Support troubleshoot any device issues. You can generate a log package via the local web UI. Follow these steps to collect a Support package from the local UI:
 
-1. Select the bell icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection may take several minutes.
+1. Select the help icon in the top-right corner of the local UI to open the **Support + troubleshooting** pane. Select **Create** to begin support package collection. The package collection could take several minutes.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/collect-support-package-1.png" alt-text="Screenshot that shows the Support and troubleshooting pane with Create selected." lightbox="media/deployment-arc-register-local-ui/collect-support-package-1.png":::
 
