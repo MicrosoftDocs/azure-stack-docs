@@ -125,8 +125,8 @@ Follow these steps to configure the network settings and connect the servers to 
       > [!IMPORTANT]
       > The region is specified with the spaces removed. For example, **East US** is specified as **EastUS**.
    1. Specify the **Cloud type** as **AzureCloud**.
-   1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id)
-   1. If you have set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up.
+   1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
+   1. If you have set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deploy).
 
       :::image type="content" source="media/deployment-arc-register-local-ui/setup-arc-agent-details.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page." lightbox="media/deployment-arc-register-local-ui/setup-arc-agent-details.png":::
 
@@ -138,7 +138,6 @@ Follow these steps to configure the network settings and connect the servers to 
 1. On the **Review and apply** tab, verify the server details. To modify any settings, go back. If satisfied with the current settings, select **Finish**. If you changed the hostname, your servers boot up automatically at this point and you must sign in again.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-review-and-apply.png" alt-text="Screenshot that shows the Review and apply tab on Azure Stack HCI Azure Arc agent setup page."lightbox="media/deployment-arc-register-local-ui/setup-review-and-apply.png":::
-
 
 1. Wait for the configuration to complete. First, the device details are uploaded, followed by registration of the server to Azure and, finally, the mandatory Arc extensions are installed.
 
