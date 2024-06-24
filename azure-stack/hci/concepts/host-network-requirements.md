@@ -3,9 +3,8 @@ title: Host network requirements for Azure Stack HCI
 description: Learn the host network requirements for Azure Stack HCI
 author: dcuomo
 ms.topic: how-to
-ms.date: 06/20/2024
+ms.date: 06/24/2024
 ms.author: dacuo
-ms.reviewer: JasonGerend
 ---
 
 # Host network requirements for Azure Stack HCI
@@ -327,53 +326,6 @@ Stretched clusters have the following requirements and characteristics:
   - RDMA must be disabled by using the `Disable-NetAdapterRDMA` cmdlet. We recommend that you explicitly require Storage Replica to use specific interfaces by using the `Set-SRNetworkConstraint` cmdlet.
 
   - Must meet any additional requirements for Storage Replica.
-
-### Stretched cluster example
-
-The following example illustrates a stretched cluster configuration. To ensure that a specific virtual NIC is mapped to a specific physical adapter, use the [Set-VMNetworkAdapterTeammapping](/powershell/module/hyper-v/set-vmnetworkadapterteammapping) cmdlet.
-
-:::image type="content" source="media/host-network-requirements/stretched-cluster-example.png" alt-text="Diagram that shows an example of stretched cluster storage." lightbox="media/host-network-requirements/stretched-cluster-example.png":::
-
-The following shows the details for the example stretched cluster configuration.
-
-> [!NOTE]
->Your exact configuration, including NIC names, IP addresses, and VLANs, might be different than what is shown. This is used only as a reference configuration that can be adapted to your environment.
-
-#### SiteA – Local replication, RDMA enabled, non-routable between sites
-
-|Node name|vNIC name|Physical NIC (mapped)|VLAN|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|-----|
-|NodeA1|vSMB01|pNIC01|711|192.168.1.1/24|Local Site Only|
-|NodeA2|vSMB01|pNIC01|711|192.168.1.2/24|Local Site Only|
-|NodeA1|vSMB02|pNIC02|712|192.168.2.1/24|Local Site Only|
-|NodeA2|vSMB02|pNIC02|712|192.168.2.2/24|Local Site Only|
-
-#### SiteB – Local replication, RDMA enabled, non-routable between sites
-
-|Node name|vNIC name|Physical NIC (mapped)|VLAN|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|-----|
-|NodeB1|vSMB01|pNIC01|711|192.168.1.1/24|Local Site Only|
-|NodeB2|vSMB01|pNIC01|711|192.168.1.2/24|Local Site Only|
-|NodeB1|vSMB02|pNIC02|712|192.168.2.1/24|Local Site Only|
-|NodeB2|vSMB02|pNIC02|712|192.168.2.2/24|Local Site Only|
-
-#### SiteA – Stretched replication, RDMA disabled, routable between sites
-
-|Node name|vNIC name|Physical NIC (mapped)|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|
-|NodeA1|Stretch1|pNIC01|173.0.0.1/8|Cross-Site Routable|
-|NodeA2|Stretch1|pNIC01|173.0.0.2/8|Cross-Site Routable|
-|NodeA1|Stretch2|pNIC02|174.0.0.1/8|Cross-Site Routable|
-|NodeA2|Stretch2|pNIC02|174.0.0.2/8|Cross-Site Routable|
-
-#### SiteB – Stretched replication, RDMA disabled, routable between sites
-
-|Node name|vNIC name|Physical NIC (mapped)|IP and subnet|Traffic scope|
-|-----|-----|-----|-----|-----|
-|NodeB1|Stretch1|pNIC01|175.0.0.1/8|Cross-Site Routable|
-|NodeB2|Stretch1|pNIC01|175.0.0.2/8|Cross-Site Routable|
-|NodeB1|Stretch2|pNIC02|176.0.0.1/8|Cross-Site Routable|
-|NodeB2|Stretch2|pNIC02|176.0.0.2/8|Cross-Site Routable|
 
 ## Next steps
 
