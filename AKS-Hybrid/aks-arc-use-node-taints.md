@@ -2,13 +2,12 @@
 title: Manage node taints for an AKS cluster
 description: Learn how to manage node taints in AKS on Azure Stack HCI 23H2
 ms.topic: how-to
-ms.custom: devx-track-azurecli
+ms.custom:
 ms.date: 06/03/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: abha
 ms.lastreviewed: 01/30/2024
-
 ---
 
 # Use node taints in an AKS enabled by Azure Arc cluster
