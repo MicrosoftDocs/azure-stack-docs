@@ -6,6 +6,7 @@ ms.topic: how-to
 ms.date: 06/17/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-azurepowershell
 ---
 
 # Simplify outbound network requirements for new Azure Stack HCI, version 23H2 clusters through Azure Arc gateway (preview)
