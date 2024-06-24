@@ -155,6 +155,15 @@ items:
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
 
+  - name: Deploy with Arc gateway (Preview)
+    items:
+    - name: About Arc gateway
+      href: deploy/deployment-azure-arc-gateway-overview.md
+    - name: New v23H2 deployments
+      href: deploy/deployment-azure-arc-gateway-new-cluster.md
+    - name: Existing v23H2 deployments
+      href: deploy/deployment-azure-arc-gateway-existing-cluster.md
+
   - name: Deploy SDN
     items:
     - name: Using Express scripts
@@ -266,10 +275,6 @@ items:
         href: manage/vm-load-balancing.md
       - name: Dynamic CPU compatibility
         href: manage/processor-compatibility-mode.md
-      - name: Deploy graphics devices using Discrete Device Assignment
-        href: /windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Plan for deploying devices by using Discrete Device Assignment
-        href: /windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use GPUs with clustered VMs
         href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: GPU Partitioning
