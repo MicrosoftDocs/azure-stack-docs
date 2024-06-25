@@ -47,10 +47,16 @@ Before you begin, make sure you have the following prerequisites:
   ```
   
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
+- For Kubernetes operators to use kubectl, they can access it using either Azure RBAC or the AAD Admin Group.
+  - To use kubectl with Azure RBAC, Kubernetes operators need the Azure Arc Kubernetes Viewer role scoped to the connected cluster resource.
+  - To use kubectl with the AAD Admin Group, Kubernetes operators don't need any specific role but need to ensure they are in one of the groups in the add-admin-group list of the connected cluster resource.
 - You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
   - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
   - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
   - New role assignments can take up to five minutes to propagate and be updated by the authorization server.
+- To use a proxy, verify that the agents and the machine performing the onboarding process meet the network requirements in [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements?tabs=azure-cloud#details).
+
+
 
 ## Step 1: Create an Azure RBAC-enabled Kubernetes cluster
 
