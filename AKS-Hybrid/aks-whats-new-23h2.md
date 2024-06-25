@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 06/21/2024
+ms.date: 06/25/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
@@ -60,8 +60,6 @@ The following component versions are supported in release 2405:
 |---------------------|--------------------------------------------------|
 | AKS Arc             | 1.0.23.10605                                     |
 | Kubernetes versions | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5 |
-
-For more information, see the [AKS Arc release notes](https://aka.ms/AKS-hybrid-Releasenotes).
 
 ### Release 2402
 
