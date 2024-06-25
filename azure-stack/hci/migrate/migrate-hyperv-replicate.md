@@ -65,7 +65,7 @@ Complete the following tasks to generate the target appliance key:
 1. On the **Specify intent** page, provide the following inputs:
     - For **What do you want to migrate?**, select **Servers or virtual machines (VM)**.
     - For **Where do you want to migrate?**, select **Azure Stack HCI**.
-    - For **Virtualization Type**, select **VMware vSphere**.
+    - For **Virtualization Type**, select **Hyper-V**.
     - For the **On-premises appliance**, the source appliance is pre-populated. IF you have more than one source appliance, select the applicable one from the dropdown list.
 
     :::image type="content" source="./media/migrate-hyperv-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-hyperv-replicate/replicate-specify-intent.png":::
@@ -204,7 +204,7 @@ This step applies only if you downloaded the .zip file.
 1. On the **Specify intent** page:
     1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
     1. Select **Azure Stack HCI** for **Where do you want to migrate to ?**
-    1. Select **VMware vSphere** for the **Virtualization type**.
+    1. Select **HYper-V** for the **Virtualization type**.
     1. Select the source appliance as the **On-premises appliance** (source) used for discovery.
     1. When finished, select **Continue**.
 
