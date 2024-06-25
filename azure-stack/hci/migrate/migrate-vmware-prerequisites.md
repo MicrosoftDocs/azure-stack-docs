@@ -12,7 +12,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the prerequisite tasks you need to complete before you begin the process to migrate Hyper-V virtual machines (VMs) to Azure Stack HCI. Make sure to [review the requirements](migrate-vmware-requirements.md) for migration if you haven't already.
+This article describes the prerequisite tasks you need to complete before you begin the process to migrate VMware virtual machines (VMs) to Azure Stack HCI. Make sure to [review the requirements](migrate-vmware-requirements.md) for migration if you haven't already.
 
 [!INCLUDE [important](../../includes/hci-preview.md)]
 
@@ -47,7 +47,7 @@ The following list contains the prerequisites that must be met to migrate VMware
 1. On the **Servers, databases and web apps** page, select **Create project**.
 
 1. On the **Create project** page:
-    1. Enter your subscription.
+    1. Enter your subscription. Make sure that the chosen subscription is associated with the same Azure tenant as the Azure Stack HCI cluster.
     1. Enter the resource group, or select it if it already exists.
     1. Enter the new project name.
     1. Select a supported geography region that you previously created. For more information, see [Supported geographies](migrate-vmware-requirements.md#supported-geographies).
