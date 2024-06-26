@@ -2,7 +2,7 @@
 title: Node virtual machine networking in AKS enabled by Azure Arc
 description: Learn about virtual machine networking in AKS Arc, including static IP and DHCP networking and load balancers.
 ms.topic: conceptual
-ms.date: 10/10/2022
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek
@@ -16,7 +16,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can choose between two IP address assignment models for your networking architecture for AKS enabled by Azure Arc. AKS supports [several deployment options](aks-overview.md) for Azure Kubernetes Service (AKS).
+You can choose between two IP address assignment models for your networking architecture for AKS enabled by Arc. AKS supports [several deployment options](aks-overview.md) for Azure Kubernetes Service (AKS):
 
 - **Static IP networking**: the virtual network allocates static IP addresses to the Kubernetes cluster API server, Kubernetes nodes, underlying VMs, load balancers, and any Kubernetes services that run on top of the cluster.
 - **DHCP networking**: the virtual network allocates dynamic IP addresses to the Kubernetes nodes, underlying VMs, and load balancers using a DHCP server. The Kubernetes cluster API server, and any Kubernetes services you run on top of your cluster, are still allocated static IP addresses.
@@ -49,7 +49,7 @@ This networking model creates a virtual network that allocates IP addresses from
 Specify the following parameters while defining a virtual network with static IP configurations:
 
 > [!IMPORTANT]
-> This version of AKS does not allow any network configuration changes once the AKS host or the workload cluster is deployed. In order to change the networking settings, you must start fresh by removing the workload cluster(s) and uninstalling AKS.
+> This version of AKS does not allow any network configuration changes once the AKS host or the workload cluster is deployed. In order to change the networking settings, you must start fresh by removing the workload clusters and uninstalling AKS.
 
 - Name: The name of your virtual network.
 - Address prefix: The IP address prefix to use for your subnet.
@@ -61,16 +61,13 @@ Specify the following parameters while defining a virtual network with static IP
   > [!NOTE]
   > The VIP pool must be part of the same subnet as the Kubernetes node VM pool.
 
-- vLAN ID: The vLAN ID for the virtual network. If omitted, the virtual network is not tagged.
+- vLAN ID: The vLAN ID for the virtual network. If it's omitted, the virtual network is not tagged.
 
 ## Virtual network with DHCP networking
 
 This networking model creates a virtual network that allocates IP addresses using DHCP to all objects in the deployment.  
 
 You must specify the following parameters while defining a virtual network with static IP configurations:
-
-> [!IMPORTANT]
-> In this version of AKS, it is not possible to change the network configuration once the AKS host or the workload cluster are deployed. The only way to change the networking settings is to start fresh by removing the workload cluster(s) and uninstall AKS.
 
 - Name: The name of your virtual network.
 - Virtual IP pool: The continuous range of IP addresses to be used for your Kubernetes cluster API server and Kubernetes services. 

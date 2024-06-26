@@ -2,7 +2,7 @@
 title: Container networking concepts
 description: Learn about container networking in AKS enabled by Azure Arc.
 ms.topic: conceptual
-ms.date: 10/04/2022
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: mikek
@@ -19,7 +19,7 @@ author: sethmanheim
 
 Application components must work together to process their tasks in a container-based microservices approach. Kubernetes provides resources that enable application communications and allow you to connect to and expose applications internally or externally. You can load balance your applications to build highly available applications.
 
-More complex applications may require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You may also need to restrict the flow of network traffic into or between pods and nodes for security.
+More complex applications might require configuration of ingress traffic for SSL/TLS termination or routing of multiple components. You might also need to restrict the flow of network traffic into or between pods and nodes for security.
 
 This article introduces the core concepts that provide networking to your applications in AKS enabled by Arc:
 
@@ -119,7 +119,7 @@ Calico supports multiple data planes including: a Linux eBPF data plane, a Linux
 > [!IMPORTANT]
 > Currently, the default selection is to use Calico in an overlay networking mode. To enable Flannel, use the `-primaryNetworkPlugin` parameter of the [`New-AksHciCluster`](./reference/ps/new-akshcicluster.md) PowerShell command and specify `flannel` as the value. This value cannot be changed after you deploy the cluster, and it applies to both Windows and Linux cluster nodes.
 
-Here's an example:
+For example:
 
 ```powershell
 New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'flannel'
@@ -127,8 +127,8 @@ New-AksHciCluster -name MyCluster -primaryNetworkPlugin 'flannel'
 
 ## Next steps
 
-This article covers networking concepts for containers in AKS nodes on Azure Stack HCI. For more information on AKS on Azure Stack HCI concepts, see the following articles:
+This article covers networking concepts for containers in AKS nodes on Azure Stack HCI. For more information about AKS on Azure Stack HCI concepts, see the following articles:
 
 - [Network concepts for AKS nodes](./concepts-node-networking.md)
 - [Clusters and workloads](./kubernetes-concepts.md)
-- [Secure traffic between pods using network policies](./calico-networking-policy.md).
+- [Secure traffic between pods using network policies](./calico-networking-policy.md)
