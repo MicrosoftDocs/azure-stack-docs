@@ -268,7 +268,7 @@ Discovering solution updates using the online catalog is the *recommended* metho
     Here's an example output:
 
     ```console
-     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
+     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate|? version -eq "10.2303.0.31"
      PS C:\Users\lcmuser> $Update.ComponentVersions
     
     PackageType Version      LastUpdated
@@ -337,7 +337,7 @@ If you're using solution extension updates from your hardware, you would need to
     Here's an example output:
 
     ```console
-     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
+     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate|? version -eq "10.2303.0.31"
      PS C:\Users\lcmuser> $Update.ComponentVersions
     
     PackageType Version      LastUpdated
