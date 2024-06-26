@@ -3,7 +3,7 @@ title: Concepts - Storage options for applications in AKS enabled by Azure Arc
 description: Storage options for applications in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/07/2022
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -80,7 +80,7 @@ spec:
       storage: 5Gi 
 ```
 
-When you create a pod definition, the persistent volume claim is specified to request the desired storage. You also then specify the `volumeMount` for your applications to read and write data. The following example YAML manifest shows how the previous persistent volume claim can be used to mount a volume at `/mnt/aks-hci`:
+When you create a pod definition, you specify the persistent volume claim to request the desired storage. You also then specify the `volumeMount` for your applications to read and write data. The following example YAML manifest shows how the previous persistent volume claim can be used to mount a volume at `/mnt/aks-hci`:
 
 ```yaml
 kind: Pod 

@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on for secure connection to Kubernetes A
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 02/15/2024
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -21,7 +21,7 @@ You can create a secure connection to your Kubernetes API server in AKS enabled 
 
 ## Overview of AD in AKS enabled by Arc
 
-Without Active Directory authentication, users must rely on a certificate-based _kubeconfig_ file when connecting to the API server via the `kubectl` command. The kubeconfig file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
+Without Active Directory authentication, you must rely on a certificate-based _kubeconfig_ file when you connect to the API server via the `kubectl` command. The **kubeconfig** file contains secrets such as private keys and certificates that need to be carefully distributed, which can be a significant security risk.
 
 As an alternative to using certificate-based kubeconfig, you can use AD SSO credentials as a secure way to connect to the API server. AD integration with AKS Arc lets users on a Windows domain-joined machine connect to the API server via `kubectl` using their SSO credentials. This removes the need to manage and distribute certificate-based kubeconfig files that contain private keys.
 
@@ -32,7 +32,7 @@ Another security benefit with AD integration is that the users and groups are st
 > [!NOTE]
 > Currently, AD SSO connectivity is only supported for workload clusters.
 
-This article guides you through the following steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
+This article guides you through the steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
 
 - Create the AD account for the API server, and then create the [keytab](https://web.mit.edu/kerberos/krb5-devel/doc/basic/keytab_def.html) file associated with the account. See [Create AD Auth using the keytab file](#create-ad-auth-using-the-keytab-file) to create the AD account and generate the keytab file.
 - Use the [keytab](https://web.mit.edu/kerberos/krb5-devel/doc/basic/keytab_def.html) file to install AD Auth on the Kubernetes cluster. As part of this step, a default role-based access control (RBAC) configuration is automatically created.
@@ -87,13 +87,13 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apise
 
 If the cluster host isn't domain-joined, use the admin user name or group name in SID format, as shown in the following example.
 
-If using an admin user:
+Admin user:
 
 ```powershell
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminUserSID <User SID>
 ```  
 
-If using an admin group:
+Admin group:
 
 ```powershell
 Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apiserver@CONTOSO.COM -adminGroupSID <Group SID>
@@ -101,7 +101,7 @@ Install-AksHciAdAuth -name mynewcluster1 -keytab .\current.keytab -SPN k8s/apise
 
 To find the SID for the user account, see [Determine the user or group security identifier](#determine-the-user-or-group-security-identifier).
 
-Before proceeding to the next steps, make note of the following items:
+Before you proceed to the next steps, make note of the following items:
 
 - Make sure the keytab file is named **current.keytab**.
 - Replace the SPN that corresponds to your environment.
@@ -154,11 +154,11 @@ You should copy the following three files from the AKS workload cluster to your 
 
 ### Step 6: Connect to the API server from the client machine
 
-After you've completed the previous steps, use your SSO credentials to sign in to your Windows domain-joined client machine. Open PowerShell, and then attempt to access the API server using `kubectl`. If the operation completes successfully, you have set up AD SSO correctly.
+After you complete the previous steps, use your SSO credentials to sign in to your Windows domain-joined client machine. Open PowerShell, and then attempt to access the API server using `kubectl`. If the operation completes successfully, you set up AD SSO correctly.
 
 ## Create and update the AD group role binding
 
-As mentioned in Step 2, a default role binding with cluster admin privileges is created for the user and/or the group that was provided during installation. Role binding in Kubernetes defines the access policies for AD groups. This step describes how to use RBAC to create new AD group role bindings in Kubernetes and to edit existing role bindings. For example, the cluster admin may want to grant additional privileges to users by using AD groups (which makes the process more efficient). For more information about RBAC, see [using RBAC authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
+As mentioned in Step 2, a default role binding with cluster admin privileges is created for the user and/or the group that was provided during installation. Role binding in Kubernetes defines the access policies for AD groups. This step describes how to use RBAC to create new AD group role bindings in Kubernetes and to edit existing role bindings. For example, the cluster admin might want to grant additional privileges to users by using AD groups (which makes the process more efficient). For more information about RBAC, see [using RBAC authorization](https://kubernetes.io/docs/reference/access-authn-authz/rbac/).
 
 When you create or edit other AD group RBAC entries, the subject name should have the **microsoft:activedirectory:CONTOSO\group name** prefix. Note that the names must contain a domain name and a prefix that are enclosed by double quotes.
 
@@ -166,7 +166,7 @@ Here are two examples:
 
 ### Example 1
 
-```yml
+```yaml
 apiVersion: rbac.authorization.k8s.io/v1 
 kind: ClusterRoleBinding 
 metadata: 
@@ -185,7 +185,7 @@ subjects:
 
 The following example shows how to create a custom role and role binding for a [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) with an AD group. In the example, `SREGroup` is a pre-existing group in the Contoso Active Directory. When users are added to the AD group, they're immediately granted privileges.
 
-```yml
+```yaml
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
