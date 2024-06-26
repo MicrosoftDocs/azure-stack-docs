@@ -3,7 +3,7 @@ title: Troubleshooting overview for Azure Kubernetes Service on Azure Stack HCI 
 description: An overview for troubleshooting issues encountered when using Azure Kubernetes Service on Azure Stack HCI and Windows Server. 
 author: sethmanheim
 ms.topic: troubleshooting
-ms.date: 06/28/2022
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 04/08/2022
 ms.reviewer: abha
@@ -14,7 +14,7 @@ ms.reviewer: abha
 
 # Troubleshooting overview
 
-This overview provides guidance on how to find solutions for issues you encounter when using Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Known issues and errors topics are organized by functional area. You can use the links provided in this topic to find the solutions and workarounds to resolve them. 
+This overview describes how to find solutions for issues you encounter when using Azure Kubernetes Service (AKS) on Azure Stack HCI and Windows Server. Known issues and errors topics are organized by functional area. You can use the links provided in this topic to find the solutions and workarounds to resolve them.
 
 For some troubleshooting operations, you may need to use a secure SSH connection to access Windows or Linux worker nodes, which allows you to securely access the nodes for maintenance, log collection, and troubleshooting. For more information, see [Connect with SSH to Windows or Linux worker nodes for maintenance and troubleshooting](ssh-connection.md).  
 
@@ -24,14 +24,14 @@ Logs are an important method to collect and review data from many sources that c
 
 ## Find solutions for known issues and errors
 
-AKS on Azure Stack HCI and Windows Server troubleshooting topics are organized by functional area. Use the links below to find solutions to issues and errors: 
+AKS on Azure Stack HCI and Windows Server troubleshooting topics are organized by functional area. Use the following links to find solutions to issues and errors:
 
-- [Installation ](/azure-stack/aks-hci/known-issues-installation)  
-- [Upgrade ](/azure-stack/aks-hci/known-issues-upgrade)
-- [Windows Admin Center ](/azure-stack/aks-hci/known-issues-windows-admin-center)
+- [Installation](/azure-stack/aks-hci/known-issues-installation)  
+- [Upgrade](/azure-stack/aks-hci/known-issues-upgrade)
+- [Windows Admin Center](/azure-stack/aks-hci/known-issues-windows-admin-center)
 - [Azure Arc enabled Kubernetes](/azure-stack/aks-hci/known-issues-arc)
 - [Uninstall](/azure-stack/aks-hci/known-issues-uninstall) 
-- [Kubernetes workload clusters ](/azure-stack/aks-hci/known-issues-workload-clusters) 
+- [Kubernetes workload clusters](/azure-stack/aks-hci/known-issues-workload-clusters) 
 - [Networking](/azure-stack/aks-hci/known-issues-networking)
 - [Security and identity](/azure-stack/aks-hci/known-issues-security) 
 - [Storage](/azure-stack/aks-hci/known-issues-storage)
