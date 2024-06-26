@@ -1,13 +1,13 @@
 ---
 
 title: Azure Kubernetes Service (AKS) enabled by Azure Arc pricing details
-description: Detailed pricing information for AKS enabled by Azure Arc.
+description: Learn about detailed pricing information for AKS enabled by Azure Arc.
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
+ms.date: 06/24/2024
 ms.lastreviewed: 05/31/2023
 ms.reviewer: rbaziwane
-ms.date: 10/04/2022
 
 # Intent: As a subscription owner, I want to understand how the AKS Arc service is priced and what I am paying for.
 # Keyword: pricing
@@ -65,4 +65,3 @@ If you enable hyper-threading on your physical computer, AKS also enables hyper-
 ## Next steps
 
 [AKS on Azure Stack HCI pricing details](https://azure.microsoft.com/pricing/details/azure-stack/aks-hci)
-

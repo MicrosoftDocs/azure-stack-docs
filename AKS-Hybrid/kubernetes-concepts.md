@@ -3,7 +3,7 @@ title: Kubernetes cluster architecture for AKS enabled by Azure Arc
 description: Learn the basic cluster and workload components of Kubernetes and how they relate to features of AKS enabled by Arc.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 01/09/2024
+ms.lastreviewed: 06/24/2024
 ms.reviewer: daschott
 ms.topic: conceptual
 ms.date: 05/16/2022
