@@ -3,7 +3,7 @@ title: Create and use load balancer with Azure Kubernetes Service in AKS enabled
 description: Learn how to create and use load balancer with Azure Kubernetes Service (AKS) in AKS Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 01/30/2024
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 01/30/2024
 ms.reviewer: rbaziwane
@@ -13,13 +13,13 @@ ms.reviewer: rbaziwane
 
 ---
 
-# Create and use load balancer with Azure Kubernetes Service in AKS enabled by Azure Arc
+# Create and use load balancer with Azure Kubernetes Service in AKS enabled by Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article details how to configure **HAProxy** as your load balancer for a workload cluster in AKS Arc. For custom load balancer integration, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
+This article describes how to configure **HAProxy** as your load balancer for a workload cluster in AKS Arc. For custom load balancer integration, see [Create and use a custom load balancer](configure-custom-load-balancer.md).
 
-In AKS enabled by Azure Arc, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. AKS load balances requests to the Kubernetes API server, and manages traffic to application services.
+In AKS Arc, the load balancer is deployed as a virtual machine (VM) running Linux and **HAProxy + KeepAlive** to provide load balanced services for the workload clusters. AKS load balances requests to the Kubernetes API server, and manages traffic to application services.
 
 ## Before you begin
 
