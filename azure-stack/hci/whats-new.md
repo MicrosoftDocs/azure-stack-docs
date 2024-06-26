@@ -27,7 +27,7 @@ The 2405 release train includes the following releases:
 
 This is primarily a bug fix release with a few improvements.
 
-- **Custom storage IPs for add and repair server scenarios**: Starting this release, it is possible to add servers or repair servers to the Azure Stack HCI cluster using custom IPs for the storage intent network adapters.
+- **Custom storage IPs for add and repair server scenarios**: Starting this release, it's possible to add servers or repair servers to the Azure Stack HCI cluster using custom IPs for the storage intent network adapters.
 - **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
 - **Reliabiltiy improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
 - **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
@@ -90,15 +90,15 @@ For more information, see the [Fixed issues list in in 2405](./known-issues-2405
 
 In this release, changes to the environment checker include several new checks:
 
-- A new check is added to ensure the inbox drivers on the physical network adapters are not in use. The provided OEM or manufacturer latest drivers must be installed before deployment.
+- A new check is added to ensure the inbox drivers on the physical network adapters aren't in use. The provided OEM or manufacturer latest drivers must be installed before deployment.
 - A new check is added to ensure the link speed across physical network adapters on the same intent is identical.
 - A new check is added to ensure RDMA is operational on the storage network adapters before deployment.
 - A new check is added to validate the infrastructure IP addresses defined during deployment have outbound connectivity and can resolve the DNS.
-- A new check is added to ensure the DNS server value is not empty on the management IP address.
-- A new check is added to make sure that there is only 1 IP address on the management network adapter.
+- A new check is added to ensure the DNS server value isn't empty on the management IP address.
+- A new check is added to make sure that there's only one IP address on the management network adapter.
 - A new check is added to ensure that the minimum bandwidth required for RDMA storage adapters is at least 10 Gb.
 - Check that the uplink connectivity in any physical network adapters assigned to Network ATC intents is up.
-- Improved the ability to handle adapters that do not expose the VLAN ID field correctly.
+- Improved the ability to handle adapters that don't expose the VLAN ID field correctly.
 
 ### Observability changes
 
