@@ -48,9 +48,9 @@ Download the [az connectedmachine.whl](https://aka.ms/ArcGatewayWhl) file extens
 
 Run the following command to add the az connected machine extension:
 
-    ```azurecli
-    az extension add --allow-preview true --yes --source [whl file path] 
-    ```
+```azurecli
+az extension add --allow-preview true --yes --source [whl file path] 
+```
 
 ## Step 2: Associate the Arc gateway resource with your existing Azure Stack HCI cluster
 
