@@ -34,6 +34,22 @@ With the Arc gateway in place, the traffic flows through these steps: **Arc agen
 
   Each Azure Stack HCI cluster node has its own Arc agent with the gateway router connecting and creating the tunnel to the Arc gateway resource in Azure.
 
+## Arc-enabled server endpoints redirected via the Arc gateway in limited Public Preview
+
+| Endpoint | Description | When required |
+|--|--|--|
+| login.windows.net | Microsoft Entra ID | Always |
+| pas.windows.net | Microsoft Entra ID | Always |
+| *.guestconfiguration.azure.com  | Extension management and guest configuration services | Always |
+| guestnotificationservice.azure.com   | Notification service for extension and connectivity scenarios  | Always |
+| *.guestnotificationservice.azure.com   | Notification service for extension and connectivity scenarios  | Always |
+| *.servicesbus.windows.net  | Multiple HCI services require access to this endpoint | Always |
+| *.waconazure.com | For Windows Admin Center connectivity    | If using Windows Admin Center |
+| *.blob.core.windows.net | Multiple HCI services require access to this endpoint  | Always |
+| dc.services.visualstudio.com | Multiple HCI services require access to this endpoint  | Always |
+
+The list of supported endpoints by the Arc gateway in HCI will increase during the Public Preview
+
 ## Restrictions and limitations
 
 Consider the following limitations of Arc gateway in this release:
@@ -50,7 +66,7 @@ After you complete the [Arc gateway Preview signup form](https://forms.office.
 
 ## Create the Arc gateway resource in Azure
 
-You must first create the Arc gateway resource in your Azure subscription. You can do so from any computer that has an internet connection, for example, your laptop.
+You must first create the Arc gateway resource in your Azure subscription. Do not create the Arc gateway resource from any of the HCI nodes. You can do so from any computer that has an internet connection, for example, your laptop.
 
 To create the Arc gateway resource in Azure, follow these steps:
 

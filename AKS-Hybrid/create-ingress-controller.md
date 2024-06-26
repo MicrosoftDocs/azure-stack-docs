@@ -3,7 +3,7 @@ title: Use an ingress controller in AKS enabled by Azure Arc
 description: Learn how to deploy an ingress controller in Azure Kubernetes Service in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/18/2022
+ms.date: 06/25/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -15,7 +15,7 @@ ms.reviewer: EkeleAsonye
 
 An *ingress controller* is a Kubernetes resource that allows external access to services within the Kubernetes cluster. Ingress lets an operator expose a service to external network requests, usually HTTP or HTTPS. You configure access by creating a set of rules that define the inbound connections that reach specific services.
 
-An ingress controller is a piece of software that provides configurable traffic routing for Kubernetes services. Kubernetes ingress resources are used to configure the ingress rules and routes for individual Kubernetes services. By using an ingress controller and ingress rules, you can use a single IP address to route traffic to multiple services in a Kubernetes cluster.
+An ingress controller is software that provides configurable traffic routing for Kubernetes services. Kubernetes ingress resources are used to configure the ingress rules and routes for individual Kubernetes services. By using an ingress controller and ingress rules, you can use a single IP address to route traffic to multiple services in a Kubernetes cluster.
 
 After you deploy the controller in your environment, you can then create and deploy the ingress manifest. Currently, you use ingress in AKS Arc by using the NGINX ingress controller. For information about how to install, configure, and use the NGINX ingress controller, see [Installation with Manifests](https://kubernetes.github.io/ingress-nginx/deploy/#azure).
 
@@ -58,7 +58,7 @@ The `spec` section provides information about what's configured. In this example
 
 ## Use ingress to load balance traffic
 
-In the following example, another path is added to the manifest that permits load balancing between different backends of an application. In this example, the operator can split traffic and send it to different service endpoints and deployments based on the path described. Behind each path, is a deployment and a service, which is helpful for endpoints that receive more traffic:
+In the following example, another path is added to the manifest that permits load balancing between different backends of an application. In this example, the operator can split traffic and send it to different service endpoints and deployments based on the path described. Behind each path is a deployment and a service, which is helpful for endpoints that receive more traffic:
 
 ```yaml
 apiVersion: networking.k8s.io/v1  
