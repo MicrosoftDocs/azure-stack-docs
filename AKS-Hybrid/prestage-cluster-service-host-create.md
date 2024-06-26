@@ -3,7 +3,7 @@ title: Deploy an Azure Kubernetes Service host with pre-staged cluster service o
 description: Learn how to set up an AKS host if you have pre-staged cluster service objects and DNS records.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/20/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -21,21 +21,21 @@ This how-to guide describes how to use PowerShell to configure your AKS host dep
 
 ## Before you begin
 
-- Make sure you have satisfied all the prerequisites in [system requirements](system-requirements.md).
+- Make sure you satisfy all the prerequisites in [system requirements](system-requirements.md).
 - Download and install the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 
 ## Step 1: Prepare your Active Directory and DNS server for deployment
 
-If you cannot enable dynamic DNS updates in your DNS environment to allow AKS enabled by Arc to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you must pre-create the respective records in Active Directory and DNS.
+If you can't enable dynamic DNS updates in your DNS environment to allow AKS enabled by Arc to register the cloud agent generic cluster name in Active Directory and the DNS system for discovery, you must pre-create the respective records in Active Directory and DNS.
 
-Create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice that doesn't exceed 32 characters). You must also create an associated DNS record pointing to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. More details on the steps in this process can be found in the [Failover Clustering documentation](/windows-server/failover-clustering/prestage-cluster-adds).
+Create a generic cluster service in Active Directory with the name `ca-cloudagent` (or a name of your choice that doesn't exceed 32 characters). Also, create an associated DNS record that points to the FQDN of the generic cluster service with the provided `cloudservicecidr` address. For more information about the steps in this process, see the [failover clustering documentation](/windows-server/failover-clustering/prestage-cluster-adds).
 
 The AKS deployment attempts to locate the specified `clusterRoleName` in Active Directory before proceeding with the deployment.
 
-> [!NOTE] 
+> [!NOTE]
 > Once AKS is deployed, this information cannot be changed.
 
-## Step 2: Prepare your machine(s) for deployment
+## Step 2: Prepare your machines for deployment
 
 Run checks on every physical node to see if all the requirements are satisfied to install AKS Arc. Open PowerShell as an administrator and run the following [Initialize-AksHciNode](./reference/ps/initialize-akshcinode.md) command:
 
@@ -48,12 +48,12 @@ Initialize-AksHciNode
 To create a virtual network for the nodes in your deployment to use, create an environment variable with the `New-AksHciNetworkSetting` PowerShell command. This variable is used later to configure a deployment that uses static IP. If you want to configure your AKS deployment with DHCP, see [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) for examples. You can also review some [networking node concepts](./concepts-node-networking.md).
 
 ```powershell
-#static IP
+# static IP
 $vnet = New-AksHciNetworkSetting -name mgmt-vnet -vSwitchName "extSwitch" -k8sNodeIpPoolStart "172.16.10.1" -k8sNodeIpPoolEnd "172.16.10.255" -vipPoolStart "172.16.255.0" -vipPoolEnd "172.16.255.254" -ipAddressPrefix "172.16.0.0/16" -gateway "172.16.0.1" -dnsServers "172.16.0.1" 
 ```
 
 > [!NOTE]
-> You must customize the values given in this example command for your environment.
+> You must customize the values shown in this example command for your environment.
 
 ## Step 4: Configure your deployment with the pre-staged cluster service objects and DNS records
 
@@ -66,7 +66,7 @@ Set-AksHciConfig -workingDir c:\ClusterStorage\Volume1\workingDir -cloudConfigLo
 ```
 
 > [!NOTE]
-> Customize the values given in this example command for your environment.
+> Customize the values shown in this example command for your environment.
 
 ## Step 5: Sign in to Azure and configure registration settings
 
@@ -78,16 +78,14 @@ Set-AksHciRegistration -subscriptionId "<subscriptionId>" -resourceGroupName "<r
 
 ## Step 6: Start a new deployment
 
-After you've configured your deployment, you must start it. Starting the deployment installs the AKS agents/services and the AKS host. To begin the deployment, run the following command:
+After you configure your deployment, you must start it. Starting the deployment installs the AKS agents/services and the AKS host. To begin the deployment, run the following command:
 
 ```powershell
 Install-AksHci
 ```
 
 > [!WARNING]
-> During installation of your AKS host, a **Kubernetes - Azure Arc** resource type is created in the resource group that's set during registration. Do not delete this resource as it represents your Azure Kubernetes Service host. You can identify the resource by checking its distribution field for a value of `aks_management`. Deleting this resource results in an out-of-policy deployment.
-
-In this how-to guide, you learned how to set up an AKS host using PowerShell if you have pre-staged cluster service objects and DNS records.
+> During installation of your AKS host, a **Kubernetes - Azure Arc** resource type is created in the resource group that's set during registration. Do not delete this resource, as it represents your Azure Kubernetes Service host. You can identify the resource by checking its distribution field for the `aks_management` value. Deleting this resource results in an out-of-policy deployment.
 
 ## Next steps
 
