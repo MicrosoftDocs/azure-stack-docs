@@ -25,11 +25,13 @@ The following operating systems (OSs) are supported for the VMware source applia
 |Component  |Supported OS |
 |---------|---------|
 |Source environment     |VMware vCenter Server version 7.0 <br> VMware vCenter Server version 6.7</br><br>VMware vCenter Server version 6.5         |
-|Source appliance     |VMware ESXi versions 6.5 or later         |
+|Source appliance     |Windows Server 2022          |
 |Target environment     |Azure Stack HCI, version 23H2         |
 |Target appliance     |Windows Server 2022         |
 |Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
 |Guest VM (Linux)     | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x<br>SUSE Linux Enterprise 12.x<br>Debian 9.x        |
+
+\*To migrate Windows Server 2008 R2 VMs, see the [FAQ](./migrate-faq.yml).
 
 ## Supported geographies
 
@@ -43,7 +45,7 @@ You can create an Azure Migrate project in many geographies in the Azure public 
 
 Keep in mind the following information as you create a project:
 
-- The project geography is only used to store the discovered metadata.
+- The project geography is only used to store the discovered metadata. Your VMware source environment and Azure Stack HCI target environment do not need to be located in the same geography/region as your Azure migrate project.
 - When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate doesn't move or store customer data outside of the region allocated.
 
 ## Azure portal requirements
@@ -63,9 +65,11 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 - The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 
-- In this release, you can only migrate VMs that have disks attached to the cluster shared volumes (CSV). If the VM disks aren't attached to the CSV, the disks can’t be migrated.
+- In this release, you can only migrate VMs that have disks attached to the VMFS Datastores. If the VM disks aren't attached to the VMFS Datastore, the disks can’t be migrated
 
 - Before you begin, for all VMware VMs, bring all the disks online and persist the drive letter. For more information, see how to [configure a SAN policy](/azure/migrate/prepare-for-migration#configure-san-policy) to bring the disks online.
+
+- The VMware source environment must be able to initiate a network connection with the target Azure Stack HCI cluster, either by being on the same on-premises network or by using a VPN.
 
 ## Target Azure Stack HCI cluster requirements
 
@@ -77,9 +81,13 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 
 - Make sure that a custom storage path is configured on your Arc Resource Bridge for migration. For more information, see [Create a storage path](../manage/create-storage-path.md).
 
+- The Azure Stack HCI target cluster must be able to initiate a network connection with the VMware source environment, either by being on the same on-premises network or by using a VPN.
+
 ## Azure Migrate project requirements
 
-If you have an existing Azure Migrate project with VM discovery complete, you need to [create a new Azure Migrate project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Stack HCI. You can't use existing Azure Migrate projects for migration.
+- If you have an existing Azure Migrate project with VM discovery complete, you need to [create a new Azure Migrate project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Stack HCI. You can't use existing Azure Migrate projects for migration.
+
+- You must have only one source appliance per Azure Migrate project for Azure Stack HCI migrations. This means you can't use the same Azure Migrate project for both a VMware source and a Hyper-V source. Make sure to create a new project for each source you wish to migrate from.
 
 ## Next steps
 

@@ -34,7 +34,7 @@ For both the source VMware vCenter Server and target Azure Stack HCI appliances,
 1. On the **Discover** page, select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 
-1. Copy the **Project key** and save it for later use.
+1. Copy the **Project key** (to a text editor) and save it for later use.
 1. You can now **Download the Azure Migrate source appliance** using either a *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png":::
@@ -154,13 +154,13 @@ Complete the following tasks to generate the target appliance key:
     - Select Servers or virtual machines (VM) for **What do you want to migrate?**.
     - Select **Azure Stack HCI** for **Where do you want to migrate?**.
     - Select **VMware vSphere** for **Virtualization type**.
-    - The **On-premises appliance** is prepopulated with your source appliance. You can select the applicable one from the dropdown if you have more than one source appliance.
+    - For the **On-premises appliance** the source appliance is pre-populated. If you have more than one source appliance, select the applicable one from the dropdown list.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-specify-intent.png" alt-text="Screenshot showing the Specify intent page." lightbox="./media/migrate-vmware-replicate/replicate-specify-intent.png":::
 
-1. Select **Download and configure** in **Before you start replication...** from the information block, then select **Continue**.
+1. Select **Download and configure** in **Before you start replication to Azure Stack HCI** from the information block.
 
-1. On the **Deploy and configure the target appliance** pop-up, provide a name for the target appliance and then select **Generate key**.
+1. On the **Deploy and configure the target appliance** pane, provide a name for the target appliance and then select **Generate key**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-target-key-1.png" alt-text="Screenshot showing the Generate key popup." lightbox="./media/migrate-vmware-replicate/generate-target-key-1.png":::
 
@@ -295,9 +295,9 @@ This step applies only if you downloaded the .zip file.
 
 1. On the **Specify intent** page:
     1. **What do you want to migrate** is automatically populated as **Servers or virtual machines (VM)**.
-    1. Select **Azure Stack HCI** as **Where do you want to migrate to ?**
-    1. Select **Hyper-V** as the **Virtualization type**.
-    1. From the dropdown list, select the **On-premises appliance** (source) used for discovery.
+    1. Select **Azure Stack HCI** for **Where do you want to migrate to ?**
+    1. Select **VMware vSphere** for the **Virtualization type**.
+    1. Select the source appliance as the **On-premises appliance** used for discovery.
     1. When finished, select **Continue**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replication-specify-intent-1.png" alt-text="Screenshot showing the replication Specify intent page." lightbox="./media/migrate-vmware-replicate/replication-specify-intent-1.png":::

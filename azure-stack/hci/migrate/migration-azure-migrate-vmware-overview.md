@@ -3,7 +3,7 @@ title: Use Azure Migrate to move VMware VMs to Azure Stack HCI (preview)
 description: Learn about how to use Azure Migrate to migrate VMware VMs to your Azure Stack HCI cluster (preview).
 author: alkohli
 ms.topic: overview
-ms.date: 04/24/2024
+ms.date: 06/26/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -26,7 +26,7 @@ For more information on the Azure Migrate platform, see [About Azure Migrate](/a
 Here are the benefits of using Azure Migrate to migrate your on-premises VMware VMs to Azure Stack HCI. This solution:
 
 - Requires no preparation for your VMware VMs including installation of agents prior to migration.
-- Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure.
+- Provides the control plane via the Azure portal. You can use the portal to start, run, and track your migration to Azure Stack HCI.
 - Keeps the data flow local, from on-premises VMware source servers to Azure Stack HCI.
 - Results in a minimal downtime for the VMs running on your on-premises VMware servers.
 
@@ -45,7 +45,7 @@ The migration process requires the following components:
 - Target appliance running on your on-premises Azure Stack HCI cluster. The target cluster hosts the VMs that you migrated from your VMware source environment.
 
 > [!NOTE]
-> The Azure Migrate project is used to discover the VMware VMs and replicate them to the target Azure Stack HCI cluster. The VMware VM disks and data that are being migrated are not stored in the associated Azure Storage account. Only the metadata and the replication date is stored in Storage account.
+> The Azure Migrate project is used to discover the VMware VMs and replicate them to the target Azure Stack HCI cluster. The VMware VM disks and data that are being migrated are not stored in the associated Azure Storage account. Only the metadata is stored in Storage account.
 
 ## Migration phases
 
