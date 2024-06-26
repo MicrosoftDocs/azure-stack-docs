@@ -261,7 +261,7 @@ Discovering solution updates using the online catalog is the *recommended* metho
 3. Optionally review the versions of the update package components.
 
     ```powershell
-    $Update = Get-SolutionUpdate 
+    $Update = Get-SolutionUpdate | ? version -eq "10.2302.0.31"
     $Update.ComponentVersions
     ```
 
@@ -330,7 +330,7 @@ If you're using solution extension updates from your hardware, you would need to
 7. Optionally check the version of the update package components. Run the following command:
 
     ```powershell
-    $Update = Get-SolutionUpdate 
+    $Update = Get-SolutionUpdate | ? version -eq "10.2302.0.31"
     $Update.ComponentVersions 
     ```
 
