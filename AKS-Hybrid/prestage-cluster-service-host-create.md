@@ -1,6 +1,6 @@
 ---
 title: Deploy an Azure Kubernetes Service host with pre-staged cluster service objects and DNS records using PowerShell
-description: Learn how to set up an AKS host if you have pre-staged cluster service objects and DNS records.
+description: Learn how to set up an AKS host if you pre-staged cluster service objects and DNS records.
 author: sethmanheim
 ms.topic: how-to
 ms.date: 06/26/2024
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This how-to guide describes how to use PowerShell to configure your AKS host deployment if you have pre-staged cluster service objects and DNS records in AKS enabled by Azure Arc.
+This how-to guide describes how to use PowerShell to configure your AKS host deployment if you pre-staged cluster service objects and DNS records in AKS enabled by Azure Arc.
 
 ## Before you begin
 
