@@ -34,7 +34,7 @@ For both the source VMware vCenter Server and target Azure Stack HCI appliances,
 1. On the **Discover** page, select **Yes, with VMware vSphere Hypervisor** under **Are your servers virtualized** in Azure Migrate.
 1. Enter a name for your source appliance and generate the key for the source VMware appliance. For detailed steps, see [Generate the project key](/azure/migrate/how-to-set-up-appliance-vmware#generate-the-project-key).
 
-1. Copy the **Project key** and save it for later use.
+1. Copy the **Project key** (to a text editor) and save it for later use.
 1. You can now **Download the Azure Migrate source appliance** using either a *.ova* file or a *.zip* file. The detailed steps are provided in the subsequent sections.
 
     :::image type="content" source="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png" alt-text="Screenshot of going to Discover page." lightbox="./media/migrate-vmware-replicate/generate-source-appliance-project-key-2.png":::
