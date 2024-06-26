@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/19/2024
+ms.date: 06/26/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -17,7 +17,7 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-There are currently 3 release trains for Azure Stack HCI, version 23H2: 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+There are currently three release trains for Azure Stack HCI, version 23H2: 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
 ## [2405 releases](#tab/2405releases)
 
@@ -123,6 +123,13 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 - The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
 - This release changes the behavior to not delete the Arc server resources when the Azure Stack HCI cluster resource is deleted.
 
+### Security changes
+
+This release includes the following updates to the security documentation:
+
+- The compliance score for Azure Stack HCI server is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](../hci/manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the non-compliant rules and the reasons for the current gap.
+- The Security Baselines settings have been updated to 315 settings, including six removals, one addition, and one change related to storing passwords for network authentication due deployment compatibility issues. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
+
 ### AKS on Azure Stack HCI, version 23H2
 
 For a list of the changes and improvements in AKS on Azure Stack HCI, version 23H2, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
@@ -177,6 +184,12 @@ Azure Stack HCI, version 23H2 solution is now supported in Australia. For more i
 
 We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./plan/cloud-deployment-network-considerations.md).
 
+### Security changes
+
+This release includes the following updates to the security documentation:
+
+- Updated the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](../hci/manage/manage-security-with-defender-for-cloud.md).
+- Updated the Security Baselines settings. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
 
 ## [2311 releases](#tab/2311releases)
 
