@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/18/2024
+ms.date: 06/27/2024
 ---
 
 # Collect diagnostic logs for Azure Stack HCI
@@ -25,7 +25,7 @@ Here are the scenarios in which you can perform on-demand log collection:
 
 - Microsoft Support requests for logs based on an open case.
 - Logs are collected when a cluster is connected and registered.
-- Logs are collected when the Observability components are operational and installed.
+- Logs are collected when the observability components are operational and installed.
 - Logs are collected when a cluster is only partly registered.
 - Logs are collected for issues not related to registration failures.
 
@@ -45,35 +45,33 @@ You can perform on-demand log collection using any of the following methods:
 
 - **(Recommended) Azure portal**. Use this method when you want to collect and send logs at the cluster level.
 
-- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You can save them to an SMB share, send supplementary logs, or send logs for specific rules only. To collect logs and send them to Microsoft, run the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system.
+- **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific rules only.
 
 ### [Azure portal (recommended)](#tab/azureportal)
 
 Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster via the Azure portal:
 
-1. the Azure portal, go to the Azure Stack HCI cluster resource.
+1. In the Azure portal, go to the Azure Stack HCI cluster resource.
 1. In the left pane, under **Settings**, select **Diagnostics and Remote Support**.
 1. On the **Get started** tab, under the **Send Diagnostics Logs** tile, select **Go to diagnostics**.
 
    :::image type="content" source="./media/collect-logs/get-started-tab.png" alt-text="Screenshot shows the Get started tab." lightbox="./media/collect-logs/get-started-tab.png" :::
 
-1. On the **Diagnostics** tab, under **Log activity**, review the log collection entries for your cluster. If you want more details about a specific log collection entry, select the link under **Time collected** to view more details in the **Log details** pane.
+1. On the **Diagnostics** tab, under **Log activity**, review log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** to view more information in the **Log details** pane.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
-1. To collect and send logs now, select **Send logs** .
+1. To collect and send logs now, select **Send logs**.
 
    :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Send logs button." lightbox="./media/collect-logs/diagnostics-tab.png" :::
 
-1. On the **Send logs** pane on the right, select the **Log start time** and **Log end time**.
-
-1. Select the **Collect and upload logs** button. By selecting this, you agree to the terms and conditions of collection logs.
+1. On the **Send logs** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. By doing this, you agree to the terms and conditions of collection logs.
 
    :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
 
 ## [PowerShell](#tab/powershell)
 
-Run the `Send-DiagnosticData` cmdlet from any node on your Azure Stack HCI cluster to perform on-demand log collection.
+To collect logs and send them to Microsoft using PowerShell, run the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system.
 
 Here are some important points to consider:
 
@@ -221,34 +219,11 @@ Follow these steps to save logs to a local share:
    Send-DiagnosticData -SaveToPath <path to share> -ShareCredential $shareCredential
    ```
 
-If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
+   If you have outbound connectivity from the SMB share where you saved the logs, you can run the following command to send the logs to Microsoft:
 
-```powershell
-Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-share> -ShareCredentail $shareCredential
-```
-
-## Provide required information in a support case
-
-If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
-
-You can obtain this information from either the output of the `Send-DiagnosticData` cmdlet or directly from the problematic page in the Azure portal.
-
-### Provide information from the `Send-DiagnosticData` output
-
-When you use `Send-DiagnosticData` to collect logs, it also provides key details in its output that you need to share with Microsoft Support. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
-
-When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
-
-- `AEORegion`: The location where your device is registered.
-- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
-- `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
-- `CorrelationId`: A unique identifier to locate the logs.
-
-### Provide information from the Azure portal page where issue occurs
-
-On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
-
-If you're on any of the Azure Stack HCI blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
+   ```powershell
+   Send-DiagnosticData NoLogCollection -SupplementaryLogs <path-to-share> -ShareCredentail $shareCredential
+   ```
 
 ## `Send-DiagnosticData` command reference
 
@@ -608,8 +583,8 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | HostNetwork | Logs used to troubleshoot Network ATC, the underlying operating system component used to configure host networking. |
 | MOC_ARB | Management stack that enables cloud-based management of virtual machines on Azure Stack HCI and Windows Server. |
 | NC | Information related to the network infrastructure. |
-| ObservabilityLogmanTraces | Collects logs for Observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
-| ObservabilityVolume | Collects logs for Observability volume. |
+| ObservabilityLogmanTraces | Collects logs for the observability traces. These logs help with troubleshooting issues with sending diagnostic data. |
+| ObservabilityVolume | Collects logs for the observability volume. |
 | OEMDiagnostics | Collects logs for OEM diagnostics, which can help to identify and resolve issues with your server hardware, such as BIOS, drivers, sensors, and more. |
 | OSUpdateLogs | Role that collects logs related to operating system updates on Azure Stack HCI nodes, useful for troubleshooting update-related issues. |
 | RemoteSupportAgent | Logs that help troubleshoot issues with remote support sessions, which are used to address customer support cases. |
@@ -617,6 +592,29 @@ The following roles are available for filtering by the **FilterByRole** paramete
 | URP | Consists of logs related to the `UpdateService` and `OsUpdate` ECE role events. The `Update Service` manages updates for Azure Stack HCI systems. The `OsUpdate` ECE role is used to acquire and install operating system updates on machines (physical hosts and InfraVMs) which aren't part of the cluster during the deployment, add node, repair node, and Infra VMs update scenarios. Traces from these two components are part of the `URP` role. |
 
 ---
+
+## Provide required information in a support case
+
+If you encounter an issue and need help from Microsoft Support, they might ask for specific information to locate your logs.
+
+You can obtain this information directly from the problematic page in the Azure portal or from the output of the `Send-DiagnosticData` cmdlet.
+
+### Provide information from the Azure portal page where issue occurs
+
+On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
+
+If you're on any of the Azure Stack HCI blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
+
+### Provide information from the `Send-DiagnosticData` output
+
+When you use `Send-DiagnosticData` to collect logs, it also provides key details in its output that you need to share with Microsoft Support. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
+
+When requested, share the following information with Microsoft Support. Get this information from the `Send-DiagnosticData` output.
+
+- `AEORegion`: The location where your device is registered.
+- `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
+- `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
+- `CorrelationId`: A unique identifier to locate the logs.
 
 ## Next steps
 
