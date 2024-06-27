@@ -1,9 +1,9 @@
 ---
 title: Adapt applications for use in mixed-OS Kubernetes clusters
-description: How to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS Arc are scheduled on the correct worker node operating system.
+description: Learn how to use node selectors or taints and tolerations on Azure Kubernetes Service to ensure applications in mixed OS Kubernetes clusters running on AKS Arc are scheduled on the correct worker node operating system.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/03/2022
+ms.date: 06/27/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -16,7 +16,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-AKS enabled by Azure Arc enables you to run Kubernetes clusters with both Linux and Windows nodes, but you must make small edits to your apps for use in these mixed-OS clusters. In this how-to guide, you learn how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
+AKS enabled by Arc enables you to run Kubernetes clusters with both Linux and Windows nodes, but you must make small edits to your apps for use in these mixed-OS clusters. This how-to guide describes how to ensure your application gets scheduled on the right host OS using either node selectors or taints and tolerations.
 
 This article assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Arc](kubernetes-concepts.md).
 
@@ -24,21 +24,21 @@ This article assumes a basic understanding of Kubernetes concepts. For more info
 
 A *node selector* is a simple field in the pod specification YAML that constrains pods to only be scheduled onto healthy nodes matching the operating system. In your pod specification YAML, specify a `nodeSelector` value of Windows or Linux, as shown in the following examples:
 
-```yml
+```yaml
 kubernetes.io/os = Windows
 ```
 
 or,
 
-```yml
+```yaml
 kubernetes.io/os = Linux
 ```
 
-For more information about nodeSelectors, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/).
+For more information about node selectors, see [node selectors](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/).
 
 ## Taints and tolerations
 
-**Taints** and **tolerations** work together to ensure that pods aren't scheduled on nodes unintentionally. A node can be "tainted" to reject pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
+**Taints** and **tolerations** work together to ensure that pods aren't unintentionally scheduled on nodes. A node can be "tainted" to reject pods that don't explicitly tolerate its taint through a "toleration" in the pod specification YAML.
 
 Windows OS nodes in AKS Arc can be tainted when created with the [New-AksHciNodePool](./reference/ps/new-akshcinodepool.md) or the [New-AksHciCluster](./reference/ps/new-akshcicluster.md) commands. You can also use these commands to taint Linux OS nodes. The following example taints Windows nodes.
 
@@ -82,7 +82,7 @@ Taints       : {sku=Windows:NoSchedule}
 
 You can specify a toleration for a pod in the pod specification YAML. The following toleration "matches" the taint created by the `kubectl` taint line shown in the previous example. The result is that a pod with the toleration can schedule onto the tainted nodes.
 
-```yml
+```yaml
 tolerations:
 - key: node.kubernetes.io/os
   operator: Equal
