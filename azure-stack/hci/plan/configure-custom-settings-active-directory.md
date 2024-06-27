@@ -26,7 +26,7 @@ Here are some of the Active Directory requirements for the Azure Stack HCI deplo
 
 - A dedicated organization unit (OU) is required to optimize query times for the object discovery. This optimization is critical for large Active Directories spanning multiple sites. This dedicated OU is only required for the computer objects and the Windows failover cluster CNO.
 
-- The user (aka deployment user) requires the necessary permissions over the dedicated OU. The user can reside anywhere in the directory.
+- The user (also known as deployment user) requires the necessary permissions over the dedicated OU. The user can reside anywhere in the directory.
 
 - Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Stack HCI, version 23H2 manages security defaults including the drift protection. For more information, see [Security features for Azure Stack HCI, version 23H2](../concepts/security-features).
 
@@ -36,7 +36,7 @@ Here are some of the Active Directory requirements for the Azure Stack HCI deplo
 
 The permissions required by the user object referenced as deployment user is scoped to be applicable to the dedicated OU only. The permissions can be summarized as read, create, and delete computer objects with the ability to retrieve BitLocker recovery information.
 
-Here is a table that contains the permissions required for the deployment user and the cluster CNO over the OU and all descendant objects.
+Here's a table that contains the permissions required for the deployment user and the cluster CNO over the OU and all descendant objects.
 
 
 |Role  |Description of assigned permissions |
@@ -114,9 +114,9 @@ nslookup "machine name"
 
 ## Cluster aware updating (CAU)
 
-Cluster aware updating applies a client access point (VCO) that requires a DNS record.
+Cluster aware updating applies a client access point (Virtual Computer Object) that requires a DNS record.
 
-In environments where dynamic secure updates aren't possible, you are required to manually create the VCO. For more information on how to create the VCO, see [Prestage cluster computer objects in Active Directory Domain Services](/windows-server/failover-clustering/prestage-cluster-adds#more-information).
+In environments where dynamic secure updates aren't possible, you're required to manually create the Virtual Computer Object (VCO). For more information on how to create the VCO, see [Prestage cluster computer objects in Active Directory Domain Services](/windows-server/failover-clustering/prestage-cluster-adds#more-information).
 
 > [!NOTE]
 > Make sure to disable Dynamic DNS update in the Windows DNS client. This setting is protected by the drift control and built into the Network ATC. For more information on how to change this protected setting, see [Modify security defaults](../manage/manage-secure-baseline.md#modify-security-defaults). <!--Unfortunately, the timing is very critical because the setting is protected by the drift control build into Network ATC.-->
