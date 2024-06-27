@@ -15,7 +15,7 @@ ms.date: 06/27/2024
 
 This article describes how to collect diagnostic logs for Azure Stack HCI and send them to Microsoft via the Azure portal or PowerShell. These diagnostic logs help identify and fix any issues with your Azure Stack HCI solution.
 
-## On-demand log collection
+## About on-demand log collection
 
 On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
@@ -43,7 +43,7 @@ Before you collect on-demand logs, you must complete the following prerequisites
 
 You can perform on-demand log collection using any of the following methods:
 
-- **(Recommended) Azure portal**. Use this method when you want to collect and send logs at the cluster level.
+- **(Recommended) The Azure portal**. Use this method when you want to collect and send logs at the cluster level.
 
 - **PowerShell**. Use this method if you want to collect logs based on specific parameters. You have the option to save logs to an SMB share, send supplementary logs, or send logs for specific rules only.
 
@@ -73,7 +73,7 @@ Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster v
 
 To collect logs and send them to Microsoft using PowerShell, run the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system.
 
-Here are some important points to consider:
+Here are some important points to consider when collecting logs using PowerShell:
 
 - The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of nodes in your Azure Stack HCI environment.
 - If you don't specify any parameters, the `Send-DiagnosticData` cmdlet collects data from all nodes for the previous one-hour duration.
@@ -599,13 +599,13 @@ If you encounter an issue and need help from Microsoft Support, they might ask f
 
 You can obtain this information directly from the problematic page in the Azure portal or from the output of the `Send-DiagnosticData` cmdlet.
 
-### Provide information from the Azure portal page where issue occurs
+### [Azure portal](#tab/azureportal)
 
 On the problematic page in the Azure portal, press CTRL+ALT+A to download a diagnostic file with the following information: session ID and the URL. In most cases, this information is sufficient to get Microsoft Support started on troubleshooting.
 
 If you're on any of the Azure Stack HCI blades where you're experiencing issues, the current URI has the resource ID needed to debug the service.
 
-### Provide information from the `Send-DiagnosticData` output
+### [PowerShell](#tab/powershell)
 
 When you use `Send-DiagnosticData` to collect logs, it also provides key details in its output that you need to share with Microsoft Support. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue.
 
@@ -615,6 +615,8 @@ When requested, share the following information with Microsoft Support. Get this
 - `AEODeviceARMResourceUri`: A unique identifier to locate the resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.AzureStackHCI/clusters/<Name of Cluster>`.
 - `AEOClusterNodeArcResourceUri`: A unique identifier to locate the ARC resource, for example: `/subscriptions/<subscription GUID>/resourceGroups/<Name of Resource group>/providers/Microsoft.HybridCompute/Machines/<machine name>`.
 - `CorrelationId`: A unique identifier to locate the logs.
+
+---
 
 ## Next steps
 
