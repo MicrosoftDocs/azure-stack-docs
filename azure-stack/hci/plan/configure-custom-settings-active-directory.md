@@ -46,7 +46,7 @@ Here's a table that contains the permissions required for the deployment user an
 |Cluster CNO over the OU applied to this object and all descendant objects     |Read all properties.<br> Create Computer objects.         |
 
 
-## Assign permissions using PowerShell
+### Assign permissions using PowerShell
 
 You can use PowerShell cmdlets to assign appropriate permissions to deployment user over OU. The following example shows how you can assign the required permissions to a *deploymentuser* over the OU *HCI001* that resides in the Active Directory domain *contoso.com*.
 
@@ -89,7 +89,7 @@ $acl.AddAccessRule($rule3)
 Set-Acl -Path $ouPath -AclObject $acl
 ```
 
-## DNS records
+## Required DNS records
 
 If your DNS server doesn't support secure dynamic updates, you must create required DNS records before you deploy your Azure Stack HCI system.
 
