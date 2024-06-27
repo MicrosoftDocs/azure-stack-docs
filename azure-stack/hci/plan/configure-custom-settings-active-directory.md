@@ -106,7 +106,7 @@ The following table contains the required DNS records and types:
 
 ### Example - verify that DNS record exists
 
-TO verify that the DNS record exists, run the following command:
+To verify that the DNS record exists, run the following command:
 
 ```powershell
 nslookup "machine name"
@@ -119,7 +119,8 @@ Cluster aware updating applies a client access point (Virtual Computer Object) t
 In environments where dynamic secure updates aren't possible, you're required to manually create the Virtual Computer Object (VCO). For more information on how to create the VCO, see [Prestage cluster computer objects in Active Directory Domain Services](/windows-server/failover-clustering/prestage-cluster-adds#more-information).
 
 > [!NOTE]
-> Make sure to disable Dynamic DNS update in the Windows DNS client. This setting is protected by the drift control and built into the Network ATC. For more information on how to change this protected setting, see [Modify security defaults](../manage/manage-secure-baseline.md#modify-security-defaults). <!--Unfortunately, the timing is very critical because the setting is protected by the drift control build into Network ATC.-->
+> Make sure to disable Dynamic DNS update in the Windows DNS client. This setting is protected by the drift control and is built into the Network ATC. Create the VCO immediately after disabling dynamic updates to avoid the drift rollback.
+> For more information on how to change this protected setting, see [Modify security defaults](../manage/manage-secure-baseline.md#modify-security-defaults). <!--Unfortunately, the timing is very critical because the setting is protected by the drift control build into Network ATC.-->
 
 ## Example – disable dynamic update
 
