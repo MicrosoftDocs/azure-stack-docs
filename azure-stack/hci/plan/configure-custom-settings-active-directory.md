@@ -15,7 +15,7 @@ ms.custom: devx-track-azurepowershell
 
 This article describes the permissions and the DNS records required for the Azure Stack HCI, version 23H2 deployment. The article also uses examples with detailed steps on how to manually assign permissions and create DNS records for your Active Directory environment.
 
-The Azure Stack HCI solution is deployed in large Active Directories with established processes and tools for assigning permissions. Microsoft provides an Active Directory preparation script that can be optionally used for the Azure Stack HCI deployment. The required permissions for Active Directory, the creation of the organizational unit, and blocking inheritance of GPOs - can all be also configured manually.
+The Azure Stack HCI solution is deployed in large Active Directories with established processes and tools for assigning permissions. Microsoft provides an [Active Directory preparation script](../deploy/deployment-prep-active-directory.md) that can be optionally used for the Azure Stack HCI deployment. The required permissions for Active Directory, the creation of the organizational unit, and blocking inheritance of GPOs - can all be also configured manually.
 
 You also have the choice of the DNS server to use, for example, you can use Microsoft DNS servers that support the integration with Active Directory to take advantage of secure dynamic updates. If Microsoft DNS servers aren't used, you must create a set of DNS records for the deployment and update of the Azure Stack HCI solution.
 
