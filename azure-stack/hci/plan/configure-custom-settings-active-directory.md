@@ -131,4 +131,4 @@ Get-NetAdapter "vManagement*"|Set-DnsClient -RegisterThisConnectionsAddress $fal
 
 ## Next steps
 
-
+Proceed to [Register the Azure Stack HCI servers with Arc](../deploy/deployment-arc-register-server-permissions.md).
