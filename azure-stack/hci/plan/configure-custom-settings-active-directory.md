@@ -122,7 +122,7 @@ In environments where dynamic secure updates aren't possible, you're required to
 > Make sure to disable Dynamic DNS update in the Windows DNS client. This setting is protected by the drift control and is built into the Network ATC. Create the VCO immediately after disabling dynamic updates to avoid the drift rollback.
 > For more information on how to change this protected setting, see [Modify security defaults](../manage/manage-secure-baseline.md#modify-security-defaults). <!--Unfortunately, the timing is very critical because the setting is protected by the drift control build into Network ATC.-->
 
-## Example – disable dynamic update
+### Example – disable dynamic update
 
 To disable dynamic update, run the following command:
 
