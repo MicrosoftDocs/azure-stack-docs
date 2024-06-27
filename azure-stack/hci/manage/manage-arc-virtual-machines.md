@@ -238,13 +238,15 @@ Follow these steps in the Azure portal of your Azure Stack HCI system to restart
 
 ## Pause a VM
 
-Pausing the VMs is useful to save the compute resources when you are not using the VMs. Pausing a VM stops any CPU activity and saves the current state of the VM in the memory. You can only pause running VMs. Once paused, you can resume the VM later.
+Pausing the VMs is useful to save the compute resources when you are not using the VMs. Pausing a VM stops any CPU activity. You can only pause running VMs. Once paused, you can resume the VM later.
 
 1. [Connect to the server node of your Azure Stack HCI system](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-directly).
 1. To pause the VM, run the following PowerShell cmdlet:
 
     ```azurecli
-    az stack-hci-vm pause --name "<VM name>" --resource-group "<Resource group name>"
+    $rg = "<Resource group name>"
+    $vmName = "<VM name>"
+    az stack-hci-vm pause --name $vmName --resource-group $rg
     ```
 
     The parameters used for this cmdlet are as follows:
@@ -258,7 +260,9 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     Here's an example output:
 
     ```output
+[v-host1]: PS C:\Users\HCIDeploymentUser\Documents> $rg = "<Resource group name>"
 
+[v-host1]: PS C:\Users\HCIDeploymentUser\Documents> $vmName = "testvm001"
     ```
 
 ## Save a VM
@@ -269,7 +273,12 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 1. To save the VM, run the following PowerShell cmdlet:
 
     ```azurecli
-    az stack-hci-vm save --name "<VM name>" --resource-group "<Resource group name>"
+    ## Set input parameters
+    $rg = "<Resource group name>"
+    $vmName = "<VM name>"
+    
+    ## Save the VM
+    az stack-hci-vm save --name $vmName --resource-group $rg
     ```
 
     The parameters used for this cmdlet are as follows:
@@ -279,6 +288,20 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
     |`name`     |Name of the virtual machine.         |
     |`resource-group`    |Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.         |
     |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
+
+1. Check the VM  status to verify that the VM is saved.
+  
+    ```azurecli
+    ## Check the VM status
+    az stack-hci-vm show --name $vmName --resource-group $rg
+    ```
+
+1. Start the VM to resume the VM from the saved state.
+
+    ```azurecli
+    ## Start the VM
+    az stack-hci-vm start --name $vmName --resource-group $rg
+    ```
 
     Here's an example output:
 
