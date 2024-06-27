@@ -28,9 +28,9 @@ Here are some of the Active Directory requirements for the Azure Stack HCI deplo
 
 - The user (also known as deployment user) requires the necessary permissions over the dedicated OU. The user can reside anywhere in the directory.
 
-- Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Stack HCI, version 23H2 manages security defaults including the drift protection. For more information, see [Security features for Azure Stack HCI, version 23H2](../concepts/security-features).
+- Blocking group policy inheritance is required to prevent any conflicts of settings coming from group policy objects. The new engine introduced with Azure Stack HCI, version 23H2 manages security defaults including the drift protection. For more information, see [Security features for Azure Stack HCI, version 23H2](../concepts/security-features.md).
 
-- Computer account objects and cluster CNO can be [precreated](https://learn.microsoft.com/windows-server/failover-clustering/prestage-cluster-adds) using the deployment user as an alternative to the deployment itself creating them.
+- Computer account objects and cluster CNO can be [precreated](/windows-server/failover-clustering/prestage-cluster-adds) using the deployment user as an alternative to the deployment itself creating them.
 
 ## Required permissions
 
@@ -42,7 +42,7 @@ Here's a table that contains the permissions required for the deployment user an
 |Role  |Description of assigned permissions |
 |---------|---------|
 |Deployment user over OU and all descendant objects    | List contents.<br> Read all properties.<br> Read permissions. <br> Create computer objects. <br> Delete computer objects.        | 
-|Deployment user over OU but applied only to Descendant *msFVE-Recoveryinformation* objects  |Full control.<br> List contents.<br> Read all properties.<br> Write all properties.<br> Delete.<br> Read permissions.<br> Modify permissions.<br> Modify owner.<br> All validated writes.        |
+|Deployment user over OU but applied only to descendant *msFVE-Recoveryinformation* objects  |Full control.<br> List contents.<br> Read all properties.<br> Write all properties.<br> Delete.<br> Read permissions.<br> Modify permissions.<br> Modify owner.<br> All validated writes.        |
 |Cluster CNO over the OU applied to this object and all descendant objects     |Read all properties.<br> Create Computer objects.         |
 
 
@@ -51,7 +51,7 @@ Here's a table that contains the permissions required for the deployment user an
 You can use PowerShell cmdlets to assign appropriate permissions to deployment user over OU. The following example shows how you can assign the required permissions to a *deploymentuser* over the OU *HCI001* that resides in the Active Directory domain *contoso.com*.
 
 > [!NOTE]
-> The script requires you to precreate user object [New-ADUser](/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps) and [OU](https://learn.microsoft.com/powershell/module/activedirectory/new-adorganizationalunit?view=windowsserver2022-ps) in your Active Directory. For more information on how to block group policy inheritance, see [Set-GPInheritance](https://learn.microsoft.com/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2022-ps).
+> The script requires you to precreate user object [New-ADUser](/powershell/module/activedirectory/new-aduser?view=windowsserver2022-ps&preserve-view=true) and [OU](/powershell/module/activedirectory/new-adorganizationalunit?view=windowsserver2022-ps&preserve-view=true) in your Active Directory. For more information on how to block group policy inheritance, see [Set-GPInheritance](/powershell/module/grouppolicy/set-gpinheritance?view=windowsserver2022-ps&preserve-view=true).
 
 Run the following PowerShell cmdlets to import the Active Directory module and assign required permissions:
 
