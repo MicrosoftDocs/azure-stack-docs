@@ -4,7 +4,7 @@ description: Learn about the vertical scaling of node pools in AKS enabled by Ar
 ms.topic: conceptual
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 03/18/2022
+ms.lastreviewed: 06/26/2024
 ms.reviewer: mikek
 ms.date: 10/21/2022
 
@@ -16,11 +16,11 @@ ms.date: 10/21/2022
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-You can change the size of the virtual machines in a given node pool to increase the resources available to your node pool in AKS enabled by Azure Arc.
+You can change the size of the virtual machines in a given node pool, to increase the resources available to the node pool in AKS enabled by Azure Arc.
 
 To keep up with app demands in Azure Kubernetes Service (AKS), you might need to adjust the number of nodes that run your workloads. In some cases, scaling a cluster horizontally by adding nodes isn't sufficient to meet the demands from your app for more CPU cores or memory.
 
-Without vertical node scaling, you would have to redeploy to a new node pool and move the app. This situation might not be ideal in resource limited edge environments. To enable this flexibility, AKS Arc introduces the capability to change the virtual machine (VM) size (SKU) of the VMs in a given node pool.
+Without vertical node scaling, you must redeploy to a new node pool and move the app. This situation might not be ideal in resource limited edge environments. To enable this flexibility, AKS Arc introduces the capability to change the virtual machine (VM) size (SKU) of the VMs in a given node pool.
 
 ## How vertical node scaling in AKS Arc works
 
@@ -31,7 +31,7 @@ To change the node pool to a different VM size (SKU), you can use the `Set-AksHc
 When you submit the command with the new VM size (SKU), a new **machineDeployment** for the node pool or cluster is created, replacing the existing machine set. This event triggers an update flow in the underlying deployment system. Similar to an OS or Kubernetes version upgrade, the new **machineDeployment** uses a rolling update to replace one virtual machine in the node pool or control plane after the other. Each upgrade checks that the old node is correctly cordoned and drained before it's removed.
 
 > [!NOTE]
-> The system assumes that you have checked that enough hardware resources are available to scale up the new machine set in place of the old machine set.
+> The system assumes that enough hardware resources are available to scale up the new machine set in place of the old machine set.
 
 ## Example process
 

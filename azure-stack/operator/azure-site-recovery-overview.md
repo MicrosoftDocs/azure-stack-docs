@@ -37,7 +37,7 @@ Azure Site Recovery provides many features, as described in the following table.
 |BCDR solution | Using Site Recovery, you can set up and manage replication, failover, and failback from a single location in the Azure Stack Hub portal.|
 |BCDR integration | Site Recovery integrates with other BCDR technologies. For example, you can use Site Recovery to protect the SQL Server backend of corporate workloads, with native support for SQL Server Always On, to manage the failover of availability groups.|
 |Azure Automation integration| A rich Azure Automation library provides production-ready, application-specific scripts that can be downloaded and integrated with Site Recovery.|
-|RTO and PRO targets | Keep recovery time objectives (RTO) and recovery point objectives (RPO) within organizational limits. Site Recovery provides continuous replication for Azure Stack Hub VMs.|
+|RTO and RPO targets | Keep recovery time objectives (RTO) and recovery point objectives (RPO) within organizational limits. Site Recovery provides continuous replication for Azure Stack Hub VMs.|
 |Keep apps consistent over failover | You can replicate using recovery points with application-consistent snapshots. These snapshots capture disk data, all data in memory, and all transactions in process.|
 |Testing without disruption | You can easily run disaster recovery drills, without affecting ongoing replication.|
 |Flexible failovers | You can run planned failovers for expected outages with zero-data loss or unplanned failovers with minimal data loss, depending on replication frequency, for unexpected disasters. You can easily fail back to your primary site when it's available again.|
