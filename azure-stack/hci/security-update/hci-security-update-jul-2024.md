@@ -19,7 +19,7 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 ## Improvements
 
-This security update includes quality improvements. Below is a summary of the key issues that this update addresses when you install this KB. If there are new features, it lists them as well.
+This security update includes quality improvements. Below is a summary of the key issues that this update addresses. If there are new features, it lists them as well.
 
 - **Absent apps and features**. Some apps and features are absent after you upgrade to Windows 11.
 
