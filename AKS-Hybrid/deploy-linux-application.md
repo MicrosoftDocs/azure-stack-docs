@@ -2,9 +2,9 @@
 title: Deploy a Linux app in AKS enabled by Azure Arc
 description: Learn how to deploy a multi-container Linux app to your Kubernetes cluster in AKS enabled by Arc using a custom image stored in Azure Container Registry.
 author: sethmanheim
-ms.topic: tutorial
+ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 11/03/2022
+ms.date: 06/27/2024
 ms.author: sethm 
 ms.lastreviewed: 06/27/2022
 ms.reviewer: abha
@@ -13,23 +13,23 @@ ms.reviewer: abha
 # Keyword: deploy an app
 ---
 
-# Tutorial: Deploy a Linux app
+# Deploy a Linux app
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This tutorial describes how to deploy a multi-container app that includes a web front-end and a Redis database instance on your Kubernetes cluster in AKS enabled by Azure Arc. You also learn how to test and scale your app.
+This guide describes how to deploy a multi-container app that includes a web front-end and a Redis database instance on your Kubernetes cluster in AKS enabled by Azure Arc. You also learn how to test and scale your app.
 
-This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts](kubernetes-concepts.md).
+This how-to guide assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts](kubernetes-concepts.md).
 
 ## Before you begin
 
-Verify that you have the following requirements ready:
+Verify that you have the following prerequisites:
 
 * An AKS cluster with at least one Linux worker node that is up and running.
 * A kubeconfig file to access the cluster.
 * The **AksHci** PowerShell module is installed. For more information, see [Install-AksHci](/azure/aks/hybrid/reference/ps/install-akshci).
 
-When you do the tutorial procedures:
+When you perform the procedures:
 
 * Run the commands in a PowerShell window opened with administrative privileges.
 * Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can either use node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
@@ -131,7 +131,7 @@ spec:
 
 Deploy the app using the `kubectl apply` command, and specify the name of your YAML manifest:
 
-```PowerShell
+```powershell
 kubectl apply -f azure-vote.yaml
 ```
 
@@ -150,7 +150,7 @@ When the app runs, a Kubernetes service exposes the app front-end to the interne
 
 To monitor progress, use the `kubectl get service` command with the `--watch` argument:
 
-```PowerShell
+```powershell
 kubectl get service azure-vote-front --watch
 ```
 
@@ -176,7 +176,7 @@ To see the Azure Vote app in action, open a web browser to the external IP addre
 
 We created a single replica of the Azure Voting App front-end and Redis instance. To see the number and state of pods in your cluster, use the `kubectl get` command:
 
-```console
+```powershell
 kubectl get pods -n default
 ```
 
@@ -190,13 +190,13 @@ azure-vote-front-84c8bf64fc-cdq86   1/1       Running   0          25m
 
 To change the number of pods in the **azure-vote-front** deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to 5:
 
-```console
+```powershell
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
 Run `kubectl get pods` again to verify that additional pods were created. After a minute or so, the additional pods are available in your cluster:
 
-```console
+```powershell
 kubectl get pods -n default
 ```
 

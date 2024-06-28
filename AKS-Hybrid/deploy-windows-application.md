@@ -3,7 +3,7 @@ title: Deploy Windows .NET applications
 description: Learn how to deploy a Windows.NET application to your Kubernetes cluster using a custom image stored in Azure Container Registry in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: tutorial
-ms.date: 11/01/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -17,7 +17,7 @@ ms.reviewer: abha
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This tutorial describes how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS enabled by Arc, and then test and scale your application. You also learn how to join a Windows node to an Active Directory domain.
+This tutorial describes how to deploy an ASP.NET sample application in a Windows Server container to the Azure Kubernetes Service (AKS) cluster in AKS enabled by Arc, then test and scale your application. You also learn how to join a Windows node to an Active Directory domain.
 
 This tutorial assumes a basic understanding of Kubernetes concepts. For more information, see [Kubernetes core concepts for AKS enabled by Azure Arc](kubernetes-concepts.md).
 
@@ -31,7 +31,7 @@ Make sure you met the following requirements:
 
 When you follow the procedures:
 
-- Run the commands in a PowerShell administrative window.
+- Run the commands in a PowerShell administrator window.
 - Ensure that OS-specific workloads land on the appropriate container host. If your Kubernetes cluster has a mixture of Linux and Windows worker nodes, you can use either node selectors or taints and tolerations. For more information, see [using node selectors and taints and tolerations](adapt-apps-mixed-os-clusters.md).
 
 ## Deploy the application
@@ -92,7 +92,7 @@ spec:
 
 Deploy the application using the `kubectl apply` command, and specify the name of your YAML manifest:
 
-```console
+```powershell
 kubectl apply -f sample.yaml
 ```
 
@@ -109,11 +109,11 @@ When the application runs, a Kubernetes service exposes the application front en
 
 To monitor progress, use the `kubectl get service` command with the `--watch` argument:
 
-```PowerShell
+```powershell
 kubectl get service sample --watch
 ```
 
-Initially, the **EXTERNAL-IP** for the **sample** service is shown as **pending**.
+Initially, the **EXTERNAL-IP** for the **sample** service is shown as **pending**:
 
 ```output
 NAME    TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -137,19 +137,19 @@ If the connection times out when you try to load the page, verify whether the sa
 
 We created a single replica of the application front end. To see the number and state of pods in your cluster, use the `kubectl get` command as follows:
 
-```console
+```powershell
 kubectl get pods -n default
 ```
 
 To change the number of pods in the **sample** deployment, use the `kubectl scale` command. The following example increases the number of front-end pods to 3:
 
-```console
+```powershell
 kubectl scale --replicas=3 deployment/sample
 ```
 
 Run `kubectl get pods` again to verify that the pods were created. After a minute or so, the additional pods are available in your cluster:
 
-```console
+```powershell
 kubectl get pods -n default
 ```
 

@@ -1,8 +1,8 @@
 ---
 title: Upgrade the AKS host in AKS enabled by Arc using PowerShell
 description: Learn about using PowerShell to upgrade the AKS host in AKS enabled by Azure Arc.
-ms.topic: conceptual
-ms.date: 11/08/2022
+ms.topic: how-to
+ms.date: 06/27/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: mikek

@@ -3,7 +3,7 @@ title: Create StatefulSets in AKS enabled by Azure Arc
 description: Learn how to create StatefulSets in Azure Kubernetes Service (AKS) enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -27,7 +27,7 @@ The main components of StatefulSets are the persistent volume provisioner and th
 
 ## How to create a StatefulSet
 
-You create a StatefulSet using the `kubectl create` or the `kubectl apply` command. For example:
+You can create a StatefulSet using the `kubectl create` or the `kubectl apply` command. For example:
 
 ```powershell
 kubectl create –f statefulset.yaml
