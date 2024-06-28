@@ -134,8 +134,8 @@ Before you begin, make sure you've completed the following prerequisites:
 
 > [!IMPORTANT]
 > Ensure that the account you are using for device login has the required permissions on the subscription.
-> The account might not be of type "MicrosoftAccount" but must be a native Entra AD >account. Otherwise Get-AzSubscription will fail with error "AADSTS9002332: AppID 
->(Application Windows Azure Service Management API) is configured for use by Azure >Active Directory users only. Please do not use the /consumers endpoint to serve this >request." Where Azure Active Directory translates into the new name Entra AD.
+> The account might not be of type "MicrosoftAccount" but must be a native Entra AD account. Otherwise Get-AzSubscription will fail with error "AADSTS9002332: AppID 
+>(Application Windows Azure Service Management API) is configured for use by Azure Active Directory users only. Please do not use the /consumers endpoint to serve this request." Where Azure Active Directory translates into the new name Entra AD.
 
 1. Connect to your Azure account and set the subscription. You'll need to open browser on the client that you're using to connect to the server and open this page: `https://microsoft.com/devicelogin` and enter the provided code in the Azure CLI output to authenticate. Get the access token and account ID for the registration.  
 
