@@ -51,7 +51,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
 > [!IMPORTANT]
 > Run these steps on every Azure Stack HCI server that you intend to cluster.
-> Do not use the Install-Module -Force as this would forcibly install the latest version of dependend modules, overwriting older ones. For example: Install-Module Az.Ressources -Force would update Az.Accounts to a later version than required 2.13.2, causing AzStackHciArcInitialization to fail.
+> Do not use the Install-Module -Force as this would forcibly install the latest version of dependend modules, overwriting older ones. For example: Install-Module Az.Ressources -Force would update Az.Accounts to a later version than required 2.13.2, causing Invoke-AzStackHciArcInitialization to fail.
 
 1. Install the [Arc registration script](https://www.powershellgallery.com/packages/AzSHCI.ARCInstaller) from PSGallery.
 
