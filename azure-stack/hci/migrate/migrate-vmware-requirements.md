@@ -47,6 +47,7 @@ Keep in mind the following information as you create a project:
 
 - The project geography is only used to store the discovered metadata. Your VMware source environment and Azure Stack HCI target environment do not need to be located in the same geography/region as your Azure migrate project.
 - When you create a project, you select a geography. The project and related resources are created in one of the regions in the geography. The region is allocated by the Azure Migrate service. Azure Migrate doesn't move or store customer data outside of the region allocated.
+- Your Azure Migrate project must be in the same tenant as your Azure Stack HCI cluster. The project can recognize Azure Stack HCI clusters across subscriptions, but it will not work with an Azure Stack HCI cluster registered in a separate Azure tenant.
 
 ## Azure portal requirements
 
@@ -58,10 +59,6 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 |Subscription|Contributor, User Access Administrator|
 
 ## Source VMware server requirements
-
-- VMware server is supported for both standalone server and cluster configuration.
-
-    You can discover and migrate standalone (non-highly available) VMs on standalone VMware hosts. However, standalone VMware VMs hosted on clustered VMware hosts cannot be discovered or migrated. To migrate these VMs, they need to be [made highly available](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/) first.<!--CHECK--> 
 
 - The source VMware server used for migration should have sufficient resources to create a Windows Server 2022 VM with a minimum of 16 GB memory, 80 GB disk, and 8 vCPUs.
 

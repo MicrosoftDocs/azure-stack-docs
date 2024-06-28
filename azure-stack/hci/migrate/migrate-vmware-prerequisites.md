@@ -36,7 +36,7 @@ The following list contains the prerequisites that must be met to migrate VMware
 
 ## Create an Azure Migrate project
 
-<!--CHECK add an include here-->Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects).
+<!--CHECK add an include here-->Before you can migrate, create an Azure Migrate project in Azure portal using the following procedure. For more information, see [Create and manage projects](/azure/migrate/create-manage-projects#create-a-project-for-the-first-time).
 
 1. On the Azure portal home page, select **Azure Migrate**.
 
