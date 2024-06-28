@@ -131,7 +131,7 @@ $Credential = Get-Credential
 
 This command prompts for a password.
 
-To automate creation of the credential object without requiring manual password entry, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7.3#example-4). The script includes a plaintext credential, which might violate security standards in some enterprises.
+To automate creation of the credential object without requiring manual password entry, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential#example-4). The script includes a plaintext credential, which might violate security standards in some enterprises.
 
 ## Step 3: Create an Azure RBAC-enabled AKS cluster
 
