@@ -3,7 +3,7 @@ title: Kubernetes Secrets Store CSI driver integration
 description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/04/2022
+ms.date: 06/27/2024
 ms.author: sethm 
 
 # Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
@@ -34,7 +34,7 @@ Before you begin, make sure you have the following prerequisites:
 
 ## Access your clusters using kubectl
 
-Run the following command to access your cluster using `kubectl`. In the command, replace the value for `-name` with your existing cluster name. You cluster name uses the specified cluster's `kubeconfig` file as the default `kubeconfig` file for `kubectl`.
+Run the following command to access your cluster using `kubectl`. In the command, replace the value of `-name` with your existing cluster name. You cluster name uses the specified cluster's `kubeconfig` file as the default `kubeconfig` file for `kubectl`:
 
 ```powershell
 Get-AksHciCredential -name mycluster
@@ -55,7 +55,7 @@ helm install csi csi-secrets-store-provider-azure/csi-secrets-store-provider-azu
 ```
 
 > [!NOTE]
-> You should install the Secrets Store CSI driver and Azure Key Vault provider in the `kube-system` namespace. In this tutorial, the `kube-system` namespace is used for all instances.
+> You should install the Secrets Store CSI driver and Azure Key Vault provider in the `kube-system` namespace. This guide uses the `kube-system` namespace for all instances.
 
 ## Verify the Secrets Store CSI driver and Azure Key Vault provider are successfully installed
 
@@ -129,7 +129,7 @@ az keyvault set-policy -n <keyvault-name> --secret-permissions get --spn <client
 
 ## Create the Kubernetes secret with credentials
 
-To create the Kubernetes secret with the Service Principal credentials, run the following command. Replace the following values with the appropriate client ID and client secret from the previous step:
+To create the Kubernetes secret with the service principal credentials, run the following command. Replace the following values with the appropriate client ID and client secret from the previous step:
 
 ```powershell
 kubectl create secret generic secrets-store-creds --from-literal clientid=<client-id> --from-literal clientsecret=<client-secret>
@@ -157,7 +157,7 @@ spec:
     keyvaultName: "<keyvault-name>"       # The name of the Azure Key Vault
     useVMManagedIdentity: "false"         
     userAssignedIdentityID: "false" 
-    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud 
+    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment defaults to AzurePublicCloud 
     objects:  |
       array:
         - |
@@ -220,7 +220,7 @@ To show the secrets that are held in `secrets-store`, run the following command:
 kubectl exec busybox-secrets-store-inline --namespace kube-system -- ls /mnt/secrets-store/
 ```
 
-The output should show the name of the secret. In this example, it should display the following output:
+The output should show the name of the secret. In this example, it displays the following output:
 
 ```output
 ExampleSecret
@@ -232,7 +232,7 @@ To show the test secret held in `secrets-store`, run the following command:
 kubectl exec busybox-secrets-store-inline --namespace kube-system -- cat /mnt/secrets-store/ExampleSecret 
 ```
 
-The output should show the value of the secret. In this example, it should show the following output:
+The output should show the value of the secret. In this example, it shows the following output:
 
 ```output
 MyAKSHCIExampleSecret
