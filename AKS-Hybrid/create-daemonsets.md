@@ -3,7 +3,7 @@ title: Create a Kubernetes DaemonSet in AKS enabled by Azure Arc
 description: Learn how to create a DaemonSet in Azure Kubernetes Service (AKS) enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -17,15 +17,15 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to create and use a Kubernetes _DaemonSet_ in AKS enabled by Azure Arc to ensure that a copy of a pod is always available on every worker node in a cluster. You can use a DaemonSet to improve cluster performance by ensuring that an app runs on all the worker nodes, and to deploy pods that do maintenance and provide support services for nodes.
+This article describes how to create and use a Kubernetes *DaemonSet* in AKS enabled by Azure Arc to ensure that a copy of a pod is always available on every worker node in a cluster. You can use a DaemonSet to improve cluster performance by ensuring that an app runs on all the worker nodes, and to deploy pods that do maintenance and provide support services for nodes.
 
 ## Overview of DaemonSets
 
-**DaemonSet** is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node.
+A DaemonSet is a Kubernetes object that ensures a copy of a pod that's defined in the configuration is always available on every worker node in a cluster. When a new node is added to a cluster, the DaemonSet automatically allocates the pod on that node.
 
 Similarly, when a node is deleted, the pod that's running on the node is also deleted and isn't rescheduled on another node (for example, as happens with **ReplicaSets**). This enables you to overcome Kubernetes scheduling limitations and make sure a specific application is deployed on all nodes within the cluster.
 
-DaemonSets can improve the overall cluster performance. For example, you can use them to deploy pods to perform maintenance tasks and support services to every node: 
+DaemonSets can improve the overall cluster performance. For example, you can use them to deploy pods to perform maintenance tasks and support services to every node:
 
 - Run a log collection daemon, such as `Fluentd` and `Logstash`.
 - Run a node monitoring daemon, such as `Prometheus`.
@@ -73,7 +73,7 @@ You can update a DaemonSet using the `kubectl edit ds<NAME>` command. However, i
 
 ## Delete a DaemonSet
 
-To remove a DaemonSet, use the `kubectl delete` command (for example, `kubectl delete –f example-daemon.yaml -n monitoring`). You should be cautious when specifying the name of the DaemonSet file as deleting a DaemonSet cleans up all the pods it deployed.
+To remove a DaemonSet, use the `kubectl delete` command (for example, `kubectl delete –f example-daemon.yaml -n monitoring`). You should be cautious when specifying the name of the DaemonSet file, as deleting a DaemonSet cleans up all the pods it deployed.
 
 ## Next steps
 

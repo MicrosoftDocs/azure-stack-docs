@@ -1,8 +1,8 @@
 ---
 title: Update Azure Kubernetes Service host in AKS enabled by Azure Arc using Windows Admin Center
 description: Learn about using Windows Admin Center to update the Azure Kubernetes Service host in AKS enabled by Arc.
-ms.topic: conceptual
-ms.date: 11/07/2022
+ms.topic: how-to
+ms.date: 06/27/2024
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -17,7 +17,7 @@ author: sethmanheim
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to upgrade the Azure Kubernetes Service (AKS) host core system to the latest version in AKS enabled by Azure Arc.
+This article describes how to upgrade the Azure Kubernetes Service (AKS) host core system to the latest version in AKS enabled by Arc.
 
 ## Overview of AKS host updates
 
@@ -52,6 +52,7 @@ To update the AKS host using Windows Admin Center, follow these steps:
 1. Select **Updates** from the page list on the left side of the tool, and then select **Update now** to upgrade your AKS host.
 
 > [!NOTE]
+>
 > - The update might stall if you navigate away from the update window while it's in progress.
 > - During the update process, if you receive an error that says **Could not install updates**, the current deployment cannot be updated to the latest version. To work around this error, run `Get-AksHciUpdates` in PowerShell and review the recommendations provided in the output.
 
