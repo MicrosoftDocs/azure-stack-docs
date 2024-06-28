@@ -222,7 +222,6 @@ Then, run the following cmdlet for each VM you wish to remove from the cluster:
 Remove-VM -Name VM1
 ```
 
-
 ## Remove a VM from a Cluster
 
 To remove or delete a VM and it's resources, first find them using the following cmdlet:
