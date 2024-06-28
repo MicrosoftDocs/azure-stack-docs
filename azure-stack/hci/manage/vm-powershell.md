@@ -204,7 +204,26 @@ The following example configures a VM named VM1 with two virtual processors, a r
 Set-VMProcessor -ComputerName Server1 -Name VM1 -Count 2 -Reserve 10 -Maximum 75 -RelativeWeight 200
 ```
 
-## Remove a VM
+>[!Note]
+> The following command deletes a virtual machine. Running this cmdlet deletes the virtual machine's configuration file, but does not delete any virtual hard drives. If the virtual machine has any snapshots, these are deleted and merged into > the virtual hard disk files after the virtual machine is deleted. If you want to delete a VM with all files including virtual hard drives, consider using [Windows Admin Center](vm.md).
+> Ensure the VM is in state "off". The deletion of the configuration file cannot be undone.
+
+## Remove an unclustered VM
+
+To remove or delete a VM and it's resources, first find them using the following cmdlet:
+
+```powershell
+Get-VM VM1
+```
+
+Then, run the following cmdlet for each VM you wish to remove from the cluster:
+
+```powershell
+Remove-VM -Name VM1
+```
+
+
+## Remove a VM from a Cluster
 
 To remove or delete a VM and it's resources, first find them using the following cmdlet:
 
