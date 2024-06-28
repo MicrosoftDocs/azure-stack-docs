@@ -3,7 +3,7 @@ title: Stop and restart a cluster
 description: Learn how to stop and restart a cluster in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -13,11 +13,11 @@ ms.reviewer: EkeleAsonye
 
 ---
 
-# Stop and start an Azure Kubernetes Service cluster
+# Stop and restart an Azure Kubernetes Service cluster
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-In AKS enabled by Azure Arc, your workloads might not need to run continuously. To save resource costs, you can stop (or shut down) your Azure Kubernetes Service (AKS) cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also covers how to start a stopped cluster and how to verify that the control plane nodes are running after a restart.
+In AKS enabled by Azure Arc, your workloads might not need to run continuously. To save resource costs, you can stop (or shut down) your Azure Kubernetes Service (AKS) cluster. To stop a cluster, run the commands described in this article from your Hyper-V host to power down the different components. This article also describes how to restart a stopped cluster, and how to verify that the control plane nodes are running after a restart.
 
 ## Before you begin
 
@@ -40,7 +40,7 @@ To stop the cluster service on all nodes of the local cluster, open PowerShell a
 Stop-Cluster 
 ```
 
-After you run the command, type Y [Yes] to confirm that you want to stop the cluster.
+After you run the command, type **Y (Yes)** to confirm that you want to stop the cluster.
 
 > [!NOTE]
 > If you run `Stop-Cluster` twice on the same machine, or on more than one machine in the cluster, you receive a message that says "No cluster service running."
@@ -55,7 +55,7 @@ Stop-Computer
 
 ## Start a cluster
 
-To start a stopped cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster.
+To restart a stopped cluster, you first restart the operating system on the local and/or remote computers, and then restart the cluster.
 
 To restart the operating system on your local and remote computers, use the following [Restart-Computer](/powershell/module/microsoft.powershell.management/restart-computer?view=powershell-7.1&preserve-view=true) PowerShell command:
 
@@ -72,7 +72,7 @@ Start-Cluster
 A node can only function as part of a cluster when the cluster service is running.
 
 > [!NOTE]
-> You cannot remotely run **Start-Cluster** without CredSSP authentication on the server machine.
+> You cannot remotely run `Start-Cluster` without CredSSP authentication on the server machine.
 
 To verify that your cluster started, use the [Get-ClusterNode](/powershell/module/failoverclusters/get-clusternode?view=windowsserver2019-ps&preserve-view=true) PowerShell command as shown in the following example:
 

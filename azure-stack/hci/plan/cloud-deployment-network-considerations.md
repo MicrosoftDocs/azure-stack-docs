@@ -3,7 +3,7 @@ title: Network considerations for cloud deployment for Azure Stack HCI, version 
 description: This article introduces network considerations for cloud deployments of Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/14/2024
+ms.date: 05/29/2024
 ms.author: alkohli 
 ms.reviewer: alkohli
 ---
@@ -206,26 +206,30 @@ The following example shows how to create the virtual switch with PowerShell usi
 
 ```powershell
 $IntentName = "MgmtCompute"
-New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $false
+New-VMSwitch -Name "ConvergedSwitch($IntentName)" -NetAdapterName "NIC1","NIC2" -EnableEmbeddedTeaming $true -AllowManagementOS $true
 ```
 
-#### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes 
+#### 2. Configure management virtual network adapter using required Network ATC naming convention for all nodes
 
-Once the virtual switch is configured, the management virtual network adapter needs to be created. The name of the virtual network adapter used for Management traffic must use the following naming convention:
+Once the virtual switch and the associated management virtual network adapter are created, make sure that the network adapter name is compliant with Network ATC naming standards.
 
-- Name of the network adapter and the virtual network adapter: `vManagement($intentname)`.
-- Name is case sensitive.
-- `$Intentname` can be any string, but must be the same name used for the virtual switch.
+Specifically, the name of the virtual network adapter used for management traffic must use the following conventions:
 
-To update the management virtual network adapter name, use the following command:
+- Name of the network adapter and the virtual network adapter must use `vManagement($intentname)`.
+- This name is case-sensitive.
+- `$Intentname` can be any string, but must be the same name used for the virtual switch. Make sure you use this same string in Azure portal when defining the `Mgmt` intent name.
+
+To update the management virtual network adapter name, use the following commands:
 
 ```powershell
 $IntentName = "MgmtCompute"
-Add-VMNetworkAdapter -ManagementOS -SwitchName "ConvergedSwitch($IntentName)" -Name "vManagement($IntentName)"
 
-#NetAdapter needs to be renamed because during creation, Hyper-V adds the string "vEthernet " to the beginning of the name
+#Rename NetAdapter because during creation, Hyper-V adds the string “vEthernet” to the beginning of the name.
+Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vManagement(MgmtCompute)"
 
-Rename-NetAdapter -Name "vEthernet (vManagement($IntentName))" -NewName "vManagement($IntentName)"
+#Rename VMNetworkAdapter for management because during creation, Hyper-V uses the vSwitch name for the virtual network adapter.
+Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch(MgmtCompute)" -NewName "vManagement(MgmtCompute)"
+
 ```
 
 #### 3. Configure VLAN ID to management virtual network adapter for all nodes
@@ -289,6 +293,8 @@ If IPs for the nodes are acquired from a DHCP server, a dynamic IP is also used 
 For example, if the management IP range is defined as 192.168.1.20/24 to 192.168.1.30/24 for the infrastructure static IPs, the DHCP scope defined for subnet 192.168.1.0/24 must have an exclusion equivalent to the management IP pool to avoid IP conflicts with the infrastructure services. We also recommend that you use DHCP reservations for node IPs.
 
 The process of defining the management IP after creating the management intent involves using the MAC address of the first physical network adapter that is selected for the network intent. This MAC address is then assigned to the virtual network adapter that is created for management purposes. This means that the IP address that the first physical network adapter obtains from the DHCP server is the same IP address that the virtual network adapter uses as the management IP. Therefore, it is important to create DHCP reservation for node IP.
+
+The network validation logic used during Cloud deployment will fail if it detects multiple physical network interfaces that have a default gateway in their configuration. If you need to use DHCP for your host IP assignments, you need to pre-create the SET _(switch embedded teaming)_ virtual switch and the management virtual network adapter as described above, so only the management virtual network adapter acquires an IP address from the DHCP server.
 
 #### Cluster node IP considerations
 

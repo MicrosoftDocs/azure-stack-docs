@@ -3,11 +3,11 @@ title: Set-AksEdgeNodeConnectivityMode for AKS Edge
 author: rcheeran
 description: The Set-AksEdgeNodeConnectivityMode PowerShell command sets AksEdge Linux node connectivity mode.
 ms.topic: reference
+ms.custom: linux-related-content
 ms.date: 02/02/2023
 ms.author: rcheeran 
 ms.lastreviewed: 02/02/2023
 #ms.reviewer: jeguan
-
 ---
 
 # Set-AksEdgeNodeConnectivityMode

@@ -5,7 +5,7 @@ author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
 ms.date: 10/06/2023
-ms.custom: template-how-to
+ms.custom: template-how-to, linux-related-content
 ---
 
 # Scaling out on multiple machines

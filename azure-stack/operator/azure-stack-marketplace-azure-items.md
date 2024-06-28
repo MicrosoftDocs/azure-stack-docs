@@ -3,20 +3,17 @@ title: Azure Marketplace items available for Azure Stack Hub
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/22/2024
+ms.custom: linux-related-content
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: vrajasekaran
 ms.lastreviewed: 12/9/2020
 
 # Intent: As an Azure Stack operator, I want to know which Azure Marketplace items can be used in Azure Stack.
 # Keyword: azure stack marketplace items
-
 ---
 
 # Azure Marketplace items available for Azure Stack Hub
-
-> [!CAUTION]
-> This article references CentOS, a Linux distribution that is nearing End Of Life (EOL) status. Please consider your use and plan accordingly. For more information, see the [CentOS End Of Life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 This article describes the Azure Marketplace items that are available for Azure Stack Hub.
 
@@ -53,7 +50,7 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![SQL Server 2014 SP3 on Windows Server 2012 R2](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2014 SP3 on Windows Server 2012 R2](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp3-ws2012r2) | SQL Server 2014 Service Pack 2. **Required download:** SQL IaaS Extension. | Microsoft |
 | ![Microsoft Machine Learning Server 9.3.0 on Windows Server 2016](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server 9.3.0 on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-dsvm.dsvm-win-2019?tab=Overview) | Microsoft Machine Learning Server 9.3.0 on Windows Server 2016. | Microsoft |
 | ![Microsoft Machine Learning Server 9.3.0 on Ubuntu 16.04](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server 9.3.0 on Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-2004?tab=Overview) | Microsoft Machine Learning Server 9.3.0 on Ubuntu 16.04. | Microsoft + Canonical |
-| ![Microsoft Machine Learning Server 9.3.0 on CentOS Linux 7.2](media/azure-stack-marketplace-azure-items/microsoft.png) | [Microsoft Machine Learning Server Windows Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftwindowsserver.windowsserver) | Microsoft Machine Learning Server 9.3.0 on CentOS Linux 7.2. | Microsoft + Rogue Wave |
+| ![Windows Server Virtual Machine Images](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server Virtual Machine Images](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver) | Windows Server Virtual Machine Images | Microsoft |
 
 ## Linux distributions
 
@@ -63,9 +60,6 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Ubuntu Server](media/azure-stack-marketplace-azure-items/ubuntu.png) | [Ubuntu Server](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=Ubuntu%20Server&page=1) | Ubuntu Server is the world's most popular Linux for cloud environments. | Canonical |
 | ![Debian 10 "Buster"](media/azure-stack-marketplace-azure-items/debian8.png) | [Debian 8 "Jessie"](https://azuremarketplace.microsoft.com/marketplace/apps/debian.debian-10) | Debian GNU/Linux is one of the most popular Linux distributions. | Debian |
 | ![Oracle Linux](media/azure-stack-marketplace-azure-items/oracle.png) | [Oracle Linux](https://azuremarketplace.microsoft.com/marketplace/apps/oracle.oracle-linux) | The Oracle Linux operating system is engineered for open cloud infrastructure. It delivers leading performance, scalability, and reliability for enterprise SaaS and PaaS workloads, as well as traditional enterprise apps. | Oracle |
-| ![CentOS-based 7.6](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.6](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/openlogic.centos?tab=Overview) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic) |
-| ![CentOS-based 7.5-LVM](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.5-LVM](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/openlogic.centos-lvm) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic) |
-| ![CentOS-based HPC](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based HPC](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/openlogic.centos-hpc) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic)  |
 
 ## Third-Party BYOL, free, trial images, and solution templates
 
@@ -97,11 +91,9 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Palo Alto VM-Series Next Generation Firewall](media/azure-stack-marketplace-azure-items/paloalto.png) | [Palo Alto VM-Series Next Generation Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/paloaltonetworks.vmseries-ngfw) | The VM-Series next-generation firewall allows customers to securely migrate their apps and data to Azure Stack Hub, protecting them from known and unknown threats with app filtering and threat prevention policies. **This image requires a template to deploy; see this [article](https://docs.paloaltonetworks.com/vm-series/8-1/vm-series-deployment/set-up-the-vm-series-firewall-on-azure/deploy-the-vm-series-firewalls-on-azure-stack) for important information.**| Palo Alto Networks, Inc. |
 | ![PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | PT Application Firewall | PT Application Firewall detects known & unknown vulnerabilities and prevents attacks on web apps. **Download both PT Marketplace items.** | Positive Technologies |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-201818) | Puppet Enterprise lets you automate the entire lifecycle of your Azure Stack Hub infrastructure. **Download both Puppet Marketplace items.** | Puppet |
-| ![Qualys Virtual Scanner Appliance](media/azure-stack-marketplace-azure-items/qualys.png) | [Qualys Virtual Scanner Appliance](https://azuremarketplace.microsoft.com/marketplace/apps/qualysguard.qualys-virtual-scanner-app) | The Virtual Scanner Appliance extends the Qualys Cloud Platform's integrated suite of security and compliance SaaS applications. Application modules include Vulnerability Management, Policy Compliance, and Web Application Scanning. | Qualys, Inc. |
 | ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rapid Recovery advanced data protection unifies backup, replication, and recovery in one easy-to-use software solution. | Quest Software |
 | ![SIOS DataKeeper Cluster Edition](media/azure-stack-marketplace-azure-items/sioslogo.png) | [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) | SIOS DataKeeper provides high availability (HA) and disaster recovery (DR) in Azure Stack Hub. Simply add SIOS DataKeeper software as an ingredient to your Windows Server Failover Clustering (WSFC) environment in an Azure Stack Hub deployment to eliminate the need for shared storage. | SIOS Technology Corp. |
 | ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://www.suse.com/releasenotes/x86_64/SUSE-MANAGER-PROXY/3.1/) | Best-in-class open-source infrastructure management. | SUSE |
-| ![Teradici Cloud Access Software](media/azure-stack-marketplace-azure-items/teradici.png) | [Teradici Cloud Access Software](https://azuremarketplace.microsoft.com/marketplace/apps/teradici.teradici_cas_azure_stack) | Powered by PCoIP&reg; technology, Cloud Access Software delivers remote desktops and workstations from Azure Stack to any device, anywhere. Consolidate data storage, enhance collaboration, secure data, streamline desktop management, and more. | Teradici |
 | ![CipherTrust Cloud Key Manager](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust Cloud Key Manager](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Leveraging Microsoft Azure and other cloud provider Bring Your Own Key (BYOK) APIs, the CipherTrust Cloud Key Manager reduces key management complexity and operational costs by giving you multicloud lifecycle control of encryption keys with centralized management and visibility. | Thales eSecurity |
 | ![Veeam Backup & Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup & Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam&reg; Backup & Replication&trade; helps businesses achieve comprehensive data protection for all workloads -- virtual, physical, and cloud-based. With a single console, you can achieve fast, flexible, and reliable backup, recovery, and replication of all apps and data. | Veeam Software |
 | ![Versa Operating System (VOS)](media/azure-stack-marketplace-azure-items/versa.png) | [Versa Operating System (VOS)](https://azuremarketplace.microsoft.com/marketplace/apps/versanetworks.versa-operating-system?tab=Overview) | The Versa Operating System (VOS) is a comprehensive and advanced next-generation virtual appliance that brings the power of SD-WAN, SD-Routing and SD-Security into the Microsoft Azure cloud. | Versa Networks |

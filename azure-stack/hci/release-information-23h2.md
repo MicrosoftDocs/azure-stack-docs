@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/16/2024
+ms.date: 06/19/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
@@ -21,10 +21,10 @@ This article presents the release information for Azure Stack HCI, version 23H2,
 
 ## About Azure Stack HCI, version 23H2 releases
 
-The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, and 2402. Each release train includes a baseline build and subsequent updates.
+The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, 2402, and 2405. Each release train includes a baseline build and subsequent updates.
 
-- **Baseline build**: The baseline build is the initial version of the software on a release train. Before you upgrade to the next version on the same train, you must deploy the baseline build. 
-- **Update build**: An update build includes the incremental updates from the most recent baseline build. 
+- **Baseline build**: The baseline build is the initial version of the software on a release train. Before you upgrade to the next version on the same train, you must deploy the baseline build.
+- **Update build**: An update build includes the incremental updates from the most recent baseline build.
 
 The following diagram illustrates the release trains, their associated baseline builds, and update paths.
 
@@ -36,8 +36,8 @@ Follow these guidelines to move to the next release train:
 
 - Consider a fresh deployment with the next release train. For example, deploy the 2402 baseline build to move to 2402 release train.
 - Update the existing deployment to a build that allows you to move to the next release train. For example, if you are on the 2311 release train, to get to the 2402 release train:
-    - Update from 2311 --> 2311.3 --> 2402.
-    - Update from 2311 --> 2311.4 --> 2402.1.
+  - Update from 2311 --> 2311.3 --> 2402.
+  - Update from 2311 --> 2311.4 --> 2402.1.
 
 #### Move within the same release train
 
@@ -55,7 +55,10 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline or Update| What's new | Known issues |
 |--|--|--|--|--|
-| 10.2402.3.10 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-21 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24023) | [Known issues](./known-issues-2402-3.md)
+| 10.2405.1.4 | 25398.950  <br><br> [June OS security update](./security-update/hci-security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24051) | [Known issues](./known-issues-2405-1.md) |
+| 10.2402.4.4  | 25398.950 <br><br> [June OS security update](./security-update/hci-security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24024) | [Known issues](./known-issues-2402-4.md) |
+| 10.2405.0.24 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-30 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2405) | [Known issues](./known-issues-2405.md) |
+| 10.2402.3.10 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-21 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24023) | [Known issues](./known-issues-2402-3.md) |
 | 10.2402.2.12 | 25398.830  <br><br> [April OS security update](./security-update/hci-security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24022) | [Known issues](./known-issues-2402-2.md) |
 | 10.2311.5.6 | 25398.830  <br><br> [April OS security update](./security-update/hci-security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23115) | [Known issues](./known-issues-2311-5.md) |
 | 10.2402.1.5 | 25398.762  <br><br> [March OS security update](./security-update/hci-security-update-mar-2024.md) <br><br> Availability date: 2024-03-20 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24021) | [Known issues](./known-issues-2402-1.md) |
@@ -65,7 +68,6 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 | 10.2311.2.7 | 25398.643  <br><br> [Jan OS security update](./security-update/hci-security-update-jan-2024.md) <br><br> Availability date: 2024-01-09| Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23112-ga) | [Known issues](./known-issues-2311-2.md) |
 | 10.2311.0.26 | 25398.531 <br><br> [Nov OS security update](./security-update/hci-security-update-nov-2023.md) <br><br> Availability date: 2023-11-14| Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2311) | [Known issues](./known-issues-2311.md) |
 | 10.2310.0.30 | 25398.469| Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2311) | [Known issues](./known-issues-2310.md) |
-
 
 ## Next steps
 
