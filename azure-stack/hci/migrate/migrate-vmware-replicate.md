@@ -88,7 +88,7 @@ Once the source appliance is installed, follow these steps:
 
     1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, hence the new deployments are unable to use this version. The supported VDDK versions are 6.7 or 7.0.
 
-        > [!NOTE]
+        > [!IMPORTANT]
         > Do not use VDDK 7.0.X. These versions have known issues and result in errors during migration.
 
     1. Select **Verify** to make sure that the VMware VDDK is successfully installed.
@@ -151,7 +151,6 @@ Complete the following tasks to generate the target appliance key:
 
 1. On the **Specify intent** page, provide the following inputs:
 
-    - Select **VMware vSphere** from the dropdown list:
     - Select Servers or virtual machines (VM) for **What do you want to migrate?**.
     - Select **Azure Stack HCI** for **Where do you want to migrate?**.
     - Select **VMware vSphere** for **Virtualization type**.
@@ -323,7 +322,7 @@ This step applies only if you downloaded the .zip file.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-2-target.png" alt-text="Screenshot showing the Target appliance tab." lightbox="./media/migrate-vmware-replicate/replicate-2-target.png":::
 
-1. On the **Virtual machines** tab, verify the VMs were discovered and are listed. You can select up to 10 VMs from the list to migrate at one time. Select **Next**.
+1. On the **Virtual machines** tab, verify the VMs were discovered and are listed. You can select up to 10 VMs from the portal list to replicate at one time. Select **Next**.
 
     :::image type="content" source="./media/migrate-vmware-replicate/replicate-3-vm.png" alt-text="Screenshot showing the Virtual machines tab." lightbox="./media/migrate-vmware-replicate/replicate-3-vm.png":::
 
