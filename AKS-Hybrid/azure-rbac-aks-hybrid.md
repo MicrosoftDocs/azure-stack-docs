@@ -73,7 +73,7 @@ Assign roles to grant permissions to users of service principal names (SPNs) on 
 
 To assign roles on a Kubernetes cluster, you must have **Owner** permission on the subscription, resource group, or cluster.
 
-The following example uses [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest) to assign the **Azure Arc Kubernetes Cluster Admin** role to the resource group that contains the cluster. You can set the scope of the resource group before you create the cluster:
+The following example uses [az role assignment](/cli/azure/role/assignment) to assign the **Azure Arc Kubernetes Cluster Admin** role to the resource group that contains the cluster. You can set the scope of the resource group before you create the cluster:
 
 ```azurecli
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
@@ -98,7 +98,7 @@ az connectedk8s show -g <name of resource group>
 az connectedk8s show -n <name of cluster> -g <name of resource group>
 ```
 
-For other examples, see [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest).
+For other examples, see [az role assignment](/cli/azure/role/assignment).
 
 For information about pre-built Azure RBAC roles for Arc-enabled Kubernetes clusters, see [Create role assignments for users to access a cluster](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-role-assignments-for-users-to-access-the-cluster). For a list of all available built-in roles, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
@@ -108,9 +108,9 @@ Use an Azure service principal to configure an automation account with the permi
 
 Creating a target cluster only requires limited privileges on the subscription. We recommend using the **Kubernetes Cluster - Azure Arc Onboarding** role. You can also use the **Owner** or **Contributor** role. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
-Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest) Azure CLI command to create the SPN and configure it with the needed permissions.
+Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp) Azure CLI command to create the SPN and configure it with the needed permissions.
 
-The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest) command reference:
+The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp) command reference:
 
 ```azurecli
 az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the subscription ID> 
