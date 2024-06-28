@@ -7,12 +7,12 @@ metadata:
   ms.author: alkohli
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 06/24/2024
+  ms.date: 06/28/2024
 title: FAQ - Migration of Hyper-V and VMware VMs to Azure Stack HCI using Azure Migrate (preview)
 summary: The Azure Migrate based solution enables you to migrate VMs from Hyper-V and VMware to an Azure Stack HCI, version 23H2 system.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Stack HCI cluster using Azure Migrate.
 
 sections:
-  - name: Azure Migrate general FAQ
+  - name: Azure Migrate general FAQs
     questions:
       - question: I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Stack HCI cluster?
         answer: |
