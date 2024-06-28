@@ -5,9 +5,9 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
+ms.date: 06/28/2024
 ms.reviewer: sulahiri
-ms.date: 10/09/2023
-ms.lastreviewed: 03/23/2023
+ms.lastreviewed: 06/28/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -30,7 +30,7 @@ Before you deploy a Kubernetes cluster with Azure Arc enabled, you must complete
 
 ### Install the Azure CLI extension
 
-The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only version compatible for this preview setup of AKS on Azure Stack HCI 22H2. Using a higher version can cause incompatibility issues with Azure RBAC and AKS Arc. To insall the extension, run the following command:
+The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only compatible version for this preview setup of AKS on Azure Stack HCI 22H2. Using a higher version can cause incompatibility issues with Azure RBAC and AKS Arc. To install the extension, run the following command:
 
 ```azurecli
 az extension add -n connectedk8s --version 1.5.4
