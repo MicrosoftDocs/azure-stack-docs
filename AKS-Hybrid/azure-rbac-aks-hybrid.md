@@ -28,14 +28,13 @@ For a conceptual overview of using Azure RBAC with Azure Arc-enabled Kubernetes 
 
 Before you deploy a Kubernetes cluster with Azure Arc enabled, you must complete the following prerequisites.
 
-### Azure CLI extension
+### Install the Azure CLI extension
 
-Install the Azure Arc-enabled Kubernetes Azure CLI extension with the preview version of Azure RBAC. This Azure CLI extension version is the only version compatible for this preview setup of AKS Hybrid on Azure Stack HCI 22H2. Using a higher version may cause incompatibility issues with Azure RBAC and AKS Hybrid.
+The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only version compatible for this preview setup of AKS on Azure Stack HCI 22H2. Using a higher version can cause incompatibility issues with Azure RBAC and AKS Arc. To insall the extension, run the following command:
 
 ```azurecli
 az extension add -n connectedk8s --version 1.5.4
 ```
-
 
 ### Prepare your network
 
