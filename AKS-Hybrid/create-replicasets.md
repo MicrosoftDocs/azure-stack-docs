@@ -3,7 +3,7 @@ title: Create a ReplicaSet in AKS enabled by Azure Arc
 description: Learn how to create a ReplicaSet in Azure Kubernetes Service (AKS) enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye

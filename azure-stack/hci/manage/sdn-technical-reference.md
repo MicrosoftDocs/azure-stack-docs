@@ -4,7 +4,7 @@ description: This technical reference serves as a one-stop-shop to access learni
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/14/2024
+ms.date: 06/18/2024
 ---
 
 # Technical reference for Software Defined Networking in Azure Stack HCI
@@ -26,6 +26,8 @@ The following table contains links to comprehensive training resources for self-
 | Module 2: Hyper-V Network Virtualization | [Module 2 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-2)| N/A | - [Hyper-V Network Virtualization](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyper-v-network-virtualization) <br> - [Hyper-V Network Virtualization Technical Details](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyperv-network-virtualization-technical-details-windows-server)|
 | Module 3: Virtual networks | [Module 3 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-3)| [Module 3 lab](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-3) | - [Manage tenant virtual networks](./tenant-virtual-networks.md)|
 | Module 4: Datacenter Firewall | [Module 4 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-4)| [Module 4 lab](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-4) | - [What is Datacenter Firewall?](../concepts/datacenter-firewall-overview.md)|
+| Module 5: Software Load Balancer | [Module 5 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-5)| [Module 5 lab](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-5) | - [What is Software Load Balancer (SLB) for SDN?](../concepts/software-load-balancer.md) <br> - [Manage Software Load Balancer for SDN](./load-balancers.md)|
+| Module 6: Gateways | [Module 6 deck with notes](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-6)| [Module 6 lab](https://github.com/Azure-Samples/AzureStackHCI/tree/main/sdn-training/module-6) | - [What is Remote Access Service (RAS) Gateway for Software Defined Networking?](../concepts/gateway-overview.md) <br> - [Manage Azure Stack HCI gateway connections](./gateway-connections.md)|
 
 ## SDN training resources: Microsoft Learn
 

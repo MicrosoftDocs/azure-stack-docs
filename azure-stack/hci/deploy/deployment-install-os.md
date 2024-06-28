@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/29/2024
+ms.date: 06/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -73,9 +73,6 @@ To install the Azure Stack HCI, version 23H2 operating system, follow these step
 
    :::image type="content" source="media/deployment-install-os/azure-stack-hci-admin-password-changed.png" alt-text="Screenshot of the changed password confirmation prompt." lightbox="media/deployment-install-os/azure-stack-hci-admin-password-changed.png":::
 
-> [!IMPORTANT]
-> After the OS is installed, a web service runs until the server is registered with Azure Arc. After the server is registered, the web service is disabled. During this period, it is expected that the security software may flag the open port and the listener (TCP 443) associated with the web service as a potential threat.
-
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks.
 
 ## Configure the operating system using SConfig
@@ -87,7 +84,8 @@ To use SConfig, sign in to the server running the Azure Stack HCI operating syst
 :::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
 > [!IMPORTANT]
-> Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
+> - Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
+> - Machines must not be joined to Active Directory before deployment.
 
 Follow these steps to configure the operating system using SConfig:
 
@@ -136,6 +134,16 @@ Follow these steps to configure the operating system using SConfig:
     > - Make sure that the local administrator password follows Azure password length and complexity requirements. Use a password that is at least 12 characters long and contains a lowercase character, an uppercase character, a numeral, and a special character.
     > - Do not join the servers with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. Cluster nodes are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
+
+## Install required Windows roles
+
+Install the Hyper-V role. Run the following command on each server of the cluster:
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
+
+Your servers will restart; this takes a few minutes.
 
 You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment.
 

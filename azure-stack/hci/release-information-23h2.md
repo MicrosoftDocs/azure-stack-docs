@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 05/30/2024
+ms.date: 06/19/2024
 ---
 
 # Azure Stack HCI, version 23H2 release information
@@ -21,10 +21,10 @@ This article presents the release information for Azure Stack HCI, version 23H2,
 
 ## About Azure Stack HCI, version 23H2 releases
 
-The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, and 2402. Each release train includes a baseline build and subsequent updates.
+The Azure Stack HCI, version 23H2 includes multiple release trains: 2306 (limited release), 2311, 2402, and 2405. Each release train includes a baseline build and subsequent updates.
 
-- **Baseline build**: The baseline build is the initial version of the software on a release train. Before you upgrade to the next version on the same train, you must deploy the baseline build. 
-- **Update build**: An update build includes the incremental updates from the most recent baseline build. 
+- **Baseline build**: The baseline build is the initial version of the software on a release train. Before you upgrade to the next version on the same train, you must deploy the baseline build.
+- **Update build**: An update build includes the incremental updates from the most recent baseline build.
 
 The following diagram illustrates the release trains, their associated baseline builds, and update paths.
 
@@ -55,7 +55,9 @@ All dates are listed in ISO 8601 format: *YYYY-MM-DD*
 
 |Release build| OS build |Baseline or Update| What's new | Known issues |
 |--|--|--|--|--|
-| 10.2405.0.23 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-30 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2405) | [Known issues](./known-issues-2405.md) |
+| 10.2405.1.4 | 25398.950  <br><br> [June OS security update](./security-update/hci-security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24051) | [Known issues](./known-issues-2405-1.md) |
+| 10.2402.4.4  | 25398.950 <br><br> [June OS security update](./security-update/hci-security-update-jun-2024.md) <br><br> Availability date: 2024-06-19 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24024) | [Known issues](./known-issues-2402-4.md) |
+| 10.2405.0.24 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-30 | Baseline | [Features and improvements](./whats-new.md#features-and-improvements-in-2405) | [Known issues](./known-issues-2405.md) |
 | 10.2402.3.10 | 25398.887  <br><br> [May OS security update](./security-update/hci-security-update-may-2024.md) <br><br> Availability date: 2024-05-21 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24023) | [Known issues](./known-issues-2402-3.md) |
 | 10.2402.2.12 | 25398.830  <br><br> [April OS security update](./security-update/hci-security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-24022) | [Known issues](./known-issues-2402-2.md) |
 | 10.2311.5.6 | 25398.830  <br><br> [April OS security update](./security-update/hci-security-update-apr-2024.md) <br><br> Availability date: 2024-04-16 | Update | [Features and improvements](./whats-new.md#features-and-improvements-in-23115) | [Known issues](./known-issues-2311-5.md) |

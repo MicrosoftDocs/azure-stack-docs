@@ -2,7 +2,7 @@
 title: ISO 27001 guidance for Azure Stack HCI
 description: Learn about ISO 27001 compliance using Azure Stack HCI.
 ms.date: 2/5/2024
-ms.topic: connceptual
+ms.topic: conceptual
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.author: nguyenhung
@@ -20,7 +20,7 @@ ISO/IEC 27001 is a global security standard that specifies requirements for esta
 
 ## Azure Stack HCI
 
-Azure Stack HCI is a hybrid solution that provides seamless integration between organizations’ on-premises infrastructure and Azure cloud services, helping to consolidate virtualized workloads and containers and gain cloud efficiencies when data needs to remain on premises for legal or privacy reasons. Organizations seeking ISO/IEC 27001:2022 certification for their solutions should consider both their cloud and on-premises environments.
+Azure Stack HCI is a hybrid solution that provides seamless integration between organizations' on-premises infrastructure and Azure cloud services, helping to consolidate virtualized workloads and containers and gain cloud efficiencies when data needs to remain on premises for legal or privacy reasons. Organizations seeking ISO/IEC 27001:2022 certification for their solutions should consider both their cloud and on-premises environments.
 
 ### Connected cloud services
 
@@ -186,7 +186,7 @@ The threat protection functionality in this section can help you meet the follow
 
 #### Windows Defender Antivirus
 
-Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system’s ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
+Windows Defender Antivirus is a utility application providing the ability to enforce real-time system scanning and periodic scanning to protect platform and workloads against viruses, malware, spyware, and other threats. By default, Microsoft Defender Antivirus is enabled on Azure Stack HCI. Microsoft recommends using Microsoft Defender Antivirus with Azure Stack HCI rather than third-party antivirus and malware detection software and services as they may impact the operating system's ability to receive updates. Learn more at [Microsoft Defender Antivirus on Windows Server](/microsoft-365/security/defender-endpoint/microsoft-defender-antivirus-on-windows-server).
 
 #### Windows Defender Application Control (WDAC)
 

@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 05/21/2024
+ms.date: 06/03/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -94,6 +94,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
     |`AccountID`         |The user who registers and deploys the cluster.         |
+    |`ProxyServer`       |Optional parameter. Proxy Server address when is required for outbound connectivity. |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
     
@@ -111,6 +112,9 @@ Before you begin, make sure you've completed the following prerequisites:
     
     #Define the tenant you will use to register your server as Arc device
     $Tenant = "YourTenantID"
+    
+    #Define the proxy address if your HCI deployment access internet via proxy
+    $ProxyServer = "http://proxyaddress:port"
     ```
  
     # [Output](#tab/output)
@@ -122,6 +126,7 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Region = "eastus"
+    PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
     ```
 
     ---
@@ -165,7 +170,7 @@ Before you begin, make sure you've completed the following prerequisites:
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer
     ```
 
     If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
@@ -177,62 +182,30 @@ Before you begin, make sure you've completed the following prerequisites:
     Here's a sample output of a successful registration of your servers:
     
     ```output
-    PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
-    Installing and Running Azure Stack HCI Environment Checker
-    All the environment validation checks succeeded
-    Installing Hyper-V Management Tools
+    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
+    >>
     Starting AzStackHci ArcIntegration Initialization
-    Installing Azure Connected Machine Agent
-    Total Physical Memory:         588,419 MB
-    PowerShell version: 5.1.25398.469
-    .NET Framework version: 4.8.9032
-    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\AzureConnectedMachineAgent.msi
-    Installing agent package
-    Installation of azcmagent completed successfully
-    0
-    Connecting to Azure using ARM Access Token
-    Connected to Azure successfully   
-    Microsoft.HybridCompute RP already registered, skipping registration 
-    Microsoft.GuestConfiguration RP already registered, skipping registration
-    Microsoft.HybridConnectivity RP already registered, skipping registration
-    Microsoft.AzureStackHCI RP already registered, skipping registration
-    INFO    Connecting machine to Azure... This might take a few minutes.
-    INFO    Testing connectivity to endpoints that are needed to connect to Azure... This might take a few minutes.
-      20% [==>            ]
-      30% [===>           ]
-      INFO    Creating resource in Azure...
-    Correlation ID=<Correlation ID>=/subscriptions/<Subscription ID>/resourceGroups/myashci-rg/providers/Microsoft.HybridCompute/machines/ms309
-      60% [========>      ]
-      80% [===========>   ]
-     100% [===============]
-      INFO    Connected machine to Azure
-    INFO    Machine overview page: https://portal.azure.com/
-    Connected Azure ARC agent successfully
-    Successfully got the content from IMDS endpoint
-    Successfully got Object Id for Arc Installation <Object ID>
-    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: <Object ID>
-    Assigning Azure Stack HCI Device Management Role to Object : <Object ID>
-    $Successfully assigned Azure Stack HCI Device Management Role to Object Id <Object ID>
-    Successfully assigned permission Azure Stack HCI Device Management Service Role to create or update Edge Devices on the resource group
-    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: <Object ID>
-    Assigning Azure Connected Machine Resource Manager to Object : <Object ID>
-    $Successfully assigned Azure Connected Machine Resource Manager to Object Id <Object ID>
-    Successfully assigned the Azure Connected Machine Resource Manager role on the resource group
-    $Checking if Reader is assigned already for SPN with Object ID: <Object ID>
-    Assigning Reader to Object : <Object ID>
-    $Successfully assigned Reader to Object Id <Object ID>
-    Successfully assigned the reader Resource Manager role on the resource group
-    Installing  TelemetryAndDiagnostics Extension
-    Successfully triggered  TelemetryAndDiagnostics Extension installation
-    Installing  DeviceManagement Extension
-    Successfully triggered  DeviceManagementExtension installation
-    Installing LcmController Extension
-    Successfully triggered  LCMController Extension installation
-    Please verify that the extensions are successfully installed before continuing...
-    
-    Log location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentChecker.log
-    Report location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentReport.json
-    Use -Passthru parameter to return results as a PSObject.   
+    Constructing node config using ARM Access Token
+    Waiting for bootstrap to complete: InProgress
+    =========SNIPPED=========SNIPPED=============
+    Waiting for bootstrap to complete: InProgress
+    Waiting for bootstrap to complete: InProgress
+    Waiting for bootstrap to complete: Succeeded
+
+    Log location: C:\Users\Administrator\.AzStackHci\AzStackHciArcIntegration.log
+    Version Response
+    ------- --------
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+    Successfully triggered Arc boostrap support log collection. Waiting for 600 seconds to complete.
+    Waiting for Arc bootstrap support logs to complete on '', retry count: 0.
+    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
+    Waiting for Arc bootstrap support logs to complete on '', retry count: 1.
+    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
+    Waiting for Arc bootstrap support logs to complete on '', retry count: 2.
+    Arc boostrap support log collection completed successfully.
+
+    PS C:\Users\Administrator>
     ```
     ---
 
