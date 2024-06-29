@@ -56,7 +56,7 @@ sections:
 
           Expand your cluster shared volume. Follow the instructions in [Expand volumes on Azure Stack HCI and Windows Server clusters](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
 
-          ### How do I remove the target appliance from Azure Migrate project?
+          ### How do I remove appliances from the Azure Migrate project?
 
           To remove the target appliance from the project and create a new appliance, run the following command:
 
@@ -64,19 +64,15 @@ sections:
           .\AzureMigrateInstaller.ps1 -RemoveAzMigrate
           ```
 
-          After removing the appliance, follow the instructions in the deployment PowerPoint to install it again.
+          After removing the appliance, follow the instructions in the documentation to reinstall.
 
-          ### I have Linux VMs running on my Hyper-V server. Can I migrate these VMs to Azure Stack HCI?
+          ### I have Linux VMs running on my source environment. Can I migrate these VMs to Azure Stack HCI?
 
-          Yes. There are many Linux distributions that can run on VMs that are migrated to Azure Stack HCI. For the full list, see [Supported operating systems](migrate-hyperv-requirements.md#supported-operating-systems). 
-
-          ### I have a VM running on an older Hyper-V host server, for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Stack HCI?
-
-          Yes. The migration solution discovers VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022.
+          Yes. There are many Linux distributions that can run on VMs that are migrated to Azure Stack HCI. For the full list, see [Supported operating systems](migrate-hyperv-requirements.md#supported-operating-systems).
 
           ### I'm located in a geography that isn't in the listed supported geographies. Does this mean I can't use this migration solution?
 
-          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography. 
+          You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography.
 
           ### Will I be charged for this migration solution? 
         
@@ -86,19 +82,27 @@ sections:
 
           ### To install the source or target appliance with the downloaded .zip file, I need a Windows Server 2022 operating system (OS). How can I get the Windows Server 2022 OS?
         
-          You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022) for free for up to 180 days.
+          You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [Evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022), free for up to 180 days.
 
-          ### My source VMs use static IP addresses. Will these addresses be preserved when I migrate my VMs to Azure Stack HCI?
+          ### My source VMs use static IP addresses. Are these addresses preserved when I migrate my VMs to Azure Stack HCI?
         
-          Currently Hyper-V migration only supports VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Stack HCI system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.  
+          Currently both VMware and Hyper-V migrations only support VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Stack HCI system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.
 
-          ### I use DCHP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
+          ### I use DCHP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address?
         
           This scenario isn't supported in this release.
 
           ### Are VMs that have secure boot enabled, supported for migration? 
         
-          Both Linux and Windows VMs that have secure boot enabled, aren't supported in this release.
+          Both Linux and Windows VMs that have secure boot enabled aren't supported in this release.
+
+          ### How do I enable guest management on my migrated VMs? 
+          
+          First, ensure that the target HCI cluster that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Arc VMs](manage-arc-virtual-machines,md#enable-guest-management).
+          
+          ### Can I use the same Azure Migrate Project for both Hyper-V and VMware migrations?
+          
+          No, this is not a supported scenario with this release. Create a separate project for each source from which you wish to migrate.
 
           ## [VMware VMs only](#tab/vmware-vms)
           
@@ -115,4 +119,3 @@ sections:
           ### I have a VM running on an older Hyper-V host server - for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Stack HCI?
 
           Yes. The migration solution discovers VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022.
-          
