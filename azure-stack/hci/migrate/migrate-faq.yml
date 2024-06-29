@@ -13,14 +13,16 @@ title: FAQ - Migration of Hyper-V and VMware VMs to Azure Stack HCI using Azure 
 
 summary:
   The Azure Migrate based solution enables you to migrate VMs from Hyper-V and VMware to an Azure Stack HCI, version 23H2 system.  This FAQ answers questions you might have about the migration of a VM from a Hyper-V or a VMware VM to an Azure Stack HCI cluster using Azure Migrate.
+  Sections with tabs have questions that apply to **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**.
 
 sections:
   - name: Ignored
     questions:
       - question: |
           About this FAQ article
-          Sections with tabs have questions that apply to **VMware and Hyper-V VMs**, **VMware VMs only**, and **Hyper-V VMs only**. 
+           
         answer: |
+
           ## [VMware and Hyper-V VMs](#tab/vmware-and-hyper-v-vms)
           
           ### What is Azure Data Box service? 
