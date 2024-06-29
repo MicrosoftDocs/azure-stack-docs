@@ -27,18 +27,6 @@ sections:
           
           ### I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Stack HCI cluster?
       
-          The Windows Server 2008 R2 VM requires to have the Service Pack 1 (SP1) running as a baseline requirement, along with.
-
-          ## [VMware VMs only](#tab/vmware-vms)
-          
-          ### I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Stack HCI cluster?
-
-          The Windows Server 2008 R2 VM requires to have the Service Pack 1 (SP1) running as a baseline requirement, along with.
-
-          ## [Hyper-V VMs only](#tab/hyper-v-vms)
-          
-          ### I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Stack HCI cluster?
-      
           The Windows Server 2008 R2 VM requires to have the Service Pack 1 (SP1) running as a baseline requirement, along with the following update patch installed: KB3138612. This patch allows the appliance to successfully discover Windows Server 2008 R2 SP1 VMs. You can then update all the patches to get the latest Hyper-V integration services.
           
           Run `winrm quickconfig` to add `winrm` access through firewall as this doesn't happen automatically.
@@ -63,7 +51,7 @@ sections:
           Centos9-01       10.0
           ws2008R2         10.0
           ```
-
+          
           ### My cluster shared volume (CSV) storage is full or almost full. What should I do?
 
           Expand your cluster shared volume. Follow the instructions in [Expand volumes on Azure Stack HCI and Windows Server clusters](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
@@ -112,4 +100,19 @@ sections:
         
           Both Linux and Windows VMs that have secure boot enabled, aren't supported in this release.
 
-      
+          ## [VMware VMs only](#tab/vmware-vms)
+          
+          ### How many VMs can I replicate in parallel from VMware?
+
+          Within the Azure Migrate portal, you can select up to 10 machines at once for replication. To replicate more machines, add in batches of 10 (agentless migration overview).
+
+          Each Azure migrate appliance supports replication of 52 disks in parallel (scheduling logic).
+
+          For example, if you selected to replicate 100 VMs (in batches of 10), with each VM containing two disks each, resulting in 200 (100 x 2) disks in total. The Azure migrate appliance starts replicating 52 disks in parallel. As soon as one disk finishes initial replication, the next disk immediately takes its spot in the queue, while still continuously replicating the remaining 52 disks. This continues with all the remaining disks until all 200 disks have been replicated.
+
+          ## [Hyper-V VMs only](#tab/hyper-v-vms)
+          
+          ### I have a VM running on an older Hyper-V host server - for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Stack HCI?
+
+          Yes. The migration solution discovers VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022.
+          
