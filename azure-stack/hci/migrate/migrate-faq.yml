@@ -98,7 +98,7 @@ sections:
 
           ### How do I enable guest management on my migrated VMs? 
           
-          First, ensure that the target HCI cluster that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Arc VMs](manage-arc-virtual-machines,md#enable-guest-management).
+          First, ensure that the target HCI cluster that hosts the migrated VMs is updated to 2405.1. This version contains a fix for guest enablement of migrated VMs. Then, follow the instructions in [Enable Guest Management on Arc VMs](manage-arc-virtual-machines.md#enable-guest-management).
           
           ### Can I use the same Azure Migrate Project for both Hyper-V and VMware migrations?
           
