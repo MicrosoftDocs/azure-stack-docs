@@ -19,7 +19,7 @@ sections:
   - name: Ignored
     questions:
       - question: |
-          About this FAQ article
+          FAQs
            
         answer: |
 
