@@ -18,8 +18,9 @@ ms.lastreviewed: 06/28/2024
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
 > [!WARNING]
-> This preview feature has been deprecated and is unsupported. Microsoft does not recommend using this preview feature.
-> PREVIEWS ARE PROVIDED "AS-IS," "WITH ALL FAULTS," AND "AS AVAILABLE," as described herein. For more information about PREVIEW temrs and conditions, see Online Services from [Universal License Terms](https://www.microsoft.com/licensing/terms/product/ForOnlineServices/EAEAS)
+> This preview feature has been deprecated and is unsupported starting from 7/15/2024. Microsoft does not recommend using this Azure RBAC preview feature in a production environment.
+> - PREVIEWS ARE PROVIDED "AS-IS," "WITH ALL FAULTS," AND "AS AVAILABLE," as described herein. For more information about PREVIEW temrs and conditions, see Online Services from [Universal License Terms](https://www.microsoft.com/licensing/terms/product/ForOnlineServices/EAEAS)
+> - If you would like to use Azure RBAC for AKS on Azure Stack HCI, please refer to [Use Azure role-based access control (RBAC) for Kubernetes authorization for AKS on Azure Stack HCI 23H2](/azure/aks/hybrid/azure-rbac-23h2)
 
 
 This article describes how to set up Azure RBAC on an AKS cluster to use Microsoft Entra ID and Azure role assignments for authorization. The steps to create the cluster are covered in [Prerequisites](#prerequisites).
