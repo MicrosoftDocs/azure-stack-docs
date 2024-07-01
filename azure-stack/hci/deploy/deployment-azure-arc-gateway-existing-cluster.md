@@ -35,47 +35,47 @@ Before you start, make sure you have the following:
 The following steps are required to enable the Azure Arc gateway on existing Azure Stack HCI 2405 deployments.
 
 0. Create the Arc gateway resource in Azure (prerequisite).
-1. Download the az connected machine extension to your HCI nodes.
-2. Associate the Arc gateway resource with your existing Azure Stack HCI cluster.
-3. Update Arc agent configuration on each deployed Azure Stack HCI server to use the Arc gateway ID.
-4. Await reconciliation.
-5. Verify that supported endpoints are redirected through the Arc gateway.
+1. Associate the Arc gateway resource with your existing Azure Stack HCI cluster.
+2. Update Arc agent configuration on each deployed Azure Stack HCI server to use the Arc gateway ID.
+3. Await reconciliation.
+4. Verify that supported endpoints are redirected through the Arc gateway.
 
 
-## Step 1: Download the az connected machine extension to your HCI nodes.
+## Step 1: Associate the Arc gateway resource with your existing Azure Stack HCI cluster nodes
 
-Download the [az connectedmachine.whl](https://aka.ms/ArcGatewayWhl) file extension.
+Run the following az commands from a remote computer with internet access. You can use the same computer you used to create the Arc gateway resource in Azure. It is not supported to run these commands from the HCI nodes.
 
-Run the following command to add the az connected machine extension:
+[Optional step] Download the [az connectedmachine.whl](https://aka.ms/ArcGatewayWhl) file extension if you are using a different computer than the one you used to create the Arc gateway resource in Azure. Otherwise you can omit this step.
+
+[Optional step] Install the [Azure Command Line Interface (CLI)](/cli/azure/install-azure-cli-windows?tabs=azure-cli) if you are using a different computer than the one you used to create the Arc gateway resource in Azure. Otherwise you can omit this step.
+
+[Optional step] Run the following command to add the az connected machine extension if you are using a different computer than the one you used to create the Arc gateway resource in Azure. Otherwise you can omit this step.
 
 ```azurecli
 az extension add --allow-preview true --yes --source [whl file path] 
 ```
 
-## Step 2: Associate the Arc gateway resource with your existing Azure Stack HCI cluster
-
-
 Associate each existing server in the cluster with the Arc gateway resource. Run the following command:
 
 ```azurecli
-az connectedmachine setting update --resource-group [res-group] --subscription [subscription name] --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name [Arc server resource name] -settings-resource-name default --gateway-resource-id [Full Arm resourceid]
+az connectedmachine setting update --resource-group [res-group] --subscription [subscription name] --base-provider Microsoft.HybridCompute --base-resource-type machines --base-resource-name [Arc server resource name] --settings-resource-name default --gateway-resource-id [Full Arm resourceid]
 ```
 
-## Step 3: Update the machine to use the Arc gateway resource  
+## Step 2: Update the machine to use the Arc gateway resource  
 
-Update each server in the cluster to use the Arc gateway resource. Run the following command on your Arc-enabled server to set it to use the Arc gateway:
+Update each HCI server in the cluster to use the Arc gateway resource. Run the following command locally on your HCI nodes to set the Arc agents to start using the Arc gateway.
 
 ```azurecli
 azcmagent config set connection.type gateway
 ```
 
-## Step 4: Await reconciliation
+## Step 3: Await reconciliation
 
 Await reconciliation. Once your servers have been updated to use the Arc gateway, some Azure Arc endpoints that were previously allowed in your proxy or firewalls won't be needed any longer. Wait one hour before you begin removing endpoints from your firewall or proxy.
 
 Next step is to verify that the setup was successful.
 
-## Step 5: Verify that setup succeeded
+## Step 4: Verify that setup succeeded
 
 [!INCLUDE [hci-gateway-verify-setup-successful](../../includes/hci-gateway-verify-setup-successful.md)]
 
