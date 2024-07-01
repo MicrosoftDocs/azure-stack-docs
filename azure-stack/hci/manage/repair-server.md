@@ -143,6 +143,9 @@ Follow these steps on another server that is a member of the same Azure Stack HC
     Repair-Server -Name "< Name of the new server>" -LocalAdminCredential $Cred
     ```
 
+    > [!NOTE]
+    > The server name must be the [NetBIOS name](/windows/win32/sysinfo/computer-names).
+
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
 
 > [!NOTE]
