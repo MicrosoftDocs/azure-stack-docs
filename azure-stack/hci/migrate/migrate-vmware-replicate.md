@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Stack HCI using 
 description: Learn the discovery and replication process for VMware VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/28/2024
+ms.date: 07/01/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -86,7 +86,7 @@ Once the source appliance is installed, follow these steps:
 
         :::image type="content" source="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png" alt-text="Screenshot of registration of source appliance completed." lightbox="./media/migrate-vmware-replicate/setup-prereq-register-source-appliance-1.png":::
 
-    1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, hence the new deployments are unable to use this version. The supported VDDK versions are 6.7 or 7.0.
+    1. Make sure that the VMware Virtual Disk Development Kit (VDDK) is installed. Download and extract the **VMware Virtual Disk Development Kit** in zip format to the provided folder path. Versions 8.0.0, 8.0.1, and 8.0.2 are currently supported. Version 6.7.0 is also supported but the package is deprecated, hence the new deployments are unable to use this version. 
 
         > [!IMPORTANT]
         > Do not use VDDK 7.0.X. These versions have known issues and result in errors during migration.
