@@ -17,7 +17,7 @@ This article describes how to collect diagnostic logs for Azure Stack HCI and se
 
 ## About on-demand log collection
 
-On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft. After you collect logs, they're sent to the Kusto database. Microsoft Support can then use the information provided to locate your logs in Kusto and help you in resolving the reported issue. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
+On-demand log collection involves manually collecting and sending diagnostic logs to Microsoft. The logs you collect are sent to the Kusto database. Microsoft Support can then use the information you provide to locate your logs in Kusto and assist you in resolving your reported issue. Microsoft retains this diagnostic data for up to 30 days and handles it as per the [standard privacy practices](https://privacy.microsoft.com/).
 
 ### When to use on-demand log collection
 
@@ -35,8 +35,7 @@ To explore other log collection methods in Azure Stack HCI and understand when t
 
 Before you collect on-demand logs, you must complete the following prerequisites:
 
-- You must have access to an Azure Stack HCI cluster.
-- You must have access to Azure.
+- You must have access to an Azure Stack HCI cluster that is deployed and registered.
 - You must have installed the `AzureEdgeTelemetryAndDiagnostics` extension to collect telemetry and diagnostics information from your Azure Stack HCI system. For information about the extension, see [Azure Stack HCI telemetry and diagnostics extension overview](../concepts/telemetry-and-diagnostics-overview.md).
 
 ## Collect logs for Azure Stack HCI
@@ -51,13 +50,13 @@ You can perform on-demand log collection using any of the following methods:
 
 Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster via the Azure portal:
 
-1. In the Azure portal, go to the Azure Stack HCI cluster resource.
+1. In [the Azure portal](https://portal.azure.com/), go to the Azure Stack HCI cluster resource.
 1. In the left pane, under **Settings**, select **Diagnostics and Remote Support**.
 1. On the **Get started** tab, under the **Send Diagnostics Logs** tile, select **Go to diagnostics**.
 
    :::image type="content" source="./media/collect-logs/get-started-tab.png" alt-text="Screenshot shows the Get started tab." lightbox="./media/collect-logs/get-started-tab.png" :::
 
-1. On the **Diagnostics** tab, under **Log activity**, review log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** to view more information in the **Log details** pane.
+1. On the **Diagnostics** tab, under **Log activity**, review log collection history for your cluster. To get more details about a specific log collection entry, select the link under **Time collected** and view the **Log details** pane.
 
    :::image type="content" source="./media/collect-logs/log-details-pane.png" alt-text="Screenshot shows the Log details pane." lightbox="./media/collect-logs/log-details-pane.png" :::
 
@@ -65,17 +64,17 @@ Follow these steps to collect diagnostic logs for your Azure Stack HCI cluster v
 
    :::image type="content" source="./media/collect-logs/diagnostics-tab.png" alt-text="Screenshot shows the Send logs button." lightbox="./media/collect-logs/diagnostics-tab.png" :::
 
-1. On the **Send logs** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. By doing this, you agree to the terms and conditions of collection logs.
+1. On the **Send logs** pane on the right, select the **Log start time** and **Log end time**, and then select the **Collect and upload logs** button. By doing this, you agree to the terms and conditions of collecting logs.
 
    :::image type="content" source="./media/collect-logs/send-logs-pane.png" alt-text="Screenshot shows the Send logs pane." lightbox="./media/collect-logs/send-logs-pane.png" :::
 
 ## [PowerShell](#tab/powershell)
 
-To collect logs and send them to Microsoft using PowerShell, run the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. When you run this cmdlet, the logs are temporarily copied locally. This copy is parsed, sent to Microsoft, and then deleted from your system.
+To use PowerShell for log collection, run the `Send-DiagnosticData` cmdlet from any node within the Azure Stack HCI cluster. This cmdlet temporarily copies the logs locally. The copied logs are parsed, sent to Microsoft, and then deleted from your system.
 
 Here are some important points to consider when collecting logs using PowerShell:
 
-- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, time duration specified, and the number of nodes in your Azure Stack HCI environment.
+- The completion time of the `Send-DiagnosticData` cmdlet varies depending on factors, such as the roles for which logs are being collected, the time duration specified, and the number of nodes in your Azure Stack HCI environment.
 - If you don't specify any parameters, the `Send-DiagnosticData` cmdlet collects data from all nodes for the previous one-hour duration.
 
 Here's the syntax of `Send-DiagnosticData`:
@@ -152,7 +151,7 @@ PS C:\Users\docsuser>
 
 ### Get a history of log collection
 
-You can get a history of all the log collections that you have performed. This history helps you learn about the kinds of log collections, the sizes of log collections, the times when logs were collected, and the methods of log collection.
+You can get a history of all the log collections that you've performed. This history helps you learn about the kinds of log collections, the sizes of log collections, the times when logs were collected, and the methods of log collection.
 
 To get a history of log collections for the last 90 days, enter:
 
@@ -274,7 +273,7 @@ All
 
 ### CollectSddc
 
-Determines whether to include or exclude software-defined data center (SDDC) logs. By default, SDDC logs are included. Set it to $false if you want to exclude them. For more information about using SDDC diagnostic tools, see [Collect diagnostic data for clusters](./collect-diagnostic-data.md).
+This parameter helps determine whether to include or exclude software-defined data center (SDDC) logs. By default, SDDC logs are included. Set it to $false if you want to exclude them. For more information about using SDDC diagnostic tools, see [Collect diagnostic data for clusters](./collect-diagnostic-data.md).
 
 **Syntax**
 
@@ -390,13 +389,13 @@ The SupplementaryLogs parameter allows you to send ad-hoc logs to Microsoft.
 
 You can use it in the following ways:
 
-With `SaveToPath`. In this scenario, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
+In this scenario, with `SaveToPath`, both diagnostic logs and ad-hoc logs are collected and saved to a specified path.
 
 ```powershell
 Send-DiagnosticData [-SupplementaryLogs <string>] -SaveToPath <path>
 ```
 
-With `NoLogCollection`. Here, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
+Here, with `NoLogCollection`, only ad-hoc logs are collected and sent to Microsoft. No diagnostic logs are collected.
 
 ```powershell
 Send-DiagnosticData -SupplementaryLogs <string> -NoLogCollection
