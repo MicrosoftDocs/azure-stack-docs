@@ -130,7 +130,8 @@ On a server that already exists on your cluster, follow these steps:
 1. Make a note of the operation ID as output by the `Add-Server` command. You use this operation ID later to monitor the progress of the `Add-Server` operation.
 
 > [!NOTE]
-> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is added.
+> If your cluster is using a dedicated Network ATC intent for storage, and you are using custom storage IPs, you must configure the IPs to the storage network adapters before adding the new server.
+>If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs to the storage virtual network adapters after the server is added.
 
 ### Monitor operation progress
 
