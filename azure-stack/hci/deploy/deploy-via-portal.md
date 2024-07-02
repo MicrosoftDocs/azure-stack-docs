@@ -146,8 +146,8 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Optionally change advanced settings and apply tags
 
 1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
-    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per server.
-    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server. You'll need to later create workload volumes and storage paths.
+    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per cluster.
+    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You'll need to later create workload volumes and storage paths.
     * **Use existing data drives** (single servers only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
 
         To use this option you must be using a single server and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
