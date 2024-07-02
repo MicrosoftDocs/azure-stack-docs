@@ -257,7 +257,10 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
 
     1. Only the Active Directory domain join is supported and selected by default.  
     
-    1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain. For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`. 
+    1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
+       
+       > [!IMPORTANT]
+       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`. 
     
     1. Provide the domain administrator password. If using SAM Account Name in the UPN field, enter the corresponding password.
 
