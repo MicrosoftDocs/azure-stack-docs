@@ -5,7 +5,7 @@ author: sethmanheim
 ms.topic: how-to
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 11/09/2022
+ms.date: 07/02/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -38,9 +38,9 @@ Verify that you have the following requirements:
 * Install the [AksHci PowerShell module](./kubernetes-walkthrough-powershell.md#install-the-akshci-powershell-module).
 * The following access level on your Azure subscription:
   * A user account with the built-in **Owner** role. You can check your access level by navigating to your subscription, selecting "Access control (IAM)" on the left hand side of the Azure portal, and then clicking on **View my access**.
-  * A service principal with the built-in **[Owner](/azure/role-based-access-control/built-in-roles#owner) role**.
+  * A service principal with the built-in **[Owner](/azure/role-based-access-control/built-in-roles#owner)** role.
 * Run the commands in this article in a PowerShell administrative window.
-* Ensure that you have met the [network requirements of AKS](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
+* Ensure that you meet the [network requirements of AKS](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).
 
 ## Step 1: Sign in to Azure
 
@@ -50,7 +50,7 @@ To sign in to Azure, run the [Connect-AzAccount](/powershell/module/az.accounts/
 Connect-AzAccount $tenantId
 ```
 
-If you want to switch to a different subscription, run the [Set-AzContext](/powershell/module/az.accounts/set-azcontext?view=azps-5.9.0&preserve-view=true) PowerShell command:
+If you want to switch to a different subscription, run the [Set-AzContext](/powershell/module/az.accounts/set-azcontext) PowerShell command:
 
 ```powershell
 Set-AzContext -Subscription $subscriptionId
@@ -66,7 +66,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.KubernetesConfiguration
 Register-AzResourceProvider -ProviderNamespace Microsoft.ExtendedLocation
 ```
 
-You can check if you're registered with the following commands:
+You can check that you're registered with the following commands:
 
 ```powershell
 Get-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
@@ -84,7 +84,7 @@ Enable-AksHciArcConnection -name $clusterName
 
 ## Connect your AKS cluster to Azure Arc using a service principal
 
-If you don't have access to a subscription on which you're an "Owner," you can connect your AKS cluster to Azure Arc using a *service principal*.
+If you don't have access to a subscription on which you're an Owner, you can connect your AKS cluster to Azure Arc using a *service principal*.
 
 The first command prompts for service principal credentials and stores them in the `$Credential` variable. When prompted, enter your application ID for the username and then use the service principal secret as the password. Make sure you get these values from your subscription admin. The second command connects your cluster to Azure Arc using the service principal credentials stored in the `$Credential` variable:
 
@@ -93,7 +93,7 @@ $Credential = Get-Credential
 Enable-AksHciArcConnection -name $clusterName -subscriptionId $subscriptionId -resourceGroup $resourceGroup -credential $Credential -tenantId $tenantId -location $location
 ```
 
-Make sure the service principal used in the command above has the "Owner" role assigned to it and that it has scope over the subscription ID used in the command. For more information about service principals, see [Create a service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal).
+Make sure the service principal used in the command above has the Owner role assigned to it and that it has scope over the subscription ID used in the command. For more information about service principals, see [Create a service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal).
 
 ## Connect your AKS cluster to Azure Arc and enable custom locations
 
@@ -109,7 +109,7 @@ Enable-AksHciArcConnection -name $clusterName -subscriptionId $subscriptionId -r
 You can view your Kubernetes cluster resource on the [Azure portal](https://portal.azure.com/). Once you open the portal in your browser, navigate to the resource group and the AKS resource that's based on the resource name and resource group name inputs used in the [enable-akshciarcconnection](./reference/ps/enable-akshciarcconnection.md) PowerShell command.
 
 > [!NOTE]
-> After you connect the cluster, it can take a maximum of approximately five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the AKS resource in Azure portal.
+> After you connect the cluster, it can take a maximum of approximately five to ten minutes for the cluster metadata (cluster version, agent version, number of nodes) to surface on the overview page of the AKS resource in the Azure portal.
 
 ## Azure Arc agents for Kubernetes
 
