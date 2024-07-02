@@ -28,7 +28,7 @@ To connect a Kubernetes cluster to Azure, the cluster administrator must deploy 
 
 AKS supports industry-standard SSL to secure data in transit. Also, data is stored encrypted at rest in an Azure Cosmos DB database to ensure data confidentiality.
 
-The following steps describe how to connect AKS clusters to Azure Arc in AKS enabled by Arc. You can skip these steps if you've already connected your Kubernetes cluster to Azure Arc using Windows Admin Center.
+The following steps describe how to connect AKS clusters to Azure Arc in AKS enabled by Arc. You can skip these steps if you already connected your Kubernetes cluster to Azure Arc using Windows Admin Center.
 
 ## Before you begin
 
@@ -58,7 +58,7 @@ Set-AzContext -Subscription $subscriptionId
 
 ## Step 2: Register the two providers for AKS
 
-You can skip this step if you've already registered the two providers for AKS on your subscription. Registration is an asynchronous process and needs to occur once per subscription. Registration can take approximately 10 minutes:
+You can skip this step if you already registered the two providers for AKS on your subscription. Registration is an asynchronous process and needs to occur once per subscription. Registration can take approximately 10 minutes:
 
 ```powershell
 Register-AzResourceProvider -ProviderNamespace Microsoft.Kubernetes
@@ -93,7 +93,7 @@ $Credential = Get-Credential
 Enable-AksHciArcConnection -name $clusterName -subscriptionId $subscriptionId -resourceGroup $resourceGroup -credential $Credential -tenantId $tenantId -location $location
 ```
 
-Make sure the service principal used in the command above has the Owner role assigned to it and that it has scope over the subscription ID used in the command. For more information about service principals, see [Create a service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal).
+Make sure the service principal used in this command has the Owner role assigned to it and that it has scope over the subscription ID used in the command. For more information about service principals, see [Create a service principal with Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps?view=azps-5.9.0&preserve-view=true#create-a-service-principal).
 
 ## Connect your AKS cluster to Azure Arc and enable custom locations
 
