@@ -101,7 +101,8 @@ Continuing with this example, and adding it to the following table, you get:
 
 Proxy settings in AKS are inherited from the underlying infrastructure system. The functionality to set individual proxy settings for Kubernetes clusters and change proxy settings isn't supported yet.
 
-## Network port & cross-VLAN requirements
+## Network port and cross-VLAN requirements
+
 When you deploy Azure Stack HCI, you allocate a contiguous block of at least [six static IP addresses on your management network's subnet](/azure-stack/hci/deploy/deploy-via-portal#specify-network-settings), omitting addresses already used by the physical servers. These IPs are used by Azure Stack HCI and internal infrastructure (Arc Resource Bridge) for Arc VM management and AKS Arc. If your management network that provides IP addresses to Arc Resource Bridge related Azure Stack HCI services are on a different VLAN than the logical network you used to create AKS clusters, you need to ensure that the following ports are opened to successfully create and operate an AKS cluster. 
 
 | Destination Port | Destination | Source | Description | Cross VLAN networking notes |

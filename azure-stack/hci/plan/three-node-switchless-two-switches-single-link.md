@@ -7,6 +7,7 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-arm-template
 ms.date: 05/15/2024
 ---
 

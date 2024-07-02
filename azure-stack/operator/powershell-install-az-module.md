@@ -4,6 +4,7 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
+ms.custom: linux-related-content
 ms.date: 08/15/2022
 ms.author: sethm
 ms.reviewer: unknown
@@ -11,7 +12,6 @@ ms.lastreviewed:  12/6/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
-
 ---
 
 # Install PowerShell Az and Azure Stack modules for Azure Stack Hub
