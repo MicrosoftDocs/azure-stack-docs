@@ -238,7 +238,6 @@ Send-DiagnosticData [[-FilterByRole] <string[]>] [[-FromDate] <datetime>] [[-ToD
 
 ```powershell
 $fromDate = Get-Date -Date "11/30/2023 18:35:00"
-$fromDate = Get-Date -Date "11/30/2023 18:35:00"
 $toDate = Get-Date -Date "11/30/2023 19:35:00"
 Send-DiagnosticData –FromDate $fromDate –ToDate $toDate
 ```
