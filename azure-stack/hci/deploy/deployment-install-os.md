@@ -124,7 +124,7 @@ Follow these steps to configure the operating system using SConfig:
 
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each server rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
-1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure Portal as well as your AD environment once joined.
+1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
 
 1. Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
 
