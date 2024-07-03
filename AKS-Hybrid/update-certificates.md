@@ -3,7 +3,7 @@ title: Update certificates in AKS enabled by Azure Arc
 description: Learn how to update certificates in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/18/2023
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
 ms.reviewer: sulahiri
@@ -47,9 +47,9 @@ The behavior of the certificates at the MOC layer and AKS Kubernetes layer has a
 
 When the cluster has been shut down for more than 30 days, run the following commands in the following sequence:
 
-1. `Update-AksHciCertificates` (to fix management cluster certificates)
-1. `Update-AksHciClusterCertificates –fixkubeletcredentials` (to fix target cluster control plane certificates)
-1. `Update-AksHciClusterCertificates –fixcloudcredentials` (to fix target cluster MOC certificates)
+1. `Update-AksHciCertificates` (to fix management cluster certificates).
+1. `Update-AksHciClusterCertificates –fixkubeletcredentials` (to fix target cluster control plane certificates).
+1. `Update-AksHciClusterCertificates –fixcloudcredentials` (to fix target cluster MOC certificates).
 
 ## Next steps
 
