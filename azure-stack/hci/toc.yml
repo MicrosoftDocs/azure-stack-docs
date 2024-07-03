@@ -280,7 +280,7 @@ items:
       - name: GPU Partitioning
         href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
 
