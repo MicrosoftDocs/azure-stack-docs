@@ -3,7 +3,7 @@ title: Create and delete pods in AKS enabled by Azure Arc
 description: Learn how to create and delete pods in Azure Kubernetes Service (AKS) enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/09/2022
+ms.date: 07/02/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -19,7 +19,7 @@ ms.reviewer: abha
 
 Kubernetes uses pods to run an instance of your application. This article describes how to create and delete pods when managing your workloads in AKS enabled by Azure Arc.
 
-A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod, through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
+A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod, through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle, during which they run until their containers are removed.
 
 ## Create a pod
 
@@ -31,7 +31,7 @@ To make sure you are connected to the Kubernetes cluster, run the following comm
 kubectl get nodes
 ```
 
-To create a pod, run the following command. In this example, a pod is created using an nginx image.  
+To create a pod, run the following command. In this example, a pod is created using an nginx image:  
 
 ```powershell
 kubectl run nginx --image=nginx --restart=Never
