@@ -150,11 +150,10 @@ $VMs = get-vm
 $VMs | %{Get-VMNetworkAdapter -VMName $_.name | Disconnect-VMNetworkAdapter ; Get-VMNetworkAdapter -VMName $_.name | Connect-VMNetworkAdapter -SwitchName $VMSW.name}
 ```
 
->[!NOTE]
-> We don't change the Network ATC VMSwitch for two reasons:
->
-> - Network ATC ensures that all nodes in the cluster have the same name to support live migration and symmetry.
-> - Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
+We don't change the Network ATC VMSwitch for two reasons:
+
+- Network ATC ensures that all nodes in the cluster have the same name to support live migration and symmetry.
+- Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
 
 ### Step 8: Resume the cluster node
 
@@ -167,4 +166,4 @@ Resume-ClusterNode
 > [!NOTE]
 > To complete the migration to Network ATC across the cluster, follow steps 1-4, 6, and 8 for each node.
 
-
+# Next step
