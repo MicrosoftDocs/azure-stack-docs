@@ -1,0 +1,44 @@
+---
+title: Upgrade existing Azure Stack HCI version 22H2 to version 23H2 cluster
+description: Learn about how to upgrade from Azure Stack HCI, version 22H2 cluster to Azure Stack HCI, version 23H2.
+author: alkohli
+ms.topic: how-to
+ms.date: 07/01/2024
+ms.author: alkohli
+ms.reviewer: alkohli
+ms.subservice: azure-stack-hci
+---
+
+# About upgrades for Azure Stack HCI, version 23H2
+
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+
+This article provides an overview of upgrades for an existing Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2.
+
+## About upgrades
+
+The Azure Stack HCI, version 23H2 is the latest generally available software. This version of the solution has an exciting array of new capabilities including the Azure Arc infrastructure that enables you to provision and manage workloads on your Azure Stack HCI. Examples of these workloads include the Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop.
+
+Azure Stack HCI Version 23H2 has evolved from a cloud connected operating system to an Arc enabled solution. The operating system is the base layer for this solution. The Arc and the Orchestrator (also known as the LifeCycle Manager) components are layered on top of the OS. These are together packaged into a solution that follows an [Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) model.
+
+This IaC model takes a set of input parameters that are specific to each customer and the environment. The lifecycle manager then orchestrates the desired state across all layers to meet the desired state and version.
+
+The following diagram illustrates the Azure Stack HCI, version 23H2 and its components:
+
+:::image type="content" source="./media/about-upgrades-23h2/azure-stack-hci-23h2-and-its-components.png" alt-text="Diagram that illustrates Azure Stack HCI and its components." lightbox="./media/about-upgrades-23h2/azure-stack-hci-23h2-and-its-components.png":::
+
+## Upgrade to Azure Stack HCI, version 23H2
+
+To upgrade your Azure Stack HCI, version 22H2 to 23H2 software, you need to follow these steps:
+
+1. Update the version 22H2 OS to version 23H2 OS. For more information, see [Update the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS](../index.yml).
+
+1. Apply the solution update. For more information, see [Apply the solution update](../index.yml).
+
+   :::image type="content" source="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png" alt-text="Diagram that illustrates the two steps to update the Azure Stack HCI OS and then apply the solution update." lightbox="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png":::
+
+The article will cover the details of how to migrate from Azure Stack HCI 22H2 to version 23H2.
+
+## Next steps
+
+- [Update the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS](../index.yml).
