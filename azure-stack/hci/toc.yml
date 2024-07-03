@@ -274,7 +274,7 @@ items:
       - name: VM load balancing
         href: manage/vm-load-balancing.md
       - name: Dynamic CPU compatibility
-        href: manage/processor-compatibility-mode.md
+        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use GPUs with clustered VMs
         href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: GPU Partitioning
