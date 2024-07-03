@@ -41,4 +41,4 @@ The article will cover the details of how to migrate from Azure Stack HCI 22H2 t
 
 ## Next steps
 
-- [Update the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS](../index.yml).
+- [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS](./upgrade-22h2-to-23h2.md).
