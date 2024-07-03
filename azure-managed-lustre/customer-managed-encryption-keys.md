@@ -92,7 +92,6 @@ Create this identity before you create the file system, and give it access to th
 For more information, see the managed identities documentation:
 
 * [Create a user-assigned managed identity](/azure/active-directory/managed-identities-azure-resources/how-manage-user-assigned-managed-identities)
-* [Assign resource access](/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal?source=recommendations)
 
 ## Create the Azure Managed Lustre file system with customer-managed encryption keys
 
