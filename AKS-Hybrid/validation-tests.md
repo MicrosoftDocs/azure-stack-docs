@@ -3,7 +3,7 @@ title: Validation tests in AKS enabled by Azure Arc
 description: Learn how to validate your environment and configuration prior to installing AKS enabled by Arc.
 author: sethmanheim
 ms.topic: troubleshooting
-ms.date: 04/27/2023
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 04/19/2023
 ms.reviewer: waltero
@@ -34,5 +34,5 @@ The following table lists the tests that are executed when you run the [Set-AksH
 
 ## Next steps
 
-- [AKS Arc overview](aks-overview.md)
+- [AKS Arc overview](overview.md)
 - [Supported Kubernetes versions](supported-kubernetes-versions.md)
