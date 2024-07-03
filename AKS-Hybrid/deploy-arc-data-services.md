@@ -3,7 +3,7 @@ title: Deploy Azure Arc-enabled data services in AKS enabled by Azure Arc
 description: Learn how to deploy Azure Arc-enabled data services in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 12/28/2022
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
@@ -21,12 +21,12 @@ This article provides a checklist of prerequisites you can follow to deploy Azur
 
 > [!div class="checklist"]
 > * [Provision a workload cluster with only Linux node pools](use-node-pools.md).
-> * Configure storage [using the disk Container Storage Interface (CSI) drivers](./container-storage-interface-disks.md#create-custom-storage-class-for-disks).
+> * Configure storage [using the disk Container Storage Interface (CSI) drivers](container-storage-interface-disks.md#create-custom-storage-class-for-disks).
 
 ## Prerequisites for Azure Arc-enabled data services
 
 > [!div class="checklist"]
-> * [Connect your clusters to Azure Arc for Kubernetes](/azure-stack/aks-hci/connect-to-arc).
+> * [Connect your clusters to Azure Arc for Kubernetes](connect-to-arc.md).
 
 Confirm whether custom location is enabled on your Kubernetes cluster by running the following command and checking for `customLocation: enabled: true`:
 
@@ -34,7 +34,7 @@ Confirm whether custom location is enabled on your Kubernetes cluster by running
 helm get values azure-arc
 ```
 
-If custom location isn't enabled, run the following Az CLI command:
+If custom location isn't enabled, run the following CLI command:
 
 ```azurecli
 az connectedk8s enable-features -n <clusterName> -g <resourceGroupName> --features cluster-connect custom-locations

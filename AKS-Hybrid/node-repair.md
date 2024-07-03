@@ -4,7 +4,7 @@ description: Learn about automatic node repair of Windows and Linux nodes in AKS
 author: sethmanheim
 ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 01/27/2023
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: oadeniji
@@ -44,10 +44,10 @@ moc-wvt025q406z   Ready    <none>   47h   v1.19.7
 
 ## How automatic repair works
 
-If AKS Arc identifies an unhealthy node that remains unhealthy for more than 20-30 minutes, AKS creates and reimages a new node.
+If AKS Arc identifies an unhealthy node that remains unhealthy for more than 20-30 minutes, it creates and reimages a new node.
 
 It usually takes 20 to 30 minutes to repair the node. If AKS Arc finds multiple unhealthy nodes during a health check, each node is repaired individually before another repair begins.
 
 ## Next steps
 
-- [Application availability](./app-availability.md)
+- [Application availability](app-availability.md)
