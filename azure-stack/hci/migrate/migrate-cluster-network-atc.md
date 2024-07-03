@@ -112,7 +112,7 @@ There are various intents that you can add. Identify the intent or intents you'd
 
 [!INCLUDE [migrate-cluster-network-atc-intent](../../includes/migrate-cluster-network-atc-intent.md)]
 
-For more information on Network ATC, see [Deploy host networking with Network ATC](../hci/deploy/network-atc.md).
+For more information on Network ATC, see [Deploy host networking with Network ATC](../deploy/network-atc.md).
 
 ### Step 6: Verify the deployment on one node
 
