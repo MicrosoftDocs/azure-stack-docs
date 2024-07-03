@@ -3,7 +3,7 @@ title: Use persistent volumes with AKS enabled by Azure Arc
 description: Use a persistent volume in a Windows container and prepare Windows nodes for group Managed Service Accounts
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/09/2022
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
@@ -13,7 +13,7 @@ ms.reviewer: abha
 
 ---
 
-# Use persistent volumes with AKS enabled by Azure Arc
+# Use persistent volumes with AKS enabled by Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
@@ -27,8 +27,8 @@ While you can provision a persistent volume for both Windows and Linux nodes, th
 
 Here's what you need to get started:
 
-- A [Kubernetes cluster](./kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster) with at least one Windows worker node.
-- A kubeconfig file to [access the Kubernetes cluster](./kubernetes-walkthrough-powershell.md#access-your-clusters-using-kubectl).
+- A [Kubernetes cluster](kubernetes-walkthrough-powershell.md#step-6-create-a-kubernetes-cluster) with at least one Windows worker node.
+- A kubeconfig file to [access the Kubernetes cluster](kubernetes-walkthrough-powershell.md#access-your-clusters-using-kubectl).
 
 ## Create a persistent volume claim
 
@@ -53,7 +53,7 @@ To create the volume, run the following commands in an administrative PowerShell
 kubectl create -f pvc-akshci-csi.yaml 
 ```
 
-The following output will show that your persistent volume claim has been created successfully:
+The following output shows that your persistent volume claim was successfully created:
 
 Output:
 
@@ -63,9 +63,9 @@ persistentvolumeclaim/pvc-akshci-csi created
 
 ## Use persistent volume
 
-To use a persistent volume, create a file named `winwebserver.yaml` and copy and paste the following YAML definition. Then, create a pod with access to the persistent volume claim and vhdx.
+To use a persistent volume, create a file named `winwebserver.yaml`, and copy and paste the following YAML definition. Then, create a pod with access to the persistent volume claim and vhdx.
 
-In the following YAML definition, `mountPath` is the path to mount a volume inside a container. After a successful pod creation, you'll see the subdirectory **mnt** created in **C:\\** and the subdirectory **akshciscsi** created inside **mnt**.
+In the following YAML definition, `mountPath` is the path to mount a volume inside a container. After a successful pod creation, you'll see the subdirectory **mnt** created in **C:\\** and the subdirectory **akshciscsi** created inside **mnt**:
 
 ```yaml
 apiVersion: apps/v1 
@@ -101,7 +101,7 @@ spec:
       kubernetes.io/os: windows 
 ```
 
-To create a pod with the above YAML definition, run:
+To create a pod with this YAML definition, run:
 
 ```powershell
 kubectl create -f winwebserver.yaml 
