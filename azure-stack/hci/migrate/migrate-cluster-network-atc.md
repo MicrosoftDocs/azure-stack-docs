@@ -164,6 +164,6 @@ Resume-ClusterNode
 ```
 
 > [!NOTE]
-> To complete the migration to Network ATC across the cluster, follow steps 1-4, 6, and 8 for each node.
+> To complete the migration to Network ATC across the cluster, follow steps 1 through 4, step 6, and step 8 for each node.
 
 # Next step
