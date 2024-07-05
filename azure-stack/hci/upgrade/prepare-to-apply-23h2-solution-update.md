@@ -29,22 +29,22 @@ The following sections document steps to prepare your system for the solution up
 
 ### Validate upgrade readiness
 
-We recommend that you use the environment checker to validate your system prior the solution update.  
+We recommend that you use the environment checker to validate your system prior to the solution update.  
 
-A report will be generated with potential findings that require corrective actions to be ready for the solution update.
+A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
-Some of the actions require server reboots. The information from the validation report will allow you to plan maintenance windows ahead of time to be ready.
+Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready.
 
 The same checks are executed during the solution upgrade process to ensure your system meets the requirements.
 
-List of validation tests with severity critical that will block upgrade. The following items must be addressed prior to the solution update.
+List of validation tests with severity critical that block the upgrade. The following items must be addressed prior to the solution update.
 
 | Name                              | Severity |
 |-----------------------------------|----------|
 | Windows OS is 23H2                | Critical |
 | AKS HCI install state             | Critical |
 | Supported cloud type              | Critical |
-| Bitlocker suspension              | Critical |
+| BitLocker suspension              | Critical |
 | Cluster exists                    | Critical |
 | All nodes in same cluster         | Critical |
 | Cluster node is up                | Critical |
@@ -134,9 +134,9 @@ Each validation check includes remediation guidance with links that provide guid
 
 ### Required Windows features
 
-Azure Stack HCI version 23H2 requires a set of Windows roles and features to be installed. Some of them do require a restart so it is important you put the node into maintenance prior installing them. Verify all active virtual machines have been migrated to other cluster members.
+Azure Stack HCI version 23H2 requires a set of Windows roles and features to be installed. Some of them do require a restart so it's important you put the node into maintenance prior to installing them. Verify all active virtual machines have been migrated to other cluster members.
 
-Use the following commands for each servers to install the required features. If a feature is already present, it will skip it automatically.
+Use the following commands for each server to install the required features. If a feature is already present, it skips it automatically.
 
 ```powershell
 #Install Windows Roles & Features 
@@ -233,11 +233,11 @@ Get-CluterNode -cluster mycluster
 
 The team is working on supporting multi room clustering where cluster nodes are separated across two rooms. Stretch clustering is one implementation that does solve for long distances. Based on customer feedback, we are prioritizing a solution that is designed for short distances up to 1Km that is separating a cluster into availability zones by maintaining the operational management aspect of a single room cluster.
 
-When running a stretch cluster, you must apply the operating system update which provides improvements using a new replication engine. We do understand this is a constraint as the Arc solution enablement will not be available for you initially.
+When running a stretch cluster, you must apply the operating system update, which provides improvements using a new replication engine. We do understand this is a constraint as the Arc solution enablement won't be available for you initially.
 
 ### BitLocker Suspension
 
-BitLocker must be disabled when applying the solution upgrade in case a reboot happens. In case of a reboot, the BitLocker recovery must be entered which will interrupt the upgrade process.
+BitLocker must be disabled when applying the solution upgrade in case a reboot happens. If there is a reboot, the BitLocker recovery must be entered which interrupts the upgrade process.
 
 Use the following PowerShell command to suspend BitLocker:
 
