@@ -210,7 +210,7 @@ When you remove or delete a VM using PowerShell, it deletes the VM's configurati
 
 Before deleting a VM, ensure the VM is in the **off** state. Also, keep in mind that you can't undo the deletion of the configuration file.
 
-## Remove a VM from a local host
+### Remove a VM from a local host
 
 To remove or delete a VM and it's resources from a local host, first find all VMs on the local host using the following cmdlet:
 
@@ -224,7 +224,7 @@ Then, run the following cmdlet for each VM you wish to remove from the local hos
 Remove-VM -Name VM1
 ```
 
-## Remove a VM from a cluster
+### Remove a VM from a cluster
 
 To remove or delete a VM and it's resources from a cluster, first find them using the following cmdlet:
 
