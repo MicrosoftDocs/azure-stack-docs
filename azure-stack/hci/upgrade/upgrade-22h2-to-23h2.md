@@ -1,6 +1,6 @@
 ---
 title: Upgrade Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2
-description: Learn how to upgrade from Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2.
+description: Learn how to prepare to upgrade from Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
 ms.date: 07/02/2024
@@ -27,9 +27,9 @@ Cluster aware updating orchestrates the process of applying the operating system
 
 For more information about available tools, see:
 
-- [Cluster operating system rolling upgrade](https://learn.microsoft.com/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade).
-- [Update Azure HCI cluster (Applies to 23H2)](https://learn.microsoft.com/azure-stack/hci/manage/update-cluster).
-- [Update a cluster using PowerShell](https://learn.microsoft.com/azure-stack/hci/manage/update-cluster#update-a-cluster-using-powershell).
+- [Cluster operating system rolling upgrade](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade).
+- [Update Azure HCI cluster (Applies to 23H2)](../update/update-via-powershell-23h2.md).
+- [Update a cluster using PowerShell](../manage/update-cluster.md#update-a-cluster-using-powershell).
 
 ### Check for updates using PowerShell
 
@@ -216,9 +216,6 @@ If there is a critical security update that you need to apply quickly or you nee
 10. Bring the virtual disks back online.
 11. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
 
-## Next steps
-
-- [Learn how to prepare to apply solution update.](../index.yml)
 
 ## Next steps
 
