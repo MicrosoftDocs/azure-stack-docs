@@ -1,6 +1,6 @@
 ---
-title: Upgrade Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2
-description: Learn how to prepare to upgrade from Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2.
+title: Upgrade Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2
+description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
 ms.date: 07/02/2024
