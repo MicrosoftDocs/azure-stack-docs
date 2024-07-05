@@ -3,7 +3,7 @@ title: Manage VMs using Windows PowerShell - Azure Stack HCI
 description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
 author: JasonGerend 
 ms.topic: how-to 
-ms.date: 01/29/2024
+ms.date: 07/05/2024
 ms.author: jgerend 
 ms.reviewer: stevenek 
 ---
@@ -204,27 +204,29 @@ The following example configures a VM named VM1 with two virtual processors, a r
 Set-VMProcessor -ComputerName Server1 -Name VM1 -Count 2 -Reserve 10 -Maximum 75 -RelativeWeight 200
 ```
 
->[!Note]
-> The following command deletes a virtual machine. Running this cmdlet deletes the virtual machine's configuration file, but does not delete any virtual hard drives. If the virtual machine has any snapshots, these are deleted and merged into > the virtual hard disk files after the virtual machine is deleted. If you want to delete a VM with all files including virtual hard drives, consider using [Windows Admin Center](vm.md).
-> Ensure the VM is in state "off". The deletion of the configuration file cannot be undone.
+## Remove a VM
 
-## Remove an unclustered VM
+When you remove or delete a VM using PowerShell, it deletes the VM's configuration file but doesn't delete any virtual hard drives. If the VM has any snapshots, these are deleted and merged into the virtual hard disk files after the VM is deleted. If you want to delete a VM with all files, including virtual hard drives, consider using [Windows Admin Center](vm.md).
 
-To remove or delete a VM and it's resources, first find them using the following cmdlet:
+Before deleting a VM, ensure the VM is in the **off** state. Also, keep in mind that you can't undo the deletion of the configuration file.
+
+## Remove a VM from a local host
+
+To remove or delete a VM and it's resources from a local host, first find all VMs on the local host using the following cmdlet:
 
 ```powershell
-Get-VM VM1
+Get-VM
 ```
 
-Then, run the following cmdlet for each VM you wish to remove from the cluster:
+Then, run the following cmdlet for each VM you wish to remove from the local host:
 
 ```powershell
 Remove-VM -Name VM1
 ```
 
-## Remove a VM from a Cluster
+## Remove a VM from a cluster
 
-To remove or delete a VM and it's resources, first find them using the following cmdlet:
+To remove or delete a VM and it's resources from a cluster, first find them using the following cmdlet:
 
 ```powershell
 Get-ClusterGroup
@@ -236,7 +238,6 @@ Then, run the following cmdlet for each VM you wish to remove from the cluster:
 Remove-ClusterGroup -RemoveResources -Name VM1
 ```
 
-
-## Next steps  
+## Next steps
 
 You can also create and manage VMs using Windows Admin Center. For more information, see [Windows Admin Center](vm.md).
