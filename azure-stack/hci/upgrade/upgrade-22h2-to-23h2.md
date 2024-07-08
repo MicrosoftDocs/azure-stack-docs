@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2
 description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/02/2024
+ms.date: 07/08/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -29,13 +29,13 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 
 There are different tools to upgrade the OS that include but aren't limited to builtin tools like Cluster aware updating (CAU) and Server Configuration tool (SConfig).
 
-Cluster aware updating orchestrates the process of applying the operating system automated to all cluster members using either Windows Update or ISO media.
+Cluster aware updating orchestrates the process of applying the operating system automatatically to all the cluster members using either Windows Update or ISO media.
 
 For more information about available tools, see:
 
 - [Cluster operating system rolling upgrade](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade).
 - [Update Azure HCI cluster (Applies to 23H2)](../update/update-via-powershell-23h2.md).
-- [Update a cluster using PowerShell](../manage/update-cluster.md#update-a-cluster-using-powershell).
+
 
 ### Check for updates using PowerShell
 
@@ -56,7 +56,7 @@ To scan servers for operating system updates and perform a full updating run on 
 Invoke-CauRun -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -EnableFirewallRules -Force
 ```
 
-This command performs a scan and a full updating run on the cluster named Cluster1. This cmdlet uses the **Microsoft.WindowsUpdatePlugin** plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed and allows no more than one node to fail before marking the entire updating run as failed. It also enables firewall rules to allow the servers to restart remotely. Because the command specifies the Force parameter, the cmdlet runs without displaying confirmation prompts.
+This command performs a scan and a full updating run on the cluster named `Cluster1`. This cmdlet uses the **Microsoft.WindowsUpdatePlugin** plug-in and requires that all cluster nodes be online before running this cmdlet. In addition, this cmdlet allows no more than three retries per node before marking the node as failed and allows no more than one node to fail before marking the entire updating run as failed. It also enables firewall rules to allow the servers to restart remotely. Because the command specifies the `Force` parameter, the cmdlet runs without displaying the confirmation prompts.
 
 The updating run process includes the following:
 
@@ -70,7 +70,7 @@ The updating run process also includes ensuring that quorum is maintained, check
 
 ### Install feature updates using PowerShell
 
-To install feature updates using PowerShell, follow these steps. If your cluster is running Azure Stack HCI, version 20H2, be sure to apply the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) via Windows Update, or the `Set-PreviewChannel` cmdlet won't work.
+To install feature updates using PowerShell, follow these steps:
 
 1. Run the following cmdlets on every server in the cluster:
 
@@ -100,7 +100,10 @@ To install feature updates using PowerShell, follow these steps. If your cluster
 
    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case.
 
-5. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. **Important: The system on which you run `Invoke-CauRun` must be running either Windows Server 2022, Azure Stack HCI, version 21H2, or Azure Stack HCI, version 20H2 with the [May 20, 2021 preview update (KB5003237)](https://support.microsoft.com/topic/may-20-2021-preview-update-kb5003237-0c870dc9-a599-4a69-b0d2-2e635c6c219c) installed**.
+5. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.
+
+    > [!IMPORTANT]
+    > The system on which you run `Invoke-CauRun` must be running Windows Server 2022.
 
    ```PowerShell
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
@@ -118,7 +121,7 @@ An administrator can get summary information about an updating run in progress b
 Get-CauRun -ClusterName Cluster1
 ```
 
-Here's some sample output:
+Here's a sample output:
 
 ```output
 RunId                   : 834dd11e-584b-41f2-8d22-4c9c0471dbad 
@@ -142,9 +145,6 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 ## Post-installation steps for feature updates
 
 Once the feature updates are installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
-
-   > [!IMPORTANT]
-   > Azure Stack HCI clusters running Storage Replica will require each server to be restarted a second time after the 21H2 Feature update is complete before performing the post-installation steps. This is a known issue.
 
 1. **Update the cluster functional level.**
 
@@ -198,11 +198,11 @@ For each node in the cluster, run these commands on the target node:
 
 2. `Resume-ClusterNode -Node <nodename> -Failback`
 
-When all nodes have been upgraded, run these two cmdlets:
+When all the nodes are upgraded, run these two cmdlets:
 
-   `Update-ClusterFunctional Level`
+- `Update-ClusterFunctional Level`
 
-   `Update-StoragePool`
+- `Update-StoragePool`
 
 ## Perform a fast, offline update of all servers in a cluster
 
@@ -211,16 +211,16 @@ This method allows you to take all the servers in a cluster down at once and upd
 If there is a critical security update that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
 
 1. Plan your maintenance window.
-2. Take the virtual disks offline.
-3. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the cluster.
-4. Set the cluster service to **Disabled** in Services.msc on each server. This prevents the cluster service from starting up while being updated.
-5. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time: there's no need to wait because the cluster is down.
-6. Restart the servers and ensure everything looks good.
-7. Set the cluster service back to **Automatic** on each server.
-8. Start the cluster. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
-9. Give it a few minutes.  Make sure the storage pool is healthy.
-10. Bring the virtual disks back online.
-11. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
+1. Take the virtual disks offline.
+1. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the cluster.
+1. Set the cluster service to **Disabled** in Services.msc on each server. This prevents the cluster service from starting up while being updated.
+1. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time: there's no need to wait because the cluster is down.
+1. Restart the servers and ensure everything looks good.
+1. Set the cluster service back to **Automatic** on each server.
+1. Start the cluster. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
+1. Give it a few minutes.  Make sure the storage pool is healthy.
+1. Bring the virtual disks back online.
+1. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
 
 
 ## Next steps
