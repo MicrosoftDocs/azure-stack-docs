@@ -198,7 +198,7 @@ items:
 - name: Upgrade 
   items:
   - name: About Upgrades
-    href: upgrade/about-updgraes-23h2.md
+    href: upgrade/about-updgrades-23h2.md
   - name: Upgrade to version 23H2
     href: upgrade/upgrade-22h2-to-23h2.md
   - name: Prepare to apply solution update
