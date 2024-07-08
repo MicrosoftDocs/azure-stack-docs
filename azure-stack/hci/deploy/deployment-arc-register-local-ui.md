@@ -15,7 +15,7 @@ Applies to: Azure Stack HCI, software version 2405.1 and later
 
 This article describes how to use a local web-based UI to bootstrap and register the servers that you intend to cluster as an Azure Stack HCI system. 
 
-You can use the local UI or Azure CLI to regitser your servers. 
+You can use the local UI or Azure CLI to register your servers. 
 
 Use the local web-based UI method if you intend to deploy some sites with a few servers per site.
 
@@ -59,7 +59,7 @@ After you have procured the hardware that you intend to use to set up your Azure
 
   If you didn't set up an Azure Arc gateway, you can skip this step.
 
-- If you're registering the servers as Arc resources, make sure that you are either the resource group owner or have the following permissions on the resource group where the servers were provisioned:
+- If you're registering the servers as Arc resources, make sure that you're either the resource group owner or have the following permissions on the resource group where the servers were provisioned:
 
   - Azure Connected Machine Onboarding.
   - Azure Connected Machine Resource Administrator.
@@ -134,7 +134,7 @@ Follow these steps to configure the network settings and connect the servers to 
       > The region is specified with the spaces removed. For example, **East US** is specified as **EastUS**.
    1. Specify the **Cloud type** as **AzureCloud**.
    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
-   1. If you have set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
+   1. If you set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
 
       :::image type="content" source="media/deployment-arc-register-local-ui/setup-arc-agent-details.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup page." lightbox="media/deployment-arc-register-local-ui/setup-arc-agent-details.png":::
 
@@ -154,13 +154,13 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-details.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup, configuration details." lightbox="media/deployment-arc-register-local-ui/setup-configuration-details.png":::
 
-   During the Arc registration process, you need to authenticate with your Azure account. The local UI displays a code that you need to enter in the URL diaplayed in the local UI to authenticate. Follow the instructions to complete the authentication process.
+   During the Arc registration process, you need to authenticate with your Azure account. The local UI displays a code that you need to enter in the URL displayed in the local UI to authenticate. Follow the instructions to complete the authentication process.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-authentication.png" alt-text="Screenshot that shows the authentication with your Azure account." lightbox="media/deployment-arc-register-local-ui/setup-configuration-authentication.png":::
 
 1. Once the configuration is complete, status for Arc configuration should turn to **Success (Open in Azure portal)**.  
 
-1. Repeat all the steps on the other servers until the Arc configuration has succeeded. Select the **Open in Azure portal** link.
+1. Repeat all the steps on the other servers until the Arc configuration succeeds. Select the **Open in Azure portal** link.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup configuration status, open in Azure portal option." lightbox="media/deployment-arc-register-local-ui/setup-configuration-open-in-azure-portal.png":::
 
