@@ -28,9 +28,9 @@ This article only covers the first step, which is how to upgrade the Azure Stack
 To upgrade the OS on your cluster, you will do the following high-level steps:
 
 1. Complete the prerequisites inculding downloading the Azure Stack HCI, version 23H2 OS software update.
-1. Connect to the Azure Stack HCI cluster.
+1. Connect to the Azure Stack HCI, version 22H2 cluster.
 1. Check for the available updates using PowerShell.
-1. Install the operating system updates using PowerShell.
+1. Install the operating system updates that you downloaded earlier using PowerShell.
 1. Install feature updates using PowerShell.
 1. Check the status of the updates.
 1. After the feature updates are complete, perform the post-installation steps for feature updates.
