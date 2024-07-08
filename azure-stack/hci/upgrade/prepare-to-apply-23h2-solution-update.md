@@ -29,13 +29,9 @@ The following sections document steps to prepare your system for the solution up
 
 ### Validate upgrade readiness
 
-We recommend that you use the environment checker to validate your system readiness prior to the solution update. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md).
+We recommend that you use the environment checker to validate your system readiness prior to the solution update. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
-A report is generated with potential findings that require corrective actions to be ready for the solution update.
-
-Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready.
-
-The same checks are executed during the solution upgrade process to ensure your system meets the requirements.
+Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
 
 The following table contains the validation tests with severity *Critical* that block the upgrade. Any items that block the upgrade must be addressed prior to the solution update.
 
