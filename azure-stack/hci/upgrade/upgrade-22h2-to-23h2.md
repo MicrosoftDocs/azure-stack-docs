@@ -11,15 +11,21 @@ ms.subservice: azure-stack-hci
 
 # Upgrade Azure Stack HCI, version 22H2 operating system to Azure Stack HCI, version 23H2
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software. The upgrade process includes upgrading the OS, preparing to apply solution updates, and finally, applying the solution updates.
+This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software. 
 
-This article only covers the detailed steps on how to upgrade the Azure Stack HCI OS.
+The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
+
+1. Upgrade the operating system.
+1. Prepare for the solution update.
+1. Apply the solution update.
+
+This article only covers the first step, which is how to upgrade the Azure Stack HCI OS.
 
 ## Upgrade the operating system
 
-The Azure Stack HCI operating system update is available via Windows Update and via the downloadable media. The media is the same ISO file that is used for new deployments and can be downloaded via the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+The Azure Stack HCI operating system update is available via the Windows Update and via the downloadable media. The media is the same ISO file that is used for new deployments and can be downloaded via the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 
 There are different tools to upgrade the OS that include but aren't limited to builtin tools like Cluster aware updating (CAU) and Server Configuration tool (SConfig).
 
