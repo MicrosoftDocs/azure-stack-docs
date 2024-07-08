@@ -9,13 +9,13 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Upgrade from Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2
+# Prepare to upgrade from Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare your Azure Stack HCI solution update after the OS has been updated from v22H2 to v23H2. 
+This article describes how to prepare your Azure Stack HCI solution update after the OS has been updated from v22H2 to v23H2.
 
-The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in three steps:
+The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
 
 1. Upgrade the operating system.
 1. Prepare for the solution update.
@@ -29,7 +29,7 @@ The following sections document steps to prepare your system for the solution up
 
 ### Validate upgrade readiness
 
-We recommend that you use the environment checker to validate your system prior to the solution update.  
+We recommend that you use the environment checker to validate your system readiness prior to the solution update. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md).
 
 A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
@@ -37,7 +37,7 @@ Some of the actions require server reboots. The information from the validation 
 
 The same checks are executed during the solution upgrade process to ensure your system meets the requirements.
 
-List of validation tests with severity critical that block the upgrade. The following items must be addressed prior to the solution update.
+The following table contains the validation tests with severity *Critical* that block the upgrade. Any items that block the upgrade must be addressed prior to the solution update.
 
 | Name                              | Severity |
 |-----------------------------------|----------|
@@ -50,19 +50,19 @@ List of validation tests with severity critical that block the upgrade. The foll
 | Cluster node is up                | Critical |
 | Stretched cluster                 | Critical |
 | Language is English               | Critical |
-| MOC install state                 | Critical |
+| Microsoft on-premises cloud (MOC) install state  | Critical |
 | MOC services running              | Critical |
 | Network ATC feature is installed  | Critical |
 | Required Windows features         | Critical |
 | Storage pool                      | Critical |
 | Storage volume                    | Critical |
-| WDAC enablement                   | Critical |
+| Windows Defender for Application Control (WDAC) enablement      | Critical |
 
-List of validation tests with severity warning that should be addressed post upgrade to take advantage of new capabilities introduced with 23H2.
+The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Stack HCI, version 23H2.
 
 | Name                                           | Severity |
 |------------------------------------------------|----------|
-| TPM Property `OwnerClearDisabled` is False     | Warning  |
+| Trusted Platform Module (TPM) Property `OwnerClearDisabled` is False     | Warning  |
 | TPM Property `TpmReady` is True                | Warning  |
 | TPM Property `TpmPresent` is True              | Warning  |
 | TPM Property `LockoutCount` is 0               | Warning  |
@@ -73,6 +73,8 @@ List of validation tests with severity warning that should be addressed post upg
 | TPM Property `TpmEnabled` is True              | Warning  |
 
 ### Set up the environment validator
+
+Follow these steps to set up the environment validator:
 
 1. Select one server that's the part of the cluster.
 
@@ -86,7 +88,7 @@ List of validation tests with severity warning that should be addressed post upg
 
 ### Run the validator
 
-1. Sign in to the machine where you installed the environment checker using local administrative credentials.
+1. Sign in to the server where you installed the environment checker using local administrative credentials.
 
 1. To run the validation locally on the server, run the following PowerShell command:
 
@@ -101,7 +103,7 @@ List of validation tests with severity warning that should be addressed post upg
    Invoke-AzStackHciUpgradeValidation -PsSession $PsSession
    ```
 
-   Here's sample output:
+   Here's a sample output:
 
    :::image type="content" source="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png" alt-text="Diagram that illustrates sample output from the 23H2 upgrade environment validator." lightbox="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png":::
 
@@ -112,7 +114,7 @@ List of validation tests with severity warning that should be addressed post upg
    $result | ? status -eq "failure" |ft displayname,status,severity
    ```
 
-   Here's sample output:
+   Here's a sample output:
 
    | DisplayName                                         | Status   | Severity |
    |-----------------------------------------------------|----------|----------|
@@ -130,13 +132,13 @@ List of validation tests with severity warning that should be addressed post upg
 
 ### Remediation guidance
 
-Each validation check includes remediation guidance with links that provide guidance to resolve potential issues.
+Each validation check includes remediation guidance with links that help you resolve the potential issues.
 
-### Required Windows features
+### Install required Windows features
 
-Azure Stack HCI version 23H2 requires a set of Windows roles and features to be installed. Some of them do require a restart so it's important you put the node into maintenance prior to installing them. Verify all active virtual machines have been migrated to other cluster members.
+Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it is important that you put the server node into maintenance prior to installing them. Verify that all the active virtual machines have been migrated to other cluster members.
 
-Use the following commands for each server to install the required features. If a feature is already present, it skips it automatically.
+Use the following commands for each server to install the required features. If a feature is already present, the install automatically skips it.
 
 ```powershell
 #Install Windows Roles & Features 
@@ -219,51 +221,51 @@ enable-windowsoptionalfeature -featurename $featurename -all -online
 } 
 ```
 
-### Cluster Node is up
+### Ensure that cluster dnde is up
 
-Ensure all cluster members are up and report itself as online. You can use the Failover Cluster manager graphical interface or PowerShell to confirm all nodes are online.
+Ensure that all the cluster members are up and that the cluster is *Online*. Use the Failover Cluster manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
 
-Run the following PowerShell command to verify all members are online:
+To verify all members of the cluster are online, run the following PowerShell command:
 
 ```powershell
-Get-CluterNode -cluster mycluster 
+Get-CluterNode -cluster "mycluster" 
 ```
 
-### Stretched cluster
+<!--### Stretched cluster
 
 The team is working on supporting multi room clustering where cluster nodes are separated across two rooms. Stretch clustering is one implementation that does solve for long distances. Based on customer feedback, we are prioritizing a solution that is designed for short distances up to 1Km that is separating a cluster into availability zones by maintaining the operational management aspect of a single room cluster.
 
-When running a stretch cluster, you must apply the operating system update, which provides improvements using a new replication engine. We do understand this is a constraint as the Arc solution enablement won't be available for you initially.
+When running a stretch cluster, you must apply the operating system update, which provides improvements using a new replication engine. We do understand this is a constraint as the Arc solution enablement won't be available for you initially.-->
 
-### BitLocker Suspension
+### Suspend BitLocker
 
-BitLocker must be disabled when applying the solution upgrade in case a reboot happens. If there is a reboot, the BitLocker recovery must be entered which interrupts the upgrade process.
+If a reboot occurs when applying the solution upgrade, disable BitLocker. If there is a reboot, you would need to enter the BitLocker recovery which interrupts the upgrade process.
 
-Use the following PowerShell command to suspend BitLocker:
+To suspend BitLocker, run the following PowerShell command:
 
 ```powershell
 Suspend-Bitlocker -MountPoint "C:" -RebootCount 0 
 ```
 
-After the upgrade you can resume BitLocker with the following PowerShell command:
+After the upgrade is complete, to resume BitLocker, run the following PowerShell command:
 
 ```powershell
 Resume-Bitlocker -MountPoint "C:" 
 ```
 
-### WDAC Enablement
+### Enable WDAC policies
 
-Active WDAC policies can conflict with the Arc solution enablement so they must be disabled prior. After the Arc solution has been enabled, WDAC can be enabled using the new 23H2 WDAC policies.
+If your cluster is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you arc enable your cluster, disable the policies. After the cluster is Arc enabled, you can enable WDAC using the new 23H2 WDAC policies.
 
-To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies - Windows Security | Microsoft Learn](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
+To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
-### Language is English
+### Ensure language is English
 
-Initially, only clusters that have been installed using an English language are eligible to apply the solution upgrade.
+Only clusters installed using an English language are eligible to apply the solution upgrade. Make sure that your cluster was installed using English.
 
-### Storage pool
+### Check storage pool space
 
-Azure Stack HCI 23H2 does create a dedicated volume...
+Azure Stack HCI, version 23H2 creates a dedicated volume. Ensure that the storage pool has enough space to accommodate the new volume.
 
 
 ## Next steps
