@@ -23,21 +23,63 @@ The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following st
 
 This article only covers the first step, which is how to upgrade the Azure Stack HCI OS.
 
-## Upgrade the operating system
+## High-level workflow for the OS upgrade
 
-The Azure Stack HCI operating system update is available via the Windows Update and via the downloadable media. The media is the same ISO file that is used for new deployments and can be downloaded via the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+To upgrade the OS on your cluster, you will do the following high-level steps:
 
-There are different tools to upgrade the OS that include but aren't limited to builtin tools like Cluster aware updating (CAU) and Server Configuration tool (SConfig).
+1. Complete the prerequisites inculding downloading the Azure Stack HCI, version 23H2 OS software update.
+1. Connect to the Azure Stack HCI cluster.
+1. Check for the available updates using PowerShell.
+1. Install the operating system updates using PowerShell.
+1. Install feature updates using PowerShell.
+1. Check the status of the updates.
+1. After the feature updates are complete, perform the post-installation steps for feature updates.
+1. Perform a manual feature update of a Failover Cluster using SConfig.
+1. Perform a fast, offline update of all servers in a cluster.
 
-Cluster aware updating orchestrates the process of applying the operating system automatatically to all the cluster members using either Windows Update or ISO media.
+The Azure Stack HCI operating system update is available via the Windows Update and via the media that you can download from the Azure portal.
+
+## Tools used to upgrade the OS
+
+There are different tools to upgrade the OS that include but aren't limited to builtin tools like Cluster aware updating (CAU) and Server Configuration tool (SConfig). Cluster aware updating orchestrates the process of applying the operating system automatatically to all the cluster members using either Windows Update or ISO media.
 
 For more information about available tools, see:
 
 - [Cluster operating system rolling upgrade](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade).
-- [Update Azure HCI cluster (Applies to 23H2)](../update/update-via-powershell-23h2.md).
+- [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
+## Complete prerequisites
 
-### Check for updates using PowerShell
+Before you begin, make sure that:
+
+- You have access to an Azure Stack HCI, version 22H2 cluster that is running XXXX or higher. The cluster should be registered in Azure.
+- You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
+- You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+
+## Connect to the Azure Stack HCI cluster
+
+Follow these steps on your client to connect to one of the servers of your Azure Stack HCI cluster.
+
+1. Run PowerShell as administrator on the client that you're using to connect to your cluster.
+2. Open a remote PowerShell session to a server on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
+
+   ```powershell
+   $cred = Get-Credential
+   Enter-PSSession -ComputerName "<Computer IP>" -Credential $cred 
+   ```
+   Here's a sample output:
+
+   ```Console
+   PS C:\Users\Administrator> $cred = Get-Credential
+   
+   cmdlet Get-Credential at command pipeline position 1
+   Supply values for the following parameters:
+   Credential
+   PS C:\Users\Administrator> Enter-PSSession -ComputerName "100.100.100.10" -Credential $cred 
+   [100.100.100.10]: PS C:\Users\Administrator\Documents>
+   ```
+
+## Check for updates using PowerShell
 
 Use the `Invoke-CAUScan` cmdlet to scan servers for applicable updates and get a list of the initial set of updates that are applied to each server in a specified cluster:
 
@@ -48,7 +90,7 @@ Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugi
 Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it doesn't include updates that might become applicable after the initial updates are installed.
 
 
-### Install operating system updates using PowerShell
+## Install operating system updates using PowerShell
 
 To scan servers for operating system updates and perform a full updating run on the specified cluster, use the `Invoke-CAURun` cmdlet:
 
@@ -68,7 +110,7 @@ The updating run process includes the following:
 
 The updating run process also includes ensuring that quorum is maintained, checking for additional updates that can only be installed after the initial set of updates are installed, and saving a report of the actions taken is completed.
 
-### Install feature updates using PowerShell
+## Install feature updates using PowerShell
 
 To install feature updates using PowerShell, follow these steps:
 
