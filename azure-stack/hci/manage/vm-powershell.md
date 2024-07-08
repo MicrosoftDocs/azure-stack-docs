@@ -1,18 +1,18 @@
 --- 
 title: Manage VMs using Windows PowerShell - Azure Stack HCI
-description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell 
-author: JasonGerend 
+description: How to manage virtual machines on Azure Stack HCI using Windows PowerShell
+author: JasonGerend
 ms.topic: how-to 
-ms.date: 07/05/2024
-ms.author: jgerend 
-ms.reviewer: stevenek 
+ms.date: 07/08/2024
+ms.author: jgerend
+ms.reviewer: stevenek
 ---
 
 # Manage VMs on Azure Stack HCI using Windows PowerShell
 
 > Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
-Windows PowerShell can be used to create and manage your virtual machines (VMs) on Azure Stack HCI.
+This article describes how to create and manage virtual machines (VMs) on Azure Stack HCI using Windows PowerShell. For complete reference documentation on managing VMs using PowerShell, see [Hyper-V reference](/powershell/module/hyper-v/).
 
 [!INCLUDE [hci-arc-vm-wac](../../includes/hci-arc-vm-wac.md)]
 
@@ -20,8 +20,6 @@ Typically, you manage VMs from a remote computer, rather than on a host server i
 
 > [!NOTE]
 > When running PowerShell commands from a management computer, include the -ComputerName parameter with the name of the host server you are managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
-
-For the complete reference documentation for managing VMs using PowerShell, see [Hyper-V reference](/powershell/module/hyper-v/).
 
 ## Create a VM  
 
@@ -226,7 +224,7 @@ Remove-VM -Name VM1
 
 ### Remove a VM from a cluster
 
-To remove or delete a VM and it's resources from a cluster, first find them using the following cmdlet:
+To remove or delete a VM and its resources from a cluster, first find them using the following cmdlet:
 
 ```powershell
 Get-ClusterGroup
