@@ -110,7 +110,7 @@ If the identity making the request exists in Microsoft Entra ID, Azure teams wit
 
 In this scenario, you use Azure RBAC mechanisms and APIs to assign users built-in roles or create custom roles, just as you would with Kubernetes roles.
 
-With this feature, you not only give users permissions to the AKS resource across subscriptions, but you also configure the role and permissions for inside each of those clusters controlling Kubernetes API access. There are four built-in roles available for this data plane action, each with its own scope of permissions, as presented in the [built-in roles](###Built-in roles)
+With this feature, you not only give users permissions to the AKS resource across subscriptions, but you also configure the role and permissions for inside each of those clusters controlling Kubernetes API access. There are four built-in roles available for this data plane action, each with its own scope of permissions, as presented in the [built-in roles](/azure/aks/hybrid/concepts-security-access-identity#built-in-roles)
 
 > [!IMPORTANT]
 > You must enable Azure RBAC for Kubernetes authorization before doing role assignment. For more details and step by step guidance, see [Use Azure RBAC for Kubernetes authorization](azure-rbac-23h2.md).
