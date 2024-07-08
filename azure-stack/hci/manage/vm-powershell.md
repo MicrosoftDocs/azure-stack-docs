@@ -78,7 +78,7 @@ The following example returns a list of all running VMs on a server by adding a 
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Running"
 ```
 
-The next example returns a list of all shut-down VMs on the server.
+The next example returns a list of all shut down VMs on the server.
 
 ```powershell
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Off"
@@ -94,7 +94,7 @@ The following example shows how to start a VM named VM1:
 Start-VM -Name VM1 -ComputerName Server1
 ```
 
-The following example shows how to shut-down a VM named TestVM:
+The following example shows how to shut down a VM named TestVM:
 
 ```powershell
 Stop-VM -Name VM1 -ComputerName Server1
@@ -120,7 +120,7 @@ Move-VM -ComputerName Server1 -Name VM1 -DestinationHost Server2 -IncludeStorage
 
 The `Import-VM` and `Export-VM` cmdlets import and export a VM. The following shows a couple of examples. For more information, see the [Import-VM](/powershell/module/hyper-v/import-vm)  and [Export-VM](/powershell/module/hyper-v/export-vm) reference documentation.
 
-The following example shows how to import a VM from its configuration file. The VM is registered in-place, so its files are not copied:
+The following example shows how to import a VM from its configuration file. The VM is registered in-place, so its files aren't copied:
 
 ```powershell
 Import-VM -ComputerName Server1 -Name VM1 -Path 'C:\<vm export path>\2B91FEB3-F1E0-4FFF-B8BE-29CED892A95A.vmcx'
