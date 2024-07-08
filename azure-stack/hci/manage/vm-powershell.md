@@ -78,7 +78,7 @@ The following example returns a list of all running VMs on a server by adding a 
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Running"
 ```
 
-The next example returns a list of all shut down VMs on the server.
+The next example returns a list of all shutdown VMs on the server.
 
 ```powershell
 Get-VM -ComputerName Server1 | Where-Object -Property State -eq "Off"
