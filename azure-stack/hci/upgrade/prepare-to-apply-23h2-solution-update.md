@@ -136,7 +136,7 @@ Each validation check includes remediation guidance with links that help you res
 
 ### Install required Windows features
 
-Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it is important that you put the server node into maintenance prior to installing them. Verify that all the active virtual machines have been migrated to other cluster members.
+Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the server node into maintenance prior to installing them. Verify that all the active virtual machines have migrated to other cluster members.
 
 Use the following commands for each server to install the required features. If a feature is already present, the install automatically skips it.
 
@@ -221,7 +221,7 @@ enable-windowsoptionalfeature -featurename $featurename -all -online
 } 
 ```
 
-### Ensure that cluster dnde is up
+### Ensure that cluster node is up
 
 Ensure that all the cluster members are up and that the cluster is *Online*. Use the Failover Cluster manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
 
@@ -239,7 +239,7 @@ When running a stretch cluster, you must apply the operating system update, whic
 
 ### Suspend BitLocker
 
-If a reboot occurs when applying the solution upgrade, disable BitLocker. If there is a reboot, you would need to enter the BitLocker recovery which interrupts the upgrade process.
+If a reboot occurs when applying the solution upgrade, disable BitLocker. If there's a reboot, you would need to enter the BitLocker recovery, which interrupts the upgrade process.
 
 To suspend BitLocker, run the following PowerShell command:
 
@@ -265,8 +265,99 @@ Only clusters installed using an English language are eligible to apply the solu
 
 ### Check storage pool space
 
-Azure Stack HCI, version 23H2 creates a dedicated volume. Ensure that the storage pool has enough space to accommodate the new volume.
+Azure Stack HCI, version 23H2 creates a dedicated volume. This volume is dedicated for the new infrastructure capabilities - for example, running the Arc Resource Bridge. The required size for this infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
 
+Shrinking existing volumes isn't supported with storage spaces direct. There are three alternatives to freeing up space in the storage pool:
+
+1. Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new cluster with the default setting.
+
+1. Back up all the data, re-create the volume with a smaller size, and restore the content.
+
+1. Add more physical drives to expand the pool capacity.
+
+   > [!NOTE]
+   > Prior to converting the volume to thin provisioned, shut down all the virtual machines stored on that particular volume.
+
+Follow these steps to confirm the storage pool configuration:
+
+1. To confirm the storage pool size and allocated size, run the following PowerShell command:
+
+   ```powershell
+   Get-storagepool -IsPrimordial $false
+   ```
+
+   Here's a sample output:
+
+   | FriendlyName | OperationalStatus | HealthStatus | IsPrimordial | IsReadOnly | Size  | AllocatedSize |
+   |--------------|-------------------|--------------|--------------|------------|-------|---------------|
+   | S2D on venom  | OK                | Healthy      | False        | False       | 2 TB  | 1.53 TB        |
+
+1. To list all volumes in the storage pool, run the following PowerShell command:
+
+   ```powershell
+   Get-storagepool -IsPrimordial $false|Get-VirtualDisk
+   ```
+
+   Here's a sample output:
+
+   | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
+   |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
+   |ClusterPerformanceHistory | Mirror | 1 | OK | Healthy | 21 GB | 43 GB | 48.84% |
+   | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 1 TB | 99.95% |
+   | TestVolume2 | Mirror | 0 | OK | Healthy | 500 GB | 55.5 GB | 99.90% |
+
+1. To confirm that a fixed volume is provisioned, run the following PowerShell command:
+
+   ```powershell
+   $volume = Get-VirtualDisk -FriendlyName TestVolume
+   $volume.ProvisioningType
+   ```
+
+   Here's a sample output:
+
+   `Fixed`
+
+1. To convert the volume to thin provisioned, run the following PowerShell command:
+
+   ```powershell
+   Set-virtualdisk -FriendlyName TestVolume -ProvisioningType Thin
+   ```
+
+1. To convert the volume to thin provisioned, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
+
+   ```powershell
+   Get-ClusterSharedVolume -Name "Cluster Disk 1" | stop-ClusterResource
+   Get-ClusterSharedVolume -Name "Cluster Disk 1" |Start-ClusterResource
+   ```
+
+1. To confirm that the actual footprint on the storage pool has changed, run the following PowerShell command:
+
+   ```powershell
+   Get-storagepool -IsPrimordial $false|Get-VirtualDisk
+   ```
+
+   Here's a sample output:
+
+    | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
+   |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
+   |ClusterPerformanceHistory | Mirror | 1 | OK | Healthy | 21 GB | 43 GB | 48.84% |
+   | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 36.5 GB | 98.63% |
+   | TestVolume2 | Mirror | 0 | OK | Healthy | 750 GB | 28.5 GB | 98.25% |
+
+### Check the storage Volume name
+
+Azure Stack HCI, version 23H2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
+
+If there's an existing volume with the same name, this test fails.
+
+> [!NOTE]
+> Renaming the existing volume will impact the virtual machines as the mount point of the cluster shared volume will change. Additional configuration changes are required for all the virtual machines.
+
+1. To rename the existing volume, run the following PowerShell command:
+
+   ```powershell
+   Set-VirtualDisk -FriendlyName Infrastructure_1 -NewFriendlyName NewName
+   ```
 
 ## Next steps
 
