@@ -4,7 +4,7 @@ description: Learn how to scale out your AKS Edge Essentials applications to mul
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/06/2023
+ms.date: 07/08/2024
 ms.custom: template-how-to, linux-related-content
 ---
 
@@ -69,6 +69,10 @@ The **.\ScaleConfig.json** configuration file includes the configuration from th
     > In this release, there is a known issue in automatic creation of external switches with the `New-AksEdgeDeployment` command if you are using a Wi-fi adapter for the switch. In this case, first create the external switch using the Hyper-V manager - Virtual Switch Manager and map the switch to the Wi-fi adapter. Then provide the switch details in your configuration JSON as described in this section.
 
 - The `Network.NetworkPlugin` is `flannel` by default. Flannel is the default CNI for a K3S cluster. For a K8S cluster, change the `NetworkPlugin` to `calico`.
+
+  > [!NOTE]
+  > Flannel CNI was retired in December 2023.
+
 - Verify the resource configuration for the secondary nodes. You can modify these parameters as needed. Ensure that you [reserve enough memory for each node](./aks-edge-concept-clusters-nodes.md). If you specified `MacAddress` on your primary machine, verify and provide the right MAC address relevant to the secondary machine.
 
 - An odd number of control plane nodes is the only supported setting. Therefore, if you want to scale up/down your control plane, make sure you have one, three, or five control plane nodes.

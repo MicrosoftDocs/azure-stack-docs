@@ -4,7 +4,7 @@ description: Description of deployment configuration JSON parameters.
 author: yujinkim-msft
 ms.author: yujinkim
 ms.topic: conceptual
-ms.date: 10/03/2023
+ms.date: 07/08/2024
 ms.custom: template-concept
 ---
 
@@ -13,6 +13,9 @@ ms.custom: template-concept
 This page describes the AKS Edge Essentials deployment schema used in the `aksedge-config.json`.
 
 You can find the complete JSON schema file at `C:\Program Files\AksEdge\aksedge-dcschema.json`.
+
+> [!NOTE]
+> Flannel CNI was retired in December 2023.
 
 | Attribute | Value type      |  Description |  Default value |   Applicable deployment types   |
 | :------------ |:-----------|:------------------|:--------|:------------|

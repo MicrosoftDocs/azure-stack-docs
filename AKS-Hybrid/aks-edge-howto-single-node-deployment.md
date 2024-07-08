@@ -4,7 +4,7 @@ description: Learn how to deploy AKS on a single machine.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/06/2023
+ms.date: 07/08/2024
 ms.custom: template-how-to
 ---
 
@@ -30,6 +30,10 @@ The key parameters for single machine deployment are:
 
 - `DeploymentType`: This parameter defines the deployment type and is specified as `SingleMachineCluster`.
 - The `Network.NetworkPlugin` by default is `flannel`. This is the default for a K3S cluster. If you're using a K8S cluster, change the CNI to `calico`.
+
+  > [!NOTE]
+  > Flannel CNI was retired in December 2023.
+
 - You can set the following parameters according to your deployment configuration [as described here](aks-edge-deployment-config-json.md): `LinuxNode.CpuCount`, `LinuxNode.MemoryInMB`, `LinuxNode.DataSizeInGB`, `WindowsNode.CpuCount`, `WindowsNode.MemoryInMB`, `Init.ServiceIPRangeSize`, and `Network.InternetDisabled`.
 
 ## Step 2: create a single machine cluster
