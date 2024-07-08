@@ -13,7 +13,9 @@ Applies to: Azure Stack HCI, software version 2405.1 and later
 
 <!--[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]-->
 
-This article describes how to use a local web-based UI to bootstrap and register the servers that you intend to cluster as an Azure Stack HCI system. After your servers are registered with Azure Arc, you can proceed to deploy via the Azure portal or an Azure Resource Manager (ARM) template.
+This article describes how to use a local web-based UI to bootstrap and register the servers that you intend to cluster as an Azure Stack HCI system. 
+
+You can use the local UI or Azure CLI to regitser your servers. 
 
 Use the local web-based UI method if you intend to deploy some sites with a few servers per site.
 
@@ -28,15 +30,15 @@ After you have procured the hardware that you intend to use to set up your Azure
 1. You have the servers that you intend to cluster as an Azure Stack HCI system. The servers must be powered on and connected to the network.
 1. [Complete prerequisites for your environment](../deploy/deployment-prerequisites.md)
 1. [Prepare Active Directory](../deploy/deployment-prep-active-directory.md).
-1. [Download the composed ISO](../deploy/download-azure-stack-hci-23h2-software.md) required to install the preview version of Azure Stack HCI, 23H2.
-1. Use the composed ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Stack HCI, version 23H2 software](../deploy/deployment-install-os.md).
+1. [Download the English Preview ISO](../deploy/download-azure-stack-hci-23h2-software.md) to install the preview version of Azure Stack HCI, 23H2.
+1. Use the English Preview ISO that you downloaded in the previous step and follow these instructions for OS installation: [Install the Azure Stack HCI, version 23H2 software](../deploy/deployment-install-os.md).
 1. For your servers, note down the:
    1. Serial number of the servers.
    1. Local administrator credentials to sign into the server.
 
 ### Azure prerequisites
 
-- Make sure that your subscription is registered against the following resource providers. You need to be an owner or contributor on your subscription to register. Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
+- Make sure that your subscription is registered against the following resource providers. You need to be an owner or contributor on your subscription to register. You can also ask an administrator to register. Run the following [PowerShell commands](/azure/azure-resource-manager/management/resource-providers-and-types#azure-powershell) to register:
 
    ```powershell
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.HybridCompute"
@@ -45,15 +47,19 @@ After you have procured the hardware that you intend to use to set up your Azure
    Register-ResourceProviderIfRequired -ProviderNamespace "Microsoft.AzureStackHCI"
    ```
 
-- [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your servers. Make a note of the resource group name.
-- [Get the tenant ID of your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id). You use this information later.
-- If you set up an Azure Arc gateway, get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`. 
-   To get the ArcGatewayID, run the following command:
-   `az connectedmachine gateway list`
+- [Create a resource group](/azure/azure-resource-manager/management/manage-resource-groups-portal#create-resource-groups) where you want to register your servers. Make a note of the resource group name and the associated subscription ID.
+- [Get the tenant ID of your Microsoft Entra tenant through the Azure portal](/azure/azure-portal/get-subscription-tenant-id).
+  - In the Azure portal, go to **Microsoft Entra ID** > **Properties**.
+  - Scroll down to the Tenant ID section and copy the **Tenant ID** value. You use this information later.
+- If you [Set up an Azure Arc gateway](../deploy/deployment-azure-arc-gateway-overview.md#create-the-arc-gateway-resource-in-azure), get the resource ID of the Arc gateway. This is also referred to as the `ArcGatewayID`.
+  - To get the `ArcGatewayID`, run the following command:
+     `az connectedmachine gateway list`
 
-   Make a note of the Arc gateway ID. You need this information later.
+  - Make a note of the Arc gateway ID. You need this information later.
 
-- If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
+  If you didn't set up an Azure Arc gateway, you can skip this step.
+
+- If you're registering the servers as Arc resources, make sure that you are either the resource group owner or have the following permissions on the resource group where the servers were provisioned:
 
   - Azure Connected Machine Onboarding.
   - Azure Connected Machine Resource Administrator.
@@ -73,7 +79,7 @@ After you have procured the hardware that you intend to use to set up your Azure
 
 Follow these steps to configure the network settings and connect the servers to Azure.
 
-1. Open a browser window and access the local web UI of the device at: *https://\<device-serial-number\>*. This action may take a few minutes after you've turned on the server.
+1. Open a browser window and access the local web UI of the device at: *https://\<device-serial-number\>.local*. This action may take a few minutes after you've turned on the server.
 
 1. You see an error or a warning indicating that there’s a problem with the website's security certificate. Select *Proceed to https://\<device-serial-number\>.local*.
 
@@ -148,7 +154,7 @@ Follow these steps to configure the network settings and connect the servers to 
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-details.png" alt-text="Screenshot that shows the Azure Stack HCI Azure Arc agent setup, configuration details." lightbox="media/deployment-arc-register-local-ui/setup-configuration-details.png":::
 
-   During the Arc registration process, you need to authenticate with your Azure account. The local UI displays a code that you need to enter at [https://microsoft.com/devicelogin](https://microsoft.com/devicelogin) to authenticate. Follow the instructions to complete the authentication process.
+   During the Arc registration process, you need to authenticate with your Azure account. The local UI displays a code that you need to enter in the URL diaplayed in the local UI to authenticate. Follow the instructions to complete the authentication process.
 
    :::image type="content" source="media/deployment-arc-register-local-ui/setup-configuration-authentication.png" alt-text="Screenshot that shows the authentication with your Azure account." lightbox="media/deployment-arc-register-local-ui/setup-configuration-authentication.png":::
 
@@ -182,11 +188,10 @@ You might need to collect the logs or diagnose the problems if you encounter any
 
 ### Get local UI logs if UI is inaccessible
 
-If you can't access the local UI, you can get the local UI logs from the server. The logs are stored in the following location: `C:\Windows\System32\Bootstrap\Logs`. You can access the logs by connecting to the server via Remote Desktop Protocol (RDP).
+If you can't access the local UI, you can get the local UI logs from the server. The logs are stored in the following location: `C:\Windows\System32\Bootstrap\Logs`. You can access the logs by connecting to the server via Remote Desktop Protocol (RDP). 
 
+If you can access the local UI, follow the instructions in [Run diagnostic tests](#run-diagnostic-tests-from-the-local-ui) to troubleshoot the issue and then [Collect a Support package](#collect-a-support-package-from-the-local-ui) if needed.
 
-
-Each of these resources is discussed in the following sections.
 
 ### Run diagnostic tests from the local UI
 
@@ -224,6 +229,6 @@ A log package is composed of all the relevant logs that can help Microsoft Suppo
 
 ## Next steps
 
-- Deploy your Azure Stack HCI, version 23H2 system via one of the following options:
+- After your servers are registered with Azure Arc, proceed to deploy your Azure Stack HCI cluster via one of the following options:
   - [Via the Azure portal](../deploy/deploy-via-portal.md).
   - [Via the ARM template](../deploy/deployment-azure-resource-manager-template.md).

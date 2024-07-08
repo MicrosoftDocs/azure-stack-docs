@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/24/2024
+ms.date: 07/08/2024
 ---
 
 # Download Azure Stack HCI, version 23H2 software
@@ -55,8 +55,8 @@ Follow these steps to download the Azure Stack HCI software:
     1. Select **English** to download the English version of the ISO. To download the VHDX, select **English VHDX** from the dropdown list.
         > [!NOTE]
         > - Currently, English is the only language that is supported for Azure Stack HCI.
-        > - Download an **English VHDX** only if you are performing virtual deployments.
-        > - Download **English Preview** only if you are participating in the Azure Stack HCI preview program.
+        > - Download an **English VHDX** if you are performing [Virtual deployments](./deployment-virtual.md) for educational and demonstration purposes only.
+        > - Download **English Preview** only if you are participating in the Azure Stack HCI preview program. The**English** and **English VHDX** options are not available for preview versions.
 
     1. Select the **Azure Stack HCI, version 23H2** option.
         > [!NOTE]
