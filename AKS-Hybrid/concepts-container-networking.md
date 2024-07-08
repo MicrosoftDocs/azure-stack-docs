@@ -2,7 +2,7 @@
 title: Container networking concepts
 description: Learn about container networking in AKS enabled by Azure Arc.
 ms.topic: conceptual
-ms.date: 06/24/2024
+ms.date: 07/08/2024
 ms.author: sethm 
 ms.lastreviewed: 05/31/2022
 ms.reviewer: mikek
@@ -89,6 +89,9 @@ For more information about the Calico Network plug-in and policies, check out [g
 ### Comparing networking models
 
 #### Flannel
+
+> [!NOTE]
+> Flannel CNI was retired in December 2023.
 
 Flannel is a virtual networking layer designed specifically for containers. Flannel creates a flat network that overlays the host network. All containers/pods are assigned one IP address in this overlay network, and communicate directly by connecting to each other's IP address.
 
