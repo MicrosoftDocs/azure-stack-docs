@@ -3,7 +3,7 @@ title: Process for restoring a Kubernetes cluster from a disaster
 description: Learn how to restore Kubernetes clusters after a disaster.
 author: baziwane
 ms.topic: how-to
-ms.date: 01/10/2023
+ms.date: 07/03/2024
 ms.author: rbaziwane 
 ms.lastreviewed: 01/10/2023
 ms.reviewer: rbaziwane
@@ -24,11 +24,11 @@ The management cluster is a VM that's tracked in Windows failover clustering. It
 
 In either of these scenarios, you must recreate the management cluster and all the workload clusters.  
 
-## Restore the state of AKS on new hardware (or a new site)  
+## Restore the state of AKS on new hardware or a new site  
 
 Recovering the state of Kubernetes clusters requires that you have a management cluster available on new hardware or at the new location.
 
-- AKS supports backing up Kubernetes clusters to Azure Blob Storage and MinIO using Velero. Microsoft recommends backing up Azure Storage because it provides 3 redundant copies of data in the primary storage region.
+- AKS supports [backing up Kubernetes clusters](backup-workload-cluster.md) to Azure Blob Storage and MinIO using Velero. Microsoft recommends backing up Azure Storage because it provides 3 redundant copies of data in the primary storage region.
 - Consider running the backup on a cron job to ensure available backups meet recovery point objectives.  
 
 ### Prerequisites
@@ -75,14 +75,14 @@ A management cluster outage has no impact on applications running in workload cl
 
 | Filename                       | Content description                                     |
 | ------------------------------------ | ------------------------------------------------------------ |
-| *-csi-volumesnapshotclasses.json.gz  | Files containing 'csi' are the persistent volume snapshots.  |
-| *-csi-volumesnapshotcontents.json.gz | Files containing 'csi' are persistent volumes snapshots.     |
-| *-csi-volumesnapshots.json.gz        | Files containing 'csi' are the persistent volume snapshots.  |
+| *-csi-volumesnapshotclasses.json.gz  | Files containing **csi** are the persistent volume snapshots.  |
+| *-csi-volumesnapshotcontents.json.gz | Files containing **csi** are persistent volume snapshots.     |
+| *-csi-volumesnapshots.json.gz        | Files containing **csi** are the persistent volume snapshots.  |
 | *-logs.gz                            | Log output of backup operation. Same data from running: `velero backup log <backupname>`. |
 | *-podvolumebackups.json.gz           | Metadata about the pods and persistent volumes.              |
 | *-resource-list.json.gz              | Resources contained in a backup are listed in this file.     |
 | *-volumesnapshots.json.gz            | Metadata about the pods and persistent volumes.              |
-| *.tar.gz                             | Metadata – namespace, number of pod replicas, memory, cpu. Same data as returned from: `kubectl get deployment`. |
+| *.tar.gz                             | Metadata: namespace, number of pod replicas, memory, cpu. Same data as returned from: `kubectl get deployment`. |
 
 ### What's not included in Velero backups?
 
