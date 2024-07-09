@@ -49,7 +49,7 @@ Before you begin, make sure you have the following prerequisites:
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
 - You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster
   - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
-  - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
+  - To use the `--enable-azure-rbac` parameter, you need the **Role Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
   - New role assignments can take up to five minutes to propagate and be updated by the authorization server.
 - Once Azure RBAC is enabled, you can access your Kubernetes cluster with the given permissions either with direct mode or proxy mode.
   - To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permissions
