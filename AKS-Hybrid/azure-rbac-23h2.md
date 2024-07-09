@@ -47,14 +47,17 @@ Before you begin, make sure you have the following prerequisites:
   ```
   
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
-- For Kubernetes operators to use kubectl, they can access it using either Azure RBAC or the AAD Admin Group.
-  - To use kubectl with Azure RBAC, Kubernetes operators need the Azure Arc Kubernetes Viewer role scoped to the connected cluster resource.
-  - To use kubectl with the AAD Admin Group, Kubernetes operators don't need any specific role but need to ensure they are in one of the groups in the add-admin-group list of the connected cluster resource.
-- You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster.
+- You need the following permissions to enable Azure RBAC while creating a Kubernetes cluster
   - To create a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
   - To use the `--enable-azure-rbac` parameter, you need the **Role-Based Access Control Administrator** role for access to the Microsoft.Authorization/roleAssignments/write permission. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles/general).
   - New role assignments can take up to five minutes to propagate and be updated by the authorization server.
-- To use a proxy, verify that the agents and the machine performing the onboarding process meet the network requirements in [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements?tabs=azure-cloud#details).
+- Once Azure RBAC is enabled, you can access your Kubernetes cluster with the given permissions either with direct mode or proxy mode.
+  - To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permissions
+  - To access the Kubernetes cluster from anywhere with a proxy mode, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission. Meanwhile, you need to verify that the agents and the machine performing the onboarding process meet the network requirements in [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements?tabs=azure-cloud#details).
+- To use kubectl, you can access it using either Azure RBAC or the AAD Admin Group.
+  - To use kubectl with Azure RBAC, you need the **Azure Arc Kubernetes Viewer** role scoped to the connected cluster resource.
+  - To use kubectl with the AAD Admin Group, you don't need any specific role but need to ensure you are in one of the groups in the add-admin-group list of the connected cluster resource.
+
 
 
 
