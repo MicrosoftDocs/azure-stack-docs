@@ -133,6 +133,8 @@ items:
       href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
+  - name: Configure advanced Active Directory settings
+    href: plan/configure-custom-settings-active-directory.md 
 
 - name: Deploy
   items:
