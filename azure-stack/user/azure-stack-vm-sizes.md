@@ -138,13 +138,15 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 *Requires Azure Stack version 1804 or later* 
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs / expected network bandwidth (Mbps) |
-|---------------------|----|----|-----|-----|-------|--------------|---------|
-|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |Moderate |
-|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |Moderate |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |High     |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |High     |
-|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |High  |
-|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |Extremely High  |
+|---------------------|----|----|-----|-----|-------|--------------|-----------|
+|**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |2 / 5000   |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |2 / 10000  |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |4 / 12500  |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |4 / 12500  |
+|**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |8 / 16000  |
+|**Standard_F48s_v2** |48  |96  |384  |1000 |96000  |32 / 32x2300  |8 / 16000  |
+|**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |8 / 28000  |
+|**Standard_F64s_v2** |72  |144 |576  |1000 |144000 |32 / 32x2300  |8 / 30000  |
 
 ## Memory optimized
 
