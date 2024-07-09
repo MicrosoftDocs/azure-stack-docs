@@ -3,7 +3,7 @@ title: GPU acceleration for AKS Edge Essentials
 description: Learn how to expose a GPU to the virtual machine's Linux module.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/17/2024
+ms.date: 07/09/2024
 ms.author: sethm 
 ms.lastreviewed: 06/05/2024
 ms.reviewer: guanghu
