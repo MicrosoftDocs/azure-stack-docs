@@ -132,7 +132,7 @@ Follow these steps to configure the network settings and connect the servers to 
    1. Specify the **Region** where you want to create the resources. The region should be the same as the region where you want to deploy the Azure Stack HCI cluster. 
       > [!IMPORTANT]
       > The region is specified with the spaces removed. For example, **East US** is specified as **EastUS**.
-   1. Specify the **Cloud type** as **AzureCloud**.
+   1. The **Cloud type** is populated automatically as **AzureCloud**.
    1. Provide a **Tenant ID**. The tenant ID is the directory ID of your Microsoft Entra tenant. To get the tenant ID, see [Find your Microsoft Entra tenant](/azure/azure-portal/get-subscription-tenant-id).
    1. If you set up an Azure Arc gateway, provide the Arc gateway ID. This is the resource ID of the Arc gateway that you set up. For more information, see [About Azure Arc gateways](./deployment-azure-arc-gateway-overview.md).
 
