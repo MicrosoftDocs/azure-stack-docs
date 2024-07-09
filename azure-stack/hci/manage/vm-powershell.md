@@ -20,11 +20,11 @@ This article describes how to create and manage virtual machines (VMs) on Azure 
 
 Typically, you manage VMs from a remote computer, rather than on a host server in a cluster. This remote computer is called the management computer.
 
-When running PowerShell commands from a management computer, include the `-ComputerName` parameter with the name of the host server you are managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
+When running PowerShell commands from a management computer, include the `-ComputerName` parameter with the name of the host server you're managing. NetBIOS names, IP addresses, and fully qualified domain names are allowable.
 
 For complete reference documentation on managing VMs using PowerShell, see [Hyper-V reference](/powershell/module/hyper-v/).
 
-## Create a VM  
+## Create a VM
 
 The `New-VM` cmdlet is used to create a new VM. For detailed usage, see the [New-VM](/powershell/module/hyper-v/new-vm) reference documentation.
 
@@ -32,7 +32,7 @@ Here are the settings that you can specify when creating a new VM with an existi
 
 - **-Name** is the name that you provide for the virtual machine that you're creating.
 
-- **-MemoryStartupBytes** is the amount of memory   that is available to the virtual machine at start up.
+- **-MemoryStartupBytes** is the amount of memory that is available to the virtual machine at startup.
 
 - **-BootDevice** is the device that the virtual machine boots to when it starts.
  Typically this is a virtual hard disk (VHD), an .iso file for DVD-based boot, or a network adapter (NetworkAdapter) for network boot.
@@ -43,7 +43,7 @@ Here are the settings that you can specify when creating a new VM with an existi
 
 - **-Generation** is the virtual machine generation. Use generation 1 for VHD and generation 2 for VHDX.
 
-- **-SwitchName** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](/powershell/module/hyper-v/get-vmswitch). For example:  
+- **-SwitchName** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. Get the name of the virtual switch by using [Get-VMSwitch](/powershell/module/hyper-v/get-vmswitch). For example:
 
 The full command as follows for creating a VM called VM1:
 
@@ -51,7 +51,7 @@ The full command as follows for creating a VM called VM1:
  New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes <Memory> -BootDevice <BootDevice> -VHDPath <VHDPath> -Path <Path> -Generation <Generation> -SwitchName <Switch name>
  ```
 
-The next example creates a Generation 2 virtual machine with 4GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.  
+The next example creates a Generation 2 virtual machine with 4GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.
 
 ``` powershell
 New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath .\VMs\Win10.vhdx -Path .\VMData -Generation 2 -SwitchName ExternalSwitch
@@ -59,13 +59,13 @@ New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -
 
 The following parameters are used to specify virtual hard disks.
 
-To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the example above with  **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:  
+To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the example above with **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:
 
-``` powershell  
-New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -SwitchName ExternalSwitch  
- ```  
+``` powershell
+New-VM -ComputerName Server1 -Name VM1 -MemoryStartupBytes 4GB -BootDevice VHD -NewVHDPath .\VMs\Win10.vhdx -Path .\VMData -NewVHDSizeBytes 20GB -Generation 2 -SwitchName ExternalSwitch
+ ```
 
-To create a virtual machine with a new virtual disk that boots to an operating system image, see the PowerShell example in [Create virtual machine walkthrough for Hyper-V on Windows 10](/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine).  
+To create a virtual machine with a new virtual disk that boots to an operating system image, see the PowerShell example in [Create virtual machine walkthrough for Hyper-V on Windows 10](/virtualization/hyper-v-on-windows/quick-start/create-virtual-machine).
 
 ## Get a list of VMs
 
@@ -121,7 +121,7 @@ Move-VM -ComputerName Server1 -Name VM1 -DestinationHost Server2 -IncludeStorage
 
 ## Import or export a VM
 
-The `Import-VM` and `Export-VM` cmdlets import and export a VM. The following shows a couple of examples. For more information, see the [Import-VM](/powershell/module/hyper-v/import-vm)  and [Export-VM](/powershell/module/hyper-v/export-vm) reference documentation.
+The `Import-VM` and `Export-VM` cmdlets import and export a VM. The following shows a couple of examples. For more information, see the [Import-VM](/powershell/module/hyper-v/import-vm) and [Export-VM](/powershell/module/hyper-v/export-vm) reference documentation.
 
 The following example shows how to import a VM from its configuration file. The VM is registered in-place, so its files aren't copied:
 
