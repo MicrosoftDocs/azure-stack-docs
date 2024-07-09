@@ -4,7 +4,7 @@ description: Learn how to use the web UI to bootstrap and Arc register the Azure
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 06/19/2024
+ms.date: 07/08/2024
 ---
 
 # Register your Azure Stack HCI, version 23H2 servers via the local UI (preview)
@@ -15,7 +15,7 @@ Applies to: Azure Stack HCI, software version 2405.1 and later
 
 This article describes how to use a local web-based UI to bootstrap and register the servers that you intend to cluster as an Azure Stack HCI system. 
 
-You can use the local UI or Azure CLI to register your servers. 
+You can use the local UI or Azure CLI to register your servers.
 
 Use the local web-based UI method if you intend to deploy some sites with a few servers per site.
 
@@ -59,7 +59,7 @@ After you have procured the hardware that you intend to use to set up your Azure
 
   If you didn't set up an Azure Arc gateway, you can skip this step.
 
-- If you're registering the servers as Arc resources, make sure that you're either the resource group owner or have the following permissions on the resource group where the servers were provisioned:
+- As you are registering the servers as Arc resources, make sure that you're either the resource group owner or have the following permissions on the resource group where the servers were provisioned:
 
   - Azure Connected Machine Onboarding.
   - Azure Connected Machine Resource Administrator.
