@@ -124,16 +124,16 @@ The deployment template should match the provided sample template. For more info
 
 When trying to delete a storage path for an Arc VM on your Azure Stack HCI cluster, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
 
-**Error:** `"errorMessage" serviceClient returned an error during deletion: The storage container service returned an error during deletion: rpc error: code = Unknown desc = Container is in ACTIVE use by Resources [6:`
-`- linux-cblmariner-0.2.0.10503`
-`- windows-windows2019-0.2.0.10503`
-`- windows-windows2022-0.2.0.10503`
-`].`
+**Error:** `"errorMessage" serviceClient returned an error during deletion: The storage container service returned an error during deletion: rpc error: code = Unknown desc = Container is in ACTIVE use by Resources [6:`  
+`- linux-cblmariner-0.2.0.10503`  
+`- windows-windows2019-0.2.0.10503`  
+`- windows-windows2022-0.2.0.10503`  
+`].`  
 `Remove all the Resources from this container, before trying to delete: In Use: Failed,`
 
 **Resolution:**  
 
-Typical workloads are represented as Azure Resource Manager (ARM) objects on the Azure portal and CLI. The images listed in the error message are required for AKS hybrid workloads and are directly downloaded onto the file system, so Azure doesn't recognize these workloads.
+The images listed in the error message differ from typical workloads, which are represented as Azure Resource Manager (ARM) objects on the Azure portal and CLI. This error occurs because these images are directly downloaded onto the file system, which Azure couldn't recognize.
 
 Follow these steps before trying to remove a storage path:
 
