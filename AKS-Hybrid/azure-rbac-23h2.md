@@ -173,13 +173,15 @@ Run the following steps on another client device.
      > [!NOTE]
      > This command will open the proxy and block the current shell.
 
-1. In a different shell session, use `kubectl` to send requests to the cluster:
+3. In a different shell session, use `kubectl` to send requests to the cluster:
 
    ```powershell
    kubectl get pods -A
    ```
 
 You should now see a response from the cluster containing the list of all pods under the `default` namespace.
+
+For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device)
 
 
 
