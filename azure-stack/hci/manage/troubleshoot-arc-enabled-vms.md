@@ -35,7 +35,7 @@ az login --use-device-code
 Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP_1
 ```
 
-where:
+Where:
 
 - **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 
@@ -53,11 +53,11 @@ When trying to run the command to enable guest management, you see the following
 
 **Error:** `Deployment failed. Correlation ID: 5d0c4921-78e0-4493-af16-dffee5cbf9d8. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
-The above failure is because the managed identity was not created for this VM. System-assigned Managed Identity is required to enable guest management.
+The above failure is because the managed identity wasn't created for this VM. System-assigned Managed Identity is required to enable guest management.
 
 **Resolution:**  
 
-Follow these steps to verify that the Managed Identity is not created for this VM and then enable System-assigned Managed Identity.
+Follow these steps to verify that the Managed Identity isn't created for this VM and then enable System-assigned Managed Identity.
 
 1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
 
@@ -110,7 +110,7 @@ You see the following error when trying to deploy an Arc VM on your Azure Stack 
 
 **Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
 
-The above failure is because the `SystemAssigned` managed identity object is not under the `Microsoft.HybridCompute/machines` resource type.
+The above failure is because the `SystemAssigned` managed identity object isn't under the `Microsoft.HybridCompute/machines` resource type.
 
 **Resolution:**  
 
@@ -138,7 +138,7 @@ Typical workloads are represented as Azure Resource Manager (ARM) objects on the
 Follow these steps before trying to remove a storage path:
 
 1. Remove the associated workloads and the images present on the storage path you want to delete. Look for the following prefixes on the image names: `linux-cblmariner`, `windows-windows2019`, `windows-windows2022`, `windows_k8s`, `aks-image-merged`, `linux-K8s`.
-1. File a [support ticket in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request).
+1. File a [support ticket in the Azure portal](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### Azure CLI installation isn't recognized
 
