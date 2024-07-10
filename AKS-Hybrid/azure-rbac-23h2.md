@@ -138,11 +138,14 @@ Assign the role definition to a user or other identity using the [`az role assig
 az role assignment create --role "AKS Arc Deployment Reader" --assignee <assignee-object-id> --scope $ARM_ID
 ```
 
-## Step 3: Use Azure RBAC for Kubernetes authorization with kubectl
+## Step 3: Access Kubernetes cluster
+You can now access your Kubernetes cluster with the given permissions either with direct mode or proxy mode.
 
+### Access your cluster with kubectl (Direct mode)
 To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command. This command provides access to the admin-based kubeconfig, as well as a user-based kubeconfig. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
 
-To run this Azure CLI command, you must have **Azure Kubernetes Service Arc Cluster User** role permissions on the cluster. 
+To run this Azure CLI command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permissions
+
 
 ```azurecli
 az aksarc get-credentials -g "$resource_group_name" -n $aks_cluster_name --file <file-name>
@@ -153,6 +156,32 @@ Now, you can use kubectl manage your cluster. For example, you can list the node
 ```azurecli
 kubectl get nodes
 ```
+
+### Access your cluster from a client device (Proxy mode)
+To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission
+
+Run the following steps on another client device.
+
+1. Sign in using Microsoft Entra authentication
+
+2. Get the cluster connect `kubeconfig` needed to communicate with the cluster from anywhere (from even outside the firewall surrounding the cluster):
+
+     ```azurecli
+     az connectedk8s proxy -n $CLUSTER_NAME -g $RESOURCE_GROUP
+     ```
+     
+     > [!NOTE]
+     > This command will open the proxy and block the current shell.
+
+1. In a different shell session, use `kubectl` to send requests to the cluster:
+
+   ```powershell
+   kubectl get pods -A
+   ```
+
+You should now see a response from the cluster containing the list of all pods under the `default` namespace.
+
+
 
 ## Clean up resources
 
