@@ -2,7 +2,7 @@
 title: Configure a network security group for Azure Managed Lustre file systems
 description: Configure network security group rules to allow Azure Managed Lustre file system support as part of a locked down, Zero Trust networking strategy. 
 ms.topic: how-to
-ms.date: 10/27/2023
+ms.date: 07/09/2024
 author: pauljewellmsft
 ms.author: pauljewell
 ms.reviewer: mayabishop
@@ -80,10 +80,10 @@ You can create inbound security rules in the Azure portal. The following example
 
 Add the following inbound rules to the network security group:
 
-| Priority | Name | Port | Protocol | Source | Destination | Action | Description |
+| Priority | Name | Port(s) | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit protocol or port flows between hosts on the Azure Managed Lustre file system subnet. |
-| 111 | *rule-name* | 988 | TCP | *IP address/CIDR range for Lustre client subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit communication between the Lustre client subnet and the Azure Managed Lustre file system subnet. Allows only source TCP ports 1020-1023 and destination port 988. |
+| 110 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit protocol or port flows between hosts on the Azure Managed Lustre file system subnet. For example, the system uses TCP port 22 (SSH) for initial deployment and configuration. |
+| 111 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Lustre client subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit communication between the Lustre client subnet and the Azure Managed Lustre file system subnet. Allows only TCP ports 988 and 1019-1023 on source and destination. |
 | 112 | *rule-name* | Any | TCP | `AzureMonitor` | `VirtualNetwork` | Allow | Permit inbound flows from the AzureMonitor service tag. Allow TCP source port 443 only. |
 | 120 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other inbound flows. |
 
@@ -104,7 +104,7 @@ You can create outbound security rules in the Azure portal. The following exampl
 
 Add the following outbound rules to the network security group:
 
-| Priority | Name | Port | Protocol | Source | Destination | Action | Description |
+| Priority | Name | Port(s) | Protocol | Source | Destination | Action | Description |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | 100 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureMonitor` | Allow | Permit outbound flows to the `AzureMonitor` service tag. TCP destination port 443 only. |
 | 101 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureKeyVault.EastUS` | Allow | Permit outbound flows to the `AzureKeyVault.EastUS` service tag. TCP destination port 443 only. |
@@ -114,10 +114,10 @@ Add the following outbound rules to the network security group:
 | 105 | *rule-name* | 443 | TCP | `VirtualNetwork` | `ApiManagement.EastUS` | Allow | Permit outbound flows to the `ApiManagement.EastUS` service tag. TCP destination port 443 only. |
 | 106 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureDataLake` | Allow | Permit outbound flows to the `AzureDataLake` service tag. TCP destination port 443 only. |
 | 107 | *rule-name* | 443 | TCP | `VirtualNetwork` | `AzureResourceManager` | Allow | Permits outbound flows to the `AzureResourceManager` service tag. TCP destination port 443 only. |
-| 108 | *rule-name* | 1020-1023 | TCP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Lustre client subnet* | Allow | Permit outbound flows for Azure Managed Lustre file system to Lustre client. TCP source port 988, destination ports 1020-1023 only. |
+| 108 | *rule-name* | 988, 1019-1023 | TCP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Lustre client subnet* | Allow | Permit outbound flows for Azure Managed Lustre file system to Lustre client. Allows only TCP ports 988 and 1019-1023 on source and destination. |
 | 109 | *rule-name* | 123 | UDP | *IP address/CIDR range for Azure Managed Lustre file system subnet* | 168.61.215.74/32 | Allow | Permit outbound flows to MS NTP server (168.61.215.74). UDP destination port 123 only. |
 | 110 | *rule-name* | 443 | TCP | `VirtualNetwork` | 20.34.120.0/21 | Allow | Permit outbound flows to Azure Managed Lustre telemetry (20.45.120.0/21). TCP destination port 443 only. |
-| 111 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit protocol or port flows between hosts on the Azure Managed Lustre file system subnet. |
+| 111 | *rule-name* | Any | Any | *IP address/CIDR range for Azure Managed Lustre file system subnet* | *IP address/CIDR range for Azure Managed Lustre file system subnet* | Allow | Permit protocol or port flows between hosts on the Azure Managed Lustre file system subnet. For example, the system uses TCP port 22 (SSH) for initial deployment and configuration. |
 | 1000 | *rule-name* | Any | Any | `VirtualNetwork` | `Internet` | Deny | Deny outbound flows to the internet. |
 | 1010 | *rule-name* | Any | Any | Any | Any | Deny | Deny all other outbound flows. |
 
