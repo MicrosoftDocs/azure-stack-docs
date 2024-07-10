@@ -136,41 +136,42 @@ az role assignment create --role "AKS Arc Deployment Reader" --assignee <assigne
 ```
 
 ## Step 3: Access Kubernetes cluster
-You can now access your Kubernetes cluster with the given permissions either with direct mode or proxy mode.
 
-### Access your cluster with kubectl (Direct mode)
+You can now access your Kubernetes cluster with the given permissions, using either direct mode or proxy mode.
+
+### Access your cluster with kubectl (direct mode)
+
 To access the Kubernetes cluster with the given permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command. This command provides access to the admin-based kubeconfig, as well as a user-based kubeconfig. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
 
-To run this Azure CLI command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permissions
-
+To run this Azure CLI command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission:
 
 ```azurecli
 az aksarc get-credentials -g "$resource_group_name" -n $aks_cluster_name --file <file-name>
 ```
 
-Now, you can use kubectl manage your cluster. For example, you can list the nodes in your cluster using `kubectl get nodes`. The first time you run it, you must sign in, as shown in the following example:
+Now you can use kubectl manage your cluster. For example, you can list the nodes in your cluster using `kubectl get nodes`. The first time you run it, you must sign in, as shown in the following example:
 
 ```azurecli
 kubectl get nodes
 ```
 
-### Access your cluster from a client device (Proxy mode)
-To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission
+### Access your cluster from a client device (proxy mode)
 
-Run the following steps on another client device.
+To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission.
+
+Run the following steps on another client device:
 
 1. Sign in using Microsoft Entra authentication
-
-2. Get the cluster connect `kubeconfig` needed to communicate with the cluster from anywhere (from even outside the firewall surrounding the cluster):
+1. Get the cluster connect **kubeconfig** needed to communicate with the cluster from anywhere (even from outside the firewall surrounding the cluster):
 
      ```azurecli
      az connectedk8s proxy -n $CLUSTER_NAME -g $RESOURCE_GROUP
      ```
      
      > [!NOTE]
-     > This command will open the proxy and block the current shell.
+     > This command opens the proxy and blocks the current shell.
 
-3. In a different shell session, use `kubectl` to send requests to the cluster:
+1. In a different shell session, use `kubectl` to send requests to the cluster:
 
    ```powershell
    kubectl get pods -A
@@ -178,9 +179,7 @@ Run the following steps on another client device.
 
 You should now see a response from the cluster containing the list of all pods under the `default` namespace.
 
-For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device)
-
-
+For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device).
 
 ## Clean up resources
 
