@@ -76,7 +76,7 @@ Veritas Backup Exec is an easy-to-use backup and recovery solution that helps pr
 - Application support: [Protect Azure Stack HCI with Backup Exec](https://www.veritas.com/support/en_US/article.100048860)
 - [Veritas Backup Exec support for Microsoft Azure](https://www.veritas.com/protection/backup-exec/azure)
 
-To simplify data protection on your Azure Stack HCI deployment, check out the [Solution Brief](https://www.veritas.com/form/whitepaper/backup-exec-for-azure-stack-hci).
+To simplify data protection on your Azure Stack HCI deployment, check out the [Solution Brief](https://www.veritas.com/en/aa/form/whitepaper/backup-exec-for-azure-stack-hci).
 
 ## Next steps
 

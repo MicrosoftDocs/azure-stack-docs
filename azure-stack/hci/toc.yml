@@ -133,6 +133,8 @@ items:
       href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
+  - name: Configure advanced Active Directory settings
+    href: plan/configure-custom-settings-active-directory.md 
 
 - name: Deploy
   items:
@@ -147,13 +149,26 @@ items:
   - name: 3. Install the OS
     href: deploy/deployment-install-os.md
   - name: 4. Register with Arc and set up permissions
-    href: deploy/deployment-arc-register-server-permissions.md
+    items:
+    - name: Via console
+      href: deploy/deployment-arc-register-server-permissions.md
+    - name: Via local UI (Preview)
+      href: deploy/deployment-arc-register-local-ui.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
       href: deploy/deploy-via-portal.md
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
+
+  - name: Deploy with Arc gateway (Preview)
+    items:
+    - name: About Arc gateway
+      href: deploy/deployment-azure-arc-gateway-overview.md
+    - name: New v23H2 deployments
+      href: deploy/deployment-azure-arc-gateway-new-cluster.md
+    - name: Existing v23H2 deployments
+      href: deploy/deployment-azure-arc-gateway-existing-cluster.md
 
   - name: Deploy SDN
     items:
@@ -266,10 +281,6 @@ items:
         href: manage/vm-load-balancing.md
       - name: Dynamic CPU compatibility
         href: manage/processor-compatibility-mode.md
-      - name: Deploy graphics devices using Discrete Device Assignment
-        href: /windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
-      - name: Plan for deploying devices by using Discrete Device Assignment
-        href: /windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use GPUs with clustered VMs
         href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: GPU Partitioning

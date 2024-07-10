@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 05/31/2024
+ms.date: 07/09/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -13,14 +13,16 @@ ms.date: 05/31/2024
 
 This article provides guidance on how to configure firewalls for the Azure Stack HCI operating system. It includes firewall requirements for outbound endpoints and internal rules and ports. The article also provides information on how to use Azure service tags with Microsoft Defender firewall.
 
+This article also describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
+
 If your network uses a proxy server for internet access, see [Configure proxy settings for Azure Stack HCI](../manage/configure-proxy-settings.md).
 
 > [!IMPORTANT]
-> Azure Express Route and Azure Private Link are not supported for Azure Stack HCI, version 23H2 or any of its components, because it is not possible to access the public endpoints required for Azure Stack HCI 23H2.
+> Azure Express Route and Azure Private Link are not supported for Azure Stack HCI, version 23H2 or any of its components as it is not possible to access the public endpoints required for Azure Stack HCI, version 23H2.
 
 ## Firewall requirements for outbound endpoints
 
-Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section of this article.
+Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the Azure Stack HCI operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section of this article.
 
 Azure Stack HCI needs to periodically connect to Azure. Access is limited only to:
 
@@ -31,20 +33,24 @@ Azure Stack HCI needs to periodically connect to Azure. Access is limited only t
 > [!IMPORTANT]
 > Azure Stack HCI doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Stack HCI to prevent any connectivity errors.
 
-As shown in the following diagram, Azure Stack HCI accesses Azure using more than one firewall potentially.
+As shown in the following diagram, Azure Stack HCI can access Azure using more than one firewall potentially.
 
 :::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
-This article describes how to optionally use a highly locked-down firewall configuration to block all traffic to all destinations except those included in your allowlist.
-
 ## Required firewall URLs
 
-The following table provides a list of required firewall URLs. Make sure to include these URLs to your allowlist.
+Starting with Azure Stack HCI, version 23H2, all the clusters automatically enable Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Stack HCI](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allowlist of your firewall.
 
-Additionally, follow the required firewall requirements for [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions).
+For a consolidated list of endpoints when deploying in East US, use this list:
+- [Azure Stack HCI 23H2 East US required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
+
+For a consolidated list of endpoints when deploying in East US, use this list:
+- [Azure Stack HCI 23H2 Western Europe required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
+
+The following table provides a list of required firewall URLs. Make sure to include these URLs in your allowlist.
 
 > [!NOTE]
-> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
+> The Azure Stack HCI firewall rules on this table are the minimum endpoints required for HciSvc system service connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
 [!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
 
@@ -55,17 +61,14 @@ For a comprehensive list of all the firewall URLs, download the [firewall URLs s
 The following table provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
 
 > [!NOTE]
-> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
+> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc system service connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
 
 [!INCLUDE [Recommended URLs table](../../includes/hci-recommended-urls-table.md)]
 
 ## Firewall requirements for additional Azure services
 
-Depending on additional Azure services you enable on HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
+Depending on additional Azure services you enable for Azure Stack HCI, you may need to make additional firewall configuration changes. Refer to the following links for information on firewall requirements for each Azure service:
 
-- [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions)
-- [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements)
-- [Azure Arc resource bridge network requirements](/azure/azure-arc/resource-bridge/network-requirements)
 - [Azure Monitor Agent](/azure/azure-monitor/agents/azure-monitor-agent-data-collection-endpoint?tabs=PowerShellWindows#firewall-requirements)
 - [Azure portal](/azure/azure-portal/azure-portal-safelist-urls?tabs=public-cloud)
 - [Azure Site Recovery](/azure/site-recovery/hyper-v-azure-architecture#outbound-connectivity-for-urls)
@@ -79,9 +82,9 @@ Depending on additional Azure services you enable on HCI, you may need to make a
 
 ## Firewall requirements for internal rules and ports
 
-Ensure that the proper network ports are open between all server nodes both within a site and between sites for stretched clusters (stretched cluster functionality is only available in Azure Stack HCI, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
+Ensure that the proper network ports are open between all server nodes, both within a site and between sites for stretched clusters (stretched cluster functionality is only available in Azure Stack HCI, version 22H2.). You'll need appropriate firewall rules to allow ICMP, SMB (port 445, plus port 5445 for SMB Direct if using iWARP RDMA), and WS-MAN (port 5985) bi-directional traffic between all servers in the cluster.
 
-When using the Cluster Creation wizard in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports as described in the following sections:
+When using the **Cluster Creation wizard** in Windows Admin Center to create the cluster, the wizard automatically opens the appropriate firewall ports on each server in the cluster for Failover Clustering, Hyper-V, and Storage Replica. If you're using a different firewall on each server, open the ports as described in the following sections:
 
 ### Azure Stack HCI OS management
 
@@ -119,7 +122,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 | Allow ICMPv4 and ICMPv6<br> for Failover Cluster validation | Allow | Management system | Cluster servers | n/a | n/a |
 
 >[!NOTE]
-> The management system includes any computer from which you plan to administer the cluster, using tools such as Windows Admin Center, Windows PowerShell or System Center Virtual Machine Manager.
+> The management system includes any computer from which you plan to administer the cluster, using tools such as Windows Admin Center, Windows PowerShell, or System Center Virtual Machine Manager.
 
 ### Hyper-V
 
@@ -160,7 +163,7 @@ This section shows how to configure Microsoft Defender firewall to allow IP addr
     $json = Get-Content -Path .\ServiceTags_Public_20201012.json | ConvertFrom-Json
     ```
 
-1. Get the list of IP address ranges for a given service tag, such as the "AzureResourceManager" service tag:
+1. Get the list of IP address ranges for a given service tag, such as the `AzureResourceManager` service tag:
 
     ```powershell
     $IpList = ($json.values | where Name -Eq "AzureResourceManager").properties.addressPrefixes
