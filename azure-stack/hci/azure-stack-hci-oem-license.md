@@ -100,6 +100,4 @@ For support with billing issues related to mixed node scenarios, file an Azure s
 
 - Read [Azure Kubernetes Service on Azure Stack HCI](/azure/aks/hybrid/aks-create-clusters-portal).
 
-- Read [Azure Stack HCI OEM license and billing FAQ](azure-stack-hci-license-billing.yml).
-
 - Read more about billing for specific OEM partners, see [Azure Stack HCI billing and payments](./concepts/billing.md).
