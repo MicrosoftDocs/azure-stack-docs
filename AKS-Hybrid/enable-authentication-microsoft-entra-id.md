@@ -1,5 +1,5 @@
 ---
-title: Enable Azure managed identity authentication for Kubernetes clusters with kubelogin
+title: Enable Microsoft Entra ID authentication for Kubernetes clusters with kubelogin
 description: Learn how to enable Microsoft Entra ID on Azure Kubernetes Service with kubelogin and authenticate Azure users with credentials or managed roles.
 author: sethmanheim
 ms.author: sethm 
@@ -117,13 +117,7 @@ A successful activation of an AKS-managed Microsoft Entra ID cluster has the fol
 
 2. Follow the instructions to sign in.
 
-3. Set `kubelogin` to use the Azure CLI:
-
-    ```azurecli
-    kubelogin convert-kubeconfig -l azurecli
-    ```
-
-4. View the nodes in the cluster with the `kubectl get nodes` command:
+3. View the nodes in the cluster with the `kubectl get nodes` command:
 
     ```azurecli
     kubectl get nodes
