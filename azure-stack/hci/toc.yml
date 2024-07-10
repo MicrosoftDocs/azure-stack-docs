@@ -7,6 +7,12 @@ items:
     href: overview.md
   - name: What's new in Azure Stack HCI? 
     href: whats-new.md
+  - name: Azure Stack HCI OEM License
+    items: 
+    - name: Azure Stack HCI OEM license
+      href: azure-stack-hci-oem-license.md
+    - name: FAQ
+      href: azure-stack-hci-license-billing.yml
   - name: Release notes
     items:
     - name: Release information
