@@ -45,7 +45,7 @@ sections:
       
       - question: Are mixed-node scenarios supported?
         answer: |
-          No. This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](./hci/azure-stack-hci-oem-license.md#mixed-node-scenarios).
+          No. This license doesn't currently support environments with mixed nodes in the same Azure Stack HCI system. For more information, see [Mixed-node scenarios](azure-stack-hci-oem-license.md#mixed-node-scenarios).
 
       - question: Does Azure Kubernetes Service (AKS) offer unlimited virtualization?
         answer: |
