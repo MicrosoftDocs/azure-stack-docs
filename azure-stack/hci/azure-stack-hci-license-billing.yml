@@ -69,8 +69,8 @@ sections:
 
       - question: Is a product key or Certificate of Authenticity (COA) required?
         answer: |
-          No. This pre-installed license doesn't include product keys or Certificate of Authenticity (COA), the license is automatically authenticated once you register the device in Azure. Should you have any failure that requires a re-install, contact your OEM vendor.
+          No. This pre-installed license doesn't include product keys or COA, the license is automatically authenticated once you register the device in Azure. Should you have any failure that requires a re-install, contact your OEM vendor.
 
       - question: Do I need Device or User Client Access Licenses (CALs) with this License?
         answer: |
-          No. For this specific license, there's no requirement for other Device or User Client Access Licenses (CALs). The absence of CAL requirements with this license is specific to this offering and shouldn't be interpreted as a general exception from CALs for other server licenses or scenarios.
+          No. For this specific license, there's no requirement for other Device or User CALs. The absence of CAL requirements with this license is specific to this offering and shouldn't be interpreted as a general exception from CALs for other server licenses or scenarios.
