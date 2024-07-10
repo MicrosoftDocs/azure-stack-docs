@@ -115,9 +115,7 @@ A successful activation of an AKS-managed Microsoft Entra ID cluster has the fol
     az aksarc get-credentials --resource-group myResourceGroup --name myAKSCluster
     ```
 
-2. Follow the instructions to sign in.
-
-3. View the nodes in the cluster with the `kubectl get nodes` command:
+2. View the nodes in the cluster with the `kubectl get nodes` command and follow the instructions to sign in.
 
     ```azurecli
     kubectl get nodes
