@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 05/06/2024
+ms.date: 07/10/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
@@ -116,9 +116,29 @@ The above failure is because the `SystemAssigned` managed identity object is not
 
 Verify in your deployment template that:
 
-The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type. 
+The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
 
 The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Stack HCI](./create-arc-virtual-machines.md).
+
+### Failure deleting storage path
+
+When trying to delete a storage path for an Arc VM on your Azure Stack HCI cluster, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
+
+**Error:** `"errorMessage" serviceClient returned an error during deletion: The storage container service returned an error during deletion: rpc error: code = Unknown desc = Container is in ACTIVE use by Resources [6:`
+`- linux-cblmariner-0.2.0.10503`
+`- windows-windows2019-0.2.0.10503`
+`- windows-windows2022-0.2.0.10503`
+`].`
+`Remove all the Resources from this container, before trying to delete: In Use: Failed,`
+
+**Resolution:**  
+
+Typical workloads are represented as Azure Resource Manager (ARM) objects on the Azure portal and CLI. The images listed in the error message are required for AKS hybrid workloads and are directly downloaded onto the file system, so Azure doesn't recognize these workloads.
+
+Follow these steps before trying to remove a storage path:
+
+1. Remove the associated workloads and the images present on the storage path you want to delete. Look for the following prefixes on the image names: `linux-cblmariner`, `windows-windows2019`, `windows-windows2022`, `windows_k8s`, `aks-image-merged`, `linux-K8s`.
+1. File a [support ticket in the Azure portal](https://learn.microsoft.com/en-us/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### Azure CLI installation isn't recognized
 

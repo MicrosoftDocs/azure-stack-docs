@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/24/2024
+ms.date: 07/10/2024
 ---
 
 # Create storage path for Azure Stack HCI 
@@ -161,6 +161,8 @@ You receive a notification that the storage path doesn't exist.
 To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume. For more information, see [Delete a volume](./manage-volumes.md#delete-volumes).
 
 If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](./manage-volumes.md#expand-volumes).
+
+To troubleshoot any error when trying to delete a storage path, see [Failure deleting storage path](./troubleshoot-arc-enabled-vms.md#failure-deleting-storage-path).
 
 # [Azure portal](#tab/azureportal)
 

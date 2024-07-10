@@ -5,7 +5,7 @@ ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: jgerend
-ms.date: 02/26/2024
+ms.date: 07/10/2024
 ---
 
 # Manage volumes in Azure Stack HCI and Windows Server
@@ -234,6 +234,11 @@ Follow these steps to move volumes using PowerShell:
 ## Delete volumes
 
 This section describes how to delete volumes by using Windows Admin Center or PowerShell.
+
+Before you delete a volume, consider the following requirements:
+
+- Ensure the volume you're deleteing isn't actively used by Arc Kubernetes clusters or VMs to prevent data loss or system issues.
+- Remove the associated workload and then delete the storage paths. For more information, see [Delete a storage path](./create-storage-path.md#delete-a-storage-path).
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
