@@ -65,7 +65,7 @@ sections:
 
       - question: Does this license include an End-User License Agreement (EULA)?
         answer: |
-          Yes. There's EULA that combines Azure Stack HCI (as the host), Azure Kubernetes Services on Azure Stack HCI, and Windows Server Datacenter 2022 (as the guest) into a single package.
+          Yes. There's an EULA that combines Azure Stack HCI (as the host), Azure Kubernetes Services on Azure Stack HCI, and Windows Server Datacenter 2022 (as the guest) into a single package.
 
       - question: Is a product key or Certificate of Authenticity (COA) required?
         answer: |
