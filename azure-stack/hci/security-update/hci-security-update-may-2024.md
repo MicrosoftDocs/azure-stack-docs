@@ -21,7 +21,7 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. When you install this KB:
 
-- This update affects Windows Defender Application Control (WDAC). The update addresses an issue that might cause some apps to fail when you apply WDAC Application ID policies.
+- This update affects Windows Defender Application Control (WDAC). The update addresses an issue that might cause some applications to fail when you apply WDAC Application ID policies.
 
 - This update addresses an issue that affects IE mode. A web page may stop working as expected when there's an open modal dialog.
 
