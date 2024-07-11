@@ -2,7 +2,7 @@
 title: Scale an Azure Kubernetes Service cluster
 description: Learn how to scale the number of nodes in a Kubernetes cluster in AKS enabled by Azure Arc.
 ms.topic: article
-ms.date: 10/19/2022
+ms.date: 06/25/2024
 author: sethmanheim
 ms.author: sethm 
 

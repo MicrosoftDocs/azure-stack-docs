@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/04/2024
+ms.date: 06/26/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -17,11 +17,23 @@ This article lists the various features and improvements that are available in A
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version focuses on cloud-based deployment and updates, cloud-based monitoring, new and simplified experience for Arc VM management, security, and more. For an earlier version of Azure Stack HCI, see [What's new in Azure Stack HCI, version 22H2](./whats-new-in-hci-22h2.md).
 
-There are currently 3 release trains for Azure Stack HCI, version 23H2: 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
+There are currently three release trains for Azure Stack HCI, version 23H2: 2405, 2402, and 2311. The various features and improvements available for the releases included in these trains are discussed in the following sections.
 
 ## [2405 releases](#tab/2405releases)
 
-The 2405 release train includes the following release:
+The 2405 release train includes the following releases:
+
+## Features and improvements in 2405.1
+
+This is primarily a bug fix release with a few improvements.
+
+- **Custom storage IPs for add and repair server scenarios**: Starting this release, it's possible to add servers or repair servers to the Azure Stack HCI cluster using custom IPs for the storage intent network adapters.
+- **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
+- **Reliabiltiy improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
+- **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
+- **Multiple bug fixes related to Updates** were made in this release.
+
+For more information on bug fixes, see the [Fixed issues list](./known-issues-2405-1.md#fixed-issues).
 
 ## Features and improvements in 2405
 
@@ -78,15 +90,15 @@ For more information, see the [Fixed issues list in in 2405](./known-issues-2405
 
 In this release, changes to the environment checker include several new checks:
 
-- A new check is added to ensure the inbox drivers on the physical network adapters are not in use. The provided OEM or manufacturer latest drivers must be installed before deployment.
+- A new check is added to ensure the inbox drivers on the physical network adapters aren't in use. The provided OEM or manufacturer latest drivers must be installed before deployment.
 - A new check is added to ensure the link speed across physical network adapters on the same intent is identical.
 - A new check is added to ensure RDMA is operational on the storage network adapters before deployment.
 - A new check is added to validate the infrastructure IP addresses defined during deployment have outbound connectivity and can resolve the DNS.
-- A new check is added to ensure the DNS server value is not empty on the management IP address.
-- A new check is added to make sure that there is only 1 IP address on the management network adapter.
+- A new check is added to ensure the DNS server value isn't empty on the management IP address.
+- A new check is added to make sure that there's only one IP address on the management network adapter.
 - A new check is added to ensure that the minimum bandwidth required for RDMA storage adapters is at least 10 Gb.
 - Check that the uplink connectivity in any physical network adapters assigned to Network ATC intents is up.
-- Improved the ability to handle adapters that do not expose the VLAN ID field correctly.
+- Improved the ability to handle adapters that don't expose the VLAN ID field correctly.
 
 ### Observability changes
 
@@ -111,6 +123,14 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 - The new clusters deployed in this release have resource locks enabled to protect against accidental deletion.
 - This release changes the behavior to not delete the Arc server resources when the Azure Stack HCI cluster resource is deleted.
 
+### Security changes
+
+This release includes the following updates to the security documentation:
+
+- The compliance score for Azure Stack HCI server is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](../hci/manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the non-compliant rules and the reasons for the current gap.
+- The Security Baselines settings have been updated to 315 settings, including six removals, one addition, and one change related to storing passwords for network authentication due deployment compatibility issues. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
+- Updated the [Windows Defender Application Control](../hci/concepts/security-features.md#windows-defender-application-control) section in the [Security features for Azure Stack HCI, version 23H2](../hci/concepts/security-features.md) article.
+
 ### AKS on Azure Stack HCI, version 23H2
 
 For a list of the changes and improvements in AKS on Azure Stack HCI, version 23H2, see [What's new in AKS on Azure Stack HCI, version 23H2](/azure/aks/hybrid/aks-whats-new-23h2).
@@ -118,6 +138,10 @@ For a list of the changes and improvements in AKS on Azure Stack HCI, version 23
 ## [2402 releases](#tab/2402releases)
 
 The 2402 release train includes the following releases:
+
+## Features and improvements in 2402.4
+
+This is primarily a bug fix release. See the [Fixed issues list](./known-issues-2402-4.md#fixed-issues) to understand the bug fixes.
 
 ## Features and improvements in 2402.3
 
@@ -161,6 +185,13 @@ Azure Stack HCI, version 23H2 solution is now supported in Australia. For more i
 
 We're also releasing new documentation that provides guidance on network considerations for the cloud deployment of Azure Stack HCI, version 23H2. For more information, see [Network considerations for Azure Stack HCI](./plan/cloud-deployment-network-considerations.md).
 
+### Security changes
+
+This release includes the following updates to the security documentation:
+
+- Updated the documentation for [Manage system security with Microsoft Defender for Cloud (preview)](../hci/manage/manage-security-with-defender-for-cloud.md).
+- Updated the Security Baselines settings to 320 settings, including one removal, three additions, and one change about disabling Dynamic Root of Measurement (DRTM) for new deployments. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2402.csv).
+- Published the [Azure Stack HCI security book](https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf).
 
 ## [2311 releases](#tab/2311releases)
 

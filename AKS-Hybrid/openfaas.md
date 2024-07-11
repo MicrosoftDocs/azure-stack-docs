@@ -2,9 +2,9 @@
 title: Use OpenFaaS with AKS enabled by Azure Arc
 description: Learn how to deploy and use OpenFaaS on an Azure Kubernetes Service (AKS) cluster to build serverless functions with containers in AKS enabled by Azure Arc.
 author: sethmanheim
-ms.topic: article
+ms.topic: how-to
 ms.custom: linux-related-content
-ms.date: 11/07/2022
+ms.date: 06/27/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: scooley
@@ -19,10 +19,10 @@ ms.reviewer: scooley
 
 ## Prerequisites
 
-In order to complete the steps within this article, make sure you have the following requirements:
+In order to complete the steps in this article, make sure you have the following requirements:
 
-* A basic understanding of Kubernetes.
-* A [Kubernetes cluster](./setup.md) with at least one Linux worker node that's up and running.
+* A basic understanding of [Kubernetes](kubernetes-concepts.md).
+* A [Kubernetes cluster](setup.md) with at least one Linux worker node that's up and running.
 * Your local `kubectl` environment is configured to point to your cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites are installed.
 * You can use [Azure CLI](/cli/azure/install-azure-cli) to run commands if you prefer Azure CLI to PowerShell.
@@ -34,7 +34,7 @@ In order to complete the steps within this article, make sure you have the follo
 
 ## Add the OpenFaaS Helm chart repo
 
-With your kubeconfig file available, open your console to start the deployment process. If you're running on Windows, downloading and running Git Bash is the easiest way to follow along. From there, to begin, OpenFaaS maintains its own Helm charts to keep up to date with all the latest changes:
+With your **kubeconfig** file available, open your console to start the deployment process. If you're running on Windows, downloading and running Git Bash is the easiest way to follow along. From there, OpenFaaS maintains its own Helm charts to keep up to date with all the latest changes:
 
 ```console
 helm repo add openfaas https://openfaas.github.io/faas-netes/
@@ -163,7 +163,6 @@ release "openfaas" uninstalled
 
 You can continue to learn with the OpenFaaS workshop through a set of hands-on labs that cover topics such as how to create your own GitHub bot, consuming secrets, viewing metrics, and auto-scaling.
 
-<!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli 

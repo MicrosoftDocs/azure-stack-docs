@@ -64,8 +64,6 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
-    - name: Download Kubernetes VHDs manually
-      href: offline-download.md
     - name: Security and authentication
       items:
       - name: Use Azure RBAC for Kubernetes authorization
@@ -128,6 +126,8 @@
       href: aks-known-issues.md
     - name: Troubleshoot
       href: aks-troubleshoot.md
+    - name: Use diagnostic checker
+      href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
   - name: Reference
@@ -188,6 +188,8 @@
       href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
+    - name: Use GPU acceleration
+      href: aks-edge-gpu.md
     - name: Update AKS Edge Essentials
       items:
       - name: Update online
