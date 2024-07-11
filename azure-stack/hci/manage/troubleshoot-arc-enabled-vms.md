@@ -122,7 +122,7 @@ The deployment template should match the provided sample template. For more info
 
 ### Failure deleting storage path
 
-When trying to delete a storage path for an Arc VM on your Azure Stack HCI cluster, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
+When trying to delete a storage path on your Azure Stack HCI cluster, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
 
 **Error:** `"errorMessage" serviceClient returned an error during deletion: The storage container service returned an error during deletion: rpc error: code = Unknown desc = Container is in ACTIVE use by Resources [6:`  
 `- linux-cblmariner-0.2.0.10503`  
