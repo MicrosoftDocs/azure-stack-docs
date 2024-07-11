@@ -8,7 +8,7 @@ metadata:
   ms.subservice: aks-hci
   ms.custom: devx-track-azurepowershell
   ms.topic: faq
-  ms.date: 12/11/2023
+  ms.date: 07/11/2024
 title: Resolve issues and errors during an AKS Arc installation
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
