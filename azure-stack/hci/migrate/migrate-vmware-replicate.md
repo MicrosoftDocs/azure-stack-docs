@@ -3,7 +3,7 @@ title: Discover and replicate VMware VMs for migration to Azure Stack HCI using 
 description: Learn the discovery and replication process for VMware VMs to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 07/01/2024
+ms.date: 07/11/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -179,7 +179,7 @@ Under **Step 2: Download Azure Migrate appliance**, select either **.VHD file** 
 This step applies only if you downloaded the *.VHD* file.
 
 1. On the server where you downloaded the file, open an administrator command window.
-1. Run the following command to generate the hash for the OVA.
+1. Run the following command to generate the hash for the VHD.
     
     ```powershell
     C:\>Get-FileHash -Path <file_location> -Algorithm <Hashing Algorithm>
@@ -196,8 +196,7 @@ This step applies only if you downloaded the *.VHD* file.
     
     |**Scenario**  |**Download**  |**SHA256**  |
     |---------|---------|---------|
-    |Azure Stack HCI appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2246416`         |6ae1144b026efb2650f5e11c007a457c351a752f942c2db827dd2903f468dccb         |
-
+    |Azure Stack HCI appliance     |Latest version: `https://go.microsoft.com/fwlink/?linkid=2191847`         |07783a31d1e66be963349b5553dc1f1e94c70aa149e11ac7d8914f4076480731         |
 
 1. Extract the zip file to a folder.
 
