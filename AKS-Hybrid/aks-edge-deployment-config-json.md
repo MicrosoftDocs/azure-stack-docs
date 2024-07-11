@@ -1,10 +1,10 @@
 ---
 title: AKS Edge Essentials deployment configuration JSON parameters
-description: Description of deployment configuration JSON parameters.
+description: Description of deployment configuration JSON parameters in AKS Edge Essentials.
 author: yujinkim-msft
 ms.author: yujinkim
 ms.topic: conceptual
-ms.date: 10/03/2023
+ms.date: 07/11/2024
 ms.custom: template-concept
 ---
 
@@ -69,5 +69,5 @@ You can find the complete JSON schema file at `C:\Program Files\AksEdge\aksedge-
 
 ## Next steps
 
-- [AKS Edge Essentials nodes and clusters](./aks-edge-concept-clusters-nodes.md)
-- [Set up your machine](./aks-edge-howto-setup-machine.md)
+- [AKS Edge Essentials nodes and clusters](aks-edge-concept-clusters-nodes.md)
+- [Set up your machine](aks-edge-howto-setup-machine.md)
