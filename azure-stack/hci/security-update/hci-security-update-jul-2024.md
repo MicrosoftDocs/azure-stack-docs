@@ -19,7 +19,7 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 ## Improvements
 
-This security update includes quality improvements. Below is a summary of the key issues that this update addresses. If there are new features, it lists them as well.
+This security update includes quality improvements. The following key issues and features are present in this update: 
 
 - **Absent apps and features**. Some apps and features are absent after you upgrade to Windows 11.
 
@@ -47,7 +47,6 @@ Microsoft isn't currently aware of any issues with this update.
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-The SSU for this update is KB 5040560, version 25398.1000.
 
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
 
