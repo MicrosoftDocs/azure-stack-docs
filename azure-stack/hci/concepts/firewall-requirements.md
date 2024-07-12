@@ -44,8 +44,11 @@ Starting with Azure Stack HCI, version 23H2, all the clusters automatically enab
 For a consolidated list of endpoints when deploying in East US, use this list:
 - [Azure Stack HCI 23H2 East US required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
 
-For a consolidated list of endpoints when deploying in East US, use this list:
+For a consolidated list of endpoints when deploying in Western Europe, use this list:
 - [Azure Stack HCI 23H2 Western Europe required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
+
+For a consolidated list of endpoints when deploying in Australia East, use this list:
+- [Azure Stack HCI 23H2 Australia East required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
 
 The following table provides a list of required firewall URLs. Make sure to include these URLs in your allowlist.
 
