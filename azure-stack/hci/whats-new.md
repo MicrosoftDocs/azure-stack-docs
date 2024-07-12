@@ -27,11 +27,10 @@ The 2405 release train includes the following releases:
 
 This is primarily a bug fix release with a few improvements.
 
-- Added a new health check. Also fixed multiple issues for health checks related to Azure Update Manager and Solution Builder.
-- Fixed an inability to view or start new updates due to the update service crashing on servers in a bad state. [Bug 28351655]
-- Improved the update service to prevent flooding of actions on the cluster. [Bug 28351665]
-- Added a health check to prevent updating when adding or removing servers fails. [Bug 28509688]
-
+- **Update health checks**
+  - Added a new health check.
+  - Fixed multiple issues for health checks related to Azure Update Manager and Solution Builder.
+  - Improved the update service and fixed the inability to view or start new updates when the service crashed on servers.
 
 ## Features and improvements in 2405.1
 
