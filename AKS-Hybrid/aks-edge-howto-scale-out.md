@@ -18,7 +18,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
 ## Prerequisites
 
 - Set up your [scalable Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
-- Set up your secondary machines as described in the [Set up machine article](aks-edge-howto-setup-machine.md). You can't mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **K8s**, you must install the **K8s** msi on the secondary machines as well.
+- Set up your secondary machines as described in the [Set up machine article](aks-edge-howto-setup-machine.md). You can't mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **K8s**, you must install the **K8s** MSI on the secondary machines as well.
 
 ## Step 1: get cluster configuration from your primary machine
 

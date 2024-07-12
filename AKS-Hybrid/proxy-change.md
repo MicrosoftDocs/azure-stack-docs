@@ -2,7 +2,7 @@
 title: Update noProxy settings, certificates in Azure Kubernetes Service
 description: Learn how to update proxy settings and certificates in AKS on Azure Stack HCI or AKS on Windows Server.
 ms.topic: how-to
-ms.date: 01/09/2023
+ms.date: 07/12/2024
 ms.author: sethm
 ms.lastreviewed: 05/31/2022
 ms.reviewer: abha
@@ -23,7 +23,7 @@ For information about the initial proxy server setup, see [Use proxy server sett
 
 ## Proxy settings you can update
 
-Before you begin, review current limitations to proxy settings updates in AKS enabled by Arc:
+Before you begin, review current limitations to proxy setting updates you can perform in AKS enabled by Arc:
 
 - AKS enabled by Arc supports one global proxy configuration per AKS Arc deployment. When you update the proxy settings, they're updated for the entire AKS Arc deployment.
 - You can only update `noProxy` settings, which are used to exclude a private subnet from using the proxy server, and proxy certificates. HTTP and HTTPs proxy settings can't be updated.
@@ -81,14 +81,14 @@ The next step is to use the `Set-AksHciProxySetting` command to update your `noP
 
 1. Before you update the proxy settings and certificates, confirm that your PowerShell variables have the right changes:
 
-   ```PowerShell
+   ```powershell
    echo $noProxy
    echo $certFile
    ```
 
 1. To update both your proxy settings and proxy certificates, run the following command:
 
-   ```PowerShell
+   ```powershell
    Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
    ```
 
@@ -104,7 +104,7 @@ To apply the proxy updates:
    Get-AksHciUpdates
    ```
 
-1. If an update is available, update your AKS host management cluster by running the following command. This command applies the proxy changes on your AKS host management cluster.
+1. If an update is available, update your AKS host management cluster by running the following command. This command applies the proxy changes on your AKS host management cluster:
 
    ```powershell  
    Update-AksHci
