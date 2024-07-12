@@ -2,7 +2,7 @@
 title: Get support for AKS Arc and AKS Edge Essentials
 description: Learn about how to get support and open a support request for AKS enabled by Azure Arc or AKS Edge Essentials.
 ms.topic: conceptual
-ms.date: 07/12/2023
+ms.date: 07/11/2024
 ms.custom: fasttrack-edit
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
@@ -112,4 +112,4 @@ Select the product you're using to see the relevant instructions on opening a su
 
 ## Next steps
 
-- [Review support policies for AKS Arc](./support-policies.md)
+- [Review support policies for AKS Arc](support-policies.md)

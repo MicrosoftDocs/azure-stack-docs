@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/24/2024
+ms.date: 07/10/2024
 ---
 
 # Create storage path for Azure Stack HCI 
@@ -53,7 +53,7 @@ The following parameters are *required* when you create a storage path:
 
 | Parameter | Description |
 | ----- | ----------- |
-| **name** | Name of the storage path that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a storage path after it is created. |
+| **name** | Name of the storage path that you create for your Azure Stack HCI cluster. Make sure to provide a name that follows the [Rules for Azure resources.](/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming#example-names-networking) You can't rename a storage path after it's created. |
 | **resource-group** |Name of the resource group where you create the storage path. For ease of management, we recommend that you use the same resource group as your Azure Stack HCI cluster. |
 | **subscription** |Name or ID of the subscription where your Azure Stack HCI is deployed. This could also be another subscription you use for storage path on your Azure Stack HCI cluster. |
 | **custom-location** |Name or ID of the custom location associated with your Azure Stack HCI cluster where you're creating this storage path. |
@@ -161,6 +161,8 @@ You receive a notification that the storage path doesn't exist.
 To delete a volume, first remove the associated workloads, then remove the storage paths, and then delete the volume. For more information, see [Delete a volume](./manage-volumes.md#delete-volumes).
 
 If there's insufficient space at the storage path, then the VM provisioning using that storage path would fail. You might need to expand the volume associated with the storage path. For more information, see [Expand the volume](./manage-volumes.md#expand-volumes).
+
+To troubleshoot any error when trying to delete a storage path, see [Failure deleting storage path](./troubleshoot-arc-enabled-vms.md#failure-deleting-storage-path).
 
 # [Azure portal](#tab/azureportal)
 
