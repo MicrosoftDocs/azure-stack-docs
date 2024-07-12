@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/26/2024
+ms.date: 07/12/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -22,6 +22,16 @@ There are currently three release trains for Azure Stack HCI, version 23H2: 2405
 ## [2405 releases](#tab/2405releases)
 
 The 2405 release train includes the following releases:
+
+## Features and improvements in 2405.2
+
+This is primarily a bug fix release with a few improvements.
+
+- Added a new health check. Also fixed multiple issues for health checks related to Azure Update Manager and Solution Builder.
+- Fixed an inability to view or start new updates due to the update service crashing on servers in a bad state. [Bug 28351655]
+- Improved the update service to prevent flooding of actions on the cluster. [Bug 28351665]
+- Added a health check to prevent updating when adding or removing servers fails. [Bug 28509688]
+
 
 ## Features and improvements in 2405.1
 
