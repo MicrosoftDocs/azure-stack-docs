@@ -4,7 +4,7 @@ description: Learn how to use GitOps with AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 07/12/2024
 ms.custom: template-how-to
 ---
 
@@ -13,19 +13,19 @@ ms.custom: template-how-to
 This article describes how to deploy applications to your Arc-enabled AKS Edge Essentials cluster. The steps are as follows:
 
 1. Point to your GitHub application to the Azure portal.
-2. Push your application to your AKS Edge Essentials cluster by installing GitOps configuration.
-3. Commit a change to your GitHub application and show that your app updates automatically.
+1. Push your application to your AKS Edge Essentials cluster by installing the GitOps configuration.
+1. Commit a change to your GitHub application and show that your app updates automatically.
 
 > [!NOTE]
 > Make sure you have allocated at least 4GB of RAM and 4 CPU for the Linux VM as well as a service IP range greater than 0. You might also need a larger disk space than the default 10 GB, depending on your workloads.
 
 ## Step 1: fork demo application repository
 
-Go to the [Azure Arc Jumpstart repository](https://github.com/microsoft/azure-arc-jumpstart-apps) and fork it to your own GitHub account.
+Go to the [Azure Arc Jumpstart repository](https://github.com/microsoft/azure-arc-jumpstart-apps) and fork it to your GitHub account.
 
 ## Step 2: create configuration
 
-Now, go to your cluster in the Azure portal and select **GitOps**. Next, create a cluster-level configuration and a namespace-level configuration. Select **Create** and **Flux version 2**.
+Go to your cluster in the Azure portal and select **GitOps**. Next, create a cluster-level configuration and a namespace-level configuration. Select **Create** and **Flux version 2**.
 
 ### Cluster-level configuration
 
@@ -49,7 +49,7 @@ Now, go to your cluster in the Azure portal and select **GitOps**. Next, create 
 | Prune | Enabled |
 | Force | Not enabled |
 
-Wait until the `config-nginx` has successfully been created and visible on your Azure portal GitOps before creating the namespace-level configuration (you can move on to creating the next configuration if the compliance is in a pending state).
+Wait until the `config-nginx` is successfully created and visible on your Azure portal GitOps before creating the namespace-level configuration (you can move on to creating the next configuration if the compliance is in a pending state).
 
 :::image type="content" source="media/aks-edge/gitops-first-config.png" alt-text="Screenshot showing cluster-level configuration." lightbox="media/aks-edge/gitops-first-config.png":::
 
@@ -102,7 +102,7 @@ If you have a Windows node, you can also enable **flux2** for Windows. The **hel
 
 Create a new namespace-level configuration for Windows nodes.
 
-### Namespace-level configuration
+### Namespace-level configuration for Windows
 
 | Attribute | Input |
 | --- | --- |
