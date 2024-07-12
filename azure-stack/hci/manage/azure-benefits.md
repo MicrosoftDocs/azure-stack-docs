@@ -16,7 +16,7 @@ ms.lastreviewed: 02/23/2024
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 > [!NOTE]
-> This article is for Azure Stack HCI version 22H2 and earlier only. For a list of benefits associated with version 23H2 and later, see the documentation for [Azure verification for VMs](../deploy/azure-verification.md).
+> This article is for Azure Stack HCI version 22H2 and earlier only. For a list of benefits associated with version 23H2 and later, see [Azure verification for VMs](../deploy/azure-verification.md).
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
