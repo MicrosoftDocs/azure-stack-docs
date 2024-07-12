@@ -4,19 +4,19 @@ description: Learn how to expose a Kubernetes service with AKS Edge Essentials.
 author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
-ms.date: 10/12/2023
+ms.date: 07/12/2024
 ms.custom: template-how-to
 ---
 
 # Expose Kubernetes services to external devices
 
-If you're working with Kubernetes applications, you might need to make Kubernetes services accessible to external devices so they can interact with the workloads you've deployed. This article explains how to expose Kubernetes services running on an AKS Edge Essentials cluster to external devices. Depending on the networking configuration you used to set up the Kubernetes cluster, there are two different ways to expose the services:
+If you work with Kubernetes applications, you might need to make Kubernetes services accessible to external devices so they can interact with the workloads you've deployed. This article explains how to expose Kubernetes services running on an AKS Edge Essentials cluster to external devices. Depending on the networking configuration you used to set up the Kubernetes cluster, there are two different ways to expose the services:
 
 1. Single machine cluster with port forwarding.
-2. Scalable cluster with external virtual switch.
+1. Scalable cluster with external virtual switch.
 
 > [!NOTE]
-> If you are using Kubernetes services, make sure to set up the `Init.ServiceIPRangeSize` and `Init.ServiceIPRangeStart` parameters during deployment. For more information, see [Deployment configuration JSON parameters](./aks-edge-deployment-config-json.md).
+> If you use Kubernetes services, make sure to set up the `Init.ServiceIPRangeSize` and `Init.ServiceIPRangeStart` parameters during deployment. For more information, see [Deployment configuration JSON parameters](./aks-edge-deployment-config-json.md).
 
 ## Option 1: single machine cluster with port forwarding
 
