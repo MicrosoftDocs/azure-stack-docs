@@ -4,7 +4,7 @@ description: Learn how to uninstall AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 07/11/2024
 ms.custom:
   - template-how-to
   - devx-track-azurecli
@@ -16,7 +16,7 @@ This article describes how to uninstall AKS Edge Essentials.
 
 ## Disconnect from Azure Arc
 
-If you used `Connect-AideArcKubernetes` to connect to Azure Arc, run `Disconnect-AideArcKubernetes` to disconnect your cluster from Azure Arc. For a complete clean-up, delete the service principal and resource group you created for this example:
+If you used `Connect-AideArcKubernetes` to connect to Azure Arc, run `Disconnect-AideArcKubernetes` to disconnect your cluster from Azure Arc. For a complete cleanup, delete the service principal and resource group you created for this example:
 
 ```powershell
 Disconnect-AideArcKubernetes
@@ -58,10 +58,10 @@ To remove your single machine cluster with a `Linux` or `LinuxandWindows` worklo
 Remove-AksEdgeDeployment
 
 # or run
-Remove-AksEdgeDeployment -Force #to forcefully remove all.
+Remove-AksEdgeDeployment -Force #to force removal of all clusters.
 ```
 
-You can't remove the Linux node alone in this configuration; you must remove the deployment if you need to remove Linux node.
+You can't remove the Linux node alone in this configuration; you must remove the deployment if you need to remove the Linux node.
 
 > [!NOTE]
 > If your single-machine cluster doesn't clean up properly, run `hnsdiag list networks`, then delete any existing AKS Edge Essentials network objects using `hnsdiag delete networks <ID>`.
@@ -100,7 +100,7 @@ Remove-AksEdgeDeployment
 
 ## Uninstall AKS Edge Essentials
 
-On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can also go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service Edge Essentials (Public Preview)**. Select **Uninstall**.
+On your machine, go to **Settings > Apps > Apps & Features**. Alternatively, you can go to **Control Panel > Uninstall a Program**. From there, look for **Azure Kubernetes Service Edge Essentials (Public Preview)**. Select **Uninstall**.
 
 > [!NOTE]
 > You might want to reboot your machine right after the uninstall so that all resources are cleaned up, and your machine is ready for a new installation.
