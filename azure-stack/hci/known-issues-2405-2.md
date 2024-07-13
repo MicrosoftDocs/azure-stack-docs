@@ -34,9 +34,12 @@ Here are the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Updates|An update issue was fixed. This issue caused the update to fail after the Cluster-Aware Updating (CAU) step although a CAU rerun in this case would fix the issue. ||
-
-
+| Updates <!--28101226-->|An update issue related to missing resource type ID field in the health checks, was fixed.  ||
+| Updates <!--28101677-->|An update issue related to different health checks having the same name, was fixed.   ||
+| Updates <!--28334715-->|In this release, an issue where Solution Builder Update health checks were missing from the pre-update or daily health checks, was fixed.    ||
+| Updates <!--28351655-->|In this release, an issue that caused an inability to view or start new updates due to the update service crashing on servers in a bad state, was fixed.    ||
+| Updates <!--28351665-->|In this release, the update service was improved to prevent flooding of actions on the cluster.   ||
+| Updates <!--28509688-->|In this release, a health check was added to prevent updates when adding or removing servers fails.   ||
 
 ## Known issues in this release
 
