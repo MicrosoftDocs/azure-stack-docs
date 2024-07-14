@@ -3,7 +3,7 @@ title: Azure Stack HCI OEM license overview
 description: Learn about the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
-ms.date: 06/17/2024
+ms.date: 07/15/2024
 ms.author: robess
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -18,7 +18,7 @@ This article covers the Azure Stack HCI OEM license, its benefits, license requi
 
 ## About the OEM license
 
-The Azure Stack HCI OEM license is designed for Azure Stack HCI hardware including [Azure Stack HCI Premier Solutions, integrated systems, and validated nodes](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?systemType=PremierSolution). The license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure:
+The Azure Stack HCI OEM license is designed for Azure Stack HCI hardware including [Azure Stack HCI Premier Solutions, Integrated Systems, and Validated Nodes](https://azurestackhcisolutions.azure.microsoft.com/#/catalog?systemType=PremierSolution). The license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure:
 
 - Azure Stack HCI
 - Azure Kubernetes Services (AKS)
@@ -63,11 +63,13 @@ To verify if you have an active Azure Stack HCI OEM License, use these steps:
 
         :::image type="content" source="media/oem-license/no-active-oem-license.png" alt-text="Screenshot of a billed monthly cluster without an active Azure Stack HCI OEM license." lightbox="media/oem-license/no-active-oem-license.png":::
 
-For support with your Azure Stack HCI OEM license first contact your OEM vendor. If for some reason you're unable to get vendor support file an Azure support request through [the Azure portal](https://portal.azure.com/).
+For support with your Azure Stack HCI OEM license first contact your OEM vendor. If you're unable to obtain vendor support, file an Azure support request through [the Azure portal](https://portal.azure.com/).
+
+For more information on the Azure Stack HCI OEM license, see [Azure Stack HCI OEM license FAQ](./azure-stack-hci-license-billing.yml).
 
 ## Licensing Windows Server guest VMs on Azure Stack HCI
 
-You can activate Windows Server VMs on an Azure Stack HCI cluster using generic Automatic Virtual Machine Activation client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](../hci/manage/vm-activate.md#activate-bring-your-own-license-byol-through-avma).
+You can activate Windows Server VMs on an Azure Stack HCI cluster using generic Automatic Virtual Machine Activation (AVMA) client keys. This can be done through either Windows Admin Center or PowerShell. For more information on using AVMA to activate Windows Server VMs, see [Activate Windows Server VMs using Automatic Virtual Machine Activation](../hci/manage/vm-activate.md#activate-bring-your-own-license-byol-through-avma).
 
 ## Licensing AKS on Azure Stack HCI
 
@@ -75,7 +77,7 @@ For information on activating AKS, see [Azure Kubernetes Service on Azure Stack 
 
 ## Mixed-node scenarios
 
-When a cluster or system uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your cluster includes a mixed-node scenario where one or more of your servers do not have the OEM license, a notification in your monthly billing status details appears.
+When a cluster or system uses different hardware models, operating system versions, or billing models this is known as a mixed-node scenario. Specifically for OEM license, if your cluster includes a mixed-node scenario where one or more of your servers don't have the OEM license, a notification in your monthly billing status details appears.
 
 :::image type="content" source="media/oem-license/warning-mixed-node.png" alt-text="Screenshot of a warning for a cluster with an unsupported mixed-node scenario." lightbox="media/oem-license/warning-mixed-node.png":::
 
