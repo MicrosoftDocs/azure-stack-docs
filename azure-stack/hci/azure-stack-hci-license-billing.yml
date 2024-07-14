@@ -7,7 +7,7 @@ metadata:
   ms.author: robess
   ms.service: azure-stack
   ms.subservice: azure-stack-hci
-  ms.date: 06/17/2024
+  ms.date: 07/15/2024
 
 title: Azure Stack HCI OEM license and billing FAQ
 summary: |
@@ -29,7 +29,7 @@ sections:
 
       - question: Is an annual renewal or subscription required for this license?
         answer: |
-          No. This license doesn't require annual renewals or subscriptions. It's a prepaid license that is tied to the life of the hardware that the Azure Stack HCI OS is installed on. Once acquired, the license remains valid for the lifetime of the hardware. You can continue using the license if the associated hardware, where the Azure Stack HCI OS is installed, remains functional and supported.
+          No. This license doesn't require annual renewals or subscriptions. It’s a prepaid license that once acquired remains valid for the lifetime of the hardware that the Azure Stack HCI OS is installed on. You can continue using the license if the associated hardware, where the Azure Stack HCI OS is installed, remains functional and supported.
       
       - question: Which version of Windows Server is supported for this license?
         answer: |
