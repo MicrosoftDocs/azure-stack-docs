@@ -16,7 +16,7 @@ ms.lastreviewed: 02/23/2024
 [!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
 
 > [!NOTE]
-> This article is for Azure Stack HCI version 22H2 and earlier only. For version 23H2 and later, see the documentation for [Azure verification for VMs](../deploy/azure-verification.md).
+> This article is for Azure Stack HCI version 22H2 and earlier only. For a list of benefits associated with version 23H2 and later, see [Azure verification for VMs](../deploy/azure-verification.md).
 
 Microsoft Azure offers a range of differentiated workloads and capabilities that are designed to run only on Azure. Azure Stack HCI extends many of the same benefits you get from Azure, while running on the same familiar and high-performance on-premises or edge environments.
 
@@ -33,7 +33,7 @@ Turning on Azure Benefits enables you to use these Azure-exclusive workloads on 
 | Workload                                 | Versions supported                           | What it is                                                                                                                                                                                                                                                                       |
 |------------------------------------------|----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Windows Server Datacenter: Azure Edition | 2022 edition or later                        | An Azure-only guest operating system that includes all the latest Windows Server innovations and other exclusive features. <br/> Learn more: [Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview)                                      |
-| Extended Security Update (ESUs)          | October 12th, 2021 security updates or later | A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> For more information, see [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md). |
+| Extended Security Update (ESUs)          | October 12, 2021 security updates or later | A program that allows customers to continue to get security updates for End-of-Support SQL Server and Windows Server VMs, now free when running on Azure Stack HCI. <br/> For more information, see [Extended security updates (ESU) on Azure Stack HCI](azure-benefits-esu.md). |
 | Azure Policy guest configuration         | Arc agent version 1.13 or later              | A feature that can audit or configure OS settings as code, for both host and   guest machines. <br/> Learn more: [Understand the guest configuration feature of Azure Policy](/azure/governance/policy/concepts/guest-configuration)                                             |
 | Azure Virtual Desktop                    | For multi-session editions only. Windows 10 Enterprise multi-session or later. | A service that enables you to deploy Azure Virtual Desktop session hosts on your Azure Stack HCI infrastructure. <br/> For more information, see the [Azure Virtual Desktop for Azure Stack HCI overview](/azure/virtual-desktop/azure-stack-hci-overview). |
 
@@ -73,7 +73,7 @@ Before you begin, you'll need the following prerequisites:
   - [Register Azure Stack HCI](../deploy/register-with-azure.md?tab=windows-admin-center#register-a-cluster): All servers must be online and registered to Azure.
   - [Install Hyper-V and RSAT-Hyper-V-Tools](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
 
-- If you are using Windows Admin Center:
+- If you're using Windows Admin Center:
   - Windows Admin Center (version 2103 or later) with Cluster Manager extension (version 2.41.0 or later).
 
 You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, PowerShell, Azure CLI, or Azure portal. The following sections describe each option.
@@ -139,7 +139,7 @@ You can enable Azure Benefits on Azure Stack HCI using Windows Admin Center, Pow
 
 ## [Azure CLI](#tab/azurecli)
 
-Azure CLI is available to install in Windows, macOS and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
+Azure CLI is available to install in Windows, macOS, and Linux environments. It can also be run in [Azure Cloud Shell](https://shell.azure.com/). This document details how to use Bash in Azure Cloud Shell. For more information, refer [Quickstart for Azure Cloud Shell](/azure/cloud-shell/quickstart).
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Azure Benefits following these steps:
 
@@ -194,9 +194,9 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
 - To remove access to Azure Benefits for VMs:
   - On the **VM** tab, select the VM(s) in the top table **VMs without Azure Benefits**, and then select **Turn on Azure Benefits for VMs**.
 - Under the **Cluster** tab, one or more servers appear as **Expired**:
-  - If Azure Benefits for one or more servers has not synced with Azure for more than 30 days, it appears as **Expired** or **Inactive**. Select **Sync with Azure** to schedule a manual sync.
+  - If Azure Benefits for one or more servers hasn't synced with Azure for more than 30 days, it appears as **Expired** or **Inactive**. Select **Sync with Azure** to schedule a manual sync.
 - Under the **VM** tab, host server benefits appear as **Unknown** or **Inactive**:
-  - You will not be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for host servers with errors, then try and manage VMs again.
+  - You won't be able to add or remove Azure Benefits for VMs on these host servers. Go to the **Cluster** tab to fix Azure Benefits for host servers with errors, then try to manage VMs again.
 
 ### Troubleshoot via PowerShell
 
@@ -218,13 +218,13 @@ To turn on Azure Benefits for VMs, select the **VMs** tab, then select the VM(s)
   Remove-AzStackHCIVMAttestation -RemoveAll
   ```
 
-- If Azure Benefits for one or more servers is not yet synced and renewed with Azure, it may appear as **Expired** or **Inactive**. Schedule a manual sync:
+- If Azure Benefits for one or more servers isn't yet synced and renewed with Azure, it may appear as **Expired** or **Inactive**. Schedule a manual sync:
 
   ```powershell
   Sync-AzureStackHCI
   ```
 
-- If a server is newly added and has not yet been set up with Azure Benefits, it may appear as **Inactive**. To add the new server, run setup again:
+- If a server is newly added and hasn't yet been set up with Azure Benefits, it may appear as **Inactive**. To add the new server, run setup again:
 
   ```powershell
   Enable-AzStackHCIAttestation
@@ -246,9 +246,9 @@ No, turning on Azure Benefits incurs no extra fees.
 
 No, Azure Benefits is a feature built into the Azure Stack HCI OS, and can only be used on Azure Stack HCI.
 
-### I have just set up Azure Benefits on my cluster. How do I ensure that Azure Benefits stays active?
+### I have set up Azure Benefits on my cluster. How do I ensure that Azure Benefits stays active?
 
-- In most cases, there is no user action required. Azure Stack HCI automatically renews Azure Benefits when it syncs with Azure.
+- In most cases, there's no user action required. Azure Stack HCI automatically renews Azure Benefits when it syncs with Azure.
 - However, if the cluster disconnects for more than 30 days and Azure Benefits shows as **Expired**, you can manually sync using PowerShell and Windows Admin Center. For more information, see [syncing Azure Stack HCI](../faq.yml#what-happens-if-the-30-day-limit-is-exceeded).
 
 ### What happens when I deploy new VMs, or delete VMs?
@@ -260,7 +260,7 @@ No, Azure Benefits is a feature built into the Azure Stack HCI OS, and can only 
 
 - When you add a server, you can navigate to the **Azure Benefits** page in Windows Admin Center, and a banner will appear with a link to **Enable inactive server**.
 - Or, you can run `Enable-AzStackHCIAttestation [[-ComputerName] <String>]` in PowerShell.
-- You can still delete servers or remove them from the cluster as usual. The vSwitch **AZSHCI_HOST-IMDS_DO_NOT_MODIFY** will still exist on the server after removal from the cluster. You can leave it if you are planning to add the server back to the cluster later, or you can remove it manually.
+- You can still delete servers or remove them from the cluster as usual. The vSwitch **AZSHCI_HOST-IMDS_DO_NOT_MODIFY** will still exist on the server after removal from the cluster. You can leave it if you're planning to add the server back to the cluster later, or you can remove it manually.
 
 ## Next steps
 
