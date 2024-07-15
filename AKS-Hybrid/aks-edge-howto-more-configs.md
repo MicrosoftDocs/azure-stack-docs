@@ -1,16 +1,16 @@
 ---
-title: AKS Edge Essentials configuration
+title: AKS Edge Essentials configuration and scripts
 description: Additional configuration options for AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 07/11/2024
 ms.custom: template-how-to
 ---
 
 # Additional configuration and scripts for AKS Edge Essentials
 
-This article provides alternate ways of connecting to Azure Arc, which can be applicable with clusters connected via a proxy.
+This article provides alternate ways of connecting to Azure Arc, which can be applicable to clusters that are connected via a proxy.
 
 ## Connect an AKS Edge Essentials cluster to Arc using a proxy
 
@@ -26,7 +26,7 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
 ### Step 1: configure your cluster for Azure connectivity
 
 1. Download the [Azure/AKS-Edge GitHub repo](https://github.com/Azure/AKS-Edge/tree/main), if you haven't done so earlier. Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the **.zip** file to a local folder.
-2. Provide details of your Azure subscription in the **aide-userconfig.json** file under the `Azure` section as described in the following table. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a service principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aide-userconfig.json** file. If you don't have a service principal, you can provide a name and the script in the next step creates one and populates the `Auth` section for you.
+1. Provide details of your Azure subscription in the **aide-userconfig.json** file under the `Azure` section as described in the following table. To successfully connect to Azure using Azure Arc-enabled kubernetes, you need a service principal that provides role-based access to resources on Azure. If you already have the service principal ID and password, you can update all the fields in the **aide-userconfig.json** file. If you don't have a service principal, you can provide a name, and the script in the next step creates one and populates the `Auth` section for you.
 
     | Attribute | Value type      |  Description |
     | :------------ |:-----------|:--------|
@@ -44,8 +44,8 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
     > [!NOTE]
     > This procedure is required to be done only once per Azure subscription and doesn't need to be repeated for each Kubernetes cluster.
 
-3. Run or double-click the **AksEdgePrompt.cmd** file to open an elevated PowerShell window with the required modules loaded. An overview of the PC information and the installed software versions is displayed.
-4. Run the **AksEdgeAzureSetup.ps1** script in the **tools\scripts\AksEdgeAzureSetup** folder. This script prompts you to log in with your credentials for setting up your Azure subscription:
+1. Run or double-click the **AksEdgePrompt.cmd** file to open an elevated PowerShell window with the required modules loaded. An overview of the PC information and the installed software versions is displayed.
+1. Run the **AksEdgeAzureSetup.ps1** script in the **tools\scripts\AksEdgeAzureSetup** folder. This script prompts you to log in with your credentials for setting up your Azure subscription:
 
     ```powershell
     # prompts for interactive login for service principal creation with Contributor role at resource group level
@@ -57,7 +57,7 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
     ..\tools\scripts\AksEdgeAzureSetup\AksEdgeAzureSetup.ps1 .\aide-userconfig.json
     ```
 
-5. Make sure that the credentials are valid, using the **AksEdgeAzureSetup-Test.ps1** script. This script signs in to Azure using the new service principal credentials and checks the status of Azure resources:
+1. Make sure that the credentials are valid, using the **AksEdgeAzureSetup-Test.ps1** script. This script signs in to Azure using the new service principal credentials and checks the status of Azure resources:
 
     ```powershell
     # Test the credentials
@@ -74,15 +74,15 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
     ```
 
     > [!IMPORTANT]
-    > Any time you modify **aide-userconfig.json**, run `Read-AideUserConfig` to reload, or close and re-open **AksEdgePrompt.cmd**.
+    > Each time you modify **aide-userconfig.json**, run `Read-AideUserConfig` to reload, or close and re-open **AksEdgePrompt.cmd**.
 
-2. Run `Initialize-AideArc`. This installs Azure CLI (if not already installed), signs in to Azure with the given credentials, and validates the Azure configuration (resource providers and resource group status):
+1. Run `Initialize-AideArc`. This installs Azure CLI (if not already installed), signs in to Azure with the given credentials, and validates the Azure configuration (resource providers and resource group status):
 
    ```powershell
    Initialize-AideArc
    ```
 
-3. Run `Connect-AideArc` to install and connect the host machine to the Arc-enabled server and to connect the **existing cluster** to Arc-enabled Kubernetes:
+1. Run `Connect-AideArc` to install and connect the host machine to the Arc-enabled server and to connect the **existing cluster** to Arc-enabled Kubernetes:
 
    ```powershell
    # Connect Arc-enabled server and Arc-enabled Kubernetes
@@ -99,7 +99,7 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
    ```
 
    > [!NOTE]
-   > This step can take up to 10 minutes and PowerShell may be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`". The PowerShell command outputs `True` and returns to the prompt when the process is completed. A bearer token is saved in **servicetoken.txt** in the **tools** folder.
+   > This step can take up to 10 minutes and PowerShell might be stuck on "Establishing Azure Connected Kubernetes for `your cluster name`". The PowerShell command outputs `True` and returns to the prompt when the process is completed. A bearer token is saved in **servicetoken.txt** in the **tools** folder.
 
 ### Step 3: view your cluster on Azure
 
@@ -107,15 +107,15 @@ This article provides alternate ways of connecting to Azure Arc, which can be ap
 
    :::image type="content" source="media/aks-edge/kubernetes-resources-preview.png" alt-text="Screenshot showing kubernetes resources preview." lightbox="media/aks-edge/kubernetes-resources-preview.png":::
 
-2. To view your Kubernetes resources, you need a bearer token:
+1. To view your Kubernetes resources, you need a bearer token:
 
    :::image type="content" source="media/aks-edge/bearer-token-required.png" alt-text="Screenshot showing bearer token required." lightbox="media/aks-edge/bearer-token-required.png":::
 
-3. In your PowerShell window, run `Get-AksEdgeManagedServiceToken`, copy the full string, and paste it into the Azure portal:
+1. In your PowerShell window, run `Get-AksEdgeManagedServiceToken`, copy the full string, and paste it into the Azure portal:
 
    :::image type="content" source="media/aks-edge/bearer-token-in-portal.png" alt-text="Screenshot showing paste token in portal." lightbox="media/aks-edge/bearer-token-in-portal.png":::
 
-4. Now you can view resources on your cluster. The following image shows the **Workloads** blade, showing the same as `kubectl get pods --all-namespaces`:
+1. Now you can view resources on your cluster. The following image shows the **Workloads** blade, showing the same as `kubectl get pods --all-namespaces`:
 
    :::image type="content" source="media/aks-edge/all-pods-in-arc.png" alt-text="Screenshot showing results of all pods shown in Arc." lightbox="media/aks-edge/all-pods-in-arc.png":::
 
