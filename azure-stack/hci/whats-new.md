@@ -29,6 +29,10 @@ This is primarily a bug fix release with a few improvements.
 
 - **Update health checks**: Starting this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on servers. Also, multiple issues for health checks related to Azure Update Manager and Solution Builder were fixed.
 
+- **Azure Stack HCI OEM license**: Starting this release, we are introducing the Azure Stack HCI OEM license designed for Azure Stack HCI hardware including the Azure Stack HCI Premier Solutions, Integrated systems, and Validated Nodes. This license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure.
+
+    For more information, see [Azure Stack HCI OEM license overview](../azure-stack-hci-oem-license.md) and [Azure Stack HCI OEM license and billing FAQ](../azure-stack-hci-license-billing.yml).
+
 ## Features and improvements in 2405.1
 
 This is primarily a bug fix release with a few improvements.
