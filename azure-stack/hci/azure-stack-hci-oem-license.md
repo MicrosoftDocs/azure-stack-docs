@@ -16,7 +16,7 @@ ms.subservice: azure-stack-hci
 
 This article covers the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 
-[!INCLUDE [important](../../includes/hci-preview.md)]
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About the OEM license
 
