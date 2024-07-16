@@ -1,5 +1,5 @@
 ---
-title: Enable Microsoft Entra ID authentication for Kubernetes clusters with kubelogin
+title: Enable Microsoft Entra authentication for Kubernetes clusters with kubelogin
 description: Learn how to enable Microsoft Entra ID on Azure Kubernetes Service with kubelogin and authenticate Azure users with credentials or managed roles.
 author: sethmanheim
 ms.author: sethm 
@@ -14,40 +14,28 @@ ms.date: 01/26/2024
 # Keyword: Microsoft Entra ID
 ---
 
-# Enable Azure managed identity authentication for Kubernetes clusters with kubelogin
+# Enable Microsoft Entra authentication for Kubernetes clusters with kubelogin
 
-The Microsoft Entra integration for AKS enabled by Azure Arc simplifies the Microsoft Entra integration process. Previously, you were required to create a client and server app, and the Microsoft Entra tenant had to assign [Directory Readers](/entra/identity/role-based-access-control/permissions-reference#directory-readers) role permissions. Now, the AKS Arc resource provider manages the client and server apps for you.
+Applies to: AKS on Azure Stack HCI 23H2
 
-Cluster administrators can configure Kubernetes role-based access control (Kubernetes RBAC) based on a user's identity or directory group membership. Microsoft Entra authentication is provided to AKS clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information about OpenID Connect, see the [OpenID Connect documentation](/entra/identity-platform/v2-protocols-oidc).
+AKS enabled by Azure Arc simplifies the authentication process with Microsoft Entra ID integration. Cluster administrators can configure Kubernetes role-based access control (Kubernetes RBAC) based on directory group membership.
 
-For more information about the Microsoft Entra integration flow, see the [Microsoft Entra documentation](concepts-security-access-identity.md#microsoft-entra-integration).
+Microsoft Entra authentication is provided to AKS Arc clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information about OpenID Connect, see the [OpenID Connect documentation](/entra/identity-platform/v2-protocols-oidc). For more information about the Microsoft Entra integration flow, see the [Microsoft Entra documentation](concepts-security-access-identity.md#microsoft-entra-integration).
 
-This article provides details on how to enable and use managed identities for Azure resources with your AKS cluster.
-
-## Limitations
-
-The following are constraints when integrating Azure managed identity authentication on AKS enabled by Azure Arc:
-
-* Integration can't be disabled once added.
-* Downgrades from an integrated cluster to the legacy Microsoft Entra ID clusters aren't supported.
-* Clusters without Kubernetes RBAC support are unable to add the integration.
+This article provides details on how to enable and use Microsoft Entra ID authentication for Kubernetes clusters.
 
 ## Before you begin
 
-Make sure you have the following requirements in order to properly install the AKS addon for managed identity:
+- Integration can't be disabled once added. You can still use [`az aksarc update`](/azure/aksarc?view=azure-cli-latest#az-aksarc-update) to update the `aad-admin-group-object-ids` if needed.
+- To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
+- This configuration requires you have a Microsoft Entra group for your cluster. This group is registered as an admin group on the cluster to grant admin permissions. If you don't have an existing Microsoft Entra group, you can create one using the [`az ad group create`](/cli/azure/ad/group#az_ad_group_create) command.
+- To create or update a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
+- To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission.
 
-* Azure CLI version 2.29.0 or later is installed and configured. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
-* `kubectl` with a minimum version of [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) or [`kubelogin`](https://github.com/Azure/kubelogin). With the Azure CLI and the Azure PowerShell module, these two commands are included and automatically managed. In other words. they're upgraded by default, so it isn't required or recommended that you run `az aks install-cli`. If you're using an automated pipeline, you must manage upgrades for the correct or latest version. The difference between the minor versions of Kubernetes and `kubectl` shouldn't be more than one version. Otherwise, authentication issues can occur on the wrong version.
-* If you're using [helm](https://github.com/helm/helm), you need a minimum version of helm 3.3.
-* This configuration requires you have a Microsoft Entra group for your cluster. This group is registered as an admin group on the cluster to grant admin permissions. If you don't have an existing Microsoft Entra group, you can create one using the [`az ad group create`](/cli/azure/ad/group#az_ad_group_create) command.
 
-> [!NOTE]
-> Microsoft Entra integrated clusters using a Kubernetes version newer than version 1.24 automatically use the `kubelogin` format. Starting with Kubernetes version 1.24, the default format of the `clusterUser` credential for Microsoft Entra ID clusters is `exec`, which requires the [`kubelogin`](https://github.com/Azure/kubelogin) binary in the execution path. There is no behavior change for non-Microsoft Entra clusters, or for Microsoft Entra ID clusters running a version older than 1.24.
-> The existing downloaded `kubeconfig` continues to work. An optional query parameter **format** is included when getting the `clusterUser` credential to overwrite the default behavior change. You can explicitly specify the format as **azure** if you need to maintain the old `kubeconfig` format.
+## Enable Microsoft Entra authentication for Kubernetes cluster
 
-## Enable the integration on your AKS Arc cluster
-
-### Create a new cluster
+### Create a new cluster with Microsoft Entra authentication
 
 1. Create an Azure resource group using the [`az group create`](/cli/azure/group#az-group-create) command.
 
@@ -62,52 +50,23 @@ Make sure you have the following requirements in order to properly install the A
         --resource-group myResourceGroup \
         --custom-location myCustomLocation
         --name myManagedCluster \
-        --aad-admin-group-object-ids <id> [--aad-tenant-id <id>] \
+        --aad-admin-group-object-ids <id> \
         --generate-ssh-keys
     ```
 
-    A successful creation of an AKS Arc Microsoft Entra ID cluster has the following section in the response body:
+### Use an existing cluster with Microsoft Entra authentication
 
-    ```output
-    "AADProfile": {
-        "adminGroupObjectIds": [
-        "5d24****-****-****-****-****afa27aed"
-        ],
-        "clientAppId": null,
-        "managed": true,
-        "serverAppId": null,
-        "serverAppSecret": null,
-        "tenantId": "72f9****-****-****-****-****d011db47"
-    }
-    ```
+Enable Microsoft Entra authentication on your existing Kubernetes cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command. Make sure to set your admin group to retain access on your cluster:
 
-### Use an existing cluster
+  ```azurecli
+  az aksarc update \
+  --resource-group MyResourceGroup 
+  --name myManagedCluter
+  --aad-admin-group-object-ids <id-1>,<id-2>
+  ```
 
-Enable Microsoft Entra integration on your existing Kubernetes RBAC-enabled cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command. Make sure to set your admin group to retain access on your cluster:
 
-```azurecli
-az aksarc update \
---resource-group MyResourceGroup 
---name myManagedCluter
---aad-admin-group-object-ids <id-1>,<id-2> [--aad-tenant-id <id>]
-```
-
-A successful activation of an AKS-managed Microsoft Entra ID cluster has the following section in the response body:
-
-```output
-"AADProfile": {
-    "adminGroupObjectIds": [
-        "5d24****-****-****-****-****afa27aed"
-    ],
-    "clientAppId": null,
-    "managed": true,
-    "serverAppId": null,
-    "serverAppSecret": null,
-    "tenantId": "72f9****-****-****-****-****d011db47"
-    }
-```
-
-## Access your enabled cluster
+## Access your Microsoft Entra-enabled cluster
 
 1. Get the user credentials to access your cluster using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command:
 
@@ -122,6 +81,6 @@ A successful activation of an AKS-managed Microsoft Entra ID cluster has the fol
     ```
 
 ## Next steps
-
-* [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-23h2.md)
 * [Access and identity options for AKS enabled by Azure Arc](concepts-security-access-identity.md)
+* [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-23h2.md)
+* [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-23h2.md)
