@@ -1,6 +1,6 @@
 ### YamlMime:FAQ
 metadata:
-  title: Azure Stack HCI OEM license and billing FAQ
+  title: Azure Stack HCI OEM license and billing FAQ (preview)
   description: The Azure Stack HCI FAQ provides information on the Azure Stack HCI OEM license and billing.
   ms.topic: faq
   author: ronmiab
@@ -12,6 +12,8 @@ metadata:
 title: Azure Stack HCI OEM license and billing FAQ
 summary: |
   This FAQ provides information on the Azure Stack HCI OEM license and billing and applies to Azure Stack HCI, version 23H2.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 sections:
   - name: Azure Stack HCI OEM license and billing FAQ

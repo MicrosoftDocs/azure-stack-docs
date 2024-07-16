@@ -1,5 +1,5 @@
 ---
-title: Azure Stack HCI OEM license overview
+title: Azure Stack HCI OEM license overview (preview)
 description: Learn about the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
@@ -15,6 +15,8 @@ ms.subservice: azure-stack-hci
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article covers the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
+
+[!INCLUDE [important](../../includes/hci-preview.md)]
 
 ## About the OEM license
 
