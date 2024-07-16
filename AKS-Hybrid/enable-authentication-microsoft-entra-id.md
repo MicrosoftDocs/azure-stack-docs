@@ -26,12 +26,11 @@ This article provides details on how to enable and use Microsoft Entra ID authen
 
 ## Before you begin
 
-- Integration can't be disabled once added. You can still use [`az aksarc update`](/azure/aksarc?view=azure-cli-latest#az-aksarc-update) to update the `aad-admin-group-object-ids` if needed.
+- Integration can't be disabled once added. You can still use [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) to update the `aad-admin-group-object-ids` if needed.
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
 - This configuration requires you have a Microsoft Entra group for your cluster. This group is registered as an admin group on the cluster to grant admin permissions. If you don't have an existing Microsoft Entra group, you can create one using the [`az ad group create`](/cli/azure/ad/group#az_ad_group_create) command.
 - To create or update a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
 - To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission.
-
 
 ## Enable Microsoft Entra authentication for Kubernetes cluster
 
