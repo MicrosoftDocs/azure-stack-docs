@@ -4,14 +4,14 @@ description: AKS Edge Essentials is an on-premises Kubernetes implementation of 
 author: rcheeran
 ms.author: rcheeran
 ms.topic: overview
-ms.date: 10/05/2023
+ms.date: 07/11/2024
 ms.custom: template-overview
 ---
 
 # AKS Edge Essentials
 
 > [!NOTE]
-> AKS Edge Essentials is now generally available. Note that some of the [features](./aks-edge-system-requirements.md#ga-feature-support-matrix) from the public preview are not yet supported.
+> AKS Edge Essentials is now generally available. Note that [some features](aks-edge-system-requirements.md#ga-feature-support-matrix) from the public preview are not yet supported.
 
 Azure Kubernetes Service Edge Essentials is an on-premises Kubernetes implementation of Azure Kubernetes Service (AKS) that automates running containerized applications at scale. AKS Edge Essentials includes a Microsoft-supported Kubernetes platform that includes a lightweight Kubernetes distribution with a small footprint and simple installation experience, making it easy for you to deploy Kubernetes on PC-class or "light" edge hardware. AKS Edge Essentials makes it easier to get started with your containerized application, bringing cloud-native best practices to your edge application.
 
