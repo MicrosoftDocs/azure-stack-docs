@@ -114,9 +114,9 @@ Follow these steps on the server you're trying to repair.
 
 1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
-> [!NOTE]
-> If your cluster is using a dedicated Network ATC intent for storage and you are using custom storage IPs, you must configure the IPs to the storage network adapters before running the Repair-Server operation. If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs to the storage virtual network adapters after the server is being repaired.
-
+    > [!NOTE]
+    > If your cluster is using a dedicated Network ATC intent for storage and you are using custom storage IPs, you must configure the IPs on the storage network adapters before running the Repair-Server operation.
+    > If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs on the storage virtual network adapters after the server is being repaired.
 
 2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
