@@ -3,7 +3,7 @@ title: Enable Microsoft Entra authentication for Kubernetes clusters with kubelo
 description: Learn how to enable Microsoft Entra ID on Azure Kubernetes Service with kubelogin and authenticate Azure users with credentials or managed roles.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 06/14/2024
+ms.lastreviewed: 07/16/2024
 ms.reviewer: abha
 ms.topic: how-to
 ms.custom:
@@ -22,7 +22,7 @@ AKS enabled by Azure Arc simplifies the authentication process with Microsoft En
 
 Microsoft Entra authentication is provided to AKS Arc clusters with OpenID Connect. OpenID Connect is an identity layer built on top of the OAuth 2.0 protocol. For more information about OpenID Connect, see the [OpenID Connect documentation](/entra/identity-platform/v2-protocols-oidc). For more information about the Microsoft Entra integration flow, see the [Microsoft Entra documentation](concepts-security-access-identity.md#microsoft-entra-integration).
 
-This article provides details on how to enable and use Microsoft Entra ID authentication for Kubernetes clusters.
+This article describes how to enable and use Microsoft Entra ID authentication for Kubernetes clusters.
 
 ## Before you begin
 
@@ -30,56 +30,56 @@ This article provides details on how to enable and use Microsoft Entra ID authen
 - To interact with Kubernetes clusters, you must install [**kubectl**](https://kubernetes.io/docs/tasks/tools/) and [**kubelogin**](https://azure.github.io/kubelogin/install.html).
 - This configuration requires you have a Microsoft Entra group for your cluster. This group is registered as an admin group on the cluster to grant admin permissions. If you don't have an existing Microsoft Entra group, you can create one using the [`az ad group create`](/cli/azure/ad/group#az_ad_group_create) command.
 - To create or update a Kubernetes cluster, you need the **Azure Kubernetes Service Arc Contributor** role.
-- To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission.
+- To access the Kubernetes cluster directly using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission.
 
 ## Enable Microsoft Entra authentication for Kubernetes cluster
 
 ### Create a new cluster with Microsoft Entra authentication
 
-1. Create an Azure resource group using the [`az group create`](/cli/azure/group#az-group-create) command.
+1. Create an Azure resource group using the [`az group create`](/cli/azure/group#az-group-create) command:
 
-    ```azurecli
-    az group create --name myResourceGroup --location centralus
-    ```
+   ```azurecli
+   az group create --name myResourceGroup --location centralus
+   ```
 
-2. Create an AKS Arc cluster and enable administration access for your Microsoft Entra group using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command.
+1. Create an AKS Arc cluster and enable administration access for your Microsoft Entra group using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command.
 
-    ```azurecli
-    az aksarc create \
-        --resource-group myResourceGroup \
-        --custom-location myCustomLocation
-        --name myManagedCluster \
-        --aad-admin-group-object-ids <id> \
-        --generate-ssh-keys
-    ```
+   ```azurecli
+   az aksarc create \
+       --resource-group myResourceGroup \
+       --custom-location myCustomLocation
+       --name myManagedCluster \
+       --aad-admin-group-object-ids <id> \
+       --generate-ssh-keys
+   ```
 
 ### Use an existing cluster with Microsoft Entra authentication
 
 Enable Microsoft Entra authentication on your existing Kubernetes cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command. Make sure to set your admin group to retain access on your cluster:
 
-  ```azurecli
-  az aksarc update \
-  --resource-group MyResourceGroup 
-  --name myManagedCluter
-  --aad-admin-group-object-ids <id-1>,<id-2>
-  ```
-
+```azurecli
+az aksarc update \
+--resource-group MyResourceGroup 
+--name myManagedCluter
+--aad-admin-group-object-ids <id-1>,<id-2>
+```
 
 ## Access your Microsoft Entra-enabled cluster
 
 1. Get the user credentials to access your cluster using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command:
 
-    ```azurecli
-    az aksarc get-credentials --resource-group myResourceGroup --name myAKSCluster
-    ```
+   ```azurecli
+   az aksarc get-credentials --resource-group myResourceGroup --name myAKSCluster
+   ```
 
-2. View the nodes in the cluster with the `kubectl get nodes` command and follow the instructions to sign in.
+1. View the nodes in the cluster with the `kubectl get nodes` command and follow the instructions to sign in:
 
-    ```azurecli
-    kubectl get nodes
-    ```
+   ```azurecli
+   kubectl get nodes
+   ```
 
 ## Next steps
-* [Access and identity options for AKS enabled by Azure Arc](concepts-security-access-identity.md)
-* [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-23h2.md)
-* [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-23h2.md)
+
+- [Access and identity options for AKS enabled by Azure Arc](concepts-security-access-identity.md)
+- [Microsoft Entra integration with Kubernetes RBAC](kubernetes-rbac-23h2.md)
+- [Use Azure role-based access control (RBAC) for Kubernetes authorization](azure-rbac-23h2.md)
