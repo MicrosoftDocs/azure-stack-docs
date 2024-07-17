@@ -3,7 +3,7 @@ title: Access and identity options for Azure Kubernetes Service (AKS) Arc
 description: Learn about options in access and identity management on a Kubernetes cluster in AKS on Azure Stack HCI.
 author: leslielin
 ms.topic: conceptual
-ms.date: 06/03/2024
+ms.date: 07/16/2024
 ms.author: leslielin
 ms.lastreviewed: 06/03/2024
 ms.reviewer: abha
@@ -96,7 +96,7 @@ There are two required levels of access to fully operate an AKS Arc cluster:
   
 ### Azure RBAC to authorize access to the AKS resource
 
-With Azure RBAC, you can provide your users (or identities) with granular access to AKS resources across one or more subscriptions. There are three roles available for this control plane action: **Azure Kubernetes Service Arc Cluster Admin Role**, **Azure Kubernetes Service Arc Cluster User Role**, and **Azure Kubernetes Service Arc Contributor Role**. Each role has a different permission scope as described in [Azure built-in roles for Containers](/azure/role-based-access-control/built-in-roles/containers). For example, you can use the [Azure Kubernetes Service Arc Contributor](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-contributor-role) role to scale and upgrade your cluster. Meanwhile, another user with the [Azure Kubernetes Service Arc Cluster Admin](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-cluster-admin-role) role only has permission to pull the **admin kubeconfig**.
+With Azure RBAC, you can provide your users (or identities) with granular access to AKS resources across one or more subscriptions. There are three roles available for this control plane action: **Azure Kubernetes Service Arc Cluster Admin Role**, **Azure Kubernetes Service Arc Cluster User Role**, and **Azure Kubernetes Service Arc Contributor Role**. Each role has a different permission scope as described in [Azure built-in roles for Containers](/azure/role-based-access-control/built-in-roles/containers). For example, you can use the [Azure Kubernetes Service Arc Contributor](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-contributor-role) role to create, scale, and upgrade your cluster. Meanwhile, another user with the [Azure Kubernetes Service Arc Cluster Admin](/azure/role-based-access-control/built-in-roles/containers#azure-kubernetes-service-arc-cluster-admin-role) role only has permission to pull the **admin kubeconfig**.
 
 ### Azure RBAC for Kubernetes authorization
 
@@ -126,8 +126,6 @@ AKS enabled by Azure Arc provides the following four built-in roles. They are si
 | [Azure Arc Kubernetes Writer](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-writer) | Allows read/write access to most objects in a namespace. <br />Doesn't allow viewing or modifying roles or role bindings. <br />Allows accessing `secrets` and running pods as any `ServiceAccount` in the namespace, so it can be used to gain the API access levels of any `ServiceAccount` in the namespace. |
 | [Azure Arc Kubernetes Admin](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-admin) | Allows admin access, intended to be granted within a namespace. <br />Allows read/write access to most resources in a namespace (or cluster scope), including the ability to create roles and role bindings within the namespace. <br />Doesn't allow write access to resource quota or to the namespace itself. |
 | [Azure Arc Kubernetes Cluster Admin](/azure/role-based-access-control/built-in-roles/containers#azure-arc-kubernetes-cluster-admin) | Allows super-user access to perform any action on any resource.<br/>Gives full control over every resource in the cluster and in all namespaces. |
-| [Kubernetes Cluster - Azure Arc Onboarding](/azure/role-based-access-control/built-in-roles/containers#kubernetes-cluster---azure-arc-onboarding) | Role definition enables you to authorize any user/service to create AKS cluster resources. |
-
 
 ## Microsoft Entra integration
 
