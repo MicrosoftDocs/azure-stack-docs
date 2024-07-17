@@ -24,11 +24,11 @@ The Azure Stack HCI OEM license is designed for Azure Stack HCI hardware includi
 
 - Azure Stack HCI
 - Azure Kubernetes Services (AKS)
-- Windows Server Datacenter 2022 guest VMs
+- Windows Server Datacenter 2022, or [earlier version](/windows-server/get-started/automatic-vm-activation?tabs=server2025) supported guest virtual machines (VMs)
 
 For systems with 16 cores or more, there are extra two-core and four-core license add-ons available.
 
- Additionally, this license grants you access to the latest versions of Azure Stack HCI and AKS, along with unlimited containers and virtual machines (VMs).
+ Additionally, this license grants you access to the latest versions of Azure Stack HCI and AKS, along with unlimited containers and VMs.
 
 ## Benefits
 
