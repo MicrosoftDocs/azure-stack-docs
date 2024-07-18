@@ -257,7 +257,8 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     |`resource-group`    |Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.         |
     |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
 
-    Here's an example output:
+    <details>
+    <summary>Click here to see an example output:
 
     ```output
 
@@ -361,7 +362,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
             },
             "vmConfigStoragePathId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-guid"
           },
-          "vmId": "c6a2176c-6672-4aa9-a052-0903098ccb25"
+          "vmId": "<guid>"
         },
         "resourceGroup": "<Resource group name>",
         "systemData": {
@@ -389,12 +390,10 @@ Pausing the VMs is useful to save the compute resources when you are not using t
       "attestationStatus": null,
       "virtualmachineinstance": {
         "extendedLocation": {
-          "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource group name>/providers/Microsoft.Exten
-    dedLocation/customLocations/s-cluster-customlocation",
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource group name>/providers/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation",
           "type": "CustomLocation"
         },
-        "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCom
-    pute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
         "identity": null,
         "name": "default",
         "properties": {
@@ -467,26 +466,24 @@ Pausing the VMs is useful to save the compute resources when you are not using t
           "storageProfile": {
             "dataDisks": [],
             "imageReference": {
-              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.Azu
-    reStackHCI/galleryImages/WinImage-26tdJUIS",
+              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.AzureStackHCI/galleryImages/WinImage-26tdJUIS",
               "resourceGroup": "<Resource group name>"
             },
             "osDisk": {
               "id": null,
               "osType": "Windows"
             },
-            "vmConfigStoragePathId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/provid
-    ers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-guid"
+            "vmConfigStoragePathId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-guid"
           },
-          "vmId": "c6a2176c-6672-4aa9-a052-0903098ccb25"
+          "vmId": "<guid>"
         },
         "resourceGroup": "<Resource group name>",
         "systemData": {
           "createdAt": "2024-06-24T01:29:06.594266+00:00",
-          "createdBy": "7d6ffe2f-dac5-4e74-9bf2-4830cf7f4668",
+          "createdBy": "<guid>",
           "createdByType": "Application",
           "lastModifiedAt": "2024-06-24T17:28:13.206935+00:00",
-          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+          "lastModifiedBy": "<guid>",
           "lastModifiedByType": "Application"
         },
         "type": "microsoft.azurestackhci/virtualmachineinstances"
@@ -494,6 +491,8 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     }
 
     ```
+
+</summary></details>
 
 ## Save a VM
 
@@ -654,8 +653,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
     #Start the VM after it was saved
 
     [v-host1]: PS C:\Users\HCIDeploymentUser> az stack-hci-vm start --name $vmName --resource-group $rg
-    Inside _start_initial
-    /subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm0012024-02-01-previewhttps://management.azure.com/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start?api-version=2024-02-01-preview
+    Inside _start_initial/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm0012024-02-01-previewhttps://management.azure.com/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start?api-version=2024-02-01-preview
 
     #Show the current state of the VM. The VM should be running.
 
