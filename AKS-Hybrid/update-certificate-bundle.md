@@ -1,9 +1,9 @@
 ---
 title: Update a certificate bundle on container hosts
-description: Learn how to add a certificate chain of trust (root, intermediate and lead certificates) with public key.
+description: Learn how to add a certificate chain of trust (root, intermediate and lead certificates) with public key in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 05/10/2023
+ms.date: 07/11/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -49,4 +49,4 @@ Set-AksHciProxySetting -noProxy $noProxy -certFile $certFile
 
 ## Next steps
 
-[AKS on Windows Server overview](overview.md)
+[AKS overview](overview.md)

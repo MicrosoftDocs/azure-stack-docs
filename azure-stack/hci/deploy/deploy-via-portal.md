@@ -3,7 +3,7 @@ title: Deploy an Azure Stack HCI system using the Azure portal
 description: Learn how to deploy an Azure Stack HCI system from the Azure portal
 author: JasonGerend
 ms.topic: how-to
-ms.date: 06/18/2024
+ms.date: 07/11/2024
 ms.author: jgerend
 #CustomerIntent: As an IT Pro, I want to deploy an Azure Stack HCI system of 1-16 nodes via the Azure portal so that I can host VM and container-based workloads on it.
 ---
@@ -146,8 +146,8 @@ Choose whether to create a new configuration for this system or to load deployme
 ## Optionally change advanced settings and apply tags
 
 1. Choose whether to create volumes for workloads now, saving time creating volumes and storage paths for VM images. You can create more volumes later.
-    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per server.
-    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per server. You'll need to later create workload volumes and storage paths.
+    * **Create workload volumes and required infrastructure volumes (Recommended)** - Creates one thinly provisioned volume and storage path per server for workloads to use. This is in addition to the required one infrastructure volume per cluster.
+    * **Create required infrastructure volumes only** - Creates only the required one infrastructure volume per cluster. You'll need to later create workload volumes and storage paths.
     * **Use existing data drives** (single servers only) - Preserves existing data drives that contain a Storage Spaces pool and volumes.
 
         To use this option you must be using a single server and have already created a Storage Spaces pool on the data drives. You also might need to later create an infrastructure volume and a workload volume and storage path if you don't already have them.
@@ -274,6 +274,9 @@ Follow these steps to configure the resource locks:
 1. Select and go to the resource. In the left pane, select **Locks**. To lock the Arc Resource Bridge, you must have the *Azure Stack HCI Administrator* role for the resource group.
 1. In the right pane, select **Add**.
 1. Specify a **Lock name**. Make sure to choose **Delete** as **Lock type** for the Arc Resource Bridge, and then select **OK**.
+
+> [!NOTE]
+> Remove the lock on the Arc Resource Bridge before you apply any solution updates.
 
 For more information, see [Configure locks](/azure/azure-resource-manager/management/lock-resources#configure-locks) to prevent accidental deletion.
 

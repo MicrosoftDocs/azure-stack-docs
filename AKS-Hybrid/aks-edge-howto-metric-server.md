@@ -1,16 +1,16 @@
 ---
-title: Deploy metric server
-description: Steps to deploy metric server.
+title: Deploy metrics server on an AKS Edge Essentials cluster
+description: Learn about the steps to deploy a metrics server on an AKS Edge Essentials cluster.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 07/11/2024
 ms.custom: template-how-to
 ---
 
 # Metrics server on an AKS Edge Essentials cluster
 
-The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a tool that inspects your containers' resource consumption. You can find the [YAML file](https://github.com/Azure/AKS-Edge/blob/main/samples/others/metrics-server.yaml) for the metrics server deployment in the **/Samples/Other** folder in the [GitHub repo](https://github.com/Azure/AKS-Edge/).
+The [metrics server](https://github.com/kubernetes-sigs/metrics-server) is a tool that inspects your containers' resource consumption. You can find the [YAML file](https://github.com/Azure/AKS-Edge/blob/main/samples/others/metrics-server.yaml) for the metrics server deployment in the **/Samples/Other** folder [in the GitHub repo](https://github.com/Azure/AKS-Edge/).
 
 ## Deploy metrics server
 
