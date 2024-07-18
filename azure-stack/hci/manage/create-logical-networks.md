@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 01/03/2024
+ms.date: 07/18/2024
 ---
 
 # Create logical networks for Azure Stack HCI
@@ -20,7 +20,10 @@ This article describes how to create or add logical networks for your Azure Stac
 
 Before you begin, make sure to complete the following prerequisites:
 
-[!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
+
+# [Azure CLI](#tab/azurecli)
+
+- Make sure to review and [complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
 
 - Make sure you have an external VM switch that can be accessed by all the servers in your Azure Stack HCI cluster. By default, an external switch is created during the deployment of your Azure Stack HCI cluster that you can use to associate with the logical network you will create.
 
@@ -41,6 +44,12 @@ Before you begin, make sure to complete the following prerequisites:
   ```
 
 - To create VMs with static IP addresses in your address space, add a logical network with static IP allocation. Reserve an IP range with your network admin and make sure to get the address prefix for this IP range.
+
+# [Azure portal](#tab/azureportal)
+
+The prerequisites for the Azure portal are the same as those for the Azure CLI. See [Azure CLI](./create-logical-networks.md?tabs=azurecli#tabpanel_1_azurecli).
+
+---
 
 ## Create the logical network
 

@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 11/20/2023
+ms.date: 07/17/2024
 ---
 
 # Create network interfaces for Arc virtual machines on Azure Stack HCI
@@ -31,19 +31,15 @@ Before you create a network interface, make sure that the following prerequisite
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
-
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- Make sure to review and [complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
 
 - Access to a logical network that you created on your Azure Stack HCI cluster. For more information, see [Create logical network](./create-virtual-networks.md).
 
-
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-vm-prerequisites](../../includes/hci-vm-prerequisites.md)]
+In the Azure portal, you create a network interface during the VM creation flow. For prerequisites and more information, see [Create Azure Stack HCI VM in Azure portal](./create-arc-virtual-machines.md).
 
 ---
-
 
 ## Create network interface
 

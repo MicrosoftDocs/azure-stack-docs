@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/28/2024
+ms.date: 07/18/2024
 ---
 
 # Azure Arc VM management prerequisites
@@ -17,16 +17,26 @@ This article lists the requirements and prerequisites for Azure Arc VM managemen
 
 ## Azure requirements
 
+The Azure req
 The Azure requirements include:
 
-- To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces and VM images through the Azure portal, you  must have **Contributor** level access at the subscription level.
+- To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces, and VM images through the Azure portal, you must have access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Stack HCI Arc VM management](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).
 
 - Arc VM management infrastructure is supported in the regions documented in the [Azure requirements](../concepts//system-requirements-23h2.md#azure-requirements). For Arc VM management on Azure Stack HCI, all entities must be registered, enabled, or created in the same region.
 
-    The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
+  The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
+## Azure Stack HCI cluster requirements
+
+- You have access to an Azure Stack HCI system that is deployed, has an Arc Resource Bridge and a custom location.
+
+  - Go to the **Overview > Server** page in the Azure Stack HCI system resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
+    
+       :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
 
 ## Azure Command-Line Interface (CLI) requirements
+
+Skip this section if not using Azure CLI to provision and manage Arc VMs and VM resources.
 
 You can connect to Azure Stack HCI system directly or you can access the cluster remotely. Depending on whether you're connecting to the cluster directly or remotely, the steps are different.
 
@@ -37,7 +47,6 @@ For information on Azure CLI commands for Azure Stack HCI VMs, see [az stack-hci
 If you're accessing the Azure Stack HCI cluster directly, no steps are needed on your part.
 
 During the cluster deployment, an Arc Resource Bridge is created and the Azure CLI extension `stack-hci-vm` is installed on the cluster. You can connect to and manage the cluster using the Azure CLI extension.
-
 
 ### Connect to the cluster remotely
 
