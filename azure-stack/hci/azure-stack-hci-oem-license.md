@@ -1,5 +1,5 @@
 ---
-title: Azure Stack HCI OEM license overview
+title: Azure Stack HCI OEM license overview (preview)
 description: Learn about the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
 author: ronmiab
 ms.topic: overview
@@ -10,11 +10,13 @@ ms.subservice: azure-stack-hci
 # customer intent: As a content developer, I want to provide customers with the appropriate Azure Stack HCI OEM license information so that they can have a clear understanding of what the license is and how it can be beneficial to them.
 ---
 
-# Azure Stack HCI OEM license overview
+# Azure Stack HCI OEM license overview (preview)
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
 This article covers the Azure Stack HCI OEM license, its benefits, license requirements, activation, and more.
+
+[!INCLUDE [important](../includes/hci-preview.md)]
 
 ## About the OEM license
 
@@ -22,11 +24,11 @@ The Azure Stack HCI OEM license is designed for Azure Stack HCI hardware includi
 
 - Azure Stack HCI
 - Azure Kubernetes Services (AKS)
-- Windows Server Datacenter 2022 guest VMs
+- Windows Server Datacenter 2022, or [earlier version](/windows-server/get-started/automatic-vm-activation?tabs=server2025) supported guest virtual machines (VMs)
 
 For systems with 16 cores or more, there are extra two-core and four-core license add-ons available.
 
- Additionally, this license grants you access to the latest versions of Azure Stack HCI and AKS, along with unlimited containers and virtual machines (VMs).
+ Additionally, this license grants you access to the latest versions of Azure Stack HCI and AKS, along with unlimited containers and VMs.
 
 ## Benefits
 
