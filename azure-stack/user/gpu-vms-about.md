@@ -25,7 +25,7 @@ You can choose from three GPU models. They are available in NVIDIA V100, NVIDIA 
 
 ::: moniker range="<=azs-2002"
 > [!WARNING]  
-> GPU VMs are not supported in this release. You will need to upgrade to Azure Stack Hub 2005 or later. In addition, your Azure Stack Hub hardware must have physical GPUs.
+> GPU VMs are not supported in this release. You must upgrade to Azure Stack Hub 2005 or later. In addition, your Azure Stack Hub hardware must have physical GPUs.
 ::: moniker-end
 
 ## NCv3
@@ -81,16 +81,16 @@ The Azure Stack Hub capacity planner has been updated to support GPU configurati
 
 ## Adding GPUs on an existing Azure Stack Hub
 
-Azure Stack Hub now supports adding GPUs to any existing system. To do this, execute stop-azurestack, run through the procedure of stop-azurestack, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs will need to be **stop-deallocated** and then **restarted**.
+Azure Stack Hub now supports adding GPUs to any existing system. To do this, execute stop-azurestack, run through the procedure of stop-azurestack, add GPUs, and then run **start-azurestack** until completion. If the system already had GPUs, then any previously created GPU VMs must be **stop-deallocated** and then **restarted**.
 
 ## Patch and update, FRU behavior of VMs 
 
-GPU VMs will undergo downtime during operations such as patch and update (PnU) and hardware replacement (FRU) of Azure Stack Hub. The following table covers the state of the VM as observed during these activities and the manual action you can do to make these VMs available after the operation.
+GPU VMs undergo downtime during operations such as patch and update (PnU) and hardware replacement (FRU) of Azure Stack Hub. The following table covers the state of the VM as observed during these activities and the manual action you can do to make these VMs available after the operation.
 
 | Operation | PnU - Full Update, OEM update | FRU | 
 | --- | --- | --- | 
 | VM state  | Unavailable during update. Can be made available with manual operation. VM is automatically online post update. | Unavailable during FRU. Can be made available with manual operation. VM needs to be brought back up after FRU| 
-| Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the **Restart** button. VM will automatically come back up post update | VM is not available during FRU. If there are available GPUs, VM may be stop-deallocated and restarted during FRU. Post FRU completion, VM needs to be stop-deallocated using the **Stop** button and started back up using the **Start** button.| 
+| Manual operation | If the VM needs to be made available during the update, if there are available GPU partitions, the VM can be restarted from the portal by clicking the **Restart** button. VM automatically comes back up post update. | VM is not available during FRU. If there are available GPUs, VM may be stop-deallocated and restarted during FRU. Post FRU completion, VM needs to be stop-deallocated using the **Stop** button and started back up using the **Start** button.|
 
 ## Guest driver installation
 
@@ -116,7 +116,7 @@ Set-AzureRmVMExtension  -Location $Location `
                             -Verbose
 ```
 
-Depending on the OS, type and connectivity of your Azure Stack Hub GPU VM, you will need to modify with the settings below.
+Depending on the OS, type and connectivity of your Azure Stack Hub GPU VM, you must replace these values with the settings below.
 
 ### AMD MI25
 
@@ -180,7 +180,7 @@ $Settings = @{
 
 **Linux:**
 
-You will need to reference some URLs for your settings.
+You must reference some URLs for your settings:
 
 | URL | Notes |
 | --- | --- |
@@ -189,7 +189,7 @@ You will need to reference some URLs for your settings.
 
 Add the URLs to your settings.
 
-```powershell 
+```powershell
 $Settings=@{
 "isCustomInstall"=$true;
 "DRIVER_URL"="https://go.microsoft.com/fwlink/?linkid=874273";
