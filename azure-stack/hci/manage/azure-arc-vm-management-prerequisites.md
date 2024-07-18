@@ -17,7 +17,6 @@ This article lists the requirements and prerequisites for Azure Arc VM managemen
 
 ## Azure requirements
 
-The Azure req
 The Azure requirements include:
 
 - To provision Arc VMs and VM resources such as virtual disks, logical network, network interfaces, and VM images through the Azure portal, you must have access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Stack HCI Arc VM management](./assign-vm-rbac-roles.md#about-builtin-rbac-roles).

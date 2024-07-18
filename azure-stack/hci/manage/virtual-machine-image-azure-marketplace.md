@@ -24,11 +24,11 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure CLI](#tab/azurecli)
 
-Make sure to review and [complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
+Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md). If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
 
 # [Azure portal](#tab/azureportal)
 
-Make sure to review and [complete the prerequisites](../hci/manage/azure-arc-vm-management-prerequisites.md).
+Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
 ---
 
