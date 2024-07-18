@@ -260,9 +260,247 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     Here's an example output:
 
     ```output
-[v-host1]: PS C:\Users\HCIDeploymentUser\Documents> $rg = "<Resource group name>"
 
-[v-host1]: PS C:\Users\HCIDeploymentUser\Documents> $vmName = "testvm001"
+    # Set parameters
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> $rg = "<Resource group name>"    
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> $vmName = "<VM name>"
+
+    # Pause the VM
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm pause --name $vmName --resource-group $rg
+
+    # Show the current state of the VM
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm show -g $rg --name $vmName
+    {
+      "attestationStatus": null,
+      "virtualmachineinstance": {
+        "extendedLocation": {
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource group name>/p
+    roviders/Microsoft.ExtendedLocation/customLocations/s-cluster-customlocation",
+          "type": "CustomLocation"
+        },
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/provi
+    ders/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+        "identity": null,
+        "name": "default",
+        "properties": {
+          "guestAgentInstallStatus": null,
+          "hardwareProfile": {
+            "dynamicMemoryConfig": {
+              "maximumMemoryMb": null,
+              "minimumMemoryMb": null,
+              "targetMemoryBuffer": null
+            },
+            "memoryMb": 2000,
+            "processors": 2,
+            "vmSize": "Custom"
+          },
+          "httpProxyConfig": null,
+          "instanceView": {
+            "vmAgent": {
+              "statuses": [
+                {
+                  "code": "ProvisioningState/succeeded",
+                  "displayStatus": "Connected",
+                  "level": "Info",
+                  "message": "Connection with mocguestagent was successfully reestablished",
+                  "time": "2024-06-24T16:30:05+00:00"
+                },
+              ],
+              "vmConfigAgentVersion": "v0.18.0-4-gd54376b0"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaces": []
+          },
+          "osProfile": {
+            "adminPassword": null,
+            "adminUsername": "azureuser",
+            "computerName": "testvm001",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": false,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              }
+            },
+            "windowsConfiguration": {
+              "enableAutomaticUpdates": null,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              },
+              "timeZone": null
+            }
+          },
+          "provisioningState": "Succeeded",
+          "resourceUid": null,
+          "securityProfile": {
+            "enableTpm": false,
+            "securityType": null,
+            "uefiSettings": {
+              "secureBootEnabled": true
+            }
+          },
+          "status": {
+            "errorCode": "",
+            "errorMessage": "",
+            "powerState": "Paused",
+            "provisioningStatus": null
+          },
+          "storageProfile": {
+            "dataDisks": [],
+            "imageReference": {
+              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>
+    /providers/Microsoft.AzureStackHCI/galleryImages/WinImage-26tdJUIS",
+              "resourceGroup": "<Resource group name>"
+            },
+            "osDisk": {
+              "id": null,
+              "osType": "Windows"
+            },
+            "vmConfigStoragePathId": "/subscriptions/<Subscription ID>/resourceGroups/EDGECI-REGISTRATION-HC1
+    n35r1034-La1gfO4z/providers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-345d968fa1e74e99a9509ab7f3d259fd"
+          },
+          "vmId": "c6a2176c-6672-4aa9-a052-0903098ccb25"
+        },
+        "resourceGroup": "<Resource group name>",
+        "systemData": {
+          "createdAt": "2024-06-24T01:29:06.594266+00:00",
+          "createdBy": "7d6ffe2f-dac5-4e74-9bf2-4830cf7f4668",
+          "createdByType": "Application",
+          "lastModifiedAt": "2024-06-24T16:41:27.166668+00:00",
+          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+          "lastModifiedByType": "Application"
+        },
+        "type": "microsoft.azurestackhci/virtualmachineinstances"
+      }
+    }
+
+    # Start the VM after it was paused
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm start --name $vmName --resource-group $rg
+    Inside _start_initial
+    /subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Micros
+    oft.HybridCompute/machines/testvm001
+    2024-02-01-preview
+    https://management.azure.com/subscriptions/<Subscription ID>/resourceGroups/EDGECI-REGISTRATION-HC1n35r10
+    34-La1gfO4z/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/d
+    efault/start?api-version=2024-02-01-preview
+
+    # Show the current state of the VM
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm show -g $rg --name $vmName
+    {
+      "attestationStatus": null,
+      "virtualmachineinstance": {
+        "extendedLocation": {
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource group name>/providers/Microsoft.Exten
+    dedLocation/customLocations/s-cluster-customlocation",
+          "type": "CustomLocation"
+        },
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCom
+    pute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+        "identity": null,
+        "name": "default",
+        "properties": {
+          "guestAgentInstallStatus": null,
+          "hardwareProfile": {
+            "dynamicMemoryConfig": {
+              "maximumMemoryMb": null,
+              "minimumMemoryMb": null,
+              "targetMemoryBuffer": null
+            },
+            "memoryMb": 2000,
+            "processors": 2,
+            "vmSize": "Custom"
+          },
+          "httpProxyConfig": null,
+          "instanceView": {
+            "vmAgent": {
+              "statuses": [
+                {
+                  "code": "ProvisioningState/succeeded",
+                  "displayStatus": "Connected",
+                  "level": "Info",
+                  "message": "Connection with mocguestagent was succesfully reestablished",
+                  "time": "2024-06-24T17:25:19+00:00"
+                }
+              ],
+              "vmConfigAgentVersion": "v0.18.0-4-gd54376b0"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaces": []
+          },
+          "osProfile": {
+            "adminPassword": null,
+            "adminUsername": "azureuser",
+            "computerName": "testvm001",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": false,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              }
+            },
+            "windowsConfiguration": {
+              "enableAutomaticUpdates": null,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              },
+              "timeZone": null
+            }
+          },
+          "provisioningState": "Succeeded",
+          "resourceUid": null,
+          "securityProfile": {
+            "enableTpm": false,
+            "securityType": null,
+            "uefiSettings": {
+              "secureBootEnabled": true
+            }
+          },
+          "status": {
+            "errorCode": "",
+            "errorMessage": "",
+            "powerState": "Running",
+            "provisioningStatus": null
+          },
+          "storageProfile": {
+            "dataDisks": [],
+            "imageReference": {
+              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.Azu
+    reStackHCI/galleryImages/WinImage-26tdJUIS",
+              "resourceGroup": "<Resource group name>"
+            },
+            "osDisk": {
+              "id": null,
+              "osType": "Windows"
+            },
+            "vmConfigStoragePathId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/provid
+    ers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-345d968fa1e74e99a9509ab7f3d259fd"
+          },
+          "vmId": "c6a2176c-6672-4aa9-a052-0903098ccb25"
+        },
+        "resourceGroup": "<Resource group name>",
+        "systemData": {
+          "createdAt": "2024-06-24T01:29:06.594266+00:00",
+          "createdBy": "7d6ffe2f-dac5-4e74-9bf2-4830cf7f4668",
+          "createdByType": "Application",
+          "lastModifiedAt": "2024-06-24T17:28:13.206935+00:00",
+          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+          "lastModifiedByType": "Application"
+        },
+        "type": "microsoft.azurestackhci/virtualmachineinstances"
+      }
+    }
+
     ```
 
 ## Save a VM
@@ -287,7 +525,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
     |---------|---------|
     |`name`     |Name of the virtual machine.         |
     |`resource-group`    |Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.         |
-    |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
+    |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s <Subscription name or Subscription ID>`.         |
 
 1. Check the VM  status to verify that the VM is saved.
   
@@ -306,7 +544,244 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
     Here's an example output:
 
     ```output
+    ## Set parameters
 
+    ## Save the VM
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm save --name $vmName --resource-group $rg
+
+    ## Show the current state of the VM
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm show -g $rg --name $vmName
+    {
+      "attestationStatus": null,
+      "virtualmachineinstance": {
+        "extendedLocation": {
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource group name>/providers/Microsoft.Exten
+    dedLocation/customLocations/s-cluster-customlocation",
+          "type": "CustomLocation"
+        },
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCom
+    pute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+        "identity": null,
+        "name": "default",
+        "properties": {
+          "guestAgentInstallStatus": null,
+          "hardwareProfile": {
+            "dynamicMemoryConfig": {
+              "maximumMemoryMb": null,
+              "minimumMemoryMb": null,
+              "targetMemoryBuffer": null
+            },
+            "memoryMb": 2000,
+            "processors": 2,
+            "vmSize": "Custom"
+          },
+          "httpProxyConfig": null,
+          "instanceView": {
+            "vmAgent": {
+              "statuses": [
+                {
+                  "code": "ProvisioningState/succeeded",
+                  "displayStatus": "Connected",
+                  "level": "Info",
+                  "message": "Connection with mocguestagent was succesfully reestablished",
+                  "time": "2024-06-24T17:25:19+00:00"
+                },
+              ],
+              "vmConfigAgentVersion": "v0.18.0-4-gd54376b0"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaces": []
+          },
+          "osProfile": {
+            "adminPassword": null,
+            "adminUsername": "azureuser",
+            "computerName": "testvm001",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": false,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              }
+            },
+            "windowsConfiguration": {
+              "enableAutomaticUpdates": null,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              },
+              "timeZone": null
+            }
+          },
+          "provisioningState": "Succeeded",
+          "resourceUid": null,
+          "securityProfile": {
+            "enableTpm": false,
+            "securityType": null,
+            "uefiSettings": {
+              "secureBootEnabled": true
+            }
+          },
+          "status": {
+            "errorCode": "",
+            "errorMessage": "",
+            "powerState": "Saved",
+            "provisioningStatus": null
+          },
+          "storageProfile": {
+            "dataDisks": [],
+            "imageReference": {
+              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.Azu
+    reStackHCI/galleryImages/WinImage-26tdJUIS",
+              "resourceGroup": "<Resource group name>"
+            },
+            "osDisk": {
+              "id": null,
+              "osType": "Windows"
+            },
+            "vmConfigStoragePathId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/provid
+    ers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-345d968fa1e74e99a9509ab7f3d259fd"
+          },
+          "vmId": "c6a2176c-6672-4aa9-a052-0903098ccb25"
+        },
+        "resourceGroup": "<Resource group name>",
+        "systemData": {
+          "createdAt": "2024-06-24T01:29:06.594266+00:00",
+          "createdBy": "7d6ffe2f-dac5-4e74-9bf2-4830cf7f4668",
+          "createdByType": "Application",
+          "lastModifiedAt": "2024-06-24T18:29:02.794305+00:00",
+          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+          "lastModifiedByType": "Application"
+        },
+        "type": "microsoft.azurestackhci/virtualmachineinstances"
+      }
+    }
+    
+    ## Start the VM after it was saved
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm start --name $vmName --resource-group $rg
+    Inside _start_initial
+    /subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machin
+    es/testvm001
+    2024-02-01-preview
+    https://management.azure.com/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Mi
+    crosoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default/start?api-version=2024-02-01-preview
+
+    ## Show the current state of the VM
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser\Documents> az stack-hci-vm show -g $rg --name $vmName
+    {
+      "attestationStatus": null,
+      "virtualmachineinstance": {
+        "extendedLocation": {
+          "name": "/subscriptions/<Subscription ID>/resourcegroups/<Resource group name>/providers/Microsoft.Exten
+    dedLocation/customLocations/s-cluster-customlocation",
+          "type": "CustomLocation"
+        },
+        "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCom
+    pute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default",
+        "identity": null,
+        "name": "default",
+        "properties": {
+          "guestAgentInstallStatus": null,
+          "hardwareProfile": {
+            "dynamicMemoryConfig": {
+              "maximumMemoryMb": null,
+              "minimumMemoryMb": null,
+              "targetMemoryBuffer": null
+            },
+            "memoryMb": 2000,
+            "processors": 2,
+            "vmSize": "Custom"
+          },
+          "httpProxyConfig": null,
+          "instanceView": {
+            "vmAgent": {
+              "statuses": [
+                {
+                  "code": "ProvisioningState/succeeded",
+                  "displayStatus": "Connected",
+                  "level": "Info",
+                  "message": "Connection with mocguestagent was succesfully reestablished",
+                  "time": "2024-06-24T18:32:41+00:00"
+                }
+              ],
+              "vmConfigAgentVersion": "v0.18.0-4-gd54376b0"
+            }
+          },
+          "networkProfile": {
+            "networkInterfaces": []
+          },
+          "osProfile": {
+            "adminPassword": null,
+            "adminUsername": "azureuser",
+            "computerName": "testvm001",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": false,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              }
+            },
+            "windowsConfiguration": {
+              "enableAutomaticUpdates": null,
+              "provisionVmAgent": false,
+              "provisionVmConfigAgent": true,
+              "ssh": {
+                "publicKeys": null
+              },
+              "timeZone": null
+            }
+          },
+          "provisioningState": "Succeeded",
+          "resourceUid": null,
+          "securityProfile": {
+            "enableTpm": false,
+            "securityType": null,
+            "uefiSettings": {
+              "secureBootEnabled": true
+            }
+          },
+          "status": {
+            "errorCode": "",
+            "errorMessage": "",
+            "powerState": "Running",
+            "provisioningStatus": null
+          },
+          "storageProfile": {
+            "dataDisks": [],
+            "imageReference": {
+              "id": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.Azu
+    reStackHCI/galleryImages/WinImage-26tdJUIS",
+              "resourceGroup": "<Resource group name>"
+            },
+            "osDisk": {
+              "id": null,
+              "osType": "Windows"
+            },
+            "vmConfigStoragePathId": "/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/provid
+    ers/Microsoft.AzureStackHCI/storageContainers/UserStorage2-345d968fa1e74e99a9509ab7f3d259fd"
+          },
+          "vmId": "c6a2176c-6672-4aa9-a052-0903098ccb25"
+        },
+        "resourceGroup": "<Resource group name>",
+        "systemData": {
+          "createdAt": "2024-06-24T01:29:06.594266+00:00",
+          "createdBy": "7d6ffe2f-dac5-4e74-9bf2-4830cf7f4668",
+          "createdByType": "Application",
+          "lastModifiedAt": "2024-06-24T18:35:18.206280+00:00",
+          "lastModifiedBy": "319f651f-7ddb-4fc6-9857-7aef9250bd05",
+          "lastModifiedByType": "Application"
+        },
+        "type": "microsoft.azurestackhci/virtualmachineinstances"
+      }
+    }
+   
     ```
 
 ## Delete a VM
