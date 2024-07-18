@@ -258,7 +258,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
 
     <details>
-    <summary>Click here to see an example output:
+    <summary>Click here to see an example output:</summary>
 
     ```output
 
@@ -492,7 +492,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
 
     ```
 
-</summary></details>
+</details>
 
 ## Save a VM
 
@@ -761,7 +761,6 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
         "type": "microsoft.azurestackhci/virtualmachineinstances"
       }
     }
-   
     ```
 
 ## Delete a VM
