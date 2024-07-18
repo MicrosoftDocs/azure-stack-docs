@@ -2,7 +2,7 @@
 title: Overview of MetalLB for Kubernetes clusters
 description: Learn the basic concepts of MetalLB load balancing for AKS enabled by Arc Kubernetes clusters.
 ms.topic: conceptual
-ms.date: 04/02/2024
+ms.date: 07/17/2024
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: xinyuhe
@@ -49,10 +49,11 @@ The choice between L2 and BGP mode with MetalLB depends on your specific require
 | Traffic engineering         | Limited control over traffic routing. | Fine-grained control over traffic routing using BGP attributes. |
 | External connectivity       | Requires more configuration for external connectivity. | Provides seamless connectivity with external networks using BGP routing. |
 
-## Frequently Asked Questions (FAQ)
+## FAQ
 
 ### Can a MetalLB instance be reused across AKS Arc clusters?
-Answer: No, MetalLB cannot be reused across AKS Arc clusters. MetalLB lives as pods in a Kubernetes cluster, and load balancers are CRs (Custom Resource). You need to install the MetalLB Arc k8s-extension using Az CLI, Azure portal or ARM templates, and create load balancers for every AKS Arc cluster. 
+
+No, MetalLB can't be reused across AKS Arc clusters. MetalLB lives as pods in a Kubernetes cluster, and load balancers are Custom Resources (CRs). You must install the MetalLB Arc k8s-extension using Azure CLI, the Azure portal or Azure Resource Manager templates, and create load balancers for every AKS Arc cluster. 
 
 ## Next steps
 
