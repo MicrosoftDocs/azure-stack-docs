@@ -1,9 +1,9 @@
 ---
-title: Standard Load Balancer considerations in Azure Stack Hub and Azure (preview)
+title: Standard Load Balancer considerations in Azure Stack Hub and Azure
 description: Learn about differences in the Standard Load Balancer between Azure Stack Hub and Azure.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 03/29/2024
+ms.date: 07/19/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/29/2024
@@ -13,9 +13,9 @@ ms.lastreviewed: 03/29/2024
 
 ---
 
-# Standard Load Balancer considerations in Azure Stack Hub (preview)
+# Standard Load Balancer considerations in Azure Stack Hub
 
-Azure Stack Hub supports the Standard Load Balancer SKU, currently in public preview. While this new SKU enables customer scenarios, there are certain differences between the Standard Load Balancer SKU on Azure Stack Hub and the Azure Load Balancer available in Azure. This section describes the main differences between the two, and the scenarios we validated in the Standard Load Balancer on Azure Stack Hub.
+Azure Stack Hub now supports the Standard Load Balancer SKU. While this new SKU enables customer scenarios, there are certain differences between the Standard Load Balancer SKU on Azure Stack Hub and the Azure Load Balancer available in Azure. This section describes the main differences between the two, and the scenarios we validated in the Standard Load Balancer on Azure Stack Hub.
 
 ## Main differences in Standard Load Balancer between Azure and Azure Stack Hub
 
