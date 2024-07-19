@@ -257,12 +257,14 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     |`resource-group`    |Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.         |
     |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
 
+    #### Example output
+
     <details>
-    <summary>Click here to see an example output:</summary>
+    <summary>Click here to see an example output.</summary>
 
     ```output
 
-    # Set parameters
+    #Set parameters
 
     [v-host1]: PS C:\Users\HCIDeploymentUser> $rg = "<Resource group name>"    
     [v-host1]: PS C:\Users\HCIDeploymentUser> $vmName = "<VM name>"
@@ -271,7 +273,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
 
     [v-host1]: PS C:\Users\HCIDeploymentUser> az stack-hci-vm pause --name $vmName --resource-group $rg
 
-    # Show the current state of the VM
+    #Show the current state of the VM
     [v-host1]: PS C:\Users\HCIDeploymentUser> az stack-hci-vm show -g $rg --name $vmName
     {
       "attestationStatus": null,
@@ -377,7 +379,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
       }
     }
 
-    # Start the VM after it was paused. 
+    #Start the VM after it was paused. 
 
     [v-host1]: PS C:\Users\HCIDeploymentUser> az stack-hci-vm start --name $vmName --resource-group $rg
     Inside _start_initial/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm0012024-02-01-preview/https://management.azure.com/subscriptions/<Subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/testvm001/providers/Microsoft.AzureStackHCI/virtualMachineInstances/d
@@ -534,7 +536,10 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
     az stack-hci-vm start --name $vmName --resource-group $rg
     ```
 
-    Here's an example output:
+    #### Example output
+
+    <details>
+    <summary>Click here to see an example output.</summary>
 
     ```output
     #Set parameters
@@ -762,6 +767,8 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
       }
     }
     ```
+
+</details>
 
 ## Delete a VM
 
