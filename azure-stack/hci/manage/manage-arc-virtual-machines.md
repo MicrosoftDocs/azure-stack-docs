@@ -269,7 +269,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     [v-host1]: PS C:\Users\HCIDeploymentUser> $rg = "<Resource group name>"    
     [v-host1]: PS C:\Users\HCIDeploymentUser> $vmName = "<VM name>"
 
-    # Pause the VM
+    #Pause the VM
 
     [v-host1]: PS C:\Users\HCIDeploymentUser> az stack-hci-vm pause --name $vmName --resource-group $rg
 
@@ -543,6 +543,9 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 
     ```output
     #Set parameters
+
+    [v-host1]: PS C:\Users\HCIDeploymentUser> $rg = "<Resource group name>"    
+    [v-host1]: PS C:\Users\HCIDeploymentUser> $vmName = "<VM name>"
 
     #Save the VM
 
