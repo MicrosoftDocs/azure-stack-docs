@@ -244,8 +244,13 @@ Pausing the VMs is useful to save the compute resources when you are not using t
 1. To pause the VM, run the following PowerShell cmdlet:
 
     ```azurecli
+    #Set input parameters
+
     $rg = "<Resource group name>"
     $vmName = "<VM name>"
+
+    #Pause the VM
+
     az stack-hci-vm pause --name $vmName --resource-group $rg
     ```
 
@@ -256,6 +261,22 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     |`name`     |Name of the virtual machine.         |
     |`resource-group`    |Name of resource group. You can configure the default group using `az configure --defaults group=<name>`.         |
     |`subscription`     |Name or ID of subscription. You can configure the default subscription using `az account set -s NAME_OR_ID`.         |
+
+1. Check the VM status to verify that the VM is paused.
+  
+    ```azurecli
+    #Check the VM status
+
+    az stack-hci-vm show --name $vmName --resource-group $rg
+    ```
+
+1. Start the VM to resume the VM from the paused state. Verify that the VM is running.
+
+    ```azurecli
+    #Start the VM
+
+    az stack-hci-vm start --name $vmName --resource-group $rg
+    ```
 
     #### Example output
 
@@ -504,7 +525,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 1. To save the VM, run the following PowerShell cmdlet:
 
     ```azurecli
-    # Set input parameters
+    #Set input parameters
 
     $rg = "<Resource group name>"
     $vmName = "<VM name>"
@@ -525,14 +546,16 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
 1. Check the VM status to verify that the VM is saved.
   
     ```azurecli
-    ## Check the VM status
+    #Check the VM status
+
     az stack-hci-vm show --name $vmName --resource-group $rg
     ```
 
 1. Start the VM to resume the VM from the saved state. Verify that the VM is running.
 
     ```azurecli
-    ## Start the VM
+    #Start the VM
+
     az stack-hci-vm start --name $vmName --resource-group $rg
     ```
 
