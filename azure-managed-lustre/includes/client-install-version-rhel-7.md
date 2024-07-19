@@ -14,6 +14,8 @@ sudo yum install amlfs-lustre-client-2.15.4_42_gd6d405d-$(uname -r | sed -e "s/\
 
 > [!NOTE]
 > The metapackage version does not always align with the kernel version. Use the install command above to install the proper metapackage.
+> [!NOTE]
+> Running a `yum search amlfs-lustre-client` does not show all available packages for your distro. To see all available `amlfs-lustre-client` packages, please run `yum list --showduplicates "amlfs-lustre-client*"`.
 
 If you want to upgrade *only* the kernel and not all packages, you must, at minimum, also upgrade the **amlfs-lustre-client** metapackage in order for the Lustre client to continue to work after the reboot. The command should look similar to the following example:
 
