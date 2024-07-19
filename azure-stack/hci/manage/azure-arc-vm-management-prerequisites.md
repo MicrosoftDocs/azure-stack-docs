@@ -59,7 +59,7 @@ If you're accessing the Azure Stack HCI system remotely, the following requireme
 
     - Run [az version](/cli/azure/reference-index?#az-version) to find the version and dependent libraries that are installed. To upgrade to the latest version, run [az upgrade](/cli/azure/reference-index?#az-upgrade).
 
-- The Azure Stack HCI extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command :
+- The Azure Stack HCI extension `stack-hci-vm`. Run PowerShell as an administrator on your client and run the following command:
 
   ```PowerShell
   az extension add --name "stack-hci-vm"

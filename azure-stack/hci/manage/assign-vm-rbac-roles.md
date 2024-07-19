@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 02/13/2024
+ms.date: 07/19/2024
 ---
 
 # Use Role-based Access Control to manage Azure Stack HCI Virtual Machines 
@@ -31,20 +31,18 @@ To control access to VMs and VM resources on your Azure Stack HCI, you can use t
 Here's a table that describes the VM actions granted by each role for the VMs and the various VM resources. The VM resources are referred to resources required to create a VM and include virtual disks, network interfaces, VM images, logical networks, and storage paths:
 
 
-|Builtin role  |VMs  |VM resources  |
-|---------|---------|---------|
-|Azure Stack HCI Administrator     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete all VM resources including logical networks, VM images, and storage paths         |
-|Azure Stack HCI VM Contributor     |Create, list, delete VMs<br><br> Start, stop, restart VMs         |Create, list, delete all VM resources except logical networks, VM images, and storage paths         |
-|Azure Stack HCI VM Reader    |List all VMs         |List all VM resources         |
+| Builtin role | VMs | VM resources |
+|--|--|--|
+| Azure Stack HCI Administrator | Create, list, delete VMs<br><br> Start, stop, restart VMs | Create, list, delete all VM resources including logical networks, VM images, and storage paths |
+| Azure Stack HCI VM Contributor | Create, list, delete VMs<br><br> Start, stop, restart VMs | Create, list, delete all VM resources except logical networks, VM images, and storage paths |
+| Azure Stack HCI VM Reader | List all VMs | List all VM resources |
 
  
 ## Prerequisites
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure that you have access to an Azure Stack HCI cluster that is deployed and registered. During the deployment, an Arc Resource Bridge and a custom location are also created.
-    
-    Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
+1. Make sure that complete the [Azure Stack HCI cluster requirements](./azure-arc-vm-management-prerequisites.md).
 
 1. Make sure that you have access to Azure subscription as an Owner or User Access Administrator to assign roles to others.
 
