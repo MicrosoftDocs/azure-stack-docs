@@ -21,7 +21,7 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. The following key issues and features are present in this update:
 
-- **BitLocker**. This update adds PCR 4 to PCR 7 and 11 for the default Secure Boot validation profile. See [CVE-2024-38058](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-38058) for more information.
+- **BitLocker**. This update adds PCR 4 to PCR 7 and 11 for the default Secure Boot validation profile. For more information, see [CVE-2024-38058](https://msrc.microsoft.com/update-guide/vulnerability/CVE-2024-38058).
 
 - **Absent apps and features**. Some apps and features are absent after you upgrade to Windows 11.
 
