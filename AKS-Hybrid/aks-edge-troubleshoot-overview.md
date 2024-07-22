@@ -4,7 +4,7 @@ description: Learn about common issues and workarounds in AKS Edge Essentials.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: conceptual
-ms.date: 01/08/2024
+ms.date: 07/22/2024
 ms.custom: template-concept
 ---
 
@@ -86,7 +86,7 @@ There are a few different reasons why the kube-vip pod might be constantly resta
 - Using an OS disk that is not backed with an SSD disk, or a premium SSD disk when using an Azure VM. You can [review the hardware requirements here](aks-edge-system-requirements.md#hardware-requirements).
 - Disk latency is too high. If the disk latency is greater than 10 ms, it can result in request timeouts, leader loss, and potential cluster instability. You can [review the hardware requirements for etcd here](https://etcd.io/docs/v3.4/op-guide/hardware/).
 
-#### Mitigation
+#### Resolution
 
 To mitigate this issue, review your underlying storage infrastructure to ensure that it meets the performance requirements for etcd and AKS Ege Essentials. Also, consider using premium SSD-backed storage or optimizing your storage configuration for performance.
 
