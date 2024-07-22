@@ -63,7 +63,7 @@ This script checks for the missing images and reimports them as needed.
 
 ### Failed to get nodeagent certificate: Not Found
 
-Check the network adapter configuration. During deployment, AKS Edge Essentials needs an adapter that's enabled and has the correct IP address, subnet, and default gateway. These values are automatically populated in a DHCP environment. If you're setting manually, ensure all three are set. In many cases the default gateway isn't set, which results in this error.
+Check the network adapter configuration. During deployment, AKS Edge Essentials needs an adapter that's enabled and has the correct IP address, subnet, and default gateway. These values are automatically populated in a DHCP environment. If you're setting manually, ensure all three are set. In many cases, the default gateway isn't set, which results in this error.
 
 ## Kubernetes
 
@@ -83,8 +83,8 @@ kubectl get pods –n kube-system
 
 There are a few different reasons why the kube-vip pod might be constantly restarting. These causes include:
 
-- Using an OS disk that is not backed with a SSD disk, or a premium SSD disk when using an Azure VM. You can [review the hardware requirements here](aks-edge-system-requirements.md#hardware-requirements).
-- Disk latency is too high. If the disk latency is greater than 10ms, it can result in request timeouts, leader loss, and potential cluster instability. You can [review the hardware requirements for etcd here](https://etcd.io/docs/v3.4/op-guide/hardware/).
+- Using an OS disk that is not backed with an SSD disk, or a premium SSD disk when using an Azure VM. You can [review the hardware requirements here](aks-edge-system-requirements.md#hardware-requirements).
+- Disk latency is too high. If the disk latency is greater than 10 ms, it can result in request timeouts, leader loss, and potential cluster instability. You can [review the hardware requirements for etcd here](https://etcd.io/docs/v3.4/op-guide/hardware/).
 
 #### Mitigation
 
