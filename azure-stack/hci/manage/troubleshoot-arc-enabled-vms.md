@@ -14,7 +14,6 @@ ms.reviewer: vlakshmanan
 
 This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
-
 ## Collect logs
 
 You can collect logs to identify and troubleshoot issues with Arc VMs in your Azure Stack HCI system. Use these logs to gather key information before you contact Microsoft support for additional help.
@@ -47,7 +46,7 @@ Where:
 
 This section describes the errors related to Azure Arc VM management and their recommended resolutions.
 
-### Failure when trying to enable guest management
+## Failure when trying to enable guest management
 
 When trying to run the command to enable guest management, you see the following error:
 
@@ -104,7 +103,7 @@ Follow these steps to verify that the Managed Identity isn't created for this VM
 
     :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
 
-### Failure deploying an Arc VM
+## Failure deploying an Arc VM
 
 You see the following error when trying to deploy an Arc VM on your Azure Stack HCI cluster:
 
@@ -120,7 +119,7 @@ The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/m
 
 The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Stack HCI](./create-arc-virtual-machines.md).
 
-### Failure deleting storage path
+## Failure deleting storage path
 
 When trying to delete a storage path on your Azure Stack HCI cluster, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
 
@@ -140,7 +139,7 @@ Follow these steps before trying to remove a storage path:
 1. Remove the associated workloads and the images present on the storage path you want to delete. Look for the following prefixes on the image names: `linux-cblmariner`, `windows-windows2019`, `windows-windows2022`, `windows_k8s`, `aks-image-merged`, `linux-K8s`.
 1. File a [support ticket in the Azure portal](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
-### Azure CLI installation isn't recognized
+## Azure CLI installation isn't recognized
 
 If your environment fails to recognize Azure CLI after installing it, run the following code block to add the Azure CLI installation path to the environment path.
 
