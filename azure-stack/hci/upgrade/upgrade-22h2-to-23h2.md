@@ -119,7 +119,6 @@ To install feature updates using PowerShell, follow these steps:
    ```PowerShell
    Set-WSManQuickConfig
    Enable-PSRemoting
-   Set-NetFirewallRule -Group "@firewallapi.dll,-36751" -Profile Domain -Enabled true
    ```
 
 2. To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which will notify you of any warnings or errors:

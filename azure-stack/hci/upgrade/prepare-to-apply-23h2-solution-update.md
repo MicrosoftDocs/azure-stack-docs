@@ -152,7 +152,8 @@ foreach ($feature in $windowsFeature)
 { 
 install-windowsfeature -name $feature -IncludeAllSubFeature -IncludeManagementTools 
 } 
-@Install requires optional Windows features 
+
+#Install requires optional Windows features 
 $windowsOptionalFeature = @( 
 
                 "Server-Core", 
