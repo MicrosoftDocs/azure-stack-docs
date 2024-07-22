@@ -182,7 +182,7 @@ Follow these steps to deploy the file system using the template:
     --template-file azlustre.bicep
    ```
 
-## Example: JSON files
+## JSON example
 
 This section shows sample contents for a template file and a separate parameters file. These files contain all possible configuration options. You can remove optional parameters when creating your own Azure Resource Manager template.
 
@@ -337,9 +337,9 @@ This section shows example contents of a parameters file:
 }
 ```
 
-## Example: Bicep file
+## Bicep example
 
-This example includes all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values, you don't want.
+This example includes all of the possible values in an Azure Managed Lustre template. When creating your template, remove any optional values you don't need.
 
 ```bicep
 resource fileSystem 'Microsoft.StorageCache/amlFileSystems@2023-05-01' = {
