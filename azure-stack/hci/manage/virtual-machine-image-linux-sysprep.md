@@ -7,7 +7,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 07/19/2024
+ms.date: 07/22/2024
 ---
 
 # Prepare an Ubuntu image for Azure Stack HCI virtual machines
@@ -21,7 +21,7 @@ This article describes how to prepare an Ubuntu image to create a virtual machin
 Before you begin, meet the following prerequisites:
 
 - Have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
-- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster. The supported OS versions are *Ubuntu 18.04*, *20.04*, *22.04 LTS*, and *24.04 LTS*. You prepare this image to create a VM image.
+- [Download the latest supported Ubuntu server image](https://ubuntu.com/download/server) on your Azure Stack HCI cluster. The supported OS versions are *Ubuntu 18.04*, *20.04*, and *22.04 LTS*. You prepare this image to create a VM image.
 
 ## Workflow
 
@@ -99,6 +99,9 @@ Follow these steps on your Azure Stack HCI cluster to configure the VM that you 
 ### Step 3: Clean up the residual configuration
 
 Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration.
+
+> [!NOTE]
+> Depending on the version of Ubuntu you are using, some of these files may not exist.
 
 1. Clean `cloud-init` default configurations.
 
