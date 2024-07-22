@@ -28,26 +28,23 @@ The Windows Panther folder contains Windows setup, installation, and upgrade log
 
 | File              | Directory       | Description |
 |-------------------|-----------------|-------------|
-| Critical logs     | C:\ProgramData\mocguestagent\log\mocguestagent.log | sudo journalctl -u mocguestagent.service |
-| Operational logs  | C:\ProgramData\mocguestagent\log\agent-log-0 | /opt/mocguestagent/log/agent-log-0 |
-
-   Logs can be found at following location: C:\Windows\panther.
-
-   - **SetupAct.log** - Contains information about setup actions during the installation.
-   - **SetupErr.log** - Contains information about setup errors during the installation.
-   - **SetupComplete.log** - Setupcomplete.cmd is custom scripts that run during or after the Windows Setup process. Logs from this execution go to setupComplete logs. SetupComplete.cmd for HCI includes enabling WinRM, enabling ssh, and installing Microsoft On-premises Cloud (MOC) guest agent.
-
-1. Look in folder C:\Windows\Setup\Scripts to make sure scripts from ISO are copied there.
-
-1. Collect Windows event logs from C:\Windows\System32\winevt\Logs\System.evtx.
+| sudo journalctl -u mocguestagent.service | C:\ProgramData\mocguestagent\log\mocguestagent.log | Critical logs |
+| /opt/mocguestagent/log/agent-log-0 | C:\ProgramData\mocguestagent\log\agent-log-0 | Operational logs |
+| SetupAct.log | C:\Windows\panther | Contains information about setup actions during the installation. |
+| SetupErr.log | C:\Windows\panther | Contains information about setup errors during the installation. |
+| etupComplete.log | C:\Windows\panther | Contains custom scripts that run during or after the Windows Setup process. For HCI, includes enabling WinRM, enabling ssh, and installing Microsoft On-premises Cloud (MOC) guest agent. |
+| Script files | C:\Windows\Setup\Scripts | Scripts from ISO |
+| Log files | C:\Windows\System32\winevt\Logs\System.evtx. | Windows event logs |
 
 ### Linux VMs
 
 Examine these log files to investigate a VM provisioning failure:
 
-- **/var/log/cloud-init-output.log** - Captures the output from each stage of cloud-init when it runs.
-- **/var/log/cloud-init.log** – A detailed log with debugging output, detailing each action taken.
-- **/run/cloud-init** - Contains logs about how cloud-init decided to enable or disable itself, and what platforms/datasources were detected. These logs are most useful when trying to determine what cloud-init ran or didn't run.
+| File              | Directory       | Description |
+|-------------------|-----------------|-------------|
+| cloud-init-output.log | /var/log/ | Captures the output from each stage of cloud-init when it runs. |
+| cloud-init.log | /var/log/ | A detailed log with debugging output, detailing each action taken. |
+| | /run/cloud-init | Contains logs about how cloud-init decided to enable or disable itself, and what platforms/datasources were detected. These logs are most useful when trying to determine what cloud-init ran or didn't run. |
 
 ## Collect guest logs
 
@@ -55,10 +52,10 @@ Collect guest logs to gather information on Arc VM issues before you contact Mic
 
 ### Logs inside the VM
 
-- Netlogon: C:\Windows\Debug\netsetup.log <br>
-  Netlogon logs are used for domain join failure. If you don't see a domain join error, this log is optional.
-
-- Extension logs: C:\ProgramData\GuestConfig\extension_logs
+| File              | Directory       | Description |
+|-------------------|-----------------|-------------|
+| netsetup.log | C:\Windows\Debug\ | Netlogon logs are used for domain join failure. If you don't see  a domain join error, this log is optional. |
+| | C:\ProgramData\GuestConfig\extension_logs | Extension logs |
 
 For more information, see [Active Directory domain join troubleshooting guidance](/troubleshoot/windows-server/active-directory/active-directory-domain-join-troubleshooting-guidance).
 
@@ -72,12 +69,21 @@ Example error:
 
 `{"code":"moc-operator virtualmachine serviceClient returned an error while reconciling: rpc error: code = Unknown desc = Could not establish HyperV connection for VM ID [E5BF0FC3-DB6D-40AA-BB46-DD94E4E0719A] within [900] seconds, error: [<nil>]","message":"moc-operator virtualmachine serviceClient returned an error while reconciling: rpc error: code = Unknown desc = Could not establish HyperV connection for VM ID [E5BF0FC3-DB6D-40AA-BB46-DD94E4E0719A] within [900] seconds, error: [<nil>]","additionalInfo":[{"type":"ErrorInfo","info":{"category":"Uncategorized","recommendedAction":"","troubleshootingURL":""}}]}`
 
-Examine these guest agent log files:
+Examine these MOC guest agent log files:
 
-| Log type          | Windows | Linux |
-|-------------------|---------|-------|
-| Critical logs     | C:\ProgramData\mocguestagent\log\mocguestagent.log | sudo journalctl -u mocguestagent.service |
-| Operational logs  | C:\ProgramData\mocguestagent\log\agent-log-0 | /opt/mocguestagent/log/agent-log-0 |
+**Windows VMs**
+
+| File              | Directory       | Description |
+|-------------------|-----------------|-------------|
+| mocguestagent.log | C:\ProgramData\mocguestagent\log\ | Critical logs |
+| agent-log-0 | C:\ProgramData\mocguestagent\log\ | Operational logs |
+
+**Linux VMs**
+
+| File              | Directory       | Description |
+|-------------------|-----------------|-------------|
+| mocguestagent.service  | sudo journalctl -u | Critical logs |
+| agent-log-0 | /opt/mocguestagent/log/ | Operational logs |
 
 ## Next steps
 
