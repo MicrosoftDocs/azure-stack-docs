@@ -281,7 +281,7 @@ Pausing the VMs is useful to save the compute resources when you are not using t
     #### Example output
 
     <details>
-    <summary>Click here to see an example output.</summary>
+    <summary>Expand this section to see an example output.</summary>
 
     ```output
 
@@ -562,7 +562,7 @@ Saving a VM stores the current state of the VM to the disk and stops the VM. Sav
     #### Example output
 
     <details>
-    <summary>Click here to see an example output.</summary>
+    <summary>Expand this section to see an example output.</summary>
 
     ```output
     #Set parameters
