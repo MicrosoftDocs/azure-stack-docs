@@ -31,7 +31,7 @@ Get-ExecutionPolicy
 if ((Get-ExecutionPolicy) -ne "RemoteSigned") { Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force }
 ```
 
-### Low disk space causes precached container images to be deleted
+### Low disk space causes pre-cached container images to be deleted
 
 When the node runs out of disk space, some of the preloaded images are garbage collected by the `containerd` runtime. In this case, first free up some disk space, and then run the following command to pull the cached images again:
 
@@ -48,9 +48,9 @@ This script checks for the missing images and reimports them as needed.
    Workaround: If the pods aren't cleaned up, run the following commands to manually clean up the existing Azure Arc-related resources before trying to reconnect again:
 
    ```powershell
-       kubectl delete ns azure-arc
-       kubectl delete clusterrolebinding azure-arc-operator
-       kubectl delete secret sh.helm.release.v1.azure-arc.v1
+   kubectl delete ns azure-arc
+   kubectl delete clusterrolebinding azure-arc-operator
+   kubectl delete secret sh.helm.release.v1.azure-arc.v1
    ```
 
 2. Issue: Azure Arc connectivity doesn't work in a proxy environment.
@@ -88,7 +88,7 @@ There are a few different reasons why the kube-vip pod might be constantly resta
 
 #### Resolution
 
-To mitigate this issue, review your underlying storage infrastructure to ensure that it meets the performance requirements for etcd and AKS Ege Essentials. Also, consider using premium SSD-backed storage or optimizing your storage configuration for performance.
+To mitigate this issue, review your underlying storage infrastructure to ensure that it meets the performance requirements for etcd and AKS Edge Essentials. Also, consider using premium SSD-backed storage or optimizing your storage configuration for performance.
 
 ## Next steps
 
