@@ -126,7 +126,25 @@ Get-NetIntentStatus -Name <IntentName>
 
 Here's an example:
 
-:::image type="content" source="media/migate-cluster-to-network-atc/get-net-intent-status-output.png" alt-text="Screenshot of Get NetIntentStatus command results using PowerShell"  lightbox="media/migate-cluster-to-network-atc/get-net-intent-status-output.png":::
+```console
+
+PS C:\Users\administrator.CONTOSO> Get-NetlntentStatus
+
+IntentName                  : convergedintent
+Host                        : node1
+IsComputelntentSet          : True
+IsManagementlntentSet       : True
+IsStoragelntentSet          : True
+IsStretchlntentSet          : False
+LastUpdated                 : 07/23/2024 11:11:15
+LastSuccess                 : 07/23/2024 11:11:15
+RetryCount                  : 0
+LastConfigApplied           : 1
+Error                       :
+Progress                    : 1 of 1
+ConfigurationStatus         : Success
+ProvisioningStatus          : Completed
+```
 
 Ensure that each intent added has an entry for the host you're working on. Also, make sure the **ConfigurationStatus** shows **Success**.
 
@@ -139,6 +157,10 @@ In this step, you move from the node deployed with Network ATC to the next node 
 This change is a non-disruptive and can be done on all nodes at the same time, using the following command.
 
 ```powershell
+#Run on the node where you did configure Network ATC
+Get-vmswitch|ft name
+
+#Run on the next node to rename virtual switch
 Rename-VMSwitch -Name 'ExistingName' -NewName 'NewATCName'
 ```
 
