@@ -97,15 +97,22 @@ If your nodes were configured via Virtual Machine Manager (VMM), those configura
 > [!NOTE]
 > Network ATC is being improved to prevent accidental oversights, including LBFO and it will avoid deploying unsupported solutions.
 
-### Step 5: Add the Network ATC intent
+### Step 5: Start the Network ATC service
 
 As a precaution, to control the speed of the rollout, we paused the node in step 2 and stopped or disabled the Network ATC service in step 3. Since Network ATC intents are implemented cluster wide, you should only need to perform this step once.
 
 To start the Network ATC service, on this node only, run the following command:
 
 ```powershell
-Set-Service -Name NetworkATC -StartupType Automatic
 Start-Service -Name NetworkATC
+```
+
+### Step 6: Add the Network ATC intent
+
+To add the Network ATC intent, run the following command:
+
+```powershell
+Set-Service -Name NetworkATC -StartupType Automatic
 ```
 
 There are various intents that you can add. Identify the intent or intents you'd like using the examples in the next section.
@@ -114,7 +121,7 @@ There are various intents that you can add. Identify the intent or intents you'd
 
 For more information on Network ATC, see [Deploy host networking with Network ATC](../deploy/network-atc.md).
 
-### Step 6: Verify the deployment on one node
+### Step 7: Verify the deployment on one node
 
 The `Get-NetIntentStatus` command shows the deployment status of the requested intents. The result returns one object per intent for each node in the cluster. For example, if you have a three-node cluster with two intents, you should see six objects, each with their own status, returned by the command.
 
@@ -150,7 +157,7 @@ Ensure that each intent added has an entry for the host you're working on. Also,
 
 If the **ConfigurationStatus** shows **Failed**, check to see if the error message indicates the reason for the failure. For some examples of failure resolutions, see [Common Error Messages](../deploy/network-atc.md#common-error-messages).
 
-### Step 7: Rename the VMSwitch on other nodes
+### Step 8: Rename the VMSwitch on other nodes
 
 In this step, you move from the node deployed with Network ATC to the next node and migrate the VMs from this second node. You must verify that the second node has the same VMSwitch name as the node deployed with Network ATC.
 
@@ -177,7 +184,7 @@ We don't change the Network ATC VMSwitch for two reasons:
 - Network ATC ensures that all nodes in the cluster have the same name to support live migration and symmetry.
 - Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
 
-### Step 8: Resume the cluster node
+### Step 9: Resume the cluster node
 
 To reenter or put your cluster back in service, run the following command:
 
@@ -186,6 +193,6 @@ Resume-ClusterNode
 ```
 
 > [!NOTE]
-> To complete the migration to Network ATC across the cluster, follow steps 1 through 4, step 6, and step 8 for each node.
+> To complete the migration to Network ATC across the cluster, follow steps 1 through 5, step 7, and step 9 for each node.
 
 # Next step
