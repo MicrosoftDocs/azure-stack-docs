@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/22/2024
+ms.date: 07/23/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -58,7 +58,7 @@ You can download the Azure Stack Hub update package using [the Azure Stack Hub u
 ::: moniker range="azs-2406"
 ## 2406 build reference
 
-The Azure Stack Hub 2406 update build number is **1.2406.x.xx**.
+The Azure Stack Hub 2406 update build number is **1.2406.0.8**.
 
 ### Update type
 
@@ -88,7 +88,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- Starting with Azure Stack Hub 2311, we are not releasing new Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
+- Starting with Azure Stack Hub 2311, we are not releasing updated Azure Stack Development Kit (ASDK) versions. This decision is due to modifications to internal services that would lead to substantial complexity for the ASDK. The [currently released ASDK version](../asdk/asdk-release-notes.md) remains suitable for operational, testing, or training purposes, including for the [Azure Stack Hub Foundation Core scripts](https://aka.ms/azshasdk) used for [Azure-Stack-Hub-Foundation-Core](https://github.com/Azure-Samples/Azure-Stack-Hub-Foundation-Core/tree/master/ASF-Training).
 
 <!-- ### Fixes -->
 

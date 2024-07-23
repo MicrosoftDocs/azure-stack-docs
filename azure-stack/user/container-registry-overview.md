@@ -1,18 +1,18 @@
 ---
-title: Azure Container Registries on Azure Stack Hub overview 
-description: Learn about the differences between Azure and Azure Stack Hub with Azure Container Registries.
+title: Azure Container Registry on Azure Stack Hub user overview 
+description: Learn about the differences between Azure and Azure Stack Hub with Azure Container Registry.
 author: sethmanheim
 ms.topic: article
-ms.date: 04/10/2024
+ms.date: 07/23/2024
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
 
-# Intent: As an Azure Stack Hub user, I want to know about the differences between Azure and Azure Stack Hub with Azure Container Registries so that I can understand the limitations and capabilities of the service.
+# Intent: As an Azure Stack Hub user, I want to know about the differences between Azure and Azure Stack Hub with Azure Container Registry so that I can understand the limitations and capabilities of the service.
 
 ---
 
-# Azure Container Registries on Azure Stack Hub overview
+# Azure Container Registry on Azure Stack Hub user overview
 
 You can use the Azure Container Registry (ACR) on Azure Stack Hub to store and manage container images and artifacts. With ACR on Azure Stack Hub, you can create and manage container registries by using the Azure Stack Hub user portal or by using commands in PowerShell, Azure CLI, and the Docker CLI.
 
