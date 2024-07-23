@@ -185,7 +185,7 @@ Proceed to deploy a cluster:
 Check your cluster by connecting to `kubectl`, getting the info, and then getting the states of your nodes.
 
 1. Get the `kubeconfig` file to connect to the control plane.
-    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly created cluster in this directory path `/kubeconfig/kubeconfig.json`. You can add the `/kubeconfig.json` to the `.kube` directory to access your new cluster.  
+    - If you already have `kubectl` installed, check the `kubeconfig` file for the newly created cluster in this directory path `/kubeconfig/kubeconfig.json`. You can add the `/kubeconfig.json` to the `.kube` directory and rename it to "config" to access your new cluster.  
     If you have not installed `kubectl`, visit [Install Tools](https://kubernetes.io/docs/tasks/tools/) to install the Kubernetes command-line tool. Otherwise, follow the instructions below to access the cluster from one of the control plane nodes.
 2. Get the public IP address of one of your control plane nodes using the Azure Stack Hub portal.
 
