@@ -13,7 +13,7 @@ ms.lastreviewed: 10/26/2021
 
 ---
 
-# Azure Container Registry on Azure Stack Hub operator overview
+# Azure Container Registry operator overview
 
 Azure Container Registry (ACR) on Azure Stack Hub provides your users with the ability to store and manage container images and artifacts. With the Public Preview release, your users can create and manage container registries by using the Azure Stack Hub user portal as well as commands in PowerShell, Azure CLI, and the Docker CLI.
 
