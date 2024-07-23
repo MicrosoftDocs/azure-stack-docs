@@ -42,27 +42,20 @@ This article describes how to enable and use Microsoft Entra ID authentication f
    az group create --name myResourceGroup --location centralus
    ```
 
-1. Create an AKS Arc cluster and enable administration access for your Microsoft Entra group using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command.
+2. Create an AKS Arc cluster and enable administration access for your Microsoft Entra group using the [`az aksarc create`](/cli/azure/aksarc#az-aksarc-create) command.
 
-   ```azurecli
-   az aksarc create \
-       --resource-group myResourceGroup \
-       --custom-location myCustomLocation
-       --name myManagedCluster \
-       --aad-admin-group-object-ids <id> \
-       --generate-ssh-keys
-   ```
+  ```azurecli
+  az aksarc create -n $aksclustername -g $resource_group --custom-location $customlocationID --vnet-ids $logicnetId --aad-admin-group-object-ids $aadgroupID --generate-ssh-keys --load-balancer-count 0  --control-plane-ip $controlplaneIP
+  ```
+
 
 ### Use an existing cluster with Microsoft Entra authentication
 
 Enable Microsoft Entra authentication on your existing Kubernetes cluster using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command. Make sure to set your admin group to retain access on your cluster:
 
-```azurecli
-az aksarc update \
---resource-group MyResourceGroup 
---name myManagedCluter
---aad-admin-group-object-ids <id-1>,<id-2>
-```
+  ```azurecli
+  az aksarc update -n $aksclustername -g $resource_group --aad-admin-group-object-ids $aadgroupID
+  ```
 
 ## Access your Microsoft Entra-enabled cluster
 
