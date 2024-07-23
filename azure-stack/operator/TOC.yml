@@ -481,7 +481,7 @@
     - name: Azure Container Registry
       items:
       - name: Overview
-        href: container-registries-overview.md
+        href: container-registry-overview.md
       - name: Install Azure Container Registry
         href: container-registries-install.md
       - name: Manage Azure Container Registry

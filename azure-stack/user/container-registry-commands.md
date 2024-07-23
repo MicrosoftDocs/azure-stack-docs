@@ -3,7 +3,7 @@ title: Azure Container Registries supported commands
 description: Review the list of supported commands for CLI and PowerShell for Azure Container Registries on Azure Stack Hub.
 author: sethmanheim
 ms.topic: reference
-ms.date: 04/10/2024
+ms.date: 07/23/2024
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
