@@ -9,7 +9,7 @@ ms.author: robess
 
 Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios so long as each scenario is supported by Microsoft. Here are some examples of common deployment options, and the PowerShell commands needed. These aren't the only combinations available but they should give you an idea of the possibilities.
 
-For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Plan Host Networking](../concepts/host-network-requirements.md).
+For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Plan Host Networking](../hci/concepts/host-network-requirements.md).
 
 ### Fully converged intent
 
