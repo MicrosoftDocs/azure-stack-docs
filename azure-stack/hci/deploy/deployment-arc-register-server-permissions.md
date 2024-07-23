@@ -50,6 +50,7 @@ Before you begin, make sure you've completed the following prerequisites:
 - Check your Azure policies. Make sure that:
     - The Azure policies aren't blocking the installation of extensions.
     - The Azure policies aren't blocking the creation of certain resource types in a resource group.
+    - The Azure policies aren't blocking the resource deployment in certain locations.
 
 ## Register servers with Azure Arc
 
