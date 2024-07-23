@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 07/10/2024
+ms.date: 07/23/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
@@ -13,34 +13,6 @@ ms.reviewer: vlakshmanan
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
-
-## Collect logs
-
-You can collect logs to identify and troubleshoot issues with Arc VMs in your Azure Stack HCI system. Use these logs to gather key information before you contact Microsoft support for additional help.
-
-Make sure you have the latest PowerShell module for log collection. To update the PowerShell module, run the following command:
-
-```PowerShell
-#Update the PowerShell module
-Install-Module -Name ArcHci -Force -Confirm:$false -SkipPublisherCheck -AcceptLicense
-```
-
-To collect logs for Arc VMs in your Azure Stack HCI cluster, run the following command:
-
-```PowerShell
-$csv_path="<input-from-admin>"
-$VMIP_1="<input-from-admin>"
-az login --use-device-code
-Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP_1
-```
-
-Where:
-
-- **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
-
-- **$VMIP_1** is the IP address of the Arc Resource Bridge VM.
-
-- Optionally, set the `-logDir` parameter to specify the path to the directory where the generated logs are stored. If you don't specify the path or the parameter, by default the logs are stored in your current working directory.
 
 ## Troubleshoot Azure Arc VMs
 

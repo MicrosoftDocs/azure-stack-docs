@@ -1,14 +1,14 @@
 ---
-title: Troubleshoot Azure Arc VM using collected files
+title: Collect log files for Azure Arc VM on Azure Stack HCI
 description: Learn how to troubleshoot an Azure Arc VM using collected files. 
 author: alkohli
 ms.topic: how-to
-ms.date: 07/22/2024
+ms.date: 07/23/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
 
-# Troubleshoot an Azure Arc VM using collected files
+# Collect log files for Azure Arc VM on your Azure Stack HCI system.
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
