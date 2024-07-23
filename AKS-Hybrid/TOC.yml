@@ -66,14 +66,14 @@
         #   href: load-balancer-troubleshoot.md
     - name: Security and authentication
       items:
+      - name: Enable Microsoft Entra ID authentication for Kubernetes clusters with kubelogin
+        href: enable-authentication-microsoft-entra-id.md
       - name: Use Azure RBAC for Kubernetes authorization
         href: azure-rbac-23h2.md
       - name: Use Kubernetes RBAC with Microsoft Entra ID
         href: kubernetes-rbac-23h2.md
       - name: Retrieve certificate-based admin kubeconfig
         href: retrieve-admin-kubeconfig.md
-      - name: Enable Microsoft Entra ID authentication for Kubernetes clusters with kubelogin
-        href: enable-authentication-microsoft-entra-id.md
       - name: Restrict SSH access
         href: restrict-ssh-access.md
     - name: Storage
