@@ -35,8 +35,8 @@ Before you begin, make sure you've completed the following prerequisites:
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
-    - [Azure Connected Machine Onboarding](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
-    - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
+    - Azure Connected Machine Onboarding
+    - Azure Connected Machine Resource Administrator
 
     To verify that you have these roles, follow these steps in the Azure portal:
 
@@ -46,6 +46,10 @@ Before you begin, make sure you've completed the following prerequisites:
     1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the roles and permissions assigned in the deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::-->
+
+- Check your Azure policies. Make sure that:
+    - The Azure policies aren't blocking the installation of extensions.
+    - The Azure policies aren't blocking the creation of certain resource types in a resource group.
 
 ## Register servers with Azure Arc
 
