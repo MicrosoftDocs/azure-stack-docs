@@ -3,7 +3,7 @@ title: Azure Stack Hub release notes
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 author: sethmanheim
 ms.topic: article
-ms.date: 07/19/2024
+ms.date: 07/22/2024
 ms.author: sethm
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/22/2024
@@ -81,8 +81,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 - With 2406 we are announcing the general availability of the [Azure Stack Hub Standard Load Balancer](../user/standard-load-balancer-considerations.md). The Standard Load Balancer enables several new load balancing scenarios such as: standalone VMs in backend pools, HTTPs probes, high-availability ports, and TCP Reset on idle.
-- With 2406 we are announcing the general availability of [Azure Container Registry](container-registries-overview.md). Azure Container Registry is a private, secure, and close-to-compute registry for Windows container images, Linux container images, Helm charts, and other OCI artifacts. At no extra cost, it enables both connected and disconnected customers to quickly and reliably store, deploy, and manage container workloads through the user portal, PowerShell, Azure CLI, and/or Docker CLI. It also enables you to assign role-based access control (RBAC) and to create webhooks. Container Registry is now fully supported and fully integrated with other components of Azure Stack Hub, such as the Azure Kubernetes Service (AKS) engine. To install Container Registry, [follow the instructions here](container-registries-install.md).
-- With 2406 we are announcing the general availability of [Azure Site Recovery](azure-site-recovery-overview.md). Azure Site Recovery on Azure Stack Hub helps to ensure business continuity by replicating virtual machine (VM) workloads from an Azure Stack Hub primary site to a secondary Azure Stack Hub location. The GA version has a simplified deployment (no dependency services). Note that the transition from preview versions to GA requires a full reinstallation of the Azure Site Recovery solution (no upgrade path is be possible).
+- With 2406 we are announcing the general availability of [Azure Container Registry](container-registries-overview.md). Azure Container Registry is a private, secure, and close-to-compute registry for Windows container images, Linux container images, Helm charts, and other OCI artifacts. At no extra cost, it enables both connected and disconnected customers to quickly and reliably store, deploy, and manage container workloads through the user portal, PowerShell, Azure CLI, and/or Docker CLI. It also enables those customers to assign role-based access control (RBAC) and to create webhooks. Container Registry is now fully supported and fully integrated with other components of Azure Stack Hub, such as the Azure Kubernetes Service (AKS) engine. To install Container Registry, [follow the instructions here](container-registries-install.md).
+- With 2406 we are announcing the general availability of [Azure Site Recovery](azure-site-recovery-overview.md). Azure Site Recovery on Azure Stack Hub helps to ensure business continuity by replicating virtual machine (VM) workloads from a primary site to a secondary location. The GA version has a simplified deployment (no dependency services). Note that the transition from preview versions to GA requires a full reinstallation of the Azure Site Recovery solution (no upgrade path is be possible).
 
 <!-- ### Improvements -->
 
@@ -184,7 +184,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2311 release of Azure Stack Hub must be applied on the 2306 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2306.4.97](hotfix-1-2306-4-97.md)
+- [Azure Stack Hub hotfix 1.2306.4.98](hotfix-1-2306-4-98.md)
 
 ### After successfully applying the 2311 update
 
@@ -192,7 +192,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2311, if any hotfixes for 2311 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2311.3.44](hotfix-1-2311-3-44.md)
+- [Azure Stack Hub hotfix 1.2311.3.50](hotfix-1-2311-3-50.md)
 ::: moniker-end
 
 ::: moniker range="azs-2306"
@@ -247,7 +247,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2306 release of Azure Stack Hub must be applied on the 2301 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2301.3.96](hotfix-1-2301-3-96.md)
+- [Azure Stack Hub hotfix 1.2301.3.97](hotfix-1-2301-3-97.md)
 
 ### After successfully applying the 2306 update
 
@@ -255,7 +255,7 @@ When you update to a new major version (for example, 1.2108.x to 1.2206.x), the 
 
 After the installation of 2306, if any hotfixes for 2306 are subsequently released, you should install them:
 
-- [Azure Stack Hub hotfix 1.2306.4.97](hotfix-1-2306-4-97.md)
+- [Azure Stack Hub hotfix 1.2306.4.98](hotfix-1-2306-4-98.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

@@ -3,7 +3,7 @@ title: Migrate Hyper V VMs to Azure Stack HCI using Azure Migrate (preview)
 description: Learn about how to to migrate Windows and Linux VMs to your Azure Stack HCI cluster using Azure Migrate  (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 01/19/2024
+ms.date: 07/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -23,7 +23,7 @@ This article describes how to migrate the Hyper-V virtual machines (VMs) to Azur
 Before you migrate your VMs:
 
 - Make sure that you have replicated the VM on your Azure Stack HCI cluster. To replicate a VM, use the instructions in [Replicate Hyper-V VMs to Azure Stack HCI using Azure Migrate](migrate-hyperv-replicate.md).
-- Make sure the replication has completed and the migration status is **Ready to replicate**.
+- Make sure the replication has completed and the migration status is **Ready to migrate**.
 
 
 ## Migrate VMs
