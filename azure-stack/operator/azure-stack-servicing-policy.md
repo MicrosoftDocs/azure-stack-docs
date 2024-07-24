@@ -78,11 +78,11 @@ You must also have an active support agreement with the hardware partner that ma
 
 Hotfixes aren't considered major update versions. If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must update to at least the minimum supported version (N-2) to receive support.
 
-For example, if the most recent update version available is 2311 (N), the two previous update versions were 2306 and 2301, which means both 2306 (N-1) and 2301 (N-2) remain in support. However, the 2206 (and earlier) version is out of support, as 2206 was N-3 when the 2311 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
+For example, if the most recent update version available is 2406 (N), the two previous update versions were 2311 and 2306, which means both 2311 (N-1) and 2306 (N-2) remain in support. However, the 2301 (and earlier) version is out of support, as 2301 was N-3 when the 2406 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
 
+- [Azure Stack Hub 2406](./release-notes.md?preserve-view=true&view=azs-2406)
 - [Azure Stack Hub 2311](./release-notes.md?preserve-view=true&view=azs-2311)
 - [Azure Stack Hub 2306](./release-notes.md?preserve-view=true&view=azs-2306)
-- [Azure Stack Hub 2301](./release-notes.md?preserve-view=true&view=azs-2301)
 
 Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
 
