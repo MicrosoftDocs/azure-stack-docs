@@ -123,7 +123,7 @@ Network ATC modifies how you deploy host networking, not what you deploy. You ca
 
 These examples aren't the only combinations available, but they should give you an idea of the possibilities.
 
-For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Network reference patterns overview for Azure Stack HCI](../plan/network-patterns-overview.md)
+For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Network reference patterns overview for Azure Stack HCI](../plan/network-patterns-overview.md).
 
 #### Group management and compute in one intent with a separate intent for storage
 
