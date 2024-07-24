@@ -46,9 +46,9 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack Hub 2406 update](./release-notes.md?preserve-view=true&view=azs-2406)
-- [Azure Stack Hub 2311 update](./release-notes.md?preserve-view=true&view=azs-2311)
-- [Azure Stack Hub 2306 update](./release-notes.md?preserve-view=true&view=azs-2306)
+- [Azure Stack Hub 2406 update](./release-notes.md?view=azs-2406&preserve-view=true)
+- [Azure Stack Hub 2311 update](./release-notes.md?view=azs-2311&preserve-view=true)
+- [Azure Stack Hub 2306 update](./release-notes.md?view=azs-2306&preserve-view=true)
 
 ## Hotfixes
 
@@ -80,9 +80,9 @@ Hotfixes aren't considered major update versions. If your Azure Stack Hub instan
 
 For example, if the most recent update version available is 2406 (N), the two previous update versions were 2311 and 2306, which means both 2311 (N-1) and 2306 (N-2) remain in support. However, the 2301 (and earlier) version is out of support, as 2301 was N-3 when the 2406 update was released. For the current release of Azure Stack Hub, the following versions are considered in support:
 
-- [Azure Stack Hub 2406](./release-notes.md?preserve-view=true&view=azs-2406)
-- [Azure Stack Hub 2311](./release-notes.md?preserve-view=true&view=azs-2311)
-- [Azure Stack Hub 2306](./release-notes.md?preserve-view=true&view=azs-2306)
+- [Azure Stack Hub 2406](./release-notes.md?view=azs-2406&preserve-view=true)
+- [Azure Stack Hub 2311](./release-notes.md?view=azs-2311&preserve-view=true)
+- [Azure Stack Hub 2306](./release-notes.md?view=azs-2306&preserve-view=true)
 
 Microsoft software update packages are non-cumulative and require the previous update package and latest hotfix to be installed as a prerequisite. If you decide to defer one or more updates, consider the overall runtime required to update to the latest version.
 
