@@ -200,7 +200,11 @@ items:
   - name: About Upgrades
     href: upgrade/about-upgrades-23h2.md
   - name: Upgrade to version 23H2 OS
-    href: upgrade/upgrade-22h2-to-23h2.md
+    items: 
+    - name: Via PowerShell
+      href: upgrade/upgrade-22h2-to-23h2-powershell.md
+    - name: Via other methods
+      href: upgrade/upgrade-22h2-to-23h2-other-methods.md
   - name: Prepare to apply solution update
     href: upgrade/prepare-to-apply-23h2-solution-update.md
 

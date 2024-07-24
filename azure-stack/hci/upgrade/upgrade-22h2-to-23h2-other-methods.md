@@ -25,7 +25,7 @@ This article only covers the first step, which is how to upgrade the Azure Stack
 
 There are other methods to upgrade the OS that include using the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU).  Cluster aware updating orchestrates the process of applying the operating system automatatically to all the cluster members using either Windows Update or ISO media.
 
-While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2.md).
+While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-pwoershell.md).
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
