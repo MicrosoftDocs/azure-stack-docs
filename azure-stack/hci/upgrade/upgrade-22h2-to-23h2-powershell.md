@@ -1,6 +1,6 @@
 ---
-title: Upgrade Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2
-description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2.
+title: Upgrade Azure Stack HCI, version 22H2 OS to version 23H2 via PowerShell
+description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 using PowerShell.
 author: alkohli
 ms.topic: how-to
 ms.date: 07/08/2024
@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Upgrade Azure Stack HCI, version 22H2 operating system to Azure Stack HCI, version 23H2
+# Upgrade Azure Stack HCI, version 22H2 operating system to Azure Stack HCI, version 23H2 via PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
@@ -45,7 +45,8 @@ To upgrade the OS on your cluster, follow these high-level steps:
 
 Before you begin, make sure that:
 
-- You have access to an Azure Stack HCI, version 22H2 cluster that is running XXXX or higher. The cluster should be registered in Azure.
+- You have access to an Azure Stack HCI, version 22H2 cluster.
+- The cluster should be registered in Azure.
 - You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
 - You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - Make sure that all the nodes in your Azure Stack HCI, version 22H2 cluster are healthy and show as **Online**.
@@ -74,42 +75,7 @@ Follow these steps on your client to connect to one of the servers of your Azure
    [100.100.100.10]: PS C:\Users\Administrator\Documents>
    ```
 
-<!--## Step 2: Check for updates using PowerShell
-
-Use the `Invoke-CAUScan` cmdlet to scan the servers for applicable updates and get a list of the initial set of updates that are applied to each server in a specified cluster:
-
-```PowerShell
-Invoke-CauScan -ClusterName Cluster1 -CauPluginName Microsoft.WindowsUpdatePlugin -Verbose
-```
-
-Generation of the list can take a few minutes to complete. The preview list includes only an initial set of updates; it doesn't include updates that might become applicable after the initial updates are installed. -->
-
-
-<!--## Step 3: Install OS updates using PowerShell
-
-To scan servers for operating system updates and perform a full update run on the specified cluster, use the `Invoke-CAURun` cmdlet:
-
-```PowerShell
-Invoke-CauRun -ClusterName <Cluster Name> -CauPluginName Microsoft.WindowsUpdatePlugin -MaxFailedNodes 1 -MaxRetriesPerNode 3 -RequireAllNodesOnline -EnableFirewallRules -Force
-```
-
-This command performs a scan and a full updating run on your Azure Stack HCI.
-
-- This cmdlet uses the **Microsoft.WindowsUpdatePlugin** plug-in and requires that all cluster nodes be online before running this cmdlet. 
-- In addition, this cmdlet allows no more than three retries per node before marking the node as **Failed** and allows no more than one node to fail before marking the entire updating run as failed.
-- It also enables firewall rules to allow the servers to restart remotely. Because the command specifies the `Force` parameter, the cmdlet runs without displaying the confirmation prompts.
-
-The updating run process includes the following:
-
-- Scanning for and downloading applicable updates on each server in the cluster.
-- Moving currently running clustered roles off each server.
-- Installing the updates on each server.
-- Restarting the server if required by the installed updates.
-- Moving the clustered roles back to the original server.
-
-The updating run process also includes ensuring that quorum is maintained, checking for additional updates that can only be installed after the initial set of updates are installed, and saving a report of the actions taken is completed. -->
-
-## Step 3: Install new OS using PowerShell
+## Step 2: Install new OS using PowerShell
 
 To install new OS using PowerShell, follow these steps:
 
@@ -153,7 +119,7 @@ To install new OS using PowerShell, follow these steps:
 
 You're now ready to perform the [Post-installation steps](#step-5-perform-the-post-install-steps).
 
-## Step 4: Check the status of an update
+## Step 3: Check the status of an update
 
 To get the summary information about an update in progress, run the `Get-CauRun` cmdlet:
 
@@ -182,45 +148,53 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 }
 ```
 
-## Step 5: Perform the post-install steps
+## Step 4: Perform the post-install steps
 
 Once the new OS is installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
 
-1. **Update the cluster functional level.**
+1. Update the cluster functional level.
 
    We recommend that you update the cluster functional level as soon as possible. Skip this step if you installed the feature updates with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
 
-   Run the following cmdlet on any server in the cluster:
+   1. Run the following cmdlet on any server in the cluster:
 
-   ```PowerShell
-   Update-ClusterFunctionalLevel
+       ```PowerShell
+       Update-ClusterFunctionalLevel
 
-   You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
+   1. You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
 
-   > [!WARNING]
-   > After you update the cluster functional level, you can't roll back to the previous operating system version.
+       > [!WARNING]
+       > After you update the cluster functional level, you can't roll back to the previous operating system version.
 
-1. **Update the storage pool.**
+1. Update the storage pool.
 
-   After the cluster functional level has been updated, use the following cmdlet to update the storage pool. Run `Get-StoragePool` to find the FriendlyName for the storage pool representing your cluster. In this example, the FriendlyName is **S2D on hci-cluster1**:
+   1. After the cluster functional level has been updated, use the following cmdlet to identify the `FriendlyName` of the storage pool representing your cluster.
 
-   ```PowerShell
-   Update-StoragePool -FriendlyName "S2D on hci-cluster1"
-   ```
+      ```PowerShell
+       Get-StoragePool
+      ```
 
-   You'll be asked to confirm the action. At this point, new cmdlets will be fully operational on any server in the cluster.
+      In this example, the FriendlyName is **S2D on hci-cluster1**.
 
-1. **Upgrade VM configuration levels (optional).**
+   1. Run the `Update-StoragePool` cmdlet to update the storage pool version.
 
-   You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet and then starting the VMs again.
+      ```PowerShell
+       Update-StoragePool -FriendlyName "S2D on hci-cluster1"
+      ```
 
-1. **Verify that the upgraded cluster functions as expected.**
+   1. Confirm the action when prompted. At this point, new cmdlets will be fully operational on any server in the cluster.
 
-   Roles should fail over correctly and, if VM live migration is used on the cluster, VMs should successfully live migrate.
+1. (Optional) Upgrade VM configuration levels. You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet and then starting the VMs again.
 
-1. **Validate the cluster.**
+   1. Verify that the upgraded cluster functions as expected.
 
-   Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
+       Roles should fail over correctly and, if VM live migration is used on the cluster, VMs should successfully live migrate.
+
+   1. Validate the cluster.
+
+       Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
+
+You're now ready to [Prepare to apply the solution update](./prepare-to-apply-23h2-solution-update.md).
 
 ## Next steps
 
