@@ -134,13 +134,18 @@ In this example we have two intents that are managed across cluster nodes.
 
     :::image type="content" source="media/migrate-cluster-to-network-atc/group-management-and-compute.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-management-and-compute.png":::
 
-    Here's the PowerShell example to implement this host network pattern:
+    Here's an example to implement this host network pattern:
+
+    <details>
+    <summary>Expand this section to see the PowerShell commands.
 
     ```PowerShell
     Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC1, pNIC2
     
     Add-NetIntent -Name Storage -Storage -AdapterName pNIC3, pNIC4
     ```
+
+    </details>
 
 #### Group all traffic on a single intent
 
@@ -150,11 +155,16 @@ In this example a single intent is managed across cluster nodes.
 
     :::image type="content" source="media/migrate-cluster-to-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-all-traffic.png":::
 
-    Here's the PowerShell example to implement this host network pattern:
+    Here's an example to implement this host network pattern:
+
+    <details>
+    <summary>Expand this section to see the PowerShell command.
 
     ```powershell
     Add-Netintent -Name MgmtComputeStorage -Management -Compute -Storage -AdapterName pNIC1, pNIC2
     ```
+
+    </details>
 
 #### Group the compute and storage traffic on one intent with a separate management intent
 
@@ -165,13 +175,18 @@ In this example we have two intents managed across cluster nodes.
 
     :::image type="content" source="media/migrate-cluster-to-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-compute-and-storage.png":::
 
-    Here's the PowerShell example to implement this host network pattern:
+    Here's an example to implement this host network pattern:
+
+    <details>
+    <summary>Expand this section to see the PowerShell commands.
 
     ```powershell
     Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
     
     Add-NetIntent -Name Compute_Storage -Compute -Storage -AdapterName pNIC3, pNIC4
     ```
+
+    </details>
 
 #### Fully disaggregated host networking
 
@@ -183,7 +198,10 @@ In this example we have three intents that are managed across cluster nodes.
 
     :::image type="content" source="media/migrate-cluster-to-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/fully-disaggregated.png":::
 
-    Here's the PowerShell example to implement this host network pattern:
+    Here's an example to implement this host network pattern:
+
+    <details>
+    <summary>Expand this section to see the PowerShell commands.
 
     ```powershell
     Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
@@ -192,6 +210,8 @@ In this example we have three intents that are managed across cluster nodes.
 
     Add-NetIntent -Name Storage -Storage -AdapterName pNIC5, pNIC6
     ```
+
+    </details>
 
 ### Step 7: Verify the deployment on one node
 
@@ -204,6 +224,9 @@ Get-NetIntentStatus -Name <IntentName>
 ```
 
 Here's an example of the output:
+
+<details>
+<summary>Expand this section to see the output
 
 ```console
 
@@ -224,6 +247,8 @@ Progress                    : 1 of 1
 ConfigurationStatus         : Success
 ProvisioningStatus          : Completed
 ```
+
+</details>
 
 Ensure that each intent added has an entry for the host you're working on. Also, make sure the **ConfigurationStatus** shows **Success**.
 
