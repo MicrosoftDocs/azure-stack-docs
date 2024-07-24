@@ -136,16 +136,11 @@ In this example, we have two intents that are managed across cluster nodes.
 
     Here's an example to implement this host network pattern:
 
-    <details>
-    <summary>Expand this section to see commands.</summary>
-
     ```PowerShell
     Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC1, pNIC2
     
     Add-NetIntent -Name Storage -Storage -AdapterName pNIC3, pNIC4
     ```
-
-    </details>
 
 #### Group all traffic on a single intent
 
@@ -157,14 +152,9 @@ In this example, a single intent is managed across cluster nodes.
 
     Here's an example to implement this host network pattern:
 
-    <details>
-    <summary>Expand this section to see command.</summary>
-
     ```powershell
     Add-Netintent -Name MgmtComputeStorage -Management -Compute -Storage -AdapterName pNIC1, pNIC2
     ```
-
-    </details>
 
 #### Group the compute and storage traffic on one intent with a separate management intent
 
@@ -177,16 +167,11 @@ In this example, we have two intents managed across cluster nodes.
 
     Here's an example to implement this host network pattern:
 
-    <details>
-    <summary>Expand this section to see commands.</summary>
-
     ```powershell
     Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
     
     Add-NetIntent -Name Compute_Storage -Compute -Storage -AdapterName pNIC3, pNIC4
     ```
-
-    </details>
 
 #### Fully disaggregated host networking
 
@@ -200,9 +185,6 @@ In this example, we have three intents that are managed across cluster nodes.
 
     Here's an example to implement this host network pattern:
 
-    <details>
-    <summary>Expand this section to see commands.</summary>
-
     ```powershell
     Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
     
@@ -210,8 +192,6 @@ In this example, we have three intents that are managed across cluster nodes.
 
     Add-NetIntent -Name Storage -Storage -AdapterName pNIC5, pNIC6
     ```
-
-    </details>
 
 ### Step 7: Verify the deployment on one node
 
@@ -224,9 +204,6 @@ Get-NetIntentStatus -Name <IntentName>
 ```
 
 Here's an example of the output:
-
-<details>
-<summary>Expand this section to see the output.</summary>
 
 ```console
 
@@ -247,8 +224,6 @@ Progress                    : 1 of 1
 ConfigurationStatus         : Success
 ProvisioningStatus          : Completed
 ```
-
-</details>
 
 Ensure that each intent added has an entry for the host you're working on. Also, make sure the **ConfigurationStatus** shows **Success**.
 
