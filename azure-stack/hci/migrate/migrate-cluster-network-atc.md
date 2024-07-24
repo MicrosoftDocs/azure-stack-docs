@@ -156,7 +156,7 @@ In this example, a single intent is managed across cluster nodes.
     Add-Netintent -Name MgmtComputeStorage -Management -Compute -Storage -AdapterName pNIC1, pNIC2
     ```
 
-#### Group the compute and storage traffic on one intent with a separate management intent
+#### Group compute and storage traffic on one intent with a separate management intent
 
 In this example, we have two intents managed across cluster nodes.
 
