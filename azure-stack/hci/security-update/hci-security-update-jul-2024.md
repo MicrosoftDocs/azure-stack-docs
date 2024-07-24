@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
-This article describes the OS security update for Azure Stack HCI, version 23H2 that was released on July 16, 2024 and applies to OS build 25398.1005.
+This article describes the OS security update for Azure Stack HCI, version 23H2 that was released on July 16, 2024 and applies to OS build 25398.1009.
 
 <!--For an overview of Azure Stack HCI, version 23H2 release notes, see the [update history](https://support.microsoft.com/topic/release-notes-for-azure-stack-hci-version-23h2-018b9b10-a75b-4ad7-b9d1-7755f81e5b0b).-->
 
