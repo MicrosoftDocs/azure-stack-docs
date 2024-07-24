@@ -153,7 +153,7 @@ In this example a single intent is managed across cluster nodes.
 
 1. **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/migrate-cluster-to-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-all-traffic.png":::
+    :::image type="content" source="media/migrate-cluster-to-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with all traffic on a single intent." lightbox="media/migrate-cluster-to-network-atc/group-all-traffic.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -173,7 +173,7 @@ In this example we have two intents managed across cluster nodes.
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute and Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/migrate-cluster-to-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-compute-and-storage.png":::
+    :::image type="content" source="media/migrate-cluster-to-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped compute and storage intent." lightbox="media/migrate-cluster-to-network-atc/group-compute-and-storage.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -196,7 +196,7 @@ In this example we have three intents that are managed across cluster nodes.
 2. **Compute**: This intent uses a dedicated pair of network adapter ports.
 3. **Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/migrate-cluster-to-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/fully-disaggregated.png":::
+    :::image type="content" source="media/migrate-cluster-to-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a fully disaggregaged intent." lightbox="media/migrate-cluster-to-network-atc/fully-disaggregated.png":::
 
     Here's an example to implement this host network pattern:
 
