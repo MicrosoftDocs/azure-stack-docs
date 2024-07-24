@@ -137,7 +137,7 @@ In this example we have two intents that are managed across cluster nodes.
     Here's an example to implement this host network pattern:
 
     <details>
-    <summary>Expand this section to see the commands.</summary>
+    <summary>Expand this section to see commands.</summary>
 
     ```PowerShell
     Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC1, pNIC2
@@ -158,7 +158,7 @@ In this example a single intent is managed across cluster nodes.
     Here's an example to implement this host network pattern:
 
     <details>
-    <summary>Expand this section to see the command.</summary>
+    <summary>Expand this section to see command.</summary>
 
     ```powershell
     Add-Netintent -Name MgmtComputeStorage -Management -Compute -Storage -AdapterName pNIC1, pNIC2
@@ -178,7 +178,7 @@ In this example we have two intents managed across cluster nodes.
     Here's an example to implement this host network pattern:
 
     <details>
-    <summary>Expand this section to see the commands.</summary>
+    <summary>Expand this section to see commands.</summary>
 
     ```powershell
     Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
@@ -201,7 +201,7 @@ In this example we have three intents that are managed across cluster nodes.
     Here's an example to implement this host network pattern:
 
     <details>
-    <summary>Expand this section to see the commands.</summary>
+    <summary>Expand this section to see commands.</summary>
 
     ```powershell
     Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
