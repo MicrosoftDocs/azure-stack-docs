@@ -1,12 +1,12 @@
 ---
 title:  Migrate an existing Azure Stack HCI cluster to Network ATC
-description: This article describes how to migrate an existing Azure Stack HCI cluster to Network ATC
+description: This article describes how to migrate an existing Azure Stack HCI, version 23H2 cluster to Network ATC
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.lastreviewed: 07/02/2024
-ms.date: 07/02/2024
+ms.lastreviewed: 07/24/2024
+ms.date: 07/24/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully migrate their existing Azure Stack HCI clusters to Network ATC.
 ---
 
@@ -121,13 +121,13 @@ There are various intents that you can add. Identify the intent or intents you'd
 
 Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios if each scenario is supported by Microsoft. Here are some examples of common host networking patterns used in Azure Stack HCI 23H2 and the required PowerShell commands.
 
-These aren't the only combinations available, but they should give you an idea of the possibilities.
+These examples aren't the only combinations available, but they should give you an idea of the possibilities.
 
 For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Network reference patterns overview for Azure Stack HCI](../plan/network-patterns-overview.md)
 
 #### Group management and compute in one intent with a separate intent for storage
 
-In this example we have two intents that are managed across cluster nodes.
+In this example, we have two intents that are managed across cluster nodes.
 
 1. **Management and compute**: This intent uses a dedicated pair of network adapter ports.
 2. **Storage**: This intent uses a dedicated pair of network adapter ports.
@@ -149,7 +149,7 @@ In this example we have two intents that are managed across cluster nodes.
 
 #### Group all traffic on a single intent
 
-In this example a single intent is managed across cluster nodes.
+In this example, a single intent is managed across cluster nodes.
 
 1. **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
 
@@ -168,7 +168,7 @@ In this example a single intent is managed across cluster nodes.
 
 #### Group the compute and storage traffic on one intent with a separate management intent
 
-In this example we have two intents managed across cluster nodes.
+In this example, we have two intents managed across cluster nodes.
 
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute and Storage**: This intent uses a dedicated pair of network adapter ports.
@@ -190,13 +190,13 @@ In this example we have two intents managed across cluster nodes.
 
 #### Fully disaggregated host networking
 
-In this example we have three intents that are managed across cluster nodes.
+In this example, we have three intents that are managed across cluster nodes.
 
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute**: This intent uses a dedicated pair of network adapter ports.
 3. **Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/migrate-cluster-to-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a fully disaggregaged intent." lightbox="media/migrate-cluster-to-network-atc/fully-disaggregated.png":::
+    :::image type="content" source="media/migrate-cluster-to-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a fully disaggregated intent." lightbox="media/migrate-cluster-to-network-atc/fully-disaggregated.png":::
 
     Here's an example to implement this host network pattern:
 
