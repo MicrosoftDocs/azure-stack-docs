@@ -21,9 +21,9 @@ The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following st
 1. Prepare for the solution update.
 1. Apply the solution update.
 
-This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using PowerShell. PowerShell is the recommended method to upgrade the OS.
+This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using Windows Admin Center. While you can use Windows Admin Center, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2.md).
 
-There are other methods to upgrade the OS that include using Windows Admin Center, the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU). For more information about these methods, see [Tools used to upgrade the OS](#tools-used-to-upgrade-the-os).
+There are other methods to upgrade the OS that include using the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU). For more information about these methods, see [Other methods used to upgrade the OS](./upgrade-22h2-to-23h2-other-methods.mds).
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
@@ -39,7 +39,20 @@ To upgrade the OS on your cluster, follow these high-level steps:
 1. Check for the available updates using PowerShell.
 1. Install new OS using PowerShell.
 1. Check the status of the updates.
-1. After the OS is upgraded, perform post-installation steps.
+1. After the OS is upgraded, perform post-installation steps for feature updates.
+1. Other methods to upgrade the OS include:
+   1. Upgrade via Windows Admin Center.
+   1. Manual upgrade of a Failover Cluster using SConfig.
+   1. Fast, offline upgrade of all servers in a cluster.
+
+<!--## Tools used to upgrade the OS
+
+There are different tools to upgrade the OS that include but aren't limited to builtin tools like Cluster aware updating (CAU) and Server Configuration tool (SConfig). Cluster aware updating orchestrates the process of applying the operating system automatatically to all the cluster members using either Windows Update or ISO media.
+
+For more information about available tools, see:
+
+- [Cluster operating system rolling upgrade](/windows-server/failover-clustering/cluster-operating-system-rolling-upgrade).
+- [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).-->
 
 ## Complete prerequisites
 
@@ -132,7 +145,7 @@ To install new OS using PowerShell, follow these steps:
    Test-Cluster
    ```
 
-1. Check for the available updates:
+1. Check for the feature updates:
 
    ```PowerShell
    Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
@@ -151,7 +164,7 @@ To install new OS using PowerShell, follow these steps:
 
 1. Check for any further updates and install them.
 
-You're now ready to perform the [Post-installation steps](#step-5-perform-the-post-install-steps).
+You're now ready to perform the [post-installation steps for feature updates](#post-installation-steps-for-feature-updates).
 
 ## Step 4: Check the status of an update
 
@@ -221,6 +234,47 @@ Once the new OS is installed, you'll need to update the cluster functional level
 1. **Validate the cluster.**
 
    Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
+
+<!--## Perform a manual feature update of a Failover Cluster using SCONFIG
+
+To do a manual feature update of a failover cluster, use the **SCONFIG** tool and Failover Clustering PowerShell cmdlets. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig)
+
+For each node in the cluster, run these commands on the target node:
+
+1. `Suspend-ClusterNode -Node<node> -Drain`
+
+    Check suspend using `Get-ClusterGroup`--nothing should be running on the target node.
+
+    Run the **SCONFIG** option 6.3 on the target node.
+
+    After the target node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
+
+2. `Resume-ClusterNode -Node <nodename> -Failback`
+
+When all the nodes are upgraded, run these two cmdlets:
+
+- `Update-ClusterFunctional Level`
+
+- `Update-StoragePool`
+
+## Perform a fast, offline update of all servers in a cluster
+
+This method allows you to take all the servers in a cluster down at once and update them all at the same time. This saves time during the updating process, but the trade-off is downtime for the hosted resources.
+
+If there is a critical security update that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
+
+1. Plan your maintenance window.
+1. Take the virtual disks offline.
+1. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the cluster.
+1. Set the cluster service to **Disabled** in Services.msc on each server. This prevents the cluster service from starting up while being updated.
+1. Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time: there's no need to wait because the cluster is down.
+1. Restart the servers and ensure everything looks good.
+1. Set the cluster service back to **Automatic** on each server.
+1. Start the cluster. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
+1. Give it a few minutes.  Make sure the storage pool is healthy.
+1. Bring the virtual disks back online.
+1. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.-->
+
 
 ## Next steps
 
