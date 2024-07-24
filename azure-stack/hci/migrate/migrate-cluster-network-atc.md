@@ -12,7 +12,7 @@ ms.date: 07/02/2024
 
 # Migrate an existing Azure Stack HCI cluster to Network ATC
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article provides information on how to migrate your existing Azure Stack HCI cluster to Network ATC so that you can take advantage of several benefits. We also describe how to utilize this configuration across all new deployments.
 
@@ -51,7 +51,7 @@ Install-WindowsFeature -Name NetworkATC
 
 ### Step 2: Pause one node in the cluster
 
-When you pause one node in the cluster, all workloads are moved to other nodes, making your machine available for changes. The paused node is then migrated to NetworkATC. To pause your cluster node, use the following command:
+When you pause one node in the cluster, all workloads are moved to other nodes, making your machine available for changes. The paused node is then migrated to Network ATC. To pause your cluster node, use the following command:
 
 ```powershell
 Suspend-ClusterNode
@@ -66,7 +66,7 @@ Set-Service -Name NetworkATC -StartupType Disabled
 Stop-Service -Name NetworkATC
 ```
 
-### Step 4: Remove the existing configuration
+### Step 4: Remove the existing configuration on the paused node without running VMs
 
 In this step, we eliminate any previous configurations, such as VMSwitch, Data Center Bridging (NetQos) policy for RDMA traffic, and Load Balancing Failover (LBFO), which might interfere with Network ATC’s ability to implement the new intent. Although Network ATC attempts to adopt existing configurations with matching names; including NetQos and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
@@ -101,7 +101,7 @@ If your nodes were configured via Virtual Machine Manager (VMM), those configura
 
 As a precaution, to control the speed of the rollout, we paused the node in step 2 and stopped or disabled the Network ATC service in step 3. Since Network ATC intents are implemented cluster wide, you should only need to perform this step once.
 
-To start the Network ATC service, on this node only, run the following command:
+To start the Network ATC service, on the paused node only, run the following command:
 
 ```powershell
 Start-Service -Name NetworkATC
@@ -117,9 +117,81 @@ Set-Service -Name NetworkATC -StartupType Automatic
 
 There are various intents that you can add. Identify the intent or intents you'd like using the examples in the next section.
 
-[!INCLUDE [migrate-cluster-network-atc-intent](../../includes/migrate-cluster-network-atc-intent.md)]
+### Example intents
 
-For more information on Network ATC, see [Deploy host networking with Network ATC](../deploy/network-atc.md).
+Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios if each scenario is supported by Microsoft. Here are some examples of common host networking patterns used in Azure Stack HCI 23H2 and the required PowerShell commands.
+
+These aren't the only combinations available, but they should give you an idea of the possibilities.
+
+For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Network reference patterns overview for Azure Stack HCI](../plan/network-patterns-overview.md)
+
+#### Group management and compute in one intent with a separate intent for storage
+
+In this example we have two intents that are managed across cluster nodes.
+
+1. **Management and compute**: This intent uses a dedicated pair of network adapter ports.
+2. **Storage**: This intent uses a dedicated pair of network adapter ports.
+
+    :::image type="content" source="media/migrate-cluster-to-network-atc/group-management-and-compute.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-management-and-compute.png":::
+
+    Here's the PowerShell example to implement this host network pattern:
+
+    ```PowerShell
+    Add-NetIntent -Name Management_Compute -Management -Compute -AdapterName pNIC1, pNIC2
+    
+    Add-NetIntent -Name Storage -Storage -AdapterName pNIC3, pNIC4
+    ```
+
+#### Group all traffic on a single intent
+
+In this example a single intent is managed across cluster nodes.
+
+1. **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
+
+    :::image type="content" source="media/migrate-cluster-to-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-all-traffic.png":::
+
+    Here's the PowerShell example to implement this host network pattern:
+
+    ```powershell
+    Add-Netintent -Name MgmtComputeStorage -Management -Compute -Storage -AdapterName pNIC1, pNIC2
+    ```
+
+#### Group the compute and storage traffic on one intent with a separate management intent
+
+In this example we have two intents managed across cluster nodes.
+
+1. **Management**: This intent uses a dedicated pair of network adapter ports.
+2. **Compute and Storage**: This intent uses a dedicated pair of network adapter ports.
+
+    :::image type="content" source="media/migrate-cluster-to-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/group-compute-and-storage.png":::
+
+    Here's the PowerShell example to implement this host network pattern:
+
+    ```powershell
+    Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
+    
+    Add-NetIntent -Name Compute_Storage -Compute -Storage -AdapterName pNIC3, pNIC4
+    ```
+
+#### Fully disaggregated host networking
+
+In this example we have three intents that are managed across cluster nodes.
+
+1. **Management**: This intent uses a dedicated pair of network adapter ports.
+2. **Compute**: This intent uses a dedicated pair of network adapter ports.
+3. **Storage**: This intent uses a dedicated pair of network adapter ports.
+
+    :::image type="content" source="media/migrate-cluster-to-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/migrate-cluster-to-network-atc/fully-disaggregated.png":::
+
+    Here's the PowerShell example to implement this host network pattern:
+
+    ```powershell
+    Add-NetIntent -Name Mgmt -Management -AdapterName pNIC1, pNIC2
+    
+    Add-NetIntent -Name Compute -Compute -AdapterName pNIC3, pNIC4
+
+    Add-NetIntent -Name Storage -Storage -AdapterName pNIC5, pNIC6
+    ```
 
 ### Step 7: Verify the deployment on one node
 
@@ -131,7 +203,7 @@ To verify your node's successful deployment of the intents submitted in step 5, 
 Get-NetIntentStatus -Name <IntentName>
 ```
 
-Here's an example:
+Here's an example of the output:
 
 ```console
 
@@ -164,17 +236,17 @@ In this step, you move from the node deployed with Network ATC to the next node 
 This change is a non-disruptive and can be done on all nodes at the same time, using the following command.
 
 ```powershell
-#Run on the node where you did configure Network ATC
-Get-vmswitch|ft name
+#Run on the node where you configured Network ATC
+Get-vmswitch | ft name
 
-#Run on the next node to rename virtual switch
+#Run on the next node to rename the virtual switch
 Rename-VMSwitch -Name 'ExistingName' -NewName 'NewATCName'
 ```
 
 After your switch is renamed, disconnect and reconnect your vNICs for the VSwitch name change to go through. Once the change goes through, on each node, run the following commands:
 
 ```powershell
-$VMSW=Get-VMSwitch
+$VMSW = Get-VMSwitch
 $VMs = get-vm
 $VMs | %{Get-VMNetworkAdapter -VMName $_.name | Disconnect-VMNetworkAdapter ; Get-VMNetworkAdapter -VMName $_.name | Connect-VMNetworkAdapter -SwitchName $VMSW.name}
 ```
