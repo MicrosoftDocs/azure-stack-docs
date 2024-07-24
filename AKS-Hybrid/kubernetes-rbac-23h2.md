@@ -27,7 +27,7 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you must have the following prerequisites:
 
 - An AKS enabled by Azure Arc cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
-- Access to the required module and command-line module installed to perform.
+- You need the Azure CLI installed and configured. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
 - **Azure CLI and the connectedk8s extension**. The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`. Also, install the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) in order to open a channel to your Kubernetes cluster. For installation instructions, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
 - **Kubectl**. The Kubernetes command-line tool, **kubectl**, enables you to run commands that target your Kubernetes clusters. To check whether you have installed kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`. For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
 - You can access your Kubernetes cluster with the given permissions either with direct mode or proxy mode.
@@ -68,7 +68,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 1. Use the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command to get the cluster admin credentials:
 
    ```azurecli
-   az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin
+   az aksarc get-credentials --name "$aks_cluster_name" --resource-group "$resource_group_name" --admin
    ```
 
 1. Create a namespace in the Kubernetes cluster using the [`kubectl create namespace`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
@@ -194,7 +194,7 @@ To run this Azure CLI command, you need the **Microsoft.HybridContainerService/p
 
 
 ```azurecli
-az aksarc get-credentials -g "$resource_group_name" -n $aks_cluster_name --file <file-name>
+az aksarc get-credentials -g $resource_group_name -n $aks_cluster_name --file <file-name>
 ```
 
 Now, you can use kubectl manage your cluster. For example, you can list the nodes in your cluster using `kubectl get nodes`. The first time you run it, you must sign in, as shown in the following example:
@@ -213,7 +213,7 @@ Run the following steps on another client device.
 2. Get the cluster connect `kubeconfig` needed to communicate with the cluster from anywhere (from even outside the firewall surrounding the cluster):
 
      ```azurecli
-     az connectedk8s proxy -n $CLUSTER_NAME -g $RESOURCE_GROUP
+     az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name
      ```
      
      > [!NOTE]
