@@ -55,9 +55,9 @@ You can use the [create workflow](create-file-system-portal.md) in Azure portal 
 
 Once you decide on configuration options, you can create a template file. The template file is a JSON or Bicep file that contains the configuration details for your Azure Managed Lustre file system. This section explains the property values you can use to configure your file system for deployment.
 
-For example files that contain all possible configuration options, see [Sample JSON file](#sample-json-files) and [Sample Bicep file](#sample-bicep-file).
+For example files that contain all possible configuration options, see [JSON example](#json-example) and [Bicep example](#bicep-example).
 
-### Property values
+### Template property values
 
 This section describes the information you need to include in your Azure Resource Manager template files to create an Azure Managed Lustre file system. The exact syntax is different between Bicep and JSON, so consult the examples for the literal values.
 
