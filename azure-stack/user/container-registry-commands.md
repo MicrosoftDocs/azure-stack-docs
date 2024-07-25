@@ -3,7 +3,7 @@ title: Azure Container Registries supported commands
 description: Review the list of supported commands for CLI and PowerShell for Azure Container Registries on Azure Stack Hub.
 author: sethmanheim
 ms.topic: reference
-ms.date: 07/23/2024
+ms.date: 07/25/2024
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
@@ -14,7 +14,7 @@ ms.lastreviewed: 04/10/2024
 
 # Azure Container Registry supported commands on Azure Stack Hub
 
-Azure Container Registry (ACS) on Azure Stack Hub supports a subset of the global Azure features. For more information, see the [overview](container-registry-overview.md).
+Azure Container Registry on Azure Stack Hub supports a subset of the global Azure features. For more information, see the [overview](container-registry-overview.md).
 
 ## Supported Azure Container Registry CLI commands
 
@@ -101,4 +101,4 @@ Some supported commands have optional parameters that are not supported on Azure
 
 ## Next steps
 
-Learn more about the [Azure Container Registry on Azure Stack Hub](container-registry-overview.md)
+Learn more about [Azure Container Registry on Azure Stack Hub](container-registry-overview.md)
