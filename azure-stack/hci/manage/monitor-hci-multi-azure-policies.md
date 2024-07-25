@@ -12,441 +12,732 @@ ms.date: 01/31/2024
 
 # Enable Insights for Azure Stack HCI clusters at scale using Azure policies
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This document describes how to enable Insights at scale on Azure Stack HCI clusters using Azure policies. To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single.md).
+This document describes how to enable Insights for Azure Stack HCI at scale using Azure policies. To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single.md).
 
 ## About Azure policies to enable Insights at scale
 
-In order to monitor Azure Stack HCI systems at scale with Insights, you need to enable Insights for each cluster. To simplify the process of enabling Insights at scale, you can use Azure Policy to automatically enable Insights for both new and existing clusters.
+In order to monitor Azure Stack HCI systems at scale with Insights, you need to enable Insights for each cluster. To simplify the process, you can use Azure policies to automatically enable Insights at scale at the subscription or resource group level. This section describes the sample policies and provide the policy definition that you can use to create policies for your scenarios.
 
-You can enable Insights for Azure Stack HCI clusters at scale at the resource level using the following builtin Azure policies:
+### Policy to repair AMA
 
-- Repair. This policy is used only for Azure Stack HCI clusters that are registered before Nov 2023. You must apply this policy before other policies to ensure that AMA picks up the correct resource ID. To repair the cluster, uninstall AMA and then apply Repair policy for each node. For more information check: Monitor a single Azure Stack HCI cluster with Insights - Azure Stack HCI | Microsoft Learn. 
-- Install AMA. 
-- DCRA
+For Azure Stack HCI clusters registered before Nov 2023, you need to repair cluster registration and Azure Monitor Agent (AMA) before configuring Insights again. For details, see [Troubleshoot clusters registered before November 2023](#troubleshoot-clusters-registered-before-november-2023).
 
-### Repair Policy
+To repair the cluster, uninstall AMA and then apply the repair Azure policy.
 
-The Repair policy removes registry key if one exists. Registry key helps in determining the resource ID for which AMA will be collecting data. You must uninstall AMA before applying this policy as it helps in setting the resource ID for AMA. If uninstallation is not done, and policy is applied directly, you might not see any data.
+The repair policy removes the registry key, if present, which determines the resource ID for which AMA collects data.
 
-Note: Repair policy should be applied before other policies to ensure that AMA picks up the correct resource ID.
+Keep in mind the following things before applying this policy:
 
+- This policy is applicable only to Azure Stack HCI, version 22H2 clusters. Apply it before any other policies to ensure AMA picks up the correct resource ID.
+- Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear.
 
-### Install AMA Policy
-
-This policy installs the `AzureMonitoringAgent` extension on Azure Stack HCI clusters. This policy is applied at the cluster level and ensures the agent is deployed if it doesn't already exist.
-
-###  DCRA Policy
-
-## Enable Insights using builtin Azure policies
-
-Prerequisites
-
-- Access to the Azure Stack HCI clusters.
-- To apply Azure policies, you must have the **Guest Configuration Resource Contributor** role.
-
-
-## View health, performance, and usage insights
-
-Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
-
-You can access Insights from **Azure Monitor > Insights hub > Azure Stack HCI**. You will see the following tabs to toggle between views: **Add to monitoring, Cluster health, Servers, Virtual machines, Storage**.
-
-### Filtering results
-
-The visualization can be filtered across subscriptions. You can filter the results based on the following drop-down menus:
-
-- **Time range:** This filter allows you to select a range for trend view. The default value is **Last 24 hours**.
-- **Subscriptions:**  Shows the subscriptions that have registered Azure Stack HCI clusters. You can select multiple subscriptions in this filter.
-- **HCI clusters:** Lists the registered Azure Stack HCI clusters that have Logs and Monitoring capabilities enabled in the selected time range. You can select multiple clusters from this filter.
-- **Resource groups:** This filter allows you to select all the clusters within a resource group.
-
-## Add to monitoring
-
-This feature provides details of clusters that are not monitored by the user. To start monitoring a cluster, select it to open that cluster, and then select **Capabilities > Insights**. If you don't see your cluster, make sure it has recently connected to Azure.
-
-:::image type="content" source="media/monitor-hci-multi/add-to-monitoring.png" alt-text="Screenshot for selecting cluster for monitoring." lightbox="media/monitor-hci-multi/add-to-monitoring.png":::
-
-| Column | Description | Example |
-|--|--|--|
-| Cluster | The name of the cluster. | 27cls1 |
-| Azure connection status | The HCI resource status. | Connected |
-| OS version | The operating system build on the server. | 10.0.20348.10131 |
-
-By default, the grid view shows the first 250 rows. You can set the value by editing the grid rows as shown in the following image:
-
-:::image type="content" source="media/monitor-hci-multi/grid-rows.png" alt-text="Screenshot showing the screen for setting grid values." lightbox="media/monitor-hci-multi/grid-rows.png":::
-
-You can export the details in Excel by selecting **Export to Excel** as shown in the following image:
-
-:::image type="content" source="media/monitor-hci-multi/export.png" alt-text="Screenshot showing the link for exporting to Excel." lightbox="media/monitor-hci-multi/export.png":::
-
-Excel will provide Azure connection status as follows:
-
-- 0: Not Registered
-- 1: Disconnected
-- 2: Not Recently
-- 3: Connected
-
-### Cluster health
-
-This view provides an overview of the health of clusters.
-
-:::image type="content" source="media/monitor-hci-multi/cluster-health.png" alt-text="Screenshot showing cluster health overview information." lightbox="media/monitor-hci-multi/cluster-health.png":::
-
-| Column | Description | Example |
-|--|--|--|
-| Cluster | The name of the cluster. | 27cls1 |
-| Last updated | The timestamp of when server was last updated. | 4/9/2022, 12:15:42 PM |
-| Status | Provides health of server resources in the cluster. It can be healthy, warning, critical, or other. | Healthy |
-| Faulting resource | Description of which resource caused the fault. | Server, StoragePool, Subsystem |
-| Total servers | The number of servers within a cluster. | 4 |
-
-If your cluster is missing or showing the status **Other**, go to the **Log Analytics workspace** used for the cluster and make sure that the **Agent configuration** is capturing data from
-the **microsoft-windows-health/operational** log. Also make sure the clusters have connected recently to Azure, and check that the clusters aren't filtered out in this workbook.
-
-#### Server
-
-This view provides an overview of server health and performance, and usage of selected clusters. This view is built using the [server event ID 3000](/azure-stack/hci/manage/monitor-hci-multi#server-event-3000-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to see the node health status. You can interact with the cluster and server resource to navigate to the respective resource page.
-
-:::image type="content" source="media/monitor-hci-multi/server-health.png" alt-text="Screenshot showing health of servers." lightbox="media/monitor-hci-multi/server-health.png":::
-
-#### Virtual machines
-
-This view provides the state of all the VMs in the selected cluster. The view is built using the [virtual machine event ID 3003](/azure-stack/hci/manage/monitor-hci-multi#virtual-machine-event-3003-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. Each row can be further expanded to view the distribution of VMs across servers in the cluster. You can interact with the cluster and node resource to navigate to the respective resource page.
-
-:::image type="content" source="media/monitor-hci-multi/virtual-machine-state.png" alt-text="Screenshot showing health of virtual machines." lightbox="media/monitor-hci-multi/virtual-machine-state.png":::
-
-| Metric | Description | Example |
-|--|--|--|
-| Cluster > Server | The name of the cluster. On expansion, it shows the servers within the cluster. | Sample-VM-1 |
-| Last Updated | The datetimestamp of when the server was last updated. | 4/9/2022, 12:24:02 PM |
-| Total VMs | The number of VMs in a server node within a cluster. | 1 of 2 running |
-| Running | The number of VMs running in a server node within a cluster. | 2 |
-| Stopped | The number of VMs stopped in a server node within a cluster. | 3 |
-| Failed | The number of VMs failed in a server node within a cluster. | 2 |
-| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it is considered as "Other." | 2 |
-
-#### Storage
-
-This view shows the health of volumes, usage, and performance across monitored clusters. Expand a cluster to see the state of individual
-volumes. This view is built using the [volume event ID 3002](/azure-stack/hci/manage/monitor-hci-multi#volume-event-3002-rendereddescription-column-value) of the Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. The tiles on the top provide an overview of the health of storage.
-
-:::image type="content" source="media/monitor-hci-multi/volume-health.png" alt-text="Screenshot showing health of storage volumes." lightbox="media/monitor-hci-multi/volume-health.png":::
-
-| Metric | Description | Example |
-|--|--|--|
-| Cluster > Volume | The name of the cluster. On expansion, it shows the volumes within a cluster. | AltaylCluster1 > ClusterPerformanceHistory |
-| Last updated | The datetimestamp of when the storage was last updated. | 4/14/2022, 2:58:55 PM |
-| Volume health | The status of the volume. It can be healthy, warning, critical, or other. | Healthy |
-| Size | The total capacity of the device in bytes during the reporting period. | 25B |
-| Usage | The percentage of available capacity during the reporting period. | 23.54% |
-| Iops | Input/output operations per second. | 45/s |
-| Trend | The IOPS trend. |  |
-| Throughput | Number of bytes per second the Application Gateway has served. | 5B/s |
-| Trend (B/s) | The throughput trend. |  |
-| Average Latency | Latency is the average time it takes for the I/O request to be completed. | 334 μs |
-
-## Customize Insights
-
-Because the user experience is built on top of Azure Monitor workbook templates, users can edit the visualizations and queries and save them as a customized workbook.
-
-If you are using the visualization from **Azure Monitor > Insights hub > Azure Stack HCI**, select **Customize > Edit > Save As** to save a copy of your modified version to a custom workbook.
-
-Workbooks are saved within a resource group. Everyone with access to the resource group can access the customized workbook.
-
-Most queries are written using Kusto Query Language (KQL). Some queries are written using the Resource Graph Query. For more information, see the following articles:
-
-- [Azure Monitor Workbooks](/azure/azure-monitor/visualize/workbooks-overview)
-- [Getting started with Kusto](/azure/data-explorer/kusto/concepts/)
-- [Starter Resource Graph query samples](/azure/governance/resource-graph/samples/starter?tabs=azure-cli)
-
-## Support
-
-To open a support ticket for Insights, use the service type **Insights for Azure Stack HCI** under **Monitoring & Management**.
-
-## Event Log Channel
-
-Insights and monitoring views are based on Microsoft-Windows-SDDC-Management/Operational Windows Event Log Channel. When monitoring is enabled, the data from this channel is saved to a Log Analytics workspace.
-
-### Viewing and changing the dump cache interval
-
-The default interval to dump the cache is set to 3600 seconds (1 hour).
-
-Use the following PowerShell cmdlets to view the cache dump interval value:
-
-```PowerShell
-Get-ClusterResource "sddc management" | Get-ClusterParameter
-```
-
-Use the following cmdlets to change the frequency of cache dump. If set to 0 it will stop publishing events:
-
-```PowerShell
-Get-ClusterResource "sddc management" | Set-ClusterParameter -Name CacheDumpIntervalInSeconds -Value <value in seconds>
-```
-
-### Windows events in the log channel
-
-This channel includes five events. Each event has cluster name and Azure Resource Manager ID as EventData.
-
-| **Event ID** | **Event type**  |
-|:-------------|-----------------|
-| 3000         | Server          |
-| 3001         | Drive           |
-| 3002         | Volume          |
-| 3003         | Virtual machine |
-| 3004         | Cluster         |
-
-### Server event 3000 RenderedDescription column value
+<details>
+  <summary>Expand to view the repair policy code in JSON.</summary>
 
 ```json
 {
-   "m_servers":[
-      {
-         "m_statusCategory":"Integer",
-         "m_status":[
-            "Integer",
-            "…"
-         ],
-         "m_id":"String",
-         "m_name":"String",
-         "m_totalPhysicalMemoryInBytes":"Integer",
-         "m_usedPhysicalMemoryInBytes":"Integer",
-         "m_totalProcessorsUsedPercentage":"Integer",
-         "m_totalClockSpeedInMHz":"Integer",
-         "m_uptimeInSeconds":"Integer",
-         "m_InboundNetworkUsage":"Double (Bits/sec)",
-         "m_OutboundNetworkUsage":"Double (Bits/sec)",
-         "m_InboundRdmaUsage":"Double (Bits/sec)",
-         "m_OutboundRdmaUsage":"Double (Bits/sec)",
-         "m_site":"String",
-         "m_location":"String",
-         "m_vm":{
-            "m_totalVmsUnknown":"Integer",
-            "m_totalVmsRunning":"Integer",
-            "m_totalVmsStopped":"Integer",
-            "m_totalVmsFailed":"Integer",
-            "m_totalVmsPaused":"Integer",
-            "m_totalVmsSuspended":"Integer",
-            "m_totalVmsStarting":"Integer",
-            "m_totalVmsSnapshotting":"Integer",
-            "m_totalVmsSaving":"Integer",
-            "m_totalVmsStopping":"Integer",
-            "m_totalVmsPausing":"Integer",
-            "m_totalVmsResuming":"Integer"
-         },
-         "m_osVersion":"String",
-         "m_buildNumber":"String",
-         "m_totalPhysicalProcessors":"Integer",
-         "m_totalLogicalProcessors":"Integer"
-      },
-      "…"
-   ],
-   "m_alerts":{
-      "m_totalUnknown":"Integer",
-      "m_totalHealthy":"Integer",
-      "m_totalWarning":"Integer",
-      "m_totalCritical":"Integer"
-   }
-} 
+  "mode": "INDEXED",
+  "policyRule": {
+   "then": { 
+        "effect": "deployIfNotExists", 
+        "details": { 
+          "type": "Microsoft.GuestConfiguration/guestConfigurationAssignments", 
+          "existenceCondition": { 
+            "allOf": [ 
+              { 
+                "field": "Microsoft.GuestConfiguration/guestConfigurationAssignments/complianceStatus", 
+                "equals": "Compliant" 
+              }, 
+              { 
+                "field": "Microsoft.GuestConfiguration/guestConfigurationAssignments/parameterHash", 
+                "equals": "[base64(concat('[RepairClusterAMA]RepairClusterAMAInstanceName;Path', '=', parameters('Path'), ',', '[RepairClusterAMA]RepairClusterAMAInstanceName;Content', '=', parameters('Content')))]" 
+              } 
+            ] 
+          }, 
+          "roleDefinitionIds": [ 
+            "/providers/Microsoft.Authorization/roleDefinitions/088ab73d-1256-47ae-bea9-9de8e7131f31" 
+          ], 
+          "deployment": { 
+            "properties": { 
+              "parameters": { 
+                "type": { 
+                  "value": "[field('type')]" 
+                }, 
+                "location": { 
+                  "value": "[field('location')]" 
+                }, 
+                "vmName": { 
+                  "value": "[field('name')]" 
+                }, 
+                "assignmentName": { 
+                  "value": "[concat('RepairClusterAMA$pid', uniqueString(policy().assignmentId, policy().definitionReferenceId))]" 
+                }, 
+                "Content": { 
+                  "value": "[parameters('Content')]" 
+                }, 
+                "Path": { 
+                  "value": "[parameters('Path')]" 
+                } 
+              }, 
+              "mode": "incremental", 
+              "template": { 
+                "parameters": { 
+                  "type": { 
+                    "type": "string" 
+                  }, 
+                  "location": { 
+                    "type": "string" 
+                  }, 
+                  "vmName": { 
+                    "type": "string" 
+                  }, 
+                  "assignmentName": { 
+                    "type": "string" 
+                  }, 
+                  "Content": { 
+                    "type": "string" 
+                  }, 
+                  "Path": { 
+                    "type": "string" 
+                  } 
+                }, 
+                "contentVersion": "1.0.0.0", 
+                "resources": [ 
+                  { 
+                    "type": "Microsoft.Compute/virtualMachines/providers/guestConfigurationAssignments", 
+                    "properties": { 
+                      "guestConfiguration": { 
+                        "version": "1.0.0", 
+                        "name": "RepairClusterAMA", 
+                        "configurationParameter": [ 
+                          { 
+                            "value": "[parameters('Path')]", 
+                            "name": "[RepairClusterAMA]RepairClusterAMAInstanceName;Path" 
+                          }, 
+                          { 
+                            "value": "[parameters('Content')]", 
+                            "name": "[RepairClusterAMA]RepairClusterAMAInstanceName;Content" 
+                          } 
+                        ], 
+                        "contentHash": "7EA99B10AE79EA5C1456A134441270BC48F5208F3521BFBFDCAE5EF7B6A9D9BD", 
+                        "contentUri": "https://guestconfiguration4.blob.core.windows.net/guestconfiguration/RepairClusterAMA.zip", 
+                        "contentType": "Custom", 
+                        "assignmentType": "ApplyAndAutoCorrect" 
+                      } 
+                    }, 
+                    "location": "[parameters('location')]", 
+                    "apiVersion": "2018-11-20", 
+                    "name": "[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('assignmentName'))]", 
+                    "condition": "[equals(toLower(parameters('type')), toLower('Microsoft.Compute/virtualMachines'))]" 
+                  }, 
+                  { 
+                    "type": "Microsoft.HybridCompute/machines/providers/guestConfigurationAssignments", 
+                    "properties": { 
+                      "guestConfiguration": { 
+                        "version": "1.0.0", 
+                        "name": "RepairClusterAMA", 
+                        "configurationParameter": [ 
+                          { 
+                            "value": "[parameters('Path')]", 
+                            "name": "[RepairClusterAMA]RepairClusterAMAInstanceName;Path" 
+                          }, 
+                          { 
+                            "value": "[parameters('Content')]", 
+                            "name": "[RepairClusterAMA]RepairClusterAMAInstanceName;Content" 
+                          } 
+                        ], 
+                        "contentHash": "7EA99B10AE79EA5C1456A134441270BC48F5208F3521BFBFDCAE5EF7B6A9D9BD", 
+                        "contentUri": "https://guestconfiguration4.blob.core.windows.net/guestconfiguration/RepairClusterAMA.zip", 
+                        "contentType": "Custom", 
+                        "assignmentType": "ApplyAndAutoCorrect" 
+                      } 
+                    }, 
+                    "location": "[parameters('location')]", 
+                    "apiVersion": "2018-11-20", 
+                    "name": "[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('assignmentName'))]", 
+                    "condition": "[equals(toLower(parameters('type')), toLower('Microsoft.HybridCompute/machines'))]" 
+                  }, 
+                  { 
+                    "type": "Microsoft.Compute/virtualMachineScaleSets/providers/guestConfigurationAssignments", 
+                    "properties": { 
+                      "guestConfiguration": { 
+                        "version": "1.0.0", 
+                        "name": "RepairClusterAMA", 
+                        "configurationParameter": [ 
+                          { 
+                            "value": "[parameters('Path')]", 
+                            "name": "[RepairClusterAMA]RepairClusterAMAInstanceName;Path" 
+                          }, 
+                          { 
+                            "value": "[parameters('Content')]", 
+                            "name": "[RepairClusterAMA]RepairClusterAMAInstanceName;Content" 
+                          } 
+                        ], 
+                        "contentHash": "7EA99B10AE79EA5C1456A134441270BC48F5208F3521BFBFDCAE5EF7B6A9D9BD", 
+                        "contentUri": "https://guestconfiguration4.blob.core.windows.net/guestconfiguration/RepairClusterAMA.zip", 
+                        "contentType": "Custom", 
+                        "assignmentType": "ApplyAndAutoCorrect" 
+                      } 
+                    }, 
+                    "location": "[parameters('location')]", 
+                    "apiVersion": "2018-11-20", 
+                    "name": "[concat(parameters('vmName'), '/Microsoft.GuestConfiguration/', parameters('assignmentName'))]", 
+                    "condition": "[equals(toLower(parameters('type')), toLower('Microsoft.Compute/virtualMachineScaleSets'))]" 
+                  } 
+                ], 
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#" 
+              } 
+            } 
+          }, 
+          "name": "[concat('RepairClusterAMA$pid', uniqueString(policy().assignmentId, policy().definitionReferenceId))]" 
+        } 
+      }, 
+      "if": { 
+        "anyOf": [ 
+          { 
+            "allOf": [ 
+              { 
+                "anyOf": [ 
+                  { 
+                    "field": "type", 
+                    "equals": "Microsoft.Compute/virtualMachines" 
+                  }, 
+                  { 
+                    "field": "type", 
+                    "equals": "Microsoft.Compute/virtualMachineScaleSets" 
+                  } 
+                ] 
+              }, 
+              { 
+                "field": "tags['aks-managed-orchestrator']", 
+                "exists": "false" 
+              }, 
+              { 
+                "field": "tags['aks-managed-poolName']", 
+                "exists": "false" 
+              }, 
+              { 
+                "anyOf": [ 
+                  { 
+                    "field": "Microsoft.Compute/imagePublisher", 
+                    "in": [ 
+                      "esri", 
+                      "incredibuild", 
+                      "MicrosoftDynamicsAX", 
+                      "MicrosoftSharepoint", 
+                      "MicrosoftVisualStudio", 
+                      "MicrosoftWindowsDesktop", 
+                      "MicrosoftWindowsServerHPCPack" 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "MicrosoftWindowsServer" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageSKU", 
+                        "notLike": "2008*" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "MicrosoftSQLServer" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageOffer", 
+                        "notLike": "SQL2008*" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "microsoft-dsvm" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageOffer", 
+                        "like": "dsvm-win*" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "microsoft-ads" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageOffer", 
+                        "in": [ 
+                          "standard-data-science-vm", 
+                          "windows-data-science-vm" 
+                        ] 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "batch" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageOffer", 
+                        "equals": "rendering-windows2016" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "center-for-internet-security-inc" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageOffer", 
+                        "like": "cis-windows-server-201*" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "pivotal" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageOffer", 
+                        "like": "bosh-windows-server*" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "Microsoft.Compute/imagePublisher", 
+                        "equals": "cloud-infrastructure-services" 
+                      }, 
+                      { 
+                        "field": "Microsoft.Compute/imageOffer", 
+                        "like": "ad*" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "anyOf": [ 
+                          { 
+                            "field": "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration", 
+                            "exists": true 
+                          }, 
+                          { 
+                            "field": "Microsoft.Compute/virtualMachines/storageProfile.osDisk.osType", 
+                            "like": "Windows*" 
+                          }, 
+                          { 
+                            "field": "Microsoft.Compute/VirtualMachineScaleSets/osProfile.windowsConfiguration", 
+                            "exists": true 
+                          }, 
+                          { 
+                            "field": "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.osType", 
+                            "like": "Windows*" 
+                          } 
+                        ] 
+                      }, 
+                      { 
+                        "anyOf": [ 
+                          { 
+                            "field": "Microsoft.Compute/imageSKU", 
+                            "exists": false 
+                          }, 
+                          { 
+                            "allOf": [ 
+                              { 
+                                "field": "Microsoft.Compute/imageOffer", 
+                                "notLike": "SQL2008*" 
+                              }, 
+                              { 
+                                "field": "Microsoft.Compute/imageSKU", 
+                                "notLike": "2008*" 
+                              } 
+                            ] 
+                          } 
+                        ] 
+                      } 
+                    ] 
+                  } 
+                ] 
+              } 
+            ] 
+          }, 
+          { 
+            "allOf": [ 
+              { 
+                "equals": true, 
+                "value": "[parameters('IncludeArcMachines')]" 
+              }, 
+              { 
+                "anyOf": [ 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "type", 
+                        "equals": "Microsoft.HybridCompute/machines" 
+                      }, 
+                      { 
+                        "field": "Microsoft.HybridCompute/imageOffer", 
+                        "like": "windows*" 
+                      } 
+                    ] 
+                  }, 
+                  { 
+                    "allOf": [ 
+                      { 
+                        "field": "type", 
+                        "equals": "Microsoft.ConnectedVMwarevSphere/virtualMachines" 
+                      }, 
+                      { 
+                        "field": "Microsoft.ConnectedVMwarevSphere/virtualMachines/osProfile.osType", 
+                        "like": "windows*" 
+                      } 
+                    ] 
+                  } 
+                ] 
+              } 
+            ] 
+          } 
+        ] 
+      }
+  },
+  "parameters": {
+ "IncludeArcMachines": { 
+        "allowedValues": [ 
+          "true", 
+          "false" 
+        ], 
+        "defaultValue": "false", 
+        "metadata": { 
+          "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.", 
+          "displayName": "Include Arc connected machines", 
+          "portalReview": true
+        }, 
+        "type": "String"
+      }, 
+      "Content": {  
+        "defaultValue": "File content XYZ", 
+        "metadata": { 
+          "description": "File content", 
+          "displayName": "Content" 
+        }, 
+        "type": "String"
+      }, 
+      "Path": { 
+        "defaultValue": "C:\\DSC\\CreateFileXYZ.txt", 
+        "metadata": { 
+          "description": "Path including file name and extension", 
+          "displayName": "Path" 
+        }, 
+        "type": "String" 
+      }
+  }
+}
 ```
+</details>
 
-Most variables are self-explanatory from this JSON information. However, the table below lists a few variables which are a bit harder to understand.
+### Policy to install AMA
 
-| Variable | Description |
-|:-|:-|
-| m_servers | Array of server nodes. |
-| m_statusCategory | Health status of the server. | 
-| m_status | State of the server. It is an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
+The policy to install AMA performs the following functions:
 
-Values for the **m_statusCategory** variable are as follows:
+- Evaluates if new Azure Stack HCI clusters have the the `AzureMonitoringAgent` extension installed.
 
-| Value | Meaning     |
-|:----------|-----------------|
-| 0         | Healthy         |
-| 1         | Warning         |
-| 2         | Unhealthy       |
-| 255       | Other           |
+- Enforces a remediation task to install AMA on clusters that aren't compliant with the policy.
 
-Values for the **m_status** variable are as follows:
-
-| Value | Meaning     |
-|:----------|-----------------|
-| 0         | Up              |
-| 1         | Down            |
-| 2         | In maintenance  |
-| 3         | Joining         |
-| 4         | Normal          |
-| 5         | Isolated        |
-| 6         | Quarantined     |
-| 7         | Draining        |
-| 8         | Drain completed |
-| 9         | Drain failed    |
-| 0xffff    | Unknown         |
-
-### Drive event 3001 RenderedDescription column value
-
-Drive event 3001
+<details>
+  <summary>Expand to view the install AMA policy code in JSON.</summary>
 
 ```json
 {
-    "m_drives":[
-        {
-            "m_uniqueId":"String",
-            "m_model":"String",
-            "m_type":"Integer",
-            "m_canPool":"Boolean",
-            "m_sizeInBytes":"Integer",
-            "m_sizeUsedInBytes":"Integer",
-            "m_alerts":{
-                "m_totalUnknown":"Integer",
-                "m_totalHealthy":"Integer",
-                "m_totalWarning":"Integer",
-                "m_totalCritical":"Integer"
-            }
+  "mode": "Indexed",
+  "policyRule": {
+     "if": {
+          "field": "type",
+          "equals": "Microsoft.AzureStackHCI/clusters"
         },
-        "…"
-    ],
-    "m_correlationId":"String",
-    "m_isLastElement":"Boolean"
+        "then": {
+          "effect": "[parameters('effect')]",
+          "details": {
+            "type": "Microsoft.AzureStackHCI/clusters/arcSettings/extensions",
+            "name": "[concat(field('name'), '/default/AzureMonitorWindowsAgent')]",
+            "roleDefinitionIds": [
+              "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "existenceCondition": {
+              "field": "Microsoft.AzureStackHCI/clusters/arcSettings/extensions/extensionParameters.type",
+              "equals": "AzureMonitorWindowsAgent"
+            },
+            "deployment": {
+              "properties": {
+                "mode": "incremental",
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "parameters": {
+                    "clusterName": {
+                      "type": "string",
+                      "metadata": {
+                        "description": "The name of Cluster."
+                      }
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.AzureStackHCI/clusters/arcSettings/extensions",
+                      "apiVersion": "2023-08-01",
+                      "name": "[concat(parameters('clusterName'), '/default/AzureMonitorWindowsAgent')]",
+                      "properties": {
+                        "extensionParameters": {
+                          "publisher": "Microsoft.Azure.Monitor",
+                          "type": "AzureMonitorWindowsAgent",
+                          "autoUpgradeMinorVersion": false,
+                          "enableAutomaticUpgrade": false
+                        }
+                      }
+                    }
+                  ]
+                },
+                "parameters": {
+                  "clusterName": {
+                    "value": "[field('Name')]"
+                  }
+                }
+              }
+            }
+          }
+        }
+  },
+  "parameters": {
+   "effect": {
+          "type": "String",
+          "metadata": {
+            "displayName": "Effect",
+            "description": "Enable or disable the execution of the policy"
+          },
+          "allowedValues": [
+            "DeployIfNotExists",
+            "Disabled"
+          ],
+          "defaultValue": "DeployIfNotExists"
+        }
+  }
 }
 ```
+</details>
 
-### Volume event 3002 RenderedDescription column value
+### Policy to configure DCR association
 
-Volume event 3002
+This policy is applied to each server in the Azure Stack HCI cluster and performs the following function:
 
-```json
-{
-   "VolumeList":[
-      {
-         "m_Id":"String",
-         "m_Label":"String",
-         "m_Path":"String",
-         "m_StatusCategory":"Integer",
-         "m_Status":[
-            "Integer",
-            "…"
-         ],
-         "m_Size":"Integer (Bytes)",
-         "m_SizeUsed":"Integer (Bytes)",
-         "m_TotalIops":"Double (Count/second)",
-         "m_TotalThroughput":"Double (Bytes/Second)",
-         "m_AverageLatency":"Double (Seconds)",
-         "m_Resiliency":"Integer",
-         "m_IsDedupEnabled":"Boolean",
-         "m_FileSystem":"String"
-      },
-      "…"
-   ],
-   "m_Alerts":{
-      "m_totalUnknown":"Integer",
-      "m_totalHealthy":"Integer",
-      "m_totalWarning":"Integer",
-      "m_totalCritical":"Integer"
-   }
-} 
-```
+- Takes the `dataCollectionResourceId` as input and associates the Data Collection Rule (DCR) with each server.
 
-Most variables are self-explanatory from the above JSON information. However, the table below lists a few variables which are a bit harder to understand.
-
-| Variable     | Description |
-|:-----------------|:----------------|
-| VolumeList | Array of volumes. |
-| m_StatusCategory | Health status of volume. |
-| m_Status | State of the volume. It is an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
-
-Values for the **m_statusCategory** variable are as follows:
-
-| Value | Meaning     |
-|:----------|-----------------|
-| 0         | Healthy         |
-| 1         | Warning         |
-| 2         | Unhealthy       |
-| 255       | Other           |
-
-Values for the **m_status** variable are as follows:
-
-| Value | Meaning                |
-|:----------|----------------------------|
-| 0         | Unknown                    |
-| 1         | Other                      |
-| 2         | OK                         |
-| 3         | Needs repair               |
-| 4         | Stressed                   |
-| 5         | Predictive failure         |
-| 6         | Error                      |
-| 7         | Non-recoverable error      |
-| 8         | Starting                   |
-| 9         | Stopping                   |
-| 10        | Stopped                    |
-| 11        | In service                 |
-| 12        | No contact                 |
-| 13        | Lost communication         |
-| 14        | Aborted                    |
-| 15        | Dormant                    |
-| 16        | Supporting entity in error |
-| 17        | Completed                  |
-| 18        | Power mode                 |
-| 19        | Relocating                 |
-| 0xD002    | Down                       |
-| 0xD003    | Needs resync               |
-
-### Virtual machine event 3003 RenderedDescription column value
-
-Virtual machine event 3003
+> [!NOTE]
+> This policy doesn’t create Data Collection Endpoint (DCE). If you're using private links, you must create DCE to ensure there's data available in Insights. For more information, see [Enable network isolation for Azure Monitor Agent by using Private Link](https://learn.microsoft.com/en-us/azure/azure-monitor/agents/azure-monitor-agent-private-link).
+ 
+<details>
+  <summary>Expand to view the policy code in JSON.</summary>
 
 ```json
 {
-   "m_totalVmsUnknown":"Integer",
-   "m_totalVmsRunning":"Integer",
-   "m_totalVmsStopped":"Integer",
-   "m_totalVmsFailed":"Integer",
-   "m_totalVmsPaused":"Integer",
-   "m_totalVmsSuspended":"Integer",
-   "m_totalVmsStarting":"Integer",
-   "m_totalVmsSnapshotting":"Integer",
-   "m_totalVmsSaving":"Integer",
-   "m_totalVmsStopping":"Integer",
-   "m_totalVmsPausing":"Integer",
-   "m_totalVmsResuming":"Integer",
-   "m_alerts":{
-      "m_totalUnknown":"Integer",
-      "m_totalHealthy":"Integer",
-      "m_totalWarning":"Integer",
-      "m_totalCritical":"Integer"
-   }
+  "mode": "INDEXED",
+  "policyRule": {
+     "if": {
+          "field": "type",
+          "equals": "Microsoft.HybridCompute/machines"
+        },
+        "then": {
+          "effect": "[parameters('effect')]",
+          "details": {
+            "type": "Microsoft.Insights/dataCollectionRuleAssociations",
+            "name": "[concat(field('name'), '-dataCollectionRuleAssociations')]",
+            "roleDefinitionIds": [
+              "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "deployment": {
+              "properties": {
+                "mode": "incremental",
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "parameters": {
+                    "machineName": {
+                      "type": "string",
+                      "metadata": {
+                        "description": "The name of the machine."
+                      }
+                    },
+                    "dataCollectionResourceId": {
+                      "type": "string",
+                      "metadata": {
+                        "description": "Resource Id of the DCR"
+                      }
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.Insights/dataCollectionRuleAssociations",
+                      "apiVersion": "2022-06-01",
+                      "name": "[concat(parameters('machineName'), '-dataCollectionRuleAssociations')]",
+                      "scope": "[format('Microsoft.HybridCompute/machines/{0}', parameters('machineName'))]",
+                      "properties": {
+                        "description": "Association of data collection rule. Deleting this association will break the data collection for this machine",
+                        "dataCollectionRuleId": "[parameters('dataCollectionResourceId')]"
+                      }
+                    }
+                  ]
+                },
+                "parameters": {
+                  "machineName": {
+                    "value": "[field('Name')]"
+                  },
+                  "dataCollectionResourceId": {
+                    "value": "[parameters('dcrResourceId')]"
+                  }
+                }
+              }
+            }
+          }
+        }
+  },
+  "parameters": { "effect": {
+        "type": "String",
+        "metadata": {
+        "displayName": "Effect",
+        "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+        "DeployIfNotExists",
+        "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists"
+    },
+    "dcrResourceId": {
+        "type": "String",
+        "metadata": {
+        "displayName": "dcrResourceId",
+        "description": "Resource Id of the DCR"
+        }
+    }
+
+  }
 }
 ```
+</details>
 
-### Cluster event 3004 RenderedDescription column value
+## Enable Insights at scale using Azure policies
 
-Cluster event 3004
+This section describes how to enable Insights for Azure Stack HCI at scale using Azure policies.
 
-```json
-{
-   "m_cpuUsage":"Double (%)",
-   "m_totalVolumeIops":"Double",
-   "m_averageVolumeLatency":"Double (Seconds)",
-   "m_totalVolumeThroughput":"Double (Bytes/Second)",
-   "m_totalVolumeSizeInBytes":"Integer",
-   "m_usedVolumeSizeInBytes":"Integer",
-   "m_totalMemoryInBytes":"Integer",
-   "m_usedMemoryInBytes":"Integer",
-   "m_isStretch":"Boolean",
-   "m_QuorumType":"String",
-   "m_QuorumMode":"String",
-   "m_QuorumState":"String",
-   "m_alerts":{
-      "m_totalUnknown":"Integer",
-      "m_totalHealthy":"Integer",
-      "m_totalWarning":"Integer",
-      "m_totalCritical":"Integer"
-   }
-```
+### Prerequisites
 
-For more information about the data that's collected, see [Health Service faults](/windows-server/failover-clustering/health-service-faults).
+Here are the prerequisites for enabling Insights for Azure Stack HCI at scale using Azure policies:
+
+- You must have access to Azure Stack HCI clusters on which you want to enable Insights. These clusters must be deployed and registered.
+- You must have the managed identity for the Azure resources enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
+- You must have the **Guest Configuration Resource Contributor** role in your Azure subscription.
+
+### Order of policy application
+
+Apply the Azure policies in the following order to enable Insights at scale for Azure Stack HCI clusters:
+
+1. (For Azure Stack HCI, version 22H2 clusters only) Apply the policy to repair AMA before applying any other policy. This step isn't required for Azure Stack HCI, version 23H2 clusters. For policy definition, see [Policy to repair AMA](#policy-to-repair-ama).
+1. Apply policy to install AMA. For policy definition, see [Policy to install AMA](#policy-to-install-ama).
+1. Apply policy to configure DCR. For policy definition, see [Policy to configure DCR association](#policy-to-configure-dcr-association).
+
+### Workflow to apply policies
+
+Here's the workflow to apply each policy:
+
+1. Create the policy definition.
+1. Create the policy assignment.
+1. Identify non-compliant resources.
+1. Remediate non-compliant resources.
+
+### Create the policy definition
+
+To create a policy definition, follow these steps:
+
+1. In the Azure portal, navigate to the Azure Policy service.
+1. Under the **Authoring** section, select **Definitions**.
+1. Select **+ Policy definition** to create a new policy definition.
+1. Select **Add policy definition** to create a new policy definition.
+1. On the **Policy definition** page, specify the following values:
+
+    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-definition.png" alt-text="Screenshot of the Policy definition page to create a new policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-definition.png":::
+
+    1. For the **Definition location** field, select the ellipses (...) to specify where the policy resouce is located. On the **Definition location** pane, select the Azure subscription and then select **Select**.
+    1. Specify a friendly name for the policy. You can optionally specify a description and category.
+    1. Under **POLICY RULE**, delete the prepopulated policy definition. Copy and paste the content from the JSON file for your policy. To find the JSON files for each policy, see the [About Azure policies to enable Insights at scale](#about-azure-policies-to-enable-insights-at-scale) section.
+    1. From the **Role definitions** list, select **Guest Configuration Resource Contributor**.
+    1. Select **Save**.
+1. You'll see a notification that the policy definition creation was successful. You can then proceed to create the policy assignment.
+
+### Create the policy assignment
+
+Next, you create a policy assignment to assign the policy to a resource. The scope of the policy corresponds to that resource and any resources beneath it. For more information on policy assignment, see [Azure Policy assignment structure](/azure/governance/policy/concepts/assignment-structure).
+
+To assign the policy, follow these steps:
+
+1. In the Azure portal, navigate to the Azure Policy service.
+1. Under the **Authoring** section, select **Assignments**.
+1. Select **Assign policy** to create a new policy assignment.
+1. On the **Assign policy** page, specify the following values:
+
+    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-definition.png" alt-text="Screenshot of the Policy definition page to create a new policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-definition.png":::
+
+    1. For the **Scope** field, select the ellipsis (...) and then select a **Subscription** and optionally select a **Resource Group**. Then select **Select** to apply the scope.
+    1. (Optional) If you've selected a resource group in the previous step, optionally select the resources to exclude from the policy assignment by selecting the ellipses (...) for the **Exclusions** field.
+    1. For the **Policy definition** field, select the ellipsis (...) to open the list of available definitions. Filter the results based on the policy defined in the previous step, select the policy and select **Add**.
+    1. The **Assignment name** field displays the default name of the selected policy. You can change it if you want. The description is optional.
+    1. Leave **Policy enforcement** set to **Enabled**.
+1. (Optional) Select **Next** to view each tab for **Advanced**, **Parameters**, and **Remediation**. The sample policies already have parameters and remediation tasks defined in their definitions. No changes are needed for this example.
+1. Select **Review + create** to review the assignment.
+1. Select **Create** to create the assignment.
+
+  The configuration is then applied to new Azure Stack HCI clusters created within the scope of policy assignment. For existing clusters, you might need to manually run a remediation task. This task typically takes 10 to 20 minutes for the policy assignment to take effect.
+
+Once the assignment is created, the Azure Policy engine identifies all Azure Stack HCI clusters located within the scope and applies the policy configuration to each cluster.
+
+### Identify non-compliant resources
+
+After you've assigned the policy, you can view the compliance report. The compliance state for a new policy assignment takes a few minutes to become active and provide results about the policy's state.
+
+To view the non-compliant resources in the Azure portal, follow these steps:
+
+1. In the Azure portal, navigate to the Azure Policy service.
+1. Select **Compliance**.
+1. Filter the results for the name of the policy assignment that you created in the previous step. The report shows resources that are not in compliance with the policy.
+
+    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-compliance.png" alt-text="Screenshot of the Policy Compliance that highlights a non-compliant policy assignment." lightbox="./media/monitor-hci-multi-azure-policies/policy-compliance.png":::
+
+1. The policy assignment shows resources that aren't compliant with a **Compliance state** of **Non-compliant**. To get more details, select the policy assignment name to view the **Resource Compliance**. For example, if you are assigning the policy to install AMA, this will show the resources that don't have the AMA installed.
+
+### Remediate resources
+
+The resources that aren't compliant with the policy rule you selected, you can create remediation task for them.
+
+To remediate the resources, follow these steps:
+
+1. In the Azure portal, navigate to the Azure Policy service.
+1. Select **Remediation**.
+1. Filter the results for the name of the policy assignment that you created in the previous step. 
 
 ## Next steps
 
