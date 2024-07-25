@@ -414,6 +414,8 @@ items:
         href: manage/monitor-hci-single-23h2.md
       - name: Multiple clusters
         href: manage/monitor-hci-multi-23h2.md
+      - name: Enable Insights at scale using Azure policies
+        href: manage/monitor-hci-multi-azure-policies.md
       - name: Feature workbooks
         href: manage/monitor-features.md
     - name: Metrics
