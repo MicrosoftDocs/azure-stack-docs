@@ -69,7 +69,7 @@ Before you use CLI to manage Azure Container Registry resources, review the [lis
 
 Get started creating a container registry using the [Quickstart: Create a private container registry using the Azure CLI](/azure/container-registry/container-registry-get-started-azure-cli).
 
-When you use the Azure Container Registry documentation for global Azure, such as the quickstart, keep in mind the key differences between Azure Container Registry on Azure Stack Hub and Azure Container Registry in global Azure. For a list of differences, see [Azure Container Registries on Azure Stack Hub overview](container-registry-overview.md#acr-on-azure-and-acr-on-azure-stack-hub).
+When you use the Azure Container Registry documentation for global Azure, such as the quickstart, keep in mind the key differences between Azure Container Registry on Azure Stack Hub and Azure Container Registry in global Azure. For a list of differences, see the [Azure Container Registry on Azure Stack Hub overview](container-registry-overview.md#azure-container-registry-on-azure-and-azure-container-registry-on-azure-stack-hub).
 
 ## Next steps
 
