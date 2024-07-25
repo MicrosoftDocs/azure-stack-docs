@@ -102,51 +102,6 @@ For each node in the cluster, run these commands on the target node:
 
 When all the nodes are upgraded, you can perform the post-installation steps.
 
-### Perform post-installation steps
-
-Once the new OS is installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
-
-1. Update the cluster functional level.
-
-   We recommend that you update the cluster functional level as soon as possible. Skip this step if you installed the feature updates with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
-
-   1. Run the following cmdlet on any server in the cluster:
-
-       ```PowerShell
-       Update-ClusterFunctionalLevel
-
-   1. You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
-
-       > [!WARNING]
-       > After you update the cluster functional level, you can't roll back to the previous operating system version.
-
-1. Update the storage pool.
-
-   1. After the cluster functional level has been updated, use the following cmdlet to identify the `FriendlyName` of the storage pool representing your cluster.
-
-      ```PowerShell
-       Get-StoragePool
-      ```
-
-      In this example, the FriendlyName is **S2D on hci-cluster1**.
-
-   1. Run the `Update-StoragePool` cmdlet to update the storage pool version.
-
-      ```PowerShell
-       Update-StoragePool -FriendlyName "S2D on hci-cluster1"
-      ```
-
-   1. Confirm the action when prompted. At this point, new cmdlets will be fully operational on any server in the cluster.
-
-1. (Optional) Upgrade VM configuration levels. You can optionally upgrade VM configuration levels by stopping each VM using the `Update-VMVersion` cmdlet and then starting the VMs again.
-
-   1. Verify that the upgraded cluster functions as expected.
-
-       Roles should fail over correctly and, if VM live migration is used on the cluster, VMs should successfully live migrate.
-
-   1. Validate the cluster.
-
-       Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
 
 
 ## Method 2:  Perform a fast, offline OS update of all servers in a cluster
@@ -169,6 +124,8 @@ This method allows you to take all the servers in a cluster down at once and upd
 
 <!--ASK-->
 
+You're now ready to perform the post-upgrade steps for your cluster.
+
 ## Next steps
 
-- [Learn how to prepare to apply the solution update.](./prepare-to-apply-23h2-solution-update.md)
+- [Learn how to perform the post-upgrade steps for your Azure Stack HCI cluster.](./post-upgrade-steps.md)
