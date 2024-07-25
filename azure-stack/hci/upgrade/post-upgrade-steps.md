@@ -17,38 +17,24 @@ This article describes how to upgrade the Azure Stack HCI, version 22H2 Operatin
 
 The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
 
-1. Upgrade the OS.
-1. Prepare for the solution update.
+1. Upgrade the OS via PowerShell (recommended), Windows Admin Center, or other methods.
+1. Post-upgrade steps.
+1. Prepare to update solution.
 1. Apply the solution update.
 
-This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using PowerShell. PowerShell is the recommended method to upgrade the OS.
+This article only covers the second step, which is how to perform the post-upgrade tasks on your Azure Stack HCI cluster that has the new OS running. The post-upgrade tasks are required for the stability of the cluster. 
 
-There are other methods to upgrade the OS that include using Windows Admin Center, the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU). For more information about these methods, see [Upgrade your Azure Stack HCI to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
-
-> [!IMPORTANT]
-> To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
-
-## High-level workflow for the OS upgrade
-
-The Azure Stack HCI operating system update is available via the Windows Update and via the media that you can download from the Azure portal.
-
-To upgrade the OS on your cluster, follow these high-level steps:
-
-1. Complete the prerequisites inculding downloading the Azure Stack HCI, version 23H2 OS software update.
-1. Connect to the Azure Stack HCI, version 22H2 cluster.
-1. Check for the available updates using PowerShell.
-1. Install new OS using PowerShell.
-1. Check the status of the updates.
-1. After the OS is upgraded, perform post-installation steps.
 
 ## Complete prerequisites
 
 Before you begin, make sure that:
 
-- You have access to an Azure Stack HCI, version 22H2 cluster.
-- The cluster should be registered in Azure.
-- Make sure that all the nodes in your Azure Stack HCI, version 22H2 cluster are healthy and show as **Online**.
-- You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have successfully upgraded the OS to version 23H2 on your Azure Stack HCI cluster as per the instructions in one of the following docs:
+    - Upgrade to 23H2 OS vis POwerShell.
+    - Upgrade to 23H2 OS via Windows Admin Center.
+    - UPgrade to 23H2 OS via other methods.
+
+- Make sure that all the nodes in your Azure Stack HCI cluster are healthy and show as **Online**.
 - You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
 
 ## Step 1: Connect to the Azure Stack HCI cluster
@@ -75,53 +61,9 @@ Follow these steps on your client to connect to one of the servers of your Azure
    [100.100.100.10]: PS C:\Users\Administrator\Documents>
    ```
 
-## Step 2: Install new OS using PowerShell
+## Step 2: Check the status of an update
 
-To install new OS using PowerShell, follow these steps:
-
-1. Run the following cmdlets on every server in the cluster: <!--ASK-->
-
-   ```PowerShell
-   Set-WSManQuickConfig
-   Enable-PSRemoting
-   ```
-
-1. To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which will notify you of any warnings or errors:
-
-   ```PowerShell
-   Test-CauSetup -ClusterName <Cluster name>
-   ```
-
-1. Validate the cluster's hardware and settings by running the `Test-Cluster` cmdlet on one of the servers in the cluster. If any of the condition checks fail, resolve them before proceeding to the next step. <!--ASK-->
-
-   ```PowerShell
-   Test-Cluster
-   ```
-
-1. Check for the available updates:
-
-   ```PowerShell
-   Invoke-CauScan -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose | fl *
-   ```
-
-   Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case. <!--ASK-->
-
-1. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.
-
-    > [!IMPORTANT]
-    > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
-
-   ```PowerShell
-   Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
-   ```
-
-1. Check for any further updates and install them.
-
-You're now ready to perform the [Post-installation steps](#step-4-perform-the-post-install-steps).
-
-## Step 3: Check the status of an update
-
-To get the summary information about an update in progress, run the `Get-CauRun` cmdlet:
+To make sure that the upgrade was complete and there is a new OS running on the cluster, run the `Get-CauRun` cmdlet:
 
 ```PowerShell
 Get-CauRun -ClusterName Cluster1
@@ -148,9 +90,12 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 }
 ```
 
-## Step 4: Perform the post-install steps
+## Step 3: Perform the post-upgrade steps
 
 Once the new OS is installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
+
+> [!IMPORTANT]
+> Post-upgrade steps are essential for the stability and performance of your Azure Stack HCI cluster. Make sure to follow these steps after the OS upgrade.
 
 1. Update the cluster functional level.
 
@@ -194,7 +139,7 @@ Once the new OS is installed, you'll need to update the cluster functional level
 
        Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
 
-You're now ready to [Prepare to apply the solution update](./prepare-to-apply-23h2-solution-update.md).
+You're now ready to apply the solution update.
 
 ## Next steps
 
