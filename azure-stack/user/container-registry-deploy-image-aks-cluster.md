@@ -3,7 +3,7 @@ title: Deploy an image to an Azure Kubernetes Service (AKS) Cluster on Azure Sta
 description: Learn how to deploy an image to an AKS Cluster on Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 04/10/2024
+ms.date: 07/26/2024
 ms.author: sethm
 ms.reviewer: dgarrity
 ms.lastreviewed: 04/10/2024
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/10/2024
 
 # Deploy an image to an Azure Kubernetes Service cluster on Azure Stack Hub
 
-You can use your Azure Stack Hub Azure Container Registry (ACR) to store images. You can use these images when you deploy to an Azure Kubernetes Service (AKS) cluster in the same environment.
+You can use your Azure Stack Hub Azure Container Registry to store images. You can use these images when you deploy to an Azure Kubernetes Service (AKS) cluster in the same environment.
 
 ## Deploy an app to your cluster
 
@@ -50,4 +50,4 @@ The following considerations to remember from the online guidance are:
 
 ## Next steps
 
-Learn more about the [Azure Container Registry on Azure Stack Hub](container-registry-overview.md)
+Learn more about [Azure Container Registry on Azure Stack Hub](container-registry-overview.md)
