@@ -172,7 +172,7 @@ To set the proxy server Environment Variable, run the following commands as admi
 # If a proxy server is needed, execute these commands with the proxy URL and port.
 [Environment]::SetEnvironmentVariable("HTTPS_PROXY","http://ProxyServerFQDN:port", "Machine")
 $env:HTTPS_PROXY = [System.Environment]::GetEnvironmentVariable("HTTPS_PROXY","Machine")
-[Environment]::SetEnvironmentVariable("HTTP_PROXY","http://ProxyServerFQDN:port "Machine")
+[Environment]::SetEnvironmentVariable("HTTP_PROXY","http://ProxyServerFQDN:port", "Machine")
 $env:HTTP_PROXY = [System.Environment]::GetEnvironmentVariable("HTTP_PROXY","Machine")
 $no_proxy = "<bypassliststring>"
 [Environment]::SetEnvironmentVariable("NO_PROXY",$no_proxy,"Machine")
