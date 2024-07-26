@@ -24,7 +24,7 @@ To learn more about cluster witnesses and quorum, see [Understanding cluster and
 
 Before you can create a cloud witness, you must have an Azure account and subscription, and register your Azure Stack HCI cluster with Azure. See the following articles for more information:
 
-- Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allowlists you're using between the cluster and Azure Storage. For details, see [Recommended firewall URLs](../concepts/firewall-requirements.md#recommended-firewall-urls).
+- Make sure that port 443 is open in your firewalls and that `*.core.windows.net` is included in any firewall allowlists you're using between the cluster and Azure Storage. For details, see [Required firewall URLs](../concepts/firewall-requirements.md).
 - If your network uses a proxy server for internet access, you must [configure proxy settings for Azure Stack HCI](./configure-proxy-settings.md).
 - [Create an Azure account](/dotnet/azure/create-azure-account).
 - If applicable, [create an additional Azure subscription](/azure/cost-management-billing/manage/create-subscription).
