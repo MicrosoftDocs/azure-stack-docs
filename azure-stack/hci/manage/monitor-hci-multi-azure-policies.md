@@ -34,7 +34,7 @@ Before applying this policy, keep in mind the following things:
 - Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear.
 
 <details>
-  <summary>Expand this section to see the policy definition in JSON.</summary>
+  <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
 
 ```json
 {
@@ -462,7 +462,7 @@ The policy to install AMA performs the following functions:
 - Enforces a remediation task to install AMA on clusters that aren't compliant with the policy.
 
 <details>
-  <summary>Expand this section to see the policy definition in JSON.</summary>
+  <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
 
 ```json
 {
@@ -548,11 +548,11 @@ This policy is applied to each server in the Azure Stack HCI cluster and perform
 
 - Takes the `dataCollectionResourceId` as input and associates the Data Collection Rule (DCR) with each server.
 
-> [!NOTE]
-> This policy doesn’t create Data Collection Endpoint (DCE). If you're using private links, you must create DCE to ensure there's data available in Insights. For more information, see [Enable network isolation for Azure Monitor Agent by using Private Link](/azure/azure-monitor/agents/azure-monitor-agent-private-link).
- 
+  > [!NOTE]
+  > This policy doesn’t create Data Collection Endpoint (DCE). If you're using private links, you must create DCE to ensure there's data available in Insights. For more information, see [Enable network isolation for Azure Monitor Agent by using Private Link](/azure/azure-monitor/agents/azure-monitor-agent-private-link).
+
 <details>
-  <summary>Expand this section to see the policy definition in JSON.</summary>
+  <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
 
 ```json
 {
