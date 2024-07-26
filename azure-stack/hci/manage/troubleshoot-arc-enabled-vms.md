@@ -3,7 +3,7 @@ title: Troubleshoot Azure Arc VM management
 description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 07/23/2024
+ms.date: 07/26/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
@@ -24,7 +24,7 @@ When trying to run the command to enable guest management, you see the following
 
 **Error:** `Deployment failed. Correlation ID: 5d0c4921-78e0-4493-af16-dffee5cbf9d8. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
-The above failure is because the managed identity wasn't created for this VM. System-assigned Managed Identity is required to enable guest management.
+This failure is because the managed identity wasn't created for this VM. System-assigned Managed Identity is required to enable guest management.
 
 **Resolution:**  
 
@@ -81,7 +81,7 @@ You see the following error when trying to deploy an Arc VM on your Azure Stack 
 
 **Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
 
-The above failure is because the `SystemAssigned` managed identity object isn't under the `Microsoft.HybridCompute/machines` resource type.
+This failure is because the `SystemAssigned` managed identity object isn't under the `Microsoft.HybridCompute/machines` resource type.
 
 **Resolution:**  
 

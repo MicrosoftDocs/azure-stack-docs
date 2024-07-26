@@ -1,9 +1,9 @@
 ---
 title: Collect log files for Azure Arc VM on Azure Stack HCI
-description: Learn how to troubleshoot an Azure Arc VM using collected files. 
+description: Learn how to collect log files for an Azure Arc VM on your Azure Stack HCI system. 
 author: alkohli
 ms.topic: how-to
-ms.date: 07/23/2024
+ms.date: 07/26/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
@@ -12,7 +12,7 @@ ms.reviewer: vlakshmanan
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-You can collect logs and other files to identify and troubleshoot issues with Arc virtual machines (VMs) in your Azure Stack HCI system.
+Collect logs and other files to identify and troubleshoot issues with Arc virtual machines (VMs) in your Azure Stack HCI system.
 
 ## Collect files when VM provisioning fails
 
