@@ -10,28 +10,30 @@ ms.subservice: azure-stack-hci
 ms.date: 07/25/2024
 ---
 
-# Enable Insights for Azure Stack HCI clusters at scale using Azure policies
+# Enable Insights for Azure Stack HCI at scale using Azure policies
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This document describes how to enable Insights for Azure Stack HCI at scale using Azure policies. To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23H2.md).
+This document describes how to enable Insights for Azure Stack HCI clusters at scale using [Azure policies](/azure/governance/policy/overview). To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23H2.md#enable-insights).
 
 ## About using Azure policies to enable Insights at scale
 
-To monitor Azure Stack HCI systems at scale with Insights, you need to enable Insights for each cluster individually. To simplify this process, you can use Azure policies to automatically enable Insights at the subscription or resource group level. These policies check the compliance of resources within their scope based on defined rules. You can remediate any non-compliant resources through remediation tasks. This section describes the sample policy definitions that you can use to create policy definitions for your scenario.
+To monitor multiple Azure Stack HCI clusters with Insights, you need to enable Insights for each cluster individually. To simplify this process, you can use Azure policies to automatically enable Insights at the subscription or resource group level. These policies check the compliance of resources within their scope based on the defined rules. If any non-clompliant resources are found after assigning the policies, you can remediate them through remediation tasks.
+
+This section describes the Azure policies to use to enable Insights at scale. For each policy, it also provides policy definition template in JSON that you can use as-is to create policy definitions, or as a starting point for further customization.
 
 ### Policy to repair AMA
 
 For Azure Stack HCI clusters registered before Nov 2023, you need to repair cluster registration and Azure Monitor Agent (AMA) before configuring Insights again. For details, see [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023).
 
-To repair the cluster, uninstall AMA and then apply the repair Azure policy.
-
-The repair policy removes the registry key, if present, which determines the resource ID for which AMA collects data.
-
 Before applying this policy, keep in mind the following things:
 
 - This policy is applicable only to Azure Stack HCI, version 22H2 clusters. Apply it before any other policies to ensure AMA picks up the correct resource ID.
 - Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear.
+
+The policy to repair AMA performs the following functions:
+
+- Removes the registry key, if present, which determines the resource ID for which AMA collects data.
 
 <details>
   <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
@@ -457,9 +459,9 @@ Before applying this policy, keep in mind the following things:
 
 The policy to install AMA performs the following functions:
 
-- Evaluates if new Azure Stack HCI clusters have the `AzureMonitoringAgent` extension installed.
+- Evaluates if Azure Stack HCI clusters have the `AzureMonitoringAgent` extension installed.
 
-- Enforces a remediation task to install AMA on clusters that aren't compliant with the policy.
+- Installs AMA on clusters that aren't compliant with the policy through a remediation task.
 
 <details>
   <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
@@ -647,7 +649,7 @@ This section describes how to enable Insights for Azure Stack HCI at scale using
 
 ### Prerequisites
 
-Here are the prerequisites for enabling Insights for Azure Stack HCI at scale using Azure policies:
+Before you enable Insights for Azure Stack HCI at scale using Azure policies, complete the following prerequisites:
 
 - You must have access to Azure Stack HCI clusters on which you want to enable Insights. These clusters must be deployed and registered.
 - You must have the managed identity for the Azure resources enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
@@ -657,18 +659,26 @@ Here are the prerequisites for enabling Insights for Azure Stack HCI at scale us
 
 Apply the Azure policies in the following order to enable Insights at scale for Azure Stack HCI clusters:
 
-1. (For Azure Stack HCI, version 22H2 clusters only) Policy to repair AMA before applying any other policy. This step isn't required for Azure Stack HCI, version 23H2 clusters. For policy definition, see [Policy to repair AMA](#policy-to-repair-ama).
-1. Policy to install AMA. For policy definition, see [Policy to install AMA](#policy-to-install-ama).
-1. Policy to configure DCR. For policy definition, see [Policy to configure DCR association](#policy-to-configure-dcr-association).
+1. Repair AMA (for Azure Stack HCI, version 22H2 clusters only):
+    - If you're using Azure Stack HCI, version 22H2 clusters, start by applying the policy to repair AMA. This step isn't required for Azure Stack HCI, version 23H2 clusters.
+    - For policy definition template, see [Policy to repair AMA](#policy-to-repair-ama).
+    
+1. Install AMA:
+    - Apply the policy to install AMA.
+    - For policy definition template, see [Policy to install AMA](#policy-to-install-ama).
+    
+1. Configure DCR association.
+    - Apply the policy to configure DCR association.
+    - For policy definition template, see [Policy to configure DCR association](#policy-to-configure-dcr-association).
 
-### Workflow to apply policies
+### Workflow to apply policies to enable Insights at scale
 
-Here's the workflow to apply each policy:
+Follow these steps for each policy to enable Insights at scale:
 
-1. [Create a policy definition](#create-a-policy-definition).
-1. [Create a policy assignment](#create-a-policy-assignment).
-1. [View compliance status](#view-compliance-status).
-1. [Remediate non-compliant resources](#remediate-non-compliant-resources).
+1. **Create a policy definition.** Define the rules and conditions for compliance using the policy definition template. See [Create a policy definition](#create-a-policy-definition).
+1. **Create a policy assignment.** Define the scope of the policy, exclusions if any, and parameters for enforecement. Use the policy definition defined in step 1. See [Create a policy assignment](#create-a-policy-assignment).
+1. **View compliance status.** Monitor the compliance status of the policy assignment. Check for any non-compliant resources. See [View compliance status](#view-compliance-status).
+1. **Remediate non-compliant resources.** Create remediation tasks to remediate non-compliant resources. See [Remediate non-compliant resources](#remediate-non-compliant-resources).
 
 ### Create a policy definition
 
@@ -677,20 +687,19 @@ To create a policy definition, follow these steps:
 1. In the Azure portal, navigate to the Azure Policy service.
 1. Under the **Authoring** section, select **Definitions**.
 1. Select **+ Policy definition** to create a new policy definition.
-1. Select **Add policy definition** to create a new policy definition.
 1. On the **Policy definition** page, specify the following values:
 
    | Field | Action |
    | ---- | ---- |
    | **Definition location** |  Select the ellipsis (`...`) to specify where the policy resource is located. On the **Definition location** pane, select the Azure subscription and then select **Select**. |
-   | **Name** | Specify a friendly name for the policy. You can optionally specify a description and category. |
+   | **Name** | Specify a friendly name for the policy definition. You can optionally specify a description and category. |
    | **POLICY RULE** | The JSON edit box is prepopulated with a policy definition template. Replace this template with the policy definition template you want to apply. For the definition templates for Insights policies in JSON format, see the [About using Azure policies to enable Insights at scale](#about-using-azure-policies-to-enable-insights-at-scale) section. |
-   | **Role definitions** | Select **Guest Configuration Resource Contributor**. |
+   | **Role definitions** | This field is displayed after you copy and paste the policy definition into the **POLICY RULE** field. Select the **Guest Configuration Resource Contributor** role from the list. |
 
       :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-definition.png" alt-text="Screenshot of the Policy definition page to create a new policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-definition.png":::
 
 1. Select **Save**.
-1. You get a notification that the policy definition creation was successful. You can then proceed to create the policy assignment.
+1. You get a notification that the policy definition creation was successful. The policy definition page displays. You can now proceed to create the policy assignment.
 
 ### Create a policy assignment
 
@@ -698,18 +707,19 @@ Next, you create a policy assignment and assign the policy definition at the sub
 
 To assign the policy, follow these steps:
 
-1. In the Azure portal, navigate to the Azure Policy service.
-1. Under the **Authoring** section, select **Assignments**.
-1. Select **Assign policy** to create a new policy assignment.
+1. On the **Policy | Definitions** page for the policy definition you created in the previous step, select **Assign policy**.
+
+    :::image type="content" source="./media/monitor-hci-multi-azure-policies/assign-policy.png" alt-text="Screenshot of the Policy Definitions page for the new policy definition." lightbox="./media/monitor-hci-multi-azure-policies/assign-policy.png":::
+
 1. On the **Assign policy** page > **Basic** tab, specify the following values:
 
    | Field | Action |
    | ---- | ---- |
-   | **Scope** | Use the ellipsis (`...`) and then select a subscription and optionally a resource group. Then select **Select** to apply the scope. |
-   | **Exclusions** | Optional. If you've selected a resource group in the previous step, use the ellipsis (`...`) to select the resources to exclude from the policy assignment. |
-   | **Policy definition** | Select the ellipsis to open the list of available definitions. Filter the results based on the policy defined in the [Create a policy definition](#create-a-policy-definition) step, select the policy definition, and select **Add**.|
-   | **Assignment name** | By default it uses the name of the selected policy. You can change it if required. |
-   | **Policy enforcement** | Defaults to _Enabled_. For more information, go to [enforcement mode](/azure/governance/policy/concepts/assignment-structure#enforcement-mode). |
+   | **Scope** | This is prepopulated with the scope that you defined during policy definition creation. If you want to change the scope for policy assignment, you can use the ellipsis (`...`) and then select a subscription and optionally a resource group. Then select **Select** to apply the scope. |
+   | **Exclusions** | Optional. Use the ellipsis (`...`) to select the resources to exclude from the policy assignment. |
+   | **Policy definition** | This is prepopulated with the policy definition name created in the [Create a policy definition](#create-a-policy-definition) step. |
+   | **Assignment name** | This is prepopulated with the name of the selected policy definition. You can change it if required. |
+   | **Policy enforcement** | Defaults to *Enabled*. For more information, see [enforcement mode](/azure/governance/policy/concepts/assignment-structure#enforcement-mode). |
  
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-assign.png" alt-text="Screenshot of the Assign policy page to assign the policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-assign.png":::
 
@@ -729,7 +739,7 @@ To assign the policy, follow these steps:
 
 ### View compliance status
 
-After you've assigned the policy, you can monitor compliance of resources under **Compliance** and remediation status under **Remediation** on the Azure Policy home page. The compliance state for a new policy assignment takes a few minutes to become active and provide results about the policy's state.
+After you've created the policy assignment, you can monitor compliance of resources under **Compliance** and remediation status under **Remediation** on the Azure Policy home page. The compliance state for a new policy assignment takes a few minutes to become active and provide results about the policy's state.
 
 To view the compliance status of the policy, follow these steps:
 
@@ -739,11 +749,11 @@ To view the compliance status of the policy, follow these steps:
 
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/compliance-status.png" alt-text="Screenshot of the Policy Compliance page showing the compliance status." lightbox="./media/monitor-hci-multi-azure-policies/compliance-status.png":::
 
-1. Select the policy assignment name to view the **Resource Compliance** status. For example, the compliance report for the install AMA policy shows the clusters that don't have AMA installed as non-compliant:
+1. Select the policy assignment name to view the **Resource Compliance** status. For example, the compliance report for the repair AMA policy shows the cluster nodes that need to be repaired:
 
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/compliance-status-resources.png" alt-text="Screenshot of the Policy Compliance status page showing the compliance status." lightbox="./media/monitor-hci-multi-azure-policies/compliance-status-resources.png":::
 
-1. Once you know which resources are non-compliant, you can create the remediation task to make them compliant.
+1. Once you know which resources are non-compliant, you can create the remediation task to bring them into compliance.
 
 ### Remediate non-compliant resources
 
@@ -760,9 +770,9 @@ To remediate non-compliant resources and track remediation task progress, follow
 
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/new-remediation-task.png" alt-text="Screenshot of New remediation task page." lightbox="./media/monitor-hci-multi-azure-policies/new-remediation-task.png":::
 
-1. You get a notification that a remediation task is created, and you'll be directed to the **Remediation tasks** tab. This tab shows the status of different remediation tasks. The one you created might be in the **Evaluating** state.
+1. You get a notification that a remediation task is created, and you'll be directed to the **Remediation tasks** tab. This tab shows the status of different remediation tasks. The one you created might be in the **Evaluating** or **In Progress** state.
 
-    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-remediation.png" alt-text="Screenshot of the Policy Remediation page showing the policies to remediate." lightbox="./media/monitor-hci-multi-azure-policies/policy-remediation.png":::
+    :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-remediation-state.png" alt-text="Screenshot of the Policy Remediation page showing the policies to remediate." lightbox="./media/monitor-hci-multi-azure-policies/policy-remediation-state.png":::
 
 1. Once the remediation is complete, the state changes to either **Completed** or **Failed**.
 
