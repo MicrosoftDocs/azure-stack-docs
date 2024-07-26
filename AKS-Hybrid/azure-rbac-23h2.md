@@ -6,8 +6,8 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 07/10/2024
-ms.lastreviewed: 07/10/2024
+ms.date: 07/26/2024
+ms.lastreviewed: 07/26/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -33,7 +33,6 @@ Before you begin, make sure you have the following prerequisites:
 - AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
 - Install the latest version of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need to run the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
 
-
   ```azurecli
   az extension add --name aksarc
   az extension add --name connectedk8s
@@ -54,7 +53,7 @@ Before you begin, make sure you have the following prerequisites:
 - Once Azure RBAC is enabled, you can access your Kubernetes cluster with the given permissions using either direct mode or proxy mode.
   - To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permission.
   - To access the Kubernetes cluster from anywhere with a proxy mode using`az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission. Meanwhile, you need to verify that the agents and the machine performing the onboarding process meet the network requirements specified in [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements?tabs=azure-cloud#details).
-- To use **kubectl**, you can access it using either Azure RBAC or the AAD Admin Group.
+- To use **kubectl**, you can use either Azure RBAC or the AAD Admin Group.
   - To use kubectl with Azure RBAC, you need the **Azure Arc Kubernetes Viewer** role scoped to the connected cluster resource.
   - To use kubectl with the AAD Admin Group, you don't need any specific role, but you must ensure you are in one of the groups in the **add-admin-group** list of the connected cluster resource.
 
@@ -167,7 +166,7 @@ Run the following steps on another client device:
      ```azurecli
      az connectedk8s proxy -n $CLUSTER_NAME -g $RESOURCE_GROUP
      ```
-     
+
      > [!NOTE]
      > This command opens the proxy and blocks the current shell.
 
@@ -198,8 +197,6 @@ az role assignment delete --ids <LIST OF ASSIGNMENT IDS>
 ```azurecli
 az role definition delete -n "AKS Arc Deployment Reader"
 ```
-
-
 
 ## Next steps
 
