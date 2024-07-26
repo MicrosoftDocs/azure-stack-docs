@@ -22,7 +22,7 @@ If your network uses a proxy server for internet access, see [Configure proxy se
 
 ## Firewall requirements for outbound endpoints
 
-Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the Azure Stack HCI operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section of this article.
+Opening ports 80 and 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the Azure Stack HCI operating system to connect with Azure and Microsoft Update.
 
 Azure Stack HCI needs to periodically connect to Azure. Access is limited only to:
 
