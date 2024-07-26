@@ -19,7 +19,7 @@ This article describes the contents of Azure Stack Hub update packages. The upda
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-2311"
+::: moniker range="azs-2311"
 > [!IMPORTANT]  
 > This update package requires an OEM package version of 2.3 or later. For more information, see the [OEM contact information](azure-stack-update-oem.md#oem-contact-information).
 
@@ -71,9 +71,6 @@ The 2406 update has the following expected runtimes based on our internal testin
 - 12 nodes: 14-34 hours
 - 16 nodes: 17-40 hours
 
-> [!IMPORTANT]
-> Disconnected environments have additional prerequisite steps, which might increase this duration. See the following section for required steps to obtain and update a SQL Server 2019 product key (PID).
-
 Exact update durations typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Durations that are shorter or longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 2406 update and should not be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
@@ -111,7 +108,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 
 The 2406 release of Azure Stack Hub must be applied on the 2311 release with the following hotfix installed:
 
-- [Azure Stack Hub hotfix 1.2311.2.23](hotfix-1-2311-2-23.md)
+- [Azure Stack Hub hotfix 1.2311.3.50](hotfix-1-2311-3-50.md)
 
 ### After successfully applying the 2406 update
 
