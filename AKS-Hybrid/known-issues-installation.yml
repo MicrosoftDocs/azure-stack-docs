@@ -522,7 +522,28 @@ sections:
           This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.
           
           To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps&preserve-view=true) where `Role` equals `ClusterAndClient`. Then, on one of the cluster nodes, select the name, address, and address mask to verify that the IP address provided for the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
-  
+      - question: | 
+          Enable-AksHciArcConnection shows warning about GetServicePrincipals have insufficient privileges to enable custom locations
+
+        answer: | 
+          Enable-AksHciArcConnection can connect AKS cluster to Azure but shows the warning below when the customer uses service principal for authentication:
+          
+          ```shell
+          WARNING: Error occurred while executing GetServicePrincipals
+          Code: Authorization_RequestDenied
+          Message: Insufficient privileges to complete the operation.
+          RequestId: <removed>
+          DateTimeStamp: <removed>
+          HttpStatusCode: Forbidden
+          HttpStatusDescription: Forbidden
+          HttpResponseStatus: Completed
+          WARNING: Custom locations has not been enabled on the AKS-HCI cluster. To enable custom locations manually, visit aka.ms/enable-custom-location
+        ```
+          
+          The current behavior of the Arc Onboarding is to, by default enable Custom Locations. To be able to do this, the GetServicePrincipals action is performed in the context of the logged in Azure user. And, if the user (or SPN) does not have sufficient permissions to be able to do this, this command throw Warning that these permissions don't exist and so the CL (Custom Locations) feature will not be enabled.
+          
+          If the customer does not want CL to be enabled, they can safely ignore this warning, as this does not affect cluster onboarding to Arc. On the other hand, if they do need CL to be enabled, they need to grant the necessary permission to the user (or SPN).
+
 
 additionalContent: |
   ## Next steps
