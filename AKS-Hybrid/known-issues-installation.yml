@@ -526,7 +526,7 @@ sections:
           Enable-AksHciArcConnection shows warning about GetServicePrincipals have insufficient privileges to enable custom locations
 
         answer: | 
-          Enable-AksHciArcConnection can connect AKS cluster to Azure but shows the warning below when the customer uses service principal for authentication:
+          `Enable-AksHciArcConnection` can connect an AKS cluster to Azure, but it shows the following warning when the customer uses a service principal for authentication:
           
           ```shell
           WARNING: Error occurred while executing GetServicePrincipals
