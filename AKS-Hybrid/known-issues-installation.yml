@@ -8,7 +8,7 @@ metadata:
   ms.subservice: aks-hci
   ms.custom: devx-track-azurepowershell
   ms.topic: faq
-  ms.date: 07/11/2024
+  ms.date: 07/26/2024
 title: Resolve issues and errors during an AKS Arc installation
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
@@ -522,7 +522,28 @@ sections:
           This error indicates that the cloud service's IP address is not a part of the cluster network and doesn't match any of the cluster networks that have the `client and cluster communication` role enabled.
           
           To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps&preserve-view=true) where `Role` equals `ClusterAndClient`. Then, on one of the cluster nodes, select the name, address, and address mask to verify that the IP address provided for the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
-  
+      - question: | 
+          The Enable-AksHciArcConnection cmdlet generates a warning indicating that GetServicePrincipals has insufficient privileges to enable custom locations
+
+        answer: | 
+          `Enable-AksHciArcConnection` can connect an AKS cluster to Azure, but it shows the following warning when the customer uses a service principal for authentication:
+          
+          ```shell
+          WARNING: Error occurred while executing GetServicePrincipals
+          Code: Authorization_RequestDenied
+          Message: Insufficient privileges to complete the operation.
+          RequestId: <removed>
+          DateTimeStamp: <removed>
+          HttpStatusCode: Forbidden
+          HttpStatusDescription: Forbidden
+          HttpResponseStatus: Completed
+          WARNING: Custom locations has not been enabled on the AKS-HCI cluster. To enable custom locations manually, visit aka.ms/enable-custom-location
+          ```
+          
+          The current behavior of Arc onboarding is to enable custom locations by default. To enable custom locations, the **GetServicePrincipals** action is performed in the context of the logged-in Azure user. If the user (or SPN) does not have sufficient permissions to be able to do this, the command issues a warning that these permissions don't exist, and therefore the Custom Locations feature won't be enabled.
+          
+          If you don't want Custom Locations to be enabled, you can safely ignore this warning, as this does not affect cluster onboarding to Arc. On the other hand, if you do need Custom Locations to be enabled, you must grant the necessary permissions to the user (or SPN).
+
 
 additionalContent: |
   ## Next steps
