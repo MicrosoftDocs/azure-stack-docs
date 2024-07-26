@@ -26,14 +26,14 @@ This section describes the Azure policies to use to enable Insights at scale. Fo
 
 For Azure Stack HCI clusters registered before Nov 2023, you need to repair cluster registration and Azure Monitor Agent (AMA) before configuring Insights again. For details, see [Troubleshoot clusters registered before November 2023](./monitor-hci-single.md#troubleshoot-clusters-registered-before-november-2023).
 
+The policy to repair AMA performs the following function:
+
+- Removes the registry key, if present, which determines the resource ID for which AMA collects data.
+
 Before applying this policy, keep in mind the following things:
 
 - This policy is applicable only to Azure Stack HCI, version 22H2 clusters. Apply it before any other policies to ensure AMA picks up the correct resource ID.
 - Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear.
-
-The policy to repair AMA performs the following functions:
-
-- Removes the registry key, if present, which determines the resource ID for which AMA collects data.
 
 <details>
   <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
@@ -676,7 +676,7 @@ To enable Insights at scale for Azure Stack HCI clusters, apply the Azure polici
 Follow these steps for each policy to enable Insights at scale:
 
 1. **Create a policy definition.** Define the rules and conditions for compliance using the policy definition template. See [Create a policy definition](#create-a-policy-definition).
-1. **Create a policy assignment.** Define the scope of the policy, exclusions if any, and parameters for enforcement. Use the policy definition defined in step 1. See [Create a policy assignment](#create-a-policy-assignment).
+1. **Create a policy assignment.** Define the scope of the policy, exclusions if any, and parameters for enforcement. Use the policy definition defined in the previous step. See [Create a policy assignment](#create-a-policy-assignment).
 1. **View compliance status.** Monitor the compliance status of the policy assignment. Check for any non-compliant resources. See [View compliance status](#view-compliance-status).
 1. **Remediate non-compliant resources.** Create remediation tasks to remediate non-compliant resources. See [Remediate non-compliant resources](#remediate-non-compliant-resources).
 
@@ -699,11 +699,12 @@ To create a policy definition, follow these steps:
       :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-definition.png" alt-text="Screenshot of the Policy definition page to create a new policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-definition.png":::
 
 1. Select **Save**.
-1. You get a notification that the policy definition creation was successful. The policy definition page displays. You can now proceed to create the policy assignment.
+
+      You get a notification that the policy definition creation was successful and the policy definition page is displayed. You can now proceed to create the policy assignment.
 
 ### Create a policy assignment
 
-Next, you create a policy assignment and assign the policy definition at the subscription or resource group level. The scope of the policy corresponds to that resource and any resources beneath it. For more information on policy assignment, see [Azure Policy assignment structure](/azure/governance/policy/concepts/assignment-structure).
+Next, you create a policy assignment and assign the policy definition at the subscription or resource group level. For more information on policy assignment, see [Azure Policy assignment structure](/azure/governance/policy/concepts/assignment-structure).
 
 To create a policy assignment, follow these steps:
 
@@ -723,7 +724,7 @@ To create a policy assignment, follow these steps:
  
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-assign.png" alt-text="Screenshot of the Assign policy page to assign the policy definition." lightbox="./media/monitor-hci-multi-azure-policies/policy-assign.png":::
 
-1. Select **Next** to view the **Parameters** tab. If the policy definition you selected on the **Basics** tab included parameters, they show up on **Parameters** tab.
+1. Select **Next** to view the **Parameters** tab. If the policy definition you selected on the **Basics** tab included parameters, they show up on the **Parameters** tab.
 
     For example, the policy to repair AMA shows the **Include Arc connected machines** parameter. Select **True** to include Arc connected machines in the policy assignment.
 
@@ -735,7 +736,8 @@ To create a policy assignment, follow these steps:
 
 1. Select **Review + create** to review the assignment.
 1. Select **Create** to create the assignment.
-1. You get notifications that the role assignment and policy assignment creations were successful. Once the assignment is created, the Azure Policy engine identifies all Azure Stack HCI clusters located within the scope and applies the policy configuration to each cluster. Typically, it takes 5 to 15 minutes for the policy assignment to take effect.
+
+    You get notifications that the role assignment and policy assignment creations were successful. Once the assignment is created, the Azure Policy engine identifies all Azure Stack HCI clusters located within the scope and applies the policy configuration to each cluster. Typically, it takes 5 to 15 minutes for the policy assignment to take effect.
 
 ### View compliance status
 
