@@ -24,11 +24,11 @@ If your network uses a proxy server for internet access, see [Configure proxy se
 
 Opening ports 80 and 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the Azure Stack HCI operating system to connect with Azure and Microsoft Update.
 
-Azure Stack HCI needs to periodically connect to Azure. Access is limited only to:
+Azure Stack HCI needs to periodically connect to Azure for:
 
 - Well-known Azure IPs
 - Outbound direction
-- Port 443 (HTTPS)
+- Ports 80 (HTTP) and 443 (HTTPS)
 
 > [!IMPORTANT]
 > Azure Stack HCI doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Stack HCI to prevent any connectivity errors.
