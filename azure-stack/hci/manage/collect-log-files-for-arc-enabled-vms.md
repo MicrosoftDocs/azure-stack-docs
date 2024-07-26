@@ -40,7 +40,7 @@ Examine these log files to investigate a VM provisioning failure:
 |-------------------|-----------------|-------------|
 | cloud-init-output.log | /var/log/ | Captures the output from each stage of cloud-init when it runs. |
 | cloud-init.log | /var/log/ | A detailed log with debugging output, detailing each action taken. |
-| | /run/cloud-init | Contains logs about how cloud-init decided to enable or disable itself, and what platforms/datasources were detected. These logs are most useful when trying to determine what cloud-init ran or didn't run. |
+| log files | /run/cloud-init | Contains logs about how cloud-init decided to enable or disable itself, and what platforms/datasources were detected. These logs are most useful when trying to determine what cloud-init ran or didn't run. |
 
 ## Collect guest logs
 
