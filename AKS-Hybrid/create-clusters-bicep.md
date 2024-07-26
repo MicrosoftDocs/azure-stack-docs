@@ -25,7 +25,7 @@ Before you begin, make sure you have the following prerequisites:
 
 1. Get the following details from your on-premises infrastructure administrator:
 
-   - Azure subscription ID: the Azure subscription ID in which Azure Stack HCI is used for deployment and registration.
+   - Azure subscription ID: the Azure subscription ID that uses Azure Stack HCI for deployment and registration.
    - Custom location name or ID: the Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Stack HCI cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create Kubernetes clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name.
    - Logic network name or ID: the Azure Resource Manager ID of the Azure Stack HCI logical network that was created following these steps. Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
 
@@ -42,8 +42,11 @@ To create an SSH key pair (same as Azure AKS), use the following procedure:
    ```azurecli
    # Create an SSH key pair using Azure CLI
    az sshkey create --name "mySSHKey" --resource-group "myResourceGroup"
+   ```
 
-   # Or, create an SSH key pair using ssh-keygen
+   Or, create an SSH key pair using ssh-keygen:
+
+   ```bash  
    ssh-keygen -t rsa -b 4096
    ```
 
