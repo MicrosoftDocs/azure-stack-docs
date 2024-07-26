@@ -8,7 +8,7 @@ metadata:
   ms.subservice: aks-hci
   ms.custom: devx-track-azurepowershell
   ms.topic: faq
-  ms.date: 07/11/2024
+  ms.date: 07/26/2024
 title: Resolve issues and errors during an AKS Arc installation
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
@@ -523,7 +523,7 @@ sections:
           
           To resolve this issue, run [Get-ClusterNetwork](/powershell/module/failoverclusters/get-clusternetwork?view=windowsserver2019-ps&preserve-view=true) where `Role` equals `ClusterAndClient`. Then, on one of the cluster nodes, select the name, address, and address mask to verify that the IP address provided for the `-cloudServiceIP` parameter of [New-AksHciNetworkSetting](./reference/ps/new-akshcinetworksetting.md) matches one of the displayed networks.
       - question: | 
-          The Enable-AksHciArcConnection cmdlet generates a warning indicating that GetServicePrincipals has insufficient privileges to enable custom locations.
+          The Enable-AksHciArcConnection cmdlet generates a warning indicating that GetServicePrincipals has insufficient privileges to enable custom locations
 
         answer: | 
           `Enable-AksHciArcConnection` can connect an AKS cluster to Azure, but it shows the following warning when the customer uses a service principal for authentication:
