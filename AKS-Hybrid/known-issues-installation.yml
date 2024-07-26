@@ -540,7 +540,7 @@ sections:
           WARNING: Custom locations has not been enabled on the AKS-HCI cluster. To enable custom locations manually, visit aka.ms/enable-custom-location
           ```
           
-          The current behavior of the Arc Onboarding is to, by default enable Custom Locations. To be able to do this, the GetServicePrincipals action is performed in the context of the logged in Azure user. And, if the user (or SPN) does not have sufficient permissions to be able to do this, this command throw Warning that these permissions don't exist and so the CL (Custom Locations) feature will not be enabled.
+          The current behavior of Arc onboarding is to enable custom locations by default. To enable custom locations, the **GetServicePrincipals** action is performed in the context of the logged-in Azure user. If the user (or SPN) does not have sufficient permissions to be able to do this, the command issues a warning that these permissions don't exist, and therefore the Custom Locations feature won't be enabled.
           
           If you don't want Custom Locations to be enabled, you can safely ignore this warning, as this does not affect cluster onboarding to Arc. On the other hand, if you do need Custom Locations to be enabled, you must grant the necessary permissions to the user (or SPN).
 
