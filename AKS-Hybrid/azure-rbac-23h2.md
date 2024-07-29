@@ -6,8 +6,8 @@ ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
 ms.reviewer: leslielin
-ms.date: 07/10/2024
-ms.lastreviewed: 07/10/2024
+ms.date: 07/26/2024
+ms.lastreviewed: 07/26/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
@@ -32,7 +32,6 @@ Before you begin, make sure you have the following prerequisites:
 
 - AKS on Azure Stack HCI 23H2 currently supports enabling Azure RBAC only during Kubernetes cluster creation. You can't enable Azure RBAC after the Kubernetes cluster is created.
 - Install the latest version of the **aksarc** and **connectedk8s** Azure CLI extensions. Note that you need to run the **aksarc** extension version 1.1.1 or later to enable Azure RBAC. Run `az --version` to find the current version. If you need to install or upgrade Azure CLI, see [Install Azure CLI](/cli/azure/install-azure-cli).
-
 
   ```azurecli
   az extension add --name aksarc
@@ -167,7 +166,7 @@ Run the following steps on another client device:
      ```azurecli
      az connectedk8s proxy -n $CLUSTER_NAME -g $RESOURCE_GROUP
      ```
-     
+
      > [!NOTE]
      > This command opens the proxy and blocks the current shell.
 
