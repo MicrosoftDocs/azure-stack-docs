@@ -269,3 +269,5 @@ Resume-ClusterNode
 > To complete the migration to Network ATC across the cluster, follow steps 1 through 5, step 7, and step 9 for each node.
 
 ## Next step
+
+Learn how to [Evaluate the deployment readiness of your environment for Azure Stack HCI, version 23H2](../manage/use-environment-checker.md).
