@@ -12,7 +12,7 @@ ms.date: 07/24/2024
 
 # Migrate an existing Azure Stack HCI cluster to Network ATC
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides information on how to migrate your existing Azure Stack HCI cluster to Network ATC so that you can take advantage of several benefits. We also describe how to utilize this configuration across all new deployments.
 
@@ -105,17 +105,18 @@ To start the Network ATC service, on the paused node only, run the following com
 
 ```powershell
 Start-Service -Name NetworkATC
+Set-service -Name NetworkATC -StartupType Automatic
 ```
 
 ### Step 6: Add the Network ATC intent
+
+There are various intents that you can add. Identify the intent or intents you'd like using the examples in the next section.
 
 To add the Network ATC intent, run the following command:
 
 ```powershell
 Set-Service -Name NetworkATC -StartupType Automatic
 ```
-
-There are various intents that you can add. Identify the intent or intents you'd like using the examples in the next section.
 
 ### Example intents
 
