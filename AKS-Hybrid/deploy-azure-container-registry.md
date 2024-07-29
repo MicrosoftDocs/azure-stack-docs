@@ -3,7 +3,7 @@ title: Deploy from a private container registry to on-premises Kubernetes using 
 description: Learn how to deploy from a private container registry to on-premises Kubernetes using Azure Container Registry and AKS enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/02/2022
+ms.date: 06/26/2024
 ms.author: sethm
 ms.lastreviewed: 03/16/2022
 ms.reviewer: rbaziwane
@@ -20,7 +20,7 @@ This article describes how to deploy container images from a private container r
 
 The article describes how to create a private container registry in Azure and push your container image to the private container registry. You can then deploy from the private registry to your on-premises Kubernetes cluster hosted in AKS enabled by Arc.
 
-If you're interested in learning more about Container Registry in Azure, see the [Azure Container Registry documentation](/azure/container-registry/).
+For more information about Container Registry in Azure, see the [Azure Container Registry documentation](/azure/container-registry/).
 
 ## Prerequisites
 
@@ -39,7 +39,7 @@ In order to create a container registry, begin with a *resource group*. An Azure
 az group create --name <RESOURCE_GROUP_NAME> --location eastus
 ```
 
-Create a Container Registry instance with the [az acr create](/cli/azure/acr) command, and provide your own registry name. The registry name must be unique within Azure and contain 5 to 50 alphanumeric characters. In the rest of this article, `<acrName>` is used as a placeholder for the container registry name, but you can provide your own unique registry name. The Basic SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput.
+Create a Container Registry instance with the [az acr create](/cli/azure/acr) command, and provide your own registry name. The registry name must be unique within Azure and contain 5 to 50 alphanumeric characters. In the rest of this article, `<acrName>` is used as a placeholder for the container registry name, but you can provide your own unique registry name. The Basic SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput:
 
 ```azurecli
 az acr create --resource-group <RESOURCE_GROUP_NAME> --name <REGISTRY_NAME> --sku Basic

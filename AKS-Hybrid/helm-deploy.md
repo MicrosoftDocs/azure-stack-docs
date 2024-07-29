@@ -3,7 +3,7 @@ title: Deploy applications with Helm
 description: Learn how to use Helm to deploy applications on AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 12/28/2022
+ms.date: 07/03/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: rbaziwane
@@ -17,7 +17,7 @@ ms.reviewer: rbaziwane
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-[Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as *APT* and *Yum*, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
+[Helm](https://helm.sh/) is an open-source packaging tool that helps you install and manage the lifecycle of Kubernetes applications. Similar to Linux package managers, such as **APT** and **Yum**, Helm manages Kubernetes charts, which are packages of pre-configured Kubernetes resources.
 
 This article describes how to use Helm to package and deploy applications on AKS when you're using Azure Kubernetes Service enabled by Azure Arc.
 
@@ -25,12 +25,12 @@ This article describes how to use Helm to package and deploy applications on AKS
 
 Verify that you have the following requirements set up:
 
-* A [Kubernetes cluster](./setup.md) with at least one Windows or Linux worker node that's up and running.
+* A [Kubernetes cluster](setup.md) with at least one Windows or Linux worker node that's up and running.
 * You configured your local `kubectl` environment to point to your cluster. You can use the [Get-AksHciCredential](./reference/ps/get-akshcicredential.md) PowerShell command to access your cluster using `kubectl`.
 * [Helm v3](https://helm.sh/docs/intro/install/) command line and prerequisites installed.
 * An available container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
 
-In this topic, an ASP.NET Core application is used as an example. You can download the sample application from this [GitHub repository](https://github.com/baziwane/MyMicroservice).
+This article uses an ASP.NET Core application as an example. You can download the sample application from [this GitHub repository](https://github.com/baziwane/MyMicroservice).
 
 Since the application is deployed to Kubernetes, the following example is a simple Dockerfile for the project:
 
@@ -68,7 +68,7 @@ docker build -f Dockerfile -t acr.azurecr.io/mymicroservice:0.1.0 .
 > [!NOTE]
 > The period (.) at the end of the command sets the location of the Dockerfile (in this case, the current directory).
 
-This command creates the image `mymicroservice:0.1.0` on the local machine. To verify that the image was successfully created, run `docker images` to confirm.
+This command creates the image `mymicroservice:0.1.0` on the local machine. To verify that the image was successfully created, run `docker images` to confirm:
 
 ```output
 REPOSITORY              TAG     IMAGE ID       CREATED            SIZE  
@@ -76,7 +76,7 @@ acr.azurecr.io/mymicroservice 0.1.0   5be713db571b   About a minute ago 107MB
 ....
 ```
 
-Next, push your image to a container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/). In this example, the container image is pushed to Azure Container Registry (ACR). For more information, see [Pull images from an ACR to a Kubernetes cluster](/azure/container-registry/container-registry-auth-kubernetes).
+Next, push your image to a container registry, such as [DockerHub](https://hub.docker.com/) or [Azure Container Registry](https://azure.microsoft.com/services/container-registry/). In this example, the container image is pushed to Azure Container Registry. For more information, see [Pull images from an ACR to a Kubernetes cluster](/azure/container-registry/container-registry-auth-kubernetes):
 
 ```console
 docker push acr.azurecr.io/mymicroservice:0.1.0

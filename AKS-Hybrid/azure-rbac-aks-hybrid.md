@@ -5,44 +5,55 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
+ms.date: 06/28/2024
 ms.reviewer: sulahiri
-ms.date: 10/09/2023
-ms.lastreviewed: 03/23/2023
+ms.lastreviewed: 06/28/2024
 
 # Intent: As an IT Pro, I want to use Azure RBAC to authenticate connections to my AKS clusters over the Internet or on a private network.
 # Keyword: Kubernetes role-based access control AKS Azure RBAC AD
 ---
 
-# Use Azure RBAC for AKS clusters (preview)
+# Use Azure RBAC for AKS clusters (preview, retired)
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to set up Azure RBAC on an AKS cluster to use Microsoft Entra ID and Azure role assignments for authorization. Steps for creating the cluster are covered in [Prerequisites](#prerequisites).
+> [!WARNING]
+> This preview feature has been retired and is unsupported starting from 7/15/2024. Microsoft does not recommend using this Azure RBAC preview feature in a production environment.
+> - PREVIEWS ARE PROVIDED "AS-IS," "WITH ALL FAULTS," AND "AS AVAILABLE," as described herein. For more information about PREVIEW terms and conditions, see Online Services from [Universal License Terms](https://www.microsoft.com/licensing/terms/product/ForOnlineServices/EAEAS)
+> - If you want to use Azure RBAC for AKS on Azure Stack HCI, see [Use Azure role-based access control (RBAC) for Kubernetes authorization for AKS on Azure Stack HCI 23H2](azure-rbac-23h2.md).
+
+
+This article describes how to set up Azure RBAC on an AKS cluster to use Microsoft Entra ID and Azure role assignments for authorization. The steps to create the cluster are covered in [Prerequisites](#prerequisites).
 
 For a conceptual overview of using Azure RBAC with Azure Arc-enabled Kubernetes clusters, see [Azure RBAC on Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/conceptual-azure-rbac).
-
-> [!IMPORTANT]
-> These preview features are available on a self-service, opt-in basis. Previews are provided "as is" and "as available," and they're excluded from the service-level agreements and limited warranty. Azure Arc-enabled Kubernetes previews are partially covered by customer support on a best-effort basis.
 
 ## Prerequisites
 
 Before you deploy a Kubernetes cluster with Azure Arc enabled, you must complete the following prerequisites.
 
+### Install the Azure CLI extension
+
+The preview version of the Azure Arc-enabled Kubernetes Azure CLI extension is the only compatible version for this preview setup of AKS on Azure Stack HCI 22H2. Using a higher version can cause incompatibility issues with Azure RBAC and AKS Arc. To install the extension, run the following command:
+
+```azurecli
+az extension add -n connectedk8s --version 1.5.4
+```
+
 ### Prepare your network
 
-Configure the following network, proxy, and/or firewall settings:
+Configure the following network, proxy, and firewall settings:
 
 - Configure the endpoints that must be accessible to connect a cluster to Azure Arc. For a list, see [Meet network requirements](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements).  
 
 - Allow the [Graph endpoint](https://graph.microsoft.com) in your proxy or firewall.
 
-  For information about configuring a proxy server, see [Proxy server settings](/azure/aks/hybrid/set-proxy-settings).
+  For information about configuring a proxy server, see [Proxy server settings](set-proxy-settings.md).
 
 ### Server and client apps
 
 Azure RBAC uses Microsoft Entra client and server apps for different purposes. The client app is used to retrieve the user token once the user authenticates with Microsoft Entra ID using interactive login; for example, via device code flow. The client app is a public client, and also supports a non-interactive flow to retrieve the token for service principals.
 
-The server app is a confidential client and is used to retrieve a signed-in user's security group details ([for overage claim users](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/azure-active-directory-now-with-group-claims-and-application/ba-p/243862)) and for checking access requests that return the authorization result that the principal (user or SPN) has on the AKS cluster.
+The server app is a confidential client and is used to retrieve a signed-in user's security group details [for overage claim users](https://techcommunity.microsoft.com/t5/microsoft-entra-azure-ad-blog/azure-active-directory-now-with-group-claims-and-application/ba-p/243862), and for checking access requests that return the authorization result that the principal (user or SPN) has on the AKS cluster.
 
 When you register the Microsoft Entra application, it stores configuration information in Microsoft Entra ID. This configuration enables the application represented by the Microsoft Entra application to authenticate on behalf of the user (or SPN). Once authenticated, the application can then use the Microsoft Entra app ID to access APIs on behalf of the user.
 
@@ -53,12 +64,10 @@ Register your server app and secret, and your client app and secret, by performi
 > [!NOTE]
 > These steps direct you to key tasks in [Use Azure RBAC for Azure Arc-enabled Kubernetes clusters](/azure/azure-arc/kubernetes/azure-rbac) that are required to prepare for the Azure RBAC setup in AKS Arc.  
 
-To do these steps, you must have the built-in [Application Administrator role](/azure/active-directory/roles/permissions-reference) in Microsoft Entra ID. For instructions, see [Assign Microsoft Entra roles to users](/azure/active-directory/roles/manage-roles-portal).
+To perform these steps, you must have the built-in [Application Administrator role](/azure/active-directory/roles/permissions-reference) in Microsoft Entra ID. For instructions, see [Assign Microsoft Entra roles to users](/azure/active-directory/roles/manage-roles-portal).
 
 1. [Create a server application and shared secret](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-server-application).
-
 1. [Create a role assignment for the server application](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-role-assignment-for-the-server-application).
-
 1. [Create a client application](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-a-client-application). You refer to the client application when you use `kubectl` to connect within your network.
 
 ### Grant permissions for users on the cluster
@@ -67,7 +76,7 @@ Assign roles to grant permissions to users of service principal names (SPNs) on 
 
 To assign roles on a Kubernetes cluster, you must have **Owner** permission on the subscription, resource group, or cluster.
 
-The following example uses [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true) to assign the `Azure Arc Kubernetes Cluster Admin` role to the resource group that contains the cluster. You can set the scope of the resource group before you create the cluster.
+The following example uses [az role assignment](/cli/azure/role/assignment) to assign the **Azure Arc Kubernetes Cluster Admin** role to the resource group that contains the cluster. You can set the scope of the resource group before you create the cluster:
 
 ```azurecli
 az role assignment create --role "Azure Arc Kubernetes Cluster Admin" --assignee xyz@contoso.com --scope /subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Kubernetes/connectedClusters/<resource name, aka name of AKS cluster>
@@ -92,7 +101,7 @@ az connectedk8s show -g <name of resource group>
 az connectedk8s show -n <name of cluster> -g <name of resource group>
 ```
 
-For other examples, see [az role assignment](/cli/azure/role/assignment?view=azure-cli-latest&preserve-view=true).
+For other examples, see [az role assignment](/cli/azure/role/assignment).
 
 For information about pre-built Azure RBAC roles for Arc-enabled Kubernetes clusters, see [Create role assignments for users to access a cluster](/azure/azure-arc/kubernetes/azure-rbac?tabs=AzureCLI#create-role-assignments-for-users-to-access-the-cluster). For a list of all available built-in roles, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
@@ -102,18 +111,18 @@ Use an Azure service principal to configure an automation account with the permi
 
 Creating a target cluster only requires limited privileges on the subscription. We recommend using the **Kubernetes Cluster - Azure Arc Onboarding** role. You can also use the **Owner** or **Contributor** role. For more information, see [Azure built-in roles](/azure/role-based-access-control/built-in-roles).
 
-Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true&preserve-view=true) command in Azure CLI to create the SPN and configure it with the needed permissions.
+Use the [`az ad sp create-for-rbac`](/cli/azure/ad/sp) Azure CLI command to create the SPN and configure it with the needed permissions.
 
-The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp?view=azure-cli-latest&preserve-view=true) command reference.
+The following example assigns the **Kubernetes Cluster - Azure Arc Onboarding** role to the subscription. For more information, see the [`az ad sp`](/cli/azure/ad/sp) command reference:
 
 ```azurecli
 az ad sp create-for-rbac --role "Kubernetes Cluster - Azure Arc Onboarding" --scopes /subscriptions/<OID of the subscription ID> 
 ```
 
 > [!IMPORTANT]
-> The command output for `az ad sp` includes credentials that you must protect. Do not include these credentials in your code or check the credentials into your source control. For more information, see [Create an Azure service principal](/cli/azure/azure-cli-sp-tutorial-1).
+> The command output for `az ad sp` includes credentials that you must protect. Don't include these credentials in your code or check the credentials into your source control. For more information, see [Create an Azure service principal](/cli/azure/azure-cli-sp-tutorial-1).
 
-For more information about creating an SPN and assigning it a role, see [Create an Azure service principal](/cli/azure/azure-cli-sp-tutorial-1).
+For more information about creating an SPN and assigning a role to it, see [Create an Azure service principal](/cli/azure/azure-cli-sp-tutorial-1).
 
 ## Step 2: Create the credential object  
 
@@ -125,7 +134,7 @@ $Credential = Get-Credential
 
 This command prompts for a password.
 
-To automate creation of the credential object, without requiring manual password entry, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential?view=powershell-7.3&preserve-view=true#example-4). The script includes a plaintext credential, which might violate security standards in some enterprises.
+To automate creation of the credential object without requiring manual password entry, see [Get-Credential, Example 4](/powershell/module/microsoft.powershell.security/get-credential#example-4). The script includes a plaintext credential, which might violate security standards in some enterprises.
 
 ## Step 3: Create an Azure RBAC-enabled AKS cluster
 
@@ -135,9 +144,8 @@ You can create an Azure RBAC-enabled cluster using an SPN (Option A) or create t
 
 To create an AKS target cluster with Azure RBAC enabled using an SPN:
 
-1. If you haven't already created an SPN to use with the target cluster, [create the SPN](/cli/azure/azure-cli-sp-tutorial-1) now.
-1. Note the SPN created is for one time use when creating the cluster and doesn't require managing passwords
-
+1. If you don't already have an SPN to use with the target cluster, [create the SPN](/cli/azure/azure-cli-sp-tutorial-1) now.
+1. Note that the new SPN is for one time use when creating the cluster and doesn't require managing passwords.
 1. Open a PowerShell window on the Azure HCI node or Windows server where you deploy the cluster, and run the following command:
 
    ```powershell
@@ -149,8 +157,7 @@ To create an AKS target cluster with Azure RBAC enabled using an SPN:
 If you prefer to create your Azure RBAC-enabled target cluster interactively, follow these steps:
 
 1. Open a PowerShell window on the Azure HCI node or Windows server where you deploy the cluster.
-
-1. Sign in to Azure by running the following command. using the `connect-azaccount -deviceauth` command.
+1. Sign in to Azure by running the following `connect-azaccount -deviceauth` command:
 
    ```powershell
    connect-azaccount -deviceauth
@@ -170,7 +177,7 @@ If you prefer to create your Azure RBAC-enabled target cluster interactively, fo
    New-AksHciCluster -name "<cluster name>"  -enableAzureRBAC -resourceGroup "<name of resource group>"  -location "eastus" -appId $SERVER_APP_ID -appSecret $SERVER_APP_SECRET -aadClientId $CLIENT_APP_ID -nodePoolName <name of node pool> 
    ```
 
-## Step 4: Connect to AKS cluster via Azure RBAC
+## Step 4: Connect to the AKS cluster via Azure RBAC
 
 The Azure RBAC setup on the AKS cluster is now complete. To test your Azure RBAC setup, connect to the AKS cluster. Azure RBAC authenticates the connections.
 
@@ -180,10 +187,9 @@ The procedures in this section use the `connectedk8s` proxy method to connect to
 
 Use the `connectedk8s` proxy method to send an authentication/authorization request from anywhere on the internet. When you use this method, you're limited to 200 groups.
 
-To connect to an AKS cluster using the `connectedk8s` proxy method, do the following steps:
+To connect to an AKS cluster using the `connectedk8s` proxy method, perform the following steps:
 
 1. Open an Azure CLI window, and use `az login` to connect to Azure. For more information, see [Sign in with Azure CLI](/cli/azure/authenticate-azure-cli).
-
 1. Set the subscription for your Azure account to the subscription you used to create the AKS cluster if needed:
 
    ```azurecli
@@ -202,8 +208,7 @@ To connect to an AKS cluster using the `connectedk8s` proxy method, do the follo
    az connectedk8s proxy -n <cluster name> -g <resource group name>
    ```
 
-1. Make sure authentication is working correctly by sending requests to the cluster. Leaving open the terminal that you connected from, open another tab, and send the requests to the cluster. You should get responses based on your Azure RBAC configuration.
-
+1. Make sure authentication is working correctly by sending requests to the cluster. Leave the terminal that you connected from open, open another tab, and send the requests to the cluster. You should get responses based on your Azure RBAC configuration.
 1. Press **Ctrl+C** to close the `connectedk8s` proxy connection.
 
 ### Connect to AKS cluster over a private network
@@ -220,9 +225,7 @@ To connect to an AKS cluster over a private network, perform the following steps
    Get-AksHciCredential -Name <cluster name> -aadauth
    ```
 
-1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You are prompted for your Microsoft Entra credentials.
-
-   You might get a warning message, but you can ignore it.
+1. Start sending requests to AKS API server by running the `kubectl` command `api-server`. You are prompted for your Microsoft Entra credentials. You might get a warning message, but you can ignore it.
 
 ## Update to the kubelogin authentication plugin
 
@@ -243,7 +246,7 @@ This command also downloads the **kubelogin.exe** binary. To find the location o
 $workingdir = (Get-AksHciConfig).Akshci.installationPackageDir
 ```
 
-This command returns the path to which **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your HCI node or client machine. For HCI, copy the file to the path as described in the following example. For a client machine, copy the executable to your client machine and add it to your path. For example:
+This command returns the path to where **kubelogin.exe** is downloaded. Copy the **kubelogin.exe** file to your HCI node or client machine. For HCI, copy the file to the path as described in the following example. For a client machine, copy the executable to your client machine and add it to your path. For example:
 
 ```powershell
 cp $workingdir\kubelogin.exe "c:\program files\akshci"
@@ -251,7 +254,7 @@ cp $workingdir\kubelogin.exe "c:\program files\akshci"
 
 Alternatively, to download **kubelogin.exe** to your client machine, you can run the following command:
 
-```shell
+```cmd
 wget https://github.com/Azure/kubelogin/releases/download/v0.0.26/kubelogin-win-amd64.zip -OutFile kubelogin-win-amd64.zip
 ```
 

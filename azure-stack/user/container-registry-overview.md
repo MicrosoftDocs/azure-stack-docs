@@ -1,67 +1,56 @@
 ---
-title: Azure Container Registries on Azure Stack Hub overview 
-description: Learn about the differences between Azure and Azure Stack Hub with Azure Container Registries.
+title: Azure Container Registry on Azure Stack Hub user overview 
+description: Learn about the differences between Azure and Azure Stack Hub with Azure Container Registry.
 author: sethmanheim
 ms.topic: article
-ms.date: 10/26/2021
+ms.date: 07/23/2024
 ms.author: sethm
-ms.reviewer: chasat
-ms.lastreviewed: 10/26/2021
+ms.reviewer: dgarrity
+ms.lastreviewed: 04/10/2024
 
-# Intent: As an Azure Stack user, I want to XXX so I can XXX.
-# Keyword: XXX
+# Intent: As an Azure Stack Hub user, I want to know about the differences between Azure and Azure Stack Hub with Azure Container Registry so that I can understand the limitations and capabilities of the service.
 
 ---
 
-# Azure Container Registries on Azure Stack Hub overview
+# Azure Container Registry user overview
 
-You can use the Azure Container Registry (ACR) on Azure Stack Hub to 
-store and manage container images and artifacts. With the Public Preview release, you can 
-create and manage container registries by using the Azure Stack Hub user portal 
-or by using commands in PowerShell, Azure CLI, and the Docker CLI.
+You can use Azure Container Registry on Azure Stack Hub to store and manage container images and artifacts. With Azure Container Registry on Azure Stack Hub, you can create and manage container registries by using the Azure Stack Hub user portal or by using commands in PowerShell, Azure CLI, and the Docker CLI.
 
-ACR on Azure Stack Hub allows users to store and retrieve OCI images, assign role-based 
-access control (RBAC) permissions, and create webhooks
+Azure Container Registry on Azure Stack Hub allows users to store and retrieve OCI images, assign role-based access control (RBAC) permissions, and create webhooks.
 
-> [!IMPORTANT]
-> Azure Container Registry on Azure Stack Hub is currently in PREVIEW.
-> See the [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) 
-for legal terms that apply to Azure features that are in beta, preview, or otherwise not 
-yet released into general availability.
+## Features of Azure Container Registry on Azure Stack Hub
 
-## Features of ACR on Azure Stack Hub
+The following table shows Azure Stack Hub support for Azure Container Registry compared to Azure Container Registry on Azure:
 
-Azure Stack Hub support for ACR compared to ACR on Azure:
-
-| Feature                      | ACR in Azure | ACR in Azure Stack Hub Public Preview |
+| Feature                      | Azure Container Registry in Azure | Azure Container Registry in Azure Stack Hub |
 |------------------------------|--------------|---------------------------|
 | Portal                       | Yes          | Yes                       |
-| Multi-tenant Hosted service  | Yes          | Yes                       |
+| Multi-tenant hosted service  | Yes          | Yes                       |
 | Docker registry              | Yes          | Yes                       |
 | Helm support                 | Yes          | Yes                       |
 | OCI support                  | Yes          | Yes                       |
-| Identity & Access Management | Microsoft Entra ID     | Microsoft Entra / AD FS            |
+| Identity and access management | Microsoft Entra ID     | Microsoft Entra / AD FS            |
 | RBAC                         | Registry     | Registry                  |
-| Remote Repository (Mirror)   | No           | No                        |
-| OSS Vulnerability Scanning   | Yes          | No                        |
+| Remote repository (mirror)   | No           | No                        |
+| OSS vulnerability scanning   | Yes          | No                        |
 | Retention                    | Yes          | No                        |
-| Content Trust                | Yes          | No                        |
+| Content trust                | Yes          | No                        |
 | Replication                  | Yes          | No                        |
 | Webhooks                     | Yes          | Yes                       |
-| Private Networks             | Yes          | No                        |
+| Private networks             | Yes          | No                        |
 
-## ACR on Azure and ACR on Azure Stack Hub
+## Azure Container Registry on Azure and Azure Container Registry on Azure Stack Hub
 
-Azure Stack Hub key differences for ACR compared to ACR on Azure:
+The following table shows Azure Stack Hub key differences for Azure Container Registry compared to Azure Container Registry on Azure:
 
 | Aspect | Container Registry on Azure | Container Registry and Azure Stack Hub |
 | --- | --- | --- |
-| Service Tiers (SKUs) | [Registry service tiers and features - Azure Container Registry \| Microsoft Docs](/azure/container-registry/container-registry-skus) | By default a single service tier (SKU) is available to create on Azure Stack Hub with a maximum of 100 GB of storage and 10 webhooks. Azure Stack Hub operators may customize that storage limit lower based on needs. |
-| Login Server | `<registry-name>.azurecr.io`<br>(All lower case)<br> | `<registry-name>.azsacr.<regionname>.<fqdn>` <br> (All lower case) <br> Example: `myregistry.azsacr.azurestack.contoso.com`|
+| Service tiers (SKUs) | [Registry service tiers and features - Azure Container Registry](/azure/container-registry/container-registry-skus) | By default, a single service tier (SKU) is available to create on Azure Stack Hub with a maximum of 100 GB of storage and 10 webhooks. Azure Stack Hub operators can lower that storage limit based on needs. |
+| Login server | `<registry-name>.azurecr.io`<br>(All lower case)<br> | `<registry-name>.azsacr.<regionname>.<fqdn>` <br> (All lower case) <br> Example: `myregistry.azsacr.azurestack.contoso.com`|
 
 ## Service tier features and limits
 
-The following table details the features and registry limits of the Azure Stack Hub service tier.
+The following table shows the features and registry limits of the Azure Stack Hub service tier:
 
 | Resource                            | Azure Stack Hub |
 |-------------------------------------|-----------------|
@@ -86,22 +75,19 @@ The following table details the features and registry limits of the Azure Stack 
 |  - Scope maps                        | N/A             |
 |  - Repositories per scope map        | N/A             |
 
-<sup>1.</sup> Storage included in the rate for each tier.
+<sup>1</sup> Storage included in the rate for each tier.
 
-<sup>2.</sup> Maximum storage allowed for a registry. Operators may offer less storage through quotas.
+<sup>2</sup> Maximum storage allowed for a registry. Operators can offer less storage through quotas.
 
-<sup>3.</sup> *ReadOps*, *WriteOps*, and *Bandwidth* will vary based on Azure Stack Hub configuration and user workloads.
+<sup>3</sup> **ReadOps**, **WriteOps**, and **Bandwidth** vary based on Azure Stack Hub configuration and user workloads.
 
-<sup>4.</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
+<sup>4</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) translates to multiple read operations based on the number of layers in the image, plus the manifest retrieval.
 
-<sup>5.</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
+<sup>5</sup> [docker push](https://docs.docker.com/registry/spec/api/#pushing-an-image) translates to multiple write operations, based on the number of layers that must be pushed. A docker push includes *ReadOps* to retrieve a manifest for an existing image.
 
-## Supported Commands
-A subset of CLI and PowerShell commands are supported for Azure Container Registry on Azure Stack Hub. The full list is available here: 
-[Supported Commands](container-registry-commands.md).
+## Supported commands
 
-## Pricing
-Similar to most public previews, the public preview of Azure Container Registry on Azure Stack Hub is free.  Details of pricing will be shared prior to the GA release of the service.
+A subset of CLI and PowerShell commands are supported for Azure Container Registry on Azure Stack Hub. The full list is available here: [Supported Commands](container-registry-commands.md).
 
 ## Next steps
 

@@ -2,7 +2,7 @@
 title: Upgrade Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS enabled by Azure Arc using PowerShell
 description: Learn how to upgrade the Kubernetes version of Azure Kubernetes Service (AKS) workload clusters in AKS enabled by Azure Arc using PowerShell.
 ms.topic: article
-ms.date: 11/07/2022
+ms.date: 06/27/2024
 author: sethmanheim
 ms.author: sethm 
 
@@ -16,8 +16,8 @@ ms.author: sethm
 
 Two types of updates are available for an Azure Kubernetes Service (AKS) workload cluster in AKS enabled by Azure Arc:
 
-- Update the Kubernetes version of an AKS cluster.
-- Update the operating system version of an AKS cluster without updating the Kubernetes version.
+- Upgrade the Kubernetes version of an AKS cluster.
+- Upgrade the operating system version of an AKS cluster without updating the Kubernetes version.
 
 > [!NOTE]
 > You can also use Windows Admin Center to [upgrade AKS workload clusters](upgrade-kubernetes.md).
@@ -88,8 +88,6 @@ Update-AksHciCluster -name myCluster -operatingSystem
 ```
 
 ## Next steps
-
-In this article, you learned how to update AKS workload clusters in AKS Arc. Next, you can:
 
 - [Deploy a Linux application on a Kubernetes cluster](./deploy-linux-application.md)
 - [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

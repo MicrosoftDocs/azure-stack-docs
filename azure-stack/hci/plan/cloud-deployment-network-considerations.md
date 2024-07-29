@@ -224,11 +224,11 @@ To update the management virtual network adapter name, use the following command
 ```powershell
 $IntentName = "MgmtCompute"
 
-#Rename NetAdapter because during creation, Hyper-V adds the string “vEthernet” to the beginning of the name.
-Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vManagement(MgmtCompute)"
-
 #Rename VMNetworkAdapter for management because during creation, Hyper-V uses the vSwitch name for the virtual network adapter.
 Rename-VmNetworkAdapter -ManagementOS -Name "ConvergedSwitch(MgmtCompute)" -NewName "vManagement(MgmtCompute)"
+
+#Rename NetAdapter because during creation, Hyper-V adds the string “vEthernet” to the beginning of the name.
+Rename-NetAdapter -Name "vEthernet (ConvergedSwitch(MgmtCompute))" -NewName "vManagement(MgmtCompute)"
 
 ```
 
@@ -293,6 +293,8 @@ If IPs for the nodes are acquired from a DHCP server, a dynamic IP is also used 
 For example, if the management IP range is defined as 192.168.1.20/24 to 192.168.1.30/24 for the infrastructure static IPs, the DHCP scope defined for subnet 192.168.1.0/24 must have an exclusion equivalent to the management IP pool to avoid IP conflicts with the infrastructure services. We also recommend that you use DHCP reservations for node IPs.
 
 The process of defining the management IP after creating the management intent involves using the MAC address of the first physical network adapter that is selected for the network intent. This MAC address is then assigned to the virtual network adapter that is created for management purposes. This means that the IP address that the first physical network adapter obtains from the DHCP server is the same IP address that the virtual network adapter uses as the management IP. Therefore, it is important to create DHCP reservation for node IP.
+
+The network validation logic used during Cloud deployment will fail if it detects multiple physical network interfaces that have a default gateway in their configuration. If you need to use DHCP for your host IP assignments, you need to pre-create the SET _(switch embedded teaming)_ virtual switch and the management virtual network adapter as described above, so only the management virtual network adapter acquires an IP address from the DHCP server.
 
 #### Cluster node IP considerations
 

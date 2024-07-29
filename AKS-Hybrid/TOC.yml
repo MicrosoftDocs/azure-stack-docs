@@ -64,10 +64,10 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
-    - name: Download Kubernetes VHDs manually
-      href: offline-download.md
-    - name: Security and authentication
+    - name: Authentication and authorization
       items:
+      - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
+        href: enable-authentication-microsoft-entra-id.md
       - name: Use Azure RBAC for Kubernetes authorization
         href: azure-rbac-23h2.md
       - name: Use Kubernetes RBAC with Microsoft Entra ID
@@ -126,6 +126,8 @@
       href: aks-known-issues.md
     - name: Troubleshoot
       href: aks-troubleshoot.md
+    - name: Use diagnostic checker
+      href: aks-arc-diagnostic-checker.md
     - name: KubeAPIServer unreachable error
       href: kube-api-server-unreachable.md
   - name: Reference
@@ -186,6 +188,8 @@
       href: aks-edge-howto-access-tpm.md
     - name: Additional configuration
       href: aks-edge-howto-more-configs.md
+    - name: Use GPU acceleration
+      href: aks-edge-gpu.md
     - name: Update AKS Edge Essentials
       items:
       - name: Update online
@@ -264,6 +268,20 @@
       href: aks-vmware-known-issues.md
     - name: Troubleshooting guide
       href: aks-vmware-troubleshooting-guide.md
+  - name: Reference
+    items:
+    - name: aksarc CLI version 1.0.0b1
+      items:
+      - name: Commands
+        href: aksarc.yml
+      - name: logs
+        href: logs.yml
+      - name: nodepool
+        href: nodepool.yml
+      - name: vmsize
+        href: vmsize.yml
+      - name: vnet
+        href: vnet.yml
 - name: AKS on Windows Server
   items:
   - name: Overview
