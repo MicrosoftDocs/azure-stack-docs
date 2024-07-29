@@ -57,7 +57,7 @@ To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI 
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5040438](https://go.microsoft.com/fwlink/?linkid=2278952).
 
-For a list of the files that are provided in the service stack update (SSU), download the file information for the [SSU 5040560](https://go.microsoft.com/fwlink/?linkid=2279043).
+For a list of the files that are provided in the SSU, download the file information for the [SSU 5040560](https://go.microsoft.com/fwlink/?linkid=2279043).
 
 ## Next steps
 
