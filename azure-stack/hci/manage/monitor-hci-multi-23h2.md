@@ -26,9 +26,9 @@ Watch the video for a quick introduction:
 
 ## View health, performance, and usage insights
 
-Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There is no direct cost for Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
+Insights stores its data in a Log Analytics workspace, which allows it to deliver powerful aggregation and filtering and analyze data trends over time. There's no direct cost for Insights. Users are billed based on the amount of data ingested and the data retention settings of their Log Analytics workspace.
 
-You can access Insights from **Azure Monitor > Insights hub > Azure Stack HCI**. You will see the following tabs to toggle between views: **Add to monitoring, Cluster health, Servers, Virtual machines, Storage**.
+You can access Insights from **Azure Monitor** > **Insights** > **Azure Stack HCI**. Use the following tabs to toggle between views: **Add to monitoring**, **Cluster health**, **Servers**, **Virtual machines**, and **Storage**.
 
 ### Filtering results
 
@@ -41,7 +41,7 @@ The visualization can be filtered across subscriptions. You can filter the resul
 
 ## Add to monitoring
 
-This feature provides details of clusters that are not monitored by the user. To start monitoring a cluster, select it to open that cluster, and then select **Capabilities > Insights**. If you don't see your cluster, make sure it has recently connected to Azure.
+This feature provides details of clusters that aren't monitored by the user. To start monitoring a cluster, select it to open that cluster, and then select **Capabilities > Insights**. If you don't see your cluster, make sure it has recently connected to Azure.
 
 :::image type="content" source="media/monitor-hci-multi-23h2/add-to-monitoring.png" alt-text="Screenshot for selecting cluster for monitoring." lightbox="media/monitor-hci-multi-23h2/add-to-monitoring.png":::
 
@@ -103,7 +103,7 @@ This view provides the state of all the VMs in the selected cluster. The view is
 | Running | The number of VMs running in a server node within a cluster. | 2 |
 | Stopped | The number of VMs stopped in a server node within a cluster. | 3 |
 | Failed | The number of VMs failed in a server node within a cluster. | 2 |
-| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it is considered as "Other." | 2 |
+| Other | If VM is in one of the following states (Unknown, Starting, Snapshotting, Saving, Stopping, Pausing, Resuming, Paused, Suspended), it's considered as "Other." | 2 |
 
 #### Storage
 
@@ -129,7 +129,7 @@ volumes. This view is built using the [volume event ID 3002](/azure-stack/hci/m
 
 Because the user experience is built on top of Azure Monitor workbook templates, users can edit the visualizations and queries and save them as a customized workbook.
 
-If you are using the visualization from **Azure Monitor > Insights hub > Azure Stack HCI**, select **Customize > Edit > Save As** to save a copy of your modified version to a custom workbook.
+If you're using the visualization from **Azure Monitor > Insights hub > Azure Stack HCI**, select **Customize > Edit > Save As** to save a copy of your modified version to a custom workbook.
 
 Workbooks are saved within a resource group. Everyone with access to the resource group can access the customized workbook.
 
@@ -229,13 +229,13 @@ This channel includes five events. Each event has cluster name and Azure Resourc
 } 
 ```
 
-Most variables are self-explanatory from this JSON information. However, the table below lists a few variables which are a bit harder to understand.
+Most variables are self-explanatory from this JSON information. However, the followin table lists a few variables that are a bit harder to understand.
 
 | Variable | Description |
 |:-|:-|
 | m_servers | Array of server nodes. |
 | m_statusCategory | Health status of the server. | 
-| m_status | State of the server. It is an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
+| m_status | State of the server. It's an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
 
 Values for the **m_statusCategory** variable are as follows:
 
@@ -332,7 +332,7 @@ Most variables are self-explanatory from the above JSON information. However, th
 |:-----------------|:----------------|
 | VolumeList | Array of volumes. |
 | m_StatusCategory | Health status of volume. |
-| m_Status | State of the volume. It is an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
+| m_Status | State of the volume. It's an array that can contain one or two values. The first value is mandatory (0-4). The second value is optional (5-9). |
 
 Values for the **m_statusCategory** variable are as follows:
 
