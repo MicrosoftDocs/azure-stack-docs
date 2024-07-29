@@ -3,12 +3,12 @@ title: Control access using Microsoft Entra ID and Kubernetes RBAC in AKS enable
 description: Learn how to use Microsoft Entra group membership to restrict access to cluster resources using Kubernetes role-based access control (Kubernetes RBAC) in AKS Arc.
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 05/29/2024
+ms.lastreviewed: 07/26/2024
 ms.reviewer: abha
 ms.topic: how-to
 ms.custom:
   - devx-track-azurecli
-ms.date: 05/29/2024
+ms.date: 07/26/2024
 
 # Intent: As an IT Pro, I need to learn how to enable Kubernetes role-based access control so that I can manage access to resources.
 # Keyword: Kubernetes role-based access control 
@@ -27,22 +27,12 @@ This article describes how to control access using Kubernetes RBAC in a Kubernet
 Before you set up Kubernetes RBAC using Microsoft Entra ID, you must have the following prerequisites:
 
 - An AKS enabled by Azure Arc cluster. If you need to set up your cluster, see the instructions for using the [Azure portal](aks-create-clusters-portal.md) or [Azure CLI](aks-create-clusters-cli.md).
-- You need the Azure CLI installed and configured. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
-- Install the latest version of the `aksarc` and `connectedk8s` Azure CLI extensions:
-
-  ```azurecli
-  az extension add --name aksarc
-  az extension add --name connectedk8s
-  ```
-
-  If you already installed the `aksarc` extension, update the extension to the latest version:
-
-  ```azurecli
-  az extension update --name aksarc
-  az extension update --name connectedk8s
-  ```
-
-- **Kubectl**. The Kubernetes command-line tool, kubectl, enables you to run commands targeting your Kubernetes clusters. To check whether you installed kubectl, open a command prompt and type `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`. For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
+- Azure CLI installed and configured. If you need to install CLI or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+- **Azure CLI and the connectedk8s extension**. The Azure command-line interface (Azure CLI) is a set of commands used to create and manage Azure resources. To check whether you have the Azure CLI, open a command line tool, and type: `az -v`. Also, install the [connectedk8s extension](https://github.com/Azure/azure-cli-extensions/tree/main/src/connectedk8s) in order to open a channel to your Kubernetes cluster. For installation instructions, see [How to install the Azure CLI](/cli/azure/install-azure-cli).
+- **Kubectl**. The Kubernetes command-line tool, **kubectl**, enables you to run commands that target your Kubernetes clusters. To check whether you have installed kubectl, open a command line tool, and type: `kubectl version --client`. Make sure your kubectl client version is at least `v1.24.0`. For installation instructions, see [kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl).
+- You can access your Kubernetes cluster with the specified permissions either with direct mode or proxy mode.
+  - To access the Kubernetes cluster directly using the `az aksarc get-credentials` command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permissions
+  - To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission. Meanwhile, you need to verify that the agents and the machine performing the onboarding process meet the network requirements in [Azure Arc-enabled Kubernetes network requirements](/azure/azure-arc/kubernetes/network-requirements?tabs=azure-cloud#details).
 
 ## Optional first steps
 
@@ -77,7 +67,7 @@ Configure the AKS cluster to allow your Microsoft Entra group to access the clus
 1. Use the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command to get the cluster admin credentials:
 
    ```azurecli
-   az aksarc get-credentials --name "sample-aksarccluster" --resource-group "sample-rg" --admin
+   az aksarc get-credentials --name "$aks_cluster_name" --resource-group "$resource_group_name" --admin
    ```
 
 1. Create a namespace in the Kubernetes cluster using the [`kubectl create namespace`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#create) command. The following example creates a namespace named `dev`:
@@ -193,40 +183,52 @@ To use a built-in Kubernetes RBAC role with Microsoft Entra ID, follow these ste
    kubectl create clusterrolebinding <name of your cluster role binding> --clusterrole=view --user=<Azure AD user object ID>
    ```
 
-## Work with cluster resources using Microsoft Entra identities
+## Access the Kubernetes cluster
 
-Now, test the expected permissions when you create and manage resources in a Kubernetes cluster. In these examples, you schedule and view pods in the user's assigned namespace. Then, you try to schedule and view pods outside the assigned namespace.
+You can now access your Kubernetes cluster with the specified permissions, using either direct mode or proxy mode.
 
-1. Sign in to the Azure using the `$AKSDEV_ID` user account that you passed as an input to the `az ad group member add` command. Run the `az connectedk8s proxy` command to open a channel to the cluster:
+### Access your cluster with kubectl (direct mode)
 
-   ```cli
-   az connectedk8s proxy --name "sample-aksarccluster" --resource-group "sample-rg"
+To access the Kubernetes cluster with the specified permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command. This command provides access to the admin-based kubeconfig, as well as a user-based kubeconfig. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
+
+To run this Azure CLI command, you need the **Microsoft.HybridContainerService/provisionedClusterInstances/listUserKubeconfig/action**, which is included in the **Azure Kubernetes Service Arc Cluster User** role permissions:
+
+```azurecli
+az aksarc get-credentials -g $resource_group_name -n $aks_cluster_name --file <file-name>
+```
+
+Now, you can use kubectl to manage your cluster. For example, you can list the nodes in your cluster using `kubectl get nodes`. The first time you run it, you must sign in, as shown in the following example:
+
+```azurecli
+kubectl get nodes
+```
+
+### Access your cluster from a client device (proxy mode)
+
+To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in the **Azure Arc-enabled Kubernetes Cluster User** role permission.
+
+Run the following steps on another client device:
+
+1. Sign in using Microsoft Entra authentication.
+
+1. Get the cluster connect `kubeconfig` needed to communicate with the cluster from anywhere (from even outside the firewall surrounding the cluster):
+
+     ```azurecli
+     az connectedk8s proxy -n $aks_cluster_name -g $resource_group_name
+     ```
+
+     > [!NOTE]
+     > This command opens the proxy and blocks the current shell.
+
+1. In a different shell session, use `kubectl` to send requests to the cluster:
+
+   ```powershell
+   kubectl get pods -A
    ```
 
-1. After the proxy channel is established, open another session, and schedule an NGINX pod using the [`kubectl run`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#run) command in the **dev** namespace:
+You should now see a response from the cluster containing the list of all pods under the `default` namespace.
 
-   ```bash  
-   kubectl run nginx-dev --image=mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine --namespace dev
-   ```
-
-   When NGINX is successfully scheduled, you see the following the output:
-
-   ```output  
-   pod/nginx-dev created
-   ```
-
-1. Now, use the [`kubectl get pods`](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get) command to view pods in the `dev` namespace:
-
-   ```bash  
-   kubectl get pods --namespace dev
-   ```
-
-   When NGINX is successfully running, you should see the following output:
-
-   ```output  
-   NAME        READY   STATUS    RESTARTS   AGE
-   nginx-dev   1/1     Running   0          4m
-   ```
+For more information, see [Access your cluster from a client device](/azure/azure-arc/kubernetes/cluster-connect?tabs=azure-cli%2Cagent-version#access-your-cluster-from-a-client-device)
 
 ### Create and view cluster resources outside the assigned namespace
 

@@ -22,13 +22,13 @@ If your network uses a proxy server for internet access, see [Configure proxy se
 
 ## Firewall requirements for outbound endpoints
 
-Opening port 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the Azure Stack HCI operating system to connect with Azure and Microsoft Update. If your outbound firewall is restricted, then we recommend including the URLs and ports described in the [Recommended firewall URLs](#recommended-firewall-urls) section of this article.
+Opening ports 80 and 443 for outbound network traffic on your organization's firewall meets the connectivity requirements for the Azure Stack HCI operating system to connect with Azure and Microsoft Update.
 
-Azure Stack HCI needs to periodically connect to Azure. Access is limited only to:
+Azure Stack HCI needs to periodically connect to Azure for:
 
 - Well-known Azure IPs
 - Outbound direction
-- Port 443 (HTTPS)
+- Ports 80 (HTTP) and 443 (HTTPS)
 
 > [!IMPORTANT]
 > Azure Stack HCI doesn't support HTTPS inspection. Make sure that HTTPS inspection is disabled along your networking path for Azure Stack HCI to prevent any connectivity errors.
@@ -37,36 +37,21 @@ As shown in the following diagram, Azure Stack HCI can access Azure using more t
 
 :::image type="content" source="./media/firewall-requirements/firewalls-diagram.png" alt-text="Diagram shows Azure Stack HCI accessing service tag endpoints through Port 443 (HTTPS) of firewalls." lightbox="./media/firewall-requirements/firewalls-diagram.png":::
 
-## Required firewall URLs
+## Required firewall URLs for Azure Stack HCI 23H2 deployments
 
-Starting with Azure Stack HCI, version 23H2, all the clusters automatically enable Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Stack HCI](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allowlist of your firewall.
+Starting with Azure Stack HCI, version 23H2, all the clusters automatically enables Azure Resource Bridge and AKS infrastructure and uses the Arc for Servers agent to connect to Azure control plane. Along with the list of HCI specific endpoints on the following table, the [Azure Resource Bridge on Azure Stack HCI](/azure/azure-arc/resource-bridge/network-requirements) endpoints, the [AKS on Azure Stack HCI](/azure/aks/hybrid/aks-hci-network-system-requirements#firewall-url-exceptions) endpoints and the [Azure Arc-enabled servers](/azure/azure-arc/servers/network-requirements) endpoints must be included in the allow list of your firewall.
 
-For a consolidated list of endpoints when deploying in East US, use this list:
+For East US consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
 - [Azure Stack HCI 23H2 East US required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/EastUSendpoints/eastus-hci-endpoints.md)
 
-For a consolidated list of endpoints when deploying in Western Europe, use this list:
+For West Europe consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
 - [Azure Stack HCI 23H2 Western Europe required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/WestEuropeendpoints/westeurope-hci-endpoints.md)
 
-For a consolidated list of endpoints when deploying in Australia East, use this list:
+For Australia East consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
 - [Azure Stack HCI 23H2 Australia East required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/AustraliaEastendpoints/AustraliaEast-hci-endpoints.md)
 
-The following table provides a list of required firewall URLs. Make sure to include these URLs in your allowlist.
-
-> [!NOTE]
-> The Azure Stack HCI firewall rules on this table are the minimum endpoints required for HciSvc system service connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
-
-[!INCLUDE [Required URLs table](../../includes/hci-required-urls-table.md)]
-
-For a comprehensive list of all the firewall URLs, download the [firewall URLs spreadsheet](https://github.com/Azure/AzureStack-Tools/raw/master/HCI/azure-stack-hci-firewall-rules.xlsx).
-
-## Recommended firewall URLs
-
-The following table provides a list of recommended firewall URLs. If your outbound firewall is restricted, we recommend including the URLs and ports described in this section to your allowlist.
-
-> [!NOTE]
-> The Azure Stack HCI firewall rules are the minimum endpoints required for HciSvc system service connectivity, and don't contain wildcards. However, the following table currently contains wildcard URLs, which may be updated into precise endpoints in the future.
-
-[!INCLUDE [Recommended URLs table](../../includes/hci-recommended-urls-table.md)]
+For Canada Central consolidated list of endpoints, including HCI, Arc-enabled servers, ARB and AKS use:
+- [Azure Stack HCI 23H2 Canada Central required endpoints](https://github.com/Azure/AzureStack-Tools/blob/master/HCI/CanadaCentralEndpoints/canadacentral-hci-endpoints.md)
 
 ## Firewall requirements for additional Azure services
 
