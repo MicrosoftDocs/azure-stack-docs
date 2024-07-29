@@ -185,9 +185,9 @@ To use a built-in Kubernetes RBAC role with Microsoft Entra ID, follow these ste
 
 ## Access the Kubernetes cluster
 
-You can now access your Kubernetes cluster with the given permissions either with direct mode or proxy mode.
+You can now access your Kubernetes cluster with the specified permissions, using either direct mode or proxy mode.
 
-### Access your cluster with kubectl (Direct mode)
+### Access your cluster with kubectl (direct mode)
 
 To access the Kubernetes cluster with the specified permissions, the Kubernetes operator needs the Microsoft Entra **kubeconfig**, which you can get using the [`az aksarc get-credentials`](/cli/azure/aksarc#az-aksarc-get-credentials) command. This command provides access to the admin-based kubeconfig, as well as a user-based kubeconfig. The admin-based kubeconfig file contains secrets and should be securely stored and rotated periodically. On the other hand, the user-based Microsoft Entra ID kubeconfig doesn't contain secrets and can be distributed to users who connect from their client machines.
 
@@ -203,13 +203,13 @@ Now, you can use kubectl to manage your cluster. For example, you can list the n
 kubectl get nodes
 ```
 
-### Access your cluster from a client device (Proxy mode)
+### Access your cluster from a client device (proxy mode)
 
-To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in **Azure Arc-enabled Kubernetes Cluster User** role permission.
+To access the Kubernetes cluster from anywhere with a proxy mode using `az connectedk8s proxy` command, you need the **Microsoft.Kubernetes/connectedClusters/listClusterUserCredential/action**, which is included in the **Azure Arc-enabled Kubernetes Cluster User** role permission.
 
 Run the following steps on another client device:
 
-1. Sign in using Microsoft Entra authentication
+1. Sign in using Microsoft Entra authentication.
 
 1. Get the cluster connect `kubeconfig` needed to communicate with the cluster from anywhere (from even outside the firewall surrounding the cluster):
 
