@@ -3,7 +3,7 @@ title:  July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2
 description: Read about the July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/11/2024
+ms.date: 07/29/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -43,18 +43,21 @@ For more information about security vulnerabilities, see the [Security Update Gu
 
 ## Known issues
 
-Microsoft isn't currently aware of any issues with this update.
+### BitLocker recovery key issue
+
+After applying the July security updates, devices enabled with Secure Boot and BitLocker protection might enter BitLocker recovery mode. This might happen after one or two reboots.
 
 ## To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update 5040438](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update 5040438](https://go.microsoft.com/fwlink/?linkid=2278952).
+
+For a list of the files that are provided in the service stack update (SSU), download the file information for the [SSU 5040560](https://go.microsoft.com/fwlink/?linkid=2279043).
 
 ## Next steps
 
