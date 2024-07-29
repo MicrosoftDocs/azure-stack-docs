@@ -7,14 +7,16 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/25/2024
+ms.date: 07/29/2024
 ---
 
 # Enable Insights for Azure Stack HCI at scale using Azure policies
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This document describes how to enable Insights for Azure Stack HCI clusters at scale using [Azure policies](/azure/governance/policy/overview). To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23H2.md#enable-insights).
+This document describes how to enable Insights for Azure Stack HCI clusters at scale using Azure policies. To enable Insights for a single Azure Stack HCI cluster, see [Monitor Azure Stack HCI with Insights](./monitor-hci-single-23H2.md#enable-insights).
+
+For an overview of Azure Policy, see [What is Azure Policy?](/azure/governance/policy/overview).
 
 ## About using Azure policies to enable Insights at scale
 
@@ -33,7 +35,7 @@ The policy to repair AMA performs the following function:
 Before applying this policy, keep in mind the following things:
 
 - This policy is applicable only to Azure Stack HCI, version 22H2 clusters. Apply it before any other policies to ensure AMA picks up the correct resource ID.
-- Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear.
+- Uninstall AMA before applying this policy to set the correct resource ID. If AMA isn't uninstalled first, data might not appear. For more information, see [Uninstall AMA](/azure/azure-monitor/agents/azure-monitor-agent-manage?tabs=azure-portal#uninstall).
 
 <details>
   <summary><b>Expand this section to see the policy definition in JSON.</b></summary>
@@ -654,6 +656,7 @@ Before you enable Insights for Azure Stack HCI at scale using Azure policies, co
 - You must have access to Azure Stack HCI clusters on which you want to enable Insights. These clusters must be deployed and registered.
 - You must have the managed identity for the Azure resources enabled. For more information, see [Enabled enhanced management](azure-enhanced-management-managed-identity.md).
 - You must have the **Guest Configuration Resource Contributor** role in your Azure subscription.
+- (For Azure Stack HCI, version 22H2 clusters only) You must uninstall AMA before start applying the Azure policies.
 
 ### Order of policy application
 
@@ -782,6 +785,4 @@ To remediate non-compliant resources and track remediation task progress, follow
 
 For related information, see:
 
-- [Configure Azure portal to monitor Azure Stack HCI clusters](/azure-stack/hci/manage/monitor-hci-single)
-- [Monitor Azure Stack HCI clusters from Windows Admin Center](monitor-cluster.md)
-- [Troubleshooting workbook-based insights](/azure/azure-monitor/insights/troubleshoot-workbooks)
+- [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md)
