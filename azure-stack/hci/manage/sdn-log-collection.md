@@ -129,7 +129,7 @@ A few things to consider before you run the `Start-SdnDataCollection` cmdlet:
 
 - If you don't specify the `FromDate` parameter, logs are collected for the past four hours by default.
 
-- The `Start-SdnDataCollection` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, LoadBalancerMux. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
+- The `Start-SdnDataCollection` cmdlet collects configuration state and logs for the specified SDN role. The accepted values are: Gateway, NetworkController, Server, SoftwareLoadBalancer. You can specify roles that are installed in your SDN environment or the roles that aren't working as expected.
 
 - If you don't specify any credentials, the `Start-SdnDataCollection` cmdlet uses the credentials of the current user by default.
 
