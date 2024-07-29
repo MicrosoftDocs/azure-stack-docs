@@ -62,10 +62,39 @@ Install the Azure Stack HCI, version 23H2 operating system locally on each serve
 
 ### Step 2: uninstall the NVIDIA host driver
 
-On each host machine, navigate to **Control Panel > Add or Remove programs**, uninstall the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled. Open an elevated PowerShell terminal and run the following command:
+Open a remote powershell session to each host, or run the following local in Powershell. Start by uninstalling the NVIDIA host driver, then reboot the machine. After the machine reboots, confirm that the driver was successfully uninstalled:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video" 
+PNPUTIL /enum-drivers
+```
+
+Open an elevated PowerShell prompt and run the following command:
+
+```powershell
+Get-PnpDevice | Where-Object FriendlyName -Like '3D Video*' | Select-Object Status, FriendlyName, InstanceId 
+```
+
+You should see the installed drivers in the **PNPUTIL** output. If the **Provider Name** is listed as **NVIDIA Corporation**, that is the driver you need to target for uninstalling. Make a note of the **Published Name**, as you must use that in the next command:
+
+```output
+Published Name:     oem15.inf
+Original Name:      nvlwswi.inf
+Provider Name:      NVIDIA
+Class Name:         Display
+Class GUID:         {4d36e968-e325-11ce-bfc1-08002be10318}
+Driver Version:     03/05/2024 31.0.15.5178
+Signer Name:        Microsoft Windows Hardware Compatibility Publisher
+```
+
+Run the following command in your Powershell session, and replace `.\oem1.inf` with the value in **Published Name** from the previous **PNPUTIL Enum-Devices** output:
+
+```powershell
+pnputil /delete-driver .\oem1.inf /uninstall /reboot
+```
+After the reboot is complete, reconnect via Powershell or an RDP Session. 
+
+```powershell
+Get-PnpDevice | Where-Object FriendlyName -Like '3D Video*' | Select-Object Status, FriendlyName, InstanceId 
 ```
 
 You should see the GPU devices appear in an error state as shown in this example output:
@@ -79,10 +108,21 @@ Error       3D Video Controller                   PCI\VEN_10DE&DEV_1EB8&SUBSYS_1
 
 When you uninstall the host driver, the physical GPU goes into an error state. You must dismount all the GPU devices from the host.
 
-For each GPU (3D Video Controller) device, run the following commands in PowerShell. Copy the instance ID; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output:
+For each GPU (3D Video Controller) device, run the following commands in PowerShell. This command will create a variable named "ID1" and "lp1" and populate the instance ID of the first GPU; for example, `PCI\VEN_10DE&DEV_1EB8&SUBSYS_12A210DE&REV_A1\4&32EEF88F&0&0000` from the previous command output. 
 
 ```powershell
-$id1 = "<Copy and paste GPU instance id into this string>"
+$gpu=Get-PnpDevice -FriendlyName "3D Video Controller"
+$id0 =$gpu[0].InstanceId
+$lp0 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id0).Data[0]
+Disable-PnpDevice -InstanceId $id0 -Confirm:$false
+Dismount-VMHostAssignableDevice -LocationPath $lp0 -Force
+```
+
+If you have more than one GPU, use the following additional command:
+
+```powershell
+$gpu=Get-PnpDevice -FriendlyName "3D Video Controller"
+$id1 =$gpu[1].InstanceId
 $lp1 = (Get-PnpDeviceProperty -KeyName DEVPKEY_Device_LocationPaths -InstanceId $id1).Data[0]
 Disable-PnpDevice -InstanceId $id1 -Confirm:$false
 Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
@@ -91,7 +131,7 @@ Dismount-VMHostAssignableDevice -LocationPath $lp1 -Force
 To confirm that the GPUs were correctly dismounted from the host, run the following command. You should put GPUs in an `Unknown` state:
 
 ```powershell
-Get-PnpDevice  | select status, class, friendlyname, instanceid | findstr /i /c:"3d video"
+Get-PnpDevice | Where-Object FriendlyName -Like '3D Video*' | Select-Object Status, FriendlyName, InstanceId
 ```
 
 ```output
