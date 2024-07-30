@@ -3,7 +3,7 @@ title:  July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2
 description: Read about the July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/29/2024
+ms.date: 07/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -56,8 +56,6 @@ To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI 
 ## File list
 
 For a list of the files that are provided in this update, download the file information for [Cumulative update 5040438](https://go.microsoft.com/fwlink/?linkid=2278952).
-
-For a list of the files that are provided in the SSU, download the file information for the [SSU (KB5040560) - version 25398.1000](https://go.microsoft.com/fwlink/?linkid=2279043).
 
 ## Next steps
 
