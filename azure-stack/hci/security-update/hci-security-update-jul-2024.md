@@ -31,13 +31,13 @@ This security update includes quality improvements. The following key issues and
 
 - **Windows Presentation Foundation (WPF)**. A malformed Human Interface Device (HID) descriptor causes WPF to stop responding.
 
-- **Handwriting panels and touch keyboards**. They do not appear when you use the tablet pen.
+- **Handwriting panels and touch keyboards**. They don't appear when you use the tablet pen.
 
-- ***HKLM\Software\Microsoft\Windows\DWM ForceDisableModeChangeAnimation (REG_DWORD)***. This is a new registry key. When you set its value to `1` (or a non-zero number), it turns off the display mode change animation. If the value is `0` or the key does not exist, the animation is set to on.
+- ***HKLM\Software\Microsoft\Windows\DWM ForceDisableModeChangeAnimation (REG_DWORD)***. This is a new registry key. When you set its value to `1` (or a non-zero number), it turns off the display mode change animation. If the value is `0` or the key doesn't exist, the animation is set to on.
 
 - **Remote Desktop MultiPoint Server**. A race condition causes the service to stop responding.
 
-- **Windows Local Administrator Password Solution (LAPS)**. Post Authentication Actions (PAA) do not occur at the end of the grace period. Instead, they occur at restart.
+- **Windows Local Administrator Password Solution (LAPS)**. Post Authentication Actions (PAA) don't occur at the end of the grace period. Instead, they occur at restart.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Jul).
 
@@ -45,7 +45,7 @@ For more information about security vulnerabilities, see the [Security Update Gu
 
 ### BitLocker recovery key issue
 
-After applying the July security updates, devices enabled with Secure Boot and BitLocker protection might enter BitLocker recovery mode. This might happen after one or two reboots.
+After you apply the July security updates, devices enabled with Secure Boot and BitLocker protection might enter BitLocker recovery mode. This might happen after one or two reboots.
 
 ## To install this update
 
