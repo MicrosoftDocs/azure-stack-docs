@@ -45,6 +45,8 @@ Here are the prerequisites of using Insights for Azure Stack HCI:
 
 Enabling Insights helps you monitor all Azure Stack HCI clusters currently associated with the Log Analytics workspace by providing useful health metrics. Insights installs the Azure Monitor Agent and helps you to configure [data collection rules (DCRs)](#data-collection-rules) for monitoring your Azure Stack HCI cluster.
 
+To enable Insights at scale, see [Enable Insights for Azure Stack HCI at scale using Azure policies](./monitor-hci-multi-azure-policies.md).
+
 Follow these steps to enable Insights from the Azure portal:
 
 1. In the Azure portal, browse to your Azure Stack HCI cluster resource page, then select your cluster. Under the **Capabilities** tab, select **Insights**.
