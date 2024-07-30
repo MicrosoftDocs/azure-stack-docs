@@ -1,28 +1,28 @@
 ---
-title: Upgrade Azure Stack HCI, version 22H2 OS to version 23H2 via PowerShell
-description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 using PowerShell.
+title: Post-upgrade steps on Azure Stack HCI via PowerShell
+description: Learn how to perform the post-upgrade tasks on your Azure Stack HCI cluster using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/08/2024
+ms.date: 07/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Upgrade Azure Stack HCI, version 22H2 operating system to Azure Stack HCI, version 23H2 via PowerShell
+# Perform the post-upgrade steps on your Azure Stack HCI via PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software.
+This article describes how to perform the post-upgrade steps after you've upgraded the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2. Azure Stack HCI, version 23H2, is the latest generally available software.
 
-The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
+The upgrade from Azure Stack HCI, version 22H2 to version 23H2 occurs in the following steps:
 
 1. Upgrade the OS via PowerShell (recommended), Windows Admin Center, or other methods.
 1. Post-upgrade steps.
 1. Prepare to update solution.
 1. Apply the solution update.
 
-This article only covers the second step, which is how to perform the post-upgrade tasks on your Azure Stack HCI cluster that has the new OS running. The post-upgrade tasks are required for the stability of the cluster. 
+This article only covers the second step, which is how to perform the post-upgrade tasks on your Azure Stack HCI cluster that has the new OS running. The post-upgrade tasks are required for the stability of the cluster.
 
 
 ## Complete prerequisites
@@ -30,9 +30,10 @@ This article only covers the second step, which is how to perform the post-upgra
 Before you begin, make sure that:
 
 - You have successfully upgraded the OS to version 23H2 on your Azure Stack HCI cluster as per the instructions in one of the following docs:
-    - Upgrade to 23H2 OS vis POwerShell.
-    - Upgrade to 23H2 OS via Windows Admin Center.
-    - UPgrade to 23H2 OS via other methods.
+
+    - [Upgrade to 23H2 OS vis PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+    - [Upgrade to 23H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
+    - [Upgrade to 23H2 OS via other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
 - Make sure that all the nodes in your Azure Stack HCI cluster are healthy and show as **Online**.
 - You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
@@ -103,8 +104,9 @@ Once the new OS is installed, you'll need to update the cluster functional level
 
    1. Run the following cmdlet on any server in the cluster:
 
-       ```PowerShell
-       Update-ClusterFunctionalLevel
+      ```PowerShell
+      Update-ClusterFunctionalLevel      
+      ```
 
    1. You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
 
@@ -116,10 +118,10 @@ Once the new OS is installed, you'll need to update the cluster functional level
    1. After the cluster functional level has been updated, use the following cmdlet to identify the `FriendlyName` of the storage pool representing your cluster.
 
       ```PowerShell
-       Get-StoragePool
+      Get-StoragePool
       ```
 
-      In this example, the FriendlyName is **S2D on hci-cluster1**.
+      In this example, the `FriendlyName` is **S2D on hci-cluster1**.
 
    1. Run the `Update-StoragePool` cmdlet to update the storage pool version.
 

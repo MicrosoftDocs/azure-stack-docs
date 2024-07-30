@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI, version 22H2 OS to version 23H2 via other manual
 description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 using other manual methods.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/24/2024
+ms.date: 07/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software using other manual methods via Cluster Aware Updating and [Sconfig](/windows-server/administration/server-core/server-core-sconfig).
+This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software using other manual methods via Cluster Aware Updating (CAU) and [Sconfig](/windows-server/administration/server-core/server-core-sconfig).
 
 The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
 
@@ -21,7 +21,7 @@ The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following st
 1. Prepare for the solution update.
 1. Apply the solution update.
 
-This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using other methods. 
+This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using other methods.
 
 There are other methods to upgrade the OS that include using the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU).  Cluster aware updating orchestrates the process of applying the operating system automatatically to all the cluster members using either Windows Update or ISO media.
 
@@ -92,17 +92,15 @@ For each node in the cluster, run these commands on the target node:
 
 1. `Suspend-ClusterNode -Node<node> -Drain`
 
-    Check suspend using `Get-ClusterGroup`--nothing should be running on the target node.
+    1. Check suspend using `Get-ClusterGroup`. Nothing should be running on the target node.
 
-    Run the **SCONFIG** option 6.3 on the target node.
+    1. Run the **SCONFIG** option 6.3 on the target node.
 
-    After the target node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
+    1. After the target node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
 
 1. `Resume-ClusterNode -Node <nodename> -Failback`
 
 When all the nodes are upgraded, you can perform the post-installation steps.
-
-
 
 ## Method 2:  Perform a fast, offline OS update of all servers in a cluster
 
@@ -113,7 +111,7 @@ This method allows you to take all the servers in a cluster down at once and upd
 1. Plan your maintenance window.
 1. Take the virtual disks offline.
 1. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the cluster.
-1. Set the cluster service to **Disabled** in Services.msc on each server. This prevents the cluster service from starting up while being updated.
+1. Set the cluster service to **Disabled** in *Services.msc* on each server. This prevents the cluster service from starting up while being updated.
 1. <!--ASK-->Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time: there's no need to wait because the cluster is down.
 1. Restart the servers and ensure everything looks good.
 1. Set the cluster service back to **Automatic** on each server.
