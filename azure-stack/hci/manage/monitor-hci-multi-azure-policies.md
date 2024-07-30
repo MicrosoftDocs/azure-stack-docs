@@ -7,7 +7,7 @@ ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/29/2024
+ms.date: 07/30/2024
 ---
 
 # Enable Insights for Azure Stack HCI at scale using Azure policies
@@ -779,7 +779,9 @@ To remediate non-compliant resources and track remediation task progress, follow
 
     :::image type="content" source="./media/monitor-hci-multi-azure-policies/policy-remediation-state.png" alt-text="Screenshot of the Policy Remediation tab showing the status of the remediation task." lightbox="./media/monitor-hci-multi-azure-policies/policy-remediation-state.png":::
 
-1. Once the remediation is complete, the state changes to either **Completed** or **Failed**.
+      Once the remediation is complete, the state changes to **Complete**.
+
+      For more information about remediation, see [Remediate non-compliant resources with Azure Policy](/azure/governance/policy/how-to/remediate-resources?tabs=azure-portal).
 
 ## Next steps
 
