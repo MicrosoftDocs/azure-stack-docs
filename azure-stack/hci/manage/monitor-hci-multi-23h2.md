@@ -229,7 +229,7 @@ This channel includes five events. Each event has cluster name and Azure Resourc
 } 
 ```
 
-Most variables are self-explanatory from this JSON information. However, the followin table lists a few variables that are a bit harder to understand.
+Most variables are self-explanatory from this JSON information. However, the following table lists a few variables that are a bit harder to understand.
 
 | Variable | Description |
 |:-|:-|
