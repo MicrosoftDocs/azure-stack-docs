@@ -785,6 +785,4 @@ To remediate non-compliant resources and track remediation task progress, follow
 
 ## Next steps
 
-For related information, see:
-
 - [Monitor multiple Azure Stack HCI clusters with Insights](./monitor-hci-multi-23h2.md)
