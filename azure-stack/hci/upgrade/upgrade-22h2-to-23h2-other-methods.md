@@ -40,7 +40,7 @@ To upgrade the OS on your cluster, follow these high-level steps:
 1. [Connect to the Azure Stack HCI, version 22H2 cluster.](#step-1-connect-to-the-azure-stack-hci-cluster)
 1. Install new OS using one of the other methods:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
-   1. [Offline manual upgrade of all servers in a cluster.](method-2-perform-a-fast-offline-os-update-of-all-servers-in-a-cluster)
+   1. [Offline manual upgrade of all servers in a cluster.](#method-2-perform-a-fast-offline-os-update-of-all-servers-in-a-cluster)
 1. Check the status of the updates.
 1. Perform post-upgrade steps, after the OS is upgraded.
 
@@ -102,7 +102,7 @@ For each node in the cluster, run these commands on the target node:
 
 When all the nodes are upgraded, you can perform the post-installation steps.
 
-## Method 2:  Perform a fast, offline OS update of all servers in a cluster
+## Method 2: Perform a fast, offline OS update of all servers in a cluster
 
 This method allows you to take all the servers in a cluster down at once and update the OS on all of them at the same time. This saves time during the update process, but the tradeoff is downtime for the hosted resources.
 

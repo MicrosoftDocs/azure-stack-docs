@@ -125,7 +125,7 @@ To install new OS using PowerShell, follow these steps:
 
 1. Check for any further updates and install them.
 
-You're now ready to perform the [Post-installation steps](#step-4-perform-the-post-install-steps).
+Wait for the update to complete and check the status of the update.
 
 ## Step 3: Check the status of an update
 
