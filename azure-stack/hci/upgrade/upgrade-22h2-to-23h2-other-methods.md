@@ -13,7 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software using other manual methods via Cluster Aware Updating (CAU) and [Sconfig](/windows-server/administration/server-core/server-core-sconfig).
+This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software using other manual methods via Cluster Aware Updating (CAU) and [SConfig](/windows-server/administration/server-core/server-core-sconfig).
 
 The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
 
@@ -23,7 +23,7 @@ The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following st
 
 This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using other methods.
 
-There are other methods to upgrade the OS that include using the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU).  Cluster aware updating orchestrates the process of applying the operating system automatatically to all the cluster members using either Windows Update or ISO media.
+There are other methods to upgrade the OS that include using the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU).  Cluster aware updating orchestrates the process of applying the operating system automatically to all the cluster members using either Windows Update or ISO media.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
@@ -36,13 +36,13 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 
 To upgrade the OS on your cluster, follow these high-level steps:
 
-1. Complete the prerequisites inculding downloading the Azure Stack HCI, version 23H2 OS software update.
-1. Connect to the Azure Stack HCI, version 22H2 cluster.
+1. [Complete the prerequisites including downloading the Azure Stack HCI, version 23H2 OS software update.](#complete-prerequisites)
+1. [Connect to the Azure Stack HCI, version 22H2 cluster.](#step-1-connect-to-the-azure-stack-hci-cluster)
 1. Install new OS using one of the other methods:
-   1. Manual upgrade of a Failover Cluster using SConfig.
-   1. Fast, offline manual upgrade of all servers in a cluster.
+   1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
+   1. [Offline manual upgrade of all servers in a cluster.](method-2-perform-a-fast-offline-os-update-of-all-servers-in-a-cluster)
 1. Check the status of the updates.
-1. After the OS is upgraded, perform post-installation.
+1. Perform post-upgrade steps, after the OS is upgraded.
 
 
 ## Complete prerequisites
@@ -51,9 +51,9 @@ Before you begin, make sure that:
 
 - You have access to an Azure Stack HCI, version 22H2 cluster.
 - The cluster should be registered in Azure.
-- You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
-- You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - Make sure that all the nodes in your Azure Stack HCI, version 22H2 cluster are healthy and show as **Online**.
+- You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
+- You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
 
 ## Step 1: Connect to the Azure Stack HCI cluster
 
@@ -86,11 +86,11 @@ Depending upon your requirements, you can manually update the OS using SConfig o
 
 ## Method 1: Perform a manual OS update of a Failover Cluster using SCONFIG
 
-To do a manual feature update of a failover cluster, use the **SCONFIG** tool and Failover Clustering PowerShell cmdlets. To reference the **SCONFIG** document, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
+To do a manual feature update of a failover cluster, use the **SConfig** tool and Failover Clustering PowerShell cmdlets. For more information about **SConfig**, see [Configure a Server Core installation of Windows Server and Azure Stack HCI with the Server Configuration tool (SConfig)](/windows-server/administration/server-core/server-core-sconfig).
 
 For each node in the cluster, run these commands on the target node:
 
-1. `Suspend-ClusterNode -Node<node> -Drain`
+1. `Suspend-ClusterNode -Node <Node Name> -Drain`
 
     1. Check suspend using `Get-ClusterGroup`. Nothing should be running on the target node.
 
@@ -98,7 +98,7 @@ For each node in the cluster, run these commands on the target node:
 
     1. After the target node has rebooted, wait for the storage repair jobs to complete by running `Get-Storage-Job` until there are no storage jobs or all storage jobs are completed.
 
-1. `Resume-ClusterNode -Node <nodename> -Failback`
+1. `Resume-ClusterNode -Node <Node Name> -Failback`
 
 When all the nodes are upgraded, you can perform the post-installation steps.
 
