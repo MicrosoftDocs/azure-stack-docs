@@ -1,6 +1,6 @@
 ---
-title: Create an Azure Managed Lustre file system using Azure Resource Manager templates
-description: Use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
+title: Create an Azure Managed Lustre file system by using Azure Resource Manager templates
+description: Learn how to use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
 ms.date: 07/25/2024
 author: pauljewellmsft
@@ -10,9 +10,9 @@ ms.reviewer: mayabishop
 
 ---
 
-# Create an Azure Managed Lustre file system using Azure Resource Manager templates
+# Create an Azure Managed Lustre file system by using Azure Resource Manager templates
 
-You can automate Azure Managed Lustre file system creation by using Azure Resource Manager templates. This article explains the basic procedure and gives examples of the files you need.
+You can automate the creation of an Azure Managed Lustre file system by using [Azure Resource Manager templates (ARM templates)](/azure/azure-resource-manager/templates/). This article explains the basic procedure and gives examples of the files that you need.
 
 For more information about the templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/templates/).
 
@@ -25,7 +25,7 @@ To learn more about these options, see [Comparing JSON and Bicep for templates](
 
 ## Choose file system type and size
 
-Before you write a template, you must make some decisions about your Azure Managed Lustre file system. To learn more about the configuration options, see the setup details at [Create an Azure Managed Lustre file system](create-file-system-portal.md).
+Before you write a template, you must make some decisions about your Azure Managed Lustre file system. To learn more about the configuration options, see the setup details in [Create an Azure Managed Lustre file system](create-file-system-portal.md).
 
 When you use a template, specify a **SKU name** to define the basic type of Azure Managed Lustre system to create. If you use the Azure portal to create your Azure Managed Lustre, you specify the system type indirectly by selecting its capabilities.
 
@@ -40,14 +40,14 @@ Currently, the following SKUs are supported:
 
 These SKUs create a file system that uses durable SSD storage. The following table shows the throughput and storage size values for each SKU:
 
-| SKU | Throughput per TiB storage | Storage Min | Storage Max<sup>1</sup> | Increment |
+| SKU | Throughput per TiB storage | Storage minimum | Storage maximum | Increment |
 |----------|-----------|-----------|-----------|-----------|
-| AMLFS-Durable-Premium-40 | 40 MB/second | 48 TB | 768 TB | 48 TB|
-| AMLFS-Durable-Premium-125 | 125 MB/second | 16 TB | 128 TB | 16 TB |
-| AMLFS-Durable-Premium-250 | 250 MB/second | 8 TB | 128 TB | 8 TB |
-| AMLFS-Durable-Premium-500 | 500 MB/second | 4 TB | 128 TB | 4 TB |
+| AMLFS-Durable-Premium-40 | 40 MBps | 48 TB | 768 TB | 48 TB|
+| AMLFS-Durable-Premium-125 | 125 MBps | 16 TB | 128 TB | 16 TB |
+| AMLFS-Durable-Premium-250 | 250 MBps | 8 TB | 128 TB | 8 TB |
+| AMLFS-Durable-Premium-500 | 500 MBps | 4 TB | 128 TB | 4 TB |
 
-<sup>1</sup> If you require storage values larger than the listed maximum, you can [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview) to explore options.
+If you require storage values larger than the listed maximum, you can [open a support ticket](https://ms.portal.azure.com/#view/Microsoft_Azure_Support/HelpAndSupportBlade/~/overview) to explore options.
 
 You can use the [create workflow](create-file-system-portal.md) in Azure portal to check SKU capabilities. SKU-specific settings are on the **Basics** tab under **File system details**.
 
@@ -135,7 +135,7 @@ This section describes the information you need to include in your Azure Resourc
 | --- | --- | --- |
 | name | SKU name for the resource. | `AMLFS-Durable-Premium-40`, `AMLFS-Durable-Premium-125`, `AMLFS-Durable-Premium-250`, `AMLFS-Durable-Premium-500` |
 
-## Deploy the file system using the template
+## Deploy the file system by using the template
 
 The following example steps use Azure CLI commands to create a new resource group and create an Azure Managed Lustre file system.
 
@@ -154,17 +154,17 @@ Follow these steps to deploy the file system using the template:
    az account show
    ```
   
-1. Optionally, create a new resource group for your Azure Managed Lustre file system. If you want to use an existing resource group, skip this step and provide the name of the existing resource group when you execute the template command.
+1. Optionally, create a new resource group for your Azure Managed Lustre file system. If you want to use an existing resource group, skip this step and provide the name of the existing resource group when you run the template command.
 
    ```azurecli
    az group create --name <rg-name> --location <region-short-name>
    ```
 
-   Your file system can use resources outside of its own resource group as long as they are in the same subscription.
+   Your file system can use resources outside its own resource group, as long as they're in the same subscription.
 
-1. Deploy the Azure Managed Lustre file system by using the template. The syntax is different depending on whether you're using JSON or Bicep files, and the number of files you use.
+1. Deploy the Azure Managed Lustre file system by using the template. The syntax depends on whether you're using JSON or Bicep files, along with the number of files.
 
-   You can deploy both Bicep and JSON templates as single files or multiple files. For more information and to see the exact syntax for each option, see the [Azure Resource Manager templates documentation](/azure/azure-resource-manager/templates).
+   You can deploy both Bicep and JSON templates as single files or multiple files. For more information and to see the exact syntax for each option, see the [ARM template documentation](/azure/azure-resource-manager/templates).
 
    Example JSON command:
 
@@ -306,6 +306,6 @@ resource filesystem 'Microsoft.StorageCache/amlFilesystems@2024-03-01' = {
 }
 ```
 
-## Next steps
+## Related content
 
-* [Azure Managed Lustre File System overview](amlfs-overview.md)
+* [Azure Managed Lustre overview](amlfs-overview.md)

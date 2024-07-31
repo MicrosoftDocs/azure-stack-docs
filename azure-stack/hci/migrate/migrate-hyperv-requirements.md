@@ -3,7 +3,7 @@ title: Review requirements for Hyper-V VM migration to Azure Stack HCI using Azu
 description: Learn the system requirements for Hyper-V migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/03/2024
+ms.date: 07/25/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ---
@@ -28,8 +28,10 @@ The following operating systems (OS) are supported for the source appliance, tar
 |Target environment     |Azure Stack HCI, version 23H2         |
 |Target appliance     |Windows Server 2022         |
 |Guest VM (Windows)    |Windows Server 2022<br>Windows Server 2019<br>Windows Server 2016<br>Windows Server 2012 R2<br>Windows Server 2008 R2*       |
+|Guest VM (Linux) | Red Hat Linux 6.x, 7.x<br>Ubuntu Server and Pro. 18.x<br>CentOS 7.x <br>SUSE Linux Enterprise 12.x<br>Debian 9.x |
 
 *To migrate Windows Server 2008 R2 VMs, see the [FAQ](migrate-faq.yml).
+
 
 ## Supported geographies
 

@@ -64,8 +64,10 @@
           href: deploy-load-balancer-portal.md
         # - name: Troubleshoot issues
         #   href: load-balancer-troubleshoot.md
-    - name: Security and authentication
+    - name: Authentication and authorization
       items:
+      - name: Enable Microsoft Entra ID authentication for Kubernetes clusters
+        href: enable-authentication-microsoft-entra-id.md
       - name: Use Azure RBAC for Kubernetes authorization
         href: azure-rbac-23h2.md
       - name: Use Kubernetes RBAC with Microsoft Entra ID
