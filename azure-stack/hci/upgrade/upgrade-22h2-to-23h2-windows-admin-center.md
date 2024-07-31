@@ -65,7 +65,7 @@ Follow these steps to add and connect to an Azure Stack HCI server via Windows A
 Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware wasn't purchased as an integrated system, firmware and driver updates would need to be performed separately, following the hardware vendor's recommendations.
 
    > [!WARNING]
-   > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Do not attempt to use the Cluster-Aware Updating tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, skip ahead to [Update a cluster using PowerShell](#update-a-cluster-using-powershell).
+   > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Do not attempt to use the Cluster-Aware Updating tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, see [Update a cluster using PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
 Follow these steps to install updates:
 
@@ -81,7 +81,7 @@ Follow these steps to install updates:
 1. The cluster's update status is displayed. Select **Check for updates** to get a list of the operating system updates available for each server in the cluster. You might need to supply administrator credentials. If no operating system updates are available, select **Next: hardware updates** and proceed to step 8.
 
    > [!IMPORTANT]
-   > Feature updates require additional steps. If Windows Admin Center indicates that a feature update is available for your cluster, see [Install feature updates using Windows Admin Center](#install-feature-updates-using-windows-admin-center).
+   > Feature updates require additional steps. If Windows Admin Center indicates that a feature update is available for your cluster, see [Install feature updates using Windows Admin Center](#step-2-install-feature-updates-using-windows-admin-center).
 
    If you navigate away from the Updates screen while an update is in progress, there could be unexpected behavior, such as the history section of the Updates page not populating correctly until the current run is finished. We recommend opening Windows Admin Center in a new browser tab or window if you wish to continue using the application while the updates are in progress.
 
@@ -90,14 +90,14 @@ Follow these steps to install updates:
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/operating-system-updates.png" alt-text="Select Next: Install to proceed to installing operating system updates, or select Skip to exclude them" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/operating-system-updates.png":::
 
    > [!NOTE]
-   > If you're installing updates on a cluster that has [Kernel Soft Reboot](kernel-soft-reboot.md) enabled, select **Disable Kernel Soft Reboot for this run** checkbox. This selection disables Kernel Soft Reboot as the upgrade requires a full reboot.
+   > If you're installing updates on a cluster that has [Kernel Soft Reboot](../manage/kernel-soft-reboot.md) enabled, select **Disable Kernel Soft Reboot for this run** checkbox. This selection disables Kernel Soft Reboot as the upgrade requires a full reboot.
 
 1. Select **Install** to install the operating system updates. One by one, each server downloads and applies the updates. The update status changes to **Installing updates**. If the updates require a restart, servers are restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire update run can take anywhere from a few minutes to several hours. You would need to sign into the Windows Admin Center multiple times.
 
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/install-os-updates.png" alt-text="select Install to install operating system updates on each server in the cluster" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/install-os-updates.png":::
 
    > [!NOTE]
-   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](#check-on-the-status-of-an-updating-run).
+   > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
 
 1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: hardware updates** to proceed to the hardware updates screen.
 
@@ -124,7 +124,7 @@ Microsoft recommends installing new feature updates as soon as possible, using t
 
 1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. Any new feature updates will be displayed.
 
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/preview-channel/feature-updates.png":::
+   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/feature-updates.png":::
 
 2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before you proceed.
 
@@ -139,7 +139,7 @@ Microsoft recommends installing new feature updates as soon as possible, using t
    :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/updates-in-progress.png":::
 
    > [!NOTE]
-   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](#check-on-the-status-of-an-updating-run).
+   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
 
 5. When the feature updates are complete, check if any further updates are available and install them.
 
