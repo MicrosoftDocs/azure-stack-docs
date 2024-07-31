@@ -3,7 +3,7 @@ title: Register your Azure Stack HCI servers with Azure Arc and assign permissio
 description: Learn how to Register your Azure Stack HCI servers with Azure Arc and assign permissions for deployment. 
 author: alkohli
 ms.topic: how-to
-ms.date: 04/22/2024
+ms.date: 06/03/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
@@ -35,8 +35,8 @@ Before you begin, make sure you've completed the following prerequisites:
 
 - If you're registering the servers as Arc resources, make sure that you have the following permissions on the resource group where the servers were provisioned:
 
-    - [Azure Connected Machine Onboarding](/azure/azure-arc/servers/onboard-service-principal#azure-portal)
-    - [Azure Connected Machine Resource Administrator](/azure/azure-arc/servers/security-overview#identity-and-access-control)
+    - Azure Connected Machine Onboarding
+    - Azure Connected Machine Resource Administrator
 
     To verify that you have these roles, follow these steps in the Azure portal:
 
@@ -46,6 +46,11 @@ Before you begin, make sure you've completed the following prerequisites:
     1. In the right-pane, go the **Role assignments**. Verify that you have the **Azure Connected Machine Onboarding** and **Azure Connected Machine Resource Administrator** roles assigned.
 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png" alt-text="Screenshot of the roles and permissions assigned in the deployment subscription." lightbox="./media/deployment-arc-register-server-permissions/contributor-user-access-administrator-permissions.png":::-->
+
+- Check your Azure policies. Make sure that:
+    - The Azure policies aren't blocking the installation of extensions.
+    - The Azure policies aren't blocking the creation of certain resource types in a resource group.
+    - The Azure policies aren't blocking the resource deployment in certain locations.
 
 ## Register servers with Azure Arc
 
@@ -58,19 +63,23 @@ Before you begin, make sure you've completed the following prerequisites:
     ```powershell
     #Register PSGallery as a trusted repo
     Register-PSRepository -Default -InstallationPolicy Trusted
-    
-    #Install Arc registration script from PSGallery 
-    Install-Module AzsHCI.ARCinstaller
 
     #Install required PowerShell modules in your node for registration
-    Install-Module Az.Accounts -Force
-    Install-Module Az.ConnectedMachine -Force
-    Install-Module Az.Resources -Force
+    Install-Module Az.Accounts -RequiredVersion 2.13.2
+    Install-Module Az.Resources -RequiredVersion 6.12.0
+    Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
+    
+
+    #Install Arc registration script from PSGallery 
+    Install-Module AzsHCI.ARCinstaller
     ```
     # [Output](#tab/output)
     Here's a sample output of the installation:
 
     ```output
+    PS C:\Users\SetupUser> Install-Module Az.Accounts -RequiredVersion 2.13.2
+    PS C:\Users\SetupUser> Install-Module Az.Resources -RequiredVersion 6.12.0
+    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -RequiredVersion 0.5.2
     PS C:\Users\SetupUser> Install-Module -Name AzSHCI.ARCInstaller                                           
     NuGet provider is required to continue                                                                                  
     PowerShellGet requires NuGet provider version '2.8.5.201' or newer to interact with NuGet-based repositories. The NuGet  provider must be available in 'C:\Program Files\PackageManagement\ProviderAssemblies' or
@@ -79,10 +88,6 @@ Before you begin, make sure you've completed the following prerequisites:
     and import the NuGet provider now?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
     PS C:\Users\SetupUser>
-    
-    PS C:\Users\SetupUser> Install-Module Az.Accounts -Force
-    PS C:\Users\SetupUser> Install-Module Az.ConnectedMachine -Force
-    PS C:\Users\SetupUser> Install-Module Az.Resources -Force
     ```
     ---
 1. Set the parameters. The script takes in the following parameters:
@@ -94,6 +99,7 @@ Before you begin, make sure you've completed the following prerequisites:
     |`ResourceGroup`     |The resource group precreated for Arc registration of the servers. A resource group is created if one doesn't exist.         |
     |`Region`            |The Azure region used for registration. See the [Supported regions](../concepts/system-requirements-23h2.md#azure-requirements) that can be used.          |
     |`AccountID`         |The user who registers and deploys the cluster.         |
+    |`ProxyServer`       |Optional parameter. Proxy Server address when is required for outbound connectivity. |
     |`DeviceCode`        |The device code displayed in the console at `https://microsoft.com/devicelogin` and is used to sign in to the device.         |
 
     
@@ -111,6 +117,9 @@ Before you begin, make sure you've completed the following prerequisites:
     
     #Define the tenant you will use to register your server as Arc device
     $Tenant = "YourTenantID"
+    
+    #Define the proxy address if your HCI deployment access internet via proxy
+    $ProxyServer = "http://proxyaddress:port"
     ```
  
     # [Output](#tab/output)
@@ -122,6 +131,7 @@ Before you begin, make sure you've completed the following prerequisites:
     PS C:\Users\SetupUser> $RG = "myashcirg"
     PS C:\Users\SetupUser> $Tenant = "<Tenant ID>"
     PS C:\Users\SetupUser> $Region = "eastus"
+    PS C:\Users\SetupUser> $ProxyServer = "<http://proxyserver:tcpPort>"
     ```
 
     ---
@@ -165,72 +175,42 @@ Before you begin, make sure you've completed the following prerequisites:
 
     ```powershell
     #Invoke the registration script. Use a supported region.
-    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id  
+    Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Proxy $ProxyServer
     ```
 
     If you're accessing the internet via a proxy server, you need to pass the `-proxy` parameter and provide the proxy server as `http://<Proxy server FQDN or IP address>:Port` when running the script.
+
+    For a list of supported Azure regions, see [Azure requirements](../concepts/system-requirements-23h2.md#azure-requirements).
 
     # [Output](#tab/output)
 
     Here's a sample output of a successful registration of your servers:
     
     ```output
-    PS C:\DeploymentPackage> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id -Force
-    Installing and Running Azure Stack HCI Environment Checker
-    All the environment validation checks succeeded
-    Installing Hyper-V Management Tools
+    PS C:\Users\Administrator> Invoke-AzStackHciArcInitialization -SubscriptionID $Subscription -ResourceGroup $RG -TenantID $Tenant -Region $Region -Cloud "AzureCloud" -ArmAccessToken $ARMtoken -AccountID $id
+    >>
     Starting AzStackHci ArcIntegration Initialization
-    Installing Azure Connected Machine Agent
-    Total Physical Memory:         588,419 MB
-    PowerShell version: 5.1.25398.469
-    .NET Framework version: 4.8.9032
-    Downloading agent package from https://aka.ms/AzureConnectedMachineAgent to C:\Users\AzureConnectedMachineAgent.msi
-    Installing agent package
-    Installation of azcmagent completed successfully
-    0
-    Connecting to Azure using ARM Access Token
-    Connected to Azure successfully   
-    Microsoft.HybridCompute RP already registered, skipping registration 
-    Microsoft.GuestConfiguration RP already registered, skipping registration
-    Microsoft.HybridConnectivity RP already registered, skipping registration
-    Microsoft.AzureStackHCI RP already registered, skipping registration
-    INFO    Connecting machine to Azure... This might take a few minutes.
-    INFO    Testing connectivity to endpoints that are needed to connect to Azure... This might take a few minutes.
-      20% [==>            ]
-      30% [===>           ]
-      INFO    Creating resource in Azure...
-    Correlation ID=<Correlation ID>=/subscriptions/<Subscription ID>/resourceGroups/myashci-rg/providers/Microsoft.HybridCompute/machines/ms309
-      60% [========>      ]
-      80% [===========>   ]
-     100% [===============]
-      INFO    Connected machine to Azure
-    INFO    Machine overview page: https://portal.azure.com/
-    Connected Azure ARC agent successfully
-    Successfully got the content from IMDS endpoint
-    Successfully got Object Id for Arc Installation <Object ID>
-    $Checking if Azure Stack HCI Device Management Role is assigned already for SPN with Object ID: <Object ID>
-    Assigning Azure Stack HCI Device Management Role to Object : <Object ID>
-    $Successfully assigned Azure Stack HCI Device Management Role to Object Id <Object ID>
-    Successfully assigned permission Azure Stack HCI Device Management Service Role to create or update Edge Devices on the resource group
-    $Checking if Azure Connected Machine Resource Manager is assigned already for SPN with Object ID: <Object ID>
-    Assigning Azure Connected Machine Resource Manager to Object : <Object ID>
-    $Successfully assigned Azure Connected Machine Resource Manager to Object Id <Object ID>
-    Successfully assigned the Azure Connected Machine Resource Manager role on the resource group
-    $Checking if Reader is assigned already for SPN with Object ID: <Object ID>
-    Assigning Reader to Object : <Object ID>
-    $Successfully assigned Reader to Object Id <Object ID>
-    Successfully assigned the reader Resource Manager role on the resource group
-    Installing  TelemetryAndDiagnostics Extension
-    Successfully triggered  TelemetryAndDiagnostics Extension installation
-    Installing  DeviceManagement Extension
-    Successfully triggered  DeviceManagementExtension installation
-    Installing LcmController Extension
-    Successfully triggered  LCMController Extension installation
-    Please verify that the extensions are successfully installed before continuing...
-    
-    Log location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentChecker.log
-    Report location: C:\Users\Administrator\.AzStackHci\AzStackHciEnvironmentReport.json
-    Use -Passthru parameter to return results as a PSObject.   
+    Constructing node config using ARM Access Token
+    Waiting for bootstrap to complete: InProgress
+    =========SNIPPED=========SNIPPED=============
+    Waiting for bootstrap to complete: InProgress
+    Waiting for bootstrap to complete: InProgress
+    Waiting for bootstrap to complete: Succeeded
+
+    Log location: C:\Users\Administrator\.AzStackHci\AzStackHciArcIntegration.log
+    Version Response
+    ------- --------
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+    V1      Microsoft.Azure.Edge.Bootstrap.ServiceContract.Data.Response
+    Successfully triggered Arc boostrap support log collection. Waiting for 600 seconds to complete.
+    Waiting for Arc bootstrap support logs to complete on '', retry count: 0.
+    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
+    Waiting for Arc bootstrap support logs to complete on '', retry count: 1.
+    Arc bootstrap support log collection status is InProgress. Sleep for 10 seconds.
+    Waiting for Arc bootstrap support logs to complete on '', retry count: 2.
+    Arc boostrap support log collection completed successfully.
+
+    PS C:\Users\Administrator>
     ```
     ---
 
@@ -249,18 +229,14 @@ Before you begin, make sure you've completed the following prerequisites:
 
 This section describes how to assign Azure permissions for deployment from the Azure portal.
 
-1. In the Azure portal, go to the subscription used to register the servers. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
+1. In [the Azure portal](https://portal.azure.com/), go to the subscription used to register the servers. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
     :::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-a.png" alt-text="Screenshot of the Add role assignment in Access control in subscription for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-a.png":::
 
 1. Go through the tabs and assign the following role permissions to the user who deploys the cluster:
 
     - **Azure Stack HCI Administrator**
-    - **Cloud Application Administrator**
     - **Reader**
-
-    > [!NOTE]
-    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
 
 1. In the Azure portal, go to the resource group used to register the servers on your subscription. In the left pane, select **Access control (IAM)**. In the right pane, select **+ Add** and from the dropdown list, select **Add role assignment**.
 
@@ -275,9 +251,16 @@ This section describes how to assign Azure permissions for deployment from the A
  
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-3.png" alt-text="Screenshot of the review + Create tab in Add role assignment for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-3.png":::-->
 
-1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles. 
+1. In the right pane, go to **Role assignments**. Verify that the deployment user has all the configured roles.
 
     <!--:::image type="content" source="media/deployment-arc-register-server-permissions/add-role-assignment-4.png" alt-text="Screenshot of the Current role assignment in Access control in resource group for Azure Stack HCI deployment." lightbox="./media/deployment-arc-register-server-permissions/add-role-assignment-4.png":::-->
+
+1. In the Azure portal go to **Microsoft Entra Roles and Administrators** and assign the **Cloud Application Administrator** role permission at the Microsoft Entra tenant level.
+
+    :::image type="content" source="media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png" alt-text="Screenshot of the Cloud Application Administrator permission at the tenant level." lightbox="./media/deployment-arc-register-server-permissions/cloud-application-administrator-role-at-tenant.png":::
+
+    > [!NOTE]
+    > The Cloud Application Administrator permission is temporarily needed to create the service principal. After deployment, this permission can be removed.
 
 ## Next steps
 

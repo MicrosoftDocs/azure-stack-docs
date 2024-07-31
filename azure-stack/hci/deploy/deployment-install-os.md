@@ -3,7 +3,7 @@ title: Install Azure Stack HCI, version 23H2 operating system
 description: Learn how to install the Azure Stack HCI, version 23H2 operating system on each server of your cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 02/28/2024
+ms.date: 06/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -77,18 +77,22 @@ Now you're ready to use the Server Configuration tool (SConfig) to perform impor
 
 ## Configure the operating system using SConfig
 
-You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1) to configure Azure Stack HCI version 23H2 after installation. 
+You can use [*SConfig*](https://www.powershellgallery.com/packages/SCONFIG/2.0.1) to configure Azure Stack HCI, version 23H2 after installation.
 
 To use SConfig, sign in to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you sign in to the server.
 
 :::image type="content" source="media/deployment-install-os/azure-stack-hci-sconfig-screen.png" alt-text="Screenshot of the Server Configuration tool interface." lightbox="media/deployment-install-os/azure-stack-hci-sconfig-screen.png":::
 
 > [!IMPORTANT]
-> Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
+> - Do not install Windows Updates using SConfig. Updates are installed during the deployment. Installing updates using SConfig causes a deployment failure.
+> - Machines must not be joined to Active Directory before deployment.
 
 Follow these steps to configure the operating system using SConfig:
 
 1. Install the latest drivers and firmware as per the instructions provided by your hardware manufacturer. You can use SConfig to run driver installation apps. After the installation is complete, restart your servers.
+
+    > [!IMPORTANT]
+    > If your hardware partner provides a solution builder extension (SBE), copy it to each server that you intend to cluster. Place the SBE content at *C:\SBE* to ensure that it is detected and used during deployment. For more information, see [Azure Stack HCI solution builder extension](../concepts/system-requirements-23h2.md#hardware-requirements).
 
 1. Configure networking as per your environment. You can configure the following optional settings:
 
@@ -120,7 +124,12 @@ Follow these steps to configure the operating system using SConfig:
 
 1. (Optional) At this point, you can enable Remote Desktop Protocol (RDP) and then RDP to each server rather than use the virtual console. This action should simplify performing the remainder of the configuration.
 
+1. (Optional) Change the Computer Name as desired. This will be the name shown in the Azure portal as well as your Active Directory environment once joined.
+
 1. Clean all the non-OS drives for each server that you intend to deploy. Remove any virtual media that have been used when installing the OS. Also validate that no other root drives exist.
+
+    > [!NOTE]
+    > This step doesn't apply to a server repair operation.
 
 1. Restart the servers.
 
@@ -131,16 +140,15 @@ Follow these steps to configure the operating system using SConfig:
     > - Do not join the servers with the Azure Stack HCI operating system installed, to the Active Directory domain prior to cloud deployment. Cluster nodes are automatically joined to a domain during the [Deployment via Azure portal](./deploy-via-portal.md).
 
 
-
 ## Install required Windows roles
 
-1. Install the Hyper-V role. Run the following command on each server of the cluster:
+Install the Hyper-V role. Run the following command on each server of the cluster:
 
-    ```powershell
-    Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-    ```
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+```
 
-    Your servers will restart; this takes a few minutes.
+Your servers will restart; this takes a few minutes.
 
 You are now ready to register the Azure Stack HCI server with Azure Arc and assign permissions for deployment.
 

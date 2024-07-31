@@ -7,17 +7,35 @@ items:
     href: overview.md
   - name: What's new in Azure Stack HCI? 
     href: whats-new.md
+  - name: Azure Stack HCI OEM License
+    items: 
+    - name: OEM license information
+      href: azure-stack-hci-oem-license.md
+    - name: FAQ
+      href: azure-stack-hci-license-billing.yml
   - name: Release notes
     items:
     - name: Release information
       href: release-information-23h2.md
+    - name: Known issues 2405 
+      items:
+      - name: 2405.2 - Current
+        href: known-issues-2405-2.md      
+      - name: 2405.1
+        href: known-issues-2405-1.md
+      - name: 2405.0
+        href: known-issues-2405.md
     - name: Known issues 2402 
       items:
-      - name: 2402.2 - Current
+      - name: 2402.4 - Current
+        href: known-issues-2402-4.md
+      - name: 2402.3
+        href: known-issues-2402-3.md
+      - name: 2402.2
         href: known-issues-2402-2.md
       - name: 2402.1
         href: known-issues-2402-1.md
-      - name: 2402 
+      - name: 2402.0 
         href: known-issues-2402.md
     - name: Known issues 2311
       items:
@@ -29,11 +47,17 @@ items:
         href: known-issues-2311-3.md
       - name: 2311.2 - GA
         href: known-issues-2311-2.md
-      - name: 2311 (preview)
+      - name: 2311
         href: known-issues-2311.md
     - name: Security updates
       items:
-      - name: April 2024 - Current
+      - name: July 2024 - Current
+        href: security-update/hci-security-update-jul-2024.md
+      - name: June 2024 
+        href: security-update/hci-security-update-jun-2024.md
+      - name: May 2024
+        href: security-update/hci-security-update-may-2024.md
+      - name: April 2024
         href: security-update/hci-security-update-apr-2024.md
       - name: March 2024 
         href: security-update/hci-security-update-mar-2024.md
@@ -97,14 +121,16 @@ items:
         href: plan/two-node-components.md
       - name: Pattern IP requirements
         href: plan/two-node-ip-requirements.md
-      - name: Decision matrix
-        href: plan/two-node-decision-matrix.md
     - name: Three-node switchless deployments
       items:
       - name: Storage switchless, dual TOR, single link
         href: plan/three-node-switchless-two-switches-single-link.md
       - name: Storage switchless, dual TOR, dual link
         href: plan/three-node-switchless-two-switches-two-links.md
+      - name: Pattern components
+        href: plan/three-node-components.md
+      - name: Pattern IP requirements
+        href: plan/three-node-ip-requirements.md
     - name: SDN considerations
       href: plan/network-patterns-sdn-considerations.md
   - name: Review cloud deployment network considerations
@@ -117,6 +143,8 @@ items:
       href: https://assetsprod.microsoft.com/mpn/azure-stack-hci-security-book.pdf
   - name: Assess environment readiness
     href: manage/use-environment-checker.md
+  - name: Configure advanced Active Directory settings
+    href: plan/configure-custom-settings-active-directory.md 
 
 - name: Deploy
   items:
@@ -131,13 +159,26 @@ items:
   - name: 3. Install the OS
     href: deploy/deployment-install-os.md
   - name: 4. Register with Arc and set up permissions
-    href: deploy/deployment-arc-register-server-permissions.md
+    items:
+    - name: Via console
+      href: deploy/deployment-arc-register-server-permissions.md
+    - name: Via local UI
+      href: deploy/deployment-arc-register-local-ui.md  
   - name: 5. Choose a deployment method
     items:
     - name: 5A. Deploy via Azure portal 
       href: deploy/deploy-via-portal.md
     - name: 5B. Deploy via ARM template
       href: deploy/deployment-azure-resource-manager-template.md
+
+  - name: Deploy with Arc gateway
+    items:
+    - name: About Arc gateway
+      href: deploy/deployment-azure-arc-gateway-overview.md
+    - name: New v23H2 deployments
+      href: deploy/deployment-azure-arc-gateway-new-cluster.md
+    - name: Existing v23H2 deployments
+      href: deploy/deployment-azure-arc-gateway-existing-cluster.md
 
   - name: Deploy SDN
     items:
@@ -159,6 +200,8 @@ items:
   items:
   - name: About Updates
     href: update/about-updates-23h2.md
+  - name: About Solution Builder Extension software updates
+    href: update/solution-builder-extension.md
   - name: Understand update phases
     href: update/update-phases-23h2.md
   - name: Update via PowerShell
@@ -211,14 +254,21 @@ items:
       href: manage/manage-arc-virtual-machine-resources.md 
     - name: Manage VM extensions
       href: manage/virtual-machine-manage-extension.md
+    - name: License Arc VMs
+      items:
+      - name: Azure verification for VMs
+        href: deploy/azure-verification.md
+      - name: License Windows Server VMs
+        href: manage/vm-activate.md
+      - name: Deploy Windows Server Azure Edition VMs
+        href: manage/windows-server-azure-edition-23h2.md
+      - name: Extended Security Updates (ESUs)
+        href: manage/azure-benefits-esu.md
+   
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
       href: manage/azure-arc-vms-faq.yml
-    - name: Azure verification for VMs
-      href: deploy/azure-verification.md
-    - name: License Windows Server VMs
-      href: manage/vm-activate.md
 
   - name: Trusted launch for Arc VMs
     items: 
@@ -230,9 +280,7 @@ items:
         href: manage/trusted-launch-vm-import-key.md
 
   - name: Non Arc VMs
-    items: 
-      - name: Extended Security Updates (ESUs)
-        href: ./manage/azure-benefits-esu.md
+    items:
       - name: Manage VMs
         href: manage/vm.md
       - name: Manage VMs with PowerShell
@@ -242,16 +290,15 @@ items:
       - name: VM load balancing
         href: manage/vm-load-balancing.md
       - name: Dynamic CPU compatibility
-        href: manage/processor-compatibility-mode.md
+        href: /windows-server/virtualization/hyper-v/manage/dynamic-processor-compatibility-mode?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use GPUs with clustered VMs
-        href: manage/use-gpu-with-clustered-vm.md
+        href: /windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: GPU Partitioning
         href: /windows-server/virtualization/hyper-v/gpu-partitioning?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Partition and assign GPUs to a virtual machine
-        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: /windows-server/virtualization/hyper-v/partition-assign-vm-gpu?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Attach GPU to Linux VM
         href: manage/attach-gpu-to-linux-vm.md
-
 
   - name: Security
     items:
@@ -277,6 +324,8 @@ items:
 
   - name: Azure services
     items:
+    - name: Hybrid capabilities with Azure services
+      href: hybrid-capabilities-with-azure-services-23h2.md
     - name: Enhanced management from Azure
       href: manage/azure-enhanced-management-managed-identity.md
     - name: Use Azure Site Recovery
@@ -320,7 +369,7 @@ items:
     - name: Manage gateway connections
       href: manage/gateway-connections.md
     - name: Manage default network access policies
-      href: manage/manage-default-network-access-policies-virtual-machines.md
+      href: manage/manage-default-network-access-policies-virtual-machines-23h2.md
     - name: Configure network security groups with Windows Admin Center
       href: manage/use-datacenter-firewall-windows-admin-center.md
     - name: Configure network security groups with PowerShell
@@ -361,12 +410,14 @@ items:
     items:
     - name: Insights
       items:
-      - name: Single cluster
+      - name: Monitor a single cluster
         href: manage/monitor-hci-single-23h2.md
-      - name: Multiple clusters
+      - name: Monitor multiple clusters
         href: manage/monitor-hci-multi-23h2.md
-      - name: Feature workbooks
+      - name: Monitor feature workbooks
         href: manage/monitor-features.md
+      - name: Enable Insights at scale using Azure policies
+        href: manage/monitor-hci-multi-azure-policies.md
     - name: Metrics
       href: manage/monitor-cluster-with-metrics.md
     - name: Alerts
@@ -410,6 +461,8 @@ items:
       href: manage/troubleshoot-sdn-deployment.md
     - name: Collect SDN logs
       href: manage/sdn-log-collection.md
+    - name: Troubleshoot common SDN issues
+      href: manage/troubleshoot-common-sdn-issues.md
     - name: Troubleshoot Software Load Balancer for SDN
       href: manage/troubleshoot-software-load-balancer.md
 
@@ -417,7 +470,7 @@ items:
   items:
   - name: Migration overview
     href: migrate/migration-options-hci-overview.md
-  - name: Migrate using Azure Migrate (preview)
+  - name: Migrate using Azure Migrate
     items:
     - name: Overview
       href: migrate/migration-azure-migrate-hci-overview.md
@@ -479,6 +532,8 @@ items:
   items:
   - name: Release information for version 22H2
     href: release-information.md
+  - name: Azure Benefits (22H2 and earlier)
+    href: ./manage/azure-benefits.md
   - name: Review requirements for 22H2
     href: concepts/system-requirements.md
   - name: Deploy version 22H2
@@ -605,6 +660,10 @@ items:
         href: /windows-server/manage/windows-admin-center/azure/manage-hci-clusters?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Use Azure portal
         href: manage/azure-portal.md
+    - name: Manage SDN 
+      items:
+      - name: Manage default network access policies
+        href: manage/manage-default-network-access-policies-virtual-machines.md   
   - name: Migrate
     items:
     - name: Cluster to same hardware
@@ -759,8 +818,6 @@ items:
     href: https://azure.com/hci
   - name: Pricing
     href: https://azure.microsoft.com/pricing/details/azure-stack/hci/
-  - name: Azure Benefits (22H2 and earlier)
-    href: ./manage/azure-benefits.md
   - name: Learning paths and modules
     items:
     - name: Azure Stack HCI foundations
@@ -775,8 +832,6 @@ items:
     href: guided-quick-deploy-eval.yml 
   - name: Earlier versions
     items:
-    - name: Azure Arc VM management for version 22H2
-      href: https://databoxupdatepackages.blob.core.windows.net/documentation/MicrosoftAzureStackHCI_ArcVMManagement_Version22H2-11272023.pdf
     - name: What's new in version 22H2
       href: whats-new-in-hci-22h2.md
     - name: What's new in version 21H2
@@ -785,7 +840,7 @@ items:
       href: known-issues-2310.md
     - name: Create a VM-based lab
       href: deploy/tutorial-private-forest.md
-    - name: 22H2 Supplemental Package (Preview)
+    - name: 22H2 Supplemental Package
       items:
       - name: What's in preview?
         items:

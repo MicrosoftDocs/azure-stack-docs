@@ -3,7 +3,7 @@ title: Azure Stack Hub archived known issues
 description: Learn about archived known issues in Azure Stack Hub releases.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/25/2023
+ms.date: 03/28/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 09/09/2020
@@ -20,6 +20,49 @@ To access known issues for a different archived version, use the version selecto
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-2301"
+<!-- ## Update -->
+
+<!-- ## Networking -->
+
+<!-- ## Compute -->
+
+<!-- ## Alerts -->
+
+## Portal
+
+### Incorrect reporting of node CPU cores in the admin portal
+
+- Applicable: This issue applies to release 2301.
+- Cause: The number of cores reported in the Azure Stack Hub admin portal in the cluster **Nodes Capacity** window is incorrect. This is cosmetic and an issue with a change in 2301 with respect to how the Fabric Resource Provider gets this information. This impacts both new deployments and existing stamps updating to 2301, but doesn't affect operation of the stamp or any workload deployments.
+- Remediation: Microsoft is aware of the problem and is working on a fix.
+- Occurrence: Minor portal issue that occurs consistently.
+
+<!-- ## Datacenter integration -->
+
+<!-- ## Storage -->
+
+<!-- ## SQL and MySQL-->
+
+## App Service
+
+### Incorrect rotation status after secret rotation of resource provider certificates
+
+- Applicable: This issue applies to all Azure Stack Hub add-on resource providers.
+- Cause: After secret rotation, the rotation state shows as "in progress" even though the rotation completed successfully, the provisioning state shows "successful," and the expiration date is updated.
+- Remediation: None. No impact to your system or workloads.
+- Occurrence: All supported versions of Azure Stack Hub.
+
+<!-- ## Usage -->
+
+<!-- ### Identity -->
+
+<!-- ### Marketplace -->
+
+<!-- ## Event Hubs -->
+
+::: moniker-end
 
 ::: moniker range="azs-2206"
 <!-- ## Update -->
@@ -1635,13 +1678,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ### Virtual machine scale set
 
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
-
 #### Remove scale set
 
 - Applicable: This issue applies to all supported releases.
@@ -1812,13 +1848,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Occurrence: Common
 
 ### Virtual machine scale set
-
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
 
 #### Remove scale set
 

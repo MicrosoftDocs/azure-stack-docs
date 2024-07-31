@@ -2,7 +2,7 @@
 title: Support policies for AKS enabled by Azure Arc
 description: Learn about AKS enabled by Arc support policies, shared responsibility, and features that are in preview.
 ms.topic: article
-ms.date: 05/03/2023
+ms.date: 07/11/2024
 author: sethmanheim
 ms.author: sethm
 ms.lastreviewed: 05/03/2023
@@ -88,7 +88,7 @@ Microsoft provides technical support for the following features and components:
 > [!NOTE]
 > Any cluster actions taken by Microsoft AKS Arc support teams are made with user consent and assistance. Microsoft Support doesn't log into your cluster unless you configure access for the support engineer.
 
-Microsoft doesn't provide technical support in the following areas:
+Microsoft doesn't provide technical support for the following areas:
 
 - Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.
 
@@ -101,7 +101,6 @@ Microsoft doesn't provide technical support in the following areas:
   > Microsoft can provide best-effort support for third-party open-source projects such as Helm. Where the third-party open-source tool integrates with Kubernetes or other AKS Arc-specific bugs, Microsoft supports examples and applications from Microsoft documentation.
 
 - Third-party closed-source software. This software can include security scanning tools and networking devices or software.
-
 - Network customizations other than the ones listed in the [AKS Arc documentation](index.yml).
 
 ## AKS Arc support coverage for agent nodes
@@ -113,7 +112,6 @@ Microsoft and users share responsibility for Kubernetes agent nodes where:
 - The base OS image required additions (such as monitoring and networking agents).
 - The agent nodes receive OS patches automatically.
 - Issues with the Kubernetes control plane components that run on the agent nodes are automatically remediated during the update cycle or when you redeploy an agent node. These components include:
-
   - `kube-proxy`
   - Networking tunnels that provide communication paths to the Kubernetes master components:
     - `kubelet`
@@ -126,7 +124,7 @@ Microsoft and users share responsibility for Kubernetes agent nodes where:
 
 Microsoft provides patches and new images for your image nodes monthly, but doesn't automatically patch them by default. To keep your agent node OS and runtime components patched, you should keep a regular upgrade schedule or automate patching.
 
-Similarly, AKS Arc regularly releases new Kubernetes patches and minor versions. These updates can contain security or functionality improvements to Kubernetes. You're responsible for keeping your clusters' Kubernetes version updated according to the [AKS Arc supported versions policy](supported-kubernetes-versions.md).
+Similarly, AKS Arc regularly releases new Kubernetes patches and minor versions. These updates can contain security or functionality improvements to Kubernetes. You're responsible for keeping your cluster's Kubernetes version updated according to the [AKS Arc supported versions policy](supported-kubernetes-versions.md).
 
 ### User customization of agent nodes
 
@@ -155,7 +153,7 @@ You can only customize network settings using AKS Arc defined subnets. You can't
 
 ## Stopped or disconnected clusters
 
-As previously stated, manually de-allocating all cluster nodes via the Hyper-V APIs, CLI, or MMC renders the cluster out of support.
+As previously described, manually de-allocating all cluster nodes via the Hyper-V APIs, CLI, or MMC renders the cluster out of support.
 
 Clusters that are stopped for more than 90 days can no longer be updated. The control planes for clusters in this state are out of support after 30 days, and they can't be updated to the latest version.
 

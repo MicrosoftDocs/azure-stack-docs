@@ -7,8 +7,8 @@ ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
+ms.custom: devx-track-arm-template
 ms.date: 05/15/2024
-
 ---
 
 # Review three-node storage switchless, dual TOR, dual link deployment network reference pattern for Azure Stack HCI
@@ -54,7 +54,7 @@ As illustrated in the diagram below, this pattern has the following logical netw
 
 The Storage intent-based traffic consists of six individual subnets supporting RDMA traffic. Each interface is dedicated to a separate node interconnect network. This traffic is only intended to travel between the three nodes. Storage traffic on these subnets is isolated without connectivity to other resources.
 
-Each pair of storage adapters between the nodes operates in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor. 
+Each pair of storage adapters between the nodes operates in different IP subnets. To enable a switchless configuration, each connected node supports the same matching subnet of its neighbor.
 
 When deploying three nodes in a switchless configuration, Network ATC has the following requirements:
 
@@ -67,8 +67,8 @@ When deploying three nodes in a switchless configuration, Network ATC has the fo
     - Scale out storage switchless clusters aren't supported.
 
     - It's only possible to deploy this three-node scenario using ARM templates.
-    
-    For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
+
+For more information, see [Deploy via Azure Resource Manager deployment template](../deploy/deployment-azure-resource-manager-template.md).
 
 ### Management VLAN
 

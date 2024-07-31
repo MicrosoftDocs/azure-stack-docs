@@ -44,7 +44,7 @@ This new approach:
 
 ## Lifecycle cadence
 
-The Azure Stack HCI platform follows the [Modern Lifecycle policy](/lifecycle/policies/modern). The Modern Lifecycle policy defines the products and services that are continuously serviced and supported. To stay current with this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Stack HCI release information](/azure-stack/hci/release-information).
+The Azure Stack HCI platform follows the [Modern Lifecycle policy](/lifecycle/policies/modern). The Modern Lifecycle policy defines the products and services that are continuously serviced and supported. To stay current with this policy, you must stay within six months of the most recent release. To learn more about the support windows, see [Azure Stack HCI release information](/azure-stack/hci/release-information-23h2).
 
 Microsoft might release the following types of updates for the Azure Stack HCI platform:
 
@@ -59,7 +59,7 @@ Microsoft might release the following types of updates for the Azure Stack HCI p
 
 ² The Original Equipment Manufacturer determines the frequency of Solution Builder Extension updates.
 
-Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your cluster must stay within six months of the most recent baseline to consider it supported.
+Sometimes you might see updates to the latest patch level of your current baseline. If a new baseline is available, you might see the baseline update itself or the latest patch level of the baseline. Your cluster must stay within six months of the most recent baseline to consider it supported. For more information and a visualization of supported releases, see [About Azure Stack HCI, version 23H2 releases](../release-information-23h2.md#about-azure-stack-hci-version-23h2-releases).
 
 The next sections provide an overview of components, along with methods and interfaces for updating your solution.
 

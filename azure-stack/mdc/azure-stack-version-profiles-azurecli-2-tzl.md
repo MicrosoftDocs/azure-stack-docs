@@ -10,8 +10,7 @@ ms.date: 12/2/2020
 ms.author: sethm
 ms.reviewer: raymondl
 ms.lastreviewed: 12/2/2020 
-ms.custom: devx-track-azurecli
-
+ms.custom: devx-track-azurecli, linux-related-content
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI - Modular Data Center (MDC)
 

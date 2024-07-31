@@ -5,12 +5,12 @@ ms.author: alkohli
 ms.reviewer: anpaul
 ms.topic: article
 author: alkohli
-ms.date: 05/15/2024
+ms.date: 05/22/2024
 ---
 
 # Use default network access policies on virtual machines on Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2.md)]
 
 This article describes how to enable default network access policies and assign these to virtual machines (VMs) running on Azure Stack HCI.
 
@@ -21,7 +21,7 @@ Default network policies can be used to protect virtual machines running on your
 
 ## Enable default network access policies
 
-To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard-23h2.md).
+To enable default network access policies, you need to install Network Controller (NC). Network Controller enforces the default network policies and is deployed in the virtual machines. For more information, see how to [Install Network Controller](../deploy/sdn-wizard.md).
 
 ## Assign default network policies to a VM
 

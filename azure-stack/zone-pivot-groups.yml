@@ -55,9 +55,9 @@ groups:
   - id: alma-86
     title: AlmaLinux HPC 8.6
   - id: rhel-7
-    title: Red Hat Enterprise Linux or CentOS 7
+    title: Red Hat Enterprise Linux 7
   - id: rhel-8
-    title: Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
+    title: Red Hat Enterprise Linux or AlmaLinux 8
   - id: rhel-9
     title: Red Hat Enterprise Linux 9
   - id: ubuntu-18

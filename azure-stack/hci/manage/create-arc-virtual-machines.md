@@ -8,7 +8,7 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli
-ms.date: 03/04/2024
+ms.date: 07/02/2024
 ---
 
 # Create Arc virtual machines on Azure Stack HCI
@@ -65,7 +65,7 @@ Follow these steps to create an Arc VM on your Azure Stack HCI cluster.
 
 # [Azure CLI](#tab/azurecli)
 
-Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster. 
+Follow these steps on the client running az CLI that is connected to your Azure Stack HCI cluster.
 
 ## Sign in and set subscription
 
@@ -78,7 +78,7 @@ Depending on the type of the network interface that you created, you can create 
 > [!NOTE]
 > If you need more than one network interface with static IPs for your VM, create the interface(s) now before you create the VM. Adding a network interface with static IP, after the VM is provisioned, is not supported.
 
-Here we'll create a VM that uses specific memory and processor counts on a specified storage path.
+Here we create a VM that uses specific memory and processor counts on a specified storage path.
 
 1. Set some parameters.
 
@@ -168,14 +168,14 @@ You can input the following parameters for `proxy-server-configuration`:
 | **proxyServerPassword**  |Password for proxy authentication. The username and password are combined in a URL format similar to the following: `http://username:password@proxyserver.contoso.com:3128`. An example is: `UseAStrongerPassword!` |-->
 
 
-Here is a sample command:
+Here's a sample command:
 
 ```azurecli
 az stack-hci-vm create --name $vmName --resource-group $resource_group --admin-username $userName --admin-password $password --computer-name $computerName --image $imageName --location $location --authentication-type all --nics $nicName --custom-location $customLocationID --hardware-profile memory-mb="8192" processors="4" --storage-path-id $storagePathId --proxy-configuration http_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" https_proxy="http://ubuntu:ubuntu@192.168.200.200:3128" no_proxy="localhost,127.0.0.1,.svc,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,100.0.0.0/8,s-cluster.test.contoso.com" cert_file_path="C:\ClusterStorage\UserStorage_1\server.crt"
 ```
 For proxy authentication, you can pass the username and password combined in a URL as follows:`"http://username:password@proxyserver.contoso.com:3128"`.
 
-Depending on the PowerShell version you are running on your VM, you may need to enable the proxy settings for your VM.
+Depending on the PowerShell version you're running on your VM, you may need to enable the proxy settings for your VM.
 
 - For Windows VMs running PowerShell version 5.1 or earlier, sign in to the VM after the creation. Run the following command to enable proxy:
 
@@ -258,8 +258,11 @@ Follow these steps in Azure portal of your Azure Stack HCI system.
     1. Only the Active Directory domain join is supported and selected by default.  
     
     1. Provide the UPN of an Active Directory user who has privileges to join the virtual machine to your domain.
+       
+       > [!IMPORTANT]
+       > For your Active Directory, if your SAM Account Name and UPN are different, enter the SAM Account Name in the UPN field as: `SAMAccountName@domain`. 
     
-    1. Provide the domain administrator password.
+    1. Provide the domain administrator password. If using SAM Account Name in the UPN field, enter the corresponding password.
 
     1. Specify domain or organizational unit. You can join virtual machines to a specific domain or to an organizational unit (OU) and then provide the domain to join and the OU path.
     

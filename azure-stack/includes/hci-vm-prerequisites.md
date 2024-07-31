@@ -4,11 +4,10 @@ ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.topic: include
-ms.date: 11/04/2022
+ms.date: 06/21/2024
 ---
 
-
-- Access to an Azure subscription with **Owner** or **Contributor** access.
+- Access to an Azure subscription with the appropriate RBAC role and permissions assigned. For more information, see [RBAC roles for Azure Stack HCI Arc VM management](../hci/manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).
 - Access to a resource group where you want to provision the VM.
 - Access to one or more VM images on your Azure Stack HCI cluster. These VM images could be created by one of the following procedures:
     - [VM image starting from an image in Azure Marketplace](../hci/manage/virtual-machine-image-azure-marketplace.md).

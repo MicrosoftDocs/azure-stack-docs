@@ -3,7 +3,7 @@ title: Create deployments in AKS enabled by Azure Arc
 description: Learn how to create deployments in Azure Kubernetes Service (AKS) Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 03/04/2022
 ms.reviewer: EkeleAsonye
@@ -15,7 +15,7 @@ ms.reviewer: EkeleAsonye
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides an overview of Kubernetes deployments and describes how to create and update deployments in AKS enabled by Azure Arc.
+This article provides an overview of Kubernetes deployments, and describes how to create and update these deployments in AKS enabled by Azure Arc.
 
 ## Kubernetes deployments overview
 

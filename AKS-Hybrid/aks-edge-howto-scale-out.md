@@ -1,11 +1,11 @@
 ---
 title: AKS Edge Scale
-description: Learn how to scale out your AKS Edge Essentials applications to multiple nodes. 
+description: Learn how to scale out your AKS Edge Essentials applications to multiple nodes.
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/06/2023
-ms.custom: template-how-to
+ms.date: 07/11/2024
+ms.custom: template-how-to, linux-related-content
 ---
 
 # Scaling out on multiple machines
@@ -18,7 +18,7 @@ Now that AKS Edge Essentials is installed on your primary machine, this article 
 ## Prerequisites
 
 - Set up your [scalable Kubernetes](aks-edge-howto-multi-node-deployment.md) cluster.
-- Set up your secondary machines as described in the [Set up machine article](aks-edge-howto-setup-machine.md). You can't mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **K8s**, you must install the **K8s** msi on the secondary machines as well.
+- Set up your secondary machines as described in the [Set up machine article](aks-edge-howto-setup-machine.md). You can't mix different Kubernetes distributions in your cluster. If the cluster on your primary machine is running **K8s**, you must install the **K8s** MSI on the secondary machines as well.
 
 ## Step 1: get cluster configuration from your primary machine
 

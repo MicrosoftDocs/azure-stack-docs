@@ -78,6 +78,7 @@ Follow these steps in to change the deployment service principal:
 1. Run the following PowerShell commands:
 
     ```powershell
+    cd "C:\Program Files\WindowsPowerShell\Modules\Microsoft.AS.ArcIntegration"
     Import-Module Microsoft.AS.ArcIntegration.psm1 -Force
     $secretText=ConvertTo-SecureString -String <client secret> -AsPlainText -Force
     Update-ServicePrincipalName -AppId <appID> -SecureSecretText $secretText
