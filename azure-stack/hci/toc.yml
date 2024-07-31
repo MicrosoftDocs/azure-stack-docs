@@ -203,9 +203,13 @@ items:
     items: 
     - name: Via PowerShell
       href: upgrade/upgrade-22h2-to-23h2-powershell.md
+    - name: Via Windows Admin Center
+      href: upgrade/upgrade-22h2-to-23h2-windows-admin-center.md
     - name: Via other methods
       href: upgrade/upgrade-22h2-to-23h2-other-methods.md
-  - name: Prepare to apply solution update
+  - name: Perform post-upgrade tasks
+    href: upgrade/post-upgrade-steps.md
+  - name: Prepare to apply solution upgrade
     href: upgrade/prepare-to-apply-23h2-solution-update.md
 
 
