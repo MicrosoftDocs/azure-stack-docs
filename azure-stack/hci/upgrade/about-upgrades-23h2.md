@@ -19,7 +19,7 @@ Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the *new* 
 
 ## About Azure Stack HCI, version 23H2
 
-The Azure Stack HCI, version 23H2 is the latest generally available software with an exciting array of new capabilities including the Azure Arc infrastructure that enables you to provision and manage workloads. Examples of these workloads include the Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop. For more information, see [What's new in Azure Stack HCI, version 23H2](../whats-new.md#features-and-improvements-in-2311).
+The Azure Stack HCI, version 23H2 is the latest generally available software that includes the Azure Arc infrastructure to enable you to provision and manage workloads such as Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop. For more information, see [What's new in Azure Stack HCI, version 23H2](../whats-new.md#features-and-improvements-in-2311).
 
 The Azure Stack HCI, version 23H2, evolved from a cloud connected operating system (OS) to an Arc enabled solution. The operating system is the base layer for this solution. The Arc and the Orchestrator (also known as the Lifecycle Manager) components are layered on top of the OS. These are together packaged into a solution that follows an [Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) model.
 
