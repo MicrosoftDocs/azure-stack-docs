@@ -1,0 +1,37 @@
+---
+title: Monitoring data reference for Azure Managed Lustre
+description: This article contains important reference material you need when you monitor Azure Managed Lustre.
+ms.date: 08/12/2024
+ms.custom: horz-monitor
+ms.topic: reference
+author: pauljewellmsft
+ms.author: pauljewell
+ms.service: azure-managed-lustre
+---
+
+# Azure Managed Lustre monitoring data reference
+
+[!INCLUDE [horz-monitor-ref-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-intro.md)]
+
+See [Monitor Azure Managed Lustre](monitor-file-system.md) for details on the data you can collect for Azure Managed Lustre and how to use it.
+
+<a name="metrics-dimensions"></a>
+[!INCLUDE [horz-monitor-ref-metrics-intro](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-intro.md)]
+
+### Supported metrics for Microsoft.StorageCache/amlFilesystems
+
+The following table lists the metrics available for the Microsoft.StorageCache/amlFilesystems resource type.
+[!INCLUDE [horz-monitor-ref-metrics-tableheader](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-tableheader.md)]
+[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/azure-reference-other-repo/azure-monitor-ref/supported-metrics/includes/microsoft-storagecache-amlfilesystems-metrics-include.md)]
+
+### Supported resource logs for Microsoft.StorageCache/amlFilesystems
+[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/azure-reference-other-repo/azure-monitor-ref/supported-logs/includes/microsoft-storagecache-amlfilesystems-logs-include.md)]
+
+[!INCLUDE [horz-monitor-ref-activity-log](~/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
+
+- [Microsoft.StorageCache resource provider permissions](/azure/role-based-access-control/permissions/storage#microsoftstoragecache)
+
+## Related content
+
+- See [Monitor Azure Managed Lustre](monitor-file-system.md) for a description of monitoring Azure Managed Lustre.
+- See [Monitor Azure resources with Azure Monitor](/azure/azure-monitor/essentials/monitor-azure-resource) for details on monitoring Azure resources.
