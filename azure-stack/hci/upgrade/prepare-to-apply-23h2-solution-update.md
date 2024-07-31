@@ -1,6 +1,6 @@
 ---
 title: Prepare to apply solution upgrade on Azure Stack HCI, version 23H2
-description: Learn how to prepare to upgrade fyour Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
+description: Learn how to prepare to upgrade your Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
 author: alkohli
 ms.topic: how-to
 ms.date: 07/31/2024
@@ -25,30 +25,32 @@ This article only covers the second step, which is to prepare for the solution u
 
 ## Prepare for the solution upgrade
 
-This *optional* but *recommended* step helps you assess the readiness of your Azure Stack HCI cluster for the solution upgrade. The following sections document steps to assess the upgrade readiness for the following:
+This *optional* but *recommended* step helps you assess the readiness of your Azure Stack HCI cluster for the solution upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use environment checker to verify that Network ATC is installed. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
+- Install and use environment checker to verify that Network ATC is installed and enabled on the node. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
 - Ensure that sufficient storage space is available for infrastructure volume.
 - Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 
 ## Step 1: Use environment checker to validate upgrade readiness
 
-We recommend that you use the environment checker to validate your system readiness prior to the solution update. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
+We recommend that you use the environment checker to validate your system readiness before you upgrade the solution. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
 Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
+
+### Table of blocking validation tests for the upgrade
 
 The following table contains the validation tests with severity *Critical* that block the upgrade. Any items that block the upgrade must be addressed before you apply the solution upgrade.
 
 | Name                              | Severity |
 |-----------------------------------|----------|
-| Windows OS is 23H2                | Critical |
+| Windows OS is 23H2           | Critical |
 | AKS HCI install state             | Critical |
 | Supported cloud type              | Critical |
 | BitLocker suspension              | Critical |
 | Cluster exists                    | Critical |
 | All nodes in same cluster         | Critical |
 | Cluster node is up                | Critical |
-| Stretched cluster                 | Critical |
+| Stretched cluster <!--ASK-->                | Critical |
 | Language is English               | Critical |
 | Microsoft on-premises cloud (MOC) install state  | Critical |
 | MOC services running              | Critical |
@@ -57,6 +59,8 @@ The following table contains the validation tests with severity *Critical* that 
 | Storage pool                      | Critical |
 | Storage volume                    | Critical |
 | Windows Defender for Application Control (WDAC) enablement      | Critical |
+
+### Table of non-blocking validation tests for the upgrade
 
 The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Stack HCI, version 23H2.
 
@@ -136,7 +140,7 @@ Each validation check includes remediation guidance with links that help you res
 
 ## Step 2: Install required Windows features
 
-Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the server node into maintenance prior to installing them. Verify that all the active virtual machines have migrated to other cluster members.
+Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the server node into maintenance mode before you install the roles and features. Verify that all the active virtual machines have migrated to other cluster members.
 
 Use the following commands for each server to install the required features. If a feature is already present, the install automatically skips it.
 
@@ -231,12 +235,6 @@ To verify all members of the cluster are online, run the following PowerShell co
 ```powershell
 Get-CluterNode -cluster "mycluster" 
 ```
-
-<!--### Stretched cluster
-
-The team is working on supporting multi room clustering where cluster nodes are separated across two rooms. Stretch clustering is one implementation that does solve for long distances. Based on customer feedback, we are prioritizing a solution that is designed for short distances up to 1Km that is separating a cluster into availability zones by maintaining the operational management aspect of a single room cluster.
-
-When running a stretch cluster, you must apply the operating system update, which provides improvements using a new replication engine. We do understand this is a constraint as the Arc solution enablement won't be available for you initially.-->
 
 ## Step 4: Suspend BitLocker
 
@@ -361,10 +359,10 @@ Follow these steps to confirm the storage pool configuration:
 
 Azure Stack HCI, version 23H2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
 
-If there's an existing volume with the same name, this test fails.
+Make sure to verify that there are no volumes that exist with the name *Infrastructure_1*. If there's an existing volume with the same name, this test fails.<!--ASK which test fails-->
 
 > [!NOTE]
-> Renaming the existing volume will impact the virtual machines as the mount point of the cluster shared volume will change. Additional configuration changes are required for all the virtual machines.
+> Renaming the existing volume impacts the virtual machines as the mount point of the cluster shared volume changes. Additional configuration changes are required for all the virtual machines.
 
 1. To rename the existing volume, run the following PowerShell command:
 
@@ -374,4 +372,4 @@ If there's an existing volume with the same name, this test fails.
 
 ## Next steps
 
-- [Learn how to apply the solution update.](../index.yml)
+- [Learn how to apply the solution upgrade.](../index.yml)
