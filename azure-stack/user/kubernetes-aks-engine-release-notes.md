@@ -3,7 +3,7 @@ title: Release notes for Azure Kubernetes Service (AKS) engine on Azure Stack Hu
 description: Learn the steps you need to take with the update to AKS engine on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 05/26/2023
+ms.date: 07/29/2023
 ms.author: sethm
 ms.reviewer: sumsmith
 ms.lastreviewed: 09/23/2022
@@ -95,10 +95,10 @@ For AKS Engine release v0.75.3, clusters with Windows nodes on Kubernetes v1.23 
 | 2301                                           | 0.75.3, 0.76.0, 0.77.0, 0.78.0, 0.79.0 |
 | 2306                                           | 0.78.0, 0.79.0*, 0.80.2* |
 | 2311                                           | 0.80.2* |
-
+| 2406                                           | 0.80.2* |
 
 > [!NOTE]  
-> *Supported. See the [AKS Engine Version Support policy](../user/azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
+> *Supported. See the [AKS Engine Version Support policy](azure-stack-kubernetes-aks-engine-support.md#version-support) for more information.
 
 ### AKS engine and corresponding image mapping
 
