@@ -299,7 +299,7 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false
    ```
 
-   Here's a sample output:
+   Expand to view the sample output:
 
    | FriendlyName | OperationalStatus | HealthStatus | IsPrimordial | IsReadOnly | Size  | AllocatedSize |
    |--------------|-------------------|--------------|--------------|------------|-------|---------------|
@@ -311,7 +311,7 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false|Get-VirtualDisk
    ```
 
-   Here's a sample output:
+   Expand to view the sample output:
 
    | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
    |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
@@ -326,7 +326,7 @@ Follow these steps to confirm the storage pool configuration:
    $volume.ProvisioningType
    ```
 
-   Here's a sample output:
+   Expand to view the sample output:
 
    `Fixed`
 
@@ -349,7 +349,7 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false|Get-VirtualDisk
    ```
 
-   Here's a sample output:
+   Expand to view the sample output:
 
     | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
    |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
