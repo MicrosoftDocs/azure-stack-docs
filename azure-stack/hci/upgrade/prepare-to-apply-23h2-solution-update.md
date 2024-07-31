@@ -1,39 +1,43 @@
 ---
-title: Prepare to Upgrade Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2
-description: Learn how to prepare to upgrade from Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2.
+title: Prepare to apply solution upgrade on Azure Stack HCI, version 23H2
+description: Learn how to prepare to upgrade fyour Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/02/2024
+ms.date: 07/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prepare to upgrade from Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2
+# Prepare to apply solution upgrade on Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to prepare your Azure Stack HCI solution update after the OS has been updated from v22H2 to v23H2.
+This article describes how to prepare your Azure Stack HCI solution upgrade after the Operating System (OS) was updated from version 22H2 to version 23H2.
 
 The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
 
 1. Upgrade the operating system.
-1. Prepare for the solution update.
-1. Apply the solution update.
+1. Prepare for the solution upgrade.
+1. Apply the solution upgrade.
 
-This article only covers the second step, which is to prepare for the solution update.
+This article only covers the second step, which is to prepare for the solution upgrade.
 
-## Prepare for the solution update
+## Prepare for the solution upgrade
 
-The following sections document steps to prepare your system for the solution update.
+This *optional* but *recommended* step helps you assess the readiness of your Azure Stack HCI cluster for the solution upgrade. The following sections document steps to assess the upgrade readiness for the following:
 
-### Validate upgrade readiness
+- Install and use environment checker to verify that Network ATC is installed. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
+- Ensure that sufficient storage space is available for infrastructure volume.
+- Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
+
+## Step 1: Use environment checker to validate upgrade readiness
 
 We recommend that you use the environment checker to validate your system readiness prior to the solution update. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
 Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
 
-The following table contains the validation tests with severity *Critical* that block the upgrade. Any items that block the upgrade must be addressed prior to the solution update.
+The following table contains the validation tests with severity *Critical* that block the upgrade. Any items that block the upgrade must be addressed before you apply the solution upgrade.
 
 | Name                              | Severity |
 |-----------------------------------|----------|
@@ -70,7 +74,7 @@ The following table contains the validation tests with severity *Warning* that s
 
 ### Set up the environment validator
 
-Follow these steps to set up the environment validator:
+Follow these steps to set up the environment validator on a server node of your Azure Stack HCI cluster:
 
 1. Select one server that's the part of the cluster.
 
@@ -128,9 +132,9 @@ Follow these steps to set up the environment validator:
 
 ### Remediation guidance
 
-Each validation check includes remediation guidance with links that help you resolve the potential issues.
+Each validation check includes remediation guidance with links that help you resolve the potential issues. For more information, see [Remediation guidance](../manage/use-environment-checker.md#).
 
-### Install required Windows features
+## Step 2: Install required Windows features
 
 Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the server node into maintenance prior to installing them. Verify that all the active virtual machines have migrated to other cluster members.
 
@@ -218,7 +222,7 @@ enable-windowsoptionalfeature -featurename $featurename -all -online
 } 
 ```
 
-### Ensure that cluster node is up
+## Step 3: Ensure that cluster node is up
 
 Ensure that all the cluster members are up and that the cluster is *Online*. Use the Failover Cluster manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
 
@@ -234,9 +238,11 @@ The team is working on supporting multi room clustering where cluster nodes are 
 
 When running a stretch cluster, you must apply the operating system update, which provides improvements using a new replication engine. We do understand this is a constraint as the Arc solution enablement won't be available for you initially.-->
 
-### Suspend BitLocker
+## Step 4: Suspend BitLocker
 
 If a reboot occurs when applying the solution upgrade, disable BitLocker. If there's a reboot, you would need to enter the BitLocker recovery, which interrupts the upgrade process.
+
+### Suspend BitLocker
 
 To suspend BitLocker, run the following PowerShell command:
 
@@ -244,36 +250,46 @@ To suspend BitLocker, run the following PowerShell command:
 Suspend-Bitlocker -MountPoint "C:" -RebootCount 0 
 ```
 
+### Resume BitLocker
+
 After the upgrade is complete, to resume BitLocker, run the following PowerShell command:
 
 ```powershell
 Resume-Bitlocker -MountPoint "C:" 
 ```
 
-### Enable WDAC policies
+## Step 5: Enable Application Control (WDAC) policies
 
-If your cluster is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you arc enable your cluster, disable the policies. After the cluster is Arc enabled, you can enable WDAC using the new 23H2 WDAC policies.
+If your cluster is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you arc enable your cluster, disable the policies. After the cluster is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
 
 To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
-### Ensure language is English
+## Step 6: Ensure language is English
 
 Only clusters installed using an English language are eligible to apply the solution upgrade. Make sure that your cluster was installed using English.
 
-### Check storage pool space
+For more information, see [Verify OS language for Azure Stack HCI](../index.yml).
 
-Azure Stack HCI, version 23H2 creates a dedicated volume. This volume is dedicated for the new infrastructure capabilities - for example, running the Arc Resource Bridge. The required size for this infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
+## Step 7: Check storage pool space
+
+Azure Stack HCI, version 23H2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Arc Resource Bridge. 
+
+The required size for the infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
+
+### Free up space in storage pool
 
 Shrinking existing volumes isn't supported with storage spaces direct. There are three alternatives to freeing up space in the storage pool:
 
-1. Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new cluster with the default setting.
+- **Option 1**: Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new cluster with the default setting.
 
-1. Back up all the data, re-create the volume with a smaller size, and restore the content.
+- **Option 2**: Back up all the data, re-create the volume with a smaller size, and restore the content.
 
-1. Add more physical drives to expand the pool capacity.
+- **Option 3**: Add more physical drives to expand the pool capacity.
 
    > [!NOTE]
-   > Prior to converting the volume to thin provisioned, shut down all the virtual machines stored on that particular volume.
+   > Before you convert the volumes to thin provisioned, shut down all the virtual machines stored on that particular volume.
+
+### Verify available space
 
 Follow these steps to confirm the storage pool configuration:
 
@@ -341,7 +357,7 @@ Follow these steps to confirm the storage pool configuration:
    | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 36.5 GB | 98.63% |
    | TestVolume2 | Mirror | 0 | OK | Healthy | 750 GB | 28.5 GB | 98.25% |
 
-### Check the storage Volume name
+### Check the storage volume name
 
 Azure Stack HCI, version 23H2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
 
