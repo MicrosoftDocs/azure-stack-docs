@@ -59,6 +59,7 @@ Here's a diagram that illustrates the steps to upgrade your cluster from version
 
 ## Next steps
 
+Choose one of the following options to upgrade your Azure Stack HCI, version 22H2 to Azure Stack HCI, version 23H2:
 - [Use PowerShell to upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS](./upgrade-22h2-to-23h2-powershell.md).
 - [Use Windows Admin Center to upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS](../index.yml).
 - [Use other methods to upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS](./upgrade-22h2-to-23h2-other-methods.md).
