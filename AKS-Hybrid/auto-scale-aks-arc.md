@@ -5,9 +5,9 @@ ms.topic: how-to
 ms.custom: devx-track-azurecli
 author: sethmanheim
 ms.author: sethm
-ms.lastreviewed: 02/28/2024
+ms.date: 08/01/2024
 ms.reviewer: abha
-ms.date: 02/28/2024
+ms.lastreviewed: 08/01/2024
 
 # Intent: As a Kubernetes user, I want to use cluster autoscaling to grow my nodes to keep up with application demand.
 # Keyword: cluster autoscaling Kubernetes
@@ -59,7 +59,7 @@ It takes a few minutes to update the cluster and configure the cluster autoscale
 Disable the cluster autoscaler using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command and the `--disable-cluster-autoscaler` parameter:
 
 ```azurecli-interactive
-az aks update \
+az aksarc update \
   --resource-group myResourceGroup \
   --name my-aks-arc-cluster \
   --disable-cluster-autoscaler
@@ -72,7 +72,7 @@ Nodes aren't removed when the cluster autoscaler is disabled.
 As your application demands change, you might need to adjust the cluster autoscaler node count to scale efficiently. Change the node count using the [`az aksarc update`](/cli/azure/aksarc#az-aksarc-update) command and update the cluster autoscaler using the `--update-cluster-autoscaler` parameter and specifying your updated `--min-count` and `--max-count` for the node.
 
 ```azurecli-interactive
-az aks update \
+az aksarc update \
   --resource-group myResourceGroup \
   --name myAKSCluster \
   --update-cluster-autoscaler \

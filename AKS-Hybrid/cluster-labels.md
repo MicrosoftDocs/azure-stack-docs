@@ -2,10 +2,10 @@
 title: Use cluster labels in AKS enabled by Azure Arc
 description: Learn how to use labels in Kubernetes clusters in AKS enabled by Arc.
 ms.topic: how-to
-ms.date: 05/31/2024
+ms.date: 08/01/2024
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 05/31/2024
+ms.lastreviewed: 08/01/2024
 ms.reviewer: guanghu
 
 ---
