@@ -47,7 +47,9 @@
       - name: Azure CLI
         href: aks-create-clusters-cli.md
       - name: Azure portal
-        href: aks-create-clusters-portal.md   
+        href: aks-create-clusters-portal.md
+      - name: Bicep
+        href: create-clusters-bicep.md   
       - name: Deploy to Azure using a quickstart template
         href: /samples/azure/azure-quickstart-templates/aks-on-ashci
       - name: Azure Resource Manager template
