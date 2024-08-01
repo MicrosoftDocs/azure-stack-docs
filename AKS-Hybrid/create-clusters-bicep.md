@@ -27,16 +27,16 @@ Before you begin, make sure you have the following prerequisites:
 
    - Azure subscription ID: the Azure subscription ID that uses Azure Stack HCI for deployment and registration.
    - Custom location name or ID: the Azure Resource Manager ID of the custom location. The custom location is configured during the Azure Stack HCI cluster deployment. Your infrastructure admin should give you the Resource Manager ID of the custom location. This parameter is required in order to create Kubernetes clusters. You can also get the Resource Manager ID using `az customlocation show --name "<custom location name>" --resource-group <azure resource group> --query "id" -o tsv`, if the infrastructure admin provides a custom location name and resource group name.
-   - Logic network name or ID: the Azure Resource Manager ID of the Azure Stack HCI logical network that was created following these steps. Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
+   - Logical network name or ID: the Azure Resource Manager ID of the Azure Stack HCI logical network that was created following these steps. Your admin should give you the ID of the logical network. This parameter is required in order to create Kubernetes clusters. You can also get the Azure Resource Manager ID using `az stack-hci-vm network lnet show --name "<lnet name>" --resource-group <azure resource group> --query "id" -o tsv` if you know the resource group in which the logical network was created.
 
-1. Make sure you have the latest version of Azure CLI on your development machine. You can also upgrade your Azure CLI version using `az upgrade`.
+1. Make sure you have the [latest version of Azure CLI](/cli/azure/install-azure-cli) on your development machine. You can also upgrade your Azure CLI version using `az upgrade`.
 1. Download and install **kubectl** on your development machine. The Kubernetes command-line tool, **kubectl**, enables you to run commands against Kubernetes clusters. You can use **kubectl** to deploy applications, inspect and manage cluster resources, and view logs.
 
 ## Create an SSH key pair
 
 To create an SSH key pair (same as Azure AKS), use the following procedure:
 
-1. Go to `https://shell.azure.com` to open a Cloud Shell session in your browser.
+1. [Open a Cloud Shell session](https://shell.azure.com) in your browser.
 1. Create an SSH key pair using the `az sshkey create` Azure CLI command or the `ssh-keygen` command:
 
    ```azurecli
@@ -44,7 +44,7 @@ To create an SSH key pair (same as Azure AKS), use the following procedure:
    az sshkey create --name "mySSHKey" --resource-group "myResourceGroup"
    ```
 
-   Or, create an SSH key pair using ssh-keygen:
+   Or, create an SSH key pair using `ssh-keygen`:
 
    ```bash  
    ssh-keygen -t rsa -b 4096
@@ -54,7 +54,7 @@ For more information about creating SSH keys, see [Create and manage SSH keys fo
 
 ## Update and review the Bicep scripts
 
-This section shows the Bicep parameter and template files. They are also available in an [Azure Quickstart template](https://github.com/Azure/azure-quickstart-templates).
+This section shows the Bicep parameter and template files. These files are also available in an [Azure Quickstart template](https://github.com/Azure/azure-quickstart-templates).
 
 ### Bicep parameter file: aksarc.bicepparam
 
@@ -77,7 +77,7 @@ param aksClusterName string
 param location string = 'eastus'
 
 // Default to 1 node CP
-@description('The name of AKS Arc cluster control plane IP, please provide this parameter during deployment')
+@description('The name of AKS Arc cluster control plane IP, provide this parameter during deployment')
 param aksControlPlaneIP string
 param aksControlPlaneNodeSize string = 'Standard_A4_v2'
 param aksControlPlaneNodeCount int = 1
@@ -89,22 +89,22 @@ param aksNodePoolNodeCount int = 1
 @allowed(['Linux', 'Windows'])
 param aksNodePoolOSType string = 'Linux'
 
-@description('SSH public key used for cluster creation, please provide this parameter during deployment')
+@description('SSH public key used for cluster creation, provide this parameter during deployment')
 param sshPublicKey string
 
 // Build LNet ID from LNet name
-@description('The name of LNet resource, please provide this parameter during deployment')
+@description('The name of LNet resource, provide this parameter during deployment')
 param hciLogicalNetworkName string
 resource logicalNetwork 'Microsoft.AzureStackHCI/logicalNetworks@2023-09-01-preview' existing = {
   name: hciLogicalNetworkName
 }
 
 // Build custom location ID from custom location name
-@description('The name of custom location resource, please provide this parameter during deployment')
+@description('The name of custom location resource, provide this parameter during deployment')
 param hciCustomLocationName string
 var customLocationId = resourceId('Microsoft.ExtendedLocation/customLocations', hciCustomLocationName) 
 
-// Create the connected cluster - this is the Arc representation of the AKS cluster, used to create a Managed Identity for the provisioned cluster
+// Create the connected cluster. This is the Arc representation of the AKS cluster, used to create a Managed Identity for the provisioned cluster.
 resource connectedCluster 'Microsoft.Kubernetes/ConnectedClusters@2024-01-01' = {
   location: location
   name: aksClusterName
@@ -120,7 +120,7 @@ resource connectedCluster 'Microsoft.Kubernetes/ConnectedClusters@2024-01-01' = 
   }
 }
 
-// Create the provisioned cluster instance - this is the actual AKS cluster and provisioned on your HCI cluster via the Arc Resource Bridge
+// Create the provisioned cluster instance. This is the actual AKS cluster and provisioned on your HCI cluster via the Arc Resource Bridge.
 resource provisionedClusterInstance 'Microsoft.HybridContainerService/provisionedClusterInstances@2024-01-01' = {
   name: 'default'
   scope: connectedCluster
