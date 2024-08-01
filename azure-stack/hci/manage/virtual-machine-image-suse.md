@@ -45,7 +45,7 @@ After the QCOW2 image is downloaded, use the **QEMU disk image utility for Windo
 
 The QEMU disk image utility for Windows tool is used to convert, create, and consistently check various virtual disk formats. It's compatible with Hyper-V and other solutions and is optimized for Windows Server (x64).
 
-Follow these steps to dowload the tool and convert the QCOW2 image file to VHDX.
+Follow these steps to download the tool and convert the QCOW2 image file to VHDX.
 
 1. Download the [QEMU disk image utility for Windows](https://cloudbase.it/qemu-img-windows/) tool by clicking the **Download binaries** button for file. Alternatively, you can run the following PowerShell command to download the tool:
 
