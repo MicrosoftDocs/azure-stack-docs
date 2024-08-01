@@ -37,7 +37,7 @@ We recommend that you use the environment checker to validate your system readin
 
 Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
 
-### Table of blocking validation tests for the upgrade
+### Table: Blocking validation tests for upgrade
 
 The following table contains the validation tests with severity *Critical* that block the upgrade. Any items that block the upgrade must be addressed before you apply the solution upgrade.
 
@@ -60,7 +60,7 @@ The following table contains the validation tests with severity *Critical* that 
 | Storage volume                    | Critical |
 | Windows Defender for Application Control (WDAC) enablement      | Critical |
 
-### Table of non-blocking validation tests for the upgrade
+### Table: Non-blocking validation tests for upgrade
 
 The following table contains the validation tests with severity *Warning* that should be addressed after the upgrade to take advantage of the new capabilities introduced with Azure Stack HCI, version 23H2.
 
@@ -107,9 +107,12 @@ Follow these steps to set up the environment validator on a server node of your 
    Invoke-AzStackHciUpgradeValidation -PsSession $PsSession
    ```
 
-   Here's a sample output:
+  <details>
+  <summary>Expand this section to see an example output.</summary>
 
    :::image type="content" source="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png" alt-text="Diagram that illustrates sample output from the 23H2 upgrade environment validator." lightbox="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png":::
+
+  </details>
 
 1. (Optional) Use the `PassThru` flag to get the raw output that allows you to filter the output. Run the following command:
 
@@ -118,7 +121,8 @@ Follow these steps to set up the environment validator on a server node of your 
    $result | ? status -eq "failure" |ft displayname,status,severity
    ```
 
-   Here's a sample output:
+  <details>
+  <summary>Expand this section to see an example output.</summary>
 
    | DisplayName                                         | Status   | Severity |
    |-----------------------------------------------------|----------|----------|
@@ -133,6 +137,8 @@ Follow these steps to set up the environment validator on a server node of your 
    | Test TMP property `TmpActivated` is True 22H2N1     | Failure  | Warning  |
    | Test TMP property `AutoProvisioning` is Enabled 22H2N1 | Failure  | Warning  |
    | Test TMP property `TmpEnabled` is True 22H2N1       | Failure  | Warning  |
+
+  </details>
 
 ### Remediation guidance
 
@@ -297,11 +303,14 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false
    ```
 
-   Expand to view the sample output:
+  <details>
+  <summary>Expand this section to see an example output.</summary>
 
    | FriendlyName | OperationalStatus | HealthStatus | IsPrimordial | IsReadOnly | Size  | AllocatedSize |
    |--------------|-------------------|--------------|--------------|------------|-------|---------------|
    | S2D on venom  | OK                | Healthy      | False        | False       | 2 TB  | 1.53 TB        |
+
+  </details>
 
 1. To list all volumes in the storage pool, run the following PowerShell command:
 
@@ -309,13 +318,16 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false|Get-VirtualDisk
    ```
 
-   Expand to view the sample output:
+  <details>
+  <summary>Expand this section to see an example output.</summary>
 
    | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
    |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
    |ClusterPerformanceHistory | Mirror | 1 | OK | Healthy | 21 GB | 43 GB | 48.84% |
    | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 1 TB | 99.95% |
    | TestVolume2 | Mirror | 0 | OK | Healthy | 500 GB | 55.5 GB | 99.90% |
+
+  </details>
 
 1. To confirm that a fixed volume is provisioned, run the following PowerShell command:
 
@@ -324,9 +336,12 @@ Follow these steps to confirm the storage pool configuration:
    $volume.ProvisioningType
    ```
 
-   Expand to view the sample output:
+  <details>
+  <summary>Expand this section to see an example output.</summary>
 
    `Fixed`
+
+  </details>
 
 1. To convert the volume to thin provisioned, run the following PowerShell command:
 
@@ -347,13 +362,16 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false|Get-VirtualDisk
    ```
 
-   Expand to view the sample output:
+  <details>
+  <summary>Expand this section to see an example output.</summary>
 
     | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
    |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
    |ClusterPerformanceHistory | Mirror | 1 | OK | Healthy | 21 GB | 43 GB | 48.84% |
    | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 36.5 GB | 98.63% |
    | TestVolume2 | Mirror | 0 | OK | Healthy | 750 GB | 28.5 GB | 98.25% |
+
+  </details>
 
 ### Check the storage volume name
 
