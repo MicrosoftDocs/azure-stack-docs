@@ -1,6 +1,6 @@
 ---
-title:  Enable Network ATC on existing Azure Stack HCI cluster
-description: This article describes how to enable Network ATC on existing Azure Stack HCI cluster
+title:  Enable Network ATC on existing Azure Stack HCI clusters
+description: This article describes how to enable Network ATC on existing Azure Stack HCI clusters
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
