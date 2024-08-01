@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 07/18/2024
+ms.date: 08/01/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use SUSE Linux to create images on Azure Stack HCI.
 ---
 
