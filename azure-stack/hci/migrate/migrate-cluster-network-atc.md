@@ -1,20 +1,20 @@
 ---
-title:  Migrate an existing Azure Stack HCI cluster to Network ATC
-description: This article describes how to migrate an existing Azure Stack HCI, version 23H2 cluster to Network ATC
+title:  Enable Network ATC on existing Azure Stack HCI cluster
+description: This article describes how to enable Network ATC on existing Azure Stack HCI cluster
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
 ms.lastreviewed: 07/24/2024
 ms.date: 07/24/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully migrate their existing Azure Stack HCI clusters to Network ATC.
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully enable Network ATC on their existing Azure Stack HCI clusters.
 ---
 
-# Migrate an existing Azure Stack HCI cluster to Network ATC
+# Enable Network ATC on existing Azure Stack HCI clusters
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides information on how to migrate your existing Azure Stack HCI cluster to Network ATC so that you can take advantage of several benefits. We also describe how to utilize this configuration across all new deployments.
+This article provides information on how to enable Network ATC on your existing Azure Stack HCI clusters so that you can take advantage of several benefits. We also describe how to utilize this configuration across all new deployments.
 
 ## About Network ATC
 
@@ -22,21 +22,21 @@ Network ATC stores information in the cluster database, which is then replicated
 
 ## Benefits
 
-Since the release of Azure Stack HCI, version 21H2, customers utilize Network ATC to:
+Here are some of the benefits of Network ATC:
 
-- Reduce host networking deployment time, complexity, and errors.
-- Deploy the latest Microsoft validated and supported best practices.
-- Ensure configuration consistency across the cluster.
-- Eliminate configuration drift.
+- Reduces host networking deployment time, complexity, and errors.
+- Deploys the latest Microsoft validated and supported best practices.
+- Ensures configuration consistency across the cluster.
+- Eliminates configuration drift.
 
 ## Before you begin
 
-Before you begin the migration process of your existing Azure Stack HCI cluster to Network ATC, make sure:
+Before you begin the process of enabling Network ATC on your existing Azure Stack HCI cluster, make sure:
 
 - You're on a host without a running VM on it.
 - You're on a cluster with running workloads on the node.
 
-## Steps to Migrate to Network ATC
+## Steps to enable Network ATC
 
 > [!IMPORTANT]
 > If you don't have running workloads on your nodes, just add your intent command as if this was a brand-new cluster. You don't need to continue with the next set of instructions.
