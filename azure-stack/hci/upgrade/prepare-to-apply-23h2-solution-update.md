@@ -390,4 +390,4 @@ Make sure to verify that there are no volumes that exist with the name *Infrastr
 
 ## Next steps
 
-- [Learn how to apply the solution upgrade.](../index.yml)
+- [Learn how to apply the solution upgrade.](./install-solution-upgrade.md)
