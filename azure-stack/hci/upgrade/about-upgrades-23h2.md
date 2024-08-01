@@ -2,7 +2,7 @@
 title: Upgrade existing Azure Stack HCI version 22H2 to version 23H2 cluster
 description: Learn about how to upgrade from Azure Stack HCI, version 22H2 cluster to Azure Stack HCI, version 23H2.
 author: alkohli
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 07/31/2024
 ms.author: alkohli
 ms.reviewer: alkohli
