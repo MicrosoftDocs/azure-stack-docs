@@ -75,7 +75,19 @@ Follow these steps in to change the deployment service principal:
 1. Locate the service principal that you used when deploying the Azure Stack HCI cluster. Create a new client secret for the service principal.
 1. Make a note of the `appID` for the existing service principal and the new `<client secret>`.
 1. Sign on to one of your Azure Stack HCI server nodes using the deployment user credentials.
-1. Run the following PowerShell commands:
+1. Sign in to Azure. Run the following PowerShell command:
+
+    ```powershell
+    Connect-AzAccount
+    ```
+
+1. Set the subscription context. Run the following PowerShell command:
+
+    ```powershell
+    Set-AzContext -Subscription <Subscription ID>
+    ```
+
+1. Update the service principal name. Run the following PowerShell commands:
 
     ```powershell
     cd "C:\Program Files\WindowsPowerShell\Modules\Microsoft.AS.ArcIntegration"
