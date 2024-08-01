@@ -3,7 +3,7 @@ title:  July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2
 description: Read about the July 2024 security update (KB 5040438) for Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/11/2024
+ms.date: 07/30/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -31,30 +31,31 @@ This security update includes quality improvements. The following key issues and
 
 - **Windows Presentation Foundation (WPF)**. A malformed Human Interface Device (HID) descriptor causes WPF to stop responding.
 
-- **Handwriting panels and touch keyboards**. They do not appear when you use the tablet pen.
+- **Handwriting panels and touch keyboards**. They don't appear when you use the tablet pen.
 
-- ***HKLM\Software\Microsoft\Windows\DWM ForceDisableModeChangeAnimation (REG_DWORD)***. This is a new registry key. When you set its value to `1` (or a non-zero number), it turns off the display mode change animation. If the value is `0` or the key does not exist, the animation is set to on.
+- ***HKLM\Software\Microsoft\Windows\DWM ForceDisableModeChangeAnimation (REG_DWORD)***. This is a new registry key. When you set its value to `1` (or a non-zero number), it turns off the display mode change animation. If the value is `0` or the key doesn't exist, the animation is set to on.
 
 - **Remote Desktop MultiPoint Server**. A race condition causes the service to stop responding.
 
-- **Windows Local Administrator Password Solution (LAPS)**. Post Authentication Actions (PAA) do not occur at the end of the grace period. Instead, they occur at restart.
+- **Windows Local Administrator Password Solution (LAPS)**. Post Authentication Actions (PAA) don't occur at the end of the grace period. Instead, they occur at restart.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://portal.msrc.microsoft.com/security-guidance) and the [July 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Jul).
 
 ## Known issues
 
-Microsoft isn't currently aware of any issues with this update.
+### BitLocker recovery key issue
+
+After you apply the July security updates, devices enabled with Secure Boot and BitLocker protection might enter BitLocker recovery mode. This might happen after one or two reboots.
 
 ## To install this update
 
 Microsoft now combines the latest servicing stack update (SSU) for your operating system with the latest cumulative update (LCU). For general information about SSUs, see [Servicing stack updates](/windows/deployment/update/servicing-stack-updates) and [Servicing Stack Updates (SSU): Frequently Asked Questions](https://support.microsoft.com/topic/servicing-stack-updates-ssu-frequently-asked-questions-06b62771-1cb0-368c-09cf-87c4efc4f2fe).
 
-
 To install the LCU on your Azure Stack HCI cluster, see [Update Azure Stack HCI clusters](../update/about-updates-23h2.md).
 
 ## File list
 
-For a list of the files that are provided in this update, download the file information for [Cumulative update 5040438](https://go.microsoft.com/fwlink/?linkid=).
+For a list of the files that are provided in this update, download the file information for [Cumulative update 5040438](https://go.microsoft.com/fwlink/?linkid=2278952).
 
 ## Next steps
 
