@@ -241,7 +241,9 @@ items:
           - name: Using CentOS VM image 
             href: manage/virtual-machine-image-centos.md
           - name: Using Red Hat Enterprise VM image
-            href: manage/virtual-machine-image-red-hat-enterprise.md 
+            href: manage/virtual-machine-image-red-hat-enterprise.md
+          - name: Using SUSE VM image
+            href: manage/virtual-machine-image-suse.md
       - name: 3. Create logical networks
         href: manage/create-logical-networks.md
       - name: 4. Create network interfaces
