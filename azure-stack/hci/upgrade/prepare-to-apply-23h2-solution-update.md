@@ -412,7 +412,17 @@ Make sure that the cluster functional level and storage pool version are up to d
    New-AzConnectedMachineExtension -Name "AzureEdgeLifecycleManager"  -ResourceGroupName $ResourceGroup -MachineName $env:COMPUTERNAME -Location $Region -Publisher "Microsoft.AzureStack.Orchestration" -ExtensionType "LcmController"  -NoWait
    ```
 
-You are now ready to apply the solution upgrade.
+## Remediation 10: Check the MOC install state
+
+If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2 and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
+
+For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
+
+## Remediation 11: Check the AKS HCI install state
+
+If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS hybrid before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2 and version 23H2.
+
+For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 
 ## Next steps
 
