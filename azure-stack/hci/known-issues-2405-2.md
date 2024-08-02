@@ -40,6 +40,7 @@ Here are the fixed issues in this release:
 | Updates <!--28351655-->|In this release, an issue that caused an inability to view or start new updates due to the update service crashing on servers in a bad state, was fixed.    ||
 | Updates <!--28351665-->|In this release, the update service was improved to prevent flooding of actions on the cluster.   ||
 | Updates <!--28509688-->|In this release, a health check was added to prevent updates when adding or removing servers fails.   ||
+| Arc VM management <!--10325529-->|In earlier releases, any power state change operation of a VM such as start stop, save, and pause, would initially return the state of the VM as running and eventually display the correct state after a refresh 30+ seconds later. In this release, the power state change operation only returns after the VM state is changed to the expected one.   ||
 
 ## Known issues in this release
 

@@ -27,13 +27,19 @@ The 2405 release train includes the following releases:
 
 This is primarily a bug fix release with a few improvements.
 
+- Arc VM management improvements: Starting this release, followiing improvements were made to the Arc VM management experience:
+
+  - You can now view and delete VM network interfaces from the Azure portal.
+  - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.
+  - Deletion of logical networks is blocked if connected devices are present. When you try to delete a logical network from the Azure portal that has connected devices, you'll see a warning message: *Cannot delete logical network because it is currently in use*. Delete all the resources under **Connected Devices** setting before you delete the logical network.
+  
 - **Update health checks**: Starting this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on servers. Also, multiple issues for health checks related to Azure Update Manager and Solution Builder Extension Update were fixed.
 
-    For more information, see [Fixed issues in 2405.2](./known-issues-2405-2.md#fixed-issues).
+  For more information, see [Fixed issues in 2405.2](./known-issues-2405-2.md#fixed-issues).
 
 - **Azure Stack HCI OEM license**: Starting this release, we are introducing the Azure Stack HCI OEM license designed for Azure Stack HCI hardware including the Azure Stack HCI Premier Solutions, Integrated systems, and Validated Nodes. This license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure.
 
-    <!--For more information, see [Azure Stack HCI OEM license overview](../azure-stack-hci-oem-license.md) and [Azure Stack HCI OEM license and billing FAQ](../azure-stack-hci-license-billing.yml).-->
+  For more information, see [Azure Stack HCI OEM license overview](./azure-stack-hci-oem-license.md) and [Azure Stack HCI OEM license and billing FAQ](./azure-stack-hci-license-billing.yml).
 
 ## Features and improvements in 2405.1
 
