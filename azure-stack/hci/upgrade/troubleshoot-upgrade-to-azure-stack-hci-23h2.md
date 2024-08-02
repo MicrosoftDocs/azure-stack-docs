@@ -26,7 +26,7 @@ PS C:\> Get-AzureStackHci
 
 Here's a sample output:
 
-```powershell
+```output
 ClusterStatus : Clustered
 RegistrationStatus : Registered
 RegistrationDate : 8/1/2024 9:15:12 AM
@@ -40,7 +40,7 @@ DiagnosticLevel : Basic
 Region :
 ```
 
-If `RegistrationStatus` is **Not registered**, follow troubleshooting steps in [Troubleshoot Azure Stack HCI registration](./troubleshoot-hci-registration.md).
+If `RegistrationStatus` is **Not registered**, follow troubleshooting steps in [Troubleshoot Azure Stack HCI registration](../deploy/troubleshoot-hci-registration.md).
 
 ### Network ATC intent health state
 
@@ -52,7 +52,7 @@ PS C:\> Get-netintentstatus
 
 Here's a sample output:
 
-```powershell
+```output
 IntentName : converged
 Host : win-llbl239crrl
 IsComputeIntentSet : True
@@ -69,7 +69,7 @@ ConfigurationStatus : Success
 ProvisioningStatus : Completed
 ```
 
-```powershell
+```output
 IntentName : converged
 Host : win-u7gk840mvm0
 IsComputeIntentSet : True
