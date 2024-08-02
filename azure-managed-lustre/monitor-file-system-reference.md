@@ -27,7 +27,15 @@ The following table lists the metrics available for the Microsoft.StorageCache/a
 
 [!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
 
-[!INCLUDE [horz-monitor-ref-no-metrics-dimensions](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-no-metrics-dimensions.md)]
+[!INCLUDE [horz-monitor-ref-metrics-dimensions](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions.md)]
+
+### Dimensions specific to Azure Managed Lustre
+
+| Dimension name | Description |
+| --- | --- |
+| `ostnum` | Object Storage Target (OST) index number |
+| `mdtnum` | Metadata Target (MDT) index number |
+| `operation` | Type of operation performed |
 
 ### Supported resource logs for Microsoft.StorageCache/amlFilesystems
 
