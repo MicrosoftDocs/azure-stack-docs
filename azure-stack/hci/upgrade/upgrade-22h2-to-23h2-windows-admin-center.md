@@ -118,31 +118,6 @@ Follow these steps to install updates:
     - In Windows Admin Center, under **All connections**, select the first server in your cluster and then select **Connect**.
     - On the **Overview** page, select **Disable CredSSP**, and then, on the **Disable CredSSP** pop-up window, select **Yes**.
 
-## Step 2: Install feature updates using Windows Admin Center
-
-Microsoft recommends installing new feature updates as soon as possible, using the following steps.
-
-1. In Windows Admin Center, select **Updates** from the **Tools** pane at the left. Any new feature updates will be displayed.
-
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/feature-updates.png" alt-text="Feature updates will be displayed" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/feature-updates.png":::
-
-2. Select **Install**. A readiness check will be displayed. If any of the condition checks fail, resolve them before you proceed.
-
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/readiness-check.png" alt-text="A readiness check will be displayed" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/readiness-check.png":::
-
-3. When the readiness check is complete, you're ready to install the updates. The optional **Update the cluster functional level to enable new features** can stay unchecked. Review the listed updates and select **Install** to start the update.
-
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/install-updates.png" alt-text="Review the updates and install them" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/install-updates.png":::
-
-4. You'll be able to see the installation progress. Because you're updating the operating system with new features, the updates may take a while to complete. You may be asked to supply your login credentials to Windows Admin Center multiple times.
-
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/updates-in-progress.png" alt-text="You'll be able to see the installation progress as updates are installed" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/updates-in-progress.png":::
-
-   > [!NOTE]
-   > If the updates appear to fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicates **couldn't get status** during the updating run, try waiting a few minutes and refreshing your browser. You can also use `Get-CauRun` to [check the status of the updating run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
-
-5. When the feature updates are complete, check if any further updates are available and install them.
-
 You're now ready to perform the post-upgrade steps for your cluster.
 
 ## Next steps

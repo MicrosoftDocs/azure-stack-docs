@@ -34,27 +34,9 @@ Before you install the solution upgrade, make sure that you:
 - Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services.
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
-### Confirm the latest Azure Arc LCM extension is installed
-
-1. Review the extension status using the Azure Arc resource view.
-
-    :::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-azureedgelcm-extension.png" alt-text="Screenshot of Azure Arc extensions list view." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-azureedgelcm-extension.png":::
-
-   If an update is available, select the the **AzureEdgeLifecycleManager** extension and then select **Update**.
-
-1. If the **AzureEdgeLifecycleManager** extension is not listed, install it manually using the following steps on each node:
-
-   ```powershell
-   $ResourceGroup = "YourRG"
-   $Region= "eastus" #replace with your region
-   $tenantid =”mytenantid’
-   $subscriptionid =”MysubscriptionID”
-   Login-AzAccount –UseDeviceAuthentication –tenantid  $tenantid –subscriptionid $subscriptionId
-   Install-module az.connectedmachine
-   New-AzConnectedMachineExtension -Name "AzureEdgeLifecycleManager"  -ResourceGroupName $ResourceGroup -MachineName $env:COMPUTERNAME -Location $Region -Publisher "Microsoft.AzureStack.Orchestration" -ExtensionType "LcmController"  -NoWait
-   ```
-
 ## Install the solution upgrade via Azure portal
+
+### Basics tab
 
 On the **Basics** tab, specify the following information:
 
@@ -75,7 +57,7 @@ On the **Basics** tab, specify the following information:
 
    :::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-basics-tab.png" alt-text="Screenshot of Upgrade Azure Stack HCI basics tab." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-basics-tab.png":::
 
-## Validation
+### Validation tab
 
 On the **Validation** tab, the operation will automatically create Azure resources like the cluster and the service principal, and also configure permissions and the audit login.
 
@@ -83,7 +65,7 @@ On the **Validation** tab, the operation will automatically create Azure resourc
 
    :::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-validation-tab.png" alt-text="Screenshot of Upgrade Azure Stack HCI validation tab." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-validation-tab.png":::
 
-## Review + Create
+### Review + Create tab
 
 Review the summary for the solution upgrade and then select **Review + Create**.
 
@@ -93,7 +75,7 @@ Review the summary for the solution upgrade and then select **Review + Create**.
 
 To monitor upgrade progress, select **Settings** > **Deployments**.
 
+:::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-upgrade-progress.png" alt-text="Screenshot of Upgrade Azure Stack HCI upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-upgrade-progress.png":::
+
 > [!NOTE]
 > If the upgrade fails, restart the upgrade operation to try again.
-
-:::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-upgrade-progress.png" alt-text="Screenshot of Upgrade Azure Stack HCI upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-upgrade-progress.png":::

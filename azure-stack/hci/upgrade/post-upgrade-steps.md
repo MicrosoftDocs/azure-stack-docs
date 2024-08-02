@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Perform the post-upgrade steps on your Azure Stack HCI via PowerShell
+# Perform the post operating system upgrade steps on your Azure Stack HCI via PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
