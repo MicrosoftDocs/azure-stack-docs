@@ -37,57 +37,25 @@ For the available resource log categories, their associated Log Analytics tables
 
 This section shows queries that you can enter in the **Log search** bar to help you monitor your Managed Lustre file system.
 
-- To list the 10 most common errors over the last three days.
+- **Aggregate operations query**: List all the UnsuspendAmlFilesystem requests for a given time duration.
 
     ```kusto
-    StorageBlobLogs
-    | where TimeGenerated > ago(3d) and StatusText !contains "Success"
-    | summarize count() by StatusText
-    | top 10 by count_ desc
+    AFSAuditLogs
+    // The OperationName below can be replaced by obtain other operations such as "RebootAmlFilesystemNode" or "AmlFSRefreshHSMToken".
+    | where OperationName has "UnsuspendAmlFilesystem"
+    | project TimeGenerated, _ResourceId, ActivityId, ResultSignature, ResultDescription, Location
+    | sort by TimeGenerated asc
+    | limit 100
     ```
 
-- To list the top 10 operations that caused the most errors over the last three days.
+- **Unauthorized requests query**: Count of failed AMLFilesystems requests due to unauthorized access.
 
     ```kusto
-    StorageBlobLogs
-    | where TimeGenerated > ago(3d) and StatusText !contains "Success"
-    | summarize count() by OperationName
-    | top 10 by count_ desc
-    ```
-
-- To list the top 10 operations with the longest end-to-end latency over the last three days.
-
-    ```kusto
-    StorageBlobLogs
-    | where TimeGenerated > ago(3d)
-    | top 10 by DurationMs desc
-    | project TimeGenerated, OperationName, DurationMs, ServerLatencyMs, ClientLatencyMs = DurationMs - ServerLatencyMs
-    ```
-
-- To list all operations that caused server-side throttling errors over the last three days.
-
-    ```kusto
-    StorageBlobLogs
-    | where TimeGenerated > ago(3d) and StatusText contains "ServerBusy"
-    | project TimeGenerated, OperationName, StatusCode, StatusText
-    ```
-
-- To list all requests with anonymous access over the last three days.
-
-    ```kusto
-    StorageBlobLogs
-    | where TimeGenerated > ago(3d) and AuthenticationType == "Anonymous"
-    | project TimeGenerated, OperationName, AuthenticationType, Uri
-    ```
-
-- To create a pie chart of operations used over the last three days.
-
-    ```kusto
-    StorageBlobLogs
-    | where TimeGenerated > ago(3d)
-    | summarize count() by OperationName
-    | sort by count_ desc
-    | render piechart
+    AFSAuditLogs
+    // 401 below could be replaced by other result signatures to obtain different operation results.
+    // For example, 'ResultSignature == 202' to obtain accepted requests.
+    | where ResultSignature == 401
+    | summarize count() by _ResourceId, OperationName
     ```
 
 [!INCLUDE [horz-monitor-alerts](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-alerts.md)]
