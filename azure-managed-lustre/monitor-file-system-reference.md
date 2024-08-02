@@ -23,7 +23,7 @@ The following table lists the metrics available for the Microsoft.StorageCache/a
 
 [!INCLUDE [horz-monitor-ref-metrics-tableheader](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-tableheader.md)]
 
-[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/azure-reference-other-repo/azure-monitor-ref/supported-metrics/includes/microsoft-storagecache-amlfilesystems-metrics-include.md)]
+[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/../azure-reference-other-repo/azure-monitor-ref/supported-metrics/includes/microsoft-storagecache-amlfilesystems-metrics-include.md)]
 
 [!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
 
@@ -31,7 +31,7 @@ The following table lists the metrics available for the Microsoft.StorageCache/a
 
 ### Supported resource logs for Microsoft.StorageCache/amlFilesystems
 
-[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/azure-reference-other-repo/azure-monitor-ref/supported-logs/includes/microsoft-storagecache-amlfilesystems-logs-include.md)]
+[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/../azure-reference-other-repo/azure-monitor-ref/supported-logs/includes/microsoft-storagecache-amlfilesystems-logs-include.md)]
 
 ### Azure Monitor Logs tables
 

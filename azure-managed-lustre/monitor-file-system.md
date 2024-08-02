@@ -25,7 +25,7 @@ For a list of available metrics for Azure Managed Lustre, see [Azure Managed Lus
 
 [!INCLUDE [horz-monitor-resource-logs](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-resource-logs.md)]
 
-For the available resource log categories, their associated Log Analytics tables, and the log schemas for Azure Managed Lustre, see [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md#resource-logs).
+For the available resource log categories, their associated Log Analytics tables, and the log schemas for Azure Managed Lustre, see [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md#supported-resource-logs-for-microsoftstoragecacheamlfilesystems).
 
 [!INCLUDE [horz-monitor-activity-log](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-activity-log.md)]
 
@@ -35,7 +35,7 @@ For the available resource log categories, their associated Log Analytics tables
 
 [!INCLUDE [horz-monitor-kusto-queries](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-kusto-queries.md)]
 
-Here are some queries that you can enter in the **Log search** bar to help you monitor your Managed Lustre. These queries work with the [new language](../../azure-monitor/logs/log-query-overview.md).
+This section shows queries that you can enter in the **Log search** bar to help you monitor your Managed Lustre file system.
 
 - To list the 10 most common errors over the last three days.
 
