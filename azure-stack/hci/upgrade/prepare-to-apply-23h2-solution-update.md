@@ -9,31 +9,31 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Prepare to apply solution upgrade on Azure Stack HCI, version 23H2
+# Validate solution upgrade readiness for your Azure Stack HCI
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to prepare your Azure Stack HCI solution upgrade after the Operating System (OS) was updated from version 22H2 to version 23H2.
+This article describes how to assess the upgrade readiness of your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 
 The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
 
-1. Upgrade the operating system.
-1. Prepare for the solution upgrade.
+1. Upgrade the operating system ot version 23H2.
+1. Validate solution upgrade readiness for version 23H2.
 1. Apply the solution upgrade.
 
-This article only covers the second step, which is to prepare for the solution upgrade.
+This article only covers the second step, which is to assess the solution upgrade readiness.
 
-## Prepare for the solution upgrade
+## Assess solution upgrade readiness
 
 This *optional* but *recommended* step helps you assess the readiness of your Azure Stack HCI cluster for the solution upgrade. The following steps help you assess the upgrade readiness:
 
-- Install and use environment checker to verify that Network ATC is installed and enabled on the node. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
+- Install and use the Environment Checker to verify that Network ATC is installed and enabled on the node. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
 - Ensure that sufficient storage space is available for infrastructure volume.
 - Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
 
-## Step 1: Use environment checker to validate upgrade readiness
+## Use Environment Checker to validate upgrade readiness
 
-We recommend that you use the environment checker to validate your system readiness before you upgrade the solution. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
+We recommend that you use the Environment Checker to validate your system readiness before you upgrade the solution. For more information, see [Assess environment readiness with Environment Checker](../manage/use-environment-checker.md). A report is generated with potential findings that require corrective actions to be ready for the solution update.
 
 Some of the actions require server reboots. The information from the validation report allows you to plan maintenance windows ahead of time to be ready. The same checks are executed during the solution upgrade to ensure your system meets the requirements.
 
@@ -43,14 +43,14 @@ The following table contains the validation tests with severity *Critical* that 
 
 | Name                              | Severity |
 |-----------------------------------|----------|
-| Windows OS is 23H2           | Critical |
+| Windows OS is 23H2                | Critical |
 | AKS HCI install state             | Critical |
 | Supported cloud type              | Critical |
 | BitLocker suspension              | Critical |
 | Cluster exists                    | Critical |
 | All nodes in same cluster         | Critical |
 | Cluster node is up                | Critical |
-| Stretched cluster <!--ASK-->                | Critical |
+| Stretched cluster <!--ASK-->      | Critical |
 | Language is English               | Critical |
 | Microsoft on-premises cloud (MOC) install state  | Critical |
 | MOC services running              | Critical |
@@ -76,15 +76,15 @@ The following table contains the validation tests with severity *Warning* that s
 | TPM Property `LockedOut` is False              | Warning  |
 | TPM Property `TpmEnabled` is True              | Warning  |
 
-### Set up the environment validator
+### Set up the Environment Checker
 
-Follow these steps to set up the environment validator on a server node of your Azure Stack HCI cluster:
+Follow these steps to set up the Environment Checker on a server node of your Azure Stack HCI cluster:
 
 1. Select one server that's the part of the cluster.
 
 1. Sign in to the server using local administrative credentials.
 
-1. Install the environment checker on the server. Run the following PowerShell command from the PSGallery:
+1. Install the Environment Checker on the server. Run the following PowerShell command from the PSGallery:
 
    ```powershell
    Install-Module -Name AzStackHci.EnvironmentChecker -allowclobber
@@ -92,7 +92,7 @@ Follow these steps to set up the environment validator on a server node of your 
 
 ### Run the validator
 
-1. Sign in to the server where you installed the environment checker using local administrative credentials.
+1. Sign in to the server where you installed the Environment Checker using local administrative credentials.
 
 1. To run the validation locally on the server, run the following PowerShell command:
 
@@ -140,11 +140,11 @@ Follow these steps to set up the environment validator on a server node of your 
 
    </details>
 
-### Remediation guidance
+## Remediation guidance
 
-Each validation check includes remediation guidance with links that help you resolve the potential issues. For more information, see [Remediation guidance](../manage/use-environment-checker.md#).
+Each validation check of Environment Checker includes remediation guidance with links that help you resolve the potential issues. For more information, see [Remediation guidance](../manage/use-environment-checker.md#).
 
-## Step 2: Install required Windows features
+## Remediation 1: Install required and optional Windows features
 
 Azure Stack HCI, version 23H2 requires a set of Windows roles and features to be installed. Some features would require a restart after the installation. Hence, it's important that you put the server node into maintenance mode before you install the roles and features. Verify that all the active virtual machines have migrated to other cluster members.
 
@@ -232,7 +232,7 @@ enable-windowsoptionalfeature -featurename $featurename -all -online
 } 
 ```
 
-## Step 3: Ensure that cluster node is up
+## Remediation 2: Ensure that cluster node is up
 
 Ensure that all the cluster members are up and that the cluster is *Online*. Use the Failover Cluster manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
 
@@ -242,7 +242,7 @@ To verify all members of the cluster are online, run the following PowerShell co
 Get-CluterNode -cluster "mycluster" 
 ```
 
-## Step 4: Suspend BitLocker
+## Remediation 3: Suspend BitLocker
 
 If a reboot occurs when applying the solution upgrade, disable BitLocker. If there's a reboot, you would need to enter the BitLocker recovery, which interrupts the upgrade process.
 
@@ -262,21 +262,21 @@ After the upgrade is complete, to resume BitLocker, run the following PowerShell
 Resume-Bitlocker -MountPoint "C:" 
 ```
 
-## Step 5: Enable Application Control (WDAC) policies
+## Remediation 4: Enable Application Control (WDAC) policies
 
 If your cluster is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you arc enable your cluster, disable the policies. After the cluster is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
 
 To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
-## Step 6: Ensure language is English
+## Remediation 5: Ensure language is English
 
 Only clusters installed using an English language are eligible to apply the solution upgrade. Make sure that your cluster was installed using English.
 
 For more information, see [Verify OS language for Azure Stack HCI](../index.yml).
 
-## Step 7: Check storage pool space
+## Remediation 6: Check storage pool space
 
-Azure Stack HCI, version 23H2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Arc Resource Bridge. 
+Azure Stack HCI, version 23H2 creates a dedicated volume. This volume is used solely for the new infrastructure capabilities - for example, to run the Arc Resource Bridge.
 
 The required size for the infrastructure volume is 250 GB. Ensure that the storage pool has enough space to accommodate the new volume.
 
@@ -318,8 +318,8 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false|Get-VirtualDisk
    ```
 
-  <details>
-  <summary>Expand this section to see an example output.</summary>
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
    | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
    |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
@@ -327,7 +327,7 @@ Follow these steps to confirm the storage pool configuration:
    | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 1 TB | 99.95% |
    | TestVolume2 | Mirror | 0 | OK | Healthy | 500 GB | 55.5 GB | 99.90% |
 
-  </details>
+   </details>
 
 1. To confirm that a fixed volume is provisioned, run the following PowerShell command:
 
@@ -373,7 +373,7 @@ Follow these steps to confirm the storage pool configuration:
 
    </details>
 
-### Check the storage volume name
+## Remediation 7: Check the storage volume name
 
 Azure Stack HCI, version 23H2 deployment creates a dedicated volume *Infrastructure_1* in the existing storage pool. This volume is dedicated for the new infrastructure capabilities.
 
@@ -387,6 +387,32 @@ Make sure to verify that there are no volumes that exist with the name *Infrastr
    ```powershell
    Set-VirtualDisk -FriendlyName Infrastructure_1 -NewFriendlyName NewName
    ```
+
+## Remediation 8: Check the cluster functional level and storage pool version
+
+Make sure that the cluster functional level and storage pool version are up to date. For more information, see [Update the cluster functional level and storage pool version](./post-upgrade-steps.md#step-3-perform-the-post-upgrade-steps).
+
+## Remediation 9: Check the Azure Arc Lifecycle extension
+
+1. Review the extension status using the Azure Arc resource view.
+
+    :::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-azureedgelcm-extension.png" alt-text="Screenshot of Azure Arc extensions list view." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-azureedgelcm-extension.png":::
+
+   If an update is available, select the **AzureEdgeLifecycleManager** extension and then select **Update**.
+
+1. If the **AzureEdgeLifecycleManager** extension is not listed, install it manually using the following steps on each node:
+
+   ```powershell
+   $ResourceGroup = "Your Resource Ggroup Name"
+   $Region = "eastus" #replace with your region
+   $tenantid = "Your tenant ID"
+   $SubscriptionId = "Your Subscription ID"
+   Login-AzAccount –UseDeviceAuthentication –tenantid  $tenantid –subscriptionid $SubscriptionId
+   Install-module az.connectedmachine
+   New-AzConnectedMachineExtension -Name "AzureEdgeLifecycleManager"  -ResourceGroupName $ResourceGroup -MachineName $env:COMPUTERNAME -Location $Region -Publisher "Microsoft.AzureStack.Orchestration" -ExtensionType "LcmController"  -NoWait
+   ```
+
+You are now ready to apply the solution upgrade.
 
 ## Next steps
 
