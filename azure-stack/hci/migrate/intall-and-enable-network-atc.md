@@ -1,20 +1,20 @@
 ---
-title:  Install and enable Network ATC on an existing Azure Stack HCI cluster
-description: This article describes how to install and enable Network ATC on an existing Azure Stack HCI cluster
+title:  Install and enable Network ATC on an existing Azure Stack HCI, version 22H2 cluster
+description: Learn how to install and enable Network ATC on an existing Azure Stack HCI, version 22H2 cluster
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
 ms.lastreviewed: 08/02/2024
 ms.date: 08/02/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Stack HCI cluster.
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Stack HCI, version 22H2 cluster.
 ---
 
-# Install and enable Network ATC on existing Azure Stack HCI clusters
+# Install and enable Network ATC on existing Azure Stack HCI, version 22H2 clusters
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides information on how to install and enable Network ATC on your existing Azure Stack HCI cluster so that you can take advantage of several benefits. We also describe how to utilize this configuration across all new deployments.
+This article provides information on how to install and enable Network ATC on your existing Azure Stack HCI, version 22H2 cluster. Once Network ATC is enabled you can take advantage of several benefits and utilize this configuration across all new deployments.
 
 ## About Network ATC
 
@@ -22,7 +22,7 @@ Network ATC stores information in the cluster database, which is then replicated
 
 ## Benefits
 
-Here are some of the benefits of Network ATC:
+For Azure Stack HCI, Network ATC provides the following benefits:
 
 - Reduces host networking deployment time, complexity, and errors.
 - Deploys the latest Microsoft validated and supported best practices.
@@ -31,15 +31,15 @@ Here are some of the benefits of Network ATC:
 
 ## Before you begin
 
-Before you begin the process of installing and enabling Network ATC on your existing Azure Stack HCI cluster, make sure:
+Before you install and enable Network ATC on your existing Azure Stack HCI, make sure:
 
-- You're on a host without a running VM on it.
-- You're on a cluster with running workloads on the node.
+- You're on a host that doesn't have a running VM on it
+- You're on a cluster that has running workloads on the node.
 
 ## Steps to install and enable Network ATC
 
 > [!IMPORTANT]
-> If you don't have running workloads on your nodes, just add your intent command as if this was a brand-new cluster. You don't need to continue with the next set of instructions.
+> If you don't have running workloads on your nodes, just add your intent command as if this was a new cluster. You don't need to continue with the next set of instructions.
 
 ### Step 1: Install Network ATC
 
@@ -99,7 +99,7 @@ If your nodes were configured via Virtual Machine Manager (VMM), those configura
 
 ### Step 5: Start the Network ATC service
 
-As a precaution, to control the speed of the rollout, we paused the node in step 2 and stopped or disabled the Network ATC service in step 3. Since Network ATC intents are implemented cluster wide, you should only need to perform this step once.
+As a precaution, to control the speed of the rollout, we paused the node in step 2 and stopped or disabled the Network ATC service in step 3. Since Network ATC intents are implemented cluster-wide, perform this step only once.
 
 To start the Network ATC service, on the paused node only, run the following command:
 
@@ -234,7 +234,7 @@ If the **ConfigurationStatus** shows **Failed**, check to see if the error messa
 
 In this step, you move from the node deployed with Network ATC to the next node and migrate the VMs from this second node. You must verify that the second node has the same VMSwitch name as the node deployed with Network ATC.
 
-This change is a non-disruptive and can be done on all nodes at the same time, using the following command.
+This is a non-disruptive change and can be done of all the nodes simultaneously. Run the following command:
 
 ```powershell
 #Run on the node where you configured Network ATC
@@ -266,7 +266,7 @@ Resume-ClusterNode
 ```
 
 > [!NOTE]
-> To complete the migration to Network ATC across the cluster, follow steps 1 through 5, step 7, and step 9 for each node.
+> To apply the Network ATC settings across the cluster, repeat steps 1 through 5, step 7, and step 9 for each node of the cluster.
 
 ## Next step
 
