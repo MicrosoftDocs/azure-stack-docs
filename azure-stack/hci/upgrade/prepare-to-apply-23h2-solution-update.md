@@ -303,14 +303,14 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false
    ```
 
-  <details>
-  <summary>Expand this section to see an example output.</summary>
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
    | FriendlyName | OperationalStatus | HealthStatus | IsPrimordial | IsReadOnly | Size  | AllocatedSize |
    |--------------|-------------------|--------------|--------------|------------|-------|---------------|
    | S2D on venom  | OK                | Healthy      | False        | False       | 2 TB  | 1.53 TB        |
 
-  </details>
+   </details>
 
 1. To list all volumes in the storage pool, run the following PowerShell command:
 
@@ -336,12 +336,12 @@ Follow these steps to confirm the storage pool configuration:
    $volume.ProvisioningType
    ```
 
-  <details>
-  <summary>Expand this section to see an example output.</summary>
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
    `Fixed`
 
-  </details>
+   </details>
 
 1. To convert the volume to thin provisioned, run the following PowerShell command:
 
@@ -362,16 +362,16 @@ Follow these steps to confirm the storage pool configuration:
    Get-storagepool -IsPrimordial $false|Get-VirtualDisk
    ```
 
-  <details>
-  <summary>Expand this section to see an example output.</summary>
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
-    | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
+   | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
    |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
    |ClusterPerformanceHistory | Mirror | 1 | OK | Healthy | 21 GB | 43 GB | 48.84% |
    | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 36.5 GB | 98.63% |
    | TestVolume2 | Mirror | 0 | OK | Healthy | 750 GB | 28.5 GB | 98.25% |
 
-  </details>
+   </details>
 
 ### Check the storage volume name
 
