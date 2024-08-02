@@ -1,20 +1,20 @@
 ---
-title:  Enable Network ATC on existing Azure Stack HCI clusters
-description: This article describes how to enable Network ATC on existing Azure Stack HCI clusters
+title:  Install and enable Network ATC on an existing Azure Stack HCI cluster
+description: This article describes how to install and enable Network ATC on an existing Azure Stack HCI cluster
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.lastreviewed: 07/24/2024
-ms.date: 07/24/2024
-#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully enable Network ATC on their existing Azure Stack HCI clusters.
+ms.lastreviewed: 08/02/2024
+ms.date: 08/02/2024
+#Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Stack HCI cluster.
 ---
 
-# Enable Network ATC on existing Azure Stack HCI clusters
+# Install and enable Network ATC on existing Azure Stack HCI clusters
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article provides information on how to enable Network ATC on your existing Azure Stack HCI clusters so that you can take advantage of several benefits. We also describe how to utilize this configuration across all new deployments.
+This article provides information on how to install and enable Network ATC on your existing Azure Stack HCI cluster so that you can take advantage of several benefits. We also describe how to utilize this configuration across all new deployments.
 
 ## About Network ATC
 
@@ -31,12 +31,12 @@ Here are some of the benefits of Network ATC:
 
 ## Before you begin
 
-Before you begin the process of enabling Network ATC on your existing Azure Stack HCI cluster, make sure:
+Before you begin the process of installing and enabling Network ATC on your existing Azure Stack HCI cluster, make sure:
 
 - You're on a host without a running VM on it.
 - You're on a cluster with running workloads on the node.
 
-## Steps to enable Network ATC
+## Steps to install and enable Network ATC
 
 > [!IMPORTANT]
 > If you don't have running workloads on your nodes, just add your intent command as if this was a brand-new cluster. You don't need to continue with the next set of instructions.
