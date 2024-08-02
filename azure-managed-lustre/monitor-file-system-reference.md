@@ -15,21 +15,35 @@ ms.service: azure-managed-lustre
 
 See [Monitor Azure Managed Lustre](monitor-file-system.md) for details on the data you can collect for Azure Managed Lustre and how to use it.
 
-<a name="metrics-dimensions"></a>
 [!INCLUDE [horz-monitor-ref-metrics-intro](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-intro.md)]
 
 ### Supported metrics for Microsoft.StorageCache/amlFilesystems
 
 The following table lists the metrics available for the Microsoft.StorageCache/amlFilesystems resource type.
+
 [!INCLUDE [horz-monitor-ref-metrics-tableheader](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-tableheader.md)]
-[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/../azure-reference-other-repo/azure-monitor-ref/supported-metrics/includes/microsoft-storagecache-amlfilesystems-metrics-include.md)]
+
+[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/azure-reference-other-repo/azure-monitor-ref/supported-metrics/includes/microsoft-storagecache-amlfilesystems-metrics-include.md)]
+
+[!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
+
+[!INCLUDE [horz-monitor-ref-no-metrics-dimensions](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-no-metrics-dimensions.md)]
 
 ### Supported resource logs for Microsoft.StorageCache/amlFilesystems
-[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/../azure-reference-other-repo/azure-monitor-ref/supported-logs/includes/microsoft-storagecache-amlfilesystems-logs-include.md)]
+
+[!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/azure-reference-other-repo/azure-monitor-ref/supported-logs/includes/microsoft-storagecache-amlfilesystems-logs-include.md)]
+
+### Azure Monitor Logs tables
+
+This section lists the Azure Monitor Logs tables relevant to this service, which are available for query by Log Analytics using Kusto queries.
+
+- [AFSAuditLogs](/azure/azure-monitor/reference/tables/AFSAuditLogs)
+- [AzureActivity](/azure/azure-monitor/reference/tables/azureactivity)
+- [AzureMetrics](/azure/azure-monitor/reference/tables/azuremetrics)
 
 [!INCLUDE [horz-monitor-ref-activity-log](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
 
-- [Microsoft.StorageCache resource provider permissions](/azure/role-based-access-control/permissions/storage#microsoftstoragecache)
+- [Microsoft.StorageCache permissions](/azure/role-based-access-control/permissions/storage#microsoftstoragecache)
 
 ## Related content
 
