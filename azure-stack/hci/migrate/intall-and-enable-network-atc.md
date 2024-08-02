@@ -120,7 +120,7 @@ Set-Service -Name NetworkATC -StartupType Automatic
 
 ### Example intents
 
-Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios if each scenario is supported by Microsoft. Here are some examples of common host networking patterns used in Azure Stack HCI 23H2 and the required PowerShell commands.
+Network ATC modifies how you deploy host networking, not what you deploy. You can deploy multiple scenarios if each scenario is supported by Microsoft. Here are some examples of common host networking patterns and the corresponding PowerShell commands for your Azure Stack HCI.
 
 These examples aren't the only combinations available, but they should give you an idea of the possibilities.
 
