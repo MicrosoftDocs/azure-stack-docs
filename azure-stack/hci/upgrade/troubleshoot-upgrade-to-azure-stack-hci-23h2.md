@@ -40,7 +40,7 @@ DiagnosticLevel : Basic
 Region :
 ```
 
-If RegistrationStatus is **Not registered**, follow troubleshooting steps in [Troubleshoot Azure Stack HCI registration](./troubleshoot-hci-registration.md).
+If `RegistrationStatus` is **Not registered**, follow troubleshooting steps in [Troubleshoot Azure Stack HCI registration](./troubleshoot-hci-registration.md).
 
 ### Network ATC intent health state
 
@@ -86,9 +86,9 @@ ConfigurationStatus : Success
 ProvisioningStatus : Completed
 ```
 
-If the configuration status isn't healthy, verify that the VM network adapter name is the same as the network adapter name.
+If the `ConfigurationStatus` isn't healthy, verify that the VM network adapter name is the same as the network adapter name.
 
-Run the following PowerShell commands to verify that the network adapter name for vManagement matches the VM network adapter name:
+Run the following PowerShell commands to verify that the network adapter name for `vManagement` matches the VM network adapter name:
 
 ```powershell
 PS C:\> Get-netadapter
@@ -96,7 +96,7 @@ PS C:\> Get-netadapter
 
 Here's a sample output:
 
-```powershell
+```output
 Name                      InterfaceDescription                    ifIndex Status       MacAddress             LinkSpeed 
 
 ----                      --------------------                    ------- ------       ----------             --------- 
@@ -118,7 +118,7 @@ PS C:\> get-vmnetworkadapter -ManagementOS
 
 Here's a sample output:
 
-```powershell
+```output
 Name                                          IsManagementOs VMName SwitchName                 MacAddress   Status IPAddresses 
 
 ----                                          -------------- ------ ----------                 ----------   ------ ----------- 
@@ -133,13 +133,13 @@ vSMB(converged#Embedded FlexibleLOM 1 Port 2) True                  ConvergedSwi
 Both names must match. If names don't match, run the following PowerShell command to rename the network adapter:
 
 ```powershell
-Rename-netadapter -Name “badname” -NewName "VMNetworkadapterName”
+Rename-netadapter -Name "badname" -NewName "VMNetworkadapterName"
 ```
 
 Run the following PowerShell command to force a network ATC intent update:
 
 ```powershell
-Set-NetIntentRetryState -Name "YourIntentName”
+Set-NetIntentRetryState -Name "YourIntentName"
 ```
 
 ## Solution upgrade
