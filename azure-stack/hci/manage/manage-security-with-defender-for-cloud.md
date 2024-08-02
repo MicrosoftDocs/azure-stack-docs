@@ -4,7 +4,7 @@ description: This article describes how to use Microsoft Defender for Cloud to s
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 03/27/2024
+ms.date: 08/02/2024
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ---
@@ -99,7 +99,7 @@ After you've [enabled Defender for Cloud for Azure Stack HCI](#enable-defender-f
    > [!NOTE]
    > Azure Stack HCI-exclusive recommendations are available only on Azure Stack HCI, version 23H2. Azure Stack HCI, version 22H2 shows recommendations that are also available on Windows Server.
 
-   To learn more about the security recommendations specific to Azure Stack HCI, refer to the [Compute recommendations](/azure/defender-for-cloud/recommendations-reference#compute-recommendations) section in the [Security recommendations reference guide](/azure/defender-for-cloud/recommendations-reference).
+   To learn more about the security recommendations specific to Azure Stack HCI, refer to the [Azure compute recommendations](/azure/defender-for-cloud/recommendations-reference-compute#azure-compute-recommendations) section in the [Compute security recommendations](/azure/defender-for-cloud/recommendations-reference-compute) article.
 
 ## Monitor servers and Arc VMs
 
