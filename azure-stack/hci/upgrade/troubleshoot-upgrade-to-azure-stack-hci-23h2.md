@@ -91,7 +91,7 @@ If the `ConfigurationStatus` isn't healthy, verify that the VM network adapter n
 Run the following PowerShell commands to verify that the network adapter name for `vManagement` matches the VM network adapter name:
 
 ```powershell
-PS C:\> Get-netadapter
+PS C:\> Get-NetAdapter
 ```
 
 Here's a sample output:
@@ -113,7 +113,7 @@ vSMB(converged#Embedde... Hyper-V Virtual Ethernet Adapter #3          24 Up    
 ```
 
 ```powershell
-PS C:\> get-vmnetworkadapter -ManagementOS 
+PS C:\> Get-VmNetworkAdapter -ManagementOS 
 ```
 
 Here's a sample output:
