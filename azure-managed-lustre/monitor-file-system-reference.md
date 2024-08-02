@@ -25,6 +25,9 @@ The following table lists the metrics available for the Microsoft.StorageCache/a
 
 [!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/../azure-reference-other-repo/azure-monitor-ref/supported-metrics/includes/microsoft-storagecache-amlfilesystems-metrics-include.md)]
 
+> [!NOTE]
+> The metric `OSTBytesUsed` represents the total capacity consumed on the file system, including all metadata and overhead associated with the files. The value for `OSTBytesUsed` might be greater than the result of running `lfs df` on the file system, as `df` output for **Used** only attempts to capture the data the end user has placed on the file system.
+
 [!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
 
 [!INCLUDE [horz-monitor-ref-metrics-dimensions](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions.md)]
