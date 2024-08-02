@@ -107,12 +107,12 @@ Follow these steps to set up the environment validator on a server node of your 
    Invoke-AzStackHciUpgradeValidation -PsSession $PsSession
    ```
 
-  <details>
-  <summary>Expand this section to see an example output.</summary>
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
    :::image type="content" source="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png" alt-text="Diagram that illustrates sample output from the 23H2 upgrade environment validator." lightbox="./media/upgrade-22h2-to-23h2/sample-output-from-23h2-upgrade-enviro-validator.png":::
 
-  </details>
+   </details>
 
 1. (Optional) Use the `PassThru` flag to get the raw output that allows you to filter the output. Run the following command:
 
@@ -121,8 +121,8 @@ Follow these steps to set up the environment validator on a server node of your 
    $result | ? status -eq "failure" |ft displayname,status,severity
    ```
 
-  <details>
-  <summary>Expand this section to see an example output.</summary>
+   <details>
+   <summary>Expand this section to see an example output.</summary>
 
    | DisplayName                                         | Status   | Severity |
    |-----------------------------------------------------|----------|----------|
@@ -138,7 +138,7 @@ Follow these steps to set up the environment validator on a server node of your 
    | Test TMP property `AutoProvisioning` is Enabled 22H2N1 | Failure  | Warning  |
    | Test TMP property `TmpEnabled` is True 22H2N1       | Failure  | Warning  |
 
-  </details>
+   </details>
 
 ### Remediation guidance
 
