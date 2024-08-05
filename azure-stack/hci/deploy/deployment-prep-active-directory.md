@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 06/13/2024
+ms.date: 08/05/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -60,7 +60,7 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 |`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|-->
 
 > [!NOTE]
-> - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path `- &,”,’,<,>`.
+> - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.
 > - Moving the computer objects to a different OU after the deployment is complete is also not supported.
 
 ## Prepare Active Directory

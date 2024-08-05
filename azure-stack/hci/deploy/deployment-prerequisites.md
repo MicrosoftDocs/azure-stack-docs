@@ -3,7 +3,7 @@ title: Prerequisites to deploy Azure Stack HCI, version 23H2
 description: Learn about the prerequisites to deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 05/02/2024
+ms.date: 08/05/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -34,7 +34,7 @@ Use the following checklist to gather the required information ahead of the actu
 |Component|What is needed|
 |--|--|
 |Server names|Unique name for each server you wish to deploy.|
-|Active directory OU|A new organizational unit (OU) to store all the objects for the Azure Stack HCI deployment. The OU is created during the [Active Directory preparation](./deployment-prep-active-directory.md).<br>The OU must be specified as the distinguished name (DN). The OU path doesn't support the following special characters anywhere within the path `- &,”,’,<,>`. For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
+|Active directory OU|A new organizational unit (OU) to store all the objects for the Azure Stack HCI deployment. The OU is created during the [Active Directory preparation](./deployment-prep-active-directory.md).<br>The OU must be specified as the distinguished name (DN). The OU path doesn't support the following special characters anywhere within the path: `&,",',<,>`. For more information, see the format of [Distinguished Names](/previous-versions/windows/desktop/ldap/distinguished-names).|
 |Active Directory Domain|Fully-qualified domain name (FQDN) for the Active Directory Domain Services prepared for deployment.|
 |Active Directory LCM User credential|A new username and password that is created with the appropriate  permissions for deployment. This account is the same as the user account used by the Azure Stack HCI deployment.<br>The password must conform to the Azure length and complexity requirements. Use a password that is at least 12 characters long. The password must contain the following: a lowercase character, an uppercase character, a numeral, and  a special character.<br> The name must be unique for each deployment and you can't use *admin* as the username.|
 |IPv4 network range subnet for management network intent|A subnet used for management network intent. You need an address range for management network with  a minimum of 6 available, contiguous IPs in this subnet. These IPs are used for infrastructure services with the first IP assigned to fail over clustering.<br> For more information, see the **Specify network settings** page in [Deploy via Azure portal](./deploy-via-portal.md#specify-network-settings).|
