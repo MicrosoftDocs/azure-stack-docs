@@ -3,7 +3,7 @@ title: Review requirements for VMware VM migration to Azure Stack HCI using Azur
 description: Learn the system requirements for VMware migration to Azure Stack HCI using Azure Migrate (preview).
 author: alkohli
 ms.topic: how-to
-ms.date: 06/26/2024
+ms.date: 08/05/2024
 ms.author: alkohli
 ms.subservice: azure-stack-hci
 ms.custom: references_regions
@@ -85,6 +85,10 @@ For more information on Azure subscriptions and roles, see [Azure roles, Azure A
 - If you have an existing Azure Migrate project with VM discovery complete, you need to [create a new Azure Migrate project](./migrate-vmware-prerequisites.md#create-an-azure-migrate-project) for migration to Azure Stack HCI. You can't use existing Azure Migrate projects for migration.
 
 - You must have only one source appliance per Azure Migrate project for Azure Stack HCI migrations. This means you can't use the same Azure Migrate project for both a VMware source and a Hyper-V source. Make sure to create a new project for each source you wish to migrate from.
+
+- You must have only one target appliance per Azure Migrate project for Azure Stack HCI migrations. This means you can't use the same Azure Migrate project for a single source appliance to migrate to multiple target appliances across different Azure Stack HCI clusters.
+
+- In general, Azure Migrate projects must have a 1:1 pairing of only 1 source appliance and 1 target appliance per project.
 
 ## Next steps
 
