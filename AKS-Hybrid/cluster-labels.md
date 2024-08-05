@@ -2,10 +2,10 @@
 title: Use cluster labels in AKS enabled by Azure Arc
 description: Learn how to use labels in Kubernetes clusters in AKS enabled by Arc.
 ms.topic: how-to
-ms.date: 05/31/2024
+ms.date: 08/01/2024
 author: sethmanheim
 ms.author: sethm 
-ms.lastreviewed: 05/31/2024
+ms.lastreviewed: 08/01/2024
 ms.reviewer: guanghu
 
 ---
@@ -39,7 +39,7 @@ This article describes how to use labels in a Kubernetes cluster on AKS enabled 
    The following example creates a node pool named `labelnp` with the label `dept=HR`:
 
    ```azurecli
-   az aks nodepool add –resource-group myResourceGroup –cluster-name myAKSCluster –name labelnp –node-count 1 –labels dept=HR –no-wait
+   az aksarc nodepool add –resource-group myResourceGroup –cluster-name myAKSCluster –name labelnp –node-count 1 –labels dept=HR –no-wait
    ```
 
    The following example output from the [`az aksarc nodepool list`](/cli/azure/aksarc/nodepool#az-aksarc-nodepool-list) command shows the `labelnp` node pool creates nodes with the specified `nodeLabels`:
