@@ -5,8 +5,8 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.lastreviewed: 08/02/2024
-ms.date: 08/02/2024
+ms.lastreviewed: 08/13/2024
+ms.date: 08/13/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Stack HCI, version 22H2 cluster.
 ---
 
@@ -93,9 +93,6 @@ Get-NetLBFOTeam | Remove-NetLBFOTeam -Confirm:$true
 ```
 
 If your nodes were configured via Virtual Machine Manager (VMM), those configuration objects may need to be removed as well.
-
-> [!NOTE]
-> Network ATC is being improved to prevent accidental oversights, including LBFO and it will avoid deploying unsupported solutions.
 
 ### Step 5: Start the Network ATC service
 
