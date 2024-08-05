@@ -33,7 +33,7 @@ For Azure Stack HCI, Network ATC provides the following benefits:
 
 Before you install and enable Network ATC on your existing Azure Stack HCI, make sure:
 
-- You're on a host that doesn't have a running VM on it
+- You're on a host that doesn't have a running VM on it.
 - You're on a cluster that has running workloads on the node.
 
 ## Steps to install and enable Network ATC
@@ -96,7 +96,7 @@ If your nodes were configured via Virtual Machine Manager (VMM), those configura
 
 ### Step 5: Start the Network ATC service
 
-As a precaution, to control the speed of the rollout, we paused the node in step 2 and stopped or disabled the Network ATC service in step 3. Since Network ATC intents are implemented cluster-wide, perform this step only once.
+As a precaution, to control the speed of the rollout, we paused the node and then stopped or disabled the Network ATC service in the previous steps. Since Network ATC intents are implemented cluster-wide, perform this step only once.
 
 To start the Network ATC service, on the paused node only, run the following command:
 
@@ -121,11 +121,11 @@ Network ATC modifies how you deploy host networking, not what you deploy. You ca
 
 These examples aren't the only combinations available, but they should give you an idea of the possibilities.
 
-For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, please see [Network reference patterns overview for Azure Stack HCI](../plan/network-patterns-overview.md).
+For simplicity we only demonstrate two physical adapters per SET team, however it's possible to add more. For more information, see [Network reference patterns overview for Azure Stack HCI](../plan/network-patterns-overview.md).
 
 #### Group management and compute in one intent with a separate intent for storage
 
-In this example, we have two intents that are managed across cluster nodes.
+In this example, there are two intents that are managed across cluster nodes.
 
 1. **Management and compute**: This intent uses a dedicated pair of network adapter ports.
 2. **Storage**: This intent uses a dedicated pair of network adapter ports.
@@ -142,7 +142,7 @@ In this example, we have two intents that are managed across cluster nodes.
 
 #### Group all traffic on a single intent
 
-In this example, a single intent is managed across cluster nodes.
+In this example, there's a single intent managed across cluster nodes.
 
 1. **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
 
@@ -156,7 +156,7 @@ In this example, a single intent is managed across cluster nodes.
 
 #### Group compute and storage traffic on one intent with a separate management intent
 
-In this example, we have two intents managed across cluster nodes.
+In this example, there are two intents that are managed across cluster nodes.
 
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute and Storage**: This intent uses a dedicated pair of network adapter ports.
@@ -173,7 +173,7 @@ In this example, we have two intents managed across cluster nodes.
 
 #### Fully disaggregated host networking
 
-In this example, we have three intents that are managed across cluster nodes.
+In this example, there are three intents that are managed across cluster nodes.
 
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute**: This intent uses a dedicated pair of network adapter ports.
@@ -231,17 +231,17 @@ If the **ConfigurationStatus** shows **Failed**, check to see if the error messa
 
 In this step, you move from the node deployed with Network ATC to the next node and migrate the VMs from this second node. You must verify that the second node has the same VMSwitch name as the node deployed with Network ATC.
 
-This is a non-disruptive change and can be done of all the nodes simultaneously. Run the following command:
+This is a non-disruptive change and can be done on all the nodes simultaneously. Run the following command:
 
 ```powershell
 #Run on the node where you configured Network ATC
-Get-vmswitch | ft name
+Get-VMSwitch | ft name
 
 #Run on the next node to rename the virtual switch
 Rename-VMSwitch -Name 'ExistingName' -NewName 'NewATCName'
 ```
 
-After your switch is renamed, disconnect and reconnect your vNICs for the VSwitch name change to go through. Once the change goes through, on each node, run the following commands:
+After your switch is renamed, disconnect and reconnect your vNICs for the VMSwitch name change to go through. Once the change goes through, on each node, run the following commands:
 
 ```powershell
 $VMSW = Get-VMSwitch
@@ -249,7 +249,7 @@ $VMs = get-vm
 $VMs | %{Get-VMNetworkAdapter -VMName $_.name | Disconnect-VMNetworkAdapter ; Get-VMNetworkAdapter -VMName $_.name | Connect-VMNetworkAdapter -SwitchName $VMSW.name}
 ```
 
-We don't change the Network ATC VMSwitch for two reasons:
+You don't change the Network ATC VMSwitch for two reasons:
 
 - Network ATC ensures that all nodes in the cluster have the same name to support live migration and symmetry.
 - Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
