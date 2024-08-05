@@ -31,6 +31,7 @@ Another security benefit with AD integration is that the users and groups are st
 
 > [!NOTE]
 > Currently, AD SSO connectivity is only supported for workload clusters.
+> Currently, using nested AD groups (creating an AD group within another AD group) is unsupported.
 
 This article guides you through the steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
 
