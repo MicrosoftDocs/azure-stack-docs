@@ -46,7 +46,7 @@ Before you begin, make sure you've done the following:
 
 ## Active Directory preparation module
 
-The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. Here are the required parameters associated with the cmdlet:
+The AsHciADArtifactsPreCreationTool PowerShell module is used to prepare Active Directory. Here are the required parameters associated with the module:
 
 |Parameter|Description|
 |--|--|
@@ -66,7 +66,6 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 ## Prepare Active Directory
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place the Azure Stack HCI related objects such as deployment user.
-
 
 To create a dedicated OU, follow these steps:
 
