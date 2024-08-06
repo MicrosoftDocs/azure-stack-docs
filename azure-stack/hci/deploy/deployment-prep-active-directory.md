@@ -46,7 +46,7 @@ Before you begin, make sure you've done the following:
 
 ## Active Directory preparation module
 
-The AsHciADArtifactsPreCreationTool PowerShell module is used to prepare Active Directory. Here are the required parameters associated with the module:
+The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool PowerShell module is used to prepare Active Directory for Azure Stack HCI deployments. Here are the required parameters associated with the cmdlet:
 
 |Parameter|Description|
 |--|--|
