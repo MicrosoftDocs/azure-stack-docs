@@ -7,10 +7,13 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurecli, linux-related-content
-ms.date: 05/15/2024
+ms.date: 08/06/2024
 ---
 
 # Prepare a CentOS Linux image for Azure Stack HCI virtual machines (preview)
+
+> [!CAUTION]
+> This article references CentOS, a Linux distribution that's reached end-of-life (EOL). Consider your use of CentOS and plan accordingly. For more information, see [CentOS end-of-life guidance](/azure/virtual-machines/workloads/centos/centos-end-of-life).
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
