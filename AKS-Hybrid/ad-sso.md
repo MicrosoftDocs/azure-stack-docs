@@ -3,7 +3,7 @@ title: Use Active Directory single sign-on for secure connection to Kubernetes A
 description: Use Active Directory Authentication to securely connect to the API server with SSO credentials
 author: sethmanheim
 ms.topic: how-to
-ms.date: 06/24/2024
+ms.date: 08/07/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: sulahiri
@@ -31,6 +31,8 @@ Another security benefit with AD integration is that the users and groups are st
 
 > [!NOTE]
 > Currently, AD SSO connectivity is only supported for workload clusters.
+
+> [!NOTE]
 > Currently, using nested AD groups (creating an AD group within another AD group) is unsupported.
 
 This article guides you through the steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
