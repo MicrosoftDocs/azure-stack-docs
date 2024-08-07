@@ -68,11 +68,11 @@ Stop-Service -Name NetworkATC
 
 ### Step 4: Remove the existing configuration on the paused node without running VMs
 
-In this step, we eliminate any previous configurations, such as VMSwitch, Data Center Bridging (NetQos) policy for RDMA traffic, and Load Balancing Failover (LBFO), which might interfere with Network ATC’s ability to implement the new intent. Although Network ATC attempts to adopt existing configurations with matching names; including NetQos and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
+In this step, we eliminate any previous configurations, such as `VMSwitch`, Data Center Bridging (NetQos) policy for RDMA traffic, and Load Balancing Failover (LBFO), which might interfere with Network ATC’s ability to implement the new intent. Although Network ATC attempts to adopt existing configurations with matching names; including `NetQos` and other settings, it’s easier to remove the current configuration and allow Network ATC to redeploy the necessary configuration items and more.
 
-If you have more than one VMSwitch on your system, make sure you specify the switch attached to the adapters being used in the intent.
+If you have more than one `VMSwitch` on your system, make sure you specify the switch attached to the adapters being used in the intent.
 
-To remove the existing VMSwitch configuration, run the following command:
+To remove the existing `VMSwitch` configuration, run the following command:
 
 ```PowerShell
 Get-VMSwitch -Name <VMSwitchName> | Remove-VMSwitch -force
@@ -229,7 +229,7 @@ If the **ConfigurationStatus** shows **Failed**, check to see if the error messa
 
 ### Step 8: Rename the VMSwitch on other nodes
 
-In this step, you move from the node deployed with Network ATC to the next node and migrate the VMs from this second node. You must verify that the second node has the same VMSwitch name as the node deployed with Network ATC.
+In this step, you move from the node deployed with Network ATC to the next node and migrate the VMs from this second node. You must verify that the second node has the same `VMSwitch` name as the node deployed with Network ATC.
 
 This is a non-disruptive change and can be done on all the nodes simultaneously. Run the following command:
 
@@ -241,7 +241,7 @@ Get-VMSwitch | ft name
 Rename-VMSwitch -Name 'ExistingName' -NewName 'NewATCName'
 ```
 
-After your switch is renamed, disconnect and reconnect your vNICs for the VMSwitch name change to go through. Once the change goes through, on each node, run the following commands:
+After your switch is renamed, disconnect and reconnect your vNICs for the `VMSwitch` name change to go through. Once the change goes through, on each node, run the following commands:
 
 ```powershell
 $VMSW = Get-VMSwitch
@@ -249,7 +249,7 @@ $VMs = get-vm
 $VMs | %{Get-VMNetworkAdapter -VMName $_.name | Disconnect-VMNetworkAdapter ; Get-VMNetworkAdapter -VMName $_.name | Connect-VMNetworkAdapter -SwitchName $VMSW.name}
 ```
 
-You don't change the Network ATC VMSwitch for two reasons:
+You don't change the Network ATC `VMSwitch` for two reasons:
 
 - Network ATC ensures that all nodes in the cluster have the same name to support live migration and symmetry.
 - Network ATC implements and controls the names of configuration objects. Otherwise, you'd need to ensure this configuration artifact is perfectly deployed.
