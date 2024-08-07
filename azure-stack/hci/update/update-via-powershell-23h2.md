@@ -469,13 +469,13 @@ After the updates are installed, verify the solution version of the environment 
 To resume a previously failed update run via PowerShell, use the following command:
 
 ```powershell
-get-solutionupdate | start-solutionupdate
+Get-SolutionUpdate | Start-SolutionUpdate
 ```
 
 To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
 
 ```powershell
-get-solutionUpdate | start-solutionUpdate -IgnoreWarnings
+Get-SolutionUpdate | Start-SolutionUpdate -IgnoreWarnings
 ```
 
 To troubleshoot other update run issues, see [Troubleshoot updates](./update-troubleshooting-23h2.md).
