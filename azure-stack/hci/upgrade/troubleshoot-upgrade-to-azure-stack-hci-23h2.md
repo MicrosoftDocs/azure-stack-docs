@@ -16,6 +16,8 @@ This article describes how to troubleshoot upgrade-related issues on your Azure 
 
 ## Operating system upgrade
 
+While upgrading the OS, you may encounter registration failures or network ATC intent health state issues. This section provides steps to troubleshoot these issues.
+
 ### Registration failures
 
 Run the following PowerShell command to verify that the cluster is registered with Azure:
@@ -31,7 +33,7 @@ ClusterStatus : Clustered
 RegistrationStatus : Registered
 RegistrationDate : 8/1/2024 9:15:12 AM
 AzureResourceName : Redmond
-AzureResourceUri : /Subscriptions/fbaf508b-cb61-4383-9cda-a42bfa0c7bc9/resourceGroups/Redmond/providers/Microsoft.AzureStackHCI/clusters/Redmond
+AzureResourceUri : /Subscriptions/<Subscription I>/resourceGroups/Redmond/providers/Microsoft.AzureStackHCI/clusters/Redmond
 ConnectionStatus : Connected
 LastConnected : 8/1/2024 11:30:42 AM
 NextSync :
@@ -61,23 +63,6 @@ IsStorageIntentSet : True
 IsStretchIntentSet : False
 LastUpdated : 08/01/2024 17:34:09
 LastSuccess : 08/01/2024 17:34:09 
-RetryCount : 0
-LastConfigApplied : 1
-Error :
-Progress : 1 of 1
-ConfigurationStatus : Success
-ProvisioningStatus : Completed
-```
-
-```output
-IntentName : converged
-Host : win-u7gk840mvm0
-IsComputeIntentSet : True
-IsManagementIntentSet : True 
-IsStorageIntentSet : True
-IsStretchIntentSet : False
-LastUpdated : 08/01/2024 17:34:02
-LastSuccess : 08/01/2024 17:34:02 
 RetryCount : 0
 LastConfigApplied : 1
 Error :
@@ -144,6 +129,8 @@ Set-NetIntentRetryState -Name "YourIntentName"
 
 ## Solution upgrade
 
+This section describes the location of the solution upgrade and solution validation logs that can be used to troubleshoot upgrade-related issues.
+
 ### Solution upgrade logs
 
 | File              | Directory       | Description |
@@ -155,3 +142,7 @@ Set-NetIntentRetryState -Name "YourIntentName"
 | File              | Directory       | Description |
 |-------------------|-----------------|-------------|
 | InvokeCloudUpgradeEnvironmentChecker.date.time.log | C:\maslogs\lcmecelitelogs | Solution validation logs |
+
+## Next steps
+
+- [Open a Support ticket.](../manage/get-support.md)
