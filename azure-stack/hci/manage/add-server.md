@@ -4,7 +4,7 @@ description: Learn how to manage capacity on your Azure Stack HCI, version 23H2 
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 05/15/2024
+ms.date: 06/04/2024
 ---
 
 # Add a server on Azure Stack HCI, version 23H2
@@ -98,10 +98,21 @@ On the new server that you plan to add, follow these steps.
 
 1. Install the operating system and required drivers on the new server that you plan to add. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
+    > [!NOTE]
+    > If your cluster is using a dedicated Network ATC intent for storage, and you are using custom storage IPs, you must configure the IPs on the storage network adapters before adding the new server.
+    > If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs on the storage virtual network adapters after the server is added to the cluster.
+
+
 2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
     > [!NOTE]
     > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
+
+3. Assign the following permissions to the newly added server nodes:
+
+    - Azure Stack HCI Device Management Role
+    - Key Vault Secrets User
+    For more information, see [Assign permissions to the server](../deploy/deployment-arc-register-server-permissions.md).
 
 On a server that already exists on your cluster, follow these steps:
 
@@ -122,9 +133,6 @@ On a server that already exists on your cluster, follow these steps:
     ```
 
 1. Make a note of the operation ID as output by the `Add-Server` command. You use this operation ID later to monitor the progress of the `Add-Server` operation.
-
-> [!NOTE]
-> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is added.
 
 ### Monitor operation progress
 

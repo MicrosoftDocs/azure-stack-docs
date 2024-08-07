@@ -1,155 +1,155 @@
 ---
 title: Prepare Red Hat Enterprise Linux image for Azure Stack HCI VM via Azure CLI (preview)
-description: Learn how to prepare a Red Hat Enterprise Linux image to create Azure Stack HCI VM image (preview).
+description: Learn how to prepare a Red Hat Enterprise Linux image to create an Azure Stack HCI VM image (preview).
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.custom:
-  - devx-track-azurecli
+ms.custom: devx-track-azurecli, linux-related-content
 ms.date: 05/15/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully use Red Hat Enterprise Linux to create images on Azure Stack HCI.
 ---
 
-# Prepare Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)
+# Prepare a Red Hat Enterprise image for Azure Stack HCI virtual machines (preview)
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine on your Azure Stack HCI cluster. You use Azure CLI for the VM image creation.
+This article describes how to prepare a Red Hat Enterprise Linux image to create a virtual machine (VM) on your Azure Stack HCI cluster. You use the Azure CLI for the VM image creation.
 
 ## Prerequisites
 
-Before you begin, make sure that the following prerequisites are completed. Make sure you have:
+Before you begin, meet the following prerequisites:
 
-- Access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab in the right-pane, the **Azure Arc** should show as **Connected**.
-
-- [Downloaded latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. The supported OS versions are Red Hat Enterprise Linux 9.4, 8.9.0, and 7.9.0. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
+- Have access to an Azure Stack HCI cluster. This cluster is deployed, registered, and connected to Azure Arc. Go to the **Overview** page in the Azure Stack HCI cluster resource. On the **Server** tab on the right pane, **Azure Arc** should appear as **Connected**.
+- [Download the latest supported Red Hat Enterprise server image](https://developers.redhat.com/products/rhel/download#rhel-new-product-download-list-61451) on your Azure Stack HCI cluster. We support all Red Hat Enterprise Linux 7.x, 8.x, and 9.x versions. Here, we downloaded the *rhel-9.4-x86_64-boot.iso* file. You use this image to create a VM image.
 
 ## Workflow
 
-Follow these steps to prepare a Red Hat Enterprise image and create a VM image:
+To prepare a Red Hat Enterprise image and create a VM image:
 
-1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise.md#create-vm-image-from-red-hat-enterprise-image).
-2. [Connect to VM and install Red Hat OS](./virtual-machine-image-red-hat-enterprise.md#step-2-connect-to-vm-and-install-red-hat-os).
-3. [Configure VM](./virtual-machine-image-red-hat-enterprise.md#step-3-configure-vm).
-4. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprise.md#step-4-clean-up-the-residual-configuration).
-5. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise.md#step-5-create-vm-image).
+1. [Create a Red Hat Enterprise VM](./virtual-machine-image-red-hat-enterprise.md#create-a-vm-image-from-a-red-hat-enterprise-image)
+1. [Connect to a VM and install the Red Hat OS](./virtual-machine-image-red-hat-enterprise.md#step-2-connect-to-a-vm-and-install-the-red-hat-os)
+1. [Configure the VM](./virtual-machine-image-red-hat-enterprise.md#step-3-configure-the-vm)
+1. [Clean up the residual configuration](./virtual-machine-image-red-hat-enterprise.md#step-4-clean-up-the-residual-configuration)
+1. [Create a Red Hat VM image](./virtual-machine-image-red-hat-enterprise.md#step-5-create-the-vm-image)
 
 The following sections provide detailed instructions for each step in the workflow.
 
-## Create VM image from Red Hat Enterprise image
+## Create a VM image from a Red Hat Enterprise image
 
 > [!IMPORTANT]
 > We recommend that you prepare a Red Hat Enterprise image if you intend to enable guest management on the VMs.
 
-Follow these steps on your Azure Stack HCI cluster to create a VM image using the Azure CLI.
+Follow these steps on your Azure Stack HCI cluster to create a VM image by using the Azure CLI.
 
 ### Step 1: Create a Red Hat Enterprise VM
 
-Follow these steps to use the downloaded Red Hat Enterprise image to provision a VM:
+To use the downloaded Red Hat Enterprise image to provision a VM:
 
 1. Use the downloaded image to create a VM with the following specifications:
 
     1. Provide a friendly name for your VM.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png" alt-text="Screenshot of the new Virtual Machine wizard on Specify name and location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Name and Location page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-name-and-location.png":::
 
-    2. Specify **Generation 2** for your VM as you're working with a VHDX image here.
+    1. Specify **Generation 2** for your VM as you're working with a VHDX image here.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot of the Virtual Machine wizard on Generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Specify Generation page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-generation.png":::
 
-    3. Select **Assign Memory**, then enter `4096` for **Startup memory**.
+    1. Select **Assign Memory** and then enter **4096** for **Startup memory**.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png" alt-text="Screenshot of the Virtual Machine wizard on Assign memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Assign Memory page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-memory.png":::
 
-    4. Select **Configure Networking**, then from the dropdown list select the virtual switch that the VM uses for the connection.
+    1. Select **Configure Networking**. From the dropdown list, select the virtual switch that the VM uses for the connection.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png" alt-text="Screenshot of the Virtual Machine wizard on Configure Networking page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Configure Networking page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-configure-networking.png":::
 
-    5. Accept the defaults on the **Connect Virtual Hard Disk** page.
+    1. Accept the defaults on the **Connect Virtual Hard Disk** page.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png" alt-text="Screenshot of the Virtual Machine wizard on Virtual Hard Disk page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png" alt-text="Screenshot that shows the New Virtual Machine Wizard on the Virtual Hard Disk page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-connect-virtual-hard-disk.png":::
 
-    6. Select **Install Options**, then select the **Install an operating system from a bootable image file** option. Point to the ISO that you downloaded earlier.
+    1. Select **Install Options** and then select **Install an operating system from a bootable image file**. Point to the ISO that you downloaded earlier.
 
-        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png" alt-text="Screenshot of the OS Installation Options screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png":::
+        :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png" alt-text="Screenshot that shows the OS Installation Options screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-iso-option.png":::
 
-    See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
+    For step-by-step instructions, see [Provision a VM by using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
-2. Use the UEFI certificate to Secure Boot the VM.
+1. Use the UEFI certificate to secure boot the VM.
 
-    1. After the VM is created, it shows up in the Hyper-V manager. Select the virtual machine, right-click, and then select **Settings**.
+    1. After the VM is created, it shows up in Hyper-V Manager. Select the VM, right-click it, and then select **Settings**.
 
-    2. In the left pane, select the **Security** tab. Then under **Secure Boot**, from the template dropdown list, select **Microsoft UEFI Certificate Authority**.
+    1. On the left pane, select the **Security** tab. Then under **Secure Boot**, from the template dropdown list, select **Microsoft UEFI Certificate Authority**.
 
-    3. Select **OK** to save the changes.
+    1. Select **OK** to save the changes.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot of UEFI Secure Boot enabled screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png" alt-text="Screenshot that shows the UEFI Secure Boot enabled screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-microsoft-ufei-certificate-authority.png":::
 
-3. Select the VM from the Hyper-V Manager and then start the VM. The VM boots from the ISO image that you provided.
+1. Select the VM from Hyper-V Manager and then start the VM. The VM boots from the ISO image that you provided.
 
-### Step 2: Connect to VM and install Red Hat OS
+### Step 2: Connect to a VM and install the Red Hat OS
 
-Once the VM is running, follow these steps:
+After the VM is running, follow these steps:
 
-1. Select the VM from the Hyper-V Manager, right-click to invoke the context menu, and then select **Connect**.
+1. Select the VM from Hyper-V Manager, right-click it to open the menu, and then select **Connect**.
 
-2. Select the **Install Red Hat Enterprise Linux 9.4** option from the boot menu.
+1. Select **Install Red Hat Enterprise Linux 9.4** from the boot menu.
 
-3. Select the language and then select **Continue**.
+1. Select the language and then select **Continue**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png" alt-text="Screenshot of the Language select screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png" alt-text="Screenshot that shows the Language select screen." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-select-language.png":::
 
-4. On the **Installation Summary** page, you may see other actionable items.
+1. On the **Installation Summary** page, you might see other actionable items.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png" alt-text="Screenshot of the Installation Summary with actionable items." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png" alt-text="Screenshot that shows the Installation Summary with actionable items." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-installation-summary.png":::
 
-5. Select **Connect to Red Hat**, create credentials, select **Register**, and then select **Done**.
+1. Select **Connect to Red Hat** and create credentials. Select **Register** and then select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png" alt-text="Screenshot of the Connect to Red Hat page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png" alt-text="Screenshot that shows the Connect to Red Hat page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/connect-to-red-hat.png":::
 
-6. Select **Software Selection**, keep the defaults, and select **Done**.
+1. Select **Software Selection**, keep the defaults, and select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png" alt-text="Screenshot of the Software Selection page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png" alt-text="Screenshot that shows the Software Selection page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-software-selection-environment.png":::
 
-7. Select the **Installation Destination** and then select **Done**.
+1. Select **Installation Destination** and then select **Done**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png" alt-text="Screenshot of the Installation Destination page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png" alt-text="Screenshot that shows the Installation Destination page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-virtual-machine-intallation-destination.png":::
 
-8. Select the **Network & Host Name**, enable the **ON** switch for the network interface, and then select **Done**.
+1. Select **Network & Host Name**.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png" alt-text="Screenshot of the completed Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png" alt-text="Screenshot that shows the completed Installation Summary page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-completed-installation-summary.png":::
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png" alt-text="Screenshot of the Network and Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png":::
+1. Enable the **ON** switch for the network interface and then select **Done**.
 
-9. Select **User setting** and set the root password. Enter a password, confirm the password, and select **Done**.
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png" alt-text="Screenshot that shows the Network & Host Name page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-network-and-host-name.png":::
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png" alt-text="Screenshot of the User Settings credentials page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png":::
+1. Select **User setting** and set the root password. Enter a password, confirm the password, and select **Done**.
 
-10. Select **Begin Installation**.
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png" alt-text="Screenshot that shows the credentials page." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-root-password.png":::
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-begin-installation.png" alt-text="Screenshot of the Begin Installation button." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-begin-installation.png":::
+1. Select **Begin Installation**.
 
-11. Once the installation is complete, select **Reboot System** to reboot the VM.
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-begin-installation.png" alt-text="Screenshot that shows the Begin Installation button." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-begin-installation.png":::
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png" alt-text="Screenshot of the Reboot System button after installation." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png":::
+1. After the installation is finished, select **Reboot System** to reboot the VM.
 
-See [Provision a VM using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine) for step-by-step instructions.
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png" alt-text="Screenshot that shows the Reboot System button after installation." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-reboot-system.png":::
 
-### Step 3: Configure VM
+For step-by-step instructions, see [Provision a VM by using Hyper-V Manager](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager#create-a-virtual-machine).
 
-Follow these steps to configure the VM:
+### Step 3: Configure the VM
 
-1. Connect and then sign into the VM using the root password that you created during the Red Hat Enterprise installation.
+To configure the VM:
 
-2. Make sure that `cloud-init` wasn't installed.
+1. Connect and then sign in to the VM by using the root password that you created during the Red Hat Enterprise installation.
+
+1. Make sure that `cloud-init` wasn't installed.
 
     ```bash
     Sudo yum list installed | grep cloud-init
     ```
 
-3. Install the `cloud-init` tool and verify the version of `cloud-init` installed.
+1. Install the `cloud-init` tool and verify the version of `cloud-init` that was installed.
 
     ```bash
     Sudo yum install -y cloud-init
@@ -189,7 +189,7 @@ Follow these steps to configure the VM:
 
 ### Step 4: Clean up the residual configuration
 
-Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration:
+Delete machine-specific files and data from your VM so that you can create a clean VM image without any history or default configurations. Follow these steps on your Azure Stack HCI cluster to clean up the residual configuration.
 
 1. Clean `cloud-init` default configurations.
 
@@ -207,13 +207,13 @@ Delete machine-specific files and data from your VM so that you can create a cle
     [hcitest@localhost ~]$ sudo cloud-init clean
     ```
 
-2. Clean up logs and cache.
+1. Clean up the logs and cache.
 
     ```bash
     sudo rm -rf /var/lib/cloud/ /var/log/* /tmp/*
     ```
 
-3. Unregister the VM.
+1. Unregister the VM.
 
     ```bash
     sudo subscription-manager unregister
@@ -230,7 +230,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
     All local data removed
     ```
 
-4. Clean any host specific details.
+1. Clean any host-specific details.
 
     ```bash
     sudo rm -f /etc/sysconfig/network-scripts/*
@@ -238,7 +238,7 @@ Delete machine-specific files and data from your VM so that you can create a cle
     sudo rm /etc/lvm/devices/system.devices
     ```
 
-5. Remove bash history.
+1. Remove the bash history.
 
     ```bash
     sudo rm -f ~/.bash_history 
@@ -246,18 +246,18 @@ Delete machine-specific files and data from your VM so that you can create a cle
     exit
     ```
 
-6. Shut down the virtual machine. In the Hyper-V Manager, go to **Action > Shut Down**.
+1. Shut down the VM. In Hyper-V Manager, go to **Action** > **Shut Down**.
 
-7. Export a VHDX or copy the VHDX from your VM. You can use the following methods:
+1. Export a VHDX or copy the VHDX from your VM. You can use the following methods:
     - Copy the VHDX to a user storage on the cluster shared volume on your Azure Stack HCI.
     - Alternatively, copy the VHDX as a page blob to a container in an Azure Storage account.
 
-    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png" alt-text="Screenshot of exporting a Virtual Machine VHDX." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png":::
+    :::image type="content" source="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png" alt-text="Screenshot that shows exporting a virtual machine VHDX." lightbox="../manage/media/virtual-machine-image-red-hat-enterprise/red-hat-export-vhdx.png":::
 
-### Step 5: Create VM image
+### Step 5: Create the VM image
 
 [!INCLUDE [hci-create-a-vm-image](../../includes/hci-create-a-vm-image.md)]
 
-## Next steps
+## Related content
 
-- [Create Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Stack HCI cluster.
+- [Create Azure Arc VMs](./manage-virtual-machines-in-azure-portal.md) on your Azure Stack HCI cluster.

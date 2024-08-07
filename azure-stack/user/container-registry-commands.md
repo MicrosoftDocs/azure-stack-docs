@@ -3,75 +3,73 @@ title: Azure Container Registries supported commands
 description: Review the list of supported commands for CLI and PowerShell for Azure Container Registries on Azure Stack Hub.
 author: sethmanheim
 ms.topic: reference
-ms.date: 10/26/2021
+ms.date: 07/25/2024
 ms.author: sethm
-ms.reviewer: chasat
-ms.lastreviewed: 10/26/2021
+ms.reviewer: dgarrity
+ms.lastreviewed: 04/10/2024
 
-# Intent: As an Azure Stack user, I want to XXX so I can XXX.
-# Keyword: XXX
+# Intent: As an Azure Stack Hub user, I want to know about the supported commands for Azure Container Registries on Azure Stack Hub so that I can manage my container images and artifacts.
 
 ---
 
 # Azure Container Registry supported commands on Azure Stack Hub
 
-The Azure Container Registry (ACS) on Azure Stack support a subset of the global Azure
-features. You can find out more information in the [Overview](container-registry-overview.md).
+Azure Container Registry on Azure Stack Hub supports a subset of the global Azure features. For more information, see the [overview](container-registry-overview.md).
 
-## Supported Azure Container Registry CLI Commands
+## Supported Azure Container Registry CLI commands
 
 | Command | Description |
 |---|---|
-| az acr check-health | Gets health information on the environment and optionally a target registry. |
-| az acr check-name | Checks if an Azure Container Registry name is valid and available for use. |
-| az acr create | Create an Azure Container Registry. |
-| az acr credential renew | Regenerate login credentials for an Azure Container Registry. |
-| az acr credential show | Get the login credentials for an Azure Container Registry. |
-| az acr delete | Deletes an Azure Container Registry. |
-| az acr import | Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, docker push. |
-| az acr list | Lists all the container registries under the current subscription. |
-| az acr login | Log in to an Azure Container Registry through the Docker CLI. |
-| az acr manifest list-metadata | List manifests of a repository in an Azure Container Registry. |
-| az acr repository delete | Delete a repository or image in an Azure Container Registry. |
-| az acr repository list | List repositories in an Azure Container Registry. |
-| az acr repository show | Get the attributes of a repository or image in an Azure Container Registry. |
-| az acr repository show-tags | Show tags for a repository in an Azure Container Registry. |
-| az acr repository untag | Untag an image in an Azure Container Registry. |
-| az acr repository update | Update the attributes of a repository or image in an Azure Container Registry. |
-| az acr show | Get the details of an Azure Container Registry. |
-| az acr show-usage | Get the storage usage for an Azure Container Registry. |
-| az acr update | Update an Azure Container Registry. |
-| az acr webhook create | Create a webhook for an Azure Container Registry. |
-| az acr webhook delete | Delete a webhook from an Azure Container Registry. |
-| az acr webhook get-config | Get the service URI and custom headers for the webhook. |
-| az acr webhook list | List all of the webhooks for an Azure Container Registry. |
-| az acr webhook list-events | List recent events for a webhook. |
-| az acr webhook ping | Trigger a ping event for a webhook. |
-| az acr webhook show | Get the details of a webhook. |
-| az acr webhook update | Update a webhook. |
+| `az acr check-health` | Gets health information on the environment and optionally a target registry. |
+| `az acr check-name` | Checks if an Azure Container Registry name is valid and available for use. |
+| `az acr create` | Creates an Azure Container Registry instance. |
+| `az acr credential renew` | Regenerates login credentials for an Azure Container Registry instance. |
+| `az acr credential show` | Gets the login credentials for an Azure Container Registry instance. |
+| `az acr delete` | Deletes an Azure Container Registry instance. |
+| `az acr import` | Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, docker push. |
+| `az acr list` | Lists all the container registries under the current subscription. |
+| `az acr login` | Logs in to an Azure Container Registry through the Docker CLI. |
+| `az acr manifest list-metadata` | Lists manifests of a repository in an Azure Container Registry. |
+| `az acr repository delete` | Deletes a repository or image in an Azure Container Registry. |
+| `az acr repository list` | Lists repositories in an Azure Container Registry. |
+| `az acr repository show` | Gets the attributes of a repository or image in an Azure Container Registry. |
+| `az acr repository show-tags` | Shows tags for a repository in an Azure Container Registry. |
+| `az acr repository untag` | Untags an image in an Azure Container Registry. |
+| `az acr repository update` | Updates the attributes of a repository or image in an Azure Container Registry. |
+| `az acr show` | Gets the details of an Azure Container Registry. |
+| `az acr show-usage` | Gets the storage usage for an Azure Container Registry. |
+| `az acr update` | Updates an Azure Container Registry. |
+| `az acr webhook create` | Creates a webhook for an Azure Container Registry. |
+| `az acr webhook delete` | Deletes a webhook from an Azure Container Registry. |
+| `az acr webhook get-config` | Gets the service URI and custom headers for the webhook. |
+| `az acr webhook list` | Lists all of the webhooks for an Azure Container Registry. |
+| `az acr webhook list-events` | Lists recent events for a webhook. |
+| `az acr webhook ping` | Triggers a ping event for a webhook. |
+| `az acr webhook show` | Gets the details of a webhook. |
+| `az acr webhook update` | Updates a webhook. |
 
 ### Unsupported optional parameters
 
-Some supported commands have optional parameters that are not supported on Azure Stack Hub. The unsupported parameters are listed below.
+Some supported commands have optional parameters that are not supported on Azure Stack Hub. The unsupported parameters are as follows:
 
-**az acr create**
- - `--allow-trusted-services`  
- - `--default-action`  
- - `--identity`  
- - `--key-encryption-key`  
- - `--public-network-enabled`  
- - `--workspace`  
- - `--zone-redundancy`  
+`az acr create`
+- `--allow-trusted-services`  
+- `--default-action`  
+- `--identity`  
+- `--key-encryption-key`  
+- `--public-network-enabled`  
+- `--workspace`  
+- `--zone-redundancy`  
 
-**az acr update**
- - `--allow-trusted-services`
- - `--anonymous-pull-enabled`
- - `--data-endpoint-enabled`
- - `--default-action`
- - `--public-network-enabled`
- - `--sku`
+`az acr update`
+- `--allow-trusted-services`
+- `--anonymous-pull-enabled`
+- `--data-endpoint-enabled`
+- `--default-action`
+- `--public-network-enabled`
+- `--sku`
 
-## Supported Azure Container Registry PowerShell commands for public preview
+## Supported Azure Container Registry PowerShell commands
 
 | Command | Description |
 |---|---|
@@ -103,4 +101,4 @@ Some supported commands have optional parameters that are not supported on Azure
 
 ## Next steps
 
-Learn more about the [Azure Container Registry on Azure Stack Hub](container-registry-overview.md)
+Learn more about [Azure Container Registry on Azure Stack Hub](container-registry-overview.md)

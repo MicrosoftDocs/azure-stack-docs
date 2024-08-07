@@ -3,7 +3,7 @@ title: Create Windows Server containers
 description: Learn how to create Windows Server containers in Azure Stack HCI.
 ms.topic: how-to
 author: sethmanheim
-ms.date: 01/31/2024
+ms.date: 07/15/2024
 ms.author: sethm 
 ms.lastreviewed: 01/31/2024
 ms.reviewer: guanghu
@@ -14,18 +14,17 @@ ms.reviewer: guanghu
 
 [!INCLUDE [hci-applies-to-23h2](includes/hci-applies-to-23h2.md)]
 
-In this article, you use Azure CLI to deploy a nodepool to an existing AKS cluster that runs Windows Server containers. You also deploy an
-ASP.NET sample application in a Windows Server container to the cluster.
+This article describes how to use Azure CLI to deploy a node pool to an existing AKS cluster that runs Windows Server containers. It also describes how to deploy an ASP.NET sample application in a Windows Server container to the cluster.
 
 ## Prerequisites
 
 Create an AKS cluster following the instructions in [How to create AKS clusters](aks-create-clusters-cli.md).
 
-## Add a nodepool
+## Add a node pool
 
-By default, a Kubernetes cluster is created with a nodepool that can run Linux containers. You must add another nodepool that can run Windows Server containers alongside the Linux nodepool.
+By default, a Kubernetes cluster is created with a node pool that can run Linux containers. You must add another node pool that can run Windows Server containers alongside the Linux node pool.
 
-Add a nodepool with Windows container hosts using the `az aksarc nodepool add` command with the parameter `--os-type Windows`. If the operating system SKU isn't specified, the nodepool is set to the default OS based on the Kubernetes version of the cluster. Windows Server 2022 is the default operating system for Kubernetes versions 1.25.0 and higher. Windows Server 2019 is the default OS for earlier versions.
+Add a node pool with Windows container hosts using the `az aksarc nodepool add` command with the parameter `--os-type Windows`. If the operating system SKU isn't specified, the node pool is set to the default OS based on the Kubernetes version of the cluster. Windows Server 2022 is the default operating system for Kubernetes versions 1.25.0 and higher. Windows Server 2019 is the default OS for earlier versions.
 
 - To use Windows Server 2019, specify the following parameters:
   - `os-type` set to `Windows`.
@@ -34,10 +33,10 @@ Add a nodepool with Windows container hosts using the `az aksarc nodepool add` c
   - `os-type` set to `Windows`.
   - `os-sku` set to `Windows2022` (optional).
 
-The following command creates a new nodepool named `$mynodepool` and adds it to `$myAKSCluster` with one Windows 2019 node.
+The following command creates a new node pool named `$mynodepool` and adds it to `$myAKSCluster` with one Windows Server 2022 node:
 
 ```azurecli
-az aksarc nodepool add --resource-group $myResourceGroup --cluster-name $myAKSCluster --name $mynodepool --node-count 1 --os-type Windows --os-sku Windows2019
+az aksarc nodepool add --resource-group $myResourceGroup --cluster-name $myAKSCluster --name $mynodepool --node-count 1 --os-type Windows --os-sku Windows2022
 ```
 
 ## Connect to the AKS cluster
@@ -67,7 +66,7 @@ Keep this session running and connect to your Kubernetes cluster from a differen
 kubectl get node -A --kubeconfig .\aks-arc-kube-config
 ```
 
-The following output example shows the node created in the previous steps. Make sure the node status is **Ready**:
+The following example output shows the node created in the previous steps. Make sure the node status is **Ready**:
 
 ```output
 NAME              STATUS   ROLES           AGE     VERSION
@@ -86,7 +85,7 @@ The ASP.NET sample application is provided as part of the [.NET Framework sampl
 
 1. Create a file named **sample.yaml** and copy in the following YAML definition:
 
-   ```yml
+   ```yaml
    apiVersion: apps/v1
    kind: Deployment
    metadata:
@@ -137,7 +136,7 @@ The ASP.NET sample application is provided as part of the [.NET Framework sampl
    kubectl apply -f sample.yaml --kubeconfig .\\aks-arc-kube-config
    ```
 
-The following example output shows the deployment and service created successfully:
+The following example output shows that the deployment and service were created successfully:
 
 ```output
 deployment.apps/sample created
@@ -173,9 +172,9 @@ When the application runs, a Kubernetes service exposes the application front en
 
    If you receive a connection timeout when trying to load the page, you should verify that the sample app is ready using the `kubectl get pods --watch` command. Sometimes, the Windows container isn't started by the time your external IP address is available.
 
-## Delete nodepool
+## Delete node pool
 
-Delete the nodepool using the [`az akshybrid nodepool delete`](/cli/azure/group#az_group_delete) command.
+Delete the node pool using the [`az akshybrid nodepool delete`](/cli/azure/group#az_group_delete) command:
 
 ```azurecli
 az aksarc nodepool delete -g $myResourceGroup --cluster-name $myAKSCluster --name $mynodepool --no-wait
@@ -183,6 +182,4 @@ az aksarc nodepool delete -g $myResourceGroup --cluster-name $myAKSCluster --nam
 
 ## Next steps
 
-In this article, you deployed a Windows nodepool to an existing AKS cluster and deployed an ASP.NET sample application in a Windows Server
-container to it.
-
+[AKS enabled by Arc overview](aks-overview.md)

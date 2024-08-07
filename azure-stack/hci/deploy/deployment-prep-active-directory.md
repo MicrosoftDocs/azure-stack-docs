@@ -3,7 +3,7 @@ title: Prepare Active Directory for new Azure Stack HCI, version 23H2 deployment
 description: Learn how to prepare Active Directory before you deploy Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 05/15/2024
+ms.date: 08/05/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -20,6 +20,7 @@ Active Directory requirements for Azure Stack HCI include:
 - A dedicated Organization Unit (OU).
 - Group policy inheritance that is blocked for the applicable Group Policy Object (GPO).
 - A user account that has all rights to the OU in the Active Directory.
+- Machines must not be joined to Active Directory before deployment.
 
 > [!NOTE]
 > - You can use your existing process to meet the above requirements. The script used in this article is optional and is provided to simplify the preparation.
@@ -45,7 +46,7 @@ Before you begin, make sure you've done the following:
 
 ## Active Directory preparation module
 
-The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Directory. Here are the required parameters associated with the cmdlet:
+The `New-HciAdObjectsPreCreation` cmdlet of the AsHciADArtifactsPreCreationTool PowerShell module is used to prepare Active Directory for Azure Stack HCI deployments. Here are the required parameters associated with the cmdlet:
 
 |Parameter|Description|
 |--|--|
@@ -59,13 +60,12 @@ The *AsHciADArtifactsPreCreationTool.ps1* module is used to prepare Active Direc
 |`-Deploy`|Select this scenario for a brand new deployment instead of an upgrade of an existing system.|-->
 
 > [!NOTE]
-> - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path `- &,”,’,<,>`.
+> - The `-AsHciOUName` path doesn't support the following special characters anywhere within the path: `&,",',<,>`.
 > - Moving the computer objects to a different OU after the deployment is complete is also not supported.
 
 ## Prepare Active Directory
 
 When you prepare Active Directory, you create a dedicated Organizational Unit (OU) to place the Azure Stack HCI related objects such as deployment user.
-
 
 To create a dedicated OU, follow these steps:
 

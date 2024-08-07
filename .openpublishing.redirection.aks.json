@@ -1376,6 +1376,11 @@
         "redirect_document_id": false
       },
       {
+        "source_path": "AKS-Hybrid/offline-download.md",
+        "redirect_url": "/azure/aks/hybrid/aks-whats-new-23h2",
+        "redirect_document_id": false
+      },      
+      {
         "source_path": "AKS-Hybrid/kubernetes-rbac-azure-ad.md",
         "redirect_url": "/azure/aks/hybrid/kubernetes-rbac-entra-id",
         "redirect_document_id": false

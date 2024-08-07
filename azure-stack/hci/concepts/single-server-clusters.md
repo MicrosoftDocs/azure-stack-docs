@@ -54,7 +54,7 @@ The following table compares attributes of a single-node cluster to multi-node c
 |[Azure Virtual Desktop](/azure/virtual-desktop/overview) | Yes | Yes |
 |[Azure Site Recovery](../manage/azure-site-recovery.md) | Yes | Yes |
 |[Azure Stack HCI: Stretch cluster support](../concepts/stretched-clusters.md) | No | Yes |
-|[Use Graphics Processing Units (GPUs) with clustered VMs](../manage/use-gpu-with-clustered-vm.md)  | Yes | Yes |
+|[Use Graphics Processing Units (GPUs) with clustered VMs](/windows-server/virtualization/hyper-v/deploy/use-gpu-with-clustered-vm?pivots=azure-stack-hci&toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json)  | Yes | Yes |
 
 ## Known issues
 

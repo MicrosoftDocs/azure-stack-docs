@@ -55,9 +55,9 @@ groups:
   - id: alma-86
     title: AlmaLinux HPC 8.6
   - id: rhel-7
-    title: Red Hat Enterprise Linux or CentOS 7
+    title: Red Hat Enterprise Linux 7
   - id: rhel-8
-    title: Red Hat Enterprise Linux, CentOS Linux, or AlmaLinux 8
+    title: Red Hat Enterprise Linux or AlmaLinux 8
   - id: rhel-9
     title: Red Hat Enterprise Linux 9
   - id: ubuntu-18
@@ -74,7 +74,14 @@ groups:
     title: Version 23H2
   - id: aks-22h2
     title: Version 22H2
-
+- id: windows-os
+  title: Products
+  prompt: "Choose your product:"
+  pivots:
+  - id: windows-server
+    title: Windows Server
+  - id: azure-stack-hci
+    title: Azure Stack HCI
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
 

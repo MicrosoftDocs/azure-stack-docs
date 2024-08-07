@@ -28,8 +28,10 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
     | File | Link |
     | ---- | ---- |
-    | K8s installer (1.27.6) | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
-    | K3s installer (1.27.6) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
+    | K8s installer (1.28.3) | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
+    | K3s installer (1.28.3) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
+    | K8s installer (1.27.6) | [aka.ms/aks-edge/k8s-msi-1.27](https://aka.ms/aks-edge/k8s-msi-1.27) |
+    | K3s installer (1.27.6) | [aka.ms/aks-edge/k3s-msi-1.27](https://aka.ms/aks-edge/k3s-msi-1.27) |
     | K8s installer (1.26.6) | [aka.ms/aks-edge/k8s-msi-1.26](https://aka.ms/aks-edge/k8s-msi-1.26)  |
     | K3s installer (1.26.10) | [aka.ms/aks-edge/k3s-msi-1.26](https://aka.ms/aks-edge/k3s-msi-1.26) |
     | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
@@ -38,6 +40,9 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 1. Before you install, make sure you uninstall any private preview installations and reboot your system before proceeding.
 
 In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both K8s and K3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first, then reboot.
+
+> [!IMPORTANT]
+> Once a version of Kubernetes is no longer supported, downloads for associated AKS Edge Essentials releases are subject to discontinuation.
 
 > [!NOTE]
 > You must extract the Windows node files from the zip archive into the same folder as the installer MSIs if you want to use the Windows node capability.

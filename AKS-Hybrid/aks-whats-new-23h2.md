@@ -2,11 +2,11 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 05/28/2024
+ms.date: 06/25/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
-ms.lastreviewed: 05/28/2024
+ms.lastreviewed: 06/25/2024
 
 ---
 
@@ -50,6 +50,16 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Taints and labels update**. You can can now update taints and labels during an AKS Arc node pool update operation using Azure CLI and Azure Resource Manager templates.
 - **AKS Arc cluster platform metrics and alerts**. You can now view AKS Arc cluster metrics (platform metrics) and create metric-based alerts.
 - **Auto cert repair**. You can now automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
+- **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This can help in environments in which downloading large files is inconvenient. If you are interested in using it, contact your Microsoft Account representative.
+
+#### Supported component versions
+
+The following component versions are supported in release 2405:
+
+| Component           | 2024-06-11                                       |
+|---------------------|--------------------------------------------------|
+| AKS Arc             | 1.0.23.10605                                     |
+| Kubernetes versions | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5 |
 
 ### Release 2402
 

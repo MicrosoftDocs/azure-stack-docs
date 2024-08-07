@@ -4,7 +4,7 @@ description: Learn how to use PowerShell for cluster autoscaling in AKS enabled 
 ms.topic: how-to
 author: sethmanheim
 ms.author: sethm
-ms.lastreviewed: 10/20/2022
+ms.lastreviewed: 06/27/2024
 ms.reviewer: mikek
 ms.date: 11/07/2022
 
@@ -31,9 +31,9 @@ You can provide the **autoscalerconfig** object when creating your cluster. The 
 
 ## Change an existing AksHciAutoScalerConfig profile object
 
-When you update an existing **AksHciAutoScalerConfig profile** object, clusters using that object are updated to use the new parameters.
+When you update an existing **AksHciAutoScalerConfig profile** object, clusters using that object are updated to use the new parameters:
 
-```powershell 
+```powershell
 Set-AksHciAutoScalerProfile -name myProfile -autoScalerProfileConfig @{ "max-node-count"=5; "min-node-count"=2 }
 ```
 
@@ -41,7 +41,7 @@ You can update the **autoscalerconfig** object, which contains the parameters fo
 
 ## Enable autoscaling for new clusters
 
-To enable autoscaling automatically on all newly created node pools, use the following parameters with the `New-AksHciCluster` command:
+To enable autoscaling automatically on all newly-created node pools, use the following parameters with the `New-AksHciCluster` command:
 
 ```powershell
 New-AksHciCluster -name mycluster -enableAutoScaler -autoScalerProfileName myAutoScalerProfile
@@ -75,7 +75,7 @@ Set-AksHciCluster -Name <string> -enableAutoScaler $false
 
 Now that the cluster and node pool are configured to automatically scale, you can configure a workload to also scale in a way that makes use of the horizontal autoscaler capabilities.
 
-Two main methods are available for workload scaling:
+Two methods are available for workload scaling:
 
 * **Kubernetes Horizontal Pod Autoscaler**: Based on load characteristics, the Horizontal Pod Autoscaler (also known as the *horizontal autoscaler*) scales the pods of an application deployment to available nodes in the Kubernetes cluster. If no more nodes are available to be scheduled, the horizontal autoscaler instantiates a new node to which to schedule the pods. If application load goes down, the nodes are scaled back again.
 * **Kubernetes node anti-affinity rules**: Anti-affinity rules for a Kubernetes deployment can specify that a set of pods can't be scaled on the same node, and a different node is required to scale the workload. In combination with either load characteristics or the number of target pods for the application instances, the horizontal autoscaler instantiates new nodes in the node pool to satisfy requests. If application demand subsides, the horizontal autoscaler scales down the node pool again.
@@ -102,7 +102,7 @@ Get-AksHciCredential -name mycluster
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 ```
 
-After the Kubernetes Metrics Server is deployed, you can deploy an application to the node pool, which you use to scale. We use a test application from the Kubernetes community website for this example.
+After the Kubernetes Metrics Server is deployed, you can deploy an application to the node pool, which you use to scale. We use a test application from the Kubernetes community website for this example:
 
 ```powershell  
 kubectl apply -f https://k8s.io/examples/application/php-apache.yaml
@@ -112,7 +112,7 @@ service/php-apache created
 
 This command creates a deployment of an Apache web server-based PHP application that will return an "OK" message to a calling client.
 
-Next, configure the Horizontal Pod Autoscaler to schedule a new pod when the CPU usage of the current pod reaches 50 percent, and scale from 1 to 50 pods.
+Next, configure the Horizontal Pod Autoscaler to schedule a new pod when the CPU usage of the current pod reaches 50 percent, and scale from 1 to 50 pods:
 
 ```powershell
 kubectl autoscale deployment php-apache --cpu-percent=50 --min=1 --max=10
@@ -191,7 +191,7 @@ Prerequisites:
 
 Create a YAML file with the following content, and save it as **node-anti-affinity.yaml** in a local folder.
 
-``` yaml
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:

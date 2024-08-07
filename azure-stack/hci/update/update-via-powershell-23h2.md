@@ -261,14 +261,14 @@ Discovering solution updates using the online catalog is the *recommended* metho
 3. Optionally review the versions of the update package components.
 
     ```powershell
-    $Update = Get-SolutionUpdate 
+    $Update = Get-SolutionUpdate | ? version -eq "10.2302.0.31"
     $Update.ComponentVersions
     ```
 
     Here's an example output:
 
     ```console
-     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
+     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate | ? version -eq "10.2302.0.31"
      PS C:\Users\lcmuser> $Update.ComponentVersions
     
     PackageType Version      LastUpdated
@@ -322,7 +322,7 @@ If you're using solution extension updates from your hardware, you would need to
     
     DisplayName                 Version      State
     -----------                 -------      -----
-    Azure Stack HCI 2303 bundle 10.2303.0.31 Ready
+    2023.03 Feature Update 10.2303.0.31 Ready
 
      PS C:\Users\lcmuser>
     ```
@@ -330,14 +330,14 @@ If you're using solution extension updates from your hardware, you would need to
 7. Optionally check the version of the update package components. Run the following command:
 
     ```powershell
-    $Update = Get-SolutionUpdate 
+    $Update = Get-SolutionUpdate | ? version -eq "10.2302.0.31"
     $Update.ComponentVersions 
     ```
 
     Here's an example output:
 
     ```console
-     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate 
+     PS C:\Users\lcmuser> $Update = Get-SolutionUpdate | ? version -eq "10.2302.0.31"
      PS C:\Users\lcmuser> $Update.ComponentVersions
     
     PackageType Version      LastUpdated
@@ -357,7 +357,7 @@ You can download the updates, perform a set of checks to verify your cluster's u
     - To download and install the update, run the following command:
 
         ```powershell
-        Get-SolutionUpdate | ? version -eq "10.2302.0.31" | Start-SolutionUpdate
+        Get-SolutionUpdate | ? version -eq "10.2302.0.31" | Start-SolutioUpdate
         ```
 
     - To only download the updates without starting the installation, use the `-PrepareOnly` flag with `Start-SolutionUpdate`.
