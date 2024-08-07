@@ -98,7 +98,7 @@ We highly recommend using the Azure portal, to browse to your failed update and 
 If you're using PowerShell and need to resume a previously failed update run, use the following command:
 
 ```powershell
-Get-Solutionpdate | Start-SolutionUpdate
+Get-SolutionUpdate | Start-SolutionUpdate
 ```
 
 To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
