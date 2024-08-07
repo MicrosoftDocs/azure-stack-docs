@@ -79,7 +79,7 @@ Obtain the Application ID of the Arc extension by running [az ad sp list](/cli/a
 $appID = az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --query "[].servicePrincipalNames" --output tsv
 ```
 
-Once you have the $appID, you can create the Arc extension to install MetalLB on your Kubernetes cluster. To run the below command, you need to have [`Kubernetes extension contributor`](/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.
+Once you have the $appID, you can create the Arc extension to install MetalLB on your Kubernetes cluster. To run the below command, you need to have [`Kubernetes extension contributor`](/azure/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.
 
 ```azurecli
 az k8s-extension create --cluster-name $clusterName -g $rgName --cluster-type connectedClusters --extension-type microsoft.arcnetworking --config k8sRuntimeFpaObjectId=$appID -n arcnetworking --release-train preview
