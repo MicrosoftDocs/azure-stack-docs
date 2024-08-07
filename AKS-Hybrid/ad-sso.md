@@ -30,10 +30,10 @@ AD integration uses AD kubeconfig, which is distinct from the certificate-based 
 Another security benefit with AD integration is that the users and groups are stored as [security identifiers (SIDs)](/troubleshoot/windows-server/identity/security-identifiers-in-windows). Unlike group names, SIDs are immutable and unique and therefore present no naming conflicts.
 
 > [!NOTE]
-> Currently, AD SSO connectivity is only supported for workload clusters.
+> AD SSO connectivity is only supported for workload clusters.
 
 > [!NOTE]
-> Currently, using nested AD groups (creating an AD group within another AD group) is unsupported.
+> The use of nested AD groups (creating an AD group within another AD group) is unsupported.
 
 This article guides you through the steps to set up Active Directory as the identity provider and to enable SSO via `kubectl`:
 
