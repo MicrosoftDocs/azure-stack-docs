@@ -267,4 +267,4 @@ Resume-ClusterNode
 
 ## Next step
 
-Learn how to [Prepare to apply solution upgrade on Azure Stack HCI, version 23H2](../index.yml). 
+Learn how to [Prepare to apply solution upgrade on Azure Stack HCI, version 23H2](../index.yml).
