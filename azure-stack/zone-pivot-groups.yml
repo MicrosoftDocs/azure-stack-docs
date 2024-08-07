@@ -74,7 +74,14 @@ groups:
     title: Version 23H2
   - id: aks-22h2
     title: Version 22H2
-
+- id: windows-os
+  title: Products
+  prompt: "Choose your product:"
+  pivots:
+  - id: windows-server
+    title: Windows Server
+  - id: azure-stack-hci
+    title: Azure Stack HCI
 # BELOW: entries inherited from github.com/microsoftdocs/azure-docs-pr/articles/zone-pivot-groups.yml for reuse.
 # For consistency across Docs. This includes: client OSes, languages, etc.
 
