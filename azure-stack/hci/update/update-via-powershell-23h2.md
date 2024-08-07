@@ -357,7 +357,7 @@ You can download the updates, perform a set of checks to verify your cluster's u
     - To download and install the update, run the following command:
 
         ```powershell
-        Get-SolutionUpdate | Start-SolutionUpdate
+        Get-SolutionUpdate | ? version -eq "10.2302.0.31" | Start-SolutionUpdate
         ```
 
     - To only download the updates without starting the installation, use the `-PrepareOnly` flag with `Start-SolutionUpdate`.
