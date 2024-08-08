@@ -89,7 +89,7 @@ az k8s-extension create --cluster-name $clusterName -g $rgName --cluster-type co
 
 ## Deploy MetalLB load balancer on your Kubernetes cluster
 
-You can now create a load balancer for your Kubernetes cluster remotely by running the [`az k8s-runtime load-balancer create`](/cli/azure/k8s-runtime/load-balancer#az-k8s-runtime-load-balancer-create) command. This command creates a custom resource of kind `IPAddressPool` in namespace `kube-system`. 
+You can now create a load balancer for your Kubernetes cluster remotely by running the [`az k8s-runtime load-balancer create`](/cli/azure/k8s-runtime/load-balancer#az-k8s-runtime-load-balancer-create) command. This command creates a custom resource of type `IPAddressPool` in the namespace `kube-system`. 
 
 Configure the following variables before proceeding:
 
