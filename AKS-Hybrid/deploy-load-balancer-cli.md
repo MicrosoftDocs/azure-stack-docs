@@ -60,7 +60,8 @@ If you don't have [Graph permission Application.Read.All](/graph/permissions-ref
 az provider register -n Microsoft.KubernetesRuntime
 ```
 
-You can check if the resource provider has been registered successfully by running the below command.
+You can check if the resource provider has been registered successfully by running the following command.
+
 ```
 az provider show -n Microsoft.KubernetesRuntime -o table
 ```
