@@ -73,7 +73,7 @@ Namespace                    RegistrationPolicy    RegistrationState
 Microsoft.KubernetesRuntime  RegistrationRequired  Registered
 ```
 
-2. Install the MetalLB k8s-extension by obtaining the AppID of the MetalLB Arc extension, and then running the extension create command. Note that you must run the below commands once per Arc Kubernetes cluster.
+1. To install the MetalLB k8s-extension, obtain the AppID of the MetalLB Arc extension, and then run the extension create command. You must run the following commands once per Arc Kubernetes cluster.
 
 Obtain the Application ID of the Arc extension by running [az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list). In order to run the below command, you need to be a `user` member of your Azure tenant. To learn more about user vs guest membership, visit [default user permissions in Microsoft Entra ID](/entra/fundamentals/users-default-permissions).
 
