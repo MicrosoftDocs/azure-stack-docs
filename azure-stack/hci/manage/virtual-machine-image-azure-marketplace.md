@@ -84,28 +84,28 @@ Follow these steps to create a VM image using the Azure CLI.
 1. Select a custom location to deploy your VM image. The custom location should correspond to the custom location for your Azure Stack HCI cluster. Get the custom location ID for your Azure Stack HCI cluster. Run the following command:
 
     ```azurecli
-    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom location name for Azure Stack HCI cluster>" --query id -o tsv)
+    $customLocationID=(az customlocation show --resource-group $resource_group --name "<custom_location_name_for_Azure_Stack_HCI_cluster>" --query id -o tsv)
     ```
 
 1. Create the VM image starting with a specified marketplace image. Make sure to specify the offer, publisher, SKU, and version for the marketplace image. Use the following table to find the available marketplace images and their attribute values:
 
     | Name | Publisher | Offer | SKU |
     |------|-----------|-------|------|
-    | Windows 11 Enterprise multi-session + M365 | microsoftwindowsdesktop | office-365 | - win11-21h2-avd-m365<br>- win11-23h2-avd-m365 |
-    | Windows 10 Enterprise multi-session + M365  | microsoftwindowsdesktop | office-365 | - win10-21h2-avd-m365<br>- win10-22h2-avd-m365 |
-    | Windows 11 Pro | microsoftwindowsdesktop | windows-11 | - win11-21h2-pro<br>- win11-22h2-pro<br>- win11-23h2-pro |
-    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | - win11-21h2-ent<br>- win11-22h2-ent<br>- win11-23h2-ent |
-    | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | - win11-21h2-avd<br>- win11-22h2-avd<br>- win11-23h2-avd |
+    | Windows 11 Enterprise multi-session + M365 | microsoftwindowsdesktop | office-365 | win11-21h2-avd-m365<br>win11-23h2-avd-m365 |
+    | Windows 10 Enterprise multi-session + M365  | microsoftwindowsdesktop | office-365 | win10-21h2-avd-m365<br>win10-22h2-avd-m365 |
+    | Windows 11 Pro | microsoftwindowsdesktop | windows-11 | win11-21h2-pro<br>win11-22h2-pro<br>win11-23h2-pro |
+    | Windows 11 Enterprise | microsoftwindowsdesktop | windows-11 | win11-21h2-ent<br>win11-22h2-ent<br>win11-23h2-ent |
+    | Windows 11 Enterprise multi-session | microsoftwindowsdesktop | windows-11 | win11-21h2-avd<br>win11-22h2-avd<br>win11-23h2-avd |
     | Windows 10 Pro | microsoftwindowsdesktop | windows-10 | win10-22h2-pro-g2 |
     | Windows 10 Enterprise | microsoftwindowsdesktop | windows-10 | win10-22h2-ent-g2 |
     | Windows 10 Enterprise multi-session | microsoftwindowsdesktop | windows-10 | win10-22h2-avd |
-    | Windows Server 2022 Datacenter: Azure Edition | microsoftwindowsserver | windowsserver | - 2022-datacenter-azure-edition-hotpatch<br>- 2022-datacenter-azure-edition-core<br>- 2022-datacenter-azure-edition |
-    | Windows Server 2019 | microsoftwindowsserver | windowsserver | - 2019-datacenter-gensecond<br>- 2019-datacenter-core-g2 |
-    | SQL Server 2022 Enterprise on Windows Server 2022 | microsoftsqlserver | sql2022-ws2022 | - enterprise-gen2<br>- standard-gen2 |
+    | Windows Server 2022 Datacenter: Azure Edition | microsoftwindowsserver | windowsserver | 2022-datacenter-azure-edition-hotpatch<br>2022-datacenter-azure-edition-core<br>2022-datacenter-azure-edition |
+    | Windows Server 2019 | microsoftwindowsserver | windowsserver | 2019-datacenter-gensecond<br>2019-datacenter-core-g2 |
+    | SQL Server 2022 Enterprise on Windows Server 2022 | microsoftsqlserver | sql2022-ws2022 | enterprise-gen2<br>standard-gen2 |
 
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name "<custom_location_name>" --os-type $ostype --offer "<OS_offer_name>" --sku "<SKU_name>"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name "<custom_location_name_for_Azure_Stack_HCI_cluster>" --os-type $ostype --offer "<OS_offer_name>" --sku "<SKU_name>"
     ```
 
     A deployment job starts for the VM image. 
