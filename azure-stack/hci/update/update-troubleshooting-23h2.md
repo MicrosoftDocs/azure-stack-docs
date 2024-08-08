@@ -36,7 +36,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
 2. Get all the solutions updates and then filter the solution updates corresponding to a specific version. The version used corresponds to the version of solution update that failed to install.
 
     ```powershell
-    $Update = Get-SolutionUpdate | ? version -eq "<Version string>" -verbose
+    $Update = Get-SolutionUpdate | ? Version -eq "<Version string>" -verbose
     ```
 
 3. Identify the action plan for the failed solution update run.
@@ -54,7 +54,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
     Here's a sample output:
 
     ```output
-    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate| ? version -eq "10.2303.1.7" -verbose
+    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate| ? Version -eq "10.2303.1.7" -verbose
     PS C:\Users\lcmuser> $Failure = $Update|Get-SolutionUpdateRun
     PS C:\Users\lcmuser> $Failure
     
