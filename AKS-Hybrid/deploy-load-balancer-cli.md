@@ -52,7 +52,7 @@ az k8s-runtime load-balancer enable --resource-uri subscriptions/$subId/resource
 
 ### Option 2: Enable load balancer Arc Kubernetes extension using az k8s-extension add command
 
-If you do not have [Graph permission Application.Read.All](/graph/permissions-reference#applicationreadall), you can follow the below steps:
+If you don't have [Graph permission Application.Read.All](/graph/permissions-reference#applicationreadall), you can follow these steps:
 
 1. Register the `Microsoft.KubernetesRuntime RP` if you haven't already done so. Note that you only need to register once per Azure subscription. You can also register resource providers using Azure portal. To learn more about how to register resource providers and required permissions, visit [how to register a resource provider](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider).
 
