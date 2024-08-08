@@ -42,7 +42,7 @@ Configure the following variables before proceeding:
 
 ### Option 1: Enable load balancer Arc Kubernetes extension using az k8s-runtime load-balancer enable command
 
-Enabling load balancer extension using the below command requires you to have [Graph permission Application.Read.All](/graph/permissions-reference#applicationreadall). You can check if you have this permission by logging into your Azure subscription, and running the following command: `az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --output json`. If the command fails, contact your Azure tenant administrator to get `Application.Read.All` role.
+To enable the load balancer extension using the following command, you must have [Graph permission Application.Read.All](/graph/permissions-reference#applicationreadall). You can check if you have this permission by logging into your Azure subscription, and running the following command: `az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --output json`. If the command fails, contact your Azure tenant administrator to get `Application.Read.All` role.
 
 Use the [`az k8s-runtime load-balancer enable`](/cli/azure/k8s-runtime/load-balancer#az-k8s-runtime-load-balancer-enable) command to install the Arc extension and register the resource provider for your Kubernetes cluster. The `--resource-uri` parameter refers to the resource manager ID of your Kubernetes cluster.
 
