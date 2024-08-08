@@ -35,10 +35,6 @@ An upgrade is a whole new version of software that represents a significant chan
 
 The Azure Stack HCI, version 23H2, is a whole new version of the software with a multitude of new capabilities. To move from Azure Stack HCI, version 22H2 to version 23H2, you need to upgrade your existing cluster. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Stack HCI, you would need to update your existing cluster.
 
-TO update your existing cluster:
-
-- If you're running Azure Stack HCI, version 22H2, see [Update Azure Stack HCI, version 22H2](../manage/update-cluster.md).
-- If you're running Azure Stack HCI, version 23H2, see [Update Azure Stack HCI, version 23H2](../update/azure-update-manager-23h2.md).
 
 ## Upgrade to Azure Stack HCI, version 23H2
 
@@ -49,9 +45,9 @@ To upgrade your Azure Stack HCI from an old version, follow these high-level ste
     - [Via the Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
     - [Via other manual methods](./upgrade-22h2-to-23h2-other-methods.md).
 
-1. Prepare to apply the solution update.
+1. Validate the solution upgrade readiness of your Azure Stack HCI cluster.
 
-1. Apply the solution update.
+1. Install the solution upgrade.
 
 Here's a diagram that illustrates the steps to upgrade your cluster from version 22H2 to version 23H2:
 
