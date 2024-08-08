@@ -62,7 +62,7 @@ az provider register -n Microsoft.KubernetesRuntime
 
 You can check if the resource provider has been registered successfully by running the following command.
 
-```
+```azurecli
 az provider show -n Microsoft.KubernetesRuntime -o table
 ```
 
