@@ -78,18 +78,18 @@ Namespace                    RegistrationPolicy    RegistrationState
 Microsoft.KubernetesRuntime  RegistrationRequired  Registered
 ```
 
-2. To install the MetalLB Arc extension, obtain the AppID of the k8-extension, and then run the extension create command. You must run the following commands once per Arc Kubernetes cluster.
+2. To install the MetalLB Arc extension, obtain the AppID of the MetalLB extension resource provider, and then run the extension create command. You must run the following commands once per Arc Kubernetes cluster.
 
 Obtain the Application ID of the Arc extension by running [az ad sp list](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list). In order to run the following command, you must be a `user` member of your Azure tenant. For more information about user and guest membership, see [default user permissions in Microsoft Entra ID](/entra/fundamentals/users-default-permissions).
 
 ```azurecli
-$appID = az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --query "[].servicePrincipalNames" --output tsv
+$objID = az ad sp list --filter "appId eq '087fca6e-4606-4d41-b3f6-5ebdf75b8b4c'" --query "[].id" --output tsv
 ```
 
-Once you have the $appID, you can install the MetalLB Arc extension on your Kubernetes cluster. To run the below command, you need to have [**Kubernetes extension contributor**](/azure/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.
+Once you have the $objID, you can install the MetalLB Arc extension on your Kubernetes cluster. To run the below command, you need to have [**Kubernetes extension contributor**](/azure/role-based-access-control/built-in-roles/containers#kubernetes-extension-contributor) role.
 
 ```azurecli
-az k8s-extension create --cluster-name $clusterName -g $rgName --cluster-type connectedClusters --extension-type microsoft.arcnetworking --config k8sRuntimeFpaObjectId=$appID -n arcnetworking
+az k8s-extension create --cluster-name $clusterName -g $rgName --cluster-type connectedClusters --extension-type microsoft.arcnetworking --config k8sRuntimeFpaObjectId=$objID -n arcnetworking
 ```
 
 ## Deploy MetalLB load balancer on your Kubernetes cluster
