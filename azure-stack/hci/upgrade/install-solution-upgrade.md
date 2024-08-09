@@ -18,9 +18,9 @@ This article describes how to install solution upgrade on your Azure Stack HCI s
 
 The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
 
-1. Upgrade the operating system.
-1. Prepare for the solution upgrade.
-1. Apply the solution upgrade.
+1. Upgrade the operating system to Azure Stack HCI, version 23H2.
+1. Validate the solution upgrade readiness of your Azure Stack HCI cluster.
+1. Install the solution upgrade on your Azure Stack HCI cluster.
 
 This article only covers the last step, which is to install the solution upgrade.
 
@@ -28,10 +28,10 @@ This article only covers the last step, which is to install the solution upgrade
 
 Before you install the solution upgrade, make sure that you:
 
-- Install the latest `AzureEdgeLifecycleManager` extension on each cluster node.
-- Validate the cluster using the Environment Checker.
-- Have an Active Directory user credential that's a member of the local Administrator group.
-- Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services.
+- Validate the cluster using the Environment Checker as per the instructions  in [Prepare to apply 23H2 solution update](./prepare-to-apply-23h2-solution-update.md#remediation-1-check-the-environment-checker).
+- Verify that latest `AzureEdgeLifecycleManager` extension on each cluster node is installed as per the instructions in [](./prepare-to-apply-23h2-solution-update.md#remediation-9-check-the-azure-arc-lifecycle-extension).
+- Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential.
+- Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses are not in use and meet the outbound connectivity requirement.
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
 ## Install the solution upgrade via Azure portal
@@ -41,6 +41,9 @@ Before you install the solution upgrade, make sure that you:
 On the **Basics** tab, specify the following information:
 
 1. Specify whether you want to create a new key vault to store the credentials, or if you want to select an existing key vault. Only vaults in the same resource group are shown.
+
+   > [!NOTE]
+   > We recommend that you select a new key vault as sharing an existing key vauilt may have security implications.
 
 1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each cluster node.
 
@@ -61,7 +64,7 @@ On the **Basics** tab, specify the following information:
 
 On the **Validation** tab, the operation will automatically create Azure resources like the cluster and the service principal, and also configure permissions and the audit login.
 
-1. Select **Start validation** to begin the operation. To learn more about validation, see [Validation article]().
+1. Select **Start validation** to begin the operation. To learn more about validation, see [Validate solution upgrade readiness of your Azure Stack HCI cluster](./prepare-to-apply-23h2-solution-update.md).
 
    :::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-validation-tab.png" alt-text="Screenshot of Upgrade Azure Stack HCI validation tab." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-validation-tab.png":::
 
