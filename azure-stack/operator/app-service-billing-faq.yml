@@ -2,11 +2,10 @@
 metadata:
   title: Azure App Service on Azure Stack Hub billing overview and FAQ 
   description: Learn about billing for Azure App Service on Azure Stack Hub.
-  author: apwestgarth
-  manager: stefsch
+  author: sethmanheim
   ms.topic: faq
-  ms.date: 05/05/2020
-  ms.author: anwestg
+  ms.date: 08/08/2024
+  ms.author: sethm
   ms.reviewer: anwestg
   ms.lastreviewed: 04/13/2020
   
@@ -15,11 +14,11 @@ metadata:
 title: Azure App Service on Azure Stack Hub billing overview and FAQ
 summary: |
 
-  This article shows how cloud operators are billed for offering Azure App Service on Azure Stack Hub and how they can bill their tenants for using the service.
+  This article describes how cloud operators are billed for offering Azure App Service on Azure Stack Hub and how they can bill their tenants for using the service.
 
     ## Billing overview
   
-  Azure Stack Hub cloud operators choose to deploy Azure App Service on Azure Stack Hub onto their Azure Stack Hub stamp to offer the tenant capabilities of Azure App Service and Azure Functions to their customers. The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
+  Azure Stack Hub cloud operators can choose to deploy Azure App Service on Azure Stack Hub onto their Azure Stack Hub stamp to offer the tenant capabilities of Azure App Service and Azure Functions to their customers. The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
   
   Infrastructure roles aren't billed because they're required for the core operation of the service. Infrastructure roles can be scaled out as required to support the demands of the cloud operator's tenants. The infrastructure roles are as follows:
   
@@ -49,7 +48,7 @@ summary: |
   
   Cloud operators can view the current number of available workers per worker tier by looking at the worker tiers in the Azure App Service configuration on Azure Stack Hub administration.
   
-  ![App Service - Worker Tiers screen](./media/app-service-billing-faq/app-service-worker-tiers.png)
+  ![Screenshot showing App Service - Worker Tiers.](./media/app-service-billing-faq/app-service-worker-tiers.png)
   
   ## See customer usage by using the Azure Stack Hub usage service
   

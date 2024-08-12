@@ -1,17 +1,12 @@
 ---
 title: App Service on Azure Stack Hub 2020 Q3 release notes 
-description: Learn about what's in the 2020 Q3 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
-author: apwestgarth
-manager: stefsch
-
+description: Learn about what's new in the 2020 Q3 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
+author: sethmanheim
 ms.topic: article
-ms.date: 12/09/2021
-ms.author: anwestg
+ms.date: 08/12/2024
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 10/23/2020
-
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
 
 ---
 
@@ -127,16 +122,16 @@ This script must be run under the following conditions
 - By a user that has the system administrator privilege, for example the SQL SA Account;
 - If using SQL Always on, ensure the script is run from the SQL instance that contains all App Service logins in the form:
 
-    - appservice_hosting_FileServer
-    - appservice_hosting_HostingAdmin
-    - appservice_hosting_LoadBalancer
-    - appservice_hosting_Operations
-    - appservice_hosting_Publisher
-    - appservice_hosting_SecurePublisher
-    - appservice_hosting_WebWorkerManager
-    - appservice_metering_Common
-    - appservice_metering_Operations
-    - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
+  - appservice_hosting_FileServer
+  - appservice_hosting_HostingAdmin
+  - appservice_hosting_LoadBalancer
+  - appservice_hosting_Operations
+  - appservice_hosting_Publisher
+  - appservice_hosting_SecurePublisher
+  - appservice_hosting_WebWorkerManager
+  - appservice_metering_Common
+  - appservice_metering_Operations
+  - All WebWorker logins - which are in the form WebWorker_\<instance ip address\>
 
 ```sql
         USE appservice_hosting
