@@ -103,7 +103,7 @@ If the credentials changed, you must update the file share credentials to connec
 1. Launch the **Web Cloud Management Console**.
 1. Check the **Web Cloud Management Console -> Web Cloud** screen and verify that both **Controllers** are **Ready**.
 1. Select **Credentials**.
-1. Next, select the credential you wish to update. In this example, select **FileShareOwnerCrdential** or **FileShareUserCredential** and select edit – either from the menu bar or from the right click context menu.
+1. Next, select the credential you wish to update. In this example, select **FileShareOwnerCrdential** or **FileShareUserCredential** and select **Edit** – either from the menu bar or from the right click context menu.
 1. Enter the new credential details and then select **OK**.
 1. Repeat for **FileShareUserCredential** if that has also changed.
 1. Once you complete updating the credentials, you must **restart CN0-VM**.
@@ -115,5 +115,5 @@ If the credentials changed, you must update the file share credentials to connec
 
 ## Next steps
 
-- [Backup App Service on Azure Stack Hub](app-service-back-up.md)
+- [Back up App Service on Azure Stack Hub](app-service-back-up.md)
 - [Restore App Service on Azure Stack Hub](app-service-recover.md)
