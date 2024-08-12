@@ -1,15 +1,15 @@
 ---
-title: Upgrade Azure Stack HCI, version 22H2 OS to version 23H2 via PowerShell
-description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 using PowerShell.
+title: Upgrade Azure Stack HCI  to latest version 23H2 via PowerShell
+description: Learn how to use PowerShell to upgrade Azure Stack HCI to latest version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/08/2024
+ms.date: 08/12/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# Upgrade Azure Stack HCI, version 22H2 operating system to Azure Stack HCI, version 23H2 via PowerShell
+# Upgrade Azure Stack HCI operating system via PowerShell
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
@@ -23,7 +23,7 @@ The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following st
 
 This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using PowerShell. PowerShell is the recommended method to upgrade the OS.
 
-There are other methods to upgrade the OS that include using Windows Admin Center, the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU). For more information about these methods, see [Upgrade your Azure Stack HCI to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
+There are other methods to upgrade the OS that include using Windows Admin Center, the Server Configuration tool (SConfig), and Cluster-Aware Updating (CAU). For more information about these methods, see [Upgrade your Azure Stack HCI to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
@@ -34,7 +34,7 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 
 To upgrade the OS on your cluster, follow these high-level steps:
 
-1. Complete the prerequisites inculding downloading the Azure Stack HCI, version 23H2 OS software update.
+1. Complete the prerequisites including downloading the Azure Stack HCI, version 23H2 OS software update.
 1. Connect to the Azure Stack HCI, version 22H2 cluster.
 1. Check for the available updates using PowerShell.
 1. Install new OS using PowerShell.
@@ -115,12 +115,12 @@ To install new OS using PowerShell, follow these steps:
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
-1. If the cluster is not connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster:
+1. If the cluster is not connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster.
 
    When the cluster nodes are not connected to Windows Update after installing the latest updates and the setup media has been copied to a share that is accessible to the cluster nodes:
 
    ```powershell
-   Invoke-CauRun –ClusterName <cluster_name> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
+   Invoke-CauRun –ClusterName <ClusterName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
    ```
 
 1. Check for any further updates and install them.
@@ -132,19 +132,19 @@ Wait for the update to complete and check the status of the update.
 To get the summary information about an update in progress, run the `Get-CauRun` cmdlet:
 
 ```PowerShell
-Get-CauRun -ClusterName Cluster1
+Get-CauRun -ClusterName <ClusterName>
 ```
 
 Here's a sample output: <!--ASK-->
 
 ```output
 RunId                   : 834dd11e-584b-41f2-8d22-4c9c0471dbad 
-RunStartTime            : 10/13/2019 1:35:39 PM 
+RunStartTime            : 10/13/2024 1:35:39 PM 
 CurrentOrchestrator     : NODE1 
 NodeStatusNotifications : { 
 Node      : NODE1 
 Status    : Waiting 
-Timestamp : 10/13/2019 1:35:49 PM 
+Timestamp : 10/13/2024 1:35:49 PM 
 } 
 NodeResults             : { 
 Node                     : NODE2 

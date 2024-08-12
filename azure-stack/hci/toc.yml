@@ -197,7 +197,7 @@ items:
 
 - name: Upgrade 
   items:
-  - name: About Upgrades
+  - name: About Azure Stack HCI upgrades
     href: upgrade/about-upgrades-23h2.md
   - name: Upgrade to version 23H2 OS
     items: 
@@ -207,9 +207,9 @@ items:
       href: upgrade/upgrade-22h2-to-23h2-windows-admin-center.md
     - name: Via other methods
       href: upgrade/upgrade-22h2-to-23h2-other-methods.md
-  - name: Perform post-upgrade tasks
+  - name: Perform post-OS upgrade tasks
     href: upgrade/post-upgrade-steps.md
-  - name: Prepare to apply solution upgrade
+  - name: Validate solution upgrade readiness
     href: upgrade/prepare-to-apply-23h2-solution-update.md
   - name: Apply solution upgrade
     href: upgrade/install-solution-upgrade.md
