@@ -1,31 +1,27 @@
 ---
 title: Remove Azure App Service from Azure Stack Hub 
-description: Learn how to remove Azure App Service from Azure Stack Hub
-author: apwestgarth
-
+description: Learn how to remove Azure App Service from Azure Stack Hub.
+author: sethmanheim
 ms.topic: article
-ms.date: 04/17/2020
-ms.author: anwestg
+ms.date: 08/12/2024
+ms.author: sethm
 ms.reviewer: anwestg
-ms.lastreviewed: 04/17/20207
-
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+ms.lastreviewed: 04/17/2020
 
 ---
 
 # Remove Azure App Service from Azure Stack Hub
 
-This article shows how to remove the Azure App Service resource provider and related components, from Azure Stack Hub.
+This article describes how to remove the Azure App Service resource provider and related components from Azure Stack Hub.
 
 ## Remove resource provider
 
-> [!Important]
-> This operation will remove all tenant resources, remove the service and quotas from all plans and remove the Azure App Service resource provider in it's entirety.  If you have deployed the App Service Highly Available File Server and SQL Server Quickstart template, these resources will also be removed as they are deployed in the same resource group as Azure App Service on Azure Stack Hub.
+> [!IMPORTANT]
+> This operation removes all tenant resources, removes the service and quotas from all plans, and removes the Azure App Service resource provider in its entirety. If you have deployed the App Service Highly Available File Server and SQL Server Quickstart template, these resources are also removed, as they are deployed in the same resource group as Azure App Service on Azure Stack Hub.
 
 To remove Azure App Service from Azure Stack Hub, follow this one step:
 
-1. Delete the Resource Group that holds the Azure App Service on Azure Stack Hub Resources, for example AppService.local
+- Delete the resource group that holds the Azure App Service on Azure Stack Hub Resources; for example, **AppService.local**.
 
 ## Remove databases and file share content
 
@@ -51,7 +47,7 @@ You only need to follow this section if your SQL Server and/or File Server is de
    DROP DATABASE [appservice_metering]
    GO
 
-   DECLARE @sql NVARCHAR(MAX) = N'';	
+   DECLARE @sql NVARCHAR(MAX) = N'';    
  
    SELECT @sql += '
    DROP LOGIN [' + name + '];' 
@@ -69,7 +65,7 @@ You only need to follow this section if your SQL Server and/or File Server is de
 
 ### Remove the application file content from the file server
 
-1. Remove the content fileshare from your file server.
+Remove the content fileshare from your file server.
 
 ## Next steps
 
