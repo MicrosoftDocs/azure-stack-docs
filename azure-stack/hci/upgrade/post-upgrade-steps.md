@@ -3,7 +3,7 @@ title: Post-upgrade steps on Azure Stack HCI via PowerShell
 description: Learn how to perform the post-upgrade tasks on your Azure Stack HCI cluster using PowerShell.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/30/2024
+ms.date: 08/12/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,16 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to perform the post-upgrade steps after you've upgraded the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2. Azure Stack HCI, version 23H2, is the latest generally available software.
-
-The upgrade from Azure Stack HCI, version 22H2 to version 23H2 occurs in the following steps:
-
-1. Upgrade the OS via PowerShell (recommended), Windows Admin Center, or other methods.
-1. Post-upgrade steps.
-1. Prepare to update solution.
-1. Apply the solution update.
-
-This article only covers the second step, which is how to perform the post-upgrade tasks on your Azure Stack HCI cluster that has the new OS running. The post-upgrade tasks are required for the stability of the cluster.
+This article describes how to perform the post-OS upgrade tasks after you've upgraded the Azure Stack HCI Operating System (OS) to new version. The post-upgrade tasks described in this article are required for the stability of the cluster.
 
 
 ## Complete prerequisites
@@ -34,7 +25,7 @@ Before you begin, make sure that:
     - [Upgrade to 23H2 OS vis PowerShell](./upgrade-22h2-to-23h2-powershell.md).
     - [Upgrade to 23H2 OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
     - [Upgrade to 23H2 OS via other methods](./upgrade-22h2-to-23h2-other-methods.md).
-
+    
 - Make sure that all the nodes in your Azure Stack HCI cluster are healthy and show as **Online**.
 - You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
 
@@ -62,18 +53,18 @@ Follow these steps on your client to connect to one of the servers of your Azure
    [100.100.100.10]: PS C:\Users\Administrator\Documents>
    ```
 
-## Step 2: Check the status of an update
+## Step 2: Verify the status of an update
 
 To make sure that the upgrade was complete and there is a new OS running on the cluster, run the `Get-CauRun` cmdlet:
 
 ```PowerShell
-Get-CauRun -ClusterName Cluster1
+Get-CauRun -ClusterName <ClusterName>
 ```
 
 Here's a sample output: <!--ASK-->
 
 ```output
-RunId                   : 834dd11e-584b-41f2-8d22-4c9c0471dbad 
+RunId                   : <Run ID> 
 RunStartTime            : 10/13/2019 1:35:39 PM 
 CurrentOrchestrator     : NODE1 
 NodeStatusNotifications : { 
@@ -91,7 +82,7 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 }
 ```
 
-## Step 3: Perform the post-upgrade steps
+## Step 3: Perform the post-OS upgrade steps
 
 Once the new OS is installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
 
