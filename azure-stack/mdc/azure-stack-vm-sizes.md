@@ -2,14 +2,9 @@
 title: VM sizes supported in Azure Stack for an MDC | Microsoft Docs
 description: Reference for the supported VM sizes in an MDC.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-
 ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 2/1/2021
 ms.author: sethm
@@ -179,7 +174,7 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 
 ### NVv4-series
 
-The NVv4-series virtual machines are powered by [AMD Radeon Instinct MI25](https://www.amd.com/en/products/professional-graphics/instinct-mi25) GPUs. With NVv4-series Azure is introducing virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently only support Windows guest operating system.
+The NVv4-series virtual machines are powered by AMD Radeon Instinct MI25 GPUs. With NVv4-series Azure is introducing virtual machines with partial GPUs. This size can be used for GPU accelerated graphics applications and virtual desktops. NVv4 virtual machines currently only support Windows guest operating system.
 
 
 | Size | vCPU | Memory: GiB | Temp storage (SSD) GiB | GPU | GPU memory: GiB | Max data disks | Max NICs |

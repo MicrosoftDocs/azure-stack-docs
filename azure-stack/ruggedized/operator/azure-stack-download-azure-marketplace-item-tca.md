@@ -2,15 +2,9 @@
 title: Download marketplace items from Azure and publish to Azure Stack Hub Ruggedized | Microsoft Docs
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub Ruggedized.
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: tzl
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/13/2021
 ms.author: sethm

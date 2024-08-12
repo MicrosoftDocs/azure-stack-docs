@@ -1,20 +1,19 @@
 ---
-title: Troubleshoot Azure Arc VM management (preview)
-description: Learn how to troubleshoot Azure Arc VM management (preview)
+title: Troubleshoot Azure Arc VM management
+description: Learn how to troubleshoot Azure Arc VM management
 author: alkohli
 ms.topic: how-to
-ms.date: 03/24/2022
+ms.date: 07/10/2024
 ms.author: alkohli
-ms.reviewer: JasonGerend
+ms.reviewer: vlakshmanan
 ---
 
-# Troubleshoot Azure Arc VM management (preview)
+# Troubleshoot Azure Arc VM management
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
 This article provides guidance on how to collect logs and troubleshoot issues with Azure Arc virtual machines (VMs) in your Azure Stack HCI cluster. It also lists the limitations and known issues that currently exist with Azure Arc VM management.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
 
 ## Collect logs
 
@@ -36,7 +35,7 @@ az login --use-device-code
 Get-ArcHCILogs -workDirectory $csv_path\ResourceBridge -kvaTokenPath $csv_path\ResourceBridge\kvatoken.tok -ip $VMIP_1
 ```
 
-where:
+Where:
 
 - **$csv_path** is the full path of the cluster shared volume provided for creating Arc Resource Bridge.
 
@@ -48,17 +47,98 @@ where:
 
 This section describes the errors related to Azure Arc VM management and their recommended resolutions.
 
-### Permission denied error when you run the arcappliance prepare command
+### Failure when trying to enable guest management
 
-If your PowerShell session doesn't have write permissions in the folder from where you run the `az arcapplicance prepare` command, it fails with the following error:
+When trying to run the command to enable guest management, you see the following error:
 
-**Error:** `Appliance prepare command failed with error:  [Errno 13] Permission denied: 'debug_infra.yaml'`
+**Error:** `Deployment failed. Correlation ID: 5d0c4921-78e0-4493-af16-dffee5cbf9d8. VM Spec validation failed for guest agent provisioning: Invalid managed identity. A system-assigned managed identity must be enabled in parent resource: Invalid Configuration`
 
-Here's an example output when your PowerShell session doesn't have permissions to write in the `C:\ClusterStorage` folder:
+The above failure is because the managed identity wasn't created for this VM. System-assigned Managed Identity is required to enable guest management.
 
-:::image type="content" source="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" alt-text="Screenshot of the arcappliance prepare error." lightbox="./media/manage-azure-arc-vm/arc-appliance-prepare-error.png" :::
+**Resolution:**  
 
-**Resolution:** Go to your home directory and rerun the `az arcapplicance prepare` command.
+Follow these steps to verify that the Managed Identity isn't created for this VM and then enable System-assigned Managed Identity.
+
+1. In the Azure portal, go to the VM. Browse to the **Overview** page. On the **Properties** tab, under **Configuration**, the **Guest management** should show as **Disabled**. Select the **JSON View** from the top right corner.
+
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png" alt-text="Screenshot of how to get to JSON view." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-1.png":::
+
+1. Under `Identity` parameter, the `type` should show as `None`.
+
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png" alt-text="Screenshot of JSON view indicating the Managed Identity is absent." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-2.png":::
+
+1. To create managed identity, connect to the Azure Stack HCI server via RDP. Run the following command:
+    
+    ```azurecli
+    az extension add --name connectedmachine
+    ```
+
+1. Verify that the connected machine CLI extension is installed on the cluster. Here's a sample output with the extension successfully installed. The `connectedmachine` indicates that version 0.7.0 is installed.
+    
+    ```output
+    [v-hostl]: PS C:\Clusterstorage\lnfrastructure_l\ArcHci> az version
+    {
+    "azure-cli": "2.53.0",
+    "azure-cli-core": "2.53.0",
+    "azure-cli-telemetry": "1.1.0",
+    "extensions": {
+        "akshybrid": "0.1.1",
+        "arcappliance"^ "1.0.2",
+        "connectedk8s": "1.5.4",
+        "connectedmachine": "0.7.0",
+        "customlocation": "0.1.3",
+        "hybridaks": "0.2.4",
+        "k8s-extension": "1.4.5",
+        "stack-hci-vm": "0.1.8"
+        }
+    }
+    [v-hostl]: PS C:\ClusterStorage\Infrastructure_l\ArcHci>
+        ```
+1. Run the following command to assign a system managed identity to the VM.
+
+    ```azurecli
+    az connectedmachine update --ids "<Resource Manager ID for the VM>" --set identity.type="SystemAssigned"
+    ```
+
+1. Go to the Azure portal and browse to the **Overview** page. The **JSON View** should indicate that the system managed identity is now assigned to the VM.
+
+    :::image type="content" source="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png" alt-text="Screenshot of JSON view when Managed Identity is enabled." lightbox="./media/troubleshoot-arc-enabled-vms/managed-identity-missing-3.png":::  
+
+### Failure deploying an Arc VM
+
+You see the following error when trying to deploy an Arc VM on your Azure Stack HCI cluster:
+
+**Error:** `{"code":"ConflictingOperation","message":"Unable to process request 'Microsoft.AzureStackHCI/virtualMachineInstances'. There is already a previous running operation for resource '/subscriptions/<subscription ID>/resourceGroups/<Resource group name>/providers/Microsoft.HybridCompute/machines/<VM name>/providers/Microsoft.AzureStackHCI/virtualMachineInstances/default'. Please wait for the previous operation to complete."}`
+
+The above failure is because the `SystemAssigned` managed identity object isn't under the `Microsoft.HybridCompute/machines` resource type.
+
+**Resolution:**  
+
+Verify in your deployment template that:
+
+The `SystemAssigned` managed identity object is under `Microsoft.HybridCompute/machines` resource type and not under `Microsoft.AzureStackHCI/VirtualMachineInstances` resource type.
+
+The deployment template should match the provided sample template. For more information, see the sample template in [Create Arc virtual machines on Azure Stack HCI](./create-arc-virtual-machines.md).
+
+### Failure deleting storage path
+
+When trying to delete a storage path on your Azure Stack HCI cluster, you might see an error similar to the following message. Resource numbers and versions may vary in your scenario.
+
+**Error:** `"errorMessage" serviceClient returned an error during deletion: The storage container service returned an error during deletion: rpc error: code = Unknown desc = Container is in ACTIVE use by Resources [6:`  
+`- linux-cblmariner-0.2.0.10503`  
+`- windows-windows2019-0.2.0.10503`  
+`- windows-windows2022-0.2.0.10503`  
+`].`  
+`Remove all the Resources from this container, before trying to delete: In Use: Failed,`
+
+**Resolution:**  
+
+The images listed in the error message differ from typical workloads, which are represented as Azure Resource Manager (ARM) objects on the Azure portal and CLI. This error occurs because these images are directly downloaded onto the file system, which Azure couldn't recognize.
+
+Follow these steps before trying to remove a storage path:
+
+1. Remove the associated workloads and the images present on the storage path you want to delete. Look for the following prefixes on the image names: `linux-cblmariner`, `windows-windows2019`, `windows-windows2022`, `windows_k8s`, `aks-image-merged`, `linux-K8s`.
+1. File a [support ticket in the Azure portal](/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ### Azure CLI installation isn't recognized
 
@@ -71,47 +151,12 @@ If your environment fails to recognize Azure CLI after installing it, run the fo
         }
 ```
 
-### KVA timeout error
 
-Azure Arc Resource Bridge is a Kubernetes management cluster that is deployed in an Arc Resource Bridge VM directly on the on-premises infrastructure. While trying to deploy Azure Arc resource bridge, a "KVA timeout error" might appear if there's a networking problem that doesn't allow communication of the Arc Resource Bridge VM to the host, DNS, network or internet. This error is typically displayed for the following reasons:
-
-- The Arc Resource Bridge VM ($VMIP) doesn't have DNS resolution.
-- The Arc Resource Bridge VM ($VMIP) or $controlPlaneIP don't have internet access.
-- The host isn't able to reach $controlPlaneIP or $VMIP.
-
-To resolve this error, ensure that all IP addresses assigned to the Arc Resource Bridge VM can be resolved by DNS and have access to the internet, and that the host can successfully route to the IP addresses.
-
-### Valid token required error
-
-The expiration of the MOC token might result in a failure to create VMs, virtual hard disks, virtual NICs, or other entities. The error in ArcHCI logs could be "Valid token required" or a variation of that. To resolve this error, run the following command on any server in your Azure Stack HCI cluster:
-```PowerShell
-        rmdir $env:USERPROFILE\.wssd\python -Recurse -Force
-        Repair-MOC
-        Repair-MocOperatorToken
-```
-
-
-## Limitations and known issues
+<!--## Limitations and known issues
 
 Here's a list of existing limitations and known issues with Azure Arc VM management:
 
 - Resource name must be unique for an Azure Stack HCI cluster and must contain only alphabets, numbers, and hyphens.
-
-- Arc Resource Bridge provisioning through command line must be performed on a local HCI server PowerShell. It can't be done in a remote PowerShell window from a machine that isn't a host of the Azure Stack HCI cluster. To connect on each node of the Azure Stack HCI cluster, use Remote Desktop Protocol (RDP) connected with a domain user admin of the cluster.
-
-- You must deploy Azure Kubernetes and Arc VMs on the same Azure Stack HCI cluster in the following order:
-    1. Deploy AKS management cluster
-    1. Deploy Arc Resource Bridge for Arc VMs
-
-        > [!NOTE]
-        > If Arc Resource Bridge is already deployed, don't deploy the AKS management cluster unless the Arc Resource Bridge is removed.
-
-- You must uninstall AKS management cluster and Arc Resource Bridge in the following order:
-    1. Uninstall Arc Resource Bridge
-    1. Uninstall AKS management cluster
-
-        > [!NOTE]
-        > Uninstalling the AKS management cluster can impair Arc VM management capabilities. You can deploy a new Arc Resource Bridge again after cleanup, but it won't remember the VM entities created previously.
 
 - VMs provisioned from Windows Admin Center, PowerShell, or other Hyper-V management tools aren't visible in the Azure portal for management.
 
@@ -127,11 +172,10 @@ Here's a list of existing limitations and known issues with Azure Arc VM managem
 
 - Support for Arc Resource Bridge and Arc VM Management is currently available only in English language.
 
-- Using an Azure Arc Resource Bridge behind a proxy is supported. However, using Azure Arc VMs behind a network proxy isn't supported.
+- Azure Arc Linux VMs aren't supported behind a network proxy.
 
-- Naming convention for Azure resources, such as virtual networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).
+- Naming convention for Azure resources, such as logical networks, gallery images, custom location, Arc Resource Bridge must follow the guidelines listed in [Naming rules and restrictions for Azure resources](/azure/azure-resource-manager/management/resource-name-rules).-->
 
 ## Next steps
 
-- [VM provisioning through Azure portal on Azure Stack HCI (preview)](azure-arc-vm-management-overview.md)
 - [Azure Arc VM management FAQs](./azure-arc-vms-faq.yml)

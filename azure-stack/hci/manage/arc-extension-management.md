@@ -6,13 +6,12 @@ ms.author: robess
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.reviewer: arduppal
-ms.lastreviewed: 09/19/2023
-ms.date: 09/19/2023
+ms.date: 01/31/2024
 ---
 
 # Azure Arc extension management on Azure Stack HCI
 
-[!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article describes how to install, upgrade, and manage Azure Arc extensions on Azure Stack HCI server machines.
 
@@ -22,19 +21,20 @@ With Azure Stack HCI, you can install, uninstall and update Azure Arc extensions
 
 Here are the individual extensions you can install and manage.
 
-- [Azure Monitoring Agent](monitor-hci-single.md)
+- [Azure Monitoring Agent](monitor-hci-single-23h2.md)
 - [Azure Site Recovery](azure-site-recovery.md)
 - [Windows Admin Center](/windows-server/manage/windows-admin-center/azure/manage-hci-clusters)
 
 ## Azure-managed extensions in Azure Stack HCI
 
-In Azure Stack HCI, version 22H2, once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions are automatically installed on your cluster. These extensions are essential for the functionality and quality of your system and can't be uninstalled. You can manage the behavior of these extensions in the Azure portal by navigating to the **Extensions** page and selecting the **Settings** menu.
+Once you've successfully registered your new Azure Stack HCI cluster with Azure, Azure-managed extensions are automatically installed on your cluster. These extensions are essential for the functionality and quality of your system and can't be uninstalled. You can manage the behavior of these extensions in the Azure portal by navigating to the **Extensions** page and selecting the **Settings** menu.
 
 If you have an existing Azure Stack HCI cluster that is registered to Azure without these extensions, a banner shows on the **Overview** or **Extensions** page in the Azure portal. You can use the information in the banner to guide you through installing these extensions.
 
 Here are the Azure-managed extensions:
 
 - [Telemetry and diagnostics](../concepts/telemetry-and-diagnostics-overview.md)
+- [Remote Support Arc extension](../manage/remote-support-arc-extension.md)
 
 ## Install an extension
 ### [Azure portal](#tab/azureportal)
@@ -107,7 +107,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Bash to install an 
     done
     ```
 
-1. To install the Azure Site Recovery (ASR) extension on all the clusters under the resource group run the following command:
+1. To install the Azure Site Recovery extension on all the clusters under the resource group run the following command:
     ```azurecli
     asrSubscription="00000000-0000-0000-0000-000000000000" # Replace with your ASR subscription ID
     asrResourceGroup="asr-rg" # Replace with your ASR resource group
@@ -209,7 +209,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use PowerShell to insta
     }
     ```
 
-1. To install the Azure Site Recovery (ASR) extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
+1. To install the Azure Site Recovery extension on all the clusters under the resource group, create a JSON parameter file and then run the following command:
     ```powershell
     $settings = @{
         SubscriptionId = "<Replace with your Subscription Id>"

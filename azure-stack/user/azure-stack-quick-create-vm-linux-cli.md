@@ -4,20 +4,18 @@ description: Create a Linux virtual machine by using the Azure CLI in Azure Stac
 author: sethmanheim
 
 ms.topic: quickstart
-ms.date: 2/1/2021
+ms.date: 03/12/2024
 ms.author: sethm
-ms.lastreviewed: 01/14/2019
 
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using Azure CLI.
 # Keyword: linux virtual machine CLI
-
-ms.custom: mode-api, devx-track-azurecli
+ms.custom: mode-api, devx-track-azurecli, linux-related-content
 ---
 
 
 # Quickstart: Create a Linux server VM by using the Azure CLI in Azure Stack Hub
 
-You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure CLI. In this article, you create and use a virtual machine. This article also shows you how to:
+You can create an Ubuntu Server 20.04 LTS virtual machine (VM) by using the Azure CLI. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the virtual machine with a remote client.
 * Install an NGINX web server and view the default home page.
@@ -27,7 +25,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azur
 
 * A Linux image in the Azure Stack Hub Marketplace
 
-   The Azure Stack Hub Marketplace doesn't contain a Linux image by default. Have the Azure Stack Hub operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
+   The Azure Stack Hub Marketplace doesn't contain a Linux image by default. Have the Azure Stack Hub operator provide the Ubuntu Server 20.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
 
 * Azure Stack Hub requires a specific version of the Azure CLI to create and manage its resources. If you don't have the Azure CLI configured for Azure Stack Hub, sign in to the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) (or a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)), and follow the instructions for [installing and configuring the Azure CLI](azure-stack-version-profiles-azurecli2.md).
 

@@ -1,17 +1,17 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot security and identity issues and errors in AKS hybrid
-  description: Get help to troubleshoot security and identity issues and errors in AKS hybrid.
+  title: Troubleshoot security and identity issues and errors in AKS Arc
+  description: Get help to troubleshoot security and identity issues and errors in AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 07/11/2024
 
-title: Fix security and identity known issues and errors in AKS hybrid
+title: Fix security and identity known issues and errors in AKS Arc
 summary: |
-  Use this topic to help you troubleshoot and resolve security and identity-related issues in AKS hybrid.
+  Use this topic to help you troubleshoot and resolve security and identity-related issues in AKS Arc.
   
 sections:
   - name: Single section - ignored
@@ -57,8 +57,7 @@ sections:
           ### To reproduce
           
           1. Install AksHci.
-          2. Install target cluster.
-          3. Turn off the cluster (VMs) for more than 4 days.
+          2. Install target cluster.          3. Turn off the cluster (VMs) for more than 4 days.
           4. Turn the cluster on again.
           
           ### Symptoms and mitigation
@@ -210,9 +209,9 @@ sections:
           Error 'System.Collections.Hashtable.generic_non_zero 1 [Error: Certificate has expired: Expired]'
 
         answer: | 
-          The **mocctl** certificate expires if it's not used for more than 60 days. AKS hybrid uses the `mocctl` command-line tool to communicate with MocStack for performing Moc-related operations. The certificate that the `mocclt` command uses to communicate with cloudagent expires in 60 days. The `mocctl` command renews the certificate automatically when it's used close to its expiration (after ~42 days). If the command is not used frequently, the certificate expires.
+          The **mocctl** certificate expires if it's not used for more than 60 days. AKS Arc uses the `mocctl` command-line tool to communicate with MocStack for performing Moc-related operations. The certificate that the `mocclt` command uses to communicate with cloudagent expires in 60 days. The `mocctl` command renews the certificate automatically when it's used close to its expiration (after ~42 days). If the command is not used frequently, the certificate expires.
           
-          To reproduce the behavior, install AKS hybrid, and no operation involving the `mocctl` command is performed for 60 days.
+          To reproduce the behavior, install AKS Arc, and no operation involving the `mocctl` command is performed for 60 days.
           
           To fix the issue, log in again once the certificate expires. Execute the following PowerShell command to log in:
           
@@ -255,7 +254,7 @@ sections:
           kubectl logs return "error: You must be logged in to the server (the server has asked for the client to provide credentials)" 
 
         answer: | 
-          There is an issue with AKS hybrid in which a cluster can stop returning logs. When this happens, running `kubectl logs <pod_name>` returns "error: You must be logged in to the server (the server has asked for the client to provide credentials)". AKS hybrid rotates core Kubernetes certificates every 4 days, but sometimes the Kubernetes API server doesn't immediately reload its client certificate for communication with kubelet when the certificates update.
+          There is an issue with AKS Arc in which a cluster can stop returning logs. When this happens, running `kubectl logs <pod_name>` returns "error: You must be logged in to the server (the server has asked for the client to provide credentials)". AKS Arc rotates core Kubernetes certificates every 4 days, but sometimes the Kubernetes API server doesn't immediately reload its client certificate for communication with kubelet when the certificates update.
           
           To mitigate the issue, there are several options:
           

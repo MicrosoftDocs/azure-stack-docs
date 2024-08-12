@@ -59,7 +59,7 @@ You can view and edit existing quotas using the administrator portal: select **R
 You can also delete some quotas using these REST APIs:
 
 - [Compute](/rest/api/azurestack/quotas/delete)
-- [Network](/rest/api/azurestack/quotas%20(network)/delete)
+- [Network](/rest/api/azurestack/quotas)
 - [Storage](/rest/api/azurestack/storagequotas/delete)
 
 > [!NOTE]

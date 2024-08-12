@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack Hub update 7 release notes 
+title: App Service on Azure Stack Hub update 7 release notes
 description: Update 7 release notes for App Service on Azure Stack Hub, including new features, fixes, and known issues.
 author: apwestgarth
 manager: stefsch
@@ -8,12 +8,10 @@ ms.date: 10/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2019
-ms.custom: contperf-fy22q1
 ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack Hub operator, I want the release notes for update 7 of App Service on Azure Stack Hub so I can know the new features, fixes, and known issues.
 # Keyword: app service azure stack hub update 7 release notes
-
 ---
 
 # App Service on Azure Stack Hub update 7 release notes

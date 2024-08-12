@@ -1,9 +1,9 @@
 ---
 title: Azure Stack Hub VPN Fast Path for operators
-description: What's new in Azure Stack Hub VPN Fast Path Public Preview for operators
+description: Learn about Azure Stack Hub VPN Fast Path for operators
 author: cedward
 ms.topic: conceptual
-ms.date: 05/17/2023
+ms.date: 01/23/2024
 ms.author: cedward
 ms.reviewer: iacarago
 ms.lastreviewed: 01/09/2023
@@ -12,11 +12,11 @@ ms.lastreviewed: 01/09/2023
 # Keyword: azure stack hub VPN Gateways
 ---
 
-# Azure Stack Hub VPN Fast Path public preview for operators
+# Azure Stack Hub VPN Fast Path for operators
 
 ## What is the Azure Stack Hub VPN Fast Path feature?
 
-Azure Stack Hub is introducing the three new SKUs described in this article as part of the VPN Fast Path public preview. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps using the HighPerformance SKU. The new SKUs enable customer scenarios in which higher network throughput is necessary. The throughput values for each SKU are unidirectional values, meaning it supports the given throughput on either of send or receive traffic.
+Azure Stack Hub is introducing the three new SKUs described in this article as part of the VPN Fast Path feature. Previously, S2S tunnels were limited to a maximum bandwidth of 200 Mbps using the HighPerformance SKU. The new SKUs enable customer scenarios in which higher network throughput is necessary. The throughput values for each SKU are unidirectional values, meaning it supports the given throughput on either of send or receive traffic.
 
 ## New VPN Fast Path virtual network gateway SKUs
 
@@ -48,7 +48,7 @@ Azure Stack Hub VPN Fast Path relies on the new SDN Gateway service, and it come
 - List local network gateway settings. Tenant users can re-use local network gateway resources and configurations. However, we also recommend that you save the existing configuration in case they need to be re-created.
 - Once VPN Fast Path is enabled, tenants must re-create their virtual network gateways and connections as appropriate if they want to use the new SKUs.
 
-With the release of the VPN Fast Path public preview, there is a new PowerShell command that operators can call to list all the existing connections created by their tenants. This cmdlet can help the operator manage capacity and reach out to the tenant admins if they need to recreate their Virtual Network gateways:
+With the release of VPN Fast Path, there is a new PowerShell command that operators can call to list all the existing connections created by their tenants. This cmdlet can help the operator manage capacity and reach out to the tenant admins if they need to recreate their Virtual Network gateways:
 
 ```powershell
 Get-AzsVirtualNetworkGatewayConnection
@@ -58,7 +58,7 @@ For more information, see [**Get-AzsVirtualNetworkGatewayConnection**](/powershe
 
 ## How to enable Azure Stack Hub VPN Fast Path
 
-For the VPN Fast Path public preview, operators can enable the new feature using the following PowerShell commands. Once the feature reaches general availability, the operators can also enable the feature using the Azure Stack Hub administrator portal.
+With VPN Fast Path, operators can enable the new feature using the following PowerShell commands. Once the feature reaches general availability, the operators can also enable the feature using the Azure Stack Hub administrator portal.
 
 You can adjust existing setups by re-creating the virtual network gateway and its connections with one of the new SKUs.
 

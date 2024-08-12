@@ -4,21 +4,18 @@ description: Create a Linux VM by using PowerShell in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: quickstart
-ms.date: 02/18/2021
+ms.date: 03/12/2024
 ms.author: sethm
-ms.lastreviewed: 02/18/2021
 
 # Intent: As an Azure Stack user, I want to create a Linux server virtual machine using PowerShell.
 # Keyword: linuxVM powershell
-ms.custom:
-  - mode-api
-  - devx-track-azurepowershell
+ms.custom: mode-api, devx-track-azurepowershell, linux-related-content
 ---
 
 
 # Quickstart: Create a Linux server VM by using PowerShell in Azure Stack Hub
 
-You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure Stack Hub PowerShell. In this article, you create and use a virtual machine. This article also shows you how to:
+You can create an Ubuntu Server 20.04 LTS virtual machine (VM) by using Azure Stack Hub PowerShell. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the VM with a remote client.
 * Install an NGINX web server and view the default home page.
@@ -26,7 +23,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure St
 
 ## Prerequisites
 
-* A Linux image in the Azure Stack Hub Marketplace. The Azure Stack Hub Marketplace doesn't have a Linux image by default. Have the Azure Stack Hub operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
+* A Linux image in the Azure Stack Hub Marketplace. The Azure Stack Hub Marketplace doesn't have a Linux image by default. Have the Azure Stack Hub operator provide the Ubuntu Server 20.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
 
 * Azure Stack Hub requires a specific version of the Azure CLI to create and manage its resources. 
   * If you don't have PowerShell configured for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](../operator/powershell-install-az-module.md). 
@@ -273,7 +270,7 @@ $VirtualMachine = Set-AzVMSourceImage `
   -VM $VirtualMachine `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "20.04-LTS" `
   -Version "latest"
 
 # Set the operating system disk properties on a VM
@@ -323,7 +320,7 @@ $VirtualMachine = Set-AzureRMVMSourceImage `
   -VM $VirtualMachine `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "20.04-LTS" `
   -Version "latest"
 
 # Set the operating system disk properties on a VM
@@ -394,7 +391,7 @@ New-AzResourceGroup `
 
 ## Create storage resources
 
-# Create a storage account, and then create a storage container for the Ubuntu Server 16.04 LTS image
+# Create a storage account, and then create a storage container for the Ubuntu Server 20.04 LTS image
 
 # Create a new storage account
 $StorageAccount = New-AzStorageAccount `
@@ -500,7 +497,7 @@ $VirtualMachine = Set-AzVMSourceImage `
   -VM $VirtualMachine `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "20.04-LTS" `
   -Version "latest"
 
 $osDiskName = "OsDisk"
@@ -560,7 +557,7 @@ New-AzureRMResourceGroup `
 
 ## Create storage resources
 
-# Create a storage account, and then create a storage container for the Ubuntu Server 16.04 LTS image
+# Create a storage account, and then create a storage container for the Ubuntu Server 20.04 LTS image
 
 # Create a new storage account
 $StorageAccount = New-AzureRMStorageAccount `
@@ -666,7 +663,7 @@ $VirtualMachine = Set-AzureRMVMSourceImage `
   -VM $VirtualMachine `
   -PublisherName "Canonical" `
   -Offer "UbuntuServer" `
-  -Skus "16.04-LTS" `
+  -Skus "20.04-LTS" `
   -Version "latest"
 
 $osDiskName = "OsDisk"

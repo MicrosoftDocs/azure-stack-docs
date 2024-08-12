@@ -27,24 +27,21 @@ When Azure Stack Hub releases a new build, we may release A new MySQL resource p
 
   |Supported Azure Stack Hub version|MySQL RP version|Windows Server that RP service is running on
   |-----|-----|-----|
-   |2206, 2301|MySQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
-  |2108,2206|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
-  |2108, 2102, 2008, 2005|[MySQL RP version 1.1.93.5](https://aka.ms/azshmysqlrp11935)|Microsoft AzureStack Add-on RP Windows Server
-  |2005, 2002, 1910|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|Windows Server 2016 Datacenter - Server Core|
-  |1908|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|Windows Server 2016 Datacenter - Server Core|
+   |2206, 2301, 2306, 2311|MySQL RP version 2.0.13.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
+  |2108, 2206|MySQL RP version 2.0.6.x|Microsoft AzureStack Add-on RP Windows Server 1.2009.0
   |     |     |     |
 
 ## Update MySQL Server resource provider V2
 
-If you have already deployed MySQL RP V2, and want to check for updates, check [How to apply updates to resource provider](resource-provider-apply-updates.md).
+If you already deployed MySQL RP V2, and want to check for updates, check [How to apply updates to resource provider](resource-provider-apply-updates.md).
 
-If you want to update from MySQL RP V1 to MySQL RP V2, make sure you have first updated to MySQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from MySQl RP V1 to MySQL RP V2.
+If you want to update from MySQL RP V1 to MySQL RP V2, make sure you first update to MySQL RP V1.1.93.x, then apply the major version upgrade process to upgrade from MySQl RP V1 to MySQL RP V2.
 
 ## Update from MySQL RP V1.1.93.x to MySQL RP V2.0.6.0
 
 ### Prerequisites
 
-1. Make sure you have updated MySQL RP V1 to the latest 1.1.93.x. Under Default Provider Subscription, find the RP resource group (naming format: system.`<region`>.mysqladapter). Confirm the version tag and MySQL RP VM name in resource group.
+1. Make sure you update MySQL RP V1 to the latest 1.1.93.x. Under **Default Provider Subscription**, find the RP resource group (naming format: system.`<region`>.mysqladapter). Confirm the version tag and MySQL RP VM name in resource group. If you are still on an old version and need to update to 1.1.93.x, open a support case for help.
 
 2. [Open a support case](../operator/azure-stack-help-and-support-overview.md) to get the MajorVersionUpgrade package, and add your subscription to the ASH marketplace allowlist for the future V2 version.
 
@@ -175,7 +172,7 @@ Specify the following parameters from the command line when you run the **Update
 | Parameter Name | Description | Comment or default value | 
 | --- | --- | --- | 
 | **CloudAdminCredential** | The credential for the cloud admin, necessary for accessing the privileged endpoint. | _Required_ | 
-| **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multi-factor authentication (MFA). | _Required_ | 
+| **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub. The script will fail if the account you use with AzCredential requires multifactor authentication (MFA). | _Required_ | 
 | **VMLocalCredential** |The credentials for the local admin account of the MySQL resource provider VM. | _Required_ | 
 | **PrivilegedEndpoint** | The IP address or DNS name of the privileged endpoint. |  _Required_ | 
 | **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Microsoft Entra deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Microsoft Entra ID, **AzureChinaCloud**. | AzureCloud |

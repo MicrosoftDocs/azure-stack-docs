@@ -6,14 +6,14 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/20/2023
+ms.date: 03/14/2024
 ---
 
 # Azure Stack HCI network deployment patterns
 
-[!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI using either one or two physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
+This article describes a set of network patterns references to architect, deploy, and configure Azure Stack HCI using either one, two or three physical hosts. Depending on your needs or scenarios, you can go directly to your pattern of interest. Each pattern is described as a standalone entity and includes all the network components for specific scenarios.
 
 ## Choose a network reference pattern
 
@@ -34,6 +34,19 @@ Use the following table to directly go to a pattern and its content.
 |Go to [storage switched, non-converged, two TOR switches](two-node-switched-non-converged.md)    |Go to [storage switched, fully converged, two TOR switches.](two-node-switched-converged.md)       |
 |---------|---------|
 |:::image type="content" source="media/plan-deployment/two-node-switched-non-converged.png" alt-text="Diagram showing two-node storage switched, non-converged, two TOR switches" lightbox="media/plan-deployment/two-node-switched-non-converged.png":::|:::image type="content" source="media/plan-deployment/two-node-switched-converged.png" alt-text="Diagram showing two-node storage switched, fully converged, two TOR switches." lightbox="media/plan-deployment/two-node-switched-converged.png":::|
+
+### Three-node switchless single link
+
+**Go to [Three-node switchless single link deployment](three-node-switchless-two-switches-single-link.md)**
+
+:::image type="content" source="media/three-node-switchless-two-switches-single-link/physical-components-layout.png" alt-text="Diagram showing three-node switchless, two TOR, single link physical connectivity layout." lightbox="media/three-node-switchless-two-switches-single-link/physical-components-layout.png":::
+
+### Three-node switchless dual link
+
+**Go to [Three-node switchless dual link deployment](three-node-switchless-two-switches-two-links.md)**
+
+:::image type="content" source="media/three-node-switchless-two-switches-dual-link/physical-components-layout.png" alt-text="Diagram showing three-node switchless, two TOR, two link physical connectivity layout." lightbox="media/three-node-switchless-two-switches-dual-link/physical-components-layout.png":::
+
 
 ## Next steps
 

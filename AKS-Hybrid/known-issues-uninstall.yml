@@ -1,18 +1,18 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot issues when uninstalling AKS hybrid.
-  description: Get help to troubleshoot issues and errors when uninstalling AKS hybrid.
+  title: Troubleshoot issues when uninstalling AKS Arc
+  description: Get help to troubleshoot issues and errors when uninstalling AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 07/11/2024
 
-title: Fix known issues and errors when uninstalling AKS hybrid
+title: Fix known issues and errors when uninstalling AKS Arc
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server** 
-  Use this topic to help you troubleshoot and resolve issues when uninstalling AKS hybrid.
+  Use this topic to help you troubleshoot and resolve issues when uninstalling AKS Arc.
   
 sections:
   - name: Single section - ignored

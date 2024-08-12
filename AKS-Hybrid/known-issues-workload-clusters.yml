@@ -1,18 +1,18 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot Kubernetes management and workload cluster issues in AKS hybrid
-  description: Get help to troubleshoot Kubernetes workload cluster issues and errors in AKS hybrid.
+  title: Troubleshoot Kubernetes management and workload cluster issues in AKS Arc
+  description: Get help to troubleshoot Kubernetes workload cluster issues and errors in AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 07/11/2024
 
-title: Troubleshoot Kubernetes management and workload cluster issues in AKS hybrid
+title: Troubleshoot Kubernetes management and workload cluster issues in AKS Arc
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
-  Use this article to help you troubleshoot and resolve issues on Kubernetes management and workload clusters in AKS hybrid.
+  Use this article to help you troubleshoot and resolve issues on Kubernetes management and workload clusters in AKS Arc.
   
 sections:
   - name: Single section - ignored
@@ -87,9 +87,9 @@ sections:
           When running Get-AksHciCluster, a "release version not found" error occurs
 
         answer: | 
-          When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS hybrid installation in Windows Admin Center, the output shows an error: "A release with version 1.0.3.10818 was NOT FOUND." However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build has expired. 
+          When running [Get-AksHciCluster](./reference/ps/get-akshcicluster.md) to verify the status of an AKS Arc installation in Windows Admin Center, the output shows an error: "A release with version 1.0.3.10818 was NOT FOUND." However, when running [Get-AksHciVersion](./reference/ps/get-akshciversion.md), it showed the same version was installed. This error indicates that the build has expired. 
           
-          To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS hybrid build.
+          To resolve this issue, run `Uninstall-AksHci`, and then run a new AKS Arc build.
       - question: | 
           Moving virtual machines between Azure Stack HCI cluster nodes quickly leads to VM startup failures
 
@@ -217,7 +217,7 @@ sections:
           If a management or workload cluster isn't used for more than 60 days, the certificates will expire
 
         answer: | 
-          If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS hybrid. When an AKS cluster isn't upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional. However, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will remain in a non-functional state.
+          If you don't use a management or workload cluster for longer than 60 days, the certificates expire, and you must renew them before you can upgrade AKS Arc. When an AKS cluster isn't upgraded within 60 days, the KMS plug-in token and the certificates both expire within the 60 days. The cluster is still functional. However, since it's beyond 60 days, you need to call Microsoft support to upgrade. If the cluster is rebooted after this period, it will remain in a non-functional state.
           
           To resolve this issue, run the following steps:
           

@@ -4,7 +4,7 @@ description: How to create volumes on Azure Stack HCI and Windows Server cluster
 author: jasongerend
 ms.author: jgerend
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 02/26/2024
 ---
 
 # Create volumes on Azure Stack HCI and Windows Server clusters
@@ -30,7 +30,7 @@ To create a two-way or three-way mirror volume using Windows Admin Center:
 1. Under **More options,** you can use the checkboxes to turn on deduplication and compression, integrity checksums, or BitLocker encryption.
 1. Select **Create**.
 
-   :::image type="content" source="media/create-volumes/create-mirror-volume.png" alt-text="You can use Windows Admin Center to create a two-way or three-way mirror volume" lightbox="media/create-volumes/create-mirror-volume.png":::
+   :::image type="content" source="media/create-volumes/create-mirror-volume.png" alt-text="You can use Windows Admin Center to create a two-way or three-way mirror volume." lightbox="media/create-volumes/create-mirror-volume.png":::
 
 Depending on the size, creating the volume can take a few minutes. Notifications in the upper-right will let you know when the volume is created. The new volume will then appear in the Inventory list.
 

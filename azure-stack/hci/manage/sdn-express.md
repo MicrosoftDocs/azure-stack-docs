@@ -3,7 +3,7 @@ title: Deploy an SDN infrastructure using SDN Express
 description: Learn to deploy an SDN infrastructure using SDN Express
 author: sethmanheim 
 ms.topic: how-to 
-ms.date: 08/22/2023
+ms.date: 11/29/2023
 ms.author: sethm 
 ms.reviewer: JasonGerend 
 ---
@@ -84,6 +84,7 @@ The settings and parameters are used by SDN in general for all deployments. For 
 - **DomainJoinUsername** - administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **LocalAdminDomainUser** - local administrator username. Note that the username should be in the following format: `domainname\username`. For example, if the domain is `contoso.com`, enter the username as `contoso\<username>`. Don't use formats like `contoso.com\<username>` or `username@contoso.com`
 - **RestName** - DNS name used by management clients (such as Windows Admin Center) to communicate with NC
+- **RestIpAddress** - Static IP address for your REST API, which is allocated from your management network. It can be used for DNS resolution or REST IP-based deployments
 - **HyperVHosts** - host servers to be managed by Network Controller
 - **NCUsername** - Network Controller account username
 - **ProductKey** - product key for SDN infrastructure VMs
@@ -155,7 +156,7 @@ The following additional parameters are used by Gateway VMs only. Leave these va
 - **PoolName** - pool name used by all Gateway VMs
 - **GRESubnet** - VIP subnet for GRE (if using GRE connections)
 - **Capacity** - capacity in Kbps for each Gateway VM in the pool
-- **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway moves to the redundant gateway and the redundant gateway becomes active.
+- **RedundantCount** - number of gateways in redundant mode. The default value is 1. Redundant gateways don't have any active connections. Once an active gateway goes down, the connections from that gateway move to the redundant gateway and the redundant gateway becomes active.
 
     > [!NOTE]
     > If you fill in a value for **RedundantCount**, ensure that the total number of gateway VMs is at least one more than the **RedundantCount**. By default, the **RedundantCount** is 1, so you must have at least 2 gateway VMs to ensure that there is at least 1 active gateway to host gateway connections.
@@ -201,6 +202,8 @@ The following configuration sample files for deploying SDN are available on the 
 - **Software Load Balancer.psd1** - Deploy Network Controller and Software Load Balancer for load balancing on virtual networks.
 
 - **SDN Gateways.psd1** - Deploy Network Controller, Software Load Balancer and Gateway for connectivity to external networks.
+
+[!INCLUDE [redeploy-sdn-network-controller](../../includes/hci-redeploy-sdn-network-controller.md)]
 
 ## Next steps
 

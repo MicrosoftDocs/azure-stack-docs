@@ -2,21 +2,21 @@
 title: Azure Stack HCI two-node storage switchless deployment network reference pattern
 description: Plan to deploy an Azure Stack HCI two-node storage switchless network reference pattern.
 ms.topic: conceptual
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 11/10/2022
+ms.date: 03/14/2024
 ---
 
 # Review two-node storage switchless, single switch deployment network reference pattern for Azure Stack HCI
 
-[!INCLUDE [includes](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [includes](../../includes/hci-applies-to-23h2-22h2.md)]
 
-In this article, you'll learn about the two-node storage switchless with single TOR switch network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article will also help you determine if this configuration is viable for your deployment planning needs. This article is targeted towards the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
+This article describes the two-node storage switchless with single TOR switch network reference pattern that you can use to deploy your Azure Stack HCI solution. The information in this article also helps you determine if this configuration is viable for your deployment planning needs. This article targets the IT administrators who deploy and manage Azure Stack HCI in their datacenters.
 
-For information on other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
+For information about other network patterns, see [Azure Stack HCI network deployment patterns](choose-network-pattern.md).
 
 ## Scenarios
 
@@ -24,11 +24,11 @@ Scenarios for this network pattern include laboratories, factories, retail store
 
 Consider this pattern for a cost-effective solution that includes fault-tolerance at the cluster level, but can tolerate northbound connectivity interruptions if the single physical switch fails or requires maintenance.
 
-You can scale out this pattern, but it will require workload downtime to reconfigure storage physical connectivity and storage network reconfiguration. Although SDN L3 services are fully supported for this pattern, the routing services such as BGP will need to be configured on the firewall device on top of the TOR switch if it doesn't support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device, as they're implemented on the virtual switch.
+You can scale out this pattern, but it requires workload downtime to reconfigure storage physical connectivity and storage network reconfiguration. Although SDN L3 services are fully supported for this pattern, the routing services such as BGP must be configured on the firewall device on top of the TOR switch if it doesn't support L3 services. Network security features such as microsegmentation and QoS don't require extra configuration on the firewall device, as they're implemented on the virtual switch.
 
 ## Physical connectivity components
 
-As illustrate in the diagram below, this pattern has the following physical network components:
+As shown in the following diagram, this pattern has the following physical network components:
 
 - Single TOR switch for north-south traffic communication.
 
@@ -57,7 +57,7 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
 - Intent Type: Management and compute
 - Intent Mode: Cluster mode
 - Teaming: Yes. pNIC01 and pNIC02 are teamed
-- Default Management VLAN: Configured VLAN for management adapters isn’t modified
+- Default Management VLAN: Configured VLAN for management adapters isn't modified
 - PA & Compute VLANs and vNICs: Network ATC is transparent to PA vNICs and VLAN or compute VM vNICs and VLANs
 
 ### Storage intent
@@ -66,11 +66,11 @@ For two-node storage switchless patterns, two Network ATC intents are created. T
 - Intent mode: Cluster mode
 - Teaming: pNIC03 and pNIC04 use SMB Multichannel to provide resiliency and bandwidth aggregation
 - Default VLANs:
-    - 711 for storage network 1
-    - 712 for storage network 2
+  - 711 for storage network 1
+  - 712 for storage network 2
 - Default subnets:
-    - 10.71.1.0/24 for storage network 1
-    - 10.71.2.0/24 for storage network 2
+  - 10.71.1.0/24 for storage network 1
+  - 10.71.2.0/24 for storage network 2
 
 For more information, see [Deploy host networking](../deploy/network-atc.md).
 
@@ -102,4 +102,4 @@ For more information, see [Network ATC overview](../concepts/network-atc-overvie
 
 ## Next steps
 
-Learn about the [two-node storage switchless, two switches network pattern](two-node-switchless-two-switches.md).
+Learn about the [two-node storage switchless, two switches network pattern](two-node-switchless-two-switches.md)

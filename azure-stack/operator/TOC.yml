@@ -14,6 +14,26 @@
       href: release-notes.md
     - name: Hotfixes
       items:
+      - name: Hotfix 1.2311.3.50
+        href: hotfix-1-2311-3-50.md
+      - name: Hotfix 1.2306.4.98
+        href: hotfix-1-2306-4-98.md      
+      - name: Hotfix 1.2301.3.97
+        href: hotfix-1-2301-3-97.md
+      - name: Hotfix 1.2306.4.97
+        href: hotfix-1-2306-4-97.md      
+      - name: Hotfix 1.2301.3.96
+        href: hotfix-1-2301-3-96.md
+      - name: Hotfix 1.2311.3.44
+        href: hotfix-1-2311-3-44.md
+      - name: Hotfix 1.2311.2.23
+        href: hotfix-1-2311-2-23.md
+      - name: Hotfix 1.2306.4.74
+        href: hotfix-1-2306-4-74.md      
+      - name: Hotfix 1.2301.3.72
+        href: hotfix-1-2301-3-72.md
+      - name: Hotfix 1.2306.4.73
+        href: hotfix-1-2306-4-73.md      
       - name: Hotfix 1.2206.2.77
         href: hotfix-1-2206-2-77.md      
       - name: Hotfix 1.2301.2.64
@@ -482,6 +502,8 @@
           href: site-recovery-deploy-source.md
         - name: Deploy target environment
           href: site-recovery-deploy-target.md        
+        - name: Enable multitenancy
+          href: site-recovery-enable-multi-tenant.md
       - name: Protect virtual machines
         href: protect-virtual-machines.md
       - name: Capacity planning
@@ -516,6 +538,8 @@
           href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Release notes
         items:
+        - name: 1.2102.5.0 release notes [Mar 2024] 
+          href: event-hubs-rp-release-1-2102-50.md
         - name: 1.2102.4.0 release notes [Oct 2023] 
           href: event-hubs-rp-release-1-2102-40.md
         - name: 1.2102.3.0 release notes [Jan 2023] 
@@ -566,10 +590,6 @@
           href: azure-stack-mysql-resource-provider-2-0-13.md
         - name: MySQL resource provider 2.0.00.0 release notes
           href: azure-stack-mysql-resource-provider-20000.md
-        - name: MySQL resource provider 1.1.93.0 release notes
-          href: azure-stack-mysql-resource-provider-11930.md
-        - name: MySQL resource provider 1.1.47.0 release notes
-          href: azure-stack-mysql-resource-provider-11470.md
     - name: SQL on Azure Stack Hub
       items:
       - name: Overview
@@ -594,10 +614,6 @@
           href: azure-stack-sql-resource-provider-2-0-13.md 
         - name: SQL resource provider 2.0.00.0 release notes
           href: azure-stack-sql-resource-provider-20000.md 
-        - name: SQL resource provider 1.1.93.0 release notes
-          href: azure-stack-sql-resource-provider-11930.md   
-        - name: SQL resource provider 1.1.47.0 release notes
-          href: azure-stack-sql-resource-provider-11470.md   
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:

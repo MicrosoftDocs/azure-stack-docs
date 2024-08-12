@@ -1,75 +1,75 @@
 ---
-title: Kubernetes Secrets Store CSI Driver integration with AKS hybrid
-description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS hybrid.
-ms.topic: how-to
-ms.date: 11/04/2022
-ms.author: sethm 
-ms.lastreviewed: 02/01/2022
-ms.reviewer: jeguan
+title: Kubernetes Secrets Store CSI driver integration
+description: Learn how to use the Azure Key Vault Provider for Secrets Store CSI Driver to integrate secrets stores with AKS enabled by Azure Arc.
 author: sethmanheim
+ms.topic: how-to
+ms.date: 06/27/2024
+ms.author: sethm 
 
 # Intent: As an IT Pro, I want to learn how to use the Azure Key Vault Provider to integrate the Kubernetes Secret Store CSI Driver. 
 # Keyword: secrets stores CSI driver
 
 ---
 
-# Use Azure Key Vault Provider for Kubernetes Secrets Store CSI Driver with AKS hybrid
+# Use Azure Key Vault Provider for Kubernetes Secrets Store CSI driver
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). If you integrate the Secrets Store CSI Driver with AKS hybrid, you can mount secrets, keys, and certificates as a volume. The data is then mounted in the container's file system. 
+The Kubernetes Secrets Store CSI Driver integrates secrets stores with Kubernetes through a [Container Storage Interface (CSI) volume](https://kubernetes-csi.github.io/docs/). If you integrate the Secrets Store CSI Driver with AKS enabled by Azure Arc, you can mount secrets, keys, and certificates as a volume. The data is then mounted in the container's file system.
 
-With the Secrets Store CSI Driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
+With the Secrets Store CSI driver, you can also integrate a key vault with one of the supported providers, such as [Azure Key Vault](/azure/key-vault/general/overview).
 
 ## Before you begin
 
-- You need to have an Azure account and subscription.
-- You need to have an existing deployment of AKS hybrid with an existing workload cluster. If you don't, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
-- If you're running Linux clusters, they need to be on version Linux 1.16.0 or later.
-- If you're running Windows clusters, they need to be on version Windows 1.18.0 or later.
+Before you begin, make sure you have the following prerequisites:
+
+- An Azure account and subscription.
+- An existing deployment of AKS enabled by Arc with an existing workload cluster. If you don't have a deployment, follow this [Quickstart for deploying an AKS host and a workload cluster](./kubernetes-walkthrough-powershell.md).
+- If you're running Linux clusters, they must be on version Linux 1.16.0 or later.
+- If you're running Windows clusters, they must be on version Windows 1.18.0 or later.
 - Make sure you've completed the following installations:
   - [Helm](https://helm.sh/)
-  - `kubectl`<!--Link to installation instructions. Would this work? "Set up and install kubectl on Windows" at https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/-->
+  - [`kubectl`](https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/)
   - The latest version of the [Azure CLI](/cli/azure/install-azure-cli).
 
-
 ## Access your clusters using kubectl
-Run the following command to access your cluster through `kubectl`. In the command, replace the value for `-name` with your existing cluster name. You cluster name will use the specified cluster's `kubeconfig` file as the default `kubeconfig` file for `kubectl`.
+
+Run the following command to access your cluster using `kubectl`. In the command, replace the value of `-name` with your existing cluster name. You cluster name uses the specified cluster's `kubeconfig` file as the default `kubeconfig` file for `kubectl`:
 
 ```powershell
 Get-AksHciCredential -name mycluster
 ```
 
-## Install the Secrets Store CSI Driver
+## Install the Secrets Store CSI driver
 
-To install the Secrets Store CSI Driver, run the following Helm command:
+To install the Secrets Store CSI driver, run the following Helm command:
 
 ```powershell
 helm repo add csi-secrets-store-provider-azure https://azure.github.io/secrets-store-csi-driver-provider-azure/charts
 ```
 
-The following command installs both the Secrets Store CSI Driver and the Azure Key Vault provider:
+The following command installs both the Secrets Store CSI driver and the Azure Key Vault provider:
 
 ```powershell
 helm install csi csi-secrets-store-provider-azure/csi-secrets-store-provider-azure --namespace kube-system
 ```
 
 > [!NOTE]
-> You should install the Secrets Store CSI driver and Azure Key Vault provider in the `kube-system` namespace. In this tutorial, the `kube-system` namespace is used for all instances.
+> You should install the Secrets Store CSI driver and Azure Key Vault provider in the `kube-system` namespace. This guide uses the `kube-system` namespace for all instances.
 
-## Verify the Secrets Store CSI Driver and Azure Key Vault provider are successfully installed
+## Verify the Secrets Store CSI driver and Azure Key Vault provider are successfully installed
 
-Check your running pods to make sure the Secrets Store CSI Driver and the Azure Key Vault provider are installed by running the following commands:
+Check your running pods to make sure the Secrets Store CSI driver and the Azure Key Vault provider are installed by running the following commands:
 
-- To verify the Secrets Store CSI Driver is installed, run this command:
+- To verify the Secrets Store CSI driver is installed, run this command:
 
   ```powershell
    kubectl get pods -l app=secrets-store-csi-driver -n kube-system
   ```
 
-  **Example Output**
+  Example output:
 
-  ```
+  ```output
   NAME                             READY   STATUS    RESTARTS   AGE
   secrets-store-csi-driver-spbfq   3/3     Running   0          3h52m
   ```
@@ -80,9 +80,9 @@ Check your running pods to make sure the Secrets Store CSI Driver and the Azure 
   kubectl get pods -l app=csi-secrets-store-provider-azure -n kube-system
   ```
 
-  **Example output**
+  Example output:
   
-  ```
+  ```output
   NAME                                         READY   STATUS    RESTARTS   AGE
   csi-csi-secrets-store-provider-azure-tpb4j   1/1     Running   0          3h52m
   ```
@@ -91,13 +91,13 @@ Check your running pods to make sure the Secrets Store CSI Driver and the Azure 
 
 You need an Azure Key Vault resource that contains your secret data. You can use an existing Azure Key Vault resource or create a new one.
 
-If you need to create an Azure Key Vault resource, run the following command. Make sure you're logged in by running `az login` with your Azure credentials. Then change the following values to your environment.
+If you need to create an Azure Key Vault resource, run the following command. Make sure you're logged in by running `az login` with your Azure credentials. Then change the following values to your environment:
 
 ```azurecli
 az keyvault create -n <keyvault-name> -g <resourcegroup-name> -l eastus
 ```
 
-Azure Key Vault can store keys, secrets, and certificates. In the following example, a plain-text secret called `ExampleSecret` is configured.
+Azure Key Vault can store keys, secrets, and certificates. In the following example, a plain-text secret called `ExampleSecret` is configured:
 
 ```azurecli
 az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyAKSHCIExampleSecret
@@ -105,7 +105,7 @@ az keyvault secret set --vault-name <keyvault-name> -n ExampleSecret --value MyA
 
 ## Create an identity in Azure
 
-Use a service principal to access the Azure Key Vault instance that you created in the previous step. You should record the outputs when running the following commands. You'll use both the Client Secret and Client ID in the next steps.
+Use a service principal to access the Azure Key Vault instance that you created in the previous step. You should record the outputs when running the following commands. You use both the client secret and client ID in the next steps.
 
 Provide the client secret by running the following command:
 
@@ -113,7 +113,7 @@ Provide the client secret by running the following command:
 az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<subscription-id> --name http://secrets-store-test --query 'password' -otsv
 ```
 
-Provides the client ID by running the following command:
+Provide the client ID by running the following command:
 
 ```azurecli
 az ad sp show --id http://secrets-store-test --query 'appId' -otsv
@@ -129,13 +129,13 @@ az keyvault set-policy -n <keyvault-name> --secret-permissions get --spn <client
 
 ## Create the Kubernetes secret with credentials
 
-To create the Kubernetes secret with the Service Principal credentials, run the following command. Replace the following values with the appropriate Client ID and Client Secret from the previous step.
+To create the Kubernetes secret with the service principal credentials, run the following command. Replace the following values with the appropriate client ID and client secret from the previous step:
 
 ```powershell
 kubectl create secret generic secrets-store-creds --from-literal clientid=<client-id> --from-literal clientsecret=<client-secret>
 ```
 
-By default, the secret store provider has filtered watch enabled on secrets. You can allow the command to find the secret in the default configuration by adding the label `secrets-store.csi.k8s.io/used=true` to the secret.
+By default, the secret store provider has filtered watch enabled on secrets. You can allow the command to find the secret in the default configuration by adding the label `secrets-store.csi.k8s.io/used=true` to the secret:
 
 ```powershell
 kubectl label secret secrets-store-creds secrets-store.csi.k8s.io/used=true
@@ -143,7 +143,7 @@ kubectl label secret secrets-store-creds secrets-store.csi.k8s.io/used=true
 
 ## Create and apply your own SecretProviderClass object
 
-To use and configure the Secrets Store CSI Driver for your AKS cluster, create a `SecretProviderClass` custom resource. Ensure the `objects` array matches the objects you've stored in the Azure Key Vault instance:
+To use and configure the Secrets Store CSI driver for your Kubernetes cluster, create a `SecretProviderClass` custom resource. Ensure the `objects` array matches the objects you've stored in the Azure Key Vault instance:
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -157,7 +157,7 @@ spec:
     keyvaultName: "<keyvault-name>"       # The name of the Azure Key Vault
     useVMManagedIdentity: "false"         
     userAssignedIdentityID: "false" 
-    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud 
+    cloudName: ""                         # [OPTIONAL for Azure] if not provided, Azure environment defaults to AzurePublicCloud 
     objects:  |
       array:
         - |
@@ -177,7 +177,7 @@ kubectl apply -f ./new-secretproviderclass.yaml
 
 ## Update and apply your cluster's deployment YAML file
 
-To ensure that your cluster is using the new custom resource, update the deployment YAML file. For example:
+To ensure that your cluster uses the new custom resource, update the deployment YAML file. For example:
 
 ```yaml
 kind: Pod
@@ -220,9 +220,9 @@ To show the secrets that are held in `secrets-store`, run the following command:
 kubectl exec busybox-secrets-store-inline --namespace kube-system -- ls /mnt/secrets-store/
 ```
 
-The output should show the name of the secret. In this example, it should display the following output:
+The output should show the name of the secret. In this example, it displays the following output:
 
-```Output
+```output
 ExampleSecret
 ```
 
@@ -232,13 +232,13 @@ To show the test secret held in `secrets-store`, run the following command:
 kubectl exec busybox-secrets-store-inline --namespace kube-system -- cat /mnt/secrets-store/ExampleSecret 
 ```
 
-The output should show the value of the secret. In this example, it should show the output below:
+The output should show the value of the secret. In this example, it shows the following output:
 
-```Output
+```output
 MyAKSHCIExampleSecret
 ```
 
 ## Next steps
 
-- [Deploy Linux applications on a Kubernetes cluster](./deploy-linux-application.md).
-- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md).
+- [Deploy Linux applications on a Kubernetes cluster](./deploy-linux-application.md)
+- [Deploy a Windows Server application on a Kubernetes cluster](./deploy-windows-application.md)

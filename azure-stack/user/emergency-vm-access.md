@@ -3,7 +3,7 @@ title: Emergency VM access in Azure Stack Hub
 description: Learn how to request help from the operator in scenarios in which a user is locked out from the virtual machine.
 author: sethmanheim
 ms.topic: article
-ms.date: 02/27/2023
+ms.date: 01/04/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 08/13/2021
@@ -12,16 +12,16 @@ ms.lastreviewed: 08/13/2021
 
 # Emergency VM access (EVA)
 
-The Emergency VM Access Service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network.
+The Emergency VM Access service (EVA) enables a user to request help from the operator in scenarios in which that user is locked out from the virtual machine, and the redeploy operation does not help to recover access via the network.
 
 > [!NOTE]
 > EVA was released with general availability starting with Azure Stack Hub 2301.
 
 This feature must be enabled per subscription, and the operator needs to enable Remote Desktop access in order for the **cloudadmin** user to access the emergency recovery console VMs (ERCS).
 
-The first step for the user is to request VM console access via PowerShell. The request provides consent and allows the operator with additional information to connect to the virtual machine via its console. Console access does not depend on network connectivity and uses a data channel of the hypervisor.
+The first step for the user is to request VM console access via PowerShell. The request provides consent and allows the operator with additional information to connect to the virtual machine via its console. Console access doesn't depend on network connectivity and uses a data channel of the hypervisor.
 
-It is important to note that the operator can only authenticate to the operating system running inside the VM if the credentials are known. At that point, the operator can also share screens with the user and resolve the issue together to restore network connectivity.
+The operator can only authenticate to the operating system running inside the VM if the credentials are known. At that point, the operator can also share screens with the user and resolve the issue together to restore network connectivity.
 
 > [!IMPORTANT]
 > For VMs running Windows Server, the EVA feature is limited to computers running with a graphical user interface (GUI). For Windows Server, the core operating system doesn't support on-screen keyboard functionality. Since you cannot send the **Ctrl+Alt+Del** key combination as input, you can't sign in to a core server, even though you can connect to its console. If you need to address an issue with the Windows core OS, please engage Microsoft support to provide console access from an unlocked PEP.
@@ -147,7 +147,7 @@ As a user, you provide consent to the operator to create console access for a sp
 
 The next step for the Azure Stack Hub operator is to enable Remote Desktop access to the Emergency Recovery Console VMs (ERCS), which host the privileged endpoints.
 
-Run the following commands in the privileged endpoint (PEP) from the operator workstation that will be used to connect to the ERCS. The command will add the workstation's IP to the network safelist. Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md). The operator can be a member of the **cloudadmin** users group, or **cloudadmin** itself:
+Run the following commands in the privileged endpoint (PEP) from the operator workstation that you use to connect to the ERCS. The command adds the workstation's IP to the network safelist. Follow the guidance on how to [connect to PEP](../operator/azure-stack-privileged-endpoint.md). The operator can be a member of the **cloudadmin** users group, or **cloudadmin** itself:
 
 ```powershell
 Grant-RdpAccessToErcsVM
@@ -167,28 +167,22 @@ Revoke-RdpAccessToErcsVM
    > [!NOTE]
    > The operator authenticates using the same cloud admin account that executed [**Grant-RdpAccessToErcsVM**](#operator-enables-remote-desktop-access-to-ercs-vms).
 
-2. Once connected to the ERCS VM via RDP, launch PowerShell.
+1. Once connected to the ERCS VM via RDP, launch PowerShell.
 
-3. Import the Emergency VM Access module by running the following command:
-
-   ```powershell
-   Import-module Microsoft.AzureStack.Compute.EmergencyVmAccess.PowerShellModule
-   ```
-
-4. Connect to the console of the tenant virtual machine using the following command:
+1. Connect to the console of the tenant virtual machine using the following command:
 
    ```powershell
    ConnectTo-TenantVm -ResourceID
    ```
 
-5. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator does not have any credentials with which to sign in to the guest operating system.
+1. The operator now connects to the console screen of the tenant virtual machine to which they need to authenticate using the **cloudadmin** credentials again. The operator doesn't have any credentials with which to sign in to the guest operating system.
 
    > [!NOTE]
    > In the sign-in screen, pressing the Windows + U keys launches the on-screen keyboard, which allows sending CTRL + ALT + Delete. You must be in full screen RDP mode in order to use the Windows + U key combination.
 
-6. The operator can now screen share with the tenant to debug any issues that prevent connecting to the VM via the network.
+1. The operator can now screen share with the tenant to debug any issues that prevent connecting to the VM via the network.
 
-7. When finished, the operator can run the following command to remove the user consent:
+1. When finished, the operator can run the following command to remove the user consent:
 
    ```powershell
    Delete-TenantVMSession -ResourceID

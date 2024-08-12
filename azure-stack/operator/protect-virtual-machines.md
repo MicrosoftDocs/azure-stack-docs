@@ -1,25 +1,28 @@
 ---
-title: Protect virtual machines in Azure Site Recovery on Azure Stack Hub (preview)
+title: Protect virtual machines in Azure Site Recovery on Azure Stack Hub
 description: Learn how to protect virtual machines in Azure Site Recovery on Azure Stack Hub. 
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 03/06/2023
+ms.date: 04/15/2024
+ms.reviewer: rtiberiu
+ms.lastreviewed: 04/15/2024
+
 ---
 
-
-# Enable VM protection in Azure Site Recovery (preview)
+# Enable VM protection in Azure Site Recovery
 
 Once the target and the source environments are configured, you can start enabling the protection of VMs (from the source to the target). All configuration is done on the target environment, in the Site Recovery vault itself.
 
 ## Prerequisites
 
-You can configure the replication policy for the respective VMs you want to protect in the Site Recovery vault. These VMs are on the source environment, where they have configured a specific resource group structure, virtual networks, public IPs, and NSGs.
+You can configure the replication policy for the respective VMs you want to protect in the Site Recovery vault. These VMs are on the source environment, where they configured a specific resource group structure, virtual networks, public IPs, and NSGs.
 
 Site Recovery helps replicate all the VM data itself, but before starting that, make sure that the following prerequisites are met:
 
 - The target network connectivity is configured.
 - The target virtual networks are configured - where each of the protected VMs are connected when a failover occurs.
+- The target user subscription has enough compute quota allocation for all the VMs you plan to potentially failover.
 - These virtual networks can be configured in the same manner as the source networks, or they can have a different design, depending on your disaster recovery plan and goal.
 - Ensure that the new public and private IPs work as expected for the specific workloads you are protecting (when failovers occur, the failed-over VMs have IPs from the target environment).
 - The desired resource group configuration is created.
@@ -37,13 +40,13 @@ In the target environment, in the Azure Stack Hub user portal, open the Site Rec
 
 :::image type="content" source="media/protect-virtual-machines/protect-workloads.png" alt-text="Screenshot of protect workloads portal screen." lightbox="media/protect-virtual-machines/protect-workloads.png":::
 
-Select the appliance you have configured and check that it is healthy:
+Select the appliance you configured and check that it is healthy:
 
 :::image type="content" source="media/protect-virtual-machines/health-check.png" alt-text="Screenshot of portal health precheck." lightbox="media/protect-virtual-machines/health-check.png":::
 
-The blade then asks you to select the source environment and the source subscription. You should see all the Azure Stack Hub User subscriptions to which the user (or SPN) you have configured has access.
+The blade then asks you to select the source environment and the source subscription. You should see all the Azure Stack Hub User subscriptions to which the user (or SPN) you configured has access.
 
-Select the subscription that contains the source workloads, and select the VMs for which you plan to enable protection. You can protect up to 10 VMs at a time. We have made PowerShell scripts available that can enable larger deployments.
+Select the subscription that contains the source workloads, and select the VMs for which you plan to enable protection. You can protect up to 10 VMs at a time. PowerShell scripts are available that can enable larger deployments.
 
 :::image type="content" source="media/protect-virtual-machines/enable-replication.png" alt-text="Screenshot of enable replication portal screen." lightbox="media/protect-virtual-machines/enable-replication.png":::
 
@@ -51,7 +54,7 @@ Azure Site Recovery replicates all disks attached to the VM. In this version, al
 
 :::image type="content" source="media/protect-virtual-machines/replication-settings.png" alt-text="Screenshot of portal replication settings." lightbox="media/protect-virtual-machines/replication-settings.png":::
 
-In the next step, select the target environment configuration. This configuration includes the networks the VMs connect to, and the cache storage account they use. You must use PowerShell to configure the replication policy. We have provided scripts that help start the customization process.
+In the next step, select the target environment configuration. This configuration includes the networks the VMs connect to, and the cache storage account they use. You must use PowerShell to configure the replication policy. Scripts are available that help start the customization process.
 
 :::image type="content" source="media/protect-virtual-machines/target-environment.png" alt-text="Screenshot of target environment settings on portal." lightbox="media/protect-virtual-machines/target-environment.png":::
 
@@ -115,6 +118,15 @@ Once a VM is protected and data replicated, there are further tasks you can perf
   > [!NOTE]
   > At this time we don't support re-enabling protection (after a failback process). You must disable protection, remove the agent, and then enable protection again for this VM. This process can be automated and we provide scripts to help you get started.
 
+## Uninstall Azure Site Recovery VM extension
+
+By design, when you uninstall the the Azure Site Recovery extension, it doesn't remove the mobility service that runs within that VM. This blocks any future protection and requires manual steps to enable protection again for that VM.
+
+After you remove the Azure Site Recovery VM extension, you must uninstall the mobility service that runs within that VM. To do so, see these steps to [Uninstall Mobility service](/azure/site-recovery/vmware-physical-manage-mobility-service#uninstall-mobility-service).
+ 
+> [!NOTE]
+> If you plan to re-enable protection for that VM, after following the previous steps, make sure to restart the VM before trying to add protection using Azure Site Recovery.
+
 ## Considerations
 
 The following information is not necessary for normal operations. However, these notes can help give you a better understanding of the processes that take place behind the scenes.
@@ -154,17 +166,18 @@ For each of the states, there are several considerations:
 
   - Ensure that the Site Recovery appliance VM has enough data disk slots available. The replica disks for re-protection are attached to the appliance (check the Capacity Planning for more information).
   - During the re-protection process, the source VM (which would have the **sourceAzStackVirtualMachineId** on the source stamp) is shut down once the re-protect is triggered, and the OS disk and data disks attached to it are detached and attached to the appliance as replica disks if they are the old ones. The OS disk is replaced with a temporary OS disk of size 1GB.
-  - Even if a disk can be re-used as replica in re-protect, but it is in a different subscription from the appliance VM, a new disk is created from it in the same subscription and resource group as the appliance, so that the new disk can be attached to the appliance. 
+  - Even if a disk can be re-used as replica in re-protect, but it is in a different subscription from the appliance VM, a new disk is created from it in the same subscription and resource group as the appliance, so that the new disk can be attached to the appliance.
   - The attached data disks of the appliance should not be modified/attached/detached/changed manually, as a re-protect manual resync is not supported in public preview (see the known issues article). The re-protection cannot be recovered if the replica disks are removed.
 
 - Failback (planned failover): fail back a re-protected item from the target stamp to the source stamp:
   - Ensure that the initial source subscription, the initial resource group, and the virtual network/subnet of the initial primary NIC still exist on the source stamp. You can retrieve this information from the protected item using PowerShell.
-  - The VM with the **sourceAzStackVirtualMachineId** on the source stamp is created with the replica disks and newly-created NICs if it does not exist; or it is replaced with a replica OS disk and data disks if it exists.
+  - The VM with the **sourceAzStackVirtualMachineId** on the source stamp is created with the replica disks and newly created NICs if it does not exist; or it is replaced with a replica OS disk and data disks if it exists.
   - If the VM with the **sourceAzStackVirtualMachineId** on the primary stamp exists, all the disks attached to it are detached but not deleted, and the NICs remain the same.
   - If the VM with the **sourceAzStackVirtualMachineId** on the primary stamp exists, and if it is in a different subscription from the appliance VM, new disks are created in the same subscription and resource group as the failback VM from the replica ones detached from the appliance, so that the new disks can be attached to the failback VM.
 
 - Commit that the failover/failback is done. The failed-over VM on the recovery stamp is deleted after failback is committed.
+- When you uninstall the Azure Site Recovery Resource Provider, all the vaults created in those target Azure Stack Hub stamps are also removed. This is an Azure Stack Hub operator action, with no warnings or alerts for users when it happens.
 
 ## Next steps
 
-Azure Site Recovery overview
+[Azure Site Recovery overview](azure-site-recovery-overview.md)

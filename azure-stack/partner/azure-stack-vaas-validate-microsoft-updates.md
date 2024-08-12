@@ -43,8 +43,6 @@ The following tests must be executed in the following order for monthly software
 1. Create a new **Package Validation** workflow.
 1. For the required tests above, follow the instructions from [Run Package Validation tests](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). See the section below for additional instructions on the **Monthly Azure Stack Hub Update Verification** test.
 
-If you have questions or concerns, contact [VaaS Help](mailto:vaashelp@microsoft.com).
-
 ## Next steps
 
 - [Monitor and manage tests in the VaaS portal](azure-stack-vaas-monitor-test.md)

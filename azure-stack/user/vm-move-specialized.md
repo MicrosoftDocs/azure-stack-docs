@@ -3,7 +3,7 @@ title: Move a specialized VM from on-premises to Azure Stack Hub
 description: Learn how to move a specialized VM from on-premises to Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 2/1/2021
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 9/8/2020
@@ -39,7 +39,6 @@ Find the section that that is specific to your needs when preparing your VHD.
 
 Follow the appropriate instructions to prepare the VHD for your Linux OS:
 
-- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=/azure/virtual-machines/linux/toc.json)
 - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
 - [Red Hat Enterprise Linux](../operator/azure-stack-redhat-create-upload-vhd.md)
 - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
@@ -60,7 +59,7 @@ Identify what version of Linux Agent is installed in the source VM image, run th
 
    ```bash
    waagent -version
-   WALinuxAgent-2.2.45 running on centos 7.7.1908
+   WALinuxAgent-2.2.45 running on ...
    Python: 2.7.5
    Goal state agent: 2.2.46
    ```

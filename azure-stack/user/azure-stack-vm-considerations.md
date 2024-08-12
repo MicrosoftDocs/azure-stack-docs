@@ -4,6 +4,7 @@ description: Learn about different features and considerations when working with
 author: sethmanheim
 
 ms.topic: article
+ms.custom:
 ms.date: 02/02/2022
 ms.author: sethm
 ms.reviewer: thoroet
@@ -11,7 +12,6 @@ ms.lastreviewed: 07/15/2021
 
 # Intent: As an Azure Stack user, I want to know what I need to do to move them to Azure Stack or work with them in Azure Stack.
 # Keyword: Azure Stack VM
-
 ---
 
 

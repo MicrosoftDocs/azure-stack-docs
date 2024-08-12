@@ -1,17 +1,17 @@
 ### YamlMime:FAQ
 metadata:
-  title: Known issues in Windows Admin Center for AKS hybrid
-  description: Known issues in Windows Admin Center for AKS hybrid
+  title: Known issues in Windows Admin Center for AKS Arc
+  description: Known issues in Windows Admin Center for AKS enabled by Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 07/11/2024
 
 title: Fix issues in Windows Admin Center
 summary: |
-  This article describes known issues with Windows Admin Center for AKS hybrid. You can also review [upgrade](/azure-stack/aks-hci/known-issues) and [installation](/azure-stack/aks-hci/known-issues-installation) issues and errors.
+  This article describes known issues with Windows Admin Center for AKS Arc. You can also review [upgrade](/azure-stack/aks-hci/known-issues) and [installation](/azure-stack/aks-hci/known-issues-installation) issues and errors.
   
 sections:
   - name: Single section - ignored
@@ -133,7 +133,7 @@ sections:
           Troubleshoot CredSSP issues
 
         answer: | 
-          When you deploy AKS hybrid using Windows Admin Center, and the deployment hangs for an extended period, you might be having Credential Security Support Provider (CredSSP) or connectivity problems. 
+          When you deploy AKS Arc using Windows Admin Center, and the deployment hangs for an extended period, you might be having Credential Security Support Provider (CredSSP) or connectivity problems. 
           
           Try the following steps to troubleshoot your deployment:
            
@@ -334,5 +334,5 @@ additionalContent: |
   - [Installation issues and errors](/azure-stack/aks-hci/known-issues-installation)
   - [Upgrade known issues](/azure-stack/aks-hci/known-issues-upgrade)
   
-  If you continue to run into problems when you're using AKS hybrid, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
+  If you continue to run into problems when you're using AKS Arc, you can file bugs through [GitHub](https://aka.ms/aks-hci-issues).
     

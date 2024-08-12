@@ -1,9 +1,9 @@
 ---
-title: Overview of certificate management in AKS hybrid
-description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS hybrid.
+title: Overview of certificate management in AKS enabled by Azure Arc
+description: Learn how to manage certificates for secure communication between in-cluster components in AKS by provisioning and managing certificates in AKS enabled by Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 04/04/2023
+ms.date: 01/10/2024
 ms.author: sethm 
 ms.lastreviewed: 04/01/2023
 ms.reviewer: sulahiri
@@ -13,22 +13,22 @@ ms.reviewer: sulahiri
 
 ---
 
-# Overview of certificate management
+# Overview of certificate management in AKS enabled by Azure Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-AKS hybrid uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource. AKS hybrid supports hybrid deployment options for Azure Kubernetes Service (AKS).
+AKS enabled by Azure Arc uses a combination of certificate and token-based authentication to secure communication between services (or agents) responsible for different operations within the platform. Certificate-based authentication uses a digital certificate to identify an entity (agent, machine, user, or device) before granting access to a resource.
 
 ## Cloud agent
 
-When you deploy AKS hybrid, AKS installs agents that are used to perform various functions within the cluster. These agents include:
+When you deploy AKS enabled by Arc, AKS installs agents that are used to perform various functions within the cluster. These agents include:
 
 - Cloud agent: a service that is responsible for the underlying platform orchestration.
 - Node agent: a service that resides on each node that does the actual work of virtual machine creation, deletion, etc.
 - Key Management System (KMS) pod: a service responsible for key management.
-- Other services - cloud operator, certificate manager, etc.
+- Other services: cloud operator, certificate manager, etc.
 
-The cloud agent service in AKS hybrid is responsible for orchestrating the create, read, update, and delete (CRUD) operations of infrastructure components such as Virtual Machines (VMs), Virtual Network Interfaces (VNICs), and Virtual Networks (VNETs) in the cluster.
+The cloud agent service in AKS is responsible for orchestrating the create, read, update, and delete (CRUD) operations of infrastructure components such as Virtual Machines (VMs), Virtual Network Interfaces (VNICs), and Virtual Networks (VNETs) in the cluster.
 
 To communicate with the cloud agent, clients require certificates to be provisioned in order to secure this communication. Each client requires an identity to be associated with it, which defines the Role Based Access Control (RBAC) rules associated with the client. Each identity consists of two entities:
 
@@ -39,41 +39,41 @@ Each entity is valid for a specific period (the default is 90 days), at the end 
 
 ## Certificate types
 
-There are two types of certificates used in AKS hybrid:
+There are two types of certificates used in AKS enabled by Arc:
 
 - Cloud agent CA certificate: the certificate used to sign/validate client certificates. This certificate is valid for 365 days (1 year).
 - Client certificates: certificates issued by the cloud agent CA certificate for clients to authenticate to the cloud agent. These certificates are usually valid for 90 days.
 
 Microsoft recommends that you update clusters within 60 days of a new release, not only for ensuring that internal certificates and tokens are kept up to date, but also to make sure that you get access to new features, bug fixes, and to stay up to date with critical security patches. During these monthly updates, the update process rotates any tokens that can't be auto-rotated during normal operations of the cluster. Certificate and token validity is reset to the default 90 days from the date that the cluster is updated.
 
-## Secure communication with certificates in AKS hybrid
+## Secure communication with certificates in AKS enabled by Arc
 
-Certificates are used to build secure communication between in-cluster components. AKS hybrid provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. In this article, you'll learn how to provision and manage certificates in AKS hybrid.
+Certificates are used to build secure communication between in-cluster components. AKS provides zero-touch, out-of-the-box provisioning, and management of certificates for built-in Kubernetes components. In this article, you'll learn how to provision and manage certificates in AKS enabled by Arc.
 
 ## Certificates and CAs
 
-AKS hybrid generates and uses the following Certificate Authorities (CAs) and certificates.
+AKS generates and uses the following Certificate Authorities (CAs) and certificates.
 
-**Cluster CA**:
+### Cluster CA
 
 - The API server has a Cluster CA, which signs certificates for one-way communication from the API server to `kubelet`.
 - Each `kubelet` also creates a Certificate Signing Request (CSR), which is signed by the Cluster CA, for communication from the `kubelet` to the API server.
-- The etcd key value store has a certificate signed by the Cluster CA for communication from etcd to the API server. 
+- The etcd key value store has a certificate signed by the Cluster CA for communication from etcd to the API server.
 
-**etcd CA**:
+### etcd CA
 
-- The etcd key value store has an etcd CA that signs certificates to authenticate and authorize data replication between etcd replicas in the cluster.
+The etcd key value store has an etcd CA that signs certificates to authenticate and authorize data replication between etcd replicas in the cluster.
 
-**Front Proxy CA**:
+### Front Proxy CA
 
-- The Front Proxy CA secures communication between the API server and the extension API server.
+The Front Proxy CA secures communication between the API server and the extension API server.
 
-### Certificate provisioning 
+### Certificate provisioning
 
-Certificate provisioning for a `kubelet` is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation. 
+Certificate provisioning for a `kubelet` is done using [TLS bootstrapping](https://kubernetes.io/docs/reference/access-authn-authz/kubelet-tls-bootstrapping/). For all other certificates, use YAML-based key and certificate creation.
 
 - The certificates are stored in **/etc/kubernetes/pki**.
-- The keys are RSA 4096, EcdsaCurve: P384 
+- The keys are RSA 4096, EcdsaCurve: P384
 
 > [!NOTE]
 > The root certificates are valid for 10 years. All other, non-root certificates are short-lived and valid for four days.
@@ -82,14 +82,14 @@ Certificate provisioning for a `kubelet` is done using [TLS bootstrapping](https
 
 Non-root certificates are automatically renewed. All control plane certificates for Kubernetes except the following certificates are managed:
 
-- Kubelet server certificate 
-- Kubeconfig client certificate 
+- Kubelet server certificate
+- Kubeconfig client certificate
 
 As a security best practice, you should use [Active Directory single sign-in](./ad-sso.md) for user authentication.
 
 ## Certificate revocation
 
-Certificate revocation should be rare, and it should be done at the time of certificate renewal. 
+Certificate revocation should be rare, and it should be done at the time of certificate renewal.
 
 Once you have the serial number of the certificate you would like to revoke, use Kubernetes Custom Resource for defining and persisting revocation information. Each revocation object can consist of one or more revocation entries.  
 
@@ -107,7 +107,7 @@ A `notBefore` time can be specified to revoke only certificates that are issued 
 
 If you use a serial number when you perform a revocation, you can use the `Repair-AksHciClusterCerts` PowerShell command, described below, to get your cluster into a working state. If you use any of the other fields listed earlier, make sure to specify a `notBefore` time.
 
-```Console
+```console
 apiVersion: certificates.microsoft.com/v1 
 kind: RenewRevocation 
 metadata: 

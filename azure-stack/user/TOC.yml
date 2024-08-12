@@ -151,8 +151,6 @@
           href: azure-stack-manage-vm-protect.md
         - name: VM known issues
           href: troubleshoot-vm-known-issues.md
-        - name: VM update and management
-          href: vm-update-management.md
         - name: Azure Instance Metadata Service - public preview
           href: instance-metadata-service.md
         - name: SQL Server VM considerations
@@ -185,6 +183,8 @@
           href: azure-stack-network-overview.md
         - name: Networking considerations
           href: azure-stack-network-differences.md
+        - name: Standard Load Balancer considerations
+          href: standard-load-balancer-considerations.md
         - name: VPN gateways
           items:
           - name: Connect using VPN
@@ -331,7 +331,7 @@
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
-      href: azure-stack-dev-start-howto-vm-dotnet.md
+      href: azure-stack-dev-start-howto-vm-dotnet.yml
     - name: Deploy a web app to a Linux VM
       items:
       - name: Deploy a Linux VM for a web app

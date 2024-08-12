@@ -1,18 +1,18 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot networking issues and errors in AKS hybrid
-  description: Get help to troubleshoot networking issues and errors in AKS hybrid.
+  title: Troubleshoot networking issues and errors in AKS enabled by Arc
+  description: Get help to troubleshoot networking issues and errors in AKS Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 07/11/2024
 
-title: Fix known issues and errors when configuring a network in AKS hybrid
+title: Fix known issues and errors when configuring a network in AKS Arc
 summary: |
   **Applies to: AKS on Azure Stack HCI, AKS on Windows Server**
-  Use this topic to help you troubleshoot and resolve networking-related issues with AKS hybrid.
+  Use this topic to help you troubleshoot and resolve networking-related issues with AKS Arc.
   
 sections:
   - name: Single section - ignored
@@ -35,7 +35,7 @@ sections:
           Arc-connected clusters have empty JSON "distribution" property
 
         answer: | 
-          Azure Arc for Kubernetes-connected clusters can have the value for the JSON property `distribution` set to an empty string. For AKS hybrid connected clusters, this value is set during initial installation and is never altered for the lifetime of the deployment.
+          Azure Arc for Kubernetes-connected clusters can have the value for the JSON property `distribution` set to an empty string. For AKS Arc-connected clusters, this value is set during initial installation and is never altered for the lifetime of the deployment.
           
           To reproduce the issue, open an Azure PowerShell window and run the following commands:
           
@@ -122,7 +122,7 @@ sections:
 
         answer: | 
           Symptoms:
-          - Proxy enabled in AKS hybrid. The WSSDAgent service stuck in the `starting` state.
+          - Proxy enabled in AKS Arc. The WSSDAgent service stuck in the `starting` state.
           Shows up as the following:
           - `Test-NetConnection -ComputerName <computer IP/Name> -Port <port>` from the node where the node agent is failing towards the cloud agent is working properly on the system (even when the wssdagent fails to start)
           - Curl.exe from the node on which the agent is failing towards the cloud agent reproduces the problem and is getting stuck:
@@ -133,7 +133,7 @@ sections:
           curl.exe --noproxy '*' https://<computerIP>:65000
           ```
           
-          It is likely the proxy settings were changed to a faulty proxy on the host. The proxy settings for AKS hybrid are environment variables that are inherited from the parent process on the host. These settings only get propagated when a new service starts or an old one updates or reboots. It is possible that faulty proxy settings were set on the host, and they were propagated to the WSSDAgent after an update or reboot, which has caused the WSSDAgent to fail.
+          It is likely the proxy settings were changed to a faulty proxy on the host. The proxy settings for AKS Arc are environment variables that are inherited from the parent process on the host. These settings only get propagated when a new service starts or an old one updates or reboots. It is possible that faulty proxy settings were set on the host, and they were propagated to the WSSDAgent after an update or reboot, which has caused the WSSDAgent to fail.
           
           You will need to fix the proxy settings by changing the environmental variables on the machine.
           On the machine, change the variables with the following commands:
@@ -181,10 +181,10 @@ sections:
           Most of the time, this error occurs as a result of a change in the user's security token (due to a change in group membership), a password change, or an expired password. In most cases, the issue can be remediated by logging off from the computer and logging back in. If the error still occurs, you can create a support ticket through the Azure portal.
           
       - question: | 
-          AKS hybrid cluster stuck in "ScalingControlPlane" provisioning state
+          AKS Arc cluster stuck in "ScalingControlPlane" provisioning state
 
         answer: | 
-          This issue causes an AKS hybrid cluster to remain in the **ScalingControlPlane** state for an extended period of time.
+          This issue causes an AKS Arc cluster to remain in the **ScalingControlPlane** state for an extended period of time.
           
           ### To reproduce
           
@@ -207,7 +207,7 @@ sections:
           Name                  : <cluster name>
           ```
           
-          This issue has been fixed in recent AKS hybrid versions. We recommend updating your AKS hybrid clusters to the latest release.
+          This issue has been fixed in recent AKS Arc versions. We recommend updating your AKS Arc clusters to the latest release.
           
           To mitigate this issue, contact support to manually patch the status of the control plane nodes to remove the condition **MachineOwnerRemediatedCondition** from the machine status via kubectl.
       - question: | 

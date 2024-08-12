@@ -4,8 +4,8 @@ description: Describes how to deploy a containerized application to a Kubernetes
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/06/2023
-ms.custom: template-how-to
+ms.date: 05/01/2024
+ms.custom: template-how-to, linux-related-content
 ---
 
 # Deploy an application
@@ -20,7 +20,7 @@ To get started, set up your [single machine Kubernetes](aks-edge-howto-single-no
 
 ### Step 1: update the manifest file
 
-This article uses a sample application that is a simple voting app consisting of a front and back end, which is based on Microsoft's **azure-vote-front** image. The container image for this application is hosted on Azure Container Registry (ACR). See [linux-sample.yaml](https://github.com/Azure/AKS-Edge/blob/main/samples/others/linux-sample.yaml) in the GitHub repo package for the deployment manifest. Note that in the YAML we specified a `nodeSelector` tag as **Linux**.
+This article uses a sample application that is a simple voting app consisting of a front and back end, which is based on Microsoft's **azure-vote-front** image. The container image for this application is hosted on Azure Container Registry (ACR). See [linux-sample.yaml](https://github.com/Azure/AKS-Edge/blob/main/samples/others/linux-sample.yaml) in the GitHub repo package for the deployment manifest. In the YAML, we specified a `nodeSelector` tag as **Linux**.
 
 ### Step 2: deploy the application
 
@@ -79,7 +79,7 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/
 
 ## Deploy a sample Windows application to your cluster
 
-This example runs a sample ASP.NET application based on [Microsoft's sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). See [win-sample.yaml](https://github.com/Azure/AKS-Edge/blob/main/samples/others/win-sample.yaml). Note that the YAML specifies the `nodeSelector` tag as **Windows**.
+This example runs a sample ASP.NET application based on [Microsoft's sample image](https://hub.docker.com/_/microsoft-dotnet-samples/). See [win-sample.yaml](https://github.com/Azure/AKS-Edge/blob/main/samples/others/win-sample.yaml). The YAML specifies the `nodeSelector` tag as **Windows**.
 
 ### Step 1: deploy the application by specifying the name of your YAML manifest
 
@@ -126,7 +126,7 @@ Open a web browser and locate the **NodePort** to access your service:
 To clean up, delete all resources using the following command:
 
 ```powershell
-kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/samples/others/win-sample.yaml
+kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-Edge/main/samples/others/win-sample.yaml
 ```
 
 ## Deploying your own applications
@@ -134,7 +134,7 @@ kubectl delete -f https://raw.githubusercontent.com/Azure/AKS-IoT-preview/main/s
 The previous steps showed how you can deploy our sample applications. To deploy your own application, do the following:
 
 - Package your application into a container image, and then upload the image to Azure Container Registry or in a container registry of your choice. Review these steps to [create a container image of your application](tutorial-kubernetes-prepare-application.md).
-- AKS Edge Essentials enables mixed-OS clusters. Ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This will tell Kubernetes to run your pods on nodes of a particular operating system (OS). If your cluster is single-OS, then you can skip this step; but for best practice, label each deployment file with node selectors:
+- AKS Edge Essentials enables mixed-OS clusters. Ensure your pods get scheduled on nodes with the corresponding OS. Add `nodeSelector` to your deployment files. This option tells Kubernetes to run your pods on nodes of a particular operating system (OS). If your cluster is single-OS, then you can skip this step; but for best practice, label each deployment file with node selectors:
 
     ```yaml
     nodeSelector:

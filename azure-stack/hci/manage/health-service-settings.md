@@ -4,11 +4,12 @@ title: Modify Health Service settings
 ms.author: sethm
 ms.topic: article
 author: sethmanheim
-ms.date: 04/17/2023
+ms.date: 01/31/2024
 ---
+
 # Modify Health Service settings
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
 
 The Health Service, first released in Windows Server 2016, improves the day-to-day monitoring and operational experience for clusters running Storage Spaces Direct.
 
@@ -53,7 +54,7 @@ Some commonly modified settings are listed below, along with their default value
 "System.Storage.PhysicalDisk.AutoRetire.OnLostCommunication.Enabled"       = True
 "System.Storage.PhysicalDisk.AutoRetire.OnUnresponsive.Enabled"            = True
 "System.Storage.PhysicalDisk.AutoRetire.DelayMs"                           = 900000 (i.e. 15 minutes)
-"System.Storage.PhysicalDisk.Unresponsive.Reset.CountResetIntervalSeconds" = 360 (i.e. 60 minutes)
+"System.Storage.PhysicalDisk.Unresponsive.Reset.CountResetIntervalSeconds" = 3600 (i.e. 60 minutes)
 "System.Storage.PhysicalDisk.Unresponsive.Reset.CountAllowed"              = 3
 ```
 

@@ -8,16 +8,19 @@ ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom: devx-track-azurepowershell
-ms.date: 05/11/2023
+ms.date: 02/07/2024
 ---
 
 # Register Azure Stack HCI with Azure
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
+
 Now that you've deployed the [Azure Stack HCI operating system](./operating-system.md) and [created a cluster](./create-cluster.md), you must register it with Azure.
 
 This article describes how to register Azure Stack HCI with Azure via Windows Admin Center or PowerShell. For information on how to manage cluster registration, see [Manage cluster registration](../manage/manage-cluster-registration.md).
+
 
 ## About Azure Stack HCI registration
 
@@ -163,6 +166,9 @@ Follow these steps to register Azure Stack HCI with Azure via Windows Admin Cent
 # [PowerShell](#tab/power-shell)
 
 Follow these steps to register Azure Stack HCI with Azure via PowerShell. If you cannot run the commands from a management computer that has outbound internet access, we recommend downloading the modules and manually transferring them to a cluster node where you can run the `Register-AzStackHCI` cmdlet. Alternatively, you can [install the modules in a disconnected scenario](/powershell/scripting/gallery/how-to/working-with-local-psrepositories#installing-powershellget-on-a-disconnected-system).
+
+> [!NOTE]
+> You can’t use this method to register systems running Azure stack HCI, version 23H2 and later. For more information on Azure Stack HCI, version 23H2 deployment, see [Deployment via Azure portal](deploy-via-portal.md).
 
 1. Make sure all the [prerequisites](#prerequisites) are met.
 

@@ -7,11 +7,9 @@ ms.date: 02/24/2022
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 11/27/2019
-ms.custom: contperf-fy22q2
 
 # Intent: As a potential ASDK user, I want to know what the ASDK is.
 # Keyword: what is the asdk
-
 ---
 
 

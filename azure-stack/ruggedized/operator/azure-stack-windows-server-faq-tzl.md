@@ -2,15 +2,9 @@
 title: Azure Stack Windows Server related FAQs | Microsoft Docs
 description: List of Azure Stack Marketplace FAQs for Windows Server
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: tzl
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2021
 ms.author: sethm

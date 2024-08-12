@@ -4,7 +4,7 @@ description: Learn how to prepare your machines for AKS Edge Essentials clusters
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 10/06/2023
+ms.date: 02/13/2024
 ms.custom: template-how-to
 ---
 
@@ -28,22 +28,29 @@ You can deploy an AKS Edge Essentials cluster on either a single machine or on m
 
     | File | Link |
     | ---- | ---- |
-    | K8s installer | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
-    | K3s installer | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
+    | K8s installer (1.28.3) | [aka.ms/aks-edge/k8s-msi](https://aka.ms/aks-edge/k8s-msi)  |
+    | K3s installer (1.28.3) | [aka.ms/aks-edge/k3s-msi](https://aka.ms/aks-edge/k3s-msi) |
+    | K8s installer (1.27.6) | [aka.ms/aks-edge/k8s-msi-1.27](https://aka.ms/aks-edge/k8s-msi-1.27) |
+    | K3s installer (1.27.6) | [aka.ms/aks-edge/k3s-msi-1.27](https://aka.ms/aks-edge/k3s-msi-1.27) |
+    | K8s installer (1.26.6) | [aka.ms/aks-edge/k8s-msi-1.26](https://aka.ms/aks-edge/k8s-msi-1.26)  |
+    | K3s installer (1.26.10) | [aka.ms/aks-edge/k3s-msi-1.26](https://aka.ms/aks-edge/k3s-msi-1.26) |
     | Windows node files | [aka.ms/aks-edge/windows-node-zip](https://aka.ms/aks-edge/windows-node-zip) |
 
 1. In addition to the MSI, Microsoft provides samples and tools that you can download from the [AKS Edge GitHub repo](https://github.com/Azure/AKS-Edge). Navigate to the **Code** tab and click the **Download Zip** button to download the repository as a **.zip** file. Extract the GitHub **.zip** file to a local folder.
-
 1. Before you install, make sure you uninstall any private preview installations and reboot your system before proceeding.
 
 In this release, both K8s and K3s are supported. We've provided two separate MSI installers for each Kubernetes distribution. Do not install both K8s and K3s at the same time. If you want to install a different Kubernetes distribution, uninstall the existing one first, then reboot.
 
+> [!IMPORTANT]
+> Once a version of Kubernetes is no longer supported, downloads for associated AKS Edge Essentials releases are subject to discontinuation.
+
+> [!NOTE]
+> You must extract the Windows node files from the zip archive into the same folder as the installer MSIs if you want to use the Windows node capability.
 Before you install the MSI, you can review the [feature support matrix](aks-edge-system-requirements.md#ga-feature-support-matrix) to understand the different options available.  
 
 ## Install AKS Edge Essentials
 
-1. Open PowerShell as an admin, and navigate to the folder directory with the installer files.
-
+1. Open PowerShell as an administrator (an elevated PowerShell), and navigate to the folder directory with the installer files.
 1. Issue the following command, and replace `kXs-x.x.xxx.x` with the Kubernetes distribution/version you downloaded and ran:
 
     ```powershell
@@ -58,7 +65,7 @@ Before you install the MSI, you can review the [feature support matrix](aks-edge
 
     Alternatively, you can double-click the **AksEdge-k8s-x.x.xxx.x.msi** or **AksEdge-k3s-x.x.xxx.x.msi** file to install the latest version.
 
-1. To include Windows nodes, make sure you have the MSI installer with your Kubernetes distribution of choice and the provided **AksEdgeWindows-v1** files in the same folder. In the following command, replace `kXs-x.x.xxx.x` with the Kubernetes distribution/version you downloaded and ran:
+1. To include Windows nodes, make sure you have the MSI installer with your Kubernetes distribution of choice and the unzipped **AksEdgeWindows-v1** files in the same folder. In the following command, replace `kXs-x.x.xxx.x` with the Kubernetes distribution/version you downloaded and ran:
 
     ```powershell
     msiexec.exe /i AksEdge-kXs-x.x.xxx.x.msi ADDLOCAL=CoreFeature,WindowsNodeFeature
@@ -76,7 +83,7 @@ Before you install the MSI, you can review the [feature support matrix](aks-edge
 
 ## Check the AKS Edge Essentials modules
 
-Once installation is complete, make sure it was successful by running the following command:
+Once installation is complete, make sure it was successful by running the following command in an elevated PowerShell:
 
 ```powershell
 Set-ExecutionPolicy RemoteSigned -Scope Process -Force
@@ -106,3 +113,4 @@ This command displays output similar to the following list:
 
 - Create a [simple deployment](aks-edge-howto-single-node-deployment.md)
 - Create a [full deployment](aks-edge-howto-multi-node-deployment.md)
+

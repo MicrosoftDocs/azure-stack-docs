@@ -1,17 +1,17 @@
 ### YamlMime:FAQ
 metadata:
-  title: Troubleshoot storage issues and errors in AKS hybrid
-  description: Get help to troubleshoot storage issues and errors in AKS hybrid.
+  title: Troubleshoot storage issues and errors in AKS enabled by Arc
+  description: Get help to troubleshoot storage issues and errors in AKS enabled by Azure Arc.
   author: sethmanheim
   ms.author: sethm
   ms.service: azure-stack
   ms.subservice: aks-hci
   ms.topic: faq
-  ms.date: 07/10/2023
+  ms.date: 07/11/2024
 
-title: Fix known issues and errors when managing storage in AKS hybrid
+title: Fix known issues and errors when managing storage in AKS Arc
 summary: |
-  Use this article to help you troubleshoot and resolve storage-related issues in AKS hybrid.
+  Use this article to help you troubleshoot and resolve storage-related issues in AKS Arc.
   
 sections:
   - name: Single section - ignored
@@ -74,7 +74,7 @@ sections:
           
           The preferred mitigation is to upgrade to the latest release, version 1.10.18.10425, which has an updated certificate. To do so, first manually [upgrade your workload clusters](/azure/aks/hybrid/tutorial-kubernetes-upgrade-cluster) to any [supported minor version](https://github.com/Azure/aks-hybrid/releases) before you update your AKS-HCI host.
           
-          For more information about AKS hybrid releases, and all the latest AKS-HCI news, subscribe to the [AKS releases page](https://aka.ms/aks-hci-relnotes).
+          For more information about AKS Arc releases, and all the latest AKS-HCI news, subscribe to the [AKS releases page](https://aka.ms/aks-hci-relnotes).
           
           If upgrading is not an option, you can turn off the **mdsd** service. For each Mariner node:
           
@@ -118,7 +118,7 @@ sections:
           When creating a persistent volume, an attempt to mount the volume fails
 
         answer: | 
-          After deleting a persistent volume or a persistent volume claim in an AKS hybrid environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount fails, and the pod times out with the error, `NewSmbGlobalMapping failed`.
+          After deleting a persistent volume or a persistent volume claim in an AKS Arc environment, a new persistent volume is created to map to the same share. However, when attempting to mount the volume, the mount fails, and the pod times out with the error, `NewSmbGlobalMapping failed`.
           
           To work around the failure to mount the new volume, you can SSH into the Windows node and run `Remove-SMBGlobalMapping` and provide the share that corresponds to the volume. After running this command, attempts to mount the volume should succeed.
   

@@ -4,6 +4,7 @@ description: Learn how to run a Linux virtual machine on Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: how-to
+ms.custom: linux-related-content
 ms.date: 2/1/2021
 ms.author: sethm
 ms.reviewer: kivenkat
@@ -11,7 +12,6 @@ ms.lastreviewed: 11/01/2019
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
-
 ---
 
 
@@ -29,7 +29,7 @@ Put closely associated resources that share the same lifecycle into the same [re
 
 ## Virtual machine
 
-You can provision a VM from a list of published images, or from a custom-managed image or virtual hard disk (VHD) file uploaded to Azure Stack Hub Blob storage. Azure Stack Hub supports running various popular Linux distributions, including CentOS, Debian, Red Hat Enterprise, Ubuntu, and SUSE. For more information, see [Linux on Azure Stack Hub](../operator/azure-stack-linux.md). You may also choose to syndicate one of the published Linux Images that are available on the Azure Stack Hub Marketplace.
+You can provision a VM from a list of published images, or from a custom-managed image or virtual hard disk (VHD) file uploaded to Azure Stack Hub Blob storage. Azure Stack Hub supports running various popular Linux distributions, including Debian, Red Hat Enterprise, Ubuntu, and SUSE. For more information, see [Linux on Azure Stack Hub](../operator/azure-stack-linux.md). You may also choose to syndicate one of the published Linux Images that are available on the Azure Stack Hub Marketplace.
 
 Azure Stack Hub offers different virtual machine sizes from Azure. For more information, see [Sizes for virtual machines in Azure Stack Hub](./azure-stack-vm-sizes.md). If you are moving an existing workload to Azure Stack Hub, start with the VM size that's the closest match to your on-premises servers/Azure. Then measure the performance of your actual workload in terms of CPU, memory, and disk input/output operations per second (IOPS), and adjust the size as needed.
 

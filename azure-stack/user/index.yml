@@ -41,7 +41,7 @@ landingContent:
           - text: Create a VM from a template
             url: azure-stack-create-vm-template.md
           - text: Deploy a C# web app to a Windows VM
-            url: azure-stack-dev-start-howto-vm-dotnet.md
+            url: azure-stack-dev-start-howto-vm-dotnet.yml
           - text: Deploy a Java web app
             url: azure-stack-dev-start-howto-vm-java.md
           - text: Deploy a Python web app
@@ -89,7 +89,7 @@ landingContent:
         links:
           - text: Deploy a Service Fabric cluster
             url: azure-stack-solution-template-service-fabric-cluster.md
-          - text: Deploy a container to a Azure Stack Hub registry
+          - text: Deploy a container to Azure Stack Hub registry
             url: container-registry-overview.md
           - text: Deploy an Azure Kubernetes Services (AKS) cluster
             url: aks-overview.md

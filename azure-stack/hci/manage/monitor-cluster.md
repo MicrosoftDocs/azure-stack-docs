@@ -6,7 +6,7 @@ ms.author: jgerend
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 10/10/2023
+ms.date: 02/26/2024
 ---
 
 # Monitor Azure Stack HCI clusters from Windows Admin Center
@@ -67,7 +67,7 @@ To view a complete inventory of VMs running on the cluster, select **Inventory**
 - **Heartbeat:** Indicates whether the cluster can communicate with the VM.
 - **Disaster recovery status:** Shows whether the VM is signed into Azure Site Recovery.
 
-    :::image type="content" source="media/monitor-cluster/vms-inventory.png" alt-text="Screenshot of the virtual machine inventory tab."  lightbox="media/monitor-cluster/vms-inventory.png":::
+    :::image type="content" source="media/monitor-cluster/vms-inventory.png" alt-text="Screenshot of the virtual machine inventory tab." lightbox="media/monitor-cluster/vms-inventory.png":::
 
 ## Monitor servers
 
@@ -182,4 +182,4 @@ You can [Monitor Azure Stack HCI clusters from Azure portal](/azure-stack/hci/ma
 
 For related information, see also:
 
-- [Manage Azure Stack HCI clusters using Windows Admin Center](cluster.md)
+- [Manage Azure Stack HCI clusters using Windows Admin Center](cluster.md).

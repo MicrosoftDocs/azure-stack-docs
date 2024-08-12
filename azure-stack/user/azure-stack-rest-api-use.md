@@ -1,5 +1,5 @@
 ---
-title: Make API requests to Azure Stack Hub 
+title: Make API requests to Azure Stack Hub
 description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack Hub.
 author: sethmanheim
 
@@ -8,11 +8,9 @@ ms.date: 09/30/2021
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2020
-ms.custom: contperf-fy22q1
 
 # Intent: As an Azure Stack user, I want to make API requests to Azure Stack so I can automate operations.
 # Keyword: api requests azure stack
-
 ---
 
 

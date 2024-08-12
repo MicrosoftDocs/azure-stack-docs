@@ -4,7 +4,7 @@ description: This article spotlights utility applications from Microsoft partner
 author: alkohli
 ms.author: alkohli
 ms.topic: conceptual
-ms.date: 05/17/2023
+ms.date: 02/23/2024
 ---
 
 # Utility applications for Azure Stack HCI
@@ -21,7 +21,7 @@ We recommend using Microsoft Defender Antivirus with the operating system. Oth
 
 Utility applications that support the operating system are available from the following Microsoft partners:
 
-:::image type="content" source="./media/utility-applications/acronis-logo.png" alt-text="Acronis company logo" border="false":::
+:::image type="content" source="./media/utility-applications/acronis-logo.png" alt-text="Acronis company logo" lightbox="./media/utility-applications/acronis-logo.png":::
 
 Acronis Cyber Protect Cloud unites backup and next-generation, AI-based anti-malware, antivirus, and endpoint protection management in one solution. Integration and automation provide unmatched ease for service providers, reducing complexity while increasing productivity and decreasing operating costs.
 
@@ -30,7 +30,7 @@ Acronis Cyber Protect Cloud unites backup and next-generation, AI-based anti-mal
 
 To get the most complete cyber protection for your Azure Stack HCI deployment, check out the [solution brief](https://www.acronis.com/support/documentation/CyberProtectionService/).
 
-:::image type="content" source="./media/utility-applications/altaro-logo.png" alt-text="Altaro company logo" border="false":::
+:::image type="content" source="./media/utility-applications/altaro-logo.png" alt-text="Altaro company logo" lightbox="./media/utility-applications/altaro-logo.png":::
 
 Altaro VM Backup is an award-winning VM backup and replication solution for Hyper-V and VMware environments. Designed for IT departments, IT resellers and consultants, and Managed Service Providers (MSPs), the solution provides robust, streamlined, enterprise-level functionality.
 
@@ -40,16 +40,16 @@ Altaro VM Backup is an award-winning VM backup and replication solution for Hype
 
 To learn how you can back up VMs running on Azure Stack HCI with ease, check out the [solution brief](https://www.altaro.com/azurestackhci).
 
-:::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo" border="false":::
+:::image type="content" source="./media/utility-applications/commvault-logo.png" alt-text="Commvault company logo" lightbox="./media/utility-applications/commvault-logo.png":::
 
 Commvault is a complete data management platform to store, protect, manage, and use data across on-premises and cloud locations.
 
 - Application listing: [Microsoft Azure Stack](https://www.commvault.com/supported-technologies/microsoft/azurestack)
-- Application support: [Azure Stack HCI](https://documentation.commvault.com/11.21/essential/132799_microsoft_azure_stack_hci.html)
+- Application support: [Azure Stack HCI](https://documentation.commvault.com/v11/essential/azure_stack_hci.html)
 
 To enhance your Azure Stack HCI deployment with intelligent data management, check out the [Solution Brief](https://bit.ly/2ONrZGv).
 
-:::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadog company logo" border="false":::
+:::image type="content" source="./media/utility-applications/datadog-logo.png" alt-text="Datadog company logo" lightbox="./media/utility-applications/datadog-logo.png":::
 
 Datadog is a fully unified platform encompassing infrastructure monitoring, application performance monitoring, log management, user-experience monitoring, and more.
 
@@ -58,7 +58,7 @@ Datadog is a fully unified platform encompassing infrastructure monitoring, appl
 
 To observe and correlate disparate data types across your entire infrastructure including Azure Stack HCI, check out the [solution brief](https://www.datadoghq.com/pdf/azurehci.pdf).
 
-:::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam company logo" border="false":::
+:::image type="content" source="./media/utility-applications/veeam-logo.png" alt-text="Veeam company logo" lightbox="./media/utility-applications/veeam-logo.png":::
 
 Veeam Backup & Replication is the one solution for simple, reliable, and flexible protection of all your cloud, virtual, and physical workloads. Take the stress out of managing your data protection, ransomware prevention, and compliance challenges.
 
@@ -68,7 +68,7 @@ Veeam Backup & Replication is the one solution for simple, reliable, and flexibl
 
 To get modern data protection for your Azure Stack HCI deployment, check out the [solution brief](https://vee.am/azurestackhciwp).
 
-:::image type="content" source="./media/utility-applications/veritas-logo.png" alt-text="Veritas company logo" border="false":::
+:::image type="content" source="./media/utility-applications/veritas-logo.png" alt-text="Veritas company logo" lightbox="./media/utility-applications/veritas-logo.png":::
 
 Veritas Backup Exec is an easy-to-use backup and recovery solution that helps protect your environment’s  virtual, physical, and cloud resources.
 
@@ -76,7 +76,7 @@ Veritas Backup Exec is an easy-to-use backup and recovery solution that helps pr
 - Application support: [Protect Azure Stack HCI with Backup Exec](https://www.veritas.com/support/en_US/article.100048860)
 - [Veritas Backup Exec support for Microsoft Azure](https://www.veritas.com/protection/backup-exec/azure)
 
-To simplify data protection on your Azure Stack HCI deployment, check out the [Solution Brief](https://www.veritas.com/BackupExecandAzureStackHCI).
+To simplify data protection on your Azure Stack HCI deployment, check out the [Solution Brief](https://www.veritas.com/en/aa/form/whitepaper/backup-exec-for-azure-stack-hci).
 
 ## Next steps
 

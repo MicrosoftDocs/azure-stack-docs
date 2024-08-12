@@ -6,11 +6,9 @@ ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: sethm
 ms.lastreviewed: 11/20/2020
-ms.custom: contperf-fy21q4
 
 # Intent: As an Azure Stack user, I want to know the differences between Azure and Azure stack when using services and building apps.
 # Keyword: azure stack building apps
-
 ---
 
 

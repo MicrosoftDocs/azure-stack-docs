@@ -6,12 +6,14 @@ ms.author: anpaul
 ms.topic: overview
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 04/17/2023
+ms.date: 04/09/2024
 ms.custom: kr2b-contr-experiment
 ---
 # What is Remote Access Service (RAS) Gateway for Software Defined Networking?
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019, Windows Server 2016
+
+This article provides an overview of Remote Access Service (RAS) Gateway for Software Defined Networking (SDN) in Azure Stack HCI and Windows Server.
 
 RAS Gateway is a software-based Border Gateway Protocol (BGP) capable router designed for cloud service providers (CSPs) and enterprises that host multitenant virtual networks using Hyper-V Network Virtualization (HNV). You can use RAS Gateway to route network traffic between a virtual network and another network, either local or remote.
 
@@ -38,11 +40,11 @@ GRE support in S2S tunnels solves the problem of forwarding between tenant virtu
 
 ### Layer 3 forwarding
 
-Layer 3 (L3) forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. By using L3 forwarding connection, tenant network VMs can connect to a physical network through the Software Defined Networking (SDN) gateway, which is already configured in the SDN environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
+Layer 3 (L3) forwarding enables connectivity between the physical infrastructure in the datacenter and the virtualized infrastructure in the Hyper-V network virtualization cloud. By using L3 forwarding connection, tenant network VMs can connect to a physical network through the SDN gateway, which is already configured in the SDN environment. In this case, the SDN gateway acts as a router between the virtualized network and the physical network.
 
 The following diagram shows an example of the L3 forwarding setup in an Azure Stack HCI cluster configured with SDN:
 
-  :::image type="content" source="./media/ras-gateway/layer-3-forwarding-example.png" alt-text="Diagram of an L3 forwarding example." lightbox="./media/ras-gateway/layer-3-forwarding-example.png":::
+  :::image type="content" source="./media/gateway-overview/layer-3-forwarding-example.png" alt-text="Diagram of an L3 forwarding example." lightbox="./media/gateway-overview/layer-3-forwarding-example.png":::
 
 - There are two virtual networks in the Azure Stack HCI cluster: SDN virtual network 1 with address prefix 10.0.0.0/16 and SDN virtual network 2 with address prefix 16.0.0.0/16.
 - Each virtual network has an L3 connection to the physical network.
@@ -66,14 +68,14 @@ For static routing, you must configure a route on the physical network to reach 
 
 For dynamic routing with BGP, you must still configure a static /32 route because the BGP connection is between the gateway compartment internal interface and the L3 peer IP. For Connection 1, the peering would be between 10.0.1.6 and 15.0.0.1. Hence, for this connection, you need a static route on the physical switch with destination prefix of 10.0.1.6/32 with the next hop as 15.0.0.5.
 
-If you plan to deploy L3 Gateway connections with BGP routing, ensure that you’ve configured the Top of Rack (ToR) switch BGP settings with the following:
+If you plan to deploy L3 Gateway connections with BGP routing, make sure to configure the Top of Rack (ToR) switch BGP settings with the following:
 
 - update-source: This specifies the source address for BGP updates, that is L3 VLAN. For example, VLAN 250.
 - ebgp multihop: This specifies more hops are required since the BGP neighbor is more than one hop away.
 
 ### Dynamic routing with BGP
 
-BGP reduces the need for manual route configuration on routers because it is a dynamic routing protocol, and automatically learns routes between sites that are connected by using site-to-site VPN connections. If your organization has multiple sites that are connected using BGP-enabled routers, such as RAS Gateway, BGP allows the routers to automatically calculate and use valid routes to each other in the event of network disruption or failure.
+BGP reduces the need for manual route configuration on routers because it's a dynamic routing protocol, and automatically learns routes between sites that are connected by using site-to-site VPN connections. If your organization has multiple sites that are connected using BGP-enabled routers, such as RAS Gateway, BGP allows the routers to automatically calculate and use valid routes to each other in case of network disruption or failure.
 
 The BGP Route Reflector included with RAS Gateway provides an alternative to BGP full mesh topology that is required for route synchronization between routers. For more information, see [What Is Route Reflector?](route-reflector-overview.md)
 
@@ -96,4 +98,4 @@ For related information, see also:
 - [RAS Gateway Deployment Architecture](/windows-server/networking/sdn/technologies/network-function-virtualization/ras-gateway-deployment-architecture)
 - [Network Controller overview](network-controller-overview.md)
 - [Plan to deploy Network Controller](network-controller.md)
-- [SDN in Azure Stack HCI and Windows Server](software-defined-networking.md)
+- [SDN in Azure Stack HCI and Windows Server](software-defined-networking-23h2.md)

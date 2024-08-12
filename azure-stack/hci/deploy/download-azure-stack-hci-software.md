@@ -6,12 +6,14 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/29/2023
+ms.date: 01/31/2024
 ---
 
 # Download the Azure Stack HCI software
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
 
 This article describes how to download the Azure Stack HCI software from the Azure portal.
 

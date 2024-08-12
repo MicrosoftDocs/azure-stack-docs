@@ -3,14 +3,14 @@ title: Add Linux images to the Azure Stack Hub Marketplace
 description: Learn how to add Linux images to the Azure Stack Hub Marketplace.
 author: sethmanheim
 ms.topic: article
-ms.date: 9/9/2021
+ms.custom: linux-related-content
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 9/9/2021
 
 # Intent: As an Azure Stack operator, I want to add Linux images to Azure Stack so my users can deploy Linux VMs.
 # Keyword: azure stack add linux image marketplace
-
 ---
 
 # Add Linux images to the Azure Stack Hub Marketplace
@@ -59,11 +59,10 @@ For more information about the agent, see the [FAQ for WALinuxAgent](https://git
 
 You can prepare your own Linux image using the following instructions:
 
-* [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=/azure/virtual-machines/linux/toc.json)
-* [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
-* [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
-* [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
-* [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=/azure/virtual-machines/linux/toc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
+- [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
+- [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=/azure/virtual-machines/linux/toc.json)
 
 ## Cloud-init
 
@@ -151,5 +150,5 @@ After you've added the image to the Marketplace, a Marketplace item is created a
 
 ## Next steps
 
-* [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
-* [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md)
+- [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
+- [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md)

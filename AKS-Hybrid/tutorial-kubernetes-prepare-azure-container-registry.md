@@ -1,9 +1,8 @@
 ---
-title: Tutorial - Create a container registry to use in AKS hybrid
+title: Tutorial - Create a container registry to use in AKS enabled by Azure Arc
 description: In this tutorial, learn how to create an Azure Container Registry instance and upload a sample application container image.
-services: container-service
 ms.topic: tutorial
-ms.date: 10/26/2022
+ms.date: 01/05/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: jeguan
@@ -13,21 +12,21 @@ author: sethmanheim
 # Keyword: container registry container images
 ---
 
-# Tutorial: Create an Azure Container Registry (ACR) for AKS hybrid
+# Tutorial: Create an Azure Container Registry for AKS enabled by Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-An Azure Container Registry (ACR) is a private registry for container images. A private container registry lets you securely build and deploy your applications and custom code. 
+An Azure Container Registry is a private registry for container images. A private container registry lets you securely build and deploy your applications and custom code.
 
-In this tutorial, part two of seven, you deploy an ACR instance and push a container image to it for use in AKS hybrid. You'll learn how to:
+In this tutorial, part two of seven, you deploy an Azure Container Registry instance and push a container image to it for use in AKS. You'll learn how to:
 
 > [!div class="checklist"]
-> * Create an Azure Container Registry (ACR) instance
-> * Tag a container image for ACR
-> * Upload the image to ACR
+> * Create an Azure Container Registry instance
+> * Tag a container image for Azure Container Registry
+> * Upload the image to Azure Container Registry
 > * View images in your registry
 
-In later tutorials, this ACR instance is integrated with a Kubernetes cluster, and an application is deployed from the image.
+In later tutorials, this Azure Container Registry instance is integrated with a Kubernetes cluster, and an application is deployed from the image.
 
 ## Before you begin
 
@@ -37,15 +36,15 @@ This tutorial requires that you run the Azure CLI version 2.0.53 or later. Run `
 
 ## Create an Azure Container Registry
 
-To create an Azure Container Registry, you first need a *resource group*. An Azure resource group is a logical container into which Azure resources are deployed and managed.
+To create an Azure Container Registry instance, you first need a *resource group*. An Azure resource group is a logical container into which Azure resources are deployed and managed.
 
-Create a resource group with the [az group create][az-group-create] command. In the following example, a resource group named *myResourceGroup* is created in the *eastus* region:
+Create a resource group with the [az group create][az-group-create] command. In the following example, a resource group named **myResourceGroup** is created in the **eastus** region:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Create an Azure Container Registry instance with the [az acr create][az-acr-create] command and provide your own registry name. The registry name must be unique within Azure, and contain 5-50 alphanumeric characters. In the rest of this tutorial, `<acrName>` is used as a placeholder for the container registry name. Provide your own unique registry name. The *Basic* SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput.
+Create an Azure Container Registry instance with the [az acr create][az-acr-create] command and provide your own registry name. The registry name must be unique within Azure, and contain 5-50 alphanumeric characters. In the rest of this tutorial, `<acrName>` is used as a placeholder for the container registry name. Provide your own unique registry name. The **Basic** SKU is a cost-optimized entry point for development purposes that provides a balance of storage and throughput.
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -53,13 +52,13 @@ az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 
 ## Log in to the container registry
 
-To use the ACR instance, you must first log in. Use the [az acr login][az-acr-login] command and provide the unique name given to the container registry in the previous step.
+To use the ACR instance, you must first log in. Use the [az acr login][az-acr-login] command and provide the unique name given to the container registry in the previous step:
 
 ```azurecli
 az acr login --name <acrName>
 ```
 
-The command returns a *Login Succeeded* message once completed.
+The command returns a **Login Succeeded** message when completed.
 
 ## Tag a container image
 
@@ -68,7 +67,8 @@ To see a list of your current local images, use the [docker images][docker-image
 ```console
 docker images
 ```
-The above command's output shows list of your current local images:
+
+This command's output shows a list of your current local images:
 
 ```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
@@ -77,29 +77,29 @@ mcr.microsoft.com/oss/bitnami/redis            6.0.8               3a54a920bb6c 
 tiangolo/uwsgi-nginx-flask                     python3.6           a16ce562e863        6 weeks ago         944MB
 ```
 
-To use the *azure-vote-front* container image with ACR, make sure you tag the image with the login server address of your registry. This tag is used for routing when pushing container images to an image registry.
+To use the **azure-vote-front** container image with Azure Container Registry, make sure you tag the image with the login server address of your registry. This tag is used for routing when pushing container images to an image registry.
 
-To get the login server address, use the [az acr list][az-acr-list] command and query for the *loginServer* as follows:
+To get the login server address, use the [az acr list][az-acr-list] command and query for the **loginServer** as follows:
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Now, tag your local *azure-vote-front* image with the *acrLoginServer* address of the container registry. To indicate the image version, add *:v1* to the end of the image name:
+Now, tag your local **azure-vote-front** image with the **acrLoginServer** address of the container registry. To indicate the image version, add **:v1** to the end of the image name:
 
 ```console
 docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
 ```
 
-To verify the tags are applied, run [docker images][docker-images] again.
+To verify the tags are applied, run [docker images][docker-images] again:
 
 ```console
 docker images
 ```
 
-An image is tagged with the ACR instance address and a version number.
+An image is tagged with the Azure Container Registry instance address and a version number:
 
-```
+```output
 REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
 mcr.microsoft.com/azuredocs/azure-vote-front    v1                  84b41c268ad9        16 minutes ago      944MB
 mycontainerregistry.azurecr.io/azure-vote-front v1                  84b41c268ad9        16 minutes ago      944MB
@@ -109,23 +109,23 @@ tiangolo/uwsgi-nginx-flask                      python3.6           a16ce562e863
 
 ## Push images to registry
 
-With your image built and tagged, push the *azure-vote-front* image to your ACR instance. Use [docker push][docker-push] and provide your own *acrLoginServer* address for the image name as follows:
+With your image built and tagged, push the **azure-vote-front** image to your Azure Container Registry instance. Use [docker push][docker-push] and provide your own `acrLoginServer` address for the image name as follows:
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v1
 ```
 
-It may take a few minutes to complete the image push to ACR.
+It might take a few minutes to complete the image push to Azure Container Registry.
 
 ## List images in registry
 
-To return a list of images that have been pushed to your ACR instance, use the [az acr repository list][az-acr-repository-list] command. Provide your own `<acrName>` as follows:
+To return a list of images that were pushed to your Azure Container Registry instance, use the [az acr repository list][az-acr-repository-list] command. Provide your own `<acrName>` as follows:
 
 ```azurecli
 az acr repository list --name <acrName> --output table
 ```
 
-The following example output lists the *azure-vote-front* image as available in the registry:
+The following example output lists the **azure-vote-front** image as available in the registry:
 
 ```output
 Result
@@ -133,13 +133,13 @@ Result
 azure-vote-front
 ```
 
-To see the tags for a specific image, use the [az acr repository show-tags][az-acr-repository-show-tags] command as follows:
+To see the tags for a specific image, use the [az acr repository show-tags][az-acr-repository-show-tags] command:
 
 ```azurecli
 az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
 ```
 
-The following example output shows the *v1* image tagged in a previous step:
+The following example output shows the **v1** image tagged in a previous step:
 
 ```output
 Result
@@ -147,11 +147,11 @@ Result
 v1
 ```
 
-You now have a container image that is stored in a private Azure Container Registry instance. This image is deployed from ACR to a Kubernetes cluster in the next tutorial.
+You now have a container image that is stored in a private Azure Container Registry instance. This image is deployed from Azure Container Registry to a Kubernetes cluster in the next tutorial.
 
 ## Next steps
 
-In this tutorial, you created an Azure Container Registry and pushed an image for use in an AKS cluster. You learned how to:
+In this tutorial, you created an Azure Container Registry and pushed an image for use in a Kubernetes cluster. You learned how to:
 
 > [!div class="checklist"]
 > * Create an Azure Container Registry (ACR) instance
@@ -172,7 +172,6 @@ Advance to the next tutorial to learn how to deploy a Kubernetes cluster in Azur
 [az-acr-create]: /cli/azure/acr
 [az-acr-list]: /cli/azure/acr
 [az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-list]: /cli/azure/acr#az-acr-list
 [az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository
 [az-group-create]: /cli/azure/group#az_group_create

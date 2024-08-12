@@ -4,6 +4,7 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
+ms.custom: linux-related-content
 ms.date: 08/15/2022
 ms.author: sethm
 ms.reviewer: unknown
@@ -11,7 +12,6 @@ ms.lastreviewed:  12/6/2021
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
-
 ---
 
 # Install PowerShell Az and Azure Stack modules for Azure Stack Hub
@@ -21,7 +21,7 @@ ms.lastreviewed:  12/6/2021
 | 2102 | 2.1.1 |
 | 2108 | 2.2.0 |
 | 2206 | 2.3.0 |
-| 2301 | 2.4.0 |
+| 2301+ | 2.4.0 |
 
 For more information about AzureStack modules, see the [PSGallery](https://www.powershellgallery.com/packages/AzureStack).
 
@@ -32,11 +32,11 @@ You can also run the Az modules for Azure Stack Hub in a Docker container. For i
 If you would like to install PowerShell Resource Modules (AzureRM) module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md).
 
 > [!IMPORTANT]
-> There will likely not be new Azure Resource Modules module releases. The Azure Resource Modules modules are under support for critical fixes only. Going forward there will only be Az releases for Azure Stack Hub.
+> There will not be new Azure Resource Modules module releases. The Azure Resource Modules modules are under support for critical fixes only. Going forward, there will only be Az releases for Azure Stack Hub.
 
 You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
-API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as **2020-09-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
+API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as [**2020-09-01-hybrid**](../user/azure-stack-profiles-azure-resource-manager-versions.md). When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
 You can install Azure Stack Hub compatible PowerShell Az modules in Internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 

@@ -6,12 +6,14 @@ ms.author: artemp
 ms.topic: reference
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 09/29/2022
+ms.date: 04/12/2024
 ---
 
 # Deploy the Azure Stack HCI operating system
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
+
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
 
 The first step in deploying Azure Stack HCI is to [download Azure Stack HCI](./download-azure-stack-hci-software.md) and install the operating system on each server that you want to cluster. This article discusses different ways to deploy the operating system, and using Windows Admin Center to connect to the servers.
 
@@ -106,7 +108,7 @@ To manually install the Azure Stack HCI operating system:
 1. Start the Install Azure Stack HCI wizard on the system drive of the server where you want to install the operating system.
 1. Choose the language to install or accept the default language settings, select **Next**, and then on next page of the wizard, select **Install now**.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-install-language.png" alt-text="The language page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="./media/operating-system/azure-stack-hci-install-language.png" alt-text="The language page of the Install Azure Stack HCI wizard." lightbox="./media/operating-system/azure-stack-hci-install-language.png":::
 
 1. On the Applicable notices and license terms page, review the license terms, select the **I accept the license terms** checkbox, and then select **Next**.
 1. On the Which type of installation do you want? page, select **Custom: Install the newer version of Azure Stack HCI only (advanced)**.
@@ -114,33 +116,33 @@ To manually install the Azure Stack HCI operating system:
     > [!NOTE]
     > Upgrade installations are not supported in this release of the operating system.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-install-which-type.png" alt-text="The installation type option page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="./media/operating-system/azure-stack-hci-install-which-type.png" alt-text="The installation type option page of the Install Azure Stack HCI wizard." lightbox="./media/operating-system/azure-stack-hci-install-which-type.png":::
 
 1. On the Where do you want to install Azure Stack HCI? page, either confirm the drive location where you want to install the operating system or update it, and then select **Next**.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-install-where.png" alt-text="The drive location page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="./media/operating-system/azure-stack-hci-install-where.png" alt-text="The drive location page of the Install Azure Stack HCI wizard." lightbox="./media/operating-system/azure-stack-hci-install-where.png":::
 
 1. The Installing Azure Stack HCI page displays to show status on the process.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-installing.png" alt-text="The status page of the Install Azure Stack HCI wizard.":::
+    :::image type="content" source="./media/operating-system/azure-stack-hci-installing.png" alt-text="The status page of the Install Azure Stack HCI wizard." lightbox="./media/operating-system/azure-stack-hci-installing.png":::
 
     > [!NOTE]
     > The installation process restarts the operating system twice to complete the process, and displays notices on starting services before opening an Administrator command prompt.
 
 1. At the Administrator command prompt, select **Ok** to change the user's password before signing in to the operating system, and press Enter.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-change-admin-password.png" alt-text="The change password prompt.":::
+    :::image type="content" source="./media/operating-system/azure-stack-hci-change-admin-password.png" alt-text="The change password prompt." lightbox="./media/operating-system/azure-stack-hci-change-admin-password.png":::
 
 1. At the Enter new credential for Administrator prompt, enter a new password, enter it again to confirm it, and then press Enter.
 1. At the Your password has been changed confirmation prompt, press Enter.
 
-    :::image type="content" source="../media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt":::
+    :::image type="content" source="./media/operating-system/azure-stack-hci-admin-password-changed.png" alt-text="The changed password confirmation prompt" lightbox="./media/operating-system/azure-stack-hci-admin-password-changed.png":::
 
 ## Configure the server using SConfig
 
 Now you're ready to use the Server Configuration tool (SConfig) to perform important tasks. To use SConfig, log on to the server running the Azure Stack HCI operating system. This could be locally via a keyboard and monitor, or using a remote management (headless or BMC) controller, or Remote Desktop. The SConfig tool opens automatically when you log on to the server.
 
-:::image type="content" source="../media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="../media/operating-system/azure-stack-hci-sconfig-screen.png":::
+:::image type="content" source="./media/operating-system/azure-stack-hci-sconfig-screen.png" alt-text="The Server Configuration tool interface." lightbox="./media/operating-system/azure-stack-hci-sconfig-screen.png" :::
 
 From the Welcome to Azure Stack HCI window (SConfig tool), you can perform these initial configuration tasks on each server:
 

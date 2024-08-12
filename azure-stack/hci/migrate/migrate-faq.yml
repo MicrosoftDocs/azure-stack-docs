@@ -1,0 +1,91 @@
+### YamlMime:FAQ
+metadata:
+  title: Azure Migrate FAQ
+  description: This FAQ provides answers to common questions about the migration of a Hyper-V virtual machine (VM) to an Azure Stack HCI cluster using Azure Migrate.
+  ms.topic: faq
+  author: alkohli
+  ms.author: alkohli
+  ms.service: azure-stack
+  ms.subservice: azure-stack-hci
+  ms.date: 01/31/2024
+title: FAQ - Migration of Hyper-V VMs to Azure Stack HCI using Azure Migrate (preview)
+summary: You can migrate Hyper-V VMs to Azure Stack HCI using Azure Migrate. This FAQ answers questions you might have about the migration of a Hyper-V VM to an Azure Stack HCI cluster using Azure Migrate.
+
+sections:
+  - name: Azure Migrate general FAQ
+    questions:
+      - question: I have a Windows Server 2008 R2 virtual machine (VM) running. How can I migrate this VM to my Azure Stack HCI cluster?
+        answer: |
+          The Windows Server 2008 R2 VM requires to have the Service Pack 1 (SP1) running as a baseline requirement, along with the following update patch installed: KB3138612. This patch allows the appliance to successfully discover Windows Server 2008 R2 SP1 VMs. You can then update all the patches to get the latest Hyper-V integration services.
+          
+          Run `winrm quickconfig` to add `winrm` access through firewall as this doesn't happen automatically.
+
+          After you replicate and migrate the VM, set the VM version to the latest supported version on the target. For Azure Stack HCI, version 22H2, it's version 10.
+          
+          > [!NOTE]
+          > Migration is a one-way process and can't be reversed. The VM version can't be downgraded.
+
+          To make sure that all the VMs are version 10, run the following cmdlet:
+
+          ```PowerShell
+          Get-VM * | Format-Table Name, Version
+          ```
+
+          Here's a sample output:
+
+          ```output
+          Name           Version
+          -------------  ---------     
+          migtarg01        10.0
+          ws2019-01        10.0
+          Centos9-01       10.0
+          ws2008R2         10.0
+          ```
+
+      - question: My cluster shared volume (CSV) storage is full or almost full. What should I do? 
+        answer: |
+          Expand your cluster shared volume. Follow the instructions in [Expand volumes on Azure Stack HCI and Windows Server clusters](https://www.thomasmaurer.ch/2013/01/how-to-make-an-existing-hyper-v-virtual-machine-highly-available/).
+          
+      - question: How do I remove the target appliance from Azure Migrate project?
+        answer: |
+          To remove the target appliance from the project and create a new appliance, run the following command:
+
+          ```PowerShell
+          .\AzureMigrateInstaller.ps1 -RemoveAzMigrate
+          ```
+
+          After removing the appliance, follow the instructions in the deployment PowerPoint to install it again.
+
+      - question: I have Linux VMs running on my Hyper-V server. Can I migrate these VMs to Azure Stack HCI?  
+        answer: |
+          Yes. There are many Linux distributions that can run on VMs that will be migrated to Azure Stack HCI. For the full list, see [Supported operating systems](migrate-hyperv-requirements.md#supported-operating-systems). 
+
+      - question: I have a VM running on an older Hyper-V host server, for example, Windows Server 2012 or Windows Server 2008 R2. Can I migrate this VM to Azure Stack HCI?  
+        answer: |
+          Yes. The migration solution will discover VMs on all the Windows Server hosts starting from Windows Server 2012 R2 and up to Windows Server 2022. 
+
+      - question: I am located in a geography that is not in the listed supported geographies. Does this mean I can't use this migration solution?
+        answer: |
+          Yes. You can still use this solution. Just create the [Azure Migrate project](migrate-hyperv-prerequisites.md#create-an-azure-migrate-project) and the [storage account](migrate-hyperv-prerequisites.md) in one of the [supported geographies](migrate-hyperv-requirements.md), since your migrated VMs can be in any geography. 
+
+      - question: Will I be charged for this migration solution? 
+        answer: |
+          There are no tool usage charges for migration for 180 days. The time starts when you begin replicating the VMs in your project.
+
+          Migration requires some services like storage account and key vault that are created in your subscription. These services will accrue some charges.
+
+      - question: To install the source or target appliance with the downloaded .zip file, I need a Windows Server 2022 operating system (OS).  How can I get the Windows Server 2022 OS?
+        answer: |
+          You can use your own licensed images to install these appliances. You can also use a Windows Server 2022 [evaluation version](https://www.microsoft.com/evalcenter/evaluate-windows-server-2022) for free for up to 180 days.
+
+      - question: My source VMs use static IP addresses. Will these addresses be preserved when I migrate my VMs to Azure Stack HCI?
+        answer: |
+          Currently Hyper-V migration only supports VMs configured with DHCP. For a source VM with a static IP address, first migrate it to the target Azure Stack HCI system. After the migration, connect to the VM using Hyper-V Manager and manually change the IP configuration.  
+
+      - question: I use DHCP reservation for IP addresses for my source VMs. Does migration ensure that the MAC address is preserved so that my migrated VM can get the same IP address? 
+        answer: |
+          This scenario is not supported in this release.
+
+      - question: Are VMs that have secure boot enabled, supported for migration? 
+        answer: |
+          Both Linux and Windows VMs that have secure boot enabled, are not supported in this release.

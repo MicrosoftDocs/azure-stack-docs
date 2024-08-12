@@ -4,7 +4,7 @@ description: Learn how to prepare your nested virtualization environment for AKS
 author: fcabrera23
 ms.author: fcabrera
 ms.topic: how-to
-ms.date: 10/10/2023
+ms.date: 11/28/2023
 ms.custom: template-how-to
 ---
 
@@ -13,28 +13,46 @@ ms.custom: template-how-to
 This article describes how to set up a nested virtualization environment to deploy an Azure Kubernetes Service (AKS) Edge Essentials cluster.
 
 > [!NOTE]
-> Deploying AKS Edge Essentials on top of a nested virtualization environment is not supported for production scenarios and is limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM or vSphere.
+> Deploying AKS Edge Essentials on top of a nested virtualization environment on VMware ESXi is supported per [VMware KB2009916](https://kb.vmware.com/s/article/2009916).
+> Other nested virutalization deployments are not supported for production scenarios and are limited to developer purposes. This guide assumes you're using the Hyper-V hypervisor. We do not support using a non-Microsoft hypervisor, such as KVM.
 
 ## Prerequisites
 
 - See the [system requirements](aks-edge-system-requirements.md).
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 
-## Azure virtual machines
+## Deployment on Windows VM on VMware ESXi
+
+VMware ESXi [7.0](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-esxi-vcenter-server-70-release-notes.html) and [8.0](https://docs.vmware.com/en/VMware-vSphere/8.0/rn/vmware-vsphere-80-release-notes/index.html) versions can host AKS Edge Essentials on top of a Windows virtual machine. See [VMware KB2009916](https://kb.vmware.com/s/article/2009916) for more information about VMware ESXi nested virtualization support.
+
+To set up AKS Edge Essentials on a VMware ESXi Windows virtual machine, use the following steps:
+
+1. Create a Windows virtual machine on the VMware ESXi host. For more information about VMware VM deployment, see [VMware - Deploying Virtual Machines](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.vm_admin.doc/GUID-39D19B2B-A11C-42AE-AC80-DDA8682AB42C.html).
+
+>[!NOTE]
+> If you're creating a Windows 11 virtual machine, ensure that it meets the minimum requirements by Microsoft to run Windows 11. For more information about Windows 11 VM VMware support, see [Installing Windows 11 as a guest OS on VMware](https://kb.vmware.com/s/article/86207).
+
+1. Turn off the virtual machine created in previous step.
+1. Select the Windows virtual machine and then **Edit settings**.
+1. Search for **Hardware virtualization** and turn on **Expose hardware assisted virtualization to the guest OS**.
+1. Select **Save** and start the virtual machine.
+1. Install the Hyper-V hypervisor. If you're using Windows client, make sure you [Install Hyper-V on Windows 10](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). If you're using Windows Server, make sure you [install the Hyper-V role](/windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server).
+
+## Deployment on Azure virtual machines
 
 If you're running AKS Edge Essentials on top of an Azure VM, ensure that you use an Azure Compute Unit (ACU) that supports nested virtualization. For more information, see [Azure Compute Unit (ACU)](/azure/virtual-machines/acu). Also, Azure VMs don't support using an external virtual switch, so AKS Edge Essentials deployments on top of the VM host OS are limited to single-machine clusters.
 
 ## Deployment environment
 
-The following section describes the nested architecture, highlighting the main components and configuration needed. The levels of virtualization described later in the article are:
+This section describes the nested architecture, highlighting the main components and configuration needed. The levels of virtualization described later in this article are:
 
-- **L0 Host OS**: Windows host operating system - this OS can be running bare-metal or as a virtual machine, but in this article, the **L0 Host OS** is the one that creates the nested Windows L1 VMs.
-- **L1 Virtual Machine**: Windows VM running on top of L0 Windows host OS - This VM has the AKS Edge Essentials installation.
+- **L0 Host OS**: Windows host operating system. This OS can be running bare-metal or as a virtual machine, but in this article, the **L0 Host OS** is the one that creates the nested Windows L1 VMs.
+- **L1 Virtual Machine**: Windows VM running on top of L0 Windows host OS. This VM has the AKS Edge Essentials installation.
 - **L2 Virtual Machine**: AKS Edge Essentials nested VM (Linux or Windows) running on top of the L1 Windows virtual machine.
 
 You can set up a nested environment using an internal or external virtual switch. However, this article assumes you're using an internal virtual switch. IP addresses of the L0 Windows machine and L1/L2 virtual machines can change depending on the networking scenario. This article assumes that you're using the **172.20.1.0/24** IP address family.
 
-Also, deploying AKS Edge Essentials Windows nodes is optional, and will impact your assigned memory requirements. This article describes a Linux-only deployment, but you can add your Windows nodes by adding the appropriate configuration to the deployment JSON files.
+Also, deploying AKS Edge Essentials Windows nodes is optional, and impacts your assigned memory requirements. This article describes a Linux-only deployment, but you can add your Windows nodes by adding the appropriate configuration to the deployment JSON files.
 
 > [!TIP]
 > If you're using external virtual switches for the deployment, make sure you use the correct network adapters and IP addresses allocations.
@@ -55,8 +73,7 @@ The previous diagram shows the different virtual machines and components of this
 
 ## Set up nested virtual machines
 
-> [!NOTE]
-> The following guide is an example of IP address allocation. You can use your own allocation based on your network environment and requirements. Naming conventions for virtual machines and virtual hardware assignments are also suggested, but you can use your own configuration.
+The following guide is an example of IP address allocation. You can use your own allocation based on your network environment and requirements. Naming conventions for virtual machines and virtual hardware assignments are also suggested, but you can use your own configuration.
 
 1. Open an elevated PowerShell session.
 
@@ -89,9 +106,9 @@ The previous diagram shows the different virtual machines and components of this
 
 1. Using Hyper-V Manager, create the first Windows virtual machine and name it **Windows-VM-1**. For more information about virtual machine creation, see [Windows Server virtualization](/windows-server/virtualization/hyper-v/get-started/create-a-virtual-machine-in-hyper-v?tabs=hyper-v-manager). During the configuration of the VM, make sure you correctly set up the following parameters:
 
-   - **Processors** - Number of virtual processors: 4
-   - **Memory** - RAM: 8192 MB
-   - **Network adapter** - Virtual switch: **AKS-Int**
+   - **Processors**: Number of virtual processors: 4
+   - **Memory**: RAM: 8192 MB
+   - **Network adapter**: Virtual switch: **AKS-Int**
 
 1. When Windows setup and configuration are finished, turn off your **Windows-VM-1** virtual machine.  
 
@@ -153,7 +170,7 @@ The previous diagram shows the different virtual machines and components of this
    > If you are using an Azure VM, use the **Windows host OS (L0)** DNS server. Use the `ipconfig /all` command to get the DNS server address. Check that you're able to get internet access using your web browser. If you have no access, check the if the DNS server is correctly configured:
 
    ```powershell
-   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength $ifIndex
+   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
    Set-DNSClientServerAddress –InterfaceIndex $ifIndex –ServerAddresses "172.20.1.1"
    ```
 

@@ -2,15 +2,9 @@
 title: Offer Commvault marketplace item in Azure Stack - MDC
 description: Deploy Commvault from Azure Stack Marketplace for a Modular Data Center (MDC).
 services: azure-stack
-documentationcenter: ''
 author: sethmanheim
 manager: femila
-editor: ''
-
 ms.service: azure-stack
-ms.workload: tzl
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2021
 ms.author: sethm
@@ -29,22 +23,22 @@ Commvault supports backup and restore of the following resource types on Azure S
   - IaaS VM
   - Unmanaged disks
   - Managed disks
-  - For more information, see [Backing Up Virtual Machines](https://documentation.commvault.com/commvault/v11/article?p=86503.htm).
+  - For more information, see [Backing Up Virtual Machines](https://docs.metallic.io/metallic/configuring_backups_for_hyper_v_virtual_machines.html).
 
 - Storage account backup
   - Blob
-  - For more information, see [Azure Blob Storage Overview](https://documentation.commvault.com/commvault/v11/article?p=30063.htm).
+  - For more information, see [Azure Blob Storage Overview](https://docs.metallic.io/metallic/azure_blob_storage.html).
 
 - Agent-based backup
   - Guest OS -- Windows and Linux
   - Application -- SQL, MySQL
-  - For more information, see [Backup Agents](https://documentation.commvault.com/commvault/v11/article?p=14333.htm).
+  - For more information, see [Backup Agents](https://documentation.commvault.com/2023e/essential/application_based_backups_for_virtual_server_agent.html).
 
-You can deploy Commvault on an external machine and protect resources on Azure Stack Hub remotely. In addition, it is possible to deploy Commvault as a virtual appliance on Azure Stack Hub. Complete guidance from Commvault is available on their documentation site that covers [Azure Stack Hub](https://documentation.commvault.com/commvault/v11/article?p=86486.htm). For reference, Commvault also publishes a [complete list of capabilities for Microsoft Azure](https://documentation.commvault.com/commvault/v11/article?p=109795_1.htm).
+You can deploy Commvault on an external machine and protect resources on Azure Stack Hub remotely. In addition, it is possible to deploy Commvault as a virtual appliance on Azure Stack Hub. Complete guidance from Commvault is available on their documentation site that covers [Azure Stack Hub](https://documentation.commvault.com/2023e/essential/azure_stack_hub.html). For reference, Commvault also publishes a [complete list of capabilities for Microsoft Azure](https://docs.metallic.io/metallic/protecting_azure_virtual_machines_with_commvault_cloud.html).
 
 ## Deploy from Azure Stack Hub Marketplace
 
-Commvault publishes a BYOL image in the Azure Marketplace and enables the image for syndication to Azure Stack Hub. The minimum version required to back up VMs on Azure Stack is SP16. If you plan to use a virtual appliance, make sure to update to at SP16 (the latest [long-term supported release](https://documentation.commvault.com/commvault/v11/article?p=2617.htm)) or SP17 (the latest mainstream release available).
+Commvault publishes a BYOL image in the Azure Marketplace and enables the image for syndication to Azure Stack Hub. The minimum version required to back up VMs on Azure Stack is SP16. If you plan to use a virtual appliance, make sure to update to at SP16 (the latest [long-term supported release](https://documentation.commvault.com/2023e/essential/platform_release_schedule_and_lifecycles.html)) or SP17 (the latest mainstream release available).
 
 | Cloud        | Version | Available for syndication | Next update |
 |--------------|---------|---------------------------|-------------|

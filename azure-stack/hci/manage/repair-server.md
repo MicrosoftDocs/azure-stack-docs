@@ -1,57 +1,54 @@
 ---
-title: Repair a server on Azure Stack HCI (preview).
-description: Learn how to repair a server on your Azure Stack HCI (preview).
+title: Repair a server on Azure Stack HCI, version 23H2
+description: Learn how to repair a server on your Azure Stack HCI, version 23H2 system.
 ms.topic: article
 author: alkohli
 ms.author: alkohli
-ms.date: 09/27/2023
+ms.date: 06/04/2024
 ---
 
-# Repair a server on your Azure Stack HCI (preview)
+# Repair a server on Azure Stack HCI, version 23H2
 
-[!INCLUDE [hci-applies-to-supplemental-package](../../includes/hci-applies-to-supplemental-package.md)]
+[!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
 This article describes how to repair a server on your Azure Stack HCI cluster.
 
-[!INCLUDE [hci-preview](../../includes/hci-preview.md)]
-
 ## About repair servers
 
-Azure Stack HCI is a hyperconverged system that allows you to repair servers from existing clusters. You may need to repair a server in a cluster if there's a hardware failure. 
+Azure Stack HCI is a hyperconverged system that allows you to repair servers from existing clusters. You may need to repair a server in a cluster if there's a hardware failure.
 
-Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace. 
+Before you repair a server, make sure to check with your solution provider, which components on the server are field replacement units (FRUs) that you can replace yourself and which components would require a technician to replace.
 
-Parts that support hot swap typically do not require you to reimage the server unlike the non hot-swappable components such as motherboard do. Consult your hardware manufacturer to determine which component replacements would require you to reimage the server. For more information, see [Component replacement](#component-replacement).
-
+Parts that support hot swap typically don't require you to reimage the server unlike the non hot-swappable components such as motherboard do. Consult your hardware manufacturer to determine which component replacements would require you to reimage the server. For more information, see [Component replacement](#component-replacement).
 
 ## Repair server workflow
 
 The following flow diagram shows the overall process to repair a server.
 
-![Diagram illustrating the repair server process](./media/repair-server/repair-server-workflow-2.png)
+:::image type="content" source="./media/repair-server/repair-server-workflow-2.png" alt-text="Diagram illustrating the repair server process." lightbox="./media/repair-server/repair-server-workflow-2.png":::
+
 \**Server may not be in a state where shutdown is possible or necessary*
 
 To repair an existing server, follow these high-level steps:
 
 1. If possible, shut down the server that you want to repair. Depending on the state of the server, a shutdown may not be possible or necessary.
-1. Reimage the server that needs to be repaired. 
-1. Run the repair server operation. The Azure Stack HCI operating system, drivers, and firmware are updated as part of the repair operation. 
+1. Reimage the server that needs to be repaired.
+1. Run the repair server operation. The Azure Stack HCI operating system, drivers, and firmware are updated as part of the repair operation.
 
     The storage is automatically rebalanced on the reimaged server. Storage rebalance is a low priority task that can run for multiple days depending on number of the servers and the storage used.
 
-
 ## Supported scenarios
 
-Repairing a server reimages a server and brings it back to the cluster with the previous name and configuration. 
+Repairing a server reimages a server and brings it back to the cluster with the previous name and configuration.
 
 Repairing a single server results in a redeployment with the option to persist the data volumes. Only the system volume is deleted and newly provisioned during deployment.
 
 > [!IMPORTANT]
 > Make sure that you always have backups for your workloads and do not rely on the system resiliency only. This is especially critical in single-server scenarios.
 
-### Resiliency settings 
+### Resiliency settings
 
-In this preview release, for repair server operation, specific tasks aren't performed on the workload volumes that you created after the deployment. For repair server operation, only the required infrastructure volumes and the workload volumes are restored and surfaced as cluster shared volumes (CSVs). 
+In this release, for repair server operation, specific tasks aren't performed on the workload volumes that you created after the deployment. For repair server operation, only the required infrastructure volumes and the workload volumes are restored and surfaced as cluster shared volumes (CSVs).
 
 The other workload volumes that you created after the deployment are still retained and you can discover these volumes by running `Get-VirtuaDisk` cmdlet. You'll need to manually unlock the volume (if the volume has BitLocker enabled), and create a CSV (if needed).
 
@@ -70,13 +67,13 @@ You may replace the entire server:
 
 The following scenarios are supported during server replacement:
 
-| **Server** | **Disk**                             | **Supported** |
-|------------------------------ |-----------------------|-----------|
-| New server                    | New disks             |Yes        |
-| New server                    | Current disks             |Yes        |
-| Current server (reimaged)     | Current disks reformatted *|No         |
-| Current server (reimaged)     | New disks             |Yes        |
-| Current server (reimaged)     | Current disks |Yes        |
+| **Server** | **Disk** | **Supported** |
+|--|--|--|
+| New server | New disks | Yes |
+| New server | Current disks | Yes |
+| Current server (reimaged) | Current disks reformatted * | No |
+| Current server (reimaged) | New disks | Yes |
+| Current server (reimaged) | Current disks | Yes |
 
 **Disks that have been used by Storage Spaces Direct, require proper cleaning. Reformatting isn't sufficient. See how to [Clean drives](/windows-server/storage/storage-spaces/deploy-storage-spaces-direct#step-31-clean-drives).
 
@@ -102,6 +99,7 @@ Before you repair a server, you must ensure that:
 [!INCLUDE [hci-prerequisites-add-repair-server](../../includes/hci-prerequisites-add-repair-server.md)]
 
 - If needed, take the server that you have identified for repair offline. Follow the steps here:
+
     - [Verify the server is healthy prior to taking it offline](maintain-servers.md#verify-its-safe-to-take-the-server-offline-1).
     - [Pause and drain the server](maintain-servers.md#pause-and-drain-the-server-1).
     - [Shut down the server](maintain-servers.md#shut-down-the-server-1).
@@ -112,36 +110,47 @@ This section describes how to repair a server using PowerShell, monitor the stat
 
 Make sure that you have reviewed the [prerequisites](#prerequisites). 
 
-Follow these steps on the sever you are trying to repair.
+Follow these steps on the server you're trying to repair.
 
-1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 22H2 Operating System](../deploy/deployment-tool-install-os.md).
+1. Install the operating system and required drivers. Follow the steps in [Install the Azure Stack HCI, version 23H2 Operating System](../deploy/deployment-install-os.md).
 
     > [!NOTE]
-    > You must also [Install required Windows Roles](../deploy/deployment-tool-install-os.md#install-required-windows-roles).
+    > If your cluster is using a dedicated Network ATC intent for storage and you are using custom storage IPs, you must configure the IPs on the storage network adapters before running the Repair-Server operation.
+    > If your cluster is using a shared network ATC intent for storage and other traffic type like compute and management, you will need to manually configure the IPs on the storage virtual network adapters after the server is being repaired.
 
-1. Sign in with local administrator account, into the server that will be repaired.
+2. Register the server with Arc. Follow the steps in [Register with Arc and set up permissions](../deploy/deployment-arc-register-server-permissions.md).
 
-1. Open a new PowerShell session on this server. Run the following command:
+    > [!NOTE]
+    > You must use the same parameters as the existing nodes to register with Arc. For example: Resource Group name, Region, Subscription, and Tentant.
 
-    ```powershell
-    Uninstall-Module –Name PSWindowsUpdate –Force
-    ```
-Follow these steps on another sever that is a member of the same Azure Stack HCI cluster.
+3. Assign the following permissions to the repaired node:
+
+    - Azure Stack HCI Device Management Role
+    - Key Vault Secrets User
+    For more information, see [Assign permissions to the server](../deploy/deployment-arc-register-server-permissions.md).
+
+Follow these steps on another server that is a member of the same Azure Stack HCI cluster.
 
 1. Before you add the server, make sure to get an updated authentication token. Run the following command:
 
    ```powershell
     Update-AuthenticationToken
    ```
-   
-1. Sign in with the Lifecycle Manager account into the server that is already a member of the cluster. Run the following command to repair the incoming server:
+
+1. Sign into the server that is already a member of the cluster, with the domain user credentials that you provided during the deployment of the cluster. Run the following command to repair the incoming server:
 
     ```powershell
     $Cred = Get-Credential 
     Repair-Server -Name "< Name of the new server>" -LocalAdminCredential $Cred
     ```
 
+    > [!NOTE]
+    > The server name must be the [NetBIOS name](/windows/win32/sysinfo/computer-names).
+
 1. Make a note of the operation ID as output by the `Repair-Server` command. You use this later to monitor the progress of the `Repair-Server` operation.
+
+> [!NOTE]
+> If you deployed your Azure Stack HCI cluster using custom storage IPs, you must manually assign IPs to the storage network adapters after the server is repaired.
 
 ### Monitor operation progress
 
@@ -153,15 +162,16 @@ To monitor the progress of the add server operation, follow these steps:
 
 Following recovery scenarios and the recommended mitigation steps are tabulated for repairing a server:
 
-| Scenario description                                                                                          | Mitigation                                                                                                | Supported ?   |
-|------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------|---------------|
-| Repair server operation failed.                                                                      | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`.                    | Yes     |
-| Repair server operation succeeded partially but had to start with a fresh operation system install.    | In this scenario, the Lifecycle Manager has already updated its knowledge store with the new server. Use the repair server scenario. | Yes    |
-
+| Scenario description | Mitigation | Supported? |
+|--|--|--|
+| Repair server operation failed. | To complete the operation, investigate the failure. <br>Rerun the failed operation using `Add-Server -Rerun`. | Yes |
+| Repair server operation succeeded partially but had to start with a fresh operation system install. | In this scenario, the orchestrator (also known as Lifecycle Manager) has already updated its knowledge store with the new server. Use the repair server scenario. | Yes |
 
 ### Troubleshooting
 
-- If you experience failures or errors while repairing a server, you can capture the output of the failures in a log file.
+If you experience failures or errors while repairing a server, you can capture the output of the failures in a log file.
+
+- Sign in with the domain user credentials that you provided during the deployment of the cluster. Capture the issue in the log files.
 
     ```powershell
     Get-ActionPlanInstance -ActionPlanInstanceID $ID |out-file log.txt
@@ -172,7 +182,6 @@ Following recovery scenarios and the recommended mitigation steps are tabulated 
     ```powershell
     Repair-Server -Rerun
     ```
-
 
 ## Next steps
 

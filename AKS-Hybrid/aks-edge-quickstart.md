@@ -1,10 +1,10 @@
 ---
 title: Quickstart for AKS Edge Essentials
-description: Bring up an AKS Edge Essentials cluster and connect it to Azure Arc. 
+description: Learn how to bring up an AKS Edge Essentials cluster and connect it to Azure Arc. 
 author: rcheeran
 ms.author: rcheeran
-ms.topic: how-to
-ms.date: 10/05/2023
+ms.topic: quickstart
+ms.date: 07/11/2024
 ms.custom: template-how-to
 ---
 
@@ -17,10 +17,10 @@ This quickstart describes how to set up an Azure Kubernetes Service (AKS) Edge E
 - See the [system requirements](aks-edge-system-requirements.md). For this quickstart, ensure that you have a minimum of 4.5 GB RAM free, 4 vCPUs and 20 GB free disk space.
 - OS requirements: install Windows 10/11 IoT Enterprise/Enterprise/Pro on your machine and activate Windows. We recommend using the latest [client version 22H2 (OS build 19045)](/windows/release-health/release-information) or [Server 2022 (OS build 20348)](/windows/release-health/windows-server-release-info). You can [download a version of Windows 10 here](https://www.microsoft.com/software-download/windows10) or [Windows 11 here](https://www.microsoft.com/software-download/windows11).
 - See the [Microsoft Software License Terms](aks-edge-software-license-terms.md) as they apply to your use of the software. By using the `AksEdgeQuickStart` script, you accept the Microsoft Software License Terms and the `AcceptEULA` flag is set to `true` indicating acceptance of the license terms.
-- Get your Azure subscription parameters: for connecting your cluster to Azure Arc, you must provide these parameters. If you skip these parameters, the Arc connection is skipped, but the cluster is still deployed.
+- Get your Azure subscription parameters: for connecting your cluster to Azure Arc, you must provide these parameters. If you skip these parameters, the Arc connection is skipped, but the cluster is still deployed:
   - Your **login credentials**: Required for interactive login into Azure using Azure CLI. Your account should have one of these roles `Owner` or `Contributor` or `Administrator`.
   - Your **Subscription ID** `<subscription-id>`: In the Azure portal, select the subscription you're using and look for the subscription ID (GUID).
-  - Your **Tenant ID** `<tenant-id>`: In the Azure portal, search Microsoft Entra ID, which should take you to the **Default Directory** page. Look for the tenant ID (GUID).
+  - Your **Tenant ID** `<tenant-id>`: In the Azure portal, search for Microsoft Entra ID, which should take you to the **Default Directory** page. Look for the tenant ID (GUID).
   - The **Location (Azure region)** `<location>`: Where you want your resources to be created. See [Azure Arc by Region](https://azure.microsoft.com/explore/global-infrastructure/products-by-region/?products=azure-arc) for the locations supported by `Azure Arc enabled servers` and `Azure Arc enabled Kubernetes` services. Choose a region in which both are supported.
 
 ## Step 1: Download script for easy deployment

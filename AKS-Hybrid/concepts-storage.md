@@ -1,65 +1,70 @@
 ---
-title: Concepts - Storage options for applications in AKS hybrid
-description: Storage options for applications in AKS hybrid.
+title: Concepts - Storage options for applications in AKS enabled by Azure Arc
+description: Storage options for applications in AKS enabled by Azure Arc.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 10/07/2022
+ms.date: 06/24/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
-# Intent: As an IT Pro, I need to understand the storage options available for applications in AKS hybrid so that I can optimize how to best to store and retrieve data.
+# Intent: As an IT Pro, I need to understand the storage options available for applications in AKS Arc so that I can optimize how to best to store and retrieve data.
 # Keyword: storage options PV claims
 
 ---
 
-# Storage options for applications in AKS hybrid
+# Storage options for applications in AKS enabled by Azure Arc
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Applications that run in AKS deployments using Azure Kubernetes Service (AKS) hybrid deployment options (AKS hybrid) may need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application). 
+Applications that run in AKS deployments using Azure Kubernetes Service enabled by Azure Arc might need to store and retrieve data. For some application workloads, the data can use local, fast storage on an unneeded node when the pods are deleted (Kubernetes uses _pods_ to run an instance of an application).
 
-Other workloads may require storage that persists on more regular data volumes. Multiple pods may need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you may need a storage option if the pods contain sensitive data or application configuration information. 
+Other workloads might require storage that persists on more regular data volumes. Multiple pods might need to share the same data volumes, or reattach data volumes if the pod is rescheduled on a different node. Also, you might need a storage option if the pods contain sensitive data or application configuration information.
 
-![Architectural storage image showing a cluster master and node](media/storage-architecture.png)
+:::image type="content" source="media/concepts-storage/storage-architecture.png" alt-text="Architectural storage image showing a cluster master and node." lightbox="media/concepts-storage/storage-architecture.png":::
 
-This article introduces the core concepts that provide storage to your applications in AKS hybrid, including:
-- Volumes 
-- Persistent volumes 
-- Storage classes 
-- Persistent volume claims (PVC) 
+This article introduces the core concepts that provide storage to your applications in AKS Arc, including:
+
+- Volumes
+- Persistent volumes
+- Storage classes
+- Persistent volume claims (PVC)
 
 ## Volumes
-Applications often need to be able to store and retrieve data. As Kubernetes typically treats individual pods as temporary, disposable resources, different approaches are available for applications to use and persist data. A volume represents a way to store, retrieve, and persist data across pods and through the application lifecycle. 
 
-In Kubernetes, volumes can represent more than just a traditional disk where information is stored and retrieved. Kubernetes volumes can also be used as a way to insert data into a pod for containers to use. Some common Kubernetes volume types include: 
+Applications often need to be able to store and retrieve data. As Kubernetes typically treats individual pods as temporary, disposable resources, different approaches are available for applications to use and persist data. A volume represents a way to store, retrieve, and persist data across pods and through the application lifecycle.
 
-- `emptyDir` - This volume is commonly used as temporary space for a pod. All containers within a pod can access the data on the volume. Data written to this volume type persists only for the lifespan of the pod - when the pod is deleted, the volume is deleted. This volume typically uses the underlying local node disk storage, although it can also exist solely in the node's memory. 
+In Kubernetes, volumes can represent more than just a traditional on which information is stored and retrieved. Kubernetes volumes can also be used as a way to insert data into a pod for containers to use. Some common Kubernetes volume types include:
 
-- `secret` - This volume is used to include sensitive data, such as passwords, into pods. First, you create a secret using the Kubernetes API. When you define your pod or deployment, you can request a specific secret. Secrets are only provided to nodes with a scheduled pod that requires it, and the secret is stored in _tmpfs_, and not written to disk. When the last pod on a node that requires a secret is deleted, the secret is deleted from the node's tmpfs. Secrets are stored within a given namespace and can only be accessed by pods within the same namespace. 
+- **emptyDir** - This volume is commonly used as temporary space for a pod. All containers within a pod can access the data on the volume. Data written to this volume type persists only for the lifespan of the pod - when the pod is deleted, the volume is deleted. This volume typically uses the underlying local node disk storage, although it can also exist solely in the node's memory.
 
-- `configMap` - This volume type is used to inject key-value pair properties into pods, such as application configuration information. Instead of defining application configuration information within a container image, you can define it as a Kubernetes resource that can be easily updated and applied to new instances of pods as they are deployed. Similar to using a secret, you first create a ConfigMap using the Kubernetes API. This ConfigMap can then be requested when you define a pod or deployment. ConfigMaps are stored within a given namespace and can only be accessed by pods within the same namespace. 
+- **secret** - This volume is used to include sensitive data, such as passwords, into pods. First, you create a secret using the Kubernetes API. When you define your pod or deployment, you can request a specific secret. Secrets are only provided to nodes with a scheduled pod that requires it, and the secret is stored in **tmpfs**, not written to disk. When the last pod on a node that requires a secret is deleted, the secret is deleted from the node's **tmpfs**. Secrets are stored within a given namespace and can only be accessed by pods within the same namespace.
+
+- **configMap** - This volume type is used to inject key-value pair properties into pods, such as application configuration information. Instead of defining application configuration information within a container image, you can define it as a Kubernetes resource that can be easily updated and applied to new instances of pods as they are deployed. Similar to using a secret, you first create a **ConfigMap** using the Kubernetes API. This **ConfigMap** can then be requested when you define a pod or deployment. **ConfigMaps** are stored within a given namespace and can only be accessed by pods within the same namespace.
 
 ## Persistent volumes
-Volumes that are defined and created as part of the pod lifecycle only exist until the pod is deleted. Pods often expect their storage to remain if a pod is rescheduled on a different host during a maintenance event, especially in StatefulSets. A persistent volume is a storage resource created and managed by the Kubernetes API that can exist beyond the lifetime of an individual pod. 
 
-You can use AKS Disk volumes backed by VHDX that are mounted as _ReadWriteOnce_ and are accessible to a single node at a time. Or, you can use AKS Files volumes backed by SMB or NFS file shares. These are mounted as _ReadWriteMany_ and are available to multiple nodes concurrently. 
+Volumes that are defined and created as part of the pod lifecycle only exist until the pod is deleted. Pods often expect their storage to remain if a pod is rescheduled on a different host during a maintenance event, especially in StatefulSets. A persistent volume is a storage resource created and managed by the Kubernetes API that can exist beyond the lifetime of an individual pod.
 
-A persistent volume can be statically created by a cluster administrator, or dynamically created by the Kubernetes API server. If a pod is scheduled and requests storage that is not currently available, Kubernetes can create the underlying VHDX file and then attach it to the pod. Dynamic provisioning uses a _StorageClass_ to identify what type of storage needs to be created. 
+You can use AKS disk volumes backed by VHDX that are mounted as **ReadWriteOnce** and are accessible to a single node at a time. Or, you can use AKS file volumes backed by SMB or NFS file shares. These are mounted as **ReadWriteMany** and are available to multiple nodes concurrently.
+
+A cluster administrator can statically create a persistent volume, or the volume can be dynamically created by the Kubernetes API server. If a pod is scheduled and requests storage that is not currently available, Kubernetes can create the underlying VHDX file and then attach it to the pod. Dynamic provisioning uses a **StorageClass** to identify what type of storage needs to be created.
 
 ## Storage classes
-To define different tiers (and location) of storage you can create a StorageClass. The StorageClass also defines the _reclaimPolicy_. This reclaimPolicy controls the behavior of the underlying storage resource when the pod is deleted and the persistent volume may no longer be required. The underlying storage resource can be deleted or retained for use with a future pod. 
 
-In AKS hybrid, the _default_ storage class is automatically created and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable, so you just need to edit the persistent volume claim with the new size. 
+To define different tiers (and location) of storage you can create a **StorageClass**. The **StorageClass** also defines the **reclaimPolicy**. This **reclaimPolicy** controls the behavior of the underlying storage resource when the pod is deleted and the persistent volume might no longer be required. The underlying storage resource can be deleted or retained for use with a future pod.
 
-If no StorageClass is specified for a persistent volume, the default StorageClass is used. When requesting persistent volumes, make sure they use the appropriate storage you need. You can create a StorageClass for additional needs. 
+In AKS Arc, the **default** storage class is automatically created and uses CSV to create VHDX-backed volumes. The reclaim policy ensures that the underlying VHDX is deleted when the persistent volume that used it is deleted. The storage class also configures the persistent volumes to be expandable, so you just need to edit the persistent volume claim with the new size.
 
-## Persistent volume claims 
-A PersistentVolumeClaim requests either ReadWriteOnce or ReadWriteMany storage of a particular StorageClass and size. The Kubernetes API server can dynamically provision the underlying storage resource in AKS hybrid if there is no existing resource to fulfill the claim based on the defined StorageClass. The pod definition includes the volume mount once the volume has been connected to the pod. 
+If no **StorageClass** is specified for a persistent volume, the default **StorageClass** is used. When requesting persistent volumes, make sure they use the appropriate storage. You can create a **StorageClass** for additional needs.
 
-A PersistentVolume is bound to a PersistentVolumeClaim once an available storage resource has been assigned to the pod requesting it. There is a 1:1 mapping of persistent volumes to claims. 
+## Persistent volume claims
 
-The following example YAML manifest shows a persistent volume claim that uses the _default_ StorageClass and requests a Disk 5Gi in size: 
+A **PersistentVolumeClaim** requests either **ReadWriteOnce** or **ReadWriteMany** storage of a particular **StorageClass** and size. The Kubernetes API server can dynamically provision the underlying storage resource in AKS Arc if there is no existing resource to fulfill the claim based on the defined **StorageClass**. The pod definition includes the volume mount once the volume has been connected to the pod.
+
+A **PersistentVolume** is bound to a **PersistentVolumeClaim** once an available storage resource is assigned to the pod requesting it. There is a 1:1 mapping of persistent volumes to claims.
+
+The following example YAML manifest shows a persistent volume claim that uses the default **StorageClass** and requests a 5Gi disk:
 
 ```yaml
 apiVersion: v1 
@@ -75,7 +80,7 @@ spec:
       storage: 5Gi 
 ```
 
-When you create a pod definition, the persistent volume claim is specified to request the desired storage. You also then specify the volumeMount for your applications to read and write data. The following example YAML manifest shows how the previous persistent volume claim can be used to mount a volume at `/mnt/aks-hci`: 
+When you create a pod definition, you specify the persistent volume claim to request the desired storage. You also then specify the `volumeMount` for your applications to read and write data. The following example YAML manifest shows how the previous persistent volume claim can be used to mount a volume at `/mnt/aks-hci`:
 
 ```yaml
 kind: Pod 
@@ -85,17 +90,19 @@ metadata:
 spec: 
   containers: 
     - name: myfrontend 
-      image: mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine 
+      image: k8s.gcr.io/nginx 
       volumeMounts: 
       - mountPath: "/mnt/aks-hci" 
-        name: volume 
+        name: volume
+  nodeSelector:
+      kubernetes.io/os: linux
   volumes: 
     - name: volume 
       persistentVolumeClaim: 
         claimName: aks-hci-vhdx 
 ```
 
-The following example shows how to mount a volume in a Windows container and specify the drive letter and path. 
+The following example shows how to mount a volume in a Windows container and specify the drive letter and path:
 
 ```yaml
 volumeMounts: 

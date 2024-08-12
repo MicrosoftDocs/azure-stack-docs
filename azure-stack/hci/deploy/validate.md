@@ -4,12 +4,14 @@ description: Understand cluster validation's importance, and when to run it on a
 author: jasongerend
 ms.author: jgerend
 ms.topic: article
-ms.date: 09/28/2023
+ms.date: 04/12/2024
 ---
 
 # Validate an Azure Stack HCI cluster
 
 > Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019.
+
+[!INCLUDE [warning-22h2](../../includes/hci-warning-deploy-22h2.md)]
 
 Validate DCB is no longer the recommended tool to set up or test your host networking configuration on Azure Stack HCI. We recommend using Network ATC to configure your host networking set-up for Azure Stack HCI. Network ATC always supersedes Validate DCB on Azure Stack HCI.  
 
@@ -80,21 +82,21 @@ To install and run the Validate-DCB tool:
 1. On the Welcome to the Validate-DCB configuration wizard page, select **Next**.
 1. On the Clusters and Nodes page, type the name of the server cluster that you want to validate, select **Resolve** to list it on the page, and then select **Next**.
 
-    :::image type="content" source="../media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard":::
+    :::image type="content" source="./media/validate/clusters-and-nodes.png" alt-text="The Clusters and Nodes page of the Validate-DCB configuration wizard" lightbox="./media/validate/clusters-and-nodes.png":::
 
 1. On the Adapters page:
    1. Select the **vSwitch attached** checkbox and type the name of the vSwitch.
    1. Under **Adapter Name**, type the name of each physical NIC, under **Host vNIC Name**, the name of each virtual NIC (vNIC), and under **VLAN**, the VLAN ID in use for each adapter.
    1. Expand the **RDMA Type** drop-down list box and select the appropriate protocol: **RoCE** or **iWARP**. Also set **Jumbo Frames** to the appropriate value for your network, and then select **Next**.
 
-    :::image type="content" source="../media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard" lightbox="../media/validate/adapters.png":::
+    :::image type="content" source="./media/validate/adapters.png" alt-text="The Adapters page of the Validate-DCB configuration wizard" lightbox="./media/validate/adapters.png":::
 
     > [!NOTE]
     > - To learn more about how SR-IOV improves network performance, see [Overview of Single Root I/O Virtualization (SR-IOV)](/windows-hardware/drivers/network/overview-of-single-root-i-o-virtualization--sr-iov-).
 
 1. On the Data Center Bridging page, modify the values to match your organization's settings for **Priority**, **Policy Name**, and **Bandwidth Reservation**, and then select **Next**.
 
-    :::image type="content" source="../media/validate/data-center-bridging.png" alt-text="The Data Center Bridging page of the Validate-DCB configuration wizard" lightbox="../media/validate/data-center-bridging.png":::
+    :::image type="content" source="./media/validate/data-center-bridging.png" alt-text="The Data Center Bridging page of the Validate-DCB configuration wizard" lightbox="./media/validate/data-center-bridging.png":::
 
     > [!NOTE]
     > Selecting RDMA over RoCE on the previous wizard page requires DCB for network reliability on all NICs and switchports.
@@ -103,7 +105,7 @@ To install and run the Validate-DCB tool:
 
    - You can optionally deploy your configuration file by completing the **Deploy Configuration to Nodes** section of the page, which includes the ability to use an Azure Automation account to deploy the configuration and then validate it. See [Create an Azure Automation account](/azure/automation/quickstarts/create-azure-automation-account-portal) to get started with Azure Automation.
 
-    :::image type="content" source="../media/validate/save-and-deploy.png" alt-text="The Save and Deploy page of the Validate-DCB configuration wizard":::
+    :::image type="content" source="./media/validate/save-and-deploy.png" alt-text="The Save and Deploy page of the Validate-DCB configuration wizard" lightbox="./media/validate/save-and-deploy.png":::
 
 ### Review results and fix errors
 The Validate-DCB tool produces results in two units:
@@ -112,24 +114,24 @@ The Validate-DCB tool produces results in two units:
 
 This example shows successful scan results of a single server for all prerequisites and modal unit tests by indicating a Failed Count of 0.
 
-:::image type="content" source="../media/validate/global-unit-and-modal-unit-results.png" alt-text="Validate-DCB Global unit and Modal unit test results":::
+:::image type="content" source="./media/validate/global-unit-and-modal-unit-results.png" alt-text="Validate-DCB Global unit and Modal unit test results" lightbox="./media/validate/global-unit-and-modal-unit-results.png":::
 
 The following steps show how to identify a Jumbo Packet error from vNIC SMB02 and fix it:
 1. The results of the Validate-DCB tool scans show a Failed Count error of 1.
 
-    :::image type="content" source="../media/validate/failed-count-error-1.png" alt-text="Validate-DCB tool scan results showing a a Failed Count error of 1":::
+    :::image type="content" source="./media/validate/failed-count-error-1.png" alt-text="Validate-DCB tool scan results showing a a Failed Count error of 1" lightbox="./media/validate/failed-count-error-1.png":::
 
 1. Scrolling back through the results shows an error in red indicating that the Jumbo Packet for vNIC SMB02 on Host S046036 is set at the default size of 1514, but should be set to 9014.
 
-    :::image type="content" source="../media/validate/jumbo-packet-setting-error.png" alt-text="Validate-DCB tool scan result showing a jumbo packet size setting error":::
+    :::image type="content" source="./media/validate/jumbo-packet-setting-error.png" alt-text="Validate-DCB tool scan result showing a jumbo packet size setting error" lightbox="./media/validate/jumbo-packet-setting-error.png":::
 
 1. Reviewing the **Advanced** properties of vNIC SMB02 on Host S046036 shows that the Jumbo Packet is set to the default of **Disabled**.
 
-    :::image type="content" source="../media/validate/hyper-v-advanced-properties-jumbo-packet-setting.png" alt-text="The Server host's Hyper-V Advanced properties Jumbo Packet setting":::
+    :::image type="content" source="./media/validate/hyper-v-advanced-properties-jumbo-packet-setting.png" alt-text="The Server host's Hyper-V Advanced properties Jumbo Packet setting" lightbox="./media/validate/hyper-v-advanced-properties-jumbo-packet-setting.png":::
 
 1. Fixing the error requires enabling the Jumbo Packet feature and changing its size to 9014 bytes. Running the scan again on host S046036 confirms this change by returning a Failed Count of 0.
 
-    :::image type="content" source="../media/validate/jumbo-packet-error-fix-confirmation.png" alt-text="Validate-DCB scan results confirming that the Server host's Jumbo Packet setting is fixed":::
+    :::image type="content" source="./media/validate/jumbo-packet-error-fix-confirmation.png" alt-text="Validate-DCB scan results confirming that the Server host's Jumbo Packet setting is fixed" lightbox="./media/validate/jumbo-packet-error-fix-confirmation.png":::
 
 To learn more about resolving errors that the Validate-DCB tool identifies, see the following video.
 
@@ -150,7 +152,7 @@ Use the following steps to validate the servers in an existing cluster in Window
 1. On the **Inventory** page, select the servers in the cluster, then expand the **More** submenu and select **Validate cluster**.
 1. On the **Validate Cluster** pop-up window, select **Yes**.
 
-    :::image type="content" source="../media/validate/validate-cluster-pop-up.png" alt-text="Validate Cluster pop-up window":::
+    :::image type="content" source="./media/validate/validate-cluster-pop-up.png" alt-text="Validate Cluster pop-up window" lightbox="./media/validate/validate-cluster-pop-up.png":::
 
 1. On the **Credential Security Service Provider (CredSSP)** pop-up window, select **Yes**.
 1. Provide your credentials to enable **CredSSP** and then select **Continue**.<br> Cluster validation runs in the background and gives you a notification when it's complete, at which point you can view the validation report, as described in the next section.

@@ -1,8 +1,8 @@
 ---
 title: Monitor a single Azure Stack HCI cluster with Insights
 description: Enable logging and monitoring capabilities to monitor a single Azure Stack HCI cluster using Insights.
-author: dansisson
-ms.author: v-dansisson
+author: alkohli
+ms.author: alkohli
 ms.reviewer: saniyaislam
 ms.topic: how-to
 ms.service: azure-stack
@@ -222,7 +222,7 @@ Follow these steps to repair cluster registration:
 1. Run the repair registration command to remove regkey:
 
    ```powershell
-   Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration -RepairRegistration
+   Register-AzStackHCI -TenantId {TenantID} -SubscriptionId {subscriptionID} -ComputerName {NodeName} -RepairRegistration 
    ```
 
 ##### Repair AMA for Azure Stack HCI

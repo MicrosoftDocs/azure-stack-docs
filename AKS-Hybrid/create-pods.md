@@ -1,29 +1,29 @@
 ---
-title: Create and delete pods in AKS hybrid
-description: Learn how to create and delete pods in Azure Kubernetes Service (AKS).
+title: Create and delete pods in AKS enabled by Azure Arc
+description: Learn how to create and delete pods in Azure Kubernetes Service (AKS) enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/09/2022
+ms.date: 07/02/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: abha
 
-# Intent: As an IT Pro I want to learn how to create and delete pods in AKS.
+# Intent: As an IT Pro I want to learn how to create and delete pods in AKS Arc.
 # Keyword: create and delete pods
 
 ---
 
-# Create and delete pods in AKS hybrid
+# Create and delete pods
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-Kubernetes uses pods to run an instance of your application. This article describes how to create and delete pods when managing your workloads in AKS hybrid.
+Kubernetes uses pods to run an instance of your application. This article describes how to create and delete pods when managing your workloads in AKS enabled by Azure Arc.
 
-A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod, through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle where they run until their container(s) is removed.
+A pod represents a single instance of an application. Each pod has one or more containers deployed together on a single host. A pod is the smallest unit of execution in Kubernetes. An internal IP address and port are assigned to a pod, through which containers within the pod can share a common storage and network. Like a service, volume, and namespace, a pod is a basic Kubernetes object. Pods run on nodes and have a definite lifecycle, during which they run until their containers are removed.
 
 ## Create a pod
 
-Before creating a pod, you must [set up an AKS host and create AKS clusters using Windows PowerShell](./kubernetes-walkthrough-powershell.md). You can also use Windows Admin Center to [set up the host](./setup.md) and [create the clusters](./create-kubernetes-cluster.md).
+Before you create a pod, you must [set up an AKS host and create AKS clusters using Windows PowerShell](./kubernetes-walkthrough-powershell.md). You can also use Windows Admin Center to [set up the host](./setup.md) and [create the clusters](./create-kubernetes-cluster.md).
 
 To make sure you are connected to the Kubernetes cluster, run the following command:
 
@@ -31,7 +31,7 @@ To make sure you are connected to the Kubernetes cluster, run the following comm
 kubectl get nodes
 ```
 
-To create a pod, run the following command. In this example, a pod is created using an nginx image.  
+To create a pod, run the following command. In this example, a pod is created using an nginx image:  
 
 ```powershell
 kubectl run nginx --image=nginx --restart=Never
@@ -53,7 +53,7 @@ kubectl describe pod nginx
 
 ### Secure traffic between pods
 
-An important aspect in Kubernetes is to ensure consistent policy enforcement across multiple clusters. To learn more about verifying connectivity between the pods and then applying a basic network policy for pod traffic, see [Secure traffic between pods using network policies](./calico-networking-policy.md).
+An important feature in Kubernetes is to ensure consistent policy enforcement across multiple clusters. For more information about verifying connectivity between the pods and then applying a basic network policy for pod traffic, see [Secure traffic between pods using network policies](./calico-networking-policy.md).
 
 ## Delete a pod
 
@@ -65,9 +65,9 @@ kubectl delete pod
 
 ## Example pod configuration
 
-The following YAML example describes the features of a pod, and shows how it's the smallest unit of Kubernetes that can be defined, deployed, and managed.
+The following YAML example describes the features of a pod, and shows how it's the smallest unit of Kubernetes that can be defined, deployed, and managed:
 
-```yml
+```yaml
 apiVersion: v1 
 kind: Pod 
 metadata: 
@@ -87,6 +87,6 @@ spec:
 
 ## Next steps
 
-- [Create a deployment](create-deployments.md).
-- [Create a ReplicaSet](create-replicasets.md).
-- [Create a DaemonSet](create-daemonsets.md).
+- [Create a deployment](create-deployments.md)
+- [Create a ReplicaSet](create-replicasets.md)
+- [Create a DaemonSet](create-daemonsets.md)

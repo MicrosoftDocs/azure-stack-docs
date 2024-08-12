@@ -4,16 +4,17 @@ title: View Health Service faults
 ms.author: sethm
 ms.topic: article
 author: sethmanheim
-ms.date: 04/17/2023
+ms.date: 01/31/2024
 ---
 
 # View Health Service faults
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022, Windows Server 2019
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022, Windows Server 2019
 
 The Health Service constantly monitors your Storage Spaces Direct cluster to detect problems and generate "faults." One cmdlet displays any current faults, allowing you to easily verify the health of your deployment without looking at every entity or feature in turn. Faults are designed to be precise, easy to understand, and actionable.
 
 Each fault contains five important fields:
+
 - Severity
 - Description of the problem
 - Recommended next steps to address the problem

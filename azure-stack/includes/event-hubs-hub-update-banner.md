@@ -3,9 +3,9 @@ author: sethmanheim
 ms.author: sethm
 ms.service: azure-stack
 ms.topic: include
-ms.date: 10/13/2023
+ms.date: 03/04/2024
 ms.reviewer: kalkeea
-ms.lastreviewed: 10/13/2023
+ms.lastreviewed: 03/04/2024
 ---
 <!-- TODO - For each release: add AzS Hub build number, Event Hubs RP version number, & corresponding Event Hubs release notes text/link -->
 > [!IMPORTANT]
@@ -13,11 +13,11 @@ ms.lastreviewed: 10/13/2023
 >
 > | Supported Azure Stack Hub version(s) | Event Hubs RP release |
 > |-----|---|
+> | 2311 and higher | 1.2102.5.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-40.md) |
 > | 2306 and higher | 1.2102.4.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-40.md) |
 > | 2206 and higher | 1.2102.3.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-30.md) |
 > | 2206 and higher | 1.2102.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-20.md) |
-> | 2108 and higher | 1.2102.2.0 [Install](../operator/event-hubs-rp-install.md) \| [Update](../operator/resource-provider-apply-updates.md) \| [Release notes](../operator/event-hubs-rp-release-1-2102-20.md) |
-> 
+>
 > If you've installed a preview version not listed above, upgrading to one of the versions above is also recommended.
 
 > [!WARNING]

@@ -3,7 +3,7 @@ title: Stretched clusters overview
 description: Learn about stretched clusters
 author: jasongerend
 ms.topic: how-to
-ms.date: 04/17/2023
+ms.date: 07/29/2024
 ms.author: jgerend
 ms.reviewer: johnmar
 ---
@@ -12,12 +12,15 @@ ms.reviewer: johnmar
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-22h2-21h2.md)]
 
+> [!IMPORTANT]
+> Stretched clusters are not yet supported in Azure Stack HCI version 23H2.
+
 An Azure Stack HCI stretched cluster solution for disaster recovery provides automatic failover to restore production quickly and without the need for manual intervention. Storage Replica provides the replication of volumes across sites for disaster recovery, with all servers staying in sync.
 
 Storage Replica supports both synchronous and asynchronous replication:
 
 - Synchronous replication mirrors data across sites in a low-latency network with crash-consistent volumes to ensure zero data loss at the file-system level during a failure.
-- Asynchronous replication mirrors data across sites beyond metropolitan ranges over network links with higher latencies but without a guarantee that both sites have identical copies of the data at the time of a failure. If replication completes prior to the failure, the destination volume comes online automatically following failover. If replication is in process at the time of failure, you must manually bring the destination volume online.
+- Asynchronous replication mirrors data across sites beyond metropolitan ranges over network links with higher latencies but without a guarantee that both sites have identical copies of the data at the time of a failure. If replication completes before the failure, the destination volume comes online automatically following failover. If replication is in process at the time of failure, you must manually bring the destination volume online.
 
 There are two types of stretched clusters, active-passive and active-active. You can set up active-passive site replication, where there is a preferred site and direction for replication. Active-active replication is where replication can happen bi-directionally from either site. This article covers the active/passive configuration only.
 
@@ -32,23 +35,23 @@ Take a few minutes to watch the video on stretched clustering with Azure Stack H
 
 The following diagram shows Site 1 as the active site with replication to Site 2, a unidirectional replication.
 
-:::image type="content" source="media/stretched-cluster/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario"  lightbox="media/stretched-cluster/active-passive-stretched-cluster.png":::
+:::image type="content" source="media/stretched-clusters/active-passive-stretched-cluster.png" alt-text="Active/passive stretched cluster scenario."  lightbox="media/stretched-clusters/active-passive-stretched-cluster.png":::
 
 ## Active-active stretched cluster
 
 The following diagram shows both Site 1 and Site 2 as being active sites, with bidirectional replication to the other site.
 
-:::image type="content" source="media/stretched-cluster/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/stretched-cluster/active-active-stretched-cluster.png":::
+:::image type="content" source="media/stretched-clusters/active-active-stretched-cluster.png" alt-text="Active/active stretched cluster scenario" lightbox="media/stretched-clusters/active-active-stretched-cluster.png":::
 
 ## Guest IP failover considerations
 
-When talking about stretch clustering, one of the considerations that must be accounted for are the virtual machines and the IP addresses being used. Datacenters that reside in different locations generally have different IP subnets. The IP addresses the virtual machines use would be good for one datacenter but unreachable in another. Therefore, planning how to deal with IP address changes must be accounted for. For the most part, there are four different ways to handle changing the IP address on the virtual machine on failover. There may be others, but this document will cover the top four.
+When talking about stretch clustering, one of the considerations that must be accounted for are the virtual machines and the IP addresses being used. Datacenters that reside in different locations generally have different IP subnets. The IP addresses the virtual machines use would be good for one datacenter but unreachable in another. Therefore, planning how to deal with IP address changes must be accounted for. Usually, there are four different ways to handle changing the IP address on the virtual machine on failover. There may be others, but this article covers the top four.
 
-The first and easiest is the use of DHCP. When moving a virtual machine from one site to another, one step that it will do is request a DHCP address. This will obtain the proper IP Address for the proper site it is in as long as a DHCP server is available.
+The first and easiest is the use of DHCP. When moving a virtual machine from one site to another, the VM requests a DHCP address. This obtains the proper IP address for the site it's in as long as a DHCP server is available.
 
-Next, there is the use of a static address. However, unlike Hyper-V Replica, there is not a way to specify an alternate IP address. Therefore, a script will need to be created to assign the proper IP address for the VM depending on which site it is on. For example, SiteA uses a 1.x network and SiteB uses a 156.x network. This script would need to detect the network the virtual machine is on and set a 1.x IP address scheme if it is in SiteA or a 156.x IP address scheme if it is in SiteB. The Domain Name Services (DNS) will also need to be alerted to the change and replicated between the sites.
+Next, there is the use of a static address. However, unlike Hyper-V Replica, there is not a way to specify an alternate IP address. Therefore, a script must be created to assign the proper IP address for the VM depending on which site it is on. For example, SiteA uses a 1.x network and SiteB uses a 156.x network. This script needs to detect the network the virtual machine is on and set a 1.x IP address scheme if it is in SiteA or a 156.x IP address scheme if it is in SiteB. The Domain Name Services (DNS) also needs to be alerted to the change and replicated between the sites.
 
-Another option is the use of an intermediary network device that will provide a single IP address for the virtual machine for client connectivity which can route the traffic to the virtual machine to the site it is currently on. Clients and DNS will always have the same address for the virtual machine, and the intermediary device would need to track the actual IP address and location of the virtual machine so that clients are directed to the virtual machine appropriately.
+Another option is the use of an intermediary network device that provides a single IP address for the virtual machine for client connectivity, which can route the traffic to the virtual machine. Clients and DNS always have the same address for the virtual machine, and the intermediary device needs to track the actual IP address and location of the virtual machine so that clients are directed to the virtual machine appropriately.
 
 The last option is the use of a stretched vLAN. With a stretched vLAN, virtual machines can keep the same IP address no matter the site it is on. However, due to some of the complexities of configuring and maintaining a stretched vLAN, this option is not recommended by Microsoft.
 

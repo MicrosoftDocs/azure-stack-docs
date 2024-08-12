@@ -1,9 +1,9 @@
 ---
-title: Create deployments in AKS hybrid
-description: Learn how to create deployments in Azure Kubernetes Service (AKS).
+title: Create deployments in AKS enabled by Azure Arc
+description: Learn how to create deployments in Azure Kubernetes Service (AKS) Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 03/04/2022
 ms.reviewer: EkeleAsonye
@@ -11,19 +11,19 @@ ms.reviewer: EkeleAsonye
 # Keyword: Kubernetes deployment update deployment Kubernetes object
 ---
 
-# Create deployments in AKS hybrid
+# Create deployments
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article provides an overview of Kubernetes deployments and describes how to create and update deployments in AKS hybrid.
+This article provides an overview of Kubernetes deployments, and describes how to create and update these deployments in AKS enabled by Azure Arc.
 
 ## Kubernetes deployments overview
 
-A _deployment_ refers to a Kubernetes object that manages the performance and specifies the desired behavior of a pod. It specifies the application's life cycle, including the pods assigned to the application. It provides a way to communicate your desired state for your application, and the controller works on changing the present state into your desired state.
+A _deployment_ refers to a Kubernetes object that manages the performance and specifies the desired behavior of a pod. It specifies the application's life cycle, including the pods assigned to the application. A deployment provides a way to communicate your desired state for your application, and the controller works on changing the present state into your desired state.
 
 Deployments automate the process to launch pod instances and ensure they run as defined across all nodes within the cluster. Administrators and IT professionals use deployments to communicate what they want from an application, and then Kubernetes takes all the necessary steps to create the desired state of the application.
 
-While deployments define how your applications run, they do not guarantee where your applications are located within your cluster. For example, if your application requires an instance of a pod on every node, you'll want to use a DaemonSet. For stateful applications, a StatefulSet provides unique network identifiers, persistent storage, and ordered deployment/scaling. 
+While deployments define how your applications run, they do not guarantee where your applications are located within your cluster. For example, if your application requires an instance of a pod on every node, you want to use a DaemonSet. For stateful applications, a StatefulSet provides unique network identifiers, persistent storage, and ordered deployment/scaling.
 
 The Kubernetes deployment object lets you:
 
@@ -39,9 +39,9 @@ For more information, see [Kubernetes Deployments](https://kubernetes.io/docs/co
 
 To create a deployment, you can use the `kubectl apply` or `kubectl create` commands. Since the required number of pods is maintained and monitored, they're running and available after the deployment is created. If a pod fails, Kubernetes immediately rolls out a replica of the pod to take its place in the cluster.
 
-The following example describes the features of a deployment manifest file in YAML format.
+The following example describes the features of a deployment manifest file in YAML format:
 
-```yml
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -73,9 +73,9 @@ kubectl get deployment, replicaset, pod
 
 ## Update a deployment
 
-The main advantage of deployments is to automatically update your Kubernetes program. Without deployments, you would have to manually end all old pods, start new pod versions, and run a check to see if there are any problems when creating pods. You can run `kubectl describe deployment` to see the order in which the pods were brought up and removed.
+The main advantage of deployments is the ability to automatically update your Kubernetes program. Without deployments, you would have to manually end all old pods, start new pod versions, and run a check to see if there are any problems when creating pods. You can run `kubectl describe deployment` to see the order in which the pods were brought up and removed.
 
-Deployments automate the update process as you simply update the pod template or the desired state. The deployment alters the program state in the background with actions, such as creating new pods or allocating more resources, until the chosen update is in place.
+Deployments automate the update process, as you simply update the pod template or the desired state. The deployment alters the program state in the background with actions, such as creating new pods or allocating more resources, until the chosen update is in place.
 
 If there are problems in the deployment, Kubernetes automatically rolls back to the previous version. You can also explicitly roll back to a specific version using the `kubectl rollout undo` command, or you can use the `kubectl rollout pause` to temporarily halt a deployment.
 
@@ -89,6 +89,6 @@ Kubernetes provides several deployment strategies so you can update in various w
 
 ## Next steps
 
-- [Create pods](create-pods.md).
-- [Create a ReplicaSet](create-replicasets.md).
-- [Create a DaemonSet](create-daemonsets.md).
+- [Create pods](create-pods.md)
+- [Create a ReplicaSet](create-replicasets.md)
+- [Create a DaemonSet](create-daemonsets.md)

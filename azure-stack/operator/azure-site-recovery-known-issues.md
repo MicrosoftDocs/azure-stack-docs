@@ -1,18 +1,35 @@
 ---
-title: Known issues for Azure Site Recovery (preview)
+title: Known issues for Azure Site Recovery
 description: Learn how to troubleshoot known issues for Azure Site Recovery.
 author: ronmiab
 ms.author: robess
 ms.topic: troubleshooting
-ms.date: 06/19/2023
+ms.custom: linux-related-content
+ms.date: 06/03/2024
 ms.reviewer: rtiberiu
-ms.lastreviewed: 03/07/2023
-
+ms.lastreviewed: 04/25/2024
 ---
 
-# Known issues - Azure Site Recovery on Azure Stack Hub (preview)
+# Known issues - Azure Site Recovery on Azure Stack Hub
 
 This article describes known issues for Azure Site Recovery on Azure Stack Hub. Use the following sections for details about the current known issues and limitations in Azure Site Recovery on Azure Stack Hub.
+
+## Maximum disk size supported is 1022 GB
+
+When you protect a VM, Azure Site Recovery needs to add an additional 1 GB of data to an existing disk. Since Azure Stack Hub has a hard limitation for the maximum size of a disk at 1023 GB, the maximum size of a disk protected by Site Recovery must be equal to or less than 1022.
+
+When you try to protect a VM with a disk of 1023Gb, the following behavior occurs:
+
+- Enable protection succeeds as a seed disk of only 1 GB is created and ready for use. There is no error at this step.
+- Replication is blocked at **xx% Synchronized** and after a while, the replication health becomes **Critical** with the error **AzStackToAzStackSourceAgentDiskSourceAgentSlowResyncProgressOnPremToAzure**. The error occurs because during replication, Site Recovery tries to resize the seed disk to 1024 GB and write to it. This operation fails, as Azure Stack Hub does not support 1024 GB disks.
+
+  :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-1.png" alt-text="Screenshot of Azure portal showing maximum disk error." lightbox="media/azure-site-recovery-known-issues/max-disk-number-1.png":::
+
+- The seed disk created for this disk (in the target subscription) is still at 1 GB in size, and the **Activity log** shows a few **Write Disk** failures with the error message **The value '1024' of parameter 'disk.diskSizeGb' is out of range. Value '1024' must be between '1' and '1023' inclusive.**
+
+  :::image type="content" source="media/azure-site-recovery-known-issues/max-disk-number-2.png" alt-text="Screenshot of Azure portal showing write disk errors." lightbox="media/azure-site-recovery-known-issues/max-disk-number-2.png":::
+
+The current workaround for this issue is to create a new disk (of 1022 GB or less), attach it to your source VM, copy the data from the 1023 GB disk to the new one, and then remove the 1023 GB disk from the source VM. Once this procedure is done, and the VM has all disks smaller or equal to 1022 GB, you can enable the protection using Azure Site Recovery.
 
 ## Re-protection: available data disk slots on appliance
 
@@ -47,7 +64,6 @@ This article describes known issues for Azure Site Recovery on Azure Stack Hub. 
 
 3. For an unsupported kernel version, check for an older kernel version to which you can roll back, by running the appropriate command for your VM:
     - Debian/Ubuntu: `dpkg --list | grep linux-image`
-    - RedHat/CentOS/RHEL: `rpm -qa kernel`
 
     The following image shows an example in an Ubuntu VM on version 5.4.0-1103-azure, which is unsupported. After the command runs, you can see a supported version, 5.4.0-1077-azure, which is already installed on the VM. With this information, you can roll back to the supported version.
 
@@ -122,6 +138,12 @@ This error message should only be a warning and is not a blocking issue for the 
 
 >[!TIP]
 >You can check the the state of the respective VM to ensure it's healthy.
+
+## Deleting the appliance VM (source) blocks the deletion of the vault (target)
+
+To delete the Azure Site Recovery vault on the target, you must first remove all the protected VMs. If you delete the appliance VM first, the Site Recovery vault blocks the deletion of the protected resources and trying to delete the vault itself also fails. Deleting the resource group also fails, and the only way to remove the vault is by deleting the Azure Stack Hub user subscription in which the vault is created.
+
+To avoid this issue, make sure to first remove the protection from all items in the vault, before deleting the appliance VM. This allows the vault to complete the resource cleanup on the appliance (source side). Once the protected items are removed, you can delete the vault and remove the appliance VM.
 
 ## Next steps
 

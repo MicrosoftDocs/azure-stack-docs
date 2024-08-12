@@ -5,12 +5,12 @@ author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.date: 07/17/2023
+ms.date: 03/29/2024
 ---
 
 # Get remote support for Azure Stack HCI
 
-[!INCLUDE [hci-applies-to-22h2-21h2](../../includes/hci-applies-to-22h2-21h2.md)]
+[!INCLUDE [hci-applies-to-23h2-22h2](../../includes/hci-applies-to-23h2-22h2.md)]
 
 This article provides guidance on how to get remote support for your Azure Stack HCI operating system.
 
@@ -20,7 +20,7 @@ duration of access. Microsoft support can access your device only after a [suppo
 Once enabled, Microsoft support gets just-in-time (JIT) limited time access to your device over a secure, audited, and compliant channel. Remote support uses the HTTPS protocol over port 443. The traffic is encrypted with TLS 1.2. Operations performed are restricted based on the
 access level granted using [just enough administration](/powershell/scripting/learn/remoting/jea/overview) (JEA).
 
-:::image type="content" source="media/remote-support/remote-support-workflow.png" alt-text="Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/remote-support/remote-support-workflow.png" :::
+:::image type="content" source="media/get-remote-support/remote-support-workflow.png" alt-text="Process flow of authenticated access between customer and Microsoft support for diagnostics, troubleshooting, and remediation actions." lightbox="media/get-remote-support/remote-support-workflow.png" :::
 
 ## Why use remote support?
 
@@ -111,13 +111,13 @@ For example scenarios that show how to perform various operations to grant remot
 
 Install the Remote Support extension from the Windows Admin Center Extensions feed. Make sure that the Remote Support extension is updated to the latest version if already installed.
 
-:::image type="content" source="media/remote-support/remote-support-extension-feed.png" alt-text="Screenshot of the Extensions page that displays Remote Support as available extension." lightbox="media/remote-support/remote-support-extension-feed.png":::
+:::image type="content" source="media/get-remote-support/remote-support-extension-feed.png" alt-text="Screenshot of the Extensions page that displays Remote Support as available extension." lightbox="media/get-remote-support/remote-support-extension-feed.png":::
 
 ### Grant remote support access
 
 Before remote support is enabled, you must provide consent to authorize Microsoft support to execute diagnostic or repair commands. You must have domain admin account to complete this step. Carefully read the [remote support terms and conditions](#remote-support-terms-and-conditions) before granting access.
 
-:::image type="content" source="media/remote-support/remote-support-hci-grant-access.png" alt-text="Screenshot of grant remote support access options" lightbox="media/remote-support/remote-support-hci-grant-access.png":::
+:::image type="content" source="media/get-remote-support/remote-support-hci-grant-access.png" alt-text="Screenshot of grant remote support access options." lightbox="media/get-remote-support/remote-support-hci-grant-access.png":::
 
 ## Remote support examples
 

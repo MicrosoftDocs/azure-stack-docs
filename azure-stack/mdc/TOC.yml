@@ -467,7 +467,7 @@
   - name: Reference
     items:
     - name: Azure Stack PowerShell
-      href: /powershell/azure/azure-stack/overview
+      href: /powershell/azurestackhub/overview
   - name: Resources
     items:
     - name: Training and certification
@@ -719,7 +719,7 @@
     - name: Deploy apps
       items: 
       - name: Deploy a C# web app to a Windows VM
-        href: ../user/azure-stack-dev-start-howto-vm-dotnet.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        href: ../user/azure-stack-dev-start-howto-vm-dotnet.yml?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Deploy a web app to a Linux VM
         items:
         - name: Deploy a Linux VM for a web app
@@ -781,7 +781,7 @@
   - name: Reference
     items:
     - name: Azure Stack PowerShell
-      href: /powershell/azure/azure-stack/overview
+      href: /powershell/azurestackhub/overview
     - name: Alerts aka.ms link reference
       href: operator/aks-refer-table-tzl.md?toc=/azure-stack/mdc/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: REST API Browser

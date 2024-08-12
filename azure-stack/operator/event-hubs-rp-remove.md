@@ -8,7 +8,6 @@ ms.topic: how-to
 ms.date: 03/08/2022
 ms.reviewer: jfggdl
 ms.lastreviewed: 12/13/2021
-ms.custom: contperf-fy22q2
 ---
 
 # How to uninstall Azure Stack Hub Event Hubs resources

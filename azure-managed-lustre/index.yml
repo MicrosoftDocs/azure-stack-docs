@@ -7,32 +7,72 @@ metadata:
   title: Azure Managed Lustre File System documentation
   description: The Azure Managed Lustre File System enables you to quickly create an Azure-based Lustre file system to use in cloud-based high-performance computing jobs.
   ms.topic: landing-page
-  author: sethmanheim
-  ms.author: sethm 
-  ms.date: 02/15/2023
+  author: pauljewellmsft
+  ms.author: pauljewell 
+  ms.date: 05/14/2024
 
 landingContent:
   - title: About Azure Managed Lustre
     linkLists:
       - linkListType: overview
         links:
-          - text: What is the Azure Managed Lustre file system?
+          - text: What is Azure Managed Lustre?
             url: amlfs-overview.md
-      - linkListType: concept
-        links:
-          - text: Connect clients to an Azure Managed Lustre file system
-            url: connect-clients.md
   - title: Get started
     linkLists:
-      - linkListType: how-to-guide
+      - linkListType: concept
         links:
           - text: Prerequisites
             url: amlfs-prerequisites.md
-          - text: Create a file system using the Azure portal
+      - linkListType: how-to-guide
+        links:
+          - text: Create a file system using Azure portal
             url: create-file-system-portal.md
-  - title: Troubleshoot
+          - text: Create a file system using Azure Resource Manager
+            url: create-file-system-resource-manager.md
+          - text: Create a file system using Terraform
+            url: create-aml-file-system-terraform.md
+  - title: Integrate with data sources
+    linkLists:
+      - linkListType: concept
+        links:
+          - text: Use Azure Blob Storage with Azure Managed Lustre
+            url: blob-integration.md
+      - linkListType: how-to-guide
+        links:
+          - text: Import data using import jobs
+            url: create-import-job.md
+          - text: Export data using export jobs
+            url: export-with-archive-jobs.md
+  - title: Access a file system
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Recover from a regional outage
-            url: amlfs-region-recovery.md
+          - text: Install prebuilt Lustre client software
+            url: client-install.md
+          - text: Upgrade Lustre client software
+            url: client-upgrade.md
+          - text: Connect clients to an Azure Managed Lustre file system
+            url: connect-clients.md
+          - text: Use Azure Lustre CSI driver for Kubernetes
+            url: use-csi-driver-kubernetes.md
+  - title: Manage a file system
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Configure root squash settings
+            url: root-squash-configure-settings.md
+  - title: Security
+    linkLists:
+      - linkListType: how-to-guide
+        links:
+          - text: Configure a network security group
+            url: configure-network-security-group.md
+          - text: Use customer-managed encryption keys
+            url: customer-managed-encryption-keys.md
+  - title: Self-paced learning
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Accelerate HPC and AI workloads with Azure Managed Lustre
+            url: /training/modules/deploy-azure-managed-lustre-file-system

@@ -3,7 +3,7 @@ title: Move a generalized VM from on-premises to Azure Stack Hub
 description: Learn how to move a generalized VM from on-premises to Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 2/1/2021
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 9/8/2020
@@ -31,7 +31,6 @@ Follow the steps in [Prepare a Windows VHD or VHDX to upload to Azure](/azure/vi
 
 Follow the appropriate instructions to generalize the VHD for your Linux OS:
 
-- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=/azure/virtual-machines/linux/toc.json)
 - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
 - [Red Hat Enterprise Linux](../operator/azure-stack-redhat-create-upload-vhd.md)
 - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=/azure/virtual-machines/linux/toc.json)
@@ -42,6 +41,7 @@ Follow the appropriate instructions to generalize the VHD for your Linux OS:
 ## Verify your VHD
 
 [!INCLUDE [Verify VHD](../includes/user-compute-verify-vhd.md)]
+
 ## Upload to a storage account
 
 [!INCLUDE [Upload to a storage account](../includes/user-compute-upload-vhd.md)]

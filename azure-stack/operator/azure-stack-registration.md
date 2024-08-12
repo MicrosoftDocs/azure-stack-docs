@@ -5,12 +5,9 @@ description: Learn how to register Azure Stack Hub integrated systems with Azure
 author: sethmanheim
 
 ms.topic: how-to
-ms.date: 05/26/2021
+ms.date: 03/12/2024
 ms.author: sethm
-ms.reviewer: avishwan
-ms.lastreviewed: 11/19/2020
 ms.custom:
-  - contperf-fy21q4
   - devx-track-azurepowershell
 zone_pivot_groups: state-connected-disconnected
 
@@ -446,6 +443,7 @@ Return to the Azure Stack Hub environment with the file or text from the activat
   ```powershell
   # Open the file that contains the activation key (from Azure), copy the entire contents into your clipboard, then within your PowerShell session (that will communicate with the PEP), paste the activation key contents into a string variable, enclosed by quotation marks: 
   $ActivationKey = "<paste activation key here>"
+  $YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
 
@@ -453,6 +451,7 @@ Optionally, you can use the Get-Content cmdlet to point to a file that contains 
 
   ```powershell
   $ActivationKey = Get-Content -Path '<Path>\<Activation Key File>'
+  $YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
   New-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -ActivationKey $ActivationKey
   ```
 ::: zone-end
@@ -511,6 +510,7 @@ If you want to change the subscription you use, you must first run the **Remove-
 ```powershell
 # select the subscription used during the registration (shown in portal)
 Select-AzSubscription -Subscription '<Registration subscription ID from portal>'
+$YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
 # unregister using the parameter values from portal
 Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
 # switch to new subscription id
@@ -524,6 +524,7 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
 ```powershell
 # select the subscription used during the registration (shown in portal)
 Select-AzureRMSubscription -Subscription '<Registration subscription ID from portal>'
+$YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
 # unregister using the parameter values from portal
 Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
 # switch to new subscription id
@@ -543,6 +544,7 @@ This section applies if you want to change the billing model, how features are o
 ```powershell
 # select the subscription used during the registration
 Select-AzSubscription -Subscription '<Registration subscription ID from portal>'
+$YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
 # rerun registration with new BillingModel (or same billing model in case of re-registration) but using other parameters values from portal
 Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<New billing model>' -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
 ```
@@ -552,6 +554,7 @@ Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -Pri
 ```powershell
 # select the subscription used during the registration
 Select-AzureRMSubscription -Subscription '<Registration subscription ID from portal>'
+$YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
 # rerun registration with new BillingModel (or same billing model in case of re-registration) but using other parameters values from portal
 Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel '<New billing model>' -RegistrationName '<Registration name from portal>' -ResourceGroupName '<Registration resource group from portal>'
 ```
@@ -574,6 +577,7 @@ You first need to remove the activation resource from Azure Stack Hub, and then 
 To remove the activation resource in Azure Stack Hub, run the following PowerShell cmdlets in your Azure Stack Hub environment:
 
   ```powershell
+  $YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
@@ -626,6 +630,7 @@ Run the following PowerShell cmdlets:
 1. To change the registration token, run the following PowerShell cmdlets:
 
    ```powershell
+   $YourPrivilegedEndpoint = "<privileged_endpoint_computer_name>"
    $FilePathForRegistrationToken = $env:SystemDrive\RegistrationToken.txt
    $RegistrationToken = Get-AzsRegistrationToken -PrivilegedEndpointCredential $YourCloudAdminCredential -UsageReportingEnabled:$false -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Capacity -AgreementNumber '<EA agreement number>' -TokenOutputFilePath $FilePathForRegistrationToken
    ```

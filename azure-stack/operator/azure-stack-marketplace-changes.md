@@ -3,7 +3,7 @@ title: What's new in Azure Stack Hub Marketplace
 description: See what's new in Azure Stack Hub Marketplace, including new, deprecated, and updated marketplace items.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/02/2022
+ms.date: 06/03/2024
 ms.author: sethm
 ms.reviewer: vrajasekaran
 ms.lastreviewed: 05/28/2020
@@ -235,7 +235,6 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) - version 16.0.101000
 - 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE - LTM/DNS (BYOL, 2 Boot Locations) - version 16.0.101000
 - 02/22/2021: F5 Networks, Inc. F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations) - version 16.0.101000
-- 12/22/2020: Rogue Wave Software Centos 7.8 - version 7.8.2020062400
 - 12/07/2020: Bitnami Elasticsearch Cluster - version 1.0.2
 - 12/07/2020: Bitnami Cassandra Cluster - version 1.0.21
 - 12/07/2020: Bitnami etcd Cluster - version 1.0.16
@@ -315,14 +314,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - 10/29/2020: Windows 10 Enterprise multi-session, Version 2004-Bring your own license - version 19041.572.2010091946
 - 10/29/2020: [smalldisk] Windows Server, version 2004 with Containers-Pay as you go - version 19041.572.2010091946
 - 10/29/2020: [smalldisk] Windows Server, version 2004 with Containers-Bring your own license - version 19041.572.2010091946
-- 09/21/2020: Centos Application Connection Gateway - version 7.2.0
 - 09/09/2020: FortiGate NGFW - Single VM Deployment (BYOL) - version 1.0.2
-- 09/04/2020: CentOS-based 6.10 - version 6.10.2020042900
-- 09/04/2020: CentOS-based 7.4 - version 7.4.20200220
-- 09/04/2020: CentOS-based 7.5 - version 7.5.201808150
-- 09/04/2020: CentOS-based 7.6 - version 7.6.201909120
-- 09/04/2020: CentOS-based 7.7 - version 7.7.2020062400
-- 09/04/2020: CentOS-based 8.0 - version 8.0.201912060
 - 07/27/2020: Ubuntu Server 20.04 LTS - version 20.04.202007080
 - 07/27/2020: Ubuntu Server 16.04 LTS - version 16.04.202007080
 - 6/19/2020: Bitnami Gitlab CE - version 13.0.2006110322

@@ -4,16 +4,16 @@ description: This article describes how to renew Network Controller certificates
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 06/27/2023
+ms.date: 05/15/2024
 ---
 
 # Renew certificates for Network Controller
 
-> Applies to: Azure Stack HCI, versions 22H2 and 21H2; Windows Server 2022 and Windows Server 2019
+> Applies to: Azure Stack HCI, versions 23H2 and 22H2; Windows Server 2022 and Windows Server 2019
 
 This article provides instructions on how to renew or change Network Controller certificates, both automatically and manually. If you face any issues in renewing your Network Controller certificates, contact Microsoft Support.
 
-In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. It is highly recommended that you renew them before they expire.
+In your Software Defined Networking (SDN) infrastructure, the Network Controller uses certificate-based authentication to secure Northbound communication channels with management clients and Southbound communications with network devices, such as the Software Load Balancer. The Network Controller certificates come with a validity period, after which they become invalid and can no longer be trusted for use. We highly recommend that you renew them before they expire.
 
 For an overview of Network Controller, see [What is Network Controller?](../concepts/network-controller-overview.md)
 
@@ -117,7 +117,7 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
    Here's a sample screenshot of the warning:
 
-   :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/update-network-controller-certificates/warning-after-certificates-generate.png" :::
 
 1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
 
@@ -126,7 +126,7 @@ Perform these steps on one of the Network Controller nodes to generate self-sign
 
    Here's a sample screenshot of the PowerShell command window showing the status of ongoing operations:
   
-   :::image type="content" source="./media/network-controller-certificates/screenshot-powershell-window-status.png" alt-text="Screenshot of the PowerShell command window showing the status of ongoing operations." lightbox="./media/network-controller-certificates/screenshot-powershell-window-status.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/screenshot-powershell-window-status.png" alt-text="Screenshot of the PowerShell command window showing the status of ongoing operations." lightbox="./media/update-network-controller-certificates/screenshot-powershell-window-status.png" :::
 
 ### Renew your own certificates automatically
 
@@ -152,7 +152,7 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    Here's a sample screenshot of the warning:
 
-   :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/update-network-controller-certificates/warning-after-certificates-generate.png" :::
 
 1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
 
@@ -218,7 +218,7 @@ Perform these steps on one of the Network Controller nodes to automatically rene
 
    Here's a sample screenshot of the warning that prompts you to confirm the rotation of certificates:
 
-   :::image type="content" source="./media/network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/network-controller-certificates/warning-after-certificates-generate.png" :::
+   :::image type="content" source="./media/update-network-controller-certificates/warning-after-certificates-generate.png" alt-text="Screenshot of the warning that displays after the certificates are generated." lightbox="./media/update-network-controller-certificates/warning-after-certificates-generate.png" :::
 
 1. After you confirm to continue with the certificate rotation, you can view the status of the ongoing operations in the PowerShell command window.
 
@@ -245,7 +245,7 @@ When you update a REST certificate, you must update the management clients and n
 To renew REST certificate, complete the following steps:
 
 1. Make sure that the certificate on the Network Controller VMs isn't expired before renewing it. See [View certificate expiry](#view-certificate-expiry).
-   
+
 1. Procure the new certificate and place it in the personal store of the local machine (LocalMachine\My). If it's a self-signed certificate, place it in the Root store (LocalMachine\Root) of every Network Controller VM. For information about how to create a new certificate or issue it from a Certification Authority, see [Manage certificates for Software Defined Networking](/windows-server/networking/sdn/security/sdn-manage-certs).
 
 1. Assign the new certificate to a variable:

@@ -1,44 +1,54 @@
 ### YamlMime:Landing
 
-title: Azure Kubernetes Service (AKS) hybrid deployment options documentation
-summary: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
+summary: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Stack HCI, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
 
 metadata:
-  title: Azure Kubernetes Service (AKS) hybrid deployment options documentation
-  description: Azure Kubernetes Service (AKS) hybrid deployment options ("AKS hybrid") is an on-premises implementation of the popular Azure Kubernetes Service orchestrator, which automates running containerized applications at scale while allowing users to operate consistent cloud native applications anywhere, making it quicker to get started hosting Linux and Windows containers in your datacenter. AKS hybrid is generally available on Azure Stack HCI and on both Windows Server 2019 and 2022 Datacenter.
+  title: Azure Kubernetes Service (AKS) enabled by Azure Arc documentation
+  description: Azure Kubernetes Service (AKS), enabled by Arc, extends Azure Kubernetes Service to your on-premises environment. AKS is available on Azure Stack HCI, Windows Server, Windows IoT, and Windows 11 Enterprise/Pro.
   ms.topic: landing-page
   author: sethmanheim
   ms.author: sethm 
-  ms.date: 03/19/2020
+  ms.date: 02/15/2024
 
 landingContent:
-  - title: About AKS hybrid
+  - title: About AKS enabled by Azure Arc
     linkLists:
       - linkListType: overview
         links:
-          - text: What is AKS hybrid deployment options?
-            url: aks-hybrid-options-overview.md
-          - text: AKS hybrid cluster provisioning from Azure (preview)
-            url: aks-hybrid-preview-overview.md
+          - text: What is AKS enabled by Azure Arc?
+            url: aks-overview.md
       - linkListType: concept
         links:
-          - text: Clusters and workloads
-            url: kubernetes-concepts.md
-          - text: Networking
-            url: concepts-container-networking.md
-          - text: Quotas and resource limits
-            url: concepts-support.md        
-          - text: Pricing
-            url: pricing.md    
-  - title: Deploy on light edge hardware with AKS Edge Essentials
+          - text: Create clusters
+            url: aks-create-clusters-cli.md
+  - title: Get started with AKS on Azure Stack HCI (23H2)
     linkLists:
       - linkListType: overview
         links:
-          - text: AKS Edge Essentials overview
+          - text: What's new
+            url: aks-whats-new-23h2.md
+      - linkListType: deploy
+        links:
+          - text: Check system requirements
+            url: aks-hci-network-system-requirements.md
+      - linkListType: concept
+        links:
+          - text: Cluster architecture
+            url: cluster-architecture.md
+      - linkListType: how-to-guide
+        links:
+          - text: Create Kubernetes clusters
+            url: aks-create-clusters-cli.md
+  - title: Deploy AKS on resource-limited hardware
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Overview
             url: aks-edge-overview.md
       - linkListType: quickstart
         links:
-          - text: AKS Edge Essentials quickstart
+          - text: Quickstart
             url: aks-edge-quickstart.md
       - linkListType: concept
         links:
@@ -48,81 +58,30 @@ landingContent:
         links:
           - text: Troubleshoot
             url: aks-edge-troubleshoot-overview.md
-  - title: Get started with AKS hybrid
-    linkLists:
-      - linkListType: deploy
-        links:
-          - text: Check system requirements
-            url: system-requirements.md
-      - linkListType: quickstart
-        links:
-          - text: Deploy an AKS host and workload cluster using PowerShell
-            url: kubernetes-walkthrough-powershell.md 
-      - linkListType: quickstart
-        links: 
-          - text: Deploy an AKS host and workload cluster using Windows Admin Center
-            url: setup.md
-          - text: Create a Kubernetes cluster using Windows Admin Center
-            url: create-kubernetes-cluster.md
-  - title: Deploy Windows and Linux applications
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: Deploy .NET applications
-            url: deploy-windows-application.md
-      - linkListType: how-to-guide
-        links:
-          - text: Adapt apps for mixed-OS Kubernetes clusters
-            url: adapt-apps-mixed-os-clusters.md
-          - text: Use Active Directory single sign-in credentials
-            url: ad-sso.md
-          - text: Configure proxy settings
-            url: set-proxy-settings.md
-          - text: Configure group Managed Service Account
-            url: prepare-windows-nodes-gmsa.md
-          - text: Use persistent volumes
-            url: persistent-volume.md
-
-  - title: Upgrade 
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Use PowerShell
-            url: update-akshci-host-powershell.md
-          - text: Use Windows Admin Center
-            url: update-akshci-host-windows-admin-center.md
-
-  - title: Deploy, manage, and update applications
-    linkLists:
-      - linkListType: tutorial
-        links:
-          - text: 1. Prepare an application
-            url: tutorial-kubernetes-prepare-application.md
-          - text: 2. Create container registry
-            url: tutorial-kubernetes-prepare-azure-container-registry.md
-          - text: 3. Deploy a workload cluster
-            url: tutorial-kubernetes-deploy-cluster.md
-          - text: 4. Run an application
-            url: tutorial-kubernetes-deploy-application.md
-          - text: 5. Scale an application
-            url: tutorial-kubernetes-scale.md
-          - text: 6. Update an application
-            url: tutorial-kubernetes-app-update.md
-          - text: 7. Upgrade Kubernetes cluster
-            url: tutorial-kubernetes-upgrade-cluster.md
 
   - title: Integrate with Azure
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Connect to Azure Arc for Kubernetes
-            url: connect-to-arc.md 
-          - text: Use Kubernetes RBAC with Microsoft Entra ID
-            url: kubernetes-rbac-azure-ad.md
-          - text: Monitor AKS on Azure Stack HCI clusters
-            url: /azure/azure-monitor/containers/container-insights-enable-arc-enabled-clusters?toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+          - text: Monitor Arc-enabled Kubernetes clusters
+            url: aks-monitor-logging.md
           - text: Enforce threat protection using Azure Defender
             url: /azure/security-center/defender-for-kubernetes-azure-arc?tabs=k8s-deploy-asc%2ck8s-verify-asc%2ck8s-remove-arc&toc=%2fazure%2fazure-arc%2fkubernetes%2ftoc.json
+
+  - title: Get started with AKS enabled by Azure Arc on VMware
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is AKS enabled by Azure Arc on VMware?
+            url: aks-vmware-overview.md
+      - linkListType: quickstart
+        links:
+          - text: Deploy an AKS cluster
+            url: aks-vmware-quickstart-deploy.md
+      - linkListType: concept
+        links:
+          - text: Cluster architecture
+            url: aks-vmware-cluster-architecture.md
 
   - title: Develop and debug applications with Bridge to Kubernetes
     linkLists:
@@ -137,7 +96,9 @@ landingContent:
     linkLists:
       - linkListType: how-to-guide
         links:
-          - text: Troubleshooting overview
+          - text: Known issues in 23H2
+            url: aks-known-issues.md
+          - text: Troubleshooting overview (22H2)
             url: troubleshoot-overview.md
           - text: Connect to nodes with SSH
             url: ssh-connection.md

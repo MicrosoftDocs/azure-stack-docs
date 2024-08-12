@@ -1,9 +1,9 @@
 ---
-title: Create a ReplicaSet in AKS hybrid
-description: Learn how to create a ReplicaSet in Azure Kubernetes Service (AKS).
+title: Create a ReplicaSet in AKS enabled by Azure Arc
+description: Learn how to create a ReplicaSet in Azure Kubernetes Service (AKS) enabled by Arc.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 10/21/2022
+ms.date: 06/26/2024
 ms.author: sethm 
 ms.lastreviewed: 1/14/2022
 ms.reviewer: EkeleAsonye
@@ -11,21 +11,21 @@ ms.reviewer: EkeleAsonye
 # Keyword: ReplicaSet replica pods pod fails create ReplicaSets delete ReplicaSets
 ---
 
-# Create ReplicaSets in AKS hybrid
+# Create ReplicaSets
 
 [!INCLUDE [applies-to-azure stack-hci-and-windows-server-skus](includes/aks-hci-applies-to-skus/aks-hybrid-applies-to-azure-stack-hci-windows-server-sku.md)]
 
-This article describes how to create, scale, and delete ReplicaSets in AKS hybrid, which are used to ensure that a stable set of replica pods are running at any given time.
+This article describes how to create, scale, and delete *ReplicaSets* in AKS enabled by Azure Arc. ReplicaSets are used to ensure that a stable set of replica pods are running at any given time.
 
 ## Overview of ReplicaSets
 
-A *ReplicaSet* is a process that runs multiple instances of a pod and keeps the specified number of pods constant. It makes sure that a stable set of replica pods is running at any given time, which guarantees an available specified number of identical pods.
+A ReplicaSet is a process that runs multiple instances of a pod and keeps the specified number of pods constant. It makes sure that a stable set of replica pods is running at any given time, which guarantees an available specified number of identical pods.
 
 When a pod fails, a ReplicaSet brings up a new instance of the pod and scales up when the running instances reach a specified number. Conversely, it scales down or deletes pods when an instance with the same label is created.
 
 ## Create a ReplicaSet
 
-Use the `kubectl create` and `kubectl apply` commands to create ReplicaSets. The example below creates a ReplicaSet using a YAML file:
+Use the `kubectl create` and `kubectl apply` commands to create ReplicaSets. The following example creates a ReplicaSet using a YAML file:
 
 ```powershell
 kubectl apply –f nginx_replicaset.yaml
@@ -33,7 +33,7 @@ kubectl apply –f nginx_replicaset.yaml
 
 The features of a ReplicaSet configuration file are shown in YAML format:
 
-```yml
+```yaml
 apiVersion: apps/v1  
 kind: ReplicaSet  
 metadata: 
@@ -66,7 +66,7 @@ You can remove, but not delete, a pod that a ReplicaSet manages by changing its 
 
 ## Scale a ReplicaSet
 
-There are two ways to change the number of pods that a ReplicaSet manages. 
+There are two ways to change the number of pods that a ReplicaSet manages.
 
 - Edit the controller's configuration using the following command:
 
@@ -114,6 +114,6 @@ As with other Kubernetes objects, such as DaemonSets, you can delete ReplicaSets
 
 ## Next steps
 
-- [Create pods](create-pods.md).
-- [Create a DaemonSet](create-daemonsets.md).
-- [Create a deployment](create-deployments.md).
+- [Create pods](create-pods.md)
+- [Create a DaemonSet](create-daemonsets.md)
+- [Create a deployment](create-deployments.md)

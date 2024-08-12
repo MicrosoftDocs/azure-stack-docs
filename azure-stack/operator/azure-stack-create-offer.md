@@ -98,7 +98,7 @@ There are two ways to change the state of an offer:
     ![Select Accessibility state for your Azure Stack Hub offer](media/azure-stack-create-offer/change-stage-select-1807.png)
 
 > [!NOTE]
-> You can also use PowerShell to create default offers, plans, and quotas. For more information, see [Azure Stack Hub PowerShell Module 1.4.0](/powershell/azure/azure-stack/overview).
+> You can also use PowerShell to create default offers, plans, and quotas. For more information, see [Azure Stack Hub PowerShell Module 1.4.0](/powershell/azurestackhub/overview).
 ::: moniker-end
 
 ## Next steps
