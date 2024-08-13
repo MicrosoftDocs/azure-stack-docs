@@ -96,7 +96,7 @@ Follow these steps to install updates:
    > [!IMPORTANT]
    > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a server restarts. **Don't remove any drives or restart any servers in the cluster until you see a confirmation that the sync is complete.**
 
-1. If the cluster isn't connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster:
+1. If the cluster isn't connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster.
 
    When the cluster nodes aren't connected to Windows Update after installing the latest quality updates and the setup media is copied to a share that is accessible to the cluster nodes:
 
