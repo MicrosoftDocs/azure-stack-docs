@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Stack HCI, version 23H2
 description: Learn how to assess upgrade readiness for your Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -15,7 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article describes how to assess the upgrade readiness of your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 
-Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
+Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 
@@ -395,7 +395,7 @@ Make sure that the cluster functional level and storage pool version are up to d
 
    If an update is available, select the **AzureEdgeLifecycleManager** extension and then select **Update**.
 
-1. If the **AzureEdgeLifecycleManager** extension is not listed, install it manually using the following steps on each node:
+1. If the **AzureEdgeLifecycleManager** extension isn't listed, install it manually using the following steps on each node:
 
    ```powershell
    $ResourceGroup = "Your Resource Group Name"
@@ -409,7 +409,7 @@ Make sure that the cluster functional level and storage pool version are up to d
 
 ## Remediation 10: Check the MOC install state
 
-If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2 and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
+If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
 
 For more information, see [Uninstall-Aks-Hci for AKS enabled by Azure Arc](/azure/aks/hybrid/reference/ps/uninstall-akshci).
 

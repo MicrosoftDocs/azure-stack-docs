@@ -19,7 +19,7 @@ There are other methods to upgrade the OS that include using the Server Configur
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
-Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
+Throughout this article, we refer to Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
@@ -100,7 +100,7 @@ When all the nodes are upgraded, you can perform the post-installation steps.
 
 This method allows you to take all the servers in a cluster down at once and update the OS on all of them at the same time. This saves time during the update process, but the tradeoff is downtime for the hosted resources.
 
-If there is a critical security update <!--ASK-->that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
+If there's a critical security update <!--ASK-->that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method could be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
 
 1. Plan your maintenance window.
 1. Take the virtual disks offline.
@@ -110,7 +110,7 @@ If there is a critical security update <!--ASK-->that you need to apply quickly 
 1. Restart the servers and ensure everything looks good.
 1. Set the cluster service back to **Automatic** on each server.
 1. Start the cluster. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
-1. Give it a few minutes.  Make sure the storage pool is healthy.
+1. Give it a few minutes. Make sure the storage pool is healthy.
 1. Bring the virtual disks back online.
 1. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
 

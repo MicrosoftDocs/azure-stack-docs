@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI  to latest version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI to latest version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -13,11 +13,11 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software, via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS.
+This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software, via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS.
 
 There are other methods to upgrade the OS that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade your Azure Stack HCI to new OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade your Azure Stack HCI to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
-Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
+Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
@@ -80,7 +80,7 @@ To install new OS using PowerShell, follow these steps:
    Enable-PSRemoting
    ```
 
-1. To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which will notify you of any warnings or errors:
+1. To test whether the cluster is properly set up to apply software updates using Cluster-Aware Updating (CAU), run the `Test-CauSetup` cmdlet, which notifies you of any warnings or errors:
 
    ```PowerShell
    Test-CauSetup -ClusterName <Cluster name>
@@ -100,7 +100,7 @@ To install new OS using PowerShell, follow these steps:
 
    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case. <!--ASK-->
 
-1. You'll need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.
+1. You need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.
 
     > [!IMPORTANT]
     > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
@@ -109,9 +109,9 @@ To install new OS using PowerShell, follow these steps:
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
-1. If the cluster is not connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster.
+1. If the cluster isn't connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster.
 
-   When the cluster nodes are not connected to Windows Update after installing the latest updates and the setup media has been copied to a share that is accessible to the cluster nodes:
+   When the cluster nodes aren't connected to Windows Update after installing the latest updates and the setup media was copied to a share that is accessible to the cluster nodes:
 
    ```powershell
    Invoke-CauRun –ClusterName <ClusterName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force

@@ -3,7 +3,7 @@ title: Install solution upgrade on your Azure Stack HCI cluster
 description: Learn about how to install upgrade on your Azure Stack HCI cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -16,7 +16,7 @@ ms.subservice: azure-stack-hci
 
 This article describes how to install solution upgrade on your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 
-Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
+Throughout this article, we refer to Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
 
 ## Prerequisites
 
@@ -25,7 +25,7 @@ Before you install the solution upgrade, make sure that you:
 - Validate the cluster using the Environment Checker as per the instructions  in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).
 - Verify that latest `AzureEdgeLifecycleManager` extension on each cluster node is installed as per the instructions in [Check the Azure Arc extension](./validate-solution-upgrade-readiness.md#remediation-9-check-the-azure-arc-lifecycle-extension).
 - Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential.
-- Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses are not in use and meet the outbound connectivity requirement.
+- Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
 ## Install the solution upgrade via Azure portal
@@ -56,7 +56,7 @@ On the **Basics** tab, specify the following information:
 
 ### Validation tab
 
-On the **Validation** tab, the operation will automatically create Azure resources like the cluster and the service principal, and also configure permissions and the audit login.
+On the **Validation** tab, the operation automatically creates Azure resources like the cluster and the service principal, and also configures permissions and the audit login.
 
 1. Select **Start validation** to begin the operation. To learn more about validation, see [Validate solution upgrade readiness of your Azure Stack HCI cluster](./validate-solution-upgrade-readiness.md).
 

@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI, version 22H2 OS to version 23H2 via Windows Admi
 description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -17,7 +17,7 @@ This article describes how to upgrade the Azure Stack HCI, version 22H2 Operatin
 
 While the recommended method to [Upgrade the OS is via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via the Windows Admin Center or other methods.
 
-Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
+Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
@@ -56,7 +56,7 @@ Follow these steps to add and connect to an Azure Stack HCI server via Windows A
 
 ## Step 2: Install operating system and hardware updates using Windows Admin Center
 
-Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you've purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware wasn't purchased as an integrated system, firmware and driver updates would need to be performed separately, following the hardware vendor's recommendations.
+Windows Admin Center makes it easy to update a cluster and apply quality updates using a simple user interface. If you purchased an integrated system from a Microsoft hardware partner, it's easy to get the latest drivers, firmware, and other updates directly from Windows Admin Center by installing the appropriate partner update extension(s). ​If your hardware wasn't purchased as an integrated system, firmware and driver updates would need to be performed separately, following the hardware vendor's recommendations.
 
    > [!WARNING]
    > If you begin the update process using Windows Admin Center, continue using the wizard until updates complete. Do not attempt to use the Cluster-Aware Updating tool or update a cluster with PowerShell after partially completing the update process in Windows Admin Center. If you wish to use PowerShell to perform the updates instead of Windows Admin Center, see [Update a cluster using PowerShell](./upgrade-22h2-to-23h2-powershell.md).

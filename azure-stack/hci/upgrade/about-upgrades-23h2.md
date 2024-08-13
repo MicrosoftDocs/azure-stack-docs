@@ -3,7 +3,7 @@ title: About Azure Stack HCI Upgrade to latest version 23H2
 description: Learn about how to upgrade from Azure Stack HCI, version 22H2 to latest Azure Stack HCI, version 23H2.
 author: alkohli
 ms.topic: conceptual
-ms.date: 08/12/2024
+ms.date: 08/13/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -15,7 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article provides an overview of upgrading your existing Azure Stack HCI system from version 22H2 to version 23H2.
 
-Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
+Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
 ## About Azure Stack HCI, version 23H2
 
@@ -47,7 +47,7 @@ To upgrade your Azure Stack HCI from an old version, follow these high-level ste
 
 1. Perform post-OS upgrade tasks.
 
-1. Validate the solution upgrade readinessr.
+1. Validate the solution upgrade readiness.
 
 1. Apply the solution upgrade.
 
