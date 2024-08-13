@@ -36,7 +36,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
 2. Get all the solutions updates and then filter the solution updates corresponding to a specific version. The version used corresponds to the version of solution update that failed to install.
 
     ```powershell
-    $Update = Get-SolutionUpdate | ? version -eq "<Version string>" -verbose
+    $Update = Get-SolutionUpdate | ? Version -eq "<Version string>" -verbose
     ```
 
 3. Identify the action plan for the failed solution update run.
@@ -54,7 +54,7 @@ To collect logs for the update failures using PowerShell, follow these steps on 
     Here's a sample output:
 
     ```output
-    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate| ? version -eq "10.2303.1.7" -verbose
+    PS C:\Users\lcmuser> $Update = Get-SolutionUpdate| ? Version -eq "10.2303.1.7" -verbose
     PS C:\Users\lcmuser> $Failure = $Update|Get-SolutionUpdateRun
     PS C:\Users\lcmuser> $Failure
     
@@ -98,13 +98,13 @@ We highly recommend using the Azure portal, to browse to your failed update and 
 If you're using PowerShell and need to resume a previously failed update run, use the following command:
 
 ```powershell
-Get-SolutionUpdate | Start-SolutionUpdate
+Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate
 ```
 
 To resume a previously failed update due to update health checks in a **Warning** state, use the following command:
 
 ```powershell
-Get-SolutionUpdate | Start-SolutionUpdate -IgnoreWarnings
+Get-SolutionUpdate | ? Version -eq "10.2302.0.31" | Start-SolutionUpdate -IgnoreWarnings
 ```
 
 ## Next steps
