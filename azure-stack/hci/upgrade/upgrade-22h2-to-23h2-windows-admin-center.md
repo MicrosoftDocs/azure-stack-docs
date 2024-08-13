@@ -67,7 +67,7 @@ Follow these steps to install updates:
 
 1. If you're updating your cluster for the first time, Windows Admin Center checks if the cluster is properly configured to run Cluster-Aware Updating and, if needed, ask if you'd like Windows Admin Center to configure CAU for you, including installing the CAU cluster role and enabling the required firewall rules. To begin the update process, select **Get Started**.
 
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png" alt-text="Windows Admin Center will automatically configure the cluster to run Cluster-Aware Updating" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png":::
+   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png" alt-text="Screenshot of Windows Admin Center automatically configuring the cluster to run Cluster-Aware Updating." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/add-cau-role.png":::
 
    > [!NOTE]
    > To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, select **Yes**. Specify your username and password, and select **Continue**.
@@ -79,14 +79,14 @@ Follow these steps to install updates:
 
 1. Select **Next: Install** to proceed to install the operating system updates, or select **Skip** to exclude them.
 
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/operating-system-updates.png" alt-text="Select Next: Install to proceed to installing operating system updates, or select Skip to exclude them" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/operating-system-updates.png":::
+   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/operating-system-updates.png" alt-text="Screenshot of selecting Next: Install to proceed to installing operating system updates, or select Skip to exclude them." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/operating-system-updates.png":::
 
    > [!NOTE]
    > If you're installing updates on a cluster that has [Kernel Soft Reboot](../manage/kernel-soft-reboot.md) enabled, select **Disable Kernel Soft Reboot for this run** checkbox. This selection disables Kernel Soft Reboot as the upgrade requires a full reboot.
 
 1. Select **Install** to install the operating system updates. One by one, each server downloads and applies the updates. The update status changes to **Installing updates**. If the updates require a restart, servers are restarted one at a time, moving cluster roles such as virtual machines between servers to prevent downtime. Depending on the updates being installed, the entire update run can take anywhere from a few minutes to several hours. You would need to sign into the Windows Admin Center multiple times.
 
-   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/install-os-updates.png" alt-text="select Install to install operating system updates on each server in the cluster" lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/install-os-updates.png":::
+   :::image type="content" source="media/upgrade-22h2-to-23h2-windows-admin-center/install-os-updates.png" alt-text="Screenshot of selecting Install to install operating system updates on each server in the cluster." lightbox="media/upgrade-22h2-to-23h2-windows-admin-center/install-os-updates.png":::
 
    > [!NOTE]
    > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).

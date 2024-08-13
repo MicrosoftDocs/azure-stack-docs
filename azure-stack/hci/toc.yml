@@ -226,7 +226,7 @@ items:
   - name: Perform post-OS upgrade tasks
     href: upgrade/post-upgrade-steps.md
   - name: Install, enable Network ATC
-    href: upgrade/install-and-enable-network-atc.md
+    href: upgrade/install-enable-network-atc.md
   - name: Validate solution upgrade readiness
     href: upgrade/validate-solution-upgrade-readiness.md
   - name: Apply solution upgrade

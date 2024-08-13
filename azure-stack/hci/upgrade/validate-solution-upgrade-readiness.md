@@ -377,7 +377,7 @@ Make sure to verify that there are no volumes that exist with the name *Infrastr
 > [!NOTE]
 > Renaming the existing volume impacts the virtual machines as the mount point of the cluster shared volume changes. Additional configuration changes are required for all the virtual machines.
 
-1. To rename the existing volume, run the following PowerShell command:
+- To rename the existing volume, run the following PowerShell command:
 
    ```powershell
    Set-VirtualDisk -FriendlyName Infrastructure_1 -NewFriendlyName NewName

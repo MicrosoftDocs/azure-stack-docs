@@ -1,6 +1,6 @@
 ---
 title:  Install and enable Network ATC on an existing Azure Stack HCI, version 22H2 cluster
-description: Learn how to install and enable Network ATC on an existing Azure Stack HCI, version 22H2 cluster
+description: Learn how to install and enable Network ATC on an existing Azure Stack HCI, version 22H2 cluster.
 author: ronmiab
 ms.author: robess
 ms.topic: how-to
@@ -144,7 +144,7 @@ In this example, there are two intents that are managed across cluster nodes.
 
 In this example, there's a single intent managed across cluster nodes.
 
-1. **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
+- **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
 
     :::image type="content" source="media/install-and-enable-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with all traffic on a single intent." lightbox="media/install-and-enable-network-atc/group-all-traffic.png":::
 
