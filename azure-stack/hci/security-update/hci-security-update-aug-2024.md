@@ -9,7 +9,7 @@ ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
 ---
 
-# August 2024 OS security update (KB 5040438) for Azure Stack HCI, version 23H2
+# August 2024 OS security update (KB 5041573) for Azure Stack HCI, version 23H2
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2.md)]
 
