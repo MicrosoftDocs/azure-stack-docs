@@ -21,11 +21,11 @@ This article describes the OS security update for Azure Stack HCI, version 23H2 
 
 This security update includes quality improvements. The following key issues and features are present in this update:
 
-- **Stability of clusters on Windows Server 2022**. Servers in the same cluster shut down when you do not expect them to. This leads to high latency and network availability issues.  
+- **Stability of clusters on Windows Server 2022**. Servers in the same cluster shutdown when you don't expect them to. This leads to high latency and network availability issues.  
 
-- **Bootloader**. A race condition might stop a computer from starting. This occurs when you configure the bootloader to start many OSes.  
+- **Bootloader**. A race condition might stop a computer from starting. This occurs when you configure the bootloader to start many operating systems.  
 
-- **Autopilot**. Using it to provision Surface Laptop SE devices fails.  
+- **Autopilot**. Using Autpilot to provision Surface Laptop SE devices fails.  
 
 - **Windows Defender Application Control (WDAC)**. A memory leak occurs that might exhaust system memory as time goes by. This issue occurs when you provision a device.  
 
@@ -33,15 +33,15 @@ This security update includes quality improvements. The following key issues and
 
 - **Windows Kernel Vulnerable Driver Blocklist file (DriverSiPolicy.p7b)**. This update adds to the list of drivers that are at risk for Bring Your Own Vulnerable Driver (BYOVD) attacks.  
 
-- **NetJoinLegacyAccountReuse**. This update removes this registry key. For more information refer to [KB 5020276 Netjoin: Domain join hardening changes](https://support.microsoft.com/topic/kb5020276-netjoin-domain-join-hardening-changes-2b65a0f3-1f4c-42ef-ac0f-1caaf421baf8).
+- **NetJoinLegacyAccountReuse**. This update removes this registry key. For more information, see [KB 5020276 Net join: Domain join hardening changes](https://support.microsoft.com/topic/kb5020276-netjoin-domain-join-hardening-changes-2b65a0f3-1f4c-42ef-ac0f-1caaf421baf8).
 
 - **BitLocker (known issue)**. A [BitLocker recovery screen](/windows/security/operating-system-security/data-protection/bitlocker/recovery-overview) shows when you start up your device. This occurs after you install the July 9, 2024, update. This issue is more likely to occur if [device encryption](https://support.microsoft.com/windows/turn-on-device-encryption-0c453637-bc88-5f74-5105-741561aae838) is on. Go to **Settings > Privacy & Security > Device encryption**. To unlock your drive, Windows might ask you to enter the recovery key from your Microsoft account.
 
-- **Lock screen**. This update addresses CVE-2024-38143. Because of this, the **Use my windows user account** check box is not available on the lock screen to connect to Wi-Fi.
+- **Lock screen**. This update addresses CVE-2024-38143. As a result, the **Use my windows user account** check box isn't available on the lock screen to connect to Wi-Fi.
 
-- **Secure Boot Advanced Targeting (SBAT) and Linux Extensible Firmware Interface (EFI)**. This update applies SBAT to systems that run Windows. This stops vulnerable Linux EFI (Shim bootloaders) from running. This SBAT update will not apply to systems that dual-boot Windows and Linux. After the SBAT update is applied, older Linux ISO images might not boot. If this occurs, work with your Linux vendor to get an updated ISO image.
+- **Secure Boot Advanced Targeting (SBAT) and Linux Extensible Firmware Interface (EFI)**. This update applies SBAT to systems that run Windows and stops vulnerable Linux EFI (shim bootloaders) from running. This update doesn't apply to systems that dual-boot Windows and Linux. After the update is applied, older Linux ISO images might not boot. If this occurs, work with your Linux vendor to get an updated ISO image.
 
-- **Domain Name System (DNS)**. This update hardens DNS server security to address CVE-2024-37968. If the configurations of your domains are not up to date, you might get the SERVFAIL error or time out.
+- **Domain Name System (DNS)**. This update hardens DNS server security to address CVE-2024-37968. If the configurations of your domains aren't up to date, you might get the SERVFAIL error or a time out.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [August 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Aug).
 
