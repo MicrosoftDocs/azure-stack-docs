@@ -72,7 +72,7 @@ Follow these steps to install updates:
    > [!NOTE]
    > To use the Cluster-Aware updating tool in Windows Admin Center, you must enable Credential Security Service Provider (CredSSP) and provide explicit credentials. If you are asked if CredSSP should be enabled, select **Yes**. Specify your username and password, and select **Continue**.
 
-1. The cluster's update status is displayed. Select **Check for updates** to get a list of the operating system updates available for each server in the cluster. You might need to supply administrator credentials. If no operating system updates are available, select **Next: hardware updates** and proceed to step 8.
+1. The cluster's update status is displayed. Select **Check for updates** to get a list of the operating system updates available for each server in the cluster. You might need to supply administrator credentials. If no operating system updates are available, select **Next: Hardware updates** and proceed to step 8.
 
 
    If you navigate away from the Updates screen while an update is in progress, there could be unexpected behavior, such as the history section of the Updates page not populating correctly until the current run is finished. We recommend opening Windows Admin Center in a new browser tab or window if you wish to continue using the application while the updates are in progress.
@@ -91,7 +91,7 @@ Follow these steps to install updates:
    > [!NOTE]
    > If the updates fail with a **Couldn't install updates** or **Couldn't check for updates** warning or if one or more servers indicate **couldn't get status** during the run, wait a few minutes, and refresh your browser. You can also use `Get-CauRun` to [check the status of the update run with PowerShell](./upgrade-22h2-to-23h2-powershell.md#step-3-check-the-status-of-an-update).
 
-1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: hardware updates** to proceed to the hardware updates screen.
+1. When operating system updates are complete, the update status changes to **Succeeded**. Select **Next: Hardware updates** to proceed to the hardware updates screen.
 
    > [!IMPORTANT]
    > After applying operating system updates, you may see a message that "storage isn't complete or up-to-date, so we need to sync it with data from other servers in the cluster." This is normal after a server restarts. **Don't remove any drives or restart any servers in the cluster until you see a confirmation that the sync is complete.**
@@ -104,7 +104,7 @@ Follow these steps to install updates:
    Invoke-CauRun –ClusterName <cluster_name> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
    ```
 
-1. Windows Admin Center checks the cluster for installed extensions that support your specific server hardware. Select **Next: install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, select **Exit**.
+1. Windows Admin Center checks the cluster for installed extensions that support your specific server hardware. Select **Next: Install** to install the hardware updates on each server in the cluster. If no extensions or updates are found, select **Exit**.
 
 1. As per security best practices, disable CredSSP as soon as you're finished installing the updates:
     - In Windows Admin Center, under **All connections**, select the first server in your cluster and then select **Connect**.
