@@ -170,7 +170,7 @@ The following guide is an example of IP address allocation. You can use your own
    > If you are using an Azure VM, use the **Windows host OS (L0)** DNS server. Use the `ipconfig /all` command to get the DNS server address. Check that you're able to get internet access using your web browser. If you have no access, check the if the DNS server is correctly configured:
 
    ```powershell
-   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength $ifIndex
+   New-NetIPAddress –IPAddress "172.20.1.2" -DefaultGateway "172.20.1.1" -PrefixLength "24" -InterfaceIndex $ifIndex
    Set-DNSClientServerAddress –InterfaceIndex $ifIndex –ServerAddresses "172.20.1.1"
    ```
 

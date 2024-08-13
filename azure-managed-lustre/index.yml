@@ -70,3 +70,9 @@ landingContent:
             url: configure-network-security-group.md
           - text: Use customer-managed encryption keys
             url: customer-managed-encryption-keys.md
+  - title: Self-paced learning
+    linkLists:
+      - linkListType: learn
+        links:
+          - text: Accelerate HPC and AI workloads with Azure Managed Lustre
+            url: /training/modules/deploy-azure-managed-lustre-file-system

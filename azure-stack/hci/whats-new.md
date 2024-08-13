@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 06/26/2024
+ms.date: 07/12/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -23,13 +23,32 @@ There are currently three release trains for Azure Stack HCI, version 23H2: 2405
 
 The 2405 release train includes the following releases:
 
+## Features and improvements in 2405.2
+
+This is primarily a bug fix release with a few improvements.
+
+- Arc VM management improvements: Starting this release, followiing improvements were made to the Arc VM management experience:
+
+  - You can now view and delete VM network interfaces from the Azure portal.
+  - You can view **Connected devices** for logical networks. In the Azure portal, you can go to the logical network and then go to **Settings > Connected devices** to view the connected devices.
+  - Deletion of logical networks is blocked if connected devices are present. When you try to delete a logical network from the Azure portal that has connected devices, you'll see a warning message: *Cannot delete logical network because it is currently in use*. Delete all the resources under **Connected Devices** setting before you delete the logical network.
+  - From this release onwards, a new URL needs to be added to the allowlist for `stack-hci-vm` Azure CLI installation. The URL has changed from: `https://hciarcvmsstorage.blob.core.windows.net/cli-extension/stack_hci_vm-{version}-py3-none-any.whl` to: `https://hciarcvmsstorage.z13.web.core.windows.net/cli-extensions/stack_hci_vm-{version}-py3-none-any.whl`. For more information, see [Azure Stack HCI firewall requirements](./concepts/firewall-requirements.md).
+  
+- **Update health checks**: Starting this release, a new health check was added and the update service was improved. Additionally, the update service now supports the ability to view or start new updates when the service crashes on servers. Also, multiple issues for health checks related to Azure Update Manager and Solution Builder Extension Update were fixed.
+
+  For more information, see [Fixed issues in 2405.2](./known-issues-2405-2.md#fixed-issues).
+
+- **Azure Stack HCI OEM license**: Starting this release, we are introducing the Azure Stack HCI OEM license designed for Azure Stack HCI hardware including the Azure Stack HCI Premier Solutions, Integrated systems, and Validated Nodes. This license remains valid for the lifetime of the hardware, covers up to 16 cores, and includes three essential services for your cloud infrastructure.
+
+  For more information, see [Azure Stack HCI OEM license overview](./azure-stack-hci-oem-license.md) and [Azure Stack HCI OEM license and billing FAQ](./azure-stack-hci-license-billing.yml).
+
 ## Features and improvements in 2405.1
 
 This is primarily a bug fix release with a few improvements.
 
 - **Custom storage IPs for add and repair server scenarios**: Starting this release, it's possible to add servers or repair servers to the Azure Stack HCI cluster using custom IPs for the storage intent network adapters.
 - **Improved outbound connectivity check**: Starting this release, improvements were made to the outbound connectivity requirement validation in the environment checker.
-- **Reliabiltiy improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
+- **Reliability improvements** were made in this release for partner health checks implemented in their Solution Builder Extensions.
 - **Rotation of Arc Resource Bridge (ARB) service principal credentials**: Starting this release, you can rotate the service principal credentials used by ARB.
 - **Multiple bug fixes related to Updates** were made in this release.
 
@@ -127,7 +146,7 @@ Here are the changes related to the Azure portal, extensions, and resource provi
 
 This release includes the following updates to the security documentation:
 
-- The compliance score for Azure Stack HCI server is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](../hci/manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the non-compliant rules and the reasons for the current gap.
+- The compliance score for Azure Stack HCI server is 281 out of 288 rules even when all the hardware requirements for Secured-core are met. The [View security baseline compliance in the Azure portal](../hci/manage/manage-secure-baseline.md#view-security-baseline-compliance-in-the-azure-portal) section now explains the noncompliant rules and the reasons for the current gap.
 - The Security Baselines settings have been updated to 315 settings, including six removals, one addition, and one change related to storing passwords for network authentication due deployment compatibility issues. To view and download the complete list of security settings, see [Security Baseline](https://github.com/Azure-Samples/AzureStackHCI/blob/main/security/SecurityBaseline_2405.csv).
 - Updated the [Windows Defender Application Control](../hci/concepts/security-features.md#windows-defender-application-control) section in the [Security features for Azure Stack HCI, version 23H2](../hci/concepts/security-features.md) article.
 
