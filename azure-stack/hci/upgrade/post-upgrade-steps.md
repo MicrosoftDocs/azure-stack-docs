@@ -139,4 +139,5 @@ You're now ready to apply the solution upgrade.
 
 ## Next steps
 
+- [Optional: Install and enable Network ATC on your cluster.](./install-and-enable-network-atc.md)
 - [Learn how to assess the solution upgrade readiness.](./validate-solution-upgrade-readiness.md)
