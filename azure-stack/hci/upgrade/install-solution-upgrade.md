@@ -16,13 +16,7 @@ ms.subservice: azure-stack-hci
 
 This article describes how to install solution upgrade on your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 
-The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
-
-1. Upgrade the operating system to Azure Stack HCI, version 23H2.
-1. Validate the solution upgrade readiness of your Azure Stack HCI cluster.
-1. Install the solution upgrade on your Azure Stack HCI cluster.
-
-This article only covers the last step, which is to install the solution upgrade.
+Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
 
 ## Prerequisites
 

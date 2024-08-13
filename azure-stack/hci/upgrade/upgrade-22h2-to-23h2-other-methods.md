@@ -15,17 +15,11 @@ ms.subservice: azure-stack-hci
 
 This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software using other manual methods via Cluster Aware Updating (CAU) and [SConfig](/windows-server/administration/server-core/server-core-sconfig).
 
-The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
-
-1. Upgrade the OS.
-1. Prepare for the solution update.
-1. Apply the solution update.
-
-This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using other methods.
-
 There are other methods to upgrade the OS that include using the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU).  Cluster aware updating orchestrates the process of applying the operating system automatically to all the cluster members using either Windows Update or ISO media.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
+
+Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
@@ -106,7 +100,7 @@ When all the nodes are upgraded, you can perform the post-installation steps.
 
 This method allows you to take all the servers in a cluster down at once and update the OS on all of them at the same time. This saves time during the update process, but the tradeoff is downtime for the hosted resources.
 
-<!--ASK-->If there is a critical security update that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
+If there is a critical security update <!--ASK-->that you need to apply quickly or you need to ensure that updates complete within your maintenance window, this method may be for you. This process brings down the Azure Stack HCI cluster, updates the servers, and brings it all up again.
 
 1. Plan your maintenance window.
 1. Take the virtual disks offline.

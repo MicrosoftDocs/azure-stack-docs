@@ -13,17 +13,11 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software.
+This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2 which is the latest generally available software, via PowerShell. Upgrade using PowerShell is the recommended method to upgrade the OS.
 
-The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
+There are other methods to upgrade the OS that include using Windows Admin Center and the Server Configuration tool (SConfig). For more information about these methods, see [Upgrade your Azure Stack HCI to new OS via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md) and [Upgrade your Azure Stack HCI to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
 
-1. Upgrade the OS.
-1. Prepare for the solution update.
-1. Apply the solution update.
-
-This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using PowerShell. PowerShell is the recommended method to upgrade the OS.
-
-There are other methods to upgrade the OS that include using Windows Admin Center, the Server Configuration tool (SConfig), and Cluster-Aware Updating (CAU). For more information about these methods, see [Upgrade your Azure Stack HCI to new OS using other methods](./upgrade-22h2-to-23h2-other-methods.md).
+Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
 > [!IMPORTANT]
 > To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
@@ -39,7 +33,7 @@ To upgrade the OS on your cluster, follow these high-level steps:
 1. Check for the available updates using PowerShell.
 1. Install new OS using PowerShell.
 1. Check the status of the updates.
-1. After the OS is upgraded, perform post-installation steps.
+1. After the OS is upgraded, perform post-OS upgrade steps.
 
 ## Complete prerequisites
 

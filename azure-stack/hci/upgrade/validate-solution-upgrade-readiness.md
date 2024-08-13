@@ -15,6 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article describes how to assess the upgrade readiness of your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 
+Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
 ## Assess solution upgrade readiness
 

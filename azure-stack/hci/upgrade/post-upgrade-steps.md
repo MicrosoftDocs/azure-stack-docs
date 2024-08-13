@@ -15,6 +15,8 @@ ms.subservice: azure-stack-hci
 
 This article describes how to perform the post-OS upgrade tasks after you've upgraded the Azure Stack HCI Operating System (OS) to new version. The post-upgrade tasks described in this article are required for the stability of the cluster.
 
+Throughout this article, we'll refer Azure Stack HCI, version 23H2 as the new version and Azure Stack HCI, version 22H2 as the old version.
+
 
 ## Complete prerequisites
 

@@ -16,7 +16,7 @@ This article describes how to identify and troubleshoot common Azure Stack HCI u
 
 ## Operating system upgrade
 
-While upgrading the OS, you may encounter registration failures or network ATC intent health state issues. This section provides steps to troubleshoot these issues.
+When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encounter registration failures or network ATC intent health state issues. This section provides steps to troubleshoot these issues.
 
 ### Registration failures
 
@@ -129,7 +129,7 @@ Set-NetIntentRetryState -Name "YourIntentName"
 
 ## Solution upgrade
 
-This section describes the location of the solution upgrade and solution validation logs that can be used to troubleshoot upgrade-related issues.
+When you [Install the solution upgrade](./install-solution-upgrade.md), you may encounter issues. This section describes the location of the solution upgrade and solution validation logs that you can use to troubleshoot upgrade-related issues.
 
 ### Solution upgrade logs
 
