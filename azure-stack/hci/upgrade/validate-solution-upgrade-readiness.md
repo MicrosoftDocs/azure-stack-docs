@@ -1,9 +1,9 @@
 ---
-title: Prepare to apply solution upgrade on Azure Stack HCI, version 23H2
-description: Learn how to prepare to upgrade your Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
+title: Validate solution upgrade readiness for Azure Stack HCI, version 23H2
+description: Learn how to assess upgrade readiness for your Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/31/2024
+ms.date: 08/12/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -15,13 +15,6 @@ ms.subservice: azure-stack-hci
 
 This article describes how to assess the upgrade readiness of your Azure Stack HCI solution after the Operating System (OS) was upgraded from version 22H2 to version 23H2.
 
-The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
-
-1. Upgrade the operating system ot version 23H2.
-1. Validate solution upgrade readiness for version 23H2.
-1. Apply the solution upgrade.
-
-This article only covers the second step, which is to assess the solution upgrade readiness.
 
 ## Assess solution upgrade readiness
 
@@ -30,6 +23,7 @@ This *optional* but *recommended* step helps you assess the readiness of your Az
 - Install and use the Environment Checker to verify that Network ATC is installed and enabled on the node. Verify that there are no Preview versions for Arc Resource Bridge running on your cluster.
 - Ensure that sufficient storage space is available for infrastructure volume.
 - Perform other checks such as installation of required and optional Windows features, enablement of Application Control policies, BitLocker suspension, and OS language.
+- Review and remediate the validation checks that block the upgrade.
 
 ## Use Environment Checker to validate upgrade readiness
 
@@ -90,7 +84,7 @@ Follow these steps to set up the Environment Checker on a server node of your Az
    Install-Module -Name AzStackHci.EnvironmentChecker -allowclobber
    ```
 
-### Run the validator
+### Run the validation
 
 1. Sign in to the server where you installed the Environment Checker using local administrative credentials.
 
@@ -234,12 +228,12 @@ enable-windowsoptionalfeature -featurename $featurename -all -online
 
 ## Remediation 2: Ensure that cluster node is up
 
-Ensure that all the cluster members are up and that the cluster is *Online*. Use the Failover Cluster manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
+Ensure that all the cluster members are up and that the cluster is *Online*. Use the Failover Cluster Manager UI or the PowerShell cmdlets to confirm that all the cluster nodes are online.
 
 To verify all members of the cluster are online, run the following PowerShell command:
 
 ```powershell
-Get-CluterNode -cluster "mycluster" 
+Get-ClusterNode -cluster "mycluster" 
 ```
 
 ## Remediation 3: Suspend BitLocker
@@ -264,7 +258,7 @@ Resume-Bitlocker -MountPoint "C:"
 
 ## Remediation 4: Enable Application Control (WDAC) policies
 
-If your cluster is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you arc enable your cluster, disable the policies. After the cluster is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
+If your cluster is running WDAC policies, it could result in a conflict with the Arc enablement of the solution. Before you Arc enable your cluster, disable the policies. After the cluster is Arc enabled, you can enable WDAC using the new version 23H2 WDAC policies.
 
 To learn more about how to disable WDAC policies, see [Remove Windows Defender Application Control policies](/windows/security/application-security/application-control/windows-defender-application-control/deployment/disable-wdac-policies).
 
@@ -282,7 +276,7 @@ The required size for the infrastructure volume is 250 GB. Ensure that the stora
 
 ### Free up space in storage pool
 
-Shrinking existing volumes isn't supported with storage spaces direct. There are three alternatives to freeing up space in the storage pool:
+Shrinking existing volumes isn't supported with Storage Spaces Direct. There are three alternatives to freeing up space in the storage pool:
 
 - **Option 1**: Convert volumes from fixed to thin provisioned. Using thin provisioned volumes is also the default configuration when deploying a new cluster with the default setting.
 
@@ -352,14 +346,14 @@ Follow these steps to confirm the storage pool configuration:
 1. To convert the volume to thin provisioned, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
 
    ```powershell
-   Get-ClusterSharedVolume -Name "Cluster Disk 1" | stop-ClusterResource
-   Get-ClusterSharedVolume -Name "Cluster Disk 1" |Start-ClusterResource
+   Get-ClusterSharedVolume -Name "Cluster Disk 1" | Stop-ClusterResource
+   Get-ClusterSharedVolume -Name "Cluster Disk 1" | Start-ClusterResource
    ```
 
 1. To confirm that the actual footprint on the storage pool has changed, run the following PowerShell command:
 
    ```powershell
-   Get-storagepool -IsPrimordial $false|Get-VirtualDisk
+   Get-StoragePool -IsPrimordial $false| Get-VirtualDisk
    ```
 
    <details>
@@ -403,7 +397,7 @@ Make sure that the cluster functional level and storage pool version are up to d
 1. If the **AzureEdgeLifecycleManager** extension is not listed, install it manually using the following steps on each node:
 
    ```powershell
-   $ResourceGroup = "Your Resource Ggroup Name"
+   $ResourceGroup = "Your Resource Group Name"
    $Region = "eastus" #replace with your region
    $tenantid = "Your tenant ID"
    $SubscriptionId = "Your Subscription ID"

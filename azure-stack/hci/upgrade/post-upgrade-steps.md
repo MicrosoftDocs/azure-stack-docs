@@ -53,7 +53,7 @@ Follow these steps on your client to connect to one of the servers of your Azure
    [100.100.100.10]: PS C:\Users\Administrator\Documents>
    ```
 
-## Step 2: Verify the status of an update
+## Step 2: Verify the status of upgrade
 
 To make sure that the upgrade was complete and there is a new OS running on the cluster, run the `Get-CauRun` cmdlet:
 
@@ -84,14 +84,18 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 
 ## Step 3: Perform the post-OS upgrade steps
 
-Once the new OS is installed, you'll need to update the cluster functional level and update the storage pool version using PowerShell in order to enable new features.
+Once the new OS is installed, you'll need to upgrade the cluster functional level and upgrade the storage pool version using PowerShell in order to enable new features.
 
 > [!IMPORTANT]
-> Post-upgrade steps are essential for the stability and performance of your Azure Stack HCI cluster. Make sure to follow these steps after the OS upgrade.
+> - Post-OS upgrade steps are essential for the stability and performance of your Azure Stack HCI cluster. Make sure to follow these steps after the OS upgrade.
 
-1. Update the cluster functional level.
 
-   We recommend that you update the cluster functional level as soon as possible. Skip this step if you installed the feature updates with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
+1. Upgrade the cluster functional level.
+
+   > [!WARNING]
+   > After you upgrade the cluster functional level, you can't roll back to the previous operating system version.
+
+   We recommend that you upgrade the cluster functional level as soon as possible. Skip this step if you installed the feature upgrades with Windows Admin Center and checked the optional **Update the cluster functional level to enable new features** checkbox.
 
    1. Run the following cmdlet on any server in the cluster:
 
@@ -101,12 +105,9 @@ Once the new OS is installed, you'll need to update the cluster functional level
 
    1. You'll see a warning that you can't undo this operation. Confirm **Y** that you want to continue.
 
-       > [!WARNING]
-       > After you update the cluster functional level, you can't roll back to the previous operating system version.
+1. Upgrade the storage pool.
 
-1. Update the storage pool.
-
-   1. After the cluster functional level has been updated, use the following cmdlet to identify the `FriendlyName` of the storage pool representing your cluster.
+   1. After the cluster functional level has been upgraded, use the following cmdlet to identify the `FriendlyName` of the storage pool representing your cluster.
 
       ```PowerShell
       Get-StoragePool
@@ -114,7 +115,7 @@ Once the new OS is installed, you'll need to update the cluster functional level
 
       In this example, the `FriendlyName` is **S2D on hci-cluster1**.
 
-   1. Run the `Update-StoragePool` cmdlet to update the storage pool version.
+   1. Run the `Update-StoragePool` cmdlet to upgrade the storage pool version.
 
       ```PowerShell
        Update-StoragePool -FriendlyName "S2D on hci-cluster1"
@@ -132,8 +133,8 @@ Once the new OS is installed, you'll need to update the cluster functional level
 
        Run the `Test-Cluster` cmdlet on one of the servers in the cluster and examine the cluster validation report.
 
-You're now ready to apply the solution update.
+You're now ready to apply the solution upgrade.
 
 ## Next steps
 
-- [Learn how to prepare to apply the solution update.](./prepare-to-apply-23h2-solution-update.md)
+- [Learn how to prepare to apply the solution upgrade.](./prepare-to-apply-23h2-solution-upgrade.md)
