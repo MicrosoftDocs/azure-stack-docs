@@ -62,12 +62,37 @@ This section shows queries that you can enter in the **Log search** bar to help 
 
 ### Azure Managed Lustre alert rules
 
-The following table lists some suggested alert rules for Azure Managed Lustre. These alerts are just examples. You can set alerts for any metric, log entry, or activity log entry listed in the [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md).
+The following table lists some suggested alert rules for Azure Managed Lustre. The alerts in this table are just examples. You can set alerts for any metric, log entry, or activity log entry listed in the [Azure Managed Lustre monitoring data reference](monitor-file-system-reference.md).
 
 | Alert type | Condition | Description  |
 | --- | --- | --- |
-| | | |
-| | | |
+| Metric | (**OST Bytes Used** / **OST Bytes Total**) > 0.85 | Storage capacity usage for the file system has exceeded 85% of total|
+| Metric | (**OST Files Used** / **OST Files Total**) > 0.85 | Number of files in the file system has exceeded 85% of total |
+
+> [!NOTE]
+> The threshold value of 85% is used as an example to give a warning before the file system reaches full capacity. You can adjust the threshold based on your requirements.
+
+[!INCLUDE [horz-monitor-alerts-configure](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-alerts-configure.md)]
+
+[!INCLUDE [horz-monitor-visualize-data](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-data.md)]
+
+[!INCLUDE [horz-monitor-visualize-metrics](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-metrics.md)]
+
+[!INCLUDE [horz-monitor-visualize-logs](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-logs.md)]
+
+[!INCLUDE [horz-monitor-visualize-activity-logs](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-activity-logs.md)]
+
+[!INCLUDE [horz-monitor-visualize-external-tools](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-external-tools.md)]
+
+[!INCLUDE [horz-monitor-visualize-kusto-queries](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-kusto-queries.md)]
+
+[!INCLUDE [horz-monitor-visualize-alerts](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-alerts.md)]
+
+[!INCLUDE [horz-monitor-visualize-recommendations](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-visualize-recommendations.md)]
+
+[!INCLUDE [horz-monitor-advisor](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-advisor.md)]
+
+[!INCLUDE [horz-monitor-advisor-configure](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-advisor-configure
 
 [!INCLUDE [horz-monitor-advisor-recommendations](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-advisor-recommendations.md)]
 
