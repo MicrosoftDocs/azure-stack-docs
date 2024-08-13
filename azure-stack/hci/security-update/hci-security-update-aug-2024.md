@@ -25,7 +25,7 @@ This security update includes quality improvements. The following key issues and
 
 - **Bootloader**. A race condition might stop a computer from starting. This occurs when you configure the bootloader to start many operating systems.  
 
-- **Autopilot**. Using Autpilot to provision Surface Laptop SE devices fails.  
+- **Autopilot**. Using Autopilot to provision a Surface Laptop SE device fails.  
 
 - **Windows Defender Application Control (WDAC)**. A memory leak occurs that might exhaust system memory as time goes by. This issue occurs when you provision a device.  
 
@@ -41,13 +41,13 @@ This security update includes quality improvements. The following key issues and
 
 - **Secure Boot Advanced Targeting (SBAT) and Linux Extensible Firmware Interface (EFI)**. This update applies SBAT to systems that run Windows and stops vulnerable Linux EFI (shim bootloaders) from running. This update doesn't apply to systems that dual-boot Windows and Linux. After the update is applied, older Linux ISO images might not boot. If this occurs, work with your Linux vendor to get an updated ISO image.
 
-- **Domain Name System (DNS)**. This update hardens DNS server security to address CVE-2024-37968. If the configurations of your domains aren't up to date, you might get the SERVFAIL error or a time out.
+- **Domain Name System (DNS)**. This update hardens DNS server security to address CVE-2024-37968. If the configurations of your domains aren't up to date, you might get the SERVFAIL error or a time-out.
 
 For more information about security vulnerabilities, see the [Security Update Guide](https://msrc.microsoft.com/update-guide/) and the [August 2024 Security Updates](https://msrc.microsoft.com/update-guide/releaseNote/2024-Aug).
 
 ## Known issues
 
-Microsoft is not currently aware of any issues with this update.
+Microsoft isn't currently aware of any issues with this update.
 
 ## To install this update
 
