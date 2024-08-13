@@ -137,4 +137,4 @@ You're now ready to apply the solution upgrade.
 
 ## Next steps
 
-- [Learn how to prepare to apply the solution upgrade.](./prepare-to-apply-23h2-solution-upgrade.md)
+- [Learn how to assess the solution upgrade readiness.](./validate-solution-upgrade-readiness.md)

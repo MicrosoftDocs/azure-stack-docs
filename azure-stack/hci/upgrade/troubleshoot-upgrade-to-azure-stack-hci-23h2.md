@@ -1,18 +1,18 @@
 ---
-title: Troubleshoot upgrade to Azure Stack HCI, version 23H2
+title: Troubleshoot Azure Stack HCI upgrade
 description: Learn how to troubleshoot upgrade on your Azure Stack HCI system. 
 author: alkohli
 ms.topic: how-to
-ms.date: 08/02/2024
+ms.date: 08/12/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
 
-# Troubleshoot upgrade to Azure Stack HCI, version 23H2
+# Troubleshoot Azure Stack HCI upgrade
 
 [!INCLUDE [hci-applies-to-23h2](../../includes/hci-applies-to-23h2.md)]
 
-This article describes how to troubleshoot upgrade-related issues on your Azure Stack HCI, version 23H2 system.
+This article describes how to identify and troubleshoot common Azure Stack HCI upgrade issues.
 
 ## Operating system upgrade
 

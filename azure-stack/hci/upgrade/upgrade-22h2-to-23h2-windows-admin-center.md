@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI, version 22H2 OS to version 23H2 via Windows Admi
 description: Learn how to upgrade from Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 using Windows Admin Center.
 author: alkohli
 ms.topic: how-to
-ms.date: 07/30/2024
+ms.date: 08/12/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -15,13 +15,7 @@ ms.subservice: azure-stack-hci
 
 This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software via the Windows Admin Center.
 
-The upgrade from Azure Stack HCI 22H2 to version 23H2 occurs in the following steps:
-
-1. Upgrade the OS.
-1. Prepare for the solution update.
-1. Apply the solution update.
-
-This article only covers the first step, which is how to upgrade the Azure Stack HCI OS using the Windows Admin Center. While the recommended method to [Upgrade the OS is via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via the Windows Admin Center or other methods.
+While the recommended method to [Upgrade the OS is via PowerShell](./upgrade-22h2-to-23h2-powershell.md), you can also upgrade via the Windows Admin Center or other methods.
 
 
 > [!IMPORTANT]
@@ -80,8 +74,6 @@ Follow these steps to install updates:
 
 1. The cluster's update status is displayed. Select **Check for updates** to get a list of the operating system updates available for each server in the cluster. You might need to supply administrator credentials. If no operating system updates are available, select **Next: hardware updates** and proceed to step 8.
 
-   > [!IMPORTANT]
-   > Feature updates require additional steps. If Windows Admin Center indicates that a feature update is available for your cluster, see [Install feature updates using Windows Admin Center](#step-2-install-feature-updates-using-windows-admin-center).
 
    If you navigate away from the Updates screen while an update is in progress, there could be unexpected behavior, such as the history section of the Updates page not populating correctly until the current run is finished. We recommend opening Windows Admin Center in a new browser tab or window if you wish to continue using the application while the updates are in progress.
 

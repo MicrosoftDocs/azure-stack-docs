@@ -384,7 +384,7 @@ Make sure to verify that there are no volumes that exist with the name *Infrastr
 
 ## Remediation 8: Check the cluster functional level and storage pool version
 
-Make sure that the cluster functional level and storage pool version are up to date. For more information, see [Update the cluster functional level and storage pool version](./post-upgrade-steps.md#step-3-perform-the-post-upgrade-steps).
+Make sure that the cluster functional level and storage pool version are up to date. For more information, see [Update the cluster functional level and storage pool version](./post-upgrade-steps.md#step-3-perform-the-post-os-upgrade-steps).
 
 ## Remediation 9: Check the Azure Arc Lifecycle extension
 
