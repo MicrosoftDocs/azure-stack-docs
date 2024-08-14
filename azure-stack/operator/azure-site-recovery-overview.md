@@ -4,7 +4,7 @@ description: Azure Site Recovery on Azure Stack Hub helps ensure business contin
 author: ronmiab
 ms.author: robess
 ms.topic: overview
-ms.date: 05/07/2024
+ms.date: 08/12/2024
 ms.reviewer: rtiberiu
 ms.lastreviewed: 04/18/2024
 

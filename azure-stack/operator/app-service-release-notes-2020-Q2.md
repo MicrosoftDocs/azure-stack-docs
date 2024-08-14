@@ -1,64 +1,51 @@
 ---
 title: App Service on Azure Stack Hub 2020 Q2 release notes 
-description: Learn about what's in the 2020 Q2 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
-author: apwestgarth
-manager: stefsch
-
+description: Learn about what's newin the 2020 Q2 release for App Service on Azure Stack Hub, the known issues, and where to download the update.
+author: sethmanheim
 ms.topic: article
-ms.date: 11/17/2020
-ms.author: anwestg
+ms.date: 08/12/2024
+ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 04/30/2020
-
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
 
 ---
 
 # App Service on Azure Stack Hub 2020 Q2 release notes
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2020 Q2 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub 2020 Q2, as well as any known issues. Known issues are divided into issues directly related to the deployment, the update process, and issues with the build (post-installation).
 
 [!INCLUDE [Azure Stack Hub update reminder](../includes/app-service-hub-update-banner.md)]
 
 ## Build reference
 
-The App Service on Azure Stack Hub 2020 Q2 build number is **87.0.2.10**
+The App Service on Azure Stack Hub 2020 Q2 build number is **87.0.2.10**.
 
 ## Prerequisites
 
-Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
+See the [Before You Get Started](azure-stack-app-service-before-you-get-started.md) documentation before you begin deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack to 2020 Q2:
+Before you begin the upgrade of Azure App Service on Azure Stack Hub to 2020 Q2:
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
-
-- Backup App Service Secrets using the App Service Administration in the Azure Stack Hub Admin Portal
-
-- Back up the App Service and Master Databases:
+- Ensure all roles are **Ready** in the Azure App Service Administration in the Azure Stack Hub administrator portal.
+- Backup App Service secrets using the App Service Administration in the Azure Stack Hub administrator portal.
+- Back up the App Service and Master databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
-
 - Back up the Tenant App content file share
 
-  > [!Important]
-  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server.  The resource provider does not manage these resources.  The cloud operator is responsible for backing up the App Service databases and tenant content file share.
+  > [!IMPORTANT]
+  > Cloud operators are responsible for the maintenance and operation of the File Server and SQL Server. The resource provider does not manage these resources. The cloud operator is responsible for backing up the App Service databases and tenant content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
-
-
+- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace.
 
 ## Updates
 
 Azure App Service on Azure Stack Update Q2 includes the following improvements and fixes:
 
 - Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
-
 - Updates **Azure Functions runtime** to **v1.0.13021**.
-
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
-
 - **Updates to the following application frameworks and tools**:
   - ASP.NET Framework 4.7.2
   - ASP.NET Core 3.1.3
@@ -76,14 +63,12 @@ Azure App Service on Azure Stack Update Q2 includes the following improvements a
     - 6.12.0
     - 6.13.4
   
-- **Updates to underlying operating system of all roles**:
+- Updates to underlying operating system of all roles:
   - [2020-04 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4550929)](https://support.microsoft.com/help/4550929)
   - [2020-04 Servicing Stack Update for Windows Server 2016 for x64-based Systems (KB4550994)](https://support.microsoft.com/help/4550994)
 
-- **Cumulative Updates for Windows Server are now applied to Controller roles as part of deployment and upgrade**
-
-- **Updated default Virtual Machine and Scale set skus for new deployments**:
-To maintain consistency with our public cloud service, new deployments of Azure App Service on Azure Stack Hub will use the following SKUs for the underlying machines and scale sets used to operate the resource provider
+- Cumulative updates for Windows Server are now applied to controller roles as part of deployment and upgrade.
+- Updated default Virtual Machine and Scale set skus for new deployments: to maintain consistency with our public cloud service, new deployments of Azure App Service on Azure Stack Hub use the following SKUs for the underlying machines and scale sets used to operate the resource provider:
   
   | Role | Minimum SKU |
   | --- | --- |
@@ -96,31 +81,31 @@ To maintain consistency with our public cloud service, new deployments of Azure 
   | Medium dedicated worker | Standard_A2_v2 - (2 cores, 4096 MB) |
   | Large dedicated worker | Standard_A4_v2 - (4 cores, 8192 MB) |
 
-For ASDK deployments, you can scale the instances down to lower SKUs to reduce the core and memory commit but you will experience a performance degradation.
+For ASDK deployments, you can scale the instances down to lower SKUs to reduce the core and memory commit, but you will experience performance degradation.
 
 ## Issues fixed in this release
 
-- Upgrades will now complete if SQL Always On Cluster has failed over to secondary node
-- New deployments of Azure App Service on Azure Stack Hub no longer require databases to be manually converted to contained databases
-- Adding additional workers or infrastructure role instances will complete correctly without manual intervention
-- Adding custom worker tiers will complete correctly without manual intervention
-- Removal of custom worker tiers now completes without portal errors
-- Workers are no longer marked as ready if the local disk is out of space
-- Time out increased for retrieving the Azure Resource Manager Certificate
-- The number of messages retrieved, from server logs and displayed in the Admin Portal, is limited to stay underneath the max Azure Resource Manager Request size
-- Time out issue causing usage service startup issues
-- Resolved database deployment issue when creating Orchard CMS sites
-- Controllers are now updated with Windows Cumulative Updates as part of deployment and upgrade
-- App Service no longer locks operations when custom domain verification fails
+- Upgrades now complete if SQL Always On Cluster failed over to secondary node.
+- New deployments of Azure App Service on Azure Stack Hub no longer require databases to be manually converted to contained databases.
+- Adding additional workers or infrastructure role instances now complete correctly without manual intervention.
+- Adding custom worker tiers now complete correctly without manual intervention.
+- Removal of custom worker tiers now completes without portal errors.
+- Workers are no longer marked as ready if the local disk is out of space.
+- Time out was increased for retrieving the Azure Resource Manager certificate.
+- The number of messages retrieved from server logs and displayed in the administrator portal is limited, in order to stay below the maximum Azure Resource Manager request size.
+- Fixed timeout issue causing usage service startup issues.
+- Resolved database deployment issue when creating Orchard CMS sites.
+- Controllers are now updated with Windows Cumulative Updates as part of deployment and upgrade.
+- App Service no longer locks operations when custom domain verification fails.
 
-## Pre-Update steps
+## Pre-update steps
 
-Review the [known issues for update](#known-issues-update) and take any action prescribed.
+Review the [known issues for updates](#known-issues-update) and take any action prescribed.
 
 ## Post-deployment steps
 
 > [!IMPORTANT]
-> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you provided the App Service resource provider with a SQL Always On instance, you must [add the appservice_hosting and appservice_metering databases to an availability group](/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ## Known issues (update)
 
