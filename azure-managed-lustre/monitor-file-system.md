@@ -70,7 +70,7 @@ The following table lists some suggested alert rules for Azure Managed Lustre. T
 | Metric | (**OST Files Used** / **OST Files Total**) > 0.85 | Number of files in the file system has exceeded 85% of total |
 
 > [!NOTE]
-> The threshold value of 85% is used as an example to give a warning before the file system reaches full capacity. You can adjust the threshold based on your requirements.
+> The threshold value of 85% is used as an example to show an alert before the file system reaches full capacity. You can adjust the threshold based on your requirements.
 
 [!INCLUDE [horz-monitor-advisor-recommendations](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-advisor-recommendations.md)]
 
