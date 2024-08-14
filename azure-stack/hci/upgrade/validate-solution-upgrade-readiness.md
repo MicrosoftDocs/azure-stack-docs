@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Stack HCI, version 23H2
 description: Learn how to assess upgrade readiness for your Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/13/2024
+ms.date: 08/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci

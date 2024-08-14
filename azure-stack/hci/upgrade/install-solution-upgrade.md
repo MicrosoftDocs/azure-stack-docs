@@ -3,7 +3,7 @@ title: Install solution upgrade on your Azure Stack HCI cluster
 description: Learn about how to install upgrade on your Azure Stack HCI cluster.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/13/2024
+ms.date: 08/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
