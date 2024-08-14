@@ -1,17 +1,11 @@
 ---
 title: App Service on Azure Stack Hub 2302 release notes 
-description: Learn about what's in the 2302 release for App Service on Azure Stack Hub and where to download the update.
-author: apwestgarth
-manager: stefsch
-
+description: Learn about what's new in the 2302 release for App Service on Azure Stack Hub and where to download the update.
+author: sethm
 ms.topic: article
-ms.date: 08/17/2023
-ms.author: anwestg
-ms.reviewer: 
-ms.lastreviewed: 
-
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+ms.date: 08/12/2024
+ms.author: sethm
+ms.reviewer: anwestg
 
 ---
 

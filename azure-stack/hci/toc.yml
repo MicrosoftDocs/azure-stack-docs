@@ -211,6 +211,30 @@ items:
   - name: Troubleshoot updates
     href: update/update-troubleshooting-23h2.md
 
+- name: Upgrade 
+  items:
+  - name: About Azure Stack HCI upgrades
+    href: upgrade/about-upgrades-23h2.md
+  - name: Upgrade to version 23H2 OS
+    items: 
+    - name: Via PowerShell
+      href: upgrade/upgrade-22h2-to-23h2-powershell.md
+    - name: Via Windows Admin Center
+      href: upgrade/upgrade-22h2-to-23h2-windows-admin-center.md
+    - name: Via other methods
+      href: upgrade/upgrade-22h2-to-23h2-other-methods.md
+  - name: Perform post-OS upgrade tasks
+    href: upgrade/post-upgrade-steps.md
+  - name: Install, enable Network ATC
+    href: upgrade/install-enable-network-atc.md
+  - name: Validate solution upgrade readiness
+    href: upgrade/validate-solution-upgrade-readiness.md
+  - name: Apply solution upgrade
+    href: upgrade/install-solution-upgrade.md
+  - name: Troubleshoot upgrades
+    href: upgrade/troubleshoot-upgrade-to-azure-stack-hci-23h2.md
+
+
 - name: Manage
   items:
 
