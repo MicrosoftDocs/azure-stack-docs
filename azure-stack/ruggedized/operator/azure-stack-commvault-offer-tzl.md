@@ -34,7 +34,7 @@ Commvault supports backup and restore of the following resource types on Azure S
   - Application -- SQL, MySQL
   - For more information, see [Backup Agents](https://documentation.commvault.com/2023e/essential/application_based_backups_for_virtual_server_agent.html).
 
-You can deploy Commvault on an external machine and protect resources on Azure Stack Hub remotely. In addition, it is possible to deploy Commvault as a virtual appliance on Azure Stack Hub. Complete guidance from Commvault is available on their documentation site that covers [Azure Stack Hub](https://documentation.commvault.com/2023e/essential/azure_stack_hub.html). For reference, Commvault also publishes a [complete list of capabilities for Microsoft Azure](https://docs.metallic.io/metallic/protecting_azure_virtual_machines_with_commvault_cloud.html).
+You can deploy Commvault on an external machine and protect resources on Azure Stack Hub remotely. In addition, it is possible to deploy Commvault as a virtual appliance on Azure Stack Hub. Complete guidance from Commvault is available on their documentation site that covers [Azure Stack Hub](https://documentation.commvault.com/2023e/essential/azure_stack_hub.html). For reference, Commvault also publishes a [complete list of capabilities for Microsoft Azure](https://docs.metallic.io/metallic/index.html).
 
 ## Deploy from Azure Stack Hub Marketplace
 
