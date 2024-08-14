@@ -174,8 +174,6 @@ To obtain Azure verification for the Windows Server Azure Edition license, a mem
 Schtasks /change /TN "\Microsoft\Windows\Clip\LicenseImdsIntegration" /RU "NT Authority\System"
 ```
 
-For more information, see [flcip](https://github.com/urbans0ft/fclip) on GitHub.
-
 ## Next steps
 
 Learn more about [Azure Automanage for Windows Server](/azure/automanage/automanage-windows-server-services-overview).
