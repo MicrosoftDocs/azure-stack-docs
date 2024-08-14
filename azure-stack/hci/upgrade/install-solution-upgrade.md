@@ -31,7 +31,7 @@ Before you install the solution upgrade, make sure that you:
 - Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
-    :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on Azure Stack HCI node" lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
+    :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of subscription with permissions assigned to required roles for upgrade" lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
 
 
 ## Install the solution upgrade via Azure portal
