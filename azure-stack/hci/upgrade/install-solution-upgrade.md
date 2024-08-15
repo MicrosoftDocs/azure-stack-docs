@@ -25,13 +25,13 @@ Before you install the solution upgrade, make sure that you:
 - Validate the cluster using the Environment Checker as per the instructions  in [Assess solution upgrade readiness](./validate-solution-upgrade-readiness.md#run-the-validation).
 - Verify that latest `AzureEdgeLifecycleManager` extension on each cluster node is installed as per the instructions in [Check the Azure Arc extension](./validate-solution-upgrade-readiness.md#remediation-9-check-the-azure-arc-lifecycle-extension).
 
-    :::image type="content" source="media/install-solution-upgrade/verify-lcmextension-installed.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on Azure Stack HCI node" lightbox="./media/install-solution-upgrade/verify-lcmextension-installed.png":::
+    :::image type="content" source="media/install-solution-upgrade/verify-lcmextension-installed.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on Azure Stack HCI node." lightbox="./media/install-solution-upgrade/verify-lcmextension-installed.png":::
 
 - Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential.
 - Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
-    :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of subscription with permissions assigned to required roles for upgrade" lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
+    :::image type="content" source="media/install-solution-upgrade/verify-subscription-permissions-roles.png" alt-text="Screenshot of subscription with permissions assigned to required roles for upgrade." lightbox="./media/install-solution-upgrade/verify-subscription-permissions-roles.png":::
 
 
 ## Install the solution upgrade via Azure portal
@@ -53,7 +53,7 @@ On the **Basics** tab, specify the following information:
    1. Select **Create a new key vault**.
    1. Provide a **Name** for the new key vault. The name should be 3 to 24 characters long and contain only letters, numbers, and hyphens. Two consecutive hyphens are not allowed.
 
-   :::image type="content" source="./media/install-solution-upgrade/create-new-key-vault.png" alt-text="Screenshot of **Create key vault** page." lightbox="./media/install-solution-upgrade/create-new-key-vault.png":::
+   :::image type="content" source="./media/install-solution-upgrade/create-new-key-vault.png" alt-text="Screenshot of Create key vault page." lightbox="./media/install-solution-upgrade/create-new-key-vault.png":::
 
 1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each cluster node.
 
@@ -62,7 +62,7 @@ On the **Basics** tab, specify the following information:
 
 1. Accept default name or specify the custom location name used for Azure Arc services.
 
-1. Specify network IP address information. A total of six, conntiguous IP addresses is required, defined by an IP address range. IP addresses in the range must:
+1. Specify network IP address information. A total of six, contiguous IP addresses is required, defined by an IP address range. IP addresses in the range must:
 
    - Not be in use.
    - Meet outbound connectivity requirements.
