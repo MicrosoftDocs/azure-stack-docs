@@ -94,7 +94,7 @@ On the **Validation** tab, the operation automatically creates Azure resources l
 
     :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-1.png" alt-text="Screenshot of Upgrade Azure Stack HCI upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-progress-1.png":::
 
-1. Wait for the upgrade to cmplete. The solution upgrade process can take a few hours depending upon the number of nodes in the cluster.
+1. Wait for the upgrade to complete. The solution upgrade process can take a few hours depending upon the number of nodes in the cluster.
 
     :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-2.png" alt-text="Screenshot of Upgrade Azure Stack HCI showing a completed upgrade." lightbox="./media/install-solution-upgrade/upgrade-progress-2.png":::
 
