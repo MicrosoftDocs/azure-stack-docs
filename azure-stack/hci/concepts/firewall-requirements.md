@@ -4,7 +4,7 @@ description: This topic provides guidance on firewall requirements for the Azure
 author: alkohli
 ms.author: alkohli
 ms.topic: how-to
-ms.date: 08/08/2024
+ms.date: 08/15/2024
 ---
 
 # Firewall requirements for Azure Stack HCI
@@ -102,7 +102,7 @@ Ensure that the following firewall rules are configured in your on-premises fire
 
 | Rule | Action | Source | Destination | Service | Ports |
 |:--|:--|:--|:--|:--|:--|
-| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Cluster servers | Cluster servers | TCP | 9389 |
+| Allow inbound/outbound connectivity to the Active Directory Web services (ADWS) and Active Directory Management Gateway Service | Allow | Active Directory Services | Azure Stack HCI | TCP | 9389 |
 
 ### Failover Clustering
 
