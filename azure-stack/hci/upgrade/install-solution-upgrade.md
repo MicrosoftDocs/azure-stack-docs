@@ -84,15 +84,21 @@ On the **Validation** tab, the operation automatically creates Azure resources l
 
 ### Review + Create tab
 
-On the **Review + Create** tab, review the summary for the solution upgrade.
+1. On the **Review + Create** tab, review the summary for the solution upgrade.
 
-:::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-review-and-create-tab.png" alt-text="Screenshot of Upgrade Azure Stack HCI review and create tab." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-review-and-create-tab.png":::
+    :::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-review-and-create-tab.png" alt-text="Screenshot of Upgrade Azure Stack HCI review and create tab." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-review-and-create-tab.png":::
+
+1. Select **Review + Create** to start the upgrade process. You see a notification that the deployment is in progress.
 
 ## Monitor upgrade progress
 
-To monitor upgrade progress, select **Settings** > **Deployments**.
+1. Once the upgrade starts, you are automatically taken to **Settings > Deployment**. Refresh the screen periodically and monitor the upgrade progress.
 
-:::image type="content" source="./media/install-solution-upgrade/upgrade-22h2-to-23h2-upgrade-progress.png" alt-text="Screenshot of Upgrade Azure Stack HCI upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-22h2-to-23h2-upgrade-progress.png":::
+    :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-1.png" alt-text="Screenshot of Upgrade Azure Stack HCI upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-progress-1.png":::
+
+1. Wait for the upgrade to cmplete. The solution upgrade process can take a few hours depending upon the number of nodes in the cluster.
+
+    :::image type="content" source="./media/install-solution-upgrade/upgrade-progress-2.png" alt-text="Screenshot of Upgrade Azure Stack HCI upgrade progress." lightbox="./media/install-solution-upgrade/upgrade-progress-2.png":::
 
 > [!NOTE]
 > If the upgrade fails, restart the upgrade operation to try again.
