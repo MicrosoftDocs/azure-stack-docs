@@ -27,7 +27,7 @@ Before you install the solution upgrade, make sure that you:
 
     :::image type="content" source="media/install-solution-upgrade/verify-lcmextension-installed.png" alt-text="Screenshot of Extensions page showing AzureEdgeLifeCycleManager extension install on Azure Stack HCI node." lightbox="./media/install-solution-upgrade/verify-lcmextension-installed.png":::
 
-- Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential.
+- Have an Active Directory user credential that's a member of the local Administrator group. Work with your Active Directory administrator to obtain this credential using the steps provided in [Prepare Active Directory for Azure Stack HCI, version 23H2 deployment](../deploy/deployment-prep-active-directory).  
 - Have IPv4 network range with six, contiguous IP addresses available for new Azure Arc services. Work with your network administrator to ensure that the IP addresses aren't in use and meet the outbound connectivity requirement.
 - Have Azure subscription permissions for [Azure Stack HCI Administrator and Reader](../manage/assign-vm-rbac-roles.md#about-builtin-rbac-roles).  
 
@@ -55,7 +55,7 @@ On the **Basics** tab, specify the following information:
 
    :::image type="content" source="./media/install-solution-upgrade/create-new-key-vault.png" alt-text="Screenshot of Create key vault page." lightbox="./media/install-solution-upgrade/create-new-key-vault.png":::
 
-1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each cluster node.
+1. Specify the deployment account credential. This credential is from your Active Directory for a principal that is a member of the local Administrator group on each cluster node.  Steps for creating this deployment account are provided in [Prepare Active Directory for Azure Stack HCI, version 23H2 deployment](../deploy/deployment-prep-active-directory)
 
    > [!NOTE]
    > The user can't be Administrator and can't use format `domain\username`.
