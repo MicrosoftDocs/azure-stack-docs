@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Azure Managed Lustre
 description: This article contains important reference material you need when you monitor Azure Managed Lustre.
-ms.date: 08/12/2024
+ms.date: 08/15/2024
 ms.custom: horz-monitor
 ms.topic: reference
 author: pauljewellmsft
@@ -26,7 +26,7 @@ The following table lists the metrics available for the Microsoft.StorageCache/a
 [!INCLUDE [Microsoft.StorageCache/amlFilesystems](~/../azure-reference-other-repo/azure-monitor-ref/supported-metrics/includes/microsoft-storagecache-amlfilesystems-metrics-include.md)]
 
 > [!NOTE]
-> The metric `OSTBytesUsed` represents the total capacity consumed on the file system, including all metadata and overhead associated with the files. The value for `OSTBytesUsed` might be greater than the result of running `lfs df` on the file system, as `df` output for **Used** only attempts to capture the data the end user has placed on the file system.
+> The metric `OSTBytesUsed` represents the total capacity consumed on the file system, including all metadata and overhead associated with the files. The value for `OSTBytesUsed` might be greater than the result of running `lfs df` on the file system, as `df` output for **Used** only attempts to capture the data that the end user has placed on the file system.
 
 [!INCLUDE [horz-monitor-ref-metrics-dimensions-intro](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-metrics-dimensions-intro.md)]
 
@@ -54,7 +54,7 @@ This section lists the Azure Monitor Logs tables relevant to this service, which
 
 [!INCLUDE [horz-monitor-ref-activity-log](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
 
-- [Microsoft.StorageCache permissions](/azure/role-based-access-control/permissions/storage#microsoftstoragecache)
+- [Microsoft.StorageCache permissions](/azure/role-based-access-control/permissions/storage#microsoftstoragecache): Actions that apply to Azure Managed Lustre begin with `Microsoft.StorageCache/amlFilesystems`.
 
 ## Related content
 

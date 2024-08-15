@@ -1,7 +1,7 @@
 ---
 title: Monitor Azure Managed Lustre
 description: Start here to learn how to monitor Azure Managed Lustre.
-ms.date: 08/12/2024
+ms.date: 08/15/2024
 ms.custom: horz-monitor
 ms.topic: conceptual
 author: pauljewellmsft
