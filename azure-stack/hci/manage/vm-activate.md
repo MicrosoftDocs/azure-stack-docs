@@ -4,7 +4,7 @@ description: This article explains the benefits of using Automatic Virtual Machi
 author: sethmanheim
 ms.author: sethm
 ms.topic: how-to
-ms.date: 06/03/2024
+ms.date: 08/15/2024
 ---
 
 # License Windows Server VMs on Azure Stack HCI
@@ -22,21 +22,21 @@ The following figure shows the different Windows Server VM licensing options:
 First, choose one of two licensing options:
 
 - **Windows Server subscription**: Subscribe to Windows Server guest licenses through Azure. Available for Azure Stack HCI only.
-- **Bring your own license (BYOL)**: Apply your existing Windows Server licenses.
+- [**Azure Hybrid Benefit (AHB)**](/windows-server/get-started/azure-hybrid-benefit): Use qualifying on-premises licenses to get Windows virtual machines (VMs) on Azure at a reduced cost.
 
 For more information, see [Compare licensing options](#compare-licensing-options).
 
 Next, activate your Windows Server VMs:
 
 - If you're using Windows Server subscription, AVMA is automatically enabled on the host. You can immediately activate VMs against the cluster using generic AVMA client keys.
-- If you're using BYOL, you must use the corresponding keys associated with your license and apply them using your chosen activation method. One of the most convenient ways is to use *Automatic VM Activation* (AVMA).
+- If you're using AHB, you must use the corresponding keys associated with your license and apply them using your chosen activation method. One of the most convenient ways is to use *Automatic VM Activation* (AVMA).
 - To use other methods to activate VMs, see [Key Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
 
 ## Compare licensing options
 
 Choose the licensing option that best suits your needs:
 
-| Question | Windows Server subscription | Bring your own license (BYOL) |
+| Question | Windows Server subscription | Azure Hybrid Benefit (AHB) |
 |--|--|--|
 | Where do I want to deploy my Windows Server (WS) VMs? | Azure Stack HCI only. | Can be applied anywhere. |
 | What versions of WS VMs do you want to use? | Evergreen – all versions up to the latest version. | Version-specific. |
@@ -159,7 +159,7 @@ Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to config
 
 Now that AVMA is enabled through Windows Server subscription, you can activate VMs against the host server by following the steps in [Automatic Virtual Machine Activation in Windows Server](/windows-server/get-started/automatic-vm-activation).
 
-## Activate bring your own license (BYOL) through AVMA
+## Activate Azure Hybrid Benefit (AHB) through AVMA
 
 You can use any existing method to activate VMs on Azure Stack HCI. Optionally, you can use AVMA, which enables activated host servers to automatically activate VMs running on them. For more information, see [AVMA in Windows Server](/windows-server/get-started/automatic-vm-activation).
 
@@ -261,7 +261,7 @@ Open PowerShell as an administrator, and run the following commands:
 
 1. Repeat these steps on each of the other servers in your Azure Stack HCI cluster.
 
-Now that you have set up AVMA through BYOL, you can activate VMs against the host server by [following the steps here](/windows-server/get-started/automatic-vm-activation).
+Now that you have set up AVMA through AHB, you can activate VMs against the host server by [following the steps here](/windows-server/get-started/automatic-vm-activation).
 
 ---
 
@@ -297,14 +297,14 @@ This section provides answers to some frequently asked questions (FAQs) about li
 
 ### Will my Windows Server Datacenter Azure Edition guests activate on Azure Stack HCI?
 
-Yes, but you must use either Windows Server subscription-based AVMA, or else bring Windows Server Datacenter keys with **Software Assurance**. For BYOL, you can use either:
+Yes, but you must use either Windows Server subscription-based AVMA, or else bring Windows Server Datacenter keys with **Software Assurance**. For AHB, you can use either:
 
 - [AVMA client keys](/windows-server/get-started/automatic-vm-activation#avma-keys)
 - [KMS client keys](/windows-server/get-started/kms-client-activation-keys#generic-volume-license-keys-gvlk)
 
 ### Do I still need Windows Server CALs?
 
-Yes, you still need Windows Server CALs for BYOL, but not for Windows Server subscription.
+Yes, you still need Windows Server CALs for AHB, but not for Windows Server subscription.
 
 ### Do I need to be connected to the internet?
 
@@ -315,7 +315,7 @@ You do need internet connectivity:
 
 You don't need internet connectivity:
 
-- For VMs to activate via Windows Server subscription or BYOL-based AVMA. For connectivity requirements for other forms of activation, see the [Windows Server documentation](/windows-server/get-started/kms-activation-planning).
+- For VMs to activate via Windows Server subscription or AHB-based AVMA. For connectivity requirements for other forms of activation, see the [Windows Server documentation](/windows-server/get-started/kms-activation-planning).
 
 ### When does Windows Server subscription start/end billing?
 
@@ -327,7 +327,7 @@ You can sign up or cancel your Windows Server subscription at any time. Upon can
 
 Yes. Although you can't use Windows Server 2016 keys to set up AVMA on Azure Stack HCI, they can still be applied using [other activation methods](/windows-server/get-started/kms-activation-planning). For example, you can enter a Windows Server 2016 key into your Windows Server 2016 VM directly.
 
-### Where can I get BYOL keys for AVMA?
+### Where can I get AHB keys for AVMA?
 
 To get a product key, choose from the following options:
 
