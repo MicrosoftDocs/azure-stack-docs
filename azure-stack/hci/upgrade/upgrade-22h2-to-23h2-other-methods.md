@@ -13,9 +13,7 @@ ms.subservice: azure-stack-hci
 
 [!INCLUDE [applies-to](../../includes/hci-applies-to-23h2-22h2.md)]
 
-This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software using other manual methods via Cluster Aware Updating (CAU) and [SConfig](/windows-server/administration/server-core/server-core-sconfig).
-
-There are other methods to upgrade the OS that include using the Server Configuration tool (SConfig), and Cluster Aware Updating (CAU).  Cluster aware updating orchestrates the process of applying the operating system automatically to all the cluster members using either Windows Update or ISO media.
+This article describes how to upgrade the Azure Stack HCI, version 22H2 Operating System (OS) to version 23H2, which is the latest generally available software, using manual methods such as [SConfig](/windows-server/administration/server-core/server-core-sconfig) and performing an offline upgrade.
 
 While you can use these other methods, PowerShell is the recommended method to upgrade the OS. For more information, see [Upgrade the Azure Stack HCI, version 22H2 OS to Azure Stack HCI, version 23H2 OS via PowerShell](./upgrade-22h2-to-23h2-powershell.md).
 
@@ -36,7 +34,7 @@ To upgrade the OS on your cluster, follow these high-level steps:
    1. [Manual upgrade of a Failover Cluster using SConfig.](#method-1-perform-a-manual-os-update-of-a-failover-cluster-using-sconfig)
    1. [Offline manual upgrade of all servers in a cluster.](#method-2-perform-a-fast-offline-os-update-of-all-servers-in-a-cluster)
 1. Check the status of the updates.
-1. Perform post-upgrade steps, after the OS is upgraded.
+1. [Perform post-upgrade steps, after the OS is upgraded.](#next-steps)
 
 
 ## Complete prerequisites
@@ -53,7 +51,10 @@ Before you begin, make sure that:
 
 Follow these steps on your client to connect to one of the servers of your Azure Stack HCI cluster.
 
-1. Run PowerShell as administrator on the client that you're using to connect to your cluster.
+> [!IMPORTANT]
+> To perform a manual upgrade using SConfig, you must log in directly to the cluster nodes.  You can use remote PowerShell to control cluster actions, or you can run the commands directly from each node when performing the update.
+
+1. Run PowerShell as Administrator on the client that you're using to connect to your cluster.
 2. Open a remote PowerShell session to a server on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
 
    ```powershell
@@ -105,12 +106,22 @@ If there's a critical security update <!--ASK-->that you need to apply quickly o
 1. Plan your maintenance window.
 1. Take the virtual disks offline.
 1. Stop the cluster to take the storage pool offline. Run the `Stop-Cluster` cmdlet or use Windows Admin Center to stop the cluster.
-1. Set the cluster service to **Disabled** in *Services.msc* on each server. This prevents the cluster service from starting up while being updated.
+1. Set the cluster service to **Disabled** by running the PowerShell command below on each server. This prevents the cluster service from starting up while being updated.
+
+   ```
+   Set-Service -Name clussvc -StartupType Disabled
+   ```
+   
 1. <!--ASK-->Apply the Windows Server Cumulative Update and any required Servicing Stack Updates to all servers. You can update all servers at the same time: there's no need to wait because the cluster is down.
 1. Restart the servers and ensure everything looks good.
-1. Set the cluster service back to **Automatic** on each server.
+1. Set the cluster service back to **Automatic** by running the PowerShell command below on each server.
+
+   ```
+   Set-Service -Name clussvc -StartupType Automatic
+   ```
+   
 1. Start the cluster. Run the `Start-Cluster` cmdlet or use Windows Admin Center.  
-1. Give it a few minutes. Make sure the storage pool is healthy.
+1. Give it a few minutes. Make sure the storage pool is healthy.  Run `Get-StorageJob` to ensure all jobs complete successfully.
 1. Bring the virtual disks back online.
 1. Monitor the status of the virtual disks by running the `Get-Volume` and `Get-VirtualDisk` cmdlets.
 
