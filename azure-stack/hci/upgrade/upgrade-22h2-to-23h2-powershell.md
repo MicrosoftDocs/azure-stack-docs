@@ -20,7 +20,7 @@ There are other methods to upgrade the OS that include using Windows Admin Cente
 Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* version and Azure Stack HCI, version 22H2 as the *old* version.
 
 > [!IMPORTANT]
-> To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all the Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
+> To keep your Azure Stack HCI service in a supported state, you have up to six months to install this new OS version. The update is applicable to all Azure Stack HCI, version 22H2 clusters. We strongly recommend that you install this version as soon as it becomes available.
 
 ## High-level workflow for the OS upgrade
 
@@ -28,12 +28,12 @@ The Azure Stack HCI operating system update is available via the Windows Update 
 
 To upgrade the OS on your cluster, follow these high-level steps:
 
-1. Complete the prerequisites including downloading the Azure Stack HCI, version 23H2 OS software update.
-1. Connect to the Azure Stack HCI, version 22H2 cluster.
-1. Check for the available updates using PowerShell.
-1. Install new OS using PowerShell.
-1. Check the status of the updates.
-1. After the OS is upgraded, perform post-OS upgrade steps.
+1. [Complete the prerequisites.](#complete-prerequisites)
+1. [Connect to the Azure Stack HCI, version 22H2 cluster.](#step-1-connect-to-the-azure-stack-hci-cluster)
+1. [Check for the available updates using PowerShell.](#step-1-connect-to-the-azure-stack-hci-cluster)
+1. [Install new OS using PowerShell.](#step-2-install-new-os-using-powershell)
+1. [Check the status of the updates.](#step-3-check-the-status-of-an-update)
+1. [After the OS is upgraded, perform post-OS upgrade steps.](#next-steps)
 
 ## Complete prerequisites
 
@@ -45,11 +45,14 @@ Before you begin, make sure that:
 - You have access to the Azure Stack HCI, version 23H2 OS software update. This update is available via Windows Update or as a downloadable media. The media is an ISO file that you can download from the [Azure portal](https://portal.azure.com/#view/Microsoft_Azure_HybridCompute/AzureArcCenterBlade/~/hciGetStarted).
 - You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
 
+> [!NOTE]
+> The ISO file is only required if the cluster nodes do not have access to Windows Update to download the OS feature update.  If using this method, after [connecting to the Azure Stack HCI, version 22H2 cluster](#step-1-connect-to-the-azure-stack-hci-cluster), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) then perform the remaining steps.
+
 ## Step 1: Connect to the Azure Stack HCI cluster
 
 Follow these steps on your client to connect to one of the servers of your Azure Stack HCI cluster.
 
-1. Run PowerShell as administrator on the client that you're using to connect to your cluster.
+1. Run PowerShell as Administrator on the client that you're using to connect to your cluster.
 1. Open a remote PowerShell session to a server on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
 
    ```powershell
@@ -72,6 +75,9 @@ Follow these steps on your client to connect to one of the servers of your Azure
 ## Step 2: Install new OS using PowerShell
 
 To install new OS using PowerShell, follow these steps:
+
+> [!NOTE]
+> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the cluster.  If you need information on how to install and enable this feature on your Azure Stack HCI cluster, see [Cluster-Aware Updating overview](https://learn.microsoft.com/en-us/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
 
 1. Run the following cmdlets on every server in the cluster: <!--ASK-->
 
@@ -100,7 +106,7 @@ To install new OS using PowerShell, follow these steps:
 
    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case. <!--ASK-->
 
-1. You need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.
+1. You need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.  This is to ensure orchestration is not interrupted when the nodes are rebooted.
 
     > [!IMPORTANT]
     > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
@@ -109,9 +115,7 @@ To install new OS using PowerShell, follow these steps:
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
-1. If the cluster isn't connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster.
-
-   When the cluster nodes aren't connected to Windows Update after installing the latest updates and the setup media was copied to a share that is accessible to the cluster nodes:
+1. If the cluster isn't connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster.  Be sure to update the `'PathToSetupMedia'` parameter with the share path to the ISO image.
 
    ```powershell
    Invoke-CauRun –ClusterName <ClusterName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
