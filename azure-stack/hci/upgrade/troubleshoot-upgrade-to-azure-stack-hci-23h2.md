@@ -16,14 +16,14 @@ This article describes how to identify and troubleshoot common Azure Stack HCI u
 
 ## Operating system upgrade
 
-When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encounter registration failures or network ATC intent health state issues. This section provides steps to troubleshoot these issues.
+When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encounter registration failures or Network ATC intent health state issues. This section provides steps to troubleshoot these issues.
 
 ### Registration failures
 
 Run the following PowerShell command to verify that the cluster is registered with Azure:
 
-```powershell
-PS C:\> Get-AzureStackHci
+```PowerShell
+PS C:\> Get-AzureStackHCI
 ```
 
 Here's a sample output:
@@ -33,7 +33,7 @@ ClusterStatus : Clustered
 RegistrationStatus : Registered
 RegistrationDate : 8/1/2024 9:15:12 AM
 AzureResourceName : Redmond
-AzureResourceUri : /Subscriptions/<Subscription I>/resourceGroups/Redmond/providers/Microsoft.AzureStackHCI/clusters/Redmond
+AzureResourceUri : /Subscriptions/<Subscription ID>/resourceGroups/Redmond/providers/Microsoft.AzureStackHCI/clusters/Redmond
 ConnectionStatus : Connected
 LastConnected : 8/1/2024 11:30:42 AM
 NextSync :
@@ -48,8 +48,8 @@ If `RegistrationStatus` is **Not registered**, follow troubleshooting steps in [
 
 Run the following PowerShell command to verify Network ATC intent health state:
 
-```powershell
-PS C:\> Get-netintentstatus
+```PowerShell
+PS C:\> Get-NetIntentStatus
 ```
 
 Here's a sample output:
@@ -71,11 +71,14 @@ ConfigurationStatus : Success
 ProvisioningStatus : Completed
 ```
 
-If the `ConfigurationStatus` isn't healthy, verify that the VM network adapter name is the same as the network adapter name.
+If the `ConfigurationStatus` isn't healthy, verify the following:
+
+- The VM network adapter name is the same as the network adapter name.  Both adapters must be named `vManagement(IntentName)` where `IntentName` matches the name of the management intent.
+- The virtual switch was renamed on each node.
 
 Run the following PowerShell commands to verify that the network adapter name for `vManagement` matches the VM network adapter name:
 
-```powershell
+```PowerShell
 PS C:\> Get-NetAdapter
 ```
 
@@ -97,7 +100,7 @@ vManagement(converged)    Hyper-V Virtual Ethernet Adapter             14 Up    
 vSMB(converged#Embedde... Hyper-V Virtual Ethernet Adapter #3          24 Up           00-15-5D-20-40-03        25 Gbps 
 ```
 
-```powershell
+```PowerShell
 PS C:\> Get-VmNetworkAdapter -ManagementOS 
 ```
 
@@ -117,15 +120,26 @@ vSMB(converged#Embedded FlexibleLOM 1 Port 2) True                  ConvergedSwi
 
 Both names must match. If names don't match, run the following PowerShell command to rename the network adapter:
 
-```powershell
-Rename-netadapter -Name "badname" -NewName "VMNetworkadapterName"
+```PowerShell
+Rename-NetAdapter -Name "badname" -NewName "VMNetworkadapterName"
+```
+
+Run the following PowerShell command to verify that the virtual switch is named correctly.  The virtual switch must be named `ConvergedSwitch(IntentName)` where `IntentName` matches the name of the corresponding intent.
+
+```PowerShell
+Get-VMSwitch
 ```
 
 Run the following PowerShell command to force a network ATC intent update:
 
-```powershell
-Set-NetIntentRetryState -Name "YourIntentName"
+```PowerShell
+Set-NetIntentRetryState -Name "YourIntentName" -NodeName "NodeName"
 ```
+
+> [!NOTE]
+> You must run the `Set-NetIntentRetryState` command once for each node and intent.
+
+If the names above match correctly and the intent remains in a `Failed` state, you can review the Microsoft-Windows-Networking-NetworkATC/Admin event logs for more details on why the intent failed.
 
 ## Solution upgrade
 
