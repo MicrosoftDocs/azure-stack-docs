@@ -54,7 +54,7 @@ This section lists the Azure Monitor Logs tables relevant to this service, which
 
 [!INCLUDE [horz-monitor-ref-activity-log](~/../azure-stack/reusable-content/ce-skilling/azure/includes/azure-monitor/horizontals/horz-monitor-ref-activity-log.md)]
 
-- [Microsoft.StorageCache permissions](/azure/role-based-access-control/permissions/storage#microsoftstoragecache): Actions that apply to Azure Managed Lustre begin with `Microsoft.StorageCache/amlFilesystems`.
+- [Microsoft.StorageCache permissions](/azure/role-based-access-control/permissions/storage#microsoftstoragecache)
 
 ## Related content
 
