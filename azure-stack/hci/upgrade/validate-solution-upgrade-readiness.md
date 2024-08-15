@@ -3,7 +3,7 @@ title: Validate solution upgrade readiness for Azure Stack HCI, version 23H2
 description: Learn how to assess upgrade readiness for your Azure Stack HCI, version 23H2 that already had its operating system upgraded from Azure Stack HCI, version 22H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/13/2024
+ms.date: 08/14/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -267,7 +267,7 @@ To learn more about how to disable WDAC policies, see [Remove Windows Defender A
 
 Only clusters installed using an English language are eligible to apply the solution upgrade. Make sure that your cluster was installed using English.
 
-For more information, see [Verify OS language for Azure Stack HCI](../index.yml).
+For more information, see [Verify OS language for Azure Stack HCI](../manage/languages.md#change-the-language-in-server-core).
 
 ## Remediation 6: Check storage pool space
 
