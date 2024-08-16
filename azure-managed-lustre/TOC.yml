@@ -44,6 +44,12 @@
       href: configure-network-security-group.md
     - name: Use customer-managed encryption keys
       href: customer-managed-encryption-keys.md
+- name: Monitoring metrics and logs
+  items:
+    - name: Monitor a file system
+      href: monitor-file-system.md
+    - name: Monitoring reference for metrics and logs
+      href: monitor-file-system-reference.md
 - name: Availability and disaster recovery
   items:
   - name: Recover from a regional outage
