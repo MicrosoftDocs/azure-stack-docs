@@ -16,12 +16,12 @@ ms.lastreviewed: 08/15/2024
 
 ## Overview
 
-If you use AKS on Azure Stack HCI and Windows Server to run Kubernetes workloads on-premises, you might encounter some challenges with the current architecture. For example, you might notice that multiple virtual machines (VMs) within the same node pool can end up on the same physical host, which is not ideal for high availability. Or, you might have experienced that VMs do not rebalance across physical hosts when a host recovers from an issue, resulting in uneven distribution of workloads. These issues can affect the performance and reliability of your applications, causing unnecessary disruption in your business operations.
+If you use AKS on Azure Stack HCI and Windows Server to run Kubernetes workloads on-premises, you might encounter some challenges with the current architecture. For example, you might notice that multiple virtual machines (VMs) within the same node pool can end up on the same physical host, which is not ideal for high availability. Or, you might see that VMs do not rebalance across physical hosts when a host recovers from an issue, resulting in uneven distribution of workloads. These issues can affect the performance and reliability of your applications, causing unnecessary disruption in your business operations.
 
 Availability sets offer several benefits for AKS on Azure Stack HCI and Windows Server users, such as:
 
 - Improving the availability and resilience of your applications by avoiding scenarios in which multiple VMs within the same node pool or control plane go down or become unbalanced due to a single node failure.
-- Optimizing the resource utilization and performance of your cluster by ensuring that VMs are evenly distributed across the available nodes and not concentrated on a single node or a subset of nodes.
+- Optimizing the resource usage and performance of your cluster by ensuring that VMs are evenly distributed across the available nodes and not concentrated on a single node or a subset of nodes.
 - Aligning with the best practices and expectations of your customers and partners who are looking for a reliable and consistent Kubernetes experience on-premises.
 
 ## Enable availability sets
@@ -36,11 +36,11 @@ New-AksHciCluster -Name <name> -controlPlaneNodeCount 3 -osType Linux -kubernete
 
 ## How availability sets work in AKS enabled by Azure Arc
 
-When you create a new AKS Arc cluster, we automatically create availability sets, one for the control plane VMs and another for each of the node pools in the cluster (each node pool has its own availability set). By defining this layout, we ensure that VMs of the same role (control plane or node pool) are never co-located on the same physical host and that they are distributed across the available nodes in a cluster.
+When you create a new AKS Arc cluster, we automatically create availability sets, one for the control plane VMs and another for each of the node pools in the cluster (each node pool has its own availability set). By defining this layout, we ensure that VMs of the same role (control plane or node pool) are never co-located on the same physical host and that they're distributed across the available nodes in a cluster.
 
 Once the availability sets are created and the VMs assigned, the system automatically places them on the appropriate physical nodes. If a node fails, the system also automatically fails over the VMs to other nodes and rebalances them when the node recovers. This way, you can achieve high availability and optimal distribution of your Kubernetes workloads without manual intervention.
 
-Consider an AKS on Azure Stack HCI 23H2 cluster with two physical host machines, Host A and Host B, three control plane VMs, and two worker node VMs, **Nodepool1VM1** and **Nodepool1VM2**. To ensure high availability of your Kubernetes applications, the node pool VMs must never share the same host, unless one of the hosts is temporarily unavailable for planned maintenance or capacity issue causing the VM (virtual machine) to be temporarily placed on an alternative host.
+Consider an AKS on Azure Stack HCI 23H2 cluster with two physical host machines, **Host A** and **Host B**, three control plane VMs, and two worker node VMs, **Nodepool1VM1** and **Nodepool1VM2**. To ensure high availability of your Kubernetes applications, the node pool VMs must never share the same host, unless one of the hosts is temporarily unavailable for planned maintenance or capacity issue causing the VM (virtual machine) to be temporarily placed on an alternative host.
 
 In the following diagram, each color represents an anti-affinity group:  
 
@@ -50,7 +50,7 @@ If host B goes down due to a reboot, **Control Plane VM2**, **Control Plane VM3*
 
 :::image type="content" source="media/availability-sets/anti-affinity-2.png" alt-text="Diagram showing host B down.":::
 
-In the old architecture, if host B came back online after a reboot, we could not guarantee that the VMs would move back from host A to host B (rebalancing), thus forcing the workloads to stay on the same host, and create a single point of failure as shown in the following diagram:  
+In the old architecture, if host B came back online after a reboot, we could not guarantee that the VMs would move back from host A to host B (rebalancing), thus forcing the workloads to stay on the same host, and create a single point of failure, as shown in the following diagram:
 
 :::image type="content" source="media/availability-sets/anti-affinity-3.png" alt-text="Diagram showing no rebalancing.":::
 
@@ -63,7 +63,7 @@ Availability sets for AKS Arc help to rebalance VMs once a host recovers from te
 
 ## Add or delete machines
 
-In a host deletion scenario, the host is no longer considered a part of the cluster. This typically occurs when you choose to replace a machine due to hardware issues, or scale down the HCI cluster for other reasons. During a node outage, the node remains part of the HCI cluster but appears as **Down**.
+In a host deletion scenario, the host is no longer considered a part of the cluster. This typically occurs when you replace a machine due to hardware issues, or scale down the HCI cluster for other reasons. During a node outage, the node remains part of the HCI cluster but appears as **Down**.
 
 If a physical machine (fault domain) is permanently deleted from the cluster, the availability set configuration isn't modified to reduce the number of fault domains. In this scenario, the availability set enters an unhealthy state. We recommend that you redeploy your workload clusters so that the availability set is updated with the proper number of fault domains.
 
