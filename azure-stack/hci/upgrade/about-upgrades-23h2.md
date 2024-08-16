@@ -21,10 +21,10 @@ Throughout this article, we refer to Azure Stack HCI, version 23H2 as the *new* 
 
 Azure Stack HCI, version 23H2 is the latest version of the Azure Stack HCI solution. This version integrates the Azure Arc infrastructure that provisions and manages the workloads such as Arc VMs, Azure Kubernetes Services, and Azure Virtual Desktop. For more information, see [What's new in Azure Stack HCI, version 23H2](../whats-new.md#features-and-improvements-in-2311).
 
-With version 23H2, Azure Stack HCI evolved from a cloud connected operating system (OS) to an Arc enabled solution. The OS forms the base layer of this solution, with the Arc and the Orchestrator (also known as the Lifecycle Manager) components layered on top. These components are packaged together into a solution that follows an [Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) model.
+With version 23H2, Azure Stack HCI evolved from a cloud-connected operating system (OS) to an Arc-enabled solution. The OS forms the base layer of this solution, with the Arc and the Orchestrator (also known as the Lifecycle Manager) components layered on top. These components are packaged together into a solution that follows an [Infrastructure as code (IaC)](/devops/deliver/what-is-infrastructure-as-code) model.
 
-- This IaC model takes a set of input parameters that are specific to each customer and the environment.
-- The lifecycle manager then orchestrates the desired state across all the layers to meet the desired state and the version.
+- This IaC model takes a set of input parameters that are specific to each customer and environment.
+- The lifecycle manager then orchestrates the desired state across all the layers to meet the desired state and version.
 
 The following diagram illustrates the components of an Azure Stack HCI, version 23H2 system:
 
@@ -34,15 +34,15 @@ The following diagram illustrates the components of an Azure Stack HCI, version 
 
 An upgrade is a whole new version of software that represents a significant change or major improvement. An update, on the other hand, is a process of applying a set of changes to the software to improve its performance, security, or stability.
 
-The Azure Stack HCI, version 23H2, is a whole new version of the solution with a multitude of new capabilities. To move from Azure Stack HCI, version 22H2 to version 23H2, you need to upgrade your existing cluster. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Stack HCI, you would need to update your existing cluster.
+Azure Stack HCI, version 23H2, is a whole new version of the solution with a multitude of new capabilities. To move from Azure Stack HCI, version 22H2 to version 23H2, you need to upgrade your existing cluster. On the other hand, to ensure that you have the most recent features and security improvements for your current version of Azure Stack HCI, you would need to update your existing cluster.
 
 ## High-level steps for Azure Stack HCI upgrade
 
 To upgrade your Azure Stack HCI from an old version, follow these high-level steps:
 
 1. Upgrade the *old* OS to the *new* OS using one of the following methods:
-    - [Via the PowerShell (recommended)](./upgrade-22h2-to-23h2-powershell.md).
-    - [Via the Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
+    - [Via PowerShell (recommended)](./upgrade-22h2-to-23h2-powershell.md).
+    - [Via Windows Admin Center](./upgrade-22h2-to-23h2-windows-admin-center.md).
     - [Via other manual methods](./upgrade-22h2-to-23h2-other-methods.md).
 
 1. Perform post-OS upgrade tasks.
@@ -54,6 +54,9 @@ To upgrade your Azure Stack HCI from an old version, follow these high-level ste
 The following diagram illustrates the Azure Stack HCI upgrade process:
 
 :::image type="content" source="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png" alt-text="Diagram that illustrates the two steps to update the Azure Stack HCI OS and then apply the solution update." lightbox="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png":::
+
+> [!IMPORTANT]
+> If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
 
 ## Next steps
 
