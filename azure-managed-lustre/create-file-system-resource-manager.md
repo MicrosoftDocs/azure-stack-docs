@@ -2,11 +2,11 @@
 title: Create an Azure Managed Lustre file system by using Azure Resource Manager templates
 description: Learn how to use Azure Resource Manager templates with JSON or Bicep to create an Azure Managed Lustre file system. 
 ms.topic: overview
-ms.date: 07/25/2024
+ms.date: 08/16/2024
 author: pauljewellmsft
 ms.author: pauljewell
-ms.lastreviewed: 02/21/2023
-ms.reviewer: mayabishop
+ms.lastreviewed: 08/16/2024
+ms.reviewer: ronhogue
 
 ---
 
@@ -25,7 +25,7 @@ To learn more about these options, see [Comparing JSON and Bicep for templates](
 
 Before you write a template, you must make some decisions about your Azure Managed Lustre file system. To learn more about the configuration options, see the setup details in [Create an Azure Managed Lustre file system](create-file-system-portal.md).
 
-When you use a template, specify a *SKU* name to define the basic type of Azure Managed Lustre file system to create. The SKU represents a product tier. It sets system qualities such as the type of disks, the supported amount of storage, and the maximum throughput capacity. If you use the Azure portal to create your Azure Managed Lustre file system, you specify the system type indirectly by selecting its capabilities.
+When you use a template, specify a SKU to define the basic type of Azure Managed Lustre file system to create. The SKU represents a product tier. It sets system qualities such as the type of disks, the supported amount of storage, and the maximum throughput capacity. If you use the Azure portal to create your Azure Managed Lustre file system, you specify the system type indirectly by selecting its capabilities.
 
 The following table shows the values for throughput and storage size in each supported SKU. These SKUs create a file system that uses durable SSD storage.
 
@@ -78,13 +78,13 @@ To create an Azure Managed Lustre file system by using an ARM template, you need
 | hsm | The Blob Storage container settings for the file system. | See [HSM settings](#hsm-settings) |
 | maintenanceWindow | Specifies day and time when system updates can occur. | See [Maintenance window](#maintenance-window) (required) |
 | rootSquashSettings | Specifies root squash settings for the file system. | See [Root squash settings](#root-squash-settings) |
-| storageCapacityTiB | The size of the file system, in TiB. | int (required) |
+| storageCapacityTiB | The size of the file system, in TiB. To learn more about the allowable values for this field based on the SKU, see [Choose file system type and size](#choose-file-system-type-and-size).  | int (required) |
 
 #### Encryption settings
 
 | Name | Description | Value |
 | --- | --- | --- |
-| keyEncryptionKey | Specifies the location of the encryption key in Key Vault. | See [template docs](/azure/templates/microsoft.storagecache/amlfilesystems#amlfilesystemencryptionsettings-1) |
+| keyEncryptionKey | Specifies the location of the encryption key in Key Vault. | See [template docs](/azure/templates/microsoft.storagecache/amlfilesystems#amlfilesystemencryptionsettings) |
 
 #### HSM settings
 
@@ -105,7 +105,9 @@ To create an Azure Managed Lustre file system by using an ARM template, you need
 | Name | Description | Value |
 | --- | --- | --- |
 | dayOfWeek | Day of the week on which the maintenance window can occur. | `Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Friday`, `Saturday` |
-| timeOfDayUTC | The time of day (in UTC) the maintenance window can occur. | string</br>Pattern = `^([0-9]&#124;0[0-9]&#124;1[0-9]&#124;2[0-3]):[0-5][0-9]$` |
+| timeOfDayUTC | The time of day (in UTC) the maintenance window can occur. | string</br>Example: `22:30` |
+
+The `timeOfDayUTC` property uses a 24-hour clock format. For example, `22:30` represents 10:30 PM. The pattern is `^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$`.
 
 #### Root squash settings
 
