@@ -1,7 +1,7 @@
 ---
 title: Monitoring data reference for Azure Managed Lustre
 description: This article contains important reference material you need when you monitor Azure Managed Lustre.
-ms.date: 08/15/2024
+ms.date: 08/16/2024
 ms.custom: horz-monitor
 ms.topic: reference
 author: pauljewellmsft
