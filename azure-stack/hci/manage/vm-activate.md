@@ -19,12 +19,12 @@ The following figure shows the different Windows Server VM licensing options:
 
 :::image type="content" source="media/vm-activate/vm-activation-server.png" alt-text="VM licensing" lightbox="media/vm-activate/vm-activation-server.png":::
 
-First, choose one of two licensing options:
+First, choose one of two options:
 
 - **Windows Server subscription**: Subscribe to Windows Server guest licenses through Azure. Available for Azure Stack HCI only.
 - [**Azure Hybrid Benefit (AHB)**](/windows-server/get-started/azure-hybrid-benefit): Use qualifying on-premises licenses to get Windows virtual machines (VMs) on Azure at a reduced cost.
 
-For more information, see [Compare licensing options](#compare-licensing-options).
+For more information, see [Compare options](#compare-options).
 
 Next, activate your Windows Server VMs:
 
@@ -32,9 +32,9 @@ Next, activate your Windows Server VMs:
 - If you're using AHB, you must use the corresponding keys associated with your license and apply them using your chosen activation method. One of the most convenient ways is to use *Automatic VM Activation* (AVMA).
 - To use other methods to activate VMs, see [Key Management Services (KMS) activation planning](/windows-server/get-started/kms-activation-planning).
 
-## Compare licensing options
+## Compare options
 
-Choose the licensing option that best suits your needs:
+Choose the deployment option that best suits your needs:
 
 | Question | Windows Server subscription | Azure Hybrid Benefit (AHB) |
 |--|--|--|
@@ -68,7 +68,7 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
 
 :::image type="content" source="media/vm-activate/windows-server-subscription.png" alt-text="Windows Server subscription" lightbox="media/vm-activate/windows-server-subscription.png":::
 
-### Prerequisites
+### Windows Server subscription prerequisites
 
 - An Azure Stack HCI cluster
   - [Install updates](update-cluster.md): Version 21H2, with at least the December 14, 2021 security update KB5008210 or later.
@@ -78,6 +78,7 @@ When Windows Server subscription is purchased, Azure Stack HCI servers retrieve 
   - Windows Admin Center (version 2103 or later) with the Cluster Manager extension (version 2.41.0 or later).
 
 ### Enable Windows Server subscription
+
 You can enable Windows Server subscription through different methods. Select one of the following tabs based on your preferred method.
 
 ### [Azure portal](#tab/azure-portal)
@@ -94,30 +95,33 @@ Azure CLI is available to install in Windows, macOS, and Linux environments. It 
 
 Launch [Azure Cloud Shell](https://shell.azure.com/) and use Azure CLI to configure Windows Server Subscription following these steps:
 
-1. Set up parameters from your subscription, resource group, and cluster name
-    ```azurecli
-    subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID        
-    resourceGroup="hcicluster-rg" # Replace with your resource group name
-    clusterName="HCICluster" # Replace with your cluster name
+1. Set up parameters from your subscription, resource group, and cluster name:
 
-    az account set --subscription "${subscription}"
-    ```
+   ```azurecli
+   subscription="00000000-0000-0000-0000-000000000000" # Replace with your subscription ID        
+   resourceGroup="hcicluster-rg" # Replace with your resource group name
+   clusterName="HCICluster" # Replace with your cluster name
+
+   az account set --subscription "${subscription}"
+   ```
+
 1. To view Windows Server Subscription status on a cluster, run the following command:
 
-    ```azurecli    
+   ```azurecli    
    az stack-hci cluster list \
    --resource-group "${resourceGroup}" \
    --query "[?name=='${clusterName}'].{Name:name, DesiredWSSStatus:desiredProperties.windowsServerSubscription}" \
    -o table
-    ```
+   ```
 
 1. To enable Windows Server Subscription on a cluster, run the following command:
-    ```azurecli    
+
+   ```azurecli    
    az stack-hci cluster update \
    --cluster-name "${clusterName}" \
    --resource-group "${resourceGroup}" \
    --desired-properties windows-server-subscription="Enabled"
-    ```
+   ```
 
 ### [Windows Admin Center](#tab/windows-admin-center)
 
@@ -177,7 +181,7 @@ Take a few minutes to watch the video on using Automatic Virtual Machine Activat
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWFdsF]
 
-### Prerequisites
+### AVMA prerequisites
 
 Before you begin:
 
