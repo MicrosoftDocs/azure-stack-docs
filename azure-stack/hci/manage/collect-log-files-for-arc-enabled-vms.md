@@ -3,7 +3,7 @@ title: Collect log files for Azure Arc VM on Azure Stack HCI
 description: Learn how to collect log files for an Azure Arc VM on your Azure Stack HCI system. 
 author: alkohli
 ms.topic: how-to
-ms.date: 07/26/2024
+ms.date: 08/16/2024
 ms.author: alkohli
 ms.reviewer: vlakshmanan
 ---
@@ -24,13 +24,12 @@ The Windows Panther folder contains Windows setup, installation, and upgrade log
 
 | File              | Directory       | Description |
 |-------------------|-----------------|-------------|
-| sudo journalctl -u mocguestagent.service mocguestagent.log | C:\ProgramData\mocguestagent\log\ | Critical logs |
 | agent-log-0 | C:\ProgramData\mocguestagent\log\ | Operational logs |
-| SetupAct.log | C:\Windows\panther | Contains information about setup actions during the installation. |
-| SetupErr.log | C:\Windows\panther | Contains information about setup errors during the installation. |
-| SetupComplete.log | C:\Windows\panther | Contains custom scripts that run during or after the Windows Setup process. For HCI, includes enabling WinRM, enabling ssh, and installing Microsoft On-premises Cloud (MOC) guest agent. |
-| Script files | C:\Windows\Setup\Scripts | Scripts from ISO |
-| System.evtx | C:\Windows\System32\winevt\Logs\ | Windows event logs |
+| SetupAct.log | C:\Windows\panther\ | Contains information about setup actions during the installation. |
+| SetupErr.log | C:\Windows\panther\ | Contains information about setup errors during the installation. |
+| SetupComplete.log | C:\Windows\panther\ | Contains custom scripts that run during or after the Windows Setup process. For HCI, includes enabling WinRM, enabling ssh, and installing Microsoft On-premises Cloud (MOC) guest agent. |
+| Script files | C:\Windows\setup\scripts\ | Scripts from ISO |
+| System.evtx | C:\Windows\system32\winevt\logs\ | Windows event logs |
 
 ### Linux VMs
 
@@ -40,7 +39,7 @@ Examine these log files to investigate a VM provisioning failure:
 |-------------------|-----------------|-------------|
 | cloud-init-output.log | /var/log/ | Captures the output from each stage of cloud-init when it runs. |
 | cloud-init.log | /var/log/ | A detailed log with debugging output, detailing each action taken. |
-| log files | /run/cloud-init | Contains logs about how cloud-init decided to enable or disable itself, and what platforms/datasources were detected. These logs are most useful when trying to determine what cloud-init ran or didn't run. |
+| log files | /run/cloud-init/ | Contains logs about how cloud-init decided to enable or disable itself, and what platforms/datasources were detected. These logs are most useful when trying to determine what cloud-init ran or didn't run. |
 
 ## Collect guest logs
 
@@ -52,8 +51,8 @@ Windows VM domain join and extension logs:
 
 | File              | Directory       | Description |
 |-------------------|-----------------|-------------|
-| Netsetup.log | C:\Windows\Debug\ | Netlogon logs are used for domain join failure. If you don't see  a domain join error, this log is optional. |
-| Extension logs | C:\ProgramData\GuestConfig\extension_logs | Extension logs |
+| Netsetup.log | C:\Windows\debug\ | Netlogon logs are used for domain join failure. If you don't see  a domain join error, this log is optional. |
+| Extension logs | C:\ProgramData\GuestConfig\extension_logs\ | Extension logs |
 
 For more information, see [Active Directory domain join troubleshooting guidance](/troubleshoot/windows-server/active-directory/active-directory-domain-join-troubleshooting-guidance).
 
