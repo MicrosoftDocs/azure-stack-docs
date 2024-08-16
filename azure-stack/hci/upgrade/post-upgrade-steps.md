@@ -35,7 +35,7 @@ Before you begin, make sure that:
 
 Follow these steps on your client to connect to one of the servers of your Azure Stack HCI cluster.
 
-1. Run PowerShell as administrator on the client that you're using to connect to your cluster.
+1. Run PowerShell as Administrator on the client that you're using to connect to your cluster.
 2. Open a remote PowerShell session to a server on your Azure Stack HCI cluster. Run the following command and provide the credentials of your server when prompted:
 
    ```powershell
