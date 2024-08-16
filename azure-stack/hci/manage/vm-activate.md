@@ -49,7 +49,7 @@ Choose the licensing option that best suits your needs:
 
 The following table shows the guest operating systems that the different licensing methods can activate:
 
-| Version | BYO Windows Server 2019 license | BYO Windows Server 2022 license | Windows Server subscription |
+| Version | AHB Windows Server 2019 license | AHB Windows Server 2022 license | Windows Server subscription |
 |--|--|--|--|
 | Windows Server 2012/R2 | X | X | X |
 | Windows Server 2016 | X | X | X |
