@@ -265,6 +265,8 @@ items:
       - name: Extended Security Updates (ESUs)
         href: manage/azure-benefits-esu.md
    
+    - name: Collect log files for Azure Arc VM
+      href: manage/collect-log-files-arc-enabled-vms.md 
     - name: Troubleshoot
       href: manage/troubleshoot-arc-enabled-vms.md
     - name: FAQs
