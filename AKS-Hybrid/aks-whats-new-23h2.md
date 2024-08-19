@@ -50,7 +50,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Stack HCI 23H2 with CRUD support. For more information, see [link TBD].
 - **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
 - **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
-- **Arc Gateway**. You can now leverage the Arc Gateway to have very few of the outbound URL configurations use AKS clusters on Azure Stack HCI. For more information, see [link TBD].
+- **Arc Gateway**. You can now use the Arc Gateway to configure very few of the outbound URLs to use AKS clusters on Azure Stack HCI. For more information, see [link TBD].
 - **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange. For more information, see [link TBD].
 
 #### Supported component versions for 2408
