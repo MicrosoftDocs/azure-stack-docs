@@ -2,7 +2,7 @@
 title: What's new in AKS on Azure Stack HCI version 23H2
 description: Learn about what's new in AKS on Azure Stack HCI version 23H2.
 ms.topic: overview
-ms.date: 06/25/2024
+ms.date: 08/19/2024
 author: sethmanheim
 ms.author: sethm 
 ms.reviewer: guanghu
@@ -42,6 +42,24 @@ By integrating these components, Azure Arc offers a unified and efficient Kubern
 
 This section lists the new features and improvements in AKS Arc in each release of Azure Stack HCI, version 23H2.
 
+### Release 2408
+
+The following Kubernetes cluster deployment and management capabilities are available:
+
+- **High availability improvements**. You can now deploy nodes with anti-affinity on specific physical hosts on Azure Stack HCI clusters. For more information, see [Availability sets](availability-sets.md).
+- **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Stack HCI 23H2 with CRUD support. For more information, see [link TBD].
+- **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
+- **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
+- **Arc Gateway**. You can now leverage the Arc Gateway to have very few of the outbound URL configurations use AKS clusters on Azure Stack HCI. For more information, see [link TBD].
+- **Support pod CIDR**. You can now create an AKS Arc cluster with a user-specified pod CIDR IP arrange. For more information, see [link TBD].
+
+#### Supported component versions for 2408
+
+| Component           | ??                                       |
+|---------------------|--------------------------------------------------|
+| AKS Arc             | ??                                     |
+| Kubernetes versions | 1.26.10, 1.26.12, 1.27.7, 1.27.9, 1.28.3, 1.28.5?? 1.27.7, 1.27.9, 1.28.5, 1.28.9, 1.29.2, 1.29.4 |
+
 ### Release 2405
 
 The following Kubernetes cluster deployment and management capabilities are available:
@@ -52,7 +70,7 @@ The following Kubernetes cluster deployment and management capabilities are avai
 - **Auto cert repair**. You can now automatically repair certificates, managed by cert-tattoo, that expired when the cluster was shut down.
 - **Download VHDs manually (offline download)**. This feature, now available only in private preview, enables you to download virtual machine images and upload them to the target center using a manual process. This can help in environments in which downloading large files is inconvenient. If you are interested in using it, contact your Microsoft Account representative.
 
-#### Supported component versions
+#### Supported component versions for 2405
 
 The following component versions are supported in release 2405:
 
