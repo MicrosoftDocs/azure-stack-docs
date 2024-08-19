@@ -46,7 +46,7 @@ Before you begin, make sure that:
 - You have access to a client that can connect to your Azure Stack HCI cluster. This client should be running PowerShell 5.0 or later.
 
 > [!NOTE]
-> The ISO file is only required if the cluster nodes do not have access to Windows Update to download the OS feature update.  If using this method, after [connecting to the Azure Stack HCI, version 22H2 cluster](#step-1-connect-to-the-azure-stack-hci-cluster), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) then perform the remaining steps.
+> The ISO file is only required if the cluster nodes do not have access to Windows Update to download the OS feature update.  If using this method, after you [Connect to the Azure Stack HCI, version 22H2 cluster](#step-1-connect-to-the-azure-stack-hci-cluster), skip to step 6 under [Step 2: Install new OS using PowerShell](#step-2-install-new-os-using-powershell) and perform the remaining steps.
 
 ## Step 1: Connect to the Azure Stack HCI cluster
 
@@ -106,7 +106,7 @@ To install new OS using PowerShell, follow these steps:
 
    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case. <!--ASK-->
 
-1. You need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.  A separate server ensures that orchestration is not interrupted when the nodes are rebooted.
+1. You need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from. A separate server ensures that orchestration isn't interrupted when the nodes are rebooted.
 
     > [!IMPORTANT]
     > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
