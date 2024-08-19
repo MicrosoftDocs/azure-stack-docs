@@ -82,7 +82,7 @@ Follow these steps to set up the Environment Checker on a server node of your Az
 1. Install the Environment Checker on the server. Run the following PowerShell command from the PSGallery:
 
    ```powershell
-   Install-Module -Name AzStackHci.EnvironmentChecker -allowclobber
+   Install-Module -Name AzStackHci.EnvironmentChecker -AllowClobber
    ```
 
 ### Run the validation
@@ -98,7 +98,7 @@ Follow these steps to set up the Environment Checker on a server node of your Az
 1. To validate other servers in the cluster, run the following PowerShell command:
 
    ```powershell
-   $PsSession=New-Pssession -computername "MyRemoteMachine"
+   $PsSession=New-Pssession -ComputerName "MyRemoteMachine"
    Invoke-AzStackHciUpgradeValidation -PsSession $PsSession
    ```
 
@@ -159,7 +159,7 @@ $windowsFeature =  @(
                 ) 
 foreach ($feature in $windowsFeature) 
 { 
-install-windowsfeature -name $feature -IncludeAllSubFeature -IncludeManagementTools 
+Install-WindowsFeature -Name $feature -IncludeAllSubFeature -IncludeManagementTools 
 } 
 
 #Install requires optional Windows features 
@@ -223,7 +223,7 @@ $windowsOptionalFeature = @(
             ) 
 foreach ($featureName in $windowsOptionalFeature) 
 { 
-enable-windowsoptionalfeature -featurename $featurename -all -online 
+Enable-WindowsOptionalFeature -FeatureName $featurename -All -Online 
 } 
 ```
 
@@ -234,7 +234,7 @@ Ensure that all the cluster members are up and that the cluster is *Online*. Use
 To verify all members of the cluster are online, run the following PowerShell command:
 
 ```powershell
-Get-ClusterNode -cluster "mycluster" 
+Get-ClusterNode -Cluster "mycluster" 
 ```
 
 ## Remediation 3: Suspend BitLocker
@@ -295,7 +295,7 @@ Follow these steps to confirm the storage pool configuration:
 1. To confirm the storage pool size and allocated size, run the following PowerShell command:
 
    ```powershell
-   Get-storagepool -IsPrimordial $false
+   Get-StoragePool -IsPrimordial $false
    ```
 
    <details>
@@ -310,7 +310,7 @@ Follow these steps to confirm the storage pool configuration:
 1. To list all volumes in the storage pool, run the following PowerShell command:
 
    ```powershell
-   Get-storagepool -IsPrimordial $false|Get-VirtualDisk
+   Get-StoragePool -IsPrimordial $false | Get-VirtualDisk
    ```
 
    <details>
@@ -341,10 +341,10 @@ Follow these steps to confirm the storage pool configuration:
 1. To convert the volume to thin provisioned, run the following PowerShell command:
 
    ```powershell
-   Set-virtualdisk -FriendlyName TestVolume -ProvisioningType Thin
+   Set-VirtualDisk -FriendlyName TestVolume -ProvisioningType Thin
    ```
 
-1. To convert the volume to thin provisioned, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
+1. To finish the convertion, the volume must be restarted. To do this, run the following PowerShell command. Make sure you adjust the CSV name to match your system:
 
    ```powershell
    Get-ClusterSharedVolume -Name "Cluster Disk 1" | Stop-ClusterResource
@@ -362,7 +362,7 @@ Follow these steps to confirm the storage pool configuration:
 
    | FriendlyName | ResiliencySettingName | FaultDomainRedundancy | OperationalStatus | HealthStatus | Size | FootprintOnPool | StorageEfficiency |
    |--------------|-----------------------|-----------------------|------------------|--------------|------|-----------------|------------------|
-   |ClusterPerformanceHistory | Mirror | 1 | OK | Healthy | 21 GB | 43 GB | 48.84% |
+   | ClusterPerformanceHistory | Mirror | 1 | OK | Healthy | 21 GB | 43 GB | 48.84% |
    | TestVolume | Mirror | 0 | OK | Healthy | 1 TB | 36.5 GB | 98.63% |
    | TestVolume2 | Mirror | 0 | OK | Healthy | 750 GB | 28.5 GB | 98.25% |
 
@@ -404,7 +404,7 @@ Make sure that the cluster functional level and storage pool version are up to d
    $SubscriptionId = "Your Subscription ID"
    Login-AzAccount –UseDeviceAuthentication –tenantid  $tenantid –subscriptionid $SubscriptionId
    Install-module az.connectedmachine
-   New-AzConnectedMachineExtension -Name "AzureEdgeLifecycleManager"  -ResourceGroupName $ResourceGroup -MachineName $env:COMPUTERNAME -Location $Region -Publisher "Microsoft.AzureStack.Orchestration" -ExtensionType "LcmController"  -NoWait
+   New-AzConnectedMachineExtension -Name "AzureEdgeLifecycleManager" -ResourceGroupName $ResourceGroup -MachineName $env:COMPUTERNAME -Location $Region -Publisher "Microsoft.AzureStack.Orchestration" -ExtensionType "LcmController" -NoWait
    ```
 
 ## Remediation 10: Check the MOC install state
