@@ -3,7 +3,7 @@ title: Upgrade Azure Stack HCI  to latest version 23H2 via PowerShell
 description: Learn how to use PowerShell to upgrade Azure Stack HCI to latest version 23H2.
 author: alkohli
 ms.topic: how-to
-ms.date: 08/13/2024
+ms.date: 08/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ms.subservice: azure-stack-hci
@@ -77,7 +77,7 @@ Follow these steps on your client to connect to one of the servers of your Azure
 To install new OS using PowerShell, follow these steps:
 
 > [!NOTE]
-> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the cluster.  If you need information on how to install and enable this feature on your Azure Stack HCI cluster, see [Cluster-Aware Updating overview](https://learn.microsoft.com/en-us/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
+> The following steps require the Cluster-Aware Updating (CAU) role to be installed and enabled on the cluster.  For information on how to install and enable this feature on your Azure Stack HCI cluster, see [Cluster-Aware Updating overview](/windows-server/failover-clustering/cluster-aware-updating#installing-cluster-aware-updating).
 
 1. Run the following cmdlets on every server in the cluster: <!--ASK-->
 
@@ -106,7 +106,7 @@ To install new OS using PowerShell, follow these steps:
 
    Inspect the output of the above cmdlet and verify that each server is offered the same Feature Update, which should be the case. <!--ASK-->
 
-1. You need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.  This is to ensure orchestration is not interrupted when the nodes are rebooted.
+1. You need a separate server or VM outside the cluster to run the `Invoke-CauRun` cmdlet from.  A separate server ensures that orchestration is not interrupted when the nodes are rebooted.
 
     > [!IMPORTANT]
     > The system on which you run `Invoke-CauRun` must be running Windows Server 2022. <!--ASK-->
@@ -115,7 +115,7 @@ To install new OS using PowerShell, follow these steps:
    Invoke-CauRun -ClusterName <ClusterName> -CauPluginName "Microsoft.RollingUpgradePlugin" -CauPluginArguments @{'WuConnected'='true';} -Verbose -EnableFirewallRules -Force
    ```
 
-1. If the cluster isn't connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster.  Be sure to update the `'PathToSetupMedia'` parameter with the share path to the ISO image.
+1. If the cluster isn't connected to Windows Update and the Azure Stack HCI install media is available on a local share, CAU can also be used to upgrade the cluster. Be sure to update the `'PathToSetupMedia'` parameter with the share path to the ISO image.
 
    ```powershell
    Invoke-CauRun –ClusterName <ClusterName> -CauPluginName Microsoft.RollingUpgradePlugin -CauPluginArguments @{ 'WuConnected'='false';'PathToSetupMedia'='\some\path\'; 'UpdateClusterFunctionalLevel'='true'; } -Force
@@ -136,7 +136,7 @@ Get-CauRun -ClusterName <ClusterName>
 Here's a sample output: <!--ASK-->
 
 ```output
-RunId                   : 834dd11e-584b-41f2-8d22-4c9c0471dbad 
+RunId                   : <Run ID> 
 RunStartTime            : 10/13/2024 1:35:39 PM 
 CurrentOrchestrator     : NODE1 
 NodeStatusNotifications : { 
@@ -154,9 +154,8 @@ InstallResults           : Microsoft.ClusterAwareUpdating.UpdateInstallResult[]
 }
 ```
 
-
-You're now ready to perform the post-upgrade steps for your cluster.
+You're now ready to perform the post-OS upgrade steps for your cluster.
 
 ## Next steps
 
-- [Learn how to perform the post-upgrade steps for your Azure Stack HCI cluster.](./post-upgrade-steps.md)
+- [Learn how to perform the post-OS upgrade steps for your Azure Stack HCI cluster.](./post-upgrade-steps.md)
