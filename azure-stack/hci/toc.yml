@@ -19,7 +19,9 @@ items:
       href: release-information-23h2.md
     - name: Known issues 2405 
       items:
-      - name: 2405.2 - Current
+      - name: 2405.3 - Current
+        href: known-issues-2405-3.md
+      - name: 2405.2
         href: known-issues-2405-2.md      
       - name: 2405.1
         href: known-issues-2405-1.md
