@@ -3,7 +3,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.topic: include
-ms.date: 06/25/2024
+ms.date: 07/09/2024
 ms.lastreviewed: 1/01/2023
 
 ---
@@ -25,15 +25,15 @@ ms.lastreviewed: 1/01/2023
 | Azure Key Vault | \*.vault.azure.net/* | 443 | Access to key vault to access Azure Stack HCI deployment secrets. Replace the first * with the name of the key vault you plan to use, and the 2nd * with the secret names. <br> Required only for Azure Stack HCI, version 23H2.|
 | Arc For Servers | aka.ms   | 443  | For resolving the download script during installation.  |
 | Arc For Servers | download.microsoft.com  | 443  | For downloading the Windows installation package.   |
-| Arc For Servers | login.windows.net  | 443  | For Microsoft Entra ID     |
-| Arc For Servers | login.microsoftonline.com    | 443  | For Microsoft Entra ID  |
-| Arc For Servers | pas.windows.net | 443  | For Microsoft Entra ID   |
-| Arc For Servers | management.azure.com | 443  | For Azure Resource Manager to create or delete the Arc Server resource |
-| Arc For Servers | guestnotificationservice.azure.com  | 443  | For the notification service for extension and connectivity scenarios  |
-| Arc For Servers | *.his.arc.azure.com  | 443  | For metadata and hybrid identity services |
-| Arc For Servers | *.guestconfiguration.azure.com  | 443  | For extension management and guest configuration services  |
-| Arc For Servers | *.guestnotificationservice.azure.com   | 443  | For notification service for extension and connectivity scenarios |
-| Arc For Servers | azgn*.servicebus.windows.net  | 443  | For notification service for extension and connectivity scenarios  |
-| Arc For Servers | *.servicebus.windows.net | 443  | For Windows Admin Center and SSH scenarios |
-| Arc For Servers | *.waconazure.com   | 443  | For Windows Admin Center connectivity   |
-| Arc For Servers | *.blob.core.windows.net | 443  | For download source for Azure Arc-enabled servers extensions  |
+| Arc For Servers | login.windows.net  | 443  | For Microsoft Entra ID.     |
+| Arc For Servers | login.microsoftonline.com    | 443  | For Microsoft Entra ID.  |
+| Arc For Servers | pas.windows.net | 443  | For Microsoft Entra ID.   |
+| Arc For Servers | management.azure.com | 443  | For Azure Resource Manager to create or delete the Arc Server resource. |
+| Arc For Servers | guestnotificationservice.azure.com  | 443  | For the notification service for extension and connectivity scenarios.  |
+| Arc For Servers | *.his.arc.azure.com  | 443  | For metadata and hybrid identity services. |
+| Arc For Servers | *.guestconfiguration.azure.com  | 443  | For extension management and guest configuration services.  |
+| Arc For Servers | *.guestnotificationservice.azure.com   | 443  | For notification service for extension and connectivity scenarios. |
+| Arc For Servers | azgn*.servicebus.windows.net  | 443  | For notification service for extension and connectivity scenarios.  |
+| Arc For Servers | *.servicebus.windows.net | 443  | For Windows Admin Center and SSH scenarios. |
+| Arc For Servers | *.waconazure.com   | 443  | For Windows Admin Center connectivity.   |
+| Arc For Servers | *.blob.core.windows.net | 443  | For download source for Azure Arc-enabled servers extensions.  |
