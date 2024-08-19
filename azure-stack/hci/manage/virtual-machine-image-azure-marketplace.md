@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 08/08/2024
+ms.date: 08/19/2024
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images
@@ -105,10 +105,10 @@ Follow these steps to create a VM image using the Azure CLI.
 
 
     ```azurecli
-    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --name "<custom_location_name_for_Azure_Stack_HCI_cluster>" --os-type $ostype --offer "<OS_offer_name>" --sku "<SKU_name>"
+    az stack-hci-vm image create --subscription $subscription --resource-group $resource_group --custom-location $customLocationID --location $location --name "<VM_image_name>" --os-type $ostype --offer "windowsserver" --publisher "<publisher_name>" --sku "<SKU>" 
     ```
 
-    A deployment job starts for the VM image. 
+    A deployment job starts for the VM image.
 
     In this example, the storage path was specified using the `--storage-path-id` flag and that ensured that the workload data (including the VM, VM image, non-OS data disk) is placed in the specified storage path.
 
