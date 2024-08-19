@@ -195,6 +195,8 @@ items:
       href: /azure/virtual-desktop/deploy-azure-virtual-desktop?toc=/azure-stack/hci/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Run Azure Arc VMs
       href: manage/create-arc-virtual-machines.md
+    - name: Run SQL Server
+      href: manage/sql-server-23h2.md
 
 - name: Update 
   items:
