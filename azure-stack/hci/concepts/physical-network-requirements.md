@@ -220,7 +220,21 @@ If your switch isn't included, contact your switch vendor to ensure that your sw
 > [!NOTE]
 > Guest RDMA requires both Compute (Standard) and Storage.
 
----
+# [SuperMicro](#tab/SuperMicro)
+### 23H2
+
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
+### 22H2
+
+|Model |Firmware| Management | Storage | Compute (Standard)| Compute (SDN)|
+|-----  |---| :-:  | :-:  | :-:   | :-:   |
+| [SSE-C4632](https://www.supermicro.com/datasheet/datasheet_SSE-C4632.pdf) <br>(10, 25, 100 GbE)|Broadcom Advanced Enterprise SONiC OS 4.2.1 or later |&check;| &check;| &check;| &check; |
+> [!NOTE]
+> Guest RDMA requires both Compute (Standard) and Storage.
 
 ---
 
