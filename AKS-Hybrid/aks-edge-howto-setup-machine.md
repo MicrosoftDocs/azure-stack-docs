@@ -4,7 +4,7 @@ description: Learn how to prepare your machines for AKS Edge Essentials clusters
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 02/13/2024
+ms.date: 08/19/2024
 ms.custom: template-how-to
 ---
 
@@ -111,6 +111,5 @@ This command displays output similar to the following list:
 
 ## Next steps
 
-- Create a [simple deployment](aks-edge-howto-single-node-deployment.md)
-- Create a [full deployment](aks-edge-howto-multi-node-deployment.md)
-
+- [Create a single machine deployment](aks-edge-howto-single-node-deployment.md)
+- [Create a full Kubernetes deployment](aks-edge-howto-multi-node-deployment.md)

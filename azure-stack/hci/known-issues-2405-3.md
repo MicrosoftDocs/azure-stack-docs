@@ -1,19 +1,19 @@
 ---
-title: Release notes with fixed and known issues in Azure Stack HCI 2405.2 update release
-description: Read about the known issues and fixed issues in Azure Stack HCI 2405.2 update release.
+title: Release notes with fixed and known issues in Azure Stack HCI 2405.3 update release
+description: Read about the known issues and fixed issues in Azure Stack HCI 2405.3 update release.
 author: alkohli
 ms.topic: conceptual
-ms.date: 07/12/2024
-ms.author: alkohli
-ms.reviewer: alkohli
+ms.date: 08/20/2024
+ms.author: robess
+ms.reviewer: ronmiab
 ms.subservice: azure-stack-hci
 ---
 
-# View known issues in Azure Stack HCI 2405.2 release
+# View known issues in Azure Stack HCI 2405.3 release
 
 [!INCLUDE [applies-to](../includes/hci-applies-to-23h2.md)]
 
-This article identifies the critical known issues and their workarounds in Azure Stack HCI 2405.2 release.
+This article identifies the critical known issues and their workarounds in Azure Stack HCI 2405.3 release.
 
 The release notes are continuously updated, and as critical issues requiring a workaround are discovered, they're added. Before you deploy your Azure Stack HCI, carefully review the information contained in the release notes.
 
@@ -22,9 +22,9 @@ The release notes are continuously updated, and as critical issues requiring a w
 
 For more information about the new features in this release, see [What's new in 23H2](whats-new.md).
 
-## Issues for version 2405.2
+## Issues for version 2405.3
 
-This software release maps to software version number **2405.2.7**.
+This software release maps to software version number **2405.3.7**.
 
 Release notes for this version include the issues fixed in this release, known issues in this release, and release noted issues carried over from previous versions.
 
@@ -34,22 +34,14 @@ Here are the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
 |------|------|----------|
-| Updates <!--28101226-->|In this release, an update issue related to missing resource type ID field in the health checks, was fixed.  ||
-| Updates <!--28101677-->|In this release, an update issue related to different health checks having the same name, was fixed.   ||
-| Updates <!--28334715-->|In this release, an issue where Solution Builder Extension Update health checks were missing from the pre-update or daily health checks, was fixed.    ||
-| Updates <!--28351655-->|In this release, an issue that caused an inability to view or start new updates due to the update service crashing on servers in a bad state, was fixed.    ||
-| Updates <!--28351665-->|In this release, the update service was improved to prevent flooding of actions on the cluster.   ||
-| Updates <!--28509688-->|In this release, a health check was added to prevent updates when adding or removing servers fails.   ||
-| Arc VM management <!--10325529-->|In earlier releases, any power state change operation of a VM such as start stop, save, and pause, would initially return the state of the VM as running and eventually display the correct state after a refresh 30+ seconds later. In this release, the power state change operation only returns after the VM state is changed to the expected one.   ||
+| Update <!--28391592--> | In this release, an update issue related to SDN not working once the hosts go through the secret rotation and update, was fixed. ||
+| Update <!--28536723--> | In this release, an update issue related to the Physical Disks environment readiness check incorrectly failing and blocking the update, was fixed ||
+| Deployment <!--28817671--> | In this release, a deployment operation related to null value in cloud deployment, was fixed. ||
+| Update <!--28821655--> | In this release, a health check update to prevent an Summary XML error, was fixed. ||
 
 ## Known issues in this release
 
-|Feature  |Issue  |Workaround  |
-|---------|---------|---------|
-| Update <!--28391592--> | Owing to a bug in SDN infrastructure VMs, SDN stops working once the hosts go through the secret rotation and update. | There is no workaround for this issue in this release. If the issue occurs, contact Microsoft Support for next steps. |
-| Update <!--28536723--> | Owing to a bug in Environment readiness checker, the Physical Disks environment readiness check incorrectly fails and blocks the update. | Wait for a few minutes and retry the update. |
-| Deployment <!--28817671--> | In this release, you may receive the following error: *Invoke Cloud Deploy Failed With - Value cannot be null*. | There is no workaround for this issue in this release. If the issue occurs, contact Microsoft Support for next steps. |
-| Update <!--28821655--> | In this release, an environment check fails with the following error: *Update is in Failed state: HealthCheckFailed. Summary XML from ECE not present*. | There is no workaround for this issue in this release. If the issue occurs, contact Microsoft Support for next steps. |
+Microsoft isn't aware of any known issues in this release.
 
 ## Known issues from previous releases
 

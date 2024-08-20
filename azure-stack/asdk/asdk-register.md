@@ -2,16 +2,13 @@
 title: Register the ASDK with Azure 
 description: Learn how to register the Azure Stack Development Kit (ASDK) with Azure to enable marketplace syndication and usage reporting.
 author: sethmanheim
-
 ms.topic: article
 ms.custom:
   - devx-track-azurepowershell
-ms.date: 1/20/2021
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: misainat
-ms.lastreviewed: 1/20/2021
 
-# Intent: As an ASDK user, I want to register my ASDK with Azure so I can download marketplace items and report data back to global Azure.
+# Intent: As an ASDK user, I want to register my ASDK with Azure so I can download marketplace items and report data back to Azure.
 # Keyword: register asdk azure
 ---
 
@@ -34,7 +31,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 Ensure the output returns **FullLanguage**. If any other language mode is returned, registration needs to be run on another computer or the language mode set to **FullLanguage** before continuing.
 
-The Microsoft Entra account used for registration needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend you register Azure Stack Hub with Azure by [creating a service account to use for registration](../operator/azure-stack-registration-role.md) rather than using global admin credentials.
+The Microsoft Entra account used for registration needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend you register Azure Stack Hub with Azure by [creating a service account to use for registration](../operator/azure-stack-registration-role.md).
 
 ## Register the ASDK
 
