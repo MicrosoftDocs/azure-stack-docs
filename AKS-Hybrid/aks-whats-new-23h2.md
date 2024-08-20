@@ -47,7 +47,7 @@ This section lists the new features and improvements in AKS Arc in each release 
 The following Kubernetes cluster deployment and management capabilities are available:
 
 - **High availability improvements**. You can now deploy nodes with anti-affinity on specific physical hosts on Azure Stack HCI clusters. For more information, see [Availability sets](availability-sets.md).
-- **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Stack HCI 23H2 with CRUD support. For more information, see [link TBD].
+- **PowerShell**. You can now use PowerShell cmdlets to manage your AKS Arc clusters on Azure Stack HCI 23H2 with CRUD support. For more information, see the [PowerShell reference documentation](/powershell/module/az.aksarc/?view=azps-12.1.0).
 - **Error report improvements**. You can now get improved error case reporting with prechecks; for example, a check for incorrect Kubernetes versions and available GPU capacity.
 - **Support for NVIDIA T4**. You can now create node pools in new VM sizes with GPU NVIDIA T4. For more information, see [Use GPUs](deploy-gpu-node-pool.md).
 - **Arc Gateway**. You can now use the Arc Gateway to configure very few of the outbound URLs to use AKS clusters on Azure Stack HCI. For more information, see [link TBD].
