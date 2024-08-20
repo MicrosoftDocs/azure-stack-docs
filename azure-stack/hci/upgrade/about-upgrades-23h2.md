@@ -56,8 +56,9 @@ The following diagram illustrates the Azure Stack HCI upgrade process:
 :::image type="content" source="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png" alt-text="Diagram that illustrates the two steps to update the Azure Stack HCI OS and then apply the solution update." lightbox="./media/about-upgrades-23h2/update-os-to-23h2-and-apply-the-solution-update.png":::
 
 > [!IMPORTANT]
-> - If you were running AKS workloads on your Azure Stack HCI cluster, you must remove Azure Kubernetes Service and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. Additionally, Preview versions of Arc VMs can't be updated.
-> - If running stretched clusters, you can only perform the version 23H2 OS upgrade. The solution upgrade is not supported on stretches clusters and will be blocked.
+> - If you were running Azure Kubernetes Service (AKS) workloads on your Azure Stack HCI cluster, you must remove AKS and all the settings from AKS enabled by Azure Arc before you apply the solution upgrade. Kubernetes versions are incompatible between Azure Stack HCI, version 22H2, and version 23H2. 
+> - Preview versions of Arc VMs can't be updated.
+> - If running stretched clusters, you can upgrade to version 23H2 OS and the upgraded cluster is supported. However, the solution upgrade is not supported on stretched clusters and will be blocked.
 
 ## Next steps
 
