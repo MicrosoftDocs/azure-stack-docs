@@ -44,7 +44,12 @@ Here are the fixed issues in this release:
 
 ## Known issues in this release
 
-Microsoft isn't aware of any known issues in this release.
+|Feature  |Issue  |Workaround  |
+|---------|---------|---------|
+| Update <!--28391592--> | Owing to a bug in SDN infrastructure VMs, SDN stops working once the hosts go through the secret rotation and update. | There is no workaround for this issue in this release. If the issue occurs, contact Microsoft Support for next steps. |
+| Update <!--28536723--> | Owing to a bug in Environment readiness checker, the Physical Disks environment readiness check incorrectly fails and blocks the update. | Wait for a few minutes and retry the update. |
+| Deployment <!--28817671--> | In this release, you may receive the following error: *Invoke Cloud Deploy Failed With - Value cannot be null*. | There is no workaround for this issue in this release. If the issue occurs, contact Microsoft Support for next steps. |
+| Update <--28821655--> | In this release, an environment check fails with the following error: *Update is in Failed state: HealthCheckFailed. Summary XML from ECE not present*. | There is no workaround for this issue in this release. If the issue occurs, contact Microsoft Support for next steps. |
 
 ## Known issues from previous releases
 

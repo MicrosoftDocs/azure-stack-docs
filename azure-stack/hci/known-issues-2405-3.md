@@ -30,12 +30,14 @@ Release notes for this version include the issues fixed in this release, known i
 
 ## Fixed issues
 
-Microsoft isn't aware of any fixed issues in this release.
-
-<!-- Here are the fixed issues in this release:
+Here are the fixed issues in this release:
 
 |Feature|Issue|Workaround/Comments|
-|------|------|----------| -->
+|------|------|----------|
+| Update <!--28391592--> | In this release, an update issue related to SDN not working once the hosts go through the secret rotation and update, was fixed. ||
+| Update <!--28536723--> | In this release, an update issue related to the Physical Disks environment readiness check incorrectly failing and blocking the update, was fixed ||
+| Deployment <!--28817671--> | In this release, a deployment operation related to null value in cloud deployment, was fixed. ||
+| Update <--28821655--> | In this release, a health check update to prevent an Summary XML error, was fixed. ||
 
 ## Known issues in this release
 
