@@ -3,7 +3,7 @@ title: Configure multi-tenancy in Azure Stack Hub
 description: Learn how to configure multi-tenancy for guest Microsoft Entra tenants in Azure Stack Hub.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 11/05/2021
+ms.date: 08/19/2024
 ms.author: sethm
 ms.reviewer: bryanr
 ms.lastreviewed: 11/05/2021
@@ -227,7 +227,7 @@ The first step is to make your Azure Stack Hub system aware of the guest directo
 
 Mary received the email with the link to register the directory. She opens the link in a browser and confirms the Microsoft Entra ID and the Azure Resource Manager endpoint of your Azure Stack Hub system.
 
-1. Mary signs in by using her global admin credentials for adatum.onmicrosoft.com.
+1. Mary signs in by using her admin credentials for adatum.onmicrosoft.com.
 
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
@@ -264,7 +264,7 @@ If you no longer want to allow sign-ins to Azure Stack Hub services from a guest
 
 Mary no longer uses services on Azure Stack Hub and must remove the objects. She opens the URL again that she received via email to unregister the directory. Before starting this process, Mary removes all the resources from the Azure Stack Hub subscription.
 
-1. Mary signs in by using her global admin credentials for **adatum.onmicrosoft.com**.
+1. Mary signs in by using her admin credentials for **adatum.onmicrosoft.com**.
 
    > [!NOTE]
    > Make sure pop-up blockers are disabled before signing in.
@@ -326,7 +326,7 @@ An Azure Stack Hub operator should also inform the guest directory owner that th
 
 Mary, the owner of the guest directory, opens the URL that she received via email when she registered the directory:
 
-1. Mary signs in by using her global admin credentials for **adatum.onmicrosoft.com**. Make sure pop-up blockers are disabled before signing in.
+1. Mary signs in by using her admin credentials for **adatum.onmicrosoft.com**. Make sure pop-up blockers are disabled before signing in.
 
    [![Screenshot that shows selecting Sign In.](./media/enable-multitenancy/sign-in.png)](./media/enable-multitenancy/sign-in.png#lightbox)
 

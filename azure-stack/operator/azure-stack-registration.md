@@ -3,9 +3,8 @@ title: Register Azure Stack Hub with Azure
 titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting.
 author: sethmanheim
-
 ms.topic: how-to
-ms.date: 03/12/2024
+ms.date: 08/19/2024
 ms.author: sethm
 ms.custom:
   - devx-track-azurepowershell
@@ -67,9 +66,7 @@ Before registering Azure Stack Hub with Azure, you must have:
 
 - Registered the Azure Stack Hub resource provider (see the following Register Azure Stack Hub Resource Provider section for details).
 
-After registration, Microsoft Entra Global Administrator permission isn't required. However, some operations may require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
-
-The user that registers Azure Stack Hub is the owner of the service principal in Microsoft Entra ID. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users, even if they're a global admin, must be added to 'Default Provider Subscription' through 'Access control (IAM)'. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
+The user that registers Azure Stack Hub is the owner of the service principal in Microsoft Entra ID. Only the user who registered Azure Stack Hub can modify the Azure Stack Hub registration. All other users must be added to 'Default Provider Subscription' through 'Access control (IAM)'. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack Hub, they may come across a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
 
 If you don't have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack Hub incurs no cost on your Azure subscription.
 
@@ -658,7 +655,7 @@ You can use **Set-AzsRegistration** to register Azure Stack Hub with Azure and e
 
 To run the cmdlet, you need:
 
-- A global Azure subscription of any type.
+- An Azure subscription of any type.
 - To be signed in to Azure PowerShell with an account that's an owner or contributor to that subscription.
 
 ```powershell
