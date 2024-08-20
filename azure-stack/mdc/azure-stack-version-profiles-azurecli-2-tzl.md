@@ -6,10 +6,8 @@ author: sethmanheim
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/2/2020
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: raymondl
-ms.lastreviewed: 12/2/2020 
 ms.custom: devx-track-azurecli, linux-related-content
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI - Modular Data Center (MDC)
@@ -94,7 +92,7 @@ This section walks you through setting up CLI if you're using Microsoft Entra ID
      You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
 
      ```azurecli
-     az login -u <Active directory global administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
+     az login -u <Microsoft Entra administrator or user account. For example: username@<aadtenant>.onmicrosoft.com> --tenant <Azure Active Directory Tenant name. For example: myazurestack.onmicrosoft.com>
      ```
 
      > [!NOTE]
