@@ -4,10 +4,8 @@ description: Learn about the hardware, software, and environment requirements fo
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/23/2020
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: misainat
-ms.lastreviewed: 09/23/2020
 
 # Intent: As an ASDK user, I want to know the requirements for properly deploying the ASDK.
 # Keyword: asdk requirements
@@ -91,7 +89,7 @@ If your environment isn't connected to the internet, or you don't want to use Mi
 <a name='azure-active-directory-accounts'></a>
 
 ### Microsoft Entra accounts
-To deploy Azure Stack by using a Microsoft Entra account, you must prepare a Microsoft Entra account before you run the deployment PowerShell script. This account becomes the Global Admin for the Microsoft Entra tenant. It's used to provision and delegate apps and service principals for all Azure Stack services that interact with Microsoft Entra ID and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can sign in to your Azure Stack system's administrator portal by using this account.
+To deploy Azure Stack by using a Microsoft Entra account, you must prepare a Microsoft Entra account before you run the deployment PowerShell script. This account becomes the administrator for the Microsoft Entra tenant. It's used to provision and delegate apps and service principals for all Azure Stack services that interact with Microsoft Entra ID and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can sign in to your Azure Stack system's administrator portal by using this account.
 
 1. Create a Microsoft Entra account that is the directory admin for at least one Microsoft Entra ID. If you already have one, you can use that. Otherwise, you can create one for free at [https://azure.microsoft.com/free/](https://azure.microsoft.com/free/) (in China, visit <https://go.microsoft.com/fwlink/?LinkID=717821> instead). If you plan to later [register Azure Stack with Azure](asdk-register.md), you must also have a subscription in this newly created account.
    
@@ -100,12 +98,10 @@ To deploy Azure Stack by using a Microsoft Entra account, you must prepare a Mic
    
    | **Microsoft Entra account** | **Supported?** |
    | --- | --- |
-   | Work or school account with valid global Azure subscription |Yes |
-   | Microsoft Account with valid global Azure subscription |Yes |
+   | Work or school account with valid Azure subscription |Yes |
+   | Microsoft Account with valid Azure subscription |Yes |
    | Work or school account with valid China Azure subscription |Yes |
    | Work or school account with valid US Government Azure subscription |Yes |
-
-After deployment, Microsoft Entra global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
 ## Network
 ### Switch

@@ -4,10 +4,8 @@ description: Learn how to deploy the ASDK from the command line using PowerShell
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/14/2020
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: misainat
-ms.lastreviewed: 10/14/2020
 
 # Intent: As an ASDK user, I want to deploy the ASDK using the command line in Powershell so I can evaluate Azure Stack features.
 # Keyword: deploy asdk command line
@@ -84,9 +82,7 @@ Run the following PowerShell commands to deploy the ASDK using Microsoft Entra I
   .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password
   ```
 
-A few minutes into ASDK installation you'll be prompted for Microsoft Entra credentials. Provide the global admin credentials for your Microsoft Entra tenant.
-
-After deployment, Microsoft Entra global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+A few minutes into ASDK installation you'll be prompted for Microsoft Entra credentials. Provide the Microsoft Entra admin credentials for your tenant.
 
 ### Deploy Azure Stack using AD FS 
 To deploy the ASDK  **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter):
@@ -115,7 +111,7 @@ If your Microsoft Entra identity is only associated with **one** Microsoft Entra
 ```powershell
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
-$aadcred = Get-Credential "<Azure AD global administrator account name>" 
+$aadcred = Get-Credential "<Microsoft Entra administrator account name>" 
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
@@ -123,7 +119,7 @@ If your Microsoft Entra identity is associated with **greater than one** Microso
 ```powershell
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
-$aadcred = Get-Credential "<Azure AD global administrator account name>" #Example: user@AADDirName.onmicrosoft.com 
+$aadcred = Get-Credential "<Microsoft Entra administrator account name>" #Example: user@AADDirName.onmicrosoft.com 
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<Azure AD directory in the form of domainname.onmicrosoft.com or an Azure AD verified custom domain name>" -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 

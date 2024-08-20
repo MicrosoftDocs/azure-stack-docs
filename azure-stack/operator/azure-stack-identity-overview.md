@@ -3,10 +3,8 @@ title: Overview of identity providers for Azure Stack Hub
 description: Learn about the identity providers you can use with Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 06/26/2023
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2019
 
 # Intent: As an Azure Stack operator, I want an overview for the identity provider options I have when deploying Azure Stack.
 # Keyword: azure stack identity providers
@@ -173,9 +171,6 @@ When all validations are complete, Azure Resource Manager uses the *object id* (
 
 ![Diagram of the token exchange protocol](media/azure-stack-identity-overview/token-exchange.svg)
 
-> [!NOTE]
-> After deployment, Microsoft Entra Global Administrator permission isn't required. However, some operations may require the global admin credentials (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily re-instate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
-
 ### Use Role-Based Access Control
 
 Role-Based Access Control (RBAC) in Azure Stack Hub is consistent with the implementation in Microsoft Azure. You can manage access to resources by assigning the appropriate RBAC role to users, groups, and apps. For information about how to use RBAC with Azure Stack Hub, see the following articles:
@@ -210,7 +205,7 @@ The following section describes how this deprecation affects Azure Stack Hub.
 
 The Azure Stack Hub team is working closely with the Azure Graph team to ensure your systems continue to work beyond June 30, 2023 if necessary, to ensure a smooth transition. The most important action is to ensure you are compliant with the Azure Stack Hub servicing policy. Customers will receive an alert in the administrator portal of Azure Stack Hub and will be required to update the home directory and all onboarded guest directories.
 
-The majority of the migration itself will be done by the integrated system update experience; there will be a manual step required by customers to grant new permissions to those applications, which will require global administrator permissions in each Microsoft Entra directory used with your Azure Stack Hub environments. After the update package with these changes finishes installing, an alert is raised in the admin portal directing you to complete this step using the multi-tenancy UI or PowerShell scripts. This is the same operation you perform when onboarding additional directories or resource providers; for more information, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md).
+The majority of the migration itself will be done by the integrated system update experience; there will be a manual step required by customers to grant new permissions to those applications, which will require application administrator permissions in each Microsoft Entra directory used with your Azure Stack Hub environments. After the update package with these changes finishes installing, an alert is raised in the admin portal directing you to complete this step using the multi-tenancy UI or PowerShell scripts. This is the same operation you perform when onboarding additional directories or resource providers; for more information, see [Configure multi-tenancy in Azure Stack Hub](enable-multitenancy.md).
 
 If you use AD FS as your identity system with Azure Stack Hub, these Graph changes will not impact your system directly. However, the latest versions of tools such as Azure CLI, Azure PowerShell, etc., require the new Graph APIs, and they will not work. Ensure that you only use the versions of these tools which are explicitly supported with your given Azure Stack Hub build.
 

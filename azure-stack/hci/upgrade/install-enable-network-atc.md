@@ -5,7 +5,7 @@ author: ronmiab
 ms.author: robess
 ms.topic: how-to
 ms.reviewer: alkohli
-ms.date: 08/14/2024
+ms.date: 08/19/2024
 #Customer intent: As a Senior Content Developer, I want to provide customers with content and steps to help them successfully install and enable Network ATC on their existing Azure Stack HCI, version 22H2 cluster.
 ---
 
@@ -132,7 +132,7 @@ In this example, there are two intents that are managed across cluster nodes.
 1. **Management and compute**: This intent uses a dedicated pair of network adapter ports.
 2. **Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-and-enable-network-atc/group-management-and-compute.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/install-and-enable-network-atc/group-management-and-compute.png":::
+    :::image type="content" source="media/install-enable-network-atc/group-management-and-compute.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped management and compute intent." lightbox="media/install-enable-network-atc/group-management-and-compute.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -148,7 +148,7 @@ In this example, there's a single intent managed across cluster nodes.
 
 - **Management, Compute, and Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-and-enable-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with all traffic on a single intent." lightbox="media/install-and-enable-network-atc/group-all-traffic.png":::
+    :::image type="content" source="media/install-enable-network-atc/group-all-traffic.png" alt-text="Screenshot of an Azure Stack HCI cluster with all traffic on a single intent." lightbox="media/install-enable-network-atc/group-all-traffic.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -163,7 +163,7 @@ In this example, there are two intents that are managed across cluster nodes.
 1. **Management**: This intent uses a dedicated pair of network adapter ports.
 2. **Compute and Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-and-enable-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped compute and storage intent." lightbox="media/install-and-enable-network-atc/group-compute-and-storage.png":::
+    :::image type="content" source="media/install-enable-network-atc/group-compute-and-storage.png" alt-text="Screenshot of an Azure Stack HCI cluster with a grouped compute and storage intent." lightbox="media/install-enable-network-atc/group-compute-and-storage.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -181,7 +181,7 @@ In this example, there are three intents that are managed across cluster nodes.
 2. **Compute**: This intent uses a dedicated pair of network adapter ports.
 3. **Storage**: This intent uses a dedicated pair of network adapter ports.
 
-    :::image type="content" source="media/install-and-enable-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a fully disaggregated intent." lightbox="media/install-and-enable-network-atc/fully-disaggregated.png":::
+    :::image type="content" source="media/install-enable-network-atc/fully-disaggregated.png" alt-text="Screenshot of an Azure Stack HCI cluster with a fully disaggregated intent." lightbox="media/install-enable-network-atc/fully-disaggregated.png":::
 
     Here's an example to implement this host network pattern:
 
@@ -233,7 +233,7 @@ If the **ConfigurationStatus** shows **Failed**, check to see if the error messa
 
 In this step, you move from the node deployed with Network ATC to the next node and migrate the VMs from this second node. You must verify that the second node has the same `VMSwitch` name as the node deployed with Network ATC.
 
-This is a non-disruptive change and can be done on all the nodes simultaneously. Run the following command:
+This is a nondisruptive change and can be done on all the nodes simultaneously. Run the following command:
 
 ```powershell
 #Run on the node where you configured Network ATC
