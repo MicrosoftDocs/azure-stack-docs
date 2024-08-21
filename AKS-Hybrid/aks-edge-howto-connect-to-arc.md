@@ -4,7 +4,7 @@ description: Connect your AKS Edge Essentials clusters to Arc
 author: rcheeran
 ms.author: rcheeran
 ms.topic: how-to
-ms.date: 04/16/2024
+ms.date: 08/21/2024
 ms.custom: template-how-to
 ---
 
@@ -13,6 +13,8 @@ ms.custom: template-how-to
 This article describes how to connect your AKS Edge Essentials cluster to [Azure Arc](/azure/azure-arc/kubernetes/overview) so that you can monitor the health of your cluster on the Azure portal. If your cluster is connected to a proxy, you can use the scripts provided in the GitHub repo to connect your cluster to Arc [as described here.](./aks-edge-howto-more-configs.md)
 
 ## Prerequisites
+
+In addition to these prerequisites, be sure to meet all [network requirements for Azure Arc-enabled Kubernetes](/azure/azure-arc/kubernetes/network-requirements).
 
 - You need an Azure subscription with either the **Owner** role or a combination of **Contributor** and **User Access Administrator** roles. You can check your access level by navigating to your subscription on the Azure portal, selecting **Access control (IAM)** on the left-hand side of the Azure portal, and then selecting **View my access**. See [the Azure documentation](/azure/azure-resource-manager/management/manage-resource-groups-portal) for more information about managing resource groups.
 - Enable all required resource providers in the Azure subscription, such as **Microsoft.HybridCompute**, **Microsoft.GuestConfiguration**, **Microsoft.HybridConnectivity**, **Microsoft.Kubernetes**, **Microsoft.ExtendedLocation**, and **Microsoft.KubernetesConfiguration**.
