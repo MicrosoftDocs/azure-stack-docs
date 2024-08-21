@@ -14,7 +14,7 @@ ms.date: 08/21/2024
 
 This article provides guidance on how to troubleshoot deployment validation issues experienced during the deployment of your Azure Stack HCI cluster via the Azure portal.
 
-## Error - deployment vaildation failure with not a valid IPv4 address
+## Error - deployment vaildation failure 
 
 When deploying Azure Stack HCI, version 23H2 via the Azure portal, you might encounter a deployment validation failure.
 The "Azure Stack HCI Network - Check network requirements" validation task fail with the following error:
@@ -27,7 +27,7 @@ found error at deploymentdata.physicalnodes[0].ipv4address: The specified  for
 Example: 192.168.0.1 or 192.168.0.1","Target":null,"Details":null}].
 ```
 
-If you go to the **Networking** tab in Azure portal deployment, within the **Network Intent** configuration, you could see the following error: 
+If you go to the **Networking** tab in Azure portal deployment, within the **Network Intent** configuration, you could see the following error:
 
 ```
 The selected physical network adapter is not binded to the management virtual Switch.
@@ -105,15 +105,18 @@ With the lock removed, follow these steps to remove the validation error.
 
 After the VM switch on the device is removed, clean up the Edge Device ARM resource containing the incorrect VM switch information via the Azure CLI.
 
-1. On a machine that the customer uses with access to Azure, verify install or install AZ CLI: [Install Azure CLI on Windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
+1. On a client that can access to Azure, verify install or install AZ CLI: [Install Azure CLI on Windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
    - You can verify install by running: `az`
    - If installed, this will output a `"Welcome to Azure CLI!"` message with available commands.
-   - Note: Though I have not tested it, from what I can tell, az cli can be leveraged from Azure Cloud Shell if the customer has that configured and is comfortable with it.
-1. Login to Azure with az cli, leverage the following command: `az login`
-   - This command has a lot of options available depending on how/where the customer would like to authenticate
-   - The command I used to verify these steps internally included the following parameters:
-     `az login --tenant <tenantGUID> --use-device-code`
-   - The available options are documented here: [Sign in interactively with Azure CLI](https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-interactively)
+
+1. Sign in to Azure with az cli. Run the following command:
+    
+    ```AzureCLI
+    az login --tenant <tenantGUID> --use-device-code
+    ```  
+
+    For more information, [Sign in interactively with Azure CLI](/cli/azure/authenticate-azure-cli-interactively)
+   
 1. To set a specific subscription, run the following command:
 
     ```azurecli
@@ -128,30 +131,46 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
     ```
 
     Replace the values in the above example command with the appropriate values for:`<subGUID>`, `<resourceGROUPNAME>`, and `<machineNAME>`.
-    - **MY INTERNAL REPRO EXAMPLE** command was as follows: `az resource show --ids "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/EDGECI-REGISTRATION-rr1n26r1512-kXOKQuGV/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"`
-    - **Note:** The output of this command will show quite a bit of detail about the <machineNAME> used in the command. Near the bottom of the output, you will see a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but was not detected by the DeviceManagementExtension and updated cloud-side):
+    
+    Here is an example output:
+    
+    ```output
+    az resource show --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"
+    ```
+
+    The output of this command will show quite a bit of detail about the <machineNAME> used in the command. Near the bottom of the output, you will see a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but was not detected by the DeviceManagementExtension and updated cloud-side):
     `"switchName": "ConvergedSwitch(managementcompute)",`
     `"switchType": "External"`
+
 1. After confirming the `show` command worked by outputting the `edgeDevices` data, and likely confirming the `"switchDetails"`, it is time to `delete` the resource from ARM so it can be refreshed appropriately from the device.
+
 1. Delete the `edgeDevices` resource which has the incorrectly stored VM Switch information with the following command:
     `az resource delete --ids "/subscriptions/<subGUID>/resourceGroups/<resourceGROUPNAME>/providers/Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default"`
-    - **NOTICE:** Replace the values (remember to remove the "<>" characters as well) in the above example command with the appropriate values for:
+    
+    Replace the values (remember to remove the "<>" characters as well) in the above example command with the appropriate values for:
       `<subGUID>`
       `<resourceGROUPNAME>`
       `<machineNAME>`
-    - **Note:** This is the same resource `--ids` from the `show`, so you can just leverage that same string. In fact, you could just "up arrow" in the console and replace `show` with `delete`.
-    - **MY INTERNAL REPRO EXAMPLE** command was as follows: `az resource delete --ids "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/EDGECI-REGISTRATION-rr1n26r1512-kXOKQuGV/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"`
+    
+    This is the same resource `--ids` from the `show`, so you can just leverage that same string. In fact, you could just "up arrow" in the console and replace `show` with `delete`.
+
+    Here is an example output: 
+
+    ```Output
+    `az resource delete --ids "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/EDGECI-REGISTRATION-rr1n26r1512-kXOKQuGV/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"
+    ```
     - **Note:** Run just like this, there will be no output from this command, it will either work and return the command prompt, or present an error. It should not present an error, if it does, that will require additional troubleshooting.
-1. Verify the deletion of the resource by running the `show` command again. If all goes as planned, this will output something like:
-```
-(ResourceNotFound) The resource 'Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
-Code: ResourceNotFound
-Message: The resource 'Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
-```
+1. Verify the deletion of the resource by running the `show` command again. Here is an example output:
+
+    ```Output
+    (ResourceNotFound) The resource 'Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
+    Code: ResourceNotFound
+    Message: The resource 'Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
+    ```
 
 ### Refresh the cloud `edgeDevices` data
 
-With the ARM resource and all the unintentional VM switches removed, refresh the cloud-side `edgeDevices` data again. 
+With the ARM resource and all the unintentional VM switches removed, refresh the cloud-side `edgeDevices` data again.
 
 Follow these steps to refresh the cloud data:
 
@@ -179,8 +198,8 @@ Follow these steps in the Azure portal:
 1. Revalidate the reselected nodes.
 
 1. Confirm the information on the subsequent pages. You should see the following changes:
-    - On the **Network** page, you should no longer see the `"The selected physical network adapter is no binded to the management virtual Switch"` error that might have been seen previously.
-    - On the **Validation** page at the end, if you are past the original issue, the `"deploymentdata.physicalnodes[0].ipv4address is not a valid IPv4 address"` error won't be displayed.
+    - On the **Networking** page, you should no longer see the `The selected physical network adapter is not binded to the management virtual Switch` error that might have been seen previously.
+    - On the **Validation** page at the end, if you are past the original issue, the `deploymentdata.physicalnodes[0].ipv4address is not a valid IPv4 address` error won't be displayed.
 
 1. If no other validation issues occur, start the deployment.
 
