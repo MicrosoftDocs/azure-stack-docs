@@ -3,9 +3,8 @@ title: Azure Stack Hub administration basics
 description: Learn the basics of Azure Stack Hub administration.
 author: sethmanheim
 ms.topic: article
-ms.date: 01/23/2023
+ms.date: 08/19/2024
 ms.author: sethm
-ms.lastreviewed: 01/23/2023
 
 # Intent: As an Azure Stack operator, I want to learn the Azure Stack administration basics so I can get my users what they need.
 # Keyword: azure stack administration basics
@@ -68,8 +67,7 @@ There are a few account considerations to be aware of when managing Azure Stack 
 |Local Administrator (.\Administrator)|ASDK host administrator.|ASDK host administrator.|
 |AzureStack\AzureStackAdmin|ASDK host administrator.<br><br>Can be used to sign in to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.|ASDK host administrator.<br><br>No access to the Azure Stack Hub administrator portal.<br><br>Access to view and administer Service Fabric rings.<br><br>No longer owner of the Default Provider Subscription (DPS).|
 |AzureStack\CloudAdmin|Can access and run permitted commands within the privileged endpoint.|Can access and run permitted commands within the privileged endpoint.<br><br>Can't sign in to the ASDK host.<br><br>Owner of the Default Provider Subscription (DPS).|
-|Microsoft Entra Global Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
-|
+|Microsoft Entra Application Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
 
 [!INCLUDE [CloudAdmin backup account warning](../includes/warning-cloud-admin-backup-account.md)]
 

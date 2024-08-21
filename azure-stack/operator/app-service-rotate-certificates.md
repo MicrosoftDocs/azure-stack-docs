@@ -3,7 +3,7 @@ title: Rotate App Service on Azure Stack Hub secrets and certificates
 description: Learn how to rotate secrets and certificates used by Azure App Service on Azure Stack Hub.
 author: sethmanheim
 ms.topic: article
-ms.date: 08/12/2024
+ms.date: 08/19/2024
 ms.author: sethm
 ms.reviewer: anwestg
 ms.lastreviewed: 04/09/2020
@@ -90,7 +90,7 @@ The identity application is created by the operator before deployment of Azure A
 
 To rotate the certificate for the application in Microsoft Entra ID, follow these steps:
 
-1. Go to the **Azure portal** and sign in using the Global Admin used to deploy Azure Stack Hub.
+1. Go to the **Azure portal** and sign in using the admin used to deploy Azure Stack Hub.
 
 1. Go to **Microsoft Entra ID** and browse to **App Registrations**.
 
