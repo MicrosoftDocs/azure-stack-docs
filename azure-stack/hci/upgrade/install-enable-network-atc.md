@@ -109,7 +109,7 @@ Set-service -Name NetworkATC -StartupType Automatic
 
 ### Step 6: Add the Network ATC intent
 
-There are various intents that you can add. Identify the intent or intents you would like using the examples in the next section.
+There are various intents that you can add. Identify the intent or intents you'd like by using the examples in the next section.
 
 To add the Network ATC intent, run the `Add-NetIntent` command with the appropriate options for the intent you want to deploy.
 
