@@ -41,7 +41,7 @@ Before you install and enable Network ATC on your existing Azure Stack HCI, make
 ## Steps to install and enable Network ATC
 
 > [!IMPORTANT]
-> If you don't have running workloads on your nodes, execute [Step 4: Remove the existing configuration on the paused node without running VMs](#step-4-remove-the-existing-configuration-on-the-paused-node-without-running-vms) to remove any previous configurations that could conflict with Network ATC, then add your intent(s) following the standard procedures found in [Deploy host networking with Network ATC](https://learn.microsoft.com/en-us/azure-stack/hci/deploy/network-atc?tabs=22H2)
+> If you don't have running workloads on your nodes, execute [Step 4: Remove the existing configuration on the paused node without running VMs](#step-4-remove-the-existing-configuration-on-the-paused-node-without-running-vms) to remove any previous configurations that could conflict with Network ATC, then add your intent(s) following the standard procedures found in [Deploy host networking with Network ATC](../deploy/network-atc.md)
 
 ### Step 1: Install Network ATC
 
