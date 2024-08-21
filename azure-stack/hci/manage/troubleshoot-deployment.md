@@ -35,7 +35,7 @@ The selected physical network adapter is not binded to the management virtual sw
 
 ## Cause
 
-This issue occurs on deployments triggered after August 6. The issue only happens if the deployment validation was triggered on the cluster and the validation result was a failure, with subsequent validation retries.
+This issue occurs on deployments triggered after August 6. The issue happens if the deployment validation was triggered on the cluster and the validation result was a failure, with subsequent validation retries.
 
 The issue occurs for the following reason:
 
@@ -50,7 +50,7 @@ The multi-step resolution process includes the following steps:
 - [Remove the validation error](#remove-the-validation-error)
 - [Clean up the Edge Device Azure Resource with incorrect VM switch information](#clean-up-the-edge-device-azure-resource-with-incorrect-vm-switch-information)
 - [Refresh the cloud data](#refresh-the-cloud-edgedevices-data)
-- [Redo the deployment via Azure portal](#redo-the-deployment-via-azure-portal)
+- [Restart the deployment via Azure portal](#restart-the-deployment-via-azure-portal)
 - [Recreate the lock on the seed node resource](#recreate-the-lock-on-the-seed-node-resource)
 
 > [!NOTE]
@@ -99,7 +99,7 @@ With the lock removed, follow these steps to remove the validation error.
 
     Make sure to use the VM switch name from the `Get-VMSwitch` command. If you didn't intentionally create a VM switch, the `Get-VMSwitch` command has no results. The failure occurs because the Network Validation Step cleaned up the VM switch, but the `DeviceManagementExtension` didn't detect the cleanup.
 
-1. Confirm the device cleanup and wait for the cleanup to complete.
+Continue with the cleanup steps.
 
 ### Clean up the Edge Device Azure Resource with incorrect VM switch information
 
@@ -109,10 +109,10 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
    - You can verify install by running: `az`
    - If installed, this outputs a `"Welcome to Azure CLI!"` message with available commands.
 
-1. Sign in to Azure with az cli. Run the following command:
+1. Sign in to Azure with Azure CLI. Run the following command:
     
     ```AzureCLI
-    az login --tenant <tenantGUID> --use-device-code
+    az login --tenant <tenant ID> --use-device-code
     ```  
 
     For more information, [Sign in interactively with Azure CLI](/cli/azure/authenticate-azure-cli-interactively)
@@ -120,10 +120,10 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
 1. To set a specific subscription, run the following command:
 
     ```AzureCLI
-    az account set --subscription "<subGUID>"
+    az account set --subscription "<Subscription ID>"
     ```
 
-    Replace the value in the above example command with the appropriate value for `<subGUID>`.
+    Replace the value in the above example command with the appropriate value for `<Subscription ID>`.
 
 1. Output the data stored within the `edgeDevices` resource that has the incorrectly stored VM Switch information. Run the following command:
 
@@ -139,11 +139,14 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
     az resource show --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"
     ```
 
-    The output of this command shows quite a bit of detail about the \<Machine Name\> used in the command. Near the bottom of the output, there is a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but wasn't detected by the DeviceManagementExtension and updated cloud-side):
+    The output of this command shows quite a bit of detail about the \<Machine Name\> used in the command. Near the bottom of the output, there's a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but wasn't detected by the DeviceManagementExtension and updated cloud-side):
     `"switchName": "ConvergedSwitch(managementcompute)",`
     `"switchType": "External"`
 
-1. After confirming the `show` command worked by outputting the `edgeDevices` data, and likely confirming the `"switchDetails"`, it is time to `delete` the resource from ARM so it can be refreshed appropriately from the device.
+1. After confirming the `show` command worked by outputting the `edgeDevices` data, and likely confirming the `"switchDetails"`, it is time to `delete` the resource from ARM so it can be refreshed appropriately from the seed node.
+
+    > [!NOTE]
+    > Deleting the `edgeDevices` data is a safe action to perform, but it should only be performed when explicitly stated. Do not perform this action unless advised to do so.
 
 1. Delete the `edgeDevices` resource, which has the incorrectly stored VM switch information. Run the following command:
 
@@ -163,7 +166,7 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
     ```Output
     `az resource delete --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default"
     ```
-    When run, there is no output from this command. The command works and returns the command prompt, or presents an error. It shouldn't present an error, if it does, that will require more troubleshooting.
+    When run, there's no output from this command. The command works and returns the command prompt, or presents an error. It shouldn't present an error, but if it does, that will require more troubleshooting.
 
 1. Verify the deletion of the resource by running the `show` command again. Here's an example output:
 
@@ -190,7 +193,7 @@ Follow these steps to refresh the cloud data:
     `"switchName": "ConvergedSwitch(managementcompute)",`
     `"switchType": "External"`
 
-### Redo the deployment via Azure portal
+### Restart the deployment via Azure portal
 
 With device and cloud data now back in sync, you can go to the Azure portal and provide the deployment inputs. The previous step prevents any cached information from previous attempts.
 
