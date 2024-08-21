@@ -3,7 +3,7 @@ title: Troubleshoot Azure Stack HCI upgrade
 description: Learn how to troubleshoot upgrade on your Azure Stack HCI system. 
 author: alkohli
 ms.topic: how-to
-ms.date: 08/12/2024
+ms.date: 08/19/2024
 ms.author: alkohli
 ms.reviewer: alkohli
 ---
@@ -22,23 +22,23 @@ When you [Upgrade the OS](./upgrade-22h2-to-23h2-powershell.md), you may encount
 
 Run the following PowerShell command to verify that the cluster is registered with Azure:
 
-```powershell
-PS C:\> Get-AzureStackHci
+```PowerShell
+Get-AzureStackHci
 ```
 
 Here's a sample output:
 
 ```output
-ClusterStatus : Clustered
-RegistrationStatus : Registered
-RegistrationDate : 8/1/2024 9:15:12 AM
-AzureResourceName : Redmond
-AzureResourceUri : /Subscriptions/<Subscription I>/resourceGroups/Redmond/providers/Microsoft.AzureStackHCI/clusters/Redmond
-ConnectionStatus : Connected
-LastConnected : 8/1/2024 11:30:42 AM
+ClusterStatus :          Clustered
+RegistrationStatus :     Registered
+RegistrationDate :       8/1/2024 9:15:12 AM
+AzureResourceName :      Redmond
+AzureResourceUri :       /Subscriptions/<Subscription ID>/resourceGroups/Redmond/providers/Microsoft.AzureStackHCI/clusters/Redmond
+ConnectionStatus :       Connected
+LastConnected :          8/1/2024 11:30:42 AM
 NextSync :
-IMDSAttestation : Disabled
-DiagnosticLevel : Basic
+IMDSAttestation :        Disabled
+DiagnosticLevel :        Basic
 Region :
 ```
 
@@ -48,35 +48,36 @@ If `RegistrationStatus` is **Not registered**, follow troubleshooting steps in [
 
 Run the following PowerShell command to verify Network ATC intent health state:
 
-```powershell
-PS C:\> Get-netintentstatus
+```PowerShell
+Get-NetIntentStatus
 ```
 
 Here's a sample output:
 
 ```output
-IntentName : converged
-Host : win-llbl239crrl
-IsComputeIntentSet : True
-IsManagementIntentSet : True
-IsStorageIntentSet : True
-IsStretchIntentSet : False
-LastUpdated : 08/01/2024 17:34:09
-LastSuccess : 08/01/2024 17:34:09 
-RetryCount : 0
-LastConfigApplied : 1
-Error :
-Progress : 1 of 1
-ConfigurationStatus : Success
-ProvisioningStatus : Completed
+PS C:\Users\administrator.CONTOSO> Get-NetlntentStatus
+IntentName:            convergedintent
+Host:                  nodel 
+IsComputeintentSet:    True
+IsHanagementlntentSet: True
+IsStoragelntentSet:    True
+IsStretchlntentSet:    False
+LastUpdated:           08/13/2024 18:01:43
+LastSuccess:           08/13/2024 17:25:10
+RetryCount:            0
+LastConfigApplied:     1
+Error:                 PhysicalAdapterNotFound
+Progress:              1 of 1
+ConfigurationStatus:   Retrying
+ProvisioningStatus:    Pending
 ```
 
 If the `ConfigurationStatus` isn't healthy, verify that the VM network adapter name is the same as the network adapter name.
 
 Run the following PowerShell commands to verify that the network adapter name for `vManagement` matches the VM network adapter name:
 
-```powershell
-PS C:\> Get-NetAdapter
+```PowerShell
+Get-NetAdapter
 ```
 
 Here's a sample output:
@@ -97,8 +98,8 @@ vManagement(converged)    Hyper-V Virtual Ethernet Adapter             14 Up    
 vSMB(converged#Embedde... Hyper-V Virtual Ethernet Adapter #3          24 Up           00-15-5D-20-40-03        25 Gbps 
 ```
 
-```powershell
-PS C:\> Get-VmNetworkAdapter -ManagementOS 
+```PowerShell
+Get-VmNetworkAdapter -ManagementOS 
 ```
 
 Here's a sample output:
@@ -117,13 +118,13 @@ vSMB(converged#Embedded FlexibleLOM 1 Port 2) True                  ConvergedSwi
 
 Both names must match. If names don't match, run the following PowerShell command to rename the network adapter:
 
-```powershell
-Rename-netadapter -Name "badname" -NewName "VMNetworkadapterName"
+```PowerShell
+Rename-NetAdapter -Name "badname" -NewName "VMNetworkadapterName"
 ```
 
 Run the following PowerShell command to force a network ATC intent update:
 
-```powershell
+```PowerShell
 Set-NetIntentRetryState -Name "YourIntentName"
 ```
 
