@@ -48,7 +48,7 @@ Before you begin, make sure to complete the following prerequisites:
 
 ## Assign RBAC roles to users
 
-You can assign RBAC roles to user via the . Follow these steps to assign RBAC roles to users:
+You can assign RBAC roles to user via the Azure portal. Follow these steps to assign RBAC roles to users:
 
 1. In the Azure portal, search for the scope to grant access to, for example, search for subscriptions, resource groups, or a specific resource. In this example, we use the subscription in which the Azure Stack HCI cluster is deployed.
 
