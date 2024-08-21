@@ -481,6 +481,8 @@ items:
   items:
   - name: Collect logs
     href: manage/collect-logs.md
+  - name: Troubleshoot deployment validation issues
+    href: manage/troubleshoot-deployment.md
   - name: Get support for deployment issues
     href: manage/get-support-for-deployment-issues.md
   - name: Get support for Azure Stack HCI
