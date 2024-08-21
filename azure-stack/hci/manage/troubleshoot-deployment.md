@@ -50,7 +50,7 @@ The multi-step resolution process includes the following steps:
 - [Remove the validation error](#remove-the-validation-error)
 - [Clean up the Edge Device Azure Resource with incorrect VM switch information](#clean-up-the-edge-device-azure-resource-with-incorrect-vm-switch-information)
 - [Refresh the cloud data](#refresh-the-cloud-edgedevices-data)
-- [Redo the Azure portal](#redo-the-azure-portal)
+- [Redo the deployment via Azure portal](#redo-the-deployment-via-azure-portal)
 - [Recreate the lock on the seed node resource](#recreate-the-lock-on-the-seed-node-resource)
 
 > [!NOTE]
@@ -68,15 +68,15 @@ If you attempt the steps in the next section without removing the lock, the **De
 
 ```
 Some resources failed to be deleted (run with `--verbose` for more information):
-/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<machinename>/providers/Microsoft.AzureStackHCI/edgeDevices/default
+/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default
 ```
 
 Here's the example output when run with the `--verbose` switch:
 
 ```Output
-(ScopeLocked) The scope '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<machinename>/providers/Microsoft.AzureStackHCI/edgeDevices/default' cannot perform delete operation because following scope(s) are locked: '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<machinename>'. Please remove the lock and try again.
+(ScopeLocked) The scope '/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default' cannot perform delete operation because following scope(s) are locked: '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<Machine Name>'. Please remove the lock and try again.
 Code: ScopeLocked
-Message: The scope '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<machinename>/providers/Microsoft.AzureStackHCI/edgeDevices/default' cannot perform delete operation because following scope(s) are locked: '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<machinename>'. Please remove the lock and try again.
+Message: The scope '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default' cannot perform delete operation because following scope(s) are locked: '/subscriptions/<subid>/resourceGroups/<rgname>/providers/Microsoft.HybridCompute/machines/<Machine Name>'. Please remove the lock and try again.
 ```
 
 ### Remove the validation error
@@ -124,13 +124,14 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
     ```
 
     Replace the value in the above example command with the appropriate value for `<subGUID>`.
+
 1. Output the data stored within the `edgeDevices` resource that has the incorrectly stored VM Switch information. Run the following command:
 
     ```AzureCLI
-    az resource show --ids "/subscriptions/<subGUID>/resourceGroups/<resourceGROUPNAME>/providers/Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default"
+    az resource show --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default"
     ```
 
-    Replace the values in the above example command with the appropriate values for:`<subGUID>`, `<resourceGROUPNAME>`, and `<machineNAME>`.
+    Replace the values in the above example command with the appropriate values for:`<Subscription ID>`, `<Resource Group Name>`, and `<Machine Name>`.
     
     Here's an example output:
     
@@ -138,7 +139,7 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
     az resource show --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"
     ```
 
-    The output of this command shows quite a bit of detail about the \<machineNAME\> used in the command. Near the bottom of the output, there is a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but wasn't detected by the DeviceManagementExtension and updated cloud-side):
+    The output of this command shows quite a bit of detail about the \<Machine Name\> used in the command. Near the bottom of the output, there is a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but wasn't detected by the DeviceManagementExtension and updated cloud-side):
     `"switchName": "ConvergedSwitch(managementcompute)",`
     `"switchType": "External"`
 
@@ -147,29 +148,29 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
 1. Delete the `edgeDevices` resource, which has the incorrectly stored VM switch information. Run the following command:
 
     ```AzureCLI
-    az resource delete --ids "/subscriptions/<subGUID>/resourceGroups/<resourceGROUPNAME>/providers/Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default"
+    az resource delete --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default"
     ```
     
     Replace the values (remember to remove the \<\> characters as well) with the appropriate values for:
       `<subGUID>`
       `<resourceGROUPNAME>`
-      `<machineNAME>`
+      `<Machine Name>`
     
     This is the same resource `--ids` from the `show`, so you can just use that same string. In fact, you could just "up arrow" in the console and replace `show` with `delete`.
 
     Here's an example output:
 
     ```Output
-    `az resource delete --ids "/subscriptions/d41eb627-825d-4419-a14d-c6ad485f4110/resourceGroups/EDGECI-REGISTRATION-rr1n26r1512-kXOKQuGV/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"
+    `az resource delete --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default"
     ```
     When run, there is no output from this command. The command works and returns the command prompt, or presents an error. It shouldn't present an error, if it does, that will require more troubleshooting.
 
 1. Verify the deletion of the resource by running the `show` command again. Here's an example output:
 
     ```Output
-    (ResourceNotFound) The resource 'Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
+    (ResourceNotFound) The resource 'Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
     Code: ResourceNotFound
-    Message: The resource 'Microsoft.HybridCompute/machines/<machineNAME>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
+    Message: The resource 'Microsoft.HybridCompute/machines/<Machine Name>/providers/Microsoft.AzureStackHCI/edgeDevices/default' could not be found.
     ```
 
 ### Refresh the cloud `edgeDevices` data
@@ -189,7 +190,7 @@ Follow these steps to refresh the cloud data:
     `"switchName": "ConvergedSwitch(managementcompute)",`
     `"switchType": "External"`
 
-### Redo the Azure portal
+### Redo the deployment via Azure portal
 
 With device and cloud data now back in sync, you can go to the Azure portal and provide the deployment inputs. The previous step prevents any cached information from previous attempts.
 
@@ -214,8 +215,8 @@ After the mitigation is complete, we strongly recommend that you recreate the lo
 Follow these steps to recreate the lock:
 
 1. In the Azure portal, go to the object via the resource group or within **Machines - Azure Arc**.  
-1. Expand '**Settings** in the left column, then select  **Locks**.  
-1. Select '**+ Add**' at the top of the page.
+1. Go to **Settings > Locks**.  
+1. Select **+ Add** at the top of the page.
     1. For **Lock name**, enter **DoNotDelete**.
-    1. For **Lock type**, select '**Delete**' from the drop-down.
+    1. For **Lock type**, select **Delete** from the dropdown.
 1. Select **OK** to save the lock.
