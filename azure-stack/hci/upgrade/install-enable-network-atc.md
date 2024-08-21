@@ -41,7 +41,7 @@ Before you install and enable Network ATC on your existing Azure Stack HCI, make
 ## Steps to install and enable Network ATC
 
 > [!IMPORTANT]
-> If you don't have running workloads on your nodes, just add your intent command as if this was a new cluster. You don't need to continue with the next set of instructions.
+> If you don't have running workloads on your nodes, execute [Step 4: Remove the existing configuration on the paused node without running VMs](#step-4-remove-the-existing-configuration-on-the-paused-node-without-running-vms) to remove any previous configurations that could conflict with Network ATC, then add your intent(s) following the standard procedures found in [Deploy host networking with Network ATC](../deploy/network-atc.md)
 
 ### Step 1: Install Network ATC
 
@@ -51,21 +51,21 @@ In this step, you install Network ATC on every node in the cluster using the fol
 Install-WindowsFeature -Name NetworkATC
 ```
 
-### Step 2: Pause one node in the cluster
-
-When you pause one node in the cluster, all workloads are moved to other nodes, making your machine available for changes. The paused node is then migrated to Network ATC. To pause your cluster node, use the following command:
-
-```powershell
-Suspend-ClusterNode
-```
-
-### Step 3: Stop the Network ATC service
+### Step 2: Stop the Network ATC service
 
 To prevent Network ATC from applying the intent while VMs are running, stop or disable the Network ATC service on all nodes that aren't paused. Use these commands:
 
 ```powershell
 Set-Service -Name NetworkATC -StartupType Disabled
 Stop-Service -Name NetworkATC
+```
+
+### Step 3: Pause one node in the cluster
+
+When you pause one node in the cluster, all workloads are moved to other nodes, making your machine available for changes. The paused node is then migrated to Network ATC. To pause your cluster node, use the following command:
+
+```powershell
+Suspend-ClusterNode
 ```
 
 ### Step 4: Remove the existing configuration on the paused node without running VMs
@@ -98,7 +98,7 @@ If your nodes were configured via Virtual Machine Manager (VMM), those configura
 
 ### Step 5: Start the Network ATC service
 
-As a precaution, to control the speed of the rollout, we paused the node and then stopped or disabled the Network ATC service in the previous steps. Since Network ATC intents are implemented cluster-wide, perform this step only once.
+As a precaution, to control the speed of the rollout, we paused the node and then stopped and disabled the Network ATC service in the previous steps. Since Network ATC intents are implemented cluster-wide, perform this step only once.
 
 To start the Network ATC service, on the paused node only, run the following command:
 
@@ -109,13 +109,9 @@ Set-service -Name NetworkATC -StartupType Automatic
 
 ### Step 6: Add the Network ATC intent
 
-There are various intents that you can add. Identify the intent or intents you'd like using the examples in the next section.
+There are various intents that you can add. Identify the intent or intents you'd like by using the examples in the next section.
 
-To add the Network ATC intent, run the following command:
-
-```powershell
-Set-Service -Name NetworkATC -StartupType Automatic
-```
+To add the Network ATC intent, run the `Add-NetIntent` command with the appropriate options for the intent you want to deploy.
 
 ### Example intents
 
@@ -153,7 +149,7 @@ In this example, there's a single intent managed across cluster nodes.
     Here's an example to implement this host network pattern:
 
     ```powershell
-    Add-Netintent -Name MgmtComputeStorage -Management -Compute -Storage -AdapterName pNIC1, pNIC2
+    Add-NetIntent -Name MgmtComputeStorage -Management -Compute -Storage -AdapterName pNIC1, pNIC2
     ```
 
 #### Group compute and storage traffic on one intent with a separate management intent
@@ -227,27 +223,30 @@ ProvisioningStatus          : Completed
 
 Ensure that each intent added has an entry for the host you're working on. Also, make sure the **ConfigurationStatus** shows **Success**.
 
-If the **ConfigurationStatus** shows **Failed**, check to see if the error message indicates the reason for the failure. For some examples of failure resolutions, see [Common Error Messages](../deploy/network-atc.md#common-error-messages).
+If the **ConfigurationStatus** shows **Failed**, check to see if the error message indicates the reason for the failure. You can also review the Microsoft-Windows-Networking-NetworkATC/Admin event logs for more details on the reason for the failure. For some examples of failure resolutions, see [Common Error Messages](../deploy/network-atc.md#common-error-messages).
 
 ### Step 8: Rename the VMSwitch on other nodes
 
 In this step, you move from the node deployed with Network ATC to the next node and migrate the VMs from this second node. You must verify that the second node has the same `VMSwitch` name as the node deployed with Network ATC.
 
-This is a nondisruptive change and can be done on all the nodes simultaneously. Run the following command:
+> [!IMPORTANT]
+> After the virtual switch is renamed, you must disconnect and reconnect each virtual machine so that it can appropriately cache the new name of the virtual switch. This is a disruptive action that requires planning to complete. If you do not perform this action, live migrations will fail with an error indicating the virtual switch doesn't exist on the destination.
+
+Renaming the virtual switch is a non-disruptive change and can be done on all the nodes simultaneously. Run the following command:
 
 ```powershell
 #Run on the node where you configured Network ATC
-Get-VMSwitch | ft name
+Get-VMSwitch | ft Name
 
 #Run on the next node to rename the virtual switch
 Rename-VMSwitch -Name 'ExistingName' -NewName 'NewATCName'
 ```
 
-After your switch is renamed, disconnect and reconnect your vNICs for the `VMSwitch` name change to go through. Once the change goes through, on each node, run the following commands:
+After your switch is renamed, disconnect and reconnect your vNICs for the `VMSwitch` name change to go through. The command below can be used to perform this action for all VMs:
 
 ```powershell
 $VMSW = Get-VMSwitch
-$VMs = get-vm
+$VMs = Get-VM
 $VMs | %{Get-VMNetworkAdapter -VMName $_.name | Disconnect-VMNetworkAdapter ; Get-VMNetworkAdapter -VMName $_.name | Connect-VMNetworkAdapter -SwitchName $VMSW.name}
 ```
 
@@ -265,7 +264,7 @@ Resume-ClusterNode
 ```
 
 > [!NOTE]
-> To apply the Network ATC settings across the cluster, repeat steps 1 through 5, step 7, and step 9 for each node of the cluster.
+> To apply the Network ATC settings across the cluster, repeat steps 1 through 5 (skip deleting the virtual switch as it was renamed), step 7, and step 9 for each node of the cluster.
 
 ## Next step
 
