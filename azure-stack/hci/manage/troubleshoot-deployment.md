@@ -48,7 +48,7 @@ The multi-step resolution process includes the following steps:
 
 - [Remove the lock from the seed node](#remove-the-lock-from-the-seed-node)
 - [Remove the validation error](#remove-the-validation-error)
-- [Clean up the Edge Device Azure Resource with incorrect VM switch information](#clean-up-the-edge-device-azure--resource-with-incorrect-vm-switch-information)
+- [Clean up the Edge Device Azure Resource with incorrect VM switch information](#clean-up-the-edge-device-azure-resource-with-incorrect-vm-switch-information)
 - [Refresh the cloud data](#refresh-the-cloud-edgedevices-data)
 - [Redo the Azure portal](#redo-the-azure-portal)
 - [Recreate the lock on the seed node resource](#recreate-the-lock-on-the-seed-node-resource)
@@ -105,7 +105,7 @@ With the lock removed, follow these steps to remove the validation error.
 
 After the VM switch on the device is removed, clean up the Edge Device ARM resource containing the incorrect VM switch information via the Azure CLI.
 
-1. On a client that can access to Azure, verify install or install AZ CLI: [Install Azure CLI on Windows](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli)
+1. On a client that can access to Azure, verify install or install AZ CLI: [Install Azure CLI on Windows](/cli/azure/install-azure-cli-windows?tabs=azure-cli)
    - You can verify install by running: `az`
    - If installed, this outputs a `"Welcome to Azure CLI!"` message with available commands.
 
@@ -138,7 +138,7 @@ After the VM switch on the device is removed, clean up the Edge Device ARM resou
     az resource show --ids "/subscriptions/<Subscription ID>/resourceGroups/<Resource Group Name>/providers/Microsoft.HybridCompute/machines/ASRR1N26R15U33/providers/Microsoft.AzureStackHCI/edgeDevices/default"
     ```
 
-    The output of this command shows quite a bit of detail about the <machineNAME> used in the command. Near the bottom of the output, there is a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but wasn't detected by the DeviceManagementExtension and updated cloud-side):
+    The output of this command shows quite a bit of detail about the \<machineNAME\> used in the command. Near the bottom of the output, there is a section for `"switchDetails"`, which will more than likely show the following (which is the Validation VM Switch that was created and cleaned up on the device, but wasn't detected by the DeviceManagementExtension and updated cloud-side):
     `"switchName": "ConvergedSwitch(managementcompute)",`
     `"switchType": "External"`
 
