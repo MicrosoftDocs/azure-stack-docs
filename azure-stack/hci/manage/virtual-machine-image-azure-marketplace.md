@@ -8,7 +8,7 @@ ms.service: azure-stack
 ms.subservice: azure-stack-hci
 ms.custom:
   - devx-track-azurecli
-ms.date: 02/29/2024
+ms.date: 07/18/2024
 ---
 
 # Create Azure Stack HCI VM image using Azure Marketplace images
@@ -24,13 +24,13 @@ Before you begin, make sure that the following prerequisites are completed.
 
 # [Azure CLI](#tab/azurecli)
 
-[!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
+- Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
-- If using a client to connect to your Azure Stack HCI cluster, see [Connect to Azure Stack HCI via Azure CLI client](./azure-arc-vm-management-prerequisites.md#azure-command-line-interface-cli-requirements).
+- If using a client to connect to your Azure Stack HCI cluster, see [Connect to the cluster remotely](./azure-arc-vm-management-prerequisites.md#connect-to-the-cluster-remotely).
 
 # [Azure portal](#tab/azureportal)
 
-[!INCLUDE [hci-vm-image-prerequisites-marketplace](../../includes/hci-vm-image-prerequisites-marketplace.md)]
+Make sure to review and [complete the prerequisites](./azure-arc-vm-management-prerequisites.md).
 
 ---
 
