@@ -4,10 +4,8 @@ titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate Azure identity.
 author: sethmanheim
 ms.topic: how-to
-ms.date: 12/18/2020
+ms.date: 08/19/2024
 ms.author: sethm
-ms.reviewer: jerskine
-ms.lastreviewed: 12/18/2020
 
 # Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate Azure identity.
 # Keyword:  azure stack hub azure identity readiness checker
@@ -21,7 +19,7 @@ Use the Azure Stack Hub Readiness Checker tool (**AzsReadinessChecker**) to vali
 The readiness checker validates:
 
 - Microsoft Entra ID as an identity provider for Azure Stack Hub.
-- The Microsoft Entra account that you plan to use can sign in as a global administrator of your Microsoft Entra ID.
+- The Microsoft Entra account that you plan to use can sign in as an application administrator of your Microsoft Entra ID.
 
 Validation ensures your environment is ready for Azure Stack Hub to store information about users, applications, groups, and service principals from Azure Stack Hub in your Microsoft Entra ID.
 
@@ -45,7 +43,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 
 #### Microsoft Entra environment
 
-- Identify the Microsoft Entra account to use for Azure Stack Hub and ensure it's a Microsoft Entra Global Administrator.
+- Identify the Microsoft Entra account to use for Azure Stack Hub and ensure it's a Microsoft Entra Application Administrator.
 - Identify your Microsoft Entra tenant name. The tenant name must be the primary domain name for your Microsoft Entra ID. For example, **contoso.onmicrosoft.com**.
 
 ### Steps to validate Azure identity
@@ -110,7 +108,7 @@ You will need to have the Az PowerShell modules installed. For instructions, see
 
 #### Microsoft Entra environment
 
-- Identify the Microsoft Entra account to use for Azure Stack Hub and ensure it's a Microsoft Entra Global Administrator.
+- Identify the Microsoft Entra account to use for Azure Stack Hub and ensure it's a Microsoft Entra Application Administrator.
 - Identify your Microsoft Entra tenant name. The tenant name must be the primary domain name for your Microsoft Entra ID. For example, **contoso.onmicrosoft.com**.
 - Identify the Azure environment you'll use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
 
@@ -201,7 +199,7 @@ Login-AzureRMAccount
 
 Another way is to sign in to the [Azure portal](https://portal.azure.com) as the account owner and the user will be forced to change the password.
 
-### Unknown user type 
+### Unknown user type
  
 ```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
@@ -226,30 +224,6 @@ Invoke-AzsAzureIdentityValidation Completed
 ```powershell
 Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 ```
-
-### Account is not an administrator
-
-```powershell
-Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
-Starting Azure Identity Validation
-
-Checking Installation Requirements: Fail
-Error Details for Service Administrator Account admin@contoso.onmicrosoft.com
-The Service Admin account you entered 'admin@contoso.onmicrosoft.com' is not an administrator of the Azure Active Directory tenant 'contoso.onmicrosoft.com'.
-Additional help URL https://aka.ms/AzsRemediateAzureIdentity
-
-Finished Azure Identity Validation
-
-Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
-Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json
-Invoke-AzsAzureIdentityValidation Completed
-```
-
-**Cause** -  Although the account can successfully sign in, the account isn't an admin of the Microsoft Entra ID (**AADDirectoryTenantName**).  
-
-**Resolution** - Sign in into the [Azure portal](https://portal.azure.com) as the account owner, go to **Microsoft Entra ID**, then **Users**, then **Select the User**. Then select **Directory Role** and ensure the user is a **Global administrator**. If the account is a **User**, go to **Microsoft Entra ID** > **Custom domain names** and confirm that the name you supplied for **AADDirectoryTenantName** is marked as the primary domain name for this directory. In this example, that's **contoso.onmicrosoft.com**.
-
-Azure Stack Hub requires that the domain name is the primary domain name.
 
 ## Next Steps
 

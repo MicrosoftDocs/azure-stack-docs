@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/10/2024
+ms.date: 07/19/2024
 ---
 
 # Create storage path for Azure Stack HCI 
@@ -28,12 +28,9 @@ The available space in the cluster shared volume determines the size of the stor
 
 Before you begin, make sure to complete the following prerequisites:
 
-1. Make sure that you have access to an Azure Stack HCI cluster that is deployed and registered. During the deployment, an Arc Resource Bridge and a custom location are also created. 
-    
-    Go to the resource group in Azure. You can see the custom location and Azure Arc Resource Bridge created for the Azure Stack HCI cluster. Make a note of the subscription, resource group, and the custom location as you use these later in this scenario.
+1. Make sure that complete the [Azure Stack HCI cluster requirements](./azure-arc-vm-management-prerequisites.md).
 
 1. Make sure that a cluster shared volume exists on your Azure Stack HCI cluster that is accessible from all the servers in the cluster. The storage path that you intend to provide on a cluster shared volume should have sufficient space for storing VM images. By default, cluster shared volumes are created during the deployment of Azure Stack HCI cluster. 
-
 
     You can create storage paths only within cluster shared volumes that are available in the cluster. For more information, see [Create a cluster shared volume](/windows-server/failover-clustering/failover-cluster-csvs#add-a-disk-to-csv-on-a-failover-cluster).
 

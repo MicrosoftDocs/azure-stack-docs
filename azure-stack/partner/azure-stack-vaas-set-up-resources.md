@@ -66,7 +66,7 @@ There are two applications that require admin consents to function properly, one
 
 For portal application consent:
 
-1. Use the global admin credentials for the tenant to sign into the [Azure Stack Hub Validation portal](https://azurestackvalidation.com/).
+1. Use the service admin credentials for the tenant to sign into the [Azure Stack Hub Validation portal](https://azurestackvalidation.com/).
 
 2. Select **My Account**.
 
