@@ -6,7 +6,7 @@ author: alkohli
 ms.author: alkohli
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 08/19/2024
+ms.date: 08/22/2024
 ---
 
 # What's new in Azure Stack HCI, version 23H2
@@ -29,7 +29,7 @@ This is a baseline release with the following features and improvements:
 
 ### Upgrade from version 22H2 to version 23H2
 
-This release introduces the ability to upgrade your Azure Stack HCI cluster from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade will have a phased rollout. You will have a notification when this upgrade is available  For more information, see [Upgrade Azure Stack HCI from version 22H2 to version 23H2](./upgrade/about-upgrades-23h2.md).
+This release introduces the ability to upgrade your Azure Stack HCI cluster from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade will have a phased rollout. You will see a notification in Azure portal when this upgrade is available  For more information, see [Upgrade Azure Stack HCI from version 22H2 to version 23H2](./upgrade/about-upgrades-23h2.md).
 
 ### Updates changes
 
@@ -46,8 +46,9 @@ This release contains the following changes for Arc VM management:
 - Creation of logical networks is blocked if trying to create with overlapping IP pools.
 - Logical network properties are properly updated. Previously, the logical network sometimes would not have its properties (vLAN, IP Pools, etc.) filled.
 - The vLAN field on a logical network will be defaulted to '0' if not specified.
-- Either (not both) -image or -os-disk-name can be used to create a VM from a VHD. Previously, CLI enforced -image to be required for 'az stack-hci-vm create' command.
+- Either (not both) *-image* or *-os-disk-name* can be used to create a VM from a VHD. Previously, Azure CLI enforced *-image* to be required for `az stack-hci-vm create` command.
 
+For more information, see the [Fixed issues list in 2408](./known-issues-2408.md#fixed-issues).
 
 ## [2405 releases](#tab/2405releases)
 
