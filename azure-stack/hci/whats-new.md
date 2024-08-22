@@ -29,7 +29,9 @@ This is a baseline release with the following features and improvements:
 
 ### Upgrade from version 22H2 to version 23H2
 
-This release introduces the ability to upgrade your Azure Stack HCI cluster from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade will have a phased rollout. You will see a notification in Azure portal when this upgrade is available  For more information, see [Upgrade Azure Stack HCI from version 22H2 to version 23H2](./upgrade/about-upgrades-23h2.md).
+This release introduces the ability to upgrade your Azure Stack HCI cluster from version 22H2 to version 23H2. The upgrade process is supported for clusters running version 22H2 with the latest updates and is a two-step process. While the OS upgrade is generally available, the solution upgrade will have a phased rollout.
+
+For more information, see [Upgrade Azure Stack HCI from version 22H2 to version 23H2](./upgrade/about-upgrades-23h2.md).
 
 ### Updates changes
 
