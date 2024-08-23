@@ -6,7 +6,7 @@ ms.author: alkohli
 ms.topic: how-to
 ms.service: azure-stack
 ms.subservice: azure-stack-hci
-ms.date: 07/18/2024
+ms.date: 08/23/2024
 ---
 
 # Azure Arc VM management prerequisites
@@ -25,6 +25,7 @@ The Azure requirements include:
 
   The entities include Azure Stack HCI cluster, Arc Resource Bridge, Custom Location, VM operator, virtual machines created from Arc and Azure Arc for Servers guest management. These entities can be in different or same resource groups as long as all resource groups are in the same region.
 
+
 ## Azure Stack HCI cluster requirements
 
 - You have access to an Azure Stack HCI system that is deployed, has an Arc Resource Bridge and a custom location.
@@ -32,6 +33,13 @@ The Azure requirements include:
   - Go to the **Overview > Server** page in the Azure Stack HCI system resource. Verify that **Azure Arc** shows as **Connected**. You should also see a custom location and an Arc Resource Bridge for your cluster.
     
        :::image type="content" source="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png" alt-text="Screenshot of the Overview page in the Azure Stack HCI cluster resource showing Azure Arc as connected." lightbox="./media/azure-arc-vm-management-prerequisites/azure-arc-connected.png":::
+
+## Arc VM image requirements
+
+For Arc VM images to be used on Azure Stack HCI, make sure to satisfy the following requirements:
+
+- Use only the English (en-us) language VHDs to create VM images.
+- Do not use Azure Virtual machine VHD disk to create VM images.
 
 ## Azure Command-Line Interface (CLI) requirements
 
